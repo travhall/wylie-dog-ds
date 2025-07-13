@@ -12,8 +12,8 @@
     "preview-storybook": "turbo run preview-storybook"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
-    "prettier": "^3.2.5",
+    "@changesets/cli": "^2.29.5",
+    "prettier": "^3.6.2",
     "turbo": "^2.5.4"
   },
   "packageManager": "pnpm@8.15.6",
