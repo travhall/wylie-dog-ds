@@ -11,7 +11,7 @@
     "lint": "eslint ./stories/*.stories.tsx --max-warnings 0"
   },
   "dependencies": {
-    "@acme/ui": "workspace:*",
+    "@wyliedog/ui": "workspace:*",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

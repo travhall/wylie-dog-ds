@@ -1,0 +1,29 @@
+{
+  "name": "@wyliedog/tokens",
+  "version": "0.0.1",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./css": "./dist/tokens.css",
+    "./theme": "./dist/theme.css",
+    "./tailwind": "./dist/tailwind.js"
+  },
+  "scripts": {
+    "build": "node style-dictionary.config.js && tsup",
+    "dev": "node style-dictionary.config.js --watch",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.0.1",
+    "tsup": "^8.0.2",
+    "@repo/typescript-config": "workspace:*"
+  }
+}

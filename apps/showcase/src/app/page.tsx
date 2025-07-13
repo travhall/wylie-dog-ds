@@ -1,7 +1,7 @@
-import { Button } from "@acme/ui/button";
-import { Badge } from "@acme/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@acme/ui/card";
-import { Input } from "@acme/ui/input";
+import { Button } from "@wyliedog/ui/button";
+import { Badge } from "@wyliedog/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
+import { Input } from "@wyliedog/ui/input";
 
 export default function Home() {
   return (
