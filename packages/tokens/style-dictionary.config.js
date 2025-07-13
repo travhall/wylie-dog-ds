@@ -12,12 +12,12 @@ const sd = new StyleDictionary({
         selector: ':root'
       }]
     },
-    tailwind: {
-      transformGroup: 'js',
+    tailwindTheme: {
+      transformGroup: 'css',
       buildPath: 'dist/',
       files: [{
-        destination: 'tailwind.js',
-        format: 'javascript/module-flat'
+        destination: 'theme.css',
+        format: 'css/tailwind-theme'
       }]
     },
     js: {
@@ -26,6 +26,14 @@ const sd = new StyleDictionary({
       files: [{
         destination: 'tokens.js',
         format: 'javascript/module'
+      }]
+    },
+    tailwind: {
+      transformGroup: 'js',
+      buildPath: 'dist/',
+      files: [{
+        destination: 'tailwind.js',
+        format: 'javascript/module-flat'
       }]
     }
   }
@@ -41,15 +49,5 @@ sd.registerFormat({
     }).join('\n')}\n}`;
   }
 });
-
-// Add Tailwind 4.x theme format
-sd.platforms.tailwindTheme = {
-  transformGroup: 'css',
-  buildPath: 'dist/',
-  files: [{
-    destination: 'theme.css',
-    format: 'css/tailwind-theme'
-  }]
-};
 
 await sd.buildAllPlatforms();

@@ -92,5 +92,34 @@
     "xl": { "value": "0.75rem", "type": "borderRadius" },
     "2xl": { "value": "1rem", "type": "borderRadius" },
     "full": { "value": "9999px", "type": "borderRadius" }
+  },
+  "shadow": {
+    "xs": { "value": "0 1px 2px 0 oklch(0 0 0 / 0.05)", "type": "boxShadow" },
+    "sm": { "value": "0 1px 3px 0 oklch(0 0 0 / 0.1), 0 1px 2px -1px oklch(0 0 0 / 0.1)", "type": "boxShadow" },
+    "md": { "value": "0 4px 6px -1px oklch(0 0 0 / 0.1), 0 2px 4px -2px oklch(0 0 0 / 0.1)", "type": "boxShadow" },
+    "lg": { "value": "0 10px 15px -3px oklch(0 0 0 / 0.1), 0 4px 6px -4px oklch(0 0 0 / 0.1)", "type": "boxShadow" },
+    "xl": { "value": "0 20px 25px -5px oklch(0 0 0 / 0.1), 0 8px 10px -6px oklch(0 0 0 / 0.1)", "type": "boxShadow" },
+    "none": { "value": "none", "type": "boxShadow" }
+  },
+  "blur": {
+    "none": { "value": "0", "type": "blur" },
+    "sm": { "value": "4px", "type": "blur" },
+    "base": { "value": "8px", "type": "blur" },
+    "md": { "value": "12px", "type": "blur" },
+    "lg": { "value": "16px", "type": "blur" },
+    "xl": { "value": "24px", "type": "blur" }
+  },
+  "transition": {
+    "duration": {
+      "fast": { "value": "150ms", "type": "duration" },
+      "base": { "value": "200ms", "type": "duration" },
+      "slow": { "value": "300ms", "type": "duration" }
+    },
+    "easing": {
+      "linear": { "value": "linear", "type": "cubicBezier" },
+      "in": { "value": "cubic-bezier(0.4, 0, 1, 1)", "type": "cubicBezier" },
+      "out": { "value": "cubic-bezier(0, 0, 0.2, 1)", "type": "cubicBezier" },
+      "in-out": { "value": "cubic-bezier(0.4, 0, 0.2, 1)", "type": "cubicBezier" }
+    }
   }
 }

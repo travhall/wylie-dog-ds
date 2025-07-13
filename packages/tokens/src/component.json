@@ -1,0 +1,78 @@
+{
+  "button": {
+    "primary": {
+      "background": { "value": "{color.blue.500}", "type": "color" },
+      "backgroundHover": { "value": "{color.blue.600}", "type": "color" },
+      "backgroundActive": { "value": "{color.blue.700}", "type": "color" },
+      "text": { "value": "{color.white}", "type": "color" },
+      "border": { "value": "{color.blue.500}", "type": "color" },
+      "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
+      "paddingX": { "value": "{spacing.4}", "type": "spacing" },
+      "paddingY": { "value": "{spacing.2}", "type": "spacing" },
+      "shadow": { "value": "{shadow.sm}", "type": "boxShadow" }
+    },
+    "secondary": {
+      "background": { "value": "{color.slate.100}", "type": "color" },
+      "backgroundHover": { "value": "{color.slate.200}", "type": "color" },
+      "backgroundActive": { "value": "{color.slate.300}", "type": "color" },
+      "text": { "value": "{color.slate.900}", "type": "color" },
+      "border": { "value": "{color.slate.300}", "type": "color" },
+      "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
+      "paddingX": { "value": "{spacing.4}", "type": "spacing" },
+      "paddingY": { "value": "{spacing.2}", "type": "spacing" },
+      "shadow": { "value": "{shadow.sm}", "type": "boxShadow" }
+    },
+    "ghost": {
+      "background": { "value": "transparent", "type": "color" },
+      "backgroundHover": { "value": "{color.slate.100}", "type": "color" },
+      "backgroundActive": { "value": "{color.slate.200}", "type": "color" },
+      "text": { "value": "{color.slate.700}", "type": "color" },
+      "border": { "value": "transparent", "type": "color" },
+      "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
+      "paddingX": { "value": "{spacing.4}", "type": "spacing" },
+      "paddingY": { "value": "{spacing.2}", "type": "spacing" },
+      "shadow": { "value": "none", "type": "boxShadow" }
+    }
+  },
+  "card": {
+    "background": { "value": "{color.white}", "type": "color" },
+    "border": { "value": "{color.slate.200}", "type": "color" },
+    "borderRadius": { "value": "{borderRadius.lg}", "type": "borderRadius" },
+    "shadow": { "value": "{shadow.md}", "type": "boxShadow" },
+    "padding": { "value": "{spacing.6}", "type": "spacing" }
+  },
+  "input": {
+    "background": { "value": "{color.white}", "type": "color" },
+    "backgroundDisabled": { "value": "{color.slate.50}", "type": "color" },
+    "border": { "value": "{color.slate.300}", "type": "color" },
+    "borderFocus": { "value": "{color.blue.500}", "type": "color" },
+    "borderError": { "value": "{color.red.500}", "type": "color" },
+    "text": { "value": "{color.slate.900}", "type": "color" },
+    "textPlaceholder": { "value": "{color.slate.500}", "type": "color" },
+    "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
+    "paddingX": { "value": "{spacing.3}", "type": "spacing" },
+    "paddingY": { "value": "{spacing.2}", "type": "spacing" }
+  },
+  "alert": {
+    "success": {
+      "background": { "value": "{color.green.50}", "type": "color" },
+      "border": { "value": "{color.green.500}", "type": "color" },
+      "text": { "value": "{color.green.900}", "type": "color" },
+      "icon": { "value": "{color.green.500}", "type": "color" }
+    },
+    "warning": {
+      "background": { "value": "{color.yellow.50}", "type": "color" },
+      "border": { "value": "{color.yellow.500}", "type": "color" },
+      "text": { "value": "{color.yellow.900}", "type": "color" },
+      "icon": { "value": "{color.yellow.500}", "type": "color" }
+    },
+    "error": {
+      "background": { "value": "{color.red.50}", "type": "color" },
+      "border": { "value": "{color.red.500}", "type": "color" },
+      "text": { "value": "{color.red.900}", "type": "color" },
+      "icon": { "value": "{color.red.500}", "type": "color" }
+    },
+    "borderRadius": { "value": "{borderRadius.lg}", "type": "borderRadius" },
+    "padding": { "value": "{spacing.4}", "type": "spacing" }
+  }
+}

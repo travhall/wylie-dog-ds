@@ -19,11 +19,17 @@
   "scripts": {
     "build": "node style-dictionary.config.js && tsup",
     "dev": "node style-dictionary.config.js --watch",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "sync:figma": "node scripts/figma-sync.js",
+    "generate:types": "node scripts/generate-types.js",
+    "test:tokens": "node scripts/validate-tokens.js"
+  },
+  "dependencies": {
+    "culori": "^4.0.2"
   },
   "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
     "style-dictionary": "^4.0.1",
-    "tsup": "^8.0.2",
-    "@repo/typescript-config": "workspace:*"
+    "tsup": "^8.0.2"
   }
 }
