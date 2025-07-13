@@ -1,0 +1,24 @@
+{
+  "color.brand.primary": {
+    "value": "#0EA5E9",
+    "type": "color",
+    "description": "Primary brand color"
+  },
+  "color.brand.secondary": {
+    "value": "#64748B",
+    "type": "color",
+    "description": "Secondary brand color"
+  },
+  "color.success": {
+    "value": "#10B981",
+    "type": "color"
+  },
+  "color.warning": {
+    "value": "#F59E0B",
+    "type": "color"
+  },
+  "color.error": {
+    "value": "#EF4444",
+    "type": "color"
+  }
+}

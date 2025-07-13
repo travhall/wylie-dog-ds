@@ -1,0 +1,72 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Token Usage" />
+
+# Design Token Usage Guide
+
+## Using Tokens in CSS
+
+```css
+.my-component {
+  background-color: var(--color-blue-500);
+  padding: var(--spacing-4);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+}
+```
+
+## Component Tokens
+
+```css
+.button-primary {
+  background-color: var(--button-primary-background);
+  color: var(--button-primary-text);
+  padding: var(--button-primary-padding-y) var(--button-primary-padding-x);
+  border-radius: var(--button-primary-border-radius);
+}
+```
+
+## Using Tokens in JavaScript
+
+```typescript
+import { tokens } from '@wyliedog/tokens';
+
+const styles = {
+  backgroundColor: tokens.color.blue[500],
+  padding: tokens.spacing[4],
+};
+```
+
+## OKLCH Color Benefits
+
+- **Perceptual uniformity**: Equal changes = equal visual changes
+- **Better accessibility**: Consistent contrast ratios
+- **Wider gamut**: Support for P3 colors on modern displays
+- **Human readable**: Intuitive lightness, chroma, hue values
+
+## Browser Fallbacks
+
+All OKLCH colors include automatic browser fallbacks:
+
+```css
+:root {
+  --color-primary-500: #0ea5e9; /* fallback */
+  --color-primary-500: oklch(0.661 0.241 266.19); /* modern */
+}
+```
+
+## Token Reference Resolution
+
+Component tokens automatically resolve primitive token references:
+
+```json
+{
+  "button.primary.background": { "value": "{color.blue.500}" }
+}
+```
+
+Becomes:
+
+```css
+--button-primary-background: oklch(0.661 0.241 266.19);
+```
