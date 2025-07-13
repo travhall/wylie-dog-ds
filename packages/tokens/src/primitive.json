@@ -1,46 +1,46 @@
 {
   "color": {
     "blue": {
-      "50": { "value": "#f0f9ff", "type": "color" },
-      "100": { "value": "#e0f2fe", "type": "color" },
-      "200": { "value": "#bae6fd", "type": "color" },
-      "300": { "value": "#7dd3fc", "type": "color" },
-      "400": { "value": "#38bdf8", "type": "color" },
-      "500": { "value": "#0ea5e9", "type": "color" },
-      "600": { "value": "#0284c7", "type": "color" },
-      "700": { "value": "#0369a1", "type": "color" },
-      "800": { "value": "#075985", "type": "color" },
-      "900": { "value": "#0c4a6e", "type": "color" }
+      "50": { "value": "oklch(0.97 0.013 263.83)", "type": "color" },
+      "100": { "value": "oklch(0.943 0.032 264.33)", "type": "color" },
+      "200": { "value": "oklch(0.896 0.064 264.72)", "type": "color" },
+      "300": { "value": "oklch(0.824 0.129 264.89)", "type": "color" },
+      "400": { "value": "oklch(0.731 0.201 265.75)", "type": "color" },
+      "500": { "value": "oklch(0.661 0.241 266.19)", "type": "color" },
+      "600": { "value": "oklch(0.588 0.246 267.33)", "type": "color" },
+      "700": { "value": "oklch(0.518 0.228 268.34)", "type": "color" },
+      "800": { "value": "oklch(0.447 0.19 269.47)", "type": "color" },
+      "900": { "value": "oklch(0.395 0.151 270.17)", "type": "color" }
     },
     "slate": {
-      "50": { "value": "#f8fafc", "type": "color" },
-      "100": { "value": "#f1f5f9", "type": "color" },
-      "200": { "value": "#e2e8f0", "type": "color" },
-      "300": { "value": "#cbd5e1", "type": "color" },
-      "400": { "value": "#94a3b8", "type": "color" },
-      "500": { "value": "#64748b", "type": "color" },
-      "600": { "value": "#475569", "type": "color" },
-      "700": { "value": "#334155", "type": "color" },
-      "800": { "value": "#1e293b", "type": "color" },
-      "900": { "value": "#0f172a", "type": "color" }
+      "50": { "value": "oklch(0.984 0.003 247.86)", "type": "color" },
+      "100": { "value": "oklch(0.968 0.007 247.9)", "type": "color" },
+      "200": { "value": "oklch(0.929 0.013 255.51)", "type": "color" },
+      "300": { "value": "oklch(0.869 0.02 252.89)", "type": "color" },
+      "400": { "value": "oklch(0.711 0.035 256.79)", "type": "color" },
+      "500": { "value": "oklch(0.554 0.041 257.42)", "type": "color" },
+      "600": { "value": "oklch(0.446 0.037 257.28)", "type": "color" },
+      "700": { "value": "oklch(0.372 0.039 257.29)", "type": "color" },
+      "800": { "value": "oklch(0.279 0.035 260.03)", "type": "color" },
+      "900": { "value": "oklch(0.208 0.033 265.76)", "type": "color" }
     },
     "green": {
-      "50": { "value": "#f0fdf4", "type": "color" },
-      "500": { "value": "#22c55e", "type": "color" },
-      "900": { "value": "#14532d", "type": "color" }
+      "50": { "value": "oklch(0.98 0.02 149.57)", "type": "color" },
+      "500": { "value": "oklch(0.707 0.193 142.5)", "type": "color" },
+      "900": { "value": "oklch(0.322 0.107 155.72)", "type": "color" }
     },
     "yellow": {
-      "50": { "value": "#fefce8", "type": "color" },
-      "500": { "value": "#eab308", "type": "color" },
-      "900": { "value": "#713f12", "type": "color" }
+      "50": { "value": "oklch(0.988 0.024 107.89)", "type": "color" },
+      "500": { "value": "oklch(0.802 0.162 85.87)", "type": "color" },
+      "900": { "value": "oklch(0.467 0.11 73.67)", "type": "color" }
     },
     "red": {
-      "50": { "value": "#fef2f2", "type": "color" },
-      "500": { "value": "#ef4444", "type": "color" },
-      "900": { "value": "#7f1d1d", "type": "color" }
+      "50": { "value": "oklch(0.971 0.013 17.38)", "type": "color" },
+      "500": { "value": "oklch(0.637 0.237 25.33)", "type": "color" },
+      "900": { "value": "oklch(0.396 0.141 25.72)", "type": "color" }
     },
-    "white": { "value": "#ffffff", "type": "color" },
-    "black": { "value": "#000000", "type": "color" }
+    "white": { "value": "oklch(1 0 0)", "type": "color" },
+    "black": { "value": "oklch(0 0 0)", "type": "color" }
   },
   "spacing": {
     "0": { "value": "0", "type": "spacing" },
