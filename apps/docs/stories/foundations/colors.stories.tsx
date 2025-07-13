@@ -64,11 +64,11 @@ export const AllColors: Story = {
               <div key={shade} className="text-center">
                 <div 
                   className="w-12 h-12 rounded border border-gray-200"
-                  style={{ backgroundColor: value }}
+                  style={{ backgroundColor: `var(--color-${category}-${shade})` }}
                 />
                 <p className="text-xs mt-1 font-mono">{shade}</p>
-                <p className="text-xs text-gray-500 font-mono truncate" title={value}>
-                  {value.length > 8 ? value.substring(0, 8) + '...' : value}
+                <p className="text-xs text-gray-500 font-mono truncate">
+                  --color-{category}-{shade}
                 </p>
               </div>
             ))}

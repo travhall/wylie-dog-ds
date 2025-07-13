@@ -1,1 +1,4 @@
 @import "tailwindcss";
+
+/* Import design tokens */
+@import '../../../../packages/tokens/dist/tokens.css';
