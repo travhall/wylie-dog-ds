@@ -11,7 +11,9 @@
     "lint": "eslint ./stories/*.stories.tsx --max-warnings 0"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
     "@wyliedog/ui": "workspace:*",
+    "postcss": "^8.5.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.11"

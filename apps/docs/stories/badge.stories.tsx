@@ -1,18 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Badge } from 'ui/src/badge';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Badge } from "@wyliedog/ui/badge";
 
 const meta: Meta<typeof Badge> = {
-  title: 'Components/Badge',
+  title: "Components/Badge",
   component: Badge,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: { children: 'Badge' },
+  args: { children: "Badge" },
 };
 
 export const AllVariants: Story = {

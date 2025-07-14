@@ -1,11 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Card, CardContent, CardHeader, CardTitle } from 'ui/src/card';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
 
 const meta: Meta<typeof Card> = {
-  title: 'Components/Card',
+  title: "Components/Card",
   component: Card,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
 };
 
 export default meta;

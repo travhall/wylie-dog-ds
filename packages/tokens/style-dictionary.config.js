@@ -43,10 +43,28 @@ const sd = new StyleDictionary({
 sd.registerFormat({
   name: 'css/tailwind-theme',
   format: function(dictionary) {
-    return `@theme {\n${dictionary.allTokens.map(token => {
+    const colorTokens = [];
+    const otherTokens = [];
+    
+    dictionary.allTokens.forEach(token => {
       const name = token.path.join('-');
-      return `  --${name}: ${token.value};`;
-    }).join('\n')}\n}`;
+      
+      // Map color tokens to Tailwind utility format
+      if (token.type === 'color') {
+        if (token.path[0] === 'color') {
+          // Convert color.blue.500 -> --color-blue-500
+          colorTokens.push(`  --color-${token.path.slice(1).join('-')}: ${token.value};`);
+        } else {
+          // Keep other color tokens as-is for components
+          otherTokens.push(`  --${name}: ${token.value};`);
+        }
+      } else {
+        // Keep other tokens as-is
+        otherTokens.push(`  --${name}: ${token.value};`);
+      }
+    });
+    
+    return `@theme {\n${[...colorTokens, ...otherTokens].join('\n')}\n}`;
   }
 });
 

@@ -1,4 +1,13 @@
+@import "../../../packages/tokens/dist/theme.css";
 @import "tailwindcss";
 
-/* Import design tokens */
-@import '../../../../packages/tokens/dist/tokens.css';
+@theme {
+  /* CLAUDE: Mock tokens data - in real app, import from @wyliedog/tokens */
+  --color-blue-500: oklch(0.661 0.241 266.19);
+  --color-slate-100: oklch(0.968 0.007 247.9);
+  --color-slate-200: oklch(0.929 0.013 255.51);
+  --color-slate-300: oklch(0.869 0.02 252.89);
+  --color-slate-700: oklch(0.372 0.039 257.29);
+  --color-slate-900: oklch(0.208 0.033 265.76);
+  --color-white: oklch(1 0 0);
+}

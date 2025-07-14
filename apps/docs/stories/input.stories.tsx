@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Input } from 'ui/src/input';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Input } from "@wyliedog/ui/input";
 
 const meta: Meta<typeof Input> = {
-  title: 'Components/Input',
+  title: "Components/Input",
   component: Input,
-  parameters: { layout: 'centered' },
-  tags: ['autodocs'],
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: { placeholder: 'Enter text...' },
+  args: { placeholder: "Enter text..." },
 };
 
 export const Error: Story = {
-  args: { variant: 'error', placeholder: 'Error state' },
+  args: { variant: "error", placeholder: "Error state" },
 };
 
 export const AllSizes: Story = {
