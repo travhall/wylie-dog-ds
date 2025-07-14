@@ -10,108 +10,132 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-// CLAUDE: Mock tokens data - in real app, import from @wyliedog/tokens
-const colorTokens = {
-  blue: {
-    50: "oklch(0.97 0.013 263.83)",
-    100: "oklch(0.943 0.032 264.33)",
-    200: "oklch(0.896 0.064 264.72)",
-    300: "oklch(0.824 0.129 264.89)",
-    400: "oklch(0.731 0.201 265.75)",
-    500: "oklch(0.661 0.241 266.19)",
-    600: "oklch(0.588 0.246 267.33)",
-    700: "oklch(0.518 0.228 268.34)",
-    800: "oklch(0.447 0.19 269.47)",
-    900: "oklch(0.395 0.151 270.17)",
-  },
-  slate: {
-    50: "oklch(0.984 0.003 247.86)",
-    100: "oklch(0.968 0.007 247.9)",
-    200: "oklch(0.929 0.013 255.51)",
-    300: "oklch(0.869 0.02 252.89)",
-    400: "oklch(0.711 0.035 256.79)",
-    500: "oklch(0.554 0.041 257.42)",
-    600: "oklch(0.446 0.037 257.28)",
-    700: "oklch(0.372 0.039 257.29)",
-    800: "oklch(0.279 0.035 260.03)",
-    900: "oklch(0.208 0.033 265.76)",
-  },
-  green: {
-    50: "oklch(0.98 0.02 149.57)",
-    500: "oklch(0.707 0.193 142.5)",
-    900: "oklch(0.322 0.107 155.72)",
-  },
-  yellow: {
-    50: "oklch(0.988 0.024 107.89)",
-    500: "oklch(0.802 0.162 85.87)",
-    900: "oklch(0.467 0.11 73.67)",
-  },
-  red: {
-    50: "oklch(0.971 0.013 17.38)",
-    500: "oklch(0.637 0.237 25.33)",
-    900: "oklch(0.396 0.141 25.72)",
-  },
+// Real design tokens from our Tailwind config
+const colorCategories = {
+  primary: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900],
+  neutral: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900],
+  success: [100, 500, 700],
+  warning: [100, 500, 700],
+  error: [100, 500, 700],
 };
 
-export const AllColors: Story = {
+export const PrimaryColors: Story = {
   render: () => (
-    <div className="space-y-8">
-      {/* Test basic Tailwind */}
-
-      {Object.entries(colorTokens).map(([category, colors]) => (
-        <div key={category} className="space-y-4">
-          <h3 className="text-lg font-semibold capitalize">{category}</h3>
-          <div className="grid grid-cols-10 gap-2">
-            {Object.entries(colors).map(([shade, value]) => (
-              <div key={shade} className="text-center">
-                <div
-                  className="w-12 h-12 rounded border border-gray-200"
-                  style={{
-                    backgroundColor: `var(--color-${category}-${shade})`,
-                  }}
-                />
-                <p className="text-xs mt-1 font-mono">{shade}</p>
-                <p className="text-xs text-gray-500 font-mono truncate">
-                  --color-{category}-{shade}
-                </p>
-              </div>
-            ))}
+    <div className="space-y-4">
+      <h3 className="text-lg font-semibold">Primary Colors</h3>
+      <div className="grid grid-cols-10 gap-2">
+        {colorCategories.primary.map((shade) => (
+          <div key={shade} className="text-center">
+            <div 
+              className={`w-12 h-12 rounded border border-neutral-200 bg-primary-${shade}`}
+            />
+            <p className="text-xs mt-1 font-mono">{shade}</p>
+            <p className="text-xs text-neutral-500 font-mono">
+              bg-primary-{shade}
+            </p>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   ),
 };
 
-export const ComponentColors: Story = {
+export const NeutralColors: Story = {
+  render: () => (
+    <div className="space-y-4">
+      <h3 className="text-lg font-semibold">Neutral Colors</h3>
+      <div className="grid grid-cols-10 gap-2">
+        {colorCategories.neutral.map((shade) => (
+          <div key={shade} className="text-center">
+            <div 
+              className={`w-12 h-12 rounded border border-neutral-200 bg-neutral-${shade}`}
+            />
+            <p className="text-xs mt-1 font-mono">{shade}</p>
+            <p className="text-xs text-neutral-500 font-mono">
+              bg-neutral-{shade}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  ),
+};
+
+export const SemanticColors: Story = {
   render: () => (
     <div className="space-y-6">
+      <h3 className="text-lg font-semibold">Semantic Colors</h3>
+      
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Button Colors</h3>
-        <div className="flex gap-4">
-          <div className="bg-blue-500 text-white px-4 py-2 rounded">
-            Primary Button
-          </div>
-          <div className="bg-slate-100 text-slate-900 border border-slate-300 px-4 py-2 rounded">
-            Secondary Button
-          </div>
-          <div className="text-slate-700 hover:bg-slate-100 px-4 py-2 rounded">
-            Ghost Button
-          </div>
+        <h4 className="font-medium">Success</h4>
+        <div className="flex gap-2">
+          {colorCategories.success.map((shade) => (
+            <div key={shade} className="text-center">
+              <div className={`w-12 h-12 rounded border border-neutral-200 bg-success-${shade}`} />
+              <p className="text-xs mt-1 font-mono">{shade}</p>
+            </div>
+          ))}
         </div>
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Alert Colors</h3>
+        <h4 className="font-medium">Warning</h4>
+        <div className="flex gap-2">
+          {colorCategories.warning.map((shade) => (
+            <div key={shade} className="text-center">
+              <div className={`w-12 h-12 rounded border border-neutral-200 bg-warning-${shade}`} />
+              <p className="text-xs mt-1 font-mono">{shade}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h4 className="font-medium">Error</h4>
+        <div className="flex gap-2">
+          {colorCategories.error.map((shade) => (
+            <div key={shade} className="text-center">
+              <div className={`w-12 h-12 rounded border border-neutral-200 bg-error-${shade}`} />
+              <p className="text-xs mt-1 font-mono">{shade}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+export const ComponentColorExamples: Story = {
+  render: () => (
+    <div className="space-y-6">
+      <h3 className="text-lg font-semibold">Color Usage in Components</h3>
+      
+      <div className="space-y-4">
+        <h4 className="font-medium">Button Colors</h4>
+        <div className="flex gap-4">
+          <button className="bg-primary-500 text-white hover:bg-primary-600 px-4 py-2 rounded">
+            Primary Button
+          </button>
+          <button className="bg-neutral-200 text-neutral-900 hover:bg-neutral-300 px-4 py-2 rounded">
+            Secondary Button
+          </button>
+          <button className="border border-neutral-300 text-neutral-900 hover:bg-neutral-100 px-4 py-2 rounded">
+            Outline Button
+          </button>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h4 className="font-medium">Alert Colors</h4>
         <div className="space-y-2">
-          <div className="bg-green-50 border-l-4 border-green-500 p-4">
-            <p className="text-green-900">Success alert message</p>
+          <div className="bg-success-100 border-l-4 border-success-500 p-4 rounded">
+            <p className="text-success-700">Success: Operation completed successfully</p>
           </div>
-          <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4">
-            <p className="text-yellow-900">Warning alert message</p>
+          <div className="bg-warning-100 border-l-4 border-warning-500 p-4 rounded">
+            <p className="text-warning-700">Warning: Please review your inputs</p>
           </div>
-          <div className="bg-red-50 border-l-4 border-red-500 p-4">
-            <p className="text-red-900">Error alert message</p>
+          <div className="bg-error-100 border-l-4 border-error-500 p-4 rounded">
+            <p className="text-error-700">Error: Something went wrong</p>
           </div>
         </div>
       </div>
