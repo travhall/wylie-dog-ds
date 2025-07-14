@@ -11,10 +11,10 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
   ({ className, variant = 'default', ...props }, ref) => {
     const variantClasses = {
-      default: 'bg-blue-600 text-white',
-      secondary: 'bg-gray-100 text-gray-900',
-      destructive: 'bg-red-100 text-red-800',
-      outline: 'border border-gray-300 text-gray-900',
+      default: 'bg-primary-500 text-white',
+      secondary: 'bg-neutral-100 text-neutral-900',
+      destructive: 'bg-error-100 text-error-700',
+      outline: 'border border-neutral-300 text-neutral-900',
     };
 
     return (

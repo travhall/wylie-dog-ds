@@ -1,13 +1,27 @@
-@import "../../../packages/tokens/dist/theme.css";
 @import "tailwindcss";
+@import "@repo/tailwind-config";
 
-@theme {
-  /* CLAUDE: Mock tokens data - in real app, import from @wyliedog/tokens */
-  --color-blue-500: oklch(0.661 0.241 266.19);
-  --color-slate-100: oklch(0.968 0.007 247.9);
-  --color-slate-200: oklch(0.929 0.013 255.51);
-  --color-slate-300: oklch(0.869 0.02 252.89);
-  --color-slate-700: oklch(0.372 0.039 257.29);
-  --color-slate-900: oklch(0.208 0.033 265.76);
-  --color-white: oklch(1 0 0);
+/* App-specific styles */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }

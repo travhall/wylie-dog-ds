@@ -12,8 +12,8 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, variant = 'default', size = 'md', type = 'text', ...props }, ref) => {
     const variantClasses = {
-      default: 'border-gray-300 focus:border-blue-500 focus:ring-blue-500',
-      error: 'border-red-300 focus:border-red-500 focus:ring-red-500',
+      default: 'border-neutral-300 focus:border-primary-500 focus:ring-primary-500',
+      error: 'border-error-500 focus:border-error-500 focus:ring-error-500',
     };
 
     const sizeClasses = {
@@ -28,7 +28,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         type={type}
         className={cn(
           "flex w-full rounded-md border bg-white px-3 py-2 transition-colors",
-          "placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2",
+          "placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-offset-2",
           "disabled:cursor-not-allowed disabled:opacity-50",
           variantClasses[variant],
           sizeClasses[size],

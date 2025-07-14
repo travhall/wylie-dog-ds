@@ -1,0 +1,4 @@
+/* UI Package Styles - Import from shared Tailwind config */
+@import "@repo/tailwind-config";
+
+/* Additional component-specific styles can go here */
