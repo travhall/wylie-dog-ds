@@ -65,41 +65,6 @@ export const tokens = {
   shadow: shadowScale
 };
 `;
-
-export const colorSystem = ${JSON.stringify(colorSystem, null, 2)} as const;
-
-export const spacingScale = ${JSON.stringify(spacingScale, null, 2)} as const;
-
-export const shadowScale = ${JSON.stringify(shadowScale, null, 2)} as const;
-
-export const flatTokens = {
-  // Colors
-  ...Object.entries(colorSystem).reduce((acc, [colorName, shades]) => {
-    Object.entries(shades).forEach(([shade, value]) => {
-      acc[\`color-\${colorName}-\${shade}\`] = value;
-    });
-    return acc;
-  }, {} as Record<string, string>),
-  
-  // Spacing
-  ...Object.entries(spacingScale).reduce((acc, [key, value]) => {
-    acc[\`spacing-\${key}\`] = value;
-    return acc;
-  }, {} as Record<string, string>),
-  
-  // Shadows
-  ...Object.entries(shadowScale).reduce((acc, [key, value]) => {
-    acc[\`shadow-\${key}\`] = value;
-    return acc;
-  }, {} as Record<string, string>)
-};
-
-export const tokens = {
-  color: colorSystem,
-  spacing: spacingScale,
-  shadow: shadowScale
-};
-`;
   }
 });
 
