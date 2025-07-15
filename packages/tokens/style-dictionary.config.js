@@ -134,16 +134,17 @@ export const tokens = {
 // Build all platforms
 await sd.buildAllPlatforms();
 
-// Generate TypeScript tokens file
-const tsTokens = sd.formatPlatform({
-  transformGroup: 'js',
-  files: [{
-    destination: 'tokens.generated.ts',
-    format: 'typescript/tokens'
-  }]
+// Generate TypeScript tokens file manually
+const dictionary = sd.exportPlatform({
+  transformGroup: 'js'
+});
+
+const tsContent = sd.formatters['typescript/tokens']({ 
+  allTokens: dictionary.allTokens,
+  tokens: dictionary.tokens 
 });
 
 // Write the TypeScript file
-writeFileSync('src/tokens.generated.ts', tsTokens.files[0].contents);
+writeFileSync('src/tokens.generated.ts', tsContent);
 
 console.log('✅ Tokens built successfully');
