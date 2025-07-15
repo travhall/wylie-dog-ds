@@ -1,47 +1,8 @@
 import StyleDictionary from 'style-dictionary';
 import { writeFileSync } from 'fs';
 
-const sd = new StyleDictionary({
-  source: ['src/**/*.json'],
-  platforms: {
-    css: {
-      transformGroup: 'css',
-      buildPath: 'dist/',
-      files: [{
-        destination: 'tokens.css',
-        format: 'css/variables',
-        selector: ':root'
-      }]
-    },
-    tailwindTheme: {
-      transformGroup: 'css',
-      buildPath: 'dist/',
-      files: [{
-        destination: 'theme.css',
-        format: 'css/tailwind-theme'
-      }]
-    },
-    js: {
-      transformGroup: 'js',
-      buildPath: 'dist/',
-      files: [{
-        destination: 'tokens.js',
-        format: 'javascript/module'
-      }]
-    },
-    tailwind: {
-      transformGroup: 'js',
-      buildPath: 'dist/',
-      files: [{
-        destination: 'tailwind.js',
-        format: 'javascript/module-flat'
-      }]
-    }
-  }
-});
-
 // Custom format for Tailwind 4.x @theme directive
-sd.registerFormat({
+StyleDictionary.registerFormat({
   name: 'css/tailwind-theme',
   format: function(dictionary) {
     const colorTokens = [];
@@ -70,7 +31,7 @@ sd.registerFormat({
 });
 
 // Custom format to generate TypeScript tokens
-sd.registerFormat({
+StyleDictionary.registerFormat({
   name: 'typescript/tokens',
   format: function(dictionary) {
     const colorSystem = {};
@@ -131,20 +92,54 @@ export const tokens = {
   }
 });
 
+const sd = new StyleDictionary({
+  source: ['src/**/*.json'],
+  platforms: {
+    css: {
+      transformGroup: 'css',
+      buildPath: 'dist/',
+      files: [{
+        destination: 'tokens.css',
+        format: 'css/variables',
+        selector: ':root'
+      }]
+    },
+    tailwindTheme: {
+      transformGroup: 'css',
+      buildPath: 'dist/',
+      files: [{
+        destination: 'theme.css',
+        format: 'css/tailwind-theme'
+      }]
+    },
+    js: {
+      transformGroup: 'js',
+      buildPath: 'dist/',
+      files: [{
+        destination: 'tokens.js',
+        format: 'javascript/module'
+      }]
+    },
+    tailwind: {
+      transformGroup: 'js',
+      buildPath: 'dist/',
+      files: [{
+        destination: 'tailwind.js',
+        format: 'javascript/module-flat'
+      }]
+    },
+    typescript: {
+      transformGroup: 'js',
+      buildPath: 'src/',
+      files: [{
+        destination: 'tokens.generated.ts',
+        format: 'typescript/tokens'
+      }]
+    }
+  }
+});
+
 // Build all platforms
 await sd.buildAllPlatforms();
-
-// Generate TypeScript tokens file manually
-const dictionary = sd.exportPlatform({
-  transformGroup: 'js'
-});
-
-const tsContent = sd.formatters['typescript/tokens']({ 
-  allTokens: dictionary.allTokens,
-  tokens: dictionary.tokens 
-});
-
-// Write the TypeScript file
-writeFileSync('src/tokens.generated.ts', tsContent);
 
 console.log('✅ Tokens built successfully');
