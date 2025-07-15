@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "style-dictionary": "^4.0.1",
-    "tsup": "^8.0.2"
+    "style-dictionary": "^5.0.1",
+    "tsup": "^8.5.0"
   }
 }
