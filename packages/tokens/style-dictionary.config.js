@@ -1,51 +1,23 @@
 import StyleDictionary from 'style-dictionary';
-import { writeFileSync } from 'fs';
 
-// Custom format for Tailwind 4.x @theme directive
-StyleDictionary.registerFormat({
-  name: 'css/tailwind-theme',
-  format: function(dictionary) {
-    const colorTokens = [];
-    const otherTokens = [];
-    
-    dictionary.allTokens.forEach(token => {
-      const name = token.path.join('-');
-      
-      // Map color tokens to Tailwind utility format
-      if (token.type === 'color') {
-        if (token.path[0] === 'color') {
-          // Convert color.blue.500 -> --color-blue-500
-          colorTokens.push(`  --color-${token.path.slice(1).join('-')}: ${token.value};`);
-        } else {
-          // Keep other color tokens as-is for components
-          otherTokens.push(`  --${name}: ${token.value};`);
-        }
-      } else {
-        // Keep other tokens as-is
-        otherTokens.push(`  --${name}: ${token.value};`);
-      }
-    });
-    
-    return `@theme {\n${[...colorTokens, ...otherTokens].join('\n')}\n}`;
-  }
-});
-
-// Custom format for TypeScript generation - DYNAMIC VERSION
+// Custom format for TypeScript generation with proper token resolution
 StyleDictionary.registerFormat({
   name: 'typescript/tokens',
   format: function(dictionary) {
-    // Group tokens by category dynamically
+    // Build color system from resolved tokens
     const colorSystem = {};
     const spacingScale = {};
     const shadowScale = {};
     
+    // Process all resolved tokens
     dictionary.allTokens.forEach(token => {
       if (token.type === 'color' && token.path[0] === 'color') {
-        // Handle semantic colors (primary, neutral, success, etc.)
+        // Handle semantic colors that reference primitive colors
         const [, colorName, shade] = token.path;
         if (!colorSystem[colorName]) {
           colorSystem[colorName] = {};
         }
+        // Use the resolved value, not the reference
         colorSystem[colorName][shade] = token.value;
       } else if (token.type === 'spacing') {
         const spacingKey = token.path[token.path.length - 1];
@@ -99,6 +71,14 @@ export const tokens = {
 const sd = new StyleDictionary({
   source: ['src/**/*.json'],
   platforms: {
+    typescript: {
+      transformGroup: 'js', // This resolves token references
+      buildPath: 'src/',
+      files: [{
+        destination: 'tokens.generated.ts',
+        format: 'typescript/tokens'
+      }]
+    },
     css: {
       transformGroup: 'css',
       buildPath: 'dist/',
@@ -108,36 +88,12 @@ const sd = new StyleDictionary({
         selector: ':root'
       }]
     },
-    tailwindTheme: {
-      transformGroup: 'css',
-      buildPath: 'dist/',
-      files: [{
-        destination: 'theme.css',
-        format: 'css/tailwind-theme'
-      }]
-    },
     js: {
       transformGroup: 'js',
       buildPath: 'dist/',
       files: [{
         destination: 'tokens.js',
         format: 'javascript/module'
-      }]
-    },
-    typescript: {
-      transformGroup: 'js',
-      buildPath: 'src/',
-      files: [{
-        destination: 'tokens.generated.ts',
-        format: 'typescript/tokens'
-      }]
-    },
-    tailwind: {
-      transformGroup: 'js',
-      buildPath: 'dist/',
-      files: [{
-        destination: 'tailwind.js',
-        format: 'javascript/module-flat'
       }]
     }
   }
@@ -147,7 +103,7 @@ const sd = new StyleDictionary({
 try {
   await sd.buildAllPlatforms();
   console.log('✅ Tokens built successfully');
-  console.log('✅ TypeScript tokens generated dynamically');
+  console.log('✅ TypeScript tokens generated with resolved references');
 } catch (error) {
   console.error('❌ Token build failed:', error.message);
   process.exit(1);
