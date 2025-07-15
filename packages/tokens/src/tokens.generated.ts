@@ -2,7 +2,7 @@
 // DO NOT EDIT MANUALLY
 
 export const colorSystem = {
-  primary: {
+  "primary": {
     "50": "oklch(0.97 0.013 263.83)",
     "100": "oklch(0.943 0.032 264.33)",
     "200": "oklch(0.896 0.064 264.72)",
@@ -15,7 +15,7 @@ export const colorSystem = {
     "900": "oklch(0.395 0.151 270.17)",
     "950": "oklch(0.258 0.092 266.042)"
   },
-  neutral: {
+  "neutral": {
     "50": "oklch(0.984 0.003 247.86)",
     "100": "oklch(0.968 0.007 247.9)",
     "200": "oklch(0.929 0.013 255.51)",
@@ -28,7 +28,7 @@ export const colorSystem = {
     "900": "oklch(0.208 0.033 265.76)",
     "950": "oklch(0.129 0.042 264.695)"
   },
-  success: {
+  "success": {
     "50": "oklch(0.98 0.02 149.57)",
     "100": "oklch(0.955 0.042 154.72)",
     "200": "oklch(0.906 0.085 155.826)",
@@ -41,7 +41,7 @@ export const colorSystem = {
     "900": "oklch(0.322 0.107 155.72)",
     "950": "oklch(0.231 0.057 163.778)"
   },
-  warning: {
+  "warning": {
     "50": "oklch(0.988 0.024 107.89)",
     "100": "oklch(0.981 0.021 83.67)",
     "200": "oklch(0.954 0.074 85.164)",
@@ -54,7 +54,7 @@ export const colorSystem = {
     "900": "oklch(0.467 0.11 73.67)",
     "950": "oklch(0.266 0.063 66.259)"
   },
-  error: {
+  "error": {
     "50": "oklch(0.971 0.013 17.38)",
     "100": "oklch(0.936 0.032 17.717)",
     "200": "oklch(0.885 0.062 18.334)",
@@ -71,8 +71,6 @@ export const colorSystem = {
 
 export const spacingScale = {
   "0": "0",
-  "px": "1px",
-  "0.5": "0.125rem",
   "1": "0.25rem",
   "2": "0.5rem",
   "3": "0.75rem",
@@ -82,7 +80,9 @@ export const spacingScale = {
   "12": "3rem",
   "16": "4rem",
   "20": "5rem",
-  "24": "6rem"
+  "24": "6rem",
+  "px": "1px",
+  "0.5": "0.125rem"
 } as const;
 
 export const shadowScale = {
