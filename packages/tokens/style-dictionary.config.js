@@ -75,6 +75,14 @@ export const tokens = {
 const sd = new StyleDictionary({
   source: ['src/**/*.json'],
   platforms: {
+    debug: {
+      transformGroup: 'js',
+      buildPath: 'src/',
+      files: [{
+        destination: 'debug-tokens.json',
+        format: 'json'
+      }]
+    },
     typescript: {
       transformGroup: 'js',
       buildPath: 'src/',
