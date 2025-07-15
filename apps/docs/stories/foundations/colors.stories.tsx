@@ -25,7 +25,9 @@ const ColorPalette = ({
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) {
+    return <div>Loading...</div>;
+  }
 
   const shadeEntries = Object.entries(shades).sort(([a], [b]) => {
     // Sort numerically, with special handling for non-numeric keys
@@ -118,7 +120,9 @@ export const TokenInspector: Story = {
       setMounted(true);
     }, []);
 
-    if (!mounted) return null;
+    if (!mounted) {
+      return <div>Loading...</div>;
+    }
 
     return (
       <div className="space-y-6">
