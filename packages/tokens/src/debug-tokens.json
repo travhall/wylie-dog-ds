@@ -10,7 +10,9 @@
         "original": {
           "value": "{color.blue.500}",
           "type": "color",
-          "key": "{button.primary.background}"
+          "key": "{button.primary.background}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonPrimaryBackground",
         "attributes": {
@@ -33,7 +35,9 @@
         "original": {
           "value": "{color.blue.600}",
           "type": "color",
-          "key": "{button.primary.backgroundHover}"
+          "key": "{button.primary.backgroundHover}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonPrimaryBackgroundHover",
         "attributes": {
@@ -56,7 +60,9 @@
         "original": {
           "value": "{color.blue.700}",
           "type": "color",
-          "key": "{button.primary.backgroundActive}"
+          "key": "{button.primary.backgroundActive}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonPrimaryBackgroundActive",
         "attributes": {
@@ -79,7 +85,9 @@
         "original": {
           "value": "{color.white}",
           "type": "color",
-          "key": "{button.primary.text}"
+          "key": "{button.primary.text}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonPrimaryText",
         "attributes": {
@@ -102,7 +110,9 @@
         "original": {
           "value": "{color.blue.500}",
           "type": "color",
-          "key": "{button.primary.border}"
+          "key": "{button.primary.border}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonPrimaryBorder",
         "attributes": {
@@ -125,7 +135,9 @@
         "original": {
           "value": "{borderRadius.md}",
           "type": "borderRadius",
-          "key": "{button.primary.borderRadius}"
+          "key": "{button.primary.borderRadius}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonPrimaryBorderRadius",
         "attributes": {
@@ -148,7 +160,9 @@
         "original": {
           "value": "{spacing.4}",
           "type": "spacing",
-          "key": "{button.primary.paddingX}"
+          "key": "{button.primary.paddingX}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonPrimaryPaddingX",
         "attributes": {
@@ -171,7 +185,9 @@
         "original": {
           "value": "{spacing.2}",
           "type": "spacing",
-          "key": "{button.primary.paddingY}"
+          "key": "{button.primary.paddingY}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonPrimaryPaddingY",
         "attributes": {
@@ -194,7 +210,9 @@
         "original": {
           "value": "{shadow.sm}",
           "type": "boxShadow",
-          "key": "{button.primary.shadow}"
+          "key": "{button.primary.shadow}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonPrimaryShadow",
         "attributes": {
@@ -219,7 +237,9 @@
         "original": {
           "value": "{color.slate.100}",
           "type": "color",
-          "key": "{button.secondary.background}"
+          "key": "{button.secondary.background}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonSecondaryBackground",
         "attributes": {
@@ -242,7 +262,9 @@
         "original": {
           "value": "{color.slate.200}",
           "type": "color",
-          "key": "{button.secondary.backgroundHover}"
+          "key": "{button.secondary.backgroundHover}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonSecondaryBackgroundHover",
         "attributes": {
@@ -265,7 +287,9 @@
         "original": {
           "value": "{color.slate.300}",
           "type": "color",
-          "key": "{button.secondary.backgroundActive}"
+          "key": "{button.secondary.backgroundActive}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonSecondaryBackgroundActive",
         "attributes": {
@@ -288,7 +312,9 @@
         "original": {
           "value": "{color.slate.900}",
           "type": "color",
-          "key": "{button.secondary.text}"
+          "key": "{button.secondary.text}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonSecondaryText",
         "attributes": {
@@ -311,7 +337,9 @@
         "original": {
           "value": "{color.slate.300}",
           "type": "color",
-          "key": "{button.secondary.border}"
+          "key": "{button.secondary.border}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonSecondaryBorder",
         "attributes": {
@@ -334,7 +362,9 @@
         "original": {
           "value": "{borderRadius.md}",
           "type": "borderRadius",
-          "key": "{button.secondary.borderRadius}"
+          "key": "{button.secondary.borderRadius}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonSecondaryBorderRadius",
         "attributes": {
@@ -357,7 +387,9 @@
         "original": {
           "value": "{spacing.4}",
           "type": "spacing",
-          "key": "{button.secondary.paddingX}"
+          "key": "{button.secondary.paddingX}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonSecondaryPaddingX",
         "attributes": {
@@ -380,7 +412,9 @@
         "original": {
           "value": "{spacing.2}",
           "type": "spacing",
-          "key": "{button.secondary.paddingY}"
+          "key": "{button.secondary.paddingY}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonSecondaryPaddingY",
         "attributes": {
@@ -403,7 +437,9 @@
         "original": {
           "value": "{shadow.sm}",
           "type": "boxShadow",
-          "key": "{button.secondary.shadow}"
+          "key": "{button.secondary.shadow}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonSecondaryShadow",
         "attributes": {
@@ -428,7 +464,9 @@
         "original": {
           "value": "transparent",
           "type": "color",
-          "key": "{button.ghost.background}"
+          "key": "{button.ghost.background}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonGhostBackground",
         "attributes": {
@@ -451,7 +489,9 @@
         "original": {
           "value": "{color.slate.100}",
           "type": "color",
-          "key": "{button.ghost.backgroundHover}"
+          "key": "{button.ghost.backgroundHover}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonGhostBackgroundHover",
         "attributes": {
@@ -474,7 +514,9 @@
         "original": {
           "value": "{color.slate.200}",
           "type": "color",
-          "key": "{button.ghost.backgroundActive}"
+          "key": "{button.ghost.backgroundActive}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonGhostBackgroundActive",
         "attributes": {
@@ -497,7 +539,9 @@
         "original": {
           "value": "{color.slate.700}",
           "type": "color",
-          "key": "{button.ghost.text}"
+          "key": "{button.ghost.text}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonGhostText",
         "attributes": {
@@ -520,7 +564,9 @@
         "original": {
           "value": "transparent",
           "type": "color",
-          "key": "{button.ghost.border}"
+          "key": "{button.ghost.border}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonGhostBorder",
         "attributes": {
@@ -543,7 +589,9 @@
         "original": {
           "value": "{borderRadius.md}",
           "type": "borderRadius",
-          "key": "{button.ghost.borderRadius}"
+          "key": "{button.ghost.borderRadius}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonGhostBorderRadius",
         "attributes": {
@@ -566,7 +614,9 @@
         "original": {
           "value": "{spacing.4}",
           "type": "spacing",
-          "key": "{button.ghost.paddingX}"
+          "key": "{button.ghost.paddingX}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonGhostPaddingX",
         "attributes": {
@@ -589,7 +639,9 @@
         "original": {
           "value": "{spacing.2}",
           "type": "spacing",
-          "key": "{button.ghost.paddingY}"
+          "key": "{button.ghost.paddingY}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonGhostPaddingY",
         "attributes": {
@@ -612,7 +664,9 @@
         "original": {
           "value": "none",
           "type": "boxShadow",
-          "key": "{button.ghost.shadow}"
+          "key": "{button.ghost.shadow}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "ButtonGhostShadow",
         "attributes": {
@@ -638,7 +692,9 @@
       "original": {
         "value": "{color.white}",
         "type": "color",
-        "key": "{card.background}"
+        "key": "{card.background}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "CardBackground",
       "attributes": {
@@ -659,7 +715,9 @@
       "original": {
         "value": "{color.slate.200}",
         "type": "color",
-        "key": "{card.border}"
+        "key": "{card.border}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "CardBorder",
       "attributes": {
@@ -680,7 +738,9 @@
       "original": {
         "value": "{borderRadius.lg}",
         "type": "borderRadius",
-        "key": "{card.borderRadius}"
+        "key": "{card.borderRadius}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "CardBorderRadius",
       "attributes": {
@@ -701,7 +761,9 @@
       "original": {
         "value": "{shadow.md}",
         "type": "boxShadow",
-        "key": "{card.shadow}"
+        "key": "{card.shadow}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "CardShadow",
       "attributes": {
@@ -722,7 +784,9 @@
       "original": {
         "value": "{spacing.6}",
         "type": "spacing",
-        "key": "{card.padding}"
+        "key": "{card.padding}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "CardPadding",
       "attributes": {
@@ -745,7 +809,9 @@
       "original": {
         "value": "{color.white}",
         "type": "color",
-        "key": "{input.background}"
+        "key": "{input.background}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "InputBackground",
       "attributes": {
@@ -766,7 +832,9 @@
       "original": {
         "value": "{color.slate.50}",
         "type": "color",
-        "key": "{input.backgroundDisabled}"
+        "key": "{input.backgroundDisabled}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "InputBackgroundDisabled",
       "attributes": {
@@ -787,7 +855,9 @@
       "original": {
         "value": "{color.slate.300}",
         "type": "color",
-        "key": "{input.border}"
+        "key": "{input.border}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "InputBorder",
       "attributes": {
@@ -808,7 +878,9 @@
       "original": {
         "value": "{color.blue.500}",
         "type": "color",
-        "key": "{input.borderFocus}"
+        "key": "{input.borderFocus}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "InputBorderFocus",
       "attributes": {
@@ -829,7 +901,9 @@
       "original": {
         "value": "{color.red.500}",
         "type": "color",
-        "key": "{input.borderError}"
+        "key": "{input.borderError}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "InputBorderError",
       "attributes": {
@@ -850,7 +924,9 @@
       "original": {
         "value": "{color.slate.900}",
         "type": "color",
-        "key": "{input.text}"
+        "key": "{input.text}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "InputText",
       "attributes": {
@@ -871,7 +947,9 @@
       "original": {
         "value": "{color.slate.500}",
         "type": "color",
-        "key": "{input.textPlaceholder}"
+        "key": "{input.textPlaceholder}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "InputTextPlaceholder",
       "attributes": {
@@ -892,7 +970,9 @@
       "original": {
         "value": "{borderRadius.md}",
         "type": "borderRadius",
-        "key": "{input.borderRadius}"
+        "key": "{input.borderRadius}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "InputBorderRadius",
       "attributes": {
@@ -913,7 +993,9 @@
       "original": {
         "value": "{spacing.3}",
         "type": "spacing",
-        "key": "{input.paddingX}"
+        "key": "{input.paddingX}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "InputPaddingX",
       "attributes": {
@@ -934,7 +1016,9 @@
       "original": {
         "value": "{spacing.2}",
         "type": "spacing",
-        "key": "{input.paddingY}"
+        "key": "{input.paddingY}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "InputPaddingY",
       "attributes": {
@@ -958,7 +1042,9 @@
         "original": {
           "value": "{color.green.50}",
           "type": "color",
-          "key": "{alert.success.background}"
+          "key": "{alert.success.background}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertSuccessBackground",
         "attributes": {
@@ -981,7 +1067,9 @@
         "original": {
           "value": "{color.green.500}",
           "type": "color",
-          "key": "{alert.success.border}"
+          "key": "{alert.success.border}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertSuccessBorder",
         "attributes": {
@@ -1004,7 +1092,9 @@
         "original": {
           "value": "{color.green.900}",
           "type": "color",
-          "key": "{alert.success.text}"
+          "key": "{alert.success.text}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertSuccessText",
         "attributes": {
@@ -1027,7 +1117,9 @@
         "original": {
           "value": "{color.green.500}",
           "type": "color",
-          "key": "{alert.success.icon}"
+          "key": "{alert.success.icon}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertSuccessIcon",
         "attributes": {
@@ -1052,7 +1144,9 @@
         "original": {
           "value": "{color.yellow.50}",
           "type": "color",
-          "key": "{alert.warning.background}"
+          "key": "{alert.warning.background}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertWarningBackground",
         "attributes": {
@@ -1075,7 +1169,9 @@
         "original": {
           "value": "{color.yellow.500}",
           "type": "color",
-          "key": "{alert.warning.border}"
+          "key": "{alert.warning.border}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertWarningBorder",
         "attributes": {
@@ -1098,7 +1194,9 @@
         "original": {
           "value": "{color.yellow.900}",
           "type": "color",
-          "key": "{alert.warning.text}"
+          "key": "{alert.warning.text}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertWarningText",
         "attributes": {
@@ -1121,7 +1219,9 @@
         "original": {
           "value": "{color.yellow.500}",
           "type": "color",
-          "key": "{alert.warning.icon}"
+          "key": "{alert.warning.icon}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertWarningIcon",
         "attributes": {
@@ -1146,7 +1246,9 @@
         "original": {
           "value": "{color.red.50}",
           "type": "color",
-          "key": "{alert.error.background}"
+          "key": "{alert.error.background}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertErrorBackground",
         "attributes": {
@@ -1169,7 +1271,9 @@
         "original": {
           "value": "{color.red.500}",
           "type": "color",
-          "key": "{alert.error.border}"
+          "key": "{alert.error.border}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertErrorBorder",
         "attributes": {
@@ -1192,7 +1296,9 @@
         "original": {
           "value": "{color.red.900}",
           "type": "color",
-          "key": "{alert.error.text}"
+          "key": "{alert.error.text}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertErrorText",
         "attributes": {
@@ -1215,7 +1321,9 @@
         "original": {
           "value": "{color.red.500}",
           "type": "color",
-          "key": "{alert.error.icon}"
+          "key": "{alert.error.icon}",
+          "filePath": "src/debug-tokens.json",
+          "isSource": true
         },
         "name": "AlertErrorIcon",
         "attributes": {
@@ -1239,7 +1347,9 @@
       "original": {
         "value": "{borderRadius.lg}",
         "type": "borderRadius",
-        "key": "{alert.borderRadius}"
+        "key": "{alert.borderRadius}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "AlertBorderRadius",
       "attributes": {
@@ -1260,7 +1370,9 @@
       "original": {
         "value": "{spacing.4}",
         "type": "spacing",
-        "key": "{alert.padding}"
+        "key": "{alert.padding}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "AlertPadding",
       "attributes": {
@@ -4434,7 +4546,9 @@
           "sans-serif"
         ],
         "type": "fontFamily",
-        "key": "{fontFamily.sans}"
+        "key": "{fontFamily.sans}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "FontFamilySans",
       "attributes": {
@@ -4461,7 +4575,9 @@
           "monospace"
         ],
         "type": "fontFamily",
-        "key": "{fontFamily.mono}"
+        "key": "{fontFamily.mono}",
+        "filePath": "src/debug-tokens.json",
+        "isSource": true
       },
       "name": "FontFamilyMono",
       "attributes": {

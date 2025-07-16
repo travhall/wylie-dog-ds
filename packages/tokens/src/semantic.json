@@ -80,11 +80,11 @@
     }
   },
   "spacing": {
-    "xs": { "value": "{spacing.1}", "type": "spacing" },
-    "sm": { "value": "{spacing.2}", "type": "spacing" },
-    "md": { "value": "{spacing.4}", "type": "spacing" },
-    "lg": { "value": "{spacing.6}", "type": "spacing" },
-    "xl": { "value": "{spacing.8}", "type": "spacing" }
+    "xs": { "value": "{spacing.sm}", "type": "spacing" },
+    "sm": { "value": "{spacing.md}", "type": "spacing" },
+    "md": { "value": "{spacing.xl}", "type": "spacing" },
+    "lg": { "value": "{spacing.2xl}", "type": "spacing" },
+    "xl": { "value": "{spacing.3xl}", "type": "spacing" }
   },
   "radius": {
     "sm": { "value": "{borderRadius.sm}", "type": "borderRadius" },

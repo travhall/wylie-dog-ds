@@ -7,8 +7,8 @@
       "text": { "value": "{color.white}", "type": "color" },
       "border": { "value": "{color.blue.500}", "type": "color" },
       "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
-      "paddingX": { "value": "{spacing.4}", "type": "spacing" },
-      "paddingY": { "value": "{spacing.2}", "type": "spacing" },
+      "paddingX": { "value": "{spacing.xl}", "type": "spacing" },
+      "paddingY": { "value": "{spacing.md}", "type": "spacing" },
       "shadow": { "value": "{shadow.sm}", "type": "boxShadow" }
     },
     "secondary": {
@@ -18,8 +18,8 @@
       "text": { "value": "{color.slate.900}", "type": "color" },
       "border": { "value": "{color.slate.300}", "type": "color" },
       "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
-      "paddingX": { "value": "{spacing.4}", "type": "spacing" },
-      "paddingY": { "value": "{spacing.2}", "type": "spacing" },
+      "paddingX": { "value": "{spacing.xl}", "type": "spacing" },
+      "paddingY": { "value": "{spacing.md}", "type": "spacing" },
       "shadow": { "value": "{shadow.sm}", "type": "boxShadow" }
     },
     "ghost": {
@@ -29,8 +29,8 @@
       "text": { "value": "{color.slate.700}", "type": "color" },
       "border": { "value": "transparent", "type": "color" },
       "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
-      "paddingX": { "value": "{spacing.4}", "type": "spacing" },
-      "paddingY": { "value": "{spacing.2}", "type": "spacing" },
+      "paddingX": { "value": "{spacing.xl}", "type": "spacing" },
+      "paddingY": { "value": "{spacing.md}", "type": "spacing" },
       "shadow": { "value": "none", "type": "boxShadow" }
     }
   },
@@ -50,8 +50,8 @@
     "text": { "value": "{color.slate.900}", "type": "color" },
     "textPlaceholder": { "value": "{color.slate.500}", "type": "color" },
     "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
-    "paddingX": { "value": "{spacing.3}", "type": "spacing" },
-    "paddingY": { "value": "{spacing.2}", "type": "spacing" }
+    "paddingX": { "value": "{spacing.lg}", "type": "spacing" },
+    "paddingY": { "value": "{spacing.md}", "type": "spacing" }
   },
   "alert": {
     "success": {

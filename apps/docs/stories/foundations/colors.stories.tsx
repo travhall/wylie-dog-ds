@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useEffect, useState } from "react";
-import { colorSystem, spacingScale, shadowScale } from "@wyliedog/tokens";
+import { color, spacing, shadow } from "@wyliedog/tokens";
 
 const meta: Meta = {
   title: "Foundations/Design Tokens/Colors",
@@ -71,7 +71,7 @@ export const AllColors: Story = {
         </p>
       </div>
 
-      {Object.entries(colorSystem).map(([colorName, shades]) => (
+      {Object.entries(color).map(([colorName, shades]) => (
         <ColorPalette key={colorName} colorName={colorName} shades={shades} />
       ))}
     </div>
@@ -135,7 +135,7 @@ export const TokenInspector: Story = {
           <div className="space-y-3">
             <h4 className="font-medium">Color Tokens</h4>
             <div className="bg-neutral-50 p-3 rounded text-xs font-mono max-h-40 overflow-y-auto">
-              {Object.entries(colorSystem).map(([colorName, shades]) => (
+              {Object.entries(color).map(([colorName, shades]) => (
                 <div key={colorName} className="mb-2">
                   <div className="font-semibold text-neutral-700">{colorName}:</div>
                   {Object.entries(shades).slice(0, 3).map(([shade, value]) => (
@@ -156,7 +156,7 @@ export const TokenInspector: Story = {
           <div className="space-y-3">
             <h4 className="font-medium">Spacing Tokens</h4>
             <div className="bg-neutral-50 p-3 rounded text-xs font-mono max-h-40 overflow-y-auto">
-              {Object.entries(spacingScale).map(([key, value]) => (
+              {Object.entries(spacing).map(([key, value]) => (
                 <div key={key} className="text-neutral-600">
                   {key}: {value}
                 </div>
@@ -167,7 +167,7 @@ export const TokenInspector: Story = {
           <div className="space-y-3">
             <h4 className="font-medium">Shadow Tokens</h4>
             <div className="bg-neutral-50 p-3 rounded text-xs font-mono max-h-40 overflow-y-auto">
-              {Object.entries(shadowScale).map(([key, value]) => (
+              {Object.entries(shadow).map(([key, value]) => (
                 <div key={key} className="text-neutral-600 mb-1">
                   <div>{key}:</div>
                   <div className="ml-2 text-neutral-500 break-all">

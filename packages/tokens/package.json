@@ -11,14 +11,15 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./css": "./dist/tokens.css"
   },
   "files": [
     "dist",
     "src/tokens.generated.ts"
   ],
   "scripts": {
-    "build": "node style-dictionary.config.js && tsup",
+    "build": "tsup && node style-dictionary.config.js",
     "dev": "node style-dictionary.config.js --watch & tsup --watch",
     "clean": "rm -rf dist",
     "sync:figma": "node scripts/figma-sync.js",

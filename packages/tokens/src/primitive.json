@@ -69,19 +69,19 @@
     "black": { "value": "oklch(0 0 0)", "type": "color" }
   },
   "spacing": {
-    "0": { "value": "0", "type": "spacing" },
+    "none": { "value": "0", "type": "spacing" },
     "px": { "value": "1px", "type": "spacing" },
-    "0.5": { "value": "0.125rem", "type": "spacing" },
-    "1": { "value": "0.25rem", "type": "spacing" },
-    "2": { "value": "0.5rem", "type": "spacing" },
-    "3": { "value": "0.75rem", "type": "spacing" },
-    "4": { "value": "1rem", "type": "spacing" },
-    "6": { "value": "1.5rem", "type": "spacing" },
-    "8": { "value": "2rem", "type": "spacing" },
-    "12": { "value": "3rem", "type": "spacing" },
-    "16": { "value": "4rem", "type": "spacing" },
-    "20": { "value": "5rem", "type": "spacing" },
-    "24": { "value": "6rem", "type": "spacing" }
+    "xs": { "value": "0.125rem", "type": "spacing" },
+    "sm": { "value": "0.25rem", "type": "spacing" },
+    "md": { "value": "0.5rem", "type": "spacing" },
+    "lg": { "value": "0.75rem", "type": "spacing" },
+    "xl": { "value": "1rem", "type": "spacing" },
+    "2xl": { "value": "1.5rem", "type": "spacing" },
+    "3xl": { "value": "2rem", "type": "spacing" },
+    "4xl": { "value": "3rem", "type": "spacing" },
+    "5xl": { "value": "4rem", "type": "spacing" },
+    "6xl": { "value": "5rem", "type": "spacing" },
+    "7xl": { "value": "6rem", "type": "spacing" }
   },
   "fontFamily": {
     "sans": { "value": ["Inter", "system-ui", "sans-serif"], "type": "fontFamily" },
