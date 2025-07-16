@@ -1,4 +1,49 @@
-/* UI Package Styles - Import from shared Tailwind config */
-@import "@repo/tailwind-config";
+/* Import design tokens first */
+@import "@wyliedog/tokens/css";
 
-/* Additional component-specific styles can go here */
+/* Import Tailwind - correct 4.x syntax */
+@import "tailwindcss";
+
+/* Component-specific styles using token variables */
+/* @layer components {
+  .button-primary {
+    background: var(--button-primary-background);
+    color: var(--button-primary-text);
+    border: 1px solid var(--button-primary-border);
+    border-radius: var(--button-primary-borderRadius);
+    padding: var(--button-primary-paddingY) var(--button-primary-paddingX);
+    box-shadow: var(--button-primary-shadow);
+    transition: background-color 150ms ease;
+  }
+
+  .button-primary:hover {
+    background: var(--button-primary-backgroundHover);
+  }
+
+  .button-secondary {
+    background: var(--button-secondary-background);
+    color: var(--button-secondary-text);
+    border: 1px solid var(--button-secondary-border);
+    border-radius: var(--button-secondary-borderRadius);
+    padding: var(--button-secondary-paddingY) var(--button-secondary-paddingX);
+    box-shadow: var(--button-secondary-shadow);
+    transition: background-color 150ms ease;
+  }
+
+  .button-secondary:hover {
+    background: var(--button-secondary-backgroundHover);
+  }
+
+  .button-ghost {
+    background: var(--button-ghost-background);
+    color: var(--button-ghost-text);
+    border: 1px solid var(--button-ghost-border);
+    border-radius: var(--button-ghost-borderRadius);
+    padding: var(--button-ghost-paddingY) var(--button-ghost-paddingX);
+    transition: background-color 150ms ease;
+  }
+
+  .button-ghost:hover {
+    background: var(--button-ghost-backgroundHover);
+  }
+} */

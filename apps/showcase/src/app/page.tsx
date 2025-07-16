@@ -12,7 +12,7 @@ export default function Home() {
         <div className="space-x-4">
           <Button>Primary</Button>
           <Button variant="secondary">Secondary</Button>
-          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
         </div>
 
         <div className="space-x-2">

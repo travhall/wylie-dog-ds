@@ -1,4 +1,5 @@
-@import "@wyliedog/ui/styles.css";
-/* @import "@wyliedog/tokens/css"; */
+/* Import design tokens first */
+@import "@wyliedog/tokens/css";
+
+/* Import Tailwind - correct 4.x syntax */
 @import "tailwindcss";
-@import "@repo/tailwind-config";
