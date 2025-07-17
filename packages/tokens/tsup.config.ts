@@ -4,6 +4,6 @@ export default defineConfig({
   entry: ["src/index.ts"],
   format: ["esm", "cjs"],
   dts: true,
-  clean: true,
+  clean: false, // Don't clean - Style Dictionary puts CSS/JSON in dist/
   external: ["style-dictionary"],
 });

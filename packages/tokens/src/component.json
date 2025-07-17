@@ -2,17 +2,17 @@
   "button": {
     "primary": {
       "background": {
-        "$value": "{color.blue.500}",
+        "$value": "{color.blue.700}",
         "$type": "color",
-        "$description": "Component-specific color token"
+        "$description": "Accessible primary button background (5.93:1 contrast)"
       },
       "backgroundHover": {
-        "$value": "{color.blue.600}",
+        "$value": "{color.blue.800}",
         "$type": "color",
-        "$description": "Component-specific color token"
+        "$description": "Accessible primary button hover state"
       },
       "backgroundActive": {
-        "$value": "{color.blue.700}",
+        "$value": "{color.blue.900}",
         "$type": "color",
         "$description": "Component-specific color token"
       },
@@ -22,9 +22,9 @@
         "$description": "Component-specific color token"
       },
       "border": {
-        "$value": "{color.blue.500}",
+        "$value": "{color.blue.700}",
         "$type": "color",
-        "$description": "Component-specific color token"
+        "$description": "Accessible primary button border"
       },
       "borderRadius": {
         "$value": "{borderRadius.md}",

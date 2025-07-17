@@ -173,3 +173,86 @@ export function testColorConversion() {
 export function getAvailableMappings() {
   return Object.keys(OKLCH_TO_HEX_MAP);
 }
+/**
+ * Validate color contrast between two colors according to WCAG guidelines
+ * @param {string} color1 - First color (hex or OKLCH)
+ * @param {string} color2 - Second color (hex or OKLCH)
+ * @param {number} minRatio - Minimum contrast ratio (default: 4.5 for WCAG AA)
+ * @returns {object} Object with ratio, passes boolean, and level
+ */
+export function validateColorContrast(color1, color2, minRatio = 4.5) {
+  try {
+    // Convert colors to hex if needed
+    const hex1 = color1.startsWith('oklch(') ? convertOklchToHex(color1) : color1;
+    const hex2 = color2.startsWith('oklch(') ? convertOklchToHex(color2) : color2;
+    
+    // Calculate relative luminance
+    const getLuminance = (hex) => {
+      // Remove # if present
+      const cleanHex = hex.replace('#', '');
+      
+      // Convert hex to RGB
+      const r = parseInt(cleanHex.substr(0, 2), 16) / 255;
+      const g = parseInt(cleanHex.substr(2, 2), 16) / 255;
+      const b = parseInt(cleanHex.substr(4, 2), 16) / 255;
+      
+      // Apply gamma correction
+      const toLinear = (c) => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+      const rLinear = toLinear(r);
+      const gLinear = toLinear(g);
+      const bLinear = toLinear(b);
+      
+      // Calculate luminance
+      return 0.2126 * rLinear + 0.7152 * gLinear + 0.0722 * bLinear;
+    };
+    
+    const lum1 = getLuminance(hex1);
+    const lum2 = getLuminance(hex2);
+    
+    // Calculate contrast ratio
+    const lighter = Math.max(lum1, lum2);
+    const darker = Math.min(lum1, lum2);
+    const ratio = (lighter + 0.05) / (darker + 0.05);
+    
+    // Determine WCAG level
+    let level = 'FAIL';
+    if (ratio >= 7) level = 'AAA';
+    else if (ratio >= 4.5) level = 'AA';
+    else if (ratio >= 3) level = 'AA Large';
+    
+    return {
+      ratio: Math.round(ratio * 100) / 100,
+      passes: ratio >= minRatio,
+      level: level,
+      hex1: hex1,
+      hex2: hex2
+    };
+    
+  } catch (error) {
+    console.warn(`Failed to validate contrast between ${color1} and ${color2}:`, error.message);
+    return {
+      ratio: 0,
+      passes: false,
+      level: 'ERROR',
+      error: error.message
+    };
+  }
+}
+
+/**
+ * Test contrast validation with known color pairs
+ */
+export function testContrastValidation() {
+  const testPairs = [
+    ['#000000', '#ffffff'], // Black on white - should pass AAA
+    ['#0ea5e9', '#ffffff'], // Blue-500 on white - should pass AA
+    ['#64748b', '#ffffff'], // Slate-500 on white - should pass AA
+    ['#f8fafc', '#0f172a'], // Slate-50 on slate-900 - should pass AAA
+  ];
+  
+  console.log('🧪 Testing contrast validation:');
+  testPairs.forEach(([color1, color2]) => {
+    const result = validateColorContrast(color1, color2);
+    console.log(`  ${color1} on ${color2}: ${result.ratio}:1 (${result.level})`);
+  });
+}

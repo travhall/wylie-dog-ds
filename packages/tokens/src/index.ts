@@ -1,5 +1,5 @@
 // Re-export everything from the generated tokens
-export * from "./tokens.generated.js";
+export * from "../dist/tokens.generated";
 
 // Also export the main objects directly for easier importing
 export {
@@ -12,4 +12,4 @@ export {
   radius,
   flatTokens,
   tokens,
-} from "./tokens.generated.js";
+} from "../dist/tokens.generated";
