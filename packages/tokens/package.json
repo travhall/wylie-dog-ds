@@ -15,8 +15,7 @@
     "./css": "./dist/tokens.css"
   },
   "files": [
-    "dist",
-    "src/tokens.generated.ts"
+    "dist"
   ],
   "scripts": {
     "build": "tsup && node style-dictionary.config.js",

@@ -17,7 +17,7 @@ const ColorPalette = ({
   shades,
 }: {
   colorName: string;
-  shades: Record<string, string>;
+  shades: unknown;
 }) => {
   const [mounted, setMounted] = useState(false);
 
@@ -29,15 +29,20 @@ const ColorPalette = ({
     return <div>Loading...</div>;
   }
 
-  const shadeEntries = Object.entries(shades).sort(([a], [b]) => {
-    // Sort numerically, with special handling for non-numeric keys
-    const numA = parseInt(a);
-    const numB = parseInt(b);
-    if (isNaN(numA) && isNaN(numB)) return a.localeCompare(b);
-    if (isNaN(numA)) return 1;
-    if (isNaN(numB)) return -1;
-    return numA - numB;
-  });
+  let shadeEntries: [string, string][] = [];
+  if (typeof shades === "object" && shades !== null) {
+    shadeEntries = Object.entries(shades as Record<string, string>).sort(
+      ([a], [b]) => {
+        // Sort numerically, with special handling for non-numeric keys
+        const numA = parseInt(a);
+        const numB = parseInt(b);
+        if (isNaN(numA) && isNaN(numB)) return a.localeCompare(b);
+        if (isNaN(numA)) return 1;
+        if (isNaN(numB)) return -1;
+        return numA - numB;
+      }
+    );
+  }
 
   return (
     <div className="space-y-4">
@@ -66,8 +71,9 @@ export const AllColors: Story = {
       <div className="bg-neutral-50 p-4 rounded-lg">
         <h2 className="text-lg font-semibold mb-2">Wylie Dog Color System</h2>
         <p className="text-sm text-neutral-600">
-          Colors are driven by design tokens and automatically sync with the design system.
-          All colors use OKLCH for better perceptual uniformity and accessibility.
+          Colors are driven by design tokens and automatically sync with the
+          design system. All colors use OKLCH for better perceptual uniformity
+          and accessibility.
         </p>
       </div>
 
@@ -137,12 +143,16 @@ export const TokenInspector: Story = {
             <div className="bg-neutral-50 p-3 rounded text-xs font-mono max-h-40 overflow-y-auto">
               {Object.entries(color).map(([colorName, shades]) => (
                 <div key={colorName} className="mb-2">
-                  <div className="font-semibold text-neutral-700">{colorName}:</div>
-                  {Object.entries(shades).slice(0, 3).map(([shade, value]) => (
-                    <div key={shade} className="ml-2 text-neutral-600">
-                      {shade}: {value}
-                    </div>
-                  ))}
+                  <div className="font-semibold text-neutral-700">
+                    {colorName}:
+                  </div>
+                  {Object.entries(shades)
+                    .slice(0, 3)
+                    .map(([shade, value]) => (
+                      <div key={shade} className="ml-2 text-neutral-600">
+                        {shade}: {value}
+                      </div>
+                    ))}
                   {Object.keys(shades).length > 3 && (
                     <div className="ml-2 text-neutral-400">
                       ...{Object.keys(shades).length - 3} more
@@ -170,9 +180,7 @@ export const TokenInspector: Story = {
               {Object.entries(shadow).map(([key, value]) => (
                 <div key={key} className="text-neutral-600 mb-1">
                   <div>{key}:</div>
-                  <div className="ml-2 text-neutral-500 break-all">
-                    {value}
-                  </div>
+                  <div className="ml-2 text-neutral-500 break-all">{value}</div>
                 </div>
               ))}
             </div>

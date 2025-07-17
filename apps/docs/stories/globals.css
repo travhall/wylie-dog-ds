@@ -1,5 +1,5 @@
 /* Import design tokens first */
-@import "@wyliedog/tokens/css";
+/* @import "@wyliedog/tokens/css"; */
 
 /* Import Tailwind - correct 4.x syntax */
 @import "tailwindcss";

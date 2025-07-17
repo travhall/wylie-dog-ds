@@ -33,7 +33,7 @@ ${Object.entries(organized)
   )
   .join("\n\n")}
 
-// Flat token access for utility functions  
+// Flat token access for utility functions
 export const flatTokens = {
 ${tokens
   .map((token) => `  '${token.path.join("-")}': '${token.value}'`)

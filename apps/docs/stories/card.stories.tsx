@@ -41,7 +41,9 @@ export const WithActions: Story = {
         <div className="flex items-center justify-between">
           <Badge variant="secondary">In Progress</Badge>
           <div className="flex gap-2">
-            <Button variant="outline" size="sm">View</Button>
+            <Button variant="ghost" size="sm">
+              View
+            </Button>
             <Button size="sm">Edit</Button>
           </div>
         </div>
@@ -57,9 +59,7 @@ export const ProductCard: Story = {
         <div className="flex items-start justify-between">
           <div>
             <CardTitle>Premium Plan</CardTitle>
-            <p className="text-sm text-neutral-600 mt-1">
-              For growing teams
-            </p>
+            <p className="text-sm text-neutral-600 mt-1">For growing teams</p>
           </div>
           <Badge>Popular</Badge>
         </div>
