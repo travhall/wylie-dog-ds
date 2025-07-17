@@ -23,13 +23,16 @@
     "clean": "rm -rf dist",
     "sync:figma": "node scripts/figma-sync.js",
     "generate:types": "node scripts/generate-types.js",
-    "test:tokens": "node scripts/validate-tokens.js"
+    "test:tokens": "node scripts/validate-tokens.js",
+    "migration:w3c": "node scripts/migrate-to-w3c.js",
+    "validate:accessibility": "node scripts/validate-accessibility.js"
   },
   "dependencies": {
     "culori": "^4.0.2"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
+    "@tokens-studio/sd-transforms": "^2.0.1",
     "style-dictionary": "^5.0.1",
     "tsup": "^8.5.0"
   }

@@ -1,95 +1,379 @@
 {
   "color": {
     "primary": {
-      "50": { "value": "{color.blue.50}", "type": "color" },
-      "100": { "value": "{color.blue.100}", "type": "color" },
-      "200": { "value": "{color.blue.200}", "type": "color" },
-      "300": { "value": "{color.blue.300}", "type": "color" },
-      "400": { "value": "{color.blue.400}", "type": "color" },
-      "500": { "value": "{color.blue.500}", "type": "color" },
-      "600": { "value": "{color.blue.600}", "type": "color" },
-      "700": { "value": "{color.blue.700}", "type": "color" },
-      "800": { "value": "{color.blue.800}", "type": "color" },
-      "900": { "value": "{color.blue.900}", "type": "color" },
-      "950": { "value": "{color.blue.950}", "type": "color" }
+      "50": {
+        "$value": "{color.blue.50}",
+        "$type": "color",
+        "$description": "Semantic color token - 50"
+      },
+      "100": {
+        "$value": "{color.blue.100}",
+        "$type": "color",
+        "$description": "Semantic color token - 100"
+      },
+      "200": {
+        "$value": "{color.blue.200}",
+        "$type": "color",
+        "$description": "Semantic color token - 200"
+      },
+      "300": {
+        "$value": "{color.blue.300}",
+        "$type": "color",
+        "$description": "Semantic color token - 300"
+      },
+      "400": {
+        "$value": "{color.blue.400}",
+        "$type": "color",
+        "$description": "Semantic color token - 400"
+      },
+      "500": {
+        "$value": "{color.blue.500}",
+        "$type": "color",
+        "$description": "Semantic color token - 500"
+      },
+      "600": {
+        "$value": "{color.blue.600}",
+        "$type": "color",
+        "$description": "Semantic color token - 600"
+      },
+      "700": {
+        "$value": "{color.blue.700}",
+        "$type": "color",
+        "$description": "Semantic color token - 700"
+      },
+      "800": {
+        "$value": "{color.blue.800}",
+        "$type": "color",
+        "$description": "Semantic color token - 800"
+      },
+      "900": {
+        "$value": "{color.blue.900}",
+        "$type": "color",
+        "$description": "Semantic color token - 900"
+      },
+      "950": {
+        "$value": "{color.blue.950}",
+        "$type": "color",
+        "$description": "Semantic color token - 950"
+      }
     },
     "neutral": {
-      "50": { "value": "{color.slate.50}", "type": "color" },
-      "100": { "value": "{color.slate.100}", "type": "color" },
-      "200": { "value": "{color.slate.200}", "type": "color" },
-      "300": { "value": "{color.slate.300}", "type": "color" },
-      "400": { "value": "{color.slate.400}", "type": "color" },
-      "500": { "value": "{color.slate.500}", "type": "color" },
-      "600": { "value": "{color.slate.600}", "type": "color" },
-      "700": { "value": "{color.slate.700}", "type": "color" },
-      "800": { "value": "{color.slate.800}", "type": "color" },
-      "900": { "value": "{color.slate.900}", "type": "color" },
-      "950": { "value": "{color.slate.950}", "type": "color" }
+      "50": {
+        "$value": "{color.slate.50}",
+        "$type": "color",
+        "$description": "Semantic color token - 50"
+      },
+      "100": {
+        "$value": "{color.slate.100}",
+        "$type": "color",
+        "$description": "Semantic color token - 100"
+      },
+      "200": {
+        "$value": "{color.slate.200}",
+        "$type": "color",
+        "$description": "Semantic color token - 200"
+      },
+      "300": {
+        "$value": "{color.slate.300}",
+        "$type": "color",
+        "$description": "Semantic color token - 300"
+      },
+      "400": {
+        "$value": "{color.slate.400}",
+        "$type": "color",
+        "$description": "Semantic color token - 400"
+      },
+      "500": {
+        "$value": "{color.slate.500}",
+        "$type": "color",
+        "$description": "Semantic color token - 500"
+      },
+      "600": {
+        "$value": "{color.slate.600}",
+        "$type": "color",
+        "$description": "Semantic color token - 600"
+      },
+      "700": {
+        "$value": "{color.slate.700}",
+        "$type": "color",
+        "$description": "Semantic color token - 700"
+      },
+      "800": {
+        "$value": "{color.slate.800}",
+        "$type": "color",
+        "$description": "Semantic color token - 800"
+      },
+      "900": {
+        "$value": "{color.slate.900}",
+        "$type": "color",
+        "$description": "Semantic color token - 900"
+      },
+      "950": {
+        "$value": "{color.slate.950}",
+        "$type": "color",
+        "$description": "Semantic color token - 950"
+      }
     },
     "success": {
-      "50": { "value": "{color.green.50}", "type": "color" },
-      "100": { "value": "{color.green.100}", "type": "color" },
-      "200": { "value": "{color.green.200}", "type": "color" },
-      "300": { "value": "{color.green.300}", "type": "color" },
-      "400": { "value": "{color.green.400}", "type": "color" },
-      "500": { "value": "{color.green.500}", "type": "color" },
-      "600": { "value": "{color.green.600}", "type": "color" },
-      "700": { "value": "{color.green.700}", "type": "color" },
-      "800": { "value": "{color.green.800}", "type": "color" },
-      "900": { "value": "{color.green.900}", "type": "color" },
-      "950": { "value": "{color.green.950}", "type": "color" }
+      "50": {
+        "$value": "{color.green.50}",
+        "$type": "color",
+        "$description": "Semantic color token - 50"
+      },
+      "100": {
+        "$value": "{color.green.100}",
+        "$type": "color",
+        "$description": "Semantic color token - 100"
+      },
+      "200": {
+        "$value": "{color.green.200}",
+        "$type": "color",
+        "$description": "Semantic color token - 200"
+      },
+      "300": {
+        "$value": "{color.green.300}",
+        "$type": "color",
+        "$description": "Semantic color token - 300"
+      },
+      "400": {
+        "$value": "{color.green.400}",
+        "$type": "color",
+        "$description": "Semantic color token - 400"
+      },
+      "500": {
+        "$value": "{color.green.500}",
+        "$type": "color",
+        "$description": "Semantic color token - 500"
+      },
+      "600": {
+        "$value": "{color.green.600}",
+        "$type": "color",
+        "$description": "Semantic color token - 600"
+      },
+      "700": {
+        "$value": "{color.green.700}",
+        "$type": "color",
+        "$description": "Semantic color token - 700"
+      },
+      "800": {
+        "$value": "{color.green.800}",
+        "$type": "color",
+        "$description": "Semantic color token - 800"
+      },
+      "900": {
+        "$value": "{color.green.900}",
+        "$type": "color",
+        "$description": "Semantic color token - 900"
+      },
+      "950": {
+        "$value": "{color.green.950}",
+        "$type": "color",
+        "$description": "Semantic color token - 950"
+      }
     },
     "warning": {
-      "50": { "value": "{color.yellow.50}", "type": "color" },
-      "100": { "value": "{color.yellow.100}", "type": "color" },
-      "200": { "value": "{color.yellow.200}", "type": "color" },
-      "300": { "value": "{color.yellow.300}", "type": "color" },
-      "400": { "value": "{color.yellow.400}", "type": "color" },
-      "500": { "value": "{color.yellow.500}", "type": "color" },
-      "600": { "value": "{color.yellow.600}", "type": "color" },
-      "700": { "value": "{color.yellow.700}", "type": "color" },
-      "800": { "value": "{color.yellow.800}", "type": "color" },
-      "900": { "value": "{color.yellow.900}", "type": "color" },
-      "950": { "value": "{color.yellow.950}", "type": "color" }
+      "50": {
+        "$value": "{color.yellow.50}",
+        "$type": "color",
+        "$description": "Semantic color token - 50"
+      },
+      "100": {
+        "$value": "{color.yellow.100}",
+        "$type": "color",
+        "$description": "Semantic color token - 100"
+      },
+      "200": {
+        "$value": "{color.yellow.200}",
+        "$type": "color",
+        "$description": "Semantic color token - 200"
+      },
+      "300": {
+        "$value": "{color.yellow.300}",
+        "$type": "color",
+        "$description": "Semantic color token - 300"
+      },
+      "400": {
+        "$value": "{color.yellow.400}",
+        "$type": "color",
+        "$description": "Semantic color token - 400"
+      },
+      "500": {
+        "$value": "{color.yellow.500}",
+        "$type": "color",
+        "$description": "Semantic color token - 500"
+      },
+      "600": {
+        "$value": "{color.yellow.600}",
+        "$type": "color",
+        "$description": "Semantic color token - 600"
+      },
+      "700": {
+        "$value": "{color.yellow.700}",
+        "$type": "color",
+        "$description": "Semantic color token - 700"
+      },
+      "800": {
+        "$value": "{color.yellow.800}",
+        "$type": "color",
+        "$description": "Semantic color token - 800"
+      },
+      "900": {
+        "$value": "{color.yellow.900}",
+        "$type": "color",
+        "$description": "Semantic color token - 900"
+      },
+      "950": {
+        "$value": "{color.yellow.950}",
+        "$type": "color",
+        "$description": "Semantic color token - 950"
+      }
     },
     "error": {
-      "50": { "value": "{color.red.50}", "type": "color" },
-      "100": { "value": "{color.red.100}", "type": "color" },
-      "200": { "value": "{color.red.200}", "type": "color" },
-      "300": { "value": "{color.red.300}", "type": "color" },
-      "400": { "value": "{color.red.400}", "type": "color" },
-      "500": { "value": "{color.red.500}", "type": "color" },
-      "600": { "value": "{color.red.600}", "type": "color" },
-      "700": { "value": "{color.red.700}", "type": "color" },
-      "800": { "value": "{color.red.800}", "type": "color" },
-      "900": { "value": "{color.red.900}", "type": "color" },
-      "950": { "value": "{color.red.950}", "type": "color" }
+      "50": {
+        "$value": "{color.red.50}",
+        "$type": "color",
+        "$description": "Semantic color token - 50"
+      },
+      "100": {
+        "$value": "{color.red.100}",
+        "$type": "color",
+        "$description": "Semantic color token - 100"
+      },
+      "200": {
+        "$value": "{color.red.200}",
+        "$type": "color",
+        "$description": "Semantic color token - 200"
+      },
+      "300": {
+        "$value": "{color.red.300}",
+        "$type": "color",
+        "$description": "Semantic color token - 300"
+      },
+      "400": {
+        "$value": "{color.red.400}",
+        "$type": "color",
+        "$description": "Semantic color token - 400"
+      },
+      "500": {
+        "$value": "{color.red.500}",
+        "$type": "color",
+        "$description": "Semantic color token - 500"
+      },
+      "600": {
+        "$value": "{color.red.600}",
+        "$type": "color",
+        "$description": "Semantic color token - 600"
+      },
+      "700": {
+        "$value": "{color.red.700}",
+        "$type": "color",
+        "$description": "Semantic color token - 700"
+      },
+      "800": {
+        "$value": "{color.red.800}",
+        "$type": "color",
+        "$description": "Semantic color token - 800"
+      },
+      "900": {
+        "$value": "{color.red.900}",
+        "$type": "color",
+        "$description": "Semantic color token - 900"
+      },
+      "950": {
+        "$value": "{color.red.950}",
+        "$type": "color",
+        "$description": "Semantic color token - 950"
+      }
     },
     "background": {
-      "primary": { "value": "{color.white}", "type": "color" },
-      "secondary": { "value": "{color.neutral.50}", "type": "color" }
+      "primary": {
+        "$value": "{color.white}",
+        "$type": "color",
+        "$description": "Primary brand color - primary"
+      },
+      "secondary": {
+        "$value": "{color.neutral.50}",
+        "$type": "color",
+        "$description": "Semantic color token - secondary"
+      }
     },
     "text": {
-      "primary": { "value": "{color.neutral.900}", "type": "color" },
-      "secondary": { "value": "{color.neutral.600}", "type": "color" },
-      "muted": { "value": "{color.neutral.400}", "type": "color" }
+      "primary": {
+        "$value": "{color.neutral.900}",
+        "$type": "color",
+        "$description": "Primary brand color - primary"
+      },
+      "secondary": {
+        "$value": "{color.neutral.600}",
+        "$type": "color",
+        "$description": "Semantic color token - secondary"
+      },
+      "muted": {
+        "$value": "{color.neutral.400}",
+        "$type": "color",
+        "$description": "Semantic color token - muted"
+      }
     },
     "border": {
-      "default": { "value": "{color.neutral.200}", "type": "color" },
-      "muted": { "value": "{color.neutral.100}", "type": "color" }
+      "default": {
+        "$value": "{color.neutral.200}",
+        "$type": "color",
+        "$description": "Semantic color token - default"
+      },
+      "muted": {
+        "$value": "{color.neutral.100}",
+        "$type": "color",
+        "$description": "Semantic color token - muted"
+      }
     }
   },
   "spacing": {
-    "xs": { "value": "{spacing.sm}", "type": "spacing" },
-    "sm": { "value": "{spacing.md}", "type": "spacing" },
-    "md": { "value": "{spacing.xl}", "type": "spacing" },
-    "lg": { "value": "{spacing.2xl}", "type": "spacing" },
-    "xl": { "value": "{spacing.3xl}", "type": "spacing" }
+    "tight": {
+      "$value": "{spacing.xs}",
+      "$type": "spacing",
+      "$description": "Tight spacing for compact layouts"
+    },
+    "compact": {
+      "$value": "{spacing.sm}",
+      "$type": "spacing",
+      "$description": "Compact spacing for dense interfaces"
+    },
+    "comfortable": {
+      "$value": "{spacing.md}",
+      "$type": "spacing",
+      "$description": "Comfortable spacing for readable layouts"
+    },
+    "spacious": {
+      "$value": "{spacing.lg}",
+      "$type": "spacing",
+      "$description": "Spacious spacing for open layouts"
+    },
+    "loose": {
+      "$value": "{spacing.xl}",
+      "$type": "spacing",
+      "$description": "Loose spacing for emphasis"
+    }
   },
   "radius": {
-    "sm": { "value": "{borderRadius.sm}", "type": "borderRadius" },
-    "md": { "value": "{borderRadius.base}", "type": "borderRadius" },
-    "lg": { "value": "{borderRadius.lg}", "type": "borderRadius" },
-    "full": { "value": "{borderRadius.full}", "type": "borderRadius" }
+    "sm": {
+      "$value": "{borderRadius.sm}",
+      "$type": "borderRadius",
+      "$description": "Semantic borderRadius token"
+    },
+    "md": {
+      "$value": "{borderRadius.base}",
+      "$type": "borderRadius",
+      "$description": "Semantic borderRadius token"
+    },
+    "lg": {
+      "$value": "{borderRadius.lg}",
+      "$type": "borderRadius",
+      "$description": "Semantic borderRadius token"
+    },
+    "full": {
+      "$value": "{borderRadius.full}",
+      "$type": "borderRadius",
+      "$description": "Semantic borderRadius token"
+    }
   }
 }

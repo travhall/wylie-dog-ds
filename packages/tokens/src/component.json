@@ -1,78 +1,302 @@
 {
   "button": {
     "primary": {
-      "background": { "value": "{color.blue.500}", "type": "color" },
-      "backgroundHover": { "value": "{color.blue.600}", "type": "color" },
-      "backgroundActive": { "value": "{color.blue.700}", "type": "color" },
-      "text": { "value": "{color.white}", "type": "color" },
-      "border": { "value": "{color.blue.500}", "type": "color" },
-      "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
-      "paddingX": { "value": "{spacing.xl}", "type": "spacing" },
-      "paddingY": { "value": "{spacing.md}", "type": "spacing" },
-      "shadow": { "value": "{shadow.sm}", "type": "boxShadow" }
+      "background": {
+        "$value": "{color.blue.500}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "backgroundHover": {
+        "$value": "{color.blue.600}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "backgroundActive": {
+        "$value": "{color.blue.700}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "text": {
+        "$value": "{color.white}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "border": {
+        "$value": "{color.blue.500}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "borderRadius": {
+        "$value": "{borderRadius.md}",
+        "$type": "borderRadius",
+        "$description": "Component-specific borderRadius token"
+      },
+      "paddingX": {
+        "$value": "{spacing.xl}",
+        "$type": "spacing",
+        "$description": "Component-specific spacing token"
+      },
+      "paddingY": {
+        "$value": "{spacing.md}",
+        "$type": "spacing",
+        "$description": "Component-specific spacing token"
+      },
+      "shadow": {
+        "$value": "{shadow.sm}",
+        "$type": "boxShadow",
+        "$description": "Component-specific boxShadow token"
+      }
     },
     "secondary": {
-      "background": { "value": "{color.slate.100}", "type": "color" },
-      "backgroundHover": { "value": "{color.slate.200}", "type": "color" },
-      "backgroundActive": { "value": "{color.slate.300}", "type": "color" },
-      "text": { "value": "{color.slate.900}", "type": "color" },
-      "border": { "value": "{color.slate.300}", "type": "color" },
-      "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
-      "paddingX": { "value": "{spacing.xl}", "type": "spacing" },
-      "paddingY": { "value": "{spacing.md}", "type": "spacing" },
-      "shadow": { "value": "{shadow.sm}", "type": "boxShadow" }
+      "background": {
+        "$value": "{color.slate.100}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "backgroundHover": {
+        "$value": "{color.slate.200}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "backgroundActive": {
+        "$value": "{color.slate.300}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "text": {
+        "$value": "{color.slate.900}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "border": {
+        "$value": "{color.slate.300}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "borderRadius": {
+        "$value": "{borderRadius.md}",
+        "$type": "borderRadius",
+        "$description": "Component-specific borderRadius token"
+      },
+      "paddingX": {
+        "$value": "{spacing.xl}",
+        "$type": "spacing",
+        "$description": "Component-specific spacing token"
+      },
+      "paddingY": {
+        "$value": "{spacing.md}",
+        "$type": "spacing",
+        "$description": "Component-specific spacing token"
+      },
+      "shadow": {
+        "$value": "{shadow.sm}",
+        "$type": "boxShadow",
+        "$description": "Component-specific boxShadow token"
+      }
     },
     "ghost": {
-      "background": { "value": "transparent", "type": "color" },
-      "backgroundHover": { "value": "{color.slate.100}", "type": "color" },
-      "backgroundActive": { "value": "{color.slate.200}", "type": "color" },
-      "text": { "value": "{color.slate.700}", "type": "color" },
-      "border": { "value": "transparent", "type": "color" },
-      "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
-      "paddingX": { "value": "{spacing.xl}", "type": "spacing" },
-      "paddingY": { "value": "{spacing.md}", "type": "spacing" },
-      "shadow": { "value": "none", "type": "boxShadow" }
+      "background": {
+        "$value": "transparent",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "backgroundHover": {
+        "$value": "{color.slate.100}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "backgroundActive": {
+        "$value": "{color.slate.200}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "text": {
+        "$value": "{color.slate.700}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "border": {
+        "$value": "transparent",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "borderRadius": {
+        "$value": "{borderRadius.md}",
+        "$type": "borderRadius",
+        "$description": "Component-specific borderRadius token"
+      },
+      "paddingX": {
+        "$value": "{spacing.xl}",
+        "$type": "spacing",
+        "$description": "Component-specific spacing token"
+      },
+      "paddingY": {
+        "$value": "{spacing.md}",
+        "$type": "spacing",
+        "$description": "Component-specific spacing token"
+      },
+      "shadow": {
+        "$value": "none",
+        "$type": "boxShadow",
+        "$description": "Component-specific boxShadow token"
+      }
     }
   },
   "card": {
-    "background": { "value": "{color.white}", "type": "color" },
-    "border": { "value": "{color.slate.200}", "type": "color" },
-    "borderRadius": { "value": "{borderRadius.lg}", "type": "borderRadius" },
-    "shadow": { "value": "{shadow.md}", "type": "boxShadow" },
-    "padding": { "value": "{spacing.6}", "type": "spacing" }
+    "background": {
+      "$value": "{color.white}",
+      "$type": "color",
+      "$description": "Component-specific color token"
+    },
+    "border": {
+      "$value": "{color.slate.200}",
+      "$type": "color",
+      "$description": "Component-specific color token"
+    },
+    "borderRadius": {
+      "$value": "{borderRadius.lg}",
+      "$type": "borderRadius",
+      "$description": "Component-specific borderRadius token"
+    },
+    "shadow": {
+      "$value": "{shadow.md}",
+      "$type": "boxShadow",
+      "$description": "Component-specific boxShadow token"
+    },
+    "padding": {
+      "$value": "{spacing.6}",
+      "$type": "spacing",
+      "$description": "Component-specific spacing token"
+    }
   },
   "input": {
-    "background": { "value": "{color.white}", "type": "color" },
-    "backgroundDisabled": { "value": "{color.slate.50}", "type": "color" },
-    "border": { "value": "{color.slate.300}", "type": "color" },
-    "borderFocus": { "value": "{color.blue.500}", "type": "color" },
-    "borderError": { "value": "{color.red.500}", "type": "color" },
-    "text": { "value": "{color.slate.900}", "type": "color" },
-    "textPlaceholder": { "value": "{color.slate.500}", "type": "color" },
-    "borderRadius": { "value": "{borderRadius.md}", "type": "borderRadius" },
-    "paddingX": { "value": "{spacing.lg}", "type": "spacing" },
-    "paddingY": { "value": "{spacing.md}", "type": "spacing" }
+    "background": {
+      "$value": "{color.white}",
+      "$type": "color",
+      "$description": "Component-specific color token"
+    },
+    "backgroundDisabled": {
+      "$value": "{color.slate.50}",
+      "$type": "color",
+      "$description": "Component-specific color token"
+    },
+    "border": {
+      "$value": "{color.slate.300}",
+      "$type": "color",
+      "$description": "Component-specific color token"
+    },
+    "borderFocus": {
+      "$value": "{color.blue.500}",
+      "$type": "color",
+      "$description": "Component-specific color token"
+    },
+    "borderError": {
+      "$value": "{color.red.500}",
+      "$type": "color",
+      "$description": "Component-specific color token"
+    },
+    "text": {
+      "$value": "{color.slate.900}",
+      "$type": "color",
+      "$description": "Component-specific color token"
+    },
+    "textPlaceholder": {
+      "$value": "{color.slate.500}",
+      "$type": "color",
+      "$description": "Component-specific color token"
+    },
+    "borderRadius": {
+      "$value": "{borderRadius.md}",
+      "$type": "borderRadius",
+      "$description": "Component-specific borderRadius token"
+    },
+    "paddingX": {
+      "$value": "{spacing.lg}",
+      "$type": "spacing",
+      "$description": "Component-specific spacing token"
+    },
+    "paddingY": {
+      "$value": "{spacing.md}",
+      "$type": "spacing",
+      "$description": "Component-specific spacing token"
+    }
   },
   "alert": {
     "success": {
-      "background": { "value": "{color.green.50}", "type": "color" },
-      "border": { "value": "{color.green.500}", "type": "color" },
-      "text": { "value": "{color.green.900}", "type": "color" },
-      "icon": { "value": "{color.green.500}", "type": "color" }
+      "background": {
+        "$value": "{color.green.50}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "border": {
+        "$value": "{color.green.500}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "text": {
+        "$value": "{color.green.900}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "icon": {
+        "$value": "{color.green.500}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      }
     },
     "warning": {
-      "background": { "value": "{color.yellow.50}", "type": "color" },
-      "border": { "value": "{color.yellow.500}", "type": "color" },
-      "text": { "value": "{color.yellow.900}", "type": "color" },
-      "icon": { "value": "{color.yellow.500}", "type": "color" }
+      "background": {
+        "$value": "{color.yellow.50}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "border": {
+        "$value": "{color.yellow.500}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "text": {
+        "$value": "{color.yellow.900}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "icon": {
+        "$value": "{color.yellow.500}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      }
     },
     "error": {
-      "background": { "value": "{color.red.50}", "type": "color" },
-      "border": { "value": "{color.red.500}", "type": "color" },
-      "text": { "value": "{color.red.900}", "type": "color" },
-      "icon": { "value": "{color.red.500}", "type": "color" }
+      "background": {
+        "$value": "{color.red.50}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "border": {
+        "$value": "{color.red.500}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "text": {
+        "$value": "{color.red.900}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      },
+      "icon": {
+        "$value": "{color.red.500}",
+        "$type": "color",
+        "$description": "Component-specific color token"
+      }
     },
-    "borderRadius": { "value": "{borderRadius.lg}", "type": "borderRadius" },
-    "padding": { "value": "{spacing.4}", "type": "spacing" }
+    "borderRadius": {
+      "$value": "{borderRadius.lg}",
+      "$type": "borderRadius",
+      "$description": "Component-specific borderRadius token"
+    },
+    "padding": {
+      "$value": "{spacing.4}",
+      "$type": "spacing",
+      "$description": "Component-specific spacing token"
+    }
   }
 }

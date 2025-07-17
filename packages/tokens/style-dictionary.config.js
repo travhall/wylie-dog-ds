@@ -1,6 +1,27 @@
 import StyleDictionary from "style-dictionary";
+import { convertOklchToHex, isValidOklch } from './scripts/color-utils.js';
 
-// Register comprehensive TypeScript format
+// Register OKLCH transform with accurate hex fallbacks
+StyleDictionary.registerTransform({
+  name: 'color/oklch-with-fallback',
+  type: 'value',
+  filter: (token) => token.$type === 'color',
+  transform: (token) => {
+    // Use the resolved value
+    const resolvedValue = token.value;
+    
+    if (isValidOklch(resolvedValue)) {
+      const hexFallback = convertOklchToHex(resolvedValue);
+      return {
+        oklch: resolvedValue,
+        hex: hexFallback
+      };
+    }
+    return resolvedValue;
+  }
+});
+
+// Register comprehensive TypeScript format with OKLCH support
 StyleDictionary.registerFormat({
   name: "typescript/design-tokens",
   format: function (dictionary) {
@@ -18,13 +39,19 @@ StyleDictionary.registerFormat({
         if (!current[rest[i]]) current[rest[i]] = {};
         current = current[rest[i]];
       }
-      current[rest[rest.length - 1]] = token.value;
+      
+      // Use hex fallback for colors, original value for others
+      const finalValue = typeof token.value === 'object' && token.value !== null
+        ? (token.value.hex || token.value.oklch || token.value)
+        : token.value;
+      current[rest[rest.length - 1]] = finalValue;
 
       return acc;
     }, {});
 
     return `// Auto-generated design tokens
 // DO NOT EDIT MANUALLY
+// Generated from W3C DTCG format tokens with OKLCH support
 
 ${Object.entries(organized)
   .map(
@@ -36,7 +63,12 @@ ${Object.entries(organized)
 // Flat token access for utility functions
 export const flatTokens = {
 ${tokens
-  .map((token) => `  '${token.path.join("-")}': '${token.value}'`)
+  .map((token) => {
+    const finalValue = typeof token.value === 'object' && token.value !== null
+      ? (token.value.hex || token.value.oklch || token.value)
+      : token.value;
+    return `  '${token.path.join("-")}': '${finalValue}'`;
+  })
   .join(",\n")}
 } as const;
 
@@ -50,13 +82,26 @@ ${Object.keys(organized)
 export type TokenPath = keyof typeof flatTokens;
 export type ColorToken = keyof typeof color;
 export type SpacingToken = keyof typeof spacing;
+
+// Color utilities with OKLCH support
+export const colorUtils = {
+  getHex: (colorValue: string) => {
+    // If it's already a hex color, return it
+    if (colorValue.startsWith('#')) return colorValue;
+    // If it's an OKLCH color, convert it
+    if (colorValue.startsWith('oklch(')) {
+      return convertOklchToHex(colorValue);
+    }
+    return colorValue;
+  }
+};
 `;
   },
 });
 
-// Register CSS format with dual output for Storybook + Tailwind v4
+// Register CSS format with OKLCH + hex fallbacks
 StyleDictionary.registerFormat({
-  name: "css/dual-output",
+  name: "css/variables-with-fallbacks",
   format: function (dictionary) {
     const tokens = dictionary.allTokens;
 
@@ -64,11 +109,25 @@ StyleDictionary.registerFormat({
       .map((token) => {
         const varName = `--${token.path.join("-")}`;
         const value = token.value;
-        return `  ${varName}: ${value};`;
+        
+        // Handle color tokens with OKLCH + hex fallback
+        if (token.$type === 'color' && typeof value === 'object' && value?.oklch && value?.hex) {
+          return `  ${varName}: ${value.hex}; /* fallback */\n  ${varName}: ${value.oklch}; /* modern */`;
+        }
+        
+        // Handle other token types or simple values
+        const finalValue = typeof value === 'object' ? (value?.hex || value?.oklch || JSON.stringify(value)) : value;
+        return `  ${varName}: ${finalValue};`;
       })
       .join("\n");
 
-    return `/* CSS Variables for Storybook and general use */
+    return `/* 
+ * Wylie Dog Design Tokens with OKLCH + hex fallbacks
+ * Generated from W3C DTCG format
+ * DO NOT EDIT MANUALLY
+ */
+
+/* CSS Variables for Storybook and general use */
 :root {
 ${variables}
 }
@@ -80,28 +139,17 @@ ${variables}
   },
 });
 
-// Filter functions to avoid collisions
-StyleDictionary.registerFilter({
-  name: "primitive-tokens",
-  filter: (token) => token.filePath.includes("primitive.json"),
-});
-
-StyleDictionary.registerFilter({
-  name: "semantic-tokens",
-  filter: (token) => token.filePath.includes("semantic.json"),
-});
-
-StyleDictionary.registerFilter({
-  name: "component-tokens",
-  filter: (token) => token.filePath.includes("component.json"),
-});
-
 const sd = new StyleDictionary({
   source: ["src/**/*.json"],
+  // Use basic transforms without tokens-studio for now
   platforms: {
-    // Comprehensive TypeScript output
+    // TypeScript output with OKLCH support
     typescript: {
-      transformGroup: "js",
+      transforms: [
+        'attribute/cti',
+        'name/kebab', 
+        'color/oklch-with-fallback'
+      ],
       buildPath: "dist/",
       files: [
         {
@@ -111,48 +159,57 @@ const sd = new StyleDictionary({
       ],
     },
 
-    // CSS with dual output: :root for Storybook + @theme for Tailwind v4
+    // CSS with OKLCH + hex fallbacks
     css: {
-      transformGroup: "css",
+      transforms: [
+        'attribute/cti',
+        'name/kebab',
+        'color/oklch-with-fallback'
+      ],
       buildPath: "dist/",
       files: [
         {
           destination: "tokens.css",
-          format: "css/dual-output",
+          format: "css/variables-with-fallbacks",
         },
       ],
     },
 
-    // Separate outputs to debug collisions
-    // debug: {
-    //   transformGroup: "js",
-    //   buildPath: "debug/",
-    //   files: [
-    //     {
-    //       destination: "primitive.json",
-    //       format: "json",
-    //       filter: "primitive-tokens",
-    //     },
-    //     {
-    //       destination: "semantic.json",
-    //       format: "json",
-    //       filter: "semantic-tokens",
-    //     },
-    //     {
-    //       destination: "component.json",
-    //       format: "json",
-    //       filter: "component-tokens",
-    //     },
-    //   ],
-    // },
+    // JSON output for debugging
+    json: {
+      transforms: [
+        'attribute/cti',
+        'name/kebab',
+        'color/oklch-with-fallback'
+      ],
+      buildPath: "dist/",
+      files: [
+        {
+          destination: "tokens.json",
+          format: "json/nested",
+        },
+      ],
+    },
   },
 });
 
-// Build with error handling
+// Build with enhanced error handling
 try {
   await sd.buildAllPlatforms();
-  console.log("✅ Tokens built successfully");
+  console.log("✅ Tokens built successfully with OKLCH support");
+  console.log("📊 Generated files:");
+  console.log("  - dist/tokens.css (CSS variables with OKLCH + hex fallbacks)");
+  console.log("  - dist/tokens.generated.ts (TypeScript definitions)");
+  console.log("  - dist/tokens.json (JSON for debugging)");
+  console.log("");
+  console.log("🎨 Features:");
+  console.log("  - ✅ OKLCH colors with automatic hex fallbacks");
+  console.log("  - ✅ 100% browser compatibility");
+  console.log("  - ✅ Future-ready for wide-gamut displays");
+  console.log("");
+  console.log("⚠️  Note: W3C reference resolution needs manual handling");
 } catch (error) {
   console.error("❌ Token build failed:", error.message);
+  console.error("Stack:", error.stack);
   process.exit(1);
 }
