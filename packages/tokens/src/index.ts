@@ -10,6 +10,5 @@ export {
   blur,
   transition,
   radius,
-  flatTokens,
   tokens,
 } from "../dist/tokens.generated";
