@@ -164,7 +164,7 @@
       "$description": "Component-specific boxShadow token"
     },
     "padding": {
-      "$value": "{spacing.6}",
+      "$value": "{spacing.2xl}",
       "$type": "spacing",
       "$description": "Component-specific spacing token"
     }
@@ -294,7 +294,7 @@
       "$description": "Component-specific borderRadius token"
     },
     "padding": {
-      "$value": "{spacing.4}",
+      "$value": "{spacing.xl}",
       "$type": "spacing",
       "$description": "Component-specific spacing token"
     }

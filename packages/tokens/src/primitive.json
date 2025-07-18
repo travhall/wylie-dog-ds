@@ -322,20 +322,10 @@
       "$type": "spacing",
       "$description": "Base spacing value: 0.5rem"
     },
-    "4": {
-      "$value": "1rem",
-      "$type": "spacing", 
-      "$description": "Base spacing value: 1rem"
-    },
     "lg": {
       "$value": "0.75rem",
       "$type": "spacing",
       "$description": "Base spacing value: 0.75rem"
-    },
-    "6": {
-      "$value": "1.5rem",
-      "$type": "spacing",
-      "$description": "Base spacing value: 1.5rem"
     },
     "xl": {
       "$value": "1rem",
