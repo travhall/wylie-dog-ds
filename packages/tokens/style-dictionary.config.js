@@ -1,13 +1,24 @@
 import StyleDictionary from "style-dictionary";
+import { register } from "@tokens-studio/sd-transforms";
 
-// Register Tailwind 4 @theme format
+// Register tokens-studio transforms for better reference resolution
+await register(StyleDictionary);
+
+// Register Tailwind 4 @theme format with improved naming
 StyleDictionary.registerFormat({
   name: "css/tailwind-theme",
   format: function ({ dictionary }) {
     const variables = [];
 
     dictionary.allTokens.forEach((token) => {
-      const name = token.path.join("-");
+      // Clean up token path to avoid duplicated prefixes
+      const cleanPath = token.path.filter((segment, index, arr) => {
+        // Remove duplicate "Color" prefixes and normalize casing
+        if (segment === "Color" && arr[index - 1] === "Color") return false;
+        return true;
+      });
+      
+      const name = cleanPath.join("-").toLowerCase();
 
       if (token.$type === "color") {
         variables.push(`  --color-${name}: ${token.$value};`);
@@ -41,12 +52,12 @@ StyleDictionary.registerFormat({
   },
 });
 
-// Style Dictionary configuration
+// Style Dictionary configuration with tokens-studio transforms
 const sd = new StyleDictionary({
   source: ["src/primitive.json", "src/semantic.json", "src/component.json"],
   platforms: {
     css: {
-      transformGroup: "css",
+      transformGroup: "tokens-studio", // Use tokens-studio transform group
       buildPath: "dist/",
       files: [
         {
@@ -56,7 +67,7 @@ const sd = new StyleDictionary({
       ],
     },
     js: {
-      transformGroup: "js",
+      transformGroup: "tokens-studio", // Use tokens-studio transform group
       buildPath: "dist/",
       files: [
         {
