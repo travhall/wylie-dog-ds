@@ -21,7 +21,9 @@ StyleDictionary.registerFormat({
       const name = cleanPath.join("-").toLowerCase();
 
       if (token.$type === "color") {
-        variables.push(`  --color-${name}: ${token.$value};`);
+        // Remove "color-" prefix if path already starts with "color"
+        const colorName = name.startsWith("color-") ? name.slice(6) : name;
+        variables.push(`  --color-${colorName}: ${token.$value};`);
       } else if (token.$type === "spacing") {
         variables.push(`  --spacing-${name}: ${token.$value};`);
       } else if (token.$type === "fontSize") {
