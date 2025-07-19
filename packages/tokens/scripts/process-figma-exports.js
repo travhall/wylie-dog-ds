@@ -1,4 +1,5 @@
 import { readFile, writeFile } from 'fs/promises';
+import { convertHexToOklch } from './color-utils.js';
 
 async function processExports() {
   try {
@@ -30,7 +31,7 @@ function flattenTokens(obj) {
     if (value.$type && value.$value !== undefined) {
       result[key] = {
         $type: value.$type === 'float' ? 'dimension' : value.$type,
-        $value: value.$value
+        $value: value.$type === 'color' ? convertHexToOklch(value.$value) : value.$value
       };
     } else {
       result[key] = flattenTokens(value);

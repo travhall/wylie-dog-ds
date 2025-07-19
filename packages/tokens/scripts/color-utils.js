@@ -1,3 +1,37 @@
+import { converter, formatHex } from 'culori';
+
+/**
+ * Convert hex color to OKLCH format using culori
+ * @param {string} hexValue - Hex color string like "#ffffff"
+ * @returns {string} OKLCH color string like "oklch(1 0 0)"
+ */
+export function convertHexToOklch(hexValue) {
+  try {
+    if (typeof hexValue !== 'string' || !hexValue.startsWith('#')) {
+      return hexValue; // Return as-is if not hex
+    }
+    
+    const oklch = converter('oklch');
+    const color = oklch(hexValue);
+    
+    if (!color) {
+      console.warn(`Failed to convert hex ${hexValue} to OKLCH`);
+      return hexValue;
+    }
+    
+    // Format with proper precision
+    const l = (color.l || 0).toFixed(3);
+    const c = (color.c || 0).toFixed(3);
+    const h = (color.h || 0).toFixed(2);
+    
+    return `oklch(${l} ${c} ${h})`;
+    
+  } catch (error) {
+    console.warn(`Failed to convert hex ${hexValue}:`, error.message);
+    return hexValue;
+  }
+}
+
 // Practical OKLCH to hex conversion using known mappings
 // This provides accurate fallbacks for the existing design system colors
 
