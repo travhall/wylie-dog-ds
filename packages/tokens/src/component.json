@@ -1,302 +1,380 @@
 {
-  "button": {
-    "primary": {
+  "Badge": {
+    "default": {
       "background": {
-        "$value": "{color.blue.700}",
         "$type": "color",
-        "$description": "Accessible primary button background (5.93:1 contrast)"
-      },
-      "backgroundHover": {
-        "$value": "{color.blue.800}",
-        "$type": "color",
-        "$description": "Accessible primary button hover state"
-      },
-      "backgroundActive": {
-        "$value": "{color.blue.900}",
-        "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Interactive.primary}"
       },
       "text": {
-        "$value": "{color.white}",
         "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Text.inverse}"
       },
       "border": {
-        "$value": "{color.blue.700}",
         "$type": "color",
-        "$description": "Accessible primary button border"
-      },
-      "borderRadius": {
-        "$value": "{borderRadius.md}",
-        "$type": "borderRadius",
-        "$description": "Component-specific borderRadius token"
-      },
-      "paddingX": {
-        "$value": "{spacing.xl}",
-        "$type": "spacing",
-        "$description": "Component-specific spacing token"
-      },
-      "paddingY": {
-        "$value": "{spacing.md}",
-        "$type": "spacing",
-        "$description": "Component-specific spacing token"
-      },
-      "shadow": {
-        "$value": "{shadow.sm}",
-        "$type": "boxShadow",
-        "$description": "Component-specific boxShadow token"
+        "$value": "{Color.Interactive.primary}"
       }
     },
     "secondary": {
       "background": {
-        "$value": "{color.slate.100}",
         "$type": "color",
-        "$description": "Component-specific color token"
-      },
-      "backgroundHover": {
-        "$value": "{color.slate.200}",
-        "$type": "color",
-        "$description": "Component-specific color token"
-      },
-      "backgroundActive": {
-        "$value": "{color.slate.300}",
-        "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Interactive.secondary}"
       },
       "text": {
-        "$value": "{color.slate.900}",
         "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Text.primary}"
       },
       "border": {
-        "$value": "{color.slate.300}",
         "$type": "color",
-        "$description": "Component-specific color token"
-      },
-      "borderRadius": {
-        "$value": "{borderRadius.md}",
-        "$type": "borderRadius",
-        "$description": "Component-specific borderRadius token"
-      },
-      "paddingX": {
-        "$value": "{spacing.xl}",
-        "$type": "spacing",
-        "$description": "Component-specific spacing token"
-      },
-      "paddingY": {
-        "$value": "{spacing.md}",
-        "$type": "spacing",
-        "$description": "Component-specific spacing token"
-      },
-      "shadow": {
-        "$value": "{shadow.sm}",
-        "$type": "boxShadow",
-        "$description": "Component-specific boxShadow token"
+        "$value": "{Color.Border.secondary}"
       }
     },
-    "ghost": {
-      "background": {
-        "$value": "transparent",
-        "$type": "color",
-        "$description": "Component-specific color token"
-      },
-      "backgroundHover": {
-        "$value": "{color.slate.100}",
-        "$type": "color",
-        "$description": "Component-specific color token"
-      },
-      "backgroundActive": {
-        "$value": "{color.slate.200}",
-        "$type": "color",
-        "$description": "Component-specific color token"
-      },
-      "text": {
-        "$value": "{color.slate.700}",
-        "$type": "color",
-        "$description": "Component-specific color token"
-      },
-      "border": {
-        "$value": "transparent",
-        "$type": "color",
-        "$description": "Component-specific color token"
-      },
-      "borderRadius": {
-        "$value": "{borderRadius.md}",
-        "$type": "borderRadius",
-        "$description": "Component-specific borderRadius token"
-      },
-      "paddingX": {
-        "$value": "{spacing.xl}",
-        "$type": "spacing",
-        "$description": "Component-specific spacing token"
-      },
-      "paddingY": {
-        "$value": "{spacing.md}",
-        "$type": "spacing",
-        "$description": "Component-specific spacing token"
-      },
-      "shadow": {
-        "$value": "none",
-        "$type": "boxShadow",
-        "$description": "Component-specific boxShadow token"
-      }
-    }
-  },
-  "card": {
-    "background": {
-      "$value": "{color.white}",
-      "$type": "color",
-      "$description": "Component-specific color token"
-    },
-    "border": {
-      "$value": "{color.slate.200}",
-      "$type": "color",
-      "$description": "Component-specific color token"
-    },
-    "borderRadius": {
-      "$value": "{borderRadius.lg}",
-      "$type": "borderRadius",
-      "$description": "Component-specific borderRadius token"
-    },
-    "shadow": {
-      "$value": "{shadow.md}",
-      "$type": "boxShadow",
-      "$description": "Component-specific boxShadow token"
-    },
-    "padding": {
-      "$value": "{spacing.2xl}",
-      "$type": "spacing",
-      "$description": "Component-specific spacing token"
-    }
-  },
-  "input": {
-    "background": {
-      "$value": "{color.white}",
-      "$type": "color",
-      "$description": "Component-specific color token"
-    },
-    "backgroundDisabled": {
-      "$value": "{color.slate.50}",
-      "$type": "color",
-      "$description": "Component-specific color token"
-    },
-    "border": {
-      "$value": "{color.slate.300}",
-      "$type": "color",
-      "$description": "Component-specific color token"
-    },
-    "borderFocus": {
-      "$value": "{color.blue.500}",
-      "$type": "color",
-      "$description": "Component-specific color token"
-    },
-    "borderError": {
-      "$value": "{color.red.500}",
-      "$type": "color",
-      "$description": "Component-specific color token"
-    },
-    "text": {
-      "$value": "{color.slate.900}",
-      "$type": "color",
-      "$description": "Component-specific color token"
-    },
-    "textPlaceholder": {
-      "$value": "{color.slate.500}",
-      "$type": "color",
-      "$description": "Component-specific color token"
-    },
-    "borderRadius": {
-      "$value": "{borderRadius.md}",
-      "$type": "borderRadius",
-      "$description": "Component-specific borderRadius token"
-    },
-    "paddingX": {
-      "$value": "{spacing.lg}",
-      "$type": "spacing",
-      "$description": "Component-specific spacing token"
-    },
-    "paddingY": {
-      "$value": "{spacing.md}",
-      "$type": "spacing",
-      "$description": "Component-specific spacing token"
-    }
-  },
-  "alert": {
     "success": {
       "background": {
-        "$value": "{color.green.50}",
         "$type": "color",
-        "$description": "Component-specific color token"
-      },
-      "border": {
-        "$value": "{color.green.500}",
-        "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Interactive.success}"
       },
       "text": {
-        "$value": "{color.green.900}",
         "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Text.inverse}"
       },
-      "icon": {
-        "$value": "{color.green.500}",
+      "border": {
         "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Interactive.success}"
       }
     },
     "warning": {
       "background": {
-        "$value": "{color.yellow.50}",
         "$type": "color",
-        "$description": "Component-specific color token"
-      },
-      "border": {
-        "$value": "{color.yellow.500}",
-        "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Interactive.warning}"
       },
       "text": {
-        "$value": "{color.yellow.900}",
         "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Text.inverse}"
       },
-      "icon": {
-        "$value": "{color.yellow.500}",
+      "border": {
         "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Interactive.warning}"
       }
     },
-    "error": {
+    "destructive": {
       "background": {
-        "$value": "{color.red.50}",
         "$type": "color",
-        "$description": "Component-specific color token"
-      },
-      "border": {
-        "$value": "{color.red.500}",
-        "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Surface.danger}"
       },
       "text": {
-        "$value": "{color.red.900}",
         "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Text.danger}"
       },
-      "icon": {
-        "$value": "{color.red.500}",
+      "border": {
         "$type": "color",
-        "$description": "Component-specific color token"
+        "$value": "{Color.Border.danger}"
       }
     },
-    "borderRadius": {
-      "$value": "{borderRadius.lg}",
-      "$type": "borderRadius",
-      "$description": "Component-specific borderRadius token"
+    "outline": {
+      "background": {
+        "$type": "color",
+        "$value": "{Color.Background.primary}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{Color.Text.primary}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{Color.Border.primary}"
+      }
     },
     "padding": {
-      "$value": "{spacing.xl}",
-      "$type": "spacing",
-      "$description": "Component-specific spacing token"
+      "sm": {
+        "$type": "dimension",
+        "$value": "{Space.xs}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{Space.sm}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{Space.md}"
+      }
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{Radius.full}"
+    },
+    "font-size": {
+      "sm": {
+        "$type": "string",
+        "$value": "{Typography.caption}"
+      },
+      "md": {
+        "$type": "string",
+        "$value": "{Typography.body-small}"
+      },
+      "lg": {
+        "$type": "string",
+        "$value": "{Typography.body}"
+      }
+    }
+  },
+  "Button": {
+    "primary": {
+      "background": {
+        "$type": "color",
+        "$value": "{Color.Interactive.primary}"
+      },
+      "background-hover": {
+        "$type": "color",
+        "$value": "{Color.Interactive.primary-hover}"
+      },
+      "background-active": {
+        "$type": "color",
+        "$value": "{Color.Interactive.primary-active}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{Color.Text.inverse}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{Color.Interactive.primary}"
+      }
+    },
+    "secondary": {
+      "background": {
+        "$type": "color",
+        "$value": "{Color.Interactive.secondary}"
+      },
+      "background-hover": {
+        "$type": "color",
+        "$value": "{Color.Interactive.secondary-hover}"
+      },
+      "background-active": {
+        "$type": "color",
+        "$value": "{Color.Interactive.secondary-active}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{Color.Text.primary}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{Color.Border.secondary}"
+      }
+    },
+    "outline": {
+      "background": {
+        "$type": "color",
+        "$value": "{Color.Background.primary}"
+      },
+      "background-hover": {
+        "$type": "color",
+        "$value": "{Color.Interactive.secondary}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{Color.Text.brand}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{Color.Border.brand}"
+      }
+    },
+    "destructive": {
+      "background": {
+        "$type": "color",
+        "$value": "{Color.Interactive.danger}"
+      },
+      "background-hover": {
+        "$type": "color",
+        "$value": "{Color.Interactive.danger-hover}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{Color.Text.inverse}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{Color.Interactive.danger}"
+      }
+    },
+    "height": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{Size.sm}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{Size.md}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{Size.lg}"
+      }
+    },
+    "padding-x": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{Space.md}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{Space.lg}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{Space.xl}"
+      }
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{Radius.md}"
+    },
+    "font-size": {
+      "sm": {
+        "$type": "string",
+        "$value": "{Typography.body-small}"
+      },
+      "md": {
+        "$type": "string",
+        "$value": "{Typography.body}"
+      },
+      "lg": {
+        "$type": "string",
+        "$value": "{Typography.body-large}"
+      }
+    },
+    "shadow": {
+      "$type": "string",
+      "$value": "{Shadow.sm}"
+    }
+  },
+  "Card": {
+    "background": {
+      "$type": "color",
+      "$value": "{Color.Surface.primary}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{Color.Border.primary}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{Space.xl}"
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{Space.lg}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{Radius.lg}"
+    },
+    "shadow": {
+      "$type": "string",
+      "$value": "{Shadow.sm}"
+    },
+    "header": {
+      "gap": {
+        "$type": "dimension",
+        "$value": "{Space.sm}"
+      },
+      "title": {
+        "font-size": {
+          "$type": "string",
+          "$value": "{Typography.heading-4}"
+        },
+        "color": {
+          "$type": "color",
+          "$value": "{Color.Text.primary}"
+        }
+      },
+      "description": {
+        "font-size": {
+          "$type": "string",
+          "$value": "{Typography.body-small}"
+        },
+        "color": {
+          "$type": "color",
+          "$value": "{Color.Text.secondary}"
+        }
+      }
+    },
+    "footer": {
+      "gap": {
+        "$type": "dimension",
+        "$value": "{Space.sm}"
+      }
+    }
+  },
+  "Input": {
+    "background": {
+      "$type": "color",
+      "$value": "{Color.Background.primary}"
+    },
+    "background-hover": {
+      "$type": "color",
+      "$value": "{Color.Background.secondary}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{Color.Border.primary}"
+    },
+    "border-focus": {
+      "$type": "color",
+      "$value": "{Color.Border.focus}"
+    },
+    "border-error": {
+      "$type": "color",
+      "$value": "{Color.Border.danger}"
+    },
+    "text": {
+      "$type": "color",
+      "$value": "{Color.Text.primary}"
+    },
+    "placeholder": {
+      "$type": "color",
+      "$value": "{Color.Text.tertiary}"
+    },
+    "disabled": {
+      "background": {
+        "$type": "color",
+        "$value": "{Color.Background.tertiary}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{Color.Text.disabled}"
+      }
+    },
+    "height": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{Size.sm}"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{Size.md}"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{Size.lg}"
+      }
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{Space.md}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{Radius.md}"
+    },
+    "font-size": {
+      "$type": "string",
+      "$value": "{Typography.body}"
+    },
+    "shadow": {
+      "$type": "string",
+      "$value": "{Shadow.sm}"
     }
   }
 }

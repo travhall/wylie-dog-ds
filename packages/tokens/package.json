@@ -18,6 +18,7 @@
     "dist"
   ],
   "scripts": {
+    "process": "node scripts/process-figma-exports.js",
     "build": "node style-dictionary.config.js && tsup",
     "dev": "node style-dictionary.config.js --watch & tsup --watch",
     "clean": "rm -rf dist",
