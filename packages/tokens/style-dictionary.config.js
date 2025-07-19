@@ -34,6 +34,63 @@ StyleDictionary.registerFormat({
   },
 });
 
+// Register hierarchical JS format for Storybook
+StyleDictionary.registerFormat({
+  name: "javascript/hierarchical",
+  format: function ({ dictionary }) {
+    const hierarchical = {};
+
+    dictionary.allTokens.forEach((token) => {
+      const cleanPath = token.path.filter((segment, index, arr) => {
+        if (segment === "Color" && arr[index - 1] === "Color") return false;
+        return true;
+      });
+
+      if (token.$type === "color" && cleanPath[0] === "Color") {
+        if (!hierarchical.color) hierarchical.color = {};
+        const colorName = cleanPath[1]?.toLowerCase();
+        const shade = cleanPath[2];
+        
+        if (colorName && shade) {
+          if (!hierarchical.color[colorName]) hierarchical.color[colorName] = {};
+          hierarchical.color[colorName][shade] = token.$value;
+        }
+      } else if (token.$type === "dimension" && cleanPath[0] === "Spacing") {
+        if (!hierarchical.spacing) hierarchical.spacing = {};
+        const key = cleanPath[1];
+        if (key) {
+          hierarchical.spacing[key] = token.$value;
+        }
+      } else if (token.$type === "boxShadow" && cleanPath[0] === "Shadow") {
+        if (!hierarchical.shadow) hierarchical.shadow = {};
+        const key = cleanPath[1]?.toLowerCase();
+        if (key) {
+          hierarchical.shadow[key] = token.$value;
+        }
+      } else if (token.$type === "spacing") {
+        if (!hierarchical.spacing) hierarchical.spacing = {};
+        const key = cleanPath.join("-").toLowerCase();
+        hierarchical.spacing[key] = token.$value;
+      } else if (token.$type === "boxShadow") {
+        if (!hierarchical.shadow) hierarchical.shadow = {};
+        const key = cleanPath.join("-").toLowerCase();
+        hierarchical.shadow[key] = token.$value;
+      }
+    });
+
+    return `/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+${Object.entries(hierarchical).map(([category, tokens]) => 
+  `export const ${category} = ${JSON.stringify(tokens, null, 2)};`
+).join('\n\n')}
+
+// Empty shadow object for now
+export const shadow = {};`;
+  },
+});
+
 // Build light mode
 const lightSd = new StyleDictionary({
   source: ["src/primitive.json", "src/semantic-light.json", "src/component-light.json"],
@@ -53,6 +110,9 @@ const lightSd = new StyleDictionary({
       files: [{
         destination: "tokens.generated.ts",
         format: "javascript/es6",
+      }, {
+        destination: "tokens.hierarchical.ts",
+        format: "javascript/hierarchical",
       }],
     },
   },

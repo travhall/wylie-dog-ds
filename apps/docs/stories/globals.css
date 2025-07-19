@@ -1,5 +1,2 @@
-/* packages/ui/src/globals.css */
-@import "@wyliedog/tokens/css";
-
 /* Import Tailwind - correct 4.x syntax */
 @import "tailwindcss";
