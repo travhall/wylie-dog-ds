@@ -23,10 +23,7 @@
     "dev": "node style-dictionary.config.js --watch & tsup --watch",
     "clean": "rm -rf dist",
     "sync:figma": "node scripts/figma-sync.js",
-    "generate:types": "node scripts/generate-types.js",
-    "test:tokens": "node scripts/validate-tokens.js",
-    "migration:w3c": "node scripts/migrate-to-w3c.js",
-    "validate:accessibility": "node scripts/validate-accessibility.js"
+    "test:tokens": "node scripts/validate-tokens.js"
   },
   "dependencies": {
     "culori": "^4.0.2"
