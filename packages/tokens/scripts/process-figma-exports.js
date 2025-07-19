@@ -8,17 +8,21 @@ async function processExports() {
     const primitiveTokens = primitive[0].primitive.modes.Value;
     await writeFile('src/primitive.json', JSON.stringify(flattenTokens(primitiveTokens), null, 2));
     
-    // Read semantic and process both light and dark
+    // Read semantic and process BOTH modes - create separate files
     const semantic = JSON.parse(await readFile('figma-exports/semantic.json', 'utf8'));
-    const semanticLight = semantic[0].semantic.modes.Light;
-    await writeFile('src/semantic.json', JSON.stringify(flattenTokens(semanticLight), null, 2));
+    const semanticModes = semantic[0].semantic.modes;
     
-    // Read component and process
+    await writeFile('src/semantic-light.json', JSON.stringify(flattenTokens(semanticModes.Light), null, 2));
+    await writeFile('src/semantic-dark.json', JSON.stringify(flattenTokens(semanticModes.Dark), null, 2));
+    
+    // Read component and process BOTH modes - create separate files
     const component = JSON.parse(await readFile('figma-exports/component.json', 'utf8'));
-    const componentLight = component[0].component.modes.Light;
-    await writeFile('src/component.json', JSON.stringify(flattenTokens(componentLight), null, 2));
+    const componentModes = component[0].component.modes;
     
-    console.log('✅ Processed all exports');
+    await writeFile('src/component-light.json', JSON.stringify(flattenTokens(componentModes.Light), null, 2));
+    await writeFile('src/component-dark.json', JSON.stringify(flattenTokens(componentModes.Dark), null, 2));
+    
+    console.log('✅ Processed all exports with both light and dark modes');
   } catch (error) {
     console.error('❌ Error:', error.message);
   }

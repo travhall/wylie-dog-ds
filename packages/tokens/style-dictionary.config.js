@@ -1,19 +1,16 @@
 import StyleDictionary from "style-dictionary";
 import { register } from "@tokens-studio/sd-transforms";
 
-// Register tokens-studio transforms for better reference resolution
 await register(StyleDictionary);
 
-// Register Tailwind 4 @theme format with improved naming
+// Register CSS format with both light and dark modes
 StyleDictionary.registerFormat({
-  name: "css/tailwind-theme",
-  format: function ({ dictionary }) {
+  name: "css/tailwind-theme-modes",
+  format: function ({ dictionary, options }) {
     const variables = [];
 
     dictionary.allTokens.forEach((token) => {
-      // Clean up token path to avoid duplicated prefixes
       const cleanPath = token.path.filter((segment, index, arr) => {
-        // Remove duplicate "Color" prefixes and normalize casing
         if (segment === "Color" && arr[index - 1] === "Color") return false;
         return true;
       });
@@ -21,67 +18,74 @@ StyleDictionary.registerFormat({
       const name = cleanPath.join("-").toLowerCase();
 
       if (token.$type === "color") {
-        // Remove "color-" prefix if path already starts with "color"
         const colorName = name.startsWith("color-") ? name.slice(6) : name;
         variables.push(`  --color-${colorName}: ${token.$value};`);
       } else if (token.$type === "spacing") {
         variables.push(`  --spacing-${name}: ${token.$value};`);
-      } else if (token.$type === "fontSize") {
-        variables.push(`  --font-size-${name}: ${token.$value};`);
-      } else if (token.$type === "fontWeight") {
-        variables.push(`  --font-weight-${name}: ${token.$value};`);
-      } else if (token.$type === "fontFamily") {
-        const families = Array.isArray(token.$value)
-          ? token.$value.join(", ")
-          : token.$value;
-        variables.push(`  --font-family-${name}: ${families};`);
-      } else if (token.$type === "borderRadius") {
-        variables.push(`  --radius-${name}: ${token.$value};`);
-      } else if (token.$type === "boxShadow") {
-        variables.push(`  --shadow-${name}: ${token.$value};`);
-      } else if (token.$type === "blur") {
-        variables.push(`  --blur-${name}: ${token.$value};`);
-      } else if (token.$type === "duration") {
-        variables.push(`  --duration-${name}: ${token.$value};`);
-      } else if (token.$type === "cubicBezier") {
-        variables.push(`  --ease-${name}: ${token.$value};`);
       } else {
         variables.push(`  --${name}: ${token.$value};`);
       }
     });
 
-    return `@theme {\n${variables.join("\n")}\n}`;
+    const selector = options.mode === 'dark' ? '.dark' : '@theme';
+    const prefix = options.mode === 'dark' ? '.dark {\n' : '@theme {\n';
+    
+    return `${prefix}${variables.join("\n")}\n}`;
   },
 });
 
-// Style Dictionary configuration with tokens-studio transforms
-const sd = new StyleDictionary({
-  source: ["src/primitive.json", "src/semantic.json", "src/component.json"],
+// Build light mode
+const lightSd = new StyleDictionary({
+  source: ["src/primitive.json", "src/semantic-light.json", "src/component-light.json"],
   platforms: {
     css: {
-      transformGroup: "tokens-studio", // Use tokens-studio transform group
+      transformGroup: "tokens-studio",
       buildPath: "dist/",
-      files: [
-        {
-          destination: "tokens.css",
-          format: "css/tailwind-theme",
-        },
-      ],
+      options: { mode: 'light' },
+      files: [{
+        destination: "tokens.css",
+        format: "css/tailwind-theme-modes",
+      }],
     },
     js: {
-      transformGroup: "tokens-studio", // Use tokens-studio transform group
+      transformGroup: "tokens-studio",
       buildPath: "dist/",
-      files: [
-        {
-          destination: "tokens.generated.ts",
-          format: "javascript/es6",
-        },
-      ],
+      files: [{
+        destination: "tokens.generated.ts",
+        format: "javascript/es6",
+      }],
     },
   },
 });
 
-// Build tokens
-await sd.buildAllPlatforms();
+// Build dark mode - include primitives for reference resolution but filter output
+const darkSd = new StyleDictionary({
+  source: ["src/primitive.json", "src/semantic-dark.json", "src/component-dark.json"],
+  platforms: {
+    css: {
+      transformGroup: "tokens-studio",
+      buildPath: "dist/",
+      options: { mode: 'dark' },
+      files: [{
+        destination: "tokens-dark.css",
+        format: "css/tailwind-theme-modes",
+        filter: (token) => {
+          // Only output semantic/component tokens, not primitives
+          return token.filePath.includes('semantic') || token.filePath.includes('component');
+        }
+      }],
+    },
+  },
+});
 
-console.log("✅ Built design tokens for Tailwind 4");
+// Build both modes
+await lightSd.buildAllPlatforms();
+await darkSd.buildAllPlatforms();
+
+// Combine CSS files
+import { readFile, writeFile } from 'fs/promises';
+const lightCSS = await readFile('dist/tokens.css', 'utf8');
+const darkCSS = await readFile('dist/tokens-dark.css', 'utf8');
+await writeFile('dist/tokens.css', `${lightCSS}\n\n${darkCSS}`);
+
+console.log("✅ Built design tokens with light and dark modes");
