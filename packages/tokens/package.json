@@ -19,11 +19,13 @@
   ],
   "scripts": {
     "process": "node scripts/process-figma-exports.js",
-    "build": "node style-dictionary.config.js && tsup",
+    "build": "node style-dictionary.config.js && tsup && pnpm validate && pnpm size-check",
     "dev": "node style-dictionary.config.js --watch & tsup --watch",
     "clean": "rm -rf dist",
     "sync:figma": "node scripts/figma-sync.js",
-    "test:tokens": "node scripts/validate-tokens.js"
+    "test:tokens": "node scripts/validate-tokens.js",
+    "size-check": "node scripts/monitor-bundle-size.js",
+    "validate": "node scripts/validate-build.js"
   },
   "dependencies": {
     "culori": "^4.0.2"
