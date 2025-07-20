@@ -1,8 +1,12 @@
-/* Import Tailwind - correct 4.x syntax */
+/* Import Tailwind first */
+@import "tailwindcss";
+
+/* Then import design tokens with @theme directives */
+@import "@wyliedog/tokens/css";
 @import "tailwindcss";
 
 /* App-specific styles */
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,4 +28,4 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
