@@ -1,5 +1,11 @@
-/* Import Tailwind first */
-@import "tailwindcss";
-
 /* Then import design tokens with @theme directives */
-@import "@wyliedog/tokens/css";
+/* @import "@repo/tailwind-config"; */
+
+/* @import "@wyliedog/ui/styles.css"; */
+
+/* packages/ui/src/styles.css */
+/* Component-specific styles only - NO Tailwind import */
+/* @layer components {
+  .ui-specific-overrides {
+  }
+} */
