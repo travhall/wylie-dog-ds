@@ -1,3 +1,3 @@
 /* packages/tailwind-config/shared-styles.css */
 @import "tailwindcss";
-@import "@wyliedog/tokens/css";
+@import "../tokens/dist/tokens.css";
