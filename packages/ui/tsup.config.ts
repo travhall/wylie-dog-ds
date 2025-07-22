@@ -31,7 +31,13 @@ export default defineConfig((options) => ({
     "src/command.tsx",
     "src/toggle.tsx",
     "src/toggle-group.tsx",
-    "src/collapsible.tsx"
+    "src/collapsible.tsx",
+    "src/scroll-area.tsx",
+    "src/slider.tsx",
+    "src/pagination.tsx",
+    "src/menubar.tsx",
+    "src/navigation-menu.tsx",
+    "src/table.tsx"
   ],
   format: ["cjs", "esm"],
   dts: true,

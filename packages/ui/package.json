@@ -169,6 +169,36 @@
       "types": "./src/collapsible.tsx",
       "import": "./dist/collapsible.mjs",
       "require": "./dist/collapsible.js"
+    },
+    "./scroll-area": {
+      "types": "./src/scroll-area.tsx",
+      "import": "./dist/scroll-area.mjs",
+      "require": "./dist/scroll-area.js"
+    },
+    "./slider": {
+      "types": "./src/slider.tsx",
+      "import": "./dist/slider.mjs",
+      "require": "./dist/slider.js"
+    },
+    "./pagination": {
+      "types": "./src/pagination.tsx",
+      "import": "./dist/pagination.mjs",
+      "require": "./dist/pagination.js"
+    },
+    "./menubar": {
+      "types": "./src/menubar.tsx",
+      "import": "./dist/menubar.mjs",
+      "require": "./dist/menubar.js"
+    },
+    "./navigation-menu": {
+      "types": "./src/navigation-menu.tsx",
+      "import": "./dist/navigation-menu.mjs",
+      "require": "./dist/navigation-menu.js"
+    },
+    "./table": {
+      "types": "./src/table.tsx",
+      "import": "./dist/table.mjs",
+      "require": "./dist/table.js"
     }
   },
   "scripts": {
@@ -192,10 +222,14 @@
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-hover-card": "^1.1.2",
     "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-menubar": "^1.1.11",
+    "@radix-ui/react-navigation-menu": "^1.2.11",
     "@radix-ui/react-popover": "^1.1.2",
     "@radix-ui/react-radio-group": "^1.2.1",
+    "@radix-ui/react-scroll-area": "^1.2.9",
     "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slider": "^1.2.11",
     "@radix-ui/react-switch": "^1.1.1",
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toggle": "^1.1.9",
