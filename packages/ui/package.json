@@ -64,6 +64,31 @@
       "types": "./src/select.tsx",
       "import": "./dist/select.mjs",
       "require": "./dist/select.js"
+    },
+    "./separator": {
+      "types": "./src/separator.tsx",
+      "import": "./dist/separator.mjs",
+      "require": "./dist/separator.js"
+    },
+    "./tabs": {
+      "types": "./src/tabs.tsx",
+      "import": "./dist/tabs.mjs",
+      "require": "./dist/tabs.js"
+    },
+    "./dialog": {
+      "types": "./src/dialog.tsx",
+      "import": "./dist/dialog.mjs",
+      "require": "./dist/dialog.js"
+    },
+    "./dropdown-menu": {
+      "types": "./src/dropdown-menu.tsx",
+      "import": "./dist/dropdown-menu.mjs",
+      "require": "./dist/dropdown-menu.js"
+    },
+    "./sheet": {
+      "types": "./src/sheet.tsx",
+      "import": "./dist/sheet.mjs",
+      "require": "./dist/sheet.js"
     }
   },
   "scripts": {

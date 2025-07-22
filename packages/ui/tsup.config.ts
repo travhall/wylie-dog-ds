@@ -10,7 +10,12 @@ export default defineConfig((options) => ({
     "src/textarea.tsx",
     "src/checkbox.tsx",
     "src/switch.tsx",
-    "src/select.tsx"
+    "src/select.tsx",
+    "src/separator.tsx",
+    "src/tabs.tsx",
+    "src/dialog.tsx",
+    "src/dropdown-menu.tsx",
+    "src/sheet.tsx"
   ],
   format: ["cjs", "esm"],
   dts: true,
