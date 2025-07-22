@@ -26,7 +26,12 @@ export default defineConfig((options) => ({
     "src/radio-group.tsx",
     "src/alert-dialog.tsx",
     "src/hover-card.tsx",
-    "src/popover.tsx"
+    "src/popover.tsx",
+    "src/context-menu.tsx",
+    "src/command.tsx",
+    "src/toggle.tsx",
+    "src/toggle-group.tsx",
+    "src/collapsible.tsx"
   ],
   format: ["cjs", "esm"],
   dts: true,

@@ -56,6 +56,11 @@ import { RadioGroup, RadioGroupItem } from "@wyliedog/ui/radio-group";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@wyliedog/ui/alert-dialog";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@wyliedog/ui/hover-card";
 import { Popover, PopoverContent, PopoverTrigger } from "@wyliedog/ui/popover";
+import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger, ContextMenuSeparator, ContextMenuCheckboxItem } from "@wyliedog/ui/context-menu";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from "@wyliedog/ui/command";
+import { Toggle } from "@wyliedog/ui/toggle";
+import { ToggleGroup, ToggleGroupItem } from "@wyliedog/ui/toggle-group";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@wyliedog/ui/collapsible";
 import { CheckIcon, ChevronDownIcon, InfoIcon, ShieldCheckIcon, XIcon } from "lucide-react";
 
 export default function Home() {
@@ -838,6 +843,134 @@ export default function Home() {
                 </PopoverContent>
               </Popover>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* ContextMenu Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>ContextMenu</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ContextMenu>
+              <ContextMenuTrigger className="flex h-20 w-full items-center justify-center rounded-md border border-dashed text-sm">
+                Right click here
+              </ContextMenuTrigger>
+              <ContextMenuContent className="w-64">
+                <ContextMenuItem>Profile</ContextMenuItem>
+                <ContextMenuItem>Billing</ContextMenuItem>
+                <ContextMenuItem>Team</ContextMenuItem>
+                <ContextMenuSeparator />
+                <ContextMenuCheckboxItem checked>Show Bookmarks</ContextMenuCheckboxItem>
+                <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+                <ContextMenuSeparator />
+                <ContextMenuItem>Print</ContextMenuItem>
+              </ContextMenuContent>
+            </ContextMenu>
+          </CardContent>
+        </Card>
+
+        {/* Command Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Command</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Command className="rounded-lg border shadow-md">
+              <CommandInput placeholder="Type a command or search..." />
+              <CommandList>
+                <CommandEmpty>No results found.</CommandEmpty>
+                <CommandGroup>
+                  <div className="px-2 py-1.5 text-xs font-medium text-gray-500">Suggestions</div>
+                  <CommandItem>Calendar</CommandItem>
+                  <CommandItem>Search Emoji</CommandItem>
+                  <CommandItem>Calculator</CommandItem>
+                </CommandGroup>
+                <CommandSeparator />
+                <CommandGroup>
+                  <div className="px-2 py-1.5 text-xs font-medium text-gray-500">Settings</div>
+                  <CommandItem>Profile</CommandItem>
+                  <CommandItem>Billing</CommandItem>
+                  <CommandItem>Settings</CommandItem>
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </CardContent>
+        </Card>
+
+        {/* Toggle Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Toggle</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <Toggle aria-label="Toggle bold">Bold</Toggle>
+                <Toggle aria-label="Toggle italic">Italic</Toggle>
+                <Toggle aria-label="Toggle underline">Underline</Toggle>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Toggle size="sm" aria-label="Small toggle">Sm</Toggle>
+                <Toggle size="default" aria-label="Default toggle">Default</Toggle>
+                <Toggle size="lg" aria-label="Large toggle">Lg</Toggle>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* ToggleGroup Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>ToggleGroup</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-medium mb-2">Single Selection</h4>
+                <ToggleGroup type="single" defaultValue="center">
+                  <ToggleGroupItem value="left" aria-label="Align left">Left</ToggleGroupItem>
+                  <ToggleGroupItem value="center" aria-label="Align center">Center</ToggleGroupItem>
+                  <ToggleGroupItem value="right" aria-label="Align right">Right</ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+              <div>
+                <h4 className="text-sm font-medium mb-2">Multiple Selection</h4>
+                <ToggleGroup type="multiple" defaultValue={["bold"]}>
+                  <ToggleGroupItem value="bold" aria-label="Bold">Bold</ToggleGroupItem>
+                  <ToggleGroupItem value="italic" aria-label="Italic">Italic</ToggleGroupItem>
+                  <ToggleGroupItem value="underline" aria-label="Underline">Underline</ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Collapsible Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Collapsible</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Collapsible>
+              <CollapsibleTrigger asChild>
+                <Button variant="ghost" className="flex w-full justify-between p-0">
+                  @peduarte starred 3 repositories
+                  <ChevronDownIcon className="h-4 w-4" />
+                </Button>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-2 mt-2">
+                <div className="rounded-md border px-4 py-2 font-mono text-sm shadow-sm">
+                  @radix-ui/primitives
+                </div>
+                <div className="rounded-md border px-4 py-2 font-mono text-sm shadow-sm">
+                  @radix-ui/colors
+                </div>
+                <div className="rounded-md border px-4 py-2 font-mono text-sm shadow-sm">
+                  @stitches/react
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
           </CardContent>
         </Card>
 
