@@ -27,10 +27,12 @@ StyleDictionary.registerFormat({
       }
     });
 
-    const selector = options.mode === 'dark' ? '.dark' : '@theme';
-    const prefix = options.mode === 'dark' ? '.dark {\n' : '@theme {\n';
-    
-    return `${prefix}${variables.join("\n")}\n}`;
+    if (options.mode === 'dark') {
+      return `.dark {\n${variables.join("\n")}\n}`;
+    } else {
+      // Light mode includes the @import and @theme
+      return `@import "tailwindcss";\n\n@theme {\n${variables.join("\n")}\n}`;
+    }
   },
 });
 
@@ -93,11 +95,11 @@ export const shadow = {};`;
 
 // Build light mode
 const lightSd = new StyleDictionary({
-  source: ["src/primitive.json", "src/semantic-light.json", "src/component-light.json"],
+  source: ["../tokens/src/primitive.json", "../tokens/src/semantic-light.json", "../tokens/src/component-light.json"],
   platforms: {
     css: {
       transformGroup: "tokens-studio",
-      buildPath: "dist/",
+      buildPath: "src/styles/",
       options: { mode: 'light' },
       files: [{
         destination: "tokens.css",
@@ -106,12 +108,12 @@ const lightSd = new StyleDictionary({
     },
     js: {
       transformGroup: "tokens-studio",
-      buildPath: "dist/",
+      buildPath: "src/tokens/",
       files: [{
-        destination: "tokens.generated.ts",
+        destination: "index.ts",
         format: "javascript/es6",
       }, {
-        destination: "tokens.hierarchical.ts",
+        destination: "hierarchical.ts",
         format: "javascript/hierarchical",
       }],
     },
@@ -120,11 +122,11 @@ const lightSd = new StyleDictionary({
 
 // Build dark mode - include primitives for reference resolution but filter output
 const darkSd = new StyleDictionary({
-  source: ["src/primitive.json", "src/semantic-dark.json", "src/component-dark.json"],
+  source: ["../tokens/src/primitive.json", "../tokens/src/semantic-dark.json", "../tokens/src/component-dark.json"],
   platforms: {
     css: {
       transformGroup: "tokens-studio",
-      buildPath: "dist/",
+      buildPath: "src/styles/",
       options: { mode: 'dark' },
       files: [{
         destination: "tokens-dark.css",
@@ -144,8 +146,8 @@ await darkSd.buildAllPlatforms();
 
 // Combine CSS files
 import { readFile, writeFile } from 'fs/promises';
-const lightCSS = await readFile('dist/tokens.css', 'utf8');
-const darkCSS = await readFile('dist/tokens-dark.css', 'utf8');
-await writeFile('dist/tokens.css', `${lightCSS}\n\n${darkCSS}`);
+const lightCSS = await readFile('src/styles/tokens.css', 'utf8');
+const darkCSS = await readFile('src/styles/tokens-dark.css', 'utf8');
+await writeFile('src/styles/tokens.css', `${lightCSS}\n\n${darkCSS}`);
 
 console.log("✅ Built design tokens with light and dark modes");

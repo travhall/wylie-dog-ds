@@ -9,7 +9,17 @@
     "dist"
   ],
   "exports": {
-    "./styles.css": "./dist/index.css",
+    "./styles": "./dist/index.css",
+    "./tokens": {
+      "types": "./src/tokens/index.ts",
+      "import": "./src/tokens/index.ts",
+      "require": "./src/tokens/index.ts"
+    },
+    "./tokens/hierarchical": {
+      "types": "./src/tokens/hierarchical.ts", 
+      "import": "./src/tokens/hierarchical.ts",
+      "require": "./src/tokens/hierarchical.ts"
+    },
     "./button": {
       "types": "./src/button.tsx",
       "import": "./dist/button.mjs",
@@ -32,17 +42,17 @@
     }
   },
   "scripts": {
-    "build": "pnpm run build:styles && pnpm run build:components",
-    "build:styles": "pnpm --filter @wyliedog/tokens run build && tailwindcss -i ./src/styles.css -o ./dist/index.css",
+    "build-tokens": "node style-dictionary.config.js",
+    "build": "pnpm build-tokens && pnpm build:styles && pnpm build:components",
+    "build:styles": "tailwindcss -i ./src/styles/index.css -o ./dist/index.css",
     "build:components": "tsup",
-    "dev": "pnpm run dev:styles & pnpm run dev:components",
-    "dev:styles": "pnpm --filter @wyliedog/tokens run build && tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
+    "dev": "pnpm build-tokens && pnpm dev:styles & pnpm dev:components",
+    "dev:styles": "tailwindcss -i ./src/styles/index.css -o ./dist/index.css --watch",
     "dev:components": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {
-    "@wyliedog/tokens": "workspace:*",
     "react": "^19.1.0"
   },
   "devDependencies": {
@@ -50,9 +60,12 @@
     "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@tailwindcss/cli": "^4.1.11",
+    "@tokens-studio/sd-transforms": "^2.0.1",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "culori": "^4.0.2",
     "eslint": "^9.31.0",
+    "style-dictionary": "^5.0.1",
     "tailwindcss": "^4.1.11",
     "tsup": "^8.5.0",
     "typescript": "5.8.3"

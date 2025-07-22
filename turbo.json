@@ -17,6 +17,11 @@
       "dependsOn": ["build:styles"],
       "cache": true
     },
+    "build-tokens": {
+      "inputs": ["../tokens/src/*.json", "style-dictionary.config.js"],
+      "outputs": ["src/styles/tokens.css", "src/tokens/*.ts"],
+      "cache": true
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },

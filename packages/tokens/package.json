@@ -7,25 +7,18 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./css": "./dist/tokens.css"
+    "./src/*": "./src/*.json"
   },
   "files": [
-    "dist"
+    "src"
   ],
   "scripts": {
     "process": "node scripts/process-figma-exports.js",
-    "build": "node style-dictionary.config.js && tsup && pnpm validate && pnpm size-check",
-    "dev": "node style-dictionary.config.js --watch & tsup --watch",
+    "build": "echo 'Token JSON files are consumed directly by @wyliedog/ui package'",
+    "dev": "echo 'No dev mode needed - JSON files are consumed directly'",
     "clean": "rm -rf dist",
     "sync:figma": "node scripts/figma-sync.js",
-    "test:tokens": "node scripts/validate-tokens.js",
-    "size-check": "node scripts/monitor-bundle-size.js",
-    "validate": "node scripts/validate-build.js"
+    "test:tokens": "node scripts/validate-tokens.js"
   },
   "dependencies": {
     "culori": "^4.0.2"

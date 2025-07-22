@@ -20,9 +20,6 @@ importers:
 
   apps/docs:
     dependencies:
-      '@wyliedog/tokens':
-        specifier: workspace:*
-        version: link:../../packages/tokens
       '@wyliedog/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -36,9 +33,6 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
-      '@repo/tailwind-config':
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -100,9 +94,6 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
-      '@repo/tailwind-config':
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -187,9 +178,6 @@ importers:
 
   packages/ui:
     dependencies:
-      '@wyliedog/tokens':
-        specifier: workspace:*
-        version: link:../tokens
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -206,15 +194,24 @@ importers:
       '@tailwindcss/cli':
         specifier: ^4.1.11
         version: 4.1.11
+      '@tokens-studio/sd-transforms':
+        specifier: ^2.0.1
+        version: 2.0.1(style-dictionary@5.0.1)
       '@types/react':
         specifier: ^19.1.8
         version: 19.1.8
       '@types/react-dom':
         specifier: ^19.1.6
         version: 19.1.6(@types/react@19.1.8)
+      culori:
+        specifier: ^4.0.2
+        version: 4.0.2
       eslint:
         specifier: ^9.31.0
         version: 9.31.0(jiti@2.4.2)
+      style-dictionary:
+        specifier: ^5.0.1
+        version: 5.0.1
       tailwindcss:
         specifier: ^4.1.11
         version: 4.1.11
@@ -7227,7 +7224,7 @@ snapshots:
       tinyglobby: 0.2.14
       unrs-resolver: 1.11.1
     optionalDependencies:
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@7.18.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.31.0(jiti@2.4.2))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.31.0(jiti@2.4.2))
     transitivePeerDependencies:
       - supports-color
 

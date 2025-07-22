@@ -1,0 +1,7 @@
+/* Import the generated tokens with @import "tailwindcss" and @theme directive */
+@import "./tokens.css";
+
+/* Component-specific styles can be added here */
+@layer components {
+  /* UI package specific overrides */
+}

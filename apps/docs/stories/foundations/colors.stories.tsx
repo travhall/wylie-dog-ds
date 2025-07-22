@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useEffect, useState } from "react";
-import { color, spacing, shadow } from "@wyliedog/tokens";
+import { color, spacing, shadow } from "@wyliedog/ui/tokens/hierarchical";
 
 const meta: Meta = {
   title: "Foundations/Design Tokens/Colors",
