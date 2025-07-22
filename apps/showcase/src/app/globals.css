@@ -1,4 +1,7 @@
-/* apps/showcase/src/app/globals.css */
+/* Import design tokens and UI components from the UI package */
 @import "@wyliedog/ui/styles";
+
+/* Import Tailwind base, components, utilities for app-specific usage */
+@import "tailwindcss";
 
 /* App-specific styles */

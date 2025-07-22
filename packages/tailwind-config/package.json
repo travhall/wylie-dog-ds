@@ -1,0 +1,17 @@
+{
+  "name": "@repo/tailwind-config",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./postcss": "./postcss.config.js"
+  },
+  "files": [
+    "index.js",
+    "postcss.config.js"
+  ],
+  "peerDependencies": {
+    "tailwindcss": "^4.1.11"
+  }
+}

@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
+    "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@storybook/addon-docs": "^9.0.17",
     "@storybook/addon-links": "^9.0.17",

@@ -33,6 +33,9 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
+      '@repo/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -94,6 +97,9 @@ importers:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
+      '@repo/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -147,10 +153,7 @@ importers:
         version: 9.0.17(eslint@9.31.0(jiti@2.4.2))(storybook@9.0.17(@testing-library/dom@10.4.0)(prettier@3.6.2))(typescript@5.8.3)
 
   packages/tailwind-config:
-    devDependencies:
-      postcss:
-        specifier: ^8.5.6
-        version: 8.5.6
+    dependencies:
       tailwindcss:
         specifier: ^4.1.11
         version: 4.1.11
