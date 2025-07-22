@@ -45,6 +45,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@wyliedog/ui/sheet";
+import { Alert, AlertTitle, AlertDescription } from "@wyliedog/ui/alert";
+import { Avatar, AvatarImage, AvatarFallback } from "@wyliedog/ui/avatar";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@wyliedog/ui/tooltip";
+import { Progress } from "@wyliedog/ui/progress";
+import { Skeleton } from "@wyliedog/ui/skeleton";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@wyliedog/ui/accordion";
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@wyliedog/ui/breadcrumb";
+import { RadioGroup, RadioGroupItem } from "@wyliedog/ui/radio-group";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@wyliedog/ui/alert-dialog";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@wyliedog/ui/hover-card";
+import { Popover, PopoverContent, PopoverTrigger } from "@wyliedog/ui/popover";
+import { CheckIcon, ChevronDownIcon, InfoIcon, ShieldCheckIcon, XIcon } from "lucide-react";
 
 export default function Home() {
   return (
@@ -55,500 +67,320 @@ export default function Home() {
             Wylie Dog Design System
           </h1>
           <p className="text-lg text-gray-600">
-            Complete component showcase with OKLCH colors and modern design
-            tokens
+            Complete component showcase with OKLCH colors and modern design tokens
           </p>
-          <div className="flex justify-center gap-2 mt-4">
-            <Badge>Form Components</Badge>
-            <Badge>Layout Components</Badge>
-            <Badge>Interactive Components</Badge>
-          </div>
         </div>
 
-        {/* Buttons */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Button Component */}
         <Card>
           <CardHeader>
-            <CardTitle>Buttons</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-4">
-              <Button variant="primary">Primary</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="destructive">Destructive</Button>
-            </div>
-            <div className="flex flex-wrap gap-4 mt-4">
-              <Button size="sm">Small</Button>
-              <Button size="md">Medium</Button>
-              <Button size="lg">Large</Button>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Form Controls */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Form Controls</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Input Fields */}
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="Enter your email"
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="message" required>
-                    Message
-                  </Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Enter your message"
-                    className="mt-1"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="country">Country</Label>
-                  <Select>
-                    <SelectTrigger className="mt-1">
-                      <SelectValue placeholder="Select a country" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="us">United States</SelectItem>
-                      <SelectItem value="ca">Canada</SelectItem>
-                      <SelectItem value="uk">United Kingdom</SelectItem>
-                      <SelectItem value="de">Germany</SelectItem>
-                      <SelectItem value="fr">France</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-
-              {/* Checkboxes and Switches */}
-              <div className="space-y-4">
-                <div className="space-y-3">
-                  <h3 className="font-medium">Preferences</h3>
-
-                  <div className="flex items-center space-x-2">
-                    <Checkbox id="newsletter" />
-                    <Label htmlFor="newsletter">Subscribe to newsletter</Label>
-                  </div>
-
-                  <div className="flex items-center space-x-2">
-                    <Checkbox id="terms" />
-                    <Label htmlFor="terms" required>
-                      Accept terms and conditions
-                    </Label>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <h3 className="font-medium">Settings</h3>
-
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor="notifications">Email notifications</Label>
-                    <Switch id="notifications" />
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor="dark-mode">Dark mode</Label>
-                    <Switch id="dark-mode" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Component Sizes */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Component Sizes</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <h3 className="font-medium mb-3">Small</h3>
-                <div className="space-y-3">
-                  <Button size="sm" className="w-full">
-                    Small Button
-                  </Button>
-                  <Input size="sm" placeholder="Small input" />
-                  <div className="flex items-center space-x-2">
-                    <Checkbox size="sm" id="small-check" />
-                    <Label htmlFor="small-check" size="sm">
-                      Small checkbox
-                    </Label>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <Label size="sm">Small switch</Label>
-                    <Switch size="sm" />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="font-medium mb-3">Medium (Default)</h3>
-                <div className="space-y-3">
-                  <Button className="w-full">Medium Button</Button>
-                  <Input placeholder="Medium input" />
-                  <div className="flex items-center space-x-2">
-                    <Checkbox id="medium-check" />
-                    <Label htmlFor="medium-check">Medium checkbox</Label>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <Label>Medium switch</Label>
-                    <Switch />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="font-medium mb-3">Large</h3>
-                <div className="space-y-3">
-                  <Button size="lg" className="w-full">
-                    Large Button
-                  </Button>
-                  <Input size="lg" placeholder="Large input" />
-                  <div className="flex items-center space-x-2">
-                    <Checkbox size="lg" id="large-check" />
-                    <Label htmlFor="large-check" size="lg">
-                      Large checkbox
-                    </Label>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <Label size="lg">Large switch</Label>
-                    <Switch size="lg" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Error States */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Error States</CardTitle>
+            <CardTitle>Button</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div>
-                <Label htmlFor="error-input" error>
-                  Username (with error)
-                </Label>
-                <Input
-                  id="error-input"
-                  error
-                  placeholder="This field has an error"
-                  className="mt-1"
-                />
+                <h4 className="text-sm font-medium mb-2">Variants</h4>
+                <div className="flex gap-2 flex-wrap">
+                  <Button variant="default">Default</Button>
+                  <Button variant="secondary">Secondary</Button>
+                  <Button variant="destructive">Destructive</Button>
+                  <Button variant="outline">Outline</Button>
+                  <Button variant="ghost">Ghost</Button>
+                  <Button variant="link">Link</Button>
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-medium mb-2">Sizes</h4>
+                <div className="flex gap-2 items-center">
+                  <Button size="sm">Small</Button>
+                  <Button size="default">Default</Button>
+                  <Button size="lg">Large</Button>
+                  <Button size="icon">
+                    <CheckIcon className="w-4 h-4" />
+                  </Button>
+                </div>
               </div>
 
               <div>
-                <Label htmlFor="error-textarea" error>
-                  Description (with error)
-                </Label>
-                <Textarea
-                  id="error-textarea"
-                  error
-                  placeholder="This field has an error"
-                  className="mt-1"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="error-select" error>
-                  Category (with error)
-                </Label>
-                <Select>
-                  <SelectTrigger error className="mt-1">
-                    <SelectValue placeholder="This field has an error" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="option1">Option 1</SelectItem>
-                    <SelectItem value="option2">Option 2</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <Checkbox id="error-checkbox" error />
-                <Label htmlFor="error-checkbox" error>
-                  Checkbox with error
-                </Label>
+                <h4 className="text-sm font-medium mb-2">States</h4>
+                <div className="flex gap-2">
+                  <Button>Normal</Button>
+                  <Button disabled>Disabled</Button>
+                </div>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Tabs Demo */}
+        {/* Badge Component */}
         <Card>
           <CardHeader>
-            <CardTitle>Tabs Component</CardTitle>
+            <CardTitle>Badge</CardTitle>
           </CardHeader>
           <CardContent>
-            <Tabs defaultValue="account" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="account">Account</TabsTrigger>
-                <TabsTrigger value="password">Password</TabsTrigger>
-                <TabsTrigger value="settings">Settings</TabsTrigger>
-              </TabsList>
-              <TabsContent value="account" className="space-y-4 mt-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" defaultValue="John Doe" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="username">Username</Label>
-                    <Input id="username" defaultValue="@johndoe" />
-                  </div>
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-medium mb-2">Variants</h4>
+                <div className="flex gap-2 flex-wrap">
+                  <Badge variant="default">Default</Badge>
+                  <Badge variant="secondary">Secondary</Badge>
+                  <Badge variant="destructive">Destructive</Badge>
+                  <Badge variant="outline">Outline</Badge>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="bio">Bio</Label>
-                  <Textarea
-                    id="bio"
-                    defaultValue="I love building great UIs."
-                  />
-                </div>
-              </TabsContent>
-              <TabsContent value="password" className="space-y-4 mt-4">
-                <div className="space-y-2">
-                  <Label htmlFor="current">Current password</Label>
-                  <Input id="current" type="password" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="new">New password</Label>
-                  <Input id="new" type="password" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="confirm">Confirm password</Label>
-                  <Input id="confirm" type="password" />
-                </div>
-              </TabsContent>
-              <TabsContent value="settings" className="space-y-4 mt-4">
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Input Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Input</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="normal">Normal Input</Label>
+                <Input id="normal" placeholder="Enter text..." />
+              </div>
+              
+              <div>
+                <Label htmlFor="disabled">Disabled Input</Label>
+                <Input id="disabled" placeholder="Disabled" disabled />
+              </div>
+              
+              <div>
+                <Label htmlFor="error">Error Input</Label>
+                <Input id="error" placeholder="Error state" error />
+              </div>
+
+              <div>
+                <Label htmlFor="password">Password Input</Label>
+                <Input id="password" type="password" placeholder="Password" />
+              </div>
+
+              <div>
+                <Label htmlFor="email">Email Input</Label>
+                <Input id="email" type="email" placeholder="email@example.com" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Textarea Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Textarea</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="message">Message</Label>
+                <Textarea id="message" placeholder="Enter your message..." />
+              </div>
+              
+              <div>
+                <Label htmlFor="large">Large Textarea</Label>
+                <Textarea 
+                  id="large" 
+                  placeholder="Larger text area..." 
+                  className="min-h-[120px]"
+                />
+              </div>
+              
+              <div>
+                <Label htmlFor="disabled-textarea">Disabled Textarea</Label>
+                <Textarea 
+                  id="disabled-textarea" 
+                  placeholder="Disabled" 
+                  disabled 
+                />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Checkbox Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Checkbox</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <Checkbox id="terms" />
+                <Label htmlFor="terms">Accept terms and conditions</Label>
+              </div>
+              
+              <div className="flex items-center space-x-2">
+                <Checkbox id="checked" defaultChecked />
+                <Label htmlFor="checked">Pre-checked option</Label>
+              </div>
+              
+              <div className="flex items-center space-x-2">
+                <Checkbox id="disabled" disabled />
+                <Label htmlFor="disabled">Disabled checkbox</Label>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <Checkbox id="disabled-checked" disabled defaultChecked />
+                <Label htmlFor="disabled-checked">Disabled + checked</Label>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Switch Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Switch</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <Switch id="notifications" />
+                <Label htmlFor="notifications">Enable notifications</Label>
+              </div>
+              
+              <div className="flex items-center space-x-2">
+                <Switch id="enabled" defaultChecked />
+                <Label htmlFor="enabled">Pre-enabled option</Label>
+              </div>
+              
+              <div className="flex items-center space-x-2">
+                <Switch id="disabled-switch" disabled />
+                <Label htmlFor="disabled-switch">Disabled switch</Label>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Select Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Select</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div>
+                <Label>Choose a fruit</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a fruit" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="apple">Apple</SelectItem>
+                    <SelectItem value="banana">Banana</SelectItem>
+                    <SelectItem value="orange">Orange</SelectItem>
+                    <SelectItem value="grape">Grape</SelectItem>
+                    <SelectItem value="strawberry">Strawberry</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Separator Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Separator</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-sm font-medium mb-2">Horizontal</h4>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <Label>Email notifications</Label>
-                    <Switch defaultChecked />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <Label>Marketing emails</Label>
-                    <Switch />
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox id="terms" />
-                    <Label htmlFor="terms">Accept terms and conditions</Label>
-                  </div>
+                  <p>Content above</p>
+                  <Separator />
+                  <p>Content below</p>
                 </div>
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-medium mb-2">Vertical</h4>
+                <div className="flex h-12 items-center space-x-4">
+                  <span>Left</span>
+                  <Separator orientation="vertical" />
+                  <span>Right</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Tabs Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Tabs</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Tabs defaultValue="tab1">
+              <TabsList>
+                <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+                <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+                <TabsTrigger value="tab3">Tab 3</TabsTrigger>
+              </TabsList>
+              <TabsContent value="tab1" className="mt-4">
+                <p>Content for Tab 1. This is where you would put your first tab content.</p>
+              </TabsContent>
+              <TabsContent value="tab2" className="mt-4">
+                <p>Content for Tab 2. Here's the second tab with different content.</p>
+              </TabsContent>
+              <TabsContent value="tab3" className="mt-4">
+                <p>Content for Tab 3. And this is the third tab's content area.</p>
               </TabsContent>
             </Tabs>
           </CardContent>
         </Card>
 
-        {/* Dialog and Sheet Demo */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Dialog Demo */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Dialog Component</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button>Open Dialog</Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Create New Project</DialogTitle>
-                    <DialogDescription>
-                      Fill out the form below to create a new project. Click
-                      save when you're done.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="project-name">Project Name</Label>
-                      <Input
-                        id="project-name"
-                        placeholder="My Awesome Project"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="project-desc">Description</Label>
-                      <Textarea
-                        id="project-desc"
-                        placeholder="Brief description..."
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label>Project Type</Label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="web">Web App</SelectItem>
-                          <SelectItem value="mobile">Mobile App</SelectItem>
-                          <SelectItem value="desktop">Desktop App</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                  <DialogFooter>
-                    <Button variant="ghost">Cancel</Button>
-                    <Button>Create Project</Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="destructive">Delete Account</Button>
-                </DialogTrigger>
-                <DialogContent size="sm">
-                  <DialogHeader>
-                    <DialogTitle>Are you absolutely sure?</DialogTitle>
-                    <DialogDescription>
-                      This action cannot be undone. This will permanently delete
-                      your account and remove your data from our servers.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <DialogFooter>
-                    <Button variant="ghost">Cancel</Button>
-                    <Button variant="destructive">Delete Account</Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-            </CardContent>
-          </Card>
-
-          {/* Sheet Demo */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Sheet Component</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-2">
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <Button variant="ghost">From Right</Button>
-                  </SheetTrigger>
-                  <SheetContent>
-                    <SheetHeader>
-                      <SheetTitle>Account Settings</SheetTitle>
-                      <SheetDescription>
-                        Make changes to your account here. Click save when
-                        you're done.
-                      </SheetDescription>
-                    </SheetHeader>
-                    <div className="space-y-4 py-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="sheet-name">Name</Label>
-                        <Input id="sheet-name" defaultValue="John Doe" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="sheet-email">Email</Label>
-                        <Input
-                          id="sheet-email"
-                          defaultValue="john@example.com"
-                        />
-                      </div>
-                      <Separator />
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between">
-                          <Label>Notifications</Label>
-                          <Switch defaultChecked />
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <Label>Dark Mode</Label>
-                          <Switch />
-                        </div>
-                      </div>
-                    </div>
-                    <SheetFooter>
-                      <SheetClose asChild>
-                        <Button>Save changes</Button>
-                      </SheetClose>
-                    </SheetFooter>
-                  </SheetContent>
-                </Sheet>
-
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <Button variant="ghost">From Left</Button>
-                  </SheetTrigger>
-                  <SheetContent side="left">
-                    <SheetHeader>
-                      <SheetTitle>Navigation</SheetTitle>
-                      <SheetDescription>
-                        Site navigation and quick actions
-                      </SheetDescription>
-                    </SheetHeader>
-                    <div className="space-y-4 py-4">
-                      <div className="space-y-2">
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-start"
-                        >
-                          Dashboard
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-start"
-                        >
-                          Projects
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-start"
-                        >
-                          Settings
-                        </Button>
-                      </div>
-                      <Separator />
-                      <div className="space-y-2">
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-start"
-                        >
-                          Help
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-start"
-                        >
-                          Feedback
-                        </Button>
-                      </div>
-                    </div>
-                  </SheetContent>
-                </Sheet>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Dropdown Menu Demo */}
+        {/* Dialog Component */}
         <Card>
           <CardHeader>
-            <CardTitle>Dropdown Menu Component</CardTitle>
+            <CardTitle>Dialog</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex gap-4">
-              {/* Simple Dropdown */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button>Open Dialog</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Edit Profile</DialogTitle>
+                  <DialogDescription>
+                    Make changes to your profile here. Click save when you're done.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                  <div>
+                    <Label htmlFor="name">Name</Label>
+                    <Input id="name" placeholder="Your name" />
+                  </div>
+                  <div>
+                    <Label htmlFor="username">Username</Label>
+                    <Input id="username" placeholder="@username" />
+                  </div>
+                </div>
+                <DialogFooter>
+                  <Button>Save changes</Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </CardContent>
+        </Card>
+
+        {/* DropdownMenu Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>DropdownMenu</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost">User Menu</Button>
+                  <Button variant="outline">Open Menu</Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -558,94 +390,453 @@ export default function Home() {
                   <DropdownMenuItem>Team</DropdownMenuItem>
                   <DropdownMenuItem>Subscription</DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Log out</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-
-              {/* Dropdown with Checkboxes */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost">View Options</Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuLabel>View</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuCheckboxItem checked>
-                    Show completed
-                  </DropdownMenuCheckboxItem>
-                  <DropdownMenuCheckboxItem>
-                    Show archived
-                  </DropdownMenuCheckboxItem>
-                  <DropdownMenuCheckboxItem checked>
-                    Show drafts
-                  </DropdownMenuCheckboxItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-
-              {/* Dropdown with Radio Group */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost">Sort By</Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuLabel>Sort by</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuRadioGroup value="recent">
-                    <DropdownMenuRadioItem value="recent">
-                      Most recent
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="name">
-                      Name
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="size">
-                      File size
-                    </DropdownMenuRadioItem>
-                  </DropdownMenuRadioGroup>
+                  <DropdownMenuItem>Logout</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
           </CardContent>
         </Card>
 
-        {/* Separators Demo */}
+        {/* Sheet Component */}
         <Card>
           <CardHeader>
-            <CardTitle>Separator Component</CardTitle>
+            <CardTitle>Sheet</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex gap-2">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline">Open Sheet</Button>
+                </SheetTrigger>
+                <SheetContent>
+                  <SheetHeader>
+                    <SheetTitle>Edit Profile</SheetTitle>
+                    <SheetDescription>
+                      Make changes to your profile here. Click save when you're done.
+                    </SheetDescription>
+                  </SheetHeader>
+                  <div className="space-y-4 py-4">
+                    <div>
+                      <Label htmlFor="sheet-name">Name</Label>
+                      <Input id="sheet-name" placeholder="Your name" />
+                    </div>
+                    <div>
+                      <Label htmlFor="sheet-username">Username</Label>
+                      <Input id="sheet-username" placeholder="@username" />
+                    </div>
+                  </div>
+                  <SheetFooter>
+                    <SheetClose asChild>
+                      <Button>Save changes</Button>
+                    </SheetClose>
+                  </SheetFooter>
+                </SheetContent>
+              </Sheet>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Alert Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Alert</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
+              <Alert>
+                <InfoIcon className="h-4 w-4" />
+                <AlertTitle>Info</AlertTitle>
+                <AlertDescription>
+                  This is an informational alert with some important information.
+                </AlertDescription>
+              </Alert>
+
+              <Alert variant="destructive">
+                <XIcon className="h-4 w-4" />
+                <AlertTitle>Error</AlertTitle>
+                <AlertDescription>
+                  Something went wrong. Please try again later.
+                </AlertDescription>
+              </Alert>
+
+              <Alert variant="default">
+                <ShieldCheckIcon className="h-4 w-4" />
+                <AlertTitle>Success</AlertTitle>
+                <AlertDescription>
+                  Your action was completed successfully!
+                </AlertDescription>
+              </Alert>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Avatar Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Avatar</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
               <div>
-                <h4 className="text-sm font-medium">Horizontal Separators</h4>
-                <div className="space-y-2 mt-2">
-                  <p className="text-sm text-gray-600">Above separator</p>
-                  <Separator />
-                  <p className="text-sm text-gray-600">Below separator</p>
+                <h4 className="text-sm font-medium mb-2">With Image</h4>
+                <div className="flex gap-2">
+                  <Avatar size="sm">
+                    <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <Avatar size="md">
+                    <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <Avatar size="lg">
+                    <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <Avatar size="xl">
+                    <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
                 </div>
               </div>
 
               <div>
-                <h4 className="text-sm font-medium">Vertical Separators</h4>
-                <div className="flex items-center space-x-4 mt-2">
-                  <span className="text-sm">Left</span>
-                  <Separator orientation="vertical" className="h-6" />
-                  <span className="text-sm">Center</span>
-                  <Separator orientation="vertical" className="h-6" />
-                  <span className="text-sm">Right</span>
+                <h4 className="text-sm font-medium mb-2">Fallback</h4>
+                <div className="flex gap-2">
+                  <Avatar size="sm">
+                    <AvatarFallback>AB</AvatarFallback>
+                  </Avatar>
+                  <Avatar size="md">
+                    <AvatarFallback>CD</AvatarFallback>
+                  </Avatar>
+                  <Avatar size="lg">
+                    <AvatarFallback>EF</AvatarFallback>
+                  </Avatar>
+                  <Avatar size="xl">
+                    <AvatarFallback>GH</AvatarFallback>
+                  </Avatar>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Tooltip Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Tooltip</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <TooltipProvider>
+                <div className="flex gap-4">
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline">Hover me</Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>This is a tooltip</p>
+                    </TooltipContent>
+                  </Tooltip>
+
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline">Top tooltip</Button>
+                    </TooltipTrigger>
+                    <TooltipContent side="top">
+                      <p>Tooltip on top</p>
+                    </TooltipContent>
+                  </Tooltip>
+
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline">Right tooltip</Button>
+                    </TooltipTrigger>
+                    <TooltipContent side="right">
+                      <p>Tooltip on right</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
+              </TooltipProvider>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Progress Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Progress</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-sm font-medium mb-2">Values</h4>
+                <div className="space-y-3">
+                  <div>
+                    <div className="text-xs text-gray-600 mb-1">25%</div>
+                    <Progress value={25} />
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-600 mb-1">50%</div>
+                    <Progress value={50} />
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-600 mb-1">75%</div>
+                    <Progress value={75} />
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-600 mb-1">100%</div>
+                    <Progress value={100} />
+                  </div>
                 </div>
               </div>
 
               <div>
-                <h4 className="text-sm font-medium">In Lists</h4>
-                <div className="mt-2">
-                  <div className="py-2">Profile Settings</div>
-                  <Separator />
-                  <div className="py-2">Privacy Settings</div>
-                  <Separator />
-                  <div className="py-2">Notification Settings</div>
-                  <Separator />
-                  <div className="py-2">Account Settings</div>
+                <h4 className="text-sm font-medium mb-2">Sizes</h4>
+                <div className="space-y-3">
+                  <div>
+                    <div className="text-xs text-gray-600 mb-1">Small</div>
+                    <Progress value={60} size="sm" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-600 mb-1">Medium (Default)</div>
+                    <Progress value={60} size="md" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-600 mb-1">Large</div>
+                    <Progress value={60} size="lg" />
+                  </div>
                 </div>
               </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Skeleton Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Skeleton</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-sm font-medium mb-2">Card Loading State</h4>
+                <div className="p-4 border rounded-lg space-y-3">
+                  <div className="flex items-center space-x-4">
+                    <Skeleton variant="circular" className="w-12 h-12" />
+                    <div className="space-y-2 flex-1">
+                      <Skeleton className="h-4 w-[250px]" />
+                      <Skeleton className="h-4 w-[200px]" />
+                    </div>
+                  </div>
+                  <Skeleton className="h-32 w-full" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-3/4" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-sm font-medium mb-2">Text Loading</h4>
+                <div className="space-y-2">
+                  <Skeleton variant="text" className="w-full" />
+                  <Skeleton variant="text" className="w-5/6" />
+                  <Skeleton variant="text" className="w-4/6" />
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-sm font-medium mb-2">Avatar Loading</h4>
+                <div className="flex gap-2">
+                  <Skeleton variant="circular" size="sm" />
+                  <Skeleton variant="circular" size="md" />
+                  <Skeleton variant="circular" size="lg" />
+                  <Skeleton variant="circular" size="xl" />
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Accordion Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Accordion</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It adheres to the WAI-ARIA design pattern and uses semantic HTML elements.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It comes with default styles that matches the other components' aesthetic.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It's animated by default, but you can disable it if you prefer.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </CardContent>
+        </Card>
+
+        {/* Breadcrumb Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Breadcrumb</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* RadioGroup Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>RadioGroup</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <div>
+                <Label className="text-base font-medium">Choose a plan</Label>
+                <RadioGroup defaultValue="standard" className="mt-2">
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="basic" id="basic" />
+                    <Label htmlFor="basic">Basic Plan - $9/month</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="standard" id="standard" />
+                    <Label htmlFor="standard">Standard Plan - $19/month</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="premium" id="premium" />
+                    <Label htmlFor="premium">Premium Plan - $39/month</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* AlertDialog Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>AlertDialog</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button variant="destructive">Delete Account</Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be undone. This will permanently delete your account and remove your data from our servers.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction>Continue</AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* HoverCard Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>HoverCard</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <Button variant="ghost">@username</Button>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-80">
+                  <div className="flex justify-between space-x-4">
+                    <Avatar>
+                      <AvatarImage src="https://github.com/vercel.png" />
+                      <AvatarFallback>VC</AvatarFallback>
+                    </Avatar>
+                    <div className="space-y-1">
+                      <h4 className="text-sm font-semibold">@username</h4>
+                      <p className="text-sm">
+                        The React Framework – created and maintained by @vercel.
+                      </p>
+                      <div className="flex items-center pt-2">
+                        <span className="text-xs text-muted-foreground">
+                          Joined December 2021
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Popover Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Popover</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline">Open Popover</Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-80">
+                  <div className="grid gap-4">
+                    <div className="space-y-2">
+                      <h4 className="font-medium leading-none">Dimensions</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Set the dimensions for the layer.
+                      </p>
+                    </div>
+                    <div className="grid gap-2">
+                      <div className="grid grid-cols-3 items-center gap-4">
+                        <Label htmlFor="width">Width</Label>
+                        <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
+                      </div>
+                      <div className="grid grid-cols-3 items-center gap-4">
+                        <Label htmlFor="height">Height</Label>
+                        <Input id="height" defaultValue="25px" className="col-span-2 h-8" />
+                      </div>
+                    </div>
+                  </div>
+                </PopoverContent>
+              </Popover>
             </div>
           </CardContent>
         </Card>
@@ -676,6 +867,7 @@ export default function Home() {
             </div>
           </CardContent>
         </Card>
+        </div>
       </div>
     </div>
   );
