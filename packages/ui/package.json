@@ -199,6 +199,36 @@
       "types": "./src/table.tsx",
       "import": "./dist/table.mjs",
       "require": "./dist/table.js"
+    },
+    "./aspect-ratio": {
+      "types": "./src/aspect-ratio.tsx",
+      "import": "./dist/aspect-ratio.mjs",
+      "require": "./dist/aspect-ratio.js"
+    },
+    "./resizable": {
+      "types": "./src/resizable.tsx",
+      "import": "./dist/resizable.mjs",
+      "require": "./dist/resizable.js"
+    },
+    "./form": {
+      "types": "./src/form.tsx",
+      "import": "./dist/form.mjs",
+      "require": "./dist/form.js"
+    },
+    "./toast": {
+      "types": "./src/toast.tsx",
+      "import": "./dist/toast.mjs",
+      "require": "./dist/toast.js"
+    },
+    "./calendar": {
+      "types": "./src/calendar.tsx",
+      "import": "./dist/calendar.mjs",
+      "require": "./dist/calendar.js"
+    },
+    "./carousel": {
+      "types": "./src/carousel.tsx",
+      "import": "./dist/carousel.mjs",
+      "require": "./dist/carousel.js"
     }
   },
   "scripts": {
@@ -215,6 +245,7 @@
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.2",
+    "@radix-ui/react-aspect-ratio": "^1.1.7",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-collapsible": "^1.1.11",
     "@radix-ui/react-context-menu": "^2.2.15",

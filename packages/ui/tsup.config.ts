@@ -37,7 +37,13 @@ export default defineConfig((options) => ({
     "src/pagination.tsx",
     "src/menubar.tsx",
     "src/navigation-menu.tsx",
-    "src/table.tsx"
+    "src/table.tsx",
+    "src/aspect-ratio.tsx",
+    "src/resizable.tsx",
+    "src/form.tsx",
+    "src/toast.tsx",
+    "src/calendar.tsx",
+    "src/carousel.tsx"
   ],
   format: ["cjs", "esm"],
   dts: true,

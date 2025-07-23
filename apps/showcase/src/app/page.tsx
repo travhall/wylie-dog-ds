@@ -87,6 +87,12 @@ import {
   HoverCardTrigger,
 } from "@wyliedog/ui/hover-card";
 import { Popover, PopoverContent, PopoverTrigger } from "@wyliedog/ui/popover";
+import { Calendar } from "@wyliedog/ui/calendar";
+import { Carousel } from "@wyliedog/ui/carousel";
+import { Toast } from "@wyliedog/ui/toast";
+import { Form } from "@wyliedog/ui/form";
+import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@wyliedog/ui/resizable";
+import { AspectRatio } from "@wyliedog/ui/aspect-ratio";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -1349,6 +1355,86 @@ export default function Home() {
             </CardContent>
           </Card>
 
+          {/* Card Component */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Card</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Nested Card Example</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600">
+                      This is a card component with header and content sections.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Label Component */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Label</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div>
+                  <Label>Default Label</Label>
+                  <Input placeholder="Associated input" />
+                </div>
+                <div>
+                  <Label required>Required Label</Label>
+                  <Input placeholder="Required field" />
+                </div>
+                <div>
+                  <Label className="text-red-600">Error Label</Label>
+                  <Input placeholder="Error state" className="border-red-300" />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Carousel Component */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Carousel</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Carousel className="w-full max-w-xs mx-auto">
+                <div className="bg-gray-100 p-8 text-center rounded">Slide 1</div>
+                <div className="bg-gray-200 p-8 text-center rounded">Slide 2</div>
+                <div className="bg-gray-300 p-8 text-center rounded">Slide 3</div>
+              </Carousel>
+            </CardContent>
+          </Card>
+
+          {/* Resizable Component */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Resizable</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResizablePanelGroup direction="horizontal" className="h-[200px] border rounded-lg">
+                <ResizablePanel defaultSize={50}>
+                  <div className="bg-gray-100 p-4 h-full flex items-center justify-center">
+                    Panel 1
+                  </div>
+                </ResizablePanel>
+                <ResizableHandle withHandle />
+                <ResizablePanel defaultSize={50}>
+                  <div className="bg-gray-200 p-4 h-full flex items-center justify-center">
+                    Panel 2
+                  </div>
+                </ResizablePanel>
+              </ResizablePanelGroup>
+            </CardContent>
+          </Card>
+
           {/* OKLCH Color Demo */}
           <Card>
             <CardHeader>
@@ -1373,6 +1459,58 @@ export default function Home() {
                   <div className="text-xs opacity-90">Future Ready</div>
                 </div>
               </div>
+            </CardContent>
+          </Card>
+
+          {/* Tier 3B Components */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Calendar</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Calendar mode="single" />
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Toast</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <Toast>Default toast message</Toast>
+                <Toast variant="success">Success message</Toast>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Form</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Form>
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="form-name">Name</Label>
+                    <Input id="form-name" placeholder="Enter name" />
+                  </div>
+                  <Button type="submit">Submit</Button>
+                </div>
+              </Form>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>AspectRatio</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <AspectRatio ratio={16/9}>
+                <div className="bg-gray-100 rounded w-full h-full flex items-center justify-center">
+                  16:9 Aspect Ratio
+                </div>
+              </AspectRatio>
             </CardContent>
           </Card>
         </div>
