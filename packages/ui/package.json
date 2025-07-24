@@ -10,6 +10,11 @@
   ],
   "exports": {
     "./styles": "./dist/index.css",
+    "./lib/utils": {
+      "types": "./src/lib/utils.ts",
+      "import": "./src/lib/utils.ts",
+      "require": "./src/lib/utils.ts"
+    },
     "./tokens": {
       "types": "./src/tokens/index.ts",
       "import": "./src/tokens/index.ts",
