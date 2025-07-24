@@ -22,8 +22,29 @@
       "outputs": ["src/styles/tokens.css", "src/tokens/*.ts"],
       "cache": true
     },
+    "test": {
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "vitest.config.ts", "src/test-setup.ts"],
+      "cache": true
+    },
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "test:a11y": {
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "vitest.config.ts"],
+      "cache": true
+    },
+    "test:coverage": {
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "vitest.config.ts"],
+      "outputs": ["coverage/**"],
+      "cache": true
+    },
     "lint": {
       "dependsOn": ["^lint"]
+    },
+    "lint:a11y": {
+      "inputs": ["src/**/*.tsx", ".eslintrc.a11y.js"],
+      "cache": true
     },
     "dev": {
       "cache": false,

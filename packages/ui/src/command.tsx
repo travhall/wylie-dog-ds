@@ -7,10 +7,12 @@ import { cn } from "./lib/utils";
 interface CommandProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Accessible label for the command palette */
   label?: string;
+  /** ID for the command listbox (for aria-controls) */
+  listboxId?: string;
 }
 
 const Command = React.forwardRef<HTMLDivElement, CommandProps>(
-  ({ className, label = "Command palette", ...props }, ref) => (
+  ({ className, label = "Command palette", listboxId = "command-listbox", ...props }, ref) => (
     <div
       ref={ref}
       className={cn(
@@ -21,6 +23,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>(
       aria-label={label}
       aria-expanded="true"
       aria-haspopup="listbox"
+      aria-controls={listboxId}
       {...props}
     />
   )
@@ -30,10 +33,12 @@ Command.displayName = "Command";
 interface CommandInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /** Label for the search input */
   "aria-label"?: string;
+  /** ID for the command listbox (for aria-controls) */
+  listboxId?: string;
 }
 
 const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
-  ({ className, "aria-label": ariaLabel = "Search commands", ...props }, ref) => (
+  ({ className, "aria-label": ariaLabel = "Search commands", listboxId = "command-listbox", ...props }, ref) => (
     <div className="flex items-center border-b border-[var(--color-command-border)] px-3" cmdk-input-wrapper="">
       <SearchIcon className="mr-2 h-4 w-4 shrink-0 opacity-50" aria-hidden="true" />
       <input
@@ -46,6 +51,7 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
         aria-autocomplete="list"
         aria-label={ariaLabel}
         aria-expanded="true"
+        aria-controls={listboxId}
         {...props}
       />
     </div>
@@ -53,12 +59,16 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
 );
 CommandInput.displayName = "CommandInput";
 
-interface CommandListProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface CommandListProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** ID for the command listbox */
+  id?: string;
+}
 
 const CommandList = React.forwardRef<HTMLDivElement, CommandListProps>(
-  ({ className, ...props }, ref) => (
+  ({ className, id = "command-listbox", ...props }, ref) => (
     <div
       ref={ref}
+      id={id}
       className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)}
       role="listbox"
       aria-label="Command options"

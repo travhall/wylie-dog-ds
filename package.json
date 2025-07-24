@@ -3,7 +3,12 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
+    "test:a11y": "turbo run test:a11y",
+    "test:coverage": "turbo run test:coverage",
     "lint": "turbo run lint",
+    "lint:a11y": "turbo run lint:a11y",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",

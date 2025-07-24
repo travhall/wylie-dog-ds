@@ -125,7 +125,8 @@ describe('Accessibility Improvements Validation', () => {
         </Avatar>
       );
       
-      const image = screen.getByRole('img');
+      // Query the image by its alt text
+      const image = screen.getByAltText('Profile picture of Jane Smith');
       expect(image).toHaveAttribute('alt', 'Profile picture of Jane Smith');
       expect(image).toHaveAttribute('loading', 'lazy');
     });

@@ -47,6 +47,7 @@ export interface BreadcrumbLinkProps extends React.ComponentPropsWithoutRef<"a">
 const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
   ({ className, ...props }, ref) => {
     return (
+      // eslint-disable-next-line jsx-a11y/anchor-has-content
       <a
         ref={ref}
         className={cn(

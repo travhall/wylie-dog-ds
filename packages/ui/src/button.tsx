@@ -6,10 +6,13 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "default" | "primary" | "secondary" | "outline" | "ghost" | "link" | "destructive";
   size?: "default" | "sm" | "md" | "lg" | "icon";
+  loading?: boolean;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "default", size = "default", ...props }, ref) => {
+  ({ className, variant = "default", size = "default", loading = false, disabled, children, ...props }, ref) => {
+    const isDisabled = disabled || loading;
+    
     const variants = {
       default:
         "bg-[var(--color-button-primary-background)] hover:bg-[var(--color-button-primary-background-hover)] active:bg-[var(--color-button-primary-background-active)] text-[var(--color-button-primary-text)] border-[var(--color-button-primary-border)]",
@@ -46,8 +49,17 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           className
         )}
         ref={ref}
+        disabled={isDisabled}
+        aria-disabled={isDisabled}
         {...props}
-      />
+      >
+        {loading && (
+          <span className="mr-2" aria-hidden="true">
+            Loading...
+          </span>
+        )}
+        {children}
+      </button>
     );
   }
 );

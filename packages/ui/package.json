@@ -1,6 +1,7 @@
 {
   "name": "@wyliedog/ui",
   "version": "0.0.0",
+  "type": "module",
   "sideEffects": [
     "**/*.css"
   ],
@@ -244,7 +245,13 @@
     "dev": "pnpm build-tokens && pnpm dev:styles & pnpm dev:components",
     "dev:styles": "tailwindcss -i ./src/styles/index.css -o ./dist/index.css --watch",
     "dev:components": "tsup --watch",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:ui": "vitest --ui",
+    "test:a11y": "vitest --run --reporter=verbose src/__tests__/*.a11y.test.tsx src/accessibility-validation.test.tsx",
+    "test:coverage": "vitest --coverage",
     "lint": "eslint . --max-warnings 0",
+    "lint:a11y": "eslint 'src/**/*.{ts,tsx}' --ignore-pattern '**/*.test.*' --ignore-pattern '**/__tests__/**' --ignore-pattern '**/accessibility-example.tsx' --config eslint.config.a11y.js",
     "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {
@@ -283,6 +290,19 @@
     "@tokens-studio/sd-transforms": "^2.0.1",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/user-event": "^14.5.2",
+    "@vitest/ui": "^3.2.4",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@eslint/js": "^9.31.0",
+    "axe-core": "^4.10.2",
+    "jest-axe": "^9.0.0",
+    "jsdom": "^26.0.0",
+    "vitest": "^3.2.4",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "@typescript-eslint/parser": "^8.21.0",
+    "typescript-eslint": "^8.21.0",
     "culori": "^4.0.2",
     "eslint": "^9.31.0",
     "style-dictionary": "^5.0.1",
