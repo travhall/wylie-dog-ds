@@ -9,10 +9,23 @@ export interface LabelProps
   error?: boolean;
   /** Size variant */
   size?: "sm" | "md" | "lg";
+  /** Custom required indicator text (default: "*") */
+  requiredIndicator?: string;
+  /** Hide the required indicator visually but keep it for screen readers */
+  requiredIndicatorSrOnly?: boolean;
 }
 
 export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
-  ({ className, required, error, size = "md", children, ...props }, ref) => {
+  ({ 
+    className, 
+    required, 
+    error, 
+    size = "md", 
+    children, 
+    requiredIndicator = "*",
+    requiredIndicatorSrOnly = false,
+    ...props 
+  }, ref) => {
     const sizes = {
       sm: "text-xs",
       md: "text-sm", 
@@ -35,10 +48,13 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         {children}
         {required && (
           <span 
-            className="text-[var(--color-text-danger)] ml-1" 
+            className={cn(
+              "text-[var(--color-text-danger)] ml-1",
+              requiredIndicatorSrOnly && "sr-only"
+            )}
             aria-label="required"
           >
-            *
+            {requiredIndicator}
           </span>
         )}
       </label>

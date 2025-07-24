@@ -24,6 +24,8 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
           variants[variant],
           className
         )}
+        role="alert"
+        aria-live="assertive"
         {...props}
       />
     );
@@ -47,19 +49,23 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
 );
 ToastAction.displayName = "ToastAction";
 
-interface ToastCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+interface ToastCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  srText?: string;
+}
 
 const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
-  ({ className, ...props }, ref) => (
+  ({ className, srText = "Close notification", ...props }, ref) => (
     <button
       ref={ref}
       className={cn(
         "absolute right-2 top-2 rounded-md p-1 text-[var(--color-toast-close)] opacity-0 transition-opacity hover:text-[var(--color-toast-close-hover)] focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100",
         className
       )}
+      aria-label={srText}
       {...props}
     >
       <XIcon className="h-4 w-4" />
+      <span className="sr-only">{srText}</span>
     </button>
   )
 );

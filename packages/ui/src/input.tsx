@@ -1,4 +1,3 @@
-// input.tsx
 import React from "react";
 import { cn } from "./lib/utils";
 
@@ -8,11 +7,23 @@ export interface InputProps
   error?: boolean;
   /** Size variant */
   size?: "sm" | "md" | "lg";
+  /** ID of error message element for aria-describedby */
+  errorId?: string;
+  /** ID of description element for aria-describedby */
+  descriptionId?: string;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, error = false, size = "md", type = "text", ...props },
+    { 
+      className, 
+      error = false, 
+      size = "md", 
+      type = "text",
+      errorId,
+      descriptionId,
+      ...props 
+    },
     ref
   ) => {
     const sizes = {
@@ -21,10 +32,15 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       lg: "h-12 px-4 text-base",
     };
 
+    // Build aria-describedby from provided IDs
+    const describedBy = [descriptionId, errorId].filter(Boolean).join(" ");
+
     return (
       <input
         ref={ref}
         type={type}
+        aria-invalid={error}
+        aria-describedby={describedBy || undefined}
         className={cn(
           "flex w-full rounded-md border transition-colors",
           "placeholder:text-[var(--color-input-placeholder)]",

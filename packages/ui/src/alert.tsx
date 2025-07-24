@@ -4,10 +4,12 @@ import { cn } from "./lib/utils";
 
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "default" | "destructive" | "warning" | "success";
+  /** Override the ARIA role for custom urgency handling */
+  role?: "alert" | "status" | "region";
 }
 
 export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ className, variant = "default", ...props }, ref) => {
+  ({ className, variant = "default", role, ...props }, ref) => {
     const variants = {
       default:
         "bg-[var(--color-alert-default-background)] border-[var(--color-alert-default-border)] text-[var(--color-alert-default-text)]",
@@ -19,6 +21,35 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         "bg-[var(--color-alert-success-background)] border-[var(--color-alert-success-border)] text-[var(--color-alert-success-text)]",
     };
 
+    // Smart urgency handling based on variant
+    const getAriaRole = () => {
+      if (role) return role; // Allow override
+      
+      switch (variant) {
+        case "destructive":
+        case "warning":
+          return "alert"; // High urgency - interrupts screen reader
+        case "success":
+          return "status"; // Medium urgency - announced politely
+        default:
+          return "region"; // Low urgency - announced when focused
+      }
+    };
+
+    const getAriaLive = () => {
+      if (role) return undefined; // Don't set if role is overridden
+      
+      switch (variant) {
+        case "destructive":
+          return "assertive";
+        case "warning":
+        case "success":
+          return "polite";
+        default:
+          return "off";
+      }
+    };
+
     return (
       <div
         ref={ref}
@@ -27,7 +58,8 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
           variants[variant],
           className
         )}
-        role="alert"
+        role={getAriaRole()}
+        aria-live={getAriaLive()}
         {...props}
       />
     );
@@ -38,7 +70,7 @@ Alert.displayName = "Alert";
 export interface AlertTitleProps
   extends React.HTMLAttributes<HTMLHeadingElement> {}
 
-export const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitleProps>(
+export const AlertTitle = React.forwardRef<HTMLHeadingElement, AlertTitleProps>(
   ({ className, ...props }, ref) => (
     <h5
       ref={ref}

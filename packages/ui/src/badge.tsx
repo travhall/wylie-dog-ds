@@ -1,9 +1,6 @@
 // badge.tsx
 import React from "react";
-
-function cn(...classes: (string | undefined | null | false)[]): string {
-  return classes.filter(Boolean).join(" ");
-}
+import { cn } from "./lib/utils";
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?:

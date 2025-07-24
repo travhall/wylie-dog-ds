@@ -9,6 +9,10 @@ export interface TextareaProps
   size?: "sm" | "md" | "lg";
   /** Whether to resize */
   resize?: "none" | "both" | "horizontal" | "vertical";
+  /** ID of error message element for aria-describedby */
+  errorId?: string;
+  /** ID of description element for aria-describedby */
+  descriptionId?: string;
 }
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -17,6 +21,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     error = false, 
     size = "md", 
     resize = "vertical",
+    errorId,
+    descriptionId,
     ...props 
   }, ref) => {
     const sizes = {
@@ -31,6 +37,9 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       horizontal: "resize-x", 
       vertical: "resize-y",
     };
+
+    // Build aria-describedby from provided IDs
+    const describedBy = [descriptionId, errorId].filter(Boolean).join(" ");
 
     return (
       <textarea
@@ -53,6 +62,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           className
         )}
         ref={ref}
+        aria-invalid={error}
+        aria-describedby={describedBy || undefined}
         {...props}
       />
     );

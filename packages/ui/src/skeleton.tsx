@@ -5,10 +5,21 @@ import { cn } from "./lib/utils";
 export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "default" | "text" | "circular" | "rectangular";
   size?: "sm" | "md" | "lg" | "xl";
+  /** Custom loading message for screen readers */
+  loadingText?: string;
+  /** Whether to show loading message to screen readers */
+  showLoadingText?: boolean;
 }
 
 export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
-  ({ className, variant = "default", size, ...props }, ref) => {
+  ({ 
+    className, 
+    variant = "default", 
+    size, 
+    loadingText = "Loading content", 
+    showLoadingText = true,
+    ...props 
+  }, ref) => {
     const variants = {
       default: "rounded-md",
       text: "rounded h-4",
@@ -32,8 +43,15 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
           size && sizes[size],
           className
         )}
+        role="status"
+        aria-live="polite"
+        aria-label={showLoadingText ? loadingText : undefined}
         {...props}
-      />
+      >
+        {showLoadingText && (
+          <span className="sr-only">{loadingText}</span>
+        )}
+      </div>
     );
   }
 );
