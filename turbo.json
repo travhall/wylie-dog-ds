@@ -66,6 +66,16 @@
         "^build"
       ],
       "cache": false
+    },
+    "figma-plugin#build": {
+      "inputs": ["src/**/*.{ts,tsx}", "manifest.json", "vite.config.ts"],
+      "outputs": ["dist/**"],
+      "dependsOn": ["@wyliedog/tokens#build"],
+      "cache": true
+    },
+    "figma-plugin#dev": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

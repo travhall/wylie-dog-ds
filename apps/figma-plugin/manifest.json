@@ -1,0 +1,23 @@
+{
+  "name": "Token Bridge",
+  "id": "1532400431690110752",
+  "api": "1.0.0",
+  "main": "dist/plugin.js",
+  "ui": "dist/src/ui/index.html",
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": [
+      "https://api.github.com",
+      "https://github.com"
+    ],
+    "reasoning": "GitHub API integration for token synchronization"
+  },
+  "permissions": ["currentuser"],
+  "editorType": ["figma"],
+  "menu": [
+    {
+      "name": "Open Token Bridge",
+      "command": "open-plugin"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@plugin/*": ["src/plugin/*"],
+      "@ui/*": ["src/ui/*"],
+      "@shared/*": ["src/shared/*"]
+    },
+    "types": ["@figma/plugin-typings", "node"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  }
+}
