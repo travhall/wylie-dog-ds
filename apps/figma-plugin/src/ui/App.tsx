@@ -51,6 +51,7 @@ function App() {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [githubConfig, setGithubConfig] = useState<GitHubConfig | null>(null);
   const [githubConfigured, setGithubConfigured] = useState(false);
+  const [downloadQueue, setDownloadQueue] = useState<any[]>([]);
 
   useEffect(() => {
     console.log('useEffect running - setting up message listener');
@@ -88,20 +89,32 @@ function App() {
           break;
         case 'tokens-exported':
           console.log('Tokens exported successfully:', msg.exportData);
+          console.log('Export data length:', msg.exportData ? msg.exportData.length : 0);
+          console.log('Export data structure:', msg.exportData && msg.exportData.map(item => Object.keys(item)));
+          console.log('Full export data:', JSON.stringify(msg.exportData, null, 2));
           setLoading(false);
           setLoadingMessage('');
           setError(null);
           
-          // Trigger download of token files
+          // Trigger download queue setup
           if (msg.exportData && msg.exportData.length > 0) {
-            downloadTokenFiles(msg.exportData);
+            if (msg.exportData.length === 1) {
+              // Single file - direct download
+              downloadSingleFile(msg.exportData[0]);
+            } else {
+              // Multiple files - set up download queue
+              setDownloadQueue(msg.exportData);
+            }
             
             // Show success message
             const fileCount = msg.exportData.length;
-            setSuccessMessage(`✅ Successfully exported ${fileCount} token file${fileCount > 1 ? 's' : ''}!`);
+            setSuccessMessage(`✅ ${fileCount} token file${fileCount > 1 ? 's' : ''} ready for download!`);
             setTimeout(() => {
               setSuccessMessage(null);
             }, 4000);
+          } else {
+            setError('No token data received from export');
+            console.warn('Export data was empty or null');
           }
           break;
         case 'loading-state':
@@ -252,29 +265,38 @@ function App() {
     }
   };
 
-  const downloadTokenFiles = (exportData: any[]) => {
+  const downloadSingleFile = (collectionData: any) => {
     try {
-      exportData.forEach((collectionData, index) => {
-        const collectionName = Object.keys(collectionData)[0];
-        const jsonString = JSON.stringify([collectionData], null, 2);
-        
-        // Create and download file
-        const blob = new Blob([jsonString], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `${collectionName}.json`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      });
+      const collectionName = Object.keys(collectionData)[0];
+      const tokens = collectionData[collectionName];
       
-      console.log(`Downloaded ${exportData.length} token files`);
+      // Match your existing token file structure: [{"collection-name": {...}}]
+      const fileContent = [{ [collectionName]: tokens }];
+      const jsonString = JSON.stringify(fileContent, null, 2);
+      
+      // Create and download file
+      const blob = new Blob([jsonString], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${collectionName.toLowerCase().replace(/\s+/g, '-')}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      console.log(`Downloaded: ${collectionName.toLowerCase().replace(/\s+/g, '-')}.json`);
+      
+      // Remove from queue
+      setDownloadQueue(prev => prev.filter(item => Object.keys(item)[0] !== collectionName));
     } catch (err) {
-      console.error('Failed to download files:', err);
-      setError('Failed to download token files');
+      console.error('Failed to download file:', err);
+      setError(`Failed to download ${Object.keys(collectionData)[0]}.json`);
     }
+  };
+
+  const clearDownloadQueue = () => {
+    setDownloadQueue([]);
   };
 
   const toggleCollection = (collectionId: string) => {
@@ -710,6 +732,78 @@ function App() {
               </button>
             </div>
           </div>
+
+          {/* Download Queue - shown when multiple files need downloading */}
+          {downloadQueue.length > 0 && (
+            <div style={{
+              marginTop: '16px',
+              padding: '12px',
+              backgroundColor: '#f0f9ff',
+              border: '1px solid #bae6fd',
+              borderRadius: '6px'
+            }}>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'space-between',
+                marginBottom: '8px'
+              }}>
+                <div style={{ fontSize: '12px', fontWeight: 'bold', color: '#0369a1' }}>
+                  📥 Files Ready for Download
+                </div>
+                <button
+                  onClick={clearDownloadQueue}
+                  style={{
+                    padding: '2px 6px',
+                    backgroundColor: '#f3f4f6',
+                    border: '1px solid #d1d5db',
+                    borderRadius: '3px',
+                    cursor: 'pointer',
+                    fontSize: '9px',
+                    color: '#374151'
+                  }}
+                >
+                  Clear
+                </button>
+              </div>
+              
+              <div style={{ fontSize: '10px', color: '#0369a1', marginBottom: '8px' }}>
+                Click each button to download individual files (browser blocks multiple downloads)
+              </div>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                {downloadQueue.map((collectionData, index) => {
+                  const collectionName = Object.keys(collectionData)[0];
+                  const tokenCount = Object.keys(collectionData[collectionName]).length;
+                  
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => downloadSingleFile(collectionData)}
+                      style={{
+                        padding: '8px 12px',
+                        backgroundColor: '#0ea5e9',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '4px',
+                        cursor: 'pointer',
+                        fontSize: '11px',
+                        textAlign: 'left',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <span>📄 {collectionName}.json</span>
+                      <span style={{ fontSize: '9px', opacity: 0.8 }}>
+                        {tokenCount} tokens
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           <div style={{ 
             marginTop: '12px',

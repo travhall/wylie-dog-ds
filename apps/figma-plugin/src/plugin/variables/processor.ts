@@ -35,7 +35,7 @@ function processVariable(variable: any, mode: any): ProcessedToken {
   if (typeof value === 'object' && value.type === 'VARIABLE_ALIAS') {
     return {
       $type: getTokenType(variable.resolvedType),
-      $value: `{variables.${value.id}}`, // Reference syntax
+      $value: `{variables.VariableID:${value.id}}`, // Match your existing format
       $description: variable.description || undefined
     };
   }
