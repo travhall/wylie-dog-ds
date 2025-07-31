@@ -1,5 +1,20 @@
 // Plugin main entry point
+import { processCollectionsForExport } from './variables/processor';
+// import { GitHubClient } from './github/client'; // Temporarily disabled
+
 console.log('Plugin starting...');
+
+// Helper function to communicate loading state to UI
+function setLoading(loading: boolean, message?: string) {
+  figma.ui.postMessage({
+    type: 'loading-state',
+    loading,
+    message
+  });
+}
+
+// GitHub client instance - temporarily disabled
+// let githubClient = new GitHubClient();
 
 figma.showUI(__html__, {
   width: 400,
@@ -92,6 +107,108 @@ figma.ui.onmessage = async (msg) => {
             message: `Failed to load collection details: ${error.message}`
           });
         }
+        break;
+
+      case 'export-tokens':
+        console.log('Exporting tokens for collections:', msg.selectedCollectionIds);
+        try {
+          setLoading(true, 'Processing tokens...');
+          
+          // Get all collections with their variables
+          const collections = await figma.variables.getLocalVariableCollectionsAsync();
+          const collectionsWithVariables = [];
+          
+          for (const collection of collections) {
+            // Only process selected collections
+            if (!msg.selectedCollectionIds.includes(collection.id)) {
+              continue;
+            }
+            
+            console.log(`Processing collection: ${collection.name}`);
+            const variables = [];
+            
+            // Get variables for this collection
+            for (const variableId of collection.variableIds) {
+              try {
+                const variable = await figma.variables.getVariableByIdAsync(variableId);
+                if (variable) {
+                  variables.push({
+                    id: variable.id,
+                    name: variable.name,
+                    description: variable.description || '',
+                    resolvedType: variable.resolvedType,
+                    scopes: variable.scopes,
+                    valuesByMode: variable.valuesByMode,
+                    remote: variable.remote,
+                    key: variable.key
+                  });
+                }
+              } catch (err) {
+                console.error('Error processing variable:', variableId, err);
+              }
+            }
+            
+            collectionsWithVariables.push({
+              id: collection.id,
+              name: collection.name,
+              modes: collection.modes,
+              variables: variables
+            });
+          }
+          
+          console.log(`Processing ${collectionsWithVariables.length} collections for export`);
+          
+          // Process collections into token format
+          const exportData = await processCollectionsForExport(
+            collectionsWithVariables,
+            msg.selectedCollectionIds
+          );
+          
+          setLoading(false);
+          
+          // Send processed tokens back to UI
+          figma.ui.postMessage({
+            type: 'tokens-exported',
+            exportData: exportData
+          });
+          
+          console.log('Export completed successfully');
+        } catch (error) {
+          console.error('Error exporting tokens:', error);
+          setLoading(false);
+          figma.ui.postMessage({
+            type: 'error',
+            message: `Failed to export tokens: ${error.message}`
+          });
+        }
+        break;
+
+      case 'get-github-config':
+        // GitHub temporarily disabled - return null config
+        figma.ui.postMessage({
+          type: 'github-config-loaded',
+          config: null
+        });
+        break;
+
+      case 'test-github-config':
+        // GitHub temporarily disabled
+        figma.ui.postMessage({
+          type: 'github-config-tested',
+          success: false,
+          error: 'GitHub integration temporarily disabled'
+        });
+        break;
+
+      case 'github-sync-tokens':
+        // GitHub temporarily disabled
+        figma.ui.postMessage({
+          type: 'github-sync-complete',
+          result: {
+            success: false,
+            error: 'GitHub integration temporarily disabled'
+          }
+        });
         break;
         
       case 'close':

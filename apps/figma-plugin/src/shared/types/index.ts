@@ -32,5 +32,6 @@ export interface GitHubConfig {
   repo: string;
   branch: string;
   tokenPath: string;
-  authMethod: 'oauth' | 'pat';
+  authMethod?: 'oauth' | 'pat';
+  accessToken?: string;
 }

@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
         })
       ],
       build: {
-        target: 'es2020',
+        target: 'es2019',
         outDir: 'dist',
         emptyOutDir: false,
         rollupOptions: {
@@ -44,7 +44,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [],
     build: {
-      target: 'es2020',
+      target: 'es2018',
       outDir: 'dist',
       emptyOutDir: false,
       rollupOptions: {
