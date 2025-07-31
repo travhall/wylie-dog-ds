@@ -29,6 +29,71 @@ figma.ui.onmessage = async (msg) => {
         });
         break;
         
+      case 'get-collection-details':
+        console.log('Getting collection details for:', msg.collectionId);
+        try {
+          // Get all collections first, then find the one we want
+          const collections = await figma.variables.getLocalVariableCollectionsAsync();
+          const collection = collections.find(c => c.id === msg.collectionId);
+          
+          if (!collection) {
+            throw new Error('Collection not found');
+          }
+          
+          console.log('Found collection:', collection.name, 'with', collection.variableIds.length, 'variables');
+          
+          // Get variables one by one with error handling
+          const variables = [];
+          console.log('Processing', collection.variableIds.length, 'variable IDs...');
+          
+          for (let i = 0; i < collection.variableIds.length; i++) {
+            const id = collection.variableIds[i];
+            console.log(`Processing variable ${i + 1}/${collection.variableIds.length}: ${id}`);
+            
+            try {
+              const variable = await figma.variables.getVariableByIdAsync(id);
+              console.log('Variable result:', variable ? 'found' : 'null', variable ? variable.name : 'undefined');
+              
+              if (variable) {
+                variables.push({
+                  id: variable.id,
+                  name: variable.name,
+                  description: variable.description || '',
+                  resolvedType: variable.resolvedType,
+                  scopes: variable.scopes,
+                  valuesByMode: variable.valuesByMode,
+                  remote: variable.remote,
+                  key: variable.key
+                });
+                console.log('Added variable:', variable.name);
+              } else {
+                console.warn('Variable returned null for ID:', id);
+              }
+            } catch (err) {
+              console.error('Error processing variable:', id, err);
+            }
+          }
+          
+          console.log('Processed', variables.length, 'variables successfully');
+          
+          figma.ui.postMessage({
+            type: 'collection-details-loaded',
+            collection: {
+              id: collection.id,
+              name: collection.name,
+              modes: collection.modes,
+              variables: variables
+            }
+          });
+        } catch (error) {
+          console.error('Error getting collection details:', error);
+          figma.ui.postMessage({
+            type: 'error',
+            message: `Failed to load collection details: ${error.message}`
+          });
+        }
+        break;
+        
       case 'close':
         console.log('Closing plugin...');
         figma.closePlugin();
