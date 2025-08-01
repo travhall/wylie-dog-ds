@@ -52,6 +52,7 @@ function App() {
   const [githubConfig, setGithubConfig] = useState<GitHubConfig | null>(null);
   const [githubConfigured, setGithubConfigured] = useState(false);
   const [downloadQueue, setDownloadQueue] = useState<any[]>([]);
+  const [importLoading, setImportLoading] = useState(false);
 
   useEffect(() => {
     console.log('useEffect running - setting up message listener');
@@ -155,6 +156,29 @@ function App() {
           } else {
             setError(`GitHub sync failed: ${msg.result.error}`);
           }
+          break;
+        case 'tokens-imported':
+          console.log('Tokens imported successfully:', msg.results);
+          setImportLoading(false);
+          setLoading(false);
+          setLoadingMessage('');
+          if (msg.results && msg.results.length > 0) {
+            const totalVariables = msg.results.reduce((sum, result) => sum + result.variablesCreated, 0);
+            const totalCollections = msg.results.length;
+            setSuccessMessage(`✅ Successfully imported ${totalVariables} variables across ${totalCollections} collections!`);
+            setTimeout(() => setSuccessMessage(null), 4000);
+            // Reload collections to show imported data
+            loadCollections();
+          } else {
+            setError('Import completed but no results received');
+          }
+          break;
+        case 'import-error':
+          console.error('Import error:', msg.error);
+          setImportLoading(false);
+          setLoading(false);
+          setLoadingMessage('');
+          setError(`Import failed: ${msg.error}`);
           break;
         default:
           console.warn('Unknown message type:', msg.type);
@@ -368,6 +392,67 @@ function App() {
     setCurrentView('collections');
   };
 
+  const handleTokenImport = () => {
+    // Create file input
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = '.json';
+    fileInput.multiple = true; // Allow multiple files
+    
+    fileInput.onchange = async (event) => {
+      const files = (event.target as HTMLInputElement).files;
+      if (!files || files.length === 0) return;
+      
+      setImportLoading(true);
+      setLoading(true);
+      setLoadingMessage('Reading token files...');
+      setError(null);
+      
+      try {
+        const fileContents = [];
+        
+        // Read all selected files
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          const content = await readFileAsText(file);
+          fileContents.push({
+            filename: file.name,
+            content: content
+          });
+        }
+        
+        setLoadingMessage('Importing tokens to Figma...');
+        
+        // Send to plugin for processing
+        parent.postMessage({
+          pluginMessage: {
+            type: 'import-tokens',
+            files: fileContents
+          }
+        }, '*');
+        
+      } catch (err) {
+        console.error('Failed to read files:', err);
+        setError(`Failed to read files: ${err.message}`);
+        setImportLoading(false);
+        setLoading(false);
+        setLoadingMessage('');
+      }
+    };
+    
+    // Trigger file picker
+    fileInput.click();
+  };
+
+  const readFileAsText = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => resolve(e.target?.result as string);
+      reader.onerror = () => reject(new Error(`Failed to read file: ${file.name}`));
+      reader.readAsText(file);
+    });
+  };
+
   const goBack = () => {
     setCurrentView('collections');
     setSelectedCollection(null);
@@ -550,22 +635,41 @@ function App() {
         </div>
       )}
       
-      <button 
-        onClick={loadCollections} 
-        disabled={loading}
-        style={{ 
-          marginBottom: '16px',
-          padding: '8px 16px',
-          backgroundColor: loading ? '#ccc' : '#0066cc',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: loading ? 'not-allowed' : 'pointer',
-          fontSize: '12px'
-        }}
-      >
-        {loading ? 'Loading...' : 'Load Variable Collections'}
-      </button>
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+        <button 
+          onClick={loadCollections} 
+          disabled={loading || importLoading}
+          style={{ 
+            flex: 1,
+            padding: '8px 16px',
+            backgroundColor: loading || importLoading ? '#cbd5e1' : '#0066cc',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: loading || importLoading ? 'not-allowed' : 'pointer',
+            fontSize: '12px'
+          }}
+        >
+          {loading && !importLoading ? 'Loading...' : 'Load Variable Collections'}
+        </button>
+
+        <button 
+          onClick={handleTokenImport} 
+          disabled={loading || importLoading}
+          style={{ 
+            flex: 1,
+            padding: '8px 16px',
+            backgroundColor: loading || importLoading ? '#cbd5e1' : '#16a34a',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: loading || importLoading ? 'not-allowed' : 'pointer',
+            fontSize: '12px'
+          }}
+        >
+          {importLoading ? 'Importing...' : 'Import Tokens'}
+        </button>
+      </div>
 
       {collections.length > 0 && (
         <div>

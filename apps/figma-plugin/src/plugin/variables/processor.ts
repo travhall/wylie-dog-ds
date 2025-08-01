@@ -4,15 +4,22 @@ export interface ProcessedToken {
   $type: string;
   $value: any;
   $description?: string;
+  valuesByMode?: Record<string, any>; // For Figma import compatibility
 }
 
 export interface ProcessedCollection {
-  [tokenName: string]: ProcessedToken;
+  modes?: Array<{ modeId: string; name: string }>; // Figma mode metadata
+  variables: {
+    [tokenName: string]: ProcessedToken;
+  };
 }
 
 export interface ExportData {
   [collectionName: string]: ProcessedCollection;
 }
+
+// Global variable reference map for resolving aliases
+let variableReferenceMap: Map<string, string> = new Map();
 
 /**
  * Convert Figma RGB color (0-1 range) to hex format
@@ -26,96 +33,97 @@ function rgbToHex(color: { r: number; g: number; b: number }): string {
 }
 
 /**
- * Process a single variable into W3C DTCG token format
+ * Build reference map from all collections to resolve aliases
  */
-function processVariable(variable: any, mode: any): ProcessedToken {
-  const value = variable.valuesByMode[mode.modeId];
+function buildVariableReferenceMap(allCollections: any[]): void {
+  variableReferenceMap.clear();
   
-  // Handle variable references/aliases
-  if (typeof value === 'object' && value.type === 'VARIABLE_ALIAS') {
-    return {
-      $type: getTokenType(variable.resolvedType),
-      $value: `{variables.VariableID:${value.id}}`, // Match your existing format
-      $description: variable.description || undefined
-    };
+  for (const collection of allCollections) {
+    if (!collection.variables) continue;
+    
+    for (const variable of collection.variables) {
+      const tokenName = createTokenName(variable.name);
+      variableReferenceMap.set(variable.id, tokenName);
+    }
   }
   
-  // Process different variable types
-  switch (variable.resolvedType) {
+  console.log(`Built reference map with ${variableReferenceMap.size} variables`);
+}
+
+/**
+ * Get correct W3C DTCG token type based on Figma type and scopes
+ */
+function getW3CTokenType(figmaType: string, scopes: string[], variableName: string): string {
+  switch (figmaType) {
     case 'COLOR':
-      return {
-        $type: 'color',
-        $value: rgbToHex(value),
-        $description: variable.description || undefined
-      };
+      return 'color';
       
     case 'FLOAT':
-      // Determine if this is spacing, font size, etc. based on scopes
-      const tokenType = inferTokenTypeFromScopes(variable.scopes);
-      const unit = getUnitForTokenType(tokenType);
+      // Infer semantic type from scopes and name
+      if (scopes.includes('FONT_SIZE') || variableName.toLowerCase().includes('fontsize')) {
+        return 'fontSize';
+      }
+      if (scopes.includes('LINE_HEIGHT') || variableName.toLowerCase().includes('lineheight')) {
+        return 'lineHeight';
+      }
+      if (scopes.includes('LETTER_SPACING') || variableName.toLowerCase().includes('letterspacing')) {
+        return 'letterSpacing';
+      }
+      if (scopes.includes('PARAGRAPH_SPACING') || variableName.toLowerCase().includes('paragraph')) {
+        return 'paragraphSpacing';
+      }
+      if (scopes.includes('GAP') || scopes.includes('PADDING') || scopes.includes('SPACING') || 
+          variableName.toLowerCase().includes('spacing') || variableName.toLowerCase().includes('space')) {
+        return 'spacing';
+      }
+      if (scopes.includes('BORDER_RADIUS') || variableName.toLowerCase().includes('radius')) {
+        return 'borderRadius';
+      }
+      if (scopes.includes('WIDTH') || scopes.includes('HEIGHT') || 
+          variableName.toLowerCase().includes('size') || variableName.toLowerCase().includes('height')) {
+        return 'sizing';
+      }
+      if (variableName.toLowerCase().includes('borderwidth') || variableName.toLowerCase().includes('border')) {
+        return 'borderWidth';
+      }
       
-      return {
-        $type: tokenType,
-        $value: `${value}${unit}`,
-        $description: variable.description || undefined
-      };
+      // Default to dimension for other numeric values
+      return 'dimension';
       
     case 'STRING':
-      return {
-        $type: 'fontFamily', // Common string use case, could be refined
-        $value: value,
-        $description: variable.description || undefined
-      };
+      // Check for font size first (stored as string like "12px")
+      if (variableName.toLowerCase().includes('fontsize')) {
+        return 'fontSize';
+      }
+      if (variableName.toLowerCase().includes('fontweight') || variableName.toLowerCase().includes('weight')) {
+        return 'fontWeight';
+      }
+      if (variableName.toLowerCase().includes('lineheight')) {
+        return 'lineHeight';
+      }
+      if (variableName.toLowerCase().includes('letterspacing')) {
+        return 'letterSpacing';
+      }
+      if (variableName.toLowerCase().includes('fontfamily') || variableName.toLowerCase().includes('font')) {
+        return 'fontFamily';
+      }
+      if (variableName.toLowerCase().includes('shadow')) {
+        return 'shadow';
+      }
+      return 'fontFamily'; // Default for strings
       
     case 'BOOLEAN':
-      return {
-        $type: 'boolean',
-        $value: value,
-        $description: variable.description || undefined
-      };
+      return 'boolean';
       
     default:
-      return {
-        $type: 'other',
-        $value: value,
-        $description: variable.description || undefined
-      };
+      return 'other';
   }
 }
 
 /**
- * Map Figma variable types to W3C DTCG token types
+ * Format numeric values with appropriate units
  */
-function getTokenType(figmaType: string): string {
-  switch (figmaType) {
-    case 'COLOR': return 'color';
-    case 'FLOAT': return 'dimension';
-    case 'STRING': return 'fontFamily';
-    case 'BOOLEAN': return 'boolean';
-    default: return 'other';
-  }
-}
-
-/**
- * Infer semantic token type from Figma variable scopes
- */
-function inferTokenTypeFromScopes(scopes: string[]): string {
-  if (scopes.includes('FONT_SIZE')) return 'fontSize';
-  if (scopes.includes('LINE_HEIGHT')) return 'lineHeight';
-  if (scopes.includes('LETTER_SPACING')) return 'letterSpacing';
-  if (scopes.includes('PARAGRAPH_SPACING')) return 'paragraphSpacing';
-  if (scopes.includes('GAP') || scopes.includes('PADDING') || scopes.includes('SPACING')) return 'spacing';
-  if (scopes.includes('BORDER_RADIUS')) return 'borderRadius';
-  if (scopes.includes('WIDTH') || scopes.includes('HEIGHT')) return 'sizing';
-  
-  // Default to dimension for numeric values
-  return 'dimension';
-}
-
-/**
- * Get appropriate unit for token type
- */
-function getUnitForTokenType(tokenType: string): string {
+function formatNumericValue(value: number, tokenType: string): string {
   switch (tokenType) {
     case 'fontSize':
     case 'lineHeight':
@@ -124,10 +132,68 @@ function getUnitForTokenType(tokenType: string): string {
     case 'spacing':
     case 'borderRadius':
     case 'sizing':
-      return 'px';
+    case 'borderWidth':
+    case 'dimension':
+      return `${value}px`;
     default:
-      return '';
+      return value.toString();
   }
+}
+
+/**
+ * Process a single variable across all modes into W3C DTCG token format
+ */
+function processVariable(variable: any, modes: any[]): ProcessedToken {
+  const tokenType = getW3CTokenType(variable.resolvedType, variable.scopes, variable.name);
+  const valuesByMode: Record<string, any> = {};
+  let primaryValue: any;
+  
+  // Process all modes
+  for (const mode of modes) {
+    const value = variable.valuesByMode[mode.modeId];
+    
+    if (typeof value === 'object' && value.type === 'VARIABLE_ALIAS') {
+      // Handle references - use clean reference format
+      const referencedTokenName = variableReferenceMap.get(value.id);
+      const cleanReference = referencedTokenName ? `{${referencedTokenName}}` : `{unknown-reference-${value.id}}`;
+      valuesByMode[mode.name] = cleanReference;
+    } else {
+      // Handle actual values
+      let processedValue: any;
+      
+      switch (variable.resolvedType) {
+        case 'COLOR':
+          processedValue = rgbToHex(value);
+          break;
+        case 'FLOAT':
+          processedValue = formatNumericValue(value, tokenType);
+          break;
+        case 'STRING':
+        case 'BOOLEAN':
+        default:
+          processedValue = value;
+          break;
+      }
+      
+      valuesByMode[mode.name] = processedValue;
+    }
+  }
+  
+  // Use first mode as primary value for Style Dictionary compatibility
+  primaryValue = valuesByMode[modes[0].name];
+  
+  const token: ProcessedToken = {
+    $type: tokenType,
+    $value: primaryValue,
+    $description: variable.description || undefined
+  };
+  
+  // Add valuesByMode for Figma compatibility (if multiple modes exist)
+  if (modes.length > 1) {
+    token.valuesByMode = valuesByMode;
+  }
+  
+  return token;
 }
 
 /**
@@ -143,35 +209,40 @@ function createTokenName(variableName: string): string {
 }
 
 /**
- * Process a variable collection into W3C DTCG format
+ * Process a variable collection into W3C DTCG format with Figma mode support
  */
 export async function processCollection(collection: any): Promise<ProcessedCollection> {
-  const tokens: ProcessedCollection = {};
+  const variables: { [tokenName: string]: ProcessedToken } = {};
   
-  console.log(`Processing collection: ${collection.name} with ${collection.variables.length} variables`);
-  
-  // For now, use the first mode. TODO: Handle multiple modes properly
-  const primaryMode = collection.modes[0];
+  console.log(`Processing collection: ${collection.name} with ${collection.variables.length} variables and ${collection.modes.length} modes`);
   
   for (const variable of collection.variables) {
     try {
       const tokenName = createTokenName(variable.name);
-      const processedToken = processVariable(variable, primaryMode);
+      const processedToken = processVariable(variable, collection.modes);
       
       // Remove undefined description to keep JSON clean
       if (!processedToken.$description) {
         delete processedToken.$description;
       }
       
-      tokens[tokenName] = processedToken;
-      console.log(`Processed token: ${tokenName} = ${JSON.stringify(processedToken.$value)}`);
+      variables[tokenName] = processedToken;
+      console.log(`Processed token: ${tokenName} with ${collection.modes.length} mode(s)`);
     } catch (error) {
       console.error(`Error processing variable ${variable.name}:`, error);
     }
   }
   
-  console.log(`Successfully processed ${Object.keys(tokens).length} tokens from ${collection.name}`);
-  return tokens;
+  const result: ProcessedCollection = {
+    modes: collection.modes.map((mode: any) => ({
+      modeId: mode.modeId,
+      name: mode.name
+    })),
+    variables
+  };
+  
+  console.log(`Successfully processed ${Object.keys(variables).length} tokens from ${collection.name}`);
+  return result;
 }
 
 /**
@@ -186,6 +257,9 @@ export async function processCollectionsForExport(
   console.log(`Processing ${selectedCollectionIds.length} selected collections for export`);
   console.log('Selected collection IDs:', selectedCollectionIds);
   console.log('Available collections:', allCollections.map(c => `${c.name} (${c.id})`));
+  
+  // Build reference map first to resolve aliases
+  buildVariableReferenceMap(allCollections);
   
   for (const collectionId of selectedCollectionIds) {
     const collection = allCollections.find(c => c.id === collectionId);
@@ -207,14 +281,14 @@ export async function processCollectionsForExport(
       const processedTokens = await processCollection(collection);
       
       // Only add collections that actually have processed tokens
-      if (Object.keys(processedTokens).length > 0) {
-        // Format for download (matches existing downloadTokenFiles expectation)
+      if (Object.keys(processedTokens.variables).length > 0) {
+        // Return clean object without array wrapper for Style Dictionary compatibility
         const exportItem: ExportData = {
           [collection.name]: processedTokens
         };
         
         exportData.push(exportItem);
-        console.log(`Successfully exported collection: ${collection.name} with ${Object.keys(processedTokens).length} tokens`);
+        console.log(`Successfully exported collection: ${collection.name} with ${Object.keys(processedTokens.variables).length} tokens`);
       } else {
         console.warn(`Collection ${collection.name} processed but resulted in 0 tokens`);
       }
