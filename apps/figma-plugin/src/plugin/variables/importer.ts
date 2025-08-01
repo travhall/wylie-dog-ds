@@ -1,6 +1,8 @@
 // Token import utilities for W3C DTCG format to Figma Variables conversion
+// FIXED VERSION: Properly uses reference-resolver.ts API
 
 import type { ProcessedCollection, ProcessedToken, ExportData } from './processor';
+import { VariableRegistry, parseTokenReference, isTokenReference, createImportOrder, extractReferences } from './reference-resolver';
 
 export interface ImportResult {
   success: boolean;
@@ -8,12 +10,23 @@ export interface ImportResult {
   collectionsCreated: number;
   variablesCreated: number;
   errors: string[];
+  unresolvedReferences: string[];
 }
 
 export interface ImportOptions {
   mergeStrategy: 'replace' | 'merge' | 'preserve';
   createMissingModes: boolean;
   preserveExistingVariables: boolean;
+}
+
+export interface GlobalImportResult {
+  success: boolean;
+  message: string;
+  collectionsProcessed: number;
+  totalVariablesCreated: number;
+  totalReferencesResolved: number;
+  errors: string[];
+  unresolvedReferences: string[];
 }
 
 // Map W3C DTCG types to Figma types
@@ -71,7 +84,7 @@ function parseNumericValue(value: string): number {
 }
 
 /**
- * Convert token value to Figma format based on type
+ * Convert token value to Figma format
  */
 function convertTokenValueToFigma(token: ProcessedToken, figmaType: string): any {
   const value = token.$value;
@@ -81,7 +94,7 @@ function convertTokenValueToFigma(token: ProcessedToken, figmaType: string): any
       if (typeof value === 'string' && value.startsWith('#')) {
         return hexToFigmaRgb(value);
       }
-      return { r: 0, g: 0, b: 0 }; // Fallback black
+      return { r: 0, g: 0, b: 0 }; // Fallback
       
     case 'FLOAT':
       return parseNumericValue(value);
@@ -100,14 +113,12 @@ async function ensureVariableCollection(
   collectionName: string, 
   modes: Array<{ modeId: string; name: string }>
 ): Promise<VariableCollection> {
-  // Check if collection already exists
   const existingCollections = await figma.variables.getLocalVariableCollectionsAsync();
   let collection = existingCollections.find(c => c.name === collectionName);
   
   if (!collection) {
-    // Create new collection
     collection = figma.variables.createVariableCollection(collectionName);
-    console.log(`Created new variable collection: ${collectionName}`);
+    console.log(`Created collection: ${collectionName}`);
   }
   
   // Handle modes - remove default mode if we have custom modes
@@ -120,7 +131,7 @@ async function ensureVariableCollection(
       if (!existingModeNames.includes(modeData.name)) {
         try {
           collection.addMode(modeData.name);
-          console.log(`Added mode "${modeData.name}" to collection "${collectionName}"`);
+          console.log(`Added mode "${modeData.name}"`);
         } catch (error) {
           console.warn(`Failed to add mode "${modeData.name}":`, error);
         }
@@ -133,7 +144,7 @@ async function ensureVariableCollection(
         const defaultMode = collection.modes.find(m => m.name === "Mode 1");
         if (defaultMode && collection.modes.length > 1) {
           collection.removeMode(defaultMode.modeId);
-          console.log(`Removed default "Mode 1" from collection "${collectionName}"`);
+          console.log(`Removed default Mode 1`);
         }
       } catch (error) {
         console.warn(`Failed to remove default mode:`, error);
@@ -145,149 +156,221 @@ async function ensureVariableCollection(
 }
 
 /**
- * Create or update a variable in a collection
+ * Create variable and handle references using proper reference-resolver API
  */
-async function createOrUpdateVariable(
+async function createVariableWithReferences(
   collection: VariableCollection,
   tokenName: string,
   token: ProcessedToken,
-  options: ImportOptions
+  registry: VariableRegistry
 ): Promise<Variable | null> {
   try {
     const figmaType = W3C_TO_FIGMA_TYPE_MAP[token.$type] || 'STRING';
     const scopes = W3C_TO_FIGMA_SCOPES_MAP[token.$type] || ['ALL_SCOPES'];
-    
-    // Convert dot notation back to Figma naming
-    // e.g., "color.primary.500" -> "color/primary/500"
     const figmaName = tokenName.replace(/\./g, '/');
     
     // Check if variable already exists
-    const existingVariables = collection.variableIds.map(id => figma.variables.getVariableById(id)).filter(Boolean);
-    let variable = existingVariables.find(v => v?.name === figmaName);
-    
-    if (variable && !options.preserveExistingVariables) {
-      // Update existing variable
-      console.log(`Updating existing variable: ${figmaName}`);
-    } else if (!variable) {
-      // Create new variable
-      variable = figma.variables.createVariable(figmaName, collection, figmaType as VariableResolvedDataType);
-      console.log(`Created new variable: ${figmaName} (${figmaType})`);
-      
-      // Set scopes
-      variable.scopes = scopes as VariableScope[];
-      
-      // Set description if provided
-      if (token.$description) {
-        variable.description = token.$description;
-      }
-    } else {
-      console.log(`Preserving existing variable: ${figmaName}`);
-      return variable;
+    const existingVariables = [];
+    for (const id of collection.variableIds) {
+      const variable = await figma.variables.getVariableByIdAsync(id);
+      if (variable) existingVariables.push(variable);
     }
     
-    // Set values for all modes
+    let variable = existingVariables.find(v => v?.name === figmaName);
+    
+    if (!variable) {
+      variable = figma.variables.createVariable(figmaName, collection, figmaType as VariableResolvedDataType);
+      variable.scopes = scopes as VariableScope[];
+      if (token.$description) variable.description = token.$description;
+      console.log(`Created variable: ${figmaName}`);
+    }
+    
+    // Register in registry for reference resolution
+    registry.register(tokenName, variable.id);
+    
+    // Extract references for this token
+    const references = extractReferences(token);
+    
+    // Set non-reference values immediately, queue references for later
     if (token.valuesByMode) {
       // Multi-mode token
+      const modeReferences = new Map<string, any>();
+      
       for (const [modeName, modeValue] of Object.entries(token.valuesByMode)) {
         const mode = collection.modes.find(m => m.name === modeName);
-        if (mode) {
-          const figmaValue = convertTokenValueToFigma(Object.assign({}, token, { $value: modeValue }), figmaType);
+        if (!mode) continue;
+        
+        if (isTokenReference(modeValue)) {
+          // Store reference for later resolution
+          const ref = parseTokenReference(modeValue as string);
+          if (ref) {
+            modeReferences.set(mode.modeId, ref);
+          }
+        } else {
+          // Set immediate value
+          const figmaValue = convertTokenValueToFigma(
+            Object.assign({}, token, { $value: modeValue }), 
+            figmaType
+          );
           variable.setValueForMode(mode.modeId, figmaValue);
-          console.log(`Set value for ${figmaName} in mode "${modeName}"`);
         }
       }
+      
+      // Add pending references if any
+      if (modeReferences.size > 0) {
+        registry.addPendingResolution(variable, tokenName, modeReferences);
+      }
+      
     } else {
-      // Single-mode token - use default mode
+      // Single mode token
       const defaultMode = collection.modes[0];
-      const figmaValue = convertTokenValueToFigma(token, figmaType);
-      variable.setValueForMode(defaultMode.modeId, figmaValue);
-      console.log(`Set value for ${figmaName} in default mode`);
+      
+      if (isTokenReference(token.$value)) {
+        // Queue reference for later resolution
+        const ref = parseTokenReference(token.$value);
+        if (ref) {
+          const modeReferences = new Map();
+          modeReferences.set(defaultMode.modeId, ref);
+          registry.addPendingResolution(variable, tokenName, modeReferences);
+        }
+      } else {
+        // Set immediate value
+        const figmaValue = convertTokenValueToFigma(token, figmaType);
+        variable.setValueForMode(defaultMode.modeId, figmaValue);
+      }
     }
     
     return variable;
     
   } catch (error) {
-    console.error(`Error creating/updating variable ${tokenName}:`, error);
+    console.error(`Error creating variable ${tokenName}:`, error instanceof Error ? error.message : error);
     return null;
   }
 }
 
 /**
- * Import a single collection from processed tokens
+ * Global import function that processes all collections together
  */
-export async function importCollection(
-  collectionName: string,
-  collectionData: ProcessedCollection,
+export async function importMultipleCollections(
+  tokenDataArray: ExportData[],
   options: ImportOptions = {
     mergeStrategy: 'merge',
     createMissingModes: true,
     preserveExistingVariables: false
   }
-): Promise<ImportResult> {
-  const result: ImportResult = {
+): Promise<GlobalImportResult> {
+  const result: GlobalImportResult = {
     success: false,
     message: '',
-    collectionsCreated: 0,
-    variablesCreated: 0,
-    errors: []
+    collectionsProcessed: 0,
+    totalVariablesCreated: 0,
+    totalReferencesResolved: 0,
+    errors: [],
+    unresolvedReferences: []
   };
-  
+
   try {
-    console.log(`Starting import of collection: ${collectionName}`);
-    console.log(`Collection data:`, JSON.stringify(collectionData, null, 2));
+    console.log(`🚀 Starting global import of ${tokenDataArray.length} collections`);
+    console.log('📊 Token data structure:', tokenDataArray.map((data, i) => `${i}: ${Object.keys(data).join(', ')}`));
     
-    // Ensure collection exists with proper modes
-    const collection = await ensureVariableCollection(
-      collectionName, 
-      collectionData.modes || [{ modeId: 'default', name: 'Default' }]
-    );
+    // Create a single registry for all collections
+    const globalRegistry = new VariableRegistry();
     
-    if (!collection) {
-      throw new Error(`Failed to create or find collection: ${collectionName}`);
-    }
+    // Analyze all collections to determine import order
+    const importOrder = createImportOrder(tokenDataArray);
+    console.log(`📋 Import order determined: ${importOrder.join(' → ')}`);
     
-    result.collectionsCreated = 1;
+    // Track all collections by name for ordered processing
+    const collectionMap = new Map<string, { data: ProcessedCollection; name: string }>();
     
-    // Import variables
-    let variableCount = 0;
-    const tokenEntries = Object.entries(collectionData.variables);
-    console.log(`Processing ${tokenEntries.length} tokens for collection ${collectionName}`);
-    
-    for (const [tokenName, token] of tokenEntries) {
-      console.log(`Processing token: ${tokenName}`, token);
-      try {
-        const variable = await createOrUpdateVariable(collection, tokenName, token, options);
-        if (variable) {
-          variableCount++;
-          console.log(`Successfully created/updated variable: ${tokenName} (${variableCount}/${tokenEntries.length})`);
-        } else {
-          console.warn(`Variable creation returned null for: ${tokenName}`);
-        }
-      } catch (error) {
-        const errorMsg = `Failed to import token ${tokenName}: ${error.message}`;
-        result.errors.push(errorMsg);
-        console.error(errorMsg, error);
+    for (const tokenData of tokenDataArray) {
+      for (const [collectionName, data] of Object.entries(tokenData)) {
+        collectionMap.set(collectionName, { data, name: collectionName });
       }
     }
     
-    result.variablesCreated = variableCount;
-    result.success = true;
-    result.message = `Successfully imported ${variableCount}/${tokenEntries.length} variables to collection "${collectionName}"`;
+    console.log(`📊 Found collections: ${Array.from(collectionMap.keys()).join(', ')}`);
     
-    console.log(`Import complete: ${result.message}`);
+    // Process all collections in dependency order
+    let totalCreated = 0;
+    
+    for (const collectionName of importOrder) {
+      const collectionInfo = collectionMap.get(collectionName);
+      if (!collectionInfo) {
+        console.warn(`⚠️  Collection not found in data: ${collectionName}`);
+        continue;
+      }
+      
+      console.log(`\n📦 Processing collection: ${collectionName}`);
+      console.log(`   Variables to process: ${Object.keys(collectionInfo.data.variables).length}`);
+      
+      try {
+        // Ensure collection exists
+        const collection = await ensureVariableCollection(
+          collectionName,
+          collectionInfo.data.modes || [{ modeId: 'default', name: 'Default' }]
+        );
+        
+        // Create all variables in this collection
+        const tokenEntries = Object.entries(collectionInfo.data.variables);
+        let collectionCreated = 0;
+        
+        for (const [tokenName, token] of tokenEntries) {
+          console.log(`   Creating variable: ${tokenName}`);
+          const variable = await createVariableWithReferences(collection, tokenName, token, globalRegistry);
+          if (variable) {
+            collectionCreated++;
+            totalCreated++;
+          }
+        }
+        
+        console.log(`✅ Created ${collectionCreated} variables in ${collectionName}`);
+        result.collectionsProcessed++;
+        
+      } catch (error) {
+        const errorMsg = `Failed to process collection ${collectionName}: ${error instanceof Error ? error.message : error}`;
+        console.error(`❌ ${errorMsg}`);
+        result.errors.push(errorMsg);
+      }
+    }
+    
+    console.log(`\n🔗 Resolving all references globally...`);
+    console.log(`   Registry size: ${globalRegistry.getRegistrySize()} variables registered`);
+    result.totalVariablesCreated = totalCreated;
+    
+    // Now resolve all references globally
+    const resolveResult = await globalRegistry.resolveAllReferences();
+    result.totalReferencesResolved = resolveResult.resolved;
+    result.unresolvedReferences = resolveResult.unresolved;
+    
+    if (result.unresolvedReferences.length > 0) {
+      console.warn(`⚠️  Unresolved references found:`, result.unresolvedReferences);
+      result.errors.push(`${result.unresolvedReferences.length} unresolved references`);
+    }
+    
+    result.success = result.errors.length === 0 || result.totalVariablesCreated > 0;
+    result.message = result.success 
+      ? `Successfully imported ${result.totalVariablesCreated} variables (${result.totalReferencesResolved} references resolved) across ${result.collectionsProcessed} collections`
+      : `Import failed with ${result.errors.length} errors`;
+    
+    console.log(`\n🎉 Global import complete:`);
+    console.log(`   Collections: ${result.collectionsProcessed}`);
+    console.log(`   Variables: ${result.totalVariablesCreated}`);
+    console.log(`   References: ${result.totalReferencesResolved}`);
+    console.log(`   Unresolved: ${result.unresolvedReferences.length}`);
     
   } catch (error) {
     result.success = false;
-    result.message = `Import failed: ${error.message}`;
-    result.errors.push(error.message);
-    console.error('Import error:', error);
+    result.message = `Global import failed: ${error instanceof Error ? error.message : error}`;
+    result.errors.push(error instanceof Error ? error.message : 'Unknown error');
+    console.error('❌ Global import error:', error);
   }
   
   return result;
 }
 
 /**
- * Import multiple collections from export data
+ * Legacy wrapper for backward compatibility
  */
 export async function importTokenData(
   tokenData: ExportData | ExportData[],
@@ -297,21 +380,20 @@ export async function importTokenData(
     preserveExistingVariables: false
   }
 ): Promise<ImportResult[]> {
-  const results: ImportResult[] = [];
+  console.log(`🔄 Using legacy importTokenData, upgrading to global import...`);
   
-  // Handle both single collection and array of collections
   const collections = Array.isArray(tokenData) ? tokenData : [tokenData];
+  const globalResult = await importMultipleCollections(collections, options);
   
-  console.log(`Starting import of ${collections.length} collection(s)`);
-  
-  for (const collectionData of collections) {
-    for (const [collectionName, data] of Object.entries(collectionData)) {
-      const result = await importCollection(collectionName, data, options);
-      results.push(result);
-    }
-  }
-  
-  return results;
+  // Convert global result to legacy format
+  return [{
+    success: globalResult.success,
+    message: globalResult.message,
+    collectionsCreated: globalResult.collectionsProcessed,
+    variablesCreated: globalResult.totalVariablesCreated,
+    errors: globalResult.errors,
+    unresolvedReferences: globalResult.unresolvedReferences
+  }];
 }
 
 /**
@@ -320,17 +402,10 @@ export async function importTokenData(
 export function parseTokenFile(content: string): ExportData | ExportData[] {
   try {
     const parsed = JSON.parse(content);
-    
-    // Handle array wrapper format
-    if (Array.isArray(parsed)) {
-      return parsed;
-    }
-    
-    // Handle direct object format
+    // Return as-is - let the caller handle array vs single object
     return parsed;
-    
   } catch (error) {
-    throw new Error(`Invalid JSON format: ${error.message}`);
+    throw new Error(`Invalid JSON format: ${error instanceof Error ? error.message : error}`);
   }
 }
 
@@ -345,7 +420,6 @@ export function validateTokenStructure(tokenData: any): { valid: boolean; errors
     return { valid: false, errors };
   }
   
-  // Handle array format
   const collections = Array.isArray(tokenData) ? tokenData : [tokenData];
   
   for (const collection of collections) {
@@ -355,14 +429,13 @@ export function validateTokenStructure(tokenData: any): { valid: boolean; errors
     }
     
     for (const [collectionName, data] of Object.entries(collection)) {
-      if (typeof data !== 'object' || !data.variables) {
+      if (typeof data !== 'object' || !data?.variables) {
         errors.push(`Collection "${collectionName}" missing variables object`);
         continue;
       }
       
-      // Validate variables structure
-      for (const [tokenName, token] of Object.entries(data.variables)) {
-        if (typeof token !== 'object' || !token.$type || token.$value === undefined) {
+      for (const [tokenName, token] of Object.entries((data as any).variables)) {
+        if (typeof token !== 'object' || !(token as any)?.$type || (token as any)?.$value === undefined) {
           errors.push(`Token "${tokenName}" missing required $type or $value`);
         }
       }
@@ -372,5 +445,57 @@ export function validateTokenStructure(tokenData: any): { valid: boolean; errors
   return {
     valid: errors.length === 0,
     errors
+  };
+}
+
+/**
+ * Enhanced validation that checks for reference integrity
+ */
+export function validateTokenReferences(tokenData: ExportData[]): { 
+  valid: boolean; 
+  errors: string[];
+  missingReferences: string[];
+  circularReferences: string[];
+} {
+  const errors: string[] = [];
+  const missingReferences: string[] = [];
+  const circularReferences: string[] = [];
+  
+  // Build a map of all available tokens
+  const availableTokens = new Set<string>();
+  for (const collection of tokenData) {
+    for (const [collectionName, data] of Object.entries(collection)) {
+      for (const tokenName of Object.keys((data as ProcessedCollection).variables)) {
+        availableTokens.add(tokenName);
+      }
+    }
+  }
+  
+  // Check all references
+  for (const collection of tokenData) {
+    for (const [collectionName, data] of Object.entries(collection)) {
+      for (const [tokenName, token] of Object.entries((data as ProcessedCollection).variables)) {
+        const references = extractReferences(token);
+        
+        for (const ref of Array.from(references.values())) {
+          const referencedToken = ref.referencePath;
+          
+          if (!availableTokens.has(referencedToken)) {
+            missingReferences.push(`${tokenName} → {${referencedToken}}`);
+          }
+        }
+      }
+    }
+  }
+  
+  if (missingReferences.length > 0) {
+    errors.push(`Missing references: ${missingReferences.join(', ')}`);
+  }
+  
+  return {
+    valid: errors.length === 0,
+    errors,
+    missingReferences,
+    circularReferences
   };
 }

@@ -1,6 +1,6 @@
 // Plugin main entry point
 import { processCollectionsForExport } from './variables/processor';
-import { importTokenData, parseTokenFile, validateTokenStructure } from './variables/importer';
+import { importMultipleCollections, parseTokenFile, validateTokenStructure, validateTokenReferences } from './variables/importer';
 // import { GitHubClient } from './github/client'; // Temporarily disabled
 
 console.log('Plugin starting...');
@@ -101,11 +101,11 @@ figma.ui.onmessage = async (msg) => {
               variables: variables
             }
           });
-        } catch (error) {
+        } catch (error: unknown) {
           console.error('Error getting collection details:', error);
           figma.ui.postMessage({
             type: 'error',
-            message: `Failed to load collection details: ${error.message}`
+            message: `Failed to load collection details: ${error instanceof Error ? error.message : 'Unknown error'}`
           });
         }
         break;
@@ -174,12 +174,12 @@ figma.ui.onmessage = async (msg) => {
           });
           
           console.log('Export completed successfully');
-        } catch (error) {
+        } catch (error: unknown) {
           console.error('Error exporting tokens:', error);
           setLoading(false);
           figma.ui.postMessage({
             type: 'error',
-            message: `Failed to export tokens: ${error.message}`
+            message: `Failed to export tokens: ${error instanceof Error ? error.message : 'Unknown error'}`
           });
         }
         break;
@@ -193,10 +193,11 @@ figma.ui.onmessage = async (msg) => {
             throw new Error('No files provided for import');
           }
           
-          const allResults = [];
+          // Parse all files first
+          const allTokenData = [];
           
           for (const file of msg.files) {
-            console.log(`Processing file: ${file.filename}`);
+            console.log(`Parsing file: ${file.filename}`);
             
             try {
               // Parse the JSON content
@@ -211,38 +212,58 @@ figma.ui.onmessage = async (msg) => {
               
               console.log(`File ${file.filename} validated successfully`);
               
-              // Import the tokens
-              setLoading(true, `Importing tokens from ${file.filename}...`);
-              const results = await importTokenData(tokenData, {
-                mergeStrategy: 'merge',
-                createMissingModes: true,
-                preserveExistingVariables: false
-              });
+              // Add to collection for global processing
+              if (Array.isArray(tokenData)) {
+                allTokenData.push(...tokenData);
+              } else {
+                allTokenData.push(tokenData);
+              }
               
-              allResults.push(...results);
-              console.log(`Successfully imported tokens from ${file.filename}`);
-              
-            } catch (fileError) {
+            } catch (fileError: unknown) {
               console.error(`Error processing file ${file.filename}:`, fileError);
-              throw new Error(`Failed to process ${file.filename}: ${fileError.message}`);
+              throw new Error(`Failed to process ${file.filename}: ${fileError instanceof Error ? fileError.message : 'Unknown error'}`);
             }
           }
+          
+          // Validate references across all collections
+          setLoading(true, 'Validating token references...');
+          const referenceValidation = validateTokenReferences(allTokenData);
+          
+          if (referenceValidation.missingReferences.length > 0) {
+            console.warn('Missing references detected:', referenceValidation.missingReferences);
+            // Continue with import but warn user
+          }
+          
+          // Use new global import function for cross-collection reference resolution
+          setLoading(true, 'Importing tokens with reference resolution...');
+          console.log(`🚀 Starting global import with ${allTokenData.length} collections`);
+          
+          const globalResult = await importMultipleCollections(allTokenData, {
+            mergeStrategy: 'merge',
+            createMissingModes: true,
+            preserveExistingVariables: false
+          });
+          
+          console.log('🎉 Global import result:', globalResult);
           
           setLoading(false);
           
           // Send results back to UI
           figma.ui.postMessage({
             type: 'tokens-imported',
-            results: allResults
+            result: globalResult,
+            results: [globalResult], // Convert to array format for UI compatibility
+            referenceValidation: referenceValidation
           });
           
-          console.log('Import completed successfully:', allResults.length, 'results');
-        } catch (error) {
+          console.log('Global import completed:', globalResult);
+          
+        } catch (error: unknown) {
           console.error('Error importing tokens:', error);
           setLoading(false);
           figma.ui.postMessage({
             type: 'import-error',
-            error: error.message
+            error: error instanceof Error ? error.message : 'Unknown error'
           });
         }
         break;

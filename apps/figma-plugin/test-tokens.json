@@ -1,0 +1,50 @@
+[
+  {
+    "Primitive Colors": {
+      "modes": [
+        { "modeId": "default", "name": "Default" }
+      ],
+      "variables": {
+        "color.blue.500": {
+          "$type": "color",
+          "$value": "#0ea5e9",
+          "$description": "Primary blue color"
+        },
+        "color.gray.50": {
+          "$type": "color", 
+          "$value": "#f8fafc",
+          "$description": "Light gray background"
+        },
+        "color.gray.900": {
+          "$type": "color",
+          "$value": "#0f172a", 
+          "$description": "Dark gray text"
+        }
+      }
+    }
+  },
+  {
+    "Semantic Colors": {
+      "modes": [
+        { "modeId": "default", "name": "Default" }
+      ],
+      "variables": {
+        "color.background.primary": {
+          "$type": "color",
+          "$value": "{color.gray.50}",
+          "$description": "Primary background color"
+        },
+        "color.text.primary": {
+          "$type": "color", 
+          "$value": "{color.gray.900}",
+          "$description": "Primary text color"
+        },
+        "color.brand.primary": {
+          "$type": "color",
+          "$value": "{color.blue.500}",
+          "$description": "Brand primary color"
+        }
+      }
+    }
+  }
+]

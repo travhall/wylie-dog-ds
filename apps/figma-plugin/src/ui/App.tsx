@@ -71,7 +71,7 @@ function App() {
           console.log('Collections loaded:', msg.collections);
           setCollections(msg.collections || []);
           // Default to selecting all collections
-          setSelectedCollections(new Set(msg.collections && msg.collections.map(c => c.id) || []));
+          setSelectedCollections(new Set(msg.collections && msg.collections.map((c: Collection) => c.id) || []));
           setLoading(false);
           setError(null);
           break;
@@ -91,7 +91,7 @@ function App() {
         case 'tokens-exported':
           console.log('Tokens exported successfully:', msg.exportData);
           console.log('Export data length:', msg.exportData ? msg.exportData.length : 0);
-          console.log('Export data structure:', msg.exportData && msg.exportData.map(item => Object.keys(item)));
+          console.log('Export data structure:', msg.exportData && msg.exportData.map((item: any) => Object.keys(item)));
           console.log('Full export data:', JSON.stringify(msg.exportData, null, 2));
           setLoading(false);
           setLoadingMessage('');
@@ -158,19 +158,27 @@ function App() {
           }
           break;
         case 'tokens-imported':
-          console.log('Tokens imported successfully:', msg.results);
+          console.log('Tokens imported successfully:', msg.result);
           setImportLoading(false);
           setLoading(false);
           setLoadingMessage('');
-          if (msg.results && msg.results.length > 0) {
-            const totalVariables = msg.results.reduce((sum, result) => sum + result.variablesCreated, 0);
-            const totalCollections = msg.results.length;
-            setSuccessMessage(`✅ Successfully imported ${totalVariables} variables across ${totalCollections} collections!`);
-            setTimeout(() => setSuccessMessage(null), 4000);
+          if (msg.result && msg.result.success) {
+            const totalVariables = msg.result.totalVariablesCreated || 0;
+            const totalCollections = msg.result.collectionsProcessed || 0;
+            const resolvedReferences = msg.result.totalReferencesResolved || 0;
+            
+            let successText = `✅ Successfully imported ${totalVariables} variables across ${totalCollections} collections!`;
+            if (resolvedReferences > 0) {
+              successText += ` (${resolvedReferences} references resolved)`;
+            }
+            
+            setSuccessMessage(successText);
+            setTimeout(() => setSuccessMessage(null), 5000);
             // Reload collections to show imported data
             loadCollections();
           } else {
-            setError('Import completed but no results received');
+            const errorMsg = msg.result?.message || 'Import completed but no results received';
+            setError(errorMsg);
           }
           break;
         case 'import-error':
