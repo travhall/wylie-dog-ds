@@ -110,16 +110,33 @@ async function ensureVariableCollection(
     console.log(`Created new variable collection: ${collectionName}`);
   }
   
-  // Ensure modes exist
-  const existingModeNames = collection.modes.map(m => m.name);
-  
-  for (const modeData of modes) {
-    if (!existingModeNames.includes(modeData.name)) {
+  // Handle modes - remove default mode if we have custom modes
+  if (modes && modes.length > 0) {
+    const existingModeNames = collection.modes.map(m => m.name);
+    let hasDefaultMode = collection.modes.length === 1 && collection.modes[0].name === "Mode 1";
+    
+    // Add new modes first
+    for (const modeData of modes) {
+      if (!existingModeNames.includes(modeData.name)) {
+        try {
+          collection.addMode(modeData.name);
+          console.log(`Added mode "${modeData.name}" to collection "${collectionName}"`);
+        } catch (error) {
+          console.warn(`Failed to add mode "${modeData.name}":`, error);
+        }
+      }
+    }
+    
+    // Remove default "Mode 1" if we added custom modes
+    if (hasDefaultMode && modes.length > 0) {
       try {
-        const newMode = collection.addMode(modeData.name);
-        console.log(`Added mode "${modeData.name}" to collection "${collectionName}"`);
+        const defaultMode = collection.modes.find(m => m.name === "Mode 1");
+        if (defaultMode && collection.modes.length > 1) {
+          collection.removeMode(defaultMode.modeId);
+          console.log(`Removed default "Mode 1" from collection "${collectionName}"`);
+        }
       } catch (error) {
-        console.warn(`Failed to add mode "${modeData.name}":`, error);
+        console.warn(`Failed to remove default mode:`, error);
       }
     }
   }
@@ -217,6 +234,7 @@ export async function importCollection(
   
   try {
     console.log(`Starting import of collection: ${collectionName}`);
+    console.log(`Collection data:`, JSON.stringify(collectionData, null, 2));
     
     // Ensure collection exists with proper modes
     const collection = await ensureVariableCollection(
@@ -233,17 +251,22 @@ export async function importCollection(
     // Import variables
     let variableCount = 0;
     const tokenEntries = Object.entries(collectionData.variables);
+    console.log(`Processing ${tokenEntries.length} tokens for collection ${collectionName}`);
     
     for (const [tokenName, token] of tokenEntries) {
+      console.log(`Processing token: ${tokenName}`, token);
       try {
         const variable = await createOrUpdateVariable(collection, tokenName, token, options);
         if (variable) {
           variableCount++;
+          console.log(`Successfully created/updated variable: ${tokenName} (${variableCount}/${tokenEntries.length})`);
+        } else {
+          console.warn(`Variable creation returned null for: ${tokenName}`);
         }
       } catch (error) {
         const errorMsg = `Failed to import token ${tokenName}: ${error.message}`;
         result.errors.push(errorMsg);
-        console.error(errorMsg);
+        console.error(errorMsg, error);
       }
     }
     
