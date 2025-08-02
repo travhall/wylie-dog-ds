@@ -253,7 +253,8 @@ figma.ui.onmessage = async (msg) => {
             type: 'tokens-imported',
             result: globalResult,
             results: [globalResult], // Convert to array format for UI compatibility
-            referenceValidation: referenceValidation
+            referenceValidation: referenceValidation,
+            validationReport: globalResult.validationReport // Include enhanced validation
           });
           
           console.log('Global import completed:', globalResult);

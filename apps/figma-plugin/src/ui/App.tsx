@@ -1,6 +1,7 @@
 import { render } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import { GitHubConfig } from './components/GitHubConfig';
+import { ValidationDisplay } from './components/ValidationDisplay';
 
 console.log('App.tsx loaded');
 
@@ -48,6 +49,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
+  const [validationReport, setValidationReport] = useState<any>(null);
+  const [showValidation, setShowValidation] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [githubConfig, setGithubConfig] = useState<GitHubConfig | null>(null);
   const [githubConfigured, setGithubConfigured] = useState(false);
@@ -162,6 +165,15 @@ function App() {
           setImportLoading(false);
           setLoading(false);
           setLoadingMessage('');
+          
+          // Handle validation report
+          if (msg.validationReport) {
+            setValidationReport(msg.validationReport);
+            if (!msg.validationReport.valid || msg.validationReport.warnings.length > 0) {
+              setShowValidation(true);
+            }
+          }
+          
           if (msg.result && msg.result.success) {
             const totalVariables = msg.result.totalVariablesCreated || 0;
             const totalCollections = msg.result.collectionsProcessed || 0;
@@ -940,6 +952,14 @@ function App() {
         <div style={{ padding: '20px', textAlign: 'center', color: '#666' }}>
           Click "Load Variable Collections" to get started
         </div>
+      )}
+
+      {/* Validation Display */}
+      {showValidation && validationReport && (
+        <ValidationDisplay 
+          validationReport={validationReport}
+          onClose={() => setShowValidation(false)}
+        />
       )}
     </div>
   );

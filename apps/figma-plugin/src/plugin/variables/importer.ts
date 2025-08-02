@@ -3,6 +3,7 @@
 
 import type { ProcessedCollection, ProcessedToken, ExportData } from './processor';
 import { VariableRegistry, parseTokenReference, isTokenReference, createImportOrder, extractReferences } from './reference-resolver';
+import { validateTokensForImport, type ValidationReport, validateTokenValue } from './validation';
 
 export interface ImportResult {
   success: boolean;
@@ -27,6 +28,7 @@ export interface GlobalImportResult {
   totalReferencesResolved: number;
   errors: string[];
   unresolvedReferences: string[];
+  validationReport?: ValidationReport;
 }
 
 // Map W3C DTCG types to Figma types
@@ -207,6 +209,13 @@ async function createVariableWithReferences(
             modeReferences.set(mode.modeId, ref);
           }
         } else {
+          // Validate individual token value before setting
+          const tokenValidationErrors = validateTokenValue(Object.assign({}, token, { $value: modeValue }));
+          if (tokenValidationErrors.length > 0) {
+            console.warn(`Token validation warnings for ${tokenName}:`, tokenValidationErrors);
+            // Add to result warnings but continue processing
+          }
+          
           // Set immediate value
           const figmaValue = convertTokenValueToFigma(
             Object.assign({}, token, { $value: modeValue }), 
@@ -266,11 +275,46 @@ export async function importMultipleCollections(
     totalVariablesCreated: 0,
     totalReferencesResolved: 0,
     errors: [],
-    unresolvedReferences: []
+    unresolvedReferences: [],
+    validationReport: undefined
   };
 
   try {
     console.log(`🚀 Starting global import of ${tokenDataArray.length} collections`);
+    
+    // ENHANCED VALIDATION - Run comprehensive validation before processing
+    console.log('🔍 Running enhanced token validation...');
+    const validationReport = validateTokensForImport(tokenDataArray);
+    result.validationReport = validationReport;
+    
+    console.log(`📊 Validation complete: ${validationReport.stats.totalTokens} tokens, ${validationReport.stats.totalReferences} references`);
+    console.log(`⚠️ Validation errors: ${validationReport.errors.length}, warnings: ${validationReport.warnings.length}`);
+    
+    // Log validation errors and warnings
+    if (validationReport.errors.length > 0) {
+      console.error('❌ Validation errors found:');
+      validationReport.errors.forEach(error => {
+        console.error(`  - ${error.type}: ${error.message}`);
+        if (error.suggestion) console.error(`    💡 ${error.suggestion}`);
+      });
+    }
+    
+    if (validationReport.warnings.length > 0) {
+      console.warn('⚠️ Validation warnings found:');
+      validationReport.warnings.forEach(warning => {
+        console.warn(`  - ${warning.type}: ${warning.message}`);
+        if (warning.suggestion) console.warn(`    💡 ${warning.suggestion}`);
+      });
+    }
+    
+    // Stop import if critical errors found
+    if (!validationReport.valid) {
+      result.errors = validationReport.errors.map(e => e.message);
+      result.message = `Import failed validation: ${validationReport.errors.length} critical errors found`;
+      return result;
+    }
+    
+    console.log('✅ Validation passed, proceeding with import...');
     console.log('📊 Token data structure:', tokenDataArray.map((data, i) => `${i}: ${Object.keys(data).join(', ')}`));
     
     // Create a single registry for all collections

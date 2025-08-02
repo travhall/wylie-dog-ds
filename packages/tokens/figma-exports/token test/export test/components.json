@@ -3,18 +3,552 @@
     "components": {
       "modes": [
         {
-          "modeId": "22:3",
+          "modeId": "42:3",
           "name": "Light"
         },
         {
-          "modeId": "22:4",
+          "modeId": "42:4",
           "name": "Dark"
         }
       ],
       "variables": {
+        "button.primary.background": {
+          "$type": "color",
+          "$value": "{color.interactive.primary}",
+          "$description": "Primary button background",
+          "valuesByMode": {
+            "Light": "{color.interactive.primary}",
+            "Dark": "{color.interactive.primary}"
+          }
+        },
+        "button.primary.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.primary-hover}",
+          "$description": "Primary button hover background",
+          "valuesByMode": {
+            "Light": "{color.interactive.primary-hover}",
+            "Dark": "{color.interactive.primary-hover}"
+          }
+        },
+        "button.primary.background-active": {
+          "$type": "color",
+          "$value": "{color.interactive.primary-active}",
+          "$description": "Primary button active background",
+          "valuesByMode": {
+            "Light": "{color.interactive.primary-active}",
+            "Dark": "{color.interactive.primary-active}"
+          }
+        },
+        "button.primary.text": {
+          "$type": "color",
+          "$value": "{color.text.inverse}",
+          "$description": "Primary button text color",
+          "valuesByMode": {
+            "Light": "{color.text.inverse}",
+            "Dark": "{color.text.inverse}"
+          }
+        },
+        "button.primary.border": {
+          "$type": "color",
+          "$value": "{color.interactive.primary}",
+          "$description": "Primary button border color",
+          "valuesByMode": {
+            "Light": "{color.interactive.primary}",
+            "Dark": "{color.interactive.primary}"
+          }
+        },
+        "button.secondary.background": {
+          "$type": "color",
+          "$value": "{color.interactive.secondary}",
+          "$description": "Secondary button background",
+          "valuesByMode": {
+            "Light": "{color.interactive.secondary}",
+            "Dark": "{color.interactive.secondary}"
+          }
+        },
+        "button.secondary.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.secondary-hover}",
+          "$description": "Secondary button hover background",
+          "valuesByMode": {
+            "Light": "{color.interactive.secondary-hover}",
+            "Dark": "{color.interactive.secondary-hover}"
+          }
+        },
+        "button.secondary.background-active": {
+          "$type": "color",
+          "$value": "{color.interactive.secondary-active}",
+          "$description": "Secondary button active background",
+          "valuesByMode": {
+            "Light": "{color.interactive.secondary-active}",
+            "Dark": "{color.interactive.secondary-active}"
+          }
+        },
+        "button.secondary.text": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "$description": "Secondary button text color",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "button.secondary.border": {
+          "$type": "color",
+          "$value": "{color.border.secondary}",
+          "$description": "Secondary button border color",
+          "valuesByMode": {
+            "Light": "{color.border.secondary}",
+            "Dark": "{color.border.secondary}"
+          }
+        },
+        "button.outline.background": {
+          "$type": "color",
+          "$value": "{color.background.primary}",
+          "$description": "Outline button background",
+          "valuesByMode": {
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
+          }
+        },
+        "button.outline.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.secondary}",
+          "$description": "Outline button hover background",
+          "valuesByMode": {
+            "Light": "{color.interactive.secondary}",
+            "Dark": "{color.interactive.secondary}"
+          }
+        },
+        "button.outline.text": {
+          "$type": "color",
+          "$value": "{color.text.brand}",
+          "$description": "Outline button text color",
+          "valuesByMode": {
+            "Light": "{color.text.brand}",
+            "Dark": "{color.text.brand}"
+          }
+        },
+        "button.outline.border": {
+          "$type": "color",
+          "$value": "{color.border.brand}",
+          "$description": "Outline button border color",
+          "valuesByMode": {
+            "Light": "{color.border.brand}",
+            "Dark": "{color.border.brand}"
+          }
+        },
+        "button.ghost.background": {
+          "$type": "color",
+          "$value": "#000000",
+          "$description": "Ghost button background",
+          "valuesByMode": {
+            "Light": "#000000",
+            "Dark": "#000000"
+          }
+        },
+        "button.ghost.background-hover": {
+          "$type": "color",
+          "$value": "{color.action.secondary-default}",
+          "$description": "Ghost button hover background",
+          "valuesByMode": {
+            "Light": "{color.action.secondary-default}",
+            "Dark": "{color.action.secondary-default}"
+          }
+        },
+        "button.ghost.text": {
+          "$type": "color",
+          "$value": "{color.text.brand}",
+          "$description": "Ghost button text color",
+          "valuesByMode": {
+            "Light": "{color.text.brand}",
+            "Dark": "{color.text.brand}"
+          }
+        },
+        "button.destructive.background": {
+          "$type": "color",
+          "$value": "{color.interactive.danger}",
+          "$description": "Destructive button background",
+          "valuesByMode": {
+            "Light": "{color.interactive.danger}",
+            "Dark": "{color.interactive.danger}"
+          }
+        },
+        "button.destructive.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.danger-hover}",
+          "$description": "Destructive button hover background",
+          "valuesByMode": {
+            "Light": "{color.interactive.danger-hover}",
+            "Dark": "{color.interactive.danger-hover}"
+          }
+        },
+        "button.destructive.text": {
+          "$type": "color",
+          "$value": "{color.text.inverse}",
+          "$description": "Destructive button text color",
+          "valuesByMode": {
+            "Light": "{color.text.inverse}",
+            "Dark": "{color.text.inverse}"
+          }
+        },
+        "button.height.sm": {
+          "$type": "sizing",
+          "$value": "{size.sm}",
+          "valuesByMode": {
+            "Light": "{size.sm}",
+            "Dark": "{size.sm}"
+          }
+        },
+        "button.height.md": {
+          "$type": "sizing",
+          "$value": "{size.md}",
+          "valuesByMode": {
+            "Light": "{size.md}",
+            "Dark": "{size.md}"
+          }
+        },
+        "button.height.lg": {
+          "$type": "sizing",
+          "$value": "{size.lg}",
+          "valuesByMode": {
+            "Light": "{size.lg}",
+            "Dark": "{size.lg}"
+          }
+        },
+        "button.padding-x.sm": {
+          "$type": "dimension",
+          "$value": "{space.md}",
+          "valuesByMode": {
+            "Light": "{space.md}",
+            "Dark": "{space.md}"
+          }
+        },
+        "button.padding-x.md": {
+          "$type": "dimension",
+          "$value": "{space.lg}",
+          "valuesByMode": {
+            "Light": "{space.lg}",
+            "Dark": "{space.lg}"
+          }
+        },
+        "button.padding-x.lg": {
+          "$type": "dimension",
+          "$value": "{space.xl}",
+          "valuesByMode": {
+            "Light": "{space.xl}",
+            "Dark": "{space.xl}"
+          }
+        },
+        "button.radius": {
+          "$type": "borderRadius",
+          "$value": "{radius.md}",
+          "$description": "Button border radius",
+          "valuesByMode": {
+            "Light": "{radius.md}",
+            "Dark": "{radius.md}"
+          }
+        },
+        "button.font-size.sm": {
+          "$type": "fontSize",
+          "$value": "{typography.scale.body-small}",
+          "$description": "Small button font size",
+          "valuesByMode": {
+            "Light": "{typography.scale.body-small}",
+            "Dark": "{typography.scale.body-small}"
+          }
+        },
+        "button.font-size.md": {
+          "$type": "fontSize",
+          "$value": "{typography.scale.body}",
+          "$description": "Medium button font size",
+          "valuesByMode": {
+            "Light": "{typography.scale.body}",
+            "Dark": "{typography.scale.body}"
+          }
+        },
+        "button.font-size.lg": {
+          "$type": "fontSize",
+          "$value": "{typography.scale.body-large}",
+          "$description": "Large button font size",
+          "valuesByMode": {
+            "Light": "{typography.scale.body-large}",
+            "Dark": "{typography.scale.body-large}"
+          }
+        },
+        "button.shadow": {
+          "$type": "shadow",
+          "$value": "{shadow.sm}",
+          "valuesByMode": {
+            "Light": "{shadow.sm}",
+            "Dark": "{shadow.sm}"
+          }
+        },
+        "input.background": {
+          "$type": "color",
+          "$value": "{color.background.primary}",
+          "$description": "Input background color",
+          "valuesByMode": {
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
+          }
+        },
+        "input.background-hover": {
+          "$type": "color",
+          "$value": "{color.background.secondary}",
+          "$description": "Input hover background",
+          "valuesByMode": {
+            "Light": "{color.background.secondary}",
+            "Dark": "{color.background.secondary}"
+          }
+        },
+        "input.background-focus": {
+          "$type": "color",
+          "$value": "{color.background.surface}",
+          "$description": "Input focus background",
+          "valuesByMode": {
+            "Light": "{color.background.surface}",
+            "Dark": "{color.background.surface}"
+          }
+        },
+        "input.background-disabled": {
+          "$type": "color",
+          "$value": "{color.background.surface-raised}",
+          "$description": "Input disabled background",
+          "valuesByMode": {
+            "Light": "{color.background.surface-raised}",
+            "Dark": "{color.background.surface-raised}"
+          }
+        },
+        "input.border": {
+          "$type": "color",
+          "$value": "{color.border.primary}",
+          "$description": "Input border color",
+          "valuesByMode": {
+            "Light": "{color.border.primary}",
+            "Dark": "{color.border.primary}"
+          }
+        },
+        "input.border-hover": {
+          "$type": "color",
+          "$value": "{color.border.strong}",
+          "$description": "Input hover border color",
+          "valuesByMode": {
+            "Light": "{color.border.strong}",
+            "Dark": "{color.border.strong}"
+          }
+        },
+        "input.border-focus": {
+          "$type": "color",
+          "$value": "{color.border.focus}",
+          "$description": "Input focus border color",
+          "valuesByMode": {
+            "Light": "{color.border.focus}",
+            "Dark": "{color.border.focus}"
+          }
+        },
+        "input.border-error": {
+          "$type": "color",
+          "$value": "{color.border.danger}",
+          "$description": "Input error border color",
+          "valuesByMode": {
+            "Light": "{color.border.danger}",
+            "Dark": "{color.border.danger}"
+          }
+        },
+        "input.text": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "$description": "Input text color",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "input.text-placeholder": {
+          "$type": "color",
+          "$value": "{color.text.placeholder}",
+          "$description": "Input placeholder text color",
+          "valuesByMode": {
+            "Light": "{color.text.placeholder}",
+            "Dark": "{color.text.placeholder}"
+          }
+        },
+        "input.text-disabled": {
+          "$type": "color",
+          "$value": "{color.text.disabled}",
+          "$description": "Input disabled text color",
+          "valuesByMode": {
+            "Light": "{color.text.disabled}",
+            "Dark": "{color.text.disabled}"
+          }
+        },
+        "input.height.sm": {
+          "$type": "sizing",
+          "$value": "{size.sm}",
+          "valuesByMode": {
+            "Light": "{size.sm}",
+            "Dark": "{size.sm}"
+          }
+        },
+        "input.height.md": {
+          "$type": "sizing",
+          "$value": "{size.md}",
+          "valuesByMode": {
+            "Light": "{size.md}",
+            "Dark": "{size.md}"
+          }
+        },
+        "input.height.lg": {
+          "$type": "sizing",
+          "$value": "{size.lg}",
+          "valuesByMode": {
+            "Light": "{size.lg}",
+            "Dark": "{size.lg}"
+          }
+        },
+        "input.padding-x": {
+          "$type": "dimension",
+          "$value": "{space.md}",
+          "valuesByMode": {
+            "Light": "{space.md}",
+            "Dark": "{space.md}"
+          }
+        },
+        "input.radius": {
+          "$type": "borderRadius",
+          "$value": "{radius.md}",
+          "$description": "Input border radius",
+          "valuesByMode": {
+            "Light": "{radius.md}",
+            "Dark": "{radius.md}"
+          }
+        },
+        "input.font-size": {
+          "$type": "fontSize",
+          "$value": "{typography.scale.body}",
+          "$description": "Input font size",
+          "valuesByMode": {
+            "Light": "{typography.scale.body}",
+            "Dark": "{typography.scale.body}"
+          }
+        },
+        "card.background": {
+          "$type": "color",
+          "$value": "{color.surface.primary}",
+          "$description": "Card background color",
+          "valuesByMode": {
+            "Light": "{color.surface.primary}",
+            "Dark": "{color.surface.primary}"
+          }
+        },
+        "card.background-hover": {
+          "$type": "color",
+          "$value": "{color.background.surface-raised}",
+          "$description": "Card hover background color",
+          "valuesByMode": {
+            "Light": "{color.background.surface-raised}",
+            "Dark": "{color.background.surface-raised}"
+          }
+        },
+        "card.border": {
+          "$type": "color",
+          "$value": "{color.border.primary}",
+          "$description": "Card border color",
+          "valuesByMode": {
+            "Light": "{color.border.primary}",
+            "Dark": "{color.border.primary}"
+          }
+        },
+        "card.padding": {
+          "$type": "dimension",
+          "$value": "{space.xl}",
+          "valuesByMode": {
+            "Light": "{space.xl}",
+            "Dark": "{space.xl}"
+          }
+        },
+        "card.padding.compact": {
+          "$type": "dimension",
+          "$value": "0px",
+          "valuesByMode": {
+            "Light": "0px",
+            "Dark": "0px"
+          }
+        },
+        "card.gap": {
+          "$type": "dimension",
+          "$value": "{space.lg}",
+          "valuesByMode": {
+            "Light": "{space.lg}",
+            "Dark": "{space.lg}"
+          }
+        },
+        "card.radius": {
+          "$type": "borderRadius",
+          "$value": "{radius.lg}",
+          "$description": "Card border radius",
+          "valuesByMode": {
+            "Light": "{radius.lg}",
+            "Dark": "{radius.lg}"
+          }
+        },
+        "card.shadow": {
+          "$type": "shadow",
+          "$value": "{shadow.sm}",
+          "valuesByMode": {
+            "Light": "{shadow.sm}",
+            "Dark": "{shadow.sm}"
+          }
+        },
+        "card.header.gap": {
+          "$type": "dimension",
+          "$value": "{space.sm}",
+          "valuesByMode": {
+            "Light": "{space.sm}",
+            "Dark": "{space.sm}"
+          }
+        },
+        "card.header.title.font-size": {
+          "$type": "fontSize",
+          "$value": "{typography.scale.heading-sm}",
+          "$description": "Card header title font size",
+          "valuesByMode": {
+            "Light": "{typography.scale.heading-sm}",
+            "Dark": "{typography.scale.heading-sm}"
+          }
+        },
+        "card.header.title.color": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "$description": "Card header title color",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "card.header.description.font-size": {
+          "$type": "fontSize",
+          "$value": "{typography.scale.body-small}",
+          "$description": "Card header description font size",
+          "valuesByMode": {
+            "Light": "{typography.scale.body-small}",
+            "Dark": "{typography.scale.body-small}"
+          }
+        },
+        "card.header.description.color": {
+          "$type": "color",
+          "$value": "{color.text.secondary}",
+          "$description": "Card header description color",
+          "valuesByMode": {
+            "Light": "{color.text.secondary}",
+            "Dark": "{color.text.secondary}"
+          }
+        },
         "badge.default.background": {
           "$type": "color",
           "$value": "{color.interactive.primary}",
+          "$description": "Default badge background",
           "valuesByMode": {
             "Light": "{color.interactive.primary}",
             "Dark": "{color.interactive.primary}"
@@ -23,9 +557,381 @@
         "badge.default.text": {
           "$type": "color",
           "$value": "{color.text.inverse}",
+          "$description": "Default badge text color",
           "valuesByMode": {
             "Light": "{color.text.inverse}",
             "Dark": "{color.text.inverse}"
+          }
+        },
+        "badge.secondary.background": {
+          "$type": "color",
+          "$value": "{color.interactive.secondary}",
+          "$description": "Secondary badge background",
+          "valuesByMode": {
+            "Light": "{color.interactive.secondary}",
+            "Dark": "{color.interactive.secondary}"
+          }
+        },
+        "badge.secondary.text": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "$description": "Secondary badge text color",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "badge.success.background": {
+          "$type": "color",
+          "$value": "{color.interactive.success}",
+          "$description": "Success badge background",
+          "valuesByMode": {
+            "Light": "{color.interactive.success}",
+            "Dark": "{color.interactive.success}"
+          }
+        },
+        "badge.success.text": {
+          "$type": "color",
+          "$value": "{color.text.inverse}",
+          "$description": "Success badge text color",
+          "valuesByMode": {
+            "Light": "{color.text.inverse}",
+            "Dark": "{color.text.inverse}"
+          }
+        },
+        "badge.warning.background": {
+          "$type": "color",
+          "$value": "{color.interactive.warning}",
+          "$description": "Warning badge background",
+          "valuesByMode": {
+            "Light": "{color.interactive.warning}",
+            "Dark": "{color.interactive.warning}"
+          }
+        },
+        "badge.warning.text": {
+          "$type": "color",
+          "$value": "{color.text.inverse}",
+          "$description": "Warning badge text color",
+          "valuesByMode": {
+            "Light": "{color.text.inverse}",
+            "Dark": "{color.text.inverse}"
+          }
+        },
+        "badge.error.background": {
+          "$type": "color",
+          "$value": "{color.background.error}",
+          "$description": "Error badge background",
+          "valuesByMode": {
+            "Light": "{color.background.error}",
+            "Dark": "{color.background.error}"
+          }
+        },
+        "badge.error.text": {
+          "$type": "color",
+          "$value": "{color.text.inverse}",
+          "$description": "Error badge text color",
+          "valuesByMode": {
+            "Light": "{color.text.inverse}",
+            "Dark": "{color.text.inverse}"
+          }
+        },
+        "badge.outline.background": {
+          "$type": "color",
+          "$value": "{color.background.primary}",
+          "$description": "Outline badge background",
+          "valuesByMode": {
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
+          }
+        },
+        "badge.outline.text": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "$description": "Outline badge text color",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "badge.outline.border": {
+          "$type": "color",
+          "$value": "{color.border.primary}",
+          "$description": "Outline badge border color",
+          "valuesByMode": {
+            "Light": "{color.border.primary}",
+            "Dark": "{color.border.primary}"
+          }
+        },
+        "badge.padding.sm": {
+          "$type": "dimension",
+          "$value": "{space.xs}",
+          "valuesByMode": {
+            "Light": "{space.xs}",
+            "Dark": "{space.xs}"
+          }
+        },
+        "badge.padding.md": {
+          "$type": "dimension",
+          "$value": "{space.sm}",
+          "valuesByMode": {
+            "Light": "{space.sm}",
+            "Dark": "{space.sm}"
+          }
+        },
+        "badge.radius": {
+          "$type": "borderRadius",
+          "$value": "{radius.full}",
+          "$description": "Badge border radius",
+          "valuesByMode": {
+            "Light": "{radius.full}",
+            "Dark": "{radius.full}"
+          }
+        },
+        "badge.font-size.sm": {
+          "$type": "fontSize",
+          "$value": "{typography.scale.caption}",
+          "$description": "Small badge font size",
+          "valuesByMode": {
+            "Light": "{typography.scale.caption}",
+            "Dark": "{typography.scale.caption}"
+          }
+        },
+        "badge.font-size.md": {
+          "$type": "fontSize",
+          "$value": "{typography.scale.body-small}",
+          "$description": "Medium badge font size",
+          "valuesByMode": {
+            "Light": "{typography.scale.body-small}",
+            "Dark": "{typography.scale.body-small}"
+          }
+        },
+        "tooltip.background": {
+          "$type": "color",
+          "$value": "{color.background.inverse}",
+          "$description": "Tooltip background color",
+          "valuesByMode": {
+            "Light": "{color.background.inverse}",
+            "Dark": "{color.background.inverse}"
+          }
+        },
+        "tooltip.text": {
+          "$type": "color",
+          "$value": "{color.text.inverse}",
+          "$description": "Tooltip text color",
+          "valuesByMode": {
+            "Light": "{color.text.inverse}",
+            "Dark": "{color.text.inverse}"
+          }
+        },
+        "tooltip.padding": {
+          "$type": "dimension",
+          "$value": "0px",
+          "valuesByMode": {
+            "Light": "0px",
+            "Dark": "0px"
+          }
+        },
+        "tooltip.radius": {
+          "$type": "borderRadius",
+          "$value": "{radius.component.md}",
+          "$description": "Tooltip border radius",
+          "valuesByMode": {
+            "Light": "{radius.component.md}",
+            "Dark": "{radius.component.md}"
+          }
+        },
+        "tooltip.font-size": {
+          "$type": "fontSize",
+          "$value": "{typography.scale.body-small}",
+          "$description": "Tooltip font size",
+          "valuesByMode": {
+            "Light": "{typography.scale.body-small}",
+            "Dark": "{typography.scale.body-small}"
+          }
+        },
+        "tooltip.shadow": {
+          "$type": "shadow",
+          "$value": "String value",
+          "valuesByMode": {
+            "Light": "String value",
+            "Dark": "String value"
+          }
+        },
+        "alert.info.background": {
+          "$type": "color",
+          "$value": "{color.background.info-subtle}",
+          "$description": "Info alert background",
+          "valuesByMode": {
+            "Light": "{color.background.info-subtle}",
+            "Dark": "{color.background.info-subtle}"
+          }
+        },
+        "alert.info.border": {
+          "$type": "color",
+          "$value": "{color.border.info}",
+          "$description": "Info alert border",
+          "valuesByMode": {
+            "Light": "{color.border.info}",
+            "Dark": "{color.border.info}"
+          }
+        },
+        "alert.info.text": {
+          "$type": "color",
+          "$value": "{color.text.info}",
+          "$description": "Info alert text color",
+          "valuesByMode": {
+            "Light": "{color.text.info}",
+            "Dark": "{color.text.info}"
+          }
+        },
+        "alert.success.background": {
+          "$type": "color",
+          "$value": "{color.background.success-subtle}",
+          "$description": "Success alert background",
+          "valuesByMode": {
+            "Light": "{color.background.success-subtle}",
+            "Dark": "{color.background.success-subtle}"
+          }
+        },
+        "alert.success.border": {
+          "$type": "color",
+          "$value": "{color.border.success}",
+          "$description": "Success alert border",
+          "valuesByMode": {
+            "Light": "{color.border.success}",
+            "Dark": "{color.border.success}"
+          }
+        },
+        "alert.success.text": {
+          "$type": "color",
+          "$value": "{color.text.success}",
+          "$description": "Success alert text color",
+          "valuesByMode": {
+            "Light": "{color.text.success}",
+            "Dark": "{color.text.success}"
+          }
+        },
+        "alert.warning.background": {
+          "$type": "color",
+          "$value": "{color.background.warning-subtle}",
+          "$description": "Warning alert background",
+          "valuesByMode": {
+            "Light": "{color.background.warning-subtle}",
+            "Dark": "{color.background.warning-subtle}"
+          }
+        },
+        "alert.warning.border": {
+          "$type": "color",
+          "$value": "{color.border.warning}",
+          "$description": "Warning alert border",
+          "valuesByMode": {
+            "Light": "{color.border.warning}",
+            "Dark": "{color.border.warning}"
+          }
+        },
+        "alert.warning.text": {
+          "$type": "color",
+          "$value": "{color.text.warning}",
+          "$description": "Warning alert text color",
+          "valuesByMode": {
+            "Light": "{color.text.warning}",
+            "Dark": "{color.text.warning}"
+          }
+        },
+        "alert.error.background": {
+          "$type": "color",
+          "$value": "{color.background.error-subtle}",
+          "$description": "Error alert background",
+          "valuesByMode": {
+            "Light": "{color.background.error-subtle}",
+            "Dark": "{color.background.error-subtle}"
+          }
+        },
+        "alert.error.border": {
+          "$type": "color",
+          "$value": "{color.border.error}",
+          "$description": "Error alert border",
+          "valuesByMode": {
+            "Light": "{color.border.error}",
+            "Dark": "{color.border.error}"
+          }
+        },
+        "alert.error.text": {
+          "$type": "color",
+          "$value": "{color.text.error}",
+          "$description": "Error alert text color",
+          "valuesByMode": {
+            "Light": "{color.text.error}",
+            "Dark": "{color.text.error}"
+          }
+        },
+        "alert.padding": {
+          "$type": "dimension",
+          "$value": "0px",
+          "valuesByMode": {
+            "Light": "0px",
+            "Dark": "0px"
+          }
+        },
+        "alert.radius": {
+          "$type": "borderRadius",
+          "$value": "{radius.component.md}",
+          "$description": "Alert border radius",
+          "valuesByMode": {
+            "Light": "{radius.component.md}",
+            "Dark": "{radius.component.md}"
+          }
+        },
+        "modal.background": {
+          "$type": "color",
+          "$value": "{color.background.surface}",
+          "$description": "Modal background color",
+          "valuesByMode": {
+            "Light": "{color.background.surface}",
+            "Dark": "{color.background.surface}"
+          }
+        },
+        "modal.overlay": {
+          "$type": "color",
+          "$value": "{color.background.inverse}",
+          "$description": "Modal overlay color",
+          "valuesByMode": {
+            "Light": "{color.background.inverse}",
+            "Dark": "{color.background.inverse}"
+          }
+        },
+        "modal.overlay-opacity": {
+          "$type": "fontFamily",
+          "$value": "{opacity.overlay}",
+          "$description": "Modal overlay opacity",
+          "valuesByMode": {
+            "Light": "{opacity.overlay}",
+            "Dark": "{opacity.overlay}"
+          }
+        },
+        "modal.padding": {
+          "$type": "dimension",
+          "$value": "0px",
+          "valuesByMode": {
+            "Light": "0px",
+            "Dark": "0px"
+          }
+        },
+        "modal.radius": {
+          "$type": "borderRadius",
+          "$value": "{radius.component.xl}",
+          "$description": "Modal border radius",
+          "valuesByMode": {
+            "Light": "{radius.component.xl}",
+            "Dark": "{radius.component.xl}"
+          }
+        },
+        "modal.shadow": {
+          "$type": "shadow",
+          "$value": "String value",
+          "valuesByMode": {
+            "Light": "String value",
+            "Dark": "String value"
           }
         },
         "badge.default.border": {
@@ -36,22 +942,6 @@
             "Dark": "{color.interactive.primary}"
           }
         },
-        "badge.secondary.background": {
-          "$type": "color",
-          "$value": "{color.interactive.secondary}",
-          "valuesByMode": {
-            "Light": "{color.interactive.secondary}",
-            "Dark": "{color.interactive.secondary}"
-          }
-        },
-        "badge.secondary.text": {
-          "$type": "color",
-          "$value": "{color.text.primary}",
-          "valuesByMode": {
-            "Light": "{color.text.primary}",
-            "Dark": "{color.text.primary}"
-          }
-        },
         "badge.secondary.border": {
           "$type": "color",
           "$value": "{color.border.secondary}",
@@ -60,44 +950,12 @@
             "Dark": "{color.border.secondary}"
           }
         },
-        "badge.success.background": {
-          "$type": "color",
-          "$value": "{color.interactive.success}",
-          "valuesByMode": {
-            "Light": "{color.interactive.success}",
-            "Dark": "{color.interactive.success}"
-          }
-        },
-        "badge.success.text": {
-          "$type": "color",
-          "$value": "{color.text.inverse}",
-          "valuesByMode": {
-            "Light": "{color.text.inverse}",
-            "Dark": "{color.text.inverse}"
-          }
-        },
         "badge.success.border": {
           "$type": "color",
           "$value": "{color.interactive.success}",
           "valuesByMode": {
             "Light": "{color.interactive.success}",
             "Dark": "{color.interactive.success}"
-          }
-        },
-        "badge.warning.background": {
-          "$type": "color",
-          "$value": "{color.interactive.warning}",
-          "valuesByMode": {
-            "Light": "{color.interactive.warning}",
-            "Dark": "{color.interactive.warning}"
-          }
-        },
-        "badge.warning.text": {
-          "$type": "color",
-          "$value": "{color.text.inverse}",
-          "valuesByMode": {
-            "Light": "{color.text.inverse}",
-            "Dark": "{color.text.inverse}"
           }
         },
         "badge.warning.border": {
@@ -132,76 +990,12 @@
             "Dark": "{color.border.danger}"
           }
         },
-        "badge.outline.background": {
-          "$type": "color",
-          "$value": "{color.background.primary}",
-          "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
-          }
-        },
-        "badge.outline.text": {
-          "$type": "color",
-          "$value": "{color.text.primary}",
-          "valuesByMode": {
-            "Light": "{color.text.primary}",
-            "Dark": "{color.text.primary}"
-          }
-        },
-        "badge.outline.border": {
-          "$type": "color",
-          "$value": "{color.border.primary}",
-          "valuesByMode": {
-            "Light": "{color.border.primary}",
-            "Dark": "{color.border.primary}"
-          }
-        },
-        "badge.padding.sm": {
-          "$type": "dimension",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "badge.padding.md": {
-          "$type": "dimension",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
         "badge.padding.lg": {
           "$type": "dimension",
-          "$value": "0px",
+          "$value": "{space.md}",
           "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "badge.radius": {
-          "$type": "borderRadius",
-          "$value": "{radius.full}",
-          "valuesByMode": {
-            "Light": "{radius.full}",
-            "Dark": "{radius.full}"
-          }
-        },
-        "badge.font-size.sm": {
-          "$type": "fontFamily",
-          "$value": "{typography.caption}",
-          "valuesByMode": {
-            "Light": "{typography.caption}",
-            "Dark": "{typography.caption}"
-          }
-        },
-        "badge.font-size.md": {
-          "$type": "fontFamily",
-          "$value": "{typography.body-small}",
-          "valuesByMode": {
-            "Light": "{typography.body-small}",
-            "Dark": "{typography.body-small}"
+            "Light": "{space.md}",
+            "Dark": "{space.md}"
           }
         },
         "badge.font-size.lg": {
@@ -212,142 +1006,6 @@
             "Dark": "{typography.body}"
           }
         },
-        "button.primary.background": {
-          "$type": "color",
-          "$value": "{color.interactive.primary}",
-          "valuesByMode": {
-            "Light": "{color.interactive.primary}",
-            "Dark": "{color.interactive.primary}"
-          }
-        },
-        "button.primary.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.primary-hover}",
-          "valuesByMode": {
-            "Light": "{color.interactive.primary-hover}",
-            "Dark": "{color.interactive.primary-hover}"
-          }
-        },
-        "button.primary.background-active": {
-          "$type": "color",
-          "$value": "{color.interactive.primary-active}",
-          "valuesByMode": {
-            "Light": "{color.interactive.primary-active}",
-            "Dark": "{color.interactive.primary-active}"
-          }
-        },
-        "button.primary.text": {
-          "$type": "color",
-          "$value": "{color.text.inverse}",
-          "valuesByMode": {
-            "Light": "{color.text.inverse}",
-            "Dark": "{color.text.inverse}"
-          }
-        },
-        "button.primary.border": {
-          "$type": "color",
-          "$value": "{color.interactive.primary}",
-          "valuesByMode": {
-            "Light": "{color.interactive.primary}",
-            "Dark": "{color.interactive.primary}"
-          }
-        },
-        "button.secondary.background": {
-          "$type": "color",
-          "$value": "{color.interactive.secondary}",
-          "valuesByMode": {
-            "Light": "{color.interactive.secondary}",
-            "Dark": "{color.interactive.secondary}"
-          }
-        },
-        "button.secondary.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.secondary-hover}",
-          "valuesByMode": {
-            "Light": "{color.interactive.secondary-hover}",
-            "Dark": "{color.interactive.secondary-hover}"
-          }
-        },
-        "button.secondary.background-active": {
-          "$type": "color",
-          "$value": "{color.interactive.secondary-active}",
-          "valuesByMode": {
-            "Light": "{color.interactive.secondary-active}",
-            "Dark": "{color.interactive.secondary-active}"
-          }
-        },
-        "button.secondary.text": {
-          "$type": "color",
-          "$value": "{color.text.primary}",
-          "valuesByMode": {
-            "Light": "{color.text.primary}",
-            "Dark": "{color.text.primary}"
-          }
-        },
-        "button.secondary.border": {
-          "$type": "color",
-          "$value": "{color.border.secondary}",
-          "valuesByMode": {
-            "Light": "{color.border.secondary}",
-            "Dark": "{color.border.secondary}"
-          }
-        },
-        "button.outline.background": {
-          "$type": "color",
-          "$value": "{color.background.primary}",
-          "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
-          }
-        },
-        "button.outline.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.secondary}",
-          "valuesByMode": {
-            "Light": "{color.interactive.secondary}",
-            "Dark": "{color.interactive.secondary}"
-          }
-        },
-        "button.outline.text": {
-          "$type": "color",
-          "$value": "{color.text.brand}",
-          "valuesByMode": {
-            "Light": "{color.text.brand}",
-            "Dark": "{color.text.brand}"
-          }
-        },
-        "button.outline.border": {
-          "$type": "color",
-          "$value": "{color.border.brand}",
-          "valuesByMode": {
-            "Light": "{color.border.brand}",
-            "Dark": "{color.border.brand}"
-          }
-        },
-        "button.destructive.background": {
-          "$type": "color",
-          "$value": "{color.interactive.danger}",
-          "valuesByMode": {
-            "Light": "{color.interactive.danger}",
-            "Dark": "{color.interactive.danger}"
-          }
-        },
-        "button.destructive.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.danger-hover}",
-          "valuesByMode": {
-            "Light": "{color.interactive.danger-hover}",
-            "Dark": "{color.interactive.danger-hover}"
-          }
-        },
-        "button.destructive.text": {
-          "$type": "color",
-          "$value": "{color.text.inverse}",
-          "valuesByMode": {
-            "Light": "{color.text.inverse}",
-            "Dark": "{color.text.inverse}"
-          }
-        },
         "button.destructive.border": {
           "$type": "color",
           "$value": "{color.interactive.danger}",
@@ -356,236 +1014,12 @@
             "Dark": "{color.interactive.danger}"
           }
         },
-        "button.height.sm": {
-          "$type": "sizing",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "button.height.md": {
-          "$type": "sizing",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "button.height.lg": {
-          "$type": "sizing",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "button.padding-x.sm": {
-          "$type": "dimension",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "button.padding-x.md": {
-          "$type": "dimension",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "button.padding-x.lg": {
-          "$type": "dimension",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "button.radius": {
-          "$type": "borderRadius",
-          "$value": "{radius.md}",
-          "valuesByMode": {
-            "Light": "{radius.md}",
-            "Dark": "{radius.md}"
-          }
-        },
-        "button.font-size.sm": {
-          "$type": "fontFamily",
-          "$value": "{typography.body-small}",
-          "valuesByMode": {
-            "Light": "{typography.body-small}",
-            "Dark": "{typography.body-small}"
-          }
-        },
-        "button.font-size.md": {
-          "$type": "fontFamily",
-          "$value": "{typography.body}",
-          "valuesByMode": {
-            "Light": "{typography.body}",
-            "Dark": "{typography.body}"
-          }
-        },
-        "button.font-size.lg": {
-          "$type": "fontFamily",
-          "$value": "{typography.body-large}",
-          "valuesByMode": {
-            "Light": "{typography.body-large}",
-            "Dark": "{typography.body-large}"
-          }
-        },
-        "button.shadow": {
-          "$type": "shadow",
-          "$value": "String value",
-          "valuesByMode": {
-            "Light": "String value",
-            "Dark": "String value"
-          }
-        },
-        "card.background": {
-          "$type": "color",
-          "$value": "{color.surface.primary}",
-          "valuesByMode": {
-            "Light": "{color.surface.primary}",
-            "Dark": "{color.surface.primary}"
-          }
-        },
-        "card.border": {
-          "$type": "color",
-          "$value": "{color.border.primary}",
-          "valuesByMode": {
-            "Light": "{color.border.primary}",
-            "Dark": "{color.border.primary}"
-          }
-        },
-        "card.padding": {
-          "$type": "dimension",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "card.gap": {
-          "$type": "dimension",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "card.radius": {
-          "$type": "borderRadius",
-          "$value": "{radius.lg}",
-          "valuesByMode": {
-            "Light": "{radius.lg}",
-            "Dark": "{radius.lg}"
-          }
-        },
-        "card.shadow": {
-          "$type": "shadow",
-          "$value": "String value",
-          "valuesByMode": {
-            "Light": "String value",
-            "Dark": "String value"
-          }
-        },
-        "card.header.gap": {
-          "$type": "dimension",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "card.header.title.font-size": {
-          "$type": "fontFamily",
-          "$value": "{typography.heading-4}",
-          "valuesByMode": {
-            "Light": "{typography.heading-4}",
-            "Dark": "{typography.heading-4}"
-          }
-        },
-        "card.header.title.color": {
-          "$type": "color",
-          "$value": "{color.text.primary}",
-          "valuesByMode": {
-            "Light": "{color.text.primary}",
-            "Dark": "{color.text.primary}"
-          }
-        },
-        "card.header.description.font-size": {
-          "$type": "fontFamily",
-          "$value": "{typography.body-small}",
-          "valuesByMode": {
-            "Light": "{typography.body-small}",
-            "Dark": "{typography.body-small}"
-          }
-        },
-        "card.header.description.color": {
-          "$type": "color",
-          "$value": "{color.text.secondary}",
-          "valuesByMode": {
-            "Light": "{color.text.secondary}",
-            "Dark": "{color.text.secondary}"
-          }
-        },
         "card.footer.gap": {
           "$type": "dimension",
-          "$value": "0px",
+          "$value": "{space.sm}",
           "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "input.background": {
-          "$type": "color",
-          "$value": "{color.background.primary}",
-          "valuesByMode": {
-            "Light": "{color.background.primary}",
-            "Dark": "{color.background.primary}"
-          }
-        },
-        "input.background-hover": {
-          "$type": "color",
-          "$value": "{color.background.secondary}",
-          "valuesByMode": {
-            "Light": "{color.background.secondary}",
-            "Dark": "{color.background.secondary}"
-          }
-        },
-        "input.border": {
-          "$type": "color",
-          "$value": "{color.border.primary}",
-          "valuesByMode": {
-            "Light": "{color.border.primary}",
-            "Dark": "{color.border.primary}"
-          }
-        },
-        "input.border-focus": {
-          "$type": "color",
-          "$value": "{color.border.focus}",
-          "valuesByMode": {
-            "Light": "{color.border.focus}",
-            "Dark": "{color.border.focus}"
-          }
-        },
-        "input.border-error": {
-          "$type": "color",
-          "$value": "{color.border.danger}",
-          "valuesByMode": {
-            "Light": "{color.border.danger}",
-            "Dark": "{color.border.danger}"
-          }
-        },
-        "input.text": {
-          "$type": "color",
-          "$value": "{color.text.primary}",
-          "valuesByMode": {
-            "Light": "{color.text.primary}",
-            "Dark": "{color.text.primary}"
+            "Light": "{space.sm}",
+            "Dark": "{space.sm}"
           }
         },
         "input.placeholder": {
@@ -612,60 +1046,12 @@
             "Dark": "{color.text.disabled}"
           }
         },
-        "input.height.sm": {
-          "$type": "sizing",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "input.height.md": {
-          "$type": "sizing",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "input.height.lg": {
-          "$type": "sizing",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "input.padding-x": {
-          "$type": "dimension",
-          "$value": "0px",
-          "valuesByMode": {
-            "Light": "0px",
-            "Dark": "0px"
-          }
-        },
-        "input.radius": {
-          "$type": "borderRadius",
-          "$value": "{radius.md}",
-          "valuesByMode": {
-            "Light": "{radius.md}",
-            "Dark": "{radius.md}"
-          }
-        },
-        "input.font-size": {
-          "$type": "fontFamily",
-          "$value": "{typography.body}",
-          "valuesByMode": {
-            "Light": "{typography.body}",
-            "Dark": "{typography.body}"
-          }
-        },
         "input.shadow": {
           "$type": "shadow",
-          "$value": "String value",
+          "$value": "{shadow.sm}",
           "valuesByMode": {
-            "Light": "String value",
-            "Dark": "String value"
+            "Light": "{shadow.sm}",
+            "Dark": "{shadow.sm}"
           }
         }
       }
