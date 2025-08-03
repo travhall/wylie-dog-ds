@@ -1,0 +1,45 @@
+{
+  "color": {
+    "primary": {
+      "$value": "{color.secondary}",
+      "$type": "color",
+      "$description": "Primary color referencing secondary"
+    },
+    "secondary": {
+      "$value": "{color.tertiary}",
+      "$type": "color",
+      "$description": "Secondary color referencing tertiary"
+    },
+    "tertiary": {
+      "$value": "{color.primary}",
+      "$type": "color", 
+      "$description": "Tertiary color referencing primary (creates cycle)"
+    }
+  },
+  "spacing": {
+    "base": {
+      "$value": "{spacing.large}",
+      "$type": "dimension"
+    },
+    "large": {
+      "$value": "{spacing.base}",
+      "$type": "dimension"
+    }
+  },
+  "typography": {
+    "heading": {
+      "$value": {
+        "fontFamily": "{typography.body}",
+        "fontSize": "24px"
+      },
+      "$type": "typography"
+    },
+    "body": {
+      "$value": {
+        "fontFamily": "{typography.heading}",
+        "fontSize": "16px"
+      },
+      "$type": "typography"
+    }
+  }
+}

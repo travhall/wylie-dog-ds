@@ -2,6 +2,7 @@ import { render } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import { GitHubConfig } from './components/GitHubConfig';
 import { ValidationDisplay } from './components/ValidationDisplay';
+import { TransformationFeedback } from './components/TransformationFeedback';
 
 console.log('App.tsx loaded');
 
@@ -56,6 +57,7 @@ function App() {
   const [githubConfigured, setGithubConfigured] = useState(false);
   const [downloadQueue, setDownloadQueue] = useState<any[]>([]);
   const [importLoading, setImportLoading] = useState(false);
+  const [adapterResults, setAdapterResults] = useState<any[]>([]);
 
   useEffect(() => {
     console.log('useEffect running - setting up message listener');
@@ -165,6 +167,12 @@ function App() {
           setImportLoading(false);
           setLoading(false);
           setLoadingMessage('');
+          
+          // Handle adapter results
+          if (msg.adapterResults) {
+            setAdapterResults(msg.adapterResults);
+            console.log('Format adapter results:', msg.adapterResults);
+          }
           
           // Handle validation report
           if (msg.validationReport) {
@@ -952,6 +960,11 @@ function App() {
         <div style={{ padding: '20px', textAlign: 'center', color: '#666' }}>
           Click "Load Variable Collections" to get started
         </div>
+      )}
+
+      {/* Format Transformation Feedback */}
+      {adapterResults.length > 0 && (
+        <TransformationFeedback adapterResults={adapterResults} />
       )}
 
       {/* Validation Display */}

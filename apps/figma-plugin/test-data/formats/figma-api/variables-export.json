@@ -1,0 +1,85 @@
+{
+  "collections": [
+    {
+      "id": "VariableCollectionId:123:456",
+      "name": "Colors",
+      "modes": [
+        {"modeId": "123:0", "name": "Light"},
+        {"modeId": "123:1", "name": "Dark"}
+      ],
+      "defaultModeId": "123:0",
+      "variables": {
+        "VariableID:789": {
+          "id": "VariableID:789",
+          "name": "color/primary/500",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "123:0": {
+              "r": 0.054901960784313725,
+              "g": 0.6470588235294118,
+              "b": 0.9137254901960784
+            },
+            "123:1": {
+              "r": 0.22745098039215686,
+              "g": 0.7450980392156863,
+              "b": 0.9725490196078431
+            }
+          },
+          "scopes": ["ALL_SCOPES"],
+          "description": "Primary brand color"
+        },
+        "VariableID:790": {
+          "id": "VariableID:790", 
+          "name": "color/neutral/50",
+          "resolvedType": "COLOR",
+          "valuesByMode": {
+            "123:0": {
+              "r": 0.9725490196078431,
+              "g": 0.9803921568627451,
+              "b": 0.9882352941176471
+            },
+            "123:1": {
+              "r": 0.058823529411764705,
+              "g": 0.09019607843137255,
+              "b": 0.16470588235294117
+            }
+          },
+          "scopes": ["ALL_SCOPES"],
+          "description": "Neutral background"
+        }
+      }
+    },
+    {
+      "id": "VariableCollectionId:124:456",
+      "name": "Spacing",
+      "modes": [
+        {"modeId": "124:0", "name": "Default"}
+      ],
+      "defaultModeId": "124:0",
+      "variables": {
+        "VariableID:791": {
+          "id": "VariableID:791",
+          "name": "spacing/base",
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "124:0": 16
+          },
+          "scopes": ["GAP", "PADDING"],
+          "description": "Base spacing unit"
+        },
+        "VariableID:792": {
+          "id": "VariableID:792",
+          "name": "spacing/large", 
+          "resolvedType": "FLOAT",
+          "valuesByMode": {
+            "124:0": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:791"
+            }
+          },
+          "scopes": ["GAP", "PADDING"]
+        }
+      }
+    }
+  ]
+}

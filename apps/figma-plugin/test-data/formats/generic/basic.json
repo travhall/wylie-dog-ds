@@ -1,0 +1,18 @@
+{
+  "brand_primary": "#3b82f6",
+  "brand_secondary": "#6366f1",
+  "neutral_light": "#f8fafc",
+  "neutral_dark": "#1e293b",
+  "space_small": "8px",
+  "space_medium": "16px",
+  "space_large": "24px",
+  "text_sm": "14px",
+  "text_base": "16px",
+  "text_lg": "18px",
+  "font_primary": "Inter, sans-serif",
+  "radius_sm": "4px",
+  "radius_md": "8px",
+  "background_primary": "@neutral_light",
+  "text_primary": "@neutral_dark",
+  "button_padding": "@space_medium"
+}

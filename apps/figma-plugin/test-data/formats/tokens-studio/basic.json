@@ -1,0 +1,43 @@
+{
+  "Core": {
+    "color.primary.50": {
+      "value": "#eff6ff",
+      "type": "color"
+    },
+    "color.primary.500": {
+      "value": "#3b82f6", 
+      "type": "color"
+    },
+    "color.primary.900": {
+      "value": "#1e3a8a",
+      "type": "color"
+    }
+  },
+  "Semantic": {
+    "color.background.primary": {
+      "value": "{Core.color.primary.50}",
+      "type": "color"
+    },
+    "color.text.primary": {
+      "value": "{Core.color.primary.900}",
+      "type": "color"
+    },
+    "color.accent": {
+      "value": "{Core.color.primary.500}",
+      "type": "color"
+    }
+  },
+  "Components": {
+    "button.background.primary": {
+      "value": "{color.accent}",
+      "type": "color",
+      "rawValue": "{color.accent}",
+      "description": "Primary button background color"
+    },
+    "button.text.primary": {
+      "value": "#ffffff",
+      "type": "color",
+      "description": "Primary button text color"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "typography": {
+    "heading": {
+      "h1": {
+        "$value": {
+          "fontFamily": "{typography.fontFamily.display}",
+          "fontSize": "{typography.fontSize.6xl}",
+          "fontWeight": "{typography.fontWeight.bold}",
+          "lineHeight": "{typography.lineHeight.tight}",
+          "letterSpacing": "{typography.letterSpacing.tight}"
+        },
+        "$type": "typography",
+        "$description": "Main page heading"
+      },
+      "h2": {
+        "$value": {
+          "fontFamily": "{typography.fontFamily.display}",
+          "fontSize": "{typography.fontSize.4xl}",
+          "fontWeight": "{typography.fontWeight.semibold}",
+          "lineHeight": "{typography.lineHeight.normal}",
+          "letterSpacing": "{typography.letterSpacing.normal}"
+        },
+        "$type": "typography"
+      }
+    },
+    "body": {
+      "large": {
+        "$value": {
+          "fontFamily": "{typography.fontFamily.body}",
+          "fontSize": "{typography.fontSize.lg}",
+          "fontWeight": "{typography.fontWeight.normal}",
+          "lineHeight": "{typography.lineHeight.relaxed}"
+        },
+        "$type": "typography"
+      }
+    },
+    "fontFamily": {
+      "display": {
+        "$value": ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "sans-serif"],
+        "$type": "fontFamily"
+      },
+      "body": {
+        "$value": ["Inter", "ui-sans-serif", "system-ui"],
+        "$type": "fontFamily"
+      },
+      "mono": {
+        "$value": ["JetBrains Mono", "ui-monospace", "monospace"],
+        "$type": "fontFamily"
+      }
+    },
+    "fontSize": {
+      "xs": {
+        "$value": "0.75rem",
+        "$type": "fontSize"
+      },
+      "lg": {
+        "$value": "1.125rem",
+        "$type": "fontSize"
+      },
+      "4xl": {
+        "$value": "2.25rem",
+        "$type": "fontSize"
+      },
+      "6xl": {
+        "$value": "3.75rem",
+        "$type": "fontSize"
+      }
+    },
+    "fontWeight": {
+      "normal": {
+        "$value": "400",
+        "$type": "fontWeight"
+      },
+      "semibold": {
+        "$value": "600",
+        "$type": "fontWeight"
+      },
+      "bold": {
+        "$value": "700",
+        "$type": "fontWeight"
+      }
+    },
+    "lineHeight": {
+      "tight": {
+        "$value": "1.25",
+        "$type": "number"
+      },
+      "normal": {
+        "$value": "1.5",
+        "$type": "number"
+      },
+      "relaxed": {
+        "$value": "1.75",
+        "$type": "number"
+      }
+    },
+    "letterSpacing": {
+      "tight": {
+        "$value": "-0.025em",
+        "$type": "dimension"
+      },
+      "normal": {
+        "$value": "0em",
+        "$type": "dimension"
+      }
+    }
+  }
+}

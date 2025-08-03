@@ -1,0 +1,63 @@
+{
+  "color": {
+    "background": {
+      "$value": "{color.nonexistent}",
+      "$type": "color",
+      "$description": "References a token that doesn't exist"
+    },
+    "text": {
+      "$value": "{invalid.reference.format}",
+      "$type": "color",
+      "$description": "References with invalid format"
+    },
+    "accent": {
+      "$value": "{color.background.primary.deep.nested}",
+      "$type": "color",
+      "$description": "References too deeply nested path"
+    },
+    "border": {
+      "$value": "{}",
+      "$type": "color",
+      "$description": "Empty reference"
+    },
+    "surface": {
+      "$value": "{color.invalid syntax here}",
+      "$type": "color",
+      "$description": "Reference with spaces and invalid syntax"
+    }
+  },
+  "spacing": {
+    "component": {
+      "$value": "{spacing.undefined.value}",
+      "$type": "dimension"
+    },
+    "layout": {
+      "$value": "{typography.size}",
+      "$type": "dimension",
+      "$description": "References wrong type"
+    }
+  },
+  "typography": {
+    "heading": {
+      "$value": {
+        "fontFamily": "{font.missing}",
+        "fontSize": "{size.nonexistent}"
+      },
+      "$type": "typography"
+    }
+  },
+  "broken": {
+    "malformed-reference": {
+      "$value": "var(--undefined-css-var)",
+      "$type": "color"
+    },
+    "sass-undefined": {
+      "$value": "$undefined-sass-var",
+      "$type": "dimension" 
+    },
+    "at-undefined": {
+      "$value": "@missing-reference",
+      "$type": "color"
+    }
+  }
+}

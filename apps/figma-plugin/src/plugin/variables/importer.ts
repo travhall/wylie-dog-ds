@@ -1,9 +1,11 @@
 // Token import utilities for W3C DTCG format to Figma Variables conversion
-// FIXED VERSION: Properly uses reference-resolver.ts API
+// ENHANCED VERSION: Includes Format Adapter Layer for multi-format support
 
 import type { ProcessedCollection, ProcessedToken, ExportData } from './processor';
 import { VariableRegistry, parseTokenReference, isTokenReference, createImportOrder, extractReferences } from './reference-resolver';
 import { validateTokensForImport, type ValidationReport, validateTokenValue } from './validation';
+import { FormatAdapterManager } from './format-adapter-manager';
+import type { AdapterProcessResult } from './format-adapter';
 
 export interface ImportResult {
   success: boolean;
@@ -441,16 +443,43 @@ export async function importTokenData(
 }
 
 /**
- * Parse uploaded token file content
+ * Parse uploaded token file content with format adaptation
  */
-export function parseTokenFile(content: string): ExportData | ExportData[] {
-  try {
-    const parsed = JSON.parse(content);
-    // Return as-is - let the caller handle array vs single object
-    return parsed;
-  } catch (error) {
-    throw new Error(`Invalid JSON format: ${error instanceof Error ? error.message : error}`);
+export async function parseTokenFile(content: string): Promise<{
+  data: ExportData | ExportData[];
+  adapterResult?: AdapterProcessResult;
+}> {
+  console.log('🔄 parseTokenFile: Using Format Adapter Manager');
+  
+  const adapterManager = new FormatAdapterManager();
+  const result = await adapterManager.processTokenFile(content);
+  
+  if (!result.success) {
+    const errorMessage = `Import failed: ${result.errors.join(', ')}${
+      result.suggestions ? `\n\nSuggestions:\n${result.suggestions.join('\n')}` : ''
+    }`;
+    throw new Error(errorMessage);
   }
+  
+  // Log transformations for user feedback
+  if (result.transformations.length > 0) {
+    console.log('✨ Applied transformations:', result.transformations);
+    
+    // Send to UI for display
+    figma.ui.postMessage({
+      type: 'format-transformations',
+      transformations: result.transformations,
+      detection: result.detection,
+      stats: result.stats
+    });
+  }
+  
+  console.log(`✅ parseTokenFile: Successfully processed with ${result.detection.format} adapter`);
+  
+  return {
+    data: result.data,
+    adapterResult: result
+  };
 }
 
 /**

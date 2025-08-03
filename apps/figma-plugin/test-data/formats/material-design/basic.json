@@ -1,0 +1,70 @@
+{
+  "ref.palette.primary.10": {
+    "$value": "#001849",
+    "$type": "color"
+  },
+  "ref.palette.primary.50": {
+    "$value": "#0061a4",
+    "$type": "color"
+  },
+  "ref.palette.primary.90": {
+    "$value": "#adc6ff",
+    "$type": "color"
+  },
+  "ref.palette.neutral.10": {
+    "$value": "#1a1b20",
+    "$type": "color"
+  },
+  "ref.palette.neutral.90": {
+    "$value": "#e3e2e6",
+    "$type": "color"
+  },
+  "sys.color.primary": {
+    "$value": "{ref.palette.primary.50}",
+    "$type": "color"
+  },
+  "sys.color.on-primary": {
+    "$value": "#ffffff",
+    "$type": "color"
+  },
+  "sys.color.surface": {
+    "$value": "{ref.palette.neutral.90}",
+    "$type": "color"
+  },
+  "sys.color.on-surface": {
+    "$value": "{ref.palette.neutral.10}",
+    "$type": "color"
+  },
+  "sys.color.outline": {
+    "$value": "#777680",
+    "$type": "color"
+  },
+  "ref.typeface.brand": {
+    "$value": "Roboto",
+    "$type": "fontFamily"
+  },
+  "sys.typescale.display-large.font-family": {
+    "$value": "{ref.typeface.brand}",
+    "$type": "fontFamily"
+  },
+  "sys.typescale.display-large.font-size": {
+    "$value": "57px",
+    "$type": "fontSize"
+  },
+  "sys.typescale.body-large.font-size": {
+    "$value": "16px",
+    "$type": "fontSize"
+  },
+  "ref.elevation.level0": {
+    "$value": 0,
+    "$type": "elevation"
+  },
+  "ref.elevation.level1": {
+    "$value": 1,
+    "$type": "elevation"
+  },
+  "sys.elevation.surface": {
+    "$value": "{ref.elevation.level0}",
+    "$type": "elevation"
+  }
+}

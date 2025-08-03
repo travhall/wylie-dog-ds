@@ -1,0 +1,25 @@
+{
+  "empty": {},
+  "null_values": {
+    "color": null,
+    "spacing": null
+  },
+  "missing_properties": {
+    "incomplete": {
+      "$type": "color"
+    },
+    "no_type": {
+      "$value": "#3b82f6"
+    }
+  },
+  "empty_strings": {
+    "color": {
+      "$value": "",
+      "$type": "color"
+    },
+    "spacing": {
+      "$value": "",
+      "$type": "dimension"
+    }
+  }
+}

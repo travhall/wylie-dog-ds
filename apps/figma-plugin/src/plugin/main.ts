@@ -187,23 +187,32 @@ figma.ui.onmessage = async (msg) => {
       case 'import-tokens':
         console.log('Importing tokens from files:', msg.files?.length || 0);
         try {
-          setLoading(true, 'Parsing token files...');
+          setLoading(true, 'Parsing token files with format detection...');
           
           if (!msg.files || msg.files.length === 0) {
             throw new Error('No files provided for import');
           }
           
-          // Parse all files first
+          // Parse all files with format adaptation
           const allTokenData = [];
+          const adapterResults: any[] = [];
           
           for (const file of msg.files) {
             console.log(`Parsing file: ${file.filename}`);
             
             try {
-              // Parse the JSON content
-              const tokenData = parseTokenFile(file.content);
+              // Parse with format adapter
+              const parseResult = await parseTokenFile(file.content);
+              const tokenData = parseResult.data;
               
-              // Validate structure
+              if (parseResult.adapterResult) {
+                adapterResults.push(Object.assign({
+                  filename: file.filename
+                }, parseResult.adapterResult));
+                console.log(`✨ File ${file.filename} processed with ${parseResult.adapterResult.detection.format} format adapter`);
+              }
+              
+              // Validate structure (fallback validation)
               const validation = validateTokenStructure(tokenData);
               if (!validation.valid) {
                 console.error(`Validation failed for ${file.filename}:`, validation.errors);
@@ -214,7 +223,7 @@ figma.ui.onmessage = async (msg) => {
               
               // Add to collection for global processing
               if (Array.isArray(tokenData)) {
-                allTokenData.push(...tokenData);
+                allTokenData.push.apply(allTokenData, tokenData);
               } else {
                 allTokenData.push(tokenData);
               }
@@ -248,13 +257,14 @@ figma.ui.onmessage = async (msg) => {
           
           setLoading(false);
           
-          // Send results back to UI
+          // Send results back to UI including format adapter information
           figma.ui.postMessage({
             type: 'tokens-imported',
             result: globalResult,
             results: [globalResult], // Convert to array format for UI compatibility
             referenceValidation: referenceValidation,
-            validationReport: globalResult.validationReport // Include enhanced validation
+            validationReport: globalResult.validationReport, // Include enhanced validation
+            adapterResults: adapterResults // Include format adaptation results
           });
           
           console.log('Global import completed:', globalResult);

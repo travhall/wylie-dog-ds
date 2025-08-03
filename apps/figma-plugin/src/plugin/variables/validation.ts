@@ -71,7 +71,7 @@ export function validateTokensForImport(tokenData: ExportData[]): ValidationRepo
   }
 
   // Second pass: validate references
-  for (const [tokenName, referencedTokens] of allReferences) {
+  for (const [tokenName, referencedTokens] of Array.from(allReferences)) {
     const tokenInfo = allTokens.get(tokenName);
     if (!tokenInfo) continue;
 
@@ -191,7 +191,7 @@ function detectCircularDependencies(
     const refs = references.get(token);
     if (refs) {
       for (const ref of refs) {
-        dfs(ref, [...path, token]);
+        dfs(ref, path.concat([token]));
       }
     }
 
@@ -226,9 +226,8 @@ function calculateMaxReferenceDepth(
     }
 
     visited.add(token);
-    const maxDepth = Math.max(
-      ...Array.from(refs).map(ref => getDepth(ref, visited))
-    ) + 1;
+    const depthArray = Array.from(refs).map(ref => getDepth(ref, visited));
+    const maxDepth = Math.max.apply(Math, depthArray) + 1;
     visited.delete(token);
 
     depths.set(token, maxDepth);

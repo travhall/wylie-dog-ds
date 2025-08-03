@@ -1,0 +1,48 @@
+{
+  ":root": {
+    "--color-primary-50": "#f0f9ff",
+    "--color-primary-100": "#e0f2fe",
+    "--color-primary-500": "#0ea5e9",
+    "--color-primary-600": "#0284c7",
+    "--color-primary-900": "#0c4a6e",
+    "--color-gray-50": "#f8fafc",
+    "--color-gray-900": "#0f172a",
+    "--spacing-xs": "4px",
+    "--spacing-sm": "8px",
+    "--spacing-md": "16px",
+    "--spacing-lg": "24px",
+    "--spacing-xl": "32px",
+    "--font-family-sans": "Inter, system-ui, sans-serif",
+    "--font-family-mono": "JetBrains Mono, monospace",
+    "--font-size-sm": "14px",
+    "--font-size-base": "16px",
+    "--font-size-lg": "18px",
+    "--border-radius-sm": "4px",
+    "--border-radius-md": "8px",
+    "--border-radius-lg": "12px"
+  },
+  "semantic": {
+    "--color-background-primary": "var(--color-gray-50)",
+    "--color-text-primary": "var(--color-gray-900)",
+    "--color-brand-primary": "var(--color-primary-500)",
+    "--color-brand-hover": "var(--color-primary-600)",
+    "--spacing-component-padding": "var(--spacing-md)",
+    "--spacing-component-gap": "var(--spacing-lg)"
+  },
+  "components": {
+    "button": {
+      "--button-padding-x": "var(--spacing-md)",
+      "--button-padding-y": "var(--spacing-sm)",
+      "--button-border-radius": "var(--border-radius-md)",
+      "--button-primary-bg": "var(--color-brand-primary)",
+      "--button-primary-hover": "var(--color-brand-hover)",
+      "--button-primary-text": "#ffffff"
+    },
+    "card": {
+      "--card-padding": "var(--spacing-lg)",
+      "--card-border-radius": "var(--border-radius-lg)",
+      "--card-background": "var(--color-background-primary)",
+      "--card-border": "1px solid #e2e8f0"
+    }
+  }
+}

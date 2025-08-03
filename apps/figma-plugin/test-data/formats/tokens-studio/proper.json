@@ -1,0 +1,164 @@
+{
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": ["global", "semantic", "component"]
+  },
+  "global": {
+    "color": {
+      "blue": {
+        "50": {
+          "value": "#eff6ff",
+          "type": "color"
+        },
+        "100": {
+          "value": "#dbeafe",
+          "type": "color"
+        },
+        "500": {
+          "value": "#3b82f6",
+          "type": "color"
+        },
+        "600": {
+          "value": "#2563eb",
+          "type": "color"
+        },
+        "900": {
+          "value": "#1e3a8a",
+          "type": "color"
+        }
+      },
+      "gray": {
+        "50": {
+          "value": "#f9fafb",
+          "type": "color"
+        },
+        "900": {
+          "value": "#111827",
+          "type": "color"
+        }
+      }
+    },
+    "spacing": {
+      "xs": {
+        "value": "4",
+        "type": "spacing"
+      },
+      "sm": {
+        "value": "8", 
+        "type": "spacing"
+      },
+      "md": {
+        "value": "16",
+        "type": "spacing"
+      },
+      "lg": {
+        "value": "24",
+        "type": "spacing"
+      }
+    },
+    "borderRadius": {
+      "sm": {
+        "value": "4",
+        "type": "borderRadius"
+      },
+      "md": {
+        "value": "8",
+        "type": "borderRadius"
+      }
+    },
+    "fontFamily": {
+      "sans": {
+        "value": "Inter, system-ui, sans-serif",
+        "type": "fontFamilies"
+      }
+    },
+    "fontSize": {
+      "sm": {
+        "value": "14",
+        "type": "fontSizes"
+      },
+      "base": {
+        "value": "16",
+        "type": "fontSizes"
+      },
+      "lg": {
+        "value": "18",
+        "type": "fontSizes"
+      }
+    }
+  },
+  "semantic": {
+    "color": {
+      "background": {
+        "primary": {
+          "value": "{global.color.gray.50}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "primary": {
+          "value": "{global.color.gray.900}",
+          "type": "color"
+        }
+      },
+      "brand": {
+        "primary": {
+          "value": "{global.color.blue.500}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "component": {
+    "button": {
+      "primary": {
+        "background": {
+          "value": "{semantic.color.brand.primary}",
+          "type": "color",
+          "description": "Primary button background"
+        },
+        "text": {
+          "value": "#ffffff",
+          "type": "color",
+          "description": "Primary button text"
+        },
+        "padding": {
+          "value": "{global.spacing.md}",
+          "type": "spacing"
+        },
+        "borderRadius": {
+          "value": "{global.borderRadius.md}",
+          "type": "borderRadius"
+        }
+      },
+      "secondary": {
+        "background": {
+          "value": "transparent",
+          "type": "color"
+        },
+        "text": {
+          "value": "{semantic.color.brand.primary}",
+          "type": "color"
+        },
+        "border": {
+          "value": "{semantic.color.brand.primary}",
+          "type": "color"
+        }
+      }
+    },
+    "card": {
+      "background": {
+        "value": "{semantic.color.background.primary}",
+        "type": "color"
+      },
+      "padding": {
+        "value": "{global.spacing.lg}",
+        "type": "spacing"
+      },
+      "borderRadius": {
+        "value": "{global.borderRadius.md}",
+        "type": "borderRadius"
+      }
+    }
+  }
+}

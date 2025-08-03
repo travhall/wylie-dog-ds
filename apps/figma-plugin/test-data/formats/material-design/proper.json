@@ -1,0 +1,94 @@
+{
+  "md.ref.palette.primary10": {
+    "$value": "#001849",
+    "$type": "color"
+  },
+  "md.ref.palette.primary20": {
+    "$value": "#002f5e",
+    "$type": "color"
+  },
+  "md.ref.palette.primary40": {
+    "$value": "#0061a4",
+    "$type": "color"
+  },
+  "md.ref.palette.primary80": {
+    "$value": "#adc6ff",
+    "$type": "color"
+  },
+  "md.ref.palette.primary90": {
+    "$value": "#d8e2ff",
+    "$type": "color"
+  },
+  "md.ref.palette.neutral10": {
+    "$value": "#1a1b20",
+    "$type": "color"
+  },
+  "md.ref.palette.neutral90": {
+    "$value": "#e3e2e6",
+    "$type": "color"
+  },
+  "md.ref.palette.neutral95": {
+    "$value": "#f1f0f4",
+    "$type": "color"
+  },
+  "md.ref.typeface.brand": {
+    "$value": "Roboto",
+    "$type": "fontFamily"
+  },
+  "md.ref.typeface.plain": {
+    "$value": "system-ui",
+    "$type": "fontFamily"
+  },
+  "md.sys.color.primary": {
+    "$value": "{md.ref.palette.primary40}",
+    "$type": "color"
+  },
+  "md.sys.color.on-primary": {
+    "$value": "#ffffff",
+    "$type": "color"
+  },
+  "md.sys.color.primary-container": {
+    "$value": "{md.ref.palette.primary90}",
+    "$type": "color"
+  },
+  "md.sys.color.on-primary-container": {
+    "$value": "{md.ref.palette.primary10}",
+    "$type": "color"
+  },
+  "md.sys.color.surface": {
+    "$value": "{md.ref.palette.neutral95}",
+    "$type": "color"
+  },
+  "md.sys.color.on-surface": {
+    "$value": "{md.ref.palette.neutral10}",
+    "$type": "color"
+  },
+  "md.sys.color.surface-variant": {
+    "$value": "{md.ref.palette.neutral90}",
+    "$type": "color"
+  },
+  "md.sys.typescale.display-large.font-family": {
+    "$value": "{md.ref.typeface.brand}",
+    "$type": "fontFamily"
+  },
+  "md.sys.typescale.display-large.font-size": {
+    "$value": "57px",
+    "$type": "fontSize"
+  },
+  "md.sys.typescale.display-large.line-height": {
+    "$value": "64px",
+    "$type": "lineHeight"
+  },
+  "md.sys.typescale.body-large.font-family": {
+    "$value": "{md.ref.typeface.plain}",
+    "$type": "fontFamily"
+  },
+  "md.sys.typescale.body-large.font-size": {
+    "$value": "16px",
+    "$type": "fontSize"
+  },
+  "md.sys.typescale.body-large.line-height": {
+    "$value": "24px",
+    "$type": "lineHeight"
+  }
+}

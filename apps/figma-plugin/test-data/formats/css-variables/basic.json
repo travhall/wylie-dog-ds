@@ -1,0 +1,26 @@
+{
+  "color-primary-base": {
+    "$value": "#0ea5e9",
+    "$type": "color"
+  },
+  "color-primary-light": {
+    "$value": "#f0f9ff", 
+    "$type": "color"
+  },
+  "color-background": {
+    "$value": "var(--color-primary-light)",
+    "$type": "color"
+  },
+  "spacing-unit": {
+    "$value": "8px",
+    "$type": "dimension"
+  },
+  "spacing-medium": {
+    "$value": "var(--spacing-unit)",
+    "$type": "dimension"
+  },
+  "typography_size_body": {
+    "$value": "16px",
+    "$type": "fontSize"
+  }
+}

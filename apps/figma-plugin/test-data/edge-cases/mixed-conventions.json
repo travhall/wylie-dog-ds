@@ -1,0 +1,33 @@
+{
+  "color-primary-500": {
+    "value": "#3b82f6",
+    "type": "color"
+  },
+  "colorSecondary500": {
+    "$value": "#6366f1", 
+    "$type": "color"
+  },
+  "color_neutral_50": {
+    "val": "#f8fafc",
+    "category": "color"
+  },
+  "spacing.base": {
+    "size": "16px",
+    "unit": "dimension"
+  },
+  "fontSizeLarge": {
+    "$value": "18px",
+    "$type": "fontSize"
+  },
+  "border-radius-md": {
+    "value": "8px"
+  },
+  "shadow_elevation_low": {
+    "$value": {
+      "offsetX": "0px",
+      "offsetY": "2px",
+      "blur": "4px"
+    },
+    "$type": "shadow"
+  }
+}

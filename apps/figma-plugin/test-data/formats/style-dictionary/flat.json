@@ -1,0 +1,38 @@
+{
+  "color.primary.50": {
+    "value": "#f0f9ff",
+    "type": "color"
+  },
+  "color.primary.500": {
+    "value": "#0ea5e9",
+    "type": "color"
+  },
+  "color.primary.900": {
+    "value": "#0c4a6e",
+    "type": "color"
+  },
+  "color.semantic.background": {
+    "value": "{color.primary.50}",
+    "type": "color"
+  },
+  "color.semantic.text": {
+    "value": "{color.primary.900}",
+    "type": "color"
+  },
+  "spacing.base": {
+    "value": "16px",
+    "type": "dimension"
+  },
+  "spacing.large": {
+    "value": "32px",
+    "type": "dimension"
+  },
+  "typography.size.body": {
+    "value": "16px",
+    "type": "fontSize"
+  },
+  "typography.size.heading": {
+    "value": "24px",
+    "type": "fontSize"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "color": {
+    "primary": {
+      "base": {
+        "value": "#0ea5e9",
+        "type": "color"
+      },
+      "light": {
+        "value": "#38bdf8",
+        "type": "color"
+      },
+      "dark": {
+        "value": "#0369a1",
+        "type": "color"
+      }
+    },
+    "neutral": {
+      "50": {
+        "value": "#f8fafc",
+        "type": "color"
+      },
+      "900": {
+        "value": "#0f172a",
+        "type": "color"
+      }
+    },
+    "semantic": {
+      "background": {
+        "value": "{color.neutral.50}",
+        "type": "color"
+      },
+      "text": {
+        "value": "{color.neutral.900}",
+        "type": "color"
+      }
+    }
+  },
+  "size": {
+    "spacing": {
+      "xs": {
+        "value": "4px",
+        "type": "dimension"
+      },
+      "sm": {
+        "value": "8px",
+        "type": "dimension"
+      },
+      "md": {
+        "value": "16px",
+        "type": "dimension"
+      },
+      "lg": {
+        "value": "24px",
+        "type": "dimension"
+      }
+    },
+    "border": {
+      "radius": {
+        "sm": {
+          "value": "4px",
+          "type": "borderRadius"
+        },
+        "md": {
+          "value": "8px",
+          "type": "borderRadius"
+        }
+      }
+    }
+  },
+  "font": {
+    "family": {
+      "sans": {
+        "value": "Inter, system-ui, sans-serif",
+        "type": "fontFamily"
+      }
+    },
+    "size": {
+      "sm": {
+        "value": "14px",
+        "type": "fontSize"
+      },
+      "base": {
+        "value": "16px",
+        "type": "fontSize"
+      },
+      "lg": {
+        "value": "18px",
+        "type": "fontSize"
+      }
+    },
+    "weight": {
+      "normal": {
+        "value": "400",
+        "type": "fontWeight"
+      },
+      "bold": {
+        "value": "700",
+        "type": "fontWeight"
+      }
+    }
+  }
+}

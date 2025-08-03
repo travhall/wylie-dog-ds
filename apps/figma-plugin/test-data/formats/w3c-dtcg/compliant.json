@@ -1,0 +1,157 @@
+{
+  "$schema": "https://schemas.tr.design/draft/design-tokens-community-group-format.json",
+  "color": {
+    "primary": {
+      "50": {
+        "$value": "#f0f9ff",
+        "$type": "color",
+        "$description": "Lightest shade of primary color"
+      },
+      "100": {
+        "$value": "#e0f2fe",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#0ea5e9",
+        "$type": "color",
+        "$description": "Primary brand color"
+      },
+      "600": {
+        "$value": "#0284c7",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#0c4a6e",
+        "$type": "color",
+        "$description": "Darkest shade of primary color"
+      }
+    },
+    "semantic": {
+      "background": {
+        "$value": "{color.primary.50}",
+        "$type": "color",
+        "$description": "Primary background color"
+      },
+      "text": {
+        "$value": "{color.primary.900}",
+        "$type": "color",
+        "$description": "Primary text color"
+      },
+      "border": {
+        "$value": "{color.primary.500}",
+        "$type": "color"
+      }
+    }
+  },
+  "spacing": {
+    "scale": {
+      "xs": {
+        "$value": "4px",
+        "$type": "dimension"
+      },
+      "sm": {
+        "$value": "8px",
+        "$type": "dimension"
+      },
+      "md": {
+        "$value": "16px",
+        "$type": "dimension",
+        "$description": "Base spacing unit"
+      },
+      "lg": {
+        "$value": "24px",
+        "$type": "dimension"
+      },
+      "xl": {
+        "$value": "32px",
+        "$type": "dimension"
+      }
+    },
+    "component": {
+      "button-padding": {
+        "$value": "{spacing.scale.md}",
+        "$type": "dimension"
+      },
+      "card-gap": {
+        "$value": "{spacing.scale.lg}",
+        "$type": "dimension"
+      }
+    }
+  },
+  "typography": {
+    "font-family": {
+      "base": {
+        "$value": ["Inter", "system-ui", "sans-serif"],
+        "$type": "fontFamily"
+      },
+      "mono": {
+        "$value": ["JetBrains Mono", "monospace"],
+        "$type": "fontFamily"
+      }
+    },
+    "font-size": {
+      "sm": {
+        "$value": "14px",
+        "$type": "fontSize"
+      },
+      "base": {
+        "$value": "16px",
+        "$type": "fontSize",
+        "$description": "Base font size"
+      },
+      "lg": {
+        "$value": "18px",
+        "$type": "fontSize"
+      },
+      "xl": {
+        "$value": "20px",
+        "$type": "fontSize"
+      }
+    },
+    "line-height": {
+      "tight": {
+        "$value": "1.25",
+        "$type": "number"
+      },
+      "normal": {
+        "$value": "1.5",
+        "$type": "number"
+      },
+      "relaxed": {
+        "$value": "1.75",
+        "$type": "number"
+      }
+    }
+  },
+  "shadow": {
+    "sm": {
+      "$value": {
+        "color": "#00000010",
+        "offsetX": "0px",
+        "offsetY": "1px",
+        "blur": "3px",
+        "spread": "0px"
+      },
+      "$type": "shadow"
+    },
+    "md": {
+      "$value": [
+        {
+          "color": "#00000010",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "6px",
+          "spread": "-1px"
+        },
+        {
+          "color": "#00000006",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "-1px"
+        }
+      ],
+      "$type": "shadow"
+    }
+  }
+}

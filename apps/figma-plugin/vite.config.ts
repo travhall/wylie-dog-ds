@@ -44,7 +44,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [],
     build: {
-      target: 'es2018',
+      target: 'es2019', // Target ES2019 for object spread support
       outDir: 'dist',
       emptyOutDir: false,
       rollupOptions: {
@@ -54,8 +54,12 @@ export default defineConfig(({ mode }) => {
           format: 'iife'
         }
       },
-      minify: false,
+      minify: true,
       sourcemap: false
+    },
+    esbuild: {
+      target: 'es2019', // Ensure esbuild also targets ES2019
+      // Remove explicit disabling of modern features
     },
     define: {
       'process.env.NODE_ENV': JSON.stringify(mode),
