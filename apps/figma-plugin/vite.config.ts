@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
         })
       ],
       build: {
-        target: 'es2019',
+        target: 'es2017',
         outDir: 'dist',
         emptyOutDir: false,
         rollupOptions: {
@@ -25,7 +25,13 @@ export default defineConfig(({ mode }) => {
             assetFileNames: 'ui.html'
           }
         },
-        minify: false,
+        minify: 'terser',
+        terserOptions: {
+          compress: {
+            drop_console: false,
+            drop_debugger: false
+          }
+        },
         sourcemap: false
       },
       resolve: {
@@ -44,7 +50,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [],
     build: {
-      target: 'es2019', // Target ES2019 for object spread support
+      target: 'es2017', // Target ES2017 for better Figma compatibility
       outDir: 'dist',
       emptyOutDir: false,
       rollupOptions: {
@@ -58,8 +64,7 @@ export default defineConfig(({ mode }) => {
       sourcemap: false
     },
     esbuild: {
-      target: 'es2019', // Ensure esbuild also targets ES2019
-      // Remove explicit disabling of modern features
+      target: 'es2017', // Match build target for consistency
     },
     define: {
       'process.env.NODE_ENV': JSON.stringify(mode),

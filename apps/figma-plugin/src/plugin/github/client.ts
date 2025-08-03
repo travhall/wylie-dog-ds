@@ -1,8 +1,6 @@
 // GitHub integration for token synchronization
 
-import { Octokit } from '@octokit/rest';
-
-export interface GitHubConfig {
+interface GitHubConfig {
   owner: string;
   repo: string;
   branch: string;
@@ -10,7 +8,7 @@ export interface GitHubConfig {
   accessToken?: string;
 }
 
-export interface SyncResult {
+interface SyncResult {
   success: boolean;
   pullRequestUrl?: string;
   error?: string;
@@ -18,8 +16,8 @@ export interface SyncResult {
 }
 
 export class GitHubClient {
-  private octokit: Octokit | null = null;
   private config: GitHubConfig | null = null;
+  private baseUrl = 'https://api.github.com';
 
   constructor() {}
 
@@ -31,14 +29,23 @@ export class GitHubClient {
 
     try {
       this.config = config;
-      this.octokit = new Octokit({
-        auth: config.accessToken,
-        userAgent: 'Token Bridge Figma Plugin v1.0.0'
+      
+      // Test the connection with basic fetch
+      const response = await fetch(`${this.baseUrl}/user`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `token ${config.accessToken}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'Token Bridge Figma Plugin v1.0.0'
+        }
       });
 
-      // Test the connection
-      await this.octokit.users.getAuthenticated();
-      console.log('GitHub client initialized successfully');
+      if (!response.ok) {
+        throw new Error(`GitHub API responded with ${response.status}: ${response.statusText}`);
+      }
+
+      const user = await response.json();
+      console.log('GitHub client initialized successfully for user:', user.login);
       return true;
     } catch (error) {
       console.error('Failed to initialize GitHub client:', error);
@@ -47,16 +54,29 @@ export class GitHubClient {
   }
 
   async validateRepository(): Promise<{ valid: boolean; error?: string }> {
-    if (!this.octokit || !this.config) {
+    if (!this.config) {
       return { valid: false, error: 'GitHub client not initialized' };
     }
 
     try {
-      const { data: repo } = await this.octokit.repos.get({
-        owner: this.config.owner,
-        repo: this.config.repo
+      const response = await fetch(`${this.baseUrl}/repos/${this.config.owner}/${this.config.repo}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `token ${this.config.accessToken}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'Token Bridge Figma Plugin v1.0.0'
+        }
       });
 
+      if (response.status === 404) {
+        return { valid: false, error: 'Repository not found or no access' };
+      }
+
+      if (!response.ok) {
+        return { valid: false, error: `API error: ${response.status} ${response.statusText}` };
+      }
+
+      const repo = await response.json();
       const hasWriteAccess = repo.permissions && (repo.permissions.push || repo.permissions.admin);
       
       if (!hasWriteAccess) {
@@ -65,15 +85,12 @@ export class GitHubClient {
 
       return { valid: true };
     } catch (error: any) {
-      if (error.status === 404) {
-        return { valid: false, error: 'Repository not found or no access' };
-      }
       return { valid: false, error: error.message };
     }
   }
 
   async syncTokens(exportData: any[], commitMessage: string = 'Update design tokens via Token Bridge'): Promise<SyncResult> {
-    if (!this.octokit || !this.config) {
+    if (!this.config) {
       return { success: false, error: 'GitHub client not initialized' };
     }
 
@@ -131,66 +148,93 @@ export class GitHubClient {
   }
 
   private async createBranch(branchName: string): Promise<void> {
-    if (!this.octokit || !this.config) {
+    if (!this.config) {
       throw new Error('GitHub client not initialized');
     }
 
     // Get the SHA of the base branch
-    const { data: baseRef } = await this.octokit.git.getRef({
-      owner: this.config.owner,
-      repo: this.config.repo,
-      ref: `heads/${this.config.branch}`
+    const refResponse = await fetch(`${this.baseUrl}/repos/${this.config.owner}/${this.config.repo}/git/refs/heads/${this.config.branch}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `token ${this.config.accessToken}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'Token Bridge Figma Plugin v1.0.0'
+      }
     });
 
+    if (!refResponse.ok) {
+      throw new Error(`Failed to get base branch: ${refResponse.status} ${refResponse.statusText}`);
+    }
+
+    const baseRef = await refResponse.json();
+
     // Create new branch
-    await this.octokit.git.createRef({
-      owner: this.config.owner,
-      repo: this.config.repo,
-      ref: `refs/heads/${branchName}`,
-      sha: baseRef.object.sha
+    const createResponse = await fetch(`${this.baseUrl}/repos/${this.config.owner}/${this.config.repo}/git/refs`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `token ${this.config.accessToken}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'Token Bridge Figma Plugin v1.0.0',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ref: `refs/heads/${branchName}`,
+        sha: baseRef.object.sha
+      })
     });
+
+    if (!createResponse.ok) {
+      throw new Error(`Failed to create branch: ${createResponse.status} ${createResponse.statusText}`);
+    }
 
     console.log(`Created branch: ${branchName}`);
   }
 
   private async updateFile(filePath: string, content: string, branch: string): Promise<void> {
-    if (!this.octokit || !this.config) {
+    if (!this.config) {
       throw new Error('GitHub client not initialized');
     }
 
     try {
       // Try to get existing file
-      const { data: existingFile } = await this.octokit.repos.getContent({
-        owner: this.config.owner,
-        repo: this.config.repo,
-        path: filePath,
-        ref: branch
+      const getResponse = await fetch(`${this.baseUrl}/repos/${this.config.owner}/${this.config.repo}/contents/${filePath}?ref=${branch}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `token ${this.config.accessToken}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'Token Bridge Figma Plugin v1.0.0'
+        }
       });
 
-      // Update existing file
-      await this.octokit.repos.createOrUpdateFileContents({
-        owner: this.config.owner,
-        repo: this.config.repo,
-        path: filePath,
-        message: `Update ${filePath}`,
-        content: Buffer.from(content).toString('base64'),
-        branch: branch,
-        sha: Array.isArray(existingFile) ? undefined : existingFile.sha
-      });
-    } catch (error: any) {
-      if (error.status === 404) {
-        // File doesn't exist, create it
-        await this.octokit.repos.createOrUpdateFileContents({
-          owner: this.config.owner,
-          repo: this.config.repo,
-          path: filePath,
-          message: `Create ${filePath}`,
-          content: Buffer.from(content).toString('base64'),
-          branch: branch
-        });
-      } else {
-        throw error;
+      let existingSha = null;
+      if (getResponse.ok) {
+        const existingFile = await getResponse.json();
+        existingSha = existingFile.sha;
       }
+
+      // Update or create file
+      const updateResponse = await fetch(`${this.baseUrl}/repos/${this.config.owner}/${this.config.repo}/contents/${filePath}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${this.config.accessToken}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'Token Bridge Figma Plugin v1.0.0',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: existingSha ? `Update ${filePath}` : `Create ${filePath}`,
+          content: btoa(content), // Base64 encode
+          branch: branch,
+          sha: existingSha
+        })
+      });
+
+      if (!updateResponse.ok) {
+        throw new Error(`Failed to update file: ${updateResponse.status} ${updateResponse.statusText}`);
+      }
+    } catch (error: any) {
+      console.error(`Error updating file ${filePath}:`, error);
+      throw error;
     }
   }
 
@@ -200,21 +244,33 @@ export class GitHubClient {
     exportData: any[],
     filesUpdated: string[]
   ): Promise<any> {
-    if (!this.octokit || !this.config) {
+    if (!this.config) {
       throw new Error('GitHub client not initialized');
     }
 
     const prBody = this.generatePullRequestBody(exportData, filesUpdated);
     
-    const { data: pr } = await this.octokit.pulls.create({
-      owner: this.config.owner,
-      repo: this.config.repo,
-      title: `🎨 ${commitMessage}`,
-      head: branchName,
-      base: this.config.branch,
-      body: prBody
+    const response = await fetch(`${this.baseUrl}/repos/${this.config.owner}/${this.config.repo}/pulls`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `token ${this.config.accessToken}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'Token Bridge Figma Plugin v1.0.0',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: `🎨 ${commitMessage}`,
+        head: branchName,
+        base: this.config.branch,
+        body: prBody
+      })
     });
 
+    if (!response.ok) {
+      throw new Error(`Failed to create pull request: ${response.status} ${response.statusText}`);
+    }
+
+    const pr = await response.json();
     console.log(`Created pull request: ${pr.html_url}`);
     return pr;
   }
@@ -253,3 +309,5 @@ ${filesUpdated.map(path => `- \`${path}\``).join('\n')}
     `.trim();
   }
 }
+
+export { GitHubConfig, SyncResult };

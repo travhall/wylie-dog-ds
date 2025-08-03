@@ -1,7 +1,7 @@
 // Plugin main entry point
 import { processCollectionsForExport } from './variables/processor';
 import { importMultipleCollections, parseTokenFile, validateTokenStructure, validateTokenReferences } from './variables/importer';
-// import { GitHubClient } from './github/client'; // Temporarily disabled
+import { GitHubClient } from './github/client';
 
 console.log('Plugin starting...');
 
@@ -14,8 +14,8 @@ function setLoading(loading: boolean, message?: string) {
   });
 }
 
-// GitHub client instance - temporarily disabled
-// let githubClient = new GitHubClient();
+// GitHub client instance
+let githubClient = new GitHubClient();
 
 figma.showUI(__html__, {
   width: 400,
@@ -280,31 +280,156 @@ figma.ui.onmessage = async (msg) => {
         break;
 
       case 'get-github-config':
-        // GitHub temporarily disabled - return null config
-        figma.ui.postMessage({
-          type: 'github-config-loaded',
-          config: null
-        });
+        // Load saved GitHub configuration from storage
+        try {
+          const config = await figma.clientStorage.getAsync('github-config');
+          figma.ui.postMessage({
+            type: 'github-config-loaded',
+            config: config || null
+          });
+        } catch (error) {
+          console.error('Failed to load GitHub config:', error);
+          figma.ui.postMessage({
+            type: 'github-config-loaded',
+            config: null
+          });
+        }
         break;
 
       case 'test-github-config':
-        // GitHub temporarily disabled
-        figma.ui.postMessage({
-          type: 'github-config-tested',
-          success: false,
-          error: 'GitHub integration temporarily disabled'
-        });
+        console.log('Testing GitHub configuration:', msg.config);
+        try {
+          setLoading(true, 'Testing GitHub connection...');
+          
+          // Initialize GitHub client with provided config
+          const initSuccess = await githubClient.initialize(msg.config);
+          
+          if (!initSuccess) {
+            throw new Error('Failed to initialize GitHub client');
+          }
+          
+          // Validate repository access
+          const validation = await githubClient.validateRepository();
+          
+          if (!validation.valid) {
+            throw new Error(validation.error || 'Repository validation failed');
+          }
+          
+          // Save configuration if successful
+          await figma.clientStorage.setAsync('github-config', msg.config);
+          
+          setLoading(false);
+          figma.ui.postMessage({
+            type: 'github-config-tested',
+            success: true,
+            config: msg.config
+          });
+          
+          console.log('GitHub configuration tested successfully');
+        } catch (error: unknown) {
+          console.error('GitHub config test failed:', error);
+          setLoading(false);
+          figma.ui.postMessage({
+            type: 'github-config-tested',
+            success: false,
+            error: error instanceof Error ? error.message : 'Unknown error'
+          });
+        }
         break;
 
       case 'github-sync-tokens':
-        // GitHub temporarily disabled
-        figma.ui.postMessage({
-          type: 'github-sync-complete',
-          result: {
-            success: false,
-            error: 'GitHub integration temporarily disabled'
+        console.log('Syncing tokens to GitHub for collections:', msg.selectedCollectionIds);
+        try {
+          setLoading(true, 'Syncing tokens to GitHub...');
+          
+          // Check if GitHub is configured
+          const config = await figma.clientStorage.getAsync('github-config');
+          if (!config) {
+            throw new Error('GitHub not configured. Please configure GitHub integration first.');
           }
-        });
+          
+          // Initialize GitHub client
+          const initSuccess = await githubClient.initialize(config);
+          if (!initSuccess) {
+            throw new Error('Failed to initialize GitHub client');
+          }
+          
+          // Get collections and process for export (reuse existing logic)
+          const collections = await figma.variables.getLocalVariableCollectionsAsync();
+          const collectionsWithVariables = [];
+          
+          for (const collection of collections) {
+            if (!msg.selectedCollectionIds.includes(collection.id)) {
+              continue;
+            }
+            
+            console.log(`Processing collection for GitHub sync: ${collection.name}`);
+            const variables = [];
+            
+            for (const variableId of collection.variableIds) {
+              try {
+                const variable = await figma.variables.getVariableByIdAsync(variableId);
+                if (variable) {
+                  variables.push({
+                    id: variable.id,
+                    name: variable.name,
+                    description: variable.description || '',
+                    resolvedType: variable.resolvedType,
+                    scopes: variable.scopes,
+                    valuesByMode: variable.valuesByMode,
+                    remote: variable.remote,
+                    key: variable.key
+                  });
+                }
+              } catch (err) {
+                console.error('Error processing variable for GitHub sync:', variableId, err);
+              }
+            }
+            
+            collectionsWithVariables.push({
+              id: collection.id,
+              name: collection.name,
+              modes: collection.modes,
+              variables: variables
+            });
+          }
+          
+          // Process collections into token format
+          const exportData = await processCollectionsForExport(
+            collectionsWithVariables,
+            msg.selectedCollectionIds
+          );
+          
+          // Sync to GitHub
+          const syncResult = await githubClient.syncTokens(
+            exportData,
+            `Update design tokens from Figma (${new Date().toISOString().split('T')[0]})`
+          );
+          
+          setLoading(false);
+          
+          figma.ui.postMessage({
+            type: 'github-sync-complete',
+            result: syncResult
+          });
+          
+          if (syncResult.success) {
+            console.log('GitHub sync completed successfully');
+          } else {
+            console.error('GitHub sync failed:', syncResult.error);
+          }
+          
+        } catch (error: unknown) {
+          console.error('Error syncing to GitHub:', error);
+          setLoading(false);
+          figma.ui.postMessage({
+            type: 'github-sync-complete',
+            result: {
+              success: false,
+              error: error instanceof Error ? error.message : 'Unknown error occurred'
+            }
+          });
+        }
         break;
         
       case 'close':
