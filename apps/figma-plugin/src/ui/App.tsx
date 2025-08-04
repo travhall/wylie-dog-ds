@@ -201,12 +201,51 @@ function App() {
             setError(errorMsg);
           }
           break;
-        case 'import-error':
-          console.error('Import error:', msg.error);
+        case 'tokens-pulled-and-imported':
+          console.log('Tokens pulled and imported successfully:', msg.result);
           setImportLoading(false);
           setLoading(false);
           setLoadingMessage('');
-          setError(`Import failed: ${msg.error}`);
+          
+          // Handle adapter results
+          if (msg.adapterResults) {
+            setAdapterResults(msg.adapterResults);
+          }
+          
+          // Handle validation report
+          if (msg.result && msg.result.validationReport) {
+            setValidationReport(msg.result.validationReport);
+            if (!msg.result.validationReport.valid || msg.result.validationReport.warnings.length > 0) {
+              setShowValidation(true);
+            }
+          }
+          
+          if (msg.result && msg.result.success) {
+            const totalVariables = msg.result.totalVariablesCreated || 0;
+            const totalCollections = msg.result.collectionsProcessed || 0;
+            const filesCount = msg.pullResult?.filesFound?.length || 0;
+            
+            let successText = `✅ Successfully pulled and imported ${totalVariables} variables from ${filesCount} GitHub files across ${totalCollections} collections!`;
+            
+            setSuccessMessage(successText);
+            setTimeout(() => setSuccessMessage(null), 6000);
+            // Reload collections to show imported data
+            loadCollections();
+          } else {
+            const errorMsg = msg.result?.message || 'GitHub pull completed but no results received';
+            setError(errorMsg);
+          }
+          break;
+        case 'github-pull-error':
+          console.error('GitHub pull error:', msg.error);
+          setImportLoading(false);
+          setLoading(false);
+          setLoadingMessage('');
+          setError(`GitHub pull failed: ${msg.error}`);
+          break;
+        case 'github-sync-status':
+          console.log('GitHub sync status:', msg.status);
+          // TODO: Handle sync status display
           break;
         default:
           console.warn('Unknown message type:', msg.type);
@@ -470,6 +509,32 @@ function App() {
     
     // Trigger file picker
     fileInput.click();
+  };
+
+  const handleGitHubPull = () => {
+    if (!githubConfigured) {
+      setError('Please configure GitHub integration first');
+      return;
+    }
+    
+    setImportLoading(true);
+    setLoading(true);
+    setLoadingMessage('Pulling tokens from GitHub...');
+    setError(null);
+    
+    try {
+      parent.postMessage({
+        pluginMessage: {
+          type: 'pull-from-github'
+        }
+      }, '*');
+    } catch (err) {
+      console.error('Failed to pull from GitHub:', err);
+      setError('Failed to pull from GitHub');
+      setImportLoading(false);
+      setLoading(false);
+      setLoadingMessage('');
+    }
   };
 
   const readFileAsText = (file: File): Promise<string> => {
@@ -810,23 +875,45 @@ function App() {
                   <div style={{ fontSize: '10px', color: '#059669', marginBottom: '8px' }}>
                     ✅ Connected to {githubConfig && githubConfig.owner}/{githubConfig && githubConfig.repo}
                   </div>
-                  <button 
-                    onClick={() => exportTokens(true)}
-                    disabled={loading || selectedCollections.size === 0}
-                    style={{ 
-                      width: '100%',
-                      padding: '10px 16px',
-                      backgroundColor: loading || selectedCollections.size === 0 ? '#cbd5e1' : '#0ea5e9',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '4px',
-                      cursor: loading || selectedCollections.size === 0 ? 'not-allowed' : 'pointer',
-                      fontSize: '12px',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {loading ? 'Syncing...' : `🚀 Sync to GitHub (${selectedCollections.size})`}
-                  </button>
+                  <div style={{ display: 'flex', gap: '4px', marginBottom: '4px' }}>
+                    <button 
+                      onClick={() => exportTokens(true)}
+                      disabled={loading || selectedCollections.size === 0}
+                      style={{ 
+                        flex: 1,
+                        padding: '8px 12px',
+                        backgroundColor: loading || selectedCollections.size === 0 ? '#cbd5e1' : '#0ea5e9',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '4px',
+                        cursor: loading || selectedCollections.size === 0 ? 'not-allowed' : 'pointer',
+                        fontSize: '11px',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {loading ? 'Syncing...' : `↑ Push (${selectedCollections.size})`}
+                    </button>
+                    <button 
+                      onClick={handleGitHubPull}
+                      disabled={loading || importLoading}
+                      style={{ 
+                        flex: 1,
+                        padding: '8px 12px',
+                        backgroundColor: loading || importLoading ? '#cbd5e1' : '#16a34a',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '4px',
+                        cursor: loading || importLoading ? 'not-allowed' : 'pointer',
+                        fontSize: '11px',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {importLoading ? 'Pulling...' : '↓ Pull'}
+                    </button>
+                  </div>
+                  <div style={{ fontSize: '9px', color: '#6b7280', textAlign: 'center' }}>
+                    Push exports selected collections • Pull imports all GitHub files
+                  </div>
                 </div>
               ) : (
                 <div style={{ fontSize: '10px', color: '#6b7280' }}>
