@@ -1,0 +1,99 @@
+{
+  "modes": [
+    {
+      "modeId": "94:1",
+      "name": "Default"
+    }
+  ],
+  "variables": {
+    "color-primary-50": {
+      "$type": "color",
+      "$value": "#f0f9ff",
+      "$description": "CSS variable from --color-primary-50"
+    },
+    "color-primary-100": {
+      "$type": "color",
+      "$value": "#e0f2fe",
+      "$description": "CSS variable from --color-primary-100"
+    },
+    "color-primary-500": {
+      "$type": "color",
+      "$value": "#0ea5e9",
+      "$description": "CSS variable from --color-primary-500"
+    },
+    "color-primary-600": {
+      "$type": "color",
+      "$value": "#0284c7",
+      "$description": "CSS variable from --color-primary-600"
+    },
+    "color-primary-900": {
+      "$type": "color",
+      "$value": "#0c4a6e",
+      "$description": "CSS variable from --color-primary-900"
+    },
+    "color-gray-50": {
+      "$type": "color",
+      "$value": "#f8fafc",
+      "$description": "CSS variable from --color-gray-50"
+    },
+    "color-gray-900": {
+      "$type": "color",
+      "$value": "#0f172a",
+      "$description": "CSS variable from --color-gray-900"
+    },
+    "spacing-xs": {
+      "$type": "spacing",
+      "$value": "0px"
+    },
+    "spacing-sm": {
+      "$type": "spacing",
+      "$value": "0px"
+    },
+    "spacing-md": {
+      "$type": "spacing",
+      "$value": "0px"
+    },
+    "spacing-lg": {
+      "$type": "spacing",
+      "$value": "0px"
+    },
+    "spacing-xl": {
+      "$type": "spacing",
+      "$value": "0px"
+    },
+    "font-family-sans": {
+      "$type": "fontFamily",
+      "$value": "Inter, system-ui, sans-serif",
+      "$description": "CSS variable from --font-family-sans"
+    },
+    "font-family-mono": {
+      "$type": "fontFamily",
+      "$value": "JetBrains Mono, monospace",
+      "$description": "CSS variable from --font-family-mono"
+    },
+    "font-size-sm": {
+      "$type": "sizing",
+      "$value": "0px"
+    },
+    "font-size-base": {
+      "$type": "sizing",
+      "$value": "0px"
+    },
+    "font-size-lg": {
+      "$type": "sizing",
+      "$value": "0px"
+    },
+    "border-radius-sm": {
+      "$type": "borderRadius",
+      "$value": "0px"
+    },
+    "border-radius-md": {
+      "$type": "borderRadius",
+      "$value": "0px"
+    },
+    "border-radius-lg": {
+      "$type": "borderRadius",
+      "$value": "0px"
+    }
+  }
+}
