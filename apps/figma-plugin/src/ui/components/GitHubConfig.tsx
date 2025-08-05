@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'preact/hooks';
 
+export type SyncMode = 'direct' | 'review';
+
 interface GitHubConfigProps {
   onConfigSaved: (config: GitHubConfig) => void;
   onClose: () => void;
@@ -11,6 +13,7 @@ interface GitHubConfig {
   branch: string;
   tokenPath: string;
   accessToken: string;
+  syncMode: SyncMode;
 }
 
 export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
@@ -19,7 +22,8 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
     repo: '',
     branch: 'main',
     tokenPath: 'tokens',
-    accessToken: ''
+    accessToken: '',
+    syncMode: 'direct'
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -38,7 +42,8 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
           repo: msg.config.repo || '',
           branch: msg.config.branch || 'main',
           tokenPath: msg.config.tokenPath || 'tokens',
-          accessToken: msg.config.accessToken || ''
+          accessToken: msg.config.accessToken || '',
+          syncMode: msg.config.syncMode || 'direct'
         });
       }
     };
@@ -87,7 +92,7 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
     }
   };
 
-  const handleInputChange = (field: keyof GitHubConfig, value: string) => {
+  const handleInputChange = (field: keyof GitHubConfig, value: string | SyncMode) => {
     setConfig(prev => ({
       ...prev,
       [field]: value
@@ -134,6 +139,61 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
           ❌ {error}
         </div>
       )}
+
+      <div style={{ marginBottom: '16px' }}>
+        <label style={{ 
+          display: 'block', 
+          fontSize: '12px', 
+          fontWeight: 'bold',
+          marginBottom: '8px',
+          color: '#374151'
+        }}>
+          Sync Mode
+        </label>
+        <div style={{ display: 'flex', gap: '12px', marginBottom: '8px' }}>
+          <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+            <input
+              type="radio"
+              name="syncMode"
+              value="direct"
+              checked={config.syncMode === 'direct'}
+              onChange={(e) => handleInputChange('syncMode', (e.target as HTMLInputElement).value as SyncMode)}
+              style={{ marginRight: '6px' }}
+            />
+            <span style={{ fontSize: '12px' }}>Direct Sync</span>
+          </label>
+          <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+            <input
+              type="radio"
+              name="syncMode"
+              value="review"
+              checked={config.syncMode === 'review'}
+              onChange={(e) => handleInputChange('syncMode', (e.target as HTMLInputElement).value as SyncMode)}
+              style={{ marginRight: '6px' }}
+            />
+            <span style={{ fontSize: '12px' }}>Review Mode</span>
+          </label>
+        </div>
+        <div style={{ 
+          fontSize: '10px', 
+          color: '#6b7280', 
+          lineHeight: '1.4',
+          padding: '8px',
+          backgroundColor: config.syncMode === 'direct' ? '#f0f9ff' : '#f9fafb',
+          border: '1px solid #e5e7eb',
+          borderRadius: '4px'
+        }}>
+          {config.syncMode === 'direct' ? (
+            <>
+              <strong>Direct Sync:</strong> Push/pull directly to configured branch. Enables bi-directional sync with conflict resolution.
+            </>
+          ) : (
+            <>
+              <strong>Review Mode:</strong> Creates pull requests for review. Export only, no pulling from repository.
+            </>
+          )}
+        </div>
+      </div>
 
       <div style={{ marginBottom: '16px' }}>
         <label style={{ 

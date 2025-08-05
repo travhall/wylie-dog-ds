@@ -20,7 +20,8 @@
     "@octokit/rest": "^22.0.0",
     "@wyliedog/tokens": "workspace:*",
     "culori": "^4.0.2",
-    "preact": "^10.27.0"
+    "preact": "^10.27.0",
+    "cross-fetch": "^4.0.0"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.116.0",
