@@ -318,6 +318,22 @@ figma.ui.onmessage = async (msg) => {
           config: msg.config
         });
         break;
+
+      case 'save-github-config':
+        try {
+          await figma.clientStorage.setAsync('github-config', JSON.stringify(msg.config));
+          figma.ui.postMessage({
+            type: 'github-config-saved',
+            success: true
+          });
+        } catch (error) {
+          console.error('Error saving GitHub config:', error);
+          figma.ui.postMessage({
+            type: 'github-config-saved',
+            success: false,
+            error: error instanceof Error ? error.message : 'Failed to save config'
+          });
+        }
         break;
 
       case 'github-sync-tokens':
@@ -388,13 +404,10 @@ figma.ui.onmessage = async (msg) => {
         break;
         
       case 'github-pull-tokens':
-        console.log('Pulling tokens from GitHub...');
+        console.log('Forwarding GitHub pull to UI thread...');
+        // Forward to UI thread where fetch is available
         figma.ui.postMessage({
-          type: 'github-pull-complete',
-          result: {
-            success: false,
-            error: 'GitHub pull not yet implemented'
-          }
+          type: 'github-pull-tokens'
         });
         break;
         

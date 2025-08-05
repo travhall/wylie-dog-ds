@@ -163,6 +163,12 @@ function App() {
           if (msg.config) {
             setGithubConfig(msg.config);
             setGithubConfigured(true);
+            // Re-initialize GitHub client with loaded config
+            githubClient.initialize(msg.config).then(success => {
+              if (!success) {
+                console.warn("Failed to re-initialize GitHub client with loaded config");
+              }
+            });
           }
           break;
         case "github-pull-complete":
@@ -239,6 +245,17 @@ function App() {
           
         case "github-sync-tokens":
           handleGitHubSync(msg.selectedCollectionIds, msg.exportData);
+          break;
+          
+        case "github-pull-tokens":
+          handleGitHubPull();
+          break;
+          
+        case "github-config-saved":
+          if (!msg.success) {
+            console.error("Failed to save GitHub config:", msg.error);
+            setError(`Failed to save config: ${msg.error}`);
+          }
           break;
         default:
           console.warn("Unknown message type:", msg.type);
@@ -589,6 +606,14 @@ function App() {
           setCurrentView('collections');
           setSuccessMessage('✅ GitHub configuration saved and tested successfully!');
           setTimeout(() => setSuccessMessage(null), 4000);
+          
+          // Save config to persistent storage
+          parent.postMessage({
+            pluginMessage: {
+              type: 'save-github-config',
+              config: config
+            }
+          }, '*');
         } else {
           setError(validation.error || 'Repository validation failed');
         }
@@ -620,6 +645,48 @@ function App() {
     } catch (error: any) {
       console.error("GitHub sync error:", error);
       setError(error.message || "GitHub sync failed");
+    } finally {
+      setLoading(false);
+      setLoadingMessage('');
+    }
+  };
+
+  const handleGitHubPull = async () => {
+    try {
+      setLoading(true);
+      setLoadingMessage('Pulling from GitHub...');
+      console.log("Pulling tokens from GitHub in UI thread");
+      
+      const pullResult = await githubClient.pullTokens();
+      
+      if (pullResult.success && pullResult.tokens) {
+        // Convert pulled tokens to format expected by import system
+        // Each token collection needs to be in its own "file" format
+        const files = pullResult.tokens.map((tokenCollection, index) => {
+          // Get collection name from the token data structure
+          const collectionName = Object.keys(tokenCollection)[0] || `collection-${index}`;
+          
+          return {
+            filename: `${collectionName.toLowerCase().replace(/\s+/g, '-')}.json`,
+            content: JSON.stringify([tokenCollection], null, 2)
+          };
+        });
+        
+        // Use existing import logic
+        parent.postMessage({
+          pluginMessage: {
+            type: 'import-tokens',
+            files: files
+          }
+        }, '*');
+        
+        // The import success will be handled by existing 'tokens-imported' case
+      } else {
+        setError(`GitHub pull failed: ${pullResult.error}`);
+      }
+    } catch (error: any) {
+      console.error("GitHub pull error:", error);
+      setError(error.message || "GitHub pull failed");
     } finally {
       setLoading(false);
       setLoadingMessage('');
