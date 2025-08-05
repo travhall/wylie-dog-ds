@@ -1,0 +1,18 @@
+[
+  {
+    "primitive": {
+      "modes": [
+        {
+          "modeId": "209:1",
+          "name": "Value"
+        }
+      ],
+      "variables": {
+        "color.gray.50": {
+          "$type": "color",
+          "$value": "#ffffff"
+        }
+      }
+    }
+  }
+]
