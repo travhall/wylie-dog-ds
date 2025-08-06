@@ -4,7 +4,11 @@ import { GitHubConfig } from "./components/GitHubConfig";
 import { ValidationDisplay } from "./components/ValidationDisplay";
 import { TransformationFeedback } from "./components/TransformationFeedback";
 import { ConflictResolutionDisplay } from "./components/ConflictResolutionDisplay";
+import { SyncStatus } from "./components/SyncStatus";
+import { EnhancedErrorDisplay } from "./components/EnhancedErrorDisplay";
+import { ProgressFeedback, SYNC_STEPS, PULL_STEPS, PUSH_STEPS } from "./components/ProgressFeedback";
 import { GitHubClient } from "../plugin/github/client";
+import { ErrorHandler, PluginError } from "../shared/error-handler";
 import { ConflictAwareGitHubClient } from "../plugin/sync/conflict-aware-github-client";
 import type { SyncMode } from "./components/GitHubConfig";
 import type { TokenConflict, ConflictResolution } from "../plugin/sync/types";
@@ -59,7 +63,7 @@ function App() {
     useState<CollectionDetails | null>(null);
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState<string>("");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<PluginError | string | null>(null);
   const [validationReport, setValidationReport] = useState<any>(null);
   const [showValidation, setShowValidation] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -71,6 +75,8 @@ function App() {
   const [conflicts, setConflicts] = useState<TokenConflict[]>([]);
   const [showConflictResolution, setShowConflictResolution] = useState(false);
   const [pendingTokensForConflictResolution, setPendingTokensForConflictResolution] = useState<ExportData[]>([]);
+  const [progressStep, setProgressStep] = useState(0);
+  const [progressSteps, setProgressSteps] = useState<any[]>([]);
   
   // GitHub client instance (works in UI thread with fetch)
   const [githubClient] = useState(() => new ConflictAwareGitHubClient());
@@ -622,14 +628,14 @@ function App() {
             }
           }, '*');
         } else {
-          setError(validation.error || 'Repository validation failed');
+          setError(ErrorHandler.fromException(new Error(validation.error || 'Repository validation failed')));
         }
       } else {
-        setError('Failed to initialize GitHub client');
+        setError(ErrorHandler.fromException(new Error('Failed to initialize GitHub client')));
       }
     } catch (error: any) {
       console.error("GitHub config test error:", error);
-      setError(error.message || "GitHub connection failed");
+      setError(ErrorHandler.fromException(error));
     } finally {
       setLoading(false);
     }
@@ -638,10 +644,17 @@ function App() {
   const handleGitHubSync = async (selectedCollectionIds: string[], exportData: any[]) => {
     try {
       setLoading(true);
-      setLoadingMessage('Checking for conflicts before sync...');
+      setProgressSteps(PUSH_STEPS);
+      setProgressStep(0);
+      
+      setLoadingMessage('Exporting tokens...');
+      setProgressStep(1);
+      
+      setLoadingMessage('Checking for conflicts...');
       console.log("Syncing tokens to GitHub with conflict detection:", exportData);
       
       const syncResult = await githubClient.syncTokensWithConflictDetection(exportData);
+      setProgressStep(2);
       
       if (syncResult.conflicts && syncResult.conflicts.length > 0) {
         console.log(`Sync conflicts detected: ${syncResult.conflicts.length}`);
@@ -650,8 +663,12 @@ function App() {
         setShowConflictResolution(true);
         setLoading(false);
         setLoadingMessage('');
+        setProgressSteps([]);
         return;
       }
+      
+      setLoadingMessage('Uploading to GitHub...');
+      setProgressStep(3);
       
       if (syncResult.success) {
         const message = syncResult.pullRequestUrl 
@@ -660,14 +677,16 @@ function App() {
         setSuccessMessage(message);
         setTimeout(() => setSuccessMessage(null), 6000);
       } else {
-        setError(`GitHub sync failed: ${syncResult.error}`);
+        setError(ErrorHandler.fromException(new Error(syncResult.error || 'GitHub sync failed')));
       }
     } catch (error: any) {
       console.error("GitHub sync error:", error);
-      setError(error.message || "GitHub sync failed");
+      setError(ErrorHandler.fromException(error));
     } finally {
       setLoading(false);
       setLoadingMessage('');
+      setProgressSteps([]);
+      setProgressStep(0);
     }
   };
 
@@ -705,7 +724,7 @@ function App() {
       
     } catch (error: any) {
       console.error("Conflict resolution error:", error);
-      setError(error.message || "Failed to resolve conflicts");
+      setError(ErrorHandler.fromException(error));
     } finally {
       setLoading(false);
       setLoadingMessage('');
@@ -715,10 +734,16 @@ function App() {
   const handleGitHubPull = async () => {
     try {
       setLoading(true);
-      setLoadingMessage('Checking for conflicts...');
-      console.log("Pulling tokens from GitHub with conflict detection");
+      setProgressSteps(PULL_STEPS);
+      setProgressStep(0);
       
+      setLoadingMessage('Fetching from GitHub...');
+      console.log("Pulling tokens from GitHub with conflict detection");
+      setProgressStep(1);
+      
+      setLoadingMessage('Checking for conflicts...');
       const pullResult = await githubClient.pullTokensWithConflictDetection();
+      setProgressStep(2);
       
       if (pullResult.conflicts && pullResult.conflicts.length > 0) {
         console.log(`Conflicts detected: ${pullResult.conflicts.length}`);
@@ -727,8 +752,12 @@ function App() {
         setShowConflictResolution(true);
         setLoading(false);
         setLoadingMessage('');
+        setProgressSteps([]);
         return;
       }
+      
+      setLoadingMessage('Preparing import...');
+      setProgressStep(3);
       
       if (pullResult.success && pullResult.tokens) {
         // No conflicts - proceed with normal import
@@ -750,14 +779,16 @@ function App() {
         }, '*');
         
       } else {
-        setError(`GitHub pull failed: ${pullResult.error}`);
+        setError(ErrorHandler.fromException(new Error(pullResult.error || 'GitHub pull failed')));
       }
     } catch (error: any) {
       console.error("GitHub pull error:", error);
-      setError(error.message || "GitHub pull failed");
+      setError(ErrorHandler.fromException(error));
     } finally {
       setLoading(false);
       setLoadingMessage('');
+      setProgressSteps([]);
+      setProgressStep(0);
     }
   };
 
@@ -944,18 +975,16 @@ function App() {
       </h2>
 
       {error && (
-        <div
-          style={{
-            padding: "8px 12px",
-            marginBottom: "16px",
-            backgroundColor: "#fee",
-            border: "1px solid #fcc",
-            borderRadius: "4px",
-            color: "#c33",
+        <EnhancedErrorDisplay
+          error={error}
+          onDismiss={() => setError(null)}
+          onRetry={() => {
+            setError(null);
+            if (typeof error !== 'string' && error.type === 'network-error') {
+              loadCollections();
+            }
           }}
-        >
-          ❌ {error}
-        </div>
+        />
       )}
 
       {successMessage && (
@@ -1151,6 +1180,15 @@ function App() {
                   >
                     ✅ Connected to {githubConfig?.owner}/{githubConfig?.repo} (
                     {githubConfig?.syncMode} mode)
+                  </div>
+                  
+                  {/* Sync Status */}
+                  <div style={{ marginBottom: "8px" }}>
+                    <SyncStatus 
+                      githubClient={githubClient}
+                      githubConfigured={githubConfigured}
+                      onRefresh={loadCollections}
+                    />
                   </div>
                   {githubConfig?.syncMode === "direct" ? (
                     <div style={{ display: "flex", gap: "4px" }}>
@@ -1439,6 +1477,13 @@ function App() {
           loading={loading}
         />
       )}
+
+      {/* Enhanced Progress Feedback */}
+      <ProgressFeedback
+        steps={progressSteps}
+        currentStep={progressStep}
+        loading={loading && progressSteps.length > 0}
+      />
     </div>
   );
 }
