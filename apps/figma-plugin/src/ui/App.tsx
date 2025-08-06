@@ -3,8 +3,12 @@ import { useState, useEffect } from "preact/hooks";
 import { GitHubConfig } from "./components/GitHubConfig";
 import { ValidationDisplay } from "./components/ValidationDisplay";
 import { TransformationFeedback } from "./components/TransformationFeedback";
+import { ConflictResolutionDisplay } from "./components/ConflictResolutionDisplay";
 import { GitHubClient } from "../plugin/github/client";
+import { ConflictAwareGitHubClient } from "../plugin/sync/conflict-aware-github-client";
 import type { SyncMode } from "./components/GitHubConfig";
+import type { TokenConflict, ConflictResolution } from "../plugin/sync/types";
+import type { ExportData } from "../plugin/variables/processor";
 
 console.log("App.tsx loaded");
 
@@ -64,9 +68,12 @@ function App() {
   const [downloadQueue, setDownloadQueue] = useState<any[]>([]);
   const [importLoading, setImportLoading] = useState(false);
   const [adapterResults, setAdapterResults] = useState<any[]>([]);
+  const [conflicts, setConflicts] = useState<TokenConflict[]>([]);
+  const [showConflictResolution, setShowConflictResolution] = useState(false);
+  const [pendingTokensForConflictResolution, setPendingTokensForConflictResolution] = useState<ExportData[]>([]);
   
   // GitHub client instance (works in UI thread with fetch)
-  const [githubClient] = useState(() => new GitHubClient());
+  const [githubClient] = useState(() => new ConflictAwareGitHubClient());
 
   useEffect(() => {
     console.log("useEffect running - setting up message listener");
@@ -631,13 +638,26 @@ function App() {
   const handleGitHubSync = async (selectedCollectionIds: string[], exportData: any[]) => {
     try {
       setLoading(true);
-      setLoadingMessage('Syncing to GitHub...');
-      console.log("Syncing tokens to GitHub in UI thread:", exportData);
+      setLoadingMessage('Checking for conflicts before sync...');
+      console.log("Syncing tokens to GitHub with conflict detection:", exportData);
       
-      const syncResult = await githubClient.syncTokens(exportData);
+      const syncResult = await githubClient.syncTokensWithConflictDetection(exportData);
+      
+      if (syncResult.conflicts && syncResult.conflicts.length > 0) {
+        console.log(`Sync conflicts detected: ${syncResult.conflicts.length}`);
+        setConflicts(syncResult.conflicts);
+        setPendingTokensForConflictResolution(exportData);
+        setShowConflictResolution(true);
+        setLoading(false);
+        setLoadingMessage('');
+        return;
+      }
       
       if (syncResult.success) {
-        setSuccessMessage(`✅ Tokens synced successfully! Pull request created: ${syncResult.pullRequestUrl}`);
+        const message = syncResult.pullRequestUrl 
+          ? `✅ Tokens synced successfully! Pull request: ${syncResult.pullRequestUrl}`
+          : '✅ Tokens synced directly to repository!';
+        setSuccessMessage(message);
         setTimeout(() => setSuccessMessage(null), 6000);
       } else {
         setError(`GitHub sync failed: ${syncResult.error}`);
@@ -651,19 +671,68 @@ function App() {
     }
   };
 
+  const handleConflictResolution = async (resolutions: ConflictResolution[]) => {
+    try {
+      setLoading(true);
+      setLoadingMessage('Applying conflict resolutions...');
+      
+      // Apply resolutions using the conflict resolver
+      const exportData = pendingTokensForConflictResolution || [];
+      const resolvedTokens = githubClient.applyConflictResolutions(exportData, resolutions);
+      
+      // Continue with the operation (import or sync)
+      const files = resolvedTokens.map((tokenCollection, index) => {
+        const collectionName = Object.keys(tokenCollection)[0] || `collection-${index}`;
+        
+        return {
+          filename: `${collectionName.toLowerCase().replace(/\s+/g, '-')}.json`,
+          content: JSON.stringify([tokenCollection], null, 2)
+        };
+      });
+      
+      // Import the resolved tokens
+      parent.postMessage({
+        pluginMessage: {
+          type: 'import-tokens',
+          files: files
+        }
+      }, '*');
+      
+      setShowConflictResolution(false);
+      setConflicts([]);
+      setSuccessMessage(`✅ Conflicts resolved and ${resolutions.length} tokens applied!`);
+      setTimeout(() => setSuccessMessage(null), 5000);
+      
+    } catch (error: any) {
+      console.error("Conflict resolution error:", error);
+      setError(error.message || "Failed to resolve conflicts");
+    } finally {
+      setLoading(false);
+      setLoadingMessage('');
+    }
+  };
+
   const handleGitHubPull = async () => {
     try {
       setLoading(true);
-      setLoadingMessage('Pulling from GitHub...');
-      console.log("Pulling tokens from GitHub in UI thread");
+      setLoadingMessage('Checking for conflicts...');
+      console.log("Pulling tokens from GitHub with conflict detection");
       
-      const pullResult = await githubClient.pullTokens();
+      const pullResult = await githubClient.pullTokensWithConflictDetection();
+      
+      if (pullResult.conflicts && pullResult.conflicts.length > 0) {
+        console.log(`Conflicts detected: ${pullResult.conflicts.length}`);
+        setConflicts(pullResult.conflicts);
+        setPendingTokensForConflictResolution(pullResult.tokens || []);
+        setShowConflictResolution(true);
+        setLoading(false);
+        setLoadingMessage('');
+        return;
+      }
       
       if (pullResult.success && pullResult.tokens) {
-        // Convert pulled tokens to format expected by import system
-        // Each token collection needs to be in its own "file" format
+        // No conflicts - proceed with normal import
         const files = pullResult.tokens.map((tokenCollection, index) => {
-          // Get collection name from the token data structure
           const collectionName = Object.keys(tokenCollection)[0] || `collection-${index}`;
           
           return {
@@ -680,7 +749,6 @@ function App() {
           }
         }, '*');
         
-        // The import success will be handled by existing 'tokens-imported' case
       } else {
         setError(`GitHub pull failed: ${pullResult.error}`);
       }
@@ -1355,6 +1423,20 @@ function App() {
         <ValidationDisplay
           validationReport={validationReport}
           onClose={() => setShowValidation(false)}
+        />
+      )}
+
+      {/* Conflict Resolution Display */}
+      {showConflictResolution && conflicts.length > 0 && (
+        <ConflictResolutionDisplay
+          conflicts={conflicts}
+          onResolve={handleConflictResolution}
+          onCancel={() => {
+            setShowConflictResolution(false);
+            setConflicts([]);
+            setLoading(false);
+          }}
+          loading={loading}
         />
       )}
     </div>

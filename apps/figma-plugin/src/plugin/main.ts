@@ -410,6 +410,22 @@ figma.ui.onmessage = async (msg) => {
           type: 'github-pull-tokens'
         });
         break;
+
+      case 'github-pull-with-conflicts':
+        console.log('Forwarding GitHub pull with conflict detection to UI thread...');
+        figma.ui.postMessage({
+          type: 'github-pull-with-conflicts'
+        });
+        break;
+
+      case 'resolve-conflicts':
+        console.log('Forwarding conflict resolution to UI thread...');
+        figma.ui.postMessage({
+          type: 'resolve-conflicts',
+          resolutions: msg.resolutions,
+          originalTokens: msg.originalTokens
+        });
+        break;
         
       case 'close':
         console.log('Closing plugin...');
