@@ -1,81 +1,85 @@
-// Result type for standardized error handling - Quick Win #12
-import type { PluginError } from './error-handler';
+// Standardized Result Pattern - Quick Win #12
+// Provides consistent error handling across the plugin
 
-export type Result<T, E = PluginError> = 
+export type Result<T, E = string> = 
   | { success: true; data: T }
-  | { success: false; error: E };
+  | { success: false; error: E; suggestions?: string[] };
 
-export class ResultHelper {
+export class ResultHandler {
   static success<T>(data: T): Result<T> {
     return { success: true, data };
   }
 
-  static error<T>(error: PluginError): Result<T> {
-    return { success: false, error };
+  static failure<T, E = string>(error: E, suggestions?: string[]): Result<T, E> {
+    return { success: false, error, suggestions };
   }
 
-  static fromPromise<T>(
-    promise: Promise<T>,
-    errorTransform?: (error: any) => PluginError
-  ): Promise<Result<T>> {
+  static fromPromise<T>(promise: Promise<T>): Promise<Result<T>> {
     return promise
-      .then(data => ResultHelper.success(data))
-      .catch(error => ResultHelper.error(
-        errorTransform ? errorTransform(error) : error
-      ));
+      .then(data => ResultHandler.success(data))
+      .catch(error => ResultHandler.failure(error.message || String(error)));
   }
 
-  static unwrap<T>(result: Result<T>): T {
+  static map<T, U>(result: Result<T>, mapper: (data: T) => U): Result<U> {
     if (result.success) {
-      return result.data;
+      return ResultHandler.success(mapper(result.data));
     }
-    throw new Error(result.error.message);
+    return result as Result<U>;
   }
 
-  static unwrapOr<T>(result: Result<T>, defaultValue: T): T {
-    return result.success ? result.data : defaultValue;
-  }
-
-  static map<T, U>(
-    result: Result<T>, 
-    transform: (data: T) => U
-  ): Result<U> {
-    return result.success 
-      ? ResultHelper.success(transform(result.data))
-      : result;
-  }
-
-  static mapError<T>(
-    result: Result<T>,
-    transform: (error: PluginError) => PluginError
-  ): Result<T> {
-    return result.success 
-      ? result
-      : ResultHelper.error(transform(result.error));
-  }
-
-  static chain<T, U>(
-    result: Result<T>,
-    transform: (data: T) => Result<U>
-  ): Result<U> {
-    return result.success ? transform(result.data) : result;
-  }
-
-  static combine<T extends readonly unknown[]>(
-    ...results: { [K in keyof T]: Result<T[K]> }
-  ): Result<T> {
-    for (const result of results) {
-      if (!result.success) {
-        return result as Result<T>;
-      }
+  static flatMap<T, U>(result: Result<T>, mapper: (data: T) => Result<U>): Result<U> {
+    if (result.success) {
+      return mapper(result.data);
     }
-    return ResultHelper.success(
-      results.map(r => (r as any).data) as T
-    );
+    return result as Result<U>;
+  }
+
+  static isSuccess<T>(result: Result<T>): result is { success: true; data: T } {
+    return result.success;
+  }
+
+  static isFailure<T>(result: Result<T>): result is { success: false; error: any; suggestions?: string[] } {
+    return !result.success;
+  }
+
+  // Helper for async operations with error suggestions
+  static async asyncOperation<T>(
+    operation: () => Promise<T>,
+    errorContext: string,
+    suggestions: string[] = []
+  ): Promise<Result<T>> {
+    try {
+      const data = await operation();
+      return ResultHandler.success(data);
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      return ResultHandler.failure(
+        `${errorContext}: ${errorMessage}`,
+        suggestions.length > 0 ? suggestions : [
+          'Check your internet connection',
+          'Verify your credentials', 
+          'Try again in a moment'
+        ]
+      );
+    }
   }
 }
 
-// Convenience functions for common patterns
-export const ok = ResultHelper.success;
-export const err = ResultHelper.error;
-export const fromPromise = ResultHelper.fromPromise;
+// Specialized result types for common operations
+export type ValidationResult = Result<{ valid: true; data: any }, { 
+  valid: false; 
+  errors: string[]; 
+  warnings: string[] 
+}>;
+
+export type GitHubOperationResult<T> = Result<T, {
+  type: 'network' | 'auth' | 'permission' | 'not-found' | 'rate-limit' | 'unknown';
+  message: string;
+  statusCode?: number;
+}>;
+
+export type TokenProcessingResult<T> = Result<T, {
+  type: 'parsing' | 'validation' | 'format' | 'reference' | 'conflict';
+  message: string;
+  context?: any;
+}>;

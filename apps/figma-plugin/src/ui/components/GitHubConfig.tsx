@@ -19,31 +19,57 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
   const [error, setError] = useState<string | null>(null);
   const [testing, setTesting] = useState(false);
 
-  // Smart defaults - Quick Win #8
+  // Enhanced Smart Defaults - Quick Win #8
   const getSmartTokenPath = (repoName: string): string => {
     const commonPatterns = {
-      'design-system': 'tokens',
+      'design-system': 'packages/tokens/src',
       'design-tokens': 'tokens',
-      'ds': 'design-tokens',
+      'ds': 'design-tokens', 
       'ui': 'tokens',
-      'components': 'tokens',
+      'components': 'src/tokens',
       'style': 'tokens',
-      'theme': 'tokens'
+      'theme': 'tokens',
+      'monorepo': 'packages/design-tokens',
+      'workspace': 'packages/tokens'
     };
 
     const repoLower = repoName.toLowerCase();
+    
+    // Check for monorepo indicators
+    if (repoLower.includes('mono') || repoLower.includes('workspace') || repoLower.includes('packages')) {
+      return 'packages/tokens/src';
+    }
+    
     for (const [pattern, path] of Object.entries(commonPatterns)) {
       if (repoLower.includes(pattern)) {
         return path;
       }
     }
 
-    // Default based on common conventions
     return 'tokens';
   };
 
   const getSuggestedBranch = (): string[] => {
     return ['main', 'master', 'develop', 'design-tokens'];
+  };
+
+  const getRepositoryStructureSuggestions = (repoName: string): string[] => {
+    const suggestions = [];
+    const repoLower = repoName.toLowerCase();
+    
+    if (repoLower.includes('mono') || repoLower.includes('workspace')) {
+      suggestions.push('📦 Detected monorepo - suggested path: packages/tokens/src');
+    }
+    
+    if (repoLower.includes('design-system') || repoLower.includes('ds')) {
+      suggestions.push('🎨 Design system detected - consider organizing by token types');
+    }
+    
+    if (repoLower.includes('component') || repoLower.includes('ui')) {
+      suggestions.push('🧩 Component library - tokens often in src/tokens or tokens/');
+    }
+    
+    return suggestions;
   };
 
   // Load saved configuration
@@ -269,6 +295,26 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
             fontSize: '12px'
           }}
         />
+        {/* Repository Structure Suggestions - Quick Win #8 */}
+        {config.repo && getRepositoryStructureSuggestions(config.repo).length > 0 && (
+          <div style={{
+            marginTop: '8px',
+            padding: '8px',
+            backgroundColor: '#f0f9ff',
+            border: '1px solid #bfdbfe',
+            borderRadius: '4px',
+            fontSize: '10px'
+          }}>
+            <div style={{ fontWeight: 'bold', marginBottom: '4px', color: '#1d4ed8' }}>
+              💡 Repository Insights:
+            </div>
+            {getRepositoryStructureSuggestions(config.repo).map((suggestion, index) => (
+              <div key={index} style={{ marginBottom: '2px', color: '#1e40af' }}>
+                {suggestion}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>

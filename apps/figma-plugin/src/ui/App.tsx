@@ -10,7 +10,8 @@ import { ProgressFeedback, SYNC_STEPS, PULL_STEPS, PUSH_STEPS } from "./componen
 import { SetupWizard } from "./components/SetupWizard";
 import { HelpIcon, HELP_CONTENT } from "./components/ContextualHelp";
 import { GitHubClient } from "../plugin/github/client";
-import { ErrorHandler, PluginError } from "../shared/error-handler";
+import { ErrorHandler, PluginError, ErrorType } from "../shared/error-handler";
+import { ResultHandler, Result } from "../shared/result"; // Quick Win #12
 import { ConflictAwareGitHubClient } from "../plugin/sync/conflict-aware-github-client";
 import type { GitHubConfig, SyncMode } from "../shared/types";
 import type { TokenConflict, ConflictResolution } from "../plugin/sync/types";
@@ -81,43 +82,50 @@ function App() {
   const [githubClient] = useState(() => new ConflictAwareGitHubClient());
 
   // Helper functions for GitHub operations
-  const handleGitHubConfigTest = async (config: GitHubConfig) => {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      // Use the initialize method properly
-      const initialized = await githubClient.initialize(config);
-      
-      if (initialized) {
-        const validation = await githubClient.validateRepository();
+  // Helper functions for GitHub operations with standardized error handling - Quick Win #12
+  const handleGitHubConfigTest = async (config: GitHubConfig): Promise<Result<boolean>> => {
+    return ResultHandler.asyncOperation(
+      async () => {
+        setLoading(true);
+        setError(null);
         
-        if (validation.valid) {
-          // Save the configuration
-          parent.postMessage({
-            pluginMessage: {
-              type: 'save-github-config',
-              config: config
-            }
-          }, '*');
+        const initialized = await githubClient.initialize(config);
+        
+        if (initialized) {
+          const validation = await githubClient.validateRepository();
           
-          setGithubConfig(config);
-          setGithubConfigured(true);
-          setCurrentView("collections");
-          setSuccessMessage("✅ GitHub configuration tested and saved successfully!");
-          setTimeout(() => setSuccessMessage(null), 5000);
+          if (validation.valid) {
+            // Save the configuration
+            parent.postMessage({
+              pluginMessage: {
+                type: 'save-github-config',
+                config: config
+              }
+            }, '*');
+            
+            setGithubConfig(config);
+            setGithubConfigured(true);
+            setCurrentView("collections");
+            setSuccessMessage("✅ GitHub configuration tested and saved successfully!");
+            setTimeout(() => setSuccessMessage(null), 5000);
+            return true;
+          } else {
+            throw new Error(`Repository validation failed: ${validation.error || 'Unknown validation error'}`);
+          }
         } else {
-          setError(`Repository validation failed: ${validation.error || 'Unknown validation error'}`);
+          throw new Error("Failed to initialize GitHub client. Please check your access token and repository details.");
         }
-      } else {
-        setError("Failed to initialize GitHub client. Please check your access token and repository details.");
-      }
-    } catch (error: any) {
-      console.error("GitHub config test error:", error);
-      setError(`Configuration test failed: ${error.message || 'Unknown error'}`);
-    } finally {
+      },
+      'GitHub configuration test',
+      [
+        'Verify your access token has repo permissions',
+        'Check that the repository owner and name are correct',
+        'Ensure the repository exists and is accessible',
+        'Try regenerating your GitHub access token'
+      ]
+    ).finally(() => {
       setLoading(false);
-    }
+    });
   };
 
   const handleGitHubSync = async (exportData: ExportData[]) => {
@@ -678,23 +686,21 @@ function App() {
     setCurrentView("github-config");
   };
 
-  const handleGitHubConfigSaved = (config: GitHubConfig) => {
+  const handleGitHubConfigSaved = async (config: GitHubConfig) => {
     console.log("GitHub config saved:", config);
-    setLoading(true);
-    setError(null);
-
-    try {
-      parent.postMessage({
-        pluginMessage: {
-          type: "test-github-config",
-          config,
-        },
-      }, "*");
-    } catch (err) {
-      console.error("Failed to test GitHub config:", err);
-      setError("Failed to test configuration");
-      setLoading(false);
+    
+    const result = await handleGitHubConfigTest(config);
+    
+    if (ResultHandler.isFailure(result)) {
+      // Enhanced error handling with suggestions - Quick Win #12
+      setError(ErrorHandler.createError(
+        ErrorType.AUTHENTICATION_ERROR,
+        result.error,
+        undefined,
+        result.suggestions
+      ));
     }
+    // Success case already handled in handleGitHubConfigTest
   };
 
   const handleGitHubConfigClose = () => {
