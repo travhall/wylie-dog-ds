@@ -15,6 +15,37 @@ function setLoading(loading: boolean, message?: string) {
   });
 }
 
+// Helper function for chunked processing - Quick Win #5
+async function processInChunks<T, R>(
+  items: T[],
+  processFn: (item: T, index: number) => Promise<R>,
+  chunkSize: number = 50,
+  onProgress?: (current: number, total: number, message?: string) => void
+): Promise<R[]> {
+  const results: R[] = [];
+  const total = items.length;
+  
+  for (let i = 0; i < total; i += chunkSize) {
+    const chunk = items.slice(i, i + chunkSize);
+    const chunkResults = await Promise.all(
+      chunk.map((item, chunkIndex) => processFn(item, i + chunkIndex))
+    );
+    
+    results.push(...chunkResults);
+    
+    // Update progress
+    const current = Math.min(i + chunkSize, total);
+    if (onProgress) {
+      onProgress(current, total, `Processing ${current}/${total} items...`);
+    }
+    
+    // Allow UI updates between chunks
+    await new Promise(resolve => setTimeout(resolve, 0));
+  }
+  
+  return results;
+}
+
 figma.showUI(__html__, {
   width: 400,
   height: 600,
@@ -55,40 +86,43 @@ figma.ui.onmessage = async (msg) => {
           }
           
           console.log('Found collection:', collection.name, 'with', collection.variableIds.length, 'variables');
+          setLoading(true, `Processing ${collection.variableIds.length} variables...`);
           
-          // Get variables one by one with error handling
-          const variables = [];
-          console.log('Processing', collection.variableIds.length, 'variable IDs...');
-          
-          for (let i = 0; i < collection.variableIds.length; i++) {
-            const id = collection.variableIds[i];
-            console.log(`Processing variable ${i + 1}/${collection.variableIds.length}: ${id}`);
-            
-            try {
-              const variable = await figma.variables.getVariableByIdAsync(id);
-              console.log('Variable result:', variable ? 'found' : 'null', variable ? variable.name : 'undefined');
-              
-              if (variable) {
-                variables.push({
-                  id: variable.id,
-                  name: variable.name,
-                  description: variable.description || '',
-                  resolvedType: variable.resolvedType,
-                  scopes: variable.scopes,
-                  valuesByMode: variable.valuesByMode,
-                  remote: variable.remote,
-                  key: variable.key
-                });
-                console.log('Added variable:', variable.name);
-              } else {
-                console.warn('Variable returned null for ID:', id);
+          // Process variables in chunks - Quick Win #5
+          const variables = await processInChunks(
+            collection.variableIds,
+            async (id: string, index: number) => {
+              try {
+                const variable = await figma.variables.getVariableByIdAsync(id);
+                if (variable) {
+                  return {
+                    id: variable.id,
+                    name: variable.name,
+                    description: variable.description || '',
+                    resolvedType: variable.resolvedType,
+                    scopes: variable.scopes,
+                    valuesByMode: variable.valuesByMode,
+                    remote: variable.remote,
+                    key: variable.key
+                  };
+                }
+                return null;
+              } catch (err) {
+                console.error('Error processing variable:', id, err);
+                return null;
               }
-            } catch (err) {
-              console.error('Error processing variable:', id, err);
+            },
+            100, // Process 100 variables at a time
+            (current, total, message) => {
+              setLoading(true, message);
             }
-          }
+          );
           
-          console.log('Processed', variables.length, 'variables successfully');
+          // Filter out null results
+          const validVariables = variables.filter(v => v !== null);
+          
+          console.log('Processed', validVariables.length, 'variables successfully');
+          setLoading(false);
           
           figma.ui.postMessage({
             type: 'collection-details-loaded',
@@ -96,11 +130,12 @@ figma.ui.onmessage = async (msg) => {
               id: collection.id,
               name: collection.name,
               modes: collection.modes,
-              variables: variables
+              variables: validVariables
             }
           });
         } catch (error: unknown) {
           console.error('Error getting collection details:', error);
+          setLoading(false);
           figma.ui.postMessage({
             type: 'error',
             message: `Failed to load collection details: ${error instanceof Error ? error.message : 'Unknown error'}`
@@ -111,50 +146,62 @@ figma.ui.onmessage = async (msg) => {
       case 'export-tokens':
         console.log('Exporting tokens for collections:', msg.selectedCollectionIds);
         try {
-          setLoading(true, 'Processing tokens...');
+          setLoading(true, 'Loading collections...');
           
           // Get all collections with their variables
           const collections = await figma.variables.getLocalVariableCollectionsAsync();
+          const selectedCollections = collections.filter(c => msg.selectedCollectionIds.includes(c.id));
           const collectionsWithVariables = [];
           
-          for (const collection of collections) {
-            // Only process selected collections
-            if (!msg.selectedCollectionIds.includes(collection.id)) {
-              continue;
-            }
+          setLoading(true, `Processing ${selectedCollections.length} collections...`);
+          
+          for (let i = 0; i < selectedCollections.length; i++) {
+            const collection = selectedCollections[i];
+            console.log(`Processing collection ${i + 1}/${selectedCollections.length}: ${collection.name}`);
+            setLoading(true, `Processing ${collection.name} (${collection.variableIds.length} variables)...`);
             
-            console.log(`Processing collection: ${collection.name}`);
-            const variables = [];
-            
-            // Get variables for this collection
-            for (const variableId of collection.variableIds) {
-              try {
-                const variable = await figma.variables.getVariableByIdAsync(variableId);
-                if (variable) {
-                  variables.push({
-                    id: variable.id,
-                    name: variable.name,
-                    description: variable.description || '',
-                    resolvedType: variable.resolvedType,
-                    scopes: variable.scopes,
-                    valuesByMode: variable.valuesByMode,
-                    remote: variable.remote,
-                    key: variable.key
-                  });
+            // Process variables in chunks for this collection
+            const variables = await processInChunks(
+              collection.variableIds,
+              async (variableId: string) => {
+                try {
+                  const variable = await figma.variables.getVariableByIdAsync(variableId);
+                  if (variable) {
+                    return {
+                      id: variable.id,
+                      name: variable.name,
+                      description: variable.description || '',
+                      resolvedType: variable.resolvedType,
+                      scopes: variable.scopes,
+                      valuesByMode: variable.valuesByMode,
+                      remote: variable.remote,
+                      key: variable.key
+                    };
+                  }
+                  return null;
+                } catch (err) {
+                  console.error('Error processing variable:', variableId, err);
+                  return null;
                 }
-              } catch (err) {
-                console.error('Error processing variable:', variableId, err);
+              },
+              75, // Smaller chunks for export to provide more progress updates
+              (current, total) => {
+                setLoading(true, `Processing ${collection.name}: ${current}/${total} variables...`);
               }
-            }
+            );
+            
+            // Filter out null results
+            const validVariables = variables.filter(v => v !== null);
             
             collectionsWithVariables.push({
               id: collection.id,
               name: collection.name,
               modes: collection.modes,
-              variables: variables
+              variables: validVariables
             });
           }
           
+          setLoading(true, 'Converting to token format...');
           console.log(`Processing ${collectionsWithVariables.length} collections for export`);
           
           // Process collections into token format
@@ -238,7 +285,13 @@ figma.ui.onmessage = async (msg) => {
           
           if (referenceValidation.missingReferences.length > 0) {
             console.warn('Missing references detected:', referenceValidation.missingReferences);
-            // Continue with import but warn user
+            
+            // If we have critical missing references, fail the import
+            if (referenceValidation.missingReferences.length > 10) {
+              throw new Error(`Too many missing references (${referenceValidation.missingReferences.length}). Please ensure all referenced tokens are included:\n${referenceValidation.missingReferences.slice(0, 5).join('\n')}${referenceValidation.missingReferences.length > 5 ? '\n... and more' : ''}`);
+            } else {
+              console.log('Proceeding with import despite missing references - they will be created as needed');
+            }
           }
           
           // Use new global import function for cross-collection reference resolution
@@ -252,6 +305,13 @@ figma.ui.onmessage = async (msg) => {
           });
           
           console.log('🎉 Global import result:', globalResult);
+          
+          // Check if import was successful despite reference issues
+          if (!globalResult.success && referenceValidation.missingReferences.length > 0) {
+            // Enhance error message with reference information
+            const enhancedError = `${globalResult.message}\n\nReference Issues:\n${referenceValidation.missingReferences.slice(0, 3).join('\n')}${referenceValidation.missingReferences.length > 3 ? '\n... and more' : ''}\n\nTip: Make sure all referenced tokens are in the same import or in existing collections.`;
+            globalResult.message = enhancedError;
+          }
           
           setLoading(false);
           
@@ -312,11 +372,21 @@ figma.ui.onmessage = async (msg) => {
         break;
 
       case 'test-github-config':
-        // Forward to UI thread where fetch is available
-        figma.ui.postMessage({
-          type: 'test-github-config',
-          config: msg.config
-        });
+        // GitHub operations now handled entirely in UI thread
+        console.log('GitHub config test request - forwarding to UI storage operation');
+        try {
+          await figma.clientStorage.setAsync('pending-github-config', JSON.stringify(msg.config));
+          figma.ui.postMessage({
+            type: 'test-github-config',
+            config: msg.config
+          });
+        } catch (error) {
+          console.error('Error handling GitHub config test:', error);
+          figma.ui.postMessage({
+            type: 'error',
+            message: 'Failed to process GitHub configuration test'
+          });
+        }
         break;
 
       case 'save-github-config':
@@ -333,6 +403,31 @@ figma.ui.onmessage = async (msg) => {
             success: false,
             error: error instanceof Error ? error.message : 'Failed to save config'
           });
+        }
+        break;
+
+      case 'get-advanced-mode':
+        try {
+          const advancedMode = await figma.clientStorage.getAsync('advanced-mode');
+          figma.ui.postMessage({
+            type: 'advanced-mode-loaded',
+            advancedMode: advancedMode === true || advancedMode === 'true'
+          });
+        } catch (error) {
+          console.error('Error loading advanced mode:', error);
+          figma.ui.postMessage({
+            type: 'advanced-mode-loaded',
+            advancedMode: false
+          });
+        }
+        break;
+
+      case 'save-advanced-mode':
+        try {
+          await figma.clientStorage.setAsync('advanced-mode', msg.advancedMode);
+          console.log('Advanced mode preference saved:', msg.advancedMode);
+        } catch (error) {
+          console.error('Error saving advanced mode:', error);
         }
         break;
 

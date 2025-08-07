@@ -1,19 +1,9 @@
 import { useState, useEffect } from 'preact/hooks';
-
-export type SyncMode = 'direct' | 'review';
+import type { GitHubConfig, SyncMode } from '../../shared/types';
 
 interface GitHubConfigProps {
   onConfigSaved: (config: GitHubConfig) => void;
   onClose: () => void;
-}
-
-interface GitHubConfig {
-  owner: string;
-  repo: string;
-  branch: string;
-  tokenPath: string;
-  accessToken: string;
-  syncMode: SyncMode;
 }
 
 export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
@@ -23,11 +13,38 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
     branch: 'main',
     tokenPath: 'tokens',
     accessToken: '',
-    syncMode: 'direct'
+    syncMode: 'pull-request' // Quick Win #8 - Smart default to safer mode
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [testing, setTesting] = useState(false);
+
+  // Smart defaults - Quick Win #8
+  const getSmartTokenPath = (repoName: string): string => {
+    const commonPatterns = {
+      'design-system': 'tokens',
+      'design-tokens': 'tokens',
+      'ds': 'design-tokens',
+      'ui': 'tokens',
+      'components': 'tokens',
+      'style': 'tokens',
+      'theme': 'tokens'
+    };
+
+    const repoLower = repoName.toLowerCase();
+    for (const [pattern, path] of Object.entries(commonPatterns)) {
+      if (repoLower.includes(pattern)) {
+        return path;
+      }
+    }
+
+    // Default based on common conventions
+    return 'tokens';
+  };
+
+  const getSuggestedBranch = (): string[] => {
+    return ['main', 'master', 'develop', 'design-tokens'];
+  };
 
   // Load saved configuration
   useEffect(() => {
@@ -93,10 +110,19 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
   };
 
   const handleInputChange = (field: keyof GitHubConfig, value: string | SyncMode) => {
-    setConfig(prev => ({
-      ...prev,
-      [field]: value
-    }));
+    setConfig(prev => {
+      const newConfig = { ...prev, [field]: value };
+      
+      // Smart defaults - Quick Win #8
+      if (field === 'repo' && typeof value === 'string' && value) {
+        // Auto-update token path when repo changes if it's still default
+        if (!prev.tokenPath || prev.tokenPath === 'tokens') {
+          newConfig.tokenPath = getSmartTokenPath(value);
+        }
+      }
+      
+      return newConfig;
+    });
     setError(null);
   };
 
@@ -166,12 +192,12 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
             <input
               type="radio"
               name="syncMode"
-              value="review"
-              checked={config.syncMode === 'review'}
+              value="pull-request"
+              checked={config.syncMode === 'pull-request'}
               onChange={(e) => handleInputChange('syncMode', (e.target as HTMLInputElement).value as SyncMode)}
               style={{ marginRight: '6px' }}
             />
-            <span style={{ fontSize: '12px' }}>Review Mode</span>
+            <span style={{ fontSize: '12px' }}>Pull Request Mode</span>
           </label>
         </div>
         <div style={{ 
@@ -189,7 +215,7 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
             </>
           ) : (
             <>
-              <strong>Review Mode:</strong> Creates pull requests for review. Export only, no pulling from repository.
+              <strong>Pull Request Mode:</strong> Creates pull requests for review. Export only, no pulling from repository.
             </>
           )}
         </div>

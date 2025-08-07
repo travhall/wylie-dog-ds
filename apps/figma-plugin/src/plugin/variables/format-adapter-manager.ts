@@ -1,44 +1,84 @@
 // Format Adapter Manager - Main orchestrator for format detection and normalization
+import { TokenFormatType } from './format-adapter';
 import type { 
   AdapterProcessResult, 
   ProcessingStats,
   FormatDetectionResult,
-  TransformationLog
+  TransformationLog,
+  FormatAdapter
 } from './format-adapter';
 import { FormatDetectorRegistry } from './format-detectors';
 import { ReferenceNormalizer } from './reference-normalizer';
 
-// Import all adapters
+// Only import essential adapters - others loaded dynamically
 import { WylieDogNativeAdapter } from './adapters/wylie-dog-native';
-import { StyleDictionaryFlatAdapter } from './adapters/style-dictionary-flat';
-import { StyleDictionaryNestedAdapter } from './adapters/style-dictionary-nested';
-import { TokensStudioAdapter } from './adapters/tokens-studio';
-import { MaterialDesignAdapter } from './adapters/material-design';
-import { W3CDTCGAdapter } from './adapters/w3c-dtcg';
-import { CSSVariablesAdapter } from './adapters/css-variables';
 import { GenericAdapter } from './adapters/generic';
 
 export class FormatAdapterManager {
   private registry = new FormatDetectorRegistry();
+  private dynamicAdapters = new Map<TokenFormatType, FormatAdapter>();
 
   constructor() {
-    this.initializeAdapters();
+    this.initializeCoreAdapters();
   }
 
-  private initializeAdapters(): void {
-    console.log('🏗️  Initializing format adapters...');
+  private initializeCoreAdapters(): void {
+    console.log('🏗️  Initializing core format adapters...');
     
-    // Register adapters in priority order (highest confidence first)
-    this.registry.register(new WylieDogNativeAdapter());        // Highest priority - native format
-    this.registry.register(new W3CDTCGAdapter());               // High priority - standards compliant
-    this.registry.register(new TokensStudioAdapter());         // Popular plugin format
-    this.registry.register(new GenericAdapter());              // MOVED UP - before other adapters
-    this.registry.register(new CSSVariablesAdapter());          // CSS custom properties format
-    this.registry.register(new MaterialDesignAdapter());       // Google Material Design
-    this.registry.register(new StyleDictionaryNestedAdapter()); // Hierarchical Style Dictionary
-    this.registry.register(new StyleDictionaryFlatAdapter());  // Flat Style Dictionary
+    // Only register essential adapters immediately - others loaded on demand
+    this.registry.register(new WylieDogNativeAdapter());  // Always needed for native format
+    // GenericAdapter now loads as true fallback after all specific adapters fail
     
-    console.log(`✅ Registered ${this.registry.getRegistrySize()} format adapters`);
+    console.log(`✅ Registered ${this.registry.getRegistrySize()} core adapters`);
+  }
+
+  private async loadAdapter(format: TokenFormatType): Promise<FormatAdapter | undefined> {
+    // Return if already loaded
+    if (this.dynamicAdapters.has(format)) {
+      return this.dynamicAdapters.get(format);
+    }
+
+    try {
+      let AdapterClass: any;
+      
+      switch (format) {
+        case TokenFormatType.W3C_DTCG_FLAT:
+          AdapterClass = (await import('./adapters/w3c-dtcg')).W3CDTCGAdapter;
+          break;
+        case TokenFormatType.TOKENS_STUDIO_FLAT:
+        case TokenFormatType.TOKENS_STUDIO_GROUPED:
+          AdapterClass = (await import('./adapters/tokens-studio')).TokensStudioAdapter;
+          break;
+        case TokenFormatType.STYLE_DICTIONARY_FLAT:
+          AdapterClass = (await import('./adapters/style-dictionary-flat')).StyleDictionaryFlatAdapter;
+          break;
+        case TokenFormatType.STYLE_DICTIONARY_NESTED:
+          AdapterClass = (await import('./adapters/style-dictionary-nested')).StyleDictionaryNestedAdapter;
+          break;
+        case TokenFormatType.MATERIAL_DESIGN:
+          AdapterClass = (await import('./adapters/material-design')).MaterialDesignAdapter;
+          break;
+        case TokenFormatType.CSS_VARIABLES:
+          AdapterClass = (await import('./adapters/css-variables')).CSSVariablesAdapter;
+          break;
+        default:
+          console.warn(`Unknown format type: ${format}`);
+          return undefined;
+      }
+
+      if (AdapterClass) {
+        const adapter = new AdapterClass();
+        this.dynamicAdapters.set(format, adapter);
+        this.registry.register(adapter);
+        console.log(`📦 Dynamically loaded adapter for format: ${format}`);
+        return adapter;
+      }
+    } catch (error) {
+      console.error(`Failed to load adapter for format ${format}:`, error);
+      return undefined;
+    }
+
+    return undefined;
   }
 
   async processTokenFile(content: string): Promise<AdapterProcessResult> {
@@ -49,78 +89,124 @@ export class FormatAdapterManager {
       
       // Parse JSON
       const rawData = JSON.parse(content);
-      console.log('📄 JSON parsed successfully');
       
-      // Detect format
-      const detection = this.registry.detectFormat(rawData);
-      console.log(`🔍 Format detected: ${detection.format} (${(detection.confidence * 100).toFixed(1)}% confidence)`);
+      // First pass: detect format with available adapters
+      const initialDetection = this.registry.detectFormat(rawData);
+      console.log(`🔍 Initial format detection: ${initialDetection.format} (confidence: ${initialDetection.confidence})`);
       
-      if (detection.confidence < 0.2) {
-        return this.createErrorResult(
-          'Unknown or unsupported token format',
-          ['Try exporting in W3C DTCG format', 'Check file structure matches expected patterns'],
-          detection
-        );
+      // If confidence is low and format is unknown, try loading more adapters
+      if (initialDetection.confidence < 0.7 && initialDetection.format !== TokenFormatType.WYLIE_DOG) {
+        console.log('🔄 Low confidence detection, attempting to load additional adapters...');
+        
+        // Try to load adapters for common formats
+        const formatsToTry: TokenFormatType[] = [
+          TokenFormatType.W3C_DTCG_FLAT,
+          TokenFormatType.TOKENS_STUDIO_FLAT, 
+          TokenFormatType.STYLE_DICTIONARY_FLAT,
+          TokenFormatType.STYLE_DICTIONARY_NESTED
+        ];
+        
+        for (const format of formatsToTry) {
+          await this.loadAdapter(format);
+        }
+        
+        // Re-run detection with loaded adapters
+        const enhancedDetection = this.registry.detectFormat(rawData);
+        console.log(`🔍 Enhanced format detection: ${enhancedDetection.format} (confidence: ${enhancedDetection.confidence})`);
+        
+        if (enhancedDetection.confidence > initialDetection.confidence) {
+          return this.processWithDetection(enhancedDetection, rawData, startTime);
+        }
+        
+        // If still low confidence, load GenericAdapter as absolute fallback
+        if (enhancedDetection.confidence < 0.3) {
+          console.log('🔧 Loading GenericAdapter as final fallback...');
+          if (!this.dynamicAdapters.has(TokenFormatType.UNKNOWN)) {
+            this.registry.register(new GenericAdapter());
+            this.dynamicAdapters.set(TokenFormatType.UNKNOWN, new GenericAdapter());
+          }
+        }
       }
-
-      // Find appropriate adapter
-      const adapters = this.registry.getAllAdapters();
-      const adapter = adapters.find(a => a.detect(rawData).format === detection.format);
       
-      if (!adapter) {
-        return this.createErrorResult(
-          `No adapter available for format: ${detection.format}`,
-          ['Contact support for custom format assistance'],
-          detection
-        );
-      }
-
-      console.log(`🔧 Using adapter: ${adapter.name}`);
-
-      // Normalize data
-      const normalization = adapter.normalize(rawData);
-      console.log(`📝 Normalization result: ${normalization.success ? 'success' : 'failed'}`);
+      return this.processWithDetection(initialDetection, rawData, startTime);
       
-      if (!normalization.success) {
-        return this.createErrorResult(
-          'Failed to normalize token data',
-          normalization.errors,
-          detection,
-          normalization.transformations
-        );
-      }
-
-      // Apply reference normalization
-      console.log('🔗 Applying reference normalization...');
-      const processedData = this.normalizeAllReferences(normalization.data);
-
-      const processingTime = Date.now() - startTime;
-      console.log(`⏱️  Processing completed in ${processingTime.toFixed(2)}ms`);
-
-      return {
-        success: true,
-        data: processedData.data,
-        detection,
-        transformations: normalization.transformations.concat(processedData.referenceTransformations),
-        warnings: detection.warnings.concat(normalization.warnings).concat(processedData.warnings),
-        errors: [],
-        processingTime,
-        stats: this.generateStats(processedData.data)
-      };
-
     } catch (error) {
-      const processingTime = Date.now() - startTime;
       console.error('❌ Format Adapter: Processing failed:', error);
-      
+      const errorMessage = error instanceof Error ? error.message : String(error);
       return this.createErrorResult(
-        `JSON parsing failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        `JSON parsing failed: ${errorMessage}`,
         ['Verify file is valid JSON', 'Check for syntax errors'],
-        null,
-        [],
-        processingTime
+        null
       );
     }
   }
+
+  private async processWithDetection(
+    detection: FormatDetectionResult, 
+    rawData: any, 
+    startTime: number
+  ): Promise<AdapterProcessResult> {
+    if (detection.confidence < 0.3) {
+      return this.createErrorResult(
+        'Unknown or unsupported token format',
+        ['Try exporting in W3C DTCG format', 'Check file structure matches expected patterns'],
+        detection
+      );
+    }
+
+    // Find appropriate adapter (may need to load dynamically)
+    let adapter = this.registry.getAdapter(detection.format);
+    
+    if (!adapter && detection.format !== TokenFormatType.UNKNOWN) {
+      // Try to load the adapter dynamically
+      adapter = await this.loadAdapter(detection.format);
+    }
+    
+    if (!adapter) {
+      return this.createErrorResult(
+        `No adapter available for format: ${detection.format}`,
+        ['Contact support for custom format assistance'],
+        detection
+      );
+    }
+
+    // Normalize data
+    const normalization = adapter.normalize(rawData);
+    
+    if (!normalization.success) {
+      return this.createErrorResult(
+        'Failed to normalize token data',
+        normalization.errors,
+        detection,
+        normalization.transformations
+      );
+    }
+
+    // Apply reference normalization
+    const processedData = this.normalizeAllReferences(normalization.data);
+
+    const processingTime = Date.now() - startTime;
+    console.log(`✅ Format Adapter: Processing completed in ${processingTime}ms`);
+
+    return {
+      success: true,
+      data: processedData.data,
+      detection,
+      transformations: [
+        ...normalization.transformations,
+        ...processedData.referenceTransformations
+      ],
+      warnings: [
+        ...detection.warnings,
+        ...normalization.warnings,
+        ...processedData.warnings
+      ],
+      errors: [],
+      processingTime,
+      stats: this.generateStats(processedData.data)
+    };
+  }
+
   private normalizeAllReferences(data: any[]): {
     data: any[];
     referenceTransformations: TransformationLog[];

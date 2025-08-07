@@ -1,29 +1,22 @@
 import { render } from "preact";
 import { useState, useEffect } from "preact/hooks";
-import { GitHubConfig } from "./components/GitHubConfig";
+import { GitHubConfig as GitHubConfigComponent } from "./components/GitHubConfig";
 import { ValidationDisplay } from "./components/ValidationDisplay";
 import { TransformationFeedback } from "./components/TransformationFeedback";
 import { ConflictResolutionDisplay } from "./components/ConflictResolutionDisplay";
 import { SyncStatus } from "./components/SyncStatus";
 import { EnhancedErrorDisplay } from "./components/EnhancedErrorDisplay";
 import { ProgressFeedback, SYNC_STEPS, PULL_STEPS, PUSH_STEPS } from "./components/ProgressFeedback";
+import { SetupWizard } from "./components/SetupWizard";
+import { HelpIcon, HELP_CONTENT } from "./components/ContextualHelp";
 import { GitHubClient } from "../plugin/github/client";
 import { ErrorHandler, PluginError } from "../shared/error-handler";
 import { ConflictAwareGitHubClient } from "../plugin/sync/conflict-aware-github-client";
-import type { SyncMode } from "./components/GitHubConfig";
+import type { GitHubConfig, SyncMode } from "../shared/types";
 import type { TokenConflict, ConflictResolution } from "../plugin/sync/types";
 import type { ExportData } from "../plugin/variables/processor";
 
 console.log("App.tsx loaded");
-
-interface GitHubConfig {
-  owner: string;
-  repo: string;
-  branch: string;
-  tokenPath: string;
-  accessToken: string;
-  syncMode: SyncMode;
-}
 
 interface Collection {
   id: string;
@@ -55,12 +48,9 @@ type ViewState = "collections" | "collection-detail" | "github-config";
 function App() {
   console.log("App component rendering");
   const [collections, setCollections] = useState<Collection[]>([]);
-  const [selectedCollections, setSelectedCollections] = useState<Set<string>>(
-    new Set()
-  );
+  const [selectedCollections, setSelectedCollections] = useState<Set<string>>(new Set());
   const [currentView, setCurrentView] = useState<ViewState>("collections");
-  const [selectedCollection, setSelectedCollection] =
-    useState<CollectionDetails | null>(null);
+  const [selectedCollection, setSelectedCollection] = useState<CollectionDetails | null>(null);
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState<string>("");
   const [error, setError] = useState<PluginError | string | null>(null);
@@ -78,8 +68,185 @@ function App() {
   const [progressStep, setProgressStep] = useState(0);
   const [progressSteps, setProgressSteps] = useState<any[]>([]);
   
-  // GitHub client instance (works in UI thread with fetch)
+  // Progressive disclosure - Quick Win #2
+  const [advancedMode, setAdvancedMode] = useState(false);
+  
+  // Setup wizard - Quick Win #4
+  const [showSetupWizard, setShowSetupWizard] = useState(false);
+  
+  // Operation cancellation - Quick Win #6
+  const [currentOperation, setCurrentOperation] = useState<string | null>(null);
+  
+  // GitHub client instance
   const [githubClient] = useState(() => new ConflictAwareGitHubClient());
+
+  // Helper functions for GitHub operations
+  const handleGitHubConfigTest = async (config: GitHubConfig) => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      // Use the initialize method properly
+      const initialized = await githubClient.initialize(config);
+      
+      if (initialized) {
+        const validation = await githubClient.validateRepository();
+        
+        if (validation.valid) {
+          // Save the configuration
+          parent.postMessage({
+            pluginMessage: {
+              type: 'save-github-config',
+              config: config
+            }
+          }, '*');
+          
+          setGithubConfig(config);
+          setGithubConfigured(true);
+          setCurrentView("collections");
+          setSuccessMessage("✅ GitHub configuration tested and saved successfully!");
+          setTimeout(() => setSuccessMessage(null), 5000);
+        } else {
+          setError(`Repository validation failed: ${validation.error || 'Unknown validation error'}`);
+        }
+      } else {
+        setError("Failed to initialize GitHub client. Please check your access token and repository details.");
+      }
+    } catch (error: any) {
+      console.error("GitHub config test error:", error);
+      setError(`Configuration test failed: ${error.message || 'Unknown error'}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGitHubSync = async (exportData: ExportData[]) => {
+    try {
+      setLoading(true);
+      setProgressSteps(PUSH_STEPS);
+      setProgressStep(0);
+      
+      setLoadingMessage('Exporting tokens...');
+      setProgressStep(1);
+      
+      setLoadingMessage('Checking for conflicts...');
+      const syncResult = await githubClient.syncTokensWithConflictDetection(exportData);
+      setProgressStep(2);
+      
+      if (syncResult.conflicts && syncResult.conflicts.length > 0) {
+        setConflicts(syncResult.conflicts);
+        setPendingTokensForConflictResolution(exportData);
+        setShowConflictResolution(true);
+        setLoading(false);
+        setLoadingMessage('');
+        setProgressSteps([]);
+        return;
+      }
+      
+      setLoadingMessage('Uploading to GitHub...');
+      setProgressStep(3);
+      
+      // Send success message back to plugin
+      parent.postMessage({
+        pluginMessage: {
+          type: 'github-sync-complete',
+          result: syncResult
+        }
+      }, '*');
+      
+    } catch (error: any) {
+      console.error("GitHub sync error:", error);
+      parent.postMessage({
+        pluginMessage: {
+          type: 'github-sync-complete',
+          result: {
+            success: false,
+            error: error.message || 'GitHub sync failed'
+          }
+        }
+      }, '*');
+    }
+  };
+
+  const handleGitHubPull = async () => {
+    try {
+      setLoading(true);
+      setProgressSteps(PULL_STEPS);
+      setProgressStep(0);
+      
+      setLoadingMessage('Fetching from GitHub...');
+      setProgressStep(1);
+      
+      setLoadingMessage('Checking for conflicts...');
+      const pullResult = await githubClient.pullTokensWithConflictDetection();
+      setProgressStep(2);
+      
+      if (pullResult.conflicts && pullResult.conflicts.length > 0) {
+        setConflicts(pullResult.conflicts);
+        setPendingTokensForConflictResolution(pullResult.tokens || []);
+        setShowConflictResolution(true);
+        setLoading(false);
+        setLoadingMessage('');
+        setProgressSteps([]);
+        return;
+      }
+      
+      setLoadingMessage('Preparing import...');
+      setProgressStep(3);
+      
+      if (pullResult.success && pullResult.tokens) {
+        const files = pullResult.tokens.map((tokenCollection, index) => {
+          const collectionName = Object.keys(tokenCollection)[0] || `collection-${index}`;
+          return {
+            filename: `${collectionName.toLowerCase().replace(/\s+/g, '-')}.json`,
+            content: JSON.stringify([tokenCollection], null, 2)
+          };
+        });
+        
+        parent.postMessage({
+          pluginMessage: {
+            type: 'import-tokens',
+            files: files
+          }
+        }, '*');
+        
+      } else {
+        parent.postMessage({
+          pluginMessage: {
+            type: 'github-pull-complete',
+            result: {
+              success: false,
+              error: pullResult.error || 'GitHub pull failed'
+            }
+          }
+        }, '*');
+      }
+    } catch (error: any) {
+      console.error("GitHub pull error:", error);
+      parent.postMessage({
+        pluginMessage: {
+          type: 'github-pull-complete',
+          result: {
+            success: false,
+            error: error.message || 'GitHub pull failed'
+          }
+        }
+      }, '*');
+    }
+  };
+
+  const toggleAdvancedMode = () => {
+    const newMode = !advancedMode;
+    setAdvancedMode(newMode);
+    
+    // Save preference
+    parent.postMessage({
+      pluginMessage: {
+        type: 'save-advanced-mode',
+        advancedMode: newMode
+      }
+    }, '*');
+  };
 
   useEffect(() => {
     console.log("useEffect running - setting up message listener");
@@ -97,17 +264,12 @@ function App() {
         case "collections-loaded":
           console.log("Collections loaded:", msg.collections);
           setCollections(msg.collections || []);
-          // Default to selecting all collections
-          setSelectedCollections(
-            new Set(
-              (msg.collections &&
-                msg.collections.map((c: Collection) => c.id)) ||
-                []
-            )
-          );
+          setSelectedCollections(new Set((msg.collections && msg.collections.map((c: Collection) => c.id)) || []));
           setLoading(false);
           setError(null);
+          setCurrentOperation(null);
           break;
+
         case "collection-details-loaded":
           console.log("Collection details loaded:", msg.collection);
           setSelectedCollection(msg.collection);
@@ -115,176 +277,214 @@ function App() {
           setLoading(false);
           setError(null);
           break;
-        case "error":
-          console.error("Plugin error:", msg.message);
-          setError(msg.message);
-          setLoading(false);
-          setLoadingMessage("");
-          break;
+
         case "tokens-exported":
-          console.log("Tokens exported successfully:", msg.exportData);
-          console.log(
-            "Export data length:",
-            msg.exportData ? msg.exportData.length : 0
-          );
-          console.log(
-            "Export data structure:",
-            msg.exportData &&
-              msg.exportData.map((item: any) => Object.keys(item))
-          );
-          console.log(
-            "Full export data:",
-            JSON.stringify(msg.exportData, null, 2)
-          );
+          console.log("Tokens exported:", msg.exportData);
           setLoading(false);
-          setLoadingMessage("");
-          setError(null);
+          setCurrentOperation(null);
+          
+          // Queue downloads for each collection
+          if (msg.exportData) {
+            setDownloadQueue(msg.exportData);
+            setSuccessMessage(`✅ ${msg.exportData.length} collection(s) exported successfully!`);
+            setTimeout(() => setSuccessMessage(null), 5000);
+          }
+          break;
 
-          // Trigger download queue setup
-          if (msg.exportData && msg.exportData.length > 0) {
-            if (msg.exportData.length === 1) {
-              // Single file - direct download
-              downloadSingleFile(msg.exportData[0]);
-            } else {
-              // Multiple files - set up download queue
-              setDownloadQueue(msg.exportData);
-            }
-
-            // Show success message
-            const fileCount = msg.exportData.length;
-            setSuccessMessage(
-              `✅ ${fileCount} token file${fileCount > 1 ? "s" : ""} ready for download!`
-            );
-            setTimeout(() => {
-              setSuccessMessage(null);
-            }, 4000);
+        case "tokens-imported":
+          console.log("Tokens imported:", msg.result);
+          setImportLoading(false);
+          setLoading(false);
+          setCurrentOperation(null);
+          
+          if (msg.result && msg.result.success) {
+            setSuccessMessage(`✅ Successfully imported ${msg.result.totalVariablesCreated} variables!`);
+            setTimeout(() => setSuccessMessage(null), 5000);
+            
+            // Reload collections to show imported variables
+            setTimeout(() => loadCollections(), 1000);
           } else {
-            setError("No token data received from export");
-            console.warn("Export data was empty or null");
+            setError(`Import failed: ${msg.result?.message || 'Unknown error'}`);
+          }
+          
+          // Show validation report if available
+          if (msg.validationReport) {
+            setValidationReport(msg.validationReport);
+            setShowValidation(true);
+          }
+          
+          // Show adapter results if available
+          if (msg.adapterResults && msg.adapterResults.length > 0) {
+            setAdapterResults(msg.adapterResults);
           }
           break;
-        case "loading-state":
-          console.log("Loading state update:", msg.loading, msg.message);
-          setLoading(msg.loading);
-          setLoadingMessage(msg.message || "");
-          if (!msg.loading) {
-            setTimeout(() => setLoadingMessage(""), 500);
+
+        case "import-error":
+          console.error("Import error:", msg.error);
+          setImportLoading(false);
+          setLoading(false);
+          setCurrentOperation(null);
+          
+          // Enhanced error display for reference issues
+          if (msg.error.includes('Reference Issues:')) {
+            setError(`Import failed due to token reference problems:\n\n${msg.error}\n\n💡 Try importing collections in dependency order (base tokens first, then semantic tokens).`);
+          } else {
+            setError(`Import failed: ${msg.error}`);
           }
           break;
+
         case "github-config-loaded":
           console.log("GitHub config loaded:", msg.config);
           if (msg.config) {
             setGithubConfig(msg.config);
             setGithubConfigured(true);
-            // Re-initialize GitHub client with loaded config
-            githubClient.initialize(msg.config).then(success => {
-              if (!success) {
-                console.warn("Failed to re-initialize GitHub client with loaded config");
-              }
-            });
-          }
-          break;
-        case "github-pull-complete":
-          console.log("GitHub pull completed:", msg.result);
-          setLoading(false);
-          setLoadingMessage("");
-          if (msg.result.success) {
-            const totalVariables =
-              msg.result.importResult?.totalVariablesCreated || 0;
-            setSuccessMessage(
-              `✅ Pulled and imported ${totalVariables} variables from GitHub!`
-            );
-            setTimeout(() => setSuccessMessage(null), 5000);
-            loadCollections(); // Refresh to show imported data
-          } else {
-            setError(`GitHub pull failed: ${msg.result.error}`);
-          }
-          break;
-        case "tokens-imported":
-          console.log("Tokens imported successfully:", msg.result);
-          setImportLoading(false);
-          setLoading(false);
-          setLoadingMessage("");
-
-          // Handle adapter results
-          if (msg.adapterResults) {
-            setAdapterResults(msg.adapterResults);
-            console.log("Format adapter results:", msg.adapterResults);
-          }
-
-          // Handle validation report
-          if (msg.validationReport) {
-            setValidationReport(msg.validationReport);
-            if (
-              !msg.validationReport.valid ||
-              msg.validationReport.warnings.length > 0
-            ) {
-              setShowValidation(true);
+            // Initialize GitHub client with config
+            try {
+              githubClient.configure(msg.config);
+            } catch (err) {
+              console.warn("Failed to configure GitHub client:", err);
             }
-          }
-
-          if (msg.result && msg.result.success) {
-            const totalVariables = msg.result.totalVariablesCreated || 0;
-            const totalCollections = msg.result.collectionsProcessed || 0;
-            const resolvedReferences = msg.result.totalReferencesResolved || 0;
-
-            let successText = `✅ Successfully imported ${totalVariables} variables across ${totalCollections} collections!`;
-            if (resolvedReferences > 0) {
-              successText += ` (${resolvedReferences} references resolved)`;
-            }
-
-            setSuccessMessage(successText);
-            setTimeout(() => setSuccessMessage(null), 5000);
-            // Reload collections to show imported data
-            loadCollections();
           } else {
-            const errorMsg =
-              msg.result?.message || "Import completed but no results received";
-            setError(errorMsg);
+            setGithubConfig(null);
+            setGithubConfigured(false);
           }
           break;
-        case "import-error":
-          console.error("Import error:", msg.error);
-          setImportLoading(false);
-          setLoading(false);
-          setLoadingMessage("");
-          setError(`Import failed: ${msg.error}`);
+
+        case "github-config-saved":
+          console.log("GitHub config saved:", msg.success);
+          if (msg.success) {
+            setLoading(false);
+            setError(null);
+            setSuccessMessage("✅ GitHub configuration saved successfully!");
+            setTimeout(() => setSuccessMessage(null), 3000);
+            // Reload config to update UI
+            loadGitHubConfig();
+          } else {
+            setLoading(false);
+            setError(msg.error || "Failed to save GitHub configuration");
+          }
           break;
-          
-        // GitHub operations handled in UI thread (has fetch)
+
         case "test-github-config":
-          handleGitHubConfigTest(msg.config);
+          console.log("Testing GitHub config:", msg.config);
+          handleGitHubConfigTest(msg.config).catch(err => {
+            console.error("GitHub config test failed:", err);
+            setError(`GitHub configuration test failed: ${err.message}`);
+            setLoading(false);
+          });
           break;
-          
+
         case "github-sync-tokens":
-          handleGitHubSync(msg.selectedCollectionIds, msg.exportData);
+          console.log("GitHub sync initiated:", msg.exportData);
+          handleGitHubSync(msg.exportData);
           break;
+
+        case "github-sync-complete":
+          console.log("GitHub sync complete:", msg.result);
+          setLoading(false);
+          setCurrentOperation(null);
+          setProgressSteps([]);
+          setProgressStep(0);
           
+          if (msg.result && msg.result.success) {
+            const message = msg.result.pullRequestUrl 
+              ? `✅ Tokens synced successfully! Pull request: ${msg.result.pullRequestUrl}`
+              : "✅ Tokens synced directly to repository!";
+            setSuccessMessage(message);
+            setTimeout(() => setSuccessMessage(null), 6000);
+          } else {
+            setError(msg.result?.error || "GitHub sync failed");
+          }
+          break;
+
         case "github-pull-tokens":
+          console.log("GitHub pull initiated");
           handleGitHubPull();
           break;
+
+        case "github-pull-complete":
+          console.log("GitHub pull complete:", msg.result);
+          setLoading(false);
+          setCurrentOperation(null);
+          setProgressSteps([]);
+          setProgressStep(0);
           
-        case "github-config-saved":
-          if (!msg.success) {
-            console.error("Failed to save GitHub config:", msg.error);
-            setError(`Failed to save config: ${msg.error}`);
+          if (msg.result && msg.result.success) {
+            setSuccessMessage("✅ Tokens pulled from GitHub successfully!");
+            setTimeout(() => setSuccessMessage(null), 5000);
+            // Reload collections
+            setTimeout(() => loadCollections(), 1000);
+          } else {
+            setError(msg.result?.error || "GitHub pull failed");
           }
           break;
+
+        case "loading-state":
+          if (typeof msg.loading === 'boolean') {
+            setLoading(msg.loading);
+            if (msg.message) {
+              setLoadingMessage(msg.message);
+            }
+            if (!msg.loading) {
+              setLoadingMessage("");
+              setCurrentOperation(null);
+            }
+          }
+          break;
+
+        case "error":
+          console.error("Plugin error:", msg.message);
+          setLoading(false);
+          setImportLoading(false);
+          setCurrentOperation(null);
+          setLoadingMessage("");
+          setProgressSteps([]);
+          setProgressStep(0);
+          setError(msg.message);
+          break;
+
+        case "format-transformations":
+          console.log("Format transformations applied:", msg.transformations);
+          if (msg.transformations && msg.transformations.length > 0) {
+            // Could add UI to show transformations
+            console.log("Format detected:", msg.detection?.format);
+            console.log("Stats:", msg.stats);
+          }
+          break;
+
+        case "advanced-mode-loaded":
+          console.log("Advanced mode loaded:", msg.advancedMode);
+          setAdvancedMode(msg.advancedMode);
+          break;
+
         default:
           console.warn("Unknown message type:", msg.type);
       }
     };
 
     window.addEventListener("message", handleMessage);
-    console.log("Message listener added");
-
-    // Load initial data
     loadCollections();
     loadGitHubConfig();
+    loadAdvancedMode();
 
+    // Memory cleanup - Quick Win #7
     return () => {
-      console.log("Cleaning up message listener");
+      console.log("App component unmounting - cleaning up");
       window.removeEventListener("message", handleMessage);
+      
+      // Clear large objects from memory
+      setCollections([]);
+      setSelectedCollection(null);
+      setDownloadQueue([]);
+      setAdapterResults([]);
+      setConflicts([]);
+      setPendingTokensForConflictResolution([]);
+      setValidationReport(null);
+      
+      // Clear any ongoing operations
+      setLoading(false);
+      setCurrentOperation(null);
+      setProgressSteps([]);
     };
   }, []);
 
@@ -313,21 +513,26 @@ function App() {
     }
   };
 
+  const loadAdvancedMode = () => {
+    try {
+      parent.postMessage({ pluginMessage: { type: "get-advanced-mode" } }, "*");
+    } catch (err) {
+      console.error("Failed to load advanced mode:", err);
+    }
+  };
+
   const loadCollectionDetails = (collectionId: string) => {
     console.log("Loading collection details for:", collectionId);
     setLoading(true);
     setError(null);
 
     try {
-      parent.postMessage(
-        {
-          pluginMessage: {
-            type: "get-collection-details",
-            collectionId,
-          },
+      parent.postMessage({
+        pluginMessage: {
+          type: "get-collection-details",
+          collectionId,
         },
-        "*"
-      );
+      }, "*");
     } catch (err) {
       console.error("Failed to send message:", err);
       setError("Failed to load collection details");
@@ -336,57 +541,50 @@ function App() {
   };
 
   const exportTokens = (useGitHub = false) => {
-    console.log(
-      "Exporting tokens for selected collections:",
-      Array.from(selectedCollections)
-    );
+    console.log("Exporting tokens for selected collections:", Array.from(selectedCollections));
     console.log("Export mode:", useGitHub ? "GitHub sync" : "Local download");
 
     setLoading(true);
     setError(null);
     setSuccessMessage(null);
+    setCurrentOperation(useGitHub ? 'github-sync' : 'local-export'); // Quick Win #6
 
     if (useGitHub && githubConfigured) {
       setLoadingMessage("Syncing to GitHub...");
       try {
-        parent.postMessage(
-          {
-            pluginMessage: {
-              type: "github-sync-tokens",
-              selectedCollectionIds: Array.from(selectedCollections),
-            },
+        parent.postMessage({
+          pluginMessage: {
+            type: "github-sync-tokens",
+            selectedCollectionIds: Array.from(selectedCollections),
           },
-          "*"
-        );
+        }, "*");
       } catch (err) {
         console.error("Failed to sync to GitHub:", err);
         setError("Failed to sync to GitHub");
         setLoading(false);
         setLoadingMessage("");
+        setCurrentOperation(null);
       }
     } else if (useGitHub && !githubConfigured) {
-      // User clicked GitHub sync but it's not configured
       setLoading(false);
+      setCurrentOperation(null);
       setError("Please configure GitHub integration first");
       return;
     } else {
-      // Local export
       setLoadingMessage("Preparing local download...");
       try {
-        parent.postMessage(
-          {
-            pluginMessage: {
-              type: "export-tokens",
-              selectedCollectionIds: Array.from(selectedCollections),
-            },
+        parent.postMessage({
+          pluginMessage: {
+            type: "export-tokens",
+            selectedCollectionIds: Array.from(selectedCollections),
           },
-          "*"
-        );
+        }, "*");
       } catch (err) {
         console.error("Failed to export tokens:", err);
         setError("Failed to export tokens");
         setLoading(false);
         setLoadingMessage("");
+        setCurrentOperation(null);
       }
     }
   };
@@ -399,12 +597,9 @@ function App() {
     setLoadingMessage("Pulling from GitHub...");
 
     try {
-      parent.postMessage(
-        {
-          pluginMessage: { type: "github-pull-tokens" },
-        },
-        "*"
-      );
+      parent.postMessage({
+        pluginMessage: { type: "github-pull-tokens" },
+      }, "*");
     } catch (err) {
       console.error("Failed to pull from GitHub:", err);
       setError("Failed to pull from GitHub");
@@ -417,12 +612,9 @@ function App() {
     try {
       const collectionName = Object.keys(collectionData)[0];
       const tokens = collectionData[collectionName];
-
-      // Match your existing token file structure: [{"collection-name": {...}}]
       const fileContent = [{ [collectionName]: tokens }];
       const jsonString = JSON.stringify(fileContent, null, 2);
 
-      // Create and download file
       const blob = new Blob([jsonString], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -433,14 +625,7 @@ function App() {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
 
-      console.log(
-        `Downloaded: ${collectionName.toLowerCase().replace(/\s+/g, "-")}.json`
-      );
-
-      // Remove from queue
-      setDownloadQueue((prev) =>
-        prev.filter((item) => Object.keys(item)[0] !== collectionName)
-      );
+      setDownloadQueue((prev) => prev.filter((item) => Object.keys(item)[0] !== collectionName));
     } catch (err) {
       console.error("Failed to download file:", err);
       setError(`Failed to download ${Object.keys(collectionData)[0]}.json`);
@@ -463,19 +648,15 @@ function App() {
 
   const formatTokenValue = (variable: Variable, modeId: string) => {
     const value = variable.valuesByMode[modeId];
-
     if (!value) return "undefined";
 
-    // Handle variable references
     if (typeof value === "object" && value.type === "VARIABLE_ALIAS") {
-      return `{${value.id}}`; // We'd need to resolve this to show the actual reference
+      return `{${value.id}}`;
     }
 
-    // Handle different value types
     switch (variable.resolvedType) {
       case "COLOR":
         if (typeof value === "object" && value.r !== undefined) {
-          // Convert RGB to hex
           const r = Math.round(value.r * 255);
           const g = Math.round(value.g * 255);
           const b = Math.round(value.b * 255);
@@ -503,15 +684,12 @@ function App() {
     setError(null);
 
     try {
-      parent.postMessage(
-        {
-          pluginMessage: {
-            type: "test-github-config",
-            config,
-          },
+      parent.postMessage({
+        pluginMessage: {
+          type: "test-github-config",
+          config,
         },
-        "*"
-      );
+      }, "*");
     } catch (err) {
       console.error("Failed to test GitHub config:", err);
       setError("Failed to test configuration");
@@ -524,11 +702,10 @@ function App() {
   };
 
   const handleTokenImport = () => {
-    // Create file input
     const fileInput = document.createElement("input");
     fileInput.type = "file";
     fileInput.accept = ".json";
-    fileInput.multiple = true; // Allow multiple files
+    fileInput.multiple = true;
 
     fileInput.onchange = async (event) => {
       const files = (event.target as HTMLInputElement).files;
@@ -538,11 +715,10 @@ function App() {
       setLoading(true);
       setLoadingMessage("Reading token files...");
       setError(null);
+      setCurrentOperation('token-import'); // Quick Win #6
 
       try {
         const fileContents = [];
-
-        // Read all selected files
         for (let i = 0; i < files.length; i++) {
           const file = files[i];
           const content = await readFileAsText(file);
@@ -554,26 +730,22 @@ function App() {
 
         setLoadingMessage("Importing tokens to Figma...");
 
-        // Send to plugin for processing
-        parent.postMessage(
-          {
-            pluginMessage: {
-              type: "import-tokens",
-              files: fileContents,
-            },
+        parent.postMessage({
+          pluginMessage: {
+            type: "import-tokens",
+            files: fileContents,
           },
-          "*"
-        );
+        }, "*");
       } catch (err) {
         console.error("Failed to read files:", err);
         setError(`Failed to read files: ${err instanceof Error ? err.message : 'Unknown error'}`);
         setImportLoading(false);
         setLoading(false);
         setLoadingMessage("");
+        setCurrentOperation(null);
       }
     };
 
-    // Trigger file picker
     fileInput.click();
   };
 
@@ -581,8 +753,7 @@ function App() {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = (e) => resolve(e.target?.result as string);
-      reader.onerror = () =>
-        reject(new Error(`Failed to read file: ${file.name}`));
+      reader.onerror = () => reject(new Error(`Failed to read file: ${file.name}`));
       reader.readAsText(file);
     });
   };
@@ -601,115 +772,29 @@ function App() {
     }
   };
 
-  // GitHub handlers - run in UI thread where fetch is available
-  const handleGitHubConfigTest = async (config: GitHubConfig) => {
-    try {
-      setLoading(true);
-      console.log("Testing GitHub config in UI thread:", config);
-      
-      const initialized = await githubClient.initialize(config);
-      
-      if (initialized) {
-        const validation = await githubClient.validateRepository();
-        
-        if (validation.valid) {
-          // Handle success directly in UI
-          setGithubConfig(config);
-          setGithubConfigured(true);
-          setCurrentView('collections');
-          setSuccessMessage('✅ GitHub configuration saved and tested successfully!');
-          setTimeout(() => setSuccessMessage(null), 4000);
-          
-          // Save config to persistent storage
-          parent.postMessage({
-            pluginMessage: {
-              type: 'save-github-config',
-              config: config
-            }
-          }, '*');
-        } else {
-          setError(ErrorHandler.fromException(new Error(validation.error || 'Repository validation failed')));
-        }
-      } else {
-        setError(ErrorHandler.fromException(new Error('Failed to initialize GitHub client')));
-      }
-    } catch (error: any) {
-      console.error("GitHub config test error:", error);
-      setError(ErrorHandler.fromException(error));
-    } finally {
-      setLoading(false);
-    }
+  // Setup wizard handler - Quick Win #4
+  const handleSetupWizardComplete = (config: GitHubConfig) => {
+    setShowSetupWizard(false);
+    handleGitHubConfigSaved(config);
   };
 
-  const handleGitHubSync = async (selectedCollectionIds: string[], exportData: any[]) => {
-    try {
-      setLoading(true);
-      setProgressSteps(PUSH_STEPS);
-      setProgressStep(0);
-      
-      setLoadingMessage('Exporting tokens...');
-      setProgressStep(1);
-      
-      setLoadingMessage('Checking for conflicts...');
-      console.log("Syncing tokens to GitHub with conflict detection:", exportData);
-      
-      const syncResult = await githubClient.syncTokensWithConflictDetection(exportData);
-      setProgressStep(2);
-      
-      if (syncResult.conflicts && syncResult.conflicts.length > 0) {
-        console.log(`Sync conflicts detected: ${syncResult.conflicts.length}`);
-        setConflicts(syncResult.conflicts);
-        setPendingTokensForConflictResolution(exportData);
-        setShowConflictResolution(true);
-        setLoading(false);
-        setLoadingMessage('');
-        setProgressSteps([]);
-        return;
-      }
-      
-      setLoadingMessage('Uploading to GitHub...');
-      setProgressStep(3);
-      
-      if (syncResult.success) {
-        const message = syncResult.pullRequestUrl 
-          ? `✅ Tokens synced successfully! Pull request: ${syncResult.pullRequestUrl}`
-          : '✅ Tokens synced directly to repository!';
-        setSuccessMessage(message);
-        setTimeout(() => setSuccessMessage(null), 6000);
-      } else {
-        setError(ErrorHandler.fromException(new Error(syncResult.error || 'GitHub sync failed')));
-      }
-    } catch (error: any) {
-      console.error("GitHub sync error:", error);
-      setError(ErrorHandler.fromException(error));
-    } finally {
-      setLoading(false);
-      setLoadingMessage('');
-      setProgressSteps([]);
-      setProgressStep(0);
-    }
-  };
-
+  // Conflict resolution handler
   const handleConflictResolution = async (resolutions: ConflictResolution[]) => {
     try {
       setLoading(true);
       setLoadingMessage('Applying conflict resolutions...');
       
-      // Apply resolutions using the conflict resolver
       const exportData = pendingTokensForConflictResolution || [];
       const resolvedTokens = githubClient.applyConflictResolutions(exportData, resolutions);
       
-      // Continue with the operation (import or sync)
       const files = resolvedTokens.map((tokenCollection, index) => {
         const collectionName = Object.keys(tokenCollection)[0] || `collection-${index}`;
-        
         return {
           filename: `${collectionName.toLowerCase().replace(/\s+/g, '-')}.json`,
           content: JSON.stringify([tokenCollection], null, 2)
         };
       });
       
-      // Import the resolved tokens
       parent.postMessage({
         pluginMessage: {
           type: 'import-tokens',
@@ -724,86 +809,41 @@ function App() {
       
     } catch (error: any) {
       console.error("Conflict resolution error:", error);
-      setError(ErrorHandler.fromException(error));
+      setError(`Conflict resolution failed: ${error.message}`);
     } finally {
       setLoading(false);
       setLoadingMessage('');
     }
   };
 
-  const handleGitHubPull = async () => {
-    try {
-      setLoading(true);
-      setProgressSteps(PULL_STEPS);
-      setProgressStep(0);
-      
-      setLoadingMessage('Fetching from GitHub...');
-      console.log("Pulling tokens from GitHub with conflict detection");
-      setProgressStep(1);
-      
-      setLoadingMessage('Checking for conflicts...');
-      const pullResult = await githubClient.pullTokensWithConflictDetection();
-      setProgressStep(2);
-      
-      if (pullResult.conflicts && pullResult.conflicts.length > 0) {
-        console.log(`Conflicts detected: ${pullResult.conflicts.length}`);
-        setConflicts(pullResult.conflicts);
-        setPendingTokensForConflictResolution(pullResult.tokens || []);
-        setShowConflictResolution(true);
-        setLoading(false);
-        setLoadingMessage('');
-        setProgressSteps([]);
-        return;
-      }
-      
-      setLoadingMessage('Preparing import...');
-      setProgressStep(3);
-      
-      if (pullResult.success && pullResult.tokens) {
-        // No conflicts - proceed with normal import
-        const files = pullResult.tokens.map((tokenCollection, index) => {
-          const collectionName = Object.keys(tokenCollection)[0] || `collection-${index}`;
-          
-          return {
-            filename: `${collectionName.toLowerCase().replace(/\s+/g, '-')}.json`,
-            content: JSON.stringify([tokenCollection], null, 2)
-          };
-        });
-        
-        // Use existing import logic
-        parent.postMessage({
-          pluginMessage: {
-            type: 'import-tokens',
-            files: files
-          }
-        }, '*');
-        
-      } else {
-        setError(ErrorHandler.fromException(new Error(pullResult.error || 'GitHub pull failed')));
-      }
-    } catch (error: any) {
-      console.error("GitHub pull error:", error);
-      setError(ErrorHandler.fromException(error));
-    } finally {
-      setLoading(false);
-      setLoadingMessage('');
-      setProgressSteps([]);
-      setProgressStep(0);
+  // Operation cancellation handler - Quick Win #6
+  const handleCancelOperation = () => {
+    console.log('Cancelling operation:', currentOperation);
+    
+    // Reset state
+    setLoading(false);
+    setLoadingMessage('');
+    setProgressSteps([]);
+    setProgressStep(0);
+    setCurrentOperation(null);
+    
+    // Send cancellation message to plugin
+    if (currentOperation) {
+      parent.postMessage({
+        pluginMessage: { type: 'cancel-operation', operation: currentOperation }
+      }, '*');
     }
+    
+    // Show cancellation message
+    setSuccessMessage('⚠️ Operation cancelled');
+    setTimeout(() => setSuccessMessage(null), 3000);
   };
 
-  console.log(
-    "Rendering with collections:",
-    collections.length,
-    "loading:",
-    loading,
-    "error:",
-    error
-  );
+  console.log("Rendering with collections:", collections.length, "loading:", loading, "error:", error);
 
   if (currentView === "github-config") {
     return (
-      <GitHubConfig
+      <GitHubConfigComponent
         onConfigSaved={handleGitHubConfigSaved}
         onClose={handleGitHubConfigClose}
       />
@@ -813,13 +853,7 @@ function App() {
   if (currentView === "collection-detail" && selectedCollection) {
     return (
       <div style={{ padding: "16px" }}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "16px",
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
           <button
             onClick={goBack}
             style={{
@@ -846,23 +880,20 @@ function App() {
         )}
 
         {error && (
-          <div
-            style={{
-              padding: "8px 12px",
-              marginBottom: "16px",
-              backgroundColor: "#fee",
-              border: "1px solid #fcc",
-              borderRadius: "4px",
-              color: "#c33",
-            }}
-          >
+          <div style={{
+            padding: "8px 12px",
+            marginBottom: "16px",
+            backgroundColor: "#fee",
+            border: "1px solid #fcc",
+            borderRadius: "4px",
+            color: "#c33",
+          }}>
             ❌ {error}
           </div>
         )}
 
         <div style={{ marginBottom: "16px", fontSize: "12px", color: "#666" }}>
-          {selectedCollection.variables.length} variables •{" "}
-          {selectedCollection.modes.length} modes
+          {selectedCollection.variables.length} variables • {selectedCollection.modes.length} modes
         </div>
 
         <div style={{ maxHeight: "400px", overflowY: "auto" }}>
@@ -877,38 +908,28 @@ function App() {
                 backgroundColor: "#f8fafc",
               }}
             >
-              <div
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "13px",
-                  marginBottom: "4px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
+              <div style={{
+                fontWeight: "bold",
+                fontSize: "13px",
+                marginBottom: "4px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}>
                 <span>{variable.name}</span>
-                <span
-                  style={{
-                    fontSize: "10px",
-                    backgroundColor: "#cbd5e1",
-                    padding: "2px 6px",
-                    borderRadius: "3px",
-                    fontWeight: "normal",
-                  }}
-                >
+                <span style={{
+                  fontSize: "10px",
+                  backgroundColor: "#cbd5e1",
+                  padding: "2px 6px",
+                  borderRadius: "3px",
+                  fontWeight: "normal",
+                }}>
                   {variable.resolvedType}
                 </span>
               </div>
 
               {variable.description && (
-                <div
-                  style={{
-                    fontSize: "11px",
-                    color: "#64748b",
-                    marginBottom: "8px",
-                  }}
-                >
+                <div style={{ fontSize: "11px", color: "#64748b", marginBottom: "8px" }}>
                   {variable.description}
                 </div>
               )}
@@ -925,37 +946,24 @@ function App() {
                       alignItems: "center",
                     }}
                   >
-                    <span
-                      style={{
-                        fontWeight: "medium",
-                        minWidth: "60px",
-                        color: "#475569",
-                      }}
-                    >
+                    <span style={{ fontWeight: "medium", minWidth: "60px", color: "#475569" }}>
                       {mode.name}:
                     </span>
-                    <span
-                      style={{
-                        fontFamily: "monospace",
-                        fontSize: "10px",
-                        marginLeft: "8px",
-                      }}
-                    >
+                    <span style={{ fontFamily: "monospace", fontSize: "10px", marginLeft: "8px" }}>
                       {value}
                     </span>
-                    {variable.resolvedType === "COLOR" &&
-                      value.startsWith("#") && (
-                        <div
-                          style={{
-                            width: "16px",
-                            height: "16px",
-                            backgroundColor: value,
-                            border: "1px solid #ccc",
-                            borderRadius: "3px",
-                            marginLeft: "8px",
-                          }}
-                        />
-                      )}
+                    {variable.resolvedType === "COLOR" && value.startsWith("#") && (
+                      <div
+                        style={{
+                          width: "16px",
+                          height: "16px",
+                          backgroundColor: value,
+                          border: "1px solid #ccc",
+                          borderRadius: "3px",
+                          marginLeft: "8px",
+                        }}
+                      />
+                    )}
                   </div>
                 );
               })}
@@ -968,11 +976,38 @@ function App() {
 
   return (
     <div style={{ padding: "16px" }}>
-      <h2
-        style={{ margin: "0 0 16px 0", fontSize: "16px", fontWeight: "bold" }}
-      >
-        Token Bridge
-      </h2>
+      <div style={{ 
+        display: "flex", 
+        alignItems: "center", 
+        justifyContent: "space-between", 
+        marginBottom: "16px" 
+      }}>
+        <h2 style={{ margin: "0", fontSize: "16px", fontWeight: "bold" }}>
+          Token Bridge
+        </h2>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "10px", color: "#6b7280", display: "flex", alignItems: "center" }}>
+            {advancedMode ? "Advanced" : "Simple"}
+            <HelpIcon content={HELP_CONTENT.ADVANCED_MODE.content} title={HELP_CONTENT.ADVANCED_MODE.title} />
+          </span>
+          <button
+            onClick={toggleAdvancedMode}
+            style={{
+              padding: "4px 8px",
+              backgroundColor: advancedMode ? "#0ea5e9" : "#f3f4f6",
+              color: advancedMode ? "white" : "#374151",
+              border: "1px solid " + (advancedMode ? "#0ea5e9" : "#d1d5db"),
+              borderRadius: "4px",
+              cursor: "pointer",
+              fontSize: "10px",
+              fontWeight: "bold"
+            }}
+            title={advancedMode ? "Switch to Simple mode" : "Switch to Advanced mode"}
+          >
+            {advancedMode ? "🔧" : "⚡"}
+          </button>
+        </div>
+      </div>
 
       {error && (
         <EnhancedErrorDisplay
@@ -988,16 +1023,14 @@ function App() {
       )}
 
       {successMessage && (
-        <div
-          style={{
-            padding: "8px 12px",
-            marginBottom: "16px",
-            backgroundColor: "#f0f9ff",
-            border: "1px solid #bae6fd",
-            borderRadius: "4px",
-            color: "#0369a1",
-          }}
-        >
+        <div style={{
+          padding: "8px 12px",
+          marginBottom: "16px",
+          backgroundColor: "#f0f9ff",
+          border: "1px solid #bae6fd",
+          borderRadius: "4px",
+          color: "#0369a1",
+        }}>
           {successMessage}
         </div>
       )}
@@ -1017,9 +1050,7 @@ function App() {
             fontSize: "12px",
           }}
         >
-          {loading && !importLoading
-            ? "Loading..."
-            : "Load Variable Collections"}
+          {loading && !importLoading ? "Loading..." : "Load Variable Collections"}
         </button>
 
         <button
@@ -1042,20 +1073,21 @@ function App() {
 
       {collections.length > 0 && (
         <div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: "12px",
-            }}
-          >
-            <h3 style={{ margin: "0", fontSize: "14px", fontWeight: "bold" }}>
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: "12px",
+          }}>
+            <h3 style={{ margin: "0", fontSize: "14px", fontWeight: "bold", display: "flex", alignItems: "center" }}>
               Collections Found ({collections.length}):
+              <HelpIcon content={HELP_CONTENT.COLLECTION_SELECTION.content} title={HELP_CONTENT.COLLECTION_SELECTION.title} />
             </h3>
-            <div style={{ fontSize: "11px", color: "#666" }}>
-              {selectedCollections.size} selected for export
-            </div>
+            {advancedMode && (
+              <div style={{ fontSize: "11px", color: "#666" }}>
+                {selectedCollections.size} selected for export
+              </div>
+            )}
           </div>
 
           {collections.map((collection) => (
@@ -1066,28 +1098,22 @@ function App() {
                 padding: "12px",
                 border: "1px solid #ddd",
                 borderRadius: "4px",
-                backgroundColor: selectedCollections.has(collection.id)
-                  ? "#f0f9ff"
-                  : "#f9f9f9",
+                backgroundColor: selectedCollections.has(collection.id) ? "#f0f9ff" : "#f9f9f9",
               }}
             >
-              <div
-                style={{
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: "4px",
+              }}>
+                <label style={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-between",
-                  marginBottom: "4px",
-                }}
-              >
-                <label
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    cursor: "pointer",
-                    fontSize: "13px",
-                    fontWeight: "bold",
-                  }}
-                >
+                  cursor: "pointer",
+                  fontSize: "13px",
+                  fontWeight: "bold",
+                }}>
                   <input
                     type="checkbox"
                     checked={selectedCollections.has(collection.id)}
@@ -1096,65 +1122,72 @@ function App() {
                   />
                   {collection.name}
                 </label>
-                <button
-                  onClick={() => loadCollectionDetails(collection.id)}
-                  style={{
-                    padding: "4px 8px",
-                    backgroundColor: "#e2e8f0",
-                    border: "1px solid #cbd5e1",
-                    borderRadius: "3px",
-                    cursor: "pointer",
-                    fontSize: "10px",
-                  }}
-                >
-                  View Details →
-                </button>
+                {advancedMode && (
+                  <button
+                    onClick={() => loadCollectionDetails(collection.id)}
+                    style={{
+                      padding: "4px 8px",
+                      backgroundColor: "#e2e8f0",
+                      border: "1px solid #cbd5e1",
+                      borderRadius: "3px",
+                      cursor: "pointer",
+                      fontSize: "10px",
+                    }}
+                  >
+                    View Details →
+                  </button>
+                )}
               </div>
-              <div style={{ fontSize: "11px", color: "#666" }}>
-                {collection.variableIds.length} variables •{" "}
-                {collection.modes.length} modes
-              </div>
+              {advancedMode && (
+                <div style={{ fontSize: "11px", color: "#666" }}>
+                  {collection.variableIds.length} variables • {collection.modes.length} modes
+                </div>
+              )}
             </div>
           ))}
 
-          <div
-            style={{
-              marginTop: "16px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-            }}
-          >
+          <div style={{
+            marginTop: "16px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "8px",
+          }}>
             {/* GitHub Sync Section */}
-            <div
-              style={{
-                padding: "12px",
-                backgroundColor: githubConfigured ? "#f0f9ff" : "#f9fafb",
-                border: githubConfigured
-                  ? "1px solid #bae6fd"
-                  : "1px solid #e5e7eb",
-                borderRadius: "6px",
-              }}
-            >
-              <div
-                style={{
+            <div style={{
+              padding: "12px",
+              backgroundColor: githubConfigured ? "#f0f9ff" : "#f9fafb",
+              border: githubConfigured ? "1px solid #bae6fd" : "1px solid #e5e7eb",
+              borderRadius: "6px",
+            }}>
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: "8px",
+              }}>
+                <div style={{
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  color: "#374151",
                   display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  marginBottom: "8px",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: "bold",
-                    color: "#374151",
-                  }}
-                >
+                  alignItems: "center"
+                }}>
                   🔗 GitHub Integration
+                  <HelpIcon 
+                    content="Sync your design tokens directly with a GitHub repository. Configure once, then push/pull changes seamlessly." 
+                    title="GitHub Integration" 
+                  />
                 </div>
                 <button
-                  onClick={showGitHubConfig}
+                  onClick={() => {
+                    console.log("Button clicked - githubConfigured:", githubConfigured);
+                    if (githubConfigured) {
+                      showGitHubConfig();
+                    } else {
+                      console.log("Opening setup wizard");
+                      setShowSetupWizard(true);
+                    }
+                  }}
                   style={{
                     padding: "4px 8px",
                     backgroundColor: "#f3f4f6",
@@ -1165,31 +1198,31 @@ function App() {
                     color: "#374151",
                   }}
                 >
-                  {githubConfigured ? "Edit Config" : "Configure"}
+                  {githubConfigured ? "Edit Config" : "🚀 Quick Setup"}
                 </button>
               </div>
 
               {githubConfigured ? (
                 <div>
-                  <div
-                    style={{
-                      fontSize: "10px",
-                      color: "#059669",
-                      marginBottom: "8px",
-                    }}
-                  >
-                    ✅ Connected to {githubConfig?.owner}/{githubConfig?.repo} (
-                    {githubConfig?.syncMode} mode)
+                  <div style={{
+                    fontSize: "10px",
+                    color: "#059669",
+                    marginBottom: "8px",
+                  }}>
+                    ✅ Connected to {githubConfig?.owner}/{githubConfig?.repo}
+                    {advancedMode && ` (${githubConfig?.syncMode} mode)`}
                   </div>
                   
-                  {/* Sync Status */}
-                  <div style={{ marginBottom: "8px" }}>
-                    <SyncStatus 
-                      githubClient={githubClient}
-                      githubConfigured={githubConfigured}
-                      onRefresh={loadCollections}
-                    />
-                  </div>
+                  {advancedMode && (
+                    <div style={{ marginBottom: "8px" }}>
+                      <SyncStatus 
+                        githubClient={githubClient}
+                        githubConfigured={githubConfigured}
+                        onRefresh={loadCollections}
+                      />
+                    </div>
+                  )}
+
                   {githubConfig?.syncMode === "direct" ? (
                     <div style={{ display: "flex", gap: "4px" }}>
                       <button
@@ -1215,17 +1248,11 @@ function App() {
                         style={{
                           flex: 1,
                           padding: "8px 12px",
-                          backgroundColor:
-                            loading || selectedCollections.size === 0
-                              ? "#cbd5e1"
-                              : "#0ea5e9",
+                          backgroundColor: loading || selectedCollections.size === 0 ? "#cbd5e1" : "#0ea5e9",
                           color: "white",
                           border: "none",
                           borderRadius: "4px",
-                          cursor:
-                            loading || selectedCollections.size === 0
-                              ? "not-allowed"
-                              : "pointer",
+                          cursor: loading || selectedCollections.size === 0 ? "not-allowed" : "pointer",
                           fontSize: "11px",
                           fontWeight: "bold",
                         }}
@@ -1240,24 +1267,16 @@ function App() {
                       style={{
                         width: "100%",
                         padding: "10px 16px",
-                        backgroundColor:
-                          loading || selectedCollections.size === 0
-                            ? "#cbd5e1"
-                            : "#0ea5e9",
+                        backgroundColor: loading || selectedCollections.size === 0 ? "#cbd5e1" : "#0ea5e9",
                         color: "white",
                         border: "none",
                         borderRadius: "4px",
-                        cursor:
-                          loading || selectedCollections.size === 0
-                            ? "not-allowed"
-                            : "pointer",
+                        cursor: loading || selectedCollections.size === 0 ? "not-allowed" : "pointer",
                         fontSize: "12px",
                         fontWeight: "bold",
                       }}
                     >
-                      {loading
-                        ? "Creating PR..."
-                        : `🚀 Create PR (${selectedCollections.size})`}
+                      {loading ? "Creating PR..." : `🚀 Create PR (${selectedCollections.size})`}
                     </button>
                   )}
                 </div>
@@ -1269,22 +1288,18 @@ function App() {
             </div>
 
             {/* Local Export Section */}
-            <div
-              style={{
-                padding: "12px",
-                backgroundColor: "#f8fafc",
-                border: "1px solid #e2e8f0",
-                borderRadius: "6px",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                  color: "#374151",
-                  marginBottom: "8px",
-                }}
-              >
+            <div style={{
+              padding: "12px",
+              backgroundColor: "#f8fafc",
+              border: "1px solid #e2e8f0",
+              borderRadius: "6px",
+            }}>
+              <div style={{
+                fontSize: "12px",
+                fontWeight: "bold",
+                color: "#374151",
+                marginBottom: "8px",
+              }}>
                 💾 Local Export
               </div>
               <button
@@ -1293,54 +1308,39 @@ function App() {
                 style={{
                   width: "100%",
                   padding: "10px 16px",
-                  backgroundColor:
-                    loading || selectedCollections.size === 0
-                      ? "#cbd5e1"
-                      : "#16a34a",
+                  backgroundColor: loading || selectedCollections.size === 0 ? "#cbd5e1" : "#16a34a",
                   color: "white",
                   border: "none",
                   borderRadius: "4px",
-                  cursor:
-                    loading || selectedCollections.size === 0
-                      ? "not-allowed"
-                      : "pointer",
+                  cursor: loading || selectedCollections.size === 0 ? "not-allowed" : "pointer",
                   fontSize: "12px",
                   fontWeight: "bold",
                 }}
               >
-                {loading
-                  ? "Exporting..."
-                  : `📥 Download JSON (${selectedCollections.size})`}
+                {loading ? "Exporting..." : `📥 Download JSON (${selectedCollections.size})`}
               </button>
             </div>
           </div>
 
-          {/* Download Queue - shown when multiple files need downloading */}
           {downloadQueue.length > 0 && (
-            <div
-              style={{
-                marginTop: "16px",
-                padding: "12px",
-                backgroundColor: "#f0f9ff",
-                border: "1px solid #bae6fd",
-                borderRadius: "6px",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  marginBottom: "8px",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: "bold",
-                    color: "#0369a1",
-                  }}
-                >
+            <div style={{
+              marginTop: "16px",
+              padding: "12px",
+              backgroundColor: "#f0f9ff",
+              border: "1px solid #bae6fd",
+              borderRadius: "6px",
+            }}>
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: "8px",
+              }}>
+                <div style={{
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  color: "#0369a1",
+                }}>
                   📥 Files Ready for Download
                 </div>
                 <button
@@ -1359,25 +1359,18 @@ function App() {
                 </button>
               </div>
 
-              <div
-                style={{
-                  fontSize: "10px",
-                  color: "#0369a1",
-                  marginBottom: "8px",
-                }}
-              >
-                Click each button to download individual files (browser blocks
-                multiple downloads)
+              <div style={{
+                fontSize: "10px",
+                color: "#0369a1",
+                marginBottom: "8px",
+              }}>
+                Click each button to download individual files (browser blocks multiple downloads)
               </div>
 
-              <div
-                style={{ display: "flex", flexDirection: "column", gap: "4px" }}
-              >
+              <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
                 {downloadQueue.map((collectionData, index) => {
                   const collectionName = Object.keys(collectionData)[0];
-                  const tokenCount = Object.keys(
-                    collectionData[collectionName]
-                  ).length;
+                  const tokenCount = Object.keys(collectionData[collectionName]).length;
 
                   return (
                     <button
@@ -1408,40 +1401,28 @@ function App() {
             </div>
           )}
 
-          <div
-            style={{
+          {advancedMode && (
+            <div style={{
               marginTop: "12px",
               padding: "12px",
               backgroundColor: "#f1f5f9",
               border: "1px solid #cbd5e1",
               borderRadius: "6px",
-            }}
-          >
-            <div
-              style={{
+            }}>
+              <div style={{
                 fontSize: "12px",
                 fontWeight: "bold",
                 marginBottom: "6px",
-              }}
-            >
-              ℹ️ Export Information
+              }}>
+                ℹ️ Export Information
+              </div>
+              <div style={{ fontSize: "10px", color: "#64748b", lineHeight: "1.4" }}>
+                <strong>Local Export:</strong> Downloads W3C DTCG format JSON files to your computer<br />
+                <strong>GitHub Sync:</strong> {githubConfig?.syncMode === "direct" ? "Direct push/pull to branch" : "Creates pull request"} with token files<br />
+                <strong>Format:</strong> Each collection becomes a separate file (e.g., primitive.json, semantic-light.json)
+              </div>
             </div>
-            <div
-              style={{ fontSize: "10px", color: "#64748b", lineHeight: "1.4" }}
-            >
-              <strong>Local Export:</strong> Downloads W3C DTCG format JSON
-              files to your computer
-              <br />
-              <strong>GitHub Sync:</strong>{" "}
-              {githubConfig?.syncMode === "direct"
-                ? "Direct push/pull to branch"
-                : "Creates pull request"}{" "}
-              with token files
-              <br />
-              <strong>Format:</strong> Each collection becomes a separate file
-              (e.g., primitive.json, semantic-light.json)
-            </div>
-          </div>
+          )}
         </div>
       )}
 
@@ -1451,20 +1432,17 @@ function App() {
         </div>
       )}
 
-      {/* Format Transformation Feedback */}
-      {adapterResults.length > 0 && (
+      {advancedMode && adapterResults.length > 0 && (
         <TransformationFeedback adapterResults={adapterResults} />
       )}
 
-      {/* Validation Display */}
-      {showValidation && validationReport && (
+      {advancedMode && showValidation && validationReport && (
         <ValidationDisplay
           validationReport={validationReport}
           onClose={() => setShowValidation(false)}
         />
       )}
 
-      {/* Conflict Resolution Display */}
       {showConflictResolution && conflicts.length > 0 && (
         <ConflictResolutionDisplay
           conflicts={conflicts}
@@ -1478,11 +1456,19 @@ function App() {
         />
       )}
 
-      {/* Enhanced Progress Feedback */}
+      {/* Setup Wizard - Quick Win #4 */}
+      {showSetupWizard && (
+        <SetupWizard
+          onComplete={handleSetupWizardComplete}
+          onClose={() => setShowSetupWizard(false)}
+        />
+      )}
+
       <ProgressFeedback
         steps={progressSteps}
         currentStep={progressStep}
         loading={loading && progressSteps.length > 0}
+        onCancel={currentOperation ? handleCancelOperation : undefined}
       />
     </div>
   );

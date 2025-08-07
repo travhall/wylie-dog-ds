@@ -27,6 +27,8 @@ export interface ExportOptions {
   resolveAliases?: boolean;
 }
 
+export type SyncMode = 'direct' | 'pull-request';
+
 export interface GitHubConfig {
   owner: string;
   repo: string;
@@ -34,4 +36,5 @@ export interface GitHubConfig {
   tokenPath: string;
   authMethod?: 'oauth' | 'pat';
   accessToken?: string;
+  syncMode: SyncMode;
 }

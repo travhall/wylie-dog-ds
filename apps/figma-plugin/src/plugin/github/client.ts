@@ -2,20 +2,10 @@
 
 import fetch from 'cross-fetch';
 import { Octokit } from '@octokit/rest';
+import type { GitHubConfig, SyncMode } from '../../shared/types';
 
 // Make fetch available globally for Octokit
 (globalThis as any).fetch = fetch;
-
-export type SyncMode = 'direct' | 'review';
-
-export interface GitHubConfig {
-  owner: string;
-  repo: string;
-  branch: string;
-  tokenPath: string;
-  accessToken?: string;
-  syncMode: SyncMode;
-}
 
 export interface SyncResult {
   success: boolean;
@@ -56,6 +46,38 @@ export class GitHubClient {
       return true;
     } catch (error) {
       console.error('Failed to initialize GitHub client:', error);
+      return false;
+    }
+  }
+
+  configure(config: GitHubConfig): void {
+    this.config = config;
+    if (config.accessToken) {
+      this.octokit = new Octokit({
+        auth: config.accessToken,
+        userAgent: 'Token Bridge Figma Plugin v1.0.0'
+      });
+    }
+  }
+
+  async validateConfiguration(): Promise<boolean> {
+    if (!this.octokit || !this.config) {
+      return false;
+    }
+
+    try {
+      // Test authentication
+      await this.octokit.users.getAuthenticated();
+      
+      // Test repository access
+      await this.octokit.repos.get({
+        owner: this.config.owner,
+        repo: this.config.repo
+      });
+      
+      return true;
+    } catch (error) {
+      console.error('Configuration validation failed:', error);
       return false;
     }
   }
@@ -174,7 +196,7 @@ export class GitHubClient {
       if (this.config.syncMode === 'direct') {
         return await this.directSync(exportData, commitMessage);
       } else {
-        return await this.reviewSync(exportData, commitMessage);
+        return await this.pullRequestSync(exportData, commitMessage);
       }
       
     } catch (error: any) {
@@ -218,7 +240,7 @@ export class GitHubClient {
     };
   }
 
-  private async reviewSync(exportData: any[], commitMessage: string): Promise<SyncResult> {
+  private async pullRequestSync(exportData: any[], commitMessage: string): Promise<SyncResult> {
     if (!this.octokit || !this.config) {
       throw new Error('GitHub client not initialized');
     }
@@ -427,5 +449,24 @@ ${filesUpdated.map(path => `- \`${path}\``).join('\n')}
 ---
 *This PR was automatically generated from Figma variables using Token Bridge*
     `.trim();
+  }
+
+  /**
+   * Get current local tokens from Figma for conflict detection
+   * This method interfaces with Figma's API to get current variable collections
+   */
+  async getCurrentLocalTokens(): Promise<any[]> {
+    try {
+      console.log('📍 Getting current local tokens from Figma...');
+      
+      // Since this is called from UI thread, we need to request data from main thread
+      // Return empty array for now - this will be enhanced when conflict detection is fully implemented
+      console.log('⚠️ getCurrentLocalTokens: Returning empty array - implement Figma API bridge for conflict detection');
+      return [];
+      
+    } catch (error) {
+      console.error('❌ Error getting local tokens:', error);
+      return [];
+    }
   }
 }

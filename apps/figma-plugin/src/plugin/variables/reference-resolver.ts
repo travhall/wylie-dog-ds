@@ -161,7 +161,10 @@ export function createImportOrder(collections: any[]): string[] {
     collectionDeps.set(collectionName, deps);
   }
 
-  // Topological sort
+  // Sort collections to handle dependencies:
+  // 1. Primitive collections first (no dependencies)
+  // 2. Collections with fewer dependencies next
+  // 3. Collections with more dependencies last
   const sorted: string[] = [];
   const visited = new Set<string>();
   const visiting = new Set<string>();
@@ -185,26 +188,76 @@ export function createImportOrder(collections: any[]): string[] {
     sorted.push(name);
   }
 
-  for (const name of collectionNames) {
+  // Start with collections that have no dependencies (likely primitives)
+  const independentCollections = collectionNames.filter(name => {
+    const deps = collectionDeps.get(name) || new Set();
+    return deps.size === 0;
+  });
+
+  // Visit independent collections first
+  for (const name of independentCollections) {
     visit(name);
   }
 
-  console.log('Import order:', sorted);
+  // Then visit remaining collections
+  for (const name of collectionNames) {
+    if (!visited.has(name)) {
+      visit(name);
+    }
+  }
+
+  console.log('Import order determined:', sorted);
   return sorted;
 }
 
 function inferCollectionFromReference(referencePath: string, collectionNames: string[]): string | null {
-  // Simple heuristic: check if reference path starts with collection name
+  // Enhanced reference inference with better matching
+  
+  // First try exact prefix matching
   for (const collectionName of collectionNames) {
-    if (referencePath.startsWith(collectionName.toLowerCase())) {
+    if (referencePath.startsWith(collectionName.toLowerCase() + '.')) {
       return collectionName;
     }
   }
 
-  // Fallback: assume primitives for basic tokens
-  if (referencePath.startsWith('color.') || referencePath.startsWith('spacing.') || referencePath.startsWith('typography.')) {
-    return collectionNames.find(name => name.toLowerCase().includes('primitive')) || collectionNames[0];
+  // Handle common token type mappings
+  const tokenTypeToCollection: Record<string, string[]> = {
+    'color.': ['primitive', 'color', 'colors'],
+    'spacing.': ['primitive', 'spacing'],
+    'typography.fontsize.': ['primitive', 'typography', 'fonts'],
+    'typography.fontweight.': ['primitive', 'typography', 'fonts'],
+    'typography.fontfamily.': ['primitive', 'typography', 'fonts'],
+    'typography.lineheight.': ['primitive', 'typography', 'fonts'],
+    'typography.letterSpacing.': ['primitive', 'typography', 'fonts'],
+    'size.': ['primitive', 'sizing'],
+    'radius.': ['primitive', 'border'],
+    'shadow.': ['primitive', 'effect'],
+    'border.': ['primitive', 'border'],
+  };
+
+  // Try to match by token type
+  for (const [prefix, candidates] of Object.entries(tokenTypeToCollection)) {
+    if (referencePath.startsWith(prefix)) {
+      for (const candidate of candidates) {
+        const matchingCollection = collectionNames.find(name => 
+          name.toLowerCase().includes(candidate)
+        );
+        if (matchingCollection) {
+          return matchingCollection;
+        }
+      }
+    }
   }
 
-  return null;
+  // Fallback for common patterns
+  if (referencePath.startsWith('typography.')) {
+    // Typography tokens are often in the same collection
+    return collectionNames.find(name => 
+      name.toLowerCase().includes('typography') || 
+      name.toLowerCase().includes('font')
+    ) || collectionNames[0];
+  }
+
+  // Default to first collection (often primitives)
+  return collectionNames[0];
 }

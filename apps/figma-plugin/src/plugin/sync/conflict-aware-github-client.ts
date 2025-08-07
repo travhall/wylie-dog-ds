@@ -1,6 +1,7 @@
 // Enhanced GitHub client with conflict detection and resolution capabilities
 import { GitHubClient } from '../github/client';
-import type { GitHubConfig, SyncResult, PullResult } from '../github/client';
+import type { SyncResult, PullResult } from '../github/client';
+import type { GitHubConfig } from '../../shared/types';
 import type { ExportData } from '../variables/processor';
 import { ConflictDetector } from './conflict-detector';
 import { ConflictResolver } from './conflict-resolver';

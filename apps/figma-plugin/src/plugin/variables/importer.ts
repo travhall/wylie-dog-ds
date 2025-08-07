@@ -47,7 +47,7 @@ export interface GlobalImportResult {
   validationReport?: ValidationReport;
 }
 
-// Map W3C DTCG types to Figma types
+// Map W3C DTCG types to Figma types with enhanced typography support
 const W3C_TO_FIGMA_TYPE_MAP: Record<string, string> = {
   color: "COLOR",
   fontSize: "FLOAT",
@@ -62,9 +62,15 @@ const W3C_TO_FIGMA_TYPE_MAP: Record<string, string> = {
   dimension: "FLOAT",
   shadow: "STRING",
   boolean: "BOOLEAN",
+  // Add fallbacks for common token types
+  number: "FLOAT",
+  string: "STRING",
+  text: "STRING",
+  font: "STRING",
+  size: "FLOAT",
 };
 
-// Map W3C DTCG types to Figma scopes
+// Map W3C DTCG types to Figma scopes with enhanced typography support
 const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
   color: ["ALL_SCOPES"],
   fontSize: ["FONT_SIZE"],
@@ -79,6 +85,12 @@ const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
   dimension: ["GAP", "PADDING"],
   shadow: ["EFFECT"],
   boolean: ["ALL_SCOPES"],
+  // Add fallbacks for common token types
+  number: ["ALL_SCOPES"],
+  string: ["ALL_SCOPES"],
+  text: ["ALL_SCOPES"],
+  font: ["FONT_FAMILY"],
+  size: ["FONT_SIZE"],
 };
 
 /**
@@ -246,12 +258,19 @@ async function createVariableWithReferences(
             // Add to result warnings but continue processing
           }
 
-          // Set immediate value
+          // Set immediate value with type validation
           const figmaValue = convertTokenValueToFigma(
             Object.assign({}, token, { $value: modeValue }),
             figmaType
           );
-          variable.setValueForMode(mode.modeId, figmaValue);
+          
+          try {
+            variable.setValueForMode(mode.modeId, figmaValue);
+          } catch (error) {
+            console.error(`Failed to set value for ${tokenName} mode ${mode.name}:`, error);
+            console.error(`Token type: ${token.$type}, Figma type: ${figmaType}, Value:`, modeValue);
+            // Try to continue with other modes
+          }
         }
       }
 
@@ -272,9 +291,14 @@ async function createVariableWithReferences(
           registry.addPendingResolution(variable, tokenName, modeReferences);
         }
       } else {
-        // Set immediate value
+        // Set immediate value with type validation
         const figmaValue = convertTokenValueToFigma(token, figmaType);
-        variable.setValueForMode(defaultMode.modeId, figmaValue);
+        try {
+          variable.setValueForMode(defaultMode.modeId, figmaValue);
+        } catch (error) {
+          console.error(`Failed to set value for ${tokenName}:`, error);
+          console.error(`Token type: ${token.$type}, Figma type: ${figmaType}, Value:`, token.$value);
+        }
       }
     }
 
@@ -286,6 +310,72 @@ async function createVariableWithReferences(
     );
     return null;
   }
+}
+
+/**
+ * Sort tokens within a collection by their dependencies
+ * Tokens with no references come first, then tokens that reference them
+ */
+function sortTokensByDependencies(tokenEntries: [string, ProcessedToken][]): [string, ProcessedToken][] {
+  const dependencyMap = new Map<string, Set<string>>();
+  const tokenMap = new Map<string, ProcessedToken>();
+  
+  // Build dependency graph
+  for (const [tokenName, token] of tokenEntries) {
+    tokenMap.set(tokenName, token);
+    const deps = new Set<string>();
+    
+    // Extract references from this token
+    const references = extractReferences(token);
+    for (const ref of Array.from(references.values())) {
+      // Check if reference is to another token in this same collection
+      const referencedToken = tokenEntries.find(([name]) => name === ref.referencePath);
+      if (referencedToken) {
+        deps.add(ref.referencePath);
+      }
+    }
+    
+    dependencyMap.set(tokenName, deps);
+  }
+  
+  // Topological sort
+  const sorted: [string, ProcessedToken][] = [];
+  const visited = new Set<string>();
+  const visiting = new Set<string>();
+  
+  function visit(tokenName: string): void {
+    if (visiting.has(tokenName)) {
+      console.warn(`Circular dependency detected in token: ${tokenName}`);
+      return;
+    }
+    if (visited.has(tokenName)) return;
+    
+    visiting.add(tokenName);
+    const deps = dependencyMap.get(tokenName) || new Set();
+    
+    // Visit dependencies first
+    for (const dep of Array.from(deps)) {
+      if (tokenMap.has(dep)) {
+        visit(dep);
+      }
+    }
+    
+    visiting.delete(tokenName);
+    visited.add(tokenName);
+    
+    const token = tokenMap.get(tokenName);
+    if (token) {
+      sorted.push([tokenName, token]);
+    }
+  }
+  
+  // Process all tokens
+  for (const [tokenName] of tokenEntries) {
+    visit(tokenName);
+  }
+  
+  console.log(`   Sorted ${sorted.length} tokens by dependencies`);
+  return sorted;
 }
 
 /**
@@ -402,11 +492,15 @@ export async function importMultipleCollections(
           collectionInfo.data.modes || [{ modeId: "default", name: "Default" }]
         );
 
-        // Create all variables in this collection
+        // Create all variables in this collection with proper ordering
         const tokenEntries = Object.entries(collectionInfo.data.variables);
+        
+        // Sort tokens within collection by dependency order
+        const sortedTokenEntries = sortTokensByDependencies(tokenEntries);
+        
         let collectionCreated = 0;
 
-        for (const [tokenName, token] of tokenEntries) {
+        for (const [tokenName, token] of sortedTokenEntries) {
           console.log(`   Creating variable: ${tokenName}`);
           const variable = await createVariableWithReferences(
             collection,
