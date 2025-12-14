@@ -1,15 +1,20 @@
-name: Release
+name: Test
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  release:
-    name: Release
+  test:
+    name: Run Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -41,17 +46,21 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: pnpm release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Run Tests
+        run: pnpm test
 
-      # Optional: Add notification step here when needed
-      # - name: Send notification if a publish happens
-      #   if: steps.changesets.outputs.published == 'true'
-      #   run: echo "Published packages - ${{ steps.changesets.outputs.publishedPackages }}"
+      - name: Run Accessibility Tests
+        run: pnpm test:a11y
+
+      - name: Generate Coverage Report
+        run: pnpm test:coverage
+
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./packages/ui/coverage/coverage-final.json
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

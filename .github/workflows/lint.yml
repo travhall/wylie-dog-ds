@@ -1,15 +1,20 @@
-name: Release
+name: Lint
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  release:
-    name: Release
+  lint:
+    name: Lint & Format Check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -41,17 +46,11 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: pnpm release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Run ESLint
+        run: pnpm lint
 
-      # Optional: Add notification step here when needed
-      # - name: Send notification if a publish happens
-      #   if: steps.changesets.outputs.published == 'true'
-      #   run: echo "Published packages - ${{ steps.changesets.outputs.publishedPackages }}"
+      - name: Run Accessibility Linting
+        run: pnpm lint:a11y
+
+      - name: Check Prettier Formatting
+        run: pnpm prettier --check "**/*.{ts,tsx,md}"
