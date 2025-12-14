@@ -49,6 +49,26 @@ beforeAll(() => {
     }),
   })
 
+  // Mock hasPointerCapture (needed for Radix Select in jsdom)
+  if (!Element.prototype.hasPointerCapture) {
+    Element.prototype.hasPointerCapture = function() {
+      return false
+    }
+  }
+
+  // Mock setPointerCapture and releasePointerCapture
+  if (!Element.prototype.setPointerCapture) {
+    Element.prototype.setPointerCapture = function() {}
+  }
+  if (!Element.prototype.releasePointerCapture) {
+    Element.prototype.releasePointerCapture = function() {}
+  }
+
+  // Mock scrollIntoView (needed for Radix Select)
+  if (!Element.prototype.scrollIntoView) {
+    Element.prototype.scrollIntoView = function() {}
+  }
+
   // Suppress console warnings for tests (can be removed if you want to see them)
   const originalConsoleWarn = console.warn
   console.warn = (...args) => {
