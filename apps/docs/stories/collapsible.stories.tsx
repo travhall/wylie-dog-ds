@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   Collapsible,
@@ -10,13 +11,14 @@ import { ChevronDownIcon, PlusIcon, MinusIcon } from "lucide-react";
 const meta: Meta<typeof Collapsible> = {
   title: "Components/Collapsible",
   component: Collapsible,
-  parameters: { 
+  parameters: {
     layout: "centered",
     docs: {
       description: {
-        component: 'Collapsible component for showing and hiding content sections. Built on Radix UI primitives with smooth animations and flexible trigger options.'
-      }
-    }
+        component:
+          "Collapsible component for showing and hiding content sections. Built on Radix UI primitives with smooth animations and flexible trigger options.",
+      },
+    },
   },
   tags: ["autodocs"],
   argTypes: {
@@ -67,30 +69,38 @@ export const Default: Story = {
   ),
 };
 
+//cSpell: ignore peduarte
+
 export const WithCustomTrigger: Story = {
   render: () => {
     const [isOpen, setIsOpen] = React.useState(false);
-    
+
     return (
-      <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full max-w-md space-y-2">
+      <Collapsible
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        className="w-full max-w-md space-y-2"
+      >
         <div className="flex items-center justify-between space-x-4 px-4">
-          <h4 className="text-sm font-semibold">
-            Advanced Settings
-          </h4>
+          <h4 className="text-sm font-semibold">Advanced Settings</h4>
           <CollapsibleTrigger asChild>
             <Button variant="ghost" size="sm">
-              {isOpen ? <MinusIcon className="h-4 w-4" /> : <PlusIcon className="h-4 w-4" />}
+              {isOpen ? (
+                <MinusIcon className="h-4 w-4" />
+              ) : (
+                <PlusIcon className="h-4 w-4" />
+              )}
               <span className="sr-only">Toggle advanced settings</span>
             </Button>
           </CollapsibleTrigger>
         </div>
-        
+
         <div className="rounded-md border p-4 space-y-3">
           <div className="flex items-center justify-between">
             <label className="text-sm font-medium">Enable notifications</label>
             <input type="checkbox" defaultChecked />
           </div>
-          
+
           <CollapsibleContent className="space-y-3">
             <div className="flex items-center justify-between">
               <label className="text-sm font-medium">Auto-save changes</label>
@@ -112,29 +122,29 @@ export const WithCustomTrigger: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Custom trigger with plus/minus icons and controlled state."
-      }
-    }
-  }
+        story: "Custom trigger with plus/minus icons and controlled state.",
+      },
+    },
+  },
 };
 
 export const FAQ: Story = {
   render: () => (
     <div className="w-full max-w-2xl space-y-4">
       <h3 className="text-lg font-semibold">Frequently Asked Questions</h3>
-      
+
       <div className="space-y-2">
         <Collapsible className="rounded-lg border">
           <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-neutral-50">
             <span className="font-medium">What is your refund policy?</span>
-            <ChevronDownIcon className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-180" />
+            <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
               <p className="text-sm text-neutral-600">
-                We offer a 30-day money-back guarantee for all our products. 
-                If you're not satisfied with your purchase, you can request a 
-                full refund within 30 days of your order date.
+                We offer a 30-day money-back guarantee for all our products. If
+                you're not satisfied with your purchase, you can request a full
+                refund within 30 days of your order date.
               </p>
             </div>
           </CollapsibleContent>
@@ -143,14 +153,14 @@ export const FAQ: Story = {
         <Collapsible className="rounded-lg border">
           <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-neutral-50">
             <span className="font-medium">How do I track my order?</span>
-            <ChevronDownIcon className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-180" />
+            <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
               <p className="text-sm text-neutral-600">
-                Once your order ships, you'll receive a tracking number via email. 
-                You can use this number on our tracking page or the carrier's 
-                website to monitor your package's progress.
+                Once your order ships, you'll receive a tracking number via
+                email. You can use this number on our tracking page or the
+                carrier's website to monitor your package's progress.
               </p>
             </div>
           </CollapsibleContent>
@@ -159,13 +169,13 @@ export const FAQ: Story = {
         <Collapsible className="rounded-lg border">
           <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-neutral-50">
             <span className="font-medium">Do you ship internationally?</span>
-            <ChevronDownIcon className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-180" />
+            <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
               <p className="text-sm text-neutral-600">
-                Yes, we ship to over 50 countries worldwide. Shipping costs and 
-                delivery times vary by location. International orders may be 
+                Yes, we ship to over 50 countries worldwide. Shipping costs and
+                delivery times vary by location. International orders may be
                 subject to customs duties and taxes.
               </p>
             </div>
@@ -177,30 +187,30 @@ export const FAQ: Story = {
   parameters: {
     docs: {
       description: {
-        story: "FAQ section with multiple collapsible items."
-      }
-    }
-  }
+        story: "FAQ section with multiple collapsible items.",
+      },
+    },
+  },
 };
 
 export const NestedContent: Story = {
   render: () => (
     <div className="w-full max-w-lg space-y-4">
       <h3 className="text-lg font-semibold">Project Structure</h3>
-      
+
       <Collapsible className="rounded-lg border">
         <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-neutral-50">
           <span className="font-medium">📁 src</span>
-          <ChevronDownIcon className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-180" />
+          <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
         </CollapsibleTrigger>
         <CollapsibleContent>
           <div className="px-4 pb-4 space-y-2">
             <div className="text-sm text-neutral-600">📄 index.ts</div>
-            
+
             <Collapsible className="ml-4 rounded border">
               <CollapsibleTrigger className="flex w-full items-center justify-between p-3 text-left hover:bg-neutral-50">
                 <span className="text-sm font-medium">📁 components</span>
-                <ChevronDownIcon className="h-3 w-3 transition-transform [&[data-state=open]]:rotate-180" />
+                <ChevronDownIcon className="h-3 w-3 transition-transform data-[state=open]:rotate-180" />
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <div className="px-3 pb-3 space-y-1">
@@ -214,12 +224,14 @@ export const NestedContent: Story = {
             <Collapsible className="ml-4 rounded border">
               <CollapsibleTrigger className="flex w-full items-center justify-between p-3 text-left hover:bg-neutral-50">
                 <span className="text-sm font-medium">📁 utils</span>
-                <ChevronDownIcon className="h-3 w-3 transition-transform [&[data-state=open]]:rotate-180" />
+                <ChevronDownIcon className="h-3 w-3 transition-transform data-[state=open]:rotate-180" />
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <div className="px-3 pb-3 space-y-1">
                   <div className="text-xs text-neutral-600">📄 helpers.ts</div>
-                  <div className="text-xs text-neutral-600">📄 constants.ts</div>
+                  <div className="text-xs text-neutral-600">
+                    📄 constants.ts
+                  </div>
                 </div>
               </CollapsibleContent>
             </Collapsible>
@@ -231,37 +243,37 @@ export const NestedContent: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Nested collapsible sections for hierarchical content."
-      }
-    }
-  }
+        story: "Nested collapsible sections for hierarchical content.",
+      },
+    },
+  },
 };
 
 export const FormSections: Story = {
   render: () => (
     <div className="w-full max-w-lg space-y-4">
       <h3 className="text-lg font-semibold">Account Settings</h3>
-      
+
       <div className="space-y-3">
         <Collapsible defaultOpen className="rounded-lg border">
           <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-neutral-50">
             <span className="font-medium">Personal Information</span>
-            <ChevronDownIcon className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-180" />
+            <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4 space-y-3">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Full Name</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   defaultValue="John Doe"
                   className="w-full px-3 py-2 border rounded-md text-sm"
                 />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Email</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   defaultValue="john@example.com"
                   className="w-full px-3 py-2 border rounded-md text-sm"
                 />
@@ -273,7 +285,7 @@ export const FormSections: Story = {
         <Collapsible className="rounded-lg border">
           <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-neutral-50">
             <span className="font-medium">Notification Preferences</span>
-            <ChevronDownIcon className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-180" />
+            <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4 space-y-3">
@@ -296,7 +308,7 @@ export const FormSections: Story = {
         <Collapsible className="rounded-lg border">
           <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-neutral-50">
             <span className="font-medium">Privacy Settings</span>
-            <ChevronDownIcon className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-180" />
+            <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4 space-y-3">
@@ -321,17 +333,17 @@ export const FormSections: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Form sections with collapsible groups for better organization."
-      }
-    }
-  }
+        story: "Form sections with collapsible groups for better organization.",
+      },
+    },
+  },
 };
 
 export const ProductFeatures: Story = {
   render: () => (
     <div className="w-full max-w-2xl space-y-4">
       <h3 className="text-xl font-bold">Premium Plan Features</h3>
-      
+
       <div className="grid gap-3">
         <Collapsible className="rounded-lg border">
           <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-neutral-50">
@@ -339,12 +351,13 @@ export const ProductFeatures: Story = {
               <span className="text-2xl">📊</span>
               <span className="font-medium">Advanced Analytics</span>
             </div>
-            <ChevronDownIcon className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-180" />
+            <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
               <p className="text-sm text-neutral-600 mb-3">
-                Get deep insights into your data with comprehensive analytics tools.
+                Get deep insights into your data with comprehensive analytics
+                tools.
               </p>
               <ul className="text-sm text-neutral-600 space-y-1">
                 <li>• Real-time dashboard with custom widgets</li>
@@ -362,7 +375,7 @@ export const ProductFeatures: Story = {
               <span className="text-2xl">🤝</span>
               <span className="font-medium">Team Collaboration</span>
             </div>
-            <ChevronDownIcon className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-180" />
+            <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
@@ -385,7 +398,7 @@ export const ProductFeatures: Story = {
               <span className="text-2xl">🔒</span>
               <span className="font-medium">Enterprise Security</span>
             </div>
-            <ChevronDownIcon className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-180" />
+            <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
@@ -407,10 +420,11 @@ export const ProductFeatures: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Product feature showcase with rich content and visual elements."
-      }
-    }
-  }
+        story:
+          "Product feature showcase with rich content and visual elements.",
+      },
+    },
+  },
 };
 
 export const Accessibility: Story = {
@@ -422,25 +436,26 @@ export const Accessibility: Story = {
           Use Tab to navigate, Enter/Space to toggle, proper ARIA attributes.
         </p>
       </div>
-      
+
       <Collapsible className="rounded-lg border">
-        <CollapsibleTrigger 
+        <CollapsibleTrigger
           className="flex w-full items-center justify-between p-4 text-left hover:bg-neutral-50"
           aria-describedby="keyboard-help"
         >
           <span className="font-medium">Keyboard Navigation</span>
-          <ChevronDownIcon className="h-4 w-4 transition-transform [&[data-state=open]]:rotate-180" />
+          <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
         </CollapsibleTrigger>
         <CollapsibleContent>
           <div className="px-4 pb-4">
             <p className="text-sm text-neutral-600">
-              Full keyboard support with Tab navigation, Enter/Space activation, 
-              and proper focus management for screen readers and assistive technologies.
+              Full keyboard support with Tab navigation, Enter/Space activation,
+              and proper focus management for screen readers and assistive
+              technologies.
             </p>
           </div>
         </CollapsibleContent>
       </Collapsible>
-      
+
       <p id="keyboard-help" className="text-xs text-neutral-600">
         Press Tab to focus the trigger, then Enter or Space to toggle
       </p>
@@ -449,8 +464,9 @@ export const Accessibility: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Demonstrates comprehensive accessibility features and keyboard navigation."
-      }
-    }
-  }
+        story:
+          "Demonstrates comprehensive accessibility features and keyboard navigation.",
+      },
+    },
+  },
 };

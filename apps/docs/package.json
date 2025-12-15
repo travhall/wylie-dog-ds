@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "@wyliedog/ui": "workspace:*",
-    "lucide-react": "^0.534.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "lucide-react": "^0.561.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -22,16 +22,21 @@
     "@repo/typescript-config": "workspace:*",
     "@storybook/addon-docs": "^10.1.8",
     "@storybook/addon-links": "^10.1.8",
+    "@storybook/addon-vitest": "^10.1.8",
     "@storybook/react-vite": "^10.1.8",
-    "@tailwindcss/postcss": "^4.1.11",
-    "@vitejs/plugin-react": "^4.7.0",
-    "eslint": "^9.32.0",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/browser-playwright": "^4.0.15",
+    "@vitest/coverage-v8": "^4.0.15",
+    "eslint": "^9.39.2",
     "eslint-plugin-storybook": "10.1.8",
+    "playwright": "^1.57.0",
     "postcss": "^8.5.6",
-    "serve": "^14.2.4",
+    "serve": "^14.2.5",
     "storybook": "^10.1.8",
-    "tailwindcss": "^4.1.11",
-    "typescript": "5.8.3",
-    "vite": "^7.0.6"
+    "tailwindcss": "^4.1.18",
+    "typescript": "5.9.3",
+    "vite": "^7.2.7",
+    "vitest": "^4.0.15"
   }
 }

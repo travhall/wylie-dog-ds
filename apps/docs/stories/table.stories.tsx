@@ -4,6 +4,7 @@ import {
   TableBody,
   TableCaption,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -15,13 +16,14 @@ import { Checkbox } from "@wyliedog/ui/checkbox";
 const meta: Meta<typeof Table> = {
   title: "Components/Table",
   component: Table,
-  parameters: { 
+  parameters: {
     layout: "padded",
     docs: {
       description: {
-        component: "A responsive table component for displaying tabular data with support for sorting, selection, and actions."
-      }
-    }
+        component:
+          "A responsive table component for displaying tabular data with support for sorting, selection, and actions.",
+      },
+    },
   },
   tags: ["autodocs"],
 };
@@ -80,7 +82,7 @@ export const Default: Story = {
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Invoice</TableHead>
+          <TableHead className="w-25">Invoice</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Method</TableHead>
           <TableHead className="text-right">Amount</TableHead>
@@ -105,7 +107,7 @@ export const WithSelection: Story = {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[50px]">
+          <TableHead className="w-12.5">
             <Checkbox />
           </TableHead>
           <TableHead>Invoice</TableHead>
@@ -122,9 +124,14 @@ export const WithSelection: Story = {
             </TableCell>
             <TableCell className="font-medium">{invoice.invoice}</TableCell>
             <TableCell>
-              <Badge 
-                variant={invoice.paymentStatus === "Paid" ? "success" : 
-                        invoice.paymentStatus === "Pending" ? "warning" : "destructive"}
+              <Badge
+                variant={
+                  invoice.paymentStatus === "Paid"
+                    ? "success"
+                    : invoice.paymentStatus === "Pending"
+                      ? "warning"
+                      : "destructive"
+                }
               >
                 {invoice.paymentStatus}
               </Badge>
@@ -155,9 +162,14 @@ export const WithActions: Story = {
           <TableRow key={invoice.invoice}>
             <TableCell className="font-medium">{invoice.invoice}</TableCell>
             <TableCell>
-              <Badge 
-                variant={invoice.paymentStatus === "Paid" ? "success" : 
-                        invoice.paymentStatus === "Pending" ? "warning" : "destructive"}
+              <Badge
+                variant={
+                  invoice.paymentStatus === "Paid"
+                    ? "success"
+                    : invoice.paymentStatus === "Pending"
+                      ? "warning"
+                      : "destructive"
+                }
               >
                 {invoice.paymentStatus}
               </Badge>
@@ -166,8 +178,12 @@ export const WithActions: Story = {
             <TableCell className="text-right">{invoice.totalAmount}</TableCell>
             <TableCell className="text-right">
               <div className="flex justify-end gap-1">
-                <Button variant="ghost" size="sm">View</Button>
-                <Button variant="ghost" size="sm">Edit</Button>
+                <Button variant="ghost" size="sm">
+                  View
+                </Button>
+                <Button variant="ghost" size="sm">
+                  Edit
+                </Button>
               </div>
             </TableCell>
           </TableRow>

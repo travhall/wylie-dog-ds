@@ -7,10 +7,13 @@
     "declarationMap": false,
     "incremental": true,
     "jsx": "preserve",
+    "jsxImportSource": "react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "noEmit": true,
     "resolveJsonModule": true,
-    "target": "es5"
+    "target": "es5",
+    "esModuleInterop": true,
+    "skipLibCheck": true
   }
 }

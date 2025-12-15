@@ -10,24 +10,24 @@
   },
   "dependencies": {
     "@wyliedog/ui": "workspace:*",
-    "lucide-react": "^0.534.0",
-    "next": "^15.4.5",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "lucide-react": "^0.561.0",
+    "next": "^16.0.10",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@tailwindcss/postcss": "^4.1.11",
-    "@types/node": "^24.1.0",
-    "@types/react": "^19.1.9",
-    "@types/react-dom": "^19.1.7",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.32.0",
-    "eslint-config-next": "^15.4.5",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^25.0.2",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.23",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.0.10",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.11",
-    "typescript": "^5.8.3"
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
   }
 }

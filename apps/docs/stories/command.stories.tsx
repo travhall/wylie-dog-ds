@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   Command,
@@ -10,27 +11,28 @@ import {
   CommandShortcut,
 } from "@wyliedog/ui/command";
 import { Button } from "@wyliedog/ui/button";
-import { 
-  FileIcon, 
-  FolderIcon, 
-  UserIcon, 
-  SettingsIcon, 
+import {
+  FileIcon,
+  FolderIcon,
+  UserIcon,
+  SettingsIcon,
   CalendarIcon,
   SearchIcon,
   CommandIcon,
-  PlusIcon
+  PlusIcon,
 } from "lucide-react";
 
 const meta: Meta<typeof Command> = {
   title: "Components/Command",
   component: Command,
-  parameters: { 
+  parameters: {
     layout: "centered",
     docs: {
       description: {
-        component: 'Command palette interface for quick actions and navigation. Features search, keyboard shortcuts, and grouped commands.'
-      }
-    }
+        component:
+          "Command palette interface for quick actions and navigation. Features search, keyboard shortcuts, and grouped commands.",
+      },
+    },
   },
   tags: ["autodocs"],
 };
@@ -40,7 +42,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <Command className="rounded-lg border shadow-md w-[450px]">
+    <Command className="rounded-lg border shadow-md w-112.5">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
@@ -78,7 +80,7 @@ export const Default: Story = {
 
 export const FileSearch: Story = {
   render: () => (
-    <Command className="rounded-lg border shadow-md w-[500px]">
+    <Command className="rounded-lg border shadow-md w-125">
       <CommandInput placeholder="Search files and folders..." />
       <CommandList>
         <CommandEmpty>No files found.</CommandEmpty>
@@ -123,15 +125,16 @@ export const FileSearch: Story = {
   parameters: {
     docs: {
       description: {
-        story: "File search command palette with recent files and folder navigation."
-      }
-    }
-  }
+        story:
+          "File search command palette with recent files and folder navigation.",
+      },
+    },
+  },
 };
 
 export const QuickActions: Story = {
   render: () => (
-    <Command className="rounded-lg border shadow-md w-[450px]">
+    <Command className="rounded-lg border shadow-md w-112.5">
       <CommandInput placeholder="What would you like to do?" />
       <CommandList>
         <CommandEmpty>No actions found.</CommandEmpty>
@@ -183,10 +186,11 @@ export const QuickActions: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Quick actions command palette with create, navigation, and tool commands."
-      }
-    }
-  }
+        story:
+          "Quick actions command palette with create, navigation, and tool commands.",
+      },
+    },
+  },
 };
 
 export const WithModal: Story = {
@@ -220,9 +224,9 @@ export const WithModal: Story = {
 
         {open && (
           <div className="fixed inset-0 bg-black/50 flex items-start justify-center pt-[20vh] z-50">
-            <Command className="rounded-lg border shadow-md w-[500px] bg-white">
-              <CommandInput 
-                placeholder="Type a command or search..." 
+            <Command className="rounded-lg border shadow-md w-125 bg-white">
+              <CommandInput
+                placeholder="Type a command or search..."
                 onKeyDown={(e) => {
                   if (e.key === "Escape") setOpen(false);
                 }}
@@ -267,15 +271,16 @@ export const WithModal: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Command palette as a modal overlay with keyboard shortcut activation."
-      }
-    }
-  }
+        story:
+          "Command palette as a modal overlay with keyboard shortcut activation.",
+      },
+    },
+  },
 };
 
 export const TeamDirectory: Story = {
   render: () => (
-    <Command className="rounded-lg border shadow-md w-[450px]">
+    <Command className="rounded-lg border shadow-md w-112.5">
       <CommandInput placeholder="Search team members..." />
       <CommandList>
         <CommandEmpty>No team members found.</CommandEmpty>
@@ -323,10 +328,11 @@ export const TeamDirectory: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Team directory search with grouped departments and status indicators."
-      }
-    }
-  }
+        story:
+          "Team directory search with grouped departments and status indicators.",
+      },
+    },
+  },
 };
 
 export const CodeEditor: Story = {
@@ -339,15 +345,15 @@ export const CodeEditor: Story = {
         </div>
         <div className="space-y-1 text-neutral-300">
           <div>import React from 'react';</div>
-          <div>import {'{ useState }'} from 'react';</div>
+          <div>import {"{ useState }"} from 'react';</div>
           <div></div>
-          <div>function Editor() {'{'}</div>
+          <div>function Editor() {"{"}</div>
           <div className="ml-4">const [value, setValue] = useState('');</div>
           <div className="ml-4">// Your cursor is here |</div>
-          <div>{'}'}</div>
+          <div>{"}"}</div>
         </div>
       </div>
-      
+
       <Command className="rounded-lg border shadow-md w-full">
         <CommandInput placeholder="Search commands..." />
         <CommandList>
@@ -394,10 +400,11 @@ export const CodeEditor: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Code editor command palette with editing, view, and git commands."
-      }
-    }
-  }
+        story:
+          "Code editor command palette with editing, view, and git commands.",
+      },
+    },
+  },
 };
 
 export const Accessibility: Story = {
@@ -406,12 +413,13 @@ export const Accessibility: Story = {
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
         <p className="text-sm text-neutral-600">
-          Command palette supports full keyboard navigation. Use arrows to navigate, Enter to select, Escape to close.
+          Command palette supports full keyboard navigation. Use arrows to
+          navigate, Enter to select, Escape to close.
         </p>
       </div>
-      
+
       <Command className="rounded-lg border shadow-md">
-        <CommandInput 
+        <CommandInput
           placeholder="Accessible command search..."
           aria-label="Search for commands"
         />
@@ -444,7 +452,7 @@ export const Accessibility: Story = {
           </CommandGroup>
         </CommandList>
       </Command>
-      
+
       <p className="text-xs text-neutral-600">
         Screen readers announce group headings and selected items
       </p>
@@ -453,8 +461,9 @@ export const Accessibility: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Demonstrates comprehensive accessibility features including ARIA roles and keyboard navigation."
-      }
-    }
-  }
+        story:
+          "Demonstrates comprehensive accessibility features including ARIA roles and keyboard navigation.",
+      },
+    },
+  },
 };
