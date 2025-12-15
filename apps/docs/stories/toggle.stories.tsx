@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 const meta: Meta<typeof Toggle> = {
-  title: "Components/Toggle",
+  title: "3. Components/Inputs/Toggle",
   component: Toggle,
   parameters: {
     layout: "centered",

@@ -20,7 +20,7 @@ import {
 } from "@wyliedog/ui/dialog";
 
 const meta: Meta = {
-  title: "Examples/Component Compositions",
+  title: "4. Patterns/Component Compositions",
   parameters: { 
     layout: "centered",
     docs: {

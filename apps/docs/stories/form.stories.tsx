@@ -10,7 +10,7 @@ import { RadioGroup, RadioGroupItem } from "@wyliedog/ui/radio-group";
 import { useState } from "react";
 
 const meta: Meta<typeof Form> = {
-  title: "Components/Form",
+  title: "3. Components/Forms/Form",
   component: Form,
   parameters: { 
     layout: "centered",

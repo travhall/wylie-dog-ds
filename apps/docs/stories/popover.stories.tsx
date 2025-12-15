@@ -11,7 +11,7 @@ import { Separator } from "@wyliedog/ui/separator";
 import { SettingsIcon, HelpCircleIcon, FilterIcon, CalendarIcon, MoreHorizontalIcon } from "lucide-react";
 
 const meta: Meta<typeof Popover> = {
-  title: "Components/Popover",
+  title: "3. Components/Overlays/Popover",
   component: Popover,
   parameters: { 
     layout: "centered",

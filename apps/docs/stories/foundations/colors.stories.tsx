@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { color, spacing, shadow } from "@wyliedog/ui/tokens/hierarchical";
 
 const meta: Meta = {
-  title: "Foundations/Design Tokens/Colors",
+  title: "2. Foundations/Design Tokens/Colors",
   parameters: {
     layout: "padded",
   },

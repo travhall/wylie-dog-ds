@@ -10,7 +10,7 @@ import {
 import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta<typeof Select> = {
-  title: "Components/Select",
+  title: "3. Components/Forms/Select",
   component: Select,
   parameters: { 
     layout: "centered",

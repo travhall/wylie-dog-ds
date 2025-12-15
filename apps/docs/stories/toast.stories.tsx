@@ -4,7 +4,7 @@ import { Button } from "@wyliedog/ui/button";
 import { useState } from "react";
 
 const meta: Meta<typeof Toast> = {
-  title: "Components/Toast",
+  title: "3. Components/Feedback/Toast",
   component: Toast,
   parameters: { 
     layout: "centered",

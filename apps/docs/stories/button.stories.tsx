@@ -2,24 +2,43 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta<typeof Button> = {
-  title: "Components/Button",
+  title: "3. Components/Inputs/Button",
   component: Button,
-  parameters: { layout: "centered" },
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component: 'Versatile button component for user actions. Supports multiple variants, sizes, loading states, and full keyboard accessibility.'
+      }
+    }
+  },
   tags: ["autodocs"],
   argTypes: {
     variant: {
       control: "select",
-      options: ["primary", "secondary", "outline"],
-      description: "The visual style of the button",
+      options: ["default", "primary", "secondary", "outline", "ghost", "link", "destructive"],
+      description: "The visual style variant of the button",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "default" },
+      },
     },
     size: {
       control: "radio",
-      options: ["sm", "md", "lg"],
-      description: "The size of the button",
+      options: ["default", "sm", "md", "lg", "icon"],
+      description: "The size variant of the button",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: "default" },
+      },
     },
     disabled: {
       control: "boolean",
       description: "Whether the button is disabled",
+    },
+    loading: {
+      control: "boolean",
+      description: "Whether the button is in a loading state",
     },
   },
 };
@@ -43,19 +62,30 @@ export const Secondary: Story = {
 
 export const Outline: Story = {
   args: {
-    variant: "ghost",
-    children: "Ghost Button",
+    variant: "outline",
+    children: "Outline Button",
   },
 };
 
 export const AllVariants: Story = {
   render: () => (
-    <div className="flex gap-4">
+    <div className="flex flex-wrap gap-4">
+      <Button variant="default">Default</Button>
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
+      <Button variant="outline">Outline</Button>
       <Button variant="ghost">Ghost</Button>
+      <Button variant="link">Link</Button>
+      <Button variant="destructive">Destructive</Button>
     </div>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "All available button variants for different use cases and visual hierarchy."
+      }
+    }
+  }
 };
 
 export const AllSizes: Story = {
@@ -66,6 +96,13 @@ export const AllSizes: Story = {
       <Button size="lg">Large</Button>
     </div>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Size variants for different interface densities and use cases."
+      }
+    }
+  }
 };
 
 export const States: Story = {
@@ -89,6 +126,13 @@ export const States: Story = {
       </div>
     </div>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Demonstrates normal and disabled states across different button variants."
+      }
+    }
+  }
 };
 
 export const ButtonGroup: Story = {
@@ -130,6 +174,13 @@ export const ButtonGroup: Story = {
       </div>
     </div>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Common button grouping patterns for actions, navigation, and toolbars."
+      }
+    }
+  }
 };
 
 export const ButtonsInForms: Story = {
@@ -169,6 +220,13 @@ export const ButtonsInForms: Story = {
       </div>
     </div>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Example of buttons used in a form context with different layouts and visual hierarchy."
+      }
+    }
+  }
 };
 
 export const Loading: Story = {
@@ -188,4 +246,11 @@ export const Loading: Story = {
       </Button>
     </div>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Loading state pattern with spinner and disabled state to prevent multiple submissions."
+      }
+    }
+  }
 };

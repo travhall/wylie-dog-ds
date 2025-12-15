@@ -11,7 +11,7 @@ import {
 import { SlashIcon, HomeIcon } from "lucide-react";
 
 const meta: Meta<typeof Breadcrumb> = {
-  title: "Components/Breadcrumb",
+  title: "3. Components/Navigation/Breadcrumb",
   component: Breadcrumb,
   parameters: { 
     layout: "centered",

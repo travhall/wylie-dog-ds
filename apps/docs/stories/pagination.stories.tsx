@@ -10,7 +10,7 @@ import {
 } from "@wyliedog/ui/pagination";
 
 const meta: Meta<typeof Pagination> = {
-  title: "Components/Pagination",
+  title: "3. Components/Navigation/Pagination",
   component: Pagination,
   parameters: { 
     layout: "centered",

@@ -12,7 +12,7 @@ import {
 import { cn } from "@wyliedog/ui/lib/utils";
 
 const meta: Meta<typeof NavigationMenu> = {
-  title: "Components/NavigationMenu",
+  title: "3. Components/Navigation/NavigationMenu",
   component: NavigationMenu,
   parameters: {
     layout: "centered",

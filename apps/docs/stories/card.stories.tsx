@@ -4,7 +4,7 @@ import { Button } from "@wyliedog/ui/button";
 import { Badge } from "@wyliedog/ui/badge";
 
 const meta: Meta<typeof Card> = {
-  title: "Components/Card",
+  title: "3. Components/Data Display/Card",
   component: Card,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

@@ -13,7 +13,7 @@ import {
 import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta<typeof DropdownMenu> = {
-  title: "Components/DropdownMenu",
+  title: "3. Components/Overlays/DropdownMenu",
   component: DropdownMenu,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

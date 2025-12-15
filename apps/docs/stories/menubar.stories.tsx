@@ -10,7 +10,7 @@ import {
 } from "@wyliedog/ui/menubar";
 
 const meta: Meta<typeof Menubar> = {
-  title: "Components/Menubar",
+  title: "3. Components/Navigation/Menubar",
   component: Menubar,
   parameters: { 
     layout: "centered",

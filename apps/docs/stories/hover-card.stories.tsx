@@ -9,7 +9,7 @@ import { Button } from "@wyliedog/ui/button";
 import { CalendarIcon, MapPinIcon, LinkIcon } from "lucide-react";
 
 const meta: Meta<typeof HoverCard> = {
-  title: "Components/HoverCard",
+  title: "3. Components/Overlays/HoverCard",
   component: HoverCard,
   parameters: { 
     layout: "centered",

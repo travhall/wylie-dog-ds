@@ -6,7 +6,7 @@ import {
 } from "@wyliedog/ui/resizable";
 
 const meta: Meta<typeof ResizablePanelGroup> = {
-  title: "Components/Resizable",
+  title: "3. Components/Layout/Resizable",
   component: ResizablePanelGroup,
   parameters: { 
     layout: "padded",

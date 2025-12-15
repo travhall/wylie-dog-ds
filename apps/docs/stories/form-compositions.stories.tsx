@@ -20,7 +20,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@wyliedog/ui/tabs";
 import { useState } from "react";
 
 const meta: Meta = {
-  title: "Examples/Form Compositions",
+  title: "4. Patterns/Form Compositions",
   parameters: { 
     layout: "centered",
     docs: {

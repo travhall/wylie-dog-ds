@@ -5,7 +5,11 @@ import { fileURLToPath } from "url";
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const config: StorybookConfig = {
-  stories: ["../stories/*.stories.tsx", "../stories/**/*.stories.tsx"],
+  stories: [
+    "../stories/**/*.mdx",
+    "../stories/*.stories.tsx",
+    "../stories/**/*.stories.tsx"
+  ],
 
   addons: [
     "@storybook/addon-links",

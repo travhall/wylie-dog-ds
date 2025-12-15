@@ -13,7 +13,7 @@ import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta<typeof Dialog> = {
-  title: "Components/Dialog",
+  title: "3. Components/Feedback/Dialog",
   component: Dialog,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

@@ -9,7 +9,7 @@ import { Button } from "@wyliedog/ui/button";
 import { Badge } from "@wyliedog/ui/badge";
 
 const meta: Meta<typeof Tooltip> = {
-  title: "Components/Tooltip",
+  title: "3. Components/Overlays/Tooltip",
   component: Tooltip,
   parameters: { 
     layout: "centered",

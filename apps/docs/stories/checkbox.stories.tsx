@@ -3,7 +3,7 @@ import { Checkbox } from "@wyliedog/ui/checkbox";
 import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta<typeof Checkbox> = {
-  title: "Components/Checkbox",
+  title: "3. Components/Inputs/Checkbox",
   component: Checkbox,
   parameters: { 
     layout: "centered",

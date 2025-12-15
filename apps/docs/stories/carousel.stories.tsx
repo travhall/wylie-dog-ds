@@ -9,7 +9,7 @@ import {
 import { Card, CardContent } from "@wyliedog/ui/card";
 
 const meta: Meta<typeof Carousel> = {
-  title: "Components/Carousel",
+  title: "3. Components/Forms/Carousel",
   component: Carousel,
   parameters: { 
     layout: "centered",

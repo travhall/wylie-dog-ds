@@ -14,7 +14,7 @@ import { Button } from "@wyliedog/ui/button";
 import { Checkbox } from "@wyliedog/ui/checkbox";
 
 const meta: Meta<typeof Table> = {
-  title: "Components/Table",
+  title: "3. Components/Data Display/Table",
   component: Table,
   parameters: {
     layout: "padded",

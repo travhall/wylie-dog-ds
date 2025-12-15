@@ -9,7 +9,7 @@ import { Button } from "@wyliedog/ui/button";
 import { ChevronDownIcon, PlusIcon, MinusIcon } from "lucide-react";
 
 const meta: Meta<typeof Collapsible> = {
-  title: "Components/Collapsible",
+  title: "3. Components/Layout/Collapsible",
   component: Collapsible,
   parameters: {
     layout: "centered",

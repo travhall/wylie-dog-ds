@@ -3,7 +3,7 @@ import { Slider } from "@wyliedog/ui/slider";
 import { useState } from "react";
 
 const meta: Meta<typeof Slider> = {
-  title: "Components/Slider",
+  title: "3. Components/Inputs/Slider",
   component: Slider,
   parameters: { 
     layout: "centered",

@@ -14,7 +14,7 @@ import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta<typeof Sheet> = {
-  title: "Components/Sheet",
+  title: "3. Components/Overlays/Sheet",
   component: Sheet,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

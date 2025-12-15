@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 const meta: Meta<typeof ToggleGroup> = {
-  title: "Components/ToggleGroup",
+  title: "3. Components/Inputs/ToggleGroup",
   component: ToggleGroup,
   parameters: { 
     layout: "centered",

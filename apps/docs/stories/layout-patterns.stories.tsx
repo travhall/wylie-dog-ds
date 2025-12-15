@@ -8,7 +8,7 @@ import { Avatar } from "@wyliedog/ui/avatar";
 import { Separator } from "@wyliedog/ui/separator";
 
 const meta: Meta = {
-  title: "Examples/Layout Patterns",
+  title: "4. Patterns/Layout Patterns",
   parameters: { 
     layout: "fullscreen",
     docs: {

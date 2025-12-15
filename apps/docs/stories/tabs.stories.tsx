@@ -6,7 +6,7 @@ import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta<typeof Tabs> = {
-  title: "Components/Tabs",
+  title: "3. Components/Navigation/Tabs",
   component: Tabs,
   parameters: { layout: "centered" },
   tags: ["autodocs"],

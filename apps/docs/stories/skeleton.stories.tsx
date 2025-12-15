@@ -3,7 +3,7 @@ import { Skeleton } from "@wyliedog/ui/skeleton";
 import { Card, CardContent, CardHeader } from "@wyliedog/ui/card";
 
 const meta: Meta<typeof Skeleton> = {
-  title: "Components/Skeleton",
+  title: "3. Components/Data Display/Skeleton",
   component: Skeleton,
   parameters: { 
     layout: "centered",

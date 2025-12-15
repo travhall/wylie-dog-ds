@@ -16,7 +16,7 @@ import {
 } from "@wyliedog/ui/context-menu";
 
 const meta: Meta<typeof ContextMenu> = {
-  title: "Components/ContextMenu",
+  title: "3. Components/Overlays/ContextMenu",
   component: ContextMenu,
   parameters: { 
     layout: "centered",

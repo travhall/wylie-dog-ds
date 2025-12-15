@@ -13,7 +13,7 @@ import {
 import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta<typeof AlertDialog> = {
-  title: "Components/AlertDialog",
+  title: "3. Components/Feedback/AlertDialog",
   component: AlertDialog,
   parameters: { 
     layout: "centered",
