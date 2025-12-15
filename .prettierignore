@@ -1,0 +1,33 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+dist
+build
+.next
+.turbo
+*.tsbuildinfo
+
+# Generated files
+packages/ui/src/tokens/*.ts
+packages/ui/src/tokens/*.js
+
+# Lockfiles
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Storybook
+storybook-static
+.storybook/public
+
+# Coverage
+coverage
+.nyc_output
+
+# Misc
+.DS_Store
+*.log
+.env
+.env.local

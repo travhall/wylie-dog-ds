@@ -1,28 +1,35 @@
 {
+  "name": "design-system",
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "changeset": "changeset",
+    "clean": "turbo run clean && rm -rf node_modules",
     "dev": "turbo run dev",
-    "test": "turbo run test",
-    "test:watch": "turbo run test:watch",
-    "test:a11y": "turbo run test:a11y",
-    "test:coverage": "turbo run test:coverage",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "lint:a11y": "turbo run lint:a11y",
-    "clean": "turbo run clean && rm -rf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
+    "prepare": "husky",
+    "preview-storybook": "turbo run preview-storybook",
     "release": "turbo run build --filter=docs^... && changeset publish",
-    "preview-storybook": "turbo run preview-storybook"
+    "size": "size-limit",
+    "test": "turbo run test",
+    "test:a11y": "turbo run test:a11y",
+    "test:coverage": "turbo run test:coverage",
+    "test:watch": "turbo run test:watch",
+    "version-packages": "changeset version"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
+    "@size-limit/preset-small-lib": "^12.0.0",
     "@types/node": "^25.0.2",
     "@types/react": "^19.2.7",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
+    "prettier-plugin-packagejson": "^2.5.20",
+    "size-limit": "^12.0.0",
     "turbo": "^2.6.3"
   },
-  "packageManager": "pnpm@8.15.6",
-  "name": "design-system"
+  "packageManager": "pnpm@8.15.6"
 }

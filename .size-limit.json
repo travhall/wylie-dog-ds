@@ -1,0 +1,55 @@
+[
+  {
+    "name": "UI Package - Button",
+    "path": "packages/ui/dist/button.mjs",
+    "limit": "5 KB",
+    "ignore": ["react"]
+  },
+  {
+    "name": "UI Package - Card",
+    "path": "packages/ui/dist/card.mjs",
+    "limit": "3 KB",
+    "ignore": ["react"]
+  },
+  {
+    "name": "UI Package - Dialog",
+    "path": "packages/ui/dist/dialog.mjs",
+    "limit": "15 KB",
+    "ignore": ["react", "@radix-ui/react-dialog"]
+  },
+  {
+    "name": "UI Package - Form",
+    "path": "packages/ui/dist/form.mjs",
+    "limit": "10 KB",
+    "ignore": ["react"]
+  },
+  {
+    "name": "UI Package - Input",
+    "path": "packages/ui/dist/input.mjs",
+    "limit": "2 KB",
+    "ignore": ["react"]
+  },
+  {
+    "name": "UI Package - Select",
+    "path": "packages/ui/dist/select.mjs",
+    "limit": "15 KB",
+    "ignore": ["react", "@radix-ui/react-select"]
+  },
+  {
+    "name": "UI Package - Tooltip",
+    "path": "packages/ui/dist/tooltip.mjs",
+    "limit": "10 KB",
+    "ignore": ["react", "@radix-ui/react-tooltip"]
+  },
+  {
+    "name": "UI Package - Accordion",
+    "path": "packages/ui/dist/accordion.mjs",
+    "limit": "10 KB",
+    "ignore": ["react", "@radix-ui/react-accordion"]
+  },
+  {
+    "name": "Tokens Package",
+    "path": "packages/tokens/dist/index.js",
+    "limit": "5 KB"
+  }
+]
