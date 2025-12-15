@@ -1,0 +1,655 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="5. Guides/Composition Patterns" />
+
+# Composition Patterns
+
+Learn best practices for composing components together to build complex, accessible, and maintainable user interfaces.
+
+## 🎯 Core Principles
+
+### 1. Composition Over Configuration
+
+Prefer composing small, focused components over large, configurable ones:
+
+```tsx
+// ❌ Avoid: Large component with many props
+<UserProfile
+  showAvatar
+  showBio
+  showActions
+  actionButtonVariant="primary"
+  avatarSize="lg"
+  bioMaxLength={200}
+/>
+
+// ✅ Better: Compose smaller components
+<UserProfile>
+  <UserProfile.Avatar size="lg" />
+  <UserProfile.Bio maxLength={200} />
+  <UserProfile.Actions>
+    <Button variant="primary">Follow</Button>
+  </UserProfile.Actions>
+</UserProfile>
+```
+
+**Benefits:**
+- More flexible and extensible
+- Easier to understand and maintain
+- Better tree-shaking (unused components aren't bundled)
+- Follows React's composition model
+
+### 2. Compound Components
+
+Use compound components for related UI elements that work together:
+
+```tsx
+// ❌ Avoid: Flat prop structure
+<Select
+  options={[
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+  ]}
+/>
+
+// ✅ Better: Compound component pattern
+<Select>
+  <SelectTrigger>
+    <SelectValue placeholder="Select an option" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="1">Option 1</SelectItem>
+    <SelectItem value="2">Option 2</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+**Benefits:**
+- Semantic HTML structure
+- Full control over rendering
+- Better accessibility (ARIA attributes managed internally)
+- Flexible customization
+
+### 3. Container Components
+
+Wrap related elements in container components for consistent spacing and layout:
+
+```tsx
+// ✅ Good: Use Card for grouped content
+<Card>
+  <CardHeader>
+    <CardTitle>Project Details</CardTitle>
+    <CardDescription>View and edit project information</CardDescription>
+  </CardHeader>
+  <CardContent>
+    {/* Main content */}
+  </CardContent>
+  <CardFooter>
+    <Button>Save Changes</Button>
+  </CardFooter>
+</Card>
+```
+
+---
+
+## 📋 Common Patterns
+
+### Form Compositions
+
+#### Pattern: Field with Label and Error
+
+```tsx
+<div className="space-y-2">
+  <Label htmlFor="email">Email Address</Label>
+  <Input
+    id="email"
+    type="email"
+    placeholder="you@example.com"
+    aria-describedby="email-error"
+    aria-invalid={hasError}
+  />
+  {hasError && (
+    <p id="email-error" className="text-sm text-red-600">
+      Please enter a valid email address
+    </p>
+  )}
+</div>
+```
+
+**Key Points:**
+- Use `htmlFor` to associate label with input
+- Use `aria-describedby` for error messages
+- Set `aria-invalid` when field has error
+- Consistent spacing with `space-y-*`
+
+#### Pattern: Form with Multiple Fields
+
+```tsx
+<form className="space-y-6">
+  <div className="space-y-4">
+    <div className="space-y-2">
+      <Label htmlFor="name">Full Name</Label>
+      <Input id="name" placeholder="John Doe" />
+    </div>
+
+    <div className="space-y-2">
+      <Label htmlFor="email">Email</Label>
+      <Input id="email" type="email" placeholder="john@example.com" />
+    </div>
+
+    <div className="space-y-2">
+      <Label htmlFor="message">Message</Label>
+      <Textarea id="message" placeholder="Your message..." rows={4} />
+    </div>
+  </div>
+
+  <div className="flex gap-3">
+    <Button type="submit">Submit</Button>
+    <Button type="button" variant="outline">Cancel</Button>
+  </div>
+</form>
+```
+
+**Key Points:**
+- Consistent field spacing (`space-y-2` for field internals, `space-y-4` for fields, `space-y-6` for sections)
+- Proper button grouping with `flex gap-3`
+- Always specify button `type` attributes
+
+### List Patterns
+
+#### Pattern: Avatar List
+
+```tsx
+<div className="flex -space-x-2">
+  {users.map((user, index) => (
+    <Avatar
+      key={user.id}
+      className="ring-2 ring-background"
+      style={{ zIndex: users.length - index }}
+    >
+      <AvatarImage src={user.avatar} alt={user.name} />
+      <AvatarFallback>{user.initials}</AvatarFallback>
+    </Avatar>
+  ))}
+</div>
+```
+
+**Key Points:**
+- Negative margin (`-space-x-2`) for overlapping effect
+- Ring for separation from background
+- Z-index for proper stacking order
+- Always provide fallback for avatars
+
+#### Pattern: Data Table with Actions
+
+```tsx
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead className="text-right">Actions</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    {items.map((item) => (
+      <TableRow key={item.id}>
+        <TableCell className="font-medium">{item.name}</TableCell>
+        <TableCell>
+          <Badge variant={item.status === 'active' ? 'default' : 'secondary'}>
+            {item.status}
+          </Badge>
+        </TableCell>
+        <TableCell className="text-right">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm">
+                <MoreHorizontal className="h-4 w-4" />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>Edit</DropdownMenuItem>
+              <DropdownMenuItem>Duplicate</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </TableCell>
+      </TableRow>
+    ))}
+  </TableBody>
+</Table>
+```
+
+**Key Points:**
+- Use Badge for status indicators
+- DropdownMenu for row actions
+- Screen reader text for icon-only buttons
+- Align actions to the right
+- Visual separation for destructive actions
+
+### Dialog Patterns
+
+#### Pattern: Confirmation Dialog
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger asChild>
+    <Button variant="destructive">Delete Account</Button>
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your
+        account and remove your data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction variant="destructive">Continue</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+**Key Points:**
+- Use AlertDialog for destructive actions
+- Clear title and description
+- Cancel button on the left (low-emphasis)
+- Action button on the right (high-emphasis)
+- Match action button variant to severity
+
+#### Pattern: Form Dialog
+
+```tsx
+<Dialog>
+  <DialogTrigger asChild>
+    <Button>Create Project</Button>
+  </DialogTrigger>
+  <DialogContent className="sm:max-w-[425px]">
+    <DialogHeader>
+      <DialogTitle>Create New Project</DialogTitle>
+      <DialogDescription>
+        Add a new project to your workspace. Click save when you're done.
+      </DialogDescription>
+    </DialogHeader>
+    <form className="space-y-4 py-4">
+      <div className="space-y-2">
+        <Label htmlFor="project-name">Project Name</Label>
+        <Input id="project-name" placeholder="My Awesome Project" />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="description">Description</Label>
+        <Textarea id="description" placeholder="Project description..." />
+      </div>
+    </form>
+    <DialogFooter>
+      <Button type="submit">Save Project</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+```
+
+**Key Points:**
+- Responsive width with `sm:max-w-[425px]`
+- Form inside DialogContent
+- Actions in DialogFooter
+- Clear title and description
+
+### Navigation Patterns
+
+#### Pattern: Tabs with Content
+
+```tsx
+<Tabs defaultValue="overview" className="w-full">
+  <TabsList className="grid w-full grid-cols-3">
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="analytics">Analytics</TabsTrigger>
+    <TabsTrigger value="settings">Settings</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="overview" className="space-y-4">
+    <Card>
+      <CardHeader>
+        <CardTitle>Overview</CardTitle>
+        <CardDescription>Project overview and statistics</CardDescription>
+      </CardHeader>
+      <CardContent>
+        {/* Overview content */}
+      </CardContent>
+    </Card>
+  </TabsContent>
+
+  <TabsContent value="analytics" className="space-y-4">
+    {/* Analytics content */}
+  </TabsContent>
+
+  <TabsContent value="settings" className="space-y-4">
+    {/* Settings content */}
+  </TabsContent>
+</Tabs>
+```
+
+**Key Points:**
+- Use `grid` for equal-width tabs
+- Each TabsContent has consistent spacing
+- Wrap content in Cards for visual hierarchy
+- Set `defaultValue` for initial state
+
+#### Pattern: Breadcrumb Navigation
+
+```tsx
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/projects">Projects</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Project Details</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
+
+**Key Points:**
+- Use BreadcrumbPage for current page (not a link)
+- BreadcrumbSeparator between items
+- Links for navigable ancestors
+- Semantic HTML structure for accessibility
+
+### Loading States
+
+#### Pattern: Skeleton Loading
+
+```tsx
+<Card>
+  <CardHeader>
+    <Skeleton className="h-4 w-[250px]" />
+    <Skeleton className="h-4 w-[200px]" />
+  </CardHeader>
+  <CardContent className="space-y-2">
+    <Skeleton className="h-4 w-full" />
+    <Skeleton className="h-4 w-full" />
+    <Skeleton className="h-4 w-[80%]" />
+  </CardContent>
+</Card>
+```
+
+**Key Points:**
+- Match skeleton sizes to expected content
+- Maintain layout structure while loading
+- Use varied widths for natural appearance
+
+#### Pattern: Button Loading State
+
+```tsx
+<Button disabled={isLoading}>
+  {isLoading ? (
+    <>
+      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+      Loading...
+    </>
+  ) : (
+    'Submit'
+  )}
+</Button>
+```
+
+**Key Points:**
+- Disable button during loading
+- Show loading spinner with text
+- Use `animate-spin` for spinner animation
+- Keep button size consistent
+
+---
+
+## ♿ Accessibility Patterns
+
+### Keyboard Navigation
+
+Ensure keyboard navigation works correctly in compositions:
+
+```tsx
+<div role="group" aria-labelledby="filter-heading">
+  <h3 id="filter-heading" className="sr-only">Filter Options</h3>
+
+  <div className="flex gap-2">
+    <Button variant="outline" size="sm">
+      All
+      <span className="sr-only">items</span>
+    </Button>
+    <Button variant="outline" size="sm">
+      Active
+      <span className="sr-only">items</span>
+    </Button>
+    <Button variant="outline" size="sm">
+      Archived
+      <span className="sr-only">items</span>
+    </Button>
+  </div>
+</div>
+```
+
+**Key Points:**
+- Group related controls with `role="group"`
+- Provide descriptive labels
+- Add screen reader context where needed
+- Ensure tab order is logical
+
+### Focus Management
+
+Manage focus for better keyboard UX:
+
+```tsx
+const dialogRef = useRef<HTMLDivElement>(null);
+const previousFocusRef = useRef<HTMLElement | null>(null);
+
+useEffect(() => {
+  if (isOpen) {
+    // Store previous focus
+    previousFocusRef.current = document.activeElement as HTMLElement;
+
+    // Focus first focusable element in dialog
+    dialogRef.current?.focus();
+  } else {
+    // Restore previous focus
+    previousFocusRef.current?.focus();
+  }
+}, [isOpen]);
+```
+
+**Key Points:**
+- Store focus before opening dialogs
+- Restore focus when closing
+- Trap focus inside modals
+- Provide clear focus indicators
+
+---
+
+## 🎨 Layout Patterns
+
+### Two-Column Layout
+
+```tsx
+<div className="grid gap-6 md:grid-cols-2">
+  <Card>
+    <CardHeader>
+      <CardTitle>Left Column</CardTitle>
+    </CardHeader>
+    <CardContent>{/* Content */}</CardContent>
+  </Card>
+
+  <Card>
+    <CardHeader>
+      <CardTitle>Right Column</CardTitle>
+    </CardHeader>
+    <CardContent>{/* Content */}</CardContent>
+  </Card>
+</div>
+```
+
+### Sidebar Layout
+
+```tsx
+<div className="flex min-h-screen">
+  {/* Sidebar */}
+  <aside className="w-64 border-r bg-background-secondary">
+    <nav className="space-y-2 p-4">
+      {/* Navigation items */}
+    </nav>
+  </aside>
+
+  {/* Main Content */}
+  <main className="flex-1 p-6">
+    {/* Page content */}
+  </main>
+</div>
+```
+
+### Dashboard Grid
+
+```tsx
+<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+  {/* Stat cards */}
+  <Card>
+    <CardHeader className="flex flex-row items-center justify-between pb-2">
+      <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
+      <DollarSign className="h-4 w-4 text-muted-foreground" />
+    </CardHeader>
+    <CardContent>
+      <div className="text-2xl font-bold">$45,231.89</div>
+      <p className="text-xs text-muted-foreground">+20.1% from last month</p>
+    </CardContent>
+  </Card>
+  {/* More stat cards */}
+</div>
+```
+
+---
+
+## 💡 Best Practices
+
+### DO:
+
+✅ **Keep components focused and single-purpose**
+```tsx
+<Button onClick={handleClick}>Submit</Button>
+<Badge variant="success">Active</Badge>
+```
+
+✅ **Use semantic HTML**
+```tsx
+<nav>
+  <ul>
+    <li><a href="/about">About</a></li>
+  </ul>
+</nav>
+```
+
+✅ **Provide proper ARIA labels**
+```tsx
+<Button aria-label="Close dialog">
+  <X className="h-4 w-4" />
+</Button>
+```
+
+✅ **Use consistent spacing scales**
+```tsx
+<div className="space-y-4"> {/* 16px */}
+  <div className="space-y-2"> {/* 8px */}
+    {/* Nested content */}
+  </div>
+</div>
+```
+
+### DON'T:
+
+❌ **Don't nest interactive elements**
+```tsx
+{/* BAD: Button inside button */}
+<Button>
+  Click me
+  <Button size="sm">No!</Button>
+</Button>
+```
+
+❌ **Don't skip semantic structure**
+```tsx
+{/* BAD: No heading hierarchy */}
+<h1>Title</h1>
+<h4>Subtitle</h4> {/* Should be h2 */}
+```
+
+❌ **Don't hardcode sizes**
+```tsx
+{/* BAD: Magic numbers */}
+<div style={{ width: '237px', height: '142px' }}>
+
+{/* GOOD: Use Tailwind classes */}
+<div className="w-60 h-36">
+```
+
+---
+
+## 📚 Related Resources
+
+- [Accessibility Guide](/docs/guides-accessibility--docs)
+- [Theming Guide](/docs/guides-theming--docs)
+- [Component Examples](/docs/patterns-component-compositions--docs)
+- [Form Patterns](/docs/patterns-form-compositions--docs)
+- [Layout Patterns](/docs/patterns-layout-patterns--docs)
+
+---
+
+## 🆘 Common Issues
+
+### Issue: Components Not Aligned
+
+**Problem:** Elements don't line up properly
+**Solution:** Use flexbox or grid with consistent gaps
+
+```tsx
+{/* ✅ Good alignment */}
+<div className="flex items-center gap-2">
+  <Avatar />
+  <span>John Doe</span>
+</div>
+```
+
+### Issue: Inconsistent Spacing
+
+**Problem:** Spacing varies throughout the UI
+**Solution:** Use Tailwind's spacing scale consistently
+
+```tsx
+{/* ✅ Consistent spacing */}
+<div className="space-y-4">  {/* Section spacing */}
+  <div className="space-y-2"> {/* Field spacing */}
+    <Label />
+    <Input />
+  </div>
+</div>
+```
+
+### Issue: Poor Mobile Experience
+
+**Problem:** Layout breaks on small screens
+**Solution:** Use responsive classes and test on mobile
+
+```tsx
+{/* ✅ Responsive grid */}
+<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+  {/* Cards */}
+</div>
+```
+
+---
+
+Need more examples? Check out the [Patterns section](/docs/patterns-component-compositions--docs) for interactive examples of these patterns in action.

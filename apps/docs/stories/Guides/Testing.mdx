@@ -1,0 +1,748 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="5. Guides/Testing" />
+
+# Testing Guide
+
+Learn how to write comprehensive tests for components using Vitest, Testing Library, and jest-axe for accessibility testing.
+
+## 🎯 Testing Philosophy
+
+Our testing strategy focuses on:
+
+1. **User Behavior** - Test how users interact with components, not implementation details
+2. **Accessibility** - Ensure components work for everyone, including assistive technologies
+3. **Visual Regression** - Catch unintended UI changes
+4. **Type Safety** - Leverage TypeScript for compile-time safety
+
+---
+
+## 🛠️ Testing Stack
+
+### Core Libraries
+
+- **Vitest** - Fast unit test framework
+- **Testing Library** - User-centric testing utilities
+- **jest-axe** - Automated accessibility testing
+- **Playwright** - Browser-based component testing
+
+### Configuration
+
+```typescript
+// vitest.config.ts
+export default defineConfig({
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./src/test-setup.ts'],
+    globals: true,
+    css: true,
+    coverage: {
+      provider: 'v8',
+      thresholds: {
+        statements: 80,
+        branches: 70,
+        functions: 80,
+        lines: 80
+      }
+    }
+  }
+});
+```
+
+---
+
+## 📝 Writing Tests
+
+### Basic Component Test
+
+```typescript
+import { render, screen } from '@testing-library/react';
+import { Button } from '../button';
+
+describe('Button', () => {
+  it('renders with correct text', () => {
+    render(<Button>Click me</Button>);
+
+    const button = screen.getByRole('button', { name: /click me/i });
+    expect(button).toBeInTheDocument();
+  });
+
+  it('calls onClick when clicked', async () => {
+    const handleClick = vi.fn();
+    render(<Button onClick={handleClick}>Click me</Button>);
+
+    const button = screen.getByRole('button', { name: /click me/i });
+    await userEvent.click(button);
+
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+```
+
+**Key Points:**
+- Use `getByRole` for semantic queries
+- Test user interactions, not implementation
+- Use descriptive test names
+
+### Accessibility Testing
+
+```typescript
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
+
+describe('Button Accessibility', () => {
+  it('should pass axe accessibility audit', async () => {
+    const { container } = render(<Button>Click me</Button>);
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('should be keyboard accessible', () => {
+    const handleClick = vi.fn();
+    render(<Button onClick={handleClick}>Click me</Button>);
+
+    const button = screen.getByRole('button');
+
+    // Focus button
+    button.focus();
+    expect(button).toHaveFocus();
+
+    // Activate with Enter
+    fireEvent.keyDown(button, { key: 'Enter' });
+    fireEvent.click(button);
+    expect(handleClick).toHaveBeenCalled();
+
+    // Activate with Space
+    fireEvent.keyDown(button, { key: ' ' });
+    expect(handleClick).toHaveBeenCalledTimes(2);
+  });
+
+  it('should handle disabled state correctly', async () => {
+    const { container } = render(<Button disabled>Disabled</Button>);
+
+    const button = screen.getByRole('button');
+    expect(button).toBeDisabled();
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+
+    // Should still pass a11y audit when disabled
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+});
+```
+
+**Key Points:**
+- Run axe on all component states
+- Test keyboard navigation
+- Verify ARIA attributes
+- Ensure disabled states are accessible
+
+### Form Component Testing
+
+```typescript
+describe('Input', () => {
+  it('handles user input correctly', async () => {
+    const handleChange = vi.fn();
+    render(<Input onChange={handleChange} />);
+
+    const input = screen.getByRole('textbox');
+    await userEvent.type(input, 'Hello');
+
+    expect(input).toHaveValue('Hello');
+    expect(handleChange).toHaveBeenCalledTimes(5); // Once per character
+  });
+
+  it('shows error state', () => {
+    render(
+      <div>
+        <Label htmlFor="email">Email</Label>
+        <Input
+          id="email"
+          aria-invalid={true}
+          aria-describedby="email-error"
+        />
+        <span id="email-error">Invalid email</span>
+      </div>
+    );
+
+    const input = screen.getByRole('textbox', { name: /email/i });
+    expect(input).toHaveAttribute('aria-invalid', 'true');
+    expect(input).toHaveAccessibleDescription('Invalid email');
+  });
+
+  it('associates label correctly', () => {
+    render(
+      <>
+        <Label htmlFor="username">Username</Label>
+        <Input id="username" />
+      </>
+    );
+
+    const input = screen.getByRole('textbox', { name: /username/i });
+    expect(input).toBeInTheDocument();
+  });
+});
+```
+
+**Key Points:**
+- Test form validation states
+- Verify label associations
+- Check error message connections
+- Use accessible queries
+
+### Dialog Testing
+
+```typescript
+describe('Dialog', () => {
+  it('opens and closes correctly', async () => {
+    render(
+      <Dialog>
+        <DialogTrigger>Open</DialogTrigger>
+        <DialogContent>
+          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogDescription>Dialog content</DialogDescription>
+        </DialogContent>
+      </Dialog>
+    );
+
+    // Initially closed
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+
+    // Open dialog
+    await userEvent.click(screen.getByRole('button', { name: /open/i }));
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+
+    // Close dialog
+    await userEvent.keyboard('{Escape}');
+    await waitFor(() => {
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    });
+  });
+
+  it('traps focus inside dialog', async () => {
+    render(
+      <Dialog defaultOpen>
+        <DialogContent>
+          <DialogTitle>Focus Trap</DialogTitle>
+          <Input placeholder="First input" />
+          <Input placeholder="Second input" />
+          <DialogClose>Close</DialogClose>
+        </DialogContent>
+      </Dialog>
+    );
+
+    const firstInput = screen.getByPlaceholderText('First input');
+    const secondInput = screen.getByPlaceholderText('Second input');
+    const closeButton = screen.getByRole('button', { name: /close/i });
+
+    // Tab through elements
+    await userEvent.tab();
+    expect(firstInput).toHaveFocus();
+
+    await userEvent.tab();
+    expect(secondInput).toHaveFocus();
+
+    await userEvent.tab();
+    expect(closeButton).toHaveFocus();
+
+    // Tab should cycle back to first element
+    await userEvent.tab();
+    expect(firstInput).toHaveFocus();
+  });
+});
+```
+
+**Key Points:**
+- Test open/close behavior
+- Verify focus trap
+- Check Escape key handling
+- Test with keyboard navigation
+
+### Select/Dropdown Testing
+
+```typescript
+describe('Select', () => {
+  it('allows user to select an option', async () => {
+    render(
+      <Select>
+        <SelectTrigger>
+          <SelectValue placeholder="Select fruit" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+          <SelectItem value="orange">Orange</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+
+    const trigger = screen.getByRole('combobox');
+    await userEvent.click(trigger);
+
+    const option = screen.getByRole('option', { name: /banana/i });
+    await userEvent.click(option);
+
+    expect(trigger).toHaveTextContent('Banana');
+  });
+
+  it('supports keyboard navigation', async () => {
+    render(
+      <Select>
+        <SelectTrigger>
+          <SelectValue placeholder="Select" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="1">Option 1</SelectItem>
+          <SelectItem value="2">Option 2</SelectItem>
+          <SelectItem value="3">Option 3</SelectItem>
+        </SelectContent>
+      </Select>
+    );
+
+    const trigger = screen.getByRole('combobox');
+
+    // Open with Enter
+    trigger.focus();
+    await userEvent.keyboard('{Enter}');
+
+    // Navigate with arrow keys
+    await userEvent.keyboard('{ArrowDown}');
+    await userEvent.keyboard('{ArrowDown}');
+    await userEvent.keyboard('{Enter}');
+
+    expect(trigger).toHaveTextContent('Option 2');
+  });
+});
+```
+
+**Key Points:**
+- Test both mouse and keyboard interactions
+- Verify ARIA roles (combobox, option)
+- Check that selected value updates
+- Test arrow key navigation
+
+---
+
+## 🧪 Testing Patterns
+
+### Testing Variants
+
+```typescript
+describe('Button Variants', () => {
+  const variants = ['default', 'primary', 'secondary', 'outline', 'ghost'] as const;
+
+  variants.forEach((variant) => {
+    it(`renders ${variant} variant correctly`, async () => {
+      const { container } = render(<Button variant={variant}>Button</Button>);
+
+      const button = screen.getByRole('button');
+      expect(button).toHaveClass(`btn-${variant}`);
+
+      // Each variant should pass accessibility
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+  });
+});
+```
+
+### Testing Loading States
+
+```typescript
+describe('Button Loading State', () => {
+  it('shows loading indicator and disables button', () => {
+    render(<Button loading>Submit</Button>);
+
+    const button = screen.getByRole('button');
+    expect(button).toBeDisabled();
+    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+  });
+
+  it('prevents click during loading', async () => {
+    const handleClick = vi.fn();
+    render(<Button loading onClick={handleClick}>Submit</Button>);
+
+    const button = screen.getByRole('button');
+    await userEvent.click(button);
+
+    expect(handleClick).not.toHaveBeenCalled();
+  });
+});
+```
+
+### Testing Error States
+
+```typescript
+describe('Form Error Handling', () => {
+  it('displays error message', () => {
+    const errorMessage = 'Email is required';
+
+    render(
+      <div>
+        <Label htmlFor="email">Email</Label>
+        <Input
+          id="email"
+          aria-invalid={true}
+          aria-describedby="email-error"
+        />
+        <span id="email-error" role="alert">
+          {errorMessage}
+        </span>
+      </div>
+    );
+
+    const input = screen.getByRole('textbox', { name: /email/i });
+    const error = screen.getByRole('alert');
+
+    expect(input).toHaveAttribute('aria-invalid', 'true');
+    expect(input).toHaveAccessibleDescription(errorMessage);
+    expect(error).toHaveTextContent(errorMessage);
+  });
+});
+```
+
+### Testing Dark Mode
+
+```typescript
+describe('Theme Switching', () => {
+  it('applies dark mode styles', () => {
+    const { container } = render(
+      <div className="dark">
+        <Button>Dark Mode Button</Button>
+      </div>
+    );
+
+    expect(container.firstChild).toHaveClass('dark');
+  });
+
+  it('maintains accessibility in dark mode', async () => {
+    const { container } = render(
+      <div className="dark">
+        <Card>
+          <CardHeader>
+            <CardTitle>Dark Card</CardTitle>
+          </CardHeader>
+          <CardContent>Content</CardContent>
+        </Card>
+      </div>
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+});
+```
+
+---
+
+## 🎨 Visual Testing with Storybook
+
+### Story-Based Tests
+
+```typescript
+// button.stories.tsx
+export const Primary: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Primary Button',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test interactions in Storybook
+    const button = canvas.getByRole('button');
+    await userEvent.click(button);
+
+    // Verify behavior
+    expect(button).toHaveFocus();
+  },
+};
+```
+
+### Accessibility Testing in Stories
+
+```typescript
+// .storybook/preview.tsx
+import { withTests } from '@storybook/addon-jest';
+import results from '../.jest-test-results.json';
+
+export const decorators = [withTests({ results })];
+
+// Run axe on all stories
+export const parameters = {
+  a11y: {
+    config: {
+      rules: [
+        {
+          id: 'color-contrast',
+          enabled: true,
+        },
+      ],
+    },
+  },
+};
+```
+
+---
+
+## 📊 Coverage Goals
+
+### Target Metrics
+
+- **Statements**: 80%+
+- **Branches**: 70%+
+- **Functions**: 80%+
+- **Lines**: 80%+
+
+### Running Coverage
+
+```bash
+# Full coverage report
+pnpm test:coverage
+
+# Coverage for specific component
+pnpm test:coverage -- button
+
+# Watch mode with coverage
+pnpm test:watch --coverage
+```
+
+### Viewing Reports
+
+```bash
+# Generate HTML report
+pnpm test:coverage
+
+# Open in browser
+open coverage/index.html
+```
+
+---
+
+## 🚀 Running Tests
+
+### Commands
+
+```bash
+# Run all tests
+pnpm test
+
+# Watch mode (re-run on changes)
+pnpm test:watch
+
+# Run specific test file
+pnpm test button.test.tsx
+
+# Run accessibility tests only
+pnpm test a11y
+
+# Run tests with coverage
+pnpm test:coverage
+
+# Update snapshots
+pnpm test -u
+```
+
+### CI/CD Integration
+
+```yaml
+# .github/workflows/test.yml
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run tests
+        run: pnpm test:coverage
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+```
+
+---
+
+## 💡 Best Practices
+
+### DO:
+
+✅ **Test user behavior, not implementation**
+```typescript
+// Good: Test what user sees
+expect(screen.getByText('Hello')).toBeInTheDocument();
+
+// Bad: Test implementation details
+expect(component.state.text).toBe('Hello');
+```
+
+✅ **Use semantic queries**
+```typescript
+// Good: Query by role
+screen.getByRole('button', { name: /submit/i });
+
+// Avoid: Query by class or test ID
+screen.getByTestId('submit-button');
+```
+
+✅ **Test accessibility for all states**
+```typescript
+const { container } = render(<Button disabled>Disabled</Button>);
+const results = await axe(container);
+expect(results).toHaveNoViolations();
+```
+
+✅ **Use userEvent over fireEvent**
+```typescript
+// Good: Simulates real user interactions
+await userEvent.click(button);
+await userEvent.type(input, 'Hello');
+
+// Avoid: Lower-level events
+fireEvent.click(button);
+```
+
+### DON'T:
+
+❌ **Don't test styling details**
+```typescript
+// Bad: Brittle, tests implementation
+expect(button).toHaveStyle({ backgroundColor: '#0000ff' });
+
+// Good: Test functional behavior
+expect(button).toHaveClass('btn-primary');
+```
+
+❌ **Don't test third-party libraries**
+```typescript
+// Bad: Testing Radix UI internals
+expect(dialog.portal).toRender();
+
+// Good: Test your component's behavior
+expect(screen.getByRole('dialog')).toBeInTheDocument();
+```
+
+❌ **Don't forget to clean up**
+```typescript
+// Bad: Can cause memory leaks
+afterEach(() => {
+  // Nothing
+});
+
+// Good: Cleanup after each test
+afterEach(() => {
+  cleanup();
+});
+```
+
+---
+
+## 🔍 Debugging Tests
+
+### Using screen.debug()
+
+```typescript
+it('debugs component output', () => {
+  render(<Button>Click me</Button>);
+
+  // Print DOM to console
+  screen.debug();
+
+  // Print specific element
+  screen.debug(screen.getByRole('button'));
+});
+```
+
+### Testing Playground
+
+```typescript
+import { screen } from '@testing-library/react';
+
+it('helps find queries', () => {
+  render(<Button>Click me</Button>);
+
+  // Opens interactive query builder in browser
+  screen.logTestingPlaygroundURL();
+});
+```
+
+### Checking Accessible Roles
+
+```typescript
+// List all accessible roles in rendered output
+screen.logRoles();
+```
+
+---
+
+## 📚 Additional Resources
+
+- [Testing Library Docs](https://testing-library.com/docs/react-testing-library/intro/)
+- [jest-axe Documentation](https://github.com/nickcolley/jest-axe)
+- [Vitest Documentation](https://vitest.dev/)
+- [Accessibility Guide](/docs/guides-accessibility--docs)
+- [ARIA Practices](https://www.w3.org/WAI/ARIA/apg/)
+
+---
+
+## 🆘 Common Issues
+
+### Issue: "Unable to find role"
+
+**Problem:** Query fails to find element by role
+**Solution:** Use `screen.logRoles()` to see available roles
+
+```typescript
+render(<Button>Click</Button>);
+screen.logRoles(); // Shows all roles in output
+```
+
+### Issue: Async test failures
+
+**Problem:** Tests fail intermittently with async operations
+**Solution:** Use `waitFor` and `findBy` queries
+
+```typescript
+// Good: Wait for element
+const button = await screen.findByRole('button');
+
+// Also good: Wait for assertion
+await waitFor(() => {
+  expect(screen.getByText('Success')).toBeInTheDocument();
+});
+```
+
+### Issue: Focus management tests fail
+
+**Problem:** Focus-related tests don't work
+**Solution:** Ensure jsdom environment and proper cleanup
+
+```typescript
+// vitest.config.ts
+export default defineConfig({
+  test: {
+    environment: 'jsdom', // Required for focus
+  },
+});
+```
+
+---
+
+Ready to write tests? Check out existing test files in `src/__tests__/` for more examples and patterns used throughout the design system.

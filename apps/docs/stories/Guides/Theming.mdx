@@ -1,0 +1,499 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="5. Guides/Theming" />
+
+# Theming Guide
+
+Learn how to customize the Wylie Dog Design System with your own colors, tokens, and theme preferences using OKLCH color science.
+
+## 🎨 Why OKLCH?
+
+OKLCH (Oklch: Lightness, Chroma, Hue) is a perceptually uniform color space that provides:
+
+- **Predictable Lightness**: Colors with the same L value appear equally bright
+- **Vibrant Colors**: Access to the wider P3 color gamut
+- **Consistent Brightness**: No more washed-out pastels or muddy darks
+- **Better Accessibility**: Easier to maintain consistent contrast ratios
+- **Future-Proof**: Native browser support in modern browsers
+
+```css
+/* Traditional RGB - unpredictable brightness */
+color: rgb(255, 0, 0);    /* Bright red */
+color: rgb(0, 0, 255);    /* Much darker blue */
+
+/* OKLCH - predictable brightness */
+color: oklch(0.6 0.2 0);    /* Red at 60% lightness */
+color: oklch(0.6 0.2 240);  /* Blue at 60% lightness - same brightness! */
+```
+
+---
+
+## 🚀 Quick Start
+
+### 1. Install the Package
+
+```bash
+pnpm add @wyliedog/ui
+```
+
+### 2. Import Global Styles
+
+Import the design system's global styles in your app's root file:
+
+```tsx
+// app/layout.tsx or pages/_app.tsx
+import '@wyliedog/ui/styles';
+```
+
+This imports:
+- Tailwind CSS v4 base styles
+- OKLCH color tokens as CSS variables
+- Design system semantic tokens
+- Dark mode support
+
+### 3. Use Components
+
+```tsx
+import { Button } from '@wyliedog/ui/button';
+
+export default function App() {
+  return <Button>Click me</Button>;
+}
+```
+
+---
+
+## 🎯 Color System Architecture
+
+### Token Layers
+
+The design system uses a three-layer token architecture:
+
+```
+1. Base Colors (Primitives)
+   ↓
+2. Semantic Tokens (Meaning)
+   ↓
+3. Component Tokens (Usage)
+```
+
+#### Layer 1: Base Colors
+
+Raw OKLCH color scales (50-950):
+
+```css
+--color-gray-500: oklch(0.711 0.035 256.79);
+--color-blue-600: oklch(0.546 0.215 262.88);
+--color-green-600: oklch(0.627 0.170 149.21);
+--color-red-600: oklch(0.577 0.215 27.33);
+--color-orange-600: oklch(0.646 0.194 41.12);
+--color-purple-600: oklch(0.558 0.252 302.32);
+```
+
+#### Layer 2: Semantic Tokens
+
+Purpose-driven tokens:
+
+```css
+--color-background-primary: oklch(1.000 0.000 0.00);
+--color-background-brand: oklch(0.546 0.215 262.88);
+--color-text-primary: oklch(0.208 0.040 265.75);
+--color-text-brand: oklch(0.546 0.215 262.88);
+--color-border-default: oklch(0.929 0.013 255.51);
+```
+
+#### Layer 3: Component Tokens
+
+Component-specific values (defined in Tailwind classes):
+
+```tsx
+<Button className="bg-blue-600 hover:bg-blue-700">
+  Click me
+</Button>
+```
+
+---
+
+## 🛠️ Customization Methods
+
+### Method 1: Override CSS Variables (Recommended)
+
+Override design tokens by redefining CSS variables in your app:
+
+```css
+/* app/globals.css */
+@import '@wyliedog/ui/styles';
+
+:root {
+  /* Change brand color from blue to purple */
+  --color-background-brand: oklch(0.558 0.252 302.32);
+  --color-text-brand: oklch(0.558 0.252 302.32);
+  --color-border-brand: oklch(0.558 0.252 302.32);
+
+  /* Adjust button primary variant */
+  --color-blue-600: oklch(0.558 0.252 302.32);
+  --color-blue-700: oklch(0.541 0.247 293.01);
+}
+```
+
+### Method 2: Extend Tailwind Config
+
+Add custom colors while preserving design system tokens:
+
+```js
+// tailwind.config.js
+import baseConfig from "@repo/tailwind-config";
+
+export default {
+  ...baseConfig,
+  theme: {
+    extend: {
+      colors: {
+        // Add custom brand colors
+        brand: {
+          50: 'oklch(0.977 0.014 308.30)',
+          100: 'oklch(0.946 0.033 307.17)',
+          // ... full scale
+          600: 'oklch(0.558 0.252 302.32)',
+          700: 'oklch(0.541 0.247 293.01)',
+        },
+      },
+    },
+  },
+};
+```
+
+### Method 3: Component-Level Overrides
+
+Override styles directly on components:
+
+```tsx
+<Button
+  className="bg-purple-600 hover:bg-purple-700 text-white"
+>
+  Custom Styled Button
+</Button>
+```
+
+---
+
+## 🌗 Dark Mode
+
+The design system includes built-in dark mode support via CSS variables.
+
+### Enable Dark Mode
+
+Add the `dark` class to your root element:
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }) {
+  return (
+    <html className="dark">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+### Dark Mode Tokens
+
+Dark mode is achieved by overriding tokens in a `.dark` class:
+
+```css
+/* tokens-dark.css */
+.dark {
+  --color-background-primary: oklch(0.208 0.040 265.75);
+  --color-background-secondary: oklch(0.279 0.037 260.03);
+  --color-text-primary: oklch(0.984 0.003 247.86);
+  --color-border-default: oklch(0.446 0.037 257.28);
+  /* ... all semantic tokens inverted */
+}
+```
+
+### Dynamic Dark Mode
+
+Use a theme provider for user-controlled dark mode:
+
+```tsx
+'use client';
+
+import { useEffect, useState } from 'react';
+
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    // Read from localStorage or system preference
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+    setTheme(savedTheme || systemTheme);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+```
+
+---
+
+## 🎨 Creating a Custom Theme
+
+### Step-by-Step: Brand Color Theme
+
+Let's create a custom theme with your brand colors:
+
+#### 1. Define Your Brand Color in OKLCH
+
+Use an OKLCH color picker (like [oklch.com](https://oklch.com)) to convert your brand color:
+
+```
+Your brand: #7c3aed (purple)
+↓
+OKLCH: oklch(0.558 0.252 302.32)
+```
+
+#### 2. Generate a Color Scale
+
+Create a 50-950 scale maintaining consistent lightness steps:
+
+```css
+:root {
+  /* Lighter shades - reduce chroma */
+  --color-brand-50: oklch(0.977 0.014 302);
+  --color-brand-100: oklch(0.946 0.033 302);
+  --color-brand-200: oklch(0.902 0.060 302);
+  --color-brand-300: oklch(0.827 0.108 302);
+  --color-brand-400: oklch(0.722 0.177 302);
+
+  /* Base color */
+  --color-brand-600: oklch(0.558 0.252 302.32);
+
+  /* Darker shades - reduce lightness */
+  --color-brand-700: oklch(0.541 0.247 293);
+  --color-brand-800: oklch(0.438 0.198 304);
+  --color-brand-900: oklch(0.381 0.166 305);
+  --color-brand-950: oklch(0.291 0.143 303);
+}
+```
+
+**OKLCH Tips:**
+- **Lightness (L)**: 0-1 scale (0 = black, 1 = white)
+- **Chroma (C)**: 0-0.4 typical (0 = gray, higher = more saturated)
+- **Hue (H)**: 0-360 degrees (0=red, 120=green, 240=blue, 300=purple)
+
+#### 3. Apply to Semantic Tokens
+
+Map your brand scale to semantic tokens:
+
+```css
+:root {
+  /* Backgrounds */
+  --color-background-brand: var(--color-brand-600);
+  --color-surface-brand: var(--color-brand-50);
+
+  /* Text */
+  --color-text-brand: var(--color-brand-600);
+  --color-text-on-brand: oklch(1.000 0.000 0);
+
+  /* Borders */
+  --color-border-brand: var(--color-brand-300);
+  --color-border-brand-strong: var(--color-brand-600);
+
+  /* Interactive states */
+  --color-interactive-brand-hover: var(--color-brand-700);
+  --color-interactive-brand-active: var(--color-brand-800);
+}
+```
+
+#### 4. Update Component Variants
+
+Override button primary variant to use your brand:
+
+```css
+/* Override the primary button to use brand colors */
+.btn-primary {
+  background-color: var(--color-brand-600);
+  color: var(--color-text-on-brand);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-brand-700);
+}
+```
+
+Or use Tailwind classes:
+
+```tsx
+<Button className="bg-brand-600 hover:bg-brand-700">
+  Brand Button
+</Button>
+```
+
+---
+
+## 📐 Spacing & Layout Tokens
+
+Customize spacing and layout tokens:
+
+```css
+:root {
+  /* Adjust base spacing unit */
+  --spacing-unit: 0.25rem; /* Default: 4px */
+
+  /* Custom spacing scale */
+  --spacing-xs: calc(var(--spacing-unit) * 2);  /* 8px */
+  --spacing-sm: calc(var(--spacing-unit) * 3);  /* 12px */
+  --spacing-md: calc(var(--spacing-unit) * 4);  /* 16px */
+  --spacing-lg: calc(var(--spacing-unit) * 6);  /* 24px */
+  --spacing-xl: calc(var(--spacing-unit) * 8);  /* 32px */
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+```
+
+---
+
+## 🔍 Accessibility Considerations
+
+### Contrast Requirements
+
+When creating custom themes, maintain WCAG 2.1 AA contrast ratios:
+
+- **Normal text**: 4.5:1 minimum
+- **Large text** (18pt+): 3:1 minimum
+- **UI components**: 3:1 minimum
+
+### Testing Contrast
+
+Use browser DevTools or online tools to verify contrast:
+
+```css
+/* Good contrast */
+background: oklch(0.95 0.01 240); /* Very light blue */
+color: oklch(0.25 0.08 240);      /* Very dark blue */
+/* Contrast ratio: 16.2:1 ✓ */
+
+/* Poor contrast */
+background: oklch(0.95 0.01 240); /* Very light blue */
+color: oklch(0.70 0.15 240);      /* Medium blue */
+/* Contrast ratio: 2.8:1 ✗ */
+```
+
+### OKLCH Advantage
+
+OKLCH makes it easier to maintain contrast by controlling lightness:
+
+```css
+/* Guarantee high contrast by lightness difference */
+--text-on-light: oklch(0.2 0.05 240);  /* L = 0.2 */
+--background-light: oklch(0.98 0.01 240); /* L = 0.98 */
+/* Lightness diff = 0.78 - guaranteed high contrast */
+```
+
+---
+
+## 💡 Best Practices
+
+### DO:
+
+✅ **Use semantic tokens** for component styling
+```tsx
+<div className="bg-background-primary text-text-primary">
+```
+
+✅ **Maintain consistent lightness** across color families
+```css
+--color-blue-600: oklch(0.55 0.20 240);
+--color-green-600: oklch(0.55 0.18 150); /* Same L value */
+```
+
+✅ **Test in both light and dark modes**
+```css
+:root { /* light */ }
+.dark { /* dark */ }
+```
+
+✅ **Override at the CSS variable level** for global changes
+```css
+:root {
+  --color-background-brand: oklch(0.558 0.252 302);
+}
+```
+
+### DON'T:
+
+❌ **Don't hard-code RGB/hex values**
+```tsx
+/* Avoid this */
+<Button style={{ backgroundColor: '#7c3aed' }}>
+```
+
+❌ **Don't break the token hierarchy**
+```css
+/* Avoid directly using primitive tokens in components */
+.my-component {
+  color: var(--color-blue-600); /* Use semantic token instead */
+}
+```
+
+❌ **Don't ignore contrast ratios**
+```css
+/* This might fail WCAG */
+background: oklch(0.70 0.15 240);
+color: oklch(0.75 0.12 240);
+```
+
+---
+
+## 📚 Additional Resources
+
+- **OKLCH Color Picker**: [oklch.com](https://oklch.com)
+- **Contrast Checker**: [Contrast Ratio Tool](https://contrast-ratio.com/)
+- **Tailwind v4 Docs**: [tailwindcss.com](https://tailwindcss.com)
+- **WCAG Guidelines**: [WCAG 2.1](https://www.w3.org/WAI/WCAG21/quickref/)
+
+---
+
+## 🆘 Troubleshooting
+
+### Colors Not Updating
+
+1. Check import order - `@wyliedog/ui/styles` should come first
+2. Ensure CSS custom properties are in `:root` or `.dark`
+3. Clear browser cache and rebuild
+
+### Dark Mode Not Working
+
+1. Verify `.dark` class is on `<html>` or `<body>`
+2. Check that `tokens-dark.css` is imported
+3. Ensure semantic tokens are used (not primitive colors)
+
+### Tailwind Classes Not Working
+
+1. Verify Tailwind config includes UI package path
+2. Check that global styles are imported
+3. Rebuild your app to regenerate Tailwind utilities
+
+---
+
+Need help? Check the [Accessibility Guide](/docs/guides-accessibility--docs) or explore our [component examples](/docs/patterns-component-compositions--docs).
