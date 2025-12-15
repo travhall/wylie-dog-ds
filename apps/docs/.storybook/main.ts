@@ -8,13 +8,15 @@ const config: StorybookConfig = {
   stories: [
     "../stories/**/*.mdx",
     "../stories/*.stories.tsx",
-    "../stories/**/*.stories.tsx"
+    "../stories/**/*.stories.tsx",
   ],
 
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-docs",
-    "@storybook/addon-vitest"
+    "@storybook/addon-vitest",
+    "@storybook/addon-a11y",
+    "@chromatic-com/storybook",
   ],
 
   framework: {
