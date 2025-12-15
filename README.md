@@ -250,6 +250,24 @@ import { Table } from "@wyliedog/ui/table";
 
 ## 💻 Development Workflow
 
+### Creating New Components
+
+Generate a complete component scaffold with one command:
+
+```bash
+# Generate component, test, and story files automatically
+pnpm generate:component rating
+
+# Creates:
+# ✓ packages/ui/src/rating.tsx
+# ✓ packages/ui/src/__tests__/rating.test.tsx
+# ✓ apps/storybook/stories/rating.stories.tsx
+# ✓ Updates build configuration
+# ✓ Updates package exports
+```
+
+See [COMPONENT_WORKFLOW.md](documentation/COMPONENT_WORKFLOW.md) for complete guide.
+
 ### Commands
 
 ```bash
@@ -257,6 +275,9 @@ import { Table } from "@wyliedog/ui/table";
 pnpm dev                          # Start all packages in development mode
 pnpm --filter storybook dev       # Start Storybook only (port 6006)
 pnpm --filter showcase dev        # Start Next.js app only (port 3001)
+
+# 🎨 Component Generation
+pnpm generate:component <name>    # Generate new component with tests and stories
 
 # 🏗️ Building
 pnpm build            # Build all packages and applications

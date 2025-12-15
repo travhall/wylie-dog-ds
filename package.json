@@ -7,6 +7,7 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "generate:component": "node scripts/generate-component.js",
     "lint": "turbo run lint",
     "lint:a11y": "turbo run lint:a11y",
     "perf": "./scripts/performance-check.sh",

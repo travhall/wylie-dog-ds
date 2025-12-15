@@ -4,6 +4,19 @@ This directory contains detailed documentation for the Wylie Dog Design System.
 
 ## Available Documentation
 
+### [COMPONENT_WORKFLOW.md](./COMPONENT_WORKFLOW.md) ⭐ **Start Here**
+
+Complete guide to creating and developing components using automated tooling.
+
+**Topics covered:**
+
+- Component generator usage (`pnpm generate:component`)
+- Component development patterns
+- Storybook 10.x story development
+- Testing requirements and best practices
+- Build and export configuration
+- Quality assurance checklist
+
 ### [PERFORMANCE.md](./PERFORMANCE.md)
 
 Comprehensive guide to performance monitoring, budgets, and optimization strategies.
