@@ -314,21 +314,20 @@ async function updateTsupConfig(name) {
   const configPath = path.join(rootDir, "packages/ui/tsup.config.ts");
   let content = await fs.readFile(configPath, "utf-8");
 
-  // Find the entry object and add new component
-  const entryPattern = /entry:\s*\{([^}]+)\}/s;
+  // Find the entryPoints array and add new component
+  const entryPattern = /entryPoints:\s*\[([^\]]+)\]/s;
   const match = content.match(entryPattern);
 
   if (!match) {
-    error("Could not find entry object in tsup.config.ts");
+    error("Could not find entryPoints array in tsup.config.ts");
   }
 
   const entries = match[1];
-  const lastEntry = entries.trim().split("\n").pop();
-  const newEntry = `    "${name}": "src/${name}.tsx",`;
+  const newEntry = `    "src/${name}.tsx",`;
 
-  // Insert before the last closing brace
+  // Add before the closing bracket
   const updatedEntries = entries.trimEnd() + "\n" + newEntry;
-  content = content.replace(entryPattern, `entry: {${updatedEntries}\n  }`);
+  content = content.replace(entryPattern, `entryPoints: [${updatedEntries}\n  ]`);
 
   await fs.writeFile(configPath, content, "utf-8");
   success(`Updated tsup.config.ts with new entry`);
