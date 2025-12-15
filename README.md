@@ -14,38 +14,47 @@
 ## ✨ What's Built
 
 ### 🎨 **Industry-Leading Color Technology**
+
 - **OKLCH Color Space**: Perceptually uniform colors, 2-3 years ahead of industry standards
-- **P3 Gamut Support**: 30% more colors than traditional sRGB systems  
+- **P3 Gamut Support**: 30% more colors than traditional sRGB systems
 - **Mathematical Color Accuracy**: Enables programmatic color generation and consistent accessibility
 - **275+ Design Tokens**: Comprehensive primitive → semantic → component token architecture
 
 ### 🧩 **Complete Component Library (40+ Components)**
 
 #### **Form Controls**
+
 `Button` • `Input` • `Textarea` • `Label` • `Checkbox` • `Switch` • `Select` • `RadioGroup` • `Slider` • `Form`
 
 #### **Layout & Structure**
+
 `Card` • `Separator` • `AspectRatio` • `ScrollArea` • `Resizable` • `Collapsible` • `Tabs`
 
 #### **Navigation**
+
 `Breadcrumb` • `NavigationMenu` • `Menubar` • `Pagination` • `Command`
 
 #### **Data Display**
+
 `Badge` • `Avatar` • `Table` • `Progress` • `Skeleton` • `Calendar` • `Carousel`
 
 #### **Overlays & Dialogs**
+
 `Dialog` • `AlertDialog` • `Sheet` • `Popover` • `HoverCard` • `ContextMenu` • `DropdownMenu` • `Tooltip` • `Toast`
 
 #### **Interactive Elements**
+
 `Accordion` • `Toggle` • `ToggleGroup` • `Alert`
 
 ### 📚 **Comprehensive Documentation**
+
 - **40+ Storybook Stories**: Interactive examples for every component
 - **Foundation Documentation**: Colors, spacing, typography showcases
 - **Composition Examples**: Real-world form and layout patterns
 - **Accessibility Demos**: Keyboard navigation and screen reader examples
 
 ### 🏗️ **Modern Architecture Excellence**
+
 - **W3C DTCG Format**: Compliant with official design token standards
 - **Monorepo Excellence**: Optimized Turborepo with intelligent caching
 - **Advanced Theming**: Sophisticated light/dark mode with CSS custom properties
@@ -54,6 +63,7 @@
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18.0.0 or higher
 - pnpm 8.15.6 (recommended package manager)
 
@@ -72,6 +82,7 @@ pnpm dev
 ```
 
 This starts:
+
 - 📖 **Storybook**: Component documentation at `http://localhost:6006`
 - 🚀 **Showcase App**: Next.js demo at `http://localhost:3001`
 
@@ -85,15 +96,15 @@ pnpm add @wyliedog/ui
 ```tsx
 // Import styles and components
 import "@wyliedog/ui/styles";
-import { 
-  Button, 
-  Card, 
-  Badge, 
-  Input, 
+import {
+  Button,
+  Card,
+  Badge,
+  Input,
   Dialog,
   Accordion,
   NavigationMenu,
-  Table 
+  Table,
 } from "@wyliedog/ui";
 
 export function App() {
@@ -121,7 +132,7 @@ wylie-dog-ds/
 ├── packages/
 │   ├── tokens/           # 🎨 Design tokens (A+ rated)
 │   │   ├── primitive.json        # Base OKLCH colors, spacing, typography
-│   │   ├── semantic-*.json       # Light/dark theme tokens  
+│   │   ├── semantic-*.json       # Light/dark theme tokens
 │   │   └── component-*.json      # Component-specific tokens
 │   ├── ui/               # 🧩 React component library (40+ components)
 │   │   ├── src/                  # Individual component exports
@@ -131,8 +142,9 @@ wylie-dog-ds/
 │   ├── tailwind-config/  # 🎨 Shared Tailwind configuration
 │   └── typescript-config/ # 📝 Shared TypeScript configuration
 ├── apps/
-│   ├── docs/             # 📖 Storybook documentation (40+ stories)
+│   ├── storybook/        # 📖 Storybook documentation (40+ stories)
 │   └── showcase/         # 🚀 Next.js demo application
+├── documentation/        # 📚 Project documentation
 └── [configuration files]
 ```
 
@@ -141,6 +153,7 @@ wylie-dog-ds/
 Our **A+ rated** design token implementation features:
 
 ### OKLCH Color Innovation
+
 ```typescript
 // Mathematical color precision with OKLCH
 const colors = {
@@ -157,6 +170,7 @@ const colors = {
 ```
 
 ### Token Architecture
+
 ```typescript
 // Hierarchical tokens with full TypeScript support
 import { colors, spacing, typography } from "@wyliedog/ui/tokens";
@@ -166,7 +180,7 @@ import { color, space } from "@wyliedog/ui/tokens/hierarchical";
 const primaryBlue = colors.primary[500];
 const cardPadding = spacing.lg;
 
-// Hierarchical access  
+// Hierarchical access
 const semanticBlue = color.primary[500];
 const layoutSpace = space.lg;
 ```
@@ -174,6 +188,7 @@ const layoutSpace = space.lg;
 ## 🧩 Component Library
 
 ### Individual Component Exports
+
 Every component is individually exported for optimal tree-shaking:
 
 ```tsx
@@ -191,16 +206,12 @@ import { NavigationMenu } from "@wyliedog/ui/navigation-menu";
 import { Form, Input, Button, Alert } from "@wyliedog/ui";
 
 <Form onSubmit={handleSubmit}>
-  <Input 
-    label="Email" 
-    validation="email"
-    error={errors.email}
-  />
+  <Input label="Email" validation="email" error={errors.email} />
   <Button type="submit" loading={isSubmitting}>
     Submit
   </Button>
   {error && <Alert variant="destructive">{error}</Alert>}
-</Form>
+</Form>;
 
 // Complex navigation structures
 import { NavigationMenu } from "@wyliedog/ui/navigation-menu";
@@ -209,12 +220,10 @@ import { NavigationMenu } from "@wyliedog/ui/navigation-menu";
   <NavigationMenu.List>
     <NavigationMenu.Item>
       <NavigationMenu.Trigger>Products</NavigationMenu.Trigger>
-      <NavigationMenu.Content>
-        {/* Nested navigation */}
-      </NavigationMenu.Content>
+      <NavigationMenu.Content>{/* Nested navigation */}</NavigationMenu.Content>
     </NavigationMenu.Item>
   </NavigationMenu.List>
-</NavigationMenu>
+</NavigationMenu>;
 
 // Data tables with sorting
 import { Table } from "@wyliedog/ui/table";
@@ -227,14 +236,16 @@ import { Table } from "@wyliedog/ui/table";
     </Table.Row>
   </Table.Header>
   <Table.Body>
-    {data.map(item => (
+    {data.map((item) => (
       <Table.Row key={item.id}>
         <Table.Cell>{item.name}</Table.Cell>
-        <Table.Cell><Badge>{item.status}</Badge></Table.Cell>
+        <Table.Cell>
+          <Badge>{item.status}</Badge>
+        </Table.Cell>
       </Table.Row>
     ))}
   </Table.Body>
-</Table>
+</Table>;
 ```
 
 ## 💻 Development Workflow
@@ -243,19 +254,24 @@ import { Table } from "@wyliedog/ui/table";
 
 ```bash
 # 🚀 Development
-pnpm dev              # Start all packages in development mode
-pnpm dev:docs         # Start Storybook only (port 6006)
-pnpm dev:showcase     # Start Next.js app only (port 3001)
+pnpm dev                          # Start all packages in development mode
+pnpm --filter storybook dev       # Start Storybook only (port 6006)
+pnpm --filter showcase dev        # Start Next.js app only (port 3001)
 
-# 🏗️ Building  
+# 🏗️ Building
 pnpm build            # Build all packages and applications
 pnpm build:tokens     # Process design tokens
 pnpm build:ui         # Build component library
 
 # 🧪 Quality Assurance
 pnpm lint             # Lint all packages
-pnpm test:tokens      # Validate design token structure
+pnpm test             # Run all tests
+pnpm test:coverage    # Run tests with coverage
 pnpm format           # Format code with Prettier
+
+# ⚡ Performance
+pnpm perf             # Run comprehensive performance checks
+pnpm size             # Check bundle sizes
 
 # 📦 Publishing
 pnpm changeset        # Create a new changeset
@@ -268,45 +284,64 @@ pnpm release          # Publish to npm
 The optimized Turborepo configuration ensures:
 
 1. **Token Processing**: JSON tokens → CSS variables + TypeScript exports
-2. **Style Compilation**: Tailwind CSS 4 with `@theme` integration  
+2. **Style Compilation**: Tailwind CSS 4 with `@theme` integration
 3. **Component Building**: TypeScript → ESM/CJS with type definitions
 4. **Documentation**: Storybook build with 40+ component stories
 5. **Optimization**: Intelligent caching and parallel execution
 
 ## 📊 Performance Metrics
 
-| Metric | Current Performance | Industry Standard | Grade | 
-|--------|-------------------|-------------------|--------|
-| **Build Speed** | ~1 second | 2-5 seconds | A+ |
-| **Bundle Size** | 14-44% of limits | <80% acceptable | A+ |
-| **Token Count** | 275 exports | 100-300 typical | A |
-| **Component Count** | 40+ | 20-50 typical | A+ |
-| **Color Format** | OKLCH | RGB/HSL | A+ |
-| **Architecture** | 3-tier + modes | 2-tier typical | A+ |
-| **Documentation** | 100% coverage | 60-80% typical | A+ |
+| Metric              | Current Performance | Industry Standard | Grade |
+| ------------------- | ------------------- | ----------------- | ----- |
+| **Build Speed**     | ~1 second           | 2-5 seconds       | A+    |
+| **Bundle Size**     | 14-44% of limits    | <80% acceptable   | A+    |
+| **Token Count**     | 275 exports         | 100-300 typical   | A     |
+| **Component Count** | 40+                 | 20-50 typical     | A+    |
+| **Color Format**    | OKLCH               | RGB/HSL           | A+    |
+| **Architecture**    | 3-tier + modes      | 2-tier typical    | A+    |
+| **Documentation**   | 100% coverage       | 60-80% typical    | A+    |
+
+### Performance Monitoring
+
+We use free, open-source tools to ensure optimal performance:
+
+- **Lighthouse CI**: Automated performance, accessibility, and best practices audits on every PR
+- **size-limit**: Bundle size tracking for 43 components with CI enforcement
+- **Turbo**: Build performance optimization with intelligent caching
+
+**Performance Budgets:**
+
+- First Contentful Paint (FCP): < 2.0s
+- Largest Contentful Paint (LCP): < 2.5s
+- Cumulative Layout Shift (CLS): < 0.1
+- Accessibility Score: ≥ 95/100
+
+See [PERFORMANCE.md](documentation/PERFORMANCE.md) for complete details on our performance monitoring strategy.
 
 ## 🎯 Industry Comparison
 
 Wylie Dog vs. leading design systems:
 
-| Design System | Components | Architecture | Color Format | TypeScript | Documentation | Grade |
-|---------------|------------|-------------|--------------|------------|---------------|--------|
-| **Wylie Dog** | **40+** | **3-tier + modes** | **OKLCH** | **Full** | **100%** | **A+** |
-| Material Design | 30+ | 2-tier | HEX/RGB | Partial | 90% | B+ |
-| Shopify Polaris | 35+ | 2-tier | HSL | Good | 85% | A- |
-| GitHub Primer | 25+ | 2-tier | HSL | Good | 80% | B+ |
-| Ant Design | 50+ | 2-tier | HSL | Good | 95% | A- |
+| Design System   | Components | Architecture       | Color Format | TypeScript | Documentation | Grade  |
+| --------------- | ---------- | ------------------ | ------------ | ---------- | ------------- | ------ |
+| **Wylie Dog**   | **40+**    | **3-tier + modes** | **OKLCH**    | **Full**   | **100%**      | **A+** |
+| Material Design | 30+        | 2-tier             | HEX/RGB      | Partial    | 90%           | B+     |
+| Shopify Polaris | 35+        | 2-tier             | HSL          | Good       | 85%           | A-     |
+| GitHub Primer   | 25+        | 2-tier             | HSL          | Good       | 80%           | B+     |
+| Ant Design      | 50+        | 2-tier             | HSL          | Good       | 95%           | A-     |
 
 ### Competitive Advantages
+
 1. **Only production system using OKLCH** at scale with 40+ components
 2. **Complete documentation coverage** with interactive Storybook examples
-3. **Advanced theming architecture** with intelligent mode separation  
+3. **Advanced theming architecture** with intelligent mode separation
 4. **Exceptional build performance** and bundle optimization
 5. **Modern tech stack** with React 19, TypeScript 5.8, Tailwind CSS 4
 
 ## 📚 Documentation & Examples
 
 ### Interactive Documentation
+
 - **[Storybook](https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/)**: 40+ interactive component stories
 - **Foundation Examples**: OKLCH colors, spacing, typography systems
 - **Composition Patterns**: Real-world form and layout examples
@@ -315,26 +350,31 @@ Wylie Dog vs. leading design systems:
 ### Component Categories
 
 #### **Forms & Inputs**
+
 - Button, Input, Textarea, Label, Checkbox, Switch
 - Select, RadioGroup, Slider, Form
 - **Stories**: Complete form compositions with validation
 
-#### **Layout & Structure**  
+#### **Layout & Structure**
+
 - Card, Separator, AspectRatio, ScrollArea
 - Resizable, Collapsible, Tabs
 - **Stories**: Dashboard and content layouts
 
 #### **Navigation & Menus**
+
 - Breadcrumb, NavigationMenu, Menubar, Pagination
 - Command, ContextMenu, DropdownMenu
 - **Stories**: Complex navigation patterns
 
 #### **Data & Feedback**
+
 - Badge, Avatar, Table, Progress, Skeleton
 - Alert, Toast, Calendar, Carousel
 - **Stories**: Data visualization and status patterns
 
 #### **Overlays & Modals**
+
 - Dialog, AlertDialog, Sheet, Popover
 - HoverCard, Tooltip
 - **Stories**: Modal workflows and overlay patterns
@@ -350,26 +390,31 @@ Wylie Dog vs. leading design systems:
 ## 🚧 Current Status & Roadmap
 
 ### ✅ **Production Ready Features**
+
 - **40+ Components**: Complete component library with TypeScript exports
 - **OKLCH Color System**: Industry-leading perceptual color science
 - **Advanced Token Architecture**: 275+ tokens in primitive-semantic-component hierarchy
 - **Complete Documentation**: 100% Storybook coverage with interactive examples
 - **Modern Build Pipeline**: Optimized Turborepo with intelligent caching
 - **Accessibility**: WCAG 2.1 AA compliance across all components
+- **Performance Monitoring**: Automated Lighthouse CI, bundle size tracking, and build optimization
+- **Automated Dependency Updates**: Renovate bot with intelligent grouping and automerge
 
 ### 🔄 **Current Focus**
+
 - **Visual Regression Testing**: Chromatic integration for automated UI testing
-- **Figma Integration**: Bidirectional design-code token synchronization  
+- **Figma Integration**: Bidirectional design-code token synchronization
 - **Usage Analytics**: Component adoption tracking across applications
-- **Performance Monitoring**: Bundle size and build time optimization
 
 ### 🎯 **Next Quarter**
+
 - **Component Additions**: Date pickers, rich text editors, data visualization
 - **Theme Customization**: Advanced multi-brand theming capabilities
 - **Developer Tools**: VS Code extension with token autocomplete
 - **Community Features**: Open source contribution workflows
 
 ### 🌟 **Future Vision**
+
 - **AI-Powered Features**: Automated palette generation using OKLCH properties
 - **Multi-Framework Support**: Vue, Angular, Web Components packages
 - **Enterprise Features**: Governance workflows, approval processes
@@ -380,8 +425,9 @@ Wylie Dog vs. leading design systems:
 We welcome contributions to the Wylie Dog Design System! Our codebase includes:
 
 ### **What You Can Contribute**
+
 - 🐛 **Bug Fixes**: Improve component quality and reliability
-- ✨ **New Components**: Add components following our established patterns  
+- ✨ **New Components**: Add components following our established patterns
 - 🎨 **Design Tokens**: Enhance the OKLCH color system
 - 📚 **Documentation**: Improve Storybook stories and guides
 - 🧪 **Testing**: Add visual regression and accessibility tests
@@ -418,12 +464,13 @@ MIT License - see [LICENSE](LICENSE) for details.
 ## 🏆 Recognition
 
 > _"The Wylie Dog design tokens implementation is exceptional and industry-leading... This system could serve as a reference implementation for other teams building modern design token systems... Places it in the **top 5% of design token implementations** currently in production."_
-> 
+>
 > — **Design System Assessment Report, January 2025**
 
 **Key Achievements:**
+
 - **Industry-first OKLCH implementation** at production scale
-- **Complete component ecosystem** with 40+ production-ready components  
+- **Complete component ecosystem** with 40+ production-ready components
 - **Exceptional documentation coverage** with interactive examples
 - **Advanced architecture** exceeding industry standards
 - **Future-ready foundation** for next-generation web development
@@ -432,4 +479,4 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 **Built with ❤️ by the Wylie Dog team**
 
-*Setting new standards for design systems with next-generation color science, comprehensive component libraries, and exceptional developer experience.*
+_Setting new standards for design systems with next-generation color science, comprehensive component libraries, and exceptional developer experience._

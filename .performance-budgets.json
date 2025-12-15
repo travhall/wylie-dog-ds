@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json.schemastore.org/web-types.json",
+  "budgets": {
+    "description": "Performance budgets for Wylie Dog Design System",
+    "components": {
+      "maxSize": "15kb",
+      "description": "Maximum gzipped size for individual components"
+    },
+    "tokens": {
+      "maxSize": "5kb",
+      "description": "Maximum size for design tokens package"
+    },
+    "webVitals": {
+      "FCP": {
+        "target": 1800,
+        "limit": 2000,
+        "description": "First Contentful Paint (ms)"
+      },
+      "LCP": {
+        "target": 2000,
+        "limit": 2500,
+        "description": "Largest Contentful Paint (ms)"
+      },
+      "CLS": {
+        "target": 0.05,
+        "limit": 0.1,
+        "description": "Cumulative Layout Shift"
+      },
+      "TBT": {
+        "target": 200,
+        "limit": 300,
+        "description": "Total Blocking Time (ms)"
+      },
+      "SI": {
+        "target": 2500,
+        "limit": 3000,
+        "description": "Speed Index (ms)"
+      },
+      "TTI": {
+        "target": 3000,
+        "limit": 3500,
+        "description": "Time to Interactive (ms)"
+      }
+    },
+    "accessibility": {
+      "minScore": 95,
+      "description": "Minimum Lighthouse accessibility score (out of 100)"
+    },
+    "bestPractices": {
+      "minScore": 90,
+      "description": "Minimum Lighthouse best practices score (out of 100)"
+    }
+  },
+  "monitoring": {
+    "tools": [
+      "Lighthouse CI - Automated performance audits on PRs",
+      "size-limit - Bundle size tracking and enforcement",
+      "Turbo - Build performance caching and optimization"
+    ],
+    "frequency": "Every pull request and main branch push"
+  }
+}
