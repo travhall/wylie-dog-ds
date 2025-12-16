@@ -24,7 +24,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
     // Smart urgency handling based on variant
     const getAriaRole = () => {
       if (role) return role; // Allow override
-      
+
       switch (variant) {
         case "destructive":
         case "warning":
@@ -38,7 +38,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
 
     const getAriaLive = () => {
       if (role) return undefined; // Don't set if role is overridden
-      
+
       switch (variant) {
         case "destructive":
           return "assertive";
@@ -67,12 +67,10 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
 );
 Alert.displayName = "Alert";
 
-export interface AlertTitleProps
-  extends React.HTMLAttributes<HTMLHeadingElement> {}
+export interface AlertTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
 
 export const AlertTitle = React.forwardRef<HTMLHeadingElement, AlertTitleProps>(
   ({ className, ...props }, ref) => (
-    // eslint-disable-next-line jsx-a11y/heading-has-content
     <h5
       ref={ref}
       className={cn("mb-1 font-medium leading-none tracking-tight", className)}
@@ -82,17 +80,12 @@ export const AlertTitle = React.forwardRef<HTMLHeadingElement, AlertTitleProps>(
 );
 AlertTitle.displayName = "AlertTitle";
 
-export interface AlertDescriptionProps
-  extends React.HTMLAttributes<HTMLParagraphElement> {}
+export interface AlertDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
 
 export const AlertDescription = React.forwardRef<
   HTMLParagraphElement,
   AlertDescriptionProps
 >(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("text-sm opacity-90", className)}
-    {...props}
-  />
+  <div ref={ref} className={cn("text-sm opacity-90", className)} {...props} />
 ));
 AlertDescription.displayName = "AlertDescription";

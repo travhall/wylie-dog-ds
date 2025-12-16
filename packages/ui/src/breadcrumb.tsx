@@ -47,7 +47,6 @@ export interface BreadcrumbLinkProps extends React.ComponentPropsWithoutRef<"a">
 const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
   ({ className, ...props }, ref) => {
     return (
-      // eslint-disable-next-line jsx-a11y/anchor-has-content
       <a
         ref={ref}
         className={cn(
@@ -85,37 +84,39 @@ export interface BreadcrumbSeparatorProps extends React.ComponentPropsWithoutRef
   children?: React.ReactNode;
 }
 
-const BreadcrumbSeparator = React.forwardRef<HTMLLIElement, BreadcrumbSeparatorProps>(
-  ({ children, className, ...props }, ref) => (
-    <li
-      ref={ref}
-      role="presentation"
-      aria-hidden="true"
-      className={cn("[&>svg]:size-3.5", className)}
-      {...props}
-    >
-      {children ?? <ChevronRightIcon />}
-    </li>
-  )
-);
+const BreadcrumbSeparator = React.forwardRef<
+  HTMLLIElement,
+  BreadcrumbSeparatorProps
+>(({ children, className, ...props }, ref) => (
+  <li
+    ref={ref}
+    role="presentation"
+    aria-hidden="true"
+    className={cn("[&>svg]:size-3.5", className)}
+    {...props}
+  >
+    {children ?? <ChevronRightIcon />}
+  </li>
+));
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
 export interface BreadcrumbEllipsisProps extends React.ComponentPropsWithoutRef<"span"> {}
 
-const BreadcrumbEllipsis = React.forwardRef<HTMLSpanElement, BreadcrumbEllipsisProps>(
-  ({ className, ...props }, ref) => (
-    <span
-      ref={ref}
-      role="presentation"
-      aria-hidden="true"
-      className={cn("flex h-9 w-9 items-center justify-center", className)}
-      {...props}
-    >
-      <MoreHorizontalIcon className="h-4 w-4" />
-      <span className="sr-only">More</span>
-    </span>
-  )
-);
+const BreadcrumbEllipsis = React.forwardRef<
+  HTMLSpanElement,
+  BreadcrumbEllipsisProps
+>(({ className, ...props }, ref) => (
+  <span
+    ref={ref}
+    role="presentation"
+    aria-hidden="true"
+    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    {...props}
+  >
+    <MoreHorizontalIcon className="h-4 w-4" />
+    <span className="sr-only">More</span>
+  </span>
+));
 BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis";
 
 export {
