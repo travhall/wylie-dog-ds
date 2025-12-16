@@ -2,9 +2,9 @@ import { defineConfig } from "tsup";
 
 export default defineConfig((options) => ({
   entryPoints: [
-    "src/button.tsx", 
-    "src/badge.tsx", 
-    "src/card.tsx", 
+    "src/button.tsx",
+    "src/badge.tsx",
+    "src/card.tsx",
     "src/input.tsx",
     "src/label.tsx",
     "src/textarea.tsx",
@@ -43,7 +43,7 @@ export default defineConfig((options) => ({
     "src/form.tsx",
     "src/toast.tsx",
     "src/calendar.tsx",
-    "src/carousel.tsx"
+    "src/carousel.tsx",
   ],
   format: ["cjs", "esm"],
   dts: true,

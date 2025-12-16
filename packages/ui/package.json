@@ -1,14 +1,11 @@
 {
   "name": "@wyliedog/ui",
   "version": "0.0.0",
-  "type": "module",
+  "license": "MIT",
   "sideEffects": [
     "**/*.css"
   ],
-  "license": "MIT",
-  "files": [
-    "dist"
-  ],
+  "type": "module",
   "exports": {
     "./styles": "./dist/index.css",
     "./lib/utils": {
@@ -237,22 +234,25 @@
       "require": "./dist/carousel.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build-tokens": "node style-dictionary.config.js",
     "build": "pnpm build-tokens && pnpm build:styles && pnpm build:components",
-    "build:styles": "tailwindcss -i ./src/styles/index.css -o ./dist/index.css",
+    "build-tokens": "node style-dictionary.config.js",
     "build:components": "tsup",
+    "build:styles": "tailwindcss -i ./src/styles/index.css -o ./dist/index.css",
+    "clean": "rm -rf .turbo node_modules dist",
     "dev": "pnpm build-tokens && pnpm dev:styles & pnpm dev:components",
-    "dev:styles": "tailwindcss -i ./src/styles/index.css -o ./dist/index.css --watch",
     "dev:components": "tsup --watch",
-    "test": "vitest",
-    "test:watch": "vitest --watch",
-    "test:ui": "vitest --ui",
-    "test:a11y": "vitest --run --reporter=verbose src/__tests__/*.a11y.test.tsx src/accessibility-validation.test.tsx",
-    "test:coverage": "vitest --coverage",
+    "dev:styles": "tailwindcss -i ./src/styles/index.css -o ./dist/index.css --watch",
     "lint": "eslint . --max-warnings 0",
     "lint:a11y": "eslint 'src/**/*.{ts,tsx}' --ignore-pattern '**/*.test.*' --ignore-pattern '**/__tests__/**' --ignore-pattern '**/accessibility-example.tsx' --config eslint.config.a11y.js",
-    "clean": "rm -rf .turbo node_modules dist"
+    "test": "vitest",
+    "test:a11y": "vitest --run --reporter=verbose src/__tests__/*.a11y.test.tsx src/accessibility-validation.test.tsx",
+    "test:coverage": "vitest --coverage",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest --watch"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.2",
@@ -283,32 +283,32 @@
     "react": "^19.1.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.31.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@tailwindcss/cli": "^4.1.11",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
     "@tokens-studio/sd-transforms": "^2.0.1",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "@testing-library/react": "^16.1.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/user-event": "^14.5.2",
-    "@vitest/ui": "^3.2.4",
-    "@vitest/coverage-v8": "^3.2.4",
-    "@eslint/js": "^9.31.0",
-    "axe-core": "^4.10.2",
-    "jest-axe": "^9.0.0",
-    "jsdom": "^26.0.0",
-    "vitest": "^3.2.4",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
     "@typescript-eslint/parser": "^8.21.0",
-    "typescript-eslint": "^8.21.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
+    "axe-core": "^4.10.2",
     "culori": "^4.0.2",
     "eslint": "^9.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "jest-axe": "^9.0.0",
+    "jsdom": "^26.0.0",
     "style-dictionary": "^5.0.1",
     "tailwindcss": "^4.1.11",
     "tsup": "^8.5.0",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "typescript-eslint": "^8.21.0",
+    "vitest": "^3.2.4"
   },
   "publishConfig": {
     "access": "public"

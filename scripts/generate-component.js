@@ -240,11 +240,7 @@ export const Interactive: Story = {
 
 // Check if component already exists
 async function checkExistence(name) {
-  const componentPath = path.join(
-    rootDir,
-    "packages/ui/src",
-    `${name}.tsx`
-  );
+  const componentPath = path.join(rootDir, "packages/ui/src", `${name}.tsx`);
   const storyPath = path.join(
     rootDir,
     "apps/storybook/stories",
@@ -253,9 +249,7 @@ async function checkExistence(name) {
 
   try {
     await fs.access(componentPath);
-    error(
-      `Component '${name}' already exists at packages/ui/src/${name}.tsx`
-    );
+    error(`Component '${name}' already exists at packages/ui/src/${name}.tsx`);
   } catch {
     // File doesn't exist, which is what we want
   }
@@ -272,11 +266,7 @@ async function checkExistence(name) {
 
 // Create component file
 async function createComponentFile(name) {
-  const componentPath = path.join(
-    rootDir,
-    "packages/ui/src",
-    `${name}.tsx`
-  );
+  const componentPath = path.join(rootDir, "packages/ui/src", `${name}.tsx`);
   const content = generateComponentTemplate(name);
 
   await fs.writeFile(componentPath, content, "utf-8");
@@ -323,11 +313,20 @@ async function updateTsupConfig(name) {
   }
 
   const entries = match[1];
+
+  // Check if last entry has a comma, if not add one
+  const trimmedEntries = entries.trimEnd();
+  const needsComma = !trimmedEntries.endsWith(",");
   const newEntry = `    "src/${name}.tsx",`;
 
-  // Add before the closing bracket
-  const updatedEntries = entries.trimEnd() + "\n" + newEntry;
-  content = content.replace(entryPattern, `entryPoints: [${updatedEntries}\n  ]`);
+  // Add comma to last entry if needed, then add new entry
+  const updatedEntries = needsComma
+    ? trimmedEntries + ",\n" + newEntry
+    : trimmedEntries + "\n" + newEntry;
+  content = content.replace(
+    entryPattern,
+    `entryPoints: [${updatedEntries}\n  ]`
+  );
 
   await fs.writeFile(configPath, content, "utf-8");
   success(`Updated tsup.config.ts with new entry`);
@@ -417,18 +416,25 @@ async function main() {
     log("✨ Component generated successfully!\n", "green");
 
     log("📝 Next steps:", "blue");
-    console.log(`  1. Customize the component in packages/ui/src/${componentName}.tsx`);
+    console.log(
+      `  1. Customize the component in packages/ui/src/${componentName}.tsx`
+    );
     console.log(`  2. Add variants and props as needed`);
-    console.log(`  3. Enhance stories in apps/storybook/stories/${componentName}.stories.tsx`);
-    console.log(`  4. Add more test cases in packages/ui/src/__tests__/${componentName}.test.tsx`);
+    console.log(
+      `  3. Enhance stories in apps/storybook/stories/${componentName}.stories.tsx`
+    );
+    console.log(
+      `  4. Add more test cases in packages/ui/src/__tests__/${componentName}.test.tsx`
+    );
     console.log();
 
     log("🚀 Development commands:", "blue");
     console.log(`  pnpm dev                     - Start all dev servers`);
-    console.log(`  pnpm --filter storybook dev  - View your story at http://localhost:6006`);
+    console.log(
+      `  pnpm --filter storybook dev  - View your story at http://localhost:6006`
+    );
     console.log(`  pnpm test                    - Run tests`);
     console.log();
-
   } catch (err) {
     error(`Failed to generate component: ${err.message}`);
   }
