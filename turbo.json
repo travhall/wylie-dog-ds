@@ -23,7 +23,12 @@
       "cache": true
     },
     "test": {
-      "inputs": ["src/**/*.tsx", "src/**/*.ts", "vitest.config.ts", "src/test-setup.ts"],
+      "inputs": [
+        "src/**/*.tsx",
+        "src/**/*.ts",
+        "vitest.config.ts",
+        "src/test-setup.ts"
+      ],
       "cache": true
     },
     "test:watch": {
@@ -62,9 +67,7 @@
       "cache": false
     },
     "preview-storybook": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "cache": false
     },
     "figma-plugin#build": {
@@ -76,6 +79,11 @@
     "figma-plugin#dev": {
       "cache": false,
       "persistent": true
+    },
+    "@wyliedog/tokens#build": {
+      "inputs": ["src/**/*.json", "src/**/*.ts"],
+      "outputs": [],
+      "cache": true
     }
   }
 }
