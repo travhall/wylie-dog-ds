@@ -2,19 +2,20 @@ import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { cn } from "./lib/utils";
 
-interface CalendarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'> {
+interface CalendarProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "onSelect"
+> {
   mode?: "single" | "multiple" | "range";
   selected?: Date | Date[] | { from?: Date; to?: Date };
-  onSelect?: (date: Date | Date[] | { from?: Date; to?: Date } | undefined) => void;
+  onSelect?: (
+    date: Date | Date[] | { from?: Date; to?: Date } | undefined
+  ) => void;
 }
 
 const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
   ({ className, mode, selected, onSelect, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn("p-3", className)}
-      {...props}
-    >
+    <div ref={ref} className={cn("p-3", className)} {...props}>
       <div className="space-y-4">
         <CalendarHeader />
         <CalendarGrid />
@@ -38,13 +39,27 @@ const CalendarHeader = () => (
 
 const CalendarGrid = () => (
   <div className="grid grid-cols-7 gap-1">
-    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">Su</div>
-    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">Mo</div>
-    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">Tu</div>
-    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">We</div>
-    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">Th</div>
-    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">Fr</div>
-    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">Sa</div>
+    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">
+      Su
+    </div>
+    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">
+      Mo
+    </div>
+    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">
+      Tu
+    </div>
+    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">
+      We
+    </div>
+    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">
+      Th
+    </div>
+    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">
+      Fr
+    </div>
+    <div className="h-9 w-9 text-center text-xs font-normal text-[var(--color-calendar-header-text)]">
+      Sa
+    </div>
     {Array.from({ length: 31 }, (_, i) => (
       <button
         key={i}
@@ -52,7 +67,8 @@ const CalendarGrid = () => (
           "h-9 w-9 p-0 font-normal rounded-md text-sm transition-colors",
           "hover:bg-[var(--color-calendar-day-hover)] hover:text-[var(--color-calendar-day-text-hover)]",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)]",
-          i + 1 === 15 && "bg-[var(--color-calendar-day-selected)] text-[var(--color-calendar-day-text-selected)]"
+          i + 1 === 15 &&
+            "bg-[var(--color-calendar-day-selected)] text-[var(--color-calendar-day-text-selected)]"
         )}
       >
         {i + 1}

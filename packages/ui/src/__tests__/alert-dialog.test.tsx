@@ -1,7 +1,7 @@
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { axe, toHaveNoViolations } from 'jest-axe';
+import React from "react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { axe, toHaveNoViolations } from "jest-axe";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,7 +12,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '../alert-dialog';
+} from "../alert-dialog";
 
 expect.extend(toHaveNoViolations);
 
@@ -30,7 +30,8 @@ const TestAlertDialog = ({
       <AlertDialogHeader>
         <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
         <AlertDialogDescription>
-          This action cannot be undone. This will permanently delete your account.
+          This action cannot be undone. This will permanently delete your
+          account.
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
@@ -41,97 +42,93 @@ const TestAlertDialog = ({
   </AlertDialog>
 );
 
-describe('AlertDialog', () => {
-  describe('Accessibility', () => {
-    it('should pass accessibility audit when closed', async () => {
+describe("AlertDialog", () => {
+  describe("Accessibility", () => {
+    it("should pass accessibility audit when closed", async () => {
       const { container } = render(<TestAlertDialog />);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
-    it('should have proper role for alert dialog', async () => {
+    it("should have proper role for alert dialog", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        const dialog = screen.getByRole('alertdialog');
+        const dialog = screen.getByRole("alertdialog");
         expect(dialog).toBeInTheDocument();
       });
     });
 
-    it('should have accessible title', async () => {
+    it("should have accessible title", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        const dialog = screen.getByRole('alertdialog', {
-          name: 'Are you absolutely sure?',
+        const dialog = screen.getByRole("alertdialog", {
+          name: "Are you absolutely sure?",
         });
         expect(dialog).toBeInTheDocument();
       });
     });
 
-    it('should have accessible description', async () => {
+    it("should have accessible description", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        const description = screen.getByText(
-          /This action cannot be undone/
-        );
+        const description = screen.getByText(/This action cannot be undone/);
         expect(description).toBeInTheDocument();
       });
     });
 
-    it('should support aria-describedby for description', async () => {
+    it("should support aria-describedby for description", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        const dialog = screen.getByRole('alertdialog');
-        const describedBy = dialog.getAttribute('aria-describedby');
+        const dialog = screen.getByRole("alertdialog");
+        const describedBy = dialog.getAttribute("aria-describedby");
         expect(describedBy).toBeTruthy();
 
         const description = document.getElementById(describedBy!);
-        expect(description).toHaveTextContent(
-          /This action cannot be undone/
-        );
+        expect(description).toHaveTextContent(/This action cannot be undone/);
       });
     });
   });
 
-  describe('Functionality', () => {
-    it('should render trigger button', () => {
+  describe("Functionality", () => {
+    it("should render trigger button", () => {
       render(<TestAlertDialog />);
-      expect(screen.getByText('Delete Account')).toBeInTheDocument();
+      expect(screen.getByText("Delete Account")).toBeInTheDocument();
     });
 
-    it('should not show dialog content when closed', () => {
+    it("should not show dialog content when closed", () => {
       render(<TestAlertDialog />);
-      expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument();
+      expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
       expect(
-        screen.queryByText('Are you absolutely sure?')
+        screen.queryByText("Are you absolutely sure?")
       ).not.toBeInTheDocument();
     });
 
-    it('should open dialog when trigger is clicked', async () => {
+    it("should open dialog when trigger is clicked", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
         expect(
-          screen.getByText('Are you absolutely sure?')
+          screen.getByText("Are you absolutely sure?")
         ).toBeInTheDocument();
         expect(
           screen.getByText(/This action cannot be undone/)
@@ -139,93 +136,95 @@ describe('AlertDialog', () => {
       });
     });
 
-    it('should close dialog when cancel is clicked', async () => {
+    it("should close dialog when cancel is clicked", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Cancel'));
+      await user.click(screen.getByText("Cancel"));
 
       await waitFor(() => {
-        expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument();
+        expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
       });
     });
 
-    it('should close dialog when action is clicked', async () => {
+    it("should close dialog when action is clicked", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Continue'));
+      await user.click(screen.getByText("Continue"));
 
       await waitFor(() => {
-        expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument();
+        expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
       });
     });
 
-    it('should call onOpenChange when opening', async () => {
+    it("should call onOpenChange when opening", async () => {
       const user = userEvent.setup();
       const handleOpenChange = vi.fn();
       render(<TestAlertDialog onOpenChange={handleOpenChange} />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       expect(handleOpenChange).toHaveBeenCalledWith(true);
     });
 
-    it('should call onOpenChange when closing via cancel', async () => {
+    it("should call onOpenChange when closing via cancel", async () => {
       const user = userEvent.setup();
       const handleOpenChange = vi.fn();
       render(<TestAlertDialog onOpenChange={handleOpenChange} />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
       handleOpenChange.mockClear();
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Cancel'));
+      await user.click(screen.getByText("Cancel"));
 
       expect(handleOpenChange).toHaveBeenCalledWith(false);
     });
 
-    it('should work as controlled component', async () => {
+    it("should work as controlled component", async () => {
       const handleOpenChange = vi.fn();
       const { rerender } = render(
         <TestAlertDialog open={false} onOpenChange={handleOpenChange} />
       );
 
-      expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument();
+      expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
 
       rerender(<TestAlertDialog open={true} onOpenChange={handleOpenChange} />);
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
       });
 
-      rerender(<TestAlertDialog open={false} onOpenChange={handleOpenChange} />);
+      rerender(
+        <TestAlertDialog open={false} onOpenChange={handleOpenChange} />
+      );
 
       await waitFor(() => {
-        expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument();
+        expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
       });
     });
 
-    it('should render overlay when open', async () => {
+    it("should render overlay when open", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
         const overlay = document.querySelector('[data-state="open"]');
@@ -233,7 +232,7 @@ describe('AlertDialog', () => {
       });
     });
 
-    it('should execute action callback', async () => {
+    it("should execute action callback", async () => {
       const user = userEvent.setup();
       const handleAction = vi.fn();
 
@@ -253,63 +252,63 @@ describe('AlertDialog', () => {
         </AlertDialog>
       );
 
-      await user.click(screen.getByText('Delete'));
+      await user.click(screen.getByText("Delete"));
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Confirm'));
+      await user.click(screen.getByText("Confirm"));
 
       expect(handleAction).toHaveBeenCalled();
     });
   });
 
-  describe('Keyboard Interactions', () => {
-    it('should close dialog on Escape key', async () => {
+  describe("Keyboard Interactions", () => {
+    it("should close dialog on Escape key", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
       });
 
-      await user.keyboard('{Escape}');
+      await user.keyboard("{Escape}");
 
       await waitFor(() => {
-        expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument();
+        expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
       });
     });
 
-    it('should restore focus to trigger when closed', async () => {
+    it("should restore focus to trigger when closed", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      const trigger = screen.getByText('Delete Account');
+      const trigger = screen.getByText("Delete Account");
       await user.click(trigger);
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
       });
 
-      await user.keyboard('{Escape}');
+      await user.keyboard("{Escape}");
 
       await waitFor(() => {
-        expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument();
+        expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
       });
 
       expect(trigger).toHaveFocus();
     });
   });
 
-  describe('Styling', () => {
-    it('should have overlay backdrop styles', async () => {
+  describe("Styling", () => {
+    it("should have overlay backdrop styles", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
         const overlay = document.querySelector(
@@ -319,36 +318,36 @@ describe('AlertDialog', () => {
       });
     });
 
-    it('should have animation classes on content', async () => {
+    it("should have animation classes on content", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        const dialog = screen.getByRole('alertdialog');
-        expect(dialog).toHaveClass('data-[state=open]:animate-in');
-        expect(dialog).toHaveClass('data-[state=closed]:animate-out');
+        const dialog = screen.getByRole("alertdialog");
+        expect(dialog).toHaveClass("data-[state=open]:animate-in");
+        expect(dialog).toHaveClass("data-[state=closed]:animate-out");
       });
     });
 
-    it('should center dialog on screen', async () => {
+    it("should center dialog on screen", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        const dialog = screen.getByRole('alertdialog');
-        expect(dialog).toHaveClass('fixed');
-        expect(dialog).toHaveClass('left-[50%]');
-        expect(dialog).toHaveClass('top-[50%]');
-        expect(dialog).toHaveClass('translate-x-[-50%]');
-        expect(dialog).toHaveClass('translate-y-[-50%]');
+        const dialog = screen.getByRole("alertdialog");
+        expect(dialog).toHaveClass("fixed");
+        expect(dialog).toHaveClass("left-[50%]");
+        expect(dialog).toHaveClass("top-[50%]");
+        expect(dialog).toHaveClass("translate-x-[-50%]");
+        expect(dialog).toHaveClass("translate-y-[-50%]");
       });
     });
 
-    it('should apply custom className to content', async () => {
+    it("should apply custom className to content", async () => {
       const user = userEvent.setup();
       render(
         <AlertDialog>
@@ -360,73 +359,75 @@ describe('AlertDialog', () => {
         </AlertDialog>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        const dialog = screen.getByRole('alertdialog');
-        expect(dialog).toHaveClass('custom-alert-class');
+        const dialog = screen.getByRole("alertdialog");
+        expect(dialog).toHaveClass("custom-alert-class");
       });
     });
   });
 
-  describe('Sub-components', () => {
-    it('should render AlertDialogHeader', async () => {
+  describe("Sub-components", () => {
+    it("should render AlertDialogHeader", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
         const header = screen
-          .getByText('Are you absolutely sure?')
-          .closest('.flex.flex-col');
+          .getByText("Are you absolutely sure?")
+          .closest(".flex.flex-col");
         expect(header).toBeInTheDocument();
-        expect(header).toHaveClass('space-y-2');
+        expect(header).toHaveClass("space-y-2");
       });
     });
 
-    it('should render AlertDialogTitle with proper styling', async () => {
+    it("should render AlertDialogTitle with proper styling", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        const title = screen.getByText('Are you absolutely sure?');
-        expect(title).toHaveClass('text-lg');
-        expect(title).toHaveClass('font-semibold');
+        const title = screen.getByText("Are you absolutely sure?");
+        expect(title).toHaveClass("text-lg");
+        expect(title).toHaveClass("font-semibold");
       });
     });
 
-    it('should render AlertDialogDescription with proper styling', async () => {
+    it("should render AlertDialogDescription with proper styling", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
         const description = screen.getByText(/This action cannot be undone/);
-        expect(description).toHaveClass('text-sm');
+        expect(description).toHaveClass("text-sm");
       });
     });
 
-    it('should render AlertDialogFooter', async () => {
+    it("should render AlertDialogFooter", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        const footer = screen.getByText('Cancel').closest('.flex.flex-col-reverse');
+        const footer = screen
+          .getByText("Cancel")
+          .closest(".flex.flex-col-reverse");
         expect(footer).toBeInTheDocument();
-        expect(footer).toHaveClass('sm:flex-row');
-        expect(footer).toHaveClass('sm:justify-end');
+        expect(footer).toHaveClass("sm:flex-row");
+        expect(footer).toHaveClass("sm:justify-end");
       });
     });
   });
 
-  describe('Integration', () => {
-    it('should forward ref to AlertDialogContent', async () => {
+  describe("Integration", () => {
+    it("should forward ref to AlertDialogContent", async () => {
       const user = userEvent.setup();
       const ref = React.createRef<HTMLDivElement>();
 
@@ -440,14 +441,14 @@ describe('AlertDialog', () => {
         </AlertDialog>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
         expect(ref.current).toBeInstanceOf(HTMLDivElement);
       });
     });
 
-    it('should handle destructive actions', async () => {
+    it("should handle destructive actions", async () => {
       const user = userEvent.setup();
       const handleDelete = vi.fn();
 
@@ -469,50 +470,54 @@ describe('AlertDialog', () => {
         </AlertDialog>
       );
 
-      await user.click(screen.getByText('Delete Item'));
+      await user.click(screen.getByText("Delete Item"));
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Yes, delete'));
+      await user.click(screen.getByText("Yes, delete"));
 
       expect(handleDelete).toHaveBeenCalled();
     });
 
-    it('should handle rapid open/close', async () => {
+    it("should handle rapid open/close", async () => {
       const user = userEvent.setup();
       const handleOpenChange = vi.fn();
       render(<TestAlertDialog onOpenChange={handleOpenChange} />);
 
-      const trigger = screen.getByText('Delete Account');
+      const trigger = screen.getByText("Delete Account");
 
       // Open
       await user.click(trigger);
-      await waitFor(() => expect(screen.getByRole('alertdialog')).toBeInTheDocument());
+      await waitFor(() =>
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument()
+      );
 
       // Close
-      await user.keyboard('{Escape}');
+      await user.keyboard("{Escape}");
       await waitFor(() =>
-        expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument()
+        expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument()
       );
 
       // Open again
       await user.click(trigger);
-      await waitFor(() => expect(screen.getByRole('alertdialog')).toBeInTheDocument());
+      await waitFor(() =>
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument()
+      );
 
       // Close again
-      await user.keyboard('{Escape}');
+      await user.keyboard("{Escape}");
       await waitFor(() =>
-        expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument()
+        expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument()
       );
 
       expect(handleOpenChange).toHaveBeenCalledTimes(4);
     });
   });
 
-  describe('Edge Cases', () => {
-    it('should handle dialog without description', async () => {
+  describe("Edge Cases", () => {
+    it("should handle dialog without description", async () => {
       const user = userEvent.setup();
 
       render(
@@ -528,15 +533,15 @@ describe('AlertDialog', () => {
         </AlertDialog>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
-        expect(screen.getByText('Title Only')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
+        expect(screen.getByText("Title Only")).toBeInTheDocument();
       });
     });
 
-    it('should handle dialog without header', async () => {
+    it("should handle dialog without header", async () => {
       const user = userEvent.setup();
 
       render(
@@ -552,21 +557,22 @@ describe('AlertDialog', () => {
         </AlertDialog>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        const dialog = screen.getByRole('alertdialog', {
-          name: 'Confirmation dialog',
+        const dialog = screen.getByRole("alertdialog", {
+          name: "Confirmation dialog",
         });
         expect(dialog).toBeInTheDocument();
       });
     });
 
-    it('should handle long content', async () => {
+    it("should handle long content", async () => {
       const user = userEvent.setup();
-      const longText = Array.from({ length: 20 }, (_, i) => `Paragraph ${i + 1}.`).join(
-        ' '
-      );
+      const longText = Array.from(
+        { length: 20 },
+        (_, i) => `Paragraph ${i + 1}.`
+      ).join(" ");
 
       render(
         <AlertDialog>
@@ -582,15 +588,15 @@ describe('AlertDialog', () => {
         </AlertDialog>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
         expect(screen.getByText(/Paragraph 1/)).toBeInTheDocument();
       });
     });
 
-    it('should handle custom action buttons', async () => {
+    it("should handle custom action buttons", async () => {
       const user = userEvent.setup();
       const handlePrimary = vi.fn();
       const handleSecondary = vi.fn();
@@ -605,24 +611,26 @@ describe('AlertDialog', () => {
               <AlertDialogAction onClick={handleSecondary}>
                 Secondary
               </AlertDialogAction>
-              <AlertDialogAction onClick={handlePrimary}>Primary</AlertDialogAction>
+              <AlertDialogAction onClick={handlePrimary}>
+                Primary
+              </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Secondary'));
+      await user.click(screen.getByText("Secondary"));
 
       expect(handleSecondary).toHaveBeenCalled();
     });
 
-    it('should prevent interaction with background when open', async () => {
+    it("should prevent interaction with background when open", async () => {
       const user = userEvent.setup();
       const handleBackgroundClick = vi.fn();
 
@@ -633,17 +641,17 @@ describe('AlertDialog', () => {
         </>
       );
 
-      await user.click(screen.getByText('Delete Account'));
+      await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
       });
 
-      const backgroundButton = screen.getByText('Background Button');
+      const backgroundButton = screen.getByText("Background Button");
       expect(backgroundButton).toBeInTheDocument();
     });
 
-    it('should handle missing footer', async () => {
+    it("should handle missing footer", async () => {
       const user = userEvent.setup();
 
       render(
@@ -656,11 +664,11 @@ describe('AlertDialog', () => {
         </AlertDialog>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByRole('alertdialog')).toBeInTheDocument();
-        expect(screen.getByText('Content only')).toBeInTheDocument();
+        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
+        expect(screen.getByText("Content only")).toBeInTheDocument();
       });
     });
   });

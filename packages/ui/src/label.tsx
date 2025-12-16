@@ -1,8 +1,7 @@
 import React from "react";
 import { cn } from "./lib/utils";
 
-export interface LabelProps
-  extends React.LabelHTMLAttributes<HTMLLabelElement> {
+export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   /** Whether the field is required */
   required?: boolean;
   /** Whether the field has an error */
@@ -16,19 +15,22 @@ export interface LabelProps
 }
 
 export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
-  ({ 
-    className, 
-    required, 
-    error, 
-    size = "md", 
-    children, 
-    requiredIndicator = "*",
-    requiredIndicatorSrOnly = false,
-    ...props 
-  }, ref) => {
+  (
+    {
+      className,
+      required,
+      error,
+      size = "md",
+      children,
+      requiredIndicator = "*",
+      requiredIndicatorSrOnly = false,
+      ...props
+    },
+    ref
+  ) => {
     const sizes = {
       sm: "text-xs",
-      md: "text-sm", 
+      md: "text-sm",
       lg: "text-base",
     };
 
@@ -47,7 +49,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
       >
         {children}
         {required && (
-          <span 
+          <span
             className={cn(
               "text-[var(--color-text-danger)] ml-1",
               requiredIndicatorSrOnly && "sr-only"

@@ -1,10 +1,10 @@
 /**
  * Accessibility Utilities for Wylie Dog Design System
- * 
+ *
  * These utilities help with common accessibility patterns and focus management
  */
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback } from "react";
 
 /**
  * Hook for trapping focus within a container (for modals, dialogs)
@@ -21,10 +21,12 @@ export function useFocusTrap(isActive: boolean = true) {
     );
 
     const firstElement = focusableElements[0] as HTMLElement;
-    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+    const lastElement = focusableElements[
+      focusableElements.length - 1
+    ] as HTMLElement;
 
     const handleTabKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Tab') return;
+      if (e.key !== "Tab") return;
 
       if (e.shiftKey) {
         if (document.activeElement === firstElement) {
@@ -40,8 +42,8 @@ export function useFocusTrap(isActive: boolean = true) {
     };
 
     const handleEscapeKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        const escapeEvent = new CustomEvent('escape-pressed');
+      if (e.key === "Escape") {
+        const escapeEvent = new CustomEvent("escape-pressed");
         container.dispatchEvent(escapeEvent);
       }
     };
@@ -51,12 +53,12 @@ export function useFocusTrap(isActive: boolean = true) {
       firstElement.focus();
     }
 
-    document.addEventListener('keydown', handleTabKey);
-    document.addEventListener('keydown', handleEscapeKey);
+    document.addEventListener("keydown", handleTabKey);
+    document.addEventListener("keydown", handleEscapeKey);
 
     return () => {
-      document.removeEventListener('keydown', handleTabKey);
-      document.removeEventListener('keydown', handleEscapeKey);
+      document.removeEventListener("keydown", handleTabKey);
+      document.removeEventListener("keydown", handleEscapeKey);
     };
   }, [isActive]);
 
@@ -92,35 +94,41 @@ export function useScreenReaderAnnouncement() {
   useEffect(() => {
     // Create announcement container if it doesn't exist
     if (!announcementRef.current) {
-      const announcer = document.createElement('div');
-      announcer.setAttribute('aria-live', 'polite');
-      announcer.setAttribute('aria-atomic', 'true');
-      announcer.className = 'sr-only';
-      announcer.id = 'wylie-announcer';
+      const announcer = document.createElement("div");
+      announcer.setAttribute("aria-live", "polite");
+      announcer.setAttribute("aria-atomic", "true");
+      announcer.className = "sr-only";
+      announcer.id = "wylie-announcer";
       document.body.appendChild(announcer);
       announcementRef.current = announcer;
     }
 
     return () => {
-      if (announcementRef.current && document.body.contains(announcementRef.current)) {
+      if (
+        announcementRef.current &&
+        document.body.contains(announcementRef.current)
+      ) {
         document.body.removeChild(announcementRef.current);
       }
     };
   }, []);
 
-  const announce = useCallback((message: string, priority: 'polite' | 'assertive' = 'polite') => {
-    if (!announcementRef.current) return;
+  const announce = useCallback(
+    (message: string, priority: "polite" | "assertive" = "polite") => {
+      if (!announcementRef.current) return;
 
-    announcementRef.current.setAttribute('aria-live', priority);
-    announcementRef.current.textContent = message;
+      announcementRef.current.setAttribute("aria-live", priority);
+      announcementRef.current.textContent = message;
 
-    // Clear after announcement
-    setTimeout(() => {
-      if (announcementRef.current) {
-        announcementRef.current.textContent = '';
-      }
-    }, 1000);
-  }, []);
+      // Clear after announcement
+      setTimeout(() => {
+        if (announcementRef.current) {
+          announcementRef.current.textContent = "";
+        }
+      }, 1000);
+    },
+    []
+  );
 
   return announce;
 }
@@ -128,7 +136,7 @@ export function useScreenReaderAnnouncement() {
 /**
  * Generate accessible IDs for form elements
  */
-export function generateAccessibleId(prefix: string = 'wylie'): string {
+export function generateAccessibleId(prefix: string = "wylie"): string {
   return `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
 }
 
@@ -136,18 +144,18 @@ export function generateAccessibleId(prefix: string = 'wylie'): string {
  * Get accessible label for form fields
  */
 export function getAccessibleLabel(
-  label: string, 
-  required: boolean = false, 
+  label: string,
+  required: boolean = false,
   optional: boolean = false
 ): string {
   let accessibleLabel = label;
-  
+
   if (required) {
-    accessibleLabel += ' (required)';
+    accessibleLabel += " (required)";
   } else if (optional) {
-    accessibleLabel += ' (optional)';
+    accessibleLabel += " (optional)";
   }
-  
+
   return accessibleLabel;
 }
 
@@ -156,16 +164,16 @@ export function getAccessibleLabel(
  */
 export function isFocusable(element: HTMLElement): boolean {
   const focusableSelectors = [
-    'button:not([disabled])',
-    '[href]',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    'textarea:not([disabled])',
+    "button:not([disabled])",
+    "[href]",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
     '[tabindex]:not([tabindex="-1"])',
-    '[contenteditable="true"]'
+    '[contenteditable="true"]',
   ];
 
-  return focusableSelectors.some(selector => element.matches(selector));
+  return focusableSelectors.some((selector) => element.matches(selector));
 }
 
 /**
@@ -173,16 +181,16 @@ export function isFocusable(element: HTMLElement): boolean {
  */
 export function getFocusableElements(container: HTMLElement): HTMLElement[] {
   const focusableSelectors = [
-    'button:not([disabled])',
-    '[href]',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    'textarea:not([disabled])',
+    "button:not([disabled])",
+    "[href]",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
     '[tabindex]:not([tabindex="-1"])',
-    '[contenteditable="true"]'
+    '[contenteditable="true"]',
   ];
 
-  const elements = container.querySelectorAll(focusableSelectors.join(', '));
+  const elements = container.querySelectorAll(focusableSelectors.join(", "));
   return Array.from(elements) as HTMLElement[];
 }
 
@@ -190,22 +198,20 @@ export function getFocusableElements(container: HTMLElement): HTMLElement[] {
  * Keyboard navigation helpers
  */
 export const keyboardHelpers = {
-  isEnterOrSpace: (event: React.KeyboardEvent) => 
-    event.key === 'Enter' || event.key === ' ',
-  
+  isEnterOrSpace: (event: React.KeyboardEvent) =>
+    event.key === "Enter" || event.key === " ",
+
   isArrowKey: (event: React.KeyboardEvent) =>
-    ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key),
-  
-  isEscape: (event: React.KeyboardEvent) => 
-    event.key === 'Escape',
-  
-  isTab: (event: React.KeyboardEvent) => 
-    event.key === 'Tab',
-  
+    ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key),
+
+  isEscape: (event: React.KeyboardEvent) => event.key === "Escape",
+
+  isTab: (event: React.KeyboardEvent) => event.key === "Tab",
+
   preventDefaultAndStopPropagation: (event: React.KeyboardEvent) => {
     event.preventDefault();
     event.stopPropagation();
-  }
+  },
 };
 
 /**
@@ -217,7 +223,7 @@ export interface SkipLinkProps {
   className?: string;
 }
 
-export function SkipLink({ href, children, className = '' }: SkipLinkProps) {
+export function SkipLink({ href, children, className = "" }: SkipLinkProps) {
   return (
     <a
       href={href}
@@ -237,10 +243,9 @@ export interface ScreenReaderOnlyProps {
   as?: keyof JSX.IntrinsicElements;
 }
 
-export function ScreenReaderOnly({ children, as: Component = 'span' }: ScreenReaderOnlyProps) {
-  return (
-    <Component className="sr-only">
-      {children}
-    </Component>
-  );
+export function ScreenReaderOnly({
+  children,
+  as: Component = "span",
+}: ScreenReaderOnlyProps) {
+  return <Component className="sr-only">{children}</Component>;
 }

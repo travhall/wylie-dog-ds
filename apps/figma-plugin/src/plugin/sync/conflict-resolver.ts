@@ -1,12 +1,12 @@
 // Conflict resolution system for applying user decisions
-import type { ExportData } from '../variables/processor';
-import type { 
-  TokenConflict, 
-  ConflictResolution, 
+import type { ExportData } from "../variables/processor";
+import type {
+  TokenConflict,
+  ConflictResolution,
   ProcessedTokenWithSync,
-  ExportDataWithSync
-} from './types';
-import { SyncMetadataManager } from './metadata-manager';
+  ExportDataWithSync,
+} from "./types";
+import { SyncMetadataManager } from "./metadata-manager";
 
 export class ConflictResolver {
   private metadataManager = new SyncMetadataManager();
@@ -20,29 +20,35 @@ export class ConflictResolver {
     resolutions: ConflictResolution[]
   ): ExportData[] {
     console.log(`🔧 Applying ${resolutions.length} conflict resolutions...`);
-    
+
     // Convert to sync-aware format
-    const localWithSync = this.metadataManager.addSyncMetadataToExportData(localTokens, 'local');
-    const remoteWithSync = this.metadataManager.addSyncMetadataToExportData(remoteTokens, 'remote');
-    
+    const localWithSync = this.metadataManager.addSyncMetadataToExportData(
+      localTokens,
+      "local"
+    );
+    const remoteWithSync = this.metadataManager.addSyncMetadataToExportData(
+      remoteTokens,
+      "remote"
+    );
+
     // Create resolution lookup map
     const resolutionMap = new Map<string, ConflictResolution>();
-    resolutions.forEach(resolution => {
+    resolutions.forEach((resolution) => {
       resolutionMap.set(resolution.conflictId, resolution);
     });
-    
+
     // Start with local tokens as base
     const resolved = this.deepClone(localWithSync);
-    
+
     // Apply each resolution
     for (const resolution of resolutions) {
       this.applyResolution(resolved, remoteWithSync, resolution);
     }
-    
+
     // Convert back to standard format (remove sync metadata for compatibility)
     const result = this.stripSyncMetadata(resolved);
-    
-    console.log('✅ Conflict resolution complete');
+
+    console.log("✅ Conflict resolution complete");
     return result;
   }
 
@@ -54,38 +60,58 @@ export class ConflictResolver {
     remoteTokens: ExportDataWithSync[],
     resolution: ConflictResolution
   ): void {
-    const { conflictId, resolution: strategy, token: manualToken, manualValue } = resolution;
-    
+    const {
+      conflictId,
+      resolution: strategy,
+      token: manualToken,
+      manualValue,
+    } = resolution;
+
     // Parse conflict ID to get token path info
     const pathInfo = this.parseConflictId(conflictId);
     if (!pathInfo) {
       console.warn(`Invalid conflict ID: ${conflictId}`);
       return;
     }
-    
+
     const { tokenPath, collectionName, tokenName } = pathInfo;
-    
+
     switch (strategy) {
-      case 'take-local':
+      case "take-local":
         // Keep existing local token (no action needed)
         console.log(`📍 Keeping local version of ${tokenPath}`);
         break;
-        
-      case 'take-remote':
-        this.applyRemoteToken(resolvedTokens, remoteTokens, collectionName, tokenName);
+
+      case "take-remote":
+        this.applyRemoteToken(
+          resolvedTokens,
+          remoteTokens,
+          collectionName,
+          tokenName
+        );
         console.log(`📥 Applied remote version of ${tokenPath}`);
         break;
-        
-      case 'manual':
+
+      case "manual":
         if (manualToken) {
-          this.applyManualToken(resolvedTokens, collectionName, tokenName, manualToken);
+          this.applyManualToken(
+            resolvedTokens,
+            collectionName,
+            tokenName,
+            manualToken
+          );
           console.log(`✏️ Applied manual resolution for ${tokenPath}`);
         } else if (manualValue !== undefined) {
-          this.applyManualValue(resolvedTokens, collectionName, tokenName, manualValue);
+          this.applyManualValue(
+            resolvedTokens,
+            collectionName,
+            tokenName,
+            manualValue
+          );
           console.log(`✏️ Applied manual value for ${tokenPath}`);
         }
         break;
-        
+
       default:
         console.warn(`Unknown resolution strategy: ${strategy}`);
     }
@@ -106,14 +132,17 @@ export class ConflictResolver {
       console.warn(`Remote token not found: ${collectionName}.${tokenName}`);
       return;
     }
-    
+
     // Find or create the collection in resolved tokens
-    const collection = this.findOrCreateCollection(resolvedTokens, collectionName);
-    
+    const collection = this.findOrCreateCollection(
+      resolvedTokens,
+      collectionName
+    );
+
     // Update with remote token and mark as resolved
     collection.variables[tokenName] = this.metadataManager.updateSyncMetadata(
       remoteToken,
-      'remote'
+      "remote"
     );
   }
 
@@ -126,12 +155,15 @@ export class ConflictResolver {
     tokenName: string,
     manualToken: ProcessedTokenWithSync
   ): void {
-    const collection = this.findOrCreateCollection(resolvedTokens, collectionName);
-    
+    const collection = this.findOrCreateCollection(
+      resolvedTokens,
+      collectionName
+    );
+
     // Apply manual token with updated metadata
     collection.variables[tokenName] = this.metadataManager.updateSyncMetadata(
       manualToken,
-      'local'
+      "local"
     );
   }
 
@@ -144,19 +176,22 @@ export class ConflictResolver {
     tokenName: string,
     manualValue: any
   ): void {
-    const collection = this.findOrCreateCollection(resolvedTokens, collectionName);
+    const collection = this.findOrCreateCollection(
+      resolvedTokens,
+      collectionName
+    );
     const existingToken = collection.variables[tokenName];
-    
+
     if (existingToken) {
       // Update existing token with manual value
       const updatedToken: ProcessedTokenWithSync = {
         ...existingToken,
-        $value: manualValue
+        $value: manualValue,
       };
-      
+
       collection.variables[tokenName] = this.metadataManager.updateSyncMetadata(
         updatedToken,
-        'local'
+        "local"
       );
     }
   }
@@ -191,14 +226,14 @@ export class ConflictResolver {
         return data[collectionName];
       }
     }
-    
+
     // Create new collection if not found
     const newData: ExportDataWithSync = {
       [collectionName]: {
-        variables: {}
-      }
+        variables: {},
+      },
     };
-    
+
     resolvedTokens.push(newData);
     return newData[collectionName];
   }
@@ -214,29 +249,31 @@ export class ConflictResolver {
     // Expected format: conflict_{type}_{collectionName}.{tokenName}_{timestamp}
     const match = conflictId.match(/^conflict_[^_]+_(.+)_\d+$/);
     if (!match) return null;
-    
+
     const tokenPath = match[1];
-    const lastDotIndex = tokenPath.lastIndexOf('.');
-    
+    const lastDotIndex = tokenPath.lastIndexOf(".");
+
     if (lastDotIndex === -1) return null;
-    
+
     const collectionName = tokenPath.substring(0, lastDotIndex);
     const tokenName = tokenPath.substring(lastDotIndex + 1);
-    
+
     return {
       tokenPath,
       collectionName,
-      tokenName
+      tokenName,
     };
   }
 
   /**
    * Strip sync metadata to return standard ExportData format
    */
-  private stripSyncMetadata(exportDataWithSync: ExportDataWithSync[]): ExportData[] {
-    return exportDataWithSync.map(data => {
+  private stripSyncMetadata(
+    exportDataWithSync: ExportDataWithSync[]
+  ): ExportData[] {
+    return exportDataWithSync.map((data) => {
       const stripped: ExportData = {};
-      
+
       for (const [collectionName, collection] of Object.entries(data)) {
         stripped[collectionName] = {
           ...collection,
@@ -248,13 +285,13 @@ export class ConflictResolver {
                 $value: token.$value,
                 $description: token.$description,
                 name: token.name,
-                valuesByMode: token.valuesByMode
-              }
+                valuesByMode: token.valuesByMode,
+              },
             ])
-          )
+          ),
         };
       }
-      
+
       return stripped;
     });
   }
@@ -271,13 +308,14 @@ export class ConflictResolver {
    */
   generateAutoResolutions(conflicts: TokenConflict[]): ConflictResolution[] {
     return conflicts
-      .filter(conflict => conflict.autoResolvable)
-      .map(conflict => ({
+      .filter((conflict) => conflict.autoResolvable)
+      .map((conflict) => ({
         conflictId: conflict.conflictId,
         resolution: conflict.suggestedResolution,
-        token: conflict.suggestedResolution === 'take-remote' 
-          ? conflict.remoteToken 
-          : conflict.localToken
+        token:
+          conflict.suggestedResolution === "take-remote"
+            ? conflict.remoteToken
+            : conflict.localToken,
       }));
   }
 
@@ -286,12 +324,13 @@ export class ConflictResolver {
    */
   createBatchResolutions(
     conflicts: TokenConflict[],
-    strategy: 'take-local' | 'take-remote'
+    strategy: "take-local" | "take-remote"
   ): ConflictResolution[] {
-    return conflicts.map(conflict => ({
+    return conflicts.map((conflict) => ({
       conflictId: conflict.conflictId,
       resolution: strategy,
-      token: strategy === 'take-remote' ? conflict.remoteToken : conflict.localToken
+      token:
+        strategy === "take-remote" ? conflict.remoteToken : conflict.localToken,
     }));
   }
 }

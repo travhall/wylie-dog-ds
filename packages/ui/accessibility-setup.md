@@ -16,41 +16,42 @@ pnpm add -D eslint-plugin-jsx-a11y
 ## Next Steps (In Priority Order)
 
 ### Step 1: Configure Vitest for Accessibility Testing
+
 ```typescript
 // vitest.config.ts
-import { defineConfig } from 'vitest/config'
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
-    environment: 'jsdom',
-    setupFiles: ['./test-setup.ts'],
+    environment: "jsdom",
+    setupFiles: ["./test-setup.ts"],
   },
-})
+});
 ```
 
 ### Step 2: Create Accessibility Test Utils
+
 ```typescript
 // test-utils/accessibility.ts
-import { axe, toHaveNoViolations } from 'jest-axe'
-import { render } from '@testing-library/react'
+import { axe, toHaveNoViolations } from "jest-axe";
+import { render } from "@testing-library/react";
 
-expect.extend(toHaveNoViolations)
+expect.extend(toHaveNoViolations);
 
 export const renderWithA11yTest = async (component: React.ReactElement) => {
-  const { container } = render(component)
-  const results = await axe(container)
-  expect(results).toHaveNoViolations()
-  return { container }
-}
+  const { container } = render(component);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+  return { container };
+};
 ```
 
 ### Step 3: Add ESLint Accessibility Rules
+
 ```json
 // .eslintrc.js additions
 {
-  "extends": [
-    "plugin:jsx-a11y/recommended"
-  ],
+  "extends": ["plugin:jsx-a11y/recommended"],
   "rules": {
     "jsx-a11y/alt-text": "error",
     "jsx-a11y/aria-props": "error",
@@ -63,6 +64,7 @@ export const renderWithA11yTest = async (component: React.ReactElement) => {
 ```
 
 ### Step 4: Update Package.json Scripts
+
 ```json
 {
   "scripts": {

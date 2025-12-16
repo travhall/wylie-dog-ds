@@ -2,8 +2,9 @@ import React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { cn } from "./lib/utils";
 
-export interface CheckboxProps
-  extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
+export interface CheckboxProps extends React.ComponentPropsWithoutRef<
+  typeof CheckboxPrimitive.Root
+> {
   /** Size variant */
   size?: "sm" | "md" | "lg";
   /** Whether the checkbox has an error */
@@ -22,7 +23,7 @@ export const Checkbox = React.forwardRef<
 
   const iconSizes = {
     sm: "h-3 w-3",
-    md: "h-4 w-4", 
+    md: "h-4 w-4",
     lg: "h-5 w-5",
   };
 
@@ -43,7 +44,9 @@ export const Checkbox = React.forwardRef<
       )}
       {...props}
     >
-      <CheckboxPrimitive.Indicator className={cn("flex items-center justify-center text-current")}>
+      <CheckboxPrimitive.Indicator
+        className={cn("flex items-center justify-center text-current")}
+      >
         <svg
           className={iconSizes[size]}
           viewBox="0 0 24 24"

@@ -1,18 +1,18 @@
 // Format Adapter Manager - Main orchestrator for format detection and normalization
-import { TokenFormatType } from './format-adapter';
-import type { 
-  AdapterProcessResult, 
+import { TokenFormatType } from "./format-adapter";
+import type {
+  AdapterProcessResult,
   ProcessingStats,
   FormatDetectionResult,
   TransformationLog,
-  FormatAdapter
-} from './format-adapter';
-import { FormatDetectorRegistry } from './format-detectors';
-import { ReferenceNormalizer } from './reference-normalizer';
+  FormatAdapter,
+} from "./format-adapter";
+import { FormatDetectorRegistry } from "./format-detectors";
+import { ReferenceNormalizer } from "./reference-normalizer";
 
 // Only import essential adapters - others loaded dynamically
-import { WylieDogNativeAdapter } from './adapters/wylie-dog-native';
-import { GenericAdapter } from './adapters/generic';
+import { WylieDogNativeAdapter } from "./adapters/wylie-dog-native";
+import { GenericAdapter } from "./adapters/generic";
 
 export class FormatAdapterManager {
   private registry = new FormatDetectorRegistry();
@@ -23,16 +23,20 @@ export class FormatAdapterManager {
   }
 
   private initializeCoreAdapters(): void {
-    console.log('🏗️  Initializing core format adapters...');
-    
+    console.log("🏗️  Initializing core format adapters...");
+
     // Only register essential adapters immediately - others loaded on demand
-    this.registry.register(new WylieDogNativeAdapter());  // Always needed for native format
+    this.registry.register(new WylieDogNativeAdapter()); // Always needed for native format
     // GenericAdapter now loads as true fallback after all specific adapters fail
-    
-    console.log(`✅ Registered ${this.registry.getRegistrySize()} core adapters`);
+
+    console.log(
+      `✅ Registered ${this.registry.getRegistrySize()} core adapters`
+    );
   }
 
-  private async loadAdapter(format: TokenFormatType): Promise<FormatAdapter | undefined> {
+  private async loadAdapter(
+    format: TokenFormatType
+  ): Promise<FormatAdapter | undefined> {
     // Return if already loaded
     if (this.dynamicAdapters.has(format)) {
       return this.dynamicAdapters.get(format);
@@ -40,26 +44,31 @@ export class FormatAdapterManager {
 
     try {
       let AdapterClass: any;
-      
+
       switch (format) {
         case TokenFormatType.W3C_DTCG_FLAT:
-          AdapterClass = (await import('./adapters/w3c-dtcg')).W3CDTCGAdapter;
+          AdapterClass = (await import("./adapters/w3c-dtcg")).W3CDTCGAdapter;
           break;
         case TokenFormatType.TOKENS_STUDIO_FLAT:
         case TokenFormatType.TOKENS_STUDIO_GROUPED:
-          AdapterClass = (await import('./adapters/tokens-studio')).TokensStudioAdapter;
+          AdapterClass = (await import("./adapters/tokens-studio"))
+            .TokensStudioAdapter;
           break;
         case TokenFormatType.STYLE_DICTIONARY_FLAT:
-          AdapterClass = (await import('./adapters/style-dictionary-flat')).StyleDictionaryFlatAdapter;
+          AdapterClass = (await import("./adapters/style-dictionary-flat"))
+            .StyleDictionaryFlatAdapter;
           break;
         case TokenFormatType.STYLE_DICTIONARY_NESTED:
-          AdapterClass = (await import('./adapters/style-dictionary-nested')).StyleDictionaryNestedAdapter;
+          AdapterClass = (await import("./adapters/style-dictionary-nested"))
+            .StyleDictionaryNestedAdapter;
           break;
         case TokenFormatType.MATERIAL_DESIGN:
-          AdapterClass = (await import('./adapters/material-design')).MaterialDesignAdapter;
+          AdapterClass = (await import("./adapters/material-design"))
+            .MaterialDesignAdapter;
           break;
         case TokenFormatType.CSS_VARIABLES:
-          AdapterClass = (await import('./adapters/css-variables')).CSSVariablesAdapter;
+          AdapterClass = (await import("./adapters/css-variables"))
+            .CSSVariablesAdapter;
           break;
         default:
           console.warn(`Unknown format type: ${format}`);
@@ -83,99 +92,118 @@ export class FormatAdapterManager {
 
   async processTokenFile(content: string): Promise<AdapterProcessResult> {
     const startTime = Date.now();
-    
+
     try {
-      console.log('🚀 Format Adapter: Starting token file processing');
-      
+      console.log("🚀 Format Adapter: Starting token file processing");
+
       // Parse JSON
       const rawData = JSON.parse(content);
-      
+
       // First pass: detect format with available adapters
       const initialDetection = this.registry.detectFormat(rawData);
-      console.log(`🔍 Initial format detection: ${initialDetection.format} (confidence: ${initialDetection.confidence})`);
-      
+      console.log(
+        `🔍 Initial format detection: ${initialDetection.format} (confidence: ${initialDetection.confidence})`
+      );
+
       // If confidence is low and format is unknown, try loading more adapters
-      if (initialDetection.confidence < 0.7 && initialDetection.format !== TokenFormatType.WYLIE_DOG) {
-        console.log('🔄 Low confidence detection, attempting to load additional adapters...');
-        
+      if (
+        initialDetection.confidence < 0.7 &&
+        initialDetection.format !== TokenFormatType.WYLIE_DOG
+      ) {
+        console.log(
+          "🔄 Low confidence detection, attempting to load additional adapters..."
+        );
+
         // Try to load adapters for common formats
         const formatsToTry: TokenFormatType[] = [
           TokenFormatType.W3C_DTCG_FLAT,
-          TokenFormatType.TOKENS_STUDIO_FLAT, 
+          TokenFormatType.TOKENS_STUDIO_FLAT,
           TokenFormatType.STYLE_DICTIONARY_FLAT,
-          TokenFormatType.STYLE_DICTIONARY_NESTED
+          TokenFormatType.STYLE_DICTIONARY_NESTED,
         ];
-        
+
         for (const format of formatsToTry) {
           await this.loadAdapter(format);
         }
-        
+
         // Re-run detection with loaded adapters
         const enhancedDetection = this.registry.detectFormat(rawData);
-        console.log(`🔍 Enhanced format detection: ${enhancedDetection.format} (confidence: ${enhancedDetection.confidence})`);
-        
+        console.log(
+          `🔍 Enhanced format detection: ${enhancedDetection.format} (confidence: ${enhancedDetection.confidence})`
+        );
+
         if (enhancedDetection.confidence > initialDetection.confidence) {
-          return this.processWithDetection(enhancedDetection, rawData, startTime);
+          return this.processWithDetection(
+            enhancedDetection,
+            rawData,
+            startTime
+          );
         }
-        
+
         // If still low confidence, load GenericAdapter as absolute fallback
         if (enhancedDetection.confidence < 0.3) {
-          console.log('🔧 Loading GenericAdapter as final fallback...');
+          console.log("🔧 Loading GenericAdapter as final fallback...");
           if (!this.dynamicAdapters.has(TokenFormatType.UNKNOWN)) {
             this.registry.register(new GenericAdapter());
-            this.dynamicAdapters.set(TokenFormatType.UNKNOWN, new GenericAdapter());
+            this.dynamicAdapters.set(
+              TokenFormatType.UNKNOWN,
+              new GenericAdapter()
+            );
           }
         }
       }
-      
+
       return this.processWithDetection(initialDetection, rawData, startTime);
-      
     } catch (error) {
-      console.error('❌ Format Adapter: Processing failed:', error);
-      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error("❌ Format Adapter: Processing failed:", error);
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
       return this.createErrorResult(
         `JSON parsing failed: ${errorMessage}`,
-        ['Verify file is valid JSON', 'Check for syntax errors'],
+        ["Verify file is valid JSON", "Check for syntax errors"],
         null
       );
     }
   }
 
   private async processWithDetection(
-    detection: FormatDetectionResult, 
-    rawData: any, 
+    detection: FormatDetectionResult,
+    rawData: any,
     startTime: number
   ): Promise<AdapterProcessResult> {
     if (detection.confidence < 0.3) {
       return this.createErrorResult(
-        'Unknown or unsupported token format',
-        ['Try exporting in W3C DTCG format', 'Check file structure matches expected patterns'],
+        "Unknown or unsupported token format",
+        [
+          "Try exporting in W3C DTCG format",
+          "Check file structure matches expected patterns",
+        ],
         detection
       );
     }
 
     // Find appropriate adapter (may need to load dynamically)
     let adapter = this.registry.getAdapter(detection.format);
-    
+
     if (!adapter && detection.format !== TokenFormatType.UNKNOWN) {
       // Try to load the adapter dynamically
       adapter = await this.loadAdapter(detection.format);
     }
-    
+
     if (!adapter) {
       return this.createErrorResult(
         `No adapter available for format: ${detection.format}`,
-        ['Contact support for custom format assistance'],
+        ["Contact support for custom format assistance"],
         detection
       );
     }
 
     // Normalize data
     const normalization = adapter.normalize(rawData);
-    
+
     if (!normalization.success) {
       return this.createErrorResult(
-        'Failed to normalize token data',
+        "Failed to normalize token data",
         normalization.errors,
         detection,
         normalization.transformations
@@ -186,7 +214,9 @@ export class FormatAdapterManager {
     const processedData = this.normalizeAllReferences(normalization.data);
 
     const processingTime = Date.now() - startTime;
-    console.log(`✅ Format Adapter: Processing completed in ${processingTime}ms`);
+    console.log(
+      `✅ Format Adapter: Processing completed in ${processingTime}ms`
+    );
 
     return {
       success: true,
@@ -194,16 +224,16 @@ export class FormatAdapterManager {
       detection,
       transformations: [
         ...normalization.transformations,
-        ...processedData.referenceTransformations
+        ...processedData.referenceTransformations,
       ],
       warnings: [
         ...detection.warnings,
         ...normalization.warnings,
-        ...processedData.warnings
+        ...processedData.warnings,
       ],
       errors: [],
       processingTime,
-      stats: this.generateStats(processedData.data)
+      stats: this.generateStats(processedData.data),
     };
   }
 
@@ -215,26 +245,34 @@ export class FormatAdapterManager {
     const transformations: TransformationLog[] = [];
     const warnings: string[] = [];
 
-    console.log(`🔗 Processing ${data.length} collections for reference normalization`);
+    console.log(
+      `🔗 Processing ${data.length} collections for reference normalization`
+    );
 
-    const processedData = data.map(collection => {
+    const processedData = data.map((collection) => {
       const processedCollection: any = {};
 
-      for (const [collectionName, collectionData] of Object.entries(collection)) {
+      for (const [collectionName, collectionData] of Object.entries(
+        collection
+      )) {
         const processedVariables: Record<string, any> = {};
 
-        for (const [tokenName, token] of Object.entries((collectionData as any).variables)) {
+        for (const [tokenName, token] of Object.entries(
+          (collectionData as any).variables
+        )) {
           const processedToken = Object.assign({}, token as any);
 
           // Normalize main value
           if (processedToken.$value) {
-            const result = ReferenceNormalizer.normalizeReferences(processedToken.$value);
+            const result = ReferenceNormalizer.normalizeReferences(
+              processedToken.$value
+            );
             processedToken.$value = result.value;
-            const newTransformations = result.transformations.map(t => ({
+            const newTransformations = result.transformations.map((t) => ({
               type: t.type,
               description: `Normalized reference in ${tokenName}.$value`,
               before: t.original,
-              after: t.normalized
+              after: t.normalized,
             }));
             transformations.push.apply(transformations, newTransformations);
           }
@@ -242,35 +280,46 @@ export class FormatAdapterManager {
           // Normalize valuesByMode if present
           if (processedToken.valuesByMode) {
             processedToken.valuesByMode = {};
-            for (const [mode, value] of Object.entries((token as any).valuesByMode)) {
+            for (const [mode, value] of Object.entries(
+              (token as any).valuesByMode
+            )) {
               const result = ReferenceNormalizer.normalizeReferences(value);
               processedToken.valuesByMode[mode] = result.value;
-              transformations.push.apply(transformations, result.transformations.map(t => ({
-                type: t.type,
-                description: `Normalized reference in ${tokenName}.valuesByMode.${mode}`,
-                before: t.original,
-                after: t.normalized
-              })));
+              transformations.push.apply(
+                transformations,
+                result.transformations.map((t) => ({
+                  type: t.type,
+                  description: `Normalized reference in ${tokenName}.valuesByMode.${mode}`,
+                  before: t.original,
+                  after: t.normalized,
+                }))
+              );
             }
           }
 
           processedVariables[tokenName] = processedToken;
         }
 
-        processedCollection[collectionName] = Object.assign({}, collectionData as any, {
-          variables: processedVariables
-        });
+        processedCollection[collectionName] = Object.assign(
+          {},
+          collectionData as any,
+          {
+            variables: processedVariables,
+          }
+        );
       }
 
       return processedCollection;
     });
 
-    console.log(`✅ Reference normalization complete: ${transformations.length} transformations applied`);
+    console.log(
+      `✅ Reference normalization complete: ${transformations.length} transformations applied`
+    );
 
     return {
       data: processedData,
       referenceTransformations: transformations,
-      warnings
+      warnings,
     };
   }
 
@@ -282,22 +331,22 @@ export class FormatAdapterManager {
     processingTime: number = 0
   ): AdapterProcessResult {
     console.error(`❌ ${message}`);
-    
+
     return {
       success: false,
       data: [],
       detection: detection || {
-        format: 'unknown' as any,
+        format: "unknown" as any,
         confidence: 0,
         structure: this.createEmptyStructure(),
-        warnings: []
+        warnings: [],
       },
       transformations,
       warnings: [],
       errors: [message],
       suggestions,
       processingTime,
-      stats: this.createEmptyStats()
+      stats: this.createEmptyStats(),
     };
   }
 
@@ -310,16 +359,19 @@ export class FormatAdapterManager {
       for (const [, collectionData] of Object.entries(collection)) {
         totalCollections++;
         totalTokens += Object.keys((collectionData as any).variables).length;
-        
+
         // Count references
         for (const token of Object.values((collectionData as any).variables)) {
           const tokenObj = token as any;
-          if (typeof tokenObj.$value === 'string' && tokenObj.$value.includes('{')) {
+          if (
+            typeof tokenObj.$value === "string" &&
+            tokenObj.$value.includes("{")
+          ) {
             totalReferences++;
           }
           if (tokenObj.valuesByMode) {
             for (const value of Object.values(tokenObj.valuesByMode)) {
-              if (typeof value === 'string' && value.includes('{')) {
+              if (typeof value === "string" && value.includes("{")) {
                 totalReferences++;
               }
             }
@@ -332,7 +384,8 @@ export class FormatAdapterManager {
       totalTokens,
       totalReferences,
       totalCollections,
-      averageTokensPerCollection: totalCollections > 0 ? totalTokens / totalCollections : 0
+      averageTokensPerCollection:
+        totalCollections > 0 ? totalTokens / totalCollections : 0,
     };
   }
 
@@ -343,9 +396,9 @@ export class FormatAdapterManager {
       hasArrayWrapper: false,
       tokenCount: 0,
       referenceCount: 0,
-      propertyFormat: 'other',
-      namingConvention: 'mixed',
-      referenceFormat: 'none'
+      propertyFormat: "other",
+      namingConvention: "mixed",
+      referenceFormat: "none",
     };
   }
 
@@ -354,7 +407,7 @@ export class FormatAdapterManager {
       totalTokens: 0,
       totalReferences: 0,
       totalCollections: 0,
-      averageTokensPerCollection: 0
+      averageTokensPerCollection: 0,
     };
   }
 
@@ -364,13 +417,13 @@ export class FormatAdapterManager {
       const rawData = JSON.parse(content);
       return this.registry.detectFormat(rawData);
     } catch (error) {
-      console.error('Format detection failed:', error);
+      console.error("Format detection failed:", error);
       return null;
     }
   }
 
   // Get available format types
   getSupportedFormats(): string[] {
-    return this.registry.getAllAdapters().map(adapter => adapter.name);
+    return this.registry.getAllAdapters().map((adapter) => adapter.name);
   }
 }

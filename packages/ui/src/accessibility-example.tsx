@@ -4,7 +4,13 @@
  */
 
 import React, { useState } from "react";
-import { Form, FormField, FormLabel, FormDescription, FormMessage } from "./form";
+import {
+  Form,
+  FormField,
+  FormLabel,
+  FormDescription,
+  FormMessage,
+} from "./form";
 import { Input } from "./input";
 import { Textarea } from "./textarea";
 import { Label } from "./label";
@@ -41,7 +47,7 @@ export function AccessibleFormExample() {
   return (
     <div className="max-w-md mx-auto p-6 space-y-6">
       <h2 className="text-xl font-semibold">Enhanced Accessible Form</h2>
-      
+
       <Form>
         {/* Email field with FormField context */}
         <FormField required error={!!emailError}>
@@ -74,7 +80,8 @@ export function AccessibleFormExample() {
             placeholder="Enter password"
           />
           <FormDescription>
-            Must be at least 8 characters long with a mix of letters and numbers.
+            Must be at least 8 characters long with a mix of letters and
+            numbers.
           </FormDescription>
           {passwordError && <FormMessage>{passwordError}</FormMessage>}
         </FormField>
@@ -121,17 +128,12 @@ export function ManualAccessibleForm() {
   return (
     <div className="max-w-md mx-auto p-6 space-y-6">
       <h2 className="text-xl font-semibold">Manual Accessible Form</h2>
-      
+
       <div className="space-y-2">
-        <Label 
-          htmlFor={usernameId} 
-          required 
-          error={!!usernameError}
-          size="md"
-        >
+        <Label htmlFor={usernameId} required error={!!usernameError} size="md">
           Username
         </Label>
-        
+
         <Input
           id={usernameId}
           type="text"
@@ -146,15 +148,18 @@ export function ManualAccessibleForm() {
           errorId={usernameError ? usernameErrorId : undefined}
           descriptionId={usernameDescId}
         />
-        
-        <p id={usernameDescId} className="text-sm text-[var(--color-text-secondary)]">
+
+        <p
+          id={usernameDescId}
+          className="text-sm text-[var(--color-text-secondary)]"
+        >
           Choose a unique username that others will see.
         </p>
-        
+
         {usernameError && (
-          <p 
-            id={usernameErrorId} 
-            role="alert" 
+          <p
+            id={usernameErrorId}
+            role="alert"
             aria-live="polite"
             className="text-sm font-medium text-[var(--color-text-danger)]"
           >
@@ -173,7 +178,7 @@ export function AccessibleToastExample() {
   return (
     <div className="max-w-md mx-auto p-6 space-y-6">
       <h2 className="text-xl font-semibold">Enhanced Toast Components</h2>
-      
+
       <Button onClick={() => setShowToasts(!showToasts)}>
         {showToasts ? "Hide" : "Show"} Toast Examples
       </Button>
@@ -184,11 +189,13 @@ export function AccessibleToastExample() {
           <Toast variant="success" role="alert" aria-live="assertive">
             <div>
               <ToastTitle>Success!</ToastTitle>
-              <ToastDescription>Your changes have been saved successfully.</ToastDescription>
+              <ToastDescription>
+                Your changes have been saved successfully.
+              </ToastDescription>
             </div>
-            <ToastClose 
+            <ToastClose
               srText="Close success notification"
-              onClick={() => console.log('Success toast closed')} 
+              onClick={() => console.log("Success toast closed")}
             />
           </Toast>
 
@@ -196,12 +203,14 @@ export function AccessibleToastExample() {
           <Toast variant="warning" role="alert" aria-live="assertive">
             <div>
               <ToastTitle>Session Warning</ToastTitle>
-              <ToastDescription>Your session will expire in 5 minutes.</ToastDescription>
+              <ToastDescription>
+                Your session will expire in 5 minutes.
+              </ToastDescription>
             </div>
-            <Button 
-              size="sm" 
+            <Button
+              size="sm"
               variant="ghost"
-              onClick={() => console.log('Session extended')}
+              onClick={() => console.log("Session extended")}
             >
               Extend Session
             </Button>
@@ -211,11 +220,13 @@ export function AccessibleToastExample() {
           <Toast variant="destructive" role="alert" aria-live="assertive">
             <div>
               <ToastTitle>Error</ToastTitle>
-              <ToastDescription>Failed to save changes. Please try again.</ToastDescription>
+              <ToastDescription>
+                Failed to save changes. Please try again.
+              </ToastDescription>
             </div>
-            <ToastClose 
+            <ToastClose
               srText="Dismiss error message"
-              onClick={() => console.log('Error toast dismissed')} 
+              onClick={() => console.log("Error toast dismissed")}
             />
           </Toast>
         </div>
@@ -249,43 +260,57 @@ export function EnhancedSkeletonExample() {
 
   return (
     <div className="max-w-md mx-auto p-6 space-y-6">
-      <h2 className="text-xl font-semibold">Enhanced Skeleton Loading States</h2>
-      
+      <h2 className="text-xl font-semibold">
+        Enhanced Skeleton Loading States
+      </h2>
+
       <Button onClick={simulateLoading} disabled={loading}>
         {loading ? "Loading..." : "Simulate Loading"}
       </Button>
 
       <div className="space-y-4">
         <h3 className="text-lg font-medium">User Profile</h3>
-        
+
         {loading ? (
           <div className="space-y-3">
             {/* Avatar skeleton with specific loading message */}
             <div className="flex items-center space-x-3">
-              <Skeleton 
-                variant="circular" 
-                size="lg" 
+              <Skeleton
+                variant="circular"
+                size="lg"
                 loadingText="Loading profile picture"
               />
               <div className="space-y-2">
-                <Skeleton 
-                  variant="text" 
+                <Skeleton
+                  variant="text"
                   className="h-4 w-32"
                   loadingText="Loading user name"
                 />
-                <Skeleton 
-                  variant="text" 
+                <Skeleton
+                  variant="text"
                   className="h-3 w-48"
                   loadingText="Loading user title"
                 />
               </div>
             </div>
-            
+
             {/* Content skeleton */}
             <div className="space-y-2">
-              <Skeleton variant="text" className="h-4 w-full" loadingText="Loading content" />
-              <Skeleton variant="text" className="h-4 w-3/4" showLoadingText={false} />
-              <Skeleton variant="text" className="h-4 w-1/2" showLoadingText={false} />
+              <Skeleton
+                variant="text"
+                className="h-4 w-full"
+                loadingText="Loading content"
+              />
+              <Skeleton
+                variant="text"
+                className="h-4 w-3/4"
+                showLoadingText={false}
+              />
+              <Skeleton
+                variant="text"
+                className="h-4 w-1/2"
+                showLoadingText={false}
+              />
             </div>
           </div>
         ) : (
@@ -301,7 +326,8 @@ export function EnhancedSkeletonExample() {
               </div>
             </div>
             <p className="text-sm">
-              Experienced full-stack developer with expertise in React, TypeScript, and Node.js.
+              Experienced full-stack developer with expertise in React,
+              TypeScript, and Node.js.
             </p>
           </div>
         )}
@@ -320,43 +346,39 @@ export function EnhancedAlertExample() {
   });
 
   const showAlert = (type: keyof typeof alerts) => {
-    setAlerts(prev => ({ ...prev, [type]: true }));
+    setAlerts((prev) => ({ ...prev, [type]: true }));
     setTimeout(() => {
-      setAlerts(prev => ({ ...prev, [type]: false }));
+      setAlerts((prev) => ({ ...prev, [type]: false }));
     }, 5000);
   };
 
   return (
     <div className="max-w-md mx-auto p-6 space-y-6">
       <h2 className="text-xl font-semibold">Enhanced Alert Urgency Levels</h2>
-      
+
       <div className="grid grid-cols-2 gap-2">
-        <Button 
-          variant="destructive" 
+        <Button
+          variant="destructive"
           size="sm"
-          onClick={() => showAlert('error')}
+          onClick={() => showAlert("error")}
         >
           Show Error
         </Button>
-        <Button 
-          variant="secondary" 
+        <Button
+          variant="secondary"
           size="sm"
-          onClick={() => showAlert('warning')}
+          onClick={() => showAlert("warning")}
         >
           Show Warning
         </Button>
-        <Button 
-          variant="secondary" 
+        <Button
+          variant="secondary"
           size="sm"
-          onClick={() => showAlert('success')}
+          onClick={() => showAlert("success")}
         >
           Show Success
         </Button>
-        <Button 
-          variant="ghost" 
-          size="sm"
-          onClick={() => showAlert('info')}
-        >
+        <Button variant="ghost" size="sm" onClick={() => showAlert("info")}>
           Show Info
         </Button>
       </div>
@@ -366,11 +388,12 @@ export function EnhancedAlertExample() {
           <Alert variant="destructive">
             <AlertTitle>Critical Error</AlertTitle>
             <AlertDescription>
-              Failed to save changes. This interrupts screen readers immediately.
+              Failed to save changes. This interrupts screen readers
+              immediately.
             </AlertDescription>
           </Alert>
         )}
-        
+
         {alerts.warning && (
           <Alert variant="warning">
             <AlertTitle>Warning</AlertTitle>
@@ -379,7 +402,7 @@ export function EnhancedAlertExample() {
             </AlertDescription>
           </Alert>
         )}
-        
+
         {alerts.success && (
           <Alert variant="success">
             <AlertTitle>Success</AlertTitle>
@@ -388,22 +411,34 @@ export function EnhancedAlertExample() {
             </AlertDescription>
           </Alert>
         )}
-        
+
         {alerts.info && (
           <Alert variant="default">
             <AlertTitle>Information</AlertTitle>
             <AlertDescription>
-              General information. Only announced when focused by screen readers.
+              General information. Only announced when focused by screen
+              readers.
             </AlertDescription>
           </Alert>
         )}
       </div>
 
       <div className="text-xs text-gray-600 space-y-1">
-        <p><strong>Error:</strong> role="alert" + aria-live="assertive" (high urgency)</p>
-        <p><strong>Warning:</strong> role="alert" + aria-live="polite" (medium urgency)</p>
-        <p><strong>Success:</strong> role="status" + aria-live="polite" (medium urgency)</p>
-        <p><strong>Info:</strong> role="region" + aria-live="off" (low urgency)</p>
+        <p>
+          <strong>Error:</strong> role="alert" + aria-live="assertive" (high
+          urgency)
+        </p>
+        <p>
+          <strong>Warning:</strong> role="alert" + aria-live="polite" (medium
+          urgency)
+        </p>
+        <p>
+          <strong>Success:</strong> role="status" + aria-live="polite" (medium
+          urgency)
+        </p>
+        <p>
+          <strong>Info:</strong> role="region" + aria-live="off" (low urgency)
+        </p>
       </div>
     </div>
   );
@@ -420,7 +455,7 @@ export function EnhancedAvatarExample() {
   return (
     <div className="max-w-md mx-auto p-6 space-y-6">
       <h2 className="text-xl font-semibold">Enhanced Avatar Accessibility</h2>
-      
+
       <div className="space-y-4">
         <h3 className="text-lg font-medium">Team Members (Profile Context)</h3>
         {users.map((user) => (
@@ -441,7 +476,7 @@ export function EnhancedAvatarExample() {
 
       <div className="space-y-4">
         <h3 className="text-lg font-medium">User Context Examples</h3>
-        
+
         <div className="flex items-center space-x-3">
           <Avatar name="Active User" semanticRole="user">
             <AvatarFallback name="Active User" />
@@ -458,11 +493,21 @@ export function EnhancedAvatarExample() {
       </div>
 
       <div className="text-xs text-gray-600 space-y-1">
-        <p><strong>Profile:</strong> "Name's profile picture" + role="img"</p>
-        <p><strong>User:</strong> "Name's avatar" + role="img"</p>
-        <p><strong>Decorative:</strong> No label + role="presentation"</p>
-        <p><strong>Auto-initials:</strong> Generated from name (max 2 chars)</p>
-        <p><strong>Performance:</strong> Images use loading="lazy"</p>
+        <p>
+          <strong>Profile:</strong> "Name's profile picture" + role="img"
+        </p>
+        <p>
+          <strong>User:</strong> "Name's avatar" + role="img"
+        </p>
+        <p>
+          <strong>Decorative:</strong> No label + role="presentation"
+        </p>
+        <p>
+          <strong>Auto-initials:</strong> Generated from name (max 2 chars)
+        </p>
+        <p>
+          <strong>Performance:</strong> Images use loading="lazy"
+        </p>
       </div>
     </div>
   );

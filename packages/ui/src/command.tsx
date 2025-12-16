@@ -12,7 +12,15 @@ interface CommandProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Command = React.forwardRef<HTMLDivElement, CommandProps>(
-  ({ className, label = "Command palette", listboxId = "command-listbox", ...props }, ref) => (
+  (
+    {
+      className,
+      label = "Command palette",
+      listboxId = "command-listbox",
+      ...props
+    },
+    ref
+  ) => (
     <div
       ref={ref}
       className={cn(
@@ -38,9 +46,23 @@ interface CommandInputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 
 const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
-  ({ className, "aria-label": ariaLabel = "Search commands", listboxId = "command-listbox", ...props }, ref) => (
-    <div className="flex items-center border-b border-[var(--color-command-border)] px-3" cmdk-input-wrapper="">
-      <SearchIcon className="mr-2 h-4 w-4 shrink-0 opacity-50" aria-hidden="true" />
+  (
+    {
+      className,
+      "aria-label": ariaLabel = "Search commands",
+      listboxId = "command-listbox",
+      ...props
+    },
+    ref
+  ) => (
+    <div
+      className="flex items-center border-b border-[var(--color-command-border)] px-3"
+      cmdk-input-wrapper=""
+    >
+      <SearchIcon
+        className="mr-2 h-4 w-4 shrink-0 opacity-50"
+        aria-hidden="true"
+      />
       <input
         ref={ref}
         className={cn(
@@ -69,7 +91,10 @@ const CommandList = React.forwardRef<HTMLDivElement, CommandListProps>(
     <div
       ref={ref}
       id={id}
-      className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)}
+      className={cn(
+        "max-h-[300px] overflow-y-auto overflow-x-hidden",
+        className
+      )}
       role="listbox"
       aria-label="Command options"
       {...props}
@@ -84,7 +109,10 @@ const CommandEmpty = React.forwardRef<HTMLDivElement, CommandEmptyProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("py-6 text-center text-sm text-[var(--color-command-empty)]", className)}
+      className={cn(
+        "py-6 text-center text-sm text-[var(--color-command-empty)]",
+        className
+      )}
       role="status"
       aria-live="polite"
       {...props}
@@ -116,17 +144,18 @@ CommandGroup.displayName = "CommandGroup";
 
 interface CommandSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const CommandSeparator = React.forwardRef<HTMLDivElement, CommandSeparatorProps>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn("-mx-1 h-px bg-[var(--color-command-separator)]", className)}
-      role="separator"
-      aria-hidden="true"
-      {...props}
-    />
-  )
-);
+const CommandSeparator = React.forwardRef<
+  HTMLDivElement,
+  CommandSeparatorProps
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("-mx-1 h-px bg-[var(--color-command-separator)]", className)}
+    role="separator"
+    aria-hidden="true"
+    {...props}
+  />
+));
 CommandSeparator.displayName = "CommandSeparator";
 
 interface CommandItemProps extends React.HTMLAttributes<HTMLDivElement> {

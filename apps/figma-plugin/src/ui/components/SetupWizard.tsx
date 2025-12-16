@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'preact/hooks';
-import type { GitHubConfig, SyncMode } from '../../shared/types';
+import { useState, useEffect } from "preact/hooks";
+import type { GitHubConfig, SyncMode } from "../../shared/types";
 
 interface SetupWizardProps {
   onComplete: (config: GitHubConfig) => void;
@@ -16,32 +16,38 @@ interface StepProps {
 
 // Step 1: Access Token
 function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
-  const [accessToken, setAccessToken] = useState(data.accessToken || '');
+  const [accessToken, setAccessToken] = useState(data.accessToken || "");
   const [isValidating, setIsValidating] = useState(false);
-  const [validationResult, setValidationResult] = useState<{ valid: boolean; error?: string } | null>(null);
+  const [validationResult, setValidationResult] = useState<{
+    valid: boolean;
+    error?: string;
+  } | null>(null);
 
   const validateToken = async (token: string) => {
     if (!token.trim()) return;
-    
+
     setIsValidating(true);
     try {
-      const response = await fetch('https://api.github.com/user', {
+      const response = await fetch("https://api.github.com/user", {
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/vnd.github.v3+json'
-        }
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+        },
       });
-      
+
       if (response.ok) {
         const user = await response.json();
         setValidationResult({ valid: true });
         return true;
       } else {
-        setValidationResult({ valid: false, error: 'Invalid token or insufficient permissions' });
+        setValidationResult({
+          valid: false,
+          error: "Invalid token or insufficient permissions",
+        });
         return false;
       }
     } catch (error) {
-      setValidationResult({ valid: false, error: 'Failed to validate token' });
+      setValidationResult({ valid: false, error: "Failed to validate token" });
       return false;
     } finally {
       setIsValidating(false);
@@ -56,30 +62,41 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
 
   return (
     <div>
-      <div style={{ marginBottom: '16px' }}>
-        <h3 style={{ margin: '0 0 8px 0', fontSize: '14px', fontWeight: 'bold' }}>
+      <div style={{ marginBottom: "16px" }}>
+        <h3
+          style={{ margin: "0 0 8px 0", fontSize: "14px", fontWeight: "bold" }}
+        >
           🔐 GitHub Access Token
         </h3>
-        <p style={{ margin: '0', fontSize: '11px', color: '#6b7280', lineHeight: '1.4' }}>
-          Create a Personal Access Token at{' '}
-          <a 
-            href="https://github.com/settings/tokens" 
-            target="_blank" 
-            style={{ color: '#0066cc', textDecoration: 'none' }}
+        <p
+          style={{
+            margin: "0",
+            fontSize: "11px",
+            color: "#6b7280",
+            lineHeight: "1.4",
+          }}
+        >
+          Create a Personal Access Token at{" "}
+          <a
+            href="https://github.com/settings/tokens"
+            target="_blank"
+            style={{ color: "#0066cc", textDecoration: "none" }}
           >
             GitHub Settings
-          </a>{' '}
+          </a>{" "}
           with "repo" permissions.
         </p>
       </div>
 
-      <div style={{ marginBottom: '16px' }}>
-        <label style={{ 
-          display: 'block', 
-          fontSize: '12px', 
-          fontWeight: 'bold', 
-          marginBottom: '4px' 
-        }}>
+      <div style={{ marginBottom: "16px" }}>
+        <label
+          style={{
+            display: "block",
+            fontSize: "12px",
+            fontWeight: "bold",
+            marginBottom: "4px",
+          }}
+        >
           Access Token
         </label>
         <input
@@ -91,42 +108,48 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
           }}
           placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
           style={{
-            width: '100%',
-            padding: '8px 12px',
-            border: '1px solid #d1d5db',
-            borderRadius: '4px',
-            fontSize: '11px',
-            fontFamily: 'monospace'
+            width: "100%",
+            padding: "8px 12px",
+            border: "1px solid #d1d5db",
+            borderRadius: "4px",
+            fontSize: "11px",
+            fontFamily: "monospace",
           }}
         />
-        
+
         {validationResult && (
-          <div style={{
-            marginTop: '4px',
-            fontSize: '10px',
-            color: validationResult.valid ? '#059669' : '#dc2626'
-          }}>
-            {validationResult.valid ? '✅ Token is valid' : `❌ ${validationResult.error}`}
+          <div
+            style={{
+              marginTop: "4px",
+              fontSize: "10px",
+              color: validationResult.valid ? "#059669" : "#dc2626",
+            }}
+          >
+            {validationResult.valid
+              ? "✅ Token is valid"
+              : `❌ ${validationResult.error}`}
           </div>
         )}
       </div>
 
-      <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+      <div style={{ display: "flex", gap: "8px", justifyContent: "flex-end" }}>
         <button
           onClick={handleNext}
           disabled={!accessToken.trim() || isValidating}
           style={{
-            padding: '8px 16px',
-            backgroundColor: !accessToken.trim() || isValidating ? '#cbd5e1' : '#0066cc',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: !accessToken.trim() || isValidating ? 'not-allowed' : 'pointer',
-            fontSize: '12px',
-            fontWeight: 'bold'
+            padding: "8px 16px",
+            backgroundColor:
+              !accessToken.trim() || isValidating ? "#cbd5e1" : "#0066cc",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor:
+              !accessToken.trim() || isValidating ? "not-allowed" : "pointer",
+            fontSize: "12px",
+            fontWeight: "bold",
           }}
         >
-          {isValidating ? 'Validating...' : 'Next →'}
+          {isValidating ? "Validating..." : "Next →"}
         </button>
       </div>
     </div>
@@ -135,12 +158,17 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
 
 // Step 2: Repository Selection
 function RepositoryStep({ onNext, onBack, data }: StepProps) {
-  const [owner, setOwner] = useState(data.owner || '');
-  const [repo, setRepo] = useState(data.repo || '');
-  const [branch, setBranch] = useState(data.branch || 'main');
+  const [owner, setOwner] = useState(data.owner || "");
+  const [repo, setRepo] = useState(data.repo || "");
+  const [branch, setBranch] = useState(data.branch || "main");
   const [isValidating, setIsValidating] = useState(false);
-  const [validationResult, setValidationResult] = useState<{ valid: boolean; error?: string } | null>(null);
-  const [suggestedRepos, setSuggestedRepos] = useState<Array<{ name: string; full_name: string; private: boolean }>>([]);
+  const [validationResult, setValidationResult] = useState<{
+    valid: boolean;
+    error?: string;
+  } | null>(null);
+  const [suggestedRepos, setSuggestedRepos] = useState<
+    Array<{ name: string; full_name: string; private: boolean }>
+  >([]);
 
   useEffect(() => {
     // Auto-populate user repositories
@@ -151,53 +179,65 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
 
   const fetchUserRepos = async () => {
     try {
-      const response = await fetch('https://api.github.com/user/repos?sort=updated&per_page=10', {
-        headers: {
-          'Authorization': `Bearer ${data.accessToken}`,
-          'Accept': 'application/vnd.github.v3+json'
+      const response = await fetch(
+        "https://api.github.com/user/repos?sort=updated&per_page=10",
+        {
+          headers: {
+            Authorization: `Bearer ${data.accessToken}`,
+            Accept: "application/vnd.github.v3+json",
+          },
         }
-      });
-      
+      );
+
       if (response.ok) {
         const repos = await response.json();
         setSuggestedRepos(repos);
-        
+
         // Auto-select first repo if none specified
         if (!owner && !repo && repos.length > 0) {
           const firstRepo = repos[0];
-          const [repoOwner, repoName] = firstRepo.full_name.split('/');
+          const [repoOwner, repoName] = firstRepo.full_name.split("/");
           setOwner(repoOwner);
           setRepo(repoName);
         }
       }
     } catch (error) {
-      console.warn('Failed to fetch repositories:', error);
+      console.warn("Failed to fetch repositories:", error);
     }
   };
 
   const validateRepository = async () => {
     if (!owner.trim() || !repo.trim()) return;
-    
+
     setIsValidating(true);
     try {
-      const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
-        headers: {
-          'Authorization': `Bearer ${data.accessToken}`,
-          'Accept': 'application/vnd.github.v3+json'
+      const response = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}`,
+        {
+          headers: {
+            Authorization: `Bearer ${data.accessToken}`,
+            Accept: "application/vnd.github.v3+json",
+          },
         }
-      });
-      
+      );
+
       if (response.ok) {
         const repoData = await response.json();
         setValidationResult({ valid: true });
         setBranch(branch || repoData.default_branch);
         return true;
       } else {
-        setValidationResult({ valid: false, error: 'Repository not found or no access' });
+        setValidationResult({
+          valid: false,
+          error: "Repository not found or no access",
+        });
         return false;
       }
     } catch (error) {
-      setValidationResult({ valid: false, error: 'Failed to validate repository' });
+      setValidationResult({
+        valid: false,
+        error: "Failed to validate repository",
+      });
       return false;
     } finally {
       setIsValidating(false);
@@ -212,52 +252,87 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
 
   return (
     <div>
-      <div style={{ marginBottom: '16px' }}>
-        <h3 style={{ margin: '0 0 8px 0', fontSize: '14px', fontWeight: 'bold' }}>
+      <div style={{ marginBottom: "16px" }}>
+        <h3
+          style={{ margin: "0 0 8px 0", fontSize: "14px", fontWeight: "bold" }}
+        >
           📁 Repository Selection
         </h3>
-        <p style={{ margin: '0', fontSize: '11px', color: '#6b7280', lineHeight: '1.4' }}>
-          Choose the GitHub repository where you want to store your design tokens.
+        <p
+          style={{
+            margin: "0",
+            fontSize: "11px",
+            color: "#6b7280",
+            lineHeight: "1.4",
+          }}
+        >
+          Choose the GitHub repository where you want to store your design
+          tokens.
         </p>
       </div>
 
       {/* Suggested repositories */}
       {suggestedRepos.length > 0 && (
-        <div style={{ marginBottom: '16px' }}>
-          <label style={{ 
-            display: 'block', 
-            fontSize: '12px', 
-            fontWeight: 'bold', 
-            marginBottom: '8px' 
-          }}>
+        <div style={{ marginBottom: "16px" }}>
+          <label
+            style={{
+              display: "block",
+              fontSize: "12px",
+              fontWeight: "bold",
+              marginBottom: "8px",
+            }}
+          >
             Recent Repositories
           </label>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '120px', overflowY: 'auto' }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "4px",
+              maxHeight: "120px",
+              overflowY: "auto",
+            }}
+          >
             {suggestedRepos.slice(0, 5).map((suggestedRepo) => (
               <button
                 key={suggestedRepo.full_name}
                 onClick={() => {
-                  const [repoOwner, repoName] = suggestedRepo.full_name.split('/');
+                  const [repoOwner, repoName] =
+                    suggestedRepo.full_name.split("/");
                   setOwner(repoOwner);
                   setRepo(repoName);
                   setValidationResult(null);
                 }}
                 style={{
-                  padding: '8px 12px',
-                  backgroundColor: `${owner}/${repo}` === suggestedRepo.full_name ? '#e0f2fe' : '#f9fafb',
-                  border: '1px solid ' + (`${owner}/${repo}` === suggestedRepo.full_name ? '#0891b2' : '#e5e7eb'),
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                  fontSize: '11px',
-                  textAlign: 'left',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
+                  padding: "8px 12px",
+                  backgroundColor:
+                    `${owner}/${repo}` === suggestedRepo.full_name
+                      ? "#e0f2fe"
+                      : "#f9fafb",
+                  border:
+                    "1px solid " +
+                    (`${owner}/${repo}` === suggestedRepo.full_name
+                      ? "#0891b2"
+                      : "#e5e7eb"),
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  fontSize: "11px",
+                  textAlign: "left",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                 }}
               >
                 <span>{suggestedRepo.full_name}</span>
                 {suggestedRepo.private && (
-                  <span style={{ fontSize: '9px', backgroundColor: '#f3f4f6', padding: '2px 4px', borderRadius: '2px' }}>
+                  <span
+                    style={{
+                      fontSize: "9px",
+                      backgroundColor: "#f3f4f6",
+                      padding: "2px 4px",
+                      borderRadius: "2px",
+                    }}
+                  >
                     Private
                   </span>
                 )}
@@ -268,15 +343,17 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
       )}
 
       {/* Manual repository input */}
-      <div style={{ marginBottom: '12px' }}>
-        <div style={{ display: 'flex', gap: '8px' }}>
+      <div style={{ marginBottom: "12px" }}>
+        <div style={{ display: "flex", gap: "8px" }}>
           <div style={{ flex: 1 }}>
-            <label style={{ 
-              display: 'block', 
-              fontSize: '12px', 
-              fontWeight: 'bold', 
-              marginBottom: '4px' 
-            }}>
+            <label
+              style={{
+                display: "block",
+                fontSize: "12px",
+                fontWeight: "bold",
+                marginBottom: "4px",
+              }}
+            >
               Owner
             </label>
             <input
@@ -288,21 +365,23 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
               }}
               placeholder="username"
               style={{
-                width: '100%',
-                padding: '8px 12px',
-                border: '1px solid #d1d5db',
-                borderRadius: '4px',
-                fontSize: '11px'
+                width: "100%",
+                padding: "8px 12px",
+                border: "1px solid #d1d5db",
+                borderRadius: "4px",
+                fontSize: "11px",
               }}
             />
           </div>
           <div style={{ flex: 2 }}>
-            <label style={{ 
-              display: 'block', 
-              fontSize: '12px', 
-              fontWeight: 'bold', 
-              marginBottom: '4px' 
-            }}>
+            <label
+              style={{
+                display: "block",
+                fontSize: "12px",
+                fontWeight: "bold",
+                marginBottom: "4px",
+              }}
+            >
               Repository
             </label>
             <input
@@ -314,24 +393,26 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
               }}
               placeholder="repository-name"
               style={{
-                width: '100%',
-                padding: '8px 12px',
-                border: '1px solid #d1d5db',
-                borderRadius: '4px',
-                fontSize: '11px'
+                width: "100%",
+                padding: "8px 12px",
+                border: "1px solid #d1d5db",
+                borderRadius: "4px",
+                fontSize: "11px",
               }}
             />
           </div>
         </div>
       </div>
 
-      <div style={{ marginBottom: '16px' }}>
-        <label style={{ 
-          display: 'block', 
-          fontSize: '12px', 
-          fontWeight: 'bold', 
-          marginBottom: '4px' 
-        }}>
+      <div style={{ marginBottom: "16px" }}>
+        <label
+          style={{
+            display: "block",
+            fontSize: "12px",
+            fontWeight: "bold",
+            marginBottom: "4px",
+          }}
+        >
           Branch
         </label>
         <input
@@ -340,55 +421,69 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
           onChange={(e) => setBranch(e.currentTarget.value)}
           placeholder="main"
           style={{
-            width: '100%',
-            padding: '8px 12px',
-            border: '1px solid #d1d5db',
-            borderRadius: '4px',
-            fontSize: '11px'
+            width: "100%",
+            padding: "8px 12px",
+            border: "1px solid #d1d5db",
+            borderRadius: "4px",
+            fontSize: "11px",
           }}
         />
-        
+
         {validationResult && (
-          <div style={{
-            marginTop: '4px',
-            fontSize: '10px',
-            color: validationResult.valid ? '#059669' : '#dc2626'
-          }}>
-            {validationResult.valid ? '✅ Repository is accessible' : `❌ ${validationResult.error}`}
+          <div
+            style={{
+              marginTop: "4px",
+              fontSize: "10px",
+              color: validationResult.valid ? "#059669" : "#dc2626",
+            }}
+          >
+            {validationResult.valid
+              ? "✅ Repository is accessible"
+              : `❌ ${validationResult.error}`}
           </div>
         )}
       </div>
 
-      <div style={{ display: 'flex', gap: '8px', justifyContent: 'space-between' }}>
+      <div
+        style={{ display: "flex", gap: "8px", justifyContent: "space-between" }}
+      >
         <button
           onClick={onBack}
           style={{
-            padding: '8px 16px',
-            backgroundColor: '#f3f4f6',
-            color: '#374151',
-            border: '1px solid #d1d5db',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontSize: '12px'
+            padding: "8px 16px",
+            backgroundColor: "#f3f4f6",
+            color: "#374151",
+            border: "1px solid #d1d5db",
+            borderRadius: "4px",
+            cursor: "pointer",
+            fontSize: "12px",
           }}
         >
           ← Back
         </button>
         <button
           onClick={handleNext}
-          disabled={!owner.trim() || !repo.trim() || !branch.trim() || isValidating}
+          disabled={
+            !owner.trim() || !repo.trim() || !branch.trim() || isValidating
+          }
           style={{
-            padding: '8px 16px',
-            backgroundColor: !owner.trim() || !repo.trim() || !branch.trim() || isValidating ? '#cbd5e1' : '#0066cc',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: !owner.trim() || !repo.trim() || !branch.trim() || isValidating ? 'not-allowed' : 'pointer',
-            fontSize: '12px',
-            fontWeight: 'bold'
+            padding: "8px 16px",
+            backgroundColor:
+              !owner.trim() || !repo.trim() || !branch.trim() || isValidating
+                ? "#cbd5e1"
+                : "#0066cc",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor:
+              !owner.trim() || !repo.trim() || !branch.trim() || isValidating
+                ? "not-allowed"
+                : "pointer",
+            fontSize: "12px",
+            fontWeight: "bold",
           }}
         >
-          {isValidating ? 'Validating...' : 'Next →'}
+          {isValidating ? "Validating..." : "Next →"}
         </button>
       </div>
     </div>
@@ -397,8 +492,10 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
 
 // Step 3: Configuration
 function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
-  const [tokenPath, setTokenPath] = useState(data.tokenPath || 'tokens/');
-  const [syncMode, setSyncMode] = useState<SyncMode>(data.syncMode || 'pull-request');
+  const [tokenPath, setTokenPath] = useState(data.tokenPath || "tokens/");
+  const [syncMode, setSyncMode] = useState<SyncMode>(
+    data.syncMode || "pull-request"
+  );
 
   const handleNext = () => {
     onNext({ tokenPath, syncMode });
@@ -406,22 +503,33 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
 
   return (
     <div>
-      <div style={{ marginBottom: '16px' }}>
-        <h3 style={{ margin: '0 0 8px 0', fontSize: '14px', fontWeight: 'bold' }}>
+      <div style={{ marginBottom: "16px" }}>
+        <h3
+          style={{ margin: "0 0 8px 0", fontSize: "14px", fontWeight: "bold" }}
+        >
           ⚙️ Configuration
         </h3>
-        <p style={{ margin: '0', fontSize: '11px', color: '#6b7280', lineHeight: '1.4' }}>
+        <p
+          style={{
+            margin: "0",
+            fontSize: "11px",
+            color: "#6b7280",
+            lineHeight: "1.4",
+          }}
+        >
           Configure how tokens will be stored and synchronized.
         </p>
       </div>
 
-      <div style={{ marginBottom: '16px' }}>
-        <label style={{ 
-          display: 'block', 
-          fontSize: '12px', 
-          fontWeight: 'bold', 
-          marginBottom: '4px' 
-        }}>
+      <div style={{ marginBottom: "16px" }}>
+        <label
+          style={{
+            display: "block",
+            fontSize: "12px",
+            fontWeight: "bold",
+            marginBottom: "4px",
+          }}
+        >
           Token Storage Path
         </label>
         <input
@@ -430,80 +538,113 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
           onChange={(e) => setTokenPath(e.currentTarget.value)}
           placeholder="tokens/"
           style={{
-            width: '100%',
-            padding: '8px 12px',
-            border: '1px solid #d1d5db',
-            borderRadius: '4px',
-            fontSize: '11px'
+            width: "100%",
+            padding: "8px 12px",
+            border: "1px solid #d1d5db",
+            borderRadius: "4px",
+            fontSize: "11px",
           }}
         />
-        <div style={{ fontSize: '10px', color: '#6b7280', marginTop: '2px' }}>
-          Directory path where token files will be stored (e.g., "tokens/", "design-system/tokens/")
+        <div style={{ fontSize: "10px", color: "#6b7280", marginTop: "2px" }}>
+          Directory path where token files will be stored (e.g., "tokens/",
+          "design-system/tokens/")
         </div>
       </div>
 
-      <div style={{ marginBottom: '16px' }}>
-        <label style={{ 
-          display: 'block', 
-          fontSize: '12px', 
-          fontWeight: 'bold', 
-          marginBottom: '8px' 
-        }}>
+      <div style={{ marginBottom: "16px" }}>
+        <label
+          style={{
+            display: "block",
+            fontSize: "12px",
+            fontWeight: "bold",
+            marginBottom: "8px",
+          }}
+        >
           Sync Mode
         </label>
-        
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <label style={{ display: 'flex', alignItems: 'flex-start', cursor: 'pointer', gap: '8px' }}>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <label
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              cursor: "pointer",
+              gap: "8px",
+            }}
+          >
             <input
               type="radio"
               name="syncMode"
               value="pull-request"
-              checked={syncMode === 'pull-request'}
-              onChange={() => setSyncMode('pull-request')}
-              style={{ marginTop: '2px' }}
+              checked={syncMode === "pull-request"}
+              onChange={() => setSyncMode("pull-request")}
+              style={{ marginTop: "2px" }}
             />
             <div>
-              <div style={{ fontSize: '11px', fontWeight: 'bold' }}>
+              <div style={{ fontSize: "11px", fontWeight: "bold" }}>
                 Pull Request Mode (Recommended)
               </div>
-              <div style={{ fontSize: '10px', color: '#6b7280', lineHeight: '1.3' }}>
-                Creates pull requests for review before merging changes. Safer for team environments.
+              <div
+                style={{
+                  fontSize: "10px",
+                  color: "#6b7280",
+                  lineHeight: "1.3",
+                }}
+              >
+                Creates pull requests for review before merging changes. Safer
+                for team environments.
               </div>
             </div>
           </label>
-          
-          <label style={{ display: 'flex', alignItems: 'flex-start', cursor: 'pointer', gap: '8px' }}>
+
+          <label
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              cursor: "pointer",
+              gap: "8px",
+            }}
+          >
             <input
               type="radio"
               name="syncMode"
               value="direct"
-              checked={syncMode === 'direct'}
-              onChange={() => setSyncMode('direct')}
-              style={{ marginTop: '2px' }}
+              checked={syncMode === "direct"}
+              onChange={() => setSyncMode("direct")}
+              style={{ marginTop: "2px" }}
             />
             <div>
-              <div style={{ fontSize: '11px', fontWeight: 'bold' }}>
+              <div style={{ fontSize: "11px", fontWeight: "bold" }}>
                 Direct Sync
               </div>
-              <div style={{ fontSize: '10px', color: '#6b7280', lineHeight: '1.3' }}>
-                Pushes and pulls changes directly to the branch. Faster but bypasses review.
+              <div
+                style={{
+                  fontSize: "10px",
+                  color: "#6b7280",
+                  lineHeight: "1.3",
+                }}
+              >
+                Pushes and pulls changes directly to the branch. Faster but
+                bypasses review.
               </div>
             </div>
           </label>
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: '8px', justifyContent: 'space-between' }}>
+      <div
+        style={{ display: "flex", gap: "8px", justifyContent: "space-between" }}
+      >
         <button
           onClick={onBack}
           style={{
-            padding: '8px 16px',
-            backgroundColor: '#f3f4f6',
-            color: '#374151',
-            border: '1px solid #d1d5db',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontSize: '12px'
+            padding: "8px 16px",
+            backgroundColor: "#f3f4f6",
+            color: "#374151",
+            border: "1px solid #d1d5db",
+            borderRadius: "4px",
+            cursor: "pointer",
+            fontSize: "12px",
           }}
         >
           ← Back
@@ -512,17 +653,17 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
           onClick={handleNext}
           disabled={!tokenPath.trim()}
           style={{
-            padding: '8px 16px',
-            backgroundColor: !tokenPath.trim() ? '#cbd5e1' : '#16a34a',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: !tokenPath.trim() ? 'not-allowed' : 'pointer',
-            fontSize: '12px',
-            fontWeight: 'bold'
+            padding: "8px 16px",
+            backgroundColor: !tokenPath.trim() ? "#cbd5e1" : "#16a34a",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: !tokenPath.trim() ? "not-allowed" : "pointer",
+            fontSize: "12px",
+            fontWeight: "bold",
           }}
         >
-          {isLast ? 'Complete Setup ✓' : 'Next →'}
+          {isLast ? "Complete Setup ✓" : "Next →"}
         </button>
       </div>
     </div>
@@ -534,15 +675,15 @@ export function SetupWizard({ onComplete, onClose }: SetupWizardProps) {
   const [config, setConfig] = useState<Partial<GitHubConfig>>({});
 
   const steps = [
-    { component: AccessTokenStep, title: 'Access Token' },
-    { component: RepositoryStep, title: 'Repository' },
-    { component: ConfigurationStep, title: 'Configuration' }
+    { component: AccessTokenStep, title: "Access Token" },
+    { component: RepositoryStep, title: "Repository" },
+    { component: ConfigurationStep, title: "Configuration" },
   ];
 
   const handleNext = (stepData: Partial<GitHubConfig>) => {
     const newConfig = { ...config, ...stepData };
     setConfig(newConfig);
-    
+
     if (currentStep === steps.length - 1) {
       onComplete(newConfig as GitHubConfig);
     } else {
@@ -559,53 +700,62 @@ export function SetupWizard({ onComplete, onClose }: SetupWizardProps) {
   const CurrentStepComponent = steps[currentStep].component;
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      width: '100%',
-      height: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 1000
-    }}>
-      <div style={{
-        backgroundColor: 'white',
-        borderRadius: '8px',
-        padding: '24px',
-        width: '90%',
-        maxWidth: '480px',
-        maxHeight: '90vh',
-        overflowY: 'auto',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)'
-      }}>
+    <div
+      style={{
+        position: "fixed",
+        top: "0",
+        left: "0",
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 1000,
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: "white",
+          borderRadius: "8px",
+          padding: "24px",
+          width: "90%",
+          maxWidth: "480px",
+          maxHeight: "90vh",
+          overflowY: "auto",
+          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+        }}
+      >
         {/* Header */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '20px'
-        }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "20px",
+          }}
+        >
           <div>
-            <h2 style={{ margin: '0', fontSize: '16px', fontWeight: 'bold' }}>
+            <h2 style={{ margin: "0", fontSize: "16px", fontWeight: "bold" }}>
               🚀 GitHub Setup Wizard
             </h2>
-            <div style={{ fontSize: '11px', color: '#6b7280', marginTop: '2px' }}>
-              Step {currentStep + 1} of {steps.length}: {steps[currentStep].title}
+            <div
+              style={{ fontSize: "11px", color: "#6b7280", marginTop: "2px" }}
+            >
+              Step {currentStep + 1} of {steps.length}:{" "}
+              {steps[currentStep].title}
             </div>
           </div>
           <button
             onClick={onClose}
             style={{
-              padding: '4px 8px',
-              backgroundColor: '#f3f4f6',
-              border: '1px solid #d1d5db',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontSize: '12px',
-              color: '#374151'
+              padding: "4px 8px",
+              backgroundColor: "#f3f4f6",
+              border: "1px solid #d1d5db",
+              borderRadius: "4px",
+              cursor: "pointer",
+              fontSize: "12px",
+              color: "#374151",
             }}
           >
             ✕
@@ -613,21 +763,23 @@ export function SetupWizard({ onComplete, onClose }: SetupWizardProps) {
         </div>
 
         {/* Progress indicator */}
-        <div style={{ 
-          display: 'flex', 
-          gap: '4px', 
-          marginBottom: '24px',
-          justifyContent: 'center'
-        }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "4px",
+            marginBottom: "24px",
+            justifyContent: "center",
+          }}
+        >
           {steps.map((_, index) => (
             <div
               key={index}
               style={{
-                width: '40px',
-                height: '4px',
-                backgroundColor: index <= currentStep ? '#0066cc' : '#e5e7eb',
-                borderRadius: '2px',
-                transition: 'background-color 0.3s ease'
+                width: "40px",
+                height: "4px",
+                backgroundColor: index <= currentStep ? "#0066cc" : "#e5e7eb",
+                borderRadius: "2px",
+                transition: "background-color 0.3s ease",
               }}
             />
           ))}

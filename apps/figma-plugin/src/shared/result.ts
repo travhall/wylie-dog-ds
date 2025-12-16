@@ -1,7 +1,7 @@
 // Standardized Result Pattern - Quick Win #12
 // Provides consistent error handling across the plugin
 
-export type Result<T, E = string> = 
+export type Result<T, E = string> =
   | { success: true; data: T }
   | { success: false; error: E; suggestions?: string[] };
 
@@ -10,14 +10,17 @@ export class ResultHandler {
     return { success: true, data };
   }
 
-  static failure<T, E = string>(error: E, suggestions?: string[]): Result<T, E> {
+  static failure<T, E = string>(
+    error: E,
+    suggestions?: string[]
+  ): Result<T, E> {
     return { success: false, error, suggestions };
   }
 
   static fromPromise<T>(promise: Promise<T>): Promise<Result<T>> {
     return promise
-      .then(data => ResultHandler.success(data))
-      .catch(error => ResultHandler.failure(error.message || String(error)));
+      .then((data) => ResultHandler.success(data))
+      .catch((error) => ResultHandler.failure(error.message || String(error)));
   }
 
   static map<T, U>(result: Result<T>, mapper: (data: T) => U): Result<U> {
@@ -27,7 +30,10 @@ export class ResultHandler {
     return result as Result<U>;
   }
 
-  static flatMap<T, U>(result: Result<T>, mapper: (data: T) => Result<U>): Result<U> {
+  static flatMap<T, U>(
+    result: Result<T>,
+    mapper: (data: T) => Result<U>
+  ): Result<U> {
     if (result.success) {
       return mapper(result.data);
     }
@@ -38,7 +44,9 @@ export class ResultHandler {
     return result.success;
   }
 
-  static isFailure<T>(result: Result<T>): result is { success: false; error: any; suggestions?: string[] } {
+  static isFailure<T>(
+    result: Result<T>
+  ): result is { success: false; error: any; suggestions?: string[] } {
     return !result.success;
   }
 
@@ -52,34 +60,52 @@ export class ResultHandler {
       const data = await operation();
       return ResultHandler.success(data);
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
       return ResultHandler.failure(
         `${errorContext}: ${errorMessage}`,
-        suggestions.length > 0 ? suggestions : [
-          'Check your internet connection',
-          'Verify your credentials', 
-          'Try again in a moment'
-        ]
+        suggestions.length > 0
+          ? suggestions
+          : [
+              "Check your internet connection",
+              "Verify your credentials",
+              "Try again in a moment",
+            ]
       );
     }
   }
 }
 
 // Specialized result types for common operations
-export type ValidationResult = Result<{ valid: true; data: any }, { 
-  valid: false; 
-  errors: string[]; 
-  warnings: string[] 
-}>;
+export type ValidationResult = Result<
+  { valid: true; data: any },
+  {
+    valid: false;
+    errors: string[];
+    warnings: string[];
+  }
+>;
 
-export type GitHubOperationResult<T> = Result<T, {
-  type: 'network' | 'auth' | 'permission' | 'not-found' | 'rate-limit' | 'unknown';
-  message: string;
-  statusCode?: number;
-}>;
+export type GitHubOperationResult<T> = Result<
+  T,
+  {
+    type:
+      | "network"
+      | "auth"
+      | "permission"
+      | "not-found"
+      | "rate-limit"
+      | "unknown";
+    message: string;
+    statusCode?: number;
+  }
+>;
 
-export type TokenProcessingResult<T> = Result<T, {
-  type: 'parsing' | 'validation' | 'format' | 'reference' | 'conflict';
-  message: string;
-  context?: any;
-}>;
+export type TokenProcessingResult<T> = Result<
+  T,
+  {
+    type: "parsing" | "validation" | "format" | "reference" | "conflict";
+    message: string;
+    context?: any;
+  }
+>;

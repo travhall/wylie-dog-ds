@@ -217,9 +217,9 @@ export class TokensStudioAdapter implements FormatAdapter {
         // 1. Direct full path mapping
         referenceMap.set(tokenName, fullPath);
         console.log(`✅ Mapped: ${tokenName} -> ${fullPath}`);
-        
+
         // 2. CRITICAL: Map token name without collection prefix for cross-references
-        // This maps "color.accent" -> "Semantic.color.accent" 
+        // This maps "color.accent" -> "Semantic.color.accent"
         referenceMap.set(tokenName, fullPath);
         console.log(`✅ Cross-ref mapping: ${tokenName} -> ${fullPath}`);
 
@@ -422,25 +422,29 @@ export class TokensStudioAdapter implements FormatAdapter {
 
       // Strategy 2: Search all mappings for partial matches
       for (const [key, fullPath] of referenceMap.entries()) {
-        if (key === refToken || key.endsWith('.' + refToken) || key.endsWith(refToken)) {
+        if (
+          key === refToken ||
+          key.endsWith("." + refToken) ||
+          key.endsWith(refToken)
+        ) {
           const newRef = `{${fullPath}}`;
-          
+
           console.log(`✅ Partial match: ${refToken} -> ${fullPath}`);
-          
+
           transformations.push({
             type: "cross-collection-reference",
             description: `Fixed cross-collection reference via search in ${tokenPath}`,
             before: match,
             after: newRef,
           });
-          
+
           return newRef;
         }
       }
 
       console.log(`❌ No mapping found for: ${refToken}`);
       console.log(`Available keys:`, Array.from(referenceMap.keys()));
-      
+
       return match;
     });
   }

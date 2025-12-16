@@ -1,8 +1,8 @@
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { axe, toHaveNoViolations } from 'jest-axe';
-import { Popover, PopoverContent, PopoverTrigger } from '../popover';
+import React from "react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { axe, toHaveNoViolations } from "jest-axe";
+import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 
 expect.extend(toHaveNoViolations);
 
@@ -10,12 +10,12 @@ expect.extend(toHaveNoViolations);
 const TestPopover = ({
   open,
   onOpenChange,
-  side = 'bottom' as const,
+  side = "bottom" as const,
   sideOffset,
 }: {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
-  side?: 'top' | 'right' | 'bottom' | 'left';
+  side?: "top" | "right" | "bottom" | "left";
   sideOffset?: number;
 }) => (
   <Popover open={open} onOpenChange={onOpenChange}>
@@ -29,44 +29,44 @@ const TestPopover = ({
   </Popover>
 );
 
-describe('Popover', () => {
-  describe('Accessibility', () => {
-    it('should pass accessibility audit when closed', async () => {
+describe("Popover", () => {
+  describe("Accessibility", () => {
+    it("should pass accessibility audit when closed", async () => {
       const { container } = render(<TestPopover />);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
-    it('should have proper aria-expanded state', async () => {
+    it("should have proper aria-expanded state", async () => {
       const user = userEvent.setup();
       render(<TestPopover />);
 
-      const trigger = screen.getByText('Open Popover');
-      expect(trigger).toHaveAttribute('aria-expanded', 'false');
+      const trigger = screen.getByText("Open Popover");
+      expect(trigger).toHaveAttribute("aria-expanded", "false");
 
       await user.click(trigger);
 
       await waitFor(() => {
-        expect(trigger).toHaveAttribute('aria-expanded', 'true');
+        expect(trigger).toHaveAttribute("aria-expanded", "true");
       });
     });
 
-    it('should have proper aria-haspopup attribute', () => {
+    it("should have proper aria-haspopup attribute", () => {
       render(<TestPopover />);
 
-      const trigger = screen.getByText('Open Popover');
-      expect(trigger).toHaveAttribute('aria-haspopup', 'dialog');
+      const trigger = screen.getByText("Open Popover");
+      expect(trigger).toHaveAttribute("aria-haspopup", "dialog");
     });
 
-    it('should have proper aria-controls association', async () => {
+    it("should have proper aria-controls association", async () => {
       const user = userEvent.setup();
       render(<TestPopover />);
 
-      const trigger = screen.getByText('Open Popover');
+      const trigger = screen.getByText("Open Popover");
       await user.click(trigger);
 
       await waitFor(() => {
-        const controlsId = trigger.getAttribute('aria-controls');
+        const controlsId = trigger.getAttribute("aria-controls");
         expect(controlsId).toBeTruthy();
 
         const content = document.getElementById(controlsId!);
@@ -75,71 +75,73 @@ describe('Popover', () => {
     });
   });
 
-  describe('Functionality', () => {
-    it('should render trigger', () => {
+  describe("Functionality", () => {
+    it("should render trigger", () => {
       render(<TestPopover />);
-      expect(screen.getByText('Open Popover')).toBeInTheDocument();
+      expect(screen.getByText("Open Popover")).toBeInTheDocument();
     });
 
-    it('should not show popover content when closed', () => {
+    it("should not show popover content when closed", () => {
       render(<TestPopover />);
-      expect(screen.queryByText('Popover Heading')).not.toBeInTheDocument();
+      expect(screen.queryByText("Popover Heading")).not.toBeInTheDocument();
     });
 
-    it('should show popover on trigger click', async () => {
+    it("should show popover on trigger click", async () => {
       const user = userEvent.setup();
       render(<TestPopover />);
 
-      const trigger = screen.getByText('Open Popover');
+      const trigger = screen.getByText("Open Popover");
       await user.click(trigger);
 
       await waitFor(() => {
-        expect(screen.getByText('Popover Heading')).toBeInTheDocument();
-        expect(screen.getByText('This is the popover content')).toBeInTheDocument();
+        expect(screen.getByText("Popover Heading")).toBeInTheDocument();
+        expect(
+          screen.getByText("This is the popover content")
+        ).toBeInTheDocument();
       });
     });
 
-    it('should close popover on trigger click when open', async () => {
+    it("should close popover on trigger click when open", async () => {
       const user = userEvent.setup();
       render(<TestPopover />);
 
-      const trigger = screen.getByText('Open Popover');
+      const trigger = screen.getByText("Open Popover");
 
       // Open
       await user.click(trigger);
       await waitFor(() => {
-        expect(screen.getByText('Popover Heading')).toBeInTheDocument();
+        expect(screen.getByText("Popover Heading")).toBeInTheDocument();
       });
 
       // Close
       await user.click(trigger);
       await waitFor(() => {
-        expect(screen.queryByText('Popover Heading')).not.toBeInTheDocument();
+        expect(screen.queryByText("Popover Heading")).not.toBeInTheDocument();
       });
     });
 
-    it('should call onOpenChange when opening', async () => {
+    it("should call onOpenChange when opening", async () => {
       const user = userEvent.setup();
       const handleOpenChange = vi.fn();
       render(<TestPopover onOpenChange={handleOpenChange} />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       expect(handleOpenChange).toHaveBeenCalledWith(true);
     });
 
-    it('should call onOpenChange when closing', async () => {
+    it("should call onOpenChange when closing", async () => {
       const user = userEvent.setup();
       const handleOpenChange = vi.fn();
       render(<TestPopover onOpenChange={handleOpenChange} />);
 
-      const trigger = screen.getByText('Open Popover');
+      const trigger = screen.getByText("Open Popover");
 
       await user.click(trigger);
       handleOpenChange.mockClear();
 
       await waitFor(() => {
-        expect(screen.getByText('Popover Heading')).toBeInTheDocument();
+        expect(screen.getByText("Popover Heading")).toBeInTheDocument();
       });
 
       await user.click(trigger);
@@ -147,45 +149,45 @@ describe('Popover', () => {
       expect(handleOpenChange).toHaveBeenCalledWith(false);
     });
 
-    it('should work as controlled component', async () => {
+    it("should work as controlled component", async () => {
       const handleOpenChange = vi.fn();
       const { rerender } = render(
         <TestPopover open={false} onOpenChange={handleOpenChange} />
       );
 
-      expect(screen.queryByText('Popover Heading')).not.toBeInTheDocument();
+      expect(screen.queryByText("Popover Heading")).not.toBeInTheDocument();
 
       rerender(<TestPopover open={true} onOpenChange={handleOpenChange} />);
 
       await waitFor(() => {
-        expect(screen.getByText('Popover Heading')).toBeInTheDocument();
+        expect(screen.getByText("Popover Heading")).toBeInTheDocument();
       });
 
       rerender(<TestPopover open={false} onOpenChange={handleOpenChange} />);
 
       await waitFor(() => {
-        expect(screen.queryByText('Popover Heading')).not.toBeInTheDocument();
+        expect(screen.queryByText("Popover Heading")).not.toBeInTheDocument();
       });
     });
 
-    it('should close on Escape key', async () => {
+    it("should close on Escape key", async () => {
       const user = userEvent.setup();
       render(<TestPopover />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(() => {
-        expect(screen.getByText('Popover Heading')).toBeInTheDocument();
+        expect(screen.getByText("Popover Heading")).toBeInTheDocument();
       });
 
-      await user.keyboard('{Escape}');
+      await user.keyboard("{Escape}");
 
       await waitFor(() => {
-        expect(screen.queryByText('Popover Heading')).not.toBeInTheDocument();
+        expect(screen.queryByText("Popover Heading")).not.toBeInTheDocument();
       });
     });
 
-    it('should close when clicking outside', async () => {
+    it("should close when clicking outside", async () => {
       const user = userEvent.setup();
       render(
         <div>
@@ -194,130 +196,140 @@ describe('Popover', () => {
         </div>
       );
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(() => {
-        expect(screen.getByText('Popover Heading')).toBeInTheDocument();
+        expect(screen.getByText("Popover Heading")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Outside Button'));
+      await user.click(screen.getByText("Outside Button"));
 
       await waitFor(() => {
-        expect(screen.queryByText('Popover Heading')).not.toBeInTheDocument();
+        expect(screen.queryByText("Popover Heading")).not.toBeInTheDocument();
       });
     });
   });
 
-  describe('Positioning', () => {
-    it('should position popover on bottom by default', async () => {
+  describe("Positioning", () => {
+    it("should position popover on bottom by default", async () => {
       const user = userEvent.setup();
       render(<TestPopover side="bottom" />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(() => {
-        const content = screen.getByText('Popover Heading').closest('[data-side]');
-        expect(content).toHaveAttribute('data-side', 'bottom');
+        const content = screen
+          .getByText("Popover Heading")
+          .closest("[data-side]");
+        expect(content).toHaveAttribute("data-side", "bottom");
       });
     });
 
-    it('should position popover on top', async () => {
+    it("should position popover on top", async () => {
       const user = userEvent.setup();
       render(<TestPopover side="top" />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(() => {
-        const content = screen.getByText('Popover Heading').closest('[data-side]');
-        expect(content).toHaveAttribute('data-side', 'top');
+        const content = screen
+          .getByText("Popover Heading")
+          .closest("[data-side]");
+        expect(content).toHaveAttribute("data-side", "top");
       });
     });
 
-    it('should position popover on right', async () => {
+    it("should position popover on right", async () => {
       const user = userEvent.setup();
       render(<TestPopover side="right" />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(
         () => {
-          const heading = screen.getByText('Popover Heading');
-          const content = heading.closest('[data-side]');
+          const heading = screen.getByText("Popover Heading");
+          const content = heading.closest("[data-side]");
           expect(content).not.toBeNull();
-          expect(content).toHaveAttribute('data-side', 'right');
+          expect(content).toHaveAttribute("data-side", "right");
         },
         { timeout: 3000 }
       );
     });
 
-    it('should position popover on left', async () => {
+    it("should position popover on left", async () => {
       const user = userEvent.setup();
       render(<TestPopover side="left" />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(() => {
-        const content = screen.getByText('Popover Heading').closest('[data-side]');
-        expect(content).toHaveAttribute('data-side', 'left');
+        const content = screen
+          .getByText("Popover Heading")
+          .closest("[data-side]");
+        expect(content).toHaveAttribute("data-side", "left");
       });
     });
 
-    it('should support custom sideOffset', async () => {
+    it("should support custom sideOffset", async () => {
       const user = userEvent.setup();
       render(<TestPopover sideOffset={16} />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(() => {
-        expect(screen.getByText('Popover Heading')).toBeInTheDocument();
+        expect(screen.getByText("Popover Heading")).toBeInTheDocument();
       });
     });
   });
 
-  describe('Styling', () => {
-    it('should have default popover styling', async () => {
+  describe("Styling", () => {
+    it("should have default popover styling", async () => {
       const user = userEvent.setup();
       render(<TestPopover />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(() => {
-        const content = screen.getByText('Popover Heading').closest('[class*="rounded-md"]');
-        expect(content).toHaveClass('rounded-md');
-        expect(content).toHaveClass('border');
-        expect(content).toHaveClass('bg-[var(--color-popover-background)]');
-        expect(content).toHaveClass('p-4');
+        const content = screen
+          .getByText("Popover Heading")
+          .closest('[class*="rounded-md"]');
+        expect(content).toHaveClass("rounded-md");
+        expect(content).toHaveClass("border");
+        expect(content).toHaveClass("bg-[var(--color-popover-background)]");
+        expect(content).toHaveClass("p-4");
       });
     });
 
-    it('should have animation classes', async () => {
+    it("should have animation classes", async () => {
       const user = userEvent.setup();
       render(<TestPopover />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(() => {
-        const content = screen.getByText('Popover Heading').parentElement?.parentElement;
-        expect(content).toHaveClass('data-[state=open]:animate-in');
-        expect(content).toHaveClass('data-[state=closed]:animate-out');
-        expect(content).toHaveClass('data-[state=open]:fade-in-0');
-        expect(content).toHaveClass('data-[state=closed]:fade-out-0');
+        const content =
+          screen.getByText("Popover Heading").parentElement?.parentElement;
+        expect(content).toHaveClass("data-[state=open]:animate-in");
+        expect(content).toHaveClass("data-[state=closed]:animate-out");
+        expect(content).toHaveClass("data-[state=open]:fade-in-0");
+        expect(content).toHaveClass("data-[state=closed]:fade-out-0");
       });
     });
 
-    it('should have side-specific animation classes', async () => {
+    it("should have side-specific animation classes", async () => {
       const user = userEvent.setup();
       render(<TestPopover side="top" />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(() => {
-        const content = screen.getByText('Popover Heading').parentElement?.parentElement;
-        expect(content).toHaveClass('data-[side=top]:slide-in-from-bottom-2');
+        const content =
+          screen.getByText("Popover Heading").parentElement?.parentElement;
+        expect(content).toHaveClass("data-[side=top]:slide-in-from-bottom-2");
       });
     });
 
-    it('should apply custom className', async () => {
+    it("should apply custom className", async () => {
       const user = userEvent.setup();
 
       render(
@@ -329,44 +341,46 @@ describe('Popover', () => {
         </Popover>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(
         () => {
-          const content = screen.getByText('Custom content').parentElement;
-          expect(content).toHaveClass('custom-popover-class');
+          const content = screen.getByText("Custom content").parentElement;
+          expect(content).toHaveClass("custom-popover-class");
         },
         { timeout: 3000 }
       );
     });
 
-    it('should have proper z-index', async () => {
+    it("should have proper z-index", async () => {
       const user = userEvent.setup();
       render(<TestPopover />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(() => {
-        const content = screen.getByText('Popover Heading').parentElement?.parentElement;
-        expect(content).toHaveClass('z-50');
+        const content =
+          screen.getByText("Popover Heading").parentElement?.parentElement;
+        expect(content).toHaveClass("z-50");
       });
     });
 
-    it('should have fixed width', async () => {
+    it("should have fixed width", async () => {
       const user = userEvent.setup();
       render(<TestPopover />);
 
-      await user.click(screen.getByText('Open Popover'));
+      await user.click(screen.getByText("Open Popover"));
 
       await waitFor(() => {
-        const content = screen.getByText('Popover Heading').parentElement?.parentElement;
-        expect(content).toHaveClass('w-72');
+        const content =
+          screen.getByText("Popover Heading").parentElement?.parentElement;
+        expect(content).toHaveClass("w-72");
       });
     });
   });
 
-  describe('Integration', () => {
-    it('should forward ref to PopoverContent', async () => {
+  describe("Integration", () => {
+    it("should forward ref to PopoverContent", async () => {
       const user = userEvent.setup();
       const ref = React.createRef<HTMLDivElement>();
 
@@ -377,14 +391,14 @@ describe('Popover', () => {
         </Popover>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
         expect(ref.current).toBeInstanceOf(HTMLDivElement);
       });
     });
 
-    it('should work with interactive content', async () => {
+    it("should work with interactive content", async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
@@ -397,18 +411,18 @@ describe('Popover', () => {
         </Popover>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByText('Action Button')).toBeInTheDocument();
+        expect(screen.getByText("Action Button")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Action Button'));
+      await user.click(screen.getByText("Action Button"));
 
       expect(handleClick).toHaveBeenCalled();
     });
 
-    it('should work with form elements', async () => {
+    it("should work with form elements", async () => {
       const user = userEvent.setup();
       const handleSubmit = vi.fn((e) => e.preventDefault());
 
@@ -424,24 +438,24 @@ describe('Popover', () => {
         </Popover>
       );
 
-      await user.click(screen.getByText('Open Form'));
+      await user.click(screen.getByText("Open Form"));
 
       await waitFor(() => {
-        expect(screen.getByPlaceholderText('Name')).toBeInTheDocument();
+        expect(screen.getByPlaceholderText("Name")).toBeInTheDocument();
       });
 
-      await user.type(screen.getByPlaceholderText('Name'), 'John');
-      await user.click(screen.getByText('Submit'));
+      await user.type(screen.getByPlaceholderText("Name"), "John");
+      await user.click(screen.getByText("Submit"));
 
       expect(handleSubmit).toHaveBeenCalled();
     });
 
-    it('should handle rapid open/close', async () => {
+    it("should handle rapid open/close", async () => {
       const user = userEvent.setup();
       const handleOpenChange = vi.fn();
       render(<TestPopover onOpenChange={handleOpenChange} />);
 
-      const trigger = screen.getByText('Open Popover');
+      const trigger = screen.getByText("Open Popover");
 
       // Rapid clicks
       await user.click(trigger);
@@ -454,8 +468,8 @@ describe('Popover', () => {
     });
   });
 
-  describe('Edge Cases', () => {
-    it('should handle empty popover content', async () => {
+  describe("Edge Cases", () => {
+    it("should handle empty popover content", async () => {
       const user = userEvent.setup();
 
       render(
@@ -465,7 +479,7 @@ describe('Popover', () => {
         </Popover>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
         const content = document.querySelector('[data-state="open"]');
@@ -473,9 +487,12 @@ describe('Popover', () => {
       });
     });
 
-    it('should handle very long content', async () => {
+    it("should handle very long content", async () => {
       const user = userEvent.setup();
-      const longText = Array.from({ length: 50 }, (_, i) => `Line ${i + 1}`).join('\n');
+      const longText = Array.from(
+        { length: 50 },
+        (_, i) => `Line ${i + 1}`
+      ).join("\n");
 
       render(
         <Popover>
@@ -486,7 +503,7 @@ describe('Popover', () => {
         </Popover>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(
         () => {
@@ -497,7 +514,7 @@ describe('Popover', () => {
       );
     });
 
-    it('should handle complex nested content', async () => {
+    it("should handle complex nested content", async () => {
       const user = userEvent.setup();
 
       render(
@@ -516,16 +533,16 @@ describe('Popover', () => {
         </Popover>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByText('Title')).toBeInTheDocument();
-        expect(screen.getByText('Item 1')).toBeInTheDocument();
-        expect(screen.getByText('Action')).toBeInTheDocument();
+        expect(screen.getByText("Title")).toBeInTheDocument();
+        expect(screen.getByText("Item 1")).toBeInTheDocument();
+        expect(screen.getByText("Action")).toBeInTheDocument();
       });
     });
 
-    it('should handle custom trigger element', async () => {
+    it("should handle custom trigger element", async () => {
       const user = userEvent.setup();
 
       render(
@@ -537,15 +554,15 @@ describe('Popover', () => {
         </Popover>
       );
 
-      const trigger = screen.getByRole('button', { name: 'Custom Trigger' });
+      const trigger = screen.getByRole("button", { name: "Custom Trigger" });
       await user.click(trigger);
 
       await waitFor(() => {
-        expect(screen.getByText('Content')).toBeInTheDocument();
+        expect(screen.getByText("Content")).toBeInTheDocument();
       });
     });
 
-    it('should not close when clicking inside popover', async () => {
+    it("should not close when clicking inside popover", async () => {
       const user = userEvent.setup();
 
       render(
@@ -560,19 +577,19 @@ describe('Popover', () => {
         </Popover>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByText('Content')).toBeInTheDocument();
+        expect(screen.getByText("Content")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Inside Button'));
+      await user.click(screen.getByText("Inside Button"));
 
       // Popover should still be open
-      expect(screen.getByText('Content')).toBeInTheDocument();
+      expect(screen.getByText("Content")).toBeInTheDocument();
     });
 
-    it('should handle multiple popovers independently', async () => {
+    it("should handle multiple popovers independently", async () => {
       const user = userEvent.setup();
 
       render(
@@ -588,20 +605,20 @@ describe('Popover', () => {
         </div>
       );
 
-      await user.click(screen.getByText('Open First'));
+      await user.click(screen.getByText("Open First"));
 
       await waitFor(() => {
-        expect(screen.getByText('First Content')).toBeInTheDocument();
+        expect(screen.getByText("First Content")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Open Second'));
+      await user.click(screen.getByText("Open Second"));
 
       await waitFor(() => {
-        expect(screen.getByText('Second Content')).toBeInTheDocument();
+        expect(screen.getByText("Second Content")).toBeInTheDocument();
       });
     });
 
-    it('should support align prop', async () => {
+    it("should support align prop", async () => {
       const user = userEvent.setup();
 
       render(
@@ -611,11 +628,13 @@ describe('Popover', () => {
         </Popover>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        const content = screen.getByText('Aligned Content').closest('[data-align]');
-        expect(content).toHaveAttribute('data-align', 'start');
+        const content = screen
+          .getByText("Aligned Content")
+          .closest("[data-align]");
+        expect(content).toHaveAttribute("data-align", "start");
       });
     });
   });

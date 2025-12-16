@@ -13,9 +13,7 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
 /**
  * Create a variant handler for consistent component API
  */
-export function createVariants<T extends Record<string, string>>(
-  variants: T
-) {
+export function createVariants<T extends Record<string, string>>(variants: T) {
   return variants;
 }
 

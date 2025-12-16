@@ -9,7 +9,8 @@ interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
   ({ className, variant = "default", ...props }, ref) => {
     const variants = {
-      default: "border bg-[var(--color-toast-background)] text-[var(--color-toast-text)]",
+      default:
+        "border bg-[var(--color-toast-background)] text-[var(--color-toast-text)]",
       destructive: "destructive border-red-500 bg-red-500 text-white",
       success: "border-green-500 bg-green-500 text-white",
       warning: "border-yellow-500 bg-yellow-500 text-black",
@@ -86,21 +87,12 @@ ToastTitle.displayName = "ToastTitle";
 
 interface ToastDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const ToastDescription = React.forwardRef<HTMLDivElement, ToastDescriptionProps>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn("text-sm opacity-90", className)}
-      {...props}
-    />
-  )
-);
+const ToastDescription = React.forwardRef<
+  HTMLDivElement,
+  ToastDescriptionProps
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("text-sm opacity-90", className)} {...props} />
+));
 ToastDescription.displayName = "ToastDescription";
 
-export {
-  Toast,
-  ToastAction,
-  ToastClose,
-  ToastTitle,
-  ToastDescription,
-};
+export { Toast, ToastAction, ToastClose, ToastTitle, ToastDescription };

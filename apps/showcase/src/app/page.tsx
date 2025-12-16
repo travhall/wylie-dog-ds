@@ -91,7 +91,11 @@ import { Calendar } from "@wyliedog/ui/calendar";
 import { Carousel } from "@wyliedog/ui/carousel";
 import { Toast } from "@wyliedog/ui/toast";
 import { Form } from "@wyliedog/ui/form";
-import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@wyliedog/ui/resizable";
+import {
+  ResizablePanelGroup,
+  ResizablePanel,
+  ResizableHandle,
+} from "@wyliedog/ui/resizable";
 import { AspectRatio } from "@wyliedog/ui/aspect-ratio";
 import {
   ContextMenu,
@@ -1406,9 +1410,15 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <Carousel className="w-full max-w-xs mx-auto">
-                <div className="bg-gray-100 p-8 text-center rounded">Slide 1</div>
-                <div className="bg-gray-200 p-8 text-center rounded">Slide 2</div>
-                <div className="bg-gray-300 p-8 text-center rounded">Slide 3</div>
+                <div className="bg-gray-100 p-8 text-center rounded">
+                  Slide 1
+                </div>
+                <div className="bg-gray-200 p-8 text-center rounded">
+                  Slide 2
+                </div>
+                <div className="bg-gray-300 p-8 text-center rounded">
+                  Slide 3
+                </div>
               </Carousel>
             </CardContent>
           </Card>
@@ -1419,7 +1429,10 @@ export default function Home() {
               <CardTitle>Resizable</CardTitle>
             </CardHeader>
             <CardContent>
-              <ResizablePanelGroup direction="horizontal" className="h-[200px] border rounded-lg">
+              <ResizablePanelGroup
+                direction="horizontal"
+                className="h-[200px] border rounded-lg"
+              >
                 <ResizablePanel defaultSize={50}>
                   <div className="bg-gray-100 p-4 h-full flex items-center justify-center">
                     Panel 1
@@ -1506,7 +1519,7 @@ export default function Home() {
               <CardTitle>AspectRatio</CardTitle>
             </CardHeader>
             <CardContent>
-              <AspectRatio ratio={16/9}>
+              <AspectRatio ratio={16 / 9}>
                 <div className="bg-gray-100 rounded w-full h-full flex items-center justify-center">
                   16:9 Aspect Ratio
                 </div>

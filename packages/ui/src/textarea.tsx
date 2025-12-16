@@ -1,8 +1,7 @@
 import React from "react";
 import { cn } from "./lib/utils";
 
-export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   /** Whether the textarea has an error */
   error?: boolean;
   /** Size variant */
@@ -16,15 +15,18 @@ export interface TextareaProps
 }
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ 
-    className, 
-    error = false, 
-    size = "md", 
-    resize = "vertical",
-    errorId,
-    descriptionId,
-    ...props 
-  }, ref) => {
+  (
+    {
+      className,
+      error = false,
+      size = "md",
+      resize = "vertical",
+      errorId,
+      descriptionId,
+      ...props
+    },
+    ref
+  ) => {
     const sizes = {
       sm: "min-h-[80px] px-3 py-2 text-xs",
       md: "min-h-[100px] px-3 py-2 text-sm",
@@ -34,7 +36,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const resizeClasses = {
       none: "resize-none",
       both: "resize",
-      horizontal: "resize-x", 
+      horizontal: "resize-x",
       vertical: "resize-y",
     };
 

@@ -11,10 +11,13 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
-  ({ className, size = "md", semanticRole = "profile", name, ...props }, ref) => {
+  (
+    { className, size = "md", semanticRole = "profile", name, ...props },
+    ref
+  ) => {
     const sizes = {
       sm: "h-8 w-8",
-      md: "h-10 w-10", 
+      md: "h-10 w-10",
       lg: "h-12 w-12",
       xl: "h-16 w-16",
     };
@@ -22,7 +25,9 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
     const getAriaLabel = () => {
       if (semanticRole === "decorative") return undefined;
       if (name) {
-        return semanticRole === "profile" ? `${name}'s profile picture` : `${name}'s avatar`;
+        return semanticRole === "profile"
+          ? `${name}'s profile picture`
+          : `${name}'s avatar`;
       }
       return semanticRole === "profile" ? "Profile picture" : "User avatar";
     };
@@ -44,8 +49,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
 );
 Avatar.displayName = "Avatar";
 
-export interface AvatarImageProps
-  extends React.ImgHTMLAttributes<HTMLImageElement> {
+export interface AvatarImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /** Name of the person for accessible alt text generation */
   name?: string;
   /** Custom alt text - if not provided, will be generated from name */
@@ -74,45 +78,45 @@ export const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>(
 );
 AvatarImage.displayName = "AvatarImage";
 
-export interface AvatarFallbackProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface AvatarFallbackProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Name of the person for accessible initials generation */
   name?: string;
   /** Custom initials - if not provided, will be generated from name */
   initials?: string;
 }
 
-export const AvatarFallback = React.forwardRef<HTMLDivElement, AvatarFallbackProps>(
-  ({ className, name, initials, children, ...props }, ref) => {
-    // Generate initials from name if not provided
-    const getInitials = () => {
-      if (initials) return initials;
-      if (name) {
-        return name
-          .split(' ')
-          .map(part => part.charAt(0))
-          .join('')
-          .toUpperCase()
-          .slice(0, 2); // Max 2 characters
-      }
-      return null;
-    };
+export const AvatarFallback = React.forwardRef<
+  HTMLDivElement,
+  AvatarFallbackProps
+>(({ className, name, initials, children, ...props }, ref) => {
+  // Generate initials from name if not provided
+  const getInitials = () => {
+    if (initials) return initials;
+    if (name) {
+      return name
+        .split(" ")
+        .map((part) => part.charAt(0))
+        .join("")
+        .toUpperCase()
+        .slice(0, 2); // Max 2 characters
+    }
+    return null;
+  };
 
-    const displayContent = children || getInitials();
-    
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          "flex h-full w-full items-center justify-center rounded-full bg-[var(--color-avatar-fallback-background)] text-[var(--color-avatar-fallback-text)] font-medium",
-          className
-        )}
-        aria-hidden="true" // Fallback is decorative since parent Avatar has aria-label
-        {...props}
-      >
-        {displayContent}
-      </div>
-    );
-  }
-);
+  const displayContent = children || getInitials();
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "flex h-full w-full items-center justify-center rounded-full bg-[var(--color-avatar-fallback-background)] text-[var(--color-avatar-fallback-text)] font-medium",
+        className
+      )}
+      aria-hidden="true" // Fallback is decorative since parent Avatar has aria-label
+      {...props}
+    >
+      {displayContent}
+    </div>
+  );
+});
 AvatarFallback.displayName = "AvatarFallback";

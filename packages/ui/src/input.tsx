@@ -1,8 +1,10 @@
 import React from "react";
 import { cn } from "./lib/utils";
 
-export interface InputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
+export interface InputProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "size"
+> {
   /** Whether the input has an error */
   error?: boolean;
   /** Size variant */
@@ -15,14 +17,14 @@ export interface InputProps
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { 
-      className, 
-      error = false, 
-      size = "md", 
+    {
+      className,
+      error = false,
+      size = "md",
       type = "text",
       errorId,
       descriptionId,
-      ...props 
+      ...props
     },
     ref
   ) => {

@@ -6,19 +6,20 @@ interface ResizablePanelGroupProps extends React.HTMLAttributes<HTMLDivElement> 
   direction?: "horizontal" | "vertical";
 }
 
-const ResizablePanelGroup = React.forwardRef<HTMLDivElement, ResizablePanelGroupProps>(
-  ({ className, direction = "horizontal", ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn(
-        "flex w-full data-[panel-group-direction=vertical]:flex-col",
-        className
-      )}
-      data-panel-group-direction={direction}
-      {...props}
-    />
-  )
-);
+const ResizablePanelGroup = React.forwardRef<
+  HTMLDivElement,
+  ResizablePanelGroupProps
+>(({ className, direction = "horizontal", ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "flex w-full data-[panel-group-direction=vertical]:flex-col",
+      className
+    )}
+    data-panel-group-direction={direction}
+    {...props}
+  />
+));
 ResizablePanelGroup.displayName = "ResizablePanelGroup";
 
 interface ResizablePanelProps extends React.HTMLAttributes<HTMLDivElement> {

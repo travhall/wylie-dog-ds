@@ -1,14 +1,14 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { axe, toHaveNoViolations } from 'jest-axe';
-import { vi } from 'vitest';
-import { Card, CardHeader, CardTitle, CardContent } from '../card';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { axe, toHaveNoViolations } from "jest-axe";
+import { vi } from "vitest";
+import { Card, CardHeader, CardTitle, CardContent } from "../card";
 
 expect.extend(toHaveNoViolations);
 
-describe('Card', () => {
-  describe('Accessibility', () => {
-    it('should pass accessibility audit', async () => {
+describe("Card", () => {
+  describe("Accessibility", () => {
+    it("should pass accessibility audit", async () => {
       const { container } = render(
         <Card>
           <CardHeader>
@@ -21,13 +21,13 @@ describe('Card', () => {
       expect(results).toHaveNoViolations();
     });
 
-    it('should pass accessibility audit with minimal content', async () => {
+    it("should pass accessibility audit with minimal content", async () => {
       const { container } = render(<Card>Simple content</Card>);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
-    it('should have proper heading hierarchy', () => {
+    it("should have proper heading hierarchy", () => {
       render(
         <Card>
           <CardHeader>
@@ -37,39 +37,39 @@ describe('Card', () => {
         </Card>
       );
 
-      const heading = screen.getByRole('heading', { level: 3 });
-      expect(heading).toHaveTextContent('Main Title');
+      const heading = screen.getByRole("heading", { level: 3 });
+      expect(heading).toHaveTextContent("Main Title");
     });
   });
 
-  describe('Card Component', () => {
-    it('should render with children', () => {
+  describe("Card Component", () => {
+    it("should render with children", () => {
       render(<Card>Test content</Card>);
-      expect(screen.getByText('Test content')).toBeInTheDocument();
+      expect(screen.getByText("Test content")).toBeInTheDocument();
     });
 
-    it('should apply custom className', () => {
+    it("should apply custom className", () => {
       const { container } = render(
         <Card className="custom-class">Content</Card>
       );
       const card = container.firstChild as HTMLElement;
-      expect(card).toHaveClass('custom-class');
+      expect(card).toHaveClass("custom-class");
     });
 
-    it('should render as div element', () => {
+    it("should render as div element", () => {
       const { container } = render(<Card>Content</Card>);
       const card = container.firstChild as HTMLElement;
-      expect(card.tagName).toBe('DIV');
+      expect(card.tagName).toBe("DIV");
     });
 
-    it('should forward ref correctly', () => {
+    it("should forward ref correctly", () => {
       const ref = React.createRef<HTMLDivElement>();
       render(<Card ref={ref}>Content</Card>);
 
       expect(ref.current).toBeInstanceOf(HTMLDivElement);
     });
 
-    it('should support HTML attributes', () => {
+    it("should support HTML attributes", () => {
       render(
         <Card
           data-testid="test-card"
@@ -80,12 +80,12 @@ describe('Card', () => {
         </Card>
       );
 
-      const card = screen.getByTestId('test-card');
-      expect(card).toHaveAttribute('aria-label', 'Information card');
-      expect(card).toHaveAttribute('role', 'region');
+      const card = screen.getByTestId("test-card");
+      expect(card).toHaveAttribute("aria-label", "Information card");
+      expect(card).toHaveAttribute("role", "region");
     });
 
-    it('should handle onClick events', () => {
+    it("should handle onClick events", () => {
       const handleClick = vi.fn();
       render(
         <Card onClick={handleClick} role="button" tabIndex={0}>
@@ -93,33 +93,33 @@ describe('Card', () => {
         </Card>
       );
 
-      const card = screen.getByRole('button');
+      const card = screen.getByRole("button");
       fireEvent.click(card);
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
   });
 
-  describe('CardHeader Component', () => {
-    it('should render with children', () => {
+  describe("CardHeader Component", () => {
+    it("should render with children", () => {
       render(
         <Card>
           <CardHeader>Header content</CardHeader>
         </Card>
       );
-      expect(screen.getByText('Header content')).toBeInTheDocument();
+      expect(screen.getByText("Header content")).toBeInTheDocument();
     });
 
-    it('should apply custom className', () => {
+    it("should apply custom className", () => {
       render(
         <Card>
           <CardHeader className="custom-header">Header</CardHeader>
         </Card>
       );
-      const header = screen.getByText('Header');
-      expect(header).toHaveClass('custom-header');
+      const header = screen.getByText("Header");
+      expect(header).toHaveClass("custom-header");
     });
 
-    it('should forward ref correctly', () => {
+    it("should forward ref correctly", () => {
       const ref = React.createRef<HTMLDivElement>();
       render(
         <Card>
@@ -130,7 +130,7 @@ describe('Card', () => {
       expect(ref.current).toBeInstanceOf(HTMLDivElement);
     });
 
-    it('should support multiple children', () => {
+    it("should support multiple children", () => {
       render(
         <Card>
           <CardHeader>
@@ -140,13 +140,13 @@ describe('Card', () => {
         </Card>
       );
 
-      expect(screen.getByRole('heading')).toHaveTextContent('Title');
-      expect(screen.getByText('Subtitle text')).toBeInTheDocument();
+      expect(screen.getByRole("heading")).toHaveTextContent("Title");
+      expect(screen.getByText("Subtitle text")).toBeInTheDocument();
     });
   });
 
-  describe('CardTitle Component', () => {
-    it('should render as h3 element', () => {
+  describe("CardTitle Component", () => {
+    it("should render as h3 element", () => {
       render(
         <Card>
           <CardHeader>
@@ -155,11 +155,11 @@ describe('Card', () => {
         </Card>
       );
 
-      const title = screen.getByRole('heading', { level: 3 });
-      expect(title).toHaveTextContent('Test Title');
+      const title = screen.getByRole("heading", { level: 3 });
+      expect(title).toHaveTextContent("Test Title");
     });
 
-    it('should apply custom className', () => {
+    it("should apply custom className", () => {
       render(
         <Card>
           <CardHeader>
@@ -168,11 +168,11 @@ describe('Card', () => {
         </Card>
       );
 
-      const title = screen.getByRole('heading');
-      expect(title).toHaveClass('custom-title');
+      const title = screen.getByRole("heading");
+      expect(title).toHaveClass("custom-title");
     });
 
-    it('should forward ref correctly', () => {
+    it("should forward ref correctly", () => {
       const ref = React.createRef<HTMLHeadingElement>();
       render(
         <Card>
@@ -183,10 +183,10 @@ describe('Card', () => {
       );
 
       expect(ref.current).toBeInstanceOf(HTMLHeadingElement);
-      expect(ref.current?.tagName).toBe('H3');
+      expect(ref.current?.tagName).toBe("H3");
     });
 
-    it('should support HTML attributes', () => {
+    it("should support HTML attributes", () => {
       render(
         <Card>
           <CardHeader>
@@ -197,13 +197,14 @@ describe('Card', () => {
         </Card>
       );
 
-      const title = screen.getByRole('heading');
-      expect(title).toHaveAttribute('id', 'card-title');
-      expect(title).toHaveAttribute('data-analytics', 'title');
+      const title = screen.getByRole("heading");
+      expect(title).toHaveAttribute("id", "card-title");
+      expect(title).toHaveAttribute("data-analytics", "title");
     });
 
-    it('should handle long titles', () => {
-      const longTitle = 'This is a very long title that might wrap to multiple lines in the card component';
+    it("should handle long titles", () => {
+      const longTitle =
+        "This is a very long title that might wrap to multiple lines in the card component";
       render(
         <Card>
           <CardHeader>
@@ -212,33 +213,33 @@ describe('Card', () => {
         </Card>
       );
 
-      const title = screen.getByRole('heading');
+      const title = screen.getByRole("heading");
       expect(title).toHaveTextContent(longTitle);
     });
   });
 
-  describe('CardContent Component', () => {
-    it('should render with children', () => {
+  describe("CardContent Component", () => {
+    it("should render with children", () => {
       render(
         <Card>
           <CardContent>Content text</CardContent>
         </Card>
       );
-      expect(screen.getByText('Content text')).toBeInTheDocument();
+      expect(screen.getByText("Content text")).toBeInTheDocument();
     });
 
-    it('should apply custom className', () => {
+    it("should apply custom className", () => {
       render(
         <Card>
           <CardContent className="custom-content">Content</CardContent>
         </Card>
       );
 
-      const content = screen.getByText('Content');
-      expect(content).toHaveClass('custom-content');
+      const content = screen.getByText("Content");
+      expect(content).toHaveClass("custom-content");
     });
 
-    it('should forward ref correctly', () => {
+    it("should forward ref correctly", () => {
       const ref = React.createRef<HTMLDivElement>();
       render(
         <Card>
@@ -249,7 +250,7 @@ describe('Card', () => {
       expect(ref.current).toBeInstanceOf(HTMLDivElement);
     });
 
-    it('should support complex content', () => {
+    it("should support complex content", () => {
       render(
         <Card>
           <CardContent>
@@ -263,15 +264,15 @@ describe('Card', () => {
         </Card>
       );
 
-      expect(screen.getByText('Paragraph 1')).toBeInTheDocument();
-      expect(screen.getByText('Paragraph 2')).toBeInTheDocument();
-      expect(screen.getByText('Item 1')).toBeInTheDocument();
-      expect(screen.getByText('Item 2')).toBeInTheDocument();
+      expect(screen.getByText("Paragraph 1")).toBeInTheDocument();
+      expect(screen.getByText("Paragraph 2")).toBeInTheDocument();
+      expect(screen.getByText("Item 1")).toBeInTheDocument();
+      expect(screen.getByText("Item 2")).toBeInTheDocument();
     });
   });
 
-  describe('Integration', () => {
-    it('should compose all sub-components correctly', () => {
+  describe("Integration", () => {
+    it("should compose all sub-components correctly", () => {
       render(
         <Card>
           <CardHeader>
@@ -283,11 +284,13 @@ describe('Card', () => {
         </Card>
       );
 
-      expect(screen.getByRole('heading')).toHaveTextContent('Complete Card');
-      expect(screen.getByText(/complete card with all components/i)).toBeInTheDocument();
+      expect(screen.getByRole("heading")).toHaveTextContent("Complete Card");
+      expect(
+        screen.getByText(/complete card with all components/i)
+      ).toBeInTheDocument();
     });
 
-    it('should work with multiple cards', async () => {
+    it("should work with multiple cards", async () => {
       const { container } = render(
         <div>
           <Card>
@@ -305,26 +308,26 @@ describe('Card', () => {
         </div>
       );
 
-      const headings = screen.getAllByRole('heading');
+      const headings = screen.getAllByRole("heading");
       expect(headings).toHaveLength(2);
-      expect(headings[0]).toHaveTextContent('Card 1');
-      expect(headings[1]).toHaveTextContent('Card 2');
+      expect(headings[0]).toHaveTextContent("Card 1");
+      expect(headings[1]).toHaveTextContent("Card 2");
 
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
-    it('should work without CardHeader', () => {
+    it("should work without CardHeader", () => {
       render(
         <Card>
           <CardContent>Just content, no header</CardContent>
         </Card>
       );
 
-      expect(screen.getByText('Just content, no header')).toBeInTheDocument();
+      expect(screen.getByText("Just content, no header")).toBeInTheDocument();
     });
 
-    it('should work without CardContent', () => {
+    it("should work without CardContent", () => {
       render(
         <Card>
           <CardHeader>
@@ -333,10 +336,10 @@ describe('Card', () => {
         </Card>
       );
 
-      expect(screen.getByRole('heading')).toHaveTextContent('Just a header');
+      expect(screen.getByRole("heading")).toHaveTextContent("Just a header");
     });
 
-    it('should support interactive cards', async () => {
+    it("should support interactive cards", async () => {
       const handleClick = vi.fn();
       const { container } = render(
         <Card
@@ -344,7 +347,7 @@ describe('Card', () => {
           tabIndex={0}
           onClick={handleClick}
           onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
+            if (e.key === "Enter" || e.key === " ") {
               handleClick();
             }
           }}
@@ -357,21 +360,21 @@ describe('Card', () => {
         </Card>
       );
 
-      const card = screen.getByRole('button');
+      const card = screen.getByRole("button");
 
       // Test click
       fireEvent.click(card);
       expect(handleClick).toHaveBeenCalledTimes(1);
 
       // Test keyboard activation
-      fireEvent.keyDown(card, { key: 'Enter' });
+      fireEvent.keyDown(card, { key: "Enter" });
       expect(handleClick).toHaveBeenCalledTimes(2);
 
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
-    it('should support aria-labelledby pattern', async () => {
+    it("should support aria-labelledby pattern", async () => {
       const { container } = render(
         <Card aria-labelledby="card-title-1" role="region">
           <CardHeader>
@@ -381,14 +384,14 @@ describe('Card', () => {
         </Card>
       );
 
-      const card = screen.getByRole('region');
-      expect(card).toHaveAttribute('aria-labelledby', 'card-title-1');
+      const card = screen.getByRole("region");
+      expect(card).toHaveAttribute("aria-labelledby", "card-title-1");
 
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
-    it('should handle nested cards', async () => {
+    it("should handle nested cards", async () => {
       const { container } = render(
         <Card>
           <CardHeader>
@@ -405,16 +408,16 @@ describe('Card', () => {
         </Card>
       );
 
-      const headings = screen.getAllByRole('heading');
+      const headings = screen.getAllByRole("heading");
       expect(headings).toHaveLength(2);
-      expect(headings[0]).toHaveTextContent('Parent Card');
-      expect(headings[1]).toHaveTextContent('Nested Card');
+      expect(headings[0]).toHaveTextContent("Parent Card");
+      expect(headings[1]).toHaveTextContent("Nested Card");
 
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
-    it('should work with form elements', async () => {
+    it("should work with form elements", async () => {
       const handleSubmit = vi.fn((e) => e.preventDefault());
       const { container } = render(
         <Card>
@@ -431,7 +434,7 @@ describe('Card', () => {
         </Card>
       );
 
-      const submitButton = screen.getByRole('button', { name: 'Login' });
+      const submitButton = screen.getByRole("button", { name: "Login" });
       fireEvent.click(submitButton);
 
       expect(handleSubmit).toHaveBeenCalledTimes(1);
@@ -441,15 +444,15 @@ describe('Card', () => {
     });
   });
 
-  describe('Edge Cases', () => {
-    it('should handle empty Card', () => {
+  describe("Edge Cases", () => {
+    it("should handle empty Card", () => {
       const { container } = render(<Card />);
       const card = container.firstChild as HTMLElement;
       expect(card).toBeInTheDocument();
-      expect(card.tagName).toBe('DIV');
+      expect(card.tagName).toBe("DIV");
     });
 
-    it('should handle empty CardHeader', () => {
+    it("should handle empty CardHeader", () => {
       render(
         <Card>
           <CardHeader />
@@ -459,7 +462,7 @@ describe('Card', () => {
       expect(true).toBe(true);
     });
 
-    it('should handle empty CardTitle', () => {
+    it("should handle empty CardTitle", () => {
       render(
         <Card>
           <CardHeader>
@@ -467,12 +470,12 @@ describe('Card', () => {
           </CardHeader>
         </Card>
       );
-      const heading = screen.getByRole('heading');
+      const heading = screen.getByRole("heading");
       expect(heading).toBeInTheDocument();
       expect(heading).toBeEmptyDOMElement();
     });
 
-    it('should handle empty CardContent', () => {
+    it("should handle empty CardContent", () => {
       render(
         <Card>
           <CardContent />
@@ -482,8 +485,8 @@ describe('Card', () => {
       expect(true).toBe(true);
     });
 
-    it('should handle very long content', () => {
-      const longContent = 'Lorem ipsum dolor sit amet. '.repeat(100);
+    it("should handle very long content", () => {
+      const longContent = "Lorem ipsum dolor sit amet. ".repeat(100);
       render(
         <Card>
           <CardContent>{longContent}</CardContent>
@@ -491,10 +494,12 @@ describe('Card', () => {
       );
 
       // Use a partial match for very long text
-      expect(screen.getByText(/Lorem ipsum dolor sit amet/)).toBeInTheDocument();
+      expect(
+        screen.getByText(/Lorem ipsum dolor sit amet/)
+      ).toBeInTheDocument();
     });
 
-    it('should support multiple CardContent sections', () => {
+    it("should support multiple CardContent sections", () => {
       render(
         <Card>
           <CardHeader>
@@ -506,9 +511,9 @@ describe('Card', () => {
         </Card>
       );
 
-      expect(screen.getByText('Section 1')).toBeInTheDocument();
-      expect(screen.getByText('Section 2')).toBeInTheDocument();
-      expect(screen.getByText('Section 3')).toBeInTheDocument();
+      expect(screen.getByText("Section 1")).toBeInTheDocument();
+      expect(screen.getByText("Section 2")).toBeInTheDocument();
+      expect(screen.getByText("Section 3")).toBeInTheDocument();
     });
   });
 });

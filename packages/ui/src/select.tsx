@@ -8,8 +8,9 @@ export const SelectGroup = SelectPrimitive.Group;
 export const SelectValue = SelectPrimitive.Value;
 
 // Select Trigger
-export interface SelectTriggerProps
-  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> {
+export interface SelectTriggerProps extends React.ComponentPropsWithoutRef<
+  typeof SelectPrimitive.Trigger
+> {
   size?: "sm" | "md" | "lg";
   error?: boolean;
 }
@@ -139,7 +140,10 @@ export const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-[var(--color-border-primary)]", className)}
+    className={cn(
+      "-mx-1 my-1 h-px bg-[var(--color-border-primary)]",
+      className
+    )}
     {...props}
   />
 ));

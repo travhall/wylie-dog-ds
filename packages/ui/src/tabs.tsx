@@ -6,8 +6,9 @@ import { cn } from "./lib/utils";
 export const Tabs = TabsPrimitive.Root;
 
 // Tabs List (container for triggers)
-export interface TabsListProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> {
+export interface TabsListProps extends React.ComponentPropsWithoutRef<
+  typeof TabsPrimitive.List
+> {
   /** Size variant for the tabs */
   size?: "sm" | "md" | "lg";
 }
@@ -18,7 +19,7 @@ export const TabsList = React.forwardRef<
 >(({ className, size = "md", ...props }, ref) => {
   const sizes = {
     sm: "h-8 p-1",
-    md: "h-10 p-1", 
+    md: "h-10 p-1",
     lg: "h-12 p-1.5",
   };
 
@@ -37,8 +38,9 @@ export const TabsList = React.forwardRef<
 TabsList.displayName = TabsPrimitive.List.displayName;
 
 // Tabs Trigger (individual tab button)
-export interface TabsTriggerProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> {
+export interface TabsTriggerProps extends React.ComponentPropsWithoutRef<
+  typeof TabsPrimitive.Trigger
+> {
   /** Size variant */
   size?: "sm" | "md" | "lg";
 }

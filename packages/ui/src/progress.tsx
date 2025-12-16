@@ -10,12 +10,22 @@ export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
-  ({ className, value = 0, max = 100, size = "md", variant = "default", ...props }, ref) => {
+  (
+    {
+      className,
+      value = 0,
+      max = 100,
+      size = "md",
+      variant = "default",
+      ...props
+    },
+    ref
+  ) => {
     const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
 
     const sizes = {
       sm: "h-1",
-      md: "h-2", 
+      md: "h-2",
       lg: "h-3",
     };
 

@@ -9,7 +9,7 @@ export interface VariableCollection {
 export interface DesignToken {
   id: string;
   name: string;
-  type: 'COLOR' | 'FLOAT' | 'STRING' | 'BOOLEAN';
+  type: "COLOR" | "FLOAT" | "STRING" | "BOOLEAN";
   value: any;
   description?: string;
 }
@@ -20,21 +20,21 @@ export interface PluginMessage {
 }
 
 export interface ExportOptions {
-  format: 'json' | 'css' | 'js';
-  colorFormat: 'hex' | 'rgb' | 'oklch';
+  format: "json" | "css" | "js";
+  colorFormat: "hex" | "rgb" | "oklch";
   selectedCollections: string[];
   includeMetadata?: boolean;
   resolveAliases?: boolean;
 }
 
-export type SyncMode = 'direct' | 'pull-request';
+export type SyncMode = "direct" | "pull-request";
 
 export interface GitHubConfig {
   owner: string;
   repo: string;
   branch: string;
   tokenPath: string;
-  authMethod?: 'oauth' | 'pat';
+  authMethod?: "oauth" | "pat";
   accessToken?: string;
   syncMode: SyncMode;
 }

@@ -4,8 +4,9 @@ import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 const Collapsible = CollapsiblePrimitive.Root;
 const CollapsibleTrigger = CollapsiblePrimitive.Trigger;
 
-export interface CollapsibleContentProps
-  extends React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content> {}
+export interface CollapsibleContentProps extends React.ComponentPropsWithoutRef<
+  typeof CollapsiblePrimitive.Content
+> {}
 
 const CollapsibleContent = React.forwardRef<
   React.ElementRef<typeof CollapsiblePrimitive.Content>,

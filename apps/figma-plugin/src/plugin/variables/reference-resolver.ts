@@ -1,9 +1,9 @@
 // Variable reference resolution system for Token Bridge
 
 export interface TokenReference {
-  originalValue: string;        // "{color.gray.50}"
-  referencePath: string;        // "color.gray.50"
-  figmaVariableName: string;    // "color/gray/50"
+  originalValue: string; // "{color.gray.50}"
+  referencePath: string; // "color.gray.50"
+  figmaVariableName: string; // "color/gray/50"
 }
 
 export interface VariableWithReferences {
@@ -22,58 +22,69 @@ export class VariableRegistry {
   }
 
   addPendingResolution(
-    variable: Variable, 
+    variable: Variable,
     tokenName: string,
     references: Map<string, TokenReference>
   ): void {
     this.variablesToResolve.push({
       variable,
       tokenName,
-      references
+      references,
     });
   }
 
   resolve(tokenReference: string): string | null {
     // Remove curly braces and convert to token name
-    const cleanReference = tokenReference.replace(/[{}]/g, '');
+    const cleanReference = tokenReference.replace(/[{}]/g, "");
     const variableId = this.tokenToVariableMap.get(cleanReference);
-    
+
     if (variableId) {
       console.log(`Resolved ${tokenReference} → ${variableId}`);
     } else {
       console.warn(`Failed to resolve: ${tokenReference}`);
     }
-    
+
     return variableId || null;
   }
 
-  async resolveAllReferences(): Promise<{ resolved: number; unresolved: string[] }> {
+  async resolveAllReferences(): Promise<{
+    resolved: number;
+    unresolved: string[];
+  }> {
     let resolvedCount = 0;
     const unresolvedReferences: string[] = [];
 
-    console.log(`Resolving references for ${this.variablesToResolve.length} variables`);
+    console.log(
+      `Resolving references for ${this.variablesToResolve.length} variables`
+    );
 
     for (const item of this.variablesToResolve) {
       console.log(`Resolving references for: ${item.tokenName}`);
-      
+
       for (const [modeId, reference] of Array.from(item.references.entries())) {
         const referencedVariableId = this.resolve(reference.originalValue);
-        
+
         if (referencedVariableId) {
           try {
             // Create Figma variable alias
             item.variable.setValueForMode(modeId, {
-              type: 'VARIABLE_ALIAS',
-              id: referencedVariableId
+              type: "VARIABLE_ALIAS",
+              id: referencedVariableId,
             });
             resolvedCount++;
-            console.log(`✅ Resolved ${item.tokenName} mode ${modeId}: ${reference.originalValue}`);
+            console.log(
+              `✅ Resolved ${item.tokenName} mode ${modeId}: ${reference.originalValue}`
+            );
           } catch (error) {
             console.error(`Failed to set alias for ${item.tokenName}:`, error);
-            unresolvedReferences.push(`${item.tokenName}.${modeId}: ${reference.originalValue}`);
+            unresolvedReferences.push(
+              `${item.tokenName}.${modeId}: ${reference.originalValue}`
+            );
           }
         } else {
-          unresolvedReferences.push(`${item.tokenName}.${modeId}: ${reference.originalValue}`);
+          unresolvedReferences.push(
+            `${item.tokenName}.${modeId}: ${reference.originalValue}`
+          );
         }
       }
     }
@@ -92,22 +103,28 @@ export class VariableRegistry {
 }
 
 export function parseTokenReference(value: string): TokenReference | null {
-  if (typeof value !== 'string' || !value.startsWith('{') || !value.endsWith('}')) {
+  if (
+    typeof value !== "string" ||
+    !value.startsWith("{") ||
+    !value.endsWith("}")
+  ) {
     return null;
   }
 
   const referencePath = value.slice(1, -1); // Remove {}
-  const figmaVariableName = referencePath.replace(/\./g, '/');
+  const figmaVariableName = referencePath.replace(/\./g, "/");
 
   return {
     originalValue: value,
     referencePath,
-    figmaVariableName
+    figmaVariableName,
   };
 }
 
 export function isTokenReference(value: any): boolean {
-  return typeof value === 'string' && value.startsWith('{') && value.endsWith('}');
+  return (
+    typeof value === "string" && value.startsWith("{") && value.endsWith("}")
+  );
 }
 
 export function extractReferences(token: any): Map<string, TokenReference> {
@@ -117,7 +134,7 @@ export function extractReferences(token: any): Map<string, TokenReference> {
   if (isTokenReference(token.$value)) {
     const ref = parseTokenReference(token.$value);
     if (ref) {
-      references.set('default', ref);
+      references.set("default", ref);
     }
   }
 
@@ -139,19 +156,24 @@ export function extractReferences(token: any): Map<string, TokenReference> {
 export function createImportOrder(collections: any[]): string[] {
   // Analyze dependencies and return import order
   const collectionDeps = new Map<string, Set<string>>();
-  const collectionNames = collections.map(c => Object.keys(c)[0]);
+  const collectionNames = collections.map((c) => Object.keys(c)[0]);
 
   // Build dependency graph
   for (const collection of collections) {
     const collectionName = Object.keys(collection)[0];
     const deps = new Set<string>();
 
-    for (const [tokenName, token] of Object.entries(collection[collectionName].variables)) {
+    for (const [tokenName, token] of Object.entries(
+      collection[collectionName].variables
+    )) {
       const references = extractReferences(token);
-      
+
       for (const ref of Array.from(references.values())) {
         // Determine which collection this reference belongs to
-        const refCollection = inferCollectionFromReference(ref.referencePath, collectionNames);
+        const refCollection = inferCollectionFromReference(
+          ref.referencePath,
+          collectionNames
+        );
         if (refCollection && refCollection !== collectionName) {
           deps.add(refCollection);
         }
@@ -178,18 +200,18 @@ export function createImportOrder(collections: any[]): string[] {
 
     visiting.add(name);
     const deps = collectionDeps.get(name) || new Set();
-    
+
     for (const dep of Array.from(deps)) {
       visit(dep);
     }
-    
+
     visiting.delete(name);
     visited.add(name);
     sorted.push(name);
   }
 
   // Start with collections that have no dependencies (likely primitives)
-  const independentCollections = collectionNames.filter(name => {
+  const independentCollections = collectionNames.filter((name) => {
     const deps = collectionDeps.get(name) || new Set();
     return deps.size === 0;
   });
@@ -206,40 +228,43 @@ export function createImportOrder(collections: any[]): string[] {
     }
   }
 
-  console.log('Import order determined:', sorted);
+  console.log("Import order determined:", sorted);
   return sorted;
 }
 
-function inferCollectionFromReference(referencePath: string, collectionNames: string[]): string | null {
+function inferCollectionFromReference(
+  referencePath: string,
+  collectionNames: string[]
+): string | null {
   // Enhanced reference inference with better matching
-  
+
   // First try exact prefix matching
   for (const collectionName of collectionNames) {
-    if (referencePath.startsWith(collectionName.toLowerCase() + '.')) {
+    if (referencePath.startsWith(collectionName.toLowerCase() + ".")) {
       return collectionName;
     }
   }
 
   // Handle common token type mappings
   const tokenTypeToCollection: Record<string, string[]> = {
-    'color.': ['primitive', 'color', 'colors'],
-    'spacing.': ['primitive', 'spacing'],
-    'typography.fontsize.': ['primitive', 'typography', 'fonts'],
-    'typography.fontweight.': ['primitive', 'typography', 'fonts'],
-    'typography.fontfamily.': ['primitive', 'typography', 'fonts'],
-    'typography.lineheight.': ['primitive', 'typography', 'fonts'],
-    'typography.letterSpacing.': ['primitive', 'typography', 'fonts'],
-    'size.': ['primitive', 'sizing'],
-    'radius.': ['primitive', 'border'],
-    'shadow.': ['primitive', 'effect'],
-    'border.': ['primitive', 'border'],
+    "color.": ["primitive", "color", "colors"],
+    "spacing.": ["primitive", "spacing"],
+    "typography.fontsize.": ["primitive", "typography", "fonts"],
+    "typography.fontweight.": ["primitive", "typography", "fonts"],
+    "typography.fontfamily.": ["primitive", "typography", "fonts"],
+    "typography.lineheight.": ["primitive", "typography", "fonts"],
+    "typography.letterSpacing.": ["primitive", "typography", "fonts"],
+    "size.": ["primitive", "sizing"],
+    "radius.": ["primitive", "border"],
+    "shadow.": ["primitive", "effect"],
+    "border.": ["primitive", "border"],
   };
 
   // Try to match by token type
   for (const [prefix, candidates] of Object.entries(tokenTypeToCollection)) {
     if (referencePath.startsWith(prefix)) {
       for (const candidate of candidates) {
-        const matchingCollection = collectionNames.find(name => 
+        const matchingCollection = collectionNames.find((name) =>
           name.toLowerCase().includes(candidate)
         );
         if (matchingCollection) {
@@ -250,12 +275,15 @@ function inferCollectionFromReference(referencePath: string, collectionNames: st
   }
 
   // Fallback for common patterns
-  if (referencePath.startsWith('typography.')) {
+  if (referencePath.startsWith("typography.")) {
     // Typography tokens are often in the same collection
-    return collectionNames.find(name => 
-      name.toLowerCase().includes('typography') || 
-      name.toLowerCase().includes('font')
-    ) || collectionNames[0];
+    return (
+      collectionNames.find(
+        (name) =>
+          name.toLowerCase().includes("typography") ||
+          name.toLowerCase().includes("font")
+      ) || collectionNames[0]
+    );
   }
 
   // Default to first collection (often primitives)

@@ -1,16 +1,22 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { axe, toHaveNoViolations } from 'jest-axe';
-import { Slider } from '../slider';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { axe, toHaveNoViolations } from "jest-axe";
+import { Slider } from "../slider";
 
 expect.extend(toHaveNoViolations);
 
-describe('Slider', () => {
-  describe('Accessibility', () => {
-    it('should pass accessibility audit', async () => {
+describe("Slider", () => {
+  describe("Accessibility", () => {
+    it("should pass accessibility audit", async () => {
       const { container } = render(
-        <Slider defaultValue={[50]} min={0} max={100} step={1} aria-label="Volume" />
+        <Slider
+          defaultValue={[50]}
+          min={0}
+          max={100}
+          step={1}
+          aria-label="Volume"
+        />
       );
       // Radix UI Slider has a known pattern where the Root receives aria-label
       // and individual thumbs inherit accessibility context from their parent
@@ -19,54 +25,76 @@ describe('Slider', () => {
         rules: {
           // Disable this rule as Radix UI handles slider accessibility correctly
           // The Root component receives aria-label and provides context to thumbs
-          'aria-input-field-name': { enabled: false },
+          "aria-input-field-name": { enabled: false },
         },
       });
       expect(results).toHaveNoViolations();
     });
 
-    it('should have proper role for slider', () => {
-      render(<Slider defaultValue={[50]} max={100} step={1} aria-label="Volume" />);
+    it("should have proper role for slider", () => {
+      render(
+        <Slider defaultValue={[50]} max={100} step={1} aria-label="Volume" />
+      );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       expect(slider).toBeInTheDocument();
     });
 
-    it('should have accessible label', () => {
-      render(<Slider defaultValue={[50]} max={100} step={1} aria-label="Volume" />);
+    it("should have accessible label", () => {
+      render(
+        <Slider defaultValue={[50]} max={100} step={1} aria-label="Volume" />
+      );
 
-      const slider = screen.getByLabelText('Volume');
+      const slider = screen.getByLabelText("Volume");
       expect(slider).toBeInTheDocument();
     });
 
-    it('should have aria-valuemin attribute', () => {
+    it("should have aria-valuemin attribute", () => {
       render(
-        <Slider defaultValue={[50]} min={0} max={100} step={1} aria-label="Volume" />
+        <Slider
+          defaultValue={[50]}
+          min={0}
+          max={100}
+          step={1}
+          aria-label="Volume"
+        />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuemin', '0');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuemin", "0");
     });
 
-    it('should have aria-valuemax attribute', () => {
+    it("should have aria-valuemax attribute", () => {
       render(
-        <Slider defaultValue={[50]} min={0} max={100} step={1} aria-label="Volume" />
+        <Slider
+          defaultValue={[50]}
+          min={0}
+          max={100}
+          step={1}
+          aria-label="Volume"
+        />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuemax', '100');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuemax", "100");
     });
 
-    it('should have aria-valuenow attribute', () => {
+    it("should have aria-valuenow attribute", () => {
       render(
-        <Slider defaultValue={[75]} min={0} max={100} step={1} aria-label="Volume" />
+        <Slider
+          defaultValue={[75]}
+          min={0}
+          max={100}
+          step={1}
+          aria-label="Volume"
+        />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuenow', '75');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuenow", "75");
     });
 
-    it('should support aria-disabled', () => {
+    it("should support aria-disabled", () => {
       render(
         <Slider
           defaultValue={[50]}
@@ -77,41 +105,45 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('data-disabled', '');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("data-disabled", "");
     });
   });
 
-  describe('Functionality', () => {
-    it('should render with default value', () => {
-      render(<Slider defaultValue={[50]} max={100} step={1} aria-label="Volume" />);
+  describe("Functionality", () => {
+    it("should render with default value", () => {
+      render(
+        <Slider defaultValue={[50]} max={100} step={1} aria-label="Volume" />
+      );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuenow', '50');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuenow", "50");
     });
 
-    it('should work as uncontrolled component', () => {
-      render(<Slider defaultValue={[30]} max={100} step={1} aria-label="Volume" />);
+    it("should work as uncontrolled component", () => {
+      render(
+        <Slider defaultValue={[30]} max={100} step={1} aria-label="Volume" />
+      );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuenow', '30');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuenow", "30");
     });
 
-    it('should work as controlled component', () => {
+    it("should work as controlled component", () => {
       const { rerender } = render(
         <Slider value={[40]} max={100} step={1} aria-label="Volume" />
       );
 
-      let slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuenow', '40');
+      let slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuenow", "40");
 
       rerender(<Slider value={[60]} max={100} step={1} aria-label="Volume" />);
 
-      slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuenow', '60');
+      slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuenow", "60");
     });
 
-    it('should call onValueChange when value changes', async () => {
+    it("should call onValueChange when value changes", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -125,45 +157,63 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
 
       // Focus the slider
       slider.focus();
 
       // Simulate arrow key press
-      await user.keyboard('{ArrowRight}');
+      await user.keyboard("{ArrowRight}");
 
       expect(handleChange).toHaveBeenCalled();
     });
 
-    it('should respect min value', () => {
+    it("should respect min value", () => {
       render(
-        <Slider defaultValue={[25]} min={20} max={100} step={1} aria-label="Volume" />
+        <Slider
+          defaultValue={[25]}
+          min={20}
+          max={100}
+          step={1}
+          aria-label="Volume"
+        />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuemin', '20');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuemin", "20");
     });
 
-    it('should respect max value', () => {
+    it("should respect max value", () => {
       render(
-        <Slider defaultValue={[50]} min={0} max={80} step={1} aria-label="Volume" />
+        <Slider
+          defaultValue={[50]}
+          min={0}
+          max={80}
+          step={1}
+          aria-label="Volume"
+        />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuemax', '80');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuemax", "80");
     });
 
-    it('should respect step value', () => {
+    it("should respect step value", () => {
       render(
-        <Slider defaultValue={[50]} min={0} max={100} step={10} aria-label="Volume" />
+        <Slider
+          defaultValue={[50]}
+          min={0}
+          max={100}
+          step={10}
+          aria-label="Volume"
+        />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       expect(slider).toBeInTheDocument();
     });
 
-    it('should not change when disabled', async () => {
+    it("should not change when disabled", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -178,16 +228,16 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       slider.focus();
 
-      await user.keyboard('{ArrowRight}');
+      await user.keyboard("{ArrowRight}");
 
       // Should not call onChange when disabled
       expect(handleChange).not.toHaveBeenCalled();
     });
 
-    it('should support multiple thumbs', () => {
+    it("should support multiple thumbs", () => {
       render(
         <Slider
           defaultValue={[25, 75]}
@@ -198,16 +248,16 @@ describe('Slider', () => {
         />
       );
 
-      const sliders = screen.getAllByRole('slider');
+      const sliders = screen.getAllByRole("slider");
       // Radix UI Slider renders one thumb per value
       expect(sliders).toHaveLength(2);
-      expect(sliders[0]).toHaveAttribute('aria-valuenow', '25');
-      expect(sliders[1]).toHaveAttribute('aria-valuenow', '75');
+      expect(sliders[0]).toHaveAttribute("aria-valuenow", "25");
+      expect(sliders[1]).toHaveAttribute("aria-valuenow", "75");
     });
   });
 
-  describe('Keyboard Interactions', () => {
-    it('should increase value with ArrowRight', async () => {
+  describe("Keyboard Interactions", () => {
+    it("should increase value with ArrowRight", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -221,15 +271,15 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       slider.focus();
 
-      await user.keyboard('{ArrowRight}');
+      await user.keyboard("{ArrowRight}");
 
       expect(handleChange).toHaveBeenCalledWith([51]);
     });
 
-    it('should increase value with ArrowUp', async () => {
+    it("should increase value with ArrowUp", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -243,15 +293,15 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       slider.focus();
 
-      await user.keyboard('{ArrowUp}');
+      await user.keyboard("{ArrowUp}");
 
       expect(handleChange).toHaveBeenCalledWith([51]);
     });
 
-    it('should decrease value with ArrowLeft', async () => {
+    it("should decrease value with ArrowLeft", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -265,15 +315,15 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       slider.focus();
 
-      await user.keyboard('{ArrowLeft}');
+      await user.keyboard("{ArrowLeft}");
 
       expect(handleChange).toHaveBeenCalledWith([49]);
     });
 
-    it('should decrease value with ArrowDown', async () => {
+    it("should decrease value with ArrowDown", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -287,15 +337,15 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       slider.focus();
 
-      await user.keyboard('{ArrowDown}');
+      await user.keyboard("{ArrowDown}");
 
       expect(handleChange).toHaveBeenCalledWith([49]);
     });
 
-    it('should jump to max with End key', async () => {
+    it("should jump to max with End key", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -309,15 +359,15 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       slider.focus();
 
-      await user.keyboard('{End}');
+      await user.keyboard("{End}");
 
       expect(handleChange).toHaveBeenCalledWith([100]);
     });
 
-    it('should jump to min with Home key', async () => {
+    it("should jump to min with Home key", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -332,15 +382,15 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       slider.focus();
 
-      await user.keyboard('{Home}');
+      await user.keyboard("{Home}");
 
       expect(handleChange).toHaveBeenCalledWith([0]);
     });
 
-    it('should respect step increments', async () => {
+    it("should respect step increments", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
 
@@ -354,17 +404,17 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       slider.focus();
 
-      await user.keyboard('{ArrowRight}');
+      await user.keyboard("{ArrowRight}");
 
       expect(handleChange).toHaveBeenCalledWith([60]);
     });
   });
 
-  describe('Styling', () => {
-    it('should apply custom className', () => {
+  describe("Styling", () => {
+    it("should apply custom className", () => {
       const { container } = render(
         <Slider
           defaultValue={[50]}
@@ -375,11 +425,11 @@ describe('Slider', () => {
         />
       );
 
-      const slider = container.querySelector('.custom-slider-class');
+      const slider = container.querySelector(".custom-slider-class");
       expect(slider).toBeInTheDocument();
     });
 
-    it('should have track element', () => {
+    it("should have track element", () => {
       const { container } = render(
         <Slider defaultValue={[50]} max={100} step={1} aria-label="Volume" />
       );
@@ -388,25 +438,29 @@ describe('Slider', () => {
       expect(track).toBeInTheDocument();
     });
 
-    it('should have range element', () => {
+    it("should have range element", () => {
       const { container } = render(
         <Slider defaultValue={[50]} max={100} step={1} aria-label="Volume" />
       );
 
-      const range = container.querySelector('[class*="bg-[var(--color-slider-range)]"]');
+      const range = container.querySelector(
+        '[class*="bg-[var(--color-slider-range)]"]'
+      );
       expect(range).toBeInTheDocument();
     });
 
-    it('should have thumb element', () => {
+    it("should have thumb element", () => {
       const { container } = render(
         <Slider defaultValue={[50]} max={100} step={1} aria-label="Volume" />
       );
 
-      const thumb = container.querySelector('[class*="rounded-full"][class*="h-5"]');
+      const thumb = container.querySelector(
+        '[class*="rounded-full"][class*="h-5"]'
+      );
       expect(thumb).toBeInTheDocument();
     });
 
-    it('should have disabled styling', () => {
+    it("should have disabled styling", () => {
       render(
         <Slider
           defaultValue={[50]}
@@ -417,13 +471,13 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('data-disabled', '');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("data-disabled", "");
     });
   });
 
-  describe('Integration', () => {
-    it('should forward ref to slider root', () => {
+  describe("Integration", () => {
+    it("should forward ref to slider root", () => {
       const ref = React.createRef<HTMLSpanElement>();
 
       render(
@@ -439,7 +493,7 @@ describe('Slider', () => {
       expect(ref.current).toBeInstanceOf(HTMLSpanElement);
     });
 
-    it('should work with form integration', () => {
+    it("should work with form integration", () => {
       const handleSubmit = vi.fn((e) => e.preventDefault());
 
       render(
@@ -449,21 +503,27 @@ describe('Slider', () => {
         </form>
       );
 
-      expect(screen.getByRole('slider')).toBeInTheDocument();
+      expect(screen.getByRole("slider")).toBeInTheDocument();
     });
   });
 
-  describe('Edge Cases', () => {
-    it('should handle zero as minimum value', () => {
+  describe("Edge Cases", () => {
+    it("should handle zero as minimum value", () => {
       render(
-        <Slider defaultValue={[0]} min={0} max={100} step={1} aria-label="Volume" />
+        <Slider
+          defaultValue={[0]}
+          min={0}
+          max={100}
+          step={1}
+          aria-label="Volume"
+        />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuenow', '0');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuenow", "0");
     });
 
-    it('should handle negative values', () => {
+    it("should handle negative values", () => {
       render(
         <Slider
           defaultValue={[-50]}
@@ -474,12 +534,12 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuenow', '-50');
-      expect(slider).toHaveAttribute('aria-valuemin', '-100');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuenow", "-50");
+      expect(slider).toHaveAttribute("aria-valuemin", "-100");
     });
 
-    it('should handle decimal steps', () => {
+    it("should handle decimal steps", () => {
       render(
         <Slider
           defaultValue={[5.5]}
@@ -490,21 +550,27 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuenow', '5.5');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuenow", "5.5");
     });
 
-    it('should handle very small range', () => {
+    it("should handle very small range", () => {
       render(
-        <Slider defaultValue={[5]} min={0} max={10} step={1} aria-label="Small range" />
+        <Slider
+          defaultValue={[5]}
+          min={0}
+          max={10}
+          step={1}
+          aria-label="Small range"
+        />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuemin', '0');
-      expect(slider).toHaveAttribute('aria-valuemax', '10');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuemin", "0");
+      expect(slider).toHaveAttribute("aria-valuemax", "10");
     });
 
-    it('should handle very large range', () => {
+    it("should handle very large range", () => {
       render(
         <Slider
           defaultValue={[5000]}
@@ -515,36 +581,48 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-valuemin', '0');
-      expect(slider).toHaveAttribute('aria-valuemax', '10000');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-valuemin", "0");
+      expect(slider).toHaveAttribute("aria-valuemax", "10000");
     });
 
-    it('should clamp value to min', () => {
+    it("should clamp value to min", () => {
       render(
-        <Slider defaultValue={[10]} min={20} max={100} step={1} aria-label="Volume" />
+        <Slider
+          defaultValue={[10]}
+          min={20}
+          max={100}
+          step={1}
+          aria-label="Volume"
+        />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       // Radix UI doesn't clamp defaultValue - it uses it as-is
       // The component should handle clamping in the implementation if needed
-      expect(slider).toHaveAttribute('aria-valuenow');
-      expect(slider).toHaveAttribute('aria-valuemin', '20');
+      expect(slider).toHaveAttribute("aria-valuenow");
+      expect(slider).toHaveAttribute("aria-valuemin", "20");
     });
 
-    it('should clamp value to max', () => {
+    it("should clamp value to max", () => {
       render(
-        <Slider defaultValue={[150]} min={0} max={100} step={1} aria-label="Volume" />
+        <Slider
+          defaultValue={[150]}
+          min={0}
+          max={100}
+          step={1}
+          aria-label="Volume"
+        />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       // Radix UI doesn't clamp defaultValue - it uses it as-is
       // The component should handle clamping in the implementation if needed
-      expect(slider).toHaveAttribute('aria-valuenow');
-      expect(slider).toHaveAttribute('aria-valuemax', '100');
+      expect(slider).toHaveAttribute("aria-valuenow");
+      expect(slider).toHaveAttribute("aria-valuemax", "100");
     });
 
-    it('should handle inverted direction', () => {
+    it("should handle inverted direction", () => {
       render(
         <Slider
           defaultValue={[50]}
@@ -556,11 +634,11 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
+      const slider = screen.getByRole("slider");
       expect(slider).toBeInTheDocument();
     });
 
-    it('should handle orientation change', () => {
+    it("should handle orientation change", () => {
       render(
         <Slider
           defaultValue={[50]}
@@ -572,8 +650,8 @@ describe('Slider', () => {
         />
       );
 
-      const slider = screen.getByRole('slider');
-      expect(slider).toHaveAttribute('aria-orientation', 'vertical');
+      const slider = screen.getByRole("slider");
+      expect(slider).toHaveAttribute("aria-orientation", "vertical");
     });
   });
 });

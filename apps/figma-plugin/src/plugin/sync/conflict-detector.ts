@@ -1,13 +1,13 @@
 // Conflict detection system for identifying sync conflicts
-import type { ExportData } from '../variables/processor';
-import type { 
-  TokenConflict, 
-  ConflictDetectionResult, 
+import type { ExportData } from "../variables/processor";
+import type {
+  TokenConflict,
+  ConflictDetectionResult,
   ProcessedTokenWithSync,
   ExportDataWithSync,
-  TokenEntry
-} from './types';
-import { SyncMetadataManager } from './metadata-manager';
+  TokenEntry,
+} from "./types";
+import { SyncMetadataManager } from "./metadata-manager";
 
 export class ConflictDetector {
   private metadataManager = new SyncMetadataManager();
@@ -19,22 +19,28 @@ export class ConflictDetector {
     localTokens: ExportData[],
     remoteTokens: ExportData[]
   ): ConflictDetectionResult {
-    console.log('🔍 Starting conflict detection...');
-    
+    console.log("🔍 Starting conflict detection...");
+
     // Convert to sync-aware format
-    const localWithSync = this.metadataManager.addSyncMetadataToExportData(localTokens, 'local');
-    const remoteWithSync = this.metadataManager.addSyncMetadataToExportData(remoteTokens, 'remote');
-    
+    const localWithSync = this.metadataManager.addSyncMetadataToExportData(
+      localTokens,
+      "local"
+    );
+    const remoteWithSync = this.metadataManager.addSyncMetadataToExportData(
+      remoteTokens,
+      "remote"
+    );
+
     // Create lookup maps for efficient comparison
     const localMap = this.createTokenMap(localWithSync);
     const remoteMap = this.createTokenMap(remoteWithSync);
-    
+
     const conflicts: TokenConflict[] = [];
-    
+
     // Detect changes in existing tokens
     for (const [tokenPath, localEntry] of localMap) {
       const remoteEntry = remoteMap.get(tokenPath);
-      
+
       if (remoteEntry) {
         const conflict = this.compareTokens(tokenPath, localEntry, remoteEntry);
         if (conflict) conflicts.push(conflict);
@@ -43,33 +49,39 @@ export class ConflictDetector {
         conflicts.push(this.createDeletionConflict(tokenPath, localEntry));
       }
     }
-    
+
     // Detect new remote tokens
     for (const [tokenPath, remoteEntry] of remoteMap) {
       if (!localMap.has(tokenPath)) {
         conflicts.push(this.createAdditionConflict(tokenPath, remoteEntry));
       }
     }
-    
+
     const summary = this.generateConflictSummary(conflicts);
-    
-    console.log(`🔍 Conflict detection complete: ${conflicts.length} conflicts found`);
-    console.log(`   Auto-resolvable: ${summary.autoResolvable}, Manual: ${summary.requiresManualReview}`);
-    
+
+    console.log(
+      `🔍 Conflict detection complete: ${conflicts.length} conflicts found`
+    );
+    console.log(
+      `   Auto-resolvable: ${summary.autoResolvable}, Manual: ${summary.requiresManualReview}`
+    );
+
     return {
       conflicts,
       summary,
       localTokenCount: localMap.size,
-      remoteTokenCount: remoteMap.size
+      remoteTokenCount: remoteMap.size,
     };
   }
 
   /**
    * Create a map of token paths to token entries for efficient lookup
    */
-  private createTokenMap(exportData: ExportDataWithSync[]): Map<string, TokenEntry> {
+  private createTokenMap(
+    exportData: ExportDataWithSync[]
+  ): Map<string, TokenEntry> {
     const tokenMap = new Map<string, TokenEntry>();
-    
+
     for (const data of exportData) {
       for (const [collectionName, collection] of Object.entries(data)) {
         for (const [tokenName, token] of Object.entries(collection.variables)) {
@@ -77,12 +89,12 @@ export class ConflictDetector {
           tokenMap.set(tokenPath, {
             token,
             collection: collectionName,
-            path: tokenPath
+            path: tokenPath,
           });
         }
       }
     }
-    
+
     return tokenMap;
   }
 
@@ -96,28 +108,32 @@ export class ConflictDetector {
   ): TokenConflict | null {
     const { token: localToken } = localEntry;
     const { token: remoteToken } = remoteEntry;
-    
+
     // Quick hash comparison first
     if (!this.metadataManager.hasTokenChanged(localToken, remoteToken)) {
       return null; // No conflict
     }
-    
+
     // Detect specific type of conflict
     if (localToken.$type !== remoteToken.$type) {
       return this.createTypeChangeConflict(tokenPath, localEntry, remoteEntry);
     }
-    
+
     if (this.isValueDifferent(localToken.$value, remoteToken.$value)) {
       return this.createValueChangeConflict(tokenPath, localEntry, remoteEntry);
     }
-    
+
     // Check valuesByMode if present
     if (localToken.valuesByMode || remoteToken.valuesByMode) {
       if (this.hasModeValueConflicts(localToken, remoteToken)) {
-        return this.createValueChangeConflict(tokenPath, localEntry, remoteEntry);
+        return this.createValueChangeConflict(
+          tokenPath,
+          localEntry,
+          remoteEntry
+        );
       }
     }
-    
+
     return null;
   }
 
@@ -131,18 +147,24 @@ export class ConflictDetector {
   ): TokenConflict {
     const localValue = this.getDisplayValue(localEntry.token);
     const remoteValue = this.getDisplayValue(remoteEntry.token);
-    
+
     return {
-      type: 'value-change',
+      type: "value-change",
       severity: this.assessSeverity(localEntry.token, remoteEntry.token),
       tokenName: tokenPath,
       collectionName: localEntry.collection,
       localToken: localEntry.token,
       remoteToken: remoteEntry.token,
       description: `Value changed: "${localValue}" → "${remoteValue}"`,
-      autoResolvable: this.isAutoResolvable(localEntry.token, remoteEntry.token),
-      suggestedResolution: this.suggestResolution(localEntry.token, remoteEntry.token),
-      conflictId: this.generateConflictId(tokenPath, 'value-change')
+      autoResolvable: this.isAutoResolvable(
+        localEntry.token,
+        remoteEntry.token
+      ),
+      suggestedResolution: this.suggestResolution(
+        localEntry.token,
+        remoteEntry.token
+      ),
+      conflictId: this.generateConflictId(tokenPath, "value-change"),
     };
   }
 
@@ -155,50 +177,56 @@ export class ConflictDetector {
     remoteEntry: TokenEntry
   ): TokenConflict {
     return {
-      type: 'type-change',
-      severity: 'high',
+      type: "type-change",
+      severity: "high",
       tokenName: tokenPath,
       collectionName: localEntry.collection,
       localToken: localEntry.token,
       remoteToken: remoteEntry.token,
       description: `Type changed: ${localEntry.token.$type} → ${remoteEntry.token.$type}`,
       autoResolvable: false,
-      suggestedResolution: 'manual',
-      conflictId: this.generateConflictId(tokenPath, 'type-change')
+      suggestedResolution: "manual",
+      conflictId: this.generateConflictId(tokenPath, "type-change"),
     };
   }
 
   /**
    * Create a deletion conflict
    */
-  private createDeletionConflict(tokenPath: string, localEntry: TokenEntry): TokenConflict {
+  private createDeletionConflict(
+    tokenPath: string,
+    localEntry: TokenEntry
+  ): TokenConflict {
     return {
-      type: 'deletion',
-      severity: 'medium',
+      type: "deletion",
+      severity: "medium",
       tokenName: tokenPath,
       collectionName: localEntry.collection,
       localToken: localEntry.token,
       description: `Token "${tokenPath}" exists locally but was deleted remotely`,
       autoResolvable: false,
-      suggestedResolution: 'manual',
-      conflictId: this.generateConflictId(tokenPath, 'deletion')
+      suggestedResolution: "manual",
+      conflictId: this.generateConflictId(tokenPath, "deletion"),
     };
   }
 
   /**
    * Create an addition conflict
    */
-  private createAdditionConflict(tokenPath: string, remoteEntry: TokenEntry): TokenConflict {
+  private createAdditionConflict(
+    tokenPath: string,
+    remoteEntry: TokenEntry
+  ): TokenConflict {
     return {
-      type: 'addition',
-      severity: 'low',
+      type: "addition",
+      severity: "low",
       tokenName: tokenPath,
       collectionName: remoteEntry.collection,
       remoteToken: remoteEntry.token,
       description: `New token "${tokenPath}" added remotely`,
       autoResolvable: true,
-      suggestedResolution: 'take-remote',
-      conflictId: this.generateConflictId(tokenPath, 'addition')
+      suggestedResolution: "take-remote",
+      conflictId: this.generateConflictId(tokenPath, "addition"),
     };
   }
 
@@ -207,10 +235,10 @@ export class ConflictDetector {
    */
   private isValueDifferent(localValue: any, remoteValue: any): boolean {
     // Handle simple value comparison
-    if (typeof localValue !== 'object' && typeof remoteValue !== 'object') {
+    if (typeof localValue !== "object" && typeof remoteValue !== "object") {
       return localValue !== remoteValue;
     }
-    
+
     // Handle object comparison (like color objects)
     return JSON.stringify(localValue) !== JSON.stringify(remoteValue);
   }
@@ -224,17 +252,17 @@ export class ConflictDetector {
   ): boolean {
     const localModes = localToken.valuesByMode || {};
     const remoteModes = remoteToken.valuesByMode || {};
-    
+
     // Get all unique mode names
     const allModes = new Set([
       ...Object.keys(localModes),
-      ...Object.keys(remoteModes)
+      ...Object.keys(remoteModes),
     ]);
-    
+
     for (const mode of allModes) {
       const localValue = localModes[mode];
       const remoteValue = remoteModes[mode];
-      
+
       if (localValue !== undefined && remoteValue !== undefined) {
         if (this.isValueDifferent(localValue, remoteValue)) {
           return true;
@@ -244,7 +272,7 @@ export class ConflictDetector {
         return true;
       }
     }
-    
+
     return false;
   }
 
@@ -254,24 +282,24 @@ export class ConflictDetector {
   private assessSeverity(
     localToken: ProcessedTokenWithSync,
     remoteToken: ProcessedTokenWithSync
-  ): 'low' | 'medium' | 'high' {
+  ): "low" | "medium" | "high" {
     // Type changes are always high severity
     if (localToken.$type !== remoteToken.$type) {
-      return 'high';
+      return "high";
     }
-    
+
     // Color changes are medium severity
-    if (localToken.$type === 'color') {
-      return 'medium';
+    if (localToken.$type === "color") {
+      return "medium";
     }
-    
+
     // Spacing and sizing changes are medium severity
-    if (['spacing', 'sizing', 'dimension'].includes(localToken.$type)) {
-      return 'medium';
+    if (["spacing", "sizing", "dimension"].includes(localToken.$type)) {
+      return "medium";
     }
-    
+
     // Everything else is low severity
-    return 'low';
+    return "low";
   }
 
   /**
@@ -285,12 +313,15 @@ export class ConflictDetector {
     if (localToken.$type !== remoteToken.$type) {
       return false;
     }
-    
+
     // Simple value changes can be auto-resolved
-    if (typeof localToken.$value !== 'object' && typeof remoteToken.$value !== 'object') {
+    if (
+      typeof localToken.$value !== "object" &&
+      typeof remoteToken.$value !== "object"
+    ) {
       return true;
     }
-    
+
     // Complex changes need manual review
     return false;
   }
@@ -301,24 +332,24 @@ export class ConflictDetector {
   private suggestResolution(
     localToken: ProcessedTokenWithSync,
     remoteToken: ProcessedTokenWithSync
-  ): 'take-local' | 'take-remote' | 'manual' {
+  ): "take-local" | "take-remote" | "manual" {
     // If not auto-resolvable, require manual resolution
     if (!this.isAutoResolvable(localToken, remoteToken)) {
-      return 'manual';
+      return "manual";
     }
-    
+
     // Prefer newer changes based on lastModified
     const localModified = localToken.$syncMetadata?.lastModified;
     const remoteModified = remoteToken.$syncMetadata?.lastModified;
-    
+
     if (localModified && remoteModified) {
-      return new Date(localModified) > new Date(remoteModified) 
-        ? 'take-local' 
-        : 'take-remote';
+      return new Date(localModified) > new Date(remoteModified)
+        ? "take-local"
+        : "take-remote";
     }
-    
+
     // Default to remote if we can't determine timing
-    return 'take-remote';
+    return "take-remote";
   }
 
   /**
@@ -329,11 +360,11 @@ export class ConflictDetector {
       const modes = Object.keys(token.valuesByMode);
       return `${modes.length} mode values`;
     }
-    
-    if (typeof token.$value === 'object') {
+
+    if (typeof token.$value === "object") {
       return JSON.stringify(token.$value);
     }
-    
+
     return String(token.$value);
   }
 
@@ -343,9 +374,9 @@ export class ConflictDetector {
   private generateConflictSummary(conflicts: TokenConflict[]) {
     return {
       total: conflicts.length,
-      autoResolvable: conflicts.filter(c => c.autoResolvable).length,
-      requiresManualReview: conflicts.filter(c => !c.autoResolvable).length,
-      highSeverity: conflicts.filter(c => c.severity === 'high').length
+      autoResolvable: conflicts.filter((c) => c.autoResolvable).length,
+      requiresManualReview: conflicts.filter((c) => !c.autoResolvable).length,
+      highSeverity: conflicts.filter((c) => c.severity === "high").length,
     };
   }
 

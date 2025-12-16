@@ -5,8 +5,9 @@ import { cn } from "./lib/utils";
 const HoverCard = HoverCardPrimitive.Root;
 const HoverCardTrigger = HoverCardPrimitive.Trigger;
 
-export interface HoverCardContentProps
-  extends React.ComponentPropsWithoutRef<typeof HoverCardPrimitive.Content> {
+export interface HoverCardContentProps extends React.ComponentPropsWithoutRef<
+  typeof HoverCardPrimitive.Content
+> {
   side?: "top" | "right" | "bottom" | "left";
   sideOffset?: number;
 }

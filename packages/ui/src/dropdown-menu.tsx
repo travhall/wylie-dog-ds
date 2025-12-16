@@ -74,7 +74,12 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <polyline points="20,6 9,17 4,12" />
         </svg>
       </DropdownMenuPrimitive.ItemIndicator>
@@ -82,7 +87,8 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
     {children}
   </DropdownMenuPrimitive.CheckboxItem>
 ));
-DropdownMenuCheckboxItem.displayName = DropdownMenuPrimitive.CheckboxItem.displayName;
+DropdownMenuCheckboxItem.displayName =
+  DropdownMenuPrimitive.CheckboxItem.displayName;
 
 // Dropdown Menu Radio Item
 export const DropdownMenuRadioItem = React.forwardRef<
@@ -137,7 +143,10 @@ export const DropdownMenuSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Separator
     ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-[var(--color-border-primary)]", className)}
+    className={cn(
+      "-mx-1 my-1 h-px bg-[var(--color-border-primary)]",
+      className
+    )}
     {...props}
   />
 ));

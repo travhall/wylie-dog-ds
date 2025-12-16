@@ -1,7 +1,7 @@
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { axe, toHaveNoViolations } from 'jest-axe';
+import React from "react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { axe, toHaveNoViolations } from "jest-axe";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from '../dropdown-menu';
+} from "../dropdown-menu";
 
 expect.extend(toHaveNoViolations);
 
@@ -33,77 +33,77 @@ const TestDropdownMenu = () => (
   </DropdownMenu>
 );
 
-describe('DropdownMenu', () => {
-  describe('Accessibility', () => {
-    it('should pass accessibility audit when closed', async () => {
+describe("DropdownMenu", () => {
+  describe("Accessibility", () => {
+    it("should pass accessibility audit when closed", async () => {
       const { container } = render(<TestDropdownMenu />);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
-    it('should have proper aria-expanded state', async () => {
+    it("should have proper aria-expanded state", async () => {
       const user = userEvent.setup();
       render(<TestDropdownMenu />);
 
-      const trigger = screen.getByText('Open Menu');
-      expect(trigger).toHaveAttribute('aria-expanded', 'false');
+      const trigger = screen.getByText("Open Menu");
+      expect(trigger).toHaveAttribute("aria-expanded", "false");
 
       await user.click(trigger);
 
       await waitFor(() => {
-        expect(trigger).toHaveAttribute('aria-expanded', 'true');
+        expect(trigger).toHaveAttribute("aria-expanded", "true");
       });
     });
 
-    it('should have proper aria-haspopup attribute', () => {
+    it("should have proper aria-haspopup attribute", () => {
       render(<TestDropdownMenu />);
 
-      const trigger = screen.getByText('Open Menu');
-      expect(trigger).toHaveAttribute('aria-haspopup', 'menu');
+      const trigger = screen.getByText("Open Menu");
+      expect(trigger).toHaveAttribute("aria-haspopup", "menu");
     });
   });
 
-  describe('Functionality', () => {
-    it('should render trigger', () => {
+  describe("Functionality", () => {
+    it("should render trigger", () => {
       render(<TestDropdownMenu />);
-      expect(screen.getByText('Open Menu')).toBeInTheDocument();
+      expect(screen.getByText("Open Menu")).toBeInTheDocument();
     });
 
-    it('should not show menu when closed', () => {
+    it("should not show menu when closed", () => {
       render(<TestDropdownMenu />);
-      expect(screen.queryByText('New File')).not.toBeInTheDocument();
+      expect(screen.queryByText("New File")).not.toBeInTheDocument();
     });
 
-    it('should open menu on trigger click', async () => {
+    it("should open menu on trigger click", async () => {
       const user = userEvent.setup();
       render(<TestDropdownMenu />);
 
-      await user.click(screen.getByText('Open Menu'));
+      await user.click(screen.getByText("Open Menu"));
 
       await waitFor(() => {
-        expect(screen.getByText('New File')).toBeInTheDocument();
-        expect(screen.getByText('Save')).toBeInTheDocument();
+        expect(screen.getByText("New File")).toBeInTheDocument();
+        expect(screen.getByText("Save")).toBeInTheDocument();
       });
     });
 
-    it('should close menu on item click', async () => {
+    it("should close menu on item click", async () => {
       const user = userEvent.setup();
       render(<TestDropdownMenu />);
 
-      await user.click(screen.getByText('Open Menu'));
+      await user.click(screen.getByText("Open Menu"));
 
       await waitFor(() => {
-        expect(screen.getByText('Save')).toBeInTheDocument();
+        expect(screen.getByText("Save")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Save'));
+      await user.click(screen.getByText("Save"));
 
       await waitFor(() => {
-        expect(screen.queryByText('Save')).not.toBeInTheDocument();
+        expect(screen.queryByText("Save")).not.toBeInTheDocument();
       });
     });
 
-    it('should execute item callback', async () => {
+    it("should execute item callback", async () => {
       const user = userEvent.setup();
       const handleSelect = vi.fn();
 
@@ -111,23 +111,25 @@ describe('DropdownMenu', () => {
         <DropdownMenu>
           <DropdownMenuTrigger>Open</DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem onSelect={handleSelect}>Click me</DropdownMenuItem>
+            <DropdownMenuItem onSelect={handleSelect}>
+              Click me
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByText('Click me')).toBeInTheDocument();
+        expect(screen.getByText("Click me")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Click me'));
+      await user.click(screen.getByText("Click me"));
 
       expect(handleSelect).toHaveBeenCalled();
     });
 
-    it('should not select disabled items', async () => {
+    it("should not select disabled items", async () => {
       const user = userEvent.setup();
       const handleSelect = vi.fn();
 
@@ -142,69 +144,69 @@ describe('DropdownMenu', () => {
         </DropdownMenu>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByText('Disabled')).toBeInTheDocument();
+        expect(screen.getByText("Disabled")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText('Disabled'));
+      await user.click(screen.getByText("Disabled"));
 
       expect(handleSelect).not.toHaveBeenCalled();
     });
   });
 
-  describe('Keyboard Navigation', () => {
-    it('should open on Enter key', async () => {
+  describe("Keyboard Navigation", () => {
+    it("should open on Enter key", async () => {
       const user = userEvent.setup();
       render(<TestDropdownMenu />);
 
-      const trigger = screen.getByText('Open Menu');
+      const trigger = screen.getByText("Open Menu");
       trigger.focus();
-      await user.keyboard('{Enter}');
+      await user.keyboard("{Enter}");
 
       await waitFor(() => {
-        expect(screen.getByRole('menu')).toBeInTheDocument();
+        expect(screen.getByRole("menu")).toBeInTheDocument();
       });
     });
 
-    it('should navigate items with arrow keys', async () => {
+    it("should navigate items with arrow keys", async () => {
       const user = userEvent.setup();
       render(<TestDropdownMenu />);
 
-      await user.click(screen.getByText('Open Menu'));
+      await user.click(screen.getByText("Open Menu"));
 
       await waitFor(() => {
-        expect(screen.getByRole('menu')).toBeInTheDocument();
+        expect(screen.getByRole("menu")).toBeInTheDocument();
       });
 
-      await user.keyboard('{ArrowDown}');
-      await user.keyboard('{ArrowDown}');
+      await user.keyboard("{ArrowDown}");
+      await user.keyboard("{ArrowDown}");
 
-      const items = screen.getAllByRole('menuitem');
+      const items = screen.getAllByRole("menuitem");
       expect(items[1]).toHaveFocus();
     });
 
-    it('should close on Escape key', async () => {
+    it("should close on Escape key", async () => {
       const user = userEvent.setup();
       render(<TestDropdownMenu />);
 
-      await user.click(screen.getByText('Open Menu'));
+      await user.click(screen.getByText("Open Menu"));
 
       await waitFor(() => {
-        expect(screen.getByRole('menu')).toBeInTheDocument();
+        expect(screen.getByRole("menu")).toBeInTheDocument();
       });
 
-      await user.keyboard('{Escape}');
+      await user.keyboard("{Escape}");
 
       await waitFor(() => {
-        expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+        expect(screen.queryByRole("menu")).not.toBeInTheDocument();
       });
     });
   });
 
-  describe('Sub-components', () => {
-    it('should render checkbox items', async () => {
+  describe("Sub-components", () => {
+    it("should render checkbox items", async () => {
       const user = userEvent.setup();
 
       render(
@@ -219,15 +221,15 @@ describe('DropdownMenu', () => {
         </DropdownMenu>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByText('Enabled')).toBeInTheDocument();
-        expect(screen.getByText('Disabled')).toBeInTheDocument();
+        expect(screen.getByText("Enabled")).toBeInTheDocument();
+        expect(screen.getByText("Disabled")).toBeInTheDocument();
       });
     });
 
-    it('should render radio items', async () => {
+    it("should render radio items", async () => {
       const user = userEvent.setup();
 
       render(
@@ -235,26 +237,30 @@ describe('DropdownMenu', () => {
           <DropdownMenuTrigger>Open</DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuRadioGroup value="option1">
-              <DropdownMenuRadioItem value="option1">Option 1</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="option2">Option 2</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="option1">
+                Option 1
+              </DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="option2">
+                Option 2
+              </DropdownMenuRadioItem>
             </DropdownMenuRadioGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByText('Option 1')).toBeInTheDocument();
-        expect(screen.getByText('Option 2')).toBeInTheDocument();
+        expect(screen.getByText("Option 1")).toBeInTheDocument();
+        expect(screen.getByText("Option 2")).toBeInTheDocument();
       });
     });
 
-    it('should render separator', async () => {
+    it("should render separator", async () => {
       const user = userEvent.setup();
       render(<TestDropdownMenu />);
 
-      await user.click(screen.getByText('Open Menu'));
+      await user.click(screen.getByText("Open Menu"));
 
       await waitFor(() => {
         const separator = document.querySelector('[role="separator"]');
@@ -262,31 +268,31 @@ describe('DropdownMenu', () => {
       });
     });
 
-    it('should render label', async () => {
+    it("should render label", async () => {
       const user = userEvent.setup();
       render(<TestDropdownMenu />);
 
-      await user.click(screen.getByText('Open Menu'));
+      await user.click(screen.getByText("Open Menu"));
 
       await waitFor(() => {
-        expect(screen.getByText('Actions')).toBeInTheDocument();
+        expect(screen.getByText("Actions")).toBeInTheDocument();
       });
     });
 
-    it('should render shortcut', async () => {
+    it("should render shortcut", async () => {
       const user = userEvent.setup();
       render(<TestDropdownMenu />);
 
-      await user.click(screen.getByText('Open Menu'));
+      await user.click(screen.getByText("Open Menu"));
 
       await waitFor(() => {
-        expect(screen.getByText('⌘N')).toBeInTheDocument();
+        expect(screen.getByText("⌘N")).toBeInTheDocument();
       });
     });
   });
 
-  describe('Integration', () => {
-    it('should forward ref to content', async () => {
+  describe("Integration", () => {
+    it("should forward ref to content", async () => {
       const user = userEvent.setup();
       const ref = React.createRef<HTMLDivElement>();
 
@@ -299,7 +305,7 @@ describe('DropdownMenu', () => {
         </DropdownMenu>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
         expect(ref.current).toBeInstanceOf(HTMLDivElement);
@@ -307,8 +313,8 @@ describe('DropdownMenu', () => {
     });
   });
 
-  describe('Edge Cases', () => {
-    it('should handle empty menu', async () => {
+  describe("Edge Cases", () => {
+    it("should handle empty menu", async () => {
       const user = userEvent.setup();
 
       render(
@@ -318,10 +324,10 @@ describe('DropdownMenu', () => {
         </DropdownMenu>
       );
 
-      await user.click(screen.getByText('Open'));
+      await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        expect(screen.getByRole('menu')).toBeInTheDocument();
+        expect(screen.getByRole("menu")).toBeInTheDocument();
       });
     });
   });

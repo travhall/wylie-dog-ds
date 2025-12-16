@@ -2,17 +2,34 @@
 import React from "react";
 import { cn } from "./lib/utils";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "primary" | "secondary" | "outline" | "ghost" | "link" | "destructive";
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "outline"
+    | "ghost"
+    | "link"
+    | "destructive";
   size?: "default" | "sm" | "md" | "lg" | "icon";
   loading?: boolean;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "default", size = "default", loading = false, disabled, children, ...props }, ref) => {
+  (
+    {
+      className,
+      variant = "default",
+      size = "default",
+      loading = false,
+      disabled,
+      children,
+      ...props
+    },
+    ref
+  ) => {
     const isDisabled = disabled || loading;
-    
+
     const variants = {
       default:
         "bg-[var(--color-button-primary-background)] hover:bg-[var(--color-button-primary-background-hover)] active:bg-[var(--color-button-primary-background-active)] text-[var(--color-button-primary-text)] border-[var(--color-button-primary-border)]",
@@ -24,8 +41,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         "border border-[var(--color-button-outline-border)] bg-transparent hover:bg-[var(--color-button-outline-hover)] text-[var(--color-button-outline-text)]",
       ghost:
         "bg-[var(--color-button-ghost-background)] hover:bg-[var(--color-button-ghost-background-hover)] active:bg-[var(--color-button-ghost-background-active)] text-[var(--color-button-ghost-text)] border-transparent",
-      link:
-        "text-[var(--color-button-link-text)] underline-offset-4 hover:underline bg-transparent border-transparent p-0 h-auto",
+      link: "text-[var(--color-button-link-text)] underline-offset-4 hover:underline bg-transparent border-transparent p-0 h-auto",
       destructive:
         "bg-[var(--color-background-danger)] hover:bg-[var(--color-red-700)] text-[var(--color-text-inverse)] border-[var(--color-background-danger)]",
     };

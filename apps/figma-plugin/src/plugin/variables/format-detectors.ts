@@ -1,9 +1,9 @@
 // Format Detection Registry - Manages multiple format detectors
-import type { 
-  FormatAdapter, 
-  FormatDetectionResult, 
-  TokenFormatType 
-} from './format-adapter';
+import type {
+  FormatAdapter,
+  FormatDetectionResult,
+  TokenFormatType,
+} from "./format-adapter";
 
 export class FormatDetectorRegistry {
   private detectors: FormatAdapter[] = [];
@@ -13,25 +13,31 @@ export class FormatDetectorRegistry {
   }
 
   detectFormat(data: any): FormatDetectionResult {
-    console.log(`🔍 Running format detection with ${this.detectors.length} detectors`);
-    
-    const results = this.detectors.map(detector => {
+    console.log(
+      `🔍 Running format detection with ${this.detectors.length} detectors`
+    );
+
+    const results = this.detectors.map((detector) => {
       const result = detector.detect(data);
-      console.log(`  ${detector.name}: ${(result.confidence * 100).toFixed(1)}% confidence`);
+      console.log(
+        `  ${detector.name}: ${(result.confidence * 100).toFixed(1)}% confidence`
+      );
       return result;
     });
-    
+
     // Return the result with highest confidence
-    const best = results.reduce((best, current) => 
+    const best = results.reduce((best, current) =>
       current.confidence > best.confidence ? current : best
     );
-    
-    console.log(`🏆 Best match: ${best.format} (${(best.confidence * 100).toFixed(1)}% confidence)`);
+
+    console.log(
+      `🏆 Best match: ${best.format} (${(best.confidence * 100).toFixed(1)}% confidence)`
+    );
     return best;
   }
 
   getAdapter(format: TokenFormatType): FormatAdapter | undefined {
-    return this.detectors.find(d => d.detect({}).format === format);
+    return this.detectors.find((d) => d.detect({}).format === format);
   }
 
   getAllAdapters(): FormatAdapter[] {

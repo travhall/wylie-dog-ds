@@ -24,17 +24,17 @@ export interface FormatAdapter {
 }
 
 export enum TokenFormatType {
-  WYLIE_DOG = 'wylie-dog',
-  STYLE_DICTIONARY_FLAT = 'style-dictionary-flat',
-  STYLE_DICTIONARY_NESTED = 'style-dictionary-nested',
-  TOKENS_STUDIO_FLAT = 'tokens-studio-flat',
-  TOKENS_STUDIO_GROUPED = 'tokens-studio-grouped',
-  MATERIAL_DESIGN = 'material-design',
-  W3C_DTCG_FLAT = 'w3c-dtcg-flat',
-  FIGMA_DESIGN_TOKENS = 'figma-design-tokens',
-  CSS_VARIABLES = 'css-variables',
-  CUSTOM_FLAT = 'custom-flat',
-  UNKNOWN = 'unknown'
+  WYLIE_DOG = "wylie-dog",
+  STYLE_DICTIONARY_FLAT = "style-dictionary-flat",
+  STYLE_DICTIONARY_NESTED = "style-dictionary-nested",
+  TOKENS_STUDIO_FLAT = "tokens-studio-flat",
+  TOKENS_STUDIO_GROUPED = "tokens-studio-grouped",
+  MATERIAL_DESIGN = "material-design",
+  W3C_DTCG_FLAT = "w3c-dtcg-flat",
+  FIGMA_DESIGN_TOKENS = "figma-design-tokens",
+  CSS_VARIABLES = "css-variables",
+  CUSTOM_FLAT = "custom-flat",
+  UNKNOWN = "unknown",
 }
 
 export interface StructureInfo {
@@ -43,9 +43,14 @@ export interface StructureInfo {
   hasArrayWrapper: boolean;
   tokenCount: number;
   referenceCount: number;
-  propertyFormat: '$type/$value' | 'type/value' | 'mixed' | 'other';
-  namingConvention: 'dot-notation' | 'kebab-case' | 'camelCase' | 'snake_case' | 'mixed';
-  referenceFormat: 'curly-brace' | 'css-var' | 'sass' | 'other' | 'none';
+  propertyFormat: "$type/$value" | "type/value" | "mixed" | "other";
+  namingConvention:
+    | "dot-notation"
+    | "kebab-case"
+    | "camelCase"
+    | "snake_case"
+    | "mixed";
+  referenceFormat: "curly-brace" | "css-var" | "sass" | "other" | "none";
 }
 
 export interface TransformationLog {
@@ -75,7 +80,7 @@ export interface ProcessingStats {
 }
 
 export interface ReferenceTransformation {
-  type: 'reference-format';
+  type: "reference-format";
   original: string;
   normalized: string;
   format: string;

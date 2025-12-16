@@ -2,8 +2,9 @@ import React from "react";
 import * as TogglePrimitive from "@radix-ui/react-toggle";
 import { cn } from "./lib/utils";
 
-export interface ToggleProps
-  extends React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> {
+export interface ToggleProps extends React.ComponentPropsWithoutRef<
+  typeof TogglePrimitive.Root
+> {
   variant?: "default" | "outline";
   size?: "default" | "sm" | "lg";
 }
@@ -14,12 +15,13 @@ const Toggle = React.forwardRef<
 >(({ className, variant = "default", size = "default", ...props }, ref) => {
   const variants = {
     default: "bg-transparent text-[var(--color-toggle-text)]",
-    outline: "border border-[var(--color-toggle-border)] bg-transparent text-[var(--color-toggle-text)]",
+    outline:
+      "border border-[var(--color-toggle-border)] bg-transparent text-[var(--color-toggle-text)]",
   };
 
   const sizes = {
     default: "h-10 px-3",
-    sm: "h-9 px-2.5", 
+    sm: "h-9 px-2.5",
     lg: "h-11 px-5",
   };
 
@@ -44,4 +46,3 @@ const Toggle = React.forwardRef<
 Toggle.displayName = TogglePrimitive.Root.displayName;
 
 export { Toggle };
-

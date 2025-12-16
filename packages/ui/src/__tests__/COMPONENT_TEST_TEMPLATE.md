@@ -101,28 +101,33 @@ describe('YourComponent', () => {
 ## Key Testing Principles
 
 ### 1. Accessibility First
+
 - Every component MUST pass `axe` accessibility audit
 - Test keyboard navigation (Tab, Enter, Space, Arrows, Escape)
 - Verify ARIA attributes are correct
 - Test with screen reader announcements in mind
 
 ### 2. User-Centric Testing
+
 - Test from user perspective, not implementation details
 - Use `getByRole`, `getByLabelText`, `getByText` (avoid `getByTestId`)
 - Focus on behavior, not internal state
 
 ### 3. Comprehensive Coverage
+
 - Test all props and variants
 - Test disabled/loading/error states
 - Test edge cases (empty, very long content, rapid interactions)
 - Test ref forwarding
 
 ### 4. Async Handling
+
 - Use `waitFor` for async state changes
 - Use `findBy*` queries for elements that appear asynchronously
 - Test loading states and transitions
 
 ### 5. Event Simulation
+
 - Test both mouse and keyboard interactions
 - Test focus management
 - Test form submissions where applicable
@@ -130,6 +135,7 @@ describe('YourComponent', () => {
 ## Common Test Patterns
 
 ### Testing Controlled Components
+
 ```typescript
 it('should work as a controlled component', () => {
   const handleChange = vi.fn();
@@ -148,6 +154,7 @@ it('should work as a controlled component', () => {
 ```
 
 ### Testing Keyboard Navigation
+
 ```typescript
 it('should navigate with keyboard', () => {
   render(<YourComponent>Content</YourComponent>);
@@ -162,6 +169,7 @@ it('should navigate with keyboard', () => {
 ```
 
 ### Testing Async Operations
+
 ```typescript
 it('should handle async operations', async () => {
   const handleAsync = vi.fn().mockResolvedValue('result');
@@ -176,6 +184,7 @@ it('should handle async operations', async () => {
 ```
 
 ### Testing Error States
+
 ```typescript
 it('should display error messages', () => {
   render(<YourComponent error="Error message" />);

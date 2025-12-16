@@ -263,12 +263,18 @@ async function createVariableWithReferences(
             Object.assign({}, token, { $value: modeValue }),
             figmaType
           );
-          
+
           try {
             variable.setValueForMode(mode.modeId, figmaValue);
           } catch (error) {
-            console.error(`Failed to set value for ${tokenName} mode ${mode.name}:`, error);
-            console.error(`Token type: ${token.$type}, Figma type: ${figmaType}, Value:`, modeValue);
+            console.error(
+              `Failed to set value for ${tokenName} mode ${mode.name}:`,
+              error
+            );
+            console.error(
+              `Token type: ${token.$type}, Figma type: ${figmaType}, Value:`,
+              modeValue
+            );
             // Try to continue with other modes
           }
         }
@@ -297,7 +303,10 @@ async function createVariableWithReferences(
           variable.setValueForMode(defaultMode.modeId, figmaValue);
         } catch (error) {
           console.error(`Failed to set value for ${tokenName}:`, error);
-          console.error(`Token type: ${token.$type}, Figma type: ${figmaType}, Value:`, token.$value);
+          console.error(
+            `Token type: ${token.$type}, Figma type: ${figmaType}, Value:`,
+            token.$value
+          );
         }
       }
     }
@@ -316,64 +325,68 @@ async function createVariableWithReferences(
  * Sort tokens within a collection by their dependencies
  * Tokens with no references come first, then tokens that reference them
  */
-function sortTokensByDependencies(tokenEntries: [string, ProcessedToken][]): [string, ProcessedToken][] {
+function sortTokensByDependencies(
+  tokenEntries: [string, ProcessedToken][]
+): [string, ProcessedToken][] {
   const dependencyMap = new Map<string, Set<string>>();
   const tokenMap = new Map<string, ProcessedToken>();
-  
+
   // Build dependency graph
   for (const [tokenName, token] of tokenEntries) {
     tokenMap.set(tokenName, token);
     const deps = new Set<string>();
-    
+
     // Extract references from this token
     const references = extractReferences(token);
     for (const ref of Array.from(references.values())) {
       // Check if reference is to another token in this same collection
-      const referencedToken = tokenEntries.find(([name]) => name === ref.referencePath);
+      const referencedToken = tokenEntries.find(
+        ([name]) => name === ref.referencePath
+      );
       if (referencedToken) {
         deps.add(ref.referencePath);
       }
     }
-    
+
     dependencyMap.set(tokenName, deps);
   }
-  
+
   // Topological sort
   const sorted: [string, ProcessedToken][] = [];
   const visited = new Set<string>();
   const visiting = new Set<string>();
-  
+
   function visit(tokenName: string): void {
     if (visiting.has(tokenName)) {
       console.warn(`Circular dependency detected in token: ${tokenName}`);
       return;
     }
     if (visited.has(tokenName)) return;
-    
+
     visiting.add(tokenName);
     const deps = dependencyMap.get(tokenName) || new Set();
-    
+
     // Visit dependencies first
     for (const dep of Array.from(deps)) {
       if (tokenMap.has(dep)) {
         visit(dep);
       }
     }
-    
+
     visiting.delete(tokenName);
     visited.add(tokenName);
-    
+
     const token = tokenMap.get(tokenName);
     if (token) {
       sorted.push([tokenName, token]);
     }
   }
-  
+
   // Process all tokens
   for (const [tokenName] of tokenEntries) {
     visit(tokenName);
   }
-  
+
   console.log(`   Sorted ${sorted.length} tokens by dependencies`);
   return sorted;
 }
@@ -494,10 +507,10 @@ export async function importMultipleCollections(
 
         // Create all variables in this collection with proper ordering
         const tokenEntries = Object.entries(collectionInfo.data.variables);
-        
+
         // Sort tokens within collection by dependency order
         const sortedTokenEntries = sortTokensByDependencies(tokenEntries);
-        
+
         let collectionCreated = 0;
 
         for (const [tokenName, token] of sortedTokenEntries) {

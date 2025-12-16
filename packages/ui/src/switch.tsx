@@ -2,8 +2,9 @@ import React from "react";
 import * as SwitchPrimitive from "@radix-ui/react-switch";
 import { cn } from "./lib/utils";
 
-export interface SwitchProps
-  extends React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root> {
+export interface SwitchProps extends React.ComponentPropsWithoutRef<
+  typeof SwitchPrimitive.Root
+> {
   /** Size variant */
   size?: "sm" | "md" | "lg";
 }

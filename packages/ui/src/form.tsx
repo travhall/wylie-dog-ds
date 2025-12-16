@@ -17,7 +17,9 @@ const FormFieldContext = createContext<FormFieldContextValue | null>(null);
 export const useFormField = () => {
   const context = useContext(FormFieldContext);
   if (!context) {
-    throw new Error("useFormField must be used within a FormField component. Wrap your form elements with <FormField>.");
+    throw new Error(
+      "useFormField must be used within a FormField component. Wrap your form elements with <FormField>."
+    );
   }
   return context;
 };
@@ -102,8 +104,8 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
       >
         {children}
         {isRequired && (
-          <span 
-            className="text-[var(--color-text-danger)] ml-1" 
+          <span
+            className="text-[var(--color-text-danger)] ml-1"
             aria-hidden="true"
           >
             *
@@ -128,20 +130,21 @@ FormControl.displayName = "FormControl";
 // Enhanced FormDescription with automatic ID assignment
 interface FormDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
 
-const FormDescription = React.forwardRef<HTMLParagraphElement, FormDescriptionProps>(
-  ({ className, ...props }, ref) => {
-    const { descriptionId } = useFormField();
+const FormDescription = React.forwardRef<
+  HTMLParagraphElement,
+  FormDescriptionProps
+>(({ className, ...props }, ref) => {
+  const { descriptionId } = useFormField();
 
-    return (
-      <p
-        ref={ref}
-        id={descriptionId}
-        className={cn("text-sm text-[var(--color-form-description)]", className)}
-        {...props}
-      />
-    );
-  }
-);
+  return (
+    <p
+      ref={ref}
+      id={descriptionId}
+      className={cn("text-sm text-[var(--color-form-description)]", className)}
+      {...props}
+    />
+  );
+});
 FormDescription.displayName = "FormDescription";
 
 // Enhanced FormMessage with accessibility attributes
@@ -159,7 +162,10 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, FormMessageProps>(
         id={errorId}
         role="alert"
         aria-live="polite"
-        className={cn("text-sm font-medium text-[var(--color-form-error)]", className)}
+        className={cn(
+          "text-sm font-medium text-[var(--color-form-error)]",
+          className
+        )}
         {...props}
       />
     );

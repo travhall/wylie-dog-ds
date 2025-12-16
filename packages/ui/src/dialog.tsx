@@ -27,8 +27,9 @@ export const DialogOverlay = React.forwardRef<
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 // Dialog Content
-export interface DialogContentProps
-  extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {
+export interface DialogContentProps extends React.ComponentPropsWithoutRef<
+  typeof DialogPrimitive.Content
+> {
   /** Size variant for the dialog */
   size?: "sm" | "md" | "lg" | "xl" | "full";
 }
@@ -39,7 +40,7 @@ export const DialogContent = React.forwardRef<
 >(({ className, children, size = "md", ...props }, ref) => {
   const sizes = {
     sm: "max-w-sm",
-    md: "max-w-md", 
+    md: "max-w-md",
     lg: "max-w-lg",
     xl: "max-w-xl",
     full: "max-w-[95vw] max-h-[95vh]",
@@ -142,10 +143,7 @@ export const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn(
-      "text-sm text-[var(--color-text-secondary)]",
-      className
-    )}
+    className={cn("text-sm text-[var(--color-text-secondary)]", className)}
     {...props}
   />
 ));

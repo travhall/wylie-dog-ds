@@ -12,14 +12,17 @@ export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
-  ({ 
-    className, 
-    variant = "default", 
-    size, 
-    loadingText = "Loading content", 
-    showLoadingText = true,
-    ...props 
-  }, ref) => {
+  (
+    {
+      className,
+      variant = "default",
+      size,
+      loadingText = "Loading content",
+      showLoadingText = true,
+      ...props
+    },
+    ref
+  ) => {
     const variants = {
       default: "rounded-md",
       text: "rounded h-4",
@@ -30,7 +33,7 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
     const sizes = {
       sm: "h-4 w-4",
       md: "h-6 w-6",
-      lg: "h-8 w-8", 
+      lg: "h-8 w-8",
       xl: "h-12 w-12",
     };
 
@@ -48,9 +51,7 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
         aria-label={showLoadingText ? loadingText : undefined}
         {...props}
       >
-        {showLoadingText && (
-          <span className="sr-only">{loadingText}</span>
-        )}
+        {showLoadingText && <span className="sr-only">{loadingText}</span>}
       </div>
     );
   }

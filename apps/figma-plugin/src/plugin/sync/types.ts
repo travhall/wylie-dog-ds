@@ -1,9 +1,13 @@
 // Sync-enhanced types that extend existing interfaces
-import type { ProcessedToken, ProcessedCollection, ExportData } from '../variables/processor';
+import type {
+  ProcessedToken,
+  ProcessedCollection,
+  ExportData,
+} from "../variables/processor";
 
 export interface SyncMetadata {
   lastModified: string;
-  source: 'local' | 'remote';
+  source: "local" | "remote";
   hash: string;
   version: number;
   syncId?: string; // Unique identifier for tracking
@@ -13,7 +17,10 @@ export interface ProcessedTokenWithSync extends ProcessedToken {
   $syncMetadata?: SyncMetadata;
 }
 
-export interface ProcessedCollectionWithSync extends Omit<ProcessedCollection, 'variables'> {
+export interface ProcessedCollectionWithSync extends Omit<
+  ProcessedCollection,
+  "variables"
+> {
   variables: {
     [tokenName: string]: ProcessedTokenWithSync;
   };
@@ -24,21 +31,26 @@ export interface ExportDataWithSync {
 }
 
 export interface TokenConflict {
-  type: 'value-change' | 'name-conflict' | 'deletion' | 'addition' | 'type-change';
-  severity: 'low' | 'medium' | 'high';
+  type:
+    | "value-change"
+    | "name-conflict"
+    | "deletion"
+    | "addition"
+    | "type-change";
+  severity: "low" | "medium" | "high";
   tokenName: string;
   collectionName: string;
   localToken?: ProcessedTokenWithSync;
   remoteToken?: ProcessedTokenWithSync;
   description: string;
   autoResolvable: boolean;
-  suggestedResolution: 'take-local' | 'take-remote' | 'manual';
+  suggestedResolution: "take-local" | "take-remote" | "manual";
   conflictId: string; // Unique identifier for this conflict
 }
 
 export interface ConflictResolution {
   conflictId: string;
-  resolution: 'take-local' | 'take-remote' | 'manual';
+  resolution: "take-local" | "take-remote" | "manual";
   token?: ProcessedTokenWithSync;
   manualValue?: any; // For manual resolutions
 }
@@ -80,4 +92,8 @@ export interface TokenEntry {
   path: string;
 }
 
-export type ConflictResolutionStrategy = 'take-local' | 'take-remote' | 'smart-merge' | 'manual';
+export type ConflictResolutionStrategy =
+  | "take-local"
+  | "take-remote"
+  | "smart-merge"
+  | "manual";
