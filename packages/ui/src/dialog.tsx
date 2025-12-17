@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cn } from "./lib/utils";
 
@@ -38,7 +40,7 @@ export const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   DialogContentProps
 >(({ className, children, size = "md", ...props }, ref) => {
-  const closeButtonRef = React.useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const sizes = {
     sm: "max-w-sm",
     md: "max-w-md",
