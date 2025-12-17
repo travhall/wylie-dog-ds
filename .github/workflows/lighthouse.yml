@@ -30,6 +30,12 @@ jobs:
       - name: Build all packages
         run: pnpm build
 
+      - name: Serve Storybook
+        run: npx http-server apps/storybook/storybook-static -p 6006 &
+
+      - name: Wait for server
+        run: npx wait-on http://localhost:6006
+
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12
         with:
@@ -37,4 +43,3 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
           runs: 3
-          staticDistDir: ./apps/storybook/storybook-static
