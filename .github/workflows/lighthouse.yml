@@ -31,7 +31,7 @@ jobs:
         run: pnpm --filter @wyliedog/ui build
 
       - name: Build packages
-        run: pnpm build
+        run: pnpm build --filter=!@wyliedog/ui
 
       - name: Build Storybook
         run: pnpm --filter storybook build

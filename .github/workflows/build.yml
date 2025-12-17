@@ -55,7 +55,7 @@ jobs:
           echo "UI build complete with $(find packages/ui/dist -name '*.js' -o -name '*.mjs' | wc -l) files"
 
       - name: Build remaining packages
-        run: pnpm build
+        run: pnpm build --filter=!@wyliedog/ui
 
       - name: Check for Build Artifacts
         run: |
