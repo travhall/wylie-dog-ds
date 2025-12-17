@@ -38,6 +38,7 @@ export const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   DialogContentProps
 >(({ className, children, size = "md", ...props }, ref) => {
+  const closeButtonRef = React.useRef<HTMLButtonElement>(null);
   const sizes = {
     sm: "max-w-sm",
     md: "max-w-md",
@@ -51,6 +52,10 @@ export const DialogContent = React.forwardRef<
       <DialogOverlay />
       <DialogPrimitive.Content
         ref={ref}
+        onOpenAutoFocus={(event) => {
+          event.preventDefault();
+          closeButtonRef.current?.focus();
+        }}
         className={cn(
           "fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4",
           "border bg-[var(--color-background-primary)] p-6 shadow-lg duration-200",
@@ -66,7 +71,10 @@ export const DialogContent = React.forwardRef<
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)] focus:ring-offset-2 disabled:pointer-events-none">
+        <DialogPrimitive.Close
+          ref={closeButtonRef}
+          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)] focus:ring-offset-2 disabled:pointer-events-none"
+        >
           <svg
             className="h-4 w-4"
             fill="none"

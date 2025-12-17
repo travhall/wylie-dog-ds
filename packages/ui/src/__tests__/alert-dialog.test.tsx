@@ -258,7 +258,7 @@ describe("AlertDialog", () => {
         expect(screen.getByRole("alertdialog")).toBeInTheDocument();
       });
 
-      await user.click(screen.getByText("Confirm"));
+      await user.click(screen.getByRole("button", { name: "Confirm" }));
 
       expect(handleAction).toHaveBeenCalled();
     });
