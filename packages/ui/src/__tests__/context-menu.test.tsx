@@ -157,18 +157,20 @@ describe("ContextMenu", () => {
   });
 
   describe("ContextMenuSeparator Component", () => {
-    // TODO: Menu must be opened for separators to render in portal
-    it.skip("should render separators", async () => {
+    it("should render separators", async () => {
       const user = userEvent.setup();
-      const { container } = render(<TestContextMenu />);
+      render(<TestContextMenu />);
 
       const trigger = screen.getByText("Right click me");
       await user.pointer({ keys: "[MouseRight]", target: trigger });
 
       await waitFor(() => {
-        const separators = container.querySelectorAll('[role="separator"]');
-        expect(separators.length).toBeGreaterThan(0);
+        expect(screen.getByText("Cut")).toBeInTheDocument();
       });
+
+      // Separators are rendered in portal (document.body)
+      const separators = document.body.querySelectorAll('[role="separator"]');
+      expect(separators.length).toBeGreaterThan(0);
     });
   });
 

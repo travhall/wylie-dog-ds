@@ -217,16 +217,18 @@ describe("Menubar", () => {
   });
 
   describe("MenubarSeparator Component", () => {
-    // TODO: Menu must be opened for separators to render in portal
-    it.skip("should render separators", async () => {
+    it("should render separators", async () => {
       const user = userEvent.setup();
-      const { container } = render(<TestMenubar />);
+      render(<TestMenubar />);
 
       await user.click(screen.getByText("File"));
       await waitFor(() => {
-        const separators = container.querySelectorAll('[role="separator"]');
-        expect(separators.length).toBeGreaterThan(0);
+        expect(screen.getByText("New File")).toBeInTheDocument();
       });
+
+      // Separators are rendered in portal (document.body)
+      const separators = document.body.querySelectorAll('[role="separator"]');
+      expect(separators.length).toBeGreaterThan(0);
     });
 
     it("should forward ref correctly", async () => {

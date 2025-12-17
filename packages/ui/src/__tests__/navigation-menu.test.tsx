@@ -338,7 +338,9 @@ describe("NavigationMenu", () => {
       });
     });
 
-    // TODO: Fix portal rendering timing for NavigationMenuContent
+    // TODO: Radix NavigationMenu portal content swapping between triggers needs special handling
+    // The issue is that clicking the second trigger closes the first content but doesn't reliably
+    // show the second content in test environment due to timing/animation of portal repositioning
     it.skip("should work with multiple menu items", async () => {
       const user = userEvent.setup();
       render(
@@ -361,14 +363,20 @@ describe("NavigationMenu", () => {
       );
 
       await user.click(screen.getByText("Menu 1"));
-      await waitFor(() => {
-        expect(screen.getByText("Content 1")).toBeInTheDocument();
-      });
+      await waitFor(
+        () => {
+          expect(screen.getByText("Content 1")).toBeInTheDocument();
+        },
+        { timeout: 3000 }
+      );
 
       await user.click(screen.getByText("Menu 2"));
-      await waitFor(() => {
-        expect(screen.getByText("Content 2")).toBeInTheDocument();
-      });
+      await waitFor(
+        () => {
+          expect(screen.getByText("Content 2")).toBeInTheDocument();
+        },
+        { timeout: 3000 }
+      );
     });
 
     it("should close content when clicking outside", async () => {
