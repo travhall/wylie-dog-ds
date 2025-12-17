@@ -44,16 +44,17 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build UI package
-        run: |
-          echo "=== Building UI package ==="
-          pnpm --filter @wyliedog/ui build
-          echo "=== Checking dist output ==="
-          ls -la packages/ui/dist/ || echo "No dist directory created"
-          echo "=== Checking for .mjs files ==="
-          find packages/ui/dist -name "*.mjs" -o -name "*.js" | head -10 || echo "No JS files found"
+      - name: Build UI package first
+        working-directory: packages/ui
+        run: pnpm build
 
-      - name: Build All Packages
+      - name: Verify UI build artifacts
+        run: |
+          echo "Checking UI dist directory..."
+          ls -la packages/ui/dist/*.js packages/ui/dist/*.mjs | head -20
+          echo "UI build complete with $(find packages/ui/dist -name '*.js' -o -name '*.mjs' | wc -l) files"
+
+      - name: Build remaining packages
         run: pnpm build
 
       - name: Check for Build Artifacts
