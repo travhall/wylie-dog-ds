@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build UI package
+        run: pnpm --filter @wyliedog/ui build
+
       - name: Build packages
         run: pnpm build
 
