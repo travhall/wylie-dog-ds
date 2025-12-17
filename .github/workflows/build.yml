@@ -44,18 +44,15 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build UI package first
-        working-directory: packages/ui
-        run: pnpm build
-
-      - name: Verify UI build artifacts
+      - name: Debug workspace setup
         run: |
-          echo "Checking UI dist directory..."
-          ls -la packages/ui/dist/*.js packages/ui/dist/*.mjs | head -20
-          echo "UI build complete with $(find packages/ui/dist -name '*.js' -o -name '*.mjs' | wc -l) files"
+          echo "=== Checking workspace symlinks ==="
+          ls -la apps/showcase/node_modules/@wyliedog/ || echo "No @wyliedog in showcase node_modules"
+          echo "=== Checking UI package.json ==="
+          cat packages/ui/package.json | grep -A 5 '"exports"'
 
-      - name: Build remaining packages
-        run: pnpm build --filter=!@wyliedog/ui
+      - name: Build All Packages
+        run: pnpm build
 
       - name: Check for Build Artifacts
         run: |
