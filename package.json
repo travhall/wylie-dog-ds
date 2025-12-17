@@ -13,7 +13,7 @@
     "perf": "./scripts/performance-check.sh",
     "prepare": "husky",
     "preview-storybook": "turbo run preview-storybook",
-    "release": "turbo run build --filter=storybook^... && changeset publish",
+    "release": "turbo run build --filter=storybook^... && changeset publish --provenance",
     "size": "size-limit",
     "test": "turbo run test",
     "test:a11y": "turbo run test:a11y",
