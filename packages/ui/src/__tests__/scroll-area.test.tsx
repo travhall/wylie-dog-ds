@@ -116,11 +116,13 @@ describe("ScrollArea", () => {
   describe("ScrollBar Component", () => {
     it("should render vertical scrollbar by default", () => {
       const { container } = render(
-        <ScrollArea>
-          <div>Content</div>
+        <ScrollArea className="h-[200px]">
+          <div style={{ height: "1000px" }}>Tall content</div>
         </ScrollArea>
       );
-      const scrollbar = container.querySelector('[orientation="vertical"]');
+      const scrollbar = container.querySelector(
+        '[data-orientation="vertical"]'
+      );
       expect(scrollbar).toBeInTheDocument();
     });
 
@@ -141,11 +143,13 @@ describe("ScrollArea", () => {
 
     it("should have proper vertical styling", () => {
       const { container } = render(
-        <ScrollArea>
-          <div>Content</div>
+        <ScrollArea className="h-[200px]">
+          <div style={{ height: "1000px" }}>Tall content</div>
         </ScrollArea>
       );
-      const scrollbar = container.querySelector('[orientation="vertical"]');
+      const scrollbar = container.querySelector(
+        '[data-orientation="vertical"]'
+      );
       expect(scrollbar).toHaveClass("h-full", "w-2.5");
     });
 
