@@ -27,11 +27,6 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>(
         "flex h-full w-full flex-col overflow-hidden rounded-md bg-[var(--color-command-background)] text-[var(--color-command-text)]",
         className
       )}
-      role="combobox"
-      aria-label={label}
-      aria-expanded="true"
-      aria-haspopup="listbox"
-      aria-controls={listboxId}
       {...props}
     />
   )
@@ -127,7 +122,7 @@ interface CommandGroupProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
-  ({ className, heading, ...props }, ref) => (
+  ({ className, heading, children, ...props }, ref) => (
     <div
       ref={ref}
       className={cn(
@@ -137,7 +132,17 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
       role="group"
       aria-label={heading}
       {...props}
-    />
+    >
+      {heading && (
+        <div
+          cmdk-group-heading=""
+          className="px-2 py-1.5 text-xs font-medium text-[var(--color-command-group-heading)]"
+        >
+          {heading}
+        </div>
+      )}
+      {children}
+    </div>
   )
 );
 CommandGroup.displayName = "CommandGroup";

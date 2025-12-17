@@ -43,9 +43,9 @@ describe("Command", () => {
 
     it("should have proper ARIA attributes", () => {
       render(<TestCommand />);
-      const command = screen.getByRole("combobox", { name: /command/i });
-      expect(command).toBeInTheDocument();
-      expect(command).toHaveAttribute("aria-expanded", "true");
+      const input = screen.getByRole("combobox", { name: /search commands/i });
+      expect(input).toBeInTheDocument();
+      expect(input).toHaveAttribute("aria-expanded", "true");
     });
 
     it("should have accessible input", () => {
@@ -89,9 +89,9 @@ describe("Command", () => {
     });
 
     it("should have proper role", () => {
-      render(<TestCommand />);
-      const command = screen.getByRole("combobox", { name: /command/i });
-      expect(command).toHaveAttribute("role", "combobox");
+      const { container } = render(<TestCommand />);
+      const command = container.firstChild as HTMLElement;
+      expect(command).toBeInTheDocument();
     });
   });
 

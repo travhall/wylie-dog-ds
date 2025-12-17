@@ -8,7 +8,7 @@ export interface BreadcrumbProps extends React.ComponentPropsWithoutRef<"nav"> {
 
 const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
   ({ className, ...props }, ref) => (
-    <nav ref={ref} aria-label="breadcrumb" {...props} />
+    <nav ref={ref} aria-label="breadcrumb" className={className} {...props} />
   )
 );
 Breadcrumb.displayName = "Breadcrumb";

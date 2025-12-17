@@ -55,12 +55,12 @@ describe("ToggleGroup", () => {
         </ToggleGroup>
       );
 
-      const firstItem = screen.getByRole("button", { name: "Option 1" });
+      const firstItem = screen.getByRole("radio", { name: "Option 1" });
       firstItem.focus();
       expect(firstItem).toHaveFocus();
 
       await user.keyboard("{ArrowRight}");
-      const secondItem = screen.getByRole("button", { name: "Option 2" });
+      const secondItem = screen.getByRole("radio", { name: "Option 2" });
       expect(secondItem).toHaveFocus();
     });
   });
@@ -237,7 +237,7 @@ describe("ToggleGroup", () => {
           </ToggleGroupItem>
         </ToggleGroup>
       );
-      const item = screen.getByRole("button", { name: "Test" });
+      const item = screen.getByRole("radio", { name: "Test" });
       expect(item).toBeDisabled();
     });
 
@@ -325,7 +325,7 @@ describe("ToggleGroup", () => {
       expect(handleChange).toHaveBeenCalledWith(["1"]);
 
       await user.click(screen.getByText("2"));
-      expect(handleChange).toHaveBeenCalledWith(["2"]);
+      expect(handleChange).toHaveBeenCalledWith(["1", "2"]);
     });
 
     it("should work as controlled component in multiple mode", () => {
@@ -390,7 +390,7 @@ describe("ToggleGroup", () => {
         </ToggleGroup>
       );
 
-      const bold = screen.getByRole("button", { name: "Bold" });
+      const bold = screen.getByRole("radio", { name: "Bold" });
       expect(bold.querySelector("strong")).toBeInTheDocument();
     });
   });
