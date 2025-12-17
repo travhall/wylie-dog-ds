@@ -47,7 +47,7 @@ jobs:
       - name: Build UI package
         run: |
           echo "=== Building UI package ==="
-          pnpm --filter @wyliedog/ui build --verbose
+          pnpm --filter @wyliedog/ui build
           echo "=== Checking dist output ==="
           ls -la packages/ui/dist/ || echo "No dist directory created"
           echo "=== Checking for .mjs files ==="
