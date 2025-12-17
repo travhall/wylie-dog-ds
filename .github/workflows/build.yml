@@ -45,7 +45,13 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build UI package
-        run: pnpm --filter @wyliedog/ui build
+        run: |
+          echo "=== Building UI package ==="
+          pnpm --filter @wyliedog/ui build --verbose
+          echo "=== Checking dist output ==="
+          ls -la packages/ui/dist/ || echo "No dist directory created"
+          echo "=== Checking for .mjs files ==="
+          find packages/ui/dist -name "*.mjs" -o -name "*.js" | head -10 || echo "No JS files found"
 
       - name: Build All Packages
         run: pnpm build
