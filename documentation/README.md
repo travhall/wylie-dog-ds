@@ -82,7 +82,7 @@ Follow the existing format and maintain consistency with project standards.
 
 - **Main README**: [../README.md](../README.md)
 - **Storybook**: [Live Demo](https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/)
-- **Repository**: [GitHub](https://github.com/travhall/wyliedog)
+- **Repository**: [GitHub](https://github.com/travhall/wylie-dog-ds)
 
 ---
 
