@@ -2,12 +2,12 @@
 
 **A production-ready design system featuring 42 components, next-generation OKLCH color science, and industry-leading design token architecture.**
 
-[![Design Tokens Grade](https://img.shields.io/badge/Design%20Tokens-A%2B-brightgreen?style=flat-square)](docs/assessment-report.md)
-[![Components](https://img.shields.io/badge/Components-42-blue?style=flat-square)]()
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=flat-square)]()
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1-blue?style=flat-square)]()
-[![React](https://img.shields.io/badge/React-19.1-blue?style=flat-square)]()
-[![Storybook](https://img.shields.io/badge/Storybook-9.0-ff4785?style=flat-square)]()
+[![Design Tokens Grade](https://img.shields.io/badge/Design%20Tokens-A%2B-brightgreen?style=flat-square)](documentation/)
+[![Components](https://img.shields.io/badge/Components-42-blue?style=flat-square)](https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=flat-square)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1-blue?style=flat-square)](https://tailwindcss.com/)
+[![React](https://img.shields.io/badge/React-19.2-blue?style=flat-square)](https://reactjs.org/)
+[![Storybook](https://img.shields.io/badge/Storybook-10.1-ff4785?style=flat-square)](https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/)
 
 > **🎯 Assessment Grade: A+ (Exceptional)** - _"This is genuinely one of the most sophisticated design token setups I've seen in production... ahead of the curve in several key areas."_
 
@@ -137,7 +137,7 @@ export function App() {
 
 ## 📁 Architecture Overview
 
-```
+```bash
 wylie-dog-ds/
 ├── packages/
 │   ├── tokens/           # 🎨 Design tokens (A+ rated)
@@ -277,7 +277,7 @@ pnpm generate:component rating
 # ✓ Updates package exports
 ```
 
-See [documentation/COMPONENT_WORKFLOW.md](documentation/COMPONENT_WORKFLOW.md) for complete guide.
+See [documentation/guides/component-workflow.md](documentation/guides/component-workflow.md) for complete guide.
 
 ### Commands
 
@@ -392,9 +392,6 @@ Wylie Dog vs. leading design systems:
 - Select, RadioGroup, Slider, Form
 - **Stories**: Complete form compositions with validation
 
-#### **Layout & Structure**
-
-- Card, Separator, AspectRatio, ScrollArea
 - Resizable, Collapsible, Tabs
 - **Stories**: Dashboard and content layouts
 
@@ -447,7 +444,7 @@ See [apps/figma-plugin/README.md](apps/figma-plugin/README.md) for detailed docu
 
 - **📖 [Live Storybook](https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/)** - Interactive component documentation
 - **📚 [Documentation](documentation/)** - Complete project documentation
-  - [Component Development Guide](documentation/COMPONENT_WORKFLOW.md)
+  - [Component Development Guide](documentation/guides/component-workflow.md)
   - [Accessibility Excellence Plan](documentation/ACCESSIBILITY_EXCELLENCE_PLAN.md)
   - [Performance Monitoring](documentation/PERFORMANCE.md)
   - [Testing Setup](documentation/TESTING_SETUP_COMPLETE.md)
@@ -500,16 +497,7 @@ We welcome contributions to the Wylie Dog Design System!
 - 📚 **Documentation**: Improve Storybook stories and guides
 - 🧪 **Testing**: Add visual regression and accessibility tests
 
-### Getting Started
-
 ```bash
-# Fork and clone the repository
-git clone https://github.com/yourusername/wyliedog.git
-cd wylie-dog-ds
-
-# Install dependencies
-pnpm install
-
 # Start development environment
 pnpm dev
 
@@ -519,6 +507,7 @@ pnpm generate:component my-component
 # Submit your contribution
 git checkout -b feature/my-enhancement
 git commit -m "feat: add new component"
+
 # Open pull request
 ```
 
@@ -551,6 +540,6 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-**Built with ❤️ by the Wylie Dog team**
+## Built with ❤️ by the Wylie Dog team
 
 _Setting new standards for design systems with next-generation color science, comprehensive component libraries, and exceptional developer experience._
