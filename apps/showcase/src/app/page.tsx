@@ -156,7 +156,7 @@ export default function Home() {
           href: "#docs",
         }}
         image={
-          <div className="aspect-square rounded-lg bg-gradient-to-br from-primary via-secondary to-accent p-8 flex items-center justify-center">
+          <div className="aspect-square rounded-lg bg-linear-to-br from-primary via-secondary to-accent p-8 flex items-center justify-center">
             <div className="text-white text-center">
               <Code2 className="h-24 w-24 mx-auto mb-4" />
               <p className="text-2xl font-bold">42 Components</p>

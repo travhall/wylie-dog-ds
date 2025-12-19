@@ -49,7 +49,7 @@ export const Default: Story = {
     navigation: navigation,
   },
   render: (args) => (
-    <div className="h-[400px] bg-muted/30">
+    <div className="h-100 bg-muted/30">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">Page Content Below Header</h1>
@@ -73,7 +73,7 @@ export const Transparent: Story = {
     navigation: navigation,
   },
   render: (args) => (
-    <div className="h-[400px] bg-gradient-to-br from-primary/20 to-secondary/20">
+    <div className="h-100 bg-linear-to-br from-primary/20 to-secondary/20">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">
@@ -120,7 +120,7 @@ export const WithCustomActions: Story = {
     ),
   },
   render: (args) => (
-    <div className="h-[400px] bg-muted/30">
+    <div className="h-100 bg-muted/30">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">Custom Actions Example</h1>
@@ -154,7 +154,7 @@ export const MinimalNavigation: Story = {
     ],
   },
   render: (args) => (
-    <div className="h-[300px] bg-background">
+    <div className="h-75 bg-background">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">Minimal Navigation</h1>
