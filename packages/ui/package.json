@@ -232,6 +232,36 @@
       "types": "./dist/carousel.d.ts",
       "import": "./dist/carousel.mjs",
       "require": "./dist/carousel.js"
+    },
+    "./compositions": {
+      "types": "./dist/compositions/index.d.ts",
+      "import": "./dist/compositions/index.mjs",
+      "require": "./dist/compositions/index.js"
+    },
+    "./compositions/site-header": {
+      "types": "./src/compositions/site-header.tsx",
+      "import": "./dist/compositions/site-header.mjs",
+      "require": "./dist/compositions/site-header.js"
+    },
+    "./compositions/site-footer": {
+      "types": "./src/compositions/site-footer.tsx",
+      "import": "./dist/compositions/site-footer.mjs",
+      "require": "./dist/compositions/site-footer.js"
+    },
+    "./compositions/page-layout": {
+      "types": "./src/compositions/page-layout.tsx",
+      "import": "./dist/compositions/page-layout.mjs",
+      "require": "./dist/compositions/page-layout.js"
+    },
+    "./compositions/section-hero": {
+      "types": "./src/compositions/section-hero.tsx",
+      "import": "./dist/compositions/section-hero.mjs",
+      "require": "./dist/compositions/section-hero.js"
+    },
+    "./compositions/section-features": {
+      "types": "./src/compositions/section-features.tsx",
+      "import": "./dist/compositions/section-features.mjs",
+      "require": "./dist/compositions/section-features.js"
     }
   },
   "files": [

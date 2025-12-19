@@ -12,7 +12,7 @@ The design system uses multiple free, open-source tools to ensure optimal perfor
 
 ## Performance Budgets
 
-Our performance budgets are defined in `.performance-budgets.json` and enforced through CI/CD:
+Our performance budgets are defined in `documentation/performance-budgets.json` and enforced through CI/CD:
 
 ### Web Vitals
 

@@ -4,14 +4,19 @@
  * Component Generator for Wylie Dog Design System
  *
  * Generates a new component with:
- * - Component file (packages/ui/src/)
+ * - Component file (packages/ui/src/ OR packages/ui/src/compositions/)
  * - Test file (packages/ui/src/__tests__/)
- * - Storybook story (apps/storybook/stories/)
+ * - Storybook story (apps/storybook/stories/ OR apps/storybook/stories/compositions/)
  * - Auto-updates tsup config
  * - Auto-updates package.json exports
  *
- * Usage: node scripts/generate-component.js <component-name>
- * Example: node scripts/generate-component.js tooltip-2
+ * Usage: 
+ *   node scripts/generate-component.js <component-name>              # Tier 1 primitive
+ *   node scripts/generate-component.js <component-name> --composition # Tier 2 composition
+ * 
+ * Examples: 
+ *   node scripts/generate-component.js tooltip-2
+ *   node scripts/generate-component.js site-header --composition
  */
 
 import fs from "fs/promises";
@@ -52,7 +57,7 @@ function info(message) {
 // Validate component name
 function validateComponentName(name) {
   if (!name) {
-    error("Component name is required. Usage: pnpm generate:component <name>");
+    error("Component name is required. Usage: pnpm generate:component <name> [--composition]");
   }
 
   if (!/^[a-z][a-z0-9-]*$/.test(name)) {
@@ -62,6 +67,11 @@ function validateComponentName(name) {
   }
 
   return name;
+}
+
+// Check if --composition flag is present
+function isComposition() {
+  return process.argv.includes('--composition');
 }
 
 // Convert kebab-case to PascalCase
@@ -81,12 +91,16 @@ function toTitleCase(str) {
 }
 
 // Generate component template
-function generateComponentTemplate(name) {
+function generateComponentTemplate(name, composition = false) {
   const pascalName = toPascalCase(name);
+  const importPath = composition ? "../lib/utils" : "./lib/utils";
+  const primitiveImportComment = composition 
+    ? '\n// Import primitives as needed\n// import { Button } from "../button";\n// import { Card } from "../card";\n' 
+    : '';
 
   return `import React from "react";
-import { cn } from "./lib/utils";
-
+import { cn } from "${importPath}";
+${primitiveImportComment}
 export interface ${pascalName}Props
   extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "default";
@@ -117,13 +131,14 @@ ${pascalName}.displayName = "${pascalName}";
 }
 
 // Generate test template
-function generateTestTemplate(name) {
+function generateTestTemplate(name, composition = false) {
   const pascalName = toPascalCase(name);
+  const importPath = composition ? `../compositions/${name}` : `../${name}`;
 
   return `import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
-import { ${pascalName} } from "../${name}";
+import { ${pascalName} } from "${importPath}";
 
 expect.extend(toHaveNoViolations);
 
@@ -161,23 +176,28 @@ describe("${pascalName}", () => {
 `;
 }
 
-// Generate Storybook story template (Storybook 10.x with latest patterns)
-function generateStoryTemplate(name) {
+// Generate Storybook story template
+function generateStoryTemplate(name, composition = false) {
   const pascalName = toPascalCase(name);
   const titleName = toTitleCase(name);
+  const storyCategory = composition ? "4. Patterns" : "3. Components";
+  const importPath = composition ? `@wyliedog/ui/compositions/${name}` : `@wyliedog/ui/${name}`;
+  const description = composition
+    ? `${titleName} composition pattern combining multiple primitives. This is a Tier 2 pattern component.`
+    : `${titleName} component description. Update this with the actual component purpose and usage.`;
 
   return `import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ${pascalName} } from "@wyliedog/ui/${name}";
+import { ${pascalName} } from "${importPath}";
 
 const meta: Meta<typeof ${pascalName}> = {
-  title: "3. Components/${pascalName}",
+  title: "${storyCategory}/${pascalName}",
   component: ${pascalName},
   parameters: {
     layout: "centered",
     docs: {
       description: {
         component:
-          "${titleName} component description. Update this with the actual component purpose and usage.",
+          "${description}",
       },
     },
   },
@@ -239,68 +259,101 @@ export const Interactive: Story = {
 }
 
 // Check if component already exists
-async function checkExistence(name) {
-  const componentPath = path.join(rootDir, "packages/ui/src", `${name}.tsx`);
+async function checkExistence(name, composition = false) {
+  const componentDir = composition ? "compositions" : "";
+  const componentPath = path.join(
+    rootDir, 
+    "packages/ui/src",
+    componentDir,
+    `${name}.tsx`
+  );
+  const storyDir = composition ? "compositions" : "";
   const storyPath = path.join(
     rootDir,
     "apps/storybook/stories",
+    storyDir,
     `${name}.stories.tsx`
   );
 
   try {
     await fs.access(componentPath);
-    error(`Component '${name}' already exists at packages/ui/src/${name}.tsx`);
+    const location = composition 
+      ? `packages/ui/src/compositions/${name}.tsx`
+      : `packages/ui/src/${name}.tsx`;
+    error(`Component '${name}' already exists at ${location}`);
   } catch {
     // File doesn't exist, which is what we want
   }
 
   try {
     await fs.access(storyPath);
-    error(
-      `Story for '${name}' already exists at apps/storybook/stories/${name}.stories.tsx`
-    );
+    const location = composition
+      ? `apps/storybook/stories/compositions/${name}.stories.tsx`
+      : `apps/storybook/stories/${name}.stories.tsx`;
+    error(`Story for '${name}' already exists at ${location}`);
   } catch {
     // File doesn't exist, which is what we want
   }
 }
 
 // Create component file
-async function createComponentFile(name) {
-  const componentPath = path.join(rootDir, "packages/ui/src", `${name}.tsx`);
-  const content = generateComponentTemplate(name);
+async function createComponentFile(name, composition = false) {
+  const componentDir = composition ? "compositions" : "";
+  const componentPath = path.join(
+    rootDir, 
+    "packages/ui/src",
+    componentDir,
+    `${name}.tsx`
+  );
+  const content = generateComponentTemplate(name, composition);
 
   await fs.writeFile(componentPath, content, "utf-8");
-  success(`Created component: packages/ui/src/${name}.tsx`);
+  const location = composition 
+    ? `packages/ui/src/compositions/${name}.tsx`
+    : `packages/ui/src/${name}.tsx`;
+  success(`Created component: ${location}`);
 }
 
 // Create test file
-async function createTestFile(name) {
+async function createTestFile(name, composition = false) {
   const testPath = path.join(
     rootDir,
     "packages/ui/src/__tests__",
     `${name}.test.tsx`
   );
-  const content = generateTestTemplate(name);
+  const content = generateTestTemplate(name, composition);
 
   await fs.writeFile(testPath, content, "utf-8");
   success(`Created test: packages/ui/src/__tests__/${name}.test.tsx`);
 }
 
 // Create story file
-async function createStoryFile(name) {
+async function createStoryFile(name, composition = false) {
+  const storyDir = composition ? "compositions" : "";
+  
+  // Ensure directory exists
+  if (composition) {
+    const compositionsDir = path.join(rootDir, "apps/storybook/stories", "compositions");
+    await fs.mkdir(compositionsDir, { recursive: true });
+  }
+  
   const storyPath = path.join(
     rootDir,
     "apps/storybook/stories",
+    storyDir,
     `${name}.stories.tsx`
   );
-  const content = generateStoryTemplate(name);
+  const content = generateStoryTemplate(name, composition);
 
   await fs.writeFile(storyPath, content, "utf-8");
-  success(`Created story: apps/storybook/stories/${name}.stories.tsx`);
+  const location = composition
+    ? `apps/storybook/stories/compositions/${name}.stories.tsx`
+    : `apps/storybook/stories/${name}.stories.tsx`;
+  success(`Created story: ${location}`);
 }
 
 // Update tsup.config.ts
-async function updateTsupConfig(name) {
+async function updateTsupConfig(name, composition = false) {
   const configPath = path.join(rootDir, "packages/ui/tsup.config.ts");
   let content = await fs.readFile(configPath, "utf-8");
 
@@ -313,11 +366,12 @@ async function updateTsupConfig(name) {
   }
 
   const entries = match[1];
+  const entryPath = composition ? `src/compositions/${name}.tsx` : `src/${name}.tsx`;
 
   // Check if last entry has a comma, if not add one
   const trimmedEntries = entries.trimEnd();
   const needsComma = !trimmedEntries.endsWith(",");
-  const newEntry = `    "src/${name}.tsx",`;
+  const newEntry = `    "${entryPath}",`;
 
   // Add comma to last entry if needed, then add new entry
   const updatedEntries = needsComma
@@ -333,16 +387,25 @@ async function updateTsupConfig(name) {
 }
 
 // Update package.json exports
-async function updatePackageJson(name) {
+async function updatePackageJson(name, composition = false) {
   const packagePath = path.join(rootDir, "packages/ui/package.json");
   const packageJson = JSON.parse(await fs.readFile(packagePath, "utf-8"));
 
-  // Add new export
-  packageJson.exports[`./${name}`] = {
-    types: `./src/${name}.tsx`,
-    import: `./dist/${name}.mjs`,
-    require: `./dist/${name}.js`,
-  };
+  if (composition) {
+    // Export from compositions directory
+    packageJson.exports[`./compositions/${name}`] = {
+      types: `./src/compositions/${name}.tsx`,
+      import: `./dist/compositions/${name}.mjs`,
+      require: `./dist/compositions/${name}.js`,
+    };
+  } else {
+    // Export from root directory
+    packageJson.exports[`./${name}`] = {
+      types: `./src/${name}.tsx`,
+      import: `./dist/${name}.mjs`,
+      require: `./dist/${name}.js`,
+    };
+  }
 
   await fs.writeFile(
     packagePath,
@@ -353,12 +416,15 @@ async function updatePackageJson(name) {
 }
 
 // Format generated files
-async function formatFiles(name) {
+async function formatFiles(name, composition = false) {
   info("Running Prettier...");
 
+  const componentDir = composition ? "compositions/" : "";
+  const storyDir = composition ? "compositions/" : "";
+  
   try {
     execSync(
-      `pnpm prettier --write "packages/ui/src/${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${name}.stories.tsx" "packages/ui/tsup.config.ts" "packages/ui/package.json"`,
+      `pnpm prettier --write "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx" "packages/ui/tsup.config.ts" "packages/ui/package.json"`,
       { cwd: rootDir, stdio: "inherit" }
     );
     success("Formatted all generated files");
@@ -368,12 +434,15 @@ async function formatFiles(name) {
 }
 
 // Run linting
-async function lintFiles(name) {
+async function lintFiles(name, composition = false) {
   info("Running ESLint...");
+
+  const componentDir = composition ? "compositions/" : "";
+  const storyDir = composition ? "compositions/" : "";
 
   try {
     execSync(
-      `pnpm eslint --fix "packages/ui/src/${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${name}.stories.tsx"`,
+      `pnpm eslint --fix "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx"`,
       { cwd: rootDir, stdio: "inherit" }
     );
     success("Linted all generated files");
@@ -386,53 +455,59 @@ async function lintFiles(name) {
 // Main execution
 async function main() {
   const componentName = process.argv[2];
+  const composition = isComposition();
 
   log("\n🎨 Wylie Dog Component Generator\n", "blue");
 
   // Validate
   validateComponentName(componentName);
-  await checkExistence(componentName);
+  await checkExistence(componentName, composition);
 
   const pascalName = toPascalCase(componentName);
-  info(`Generating component: ${pascalName} (${componentName})`);
+  const tier = composition ? "Tier 2 (Composition)" : "Tier 1 (Primitive)";
+  info(`Generating ${tier} component: ${pascalName} (${componentName})`);
   console.log();
 
   try {
     // Create files
-    await createComponentFile(componentName);
-    await createTestFile(componentName);
-    await createStoryFile(componentName);
+    await createComponentFile(componentName, composition);
+    await createTestFile(componentName, composition);
+    await createStoryFile(componentName, composition);
 
     // Update configs
-    await updateTsupConfig(componentName);
-    await updatePackageJson(componentName);
+    await updateTsupConfig(componentName, composition);
+    await updatePackageJson(componentName, composition);
 
     // Format and lint
-    await formatFiles(componentName);
-    await lintFiles(componentName);
+    await formatFiles(componentName, composition);
+    await lintFiles(componentName, composition);
 
     // Success summary
     console.log();
     log("✨ Component generated successfully!\n", "green");
 
     log("📝 Next steps:", "blue");
-    console.log(
-      `  1. Customize the component in packages/ui/src/${componentName}.tsx`
-    );
+    const componentPath = composition 
+      ? `packages/ui/src/compositions/${componentName}.tsx`
+      : `packages/ui/src/${componentName}.tsx`;
+    const storyPath = composition
+      ? `apps/storybook/stories/compositions/${componentName}.stories.tsx`
+      : `apps/storybook/stories/${componentName}.stories.tsx`;
+    
+    console.log(`  1. Customize the component in ${componentPath}`);
     console.log(`  2. Add variants and props as needed`);
-    console.log(
-      `  3. Enhance stories in apps/storybook/stories/${componentName}.stories.tsx`
-    );
-    console.log(
-      `  4. Add more test cases in packages/ui/src/__tests__/${componentName}.test.tsx`
-    );
+    if (composition) {
+      console.log(`  3. Import and compose primitives from parent directory`);
+      console.log(`  4. Enhance stories in ${storyPath}`);
+    } else {
+      console.log(`  3. Enhance stories in ${storyPath}`);
+      console.log(`  4. Add more test cases in packages/ui/src/__tests__/${componentName}.test.tsx`);
+    }
     console.log();
 
     log("🚀 Development commands:", "blue");
     console.log(`  pnpm dev                     - Start all dev servers`);
-    console.log(
-      `  pnpm --filter storybook dev  - View your story at http://localhost:6006`
-    );
+    console.log(`  pnpm --filter storybook dev  - View your story at http://localhost:6006`);
     console.log(`  pnpm test                    - Run tests`);
     console.log();
   } catch (err) {
