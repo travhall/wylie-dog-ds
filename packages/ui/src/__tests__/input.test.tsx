@@ -1,17 +1,16 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe, toHaveNoViolations } from "jest-axe";
-import { vi } from "vitest";
+import { axe } from "jest-axe";
+import { vi, describe, it, expect } from "vitest";
+import "@testing-library/jest-dom";
 import { Input } from "../input";
-
-expect.extend(toHaveNoViolations);
 
 describe("Input", () => {
   describe("Accessibility", () => {
     it("should pass accessibility audit", async () => {
       const { container } = render(<Input aria-label="Test input" />);
       const results = await axe(container);
-      expect(results).toHaveNoViolations();
+      expect(results.violations).toHaveLength(0);
     });
 
     it("should pass accessibility audit with error state", async () => {
@@ -29,7 +28,7 @@ describe("Input", () => {
         </div>
       );
       const results = await axe(container);
-      expect(results).toHaveNoViolations();
+      expect(results.violations).toHaveLength(0);
     });
 
     it("should have proper ARIA attributes for error state", () => {
@@ -206,7 +205,7 @@ describe("Input", () => {
           <Input aria-label="Test" size={size} />
         );
         const results = await axe(container);
-        expect(results).toHaveNoViolations();
+        expect(results.violations).toHaveLength(0);
         unmount();
       }
     });
@@ -228,7 +227,7 @@ describe("Input", () => {
     it("should apply error styling when error prop is true", () => {
       render(<Input aria-label="Test" error />);
       const input = screen.getByLabelText("Test");
-      expect(input).toHaveClass("border-[var(--color-input-border-error)]");
+      expect(input).toHaveClass("border-(--color-input-border-error)");
     });
 
     it("should accept custom className", () => {
@@ -312,6 +311,7 @@ describe("Input", () => {
       const button = screen.getByRole("button");
 
       fireEvent.change(input, { target: { value: "testuser" } });
+      // cSpell:ignore testuser
       fireEvent.click(button);
 
       expect(handleSubmit).toHaveBeenCalledTimes(1);

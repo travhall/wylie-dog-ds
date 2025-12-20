@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { axe, toHaveNoViolations } from "jest-axe";
+import { axe } from "jest-axe";
+import { describe, it, expect } from "vitest";
+import "@testing-library/jest-dom";
 import { Avatar, AvatarImage, AvatarFallback } from "../avatar";
-
-expect.extend(toHaveNoViolations);
 
 describe("Avatar", () => {
   describe("Accessibility", () => {
@@ -15,7 +15,7 @@ describe("Avatar", () => {
         </Avatar>
       );
       const results = await axe(container);
-      expect(results).toHaveNoViolations();
+      expect(results.violations).toHaveLength(0);
     });
 
     it("should pass accessibility audit for fallback avatar", async () => {
@@ -25,7 +25,7 @@ describe("Avatar", () => {
         </Avatar>
       );
       const results = await axe(container);
-      expect(results).toHaveNoViolations();
+      expect(results.violations).toHaveLength(0);
     });
 
     it("should have img role for profile avatar", () => {
@@ -271,16 +271,13 @@ describe("Avatar", () => {
     it("should have border styling", () => {
       const { container } = render(<Avatar />);
       const avatar = container.firstChild;
-      expect(avatar).toHaveClass(
-        "border",
-        "border-[var(--color-avatar-border)]"
-      );
+      expect(avatar).toHaveClass("border", "border-(--color-avatar-border)");
     });
 
     it("should have background color", () => {
       const { container } = render(<Avatar />);
       const avatar = container.firstChild;
-      expect(avatar).toHaveClass("bg-[var(--color-avatar-background)]");
+      expect(avatar).toHaveClass("bg-(--color-avatar-background)");
     });
 
     it("should apply custom className", () => {
@@ -367,6 +364,7 @@ describe("Avatar", () => {
       render(
         <Avatar>
           <AvatarFallback name="Jean-Paul D'Arcy" />
+          {/* cSpell:ignore D'Arcy */}
         </Avatar>
       );
       // Should extract first letters of parts

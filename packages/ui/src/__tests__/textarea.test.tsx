@@ -1,17 +1,16 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe, toHaveNoViolations } from "jest-axe";
-import { vi } from "vitest";
+import { axe } from "jest-axe";
+import { vi, describe, it, expect } from "vitest";
+import "@testing-library/jest-dom";
 import { Textarea } from "../textarea";
-
-expect.extend(toHaveNoViolations);
 
 describe("Textarea", () => {
   describe("Accessibility", () => {
     it("should pass accessibility audit", async () => {
       const { container } = render(<Textarea aria-label="Test textarea" />);
       const results = await axe(container);
-      expect(results).toHaveNoViolations();
+      expect(results.violations).toHaveLength(0);
     });
 
     it("should pass accessibility audit with error state", async () => {
@@ -24,7 +23,7 @@ describe("Textarea", () => {
         />
       );
       const results = await axe(container);
-      expect(results).toHaveNoViolations();
+      expect(results.violations).toHaveLength(0);
     });
 
     it("should pass accessibility audit with description", async () => {
@@ -39,7 +38,7 @@ describe("Textarea", () => {
         </div>
       );
       const results = await axe(container);
-      expect(results).toHaveNoViolations();
+      expect(results.violations).toHaveLength(0);
     });
 
     it("should have aria-invalid when error is true", () => {
@@ -188,13 +187,13 @@ describe("Textarea", () => {
     it("should apply error styling when error prop is true", () => {
       render(<Textarea aria-label="Test" error />);
       const textarea = screen.getByRole("textbox", { name: "Test" });
-      expect(textarea).toHaveClass("border-[var(--color-input-border-error)]");
+      expect(textarea).toHaveClass("border-(--color-input-border-error)");
     });
 
     it("should apply normal styling when error prop is false", () => {
       render(<Textarea aria-label="Test" error={false} />);
       const textarea = screen.getByRole("textbox", { name: "Test" });
-      expect(textarea).toHaveClass("border-[var(--color-input-border)]");
+      expect(textarea).toHaveClass("border-(--color-input-border)");
     });
   });
 
@@ -207,7 +206,7 @@ describe("Textarea", () => {
           <Textarea aria-label="Test" size={size} />
         );
         const results = await axe(container);
-        expect(results).toHaveNoViolations();
+        expect(results.violations).toHaveLength(0);
         unmount();
       }
     });
@@ -234,7 +233,7 @@ describe("Textarea", () => {
           <Textarea aria-label="Test" resize={resize} />
         );
         const results = await axe(container);
-        expect(results).toHaveNoViolations();
+        expect(results.violations).toHaveLength(0);
         unmount();
       }
     });
@@ -292,9 +291,7 @@ describe("Textarea", () => {
     it("should have hover styles when not in error state", () => {
       render(<Textarea aria-label="Test" error={false} />);
       const textarea = screen.getByRole("textbox", { name: "Test" });
-      expect(textarea).toHaveClass(
-        "hover:bg-[var(--color-input-background-hover)]"
-      );
+      expect(textarea).toHaveClass("hover:bg-(--color-input-background-hover)");
     });
 
     it("should have transition class", () => {
@@ -495,6 +492,7 @@ describe("Textarea", () => {
 
     it("should handle unicode characters", () => {
       const unicodeText = "你好世界 🌍 مرحبا بالعالم";
+      // cSpell:ignore مرحبا بالعالم
       render(<Textarea aria-label="Test" defaultValue={unicodeText} />);
 
       const textarea = screen.getByRole("textbox", {
@@ -507,7 +505,7 @@ describe("Textarea", () => {
       render(<Textarea aria-label="Test" error size="lg" />);
 
       const textarea = screen.getByRole("textbox", { name: "Test" });
-      expect(textarea).toHaveClass("border-[var(--color-input-border-error)]");
+      expect(textarea).toHaveClass("border-(--color-input-border-error)");
       expect(textarea).toHaveClass("min-h-[120px]");
     });
 
@@ -515,7 +513,7 @@ describe("Textarea", () => {
       render(<Textarea aria-label="Test" error resize="none" />);
 
       const textarea = screen.getByRole("textbox", { name: "Test" });
-      expect(textarea).toHaveClass("border-[var(--color-input-border-error)]");
+      expect(textarea).toHaveClass("border-(--color-input-border-error)");
       expect(textarea).toHaveClass("resize-none");
     });
 
@@ -536,7 +534,7 @@ describe("Textarea", () => {
       );
 
       const textarea = screen.getByRole("textbox", { name: "Test" });
-      expect(textarea).toHaveClass("border-[var(--color-input-border-error)]");
+      expect(textarea).toHaveClass("border-(--color-input-border-error)");
       expect(textarea).toHaveClass("min-h-[120px]");
       expect(textarea).toHaveClass("resize-x");
       expect(textarea).toHaveAttribute("aria-describedby", "desc-id error-id");
@@ -562,7 +560,7 @@ describe("Textarea", () => {
       rerender(<Textarea aria-label="Test" error={true} />);
       textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveAttribute("aria-invalid", "true");
-      expect(textarea).toHaveClass("border-[var(--color-input-border-error)]");
+      expect(textarea).toHaveClass("border-(--color-input-border-error)");
     });
   });
 });

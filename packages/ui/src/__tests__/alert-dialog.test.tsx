@@ -1,7 +1,9 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { axe, toHaveNoViolations } from "jest-axe";
+import { axe } from "jest-axe";
+import { vi, describe, it, expect } from "vitest";
+import "@testing-library/jest-dom";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,8 +15,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../alert-dialog";
-
-expect.extend(toHaveNoViolations);
 
 // Test component wrapper
 const TestAlertDialog = ({
@@ -47,7 +47,7 @@ describe("AlertDialog", () => {
     it("should pass accessibility audit when closed", async () => {
       const { container } = render(<TestAlertDialog />);
       const results = await axe(container);
-      expect(results).toHaveNoViolations();
+      expect(results.violations).toHaveLength(0);
     });
 
     it("should have proper role for alert dialog", async () => {
@@ -606,6 +606,9 @@ describe("AlertDialog", () => {
           <AlertDialogTrigger>Open</AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogTitle>Multiple Actions</AlertDialogTitle>
+            <AlertDialogDescription>
+              Choose an action to proceed
+            </AlertDialogDescription>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction onClick={handleSecondary}>

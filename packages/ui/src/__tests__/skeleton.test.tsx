@@ -1,16 +1,16 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { axe, toHaveNoViolations } from "jest-axe";
+import { axe } from "jest-axe";
+import { describe, it, expect } from "vitest";
+import "@testing-library/jest-dom";
 import { Skeleton } from "../skeleton";
-
-expect.extend(toHaveNoViolations);
 
 describe("Skeleton", () => {
   describe("Accessibility", () => {
     it("should pass accessibility audit", async () => {
       const { container } = render(<Skeleton />);
       const results = await axe(container);
-      expect(results).toHaveNoViolations();
+      expect(results.violations).toHaveLength(0);
     });
 
     it("should have status role", () => {
@@ -149,8 +149,8 @@ describe("Skeleton", () => {
       const { container } = render(
         <div className="space-y-2">
           <Skeleton className="h-12 w-12 rounded-full" />
-          <Skeleton className="h-4 w-[250px]" />
-          <Skeleton className="h-4 w-[200px]" />
+          <Skeleton className="h-4 w-62.5" />
+          <Skeleton className="h-4 w-50" />
         </div>
       );
       const skeletons = container.querySelectorAll('[role="status"]');
