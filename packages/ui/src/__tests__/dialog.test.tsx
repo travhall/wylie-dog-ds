@@ -440,7 +440,12 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const overlay = document.querySelector(".backdrop-blur-sm");
-        expect(overlay).toHaveClass("bg-black/50", "fixed", "inset-0", "z-50");
+        expect(overlay).toHaveClass(
+          "bg-(--color-dialog-overlay)",
+          "fixed",
+          "inset-0",
+          "z-50"
+        );
       });
     });
 
@@ -552,7 +557,7 @@ describe("Dialog", () => {
         const description = screen.getByText("This is a dialog description");
         expect(description).toHaveClass(
           "text-sm",
-          "text-[var(--color-text-secondary)]"
+          "text-(--color-text-secondary)"
         );
       });
     });

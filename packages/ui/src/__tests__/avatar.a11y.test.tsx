@@ -274,6 +274,7 @@ describeA11y("Avatar", () => {
           <AvatarFallback name="José María" />
         </Avatar>
       );
+      // cSpell:ignore José María
 
       await expectToPassA11yAudit(container);
       expect(screen.getByText("JM")).toBeInTheDocument();

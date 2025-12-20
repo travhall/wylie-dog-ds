@@ -116,7 +116,7 @@ describe("ScrollArea", () => {
   describe("ScrollBar Component", () => {
     it("should render vertical scrollbar by default", () => {
       const { container } = render(
-        <ScrollArea className="h-[200px]">
+        <ScrollArea className="h-50">
           <div style={{ height: "1000px" }}>Tall content</div>
         </ScrollArea>
       );
@@ -143,7 +143,7 @@ describe("ScrollArea", () => {
 
     it("should have proper vertical styling", () => {
       const { container } = render(
-        <ScrollArea className="h-[200px]">
+        <ScrollArea className="h-50">
           <div style={{ height: "1000px" }}>Tall content</div>
         </ScrollArea>
       );

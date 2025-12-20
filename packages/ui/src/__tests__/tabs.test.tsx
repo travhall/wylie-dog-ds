@@ -402,8 +402,8 @@ describe("Tabs", () => {
 
       const activeTab = screen.getByRole("tab", { name: "Tab 1" });
       expect(activeTab).toHaveClass(
-        "data-[state=active]:bg-[var(--color-background-primary)]",
-        "data-[state=active]:text-[var(--color-text-primary)]",
+        "data-[state=active]:bg-(--color-background-primary)",
+        "data-[state=active]:text-(--color-text-primary)",
         "data-[state=active]:shadow-sm"
       );
     });
@@ -413,8 +413,8 @@ describe("Tabs", () => {
 
       const tab = screen.getByRole("tab", { name: "Tab 2" });
       expect(tab).toHaveClass(
-        "hover:bg-[var(--color-background-tertiary)]",
-        "hover:text-[var(--color-text-primary)]"
+        "hover:bg-(--color-background-tertiary)",
+        "hover:text-(--color-text-primary)"
       );
     });
 
@@ -425,7 +425,7 @@ describe("Tabs", () => {
       expect(tab).toHaveClass(
         "focus-visible:outline-none",
         "focus-visible:ring-2",
-        "focus-visible:ring-[var(--color-border-focus)]",
+        "focus-visible:ring-(--color-border-focus)",
         "focus-visible:ring-offset-2"
       );
     });

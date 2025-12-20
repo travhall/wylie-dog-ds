@@ -116,7 +116,7 @@ describe("Skeleton", () => {
     it("should have background color", () => {
       render(<Skeleton />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("bg-[var(--color-skeleton-background)]");
+      expect(skeleton).toHaveClass("bg-(--color-skeleton-background)");
     });
 
     it("should apply custom className", () => {

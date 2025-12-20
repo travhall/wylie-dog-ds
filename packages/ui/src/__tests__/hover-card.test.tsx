@@ -65,6 +65,7 @@ describe("HoverCard", () => {
       });
     });
 
+    // cSpell:ignore unhovered unhover hoverable amet
     it("should hide content when unhovered", async () => {
       const user = userEvent.setup();
       render(<TestHoverCard />);

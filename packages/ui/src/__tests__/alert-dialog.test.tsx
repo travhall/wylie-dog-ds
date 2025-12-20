@@ -312,7 +312,7 @@ describe("AlertDialog", () => {
 
       await waitFor(() => {
         const overlay = document.querySelector(
-          '[class*="bg-[var(--color-dialog-overlay)]"]'
+          '[class*="bg-(--color-dialog-overlay)"]'
         );
         expect(overlay).toBeInTheDocument();
       });

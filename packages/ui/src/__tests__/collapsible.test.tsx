@@ -215,6 +215,7 @@ describe("Collapsible", () => {
       });
     });
 
+    // cSpell:ignore collapsibles
     it("should work with multiple collapsibles", async () => {
       const user = userEvent.setup();
       render(

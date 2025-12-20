@@ -402,16 +402,14 @@ describe("Alert", () => {
     });
 
     it("should handle long content", () => {
-      const longText = "Lorem ipsum dolor sit amet, ".repeat(50);
+      const longText = "Lorem ipsum dolor sit, ".repeat(50);
       render(
         <Alert>
           <AlertDescription>{longText}</AlertDescription>
         </Alert>
       );
       // Use partial text match for long content
-      expect(
-        screen.getByText(/Lorem ipsum dolor sit amet,/)
-      ).toBeInTheDocument();
+      expect(screen.getByText(/Lorem ipsum dolor sit,/)).toBeInTheDocument();
     });
 
     it("should maintain structure with all variants", () => {

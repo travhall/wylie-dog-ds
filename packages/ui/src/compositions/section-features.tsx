@@ -66,7 +66,7 @@ export const SectionFeatures = React.forwardRef<
                 </h2>
               )}
               {description && (
-                <p className="text-lg text-[var(--color-text-secondary)]">
+                <p className="text-lg text-(--color-text-secondary)">
                   {description}
                 </p>
               )}
@@ -93,7 +93,7 @@ export const SectionFeatures = React.forwardRef<
                       <CardTitle className="text-xl">{feature.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-[var(--color-text-secondary)]">
+                      <p className="text-(--color-text-secondary)">
                         {feature.description}
                       </p>
                     </CardContent>
@@ -120,7 +120,7 @@ export const SectionFeatures = React.forwardRef<
                     <h3 className="text-xl font-semibold">{feature.title}</h3>
 
                     {/* Description */}
-                    <p className="text-[var(--color-text-secondary)]">
+                    <p className="text-(--color-text-secondary)">
                       {feature.description}
                     </p>
                   </div>

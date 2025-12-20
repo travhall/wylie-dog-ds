@@ -15,7 +15,11 @@ import {
 
 expect.extend(toHaveNoViolations);
 
-const TestSheet = ({ side = "right" as const }) => (
+const TestSheet = ({
+  side = "right" as const,
+}: {
+  side?: "top" | "right" | "bottom" | "left";
+}) => (
   <Sheet>
     <SheetTrigger>Open Sheet</SheetTrigger>
     <SheetContent side={side}>

@@ -125,7 +125,7 @@ describe("Tooltip", () => {
       });
     });
 
-    // TODO: Tooltip portal rendering needs async test infrastructure
+    // TODO: Tooltip portal rendering needs async test infrastructure cSpell:ignore unhover
     it.skip("should hide tooltip on unhover", async () => {
       const user = userEvent.setup();
       render(<TestTooltip />);

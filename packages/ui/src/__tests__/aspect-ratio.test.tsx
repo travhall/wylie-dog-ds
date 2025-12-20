@@ -58,7 +58,7 @@ describe("AspectRatio", () => {
       const wrapper = container.firstChild as HTMLElement;
       expect(wrapper).toHaveStyle({ position: "relative" });
     });
-
+    // cSpell:ignore ultrawide
     it("should apply 21:9 (ultrawide) ratio", () => {
       const { container } = render(
         <AspectRatio ratio={21 / 9}>

@@ -11,30 +11,60 @@ import {
 
 expect.extend(toHaveNoViolations);
 
-const TestAccordion = ({
-  type = "single" as const,
-  collapsible = false,
-  defaultValue,
-}: {
-  type?: "single" | "multiple";
-  collapsible?: boolean;
-  defaultValue?: string | string[];
-}) => (
-  <Accordion type={type} collapsible={collapsible} defaultValue={defaultValue}>
-    <AccordionItem value="item-1">
-      <AccordionTrigger>Section 1</AccordionTrigger>
-      <AccordionContent>Content for section 1</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-2">
-      <AccordionTrigger>Section 2</AccordionTrigger>
-      <AccordionContent>Content for section 2</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-3">
-      <AccordionTrigger>Section 3</AccordionTrigger>
-      <AccordionContent>Content for section 3</AccordionContent>
-    </AccordionItem>
-  </Accordion>
-);
+type TestAccordionProps =
+  | {
+      type?: "single";
+      collapsible?: boolean;
+      defaultValue?: string;
+    }
+  | {
+      type: "multiple";
+      defaultValue?: string[];
+    };
+
+const TestAccordion = (props: TestAccordionProps) => {
+  if (props.type === "multiple") {
+    return (
+      <Accordion type="multiple" defaultValue={props.defaultValue}>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Section 1</AccordionTrigger>
+          <AccordionContent>Content for section 1</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Section 2</AccordionTrigger>
+          <AccordionContent>Content for section 2</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Section 3</AccordionTrigger>
+          <AccordionContent>Content for section 3</AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    );
+  }
+
+  const { collapsible = false, defaultValue } = props;
+
+  return (
+    <Accordion
+      type="single"
+      collapsible={collapsible}
+      defaultValue={defaultValue}
+    >
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Section 1</AccordionTrigger>
+        <AccordionContent>Content for section 1</AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Section 2</AccordionTrigger>
+        <AccordionContent>Content for section 2</AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Section 3</AccordionTrigger>
+        <AccordionContent>Content for section 3</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+};
 
 describe("Accordion", () => {
   describe("Accessibility", () => {

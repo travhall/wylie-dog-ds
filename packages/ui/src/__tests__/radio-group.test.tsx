@@ -389,7 +389,7 @@ describe("RadioGroup", () => {
       expect(radios[0]).toHaveClass(
         "focus:outline-none",
         "focus:ring-2",
-        "focus:ring-[var(--color-border-focus)]",
+        "focus:ring-(--color-border-focus)",
         "focus:ring-offset-2"
       );
     });
@@ -413,8 +413,8 @@ describe("RadioGroup", () => {
 
       const checkedRadio = screen.getByRole("radio", { name: "Option 1" });
       expect(checkedRadio).toHaveClass(
-        "data-[state=checked]:border-[var(--color-radio-border-checked)]",
-        "data-[state=checked]:bg-[var(--color-radio-background-checked)]"
+        "data-[state=checked]:border-(--color-radio-border-checked)",
+        "data-[state=checked]:bg-(--color-radio-background-checked)"
       );
     });
 

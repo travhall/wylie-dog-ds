@@ -325,14 +325,14 @@ describe("Select", () => {
       render(<TestSelect error />);
 
       const trigger = screen.getByRole("combobox");
-      expect(trigger).toHaveClass("border-[var(--color-input-border-error)]");
+      expect(trigger).toHaveClass("border-(--color-input-border-error)");
     });
 
     it("should apply normal styling when not in error state", () => {
       render(<TestSelect error={false} />);
 
       const trigger = screen.getByRole("combobox");
-      expect(trigger).toHaveClass("border-[var(--color-input-border)]");
+      expect(trigger).toHaveClass("border-(--color-input-border)");
     });
 
     it("should have disabled styles", () => {

@@ -296,7 +296,7 @@ describe("Popover", () => {
           .closest('[class*="rounded-md"]');
         expect(content).toHaveClass("rounded-md");
         expect(content).toHaveClass("border");
-        expect(content).toHaveClass("bg-[var(--color-popover-background)]");
+        expect(content).toHaveClass("bg-(--color-popover-background)");
         expect(content).toHaveClass("p-4");
       });
     });

@@ -72,7 +72,7 @@ describe("Separator", () => {
     it("should apply horizontal styles by default", () => {
       const { container } = render(<Separator />);
       const separator = container.querySelector("[data-orientation]");
-      expect(separator).toHaveClass("h-[1px]", "w-full");
+      expect(separator).toHaveClass("h-px", "w-full");
     });
 
     it("should apply horizontal styles when explicitly set", () => {
@@ -80,7 +80,7 @@ describe("Separator", () => {
       const separator = container.querySelector(
         '[data-orientation="horizontal"]'
       );
-      expect(separator).toHaveClass("h-[1px]", "w-full");
+      expect(separator).toHaveClass("h-px", "w-full");
     });
 
     it("should apply vertical styles", () => {
@@ -88,7 +88,7 @@ describe("Separator", () => {
       const separator = container.querySelector(
         '[data-orientation="vertical"]'
       );
-      expect(separator).toHaveClass("h-full", "w-[1px]");
+      expect(separator).toHaveClass("h-full", "w-px");
     });
 
     it("should apply custom className", () => {
@@ -101,7 +101,7 @@ describe("Separator", () => {
       const { container } = render(<Separator />);
       const separator = container.querySelector("[data-orientation]");
       expect(separator).toHaveClass("shrink-0");
-      expect(separator).toHaveClass("bg-[var(--color-border-primary)]");
+      expect(separator).toHaveClass("bg-(--color-border-primary)");
     });
   });
 
@@ -184,7 +184,7 @@ describe("Separator", () => {
         <Separator orientation="vertical" className="bg-red-500" />
       );
       const separator = container.querySelector("[data-orientation]");
-      expect(separator).toHaveClass("w-[1px]", "h-full", "bg-red-500");
+      expect(separator).toHaveClass("w-px", "h-full", "bg-red-500");
     });
   });
 });

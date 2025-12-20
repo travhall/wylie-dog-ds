@@ -278,7 +278,7 @@ describe("Switch", () => {
       render(<Switch aria-label="Test" checked />);
       const switchElement = screen.getByRole("switch");
       expect(switchElement).toHaveClass(
-        "data-[state=checked]:bg-[var(--color-interactive-primary)]"
+        "data-[state=checked]:bg-(--color-interactive-primary)"
       );
     });
 
@@ -286,7 +286,7 @@ describe("Switch", () => {
       render(<Switch aria-label="Test" checked={false} />);
       const switchElement = screen.getByRole("switch");
       expect(switchElement).toHaveClass(
-        "data-[state=unchecked]:bg-[var(--color-interactive-secondary)]"
+        "data-[state=unchecked]:bg-(--color-interactive-secondary)"
       );
     });
 

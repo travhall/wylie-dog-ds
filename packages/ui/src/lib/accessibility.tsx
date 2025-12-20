@@ -4,6 +4,7 @@
  * These utilities help with common accessibility patterns and focus management
  */
 
+import type React from "react";
 import { useEffect, useRef, useCallback } from "react";
 
 /**
@@ -227,7 +228,7 @@ export function SkipLink({ href, children, className = "" }: SkipLinkProps) {
   return (
     <a
       href={href}
-      className={`sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-[var(--color-background-primary)] focus:text-[var(--color-text-primary)] focus:border focus:border-[var(--color-border-focus)] ${className}`}
+      className={`sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-(--color-background-primary) focus:text-(--color-text-primary) focus:border focus:border-(--color-border-focus) ${className}`}
       onFocus={(e) => e.currentTarget.scrollIntoView()}
     >
       {children}
@@ -240,7 +241,7 @@ export function SkipLink({ href, children, className = "" }: SkipLinkProps) {
  */
 export interface ScreenReaderOnlyProps {
   children: React.ReactNode;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
 }
 
 export function ScreenReaderOnly({

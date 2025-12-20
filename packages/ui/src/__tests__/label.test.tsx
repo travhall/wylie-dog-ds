@@ -97,14 +97,14 @@ describe("Label", () => {
       render(<Label error>Error Label</Label>);
 
       const label = screen.getByText("Error Label");
-      expect(label).toHaveClass("text-[var(--color-text-danger)]");
+      expect(label).toHaveClass("text-(--color-text-danger)");
     });
 
     it("should apply normal styling when error prop is false", () => {
       render(<Label error={false}>Normal Label</Label>);
 
       const label = screen.getByText("Normal Label");
-      expect(label).toHaveClass("text-[var(--color-text-primary)]");
+      expect(label).toHaveClass("text-(--color-text-primary)");
     });
   });
 
@@ -205,7 +205,7 @@ describe("Label", () => {
       const label = screen.getByText("Important Field");
       const indicator = screen.getByLabelText("required");
 
-      expect(label).toHaveClass("text-[var(--color-text-danger)]");
+      expect(label).toHaveClass("text-(--color-text-danger)");
       expect(indicator).toBeInTheDocument();
     });
   });

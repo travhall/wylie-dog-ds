@@ -486,7 +486,7 @@ describe("Card", () => {
     });
 
     it("should handle very long content", () => {
-      const longContent = "Lorem ipsum dolor sit amet. ".repeat(100);
+      const longContent = "Lorem ipsum dolor sit. ".repeat(100);
       render(
         <Card>
           <CardContent>{longContent}</CardContent>
@@ -494,9 +494,7 @@ describe("Card", () => {
       );
 
       // Use a partial match for very long text
-      expect(
-        screen.getByText(/Lorem ipsum dolor sit amet/)
-      ).toBeInTheDocument();
+      expect(screen.getByText(/Lorem ipsum dolor sit/)).toBeInTheDocument();
     });
 
     it("should support multiple CardContent sections", () => {

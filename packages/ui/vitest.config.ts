@@ -34,6 +34,7 @@ export default defineConfig({
       "src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}",
       "src/__tests__/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}",
     ],
+    exclude: ["**/*.d.ts"],
     // Accessibility-specific test patterns
     testNamePattern: process.env.TEST_PATTERN,
   },

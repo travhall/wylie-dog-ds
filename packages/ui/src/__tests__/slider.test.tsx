@@ -444,7 +444,7 @@ describe("Slider", () => {
       );
 
       const range = container.querySelector(
-        '[class*="bg-[var(--color-slider-range)]"]'
+        '[class*="bg-(--color-slider-range)"]'
       );
       expect(range).toBeInTheDocument();
     });
