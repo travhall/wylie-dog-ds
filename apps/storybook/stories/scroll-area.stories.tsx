@@ -56,29 +56,40 @@ export const Horizontal: Story = {
 export const LongContent: Story = {
   render: () => (
     <ScrollArea className="h-50 w-87.5 rounded-md border p-4">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-      vehicula massa ut nulla placerat, at tempor erat congue. Sed euismod lorem
-      vel consectetur bibendum. Nulla facilisi. Donec auctor, nisl eget
-      ultricies tincidunt, nunc nisl aliquet nisl, eget aliquam nisl nisl sit
-      amet lorem. Sed auctor, nisl eget ultricies tincidunt, nunc nisl aliquet
-      nisl, eget aliquam nisl nisl sit amet lorem.
+      Rich beings for pretty waiting be known bits cosmic for arena sky star
+      stuff. Explosion good circumnavigated ve extraordinary white hearts far
+      vast there not preserve. Thousands tingling moving fluff away white mote
+      for network the carbon in our apple pies calls to us awaits finite but
+      unbounded. Death wormholes finite but unbounded venture invent wormholes
+      mote that awaits suspended away circumnavigated take something incredible
+      stirred. Dust vast billions gravity heavy are awaits interiors upon still
+      astonishment require figures.
       <br />
       <br />
-      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-      cubilia curae; Sed euismod lorem vel consectetur bibendum. Nulla facilisi.
-      Donec auctor, nisl eget ultricies tincidunt, nunc nisl aliquet nisl, eget
-      aliquam nisl nisl sit amet lorem.
+      Cambrian moving vastness bits only starlight require prime circumnavigated
+      something incredible s circumnavigated sea of tranquility good. Small eye
+      small only moving still the carbon in our apple pies euclid as a patch of
+      light edge. Little vanquish the carbon in our apple pies pale blue dot
+      atoms glorious still by rich. Love calls to us extraordinary good science
+      syntheses hundreds cherish cluster helmets s for network. Paroxysm sunbeam
+      dawn death love one gravity through globular hundreds awaits cosmic.
       <br />
       <br />
-      Pellentesque vehicula massa ut nulla placerat, at tempor erat congue. Sed
-      euismod lorem vel consectetur bibendum. Nulla facilisi. Donec auctor, nisl
-      eget ultricies tincidunt, nunc nisl aliquet nisl, eget aliquam nisl nisl
-      sit amet lorem. Sed auctor, nisl eget ultricies tincidunt, nunc nisl
-      aliquet nisl, eget aliquam nisl nisl sit amet lorem.
+      Flourish vastness white helmets edge stirred little venture stellar
+      alchemy pretty. Atoms figures science cambrian impossible death glorious
+      number thousands. Dawn rich moving thousands ever network globular number
+      still collapsing stars preserve. Questions collapsing stars made galaxy
+      rise vanquish ghostly cambrian not gravity flourish ever sea of
+      tranquility. Vastness seed that spine ve spine evidence wormholes.
       <br />
       <br />
-      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-      cubilia curae; Sed euismod lorem vel consectetur bibendum. Nulla facilisi.
+      Impossible finite but unbounded dust circumnavigated edge that
+      circumnavigated white brain from which we spring science. Vanquish through
+      energy how death invent only hidden suspended vanquish courage. Are vast
+      wormholes helmets impossible flourish dust through dancing vast universe
+      white heavy sunrise claims. Sunrise harvesting impossible ghostly still
+      global claims collapsing stars. Global spine fugue very collapsing stars
+      kindling far thousands moving.
     </ScrollArea>
   ),
 };
@@ -133,8 +144,8 @@ export const ChatMessages: Story = {
                     : "bg-gray-100 text-gray-900"
                 }`}
               >
-                This is message {i + 1}. Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit.
+                This is message {i + 1}. Ever how the carbon in our apple pies
+                finite but unbounded hidden fugue more still.
               </div>
             </div>
           ))}

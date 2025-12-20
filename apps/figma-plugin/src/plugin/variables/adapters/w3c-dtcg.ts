@@ -16,30 +16,23 @@ export class W3CDTCGAdapter implements FormatAdapter {
     let confidence = 0;
     const warnings: string[] = [];
 
-    // Check for flat object structure with W3C compliance markers
+    // Check for object structure with W3C compliance markers
     if (typeof data === "object" && !Array.isArray(data) && data !== null) {
       confidence += 0.2;
 
-      const keys = Object.keys(data);
-      let w3cCompliantTokens = 0;
-
-      // Check for W3C DTCG token structure ($type and $value)
-      for (const key of keys.slice(0, 10)) {
-        const token = data[key];
-        if (token && typeof token === "object") {
-          if (token.$type && token.$value !== undefined) {
-            w3cCompliantTokens++;
-          }
-        }
-      }
-
-      if (w3cCompliantTokens > 0) {
-        confidence += (w3cCompliantTokens / Math.min(keys.length, 10)) * 0.6;
-      }
-
       // Check for W3C DTCG specific metadata
-      if (data.$schema || data.$description || data.$extensions) {
-        confidence += 0.2;
+      if (
+        data.$schema?.includes("design-tokens") ||
+        data.$description ||
+        data.$extensions
+      ) {
+        confidence += 0.3;
+      }
+
+      // Recursively check for W3C DTCG token structure ($type and $value)
+      const w3cTokenCount = this.countW3CTokens(data);
+      if (w3cTokenCount > 0) {
+        confidence += 0.5;
       }
     }
 
@@ -49,6 +42,28 @@ export class W3CDTCGAdapter implements FormatAdapter {
       structure: this.analyzeStructure(data),
       warnings,
     };
+  }
+
+  private countW3CTokens(obj: any, depth = 0): number {
+    if (depth > 10) return 0; // Prevent infinite recursion
+
+    let count = 0;
+
+    if (typeof obj === "object" && obj !== null && !Array.isArray(obj)) {
+      // Check if this object is a token
+      if (obj.$type && obj.$value !== undefined) {
+        return 1;
+      }
+
+      // Recursively check children (skip $ metadata keys)
+      for (const [key, value] of Object.entries(obj)) {
+        if (!key.startsWith("$")) {
+          count += this.countW3CTokens(value, depth + 1);
+        }
+      }
+    }
+
+    return count;
   }
 
   normalize(data: any): NormalizationResult {
@@ -108,7 +123,10 @@ export class W3CDTCGAdapter implements FormatAdapter {
   private organizeIntoCollections(data: any): Record<string, any> {
     const collections: Record<string, any> = {};
 
-    for (const [tokenPath, tokenData] of Object.entries(data)) {
+    // Recursively flatten the nested W3C DTCG structure
+    const flatTokens = this.flattenTokens(data);
+
+    for (const [tokenPath, tokenData] of Object.entries(flatTokens)) {
       // Skip metadata fields
       if (tokenPath.startsWith("$")) continue;
 
@@ -126,17 +144,49 @@ export class W3CDTCGAdapter implements FormatAdapter {
     return collections;
   }
 
+  private flattenTokens(obj: any, prefix = ""): Record<string, any> {
+    const flattened: Record<string, any> = {};
+
+    for (const [key, value] of Object.entries(obj)) {
+      // Skip metadata fields at root level
+      if (!prefix && key.startsWith("$")) continue;
+
+      const path = prefix ? `${prefix}.${key}` : key;
+
+      if (value && typeof value === "object" && !Array.isArray(value)) {
+        // Check if this is a token (has $type and $value)
+        const tokenObj = value as any;
+        if (tokenObj.$type && tokenObj.$value !== undefined) {
+          flattened[path] = value;
+        } else {
+          // Recurse into nested groups
+          Object.assign(flattened, this.flattenTokens(value, path));
+        }
+      }
+    }
+
+    return flattened;
+  }
+
   private transformCollection(name: string, tokens: any): any {
     const variables: Record<string, ProcessedToken> = {};
 
     for (const [tokenPath, tokenData] of Object.entries(tokens)) {
       // W3C DTCG tokens should already be in correct format
       const token = tokenData as any;
-      variables[tokenPath] = {
+
+      // Build the ProcessedToken, only including defined properties
+      const processedToken: ProcessedToken = {
         $type: token.$type,
         $value: token.$value,
-        $description: token.$description,
       };
+
+      // Add optional properties if they exist
+      if (token.$description) {
+        processedToken.$description = token.$description;
+      }
+
+      variables[tokenPath] = processedToken;
     }
 
     // Create collection structure matching expected format
@@ -152,26 +202,24 @@ export class W3CDTCGAdapter implements FormatAdapter {
   }
 
   private analyzeStructure(data: any): StructureInfo {
-    let tokenCount = 0;
+    // Use the flattened tokens to get accurate counts
+    const flatTokens = this.flattenTokens(data);
+    const tokenCount = Object.keys(flatTokens).length;
+
     let referenceCount = 0;
 
-    if (typeof data === "object" && data !== null && !Array.isArray(data)) {
-      const keys = Object.keys(data).filter((key) => !key.startsWith("$"));
-      tokenCount = keys.length;
-
-      // Count references
-      for (const token of Object.values(data)) {
-        if (token && typeof token === "object") {
-          const value = (token as any).$value;
-          if (typeof value === "string" && value.includes("{")) {
-            referenceCount++;
-          }
+    // Count references in flattened tokens
+    for (const token of Object.values(flatTokens)) {
+      if (token && typeof token === "object") {
+        const value = (token as any).$value;
+        if (typeof value === "string" && value.includes("{")) {
+          referenceCount++;
         }
       }
     }
 
     return {
-      hasCollections: false,
+      hasCollections: tokenCount > 0,
       hasModes: false,
       hasArrayWrapper: false,
       tokenCount,

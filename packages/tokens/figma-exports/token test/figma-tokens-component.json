@@ -1,0 +1,583 @@
+[
+  {
+    "component": {
+      "modes": {
+        "Light": {
+          "Badge": {
+            "default": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.primary}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.inverse}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.primary}"
+              }
+            },
+            "secondary": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.secondary}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.primary}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Border.secondary}"
+              }
+            },
+            "success": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.success}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.inverse}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.success}"
+              }
+            },
+            "warning": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.warning}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.inverse}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.warning}"
+              }
+            },
+            "destructive": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Surface.danger}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.danger}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Border.danger}"
+              }
+            },
+            "outline": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Background.primary}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.primary}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Border.primary}"
+              }
+            }
+          },
+          "Button": {
+            "primary": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.primary}"
+              },
+              "background-hover": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.primary-hover}"
+              },
+              "background-active": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.primary-active}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.inverse}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.primary}"
+              }
+            },
+            "secondary": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.secondary}"
+              },
+              "background-hover": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.secondary-hover}"
+              },
+              "background-active": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.secondary-active}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.primary}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Border.secondary}"
+              }
+            },
+            "outline": {
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.primary}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.brand}"
+              },
+              "hover": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.secondary}"
+              }
+            },
+            "ghost": {
+              "background-hover": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.secondary}"
+              },
+              "background-active": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Interactive.secondary-active}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.primary}"
+              }
+            },
+            "link": {
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.brand}"
+              }
+            }
+          },
+          "Input": {
+            "background": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Background.primary}"
+            },
+            "background-hover": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Background.secondary}"
+            },
+            "border": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Border.primary}"
+            },
+            "border-focus": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Border.focus}"
+            },
+            "border-error": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Border.danger}"
+            },
+            "text": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Text.primary}"
+            },
+            "placeholder": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Text.tertiary}"
+            }
+          },
+          "Alert": {
+            "default": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Surface.brand}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.brand}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Border.brand}"
+              }
+            },
+            "success": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Surface.success}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.success}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Border.success}"
+              }
+            },
+            "warning": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Surface.warning}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.warning}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Border.warning}"
+              }
+            },
+            "destructive": {
+              "background": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Surface.danger}"
+              },
+              "text": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Text.danger}"
+              },
+              "border": {
+                "$scopes": ["ALL_SCOPES"],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "semantic",
+                "$value": "{Color.Border.danger}"
+              }
+            }
+          },
+          "Card": {
+            "background": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Surface.raised}"
+            },
+            "border": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Border.secondary}"
+            },
+            "title": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Text.primary}"
+            },
+            "description": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Text.secondary}"
+            }
+          },
+          "Dialog": {
+            "background": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Surface.overlay}"
+            },
+            "border": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Border.secondary}"
+            },
+            "title": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Text.primary}"
+            },
+            "description": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Text.secondary}"
+            }
+          },
+          "Navigation": {
+            "background": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Background.primary}"
+            },
+            "text": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Text.primary}"
+            },
+            "text-active": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Text.brand}"
+            },
+            "indicator": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Interactive.primary}"
+            },
+            "border": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Border.secondary}"
+            }
+          },
+          "Table": {
+            "header-background": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Background.secondary}"
+            },
+            "row-hover": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Background.secondary}"
+            },
+            "border": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Border.primary}"
+            },
+            "text": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Text.primary}"
+            },
+            "header-text": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Text.primary}"
+            }
+          },
+          "Tooltip": {
+            "background": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Background.inverse}"
+            },
+            "text": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Text.inverse}"
+            },
+            "border": {
+              "$scopes": ["ALL_SCOPES"],
+              "$type": "color",
+              "$libraryName": "",
+              "$collectionName": "semantic",
+              "$value": "{Color.Background.inverse}"
+            }
+          }
+        }
+      }
+    }
+  }
+]
