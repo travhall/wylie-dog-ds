@@ -36,8 +36,10 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
     ref
   ) => {
     const variants = {
-      default: "bg-muted/50 border-t border-border",
-      minimal: "bg-background border-t border-border",
+      default:
+        "bg-[var(--color-background-secondary)] border-t border-[var(--color-border-primary)]",
+      minimal:
+        "bg-[var(--color-background-primary)] border-t border-[var(--color-border-primary)]",
     };
 
     const currentYear = new Date().getFullYear();
@@ -60,7 +62,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                       <span className="text-lg font-bold">Logo</span>
                     </div>
                   )}
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-(--color-text-secondary)">
                     Building amazing experiences with modern design systems.
                   </p>
                 </div>
@@ -76,7 +78,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                         <li key={linkIndex}>
                           <a
                             href={link.href}
-                            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                            className="text-sm text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
                           >
                             {link.label}
                           </a>
@@ -93,7 +95,9 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
 
           {/* Bottom Bar */}
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">{copyrightText}</p>
+            <p className="text-sm text-(--color-text-secondary)">
+              {copyrightText}
+            </p>
 
             {/* Social Links */}
             {socialLinks.length > 0 && (
@@ -103,7 +107,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
                   >
                     {social.icon || social.label}
                   </a>

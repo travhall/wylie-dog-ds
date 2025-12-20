@@ -35,7 +35,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <div className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+    <div className="flex h-37.5 w-75 items-center justify-center rounded-md border border-dashed text-sm">
       <ContextMenu>
         <ContextMenuTrigger className="flex h-full w-full items-center justify-center">
           Right click here
@@ -66,7 +66,7 @@ export const Default: Story = {
 
 export const WithSubmenus: Story = {
   render: () => (
-    <div className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+    <div className="flex h-37.5 w-75 items-center justify-center rounded-md border border-dashed text-sm">
       <ContextMenu>
         <ContextMenuTrigger className="flex h-full w-full items-center justify-center">
           Right click for submenu
@@ -117,7 +117,7 @@ export const WithSubmenus: Story = {
 
 export const WithCheckboxAndRadio: Story = {
   render: () => (
-    <div className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+    <div className="flex h-37.5 w-75 items-center justify-center rounded-md border border-dashed text-sm">
       <ContextMenu>
         <ContextMenuTrigger className="flex h-full w-full items-center justify-center">
           Right click for options
@@ -245,7 +245,7 @@ export const TextEditor: Story = {
     <div className="space-y-4 w-full max-w-lg">
       <h3 className="text-lg font-semibold">Text Editor</h3>
       <ContextMenu>
-        <ContextMenuTrigger className="min-h-[200px] w-full rounded-md border p-4 text-sm">
+        <ContextMenuTrigger className="min-h-50 w-full rounded-md border p-4 text-sm">
           <div className="space-y-2">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -445,7 +445,7 @@ export const Accessibility: Story = {
       </div>
 
       <ContextMenu>
-        <ContextMenuTrigger className="flex h-[100px] w-full items-center justify-center rounded-md border border-dashed text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <ContextMenuTrigger className="flex h-25 w-full items-center justify-center rounded-md border border-dashed text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
           Accessible Context Menu
         </ContextMenuTrigger>
         <ContextMenuContent className="w-64">

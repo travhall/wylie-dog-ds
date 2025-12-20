@@ -32,13 +32,13 @@ export const Checkbox = React.forwardRef<
       ref={ref}
       className={cn(
         "peer shrink-0 rounded-sm border-2 transition-all",
-        "focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)] focus:ring-offset-2",
+        "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
         "disabled:cursor-not-allowed disabled:opacity-50",
-        "data-[state=checked]:bg-[var(--color-interactive-primary)] data-[state=checked]:text-[var(--color-text-inverse)]",
-        "data-[state=checked]:border-[var(--color-interactive-primary)]",
+        "data-[state=checked]:bg-(--color-interactive-primary) data-[state=checked]:text-(--color-text-inverse)",
+        "data-[state=checked]:border-(--color-interactive-primary)",
         error
-          ? "border-[var(--color-border-danger)]"
-          : "border-[var(--color-border-primary)] hover:border-[var(--color-border-secondary)]",
+          ? "border-(--color-border-danger)"
+          : "border-(--color-border-primary) hover:border-(--color-border-secondary)",
         sizes[size],
         className
       )}

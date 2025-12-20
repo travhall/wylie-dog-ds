@@ -29,10 +29,10 @@ export const Switch = React.forwardRef<
     <SwitchPrimitive.Root
       className={cn(
         "peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent",
-        "transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)] focus:ring-offset-2",
+        "transition-colors focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
         "disabled:cursor-not-allowed disabled:opacity-50",
-        "data-[state=checked]:bg-[var(--color-interactive-primary)]",
-        "data-[state=unchecked]:bg-[var(--color-interactive-secondary)]",
+        "data-[state=checked]:bg-(--color-interactive-primary)",
+        "data-[state=unchecked]:bg-(--color-interactive-secondary)",
         sizes[size],
         className
       )}
@@ -41,7 +41,7 @@ export const Switch = React.forwardRef<
     >
       <SwitchPrimitive.Thumb
         className={cn(
-          "pointer-events-none block rounded-full bg-[var(--color-background-primary)] shadow-lg ring-0 transition-transform",
+          "pointer-events-none block rounded-full bg-(--color-background-primary) shadow-lg ring-0 transition-transform",
           thumbSizes[size]
         )}
       />

@@ -49,12 +49,12 @@ const PaginationLink = ({
     aria-current={isActive ? "page" : undefined}
     className={cn(
       "flex h-10 w-10 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors",
-      "hover:bg-[var(--color-pagination-hover)] hover:text-[var(--color-pagination-text-hover)]",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-border-focus)] focus-visible:ring-offset-2",
+      "hover:bg-(--color-pagination-hover) hover:text-(--color-pagination-text-hover)",
+      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
       "disabled:pointer-events-none disabled:opacity-50",
       isActive
-        ? "bg-[var(--color-pagination-active)] text-[var(--color-pagination-text-active)]"
-        : "text-[var(--color-pagination-text)]",
+        ? "bg-(--color-pagination-active) text-(--color-pagination-text-active)"
+        : "text-(--color-pagination-text)",
       className
     )}
     {...props}

@@ -41,7 +41,7 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
       <div
         ref={ref}
         className={cn(
-          "animate-pulse bg-[var(--color-skeleton-background)]",
+          "animate-pulse bg-(--color-skeleton-background)",
           variants[variant],
           size && sizes[size],
           className

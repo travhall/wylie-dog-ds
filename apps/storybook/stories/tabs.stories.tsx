@@ -31,7 +31,7 @@ export const Default: Story = {
     defaultValue: "account",
   },
   render: (args) => (
-    <Tabs {...args} className="w-[400px]">
+    <Tabs {...args} className="w-100">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
@@ -39,11 +39,13 @@ export const Default: Story = {
       <TabsContent value="account" className="space-y-2">
         <div className="space-y-1">
           <Label htmlFor="name">Name</Label>
-          <Input id="name" defaultValue="Pedro Duarte" />
+          <Input id="name" defaultValue="Pedro Duarte" />{" "}
+          {/* cSpell:ignore Pedro Duarte */}
         </div>
         <div className="space-y-1">
           <Label htmlFor="username">Username</Label>
-          <Input id="username" defaultValue="@peduarte" />
+          <Input id="username" defaultValue="@peduarte" />{" "}
+          {/* cSpell:ignore peduarte */}
         </div>
       </TabsContent>
       <TabsContent value="password" className="space-y-2">
@@ -62,7 +64,7 @@ export const Default: Story = {
 
 export const WithCards: Story = {
   render: () => (
-    <Tabs defaultValue="overview" className="w-[600px]">
+    <Tabs defaultValue="overview" className="w-150">
       <TabsList>
         <TabsTrigger value="overview">Overview</TabsTrigger>
         <TabsTrigger value="analytics">Analytics</TabsTrigger>

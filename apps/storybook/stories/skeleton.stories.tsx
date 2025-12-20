@@ -98,13 +98,13 @@ export const CircularSizes: Story = {
 
 export const CardLoading: Story = {
   render: () => (
-    <Card className="w-[350px]">
+    <Card className="w-87.5">
       <CardHeader>
         <div className="flex items-center space-x-4">
           <Skeleton variant="circular" className="w-12 h-12" />
           <div className="space-y-2 flex-1">
-            <Skeleton className="h-4 w-[250px]" />
-            <Skeleton className="h-4 w-[200px]" />
+            <Skeleton className="h-4 w-62.5" />
+            <Skeleton className="h-4 w-50" />
           </div>
         </div>
       </CardHeader>
@@ -128,7 +128,7 @@ export const CardLoading: Story = {
 
 export const TableLoading: Story = {
   render: () => (
-    <div className="w-[600px] space-y-4">
+    <div className="w-150 space-y-4">
       <div className="flex justify-between items-center">
         <Skeleton className="h-6 w-32" />
         <Skeleton className="h-8 w-24" />
@@ -169,7 +169,7 @@ export const TableLoading: Story = {
 
 export const ListLoading: Story = {
   render: () => (
-    <div className="w-[400px] space-y-4">
+    <div className="w-100 space-y-4">
       <div className="flex justify-between items-center">
         <Skeleton className="h-6 w-24" />
         <Skeleton className="h-8 w-20" />
@@ -196,7 +196,7 @@ export const ListLoading: Story = {
 
 export const FormLoading: Story = {
   render: () => (
-    <div className="w-[400px] space-y-6">
+    <div className="w-100 space-y-6">
       <div>
         <Skeleton className="h-6 w-32 mb-4" />
 
@@ -233,7 +233,7 @@ export const FormLoading: Story = {
 
 export const DashboardLoading: Story = {
   render: () => (
-    <div className="w-[800px] space-y-6">
+    <div className="w-200 space-y-6">
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>

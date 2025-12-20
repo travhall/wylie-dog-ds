@@ -35,7 +35,13 @@ export const Default: Story = {
       <Calendar
         mode="single"
         selected={date}
-        onSelect={setDate}
+        onSelect={(selectedDate) => {
+          if (selectedDate instanceof Date) {
+            setDate(selectedDate);
+          } else {
+            setDate(undefined);
+          }
+        }}
         className="rounded-md border"
       />
     );
@@ -50,7 +56,11 @@ export const Multiple: Story = {
       <Calendar
         mode="multiple"
         selected={dates}
-        onSelect={setDates}
+        onSelect={(selectedDates) => {
+          if (Array.isArray(selectedDates)) {
+            setDates(selectedDates);
+          }
+        }}
         className="rounded-md border"
       />
     );
@@ -65,7 +75,15 @@ export const Range: Story = {
       <Calendar
         mode="range"
         selected={range}
-        onSelect={setRange}
+        onSelect={(selectedRange) => {
+          if (
+            selectedRange &&
+            typeof selectedRange === "object" &&
+            "from" in selectedRange
+          ) {
+            setRange(selectedRange);
+          }
+        }}
         className="rounded-md border"
       />
     );
@@ -86,7 +104,15 @@ export const WithPreselected: Story = {
       <Calendar
         mode="range"
         selected={range}
-        onSelect={setRange}
+        onSelect={(selectedRange) => {
+          if (
+            selectedRange &&
+            typeof selectedRange === "object" &&
+            "from" in selectedRange
+          ) {
+            setRange(selectedRange);
+          }
+        }}
         className="rounded-md border"
       />
     );
@@ -104,7 +130,13 @@ export const InForm: Story = {
           <Calendar
             mode="single"
             selected={date}
-            onSelect={setDate}
+            onSelect={(selectedDate) => {
+              if (selectedDate instanceof Date) {
+                setDate(selectedDate);
+              } else {
+                setDate(undefined);
+              }
+            }}
             className="rounded-md border"
           />
         </div>

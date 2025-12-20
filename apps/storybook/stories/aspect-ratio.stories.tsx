@@ -27,7 +27,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <div className="w-[300px]">
+    <div className="w-75">
       <AspectRatio ratio={16 / 9}>
         <div className="bg-gray-200 w-full h-full flex items-center justify-center text-gray-600">
           16:9 Aspect Ratio
@@ -39,7 +39,7 @@ export const Default: Story = {
 
 export const Square: Story = {
   render: () => (
-    <div className="w-[200px]">
+    <div className="w-50">
       <AspectRatio ratio={1}>
         <div className="bg-blue-100 w-full h-full flex items-center justify-center text-blue-700">
           1:1 Square
@@ -51,7 +51,7 @@ export const Square: Story = {
 
 export const Portrait: Story = {
   render: () => (
-    <div className="w-[200px]">
+    <div className="w-50">
       <AspectRatio ratio={3 / 4}>
         <div className="bg-green-100 w-full h-full flex items-center justify-center text-green-700">
           3:4 Portrait
@@ -66,7 +66,7 @@ export const CommonRatios: Story = {
     <div className="space-y-6">
       <div className="space-y-2">
         <h4 className="text-sm font-medium">16:9 Widescreen</h4>
-        <div className="w-[300px]">
+        <div className="w-75">
           <AspectRatio ratio={16 / 9}>
             <div className="bg-red-100 w-full h-full flex items-center justify-center text-red-700">
               Video/Monitor
@@ -77,7 +77,7 @@ export const CommonRatios: Story = {
 
       <div className="space-y-2">
         <h4 className="text-sm font-medium">4:3 Traditional</h4>
-        <div className="w-[300px]">
+        <div className="w-75">
           <AspectRatio ratio={4 / 3}>
             <div className="bg-yellow-100 w-full h-full flex items-center justify-center text-yellow-700">
               Old TV/Photo
@@ -88,7 +88,7 @@ export const CommonRatios: Story = {
 
       <div className="space-y-2">
         <h4 className="text-sm font-medium">1:1 Square</h4>
-        <div className="w-[200px]">
+        <div className="w-50">
           <AspectRatio ratio={1}>
             <div className="bg-purple-100 w-full h-full flex items-center justify-center text-purple-700">
               Instagram
@@ -102,13 +102,14 @@ export const CommonRatios: Story = {
 
 export const WithImage: Story = {
   render: () => (
-    <div className="w-[400px]">
+    <div className="w-100">
       <AspectRatio ratio={16 / 9}>
         <img
           src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
           alt="Photo by Drew Beamer"
           className="rounded-md object-cover w-full h-full"
-        />
+        />{" "}
+        {/* cSpell:ignore Drew Beamer */}
       </AspectRatio>
     </div>
   ),
@@ -116,7 +117,7 @@ export const WithImage: Story = {
 
 export const VideoFrame: Story = {
   render: () => (
-    <div className="w-[500px]">
+    <div className="w-125">
       <AspectRatio ratio={16 / 9}>
         <div className="bg-black w-full h-full flex items-center justify-center text-white rounded-md">
           <div className="text-center">

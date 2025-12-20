@@ -68,7 +68,7 @@ export const Default: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div className="w-[400px] space-y-6">
+    <div className="w-100 space-y-6">
       <div>
         <div className="text-sm font-medium mb-2">Default (75%)</div>
         <Progress value={75} variant="default" />
@@ -94,7 +94,7 @@ export const AllVariants: Story = {
 
 export const AllSizes: Story = {
   render: () => (
-    <div className="w-[400px] space-y-6">
+    <div className="w-100 space-y-6">
       <div>
         <div className="text-sm font-medium mb-2">Small</div>
         <Progress value={60} size="sm" />
@@ -123,7 +123,7 @@ export const AnimatedProgress: Story = {
     }, []);
 
     return (
-      <div className="w-[400px] space-y-4">
+      <div className="w-100 space-y-4">
         <div className="flex justify-between text-sm">
           <span>Animated Progress</span>
           <span>{progress}%</span>
@@ -170,7 +170,7 @@ export const LoadingStates: Story = {
     }, []);
 
     return (
-      <div className="w-[500px] space-y-6">
+      <div className="w-125 space-y-6">
         <div>
           <div className="flex justify-between text-sm mb-2">
             <span>Downloading file...</span>
@@ -206,7 +206,7 @@ export const FormProgress: Story = {
     const progress = (currentStep / totalSteps) * 100;
 
     return (
-      <Card className="w-[500px]">
+      <Card className="w-125">
         <CardHeader>
           <CardTitle>User Registration</CardTitle>
           <div className="space-y-2">
@@ -298,7 +298,7 @@ export const FormProgress: Story = {
 
 export const ProgressWithLabels: Story = {
   render: () => (
-    <div className="w-[400px] space-y-6">
+    <div className="w-100 space-y-6">
       <div>
         <div className="flex justify-between text-sm mb-1">
           <span>Storage Used</span>

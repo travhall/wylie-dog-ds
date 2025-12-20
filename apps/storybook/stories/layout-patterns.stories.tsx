@@ -117,7 +117,7 @@ export const Dashboard: Story = {
                 </p>
               </CardHeader>
               <CardContent>
-                <div className="h-[300px] bg-gray-100 rounded flex items-center justify-center">
+                <div className="h-75 bg-gray-100 rounded flex items-center justify-center">
                   <p className="text-gray-500">Chart Component Placeholder</p>
                 </div>
               </CardContent>
@@ -295,7 +295,7 @@ export const LandingPage: Story = {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-50 to-indigo-100">
+      <section className="py-20 bg-linear-to-r from-blue-50 to-indigo-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
             Build Better

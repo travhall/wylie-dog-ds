@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="1. Introduction/Design Principles" />
 
@@ -19,6 +19,7 @@ The Wylie Dog Design System is built on core principles that guide every design 
 - 🧪 Tested with axe-core for accessibility violations
 
 **Example:**
+
 ```tsx
 // All inputs are properly labeled for screen readers
 <Label htmlFor="email">Email Address</Label>
@@ -35,7 +36,7 @@ The Wylie Dog Design System is built on core principles that guide every design 
 
 ### 2. Consistency Over Customization
 
-**Maintain visual and behavioral consistency across all touchpoints.**
+**Maintain visual and behavioral consistency across all touch points.**
 
 - 🎨 Centralized design tokens ensure visual harmony
 - 🧩 Predictable component APIs reduce cognitive load
@@ -46,6 +47,7 @@ The Wylie Dog Design System is built on core principles that guide every design 
 Users build mental models of your interface. Consistency helps them predict how things work, reducing learning time and errors.
 
 **Example:**
+
 ```tsx
 // All form inputs share the same size variants
 <Input size="sm" />
@@ -65,6 +67,7 @@ Users build mental models of your interface. Consistency helps them predict how 
 - 🎨 Easy to extend with className
 
 **Example:**
+
 ```tsx
 // Components compose naturally
 <Card>
@@ -90,6 +93,7 @@ Users build mental models of your interface. Consistency helps them predict how 
 - 📦 No unnecessary abstractions
 
 **Metrics:**
+
 - Each component typically < 5KB gzipped
 - Zero runtime CSS-in-JS overhead
 - Efficient Radix UI primitives
@@ -107,12 +111,13 @@ Users build mental models of your interface. Consistency helps them predict how 
 - 🔧 Helpful error messages
 
 **Example:**
+
 ```tsx
 // Clear prop names and TypeScript autocomplete
 <Button
-  variant="primary"    // Autocompletes: primary | secondary | outline
-  size="lg"           // Autocompletes: sm | md | lg
-  disabled={false}    // Type-safe boolean
+  variant="primary" // Autocompletes: primary | secondary | outline
+  size="lg" // Autocompletes: sm | md | lg
+  disabled={false} // Type-safe boolean
 >
   Submit
 </Button>
@@ -132,6 +137,7 @@ Users build mental models of your interface. Consistency helps them predict how 
 
 **Color Science:**
 We use OKLCH instead of traditional color spaces because:
+
 - Perceptually uniform (equal changes look equal)
 - Better accessibility with predictable contrasts
 - Future-proof with wide gamut support
@@ -188,12 +194,14 @@ Handle errors and edge cases elegantly.
   error={hasError}
   aria-invalid={hasError}
   aria-describedby={hasError ? "error-message" : undefined}
-/>
-{hasError && (
-  <p id="error-message" className="text-error-700">
-    Please enter a valid email
-  </p>
-)}
+/>;
+{
+  hasError && (
+    <p id="error-message" className="text-error-700">
+      Please enter a valid email
+    </p>
+  );
+}
 ```
 
 ---
@@ -259,16 +267,19 @@ Principles are guidelines, not laws. Break them when:
 We evaluate our system against these metrics:
 
 ### Adoption Metrics
+
 - ✅ Developer satisfaction surveys
 - ✅ Component usage analytics
 - ✅ Time to ship new features
 
 ### Quality Metrics
+
 - ✅ Accessibility audit scores (WCAG 2.1 AA)
 - ✅ Test coverage percentage (96.3%)
 - ✅ Bug report frequency
 
 ### Performance Metrics
+
 - ✅ Bundle size impact
 - ✅ First contentful paint
 - ✅ Time to interactive

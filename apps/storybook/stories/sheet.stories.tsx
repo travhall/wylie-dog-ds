@@ -46,6 +46,7 @@ export const Default: Story = {
               defaultValue="Pedro Duarte"
               className="col-span-3"
             />
+            {/* cSpell:ignore Duarte peduarte */}
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">

@@ -24,7 +24,7 @@ const Command = React.forwardRef<HTMLDivElement, CommandProps>(
     <div
       ref={ref}
       className={cn(
-        "flex h-full w-full flex-col overflow-hidden rounded-md bg-[var(--color-command-background)] text-[var(--color-command-text)]",
+        "flex h-full w-full flex-col overflow-hidden rounded-md bg-(--color-command-background) text-(--color-command-text)",
         className
       )}
       {...props}
@@ -51,7 +51,7 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
     ref
   ) => (
     <div
-      className="flex items-center border-b border-[var(--color-command-border)] px-3"
+      className="flex items-center border-b border-(--color-command-border) px-3"
       cmdk-input-wrapper=""
     >
       <SearchIcon
@@ -61,7 +61,7 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
       <input
         ref={ref}
         className={cn(
-          "flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-[var(--color-command-placeholder)] disabled:cursor-not-allowed disabled:opacity-50",
+          "flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:opacity-50",
           className
         )}
         role="combobox"
@@ -86,10 +86,7 @@ const CommandList = React.forwardRef<HTMLDivElement, CommandListProps>(
     <div
       ref={ref}
       id={id}
-      className={cn(
-        "max-h-[300px] overflow-y-auto overflow-x-hidden",
-        className
-      )}
+      className={cn("max-h-75 overflow-y-auto overflow-x-hidden", className)}
       role="listbox"
       aria-label="Command options"
       {...props}
@@ -105,7 +102,7 @@ const CommandEmpty = React.forwardRef<HTMLDivElement, CommandEmptyProps>(
     <div
       ref={ref}
       className={cn(
-        "py-6 text-center text-sm text-[var(--color-command-empty)]",
+        "py-6 text-center text-sm text-(--color-command-empty)",
         className
       )}
       role="status"
@@ -126,7 +123,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
     <div
       ref={ref}
       className={cn(
-        "overflow-hidden p-1 text-[var(--color-command-text)] [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-[var(--color-command-group-heading)]",
+        "overflow-hidden p-1 text-(--color-command-text) **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group-heading]]:text-(--color-command-group-heading)",
         className
       )}
       role="group"
@@ -136,7 +133,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
       {heading && (
         <div
           cmdk-group-heading=""
-          className="px-2 py-1.5 text-xs font-medium text-[var(--color-command-group-heading)]"
+          className="px-2 py-1.5 text-xs font-medium text-(--color-command-group-heading)"
         >
           {heading}
         </div>
@@ -155,7 +152,7 @@ const CommandSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("-mx-1 h-px bg-[var(--color-command-separator)]", className)}
+    className={cn("-mx-1 h-px bg-(--color-command-separator)", className)}
     role="separator"
     aria-hidden="true"
     {...props}
@@ -175,7 +172,7 @@ const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
     <div
       ref={ref}
       className={cn(
-        "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-[var(--color-command-item-selected)] aria-selected:text-[var(--color-command-item-text-selected)] data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
+        "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-(--color-command-item-selected) aria-selected:text-(--color-command-item-text-selected) data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         className
       )}
       role="option"
@@ -197,7 +194,7 @@ const CommandShortcut = React.forwardRef<HTMLSpanElement, CommandShortcutProps>(
       <span
         ref={ref}
         className={cn(
-          "ml-auto text-xs tracking-widest text-[var(--color-command-shortcut)]",
+          "ml-auto text-xs tracking-widest text-(--color-command-shortcut)",
           className
         )}
         aria-label="Keyboard shortcut"

@@ -38,7 +38,7 @@ type Story = StoryObj<typeof meta>;
 
 export const ContactForm: Story = {
   render: () => (
-    <Card className="w-[500px]">
+    <Card className="w-125">
       <CardHeader>
         <CardTitle>Contact Us</CardTitle>
       </CardHeader>
@@ -92,7 +92,7 @@ export const ContactForm: Story = {
           <Textarea
             id="message"
             placeholder="Tell us how we can help you..."
-            className="min-h-[120px]"
+            className="min-h-30"
           />
         </div>
 
@@ -126,7 +126,7 @@ export const MultiStepForm: Story = {
     const [activeTab, setActiveTab] = useState("account");
 
     return (
-      <Card className="w-[600px]">
+      <Card className="w-150">
         <CardHeader>
           <CardTitle>Create Account</CardTitle>
         </CardHeader>
@@ -144,7 +144,8 @@ export const MultiStepForm: Story = {
                   <Label htmlFor="username" required>
                     Username
                   </Label>
-                  <Input id="username" placeholder="johndoe" />
+                  <Input id="username" placeholder="johndoe" />{" "}
+                  {/* cSpell:ignore johndoe */}
                   <p className="text-xs text-gray-500">
                     This will be your unique identifier
                   </p>
@@ -371,7 +372,7 @@ export const FormWithValidation: Story = {
     };
 
     return (
-      <Card className="w-[500px]">
+      <Card className="w-125">
         <CardHeader>
           <CardTitle>Sign Up</CardTitle>
         </CardHeader>
@@ -472,7 +473,7 @@ export const FormWithValidation: Story = {
 
 export const UserPreferences: Story = {
   render: () => (
-    <Card className="w-[500px]">
+    <Card className="w-125">
       <CardHeader>
         <CardTitle>Account Preferences</CardTitle>
       </CardHeader>
@@ -509,9 +510,12 @@ export const UserPreferences: Story = {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="en">English</SelectItem>
-                  <SelectItem value="es">Español</SelectItem>
-                  <SelectItem value="fr">Français</SelectItem>
-                  <SelectItem value="de">Deutsch</SelectItem>
+                  <SelectItem value="es">Español</SelectItem>{" "}
+                  {/* cSpell:ignore Español */}
+                  <SelectItem value="fr">Français</SelectItem>{" "}
+                  {/* cSpell:ignore Français */}
+                  <SelectItem value="de">Deutsch</SelectItem>{" "}
+                  {/* cSpell:ignore Deutsch */}
                 </SelectContent>
               </Select>
             </div>
@@ -588,7 +592,7 @@ export const UserPreferences: Story = {
 
 export const ProjectCreation: Story = {
   render: () => (
-    <Card className="w-[600px]">
+    <Card className="w-150">
       <CardHeader>
         <CardTitle>Create New Project</CardTitle>
       </CardHeader>
@@ -763,7 +767,7 @@ export const ProjectCreation: Story = {
 
 export const PaymentForm: Story = {
   render: () => (
-    <Card className="w-[500px]">
+    <Card className="w-125">
       <CardHeader>
         <CardTitle>Payment Information</CardTitle>
       </CardHeader>

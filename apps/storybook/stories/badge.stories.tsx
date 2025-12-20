@@ -267,7 +267,9 @@ export const InContext: Story = {
     </div>
   ),
 };
-
+{
+  /* cSpell:ignore Donts */
+}
 export const DosDonts: Story = {
   parameters: {
     docs: {

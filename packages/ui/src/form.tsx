@@ -95,8 +95,8 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
         className={cn(
           "font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
           isInvalid
-            ? "text-[var(--color-text-danger)]"
-            : "text-[var(--color-form-label)]",
+            ? "text-(--color-text-danger)"
+            : "text-(--color-form-label)",
           sizes[size],
           className
         )}
@@ -104,10 +104,7 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
       >
         {children}
         {isRequired && (
-          <span
-            className="text-[var(--color-text-danger)] ml-1"
-            aria-hidden="true"
-          >
+          <span className="text-(--color-text-danger) ml-1" aria-hidden="true">
             *
           </span>
         )}
@@ -140,7 +137,7 @@ const FormDescription = React.forwardRef<
     <p
       ref={ref}
       id={descriptionId}
-      className={cn("text-sm text-[var(--color-form-description)]", className)}
+      className={cn("text-sm text-(--color-form-description)", className)}
       {...props}
     />
   );
@@ -163,7 +160,7 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, FormMessageProps>(
         role="alert"
         aria-live="polite"
         className={cn(
-          "text-sm font-medium text-[var(--color-form-error)]",
+          "text-sm font-medium text-(--color-form-error)",
           className
         )}
         {...props}

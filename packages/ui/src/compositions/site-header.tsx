@@ -32,7 +32,7 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
   ) => {
     const variants = {
       default:
-        "bg-background border-b border-border sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-background/95",
+        "bg-(--color-background-primary) border-b border-(--color-border-primary) sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-(--color-background-primary)/95",
       transparent: "bg-transparent border-b border-transparent",
     };
 
@@ -65,7 +65,7 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
                     <NavigationMenuItem key={index}>
                       <NavigationMenuLink
                         href={item.href}
-                        className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                        className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-(--color-background-primary) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-interactive-secondary) hover:text-(--color-text-primary) focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary) focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                       >
                         {item.label}
                       </NavigationMenuLink>

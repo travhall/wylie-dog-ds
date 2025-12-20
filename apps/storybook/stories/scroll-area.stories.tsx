@@ -55,7 +55,7 @@ export const Horizontal: Story = {
 
 export const LongContent: Story = {
   render: () => (
-    <ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
+    <ScrollArea className="h-50 w-87.5 rounded-md border p-4">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
       vehicula massa ut nulla placerat, at tempor erat congue. Sed euismod lorem
       vel consectetur bibendum. Nulla facilisi. Donec auctor, nisl eget
@@ -85,7 +85,7 @@ export const LongContent: Story = {
 
 export const InCard: Story = {
   render: () => (
-    <div className="rounded-lg border bg-card text-card-foreground shadow-sm w-[350px]">
+    <div className="rounded-lg border bg-card text-card-foreground shadow-sm w-87.5">
       <div className="flex flex-col space-y-1.5 p-6 pb-3">
         <h3 className="text-2xl font-semibold leading-none tracking-tight">
           Recent Activity
@@ -95,7 +95,7 @@ export const InCard: Story = {
         </p>
       </div>
       <div className="p-6 pt-0">
-        <ScrollArea className="h-[300px] pr-4">
+        <ScrollArea className="h-75 pr-4">
           {Array.from({ length: 20 }, (_, i) => (
             <div key={i} className="flex items-center space-x-4 py-3">
               <div className="w-2 h-2 bg-blue-500 rounded-full" />
@@ -115,11 +115,11 @@ export const InCard: Story = {
 
 export const ChatMessages: Story = {
   render: () => (
-    <div className="border rounded-lg w-[400px]">
+    <div className="border rounded-lg w-100">
       <div className="p-3 border-b">
         <h4 className="font-medium">Chat</h4>
       </div>
-      <ScrollArea className="h-[300px] p-3">
+      <ScrollArea className="h-75 p-3">
         <div className="space-y-3">
           {Array.from({ length: 15 }, (_, i) => (
             <div

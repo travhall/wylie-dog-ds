@@ -36,7 +36,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
       <div
         ref={ref}
         className={cn(
-          "relative flex shrink-0 overflow-hidden rounded-full bg-[var(--color-avatar-background)] border border-[var(--color-avatar-border)]",
+          "relative flex shrink-0 overflow-hidden rounded-full bg-(--color-avatar-background) border border-(--color-avatar-border)",
           sizes[size],
           className
         )}
@@ -109,7 +109,7 @@ export const AvatarFallback = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "flex h-full w-full items-center justify-center rounded-full bg-[var(--color-avatar-fallback-background)] text-[var(--color-avatar-fallback-text)] font-medium",
+        "flex h-full w-full items-center justify-center rounded-full bg-(--color-avatar-fallback-background) text-(--color-avatar-fallback-text) font-medium",
         className
       )}
       aria-hidden="true" // Fallback is decorative since parent Avatar has aria-label

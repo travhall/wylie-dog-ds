@@ -39,10 +39,10 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
     ref
   ) => {
     const variants = {
-      default: "bg-background",
+      default: "bg-[var(--color-background-primary)]",
       gradient:
-        "bg-gradient-to-br from-primary/10 via-background to-secondary/10",
-      centered: "bg-background text-center",
+        "bg-gradient-to-br from-blue-500/10 via-[var(--color-background-primary)] to-purple-500/10",
+      centered: "bg-[var(--color-background-primary)] text-center",
     };
 
     const isCentered = variant === "centered";
@@ -97,7 +97,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
               {description && (
                 <p
                   className={cn(
-                    "text-lg md:text-xl text-muted-foreground max-w-2xl",
+                    "text-lg md:text-xl text-(--color-text-secondary) max-w-2xl",
                     isCentered && "text-center"
                   )}
                 >

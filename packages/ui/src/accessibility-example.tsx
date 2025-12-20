@@ -151,7 +151,7 @@ export function ManualAccessibleForm() {
 
         <p
           id={usernameDescId}
-          className="text-sm text-[var(--color-text-secondary)]"
+          className="text-sm text-(--color-text-secondary)"
         >
           Choose a unique username that others will see.
         </p>
@@ -161,7 +161,7 @@ export function ManualAccessibleForm() {
             id={usernameErrorId}
             role="alert"
             aria-live="polite"
-            className="text-sm font-medium text-[var(--color-text-danger)]"
+            className="text-sm font-medium text-(--color-text-danger)"
           >
             {usernameError}
           </p>

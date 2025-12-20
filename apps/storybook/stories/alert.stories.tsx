@@ -76,7 +76,7 @@ export const Success: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div className="w-[600px] space-y-4">
+    <div className="w-150 space-y-4">
       <Alert>
         <AlertTitle>Default Alert</AlertTitle>
         <AlertDescription>
@@ -110,7 +110,7 @@ export const AllVariants: Story = {
 
 export const WithoutTitle: Story = {
   render: () => (
-    <div className="w-[500px] space-y-4">
+    <div className="w-125 space-y-4">
       <Alert>
         <AlertDescription>
           A simple alert message without a title.
@@ -128,7 +128,7 @@ export const WithoutTitle: Story = {
 
 export const LongContent: Story = {
   render: () => (
-    <div className="w-[600px]">
+    <div className="w-150">
       <Alert variant="warning">
         <AlertTitle>Storage Limit Warning</AlertTitle>
         <AlertDescription>
@@ -145,7 +145,7 @@ export const LongContent: Story = {
 
 export const InFormContext: Story = {
   render: () => (
-    <div className="w-[500px] space-y-4">
+    <div className="w-125 space-y-4">
       <h3 className="text-lg font-semibold">User Registration</h3>
 
       <Alert variant="destructive">

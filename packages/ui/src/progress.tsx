@@ -30,17 +30,17 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
     };
 
     const variants = {
-      default: "bg-[var(--color-progress-default-fill)]",
-      success: "bg-[var(--color-progress-success-fill)]",
-      warning: "bg-[var(--color-progress-warning-fill)]",
-      destructive: "bg-[var(--color-progress-destructive-fill)]",
+      default: "bg-(--color-progress-default-fill)",
+      success: "bg-(--color-progress-success-fill)",
+      warning: "bg-(--color-progress-warning-fill)",
+      destructive: "bg-(--color-progress-destructive-fill)",
     };
 
     return (
       <div
         ref={ref}
         className={cn(
-          "relative w-full overflow-hidden rounded-full bg-[var(--color-progress-background)]",
+          "relative w-full overflow-hidden rounded-full bg-(--color-progress-background)",
           sizes[size],
           className
         )}

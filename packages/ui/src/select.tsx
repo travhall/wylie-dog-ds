@@ -30,14 +30,14 @@ export const SelectTrigger = React.forwardRef<
       ref={ref}
       className={cn(
         "flex w-full items-center justify-between rounded-md border transition-colors",
-        "placeholder:text-[var(--color-input-placeholder)]",
-        "focus:outline-none focus:ring-2 focus:ring-[var(--color-input-border-focus)] focus:ring-offset-1",
+        "placeholder:text-(--color-input-placeholder)",
+        "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "[&>span]:line-clamp-1",
         error
-          ? "border-[var(--color-input-border-error)] bg-[var(--color-input-background)]"
-          : "border-[var(--color-input-border)] bg-[var(--color-input-background)] hover:bg-[var(--color-input-background-hover)]",
-        "text-[var(--color-input-text)]",
+          ? "border-(--color-input-border-error) bg-(--color-input-background)"
+          : "border-(--color-input-border) bg-(--color-input-background) hover:bg-(--color-input-background-hover)",
+        "text-(--color-input-text)",
         sizes[size],
         className
       )}
@@ -73,8 +73,8 @@ export const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border",
-        "bg-[var(--color-background-primary)] text-[var(--color-text-primary)] shadow-md",
+        "relative z-50 max-h-96 min-w-32 overflow-hidden rounded-md border",
+        "bg-(--color-background-primary) text-(--color-text-primary) shadow-md",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -91,7 +91,7 @@ export const SelectContent = React.forwardRef<
         className={cn(
           "p-1",
           position === "popper" &&
-            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
+            "h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width)"
         )}
       >
         {children}
@@ -110,8 +110,8 @@ export const SelectItem = React.forwardRef<
     ref={ref}
     className={cn(
       "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none",
-      "focus:bg-[var(--color-interactive-secondary)] focus:text-[var(--color-text-primary)]",
-      "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
+      "data-disabled:pointer-events-none data-disabled:opacity-50",
       className
     )}
     {...props}
@@ -140,10 +140,7 @@ export const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn(
-      "-mx-1 my-1 h-px bg-[var(--color-border-primary)]",
-      className
-    )}
+    className={cn("-mx-1 my-1 h-px bg-(--color-border-primary)", className)}
     {...props}
   />
 ));

@@ -35,7 +35,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
   render: () => (
-    <Form className="w-[400px] space-y-6">
+    <Form className="w-100 space-y-6">
       <div className="space-y-2">
         <Label htmlFor="name">Name</Label>
         <Input id="name" placeholder="Enter your name" />
@@ -78,7 +78,7 @@ export const WithValidation: Story = {
     };
 
     return (
-      <Form onSubmit={handleSubmit} className="w-[400px] space-y-6">
+      <Form onSubmit={handleSubmit} className="w-100 space-y-6">
         <div className="space-y-2">
           <Label htmlFor="name" className={errors.name ? "text-red-600" : ""}>
             Name {errors.name && "*"}
@@ -118,7 +118,7 @@ export const WithValidation: Story = {
 
 export const Registration: Story = {
   render: () => (
-    <Form className="w-[400px] space-y-6">
+    <Form className="w-100 space-y-6">
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="firstName">First Name</Label>
@@ -189,7 +189,7 @@ export const Registration: Story = {
 
 export const Login: Story = {
   render: () => (
-    <Form className="w-[350px] space-y-6">
+    <Form className="w-87.5 space-y-6">
       <div className="space-y-2 text-center">
         <h1 className="text-2xl font-semibold">Sign In</h1>
         <p className="text-sm text-gray-600">

@@ -28,7 +28,7 @@ export const Default: Story = {
       <DialogTrigger asChild>
         <Button variant="outline">Edit Profile</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-106.25">
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
@@ -45,6 +45,7 @@ export const Default: Story = {
               defaultValue="Pedro Duarte"
               className="col-span-3"
             />
+            {/* cSpell:ignore Duarte */}
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
@@ -55,6 +56,7 @@ export const Default: Story = {
               defaultValue="@peduarte"
               className="col-span-3"
             />
+            {/* cSpell:ignore peduarte */}
           </div>
         </div>
         <DialogFooter>

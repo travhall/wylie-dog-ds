@@ -35,9 +35,9 @@ export const SectionFeatures = React.forwardRef<
     ref
   ) => {
     const variants = {
-      default: "bg-background",
-      cards: "bg-muted/50",
-      grid: "bg-background",
+      default: "bg-[var(--color-background-primary)]",
+      cards: "bg-[var(--color-background-secondary)]",
+      grid: "bg-[var(--color-background-primary)]",
     };
 
     const gridCols = {
@@ -66,7 +66,9 @@ export const SectionFeatures = React.forwardRef<
                 </h2>
               )}
               {description && (
-                <p className="text-lg text-muted-foreground">{description}</p>
+                <p className="text-lg text-[var(--color-text-secondary)]">
+                  {description}
+                </p>
               )}
             </div>
           )}
@@ -91,7 +93,7 @@ export const SectionFeatures = React.forwardRef<
                       <CardTitle className="text-xl">{feature.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground">
+                      <p className="text-[var(--color-text-secondary)]">
                         {feature.description}
                       </p>
                     </CardContent>
@@ -118,7 +120,7 @@ export const SectionFeatures = React.forwardRef<
                     <h3 className="text-xl font-semibold">{feature.title}</h3>
 
                     {/* Description */}
-                    <p className="text-muted-foreground">
+                    <p className="text-[var(--color-text-secondary)]">
                       {feature.description}
                     </p>
                   </div>

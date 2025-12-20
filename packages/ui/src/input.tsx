@@ -45,13 +45,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         aria-describedby={describedBy || undefined}
         className={cn(
           "flex w-full rounded-md border transition-colors",
-          "placeholder:text-[var(--color-input-placeholder)]",
-          "focus:outline-none focus:ring-2 focus:ring-[var(--color-input-border-focus)] focus:ring-offset-1",
+          "placeholder:text-(--color-input-placeholder)",
+          "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
           "disabled:cursor-not-allowed disabled:opacity-50",
           error
-            ? "border-[var(--color-input-border-error)] bg-[var(--color-input-background)]"
-            : "border-[var(--color-input-border)] bg-[var(--color-input-background)] hover:bg-[var(--color-input-background-hover)]",
-          "text-[var(--color-input-text)]",
+            ? "border-(--color-input-border-error) bg-(--color-input-background)"
+            : "border-(--color-input-border) bg-(--color-input-background) hover:bg-(--color-input-background-hover)",
+          "text-(--color-input-text)",
           sizes[size],
           className
         )}

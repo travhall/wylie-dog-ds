@@ -39,9 +39,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         ref={ref}
         className={cn(
           "font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-          error
-            ? "text-[var(--color-text-danger)]"
-            : "text-[var(--color-text-primary)]",
+          error ? "text-(--color-text-danger)" : "text-(--color-text-primary)",
           sizes[size],
           className
         )}
@@ -51,7 +49,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         {required && (
           <span
             className={cn(
-              "text-[var(--color-text-danger)] ml-1",
+              "text-(--color-text-danger) ml-1",
               requiredIndicatorSrOnly && "sr-only"
             )}
             aria-label="required"

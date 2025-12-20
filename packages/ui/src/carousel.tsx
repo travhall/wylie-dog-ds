@@ -44,9 +44,9 @@ const CarouselPrevious = React.forwardRef<
   <button
     ref={ref}
     className={cn(
-      "absolute h-8 w-8 rounded-full border border-[var(--color-carousel-nav-border)] bg-[var(--color-carousel-nav-background)] left-4 top-1/2 -translate-y-1/2",
-      "hover:bg-[var(--color-carousel-nav-hover)] hover:text-[var(--color-carousel-nav-text-hover)]",
-      "focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)] focus:ring-offset-2",
+      "absolute h-8 w-8 rounded-full border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) left-4 top-1/2 -translate-y-1/2",
+      "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
+      "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
       "disabled:pointer-events-none disabled:opacity-50",
       className
     )}
@@ -65,9 +65,9 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
     <button
       ref={ref}
       className={cn(
-        "absolute h-8 w-8 rounded-full border border-[var(--color-carousel-nav-border)] bg-[var(--color-carousel-nav-background)] right-4 top-1/2 -translate-y-1/2",
-        "hover:bg-[var(--color-carousel-nav-hover)] hover:text-[var(--color-carousel-nav-text-hover)]",
-        "focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)] focus:ring-offset-2",
+        "absolute h-8 w-8 rounded-full border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) right-4 top-1/2 -translate-y-1/2",
+        "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
+        "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",
         className
       )}

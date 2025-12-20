@@ -41,7 +41,7 @@ const meta: Meta<typeof Accordion> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Accordion>;
 
 export const Default: Story = {
   args: {
@@ -77,6 +77,7 @@ export const Default: Story = {
 };
 
 export const SingleCollapsible: Story = {
+  args: {},
   render: () => (
     <Accordion type="single" collapsible className="w-full max-w-md">
       <AccordionItem value="item-1">
@@ -114,6 +115,7 @@ export const SingleCollapsible: Story = {
 };
 
 export const Multiple: Story = {
+  args: {},
   render: () => (
     <Accordion type="multiple" className="w-full max-w-md">
       <AccordionItem value="features">
@@ -160,6 +162,7 @@ export const Multiple: Story = {
 };
 
 export const FAQ: Story = {
+  args: {},
   render: () => (
     <div className="w-full max-w-2xl space-y-6">
       <div className="space-y-2">
@@ -230,6 +233,7 @@ export const FAQ: Story = {
 };
 
 export const SettingsPanel: Story = {
+  args: {},
   render: () => (
     <div className="w-full max-w-lg space-y-4">
       <h3 className="text-lg font-semibold">Account Settings</h3>
@@ -311,6 +315,7 @@ export const SettingsPanel: Story = {
 };
 
 export const ProductFeatures: Story = {
+  args: {},
   render: () => (
     <div className="w-full max-w-2xl space-y-6">
       <div className="space-y-2">
@@ -373,7 +378,7 @@ export const ProductFeatures: Story = {
               <p>Automate repetitive tasks and streamline your workflows.</p>
               <ul className="space-y-1 list-disc list-inside text-sm text-neutral-600">
                 <li>Drag-and-drop workflow builder</li>
-                <li>Trigger-based automations</li>
+                <li>Trigger-based automation</li>
                 <li>Integration with popular tools</li>
                 <li>Custom scripting support</li>
               </ul>
@@ -393,7 +398,7 @@ export const ProductFeatures: Story = {
               <ul className="space-y-1 list-disc list-inside text-sm text-neutral-600">
                 <li>End-to-end encryption</li>
                 <li>SOC 2 Type II compliance</li>
-                <li>GDPR and CCPA compliance</li>
+                <li>GDPR and CCPA compliance</li> {/* cSpell:ignore CCPA */}
                 <li>Regular security audits</li>
               </ul>
             </div>
@@ -413,6 +418,7 @@ export const ProductFeatures: Story = {
 };
 
 export const Accessibility: Story = {
+  args: {},
   render: () => (
     <div className="w-full max-w-md space-y-4">
       <div className="space-y-2">

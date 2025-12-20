@@ -36,13 +36,13 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
         {...props}
       >
         {/* Header */}
-        {header && <div className="flex-shrink-0">{header}</div>}
+        {header && <div className="shrink-0">{header}</div>}
 
         {/* Main Content Area */}
         <div className="flex-1 flex">
           {/* Left Sidebar */}
           {sidebar && sidebarPosition === "left" && (
-            <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-border">
+            <aside className="hidden lg:block w-64 shrink-0 border-r border-border">
               {sidebar}
             </aside>
           )}
@@ -54,14 +54,14 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
 
           {/* Right Sidebar */}
           {sidebar && sidebarPosition === "right" && (
-            <aside className="hidden lg:block w-64 flex-shrink-0 border-l border-border">
+            <aside className="hidden lg:block w-64 shrink-0 border-l border-border">
               {sidebar}
             </aside>
           )}
         </div>
 
         {/* Footer */}
-        {footer && <div className="flex-shrink-0">{footer}</div>}
+        {footer && <div className="shrink-0">{footer}</div>}
       </div>
     );
   }
