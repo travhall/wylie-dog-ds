@@ -1,26 +1,20 @@
-import {
-  SiteHeader,
-  SiteFooter,
-  PageLayout,
-  SectionHero,
-  SectionFeatures,
-} from "@wyliedog/ui/compositions";
 import { Button } from "@wyliedog/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import { Badge } from "@wyliedog/ui/badge";
+import Link from "next/link";
 import {
   Sparkles,
   Palette,
   Layers,
-  Zap,
   Shield,
   Code2,
-  Heart,
+  ExternalLink,
   Github,
   Twitter,
+  Zap,
 } from "lucide-react";
 
-export default function Home() {
+export default function ShowcasePage() {
   // Header navigation
   const navigation = [
     { label: "Components", href: "#components" },
@@ -114,65 +108,72 @@ export default function Home() {
   ];
 
   return (
-    <PageLayout
-      header={
-        <SiteHeader
-          logo={
-            <a href="/" className="flex items-center space-x-2">
-              <Heart className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold">Wylie Dog</span>
-            </a>
-          }
-          navigation={navigation}
-        />
-      }
-      footer={
-        <SiteFooter
-          logo={
-            <div className="flex items-center space-x-2">
-              <Heart className="h-5 w-5 text-primary" />
-              <span className="text-lg font-bold">Wylie Dog</span>
-            </div>
-          }
-          columns={footerColumns}
-          copyright="© 2025 Wylie Dog Design System. Built with love."
-          socialLinks={socialLinks}
-        />
-      }
-      variant="full-width"
-    >
+    <>
       {/* Hero Section */}
-      <SectionHero
-        variant="gradient"
-        badge="Production Ready"
-        title="Build Faster with OKLCH Color Science"
-        description="A production-ready design system featuring 42 components, next-generation OKLCH color science, and industry-leading design token architecture."
-        primaryAction={{
-          label: "View Components",
-          href: "#components",
-        }}
-        secondaryAction={{
-          label: "Read Docs",
-          href: "#docs",
-        }}
-        image={
-          <div className="aspect-square rounded-lg bg-linear-to-br from-primary via-secondary to-accent p-8 flex items-center justify-center">
-            <div className="text-white text-center">
-              <Code2 className="h-24 w-24 mx-auto mb-4" />
-              <p className="text-2xl font-bold">42 Components</p>
+      <section className="py-20 bg-linear-to-br from-primary/10 to-secondary/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <Badge variant="outline" className="mb-4">
+              Production Ready
+            </Badge>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+              Build Faster with OKLCH Color Science
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-10">
+              A production-ready design system featuring 42 components,
+              next-generation OKLCH color science, and industry-leading design
+              token architecture.
+            </p>
+            <div className="flex gap-4 justify-center mb-16">
+              <Link href="#components">
+                <Button size="lg">View Components</Button>
+              </Link>
+              <Link href="#docs">
+                <Button variant="outline" size="lg">
+                  Read Docs
+                </Button>
+              </Link>
+            </div>
+            <div className="aspect-square max-w-md mx-auto rounded-lg bg-linear-to-br from-primary via-secondary to-accent p-8 flex items-center justify-center">
+              <div className="text-white text-center">
+                <Code2 className="h-24 w-24 mx-auto mb-4" />
+                <p className="text-2xl font-bold">42 Components</p>
+              </div>
             </div>
           </div>
-        }
-      />
+        </div>
+      </section>
 
       {/* Features Section */}
-      <SectionFeatures
-        variant="cards"
-        title="Everything You Need to Build"
-        description="Built on modern web standards with React 19, TypeScript 5.8, and Tailwind CSS 4. Optimized for production with comprehensive testing and documentation."
-        features={features}
-        columns={3}
-      />
+      <section className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              Everything You Need to Build
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Built on modern web standards with React 19, TypeScript 5.8, and
+              Tailwind CSS 4. Optimized for production with comprehensive
+              testing and documentation.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature, index) => (
+              <Card key={index} className="h-full">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    {feature.icon}
+                    <CardTitle>{feature.title}</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Components Grid Section */}
       <section id="components" className="py-20 bg-background">
@@ -329,6 +330,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </PageLayout>
+    </>
   );
 }
