@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import { PageLayout, SiteHeader, SiteFooter } from "@wyliedog/ui/compositions";
 import { Button } from "@wyliedog/ui/button";
 import Link from "next/link";
@@ -55,42 +54,35 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+        <PageLayout
+          header={
+            <SiteHeader
+              navigation={navigation}
+              actions={
+                <div className="flex items-center gap-2">
+                  <Link href="/docs">
+                    <Button variant="outline" size="sm">
+                      Docs
+                    </Button>
+                  </Link>
+                  <Link href="https://github.com">
+                    <Button variant="outline" size="sm">
+                      GitHub
+                    </Button>
+                  </Link>
+                </div>
+              }
+            />
+          }
+          footer={
+            <SiteFooter
+              columns={footerColumns}
+              copyright=" 2024 Wylie Dog Design System. All rights reserved."
+            />
+          }
         >
-          <PageLayout
-            header={
-              <SiteHeader
-                navigation={navigation}
-                actions={
-                  <div className="flex items-center gap-2">
-                    <Link href="/docs">
-                      <Button variant="outline" size="sm">
-                        Docs
-                      </Button>
-                    </Link>
-                    <Link href="https://github.com">
-                      <Button variant="outline" size="sm">
-                        GitHub
-                      </Button>
-                    </Link>
-                  </div>
-                }
-              />
-            }
-            footer={
-              <SiteFooter
-                columns={footerColumns}
-                copyright=" 2024 Wylie Dog Design System. All rights reserved."
-              />
-            }
-          >
-            {children}
-          </PageLayout>
-        </ThemeProvider>
+          {children}
+        </PageLayout>
       </body>
     </html>
   );
