@@ -141,12 +141,16 @@ export function App() {
 wylie-dog-ds/
 ├── packages/
 │   ├── tokens/           # 🎨 Design tokens (A+ rated)
-│   │   ├── primitive.json        # Base OKLCH colors, spacing, typography
-│   │   ├── semantic-*.json       # Light/dark theme tokens
-│   │   └── component-*.json      # Component-specific tokens
+│   │   ├── io/                     # Token I/O pipeline
+│   │   │   ├── input/              # Raw Figma exports (version controlled)
+│   │   │   ├── processed/          # Normalized token files
+│   │   │   └── export/             # Distribution-ready token files
+│   │   ├── scripts/                # Build and processing scripts
+│   │   │   ├── process-token-io.js # Main token processor
+│   │   │   └── export-demo-tokens.mjs
+│   │   └── style-dictionary.config.js
 │   ├── ui/               # 🧩 React component library (42 components)
 │   │   ├── src/                  # Individual component exports
-│   │   ├── tokens/               # Generated token exports
 │   │   └── styles/               # Compiled CSS with @theme
 │   ├── eslint-config/    # 📏 Shared linting rules
 │   ├── tailwind-config/  # 🎨 Shared Tailwind configuration
@@ -161,40 +165,70 @@ wylie-dog-ds/
 
 ## 🎨 Design Token System
 
-Our **A+ rated** design token implementation features:
-
-### OKLCH Color Innovation
-
-```typescript
-// Mathematical color precision with OKLCH
-const colors = {
-  blue: {
-    500: "oklch(0.623 0.188 259.81)", // Perceptually uniform
-    600: "oklch(0.546 0.215 262.88)", // Mathematical relationships
-  }
-};
-
-// CSS relative color syntax ready
-.dynamic-color {
-  background: oklch(from var(--color-primary-500) calc(l * 0.8) c h);
-}
-```
+Our **A+ rated** design token implementation features a robust I/O pipeline and format-agnostic processing:
 
 ### Token Architecture
 
-```typescript
-// Hierarchical tokens with full TypeScript support
-import { colors, spacing, typography } from "@wyliedog/ui/tokens";
-import { color, space } from "@wyliedog/ui/tokens/hierarchical";
-
-// Flat access
-const primaryBlue = colors.primary[500];
-const cardPadding = spacing.lg;
-
-// Hierarchical access
-const semanticBlue = color.primary[500];
-const layoutSpace = space.lg;
+```bash
+# Token Pipeline
+packages/tokens/
+├── io/
+│   ├── input/        # Raw Figma exports (version controlled)
+│   ├── processed/    # Normalized token files (W3C DTCG format)
+│   └── export/       # Distribution-ready token files
+├── dist/             # Built assets (CSS, JS, etc.)
+└── scripts/          # Build and processing scripts
 ```
+
+### Key Features
+
+1. **Format-Agnostic Pipeline**
+   - Processes any token format (Figma, Style Dictionary, W3C DTCG)
+   - Automatic format detection and conversion
+   - Preserves metadata and references
+
+2. **OKLCH Color Science**
+
+   ```typescript
+   // Mathematical color precision with OKLCH
+   const colors = {
+     blue: {
+       500: "oklch(0.623 0.188 259.81)", // Perceptually uniform
+       600: "oklch(0.546 0.215 262.88)", // Mathematical relationships
+     }
+   };
+
+   // CSS relative color syntax ready
+   .dynamic-color {
+     background: oklch(from var(--color-primary-500) calc(l * 0.8) c h);
+   }
+   ```
+
+3. **Dual Output Modes**
+
+   ```typescript
+   // Flat tokens (legacy support)
+   import { colors } from "@wyliedog/tokens";
+   const primaryBlue = colors.primary[500];
+
+   // Hierarchical tokens (recommended)
+   import { color, space } from "@wyliedog/tokens/hierarchical";
+   const semanticBlue = color.primary[500];
+   const layoutSpace = space.lg;
+   ```
+
+4. **Build Process**
+
+   ```bash
+   # Process tokens and build outputs
+   pnpm build
+
+   # Process tokens only
+   pnpm process-io
+
+   # Clean build artifacts
+   pnpm clean
+   ```
 
 ## 🧩 Component Library
 

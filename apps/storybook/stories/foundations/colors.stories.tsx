@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useEffect, useState } from "react";
 import { color, spacing, shadow } from "@wyliedog/tokens/hierarchical";
+import { Button } from "@wyliedog/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@wyliedog/ui/alert";
+import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
+import { Badge } from "@wyliedog/ui/badge";
+import { Progress } from "@wyliedog/ui/progress";
+import { Switch } from "@wyliedog/ui/switch";
+import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta = {
   title: "2. Foundations/Design Tokens/Colors",
@@ -88,255 +95,205 @@ export const ColorUsage: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold mb-2">Semantic Color Tokens</h3>
-        <p className="text-sm text-(--color-text-secondary) mb-4">
-          These examples demonstrate the semantic token system using CSS custom
-          properties with Tailwind's arbitrary value syntax.
+        <h3 className="text-2xl font-semibold tracking-tight mb-2">
+          Color Usage in Components
+        </h3>
+        <p className="text-sm text-muted-foreground mb-6">
+          These examples demonstrate how semantic color tokens are applied to
+          actual components in the design system. The colors automatically adapt
+          to the current theme and support light/dark modes.
         </p>
       </div>
 
-      {/* Interactive Colors */}
-      <div className="space-y-3">
-        <h4 className="font-medium text-(--color-text-primary)">
-          Interactive States
-        </h4>
-        <div className="flex flex-wrap gap-3">
-          <button className="bg-(--color-interactive-primary) hover:bg-(--color-interactive-primary-hover) active:bg-(--color-interactive-primary-active) text-(--color-text-inverse) px-4 py-2 rounded transition-colors">
-            Primary Button
-          </button>
-          <button className="bg-(--color-interactive-secondary) hover:bg-(--color-interactive-secondary-hover) active:bg-(--color-interactive-secondary-active) text-(--color-text-primary) px-4 py-2 rounded transition-colors">
-            Secondary Button
-          </button>
-          <button className="border border-(--color-border-primary) hover:border-(--color-border-focus) text-(--color-text-primary) px-4 py-2 rounded transition-colors">
-            Outline Button
-          </button>
-          <button className="bg-(--color-interactive-success) hover:bg-(--color-interactive-success-hover) text-(--color-text-inverse) px-4 py-2 rounded transition-colors">
-            Success Action
-          </button>
-          <button className="bg-(--color-interactive-danger) hover:bg-(--color-interactive-danger-hover) text-(--color-text-inverse) px-4 py-2 rounded transition-colors">
-            Danger Action
-          </button>
+      {/* Buttons */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h4 className="text-lg font-semibold">Buttons</h4>
+          <Badge variant="outline">Interactive</Badge>
         </div>
-        <p className="text-xs text-(--color-text-tertiary) mt-2">
-          Try hovering and clicking to see state changes
-        </p>
-      </div>
-
-      {/* Alert/Status Messages */}
-      <div className="space-y-3">
-        <h4 className="font-medium text-(--color-text-primary)">
-          Status Messages
-        </h4>
-        <div className="space-y-2">
-          <div className="bg-surface-success border border-(--color-border-success) text-(--color-text-success) p-3 rounded flex items-start gap-2">
-            <svg
-              className="w-5 h-5 shrink-0"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <div>
-              <div className="font-medium">Success</div>
-              <div className="text-sm">
-                Your changes have been saved successfully
-              </div>
-            </div>
-          </div>
-          <div className="bg-(--color-surface-info) border border-(--color-border-info) text-(--color-text-info) p-3 rounded flex items-start gap-2">
-            <svg
-              className="w-5 h-5 shrink-0"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <div>
-              <div className="font-medium">Information</div>
-              <div className="text-sm">
-                This feature is currently in beta testing
-              </div>
-            </div>
-          </div>
-          <div className="bg-surface-warning border border-(--color-border-warning) text-(--color-text-warning) p-3 rounded flex items-start gap-2">
-            <svg
-              className="w-5 h-5 shrink-0"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <div>
-              <div className="font-medium">Warning</div>
-              <div className="text-sm">
-                Please review these changes before proceeding
-              </div>
-            </div>
-          </div>
-          <div className="bg-(--color-surface-danger) border border-(--color-border-danger) text-(--color-text-danger) p-3 rounded flex items-start gap-2">
-            <svg
-              className="w-5 h-5 shrink-0"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <div>
-              <div className="font-medium">Error</div>
-              <div className="text-sm">
-                Failed to save changes. Please try again
-              </div>
-            </div>
-          </div>
+        <div className="flex flex-wrap gap-3 items-center p-4 rounded-lg border bg-background">
+          <Button variant="default">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="link">Link</Button>
+          <Button variant="destructive">Destructive</Button>
+        </div>
+        <div className="text-xs text-muted-foreground">
+          Hover and click to see different states and transitions.
         </div>
       </div>
 
-      {/* Background & Surface Hierarchy */}
-      <div className="space-y-3">
-        <h4 className="font-medium text-(--color-text-primary)">
-          Background & Surface Hierarchy
-        </h4>
-        <div className="bg-(--color-background-primary) border border-(--color-border-secondary) p-4 rounded">
-          <div className="text-(--color-text-primary) font-medium mb-2">
-            Primary Background
-          </div>
-          <div className="bg-(--color-background-secondary) p-3 rounded mb-2">
-            <div className="text-(--color-text-primary) text-sm mb-2">
-              Secondary Background
+      {/* Alerts */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h4 className="text-lg font-semibold">Alert Messages</h4>
+          <Badge variant="outline">Status Indicators</Badge>
+        </div>
+        <div className="space-y-4">
+          <Alert>
+            <AlertTitle>Default Alert</AlertTitle>
+            <AlertDescription>
+              This is a standard alert. Use it to highlight important
+              information.
+            </AlertDescription>
+          </Alert>
+
+          <Alert variant="success">
+            <AlertTitle>Success</AlertTitle>
+            <AlertDescription>
+              Your changes have been saved successfully.
+            </AlertDescription>
+          </Alert>
+
+          <Alert variant="warning">
+            <AlertTitle>Warning</AlertTitle>
+            <AlertDescription>
+              Please review these changes before proceeding.
+            </AlertDescription>
+          </Alert>
+
+          <Alert variant="destructive">
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>
+              There was an error processing your request. Please try again.
+            </AlertDescription>
+          </Alert>
+        </div>
+      </div>
+
+      {/* Interactive Elements */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h4 className="text-lg font-semibold">Interactive Elements</h4>
+          <Badge variant="outline">Form Controls</Badge>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6 p-4 rounded-lg border bg-background">
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="progress">Progress</Label>
+              <Progress value={65} className="h-2" />
             </div>
-            <div className="bg-(--color-background-tertiary) p-3 rounded">
-              <div className="text-(--color-text-secondary) text-sm">
-                Tertiary Background
+            <div className="space-y-2">
+              <Label htmlFor="toggle">Toggle</Label>
+              <div className="flex items-center space-x-2">
+                <Switch id="toggle" />
+                <Label htmlFor="toggle">Enabled</Label>
               </div>
             </div>
           </div>
-          <div className="bg-(--color-surface-raised) border border-(--color-border-primary) p-3 rounded shadow-sm">
-            <div className="text-(--color-text-primary) text-sm">
-              Raised Surface (Card/Panel)
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Text Hierarchy */}
-      <div className="space-y-3">
-        <h4 className="font-medium text-(--color-text-primary)">
-          Text Hierarchy
-        </h4>
-        <div className="bg-(--color-background-secondary) p-4 rounded space-y-2">
-          <div className="text-(--color-text-primary) text-lg font-semibold">
-            Primary Text - Headings and emphasis
-          </div>
-          <div className="text-(--color-text-secondary)">
-            Secondary Text - Body copy and descriptions
-          </div>
-          <div className="text-(--color-text-tertiary) text-sm">
-            Tertiary Text - Subtle labels and metadata
-          </div>
-          <div className="text-(--color-text-disabled) text-sm">
-            Disabled Text - Inactive elements
-          </div>
-        </div>
-      </div>
-
-      {/* Border & Focus States */}
-      <div className="space-y-3">
-        <h4 className="font-medium text-(--color-text-primary)">
-          Borders & Focus States
-        </h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <div className="border border-(--color-border-primary) p-3 rounded">
-            <div className="text-sm text-(--color-text-primary)">
-              Primary Border
-            </div>
-          </div>
-          <div className="border-2 border-(--color-border-focus) p-3 rounded">
-            <div className="text-sm text-(--color-text-primary)">
-              Focus Border (Interactive)
-            </div>
-          </div>
-          <div className="border border-(--color-border-success) p-3 rounded">
-            <div className="text-sm text-(--color-text-success)">
-              Success Border
-            </div>
-          </div>
-          <div className="border border-(--color-border-danger) p-3 rounded">
-            <div className="text-sm text-(--color-text-danger)">
-              Danger Border
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Code Reference */}
-      <div className="space-y-3">
-        <h4 className="font-medium text-(--color-text-primary)">
-          Implementation Reference
-        </h4>
-        <div className="bg-background-inverse text-(--color-text-inverse) p-4 rounded font-mono text-xs overflow-x-auto">
           <div className="space-y-2">
-            <div>
-              <span className="text-purple-400">// Interactive buttons</span>
-            </div>
-            <div>
-              <span className="text-blue-400">className</span>=
-              <span className="text-green-400">
-                "bg-(--color-interactive-primary)"
-              </span>
-            </div>
-            <div>
-              <span className="text-blue-400">className</span>=
-              <span className="text-green-400">
-                "hover:bg-(--color-interactive-primary-hover)"
-              </span>
-            </div>
-            <div className="mt-3">
-              <span className="text-purple-400">// Alert messages</span>
-            </div>
-            <div>
-              <span className="text-blue-400">className</span>=
-              <span className="text-green-400">
-                "bg-(--color-surface-success)"
-              </span>
-            </div>
-            <div>
-              <span className="text-blue-400">className</span>=
-              <span className="text-green-400">
-                "border-(--color-border-success)"
-              </span>
-            </div>
-            <div>
-              <span className="text-blue-400">className</span>=
-              <span className="text-green-400">
-                "text-(--color-text-success)"
-              </span>
+            <Label>Badges</Label>
+            <div className="flex flex-wrap gap-2">
+              <Badge>Default</Badge>
+              <Badge variant="secondary">Secondary</Badge>
+              <Badge variant="outline">Outline</Badge>
+              <Badge variant="destructive">Destructive</Badge>
+              <Badge variant="success">Success</Badge>
+              <Badge variant="warning">Warning</Badge>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Card Example */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h4 className="text-lg font-semibold">Card Components</h4>
+          <Badge variant="outline">Content Containers</Badge>
+        </div>
+        <div className="grid md:grid-cols-2 gap-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>Default Card</CardTitle>
+              <p className="text-sm text-muted-foreground">
+                Standard card with default styling
+              </p>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                This card uses the default background and text colors from the
+                theme.
+              </p>
+              <div className="mt-4">
+                <Button variant="outline" size="sm">
+                  Learn More
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="border-primary/20 bg-primary/5">
+            <CardHeader>
+              <CardTitle>Primary Card</CardTitle>
+              <p className="text-sm text-muted-foreground">
+                Standard card with default styling
+              </p>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                This card uses primary color tokens for the border and subtle
+                background.
+              </p>
+              <div className="mt-4">
+                <Button size="sm">Get Started</Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Theme Information */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h4 className="text-lg font-semibold">Theme Integration</h4>
+          <Badge variant="outline">CSS Variables</Badge>
+        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>How It Works</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm">
+              The color system is built with CSS custom properties that
+              automatically adapt to light and dark themes. Components use these
+              semantic color tokens to ensure consistent theming across the
+              application.
+            </p>
+            <div className="p-4 rounded-lg bg-muted/50">
+              <pre className="text-xs overflow-x-auto">
+                <code className="text-muted-foreground">
+                  {`/* Example of theme variables */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  /* ... */
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  /* ... */
+}`}
+                </code>
+              </pre>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   ),
 };
 
-export const TokenInspector: Story = {
+export const TokenPlayground: Story = {
   render: () => {
     const [mounted, setMounted] = useState(false);
+    const [selectedColor, setSelectedColor] = useState<string | null>(null);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [showOklchDetails, setShowOklchDetails] = useState(false);
 
     useEffect(() => {
       setMounted(true);
@@ -346,64 +303,323 @@ export const TokenInspector: Story = {
       return <div>Loading...</div>;
     }
 
+    // Parse OKLCH values for the selected color
+    const parseOklch = (value: string) => {
+      const match = value.match(/oklch\(([0-9.]+)\s+([0-9.]+)\s+([0-9.]+)\)/);
+      if (!match) return null;
+      return {
+        l: parseFloat(match[1]),
+        c: parseFloat(match[2]),
+        h: parseFloat(match[3]),
+      };
+    };
+
+    // Get all color tokens as flat list for searching
+    const allColorTokens = Object.entries(color).flatMap(
+      ([colorName, shades]) =>
+        Object.entries(shades as Record<string, string>).map(
+          ([shade, value]) => ({
+            name: `${colorName}.${shade}`,
+            displayName: `color-${colorName}-${shade}`,
+            cssVar: `--color-${colorName}-${shade}`,
+            value,
+            colorName,
+            shade,
+          })
+        )
+    );
+
+    // Filter tokens based on search
+    const filteredTokens = searchQuery
+      ? allColorTokens.filter(
+          (token) =>
+            token.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            token.value.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      : allColorTokens;
+
+    // Get selected token details
+    const selectedToken = selectedColor
+      ? allColorTokens.find((t) => t.name === selectedColor)
+      : null;
+
+    const selectedOklch = selectedToken
+      ? parseOklch(selectedToken.value)
+      : null;
+
     return (
       <div className="space-y-6">
-        <h3 className="text-lg font-semibold">Token Inspector</h3>
-        <p className="text-sm text-neutral-600">
-          Live view of design tokens imported from the tokens package.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="space-y-3">
-            <h4 className="font-medium">Color Tokens</h4>
-            <div className="bg-neutral-50 p-3 rounded text-xs font-mono max-h-40 overflow-y-auto">
-              {Object.entries(color).map(([colorName, shades]) => (
-                <div key={colorName} className="mb-2">
-                  <div className="font-semibold text-neutral-700">
-                    {colorName}:
-                  </div>
-                  {Object.entries(shades)
-                    .slice(0, 3)
-                    .map(([shade, value]) => (
-                      <div key={shade} className="ml-2 text-neutral-600">
-                        {shade}: {value}
-                      </div>
-                    ))}
-                  {Object.keys(shades).length > 3 && (
-                    <div className="ml-2 text-neutral-400">
-                      ...{Object.keys(shades).length - 3} more
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <h4 className="font-medium">Spacing Tokens</h4>
-            <div className="bg-neutral-50 p-3 rounded text-xs font-mono max-h-40 overflow-y-auto">
-              {Object.entries(spacing).map(([key, value]) => (
-                <div key={key} className="text-neutral-600">
-                  {key}: {value}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <h4 className="font-medium">Shadow Tokens</h4>
-            <div className="bg-neutral-50 p-3 rounded text-xs font-mono max-h-40 overflow-y-auto">
-              {Object.entries(shadow).map(([key, value]) => (
-                <div key={key} className="text-neutral-600 mb-1">
-                  <div>{key}:</div>
-                  <div className="ml-2 text-neutral-500 break-all">
-                    {String(value)}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div>
+          <h3 className="text-2xl font-semibold tracking-tight mb-2">
+            Token Playground
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Interactive explorer for design tokens with live OKLCH color space
+            analysis. Search, inspect, and copy tokens for use in your
+            components.
+          </p>
         </div>
+
+        {/* Search and Controls */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Token Search</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="Search tokens (e.g., blue, 500, oklch)..."
+                className="flex-1 px-3 py-2 text-sm rounded-md border border-input bg-background"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              {searchQuery && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setSearchQuery("")}
+                >
+                  Clear
+                </Button>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Switch
+                id="oklch-details"
+                checked={showOklchDetails}
+                onCheckedChange={setShowOklchDetails}
+              />
+              <Label htmlFor="oklch-details" className="text-sm">
+                Show OKLCH component breakdown
+              </Label>
+            </div>
+
+            <div className="text-xs text-muted-foreground">
+              Showing {filteredTokens.length} of {allColorTokens.length} color
+              tokens
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Token Grid */}
+        <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {filteredTokens.slice(0, 60).map((token) => (
+            <button
+              key={token.name}
+              onClick={() => setSelectedColor(token.name)}
+              className={`group relative p-3 rounded-lg border bg-card text-card-foreground transition-all hover:shadow-md ${
+                selectedColor === token.name
+                  ? "ring-2 ring-primary shadow-md"
+                  : ""
+              }`}
+            >
+              <div
+                className="w-full h-16 rounded-md mb-2 border border-border"
+                style={{ backgroundColor: `var(${token.cssVar})` }}
+              />
+              <div className="text-xs font-mono truncate">
+                {token.colorName}
+              </div>
+              <div className="text-xs font-semibold">{token.shade}</div>
+              {showOklchDetails && (
+                <div className="text-[10px] font-mono text-muted-foreground mt-1 space-y-0.5">
+                  {(() => {
+                    const oklch = parseOklch(token.value);
+                    if (oklch) {
+                      return (
+                        <>
+                          <div>L: {oklch.l.toFixed(3)}</div>
+                          <div>C: {oklch.c.toFixed(3)}</div>
+                          <div>H: {oklch.h.toFixed(0)}°</div>
+                        </>
+                      );
+                    }
+                    return null;
+                  })()}
+                </div>
+              )}
+            </button>
+          ))}
+        </div>
+
+        {filteredTokens.length > 60 && (
+          <div className="text-sm text-center text-muted-foreground">
+            Showing first 60 results. Refine your search to see more.
+          </div>
+        )}
+
+        {/* Selected Token Details */}
+        {selectedToken && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base flex items-center justify-between">
+                <span>Token Details</span>
+                <Badge variant="outline">{selectedToken.displayName}</Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Color Preview */}
+              <div className="flex items-center gap-4">
+                <div
+                  className="w-24 h-24 rounded-lg border-2 border-border shadow-sm"
+                  style={{ backgroundColor: `var(${selectedToken.cssVar})` }}
+                />
+                <div className="flex-1 space-y-2">
+                  <div className="text-sm font-semibold">
+                    {selectedToken.colorName} {selectedToken.shade}
+                  </div>
+                  <div className="text-xs font-mono text-muted-foreground">
+                    {selectedToken.value}
+                  </div>
+                </div>
+              </div>
+
+              {/* OKLCH Breakdown */}
+              {selectedOklch && (
+                <div className="space-y-3">
+                  <div className="text-sm font-semibold">
+                    OKLCH Color Space Components
+                  </div>
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="space-y-1">
+                      <Label className="text-xs">Lightness (L)</Label>
+                      <div className="text-lg font-mono font-semibold">
+                        {(selectedOklch.l * 100).toFixed(1)}%
+                      </div>
+                      <Progress value={selectedOklch.l * 100} className="h-1" />
+                      <div className="text-[10px] text-muted-foreground">
+                        0 = Black, 100 = White
+                      </div>
+                    </div>
+                    <div className="space-y-1">
+                      <Label className="text-xs">Chroma (C)</Label>
+                      <div className="text-lg font-mono font-semibold">
+                        {selectedOklch.c.toFixed(3)}
+                      </div>
+                      <Progress
+                        value={(selectedOklch.c / 0.4) * 100}
+                        className="h-1"
+                      />
+                      <div className="text-[10px] text-muted-foreground">
+                        0 = Gray, 0.4 = Vibrant
+                      </div>
+                    </div>
+                    <div className="space-y-1">
+                      <Label className="text-xs">Hue (H)</Label>
+                      <div className="text-lg font-mono font-semibold">
+                        {selectedOklch.h.toFixed(0)}°
+                      </div>
+                      <Progress
+                        value={(selectedOklch.h / 360) * 100}
+                        className="h-1"
+                      />
+                      <div className="text-[10px] text-muted-foreground">
+                        0-360° color wheel
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Usage Examples */}
+              <div className="space-y-3">
+                <div className="text-sm font-semibold">Usage Examples</div>
+                <div className="space-y-2">
+                  <div className="p-3 rounded-md bg-muted/50 text-xs font-mono">
+                    <div className="text-muted-foreground mb-1">CSS:</div>
+                    <code>background-color: var({selectedToken.cssVar});</code>
+                  </div>
+                  <div className="p-3 rounded-md bg-muted/50 text-xs font-mono">
+                    <div className="text-muted-foreground mb-1">
+                      Tailwind CSS 4:
+                    </div>
+                    <code>className="bg-({selectedToken.cssVar})"</code>
+                  </div>
+                  <div className="p-3 rounded-md bg-muted/50 text-xs font-mono">
+                    <div className="text-muted-foreground mb-1">
+                      JavaScript (hierarchical):
+                    </div>
+                    <code>
+                      import {`{color}`} from '@wyliedog/tokens/hierarchical';
+                      <br />
+                      const value = color.{selectedToken.colorName}[
+                      {selectedToken.shade}];
+                    </code>
+                  </div>
+                </div>
+              </div>
+
+              {/* Copy Actions */}
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      `var(${selectedToken.cssVar})`
+                    );
+                  }}
+                >
+                  Copy CSS Variable
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    navigator.clipboard.writeText(selectedToken.value);
+                  }}
+                >
+                  Copy OKLCH Value
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Token Statistics */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Token System Statistics</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold">
+                  {Object.keys(color).length}
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Color Scales
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold">
+                  {allColorTokens.length}
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Total Color Tokens
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold">
+                  {Object.keys(spacing).length}
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Spacing Tokens
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold">
+                  {Object.keys(shadow).length}
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Shadow Tokens
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     );
   },
