@@ -4,7 +4,6 @@
   "license": "MIT",
   "type": "module",
   "exports": {
-    "./src/*": "./src/*.json",
     "./tokens.css": "./dist/tokens.css",
     "./primitives.css": "./dist/primitives.css",
     "./semantic-light.css": "./dist/semantic-light.css",
@@ -15,15 +14,17 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "src",
     "dist"
   ],
   "scripts": {
-    "build": "pnpm process && node style-dictionary.config.js",
+    "build": "pnpm process-io && node style-dictionary.config.js",
     "build:tokens": "pnpm build",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist io",
+    "clean:legacy": "rm -rf src/",
     "export-demo-tokens": "node scripts/export-demo-tokens.mjs",
-    "process": "node scripts/process-figma-exports.js",
+    "process": "node scripts/process-token-io.js",
+    "process-io": "node scripts/process-token-io.js",
+    "process:legacy": "node scripts/process-figma-exports.js",
     "report:tokens": "node scripts/report-token-usage.mjs",
     "sync:figma": "node scripts/figma-sync.js",
     "test:tokens": "node scripts/validate-tokens.js"

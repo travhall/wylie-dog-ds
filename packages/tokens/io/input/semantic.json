@@ -3,11 +3,11 @@
     "semantic": {
       "modes": [
         {
-          "modeId": "mode:semantic:light",
+          "modeId": "583:6",
           "name": "Light"
         },
         {
-          "modeId": "mode:semantic:dark",
+          "modeId": "583:7",
           "name": "Dark"
         }
       ],
@@ -400,179 +400,204 @@
           "$type": "color",
           "$value": "{color.blue.600}",
           "valuesByMode": {
-            "Light": "{color.blue.600}"
+            "Light": "{color.blue.600}",
+            "Dark": "#ffffff"
           }
         },
         "color.primary.hover": {
           "$type": "color",
           "$value": "{color.blue.700}",
           "valuesByMode": {
-            "Light": "{color.blue.700}"
+            "Light": "{color.blue.700}",
+            "Dark": "#ffffff"
           }
         },
         "color.primary.active": {
           "$type": "color",
           "$value": "{color.blue.800}",
           "valuesByMode": {
-            "Light": "{color.blue.800}"
+            "Light": "{color.blue.800}",
+            "Dark": "#ffffff"
           }
         },
         "color.primary.surface": {
           "$type": "color",
           "$value": "{color.blue.50}",
           "valuesByMode": {
-            "Light": "{color.blue.50}"
+            "Light": "{color.blue.50}",
+            "Dark": "#ffffff"
           }
         },
         "color.primary.text": {
           "$type": "color",
           "$value": "{color.gray.50}",
           "valuesByMode": {
-            "Light": "{color.gray.50}"
+            "Light": "{color.gray.50}",
+            "Dark": "#ffffff"
           }
         },
         "color.secondary.base": {
           "$type": "color",
           "$value": "{color.gray.200}",
           "valuesByMode": {
-            "Light": "{color.gray.200}"
+            "Light": "{color.gray.200}",
+            "Dark": "#ffffff"
           }
         },
         "color.secondary.hover": {
           "$type": "color",
           "$value": "{color.gray.300}",
           "valuesByMode": {
-            "Light": "{color.gray.300}"
+            "Light": "{color.gray.300}",
+            "Dark": "#ffffff"
           }
         },
         "color.secondary.active": {
           "$type": "color",
           "$value": "{color.gray.400}",
           "valuesByMode": {
-            "Light": "{color.gray.400}"
+            "Light": "{color.gray.400}",
+            "Dark": "#ffffff"
           }
         },
         "color.secondary.surface": {
           "$type": "color",
           "$value": "{color.gray.50}",
           "valuesByMode": {
-            "Light": "{color.gray.50}"
+            "Light": "{color.gray.50}",
+            "Dark": "#ffffff"
           }
         },
         "color.secondary.text": {
           "$type": "color",
           "$value": "{color.gray.900}",
           "valuesByMode": {
-            "Light": "{color.gray.900}"
+            "Light": "{color.gray.900}",
+            "Dark": "#ffffff"
           }
         },
         "color.accent.base": {
           "$type": "color",
           "$value": "{color.purple.600}",
           "valuesByMode": {
-            "Light": "{color.purple.600}"
+            "Light": "{color.purple.600}",
+            "Dark": "#ffffff"
           }
         },
         "color.accent.hover": {
           "$type": "color",
           "$value": "{color.purple.700}",
           "valuesByMode": {
-            "Light": "{color.purple.700}"
+            "Light": "{color.purple.700}",
+            "Dark": "#ffffff"
           }
         },
         "color.accent.active": {
           "$type": "color",
           "$value": "{color.purple.800}",
           "valuesByMode": {
-            "Light": "{color.purple.800}"
+            "Light": "{color.purple.800}",
+            "Dark": "#ffffff"
           }
         },
         "color.accent.surface": {
           "$type": "color",
           "$value": "{color.purple.50}",
           "valuesByMode": {
-            "Light": "{color.purple.50}"
+            "Light": "{color.purple.50}",
+            "Dark": "#ffffff"
           }
         },
         "color.accent.text": {
           "$type": "color",
           "$value": "{color.gray.50}",
           "valuesByMode": {
-            "Light": "{color.gray.50}"
+            "Light": "{color.gray.50}",
+            "Dark": "#ffffff"
           }
         },
         "color.accent.highlight": {
           "$type": "color",
           "$value": "{color.pink.400}",
           "valuesByMode": {
-            "Light": "{color.pink.400}"
+            "Light": "{color.pink.400}",
+            "Dark": "#ffffff"
           }
         },
         "color.neutral.base": {
           "$type": "color",
           "$value": "{color.gray.600}",
           "valuesByMode": {
-            "Light": "{color.gray.600}"
+            "Light": "{color.gray.600}",
+            "Dark": "#ffffff"
           }
         },
         "color.neutral.muted": {
           "$type": "color",
           "$value": "{color.gray.400}",
           "valuesByMode": {
-            "Light": "{color.gray.400}"
+            "Light": "{color.gray.400}",
+            "Dark": "#ffffff"
           }
         },
         "color.neutral.subtle": {
           "$type": "color",
           "$value": "{color.gray.200}",
           "valuesByMode": {
-            "Light": "{color.gray.200}"
+            "Light": "{color.gray.200}",
+            "Dark": "#ffffff"
           }
         },
         "color.neutral.on": {
           "$type": "color",
           "$value": "{color.gray.900}",
           "valuesByMode": {
-            "Light": "{color.gray.900}"
+            "Light": "{color.gray.900}",
+            "Dark": "#ffffff"
           }
         },
         "color.status.success": {
           "$type": "color",
           "$value": "{color.green.600}",
           "valuesByMode": {
-            "Light": "{color.green.600}"
+            "Light": "{color.green.600}",
+            "Dark": "#ffffff"
           }
         },
         "color.status.warning": {
           "$type": "color",
           "$value": "{color.orange.600}",
           "valuesByMode": {
-            "Light": "{color.orange.600}"
+            "Light": "{color.orange.600}",
+            "Dark": "#ffffff"
           }
         },
         "color.status.danger": {
           "$type": "color",
           "$value": "{color.red.600}",
           "valuesByMode": {
-            "Light": "{color.red.600}"
+            "Light": "{color.red.600}",
+            "Dark": "#ffffff"
           }
         },
         "color.status.info": {
           "$type": "color",
           "$value": "{color.blue.600}",
           "valuesByMode": {
-            "Light": "{color.blue.600}"
+            "Light": "{color.blue.600}",
+            "Dark": "#ffffff"
           }
         },
         "color.status.highlight": {
           "$type": "color",
           "$value": "{color.yellow.300}",
           "valuesByMode": {
-            "Light": "{color.yellow.300}"
+            "Light": "{color.yellow.300}",
+            "Dark": "#ffffff"
           }
         },
         "space.xs": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{spacing.1}",
           "valuesByMode": {
             "Light": "{spacing.1}",
@@ -580,7 +605,7 @@
           }
         },
         "space.sm": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{spacing.2}",
           "valuesByMode": {
             "Light": "{spacing.2}",
@@ -588,7 +613,7 @@
           }
         },
         "space.md": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{spacing.4}",
           "valuesByMode": {
             "Light": "{spacing.4}",
@@ -596,7 +621,7 @@
           }
         },
         "space.lg": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{spacing.6}",
           "valuesByMode": {
             "Light": "{spacing.6}",
@@ -604,7 +629,7 @@
           }
         },
         "space.xl": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{spacing.8}",
           "valuesByMode": {
             "Light": "{spacing.8}",
@@ -612,7 +637,7 @@
           }
         },
         "space.2xl": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{spacing.12}",
           "valuesByMode": {
             "Light": "{spacing.12}",
@@ -620,7 +645,7 @@
           }
         },
         "size.xs": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{spacing.6}",
           "valuesByMode": {
             "Light": "{spacing.6}",
@@ -628,7 +653,7 @@
           }
         },
         "size.sm": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{spacing.8}",
           "valuesByMode": {
             "Light": "{spacing.8}",
@@ -636,7 +661,7 @@
           }
         },
         "size.md": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{spacing.10}",
           "valuesByMode": {
             "Light": "{spacing.10}",
@@ -644,7 +669,7 @@
           }
         },
         "size.lg": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{spacing.12}",
           "valuesByMode": {
             "Light": "{spacing.12}",
@@ -652,7 +677,7 @@
           }
         },
         "size.xl": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{spacing.16}",
           "valuesByMode": {
             "Light": "{spacing.16}",
@@ -660,7 +685,7 @@
           }
         },
         "radius.sm": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{border-radius.sm}",
           "valuesByMode": {
             "Light": "{border-radius.sm}",
@@ -668,7 +693,7 @@
           }
         },
         "radius.md": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -676,7 +701,7 @@
           }
         },
         "radius.lg": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{border-radius.lg}",
           "valuesByMode": {
             "Light": "{border-radius.lg}",
@@ -684,7 +709,7 @@
           }
         },
         "radius.xl": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{border-radius.xl}",
           "valuesByMode": {
             "Light": "{border-radius.xl}",
@@ -692,7 +717,7 @@
           }
         },
         "radius.full": {
-          "$type": "dimension",
+          "$type": "spacing",
           "$value": "{border-radius.full}",
           "valuesByMode": {
             "Light": "{border-radius.full}",

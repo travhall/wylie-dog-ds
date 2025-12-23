@@ -75,14 +75,27 @@ StyleDictionary.registerFormat({
         return true;
       });
 
-      if (token.$type === "color" && cleanPath[0] === "Color") {
+      if (token.$type === "color") {
         if (!hierarchical.color) hierarchical.color = {};
-        const colorName = cleanPath[1]?.toLowerCase();
-        const shade = cleanPath[2];
 
-        if (colorName && shade) {
-          if (!hierarchical.color[colorName])
+        // Handle dot notation like "color.gray.50" -> { gray: { 50: value } }
+        if (cleanPath[0] === "color" && cleanPath[1] && cleanPath[2]) {
+          const colorName = cleanPath[1].toLowerCase();
+          const shade = cleanPath[2];
+
+          if (!hierarchical.color[colorName]) {
             hierarchical.color[colorName] = {};
+          }
+          hierarchical.color[colorName][shade] = token.$value;
+        }
+        // Handle semantic colors like "color.primary.base" -> { primary: { base: value } }
+        else if (cleanPath[0] === "color" && cleanPath[1]) {
+          const colorName = cleanPath[1].toLowerCase();
+          const shade = cleanPath[2] || "base";
+
+          if (!hierarchical.color[colorName]) {
+            hierarchical.color[colorName] = {};
+          }
           hierarchical.color[colorName][shade] = token.$value;
         }
       } else if (token.$type === "dimension" && cleanPath[0] === "Spacing") {
@@ -127,9 +140,9 @@ export const shadow = {};`;
 // Build light mode semantic/component tokens
 const lightSd = new StyleDictionary({
   source: [
-    "src/primitive.json",
-    "src/semantic-light.json",
-    "src/component-light.json",
+    "io/processed/primitive.json",
+    "io/processed/semantic-light.json",
+    "io/processed/component-light.json",
   ],
   platforms: {
     css: {
@@ -163,9 +176,9 @@ const lightSd = new StyleDictionary({
 // Build dark mode semantic/component tokens
 const darkSd = new StyleDictionary({
   source: [
-    "src/primitive.json",
-    "src/semantic-dark.json",
-    "src/component-dark.json",
+    "io/processed/primitive.json",
+    "io/processed/semantic-dark.json",
+    "io/processed/component-dark.json",
   ],
   platforms: {
     css: {
