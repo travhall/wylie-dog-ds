@@ -104,16 +104,16 @@
     },
     "font-size": {
       "sm": {
-        "$type": "string",
-        "$value": "{Typography.caption}"
+        "$type": "dimension",
+        "$value": "{Typography.FontSize.xs}"
       },
       "md": {
-        "$type": "string",
-        "$value": "{Typography.body-small}"
+        "$type": "dimension",
+        "$value": "{Typography.FontSize.sm}"
       },
       "lg": {
-        "$type": "string",
-        "$value": "{Typography.body}"
+        "$type": "dimension",
+        "$value": "{Typography.FontSize.base}"
       }
     }
   },
@@ -232,21 +232,17 @@
     },
     "font-size": {
       "sm": {
-        "$type": "string",
-        "$value": "{Typography.body-small}"
+        "$type": "dimension",
+        "$value": "{Typography.FontSize.sm}"
       },
       "md": {
-        "$type": "string",
-        "$value": "{Typography.body}"
+        "$type": "dimension",
+        "$value": "{Typography.FontSize.base}"
       },
       "lg": {
-        "$type": "string",
-        "$value": "{Typography.body-large}"
+        "$type": "dimension",
+        "$value": "{Typography.FontSize.lg}"
       }
-    },
-    "shadow": {
-      "$type": "string",
-      "$value": "{Shadow.sm}"
     }
   },
   "Card": {
@@ -270,10 +266,6 @@
       "$type": "dimension",
       "$value": "{Radius.lg}"
     },
-    "shadow": {
-      "$type": "string",
-      "$value": "{Shadow.sm}"
-    },
     "header": {
       "gap": {
         "$type": "dimension",
@@ -281,8 +273,8 @@
       },
       "title": {
         "font-size": {
-          "$type": "string",
-          "$value": "{Typography.heading-4}"
+          "$type": "dimension",
+          "$value": "{Typography.FontSize.xl}"
         },
         "color": {
           "$type": "color",
@@ -291,8 +283,8 @@
       },
       "description": {
         "font-size": {
-          "$type": "string",
-          "$value": "{Typography.body-small}"
+          "$type": "dimension",
+          "$value": "{Typography.FontSize.sm}"
         },
         "color": {
           "$type": "color",
@@ -369,12 +361,8 @@
       "$value": "{Radius.md}"
     },
     "font-size": {
-      "$type": "string",
-      "$value": "{Typography.body}"
-    },
-    "shadow": {
-      "$type": "string",
-      "$value": "{Shadow.sm}"
+      "$type": "dimension",
+      "$value": "{Typography.FontSize.base}"
     }
   }
 }

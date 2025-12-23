@@ -20,6 +20,7 @@ import {
 } from "./validation";
 import { FormatAdapterManager } from "./format-adapter-manager";
 import type { AdapterProcessResult } from "./format-adapter";
+import { converter as culoriConverter, parse as culoriParse } from "culori";
 
 export interface ImportResult {
   success: boolean;
@@ -53,7 +54,7 @@ const W3C_TO_FIGMA_TYPE_MAP: Record<string, string> = {
   fontSize: "FLOAT",
   fontWeight: "STRING",
   fontFamily: "STRING",
-  lineHeight: "STRING",
+  lineHeight: "FLOAT",
   letterSpacing: "FLOAT",
   spacing: "FLOAT",
   sizing: "FLOAT",
@@ -78,11 +79,11 @@ const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
   fontFamily: ["FONT_FAMILY"],
   lineHeight: ["LINE_HEIGHT"],
   letterSpacing: ["LETTER_SPACING"],
-  spacing: ["GAP", "PADDING"],
+  spacing: ["GAP"],
   sizing: ["WIDTH", "HEIGHT"],
   borderRadius: ["CORNER_RADIUS"],
   borderWidth: ["STROKE_WIDTH"],
-  dimension: ["GAP", "PADDING"],
+  dimension: ["GAP"],
   shadow: ["EFFECT"],
   boolean: ["ALL_SCOPES"],
   // Add fallbacks for common token types
@@ -93,24 +94,105 @@ const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
   size: ["FONT_SIZE"],
 };
 
-/**
- * Convert hex color to Figma RGB format (0-1 range)
- */
-function hexToFigmaRgb(hex: string): { r: number; g: number; b: number } {
-  const cleanHex = hex.replace("#", "");
-  const r = parseInt(cleanHex.substring(0, 2), 16) / 255;
-  const g = parseInt(cleanHex.substring(2, 4), 16) / 255;
-  const b = parseInt(cleanHex.substring(4, 6), 16) / 255;
+const convertToRgb = culoriConverter("rgb");
 
-  return { r, g, b };
+function clamp01(value: number): number {
+  if (Number.isNaN(value)) return 0;
+  return Math.max(0, Math.min(1, value));
+}
+
+function expandShortHex(hex: string): string {
+  if (hex.length !== 4) return hex;
+  return (
+    "#" +
+    hex
+      .slice(1)
+      .split("")
+      .map((char) => char + char)
+      .join("")
+  );
 }
 
 /**
- * Parse numeric value from string (e.g., "16px" -> 16)
+ * Convert a color value (hex, rgb(a), hsl(a), oklch, etc.) to Figma RGB format
  */
-function parseNumericValue(value: string): number {
-  const parsed = parseFloat(value.toString().replace(/[^\d.-]/g, ""));
-  return isNaN(parsed) ? 0 : parsed;
+function convertColorToFigmaRgb(
+  value: unknown
+): { r: number; g: number; b: number } | null {
+  if (!value) return null;
+
+  if (
+    typeof value === "object" &&
+    value !== null &&
+    "r" in value &&
+    "g" in value &&
+    "b" in value
+  ) {
+    const rgbValue = value as { r: number; g: number; b: number };
+    return {
+      r: clamp01(rgbValue.r),
+      g: clamp01(rgbValue.g),
+      b: clamp01(rgbValue.b),
+    };
+  }
+
+  if (typeof value !== "string") return null;
+
+  const trimmed = value.trim();
+
+  // Hex support (#fff or #ffffff)
+  if (/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(trimmed)) {
+    const hex = trimmed.length === 4 ? expandShortHex(trimmed) : trimmed;
+    const cleanHex = hex.replace("#", "");
+    const r = parseInt(cleanHex.substring(0, 2), 16) / 255;
+    const g = parseInt(cleanHex.substring(2, 4), 16) / 255;
+    const b = parseInt(cleanHex.substring(4, 6), 16) / 255;
+    return { r: clamp01(r), g: clamp01(g), b: clamp01(b) };
+  }
+
+  // Use culori to parse any other CSS color (rgb/rgba/hsl/hsla/oklch/etc.)
+  const culoriColor = culoriParse(trimmed);
+  if (culoriColor) {
+    const rgb = convertToRgb(culoriColor);
+    if (rgb) {
+      return {
+        r: clamp01(rgb.r),
+        g: clamp01(rgb.g),
+        b: clamp01(rgb.b),
+      };
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Parse numeric value from string or number (e.g., "16px" -> 16)
+ */
+function parseNumericValue(value: unknown): number {
+  if (typeof value === "number") {
+    return Number.isFinite(value) ? value : 0;
+  }
+
+  if (typeof value === "string") {
+    const match = value.trim().match(/-?\d+(\.\d+)?/);
+    if (match) {
+      const parsed = parseFloat(match[0]);
+      return Number.isNaN(parsed) ? 0 : parsed;
+    }
+  }
+
+  if (typeof value === "object" && value !== null) {
+    // Handle token payloads like { value: "4px" } or { $value: 4 }
+    if ("value" in value) {
+      return parseNumericValue((value as { value: unknown }).value);
+    }
+    if ("$value" in value) {
+      return parseNumericValue((value as { $value: unknown }).$value);
+    }
+  }
+
+  return 0;
 }
 
 /**
@@ -122,15 +204,63 @@ function convertTokenValueToFigma(
 ): any {
   const value = token.$value;
 
-  switch (figmaType) {
-    case "COLOR":
-      if (typeof value === "string" && value.startsWith("#")) {
-        return hexToFigmaRgb(value);
-      }
-      return { r: 0, g: 0, b: 0 }; // Fallback
+  // Debug logging for dimension tokens
+  if (
+    token.$type === "dimension" ||
+    token.$type === "spacing" ||
+    token.$type === "borderRadius" ||
+    token.$type === "borderWidth"
+  ) {
+    console.log(`[Importer] Processing dimension token:`, {
+      name: token.name,
+      type: token.$type,
+      figmaType,
+      rawValue: value,
+      valueType: typeof value,
+    });
+  }
 
-    case "FLOAT":
-      return parseNumericValue(value);
+  switch (figmaType) {
+    case "COLOR": {
+      const figmaColor = convertColorToFigmaRgb(value);
+      return figmaColor ?? { r: 0, g: 0, b: 0 };
+    }
+
+    case "FLOAT": {
+      const numericValue = parseNumericValue(value);
+
+      // Debug logging for problematic token types
+      if (
+        token.$type === "dimension" ||
+        token.$type === "spacing" ||
+        token.$type === "borderRadius" ||
+        token.$type === "borderWidth" ||
+        token.$type === "lineHeight"
+      ) {
+        console.log(`[Importer] FLOAT conversion:`, {
+          name: token.name,
+          type: token.$type,
+          originalValue: value,
+          numericValue,
+          isZero: numericValue === 0,
+        });
+      }
+
+      if (
+        typeof value === "string" &&
+        numericValue === 0 &&
+        value.trim() !== "" &&
+        !/^0+(\.0+)?$/.test(value.trim())
+      ) {
+        console.warn(
+          `[Importer] Parsed numeric value 0 for non-zero token`,
+          token.name || "unknown",
+          "raw value:",
+          value
+        );
+      }
+      return numericValue;
+    }
 
     case "STRING":
     case "BOOLEAN":
@@ -285,28 +415,47 @@ async function createVariableWithReferences(
         registry.addPendingResolution(variable, tokenName, modeReferences);
       }
     } else {
-      // Single mode token
-      const defaultMode = collection.modes[0];
+      // Single mode token – apply the same value (or reference) to every available mode
+      const targetModes =
+        collection.modes.length > 0
+          ? collection.modes
+          : collection.defaultModeId
+            ? [{ modeId: collection.defaultModeId, name: "Default" }]
+            : [];
+
+      if (targetModes.length === 0) {
+        console.warn(
+          `Collection "${collection.name}" has no modes; skipping value assignment for ${tokenName}`
+        );
+        return variable;
+      }
 
       if (isTokenReference(token.$value)) {
-        // Queue reference for later resolution
+        // Queue reference for each mode
         const ref = parseTokenReference(token.$value);
         if (ref) {
           const modeReferences = new Map();
-          modeReferences.set(defaultMode.modeId, ref);
+          for (const mode of targetModes) {
+            modeReferences.set(mode.modeId, ref);
+          }
           registry.addPendingResolution(variable, tokenName, modeReferences);
         }
       } else {
-        // Set immediate value with type validation
+        // Set immediate value for every mode with type validation
         const figmaValue = convertTokenValueToFigma(token, figmaType);
-        try {
-          variable.setValueForMode(defaultMode.modeId, figmaValue);
-        } catch (error) {
-          console.error(`Failed to set value for ${tokenName}:`, error);
-          console.error(
-            `Token type: ${token.$type}, Figma type: ${figmaType}, Value:`,
-            token.$value
-          );
+        for (const mode of targetModes) {
+          try {
+            variable.setValueForMode(mode.modeId, figmaValue);
+          } catch (error) {
+            console.error(
+              `Failed to set value for ${tokenName} mode ${mode.name}:`,
+              error
+            );
+            console.error(
+              `Token type: ${token.$type}, Figma type: ${figmaType}, Value:`,
+              token.$value
+            );
+          }
         }
       }
     }

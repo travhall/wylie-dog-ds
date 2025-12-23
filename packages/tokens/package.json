@@ -3,20 +3,28 @@
   "version": "0.0.1",
   "license": "MIT",
   "type": "module",
+  "exports": {
+    "./src/*": "./src/*.json",
+    "./tokens.css": "./dist/tokens.css",
+    "./primitives.css": "./dist/primitives.css",
+    "./semantic-light.css": "./dist/semantic-light.css",
+    "./semantic-dark.css": "./dist/semantic-dark.css",
+    "./hierarchical": "./dist/hierarchical.js"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    "./src/*": "./src/*.json"
-  },
   "files": [
-    "src"
+    "src",
+    "dist"
   ],
   "scripts": {
-    "process": "node scripts/process-figma-exports.js",
-    "build": "echo 'Token JSON files are consumed directly by @wyliedog/ui package'",
-    "dev": "echo 'No dev mode needed - JSON files are consumed directly'",
+    "build": "pnpm process && node style-dictionary.config.js",
+    "build:tokens": "pnpm build",
     "clean": "rm -rf dist",
+    "export-demo-tokens": "node scripts/export-demo-tokens.mjs",
+    "process": "node scripts/process-figma-exports.js",
+    "report:tokens": "node scripts/report-token-usage.mjs",
     "sync:figma": "node scripts/figma-sync.js",
     "test:tokens": "node scripts/validate-tokens.js"
   },

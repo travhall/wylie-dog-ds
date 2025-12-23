@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useEffect, useState } from "react";
-import { color, spacing, shadow } from "@wyliedog/ui/tokens/hierarchical";
+import { color, spacing, shadow } from "@wyliedog/tokens/hierarchical";
 
 const meta: Meta = {
   title: "2. Foundations/Design Tokens/Colors",
@@ -46,7 +46,7 @@ const ColorPalette = ({
 
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold capitalize">{colorName} Colors</h3>
+      <h3 className="text-lg font-semibold capitalize">{colorName}</h3>
       <div className="grid grid-cols-11 gap-2">
         {shadeEntries.map(([shade, value]) => (
           <div key={shade} className="text-center">
@@ -128,7 +128,7 @@ export const ColorUsage: Story = {
           Status Messages
         </h4>
         <div className="space-y-2">
-          <div className="bg-(--color-surface-success) border border-(--color-border-success) text-(--color-text-success) p-3 rounded flex items-start gap-2">
+          <div className="bg-surface-success border border-(--color-border-success) text-(--color-text-success) p-3 rounded flex items-start gap-2">
             <svg
               className="w-5 h-5 shrink-0"
               fill="currentColor"
@@ -166,7 +166,7 @@ export const ColorUsage: Story = {
               </div>
             </div>
           </div>
-          <div className="bg-(--color-surface-warning) border border-(--color-border-warning) text-(--color-text-warning) p-3 rounded flex items-start gap-2">
+          <div className="bg-surface-warning border border-(--color-border-warning) text-(--color-text-warning) p-3 rounded flex items-start gap-2">
             <svg
               className="w-5 h-5 shrink-0"
               fill="currentColor"
@@ -289,7 +289,7 @@ export const ColorUsage: Story = {
         <h4 className="font-medium text-(--color-text-primary)">
           Implementation Reference
         </h4>
-        <div className="bg-(--color-background-inverse) text-(--color-text-inverse) p-4 rounded font-mono text-xs overflow-x-auto">
+        <div className="bg-background-inverse text-(--color-text-inverse) p-4 rounded font-mono text-xs overflow-x-auto">
           <div className="space-y-2">
             <div>
               <span className="text-purple-400">// Interactive buttons</span>

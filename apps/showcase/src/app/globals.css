@@ -1,7 +1,7 @@
-/* Import design tokens and UI components from the UI package */
-@import "@wyliedog/ui/styles";
-
-/* Import Tailwind base, components, utilities for app-specific usage */
+/* Import Tailwind CSS */
 @import "tailwindcss";
+
+/* Import UI components */
+@import "@wyliedog/ui/styles";
 
 /* App-specific styles */

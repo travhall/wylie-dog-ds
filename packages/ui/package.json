@@ -268,12 +268,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm build-tokens && pnpm build:styles && pnpm build:components",
-    "build-tokens": "node style-dictionary.config.js",
+    "build": "pnpm build:styles && pnpm build:components",
     "build:components": "tsup",
     "build:styles": "tailwindcss -i ./src/styles/index.css -o ./dist/index.css",
     "clean": "rm -rf .turbo node_modules dist",
-    "dev": "pnpm build-tokens && pnpm dev:styles & pnpm dev:components",
+    "dev": "pnpm dev:styles & pnpm dev:components",
     "dev:components": "tsup --watch",
     "dev:styles": "tailwindcss -i ./src/styles/index.css -o ./dist/index.css --watch",
     "lint": "eslint src --max-warnings 0",
@@ -308,6 +307,7 @@
     "@radix-ui/react-toggle": "^1.1.9",
     "@radix-ui/react-toggle-group": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.1.3",
+    "@wyliedog/tokens": "workspace:*",
     "cmdk": "^1.0.3",
     "lucide-react": "^0.468.0",
     "react": "^19.1.0"

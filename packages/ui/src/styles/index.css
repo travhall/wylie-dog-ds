@@ -1,3 +1,3 @@
-/* Import Tailwind CSS and design tokens */
+/* Import design tokens from tokens package */
 @import "tailwindcss";
-@import "./tokens.css";
+@import "@wyliedog/tokens/tokens.css";

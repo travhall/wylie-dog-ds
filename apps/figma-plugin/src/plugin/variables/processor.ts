@@ -166,7 +166,6 @@ function getW3CTokenType(
 function formatNumericValue(value: number, tokenType: string): string {
   switch (tokenType) {
     case "fontSize":
-    case "lineHeight":
     case "letterSpacing":
     case "paragraphSpacing":
     case "spacing":
@@ -175,6 +174,8 @@ function formatNumericValue(value: number, tokenType: string): string {
     case "borderWidth":
     case "dimension":
       return `${value}px`;
+    case "lineHeight":
+      return `${value}%`;
     default:
       return value.toString();
   }

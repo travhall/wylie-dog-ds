@@ -20,6 +20,7 @@ export default function RootLayout({
   const navigation = [
     { label: "Home", href: "/" },
     { label: "Components", href: "/components" },
+    { label: "Colors", href: "/colors" },
     { label: "Patterns", href: "/patterns" },
     { label: "Examples", href: "/examples" },
   ];
@@ -29,6 +30,7 @@ export default function RootLayout({
       title: "Product",
       links: [
         { label: "Components", href: "/components" },
+        { label: "Colors", href: "/colors" },
         { label: "Patterns", href: "/patterns" },
         { label: "Examples", href: "/examples" },
       ],
