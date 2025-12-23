@@ -115,81 +115,75 @@ describe("Badge", () => {
       render(<Badge variant="default">Default</Badge>);
       const badge = screen.getByText("Default");
 
-      expect(badge).toHaveClass("bg-[var(--color-badge-default-background)]");
-      expect(badge).toHaveClass("text-[var(--color-badge-default-text)]");
-      expect(badge).toHaveClass("border-[var(--color-badge-default-border)]");
+      expect(badge).toHaveClass("bg-(--color-badge-default-background)");
+      expect(badge).toHaveClass("text-(--color-badge-default-text)");
+      expect(badge).toHaveClass("border-(--color-badge-default-border)");
     });
 
     it("should render secondary variant", () => {
       render(<Badge variant="secondary">Secondary</Badge>);
       const badge = screen.getByText("Secondary");
 
-      expect(badge).toHaveClass("bg-[var(--color-badge-secondary-background)]");
-      expect(badge).toHaveClass("text-[var(--color-badge-secondary-text)]");
-      expect(badge).toHaveClass("border-[var(--color-badge-secondary-border)]");
+      expect(badge).toHaveClass("bg-(--color-badge-secondary-background)");
+      expect(badge).toHaveClass("text-(--color-badge-secondary-text)");
+      expect(badge).toHaveClass("border-(--color-badge-secondary-border)");
     });
 
     it("should render success variant", () => {
       render(<Badge variant="success">Success</Badge>);
       const badge = screen.getByText("Success");
 
-      expect(badge).toHaveClass("bg-[var(--color-badge-success-background)]");
-      expect(badge).toHaveClass("text-[var(--color-badge-success-text)]");
-      expect(badge).toHaveClass("border-[var(--color-badge-success-border)]");
+      expect(badge).toHaveClass("bg-(--color-badge-success-background)");
+      expect(badge).toHaveClass("text-(--color-badge-success-text)");
+      expect(badge).toHaveClass("border-(--color-badge-success-border)");
     });
 
     it("should render warning variant", () => {
       render(<Badge variant="warning">Warning</Badge>);
       const badge = screen.getByText("Warning");
 
-      expect(badge).toHaveClass("bg-[var(--color-badge-warning-background)]");
-      expect(badge).toHaveClass("text-[var(--color-badge-warning-text)]");
-      expect(badge).toHaveClass("border-[var(--color-badge-warning-border)]");
+      expect(badge).toHaveClass("bg-(--color-badge-warning-background)");
+      expect(badge).toHaveClass("text-(--color-badge-warning-text)");
+      expect(badge).toHaveClass("border-(--color-badge-warning-border)");
     });
 
     it("should render destructive variant", () => {
       render(<Badge variant="destructive">Destructive</Badge>);
       const badge = screen.getByText("Destructive");
 
-      expect(badge).toHaveClass(
-        "bg-[var(--color-badge-destructive-background)]"
-      );
-      expect(badge).toHaveClass("text-[var(--color-badge-destructive-text)]");
-      expect(badge).toHaveClass(
-        "border-[var(--color-badge-destructive-border)]"
-      );
+      expect(badge).toHaveClass("bg-(--color-badge-destructive-background)");
+      expect(badge).toHaveClass("text-(--color-badge-destructive-text)");
+      expect(badge).toHaveClass("border-(--color-badge-destructive-border)");
     });
 
     it("should render outline variant", () => {
       render(<Badge variant="outline">Outline</Badge>);
       const badge = screen.getByText("Outline");
 
-      expect(badge).toHaveClass("bg-[var(--color-badge-outline-background)]");
-      expect(badge).toHaveClass("text-[var(--color-badge-outline-text)]");
-      expect(badge).toHaveClass("border-[var(--color-badge-outline-border)]");
+      expect(badge).toHaveClass("bg-(--color-badge-outline-background)");
+      expect(badge).toHaveClass("text-(--color-badge-outline-text)");
+      expect(badge).toHaveClass("border-(--color-badge-outline-border)");
     });
 
     it("should have default variant when none specified", () => {
       render(<Badge>Default Badge</Badge>);
       const badge = screen.getByText("Default Badge");
 
-      expect(badge).toHaveClass("bg-[var(--color-badge-default-background)]");
+      expect(badge).toHaveClass("bg-(--color-badge-default-background)");
     });
 
     it("should apply variant dynamically", () => {
       const { rerender } = render(<Badge variant="default">Badge</Badge>);
       let badge = screen.getByText("Badge");
-      expect(badge).toHaveClass("bg-[var(--color-badge-default-background)]");
+      expect(badge).toHaveClass("bg-(--color-badge-default-background)");
 
       rerender(<Badge variant="success">Badge</Badge>);
       badge = screen.getByText("Badge");
-      expect(badge).toHaveClass("bg-[var(--color-badge-success-background)]");
+      expect(badge).toHaveClass("bg-(--color-badge-success-background)");
 
       rerender(<Badge variant="destructive">Badge</Badge>);
       badge = screen.getByText("Badge");
-      expect(badge).toHaveClass(
-        "bg-[var(--color-badge-destructive-background)]"
-      );
+      expect(badge).toHaveClass("bg-(--color-badge-destructive-background)");
     });
   });
 
@@ -433,7 +427,7 @@ describe("Badge", () => {
       const badge = screen.getByLabelText("Success badge");
       expect(badge).toHaveAttribute("id", "badge-id");
       expect(badge).toHaveClass("custom-class");
-      expect(badge).toHaveClass("bg-[var(--color-badge-success-background)]");
+      expect(badge).toHaveClass("bg-(--color-badge-success-background)");
       expect(badge).toHaveAttribute("title", "This is a success badge");
     });
 
@@ -467,7 +461,7 @@ describe("Badge", () => {
       const badge = screen.getByText("Badge");
       // Will have both variant and custom class
       expect(badge).toHaveClass("bg-custom-color");
-      expect(badge).toHaveClass("bg-[var(--color-badge-default-background)]");
+      expect(badge).toHaveClass("bg-(--color-badge-default-background)");
     });
   });
 

@@ -139,9 +139,9 @@ describe("Alert", () => {
       );
       const alert = screen.getByRole("region");
       expect(alert).toHaveClass(
-        "bg-[var(--color-alert-default-background)]",
-        "border-[var(--color-alert-default-border)]",
-        "text-[var(--color-alert-default-text)]"
+        "bg-(--color-alert-default-background)",
+        "border-(--color-alert-default-border)",
+        "text-(--color-alert-default-text)"
       );
     });
 
@@ -153,9 +153,9 @@ describe("Alert", () => {
       );
       const alert = screen.getByRole("alert");
       expect(alert).toHaveClass(
-        "bg-[var(--color-alert-destructive-background)]",
-        "border-[var(--color-alert-destructive-border)]",
-        "text-[var(--color-alert-destructive-text)]"
+        "bg-(--color-alert-destructive-background)",
+        "border-(--color-alert-destructive-border)",
+        "text-(--color-alert-destructive-text)"
       );
     });
 
@@ -167,9 +167,9 @@ describe("Alert", () => {
       );
       const alert = screen.getByRole("alert");
       expect(alert).toHaveClass(
-        "bg-[var(--color-alert-warning-background)]",
-        "border-[var(--color-alert-warning-border)]",
-        "text-[var(--color-alert-warning-text)]"
+        "bg-(--color-alert-warning-background)",
+        "border-(--color-alert-warning-border)",
+        "text-(--color-alert-warning-text)"
       );
     });
 
@@ -181,9 +181,9 @@ describe("Alert", () => {
       );
       const alert = screen.getByRole("status");
       expect(alert).toHaveClass(
-        "bg-[var(--color-alert-success-background)]",
-        "border-[var(--color-alert-success-border)]",
-        "text-[var(--color-alert-success-text)]"
+        "bg-(--color-alert-success-background)",
+        "border-(--color-alert-success-border)",
+        "text-(--color-alert-success-text)"
       );
     });
   });
@@ -314,7 +314,7 @@ describe("Alert", () => {
       );
       const alert = screen.getByRole("alert");
       expect(alert).toHaveClass("shadow-lg");
-      expect(alert).toHaveClass("bg-[var(--color-alert-warning-background)]");
+      expect(alert).toHaveClass("bg-(--color-alert-warning-background)");
     });
   });
 
