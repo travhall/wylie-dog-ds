@@ -16,17 +16,17 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
   ({ className, variant = "default", ...props }, ref) => {
     const variants = {
       default:
-        "bg-[var(--color-badge-default-background)] text-[var(--color-badge-default-text)] border-[var(--color-badge-default-border)]",
+        "bg-(--color-badge-default-background) text-(--color-badge-default-text) border-(--color-badge-default-border)",
       secondary:
-        "bg-[var(--color-badge-secondary-background)] text-[var(--color-badge-secondary-text)] border-[var(--color-badge-secondary-border)]",
+        "bg-(--color-badge-secondary-background) text-(--color-badge-secondary-text) border-(--color-badge-secondary-border)",
       success:
-        "bg-[var(--color-badge-success-background)] text-[var(--color-badge-success-text)] border-[var(--color-badge-success-border)]",
+        "bg-(--color-badge-success-background) text-(--color-badge-success-text) border-(--color-badge-success-border)",
       warning:
-        "bg-[var(--color-badge-warning-background)] text-[var(--color-badge-warning-text)] border-[var(--color-badge-warning-border)]",
+        "bg-(--color-badge-warning-background) text-(--color-badge-warning-text) border-(--color-badge-warning-border)",
       destructive:
-        "bg-[var(--color-badge-destructive-background)] text-[var(--color-badge-destructive-text)] border-[var(--color-badge-destructive-border)]",
+        "bg-(--color-badge-destructive-background) text-(--color-badge-destructive-text) border-(--color-badge-destructive-border)",
       outline:
-        "bg-[var(--color-badge-outline-background)] text-[var(--color-badge-outline-text)] border-[var(--color-badge-outline-border)]",
+        "bg-(--color-badge-outline-background) text-(--color-badge-outline-text) border-(--color-badge-outline-border)",
     };
 
     return (

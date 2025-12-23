@@ -26,6 +26,7 @@
     "process-io": "node scripts/process-token-io.js",
     "process:legacy": "node scripts/process-figma-exports.js",
     "report:tokens": "node scripts/report-token-usage.mjs",
+    "report:usage": "node scripts/analyze-component-usage.js",
     "sync:figma": "node scripts/figma-sync.js",
     "test:tokens": "node scripts/validate-tokens.js"
   },

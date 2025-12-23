@@ -32,16 +32,16 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       default:
-        "bg-[var(--color-button-primary-background)] hover:bg-[var(--color-button-primary-background-hover)] active:bg-[var(--color-button-primary-background-active)] text-[var(--color-button-primary-text)] border-[var(--color-button-primary-border)]",
+        "bg-(--color-button-primary-background) hover:bg-(--color-button-primary-background-hover) active:bg-(--color-button-primary-background-active) text-(--color-button-primary-text) border-(--color-button-primary-border)",
       primary:
-        "bg-[var(--color-button-primary-background)] hover:bg-[var(--color-button-primary-background-hover)] active:bg-[var(--color-button-primary-background-active)] text-[var(--color-button-primary-text)] border-[var(--color-button-primary-border)]",
+        "bg-(--color-button-primary-background) hover:bg-(--color-button-primary-background-hover) active:bg-(--color-button-primary-background-active) text-(--color-button-primary-text) border-(--color-button-primary-border)",
       secondary:
-        "bg-[var(--color-button-secondary-background)] hover:bg-[var(--color-button-secondary-background-hover)] active:bg-[var(--color-button-secondary-background-active)] text-[var(--color-button-secondary-text)] border-[var(--color-button-secondary-border)]",
+        "bg-(--color-button-secondary-background) hover:bg-(--color-button-secondary-background-hover) active:bg-(--color-button-secondary-background-active) text-(--color-button-secondary-text) border-(--color-button-secondary-border)",
       outline:
-        "border border-[var(--color-button-outline-border)] bg-transparent hover:bg-[var(--color-button-outline-hover)] text-[var(--color-button-outline-text)]",
+        "border border-(--color-button-outline-border) bg-transparent hover:bg-(--color-button-outline-hover) text-(--color-button-outline-text)",
       ghost:
-        "bg-[var(--color-button-ghost-background)] hover:bg-[var(--color-button-ghost-background-hover)] active:bg-[var(--color-button-ghost-background-active)] text-[var(--color-button-ghost-text)] border-transparent",
-      link: "text-[var(--color-button-link-text)] underline-offset-4 hover:underline bg-transparent border-transparent p-0 h-auto",
+        "bg-(--color-button-ghost-background) hover:bg-(--color-button-ghost-background-hover) active:bg-(--color-button-ghost-background-active) text-(--color-button-ghost-text) border-transparent",
+      link: "text-(--color-button-link-text) underline-offset-4 hover:underline bg-transparent border-transparent p-0 h-auto",
       destructive:
         "bg-[var(--color-background-danger)] hover:bg-[var(--color-red-700)] text-[var(--color-text-inverse)] border-[var(--color-background-danger)]",
     };

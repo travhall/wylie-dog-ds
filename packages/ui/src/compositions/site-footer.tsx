@@ -37,9 +37,9 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
   ) => {
     const variants = {
       default:
-        "bg-[var(--color-background-secondary)] border-t border-[var(--color-border-primary)]",
+        "bg-(--color-background-secondary) border-t border-(--color-border-primary)",
       minimal:
-        "bg-[var(--color-background-primary)] border-t border-[var(--color-border-primary)]",
+        "bg-(--color-background-primary) border-t border-(--color-border-primary)",
     };
 
     const currentYear = new Date().getFullYear();
