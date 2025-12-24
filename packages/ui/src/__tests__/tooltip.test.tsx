@@ -326,8 +326,8 @@ describe("Tooltip", () => {
         const tooltip = screen.getByRole("tooltip");
         expect(tooltip).toHaveClass(
           "rounded-md",
-          "bg-[var(--color-tooltip-background)]",
-          "text-[var(--color-tooltip-text)]",
+          "bg-(--color-tooltip-background)",
+          "text-(--color-tooltip-text)",
           "px-3",
           "py-1.5",
           "text-xs"
@@ -454,7 +454,7 @@ describe("Tooltip", () => {
         const tooltip = screen.getByRole("tooltip");
         expect(tooltip).toHaveClass(
           "border",
-          "border-[var(--color-tooltip-border)]"
+          "border-(--color-tooltip-border)"
         );
       });
     });

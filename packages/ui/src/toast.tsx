@@ -9,8 +9,7 @@ interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
   ({ className, variant = "default", ...props }, ref) => {
     const variants = {
-      default:
-        "border bg-[var(--color-toast-background)] text-[var(--color-toast-text)]",
+      default: "border bg-(--color-toast-background) text-(--color-toast-text)",
       destructive: "destructive border-red-500 bg-red-500 text-white",
       success: "border-green-500 bg-green-500 text-white",
       warning: "border-yellow-500 bg-yellow-500 text-black",
@@ -41,7 +40,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
     <button
       ref={ref}
       className={cn(
-        "inline-flex h-8 shrink-0 items-center justify-center rounded-md border bg-transparent px-3 text-sm font-medium ring-offset-[var(--color-background)] transition-colors hover:bg-[var(--color-toast-action-hover)] focus:outline-none focus:ring-2 focus:ring-[var(--color-border-focus)] focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+        "inline-flex h-8 shrink-0 items-center justify-center rounded-md border bg-transparent px-3 text-sm font-medium ring-offset-(--color-background) transition-colors hover:bg-(--color-toast-action-hover) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
         className
       )}
       {...props}
@@ -59,7 +58,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
     <button
       ref={ref}
       className={cn(
-        "absolute right-2 top-2 rounded-md p-1 text-[var(--color-toast-close)] opacity-0 transition-opacity hover:text-[var(--color-toast-close-hover)] focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100",
+        "absolute right-2 top-2 rounded-md p-1 text-(--color-toast-close) opacity-0 transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100",
         className
       )}
       aria-label={srText}

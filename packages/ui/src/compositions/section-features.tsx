@@ -35,9 +35,9 @@ export const SectionFeatures = React.forwardRef<
     ref
   ) => {
     const variants = {
-      default: "bg-[var(--color-background-primary)]",
-      cards: "bg-[var(--color-background-secondary)]",
-      grid: "bg-[var(--color-background-primary)]",
+      default: "bg-(--color-background-primary)",
+      cards: "bg-(--color-background-secondary)",
+      grid: "bg-(--color-background-primary)",
     };
 
     const gridCols = {

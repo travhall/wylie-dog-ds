@@ -1130,6 +1130,670 @@
           "Light": "{color.text.inverse}",
           "Dark": "{color.text.inverse}"
         }
+      },
+      "accordion.border": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "accordion.content-text": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "accordion.icon": {
+        "$type": "color",
+        "$value": "{color.text.secondary}",
+        "valuesByMode": {
+          "Light": "{color.text.secondary}",
+          "Dark": "{color.text.secondary}"
+        }
+      },
+      "accordion.trigger-hover": {
+        "$type": "color",
+        "$value": "{color.interactive.secondary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.secondary}",
+          "Dark": "{color.interactive.secondary}"
+        }
+      },
+      "accordion.trigger-text": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "accordion.trigger-text-hover": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "accordion.trigger-text-open": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "avatar.background": {
+        "$type": "color",
+        "$value": "{color.background.secondary}",
+        "valuesByMode": {
+          "Light": "{color.background.secondary}",
+          "Dark": "{color.background.secondary}"
+        }
+      },
+      "avatar.border": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "avatar.fallback-background": {
+        "$type": "color",
+        "$value": "{color.background.tertiary}",
+        "valuesByMode": {
+          "Light": "{color.background.tertiary}",
+          "Dark": "{color.background.tertiary}"
+        }
+      },
+      "avatar.fallback-text": {
+        "$type": "color",
+        "$value": "{color.text.secondary}",
+        "valuesByMode": {
+          "Light": "{color.text.secondary}",
+          "Dark": "{color.text.secondary}"
+        }
+      },
+      "breadcrumb.current": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "breadcrumb.link": {
+        "$type": "color",
+        "$value": "{color.interactive.primary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.primary}",
+          "Dark": "{color.interactive.primary}"
+        }
+      },
+      "breadcrumb.link-hover": {
+        "$type": "color",
+        "$value": "{color.interactive.primary-hover}",
+        "valuesByMode": {
+          "Light": "{color.interactive.primary-hover}",
+          "Dark": "{color.interactive.primary-hover}"
+        }
+      },
+      "breadcrumb.text": {
+        "$type": "color",
+        "$value": "{color.text.secondary}",
+        "valuesByMode": {
+          "Light": "{color.text.secondary}",
+          "Dark": "{color.text.secondary}"
+        }
+      },
+      "carousel.nav-background": {
+        "$type": "color",
+        "$value": "{color.background.primary}",
+        "valuesByMode": {
+          "Light": "{color.background.primary}",
+          "Dark": "{color.background.primary}"
+        }
+      },
+      "carousel.nav-border": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "carousel.nav-hover": {
+        "$type": "color",
+        "$value": "{color.interactive.secondary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.secondary}",
+          "Dark": "{color.interactive.secondary}"
+        }
+      },
+      "carousel.nav-text-hover": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "contextmenu.background": {
+        "$type": "color",
+        "$value": "{color.background.primary}",
+        "valuesByMode": {
+          "Light": "{color.background.primary}",
+          "Dark": "{color.background.primary}"
+        }
+      },
+      "contextmenu.item-hover": {
+        "$type": "color",
+        "$value": "{color.interactive.secondary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.secondary}",
+          "Dark": "{color.interactive.secondary}"
+        }
+      },
+      "contextmenu.item-text-hover": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "contextmenu.label": {
+        "$type": "color",
+        "$value": "{color.text.secondary}",
+        "valuesByMode": {
+          "Light": "{color.text.secondary}",
+          "Dark": "{color.text.secondary}"
+        }
+      },
+      "contextmenu.separator": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "contextmenu.shortcut": {
+        "$type": "color",
+        "$value": "{color.text.tertiary}",
+        "valuesByMode": {
+          "Light": "{color.text.tertiary}",
+          "Dark": "{color.text.tertiary}"
+        }
+      },
+      "contextmenu.text": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "dialog.background": {
+        "$type": "color",
+        "$value": "{color.background.primary}",
+        "valuesByMode": {
+          "Light": "{color.background.primary}",
+          "Dark": "{color.background.primary}"
+        }
+      },
+      "dialog.border": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "dialog.description": {
+        "$type": "color",
+        "$value": "{color.text.secondary}",
+        "valuesByMode": {
+          "Light": "{color.text.secondary}",
+          "Dark": "{color.text.secondary}"
+        }
+      },
+      "dialog.overlay": {
+        "$type": "color",
+        "$value": "oklch(0% 0 0 / 0.8)",
+        "valuesByMode": {
+          "Light": "oklch(0% 0 0 / 0.8)",
+          "Dark": "oklch(0% 0 0 / 0.8)"
+        }
+      },
+      "dialog.title": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "form.description": {
+        "$type": "color",
+        "$value": "{color.text.secondary}",
+        "valuesByMode": {
+          "Light": "{color.text.secondary}",
+          "Dark": "{color.text.secondary}"
+        }
+      },
+      "form.error": {
+        "$type": "color",
+        "$value": "{color.text.danger}",
+        "valuesByMode": {
+          "Light": "{color.text.danger}",
+          "Dark": "{color.text.danger}"
+        }
+      },
+      "form.label": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "hover-card.background": {
+        "$type": "color",
+        "$value": "{color.background.primary}",
+        "valuesByMode": {
+          "Light": "{color.background.primary}",
+          "Dark": "{color.background.primary}"
+        }
+      },
+      "hover-card.border": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "hover-card.text": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "pagination.active": {
+        "$type": "color",
+        "$value": "{color.interactive.primary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.primary}",
+          "Dark": "{color.interactive.primary}"
+        }
+      },
+      "pagination.hover": {
+        "$type": "color",
+        "$value": "{color.interactive.secondary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.secondary}",
+          "Dark": "{color.interactive.secondary}"
+        }
+      },
+      "pagination.text": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "pagination.text-active": {
+        "$type": "color",
+        "$value": "{color.text.inverse}",
+        "valuesByMode": {
+          "Light": "{color.text.inverse}",
+          "Dark": "{color.text.inverse}"
+        }
+      },
+      "pagination.text-hover": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "popover.background": {
+        "$type": "color",
+        "$value": "{color.background.primary}",
+        "valuesByMode": {
+          "Light": "{color.background.primary}",
+          "Dark": "{color.background.primary}"
+        }
+      },
+      "popover.border": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "popover.text": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "progress.background": {
+        "$type": "color",
+        "$value": "{color.background.secondary}",
+        "valuesByMode": {
+          "Light": "{color.background.secondary}",
+          "Dark": "{color.background.secondary}"
+        }
+      },
+      "progress.default-fill": {
+        "$type": "color",
+        "$value": "{color.interactive.primary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.primary}",
+          "Dark": "{color.interactive.primary}"
+        }
+      },
+      "progress.destructive-fill": {
+        "$type": "color",
+        "$value": "{color.background.danger}",
+        "valuesByMode": {
+          "Light": "{color.background.danger}",
+          "Dark": "{color.background.danger}"
+        }
+      },
+      "progress.success-fill": {
+        "$type": "color",
+        "$value": "{color.interactive.success}",
+        "valuesByMode": {
+          "Light": "{color.interactive.success}",
+          "Dark": "{color.interactive.success}"
+        }
+      },
+      "progress.warning-fill": {
+        "$type": "color",
+        "$value": "{color.interactive.warning}",
+        "valuesByMode": {
+          "Light": "{color.interactive.warning}",
+          "Dark": "{color.interactive.warning}"
+        }
+      },
+      "radio.background-checked": {
+        "$type": "color",
+        "$value": "{color.interactive.primary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.primary}",
+          "Dark": "{color.interactive.primary}"
+        }
+      },
+      "radio.border": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "radio.border-checked": {
+        "$type": "color",
+        "$value": "{color.interactive.primary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.primary}",
+          "Dark": "{color.interactive.primary}"
+        }
+      },
+      "radio.indicator": {
+        "$type": "color",
+        "$value": "{color.text.inverse}",
+        "valuesByMode": {
+          "Light": "{color.text.inverse}",
+          "Dark": "{color.text.inverse}"
+        }
+      },
+      "resizable.handle": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "resizable.handle-background": {
+        "$type": "color",
+        "$value": "{color.background.secondary}",
+        "valuesByMode": {
+          "Light": "{color.background.secondary}",
+          "Dark": "{color.background.secondary}"
+        }
+      },
+      "resizable.handle-border": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "scrollbar.thumb": {
+        "$type": "color",
+        "$value": "{color.border.secondary}",
+        "valuesByMode": {
+          "Light": "{color.border.secondary}",
+          "Dark": "{color.border.secondary}"
+        }
+      },
+      "skeleton.background": {
+        "$type": "color",
+        "$value": "{color.background.tertiary}",
+        "valuesByMode": {
+          "Light": "{color.background.tertiary}",
+          "Dark": "{color.background.tertiary}"
+        }
+      },
+      "slider.range": {
+        "$type": "color",
+        "$value": "{color.interactive.primary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.primary}",
+          "Dark": "{color.interactive.primary}"
+        }
+      },
+      "slider.thumb": {
+        "$type": "color",
+        "$value": "{color.background.primary}",
+        "valuesByMode": {
+          "Light": "{color.background.primary}",
+          "Dark": "{color.background.primary}"
+        }
+      },
+      "slider.thumb-border": {
+        "$type": "color",
+        "$value": "{color.interactive.primary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.primary}",
+          "Dark": "{color.interactive.primary}"
+        }
+      },
+      "slider.track": {
+        "$type": "color",
+        "$value": "{color.background.secondary}",
+        "valuesByMode": {
+          "Light": "{color.background.secondary}",
+          "Dark": "{color.background.secondary}"
+        }
+      },
+      "table.border": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "table.caption": {
+        "$type": "color",
+        "$value": "{color.text.secondary}",
+        "valuesByMode": {
+          "Light": "{color.text.secondary}",
+          "Dark": "{color.text.secondary}"
+        }
+      },
+      "table.footer-background": {
+        "$type": "color",
+        "$value": "{color.background.tertiary}",
+        "valuesByMode": {
+          "Light": "{color.background.tertiary}",
+          "Dark": "{color.background.tertiary}"
+        }
+      },
+      "table.header-text": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "table.row-hover": {
+        "$type": "color",
+        "$value": "{color.interactive.secondary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.secondary}",
+          "Dark": "{color.interactive.secondary}"
+        }
+      },
+      "table.row-selected": {
+        "$type": "color",
+        "$value": "{color.interactive.secondary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.secondary}",
+          "Dark": "{color.interactive.secondary}"
+        }
+      },
+      "toast.action-hover": {
+        "$type": "color",
+        "$value": "{color.interactive.secondary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.secondary}",
+          "Dark": "{color.interactive.secondary}"
+        }
+      },
+      "toast.background": {
+        "$type": "color",
+        "$value": "{color.background.primary}",
+        "valuesByMode": {
+          "Light": "{color.background.primary}",
+          "Dark": "{color.background.primary}"
+        }
+      },
+      "toast.close": {
+        "$type": "color",
+        "$value": "{color.text.secondary}",
+        "valuesByMode": {
+          "Light": "{color.text.secondary}",
+          "Dark": "{color.text.secondary}"
+        }
+      },
+      "toast.close-hover": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "toast.text": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "toggle.border": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "toggle.hover": {
+        "$type": "color",
+        "$value": "{color.interactive.secondary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.secondary}",
+          "Dark": "{color.interactive.secondary}"
+        }
+      },
+      "toggle.pressed": {
+        "$type": "color",
+        "$value": "{color.interactive.primary}",
+        "valuesByMode": {
+          "Light": "{color.interactive.primary}",
+          "Dark": "{color.interactive.primary}"
+        }
+      },
+      "toggle.text": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "toggle.text-hover": {
+        "$type": "color",
+        "$value": "{color.text.primary}",
+        "valuesByMode": {
+          "Light": "{color.text.primary}",
+          "Dark": "{color.text.primary}"
+        }
+      },
+      "toggle.text-pressed": {
+        "$type": "color",
+        "$value": "{color.text.inverse}",
+        "valuesByMode": {
+          "Light": "{color.text.inverse}",
+          "Dark": "{color.text.inverse}"
+        }
+      },
+      "tooltip.background": {
+        "$type": "color",
+        "$value": "{color.background.inverse}",
+        "valuesByMode": {
+          "Light": "{color.background.inverse}",
+          "Dark": "{color.background.inverse}"
+        }
+      },
+      "tooltip.border": {
+        "$type": "color",
+        "$value": "{color.border.primary}",
+        "valuesByMode": {
+          "Light": "{color.border.primary}",
+          "Dark": "{color.border.primary}"
+        }
+      },
+      "tooltip.text": {
+        "$type": "color",
+        "$value": "{color.text.inverse}",
+        "valuesByMode": {
+          "Light": "{color.text.inverse}",
+          "Dark": "{color.text.inverse}"
+        }
       }
     }
   }
