@@ -8,14 +8,9 @@ import { convertHexToOklch } from "./color-utils.js";
  */
 
 class TokenIOProcessor {
-  constructor(
-    inputDir = "io/input",
-    processedDir = "io/processed",
-    exportDir = "io/export"
-  ) {
-    this.inputDir = inputDir;
+  constructor(syncDir = "io/sync", processedDir = "io/processed") {
+    this.syncDir = syncDir;
     this.processedDir = processedDir;
-    this.exportDir = exportDir;
   }
 
   /**
@@ -272,22 +267,22 @@ class TokenIOProcessor {
    * Process all input files
    */
   async processInputFiles() {
-    console.log("🚀 Starting token I/O processing...");
+    console.log("🔄 Processing token files from sync directory...");
 
     // Ensure directories exist
     await mkdir(this.processedDir, { recursive: true });
-    await mkdir(this.exportDir, { recursive: true });
+    await mkdir(this.syncDir, { recursive: true });
 
     const files = ["primitive.json", "semantic.json", "components.json"];
     const processedData = {
-      primitive: null,
+      primitive: {},
       semantic: { light: {}, dark: {} },
       components: { light: {}, dark: {} },
     };
 
     for (const filename of files) {
       try {
-        const filePath = join(this.inputDir, filename);
+        const filePath = join(this.syncDir, filename);
         const rawData = JSON.parse(await readFile(filePath, "utf8"));
         const normalized = await this.normalizeFormat(rawData, filename);
 
@@ -397,19 +392,19 @@ class TokenIOProcessor {
       },
     ];
 
-    // Write W3C exports
+    // Write W3C exports to sync directory for Figma plugin
     await writeFile(
-      join(this.exportDir, "primitive.json"),
+      join(this.syncDir, "primitive.json"),
       JSON.stringify(w3cExports[0], null, 2)
     );
 
     await writeFile(
-      join(this.exportDir, "semantic.json"),
+      join(this.syncDir, "semantic.json"),
       JSON.stringify(w3cExports[1], null, 2)
     );
 
     await writeFile(
-      join(this.exportDir, "components.json"),
+      join(this.syncDir, "components.json"),
       JSON.stringify(w3cExports[2], null, 2)
     );
 
@@ -454,7 +449,7 @@ async function main() {
     const processedData = await processor.processInputFiles();
     await processor.generateExports(processedData);
     console.log(
-      "🎉 Complete! Check io/processed/ for source files and io/export/ for distribution files."
+      "🎉 Complete! Check io/processed/ for processed files and io/sync/ for Figma-compatible files."
     );
   } catch (error) {
     console.error("❌ Processing failed:", error);

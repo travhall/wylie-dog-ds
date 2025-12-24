@@ -21,6 +21,7 @@
     "build:tokens": "pnpm build",
     "clean": "rm -rf dist io",
     "clean:legacy": "rm -rf src/",
+    "dev": "node scripts/watch-tokens.js",
     "export-demo-tokens": "node scripts/export-demo-tokens.mjs",
     "process": "node scripts/process-token-io.js",
     "process-io": "node scripts/process-token-io.js",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@tokens-studio/sd-transforms": "^2.0.1",
+    "chokidar": "^4.0.1",
     "style-dictionary": "^5.0.1",
     "tsup": "^8.5.0"
   }
