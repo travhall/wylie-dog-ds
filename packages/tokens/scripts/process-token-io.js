@@ -392,20 +392,20 @@ class TokenIOProcessor {
       },
     ];
 
-    // Write W3C exports to sync directory for Figma plugin
+    // Write W3C exports to sync directory for Figma plugin (array format)
     await writeFile(
       join(this.syncDir, "primitive.json"),
-      JSON.stringify(w3cExports[0], null, 2)
+      JSON.stringify([w3cExports[0]], null, 2)
     );
 
     await writeFile(
       join(this.syncDir, "semantic.json"),
-      JSON.stringify(w3cExports[1], null, 2)
+      JSON.stringify([w3cExports[1]], null, 2)
     );
 
     await writeFile(
       join(this.syncDir, "components.json"),
-      JSON.stringify(w3cExports[2], null, 2)
+      JSON.stringify([w3cExports[2]], null, 2)
     );
 
     console.log("✅ Export files generated");
