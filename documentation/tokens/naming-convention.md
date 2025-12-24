@@ -49,10 +49,11 @@ When you add new token types (shadows, transitions, etc.), the category prefix p
 ### ❌ Legacy (Deprecated)
 
 ```tsx
+// Legacy (deprecated)
 className = "bg-[var(--color-button-primary-background)]";
 ```
 
-**Issues:**
+**Issues with legacy syntax:**
 
 - Verbose `var()` wrapper required
 - Long bracket syntax `[...]`

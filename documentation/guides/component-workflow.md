@@ -255,10 +255,10 @@ className={cn(
 Use CSS custom properties from the token system:
 
 ```tsx
-// ✅ Use design tokens
-"bg-[var(--color-button-primary-background)]";
-"hover:bg-[var(--color-button-primary-background-hover)]";
-"text-[var(--color-button-primary-text)]";
+// ✅ Use design tokens (Tailwind 4 modern syntax)
+"bg-(--color-button-primary-background)";
+"hover:bg-(--color-button-primary-background-hover)";
+"text-(--color-button-primary-text)";
 
 // ❌ Avoid hardcoded colors
 "bg-blue-500";
