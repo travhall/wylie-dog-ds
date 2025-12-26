@@ -174,31 +174,150 @@ pnpm type-check         # TypeScript
 
 ### Testing
 
-Comprehensive test coverage with Vitest + Testing Library:
+The plugin has a comprehensive test suite using **Vitest** and **@testing-library/preact**. Tests run independently of the main Wylie Dog test suite.
+
+#### Running Tests
+
+```bash
+# From monorepo root
+pnpm --filter figma-plugin test          # Watch mode
+pnpm --filter figma-plugin test:run      # Single run (CI)
+pnpm --filter figma-plugin test:coverage # With coverage report
+pnpm --filter figma-plugin test:ui       # Interactive UI
+
+# From plugin directory (apps/figma-plugin/)
+pnpm test                                # Watch mode
+pnpm test:run                            # Single run
+pnpm test:coverage                       # Coverage report
+```
+
+#### Test Structure
+
+Tests are located alongside their source files:
+
+```
+src/
+├── ui/
+│   ├── components/
+│   │   └── layout/
+│   │       ├── TabBar.tsx
+│   │       └── __tests__/
+│   │           └── TabBar.test.tsx
+│   └── utils/
+│       ├── parseGitHubUrl.ts
+│       └── __tests__/
+│           └── parseGitHubUrl.test.ts
+└── __tests__/
+    └── setup.ts                         # Global test setup
+```
+
+#### Test Examples
+
+**Unit Test:**
 
 ```typescript
-// Unit test example
+// src/ui/utils/__tests__/parseGitHubUrl.test.ts
 describe("parseGitHubUrl", () => {
   it("should parse standard GitHub URLs", () => {
-    expect(parseGitHubUrl("https://github.com/user/repo"))
-      .toEqual({ owner: "user", repo: "repo" });
+    expect(parseGitHubUrl("https://github.com/user/repo")).toEqual({
+      owner: "user",
+      repo: "repo",
+    });
   });
-});
 
-// Component test example
-describe("TabBar", () => {
-  it("should switch tabs on click", () => {
-    const onChange = vi.fn();
-    render(<TabBar activeTab="tokens" onTabChange={onChange} />);
-
-    fireEvent.click(screen.getByRole("tab", { name: /import/i }));
-
-    expect(onChange).toHaveBeenCalledWith("import");
+  it("should handle .git extension", () => {
+    expect(parseGitHubUrl("https://github.com/user/repo.git")).toEqual({
+      owner: "user",
+      repo: "repo",
+    });
   });
 });
 ```
 
-See [docs/TESTING.md](docs/TESTING.md) for full testing guide.
+**Component Test:**
+
+```typescript
+// src/ui/components/layout/__tests__/TabBar.test.tsx
+import { render, screen, fireEvent } from "@testing-library/preact";
+import { TabBar } from "../TabBar";
+
+describe("TabBar", () => {
+  it("should switch tabs on click", () => {
+    const onChange = vi.fn();
+    const tabs = [
+      { id: "tokens", label: "Tokens" },
+      { id: "import", label: "Import" }
+    ];
+
+    render(
+      <TabBar
+        tabs={tabs}
+        activeTab="tokens"
+        onTabChange={onChange}
+      />
+    );
+
+    fireEvent.click(screen.getByRole("tab", { name: /import/i }));
+    expect(onChange).toHaveBeenCalledWith("import");
+  });
+
+  it("should support keyboard navigation", () => {
+    const onChange = vi.fn();
+    // ... keyboard navigation test
+  });
+});
+```
+
+#### CI/CD Integration
+
+Tests run automatically on push via GitHub Actions:
+
+```yaml
+# .github/workflows/figma-plugin-test.yml
+- name: Run tests
+  run: pnpm --filter figma-plugin test:run
+
+- name: Generate coverage
+  run: pnpm --filter figma-plugin test:coverage
+
+- name: Upload to Codecov
+  uses: codecov/codecov-action@v5
+```
+
+**CI triggers:**
+
+- On push to `main` or `develop`
+- On pull requests
+- Only when plugin files change (`apps/figma-plugin/**`)
+
+#### Test Configuration
+
+**vitest.config.ts:**
+
+```typescript
+export default defineConfig({
+  plugins: [react()], // Preact compatibility
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: ["./src/__tests__/setup.ts"],
+    include: ["src/**/*.{test,spec}.{ts,tsx}"],
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "json", "html"],
+    },
+  },
+});
+```
+
+#### Current Test Status
+
+**Note:** Some placeholder tests exist but need implementation:
+
+- `parseGitHubUrl.test.ts` - Tests expect more fields than function returns
+- `TabBar.test.tsx` - Tests missing required props
+
+These are known issues and don't affect production functionality. See [docs/TESTING.md](docs/TESTING.md) for full testing guide and contribution guidelines.
 
 ---
 

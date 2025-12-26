@@ -85,7 +85,7 @@ export function TabBar({ tabs, activeTab, onTabChange }: TabBarProps) {
               fontSize: "var(--font-size-sm)",
               fontWeight: isActive
                 ? "var(--font-weight-semibold)"
-                : "var(--font-weight-medium)",
+                : "var(--font-weight-semibold)",
               color: isDisabled
                 ? "var(--text-tertiary)"
                 : isActive
