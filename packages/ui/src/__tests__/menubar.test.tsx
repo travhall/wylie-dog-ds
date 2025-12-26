@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, waitFor, act } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { axe, toHaveNoViolations } from "jest-axe";
 import {
@@ -277,10 +277,8 @@ describe("Menubar", () => {
       render(<TestMenubar />);
 
       const fileMenu = screen.getByText("File");
-      await act(async () => {
-        fileMenu.focus();
-        await user.keyboard("{Enter}");
-      });
+      fileMenu.focus();
+      await user.keyboard("{Enter}");
 
       await waitFor(() =>
         expect(screen.getByText("New File")).toBeInTheDocument()
