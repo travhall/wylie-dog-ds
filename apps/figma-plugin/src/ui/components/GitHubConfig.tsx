@@ -172,27 +172,36 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
   };
 
   return (
-    <div style={{ padding: "16px" }}>
+    <div style={{ padding: "var(--space-4)" }}>
       <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          marginBottom: "16px",
+          marginBottom: "var(--space-4)",
         }}
       >
-        <h2 style={{ margin: "0", fontSize: "16px", fontWeight: "bold" }}>
+        <h2
+          style={{
+            margin: "0",
+            fontSize: "var(--font-size-md)",
+            fontWeight: "var(--font-weight-semibold)",
+            color: "var(--text-primary)",
+          }}
+        >
           GitHub Configuration
         </h2>
         <button
           onClick={onClose}
           style={{
-            padding: "4px 8px",
-            backgroundColor: "#f1f5f9",
-            border: "1px solid #cbd5e1",
-            borderRadius: "4px",
+            padding: "var(--space-1) var(--space-2)",
+            backgroundColor: "var(--surface-secondary)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-sm)",
             cursor: "pointer",
-            fontSize: "11px",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
+            transition: "var(--transition-base)",
           }}
         >
           ✕
@@ -202,32 +211,38 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
       {error && (
         <div
           style={{
-            padding: "8px 12px",
-            marginBottom: "16px",
-            backgroundColor: "#fee",
-            border: "1px solid #fcc",
-            borderRadius: "4px",
-            color: "#c33",
-            fontSize: "12px",
+            padding: "var(--space-2) var(--space-3)",
+            marginBottom: "var(--space-4)",
+            backgroundColor: "var(--error-light)",
+            border: "1px solid var(--error)",
+            borderRadius: "var(--radius-md)",
+            color: "var(--error)",
+            fontSize: "var(--font-size-sm)",
           }}
         >
           ❌ {error}
         </div>
       )}
 
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <label
           style={{
             display: "block",
-            fontSize: "12px",
-            fontWeight: "bold",
-            marginBottom: "8px",
-            color: "#374151",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-semibold)",
+            marginBottom: "var(--space-2)",
+            color: "var(--text-primary)",
           }}
         >
           Sync Mode
         </label>
-        <div style={{ display: "flex", gap: "12px", marginBottom: "8px" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "var(--space-3)",
+            marginBottom: "var(--space-2)",
+          }}
+        >
           <label
             style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
           >
@@ -242,9 +257,16 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
                   (e.target as HTMLInputElement).value as SyncMode
                 )
               }
-              style={{ marginRight: "6px" }}
+              style={{ marginRight: "var(--space-2)" }}
             />
-            <span style={{ fontSize: "12px" }}>Direct Sync</span>
+            <span
+              style={{
+                fontSize: "var(--font-size-sm)",
+                color: "var(--text-primary)",
+              }}
+            >
+              Direct Sync
+            </span>
           </label>
           <label
             style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
@@ -260,21 +282,30 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
                   (e.target as HTMLInputElement).value as SyncMode
                 )
               }
-              style={{ marginRight: "6px" }}
+              style={{ marginRight: "var(--space-2)" }}
             />
-            <span style={{ fontSize: "12px" }}>Pull Request Mode</span>
+            <span
+              style={{
+                fontSize: "var(--font-size-sm)",
+                color: "var(--text-primary)",
+              }}
+            >
+              Pull Request Mode
+            </span>
           </label>
         </div>
         <div
           style={{
-            fontSize: "10px",
-            color: "#6b7280",
-            lineHeight: "1.4",
-            padding: "8px",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
+            lineHeight: "var(--line-height-relaxed)",
+            padding: "var(--space-2)",
             backgroundColor:
-              config.syncMode === "direct" ? "#f0f9ff" : "#f9fafb",
-            border: "1px solid #e5e7eb",
-            borderRadius: "4px",
+              config.syncMode === "direct"
+                ? "var(--info-light)"
+                : "var(--surface-secondary)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-md)",
           }}
         >
           {config.syncMode === "direct" ? (
@@ -291,17 +322,17 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
         </div>
       </div>
 
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <label
           style={{
             display: "block",
-            fontSize: "12px",
-            fontWeight: "bold",
-            marginBottom: "4px",
-            color: "#374151",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-semibold)",
+            marginBottom: "var(--space-1)",
+            color: "var(--text-primary)",
           }}
         >
-          Repository Owner <span style={{ color: "#ef4444" }}>*</span>
+          Repository Owner <span style={{ color: "var(--error)" }}>*</span>
         </label>
         <input
           type="text"
@@ -312,25 +343,27 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
           placeholder="e.g., your-username or org-name"
           style={{
             width: "100%",
-            padding: "8px",
-            border: "1px solid #d1d5db",
-            borderRadius: "4px",
-            fontSize: "12px",
+            padding: "var(--space-2)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-md)",
+            fontSize: "var(--font-size-sm)",
+            backgroundColor: "var(--surface-primary)",
+            color: "var(--text-primary)",
           }}
         />
       </div>
 
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <label
           style={{
             display: "block",
-            fontSize: "12px",
-            fontWeight: "bold",
-            marginBottom: "4px",
-            color: "#374151",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-semibold)",
+            marginBottom: "var(--space-1)",
+            color: "var(--text-primary)",
           }}
         >
-          Repository Name <span style={{ color: "#ef4444" }}>*</span>
+          Repository Name <span style={{ color: "var(--error)" }}>*</span>
         </label>
         <input
           type="text"
@@ -341,10 +374,12 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
           placeholder="e.g., design-system-tokens"
           style={{
             width: "100%",
-            padding: "8px",
-            border: "1px solid #d1d5db",
-            borderRadius: "4px",
-            fontSize: "12px",
+            padding: "var(--space-2)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-md)",
+            fontSize: "var(--font-size-sm)",
+            backgroundColor: "var(--surface-primary)",
+            color: "var(--text-primary)",
           }}
         />
         {/* Repository Structure Suggestions - Quick Win #8 */}
@@ -352,19 +387,19 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
           getRepositoryStructureSuggestions(config.repo).length > 0 && (
             <div
               style={{
-                marginTop: "8px",
-                padding: "8px",
-                backgroundColor: "#f0f9ff",
-                border: "1px solid #bfdbfe",
-                borderRadius: "4px",
-                fontSize: "10px",
+                marginTop: "var(--space-2)",
+                padding: "var(--space-2)",
+                backgroundColor: "var(--info-light)",
+                border: "1px solid var(--info)",
+                borderRadius: "var(--radius-md)",
+                fontSize: "var(--font-size-xs)",
               }}
             >
               <div
                 style={{
-                  fontWeight: "bold",
-                  marginBottom: "4px",
-                  color: "#1d4ed8",
+                  fontWeight: "var(--font-weight-semibold)",
+                  marginBottom: "var(--space-1)",
+                  color: "var(--text-primary)",
                 }}
               >
                 💡 Repository Insights:
@@ -373,7 +408,10 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
                 (suggestion, index) => (
                   <div
                     key={index}
-                    style={{ marginBottom: "2px", color: "#1e40af" }}
+                    style={{
+                      marginBottom: "2px",
+                      color: "var(--text-secondary)",
+                    }}
                   >
                     {suggestion}
                   </div>
@@ -383,15 +421,21 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
           )}
       </div>
 
-      <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "var(--space-2)",
+          marginBottom: "var(--space-4)",
+        }}
+      >
         <div style={{ flex: 1 }}>
           <label
             style={{
               display: "block",
-              fontSize: "12px",
-              fontWeight: "bold",
-              marginBottom: "4px",
-              color: "#374151",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-semibold)",
+              marginBottom: "var(--space-1)",
+              color: "var(--text-primary)",
             }}
           >
             Branch
@@ -405,10 +449,12 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
             placeholder="main"
             style={{
               width: "100%",
-              padding: "8px",
-              border: "1px solid #d1d5db",
-              borderRadius: "4px",
-              fontSize: "12px",
+              padding: "var(--space-2)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              fontSize: "var(--font-size-sm)",
+              backgroundColor: "var(--surface-primary)",
+              color: "var(--text-primary)",
             }}
           />
         </div>
@@ -416,10 +462,10 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
           <label
             style={{
               display: "block",
-              fontSize: "12px",
-              fontWeight: "bold",
-              marginBottom: "4px",
-              color: "#374151",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-semibold)",
+              marginBottom: "var(--space-1)",
+              color: "var(--text-primary)",
             }}
           >
             Token Path
@@ -436,26 +482,28 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
             placeholder="tokens"
             style={{
               width: "100%",
-              padding: "8px",
-              border: "1px solid #d1d5db",
-              borderRadius: "4px",
-              fontSize: "12px",
+              padding: "var(--space-2)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              fontSize: "var(--font-size-sm)",
+              backgroundColor: "var(--surface-primary)",
+              color: "var(--text-primary)",
             }}
           />
         </div>
       </div>
 
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <label
           style={{
             display: "block",
-            fontSize: "12px",
-            fontWeight: "bold",
-            marginBottom: "4px",
-            color: "#374151",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-semibold)",
+            marginBottom: "var(--space-1)",
+            color: "var(--text-primary)",
           }}
         >
-          Personal Access Token <span style={{ color: "#ef4444" }}>*</span>
+          Personal Access Token <span style={{ color: "var(--error)" }}>*</span>
         </label>
         <input
           type="password"
@@ -469,24 +517,29 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
           placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
           style={{
             width: "100%",
-            padding: "8px",
-            border: "1px solid #d1d5db",
-            borderRadius: "4px",
-            fontSize: "12px",
+            padding: "var(--space-2)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-md)",
+            fontSize: "var(--font-size-sm)",
+            backgroundColor: "var(--surface-primary)",
+            color: "var(--text-primary)",
           }}
         />
         <div
           style={{
-            fontSize: "10px",
-            color: "#6b7280",
-            marginTop: "4px",
-            lineHeight: "1.4",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
+            marginTop: "var(--space-1)",
+            lineHeight: "var(--line-height-relaxed)",
           }}
         >
           <a
             href="https://github.com/settings/tokens"
             target="_blank"
-            style={{ color: "#3b82f6", textDecoration: "underline" }}
+            style={{
+              color: "var(--accent-primary)",
+              textDecoration: "underline",
+            }}
           >
             Create a token
           </a>{" "}
@@ -496,31 +549,38 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
 
       <div
         style={{
-          padding: "12px",
-          backgroundColor: "#f0f9ff",
-          border: "1px solid #bae6fd",
-          borderRadius: "4px",
-          marginBottom: "16px",
+          padding: "var(--space-3)",
+          backgroundColor: "var(--info-light)",
+          border: "1px solid var(--info)",
+          borderRadius: "var(--radius-md)",
+          marginBottom: "var(--space-4)",
         }}
       >
         <div
           style={{
-            fontSize: "11px",
-            fontWeight: "bold",
-            marginBottom: "4px",
-            color: "#0369a1",
+            fontSize: "var(--font-size-xs)",
+            fontWeight: "var(--font-weight-semibold)",
+            marginBottom: "var(--space-1)",
+            color: "var(--text-primary)",
           }}
         >
           📁 Token File Organization
         </div>
-        <div style={{ fontSize: "10px", color: "#0c4a6e", lineHeight: "1.4" }}>
+        <div
+          style={{
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
+            lineHeight: "var(--line-height-relaxed)",
+          }}
+        >
           Each collection will be saved as a separate file:
           <br />
           <code
             style={{
-              backgroundColor: "#e0f2fe",
-              padding: "2px 4px",
-              borderRadius: "2px",
+              backgroundColor: "var(--surface-secondary)",
+              padding: "2px var(--space-1)",
+              borderRadius: "var(--radius-sm)",
+              color: "var(--text-primary)",
             }}
           >
             {config.tokenPath}/primitive.json
@@ -533,7 +593,7 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
       <div
         style={{
           display: "flex",
-          gap: "8px",
+          gap: "var(--space-2)",
           justifyContent: "flex-end",
         }}
       >
@@ -541,13 +601,15 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
           onClick={onClose}
           disabled={loading}
           style={{
-            padding: "8px 16px",
-            backgroundColor: "#f9fafb",
-            border: "1px solid #d1d5db",
-            borderRadius: "4px",
+            padding: "var(--space-2) var(--space-4)",
+            backgroundColor: "var(--surface-secondary)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-md)",
             cursor: loading ? "not-allowed" : "pointer",
-            fontSize: "12px",
-            color: "#374151",
+            fontSize: "var(--font-size-sm)",
+            color: "var(--text-secondary)",
+            fontWeight: "var(--font-weight-medium)",
+            transition: "var(--transition-base)",
           }}
         >
           Cancel
@@ -558,17 +620,24 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
             loading || !config.owner || !config.repo || !config.accessToken
           }
           style={{
-            padding: "8px 16px",
-            backgroundColor: loading ? "#cbd5e1" : "#3b82f6",
-            color: "white",
+            padding: "var(--space-2) var(--space-4)",
+            backgroundColor: loading
+              ? "var(--surface-secondary)"
+              : "var(--accent-primary)",
+            color: loading ? "var(--text-tertiary)" : "var(--text-inverse)",
             border: "none",
-            borderRadius: "4px",
+            borderRadius: "var(--radius-md)",
             cursor:
               loading || !config.owner || !config.repo || !config.accessToken
                 ? "not-allowed"
                 : "pointer",
-            fontSize: "12px",
-            fontWeight: "bold",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-semibold)",
+            transition: "var(--transition-base)",
+            opacity:
+              loading || !config.owner || !config.repo || !config.accessToken
+                ? 0.5
+                : 1,
           }}
         >
           {loading ? "Testing..." : "Save & Test"}
