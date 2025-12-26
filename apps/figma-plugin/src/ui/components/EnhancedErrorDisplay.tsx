@@ -50,12 +50,12 @@ export function EnhancedErrorDisplay({
   return (
     <div
       style={{
-        padding: "12px",
-        marginBottom: "16px",
-        backgroundColor: "#fef2f2",
+        padding: "var(--space-3)",
+        marginBottom: "var(--space-4)",
+        backgroundColor: "var(--error-light)",
         border: `1px solid ${ErrorHandler.getErrorColor(pluginError.type)}`,
-        borderRadius: "6px",
-        fontSize: "12px",
+        borderRadius: "var(--radius-md)",
+        fontSize: "var(--font-size-sm)",
       }}
     >
       <div
@@ -63,32 +63,37 @@ export function EnhancedErrorDisplay({
           display: "flex",
           alignItems: "flex-start",
           justifyContent: "space-between",
-          marginBottom: "8px",
+          marginBottom: "var(--space-2)",
         }}
       >
         <div
-          style={{ display: "flex", alignItems: "center", gap: "8px", flex: 1 }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "var(--space-2)",
+            flex: 1,
+          }}
         >
-          <span style={{ fontSize: "16px" }}>
+          <span style={{ fontSize: "var(--font-size-lg)" }}>
             {ErrorHandler.getErrorIcon(pluginError.type)}
           </span>
           <div style={{ flex: 1 }}>
             <div
               style={{
-                fontWeight: "bold",
+                fontWeight: "var(--font-weight-semibold)",
                 color: ErrorHandler.getErrorColor(pluginError.type),
-                marginBottom: "4px",
+                marginBottom: "var(--space-1)",
               }}
             >
               {friendlyMessage}
             </div>
             <div
               style={{
-                fontSize: "10px",
-                color: "#6b7280",
+                fontSize: "var(--font-size-xs)",
+                color: "var(--text-secondary)",
                 display: "flex",
                 alignItems: "center",
-                gap: "8px",
+                gap: "var(--space-2)",
               }}
             >
               <span>
@@ -99,11 +104,12 @@ export function EnhancedErrorDisplay({
                 style={{
                   background: "none",
                   border: "none",
-                  color: "#6366f1",
+                  color: "var(--accent-primary)",
                   cursor: "pointer",
-                  fontSize: "10px",
+                  fontSize: "var(--font-size-xs)",
                   textDecoration: "underline",
                   padding: "0",
+                  transition: "var(--transition-base)",
                 }}
               >
                 {showDetails ? "Hide Details" : "Show Details"}
@@ -115,14 +121,15 @@ export function EnhancedErrorDisplay({
         <button
           onClick={onDismiss}
           style={{
-            padding: "4px 8px",
-            backgroundColor: "#f3f4f6",
-            border: "1px solid #d1d5db",
-            borderRadius: "4px",
+            padding: "var(--space-1) var(--space-2)",
+            backgroundColor: "var(--surface-secondary)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-sm)",
             cursor: "pointer",
-            fontSize: "10px",
-            color: "#374151",
-            marginLeft: "8px",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
+            marginLeft: "var(--space-2)",
+            transition: "var(--transition-base)",
           }}
         >
           ✕
@@ -133,27 +140,29 @@ export function EnhancedErrorDisplay({
       {showDetails && (
         <div
           style={{
-            padding: "8px",
-            backgroundColor: "#f9fafb",
-            borderRadius: "4px",
-            marginBottom: "8px",
-            border: "1px solid #e5e7eb",
+            padding: "var(--space-2)",
+            backgroundColor: "var(--surface-secondary)",
+            borderRadius: "var(--radius-sm)",
+            marginBottom: "var(--space-2)",
+            border: "1px solid var(--border-default)",
           }}
         >
           <div
             style={{
-              fontSize: "10px",
-              fontWeight: "bold",
-              marginBottom: "4px",
+              fontSize: "var(--font-size-xs)",
+              fontWeight: "var(--font-weight-semibold)",
+              marginBottom: "var(--space-1)",
+              color: "var(--text-primary)",
             }}
           >
             Technical Details:
           </div>
           <div
             style={{
-              fontSize: "9px",
-              color: "#6b7280",
+              fontSize: "var(--font-size-xs)",
+              color: "var(--text-secondary)",
               fontFamily: "monospace",
+              lineHeight: "var(--line-height-relaxed)",
             }}
           >
             {pluginError.message}
@@ -162,12 +171,13 @@ export function EnhancedErrorDisplay({
       )}
 
       {pluginError.suggestions && pluginError.suggestions.length > 0 && (
-        <div style={{ marginBottom: "8px" }}>
+        <div style={{ marginBottom: "var(--space-2)" }}>
           <div
             style={{
-              fontWeight: "bold",
-              marginBottom: "4px",
-              fontSize: "11px",
+              fontWeight: "var(--font-weight-semibold)",
+              marginBottom: "var(--space-1)",
+              fontSize: "var(--font-size-xs)",
+              color: "var(--text-primary)",
             }}
           >
             💡 Try this:
@@ -175,10 +185,10 @@ export function EnhancedErrorDisplay({
           <ul
             style={{
               margin: "0",
-              paddingLeft: "16px",
-              fontSize: "10px",
-              color: "#4b5563",
-              lineHeight: "1.4",
+              paddingLeft: "var(--space-4)",
+              fontSize: "var(--font-size-xs)",
+              color: "var(--text-secondary)",
+              lineHeight: "var(--line-height-relaxed)",
             }}
           >
             {pluginError.suggestions.slice(0, 3).map((suggestion, index) => (
@@ -197,19 +207,26 @@ export function EnhancedErrorDisplay({
         </div>
       )}
 
-      <div style={{ display: "flex", gap: "6px", justifyContent: "flex-end" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "var(--space-2)",
+          justifyContent: "flex-end",
+        }}
+      >
         {pluginError.recoverable && onRetry && (
           <button
             onClick={onRetry}
             style={{
-              padding: "8px 16px",
+              padding: "var(--space-2) var(--space-4)",
               backgroundColor: ErrorHandler.getErrorColor(pluginError.type),
-              color: "white",
+              color: "var(--text-inverse)",
               border: "none",
-              borderRadius: "4px",
+              borderRadius: "var(--radius-md)",
               cursor: "pointer",
-              fontSize: "11px",
-              fontWeight: "bold",
+              fontSize: "var(--font-size-xs)",
+              fontWeight: "var(--font-weight-semibold)",
+              transition: "var(--transition-base)",
             }}
           >
             Try Again

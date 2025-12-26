@@ -69,23 +69,23 @@ export function ConflictResolutionDisplay({
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "var(--surface-overlay)",
         zIndex: 1000,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "16px",
+        padding: "var(--space-4)",
       }}
     >
       <div
         style={{
-          backgroundColor: "white",
-          borderRadius: "8px",
-          padding: "20px",
+          backgroundColor: "var(--surface-primary)",
+          borderRadius: "var(--radius-lg)",
+          padding: "var(--space-5)",
           maxWidth: "600px",
           maxHeight: "80vh",
           overflow: "auto",
-          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)",
+          boxShadow: "var(--shadow-lg)",
         }}
       >
         {/* Header */}
@@ -94,27 +94,27 @@ export function ConflictResolutionDisplay({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            marginBottom: "16px",
-            paddingBottom: "12px",
-            borderBottom: "1px solid #e2e8f0",
+            marginBottom: "var(--space-4)",
+            paddingBottom: "var(--space-3)",
+            borderBottom: "1px solid var(--border-default)",
           }}
         >
           <div>
             <h2
               style={{
                 margin: "0",
-                fontSize: "18px",
-                fontWeight: "bold",
-                color: "#1f2937",
+                fontSize: "var(--font-size-xl)",
+                fontWeight: "var(--font-weight-bold)",
+                color: "var(--text-primary)",
               }}
             >
               🔄 Sync Conflicts Detected
             </h2>
             <p
               style={{
-                margin: "4px 0 0 0",
-                fontSize: "14px",
-                color: "#6b7280",
+                margin: "var(--space-1) 0 0 0",
+                fontSize: "var(--font-size-md)",
+                color: "var(--text-secondary)",
               }}
             >
               {conflicts.length} conflicts need resolution before syncing
@@ -123,12 +123,13 @@ export function ConflictResolutionDisplay({
           <button
             onClick={() => setShowAdvanced(!showAdvanced)}
             style={{
-              padding: "4px 8px",
-              backgroundColor: "#f3f4f6",
-              border: "1px solid #d1d5db",
-              borderRadius: "4px",
+              padding: "var(--space-1) var(--space-2)",
+              backgroundColor: "var(--surface-secondary)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-sm)",
               cursor: "pointer",
-              fontSize: "11px",
+              fontSize: "var(--font-size-sm)",
+              transition: "var(--transition-base)",
             }}
           >
             {showAdvanced ? "Simple View" : "Advanced View"}
@@ -139,26 +140,27 @@ export function ConflictResolutionDisplay({
         <div
           style={{
             display: "flex",
-            gap: "8px",
-            marginBottom: "16px",
-            padding: "12px",
-            backgroundColor: "#f8fafc",
-            borderRadius: "6px",
-            border: "1px solid #e2e8f0",
+            gap: "var(--space-2)",
+            marginBottom: "var(--space-4)",
+            padding: "var(--space-3)",
+            backgroundColor: "var(--surface-secondary)",
+            borderRadius: "var(--radius-md)",
+            border: "1px solid var(--border-default)",
           }}
         >
           <button
             onClick={() => handleBatchResolve("take-local")}
             style={{
               flex: 1,
-              padding: "8px 12px",
-              backgroundColor: "#3b82f6",
-              color: "white",
+              padding: "var(--space-2) var(--space-3)",
+              backgroundColor: "var(--accent-primary)",
+              color: "var(--text-inverse)",
               border: "none",
-              borderRadius: "4px",
+              borderRadius: "var(--radius-sm)",
               cursor: "pointer",
-              fontSize: "12px",
-              fontWeight: "bold",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-bold)",
+              transition: "var(--transition-base)",
             }}
           >
             📍 Keep All Local Changes (
@@ -168,14 +170,15 @@ export function ConflictResolutionDisplay({
             onClick={() => handleBatchResolve("take-remote")}
             style={{
               flex: 1,
-              padding: "8px 12px",
-              backgroundColor: "#10b981",
-              color: "white",
+              padding: "var(--space-2) var(--space-3)",
+              backgroundColor: "var(--success)",
+              color: "var(--text-inverse)",
               border: "none",
-              borderRadius: "4px",
+              borderRadius: "var(--radius-sm)",
               cursor: "pointer",
-              fontSize: "12px",
-              fontWeight: "bold",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-bold)",
+              transition: "var(--transition-base)",
             }}
           >
             📥 Accept All Remote Changes (
@@ -188,8 +191,8 @@ export function ConflictResolutionDisplay({
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "8px",
-            marginBottom: "16px",
+            gap: "var(--space-2)",
+            marginBottom: "var(--space-4)",
           }}
         >
           {Object.entries(groupedConflicts).map(
@@ -198,20 +201,27 @@ export function ConflictResolutionDisplay({
                 <div
                   key={type}
                   style={{
-                    padding: "8px",
+                    padding: "var(--space-2)",
                     backgroundColor:
-                      type === "deletion" ? "#fee2e2" : "#f0f9ff",
-                    borderRadius: "4px",
+                      type === "deletion"
+                        ? "var(--error-light)"
+                        : "var(--info-light)",
+                    borderRadius: "var(--radius-sm)",
                     textAlign: "center",
                   }}
                 >
-                  <div style={{ fontSize: "14px", fontWeight: "bold" }}>
+                  <div
+                    style={{
+                      fontSize: "var(--font-size-md)",
+                      fontWeight: "var(--font-weight-bold)",
+                    }}
+                  >
                     {conflicts.length}
                   </div>
                   <div
                     style={{
-                      fontSize: "10px",
-                      color: "#6b7280",
+                      fontSize: "var(--font-size-xs)",
+                      color: "var(--text-secondary)",
                       textTransform: "capitalize",
                     }}
                   >
@@ -227,7 +237,7 @@ export function ConflictResolutionDisplay({
           style={{
             maxHeight: "400px",
             overflowY: "auto",
-            marginBottom: "16px",
+            marginBottom: "var(--space-4)",
           }}
         >
           {conflicts.map((conflict) => (
@@ -246,20 +256,22 @@ export function ConflictResolutionDisplay({
         {/* Progress Indicator */}
         <div
           style={{
-            marginBottom: "16px",
-            padding: "8px",
-            backgroundColor: allResolved ? "#dcfce7" : "#fef3c7",
-            borderRadius: "4px",
-            fontSize: "12px",
+            marginBottom: "var(--space-4)",
+            padding: "var(--space-2)",
+            backgroundColor: allResolved
+              ? "var(--success-light)"
+              : "var(--warning-light)",
+            borderRadius: "var(--radius-sm)",
+            fontSize: "var(--font-size-sm)",
             textAlign: "center",
           }}
         >
           {allResolved ? (
-            <span style={{ color: "#059669" }}>
+            <span style={{ color: "var(--success)" }}>
               ✅ All conflicts resolved ({resolutions.size}/{conflicts.length})
             </span>
           ) : (
-            <span style={{ color: "#d97706" }}>
+            <span style={{ color: "var(--warning)" }}>
               ⏳ {resolutions.size}/{conflicts.length} conflicts resolved
             </span>
           )}
@@ -269,7 +281,7 @@ export function ConflictResolutionDisplay({
         <div
           style={{
             display: "flex",
-            gap: "8px",
+            gap: "var(--space-2)",
             justifyContent: "flex-end",
           }}
         >
@@ -277,13 +289,14 @@ export function ConflictResolutionDisplay({
             onClick={onCancel}
             disabled={loading}
             style={{
-              padding: "10px 16px",
-              backgroundColor: "#f3f4f6",
-              color: "#374151",
-              border: "1px solid #d1d5db",
-              borderRadius: "4px",
+              padding: "var(--space-2) var(--space-4)",
+              backgroundColor: "var(--surface-secondary)",
+              color: "var(--text-primary)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-sm)",
               cursor: loading ? "not-allowed" : "pointer",
-              fontSize: "12px",
+              fontSize: "var(--font-size-sm)",
+              transition: "var(--transition-base)",
             }}
           >
             Cancel Sync
@@ -292,14 +305,19 @@ export function ConflictResolutionDisplay({
             onClick={() => onResolve(Array.from(resolutions.values()))}
             disabled={!allResolved || loading}
             style={{
-              padding: "10px 16px",
-              backgroundColor: allResolved && !loading ? "#059669" : "#d1d5db",
-              color: "white",
+              padding: "var(--space-2) var(--space-4)",
+              backgroundColor:
+                allResolved && !loading
+                  ? "var(--success)"
+                  : "var(--surface-tertiary)",
+              color: "var(--text-inverse)",
               border: "none",
-              borderRadius: "4px",
+              borderRadius: "var(--radius-sm)",
               cursor: allResolved && !loading ? "pointer" : "not-allowed",
-              fontSize: "12px",
-              fontWeight: "bold",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-bold)",
+              transition: "var(--transition-base)",
+              opacity: allResolved && !loading ? 1 : 0.5,
             }}
           >
             {loading
@@ -368,11 +386,14 @@ function ConflictItem({
   return (
     <div
       style={{
-        marginBottom: "12px",
-        padding: "12px",
-        border: `1px solid ${resolution ? "#10b981" : "#e2e8f0"}`,
-        borderRadius: "6px",
-        backgroundColor: resolution ? "#f0fdf4" : "#ffffff",
+        marginBottom: "var(--space-3)",
+        padding: "var(--space-3)",
+        border: `1px solid ${resolution ? "var(--success)" : "var(--border-default)"}`,
+        borderRadius: "var(--radius-md)",
+        backgroundColor: resolution
+          ? "var(--success-light)"
+          : "var(--surface-primary)",
+        transition: "var(--transition-base)",
       }}
     >
       {/* Conflict Header */}
@@ -381,18 +402,35 @@ function ConflictItem({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          marginBottom: "8px",
+          marginBottom: "var(--space-2)",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <span style={{ fontSize: "16px" }}>{getTypeIcon(conflict.type)}</span>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "var(--space-2)",
+          }}
+        >
+          <span style={{ fontSize: "var(--font-size-lg)" }}>
+            {getTypeIcon(conflict.type)}
+          </span>
           <div>
             <div
-              style={{ fontSize: "13px", fontWeight: "bold", color: "#1f2937" }}
+              style={{
+                fontSize: "var(--font-size-sm)",
+                fontWeight: "var(--font-weight-bold)",
+                color: "var(--text-primary)",
+              }}
             >
               {conflict.tokenName}
             </div>
-            <div style={{ fontSize: "11px", color: "#6b7280" }}>
+            <div
+              style={{
+                fontSize: "var(--font-size-sm)",
+                color: "var(--text-secondary)",
+              }}
+            >
               {conflict.collectionName} • {conflict.type}
             </div>
           </div>
@@ -401,16 +439,16 @@ function ConflictItem({
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "8px",
+            gap: "var(--space-2)",
           }}
         >
           <span
             style={{
-              padding: "2px 6px",
-              borderRadius: "3px",
-              fontSize: "10px",
-              fontWeight: "bold",
-              color: "white",
+              padding: "2px var(--space-2)",
+              borderRadius: "var(--radius-sm)",
+              fontSize: "var(--font-size-xs)",
+              fontWeight: "var(--font-weight-bold)",
+              color: "var(--text-inverse)",
               backgroundColor: getSeverityColor(conflict.severity),
             }}
           >
@@ -420,12 +458,13 @@ function ConflictItem({
             <button
               onClick={() => setShowDetails(!showDetails)}
               style={{
-                padding: "2px 6px",
-                backgroundColor: "#f3f4f6",
-                border: "1px solid #d1d5db",
-                borderRadius: "3px",
+                padding: "2px var(--space-2)",
+                backgroundColor: "var(--surface-secondary)",
+                border: "1px solid var(--border-default)",
+                borderRadius: "var(--radius-sm)",
                 cursor: "pointer",
-                fontSize: "9px",
+                fontSize: "var(--font-size-xs)",
+                transition: "var(--transition-base)",
               }}
             >
               {showDetails ? "Hide" : "Details"}
@@ -437,10 +476,10 @@ function ConflictItem({
       {/* Conflict Description */}
       <p
         style={{
-          margin: "0 0 12px 0",
-          fontSize: "12px",
-          color: "#4b5563",
-          lineHeight: "1.4",
+          margin: "0 0 var(--space-3) 0",
+          fontSize: "var(--font-size-sm)",
+          color: "var(--text-secondary)",
+          lineHeight: "var(--line-height-relaxed)",
         }}
       >
         {conflict.description}
@@ -452,50 +491,60 @@ function ConflictItem({
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: "8px",
-            marginBottom: "12px",
-            fontSize: "11px",
+            gap: "var(--space-2)",
+            marginBottom: "var(--space-3)",
+            fontSize: "var(--font-size-sm)",
           }}
         >
           <div
             style={{
-              padding: "8px",
-              backgroundColor: "#fef3c7",
-              borderRadius: "4px",
-              border: "1px solid #f59e0b",
+              padding: "var(--space-2)",
+              backgroundColor: "var(--warning-light)",
+              borderRadius: "var(--radius-sm)",
+              border: "1px solid var(--warning)",
             }}
           >
             <div
               style={{
-                fontWeight: "bold",
-                marginBottom: "4px",
-                color: "#92400e",
+                fontWeight: "var(--font-weight-bold)",
+                marginBottom: "var(--space-1)",
+                color: "var(--text-primary)",
               }}
             >
               📍 Local Value
             </div>
-            <code style={{ fontSize: "10px", color: "#92400e" }}>
+            <code
+              style={{
+                fontSize: "var(--font-size-xs)",
+                color: "var(--text-secondary)",
+              }}
+            >
               {conflict.localToken?.$value || "undefined"}
             </code>
           </div>
           <div
             style={{
-              padding: "8px",
-              backgroundColor: "#dbeafe",
-              borderRadius: "4px",
-              border: "1px solid #3b82f6",
+              padding: "var(--space-2)",
+              backgroundColor: "var(--info-light)",
+              borderRadius: "var(--radius-sm)",
+              border: "1px solid var(--info)",
             }}
           >
             <div
               style={{
-                fontWeight: "bold",
-                marginBottom: "4px",
-                color: "#1e40af",
+                fontWeight: "var(--font-weight-bold)",
+                marginBottom: "var(--space-1)",
+                color: "var(--text-primary)",
               }}
             >
               📥 Remote Value
             </div>
-            <code style={{ fontSize: "10px", color: "#1e40af" }}>
+            <code
+              style={{
+                fontSize: "var(--font-size-xs)",
+                color: "var(--text-secondary)",
+              }}
+            >
               {conflict.remoteToken?.$value || "undefined"}
             </code>
           </div>
@@ -506,11 +555,12 @@ function ConflictItem({
       {showDetails && showAdvanced && (
         <div
           style={{
-            padding: "8px",
-            backgroundColor: "#f8fafc",
-            borderRadius: "4px",
-            marginBottom: "12px",
-            fontSize: "10px",
+            padding: "var(--space-2)",
+            backgroundColor: "var(--surface-secondary)",
+            borderRadius: "var(--radius-sm)",
+            marginBottom: "var(--space-3)",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
           }}
         >
           <div>
@@ -533,20 +583,26 @@ function ConflictItem({
       )}
 
       {/* Resolution Buttons */}
-      <div style={{ display: "flex", gap: "6px" }}>
+      <div style={{ display: "flex", gap: "var(--space-2)" }}>
         <button
           onClick={() => handleResolve("take-local")}
           style={{
             flex: 1,
-            padding: "6px 10px",
+            padding: "var(--space-2) var(--space-3)",
             backgroundColor:
-              resolution?.resolution === "take-local" ? "#3b82f6" : "#f3f4f6",
+              resolution?.resolution === "take-local"
+                ? "var(--accent-primary)"
+                : "var(--surface-secondary)",
             color:
-              resolution?.resolution === "take-local" ? "white" : "#374151",
+              resolution?.resolution === "take-local"
+                ? "var(--text-inverse)"
+                : "var(--text-primary)",
             border: "none",
-            borderRadius: "4px",
+            borderRadius: "var(--radius-sm)",
             cursor: "pointer",
-            fontSize: "11px",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-medium)",
+            transition: "var(--transition-base)",
           }}
         >
           📍 Keep Local
@@ -555,15 +611,21 @@ function ConflictItem({
           onClick={() => handleResolve("take-remote")}
           style={{
             flex: 1,
-            padding: "6px 10px",
+            padding: "var(--space-2) var(--space-3)",
             backgroundColor:
-              resolution?.resolution === "take-remote" ? "#10b981" : "#f3f4f6",
+              resolution?.resolution === "take-remote"
+                ? "var(--success)"
+                : "var(--surface-secondary)",
             color:
-              resolution?.resolution === "take-remote" ? "white" : "#374151",
+              resolution?.resolution === "take-remote"
+                ? "var(--text-inverse)"
+                : "var(--text-primary)",
             border: "none",
-            borderRadius: "4px",
+            borderRadius: "var(--radius-sm)",
             cursor: "pointer",
-            fontSize: "11px",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-medium)",
+            transition: "var(--transition-base)",
           }}
         >
           📥 Take Remote

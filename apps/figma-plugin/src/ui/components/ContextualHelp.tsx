@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState, useRef, useEffect } from "preact/hooks";
 import type { ComponentChildren } from "preact";
 
 interface ContextualHelpProps {
@@ -8,6 +8,7 @@ interface ContextualHelpProps {
   position?: "top" | "bottom" | "left" | "right";
   size?: "sm" | "md" | "lg";
   trigger?: "hover" | "click";
+  ariaLabel?: string;
 }
 
 export function ContextualHelp({
@@ -17,8 +18,11 @@ export function ContextualHelp({
   position = "top",
   size = "md",
   trigger = "hover",
+  ariaLabel,
 }: ContextualHelpProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
 
   const handleMouseEnter = () => {
     if (trigger === "hover") {
@@ -37,6 +41,31 @@ export function ContextualHelp({
       setIsVisible(!isVisible);
     }
   };
+
+  // Keyboard navigation: Escape to close
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Escape" && isVisible) {
+      setIsVisible(false);
+      containerRef.current?.focus();
+    }
+  };
+
+  // Close on outside click
+  useEffect(() => {
+    if (!isVisible || trigger !== "click") return;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
+        setIsVisible(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isVisible, trigger]);
 
   const sizeStyles = {
     sm: "max-w-48 text-xs p-2",
@@ -63,9 +92,16 @@ export function ContextualHelp({
   return (
     <div style={{ position: "relative", display: "inline-block" }}>
       <div
+        ref={containerRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
+        onKeyDown={handleKeyDown as any}
+        tabIndex={trigger === "click" ? 0 : undefined}
+        role={trigger === "click" ? "button" : undefined}
+        aria-label={ariaLabel || title || "Help"}
+        aria-expanded={isVisible}
+        aria-haspopup="true"
         style={{ cursor: trigger === "click" ? "pointer" : "default" }}
       >
         {children}
@@ -73,12 +109,15 @@ export function ContextualHelp({
 
       {isVisible && (
         <div
+          ref={tooltipRef}
+          role="tooltip"
+          aria-live="polite"
           className={`absolute z-50 ${positionStyles[position]} ${sizeStyles[size]}`}
           style={{
-            backgroundColor: "rgba(31, 41, 55, 0.95)",
-            color: "white",
-            borderRadius: "6px",
-            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+            backgroundColor: "var(--surface-overlay)",
+            color: "var(--text-inverse)",
+            borderRadius: "var(--radius-md)",
+            boxShadow: "var(--shadow-md)",
             backdropFilter: "blur(4px)",
             animation: "fadeInUp 0.2s ease-out",
           }}
@@ -108,6 +147,7 @@ export function ContextualHelp({
           <div
             className={`absolute w-0 h-0 ${arrowStyles[position]}`}
             style={{ borderStyle: "solid" }}
+            aria-hidden="true"
           />
         </div>
       )}
@@ -119,27 +159,46 @@ export function HelpIcon({
   content,
   title,
   size = "sm",
+  ariaLabel,
 }: {
   content: string;
   title?: string;
   size?: "sm" | "md" | "lg";
+  ariaLabel?: string;
 }) {
   return (
-    <ContextualHelp content={content} title={title} size={size} trigger="hover">
+    <ContextualHelp
+      content={content}
+      title={title}
+      size={size}
+      trigger="hover"
+      ariaLabel={ariaLabel || title || "Help information"}
+    >
       <span
+        role="img"
+        aria-label={ariaLabel || title || "Help icon"}
         style={{
           display: "inline-flex",
           alignItems: "center",
           justifyContent: "center",
           width: "14px",
           height: "14px",
-          backgroundColor: "#6b7280",
-          color: "white",
+          backgroundColor: "var(--color-neutral-500, #6b7280)",
+          color: "var(--color-white, white)",
           borderRadius: "50%",
           fontSize: "9px",
           fontWeight: "bold",
           cursor: "help",
           marginLeft: "4px",
+          transition: "background-color 0.2s ease",
+        }}
+        onMouseEnter={(e) => {
+          (e.target as HTMLElement).style.backgroundColor =
+            "var(--color-neutral-600, #4b5563)";
+        }}
+        onMouseLeave={(e) => {
+          (e.target as HTMLElement).style.backgroundColor =
+            "var(--color-neutral-500, #6b7280)";
         }}
       >
         ?

@@ -155,9 +155,9 @@ export const FirstRunOnboarding = ({
               <div style={{ flex: 1 }}>
                 <div
                   style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    marginBottom: "4px",
+                    fontSize: "var(--font-size-lg)",
+                    fontWeight: "var(--font-weight-bold)",
+                    marginBottom: "var(--space-1)",
                     color: "#0369a1",
                   }}
                 >
@@ -221,9 +221,9 @@ export const FirstRunOnboarding = ({
               <div style={{ flex: 1 }}>
                 <div
                   style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    marginBottom: "4px",
+                    fontSize: "var(--font-size-lg)",
+                    fontWeight: "var(--font-weight-bold)",
+                    marginBottom: "var(--space-1)",
                   }}
                 >
                   Import Existing Variables
@@ -247,10 +247,10 @@ export const FirstRunOnboarding = ({
             style={{
               width: "100%",
               padding: "20px",
-              backgroundColor: "#f3f4f6",
-              color: "#1f2937",
-              border: "2px solid #d1d5db",
-              borderRadius: "8px",
+              backgroundColor: "var(--surface-secondary)",
+              color: "var(--text-primary)",
+              border: "2px solid var(--border-default)",
+              borderRadius: "var(--radius-lg)",
               cursor: "pointer",
               textAlign: "left",
               transition: "all 0.2s",
@@ -281,14 +281,19 @@ export const FirstRunOnboarding = ({
               <div style={{ flex: 1 }}>
                 <div
                   style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    marginBottom: "4px",
+                    fontSize: "var(--font-size-lg)",
+                    fontWeight: "var(--font-weight-bold)",
+                    marginBottom: "var(--space-1)",
                   }}
                 >
                   Import Token File
                 </div>
-                <div style={{ fontSize: "13px", color: "#6b7280" }}>
+                <div
+                  style={{
+                    fontSize: "var(--font-size-sm)",
+                    color: "var(--text-secondary)",
+                  }}
+                >
                   Upload JSON from your computer
                 </div>
               </div>
@@ -302,10 +307,10 @@ export const FirstRunOnboarding = ({
             style={{
               width: "100%",
               padding: "20px",
-              backgroundColor: "#f3f4f6",
-              color: "#1f2937",
-              border: "2px solid #d1d5db",
-              borderRadius: "8px",
+              backgroundColor: "var(--surface-secondary)",
+              color: "var(--text-primary)",
+              border: "2px solid var(--border-default)",
+              borderRadius: "var(--radius-lg)",
               cursor: "pointer",
               textAlign: "left",
               transition: "all 0.2s",
@@ -336,14 +341,19 @@ export const FirstRunOnboarding = ({
               <div style={{ flex: 1 }}>
                 <div
                   style={{
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    marginBottom: "4px",
+                    fontSize: "var(--font-size-lg)",
+                    fontWeight: "var(--font-weight-bold)",
+                    marginBottom: "var(--space-1)",
                   }}
                 >
                   Set Up GitHub Sync
                 </div>
-                <div style={{ fontSize: "13px", color: "#6b7280" }}>
+                <div
+                  style={{
+                    fontSize: "var(--font-size-sm)",
+                    color: "var(--text-secondary)",
+                  }}
+                >
                   Configure repository integration
                 </div>
               </div>

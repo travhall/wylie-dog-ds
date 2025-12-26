@@ -15,6 +15,10 @@
     "clean:dist": "rm -rf dist",
     "dev": "npm run clean:dist && npm run build && npm run build:watch",
     "lint": "eslint src --ext .ts,.tsx --max-warnings 0",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -28,13 +32,18 @@
     "@figma/plugin-typings": "^1.116.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/preact": "^3.2.4",
     "@types/node": "^24.1.0",
     "@vitejs/plugin-react": "^4.7.0",
+    "@vitest/ui": "^3.0.0",
     "concurrently": "^9.1.0",
     "eslint": "^9.32.0",
+    "jsdom": "^26.0.0",
     "terser": "^5.43.1",
     "typescript": "5.8.3",
     "vite": "^7.0.6",
-    "vite-plugin-singlefile": "^0.13.5"
+    "vite-plugin-singlefile": "^0.13.5",
+    "vitest": "^3.0.0"
   }
 }

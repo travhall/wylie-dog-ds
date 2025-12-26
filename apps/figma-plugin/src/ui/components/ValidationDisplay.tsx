@@ -50,7 +50,7 @@ export function ValidationDisplay({
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "rgba(0,0,0,0.8)",
+        backgroundColor: "var(--surface-overlay)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -59,13 +59,13 @@ export function ValidationDisplay({
     >
       <div
         style={{
-          backgroundColor: "white",
-          borderRadius: "8px",
-          padding: "20px",
+          backgroundColor: "var(--surface-primary)",
+          borderRadius: "var(--radius-lg)",
+          padding: "var(--space-5)",
           maxWidth: "600px",
           maxHeight: "80vh",
           overflow: "auto",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+          boxShadow: "var(--shadow-lg)",
         }}
       >
         <div
@@ -73,10 +73,17 @@ export function ValidationDisplay({
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            marginBottom: "16px",
+            marginBottom: "var(--space-4)",
           }}
         >
-          <h2 style={{ margin: 0, color: valid ? "#10b981" : "#ef4444" }}>
+          <h2
+            style={{
+              margin: 0,
+              fontSize: "var(--font-size-xl)",
+              fontWeight: "var(--font-weight-bold)",
+              color: valid ? "var(--success)" : "var(--error)",
+            }}
+          >
             {valid ? "✅ Validation Passed" : "❌ Validation Failed"}
           </h2>
           <button
@@ -84,8 +91,10 @@ export function ValidationDisplay({
             style={{
               background: "none",
               border: "none",
-              fontSize: "20px",
+              fontSize: "var(--font-size-2xl)",
               cursor: "pointer",
+              color: "var(--text-secondary)",
+              transition: "var(--transition-base)",
             }}
           >
             ×
@@ -95,18 +104,29 @@ export function ValidationDisplay({
         {/* Statistics */}
         <div
           style={{
-            backgroundColor: "#f3f4f6",
-            padding: "12px",
-            borderRadius: "6px",
-            marginBottom: "16px",
+            backgroundColor: "var(--surface-secondary)",
+            padding: "var(--space-3)",
+            borderRadius: "var(--radius-md)",
+            marginBottom: "var(--space-4)",
           }}
         >
           <h3
-            style={{ margin: "0 0 8px 0", fontSize: "14px", fontWeight: 600 }}
+            style={{
+              margin: "0 0 var(--space-2) 0",
+              fontSize: "var(--font-size-md)",
+              fontWeight: "var(--font-weight-semibold)",
+              color: "var(--text-primary)",
+            }}
           >
             📊 Statistics
           </h3>
-          <div style={{ fontSize: "12px", lineHeight: "1.4" }}>
+          <div
+            style={{
+              fontSize: "var(--font-size-sm)",
+              lineHeight: "var(--line-height-relaxed)",
+              color: "var(--text-secondary)",
+            }}
+          >
             <div>Total Tokens: {stats.totalTokens}</div>
             <div>Total References: {stats.totalReferences}</div>
             <div>Collections: {stats.collectionsProcessed}</div>
@@ -116,13 +136,13 @@ export function ValidationDisplay({
 
         {/* Errors */}
         {errors.length > 0 && (
-          <div style={{ marginBottom: "16px" }}>
+          <div style={{ marginBottom: "var(--space-4)" }}>
             <h3
               style={{
-                margin: "0 0 8px 0",
-                fontSize: "14px",
-                fontWeight: 600,
-                color: "#ef4444",
+                margin: "0 0 var(--space-2) 0",
+                fontSize: "var(--font-size-md)",
+                fontWeight: "var(--font-weight-semibold)",
+                color: "var(--error)",
               }}
             >
               ❌ Errors ({errors.length})
@@ -132,24 +152,31 @@ export function ValidationDisplay({
                 <div
                   key={i}
                   style={{
-                    backgroundColor: "#fef2f2",
-                    border: "1px solid #fecaca",
-                    borderRadius: "4px",
-                    padding: "8px",
-                    marginBottom: "4px",
-                    fontSize: "12px",
+                    backgroundColor: "var(--error-light)",
+                    border: "1px solid var(--error)",
+                    borderRadius: "var(--radius-sm)",
+                    padding: "var(--space-2)",
+                    marginBottom: "var(--space-1)",
+                    fontSize: "var(--font-size-sm)",
                   }}
                 >
-                  <div style={{ fontWeight: 600, color: "#dc2626" }}>
+                  <div
+                    style={{
+                      fontWeight: "var(--font-weight-semibold)",
+                      color: "var(--error)",
+                    }}
+                  >
                     {error.token}
                   </div>
-                  <div style={{ color: "#374151" }}>{error.message}</div>
+                  <div style={{ color: "var(--text-primary)" }}>
+                    {error.message}
+                  </div>
                   {error.suggestion && (
                     <div
                       style={{
-                        color: "#6b7280",
+                        color: "var(--text-secondary)",
                         fontStyle: "italic",
-                        marginTop: "4px",
+                        marginTop: "var(--space-1)",
                       }}
                     >
                       💡 {error.suggestion}
@@ -163,13 +190,13 @@ export function ValidationDisplay({
 
         {/* Warnings */}
         {warnings.length > 0 && (
-          <div style={{ marginBottom: "16px" }}>
+          <div style={{ marginBottom: "var(--space-4)" }}>
             <h3
               style={{
-                margin: "0 0 8px 0",
-                fontSize: "14px",
-                fontWeight: 600,
-                color: "#f59e0b",
+                margin: "0 0 var(--space-2) 0",
+                fontSize: "var(--font-size-md)",
+                fontWeight: "var(--font-weight-semibold)",
+                color: "var(--warning)",
               }}
             >
               ⚠️ Warnings ({warnings.length})
@@ -179,24 +206,31 @@ export function ValidationDisplay({
                 <div
                   key={i}
                   style={{
-                    backgroundColor: "#fffbeb",
-                    border: "1px solid #fed7aa",
-                    borderRadius: "4px",
-                    padding: "8px",
-                    marginBottom: "4px",
-                    fontSize: "12px",
+                    backgroundColor: "var(--warning-light)",
+                    border: "1px solid var(--warning)",
+                    borderRadius: "var(--radius-sm)",
+                    padding: "var(--space-2)",
+                    marginBottom: "var(--space-1)",
+                    fontSize: "var(--font-size-sm)",
                   }}
                 >
-                  <div style={{ fontWeight: 600, color: "#d97706" }}>
+                  <div
+                    style={{
+                      fontWeight: "var(--font-weight-semibold)",
+                      color: "var(--warning)",
+                    }}
+                  >
                     {warning.token}
                   </div>
-                  <div style={{ color: "#374151" }}>{warning.message}</div>
+                  <div style={{ color: "var(--text-primary)" }}>
+                    {warning.message}
+                  </div>
                   {warning.suggestion && (
                     <div
                       style={{
-                        color: "#6b7280",
+                        color: "var(--text-secondary)",
                         fontStyle: "italic",
-                        marginTop: "4px",
+                        marginTop: "var(--space-1)",
                       }}
                     >
                       💡 {warning.suggestion}
@@ -210,17 +244,24 @@ export function ValidationDisplay({
 
         {/* Actions */}
         <div
-          style={{ display: "flex", justifyContent: "flex-end", gap: "8px" }}
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            gap: "var(--space-2)",
+          }}
         >
           <button
             onClick={onClose}
             style={{
-              padding: "8px 16px",
-              backgroundColor: "#6b7280",
-              color: "white",
+              padding: "var(--space-2) var(--space-4)",
+              backgroundColor: "var(--surface-tertiary)",
+              color: "var(--text-inverse)",
               border: "none",
-              borderRadius: "4px",
+              borderRadius: "var(--radius-sm)",
               cursor: "pointer",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-medium)",
+              transition: "var(--transition-base)",
             }}
           >
             Close

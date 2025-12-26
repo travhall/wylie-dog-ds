@@ -1,0 +1,63 @@
+name: Figma Plugin Tests
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "apps/figma-plugin/**"
+      - ".github/workflows/figma-plugin-test.yml"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "apps/figma-plugin/**"
+      - ".github/workflows/figma-plugin-test.yml"
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.26.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run type check
+        run: pnpm --filter figma-plugin type-check
+
+      - name: Run linter
+        run: pnpm --filter figma-plugin lint
+
+      - name: Run tests
+        run: pnpm --filter figma-plugin test:run
+
+      - name: Generate coverage report
+        run: pnpm --filter figma-plugin test:coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./apps/figma-plugin/coverage/coverage-final.json
+          flags: figma-plugin
+          name: figma-plugin-coverage
+          fail_ci_if_error: false
+
+      - name: Comment PR with coverage
+        if: github.event_name == 'pull_request'
+        uses: romeovs/lcov-reporter-action@v0.4.0
+        with:
+          lcov-file: ./apps/figma-plugin/coverage/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}

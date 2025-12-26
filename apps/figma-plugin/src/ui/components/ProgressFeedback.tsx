@@ -36,29 +36,31 @@ export function ProgressFeedback({
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
-        backgroundColor: "rgba(0, 0, 0, 0.9)",
-        color: "white",
-        padding: "24px",
-        borderRadius: "12px",
+        backgroundColor: "var(--surface-overlay)",
+        color: "var(--text-inverse)",
+        padding: "var(--space-6)",
+        borderRadius: "var(--radius-lg)",
         zIndex: 2000,
         minWidth: "320px",
         textAlign: "center",
-        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.4)",
+        boxShadow: "var(--shadow-lg)",
       }}
     >
       {/* Main step indicator */}
       <div
         style={{
-          fontSize: "18px",
-          fontWeight: "bold",
-          marginBottom: "8px",
+          fontSize: "var(--font-size-xl)",
+          fontWeight: "var(--font-weight-bold)",
+          marginBottom: "var(--space-2)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          gap: "8px",
+          gap: "var(--space-2)",
         }}
       >
-        <span style={{ fontSize: "20px" }}>{currentStepData?.icon}</span>
+        <span style={{ fontSize: "var(--font-size-2xl)" }}>
+          {currentStepData?.icon}
+        </span>
         <span>{currentStepData?.label}</span>
       </div>
 
@@ -66,10 +68,10 @@ export function ProgressFeedback({
       {currentStepData?.description && (
         <div
           style={{
-            fontSize: "12px",
-            marginBottom: "16px",
+            fontSize: "var(--font-size-sm)",
+            marginBottom: "var(--space-4)",
             opacity: 0.8,
-            color: "#e5e7eb",
+            color: "var(--text-primary)",
           }}
         >
           {currentStepData.description}
@@ -78,24 +80,24 @@ export function ProgressFeedback({
 
       {/* Progress bar for current step */}
       {(progress !== undefined || itemsProcessed) && (
-        <div style={{ marginBottom: "16px" }}>
+        <div style={{ marginBottom: "var(--space-4)" }}>
           <div
             style={{
               width: "100%",
               height: "6px",
               backgroundColor: "rgba(255, 255, 255, 0.2)",
-              borderRadius: "3px",
+              borderRadius: "var(--radius-sm)",
               overflow: "hidden",
-              marginBottom: "8px",
+              marginBottom: "var(--space-2)",
             }}
           >
             <div
               style={{
                 width: `${progress || (itemsProcessed ? (itemsProcessed.current / itemsProcessed.total) * 100 : 0)}%`,
                 height: "100%",
-                backgroundColor: "#10b981",
-                borderRadius: "3px",
-                transition: "width 0.3s ease",
+                backgroundColor: "var(--success)",
+                borderRadius: "var(--radius-sm)",
+                transition: "var(--transition-base)",
               }}
             />
           </div>
@@ -104,9 +106,9 @@ export function ProgressFeedback({
           {itemsProcessed && (
             <div
               style={{
-                fontSize: "10px",
+                fontSize: "var(--font-size-xs)",
                 opacity: 0.7,
-                color: "#d1d5db",
+                color: "var(--text-secondary)",
               }}
             >
               Processing {itemsProcessed.current} of {itemsProcessed.total}{" "}
@@ -118,9 +120,9 @@ export function ProgressFeedback({
           {progress !== undefined && !itemsProcessed && (
             <div
               style={{
-                fontSize: "10px",
+                fontSize: "var(--font-size-xs)",
                 opacity: 0.7,
-                color: "#d1d5db",
+                color: "var(--text-secondary)",
               }}
             >
               {Math.round(progress)}% complete
@@ -133,9 +135,9 @@ export function ProgressFeedback({
       <div
         style={{
           display: "flex",
-          gap: "8px",
+          gap: "var(--space-2)",
           justifyContent: "center",
-          marginBottom: "12px",
+          marginBottom: "var(--space-3)",
         }}
       >
         {steps.map((step, index) => (
@@ -147,12 +149,12 @@ export function ProgressFeedback({
               borderRadius: "50%",
               backgroundColor:
                 index < currentStep
-                  ? "#10b981" // Completed
+                  ? "var(--success)" // Completed
                   : index === currentStep
-                    ? "#3b82f6" // Current
+                    ? "var(--accent-primary)" // Current
                     : "rgba(255, 255, 255, 0.3)", // Pending
-              transition: "all 0.3s ease",
-              border: index === currentStep ? "2px solid #60a5fa" : "none",
+              transition: "var(--transition-base)",
+              border: index === currentStep ? "2px solid var(--info)" : "none",
               boxSizing: "border-box",
             }}
           />
@@ -162,10 +164,10 @@ export function ProgressFeedback({
       {/* Step counter and time estimate */}
       <div
         style={{
-          fontSize: "11px",
+          fontSize: "var(--font-size-sm)",
           opacity: 0.7,
-          color: "#d1d5db",
-          marginBottom: estimatedTime || onCancel ? "16px" : "0",
+          color: "var(--text-secondary)",
+          marginBottom: estimatedTime || onCancel ? "var(--space-4)" : "0",
         }}
       >
         Step {currentStep + 1} of {steps.length}
@@ -179,21 +181,22 @@ export function ProgressFeedback({
         <button
           onClick={onCancel}
           style={{
-            padding: "6px 12px",
-            backgroundColor: "rgba(239, 68, 68, 0.8)",
-            color: "white",
+            padding: "var(--space-2) var(--space-3)",
+            backgroundColor: "var(--error)",
+            color: "var(--text-inverse)",
             border: "none",
-            borderRadius: "6px",
+            borderRadius: "var(--radius-md)",
             cursor: "pointer",
-            fontSize: "11px",
-            fontWeight: "bold",
-            transition: "background-color 0.2s ease",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-bold)",
+            transition: "var(--transition-base)",
+            opacity: 0.8,
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.backgroundColor = "rgba(239, 68, 68, 1)";
+            e.currentTarget.style.opacity = "1";
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.backgroundColor = "rgba(239, 68, 68, 0.8)";
+            e.currentTarget.style.opacity = "0.8";
           }}
         >
           Cancel Operation

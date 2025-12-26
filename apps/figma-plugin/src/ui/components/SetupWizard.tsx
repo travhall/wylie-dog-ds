@@ -64,16 +64,20 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
     <div>
       <div style={{ marginBottom: "16px" }}>
         <h3
-          style={{ margin: "0 0 8px 0", fontSize: "14px", fontWeight: "bold" }}
+          style={{
+            margin: "0 0 8px 0",
+            fontSize: "var(--font-size-md)",
+            fontWeight: "var(--font-weight-bold)",
+          }}
         >
           🔐 GitHub Access Token
         </h3>
         <p
           style={{
             margin: "0",
-            fontSize: "11px",
-            color: "#6b7280",
-            lineHeight: "1.4",
+            fontSize: "var(--font-size-sm)",
+            color: "var(--text-secondary)",
+            lineHeight: "var(--line-height-relaxed)",
           }}
         >
           Create a Personal Access Token at{" "}
@@ -92,9 +96,9 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
         <label
           style={{
             display: "block",
-            fontSize: "12px",
-            fontWeight: "bold",
-            marginBottom: "4px",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-bold)",
+            marginBottom: "var(--space-1)",
           }}
         >
           Access Token
@@ -109,10 +113,10 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
           placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
           style={{
             width: "100%",
-            padding: "8px 12px",
-            border: "1px solid #d1d5db",
-            borderRadius: "4px",
-            fontSize: "11px",
+            padding: "var(--space-2) var(--space-3)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-sm)",
+            fontSize: "var(--font-size-sm)",
             fontFamily: "monospace",
           }}
         />
@@ -254,16 +258,20 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
     <div>
       <div style={{ marginBottom: "16px" }}>
         <h3
-          style={{ margin: "0 0 8px 0", fontSize: "14px", fontWeight: "bold" }}
+          style={{
+            margin: "0 0 8px 0",
+            fontSize: "var(--font-size-md)",
+            fontWeight: "var(--font-weight-bold)",
+          }}
         >
           📁 Repository Selection
         </h3>
         <p
           style={{
             margin: "0",
-            fontSize: "11px",
-            color: "#6b7280",
-            lineHeight: "1.4",
+            fontSize: "var(--font-size-sm)",
+            color: "var(--text-secondary)",
+            lineHeight: "var(--line-height-relaxed)",
           }}
         >
           Choose the GitHub repository where you want to store your design
@@ -408,9 +416,9 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
         <label
           style={{
             display: "block",
-            fontSize: "12px",
-            fontWeight: "bold",
-            marginBottom: "4px",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-bold)",
+            marginBottom: "var(--space-1)",
           }}
         >
           Branch
@@ -422,10 +430,10 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
           placeholder="main"
           style={{
             width: "100%",
-            padding: "8px 12px",
-            border: "1px solid #d1d5db",
-            borderRadius: "4px",
-            fontSize: "11px",
+            padding: "var(--space-2) var(--space-3)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-sm)",
+            fontSize: "var(--font-size-sm)",
           }}
         />
 
@@ -450,13 +458,14 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
         <button
           onClick={onBack}
           style={{
-            padding: "8px 16px",
-            backgroundColor: "#f3f4f6",
-            color: "#374151",
-            border: "1px solid #d1d5db",
-            borderRadius: "4px",
+            padding: "var(--space-2) var(--space-4)",
+            backgroundColor: "var(--surface-secondary)",
+            color: "var(--text-primary)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-sm)",
             cursor: "pointer",
-            fontSize: "12px",
+            fontSize: "var(--font-size-sm)",
+            transition: "var(--transition-base)",
           }}
         >
           ← Back
@@ -507,16 +516,20 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
     <div>
       <div style={{ marginBottom: "16px" }}>
         <h3
-          style={{ margin: "0 0 8px 0", fontSize: "14px", fontWeight: "bold" }}
+          style={{
+            margin: "0 0 8px 0",
+            fontSize: "var(--font-size-md)",
+            fontWeight: "var(--font-weight-bold)",
+          }}
         >
           ⚙️ Configuration
         </h3>
         <p
           style={{
             margin: "0",
-            fontSize: "11px",
-            color: "#6b7280",
-            lineHeight: "1.4",
+            fontSize: "var(--font-size-sm)",
+            color: "var(--text-secondary)",
+            lineHeight: "var(--line-height-relaxed)",
           }}
         >
           Configure how tokens will be stored and synchronized.
@@ -527,9 +540,9 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
         <label
           style={{
             display: "block",
-            fontSize: "12px",
-            fontWeight: "bold",
-            marginBottom: "4px",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-bold)",
+            marginBottom: "var(--space-1)",
           }}
         >
           Token Storage Path
@@ -541,13 +554,19 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
           placeholder="tokens/"
           style={{
             width: "100%",
-            padding: "8px 12px",
-            border: "1px solid #d1d5db",
-            borderRadius: "4px",
-            fontSize: "11px",
+            padding: "var(--space-2) var(--space-3)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-sm)",
+            fontSize: "var(--font-size-sm)",
           }}
         />
-        <div style={{ fontSize: "10px", color: "#6b7280", marginTop: "2px" }}>
+        <div
+          style={{
+            fontSize: "10px",
+            color: "var(--text-secondary)",
+            marginTop: "2px",
+          }}
+        >
           Directory path where token files will be stored (e.g., "tokens/",
           "design-system/tokens/")
         </div>
@@ -589,7 +608,7 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
               <div
                 style={{
                   fontSize: "10px",
-                  color: "#6b7280",
+                  color: "var(--text-secondary)",
                   lineHeight: "1.3",
                 }}
               >
@@ -622,7 +641,7 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
               <div
                 style={{
                   fontSize: "10px",
-                  color: "#6b7280",
+                  color: "var(--text-secondary)",
                   lineHeight: "1.3",
                 }}
               >
@@ -640,13 +659,14 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
         <button
           onClick={onBack}
           style={{
-            padding: "8px 16px",
-            backgroundColor: "#f3f4f6",
-            color: "#374151",
-            border: "1px solid #d1d5db",
-            borderRadius: "4px",
+            padding: "var(--space-2) var(--space-4)",
+            backgroundColor: "var(--surface-secondary)",
+            color: "var(--text-primary)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-sm)",
             cursor: "pointer",
-            fontSize: "12px",
+            fontSize: "var(--font-size-sm)",
+            transition: "var(--transition-base)",
           }}
         >
           ← Back
@@ -709,7 +729,7 @@ export function SetupWizard({ onComplete, onClose }: SetupWizardProps) {
         left: "0",
         width: "100%",
         height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "var(--surface-overlay)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -718,14 +738,14 @@ export function SetupWizard({ onComplete, onClose }: SetupWizardProps) {
     >
       <div
         style={{
-          backgroundColor: "white",
-          borderRadius: "8px",
-          padding: "24px",
+          backgroundColor: "var(--surface-primary)",
+          borderRadius: "var(--radius-lg)",
+          padding: "var(--space-6)",
           width: "90%",
           maxWidth: "480px",
           maxHeight: "90vh",
           overflowY: "auto",
-          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+          boxShadow: "var(--shadow-lg)",
         }}
       >
         {/* Header */}
@@ -742,7 +762,11 @@ export function SetupWizard({ onComplete, onClose }: SetupWizardProps) {
               🚀 GitHub Setup Wizard
             </h2>
             <div
-              style={{ fontSize: "11px", color: "#6b7280", marginTop: "2px" }}
+              style={{
+                fontSize: "11px",
+                color: "var(--text-secondary)",
+                marginTop: "2px",
+              }}
             >
               Step {currentStep + 1} of {steps.length}:{" "}
               {steps[currentStep].title}
