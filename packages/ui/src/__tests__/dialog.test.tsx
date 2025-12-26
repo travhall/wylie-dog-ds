@@ -15,6 +15,9 @@ import {
 
 expect.extend(toHaveNoViolations);
 
+const TEST_DIALOG_DESCRIPTION =
+  "Accessible dialog description used for testing.";
+
 // Test component wrapper
 const TestDialog = ({
   open,
@@ -30,7 +33,7 @@ const TestDialog = ({
     <DialogContent size={size}>
       <DialogHeader>
         <DialogTitle>Dialog Title</DialogTitle>
-        <DialogDescription>This is a dialog description</DialogDescription>
+        <DialogDescription>{TEST_DIALOG_DESCRIPTION}</DialogDescription>
       </DialogHeader>
       <div>Dialog content goes here</div>
       <DialogFooter>
@@ -94,7 +97,7 @@ describe("Dialog", () => {
       await user.click(screen.getByText("Open Dialog"));
 
       await waitFor(() => {
-        const description = screen.getByText("This is a dialog description");
+        const description = screen.getByText(TEST_DIALOG_DESCRIPTION);
         expect(description).toBeInTheDocument();
       });
     });
@@ -138,7 +141,7 @@ describe("Dialog", () => {
         expect(describedBy).toBeTruthy();
 
         const description = document.getElementById(describedBy!);
-        expect(description).toHaveTextContent("This is a dialog description");
+        expect(description).toHaveTextContent(TEST_DIALOG_DESCRIPTION);
       });
     });
   });
@@ -164,9 +167,7 @@ describe("Dialog", () => {
       await waitFor(() => {
         expect(screen.getByRole("dialog")).toBeInTheDocument();
         expect(screen.getByText("Dialog Title")).toBeInTheDocument();
-        expect(
-          screen.getByText("This is a dialog description")
-        ).toBeInTheDocument();
+        expect(screen.getByText(TEST_DIALOG_DESCRIPTION)).toBeInTheDocument();
         expect(
           screen.getByText("Dialog content goes here")
         ).toBeInTheDocument();
@@ -505,6 +506,9 @@ describe("Dialog", () => {
           <DialogTrigger>Open</DialogTrigger>
           <DialogContent className="custom-dialog-class">
             <DialogTitle>Title</DialogTitle>
+            <DialogDescription className="sr-only">
+              {TEST_DIALOG_DESCRIPTION}
+            </DialogDescription>
             Content
           </DialogContent>
         </Dialog>
@@ -554,7 +558,7 @@ describe("Dialog", () => {
       await user.click(screen.getByText("Open Dialog"));
 
       await waitFor(() => {
-        const description = screen.getByText("This is a dialog description");
+        const description = screen.getByText(TEST_DIALOG_DESCRIPTION);
         expect(description).toHaveClass(
           "text-sm",
           "text-(--color-text-secondary)"
@@ -601,6 +605,9 @@ describe("Dialog", () => {
           <DialogTrigger>Open</DialogTrigger>
           <DialogContent ref={ref}>
             <DialogTitle>Title</DialogTitle>
+            <DialogDescription className="sr-only">
+              {TEST_DIALOG_DESCRIPTION}
+            </DialogDescription>
             Content
           </DialogContent>
         </Dialog>
@@ -622,6 +629,9 @@ describe("Dialog", () => {
           <DialogTrigger>Open Form</DialogTrigger>
           <DialogContent>
             <DialogTitle>Form Dialog</DialogTitle>
+            <DialogDescription className="sr-only">
+              {TEST_DIALOG_DESCRIPTION}
+            </DialogDescription>
             <form onSubmit={handleSubmit}>
               <input type="text" placeholder="Name" />
               <button type="submit">Submit</button>
@@ -650,10 +660,16 @@ describe("Dialog", () => {
           <DialogTrigger>Open First</DialogTrigger>
           <DialogContent>
             <DialogTitle>First Dialog</DialogTitle>
+            <DialogDescription className="sr-only">
+              {TEST_DIALOG_DESCRIPTION}
+            </DialogDescription>
             <Dialog>
               <DialogTrigger>Open Second</DialogTrigger>
               <DialogContent>
                 <DialogTitle>Second Dialog</DialogTitle>
+                <DialogDescription className="sr-only">
+                  {TEST_DIALOG_DESCRIPTION}
+                </DialogDescription>
                 Nested content
               </DialogContent>
             </Dialog>
@@ -717,6 +733,9 @@ describe("Dialog", () => {
         <Dialog>
           <DialogTrigger>Open</DialogTrigger>
           <DialogContent aria-label="Dialog without title">
+            <DialogDescription className="sr-only">
+              {TEST_DIALOG_DESCRIPTION}
+            </DialogDescription>
             <div>Content without title</div>
           </DialogContent>
         </Dialog>
@@ -740,6 +759,9 @@ describe("Dialog", () => {
           <DialogTrigger>Open</DialogTrigger>
           <DialogContent>
             <DialogTitle>Title Only</DialogTitle>
+            <DialogDescription className="sr-only">
+              {TEST_DIALOG_DESCRIPTION}
+            </DialogDescription>
             <div>Content</div>
           </DialogContent>
         </Dialog>
@@ -761,6 +783,9 @@ describe("Dialog", () => {
           <DialogTrigger>Open</DialogTrigger>
           <DialogContent>
             <DialogTitle>Complex Dialog</DialogTitle>
+            <DialogDescription className="sr-only">
+              {TEST_DIALOG_DESCRIPTION}
+            </DialogDescription>
             <div>
               <h3>Section 1</h3>
               <p>Paragraph text</p>
@@ -796,6 +821,9 @@ describe("Dialog", () => {
           <DialogTrigger>Open</DialogTrigger>
           <DialogContent>
             <DialogTitle>Long Content</DialogTitle>
+            <DialogDescription className="sr-only">
+              {TEST_DIALOG_DESCRIPTION}
+            </DialogDescription>
             {longContent.map((text, i) => (
               <p key={i}>{text}</p>
             ))}
@@ -820,8 +848,11 @@ describe("Dialog", () => {
           <DialogContent>
             <DialogHeader>
               <DialogTitle>No Footer Dialog</DialogTitle>
+              <DialogDescription className="sr-only">
+                {TEST_DIALOG_DESCRIPTION}
+              </DialogDescription>
             </DialogHeader>
-            <div>Content without footer</div>
+            <div>Body content</div>
           </DialogContent>
         </Dialog>
       );
@@ -830,7 +861,7 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         expect(screen.getByRole("dialog")).toBeInTheDocument();
-        expect(screen.getByText("Content without footer")).toBeInTheDocument();
+        expect(screen.getByText("Body content")).toBeInTheDocument();
       });
     });
 

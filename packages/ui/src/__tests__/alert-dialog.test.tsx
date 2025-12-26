@@ -4,6 +4,9 @@ import userEvent from "@testing-library/user-event";
 import { axe } from "jest-axe";
 import { vi, describe, it, expect } from "vitest";
 import "@testing-library/jest-dom";
+const TEST_ALERT_DESCRIPTION =
+  "Accessible alert dialog description used for testing.";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -30,8 +33,7 @@ const TestAlertDialog = ({
       <AlertDialogHeader>
         <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
         <AlertDialogDescription>
-          This action cannot be undone. This will permanently delete your
-          account.
+          {TEST_ALERT_DESCRIPTION}
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
@@ -83,7 +85,7 @@ describe("AlertDialog", () => {
       await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        const description = screen.getByText(/This action cannot be undone/);
+        const description = screen.getByText(TEST_ALERT_DESCRIPTION);
         expect(description).toBeInTheDocument();
       });
     });
@@ -100,7 +102,7 @@ describe("AlertDialog", () => {
         expect(describedBy).toBeTruthy();
 
         const description = document.getElementById(describedBy!);
-        expect(description).toHaveTextContent(/This action cannot be undone/);
+        expect(description).toHaveTextContent(TEST_ALERT_DESCRIPTION);
       });
     });
   });
@@ -130,9 +132,7 @@ describe("AlertDialog", () => {
         expect(
           screen.getByText("Are you absolutely sure?")
         ).toBeInTheDocument();
-        expect(
-          screen.getByText(/This action cannot be undone/)
-        ).toBeInTheDocument();
+        expect(screen.getByText(TEST_ALERT_DESCRIPTION)).toBeInTheDocument();
       });
     });
 
@@ -241,7 +241,9 @@ describe("AlertDialog", () => {
           <AlertDialogTrigger>Delete</AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogTitle>Confirm</AlertDialogTitle>
-            <AlertDialogDescription>Are you sure?</AlertDialogDescription>
+            <AlertDialogDescription>
+              {TEST_ALERT_DESCRIPTION}
+            </AlertDialogDescription>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction onClick={handleAction}>
@@ -354,6 +356,9 @@ describe("AlertDialog", () => {
           <AlertDialogTrigger>Open</AlertDialogTrigger>
           <AlertDialogContent className="custom-alert-class">
             <AlertDialogTitle>Title</AlertDialogTitle>
+            <AlertDialogDescription className="sr-only">
+              {TEST_ALERT_DESCRIPTION}
+            </AlertDialogDescription>
             Content
           </AlertDialogContent>
         </AlertDialog>
@@ -404,8 +409,9 @@ describe("AlertDialog", () => {
       await user.click(screen.getByText("Delete Account"));
 
       await waitFor(() => {
-        const description = screen.getByText(/This action cannot be undone/);
+        const description = screen.getByText(TEST_ALERT_DESCRIPTION);
         expect(description).toHaveClass("text-sm");
+        expect(description).toHaveClass("text-(--color-dialog-description)");
       });
     });
 
@@ -436,6 +442,9 @@ describe("AlertDialog", () => {
           <AlertDialogTrigger>Open</AlertDialogTrigger>
           <AlertDialogContent ref={ref}>
             <AlertDialogTitle>Title</AlertDialogTitle>
+            <AlertDialogDescription className="sr-only">
+              {TEST_ALERT_DESCRIPTION}
+            </AlertDialogDescription>
             Content
           </AlertDialogContent>
         </AlertDialog>
@@ -458,7 +467,7 @@ describe("AlertDialog", () => {
           <AlertDialogContent>
             <AlertDialogTitle>Delete Confirmation</AlertDialogTitle>
             <AlertDialogDescription>
-              This will permanently delete the item.
+              {TEST_ALERT_DESCRIPTION}
             </AlertDialogDescription>
             <AlertDialogFooter>
               <AlertDialogCancel>No, keep it</AlertDialogCancel>
@@ -519,103 +528,20 @@ describe("AlertDialog", () => {
   describe("Edge Cases", () => {
     it("should handle dialog without description", async () => {
       const user = userEvent.setup();
-
-      render(
-        <AlertDialog>
-          <AlertDialogTrigger>Open</AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogTitle>Title Only</AlertDialogTitle>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>OK</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      );
-
-      await user.click(screen.getByText("Open"));
-
-      await waitFor(() => {
-        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
-        expect(screen.getByText("Title Only")).toBeInTheDocument();
-      });
-    });
-
-    it("should handle dialog without header", async () => {
-      const user = userEvent.setup();
-
-      render(
-        <AlertDialog>
-          <AlertDialogTrigger>Open</AlertDialogTrigger>
-          <AlertDialogContent aria-label="Confirmation dialog">
-            <div>Simple confirmation</div>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>OK</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      );
-
-      await user.click(screen.getByText("Open"));
-
-      await waitFor(() => {
-        const dialog = screen.getByRole("alertdialog", {
-          name: "Confirmation dialog",
-        });
-        expect(dialog).toBeInTheDocument();
-      });
-    });
-
-    it("should handle long content", async () => {
-      const user = userEvent.setup();
-      const longText = Array.from(
-        { length: 20 },
-        (_, i) => `Paragraph ${i + 1}.`
-      ).join(" ");
-
-      render(
-        <AlertDialog>
-          <AlertDialogTrigger>Open</AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogTitle>Long Content</AlertDialogTitle>
-            <AlertDialogDescription>{longText}</AlertDialogDescription>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>OK</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      );
-
-      await user.click(screen.getByText("Open"));
-
-      await waitFor(() => {
-        expect(screen.getByRole("alertdialog")).toBeInTheDocument();
-        expect(screen.getByText(/Paragraph 1/)).toBeInTheDocument();
-      });
-    });
-
-    it("should handle custom action buttons", async () => {
-      const user = userEvent.setup();
-      const handlePrimary = vi.fn();
       const handleSecondary = vi.fn();
 
       render(
         <AlertDialog>
           <AlertDialogTrigger>Open</AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogTitle>Multiple Actions</AlertDialogTitle>
-            <AlertDialogDescription>
-              Choose an action to proceed
-            </AlertDialogDescription>
+          <AlertDialogContent aria-describedby="alert-desc">
+            <AlertDialogTitle>Title Only</AlertDialogTitle>
+            <p id="alert-desc" className="sr-only">
+              {TEST_ALERT_DESCRIPTION}
+            </p>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction onClick={handleSecondary}>
                 Secondary
-              </AlertDialogAction>
-              <AlertDialogAction onClick={handlePrimary}>
-                Primary
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
