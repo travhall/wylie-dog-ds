@@ -14,6 +14,9 @@ import {
 } from "./components/ProgressFeedback";
 import { SetupWizard } from "./components/SetupWizard";
 import { HelpIcon, HELP_CONTENT } from "./components/ContextualHelp";
+import { FirstRunOnboarding } from "./components/FirstRunOnboarding";
+import { ExistingTokensImporter } from "./components/ExistingTokensImporter";
+import { FormatGuidelinesDialog } from "./components/FormatGuidelinesDialog";
 import { GitHubClient } from "../plugin/github/client";
 import { ErrorHandler, PluginError, ErrorType } from "../shared/error-handler";
 import { ResultHandler, Result } from "../shared/result"; // Quick Win #12
@@ -89,6 +92,16 @@ function App() {
   // Operation cancellation - Quick Win #6
   const [currentOperation, setCurrentOperation] = useState<string | null>(null);
 
+  // Onboarding modal - v2.0 Enhancement
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [showExistingTokensImporter, setShowExistingTokensImporter] =
+    useState(false);
+  const [showFormatGuidelines, setShowFormatGuidelines] = useState(false);
+  const [hasFigmaVariables, setHasFigmaVariables] = useState(false);
+
+  // Settings menu - UX Overhaul
+  const [showSettingsMenu, setShowSettingsMenu] = useState(false);
+
   // GitHub client instance
   const [githubClient] = useState(() => new ConflictAwareGitHubClient());
 
@@ -122,9 +135,7 @@ function App() {
             setGithubConfig(config);
             setGithubConfigured(true);
             setCurrentView("collections");
-            setSuccessMessage(
-              "✅ GitHub configuration tested and saved successfully!"
-            );
+            setSuccessMessage("✅ Connected to GitHub successfully!");
             setTimeout(() => setSuccessMessage(null), 5000);
             return true;
           } else {
@@ -156,10 +167,10 @@ function App() {
       setProgressSteps(PUSH_STEPS);
       setProgressStep(0);
 
-      setLoadingMessage("Exporting tokens...");
+      setLoadingMessage("Preparing your tokens...");
       setProgressStep(1);
 
-      setLoadingMessage("Checking for conflicts...");
+      setLoadingMessage("Checking for changes...");
       const syncResult =
         await githubClient.syncTokensWithConflictDetection(exportData);
       setProgressStep(2);
@@ -174,7 +185,7 @@ function App() {
         return;
       }
 
-      setLoadingMessage("Uploading to GitHub...");
+      setLoadingMessage("Saving to GitHub...");
       setProgressStep(3);
 
       // Send success message back to plugin
@@ -210,10 +221,10 @@ function App() {
       setProgressSteps(PULL_STEPS);
       setProgressStep(0);
 
-      setLoadingMessage("Fetching from GitHub...");
+      setLoadingMessage("Getting from GitHub...");
       setProgressStep(1);
 
-      setLoadingMessage("Checking for conflicts...");
+      setLoadingMessage("Checking for changes...");
       const pullResult = await githubClient.pullTokensWithConflictDetection();
       setProgressStep(2);
 
@@ -227,7 +238,7 @@ function App() {
         return;
       }
 
-      setLoadingMessage("Preparing import...");
+      setLoadingMessage("Loading your tokens...");
       setProgressStep(3);
 
       if (pullResult.success && pullResult.tokens) {
@@ -296,6 +307,21 @@ function App() {
     );
   };
 
+  // Close settings menu when clicking outside
+  useEffect(() => {
+    if (!showSettingsMenu) return;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest("[data-settings-menu]")) {
+        setShowSettingsMenu(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [showSettingsMenu]);
+
   useEffect(() => {
     console.log("useEffect running - setting up message listener");
 
@@ -341,7 +367,7 @@ function App() {
           if (msg.exportData) {
             setDownloadQueue(msg.exportData);
             setSuccessMessage(
-              `✅ ${msg.exportData.length} collection(s) exported successfully!`
+              `✅ ${msg.exportData.length} ${msg.exportData.length === 1 ? "file" : "files"} ready to download!`
             );
             setTimeout(() => setSuccessMessage(null), 5000);
           }
@@ -355,7 +381,7 @@ function App() {
 
           if (msg.result && msg.result.success) {
             setSuccessMessage(
-              `✅ Successfully imported ${msg.result.totalVariablesCreated} variables!`
+              `✅ Added ${msg.result.totalVariablesCreated} tokens to Figma!`
             );
             setTimeout(() => setSuccessMessage(null), 5000);
 
@@ -417,7 +443,7 @@ function App() {
           if (msg.success) {
             setLoading(false);
             setError(null);
-            setSuccessMessage("✅ GitHub configuration saved successfully!");
+            setSuccessMessage("✅ GitHub settings saved!");
             setTimeout(() => setSuccessMessage(null), 3000);
             // Reload config to update UI
             loadGitHubConfig();
@@ -450,8 +476,8 @@ function App() {
 
           if (msg.result && msg.result.success) {
             const message = msg.result.pullRequestUrl
-              ? `✅ Tokens synced successfully! Pull request: ${msg.result.pullRequestUrl}`
-              : "✅ Tokens synced directly to repository!";
+              ? `✅ Pull request created! Check GitHub to review`
+              : "✅ Saved to GitHub successfully!";
             setSuccessMessage(message);
             setTimeout(() => setSuccessMessage(null), 6000);
           } else {
@@ -472,7 +498,7 @@ function App() {
           setProgressStep(0);
 
           if (msg.result && msg.result.success) {
-            setSuccessMessage("✅ Tokens pulled from GitHub successfully!");
+            setSuccessMessage("✅ Got your tokens from GitHub!");
             setTimeout(() => setSuccessMessage(null), 5000);
             // Reload collections
             setTimeout(() => loadCollections(), 1000);
@@ -519,6 +545,13 @@ function App() {
           setAdvancedMode(msg.advancedMode);
           break;
 
+        case "onboarding-state-loaded":
+          console.log("Onboarding state loaded:", msg.hasSeenOnboarding);
+          if (!msg.hasSeenOnboarding) {
+            setShowOnboarding(true);
+          }
+          break;
+
         default:
           console.warn("Unknown message type:", msg.type);
       }
@@ -528,6 +561,7 @@ function App() {
     loadCollections();
     loadGitHubConfig();
     loadAdvancedMode();
+    loadOnboardingState();
 
     // Memory cleanup - Quick Win #7
     return () => {
@@ -583,6 +617,33 @@ function App() {
     }
   };
 
+  const loadOnboardingState = () => {
+    try {
+      parent.postMessage(
+        { pluginMessage: { type: "get-onboarding-state" } },
+        "*"
+      );
+    } catch (err) {
+      console.error("Failed to load onboarding state:", err);
+    }
+  };
+
+  const saveOnboardingComplete = () => {
+    try {
+      parent.postMessage(
+        {
+          pluginMessage: {
+            type: "save-onboarding-state",
+            hasSeenOnboarding: true,
+          },
+        },
+        "*"
+      );
+    } catch (err) {
+      console.error("Failed to save onboarding state:", err);
+    }
+  };
+
   const loadCollectionDetails = (collectionId: string) => {
     console.log("Loading collection details for:", collectionId);
     setLoading(true);
@@ -618,7 +679,7 @@ function App() {
     setCurrentOperation(useGitHub ? "github-sync" : "local-export"); // Quick Win #6
 
     if (useGitHub && githubConfigured) {
-      setLoadingMessage("Syncing to GitHub...");
+      setLoadingMessage("Saving to GitHub...");
       try {
         parent.postMessage(
           {
@@ -642,7 +703,7 @@ function App() {
       setError("Please configure GitHub integration first");
       return;
     } else {
-      setLoadingMessage("Preparing local download...");
+      setLoadingMessage("Preparing your files...");
       try {
         parent.postMessage(
           {
@@ -668,7 +729,7 @@ function App() {
     setLoading(true);
     setError(null);
     setSuccessMessage(null);
-    setLoadingMessage("Pulling from GitHub...");
+    setLoadingMessage("Getting from GitHub...");
 
     try {
       parent.postMessage(
@@ -792,7 +853,7 @@ function App() {
 
       setImportLoading(true);
       setLoading(true);
-      setLoadingMessage("Reading token files...");
+      setLoadingMessage("Reading your files...");
       setError(null);
       setCurrentOperation("token-import"); // Quick Win #6
 
@@ -807,7 +868,7 @@ function App() {
           });
         }
 
-        setLoadingMessage("Importing tokens to Figma...");
+        setLoadingMessage("Adding tokens to Figma...");
 
         parent.postMessage(
           {
@@ -869,7 +930,7 @@ function App() {
   ) => {
     try {
       setLoading(true);
-      setLoadingMessage("Applying conflict resolutions...");
+      setLoadingMessage("Saving your choices...");
 
       const exportData = pendingTokensForConflictResolution || [];
       const resolvedTokens = githubClient.applyConflictResolutions(
@@ -899,7 +960,7 @@ function App() {
       setShowConflictResolution(false);
       setConflicts([]);
       setSuccessMessage(
-        `✅ Conflicts resolved and ${resolutions.length} tokens applied!`
+        `✅ All set! Applied ${resolutions.length} ${resolutions.length === 1 ? "change" : "changes"}`
       );
       setTimeout(() => setSuccessMessage(null), 5000);
     } catch (error: any) {
@@ -938,6 +999,43 @@ function App() {
     // Show cancellation message
     setSuccessMessage("⚠️ Operation cancelled");
     setTimeout(() => setSuccessMessage(null), 3000);
+  };
+
+  // Onboarding handlers - v2.0 Enhancement
+  const handleGenerateDemoTokens = () => {
+    console.log("Generate demo tokens clicked");
+    setShowOnboarding(false);
+    saveOnboardingComplete();
+    setLoading(true);
+    setLoadingMessage("Loading demo tokens...");
+
+    parent.postMessage(
+      {
+        pluginMessage: {
+          type: "generate-demo-tokens",
+        },
+      },
+      "*"
+    );
+  };
+
+  const handleImportFigmaVariables = () => {
+    console.log("Import Figma Variables clicked");
+    setShowOnboarding(false);
+    saveOnboardingComplete();
+    setShowExistingTokensImporter(true);
+  };
+
+  const handleImportFromGitHub = () => {
+    console.log("Import from GitHub clicked");
+    setShowOnboarding(false);
+    saveOnboardingComplete();
+    // Use existing GitHub pull functionality
+    if (githubConfigured) {
+      pullFromGitHub();
+    } else {
+      setShowSetupWizard(true);
+    }
   };
 
   console.log(
@@ -1127,39 +1225,173 @@ function App() {
         <h2 style={{ margin: "0", fontSize: "16px", fontWeight: "bold" }}>
           Token Bridge
         </h2>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <span
-            style={{
-              fontSize: "10px",
-              color: "#6b7280",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            {advancedMode ? "Advanced" : "Simple"}
-            <HelpIcon
-              content={HELP_CONTENT.ADVANCED_MODE.content}
-              title={HELP_CONTENT.ADVANCED_MODE.title}
-            />
-          </span>
+        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+          {/* Advanced Mode Toggle */}
           <button
             onClick={toggleAdvancedMode}
+            aria-label={
+              advancedMode ? "Switch to Simple mode" : "Switch to Advanced mode"
+            }
             style={{
-              padding: "4px 8px",
-              backgroundColor: advancedMode ? "#0ea5e9" : "#f3f4f6",
-              color: advancedMode ? "white" : "#374151",
-              border: "1px solid " + (advancedMode ? "#0ea5e9" : "#d1d5db"),
+              padding: "6px 10px",
+              backgroundColor: "#f3f4f6",
+              color: "#374151",
+              border: "1px solid #d1d5db",
               borderRadius: "4px",
               cursor: "pointer",
               fontSize: "10px",
               fontWeight: "bold",
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
+              transition: "all 0.2s ease",
             }}
             title={
               advancedMode ? "Switch to Simple mode" : "Switch to Advanced mode"
             }
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#e5e7eb";
+              e.currentTarget.style.borderColor = "#9ca3af";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#f3f4f6";
+              e.currentTarget.style.borderColor = "#d1d5db";
+            }}
           >
-            {advancedMode ? "🔧" : "⚡"}
+            <span>{advancedMode ? "🔧" : "⚡"}</span>
+            <span>{advancedMode ? "Advanced" : "Simple"}</span>
           </button>
+
+          {/* Settings Menu Button */}
+          <div style={{ position: "relative" }} data-settings-menu>
+            <button
+              onClick={() => setShowSettingsMenu(!showSettingsMenu)}
+              aria-label="Settings menu"
+              aria-expanded={showSettingsMenu}
+              aria-haspopup="true"
+              style={{
+                padding: "6px 8px",
+                backgroundColor: showSettingsMenu ? "#e5e7eb" : "#f3f4f6",
+                color: "#374151",
+                border: "1px solid #d1d5db",
+                borderRadius: "4px",
+                cursor: "pointer",
+                fontSize: "14px",
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+                transition: "all 0.2s ease",
+              }}
+              title="Settings"
+              onMouseEnter={(e) => {
+                if (!showSettingsMenu) {
+                  e.currentTarget.style.backgroundColor = "#e5e7eb";
+                  e.currentTarget.style.borderColor = "#9ca3af";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!showSettingsMenu) {
+                  e.currentTarget.style.backgroundColor = "#f3f4f6";
+                  e.currentTarget.style.borderColor = "#d1d5db";
+                }
+              }}
+            >
+              ⚙️
+            </button>
+
+            {/* Settings Dropdown */}
+            {showSettingsMenu && (
+              <div
+                role="menu"
+                aria-label="Settings menu"
+                style={{
+                  position: "absolute",
+                  top: "32px",
+                  right: "0",
+                  backgroundColor: "white",
+                  border: "1px solid #d1d5db",
+                  borderRadius: "6px",
+                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                  minWidth: "200px",
+                  zIndex: 1000,
+                }}
+              >
+                <div
+                  style={{
+                    padding: "8px 0",
+                  }}
+                >
+                  {/* GitHub Configuration */}
+                  <button
+                    role="menuitem"
+                    onClick={() => {
+                      setShowSettingsMenu(false);
+                      if (githubConfigured) {
+                        setCurrentView("github-config");
+                      } else {
+                        setShowSetupWizard(true);
+                      }
+                    }}
+                    aria-label="GitHub Configuration"
+                    style={{
+                      width: "100%",
+                      padding: "8px 12px",
+                      backgroundColor: "transparent",
+                      border: "none",
+                      textAlign: "left",
+                      cursor: "pointer",
+                      fontSize: "12px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      transition: "background-color 0.15s ease",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.backgroundColor = "#f3f4f6")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.backgroundColor = "transparent")
+                    }
+                  >
+                    <span>🔗</span>
+                    <span>GitHub Configuration</span>
+                  </button>
+
+                  {/* Get Started */}
+                  <button
+                    role="menuitem"
+                    onClick={() => {
+                      setShowSettingsMenu(false);
+                      setShowOnboarding(true);
+                    }}
+                    aria-label="Get Started"
+                    style={{
+                      width: "100%",
+                      padding: "8px 12px",
+                      backgroundColor: "transparent",
+                      border: "none",
+                      textAlign: "left",
+                      cursor: "pointer",
+                      fontSize: "12px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      transition: "background-color 0.15s ease",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.backgroundColor = "#f3f4f6")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.backgroundColor = "transparent")
+                    }
+                  >
+                    <span>🚀</span>
+                    <span>Get Started</span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -1193,27 +1425,9 @@ function App() {
 
       <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
         <button
-          onClick={loadCollections}
-          disabled={loading || importLoading}
-          style={{
-            flex: 1,
-            padding: "8px 16px",
-            backgroundColor: loading || importLoading ? "#cbd5e1" : "#0066cc",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: loading || importLoading ? "not-allowed" : "pointer",
-            fontSize: "12px",
-          }}
-        >
-          {loading && !importLoading
-            ? "Loading..."
-            : "Load Variable Collections"}
-        </button>
-
-        <button
           onClick={handleTokenImport}
           disabled={loading || importLoading}
+          aria-label="Add tokens from file"
           style={{
             flex: 1,
             padding: "8px 16px",
@@ -1223,20 +1437,44 @@ function App() {
             borderRadius: "4px",
             cursor: loading || importLoading ? "not-allowed" : "pointer",
             fontSize: "12px",
+            fontWeight: "bold",
+            transition: "all 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            if (!loading && !importLoading) {
+              e.currentTarget.style.backgroundColor = "#15803d";
+              e.currentTarget.style.transform = "translateY(-1px)";
+              e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (!loading && !importLoading) {
+              e.currentTarget.style.backgroundColor = "#16a34a";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
+            }
           }}
         >
-          {importLoading ? "Importing..." : "Import Tokens"}
+          {importLoading ? "Adding..." : "Add Tokens"}
         </button>
       </div>
 
       {collections.length > 0 && (
-        <div>
+        <div
+          style={{
+            padding: "16px",
+            backgroundColor: "#ffffff",
+            border: "1px solid #e5e7eb",
+            borderRadius: "8px",
+            marginBottom: "16px",
+          }}
+        >
           <div
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              marginBottom: "12px",
+              marginBottom: "16px",
             }}
           >
             <h3
@@ -1246,17 +1484,18 @@ function App() {
                 fontWeight: "bold",
                 display: "flex",
                 alignItems: "center",
+                color: "#1f2937",
               }}
             >
-              Collections Found ({collections.length}):
+              📦 Your Design Tokens
               <HelpIcon
                 content={HELP_CONTENT.COLLECTION_SELECTION.content}
                 title={HELP_CONTENT.COLLECTION_SELECTION.title}
               />
             </h3>
             {advancedMode && (
-              <div style={{ fontSize: "11px", color: "#666" }}>
-                {selectedCollections.size} selected for export
+              <div style={{ fontSize: "11px", color: "#6b7280" }}>
+                {selectedCollections.size} of {collections.length} selected
               </div>
             )}
           </div>
@@ -1265,13 +1504,16 @@ function App() {
             <div
               key={collection.id}
               style={{
-                marginBottom: "8px",
-                padding: "12px",
-                border: "1px solid #ddd",
-                borderRadius: "4px",
+                marginBottom: "10px",
+                padding: "14px",
+                border: selectedCollections.has(collection.id)
+                  ? "2px solid #0ea5e9"
+                  : "1px solid #e5e7eb",
+                borderRadius: "6px",
                 backgroundColor: selectedCollections.has(collection.id)
                   ? "#f0f9ff"
-                  : "#f9f9f9",
+                  : "#fafafa",
+                transition: "all 0.2s ease",
               }}
             >
               <div
@@ -1316,7 +1558,13 @@ function App() {
                 )}
               </div>
               {advancedMode && (
-                <div style={{ fontSize: "11px", color: "#666" }}>
+                <div
+                  style={{
+                    fontSize: "11px",
+                    color: "#6b7280",
+                    fontWeight: "500",
+                  }}
+                >
                   {collection.variableIds.length} variables •{" "}
                   {collection.modes.length} modes
                 </div>
@@ -1335,75 +1583,55 @@ function App() {
             {/* GitHub Sync Section */}
             <div
               style={{
-                padding: "12px",
-                backgroundColor: githubConfigured ? "#f0f9ff" : "#f9fafb",
+                padding: "16px",
+                backgroundColor: githubConfigured ? "#f0f9ff" : "#ffffff",
                 border: githubConfigured
-                  ? "1px solid #bae6fd"
+                  ? "2px solid #0ea5e9"
                   : "1px solid #e5e7eb",
-                borderRadius: "6px",
+                borderRadius: "8px",
               }}
             >
               <div
                 style={{
+                  fontSize: "13px",
+                  fontWeight: "bold",
+                  color: "#1f2937",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-between",
-                  marginBottom: "8px",
+                  gap: "6px",
+                  marginBottom: "12px",
                 }}
               >
-                <div
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: "bold",
-                    color: "#374151",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  🔗 GitHub Integration
-                  <HelpIcon
-                    content="Sync your design tokens directly with a GitHub repository. Configure once, then push/pull changes seamlessly."
-                    title="GitHub Integration"
-                  />
-                </div>
-                <button
-                  onClick={() => {
-                    console.log(
-                      "Button clicked - githubConfigured:",
-                      githubConfigured
-                    );
-                    if (githubConfigured) {
-                      showGitHubConfig();
-                    } else {
-                      console.log("Opening setup wizard");
-                      setShowSetupWizard(true);
-                    }
-                  }}
-                  style={{
-                    padding: "4px 8px",
-                    backgroundColor: "#f3f4f6",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                    fontSize: "10px",
-                    color: "#374151",
-                  }}
-                >
-                  {githubConfigured ? "Edit Config" : "🚀 Quick Setup"}
-                </button>
+                💾 Save to GitHub
               </div>
 
               {githubConfigured ? (
                 <div>
+                  {/* GitHub Connection Status */}
                   <div
                     style={{
-                      fontSize: "10px",
+                      fontSize: "11px",
                       color: "#059669",
-                      marginBottom: "8px",
+                      marginBottom: "12px",
+                      padding: "8px",
+                      backgroundColor: "#ecfdf5",
+                      borderRadius: "4px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
                     }}
                   >
-                    ✅ Connected to {githubConfig?.owner}/{githubConfig?.repo}
-                    {advancedMode && ` (${githubConfig?.syncMode} mode)`}
+                    <span style={{ fontSize: "16px" }}>✅</span>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontWeight: "bold", marginBottom: "2px" }}>
+                        Connected
+                      </div>
+                      <div style={{ fontSize: "10px", color: "#047857" }}>
+                        {githubConfig?.owner}/{githubConfig?.repo}
+                        {githubConfig?.syncMode === "pull-request" &&
+                          " (PR mode)"}
+                      </div>
+                    </div>
                   </div>
 
                   {advancedMode && (
@@ -1421,6 +1649,7 @@ function App() {
                       <button
                         onClick={pullFromGitHub}
                         disabled={loading}
+                        aria-label="Get tokens from GitHub"
                         style={{
                           flex: 1,
                           padding: "8px 12px",
@@ -1431,13 +1660,31 @@ function App() {
                           cursor: loading ? "not-allowed" : "pointer",
                           fontSize: "11px",
                           fontWeight: "bold",
+                          transition: "all 0.2s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          if (!loading) {
+                            e.currentTarget.style.backgroundColor = "#15803d";
+                            e.currentTarget.style.transform =
+                              "translateY(-1px)";
+                            e.currentTarget.style.boxShadow =
+                              "0 2px 4px rgba(0, 0, 0, 0.1)";
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (!loading) {
+                            e.currentTarget.style.backgroundColor = "#16a34a";
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow = "none";
+                          }
                         }}
                       >
-                        {loading ? "Pulling..." : "⬇️ Pull"}
+                        {loading ? "Getting..." : "⬇️ Get from GitHub"}
                       </button>
                       <button
                         onClick={() => exportTokens(true)}
                         disabled={loading || selectedCollections.size === 0}
+                        aria-label="Save tokens to GitHub"
                         style={{
                           flex: 1,
                           padding: "8px 12px",
@@ -1454,9 +1701,26 @@ function App() {
                               : "pointer",
                           fontSize: "11px",
                           fontWeight: "bold",
+                          transition: "all 0.2s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          if (!loading && selectedCollections.size > 0) {
+                            e.currentTarget.style.backgroundColor = "#0284c7";
+                            e.currentTarget.style.transform =
+                              "translateY(-1px)";
+                            e.currentTarget.style.boxShadow =
+                              "0 2px 4px rgba(0, 0, 0, 0.1)";
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (!loading && selectedCollections.size > 0) {
+                            e.currentTarget.style.backgroundColor = "#0ea5e9";
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow = "none";
+                          }
                         }}
                       >
-                        {loading ? "Pushing..." : "⬆️ Push"}
+                        {loading ? "Saving..." : "⬆️ Save to GitHub"}
                       </button>
                     </div>
                   ) : (
@@ -1482,14 +1746,47 @@ function App() {
                       }}
                     >
                       {loading
-                        ? "Creating PR..."
-                        : `🚀 Create PR (${selectedCollections.size})`}
+                        ? "Saving..."
+                        : `💾 Save ${selectedCollections.size} ${selectedCollections.size === 1 ? "Set" : "Sets"}`}
                     </button>
                   )}
                 </div>
               ) : (
-                <div style={{ fontSize: "10px", color: "#6b7280" }}>
-                  Configure GitHub to sync tokens directly to your repository
+                <div
+                  style={{
+                    fontSize: "11px",
+                    color: "#6b7280",
+                    padding: "12px",
+                    textAlign: "center",
+                  }}
+                >
+                  <div style={{ marginBottom: "8px" }}>
+                    Not connected to GitHub
+                  </div>
+                  <button
+                    onClick={() => setShowSetupWizard(true)}
+                    style={{
+                      padding: "8px 16px",
+                      backgroundColor: "#0ea5e9",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "4px",
+                      cursor: "pointer",
+                      fontSize: "11px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Connect to GitHub
+                  </button>
+                  <div
+                    style={{
+                      fontSize: "10px",
+                      marginTop: "8px",
+                      color: "#9ca3af",
+                    }}
+                  >
+                    Or use Settings ⚙️
+                  </div>
                 </div>
               )}
             </div>
@@ -1497,25 +1794,29 @@ function App() {
             {/* Local Export Section */}
             <div
               style={{
-                padding: "12px",
-                backgroundColor: "#f8fafc",
-                border: "1px solid #e2e8f0",
-                borderRadius: "6px",
+                padding: "16px",
+                backgroundColor: "#ffffff",
+                border: "1px solid #e5e7eb",
+                borderRadius: "8px",
               }}
             >
               <div
                 style={{
-                  fontSize: "12px",
+                  fontSize: "13px",
                   fontWeight: "bold",
-                  color: "#374151",
-                  marginBottom: "8px",
+                  color: "#1f2937",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  marginBottom: "12px",
                 }}
               >
-                💾 Local Export
+                📥 Download Files
               </div>
               <button
                 onClick={() => exportTokens(false)}
                 disabled={loading || selectedCollections.size === 0}
+                aria-label={`Download ${selectedCollections.size} token file${selectedCollections.size === 1 ? "" : "s"}`}
                 style={{
                   width: "100%",
                   padding: "10px 16px",
@@ -1532,11 +1833,27 @@ function App() {
                       : "pointer",
                   fontSize: "12px",
                   fontWeight: "bold",
+                  transition: "all 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  if (!loading && selectedCollections.size > 0) {
+                    e.currentTarget.style.backgroundColor = "#15803d";
+                    e.currentTarget.style.transform = "translateY(-1px)";
+                    e.currentTarget.style.boxShadow =
+                      "0 2px 4px rgba(0, 0, 0, 0.1)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!loading && selectedCollections.size > 0) {
+                    e.currentTarget.style.backgroundColor = "#16a34a";
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }
                 }}
               >
                 {loading
-                  ? "Exporting..."
-                  : `📥 Download JSON (${selectedCollections.size})`}
+                  ? "Preparing..."
+                  : `Download ${selectedCollections.size} ${selectedCollections.size === 1 ? "File" : "Files"}`}
               </button>
             </div>
           </div>
@@ -1676,9 +1993,59 @@ function App() {
         </div>
       )}
 
-      {collections.length === 0 && !loading && !error && (
-        <div style={{ padding: "20px", textAlign: "center", color: "#666" }}>
-          Click "Load Variable Collections" to get started
+      {collections.length === 0 && !loading && !error && !showOnboarding && (
+        <div
+          style={{
+            padding: "40px 20px",
+            textAlign: "center",
+            backgroundColor: "#f9fafb",
+            borderRadius: "8px",
+            border: "1px solid #e5e7eb",
+          }}
+        >
+          <div style={{ fontSize: "32px", marginBottom: "12px" }}>🎨</div>
+          <div
+            style={{
+              fontSize: "14px",
+              fontWeight: "bold",
+              color: "#374151",
+              marginBottom: "8px",
+            }}
+          >
+            No design tokens yet
+          </div>
+          <div
+            style={{ fontSize: "12px", color: "#6b7280", marginBottom: "16px" }}
+          >
+            Use "Add Tokens" above or click Get Started
+          </div>
+          <button
+            onClick={() => setShowOnboarding(true)}
+            aria-label="Get started with Token Bridge"
+            style={{
+              padding: "10px 20px",
+              backgroundColor: "#0ea5e9",
+              color: "white",
+              border: "none",
+              borderRadius: "6px",
+              cursor: "pointer",
+              fontSize: "13px",
+              fontWeight: "bold",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#0284c7";
+              e.currentTarget.style.transform = "translateY(-1px)";
+              e.currentTarget.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#0ea5e9";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
+            }}
+          >
+            Get Started
+          </button>
         </div>
       )}
 
@@ -1711,6 +2078,46 @@ function App() {
         <SetupWizard
           onComplete={handleSetupWizardComplete}
           onClose={() => setShowSetupWizard(false)}
+        />
+      )}
+
+      {/* First-Run Onboarding - v2.0 Enhancement */}
+      {showOnboarding && (
+        <FirstRunOnboarding
+          onDemoTokens={handleGenerateDemoTokens}
+          onImportVariables={handleImportFigmaVariables}
+          onImportFile={() => {
+            setShowOnboarding(false);
+            saveOnboardingComplete();
+            handleTokenImport();
+          }}
+          onSetupGitHub={() => {
+            setShowOnboarding(false);
+            saveOnboardingComplete();
+            setShowSetupWizard(true);
+          }}
+          onSkip={() => {
+            setShowOnboarding(false);
+            saveOnboardingComplete();
+          }}
+        />
+      )}
+
+      {/* Existing Tokens Importer - v2.0 Enhancement */}
+      {showExistingTokensImporter && (
+        <ExistingTokensImporter
+          onImport={() => {
+            setShowExistingTokensImporter(false);
+            // Conversion will be handled by plugin message handler
+          }}
+          onCancel={() => setShowExistingTokensImporter(false)}
+        />
+      )}
+
+      {/* Format Guidelines Dialog - v2.0 Enhancement */}
+      {showFormatGuidelines && (
+        <FormatGuidelinesDialog
+          onClose={() => setShowFormatGuidelines(false)}
         />
       )}
 

@@ -33,8 +33,9 @@ export interface GitHubConfig {
   owner: string;
   repo: string;
   branch: string;
-  tokenPath: string;
+  tokenPath: string; // Path in repo to sync tokens (e.g., "packages/tokens/io/sync/" or "tokens/")
   authMethod?: "oauth" | "pat";
   accessToken?: string;
   syncMode: SyncMode;
+  isWylieDogProject?: boolean; // Auto-detected: true if repo has wylie-dog-ds structure
 }

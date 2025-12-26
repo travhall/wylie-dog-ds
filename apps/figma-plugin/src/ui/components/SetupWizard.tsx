@@ -492,7 +492,9 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
 
 // Step 3: Configuration
 function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
-  const [tokenPath, setTokenPath] = useState(data.tokenPath || "tokens/");
+  const [tokenPath, setTokenPath] = useState(
+    data.tokenPath || "packages/tokens/io/sync/"
+  );
   const [syncMode, setSyncMode] = useState<SyncMode>(
     data.syncMode || "pull-request"
   );
@@ -711,7 +713,7 @@ export function SetupWizard({ onComplete, onClose }: SetupWizardProps) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        zIndex: 1000,
+        zIndex: 10000,
       }}
     >
       <div

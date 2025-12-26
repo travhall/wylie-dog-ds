@@ -27,21 +27,21 @@ export function EnhancedErrorDisplay({
   const getFriendlyMessage = (error: PluginError): string => {
     switch (error.type) {
       case ErrorType.NETWORK_ERROR:
-        return "Can't connect to GitHub. Check your internet connection.";
+        return "Can't reach GitHub right now. Check your internet connection.";
       case ErrorType.AUTHENTICATION_ERROR:
-        return "GitHub authentication failed. Your access token may be expired.";
+        return "Couldn't connect to GitHub. Your access token might need updating.";
       case ErrorType.REPOSITORY_ERROR:
-        return "Repository not found. Check the owner and repository name.";
+        return "Couldn't find that repository. Double-check the name.";
       case ErrorType.TOKEN_FORMAT_ERROR:
-        return "Token file format issue. The file may be corrupted or in an unsupported format.";
+        return "This file doesn't look right. It might be in the wrong format.";
       case ErrorType.CONFLICT_ERROR:
-        return "Found conflicts between local and remote tokens that need resolution.";
+        return "Your local and GitHub versions are different. Let's resolve this.";
       case ErrorType.FIGMA_API_ERROR:
-        return "Figma couldn't process the request. Try refreshing your variable collections.";
+        return "Figma had trouble with this. Try reloading the plugin.";
       case ErrorType.VALIDATION_ERROR:
-        return "Some tokens have issues. Check the validation report for details.";
+        return "Some tokens need attention. Check what needs fixing below.";
       default:
-        return "Something went wrong. Don't worry - this is usually fixable!";
+        return "Something unexpected happened. Don't worry - we can fix this!";
     }
   };
 
@@ -91,9 +91,8 @@ export function EnhancedErrorDisplay({
                 gap: "8px",
               }}
             >
-              <span style={{ textTransform: "capitalize" }}>
-                {pluginError.type.replace("-", " ")} •{" "}
-                {pluginError.recoverable ? "Can be fixed" : "Needs attention"}
+              <span>
+                {pluginError.recoverable ? "✓ Fixable" : "⚠ Needs attention"}
               </span>
               <button
                 onClick={() => setShowDetails(!showDetails)}

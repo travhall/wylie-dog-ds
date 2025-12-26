@@ -512,6 +512,37 @@ figma.ui.onmessage = async (msg) => {
         }
         break;
 
+      case "get-onboarding-state":
+        try {
+          const hasSeenOnboarding = await figma.clientStorage.getAsync(
+            "has-seen-onboarding"
+          );
+          figma.ui.postMessage({
+            type: "onboarding-state-loaded",
+            hasSeenOnboarding:
+              hasSeenOnboarding === true || hasSeenOnboarding === "true",
+          });
+        } catch (error) {
+          console.error("Error loading onboarding state:", error);
+          figma.ui.postMessage({
+            type: "onboarding-state-loaded",
+            hasSeenOnboarding: false,
+          });
+        }
+        break;
+
+      case "save-onboarding-state":
+        try {
+          await figma.clientStorage.setAsync(
+            "has-seen-onboarding",
+            msg.hasSeenOnboarding
+          );
+          console.log("Onboarding state saved:", msg.hasSeenOnboarding);
+        } catch (error) {
+          console.error("Error saving onboarding state:", error);
+        }
+        break;
+
       case "github-sync-tokens":
         try {
           setLoading(true, "Exporting tokens for GitHub sync...");
@@ -607,6 +638,111 @@ figma.ui.onmessage = async (msg) => {
           resolutions: msg.resolutions,
           originalTokens: msg.originalTokens,
         });
+        break;
+
+      case "generate-demo-tokens":
+        console.log("Generating demo tokens...");
+        try {
+          // Import demo tokens from pre-generated file
+          const demoTokens = await import("./data/demo-tokens.json");
+
+          // Create message object to trigger import
+          const importMessage = {
+            type: "import-tokens" as const,
+            files: [
+              {
+                filename: "demo-tokens.json",
+                content: JSON.stringify(demoTokens.default, null, 2),
+              },
+            ],
+          };
+
+          // Recursively call this same handler with import-tokens message
+          // This ensures the full import flow runs (validation, processing, etc.)
+          await figma.ui.onmessage(importMessage);
+        } catch (error: unknown) {
+          console.error("Error generating demo tokens:", error);
+          figma.ui.postMessage({
+            type: "error",
+            message: `Failed to generate demo tokens: ${error instanceof Error ? error.message : "Unknown error"}`,
+          });
+        }
+        break;
+
+      case "detect-figma-variables":
+        console.log("Detecting existing Figma Variables...");
+        try {
+          const { FigmaVariableImporter } =
+            await import("./variables/figma-variable-importer");
+          const importer = new FigmaVariableImporter();
+          const detection = await importer.detectExistingVariables();
+
+          figma.ui.postMessage({
+            type: "figma-variables-detected",
+            detection: detection,
+          });
+        } catch (error: unknown) {
+          console.error("Error detecting variables:", error);
+          figma.ui.postMessage({
+            type: "error",
+            message: `Failed to detect Figma Variables: ${error instanceof Error ? error.message : "Unknown error"}`,
+          });
+        }
+        break;
+
+      case "convert-figma-variables":
+        console.log("Converting Figma Variables to W3C DTCG format...");
+        try {
+          setLoading(true, "Converting Figma Variables...");
+
+          const { FigmaVariableImporter } =
+            await import("./variables/figma-variable-importer");
+          const importer = new FigmaVariableImporter();
+
+          // First detect variables
+          const detection = await importer.detectExistingVariables();
+
+          if (!detection.hasVariables) {
+            throw new Error("No Variables found in current file");
+          }
+
+          // Convert to W3C DTCG format
+          const result = await importer.convertToW3CDTCG(detection.collections);
+
+          if (!result.success) {
+            throw new Error(`Conversion failed: ${result.warnings.join(", ")}`);
+          }
+
+          // Send converted data back for import
+          const files = result.data.map(
+            (collectionData: any, index: number) => {
+              const collectionName =
+                Object.keys(collectionData)[0] || `collection-${index}`;
+              return {
+                filename: `${collectionName.toLowerCase().replace(/\s+/g, "-")}.json`,
+                content: JSON.stringify([collectionData], null, 2),
+              };
+            }
+          );
+
+          setLoading(false);
+
+          figma.ui.postMessage({
+            type: "import-tokens",
+            files: files,
+          });
+
+          figma.notify(
+            `✅ Converted ${result.stats.totalVariables} variables from ${result.stats.totalCollections} collections`
+          );
+        } catch (error: unknown) {
+          console.error("Error converting variables:", error);
+          setLoading(false);
+          figma.ui.postMessage({
+            type: "error",
+            message: `Failed to convert Figma Variables: ${error instanceof Error ? error.message : "Unknown error"}`,
+          });
+        }
         break;
 
       case "close":

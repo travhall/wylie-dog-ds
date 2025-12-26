@@ -11,8 +11,9 @@ import { FormatDetectorRegistry } from "./format-detectors";
 import { ReferenceNormalizer } from "./reference-normalizer";
 
 // Only import essential adapters - others loaded dynamically
-import { WylieDogNativeAdapter } from "./adapters/wylie-dog-native";
 import { GenericAdapter } from "./adapters/generic";
+import { W3CDTCGAdapter } from "./adapters/w3c-dtcg";
+import { WylieDogNativeAdapter } from "./adapters/wylie-dog-native";
 
 export class FormatAdapterManager {
   private registry = new FormatDetectorRegistry();
@@ -25,9 +26,13 @@ export class FormatAdapterManager {
   private initializeCoreAdapters(): void {
     console.log("🏗️  Initializing core format adapters...");
 
-    // Only register essential adapters immediately - others loaded on demand
-    this.registry.register(new WylieDogNativeAdapter()); // Always needed for native format
-    // GenericAdapter now loads as true fallback after all specific adapters fail
+    // W3C DTCG is the recommended format
+    this.registry.register(new W3CDTCGAdapter());
+
+    // Wylie Dog native format for @wyliedog/tokens compatibility
+    this.registry.register(new WylieDogNativeAdapter());
+
+    // GenericAdapter loads as fallback when needed
 
     console.log(
       `✅ Registered ${this.registry.getRegistrySize()} core adapters`
@@ -106,10 +111,7 @@ export class FormatAdapterManager {
       );
 
       // If confidence is low and format is unknown, try loading more adapters
-      if (
-        initialDetection.confidence < 0.7 &&
-        initialDetection.format !== TokenFormatType.WYLIE_DOG
-      ) {
+      if (initialDetection.confidence < 0.7) {
         console.log(
           "🔄 Low confidence detection, attempting to load additional adapters..."
         );
