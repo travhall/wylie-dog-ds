@@ -14,3 +14,4 @@ storybook-static/
 packages/tokens/src/debug-tokens.json
 packages/tokens/src/tokens.generated.ts
 debug-storybook.log
+apps/figma-plugin/coverage
