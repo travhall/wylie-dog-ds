@@ -9,39 +9,69 @@ export interface Tab {
   disabled?: boolean;
 }
 
+const DEFAULT_TABS: Tab[] = [
+  { id: "tokens", label: "Tokens", icon: "🎨" },
+  { id: "import", label: "Import", icon: "📥" },
+  { id: "export", label: "Export", icon: "📤" },
+  { id: "sync", label: "Sync", icon: "🔄" },
+];
+
+const TAB_ARIA_LABELS: Record<TabId, string> = {
+  tokens: "Select tokens",
+  import: "Import tokens",
+  export: "Export tokens",
+  sync: "Sync with GitHub",
+};
+
 interface TabBarProps {
-  tabs: Tab[];
+  tabs?: Tab[];
   activeTab: TabId;
   onTabChange: (tabId: TabId) => void;
+  githubConnected?: boolean;
 }
 
 /**
  * TabBar - Provides clear navigation between plugin sections
  * Supports keyboard navigation (Arrow keys, Home, End)
  */
-export function TabBar({ tabs, activeTab, onTabChange }: TabBarProps) {
+export function TabBar({
+  tabs,
+  activeTab,
+  onTabChange,
+  githubConnected = false,
+}: TabBarProps) {
+  const resolvedTabs = (tabs ?? DEFAULT_TABS).map((tab) => {
+    if (tab.id !== "sync") return tab;
+    return {
+      ...tab,
+      disabled: tab.disabled ?? !githubConnected,
+    };
+  });
+
   const handleKeyDown = (e: KeyboardEvent, currentIndex: number) => {
     let newIndex = currentIndex;
 
     switch (e.key) {
       case "ArrowLeft":
-        newIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+        newIndex =
+          currentIndex > 0 ? currentIndex - 1 : resolvedTabs.length - 1;
         break;
       case "ArrowRight":
-        newIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+        newIndex =
+          currentIndex < resolvedTabs.length - 1 ? currentIndex + 1 : 0;
         break;
       case "Home":
         newIndex = 0;
         break;
       case "End":
-        newIndex = tabs.length - 1;
+        newIndex = resolvedTabs.length - 1;
         break;
       default:
         return; // Don't prevent default for other keys
     }
 
     e.preventDefault();
-    const tab = tabs[newIndex];
+    const tab = resolvedTabs[newIndex];
     if (tab && !tab.disabled) {
       onTabChange(tab.id);
       // Focus the new tab button
@@ -63,7 +93,7 @@ export function TabBar({ tabs, activeTab, onTabChange }: TabBarProps) {
         paddingBottom: "0",
       }}
     >
-      {tabs.map((tab, index) => {
+      {resolvedTabs.map((tab, index) => {
         const isActive = tab.id === activeTab;
         const isDisabled = tab.disabled;
 
@@ -75,6 +105,7 @@ export function TabBar({ tabs, activeTab, onTabChange }: TabBarProps) {
             aria-controls={`${tab.id}-panel`}
             aria-disabled={isDisabled}
             data-tab-id={tab.id}
+            aria-label={TAB_ARIA_LABELS[tab.id] ?? tab.label}
             tabIndex={isActive ? 0 : -1}
             onClick={() => !isDisabled && onTabChange(tab.id)}
             onKeyDown={(e) => !isDisabled && handleKeyDown(e, index)}
