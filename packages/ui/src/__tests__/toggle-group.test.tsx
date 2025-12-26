@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { vi } from "vitest";
@@ -56,10 +56,14 @@ describe("ToggleGroup", () => {
       );
 
       const firstItem = screen.getByRole("radio", { name: "Option 1" });
-      firstItem.focus();
+      await act(async () => {
+        firstItem.focus();
+      });
       expect(firstItem).toHaveFocus();
 
-      await user.keyboard("{ArrowRight}");
+      await act(async () => {
+        await user.keyboard("{ArrowRight}");
+      });
       const secondItem = screen.getByRole("radio", { name: "Option 2" });
       expect(secondItem).toHaveFocus();
     });

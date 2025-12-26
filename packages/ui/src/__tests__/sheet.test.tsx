@@ -15,6 +15,8 @@ import {
 
 expect.extend(toHaveNoViolations);
 
+const TEST_DESCRIPTION = "Accessible description for testing.";
+
 const TestSheet = ({
   side = "right" as const,
 }: {
@@ -25,7 +27,7 @@ const TestSheet = ({
     <SheetContent side={side}>
       <SheetHeader>
         <SheetTitle>Sheet Title</SheetTitle>
-        <SheetDescription>This is a sheet description</SheetDescription>
+        <SheetDescription>{TEST_DESCRIPTION}</SheetDescription>
       </SheetHeader>
       <div>Sheet content goes here</div>
       <SheetFooter>
@@ -117,9 +119,7 @@ describe("Sheet", () => {
       await waitFor(() => {
         expect(screen.getByRole("dialog")).toBeInTheDocument();
         expect(screen.getByText("Sheet Title")).toBeInTheDocument();
-        expect(
-          screen.getByText("This is a sheet description")
-        ).toBeInTheDocument();
+        expect(screen.getByText(TEST_DESCRIPTION)).toBeInTheDocument();
         expect(screen.getByText("Sheet content goes here")).toBeInTheDocument();
       });
     });
@@ -181,6 +181,7 @@ describe("Sheet", () => {
           <SheetTrigger>Open</SheetTrigger>
           <SheetContent ref={ref}>
             <SheetTitle>Title</SheetTitle>
+            <SheetDescription>Accessible description</SheetDescription>
             Content
           </SheetContent>
         </Sheet>
@@ -200,6 +201,7 @@ describe("Sheet", () => {
           <SheetTrigger>Open</SheetTrigger>
           <SheetContent className="custom-sheet">
             <SheetTitle>Title</SheetTitle>
+            <SheetDescription>Accessible description</SheetDescription>
             Content
           </SheetContent>
         </Sheet>
@@ -271,9 +273,7 @@ describe("Sheet", () => {
 
       await waitFor(() => {
         expect(screen.getByText("Sheet Title")).toBeInTheDocument();
-        expect(
-          screen.getByText("This is a sheet description")
-        ).toBeInTheDocument();
+        expect(screen.getByText(TEST_DESCRIPTION)).toBeInTheDocument();
       });
     });
 
@@ -287,6 +287,7 @@ describe("Sheet", () => {
           <SheetContent>
             <SheetHeader ref={ref}>
               <SheetTitle>Title</SheetTitle>
+              <SheetDescription>Accessible description</SheetDescription>
             </SheetHeader>
           </SheetContent>
         </Sheet>
@@ -321,6 +322,7 @@ describe("Sheet", () => {
           <SheetTrigger>Open</SheetTrigger>
           <SheetContent>
             <SheetTitle ref={ref}>Title</SheetTitle>
+            <SheetDescription>Accessible description</SheetDescription>
           </SheetContent>
         </Sheet>
       );
@@ -341,9 +343,7 @@ describe("Sheet", () => {
       await user.click(screen.getByText("Open Sheet"));
 
       await waitFor(() => {
-        expect(
-          screen.getByText("This is a sheet description")
-        ).toBeInTheDocument();
+        expect(screen.getByText(TEST_DESCRIPTION)).toBeInTheDocument();
       });
     });
 
@@ -416,9 +416,7 @@ describe("Sheet", () => {
 
       await waitFor(() => {
         expect(screen.getByText("Sheet Title")).toBeInTheDocument();
-        expect(
-          screen.getByText("This is a sheet description")
-        ).toBeInTheDocument();
+        expect(screen.getByText(TEST_DESCRIPTION)).toBeInTheDocument();
         expect(screen.getByText("Sheet content goes here")).toBeInTheDocument();
         expect(screen.getByText("Close")).toBeInTheDocument();
       });
@@ -431,6 +429,7 @@ describe("Sheet", () => {
           <SheetTrigger>Open Form</SheetTrigger>
           <SheetContent>
             <SheetTitle>Form Sheet</SheetTitle>
+            <SheetDescription>{TEST_DESCRIPTION}</SheetDescription>
             <form>
               <input type="text" placeholder="Name" aria-label="Name" />
               <button type="submit">Submit</button>
@@ -495,6 +494,7 @@ describe("Sheet", () => {
           <SheetTrigger>Open</SheetTrigger>
           <SheetContent>
             <SheetTitle>Title Only</SheetTitle>
+            <SheetDescription>{TEST_DESCRIPTION}</SheetDescription>
             <div>Content without header wrapper</div>
           </SheetContent>
         </Sheet>
@@ -517,6 +517,7 @@ describe("Sheet", () => {
           <SheetTrigger>Open</SheetTrigger>
           <SheetContent>
             <SheetTitle>No Footer</SheetTitle>
+            <SheetDescription>{TEST_DESCRIPTION}</SheetDescription>
             <div>Content</div>
           </SheetContent>
         </Sheet>
@@ -536,6 +537,7 @@ describe("Sheet", () => {
           <SheetTrigger>Open</SheetTrigger>
           <SheetContent>
             <SheetTitle>Complex Sheet</SheetTitle>
+            <SheetDescription>{TEST_DESCRIPTION}</SheetDescription>
             <div>
               <h3>Section 1</h3>
               <p>Paragraph text</p>

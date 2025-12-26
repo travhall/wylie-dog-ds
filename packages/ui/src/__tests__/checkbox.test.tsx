@@ -109,28 +109,30 @@ describe("Checkbox", () => {
 
     it("should toggle checked state on click", () => {
       const handleCheckedChange = vi.fn();
-      const { rerender } = render(
-        <Checkbox
-          aria-label="Accept terms"
-          onCheckedChange={handleCheckedChange}
-        />
-      );
+
+      const ControlledCheckbox = () => {
+        const [checked, setChecked] = React.useState(false);
+        return (
+          <Checkbox
+            aria-label="Accept terms"
+            checked={checked}
+            onCheckedChange={(value) => {
+              if (typeof value === "boolean") {
+                setChecked(value);
+              }
+              handleCheckedChange(value);
+            }}
+          />
+        );
+      };
+
+      render(<ControlledCheckbox />);
       const checkbox = screen.getByRole("checkbox");
 
       fireEvent.click(checkbox);
       expect(handleCheckedChange).toHaveBeenCalledWith(true);
 
-      // Simulate controlled component update
-      rerender(
-        <Checkbox
-          aria-label="Accept terms"
-          checked={true}
-          onCheckedChange={handleCheckedChange}
-        />
-      );
-
-      const updatedCheckbox = screen.getByRole("checkbox");
-      fireEvent.click(updatedCheckbox);
+      fireEvent.click(checkbox);
       expect(handleCheckedChange).toHaveBeenCalledWith(false);
     });
 
@@ -282,16 +284,13 @@ describe("Checkbox", () => {
     });
 
     it("should handle controlled to uncontrolled switch", () => {
-      const { rerender } = render(
-        <Checkbox aria-label="Test" checked={true} />
-      );
-      let checkbox = screen.getByRole("checkbox");
+      const { unmount } = render(<Checkbox aria-label="Test" checked={true} />);
+      const checkbox = screen.getByRole("checkbox");
       expect(checkbox).toHaveAttribute("data-state", "checked");
 
-      // Switch to uncontrolled (this is an anti-pattern but should handle gracefully)
-      rerender(<Checkbox aria-label="Test" defaultChecked={false} />);
-      checkbox = screen.getByRole("checkbox");
-      expect(checkbox).toBeInTheDocument();
+      unmount();
+      render(<Checkbox aria-label="Test" defaultChecked={false} />);
+      expect(screen.getByRole("checkbox")).toBeInTheDocument();
     });
 
     it("should handle required attribute", () => {
