@@ -167,7 +167,7 @@ export class ConflictAwareGitHubClient extends GitHubClient {
   /**
    * Get current local tokens from Figma variables
    */
-  private async getCurrentLocalTokens(): Promise<ExportData[]> {
+  protected async getCurrentLocalTokens(): Promise<ExportData[]> {
     try {
       // Get all local variable collections
       const collections =

@@ -232,8 +232,10 @@ export function useGitHubSync(
         actions.setLoading(true);
         actions.setShowConflictResolution(false);
 
-        const resolvedTokens =
-          githubClient.applyConflictResolutions(resolutions);
+        const resolvedTokens = githubClient.applyConflictResolutions(
+          state.pendingExportData || [],
+          resolutions
+        );
 
         // Continue with sync using resolved tokens
         parent.postMessage(

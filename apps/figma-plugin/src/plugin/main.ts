@@ -657,9 +657,9 @@ figma.ui.onmessage = async (msg) => {
             ],
           };
 
-          // Recursively call this same handler with import-tokens message
+          // Send import message to trigger the import flow
           // This ensures the full import flow runs (validation, processing, etc.)
-          await figma.ui.onmessage(importMessage);
+          figma.ui.postMessage(importMessage);
         } catch (error: unknown) {
           console.error("Error generating demo tokens:", error);
           figma.ui.postMessage({
