@@ -272,7 +272,8 @@ describe("RadioGroup", () => {
       render(<TestRadioGroup />);
 
       const radios = screen.getAllByRole("radio");
-      radios[0].focus();
+      await user.tab();
+      expect(radios[0]).toHaveFocus();
 
       await user.keyboard("{ArrowDown}");
       expect(radios[1]).toHaveFocus();
@@ -286,7 +287,10 @@ describe("RadioGroup", () => {
       render(<TestRadioGroup />);
 
       const radios = screen.getAllByRole("radio");
-      radios[2].focus();
+      await user.tab();
+      await user.keyboard("{ArrowDown}");
+      await user.keyboard("{ArrowDown}");
+      expect(radios[2]).toHaveFocus();
 
       await user.keyboard("{ArrowDown}");
       expect(radios[0]).toHaveFocus();
@@ -301,7 +305,9 @@ describe("RadioGroup", () => {
       render(<TestRadioGroup onValueChange={handleChange} />);
 
       const radios = screen.getAllByRole("radio");
-      radios[1].focus();
+      await user.tab();
+      await user.keyboard("{ArrowDown}");
+      expect(radios[1]).toHaveFocus();
 
       await user.keyboard(" ");
 
@@ -314,7 +320,8 @@ describe("RadioGroup", () => {
       render(<TestRadioGroup />);
 
       const radios = screen.getAllByRole("radio");
-      radios[0].focus();
+      await user.tab();
+      expect(radios[0]).toHaveFocus();
 
       await user.keyboard("{ArrowRight}");
       expect(radios[1]).toHaveFocus();
@@ -344,7 +351,8 @@ describe("RadioGroup", () => {
       );
 
       const radios = screen.getAllByRole("radio");
-      radios[0].focus();
+      await user.tab();
+      expect(radios[0]).toHaveFocus();
 
       await user.keyboard("{ArrowDown}");
       // Should skip disabled option 2 and go to option 3

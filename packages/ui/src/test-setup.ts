@@ -20,6 +20,10 @@ afterEach(() => {
 
 // Global test setup
 beforeAll(() => {
+  // Let React know this environment expects act() support so user-event
+  // interactions don't warn about missing act wrappers.
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+
   // Mock ResizeObserver (used by some Radix components)
   global.ResizeObserver = class ResizeObserver {
     observe() {}

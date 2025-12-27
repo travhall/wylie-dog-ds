@@ -276,8 +276,8 @@ describe("Menubar", () => {
       const user = userEvent.setup();
       render(<TestMenubar />);
 
-      const fileMenu = screen.getByText("File");
-      fileMenu.focus();
+      await user.tab();
+      expect(screen.getByText("File")).toHaveFocus();
       await user.keyboard("{Enter}");
 
       await waitFor(() =>

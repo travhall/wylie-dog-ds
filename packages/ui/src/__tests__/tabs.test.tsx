@@ -254,7 +254,8 @@ describe("Tabs", () => {
       render(<TestTabs defaultValue="tab1" />);
 
       const tabs = screen.getAllByRole("tab");
-      tabs[0].focus();
+      await user.tab();
+      expect(tabs[0]).toHaveFocus();
 
       await user.keyboard("{ArrowRight}");
       expect(tabs[1]).toHaveFocus();
@@ -268,7 +269,8 @@ describe("Tabs", () => {
       render(<TestTabs defaultValue="tab2" />);
 
       const tabs = screen.getAllByRole("tab");
-      tabs[1].focus();
+      await user.tab();
+      expect(tabs[1]).toHaveFocus();
 
       await user.keyboard("{ArrowLeft}");
       expect(tabs[0]).toHaveFocus();
@@ -279,7 +281,10 @@ describe("Tabs", () => {
       render(<TestTabs defaultValue="tab1" />);
 
       const tabs = screen.getAllByRole("tab");
-      tabs[2].focus();
+      await user.tab();
+      await user.keyboard("{ArrowRight}");
+      await user.keyboard("{ArrowRight}");
+      expect(tabs[2]).toHaveFocus();
 
       await user.keyboard("{ArrowRight}");
       expect(tabs[0]).toHaveFocus();
@@ -294,7 +299,9 @@ describe("Tabs", () => {
       render(<TestTabs defaultValue="tab1" onValueChange={handleChange} />);
 
       const tabs = screen.getAllByRole("tab");
-      tabs[1].focus();
+      await user.tab();
+      await user.keyboard("{ArrowRight}");
+      expect(tabs[1]).toHaveFocus();
 
       await user.keyboard(" ");
 
@@ -307,7 +314,10 @@ describe("Tabs", () => {
       render(<TestTabs defaultValue="tab1" onValueChange={handleChange} />);
 
       const tabs = screen.getAllByRole("tab");
-      tabs[2].focus();
+      await user.tab();
+      await user.keyboard("{ArrowRight}");
+      await user.keyboard("{ArrowRight}");
+      expect(tabs[2]).toHaveFocus();
 
       await user.keyboard("{Enter}");
 
@@ -333,7 +343,8 @@ describe("Tabs", () => {
       );
 
       const tabs = screen.getAllByRole("tab");
-      tabs[0].focus();
+      await user.tab();
+      expect(tabs[0]).toHaveFocus();
 
       await user.keyboard("{ArrowRight}");
       // Should skip disabled tab2 and go to tab3
@@ -345,7 +356,8 @@ describe("Tabs", () => {
       render(<TestTabs defaultValue="tab1" />);
 
       const tabs = screen.getAllByRole("tab");
-      tabs[0].focus();
+      await user.tab();
+      expect(tabs[0]).toHaveFocus();
 
       await user.tab();
 

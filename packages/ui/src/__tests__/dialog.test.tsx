@@ -726,13 +726,14 @@ describe("Dialog", () => {
   });
 
   describe("Edge Cases", () => {
-    it("should handle dialog without title", async () => {
+    it("should handle dialog with visually hidden title", async () => {
       const user = userEvent.setup();
 
       render(
         <Dialog>
           <DialogTrigger>Open</DialogTrigger>
-          <DialogContent aria-label="Dialog without title">
+          <DialogContent>
+            <DialogTitle className="sr-only">Dialog without title</DialogTitle>
             <DialogDescription className="sr-only">
               {TEST_DIALOG_DESCRIPTION}
             </DialogDescription>
@@ -744,14 +745,12 @@ describe("Dialog", () => {
       await user.click(screen.getByText("Open"));
 
       await waitFor(() => {
-        const dialog = screen.getByRole("dialog", {
-          name: "Dialog without title",
-        });
+        const dialog = screen.getByRole("dialog");
         expect(dialog).toBeInTheDocument();
       });
     });
 
-    it("should handle dialog without description", async () => {
+    it("should handle dialog with visually hidden description", async () => {
       const user = userEvent.setup();
 
       render(

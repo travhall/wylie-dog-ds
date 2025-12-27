@@ -55,8 +55,8 @@ describe("ToggleGroup", () => {
         </ToggleGroup>
       );
 
+      await user.tab();
       const firstItem = screen.getByRole("radio", { name: "Option 1" });
-      firstItem.focus();
       expect(firstItem).toHaveFocus();
 
       await user.keyboard("{ArrowRight}");

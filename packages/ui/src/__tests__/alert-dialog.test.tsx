@@ -526,18 +526,18 @@ describe("AlertDialog", () => {
   });
 
   describe("Edge Cases", () => {
-    it("should handle dialog without description", async () => {
+    it("should handle dialog with visually hidden description", async () => {
       const user = userEvent.setup();
       const handleSecondary = vi.fn();
 
       render(
         <AlertDialog>
           <AlertDialogTrigger>Open</AlertDialogTrigger>
-          <AlertDialogContent aria-describedby="alert-desc">
+          <AlertDialogContent>
             <AlertDialogTitle>Title Only</AlertDialogTitle>
-            <p id="alert-desc" className="sr-only">
+            <AlertDialogDescription className="sr-only">
               {TEST_ALERT_DESCRIPTION}
-            </p>
+            </AlertDialogDescription>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction onClick={handleSecondary}>

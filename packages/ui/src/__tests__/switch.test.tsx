@@ -128,24 +128,30 @@ describe("Switch", () => {
 
     it("should toggle checked state on click", () => {
       const handleCheckedChange = vi.fn();
-      const { rerender } = render(
-        <Switch aria-label="Test" onCheckedChange={handleCheckedChange} />
-      );
+
+      const ControlledSwitch = () => {
+        const [checked, setChecked] = React.useState(false);
+        return (
+          <Switch
+            aria-label="Test"
+            checked={checked}
+            onCheckedChange={(value) => {
+              if (typeof value === "boolean") {
+                setChecked(value);
+              }
+              handleCheckedChange(value);
+            }}
+          />
+        );
+      };
+
+      render(<ControlledSwitch />);
       const switchElement = screen.getByRole("switch");
 
       fireEvent.click(switchElement);
       expect(handleCheckedChange).toHaveBeenCalledWith(true);
 
-      rerender(
-        <Switch
-          aria-label="Test"
-          checked={true}
-          onCheckedChange={handleCheckedChange}
-        />
-      );
-
-      const updatedSwitch = screen.getByRole("switch");
-      fireEvent.click(updatedSwitch);
+      fireEvent.click(switchElement);
       expect(handleCheckedChange).toHaveBeenCalledWith(false);
     });
 
@@ -481,13 +487,29 @@ describe("Switch", () => {
 
   describe("Edge Cases", () => {
     it("should handle controlled to uncontrolled switch", () => {
-      const { rerender } = render(<Switch aria-label="Test" checked={true} />);
-      let switchElement = screen.getByRole("switch");
-      expect(switchElement).toHaveAttribute("data-state", "checked");
+      const ControlledSwitch = () => {
+        const [checked, setChecked] = React.useState(true);
+        return (
+          <Switch
+            aria-label="Test"
+            checked={checked}
+            onCheckedChange={(value) => {
+              if (typeof value === "boolean") {
+                setChecked(value);
+              }
+            }}
+          />
+        );
+      };
 
-      rerender(<Switch aria-label="Test" defaultChecked={false} />);
-      switchElement = screen.getByRole("switch");
-      expect(switchElement).toBeInTheDocument();
+      const { unmount } = render(<ControlledSwitch />);
+      const controlledSwitch = screen.getByRole("switch");
+      expect(controlledSwitch).toHaveAttribute("data-state", "checked");
+
+      unmount();
+      render(<Switch aria-label="Test" defaultChecked={false} />);
+      const uncontrolledSwitch = screen.getByRole("switch");
+      expect(uncontrolledSwitch).toHaveAttribute("data-state", "unchecked");
     });
 
     it("should accept name attribute for form integration", () => {
