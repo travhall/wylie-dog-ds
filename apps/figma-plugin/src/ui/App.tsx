@@ -34,14 +34,14 @@ import { QuickGitHubSetup } from "./components/QuickGitHubSetup";
 
 console.log("App.tsx loaded");
 
-interface Collection {
+export interface Collection {
   id: string;
   name: string;
   modes: Array<{ modeId: string; name: string }>;
   variableIds: string[];
 }
 
-interface Variable {
+export interface Variable {
   id: string;
   name: string;
   description: string;
@@ -52,7 +52,7 @@ interface Variable {
   key: string;
 }
 
-interface CollectionDetails {
+export interface CollectionDetails {
   id: string;
   name: string;
   modes: Array<{ modeId: string; name: string }>;

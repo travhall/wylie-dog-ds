@@ -1,4 +1,4 @@
-import { expect, afterEach } from "vitest";
+import { expect, afterEach, vi } from "vitest";
 import { cleanup } from "@testing-library/preact";
 import "@testing-library/jest-dom/vitest";
 
@@ -8,7 +8,7 @@ afterEach(() => {
 });
 
 // Mock Figma API
-global.figma = {
+(global as any).figma = {
   clientStorage: {
     getAsync: vi.fn(),
     setAsync: vi.fn(),

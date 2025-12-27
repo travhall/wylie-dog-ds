@@ -22,10 +22,12 @@ import { PUSH_STEPS, PULL_STEPS } from "../../components/ProgressFeedback";
  *
  * @param githubClient - Configured GitHub client instance
  * @param actions - Plugin message actions from usePluginMessages
+ * @param pendingExportData - Optional pending export data for conflict resolution
  */
 export function useGitHubSync(
   githubClient: ConflictAwareGitHubClient,
-  actions: PluginMessageActions
+  actions: PluginMessageActions,
+  pendingExportData?: ExportData[]
 ) {
   /**
    * Test GitHub configuration
@@ -233,7 +235,7 @@ export function useGitHubSync(
         actions.setShowConflictResolution(false);
 
         const resolvedTokens = githubClient.applyConflictResolutions(
-          state.pendingExportData || [],
+          pendingExportData || [],
           resolutions
         );
 

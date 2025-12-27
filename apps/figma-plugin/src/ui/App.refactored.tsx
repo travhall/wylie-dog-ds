@@ -74,7 +74,11 @@ function AppInner() {
     handleGitHubSync,
     handleGitHubPull,
     handleConflictResolution,
-  } = useGitHubSync(githubClient, pluginActions);
+  } = useGitHubSync(
+    githubClient,
+    pluginActions,
+    pluginState.pendingTokensForConflictResolution
+  );
 
   // Token Import Handler
   const handleTokenImport = useCallback(() => {
@@ -222,6 +226,7 @@ function AppInner() {
           onRetry={() => {
             pluginActions.setError(null);
             if (
+              pluginState.error &&
               typeof pluginState.error !== "string" &&
               pluginState.error.type === "network-error"
             ) {
@@ -339,14 +344,29 @@ function AppInner() {
             });
           }}
           loading={pluginState.loading}
-          selectedCollections={selectedCollections}
+          hasGitHubConfig={pluginState.githubConfigured}
         />
       )}
 
       {/* SYNC TAB */}
       {uiState.activeTab === "sync" && (
         <SyncTab
-          onSync={() => {
+          githubConfig={pluginState.githubConfig}
+          onConfigureGitHub={() => setShowSetupWizard(true)}
+          onQuickSync={() => {
+            if (selectedCollections.size === 0) {
+              pluginActions.setError(
+                "Please select at least one collection to sync"
+              );
+              return;
+            }
+            pluginActions.sendMessage({
+              type: "github-sync-tokens",
+              collectionIds: Array.from(selectedCollections),
+            });
+          }}
+          onPullFromGitHub={handleGitHubPull}
+          onPushToGitHub={() => {
             if (selectedCollections.size === 0) {
               pluginActions.setError(
                 "Please select at least one collection to sync"
@@ -381,7 +401,7 @@ function AppInner() {
       {/* Validation Display */}
       {pluginState.showValidation && pluginState.validationReport && (
         <ValidationDisplay
-          report={pluginState.validationReport}
+          validationReport={pluginState.validationReport}
           onClose={() => pluginActions.setShowValidation(false)}
         />
       )}
