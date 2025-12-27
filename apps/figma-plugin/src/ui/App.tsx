@@ -1202,6 +1202,31 @@ function App() {
         >
           Token Bridge
         </h2>
+
+        {/* Help/Settings button */}
+        <button
+          onClick={() => setShowOnboarding(true)}
+          aria-label="Show onboarding guide"
+          title="Show onboarding guide"
+          style={{
+            padding: "8px",
+            backgroundColor: "transparent",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-md)",
+            cursor: "pointer",
+            fontSize: "18px",
+            lineHeight: 1,
+            transition: "all 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "var(--surface-secondary)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "transparent";
+          }}
+        >
+          ?
+        </button>
       </div>
 
       {error && (

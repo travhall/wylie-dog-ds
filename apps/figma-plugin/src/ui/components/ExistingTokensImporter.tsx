@@ -53,15 +53,15 @@ export const ExistingTokensImporter = ({
     return (
       <div
         style={{
-          padding: "40px 20px",
+          padding: "var(--space-10) var(--space-5)",
           textAlign: "center",
         }}
       >
         <div
           style={{
-            fontSize: "14px",
-            color: "#6b7280",
-            marginBottom: "12px",
+            fontSize: "var(--font-size-sm)",
+            color: "var(--text-secondary)",
+            marginBottom: "var(--space-3)",
           }}
         >
           Scanning for Figma Variables...
@@ -71,8 +71,8 @@ export const ExistingTokensImporter = ({
             display: "inline-block",
             width: "24px",
             height: "24px",
-            border: "3px solid #e5e7eb",
-            borderTopColor: "#0ea5e9",
+            border: "3px solid var(--border-default)",
+            borderTopColor: "var(--accent-secondary)",
             borderRadius: "50%",
             animation: "spin 1s linear infinite",
           }}
@@ -85,33 +85,33 @@ export const ExistingTokensImporter = ({
     return (
       <div
         style={{
-          padding: "40px 20px",
+          padding: "var(--space-10) var(--space-5)",
           textAlign: "center",
         }}
       >
         <div
           style={{
             fontSize: "48px",
-            marginBottom: "16px",
+            marginBottom: "var(--space-4)",
           }}
         >
           📭
         </div>
         <h3
           style={{
-            margin: "0 0 8px 0",
-            fontSize: "16px",
-            fontWeight: "bold",
-            color: "#1f2937",
+            margin: "0 0 var(--space-2) 0",
+            fontSize: "var(--font-size-lg)",
+            fontWeight: "var(--font-weight-bold)",
+            color: "var(--text-primary)",
           }}
         >
           No Variables Found
         </h3>
         <p
           style={{
-            margin: "0 0 24px 0",
-            fontSize: "13px",
-            color: "#6b7280",
+            margin: "0 0 var(--space-6) 0",
+            fontSize: "var(--font-size-sm)",
+            color: "var(--text-secondary)",
           }}
         >
           This Figma file doesn't contain any Variables to convert.
@@ -119,13 +119,20 @@ export const ExistingTokensImporter = ({
         <button
           onClick={onCancel}
           style={{
-            padding: "8px 16px",
-            backgroundColor: "#f3f4f6",
-            color: "#374151",
-            border: "1px solid #d1d5db",
-            borderRadius: "6px",
+            padding: "var(--space-2) var(--space-4)",
+            backgroundColor: "var(--surface-secondary)",
+            color: "var(--text-primary)",
+            border: "1px solid var(--border-strong)",
+            borderRadius: "var(--radius-md)",
             cursor: "pointer",
-            fontSize: "13px",
+            fontSize: "var(--font-size-sm)",
+            transition: "var(--transition-base)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "var(--surface-tertiary)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "var(--surface-secondary)";
           }}
         >
           Back to Options
@@ -137,15 +144,15 @@ export const ExistingTokensImporter = ({
   return (
     <div
       style={{
-        padding: "24px",
+        padding: "var(--space-6)",
       }}
     >
       <h3
         style={{
-          margin: "0 0 16px 0",
-          fontSize: "16px",
-          fontWeight: "bold",
-          color: "#1f2937",
+          margin: "0 0 var(--space-4) 0",
+          fontSize: "var(--font-size-lg)",
+          fontWeight: "var(--font-weight-bold)",
+          color: "var(--text-primary)",
         }}
       >
         Found {detection.totalVariables} Variables
@@ -153,12 +160,13 @@ export const ExistingTokensImporter = ({
 
       <div
         style={{
-          marginBottom: "20px",
-          padding: "12px",
-          backgroundColor: "#f0f9ff",
-          borderRadius: "6px",
-          fontSize: "12px",
-          color: "#0369a1",
+          marginBottom: "var(--space-5)",
+          padding: "var(--space-3)",
+          backgroundColor: "var(--info-light)",
+          border: "1px solid var(--info)",
+          borderRadius: "var(--radius-md)",
+          fontSize: "var(--font-size-sm)",
+          color: "var(--text-primary)",
         }}
       >
         💡 <strong>Conversion Preview:</strong> Your Variables will be converted
@@ -167,15 +175,15 @@ export const ExistingTokensImporter = ({
 
       <div
         style={{
-          marginBottom: "20px",
+          marginBottom: "var(--space-5)",
         }}
       >
         <h4
           style={{
-            margin: "0 0 8px 0",
-            fontSize: "13px",
-            fontWeight: "bold",
-            color: "#374151",
+            margin: "0 0 var(--space-2) 0",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-bold)",
+            color: "var(--text-primary)",
           }}
         >
           Collections to Convert:
@@ -183,14 +191,18 @@ export const ExistingTokensImporter = ({
         <ul
           style={{
             margin: 0,
-            padding: "0 0 0 20px",
-            fontSize: "12px",
-            color: "#6b7280",
+            padding: "0 0 0 var(--space-5)",
+            fontSize: "var(--font-size-sm)",
+            color: "var(--text-secondary)",
           }}
         >
           {detection.collections.map((col: any) => (
-            <li key={col.id} style={{ marginBottom: "4px" }}>
-              <strong>{col.name}</strong> ({col.variableIds.length} variables)
+            <li key={col.id} style={{ marginBottom: "var(--space-1)" }}>
+              <strong style={{ color: "var(--text-primary)" }}>
+                {col.name}
+              </strong>{" "}
+              ({col.variableCount} variables, {col.modes.length}{" "}
+              {col.modes.length === 1 ? "mode" : "modes"})
             </li>
           ))}
         </ul>
@@ -199,21 +211,29 @@ export const ExistingTokensImporter = ({
       <div
         style={{
           display: "flex",
-          gap: "8px",
+          gap: "var(--space-2)",
         }}
       >
         <button
           onClick={handleConvert}
           style={{
             flex: 1,
-            padding: "10px 16px",
-            backgroundColor: "#0ea5e9",
-            color: "white",
+            padding: "var(--space-3) var(--space-4)",
+            backgroundColor: "var(--accent-secondary)",
+            color: "var(--text-inverse)",
             border: "none",
-            borderRadius: "6px",
+            borderRadius: "var(--radius-md)",
             cursor: "pointer",
-            fontSize: "13px",
-            fontWeight: "bold",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-bold)",
+            transition: "var(--transition-base)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor =
+              "var(--accent-secondary-hover)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "var(--accent-secondary)";
           }}
         >
           Convert to W3C DTCG Format
@@ -221,13 +241,20 @@ export const ExistingTokensImporter = ({
         <button
           onClick={onCancel}
           style={{
-            padding: "10px 16px",
-            backgroundColor: "#f3f4f6",
-            color: "#374151",
-            border: "1px solid #d1d5db",
-            borderRadius: "6px",
+            padding: "var(--space-3) var(--space-4)",
+            backgroundColor: "var(--surface-secondary)",
+            color: "var(--text-primary)",
+            border: "1px solid var(--border-strong)",
+            borderRadius: "var(--radius-md)",
             cursor: "pointer",
-            fontSize: "13px",
+            fontSize: "var(--font-size-sm)",
+            transition: "var(--transition-base)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "var(--surface-tertiary)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "var(--surface-secondary)";
           }}
         >
           Cancel

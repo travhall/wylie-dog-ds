@@ -674,8 +674,7 @@ figma.ui.onmessage = async (msg) => {
         try {
           const { FigmaVariableImporter } =
             await import("./variables/figma-variable-importer");
-          const importer = new FigmaVariableImporter();
-          const detection = await importer.detectExistingVariables();
+          const detection = await FigmaVariableImporter.detectVariables();
 
           figma.ui.postMessage({
             type: "figma-variables-detected",
@@ -697,43 +696,36 @@ figma.ui.onmessage = async (msg) => {
 
           const { FigmaVariableImporter } =
             await import("./variables/figma-variable-importer");
-          const importer = new FigmaVariableImporter();
 
           // First detect variables
-          const detection = await importer.detectExistingVariables();
+          const detection = await FigmaVariableImporter.detectVariables();
 
           if (!detection.hasVariables) {
             throw new Error("No Variables found in current file");
           }
 
           // Convert to W3C DTCG format
-          const result = await importer.convertToW3CDTCG(detection.collections);
+          const tokenSets = await FigmaVariableImporter.convertToTokens();
 
-          if (!result.success) {
-            throw new Error(`Conversion failed: ${result.warnings.join(", ")}`);
-          }
-
-          // Send converted data back for import
-          const files = result.data.map(
-            (collectionData: any, index: number) => {
-              const collectionName =
-                Object.keys(collectionData)[0] || `collection-${index}`;
-              return {
-                filename: `${collectionName.toLowerCase().replace(/\s+/g, "-")}.json`,
-                content: JSON.stringify([collectionData], null, 2),
-              };
-            }
-          );
+          // Generate downloadable files
+          const files =
+            FigmaVariableImporter.generateDownloadableFiles(tokenSets);
 
           setLoading(false);
 
+          // Send files to UI for download
           figma.ui.postMessage({
-            type: "import-tokens",
+            type: "variables-converted",
             files: files,
+            totalTokens: tokenSets.reduce(
+              (sum, set) => sum + set.tokenCount,
+              0
+            ),
+            totalCollections: detection.collections.length,
           });
 
           figma.notify(
-            `✅ Converted ${result.stats.totalVariables} variables from ${result.stats.totalCollections} collections`
+            `✅ Converted ${detection.totalVariables} variables from ${detection.collections.length} collections`
           );
         } catch (error: unknown) {
           console.error("Error converting variables:", error);

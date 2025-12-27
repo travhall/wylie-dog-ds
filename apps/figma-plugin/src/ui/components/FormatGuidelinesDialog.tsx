@@ -13,23 +13,27 @@ export const FormatGuidelinesDialog = ({
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "var(--surface-overlay)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         zIndex: 10001,
       }}
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="format-guidelines-title"
     >
       <div
         style={{
-          backgroundColor: "white",
-          borderRadius: "8px",
-          padding: "24px",
+          backgroundColor: "var(--surface-primary)",
+          borderRadius: "var(--radius-lg)",
+          padding: "var(--space-6)",
           maxWidth: "600px",
           width: "90%",
           maxHeight: "80vh",
           overflowY: "auto",
+          boxShadow: "var(--shadow-lg)",
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -39,15 +43,18 @@ export const FormatGuidelinesDialog = ({
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            marginBottom: "20px",
+            marginBottom: "var(--space-5)",
+            paddingBottom: "var(--space-3)",
+            borderBottom: "1px solid var(--border-default)",
           }}
         >
           <h2
+            id="format-guidelines-title"
             style={{
               margin: 0,
-              fontSize: "18px",
-              fontWeight: "bold",
-              color: "#1f2937",
+              fontSize: "var(--font-size-xl)",
+              fontWeight: "var(--font-weight-bold)",
+              color: "var(--text-primary)",
             }}
           >
             Supported Token Formats
@@ -57,40 +64,47 @@ export const FormatGuidelinesDialog = ({
             style={{
               background: "none",
               border: "none",
-              fontSize: "24px",
+              fontSize: "var(--font-size-2xl)",
               cursor: "pointer",
-              color: "#6b7280",
+              color: "var(--text-secondary)",
               padding: "0",
               lineHeight: "1",
+              transition: "var(--transition-fast)",
             }}
-            aria-label="Close"
+            aria-label="Close format guidelines"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "var(--text-primary)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "var(--text-secondary)";
+            }}
           >
             ×
           </button>
         </div>
 
         {/* W3C DTCG Format */}
-        <div style={{ marginBottom: "24px" }}>
+        <div style={{ marginBottom: "var(--space-6)" }}>
           <h3
             style={{
-              margin: "0 0 8px 0",
-              fontSize: "15px",
-              fontWeight: "bold",
-              color: "#1f2937",
+              margin: "0 0 var(--space-2) 0",
+              fontSize: "var(--font-size-md)",
+              fontWeight: "var(--font-weight-bold)",
+              color: "var(--text-primary)",
               display: "flex",
               alignItems: "center",
-              gap: "8px",
+              gap: "var(--space-2)",
             }}
           >
-            <span>W3C Design Tokens</span>
+            <span>W3C Design Tokens (DTCG)</span>
             <span
               style={{
-                fontSize: "10px",
-                backgroundColor: "#dcfce7",
-                color: "#166534",
-                padding: "2px 6px",
-                borderRadius: "4px",
-                fontWeight: "bold",
+                fontSize: "var(--font-size-2xs)",
+                backgroundColor: "var(--success-light)",
+                color: "var(--success)",
+                padding: "2px var(--space-2)",
+                borderRadius: "var(--radius-sm)",
+                fontWeight: "var(--font-weight-bold)",
               }}
             >
               RECOMMENDED
@@ -98,28 +112,37 @@ export const FormatGuidelinesDialog = ({
           </h3>
           <pre
             style={{
-              margin: "8px 0",
-              padding: "12px",
-              backgroundColor: "#f9fafb",
-              border: "1px solid #e5e7eb",
-              borderRadius: "6px",
-              fontSize: "11px",
-              fontFamily: "monospace",
+              margin: "var(--space-2) 0",
+              padding: "var(--space-3)",
+              backgroundColor: "var(--surface-secondary)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              fontSize: "var(--font-size-xs)",
+              fontFamily: "var(--font-family-mono)",
               overflowX: "auto",
+              color: "var(--text-primary)",
             }}
-          >{`[{
-  "collection-name": {
-    "modes": [{"modeId": "default", "name": "Default"}],
-    "variables": {
-      "color-primary": {
-        "$type": "color",
-        "$value": "#0066FF"
-      }
+          >{`{
+  "color": {
+    "primary": {
+      "$type": "color",
+      "$value": "#0066FF",
+      "$description": "Primary brand color"
+    }
+  },
+  "spacing": {
+    "md": {
+      "$type": "dimension",
+      "$value": "16px"
     }
   }
-}]`}</pre>
+}`}</pre>
           <p
-            style={{ margin: "4px 0 0 0", fontSize: "12px", color: "#6b7280" }}
+            style={{
+              margin: "var(--space-1) 0 0 0",
+              fontSize: "var(--font-size-sm)",
+              color: "var(--text-secondary)",
+            }}
           >
             Official W3C standard for design tokens. This is the native format
             used by Token Bridge.
@@ -127,27 +150,28 @@ export const FormatGuidelinesDialog = ({
         </div>
 
         {/* Style Dictionary */}
-        <div style={{ marginBottom: "24px" }}>
+        <div style={{ marginBottom: "var(--space-6)" }}>
           <h3
             style={{
-              margin: "0 0 8px 0",
-              fontSize: "15px",
-              fontWeight: "bold",
-              color: "#1f2937",
+              margin: "0 0 var(--space-2) 0",
+              fontSize: "var(--font-size-md)",
+              fontWeight: "var(--font-weight-bold)",
+              color: "var(--text-primary)",
             }}
           >
             Style Dictionary
           </h3>
           <pre
             style={{
-              margin: "8px 0",
-              padding: "12px",
-              backgroundColor: "#f9fafb",
-              border: "1px solid #e5e7eb",
-              borderRadius: "6px",
-              fontSize: "11px",
-              fontFamily: "monospace",
+              margin: "var(--space-2) 0",
+              padding: "var(--space-3)",
+              backgroundColor: "var(--surface-secondary)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              fontSize: "var(--font-size-xs)",
+              fontFamily: "var(--font-family-mono)",
               overflowX: "auto",
+              color: "var(--text-primary)",
             }}
           >{`{
   "color": {
@@ -158,7 +182,11 @@ export const FormatGuidelinesDialog = ({
   }
 }`}</pre>
           <p
-            style={{ margin: "4px 0 0 0", fontSize: "12px", color: "#6b7280" }}
+            style={{
+              margin: "var(--space-1) 0 0 0",
+              fontSize: "var(--font-size-sm)",
+              color: "var(--text-secondary)",
+            }}
           >
             Automatically converts to W3C format. Supports both flat and nested
             structures.
@@ -166,27 +194,28 @@ export const FormatGuidelinesDialog = ({
         </div>
 
         {/* Tokens Studio */}
-        <div style={{ marginBottom: "24px" }}>
+        <div style={{ marginBottom: "var(--space-6)" }}>
           <h3
             style={{
-              margin: "0 0 8px 0",
-              fontSize: "15px",
-              fontWeight: "bold",
-              color: "#1f2937",
+              margin: "0 0 var(--space-2) 0",
+              fontSize: "var(--font-size-md)",
+              fontWeight: "var(--font-weight-bold)",
+              color: "var(--text-primary)",
             }}
           >
             Tokens Studio (Figma Tokens)
           </h3>
           <pre
             style={{
-              margin: "8px 0",
-              padding: "12px",
-              backgroundColor: "#f9fafb",
-              border: "1px solid #e5e7eb",
-              borderRadius: "6px",
-              fontSize: "11px",
-              fontFamily: "monospace",
+              margin: "var(--space-2) 0",
+              padding: "var(--space-3)",
+              backgroundColor: "var(--surface-secondary)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              fontSize: "var(--font-size-xs)",
+              fontFamily: "var(--font-family-mono)",
               overflowX: "auto",
+              color: "var(--text-primary)",
             }}
           >{`{
   "$themes": [],
@@ -198,27 +227,116 @@ export const FormatGuidelinesDialog = ({
   }
 }`}</pre>
           <p
-            style={{ margin: "4px 0 0 0", fontSize: "12px", color: "#6b7280" }}
+            style={{
+              margin: "var(--space-1) 0 0 0",
+              fontSize: "var(--font-size-sm)",
+              color: "var(--text-secondary)",
+            }}
           >
             Popular Figma Tokens plugin format. Fully supported.
+          </p>
+        </div>
+
+        {/* Material Design */}
+        <div style={{ marginBottom: "var(--space-6)" }}>
+          <h3
+            style={{
+              margin: "0 0 var(--space-2) 0",
+              fontSize: "var(--font-size-md)",
+              fontWeight: "var(--font-weight-bold)",
+              color: "var(--text-primary)",
+            }}
+          >
+            Material Design Tokens
+          </h3>
+          <pre
+            style={{
+              margin: "var(--space-2) 0",
+              padding: "var(--space-3)",
+              backgroundColor: "var(--surface-secondary)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              fontSize: "var(--font-size-xs)",
+              fontFamily: "var(--font-family-mono)",
+              overflowX: "auto",
+              color: "var(--text-primary)",
+            }}
+          >{`{
+  "palette": {
+    "primary": {
+      "main": "#0066FF",
+      "light": "#3385FF",
+      "dark": "#0047B3"
+    }
+  }
+}`}</pre>
+          <p
+            style={{
+              margin: "var(--space-1) 0 0 0",
+              fontSize: "var(--font-size-sm)",
+              color: "var(--text-secondary)",
+            }}
+          >
+            Material Design token format. Converts palette colors to W3C format.
+          </p>
+        </div>
+
+        {/* CSS Variables */}
+        <div style={{ marginBottom: "var(--space-6)" }}>
+          <h3
+            style={{
+              margin: "0 0 var(--space-2) 0",
+              fontSize: "var(--font-size-md)",
+              fontWeight: "var(--font-weight-bold)",
+              color: "var(--text-primary)",
+            }}
+          >
+            CSS Variables
+          </h3>
+          <pre
+            style={{
+              margin: "var(--space-2) 0",
+              padding: "var(--space-3)",
+              backgroundColor: "var(--surface-secondary)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              fontSize: "var(--font-size-xs)",
+              fontFamily: "var(--font-family-mono)",
+              overflowX: "auto",
+              color: "var(--text-primary)",
+            }}
+          >{`{
+  "--color-primary": "#0066FF",
+  "--spacing-md": "16px",
+  "--font-size-base": "14px"
+}`}</pre>
+          <p
+            style={{
+              margin: "var(--space-1) 0 0 0",
+              fontSize: "var(--font-size-sm)",
+              color: "var(--text-secondary)",
+            }}
+          >
+            CSS custom properties format. Auto-detects types from values.
           </p>
         </div>
 
         {/* Help Section */}
         <div
           style={{
-            marginTop: "24px",
-            padding: "16px",
-            backgroundColor: "#f0f9ff",
-            borderRadius: "6px",
+            marginTop: "var(--space-6)",
+            padding: "var(--space-4)",
+            backgroundColor: "var(--info-light)",
+            border: "1px solid var(--info)",
+            borderRadius: "var(--radius-md)",
           }}
         >
           <h4
             style={{
-              margin: "0 0 12px 0",
-              fontSize: "13px",
-              fontWeight: "bold",
-              color: "#0369a1",
+              margin: "0 0 var(--space-3) 0",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-bold)",
+              color: "var(--accent-secondary)",
             }}
           >
             📚 Need Help?
@@ -226,22 +344,23 @@ export const FormatGuidelinesDialog = ({
           <ul
             style={{
               margin: 0,
-              padding: "0 0 0 20px",
-              fontSize: "12px",
-              color: "#075985",
+              padding: "0 0 0 var(--space-5)",
+              fontSize: "var(--font-size-sm)",
+              color: "var(--text-primary)",
+              lineHeight: "1.6",
             }}
           >
-            <li style={{ marginBottom: "6px" }}>
-              <strong>New to tokens?</strong> Use "Generate Demo Tokens" in the
+            <li style={{ marginBottom: "var(--space-2)" }}>
+              <strong>New to tokens?</strong> Use "Try Demo Tokens" in the
               onboarding modal
             </li>
-            <li style={{ marginBottom: "6px" }}>
+            <li style={{ marginBottom: "var(--space-2)" }}>
               <strong>Have existing tokens?</strong> Just import your JSON file
               – we'll auto-detect the format
             </li>
             <li>
-              <strong>More formats:</strong> CSS Variables, Material Design, and
-              custom formats are also supported
+              <strong>Need examples?</strong> All formats shown above are ready
+              to use
             </li>
           </ul>
         </div>
@@ -249,7 +368,7 @@ export const FormatGuidelinesDialog = ({
         {/* Close Button */}
         <div
           style={{
-            marginTop: "24px",
+            marginTop: "var(--space-6)",
             display: "flex",
             justifyContent: "flex-end",
           }}
@@ -257,14 +376,22 @@ export const FormatGuidelinesDialog = ({
           <button
             onClick={onClose}
             style={{
-              padding: "10px 20px",
-              backgroundColor: "#0ea5e9",
-              color: "white",
+              padding: "var(--space-3) var(--space-5)",
+              backgroundColor: "var(--accent-secondary)",
+              color: "var(--text-inverse)",
               border: "none",
-              borderRadius: "6px",
+              borderRadius: "var(--radius-md)",
               cursor: "pointer",
-              fontSize: "13px",
-              fontWeight: "bold",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-bold)",
+              transition: "var(--transition-base)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor =
+                "var(--accent-secondary-hover)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--accent-secondary)";
             }}
           >
             Got it!

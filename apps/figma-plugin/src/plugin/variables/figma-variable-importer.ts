@@ -1,230 +1,297 @@
 /**
- * Figma Variable Importer
- * Converts existing Figma Variables into W3C DTCG format tokens
+ * FigmaVariableImporter
+ *
+ * Converts existing Figma Variables to W3C DTCG format tokens
+ * Handles multiple collections, multiple modes, and all variable types
  */
 
-export interface VariableDetection {
+interface VariableDetectionResult {
   hasVariables: boolean;
-  collections: VariableCollection[];
   totalVariables: number;
+  collections: {
+    id: string;
+    name: string;
+    variableCount: number;
+    modes: Array<{ modeId: string; name: string }>;
+  }[];
 }
 
-export interface ConversionResult {
-  success: boolean;
-  data: any[]; // W3C DTCG format (same as ExportData[])
-  stats: {
-    totalCollections: number;
-    totalVariables: number;
-    totalModes: number;
-  };
-  warnings: string[];
+interface DTCGToken {
+  $type: "color" | "dimension" | "string" | "number" | "boolean";
+  $value: string | number | boolean;
+  $description?: string;
+}
+
+interface DTCGCollection {
+  [tokenName: string]: DTCGToken | DTCGTokenGroup;
+}
+
+interface DTCGTokenGroup {
+  [key: string]: DTCGToken | DTCGTokenGroup;
 }
 
 export class FigmaVariableImporter {
   /**
-   * Detect existing variables in the current Figma file
+   * Detects if file has any Figma Variables
    */
-  async detectExistingVariables(): Promise<VariableDetection> {
+  static async detectVariables(): Promise<VariableDetectionResult> {
     const collections =
       await figma.variables.getLocalVariableCollectionsAsync();
 
-    let totalVariables = 0;
-    for (const collection of collections) {
-      totalVariables += collection.variableIds.length;
-    }
+    const collectionsData = await Promise.all(
+      collections.map(async (collection) => {
+        const variables = await Promise.all(
+          collection.variableIds.map((id) =>
+            figma.variables.getVariableByIdAsync(id)
+          )
+        );
+        const validVariables = variables.filter(
+          (v): v is Variable => v !== null
+        );
 
-    return {
-      hasVariables: totalVariables > 0,
-      collections,
-      totalVariables,
-    };
-  }
-
-  /**
-   * Convert Figma Variables to W3C DTCG format
-   */
-  async convertToW3CDTCG(
-    collections: VariableCollection[]
-  ): Promise<ConversionResult> {
-    const result: any[] = [];
-    const warnings: string[] = [];
-    let totalVariables = 0;
-    let totalModes = 0;
-
-    try {
-      for (const collection of collections) {
-        const collectionData: any = {
+        return {
+          id: collection.id,
+          name: collection.name,
+          variableCount: validVariables.length,
           modes: collection.modes.map((mode) => ({
             modeId: mode.modeId,
             name: mode.name,
           })),
-          variables: {},
         };
+      })
+    );
 
-        totalModes += collection.modes.length;
+    const totalVariables = collectionsData.reduce(
+      (sum, col) => sum + col.variableCount,
+      0
+    );
 
-        // Process each variable in the collection
-        for (const variableId of collection.variableIds) {
-          const variable =
-            await figma.variables.getVariableByIdAsync(variableId);
-          if (!variable) {
-            warnings.push(`Variable ${variableId} not found`);
-            continue;
+    return {
+      hasVariables: totalVariables > 0,
+      totalVariables,
+      collections: collectionsData,
+    };
+  }
+
+  /**
+   * Converts all Figma Variables to W3C DTCG format
+   * Returns one file per collection per mode
+   */
+  static async convertToTokens(): Promise<
+    Array<{
+      collectionName: string;
+      modeName: string;
+      tokens: DTCGCollection;
+      tokenCount: number;
+    }>
+  > {
+    const collections =
+      await figma.variables.getLocalVariableCollectionsAsync();
+    const results: Array<{
+      collectionName: string;
+      modeName: string;
+      tokens: DTCGCollection;
+      tokenCount: number;
+    }> = [];
+
+    for (const collection of collections) {
+      const variables = await Promise.all(
+        collection.variableIds.map((id) =>
+          figma.variables.getVariableByIdAsync(id)
+        )
+      );
+      const validVariables = variables.filter((v): v is Variable => v !== null);
+
+      // Generate tokens for each mode
+      for (const mode of collection.modes) {
+        const tokens: DTCGCollection = {};
+        let tokenCount = 0;
+
+        for (const variable of validVariables) {
+          const token = await this.convertVariableToToken(
+            variable,
+            mode.modeId
+          );
+          if (token) {
+            // Use variable name as token path
+            this.setNestedToken(tokens, variable.name, token);
+            tokenCount++;
           }
-
-          const token = this.convertVariableToToken(variable, collection);
-          collectionData.variables[variable.name] = token;
-          totalVariables++;
         }
 
-        // Wrap in collection name
-        result.push({
-          [collection.name]: collectionData,
+        results.push({
+          collectionName: collection.name,
+          modeName: mode.name,
+          tokens,
+          tokenCount,
         });
       }
-
-      return {
-        success: true,
-        data: result,
-        stats: {
-          totalCollections: collections.length,
-          totalVariables,
-          totalModes,
-        },
-        warnings,
-      };
-    } catch (error) {
-      return {
-        success: false,
-        data: [],
-        stats: {
-          totalCollections: 0,
-          totalVariables: 0,
-          totalModes: 0,
-        },
-        warnings: [
-          ...warnings,
-          `Conversion failed: ${error instanceof Error ? error.message : "Unknown error"}`,
-        ],
-      };
     }
+
+    return results;
   }
 
   /**
-   * Convert a single Figma Variable to W3C DTCG token format
+   * Convert single Figma Variable to DTCG token
    */
-  private convertVariableToToken(
+  private static async convertVariableToToken(
     variable: Variable,
-    collection: VariableCollection
-  ): any {
-    const type = this.mapFigmaTypeToW3C(variable.resolvedType);
+    modeId: string
+  ): Promise<DTCGToken | null> {
+    const value = variable.valuesByMode[modeId];
+    if (value === undefined) return null;
 
-    // Handle single mode (simple case)
-    if (collection.modes.length === 1) {
-      const modeId = collection.modes[0].modeId;
-      const value = this.convertFigmaValue(
-        variable.valuesByMode[modeId],
-        variable.resolvedType,
-        variable
+    // Handle variable aliases (references to other variables)
+    if (
+      typeof value === "object" &&
+      "type" in value &&
+      value.type === "VARIABLE_ALIAS"
+    ) {
+      const aliasedVariable = await figma.variables.getVariableByIdAsync(
+        value.id
       );
-
-      const token: any = {
-        $type: type,
-        $value: value,
-      };
-
-      if (variable.description) {
-        token.$description = variable.description;
+      if (aliasedVariable) {
+        return {
+          $type: this.mapVariableType(variable.resolvedType),
+          $value: `{${aliasedVariable.name}}`,
+          $description: variable.description || undefined,
+        };
       }
-
-      return token;
+      return null;
     }
 
-    // Handle multiple modes - use valuesByMode structure
-    const valuesByMode: Record<string, any> = {};
-    for (const mode of collection.modes) {
-      const value = this.convertFigmaValue(
-        variable.valuesByMode[mode.modeId],
-        variable.resolvedType,
-        variable
-      );
-      valuesByMode[mode.name] = value;
-    }
-
-    const token: any = {
-      $type: type,
-      valuesByMode,
-    };
-
-    if (variable.description) {
-      token.$description = variable.description;
-    }
-
-    return token;
-  }
-
-  /**
-   * Map Figma variable types to W3C DTCG types
-   */
-  private mapFigmaTypeToW3C(figmaType: VariableResolvedDataType): string {
-    const typeMap: Record<string, string> = {
-      COLOR: "color",
-      FLOAT: "dimension",
-      STRING: "string",
-      BOOLEAN: "boolean",
-    };
-
-    return typeMap[figmaType] || "string";
-  }
-
-  /**
-   * Convert Figma variable values to W3C DTCG format
-   */
-  private convertFigmaValue(
-    value: any,
-    type: VariableResolvedDataType,
-    variable: Variable
-  ): any {
-    // Handle variable aliases
-    if (typeof value === "object" && value.type === "VARIABLE_ALIAS") {
-      return `{${value.id}}`;
-    }
-
-    switch (type) {
+    // Convert based on variable type
+    switch (variable.resolvedType) {
       case "COLOR":
-        return this.convertColor(value);
+        return {
+          $type: "color",
+          $value: this.rgbToHex(value as RGB | RGBA),
+          $description: variable.description || undefined,
+        };
 
       case "FLOAT":
-        // Return as string with px unit for dimensions
-        return `${value}px`;
+        return {
+          $type: "number",
+          $value: value as number,
+          $description: variable.description || undefined,
+        };
 
       case "STRING":
+        return {
+          $type: "string",
+          $value: value as string,
+          $description: variable.description || undefined,
+        };
+
       case "BOOLEAN":
-        return value;
+        return {
+          $type: "boolean",
+          $value: value as boolean,
+          $description: variable.description || undefined,
+        };
 
       default:
-        return value;
+        console.warn(`Unknown variable type: ${variable.resolvedType}`);
+        return null;
     }
   }
 
   /**
-   * Convert Figma RGB color to OKLCH format
+   * Map Figma variable type to DTCG type
    */
-  private convertColor(rgb: RGB | RGBA): string {
-    // For now, convert to hex as fallback
-    // TODO: Consider using culori for proper OKLCH conversion
-    const r = Math.round((rgb.r || 0) * 255);
-    const g = Math.round((rgb.g || 0) * 255);
-    const b = Math.round((rgb.b || 0) * 255);
+  private static mapVariableType(
+    type: VariableResolvedDataType
+  ): "color" | "dimension" | "string" | "number" | "boolean" {
+    switch (type) {
+      case "COLOR":
+        return "color";
+      case "FLOAT":
+        return "number";
+      case "STRING":
+        return "string";
+      case "BOOLEAN":
+        return "boolean";
+      default:
+        return "string";
+    }
+  }
 
-    const hex = `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+  /**
+   * Convert RGB(A) to hex color
+   */
+  private static rgbToHex(color: RGB | RGBA): string {
+    const r = Math.round(color.r * 255);
+    const g = Math.round(color.g * 255);
+    const b = Math.round(color.b * 255);
 
-    // Include alpha if present
-    if ("a" in rgb && rgb.a !== undefined && rgb.a < 1) {
-      const a = Math.round(rgb.a * 255);
-      return hex + a.toString(16).padStart(2, "0");
+    const toHex = (n: number) => n.toString(16).padStart(2, "0");
+
+    if ("a" in color && color.a < 1) {
+      const a = Math.round(color.a * 255);
+      return `#${toHex(r)}${toHex(g)}${toHex(b)}${toHex(a)}`;
     }
 
-    return hex;
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+  }
+
+  /**
+   * Set nested token using dot-notation path
+   * e.g., "color.primary.500" -> { color: { primary: { 500: token } } }
+   */
+  private static setNestedToken(
+    obj: DTCGCollection,
+    path: string,
+    token: DTCGToken
+  ): void {
+    // Split by / or . to create nested structure
+    const parts = path.split(/[/.]/);
+    let current: any = obj;
+
+    for (let i = 0; i < parts.length - 1; i++) {
+      const part = parts[i];
+      if (!current[part]) {
+        current[part] = {};
+      }
+      current = current[part];
+    }
+
+    current[parts[parts.length - 1]] = token;
+  }
+
+  /**
+   * Generate downloadable JSON files for export
+   */
+  static generateDownloadableFiles(
+    tokenSets: Array<{
+      collectionName: string;
+      modeName: string;
+      tokens: DTCGCollection;
+      tokenCount: number;
+    }>
+  ): Array<{
+    filename: string;
+    content: string;
+  }> {
+    return tokenSets.map((set) => {
+      const filename =
+        set.modeName === "Mode 1" || set.modeName === "Default"
+          ? `${set.collectionName}.json`
+          : `${set.collectionName}-${set.modeName}.json`;
+
+      return {
+        filename: this.sanitizeFilename(filename),
+        content: JSON.stringify(set.tokens, null, 2),
+      };
+    });
+  }
+
+  /**
+   * Sanitize filename for download
+   */
+  private static sanitizeFilename(name: string): string {
+    return name
+      .toLowerCase()
+      .replace(/[^a-z0-9.-]+/g, "-")
+      .replace(/^-+|-+$/g, "");
   }
 }

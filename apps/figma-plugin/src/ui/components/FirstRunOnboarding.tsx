@@ -52,7 +52,7 @@ export const FirstRunOnboarding = ({
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "#ffffff",
+        backgroundColor: "var(--surface-primary)",
         overflowY: "auto",
         zIndex: 10000,
       }}
@@ -74,7 +74,7 @@ export const FirstRunOnboarding = ({
               margin: "0 0 8px 0",
               fontSize: "24px",
               fontWeight: "bold",
-              color: "#1f2937",
+              color: "var(--text-primary)",
             }}
           >
             Welcome to Token Bridge
@@ -83,7 +83,7 @@ export const FirstRunOnboarding = ({
             style={{
               margin: 0,
               fontSize: "14px",
-              color: "#6b7280",
+              color: "var(--text-secondary)",
               maxWidth: "400px",
             }}
           >
@@ -106,7 +106,7 @@ export const FirstRunOnboarding = ({
               marginBottom: "8px",
               fontSize: "12px",
               fontWeight: "bold",
-              color: "#374151",
+              color: "var(--text-secondary)",
               textTransform: "uppercase",
               letterSpacing: "0.05em",
             }}
@@ -121,29 +121,33 @@ export const FirstRunOnboarding = ({
             style={{
               width: "100%",
               padding: "20px",
-              backgroundColor: "#f0f9ff",
-              color: "#1f2937",
-              border: "2px solid #bae6fd",
-              borderRadius: "8px",
+              backgroundColor: "var(--info-light)",
+              color: "var(--text-primary)",
+              border: "2px solid var(--info)",
+              borderRadius: "var(--radius-lg)",
               cursor: "pointer",
               textAlign: "left",
-              transition: "all 0.2s",
+              transition: "var(--transition-base)",
               outline: "none",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#e0f2fe";
-              e.currentTarget.style.borderColor = "#7dd3fc";
+              e.currentTarget.style.backgroundColor = "var(--accent-secondary)";
+              e.currentTarget.style.borderColor =
+                "var(--accent-secondary-hover)";
+              e.currentTarget.style.color = "var(--text-inverse)";
               e.currentTarget.style.transform = "translateY(-2px)";
               e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#f0f9ff";
-              e.currentTarget.style.borderColor = "#bae6fd";
+              e.currentTarget.style.backgroundColor = "var(--info-light)";
+              e.currentTarget.style.borderColor = "var(--info)";
+              e.currentTarget.style.color = "var(--text-primary)";
               e.currentTarget.style.transform = "translateY(0)";
               e.currentTarget.style.boxShadow = "none";
             }}
             onFocus={(e) => {
-              e.currentTarget.style.outline = "2px solid #0ea5e9";
+              e.currentTarget.style.outline =
+                "2px solid var(--accent-secondary)";
               e.currentTarget.style.outlineOffset = "2px";
             }}
             onBlur={(e) => {
@@ -158,12 +162,17 @@ export const FirstRunOnboarding = ({
                     fontSize: "var(--font-size-lg)",
                     fontWeight: "var(--font-weight-bold)",
                     marginBottom: "var(--space-1)",
-                    color: "#0369a1",
+                    color: "var(--accent-secondary)",
                   }}
                 >
                   Try Demo Tokens
                 </div>
-                <div style={{ fontSize: "13px", color: "#0c4a6e" }}>
+                <div
+                  style={{
+                    fontSize: "var(--font-size-sm)",
+                    color: "var(--text-secondary)",
+                  }}
+                >
                   Load pre-built tokens to explore the plugin
                 </div>
               </div>
@@ -179,20 +188,25 @@ export const FirstRunOnboarding = ({
             style={{
               width: "100%",
               padding: "20px",
-              backgroundColor: hasVariables ? "#f3f4f6" : "#fafafa",
-              color: hasVariables ? "#1f2937" : "#9ca3af",
-              border: `2px solid ${hasVariables ? "#d1d5db" : "#e5e7eb"}`,
-              borderRadius: "8px",
+              backgroundColor: hasVariables
+                ? "var(--surface-secondary)"
+                : "var(--surface-tertiary)",
+              color: hasVariables
+                ? "var(--text-primary)"
+                : "var(--text-tertiary)",
+              border: `2px solid ${hasVariables ? "var(--border-strong)" : "var(--border-default)"}`,
+              borderRadius: "var(--radius-lg)",
               cursor: hasVariables ? "pointer" : "not-allowed",
               textAlign: "left",
-              transition: "all 0.2s",
+              transition: "var(--transition-base)",
               opacity: detecting ? 0.5 : 1,
               outline: "none",
             }}
             onMouseEnter={(e) => {
               if (hasVariables && !detecting) {
-                e.currentTarget.style.backgroundColor = "#e5e7eb";
-                e.currentTarget.style.borderColor = "#9ca3af";
+                e.currentTarget.style.backgroundColor =
+                  "var(--surface-tertiary)";
+                e.currentTarget.style.borderColor = "var(--text-tertiary)";
                 e.currentTarget.style.transform = "translateY(-2px)";
                 e.currentTarget.style.boxShadow =
                   "0 4px 8px rgba(0, 0, 0, 0.1)";
@@ -200,15 +214,17 @@ export const FirstRunOnboarding = ({
             }}
             onMouseLeave={(e) => {
               if (hasVariables) {
-                e.currentTarget.style.backgroundColor = "#f3f4f6";
-                e.currentTarget.style.borderColor = "#d1d5db";
+                e.currentTarget.style.backgroundColor =
+                  "var(--surface-secondary)";
+                e.currentTarget.style.borderColor = "var(--border-strong)";
                 e.currentTarget.style.transform = "translateY(0)";
                 e.currentTarget.style.boxShadow = "none";
               }
             }}
             onFocus={(e) => {
               if (hasVariables && !detecting) {
-                e.currentTarget.style.outline = "2px solid #0ea5e9";
+                e.currentTarget.style.outline =
+                  "2px solid var(--accent-secondary)";
                 e.currentTarget.style.outlineOffset = "2px";
               }
             }}
@@ -231,7 +247,12 @@ export const FirstRunOnboarding = ({
                   {!detecting && hasVariables && ` (${variableCount})`}
                   {!detecting && !hasVariables && " (None found)"}
                 </div>
-                <div style={{ fontSize: "13px" }}>
+                <div
+                  style={{
+                    fontSize: "var(--font-size-sm)",
+                    color: "var(--text-secondary)",
+                  }}
+                >
                   {hasVariables
                     ? "Convert your existing Figma Variables to tokens"
                     : "Your file doesn't contain Variables"}
@@ -253,23 +274,25 @@ export const FirstRunOnboarding = ({
               borderRadius: "var(--radius-lg)",
               cursor: "pointer",
               textAlign: "left",
-              transition: "all 0.2s",
+              transition: "var(--transition-base)",
               outline: "none",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#e5e7eb";
-              e.currentTarget.style.borderColor = "#9ca3af";
+              e.currentTarget.style.backgroundColor = "var(--surface-tertiary)";
+              e.currentTarget.style.borderColor = "var(--text-tertiary)";
               e.currentTarget.style.transform = "translateY(-2px)";
               e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#f3f4f6";
-              e.currentTarget.style.borderColor = "#d1d5db";
+              e.currentTarget.style.backgroundColor =
+                "var(--surface-secondary)";
+              e.currentTarget.style.borderColor = "var(--border-default)";
               e.currentTarget.style.transform = "translateY(0)";
               e.currentTarget.style.boxShadow = "none";
             }}
             onFocus={(e) => {
-              e.currentTarget.style.outline = "2px solid #0ea5e9";
+              e.currentTarget.style.outline =
+                "2px solid var(--accent-secondary)";
               e.currentTarget.style.outlineOffset = "2px";
             }}
             onBlur={(e) => {
@@ -313,23 +336,25 @@ export const FirstRunOnboarding = ({
               borderRadius: "var(--radius-lg)",
               cursor: "pointer",
               textAlign: "left",
-              transition: "all 0.2s",
+              transition: "var(--transition-base)",
               outline: "none",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#e5e7eb";
-              e.currentTarget.style.borderColor = "#9ca3af";
+              e.currentTarget.style.backgroundColor = "var(--surface-tertiary)";
+              e.currentTarget.style.borderColor = "var(--text-tertiary)";
               e.currentTarget.style.transform = "translateY(-2px)";
               e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#f3f4f6";
-              e.currentTarget.style.borderColor = "#d1d5db";
+              e.currentTarget.style.backgroundColor =
+                "var(--surface-secondary)";
+              e.currentTarget.style.borderColor = "var(--border-default)";
               e.currentTarget.style.transform = "translateY(0)";
               e.currentTarget.style.boxShadow = "none";
             }}
             onFocus={(e) => {
-              e.currentTarget.style.outline = "2px solid #0ea5e9";
+              e.currentTarget.style.outline =
+                "2px solid var(--accent-secondary)";
               e.currentTarget.style.outlineOffset = "2px";
             }}
             onBlur={(e) => {
@@ -367,25 +392,25 @@ export const FirstRunOnboarding = ({
           aria-label="Skip onboarding and start fresh"
           style={{
             marginTop: "32px",
-            padding: "8px 16px",
+            padding: "var(--space-2) var(--space-4)",
             backgroundColor: "transparent",
-            color: "#6b7280",
+            color: "var(--text-secondary)",
             border: "none",
-            borderRadius: "4px",
+            borderRadius: "var(--radius-sm)",
             cursor: "pointer",
-            fontSize: "13px",
+            fontSize: "var(--font-size-sm)",
             textDecoration: "underline",
-            transition: "all 0.2s ease",
+            transition: "var(--transition-base)",
             outline: "none",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#374151";
+            e.currentTarget.style.color = "var(--text-primary)";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#6b7280";
+            e.currentTarget.style.color = "var(--text-secondary)";
           }}
           onFocus={(e) => {
-            e.currentTarget.style.outline = "2px solid #0ea5e9";
+            e.currentTarget.style.outline = "2px solid var(--accent-secondary)";
             e.currentTarget.style.outlineOffset = "2px";
           }}
           onBlur={(e) => {
