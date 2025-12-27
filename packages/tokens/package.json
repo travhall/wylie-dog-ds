@@ -37,7 +37,7 @@
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@tokens-studio/sd-transforms": "^2.0.1",
-    "chokidar": "^4.0.1",
+    "chokidar": "^5.0.0",
     "style-dictionary": "^5.0.1",
     "tsup": "^8.5.0"
   }
