@@ -67,12 +67,11 @@ export const FirstRunOnboarding = ({
         }}
       >
         {/* Welcome Header */}
-        <div style={{ textAlign: "center", marginBottom: "48px" }}>
-          <div style={{ fontSize: "48px", marginBottom: "16px" }}>🎨</div>
+        <div style={{ marginBottom: "48px" }}>
           <h1
             style={{
               margin: "0 0 8px 0",
-              fontSize: "24px",
+              fontSize: "20px",
               fontWeight: "bold",
               color: "var(--text-primary)",
             }}

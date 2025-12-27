@@ -530,7 +530,6 @@ function App() {
     window.addEventListener("message", handleMessage);
     loadCollections();
     loadGitHubConfig();
-    loadAdvancedMode();
     loadOnboardingState();
 
     // Memory cleanup - Quick Win #7
@@ -576,14 +575,6 @@ function App() {
       parent.postMessage({ pluginMessage: { type: "get-github-config" } }, "*");
     } catch (err) {
       console.error("Failed to load GitHub config:", err);
-    }
-  };
-
-  const loadAdvancedMode = () => {
-    try {
-      parent.postMessage({ pluginMessage: { type: "get-advanced-mode" } }, "*");
-    } catch (err) {
-      console.error("Failed to load advanced mode:", err);
     }
   };
 
