@@ -34,7 +34,7 @@ export interface OAuthStatus {
   refreshToken?: string;
   expiresAt?: number;
   scope?: string;
-  tokenType?: string;
+  tokenType?: "Bearer";
   error?: string;
 }
 
