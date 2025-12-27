@@ -704,8 +704,19 @@ figma.ui.onmessage = async (msg) => {
             throw new Error("No Variables found in current file");
           }
 
-          // Convert to W3C DTCG format
-          const tokenSets = await FigmaVariableImporter.convertToTokens();
+          // Convert to W3C DTCG format with progress tracking
+          const tokenSets = await FigmaVariableImporter.convertToTokens(
+            (current, total, message) => {
+              // Send progress updates to UI
+              figma.ui.postMessage({
+                type: "conversion-progress",
+                current,
+                total,
+                message,
+                percentage: Math.round((current / total) * 100),
+              });
+            }
+          );
 
           // Generate downloadable files
           const files =

@@ -11,6 +11,13 @@ export const ExistingTokensImporter = ({
 }: ExistingTokensImporterProps) => {
   const [detection, setDetection] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [converting, setConverting] = useState(false);
+  const [progress, setProgress] = useState({
+    current: 0,
+    total: 0,
+    message: "",
+    percentage: 0,
+  });
 
   useEffect(() => {
     // Request variable detection from plugin
@@ -23,12 +30,19 @@ export const ExistingTokensImporter = ({
       "*"
     );
 
-    // Listen for detection result
+    // Listen for detection result and conversion progress
     const handleMessage = (event: MessageEvent) => {
       const msg = event.data.pluginMessage;
       if (msg && msg.type === "figma-variables-detected") {
         setDetection(msg.detection);
         setLoading(false);
+      } else if (msg && msg.type === "conversion-progress") {
+        setProgress({
+          current: msg.current,
+          total: msg.total,
+          message: msg.message,
+          percentage: msg.percentage,
+        });
       }
     };
 
@@ -37,6 +51,14 @@ export const ExistingTokensImporter = ({
   }, []);
 
   const handleConvert = () => {
+    setConverting(true);
+    setProgress({
+      current: 0,
+      total: 0,
+      message: "Starting conversion...",
+      percentage: 0,
+    });
+
     // Request conversion
     parent.postMessage(
       {
@@ -208,6 +230,76 @@ export const ExistingTokensImporter = ({
         </ul>
       </div>
 
+      {/* Conversion Progress */}
+      {converting && progress.total > 0 && (
+        <div
+          style={{
+            marginBottom: "var(--space-5)",
+            padding: "var(--space-4)",
+            backgroundColor: "var(--surface-secondary)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-md)",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "var(--space-2)",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "var(--font-size-sm)",
+                color: "var(--text-primary)",
+                fontWeight: "var(--font-weight-bold)",
+              }}
+            >
+              Converting Variables...
+            </span>
+            <span
+              style={{
+                fontSize: "var(--font-size-sm)",
+                color: "var(--text-secondary)",
+              }}
+            >
+              {progress.percentage}%
+            </span>
+          </div>
+
+          {/* Progress bar */}
+          <div
+            style={{
+              width: "100%",
+              height: "8px",
+              backgroundColor: "var(--surface-tertiary)",
+              borderRadius: "var(--radius-full)",
+              overflow: "hidden",
+              marginBottom: "var(--space-2)",
+            }}
+          >
+            <div
+              style={{
+                width: `${progress.percentage}%`,
+                height: "100%",
+                backgroundColor: "var(--accent-secondary)",
+                transition: "width 0.3s ease",
+              }}
+            />
+          </div>
+
+          <div
+            style={{
+              fontSize: "var(--font-size-xs)",
+              color: "var(--text-secondary)",
+            }}
+          >
+            {progress.message}
+          </div>
+        </div>
+      )}
+
       <div
         style={{
           display: "flex",
@@ -216,45 +308,60 @@ export const ExistingTokensImporter = ({
       >
         <button
           onClick={handleConvert}
+          disabled={converting}
           style={{
             flex: 1,
             padding: "var(--space-3) var(--space-4)",
-            backgroundColor: "var(--accent-secondary)",
-            color: "var(--text-inverse)",
+            backgroundColor: converting
+              ? "var(--surface-tertiary)"
+              : "var(--accent-secondary)",
+            color: converting ? "var(--text-disabled)" : "var(--text-inverse)",
             border: "none",
             borderRadius: "var(--radius-md)",
-            cursor: "pointer",
+            cursor: converting ? "not-allowed" : "pointer",
             fontSize: "var(--font-size-sm)",
             fontWeight: "var(--font-weight-bold)",
             transition: "var(--transition-base)",
+            opacity: converting ? 0.6 : 1,
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor =
-              "var(--accent-secondary-hover)";
+            if (!converting) {
+              e.currentTarget.style.backgroundColor =
+                "var(--accent-secondary-hover)";
+            }
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = "var(--accent-secondary)";
+            if (!converting) {
+              e.currentTarget.style.backgroundColor = "var(--accent-secondary)";
+            }
           }}
         >
-          Convert to W3C DTCG Format
+          {converting ? "Converting..." : "Convert to W3C DTCG Format"}
         </button>
         <button
           onClick={onCancel}
+          disabled={converting}
           style={{
             padding: "var(--space-3) var(--space-4)",
             backgroundColor: "var(--surface-secondary)",
             color: "var(--text-primary)",
             border: "1px solid var(--border-strong)",
             borderRadius: "var(--radius-md)",
-            cursor: "pointer",
+            cursor: converting ? "not-allowed" : "pointer",
             fontSize: "var(--font-size-sm)",
             transition: "var(--transition-base)",
+            opacity: converting ? 0.6 : 1,
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "var(--surface-tertiary)";
+            if (!converting) {
+              e.currentTarget.style.backgroundColor = "var(--surface-tertiary)";
+            }
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = "var(--surface-secondary)";
+            if (!converting) {
+              e.currentTarget.style.backgroundColor =
+                "var(--surface-secondary)";
+            }
           }}
         >
           Cancel

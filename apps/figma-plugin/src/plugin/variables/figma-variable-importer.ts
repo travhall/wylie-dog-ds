@@ -30,6 +30,10 @@ interface DTCGTokenGroup {
   [key: string]: DTCGToken | DTCGTokenGroup;
 }
 
+interface ProgressCallback {
+  (current: number, total: number, message: string): void;
+}
+
 export class FigmaVariableImporter {
   /**
    * Detects if file has any Figma Variables
@@ -76,8 +80,9 @@ export class FigmaVariableImporter {
   /**
    * Converts all Figma Variables to W3C DTCG format
    * Returns one file per collection per mode
+   * Supports chunked processing with progress callbacks for large collections
    */
-  static async convertToTokens(): Promise<
+  static async convertToTokens(onProgress?: ProgressCallback): Promise<
     Array<{
       collectionName: string;
       modeName: string;
@@ -94,28 +99,59 @@ export class FigmaVariableImporter {
       tokenCount: number;
     }> = [];
 
+    // Calculate total work units (collections × modes)
+    const totalWorkUnits = collections.reduce(
+      (sum, col) => sum + col.modes.length,
+      0
+    );
+    let completedWorkUnits = 0;
+
     for (const collection of collections) {
-      const variables = await Promise.all(
-        collection.variableIds.map((id) =>
-          figma.variables.getVariableByIdAsync(id)
-        )
-      );
-      const validVariables = variables.filter((v): v is Variable => v !== null);
+      // Process variables in chunks to avoid blocking UI
+      const CHUNK_SIZE = 50;
+      const variableIds = collection.variableIds;
+      const allVariables: Variable[] = [];
+
+      // Load variables in chunks
+      for (let i = 0; i < variableIds.length; i += CHUNK_SIZE) {
+        const chunk = variableIds.slice(i, i + CHUNK_SIZE);
+        const chunkVariables = await Promise.all(
+          chunk.map((id) => figma.variables.getVariableByIdAsync(id))
+        );
+        allVariables.push(
+          ...chunkVariables.filter((v): v is Variable => v !== null)
+        );
+
+        // Allow UI to breathe between chunks
+        if (variableIds.length > CHUNK_SIZE) {
+          await new Promise((resolve) => setTimeout(resolve, 0));
+        }
+      }
 
       // Generate tokens for each mode
       for (const mode of collection.modes) {
         const tokens: DTCGCollection = {};
         let tokenCount = 0;
 
-        for (const variable of validVariables) {
-          const token = await this.convertVariableToToken(
-            variable,
-            mode.modeId
-          );
-          if (token) {
-            // Use variable name as token path
-            this.setNestedToken(tokens, variable.name, token);
-            tokenCount++;
+        // Process variables in chunks
+        for (let i = 0; i < allVariables.length; i += CHUNK_SIZE) {
+          const chunk = allVariables.slice(i, i + CHUNK_SIZE);
+
+          for (const variable of chunk) {
+            const token = await this.convertVariableToToken(
+              variable,
+              mode.modeId
+            );
+            if (token) {
+              // Use variable name as token path
+              this.setNestedToken(tokens, variable.name, token);
+              tokenCount++;
+            }
+          }
+
+          // Allow UI to breathe between chunks
+          if (allVariables.length > CHUNK_SIZE) {
+            await new Promise((resolve) => setTimeout(resolve, 0));
           }
         }
 
@@ -125,6 +161,16 @@ export class FigmaVariableImporter {
           tokens,
           tokenCount,
         });
+
+        // Report progress
+        completedWorkUnits++;
+        if (onProgress) {
+          onProgress(
+            completedWorkUnits,
+            totalWorkUnits,
+            `Converting ${collection.name} (${mode.name}): ${tokenCount} tokens`
+          );
+        }
       }
     }
 
