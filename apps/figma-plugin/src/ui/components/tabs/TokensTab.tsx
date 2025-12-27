@@ -1,5 +1,8 @@
 import { h } from "preact";
-import type { Collection, CollectionDetails } from "../../App";
+import type {
+  Collection,
+  CollectionDetails,
+} from "../../hooks/usePluginMessages";
 
 interface TokensTabProps {
   collections: Collection[];
