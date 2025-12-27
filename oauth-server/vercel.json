@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "env": {
+    "GITHUB_CLIENT_ID": "@github-client-id",
+    "GITHUB_CLIENT_SECRET": "@github-client-secret",
+    "GITLAB_CLIENT_ID": "@gitlab-client-id",
+    "GITLAB_CLIENT_SECRET": "@gitlab-client-secret",
+    "BITBUCKET_CLIENT_ID": "@bitbucket-client-id",
+    "BITBUCKET_CLIENT_SECRET": "@bitbucket-client-secret",
+    "SESSION_SECRET": "@session-secret"
+  },
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "nodejs18.x",
+      "maxDuration": 10
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ]
+}

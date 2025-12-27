@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentication Error - Token Bridge</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 16px;
+      padding: 48px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      background: #ef4444;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .x-mark {
+      width: 48px;
+      height: 48px;
+      position: relative;
+    }
+
+    .x-mark::before,
+    .x-mark::after {
+      content: '';
+      position: absolute;
+      left: 22px;
+      top: 8px;
+      width: 4px;
+      height: 32px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    .x-mark::before {
+      transform: rotate(45deg);
+    }
+
+    .x-mark::after {
+      transform: rotate(-45deg);
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #1f2937;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 16px;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .error-message {
+      background: #fee2e2;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 32px;
+      font-size: 14px;
+      color: #991b1b;
+      word-break: break-word;
+    }
+
+    .button {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 12px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .button:hover {
+      background: #5568d3;
+    }
+
+    .note {
+      font-size: 14px;
+      color: #9ca3af;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">
+      <div class="x-mark"></div>
+    </div>
+
+    <h1>Authentication Failed</h1>
+
+    <p>
+      We couldn't complete the authentication process. Please try again or contact support if the problem persists.
+    </p>
+
+    <div class="error-message" id="errorMessage">
+      Unknown error occurred
+    </div>
+
+    <button class="button" onclick="window.close()">Close Window</button>
+
+    <p class="note">
+      You can try connecting again from the Token Bridge plugin in Figma.
+    </p>
+  </div>
+
+  <script>
+    // Extract error message from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const errorMessage = urlParams.get('message');
+
+    if (errorMessage) {
+      document.getElementById('errorMessage').textContent = decodeURIComponent(errorMessage);
+    }
+  </script>
+</body>
+</html>

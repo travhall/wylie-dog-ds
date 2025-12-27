@@ -1,0 +1,22 @@
+{
+  "name": "oauth-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OAuth server for Token Bridge Figma Plugin",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "deploy": "vercel",
+    "deploy:prod": "vercel --prod",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/kv": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@vercel/node": "^4.0.0",
+    "typescript": "^5.9.3",
+    "vercel": "^39.0.0"
+  }
+}

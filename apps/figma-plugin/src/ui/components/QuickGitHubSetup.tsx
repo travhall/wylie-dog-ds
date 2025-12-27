@@ -8,6 +8,8 @@ interface QuickGitHubSetupProps {
   onClose: () => void;
 }
 
+type AuthMethod = "oauth" | "pat";
+
 /**
  * Simplified GitHub setup for 80% of users
  * Transforms simple inputs into full GitHubConfig
@@ -17,6 +19,7 @@ export function QuickGitHubSetup({
   onShowAdvanced,
   onClose,
 }: QuickGitHubSetupProps) {
+  const [authMethod, setAuthMethod] = useState<AuthMethod>("oauth");
   const [repoUrl, setRepoUrl] = useState("");
   const [accessToken, setAccessToken] = useState("");
   const [loading, setLoading] = useState(false);
@@ -43,7 +46,35 @@ export function QuickGitHubSetup({
     setError(null);
   };
 
-  const handleConnect = async () => {
+  const handleOAuthConnect = async () => {
+    if (!repoUrl.trim()) {
+      setError("Please enter a repository URL");
+      return;
+    }
+
+    const parsed = parseGitHubUrl(repoUrl);
+    if (!parsed) {
+      setError("Invalid GitHub repository URL");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    // Initiate OAuth flow
+    parent.postMessage(
+      {
+        pluginMessage: {
+          type: "oauth-initiate",
+          provider: "github",
+          repoUrl: repoUrl.trim(),
+        },
+      },
+      "*"
+    );
+  };
+
+  const handlePATConnect = async () => {
     // Validation
     if (!repoUrl.trim() || !accessToken.trim()) {
       setError("Please fill in both repository URL and access token");
@@ -67,6 +98,7 @@ export function QuickGitHubSetup({
         branch: "main", // Default to main
         tokenPath: "tokens", // Default path
         accessToken: accessToken.trim(),
+        authMethod: "pat",
         syncMode: "direct", // Default to direct sync (bi-directional)
       };
 
@@ -90,6 +122,9 @@ export function QuickGitHubSetup({
       setLoading(false);
     }
   };
+
+  const handleConnect =
+    authMethod === "oauth" ? handleOAuthConnect : handlePATConnect;
 
   return (
     <div
@@ -136,14 +171,81 @@ export function QuickGitHubSetup({
 
       <p
         style={{
-          margin: "0 0 var(--space-6) 0",
+          margin: "0 0 var(--space-4) 0",
           fontSize: "var(--font-size-sm)",
           color: "var(--text-secondary)",
           lineHeight: "var(--line-height-relaxed)",
         }}
       >
-        Sync your design tokens with GitHub in two simple steps
+        Sync your design tokens with GitHub
       </p>
+
+      {/* Auth Method Toggle */}
+      <div style={{ marginBottom: "var(--space-5)" }}>
+        <label
+          style={{
+            display: "block",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-medium)",
+            marginBottom: "var(--space-2)",
+            color: "var(--text-primary)",
+          }}
+        >
+          Authentication Method
+        </label>
+        <div style={{ display: "flex", gap: "var(--space-2)" }}>
+          <button
+            onClick={() => setAuthMethod("oauth")}
+            disabled={loading}
+            style={{
+              flex: 1,
+              padding: "var(--space-2) var(--space-3)",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-medium)",
+              color:
+                authMethod === "oauth"
+                  ? "var(--text-inverse)"
+                  : "var(--text-secondary)",
+              backgroundColor:
+                authMethod === "oauth"
+                  ? "var(--accent-primary)"
+                  : "var(--surface-secondary)",
+              border: `1px solid ${authMethod === "oauth" ? "var(--accent-primary)" : "var(--border-default)"}`,
+              borderRadius: "var(--radius-md)",
+              cursor: loading ? "not-allowed" : "pointer",
+              transition: "all 0.2s",
+              opacity: loading ? 0.5 : 1,
+            }}
+          >
+            OAuth (Recommended)
+          </button>
+          <button
+            onClick={() => setAuthMethod("pat")}
+            disabled={loading}
+            style={{
+              flex: 1,
+              padding: "var(--space-2) var(--space-3)",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-medium)",
+              color:
+                authMethod === "pat"
+                  ? "var(--text-inverse)"
+                  : "var(--text-secondary)",
+              backgroundColor:
+                authMethod === "pat"
+                  ? "var(--accent-primary)"
+                  : "var(--surface-secondary)",
+              border: `1px solid ${authMethod === "pat" ? "var(--accent-primary)" : "var(--border-default)"}`,
+              borderRadius: "var(--radius-md)",
+              cursor: loading ? "not-allowed" : "pointer",
+              transition: "all 0.2s",
+              opacity: loading ? 0.5 : 1,
+            }}
+          >
+            Personal Access Token
+          </button>
+        </div>
+      </div>
 
       {/* Error Display */}
       {error && (
@@ -227,74 +329,76 @@ export function QuickGitHubSetup({
         </div>
       </div>
 
-      {/* Personal Access Token Input */}
-      <div style={{ marginBottom: "var(--space-6)" }}>
-        <label
-          style={{
-            display: "flex",
-            alignItems: "center",
-            fontSize: "var(--font-size-sm)",
-            fontWeight: "var(--font-weight-medium)",
-            marginBottom: "var(--space-2)",
-            color: "var(--text-primary)",
-          }}
-        >
-          Personal Access Token
-          <span
-            title="Required GitHub permissions: repo (full control of private repositories)"
+      {/* Personal Access Token Input (PAT mode only) */}
+      {authMethod === "pat" && (
+        <div style={{ marginBottom: "var(--space-6)" }}>
+          <label
             style={{
-              marginLeft: "var(--space-1)",
-              cursor: "help",
-              fontSize: "var(--font-size-xs)",
-              color: "var(--info)",
-            }}
-          >
-            ℹ️
-          </span>
-        </label>
-        <input
-          type="password"
-          value={accessToken}
-          onInput={(e) => {
-            setAccessToken((e.target as HTMLInputElement).value);
-            setError(null);
-          }}
-          placeholder="ghp_••••••••••••••••••••••••••••••••"
-          style={{
-            width: "100%",
-            padding: "var(--space-2)",
-            fontSize: "var(--font-size-sm)",
-            fontFamily: "'SF Mono', 'Monaco', 'Courier', monospace",
-            border: "1px solid var(--border-default)",
-            borderRadius: "var(--radius-md)",
-            backgroundColor: "var(--surface-primary)",
-            color: "var(--text-primary)",
-            transition: "var(--transition-base)",
-          }}
-          disabled={loading}
-        />
-        <div
-          style={{
-            marginTop: "var(--space-2)",
-            fontSize: "var(--font-size-xs)",
-            color: "var(--text-secondary)",
-          }}
-        >
-          Need a token?{" "}
-          <a
-            href="https://github.com/settings/tokens/new?scopes=repo&description=Figma%20Token%20Bridge"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: "var(--accent-primary)",
-              textDecoration: "none",
+              display: "flex",
+              alignItems: "center",
+              fontSize: "var(--font-size-sm)",
               fontWeight: "var(--font-weight-medium)",
+              marginBottom: "var(--space-2)",
+              color: "var(--text-primary)",
             }}
           >
-            Create one →
-          </a>
+            Personal Access Token
+            <span
+              title="Required GitHub permissions: repo (full control of private repositories)"
+              style={{
+                marginLeft: "var(--space-1)",
+                cursor: "help",
+                fontSize: "var(--font-size-xs)",
+                color: "var(--info)",
+              }}
+            >
+              ℹ️
+            </span>
+          </label>
+          <input
+            type="password"
+            value={accessToken}
+            onInput={(e) => {
+              setAccessToken((e.target as HTMLInputElement).value);
+              setError(null);
+            }}
+            placeholder="ghp_••••••••••••••••••••••••••••••••"
+            style={{
+              width: "100%",
+              padding: "var(--space-2)",
+              fontSize: "var(--font-size-sm)",
+              fontFamily: "'SF Mono', 'Monaco', 'Courier', monospace",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              backgroundColor: "var(--surface-primary)",
+              color: "var(--text-primary)",
+              transition: "var(--transition-base)",
+            }}
+            disabled={loading}
+          />
+          <div
+            style={{
+              marginTop: "var(--space-2)",
+              fontSize: "var(--font-size-xs)",
+              color: "var(--text-secondary)",
+            }}
+          >
+            Need a token?{" "}
+            <a
+              href="https://github.com/settings/tokens/new?scopes=repo&description=Figma%20Token%20Bridge"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: "var(--accent-primary)",
+                textDecoration: "none",
+                fontWeight: "var(--font-weight-medium)",
+              }}
+            >
+              Create one →
+            </a>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Info Box - Defaults */}
       <div
@@ -339,7 +443,12 @@ export function QuickGitHubSetup({
       >
         <button
           onClick={handleConnect}
-          disabled={loading || !!urlError || !repoUrl || !accessToken}
+          disabled={
+            loading ||
+            !!urlError ||
+            !repoUrl ||
+            (authMethod === "pat" && !accessToken)
+          }
           style={{
             flex: "1",
             padding: "var(--space-3)",

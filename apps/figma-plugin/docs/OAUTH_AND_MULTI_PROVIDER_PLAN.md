@@ -1,8 +1,7 @@
 # OAuth & Multi-Provider Sync Implementation Plan
 
 **Created:** 2025-12-27
-**Status:** Planning Document
-**Estimated Effort:** 2-3 weeks
+**Status:** Ready for Implementation
 **Priority:** Medium (v3.0 Enhancement)
 
 ---
@@ -32,16 +31,17 @@ This document outlines the plan to enhance Token Bridge with **OAuth authenticat
 ## Table of Contents
 
 1. [Problem Statement](#problem-statement)
-2. [Technical Constraints](#technical-constraints)
-3. [Architecture Overview](#architecture-overview)
-4. [Implementation Phases](#implementation-phases)
-5. [Provider Specifications](#provider-specifications)
-6. [Backend Infrastructure](#backend-infrastructure)
-7. [Security Considerations](#security-considerations)
-8. [Testing Strategy](#testing-strategy)
-9. [Deployment Plan](#deployment-plan)
-10. [Success Metrics](#success-metrics)
-11. [Appendix: Code Examples](#appendix-code-examples)
+2. [Prerequisites](#prerequisites)
+3. [Technical Constraints](#technical-constraints)
+4. [Architecture Overview](#architecture-overview)
+5. [Implementation Phases](#implementation-phases)
+6. [Provider Specifications](#provider-specifications)
+7. [Backend Infrastructure](#backend-infrastructure)
+8. [Security Considerations](#security-considerations)
+9. [Testing Strategy](#testing-strategy)
+10. [Deployment Plan](#deployment-plan)
+11. [Success Metrics](#success-metrics)
+12. [Appendix: Code Examples](#appendix-code-examples)
 
 ---
 
@@ -73,6 +73,48 @@ This document outlines the plan to enhance Token Bridge with **OAuth authenticat
 
 ---
 
+## Prerequisites
+
+Before beginning implementation, ensure the following accounts and credentials are ready:
+
+### Required OAuth Applications
+
+**1. GitHub OAuth App:**
+
+- Register at: https://github.com/settings/developers
+- Callback URL: `https://oauth.token-bridge.app/api/auth/github/callback`
+- Scopes needed: `repo`, `user:email`
+- Save Client ID and Client Secret
+
+**2. GitLab OAuth Application:**
+
+- Register at: https://gitlab.com/-/profile/applications
+- Callback URL: `https://oauth.token-bridge.app/api/auth/gitlab/callback`
+- Scopes needed: `api`, `read_user`
+- Save Application ID and Secret
+
+**3. Bitbucket OAuth Consumer:**
+
+- Register at: https://bitbucket.org/account/settings/oauth-consumers/new
+- Callback URL: `https://oauth.token-bridge.app/api/auth/bitbucket/callback`
+- Permissions needed: `repository`, `repository:write`
+- Save Key and Secret
+
+### Required Infrastructure
+
+**4. Vercel Account:**
+
+- Sign up at: https://vercel.com
+- Install Vercel CLI: `pnpm add -g vercel`
+- Provision Vercel KV for session storage
+
+**5. Domain Configuration:**
+
+- Subdomain: `oauth.token-bridge.app`
+- DNS access to create CNAME record pointing to Vercel
+
+---
+
 ## Technical Constraints
 
 ### Figma Plugin Sandbox Limitations
@@ -82,13 +124,34 @@ Figma plugins run in a **severely restricted environment** that makes standard O
 ```
 ❌ No browser redirect support (plugin runs in Electron/minimal browser)
 ❌ No window.opener (browser opens separately, no communication channel)
-❌ No cookies, localStorage, or IndexedDB
+❌ No localStorage (Figma provides figma.clientStorage instead)
+❌ No IndexedDB
 ❌ Null origin (limits CORS and API access)
 ❌ No client secrets (all code is inspectable)
 ❌ Split execution context (main thread vs UI thread)
+❌ Limited crypto APIs (must use Web Crypto API, not Node crypto)
 ```
 
 **Implication:** Standard OAuth flows (redirect-based) **will not work**. We need a custom architecture.
+
+### Available APIs in Figma Environment
+
+**✅ Available:**
+
+- `crypto.subtle` (Web Crypto API for SHA-256, random values)
+- `crypto.randomUUID()` (for session IDs)
+- `TextEncoder` / `TextDecoder`
+- `fetch()` (with CORS limitations)
+- `window.open()` (opens external browser)
+- `figma.clientStorage` (encrypted key-value storage)
+- `btoa()` / `atob()` (Base64 encoding)
+
+**❌ Not Available:**
+
+- `crypto.randomBytes()` (Node.js only)
+- `crypto.createHash()` (Node.js only)
+- Direct access to `localStorage`
+- Cookie manipulation
 
 ### Required Architecture Pattern
 
@@ -151,7 +214,7 @@ apps/figma-plugin/
 │   │   │   └── rate-limiter.ts      # Rate limiting
 │   │   ├── oauth/
 │   │   │   ├── handler.ts           # FigmaOAuthHandler
-│   │   │   ├── pkce.ts              # PKCE helpers
+│   │   │   ├── pkce.ts              # PKCE helpers (Web Crypto)
 │   │   │   └── token-storage.ts     # figma.clientStorage wrapper
 │   │   └── sync/
 │   │       └── unified-client.ts    # Replaces GitHubClient
@@ -172,7 +235,7 @@ oauth-server/                        # New Vercel project
 │       └── [provider].ts            # Token refresh
 ├── lib/
 │   ├── providers.ts                 # Provider configs
-│   ├── pkce.ts                      # PKCE validation
+│   ├── pkce.ts                      # PKCE validation (Node crypto)
 │   └── storage.ts                   # Vercel KV wrapper
 └── vercel.json                      # Deployment config
 ```
@@ -186,10 +249,10 @@ oauth-server/                        # New Vercel project
 const handler = new FigmaOAuthHandler();
 await handler.initiateOAuth("github");
 
-// Generates:
-// - sessionId: unique UUID
-// - codeVerifier: random 32-byte string
-// - codeChallenge: SHA256(codeVerifier)
+// Generates using Web Crypto API:
+// - sessionId: crypto.randomUUID()
+// - codeVerifier: random string via crypto.getRandomValues()
+// - codeChallenge: SHA256(codeVerifier) via crypto.subtle.digest()
 // - state: CSRF protection token
 
 // Opens browser:
@@ -245,7 +308,7 @@ for (let i = 0; i < 60; i++) {
   if (response.ok) {
     const { accessToken, refreshToken } = await response.json();
 
-    // Store in Figma client storage (encrypted)
+    // Store in Figma client storage (encrypted by Figma)
     await figma.clientStorage.setAsync("oauth_access_token", accessToken);
     await figma.clientStorage.setAsync("oauth_refresh_token", refreshToken);
 
@@ -260,19 +323,19 @@ throw new Error("OAuth timeout");
 
 ## Implementation Phases
 
-### Phase 1: Backend Infrastructure (Week 1)
+### Phase 1: Backend Infrastructure
 
 **Goal:** Deploy OAuth server with GitHub support
 
 **Tasks:**
 
-1. **Setup Vercel Project** (2 hours)
-   - Create `oauth-server` directory
+1. **Setup Vercel Project**
+   - Create `oauth-server` directory at repository root
    - Initialize with `pnpm create vercel`
-   - Configure environment variables
+   - Configure environment variables (GitHub OAuth credentials)
    - Setup Vercel KV for session storage
 
-2. **Implement GitHub OAuth Endpoints** (1 day)
+2. **Implement GitHub OAuth Endpoints**
 
    ```
    ✓ /api/auth/github/authorize - Initiate OAuth flow
@@ -281,19 +344,19 @@ throw new Error("OAuth timeout");
    ✓ /api/refresh/github - Refresh tokens (GitHub Apps only)
    ```
 
-3. **PKCE Implementation** (4 hours)
-   - Code verifier generation
-   - Code challenge creation (SHA256)
+3. **PKCE Implementation**
+   - Code verifier generation (Node crypto.randomBytes)
+   - Code challenge creation (SHA256 via crypto.createHash)
    - Server-side validation
    - Test suite
 
-4. **Session Management** (4 hours)
+4. **Session Management**
    - Vercel KV integration
    - 10-minute TTL enforcement
    - Cleanup of expired sessions
    - Security audit
 
-5. **Testing & Deployment** (4 hours)
+5. **Testing & Deployment**
    - Unit tests for OAuth flow
    - Integration tests with GitHub
    - Deploy to Vercel production
@@ -308,37 +371,36 @@ throw new Error("OAuth timeout");
 
 ---
 
-### Phase 2: Plugin OAuth Integration (Week 1)
+### Phase 2: Plugin OAuth Integration
 
 **Goal:** Replace PAT setup with OAuth in plugin
 
 **Tasks:**
 
-1. **OAuth Handler Service** (1 day)
+1. **OAuth Handler Service**
    - Create `FigmaOAuthHandler` class
-   - Implement PKCE client-side
+   - Implement PKCE client-side using Web Crypto API
    - Polling mechanism with timeout
    - Error handling and retry logic
 
-2. **Token Storage** (4 hours)
+2. **Token Storage**
    - Wrapper for `figma.clientStorage`
-   - Encryption helpers
    - Token refresh logic
    - Expiration tracking
 
-3. **UI Components** (1 day)
+3. **UI Components**
    - `OAuthSetup.tsx` - OAuth flow interface
    - `ProviderSelector.tsx` - Choose GitHub/GitLab/etc
    - Loading states during OAuth
    - Error display and retry
 
-4. **Integration with Existing Sync** (4 hours)
+4. **Integration with Existing Sync**
    - Update `GitHubClient` to use OAuth tokens
    - Fallback to PAT for backward compatibility
    - Migration path for existing users
    - Update QuickGitHubSetup component
 
-5. **Testing** (4 hours)
+5. **Testing**
    - OAuth flow end-to-end
    - Token refresh scenarios
    - Error handling (timeout, denied, etc.)
@@ -353,13 +415,13 @@ throw new Error("OAuth timeout");
 
 ---
 
-### Phase 3: Provider Abstraction (Week 2)
+### Phase 3: Provider Abstraction
 
 **Goal:** Create unified architecture for multiple providers
 
 **Tasks:**
 
-1. **GitProvider Interface** (4 hours)
+1. **GitProvider Interface**
 
    ```typescript
    interface GitProvider {
@@ -373,31 +435,31 @@ throw new Error("OAuth timeout");
    }
    ```
 
-2. **GitHub Adapter** (1 day)
+2. **GitHub Adapter**
    - Migrate existing `GitHubClient` to `GitHubProvider`
    - Implement `GitProvider` interface
    - Maintain backward compatibility
    - Add GitHub App support (optional)
 
-3. **GitLab Adapter** (1 day)
+3. **GitLab Adapter**
    - Implement `GitLabProvider`
    - Handle 2-hour token expiration
    - API endpoint mapping
    - Rate limiting (600/hour)
 
-4. **Bitbucket Adapter** (1 day)
+4. **Bitbucket Adapter**
    - Implement `BitbucketProvider`
    - Handle multipart file uploads
    - API differences (commit-based updates)
    - Rate limiting (1000/hour)
 
-5. **Provider Factory** (4 hours)
+5. **Provider Factory**
    - `ProviderFactory.create(config)`
    - Dynamic provider instantiation
    - Configuration validation
    - Error handling
 
-6. **Rate Limiting** (4 hours)
+6. **Rate Limiting**
    - Per-provider rate limiters
    - Automatic backoff
    - Queue management
@@ -412,37 +474,37 @@ throw new Error("OAuth timeout");
 
 ---
 
-### Phase 4: Multi-Provider OAuth (Week 2-3)
+### Phase 4: Multi-Provider OAuth
 
 **Goal:** Add OAuth for GitLab and Bitbucket
 
 **Tasks:**
 
-1. **GitLab OAuth Backend** (1 day)
+1. **GitLab OAuth Backend**
    - `/api/auth/gitlab/authorize`
    - `/api/auth/gitlab/callback`
    - Token refresh endpoint
-   - PKCE validation
+   - PKCE validation (mandatory for GitLab)
 
-2. **Bitbucket OAuth Backend** (1 day)
+2. **Bitbucket OAuth Backend**
    - `/api/auth/bitbucket/authorize`
    - `/api/auth/bitbucket/callback`
    - Token refresh endpoint
    - Handle 2-hour token expiration
 
-3. **UI Updates** (1 day)
+3. **UI Updates**
    - Provider selection screen
    - Provider-specific setup instructions
    - Multi-account support (future)
    - Settings management
 
-4. **Unified Sync Client** (1 day)
-   - Replace `ConflictAwareGitHubClient`
-   - `UnifiedGitClient` works with any provider
+4. **Unified Sync Client**
+   - Replace `ConflictAwareGitHubClient` with `UnifiedGitClient`
+   - Works with any provider
    - Provider switching
    - Conflict resolution (provider-agnostic)
 
-5. **Testing & Polish** (2 days)
+5. **Testing & Polish**
    - Test all three providers
    - Cross-provider compatibility
    - Migration testing
@@ -484,7 +546,7 @@ API Base:   https://api.github.com
 // Get file
 GET /repos/{owner}/{repo}/contents/{path}?ref={branch}
 
-// Create/Update file
+// Create/Update file (content must be base64)
 PUT /repos/{owner}/{repo}/contents/{path}
 {
   message: string,
@@ -508,6 +570,7 @@ POST /repos/{owner}/{repo}/pulls
 - OAuth Apps: Tokens never expire, no refresh needed
 - GitHub Apps: Tokens expire in 1 hour, must refresh
 - Recommend GitHub Apps for production
+- Use `btoa()` for base64 encoding in plugin
 
 ---
 
@@ -571,6 +634,7 @@ POST /projects/{id}/merge_requests
 - Project ID can be numeric or `namespace/project` encoded
 - Tokens expire in 2 hours, refresh required
 - Rate limits are per-user, per-project
+- Use `btoa()` for base64 encoding
 
 ---
 
@@ -675,7 +739,7 @@ oauth-server/
 │       └── bitbucket.ts          # Refresh Bitbucket tokens
 ├── lib/
 │   ├── providers.ts              # Provider configurations
-│   ├── pkce.ts                   # PKCE helpers
+│   ├── pkce.ts                   # PKCE helpers (Node crypto)
 │   ├── storage.ts                # Vercel KV wrapper
 │   └── errors.ts                 # Error types
 ├── public/
@@ -800,28 +864,37 @@ ALLOWED_ORIGINS=https://www.figma.com
 - Essential when client secret cannot be kept confidential
 - Figma plugins have no secure storage for secrets
 
-**Implementation:**
+**Implementation (Client-Side - Web Crypto API):**
 
 ```typescript
-// Client-side (Figma plugin)
-import crypto from "crypto";
+// apps/figma-plugin/src/plugin/oauth/pkce.ts
 
 class PKCEHelper {
+  /**
+   * Generate code verifier using Web Crypto API
+   */
   static generateCodeVerifier(): string {
-    // 43-128 character random string
-    return crypto.randomBytes(32).toString("base64url");
+    const array = new Uint8Array(32);
+    crypto.getRandomValues(array);
+    return this.base64URLEncode(array);
   }
 
+  /**
+   * Generate code challenge using Web Crypto API
+   */
   static async generateCodeChallenge(verifier: string): Promise<string> {
-    // SHA256 hash of verifier
     const encoder = new TextEncoder();
     const data = encoder.encode(verifier);
     const hash = await crypto.subtle.digest("SHA-256", data);
+    return this.base64URLEncode(new Uint8Array(hash));
+  }
 
-    return btoa(String.fromCharCode(...new Uint8Array(hash)))
-      .replace(/=/g, "")
-      .replace(/\+/g, "-")
-      .replace(/\//g, "_");
+  /**
+   * Base64-URL encode (no padding)
+   */
+  private static base64URLEncode(buffer: Uint8Array): string {
+    const base64 = btoa(String.fromCharCode(...buffer));
+    return base64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=/g, "");
   }
 }
 
@@ -829,8 +902,8 @@ class PKCEHelper {
 const verifier = PKCEHelper.generateCodeVerifier();
 const challenge = await PKCEHelper.generateCodeChallenge(verifier);
 
-// Store verifier in session (needed for token exchange)
-sessionStorage.setItem("pkce_verifier", verifier);
+// Store verifier in Figma client storage (needed for validation)
+await figma.clientStorage.setAsync("pkce_verifier", verifier);
 
 // Send challenge to OAuth provider
 const authUrl =
@@ -840,14 +913,23 @@ const authUrl =
   `code_challenge_method=S256`;
 ```
 
+**Implementation (Server-Side - Node Crypto):**
+
 ```typescript
-// Server-side (OAuth server)
+// oauth-server/lib/pkce.ts
 import crypto from "crypto";
 
-function validatePKCE(codeVerifier: string, codeChallenge: string): boolean {
+export function validatePKCE(
+  codeVerifier: string,
+  codeChallenge: string
+): boolean {
   // Recreate challenge from verifier
   const hash = crypto.createHash("sha256").update(codeVerifier).digest();
-  const computedChallenge = hash.toString("base64url");
+  const computedChallenge = hash
+    .toString("base64")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=/g, "");
 
   return computedChallenge === codeChallenge;
 }
@@ -858,10 +940,10 @@ function validatePKCE(codeVerifier: string, codeChallenge: string): boolean {
 **Purpose:** Prevent Cross-Site Request Forgery attacks
 
 ```typescript
-// Generate state
-const state = crypto.randomBytes(16).toString("hex");
+// Generate state using Web Crypto API (client-side)
+const state = crypto.randomUUID();
 
-// Store in session
+// Server-side: Store in session
 await kv.set(
   `session:${state}`,
   {
@@ -884,57 +966,18 @@ if (!session) {
 
 ### Token Storage
 
-**Never Store Tokens in Plain Text:**
+**Use Figma's Encrypted Client Storage:**
 
 ```typescript
 // ✅ GOOD: Use Figma's encrypted client storage
 await figma.clientStorage.setAsync("oauth_access_token", accessToken);
+await figma.clientStorage.setAsync("oauth_refresh_token", refreshToken);
 
-// ❌ BAD: Don't use plugin localStorage or code
-// localStorage.setItem('token', accessToken); // NOT ENCRYPTED
+// ❌ BAD: Don't hardcode tokens in code
 // const TOKEN = 'ghp_...'; // EXPOSED IN CODE
 ```
 
-**Token Encryption (Optional Extra Layer):**
-
-```typescript
-import crypto from "crypto";
-
-class TokenEncryption {
-  private static key = crypto.scryptSync(
-    process.env.ENCRYPTION_KEY!,
-    "salt",
-    32
-  );
-
-  static encrypt(token: string): string {
-    const iv = crypto.randomBytes(16);
-    const cipher = crypto.createCipheriv("aes-256-gcm", this.key, iv);
-
-    let encrypted = cipher.update(token, "utf8", "hex");
-    encrypted += cipher.final("hex");
-
-    const authTag = cipher.getAuthTag();
-
-    return `${iv.toString("hex")}:${authTag.toString("hex")}:${encrypted}`;
-  }
-
-  static decrypt(encryptedToken: string): string {
-    const [ivHex, authTagHex, encrypted] = encryptedToken.split(":");
-
-    const iv = Buffer.from(ivHex, "hex");
-    const authTag = Buffer.from(authTagHex, "hex");
-
-    const decipher = crypto.createDecipheriv("aes-256-gcm", this.key, iv);
-    decipher.setAuthTag(authTag);
-
-    let decrypted = decipher.update(encrypted, "hex", "utf8");
-    decrypted += decipher.final("utf8");
-
-    return decrypted;
-  }
-}
-```
+**Note:** Figma's `clientStorage` automatically encrypts data at rest. No additional encryption layer is needed in the plugin.
 
 ### HTTPS Only
 
@@ -988,7 +1031,7 @@ async function rateLimit(
 
 - [ ] PKCE implemented for all OAuth flows
 - [ ] State parameter validated on all callbacks
-- [ ] Tokens stored encrypted in Figma client storage
+- [ ] Tokens stored in Figma client storage (encrypted by Figma)
 - [ ] All endpoints use HTTPS
 - [ ] CORS properly configured
 - [ ] Rate limiting implemented
@@ -1011,14 +1054,8 @@ async function rateLimit(
 // tests/pkce.test.ts
 describe("PKCE", () => {
   it("generates valid code verifier", () => {
-    const verifier = PKCEHelper.generateCodeVerifier();
-    expect(verifier).toHaveLength(43); // 32 bytes base64url
-  });
-
-  it("generates valid code challenge", async () => {
-    const verifier = "test_verifier_12345678901234567890123";
-    const challenge = await PKCEHelper.generateCodeChallenge(verifier);
-    expect(challenge).toMatch(/^[A-Za-z0-9_-]+$/);
+    const verifier = generateCodeVerifier();
+    expect(verifier.length).toBeGreaterThanOrEqual(43);
   });
 
   it("validates PKCE correctly", () => {
@@ -1164,31 +1201,6 @@ describe("GitHub Provider", () => {
 });
 ```
 
-### Performance Tests
-
-**Rate Limiting:**
-
-```typescript
-describe("Rate Limiting", () => {
-  it("respects GitHub rate limits", async () => {
-    const limiter = RateLimiter.forProvider("github");
-
-    // Make 5000 requests (GitHub limit)
-    for (let i = 0; i < 5000; i++) {
-      await limiter.waitIfNeeded();
-      // Request would happen here
-    }
-
-    // 5001st request should wait
-    const start = Date.now();
-    await limiter.waitIfNeeded();
-    const waited = Date.now() - start;
-
-    expect(waited).toBeGreaterThan(0);
-  });
-});
-```
-
 ### Manual Testing Checklist
 
 **OAuth Flow:**
@@ -1228,40 +1240,7 @@ describe("Rate Limiting", () => {
 
 **1. Create OAuth Applications:**
 
-**GitHub:**
-
-```
-1. Go to https://github.com/settings/developers
-2. Click "New OAuth App"
-3. Application name: "Token Bridge Figma Plugin"
-4. Homepage URL: https://token-bridge.app
-5. Authorization callback URL: https://oauth.token-bridge.app/api/auth/github/callback
-6. Copy Client ID and Client Secret
-```
-
-**GitLab:**
-
-```
-1. Go to https://gitlab.com/-/profile/applications
-2. Click "Add new application"
-3. Name: "Token Bridge Figma Plugin"
-4. Redirect URI: https://oauth.token-bridge.app/api/auth/gitlab/callback
-5. Scopes: api, read_user
-6. Check "Confidential"
-7. Save application
-8. Copy Application ID and Secret
-```
-
-**Bitbucket:**
-
-```
-1. Go to https://bitbucket.org/account/settings/oauth-consumers/new
-2. Name: "Token Bridge Figma Plugin"
-3. Callback URL: https://oauth.token-bridge.app/api/auth/bitbucket/callback
-4. Permissions: repository (read), repository:write
-5. Save
-6. Copy Key and Secret
-```
+See [Prerequisites](#prerequisites) section for detailed OAuth app setup instructions.
 
 **2. Setup Vercel:**
 
@@ -1382,16 +1361,6 @@ vercel analytics enable
 - API error rate by provider (target: <1%)
 - Session timeout rate (target: <5%)
 
-**Alerting:**
-
-```javascript
-// Vercel webhook to Slack
-POST https://hooks.slack.com/services/YOUR/WEBHOOK/URL
-{
-  "text": "🚨 OAuth Server Error Rate: 5% (threshold: 1%)"
-}
-```
-
 ---
 
 ## Success Metrics
@@ -1457,17 +1426,10 @@ POST https://hooks.slack.com/services/YOUR/WEBHOOK/URL
 
 ## Appendix: Code Examples
 
-### A. Complete OAuth Handler
+### A. Complete OAuth Handler (Web Crypto API)
 
 ```typescript
 // apps/figma-plugin/src/plugin/oauth/handler.ts
-
-import crypto from "crypto";
-
-interface OAuthConfig {
-  serverUrl: string;
-  provider: "github" | "gitlab" | "bitbucket";
-}
 
 interface TokenResponse {
   accessToken: string;
@@ -1488,7 +1450,7 @@ export class FigmaOAuthHandler {
    * Initiate OAuth flow
    */
   async initiateOAuth(provider: string): Promise<TokenResponse> {
-    // 1. Generate PKCE values
+    // 1. Generate PKCE values using Web Crypto API
     const codeVerifier = this.generateCodeVerifier();
     const codeChallenge = await this.generateCodeChallenge(codeVerifier);
     const sessionId = crypto.randomUUID();
@@ -1562,7 +1524,7 @@ export class FigmaOAuthHandler {
   }
 
   /**
-   * Store tokens securely
+   * Store tokens securely in Figma client storage
    */
   private async storeTokens(tokens: TokenResponse): Promise<void> {
     await figma.clientStorage.setAsync(
@@ -1585,24 +1547,30 @@ export class FigmaOAuthHandler {
   }
 
   /**
-   * Generate PKCE code verifier
+   * Generate PKCE code verifier using Web Crypto API
    */
   private generateCodeVerifier(): string {
-    return crypto.randomBytes(32).toString("base64url");
+    const array = new Uint8Array(32);
+    crypto.getRandomValues(array);
+    return this.base64URLEncode(array);
   }
 
   /**
-   * Generate PKCE code challenge
+   * Generate PKCE code challenge using Web Crypto API
    */
   private async generateCodeChallenge(verifier: string): Promise<string> {
     const encoder = new TextEncoder();
     const data = encoder.encode(verifier);
     const hash = await crypto.subtle.digest("SHA-256", data);
+    return this.base64URLEncode(new Uint8Array(hash));
+  }
 
-    return btoa(String.fromCharCode(...new Uint8Array(hash)))
-      .replace(/=/g, "")
-      .replace(/\+/g, "-")
-      .replace(/\//g, "_");
+  /**
+   * Base64-URL encode (no padding)
+   */
+  private base64URLEncode(buffer: Uint8Array): string {
+    const base64 = btoa(String.fromCharCode(...buffer));
+    return base64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=/g, "");
   }
 
   /**
@@ -1682,7 +1650,6 @@ export class FigmaOAuthHandler {
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { kv } from "@vercel/kv";
-import fetch from "node-fetch";
 
 interface Session {
   provider: string;
@@ -1892,18 +1859,13 @@ export interface FileCommit {
 
 ## Next Steps
 
-1. **Get Stakeholder Approval** on this plan
-2. **Create OAuth Applications** for GitHub, GitLab, Bitbucket
-3. **Setup Vercel Project** and provision KV storage
-4. **Begin Phase 1** (Backend Infrastructure)
-5. **Iterative Development** with weekly reviews
-
-**Estimated Timeline:** 2-3 weeks for full implementation
-
-**Priority:** Medium (v3.0 enhancement, not blocking current v2.0 release)
+1. **Review Prerequisites** - Ensure all OAuth applications are registered
+2. **Setup Vercel Project** and provision KV storage
+3. **Begin Phase 1** - Backend Infrastructure
+4. **Iterative Development** with testing at each phase
 
 ---
 
-_Document Version: 1.0_
+_Document Version: 2.0_
 _Last Updated: 2025-12-27_
-_Author: Claude (assisted by research agent a94c959)_
+_Changes: Removed timeline estimates, fixed crypto API usage, added prerequisites section_
