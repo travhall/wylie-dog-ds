@@ -5,7 +5,7 @@
  * Handles config testing, push, pull, and conflict resolution
  */
 
-import { useCallback } from "preact/hooks";
+import { useCallback, useEffect } from "preact/hooks";
 import type { GitHubConfig } from "../../../shared/types";
 import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aware-github-client";
 import type { ExportData } from "../../../plugin/variables/processor";
@@ -19,6 +19,8 @@ import { PUSH_STEPS, PULL_STEPS } from "../../components/ProgressFeedback";
 
 /**
  * Hook for GitHub synchronization operations
+ *
+ * Automatically registers handlers with usePluginMessages via the actions object
  *
  * @param githubClient - Configured GitHub client instance
  * @param actions - Plugin message actions from usePluginMessages
@@ -268,8 +270,15 @@ export function useGitHubSync(
         actions.setPendingTokensForConflictResolution([]);
       }
     },
-    [githubClient, actions]
+    [githubClient, actions, pendingExportData]
   );
+
+  // Register handlers with usePluginMessages
+  useEffect(() => {
+    actions.registerGitHubConfigTestHandler(handleGitHubConfigTest);
+    actions.registerGitHubSyncHandler(handleGitHubSync);
+    actions.registerGitHubPullHandler(handleGitHubPull);
+  }, [actions, handleGitHubConfigTest, handleGitHubSync, handleGitHubPull]);
 
   return {
     handleGitHubConfigTest,

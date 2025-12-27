@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "preact/hooks";
+import { useState, useEffect, useCallback, useRef } from "preact/hooks";
 import type { GitHubConfig } from "../../shared/types";
 import type { PluginError } from "../../shared/error-handler";
 import type { ConflictAwareGitHubClient } from "../../plugin/sync/conflict-aware-github-client";
@@ -105,6 +105,14 @@ export interface PluginMessageActions {
   setSelectedCollection: (collection: CollectionDetails | null) => void;
   setDownloadQueue: (queue: ExportData[]) => void;
   setShowValidation: (show: boolean) => void;
+  // Callback registration methods
+  registerGitHubConfigTestHandler: (
+    handler: (config: GitHubConfig) => Promise<any>
+  ) => void;
+  registerGitHubSyncHandler: (
+    handler: (exportData: ExportData[]) => Promise<void>
+  ) => void;
+  registerGitHubPullHandler: (handler: () => Promise<void>) => void;
 }
 
 /**
@@ -112,13 +120,21 @@ export interface PluginMessageActions {
  *
  * Extracts all message handling logic from App.tsx
  * Manages state updates from plugin messages
+ *
+ * @param githubClient - GitHub client instance for configuration
  */
 export function usePluginMessages(
-  githubClient: ConflictAwareGitHubClient,
-  handleGitHubConfigTest: (config: GitHubConfig) => Promise<any>,
-  handleGitHubSync: (exportData: ExportData[]) => Promise<void>,
-  handleGitHubPull: () => Promise<void>
+  githubClient: ConflictAwareGitHubClient
 ): [PluginMessageState, PluginMessageActions] {
+  // Callback refs for GitHub operations
+  const githubConfigTestHandlerRef = useRef<
+    ((config: GitHubConfig) => Promise<any>) | null
+  >(null);
+  const githubSyncHandlerRef = useRef<
+    ((exportData: ExportData[]) => Promise<void>) | null
+  >(null);
+  const githubPullHandlerRef = useRef<(() => Promise<void>) | null>(null);
+
   // Collections
   const [collections, setCollections] = useState<Collection[]>([]);
   const [selectedCollection, setSelectedCollection] =
@@ -160,25 +176,47 @@ export function usePluginMessages(
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [hasFigmaVariables, setHasFigmaVariables] = useState(false);
 
+  // Callback registration functions
+  const registerGitHubConfigTestHandler = useCallback(
+    (handler: (config: GitHubConfig) => Promise<any>) => {
+      githubConfigTestHandlerRef.current = handler;
+    },
+    []
+  );
+
+  const registerGitHubSyncHandler = useCallback(
+    (handler: (exportData: ExportData[]) => Promise<void>) => {
+      githubSyncHandlerRef.current = handler;
+    },
+    []
+  );
+
+  const registerGitHubPullHandler = useCallback(
+    (handler: () => Promise<void>) => {
+      githubPullHandlerRef.current = handler;
+    },
+    []
+  );
+
   // Helper functions
   const loadCollections = useCallback(() => {
-    parent.postMessage({ pluginMessage: { type: "load-collections" } }, "*");
+    parent.postMessage({ pluginMessage: { type: "get-collections" } }, "*");
   }, []);
 
   const loadCollectionDetails = useCallback((collectionId: string) => {
     parent.postMessage(
-      { pluginMessage: { type: "load-collection-detail", collectionId } },
+      { pluginMessage: { type: "get-collection-details", collectionId } },
       "*"
     );
   }, []);
 
   const loadGitHubConfig = useCallback(() => {
-    parent.postMessage({ pluginMessage: { type: "load-github-config" } }, "*");
+    parent.postMessage({ pluginMessage: { type: "get-github-config" } }, "*");
   }, []);
 
   const loadOnboardingState = useCallback(() => {
     parent.postMessage(
-      { pluginMessage: { type: "load-onboarding-state" } },
+      { pluginMessage: { type: "get-onboarding-state" } },
       "*"
     );
   }, []);
@@ -312,16 +350,24 @@ export function usePluginMessages(
 
         case "test-github-config":
           console.log("Testing GitHub config:", msg.config);
-          handleGitHubConfigTest(msg.config).catch((err) => {
-            console.error("GitHub config test failed:", err);
-            setError(`GitHub configuration test failed: ${err.message}`);
-            setLoading(false);
-          });
+          if (githubConfigTestHandlerRef.current) {
+            githubConfigTestHandlerRef.current(msg.config).catch((err) => {
+              console.error("GitHub config test failed:", err);
+              setError(`GitHub configuration test failed: ${err.message}`);
+              setLoading(false);
+            });
+          } else {
+            console.warn("No GitHub config test handler registered");
+          }
           break;
 
         case "github-sync-tokens":
           console.log("GitHub sync initiated:", msg.exportData);
-          handleGitHubSync(msg.exportData);
+          if (githubSyncHandlerRef.current) {
+            githubSyncHandlerRef.current(msg.exportData);
+          } else {
+            console.warn("No GitHub sync handler registered");
+          }
           break;
 
         case "github-sync-complete":
@@ -344,7 +390,11 @@ export function usePluginMessages(
 
         case "github-pull-tokens":
           console.log("GitHub pull initiated");
-          handleGitHubPull();
+          if (githubPullHandlerRef.current) {
+            githubPullHandlerRef.current();
+          } else {
+            console.warn("No GitHub pull handler registered");
+          }
           break;
 
         case "github-pull-complete":
@@ -429,15 +479,7 @@ export function usePluginMessages(
       setPendingTokensForConflictResolution([]);
       setValidationReport(null);
     };
-  }, [
-    githubClient,
-    handleGitHubConfigTest,
-    handleGitHubSync,
-    handleGitHubPull,
-    loadCollections,
-    loadGitHubConfig,
-    loadOnboardingState,
-  ]);
+  }, [githubClient, loadCollections, loadGitHubConfig, loadOnboardingState]);
 
   const state: PluginMessageState = {
     collections,
@@ -484,6 +526,9 @@ export function usePluginMessages(
     setSelectedCollection,
     setDownloadQueue,
     setShowValidation,
+    registerGitHubConfigTestHandler,
+    registerGitHubSyncHandler,
+    registerGitHubPullHandler,
   };
 
   return [state, actions];
