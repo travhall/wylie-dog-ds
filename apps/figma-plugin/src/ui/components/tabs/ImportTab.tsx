@@ -5,6 +5,7 @@ interface ImportTabProps {
   onImportFromGitHub: () => void;
   onImportFigmaVariables: () => void;
   onLoadDemoTokens: () => void;
+  onShowFormatGuidelines?: () => void;
   loading: boolean;
   hasGitHubConfig: boolean;
   hasFigmaVariables: boolean;
@@ -19,6 +20,7 @@ export function ImportTab({
   onImportFromGitHub,
   onImportFigmaVariables,
   onLoadDemoTokens,
+  onShowFormatGuidelines,
   loading,
   hasGitHubConfig,
   hasFigmaVariables,
@@ -32,16 +34,53 @@ export function ImportTab({
         padding: "var(--space-4) 0",
       }}
     >
-      <h3
+      <div
         style={{
-          margin: "0 0 var(--space-2) 0",
-          fontSize: "var(--font-size-md)",
-          fontWeight: "var(--font-weight-semibold)",
-          color: "var(--text-primary)",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          marginBottom: "var(--space-2)",
         }}
       >
-        Import Tokens
-      </h3>
+        <h3
+          style={{
+            margin: 0,
+            fontSize: "var(--font-size-md)",
+            fontWeight: "var(--font-weight-semibold)",
+            color: "var(--text-primary)",
+          }}
+        >
+          Import Tokens
+        </h3>
+        {onShowFormatGuidelines && (
+          <button
+            onClick={onShowFormatGuidelines}
+            style={{
+              padding: "var(--space-1) var(--space-3)",
+              fontSize: "var(--font-size-xs)",
+              fontWeight: "var(--font-weight-medium)",
+              color: "var(--accent-secondary)",
+              backgroundColor: "transparent",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              cursor: "pointer",
+              transition: "var(--transition-base)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor =
+                "var(--surface-secondary)";
+              e.currentTarget.style.borderColor = "var(--accent-secondary)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.borderColor = "var(--border-default)";
+            }}
+            aria-label="View supported token formats"
+          >
+            📚 Format Guide
+          </button>
+        )}
+      </div>
       <p
         style={{
           margin: "0 0 var(--space-6) 0",

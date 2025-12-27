@@ -1338,6 +1338,7 @@ function App() {
           onImportFromGitHub={pullFromGitHub}
           onImportFigmaVariables={handleImportFigmaVariables}
           onLoadDemoTokens={handleGenerateDemoTokens}
+          onShowFormatGuidelines={() => setShowFormatGuidelines(true)}
           loading={loading || importLoading}
           hasGitHubConfig={githubConfigured}
           hasFigmaVariables={hasFigmaVariables}
