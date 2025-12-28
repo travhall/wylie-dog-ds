@@ -8,6 +8,7 @@ import type { GitHubConfig } from "../../shared/types";
 const PLUGIN_DATA_KEYS = {
   GITHUB_CONFIG: "github-config",
   FILE_VERSION: "storage-version", // For future migrations
+  FILE_ENGAGED: "has-engaged-with-file", // Track if user has interacted with this file
 } as const;
 
 /**
@@ -86,6 +87,23 @@ export class FileConfigStorage {
    */
   async setStorageVersion(version: string): Promise<void> {
     figma.root.setPluginData(PLUGIN_DATA_KEYS.FILE_VERSION, version);
+  }
+
+  /**
+   * Check if user has engaged with this file
+   * (imported tokens, configured GitHub, etc.)
+   */
+  async hasEngagedWithFile(): Promise<boolean> {
+    const engaged = figma.root.getPluginData(PLUGIN_DATA_KEYS.FILE_ENGAGED);
+    return engaged === "true";
+  }
+
+  /**
+   * Mark that user has engaged with this file
+   */
+  async markFileEngaged(): Promise<void> {
+    figma.root.setPluginData(PLUGIN_DATA_KEYS.FILE_ENGAGED, "true");
+    console.log("Marked file as engaged");
   }
 }
 

@@ -12,7 +12,7 @@
  */
 
 import { render } from "preact";
-import { useState, useCallback } from "preact/hooks";
+import { useState, useCallback, useEffect } from "preact/hooks";
 import { UIProvider, useUIContext } from "./state";
 import { usePluginMessages } from "./hooks/usePluginMessages";
 import { useGitHubSync } from "./hooks/domain/useGitHubSync";
@@ -74,6 +74,15 @@ function AppInner() {
     pluginActions,
     pluginState.pendingTokensForConflictResolution
   );
+
+  // Auto-switch to Tokens tab after successful import
+  useEffect(() => {
+    if (pluginState.shouldSwitchToTokensTab) {
+      console.log("Switching to Tokens tab after import");
+      dispatch({ type: "SET_TAB", tab: "tokens" });
+      pluginActions.clearShouldSwitchToTokensTab();
+    }
+  }, [pluginState.shouldSwitchToTokensTab, dispatch, pluginActions]);
 
   // Token Import Handler
   const handleTokenImport = useCallback(() => {
@@ -291,6 +300,32 @@ function AppInner() {
             setSelectedCollections(new Set());
           }}
           loading={pluginState.loading}
+          // Enhanced empty state actions
+          onImportFile={() => {
+            handleTokenImport();
+            // Mark engaged after successful import (handled in tokens-imported message)
+          }}
+          onGenerateDemoTokens={() => {
+            pluginActions.setLoading(true);
+            pluginActions.setLoadingMessage("Loading demo tokens...");
+            pluginActions.sendMessage({ type: "generate-demo-tokens" });
+            // Mark engaged after successful import (handled in tokens-imported message)
+          }}
+          onSetupGitHub={() => {
+            // If GitHub is configured, pull tokens; otherwise show setup wizard
+            if (pluginState.githubConfigured) {
+              handleGitHubPull();
+              // Mark engaged after successful pull (handled in github-pull-complete message)
+            } else {
+              setShowSetupWizard(true);
+              // Mark engaged when wizard shows
+              parent.postMessage(
+                { pluginMessage: { type: "mark-file-engaged" } },
+                "*"
+              );
+            }
+          }}
+          githubConfigured={pluginState.githubConfigured}
         />
       )}
 
@@ -413,18 +448,29 @@ function AppInner() {
       {/* Onboarding */}
       {pluginState.showOnboarding && (
         <FirstRunOnboarding
-          onDemoTokens={handleGenerateDemoTokens}
-          onImportVariables={handleImportFigmaVariables}
+          onDemoTokens={() => {
+            pluginActions.setLoading(true);
+            pluginActions.setLoadingMessage("Loading demo tokens...");
+            pluginActions.sendMessage({ type: "generate-demo-tokens" });
+            // Mark engaged after successful import (handled in tokens-imported message)
+          }}
           onImportFile={() => {
-            dispatch({ type: "COMPLETE_ONBOARDING" });
             handleTokenImport();
+            // Mark engaged after successful import (handled in tokens-imported message)
           }}
           onSetupGitHub={() => {
-            dispatch({ type: "COMPLETE_ONBOARDING" });
             setShowSetupWizard(true);
+            // Mark engaged when wizard shows
+            parent.postMessage(
+              { pluginMessage: { type: "mark-file-engaged" } },
+              "*"
+            );
           }}
           onSkip={() => {
-            dispatch({ type: "COMPLETE_ONBOARDING" });
+            parent.postMessage(
+              { pluginMessage: { type: "mark-file-engaged" } },
+              "*"
+            );
           }}
         />
       )}

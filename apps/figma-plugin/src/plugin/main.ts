@@ -170,19 +170,25 @@ figma.ui.onmessage = async (msg) => {
         break;
 
       case "export-tokens":
-        console.log(
-          "Exporting tokens for collections:",
-          msg.selectedCollectionIds
-        );
+        console.log("Exporting tokens for collections:", msg.collectionIds);
         try {
+          if (!msg.collectionIds || msg.collectionIds.length === 0) {
+            throw new Error("No collections selected for export");
+          }
+
           setLoading(true, "Loading collections...");
 
           // Get all collections with their variables
           const collections =
             await figma.variables.getLocalVariableCollectionsAsync();
           const selectedCollections = collections.filter((c) =>
-            msg.selectedCollectionIds.includes(c.id)
+            msg.collectionIds.includes(c.id)
           );
+
+          if (selectedCollections.length === 0) {
+            throw new Error("Selected collections not found");
+          }
+
           const collectionsWithVariables = [];
 
           setLoading(
@@ -548,6 +554,32 @@ figma.ui.onmessage = async (msg) => {
         }
         break;
 
+      case "check-file-engagement":
+        try {
+          const hasEngaged = await fileConfigStorage.hasEngagedWithFile();
+          figma.ui.postMessage({
+            type: "file-engagement-status",
+            hasEngaged,
+          });
+        } catch (error) {
+          console.error("Error checking file engagement:", error);
+        }
+        break;
+
+      case "mark-file-engaged":
+        try {
+          await fileConfigStorage.markFileEngaged();
+          console.log("File marked as engaged");
+          // Notify UI that engagement status changed
+          figma.ui.postMessage({
+            type: "file-engagement-status",
+            hasEngaged: true,
+          });
+        } catch (error) {
+          console.error("Error marking file engaged:", error);
+        }
+        break;
+
       case "github-sync-tokens":
         try {
           setLoading(true, "Exporting tokens for GitHub sync...");
@@ -646,27 +678,81 @@ figma.ui.onmessage = async (msg) => {
         break;
 
       case "generate-demo-tokens":
-        console.log("Generating demo tokens...");
+        console.log("🎨 Generating demo tokens...");
         try {
-          // Import demo tokens from pre-generated file
-          const demoTokens = await import("./data/demo-tokens.json");
+          setLoading(true, "Loading demo tokens...");
 
-          // Create message object to trigger import
-          const importMessage = {
-            type: "import-tokens" as const,
-            files: [
-              {
-                filename: "demo-tokens.json",
-                content: JSON.stringify(demoTokens.default, null, 2),
+          // Import demo tokens from pre-generated file
+          console.log("📦 Loading demo tokens file...");
+          const demoTokens = await import("./data/demo-tokens.json");
+          const demoTokenContent = JSON.stringify(demoTokens.default, null, 2);
+          console.log("✅ Demo tokens file loaded");
+
+          // Parse with format adapter
+          console.log("🔍 Parsing token file...");
+          const parseResult = await parseTokenFile(demoTokenContent);
+          const tokenData = parseResult.data;
+          console.log("✅ Tokens parsed");
+
+          // Validate structure
+          console.log("🔍 Validating token structure...");
+          const validation = validateTokenStructure(tokenData);
+          if (!validation.valid) {
+            throw new Error(
+              `Invalid demo token structure: ${validation.errors.join(", ")}`
+            );
+          }
+          console.log("✅ Token structure valid");
+
+          // Validate references
+          setLoading(true, "Validating token references...");
+          const allTokenData = Array.isArray(tokenData)
+            ? tokenData
+            : [tokenData];
+          const referenceValidation = validateTokenReferences(allTokenData);
+          console.log(
+            `✅ References validated (${referenceValidation.missingReferences.length} missing)`
+          );
+
+          // Import tokens
+          setLoading(true, "Creating variables in Figma...");
+          console.log("🚀 Starting import to Figma...");
+          const result = await importMultipleCollections(allTokenData);
+          console.log(`✅ Import result:`, {
+            success: result.success,
+            collectionsProcessed: result.collectionsProcessed,
+            totalVariablesCreated: result.totalVariablesCreated,
+            message: result.message,
+          });
+
+          setLoading(false);
+
+          const response = {
+            type: "tokens-imported",
+            result: {
+              success: result.success,
+              totalCollectionsCreated: result.collectionsProcessed,
+              totalVariablesCreated: result.totalVariablesCreated,
+              message: result.message || "Demo tokens imported successfully!",
+            },
+            validationReport: result.validationReport || {
+              valid: validation.valid,
+              errors: validation.errors || [],
+              warnings: validation.warnings || [],
+              missingReferences: referenceValidation.missingReferences || [],
+              stats: {
+                totalTokens: result.totalVariablesCreated || 0,
+                totalReferences: 0,
+                totalCollections: result.collectionsProcessed || 0,
               },
-            ],
+            },
           };
 
-          // Send import message to trigger the import flow
-          // This ensures the full import flow runs (validation, processing, etc.)
-          figma.ui.postMessage(importMessage);
+          console.log("📤 Sending import result to UI:", response);
+          figma.ui.postMessage(response);
         } catch (error: unknown) {
-          console.error("Error generating demo tokens:", error);
+          console.error("❌ Error generating demo tokens:", error);
+          setLoading(false);
           figma.ui.postMessage({
             type: "error",
             message: `Failed to generate demo tokens: ${error instanceof Error ? error.message : "Unknown error"}`,
@@ -786,5 +872,84 @@ figma.on("run", ({ command }) => {
     });
   }
 });
+
+// Real-time variable sync
+// Since Figma doesn't provide documentchange events, we use periodic polling
+// to detect when variables are added/deleted
+let cachedCollectionIds: Set<string> = new Set();
+let cachedVariableCount = 0;
+let syncInterval: ReturnType<typeof setInterval> | null = null;
+
+async function checkForVariableChanges() {
+  try {
+    const collections =
+      await figma.variables.getLocalVariableCollectionsAsync();
+    const currentCollectionIds = new Set(collections.map((c) => c.id));
+    const currentVariableCount = collections.reduce(
+      (sum, c) => sum + c.variableIds.length,
+      0
+    );
+
+    // Detect changes by comparing IDs and variable counts
+    const collectionsChanged =
+      cachedCollectionIds.size !== currentCollectionIds.size ||
+      ![...cachedCollectionIds].every((id) => currentCollectionIds.has(id));
+
+    const variablesChanged = cachedVariableCount !== currentVariableCount;
+
+    if (collectionsChanged || variablesChanged) {
+      console.log(
+        "🔄 Variable changes detected - Collections:",
+        collections.length,
+        "Variables:",
+        currentVariableCount
+      );
+
+      // Update cache
+      cachedCollectionIds = currentCollectionIds;
+      cachedVariableCount = currentVariableCount;
+
+      // Notify UI
+      figma.ui.postMessage({
+        type: "collections-loaded",
+        collections: collections.map((c) => ({
+          id: c.id,
+          name: c.name,
+          modes: c.modes,
+          variableIds: c.variableIds,
+        })),
+      });
+    }
+  } catch (error) {
+    console.error("Error checking for variable changes:", error);
+  }
+}
+
+// Start periodic sync when plugin opens
+async function startVariableSync() {
+  // Initial load and cache
+  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  cachedCollectionIds = new Set(collections.map((c) => c.id));
+  cachedVariableCount = collections.reduce(
+    (sum, c) => sum + c.variableIds.length,
+    0
+  );
+
+  // Poll every 2 seconds for changes
+  syncInterval = setInterval(checkForVariableChanges, 2000);
+  console.log("✅ Variable sync started");
+}
+
+// Stop sync when plugin closes
+figma.on("close", () => {
+  if (syncInterval) {
+    clearInterval(syncInterval);
+    syncInterval = null;
+    console.log("⏹️ Variable sync stopped");
+  }
+});
+
+// Start sync immediately
+startVariableSync();
 
 console.log("Plugin initialized");

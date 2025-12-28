@@ -2,7 +2,6 @@ import { useState, useEffect } from "preact/hooks";
 
 interface FirstRunOnboardingProps {
   onDemoTokens: () => void;
-  onImportVariables: () => void;
   onImportFile: () => void;
   onSetupGitHub: () => void;
   onSkip: () => void;
@@ -10,40 +9,10 @@ interface FirstRunOnboardingProps {
 
 export const FirstRunOnboarding = ({
   onDemoTokens,
-  onImportVariables,
   onImportFile,
   onSetupGitHub,
   onSkip,
 }: FirstRunOnboardingProps) => {
-  const [variableCount, setVariableCount] = useState(0);
-  const [hasVariables, setHasVariables] = useState(false);
-  const [detecting, setDetecting] = useState(true);
-
-  useEffect(() => {
-    // Request variable detection from plugin
-    parent.postMessage(
-      {
-        pluginMessage: {
-          type: "detect-figma-variables",
-        },
-      },
-      "*"
-    );
-
-    // Listen for detection result
-    const handleMessage = (event: MessageEvent) => {
-      const msg = event.data.pluginMessage;
-      if (msg && msg.type === "figma-variables-detected") {
-        setHasVariables(msg.detection.hasVariables);
-        setVariableCount(msg.detection.totalVariables);
-        setDetecting(false);
-      }
-    };
-
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
-  }, []);
-
   return (
     <div
       style={{
@@ -173,88 +142,6 @@ export const FirstRunOnboarding = ({
                   }}
                 >
                   Load pre-built tokens to explore the plugin
-                </div>
-              </div>
-            </div>
-          </button>
-
-          {/* Import Existing Variables */}
-          <button
-            onClick={onImportVariables}
-            disabled={!hasVariables || detecting}
-            aria-label={`Import existing Figma Variables${hasVariables ? ` (${variableCount} found)` : " (none found)"}`}
-            aria-disabled={!hasVariables || detecting}
-            style={{
-              width: "100%",
-              padding: "20px",
-              backgroundColor: hasVariables
-                ? "var(--surface-secondary)"
-                : "var(--surface-tertiary)",
-              color: hasVariables
-                ? "var(--text-primary)"
-                : "var(--text-tertiary)",
-              border: `2px solid ${hasVariables ? "var(--border-strong)" : "var(--border-default)"}`,
-              borderRadius: "var(--radius-lg)",
-              cursor: hasVariables ? "pointer" : "not-allowed",
-              textAlign: "left",
-              transition: "var(--transition-base)",
-              opacity: detecting ? 0.5 : 1,
-              outline: "none",
-            }}
-            onMouseEnter={(e) => {
-              if (hasVariables && !detecting) {
-                e.currentTarget.style.backgroundColor =
-                  "var(--surface-tertiary)";
-                e.currentTarget.style.borderColor = "var(--text-tertiary)";
-                e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow =
-                  "0 4px 8px rgba(0, 0, 0, 0.1)";
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (hasVariables) {
-                e.currentTarget.style.backgroundColor =
-                  "var(--surface-secondary)";
-                e.currentTarget.style.borderColor = "var(--border-strong)";
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "none";
-              }
-            }}
-            onFocus={(e) => {
-              if (hasVariables && !detecting) {
-                e.currentTarget.style.outline =
-                  "2px solid var(--accent-secondary)";
-                e.currentTarget.style.outlineOffset = "2px";
-              }
-            }}
-            onBlur={(e) => {
-              e.currentTarget.style.outline = "none";
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "start", gap: "16px" }}>
-              <div style={{ fontSize: "32px" }}>📦</div>
-              <div style={{ flex: 1 }}>
-                <div
-                  style={{
-                    fontSize: "var(--font-size-lg)",
-                    fontWeight: "var(--font-weight-bold)",
-                    marginBottom: "var(--space-1)",
-                  }}
-                >
-                  Import Existing Variables
-                  {detecting && " (Detecting...)"}
-                  {!detecting && hasVariables && ` (${variableCount})`}
-                  {!detecting && !hasVariables && " (None found)"}
-                </div>
-                <div
-                  style={{
-                    fontSize: "var(--font-size-sm)",
-                    color: "var(--text-secondary)",
-                  }}
-                >
-                  {hasVariables
-                    ? "Convert your existing Figma Variables to tokens"
-                    : "Your file doesn't contain Variables"}
                 </div>
               </div>
             </div>

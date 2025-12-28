@@ -79,6 +79,9 @@ export interface PluginMessageState {
   // Onboarding
   showOnboarding: boolean;
   hasFigmaVariables: boolean;
+
+  // UI Navigation hints
+  shouldSwitchToTokensTab: boolean;
 }
 
 /**
@@ -113,6 +116,7 @@ export interface PluginMessageActions {
     handler: (exportData: ExportData[]) => Promise<void>
   ) => void;
   registerGitHubPullHandler: (handler: () => Promise<void>) => void;
+  clearShouldSwitchToTokensTab: () => void;
 }
 
 /**
@@ -175,6 +179,10 @@ export function usePluginMessages(
   // Onboarding
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [hasFigmaVariables, setHasFigmaVariables] = useState(false);
+  const [hasEngagedWithFile, setHasEngagedWithFile] = useState(true); // Default true to avoid flash
+
+  // UI Navigation hints
+  const [shouldSwitchToTokensTab, setShouldSwitchToTokensTab] = useState(false);
 
   // Callback registration functions
   const registerGitHubConfigTestHandler = useCallback(
@@ -240,11 +248,13 @@ export function usePluginMessages(
 
       switch (msg.type) {
         case "collections-loaded":
-          console.log("Collections loaded:", msg.collections);
+          console.log("📦 Collections loaded from plugin:", msg.collections);
+          console.log(`📊 Collection count: ${msg.collections?.length || 0}`);
           setCollections(msg.collections || []);
           setLoading(false);
           setError(null);
           setCurrentOperation(null);
+          console.log("✅ Collections state updated");
           break;
 
         case "collection-details-loaded":
@@ -269,20 +279,41 @@ export function usePluginMessages(
           break;
 
         case "tokens-imported":
-          console.log("Tokens imported:", msg.result);
+          console.log("📥 Received tokens-imported message:", msg);
           setImportLoading(false);
           setLoading(false);
           setCurrentOperation(null);
 
           if (msg.result && msg.result.success) {
+            const tokenCount = msg.result.totalVariablesCreated || 0;
+            const collectionCount = msg.result.totalCollectionsCreated || 0;
+
+            console.log(
+              `✅ Import success: ${tokenCount} tokens in ${collectionCount} collections`
+            );
+            console.log("Current collections state:", collections);
+
             setSuccessMessage(
-              `✅ Added ${msg.result.totalVariablesCreated} tokens to Figma!`
+              `✅ Added ${tokenCount} token${tokenCount !== 1 ? "s" : ""} in ${collectionCount} collection${collectionCount !== 1 ? "s" : ""}!`
             );
             setTimeout(() => setSuccessMessage(null), 5000);
 
-            // Reload collections to show imported variables
-            setTimeout(() => loadCollections(), 1000);
+            // Mark file as engaged after successful import
+            console.log("📝 Marking file as engaged...");
+            parent.postMessage(
+              { pluginMessage: { type: "mark-file-engaged" } },
+              "*"
+            );
+
+            // Reload collections immediately to show imported variables
+            console.log("🔄 Requesting collections reload...");
+            loadCollections();
+
+            // Signal to switch to tokens tab to show results
+            console.log("🔀 Signaling tab switch to tokens...");
+            setShouldSwitchToTokensTab(true);
           } else {
+            console.error("❌ Import failed:", msg.result);
             setError(
               `Import failed: ${msg.result?.message || "Unknown error"}`
             );
@@ -407,6 +438,13 @@ export function usePluginMessages(
           if (msg.result && msg.result.success) {
             setSuccessMessage("✅ Got your tokens from GitHub!");
             setTimeout(() => setSuccessMessage(null), 5000);
+
+            // Mark file as engaged after successful pull
+            parent.postMessage(
+              { pluginMessage: { type: "mark-file-engaged" } },
+              "*"
+            );
+
             // Reload collections
             setTimeout(() => loadCollections(), 1000);
           } else {
@@ -448,13 +486,35 @@ export function usePluginMessages(
 
         case "onboarding-state-loaded":
           console.log("Onboarding state loaded:", msg.hasSeenOnboarding);
-          if (!msg.hasSeenOnboarding) {
-            setShowOnboarding(true);
-          }
+          // Don't automatically show onboarding - wait for file engagement check
+          break;
+
+        case "file-engagement-status":
+          console.log("File engagement status:", msg.hasEngaged);
+          setHasEngagedWithFile(msg.hasEngaged);
+          // Don't show onboarding here - wait for collections and config to load
           break;
 
         default:
-          console.warn("Unknown message type:", msg.type);
+          // Ignore messages sent FROM the UI (like import-tokens, mark-file-engaged, etc)
+          // Only warn about unexpected messages FROM the plugin
+          const outgoingMessageTypes = [
+            "import-tokens",
+            "mark-file-engaged",
+            "generate-demo-tokens",
+            "export-tokens",
+            "github-sync-tokens",
+            "get-collections",
+            "get-collection-details",
+            "get-github-config",
+            "save-github-config",
+            "test-github-config",
+            "get-onboarding-state",
+            "check-file-engagement",
+          ];
+          if (!outgoingMessageTypes.includes(msg.type)) {
+            console.warn("Unknown message type from plugin:", msg.type);
+          }
       }
     };
 
@@ -464,6 +524,12 @@ export function usePluginMessages(
     loadCollections();
     loadGitHubConfig();
     loadOnboardingState();
+
+    // Check if user has engaged with this specific file
+    parent.postMessage(
+      { pluginMessage: { type: "check-file-engagement" } },
+      "*"
+    );
 
     // Cleanup
     return () => {
@@ -480,6 +546,38 @@ export function usePluginMessages(
       setValidationReport(null);
     };
   }, [githubClient, loadCollections, loadGitHubConfig, loadOnboardingState]);
+
+  // Determine if onboarding should show based on all conditions
+  useEffect(() => {
+    // Show onboarding if:
+    // 1. User hasn't engaged with THIS file
+    // 2. File has no collections
+    // 3. File has no GitHub config
+    const shouldShowOnboarding =
+      !hasEngagedWithFile && collections.length === 0 && !githubConfigured;
+
+    console.log("Onboarding visibility check:", {
+      hasEngagedWithFile,
+      collectionsCount: collections.length,
+      githubConfigured,
+      shouldShowOnboarding,
+      currentlyShowing: showOnboarding,
+    });
+
+    if (shouldShowOnboarding && !showOnboarding) {
+      console.log("✅ Showing onboarding based on file state");
+      setShowOnboarding(true);
+    } else if (!shouldShowOnboarding && showOnboarding) {
+      // Hide onboarding if conditions no longer met
+      console.log("❌ Hiding onboarding - conditions no longer met");
+      setShowOnboarding(false);
+    }
+  }, [
+    hasEngagedWithFile,
+    collections.length,
+    githubConfigured,
+    showOnboarding,
+  ]);
 
   const state: PluginMessageState = {
     collections,
@@ -503,7 +601,12 @@ export function usePluginMessages(
     progressSteps,
     showOnboarding,
     hasFigmaVariables,
+    shouldSwitchToTokensTab,
   };
+
+  const clearShouldSwitchToTokensTab = useCallback(() => {
+    setShouldSwitchToTokensTab(false);
+  }, []);
 
   const actions: PluginMessageActions = {
     loadCollections,
@@ -529,6 +632,7 @@ export function usePluginMessages(
     registerGitHubConfigTestHandler,
     registerGitHubSyncHandler,
     registerGitHubPullHandler,
+    clearShouldSwitchToTokensTab,
   };
 
   return [state, actions];

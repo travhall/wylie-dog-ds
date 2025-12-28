@@ -254,7 +254,7 @@ export function ValidationDisplay({
             onClick={onClose}
             style={{
               padding: "var(--space-2) var(--space-4)",
-              backgroundColor: "var(--surface-tertiary)",
+              backgroundColor: "var(--accent-primary)",
               color: "var(--text-inverse)",
               border: "none",
               borderRadius: "var(--radius-sm)",
@@ -262,6 +262,13 @@ export function ValidationDisplay({
               fontSize: "var(--font-size-sm)",
               fontWeight: "var(--font-weight-medium)",
               transition: "var(--transition-base)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor =
+                "var(--accent-primary-hover)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--accent-primary)";
             }}
           >
             Close

@@ -3,6 +3,7 @@ import type {
   Collection,
   CollectionDetails,
 } from "../../hooks/usePluginMessages";
+import { EmptyTokensState } from "../EmptyTokensState";
 
 interface TokensTabProps {
   collections: Collection[];
@@ -12,6 +13,11 @@ interface TokensTabProps {
   onSelectAll: () => void;
   onDeselectAll: () => void;
   loading: boolean;
+  // Enhanced empty state actions
+  onImportFile?: () => void;
+  onGenerateDemoTokens?: () => void;
+  onSetupGitHub?: () => void;
+  githubConfigured?: boolean;
 }
 
 /**
@@ -26,6 +32,10 @@ export function TokensTab({
   onSelectAll,
   onDeselectAll,
   loading,
+  onImportFile,
+  onGenerateDemoTokens,
+  onSetupGitHub,
+  githubConfigured = false,
 }: TokensTabProps) {
   const hasCollections = collections.length > 0;
   const hasSelections = selectedCollections.size > 0;
@@ -188,6 +198,13 @@ export function TokensTab({
             );
           })}
         </div>
+      ) : onImportFile && onGenerateDemoTokens && onSetupGitHub ? (
+        <EmptyTokensState
+          onImportFile={onImportFile}
+          onGenerateDemoTokens={onGenerateDemoTokens}
+          onSetupGitHub={onSetupGitHub}
+          githubConfigured={githubConfigured}
+        />
       ) : (
         <div
           style={{
