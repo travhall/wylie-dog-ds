@@ -257,7 +257,8 @@ function AppInner() {
             id: "sync",
             label: "Sync",
             icon: "🔄",
-            disabled: !pluginState.githubConfigured,
+            // Always enabled - shows configuration prompt when not configured
+            disabled: false,
           },
         ]}
         activeTab={uiState.activeTab}

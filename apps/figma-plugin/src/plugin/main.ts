@@ -6,6 +6,8 @@ import {
   validateTokenStructure,
   validateTokenReferences,
 } from "./variables/importer";
+import { fileConfigStorage } from "./storage/file-storage";
+import { userPreferencesStorage } from "./storage/user-storage";
 
 // GitHub operations moved to UI thread - no imports here
 
@@ -56,6 +58,10 @@ figma.showUI(__html__, {
   height: 600,
   title: "Token Bridge",
 });
+
+// Migration disabled - needs complete redesign
+// The current approach has fatal flaws that break existing functionality
+// TODO: Redesign migration strategy before re-enabling
 
 // Handle UI messages
 figma.ui.onmessage = async (msg) => {
@@ -406,28 +412,7 @@ figma.ui.onmessage = async (msg) => {
 
       case "get-github-config":
         try {
-          const savedConfig =
-            await figma.clientStorage.getAsync("github-config");
-          let config = null;
-
-          if (savedConfig) {
-            // Handle both string and object cases
-            if (typeof savedConfig === "string") {
-              try {
-                config = JSON.parse(savedConfig);
-              } catch (parseError) {
-                console.warn(
-                  "Invalid GitHub config JSON, clearing stored config:",
-                  parseError
-                );
-                await figma.clientStorage.deleteAsync("github-config");
-                config = null;
-              }
-            } else if (typeof savedConfig === "object") {
-              // Already an object
-              config = savedConfig;
-            }
-          }
+          const config = await fileConfigStorage.getGitHubConfig();
 
           figma.ui.postMessage({
             type: "github-config-loaded",
@@ -438,6 +423,7 @@ figma.ui.onmessage = async (msg) => {
           figma.ui.postMessage({
             type: "github-config-loaded",
             config: null,
+            error: error instanceof Error ? error.message : "Unknown error",
           });
         }
         break;
@@ -467,10 +453,8 @@ figma.ui.onmessage = async (msg) => {
 
       case "save-github-config":
         try {
-          await figma.clientStorage.setAsync(
-            "github-config",
-            JSON.stringify(msg.config)
-          );
+          await fileConfigStorage.setGitHubConfig(msg.config);
+
           figma.ui.postMessage({
             type: "github-config-saved",
             success: true,
@@ -481,18 +465,20 @@ figma.ui.onmessage = async (msg) => {
             type: "github-config-saved",
             success: false,
             error:
-              error instanceof Error ? error.message : "Failed to save config",
+              error instanceof Error
+                ? error.message
+                : "Failed to save configuration",
           });
         }
         break;
 
       case "get-advanced-mode":
         try {
-          const advancedMode =
-            await figma.clientStorage.getAsync("advanced-mode");
+          const advancedMode = await userPreferencesStorage.getAdvancedMode();
+
           figma.ui.postMessage({
             type: "advanced-mode-loaded",
-            advancedMode: advancedMode === true || advancedMode === "true",
+            advancedMode,
           });
         } catch (error) {
           console.error("Error loading advanced mode:", error);
@@ -505,7 +491,7 @@ figma.ui.onmessage = async (msg) => {
 
       case "save-advanced-mode":
         try {
-          await figma.clientStorage.setAsync("advanced-mode", msg.advancedMode);
+          await userPreferencesStorage.setAdvancedMode(msg.advancedMode);
           console.log("Advanced mode preference saved:", msg.advancedMode);
         } catch (error) {
           console.error("Error saving advanced mode:", error);
@@ -514,13 +500,12 @@ figma.ui.onmessage = async (msg) => {
 
       case "get-onboarding-state":
         try {
-          const hasSeenOnboarding = await figma.clientStorage.getAsync(
-            "has-seen-onboarding"
-          );
+          const hasSeenOnboarding =
+            await userPreferencesStorage.getHasSeenOnboarding();
+
           figma.ui.postMessage({
             type: "onboarding-state-loaded",
-            hasSeenOnboarding:
-              hasSeenOnboarding === true || hasSeenOnboarding === "true",
+            hasSeenOnboarding,
           });
         } catch (error) {
           console.error("Error loading onboarding state:", error);
@@ -533,13 +518,33 @@ figma.ui.onmessage = async (msg) => {
 
       case "save-onboarding-state":
         try {
-          await figma.clientStorage.setAsync(
-            "has-seen-onboarding",
+          await userPreferencesStorage.setHasSeenOnboarding(
             msg.hasSeenOnboarding
           );
           console.log("Onboarding state saved:", msg.hasSeenOnboarding);
         } catch (error) {
           console.error("Error saving onboarding state:", error);
+        }
+        break;
+
+      case "clear-github-config":
+        try {
+          await fileConfigStorage.clearGitHubConfig();
+
+          figma.ui.postMessage({
+            type: "github-config-cleared",
+            success: true,
+          });
+        } catch (error) {
+          console.error("Error clearing GitHub config:", error);
+          figma.ui.postMessage({
+            type: "github-config-cleared",
+            success: false,
+            error:
+              error instanceof Error
+                ? error.message
+                : "Failed to clear configuration",
+          });
         }
         break;
 

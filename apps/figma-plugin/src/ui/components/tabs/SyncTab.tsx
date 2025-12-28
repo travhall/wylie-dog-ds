@@ -117,6 +117,18 @@ export function SyncTab({
             <div>
               <strong>Branch:</strong> {githubConfig.branch}
             </div>
+            <div
+              style={{
+                marginTop: "var(--space-2)",
+                paddingTop: "var(--space-2)",
+                borderTop: "1px solid var(--success)",
+                fontSize: "var(--font-size-xs)",
+                color: "var(--text-secondary)",
+                fontStyle: "italic",
+              }}
+            >
+              💡 This configuration is saved to this Figma file
+            </div>
             <div>
               <strong>Path:</strong> {githubConfig.tokenPath}
             </div>
@@ -149,6 +161,14 @@ export function SyncTab({
             }}
           >
             Connect to enable bi-directional sync with conflict detection
+            <div
+              style={{
+                marginTop: "var(--space-2)",
+                fontStyle: "italic",
+              }}
+            >
+              💡 Each Figma file can sync to a different repository
+            </div>
           </div>
           <button
             onClick={onConfigureGitHub}
