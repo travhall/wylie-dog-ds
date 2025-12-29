@@ -17,6 +17,7 @@ import { UIProvider, useUIContext } from "./state";
 import { usePluginMessages } from "./hooks/usePluginMessages";
 import { useGitHubSync } from "./hooks/domain/useGitHubSync";
 import { ConflictAwareGitHubClient } from "../plugin/sync/conflict-aware-github-client";
+import JSZip from "jszip";
 import type { GitHubConfig } from "../shared/types";
 import type { ConflictResolution } from "../plugin/sync/types";
 
@@ -24,7 +25,6 @@ import type { ConflictResolution } from "../plugin/sync/types";
 import { TabBar } from "./components/layout/TabBar";
 import { TokensTab } from "./components/tabs/TokensTab";
 import { ImportTab } from "./components/tabs/ImportTab";
-import { ExportTab } from "./components/tabs/ExportTab";
 import { SyncTab } from "./components/tabs/SyncTab";
 import { EnhancedErrorDisplay } from "./components/EnhancedErrorDisplay";
 import { ConflictResolutionDisplay } from "./components/ConflictResolutionDisplay";
@@ -83,6 +83,69 @@ function AppInner() {
       pluginActions.clearShouldSwitchToTokensTab();
     }
   }, [pluginState.shouldSwitchToTokensTab, dispatch, pluginActions]);
+
+  // Auto-download exported files
+  useEffect(() => {
+    if (pluginState.downloadQueue && pluginState.downloadQueue.length > 0) {
+      const fileCount = pluginState.downloadQueue.length;
+      console.log(
+        `📦 Starting download for ${fileCount} file${fileCount !== 1 ? "s" : ""}`
+      );
+
+      const downloadFiles = async () => {
+        try {
+          if (fileCount === 1) {
+            // Single file - direct download
+            const file = pluginState.downloadQueue[0];
+            console.log(`📄 Downloading single file: ${file.filename}`);
+            const blob = new Blob([file.content], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = file.filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            console.log(`✅ Downloaded: ${file.filename}`);
+          } else {
+            // Multiple files - create zip
+            console.log(`📦 Creating zip archive with ${fileCount} files`);
+            const zip = new JSZip();
+
+            pluginState.downloadQueue.forEach((file) => {
+              console.log(`  Adding to zip: ${file.filename}`);
+              zip.file(file.filename, file.content);
+            });
+
+            console.log(`🔨 Generating zip file...`);
+            const zipBlob = await zip.generateAsync({ type: "blob" });
+
+            console.log(`💾 Triggering zip download`);
+            const url = URL.createObjectURL(zipBlob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "token-collections.zip";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            console.log(
+              `✅ Downloaded: token-collections.zip (${fileCount} files)`
+            );
+          }
+
+          pluginActions.clearDownloadQueue();
+        } catch (error) {
+          console.error(`❌ Error creating download:`, error);
+          pluginActions.setError("Failed to download files. Please try again.");
+          pluginActions.clearDownloadQueue();
+        }
+      };
+
+      downloadFiles();
+    }
+  }, [pluginState.downloadQueue, pluginActions]);
 
   // Token Import Handler
   const handleTokenImport = useCallback(() => {
@@ -261,7 +324,6 @@ function AppInner() {
         tabs={[
           { id: "tokens", label: "Tokens", icon: "🎨" },
           { id: "import", label: "Import", icon: "📥" },
-          { id: "export", label: "Export", icon: "📤" },
           {
             id: "sync",
             label: "Sync",
@@ -326,26 +388,7 @@ function AppInner() {
             }
           }}
           githubConfigured={pluginState.githubConfigured}
-        />
-      )}
-
-      {/* IMPORT TAB */}
-      {uiState.activeTab === "import" && (
-        <ImportTab
-          onImportFile={handleTokenImport}
-          onImportFromGitHub={handleGitHubPull}
-          onImportFigmaVariables={handleImportFigmaVariables}
-          onLoadDemoTokens={handleGenerateDemoTokens}
-          loading={pluginState.loading || pluginState.importLoading}
-          hasGitHubConfig={pluginState.githubConfigured}
-          hasFigmaVariables={pluginState.hasFigmaVariables}
-        />
-      )}
-
-      {/* EXPORT TAB */}
-      {uiState.activeTab === "export" && (
-        <ExportTab
-          selectedCollections={selectedCollections}
+          // Export actions
           onDownloadJSON={() => {
             if (selectedCollections.size === 0) {
               pluginActions.setError(
@@ -360,7 +403,7 @@ function AppInner() {
           }}
           onPushToGitHub={() => {
             if (!pluginState.githubConfigured) {
-              pluginActions.setError("Please configure GitHub first");
+              setShowSetupWizard(true);
               return;
             }
             if (selectedCollections.size === 0) {
@@ -374,7 +417,17 @@ function AppInner() {
               collectionIds: Array.from(selectedCollections),
             });
           }}
-          loading={pluginState.loading}
+        />
+      )}
+
+      {/* IMPORT TAB */}
+      {uiState.activeTab === "import" && (
+        <ImportTab
+          onImportFile={handleTokenImport}
+          onImportFromGitHub={handleGitHubPull}
+          onLoadDemoTokens={handleGenerateDemoTokens}
+          onSetupGitHub={() => setShowSetupWizard(true)}
+          loading={pluginState.loading || pluginState.importLoading}
           hasGitHubConfig={pluginState.githubConfigured}
         />
       )}

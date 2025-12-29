@@ -20,8 +20,7 @@ export function EmptyTokensState({
   return (
     <div
       style={{
-        padding: "var(--space-8) var(--space-4)",
-        textAlign: "center",
+        padding: "var(--space-4) 0",
       }}
     >
       <div
@@ -39,7 +38,7 @@ export function EmptyTokensState({
         style={{
           fontSize: "var(--font-size-sm)",
           color: "var(--text-secondary)",
-          marginBottom: "var(--space-8)",
+          marginBottom: "var(--space-4)",
           lineHeight: "var(--line-height-relaxed)",
         }}
       >

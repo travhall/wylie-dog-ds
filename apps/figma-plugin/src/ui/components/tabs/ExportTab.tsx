@@ -4,6 +4,8 @@ interface ExportTabProps {
   selectedCollections: Set<string>;
   onDownloadJSON: () => void;
   onPushToGitHub: () => void;
+  onSwitchToTokensTab: () => void;
+  onSetupGitHub: () => void;
   loading: boolean;
   hasGitHubConfig: boolean;
 }
@@ -16,6 +18,8 @@ export function ExportTab({
   selectedCollections,
   onDownloadJSON,
   onPushToGitHub,
+  onSwitchToTokensTab,
+  onSetupGitHub,
   loading,
   hasGitHubConfig,
 }: ExportTabProps) {
@@ -64,7 +68,73 @@ export function ExportTab({
             color: "var(--text-secondary)",
           }}
         >
-          ⚠️ Select token collections from the <strong>Tokens</strong> tab first
+          ⚠️ Select token collections from the{" "}
+          <button
+            onClick={onSwitchToTokensTab}
+            style={{
+              background: "none",
+              border: "none",
+              padding: 0,
+              color: "var(--accent-primary)",
+              fontWeight: "var(--font-weight-bold)",
+              cursor: "pointer",
+              textDecoration: "underline",
+              fontSize: "inherit",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "var(--accent-primary-hover)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "var(--accent-primary)";
+            }}
+          >
+            Tokens
+          </button>{" "}
+          tab first
+        </div>
+      )}
+
+      {/* GitHub setup prompt */}
+      {!hasGitHubConfig && (
+        <div
+          style={{
+            padding: "var(--space-3)",
+            marginBottom: "var(--space-4)",
+            backgroundColor: "var(--info-light)",
+            border: "1px solid var(--info)",
+            borderRadius: "var(--radius-md)",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "var(--space-2)",
+          }}
+        >
+          <span>💡 Want to push tokens to GitHub?</span>
+          <button
+            onClick={onSetupGitHub}
+            style={{
+              padding: "var(--space-1) var(--space-3)",
+              fontSize: "var(--font-size-xs)",
+              fontWeight: "var(--font-weight-medium)",
+              color: "var(--text-inverse)",
+              backgroundColor: "var(--accent-primary)",
+              border: "none",
+              borderRadius: "var(--radius-sm)",
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor =
+                "var(--accent-primary-hover)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--accent-primary)";
+            }}
+          >
+            Connect
+          </button>
         </div>
       )}
 

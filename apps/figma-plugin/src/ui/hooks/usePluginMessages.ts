@@ -117,6 +117,7 @@ export interface PluginMessageActions {
   ) => void;
   registerGitHubPullHandler: (handler: () => Promise<void>) => void;
   clearShouldSwitchToTokensTab: () => void;
+  clearDownloadQueue: () => void;
 }
 
 /**
@@ -271,10 +272,7 @@ export function usePluginMessages(
 
           if (msg.exportData) {
             setDownloadQueue(msg.exportData);
-            setSuccessMessage(
-              `✅ ${msg.exportData.length} ${msg.exportData.length === 1 ? "file" : "files"} ready to download!`
-            );
-            setTimeout(() => setSuccessMessage(null), 5000);
+            // Don't show success message - download happens automatically
           }
           break;
 
@@ -608,6 +606,10 @@ export function usePluginMessages(
     setShouldSwitchToTokensTab(false);
   }, []);
 
+  const clearDownloadQueue = useCallback(() => {
+    setDownloadQueue([]);
+  }, []);
+
   const actions: PluginMessageActions = {
     loadCollections,
     loadCollectionDetails,
@@ -633,6 +635,7 @@ export function usePluginMessages(
     registerGitHubSyncHandler,
     registerGitHubPullHandler,
     clearShouldSwitchToTokensTab,
+    clearDownloadQueue,
   };
 
   return [state, actions];

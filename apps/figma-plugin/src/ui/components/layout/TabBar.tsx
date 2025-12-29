@@ -1,6 +1,6 @@
 import { h } from "preact";
 
-export type TabId = "tokens" | "import" | "export" | "sync";
+export type TabId = "tokens" | "import" | "sync";
 
 export interface Tab {
   id: TabId;
@@ -12,14 +12,12 @@ export interface Tab {
 const DEFAULT_TABS: Tab[] = [
   { id: "tokens", label: "Tokens", icon: "🎨" },
   { id: "import", label: "Import", icon: "📥" },
-  { id: "export", label: "Export", icon: "📤" },
   { id: "sync", label: "Sync", icon: "🔄" },
 ];
 
 const TAB_ARIA_LABELS: Record<TabId, string> = {
   tokens: "Select tokens",
   import: "Import tokens",
-  export: "Export tokens",
   sync: "Sync with GitHub",
 };
 
@@ -112,8 +110,9 @@ export function TabBar({
             disabled={isDisabled}
             style={{
               position: "relative",
-              padding: "var(--space-2) var(--space-4)",
-              fontSize: "var(--font-size-sm)",
+              padding: "var(--space-3)",
+              flexGrow: 1,
+              fontSize: "var(--font-size-md)",
               fontWeight: isActive
                 ? "var(--font-weight-semibold)"
                 : "var(--font-weight-semibold)",

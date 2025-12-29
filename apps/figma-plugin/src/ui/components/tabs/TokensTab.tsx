@@ -18,6 +18,9 @@ interface TokensTabProps {
   onGenerateDemoTokens?: () => void;
   onSetupGitHub?: () => void;
   githubConfigured?: boolean;
+  // Export actions
+  onDownloadJSON?: () => void;
+  onPushToGitHub?: () => void;
 }
 
 /**
@@ -36,6 +39,8 @@ export function TokensTab({
   onGenerateDemoTokens,
   onSetupGitHub,
   githubConfigured = false,
+  onDownloadJSON,
+  onPushToGitHub,
 }: TokensTabProps) {
   const hasCollections = collections.length > 0;
   const hasSelections = selectedCollections.size > 0;
@@ -108,6 +113,97 @@ export function TokensTab({
           </div>
         )}
       </div>
+
+      {/* Export actions - show when selections exist */}
+      {hasSelections && onDownloadJSON && onPushToGitHub && (
+        <div
+          style={{
+            marginBottom: "var(--space-4)",
+            padding: "var(--space-3)",
+            backgroundColor: "var(--info-light)",
+            border: "1px solid var(--info)",
+            borderRadius: "var(--radius-md)",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "var(--font-size-xs)",
+              color: "var(--text-secondary)",
+              marginBottom: "var(--space-2)",
+            }}
+          >
+            {selectedCollections.size} collection
+            {selectedCollections.size !== 1 ? "s" : ""} selected
+          </div>
+          <div style={{ display: "flex", gap: "var(--space-2)" }}>
+            <button
+              onClick={onDownloadJSON}
+              disabled={loading}
+              style={{
+                flex: 1,
+                padding: "var(--space-2) var(--space-3)",
+                fontSize: "var(--font-size-sm)",
+                fontWeight: "var(--font-weight-medium)",
+                color: "var(--text-inverse)",
+                backgroundColor: "var(--accent-primary)",
+                border: "none",
+                borderRadius: "var(--radius-md)",
+                cursor: loading ? "not-allowed" : "pointer",
+                transition: "var(--transition-base)",
+              }}
+              onMouseEnter={(e) => {
+                if (!loading) {
+                  e.currentTarget.style.backgroundColor =
+                    "var(--accent-primary-hover)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--accent-primary)";
+              }}
+            >
+              💾 Download JSON
+            </button>
+            <button
+              onClick={onPushToGitHub}
+              disabled={loading || !githubConfigured}
+              style={{
+                flex: 1,
+                padding: "var(--space-2) var(--space-3)",
+                fontSize: "var(--font-size-sm)",
+                fontWeight: "var(--font-weight-medium)",
+                color:
+                  loading || !githubConfigured
+                    ? "var(--text-tertiary)"
+                    : "var(--text-inverse)",
+                backgroundColor:
+                  loading || !githubConfigured
+                    ? "var(--surface-secondary)"
+                    : "var(--accent-primary)",
+                border: "none",
+                borderRadius: "var(--radius-md)",
+                cursor:
+                  loading || !githubConfigured ? "not-allowed" : "pointer",
+                transition: "var(--transition-base)",
+                opacity: loading || !githubConfigured ? 0.5 : 1,
+              }}
+              onMouseEnter={(e) => {
+                if (!loading && githubConfigured) {
+                  e.currentTarget.style.backgroundColor =
+                    "var(--accent-primary-hover)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (githubConfigured) {
+                  e.currentTarget.style.backgroundColor =
+                    "var(--accent-primary)";
+                }
+              }}
+            >
+              📤 {githubConfigured ? "Push to GitHub" : "Connect GitHub"}
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Collection list */}
       {loading ? (

@@ -3,27 +3,25 @@ import { h } from "preact";
 interface ImportTabProps {
   onImportFile: () => void;
   onImportFromGitHub: () => void;
-  onImportFigmaVariables: () => void;
   onLoadDemoTokens: () => void;
+  onSetupGitHub: () => void;
   onShowFormatGuidelines?: () => void;
   loading: boolean;
   hasGitHubConfig: boolean;
-  hasFigmaVariables: boolean;
 }
 
 /**
  * ImportTab - All token import operations
- * Sources: Local files, GitHub, existing Figma Variables, demo tokens
+ * Sources: Local files, GitHub, demo tokens
  */
 export function ImportTab({
   onImportFile,
   onImportFromGitHub,
-  onImportFigmaVariables,
   onLoadDemoTokens,
+  onSetupGitHub,
   onShowFormatGuidelines,
   loading,
   hasGitHubConfig,
-  hasFigmaVariables,
 }: ImportTabProps) {
   return (
     <div
@@ -118,23 +116,10 @@ export function ImportTab({
               ? "Sync tokens from your connected repository"
               : "Connect to GitHub first to enable"
           }
-          buttonLabel={hasGitHubConfig ? "Pull Tokens" : "Setup Required"}
-          onClick={onImportFromGitHub}
-          disabled={loading || !hasGitHubConfig}
-        />
-
-        {/* Existing Figma Variables */}
-        <ImportOption
-          icon="🎨"
-          title="Convert Figma Variables"
-          description={
-            hasFigmaVariables
-              ? "Import existing Figma Variables as tokens"
-              : "No existing Variables found"
-          }
-          buttonLabel={hasFigmaVariables ? "Convert" : "None Available"}
-          onClick={onImportFigmaVariables}
-          disabled={loading || !hasFigmaVariables}
+          buttonLabel={hasGitHubConfig ? "Pull Tokens" : "Connect to GitHub"}
+          onClick={hasGitHubConfig ? onImportFromGitHub : onSetupGitHub}
+          disabled={loading}
+          variant="secondary"
         />
 
         {/* Demo Tokens */}

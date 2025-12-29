@@ -8,7 +8,7 @@
 /**
  * Tab identifiers for main navigation
  */
-export type Tab = "tokens" | "import" | "export" | "sync";
+export type Tab = "tokens" | "import" | "sync";
 
 /**
  * Active modal dialogs

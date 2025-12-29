@@ -259,15 +259,25 @@ figma.ui.onmessage = async (msg) => {
           // Process collections into token format
           const exportData = await processCollectionsForExport(
             collectionsWithVariables,
-            msg.selectedCollectionIds
+            msg.collectionIds
           );
+
+          // Transform to downloadable files format
+          const downloadableFiles = exportData.map((data) => {
+            const collectionName = Object.keys(data)[0];
+            const collectionData = data[collectionName];
+            return {
+              filename: `${collectionName}.json`,
+              content: JSON.stringify(data, null, 2),
+            };
+          });
 
           setLoading(false);
 
           // Send processed tokens back to UI
           figma.ui.postMessage({
             type: "tokens-exported",
-            exportData: exportData,
+            exportData: downloadableFiles,
           });
 
           console.log("Export completed successfully");
