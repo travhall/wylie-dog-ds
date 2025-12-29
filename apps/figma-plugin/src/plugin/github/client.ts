@@ -210,12 +210,15 @@ export class GitHubClient {
       // Generate descriptive commit message if not provided
       if (!commitMessage) {
         const collectionNames = exportData.map((data) => Object.keys(data)[0]);
-        const timestamp = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+        // Format: YYYY-MM-DD HH:MM:SS UTC
+        const now = new Date();
+        const timestamp =
+          now.toISOString().replace("T", " ").substring(0, 19) + " UTC";
         const collectionsText =
           collectionNames.length === 1
             ? collectionNames[0]
             : `${collectionNames.length} collections (${collectionNames.join(", ")})`;
-        commitMessage = `chore: update ${collectionsText} tokens (${timestamp})`;
+        commitMessage = `chore: update ${collectionsText} tokens\n\nSynced at ${timestamp}`;
       }
 
       console.log(
@@ -316,13 +319,24 @@ export class GitHubClient {
         parents: [currentCommitSha],
       });
 
-      // Update branch reference
-      await this.octokit.git.updateRef({
-        owner: this.config.owner,
-        repo: this.config.repo,
-        ref: `heads/${this.config.branch}`,
-        sha: newCommit.sha,
-      });
+      // Update branch reference with retry logic for race conditions
+      try {
+        await this.octokit.git.updateRef({
+          owner: this.config.owner,
+          repo: this.config.repo,
+          ref: `heads/${this.config.branch}`,
+          sha: newCommit.sha,
+          force: false, // Explicit: never force push
+        });
+      } catch (updateError: any) {
+        // If update fails due to non-fast-forward, throw helpful error
+        if (updateError.message?.includes("not a fast forward")) {
+          throw new Error(
+            "Branch has new commits since sync started. Please try again - the plugin will automatically sync with the latest changes."
+          );
+        }
+        throw updateError;
+      }
 
       console.log(
         `✅ Created single commit for ${filesUpdated.length} file(s): ${newCommit.sha}`
