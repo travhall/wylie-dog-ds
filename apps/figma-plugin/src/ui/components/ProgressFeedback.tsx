@@ -6,6 +6,7 @@ interface ProgressStepProps {
   estimatedTime?: number; // Estimated seconds remaining
   itemsProcessed?: { current: number; total: number }; // For chunked operations
   onCancel?: () => void; // Cancel callback
+  loadingMessage?: string; // Simple message for non-stepped loading
 }
 
 interface ProgressStep {
@@ -24,8 +25,59 @@ export function ProgressFeedback({
   estimatedTime,
   itemsProcessed,
   onCancel,
+  loadingMessage,
 }: ProgressStepProps) {
-  if (!loading || steps.length === 0) return null;
+  if (!loading) return null;
+
+  // Simple loading screen when no steps are defined
+  if (steps.length === 0) {
+    return (
+      <div
+        style={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          backgroundColor: "var(--surface-overlay)",
+          color: "var(--text-inverse)",
+          padding: "var(--space-6)",
+          borderRadius: "var(--radius-lg)",
+          zIndex: 2000,
+          minWidth: "280px",
+          textAlign: "center",
+          boxShadow: "var(--shadow-lg)",
+        }}
+      >
+        {/* Simple spinner animation */}
+        <div
+          style={{
+            fontSize: "32px",
+            marginBottom: "var(--space-4)",
+            animation: "spin 1s linear infinite",
+          }}
+        >
+          ⏳
+        </div>
+        <div
+          style={{
+            fontSize: "var(--font-size-lg)",
+            fontWeight: "var(--font-weight-semibold)",
+            color: "var(--text-primary)",
+          }}
+        >
+          {loadingMessage || "Loading..."}
+        </div>
+        <style>
+          {`
+            @keyframes spin {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+          `}
+        </style>
+      </div>
+    );
+  }
 
   const currentStepData = steps[currentStep];
 

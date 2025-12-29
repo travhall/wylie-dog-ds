@@ -31,6 +31,7 @@ import { ConflictResolutionDisplay } from "./components/ConflictResolutionDispla
 import { ValidationDisplay } from "./components/ValidationDisplay";
 import { ProgressFeedback } from "./components/ProgressFeedback";
 import { SetupWizard } from "./components/SetupWizard";
+import { GitHubConfig } from "./components/GitHubConfig";
 import { FirstRunOnboarding } from "./components/FirstRunOnboarding";
 import { ExistingTokensImporter } from "./components/ExistingTokensImporter";
 import { FormatGuidelinesDialog } from "./components/FormatGuidelinesDialog";
@@ -56,6 +57,7 @@ function AppInner() {
 
   // Modals (local state)
   const [showSetupWizard, setShowSetupWizard] = useState(false);
+  const [showGitHubSettings, setShowGitHubSettings] = useState(false);
   const [showExistingTokensImporter, setShowExistingTokensImporter] =
     useState(false);
   const [showFormatGuidelines, setShowFormatGuidelines] = useState(false);
@@ -230,6 +232,15 @@ function AppInner() {
   const handleSetupWizardComplete = useCallback(
     (config: GitHubConfig) => {
       setShowSetupWizard(false);
+      handleGitHubConfigTest(config);
+    },
+    [handleGitHubConfigTest]
+  );
+
+  // GitHub Config Save (from settings)
+  const handleGitHubConfigSave = useCallback(
+    (config: GitHubConfig) => {
+      setShowGitHubSettings(false);
       handleGitHubConfigTest(config);
     },
     [handleGitHubConfigTest]
@@ -436,7 +447,14 @@ function AppInner() {
       {uiState.activeTab === "sync" && (
         <SyncTab
           githubConfig={pluginState.githubConfig}
-          onConfigureGitHub={() => setShowSetupWizard(true)}
+          onConfigureGitHub={() => {
+            // If already configured, show settings dialog; otherwise show setup wizard
+            if (pluginState.githubConfigured && pluginState.githubConfig) {
+              setShowGitHubSettings(true);
+            } else {
+              setShowSetupWizard(true);
+            }
+          }}
           onQuickSync={() => {
             if (selectedCollections.size === 0) {
               pluginActions.setError(
@@ -490,12 +508,47 @@ function AppInner() {
         />
       )}
 
-      {/* Setup Wizard */}
+      {/* Setup Wizard (for new configuration) */}
       {showSetupWizard && (
         <SetupWizard
           onComplete={handleSetupWizardComplete}
           onClose={() => setShowSetupWizard(false)}
         />
+      )}
+
+      {/* GitHub Settings (for editing existing configuration) */}
+      {showGitHubSettings && (
+        <div
+          style={{
+            position: "fixed",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 10000,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "var(--surface-primary)",
+              borderRadius: "var(--radius-lg)",
+              width: "90%",
+              maxWidth: "480px",
+              maxHeight: "90vh",
+              overflowY: "auto",
+              boxShadow: "var(--shadow-lg)",
+            }}
+          >
+            <GitHubConfig
+              onConfigSaved={handleGitHubConfigSave}
+              onClose={() => setShowGitHubSettings(false)}
+            />
+          </div>
+        </div>
       )}
 
       {/* Onboarding */}
@@ -549,7 +602,8 @@ function AppInner() {
       <ProgressFeedback
         steps={pluginState.progressSteps}
         currentStep={pluginState.progressStep}
-        loading={pluginState.loading && pluginState.progressSteps.length > 0}
+        loading={pluginState.loading}
+        loadingMessage={pluginState.loadingMessage}
         onCancel={
           pluginState.currentOperation ? handleCancelOperation : undefined
         }

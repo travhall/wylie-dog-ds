@@ -4,6 +4,7 @@ import type { GitHubConfig, SyncMode } from "../../shared/types";
 interface SetupWizardProps {
   onComplete: (config: GitHubConfig) => void;
   onClose: () => void;
+  initialConfig?: GitHubConfig | null; // Pre-populate for editing existing config
 }
 
 interface StepProps {
@@ -692,9 +693,15 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
   );
 }
 
-export function SetupWizard({ onComplete, onClose }: SetupWizardProps) {
+export function SetupWizard({
+  onComplete,
+  onClose,
+  initialConfig,
+}: SetupWizardProps) {
   const [currentStep, setCurrentStep] = useState(0);
-  const [config, setConfig] = useState<Partial<GitHubConfig>>({});
+  const [config, setConfig] = useState<Partial<GitHubConfig>>(
+    initialConfig || {}
+  );
 
   const steps = [
     { component: AccessTokenStep, title: "Access Token" },
