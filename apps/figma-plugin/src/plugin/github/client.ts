@@ -200,13 +200,24 @@ export class GitHubClient {
 
   async syncTokens(
     exportData: any[],
-    commitMessage: string = "Update design tokens via Token Bridge"
+    commitMessage?: string
   ): Promise<SyncResult> {
     if (!this.octokit || !this.config) {
       return { success: false, error: "GitHub client not initialized" };
     }
 
     try {
+      // Generate descriptive commit message if not provided
+      if (!commitMessage) {
+        const collectionNames = exportData.map((data) => Object.keys(data)[0]);
+        const timestamp = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+        const collectionsText =
+          collectionNames.length === 1
+            ? collectionNames[0]
+            : `${collectionNames.length} collections (${collectionNames.join(", ")})`;
+        commitMessage = `chore: update ${collectionsText} tokens (${timestamp})`;
+      }
+
       console.log(
         `Syncing ${exportData.length} token files to repository in ${this.config.syncMode} mode`
       );
@@ -235,33 +246,96 @@ export class GitHubClient {
 
     const filesUpdated: string[] = [];
 
-    // Update each token file directly on the configured branch
-    for (const collectionData of exportData) {
-      const collectionName = Object.keys(collectionData)[0];
-      const tokens = collectionData[collectionName];
+    try {
+      // Get the current commit SHA
+      const { data: refData } = await this.octokit.git.getRef({
+        owner: this.config.owner,
+        repo: this.config.repo,
+        ref: `heads/${this.config.branch}`,
+      });
+      const currentCommitSha = refData.object.sha;
 
-      // Create file path (e.g., tokens/primitive.json)
-      const fileName = `${collectionName.toLowerCase().replace(/\s+/g, "-")}.json`;
-      const filePath = this.config.tokenPath.endsWith("/")
-        ? `${this.config.tokenPath}${fileName}`
-        : `${this.config.tokenPath}/${fileName}`;
+      // Get the current tree
+      const { data: currentCommit } = await this.octokit.git.getCommit({
+        owner: this.config.owner,
+        repo: this.config.repo,
+        commit_sha: currentCommitSha,
+      });
+      const baseTreeSha = currentCommit.tree.sha;
 
-      const fileContent = JSON.stringify(
-        [{ [collectionName]: tokens }],
-        null,
-        2
+      // Create blobs for all files
+      const tree = [];
+      for (const collectionData of exportData) {
+        const collectionName = Object.keys(collectionData)[0];
+        const tokens = collectionData[collectionName];
+
+        // Create file path (e.g., tokens/primitive.json)
+        const fileName = `${collectionName.toLowerCase().replace(/\s+/g, "-")}.json`;
+        const filePath = this.config.tokenPath.endsWith("/")
+          ? `${this.config.tokenPath}${fileName}`
+          : `${this.config.tokenPath}/${fileName}`;
+
+        const fileContent = JSON.stringify(
+          [{ [collectionName]: tokens }],
+          null,
+          2
+        );
+
+        // Create blob
+        const { data: blob } = await this.octokit.git.createBlob({
+          owner: this.config.owner,
+          repo: this.config.repo,
+          content: btoa(fileContent),
+          encoding: "base64",
+        });
+
+        tree.push({
+          path: filePath,
+          mode: "100644" as const,
+          type: "blob" as const,
+          sha: blob.sha,
+        });
+
+        filesUpdated.push(filePath);
+      }
+
+      // Create new tree
+      const { data: newTree } = await this.octokit.git.createTree({
+        owner: this.config.owner,
+        repo: this.config.repo,
+        base_tree: baseTreeSha,
+        tree,
+      });
+
+      // Create new commit
+      const { data: newCommit } = await this.octokit.git.createCommit({
+        owner: this.config.owner,
+        repo: this.config.repo,
+        message: commitMessage,
+        tree: newTree.sha,
+        parents: [currentCommitSha],
+      });
+
+      // Update branch reference
+      await this.octokit.git.updateRef({
+        owner: this.config.owner,
+        repo: this.config.repo,
+        ref: `heads/${this.config.branch}`,
+        sha: newCommit.sha,
+      });
+
+      console.log(
+        `✅ Created single commit for ${filesUpdated.length} file(s): ${newCommit.sha}`
       );
 
-      await this.updateFileDirectly(filePath, fileContent, commitMessage);
-      filesUpdated.push(filePath);
-
-      console.log(`Updated file directly: ${filePath}`);
+      return {
+        success: true,
+        filesUpdated,
+      };
+    } catch (error: any) {
+      console.error("Error in direct sync:", error);
+      throw error;
     }
-
-    return {
-      success: true,
-      filesUpdated,
-    };
   }
 
   private async pullRequestSync(

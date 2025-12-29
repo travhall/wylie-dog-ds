@@ -175,8 +175,16 @@ export class ConflictAwareGitHubClient extends GitHubClient {
 
   /**
    * Get current local tokens from Figma variables
+   * Note: Only works in plugin thread context where figma API is available
    */
   async getCurrentLocalTokens(): Promise<ExportData[]> {
+    // Check if we're in the plugin thread (where figma API exists)
+    if (typeof figma === "undefined") {
+      // Running in UI thread - cannot access figma API
+      // This is expected during conflict detection in UI context
+      return [];
+    }
+
     try {
       // Get all local variable collections
       const collections =

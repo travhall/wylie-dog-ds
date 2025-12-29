@@ -117,7 +117,7 @@ export function useGitHubSync(
         }
 
         actions.setLoadingMessage("Saving to GitHub...");
-        actions.setProgressStep(3);
+        actions.setProgressStep(2); // Keep at step 3 (index 2) - don't exceed the 3 defined steps
 
         // Send success message back to plugin
         parent.postMessage(
@@ -129,6 +129,22 @@ export function useGitHubSync(
           },
           "*"
         );
+
+        // Clear loading state in UI after successful sync
+        actions.setLoading(false);
+        actions.setLoadingMessage("");
+        actions.setProgressSteps([]);
+        actions.setProgressStep(0);
+
+        if (syncResult.success) {
+          const message = syncResult.pullRequestUrl
+            ? "✅ Pull request created! Check GitHub to review"
+            : "✅ Saved to GitHub successfully!";
+          actions.setSuccessMessage(message);
+          setTimeout(() => actions.setSuccessMessage(null), 6000);
+        } else {
+          actions.setError(syncResult.error || "GitHub sync failed");
+        }
       } catch (error: any) {
         console.error("GitHub sync error:", error);
         parent.postMessage(
@@ -143,6 +159,13 @@ export function useGitHubSync(
           },
           "*"
         );
+
+        // Clear loading state and show error in UI
+        actions.setLoading(false);
+        actions.setLoadingMessage("");
+        actions.setProgressSteps([]);
+        actions.setProgressStep(0);
+        actions.setError(error.message || "GitHub sync failed");
       }
     },
     [githubClient, actions]

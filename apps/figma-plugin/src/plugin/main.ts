@@ -594,13 +594,20 @@ figma.ui.onmessage = async (msg) => {
         try {
           setLoading(true, "Exporting tokens for GitHub sync...");
 
+          // Get collection IDs from message (handles both collectionIds and selectedCollectionIds for backwards compatibility)
+          const collectionIds = msg.collectionIds || msg.selectedCollectionIds;
+
+          if (!collectionIds) {
+            throw new Error("No collection IDs provided");
+          }
+
           // Get collections and export tokens (same logic as export-tokens)
           const collections =
             await figma.variables.getLocalVariableCollectionsAsync();
           const collectionsWithVariables = [];
 
           for (const collection of collections) {
-            if (!msg.selectedCollectionIds.includes(collection.id)) {
+            if (!collectionIds.includes(collection.id)) {
               continue;
             }
 
@@ -636,13 +643,13 @@ figma.ui.onmessage = async (msg) => {
 
           const exportData = await processCollectionsForExport(
             collectionsWithVariables,
-            msg.selectedCollectionIds
+            collectionIds
           );
 
           // Forward to UI thread for GitHub operations
           figma.ui.postMessage({
             type: "github-sync-tokens",
-            selectedCollectionIds: msg.selectedCollectionIds,
+            selectedCollectionIds: collectionIds,
             exportData: exportData,
           });
         } catch (error: unknown) {
@@ -847,6 +854,15 @@ figma.ui.onmessage = async (msg) => {
             message: `Failed to convert Figma Variables: ${error instanceof Error ? error.message : "Unknown error"}`,
           });
         }
+        break;
+
+      case "github-sync-complete":
+        // Acknowledgment message from UI thread after GitHub sync completes
+        // No action needed in plugin thread - UI handles the result
+        console.log(
+          "GitHub sync completed:",
+          msg.result?.success ? "✅" : "❌"
+        );
         break;
 
       case "close":

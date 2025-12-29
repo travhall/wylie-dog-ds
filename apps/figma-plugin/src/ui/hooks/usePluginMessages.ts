@@ -510,6 +510,7 @@ export function usePluginMessages(
             "generate-demo-tokens",
             "export-tokens",
             "github-sync-tokens",
+            "github-sync-complete", // Response message from GitHub sync operations
             "get-collections",
             "get-collection-details",
             "get-github-config",
