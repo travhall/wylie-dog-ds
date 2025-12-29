@@ -31,7 +31,7 @@ import { ConflictResolutionDisplay } from "./components/ConflictResolutionDispla
 import { ValidationDisplay } from "./components/ValidationDisplay";
 import { ProgressFeedback } from "./components/ProgressFeedback";
 import { SetupWizard } from "./components/SetupWizard";
-import { GitHubConfig } from "./components/GitHubConfig";
+import { GitHubConfig as GitHubConfigDialog } from "./components/GitHubConfig";
 import { FirstRunOnboarding } from "./components/FirstRunOnboarding";
 import { ExistingTokensImporter } from "./components/ExistingTokensImporter";
 import { FormatGuidelinesDialog } from "./components/FormatGuidelinesDialog";
@@ -543,7 +543,7 @@ function AppInner() {
               boxShadow: "var(--shadow-lg)",
             }}
           >
-            <GitHubConfig
+            <GitHubConfigDialog
               onConfigSaved={handleGitHubConfigSave}
               onClose={() => setShowGitHubSettings(false)}
             />
