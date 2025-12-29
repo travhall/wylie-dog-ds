@@ -6,6 +6,14 @@ import type { TokenConflict } from "../../plugin/sync/types";
 import type { ExportData } from "../../plugin/variables/processor";
 
 /**
+ * Downloadable file format
+ */
+export interface DownloadableFile {
+  filename: string;
+  content: string;
+}
+
+/**
  * Collection data from Figma
  */
 export interface Collection {
@@ -62,7 +70,7 @@ export interface PluginMessageState {
   githubConfigured: boolean;
 
   // Export/Import data
-  downloadQueue: ExportData[];
+  downloadQueue: DownloadableFile[];
   validationReport: any;
   showValidation: boolean;
   adapterResults: any[];
@@ -106,7 +114,7 @@ export interface PluginMessageActions {
   setLoadingMessage: (message: string) => void;
   setCurrentOperation: (operation: string | null) => void;
   setSelectedCollection: (collection: CollectionDetails | null) => void;
-  setDownloadQueue: (queue: ExportData[]) => void;
+  setDownloadQueue: (queue: DownloadableFile[]) => void;
   setShowValidation: (show: boolean) => void;
   // Callback registration methods
   registerGitHubConfigTestHandler: (
@@ -160,7 +168,7 @@ export function usePluginMessages(
   const [githubConfigured, setGithubConfigured] = useState(false);
 
   // Export/Import data
-  const [downloadQueue, setDownloadQueue] = useState<ExportData[]>([]);
+  const [downloadQueue, setDownloadQueue] = useState<DownloadableFile[]>([]);
   const [validationReport, setValidationReport] = useState<any>(null);
   const [showValidation, setShowValidation] = useState(false);
   const [adapterResults, setAdapterResults] = useState<any[]>([]);

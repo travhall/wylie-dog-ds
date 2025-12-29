@@ -20,7 +20,6 @@ describe("TabBar", () => {
 
     expect(screen.getByText("Tokens")).toBeInTheDocument();
     expect(screen.getByText("Import")).toBeInTheDocument();
-    expect(screen.getByText("Export")).toBeInTheDocument();
     expect(screen.getByText("Sync")).toBeInTheDocument();
   });
 
@@ -46,10 +45,10 @@ describe("TabBar", () => {
       />
     );
 
-    const exportTab = screen.getByRole("tab", { name: /export tokens/i });
-    fireEvent.click(exportTab);
+    const importTab = screen.getByRole("tab", { name: /import tokens/i });
+    fireEvent.click(importTab);
 
-    expect(mockOnTabChange).toHaveBeenCalledWith("export");
+    expect(mockOnTabChange).toHaveBeenCalledWith("import");
   });
 
   it("should disable sync tab when GitHub is not connected", () => {

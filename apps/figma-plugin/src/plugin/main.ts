@@ -748,7 +748,7 @@ figma.ui.onmessage = async (msg) => {
             validationReport: result.validationReport || {
               valid: validation.valid,
               errors: validation.errors || [],
-              warnings: validation.warnings || [],
+              warnings: [],
               missingReferences: referenceValidation.missingReferences || [],
               stats: {
                 totalTokens: result.totalVariablesCreated || 0,
