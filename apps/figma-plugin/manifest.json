@@ -9,10 +9,11 @@
     "allowedDomains": [
       "https://api.github.com",
       "https://github.com",
+      "https://raw.githubusercontent.com",
       "https://fonts.googleapis.com",
       "https://fonts.gstatic.com"
     ],
-    "reasoning": "GitHub API integration for token synchronization and Google Fonts for typography (Manrope variable font)"
+    "reasoning": "GitHub API and raw content for token synchronization, Google Fonts for typography (Manrope variable font)"
   },
   "permissions": ["currentuser"],
   "editorType": ["figma"],

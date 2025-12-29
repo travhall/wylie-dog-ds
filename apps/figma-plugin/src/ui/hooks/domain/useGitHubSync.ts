@@ -154,28 +154,13 @@ export function useGitHubSync(
   const handleGitHubPull = useCallback(async () => {
     try {
       actions.setLoading(true);
-      actions.setProgressSteps(PULL_STEPS);
-      actions.setProgressStep(0);
+      actions.setLoadingMessage("Pulling tokens from GitHub...");
+      actions.setProgressSteps([]); // Clear progress steps - use simple loading
 
-      actions.setLoadingMessage("Getting from GitHub...");
-      actions.setProgressStep(1);
+      // Use simple pullTokens() - skip broken conflict detection
+      const pullResult = await githubClient.pullTokens();
 
-      actions.setLoadingMessage("Checking for changes...");
-      const pullResult = await githubClient.pullTokensWithConflictDetection();
-      actions.setProgressStep(2);
-
-      if (pullResult.conflicts && pullResult.conflicts.length > 0) {
-        actions.setConflicts(pullResult.conflicts);
-        actions.setPendingTokensForConflictResolution(pullResult.tokens || []);
-        actions.setShowConflictResolution(true);
-        actions.setLoading(false);
-        actions.setLoadingMessage("");
-        actions.setProgressSteps([]);
-        return;
-      }
-
-      actions.setLoadingMessage("Loading your tokens...");
-      actions.setProgressStep(3);
+      actions.setLoadingMessage("Importing tokens...");
 
       if (pullResult.success && pullResult.tokens) {
         const files = pullResult.tokens.map((tokenCollection, index) => {
@@ -197,33 +182,17 @@ export function useGitHubSync(
           "*"
         );
       } else {
-        parent.postMessage(
-          {
-            pluginMessage: {
-              type: "github-pull-complete",
-              result: {
-                success: false,
-                error: pullResult.error || "GitHub pull failed",
-              },
-            },
-          },
-          "*"
-        );
+        // Handle pull failure directly
+        actions.setLoading(false);
+        actions.setProgressSteps([]);
+        actions.setError(pullResult.error || "GitHub pull failed");
       }
     } catch (error: any) {
       console.error("GitHub pull error:", error);
-      parent.postMessage(
-        {
-          pluginMessage: {
-            type: "github-pull-complete",
-            result: {
-              success: false,
-              error: error.message || "GitHub pull failed",
-            },
-          },
-        },
-        "*"
-      );
+      // Handle error directly
+      actions.setLoading(false);
+      actions.setProgressSteps([]);
+      actions.setError(error.message || "GitHub pull failed");
     }
   }, [githubClient, actions]);
 

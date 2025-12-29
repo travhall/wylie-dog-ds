@@ -50,6 +50,15 @@ export class ConflictAwareGitHubClient extends GitHubClient {
 
       console.log(`📥 Pulled ${pullResult.tokens.length} remote collections`);
 
+      // Skip conflict detection if there are no local tokens
+      if (localTokens.length === 0) {
+        console.log("✅ No local tokens, skipping conflict detection");
+        return {
+          ...pullResult,
+          requiresConflictResolution: false,
+        };
+      }
+
       // Detect conflicts between local and remote
       const conflictResult = this.conflictDetector.detectConflicts(
         localTokens,

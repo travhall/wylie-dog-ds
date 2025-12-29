@@ -119,44 +119,42 @@ export class GitHubClient {
         `Pulling tokens from ${this.config.owner}/${this.config.repo}:${this.config.branch}`
       );
 
-      // Get all files in the token directory
-      const { data: contents } = await this.octokit.repos.getContent({
-        owner: this.config.owner,
-        repo: this.config.repo,
-        path: this.config.tokenPath,
-        ref: this.config.branch,
-      });
+      // Try to fetch common token file names directly from raw.githubusercontent.com
+      // This avoids CORS issues with the GitHub API directory listing
+      const commonFileNames = [
+        "primitive.json",
+        "semantic.json",
+        "components.json",
+        "component.json",
+        "tokens.json",
+      ];
 
-      if (!Array.isArray(contents)) {
-        return { success: false, error: "Token path is not a directory" };
-      }
-
-      // Filter for JSON files
-      const jsonFiles = contents.filter(
-        (file) => file.type === "file" && file.name.endsWith(".json")
-      );
-
-      if (jsonFiles.length === 0) {
-        return { success: false, error: "No token JSON files found" };
-      }
-
-      // Download and parse each file
       const tokens = [];
-      for (const file of jsonFiles) {
-        try {
-          const { data: fileData } = await this.octokit.repos.getContent({
-            owner: this.config.owner,
-            repo: this.config.repo,
-            path: file.path,
-            ref: this.config.branch,
-          });
+      let filesFound = 0;
 
-          if (Array.isArray(fileData) || fileData.type !== "file") {
-            console.warn(`Skipping non-file: ${file.path}`);
+      // Normalize path - remove trailing slash if present
+      const basePath = this.config.tokenPath.endsWith("/")
+        ? this.config.tokenPath.slice(0, -1)
+        : this.config.tokenPath;
+
+      for (const fileName of commonFileNames) {
+        try {
+          const rawUrl = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${this.config.branch}/${basePath}/${fileName}`;
+          console.log(`Attempting to fetch: ${fileName}`);
+
+          const response = await fetch(rawUrl);
+
+          // 404 is expected for files that don't exist - skip silently
+          if (response.status === 404) {
+            console.log(`File not found (skipping): ${fileName}`);
             continue;
           }
 
-          const content = atob(fileData.content);
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
+
+          const content = await response.text();
           const tokenData = JSON.parse(content);
 
           // Ensure token data is in array format for consistency
@@ -166,12 +164,25 @@ export class GitHubClient {
             tokens.push(tokenData);
           }
 
-          console.log(`Loaded tokens from: ${file.name}`);
+          filesFound++;
+          console.log(`✅ Loaded tokens from: ${fileName}`);
         } catch (fileError: any) {
-          console.error(`Error loading file ${file.name}:`, fileError);
+          // Only log non-404 errors
+          if (!fileError.message?.includes("404")) {
+            console.error(`Error loading file ${fileName}:`, fileError);
+          }
           // Continue with other files rather than failing completely
         }
       }
+
+      if (filesFound === 0) {
+        return {
+          success: false,
+          error: `No token files found in ${basePath}/. Tried: ${commonFileNames.join(", ")}`,
+        };
+      }
+
+      console.log(`✅ Successfully loaded ${filesFound} token file(s)`);
 
       return {
         success: true,
