@@ -3,11 +3,11 @@
     "components": {
       "modes": [
         {
-          "modeId": "mode:components:light",
+          "modeId": "770:14",
           "name": "Light"
         },
         {
-          "modeId": "mode:components:dark",
+          "modeId": "770:15",
           "name": "Dark"
         }
       ],
@@ -654,10 +654,10 @@
         },
         "button.ghost.background": {
           "$type": "color",
-          "$value": "transparent",
+          "$value": "#000000",
           "valuesByMode": {
-            "Light": "transparent",
-            "Dark": "transparent"
+            "Light": "#000000",
+            "Dark": "#000000"
           }
         },
         "button.ghost.background-hover": {
@@ -1366,10 +1366,10 @@
         },
         "dialog.overlay": {
           "$type": "color",
-          "$value": "oklch(0% 0 0 / 0.8)",
+          "$value": "#000000",
           "valuesByMode": {
-            "Light": "oklch(0% 0 0 / 0.8)",
-            "Dark": "oklch(0% 0 0 / 0.8)"
+            "Light": "#000000",
+            "Dark": "#000000"
           }
         },
         "dialog.title": {
