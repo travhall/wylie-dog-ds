@@ -7,7 +7,7 @@ import {
 } from "@wyliedog/ui/accordion";
 
 const meta: Meta<typeof Accordion> = {
-  title: "3. Components/Layout/Accordion",
+  title: "3. Components/Data Display/Accordion",
   component: Accordion,
   parameters: {
     layout: "centered",

@@ -1,6 +1,5 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import { Badge } from "@wyliedog/ui/badge";
-import { Button } from "@wyliedog/ui/button";
 import {
   BarChart3,
   Inbox,

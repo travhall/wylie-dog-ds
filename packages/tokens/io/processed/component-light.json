@@ -321,7 +321,7 @@
   },
   "button.ghost.background": {
     "$type": "color",
-    "$value": "transparent"
+    "$value": "#000000"
   },
   "button.ghost.background-hover": {
     "$type": "color",
@@ -677,7 +677,7 @@
   },
   "dialog.overlay": {
     "$type": "color",
-    "$value": "oklch(0% 0 0 / 0.8)"
+    "$value": "#000000"
   },
   "dialog.title": {
     "$type": "color",

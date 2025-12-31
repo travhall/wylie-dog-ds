@@ -135,10 +135,101 @@ import { Button } from '@wyliedog/ui/button';
 - **Levels**: `{sm, md, lg, xl}` for different elevation levels
 - **Usage**: Cards, modals, dropdowns, and interactive elements
 
+## Importing Tokens in JavaScript/TypeScript
+
+For programmatic access to token values:
+
+```typescript
+// Hierarchical tokens (recommended)
+import { color, spacing, shadow } from '@wyliedog/tokens/hierarchical';
+
+// Access color tokens
+const primaryColor = color.blue[500];    // "oklch(0.623 0.188 259.81)"
+const successColor = color.green[600];   // "oklch(0.627 0.170 149.21)"
+const baseSpacing = spacing[4];          // "16px"
+
+// Use in styled components or CSS-in-JS
+const Button = styled.button`
+  background-color: ${color.blue[500]};
+  padding: ${spacing[4]};
+  box-shadow: ${shadow.md};
+`;
+```
+
+```typescript
+// Flat object format (alternative)
+import tokens from '@wyliedog/tokens/flat';
+
+const primaryColor = tokens['color.blue.500'];
+```
+
+## Interactive Token Explorer
+
+Explore all available tokens interactively:
+
+- 🔍 **[Color Playground](/story/foundations-design-tokens-colors--token-playground)** - Search, filter, and copy tokens
+- 📊 **OKLCH Breakdown** - View lightness, chroma, and hue components
+- 📋 **Copy Utilities** - CSS variables, Tailwind classes, and JS imports
+- 📈 **Token Statistics** - See complete token inventory
+
 ## Best Practices
 
-1. **Use semantic tokens first**: Prefer `primary-500` over specific color values
-2. **Consistent spacing**: Use the spacing scale for all layout decisions
-3. **Appropriate elevation**: Match shadow levels to component hierarchy
-4. **Accessible contrast**: Test color combinations for readability
-5. **Progressive enhancement**: OKLCH works in modern browsers with automatic fallbacks
+### DO ✅
+
+**Use design tokens consistently**
+```jsx
+// Good - Uses design tokens
+<div className="bg-primary-500 p-4 rounded-lg shadow-md">
+  Consistent design
+</div>
+```
+
+**Reference tokens semantically**
+```typescript
+// Good - Semantic naming
+const errorColor = color.red[600];
+const successColor = color.green[600];
+```
+
+**Use spacing scale**
+```jsx
+// Good - Consistent spacing
+<div className="space-y-4 p-6">
+  <p>Content</p>
+</div>
+```
+
+### DON'T ❌
+
+**Avoid hard-coded values**
+```jsx
+// Bad - Hard-coded colors
+<div style={{ backgroundColor: '#3b82f6', padding: '16px' }}>
+  Inconsistent design
+</div>
+```
+
+**Don't create arbitrary spacing**
+```jsx
+// Bad - Random spacing
+<div className="mt-[13px] pb-[27px]">
+  Non-standard spacing
+</div>
+```
+
+**Don't mix systems**
+```css
+/* Bad - Mixing tokens with hard-coded values */
+.component {
+  color: var(--color-blue-500);  /* Token */
+  padding: 15px;                  /* Hard-coded */
+}
+```
+
+## Additional Resources
+
+- [All Colors](/story/foundations-design-tokens-colors--all-colors) - Complete color palette
+- [Typography](/story/foundations-typography--all-variants) - Font sizes and styles
+- [Spacing Scale](/story/foundations-design-tokens-spacing-layout--all-spacing) - Spacing system
+- [Design Principles](/story/introduction-design-principles--docs) - Design philosophy
+- [Getting Started](/story/introduction-getting-started--docs) - Setup instructions

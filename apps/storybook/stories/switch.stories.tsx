@@ -3,7 +3,7 @@ import { Switch } from "@wyliedog/ui/switch";
 import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta<typeof Switch> = {
-  title: "3. Components/Inputs/Switch",
+  title: "3. Components/Forms/Switch",
   component: Switch,
   parameters: {
     layout: "centered",

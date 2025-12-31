@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 
 const meta: Meta<typeof Command> = {
-  title: "3. Components/Forms/Command",
+  title: "3. Components/Navigation/Command",
   component: Command,
   parameters: {
     layout: "centered",

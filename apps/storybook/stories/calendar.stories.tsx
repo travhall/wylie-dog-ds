@@ -3,7 +3,7 @@ import { Calendar } from "@wyliedog/ui/calendar";
 import { useState } from "react";
 
 const meta: Meta<typeof Calendar> = {
-  title: "3. Components/Forms/Calendar",
+  title: "3. Components/Data Display/Calendar",
   component: Calendar,
   parameters: {
     layout: "centered",

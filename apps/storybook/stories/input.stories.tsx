@@ -4,7 +4,7 @@ import { Label } from "@wyliedog/ui/label";
 import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta<typeof Input> = {
-  title: "3. Components/Inputs/Input",
+  title: "3. Components/Forms/Input",
   component: Input,
   parameters: {
     layout: "centered",

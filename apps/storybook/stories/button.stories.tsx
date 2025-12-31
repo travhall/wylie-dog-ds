@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta<typeof Button> = {
-  title: "3. Components/Inputs/Button",
+  title: "3. Components/Actions/Button",
   component: Button,
   parameters: {
     layout: "centered",

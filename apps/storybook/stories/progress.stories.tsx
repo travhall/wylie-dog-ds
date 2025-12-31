@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
 import { useState, useEffect } from "react";
 
 const meta: Meta<typeof Progress> = {
-  title: "3. Components/Data Display/Progress",
+  title: "3. Components/Feedback/Progress",
   component: Progress,
   parameters: {
     layout: "centered",

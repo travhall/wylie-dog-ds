@@ -20,6 +20,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-vitest"),
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@chromatic-com/storybook"),
+    "storybook-design-token",
   ],
 
   framework: {

@@ -5,7 +5,7 @@ import { Checkbox } from "@wyliedog/ui/checkbox";
 import { Switch } from "@wyliedog/ui/switch";
 
 const meta: Meta<typeof Label> = {
-  title: "3. Components/Inputs/Label",
+  title: "3. Components/Forms/Label",
   component: Label,
   parameters: {
     layout: "centered",
