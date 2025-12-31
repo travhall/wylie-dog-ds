@@ -1,5 +1,2 @@
-/* Import Tailwind CSS */
-@import "tailwindcss";
-
-/* Import UI components */
+/* Import pre-compiled UI styles (already built with Tailwind + tokens) */
 @import "@wyliedog/ui/styles";

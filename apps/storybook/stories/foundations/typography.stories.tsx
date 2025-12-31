@@ -1,4 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
+import { Label } from "@wyliedog/ui/label";
+import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta = {
   title: "2. Foundations/Typography",
@@ -7,7 +11,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          "Typography system demonstrating the type scale, hierarchy, and OKLCH color integration for text elements.",
+          "Typography system demonstrating the type scale, hierarchy, and OKLCH color integration for text elements. Features an interactive playground for exploring typography combinations.",
       },
     },
   },
@@ -16,6 +20,91 @@ const meta: Meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+export const AllVariants: Story = {
+  render: () => (
+    <div className="space-y-12">
+      <div className="space-y-4">
+        <h2 className="text-2xl font-bold">Type Scale</h2>
+        <div className="space-y-4">
+          <div>
+            <h1 className="text-5xl font-bold">Heading 1 - 48px</h1>
+          </div>
+          <div>
+            <h2 className="text-4xl font-bold">Heading 2 - 36px</h2>
+          </div>
+          <div>
+            <h3 className="text-3xl font-bold">Heading 3 - 30px</h3>
+          </div>
+          <div>
+            <h4 className="text-2xl font-bold">Heading 4 - 24px</h4>
+          </div>
+          <div>
+            <h5 className="text-xl font-bold">Heading 5 - 20px</h5>
+          </div>
+          <div>
+            <h6 className="text-lg font-bold">Heading 6 - 18px</h6>
+          </div>
+          <div>
+            <p className="text-base">Body (Base) - 16px</p>
+          </div>
+          <div>
+            <p className="text-sm">Small - 14px</p>
+          </div>
+          <div>
+            <p className="text-xs">Extra Small - 12px</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-2xl font-bold">Font Weights</h2>
+        <div className="space-y-2">
+          <p className="text-xl font-light">Light (300)</p>
+          <p className="text-xl font-normal">Normal (400)</p>
+          <p className="text-xl font-medium">Medium (500)</p>
+          <p className="text-xl font-semibold">Semibold (600)</p>
+          <p className="text-xl font-bold">Bold (700)</p>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-2xl font-bold">Line Heights</h2>
+        <div className="space-y-4 max-w-2xl">
+          <div>
+            <p className="text-sm font-semibold mb-1">Tight</p>
+            <p className="leading-tight text-gray-700">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+          <div>
+            <p className="text-sm font-semibold mb-1">Normal</p>
+            <p className="leading-normal text-gray-700">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+          <div>
+            <p className="text-sm font-semibold mb-1">Relaxed</p>
+            <p className="leading-relaxed text-gray-700">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Overview of all typography variants including type scale, font weights, and line heights.",
+      },
+    },
+  },
+};
 
 export const TypeScale: Story = {
   render: () => (
@@ -331,4 +420,233 @@ export const ResponsiveTypography: Story = {
       </div>
     </div>
   ),
+};
+
+export const TypographyPlayground: Story = {
+  render: () => {
+    const [fontSize, setFontSize] = useState("text-base");
+    const [fontWeight, setFontWeight] = useState("font-normal");
+    const [lineHeight, setLineHeight] = useState("leading-normal");
+    const [textColor, setTextColor] = useState("text-gray-900");
+    const [sampleText, setSampleText] = useState(
+      "The quick brown fox jumps over the lazy dog. This sentence contains every letter of the English alphabet."
+    );
+
+    const fontSizes = [
+      { value: "text-xs", label: "Extra Small (12px)", size: "12px" },
+      { value: "text-sm", label: "Small (14px)", size: "14px" },
+      { value: "text-base", label: "Base (16px)", size: "16px" },
+      { value: "text-lg", label: "Large (18px)", size: "18px" },
+      { value: "text-xl", label: "XL (20px)", size: "20px" },
+      { value: "text-2xl", label: "2XL (24px)", size: "24px" },
+      { value: "text-3xl", label: "3XL (30px)", size: "30px" },
+      { value: "text-4xl", label: "4XL (36px)", size: "36px" },
+      { value: "text-5xl", label: "5XL (48px)", size: "48px" },
+    ];
+
+    const fontWeights = [
+      { value: "font-light", label: "Light (300)" },
+      { value: "font-normal", label: "Normal (400)" },
+      { value: "font-medium", label: "Medium (500)" },
+      { value: "font-semibold", label: "Semibold (600)" },
+      { value: "font-bold", label: "Bold (700)" },
+    ];
+
+    const lineHeights = [
+      { value: "leading-tight", label: "Tight (1.25)" },
+      { value: "leading-snug", label: "Snug (1.375)" },
+      { value: "leading-normal", label: "Normal (1.5)" },
+      { value: "leading-relaxed", label: "Relaxed (1.625)" },
+      { value: "leading-loose", label: "Loose (2)" },
+    ];
+
+    const textColors = [
+      { value: "text-gray-900", label: "Primary (Gray 900)" },
+      { value: "text-gray-700", label: "Secondary (Gray 700)" },
+      { value: "text-gray-500", label: "Muted (Gray 500)" },
+      { value: "text-blue-600", label: "Link (Blue 600)" },
+      { value: "text-green-600", label: "Success (Green 600)" },
+      { value: "text-red-600", label: "Error (Red 600)" },
+    ];
+
+    return (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-2xl font-semibold tracking-tight mb-2">
+            Typography Playground
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Interactive explorer for typography tokens. Adjust font size,
+            weight, line height, and color to see how they work together.
+          </p>
+        </div>
+
+        {/* Controls */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Typography Controls</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* Font Size */}
+            <div className="space-y-2">
+              <Label className="text-sm font-medium">Font Size</Label>
+              <div className="grid grid-cols-3 gap-2">
+                {fontSizes.map((item) => (
+                  <button
+                    key={item.value}
+                    onClick={() => setFontSize(item.value)}
+                    className={`px-3 py-2 text-xs rounded-md border transition-colors ${
+                      fontSize === item.value
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-background border-border hover:bg-muted"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Font Weight */}
+            <div className="space-y-2">
+              <Label className="text-sm font-medium">Font Weight</Label>
+              <div className="grid grid-cols-3 gap-2">
+                {fontWeights.map((item) => (
+                  <button
+                    key={item.value}
+                    onClick={() => setFontWeight(item.value)}
+                    className={`px-3 py-2 text-xs rounded-md border transition-colors ${
+                      fontWeight === item.value
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-background border-border hover:bg-muted"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Line Height */}
+            <div className="space-y-2">
+              <Label className="text-sm font-medium">Line Height</Label>
+              <div className="grid grid-cols-3 gap-2">
+                {lineHeights.map((item) => (
+                  <button
+                    key={item.value}
+                    onClick={() => setLineHeight(item.value)}
+                    className={`px-3 py-2 text-xs rounded-md border transition-colors ${
+                      lineHeight === item.value
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-background border-border hover:bg-muted"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Text Color */}
+            <div className="space-y-2">
+              <Label className="text-sm font-medium">Text Color</Label>
+              <div className="grid grid-cols-3 gap-2">
+                {textColors.map((item) => (
+                  <button
+                    key={item.value}
+                    onClick={() => setTextColor(item.value)}
+                    className={`px-3 py-2 text-xs rounded-md border transition-colors ${
+                      textColor === item.value
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-background border-border hover:bg-muted"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Sample Text Input */}
+            <div className="space-y-2">
+              <Label htmlFor="sample-text" className="text-sm font-medium">
+                Sample Text
+              </Label>
+              <textarea
+                id="sample-text"
+                value={sampleText}
+                onChange={(e) => setSampleText(e.target.value)}
+                className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background min-h-[80px] resize-y"
+                placeholder="Enter your sample text..."
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Live Preview */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Live Preview</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="p-6 rounded-lg border border-border bg-muted/30">
+              <p
+                className={`${fontSize} ${fontWeight} ${lineHeight} ${textColor}`}
+              >
+                {sampleText}
+              </p>
+            </div>
+
+            {/* Current Classes */}
+            <div className="mt-4 p-4 rounded-md bg-muted/50">
+              <p className="text-xs font-medium mb-2">Current Classes:</p>
+              <code className="text-xs font-mono">
+                className="{fontSize} {fontWeight} {lineHeight} {textColor}"
+              </code>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Usage Examples */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Usage Examples</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="p-3 rounded-md bg-muted/50 text-xs font-mono">
+              <div className="text-muted-foreground mb-1">Tailwind CSS:</div>
+              <code>
+                className="{fontSize} {fontWeight} {lineHeight} {textColor}"
+              </code>
+            </div>
+            <div className="p-3 rounded-md bg-muted/50 text-xs font-mono">
+              <div className="text-muted-foreground mb-1">CSS:</div>
+              <code>
+                font-size: {fontSizes.find((f) => f.value === fontSize)?.size};
+              </code>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Reset Button */}
+        <div className="flex justify-end">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              setFontSize("text-base");
+              setFontWeight("font-normal");
+              setLineHeight("leading-normal");
+              setTextColor("text-gray-900");
+              setSampleText(
+                "The quick brown fox jumps over the lazy dog. This sentence contains every letter of the English alphabet."
+              );
+            }}
+          >
+            Reset to Defaults
+          </Button>
+        </div>
+      </div>
+    );
+  },
 };

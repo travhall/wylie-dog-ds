@@ -1,5 +1,8 @@
 import "../stories/globals.css";
-import { useEffect } from "react";
+
+// Track theme globally to prevent re-application
+let globalTheme = "light";
+let isInitialized = false;
 
 // Global types for toolbar controls
 export const globalTypes = {
@@ -19,17 +22,19 @@ export const globalTypes = {
   },
 };
 
-// Theme decorator
+// Theme decorator - applies theme class to document root
 export const decorators = [
   (Story, context) => {
     const theme = context.globals.theme || "light";
 
-    useEffect(() => {
+    // Apply theme synchronously if it changed
+    if (globalTheme !== theme) {
+      globalTheme = theme;
       const root = document.documentElement;
       root.classList.remove("light", "dark");
       root.classList.add(theme);
       root.setAttribute("data-theme", theme);
-    }, [theme]);
+    }
 
     return <Story />;
   },
@@ -66,10 +71,8 @@ export const parameters = {
     },
   },
 
+  // A11y configuration - manual mode to prevent flickering during theme changes
   a11y: {
-    // 'todo' - show a11y violations in the test UI only
-    // 'error' - fail CI on a11y violations
-    // 'off' - skip a11y checks entirely
-    test: "todo",
+    manual: true,
   },
 };
