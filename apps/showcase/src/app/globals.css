@@ -1,7 +1,9 @@
-/* Import Tailwind CSS */
-@import "tailwindcss";
-
-/* Import UI components */
+/**
+ * Showcase App Global Styles
+ *
+ * Import UI package styles (includes Tailwind base + component utilities)
+ * UI package ships with complete pre-compiled CSS
+ */
 @import "@wyliedog/ui/styles";
 
-/* App-specific styles */
+/* App-specific styles below */
