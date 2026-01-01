@@ -1,8 +1,37 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
 import { Label } from "@wyliedog/ui/label";
 import { Button } from "@wyliedog/ui/button";
+import { Badge } from "@wyliedog/ui/badge";
+import { Switch } from "@wyliedog/ui/switch";
+import {
+  typographyFontFamilySans,
+  typographyFontFamilyMono,
+  typographyFontSizeXs,
+  typographyFontSizeSm,
+  typographyFontSizeBase,
+  typographyFontSizeLg,
+  typographyFontSizeXl,
+  typographyFontSize2xl,
+  typographyFontSize3xl,
+  typographyFontSize4xl,
+  typographyFontSize5xl,
+  typographyFontSize6xl,
+  typographyFontWeightThin,
+  typographyFontWeightLight,
+  typographyFontWeightNormal,
+  typographyFontWeightMedium,
+  typographyFontWeightSemibold,
+  typographyFontWeightBold,
+  typographyFontWeightExtrabold,
+  typographyLineHeightNone,
+  typographyLineHeightTight,
+  typographyLineHeightSnug,
+  typographyLineHeightNormal,
+  typographyLineHeightRelaxed,
+  typographyLineHeightLoose,
+} from "@wyliedog/tokens";
 
 const meta: Meta = {
   title: "2. Foundations/Typography",
@@ -424,50 +453,173 @@ export const ResponsiveTypography: Story = {
 
 export const TypographyPlayground: Story = {
   render: () => {
-    const [fontSize, setFontSize] = useState("text-base");
-    const [fontWeight, setFontWeight] = useState("font-normal");
-    const [lineHeight, setLineHeight] = useState("leading-normal");
-    const [textColor, setTextColor] = useState("text-gray-900");
-    const [sampleText, setSampleText] = useState(
-      "The quick brown fox jumps over the lazy dog. This sentence contains every letter of the English alphabet."
+    const [mounted, setMounted] = useState(false);
+    const [selectedFontSize, setSelectedFontSize] = useState<string>("base");
+    const [selectedFontWeight, setSelectedFontWeight] =
+      useState<string>("normal");
+    const [selectedLineHeight, setSelectedLineHeight] =
+      useState<string>("normal");
+    const [selectedFontFamily, setSelectedFontFamily] =
+      useState<string>("sans");
+    const [previewText, setPreviewText] = useState(
+      "The quick brown fox jumps over the lazy dog. Typography is the art and technique of arranging type to make written language legible, readable, and appealing."
     );
+    const [showTokenDetails, setShowTokenDetails] = useState(false);
 
-    const fontSizes = [
-      { value: "text-xs", label: "Extra Small (12px)", size: "12px" },
-      { value: "text-sm", label: "Small (14px)", size: "14px" },
-      { value: "text-base", label: "Base (16px)", size: "16px" },
-      { value: "text-lg", label: "Large (18px)", size: "18px" },
-      { value: "text-xl", label: "XL (20px)", size: "20px" },
-      { value: "text-2xl", label: "2XL (24px)", size: "24px" },
-      { value: "text-3xl", label: "3XL (30px)", size: "30px" },
-      { value: "text-4xl", label: "4XL (36px)", size: "36px" },
-      { value: "text-5xl", label: "5XL (48px)", size: "48px" },
-    ];
+    useEffect(() => {
+      setMounted(true);
+    }, []);
 
-    const fontWeights = [
-      { value: "font-light", label: "Light (300)" },
-      { value: "font-normal", label: "Normal (400)" },
-      { value: "font-medium", label: "Medium (500)" },
-      { value: "font-semibold", label: "Semibold (600)" },
-      { value: "font-bold", label: "Bold (700)" },
-    ];
+    if (!mounted) {
+      return <div>Loading...</div>;
+    }
 
-    const lineHeights = [
-      { value: "leading-tight", label: "Tight (1.25)" },
-      { value: "leading-snug", label: "Snug (1.375)" },
-      { value: "leading-normal", label: "Normal (1.5)" },
-      { value: "leading-relaxed", label: "Relaxed (1.625)" },
-      { value: "leading-loose", label: "Loose (2)" },
-    ];
+    // Typography token data structures
+    const fontSizes = {
+      xs: {
+        value: typographyFontSizeXs,
+        token: "typography.font-size.xs",
+        tailwind: "text-xs",
+      },
+      sm: {
+        value: typographyFontSizeSm,
+        token: "typography.font-size.sm",
+        tailwind: "text-sm",
+      },
+      base: {
+        value: typographyFontSizeBase,
+        token: "typography.font-size.base",
+        tailwind: "text-base",
+      },
+      lg: {
+        value: typographyFontSizeLg,
+        token: "typography.font-size.lg",
+        tailwind: "text-lg",
+      },
+      xl: {
+        value: typographyFontSizeXl,
+        token: "typography.font-size.xl",
+        tailwind: "text-xl",
+      },
+      "2xl": {
+        value: typographyFontSize2xl,
+        token: "typography.font-size.2xl",
+        tailwind: "text-2xl",
+      },
+      "3xl": {
+        value: typographyFontSize3xl,
+        token: "typography.font-size.3xl",
+        tailwind: "text-3xl",
+      },
+      "4xl": {
+        value: typographyFontSize4xl,
+        token: "typography.font-size.4xl",
+        tailwind: "text-4xl",
+      },
+      "5xl": {
+        value: typographyFontSize5xl,
+        token: "typography.font-size.5xl",
+        tailwind: "text-5xl",
+      },
+      "6xl": {
+        value: typographyFontSize6xl,
+        token: "typography.font-size.6xl",
+        tailwind: "text-6xl",
+      },
+    };
 
-    const textColors = [
-      { value: "text-gray-900", label: "Primary (Gray 900)" },
-      { value: "text-gray-700", label: "Secondary (Gray 700)" },
-      { value: "text-gray-500", label: "Muted (Gray 500)" },
-      { value: "text-blue-600", label: "Link (Blue 600)" },
-      { value: "text-green-600", label: "Success (Green 600)" },
-      { value: "text-red-600", label: "Error (Red 600)" },
-    ];
+    const fontWeights = {
+      thin: {
+        value: typographyFontWeightThin,
+        token: "typography.font-weight.thin",
+        tailwind: "font-thin",
+      },
+      light: {
+        value: typographyFontWeightLight,
+        token: "typography.font-weight.light",
+        tailwind: "font-light",
+      },
+      normal: {
+        value: typographyFontWeightNormal,
+        token: "typography.font-weight.normal",
+        tailwind: "font-normal",
+      },
+      medium: {
+        value: typographyFontWeightMedium,
+        token: "typography.font-weight.medium",
+        tailwind: "font-medium",
+      },
+      semibold: {
+        value: typographyFontWeightSemibold,
+        token: "typography.font-weight.semibold",
+        tailwind: "font-semibold",
+      },
+      bold: {
+        value: typographyFontWeightBold,
+        token: "typography.font-weight.bold",
+        tailwind: "font-bold",
+      },
+      extrabold: {
+        value: typographyFontWeightExtrabold,
+        token: "typography.font-weight.extrabold",
+        tailwind: "font-extrabold",
+      },
+    };
+
+    const lineHeights = {
+      none: {
+        value: typographyLineHeightNone,
+        token: "typography.line-height.none",
+        tailwind: "leading-none",
+      },
+      tight: {
+        value: typographyLineHeightTight,
+        token: "typography.line-height.tight",
+        tailwind: "leading-tight",
+      },
+      snug: {
+        value: typographyLineHeightSnug,
+        token: "typography.line-height.snug",
+        tailwind: "leading-snug",
+      },
+      normal: {
+        value: typographyLineHeightNormal,
+        token: "typography.line-height.normal",
+        tailwind: "leading-normal",
+      },
+      relaxed: {
+        value: typographyLineHeightRelaxed,
+        token: "typography.line-height.relaxed",
+        tailwind: "leading-relaxed",
+      },
+      loose: {
+        value: typographyLineHeightLoose,
+        token: "typography.line-height.loose",
+        tailwind: "leading-loose",
+      },
+    };
+
+    const fontFamilies = {
+      sans: {
+        value: typographyFontFamilySans,
+        token: "typography.font-family.sans",
+        tailwind: "font-sans",
+      },
+      mono: {
+        value: typographyFontFamilyMono,
+        token: "typography.font-family.mono",
+        tailwind: "font-mono",
+      },
+    };
+
+    const currentFontSize =
+      fontSizes[selectedFontSize as keyof typeof fontSizes];
+    const currentFontWeight =
+      fontWeights[selectedFontWeight as keyof typeof fontWeights];
+    const currentLineHeight =
+      lineHeights[selectedLineHeight as keyof typeof lineHeights];
+    const currentFontFamily =
+      fontFamilies[selectedFontFamily as keyof typeof fontFamilies];
 
     return (
       <div className="space-y-6">
@@ -477,7 +629,8 @@ export const TypographyPlayground: Story = {
           </h3>
           <p className="text-sm text-muted-foreground">
             Interactive explorer for typography tokens. Adjust font size,
-            weight, line height, and color to see how they work together.
+            weight, line height, and family to see how they work together with
+            live design token values.
           </p>
         </div>
 
@@ -488,96 +641,129 @@ export const TypographyPlayground: Story = {
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Font Size */}
-            <div className="space-y-2">
-              <Label className="text-sm font-medium">Font Size</Label>
-              <div className="grid grid-cols-3 gap-2">
-                {fontSizes.map((item) => (
+            <div className="space-y-3">
+              <Label className="text-sm font-semibold">Font Size</Label>
+              <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
+                {Object.keys(fontSizes).map((size) => (
                   <button
-                    key={item.value}
-                    onClick={() => setFontSize(item.value)}
-                    className={`px-3 py-2 text-xs rounded-md border transition-colors ${
-                      fontSize === item.value
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background border-border hover:bg-muted"
+                    key={size}
+                    onClick={() => setSelectedFontSize(size)}
+                    className={`px-3 py-2 text-xs rounded-md border transition-all ${
+                      selectedFontSize === size
+                        ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                        : "bg-background hover:bg-muted border-border"
                     }`}
                   >
-                    {item.label}
+                    {size}
                   </button>
                 ))}
               </div>
+              {showTokenDetails && (
+                <div className="text-xs text-muted-foreground font-mono space-y-1">
+                  <div>Value: {currentFontSize.value}</div>
+                  <div>Token: {currentFontSize.token}</div>
+                </div>
+              )}
             </div>
 
             {/* Font Weight */}
-            <div className="space-y-2">
-              <Label className="text-sm font-medium">Font Weight</Label>
-              <div className="grid grid-cols-3 gap-2">
-                {fontWeights.map((item) => (
+            <div className="space-y-3">
+              <Label className="text-sm font-semibold">Font Weight</Label>
+              <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
+                {Object.keys(fontWeights).map((weight) => (
                   <button
-                    key={item.value}
-                    onClick={() => setFontWeight(item.value)}
-                    className={`px-3 py-2 text-xs rounded-md border transition-colors ${
-                      fontWeight === item.value
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background border-border hover:bg-muted"
+                    key={weight}
+                    onClick={() => setSelectedFontWeight(weight)}
+                    className={`px-3 py-2 text-xs rounded-md border transition-all ${
+                      selectedFontWeight === weight
+                        ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                        : "bg-background hover:bg-muted border-border"
                     }`}
                   >
-                    {item.label}
+                    {weight}
                   </button>
                 ))}
               </div>
+              {showTokenDetails && (
+                <div className="text-xs text-muted-foreground font-mono space-y-1">
+                  <div>Value: {currentFontWeight.value}</div>
+                  <div>Token: {currentFontWeight.token}</div>
+                </div>
+              )}
             </div>
 
             {/* Line Height */}
-            <div className="space-y-2">
-              <Label className="text-sm font-medium">Line Height</Label>
-              <div className="grid grid-cols-3 gap-2">
-                {lineHeights.map((item) => (
+            <div className="space-y-3">
+              <Label className="text-sm font-semibold">Line Height</Label>
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                {Object.keys(lineHeights).map((height) => (
                   <button
-                    key={item.value}
-                    onClick={() => setLineHeight(item.value)}
-                    className={`px-3 py-2 text-xs rounded-md border transition-colors ${
-                      lineHeight === item.value
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background border-border hover:bg-muted"
+                    key={height}
+                    onClick={() => setSelectedLineHeight(height)}
+                    className={`px-3 py-2 text-xs rounded-md border transition-all ${
+                      selectedLineHeight === height
+                        ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                        : "bg-background hover:bg-muted border-border"
                     }`}
                   >
-                    {item.label}
+                    {height}
                   </button>
                 ))}
               </div>
+              {showTokenDetails && (
+                <div className="text-xs text-muted-foreground font-mono space-y-1">
+                  <div>Value: {currentLineHeight.value}</div>
+                  <div>Token: {currentLineHeight.token}</div>
+                </div>
+              )}
             </div>
 
-            {/* Text Color */}
-            <div className="space-y-2">
-              <Label className="text-sm font-medium">Text Color</Label>
-              <div className="grid grid-cols-3 gap-2">
-                {textColors.map((item) => (
+            {/* Font Family */}
+            <div className="space-y-3">
+              <Label className="text-sm font-semibold">Font Family</Label>
+              <div className="grid grid-cols-2 gap-2">
+                {Object.keys(fontFamilies).map((family) => (
                   <button
-                    key={item.value}
-                    onClick={() => setTextColor(item.value)}
-                    className={`px-3 py-2 text-xs rounded-md border transition-colors ${
-                      textColor === item.value
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background border-border hover:bg-muted"
+                    key={family}
+                    onClick={() => setSelectedFontFamily(family)}
+                    className={`px-3 py-2 text-xs rounded-md border transition-all ${
+                      selectedFontFamily === family
+                        ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                        : "bg-background hover:bg-muted border-border"
                     }`}
                   >
-                    {item.label}
+                    {family}
                   </button>
                 ))}
               </div>
+              {showTokenDetails && (
+                <div className="text-xs text-muted-foreground font-mono truncate">
+                  <div>Value: {currentFontFamily.value}</div>
+                  <div>Token: {currentFontFamily.token}</div>
+                </div>
+              )}
             </div>
 
-            {/* Sample Text Input */}
-            <div className="space-y-2">
-              <Label htmlFor="sample-text" className="text-sm font-medium">
-                Sample Text
+            {/* Toggle Token Details */}
+            <div className="flex items-center gap-2 pt-2">
+              <Switch
+                id="token-details"
+                checked={showTokenDetails}
+                onCheckedChange={setShowTokenDetails}
+              />
+              <Label htmlFor="token-details" className="text-sm">
+                Show token details inline
               </Label>
+            </div>
+
+            {/* Custom Text Input */}
+            <div className="space-y-3">
+              <Label className="text-sm font-semibold">Preview Text</Label>
               <textarea
-                id="sample-text"
-                value={sampleText}
-                onChange={(e) => setSampleText(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-md border border-border bg-background min-h-[80px] resize-y"
-                placeholder="Enter your sample text..."
+                value={previewText}
+                onChange={(e) => setPreviewText(e.target.value)}
+                className="w-full min-h-[100px] px-3 py-2 text-sm rounded-md border border-input bg-background resize-y"
+                placeholder="Enter your text here..."
               />
             </div>
           </CardContent>
@@ -586,44 +772,115 @@ export const TypographyPlayground: Story = {
         {/* Live Preview */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Live Preview</CardTitle>
+            <CardTitle className="text-base flex items-center justify-between">
+              <span>Live Preview</span>
+              <Badge variant="outline">Interactive</Badge>
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="p-6 rounded-lg border border-border bg-muted/30">
-              <p
-                className={`${fontSize} ${fontWeight} ${lineHeight} ${textColor}`}
-              >
-                {sampleText}
-              </p>
-            </div>
-
-            {/* Current Classes */}
-            <div className="mt-4 p-4 rounded-md bg-muted/50">
-              <p className="text-xs font-medium mb-2">Current Classes:</p>
-              <code className="text-xs font-mono">
-                className="{fontSize} {fontWeight} {lineHeight} {textColor}"
-              </code>
+            <div
+              className="p-6 rounded-lg border bg-background"
+              style={{
+                fontSize: currentFontSize.value,
+                fontWeight: currentFontWeight.value,
+                lineHeight: currentLineHeight.value,
+                fontFamily: currentFontFamily.value,
+              }}
+            >
+              {previewText}
             </div>
           </CardContent>
         </Card>
 
-        {/* Usage Examples */}
+        {/* Token Details */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Usage Examples</CardTitle>
+            <CardTitle className="text-base">Current Token Values</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3">
-            <div className="p-3 rounded-md bg-muted/50 text-xs font-mono">
-              <div className="text-muted-foreground mb-1">Tailwind CSS:</div>
-              <code>
-                className="{fontSize} {fontWeight} {lineHeight} {textColor}"
-              </code>
+          <CardContent className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
+              {/* CSS */}
+              <div className="space-y-2">
+                <div className="text-sm font-semibold">CSS Properties</div>
+                <div className="p-3 rounded-md bg-muted/50 text-xs font-mono space-y-1">
+                  <div>font-size: {currentFontSize.value};</div>
+                  <div>font-weight: {currentFontWeight.value};</div>
+                  <div>line-height: {currentLineHeight.value};</div>
+                  <div>font-family: {currentFontFamily.value};</div>
+                </div>
+              </div>
+
+              {/* Token Names */}
+              <div className="space-y-2">
+                <div className="text-sm font-semibold">Design Token Names</div>
+                <div className="p-3 rounded-md bg-muted/50 text-xs font-mono space-y-1">
+                  <div>{currentFontSize.token}</div>
+                  <div>{currentFontWeight.token}</div>
+                  <div>{currentLineHeight.token}</div>
+                  <div>{currentFontFamily.token}</div>
+                </div>
+              </div>
             </div>
-            <div className="p-3 rounded-md bg-muted/50 text-xs font-mono">
-              <div className="text-muted-foreground mb-1">CSS:</div>
-              <code>
-                font-size: {fontSizes.find((f) => f.value === fontSize)?.size};
-              </code>
+
+            {/* JavaScript Import Example */}
+            <div className="space-y-2">
+              <div className="text-sm font-semibold">JavaScript Import</div>
+              <div className="p-3 rounded-md bg-muted/50 text-xs font-mono">
+                <code className="text-muted-foreground">
+                  {`import {
+  typographyFontSize${selectedFontSize.charAt(0).toUpperCase() + selectedFontSize.slice(1).replace(/[^a-zA-Z0-9]/g, "")},
+  typographyFontWeight${selectedFontWeight.charAt(0).toUpperCase() + selectedFontWeight.slice(1)},
+  typographyLineHeight${selectedLineHeight.charAt(0).toUpperCase() + selectedLineHeight.slice(1)},
+  typographyFontFamily${selectedFontFamily.charAt(0).toUpperCase() + selectedFontFamily.slice(1)}
+} from '@wyliedog/tokens';`}
+                </code>
+              </div>
+            </div>
+
+            {/* Tailwind Classes */}
+            <div className="space-y-2">
+              <div className="text-sm font-semibold">Tailwind CSS Classes</div>
+              <div className="p-3 rounded-md bg-muted/50 text-xs font-mono">
+                <code>
+                  className="{currentFontSize.tailwind}{" "}
+                  {currentFontWeight.tailwind} {currentLineHeight.tailwind}{" "}
+                  {currentFontFamily.tailwind}"
+                </code>
+              </div>
+            </div>
+
+            {/* Copy Actions */}
+            <div className="flex flex-wrap gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  const cssText = `font-size: ${currentFontSize.value};\nfont-weight: ${currentFontWeight.value};\nline-height: ${currentLineHeight.value};\nfont-family: ${currentFontFamily.value};`;
+                  navigator.clipboard.writeText(cssText);
+                }}
+              >
+                Copy CSS
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  const tokenText = `${currentFontSize.token}\n${currentFontWeight.token}\n${currentLineHeight.token}\n${currentFontFamily.token}`;
+                  navigator.clipboard.writeText(tokenText);
+                }}
+              >
+                Copy Token Names
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  const tailwindText = `${currentFontSize.tailwind} ${currentFontWeight.tailwind} ${currentLineHeight.tailwind} ${currentFontFamily.tailwind}`;
+                  navigator.clipboard.writeText(tailwindText);
+                }}
+              >
+                Copy Tailwind Classes
+              </Button>
             </div>
           </CardContent>
         </Card>
@@ -634,12 +891,12 @@ export const TypographyPlayground: Story = {
             variant="outline"
             size="sm"
             onClick={() => {
-              setFontSize("text-base");
-              setFontWeight("font-normal");
-              setLineHeight("leading-normal");
-              setTextColor("text-gray-900");
-              setSampleText(
-                "The quick brown fox jumps over the lazy dog. This sentence contains every letter of the English alphabet."
+              setSelectedFontSize("base");
+              setSelectedFontWeight("normal");
+              setSelectedLineHeight("normal");
+              setSelectedFontFamily("sans");
+              setPreviewText(
+                "The quick brown fox jumps over the lazy dog. Typography is the art and technique of arranging type to make written language legible, readable, and appealing."
               );
             }}
           >
