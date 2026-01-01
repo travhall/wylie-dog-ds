@@ -1,2 +1,15 @@
-/* Import pre-compiled UI styles (already built with Tailwind + tokens) */
+/**
+ * Storybook Global Styles
+ *
+ * Layer 1: UI component styles (pre-compiled from @wyliedog/ui)
+ * - Tailwind base, theme, and component utilities
+ * - Design tokens
+ * - Component-specific utilities (bg-(--color-button-primary-background), etc.)
+ *
+ * Layer 2: Story-specific utilities (pre-compiled)
+ * - Additional semantic utilities for stories (bg-muted, text-muted-foreground, etc.)
+ * - Story layout utilities
+ */
+
 @import "@wyliedog/ui/styles";
+@import "../dist/storybook.css";

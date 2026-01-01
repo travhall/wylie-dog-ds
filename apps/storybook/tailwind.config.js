@@ -4,9 +4,10 @@ import baseConfig from "@repo/tailwind-config";
 export default {
   ...baseConfig,
   content: [
+    // Storybook story files
     "./stories/**/*.{js,ts,jsx,tsx}",
     "./.storybook/**/*.{js,ts,jsx,tsx}",
-    // Include UI package components
-    "./node_modules/@wyliedog/ui/dist/**/*.{js,mjs}",
+    // UI package SOURCE files (not dist) to include component classes
+    "../packages/ui/src/**/*.{js,ts,jsx,tsx}",
   ],
 };

@@ -1,0 +1,12 @@
+/**
+ * Storybook Styles Entry Point
+ *
+ * This file is compiled separately from the UI package to avoid double Tailwind imports.
+ * It includes both UI component styles and story-specific utilities.
+ */
+
+/* Import Tailwind CSS - will be compiled with Storybook's content paths */
+@import "tailwindcss";
+
+/* Import design tokens */
+@import "@wyliedog/tokens/tokens.css";

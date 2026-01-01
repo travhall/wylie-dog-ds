@@ -1,0 +1,38 @@
+/**
+ * Storybook Utilities CSS
+ *
+ * This file compiles Tailwind utilities for story-specific classes.
+ * UI component styles are imported separately in globals.css to avoid double imports.
+ */
+
+@import "tailwindcss";
+@import "@wyliedog/tokens/tokens.css";
+
+/**
+ * Safelist semantic utilities used in stories but not in UI components.
+ * Tailwind v4 JIT only generates classes found in scanned files.
+ * These semantic aliases need explicit generation since they're used in stories.
+ */
+@utility bg-muted {
+  background-color: var(--color-background-secondary);
+}
+
+@utility bg-card {
+  background-color: var(--color-surface-primary);
+}
+
+@utility bg-background {
+  background-color: var(--color-background-primary);
+}
+
+@utility text-muted-foreground {
+  color: var(--color-text-secondary);
+}
+
+@utility border-border {
+  border-color: var(--color-border-primary);
+}
+
+@utility border-input {
+  border-color: var(--color-border-primary);
+}

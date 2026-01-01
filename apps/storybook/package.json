@@ -4,9 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "storybook build --docs",
-    "clean": "rm -rf .turbo node_modules",
-    "dev": "storybook dev -p 6006",
+    "build": "pnpm build:css && storybook build --docs",
+    "build:css": "tailwindcss -i ./src/styles/storybook.css -o ./dist/storybook.css --minify",
+    "clean": "rm -rf .turbo node_modules dist",
+    "dev": "pnpm build:css && storybook dev -p 6006",
+    "dev:css:watch": "tailwindcss -i ./src/styles/storybook.css -o ./dist/storybook.css --watch",
     "lint": "eslint ./stories/*.stories.tsx --max-warnings 0",
     "preview-storybook": "serve storybook-static"
   },
@@ -27,6 +29,7 @@
     "@storybook/addon-links": "^10.1.10",
     "@storybook/addon-vitest": "^10.1.10",
     "@storybook/react-vite": "^10.1.10",
+    "@tailwindcss/cli": "^4.1.18",
     "@tailwindcss/postcss": "^4.1.18",
     "@vitejs/plugin-react": "^5.1.2",
     "@vitest/browser-playwright": "^4.0.16",
