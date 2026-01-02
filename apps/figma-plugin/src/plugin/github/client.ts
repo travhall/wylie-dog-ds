@@ -12,6 +12,8 @@ export interface SyncResult {
   pullRequestUrl?: string;
   error?: string;
   filesUpdated?: string[];
+  message?: string;
+  commitSha?: string;
 }
 
 export interface PullResult {
