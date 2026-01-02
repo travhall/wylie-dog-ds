@@ -481,7 +481,7 @@
           "$value": "{color.purple.600}",
           "valuesByMode": {
             "Light": "{color.purple.600}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.purple.400}"
           }
         },
         "color.accent.hover": {
@@ -489,7 +489,7 @@
           "$value": "{color.purple.700}",
           "valuesByMode": {
             "Light": "{color.purple.700}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.purple.500}"
           }
         },
         "color.accent.active": {
@@ -497,7 +497,7 @@
           "$value": "{color.purple.800}",
           "valuesByMode": {
             "Light": "{color.purple.800}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.purple.700}"
           }
         },
         "color.accent.surface": {
@@ -505,23 +505,23 @@
           "$value": "{color.purple.50}",
           "valuesByMode": {
             "Light": "{color.purple.50}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.purple.600}"
           }
         },
         "color.accent.text": {
           "$type": "color",
-          "$value": "{color.gray.50}",
+          "$value": "{color.purple.900}",
           "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Light": "{color.purple.900}",
+            "Dark": "{color.purple.50}"
           }
         },
         "color.accent.highlight": {
           "$type": "color",
-          "$value": "{color.pink.400}",
+          "$value": "{color.pink.300}",
           "valuesByMode": {
-            "Light": "{color.pink.400}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Light": "{color.pink.300}",
+            "Dark": "{color.pink.700}"
           }
         },
         "color.neutral.base": {
@@ -529,7 +529,7 @@
           "$value": "{color.gray.600}",
           "valuesByMode": {
             "Light": "{color.gray.600}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.gray.100}"
           }
         },
         "color.neutral.muted": {
@@ -537,7 +537,7 @@
           "$value": "{color.gray.400}",
           "valuesByMode": {
             "Light": "{color.gray.400}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.gray.300}"
           }
         },
         "color.neutral.subtle": {
@@ -545,7 +545,7 @@
           "$value": "{color.gray.200}",
           "valuesByMode": {
             "Light": "{color.gray.200}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.gray.500}"
           }
         },
         "color.neutral.on": {
@@ -553,7 +553,7 @@
           "$value": "{color.gray.900}",
           "valuesByMode": {
             "Light": "{color.gray.900}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.gray.50}"
           }
         },
         "color.status.success": {
@@ -561,7 +561,7 @@
           "$value": "{color.green.600}",
           "valuesByMode": {
             "Light": "{color.green.600}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.green.500}"
           }
         },
         "color.status.warning": {
@@ -569,7 +569,7 @@
           "$value": "{color.orange.600}",
           "valuesByMode": {
             "Light": "{color.orange.600}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.orange.500}"
           }
         },
         "color.status.danger": {
@@ -577,7 +577,7 @@
           "$value": "{color.red.600}",
           "valuesByMode": {
             "Light": "{color.red.600}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.red.500}"
           }
         },
         "color.status.info": {
@@ -585,7 +585,7 @@
           "$value": "{color.blue.600}",
           "valuesByMode": {
             "Light": "{color.blue.600}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.blue.500}"
           }
         },
         "color.status.highlight": {
@@ -593,7 +593,7 @@
           "$value": "{color.yellow.300}",
           "valuesByMode": {
             "Light": "{color.yellow.300}",
-            "Dark": "oklch(1.000 0.000 0.00)"
+            "Dark": "{color.yellow.400}"
           }
         },
         "space.xs": {
