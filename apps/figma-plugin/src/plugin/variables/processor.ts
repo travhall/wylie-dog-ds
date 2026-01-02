@@ -23,93 +23,14 @@ export interface ExportData {
 let variableReferenceMap: Map<string, string> = new Map();
 
 /**
- * Convert linear RGB to sRGB (apply gamma correction)
+ * Convert Figma RGB color (0-1 range) to hex format
  */
-function linearToSRGB(c: number): number {
-  return c <= 0.0031308 ? 12.92 * c : 1.055 * Math.pow(c, 1 / 2.4) - 0.055;
-}
+function rgbToHex(color: { r: number; g: number; b: number }): string {
+  const r = Math.round(color.r * 255);
+  const g = Math.round(color.g * 255);
+  const b = Math.round(color.b * 255);
 
-/**
- * Convert sRGB to XYZ color space
- */
-function srgbToXYZ(r: number, g: number, b: number): [number, number, number] {
-  // Apply gamma correction
-  const R = linearToSRGB(r);
-  const G = linearToSRGB(g);
-  const B = linearToSRGB(b);
-
-  // Convert to XYZ using D65 illuminant
-  const x = R * 0.4124564 + G * 0.3575761 + B * 0.1804375;
-  const y = R * 0.2126729 + G * 0.7151522 + B * 0.072175;
-  const z = R * 0.0193339 + G * 0.119192 + B * 0.9503041;
-
-  return [x, y, z];
-}
-
-/**
- * Convert XYZ to OKLab color space
- */
-function xyzToOKLab(x: number, y: number, z: number): [number, number, number] {
-  // XYZ to LMS
-  const l = 0.8189330101 * x + 0.3618667424 * y - 0.1288597137 * z;
-  const m = 0.0329845436 * x + 0.9293118715 * y + 0.0361456387 * z;
-  const s = 0.0482003018 * x + 0.2643662691 * y + 0.633851707 * z;
-
-  // Apply cube root
-  const l_ = Math.cbrt(l);
-  const m_ = Math.cbrt(m);
-  const s_ = Math.cbrt(s);
-
-  // LMS to OKLab
-  const L = 0.2104542553 * l_ + 0.793617785 * m_ - 0.0040720468 * s_;
-  const a = 1.9779984951 * l_ - 2.428592205 * m_ + 0.4505937099 * s_;
-  const b = 0.0259040371 * l_ + 0.7827717662 * m_ - 0.808675766 * s_;
-
-  return [L, a, b];
-}
-
-/**
- * Convert OKLab to OKLCH color space
- */
-function oklabToOKLCH(
-  L: number,
-  a: number,
-  b: number
-): [number, number, number] {
-  const c = Math.sqrt(a * a + b * b);
-  let h = Math.atan2(b, a) * (180 / Math.PI);
-
-  // Normalize hue to 0-360
-  if (h < 0) h += 360;
-
-  return [L, c, h];
-}
-
-/**
- * Convert Figma RGB color (0-1 range) to OKLCH format
- * This matches the format used in the token system
- */
-function rgbToOklch(color: { r: number; g: number; b: number }): string {
-  try {
-    // Convert RGB to XYZ
-    const [x, y, z] = srgbToXYZ(color.r, color.g, color.b);
-
-    // Convert XYZ to OKLab
-    const [L, a, b] = xyzToOKLab(x, y, z);
-
-    // Convert OKLab to OKLCH
-    const [l, c, h] = oklabToOKLCH(L, a, b);
-
-    // Format as "oklch(L C H)" with appropriate precision
-    return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${h.toFixed(2)})`;
-  } catch (error) {
-    console.error("Error converting RGB to OKLCH:", error, color);
-    // Fallback to hex if conversion fails
-    const r = Math.round(color.r * 255);
-    const g = Math.round(color.g * 255);
-    const b = Math.round(color.b * 255);
-    return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
-  }
+  return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
 }
 
 /**
@@ -289,7 +210,7 @@ function processVariable(variable: any, modes: any[]): ProcessedToken {
 
       switch (variable.resolvedType) {
         case "COLOR":
-          processedValue = rgbToOklch(value);
+          processedValue = rgbToHex(value);
           break;
         case "FLOAT":
           processedValue = formatNumericValue(value, tokenType);
