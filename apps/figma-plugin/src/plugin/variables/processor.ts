@@ -98,7 +98,13 @@ function rgbToOklch(color: { r: number; g: number; b: number }): string {
     const [L, a, b] = xyzToOKLab(x, y, z);
 
     // Convert OKLab to OKLCH
-    const [l, c, h] = oklabToOKLCH(L, a, b);
+    let [l, c, h] = oklabToOKLCH(L, a, b);
+
+    // Normalize achromatic colors (when chroma is very close to 0)
+    // For achromatic colors, hue is meaningless, so set it to 0
+    if (c < 0.0001) {
+      h = 0;
+    }
 
     // Format as "oklch(L C H)" with appropriate precision
     return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${h.toFixed(2)})`;
@@ -276,6 +282,14 @@ function processVariable(variable: any, modes: any[]): ProcessedToken {
   for (const mode of modes) {
     const value = variable.valuesByMode[mode.modeId];
 
+    // Skip undefined values
+    if (value === undefined || value === null) {
+      console.warn(
+        `Variable ${variable.name} has no value for mode ${mode.name}`
+      );
+      continue;
+    }
+
     if (typeof value === "object" && value.type === "VARIABLE_ALIAS") {
       // Handle references - use clean reference format
       const referencedTokenName = variableReferenceMap.get(value.id);
@@ -289,7 +303,19 @@ function processVariable(variable: any, modes: any[]): ProcessedToken {
 
       switch (variable.resolvedType) {
         case "COLOR":
-          processedValue = rgbToOklch(value);
+          // Validate color object before conversion
+          if (
+            !value ||
+            typeof value !== "object" ||
+            value.r === undefined ||
+            value.g === undefined ||
+            value.b === undefined
+          ) {
+            console.error(`Invalid color value for ${variable.name}:`, value);
+            processedValue = undefined;
+          } else {
+            processedValue = rgbToOklch(value);
+          }
           break;
         case "FLOAT":
           processedValue = formatNumericValue(value, tokenType);
