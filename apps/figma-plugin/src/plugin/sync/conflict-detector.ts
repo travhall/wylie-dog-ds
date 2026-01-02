@@ -71,9 +71,25 @@ export class ConflictDetector {
       "remote"
     );
 
+    // Get collection names that exist locally (selected collections)
+    const localCollectionNames = new Set(
+      localTokens.map((data) => Object.keys(data)[0])
+    );
+
+    // Filter remote tokens to only include collections that were selected locally
+    // This prevents false conflicts when pushing only a subset of collections
+    const filteredRemoteWithSync = remoteWithSync.filter((data) => {
+      const collectionName = Object.keys(data)[0];
+      return localCollectionNames.has(collectionName);
+    });
+
+    console.log(
+      `🔍 Comparing ${localCollectionNames.size} selected collections: ${Array.from(localCollectionNames).join(", ")}`
+    );
+
     // Create lookup maps for efficient comparison
     const localMap = this.createTokenMap(localWithSync);
-    const remoteMap = this.createTokenMap(remoteWithSync);
+    const remoteMap = this.createTokenMap(filteredRemoteWithSync);
 
     const conflicts: TokenConflict[] = [];
 
@@ -85,12 +101,12 @@ export class ConflictDetector {
         const conflict = this.compareTokens(tokenPath, localEntry, remoteEntry);
         if (conflict) conflicts.push(conflict);
       } else {
-        // Token deleted remotely
+        // Token deleted remotely (only within selected collections)
         conflicts.push(this.createDeletionConflict(tokenPath, localEntry));
       }
     }
 
-    // Detect new remote tokens
+    // Detect new remote tokens (only within selected collections)
     for (const [tokenPath, remoteEntry] of remoteMap) {
       if (!localMap.has(tokenPath)) {
         conflicts.push(this.createAdditionConflict(tokenPath, remoteEntry));
