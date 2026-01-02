@@ -686,16 +686,13 @@ figma.ui.onmessage = async (msg) => {
             throw new Error("No collection IDs provided");
           }
 
-          // Get collections and export tokens (same logic as export-tokens)
+          // Get ALL collections to build reference map, but only export selected ones
           const collections =
             await figma.variables.getLocalVariableCollectionsAsync();
-          const collectionsWithVariables = [];
+          const allCollectionsWithVariables = [];
 
+          // Fetch all collections for reference resolution
           for (const collection of collections) {
-            if (!collectionIds.includes(collection.id)) {
-              continue;
-            }
-
             const variables = [];
             for (const variableId of collection.variableIds) {
               try {
@@ -718,7 +715,7 @@ figma.ui.onmessage = async (msg) => {
               }
             }
 
-            collectionsWithVariables.push({
+            allCollectionsWithVariables.push({
               id: collection.id,
               name: collection.name,
               modes: collection.modes,
@@ -726,8 +723,9 @@ figma.ui.onmessage = async (msg) => {
             });
           }
 
+          // Process with ALL collections for reference map, but only export selected ones
           const exportData = await processCollectionsForExport(
-            collectionsWithVariables,
+            allCollectionsWithVariables,
             collectionIds
           );
 
