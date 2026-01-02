@@ -238,18 +238,18 @@
         },
         "color.border.primary": {
           "$type": "color",
-          "$value": "{color.gray.300}",
+          "$value": "{color.gray.400}",
           "valuesByMode": {
-            "Light": "{color.gray.300}",
-            "Dark": "{color.gray.700}"
+            "Light": "{color.gray.400}",
+            "Dark": "{color.gray.600}"
           }
         },
         "color.border.secondary": {
           "$type": "color",
-          "$value": "{color.gray.200}",
+          "$value": "{color.gray.300}",
           "valuesByMode": {
-            "Light": "{color.gray.200}",
-            "Dark": "{color.gray.800}"
+            "Light": "{color.gray.300}",
+            "Dark": "{color.gray.700}"
           }
         },
         "color.border.focus": {
