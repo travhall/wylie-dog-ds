@@ -148,9 +148,11 @@ export function useGitHubSync(
         actions.setProgressStep(0);
 
         if (syncResult.success) {
-          const message = syncResult.pullRequestUrl
-            ? "✅ Pull request created! Check GitHub to review"
-            : "✅ Saved to GitHub successfully!";
+          const message =
+            syncResult.message ||
+            (syncResult.pullRequestUrl
+              ? "✅ Pull request created! Check GitHub to review"
+              : "✅ Saved to GitHub successfully!");
           actions.setSuccessMessage(message);
           setTimeout(() => actions.setSuccessMessage(null), 6000);
         } else {

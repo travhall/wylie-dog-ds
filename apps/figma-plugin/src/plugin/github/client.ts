@@ -266,7 +266,7 @@ export class GitHubClient {
       });
       const baseTreeSha = currentCommit.tree.sha;
 
-      // Create blobs for all files
+      // Create blobs for all files, but only if content changed
       const tree = [];
       for (const collectionData of exportData) {
         const collectionName = Object.keys(collectionData)[0];
@@ -278,28 +278,61 @@ export class GitHubClient {
           ? `${this.config.tokenPath}${fileName}`
           : `${this.config.tokenPath}/${fileName}`;
 
-        const fileContent = JSON.stringify(
+        const newContent = JSON.stringify(
           [{ [collectionName]: tokens }],
           null,
           2
         );
 
-        // Create blob
-        const { data: blob } = await this.octokit.git.createBlob({
-          owner: this.config.owner,
-          repo: this.config.repo,
-          content: btoa(fileContent),
-          encoding: "base64",
-        });
+        // Fetch existing file to compare content
+        let existingContent = "";
+        try {
+          const { data: existingFile } = await this.octokit.repos.getContent({
+            owner: this.config.owner,
+            repo: this.config.repo,
+            path: filePath,
+            ref: this.config.branch,
+          });
 
-        tree.push({
-          path: filePath,
-          mode: "100644" as const,
-          type: "blob" as const,
-          sha: blob.sha,
-        });
+          if ("content" in existingFile && existingFile.content) {
+            existingContent = atob(existingFile.content.replace(/\n/g, ""));
+          }
+        } catch (error: any) {
+          // File doesn't exist yet, will be created
+          console.log(`File ${filePath} doesn't exist, will create it`);
+        }
 
-        filesUpdated.push(filePath);
+        // Only create blob if content actually changed
+        if (newContent !== existingContent) {
+          const { data: blob } = await this.octokit.git.createBlob({
+            owner: this.config.owner,
+            repo: this.config.repo,
+            content: btoa(newContent),
+            encoding: "base64",
+          });
+
+          tree.push({
+            path: filePath,
+            mode: "100644" as const,
+            type: "blob" as const,
+            sha: blob.sha,
+          });
+
+          filesUpdated.push(filePath);
+          console.log(`✏️ File changed: ${filePath}`);
+        } else {
+          console.log(`⏭️ No changes in ${filePath}, skipping`);
+        }
+      }
+
+      // If no files changed, return early without creating a commit
+      if (filesUpdated.length === 0) {
+        console.log("ℹ️ No file changes detected, skipping commit");
+        return {
+          success: true,
+          filesUpdated: [],
+          message: "No changes to sync - all tokens are up to date",
+        };
       }
 
       // Create new tree
@@ -345,6 +378,8 @@ export class GitHubClient {
       return {
         success: true,
         filesUpdated,
+        message: `Successfully synced ${filesUpdated.length} file(s) to ${this.config.branch}`,
+        commitSha: newCommit.sha,
       };
     } catch (error: any) {
       console.error("Error in direct sync:", error);
