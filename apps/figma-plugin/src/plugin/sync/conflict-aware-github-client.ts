@@ -21,6 +21,7 @@ export interface ConflictAwarePullResult extends PullResult {
 export interface ConflictAwareSyncResult extends SyncResult {
   conflicts?: TokenConflict[];
   requiresConflictResolution?: boolean;
+  remoteTokens?: ExportData[];
 }
 
 export class ConflictAwareGitHubClient extends GitHubClient {
@@ -30,14 +31,13 @@ export class ConflictAwareGitHubClient extends GitHubClient {
 
   /**
    * Pull tokens with automatic conflict detection
+   * @param localTokens - Current local tokens from Figma (must be provided from plugin thread)
    */
-  async pullTokensWithConflictDetection(): Promise<ConflictAwarePullResult> {
+  async pullTokensWithConflictDetection(
+    localTokens?: ExportData[]
+  ): Promise<ConflictAwarePullResult> {
     try {
       console.log("🔍 Starting conflict-aware pull...");
-
-      // Get current local tokens first
-      const localTokens = await this.getCurrentLocalTokens();
-      console.log(`📍 Found ${localTokens.length} local collections`);
 
       // Pull remote tokens using parent class
       const pullResult = await super.pullTokens();
@@ -51,13 +51,15 @@ export class ConflictAwareGitHubClient extends GitHubClient {
       console.log(`📥 Pulled ${pullResult.tokens.length} remote collections`);
 
       // Skip conflict detection if there are no local tokens
-      if (localTokens.length === 0) {
-        console.log("✅ No local tokens, skipping conflict detection");
+      if (!localTokens || localTokens.length === 0) {
+        console.log("✅ No local tokens provided, skipping conflict detection");
         return {
           ...pullResult,
           requiresConflictResolution: false,
         };
       }
+
+      console.log(`📍 Comparing with ${localTokens.length} local collections`);
 
       // Detect conflicts between local and remote
       const conflictResult = this.conflictDetector.detectConflicts(
@@ -92,6 +94,8 @@ export class ConflictAwareGitHubClient extends GitHubClient {
 
   /**
    * Sync tokens with pre-sync conflict detection
+   * @param exportData - Tokens to sync to GitHub
+   * @param commitMessage - Optional commit message
    */
   async syncTokensWithConflictDetection(
     exportData: ExportData[],
@@ -100,16 +104,17 @@ export class ConflictAwareGitHubClient extends GitHubClient {
     try {
       console.log("🚀 Starting conflict-aware sync...");
 
-      // First, check for remote changes that might conflict
-      const pullResult = await this.pullTokensWithConflictDetection();
+      // Check for remote changes that might conflict with what we're pushing
+      const pullResult = await this.pullTokensWithConflictDetection(exportData);
 
       if (pullResult.requiresConflictResolution) {
         console.log("⚠️ Remote conflicts detected, sync blocked");
         return {
           success: false,
-          error: `${pullResult.conflicts?.length} conflicts detected with remote changes`,
+          error: `${pullResult.conflicts?.length} conflicts detected with remote changes. Please resolve conflicts before syncing.`,
           conflicts: pullResult.conflicts,
           requiresConflictResolution: true,
+          remoteTokens: pullResult.tokens, // Include remote tokens for conflict resolution
         };
       }
 
@@ -356,20 +361,67 @@ export class ConflictAwareGitHubClient extends GitHubClient {
   /**
    * Check sync status and detect changes
    */
-  async getSyncStatus(): Promise<{
+  async getSyncStatus(localTokens?: ExportData[]): Promise<{
     upToDate: boolean;
     localChanges: number;
     remoteChanges: number;
     lastSync?: string;
+    conflicts?: TokenConflict[];
   }> {
     try {
-      const pullResult = await this.pullTokensWithConflictDetection();
+      // If localTokens not provided, we can't detect local changes
+      if (!localTokens || localTokens.length === 0) {
+        console.log("⚠️ No local tokens provided for sync status check");
+        return {
+          upToDate: false,
+          localChanges: 0,
+          remoteChanges: 0,
+          lastSync: await this.getLastSyncTime(),
+        };
+      }
+
+      // Pull remote tokens
+      const pullResult = await super.pullTokens();
+
+      if (!pullResult.success || !pullResult.tokens) {
+        return {
+          upToDate: false,
+          localChanges: 0,
+          remoteChanges: 0,
+          lastSync: await this.getLastSyncTime(),
+        };
+      }
+
+      // Detect conflicts
+      const conflictResult = this.conflictDetector.detectConflicts(
+        localTokens,
+        pullResult.tokens
+      );
+
+      // Calculate change counts
+      const localChanges = conflictResult.conflicts.filter(
+        (c) => c.type === "value-change" && c.localToken
+      ).length;
+
+      const remoteChanges = conflictResult.conflicts.filter(
+        (c) =>
+          c.type === "value-change" ||
+          c.type === "addition" ||
+          c.type === "deletion"
+      ).length;
+
+      const upToDate = conflictResult.conflicts.length === 0;
+
+      console.log(
+        `📊 Sync status: ${localChanges} local changes, ${remoteChanges} remote changes`
+      );
 
       return {
-        upToDate: !pullResult.requiresConflictResolution,
-        localChanges: 0, // TODO: implement proper local change detection
-        remoteChanges: 0, // TODO: implement proper remote change detection
+        upToDate,
+        localChanges,
+        remoteChanges,
         lastSync: await this.getLastSyncTime(),
+        conflicts: conflictResult.conflicts,
       };
     } catch (error) {
       console.error("Failed to get sync status:", error);
@@ -377,6 +429,7 @@ export class ConflictAwareGitHubClient extends GitHubClient {
         upToDate: false,
         localChanges: 0,
         remoteChanges: 0,
+        lastSync: await this.getLastSyncTime(),
       };
     }
   }

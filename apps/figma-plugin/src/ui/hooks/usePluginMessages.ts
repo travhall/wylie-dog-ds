@@ -78,7 +78,10 @@ export interface PluginMessageState {
   // Conflicts
   conflicts: TokenConflict[];
   showConflictResolution: boolean;
-  pendingTokensForConflictResolution: ExportData[];
+  conflictOperationType: "push" | "pull" | null;
+  pendingTokensForConflictResolution:
+    | ExportData[]
+    | { local: ExportData[]; remote: ExportData[] };
 
   // Progress
   progressStep: number;
@@ -108,7 +111,10 @@ export interface PluginMessageActions {
   setGithubConfigured: (configured: boolean) => void;
   setShowConflictResolution: (show: boolean) => void;
   setConflicts: (conflicts: TokenConflict[]) => void;
-  setPendingTokensForConflictResolution: (tokens: ExportData[]) => void;
+  setConflictOperationType: (type: "push" | "pull" | null) => void;
+  setPendingTokensForConflictResolution: (
+    tokens: ExportData[] | { local: ExportData[]; remote: ExportData[] }
+  ) => void;
   setProgressStep: (step: number) => void;
   setProgressSteps: (steps: any[]) => void;
   setLoadingMessage: (message: string) => void;
@@ -176,10 +182,15 @@ export function usePluginMessages(
   // Conflicts
   const [conflicts, setConflicts] = useState<TokenConflict[]>([]);
   const [showConflictResolution, setShowConflictResolution] = useState(false);
+  const [conflictOperationType, setConflictOperationType] = useState<
+    "push" | "pull" | null
+  >(null);
   const [
     pendingTokensForConflictResolution,
     setPendingTokensForConflictResolution,
-  ] = useState<ExportData[]>([]);
+  ] = useState<ExportData[] | { local: ExportData[]; remote: ExportData[] }>(
+    []
+  );
 
   // Progress
   const [progressStep, setProgressStep] = useState(0);
@@ -603,6 +614,7 @@ export function usePluginMessages(
     adapterResults,
     conflicts,
     showConflictResolution,
+    conflictOperationType,
     pendingTokensForConflictResolution,
     progressStep,
     progressSteps,
@@ -632,6 +644,7 @@ export function usePluginMessages(
     setGithubConfigured,
     setShowConflictResolution,
     setConflicts,
+    setConflictOperationType,
     setPendingTokensForConflictResolution,
     setProgressStep,
     setProgressSteps,

@@ -590,6 +590,91 @@ figma.ui.onmessage = async (msg) => {
         }
         break;
 
+      case "get-local-tokens":
+        // Export current Figma variables for conflict detection
+        try {
+          console.log("📍 Exporting local tokens for conflict detection...");
+          setLoading(true, "Reading local variables...");
+
+          const collections =
+            await figma.variables.getLocalVariableCollectionsAsync();
+          console.log(`Found ${collections.length} local collections`);
+
+          const collectionsWithVariables = [];
+
+          for (let i = 0; i < collections.length; i++) {
+            const collection = collections[i];
+            console.log(
+              `Processing collection ${i + 1}/${collections.length}: ${collection.name}`
+            );
+
+            // Process variables in chunks
+            const variables = await processInChunks(
+              collection.variableIds,
+              async (variableId: string) => {
+                try {
+                  const variable =
+                    await figma.variables.getVariableByIdAsync(variableId);
+                  if (variable) {
+                    return {
+                      id: variable.id,
+                      name: variable.name,
+                      description: variable.description || "",
+                      resolvedType: variable.resolvedType,
+                      scopes: variable.scopes,
+                      valuesByMode: variable.valuesByMode,
+                      remote: variable.remote,
+                      key: variable.key,
+                    };
+                  }
+                  return null;
+                } catch (err) {
+                  console.error("Error processing variable:", variableId, err);
+                  return null;
+                }
+              },
+              100
+            );
+
+            const validVariables = variables.filter((v) => v !== null);
+
+            collectionsWithVariables.push({
+              id: collection.id,
+              name: collection.name,
+              modes: collection.modes,
+              variables: validVariables,
+            });
+          }
+
+          setLoading(true, "Converting to token format...");
+
+          // Convert to token format using processor
+          const exportData = await processCollectionsForExport(
+            collectionsWithVariables,
+            collections.map((c) => c.id)
+          );
+
+          setLoading(false);
+
+          figma.ui.postMessage({
+            type: "local-tokens-exported",
+            localTokens: exportData,
+          });
+
+          console.log("✅ Local tokens exported for conflict detection");
+        } catch (error: unknown) {
+          console.error("Error exporting local tokens:", error);
+          setLoading(false);
+          figma.ui.postMessage({
+            type: "local-tokens-error",
+            error:
+              error instanceof Error
+                ? error.message
+                : "Failed to export local tokens",
+          });
+        }
+        break;
+
       case "github-sync-tokens":
         try {
           setLoading(true, "Exporting tokens for GitHub sync...");

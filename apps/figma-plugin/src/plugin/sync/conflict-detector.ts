@@ -21,6 +21,46 @@ export class ConflictDetector {
   ): ConflictDetectionResult {
     console.log("🔍 Starting conflict detection...");
 
+    // Debug logging
+    console.log("=== CONFLICT DETECTION DEBUG ===");
+    console.log("Local tokens count:", localTokens.length);
+    console.log("Remote tokens count:", remoteTokens.length);
+
+    if (localTokens.length > 0) {
+      const firstLocal = localTokens[0];
+      const collectionName = Object.keys(firstLocal)[0];
+      console.log("First local collection:", collectionName);
+      if (firstLocal[collectionName]) {
+        const varNames = Object.keys(firstLocal[collectionName].variables);
+        console.log("Local variable count:", varNames.length);
+        console.log("First 3 variables:", varNames.slice(0, 3));
+
+        // Log first variable details
+        if (varNames.length > 0) {
+          const firstVar = firstLocal[collectionName].variables[varNames[0]];
+          console.log("First variable value:", JSON.stringify(firstVar.$value));
+        }
+      }
+    }
+
+    if (remoteTokens.length > 0) {
+      const firstRemote = remoteTokens[0];
+      const collectionName = Object.keys(firstRemote)[0];
+      console.log("First remote collection:", collectionName);
+      if (firstRemote[collectionName]) {
+        const varNames = Object.keys(firstRemote[collectionName].variables);
+        console.log("Remote variable count:", varNames.length);
+        console.log("First 3 variables:", varNames.slice(0, 3));
+
+        // Log first variable details
+        if (varNames.length > 0) {
+          const firstVar = firstRemote[collectionName].variables[varNames[0]];
+          console.log("First variable value:", JSON.stringify(firstVar.$value));
+        }
+      }
+    }
+    console.log("=== END DEBUG ===");
+
     // Convert to sync-aware format
     const localWithSync = this.metadataManager.addSyncMetadataToExportData(
       localTokens,
@@ -95,6 +135,11 @@ export class ConflictDetector {
       }
     }
 
+    // Debug logging
+    console.log(`🗺️ Token map created with ${tokenMap.size} tokens`);
+    const firstThree = Array.from(tokenMap.keys()).slice(0, 3);
+    console.log("First 3 token paths:", firstThree);
+
     return tokenMap;
   }
 
@@ -109,8 +154,28 @@ export class ConflictDetector {
     const { token: localToken } = localEntry;
     const { token: remoteToken } = remoteEntry;
 
+    // Check if token has changed
+    const hasChanged = this.metadataManager.hasTokenChanged(
+      localToken,
+      remoteToken
+    );
+
+    // Debug logging for specific tokens
+    if (
+      tokenPath.includes("color") ||
+      tokenPath.includes("blue") ||
+      tokenPath.includes("primary")
+    ) {
+      console.log(`\n📊 Comparing: ${tokenPath}`);
+      console.log("  Local value:", JSON.stringify(localToken.$value));
+      console.log("  Remote value:", JSON.stringify(remoteToken.$value));
+      console.log("  Has changed:", hasChanged);
+      console.log("  Local hash:", localToken.$syncMetadata?.hash || "none");
+      console.log("  Remote hash:", remoteToken.$syncMetadata?.hash || "none");
+    }
+
     // Quick hash comparison first
-    if (!this.metadataManager.hasTokenChanged(localToken, remoteToken)) {
+    if (!hasChanged) {
       return null; // No conflict
     }
 

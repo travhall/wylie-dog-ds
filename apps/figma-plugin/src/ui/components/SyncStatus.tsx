@@ -1,5 +1,6 @@
 import { useState, useEffect } from "preact/hooks";
 import type { ConflictAwareGitHubClient } from "../../plugin/sync/conflict-aware-github-client";
+import type { ExportData } from "../../plugin/variables/processor";
 
 interface SyncStatusProps {
   githubClient: ConflictAwareGitHubClient;
@@ -34,7 +35,45 @@ export function SyncStatus({
     setStatus((prev) => ({ ...prev, checking: true, error: undefined }));
 
     try {
-      const syncStatus = await githubClient.getSyncStatus();
+      console.log("🔍 Requesting local tokens for sync status check...");
+
+      // Request local tokens from plugin thread
+      const localTokensPromise = new Promise<ExportData[]>((resolve) => {
+        const handler = (event: MessageEvent) => {
+          if (event.data.pluginMessage?.type === "local-tokens-exported") {
+            window.removeEventListener("message", handler);
+            console.log("✅ Local tokens received for sync status");
+            resolve(event.data.pluginMessage.localTokens || []);
+          } else if (event.data.pluginMessage?.type === "local-tokens-error") {
+            window.removeEventListener("message", handler);
+            console.warn("⚠️ Failed to get local tokens for sync status");
+            resolve([]);
+          }
+        };
+        window.addEventListener("message", handler);
+
+        // Request local tokens from plugin thread
+        parent.postMessage(
+          {
+            pluginMessage: {
+              type: "get-local-tokens",
+            },
+          },
+          "*"
+        );
+
+        // Timeout after 10 seconds
+        setTimeout(() => {
+          window.removeEventListener("message", handler);
+          console.warn("⚠️ Timeout getting local tokens for sync status");
+          resolve([]);
+        }, 10000);
+      });
+
+      const localTokens = await localTokensPromise;
+
+      // Get sync status with local tokens
+      const syncStatus = await githubClient.getSyncStatus(localTokens);
       setStatus({
         upToDate: syncStatus.upToDate,
         localChanges: syncStatus.localChanges,

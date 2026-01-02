@@ -74,7 +74,8 @@ function AppInner() {
   } = useGitHubSync(
     githubClient,
     pluginActions,
-    pluginState.pendingTokensForConflictResolution
+    pluginState.pendingTokensForConflictResolution,
+    pluginState.conflictOperationType
   );
 
   // Auto-switch to Tokens tab after successful import
