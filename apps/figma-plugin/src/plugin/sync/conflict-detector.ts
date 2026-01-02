@@ -185,6 +185,19 @@ export class ConflictDetector {
       console.log(`\n📊 Comparing: ${tokenPath}`);
       console.log("  Local value:", JSON.stringify(localToken.$value));
       console.log("  Remote value:", JSON.stringify(remoteToken.$value));
+
+      // Log valuesByMode if it exists
+      if (localToken.valuesByMode || remoteToken.valuesByMode) {
+        console.log(
+          "  Local valuesByMode:",
+          JSON.stringify(localToken.valuesByMode)
+        );
+        console.log(
+          "  Remote valuesByMode:",
+          JSON.stringify(remoteToken.valuesByMode)
+        );
+      }
+
       console.log("  Has changed:", hasChanged);
       console.log("  Local hash:", localToken.$syncMetadata?.hash || "none");
       console.log("  Remote hash:", remoteToken.$syncMetadata?.hash || "none");
@@ -200,19 +213,18 @@ export class ConflictDetector {
       return this.createTypeChangeConflict(tokenPath, localEntry, remoteEntry);
     }
 
-    if (this.isValueDifferent(localToken.$value, remoteToken.$value)) {
-      return this.createValueChangeConflict(tokenPath, localEntry, remoteEntry);
-    }
+    // Check for value differences (primary $value OR valuesByMode)
+    const hasPrimaryValueChange = this.isValueDifferent(
+      localToken.$value,
+      remoteToken.$value
+    );
+    const hasModeValueChange =
+      (localToken.valuesByMode || remoteToken.valuesByMode) &&
+      this.hasModeValueConflicts(localToken, remoteToken);
 
-    // Check valuesByMode if present
-    if (localToken.valuesByMode || remoteToken.valuesByMode) {
-      if (this.hasModeValueConflicts(localToken, remoteToken)) {
-        return this.createValueChangeConflict(
-          tokenPath,
-          localEntry,
-          remoteEntry
-        );
-      }
+    // If either primary value or mode values differ, create conflict
+    if (hasPrimaryValueChange || hasModeValueChange) {
+      return this.createValueChangeConflict(tokenPath, localEntry, remoteEntry);
     }
 
     return null;

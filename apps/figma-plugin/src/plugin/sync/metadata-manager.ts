@@ -24,11 +24,31 @@ export class SyncMetadataManager {
       valuesByMode: token.valuesByMode,
     };
 
-    const tokenString = JSON.stringify(
-      tokenForHash,
-      Object.keys(tokenForHash).sort()
-    );
-    return this.simpleHash(tokenString);
+    // Stringify with sorted keys for consistent hashing
+    const sortedKeys = Object.keys(tokenForHash).sort();
+    const sortedObj: any = {};
+    for (const key of sortedKeys) {
+      sortedObj[key] = tokenForHash[key as keyof typeof tokenForHash];
+    }
+
+    const tokenString = JSON.stringify(sortedObj);
+
+    // Debug logging for hash generation
+    if (tokenForHash.valuesByMode) {
+      console.log(`🔐 Generating hash for token with valuesByMode`);
+      console.log(`  Token string to hash: ${tokenString}`);
+      console.log(
+        `  valuesByMode: ${JSON.stringify(tokenForHash.valuesByMode)}`
+      );
+    }
+
+    const hash = this.simpleHash(tokenString);
+
+    if (tokenForHash.valuesByMode) {
+      console.log(`  Generated hash: ${hash}`);
+    }
+
+    return hash;
   }
 
   /**
@@ -119,17 +139,48 @@ export class SyncMetadataManager {
 
   /**
    * Check if a token has changed by comparing hashes
+   * ALWAYS regenerates hashes from actual token data to avoid stale metadata issues
    */
   hasTokenChanged(
     localToken: ProcessedTokenWithSync,
     remoteToken: ProcessedTokenWithSync
   ): boolean {
-    const localHash =
-      localToken.$syncMetadata?.hash || this.generateTokenHash(localToken);
-    const remoteHash =
-      remoteToken.$syncMetadata?.hash || this.generateTokenHash(remoteToken);
+    // CRITICAL: Always generate fresh hashes from token data, never trust stored metadata
+    // Stored metadata can be stale if the token was modified outside the sync system
+    const localHash = this.generateTokenHash(localToken);
+    const remoteHash = this.generateTokenHash(remoteToken);
 
-    return localHash !== remoteHash;
+    const hasChanged = localHash !== remoteHash;
+
+    // Debug logging for tokens with valuesByMode
+    if (localToken.valuesByMode || remoteToken.valuesByMode) {
+      console.log(`\n🔍 Hash comparison for token with valuesByMode:`);
+      console.log(`  Local hash: ${localHash} (freshly generated)`);
+      console.log(`  Remote hash: ${remoteHash} (freshly generated)`);
+      console.log(`  Has changed: ${hasChanged}`);
+
+      if (hasChanged) {
+        console.log(`  ✅ Change detected!`);
+        if (localToken.valuesByMode && remoteToken.valuesByMode) {
+          const localDark = localToken.valuesByMode.Dark;
+          const remoteDark = remoteToken.valuesByMode.Dark;
+          if (localDark !== remoteDark) {
+            console.log(
+              `    Dark mode differs: "${localDark}" vs "${remoteDark}"`
+            );
+          }
+          const localLight = localToken.valuesByMode.Light;
+          const remoteLight = remoteToken.valuesByMode.Light;
+          if (localLight !== remoteLight) {
+            console.log(
+              `    Light mode differs: "${localLight}" vs "${remoteLight}"`
+            );
+          }
+        }
+      }
+    }
+
+    return hasChanged;
   }
 
   /**

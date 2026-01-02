@@ -22,6 +22,44 @@ export function ConflictResolutionDisplay({
   >(new Map());
   const [showAdvanced, setShowAdvanced] = useState(false);
 
+  // Helper to get display value that shows mode-specific changes
+  const getDisplayValue = (token: any) => {
+    if (!token) return "undefined";
+
+    // If token has valuesByMode, show which modes have values
+    if (token.valuesByMode && Object.keys(token.valuesByMode).length > 0) {
+      const modes = Object.entries(token.valuesByMode)
+        .map(([mode, value]) => `${mode}: ${value}`)
+        .join(", ");
+      return modes;
+    }
+
+    return token.$value || "undefined";
+  };
+
+  // Helper to detect which modes changed
+  const getChangedModes = (localToken: any, remoteToken: any) => {
+    if (!localToken?.valuesByMode || !remoteToken?.valuesByMode) {
+      return null;
+    }
+
+    const changed: string[] = [];
+    const allModes = new Set([
+      ...Object.keys(localToken.valuesByMode),
+      ...Object.keys(remoteToken.valuesByMode),
+    ]);
+
+    for (const mode of allModes) {
+      const localValue = localToken.valuesByMode[mode];
+      const remoteValue = remoteToken.valuesByMode[mode];
+      if (localValue !== remoteValue) {
+        changed.push(mode);
+      }
+    }
+
+    return changed.length > 0 ? changed : null;
+  };
+
   const handleResolution = (
     conflictId: string,
     resolution: ConflictResolution
@@ -517,9 +555,15 @@ function ConflictItem({
               style={{
                 fontSize: "var(--font-size-xs)",
                 color: "var(--text-secondary)",
+                whiteSpace: "pre-wrap",
+                wordBreak: "break-word",
               }}
             >
-              {conflict.localToken?.$value || "undefined"}
+              {conflict.localToken?.valuesByMode
+                ? Object.entries(conflict.localToken.valuesByMode)
+                    .map(([mode, value]) => `${mode}: ${value}`)
+                    .join(", ")
+                : conflict.localToken?.$value || "undefined"}
             </code>
           </div>
           <div
@@ -543,9 +587,15 @@ function ConflictItem({
               style={{
                 fontSize: "var(--font-size-xs)",
                 color: "var(--text-secondary)",
+                whiteSpace: "pre-wrap",
+                wordBreak: "break-word",
               }}
             >
-              {conflict.remoteToken?.$value || "undefined"}
+              {conflict.remoteToken?.valuesByMode
+                ? Object.entries(conflict.remoteToken.valuesByMode)
+                    .map(([mode, value]) => `${mode}: ${value}`)
+                    .join(", ")
+                : conflict.remoteToken?.$value || "undefined"}
             </code>
           </div>
         </div>
