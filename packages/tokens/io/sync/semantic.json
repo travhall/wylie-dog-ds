@@ -481,7 +481,7 @@
           "$value": "{color.purple.600}",
           "valuesByMode": {
             "Light": "{color.purple.600}",
-            "Dark": "{color.purple.400}"
+            "Dark": "{color.purple.600}"
           }
         },
         "color.accent.hover": {
@@ -497,7 +497,7 @@
           "$value": "{color.purple.800}",
           "valuesByMode": {
             "Light": "{color.purple.800}",
-            "Dark": "{color.purple.700}"
+            "Dark": "{color.purple.400}"
           }
         },
         "color.accent.surface": {
@@ -505,7 +505,7 @@
           "$value": "{color.purple.50}",
           "valuesByMode": {
             "Light": "{color.purple.50}",
-            "Dark": "{color.purple.600}"
+            "Dark": "{color.purple.950}"
           }
         },
         "color.accent.text": {
