@@ -3,11 +3,11 @@
     "semantic": {
       "modes": [
         {
-          "modeId": "mode:semantic:light",
+          "modeId": "802:3",
           "name": "Light"
         },
         {
-          "modeId": "mode:semantic:dark",
+          "modeId": "802:4",
           "name": "Dark"
         }
       ],
@@ -401,7 +401,7 @@
           "$value": "{color.blue.600}",
           "valuesByMode": {
             "Light": "{color.blue.600}",
-            "Dark": "#ffffff"
+            "Dark": "{color.blue.500}"
           }
         },
         "color.primary.hover": {
@@ -409,7 +409,7 @@
           "$value": "{color.blue.700}",
           "valuesByMode": {
             "Light": "{color.blue.700}",
-            "Dark": "#ffffff"
+            "Dark": "{color.blue.600}"
           }
         },
         "color.primary.active": {
@@ -417,7 +417,7 @@
           "$value": "{color.blue.800}",
           "valuesByMode": {
             "Light": "{color.blue.800}",
-            "Dark": "#ffffff"
+            "Dark": "{color.blue.700}"
           }
         },
         "color.primary.surface": {
@@ -425,7 +425,7 @@
           "$value": "{color.blue.50}",
           "valuesByMode": {
             "Light": "{color.blue.50}",
-            "Dark": "#ffffff"
+            "Dark": "{color.blue.950}"
           }
         },
         "color.primary.text": {
@@ -433,7 +433,7 @@
           "$value": "{color.gray.50}",
           "valuesByMode": {
             "Light": "{color.gray.50}",
-            "Dark": "#ffffff"
+            "Dark": "{color.blue.950}"
           }
         },
         "color.secondary.base": {
@@ -441,7 +441,7 @@
           "$value": "{color.gray.200}",
           "valuesByMode": {
             "Light": "{color.gray.200}",
-            "Dark": "#ffffff"
+            "Dark": "{color.gray.100}"
           }
         },
         "color.secondary.hover": {
@@ -449,7 +449,7 @@
           "$value": "{color.gray.300}",
           "valuesByMode": {
             "Light": "{color.gray.300}",
-            "Dark": "#ffffff"
+            "Dark": "{color.gray.200}"
           }
         },
         "color.secondary.active": {
@@ -457,7 +457,7 @@
           "$value": "{color.gray.400}",
           "valuesByMode": {
             "Light": "{color.gray.400}",
-            "Dark": "#ffffff"
+            "Dark": "{color.gray.300}"
           }
         },
         "color.secondary.surface": {
@@ -465,7 +465,7 @@
           "$value": "{color.gray.50}",
           "valuesByMode": {
             "Light": "{color.gray.50}",
-            "Dark": "#ffffff"
+            "Dark": "{color.gray.900}"
           }
         },
         "color.secondary.text": {
@@ -473,7 +473,7 @@
           "$value": "{color.gray.900}",
           "valuesByMode": {
             "Light": "{color.gray.900}",
-            "Dark": "#ffffff"
+            "Dark": "{color.gray.50}"
           }
         },
         "color.accent.base": {
@@ -481,7 +481,7 @@
           "$value": "{color.purple.600}",
           "valuesByMode": {
             "Light": "{color.purple.600}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.accent.hover": {
@@ -489,7 +489,7 @@
           "$value": "{color.purple.700}",
           "valuesByMode": {
             "Light": "{color.purple.700}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.accent.active": {
@@ -497,7 +497,7 @@
           "$value": "{color.purple.800}",
           "valuesByMode": {
             "Light": "{color.purple.800}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.accent.surface": {
@@ -505,7 +505,7 @@
           "$value": "{color.purple.50}",
           "valuesByMode": {
             "Light": "{color.purple.50}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.accent.text": {
@@ -513,7 +513,7 @@
           "$value": "{color.gray.50}",
           "valuesByMode": {
             "Light": "{color.gray.50}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.accent.highlight": {
@@ -521,7 +521,7 @@
           "$value": "{color.pink.400}",
           "valuesByMode": {
             "Light": "{color.pink.400}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.neutral.base": {
@@ -529,7 +529,7 @@
           "$value": "{color.gray.600}",
           "valuesByMode": {
             "Light": "{color.gray.600}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.neutral.muted": {
@@ -537,7 +537,7 @@
           "$value": "{color.gray.400}",
           "valuesByMode": {
             "Light": "{color.gray.400}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.neutral.subtle": {
@@ -545,7 +545,7 @@
           "$value": "{color.gray.200}",
           "valuesByMode": {
             "Light": "{color.gray.200}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.neutral.on": {
@@ -553,7 +553,7 @@
           "$value": "{color.gray.900}",
           "valuesByMode": {
             "Light": "{color.gray.900}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.status.success": {
@@ -561,7 +561,7 @@
           "$value": "{color.green.600}",
           "valuesByMode": {
             "Light": "{color.green.600}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.status.warning": {
@@ -569,7 +569,7 @@
           "$value": "{color.orange.600}",
           "valuesByMode": {
             "Light": "{color.orange.600}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.status.danger": {
@@ -577,7 +577,7 @@
           "$value": "{color.red.600}",
           "valuesByMode": {
             "Light": "{color.red.600}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.status.info": {
@@ -585,7 +585,7 @@
           "$value": "{color.blue.600}",
           "valuesByMode": {
             "Light": "{color.blue.600}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "color.status.highlight": {
@@ -593,7 +593,7 @@
           "$value": "{color.yellow.300}",
           "valuesByMode": {
             "Light": "{color.yellow.300}",
-            "Dark": "#ffffff"
+            "Dark": "oklch(1.000 0.000 0.00)"
           }
         },
         "space.xs": {
