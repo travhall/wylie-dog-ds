@@ -3,11 +3,11 @@
     "semantic": {
       "modes": [
         {
-          "modeId": "770:11",
+          "modeId": "802:3",
           "name": "Light"
         },
         {
-          "modeId": "770:12",
+          "modeId": "802:4",
           "name": "Dark"
         }
       ],
@@ -401,7 +401,7 @@
           "$value": "{color.blue.600}",
           "valuesByMode": {
             "Light": "{color.blue.600}",
-            "Dark": "#ffffff"
+            "Dark": "{color.blue.500}"
           }
         },
         "color.primary.hover": {
@@ -409,7 +409,7 @@
           "$value": "{color.blue.700}",
           "valuesByMode": {
             "Light": "{color.blue.700}",
-            "Dark": "#ffffff"
+            "Dark": "{color.blue.600}"
           }
         },
         "color.primary.active": {
@@ -417,7 +417,7 @@
           "$value": "{color.blue.800}",
           "valuesByMode": {
             "Light": "{color.blue.800}",
-            "Dark": "#ffffff"
+            "Dark": "{color.blue.700}"
           }
         },
         "color.primary.surface": {
@@ -425,7 +425,7 @@
           "$value": "{color.blue.50}",
           "valuesByMode": {
             "Light": "{color.blue.50}",
-            "Dark": "#ffffff"
+            "Dark": "{color.blue.950}"
           }
         },
         "color.primary.text": {
@@ -433,7 +433,7 @@
           "$value": "{color.gray.50}",
           "valuesByMode": {
             "Light": "{color.gray.50}",
-            "Dark": "#ffffff"
+            "Dark": "{color.blue.950}"
           }
         },
         "color.secondary.base": {

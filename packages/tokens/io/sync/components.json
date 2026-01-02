@@ -3,11 +3,11 @@
     "components": {
       "modes": [
         {
-          "modeId": "770:14",
+          "modeId": "802:6",
           "name": "Light"
         },
         {
-          "modeId": "770:15",
+          "modeId": "802:7",
           "name": "Dark"
         }
       ],
@@ -654,10 +654,10 @@
         },
         "button.ghost.background": {
           "$type": "color",
-          "$value": "#000000",
+          "$value": "{color.surface.primary}",
           "valuesByMode": {
-            "Light": "#000000",
-            "Dark": "#000000"
+            "Light": "{color.surface.primary}",
+            "Dark": "{color.surface.primary}"
           }
         },
         "button.ghost.background-hover": {

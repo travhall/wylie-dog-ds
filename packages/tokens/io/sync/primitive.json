@@ -3,7 +3,7 @@
     "primitive": {
       "modes": [
         {
-          "modeId": "770:9",
+          "modeId": "802:1",
           "name": "Value"
         }
       ],
@@ -466,31 +466,31 @@
         },
         "typography.font-weight.thin": {
           "$type": "fontWeight",
-          "$value": "Thin"
+          "$value": "String value"
         },
         "typography.font-weight.light": {
           "$type": "fontWeight",
-          "$value": "Light"
+          "$value": "String value"
         },
         "typography.font-weight.normal": {
           "$type": "fontWeight",
-          "$value": "Regular"
+          "$value": "String value"
         },
         "typography.font-weight.medium": {
           "$type": "fontWeight",
-          "$value": "Medium"
+          "$value": "String value"
         },
         "typography.font-weight.semibold": {
           "$type": "fontWeight",
-          "$value": "SemiBold"
+          "$value": "String value"
         },
         "typography.font-weight.bold": {
           "$type": "fontWeight",
-          "$value": "Bold"
+          "$value": "String value"
         },
         "typography.font-weight.extrabold": {
           "$type": "fontWeight",
-          "$value": "ExtraBold"
+          "$value": "String value"
         },
         "typography.line-height.none": {
           "$type": "lineHeight",
