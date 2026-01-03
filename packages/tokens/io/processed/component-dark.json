@@ -143,22 +143,6 @@
     "$type": "color",
     "$value": "{color.background.primary}"
   },
-  "button.ghost.background": {
-    "$type": "color",
-    "$value": "{color.surface.primary}"
-  },
-  "button.ghost.background-hover": {
-    "$type": "color",
-    "$value": "{color.background.secondary}"
-  },
-  "button.ghost.background-active": {
-    "$type": "color",
-    "$value": "{color.background.tertiary}"
-  },
-  "button.ghost.text": {
-    "$type": "color",
-    "$value": "{color.text.primary}"
-  },
   "button.outline.background-hover": {
     "$type": "color",
     "$value": "{color.interactive.secondary}"
@@ -334,6 +318,22 @@
   "button.outline.hover": {
     "$type": "color",
     "$value": "{color.background.secondary}"
+  },
+  "button.ghost.background": {
+    "$type": "color",
+    "$value": "#000000"
+  },
+  "button.ghost.background-hover": {
+    "$type": "color",
+    "$value": "{color.background.secondary}"
+  },
+  "button.ghost.background-active": {
+    "$type": "color",
+    "$value": "{color.background.tertiary}"
+  },
+  "button.ghost.text": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
   },
   "button.link.text": {
     "$type": "color",
@@ -677,7 +677,7 @@
   },
   "dialog.overlay": {
     "$type": "color",
-    "$value": "{color.background.inverse}"
+    "$value": "#000000"
   },
   "dialog.title": {
     "$type": "color",
