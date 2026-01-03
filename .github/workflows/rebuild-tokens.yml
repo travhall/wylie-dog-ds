@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'packages/tokens/io/sync/**/*.json'
+      - "packages/tokens/io/sync/**/*.json"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -32,14 +32,16 @@ jobs:
         uses: pnpm/action-setup@v4
 
       - name: Get pnpm store directory
+        id: store_path
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+          echo "path=$(pnpm store path --silent)" >> "$GITHUB_OUTPUT"
 
       - name: Setup pnpm cache
         uses: actions/cache@v4
         with:
-          path: ${{ env.STORE_PATH }}
+          path: ${{ steps.store_path.outputs.path }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
