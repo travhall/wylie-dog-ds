@@ -1,35 +1,15 @@
 import { converter, formatHex } from 'culori';
 
 /**
- * Convert hex color to OKLCH format using culori
+ * Pass through hex color without conversion
+ * This function maintains the same signature for compatibility but no longer converts to OKLCH
  * @param {string} hexValue - Hex color string like "#ffffff"
- * @returns {string} OKLCH color string like "oklch(1 0 0)"
+ * @returns {string} The same hex color string
  */
 export function convertHexToOklch(hexValue) {
-  try {
-    if (typeof hexValue !== 'string' || !hexValue.startsWith('#')) {
-      return hexValue; // Return as-is if not hex
-    }
-    
-    const oklch = converter('oklch');
-    const color = oklch(hexValue);
-    
-    if (!color) {
-      console.warn(`Failed to convert hex ${hexValue} to OKLCH`);
-      return hexValue;
-    }
-    
-    // Format with proper precision
-    const l = (color.l || 0).toFixed(3);
-    const c = (color.c || 0).toFixed(3);
-    const h = (color.h || 0).toFixed(2);
-    
-    return `oklch(${l} ${c} ${h})`;
-    
-  } catch (error) {
-    console.warn(`Failed to convert hex ${hexValue}:`, error.message);
-    return hexValue;
-  }
+  // Simply return the hex value without conversion
+  // Colors are now stored and used in hex format to match Figma exactly
+  return hexValue;
 }
 
 // Practical OKLCH to hex conversion using known mappings

@@ -113,11 +113,11 @@
   },
   "color.border.primary": {
     "$type": "color",
-    "$value": "{color.gray.300}"
+    "$value": "{color.gray.400}"
   },
   "color.border.secondary": {
     "$type": "color",
-    "$value": "{color.gray.200}"
+    "$value": "{color.gray.300}"
   },
   "color.border.focus": {
     "$type": "color",
@@ -249,11 +249,11 @@
   },
   "color.accent.text": {
     "$type": "color",
-    "$value": "{color.gray.50}"
+    "$value": "{color.purple.900}"
   },
   "color.accent.highlight": {
     "$type": "color",
-    "$value": "{color.pink.400}"
+    "$value": "{color.pink.300}"
   },
   "color.neutral.base": {
     "$type": "color",
