@@ -3,11 +3,11 @@
     "semantic": {
       "modes": [
         {
-          "modeId": "mode:semantic:light",
+          "modeId": "802:3",
           "name": "Light"
         },
         {
-          "modeId": "mode:semantic:dark",
+          "modeId": "802:4",
           "name": "Dark"
         }
       ],
@@ -430,10 +430,10 @@
         },
         "color.primary.text": {
           "$type": "color",
-          "$value": "{color.gray.50}",
+          "$value": "{color.gray.950}",
           "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.blue.950}"
+            "Light": "{color.gray.950}",
+            "Dark": "{color.gray.50}"
           }
         },
         "color.secondary.base": {
@@ -462,9 +462,9 @@
         },
         "color.secondary.surface": {
           "$type": "color",
-          "$value": "{color.gray.50}",
+          "$value": "{color.gray.100}",
           "valuesByMode": {
-            "Light": "{color.gray.50}",
+            "Light": "{color.gray.100}",
             "Dark": "{color.gray.900}"
           }
         },
@@ -473,7 +473,7 @@
           "$value": "{color.gray.900}",
           "valuesByMode": {
             "Light": "{color.gray.900}",
-            "Dark": "{color.gray.50}"
+            "Dark": "{color.gray.100}"
           }
         },
         "color.accent.base": {
