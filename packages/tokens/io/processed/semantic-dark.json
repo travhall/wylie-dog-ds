@@ -193,23 +193,23 @@
   },
   "color.primary.base": {
     "$type": "color",
-    "$value": "{color.blue.500}"
+    "$value": "{color.orange.400}"
   },
   "color.primary.hover": {
     "$type": "color",
-    "$value": "{color.blue.600}"
+    "$value": "{color.orange.500}"
   },
   "color.primary.active": {
     "$type": "color",
-    "$value": "{color.blue.700}"
+    "$value": "{color.orange.600}"
   },
   "color.primary.surface": {
     "$type": "color",
-    "$value": "{color.blue.950}"
+    "$value": "{color.orange.950}"
   },
   "color.primary.text": {
     "$type": "color",
-    "$value": "{color.blue.950}"
+    "$value": "{color.gray.50}"
   },
   "color.secondary.base": {
     "$type": "color",
@@ -229,7 +229,7 @@
   },
   "color.secondary.text": {
     "$type": "color",
-    "$value": "{color.gray.50}"
+    "$value": "{color.gray.100}"
   },
   "color.accent.base": {
     "$type": "color",

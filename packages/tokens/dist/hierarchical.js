@@ -166,17 +166,17 @@ export const color = {
     "danger-hover": "#b91c1c"
   },
   "primary": {
-    "base": "#2563eb",
-    "hover": "#1d4ed8",
-    "active": "#1e40af",
+    "base": "#c2410b",
+    "hover": "#9a3412",
+    "active": "#7c2d12",
     "surface": "#eff6ff",
-    "text": "#ffffff"
+    "text": "#0f172a"
   },
   "secondary": {
     "base": "#f1f5f9",
     "hover": "#e2e8f0",
     "active": "#cbd5e1",
-    "surface": "#ffffff",
+    "surface": "#f8fafc",
     "text": "#1e293b"
   },
   "accent": {
