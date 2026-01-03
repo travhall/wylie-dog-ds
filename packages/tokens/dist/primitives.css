@@ -1,0 +1,76 @@
+/**
+ * Primitive color tokens
+ * These are wrapped in @layer base to prevent Tailwind tree-shaking
+ * Import this file in your consuming app's CSS entry point
+ */
+
+@layer base {
+  :root {
+    --color-gray-50: oklch(1.000 0.000 0.00);
+    --color-gray-100: oklch(0.984 0.003 247.86);
+    --color-gray-200: oklch(0.968 0.007 247.90);
+    --color-gray-300: oklch(0.929 0.013 255.51);
+    --color-gray-400: oklch(0.869 0.020 252.89);
+    --color-gray-500: oklch(0.711 0.035 256.79);
+    --color-gray-600: oklch(0.554 0.041 257.42);
+    --color-gray-700: oklch(0.446 0.037 257.28);
+    --color-gray-800: oklch(0.372 0.039 257.29);
+    --color-gray-900: oklch(0.279 0.037 260.03);
+    --color-gray-950: oklch(0.208 0.040 265.75);
+    --color-blue-50: oklch(0.970 0.014 254.60);
+    --color-blue-100: oklch(0.932 0.032 255.59);
+    --color-blue-200: oklch(0.882 0.057 254.13);
+    --color-blue-300: oklch(0.809 0.096 251.81);
+    --color-blue-400: oklch(0.714 0.143 254.62);
+    --color-blue-500: oklch(0.623 0.188 259.81);
+    --color-blue-600: oklch(0.546 0.215 262.88);
+    --color-blue-700: oklch(0.488 0.217 264.38);
+    --color-blue-800: oklch(0.424 0.181 265.64);
+    --color-blue-900: oklch(0.379 0.138 265.52);
+    --color-blue-950: oklch(0.282 0.087 267.94);
+    --color-green-50: oklch(0.982 0.018 155.83);
+    --color-green-100: oklch(0.962 0.043 156.74);
+    --color-green-200: oklch(0.925 0.081 155.99);
+    --color-green-300: oklch(0.871 0.136 154.45);
+    --color-green-400: oklch(0.800 0.182 151.71);
+    --color-green-500: oklch(0.723 0.192 149.58);
+    --color-green-600: oklch(0.627 0.170 149.21);
+    --color-green-700: oklch(0.527 0.137 150.07);
+    --color-green-800: oklch(0.448 0.108 151.33);
+    --color-green-900: oklch(0.393 0.090 152.54);
+    --color-green-950: oklch(0.266 0.063 152.93);
+    --color-orange-50: oklch(0.980 0.016 73.68);
+    --color-orange-100: oklch(0.954 0.037 75.16);
+    --color-orange-200: oklch(0.901 0.073 70.70);
+    --color-orange-300: oklch(0.837 0.117 66.29);
+    --color-orange-400: oklch(0.758 0.159 55.93);
+    --color-orange-500: oklch(0.705 0.187 47.60);
+    --color-orange-600: oklch(0.646 0.194 41.12);
+    --color-orange-700: oklch(0.553 0.174 38.40);
+    --color-orange-800: oklch(0.470 0.143 37.30);
+    --color-orange-900: oklch(0.408 0.116 38.17);
+    --color-orange-950: oklch(0.266 0.076 36.26);
+    --color-red-50: oklch(0.971 0.013 17.38);
+    --color-red-100: oklch(0.936 0.031 17.72);
+    --color-red-200: oklch(0.885 0.059 18.33);
+    --color-red-300: oklch(0.808 0.103 19.57);
+    --color-red-400: oklch(0.711 0.166 22.22);
+    --color-red-500: oklch(0.637 0.208 25.33);
+    --color-red-600: oklch(0.577 0.215 27.33);
+    --color-red-700: oklch(0.505 0.190 27.52);
+    --color-red-800: oklch(0.444 0.161 26.90);
+    --color-red-900: oklch(0.396 0.133 25.72);
+    --color-red-950: oklch(0.258 0.089 26.04);
+    --color-purple-50: oklch(0.977 0.014 308.30);
+    --color-purple-100: oklch(0.946 0.033 307.17);
+    --color-purple-200: oklch(0.902 0.060 306.70);
+    --color-purple-300: oklch(0.827 0.108 306.38);
+    --color-purple-400: oklch(0.722 0.177 305.50);
+    --color-purple-500: oklch(0.627 0.233 303.90);
+    --color-purple-600: oklch(0.558 0.252 302.32);
+    --color-purple-700: oklch(0.541 0.247 293.01);
+    --color-purple-800: oklch(0.438 0.198 303.72);
+    --color-purple-900: oklch(0.381 0.166 304.99);
+    --color-purple-950: oklch(0.291 0.143 302.72);
+  }
+}

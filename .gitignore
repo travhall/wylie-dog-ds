@@ -3,7 +3,9 @@ node_modules
 .turbo
 *.log
 .next
-dist
+apps/figma-plugin/dist
+apps/storybook/dist
+packages/ui/dist
 dist-ssr
 *.local
 .env
