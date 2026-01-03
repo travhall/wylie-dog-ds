@@ -225,10 +225,19 @@ function processVariable(variable: any, modes: any[]): ProcessedToken {
             value.g === undefined ||
             value.b === undefined
           ) {
-            console.error(`Invalid color value for ${variable.name}:`, value);
+            console.error(
+              `❌ [EXPORT] Invalid color value for ${variable.name}:`,
+              value
+            );
             processedValue = undefined;
           } else {
             processedValue = rgbToHex(value);
+            // DEBUG: Log gray color exports
+            if (variable.name.includes("gray")) {
+              console.log(
+                `📤 [EXPORT] ${variable.name} (${mode.name}): RGB(${value.r.toFixed(3)}, ${value.g.toFixed(3)}, ${value.b.toFixed(3)}) → ${processedValue}`
+              );
+            }
           }
           break;
         case "FLOAT":

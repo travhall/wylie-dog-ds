@@ -247,16 +247,20 @@ export class ConflictResolver {
     tokenName: string;
   } | null {
     // Expected format: conflict_{type}_{collectionName}.{tokenName}_{timestamp}
+    // Example: conflict_value_primitive.color.gray.500_1234567890
     const match = conflictId.match(/^conflict_[^_]+_(.+)_\d+$/);
     if (!match) return null;
 
-    const tokenPath = match[1];
-    const lastDotIndex = tokenPath.lastIndexOf(".");
+    const tokenPath = match[1]; // e.g., "primitive.color.gray.500"
 
-    if (lastDotIndex === -1) return null;
+    // Split on the FIRST dot to get collection name
+    // primitive.color.gray.500 → "primitive" + "color.gray.500"
+    const firstDotIndex = tokenPath.indexOf(".");
 
-    const collectionName = tokenPath.substring(0, lastDotIndex);
-    const tokenName = tokenPath.substring(lastDotIndex + 1);
+    if (firstDotIndex === -1) return null;
+
+    const collectionName = tokenPath.substring(0, firstDotIndex); // "primitive"
+    const tokenName = tokenPath.substring(firstDotIndex + 1); // "color.gray.500"
 
     return {
       tokenPath,

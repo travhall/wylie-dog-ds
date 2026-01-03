@@ -365,6 +365,16 @@ async function createVariableWithReferences(
       // Multi-mode token
       const modeReferences = new Map<string, any>();
 
+      // DEBUG: Log multi-mode color tokens
+      if (token.$type === "color" && tokenName.includes("gray")) {
+        console.log(`🎨 [IMPORT] Multi-mode color: ${tokenName}`);
+        console.log(
+          `  valuesByMode:`,
+          JSON.stringify(token.valuesByMode, null, 2)
+        );
+        console.log(`  $value:`, token.$value);
+      }
+
       for (const [modeName, modeValue] of Object.entries(token.valuesByMode)) {
         const mode = collection.modes.find((m) => m.name === modeName);
         if (!mode) continue;
@@ -393,6 +403,14 @@ async function createVariableWithReferences(
             Object.assign({}, token, { $value: modeValue }),
             figmaType
           );
+
+          // DEBUG: Log color conversion details for gray colors
+          if (token.$type === "color" && tokenName.includes("gray")) {
+            console.log(
+              `🔄 [CONVERT] ${tokenName} (${modeName}): "${modeValue}" → RGB`,
+              figmaValue
+            );
+          }
 
           try {
             variable.setValueForMode(mode.modeId, figmaValue);
@@ -442,10 +460,31 @@ async function createVariableWithReferences(
         }
       } else {
         // Set immediate value for every mode with type validation
+
+        // DEBUG: Log single-mode color tokens BEFORE conversion
+        if (token.$type === "color") {
+          console.log(
+            `🎨 [IMPORT-SINGLE] ${tokenName}: $value="${token.$value}", figmaType=${figmaType}`
+          );
+        }
+
         const figmaValue = convertTokenValueToFigma(token, figmaType);
+
+        // DEBUG: Log conversion result
+        if (token.$type === "color") {
+          console.log(
+            `🔄 [CONVERT-SINGLE] ${tokenName}: "${token.$value}" → RGB(${figmaValue?.r?.toFixed(3) || "null"}, ${figmaValue?.g?.toFixed(3) || "null"}, ${figmaValue?.b?.toFixed(3) || "null"})`
+          );
+        }
+
         for (const mode of targetModes) {
           try {
             variable.setValueForMode(mode.modeId, figmaValue);
+
+            // DEBUG: Confirm value was set
+            if (token.$type === "color") {
+              console.log(`✅ [SET] ${tokenName} in mode ${mode.name}`);
+            }
           } catch (error) {
             console.error(
               `Failed to set value for ${tokenName} mode ${mode.name}:`,
