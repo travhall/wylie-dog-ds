@@ -17,7 +17,7 @@
   },
   "color.background.brand": {
     "$type": "color",
-    "$value": "{color.blue.600}"
+    "$value": "{color.orange.600}"
   },
   "color.background.success": {
     "$type": "color",
@@ -93,7 +93,7 @@
   },
   "color.text.brand": {
     "$type": "color",
-    "$value": "{color.blue.700}"
+    "$value": "{color.orange.600}"
   },
   "color.text.success": {
     "$type": "color",
@@ -125,7 +125,7 @@
   },
   "color.border.brand": {
     "$type": "color",
-    "$value": "{color.blue.600}"
+    "$value": "{color.orange.600}"
   },
   "color.border.success": {
     "$type": "color",
