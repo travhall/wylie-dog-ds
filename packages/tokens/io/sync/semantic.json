@@ -398,26 +398,26 @@
         },
         "color.primary.base": {
           "$type": "color",
-          "$value": "{color.blue.600}",
+          "$value": "{color.orange.700}",
           "valuesByMode": {
-            "Light": "{color.blue.600}",
-            "Dark": "{color.blue.500}"
+            "Light": "{color.orange.700}",
+            "Dark": "{color.orange.400}"
           }
         },
         "color.primary.hover": {
           "$type": "color",
-          "$value": "{color.blue.700}",
+          "$value": "{color.orange.800}",
           "valuesByMode": {
-            "Light": "{color.blue.700}",
-            "Dark": "{color.blue.600}"
+            "Light": "{color.orange.800}",
+            "Dark": "{color.orange.500}"
           }
         },
         "color.primary.active": {
           "$type": "color",
-          "$value": "{color.blue.800}",
+          "$value": "{color.orange.900}",
           "valuesByMode": {
-            "Light": "{color.blue.800}",
-            "Dark": "{color.blue.700}"
+            "Light": "{color.orange.900}",
+            "Dark": "{color.orange.600}"
           }
         },
         "color.primary.surface": {
@@ -425,7 +425,7 @@
           "$value": "{color.blue.50}",
           "valuesByMode": {
             "Light": "{color.blue.50}",
-            "Dark": "{color.blue.950}"
+            "Dark": "{color.orange.950}"
           }
         },
         "color.primary.text": {
