@@ -249,11 +249,11 @@
   },
   "color.accent.text": {
     "$type": "color",
-    "$value": "{color.gray.50}"
+    "$value": "{color.purple.900}"
   },
   "color.accent.highlight": {
     "$type": "color",
-    "$value": "{color.pink.400}"
+    "$value": "{color.pink.300}"
   },
   "color.neutral.base": {
     "$type": "color",

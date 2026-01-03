@@ -3,11 +3,11 @@
     "semantic": {
       "modes": [
         {
-          "modeId": "802:3",
+          "modeId": "mode:semantic:light",
           "name": "Light"
         },
         {
-          "modeId": "802:4",
+          "modeId": "mode:semantic:dark",
           "name": "Dark"
         }
       ],
