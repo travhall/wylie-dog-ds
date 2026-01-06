@@ -1,7 +1,6 @@
 @layer base {
   :root,
   :root.sb-theme-light {
-    /* TODO: refactor to decouple from Wyliedog UI */
     --sb-surface: hsl(225 46% 96%);
     --sb-surface-muted: hsl(225 32% 90%);
     --sb-surface-raised: hsl(0 0% 100%);
@@ -47,7 +46,7 @@
     background-color: var(--sb-surface);
   } */
 
-  .sbdocs [data-testid="docs-container"] {
+  /* .sbdocs [data-testid="docs-container"] {
     background-color: var(--sb-surface);
   }
 
@@ -73,7 +72,7 @@
   .sbdocs code,
   .sbdocs pre {
     color: var(--sb-text);
-  }
+  } */
 
   /* .sbdocs .docblock-source,
   .sbdocs .docblock-argstable,
@@ -84,7 +83,7 @@
     color: var(--sb-text);
   } */
 
-  .sbdocs .docblock-source pre {
+  /* .sbdocs .docblock-source pre {
     background-color: var(--sb-code-background);
     border: 1px solid var(--sb-code-border);
     box-shadow: 0 10px 40px rgba(3, 6, 23, 0.55);
@@ -125,14 +124,14 @@
   .sbdocs .sbdocs-preview {
     background-color: var(--sb-surface-muted);
     border-color: var(--sb-border);
-  }
+  } */
 
   /* .sbdocs .sbdocs-preview .docs-story,
   .sbdocs .sbdocs-preview .docs-story > div {
     background-color: var(--sb-surface-muted);
   } */
 
-  #storybook-explorer-tree,
+  /* #storybook-explorer-tree,
   #storybook-explorer-tree * {
     scrollbar-color: var(--sb-border) transparent;
   }
@@ -141,7 +140,7 @@
     background-color: var(--sb-chip-background);
     color: var(--sb-text);
     border-color: var(--sb-border);
-  }
+  } */
 
   .docs-story {
     background-color: var(
