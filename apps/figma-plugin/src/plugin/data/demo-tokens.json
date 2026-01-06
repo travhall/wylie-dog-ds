@@ -10,115 +10,115 @@
       "variables": {
         "color.gray.50": {
           "$type": "color",
-          "$value": "#ffffff"
+          "$value": "oklch(1 0 0)"
         },
         "color.gray.100": {
           "$type": "color",
-          "$value": "#f8fafc"
+          "$value": "oklch(0.984 0.003 247.86)"
         },
         "color.gray.200": {
           "$type": "color",
-          "$value": "#f1f5f9"
+          "$value": "oklch(0.968 0.007 247.9)"
         },
         "color.gray.300": {
           "$type": "color",
-          "$value": "#e2e8f0"
+          "$value": "oklch(0.929 0.013 255.51)"
         },
         "color.gray.400": {
           "$type": "color",
-          "$value": "#cbd5e1"
+          "$value": "oklch(0.869 0.02 252.89)"
         },
         "color.gray.500": {
           "$type": "color",
-          "$value": "#94a3b8"
+          "$value": "oklch(0.711 0.035 256.79)"
         },
         "color.gray.600": {
           "$type": "color",
-          "$value": "#64748b"
+          "$value": "oklch(0.554 0.041 257.42)"
         },
         "color.gray.700": {
           "$type": "color",
-          "$value": "#475569"
+          "$value": "oklch(0.446 0.037 257.28)"
         },
         "color.gray.800": {
           "$type": "color",
-          "$value": "#334155"
+          "$value": "oklch(0.372 0.039 257.29)"
         },
         "color.gray.900": {
           "$type": "color",
-          "$value": "#1e293b"
+          "$value": "oklch(0.279 0.037 260.03)"
         },
         "color.gray.950": {
           "$type": "color",
-          "$value": "#0f172a"
+          "$value": "oklch(0.208 0.04 265.75)"
         },
         "color.blue.50": {
           "$type": "color",
-          "$value": "#eff6ff"
+          "$value": "oklch(0.97 0.014 254.6)"
         },
         "color.blue.100": {
           "$type": "color",
-          "$value": "#dbeafe"
+          "$value": "oklch(0.932 0.032 255.59)"
         },
         "color.blue.200": {
           "$type": "color",
-          "$value": "#bfdbfe"
+          "$value": "oklch(0.882 0.057 254.13)"
         },
         "color.blue.300": {
           "$type": "color",
-          "$value": "#93c5fd"
+          "$value": "oklch(0.809 0.096 251.81)"
         },
         "color.blue.400": {
           "$type": "color",
-          "$value": "#60a5fa"
+          "$value": "oklch(0.714 0.143 254.62)"
         },
         "color.blue.500": {
           "$type": "color",
-          "$value": "#3b82f6"
+          "$value": "oklch(0.623 0.188 259.81)"
         },
         "color.blue.600": {
           "$type": "color",
-          "$value": "#2563eb"
+          "$value": "oklch(0.546 0.215 262.88)"
         },
         "color.blue.700": {
           "$type": "color",
-          "$value": "#1d4ed8"
+          "$value": "oklch(0.488 0.217 264.38)"
         },
         "color.blue.800": {
           "$type": "color",
-          "$value": "#1e40af"
+          "$value": "oklch(0.424 0.181 265.64)"
         },
         "color.blue.900": {
           "$type": "color",
-          "$value": "#1e3a8a"
+          "$value": "oklch(0.379 0.138 265.52)"
         },
         "color.blue.950": {
           "$type": "color",
-          "$value": "#172554"
+          "$value": "oklch(0.282 0.087 267.94)"
         },
         "color.green.500": {
           "$type": "color",
-          "$value": "#22c55e"
+          "$value": "oklch(0.723 0.192 149.58)"
         },
         "color.green.600": {
           "$type": "color",
-          "$value": "#16a34a"
+          "$value": "oklch(0.627 0.17 149.21)"
         },
         "color.green.700": {
           "$type": "color",
-          "$value": "#15803d"
+          "$value": "oklch(0.527 0.137 150.07)"
         },
         "color.red.500": {
           "$type": "color",
-          "$value": "#ef4444"
+          "$value": "oklch(0.637 0.208 25.33)"
         },
         "color.red.600": {
           "$type": "color",
-          "$value": "#dc2626"
+          "$value": "oklch(0.577 0.215 27.33)"
         },
         "color.red.700": {
           "$type": "color",
-          "$value": "#b91c1c"
+          "$value": "oklch(0.505 0.19 27.52)"
         },
         "spacing.1": {
           "$type": "spacing",

@@ -1,0 +1,151 @@
+@layer base {
+  :root,
+  :root.sb-theme-light {
+    /* TODO: refactor to decouple from Wyliedog UI */
+    --sb-surface: hsl(225 46% 96%);
+    --sb-surface-muted: hsl(225 32% 90%);
+    --sb-surface-raised: hsl(0 0% 100%);
+    --sb-text: hsl(228 34% 15%);
+    --sb-text-muted: hsl(228 18% 45%);
+    --sb-border: hsl(225 21% 82%);
+    --sb-border-strong: hsl(225 18% 70%);
+    --sb-code-background: hsl(224 36% 94%);
+    --sb-code-border: hsl(225 22% 78%);
+    --sb-nav-background: hsl(230 46% 11%);
+    --sb-nav-border: hsla(0 0% 100% / 0.08);
+    --sb-chip-background: hsla(230 46% 11% / 0.28);
+    --sb-link: hsl(213 90% 52%);
+  }
+
+  :root.sb-theme-dark {
+    --sb-surface: hsl(224 45% 7%);
+    --sb-surface-muted: hsl(225 38% 12%);
+    --sb-surface-raised: hsl(225 32% 18%);
+    --sb-text: hsl(225 33% 92%);
+    --sb-text-muted: hsl(225 16% 68%);
+    --sb-border: hsla(0 0% 100% / 0.14);
+    --sb-border-strong: hsla(0 0% 100% / 0.28);
+    --sb-code-background: hsl(223 45% 10%);
+    --sb-code-border: hsla(0 0% 100% / 0.18);
+    --sb-nav-background: hsl(230 50% 4%);
+    --sb-nav-border: hsla(0 0% 100% / 0.08);
+    --sb-chip-background: hsla(0 0% 100% / 0.12);
+    --sb-link: hsl(213 90% 66%);
+  }
+
+  body {
+    background-color: var(--sb-surface);
+    color: var(--sb-text);
+  }
+
+  /* .sbdocs,
+  .sbdocs-wrapper,
+  .sbdocs-content,
+  .docs-story,
+  .docs-story > div {
+    color: var(--sb-text);
+    background-color: var(--sb-surface);
+  } */
+
+  .sbdocs [data-testid="docs-container"] {
+    background-color: var(--sb-surface);
+  }
+
+  .sbdocs a,
+  .sbdocs .sbdocs-a {
+    color: var(--sb-link);
+  }
+
+  .sbdocs h1,
+  .sbdocs h2,
+  .sbdocs h3,
+  .sbdocs h4,
+  .sbdocs h5,
+  .sbdocs h6 {
+    color: var(--sb-text);
+  }
+
+  .sbdocs p,
+  .sbdocs li {
+    color: var(--sb-text-muted);
+  }
+
+  .sbdocs code,
+  .sbdocs pre {
+    color: var(--sb-text);
+  }
+
+  /* .sbdocs .docblock-source,
+  .sbdocs .docblock-argstable,
+  .sbdocs .docblock-argstable code,
+  .docs-story .docblock-argstable {
+    background-color: var(--sb-surface-muted);
+    border-color: var(--sb-border);
+    color: var(--sb-text);
+  } */
+
+  .sbdocs .docblock-source pre {
+    background-color: var(--sb-code-background);
+    border: 1px solid var(--sb-code-border);
+    box-shadow: 0 10px 40px rgba(3, 6, 23, 0.55);
+  }
+
+  .sbdocs .docblock-argstable table,
+  .docs-story .docblock-argstable table {
+    border-color: var(--sb-border);
+  }
+
+  .sbdocs .docblock-argstable td,
+  .sbdocs .docblock-argstable th,
+  .docs-story .docblock-argstable td,
+  .docs-story .docblock-argstable th {
+    border-color: var(--sb-border);
+  }
+
+  .sbdocs .docblock-argstable tbody tr:nth-of-type(2n) {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  .sbdocs .docblock-argstable code {
+    background-color: transparent;
+    color: var(--sb-text);
+    font-weight: 500;
+  }
+
+  .sbdocs .docblock-argstable .docblock-argstable-type {
+    color: var(--sb-text-muted);
+  }
+
+  .sbdocs .docblock-argstable .docblock-argstable-required,
+  .sbdocs .docblock-argstable .docblock-argstable-default {
+    color: var(--sb-text);
+  }
+
+  #storybook-docs .sbdocs-preview,
+  .sbdocs .sbdocs-preview {
+    background-color: var(--sb-surface-muted);
+    border-color: var(--sb-border);
+  }
+
+  /* .sbdocs .sbdocs-preview .docs-story,
+  .sbdocs .sbdocs-preview .docs-story > div {
+    background-color: var(--sb-surface-muted);
+  } */
+
+  #storybook-explorer-tree,
+  #storybook-explorer-tree * {
+    scrollbar-color: var(--sb-border) transparent;
+  }
+
+  .sbdocs .docblock-source .docblock-source__copy {
+    background-color: var(--sb-chip-background);
+    color: var(--sb-text);
+    border-color: var(--sb-border);
+  }
+
+  .docs-story {
+    background-color: var(
+      --color-background-primary
+    ); /* DO NOT REFACTOR: Must align with Wyliedog UI and Tokens */
+  }
+}

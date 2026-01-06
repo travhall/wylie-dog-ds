@@ -1,20 +1,39 @@
 import "../stories/globals.css";
+import { themeManager } from "./theme-sync";
 
-// Track theme globally to prevent re-application
-let globalTheme = "light";
-let isInitialized = false;
+let hasInitializedTheme = false;
+let hasSyncedGlobals = false;
+
+const syncGlobalsWithPreferredChoice = (context, currentChoice) => {
+  if (
+    hasSyncedGlobals ||
+    typeof window === "undefined" ||
+    typeof context.updateGlobals !== "function"
+  ) {
+    return;
+  }
+
+  const preferredChoice = themeManager.getState().choice;
+
+  if (preferredChoice && preferredChoice !== currentChoice) {
+    context.updateGlobals({ theme: preferredChoice });
+  }
+
+  hasSyncedGlobals = true;
+};
 
 // Global types for toolbar controls
 export const globalTypes = {
   theme: {
     name: "Theme",
     description: "Global theme for components",
-    defaultValue: "light",
+    defaultValue: "system",
     toolbar: {
       icon: "circlehollow",
       items: [
         { value: "light", icon: "sun", title: "Light mode" },
         { value: "dark", icon: "moon", title: "Dark mode" },
+        { value: "system", icon: "contrast", title: "System preference" },
       ],
       showName: true,
       dynamicTitle: true,
@@ -25,15 +44,16 @@ export const globalTypes = {
 // Theme decorator - applies theme class to document root
 export const decorators = [
   (Story, context) => {
-    const theme = context.globals.theme || "light";
+    const themeChoice = context.globals.theme || "system";
 
-    // Apply theme synchronously if it changed
-    if (globalTheme !== theme) {
-      globalTheme = theme;
-      const root = document.documentElement;
-      root.classList.remove("light", "dark");
-      root.classList.add(theme);
-      root.setAttribute("data-theme", theme);
+    if (typeof window !== "undefined") {
+      if (!hasInitializedTheme) {
+        themeManager.init(themeChoice);
+        hasInitializedTheme = true;
+        syncGlobalsWithPreferredChoice(context, themeChoice);
+      } else {
+        themeManager.setChoice(themeChoice);
+      }
     }
 
     return <Story />;

@@ -75,9 +75,11 @@ const ColorPalette = ({
 export const AllColors: Story = {
   render: () => (
     <div className="space-y-8">
-      <div className="bg-neutral-50 p-4 rounded-lg">
-        <h2 className="text-lg font-semibold mb-2">Wylie Dog Color System</h2>
-        <p className="text-sm text-neutral-600">
+      <div>
+        <h2 className="text-2xl font-semibold tracking-tight mb-2">
+          Wylie Dog Color System
+        </h2>
+        <p className="text-sm text-muted-foreground mb-6">
           Colors are driven by design tokens and automatically sync with the
           design system. All colors use OKLCH for better perceptual uniformity
           and accessibility.

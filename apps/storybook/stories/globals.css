@@ -13,3 +13,4 @@
 
 @import "@wyliedog/ui/styles";
 @import "../dist/storybook.css";
+@import "./storybook-theme.css";

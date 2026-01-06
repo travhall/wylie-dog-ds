@@ -1,15 +1,36 @@
 import { converter, formatHex } from 'culori';
 
 /**
- * Pass through hex color without conversion
- * This function maintains the same signature for compatibility but no longer converts to OKLCH
+ * Convert hex color to OKLCH format
  * @param {string} hexValue - Hex color string like "#ffffff"
- * @returns {string} The same hex color string
+ * @returns {string} OKLCH color string like "oklch(1 0 0)"
  */
 export function convertHexToOklch(hexValue) {
-  // Simply return the hex value without conversion
-  // Colors are now stored and used in hex format to match Figma exactly
-  return hexValue;
+  try {
+    if (typeof hexValue !== 'string' || !hexValue.startsWith('#')) {
+      console.warn(`Invalid hex color: ${hexValue}`);
+      return hexValue;
+    }
+
+    // Use culori to convert hex to OKLCH
+    const oklchConverter = converter('oklch');
+    const oklchColor = oklchConverter(hexValue);
+
+    if (!oklchColor) {
+      console.warn(`Failed to convert ${hexValue} to OKLCH`);
+      return hexValue;
+    }
+
+    // Format as oklch(L C H) with proper precision
+    const l = oklchColor.l !== undefined ? Math.round(oklchColor.l * 1000) / 1000 : 0;
+    const c = oklchColor.c !== undefined ? Math.round(oklchColor.c * 1000) / 1000 : 0;
+    const h = oklchColor.h !== undefined ? Math.round(oklchColor.h * 100) / 100 : 0;
+
+    return `oklch(${l} ${c} ${h})`;
+  } catch (error) {
+    console.warn(`Error converting ${hexValue} to OKLCH:`, error.message);
+    return hexValue;
+  }
 }
 
 // Practical OKLCH to hex conversion using known mappings

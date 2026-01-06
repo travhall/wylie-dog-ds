@@ -33,7 +33,7 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
       <div
         ref={ref}
         className={cn(
-          "inline-flex items-center rounded-(--badge-radius) border px-2.5 py-0.5 text-xs font-semibold transition-colors",
+          "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors",
           variants[variant],
           className
         )}
