@@ -13,7 +13,7 @@
  * Tailwind v4 JIT only generates classes found in scanned files.
  * These semantic aliases need explicit generation since they're used in stories.
  */
-@utility bg-muted {
+/* @utility bg-muted {
   background-color: var(--color-background-secondary);
 }
 
@@ -35,4 +35,4 @@
 
 @utility border-input {
   border-color: var(--color-border-primary);
-}
+} */
