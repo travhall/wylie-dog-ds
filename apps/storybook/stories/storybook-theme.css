@@ -1,10 +1,11 @@
-:root,
+/* :root,
 :root.sb-theme-light,
 :root.light {
   --sb-surface: hsl(225 46% 96%);
   --sb-surface-muted: hsl(225 32% 90%);
   --sb-surface-raised: hsl(0 0% 100%);
   --sb-text: hsl(228 34% 15%);
+  --sb-heading: hsl(228 34% 15%);
   --sb-text-muted: hsl(228 18% 45%);
   --sb-border: hsl(225 21% 82%);
   --sb-border-strong: hsl(225 18% 70%);
@@ -22,6 +23,7 @@
   --sb-surface-muted: hsl(225 38% 12%);
   --sb-surface-raised: hsl(225 32% 18%);
   --sb-text: hsl(225 33% 92%);
+  --sb-heading: hsl(0 0% 100%);
   --sb-text-muted: hsl(225 16% 68%);
   --sb-border: hsla(0 0% 100% / 0.14);
   --sb-border-strong: hsla(0 0% 100% / 0.28);
@@ -31,21 +33,67 @@
   --sb-nav-border: hsla(0 0% 100% / 0.08);
   --sb-chip-background: hsla(0 0% 100% / 0.12);
   --sb-link: hsl(213 90% 66%);
-}
+} */
 
 @layer base {
-  #storybook-docs > * {
+  /* 
+  #storybook-docs,
+  .sb-show-main,
+  .sb-main-padded,#storybook-docs > * {
+    background-color: var(--sb-surface) !important;
+    color: var(--sb-text) !important;
+  } */
+
+  /* Ensure proper text contrast for all text elements */
+  /* body,
+  p,
+  li,
+  td,
+  th,
+  input,
+  textarea,
+  select,
+  button,
+  label,
+  code,
+  pre,
+  kbd,
+  samp {
+    color: var(--sb-text) !important;
+  } */
+
+  /* Style headings with proper contrast */
+  /* h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .sbdocs-h1,
+  .sbdocs-h2,
+  .sbdocs-h3,
+  .sbdocs-h4,
+  .sbdocs-h5,
+  .sbdocs-h6 {
+    color: var(--sb-heading) !important;
+  }
+
+  .sbdocs [data-testid="docs-container"] {
     background-color: var(--sb-surface) !important;
     color: var(--sb-text) !important;
   }
 
-  /* .sbdocs [data-testid="docs-container"] {
-    background-color: var(--sb-surface);
-  }
-
   .sbdocs a,
   .sbdocs .sbdocs-a {
-    color: var(--sb-link);
+    color: var(--sb-link) !important;
+  } */
+
+  /* Fix for code blocks */
+  /* .sbdocs pre,
+  .sbdocs code,
+  .docblock-source {
+    background-color: var(--sb-code-background) !important;
+    border-color: var(--sb-code-border) !important;
   }
 
   .sbdocs h1,

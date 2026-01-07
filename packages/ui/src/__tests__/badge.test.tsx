@@ -194,7 +194,7 @@ describe("Badge", () => {
 
       expect(badge).toHaveClass("inline-flex");
       expect(badge).toHaveClass("items-center");
-      expect(badge).toHaveClass("rounded-(--badge-radius)");
+      expect(badge).toHaveClass("rounded-(--spacing-badge-radius)");
       expect(badge).toHaveClass("border");
       expect(badge).toHaveClass("px-2.5");
       expect(badge).toHaveClass("py-0.5");

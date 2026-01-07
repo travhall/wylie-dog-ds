@@ -13,4 +13,12 @@
 
 @import "@wyliedog/ui/styles";
 @import "../dist/storybook.css";
-@import "./storybook-theme.css";
+/* @import "./storybook-theme.css"; */
+
+.sb-show-main,
+.sb-main-centered,
+.docs-story {
+  background-color: var(
+    --color-background-primary
+  ); /* DO NOT REFACTOR: Must align with Wyliedog UI and Tokens */
+}

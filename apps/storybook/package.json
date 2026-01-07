@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "build": "pnpm build:css && storybook build --docs",
-    "build:css": "tailwindcss -i ./src/styles/storybook.css -o ./dist/storybook.css --minify",
+    "build:css": "tailwindcss -i ./src/styles/index.css -o ./dist/storybook.css --minify",
     "clean": "rm -rf .turbo node_modules dist",
     "dev": "pnpm build:css && storybook dev -p 6006",
-    "dev:css:watch": "tailwindcss -i ./src/styles/storybook.css -o ./dist/storybook.css --watch",
+    "dev:css:watch": "tailwindcss -i ./src/styles/index.css -o ./dist/storybook.css --watch",
     "lint": "eslint ./stories/*.stories.tsx --max-warnings 0",
     "preview-storybook": "serve storybook-static"
   },
