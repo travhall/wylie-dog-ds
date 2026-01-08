@@ -13,6 +13,20 @@ const dirname =
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   plugins: [react()],
+  build: {
+    sourcemap: true,
+    reportCompressedSize: false,
+    chunkSizeWarningLimit: 1500, // Increased to accommodate axe-core (1.2MB)
+    rollupOptions: {
+      output: {
+        chunkFileNames: "assets/[name]-[hash].js",
+        entryFileNames: "assets/[name]-[hash].js",
+        assetFileNames: "assets/[name]-[hash][ext]",
+      },
+    },
+    target: "esnext",
+    minify: "esbuild",
+  },
   test: {
     projects: [
       {

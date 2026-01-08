@@ -47,23 +47,25 @@ const config: StorybookConfig = {
       },
       server: {
         ...config.server,
-        hmr: {
-          ...(config.server?.hmr || {}),
-          overlay: false,
-        },
+        hmr:
+          config.server?.hmr === false
+            ? false
+            : {
+                ...(typeof config.server?.hmr === "object"
+                  ? config.server.hmr
+                  : {}),
+                overlay: false,
+              },
       },
       css: {
         ...config.css,
         devSourcemap: false,
-        // Disable CSS HMR to prevent infinite loop
-        postcss: {
-          ...config.css?.postcss,
-        },
       },
       build: {
         ...config.build,
         // Force full reload instead of HMR for CSS changes
         cssCodeSplit: false,
+        chunkSizeWarningLimit: 1500,
       },
     };
   },
