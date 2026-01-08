@@ -27,6 +27,13 @@ export default defineConfig({
     target: "esnext",
     minify: "esbuild",
   },
+  // Optimize dependency handling for better tree-shaking
+  optimizeDeps: {
+    include: ["react", "react-dom"],
+    esbuildOptions: {
+      treeShaking: true,
+    },
+  },
   test: {
     projects: [
       {

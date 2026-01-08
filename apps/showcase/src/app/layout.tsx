@@ -21,7 +21,7 @@ export default function RootLayout({
   const navigation = [
     { label: "Home", href: "/" },
     { label: "Monorepo", href: "/monorepo" },
-    { label: "Tokens", href: "/colors" },
+    { label: "Tokens", href: "/tokens" },
     { label: "Components", href: "/components" },
     { label: "Storybook", href: "/storybook" },
     { label: "Plugin", href: "/plugin" },
@@ -32,7 +32,7 @@ export default function RootLayout({
       title: "Ecosystem",
       links: [
         { label: "Monorepo", href: "/monorepo" },
-        { label: "Tokens", href: "/colors" },
+        { label: "Tokens", href: "/tokens" },
         { label: "Components", href: "/components" },
         { label: "Storybook", href: "/storybook" },
         { label: "Figma Plugin", href: "/plugin" },
