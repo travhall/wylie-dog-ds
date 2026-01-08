@@ -530,12 +530,14 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for:
 - ✅ Multi-format import/export
 - ✅ GitHub sync with conflict detection
 - ✅ Quick GitHub setup wizard
+- ✅ State management refactor (partial)
+- ✅ Enhanced help system
+- ✅ Accessibility improvements
 
 ### In Progress 🚧
 
 - 🚧 State management refactor (reduce App.tsx complexity)
-- 🚧 Enhanced help system
-- 🚧 Accessibility improvements
+- 🚧 Performance optimizations (Virtualization)
 
 ### Planned 📋
 
