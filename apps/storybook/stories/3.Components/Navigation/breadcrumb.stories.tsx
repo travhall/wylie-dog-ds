@@ -354,13 +354,13 @@ export const ApplicationExamples: Story = {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/docs/components">
+              <BreadcrumbLink href="/story/3-components-data-display-accordion--default">
                 Components
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/docs/components/navigation">
+              <BreadcrumbLink href="/story/3-components-navigation-breadcrumb--default">
                 Navigation
               </BreadcrumbLink>
             </BreadcrumbItem>
