@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "@storybook/test";
+import { within, userEvent, expect, screen } from "@storybook/test";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -525,7 +525,7 @@ export const WithInteractions: Story = {
     const canvas = within(canvasElement);
 
     // Test 1: Alert dialog is initially closed
-    const alertDialog = canvas.queryByRole("alertdialog");
+    const alertDialog = screen.queryByRole("alertdialog");
     expect(alertDialog).not.toBeInTheDocument();
 
     // Test 2: Find and click the trigger button to open
@@ -539,22 +539,22 @@ export const WithInteractions: Story = {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Test 3: Alert dialog is visible with correct content
-    const openDialog = canvas.getByRole("alertdialog");
+    const openDialog = screen.getByRole("alertdialog");
     expect(openDialog).toBeInTheDocument();
 
-    const dialogTitle = canvas.getByRole("heading", {
+    const dialogTitle = screen.getByRole("heading", {
       name: /delete project/i,
     });
     expect(dialogTitle).toBeInTheDocument();
 
-    const dialogDescription = canvas.getByText(
+    const dialogDescription = screen.getByText(
       /are you sure you want to delete this project/i
     );
     expect(dialogDescription).toBeInTheDocument();
 
     // Test 4: Tab key navigation within dialog (focus trap)
-    const cancelButton = canvas.getByRole("button", { name: /^cancel$/i });
-    const deleteButton = canvas.getByRole("button", { name: /^delete$/i });
+    const cancelButton = screen.getByRole("button", { name: /^cancel$/i });
+    const deleteButton = screen.getByRole("button", { name: /^delete$/i });
 
     // Cancel button should be auto-focused
     expect(cancelButton).toHaveFocus();
@@ -578,24 +578,24 @@ export const WithInteractions: Story = {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Dialog should be closed
-    const closedDialog = canvas.queryByRole("alertdialog");
+    const closedDialog = screen.queryByRole("alertdialog");
     expect(closedDialog).not.toBeInTheDocument();
 
     // Test 6: Open again and test cancel button
     await userEvent.click(triggerButton);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const reopenedDialog = canvas.getByRole("alertdialog");
+    const reopenedDialog = screen.getByRole("alertdialog");
     expect(reopenedDialog).toBeInTheDocument();
 
     // Click cancel button
-    const cancelBtn = canvas.getByRole("button", { name: /^cancel$/i });
+    const cancelBtn = screen.getByRole("button", { name: /^cancel$/i });
     await userEvent.click(cancelBtn);
 
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Verify dialog is closed
-    const finalClosedDialog = canvas.queryByRole("alertdialog");
+    const finalClosedDialog = screen.queryByRole("alertdialog");
     expect(finalClosedDialog).not.toBeInTheDocument();
   },
   parameters: {

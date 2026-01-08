@@ -598,15 +598,16 @@ export const WithInteractions: Story = {
     expect(pickupRadio).toBeInTheDocument();
 
     // Test 2: Verify initial state (standard is selected by default)
-    expect(standardRadio).toBeChecked();
-    expect(expressRadio).not.toBeChecked();
-    expect(overnightRadio).not.toBeChecked();
-    expect(pickupRadio).not.toBeChecked();
+    expect(standardRadio).toHaveAttribute("data-state", "checked");
+    expect(expressRadio).toHaveAttribute("data-state", "unchecked");
+    expect(overnightRadio).toHaveAttribute("data-state", "unchecked");
+    expect(pickupRadio).toHaveAttribute("data-state", "unchecked");
 
     // Test 3: Click express with mouse
     await userEvent.click(expressRadio);
-    expect(expressRadio).toBeChecked();
-    expect(standardRadio).not.toBeChecked();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(expressRadio).toHaveAttribute("data-state", "checked");
+    expect(standardRadio).toHaveAttribute("data-state", "unchecked");
 
     // Test 4: Focus on radio group and use arrow keys
     await userEvent.click(expressRadio);
@@ -614,47 +615,56 @@ export const WithInteractions: Story = {
 
     // Test 5: Arrow Down to next option
     await userEvent.keyboard("{ArrowDown}");
-    expect(overnightRadio).toBeChecked();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(overnightRadio).toHaveAttribute("data-state", "checked");
     expect(overnightRadio).toHaveFocus();
-    expect(expressRadio).not.toBeChecked();
+    expect(expressRadio).toHaveAttribute("data-state", "unchecked");
 
     // Test 6: Arrow Down again
     await userEvent.keyboard("{ArrowDown}");
-    expect(pickupRadio).toBeChecked();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(pickupRadio).toHaveAttribute("data-state", "checked");
     expect(pickupRadio).toHaveFocus();
-    expect(overnightRadio).not.toBeChecked();
+    expect(overnightRadio).toHaveAttribute("data-state", "unchecked");
 
     // Test 7: Arrow Down wraps to first option
     await userEvent.keyboard("{ArrowDown}");
-    expect(standardRadio).toBeChecked();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(standardRadio).toHaveAttribute("data-state", "checked");
     expect(standardRadio).toHaveFocus();
-    expect(pickupRadio).not.toBeChecked();
+    expect(pickupRadio).toHaveAttribute("data-state", "unchecked");
 
     // Test 8: Arrow Up to previous option
     await userEvent.keyboard("{ArrowUp}");
-    expect(pickupRadio).toBeChecked();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(pickupRadio).toHaveAttribute("data-state", "checked");
     expect(pickupRadio).toHaveFocus();
-    expect(standardRadio).not.toBeChecked();
+    expect(standardRadio).toHaveAttribute("data-state", "unchecked");
 
     // Test 9: Arrow Right (should work same as Arrow Down)
     await userEvent.keyboard("{ArrowRight}");
-    expect(standardRadio).toBeChecked();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(standardRadio).toHaveAttribute("data-state", "checked");
     expect(standardRadio).toHaveFocus();
 
     // Test 10: Arrow Left (should work same as Arrow Up)
     await userEvent.keyboard("{ArrowLeft}");
-    expect(pickupRadio).toBeChecked();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(pickupRadio).toHaveAttribute("data-state", "checked");
     expect(pickupRadio).toHaveFocus();
 
     // Test 11: Click to select specific option
     await userEvent.click(overnightRadio);
-    expect(overnightRadio).toBeChecked();
-    expect(pickupRadio).not.toBeChecked();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(overnightRadio).toHaveAttribute("data-state", "checked");
+    expect(pickupRadio).toHaveAttribute("data-state", "unchecked");
 
     // Test 12: Space key should select focused item
     await userEvent.click(expressRadio);
+    await new Promise((resolve) => setTimeout(resolve, 100));
     await userEvent.keyboard(" ");
-    expect(expressRadio).toBeChecked();
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(expressRadio).toHaveAttribute("data-state", "checked");
 
     // Test 13: Verify only one option is selected
     const checkedRadios = [

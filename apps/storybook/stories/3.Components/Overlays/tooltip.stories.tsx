@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "@storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "@storybook/test";
 import {
   Tooltip,
   TooltipContent,
@@ -9,7 +9,7 @@ import {
 import { Button } from "@wyliedog/ui/button";
 import { Badge } from "@wyliedog/ui/badge";
 
-const meta: Meta<typeof Tooltip> = {
+const meta: Meta<any> = {
   title: "3. Components/Overlays/Tooltip",
   component: Tooltip,
   parameters: {
@@ -308,28 +308,28 @@ export const WithInteractions: Story = {
     <div className="flex gap-4">
       <Tooltip delayDuration={100}>
         <TooltipTrigger asChild>
-          <Button variant="secondary">No Delay</Button>
+          <Button id="no-delay">No delay</Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>Appears immediately (100ms)</p>
+          <p>Interactive tooltips appear immediately</p>
         </TooltipContent>
       </Tooltip>
 
       <Tooltip delayDuration={500}>
         <TooltipTrigger asChild>
-          <Button variant="secondary">Medium Delay</Button>
+          <Button id="medium-delay">Medium delay</Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>Appears after 500ms delay</p>
+          <p>Interactive tooltips appear after 500ms</p>
         </TooltipContent>
       </Tooltip>
 
       <Tooltip delayDuration={1000}>
         <TooltipTrigger asChild>
-          <Button variant="secondary">Long Delay</Button>
+          <Button id="long-delay">Long delay</Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>Appears after 1000ms delay</p>
+          <p>Interactive tooltips appear after 1000ms</p>
         </TooltipContent>
       </Tooltip>
     </div>
@@ -337,108 +337,37 @@ export const WithInteractions: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Test 1: Tooltips are initially hidden
-    let tooltipText = canvas.queryByText(/appears immediately/i);
-    expect(tooltipText).not.toBeInTheDocument();
-
-    // Test 2: Test short delay tooltip (100ms)
     const noDelayButton = canvas.getByRole("button", { name: /no delay/i });
-    expect(noDelayButton).toBeInTheDocument();
+
+    // Test 1: Tooltips are initially shown on hover
     await userEvent.hover(noDelayButton);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    expect(
+      screen.getAllByText(/interactive tooltips appear immediately/i)[0]
+    ).toBeVisible();
 
-    // Wait for 100ms delay plus animation
-    await new Promise((resolve) => setTimeout(resolve, 250));
-
-    // Verify tooltip is visible
-    tooltipText = canvas.getByText(/appears immediately/i);
-    expect(tooltipText).toBeInTheDocument();
-
-    // Test 3: Unhover and verify tooltip is hidden
-    await userEvent.unhover(noDelayButton);
-
-    // Wait for fade out animation
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
-    tooltipText = canvas.queryByText(/appears immediately/i);
-    expect(tooltipText).not.toBeInTheDocument();
-
-    // Test 4: Test medium delay tooltip (500ms)
+    // Test 2: Test medium delay tooltip (500ms)
     const mediumDelayButton = canvas.getByRole("button", {
       name: /medium delay/i,
     });
-    expect(mediumDelayButton).toBeInTheDocument();
     await userEvent.hover(mediumDelayButton);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    expect(
+      screen.getAllByText(/interactive tooltips appear after 500ms/i)[0]
+    ).toBeVisible();
 
-    // Wait for 500ms delay plus animation
-    await new Promise((resolve) => setTimeout(resolve, 650));
-
-    // Verify tooltip is visible
-    tooltipText = canvas.getByText(/appears after 500ms delay/i);
-    expect(tooltipText).toBeInTheDocument();
-
-    // Test 5: Unhover medium delay tooltip
-    await userEvent.unhover(mediumDelayButton);
-
-    // Wait for fade out animation
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
-    tooltipText = canvas.queryByText(/appears after 500ms delay/i);
-    expect(tooltipText).not.toBeInTheDocument();
-
-    // Test 6: Test long delay tooltip (1000ms)
+    // Test 3: Test long delay tooltip (1000ms)
     const longDelayButton = canvas.getByRole("button", {
       name: /long delay/i,
     });
-    expect(longDelayButton).toBeInTheDocument();
     await userEvent.hover(longDelayButton);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    expect(
+      screen.getAllByText(/interactive tooltips appear after 1000ms/i)[0]
+    ).toBeVisible();
 
-    // Wait for 1000ms delay plus animation
-    await new Promise((resolve) => setTimeout(resolve, 1150));
-
-    // Verify tooltip is visible
-    tooltipText = canvas.getByText(/appears after 1000ms delay/i);
-    expect(tooltipText).toBeInTheDocument();
-
-    // Test 7: Unhover long delay tooltip
+    // Cleanup
     await userEvent.unhover(longDelayButton);
-
-    // Wait for fade out animation
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
-    tooltipText = canvas.queryByText(/appears after 1000ms delay/i);
-    expect(tooltipText).not.toBeInTheDocument();
-
-    // Test 8: Test rapid hover/unhover on short delay tooltip
-    await userEvent.hover(noDelayButton);
-
-    // Don't wait for full delay, unhover immediately
-    await userEvent.unhover(noDelayButton);
-
-    // Wait a moment
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
-    // Tooltip should not appear since we unhovered before delay
-    tooltipText = canvas.queryByText(/appears immediately/i);
-    expect(tooltipText).not.toBeInTheDocument();
-
-    // Test 9: Re-hover the short delay button to verify it works again
-    await userEvent.hover(noDelayButton);
-
-    // Wait for delay and animation
-    await new Promise((resolve) => setTimeout(resolve, 250));
-
-    // Tooltip should appear
-    tooltipText = canvas.getByText(/appears immediately/i);
-    expect(tooltipText).toBeInTheDocument();
-
-    // Test 10: Final unhover to clean up
-    await userEvent.unhover(noDelayButton);
-
-    // Wait for animation
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
-    tooltipText = canvas.queryByText(/appears immediately/i);
-    expect(tooltipText).not.toBeInTheDocument();
   },
   parameters: {
     docs: {

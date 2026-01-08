@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "@storybook/test";
+import { within, userEvent, expect, screen } from "@storybook/test";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -125,7 +125,7 @@ export const WithInteractions: Story = {
     const canvas = within(canvasElement);
 
     // Test 1: Menu is initially closed
-    const menuItems = canvas.queryByRole("menuitem", { name: /profile/i });
+    const menuItems = screen.queryByRole("menuitem", { name: /profile/i });
     expect(menuItems).not.toBeInTheDocument();
 
     // Test 2: Find and click the trigger button to open menu
@@ -137,10 +137,10 @@ export const WithInteractions: Story = {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Test 3: Menu is visible with all items
-    const profileItem = canvas.getByRole("menuitem", { name: /profile/i });
-    const settingsItem = canvas.getByRole("menuitem", { name: /settings/i });
-    const billingItem = canvas.getByRole("menuitem", { name: /billing/i });
-    const logoutItem = canvas.getByRole("menuitem", { name: /logout/i });
+    const profileItem = screen.getByRole("menuitem", { name: /profile/i });
+    const settingsItem = screen.getByRole("menuitem", { name: /settings/i });
+    const billingItem = screen.getByRole("menuitem", { name: /billing/i });
+    const logoutItem = screen.getByRole("menuitem", { name: /logout/i });
 
     expect(profileItem).toBeInTheDocument();
     expect(settingsItem).toBeInTheDocument();
@@ -171,35 +171,35 @@ export const WithInteractions: Story = {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Menu should be closed after selection
-    const closedMenu = canvas.queryByRole("menuitem", { name: /settings/i });
+    const closedMenu = screen.queryByRole("menuitem", { name: /settings/i });
     expect(closedMenu).not.toBeInTheDocument();
 
     // Test 6: Open menu again and test Escape key
     await userEvent.click(triggerButton);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const reopenedMenu = canvas.getByRole("menuitem", { name: /profile/i });
+    const reopenedMenu = screen.getByRole("menuitem", { name: /profile/i });
     expect(reopenedMenu).toBeInTheDocument();
 
     // Press Escape to close
     await userEvent.keyboard("{Escape}");
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const escapedMenu = canvas.queryByRole("menuitem", { name: /profile/i });
+    const escapedMenu = screen.queryByRole("menuitem", { name: /profile/i });
     expect(escapedMenu).not.toBeInTheDocument();
 
     // Test 7: Open menu and click an item
     await userEvent.click(triggerButton);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const billingMenuItem = canvas.getByRole("menuitem", { name: /billing/i });
+    const billingMenuItem = screen.getByRole("menuitem", { name: /billing/i });
     expect(billingMenuItem).toBeInTheDocument();
 
     await userEvent.click(billingMenuItem);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Menu should close after clicking
-    const finalClosedMenu = canvas.queryByRole("menuitem", {
+    const finalClosedMenu = screen.queryByRole("menuitem", {
       name: /billing/i,
     });
     expect(finalClosedMenu).not.toBeInTheDocument();

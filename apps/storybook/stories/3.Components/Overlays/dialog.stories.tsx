@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "@storybook/test";
+import { within, userEvent, expect, screen } from "@storybook/test";
 import {
   Dialog,
   DialogContent,
@@ -174,7 +174,7 @@ export const WithInteractions: Story = {
     const canvas = within(canvasElement);
 
     // Test 1: Dialog is initially closed
-    const dialogContent = canvas.queryByRole("dialog");
+    const dialogContent = screen.queryByRole("dialog");
     expect(dialogContent).not.toBeInTheDocument();
 
     // Test 2: Find and click the trigger button to open the dialog
@@ -186,25 +186,25 @@ export const WithInteractions: Story = {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Test 3: Dialog content is visible with correct title
-    const openDialog = canvas.getByRole("dialog");
+    const openDialog = screen.getByRole("dialog");
     expect(openDialog).toBeInTheDocument();
 
-    const dialogTitle = canvas.getByRole("heading", { name: /dialog test/i });
+    const dialogTitle = screen.getByRole("heading", { name: /dialog test/i });
     expect(dialogTitle).toBeInTheDocument();
 
-    const dialogDescription = canvas.getByText(
+    const dialogDescription = screen.getByText(
       /this dialog demonstrates focus trapping and keyboard navigation/i
     );
     expect(dialogDescription).toBeInTheDocument();
 
     // Test 4: Verify input field is accessible within the dialog
-    const inputField = canvas.getByRole("textbox", { name: /input/i });
+    const inputField = screen.getByRole("textbox", { name: /input/i });
     expect(inputField).toBeInTheDocument();
     expect(inputField).toHaveValue("Test value");
 
     // Test 5: Tab key navigation works (focus trap)
     // Initially, close button should have focus (set by onOpenAutoFocus)
-    const closeButton = canvas.getByRole("button", { name: /close/i });
+    const closeButton = screen.getByRole("button", { name: /close/i });
     expect(closeButton).toHaveFocus();
 
     // Tab to trigger button (should not leave dialog due to focus trap)
@@ -214,12 +214,12 @@ export const WithInteractions: Story = {
 
     // Tab to next focusable element (Cancel button)
     await userEvent.tab();
-    const cancelButton = canvas.getByRole("button", { name: /cancel/i });
+    const cancelButton = screen.getByRole("button", { name: /cancel/i });
     expect(cancelButton).toHaveFocus();
 
     // Tab to next element (Confirm button)
     await userEvent.tab();
-    const confirmButton = canvas.getByRole("button", { name: /confirm/i });
+    const confirmButton = screen.getByRole("button", { name: /confirm/i });
     expect(confirmButton).toHaveFocus();
 
     // Shift+Tab back to Cancel button (reverse focus trap)
@@ -233,7 +233,7 @@ export const WithInteractions: Story = {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Dialog should be closed
-    const closedDialog = canvas.queryByRole("dialog");
+    const closedDialog = screen.queryByRole("dialog");
     expect(closedDialog).not.toBeInTheDocument();
 
     // Test 7: Open dialog again and test close button
@@ -242,18 +242,18 @@ export const WithInteractions: Story = {
     // Wait for dialog animation
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const reopenedDialog = canvas.getByRole("dialog");
+    const reopenedDialog = screen.getByRole("dialog");
     expect(reopenedDialog).toBeInTheDocument();
 
     // Click the close button
-    const closeBtn = canvas.getByRole("button", { name: /close/i });
+    const closeBtn = screen.getByRole("button", { name: /close/i });
     await userEvent.click(closeBtn);
 
     // Wait for dialog animation
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Verify dialog is closed
-    const finalClosedDialog = canvas.queryByRole("dialog");
+    const finalClosedDialog = screen.queryByRole("dialog");
     expect(finalClosedDialog).not.toBeInTheDocument();
   },
   parameters: {

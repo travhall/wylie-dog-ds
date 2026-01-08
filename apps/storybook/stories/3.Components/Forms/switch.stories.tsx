@@ -424,15 +424,18 @@ export const WithInteractions: Story = {
     expect(notificationsSwitch).toBeChecked();
 
     // Test 4: Tab to next switch
+    await new Promise((resolve) => setTimeout(resolve, 100));
     await userEvent.tab();
     expect(darkModeSwitch).toHaveFocus();
 
     // Test 5: Toggle with Space key
     await userEvent.keyboard(" ");
+    await new Promise((resolve) => setTimeout(resolve, 100));
     expect(darkModeSwitch).not.toBeChecked();
 
     // Toggle back on with Space
     await userEvent.keyboard(" ");
+    await new Promise((resolve) => setTimeout(resolve, 100));
     expect(darkModeSwitch).toBeChecked();
 
     // Test 6: Test Enter key (some implementations support this)
@@ -442,23 +445,27 @@ export const WithInteractions: Story = {
 
     // Test 7: Tab to sound switch
     await userEvent.tab();
+    await new Promise((resolve) => setTimeout(resolve, 100));
     expect(soundSwitch).toHaveFocus();
 
     // Test 8: Toggle with Space
     await userEvent.keyboard(" ");
+    await new Promise((resolve) => setTimeout(resolve, 100));
     expect(soundSwitch).toBeChecked();
 
-    // Test 9: Tab to disabled switch
+    // Test 9: Tab (should skip disabled switch)
+    // From sound switch, tabbing should go to the next focusable element after the disabled ones
+    // In our layout, there are no more focusable elements after the disabled switches in the App Settings block.
     await userEvent.tab();
-    expect(disabledSwitch).toHaveFocus();
+    expect(disabledSwitch).not.toHaveFocus();
 
     // Try to toggle disabled switch with Space (should not work)
     await userEvent.keyboard(" ");
-    expect(disabledSwitch).not.toBeChecked();
+    expect(disabledSwitch).toHaveAttribute("data-state", "unchecked");
 
     // Try to click disabled switch (should not work)
     await userEvent.click(disabledSwitch);
-    expect(disabledSwitch).not.toBeChecked();
+    expect(disabledSwitch).toHaveAttribute("data-state", "unchecked");
 
     // Test 10: Try disabled checked switch
     await userEvent.click(disabledOnSwitch);

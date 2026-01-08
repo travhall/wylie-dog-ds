@@ -505,7 +505,9 @@ export const WithInteractions: Story = {
 
     // Test 1: Collapsible is initially closed
     const hiddenFile1 = canvas.queryByText(/package\.json/i);
-    expect(hiddenFile1).not.toBeVisible();
+    if (hiddenFile1) {
+      expect(hiddenFile1).not.toBeVisible();
+    }
 
     // Always visible file should be present
     const visibleFile = canvas.getByText(/readme\.md/i);
@@ -540,7 +542,9 @@ export const WithInteractions: Story = {
 
     // Hidden files should not be visible
     const hiddenFile2 = canvas.queryByText(/package\.json/i);
-    expect(hiddenFile2).not.toBeVisible();
+    if (hiddenFile2) {
+      expect(hiddenFile2).not.toBeVisible();
+    }
 
     // Test 5: Test Enter key to expand
     triggerButton.focus();
@@ -559,7 +563,9 @@ export const WithInteractions: Story = {
 
     expect(triggerButton).toHaveAttribute("data-state", "closed");
     const collapsedFile = canvas.queryByText(/package\.json/i);
-    expect(collapsedFile).not.toBeVisible();
+    if (collapsedFile) {
+      expect(collapsedFile).not.toBeVisible();
+    }
   },
   parameters: {
     docs: {

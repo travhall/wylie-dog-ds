@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "@storybook/test";
+import { within, userEvent, expect, screen } from "@storybook/test";
 import {
   Select,
   SelectContent,
@@ -348,7 +348,7 @@ export const WithInteractions: Story = {
     const canvas = within(canvasElement);
 
     // Test 1: Select is initially closed
-    const options = canvas.queryByRole("option", { name: /apple/i });
+    const options = screen.queryByRole("option", { name: /apple/i });
     expect(options).not.toBeInTheDocument();
 
     // Test 2: Find and click the trigger to open select
@@ -362,11 +362,11 @@ export const WithInteractions: Story = {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Test 3: Select is open with all options visible
-    const appleOption = canvas.getByRole("option", { name: /apple/i });
-    const bananaOption = canvas.getByRole("option", { name: /banana/i });
-    const orangeOption = canvas.getByRole("option", { name: /orange/i });
-    const grapeOption = canvas.getByRole("option", { name: /grape/i });
-    const mangoOption = canvas.getByRole("option", { name: /mango/i });
+    const appleOption = screen.getByRole("option", { name: /apple/i });
+    const bananaOption = screen.getByRole("option", { name: /banana/i });
+    const orangeOption = screen.getByRole("option", { name: /orange/i });
+    const grapeOption = screen.getByRole("option", { name: /grape/i });
+    const mangoOption = screen.getByRole("option", { name: /mango/i });
 
     expect(appleOption).toBeInTheDocument();
     expect(bananaOption).toBeInTheDocument();
@@ -396,7 +396,7 @@ export const WithInteractions: Story = {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Select should be closed
-    const closedOption = canvas.queryByRole("option", { name: /banana/i });
+    const closedOption = screen.queryByRole("option", { name: /banana/i });
     expect(closedOption).not.toBeInTheDocument();
 
     // Selected value should be displayed
@@ -407,28 +407,28 @@ export const WithInteractions: Story = {
     await userEvent.click(updatedTrigger);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const reopenedOption = canvas.getByRole("option", { name: /apple/i });
+    const reopenedOption = screen.getByRole("option", { name: /apple/i });
     expect(reopenedOption).toBeInTheDocument();
 
     // Press Escape to close
     await userEvent.keyboard("{Escape}");
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const escapedOption = canvas.queryByRole("option", { name: /apple/i });
+    const escapedOption = screen.queryByRole("option", { name: /apple/i });
     expect(escapedOption).not.toBeInTheDocument();
 
     // Test 7: Open and click an option directly
     await userEvent.click(updatedTrigger);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const mangoOpt = canvas.getByRole("option", { name: /mango/i });
+    const mangoOpt = screen.getByRole("option", { name: /mango/i });
     expect(mangoOpt).toBeInTheDocument();
 
     await userEvent.click(mangoOpt);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Select should close and show selected value
-    const finalClosedOption = canvas.queryByRole("option", { name: /mango/i });
+    const finalClosedOption = screen.queryByRole("option", { name: /mango/i });
     expect(finalClosedOption).not.toBeInTheDocument();
 
     const finalTrigger = canvas.getByRole("combobox");

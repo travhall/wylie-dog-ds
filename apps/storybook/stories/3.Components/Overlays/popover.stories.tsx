@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "@storybook/test";
+import { within, userEvent, expect, screen } from "@storybook/test";
 import { Popover, PopoverContent, PopoverTrigger } from "@wyliedog/ui/popover";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
@@ -13,7 +13,7 @@ import {
   MoreHorizontalIcon,
 } from "lucide-react";
 
-const meta: Meta<typeof Popover> = {
+const meta: Meta<any> = {
   title: "3. Components/Overlays/Popover",
   component: Popover,
   parameters: {
@@ -695,7 +695,7 @@ export const WithInteractions: Story = {
     const canvas = within(canvasElement);
 
     // Test 1: Popover is initially closed
-    const nameInput = canvas.queryByRole("textbox", { name: /name/i });
+    const nameInput = screen.queryByRole("textbox", { name: /name/i });
     expect(nameInput).not.toBeInTheDocument();
 
     // Test 2: Find and click the trigger to open popover
@@ -707,15 +707,15 @@ export const WithInteractions: Story = {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Test 3: Popover content is visible
-    const heading = canvas.getByRole("heading", { name: /user information/i });
+    const heading = screen.getByRole("heading", { name: /user information/i });
     expect(heading).toBeInTheDocument();
 
-    const description = canvas.getByText(/update your profile details below/i);
+    const description = screen.getByText(/update your profile details below/i);
     expect(description).toBeInTheDocument();
 
     // Test 4: Input fields are accessible
-    const nameField = canvas.getByRole("textbox", { name: /name/i });
-    const emailField = canvas.getByRole("textbox", { name: /email/i });
+    const nameField = screen.getByRole("textbox", { name: /name/i });
+    const emailField = screen.getByRole("textbox", { name: /email/i });
 
     expect(nameField).toBeInTheDocument();
     expect(nameField).toHaveValue("John Doe");
@@ -734,7 +734,7 @@ export const WithInteractions: Story = {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     // Popover should be closed
-    const closedHeading = canvas.queryByRole("heading", {
+    const closedHeading = screen.queryByRole("heading", {
       name: /user information/i,
     });
     expect(closedHeading).not.toBeInTheDocument();
@@ -743,7 +743,7 @@ export const WithInteractions: Story = {
     await userEvent.click(triggerButton);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const reopenedHeading = canvas.getByRole("heading", {
+    const reopenedHeading = screen.getByRole("heading", {
       name: /user information/i,
     });
     expect(reopenedHeading).toBeInTheDocument();
@@ -752,7 +752,7 @@ export const WithInteractions: Story = {
     await userEvent.click(triggerButton);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const finalClosedHeading = canvas.queryByRole("heading", {
+    const finalClosedHeading = screen.queryByRole("heading", {
       name: /user information/i,
     });
     expect(finalClosedHeading).not.toBeInTheDocument();

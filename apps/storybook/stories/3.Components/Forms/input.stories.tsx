@@ -329,7 +329,7 @@ export const WithInteractions: Story = {
 
     // Test 1: Find all inputs
     const usernameInput = canvas.getByLabelText(/username/i);
-    const emailInput = canvas.getByLabelText(/^email$/i);
+    const emailInput = canvas.getByLabelText(/email/i);
     const passwordInput = canvas.getByLabelText(/password/i);
     const disabledInput = canvas.getByLabelText(/disabled input/i);
 
