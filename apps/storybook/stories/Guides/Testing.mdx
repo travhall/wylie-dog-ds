@@ -439,26 +439,487 @@ describe('Theme Switching', () => {
 
 ## 🎨 Visual Testing with Storybook
 
-### Story-Based Tests
+### Story-Based Tests with Play Functions
+
+Storybook 8+ supports **play functions** - automated interaction tests that run directly in Storybook. This lets you test component behavior visually while documenting interactions.
+
+#### Basic Play Function
 
 ```typescript
-// button.stories.tsx
+import type { Meta, StoryObj } from '@storybook/react';
+import { within, userEvent, expect } from '@storybook/test';
+import { Button } from './button';
+
+const meta: Meta<typeof Button> = {
+  component: Button,
+  tags: ['autodocs'],
+};
+
+export default meta;
+type Story = StoryObj<typeof Button>;
+
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    children: 'Primary Button',
+    children: 'Click Me',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Test interactions in Storybook
-    const button = canvas.getByRole('button');
+    // Find button using Testing Library queries
+    const button = canvas.getByRole('button', { name: /click me/i });
+
+    // Simulate user interaction
     await userEvent.click(button);
 
     // Verify behavior
     expect(button).toHaveFocus();
   },
 };
+```
+
+**Key Features:**
+- Runs automatically when you view the story
+- Uses `@storybook/test` (built on Testing Library)
+- Displays results in Storybook's Interactions panel
+- Can be used for visual regression testing
+
+#### Form Interaction Testing
+
+```typescript
+export const LoginForm: Story = {
+  render: () => (
+    <form>
+      <Label htmlFor="email">Email</Label>
+      <Input id="email" type="email" />
+
+      <Label htmlFor="password">Password</Label>
+      <Input id="password" type="password" />
+
+      <Button type="submit">Sign In</Button>
+    </form>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Fill out form
+    const emailInput = canvas.getByLabelText(/email/i);
+    await userEvent.type(emailInput, 'user@example.com');
+    expect(emailInput).toHaveValue('user@example.com');
+
+    const passwordInput = canvas.getByLabelText(/password/i);
+    await userEvent.type(passwordInput, 'password123');
+    expect(passwordInput).toHaveValue('password123');
+
+    // Submit form
+    const submitButton = canvas.getByRole('button', { name: /sign in/i });
+    await userEvent.click(submitButton);
+  },
+};
+```
+
+#### Testing Dialog Interactions
+
+```typescript
+export const DeleteConfirmation: Story = {
+  render: () => (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="destructive">Delete Account</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+        <AlertDialogDescription>
+          This action cannot be undone.
+        </AlertDialogDescription>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Delete</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Dialog should be closed initially
+    expect(canvas.queryByRole('alertdialog')).not.toBeInTheDocument();
+
+    // Open dialog
+    const trigger = canvas.getByRole('button', { name: /delete account/i });
+    await userEvent.click(trigger);
+
+    // Dialog should be visible
+    const dialog = canvas.getByRole('alertdialog');
+    expect(dialog).toBeInTheDocument();
+
+    // Verify title and description
+    expect(canvas.getByText(/are you absolutely sure/i)).toBeInTheDocument();
+    expect(canvas.getByText(/this action cannot be undone/i)).toBeInTheDocument();
+
+    // Test keyboard navigation
+    await userEvent.keyboard('{Tab}'); // Focus Cancel button
+    const cancelButton = canvas.getByRole('button', { name: /cancel/i });
+    expect(cancelButton).toHaveFocus();
+
+    // Test Escape key closes dialog
+    await userEvent.keyboard('{Escape}');
+    await sleep(300); // Wait for animation
+    expect(canvas.queryByRole('alertdialog')).not.toBeInTheDocument();
+  },
+};
+
+// Helper for animations
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+```
+
+#### Testing Dropdown Menus
+
+```typescript
+export const AccountMenu: Story = {
+  render: () => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">My Account</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem>Settings</DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>Sign Out</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Open menu
+    const trigger = canvas.getByRole('button', { name: /my account/i });
+    await userEvent.click(trigger);
+
+    // Verify menu items are visible
+    expect(canvas.getByRole('menuitem', { name: /profile/i })).toBeInTheDocument();
+    expect(canvas.getByRole('menuitem', { name: /settings/i })).toBeInTheDocument();
+    expect(canvas.getByRole('menuitem', { name: /sign out/i })).toBeInTheDocument();
+
+    // Test keyboard navigation
+    await userEvent.keyboard('{ArrowDown}'); // First item
+    await userEvent.keyboard('{ArrowDown}'); // Second item
+
+    const settingsItem = canvas.getByRole('menuitem', { name: /settings/i });
+    expect(settingsItem).toHaveFocus();
+
+    // Select item with Enter
+    await userEvent.keyboard('{Enter}');
+  },
+};
+```
+
+#### Testing Tab Navigation
+
+```typescript
+export const SettingsTabs: Story = {
+  render: () => (
+    <Tabs defaultValue="account">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+        <TabsTrigger value="notifications">Notifications</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">Account settings content</TabsContent>
+      <TabsContent value="password">Password settings content</TabsContent>
+      <TabsContent value="notifications">Notification preferences</TabsContent>
+    </Tabs>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Verify initial tab is active
+    const accountTab = canvas.getByRole('tab', { name: /account/i });
+    expect(accountTab).toHaveAttribute('aria-selected', 'true');
+    expect(canvas.getByText(/account settings content/i)).toBeVisible();
+
+    // Switch to password tab
+    const passwordTab = canvas.getByRole('tab', { name: /password/i });
+    await userEvent.click(passwordTab);
+
+    expect(passwordTab).toHaveAttribute('aria-selected', 'true');
+    expect(canvas.getByText(/password settings content/i)).toBeVisible();
+
+    // Test keyboard navigation (Arrow keys)
+    accountTab.focus();
+    await userEvent.keyboard('{ArrowRight}'); // Move to next tab
+    expect(passwordTab).toHaveFocus();
+
+    await userEvent.keyboard('{ArrowRight}'); // Move to notifications tab
+    const notificationsTab = canvas.getByRole('tab', { name: /notifications/i });
+    expect(notificationsTab).toHaveFocus();
+  },
+};
+```
+
+### Running Play Functions
+
+Play functions execute automatically when:
+1. You navigate to a story in Storybook
+2. You run Storybook's test runner (`test-storybook`)
+3. Visual regression tests are performed
+
+View results in the **Interactions** panel at the bottom of Storybook.
+
+---
+
+## 🔄 Portable Stories Pattern
+
+Storybook 8+ introduces **portable stories** - the ability to reuse your stories as test cases in Vitest, Jest, or other test runners. This eliminates duplication between stories and tests.
+
+### Why Portable Stories?
+
+**Benefits:**
+- ✅ **Single source of truth** - Write once, test everywhere
+- ✅ **Reduce duplication** - No need to recreate component setups in tests
+- ✅ **Better coverage** - Automatically test all story variants
+- ✅ **Faster development** - Stories double as test cases
+
+### Setup for Vitest
+
+Configure Storybook for portable stories in your test setup:
+
+```typescript
+// vitest.setup.ts
+import { setProjectAnnotations } from '@storybook/react';
+import * as projectAnnotations from './.storybook/preview';
+
+// Apply Storybook's global config (decorators, parameters) to tests
+setProjectAnnotations(projectAnnotations);
+```
+
+```typescript
+// vitest.config.ts
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./vitest.setup.ts'], // Load Storybook config
+    globals: true,
+  },
+});
+```
+
+### Using Stories in Tests
+
+#### Basic Example
+
+```typescript
+// button.test.tsx
+import { render, screen } from '@testing-library/react';
+import { composeStories } from '@storybook/react';
+import * as stories from './button.stories';
+
+// Convert all stories into renderable components
+const { Primary, Secondary, Disabled } = composeStories(stories);
+
+describe('Button Component', () => {
+  it('renders primary button correctly', () => {
+    render(<Primary />);
+
+    const button = screen.getByRole('button');
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveTextContent('Primary Button');
+  });
+
+  it('renders disabled button correctly', () => {
+    render(<Disabled />);
+
+    const button = screen.getByRole('button');
+    expect(button).toBeDisabled();
+  });
+
+  it('passes accessibility audit for all variants', async () => {
+    const variants = [Primary, Secondary, Disabled];
+
+    for (const Story of variants) {
+      const { container } = render(<Story />);
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    }
+  });
+});
+```
+
+**Key Benefits:**
+- Stories include all args, decorators, and parameters
+- Automatic application of global Storybook configuration
+- Test multiple variants without duplicating setup code
+
+#### Testing All Story Variants
+
+```typescript
+// Automatically test all stories from a file
+import { composeStories } from '@storybook/react';
+import * as stories from './alert.stories';
+
+const composedStories = composeStories(stories);
+
+describe('Alert Component - All Variants', () => {
+  // Get all story names
+  const storyNames = Object.keys(composedStories);
+
+  storyNames.forEach((storyName) => {
+    it(`renders ${storyName} story correctly`, () => {
+      const Story = composedStories[storyName];
+      render(<Story />);
+
+      // Basic smoke test - component renders without errors
+      expect(screen.getByRole('alert')).toBeInTheDocument();
+    });
+
+    it(`${storyName} passes accessibility audit`, async () => {
+      const Story = composedStories[storyName];
+      const { container } = render(<Story />);
+
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+  });
+});
+```
+
+#### Advanced: Testing with Play Functions
+
+If your stories have play functions, you can run them in your tests:
+
+```typescript
+import { composeStories } from '@storybook/react';
+import * as stories from './dialog.stories';
+
+const { DeleteConfirmation } = composeStories(stories);
+
+describe('Dialog with Interactions', () => {
+  it('runs story play function', async () => {
+    const { container } = render(<DeleteConfirmation />);
+
+    // Execute the story's play function
+    if (DeleteConfirmation.play) {
+      await DeleteConfirmation.play({
+        canvasElement: container,
+        // Additional context as needed
+      });
+    }
+
+    // Story's interactions have run, verify final state
+    expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument();
+  });
+});
+```
+
+#### Form Testing with Stories
+
+```typescript
+// form-compositions.stories.tsx - Define story
+export const ContactForm: Story = {
+  render: () => (
+    <form data-testid="contact-form">
+      <Label htmlFor="name">Name</Label>
+      <Input id="name" required />
+
+      <Label htmlFor="email">Email</Label>
+      <Input id="email" type="email" required />
+
+      <Label htmlFor="message">Message</Label>
+      <Textarea id="message" required />
+
+      <Button type="submit">Send Message</Button>
+    </form>
+  ),
+};
+
+// form-compositions.test.tsx - Use story in test
+import { composeStories } from '@storybook/react';
+import * as stories from './form-compositions.stories';
+
+const { ContactForm } = composeStories(stories);
+
+describe('Contact Form Submission', () => {
+  it('submits form with valid data', async () => {
+    const handleSubmit = vi.fn((e) => e.preventDefault());
+
+    const { container } = render(<ContactForm />);
+    const form = container.querySelector('[data-testid="contact-form"]');
+    form?.addEventListener('submit', handleSubmit);
+
+    // Fill out form using the story's structure
+    await userEvent.type(screen.getByLabelText(/name/i), 'John Doe');
+    await userEvent.type(screen.getByLabelText(/email/i), 'john@example.com');
+    await userEvent.type(screen.getByLabelText(/message/i), 'Hello world');
+
+    // Submit
+    await userEvent.click(screen.getByRole('button', { name: /send message/i }));
+
+    expect(handleSubmit).toHaveBeenCalledTimes(1);
+  });
+});
+```
+
+### Best Practices
+
+**DO:**
+- ✅ Use `composeStories` to leverage all Storybook configuration
+- ✅ Test all story variants for comprehensive coverage
+- ✅ Run accessibility tests on composed stories
+- ✅ Use stories as the base for complex integration tests
+
+**DON'T:**
+- ❌ Duplicate story args in test files - use composed stories
+- ❌ Skip testing story variants - loop through all of them
+- ❌ Forget to call `setProjectAnnotations` in test setup
+- ❌ Mix story-based and manual component rendering in the same test file
+
+### Common Patterns
+
+#### Snapshot Testing
+
+```typescript
+import { composeStories } from '@storybook/react';
+import * as stories from './badge.stories';
+
+const composedStories = composeStories(stories);
+
+describe('Badge Snapshots', () => {
+  Object.keys(composedStories).forEach((storyName) => {
+    it(`matches snapshot for ${storyName}`, () => {
+      const Story = composedStories[storyName];
+      const { container } = render(<Story />);
+      expect(container.firstChild).toMatchSnapshot();
+    });
+  });
+});
+```
+
+#### Interaction Testing
+
+```typescript
+import { composeStories } from '@storybook/react';
+import * as stories from './select.stories';
+
+const { Default } = composeStories(stories);
+
+describe('Select Interactions', () => {
+  it('allows selection via keyboard', async () => {
+    render(<Default />);
+
+    const trigger = screen.getByRole('combobox');
+
+    // Use story's configuration, add custom interactions
+    trigger.focus();
+    await userEvent.keyboard('{Enter}');
+    await userEvent.keyboard('{ArrowDown}');
+    await userEvent.keyboard('{Enter}');
+
+    expect(trigger).toHaveTextContent('Option 1');
+  });
+});
 ```
 
 ### Accessibility Testing in Stories

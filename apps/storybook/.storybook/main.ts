@@ -2,6 +2,7 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
+import { visualizer } from "rollup-plugin-visualizer";
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -67,6 +68,18 @@ const config: StorybookConfig = {
         cssCodeSplit: false,
         chunkSizeWarningLimit: 1500,
       },
+      plugins: [
+        ...(config.plugins || []),
+        // Generate bundle size visualization on build
+        process.env.ANALYZE === "true" &&
+          visualizer({
+            filename: "./storybook-static/bundle-stats.html",
+            open: false,
+            gzipSize: true,
+            brotliSize: true,
+            template: "treemap",
+          }),
+      ].filter(Boolean),
     };
   },
 };

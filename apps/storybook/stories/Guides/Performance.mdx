@@ -1,0 +1,571 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="5. Guides/Performance Best Practices" />
+
+# Performance Best Practices
+
+This guide covers performance optimization strategies for the Wylie Dog Design System, including component optimization, bundle size management, rendering performance, and best practices for production deployments.
+
+## Table of Contents
+
+1. [Component Optimization](#component-optimization)
+2. [Bundle Size Management](#bundle-size-management)
+3. [Rendering Performance](#rendering-performance)
+4. [Form Optimization](#form-optimization)
+5. [Image and Asset Optimization](#image-and-asset-optimization)
+6. [Production Best Practices](#production-best-practices)
+7. [Monitoring and Measurement](#monitoring-and-measurement)
+
+---
+
+## Component Optimization
+
+### Tree Shaking and Named Imports
+
+Always import components individually to enable tree shaking:
+
+```tsx
+// ✅ Good - Allows tree shaking
+import { Button } from "@wyliedog/ui/button";
+import { Card } from "@wyliedog/ui/card";
+
+// ❌ Bad - Imports entire library
+import { Button, Card } from "@wyliedog/ui";
+```
+
+### Lazy Loading Components
+
+Use React.lazy() for components that aren't immediately needed:
+
+```tsx
+import { lazy, Suspense } from "react";
+
+// Lazy load heavy components
+const Dialog = lazy(() => import("@wyliedog/ui/dialog"));
+const DataTable = lazy(() => import("./components/DataTable"));
+
+function MyComponent() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Dialog>
+        <DataTable />
+      </Dialog>
+    </Suspense>
+  );
+}
+```
+
+### Component Memoization
+
+Use React.memo() for components that render frequently with the same props:
+
+```tsx
+import { memo } from "react";
+import { Button } from "@wyliedog/ui/button";
+
+// Memoize components that receive stable props
+const MemoizedButton = memo(Button);
+
+// Custom comparison for complex props
+const MemoizedCard = memo(Card, (prevProps, nextProps) => {
+  return prevProps.id === nextProps.id && prevProps.data === nextProps.data;
+});
+```
+
+### Callback and Value Memoization
+
+Use useMemo and useCallback to prevent unnecessary recalculations:
+
+```tsx
+import { useMemo, useCallback, useState } from "react";
+
+function ExpensiveComponent({ items, onItemClick }) {
+  // Memoize expensive calculations
+  const sortedItems = useMemo(() => {
+    return items.sort((a, b) => a.name.localeCompare(b.name));
+  }, [items]);
+
+  // Memoize callbacks to prevent child re-renders
+  const handleClick = useCallback(
+    (id: string) => {
+      onItemClick(id);
+    },
+    [onItemClick]
+  );
+
+  return <div>{/* Render sorted items */}</div>;
+}
+```
+
+---
+
+## Bundle Size Management
+
+### Analyzing Bundle Size
+
+Use the built-in bundle analyzer to identify large dependencies:
+
+```bash
+# Generate bundle analysis report
+pnpm --filter storybook build:analyze
+
+# View the report
+open apps/storybook/storybook-static/bundle-stats.html
+```
+
+The bundle analyzer shows:
+
+- Size of each component and dependency
+- Gzipped and Brotli compressed sizes
+- Visual treemap of bundle composition
+- Duplicate dependencies
+
+### Code Splitting Strategies
+
+Implement strategic code splitting:
+
+```tsx
+// Route-based splitting
+const HomePage = lazy(() => import("./pages/HomePage"));
+const DashboardPage = lazy(() => import("./pages/DashboardPage"));
+
+// Component-based splitting
+const HeavyChart = lazy(() => import("./components/HeavyChart"));
+
+// Conditional loading
+function Dashboard() {
+  const [showAdvanced, setShowAdvanced] = useState(false);
+
+  return (
+    <div>
+      {showAdvanced && (
+        <Suspense fallback={<Skeleton />}>
+          <HeavyChart />
+        </Suspense>
+      )}
+    </div>
+  );
+}
+```
+
+### Dependency Optimization
+
+- **Avoid large libraries**: Use smaller alternatives when possible
+- **Check package sizes**: Use [bundlephobia.com](https://bundlephobia.com) before adding dependencies
+- **Use subset imports**: Import only what you need from large libraries
+
+```tsx
+// ✅ Good - Import specific utilities
+import debounce from "lodash/debounce";
+import throttle from "lodash/throttle";
+
+// ❌ Bad - Imports entire lodash
+import _ from "lodash";
+```
+
+---
+
+## Rendering Performance
+
+### Virtual Lists for Large Data
+
+Use virtualization for rendering large lists:
+
+```tsx
+import { FixedSizeList } from "react-window";
+
+function VirtualizedList({ items }) {
+  const Row = ({ index, style }) => (
+    <div style={style}>{items[index].name}</div>
+  );
+
+  return (
+    <FixedSizeList
+      height={600}
+      itemCount={items.length}
+      itemSize={50}
+      width="100%"
+    >
+      {Row}
+    </FixedSizeList>
+  );
+}
+```
+
+### Avoid Inline Functions and Objects
+
+Inline functions and objects create new references on each render:
+
+```tsx
+// ❌ Bad - Creates new function on every render
+<Button onClick={() => handleClick(id)}>Click me</Button>
+
+// ✅ Good - Stable reference with useCallback
+const handleButtonClick = useCallback(() => handleClick(id), [id]);
+<Button onClick={handleButtonClick}>Click me</Button>
+
+// ❌ Bad - Creates new object on every render
+<Card style={{ padding: 20, margin: 10 }}>Content</Card>
+
+// ✅ Good - Define outside component or use useMemo
+const cardStyle = { padding: 20, margin: 10 };
+<Card style={cardStyle}>Content</Card>
+```
+
+### Debounce and Throttle User Input
+
+Optimize frequent updates with debouncing and throttling:
+
+```tsx
+import { useState, useCallback } from "react";
+import { Input } from "@wyliedog/ui/input";
+
+function SearchInput() {
+  const [query, setQuery] = useState("");
+
+  // Debounce search API call
+  const debouncedSearch = useCallback(
+    debounce((value: string) => {
+      // Perform search API call
+      searchAPI(value);
+    }, 300),
+    []
+  );
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setQuery(value);
+    debouncedSearch(value);
+  };
+
+  return <Input value={query} onChange={handleChange} placeholder="Search..." />;
+}
+```
+
+### Optimize Re-renders with Keys
+
+Always use stable, unique keys for list items:
+
+```tsx
+// ✅ Good - Unique, stable ID
+{
+  items.map((item) => <Card key={item.id}>{item.name}</Card>);
+}
+
+// ❌ Bad - Index as key (unstable on reordering)
+{
+  items.map((item, index) => <Card key={index}>{item.name}</Card>);
+}
+
+// ❌ Bad - Non-unique key
+{
+  items.map((item) => <Card key={item.category}>{item.name}</Card>);
+}
+```
+
+---
+
+## Form Optimization
+
+### Controlled vs Uncontrolled Forms
+
+Choose the right form pattern for your use case:
+
+**Controlled Forms** - Use for real-time validation:
+
+```tsx
+function ControlledForm() {
+  const [email, setEmail] = useState("");
+
+  return <Input value={email} onChange={(e) => setEmail(e.target.value)} />;
+}
+```
+
+**Uncontrolled Forms** - Better performance for large forms:
+
+```tsx
+function UncontrolledForm() {
+  const emailRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const email = emailRef.current?.value;
+    // Process form
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Input ref={emailRef} name="email" />
+    </form>
+  );
+}
+```
+
+### Form Libraries
+
+Consider using form libraries for complex forms:
+
+- **React Hook Form**: Minimal re-renders, great performance
+- **Formik**: Feature-rich but heavier bundle
+
+```tsx
+import { useForm } from "react-hook-form";
+
+function OptimizedForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Input {...register("email", { required: true })} />
+      {errors.email && <span>Email is required</span>}
+    </form>
+  );
+}
+```
+
+---
+
+## Image and Asset Optimization
+
+### Image Optimization
+
+- Use appropriate image formats (WebP with JPEG/PNG fallback)
+- Implement responsive images with srcset
+- Lazy load images below the fold
+- Use CDN for image delivery
+
+```tsx
+// Responsive image with lazy loading
+<img
+  src="/images/hero-800.webp"
+  srcSet="/images/hero-400.webp 400w, /images/hero-800.webp 800w, /images/hero-1200.webp 1200w"
+  sizes="(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px"
+  alt="Hero image"
+  loading="lazy"
+/>
+```
+
+### Icon Optimization
+
+Use SVG icons efficiently:
+
+```tsx
+// ✅ Good - Direct SVG import (inlined at build time)
+import { Search } from "lucide-react";
+<Search size={20} />;
+
+// Lazy load icon sets
+const IconSet = lazy(() => import("./icons"));
+```
+
+### Font Optimization
+
+- Use `font-display: swap` for custom fonts
+- Preload critical fonts
+- Subset fonts to include only needed characters
+
+```css
+/* In your CSS */
+@font-face {
+  font-family: "CustomFont";
+  src: url("/fonts/custom-font.woff2") format("woff2");
+  font-display: swap;
+}
+```
+
+---
+
+## Production Best Practices
+
+### Environment-Specific Optimizations
+
+Ensure production builds are optimized:
+
+```tsx
+// Remove development-only code
+if (process.env.NODE_ENV === "development") {
+  console.log("Debug info");
+}
+
+// Use production builds of dependencies
+// Package managers automatically use production builds when building
+```
+
+### Compression
+
+Enable Gzip or Brotli compression on your server:
+
+```nginx
+# Nginx configuration
+gzip on;
+gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript;
+gzip_min_length 1000;
+
+# Brotli (better compression)
+brotli on;
+brotli_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript;
+```
+
+### CDN and Caching
+
+- Serve static assets from a CDN
+- Use long cache times for versioned assets
+- Implement cache-busting for updated files
+
+```nginx
+# Cache static assets for 1 year
+location ~* \.(js|css|png|jpg|jpeg|gif|svg|woff|woff2)$ {
+  expires 1y;
+  add_header Cache-Control "public, immutable";
+}
+```
+
+### Critical CSS
+
+Inline critical CSS for above-the-fold content:
+
+```html
+<style>
+  /* Critical CSS for initial render */
+  .hero {
+    /* ... */
+  }
+</style>
+```
+
+---
+
+## Monitoring and Measurement
+
+### Performance Metrics
+
+Track these key metrics:
+
+- **First Contentful Paint (FCP)**: When first content appears
+- **Largest Contentful Paint (LCP)**: When main content is visible
+- **Time to Interactive (TTI)**: When page becomes interactive
+- **Cumulative Layout Shift (CLS)**: Visual stability
+- **First Input Delay (FID)**: Input responsiveness
+
+### Chrome DevTools
+
+Use Chrome DevTools for profiling:
+
+1. **Performance Tab**: Record and analyze runtime performance
+2. **Lighthouse**: Automated performance audits
+3. **Coverage Tab**: Identify unused CSS and JavaScript
+4. **Network Tab**: Analyze asset loading
+
+### React DevTools Profiler
+
+Profile component renders:
+
+```tsx
+import { Profiler } from "react";
+
+function onRenderCallback(
+  id, // The component being profiled
+  phase, // "mount" or "update"
+  actualDuration, // Time spent rendering
+  baseDuration, // Estimated time without memoization
+  startTime,
+  commitTime
+) {
+  console.log(`${id} took ${actualDuration}ms`);
+}
+
+<Profiler id="MyComponent" onRender={onRenderCallback}>
+  <MyComponent />
+</Profiler>;
+```
+
+### Performance Budgets
+
+Set and enforce performance budgets:
+
+```json
+{
+  "budgets": [
+    {
+      "resourceSizes": [
+        { "resourceType": "script", "budget": 300 },
+        { "resourceType": "style", "budget": 100 },
+        { "resourceType": "image", "budget": 500 }
+      ],
+      "timings": [
+        { "metric": "interactive", "budget": 3500 },
+        { "metric": "first-contentful-paint", "budget": 2000 }
+      ]
+    }
+  ]
+}
+```
+
+### Web Vitals Monitoring
+
+Monitor Core Web Vitals in production:
+
+```tsx
+import { getCLS, getFID, getFCP, getLCP, getTTFB } from "web-vitals";
+
+getCLS(console.log);
+getFID(console.log);
+getFCP(console.log);
+getLCP(console.log);
+getTTFB(console.log);
+```
+
+---
+
+## Performance Checklist
+
+Use this checklist for production deployments:
+
+**Code Optimization**
+
+- [ ] Components are memoized where appropriate
+- [ ] Heavy components are lazy loaded
+- [ ] Tree shaking is enabled
+- [ ] Bundle size is analyzed and optimized
+
+**Asset Optimization**
+
+- [ ] Images are compressed and properly sized
+- [ ] Images use lazy loading
+- [ ] Fonts are subset and optimized
+- [ ] Icons are SVG or optimized formats
+
+**Build Optimization**
+
+- [ ] Production build is minified
+- [ ] Source maps are generated but not deployed
+- [ ] Code splitting is implemented
+- [ ] CSS is extracted and minified
+
+**Server Optimization**
+
+- [ ] Gzip/Brotli compression is enabled
+- [ ] Static assets are cached
+- [ ] CDN is configured
+- [ ] HTTP/2 is enabled
+
+**Monitoring**
+
+- [ ] Performance metrics are tracked
+- [ ] Error tracking is implemented
+- [ ] Core Web Vitals are monitored
+- [ ] Performance budgets are set
+
+---
+
+## Additional Resources
+
+- [Web.dev Performance](https://web.dev/performance/)
+- [React Performance Optimization](https://react.dev/learn/render-and-commit)
+- [Webpack Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+- [Chrome DevTools Performance](https://developer.chrome.com/docs/devtools/performance/)
+- [Core Web Vitals](https://web.dev/vitals/)
