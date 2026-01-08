@@ -9,7 +9,8 @@
     "./primitives.css": "./dist/primitives.css",
     "./semantic-light.css": "./dist/semantic-light.css",
     "./semantic-dark.css": "./dist/semantic-dark.css",
-    "./hierarchical": "./dist/hierarchical.js"
+    "./hierarchical": "./dist/hierarchical.js",
+    "./manifest.json": "./dist/manifest.json"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",

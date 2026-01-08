@@ -211,27 +211,34 @@ export default function CommandPalettePage() {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight mb-4">
+        <h1 className="text-3xl font-bold tracking-tight mb-4 text-(--color-text-primary)">
           Command Palette
         </h1>
-        <p className="text-lg text-muted-foreground max-w-3xl">
+        <p className="text-lg text-(--color-text-secondary) max-w-3xl">
           A fast and accessible command palette with keyboard navigation,
-          search, and command grouping. Press <kbd className="kbd">⌘</kbd> +{" "}
-          <kbd className="kbd">K</kbd> to open.
+          search, and command grouping. Press{" "}
+          <kbd className="kbd border-(--color-border-primary)/20">⌘</kbd> +{" "}
+          <kbd className="kbd border-(--color-border-primary)/20">K</kbd> to
+          open.
         </p>
       </div>
 
       {/* Demo Section */}
       <div className="space-y-6">
-        <Card>
+        <Card className="glass border-(--color-border-primary)/10">
           <CardHeader>
-            <CardTitle>Interactive Demo</CardTitle>
+            <CardTitle className="text-(--color-text-primary)">
+              Interactive Demo
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">
-                Click the button below or press <kbd className="kbd">⌘</kbd> +{" "}
-                <kbd className="kbd">K</kbd> to open the command palette.
+              <p className="text-sm text-(--color-text-secondary)">
+                Click the button below or press{" "}
+                <kbd className="kbd border-(--color-border-primary)/20">⌘</kbd>{" "}
+                +{" "}
+                <kbd className="kbd border-(--color-border-primary)/20">K</kbd>{" "}
+                to open the command palette.
               </p>
               <Button onClick={() => setIsOpen(true)}>
                 <CommandIcon className="mr-2 h-4 w-4" />
@@ -239,19 +246,21 @@ export default function CommandPalettePage() {
               </Button>
             </div>
 
-            <div className="border rounded-lg p-4 bg-muted/20">
-              <h3 className="font-medium mb-2">Try these commands:</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+            <div className="border border-(--color-border-primary)/20 rounded-lg p-4 bg-(--color-background-secondary)/20">
+              <h3 className="font-medium mb-2 text-(--color-text-primary)">
+                Try these commands:
+              </h3>
+              <ul className="space-y-2 text-sm text-(--color-text-secondary)">
                 <li className="flex items-center">
-                  <CommandIcon className="mr-2 h-3 w-3" />
+                  <CommandIcon className="mr-2 h-3 w-3 text-(--color-text-tertiary)" />
                   Type "settings" or "user" to filter commands
                 </li>
                 <li className="flex items-center">
-                  <ArrowRight className="mr-2 h-3 w-3" />
+                  <ArrowRight className="mr-2 h-3 w-3 text-(--color-text-tertiary)" />
                   Use arrow keys to navigate
                 </li>
                 <li className="flex items-center">
-                  <Check className="mr-2 h-3 w-3" />
+                  <Check className="mr-2 h-3 w-3 text-(--color-text-tertiary)" />
                   Press Enter to select
                 </li>
               </ul>
@@ -261,18 +270,18 @@ export default function CommandPalettePage() {
 
         {/* Command Palette Overlay */}
         {isOpen && (
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-start justify-center p-4 z-50">
+          <div className="fixed inset-0 bg-(--color-background-tertiary)/60 backdrop-blur-sm flex items-start justify-center p-4 z-50">
             <div
               ref={commandListRef}
-              className="w-full max-w-2xl mt-20 bg-background rounded-lg shadow-xl overflow-hidden border"
+              className="w-full max-w-2xl mt-20 bg-(--color-background-primary) rounded-lg shadow-xl overflow-hidden border border-(--color-border-primary)/20 glass"
             >
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-(--color-text-tertiary)" />
                 <Input
                   ref={inputRef}
                   type="text"
                   placeholder="Type a command or search..."
-                  className="w-full border-0 border-b rounded-none pl-10 pr-4 py-5 text-base focus-visible:ring-0 focus-visible:ring-offset-0"
+                  className="w-full border-0 border-b border-(--color-border-primary)/20 rounded-none pl-10 pr-4 py-5 text-base focus-visible:ring-0 focus-visible:ring-offset-0 bg-transparent text-(--color-text-primary)"
                   value={searchQuery}
                   onChange={(e) => {
                     setSearchQuery(e.target.value);
@@ -291,7 +300,7 @@ export default function CommandPalettePage() {
                 {Object.keys(filteredCommands).length > 0 ? (
                   Object.entries(filteredCommands).map(([group, items]) => (
                     <div key={group} className="mb-4">
-                      <div className="px-2 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                      <div className="px-2 py-2 text-xs font-medium text-(--color-text-tertiary) uppercase tracking-wider">
                         {group}
                       </div>
                       <Command>
@@ -302,8 +311,10 @@ export default function CommandPalettePage() {
                           return (
                             <CommandItem
                               key={cmd.id}
-                              className={`flex items-center justify-between px-3 py-2 rounded-md text-sm cursor-pointer ${
-                                isSelected ? "bg-muted" : "hover:bg-muted/50"
+                              className={`flex items-center justify-between px-3 py-2 rounded-md text-sm cursor-pointer transition-colors ${
+                                isSelected
+                                  ? "bg-(--color-background-secondary) text-(--color-text-primary)"
+                                  : "hover:bg-(--color-background-secondary)/50 text-(--color-text-secondary)"
                               }`}
                               onMouseEnter={() =>
                                 setSelectedIndex(
@@ -317,13 +328,17 @@ export default function CommandPalettePage() {
                               data-selected={isSelected}
                             >
                               <div className="flex items-center">
-                                <span className="mr-3 text-muted-foreground">
+                                <span
+                                  className={`mr-3 ${isSelected ? "text-(--color-interactive-primary)" : "text-(--color-text-tertiary)"}`}
+                                >
                                   {cmd.icon}
                                 </span>
                                 <span>{cmd.name}</span>
                               </div>
                               {cmd.shortcut && (
-                                <kbd className="kbd kbd-sm">{cmd.shortcut}</kbd>
+                                <kbd className="kbd kbd-sm border-(--color-border-primary)/20 bg-(--color-background-secondary)/50">
+                                  {cmd.shortcut}
+                                </kbd>
                               )}
                             </CommandItem>
                           );
@@ -332,25 +347,27 @@ export default function CommandPalettePage() {
                     </div>
                   ))
                 ) : (
-                  <div className="py-8 text-center text-muted-foreground">
+                  <div className="py-8 text-center text-(--color-text-tertiary)">
                     <p>No commands found</p>
                     <p className="text-xs mt-1">Try a different search term</p>
                   </div>
                 )}
               </div>
 
-              <div className="border-t px-4 py-2 text-xs text-muted-foreground flex items-center justify-between">
+              <div className="border-t border-(--color-border-primary)/20 px-4 py-2 text-xs text-(--color-text-tertiary) flex items-center justify-between bg-(--color-background-secondary)/10">
                 <div className="flex items-center space-x-4">
                   <span className="flex items-center">
-                    <ArrowRight className="h-3 w-3 mr-1" /> Select
+                    <ArrowRight className="h-3 w-3 mr-1 text-(--color-interactive-primary)" />{" "}
+                    Select
                   </span>
                   <span className="flex items-center">
-                    <ArrowRight className="h-3 w-3 mr-1 rotate-180" /> Navigate
+                    <ArrowRight className="h-3 w-3 mr-1 rotate-180 text-(--color-interactive-primary)" />{" "}
+                    Navigate
                   </span>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-xs text-muted-foreground hover:text-foreground"
+                  className="text-xs text-(--color-text-tertiary) hover:text-(--color-text-primary) transition-colors"
                 >
                   ESC to close
                 </button>
@@ -361,14 +378,18 @@ export default function CommandPalettePage() {
       </div>
 
       {/* Usage Guidelines */}
-      <Card>
+      <Card className="glass border-(--color-border-primary)/10">
         <CardHeader>
-          <CardTitle>Implementation Guide</CardTitle>
+          <CardTitle className="text-(--color-text-primary)">
+            Implementation Guide
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div>
-            <h3 className="font-medium mb-2">Key Features</h3>
-            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+            <h3 className="font-medium mb-2 text-(--color-text-primary)">
+              Key Features
+            </h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-(--color-text-secondary)">
               <li>Keyboard accessible (arrow keys, enter, escape)</li>
               <li>Fuzzy search across command names and groups</li>
               <li>Command grouping and keyboard shortcuts</li>
@@ -379,8 +400,10 @@ export default function CommandPalettePage() {
           </div>
 
           <div>
-            <h3 className="font-medium mb-2">Best Practices</h3>
-            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+            <h3 className="font-medium mb-2 text-(--color-text-primary)">
+              Best Practices
+            </h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-(--color-text-secondary)">
               <li>Use consistent keyboard shortcuts (Cmd+K is standard)</li>
               <li>Group related commands logically</li>
               <li>Keep command names clear and concise</li>

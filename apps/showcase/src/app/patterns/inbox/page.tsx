@@ -147,48 +147,70 @@ export default function InboxPage() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold tracking-tight mb-4">Inbox</h1>
-          <p className="text-lg text-muted-foreground max-w-3xl">
+          <h1 className="text-3xl font-bold tracking-tight mb-4 text-(--color-text-primary)">
+            Inbox
+          </h1>
+          <p className="text-lg text-(--color-text-secondary) max-w-3xl">
             A comprehensive email inbox interface with folder organization,
             search, filtering, and email management. Perfect for communication
             and messaging apps.
           </p>
           <div className="flex gap-2 mt-4">
-            <Badge variant="outline">Email Management</Badge>
-            <Badge variant="outline">Search & Filter</Badge>
-            <Badge variant="outline">Categories</Badge>
-            <Badge variant="outline">Responsive</Badge>
+            <Badge
+              variant="outline"
+              className="border-(--color-border-primary)/20 text-(--color-text-secondary)"
+            >
+              Email Management
+            </Badge>
+            <Badge
+              variant="outline"
+              className="border-(--color-border-primary)/20 text-(--color-text-secondary)"
+            >
+              Search & Filter
+            </Badge>
+            <Badge
+              variant="outline"
+              className="border-(--color-border-primary)/20 text-(--color-text-secondary)"
+            >
+              Categories
+            </Badge>
+            <Badge
+              variant="outline"
+              className="border-(--color-border-primary)/20 text-(--color-text-secondary)"
+            >
+              Responsive
+            </Badge>
           </div>
         </div>
 
         {/* Inbox Preview */}
-        <Card>
+        <Card className="glass border-(--color-border-primary)/10">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-(--color-text-primary)">
               <Inbox className="h-5 w-5" />
               Live Inbox Interface
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="border rounded-lg bg-background h-150">
+            <div className="border border-(--color-border-primary)/20 rounded-lg bg-(--color-background-primary)/50 h-150 overflow-hidden shadow-xl">
               <div className="flex h-full">
                 {/* Sidebar */}
-                <div className="w-64 border-r flex flex-col">
-                  <div className="p-4 border-b">
-                    <Button className="w-full">
+                <div className="w-64 border-r border-(--color-border-primary)/10 flex flex-col bg-(--color-background-secondary)/20">
+                  <div className="p-4 border-b border-(--color-border-primary)/10">
+                    <Button className="w-full bg-(--color-interactive-primary) text-white hover:opacity-90">
                       <Plus className="h-4 w-4 mr-2" />
                       Compose
                     </Button>
                   </div>
 
-                  <div className="p-4 border-b">
+                  <div className="p-4 border-b border-(--color-border-primary)/10">
                     <div className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-(--color-text-tertiary)" />
                       <Input
                         placeholder="Search emails..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="pl-10"
+                        className="pl-10 border-(--color-border-primary)/20 bg-(--color-background-primary)/50 focus:ring-(--color-border-focus)"
                       />
                     </div>
                   </div>
@@ -198,10 +220,13 @@ export default function InboxPage() {
                       {categories.map((category) => (
                         <button
                           key={category.name}
-                          className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm transition-colors hover:bg-muted"
+                          className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm transition-colors hover:bg-(--color-background-secondary)/50 text-(--color-text-secondary) hover:text-(--color-text-primary)"
                         >
                           <span>{category.name}</span>
-                          <Badge variant="secondary" className="text-xs">
+                          <Badge
+                            variant="secondary"
+                            className="text-xs bg-(--color-background-secondary) text-(--color-text-tertiary)"
+                          >
                             {category.count}
                           </Badge>
                         </button>
@@ -209,15 +234,19 @@ export default function InboxPage() {
                     </div>
                   </nav>
 
-                  <div className="p-4 border-t">
+                  <div className="p-4 border-t border-(--color-border-primary)/10 bg-(--color-background-secondary)/10">
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center justify-between">
-                        <span className="text-muted-foreground">Storage</span>
-                        <span>2.5 GB / 15 GB</span>
+                        <span className="text-(--color-text-tertiary)">
+                          Storage
+                        </span>
+                        <span className="text-(--color-text-secondary)">
+                          2.5 GB / 15 GB
+                        </span>
                       </div>
-                      <div className="w-full bg-muted rounded-full h-2">
+                      <div className="w-full bg-(--color-background-secondary) rounded-full h-1.5">
                         <div
-                          className="bg-primary h-2 rounded-full"
+                          className="bg-(--color-interactive-primary) h-1.5 rounded-full"
                           style={{ width: "17%" }}
                         ></div>
                       </div>
@@ -226,15 +255,25 @@ export default function InboxPage() {
                 </div>
 
                 {/* Email List */}
-                <div className="w-96 border-r flex flex-col">
-                  <div className="p-4 border-b">
+                <div className="w-96 border-r border-(--color-border-primary)/10 flex flex-col bg-(--color-background-primary)/20">
+                  <div className="p-4 border-b border-(--color-border-primary)/10 bg-(--color-background-secondary)/5">
                     <div className="flex items-center justify-between">
-                      <h3 className="font-medium">Inbox</h3>
+                      <h3 className="font-semibold text-(--color-text-primary)">
+                        Inbox
+                      </h3>
                       <div className="flex gap-1">
-                        <Button variant="ghost" size="sm">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-(--color-text-tertiary) hover:text-(--color-text-primary) hover:bg-(--color-background-secondary)"
+                        >
                           <Filter className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="sm">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-(--color-text-tertiary) hover:text-(--color-text-primary) hover:bg-(--color-background-secondary)"
+                        >
                           <MoreHorizontal className="h-4 w-4" />
                         </Button>
                       </div>
@@ -246,43 +285,46 @@ export default function InboxPage() {
                       <div
                         key={email.id}
                         onClick={() => setSelectedEmail(email.id)}
-                        className={`p-4 border-b cursor-pointer transition-colors ${
+                        className={`p-4 border-b border-(--color-border-primary)/5 cursor-pointer transition-all duration-200 ${
                           selectedEmail === email.id
-                            ? "bg-muted"
-                            : "hover:bg-muted/50"
-                        } ${!email.read ? "bg-primary/5" : ""}`}
+                            ? "bg-(--color-background-secondary) border-l-2 border-l-(--color-interactive-primary)"
+                            : "hover:bg-(--color-background-secondary)/50"
+                        } ${!email.read ? "bg-(--color-interactive-primary)/3" : ""}`}
                       >
                         <div className="flex items-start gap-3">
-                          <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center shrink-0">
-                            <User className="h-4 w-4" />
+                          <div className="w-8 h-8 bg-(--color-background-secondary) border border-(--color-border-primary)/10 rounded-full flex items-center justify-center shrink-0">
+                            <User className="h-4 w-4 text-(--color-text-tertiary)" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between mb-1">
                               <span
-                                className={`text-sm ${!email.read ? "font-semibold" : ""}`}
+                                className={`text-sm ${!email.read ? "font-bold text-(--color-text-primary)" : "text-(--color-text-secondary)"}`}
                               >
                                 {email.from}
                               </span>
-                              <span className="text-xs text-muted-foreground">
+                              <span className="text-xs text-(--color-text-tertiary)">
                                 {email.date}
                               </span>
                             </div>
                             <div
-                              className={`text-sm mb-1 ${!email.read ? "font-medium" : ""}`}
+                              className={`text-sm mb-1 ${!email.read ? "font-semibold text-(--color-text-primary)" : "text-(--color-text-secondary)"}`}
                             >
                               {email.subject}
                             </div>
-                            <div className="text-sm text-muted-foreground truncate">
+                            <div className="text-xs text-(--color-text-tertiary) truncate leading-relaxed">
                               {email.preview}
                             </div>
                             <div className="flex items-center gap-2 mt-2">
                               {email.starred && (
-                                <Star className="h-3 w-3 fill-current" />
+                                <Star className="h-3 w-3 fill-(--color-interactive-warning) text-(--color-interactive-warning)" />
                               )}
                               {email.hasAttachment && (
-                                <Paperclip className="h-3 w-3" />
+                                <Paperclip className="h-3 w-3 text-(--color-text-tertiary)" />
                               )}
-                              <Badge variant="outline" className="text-xs">
+                              <Badge
+                                variant="outline"
+                                className="text-[10px] h-4 px-1.5 border-(--color-border-primary)/20 text-(--color-text-tertiary) uppercase tracking-wider"
+                              >
                                 {email.category}
                               </Badge>
                             </div>
@@ -294,36 +336,48 @@ export default function InboxPage() {
                 </div>
 
                 {/* Email Content */}
-                <div className="flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col bg-(--color-background-primary)/40">
                   {selectedEmailData ? (
                     <>
-                      <div className="p-4 border-b">
-                        <div className="flex items-center justify-between mb-4">
-                          <h2 className="text-xl font-semibold">
+                      <div className="p-6 border-b border-(--color-border-primary)/10 bg-(--color-background-secondary)/5">
+                        <div className="flex items-start justify-between mb-6">
+                          <h2 className="text-2xl font-bold text-(--color-text-primary) tracking-tight">
                             {selectedEmailData.subject}
                           </h2>
-                          <div className="flex gap-2">
-                            <Button variant="ghost" size="sm">
+                          <div className="flex gap-1 shrink-0">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-(--color-text-tertiary) hover:text-(--color-text-primary) hover:bg-(--color-background-secondary)/50"
+                            >
                               <Archive className="h-4 w-4" />
                             </Button>
-                            <Button variant="ghost" size="sm">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-(--color-text-tertiary) hover:text-(--color-interactive-danger) hover:bg-(--color-background-secondary)/50"
+                            >
                               <Trash2 className="h-4 w-4" />
                             </Button>
-                            <Button variant="ghost" size="sm">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="text-(--color-text-tertiary) hover:text-(--color-text-primary) hover:bg-(--color-background-secondary)/50"
+                            >
                               <MoreHorizontal className="h-4 w-4" />
                             </Button>
                           </div>
                         </div>
 
                         <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center">
-                            <User className="h-5 w-5" />
+                          <div className="w-10 h-10 bg-(--color-background-secondary) border border-(--color-border-primary)/10 rounded-full flex items-center justify-center">
+                            <User className="h-5 w-5 text-(--color-text-tertiary)" />
                           </div>
                           <div>
-                            <div className="font-medium">
+                            <div className="font-semibold text-(--color-text-primary)">
                               {selectedEmailData.from}
                             </div>
-                            <div className="text-sm text-muted-foreground">
+                            <div className="text-xs text-(--color-text-tertiary)">
                               {selectedEmailData.fromEmail} •{" "}
                               {selectedEmailData.date}
                             </div>
@@ -331,26 +385,34 @@ export default function InboxPage() {
                         </div>
                       </div>
 
-                      <div className="flex-1 p-6 overflow-y-auto">
-                        <div className="whitespace-pre-wrap text-sm">
+                      <div className="flex-1 p-8 overflow-y-auto">
+                        <div className="whitespace-pre-wrap text-sm text-(--color-text-secondary) leading-loose max-w-2xl">
                           {selectedEmailData.content}
                         </div>
 
                         {selectedEmailData.hasAttachment && (
-                          <div className="mt-6 p-4 border rounded-lg">
-                            <div className="flex items-center gap-2 mb-2">
-                              <Paperclip className="h-4 w-4" />
-                              <span className="font-medium text-sm">
-                                Attachments
+                          <div className="mt-10 p-4 border border-(--color-border-primary)/10 rounded-xl bg-(--color-background-secondary)/10">
+                            <div className="flex items-center gap-2 mb-4">
+                              <Paperclip className="h-4 w-4 text-(--color-text-tertiary)" />
+                              <span className="font-semibold text-xs text-(--color-text-secondary) uppercase tracking-wider">
+                                Attachments (1)
                               </span>
                             </div>
-                            <div className="space-y-2">
-                              <div className="flex items-center gap-2 p-2 border rounded">
-                                <FileText className="h-4 w-4" />
-                                <span className="text-sm">
-                                  Q4_Revenue_Report.pdf
-                                </span>
-                                <Button variant="ghost" size="sm">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                              <div className="flex items-center justify-between p-3 border border-(--color-border-primary)/10 rounded-lg bg-(--color-background-primary)/50 group hover:border-(--color-border-primary)/30 transition-colors">
+                                <div className="flex items-center gap-3">
+                                  <div className="h-8 w-8 rounded bg-red-500/10 flex items-center justify-center">
+                                    <FileText className="h-4 w-4 text-red-500" />
+                                  </div>
+                                  <span className="text-sm font-medium text-(--color-text-secondary) truncate max-w-[150px]">
+                                    Q4_Revenue_Report.pdf
+                                  </span>
+                                </div>
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="h-8 w-8 p-0 text-(--color-text-tertiary) group-hover:text-(--color-interactive-primary)"
+                                >
                                   <ExternalLink className="h-3 w-3" />
                                 </Button>
                               </div>
@@ -359,17 +421,23 @@ export default function InboxPage() {
                         )}
                       </div>
 
-                      <div className="p-4 border-t">
-                        <div className="flex gap-2">
-                          <Button>
+                      <div className="p-6 border-t border-(--color-border-primary)/10 bg-(--color-background-secondary)/5">
+                        <div className="flex gap-3">
+                          <Button className="bg-(--color-interactive-primary) text-white hover:opacity-90 shadow-sm transition-transform active:scale-95">
                             <Reply className="h-4 w-4 mr-2" />
                             Reply
                           </Button>
-                          <Button variant="outline">
+                          <Button
+                            variant="outline"
+                            className="border-(--color-border-primary)/20 text-(--color-text-secondary) hover:text-(--color-text-primary) hover:bg-(--color-background-secondary)/50"
+                          >
                             <ReplyAll className="h-4 w-4 mr-2" />
                             Reply All
                           </Button>
-                          <Button variant="outline">
+                          <Button
+                            variant="outline"
+                            className="border-(--color-border-primary)/20 text-(--color-text-secondary) hover:text-(--color-text-primary) hover:bg-(--color-background-secondary)/50"
+                          >
                             <Forward className="h-4 w-4 mr-2" />
                             Forward
                           </Button>
@@ -377,14 +445,17 @@ export default function InboxPage() {
                       </div>
                     </>
                   ) : (
-                    <div className="flex-1 flex items-center justify-center">
-                      <div className="text-center">
-                        <Mail className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                        <h3 className="font-medium mb-2">
+                    <div className="flex-1 flex items-center justify-center bg-(--color-background-primary)/20">
+                      <div className="text-center p-8">
+                        <div className="w-16 h-16 bg-(--color-background-secondary)/50 rounded-full flex items-center justify-center mx-auto mb-6 border border-(--color-border-primary)/10 shadow-inner">
+                          <Mail className="h-8 w-8 text-(--color-text-tertiary) opacity-50" />
+                        </div>
+                        <h3 className="text-lg font-semibold text-(--color-text-primary) mb-2">
                           Select an email to read
                         </h3>
-                        <p className="text-sm text-muted-foreground">
-                          Choose an email from the list to view its content
+                        <p className="text-sm text-(--color-text-tertiary) max-w-xs mx-auto">
+                          Choose an email from the list on the left to view its
+                          full content and attachments.
                         </p>
                       </div>
                     </div>
@@ -396,33 +467,37 @@ export default function InboxPage() {
         </Card>
 
         {/* Usage Guidelines */}
-        <Card>
+        <Card className="glass border-(--color-border-primary)/10">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-(--color-text-primary)">
               <Settings className="h-5 w-5" />
               Usage Guidelines
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-6">
             <div>
-              <h3 className="font-semibold mb-2">When to use</h3>
-              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                <li>Email client applications</li>
-                <li>Messaging platforms</li>
-                <li>Notification centers</li>
-                <li>Customer support interfaces</li>
+              <h3 className="font-semibold mb-3 text-(--color-text-primary)">
+                When to use
+              </h3>
+              <ul className="list-disc list-inside space-y-2 text-sm text-(--color-text-secondary)">
+                <li>Email client applications and messaging platforms</li>
+                <li>Notification centers and activity feeds</li>
+                <li>Customer support ticket management interfaces</li>
+                <li>Internal communication and collaborative tools</li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-semibold mb-2">Key Features</h3>
-              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+              <h3 className="font-semibold mb-3 text-(--color-text-primary)">
+                Key Features
+              </h3>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 list-disc list-inside text-sm text-(--color-text-secondary)">
                 <li>Three-panel layout (sidebar, list, content)</li>
-                <li>Real-time search and filtering</li>
-                <li>Category-based organization</li>
-                <li>Email actions (reply, forward, archive)</li>
-                <li>Attachment handling</li>
-                <li>Read/unread status management</li>
+                <li>Real-time search and filtering capabilities</li>
+                <li>Category and tag-based organization</li>
+                <li>Contextual email actions (reply, forward, archive)</li>
+                <li>Sophisticated attachment handling</li>
+                <li>Visual read/unread status management</li>
               </ul>
             </div>
           </CardContent>

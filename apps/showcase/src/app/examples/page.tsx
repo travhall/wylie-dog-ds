@@ -62,8 +62,10 @@ export default function ExamplesPage() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold tracking-tight mb-4">Examples</h1>
-          <p className="text-lg text-muted-foreground max-w-3xl">
+          <h1 className="text-3xl font-bold tracking-tight mb-4 text-(--color-text-primary)">
+            Examples
+          </h1>
+          <p className="text-lg text-(--color-text-secondary) max-w-3xl">
             Real-world applications built with the Wylie Dog design system.
             These examples demonstrate how components work together to create
             complete user experiences.
@@ -71,19 +73,27 @@ export default function ExamplesPage() {
         </div>
 
         {/* Examples Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {examples.map((example) => (
-            <Card key={example.id} className="h-full">
-              <CardHeader>
+            <Card
+              key={example.id}
+              className="h-full glass border-(--color-border-primary)/10 shadow-lg hover:border-(--color-interactive-primary)/30 transition-all duration-500 overflow-hidden group"
+            >
+              <CardHeader className="border-b border-(--color-border-primary)/5 bg-(--color-background-secondary)/5">
                 <div className="flex items-start justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-primary/10 rounded-lg text-primary">
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 bg-(--color-interactive-primary)/10 rounded-2xl text-(--color-interactive-primary) shadow-sm group-hover:scale-110 transition-transform duration-500">
                       {example.icon}
                     </div>
                     <div>
-                      <CardTitle className="text-lg">{example.title}</CardTitle>
-                      <div className="flex items-center gap-2 mt-1">
-                        <Badge variant={getDifficultyColor(example.difficulty)}>
+                      <CardTitle className="text-xl font-bold text-(--color-text-primary)">
+                        {example.title}
+                      </CardTitle>
+                      <div className="flex items-center gap-2 mt-2">
+                        <Badge
+                          variant={getDifficultyColor(example.difficulty)}
+                          className="border-(--color-border-primary)/20 text-xs font-bold uppercase tracking-widest"
+                        >
                           {example.difficulty}
                         </Badge>
                       </div>
@@ -91,36 +101,40 @@ export default function ExamplesPage() {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-sm text-muted-foreground">
+              <CardContent className="space-y-6 pt-6">
+                <p className="text-sm text-(--color-text-secondary) leading-relaxed">
                   {example.description}
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-1">
+                <div className="flex flex-wrap gap-2">
                   {example.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs">
+                    <Badge
+                      key={tag}
+                      variant="outline"
+                      className="text-[10px] font-bold uppercase tracking-wider border-(--color-border-primary)/20 text-(--color-text-tertiary)"
+                    >
                       {tag}
                     </Badge>
                   ))}
                 </div>
 
                 {/* Actions */}
-                <div className="flex gap-2 pt-2">
+                <div className="flex gap-3 pt-4">
                   <a
                     href={example.path}
-                    className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-3 gap-1"
+                    className="inline-flex items-center justify-center rounded-xl text-sm font-bold transition-all focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) disabled:opacity-50 bg-(--color-interactive-primary) text-white hover:opacity-90 h-10 px-5 gap-2 shadow-lg shadow-(--color-interactive-primary)/10 active:scale-95"
                   >
-                    <Play className="h-3 w-3" />
+                    <Play className="h-3.5 w-3.5" />
                     View Example
                   </a>
                   <a
                     href={`https://github.com/wyliedog/wylie-dog-ds/tree/main/apps/showcase/src/app/examples/${example.id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-8 px-3 gap-1"
+                    className="inline-flex items-center justify-center rounded-xl text-sm font-bold transition-all focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) disabled:opacity-50 border border-(--color-border-primary)/20 text-(--color-text-secondary) hover:bg-(--color-background-secondary)/50 h-10 px-5 gap-2 active:scale-95"
                   >
-                    <ExternalLink className="h-3 w-3" />
+                    <ExternalLink className="h-3.5 w-3.5" />
                     Source
                   </a>
                 </div>
@@ -130,37 +144,50 @@ export default function ExamplesPage() {
         </div>
 
         {/* Features Overview */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold tracking-tight mb-6">
+        <div className="mt-16 space-y-8">
+          <h2 className="text-2xl font-bold tracking-tight text-(--color-text-primary)">
             What These Examples Demonstrate
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="flex items-start space-x-3">
-              <Layout className="h-6 w-6 text-primary mt-1" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="flex items-start space-x-4 group">
+              <div className="p-3 glass rounded-2xl text-(--color-interactive-primary) shadow-sm group-hover:scale-110 transition-transform duration-500">
+                <Layout className="h-6 w-6" />
+              </div>
               <div>
-                <h3 className="font-medium mb-1">Component Composition</h3>
-                <p className="text-sm text-muted-foreground">
-                  How to combine multiple components to create complex
-                  interfaces.
+                <h3 className="font-bold text-(--color-text-primary) mb-1">
+                  Component Composition
+                </h3>
+                <p className="text-sm text-(--color-text-secondary) leading-relaxed">
+                  How to combine multiple components to create complex,
+                  accessible interfaces.
                 </p>
               </div>
             </div>
-            <div className="flex items-start space-x-3">
-              <Zap className="h-6 w-6 text-primary mt-1" />
+            <div className="flex items-start space-x-4 group">
+              <div className="p-3 glass rounded-2xl text-(--color-interactive-primary) shadow-sm group-hover:scale-110 transition-transform duration-500">
+                <Zap className="h-6 w-6" />
+              </div>
               <div>
-                <h3 className="font-medium mb-1">Real-world Patterns</h3>
-                <p className="text-sm text-muted-foreground">
-                  Common UI patterns and workflows found in production
-                  applications.
+                <h3 className="font-bold text-(--color-text-primary) mb-1">
+                  Real-world Patterns
+                </h3>
+                <p className="text-sm text-(--color-text-secondary) leading-relaxed">
+                  Common UI patterns and industry workflows found in modern
+                  product applications.
                 </p>
               </div>
             </div>
-            <div className="flex items-start space-x-3">
-              <BarChart3 className="h-6 w-6 text-primary mt-1" />
+            <div className="flex items-start space-x-4 group">
+              <div className="p-3 glass rounded-2xl text-(--color-interactive-primary) shadow-sm group-hover:scale-110 transition-transform duration-500">
+                <BarChart3 className="h-6 w-6" />
+              </div>
               <div>
-                <h3 className="font-medium mb-1">Best Practices</h3>
-                <p className="text-sm text-muted-foreground">
-                  Accessibility, performance, and UX considerations in practice.
+                <h3 className="font-bold text-(--color-text-primary) mb-1">
+                  Best Practices
+                </h3>
+                <p className="text-sm text-(--color-text-secondary) leading-relaxed">
+                  Accessibility, high performance, and human UX considerations
+                  in practice.
                 </p>
               </div>
             </div>
@@ -168,24 +195,26 @@ export default function ExamplesPage() {
         </div>
 
         {/* Getting Started */}
-        <div className="bg-muted/50 p-6 rounded-lg">
-          <h2 className="text-xl font-semibold mb-4">Build Your Own</h2>
-          <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">
-              These examples are starting points. You can modify them, combine
-              patterns, or create entirely new experiences using the same
-              components and tokens.
+        <div className="bg-(--color-background-secondary)/30 glass border border-(--color-border-primary)/5 p-10 rounded-[32px] mt-16 space-y-6">
+          <h2 className="text-2xl font-bold text-(--color-text-primary)">
+            Build Your Own
+          </h2>
+          <div className="space-y-6">
+            <p className="text-sm text-(--color-text-secondary) leading-relaxed italic max-w-2xl">
+              These examples are designed as extensible starting points. You can
+              modify them, combine various patterns, or create entirely new
+              experiences using our unified atomic components and design tokens.
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-3">
               <a
                 href="/components"
-                className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-3"
+                className="inline-flex items-center justify-center rounded-xl text-sm font-bold transition-all focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) disabled:opacity-50 bg-(--color-interactive-primary) text-white hover:opacity-90 h-10 px-6 shadow-lg shadow-(--color-interactive-primary)/10 active:scale-95"
               >
                 Browse Components
               </a>
               <a
                 href="/patterns"
-                className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-8 px-3"
+                className="inline-flex items-center justify-center rounded-xl text-sm font-bold transition-all focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) disabled:opacity-50 border border-(--color-border-primary)/20 text-(--color-text-secondary) hover:bg-(--color-background-secondary)/50 h-10 px-6 active:scale-95"
               >
                 View Patterns
               </a>
@@ -193,7 +222,7 @@ export default function ExamplesPage() {
                 href="http://localhost:6006"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background border border-input hover:bg-accent hover:text-accent-foreground h-8 px-3"
+                className="inline-flex items-center justify-center rounded-xl text-sm font-bold transition-all focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) disabled:opacity-50 border border-(--color-border-primary)/20 text-(--color-text-secondary) hover:bg-(--color-background-secondary)/50 h-10 px-6 active:scale-95"
               >
                 Open Storybook
               </a>

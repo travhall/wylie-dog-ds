@@ -1,0 +1,5167 @@
+{
+  "primitives": {
+    "colors": {
+      "gray": {
+        "50": {
+          "name": "colorGray50",
+          "path": [
+            "color",
+            "gray",
+            "50"
+          ],
+          "value": "oklch(1 0 0)",
+          "type": "color",
+          "variable": "var(--color-gray-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorGray100",
+          "path": [
+            "color",
+            "gray",
+            "100"
+          ],
+          "value": "oklch(0.984 0.003 247.86)",
+          "type": "color",
+          "variable": "var(--color-gray-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorGray200",
+          "path": [
+            "color",
+            "gray",
+            "200"
+          ],
+          "value": "oklch(0.968 0.007 247.9)",
+          "type": "color",
+          "variable": "var(--color-gray-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorGray300",
+          "path": [
+            "color",
+            "gray",
+            "300"
+          ],
+          "value": "oklch(0.929 0.013 255.51)",
+          "type": "color",
+          "variable": "var(--color-gray-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorGray400",
+          "path": [
+            "color",
+            "gray",
+            "400"
+          ],
+          "value": "oklch(0.869 0.02 252.89)",
+          "type": "color",
+          "variable": "var(--color-gray-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorGray500",
+          "path": [
+            "color",
+            "gray",
+            "500"
+          ],
+          "value": "oklch(0.711 0.035 256.79)",
+          "type": "color",
+          "variable": "var(--color-gray-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorGray600",
+          "path": [
+            "color",
+            "gray",
+            "600"
+          ],
+          "value": "oklch(0.554 0.041 257.42)",
+          "type": "color",
+          "variable": "var(--color-gray-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorGray700",
+          "path": [
+            "color",
+            "gray",
+            "700"
+          ],
+          "value": "oklch(0.446 0.037 257.28)",
+          "type": "color",
+          "variable": "var(--color-gray-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorGray800",
+          "path": [
+            "color",
+            "gray",
+            "800"
+          ],
+          "value": "oklch(0.372 0.039 257.29)",
+          "type": "color",
+          "variable": "var(--color-gray-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorGray900",
+          "path": [
+            "color",
+            "gray",
+            "900"
+          ],
+          "value": "oklch(0.279 0.037 260.03)",
+          "type": "color",
+          "variable": "var(--color-gray-900)",
+          "description": ""
+        },
+        "950": {
+          "name": "colorGray950",
+          "path": [
+            "color",
+            "gray",
+            "950"
+          ],
+          "value": "oklch(0.208 0.04 265.75)",
+          "type": "color",
+          "variable": "var(--color-gray-950)",
+          "description": ""
+        }
+      },
+      "blue": {
+        "50": {
+          "name": "colorBlue50",
+          "path": [
+            "color",
+            "blue",
+            "50"
+          ],
+          "value": "oklch(0.97 0.014 254.6)",
+          "type": "color",
+          "variable": "var(--color-blue-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorBlue100",
+          "path": [
+            "color",
+            "blue",
+            "100"
+          ],
+          "value": "oklch(0.932 0.032 255.59)",
+          "type": "color",
+          "variable": "var(--color-blue-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorBlue200",
+          "path": [
+            "color",
+            "blue",
+            "200"
+          ],
+          "value": "oklch(0.882 0.057 254.13)",
+          "type": "color",
+          "variable": "var(--color-blue-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorBlue300",
+          "path": [
+            "color",
+            "blue",
+            "300"
+          ],
+          "value": "oklch(0.809 0.096 251.81)",
+          "type": "color",
+          "variable": "var(--color-blue-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorBlue400",
+          "path": [
+            "color",
+            "blue",
+            "400"
+          ],
+          "value": "oklch(0.714 0.143 254.62)",
+          "type": "color",
+          "variable": "var(--color-blue-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorBlue500",
+          "path": [
+            "color",
+            "blue",
+            "500"
+          ],
+          "value": "oklch(0.623 0.188 259.81)",
+          "type": "color",
+          "variable": "var(--color-blue-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorBlue600",
+          "path": [
+            "color",
+            "blue",
+            "600"
+          ],
+          "value": "oklch(0.546 0.215 262.88)",
+          "type": "color",
+          "variable": "var(--color-blue-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorBlue700",
+          "path": [
+            "color",
+            "blue",
+            "700"
+          ],
+          "value": "oklch(0.488 0.217 264.38)",
+          "type": "color",
+          "variable": "var(--color-blue-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorBlue800",
+          "path": [
+            "color",
+            "blue",
+            "800"
+          ],
+          "value": "oklch(0.424 0.181 265.64)",
+          "type": "color",
+          "variable": "var(--color-blue-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorBlue900",
+          "path": [
+            "color",
+            "blue",
+            "900"
+          ],
+          "value": "oklch(0.379 0.138 265.52)",
+          "type": "color",
+          "variable": "var(--color-blue-900)",
+          "description": ""
+        },
+        "950": {
+          "name": "colorBlue950",
+          "path": [
+            "color",
+            "blue",
+            "950"
+          ],
+          "value": "oklch(0.282 0.087 267.94)",
+          "type": "color",
+          "variable": "var(--color-blue-950)",
+          "description": ""
+        }
+      },
+      "green": {
+        "50": {
+          "name": "colorGreen50",
+          "path": [
+            "color",
+            "green",
+            "50"
+          ],
+          "value": "oklch(0.982 0.018 155.83)",
+          "type": "color",
+          "variable": "var(--color-green-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorGreen100",
+          "path": [
+            "color",
+            "green",
+            "100"
+          ],
+          "value": "oklch(0.962 0.043 156.74)",
+          "type": "color",
+          "variable": "var(--color-green-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorGreen200",
+          "path": [
+            "color",
+            "green",
+            "200"
+          ],
+          "value": "oklch(0.925 0.081 155.99)",
+          "type": "color",
+          "variable": "var(--color-green-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorGreen300",
+          "path": [
+            "color",
+            "green",
+            "300"
+          ],
+          "value": "oklch(0.871 0.136 154.45)",
+          "type": "color",
+          "variable": "var(--color-green-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorGreen400",
+          "path": [
+            "color",
+            "green",
+            "400"
+          ],
+          "value": "oklch(0.8 0.182 151.71)",
+          "type": "color",
+          "variable": "var(--color-green-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorGreen500",
+          "path": [
+            "color",
+            "green",
+            "500"
+          ],
+          "value": "oklch(0.723 0.192 149.58)",
+          "type": "color",
+          "variable": "var(--color-green-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorGreen600",
+          "path": [
+            "color",
+            "green",
+            "600"
+          ],
+          "value": "oklch(0.627 0.17 149.21)",
+          "type": "color",
+          "variable": "var(--color-green-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorGreen700",
+          "path": [
+            "color",
+            "green",
+            "700"
+          ],
+          "value": "oklch(0.527 0.137 150.07)",
+          "type": "color",
+          "variable": "var(--color-green-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorGreen800",
+          "path": [
+            "color",
+            "green",
+            "800"
+          ],
+          "value": "oklch(0.448 0.108 151.33)",
+          "type": "color",
+          "variable": "var(--color-green-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorGreen900",
+          "path": [
+            "color",
+            "green",
+            "900"
+          ],
+          "value": "oklch(0.393 0.09 152.54)",
+          "type": "color",
+          "variable": "var(--color-green-900)",
+          "description": ""
+        },
+        "950": {
+          "name": "colorGreen950",
+          "path": [
+            "color",
+            "green",
+            "950"
+          ],
+          "value": "oklch(0.266 0.063 152.93)",
+          "type": "color",
+          "variable": "var(--color-green-950)",
+          "description": ""
+        }
+      },
+      "orange": {
+        "50": {
+          "name": "colorOrange50",
+          "path": [
+            "color",
+            "orange",
+            "50"
+          ],
+          "value": "oklch(0.98 0.016 73.68)",
+          "type": "color",
+          "variable": "var(--color-orange-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorOrange100",
+          "path": [
+            "color",
+            "orange",
+            "100"
+          ],
+          "value": "oklch(0.954 0.037 75.16)",
+          "type": "color",
+          "variable": "var(--color-orange-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorOrange200",
+          "path": [
+            "color",
+            "orange",
+            "200"
+          ],
+          "value": "oklch(0.901 0.073 70.7)",
+          "type": "color",
+          "variable": "var(--color-orange-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorOrange300",
+          "path": [
+            "color",
+            "orange",
+            "300"
+          ],
+          "value": "oklch(0.837 0.117 66.29)",
+          "type": "color",
+          "variable": "var(--color-orange-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorOrange400",
+          "path": [
+            "color",
+            "orange",
+            "400"
+          ],
+          "value": "oklch(0.758 0.159 55.93)",
+          "type": "color",
+          "variable": "var(--color-orange-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorOrange500",
+          "path": [
+            "color",
+            "orange",
+            "500"
+          ],
+          "value": "oklch(0.705 0.187 47.69)",
+          "type": "color",
+          "variable": "var(--color-orange-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorOrange600",
+          "path": [
+            "color",
+            "orange",
+            "600"
+          ],
+          "value": "oklch(0.646 0.194 40.97)",
+          "type": "color",
+          "variable": "var(--color-orange-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorOrange700",
+          "path": [
+            "color",
+            "orange",
+            "700"
+          ],
+          "value": "oklch(0.553 0.174 38.51)",
+          "type": "color",
+          "variable": "var(--color-orange-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorOrange800",
+          "path": [
+            "color",
+            "orange",
+            "800"
+          ],
+          "value": "oklch(0.47 0.143 37.3)",
+          "type": "color",
+          "variable": "var(--color-orange-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorOrange900",
+          "path": [
+            "color",
+            "orange",
+            "900"
+          ],
+          "value": "oklch(0.408 0.116 38.17)",
+          "type": "color",
+          "variable": "var(--color-orange-900)",
+          "description": ""
+        },
+        "950": {
+          "name": "colorOrange950",
+          "path": [
+            "color",
+            "orange",
+            "950"
+          ],
+          "value": "oklch(0.266 0.076 36.26)",
+          "type": "color",
+          "variable": "var(--color-orange-950)",
+          "description": ""
+        }
+      },
+      "red": {
+        "50": {
+          "name": "colorRed50",
+          "path": [
+            "color",
+            "red",
+            "50"
+          ],
+          "value": "oklch(0.971 0.013 17.38)",
+          "type": "color",
+          "variable": "var(--color-red-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorRed100",
+          "path": [
+            "color",
+            "red",
+            "100"
+          ],
+          "value": "oklch(0.936 0.031 17.72)",
+          "type": "color",
+          "variable": "var(--color-red-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorRed200",
+          "path": [
+            "color",
+            "red",
+            "200"
+          ],
+          "value": "oklch(0.885 0.059 18.33)",
+          "type": "color",
+          "variable": "var(--color-red-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorRed300",
+          "path": [
+            "color",
+            "red",
+            "300"
+          ],
+          "value": "oklch(0.808 0.103 19.57)",
+          "type": "color",
+          "variable": "var(--color-red-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorRed400",
+          "path": [
+            "color",
+            "red",
+            "400"
+          ],
+          "value": "oklch(0.711 0.166 22.22)",
+          "type": "color",
+          "variable": "var(--color-red-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorRed500",
+          "path": [
+            "color",
+            "red",
+            "500"
+          ],
+          "value": "oklch(0.637 0.208 25.33)",
+          "type": "color",
+          "variable": "var(--color-red-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorRed600",
+          "path": [
+            "color",
+            "red",
+            "600"
+          ],
+          "value": "oklch(0.577 0.215 27.33)",
+          "type": "color",
+          "variable": "var(--color-red-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorRed700",
+          "path": [
+            "color",
+            "red",
+            "700"
+          ],
+          "value": "oklch(0.505 0.19 27.52)",
+          "type": "color",
+          "variable": "var(--color-red-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorRed800",
+          "path": [
+            "color",
+            "red",
+            "800"
+          ],
+          "value": "oklch(0.444 0.161 26.9)",
+          "type": "color",
+          "variable": "var(--color-red-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorRed900",
+          "path": [
+            "color",
+            "red",
+            "900"
+          ],
+          "value": "oklch(0.396 0.133 25.72)",
+          "type": "color",
+          "variable": "var(--color-red-900)",
+          "description": ""
+        },
+        "950": {
+          "name": "colorRed950",
+          "path": [
+            "color",
+            "red",
+            "950"
+          ],
+          "value": "oklch(0.258 0.089 26.04)",
+          "type": "color",
+          "variable": "var(--color-red-950)",
+          "description": ""
+        }
+      },
+      "purple": {
+        "50": {
+          "name": "colorPurple50",
+          "path": [
+            "color",
+            "purple",
+            "50"
+          ],
+          "value": "oklch(0.977 0.014 308.3)",
+          "type": "color",
+          "variable": "var(--color-purple-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorPurple100",
+          "path": [
+            "color",
+            "purple",
+            "100"
+          ],
+          "value": "oklch(0.946 0.033 307.17)",
+          "type": "color",
+          "variable": "var(--color-purple-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorPurple200",
+          "path": [
+            "color",
+            "purple",
+            "200"
+          ],
+          "value": "oklch(0.902 0.06 306.7)",
+          "type": "color",
+          "variable": "var(--color-purple-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorPurple300",
+          "path": [
+            "color",
+            "purple",
+            "300"
+          ],
+          "value": "oklch(0.827 0.108 306.38)",
+          "type": "color",
+          "variable": "var(--color-purple-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorPurple400",
+          "path": [
+            "color",
+            "purple",
+            "400"
+          ],
+          "value": "oklch(0.722 0.177 305.5)",
+          "type": "color",
+          "variable": "var(--color-purple-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorPurple500",
+          "path": [
+            "color",
+            "purple",
+            "500"
+          ],
+          "value": "oklch(0.627 0.233 303.9)",
+          "type": "color",
+          "variable": "var(--color-purple-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorPurple600",
+          "path": [
+            "color",
+            "purple",
+            "600"
+          ],
+          "value": "oklch(0.558 0.252 302.25)",
+          "type": "color",
+          "variable": "var(--color-purple-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorPurple700",
+          "path": [
+            "color",
+            "purple",
+            "700"
+          ],
+          "value": "oklch(0.541 0.247 293.01)",
+          "type": "color",
+          "variable": "var(--color-purple-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorPurple800",
+          "path": [
+            "color",
+            "purple",
+            "800"
+          ],
+          "value": "oklch(0.438 0.198 303.72)",
+          "type": "color",
+          "variable": "var(--color-purple-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorPurple900",
+          "path": [
+            "color",
+            "purple",
+            "900"
+          ],
+          "value": "oklch(0.381 0.166 304.99)",
+          "type": "color",
+          "variable": "var(--color-purple-900)",
+          "description": ""
+        },
+        "950": {
+          "name": "colorPurple950",
+          "path": [
+            "color",
+            "purple",
+            "950"
+          ],
+          "value": "oklch(0.291 0.143 302.72)",
+          "type": "color",
+          "variable": "var(--color-purple-950)",
+          "description": ""
+        }
+      },
+      "pink": {
+        "50": {
+          "name": "colorPink50",
+          "path": [
+            "color",
+            "pink",
+            "50"
+          ],
+          "value": "oklch(0.97 0.011 357)",
+          "type": "color",
+          "variable": "var(--color-pink-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorPink100",
+          "path": [
+            "color",
+            "pink",
+            "100"
+          ],
+          "value": "oklch(0.943 0.027 354.52)",
+          "type": "color",
+          "variable": "var(--color-pink-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorPink200",
+          "path": [
+            "color",
+            "pink",
+            "200"
+          ],
+          "value": "oklch(0.905 0.049 353.56)",
+          "type": "color",
+          "variable": "var(--color-pink-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorPink300",
+          "path": [
+            "color",
+            "pink",
+            "300"
+          ],
+          "value": "oklch(0.847 0.085 357.33)",
+          "type": "color",
+          "variable": "var(--color-pink-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorPink400",
+          "path": [
+            "color",
+            "pink",
+            "400"
+          ],
+          "value": "oklch(0.767 0.137 2.21)",
+          "type": "color",
+          "variable": "var(--color-pink-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorPink500",
+          "path": [
+            "color",
+            "pink",
+            "500"
+          ],
+          "value": "oklch(0.694 0.177 5.41)",
+          "type": "color",
+          "variable": "var(--color-pink-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorPink600",
+          "path": [
+            "color",
+            "pink",
+            "600"
+          ],
+          "value": "oklch(0.624 0.209 8.01)",
+          "type": "color",
+          "variable": "var(--color-pink-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorPink700",
+          "path": [
+            "color",
+            "pink",
+            "700"
+          ],
+          "value": "oklch(0.554 0.221 10.55)",
+          "type": "color",
+          "variable": "var(--color-pink-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorPink800",
+          "path": [
+            "color",
+            "pink",
+            "800"
+          ],
+          "value": "oklch(0.498 0.199 14.64)",
+          "type": "color",
+          "variable": "var(--color-pink-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorPink900",
+          "path": [
+            "color",
+            "pink",
+            "900"
+          ],
+          "value": "oklch(0.438 0.175 15.98)",
+          "type": "color",
+          "variable": "var(--color-pink-900)",
+          "description": ""
+        },
+        "950": {
+          "name": "colorPink950",
+          "path": [
+            "color",
+            "pink",
+            "950"
+          ],
+          "value": "oklch(0.319 0.128 18.58)",
+          "type": "color",
+          "variable": "var(--color-pink-950)",
+          "description": ""
+        }
+      },
+      "yellow": {
+        "50": {
+          "name": "colorYellow50",
+          "path": [
+            "color",
+            "yellow",
+            "50"
+          ],
+          "value": "oklch(0.989 0.014 102.45)",
+          "type": "color",
+          "variable": "var(--color-yellow-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorYellow100",
+          "path": [
+            "color",
+            "yellow",
+            "100"
+          ],
+          "value": "oklch(0.971 0.035 103.57)",
+          "type": "color",
+          "variable": "var(--color-yellow-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorYellow200",
+          "path": [
+            "color",
+            "yellow",
+            "200"
+          ],
+          "value": "oklch(0.933 0.07 101.46)",
+          "type": "color",
+          "variable": "var(--color-yellow-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorYellow300",
+          "path": [
+            "color",
+            "yellow",
+            "300"
+          ],
+          "value": "oklch(0.881 0.117 100.38)",
+          "type": "color",
+          "variable": "var(--color-yellow-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorYellow400",
+          "path": [
+            "color",
+            "yellow",
+            "400"
+          ],
+          "value": "oklch(0.817 0.157 97.72)",
+          "type": "color",
+          "variable": "var(--color-yellow-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorYellow500",
+          "path": [
+            "color",
+            "yellow",
+            "500"
+          ],
+          "value": "oklch(0.761 0.156 95.3)",
+          "type": "color",
+          "variable": "var(--color-yellow-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorYellow600",
+          "path": [
+            "color",
+            "yellow",
+            "600"
+          ],
+          "value": "oklch(0.686 0.14 90.42)",
+          "type": "color",
+          "variable": "var(--color-yellow-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorYellow700",
+          "path": [
+            "color",
+            "yellow",
+            "700"
+          ],
+          "value": "oklch(0.587 0.12 85.94)",
+          "type": "color",
+          "variable": "var(--color-yellow-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorYellow800",
+          "path": [
+            "color",
+            "yellow",
+            "800"
+          ],
+          "value": "oklch(0.5 0.103 83.64)",
+          "type": "color",
+          "variable": "var(--color-yellow-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorYellow900",
+          "path": [
+            "color",
+            "yellow",
+            "900"
+          ],
+          "value": "oklch(0.435 0.089 87.06)",
+          "type": "color",
+          "variable": "var(--color-yellow-900)",
+          "description": ""
+        },
+        "950": {
+          "name": "colorYellow950",
+          "path": [
+            "color",
+            "yellow",
+            "950"
+          ],
+          "value": "oklch(0.312 0.064 86.37)",
+          "type": "color",
+          "variable": "var(--color-yellow-950)",
+          "description": ""
+        }
+      }
+    },
+    "spacing": {
+      "spacing-0": {
+        "name": "spacing0",
+        "path": [
+          "spacing",
+          "0"
+        ],
+        "value": "0px",
+        "type": "spacing",
+        "variable": "var(--spacing-0)",
+        "description": ""
+      },
+      "spacing-1": {
+        "name": "spacing1",
+        "path": [
+          "spacing",
+          "1"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--spacing-1)",
+        "description": ""
+      },
+      "spacing-2": {
+        "name": "spacing2",
+        "path": [
+          "spacing",
+          "2"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--spacing-2)",
+        "description": ""
+      },
+      "spacing-3": {
+        "name": "spacing3",
+        "path": [
+          "spacing",
+          "3"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--spacing-3)",
+        "description": ""
+      },
+      "spacing-4": {
+        "name": "spacing4",
+        "path": [
+          "spacing",
+          "4"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--spacing-4)",
+        "description": ""
+      },
+      "spacing-5": {
+        "name": "spacing5",
+        "path": [
+          "spacing",
+          "5"
+        ],
+        "value": "20px",
+        "type": "spacing",
+        "variable": "var(--spacing-5)",
+        "description": ""
+      },
+      "spacing-6": {
+        "name": "spacing6",
+        "path": [
+          "spacing",
+          "6"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--spacing-6)",
+        "description": ""
+      },
+      "spacing-8": {
+        "name": "spacing8",
+        "path": [
+          "spacing",
+          "8"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--spacing-8)",
+        "description": ""
+      },
+      "spacing-10": {
+        "name": "spacing10",
+        "path": [
+          "spacing",
+          "10"
+        ],
+        "value": "40px",
+        "type": "spacing",
+        "variable": "var(--spacing-10)",
+        "description": ""
+      },
+      "spacing-12": {
+        "name": "spacing12",
+        "path": [
+          "spacing",
+          "12"
+        ],
+        "value": "48px",
+        "type": "spacing",
+        "variable": "var(--spacing-12)",
+        "description": ""
+      },
+      "spacing-16": {
+        "name": "spacing16",
+        "path": [
+          "spacing",
+          "16"
+        ],
+        "value": "64px",
+        "type": "spacing",
+        "variable": "var(--spacing-16)",
+        "description": ""
+      },
+      "spacing-20": {
+        "name": "spacing20",
+        "path": [
+          "spacing",
+          "20"
+        ],
+        "value": "80px",
+        "type": "spacing",
+        "variable": "var(--spacing-20)",
+        "description": ""
+      },
+      "spacing-24": {
+        "name": "spacing24",
+        "path": [
+          "spacing",
+          "24"
+        ],
+        "value": "96px",
+        "type": "spacing",
+        "variable": "var(--spacing-24)",
+        "description": ""
+      },
+      "spacing-32": {
+        "name": "spacing32",
+        "path": [
+          "spacing",
+          "32"
+        ],
+        "value": "128px",
+        "type": "spacing",
+        "variable": "var(--spacing-32)",
+        "description": ""
+      },
+      "border-radius-none": {
+        "name": "borderRadiusNone",
+        "path": [
+          "border-radius",
+          "none"
+        ],
+        "value": "0px",
+        "type": "spacing",
+        "variable": "var(--border-radius-none)",
+        "description": ""
+      },
+      "border-radius-sm": {
+        "name": "borderRadiusSm",
+        "path": [
+          "border-radius",
+          "sm"
+        ],
+        "value": "2px",
+        "type": "spacing",
+        "variable": "var(--border-radius-sm)",
+        "description": ""
+      },
+      "border-radius-md": {
+        "name": "borderRadiusMd",
+        "path": [
+          "border-radius",
+          "md"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--border-radius-md)",
+        "description": ""
+      },
+      "border-radius-lg": {
+        "name": "borderRadiusLg",
+        "path": [
+          "border-radius",
+          "lg"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--border-radius-lg)",
+        "description": ""
+      },
+      "border-radius-xl": {
+        "name": "borderRadiusXl",
+        "path": [
+          "border-radius",
+          "xl"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--border-radius-xl)",
+        "description": ""
+      },
+      "border-radius-2xl": {
+        "name": "borderRadius2xl",
+        "path": [
+          "border-radius",
+          "2xl"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--border-radius-2xl)",
+        "description": ""
+      },
+      "border-radius-full": {
+        "name": "borderRadiusFull",
+        "path": [
+          "border-radius",
+          "full"
+        ],
+        "value": "9999px",
+        "type": "spacing",
+        "variable": "var(--border-radius-full)",
+        "description": ""
+      },
+      "border-width-0": {
+        "name": "borderWidth0",
+        "path": [
+          "border-width",
+          "0"
+        ],
+        "value": "0px",
+        "type": "spacing",
+        "variable": "var(--border-width-0)",
+        "description": ""
+      },
+      "border-width-1": {
+        "name": "borderWidth1",
+        "path": [
+          "border-width",
+          "1"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--border-width-1)",
+        "description": ""
+      },
+      "border-width-2": {
+        "name": "borderWidth2",
+        "path": [
+          "border-width",
+          "2"
+        ],
+        "value": "2px",
+        "type": "spacing",
+        "variable": "var(--border-width-2)",
+        "description": ""
+      },
+      "border-width-4": {
+        "name": "borderWidth4",
+        "path": [
+          "border-width",
+          "4"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--border-width-4)",
+        "description": ""
+      },
+      "border-width-8": {
+        "name": "borderWidth8",
+        "path": [
+          "border-width",
+          "8"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--border-width-8)",
+        "description": ""
+      }
+    },
+    "borderRadius": {},
+    "borderWidth": {},
+    "typography": {
+      "family": {
+        "typography-font-family-sans": {
+          "name": "typographyFontFamilySans",
+          "path": [
+            "typography",
+            "font-family",
+            "sans"
+          ],
+          "value": "Inter",
+          "type": "fontFamily",
+          "variable": "var(--typography-font-family-sans)",
+          "description": ""
+        },
+        "typography-font-family-mono": {
+          "name": "typographyFontFamilyMono",
+          "path": [
+            "typography",
+            "font-family",
+            "mono"
+          ],
+          "value": "'JetBrains Mono'",
+          "type": "fontFamily",
+          "variable": "var(--typography-font-family-mono)",
+          "description": ""
+        }
+      },
+      "size": {
+        "typography-font-size-xs": {
+          "name": "typographyFontSizeXs",
+          "path": [
+            "typography",
+            "font-size",
+            "xs"
+          ],
+          "value": "12px",
+          "type": "fontSize",
+          "variable": "var(--typography-font-size-xs)",
+          "description": ""
+        },
+        "typography-font-size-sm": {
+          "name": "typographyFontSizeSm",
+          "path": [
+            "typography",
+            "font-size",
+            "sm"
+          ],
+          "value": "14px",
+          "type": "fontSize",
+          "variable": "var(--typography-font-size-sm)",
+          "description": ""
+        },
+        "typography-font-size-base": {
+          "name": "typographyFontSizeBase",
+          "path": [
+            "typography",
+            "font-size",
+            "base"
+          ],
+          "value": "16px",
+          "type": "fontSize",
+          "variable": "var(--typography-font-size-base)",
+          "description": ""
+        },
+        "typography-font-size-lg": {
+          "name": "typographyFontSizeLg",
+          "path": [
+            "typography",
+            "font-size",
+            "lg"
+          ],
+          "value": "18px",
+          "type": "fontSize",
+          "variable": "var(--typography-font-size-lg)",
+          "description": ""
+        },
+        "typography-font-size-xl": {
+          "name": "typographyFontSizeXl",
+          "path": [
+            "typography",
+            "font-size",
+            "xl"
+          ],
+          "value": "20px",
+          "type": "fontSize",
+          "variable": "var(--typography-font-size-xl)",
+          "description": ""
+        },
+        "typography-font-size-2xl": {
+          "name": "typographyFontSize2xl",
+          "path": [
+            "typography",
+            "font-size",
+            "2xl"
+          ],
+          "value": "24px",
+          "type": "fontSize",
+          "variable": "var(--typography-font-size-2xl)",
+          "description": ""
+        },
+        "typography-font-size-3xl": {
+          "name": "typographyFontSize3xl",
+          "path": [
+            "typography",
+            "font-size",
+            "3xl"
+          ],
+          "value": "30px",
+          "type": "fontSize",
+          "variable": "var(--typography-font-size-3xl)",
+          "description": ""
+        },
+        "typography-font-size-4xl": {
+          "name": "typographyFontSize4xl",
+          "path": [
+            "typography",
+            "font-size",
+            "4xl"
+          ],
+          "value": "36px",
+          "type": "fontSize",
+          "variable": "var(--typography-font-size-4xl)",
+          "description": ""
+        },
+        "typography-font-size-5xl": {
+          "name": "typographyFontSize5xl",
+          "path": [
+            "typography",
+            "font-size",
+            "5xl"
+          ],
+          "value": "48px",
+          "type": "fontSize",
+          "variable": "var(--typography-font-size-5xl)",
+          "description": ""
+        },
+        "typography-font-size-6xl": {
+          "name": "typographyFontSize6xl",
+          "path": [
+            "typography",
+            "font-size",
+            "6xl"
+          ],
+          "value": "60px",
+          "type": "fontSize",
+          "variable": "var(--typography-font-size-6xl)",
+          "description": ""
+        }
+      },
+      "weight": {
+        "typography-font-weight-thin": {
+          "name": "typographyFontWeightThin",
+          "path": [
+            "typography",
+            "font-weight",
+            "thin"
+          ],
+          "value": 100,
+          "type": "fontWeight",
+          "variable": "var(--typography-font-weight-thin)",
+          "description": ""
+        },
+        "typography-font-weight-light": {
+          "name": "typographyFontWeightLight",
+          "path": [
+            "typography",
+            "font-weight",
+            "light"
+          ],
+          "value": 300,
+          "type": "fontWeight",
+          "variable": "var(--typography-font-weight-light)",
+          "description": ""
+        },
+        "typography-font-weight-normal": {
+          "name": "typographyFontWeightNormal",
+          "path": [
+            "typography",
+            "font-weight",
+            "normal"
+          ],
+          "value": 400,
+          "type": "fontWeight",
+          "variable": "var(--typography-font-weight-normal)",
+          "description": ""
+        },
+        "typography-font-weight-medium": {
+          "name": "typographyFontWeightMedium",
+          "path": [
+            "typography",
+            "font-weight",
+            "medium"
+          ],
+          "value": 500,
+          "type": "fontWeight",
+          "variable": "var(--typography-font-weight-medium)",
+          "description": ""
+        },
+        "typography-font-weight-semibold": {
+          "name": "typographyFontWeightSemibold",
+          "path": [
+            "typography",
+            "font-weight",
+            "semibold"
+          ],
+          "value": 600,
+          "type": "fontWeight",
+          "variable": "var(--typography-font-weight-semibold)",
+          "description": ""
+        },
+        "typography-font-weight-bold": {
+          "name": "typographyFontWeightBold",
+          "path": [
+            "typography",
+            "font-weight",
+            "bold"
+          ],
+          "value": 700,
+          "type": "fontWeight",
+          "variable": "var(--typography-font-weight-bold)",
+          "description": ""
+        },
+        "typography-font-weight-extrabold": {
+          "name": "typographyFontWeightExtrabold",
+          "path": [
+            "typography",
+            "font-weight",
+            "extrabold"
+          ],
+          "value": 800,
+          "type": "fontWeight",
+          "variable": "var(--typography-font-weight-extrabold)",
+          "description": ""
+        }
+      },
+      "lineHeight": {
+        "typography-line-height-none": {
+          "name": "typographyLineHeightNone",
+          "path": [
+            "typography",
+            "line-height",
+            "none"
+          ],
+          "value": 1,
+          "type": "lineHeight",
+          "variable": "var(--typography-line-height-none)",
+          "description": ""
+        },
+        "typography-line-height-tight": {
+          "name": "typographyLineHeightTight",
+          "path": [
+            "typography",
+            "line-height",
+            "tight"
+          ],
+          "value": 1.25,
+          "type": "lineHeight",
+          "variable": "var(--typography-line-height-tight)",
+          "description": ""
+        },
+        "typography-line-height-snug": {
+          "name": "typographyLineHeightSnug",
+          "path": [
+            "typography",
+            "line-height",
+            "snug"
+          ],
+          "value": 1.375,
+          "type": "lineHeight",
+          "variable": "var(--typography-line-height-snug)",
+          "description": ""
+        },
+        "typography-line-height-normal": {
+          "name": "typographyLineHeightNormal",
+          "path": [
+            "typography",
+            "line-height",
+            "normal"
+          ],
+          "value": 1.5,
+          "type": "lineHeight",
+          "variable": "var(--typography-line-height-normal)",
+          "description": ""
+        },
+        "typography-line-height-relaxed": {
+          "name": "typographyLineHeightRelaxed",
+          "path": [
+            "typography",
+            "line-height",
+            "relaxed"
+          ],
+          "value": 1.625,
+          "type": "lineHeight",
+          "variable": "var(--typography-line-height-relaxed)",
+          "description": ""
+        },
+        "typography-line-height-loose": {
+          "name": "typographyLineHeightLoose",
+          "path": [
+            "typography",
+            "line-height",
+            "loose"
+          ],
+          "value": 2,
+          "type": "lineHeight",
+          "variable": "var(--typography-line-height-loose)",
+          "description": ""
+        }
+      }
+    }
+  },
+  "semantics": {
+    "background": {
+      "color-background-primary": {
+        "name": "colorBackgroundPrimary",
+        "path": [
+          "color",
+          "background",
+          "primary"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-background-primary)",
+        "description": ""
+      },
+      "color-background-secondary": {
+        "name": "colorBackgroundSecondary",
+        "path": [
+          "color",
+          "background",
+          "secondary"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-background-secondary)",
+        "description": ""
+      },
+      "color-background-tertiary": {
+        "name": "colorBackgroundTertiary",
+        "path": [
+          "color",
+          "background",
+          "tertiary"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-background-tertiary)",
+        "description": ""
+      },
+      "color-background-inverse": {
+        "name": "colorBackgroundInverse",
+        "path": [
+          "color",
+          "background",
+          "inverse"
+        ],
+        "value": "oklch(0.208 0.04 265.75)",
+        "type": "color",
+        "variable": "var(--color-background-inverse)",
+        "description": ""
+      },
+      "color-background-brand": {
+        "name": "colorBackgroundBrand",
+        "path": [
+          "color",
+          "background",
+          "brand"
+        ],
+        "value": "oklch(0.646 0.194 40.97)",
+        "type": "color",
+        "variable": "var(--color-background-brand)",
+        "description": ""
+      },
+      "color-background-success": {
+        "name": "colorBackgroundSuccess",
+        "path": [
+          "color",
+          "background",
+          "success"
+        ],
+        "value": "oklch(0.627 0.17 149.21)",
+        "type": "color",
+        "variable": "var(--color-background-success)",
+        "description": ""
+      },
+      "color-background-warning": {
+        "name": "colorBackgroundWarning",
+        "path": [
+          "color",
+          "background",
+          "warning"
+        ],
+        "value": "oklch(0.646 0.194 40.97)",
+        "type": "color",
+        "variable": "var(--color-background-warning)",
+        "description": ""
+      },
+      "color-background-danger": {
+        "name": "colorBackgroundDanger",
+        "path": [
+          "color",
+          "background",
+          "danger"
+        ],
+        "value": "oklch(0.577 0.215 27.33)",
+        "type": "color",
+        "variable": "var(--color-background-danger)",
+        "description": ""
+      },
+      "color-background-info": {
+        "name": "colorBackgroundInfo",
+        "path": [
+          "color",
+          "background",
+          "info"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-background-info)",
+        "description": ""
+      }
+    },
+    "surface": {
+      "color-surface-primary": {
+        "name": "colorSurfacePrimary",
+        "path": [
+          "color",
+          "surface",
+          "primary"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-surface-primary)",
+        "description": ""
+      },
+      "color-surface-secondary": {
+        "name": "colorSurfaceSecondary",
+        "path": [
+          "color",
+          "surface",
+          "secondary"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-surface-secondary)",
+        "description": ""
+      },
+      "color-surface-raised": {
+        "name": "colorSurfaceRaised",
+        "path": [
+          "color",
+          "surface",
+          "raised"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-surface-raised)",
+        "description": ""
+      },
+      "color-surface-overlay": {
+        "name": "colorSurfaceOverlay",
+        "path": [
+          "color",
+          "surface",
+          "overlay"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-surface-overlay)",
+        "description": ""
+      },
+      "color-surface-brand": {
+        "name": "colorSurfaceBrand",
+        "path": [
+          "color",
+          "surface",
+          "brand"
+        ],
+        "value": "oklch(0.97 0.014 254.6)",
+        "type": "color",
+        "variable": "var(--color-surface-brand)",
+        "description": ""
+      },
+      "color-surface-success": {
+        "name": "colorSurfaceSuccess",
+        "path": [
+          "color",
+          "surface",
+          "success"
+        ],
+        "value": "oklch(0.982 0.018 155.83)",
+        "type": "color",
+        "variable": "var(--color-surface-success)",
+        "description": ""
+      },
+      "color-surface-warning": {
+        "name": "colorSurfaceWarning",
+        "path": [
+          "color",
+          "surface",
+          "warning"
+        ],
+        "value": "oklch(0.98 0.016 73.68)",
+        "type": "color",
+        "variable": "var(--color-surface-warning)",
+        "description": ""
+      },
+      "color-surface-danger": {
+        "name": "colorSurfaceDanger",
+        "path": [
+          "color",
+          "surface",
+          "danger"
+        ],
+        "value": "oklch(0.971 0.013 17.38)",
+        "type": "color",
+        "variable": "var(--color-surface-danger)",
+        "description": ""
+      },
+      "color-surface-info": {
+        "name": "colorSurfaceInfo",
+        "path": [
+          "color",
+          "surface",
+          "info"
+        ],
+        "value": "oklch(0.97 0.014 254.6)",
+        "type": "color",
+        "variable": "var(--color-surface-info)",
+        "description": ""
+      }
+    },
+    "text": {
+      "color-text-primary": {
+        "name": "colorTextPrimary",
+        "path": [
+          "color",
+          "text",
+          "primary"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-text-primary)",
+        "description": ""
+      },
+      "color-text-secondary": {
+        "name": "colorTextSecondary",
+        "path": [
+          "color",
+          "text",
+          "secondary"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-text-secondary)",
+        "description": ""
+      },
+      "color-text-tertiary": {
+        "name": "colorTextTertiary",
+        "path": [
+          "color",
+          "text",
+          "tertiary"
+        ],
+        "value": "oklch(0.711 0.035 256.79)",
+        "type": "color",
+        "variable": "var(--color-text-tertiary)",
+        "description": ""
+      },
+      "color-text-disabled": {
+        "name": "colorTextDisabled",
+        "path": [
+          "color",
+          "text",
+          "disabled"
+        ],
+        "value": "oklch(0.869 0.02 252.89)",
+        "type": "color",
+        "variable": "var(--color-text-disabled)",
+        "description": ""
+      },
+      "color-text-inverse": {
+        "name": "colorTextInverse",
+        "path": [
+          "color",
+          "text",
+          "inverse"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-text-inverse)",
+        "description": ""
+      },
+      "color-text-brand": {
+        "name": "colorTextBrand",
+        "path": [
+          "color",
+          "text",
+          "brand"
+        ],
+        "value": "oklch(0.646 0.194 40.97)",
+        "type": "color",
+        "variable": "var(--color-text-brand)",
+        "description": ""
+      },
+      "color-text-success": {
+        "name": "colorTextSuccess",
+        "path": [
+          "color",
+          "text",
+          "success"
+        ],
+        "value": "oklch(0.527 0.137 150.07)",
+        "type": "color",
+        "variable": "var(--color-text-success)",
+        "description": ""
+      },
+      "color-text-warning": {
+        "name": "colorTextWarning",
+        "path": [
+          "color",
+          "text",
+          "warning"
+        ],
+        "value": "oklch(0.553 0.174 38.51)",
+        "type": "color",
+        "variable": "var(--color-text-warning)",
+        "description": ""
+      },
+      "color-text-danger": {
+        "name": "colorTextDanger",
+        "path": [
+          "color",
+          "text",
+          "danger"
+        ],
+        "value": "oklch(0.505 0.19 27.52)",
+        "type": "color",
+        "variable": "var(--color-text-danger)",
+        "description": ""
+      },
+      "color-text-info": {
+        "name": "colorTextInfo",
+        "path": [
+          "color",
+          "text",
+          "info"
+        ],
+        "value": "oklch(0.488 0.217 264.38)",
+        "type": "color",
+        "variable": "var(--color-text-info)",
+        "description": ""
+      }
+    },
+    "border": {
+      "color-border-primary": {
+        "name": "colorBorderPrimary",
+        "path": [
+          "color",
+          "border",
+          "primary"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-border-primary)",
+        "description": ""
+      },
+      "color-border-secondary": {
+        "name": "colorBorderSecondary",
+        "path": [
+          "color",
+          "border",
+          "secondary"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-border-secondary)",
+        "description": ""
+      },
+      "color-border-focus": {
+        "name": "colorBorderFocus",
+        "path": [
+          "color",
+          "border",
+          "focus"
+        ],
+        "value": "oklch(0.623 0.188 259.81)",
+        "type": "color",
+        "variable": "var(--color-border-focus)",
+        "description": ""
+      },
+      "color-border-brand": {
+        "name": "colorBorderBrand",
+        "path": [
+          "color",
+          "border",
+          "brand"
+        ],
+        "value": "oklch(0.646 0.194 40.97)",
+        "type": "color",
+        "variable": "var(--color-border-brand)",
+        "description": ""
+      },
+      "color-border-success": {
+        "name": "colorBorderSuccess",
+        "path": [
+          "color",
+          "border",
+          "success"
+        ],
+        "value": "oklch(0.627 0.17 149.21)",
+        "type": "color",
+        "variable": "var(--color-border-success)",
+        "description": ""
+      },
+      "color-border-warning": {
+        "name": "colorBorderWarning",
+        "path": [
+          "color",
+          "border",
+          "warning"
+        ],
+        "value": "oklch(0.646 0.194 40.97)",
+        "type": "color",
+        "variable": "var(--color-border-warning)",
+        "description": ""
+      },
+      "color-border-danger": {
+        "name": "colorBorderDanger",
+        "path": [
+          "color",
+          "border",
+          "danger"
+        ],
+        "value": "oklch(0.577 0.215 27.33)",
+        "type": "color",
+        "variable": "var(--color-border-danger)",
+        "description": ""
+      },
+      "color-border-info": {
+        "name": "colorBorderInfo",
+        "path": [
+          "color",
+          "border",
+          "info"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-border-info)",
+        "description": ""
+      }
+    },
+    "interactive": {
+      "color-interactive-primary": {
+        "name": "colorInteractivePrimary",
+        "path": [
+          "color",
+          "interactive",
+          "primary"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-interactive-primary)",
+        "description": ""
+      },
+      "color-interactive-primary-hover": {
+        "name": "colorInteractivePrimaryHover",
+        "path": [
+          "color",
+          "interactive",
+          "primary-hover"
+        ],
+        "value": "oklch(0.488 0.217 264.38)",
+        "type": "color",
+        "variable": "var(--color-interactive-primary-hover)",
+        "description": ""
+      },
+      "color-interactive-primary-active": {
+        "name": "colorInteractivePrimaryActive",
+        "path": [
+          "color",
+          "interactive",
+          "primary-active"
+        ],
+        "value": "oklch(0.424 0.181 265.64)",
+        "type": "color",
+        "variable": "var(--color-interactive-primary-active)",
+        "description": ""
+      },
+      "color-interactive-secondary": {
+        "name": "colorInteractiveSecondary",
+        "path": [
+          "color",
+          "interactive",
+          "secondary"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-interactive-secondary)",
+        "description": ""
+      },
+      "color-interactive-secondary-hover": {
+        "name": "colorInteractiveSecondaryHover",
+        "path": [
+          "color",
+          "interactive",
+          "secondary-hover"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-interactive-secondary-hover)",
+        "description": ""
+      },
+      "color-interactive-secondary-active": {
+        "name": "colorInteractiveSecondaryActive",
+        "path": [
+          "color",
+          "interactive",
+          "secondary-active"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-interactive-secondary-active)",
+        "description": ""
+      },
+      "color-interactive-success": {
+        "name": "colorInteractiveSuccess",
+        "path": [
+          "color",
+          "interactive",
+          "success"
+        ],
+        "value": "oklch(0.627 0.17 149.21)",
+        "type": "color",
+        "variable": "var(--color-interactive-success)",
+        "description": ""
+      },
+      "color-interactive-success-hover": {
+        "name": "colorInteractiveSuccessHover",
+        "path": [
+          "color",
+          "interactive",
+          "success-hover"
+        ],
+        "value": "oklch(0.527 0.137 150.07)",
+        "type": "color",
+        "variable": "var(--color-interactive-success-hover)",
+        "description": ""
+      },
+      "color-interactive-warning": {
+        "name": "colorInteractiveWarning",
+        "path": [
+          "color",
+          "interactive",
+          "warning"
+        ],
+        "value": "oklch(0.646 0.194 40.97)",
+        "type": "color",
+        "variable": "var(--color-interactive-warning)",
+        "description": ""
+      },
+      "color-interactive-warning-hover": {
+        "name": "colorInteractiveWarningHover",
+        "path": [
+          "color",
+          "interactive",
+          "warning-hover"
+        ],
+        "value": "oklch(0.553 0.174 38.51)",
+        "type": "color",
+        "variable": "var(--color-interactive-warning-hover)",
+        "description": ""
+      },
+      "color-interactive-danger": {
+        "name": "colorInteractiveDanger",
+        "path": [
+          "color",
+          "interactive",
+          "danger"
+        ],
+        "value": "oklch(0.577 0.215 27.33)",
+        "type": "color",
+        "variable": "var(--color-interactive-danger)",
+        "description": ""
+      },
+      "color-interactive-danger-hover": {
+        "name": "colorInteractiveDangerHover",
+        "path": [
+          "color",
+          "interactive",
+          "danger-hover"
+        ],
+        "value": "oklch(0.505 0.19 27.52)",
+        "type": "color",
+        "variable": "var(--color-interactive-danger-hover)",
+        "description": ""
+      }
+    },
+    "status": {
+      "color-status-success": {
+        "name": "colorStatusSuccess",
+        "path": [
+          "color",
+          "status",
+          "success"
+        ],
+        "value": "oklch(0.627 0.17 149.21)",
+        "type": "color",
+        "variable": "var(--color-status-success)",
+        "description": ""
+      },
+      "color-status-warning": {
+        "name": "colorStatusWarning",
+        "path": [
+          "color",
+          "status",
+          "warning"
+        ],
+        "value": "oklch(0.646 0.194 40.97)",
+        "type": "color",
+        "variable": "var(--color-status-warning)",
+        "description": ""
+      },
+      "color-status-danger": {
+        "name": "colorStatusDanger",
+        "path": [
+          "color",
+          "status",
+          "danger"
+        ],
+        "value": "oklch(0.577 0.215 27.33)",
+        "type": "color",
+        "variable": "var(--color-status-danger)",
+        "description": ""
+      },
+      "color-status-info": {
+        "name": "colorStatusInfo",
+        "path": [
+          "color",
+          "status",
+          "info"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-status-info)",
+        "description": ""
+      },
+      "color-status-highlight": {
+        "name": "colorStatusHighlight",
+        "path": [
+          "color",
+          "status",
+          "highlight"
+        ],
+        "value": "oklch(0.881 0.117 100.38)",
+        "type": "color",
+        "variable": "var(--color-status-highlight)",
+        "description": ""
+      }
+    },
+    "other": {
+      "color-primary-base": {
+        "name": "colorPrimaryBase",
+        "path": [
+          "color",
+          "primary",
+          "base"
+        ],
+        "value": "oklch(0.553 0.174 38.51)",
+        "type": "color",
+        "variable": "var(--color-primary-base)",
+        "description": ""
+      },
+      "color-primary-hover": {
+        "name": "colorPrimaryHover",
+        "path": [
+          "color",
+          "primary",
+          "hover"
+        ],
+        "value": "oklch(0.47 0.143 37.3)",
+        "type": "color",
+        "variable": "var(--color-primary-hover)",
+        "description": ""
+      },
+      "color-primary-active": {
+        "name": "colorPrimaryActive",
+        "path": [
+          "color",
+          "primary",
+          "active"
+        ],
+        "value": "oklch(0.408 0.116 38.17)",
+        "type": "color",
+        "variable": "var(--color-primary-active)",
+        "description": ""
+      },
+      "color-primary-surface": {
+        "name": "colorPrimarySurface",
+        "path": [
+          "color",
+          "primary",
+          "surface"
+        ],
+        "value": "oklch(0.97 0.014 254.6)",
+        "type": "color",
+        "variable": "var(--color-primary-surface)",
+        "description": ""
+      },
+      "color-primary-text": {
+        "name": "colorPrimaryText",
+        "path": [
+          "color",
+          "primary",
+          "text"
+        ],
+        "value": "oklch(0.208 0.04 265.75)",
+        "type": "color",
+        "variable": "var(--color-primary-text)",
+        "description": ""
+      },
+      "color-secondary-base": {
+        "name": "colorSecondaryBase",
+        "path": [
+          "color",
+          "secondary",
+          "base"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-secondary-base)",
+        "description": ""
+      },
+      "color-secondary-hover": {
+        "name": "colorSecondaryHover",
+        "path": [
+          "color",
+          "secondary",
+          "hover"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-secondary-hover)",
+        "description": ""
+      },
+      "color-secondary-active": {
+        "name": "colorSecondaryActive",
+        "path": [
+          "color",
+          "secondary",
+          "active"
+        ],
+        "value": "oklch(0.869 0.02 252.89)",
+        "type": "color",
+        "variable": "var(--color-secondary-active)",
+        "description": ""
+      },
+      "color-secondary-surface": {
+        "name": "colorSecondarySurface",
+        "path": [
+          "color",
+          "secondary",
+          "surface"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-secondary-surface)",
+        "description": ""
+      },
+      "color-secondary-text": {
+        "name": "colorSecondaryText",
+        "path": [
+          "color",
+          "secondary",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-secondary-text)",
+        "description": ""
+      },
+      "color-accent-base": {
+        "name": "colorAccentBase",
+        "path": [
+          "color",
+          "accent",
+          "base"
+        ],
+        "value": "oklch(0.558 0.252 302.25)",
+        "type": "color",
+        "variable": "var(--color-accent-base)",
+        "description": ""
+      },
+      "color-accent-hover": {
+        "name": "colorAccentHover",
+        "path": [
+          "color",
+          "accent",
+          "hover"
+        ],
+        "value": "oklch(0.541 0.247 293.01)",
+        "type": "color",
+        "variable": "var(--color-accent-hover)",
+        "description": ""
+      },
+      "color-accent-active": {
+        "name": "colorAccentActive",
+        "path": [
+          "color",
+          "accent",
+          "active"
+        ],
+        "value": "oklch(0.438 0.198 303.72)",
+        "type": "color",
+        "variable": "var(--color-accent-active)",
+        "description": ""
+      },
+      "color-accent-surface": {
+        "name": "colorAccentSurface",
+        "path": [
+          "color",
+          "accent",
+          "surface"
+        ],
+        "value": "oklch(0.977 0.014 308.3)",
+        "type": "color",
+        "variable": "var(--color-accent-surface)",
+        "description": ""
+      },
+      "color-accent-text": {
+        "name": "colorAccentText",
+        "path": [
+          "color",
+          "accent",
+          "text"
+        ],
+        "value": "oklch(0.381 0.166 304.99)",
+        "type": "color",
+        "variable": "var(--color-accent-text)",
+        "description": ""
+      },
+      "color-accent-highlight": {
+        "name": "colorAccentHighlight",
+        "path": [
+          "color",
+          "accent",
+          "highlight"
+        ],
+        "value": "oklch(0.847 0.085 357.33)",
+        "type": "color",
+        "variable": "var(--color-accent-highlight)",
+        "description": ""
+      },
+      "color-neutral-base": {
+        "name": "colorNeutralBase",
+        "path": [
+          "color",
+          "neutral",
+          "base"
+        ],
+        "value": "oklch(0.554 0.041 257.42)",
+        "type": "color",
+        "variable": "var(--color-neutral-base)",
+        "description": ""
+      },
+      "color-neutral-muted": {
+        "name": "colorNeutralMuted",
+        "path": [
+          "color",
+          "neutral",
+          "muted"
+        ],
+        "value": "oklch(0.869 0.02 252.89)",
+        "type": "color",
+        "variable": "var(--color-neutral-muted)",
+        "description": ""
+      },
+      "color-neutral-subtle": {
+        "name": "colorNeutralSubtle",
+        "path": [
+          "color",
+          "neutral",
+          "subtle"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-neutral-subtle)",
+        "description": ""
+      },
+      "color-neutral-on": {
+        "name": "colorNeutralOn",
+        "path": [
+          "color",
+          "neutral",
+          "on"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-neutral-on)",
+        "description": ""
+      }
+    }
+  },
+  "components": {
+    "badge": {
+      "badge-default-background": {
+        "name": "badgeDefaultBackground",
+        "path": [
+          "badge",
+          "default",
+          "background"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-badge-default-background)",
+        "description": ""
+      },
+      "badge-default-text": {
+        "name": "badgeDefaultText",
+        "path": [
+          "badge",
+          "default",
+          "text"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-badge-default-text)",
+        "description": ""
+      },
+      "badge-default-border": {
+        "name": "badgeDefaultBorder",
+        "path": [
+          "badge",
+          "default",
+          "border"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-badge-default-border)",
+        "description": ""
+      },
+      "badge-secondary-background": {
+        "name": "badgeSecondaryBackground",
+        "path": [
+          "badge",
+          "secondary",
+          "background"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-background)",
+        "description": ""
+      },
+      "badge-secondary-text": {
+        "name": "badgeSecondaryText",
+        "path": [
+          "badge",
+          "secondary",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-text)",
+        "description": ""
+      },
+      "badge-secondary-border": {
+        "name": "badgeSecondaryBorder",
+        "path": [
+          "badge",
+          "secondary",
+          "border"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-border)",
+        "description": ""
+      },
+      "badge-success-background": {
+        "name": "badgeSuccessBackground",
+        "path": [
+          "badge",
+          "success",
+          "background"
+        ],
+        "value": "oklch(0.627 0.17 149.21)",
+        "type": "color",
+        "variable": "var(--color-badge-success-background)",
+        "description": ""
+      },
+      "badge-success-text": {
+        "name": "badgeSuccessText",
+        "path": [
+          "badge",
+          "success",
+          "text"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-badge-success-text)",
+        "description": ""
+      },
+      "badge-success-border": {
+        "name": "badgeSuccessBorder",
+        "path": [
+          "badge",
+          "success",
+          "border"
+        ],
+        "value": "oklch(0.627 0.17 149.21)",
+        "type": "color",
+        "variable": "var(--color-badge-success-border)",
+        "description": ""
+      },
+      "badge-warning-background": {
+        "name": "badgeWarningBackground",
+        "path": [
+          "badge",
+          "warning",
+          "background"
+        ],
+        "value": "oklch(0.646 0.194 40.97)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-background)",
+        "description": ""
+      },
+      "badge-warning-text": {
+        "name": "badgeWarningText",
+        "path": [
+          "badge",
+          "warning",
+          "text"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-text)",
+        "description": ""
+      },
+      "badge-warning-border": {
+        "name": "badgeWarningBorder",
+        "path": [
+          "badge",
+          "warning",
+          "border"
+        ],
+        "value": "oklch(0.646 0.194 40.97)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-border)",
+        "description": ""
+      },
+      "badge-destructive-background": {
+        "name": "badgeDestructiveBackground",
+        "path": [
+          "badge",
+          "destructive",
+          "background"
+        ],
+        "value": "oklch(0.971 0.013 17.38)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-background)",
+        "description": ""
+      },
+      "badge-destructive-text": {
+        "name": "badgeDestructiveText",
+        "path": [
+          "badge",
+          "destructive",
+          "text"
+        ],
+        "value": "oklch(0.505 0.19 27.52)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-text)",
+        "description": ""
+      },
+      "badge-destructive-border": {
+        "name": "badgeDestructiveBorder",
+        "path": [
+          "badge",
+          "destructive",
+          "border"
+        ],
+        "value": "oklch(0.577 0.215 27.33)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-border)",
+        "description": ""
+      },
+      "badge-outline-background": {
+        "name": "badgeOutlineBackground",
+        "path": [
+          "badge",
+          "outline",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-background)",
+        "description": ""
+      },
+      "badge-outline-text": {
+        "name": "badgeOutlineText",
+        "path": [
+          "badge",
+          "outline",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-text)",
+        "description": ""
+      },
+      "badge-outline-border": {
+        "name": "badgeOutlineBorder",
+        "path": [
+          "badge",
+          "outline",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-border)",
+        "description": ""
+      },
+      "badge-padding-sm": {
+        "name": "badgePaddingSm",
+        "path": [
+          "badge",
+          "padding",
+          "sm"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--badge-padding-sm)",
+        "description": ""
+      },
+      "badge-padding-md": {
+        "name": "badgePaddingMd",
+        "path": [
+          "badge",
+          "padding",
+          "md"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--badge-padding-md)",
+        "description": ""
+      },
+      "badge-padding-lg": {
+        "name": "badgePaddingLg",
+        "path": [
+          "badge",
+          "padding",
+          "lg"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--badge-padding-lg)",
+        "description": ""
+      },
+      "badge-radius": {
+        "name": "badgeRadius",
+        "path": [
+          "badge",
+          "radius"
+        ],
+        "value": "9999px",
+        "type": "spacing",
+        "variable": "var(--badge-radius)",
+        "description": ""
+      },
+      "badge-font-size-sm": {
+        "name": "badgeFontSizeSm",
+        "path": [
+          "badge",
+          "font-size",
+          "sm"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--badge-font-size-sm)",
+        "description": ""
+      },
+      "badge-font-size-md": {
+        "name": "badgeFontSizeMd",
+        "path": [
+          "badge",
+          "font-size",
+          "md"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--badge-font-size-md)",
+        "description": ""
+      },
+      "badge-font-size-lg": {
+        "name": "badgeFontSizeLg",
+        "path": [
+          "badge",
+          "font-size",
+          "lg"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--badge-font-size-lg)",
+        "description": ""
+      }
+    },
+    "button": {
+      "button-primary-background": {
+        "name": "buttonPrimaryBackground",
+        "path": [
+          "button",
+          "primary",
+          "background"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-button-primary-background)",
+        "description": ""
+      },
+      "button-primary-background-hover": {
+        "name": "buttonPrimaryBackgroundHover",
+        "path": [
+          "button",
+          "primary",
+          "background-hover"
+        ],
+        "value": "oklch(0.488 0.217 264.38)",
+        "type": "color",
+        "variable": "var(--color-button-primary-background-hover)",
+        "description": ""
+      },
+      "button-primary-background-active": {
+        "name": "buttonPrimaryBackgroundActive",
+        "path": [
+          "button",
+          "primary",
+          "background-active"
+        ],
+        "value": "oklch(0.424 0.181 265.64)",
+        "type": "color",
+        "variable": "var(--color-button-primary-background-active)",
+        "description": ""
+      },
+      "button-primary-text": {
+        "name": "buttonPrimaryText",
+        "path": [
+          "button",
+          "primary",
+          "text"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-button-primary-text)",
+        "description": ""
+      },
+      "button-primary-border": {
+        "name": "buttonPrimaryBorder",
+        "path": [
+          "button",
+          "primary",
+          "border"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-button-primary-border)",
+        "description": ""
+      },
+      "button-secondary-background": {
+        "name": "buttonSecondaryBackground",
+        "path": [
+          "button",
+          "secondary",
+          "background"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-button-secondary-background)",
+        "description": ""
+      },
+      "button-secondary-background-hover": {
+        "name": "buttonSecondaryBackgroundHover",
+        "path": [
+          "button",
+          "secondary",
+          "background-hover"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-button-secondary-background-hover)",
+        "description": ""
+      },
+      "button-secondary-background-active": {
+        "name": "buttonSecondaryBackgroundActive",
+        "path": [
+          "button",
+          "secondary",
+          "background-active"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-button-secondary-background-active)",
+        "description": ""
+      },
+      "button-secondary-text": {
+        "name": "buttonSecondaryText",
+        "path": [
+          "button",
+          "secondary",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-button-secondary-text)",
+        "description": ""
+      },
+      "button-secondary-border": {
+        "name": "buttonSecondaryBorder",
+        "path": [
+          "button",
+          "secondary",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-button-secondary-border)",
+        "description": ""
+      },
+      "button-outline-background": {
+        "name": "buttonOutlineBackground",
+        "path": [
+          "button",
+          "outline",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-button-outline-background)",
+        "description": ""
+      },
+      "button-ghost-background": {
+        "name": "buttonGhostBackground",
+        "path": [
+          "button",
+          "ghost",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-button-ghost-background)",
+        "description": ""
+      },
+      "button-ghost-background-hover": {
+        "name": "buttonGhostBackgroundHover",
+        "path": [
+          "button",
+          "ghost",
+          "background-hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-button-ghost-background-hover)",
+        "description": ""
+      },
+      "button-ghost-background-active": {
+        "name": "buttonGhostBackgroundActive",
+        "path": [
+          "button",
+          "ghost",
+          "background-active"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-button-ghost-background-active)",
+        "description": ""
+      },
+      "button-ghost-text": {
+        "name": "buttonGhostText",
+        "path": [
+          "button",
+          "ghost",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-button-ghost-text)",
+        "description": ""
+      },
+      "button-outline-background-hover": {
+        "name": "buttonOutlineBackgroundHover",
+        "path": [
+          "button",
+          "outline",
+          "background-hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-button-outline-background-hover)",
+        "description": ""
+      },
+      "button-outline-text": {
+        "name": "buttonOutlineText",
+        "path": [
+          "button",
+          "outline",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-button-outline-text)",
+        "description": ""
+      },
+      "button-outline-border": {
+        "name": "buttonOutlineBorder",
+        "path": [
+          "button",
+          "outline",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-button-outline-border)",
+        "description": ""
+      },
+      "button-destructive-background": {
+        "name": "buttonDestructiveBackground",
+        "path": [
+          "button",
+          "destructive",
+          "background"
+        ],
+        "value": "oklch(0.577 0.215 27.33)",
+        "type": "color",
+        "variable": "var(--color-button-destructive-background)",
+        "description": ""
+      },
+      "button-destructive-background-hover": {
+        "name": "buttonDestructiveBackgroundHover",
+        "path": [
+          "button",
+          "destructive",
+          "background-hover"
+        ],
+        "value": "oklch(0.505 0.19 27.52)",
+        "type": "color",
+        "variable": "var(--color-button-destructive-background-hover)",
+        "description": ""
+      },
+      "button-destructive-text": {
+        "name": "buttonDestructiveText",
+        "path": [
+          "button",
+          "destructive",
+          "text"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-button-destructive-text)",
+        "description": ""
+      },
+      "button-destructive-border": {
+        "name": "buttonDestructiveBorder",
+        "path": [
+          "button",
+          "destructive",
+          "border"
+        ],
+        "value": "oklch(0.577 0.215 27.33)",
+        "type": "color",
+        "variable": "var(--color-button-destructive-border)",
+        "description": ""
+      },
+      "button-height-sm": {
+        "name": "buttonHeightSm",
+        "path": [
+          "button",
+          "height",
+          "sm"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--button-height-sm)",
+        "description": ""
+      },
+      "button-height-md": {
+        "name": "buttonHeightMd",
+        "path": [
+          "button",
+          "height",
+          "md"
+        ],
+        "value": "40px",
+        "type": "spacing",
+        "variable": "var(--button-height-md)",
+        "description": ""
+      },
+      "button-height-lg": {
+        "name": "buttonHeightLg",
+        "path": [
+          "button",
+          "height",
+          "lg"
+        ],
+        "value": "48px",
+        "type": "spacing",
+        "variable": "var(--button-height-lg)",
+        "description": ""
+      },
+      "button-padding-x-sm": {
+        "name": "buttonPaddingXSm",
+        "path": [
+          "button",
+          "padding-x",
+          "sm"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--button-padding-x-sm)",
+        "description": ""
+      },
+      "button-padding-x-md": {
+        "name": "buttonPaddingXMd",
+        "path": [
+          "button",
+          "padding-x",
+          "md"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--button-padding-x-md)",
+        "description": ""
+      },
+      "button-padding-x-lg": {
+        "name": "buttonPaddingXLg",
+        "path": [
+          "button",
+          "padding-x",
+          "lg"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--button-padding-x-lg)",
+        "description": ""
+      },
+      "button-radius": {
+        "name": "buttonRadius",
+        "path": [
+          "button",
+          "radius"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--button-radius)",
+        "description": ""
+      },
+      "button-font-size-sm": {
+        "name": "buttonFontSizeSm",
+        "path": [
+          "button",
+          "font-size",
+          "sm"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--button-font-size-sm)",
+        "description": ""
+      },
+      "button-font-size-md": {
+        "name": "buttonFontSizeMd",
+        "path": [
+          "button",
+          "font-size",
+          "md"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--button-font-size-md)",
+        "description": ""
+      },
+      "button-font-size-lg": {
+        "name": "buttonFontSizeLg",
+        "path": [
+          "button",
+          "font-size",
+          "lg"
+        ],
+        "value": "18px",
+        "type": "spacing",
+        "variable": "var(--button-font-size-lg)",
+        "description": ""
+      },
+      "button-outline-hover": {
+        "name": "buttonOutlineHover",
+        "path": [
+          "button",
+          "outline",
+          "hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-button-outline-hover)",
+        "description": ""
+      },
+      "button-link-text": {
+        "name": "buttonLinkText",
+        "path": [
+          "button",
+          "link",
+          "text"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-button-link-text)",
+        "description": ""
+      }
+    },
+    "card": {
+      "card-background": {
+        "name": "cardBackground",
+        "path": [
+          "card",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-card-background)",
+        "description": ""
+      },
+      "card-border": {
+        "name": "cardBorder",
+        "path": [
+          "card",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-card-border)",
+        "description": ""
+      },
+      "card-padding": {
+        "name": "cardPadding",
+        "path": [
+          "card",
+          "padding"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--card-padding)",
+        "description": ""
+      },
+      "card-gap": {
+        "name": "cardGap",
+        "path": [
+          "card",
+          "gap"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--card-gap)",
+        "description": ""
+      },
+      "card-radius": {
+        "name": "cardRadius",
+        "path": [
+          "card",
+          "radius"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--card-radius)",
+        "description": ""
+      },
+      "card-header-gap": {
+        "name": "cardHeaderGap",
+        "path": [
+          "card",
+          "header",
+          "gap"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--card-header-gap)",
+        "description": ""
+      },
+      "card-header-title-font-size": {
+        "name": "cardHeaderTitleFontSize",
+        "path": [
+          "card",
+          "header",
+          "title",
+          "font-size"
+        ],
+        "value": "20px",
+        "type": "spacing",
+        "variable": "var(--card-header-title-font-size)",
+        "description": ""
+      },
+      "card-header-title-color": {
+        "name": "cardHeaderTitleColor",
+        "path": [
+          "card",
+          "header",
+          "title",
+          "color"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-card-header-title-color)",
+        "description": ""
+      },
+      "card-header-description-font-size": {
+        "name": "cardHeaderDescriptionFontSize",
+        "path": [
+          "card",
+          "header",
+          "description",
+          "font-size"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--card-header-description-font-size)",
+        "description": ""
+      },
+      "card-header-description-color": {
+        "name": "cardHeaderDescriptionColor",
+        "path": [
+          "card",
+          "header",
+          "description",
+          "color"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-card-header-description-color)",
+        "description": ""
+      },
+      "card-footer-gap": {
+        "name": "cardFooterGap",
+        "path": [
+          "card",
+          "footer",
+          "gap"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--card-footer-gap)",
+        "description": ""
+      }
+    },
+    "input": {
+      "input-background": {
+        "name": "inputBackground",
+        "path": [
+          "input",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-input-background)",
+        "description": ""
+      },
+      "input-background-hover": {
+        "name": "inputBackgroundHover",
+        "path": [
+          "input",
+          "background-hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-input-background-hover)",
+        "description": ""
+      },
+      "input-border": {
+        "name": "inputBorder",
+        "path": [
+          "input",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-input-border)",
+        "description": ""
+      },
+      "input-border-focus": {
+        "name": "inputBorderFocus",
+        "path": [
+          "input",
+          "border-focus"
+        ],
+        "value": "oklch(0.623 0.188 259.81)",
+        "type": "color",
+        "variable": "var(--color-input-border-focus)",
+        "description": ""
+      },
+      "input-border-error": {
+        "name": "inputBorderError",
+        "path": [
+          "input",
+          "border-error"
+        ],
+        "value": "oklch(0.577 0.215 27.33)",
+        "type": "color",
+        "variable": "var(--color-input-border-error)",
+        "description": ""
+      },
+      "input-text": {
+        "name": "inputText",
+        "path": [
+          "input",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-input-text)",
+        "description": ""
+      },
+      "input-placeholder": {
+        "name": "inputPlaceholder",
+        "path": [
+          "input",
+          "placeholder"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-input-placeholder)",
+        "description": ""
+      },
+      "input-disabled-background": {
+        "name": "inputDisabledBackground",
+        "path": [
+          "input",
+          "disabled",
+          "background"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-input-disabled-background)",
+        "description": ""
+      },
+      "input-disabled-text": {
+        "name": "inputDisabledText",
+        "path": [
+          "input",
+          "disabled",
+          "text"
+        ],
+        "value": "oklch(0.869 0.02 252.89)",
+        "type": "color",
+        "variable": "var(--color-input-disabled-text)",
+        "description": ""
+      },
+      "input-height-sm": {
+        "name": "inputHeightSm",
+        "path": [
+          "input",
+          "height",
+          "sm"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--input-height-sm)",
+        "description": ""
+      },
+      "input-height-md": {
+        "name": "inputHeightMd",
+        "path": [
+          "input",
+          "height",
+          "md"
+        ],
+        "value": "40px",
+        "type": "spacing",
+        "variable": "var(--input-height-md)",
+        "description": ""
+      },
+      "input-height-lg": {
+        "name": "inputHeightLg",
+        "path": [
+          "input",
+          "height",
+          "lg"
+        ],
+        "value": "48px",
+        "type": "spacing",
+        "variable": "var(--input-height-lg)",
+        "description": ""
+      },
+      "input-padding-x": {
+        "name": "inputPaddingX",
+        "path": [
+          "input",
+          "padding-x"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--input-padding-x)",
+        "description": ""
+      },
+      "input-radius": {
+        "name": "inputRadius",
+        "path": [
+          "input",
+          "radius"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--input-radius)",
+        "description": ""
+      },
+      "input-font-size": {
+        "name": "inputFontSize",
+        "path": [
+          "input",
+          "font-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--input-font-size)",
+        "description": ""
+      }
+    },
+    "alert": {
+      "alert-default-background": {
+        "name": "alertDefaultBackground",
+        "path": [
+          "alert",
+          "default",
+          "background"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-alert-default-background)",
+        "description": ""
+      },
+      "alert-default-border": {
+        "name": "alertDefaultBorder",
+        "path": [
+          "alert",
+          "default",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-alert-default-border)",
+        "description": ""
+      },
+      "alert-default-text": {
+        "name": "alertDefaultText",
+        "path": [
+          "alert",
+          "default",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-alert-default-text)",
+        "description": ""
+      },
+      "alert-destructive-background": {
+        "name": "alertDestructiveBackground",
+        "path": [
+          "alert",
+          "destructive",
+          "background"
+        ],
+        "value": "oklch(0.971 0.013 17.38)",
+        "type": "color",
+        "variable": "var(--color-alert-destructive-background)",
+        "description": ""
+      },
+      "alert-destructive-border": {
+        "name": "alertDestructiveBorder",
+        "path": [
+          "alert",
+          "destructive",
+          "border"
+        ],
+        "value": "oklch(0.577 0.215 27.33)",
+        "type": "color",
+        "variable": "var(--color-alert-destructive-border)",
+        "description": ""
+      },
+      "alert-destructive-text": {
+        "name": "alertDestructiveText",
+        "path": [
+          "alert",
+          "destructive",
+          "text"
+        ],
+        "value": "oklch(0.505 0.19 27.52)",
+        "type": "color",
+        "variable": "var(--color-alert-destructive-text)",
+        "description": ""
+      },
+      "alert-warning-background": {
+        "name": "alertWarningBackground",
+        "path": [
+          "alert",
+          "warning",
+          "background"
+        ],
+        "value": "oklch(0.98 0.016 73.68)",
+        "type": "color",
+        "variable": "var(--color-alert-warning-background)",
+        "description": ""
+      },
+      "alert-warning-border": {
+        "name": "alertWarningBorder",
+        "path": [
+          "alert",
+          "warning",
+          "border"
+        ],
+        "value": "oklch(0.646 0.194 40.97)",
+        "type": "color",
+        "variable": "var(--color-alert-warning-border)",
+        "description": ""
+      },
+      "alert-warning-text": {
+        "name": "alertWarningText",
+        "path": [
+          "alert",
+          "warning",
+          "text"
+        ],
+        "value": "oklch(0.553 0.174 38.51)",
+        "type": "color",
+        "variable": "var(--color-alert-warning-text)",
+        "description": ""
+      },
+      "alert-success-background": {
+        "name": "alertSuccessBackground",
+        "path": [
+          "alert",
+          "success",
+          "background"
+        ],
+        "value": "oklch(0.982 0.018 155.83)",
+        "type": "color",
+        "variable": "var(--color-alert-success-background)",
+        "description": ""
+      },
+      "alert-success-border": {
+        "name": "alertSuccessBorder",
+        "path": [
+          "alert",
+          "success",
+          "border"
+        ],
+        "value": "oklch(0.627 0.17 149.21)",
+        "type": "color",
+        "variable": "var(--color-alert-success-border)",
+        "description": ""
+      },
+      "alert-success-text": {
+        "name": "alertSuccessText",
+        "path": [
+          "alert",
+          "success",
+          "text"
+        ],
+        "value": "oklch(0.527 0.137 150.07)",
+        "type": "color",
+        "variable": "var(--color-alert-success-text)",
+        "description": ""
+      }
+    },
+    "menubar": {
+      "menubar-border": {
+        "name": "menubarBorder",
+        "path": [
+          "menubar",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-menubar-border)",
+        "description": ""
+      },
+      "menubar-background": {
+        "name": "menubarBackground",
+        "path": [
+          "menubar",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-menubar-background)",
+        "description": ""
+      },
+      "menubar-trigger-focus": {
+        "name": "menubarTriggerFocus",
+        "path": [
+          "menubar",
+          "trigger-focus"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-menubar-trigger-focus)",
+        "description": ""
+      },
+      "menubar-trigger-text-focus": {
+        "name": "menubarTriggerTextFocus",
+        "path": [
+          "menubar",
+          "trigger-text-focus"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-menubar-trigger-text-focus)",
+        "description": ""
+      },
+      "menubar-trigger-open": {
+        "name": "menubarTriggerOpen",
+        "path": [
+          "menubar",
+          "trigger-open"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-menubar-trigger-open)",
+        "description": ""
+      },
+      "menubar-trigger-text-open": {
+        "name": "menubarTriggerTextOpen",
+        "path": [
+          "menubar",
+          "trigger-text-open"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-menubar-trigger-text-open)",
+        "description": ""
+      },
+      "menubar-content-border": {
+        "name": "menubarContentBorder",
+        "path": [
+          "menubar",
+          "content-border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-menubar-content-border)",
+        "description": ""
+      },
+      "menubar-content-background": {
+        "name": "menubarContentBackground",
+        "path": [
+          "menubar",
+          "content-background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-menubar-content-background)",
+        "description": ""
+      },
+      "menubar-content-text": {
+        "name": "menubarContentText",
+        "path": [
+          "menubar",
+          "content-text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-menubar-content-text)",
+        "description": ""
+      },
+      "menubar-item-focus": {
+        "name": "menubarItemFocus",
+        "path": [
+          "menubar",
+          "item-focus"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-menubar-item-focus)",
+        "description": ""
+      },
+      "menubar-item-text-focus": {
+        "name": "menubarItemTextFocus",
+        "path": [
+          "menubar",
+          "item-text-focus"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-menubar-item-text-focus)",
+        "description": ""
+      },
+      "menubar-label": {
+        "name": "menubarLabel",
+        "path": [
+          "menubar",
+          "label"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-menubar-label)",
+        "description": ""
+      },
+      "menubar-separator": {
+        "name": "menubarSeparator",
+        "path": [
+          "menubar",
+          "separator"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-menubar-separator)",
+        "description": ""
+      },
+      "menubar-shortcut": {
+        "name": "menubarShortcut",
+        "path": [
+          "menubar",
+          "shortcut"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-menubar-shortcut)",
+        "description": ""
+      }
+    },
+    "navigation": {
+      "navigation-background": {
+        "name": "navigationBackground",
+        "path": [
+          "navigation",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-navigation-background)",
+        "description": ""
+      },
+      "navigation-hover": {
+        "name": "navigationHover",
+        "path": [
+          "navigation",
+          "hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-navigation-hover)",
+        "description": ""
+      },
+      "navigation-text-hover": {
+        "name": "navigationTextHover",
+        "path": [
+          "navigation",
+          "text-hover"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-navigation-text-hover)",
+        "description": ""
+      },
+      "navigation-focus": {
+        "name": "navigationFocus",
+        "path": [
+          "navigation",
+          "focus"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-navigation-focus)",
+        "description": ""
+      },
+      "navigation-text-focus": {
+        "name": "navigationTextFocus",
+        "path": [
+          "navigation",
+          "text-focus"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-navigation-text-focus)",
+        "description": ""
+      },
+      "navigation-active": {
+        "name": "navigationActive",
+        "path": [
+          "navigation",
+          "active"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-navigation-active)",
+        "description": ""
+      },
+      "navigation-open": {
+        "name": "navigationOpen",
+        "path": [
+          "navigation",
+          "open"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-navigation-open)",
+        "description": ""
+      },
+      "navigation-content-border": {
+        "name": "navigationContentBorder",
+        "path": [
+          "navigation",
+          "content-border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-navigation-content-border)",
+        "description": ""
+      },
+      "navigation-content-background": {
+        "name": "navigationContentBackground",
+        "path": [
+          "navigation",
+          "content-background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-navigation-content-background)",
+        "description": ""
+      },
+      "navigation-content-text": {
+        "name": "navigationContentText",
+        "path": [
+          "navigation",
+          "content-text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-navigation-content-text)",
+        "description": ""
+      },
+      "navigation-indicator": {
+        "name": "navigationIndicator",
+        "path": [
+          "navigation",
+          "indicator"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-navigation-indicator)",
+        "description": ""
+      }
+    },
+    "command": {
+      "command-background": {
+        "name": "commandBackground",
+        "path": [
+          "command",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-command-background)",
+        "description": ""
+      },
+      "command-text": {
+        "name": "commandText",
+        "path": [
+          "command",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-command-text)",
+        "description": ""
+      },
+      "command-border": {
+        "name": "commandBorder",
+        "path": [
+          "command",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-command-border)",
+        "description": ""
+      },
+      "command-placeholder": {
+        "name": "commandPlaceholder",
+        "path": [
+          "command",
+          "placeholder"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-command-placeholder)",
+        "description": ""
+      },
+      "command-empty": {
+        "name": "commandEmpty",
+        "path": [
+          "command",
+          "empty"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-command-empty)",
+        "description": ""
+      },
+      "command-group-heading": {
+        "name": "commandGroupHeading",
+        "path": [
+          "command",
+          "group-heading"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-command-group-heading)",
+        "description": ""
+      },
+      "command-separator": {
+        "name": "commandSeparator",
+        "path": [
+          "command",
+          "separator"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-command-separator)",
+        "description": ""
+      },
+      "command-item-selected": {
+        "name": "commandItemSelected",
+        "path": [
+          "command",
+          "item-selected"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-command-item-selected)",
+        "description": ""
+      },
+      "command-item-text-selected": {
+        "name": "commandItemTextSelected",
+        "path": [
+          "command",
+          "item-text-selected"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-command-item-text-selected)",
+        "description": ""
+      },
+      "command-shortcut": {
+        "name": "commandShortcut",
+        "path": [
+          "command",
+          "shortcut"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-command-shortcut)",
+        "description": ""
+      }
+    },
+    "calendar": {
+      "calendar-nav-border": {
+        "name": "calendarNavBorder",
+        "path": [
+          "calendar",
+          "nav-border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-calendar-nav-border)",
+        "description": ""
+      },
+      "calendar-nav-hover": {
+        "name": "calendarNavHover",
+        "path": [
+          "calendar",
+          "nav-hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-calendar-nav-hover)",
+        "description": ""
+      },
+      "calendar-nav-text-hover": {
+        "name": "calendarNavTextHover",
+        "path": [
+          "calendar",
+          "nav-text-hover"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-calendar-nav-text-hover)",
+        "description": ""
+      },
+      "calendar-header-text": {
+        "name": "calendarHeaderText",
+        "path": [
+          "calendar",
+          "header-text"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-calendar-header-text)",
+        "description": ""
+      },
+      "calendar-day-hover": {
+        "name": "calendarDayHover",
+        "path": [
+          "calendar",
+          "day-hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-calendar-day-hover)",
+        "description": ""
+      },
+      "calendar-day-text-hover": {
+        "name": "calendarDayTextHover",
+        "path": [
+          "calendar",
+          "day-text-hover"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-calendar-day-text-hover)",
+        "description": ""
+      },
+      "calendar-day-selected": {
+        "name": "calendarDaySelected",
+        "path": [
+          "calendar",
+          "day-selected"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-calendar-day-selected)",
+        "description": ""
+      },
+      "calendar-day-text-selected": {
+        "name": "calendarDayTextSelected",
+        "path": [
+          "calendar",
+          "day-text-selected"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-calendar-day-text-selected)",
+        "description": ""
+      }
+    },
+    "accordion": {
+      "accordion-border": {
+        "name": "accordionBorder",
+        "path": [
+          "accordion",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-accordion-border)",
+        "description": ""
+      },
+      "accordion-content-text": {
+        "name": "accordionContentText",
+        "path": [
+          "accordion",
+          "content-text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-accordion-content-text)",
+        "description": ""
+      },
+      "accordion-icon": {
+        "name": "accordionIcon",
+        "path": [
+          "accordion",
+          "icon"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-accordion-icon)",
+        "description": ""
+      },
+      "accordion-trigger-hover": {
+        "name": "accordionTriggerHover",
+        "path": [
+          "accordion",
+          "trigger-hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-accordion-trigger-hover)",
+        "description": ""
+      },
+      "accordion-trigger-text": {
+        "name": "accordionTriggerText",
+        "path": [
+          "accordion",
+          "trigger-text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-accordion-trigger-text)",
+        "description": ""
+      },
+      "accordion-trigger-text-hover": {
+        "name": "accordionTriggerTextHover",
+        "path": [
+          "accordion",
+          "trigger-text-hover"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-accordion-trigger-text-hover)",
+        "description": ""
+      },
+      "accordion-trigger-text-open": {
+        "name": "accordionTriggerTextOpen",
+        "path": [
+          "accordion",
+          "trigger-text-open"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-accordion-trigger-text-open)",
+        "description": ""
+      }
+    },
+    "avatar": {
+      "avatar-background": {
+        "name": "avatarBackground",
+        "path": [
+          "avatar",
+          "background"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-avatar-background)",
+        "description": ""
+      },
+      "avatar-border": {
+        "name": "avatarBorder",
+        "path": [
+          "avatar",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-avatar-border)",
+        "description": ""
+      },
+      "avatar-fallback-background": {
+        "name": "avatarFallbackBackground",
+        "path": [
+          "avatar",
+          "fallback-background"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-avatar-fallback-background)",
+        "description": ""
+      },
+      "avatar-fallback-text": {
+        "name": "avatarFallbackText",
+        "path": [
+          "avatar",
+          "fallback-text"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-avatar-fallback-text)",
+        "description": ""
+      }
+    },
+    "breadcrumb": {
+      "breadcrumb-current": {
+        "name": "breadcrumbCurrent",
+        "path": [
+          "breadcrumb",
+          "current"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-breadcrumb-current)",
+        "description": ""
+      },
+      "breadcrumb-link": {
+        "name": "breadcrumbLink",
+        "path": [
+          "breadcrumb",
+          "link"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-breadcrumb-link)",
+        "description": ""
+      },
+      "breadcrumb-link-hover": {
+        "name": "breadcrumbLinkHover",
+        "path": [
+          "breadcrumb",
+          "link-hover"
+        ],
+        "value": "oklch(0.488 0.217 264.38)",
+        "type": "color",
+        "variable": "var(--color-breadcrumb-link-hover)",
+        "description": ""
+      },
+      "breadcrumb-text": {
+        "name": "breadcrumbText",
+        "path": [
+          "breadcrumb",
+          "text"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-breadcrumb-text)",
+        "description": ""
+      }
+    },
+    "carousel": {
+      "carousel-nav-background": {
+        "name": "carouselNavBackground",
+        "path": [
+          "carousel",
+          "nav-background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-carousel-nav-background)",
+        "description": ""
+      },
+      "carousel-nav-border": {
+        "name": "carouselNavBorder",
+        "path": [
+          "carousel",
+          "nav-border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-carousel-nav-border)",
+        "description": ""
+      },
+      "carousel-nav-hover": {
+        "name": "carouselNavHover",
+        "path": [
+          "carousel",
+          "nav-hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-carousel-nav-hover)",
+        "description": ""
+      },
+      "carousel-nav-text-hover": {
+        "name": "carouselNavTextHover",
+        "path": [
+          "carousel",
+          "nav-text-hover"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-carousel-nav-text-hover)",
+        "description": ""
+      }
+    },
+    "contextmenu": {
+      "contextmenu-background": {
+        "name": "contextmenuBackground",
+        "path": [
+          "contextmenu",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-contextmenu-background)",
+        "description": ""
+      },
+      "contextmenu-item-hover": {
+        "name": "contextmenuItemHover",
+        "path": [
+          "contextmenu",
+          "item-hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-contextmenu-item-hover)",
+        "description": ""
+      },
+      "contextmenu-item-text-hover": {
+        "name": "contextmenuItemTextHover",
+        "path": [
+          "contextmenu",
+          "item-text-hover"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-contextmenu-item-text-hover)",
+        "description": ""
+      },
+      "contextmenu-label": {
+        "name": "contextmenuLabel",
+        "path": [
+          "contextmenu",
+          "label"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-contextmenu-label)",
+        "description": ""
+      },
+      "contextmenu-separator": {
+        "name": "contextmenuSeparator",
+        "path": [
+          "contextmenu",
+          "separator"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-contextmenu-separator)",
+        "description": ""
+      },
+      "contextmenu-shortcut": {
+        "name": "contextmenuShortcut",
+        "path": [
+          "contextmenu",
+          "shortcut"
+        ],
+        "value": "oklch(0.711 0.035 256.79)",
+        "type": "color",
+        "variable": "var(--color-contextmenu-shortcut)",
+        "description": ""
+      },
+      "contextmenu-text": {
+        "name": "contextmenuText",
+        "path": [
+          "contextmenu",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-contextmenu-text)",
+        "description": ""
+      }
+    },
+    "dialog": {
+      "dialog-background": {
+        "name": "dialogBackground",
+        "path": [
+          "dialog",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-dialog-background)",
+        "description": ""
+      },
+      "dialog-border": {
+        "name": "dialogBorder",
+        "path": [
+          "dialog",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-dialog-border)",
+        "description": ""
+      },
+      "dialog-description": {
+        "name": "dialogDescription",
+        "path": [
+          "dialog",
+          "description"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-dialog-description)",
+        "description": ""
+      },
+      "dialog-overlay": {
+        "name": "dialogOverlay",
+        "path": [
+          "dialog",
+          "overlay"
+        ],
+        "value": "oklch(0.208 0.04 265.75)",
+        "type": "color",
+        "variable": "var(--color-dialog-overlay)",
+        "description": ""
+      },
+      "dialog-title": {
+        "name": "dialogTitle",
+        "path": [
+          "dialog",
+          "title"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-dialog-title)",
+        "description": ""
+      }
+    },
+    "form": {
+      "form-description": {
+        "name": "formDescription",
+        "path": [
+          "form",
+          "description"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-form-description)",
+        "description": ""
+      },
+      "form-error": {
+        "name": "formError",
+        "path": [
+          "form",
+          "error"
+        ],
+        "value": "oklch(0.505 0.19 27.52)",
+        "type": "color",
+        "variable": "var(--color-form-error)",
+        "description": ""
+      },
+      "form-label": {
+        "name": "formLabel",
+        "path": [
+          "form",
+          "label"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-form-label)",
+        "description": ""
+      }
+    },
+    "hover-card": {
+      "hover-card-background": {
+        "name": "hoverCardBackground",
+        "path": [
+          "hover-card",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-hover-card-background)",
+        "description": ""
+      },
+      "hover-card-border": {
+        "name": "hoverCardBorder",
+        "path": [
+          "hover-card",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-hover-card-border)",
+        "description": ""
+      },
+      "hover-card-text": {
+        "name": "hoverCardText",
+        "path": [
+          "hover-card",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-hover-card-text)",
+        "description": ""
+      }
+    },
+    "pagination": {
+      "pagination-active": {
+        "name": "paginationActive",
+        "path": [
+          "pagination",
+          "active"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-pagination-active)",
+        "description": ""
+      },
+      "pagination-hover": {
+        "name": "paginationHover",
+        "path": [
+          "pagination",
+          "hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-pagination-hover)",
+        "description": ""
+      },
+      "pagination-text": {
+        "name": "paginationText",
+        "path": [
+          "pagination",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-pagination-text)",
+        "description": ""
+      },
+      "pagination-text-active": {
+        "name": "paginationTextActive",
+        "path": [
+          "pagination",
+          "text-active"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-pagination-text-active)",
+        "description": ""
+      },
+      "pagination-text-hover": {
+        "name": "paginationTextHover",
+        "path": [
+          "pagination",
+          "text-hover"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-pagination-text-hover)",
+        "description": ""
+      }
+    },
+    "popover": {
+      "popover-background": {
+        "name": "popoverBackground",
+        "path": [
+          "popover",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-popover-background)",
+        "description": ""
+      },
+      "popover-border": {
+        "name": "popoverBorder",
+        "path": [
+          "popover",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-popover-border)",
+        "description": ""
+      },
+      "popover-text": {
+        "name": "popoverText",
+        "path": [
+          "popover",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-popover-text)",
+        "description": ""
+      }
+    },
+    "progress": {
+      "progress-background": {
+        "name": "progressBackground",
+        "path": [
+          "progress",
+          "background"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-progress-background)",
+        "description": ""
+      },
+      "progress-default-fill": {
+        "name": "progressDefaultFill",
+        "path": [
+          "progress",
+          "default-fill"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-progress-default-fill)",
+        "description": ""
+      },
+      "progress-destructive-fill": {
+        "name": "progressDestructiveFill",
+        "path": [
+          "progress",
+          "destructive-fill"
+        ],
+        "value": "oklch(0.577 0.215 27.33)",
+        "type": "color",
+        "variable": "var(--color-progress-destructive-fill)",
+        "description": ""
+      },
+      "progress-success-fill": {
+        "name": "progressSuccessFill",
+        "path": [
+          "progress",
+          "success-fill"
+        ],
+        "value": "oklch(0.627 0.17 149.21)",
+        "type": "color",
+        "variable": "var(--color-progress-success-fill)",
+        "description": ""
+      },
+      "progress-warning-fill": {
+        "name": "progressWarningFill",
+        "path": [
+          "progress",
+          "warning-fill"
+        ],
+        "value": "oklch(0.646 0.194 40.97)",
+        "type": "color",
+        "variable": "var(--color-progress-warning-fill)",
+        "description": ""
+      }
+    },
+    "radio": {
+      "radio-background-checked": {
+        "name": "radioBackgroundChecked",
+        "path": [
+          "radio",
+          "background-checked"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-radio-background-checked)",
+        "description": ""
+      },
+      "radio-border": {
+        "name": "radioBorder",
+        "path": [
+          "radio",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-radio-border)",
+        "description": ""
+      },
+      "radio-border-checked": {
+        "name": "radioBorderChecked",
+        "path": [
+          "radio",
+          "border-checked"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-radio-border-checked)",
+        "description": ""
+      },
+      "radio-indicator": {
+        "name": "radioIndicator",
+        "path": [
+          "radio",
+          "indicator"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-radio-indicator)",
+        "description": ""
+      }
+    },
+    "resizable": {
+      "resizable-handle": {
+        "name": "resizableHandle",
+        "path": [
+          "resizable",
+          "handle"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-resizable-handle)",
+        "description": ""
+      },
+      "resizable-handle-background": {
+        "name": "resizableHandleBackground",
+        "path": [
+          "resizable",
+          "handle-background"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-resizable-handle-background)",
+        "description": ""
+      },
+      "resizable-handle-border": {
+        "name": "resizableHandleBorder",
+        "path": [
+          "resizable",
+          "handle-border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-resizable-handle-border)",
+        "description": ""
+      }
+    },
+    "scrollbar": {
+      "scrollbar-thumb": {
+        "name": "scrollbarThumb",
+        "path": [
+          "scrollbar",
+          "thumb"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-scrollbar-thumb)",
+        "description": ""
+      }
+    },
+    "skeleton": {
+      "skeleton-background": {
+        "name": "skeletonBackground",
+        "path": [
+          "skeleton",
+          "background"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-skeleton-background)",
+        "description": ""
+      }
+    },
+    "slider": {
+      "slider-range": {
+        "name": "sliderRange",
+        "path": [
+          "slider",
+          "range"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-slider-range)",
+        "description": ""
+      },
+      "slider-thumb": {
+        "name": "sliderThumb",
+        "path": [
+          "slider",
+          "thumb"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-slider-thumb)",
+        "description": ""
+      },
+      "slider-thumb-border": {
+        "name": "sliderThumbBorder",
+        "path": [
+          "slider",
+          "thumb-border"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-slider-thumb-border)",
+        "description": ""
+      },
+      "slider-track": {
+        "name": "sliderTrack",
+        "path": [
+          "slider",
+          "track"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-slider-track)",
+        "description": ""
+      }
+    },
+    "table": {
+      "table-border": {
+        "name": "tableBorder",
+        "path": [
+          "table",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-table-border)",
+        "description": ""
+      },
+      "table-caption": {
+        "name": "tableCaption",
+        "path": [
+          "table",
+          "caption"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-table-caption)",
+        "description": ""
+      },
+      "table-footer-background": {
+        "name": "tableFooterBackground",
+        "path": [
+          "table",
+          "footer-background"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-table-footer-background)",
+        "description": ""
+      },
+      "table-header-text": {
+        "name": "tableHeaderText",
+        "path": [
+          "table",
+          "header-text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-table-header-text)",
+        "description": ""
+      },
+      "table-row-hover": {
+        "name": "tableRowHover",
+        "path": [
+          "table",
+          "row-hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-table-row-hover)",
+        "description": ""
+      },
+      "table-row-selected": {
+        "name": "tableRowSelected",
+        "path": [
+          "table",
+          "row-selected"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-table-row-selected)",
+        "description": ""
+      }
+    },
+    "toast": {
+      "toast-action-hover": {
+        "name": "toastActionHover",
+        "path": [
+          "toast",
+          "action-hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-toast-action-hover)",
+        "description": ""
+      },
+      "toast-background": {
+        "name": "toastBackground",
+        "path": [
+          "toast",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-toast-background)",
+        "description": ""
+      },
+      "toast-close": {
+        "name": "toastClose",
+        "path": [
+          "toast",
+          "close"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-toast-close)",
+        "description": ""
+      },
+      "toast-close-hover": {
+        "name": "toastCloseHover",
+        "path": [
+          "toast",
+          "close-hover"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-toast-close-hover)",
+        "description": ""
+      },
+      "toast-text": {
+        "name": "toastText",
+        "path": [
+          "toast",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-toast-text)",
+        "description": ""
+      }
+    },
+    "toggle": {
+      "toggle-border": {
+        "name": "toggleBorder",
+        "path": [
+          "toggle",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-toggle-border)",
+        "description": ""
+      },
+      "toggle-hover": {
+        "name": "toggleHover",
+        "path": [
+          "toggle",
+          "hover"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-toggle-hover)",
+        "description": ""
+      },
+      "toggle-pressed": {
+        "name": "togglePressed",
+        "path": [
+          "toggle",
+          "pressed"
+        ],
+        "value": "oklch(0.546 0.215 262.88)",
+        "type": "color",
+        "variable": "var(--color-toggle-pressed)",
+        "description": ""
+      },
+      "toggle-text": {
+        "name": "toggleText",
+        "path": [
+          "toggle",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-toggle-text)",
+        "description": ""
+      },
+      "toggle-text-hover": {
+        "name": "toggleTextHover",
+        "path": [
+          "toggle",
+          "text-hover"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-toggle-text-hover)",
+        "description": ""
+      },
+      "toggle-text-pressed": {
+        "name": "toggleTextPressed",
+        "path": [
+          "toggle",
+          "text-pressed"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-toggle-text-pressed)",
+        "description": ""
+      }
+    },
+    "tooltip": {
+      "tooltip-background": {
+        "name": "tooltipBackground",
+        "path": [
+          "tooltip",
+          "background"
+        ],
+        "value": "oklch(0.208 0.04 265.75)",
+        "type": "color",
+        "variable": "var(--color-tooltip-background)",
+        "description": ""
+      },
+      "tooltip-border": {
+        "name": "tooltipBorder",
+        "path": [
+          "tooltip",
+          "border"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-tooltip-border)",
+        "description": ""
+      },
+      "tooltip-text": {
+        "name": "tooltipText",
+        "path": [
+          "tooltip",
+          "text"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-tooltip-text)",
+        "description": ""
+      }
+    }
+  }
+}

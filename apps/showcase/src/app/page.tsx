@@ -1,335 +1,288 @@
+import React from "react";
 import { Button } from "@wyliedog/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import { Badge } from "@wyliedog/ui/badge";
+import { cn } from "@wyliedog/ui/lib/utils";
 import Link from "next/link";
 import {
   Sparkles,
   Palette,
   Layers,
-  Shield,
+  Box,
   Code2,
-  ExternalLink,
-  Github,
-  Twitter,
+  BookOpen,
+  Figma,
   Zap,
+  ArrowRight,
+  Shield,
+  Layout,
+  ChevronRight,
 } from "lucide-react";
 
 export default function ShowcasePage() {
-  // Header navigation
-  const navigation = [
-    { label: "Components", href: "#components" },
-    { label: "Documentation", href: "#docs" },
-    { label: "Examples", href: "#examples" },
-  ];
-
-  // Footer columns
-  const footerColumns = [
+  const ecosystem = [
     {
-      title: "Product",
-      links: [
-        { label: "Components", href: "#components" },
-        { label: "Tokens", href: "#tokens" },
-        { label: "Storybook", href: "#storybook" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        { label: "Documentation", href: "#docs" },
-        { label: "Examples", href: "#examples" },
-        { label: "GitHub", href: "https://github.com" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { label: "About", href: "#about" },
-        { label: "Blog", href: "#blog" },
-        { label: "Contact", href: "#contact" },
-      ],
-    },
-  ];
-
-  // Social links
-  const socialLinks = [
-    {
-      label: "GitHub",
-      href: "https://github.com",
-      icon: <Github className="h-5 w-5" />,
-    },
-    {
-      label: "Twitter",
-      href: "https://twitter.com",
-      icon: <Twitter className="h-5 w-5" />,
-    },
-  ];
-
-  // Features data
-  const features = [
-    {
-      icon: <Sparkles className="h-6 w-6" />,
-      title: "42 Components",
+      title: "Monorepo",
+      icon: <Box className="h-6 w-6 text-(--color-interactive-primary)" />,
       description:
-        "Complete component library with Button, Card, Dialog, Table, and more. Everything you need to build modern applications.",
-      badge: "Complete",
+        "Turbo-powered workspace infrastructure that houses all apps and packages.",
+      href: "/monorepo",
+      badge: "Infrastructure",
+      tokenColor: "primary",
     },
     {
-      icon: <Palette className="h-6 w-6" />,
-      title: "OKLCH Colors",
-      description:
-        "Next-generation perceptually uniform color system. 2-3 years ahead of industry standards with P3 gamut support.",
-      badge: "Advanced",
-    },
-    {
-      icon: <Layers className="h-6 w-6" />,
       title: "Design Tokens",
+      icon: <Palette className="h-6 w-6 text-(--color-interactive-warning)" />,
       description:
-        "275+ tokens in primitive-semantic-component hierarchy. A+ rated implementation following W3C DTCG standards.",
-      badge: "A+ Rated",
+        "A+ rated OKLCH color system and semantic token architecture.",
+      href: "/colors",
+      badge: "Source of Truth",
+      tokenColor: "warning",
     },
     {
-      icon: <Zap className="h-6 w-6" />,
-      title: "Lightning Fast",
+      title: "UI Components",
+      icon: <Layers className="h-6 w-6 text-(--color-interactive-primary)" />,
       description:
-        "Optimized build pipeline with intelligent caching. Components built for performance with minimal bundle sizes.",
+        "42+ production-ready accessible components built with Radix UI.",
+      href: "/components",
+      badge: "Built with React",
+      tokenColor: "primary",
     },
     {
-      icon: <Shield className="h-6 w-6" />,
-      title: "WCAG AA Compliant",
+      title: "Storybook",
+      icon: <BookOpen className="h-6 w-6 text-(--color-interactive-warning)" />,
       description:
-        "Accessibility-first design with comprehensive keyboard navigation, ARIA support, and screen reader compatibility.",
+        "Interactive documentation and isolated component development.",
+      href: "/storybook",
+      badge: "Documentation",
+      tokenColor: "warning",
     },
     {
-      icon: <Code2 className="h-6 w-6" />,
-      title: "Developer Experience",
+      title: "Figma Plugin",
+      icon: <Figma className="h-6 w-6 text-[#F24E1E]" />,
       description:
-        "Full TypeScript support, comprehensive documentation, and interactive Storybook examples for every component.",
+        "Bridging design and code with instant token and component sync.",
+      href: "/plugin",
+      badge: "Design Ops",
+      tokenColor: "warning",
     },
   ];
 
   return (
-    <>
+    <div className="space-y-24 py-12 md:py-20">
       {/* Hero Section */}
-      <section className="py-20 bg-linear-to-br from-primary/10 to-secondary/10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Badge variant="outline" className="mb-4">
-              Production Ready
-            </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Build Faster with OKLCH Color Science
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-10">
-              A production-ready design system featuring 42 components,
-              next-generation OKLCH color science, and industry-leading design
-              token architecture.
-            </p>
-            <div className="flex gap-4 justify-center mb-16">
-              <Link href="#components">
-                <Button size="lg">View Components</Button>
-              </Link>
-              <Link href="#docs">
-                <Button variant="outline" size="lg">
-                  Read Docs
-                </Button>
-              </Link>
-            </div>
-            <div className="aspect-square max-w-md mx-auto rounded-lg bg-linear-to-br from-primary via-secondary to-accent p-8 flex items-center justify-center">
-              <div className="text-white text-center">
-                <Code2 className="h-24 w-24 mx-auto mb-4" />
-                <p className="text-2xl font-bold">42 Components</p>
-              </div>
-            </div>
-          </div>
+      <section className="text-center space-y-8 relative py-12 md:py-24 overflow-hidden">
+        <div className="flex justify-center animate-in fade-in slide-in-from-top-4 duration-700">
+          <Badge
+            variant="outline"
+            className="gap-2 px-4 py-1.5 glass rounded-full text-[10px] font-bold tracking-widest uppercase"
+          >
+            <Sparkles className="h-3.5 w-3.5 text-(--color-interactive-primary) animate-pulse" />
+            V1.0.0 Experimental
+          </Badge>
         </div>
+
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-(--color-text-primary) animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+          Crafting the <br />
+          <span className="text-(--color-interactive-primary) italic">
+            Perfect
+          </span>{" "}
+          Ecosystem
+        </h1>
+
+        <p className="text-lg md:text-xl text-(--color-text-secondary) max-w-2xl mx-auto leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+          A high-performance design system ecosystem built for speed,
+          accessibility, and developer joy.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
+          <Link href="/components">
+            <Button
+              size="lg"
+              className="h-14 px-10 rounded-full text-lg shadow-xl shadow-(--color-interactive-primary)/10 transition-all hover:scale-105 active:scale-95"
+            >
+              Get Started <ChevronRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+          <Link href="/monorepo">
+            <Button
+              variant="outline"
+              size="lg"
+              className="h-14 px-10 rounded-full text-lg glass transition-all hover:scale-105 active:scale-95"
+            >
+              Infrastructure
+            </Button>
+          </Link>
+        </div>
+
+        {/* Decorative elements - Subtle and doesn't block text */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-(--color-interactive-primary)/3 blur-[120px] -z-10 rounded-full" />
       </section>
 
-      {/* Features Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              Everything You Need to Build
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Built on modern web standards with React 19, TypeScript 5.8, and
-              Tailwind CSS 4. Optimized for production with comprehensive
-              testing and documentation.
-            </p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature, index) => (
-              <Card key={index} className="h-full">
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    {feature.icon}
-                    <CardTitle>{feature.title}</CardTitle>
+      {/* Ecosystem Grid */}
+      <section className="space-y-16">
+        <div className="text-center space-y-4">
+          <Badge
+            variant="secondary"
+            className="px-3 py-1 bg-(--color-interactive-primary)/10 text-(--color-interactive-primary) border-(--color-interactive-primary)/20"
+          >
+            The Core Pillars
+          </Badge>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-(--color-text-primary)">
+            The Ecosystem at a Glance
+          </h2>
+          <p className="text-xl text-(--color-text-secondary) max-w-2xl mx-auto italic">
+            Everything you need to build, design, and scale.
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {ecosystem.map((item, i) => (
+            <Link
+              key={item.title}
+              href={item.href}
+              className={cn(
+                "group transition-all duration-500 animate-in fade-in slide-in-from-bottom-4",
+                i === 0 && "delay-100",
+                i === 1 && "delay-200",
+                i === 2 && "delay-300",
+                i === 3 && "delay-400",
+                i === 4 && "delay-500"
+              )}
+            >
+              <Card className="h-full border-2 border-(--color-border-primary)/10 glass group-hover:border-(--color-interactive-primary)/30 transition-all shadow-none group-hover:shadow-2xl group-hover:shadow-(--color-interactive-primary)/5 overflow-hidden">
+                <CardHeader className="relative z-10">
+                  <div className="flex items-center justify-between mb-4">
+                    <div
+                      className={cn(
+                        "p-3 rounded-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3",
+                        item.tokenColor === "primary"
+                          ? "bg-(--color-interactive-primary)/10 text-(--color-interactive-primary)"
+                          : "bg-(--color-interactive-warning)/10 text-(--color-interactive-warning)"
+                      )}
+                    >
+                      {item.icon}
+                    </div>
+                    <Badge
+                      variant="outline"
+                      className="text-[10px] font-bold tracking-widest uppercase py-0.5 border-(--color-border-primary)/50 glass"
+                    >
+                      {item.badge}
+                    </Badge>
                   </div>
+                  <CardTitle className="text-2xl flex items-center gap-2 group-hover:text-(--color-interactive-primary) transition-colors">
+                    {item.title}
+                    <ArrowRight className="h-5 w-5 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500" />
+                  </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                <CardContent className="relative z-10">
+                  <p className="text-(--color-text-secondary) leading-relaxed">
+                    {item.description}
+                  </p>
                 </CardContent>
+                {/* Decorative card background */}
+                <div
+                  className={cn(
+                    "absolute -bottom-12 -right-12 w-32 h-32 blur-[60px] opacity-0 group-hover:opacity-20 transition-opacity duration-700",
+                    item.tokenColor === "primary"
+                      ? "bg-(--color-interactive-primary)"
+                      : "bg-(--color-interactive-warning)"
+                  )}
+                />
               </Card>
-            ))}
-          </div>
+            </Link>
+          ))}
         </div>
       </section>
 
-      {/* Components Grid Section */}
-      <section id="components" className="py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">
-              Component Library
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              Production-Ready Components
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              42 accessible, themeable components built with Radix UI primitives
-              and styled with design tokens.
+      {/* Key Stats / Features */}
+      <section className="grid gap-8 md:grid-cols-3">
+        {[
+          {
+            icon: <Zap className="text-(--color-interactive-warning)" />,
+            value: "42+",
+            label: "Components",
+            desc: "Accessible building blocks.",
+          },
+          {
+            icon: <Shield className="text-(--color-interactive-primary)" />,
+            value: "AA",
+            label: "Compliant",
+            desc: "Inclusive by design.",
+          },
+          {
+            icon: <Code2 className="text-(--color-interactive-primary)" />,
+            value: "TS",
+            label: "Native",
+            desc: "Type-safe experience.",
+          },
+        ].map((stat, i) => (
+          <div
+            key={i}
+            className="glass p-10 rounded-[32px] border-(--color-border-primary)/10 flex flex-col items-center text-center space-y-4 hover:border-(--color-interactive-primary)/20 transition-all duration-500 group"
+          >
+            <div className="w-16 h-16 rounded-2xl glass flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
+              {React.cloneElement(stat.icon as any, { className: "h-8 w-8" })}
+            </div>
+            <div className="space-y-1">
+              <h3 className="text-5xl font-black tracking-tighter text-(--color-text-primary)">
+                {stat.value}
+              </h3>
+              <p className="font-bold text-lg text-(--color-interactive-primary) uppercase tracking-widest">
+                {stat.label}
+              </p>
+            </div>
+            <p className="text-(--color-text-secondary)">{stat.desc}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* Philosophy Section */}
+      <section className="bg-(--color-background-inverse) text-(--color-text-inverse) rounded-3xl p-12 overflow-hidden relative">
+        <div className="relative z-10 grid gap-12 md:grid-cols-2 items-center">
+          <div className="space-y-6">
+            <h2 className="text-4xl font-bold">Design-as-Code</h2>
+            <p className="text-lg opacity-80">
+              We believe that design should be as maintainable and versionable
+              as code. Our ecosystem ensures that the gap between what a
+              designer sees and what a developer builds is non-existent.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Example Component Cards */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <CardTitle>Buttons</CardTitle>
-                  <Badge>6 variants</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="flex gap-2 flex-wrap">
-                  <Button size="sm" variant="default">
-                    Default
-                  </Button>
-                  <Button size="sm" variant="secondary">
-                    Secondary
-                  </Button>
-                  <Button size="sm" variant="outline">
-                    Outline
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <CardTitle>Badges</CardTitle>
-                  <Badge>4 variants</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="flex gap-2 flex-wrap">
-                  <Badge variant="default">Default</Badge>
-                  <Badge variant="secondary">Secondary</Badge>
-                  <Badge variant="outline">Outline</Badge>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <CardTitle>Cards</CardTitle>
-                  <Badge>Composable</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Flexible container with header, content, and footer sections
-                  for organizing UI elements.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <CardTitle>Forms</CardTitle>
-                  <Badge>10+ inputs</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Complete form controls including Input, Select, Checkbox,
-                  Radio, Switch, and validation.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <CardTitle>Dialogs & Modals</CardTitle>
-                  <Badge>Accessible</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Dialog, AlertDialog, Sheet, Popover, and Tooltip with full
-                  keyboard navigation.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <CardTitle>Navigation</CardTitle>
-                  <Badge>5 patterns</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  NavigationMenu, Breadcrumb, Pagination, Tabs, and Menubar for
-                  all your navigation needs.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* OKLCH Colors Section */}
-      <section className="py-20 bg-muted/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">
-              Color Science
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              OKLCH Color System
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Perceptually uniform colors that look great across devices. 30%
-              more colors than traditional sRGB with P3 gamut support.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            <div className="aspect-square rounded-lg bg-primary p-6 flex flex-col items-center justify-center text-primary-foreground">
-              <div className="text-2xl font-bold mb-2">Primary</div>
-              <div className="text-sm opacity-90">OKLCH</div>
+            <div className="flex flex-wrap gap-4">
+              <Badge
+                variant="outline"
+                className="border-(--color-text-inverse)/20 text-(--color-text-inverse)"
+              >
+                W3C DTCG Standard
+              </Badge>
+              <Badge
+                variant="outline"
+                className="border-(--color-text-inverse)/20 text-(--color-text-inverse)"
+              >
+                OKLCH Color Science
+              </Badge>
+              <Badge
+                variant="outline"
+                className="border-(--color-text-inverse)/20 text-(--color-text-inverse)"
+              >
+                Atomic Design
+              </Badge>
             </div>
-            <div className="aspect-square rounded-lg bg-secondary p-6 flex flex-col items-center justify-center text-secondary-foreground">
-              <div className="text-2xl font-bold mb-2">Secondary</div>
-              <div className="text-sm opacity-90">P3 Gamut</div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="aspect-square bg-(--color-text-inverse)/10 rounded-2xl backdrop-blur-sm border border-(--color-text-inverse)/20 p-6 flex flex-col justify-between">
+              <Palette className="h-8 w-8" />
+              <p className="text-sm font-semibold">Tokens</p>
             </div>
-            <div className="aspect-square rounded-lg bg-accent p-6 flex flex-col items-center justify-center text-accent-foreground">
-              <div className="text-2xl font-bold mb-2">Accent</div>
-              <div className="text-sm opacity-90">Uniform</div>
-            </div>
-            <div className="aspect-square rounded-lg bg-destructive p-6 flex flex-col items-center justify-center text-destructive-foreground">
-              <div className="text-2xl font-bold mb-2">Alert</div>
-              <div className="text-sm opacity-90">Accessible</div>
+            <div className="aspect-square bg-(--color-text-inverse)/10 rounded-2xl backdrop-blur-sm border border-(--color-text-inverse)/20 p-6 flex flex-col justify-between">
+              <Layout className="h-8 w-8" />
+              <p className="text-sm font-semibold">Patterns</p>
             </div>
           </div>
         </div>
+        {/* Background decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-(--color-interactive-primary)/20 blur-[100px] -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-(--color-interactive-primary)/10 blur-[100px] translate-y-1/2 -translate-x-1/2" />
       </section>
-    </>
+    </div>
   );
 }

@@ -137,6 +137,95 @@ export const shadow = {};`;
   },
 });
 
+// Register manifest format for rich metadata exports
+StyleDictionary.registerFormat({
+  name: "json/manifest",
+  format: function ({ dictionary }) {
+    const manifest = {
+      primitives: {
+        colors: {},
+        spacing: {},
+        borderRadius: {},
+        borderWidth: {},
+        typography: {
+          family: {},
+          size: {},
+          weight: {},
+          lineHeight: {},
+        },
+      },
+      semantics: {
+        background: {},
+        surface: {},
+        text: {},
+        border: {},
+        interactive: {},
+        status: {},
+        other: {},
+      },
+      components: {},
+    };
+
+    dictionary.allTokens.forEach((token) => {
+      const cleanPath = token.path.filter((segment, index, arr) => {
+        if (segment === "Color" && arr[index - 1] === "Color") return false;
+        return true;
+      });
+
+      const name = cleanPath.join("-").toLowerCase();
+      const variableName = `--${token.$type === "color" ? "color-" : ""}${name.replace(/^color-/, "")}`;
+      
+      const tokenEntry = {
+        name: token.name,
+        path: token.path,
+        value: token.$value,
+        type: token.$type,
+        variable: `var(${variableName})`,
+        description: token.$description || "",
+      };
+
+      const isPrimitive = token.filePath.includes("primitive");
+      const isSemantic = token.filePath.includes("semantic");
+      const isComponent = token.filePath.includes("component");
+
+      if (isPrimitive) {
+        if (token.$type === "color" && cleanPath[0] === "color" && cleanPath[1]) {
+          const group = cleanPath[1].toLowerCase();
+          const shade = cleanPath[2] || "base";
+          if (!manifest.primitives.colors[group]) manifest.primitives.colors[group] = {};
+          manifest.primitives.colors[group][shade] = tokenEntry;
+        } else if (token.$type === "spacing") {
+          manifest.primitives.spacing[name] = tokenEntry;
+        } else if (name.startsWith("border-radius")) {
+          manifest.primitives.borderRadius[name] = tokenEntry;
+        } else if (name.startsWith("border-width")) {
+          manifest.primitives.borderWidth[name] = tokenEntry;
+        } else if (name.startsWith("typography")) {
+          if (name.includes("family")) manifest.primitives.typography.family[name] = tokenEntry;
+          else if (name.includes("size")) manifest.primitives.typography.size[name] = tokenEntry;
+          else if (name.includes("weight")) manifest.primitives.typography.weight[name] = tokenEntry;
+          else if (name.includes("line-height")) manifest.primitives.typography.lineHeight[name] = tokenEntry;
+        }
+      } else if (isSemantic) {
+        if (token.$type === "color") {
+          const group = cleanPath[1]?.toLowerCase() || "other";
+          if (manifest.semantics[group]) {
+            manifest.semantics[group][name] = tokenEntry;
+          } else {
+            manifest.semantics.other[name] = tokenEntry;
+          }
+        }
+      } else if (isComponent) {
+        const component = cleanPath[0].toLowerCase();
+        if (!manifest.components[component]) manifest.components[component] = {};
+        manifest.components[component][name] = tokenEntry;
+      }
+    });
+
+    return JSON.stringify(manifest, null, 2);
+  },
+});
+
 // Build light mode semantic/component tokens
 const lightSd = new StyleDictionary({
   source: [
@@ -167,6 +256,10 @@ const lightSd = new StyleDictionary({
         {
           destination: "hierarchical.js",
           format: "javascript/hierarchical",
+        },
+        {
+          destination: "manifest.json",
+          format: "json/manifest",
         },
       ],
     },
