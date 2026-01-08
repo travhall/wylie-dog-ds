@@ -1,0 +1,5014 @@
+[
+  {
+    "benchmark-1000": {
+      "modes": [
+        {
+          "modeId": "mode:benchmark:default",
+          "name": "Default"
+        }
+      ],
+      "variables": {
+        "core.color.0": {
+          "$type": "color",
+          "$value": "#e308dc",
+          "$description": "Benchmark token 0 of type color"
+        },
+        "brand.number.0": {
+          "$type": "number",
+          "$value": 92,
+          "$description": "Benchmark token 1 of type number"
+        },
+        "components.string.0": {
+          "$type": "string",
+          "$value": "value-0",
+          "$description": "Benchmark token 2 of type string"
+        },
+        "system.boolean.0": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 3 of type boolean"
+        },
+        "core.color.1": {
+          "$type": "color",
+          "$value": "#f4a3cb",
+          "$description": "Benchmark token 4 of type color"
+        },
+        "brand.number.1": {
+          "$type": "number",
+          "$value": 53,
+          "$description": "Benchmark token 5 of type number"
+        },
+        "components.string.1": {
+          "$type": "string",
+          "$value": "value-1",
+          "$description": "Benchmark token 6 of type string"
+        },
+        "system.boolean.1": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 7 of type boolean"
+        },
+        "core.color.2": {
+          "$type": "color",
+          "$value": "#1841d4",
+          "$description": "Benchmark token 8 of type color"
+        },
+        "brand.number.2": {
+          "$type": "number",
+          "$value": 28,
+          "$description": "Benchmark token 9 of type number"
+        },
+        "components.string.2": {
+          "$type": "string",
+          "$value": "value-2",
+          "$description": "Benchmark token 10 of type string"
+        },
+        "system.boolean.2": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 11 of type boolean"
+        },
+        "core.color.3": {
+          "$type": "color",
+          "$value": "#2d1f7a",
+          "$description": "Benchmark token 12 of type color"
+        },
+        "brand.number.3": {
+          "$type": "number",
+          "$value": 63,
+          "$description": "Benchmark token 13 of type number"
+        },
+        "components.string.3": {
+          "$type": "string",
+          "$value": "value-3",
+          "$description": "Benchmark token 14 of type string"
+        },
+        "system.boolean.3": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 15 of type boolean"
+        },
+        "core.color.4": {
+          "$type": "color",
+          "$value": "#8b6677",
+          "$description": "Benchmark token 16 of type color"
+        },
+        "brand.number.4": {
+          "$type": "number",
+          "$value": 80,
+          "$description": "Benchmark token 17 of type number"
+        },
+        "components.string.4": {
+          "$type": "string",
+          "$value": "value-4",
+          "$description": "Benchmark token 18 of type string"
+        },
+        "system.boolean.4": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 19 of type boolean"
+        },
+        "core.color.5": {
+          "$type": "color",
+          "$value": "#272978",
+          "$description": "Benchmark token 20 of type color"
+        },
+        "brand.number.5": {
+          "$type": "number",
+          "$value": 18,
+          "$description": "Benchmark token 21 of type number"
+        },
+        "components.string.5": {
+          "$type": "string",
+          "$value": "value-5",
+          "$description": "Benchmark token 22 of type string"
+        },
+        "system.boolean.5": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 23 of type boolean"
+        },
+        "core.color.6": {
+          "$type": "color",
+          "$value": "#824120",
+          "$description": "Benchmark token 24 of type color"
+        },
+        "brand.number.6": {
+          "$type": "number",
+          "$value": 17,
+          "$description": "Benchmark token 25 of type number"
+        },
+        "components.string.6": {
+          "$type": "string",
+          "$value": "value-6",
+          "$description": "Benchmark token 26 of type string"
+        },
+        "system.boolean.6": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 27 of type boolean"
+        },
+        "core.color.7": {
+          "$type": "color",
+          "$value": "#a43add",
+          "$description": "Benchmark token 28 of type color"
+        },
+        "brand.number.7": {
+          "$type": "number",
+          "$value": 28,
+          "$description": "Benchmark token 29 of type number"
+        },
+        "components.string.7": {
+          "$type": "string",
+          "$value": "value-7",
+          "$description": "Benchmark token 30 of type string"
+        },
+        "system.boolean.7": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 31 of type boolean"
+        },
+        "core.color.8": {
+          "$type": "color",
+          "$value": "#5724bb",
+          "$description": "Benchmark token 32 of type color"
+        },
+        "brand.number.8": {
+          "$type": "number",
+          "$value": 84,
+          "$description": "Benchmark token 33 of type number"
+        },
+        "components.string.8": {
+          "$type": "string",
+          "$value": "value-8",
+          "$description": "Benchmark token 34 of type string"
+        },
+        "system.boolean.8": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 35 of type boolean"
+        },
+        "core.color.9": {
+          "$type": "color",
+          "$value": "#976a79",
+          "$description": "Benchmark token 36 of type color"
+        },
+        "brand.number.9": {
+          "$type": "number",
+          "$value": 97,
+          "$description": "Benchmark token 37 of type number"
+        },
+        "components.string.9": {
+          "$type": "string",
+          "$value": "value-9",
+          "$description": "Benchmark token 38 of type string"
+        },
+        "system.boolean.9": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 39 of type boolean"
+        },
+        "core.color.10": {
+          "$type": "color",
+          "$value": "#464392",
+          "$description": "Benchmark token 40 of type color"
+        },
+        "brand.number.10": {
+          "$type": "number",
+          "$value": 49,
+          "$description": "Benchmark token 41 of type number"
+        },
+        "components.string.10": {
+          "$type": "string",
+          "$value": "value-10",
+          "$description": "Benchmark token 42 of type string"
+        },
+        "system.boolean.10": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 43 of type boolean"
+        },
+        "core.color.11": {
+          "$type": "color",
+          "$value": "#32c4bf",
+          "$description": "Benchmark token 44 of type color"
+        },
+        "brand.number.11": {
+          "$type": "number",
+          "$value": 45,
+          "$description": "Benchmark token 45 of type number"
+        },
+        "components.string.11": {
+          "$type": "string",
+          "$value": "value-11",
+          "$description": "Benchmark token 46 of type string"
+        },
+        "system.boolean.11": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 47 of type boolean"
+        },
+        "core.color.12": {
+          "$type": "color",
+          "$value": "#1887ae",
+          "$description": "Benchmark token 48 of type color"
+        },
+        "brand.number.12": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Benchmark token 49 of type number"
+        },
+        "components.string.12": {
+          "$type": "string",
+          "$value": "value-12",
+          "$description": "Benchmark token 50 of type string"
+        },
+        "system.boolean.12": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 51 of type boolean"
+        },
+        "core.color.13": {
+          "$type": "color",
+          "$value": "#fe0a38",
+          "$description": "Benchmark token 52 of type color"
+        },
+        "brand.number.13": {
+          "$type": "number",
+          "$value": 70,
+          "$description": "Benchmark token 53 of type number"
+        },
+        "components.string.13": {
+          "$type": "string",
+          "$value": "value-13",
+          "$description": "Benchmark token 54 of type string"
+        },
+        "system.boolean.13": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 55 of type boolean"
+        },
+        "core.color.14": {
+          "$type": "color",
+          "$value": "#9aca7f",
+          "$description": "Benchmark token 56 of type color"
+        },
+        "brand.number.14": {
+          "$type": "number",
+          "$value": 10,
+          "$description": "Benchmark token 57 of type number"
+        },
+        "components.string.14": {
+          "$type": "string",
+          "$value": "value-14",
+          "$description": "Benchmark token 58 of type string"
+        },
+        "system.boolean.14": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 59 of type boolean"
+        },
+        "core.color.15": {
+          "$type": "color",
+          "$value": "#437fc7",
+          "$description": "Benchmark token 60 of type color"
+        },
+        "brand.number.15": {
+          "$type": "number",
+          "$value": 64,
+          "$description": "Benchmark token 61 of type number"
+        },
+        "components.string.15": {
+          "$type": "string",
+          "$value": "value-15",
+          "$description": "Benchmark token 62 of type string"
+        },
+        "system.boolean.15": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 63 of type boolean"
+        },
+        "core.color.16": {
+          "$type": "color",
+          "$value": "#ba5d39",
+          "$description": "Benchmark token 64 of type color"
+        },
+        "brand.number.16": {
+          "$type": "number",
+          "$value": 23,
+          "$description": "Benchmark token 65 of type number"
+        },
+        "components.string.16": {
+          "$type": "string",
+          "$value": "value-16",
+          "$description": "Benchmark token 66 of type string"
+        },
+        "system.boolean.16": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 67 of type boolean"
+        },
+        "core.color.17": {
+          "$type": "color",
+          "$value": "#e9e0bd",
+          "$description": "Benchmark token 68 of type color"
+        },
+        "brand.number.17": {
+          "$type": "number",
+          "$value": 68,
+          "$description": "Benchmark token 69 of type number"
+        },
+        "components.string.17": {
+          "$type": "string",
+          "$value": "value-17",
+          "$description": "Benchmark token 70 of type string"
+        },
+        "system.boolean.17": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 71 of type boolean"
+        },
+        "core.color.18": {
+          "$type": "color",
+          "$value": "#6bb9b9",
+          "$description": "Benchmark token 72 of type color"
+        },
+        "brand.number.18": {
+          "$type": "number",
+          "$value": 58,
+          "$description": "Benchmark token 73 of type number"
+        },
+        "components.string.18": {
+          "$type": "string",
+          "$value": "value-18",
+          "$description": "Benchmark token 74 of type string"
+        },
+        "system.boolean.18": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 75 of type boolean"
+        },
+        "core.color.19": {
+          "$type": "color",
+          "$value": "#8610bc",
+          "$description": "Benchmark token 76 of type color"
+        },
+        "brand.number.19": {
+          "$type": "number",
+          "$value": 54,
+          "$description": "Benchmark token 77 of type number"
+        },
+        "components.string.19": {
+          "$type": "string",
+          "$value": "value-19",
+          "$description": "Benchmark token 78 of type string"
+        },
+        "system.boolean.19": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 79 of type boolean"
+        },
+        "core.color.20": {
+          "$type": "color",
+          "$value": "#c9a3cc",
+          "$description": "Benchmark token 80 of type color"
+        },
+        "brand.number.20": {
+          "$type": "number",
+          "$value": 77,
+          "$description": "Benchmark token 81 of type number"
+        },
+        "components.string.20": {
+          "$type": "string",
+          "$value": "value-20",
+          "$description": "Benchmark token 82 of type string"
+        },
+        "system.boolean.20": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 83 of type boolean"
+        },
+        "core.color.21": {
+          "$type": "color",
+          "$value": "#21d4f6",
+          "$description": "Benchmark token 84 of type color"
+        },
+        "brand.number.21": {
+          "$type": "number",
+          "$value": 15,
+          "$description": "Benchmark token 85 of type number"
+        },
+        "components.string.21": {
+          "$type": "string",
+          "$value": "value-21",
+          "$description": "Benchmark token 86 of type string"
+        },
+        "system.boolean.21": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 87 of type boolean"
+        },
+        "core.color.22": {
+          "$type": "color",
+          "$value": "#50afb6",
+          "$description": "Benchmark token 88 of type color"
+        },
+        "brand.number.22": {
+          "$type": "number",
+          "$value": 15,
+          "$description": "Benchmark token 89 of type number"
+        },
+        "components.string.22": {
+          "$type": "string",
+          "$value": "value-22",
+          "$description": "Benchmark token 90 of type string"
+        },
+        "system.boolean.22": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 91 of type boolean"
+        },
+        "core.color.23": {
+          "$type": "color",
+          "$value": "#1d684e",
+          "$description": "Benchmark token 92 of type color"
+        },
+        "brand.number.23": {
+          "$type": "number",
+          "$value": 70,
+          "$description": "Benchmark token 93 of type number"
+        },
+        "components.string.23": {
+          "$type": "string",
+          "$value": "value-23",
+          "$description": "Benchmark token 94 of type string"
+        },
+        "system.boolean.23": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 95 of type boolean"
+        },
+        "core.color.24": {
+          "$type": "color",
+          "$value": "#ad1d7d",
+          "$description": "Benchmark token 96 of type color"
+        },
+        "brand.number.24": {
+          "$type": "number",
+          "$value": 11,
+          "$description": "Benchmark token 97 of type number"
+        },
+        "components.string.24": {
+          "$type": "string",
+          "$value": "value-24",
+          "$description": "Benchmark token 98 of type string"
+        },
+        "system.boolean.24": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 99 of type boolean"
+        },
+        "core.color.25": {
+          "$type": "color",
+          "$value": "#dd6d29",
+          "$description": "Benchmark token 100 of type color"
+        },
+        "brand.number.25": {
+          "$type": "number",
+          "$value": 89,
+          "$description": "Benchmark token 101 of type number"
+        },
+        "components.string.25": {
+          "$type": "string",
+          "$value": "value-25",
+          "$description": "Benchmark token 102 of type string"
+        },
+        "system.boolean.25": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 103 of type boolean"
+        },
+        "core.color.26": {
+          "$type": "color",
+          "$value": "#d63d59",
+          "$description": "Benchmark token 104 of type color"
+        },
+        "brand.number.26": {
+          "$type": "number",
+          "$value": 75,
+          "$description": "Benchmark token 105 of type number"
+        },
+        "components.string.26": {
+          "$type": "string",
+          "$value": "value-26",
+          "$description": "Benchmark token 106 of type string"
+        },
+        "system.boolean.26": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 107 of type boolean"
+        },
+        "core.color.27": {
+          "$type": "color",
+          "$value": "#fa8592",
+          "$description": "Benchmark token 108 of type color"
+        },
+        "brand.number.27": {
+          "$type": "number",
+          "$value": 36,
+          "$description": "Benchmark token 109 of type number"
+        },
+        "components.string.27": {
+          "$type": "string",
+          "$value": "value-27",
+          "$description": "Benchmark token 110 of type string"
+        },
+        "system.boolean.27": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 111 of type boolean"
+        },
+        "core.color.28": {
+          "$type": "color",
+          "$value": "#ac42d7",
+          "$description": "Benchmark token 112 of type color"
+        },
+        "brand.number.28": {
+          "$type": "number",
+          "$value": 41,
+          "$description": "Benchmark token 113 of type number"
+        },
+        "components.string.28": {
+          "$type": "string",
+          "$value": "value-28",
+          "$description": "Benchmark token 114 of type string"
+        },
+        "system.boolean.28": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 115 of type boolean"
+        },
+        "core.color.29": {
+          "$type": "color",
+          "$value": "#1ee83f",
+          "$description": "Benchmark token 116 of type color"
+        },
+        "brand.number.29": {
+          "$type": "number",
+          "$value": 92,
+          "$description": "Benchmark token 117 of type number"
+        },
+        "components.string.29": {
+          "$type": "string",
+          "$value": "value-29",
+          "$description": "Benchmark token 118 of type string"
+        },
+        "system.boolean.29": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 119 of type boolean"
+        },
+        "core.color.30": {
+          "$type": "color",
+          "$value": "#de1db5",
+          "$description": "Benchmark token 120 of type color"
+        },
+        "brand.number.30": {
+          "$type": "number",
+          "$value": 91,
+          "$description": "Benchmark token 121 of type number"
+        },
+        "components.string.30": {
+          "$type": "string",
+          "$value": "value-30",
+          "$description": "Benchmark token 122 of type string"
+        },
+        "system.boolean.30": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 123 of type boolean"
+        },
+        "core.color.31": {
+          "$type": "color",
+          "$value": "#4ab10e",
+          "$description": "Benchmark token 124 of type color"
+        },
+        "brand.number.31": {
+          "$type": "number",
+          "$value": 51,
+          "$description": "Benchmark token 125 of type number"
+        },
+        "components.string.31": {
+          "$type": "string",
+          "$value": "value-31",
+          "$description": "Benchmark token 126 of type string"
+        },
+        "system.boolean.31": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 127 of type boolean"
+        },
+        "core.color.32": {
+          "$type": "color",
+          "$value": "#1886b1",
+          "$description": "Benchmark token 128 of type color"
+        },
+        "brand.number.32": {
+          "$type": "number",
+          "$value": 8,
+          "$description": "Benchmark token 129 of type number"
+        },
+        "components.string.32": {
+          "$type": "string",
+          "$value": "value-32",
+          "$description": "Benchmark token 130 of type string"
+        },
+        "system.boolean.32": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 131 of type boolean"
+        },
+        "core.color.33": {
+          "$type": "color",
+          "$value": "#0be1a4",
+          "$description": "Benchmark token 132 of type color"
+        },
+        "brand.number.33": {
+          "$type": "number",
+          "$value": 20,
+          "$description": "Benchmark token 133 of type number"
+        },
+        "components.string.33": {
+          "$type": "string",
+          "$value": "value-33",
+          "$description": "Benchmark token 134 of type string"
+        },
+        "system.boolean.33": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 135 of type boolean"
+        },
+        "core.color.34": {
+          "$type": "color",
+          "$value": "#7df99e",
+          "$description": "Benchmark token 136 of type color"
+        },
+        "brand.number.34": {
+          "$type": "number",
+          "$value": 54,
+          "$description": "Benchmark token 137 of type number"
+        },
+        "components.string.34": {
+          "$type": "string",
+          "$value": "value-34",
+          "$description": "Benchmark token 138 of type string"
+        },
+        "system.boolean.34": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 139 of type boolean"
+        },
+        "core.color.35": {
+          "$type": "color",
+          "$value": "#b279eb",
+          "$description": "Benchmark token 140 of type color"
+        },
+        "brand.number.35": {
+          "$type": "number",
+          "$value": 59,
+          "$description": "Benchmark token 141 of type number"
+        },
+        "components.string.35": {
+          "$type": "string",
+          "$value": "value-35",
+          "$description": "Benchmark token 142 of type string"
+        },
+        "system.boolean.35": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 143 of type boolean"
+        },
+        "core.color.36": {
+          "$type": "color",
+          "$value": "#99caa0",
+          "$description": "Benchmark token 144 of type color"
+        },
+        "brand.number.36": {
+          "$type": "number",
+          "$value": 92,
+          "$description": "Benchmark token 145 of type number"
+        },
+        "components.string.36": {
+          "$type": "string",
+          "$value": "value-36",
+          "$description": "Benchmark token 146 of type string"
+        },
+        "system.boolean.36": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 147 of type boolean"
+        },
+        "core.color.37": {
+          "$type": "color",
+          "$value": "#76b841",
+          "$description": "Benchmark token 148 of type color"
+        },
+        "brand.number.37": {
+          "$type": "number",
+          "$value": 86,
+          "$description": "Benchmark token 149 of type number"
+        },
+        "components.string.37": {
+          "$type": "string",
+          "$value": "value-37",
+          "$description": "Benchmark token 150 of type string"
+        },
+        "system.boolean.37": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 151 of type boolean"
+        },
+        "core.color.38": {
+          "$type": "color",
+          "$value": "#580d95",
+          "$description": "Benchmark token 152 of type color"
+        },
+        "brand.number.38": {
+          "$type": "number",
+          "$value": 75,
+          "$description": "Benchmark token 153 of type number"
+        },
+        "components.string.38": {
+          "$type": "string",
+          "$value": "value-38",
+          "$description": "Benchmark token 154 of type string"
+        },
+        "system.boolean.38": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 155 of type boolean"
+        },
+        "core.color.39": {
+          "$type": "color",
+          "$value": "#55577f",
+          "$description": "Benchmark token 156 of type color"
+        },
+        "brand.number.39": {
+          "$type": "number",
+          "$value": 13,
+          "$description": "Benchmark token 157 of type number"
+        },
+        "components.string.39": {
+          "$type": "string",
+          "$value": "value-39",
+          "$description": "Benchmark token 158 of type string"
+        },
+        "system.boolean.39": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 159 of type boolean"
+        },
+        "core.color.40": {
+          "$type": "color",
+          "$value": "#d45ccc",
+          "$description": "Benchmark token 160 of type color"
+        },
+        "brand.number.40": {
+          "$type": "number",
+          "$value": 37,
+          "$description": "Benchmark token 161 of type number"
+        },
+        "components.string.40": {
+          "$type": "string",
+          "$value": "value-40",
+          "$description": "Benchmark token 162 of type string"
+        },
+        "system.boolean.40": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 163 of type boolean"
+        },
+        "core.color.41": {
+          "$type": "color",
+          "$value": "#486731",
+          "$description": "Benchmark token 164 of type color"
+        },
+        "brand.number.41": {
+          "$type": "number",
+          "$value": 88,
+          "$description": "Benchmark token 165 of type number"
+        },
+        "components.string.41": {
+          "$type": "string",
+          "$value": "value-41",
+          "$description": "Benchmark token 166 of type string"
+        },
+        "system.boolean.41": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 167 of type boolean"
+        },
+        "core.color.42": {
+          "$type": "color",
+          "$value": "#4d0703",
+          "$description": "Benchmark token 168 of type color"
+        },
+        "brand.number.42": {
+          "$type": "number",
+          "$value": 14,
+          "$description": "Benchmark token 169 of type number"
+        },
+        "components.string.42": {
+          "$type": "string",
+          "$value": "value-42",
+          "$description": "Benchmark token 170 of type string"
+        },
+        "system.boolean.42": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 171 of type boolean"
+        },
+        "core.color.43": {
+          "$type": "color",
+          "$value": "#444460",
+          "$description": "Benchmark token 172 of type color"
+        },
+        "brand.number.43": {
+          "$type": "number",
+          "$value": 51,
+          "$description": "Benchmark token 173 of type number"
+        },
+        "components.string.43": {
+          "$type": "string",
+          "$value": "value-43",
+          "$description": "Benchmark token 174 of type string"
+        },
+        "system.boolean.43": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 175 of type boolean"
+        },
+        "core.color.44": {
+          "$type": "color",
+          "$value": "#b6accc",
+          "$description": "Benchmark token 176 of type color"
+        },
+        "brand.number.44": {
+          "$type": "number",
+          "$value": 89,
+          "$description": "Benchmark token 177 of type number"
+        },
+        "components.string.44": {
+          "$type": "string",
+          "$value": "value-44",
+          "$description": "Benchmark token 178 of type string"
+        },
+        "system.boolean.44": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 179 of type boolean"
+        },
+        "core.color.45": {
+          "$type": "color",
+          "$value": "#fedfb4",
+          "$description": "Benchmark token 180 of type color"
+        },
+        "brand.number.45": {
+          "$type": "number",
+          "$value": 56,
+          "$description": "Benchmark token 181 of type number"
+        },
+        "components.string.45": {
+          "$type": "string",
+          "$value": "value-45",
+          "$description": "Benchmark token 182 of type string"
+        },
+        "system.boolean.45": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 183 of type boolean"
+        },
+        "core.color.46": {
+          "$type": "color",
+          "$value": "#06d0a8",
+          "$description": "Benchmark token 184 of type color"
+        },
+        "brand.number.46": {
+          "$type": "number",
+          "$value": 11,
+          "$description": "Benchmark token 185 of type number"
+        },
+        "components.string.46": {
+          "$type": "string",
+          "$value": "value-46",
+          "$description": "Benchmark token 186 of type string"
+        },
+        "system.boolean.46": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 187 of type boolean"
+        },
+        "core.color.47": {
+          "$type": "color",
+          "$value": "#1eba33",
+          "$description": "Benchmark token 188 of type color"
+        },
+        "brand.number.47": {
+          "$type": "number",
+          "$value": 69,
+          "$description": "Benchmark token 189 of type number"
+        },
+        "components.string.47": {
+          "$type": "string",
+          "$value": "value-47",
+          "$description": "Benchmark token 190 of type string"
+        },
+        "system.boolean.47": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 191 of type boolean"
+        },
+        "core.color.48": {
+          "$type": "color",
+          "$value": "#7dc211",
+          "$description": "Benchmark token 192 of type color"
+        },
+        "brand.number.48": {
+          "$type": "number",
+          "$value": 16,
+          "$description": "Benchmark token 193 of type number"
+        },
+        "components.string.48": {
+          "$type": "string",
+          "$value": "value-48",
+          "$description": "Benchmark token 194 of type string"
+        },
+        "system.boolean.48": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 195 of type boolean"
+        },
+        "core.color.49": {
+          "$type": "color",
+          "$value": "#4b5b37",
+          "$description": "Benchmark token 196 of type color"
+        },
+        "brand.number.49": {
+          "$type": "number",
+          "$value": 88,
+          "$description": "Benchmark token 197 of type number"
+        },
+        "components.string.49": {
+          "$type": "string",
+          "$value": "value-49",
+          "$description": "Benchmark token 198 of type string"
+        },
+        "system.boolean.49": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 199 of type boolean"
+        },
+        "core.color.50": {
+          "$type": "color",
+          "$value": "#96b8a7",
+          "$description": "Benchmark token 200 of type color"
+        },
+        "brand.number.50": {
+          "$type": "number",
+          "$value": 26,
+          "$description": "Benchmark token 201 of type number"
+        },
+        "components.string.50": {
+          "$type": "string",
+          "$value": "value-50",
+          "$description": "Benchmark token 202 of type string"
+        },
+        "system.boolean.50": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 203 of type boolean"
+        },
+        "core.color.51": {
+          "$type": "color",
+          "$value": "#567cca",
+          "$description": "Benchmark token 204 of type color"
+        },
+        "brand.number.51": {
+          "$type": "number",
+          "$value": 7,
+          "$description": "Benchmark token 205 of type number"
+        },
+        "components.string.51": {
+          "$type": "string",
+          "$value": "value-51",
+          "$description": "Benchmark token 206 of type string"
+        },
+        "system.boolean.51": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 207 of type boolean"
+        },
+        "core.color.52": {
+          "$type": "color",
+          "$value": "#48f9e9",
+          "$description": "Benchmark token 208 of type color"
+        },
+        "brand.number.52": {
+          "$type": "number",
+          "$value": 12,
+          "$description": "Benchmark token 209 of type number"
+        },
+        "components.string.52": {
+          "$type": "string",
+          "$value": "value-52",
+          "$description": "Benchmark token 210 of type string"
+        },
+        "system.boolean.52": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 211 of type boolean"
+        },
+        "core.color.53": {
+          "$type": "color",
+          "$value": "#eb8868",
+          "$description": "Benchmark token 212 of type color"
+        },
+        "brand.number.53": {
+          "$type": "number",
+          "$value": 60,
+          "$description": "Benchmark token 213 of type number"
+        },
+        "components.string.53": {
+          "$type": "string",
+          "$value": "value-53",
+          "$description": "Benchmark token 214 of type string"
+        },
+        "system.boolean.53": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 215 of type boolean"
+        },
+        "core.color.54": {
+          "$type": "color",
+          "$value": "#559cab",
+          "$description": "Benchmark token 216 of type color"
+        },
+        "brand.number.54": {
+          "$type": "number",
+          "$value": 76,
+          "$description": "Benchmark token 217 of type number"
+        },
+        "components.string.54": {
+          "$type": "string",
+          "$value": "value-54",
+          "$description": "Benchmark token 218 of type string"
+        },
+        "system.boolean.54": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 219 of type boolean"
+        },
+        "core.color.55": {
+          "$type": "color",
+          "$value": "#265a27",
+          "$description": "Benchmark token 220 of type color"
+        },
+        "brand.number.55": {
+          "$type": "number",
+          "$value": 30,
+          "$description": "Benchmark token 221 of type number"
+        },
+        "components.string.55": {
+          "$type": "string",
+          "$value": "value-55",
+          "$description": "Benchmark token 222 of type string"
+        },
+        "system.boolean.55": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 223 of type boolean"
+        },
+        "core.color.56": {
+          "$type": "color",
+          "$value": "#f0ac6a",
+          "$description": "Benchmark token 224 of type color"
+        },
+        "brand.number.56": {
+          "$type": "number",
+          "$value": 39,
+          "$description": "Benchmark token 225 of type number"
+        },
+        "components.string.56": {
+          "$type": "string",
+          "$value": "value-56",
+          "$description": "Benchmark token 226 of type string"
+        },
+        "system.boolean.56": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 227 of type boolean"
+        },
+        "core.color.57": {
+          "$type": "color",
+          "$value": "#35e89d",
+          "$description": "Benchmark token 228 of type color"
+        },
+        "brand.number.57": {
+          "$type": "number",
+          "$value": 78,
+          "$description": "Benchmark token 229 of type number"
+        },
+        "components.string.57": {
+          "$type": "string",
+          "$value": "value-57",
+          "$description": "Benchmark token 230 of type string"
+        },
+        "system.boolean.57": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 231 of type boolean"
+        },
+        "core.color.58": {
+          "$type": "color",
+          "$value": "#31d18b",
+          "$description": "Benchmark token 232 of type color"
+        },
+        "brand.number.58": {
+          "$type": "number",
+          "$value": 85,
+          "$description": "Benchmark token 233 of type number"
+        },
+        "components.string.58": {
+          "$type": "string",
+          "$value": "value-58",
+          "$description": "Benchmark token 234 of type string"
+        },
+        "system.boolean.58": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 235 of type boolean"
+        },
+        "core.color.59": {
+          "$type": "color",
+          "$value": "#204565",
+          "$description": "Benchmark token 236 of type color"
+        },
+        "brand.number.59": {
+          "$type": "number",
+          "$value": 36,
+          "$description": "Benchmark token 237 of type number"
+        },
+        "components.string.59": {
+          "$type": "string",
+          "$value": "value-59",
+          "$description": "Benchmark token 238 of type string"
+        },
+        "system.boolean.59": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 239 of type boolean"
+        },
+        "core.color.60": {
+          "$type": "color",
+          "$value": "#317c26",
+          "$description": "Benchmark token 240 of type color"
+        },
+        "brand.number.60": {
+          "$type": "number",
+          "$value": 84,
+          "$description": "Benchmark token 241 of type number"
+        },
+        "components.string.60": {
+          "$type": "string",
+          "$value": "value-60",
+          "$description": "Benchmark token 242 of type string"
+        },
+        "system.boolean.60": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 243 of type boolean"
+        },
+        "core.color.61": {
+          "$type": "color",
+          "$value": "#1a0b95",
+          "$description": "Benchmark token 244 of type color"
+        },
+        "brand.number.61": {
+          "$type": "number",
+          "$value": 23,
+          "$description": "Benchmark token 245 of type number"
+        },
+        "components.string.61": {
+          "$type": "string",
+          "$value": "value-61",
+          "$description": "Benchmark token 246 of type string"
+        },
+        "system.boolean.61": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 247 of type boolean"
+        },
+        "core.color.62": {
+          "$type": "color",
+          "$value": "#f6118e",
+          "$description": "Benchmark token 248 of type color"
+        },
+        "brand.number.62": {
+          "$type": "number",
+          "$value": 95,
+          "$description": "Benchmark token 249 of type number"
+        },
+        "components.string.62": {
+          "$type": "string",
+          "$value": "value-62",
+          "$description": "Benchmark token 250 of type string"
+        },
+        "system.boolean.62": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 251 of type boolean"
+        },
+        "core.color.63": {
+          "$type": "color",
+          "$value": "#4cf664",
+          "$description": "Benchmark token 252 of type color"
+        },
+        "brand.number.63": {
+          "$type": "number",
+          "$value": 28,
+          "$description": "Benchmark token 253 of type number"
+        },
+        "components.string.63": {
+          "$type": "string",
+          "$value": "value-63",
+          "$description": "Benchmark token 254 of type string"
+        },
+        "system.boolean.63": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 255 of type boolean"
+        },
+        "core.color.64": {
+          "$type": "color",
+          "$value": "#0a8757",
+          "$description": "Benchmark token 256 of type color"
+        },
+        "brand.number.64": {
+          "$type": "number",
+          "$value": 10,
+          "$description": "Benchmark token 257 of type number"
+        },
+        "components.string.64": {
+          "$type": "string",
+          "$value": "value-64",
+          "$description": "Benchmark token 258 of type string"
+        },
+        "system.boolean.64": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 259 of type boolean"
+        },
+        "core.color.65": {
+          "$type": "color",
+          "$value": "#d76eba",
+          "$description": "Benchmark token 260 of type color"
+        },
+        "brand.number.65": {
+          "$type": "number",
+          "$value": 20,
+          "$description": "Benchmark token 261 of type number"
+        },
+        "components.string.65": {
+          "$type": "string",
+          "$value": "value-65",
+          "$description": "Benchmark token 262 of type string"
+        },
+        "system.boolean.65": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 263 of type boolean"
+        },
+        "core.color.66": {
+          "$type": "color",
+          "$value": "#0c36af",
+          "$description": "Benchmark token 264 of type color"
+        },
+        "brand.number.66": {
+          "$type": "number",
+          "$value": 97,
+          "$description": "Benchmark token 265 of type number"
+        },
+        "components.string.66": {
+          "$type": "string",
+          "$value": "value-66",
+          "$description": "Benchmark token 266 of type string"
+        },
+        "system.boolean.66": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 267 of type boolean"
+        },
+        "core.color.67": {
+          "$type": "color",
+          "$value": "#5e8e3c",
+          "$description": "Benchmark token 268 of type color"
+        },
+        "brand.number.67": {
+          "$type": "number",
+          "$value": 20,
+          "$description": "Benchmark token 269 of type number"
+        },
+        "components.string.67": {
+          "$type": "string",
+          "$value": "value-67",
+          "$description": "Benchmark token 270 of type string"
+        },
+        "system.boolean.67": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 271 of type boolean"
+        },
+        "core.color.68": {
+          "$type": "color",
+          "$value": "#a8bfe0",
+          "$description": "Benchmark token 272 of type color"
+        },
+        "brand.number.68": {
+          "$type": "number",
+          "$value": 72,
+          "$description": "Benchmark token 273 of type number"
+        },
+        "components.string.68": {
+          "$type": "string",
+          "$value": "value-68",
+          "$description": "Benchmark token 274 of type string"
+        },
+        "system.boolean.68": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 275 of type boolean"
+        },
+        "core.color.69": {
+          "$type": "color",
+          "$value": "#44596e",
+          "$description": "Benchmark token 276 of type color"
+        },
+        "brand.number.69": {
+          "$type": "number",
+          "$value": 46,
+          "$description": "Benchmark token 277 of type number"
+        },
+        "components.string.69": {
+          "$type": "string",
+          "$value": "value-69",
+          "$description": "Benchmark token 278 of type string"
+        },
+        "system.boolean.69": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 279 of type boolean"
+        },
+        "core.color.70": {
+          "$type": "color",
+          "$value": "#34c95f",
+          "$description": "Benchmark token 280 of type color"
+        },
+        "brand.number.70": {
+          "$type": "number",
+          "$value": 41,
+          "$description": "Benchmark token 281 of type number"
+        },
+        "components.string.70": {
+          "$type": "string",
+          "$value": "value-70",
+          "$description": "Benchmark token 282 of type string"
+        },
+        "system.boolean.70": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 283 of type boolean"
+        },
+        "core.color.71": {
+          "$type": "color",
+          "$value": "#1972a0",
+          "$description": "Benchmark token 284 of type color"
+        },
+        "brand.number.71": {
+          "$type": "number",
+          "$value": 39,
+          "$description": "Benchmark token 285 of type number"
+        },
+        "components.string.71": {
+          "$type": "string",
+          "$value": "value-71",
+          "$description": "Benchmark token 286 of type string"
+        },
+        "system.boolean.71": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 287 of type boolean"
+        },
+        "core.color.72": {
+          "$type": "color",
+          "$value": "#167e08",
+          "$description": "Benchmark token 288 of type color"
+        },
+        "brand.number.72": {
+          "$type": "number",
+          "$value": 44,
+          "$description": "Benchmark token 289 of type number"
+        },
+        "components.string.72": {
+          "$type": "string",
+          "$value": "value-72",
+          "$description": "Benchmark token 290 of type string"
+        },
+        "system.boolean.72": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 291 of type boolean"
+        },
+        "core.color.73": {
+          "$type": "color",
+          "$value": "#28d8cc",
+          "$description": "Benchmark token 292 of type color"
+        },
+        "brand.number.73": {
+          "$type": "number",
+          "$value": 41,
+          "$description": "Benchmark token 293 of type number"
+        },
+        "components.string.73": {
+          "$type": "string",
+          "$value": "value-73",
+          "$description": "Benchmark token 294 of type string"
+        },
+        "system.boolean.73": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 295 of type boolean"
+        },
+        "core.color.74": {
+          "$type": "color",
+          "$value": "#efcb36",
+          "$description": "Benchmark token 296 of type color"
+        },
+        "brand.number.74": {
+          "$type": "number",
+          "$value": 96,
+          "$description": "Benchmark token 297 of type number"
+        },
+        "components.string.74": {
+          "$type": "string",
+          "$value": "value-74",
+          "$description": "Benchmark token 298 of type string"
+        },
+        "system.boolean.74": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 299 of type boolean"
+        },
+        "core.color.75": {
+          "$type": "color",
+          "$value": "#5eff86",
+          "$description": "Benchmark token 300 of type color"
+        },
+        "brand.number.75": {
+          "$type": "number",
+          "$value": 15,
+          "$description": "Benchmark token 301 of type number"
+        },
+        "components.string.75": {
+          "$type": "string",
+          "$value": "value-75",
+          "$description": "Benchmark token 302 of type string"
+        },
+        "system.boolean.75": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 303 of type boolean"
+        },
+        "core.color.76": {
+          "$type": "color",
+          "$value": "#2f1aec",
+          "$description": "Benchmark token 304 of type color"
+        },
+        "brand.number.76": {
+          "$type": "number",
+          "$value": 60,
+          "$description": "Benchmark token 305 of type number"
+        },
+        "components.string.76": {
+          "$type": "string",
+          "$value": "value-76",
+          "$description": "Benchmark token 306 of type string"
+        },
+        "system.boolean.76": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 307 of type boolean"
+        },
+        "core.color.77": {
+          "$type": "color",
+          "$value": "#9c184d",
+          "$description": "Benchmark token 308 of type color"
+        },
+        "brand.number.77": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Benchmark token 309 of type number"
+        },
+        "components.string.77": {
+          "$type": "string",
+          "$value": "value-77",
+          "$description": "Benchmark token 310 of type string"
+        },
+        "system.boolean.77": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 311 of type boolean"
+        },
+        "core.color.78": {
+          "$type": "color",
+          "$value": "#053009",
+          "$description": "Benchmark token 312 of type color"
+        },
+        "brand.number.78": {
+          "$type": "number",
+          "$value": 93,
+          "$description": "Benchmark token 313 of type number"
+        },
+        "components.string.78": {
+          "$type": "string",
+          "$value": "value-78",
+          "$description": "Benchmark token 314 of type string"
+        },
+        "system.boolean.78": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 315 of type boolean"
+        },
+        "core.color.79": {
+          "$type": "color",
+          "$value": "#81deb2",
+          "$description": "Benchmark token 316 of type color"
+        },
+        "brand.number.79": {
+          "$type": "number",
+          "$value": 66,
+          "$description": "Benchmark token 317 of type number"
+        },
+        "components.string.79": {
+          "$type": "string",
+          "$value": "value-79",
+          "$description": "Benchmark token 318 of type string"
+        },
+        "system.boolean.79": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 319 of type boolean"
+        },
+        "core.color.80": {
+          "$type": "color",
+          "$value": "#04589c",
+          "$description": "Benchmark token 320 of type color"
+        },
+        "brand.number.80": {
+          "$type": "number",
+          "$value": 30,
+          "$description": "Benchmark token 321 of type number"
+        },
+        "components.string.80": {
+          "$type": "string",
+          "$value": "value-80",
+          "$description": "Benchmark token 322 of type string"
+        },
+        "system.boolean.80": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 323 of type boolean"
+        },
+        "core.color.81": {
+          "$type": "color",
+          "$value": "#a2581d",
+          "$description": "Benchmark token 324 of type color"
+        },
+        "brand.number.81": {
+          "$type": "number",
+          "$value": 56,
+          "$description": "Benchmark token 325 of type number"
+        },
+        "components.string.81": {
+          "$type": "string",
+          "$value": "value-81",
+          "$description": "Benchmark token 326 of type string"
+        },
+        "system.boolean.81": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 327 of type boolean"
+        },
+        "core.color.82": {
+          "$type": "color",
+          "$value": "#42164c",
+          "$description": "Benchmark token 328 of type color"
+        },
+        "brand.number.82": {
+          "$type": "number",
+          "$value": 65,
+          "$description": "Benchmark token 329 of type number"
+        },
+        "components.string.82": {
+          "$type": "string",
+          "$value": "value-82",
+          "$description": "Benchmark token 330 of type string"
+        },
+        "system.boolean.82": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 331 of type boolean"
+        },
+        "core.color.83": {
+          "$type": "color",
+          "$value": "#4d7275",
+          "$description": "Benchmark token 332 of type color"
+        },
+        "brand.number.83": {
+          "$type": "number",
+          "$value": 27,
+          "$description": "Benchmark token 333 of type number"
+        },
+        "components.string.83": {
+          "$type": "string",
+          "$value": "value-83",
+          "$description": "Benchmark token 334 of type string"
+        },
+        "system.boolean.83": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 335 of type boolean"
+        },
+        "core.color.84": {
+          "$type": "color",
+          "$value": "#0ca9bc",
+          "$description": "Benchmark token 336 of type color"
+        },
+        "brand.number.84": {
+          "$type": "number",
+          "$value": 30,
+          "$description": "Benchmark token 337 of type number"
+        },
+        "components.string.84": {
+          "$type": "string",
+          "$value": "value-84",
+          "$description": "Benchmark token 338 of type string"
+        },
+        "system.boolean.84": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 339 of type boolean"
+        },
+        "core.color.85": {
+          "$type": "color",
+          "$value": "#169cc8",
+          "$description": "Benchmark token 340 of type color"
+        },
+        "brand.number.85": {
+          "$type": "number",
+          "$value": 42,
+          "$description": "Benchmark token 341 of type number"
+        },
+        "components.string.85": {
+          "$type": "string",
+          "$value": "value-85",
+          "$description": "Benchmark token 342 of type string"
+        },
+        "system.boolean.85": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 343 of type boolean"
+        },
+        "core.color.86": {
+          "$type": "color",
+          "$value": "#354c44",
+          "$description": "Benchmark token 344 of type color"
+        },
+        "brand.number.86": {
+          "$type": "number",
+          "$value": 83,
+          "$description": "Benchmark token 345 of type number"
+        },
+        "components.string.86": {
+          "$type": "string",
+          "$value": "value-86",
+          "$description": "Benchmark token 346 of type string"
+        },
+        "system.boolean.86": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 347 of type boolean"
+        },
+        "core.color.87": {
+          "$type": "color",
+          "$value": "#308c5f",
+          "$description": "Benchmark token 348 of type color"
+        },
+        "brand.number.87": {
+          "$type": "number",
+          "$value": 35,
+          "$description": "Benchmark token 349 of type number"
+        },
+        "components.string.87": {
+          "$type": "string",
+          "$value": "value-87",
+          "$description": "Benchmark token 350 of type string"
+        },
+        "system.boolean.87": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 351 of type boolean"
+        },
+        "core.color.88": {
+          "$type": "color",
+          "$value": "#fb8992",
+          "$description": "Benchmark token 352 of type color"
+        },
+        "brand.number.88": {
+          "$type": "number",
+          "$value": 73,
+          "$description": "Benchmark token 353 of type number"
+        },
+        "components.string.88": {
+          "$type": "string",
+          "$value": "value-88",
+          "$description": "Benchmark token 354 of type string"
+        },
+        "system.boolean.88": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 355 of type boolean"
+        },
+        "core.color.89": {
+          "$type": "color",
+          "$value": "#f2c0aa",
+          "$description": "Benchmark token 356 of type color"
+        },
+        "brand.number.89": {
+          "$type": "number",
+          "$value": 97,
+          "$description": "Benchmark token 357 of type number"
+        },
+        "components.string.89": {
+          "$type": "string",
+          "$value": "value-89",
+          "$description": "Benchmark token 358 of type string"
+        },
+        "system.boolean.89": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 359 of type boolean"
+        },
+        "core.color.90": {
+          "$type": "color",
+          "$value": "#b82d64",
+          "$description": "Benchmark token 360 of type color"
+        },
+        "brand.number.90": {
+          "$type": "number",
+          "$value": 66,
+          "$description": "Benchmark token 361 of type number"
+        },
+        "components.string.90": {
+          "$type": "string",
+          "$value": "value-90",
+          "$description": "Benchmark token 362 of type string"
+        },
+        "system.boolean.90": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 363 of type boolean"
+        },
+        "core.color.91": {
+          "$type": "color",
+          "$value": "#67453c",
+          "$description": "Benchmark token 364 of type color"
+        },
+        "brand.number.91": {
+          "$type": "number",
+          "$value": 56,
+          "$description": "Benchmark token 365 of type number"
+        },
+        "components.string.91": {
+          "$type": "string",
+          "$value": "value-91",
+          "$description": "Benchmark token 366 of type string"
+        },
+        "system.boolean.91": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 367 of type boolean"
+        },
+        "core.color.92": {
+          "$type": "color",
+          "$value": "#c6133d",
+          "$description": "Benchmark token 368 of type color"
+        },
+        "brand.number.92": {
+          "$type": "number",
+          "$value": 62,
+          "$description": "Benchmark token 369 of type number"
+        },
+        "components.string.92": {
+          "$type": "string",
+          "$value": "value-92",
+          "$description": "Benchmark token 370 of type string"
+        },
+        "system.boolean.92": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 371 of type boolean"
+        },
+        "core.color.93": {
+          "$type": "color",
+          "$value": "#730ec5",
+          "$description": "Benchmark token 372 of type color"
+        },
+        "brand.number.93": {
+          "$type": "number",
+          "$value": 3,
+          "$description": "Benchmark token 373 of type number"
+        },
+        "components.string.93": {
+          "$type": "string",
+          "$value": "value-93",
+          "$description": "Benchmark token 374 of type string"
+        },
+        "system.boolean.93": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 375 of type boolean"
+        },
+        "core.color.94": {
+          "$type": "color",
+          "$value": "#f52884",
+          "$description": "Benchmark token 376 of type color"
+        },
+        "brand.number.94": {
+          "$type": "number",
+          "$value": 20,
+          "$description": "Benchmark token 377 of type number"
+        },
+        "components.string.94": {
+          "$type": "string",
+          "$value": "value-94",
+          "$description": "Benchmark token 378 of type string"
+        },
+        "system.boolean.94": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 379 of type boolean"
+        },
+        "core.color.95": {
+          "$type": "color",
+          "$value": "#de1d47",
+          "$description": "Benchmark token 380 of type color"
+        },
+        "brand.number.95": {
+          "$type": "number",
+          "$value": 48,
+          "$description": "Benchmark token 381 of type number"
+        },
+        "components.string.95": {
+          "$type": "string",
+          "$value": "value-95",
+          "$description": "Benchmark token 382 of type string"
+        },
+        "system.boolean.95": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 383 of type boolean"
+        },
+        "core.color.96": {
+          "$type": "color",
+          "$value": "#eae8d2",
+          "$description": "Benchmark token 384 of type color"
+        },
+        "brand.number.96": {
+          "$type": "number",
+          "$value": 3,
+          "$description": "Benchmark token 385 of type number"
+        },
+        "components.string.96": {
+          "$type": "string",
+          "$value": "value-96",
+          "$description": "Benchmark token 386 of type string"
+        },
+        "system.boolean.96": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 387 of type boolean"
+        },
+        "core.color.97": {
+          "$type": "color",
+          "$value": "#b7060b",
+          "$description": "Benchmark token 388 of type color"
+        },
+        "brand.number.97": {
+          "$type": "number",
+          "$value": 42,
+          "$description": "Benchmark token 389 of type number"
+        },
+        "components.string.97": {
+          "$type": "string",
+          "$value": "value-97",
+          "$description": "Benchmark token 390 of type string"
+        },
+        "system.boolean.97": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 391 of type boolean"
+        },
+        "core.color.98": {
+          "$type": "color",
+          "$value": "#9cbc29",
+          "$description": "Benchmark token 392 of type color"
+        },
+        "brand.number.98": {
+          "$type": "number",
+          "$value": 37,
+          "$description": "Benchmark token 393 of type number"
+        },
+        "components.string.98": {
+          "$type": "string",
+          "$value": "value-98",
+          "$description": "Benchmark token 394 of type string"
+        },
+        "system.boolean.98": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 395 of type boolean"
+        },
+        "core.color.99": {
+          "$type": "color",
+          "$value": "#af28dc",
+          "$description": "Benchmark token 396 of type color"
+        },
+        "brand.number.99": {
+          "$type": "number",
+          "$value": 49,
+          "$description": "Benchmark token 397 of type number"
+        },
+        "components.string.99": {
+          "$type": "string",
+          "$value": "value-99",
+          "$description": "Benchmark token 398 of type string"
+        },
+        "system.boolean.99": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 399 of type boolean"
+        },
+        "core.color.100": {
+          "$type": "color",
+          "$value": "#47ca7c",
+          "$description": "Benchmark token 400 of type color"
+        },
+        "brand.number.100": {
+          "$type": "number",
+          "$value": 78,
+          "$description": "Benchmark token 401 of type number"
+        },
+        "components.string.100": {
+          "$type": "string",
+          "$value": "value-100",
+          "$description": "Benchmark token 402 of type string"
+        },
+        "system.boolean.100": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 403 of type boolean"
+        },
+        "core.color.101": {
+          "$type": "color",
+          "$value": "#943473",
+          "$description": "Benchmark token 404 of type color"
+        },
+        "brand.number.101": {
+          "$type": "number",
+          "$value": 79,
+          "$description": "Benchmark token 405 of type number"
+        },
+        "components.string.101": {
+          "$type": "string",
+          "$value": "value-101",
+          "$description": "Benchmark token 406 of type string"
+        },
+        "system.boolean.101": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 407 of type boolean"
+        },
+        "core.color.102": {
+          "$type": "color",
+          "$value": "#6b51bb",
+          "$description": "Benchmark token 408 of type color"
+        },
+        "brand.number.102": {
+          "$type": "number",
+          "$value": 38,
+          "$description": "Benchmark token 409 of type number"
+        },
+        "components.string.102": {
+          "$type": "string",
+          "$value": "value-102",
+          "$description": "Benchmark token 410 of type string"
+        },
+        "system.boolean.102": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 411 of type boolean"
+        },
+        "core.color.103": {
+          "$type": "color",
+          "$value": "#06d0fa",
+          "$description": "Benchmark token 412 of type color"
+        },
+        "brand.number.103": {
+          "$type": "number",
+          "$value": 37,
+          "$description": "Benchmark token 413 of type number"
+        },
+        "components.string.103": {
+          "$type": "string",
+          "$value": "value-103",
+          "$description": "Benchmark token 414 of type string"
+        },
+        "system.boolean.103": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 415 of type boolean"
+        },
+        "core.color.104": {
+          "$type": "color",
+          "$value": "#7d2c43",
+          "$description": "Benchmark token 416 of type color"
+        },
+        "brand.number.104": {
+          "$type": "number",
+          "$value": 19,
+          "$description": "Benchmark token 417 of type number"
+        },
+        "components.string.104": {
+          "$type": "string",
+          "$value": "value-104",
+          "$description": "Benchmark token 418 of type string"
+        },
+        "system.boolean.104": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 419 of type boolean"
+        },
+        "core.color.105": {
+          "$type": "color",
+          "$value": "#2f19a0",
+          "$description": "Benchmark token 420 of type color"
+        },
+        "brand.number.105": {
+          "$type": "number",
+          "$value": 66,
+          "$description": "Benchmark token 421 of type number"
+        },
+        "components.string.105": {
+          "$type": "string",
+          "$value": "value-105",
+          "$description": "Benchmark token 422 of type string"
+        },
+        "system.boolean.105": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 423 of type boolean"
+        },
+        "core.color.106": {
+          "$type": "color",
+          "$value": "#2ff91b",
+          "$description": "Benchmark token 424 of type color"
+        },
+        "brand.number.106": {
+          "$type": "number",
+          "$value": 32,
+          "$description": "Benchmark token 425 of type number"
+        },
+        "components.string.106": {
+          "$type": "string",
+          "$value": "value-106",
+          "$description": "Benchmark token 426 of type string"
+        },
+        "system.boolean.106": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 427 of type boolean"
+        },
+        "core.color.107": {
+          "$type": "color",
+          "$value": "#950271",
+          "$description": "Benchmark token 428 of type color"
+        },
+        "brand.number.107": {
+          "$type": "number",
+          "$value": 64,
+          "$description": "Benchmark token 429 of type number"
+        },
+        "components.string.107": {
+          "$type": "string",
+          "$value": "value-107",
+          "$description": "Benchmark token 430 of type string"
+        },
+        "system.boolean.107": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 431 of type boolean"
+        },
+        "core.color.108": {
+          "$type": "color",
+          "$value": "#798d60",
+          "$description": "Benchmark token 432 of type color"
+        },
+        "brand.number.108": {
+          "$type": "number",
+          "$value": 82,
+          "$description": "Benchmark token 433 of type number"
+        },
+        "components.string.108": {
+          "$type": "string",
+          "$value": "value-108",
+          "$description": "Benchmark token 434 of type string"
+        },
+        "system.boolean.108": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 435 of type boolean"
+        },
+        "core.color.109": {
+          "$type": "color",
+          "$value": "#363e6d",
+          "$description": "Benchmark token 436 of type color"
+        },
+        "brand.number.109": {
+          "$type": "number",
+          "$value": 42,
+          "$description": "Benchmark token 437 of type number"
+        },
+        "components.string.109": {
+          "$type": "string",
+          "$value": "value-109",
+          "$description": "Benchmark token 438 of type string"
+        },
+        "system.boolean.109": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 439 of type boolean"
+        },
+        "core.color.110": {
+          "$type": "color",
+          "$value": "#75f0a9",
+          "$description": "Benchmark token 440 of type color"
+        },
+        "brand.number.110": {
+          "$type": "number",
+          "$value": 37,
+          "$description": "Benchmark token 441 of type number"
+        },
+        "components.string.110": {
+          "$type": "string",
+          "$value": "value-110",
+          "$description": "Benchmark token 442 of type string"
+        },
+        "system.boolean.110": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 443 of type boolean"
+        },
+        "core.color.111": {
+          "$type": "color",
+          "$value": "#d34f4a",
+          "$description": "Benchmark token 444 of type color"
+        },
+        "brand.number.111": {
+          "$type": "number",
+          "$value": 58,
+          "$description": "Benchmark token 445 of type number"
+        },
+        "components.string.111": {
+          "$type": "string",
+          "$value": "value-111",
+          "$description": "Benchmark token 446 of type string"
+        },
+        "system.boolean.111": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 447 of type boolean"
+        },
+        "core.color.112": {
+          "$type": "color",
+          "$value": "#6de539",
+          "$description": "Benchmark token 448 of type color"
+        },
+        "brand.number.112": {
+          "$type": "number",
+          "$value": 30,
+          "$description": "Benchmark token 449 of type number"
+        },
+        "components.string.112": {
+          "$type": "string",
+          "$value": "value-112",
+          "$description": "Benchmark token 450 of type string"
+        },
+        "system.boolean.112": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 451 of type boolean"
+        },
+        "core.color.113": {
+          "$type": "color",
+          "$value": "#fcce22",
+          "$description": "Benchmark token 452 of type color"
+        },
+        "brand.number.113": {
+          "$type": "number",
+          "$value": 69,
+          "$description": "Benchmark token 453 of type number"
+        },
+        "components.string.113": {
+          "$type": "string",
+          "$value": "value-113",
+          "$description": "Benchmark token 454 of type string"
+        },
+        "system.boolean.113": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 455 of type boolean"
+        },
+        "core.color.114": {
+          "$type": "color",
+          "$value": "#cea91e",
+          "$description": "Benchmark token 456 of type color"
+        },
+        "brand.number.114": {
+          "$type": "number",
+          "$value": 31,
+          "$description": "Benchmark token 457 of type number"
+        },
+        "components.string.114": {
+          "$type": "string",
+          "$value": "value-114",
+          "$description": "Benchmark token 458 of type string"
+        },
+        "system.boolean.114": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 459 of type boolean"
+        },
+        "core.color.115": {
+          "$type": "color",
+          "$value": "#41daaf",
+          "$description": "Benchmark token 460 of type color"
+        },
+        "brand.number.115": {
+          "$type": "number",
+          "$value": 51,
+          "$description": "Benchmark token 461 of type number"
+        },
+        "components.string.115": {
+          "$type": "string",
+          "$value": "value-115",
+          "$description": "Benchmark token 462 of type string"
+        },
+        "system.boolean.115": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 463 of type boolean"
+        },
+        "core.color.116": {
+          "$type": "color",
+          "$value": "#d1ad95",
+          "$description": "Benchmark token 464 of type color"
+        },
+        "brand.number.116": {
+          "$type": "number",
+          "$value": 1,
+          "$description": "Benchmark token 465 of type number"
+        },
+        "components.string.116": {
+          "$type": "string",
+          "$value": "value-116",
+          "$description": "Benchmark token 466 of type string"
+        },
+        "system.boolean.116": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 467 of type boolean"
+        },
+        "core.color.117": {
+          "$type": "color",
+          "$value": "#4e2000",
+          "$description": "Benchmark token 468 of type color"
+        },
+        "brand.number.117": {
+          "$type": "number",
+          "$value": 54,
+          "$description": "Benchmark token 469 of type number"
+        },
+        "components.string.117": {
+          "$type": "string",
+          "$value": "value-117",
+          "$description": "Benchmark token 470 of type string"
+        },
+        "system.boolean.117": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 471 of type boolean"
+        },
+        "core.color.118": {
+          "$type": "color",
+          "$value": "#d4d67f",
+          "$description": "Benchmark token 472 of type color"
+        },
+        "brand.number.118": {
+          "$type": "number",
+          "$value": 5,
+          "$description": "Benchmark token 473 of type number"
+        },
+        "components.string.118": {
+          "$type": "string",
+          "$value": "value-118",
+          "$description": "Benchmark token 474 of type string"
+        },
+        "system.boolean.118": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 475 of type boolean"
+        },
+        "core.color.119": {
+          "$type": "color",
+          "$value": "#b2527a",
+          "$description": "Benchmark token 476 of type color"
+        },
+        "brand.number.119": {
+          "$type": "number",
+          "$value": 40,
+          "$description": "Benchmark token 477 of type number"
+        },
+        "components.string.119": {
+          "$type": "string",
+          "$value": "value-119",
+          "$description": "Benchmark token 478 of type string"
+        },
+        "system.boolean.119": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 479 of type boolean"
+        },
+        "core.color.120": {
+          "$type": "color",
+          "$value": "#dd658f",
+          "$description": "Benchmark token 480 of type color"
+        },
+        "brand.number.120": {
+          "$type": "number",
+          "$value": 91,
+          "$description": "Benchmark token 481 of type number"
+        },
+        "components.string.120": {
+          "$type": "string",
+          "$value": "value-120",
+          "$description": "Benchmark token 482 of type string"
+        },
+        "system.boolean.120": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 483 of type boolean"
+        },
+        "core.color.121": {
+          "$type": "color",
+          "$value": "#262d65",
+          "$description": "Benchmark token 484 of type color"
+        },
+        "brand.number.121": {
+          "$type": "number",
+          "$value": 65,
+          "$description": "Benchmark token 485 of type number"
+        },
+        "components.string.121": {
+          "$type": "string",
+          "$value": "value-121",
+          "$description": "Benchmark token 486 of type string"
+        },
+        "system.boolean.121": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 487 of type boolean"
+        },
+        "core.color.122": {
+          "$type": "color",
+          "$value": "#e6a5e9",
+          "$description": "Benchmark token 488 of type color"
+        },
+        "brand.number.122": {
+          "$type": "number",
+          "$value": 25,
+          "$description": "Benchmark token 489 of type number"
+        },
+        "components.string.122": {
+          "$type": "string",
+          "$value": "value-122",
+          "$description": "Benchmark token 490 of type string"
+        },
+        "system.boolean.122": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 491 of type boolean"
+        },
+        "core.color.123": {
+          "$type": "color",
+          "$value": "#85a99f",
+          "$description": "Benchmark token 492 of type color"
+        },
+        "brand.number.123": {
+          "$type": "number",
+          "$value": 49,
+          "$description": "Benchmark token 493 of type number"
+        },
+        "components.string.123": {
+          "$type": "string",
+          "$value": "value-123",
+          "$description": "Benchmark token 494 of type string"
+        },
+        "system.boolean.123": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 495 of type boolean"
+        },
+        "core.color.124": {
+          "$type": "color",
+          "$value": "#a36464",
+          "$description": "Benchmark token 496 of type color"
+        },
+        "brand.number.124": {
+          "$type": "number",
+          "$value": 2,
+          "$description": "Benchmark token 497 of type number"
+        },
+        "components.string.124": {
+          "$type": "string",
+          "$value": "value-124",
+          "$description": "Benchmark token 498 of type string"
+        },
+        "system.boolean.124": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 499 of type boolean"
+        },
+        "core.color.125": {
+          "$type": "color",
+          "$value": "#cbe718",
+          "$description": "Benchmark token 500 of type color"
+        },
+        "brand.number.125": {
+          "$type": "number",
+          "$value": 3,
+          "$description": "Benchmark token 501 of type number"
+        },
+        "components.string.125": {
+          "$type": "string",
+          "$value": "value-125",
+          "$description": "Benchmark token 502 of type string"
+        },
+        "system.boolean.125": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 503 of type boolean"
+        },
+        "core.color.126": {
+          "$type": "color",
+          "$value": "#f4654f",
+          "$description": "Benchmark token 504 of type color"
+        },
+        "brand.number.126": {
+          "$type": "number",
+          "$value": 81,
+          "$description": "Benchmark token 505 of type number"
+        },
+        "components.string.126": {
+          "$type": "string",
+          "$value": "value-126",
+          "$description": "Benchmark token 506 of type string"
+        },
+        "system.boolean.126": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 507 of type boolean"
+        },
+        "core.color.127": {
+          "$type": "color",
+          "$value": "#e206ea",
+          "$description": "Benchmark token 508 of type color"
+        },
+        "brand.number.127": {
+          "$type": "number",
+          "$value": 5,
+          "$description": "Benchmark token 509 of type number"
+        },
+        "components.string.127": {
+          "$type": "string",
+          "$value": "value-127",
+          "$description": "Benchmark token 510 of type string"
+        },
+        "system.boolean.127": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 511 of type boolean"
+        },
+        "core.color.128": {
+          "$type": "color",
+          "$value": "#bf3c2a",
+          "$description": "Benchmark token 512 of type color"
+        },
+        "brand.number.128": {
+          "$type": "number",
+          "$value": 16,
+          "$description": "Benchmark token 513 of type number"
+        },
+        "components.string.128": {
+          "$type": "string",
+          "$value": "value-128",
+          "$description": "Benchmark token 514 of type string"
+        },
+        "system.boolean.128": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 515 of type boolean"
+        },
+        "core.color.129": {
+          "$type": "color",
+          "$value": "#58f1af",
+          "$description": "Benchmark token 516 of type color"
+        },
+        "brand.number.129": {
+          "$type": "number",
+          "$value": 3,
+          "$description": "Benchmark token 517 of type number"
+        },
+        "components.string.129": {
+          "$type": "string",
+          "$value": "value-129",
+          "$description": "Benchmark token 518 of type string"
+        },
+        "system.boolean.129": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 519 of type boolean"
+        },
+        "core.color.130": {
+          "$type": "color",
+          "$value": "#443e11",
+          "$description": "Benchmark token 520 of type color"
+        },
+        "brand.number.130": {
+          "$type": "number",
+          "$value": 51,
+          "$description": "Benchmark token 521 of type number"
+        },
+        "components.string.130": {
+          "$type": "string",
+          "$value": "value-130",
+          "$description": "Benchmark token 522 of type string"
+        },
+        "system.boolean.130": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 523 of type boolean"
+        },
+        "core.color.131": {
+          "$type": "color",
+          "$value": "#85235d",
+          "$description": "Benchmark token 524 of type color"
+        },
+        "brand.number.131": {
+          "$type": "number",
+          "$value": 4,
+          "$description": "Benchmark token 525 of type number"
+        },
+        "components.string.131": {
+          "$type": "string",
+          "$value": "value-131",
+          "$description": "Benchmark token 526 of type string"
+        },
+        "system.boolean.131": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 527 of type boolean"
+        },
+        "core.color.132": {
+          "$type": "color",
+          "$value": "#f11bc2",
+          "$description": "Benchmark token 528 of type color"
+        },
+        "brand.number.132": {
+          "$type": "number",
+          "$value": 3,
+          "$description": "Benchmark token 529 of type number"
+        },
+        "components.string.132": {
+          "$type": "string",
+          "$value": "value-132",
+          "$description": "Benchmark token 530 of type string"
+        },
+        "system.boolean.132": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 531 of type boolean"
+        },
+        "core.color.133": {
+          "$type": "color",
+          "$value": "#3782b7",
+          "$description": "Benchmark token 532 of type color"
+        },
+        "brand.number.133": {
+          "$type": "number",
+          "$value": 85,
+          "$description": "Benchmark token 533 of type number"
+        },
+        "components.string.133": {
+          "$type": "string",
+          "$value": "value-133",
+          "$description": "Benchmark token 534 of type string"
+        },
+        "system.boolean.133": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 535 of type boolean"
+        },
+        "core.color.134": {
+          "$type": "color",
+          "$value": "#52f6ff",
+          "$description": "Benchmark token 536 of type color"
+        },
+        "brand.number.134": {
+          "$type": "number",
+          "$value": 71,
+          "$description": "Benchmark token 537 of type number"
+        },
+        "components.string.134": {
+          "$type": "string",
+          "$value": "value-134",
+          "$description": "Benchmark token 538 of type string"
+        },
+        "system.boolean.134": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 539 of type boolean"
+        },
+        "core.color.135": {
+          "$type": "color",
+          "$value": "#f746fd",
+          "$description": "Benchmark token 540 of type color"
+        },
+        "brand.number.135": {
+          "$type": "number",
+          "$value": 69,
+          "$description": "Benchmark token 541 of type number"
+        },
+        "components.string.135": {
+          "$type": "string",
+          "$value": "value-135",
+          "$description": "Benchmark token 542 of type string"
+        },
+        "system.boolean.135": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 543 of type boolean"
+        },
+        "core.color.136": {
+          "$type": "color",
+          "$value": "#dab2bc",
+          "$description": "Benchmark token 544 of type color"
+        },
+        "brand.number.136": {
+          "$type": "number",
+          "$value": 4,
+          "$description": "Benchmark token 545 of type number"
+        },
+        "components.string.136": {
+          "$type": "string",
+          "$value": "value-136",
+          "$description": "Benchmark token 546 of type string"
+        },
+        "system.boolean.136": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 547 of type boolean"
+        },
+        "core.color.137": {
+          "$type": "color",
+          "$value": "#4ecf20",
+          "$description": "Benchmark token 548 of type color"
+        },
+        "brand.number.137": {
+          "$type": "number",
+          "$value": 57,
+          "$description": "Benchmark token 549 of type number"
+        },
+        "components.string.137": {
+          "$type": "string",
+          "$value": "value-137",
+          "$description": "Benchmark token 550 of type string"
+        },
+        "system.boolean.137": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 551 of type boolean"
+        },
+        "core.color.138": {
+          "$type": "color",
+          "$value": "#7d8472",
+          "$description": "Benchmark token 552 of type color"
+        },
+        "brand.number.138": {
+          "$type": "number",
+          "$value": 23,
+          "$description": "Benchmark token 553 of type number"
+        },
+        "components.string.138": {
+          "$type": "string",
+          "$value": "value-138",
+          "$description": "Benchmark token 554 of type string"
+        },
+        "system.boolean.138": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 555 of type boolean"
+        },
+        "core.color.139": {
+          "$type": "color",
+          "$value": "#bdd9fb",
+          "$description": "Benchmark token 556 of type color"
+        },
+        "brand.number.139": {
+          "$type": "number",
+          "$value": 4,
+          "$description": "Benchmark token 557 of type number"
+        },
+        "components.string.139": {
+          "$type": "string",
+          "$value": "value-139",
+          "$description": "Benchmark token 558 of type string"
+        },
+        "system.boolean.139": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 559 of type boolean"
+        },
+        "core.color.140": {
+          "$type": "color",
+          "$value": "#3a7d42",
+          "$description": "Benchmark token 560 of type color"
+        },
+        "brand.number.140": {
+          "$type": "number",
+          "$value": 43,
+          "$description": "Benchmark token 561 of type number"
+        },
+        "components.string.140": {
+          "$type": "string",
+          "$value": "value-140",
+          "$description": "Benchmark token 562 of type string"
+        },
+        "system.boolean.140": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 563 of type boolean"
+        },
+        "core.color.141": {
+          "$type": "color",
+          "$value": "#c335ee",
+          "$description": "Benchmark token 564 of type color"
+        },
+        "brand.number.141": {
+          "$type": "number",
+          "$value": 96,
+          "$description": "Benchmark token 565 of type number"
+        },
+        "components.string.141": {
+          "$type": "string",
+          "$value": "value-141",
+          "$description": "Benchmark token 566 of type string"
+        },
+        "system.boolean.141": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 567 of type boolean"
+        },
+        "core.color.142": {
+          "$type": "color",
+          "$value": "#5ea698",
+          "$description": "Benchmark token 568 of type color"
+        },
+        "brand.number.142": {
+          "$type": "number",
+          "$value": 44,
+          "$description": "Benchmark token 569 of type number"
+        },
+        "components.string.142": {
+          "$type": "string",
+          "$value": "value-142",
+          "$description": "Benchmark token 570 of type string"
+        },
+        "system.boolean.142": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 571 of type boolean"
+        },
+        "core.color.143": {
+          "$type": "color",
+          "$value": "#2b168b",
+          "$description": "Benchmark token 572 of type color"
+        },
+        "brand.number.143": {
+          "$type": "number",
+          "$value": 70,
+          "$description": "Benchmark token 573 of type number"
+        },
+        "components.string.143": {
+          "$type": "string",
+          "$value": "value-143",
+          "$description": "Benchmark token 574 of type string"
+        },
+        "system.boolean.143": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 575 of type boolean"
+        },
+        "core.color.144": {
+          "$type": "color",
+          "$value": "#877903",
+          "$description": "Benchmark token 576 of type color"
+        },
+        "brand.number.144": {
+          "$type": "number",
+          "$value": 80,
+          "$description": "Benchmark token 577 of type number"
+        },
+        "components.string.144": {
+          "$type": "string",
+          "$value": "value-144",
+          "$description": "Benchmark token 578 of type string"
+        },
+        "system.boolean.144": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 579 of type boolean"
+        },
+        "core.color.145": {
+          "$type": "color",
+          "$value": "#3f3430",
+          "$description": "Benchmark token 580 of type color"
+        },
+        "brand.number.145": {
+          "$type": "number",
+          "$value": 42,
+          "$description": "Benchmark token 581 of type number"
+        },
+        "components.string.145": {
+          "$type": "string",
+          "$value": "value-145",
+          "$description": "Benchmark token 582 of type string"
+        },
+        "system.boolean.145": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 583 of type boolean"
+        },
+        "core.color.146": {
+          "$type": "color",
+          "$value": "#464877",
+          "$description": "Benchmark token 584 of type color"
+        },
+        "brand.number.146": {
+          "$type": "number",
+          "$value": 75,
+          "$description": "Benchmark token 585 of type number"
+        },
+        "components.string.146": {
+          "$type": "string",
+          "$value": "value-146",
+          "$description": "Benchmark token 586 of type string"
+        },
+        "system.boolean.146": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 587 of type boolean"
+        },
+        "core.color.147": {
+          "$type": "color",
+          "$value": "#a66c8f",
+          "$description": "Benchmark token 588 of type color"
+        },
+        "brand.number.147": {
+          "$type": "number",
+          "$value": 67,
+          "$description": "Benchmark token 589 of type number"
+        },
+        "components.string.147": {
+          "$type": "string",
+          "$value": "value-147",
+          "$description": "Benchmark token 590 of type string"
+        },
+        "system.boolean.147": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 591 of type boolean"
+        },
+        "core.color.148": {
+          "$type": "color",
+          "$value": "#e99f14",
+          "$description": "Benchmark token 592 of type color"
+        },
+        "brand.number.148": {
+          "$type": "number",
+          "$value": 89,
+          "$description": "Benchmark token 593 of type number"
+        },
+        "components.string.148": {
+          "$type": "string",
+          "$value": "value-148",
+          "$description": "Benchmark token 594 of type string"
+        },
+        "system.boolean.148": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 595 of type boolean"
+        },
+        "core.color.149": {
+          "$type": "color",
+          "$value": "#a1cc52",
+          "$description": "Benchmark token 596 of type color"
+        },
+        "brand.number.149": {
+          "$type": "number",
+          "$value": 49,
+          "$description": "Benchmark token 597 of type number"
+        },
+        "components.string.149": {
+          "$type": "string",
+          "$value": "value-149",
+          "$description": "Benchmark token 598 of type string"
+        },
+        "system.boolean.149": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 599 of type boolean"
+        },
+        "core.color.150": {
+          "$type": "color",
+          "$value": "#2ce241",
+          "$description": "Benchmark token 600 of type color"
+        },
+        "brand.number.150": {
+          "$type": "number",
+          "$value": 16,
+          "$description": "Benchmark token 601 of type number"
+        },
+        "components.string.150": {
+          "$type": "string",
+          "$value": "value-150",
+          "$description": "Benchmark token 602 of type string"
+        },
+        "system.boolean.150": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 603 of type boolean"
+        },
+        "core.color.151": {
+          "$type": "color",
+          "$value": "#10bc26",
+          "$description": "Benchmark token 604 of type color"
+        },
+        "brand.number.151": {
+          "$type": "number",
+          "$value": 72,
+          "$description": "Benchmark token 605 of type number"
+        },
+        "components.string.151": {
+          "$type": "string",
+          "$value": "value-151",
+          "$description": "Benchmark token 606 of type string"
+        },
+        "system.boolean.151": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 607 of type boolean"
+        },
+        "core.color.152": {
+          "$type": "color",
+          "$value": "#060801",
+          "$description": "Benchmark token 608 of type color"
+        },
+        "brand.number.152": {
+          "$type": "number",
+          "$value": 6,
+          "$description": "Benchmark token 609 of type number"
+        },
+        "components.string.152": {
+          "$type": "string",
+          "$value": "value-152",
+          "$description": "Benchmark token 610 of type string"
+        },
+        "system.boolean.152": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 611 of type boolean"
+        },
+        "core.color.153": {
+          "$type": "color",
+          "$value": "#415c54",
+          "$description": "Benchmark token 612 of type color"
+        },
+        "brand.number.153": {
+          "$type": "number",
+          "$value": 94,
+          "$description": "Benchmark token 613 of type number"
+        },
+        "components.string.153": {
+          "$type": "string",
+          "$value": "value-153",
+          "$description": "Benchmark token 614 of type string"
+        },
+        "system.boolean.153": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 615 of type boolean"
+        },
+        "core.color.154": {
+          "$type": "color",
+          "$value": "#5b2941",
+          "$description": "Benchmark token 616 of type color"
+        },
+        "brand.number.154": {
+          "$type": "number",
+          "$value": 52,
+          "$description": "Benchmark token 617 of type number"
+        },
+        "components.string.154": {
+          "$type": "string",
+          "$value": "value-154",
+          "$description": "Benchmark token 618 of type string"
+        },
+        "system.boolean.154": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 619 of type boolean"
+        },
+        "core.color.155": {
+          "$type": "color",
+          "$value": "#c984e3",
+          "$description": "Benchmark token 620 of type color"
+        },
+        "brand.number.155": {
+          "$type": "number",
+          "$value": 82,
+          "$description": "Benchmark token 621 of type number"
+        },
+        "components.string.155": {
+          "$type": "string",
+          "$value": "value-155",
+          "$description": "Benchmark token 622 of type string"
+        },
+        "system.boolean.155": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 623 of type boolean"
+        },
+        "core.color.156": {
+          "$type": "color",
+          "$value": "#db7332",
+          "$description": "Benchmark token 624 of type color"
+        },
+        "brand.number.156": {
+          "$type": "number",
+          "$value": 77,
+          "$description": "Benchmark token 625 of type number"
+        },
+        "components.string.156": {
+          "$type": "string",
+          "$value": "value-156",
+          "$description": "Benchmark token 626 of type string"
+        },
+        "system.boolean.156": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 627 of type boolean"
+        },
+        "core.color.157": {
+          "$type": "color",
+          "$value": "#d29690",
+          "$description": "Benchmark token 628 of type color"
+        },
+        "brand.number.157": {
+          "$type": "number",
+          "$value": 61,
+          "$description": "Benchmark token 629 of type number"
+        },
+        "components.string.157": {
+          "$type": "string",
+          "$value": "value-157",
+          "$description": "Benchmark token 630 of type string"
+        },
+        "system.boolean.157": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 631 of type boolean"
+        },
+        "core.color.158": {
+          "$type": "color",
+          "$value": "#4c7c97",
+          "$description": "Benchmark token 632 of type color"
+        },
+        "brand.number.158": {
+          "$type": "number",
+          "$value": 31,
+          "$description": "Benchmark token 633 of type number"
+        },
+        "components.string.158": {
+          "$type": "string",
+          "$value": "value-158",
+          "$description": "Benchmark token 634 of type string"
+        },
+        "system.boolean.158": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 635 of type boolean"
+        },
+        "core.color.159": {
+          "$type": "color",
+          "$value": "#c54d8a",
+          "$description": "Benchmark token 636 of type color"
+        },
+        "brand.number.159": {
+          "$type": "number",
+          "$value": 87,
+          "$description": "Benchmark token 637 of type number"
+        },
+        "components.string.159": {
+          "$type": "string",
+          "$value": "value-159",
+          "$description": "Benchmark token 638 of type string"
+        },
+        "system.boolean.159": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 639 of type boolean"
+        },
+        "core.color.160": {
+          "$type": "color",
+          "$value": "#aac588",
+          "$description": "Benchmark token 640 of type color"
+        },
+        "brand.number.160": {
+          "$type": "number",
+          "$value": 59,
+          "$description": "Benchmark token 641 of type number"
+        },
+        "components.string.160": {
+          "$type": "string",
+          "$value": "value-160",
+          "$description": "Benchmark token 642 of type string"
+        },
+        "system.boolean.160": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 643 of type boolean"
+        },
+        "core.color.161": {
+          "$type": "color",
+          "$value": "#5f6240",
+          "$description": "Benchmark token 644 of type color"
+        },
+        "brand.number.161": {
+          "$type": "number",
+          "$value": 9,
+          "$description": "Benchmark token 645 of type number"
+        },
+        "components.string.161": {
+          "$type": "string",
+          "$value": "value-161",
+          "$description": "Benchmark token 646 of type string"
+        },
+        "system.boolean.161": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 647 of type boolean"
+        },
+        "core.color.162": {
+          "$type": "color",
+          "$value": "#ca609c",
+          "$description": "Benchmark token 648 of type color"
+        },
+        "brand.number.162": {
+          "$type": "number",
+          "$value": 58,
+          "$description": "Benchmark token 649 of type number"
+        },
+        "components.string.162": {
+          "$type": "string",
+          "$value": "value-162",
+          "$description": "Benchmark token 650 of type string"
+        },
+        "system.boolean.162": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 651 of type boolean"
+        },
+        "core.color.163": {
+          "$type": "color",
+          "$value": "#ceb34e",
+          "$description": "Benchmark token 652 of type color"
+        },
+        "brand.number.163": {
+          "$type": "number",
+          "$value": 56,
+          "$description": "Benchmark token 653 of type number"
+        },
+        "components.string.163": {
+          "$type": "string",
+          "$value": "value-163",
+          "$description": "Benchmark token 654 of type string"
+        },
+        "system.boolean.163": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 655 of type boolean"
+        },
+        "core.color.164": {
+          "$type": "color",
+          "$value": "#99134c",
+          "$description": "Benchmark token 656 of type color"
+        },
+        "brand.number.164": {
+          "$type": "number",
+          "$value": 43,
+          "$description": "Benchmark token 657 of type number"
+        },
+        "components.string.164": {
+          "$type": "string",
+          "$value": "value-164",
+          "$description": "Benchmark token 658 of type string"
+        },
+        "system.boolean.164": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 659 of type boolean"
+        },
+        "core.color.165": {
+          "$type": "color",
+          "$value": "#9b3cd0",
+          "$description": "Benchmark token 660 of type color"
+        },
+        "brand.number.165": {
+          "$type": "number",
+          "$value": 35,
+          "$description": "Benchmark token 661 of type number"
+        },
+        "components.string.165": {
+          "$type": "string",
+          "$value": "value-165",
+          "$description": "Benchmark token 662 of type string"
+        },
+        "system.boolean.165": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 663 of type boolean"
+        },
+        "core.color.166": {
+          "$type": "color",
+          "$value": "#779dc8",
+          "$description": "Benchmark token 664 of type color"
+        },
+        "brand.number.166": {
+          "$type": "number",
+          "$value": 37,
+          "$description": "Benchmark token 665 of type number"
+        },
+        "components.string.166": {
+          "$type": "string",
+          "$value": "value-166",
+          "$description": "Benchmark token 666 of type string"
+        },
+        "system.boolean.166": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 667 of type boolean"
+        },
+        "core.color.167": {
+          "$type": "color",
+          "$value": "#ba6b4e",
+          "$description": "Benchmark token 668 of type color"
+        },
+        "brand.number.167": {
+          "$type": "number",
+          "$value": 82,
+          "$description": "Benchmark token 669 of type number"
+        },
+        "components.string.167": {
+          "$type": "string",
+          "$value": "value-167",
+          "$description": "Benchmark token 670 of type string"
+        },
+        "system.boolean.167": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 671 of type boolean"
+        },
+        "core.color.168": {
+          "$type": "color",
+          "$value": "#eb075e",
+          "$description": "Benchmark token 672 of type color"
+        },
+        "brand.number.168": {
+          "$type": "number",
+          "$value": 88,
+          "$description": "Benchmark token 673 of type number"
+        },
+        "components.string.168": {
+          "$type": "string",
+          "$value": "value-168",
+          "$description": "Benchmark token 674 of type string"
+        },
+        "system.boolean.168": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 675 of type boolean"
+        },
+        "core.color.169": {
+          "$type": "color",
+          "$value": "#02a078",
+          "$description": "Benchmark token 676 of type color"
+        },
+        "brand.number.169": {
+          "$type": "number",
+          "$value": 35,
+          "$description": "Benchmark token 677 of type number"
+        },
+        "components.string.169": {
+          "$type": "string",
+          "$value": "value-169",
+          "$description": "Benchmark token 678 of type string"
+        },
+        "system.boolean.169": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 679 of type boolean"
+        },
+        "core.color.170": {
+          "$type": "color",
+          "$value": "#669798",
+          "$description": "Benchmark token 680 of type color"
+        },
+        "brand.number.170": {
+          "$type": "number",
+          "$value": 86,
+          "$description": "Benchmark token 681 of type number"
+        },
+        "components.string.170": {
+          "$type": "string",
+          "$value": "value-170",
+          "$description": "Benchmark token 682 of type string"
+        },
+        "system.boolean.170": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 683 of type boolean"
+        },
+        "core.color.171": {
+          "$type": "color",
+          "$value": "#dc3a51",
+          "$description": "Benchmark token 684 of type color"
+        },
+        "brand.number.171": {
+          "$type": "number",
+          "$value": 34,
+          "$description": "Benchmark token 685 of type number"
+        },
+        "components.string.171": {
+          "$type": "string",
+          "$value": "value-171",
+          "$description": "Benchmark token 686 of type string"
+        },
+        "system.boolean.171": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 687 of type boolean"
+        },
+        "core.color.172": {
+          "$type": "color",
+          "$value": "#ee306f",
+          "$description": "Benchmark token 688 of type color"
+        },
+        "brand.number.172": {
+          "$type": "number",
+          "$value": 79,
+          "$description": "Benchmark token 689 of type number"
+        },
+        "components.string.172": {
+          "$type": "string",
+          "$value": "value-172",
+          "$description": "Benchmark token 690 of type string"
+        },
+        "system.boolean.172": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 691 of type boolean"
+        },
+        "core.color.173": {
+          "$type": "color",
+          "$value": "#ce5fdb",
+          "$description": "Benchmark token 692 of type color"
+        },
+        "brand.number.173": {
+          "$type": "number",
+          "$value": 84,
+          "$description": "Benchmark token 693 of type number"
+        },
+        "components.string.173": {
+          "$type": "string",
+          "$value": "value-173",
+          "$description": "Benchmark token 694 of type string"
+        },
+        "system.boolean.173": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 695 of type boolean"
+        },
+        "core.color.174": {
+          "$type": "color",
+          "$value": "#9ef8cc",
+          "$description": "Benchmark token 696 of type color"
+        },
+        "brand.number.174": {
+          "$type": "number",
+          "$value": 78,
+          "$description": "Benchmark token 697 of type number"
+        },
+        "components.string.174": {
+          "$type": "string",
+          "$value": "value-174",
+          "$description": "Benchmark token 698 of type string"
+        },
+        "system.boolean.174": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 699 of type boolean"
+        },
+        "core.color.175": {
+          "$type": "color",
+          "$value": "#feed20",
+          "$description": "Benchmark token 700 of type color"
+        },
+        "brand.number.175": {
+          "$type": "number",
+          "$value": 65,
+          "$description": "Benchmark token 701 of type number"
+        },
+        "components.string.175": {
+          "$type": "string",
+          "$value": "value-175",
+          "$description": "Benchmark token 702 of type string"
+        },
+        "system.boolean.175": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 703 of type boolean"
+        },
+        "core.color.176": {
+          "$type": "color",
+          "$value": "#d9ed5e",
+          "$description": "Benchmark token 704 of type color"
+        },
+        "brand.number.176": {
+          "$type": "number",
+          "$value": 76,
+          "$description": "Benchmark token 705 of type number"
+        },
+        "components.string.176": {
+          "$type": "string",
+          "$value": "value-176",
+          "$description": "Benchmark token 706 of type string"
+        },
+        "system.boolean.176": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 707 of type boolean"
+        },
+        "core.color.177": {
+          "$type": "color",
+          "$value": "#2dcab4",
+          "$description": "Benchmark token 708 of type color"
+        },
+        "brand.number.177": {
+          "$type": "number",
+          "$value": 69,
+          "$description": "Benchmark token 709 of type number"
+        },
+        "components.string.177": {
+          "$type": "string",
+          "$value": "value-177",
+          "$description": "Benchmark token 710 of type string"
+        },
+        "system.boolean.177": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 711 of type boolean"
+        },
+        "core.color.178": {
+          "$type": "color",
+          "$value": "#2e5683",
+          "$description": "Benchmark token 712 of type color"
+        },
+        "brand.number.178": {
+          "$type": "number",
+          "$value": 7,
+          "$description": "Benchmark token 713 of type number"
+        },
+        "components.string.178": {
+          "$type": "string",
+          "$value": "value-178",
+          "$description": "Benchmark token 714 of type string"
+        },
+        "system.boolean.178": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 715 of type boolean"
+        },
+        "core.color.179": {
+          "$type": "color",
+          "$value": "#93b0fc",
+          "$description": "Benchmark token 716 of type color"
+        },
+        "brand.number.179": {
+          "$type": "number",
+          "$value": 35,
+          "$description": "Benchmark token 717 of type number"
+        },
+        "components.string.179": {
+          "$type": "string",
+          "$value": "value-179",
+          "$description": "Benchmark token 718 of type string"
+        },
+        "system.boolean.179": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 719 of type boolean"
+        },
+        "core.color.180": {
+          "$type": "color",
+          "$value": "#26b55d",
+          "$description": "Benchmark token 720 of type color"
+        },
+        "brand.number.180": {
+          "$type": "number",
+          "$value": 51,
+          "$description": "Benchmark token 721 of type number"
+        },
+        "components.string.180": {
+          "$type": "string",
+          "$value": "value-180",
+          "$description": "Benchmark token 722 of type string"
+        },
+        "system.boolean.180": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 723 of type boolean"
+        },
+        "core.color.181": {
+          "$type": "color",
+          "$value": "#eb5cc5",
+          "$description": "Benchmark token 724 of type color"
+        },
+        "brand.number.181": {
+          "$type": "number",
+          "$value": 72,
+          "$description": "Benchmark token 725 of type number"
+        },
+        "components.string.181": {
+          "$type": "string",
+          "$value": "value-181",
+          "$description": "Benchmark token 726 of type string"
+        },
+        "system.boolean.181": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 727 of type boolean"
+        },
+        "core.color.182": {
+          "$type": "color",
+          "$value": "#959e5c",
+          "$description": "Benchmark token 728 of type color"
+        },
+        "brand.number.182": {
+          "$type": "number",
+          "$value": 91,
+          "$description": "Benchmark token 729 of type number"
+        },
+        "components.string.182": {
+          "$type": "string",
+          "$value": "value-182",
+          "$description": "Benchmark token 730 of type string"
+        },
+        "system.boolean.182": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 731 of type boolean"
+        },
+        "core.color.183": {
+          "$type": "color",
+          "$value": "#1d7568",
+          "$description": "Benchmark token 732 of type color"
+        },
+        "brand.number.183": {
+          "$type": "number",
+          "$value": 56,
+          "$description": "Benchmark token 733 of type number"
+        },
+        "components.string.183": {
+          "$type": "string",
+          "$value": "value-183",
+          "$description": "Benchmark token 734 of type string"
+        },
+        "system.boolean.183": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 735 of type boolean"
+        },
+        "core.color.184": {
+          "$type": "color",
+          "$value": "#3d6fa1",
+          "$description": "Benchmark token 736 of type color"
+        },
+        "brand.number.184": {
+          "$type": "number",
+          "$value": 36,
+          "$description": "Benchmark token 737 of type number"
+        },
+        "components.string.184": {
+          "$type": "string",
+          "$value": "value-184",
+          "$description": "Benchmark token 738 of type string"
+        },
+        "system.boolean.184": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 739 of type boolean"
+        },
+        "core.color.185": {
+          "$type": "color",
+          "$value": "#f66f86",
+          "$description": "Benchmark token 740 of type color"
+        },
+        "brand.number.185": {
+          "$type": "number",
+          "$value": 38,
+          "$description": "Benchmark token 741 of type number"
+        },
+        "components.string.185": {
+          "$type": "string",
+          "$value": "value-185",
+          "$description": "Benchmark token 742 of type string"
+        },
+        "system.boolean.185": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 743 of type boolean"
+        },
+        "core.color.186": {
+          "$type": "color",
+          "$value": "#1fd5d2",
+          "$description": "Benchmark token 744 of type color"
+        },
+        "brand.number.186": {
+          "$type": "number",
+          "$value": 65,
+          "$description": "Benchmark token 745 of type number"
+        },
+        "components.string.186": {
+          "$type": "string",
+          "$value": "value-186",
+          "$description": "Benchmark token 746 of type string"
+        },
+        "system.boolean.186": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 747 of type boolean"
+        },
+        "core.color.187": {
+          "$type": "color",
+          "$value": "#d8bc31",
+          "$description": "Benchmark token 748 of type color"
+        },
+        "brand.number.187": {
+          "$type": "number",
+          "$value": 21,
+          "$description": "Benchmark token 749 of type number"
+        },
+        "components.string.187": {
+          "$type": "string",
+          "$value": "value-187",
+          "$description": "Benchmark token 750 of type string"
+        },
+        "system.boolean.187": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 751 of type boolean"
+        },
+        "core.color.188": {
+          "$type": "color",
+          "$value": "#6171ac",
+          "$description": "Benchmark token 752 of type color"
+        },
+        "brand.number.188": {
+          "$type": "number",
+          "$value": 30,
+          "$description": "Benchmark token 753 of type number"
+        },
+        "components.string.188": {
+          "$type": "string",
+          "$value": "value-188",
+          "$description": "Benchmark token 754 of type string"
+        },
+        "system.boolean.188": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 755 of type boolean"
+        },
+        "core.color.189": {
+          "$type": "color",
+          "$value": "#89c9fc",
+          "$description": "Benchmark token 756 of type color"
+        },
+        "brand.number.189": {
+          "$type": "number",
+          "$value": 61,
+          "$description": "Benchmark token 757 of type number"
+        },
+        "components.string.189": {
+          "$type": "string",
+          "$value": "value-189",
+          "$description": "Benchmark token 758 of type string"
+        },
+        "system.boolean.189": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 759 of type boolean"
+        },
+        "core.color.190": {
+          "$type": "color",
+          "$value": "#f755de",
+          "$description": "Benchmark token 760 of type color"
+        },
+        "brand.number.190": {
+          "$type": "number",
+          "$value": 11,
+          "$description": "Benchmark token 761 of type number"
+        },
+        "components.string.190": {
+          "$type": "string",
+          "$value": "value-190",
+          "$description": "Benchmark token 762 of type string"
+        },
+        "system.boolean.190": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 763 of type boolean"
+        },
+        "core.color.191": {
+          "$type": "color",
+          "$value": "#b23a31",
+          "$description": "Benchmark token 764 of type color"
+        },
+        "brand.number.191": {
+          "$type": "number",
+          "$value": 73,
+          "$description": "Benchmark token 765 of type number"
+        },
+        "components.string.191": {
+          "$type": "string",
+          "$value": "value-191",
+          "$description": "Benchmark token 766 of type string"
+        },
+        "system.boolean.191": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 767 of type boolean"
+        },
+        "core.color.192": {
+          "$type": "color",
+          "$value": "#a27419",
+          "$description": "Benchmark token 768 of type color"
+        },
+        "brand.number.192": {
+          "$type": "number",
+          "$value": 17,
+          "$description": "Benchmark token 769 of type number"
+        },
+        "components.string.192": {
+          "$type": "string",
+          "$value": "value-192",
+          "$description": "Benchmark token 770 of type string"
+        },
+        "system.boolean.192": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 771 of type boolean"
+        },
+        "core.color.193": {
+          "$type": "color",
+          "$value": "#8eeef7",
+          "$description": "Benchmark token 772 of type color"
+        },
+        "brand.number.193": {
+          "$type": "number",
+          "$value": 82,
+          "$description": "Benchmark token 773 of type number"
+        },
+        "components.string.193": {
+          "$type": "string",
+          "$value": "value-193",
+          "$description": "Benchmark token 774 of type string"
+        },
+        "system.boolean.193": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 775 of type boolean"
+        },
+        "core.color.194": {
+          "$type": "color",
+          "$value": "#412bf9",
+          "$description": "Benchmark token 776 of type color"
+        },
+        "brand.number.194": {
+          "$type": "number",
+          "$value": 51,
+          "$description": "Benchmark token 777 of type number"
+        },
+        "components.string.194": {
+          "$type": "string",
+          "$value": "value-194",
+          "$description": "Benchmark token 778 of type string"
+        },
+        "system.boolean.194": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 779 of type boolean"
+        },
+        "core.color.195": {
+          "$type": "color",
+          "$value": "#6a00ca",
+          "$description": "Benchmark token 780 of type color"
+        },
+        "brand.number.195": {
+          "$type": "number",
+          "$value": 56,
+          "$description": "Benchmark token 781 of type number"
+        },
+        "components.string.195": {
+          "$type": "string",
+          "$value": "value-195",
+          "$description": "Benchmark token 782 of type string"
+        },
+        "system.boolean.195": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 783 of type boolean"
+        },
+        "core.color.196": {
+          "$type": "color",
+          "$value": "#6e1c10",
+          "$description": "Benchmark token 784 of type color"
+        },
+        "brand.number.196": {
+          "$type": "number",
+          "$value": 89,
+          "$description": "Benchmark token 785 of type number"
+        },
+        "components.string.196": {
+          "$type": "string",
+          "$value": "value-196",
+          "$description": "Benchmark token 786 of type string"
+        },
+        "system.boolean.196": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 787 of type boolean"
+        },
+        "core.color.197": {
+          "$type": "color",
+          "$value": "#8a71fd",
+          "$description": "Benchmark token 788 of type color"
+        },
+        "brand.number.197": {
+          "$type": "number",
+          "$value": 73,
+          "$description": "Benchmark token 789 of type number"
+        },
+        "components.string.197": {
+          "$type": "string",
+          "$value": "value-197",
+          "$description": "Benchmark token 790 of type string"
+        },
+        "system.boolean.197": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 791 of type boolean"
+        },
+        "core.color.198": {
+          "$type": "color",
+          "$value": "#a63fc0",
+          "$description": "Benchmark token 792 of type color"
+        },
+        "brand.number.198": {
+          "$type": "number",
+          "$value": 25,
+          "$description": "Benchmark token 793 of type number"
+        },
+        "components.string.198": {
+          "$type": "string",
+          "$value": "value-198",
+          "$description": "Benchmark token 794 of type string"
+        },
+        "system.boolean.198": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 795 of type boolean"
+        },
+        "core.color.199": {
+          "$type": "color",
+          "$value": "#17281f",
+          "$description": "Benchmark token 796 of type color"
+        },
+        "brand.number.199": {
+          "$type": "number",
+          "$value": 85,
+          "$description": "Benchmark token 797 of type number"
+        },
+        "components.string.199": {
+          "$type": "string",
+          "$value": "value-199",
+          "$description": "Benchmark token 798 of type string"
+        },
+        "system.boolean.199": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 799 of type boolean"
+        },
+        "core.color.200": {
+          "$type": "color",
+          "$value": "#b66568",
+          "$description": "Benchmark token 800 of type color"
+        },
+        "brand.number.200": {
+          "$type": "number",
+          "$value": 67,
+          "$description": "Benchmark token 801 of type number"
+        },
+        "components.string.200": {
+          "$type": "string",
+          "$value": "value-200",
+          "$description": "Benchmark token 802 of type string"
+        },
+        "system.boolean.200": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 803 of type boolean"
+        },
+        "core.color.201": {
+          "$type": "color",
+          "$value": "#b86e4c",
+          "$description": "Benchmark token 804 of type color"
+        },
+        "brand.number.201": {
+          "$type": "number",
+          "$value": 63,
+          "$description": "Benchmark token 805 of type number"
+        },
+        "components.string.201": {
+          "$type": "string",
+          "$value": "value-201",
+          "$description": "Benchmark token 806 of type string"
+        },
+        "system.boolean.201": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 807 of type boolean"
+        },
+        "core.color.202": {
+          "$type": "color",
+          "$value": "#9a8fec",
+          "$description": "Benchmark token 808 of type color"
+        },
+        "brand.number.202": {
+          "$type": "number",
+          "$value": 56,
+          "$description": "Benchmark token 809 of type number"
+        },
+        "components.string.202": {
+          "$type": "string",
+          "$value": "value-202",
+          "$description": "Benchmark token 810 of type string"
+        },
+        "system.boolean.202": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 811 of type boolean"
+        },
+        "core.color.203": {
+          "$type": "color",
+          "$value": "#73b786",
+          "$description": "Benchmark token 812 of type color"
+        },
+        "brand.number.203": {
+          "$type": "number",
+          "$value": 72,
+          "$description": "Benchmark token 813 of type number"
+        },
+        "components.string.203": {
+          "$type": "string",
+          "$value": "value-203",
+          "$description": "Benchmark token 814 of type string"
+        },
+        "system.boolean.203": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 815 of type boolean"
+        },
+        "core.color.204": {
+          "$type": "color",
+          "$value": "#d0a22d",
+          "$description": "Benchmark token 816 of type color"
+        },
+        "brand.number.204": {
+          "$type": "number",
+          "$value": 21,
+          "$description": "Benchmark token 817 of type number"
+        },
+        "components.string.204": {
+          "$type": "string",
+          "$value": "value-204",
+          "$description": "Benchmark token 818 of type string"
+        },
+        "system.boolean.204": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 819 of type boolean"
+        },
+        "core.color.205": {
+          "$type": "color",
+          "$value": "#d40c6f",
+          "$description": "Benchmark token 820 of type color"
+        },
+        "brand.number.205": {
+          "$type": "number",
+          "$value": 66,
+          "$description": "Benchmark token 821 of type number"
+        },
+        "components.string.205": {
+          "$type": "string",
+          "$value": "value-205",
+          "$description": "Benchmark token 822 of type string"
+        },
+        "system.boolean.205": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 823 of type boolean"
+        },
+        "core.color.206": {
+          "$type": "color",
+          "$value": "#87a00b",
+          "$description": "Benchmark token 824 of type color"
+        },
+        "brand.number.206": {
+          "$type": "number",
+          "$value": 34,
+          "$description": "Benchmark token 825 of type number"
+        },
+        "components.string.206": {
+          "$type": "string",
+          "$value": "value-206",
+          "$description": "Benchmark token 826 of type string"
+        },
+        "system.boolean.206": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 827 of type boolean"
+        },
+        "core.color.207": {
+          "$type": "color",
+          "$value": "#1f1661",
+          "$description": "Benchmark token 828 of type color"
+        },
+        "brand.number.207": {
+          "$type": "number",
+          "$value": 62,
+          "$description": "Benchmark token 829 of type number"
+        },
+        "components.string.207": {
+          "$type": "string",
+          "$value": "value-207",
+          "$description": "Benchmark token 830 of type string"
+        },
+        "system.boolean.207": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 831 of type boolean"
+        },
+        "core.color.208": {
+          "$type": "color",
+          "$value": "#39a12a",
+          "$description": "Benchmark token 832 of type color"
+        },
+        "brand.number.208": {
+          "$type": "number",
+          "$value": 17,
+          "$description": "Benchmark token 833 of type number"
+        },
+        "components.string.208": {
+          "$type": "string",
+          "$value": "value-208",
+          "$description": "Benchmark token 834 of type string"
+        },
+        "system.boolean.208": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 835 of type boolean"
+        },
+        "core.color.209": {
+          "$type": "color",
+          "$value": "#ef192f",
+          "$description": "Benchmark token 836 of type color"
+        },
+        "brand.number.209": {
+          "$type": "number",
+          "$value": 79,
+          "$description": "Benchmark token 837 of type number"
+        },
+        "components.string.209": {
+          "$type": "string",
+          "$value": "value-209",
+          "$description": "Benchmark token 838 of type string"
+        },
+        "system.boolean.209": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 839 of type boolean"
+        },
+        "core.color.210": {
+          "$type": "color",
+          "$value": "#910a04",
+          "$description": "Benchmark token 840 of type color"
+        },
+        "brand.number.210": {
+          "$type": "number",
+          "$value": 91,
+          "$description": "Benchmark token 841 of type number"
+        },
+        "components.string.210": {
+          "$type": "string",
+          "$value": "value-210",
+          "$description": "Benchmark token 842 of type string"
+        },
+        "system.boolean.210": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 843 of type boolean"
+        },
+        "core.color.211": {
+          "$type": "color",
+          "$value": "#7e51f9",
+          "$description": "Benchmark token 844 of type color"
+        },
+        "brand.number.211": {
+          "$type": "number",
+          "$value": 87,
+          "$description": "Benchmark token 845 of type number"
+        },
+        "components.string.211": {
+          "$type": "string",
+          "$value": "value-211",
+          "$description": "Benchmark token 846 of type string"
+        },
+        "system.boolean.211": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 847 of type boolean"
+        },
+        "core.color.212": {
+          "$type": "color",
+          "$value": "#ccdbbd",
+          "$description": "Benchmark token 848 of type color"
+        },
+        "brand.number.212": {
+          "$type": "number",
+          "$value": 77,
+          "$description": "Benchmark token 849 of type number"
+        },
+        "components.string.212": {
+          "$type": "string",
+          "$value": "value-212",
+          "$description": "Benchmark token 850 of type string"
+        },
+        "system.boolean.212": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 851 of type boolean"
+        },
+        "core.color.213": {
+          "$type": "color",
+          "$value": "#41a14a",
+          "$description": "Benchmark token 852 of type color"
+        },
+        "brand.number.213": {
+          "$type": "number",
+          "$value": 85,
+          "$description": "Benchmark token 853 of type number"
+        },
+        "components.string.213": {
+          "$type": "string",
+          "$value": "value-213",
+          "$description": "Benchmark token 854 of type string"
+        },
+        "system.boolean.213": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 855 of type boolean"
+        },
+        "core.color.214": {
+          "$type": "color",
+          "$value": "#57f1cf",
+          "$description": "Benchmark token 856 of type color"
+        },
+        "brand.number.214": {
+          "$type": "number",
+          "$value": 89,
+          "$description": "Benchmark token 857 of type number"
+        },
+        "components.string.214": {
+          "$type": "string",
+          "$value": "value-214",
+          "$description": "Benchmark token 858 of type string"
+        },
+        "system.boolean.214": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 859 of type boolean"
+        },
+        "core.color.215": {
+          "$type": "color",
+          "$value": "#32e1c8",
+          "$description": "Benchmark token 860 of type color"
+        },
+        "brand.number.215": {
+          "$type": "number",
+          "$value": 69,
+          "$description": "Benchmark token 861 of type number"
+        },
+        "components.string.215": {
+          "$type": "string",
+          "$value": "value-215",
+          "$description": "Benchmark token 862 of type string"
+        },
+        "system.boolean.215": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 863 of type boolean"
+        },
+        "core.color.216": {
+          "$type": "color",
+          "$value": "#79b3af",
+          "$description": "Benchmark token 864 of type color"
+        },
+        "brand.number.216": {
+          "$type": "number",
+          "$value": 34,
+          "$description": "Benchmark token 865 of type number"
+        },
+        "components.string.216": {
+          "$type": "string",
+          "$value": "value-216",
+          "$description": "Benchmark token 866 of type string"
+        },
+        "system.boolean.216": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 867 of type boolean"
+        },
+        "core.color.217": {
+          "$type": "color",
+          "$value": "#7a0ef2",
+          "$description": "Benchmark token 868 of type color"
+        },
+        "brand.number.217": {
+          "$type": "number",
+          "$value": 13,
+          "$description": "Benchmark token 869 of type number"
+        },
+        "components.string.217": {
+          "$type": "string",
+          "$value": "value-217",
+          "$description": "Benchmark token 870 of type string"
+        },
+        "system.boolean.217": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 871 of type boolean"
+        },
+        "core.color.218": {
+          "$type": "color",
+          "$value": "#c43f06",
+          "$description": "Benchmark token 872 of type color"
+        },
+        "brand.number.218": {
+          "$type": "number",
+          "$value": 18,
+          "$description": "Benchmark token 873 of type number"
+        },
+        "components.string.218": {
+          "$type": "string",
+          "$value": "value-218",
+          "$description": "Benchmark token 874 of type string"
+        },
+        "system.boolean.218": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 875 of type boolean"
+        },
+        "core.color.219": {
+          "$type": "color",
+          "$value": "#d707c5",
+          "$description": "Benchmark token 876 of type color"
+        },
+        "brand.number.219": {
+          "$type": "number",
+          "$value": 40,
+          "$description": "Benchmark token 877 of type number"
+        },
+        "components.string.219": {
+          "$type": "string",
+          "$value": "value-219",
+          "$description": "Benchmark token 878 of type string"
+        },
+        "system.boolean.219": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 879 of type boolean"
+        },
+        "core.color.220": {
+          "$type": "color",
+          "$value": "#b0a24f",
+          "$description": "Benchmark token 880 of type color"
+        },
+        "brand.number.220": {
+          "$type": "number",
+          "$value": 57,
+          "$description": "Benchmark token 881 of type number"
+        },
+        "components.string.220": {
+          "$type": "string",
+          "$value": "value-220",
+          "$description": "Benchmark token 882 of type string"
+        },
+        "system.boolean.220": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 883 of type boolean"
+        },
+        "core.color.221": {
+          "$type": "color",
+          "$value": "#aeb03e",
+          "$description": "Benchmark token 884 of type color"
+        },
+        "brand.number.221": {
+          "$type": "number",
+          "$value": 68,
+          "$description": "Benchmark token 885 of type number"
+        },
+        "components.string.221": {
+          "$type": "string",
+          "$value": "value-221",
+          "$description": "Benchmark token 886 of type string"
+        },
+        "system.boolean.221": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 887 of type boolean"
+        },
+        "core.color.222": {
+          "$type": "color",
+          "$value": "#0fff9c",
+          "$description": "Benchmark token 888 of type color"
+        },
+        "brand.number.222": {
+          "$type": "number",
+          "$value": 15,
+          "$description": "Benchmark token 889 of type number"
+        },
+        "components.string.222": {
+          "$type": "string",
+          "$value": "value-222",
+          "$description": "Benchmark token 890 of type string"
+        },
+        "system.boolean.222": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 891 of type boolean"
+        },
+        "core.color.223": {
+          "$type": "color",
+          "$value": "#b26e6e",
+          "$description": "Benchmark token 892 of type color"
+        },
+        "brand.number.223": {
+          "$type": "number",
+          "$value": 39,
+          "$description": "Benchmark token 893 of type number"
+        },
+        "components.string.223": {
+          "$type": "string",
+          "$value": "value-223",
+          "$description": "Benchmark token 894 of type string"
+        },
+        "system.boolean.223": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 895 of type boolean"
+        },
+        "core.color.224": {
+          "$type": "color",
+          "$value": "#6cb046",
+          "$description": "Benchmark token 896 of type color"
+        },
+        "brand.number.224": {
+          "$type": "number",
+          "$value": 96,
+          "$description": "Benchmark token 897 of type number"
+        },
+        "components.string.224": {
+          "$type": "string",
+          "$value": "value-224",
+          "$description": "Benchmark token 898 of type string"
+        },
+        "system.boolean.224": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 899 of type boolean"
+        },
+        "core.color.225": {
+          "$type": "color",
+          "$value": "#f86253",
+          "$description": "Benchmark token 900 of type color"
+        },
+        "brand.number.225": {
+          "$type": "number",
+          "$value": 97,
+          "$description": "Benchmark token 901 of type number"
+        },
+        "components.string.225": {
+          "$type": "string",
+          "$value": "value-225",
+          "$description": "Benchmark token 902 of type string"
+        },
+        "system.boolean.225": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 903 of type boolean"
+        },
+        "core.color.226": {
+          "$type": "color",
+          "$value": "#e835e2",
+          "$description": "Benchmark token 904 of type color"
+        },
+        "brand.number.226": {
+          "$type": "number",
+          "$value": 50,
+          "$description": "Benchmark token 905 of type number"
+        },
+        "components.string.226": {
+          "$type": "string",
+          "$value": "value-226",
+          "$description": "Benchmark token 906 of type string"
+        },
+        "system.boolean.226": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 907 of type boolean"
+        },
+        "core.color.227": {
+          "$type": "color",
+          "$value": "#a9a8be",
+          "$description": "Benchmark token 908 of type color"
+        },
+        "brand.number.227": {
+          "$type": "number",
+          "$value": 68,
+          "$description": "Benchmark token 909 of type number"
+        },
+        "components.string.227": {
+          "$type": "string",
+          "$value": "value-227",
+          "$description": "Benchmark token 910 of type string"
+        },
+        "system.boolean.227": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 911 of type boolean"
+        },
+        "core.color.228": {
+          "$type": "color",
+          "$value": "#855c02",
+          "$description": "Benchmark token 912 of type color"
+        },
+        "brand.number.228": {
+          "$type": "number",
+          "$value": 14,
+          "$description": "Benchmark token 913 of type number"
+        },
+        "components.string.228": {
+          "$type": "string",
+          "$value": "value-228",
+          "$description": "Benchmark token 914 of type string"
+        },
+        "system.boolean.228": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 915 of type boolean"
+        },
+        "core.color.229": {
+          "$type": "color",
+          "$value": "#f80ef3",
+          "$description": "Benchmark token 916 of type color"
+        },
+        "brand.number.229": {
+          "$type": "number",
+          "$value": 90,
+          "$description": "Benchmark token 917 of type number"
+        },
+        "components.string.229": {
+          "$type": "string",
+          "$value": "value-229",
+          "$description": "Benchmark token 918 of type string"
+        },
+        "system.boolean.229": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 919 of type boolean"
+        },
+        "core.color.230": {
+          "$type": "color",
+          "$value": "#e6ef89",
+          "$description": "Benchmark token 920 of type color"
+        },
+        "brand.number.230": {
+          "$type": "number",
+          "$value": 2,
+          "$description": "Benchmark token 921 of type number"
+        },
+        "components.string.230": {
+          "$type": "string",
+          "$value": "value-230",
+          "$description": "Benchmark token 922 of type string"
+        },
+        "system.boolean.230": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 923 of type boolean"
+        },
+        "core.color.231": {
+          "$type": "color",
+          "$value": "#c62435",
+          "$description": "Benchmark token 924 of type color"
+        },
+        "brand.number.231": {
+          "$type": "number",
+          "$value": 86,
+          "$description": "Benchmark token 925 of type number"
+        },
+        "components.string.231": {
+          "$type": "string",
+          "$value": "value-231",
+          "$description": "Benchmark token 926 of type string"
+        },
+        "system.boolean.231": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 927 of type boolean"
+        },
+        "core.color.232": {
+          "$type": "color",
+          "$value": "#0f6368",
+          "$description": "Benchmark token 928 of type color"
+        },
+        "brand.number.232": {
+          "$type": "number",
+          "$value": 53,
+          "$description": "Benchmark token 929 of type number"
+        },
+        "components.string.232": {
+          "$type": "string",
+          "$value": "value-232",
+          "$description": "Benchmark token 930 of type string"
+        },
+        "system.boolean.232": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 931 of type boolean"
+        },
+        "core.color.233": {
+          "$type": "color",
+          "$value": "#ceaecd",
+          "$description": "Benchmark token 932 of type color"
+        },
+        "brand.number.233": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Benchmark token 933 of type number"
+        },
+        "components.string.233": {
+          "$type": "string",
+          "$value": "value-233",
+          "$description": "Benchmark token 934 of type string"
+        },
+        "system.boolean.233": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 935 of type boolean"
+        },
+        "core.color.234": {
+          "$type": "color",
+          "$value": "#a5f12a",
+          "$description": "Benchmark token 936 of type color"
+        },
+        "brand.number.234": {
+          "$type": "number",
+          "$value": 18,
+          "$description": "Benchmark token 937 of type number"
+        },
+        "components.string.234": {
+          "$type": "string",
+          "$value": "value-234",
+          "$description": "Benchmark token 938 of type string"
+        },
+        "system.boolean.234": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 939 of type boolean"
+        },
+        "core.color.235": {
+          "$type": "color",
+          "$value": "#f4c56d",
+          "$description": "Benchmark token 940 of type color"
+        },
+        "brand.number.235": {
+          "$type": "number",
+          "$value": 94,
+          "$description": "Benchmark token 941 of type number"
+        },
+        "components.string.235": {
+          "$type": "string",
+          "$value": "value-235",
+          "$description": "Benchmark token 942 of type string"
+        },
+        "system.boolean.235": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 943 of type boolean"
+        },
+        "core.color.236": {
+          "$type": "color",
+          "$value": "#a7afd4",
+          "$description": "Benchmark token 944 of type color"
+        },
+        "brand.number.236": {
+          "$type": "number",
+          "$value": 38,
+          "$description": "Benchmark token 945 of type number"
+        },
+        "components.string.236": {
+          "$type": "string",
+          "$value": "value-236",
+          "$description": "Benchmark token 946 of type string"
+        },
+        "system.boolean.236": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 947 of type boolean"
+        },
+        "core.color.237": {
+          "$type": "color",
+          "$value": "#976eb4",
+          "$description": "Benchmark token 948 of type color"
+        },
+        "brand.number.237": {
+          "$type": "number",
+          "$value": 40,
+          "$description": "Benchmark token 949 of type number"
+        },
+        "components.string.237": {
+          "$type": "string",
+          "$value": "value-237",
+          "$description": "Benchmark token 950 of type string"
+        },
+        "system.boolean.237": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 951 of type boolean"
+        },
+        "core.color.238": {
+          "$type": "color",
+          "$value": "#bc916d",
+          "$description": "Benchmark token 952 of type color"
+        },
+        "brand.number.238": {
+          "$type": "number",
+          "$value": 89,
+          "$description": "Benchmark token 953 of type number"
+        },
+        "components.string.238": {
+          "$type": "string",
+          "$value": "value-238",
+          "$description": "Benchmark token 954 of type string"
+        },
+        "system.boolean.238": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 955 of type boolean"
+        },
+        "core.color.239": {
+          "$type": "color",
+          "$value": "#c7ab10",
+          "$description": "Benchmark token 956 of type color"
+        },
+        "brand.number.239": {
+          "$type": "number",
+          "$value": 23,
+          "$description": "Benchmark token 957 of type number"
+        },
+        "components.string.239": {
+          "$type": "string",
+          "$value": "value-239",
+          "$description": "Benchmark token 958 of type string"
+        },
+        "system.boolean.239": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 959 of type boolean"
+        },
+        "core.color.240": {
+          "$type": "color",
+          "$value": "#452a7b",
+          "$description": "Benchmark token 960 of type color"
+        },
+        "brand.number.240": {
+          "$type": "number",
+          "$value": 43,
+          "$description": "Benchmark token 961 of type number"
+        },
+        "components.string.240": {
+          "$type": "string",
+          "$value": "value-240",
+          "$description": "Benchmark token 962 of type string"
+        },
+        "system.boolean.240": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 963 of type boolean"
+        },
+        "core.color.241": {
+          "$type": "color",
+          "$value": "#421594",
+          "$description": "Benchmark token 964 of type color"
+        },
+        "brand.number.241": {
+          "$type": "number",
+          "$value": 73,
+          "$description": "Benchmark token 965 of type number"
+        },
+        "components.string.241": {
+          "$type": "string",
+          "$value": "value-241",
+          "$description": "Benchmark token 966 of type string"
+        },
+        "system.boolean.241": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 967 of type boolean"
+        },
+        "core.color.242": {
+          "$type": "color",
+          "$value": "#ef509d",
+          "$description": "Benchmark token 968 of type color"
+        },
+        "brand.number.242": {
+          "$type": "number",
+          "$value": 74,
+          "$description": "Benchmark token 969 of type number"
+        },
+        "components.string.242": {
+          "$type": "string",
+          "$value": "value-242",
+          "$description": "Benchmark token 970 of type string"
+        },
+        "system.boolean.242": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 971 of type boolean"
+        },
+        "core.color.243": {
+          "$type": "color",
+          "$value": "#5b920d",
+          "$description": "Benchmark token 972 of type color"
+        },
+        "brand.number.243": {
+          "$type": "number",
+          "$value": 13,
+          "$description": "Benchmark token 973 of type number"
+        },
+        "components.string.243": {
+          "$type": "string",
+          "$value": "value-243",
+          "$description": "Benchmark token 974 of type string"
+        },
+        "system.boolean.243": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 975 of type boolean"
+        },
+        "core.color.244": {
+          "$type": "color",
+          "$value": "#7d6533",
+          "$description": "Benchmark token 976 of type color"
+        },
+        "brand.number.244": {
+          "$type": "number",
+          "$value": 12,
+          "$description": "Benchmark token 977 of type number"
+        },
+        "components.string.244": {
+          "$type": "string",
+          "$value": "value-244",
+          "$description": "Benchmark token 978 of type string"
+        },
+        "system.boolean.244": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 979 of type boolean"
+        },
+        "core.color.245": {
+          "$type": "color",
+          "$value": "#62d0c2",
+          "$description": "Benchmark token 980 of type color"
+        },
+        "brand.number.245": {
+          "$type": "number",
+          "$value": 39,
+          "$description": "Benchmark token 981 of type number"
+        },
+        "components.string.245": {
+          "$type": "string",
+          "$value": "value-245",
+          "$description": "Benchmark token 982 of type string"
+        },
+        "system.boolean.245": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 983 of type boolean"
+        },
+        "core.color.246": {
+          "$type": "color",
+          "$value": "#3b3bf6",
+          "$description": "Benchmark token 984 of type color"
+        },
+        "brand.number.246": {
+          "$type": "number",
+          "$value": 66,
+          "$description": "Benchmark token 985 of type number"
+        },
+        "components.string.246": {
+          "$type": "string",
+          "$value": "value-246",
+          "$description": "Benchmark token 986 of type string"
+        },
+        "system.boolean.246": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 987 of type boolean"
+        },
+        "core.color.247": {
+          "$type": "color",
+          "$value": "#e2ed9c",
+          "$description": "Benchmark token 988 of type color"
+        },
+        "brand.number.247": {
+          "$type": "number",
+          "$value": 1,
+          "$description": "Benchmark token 989 of type number"
+        },
+        "components.string.247": {
+          "$type": "string",
+          "$value": "value-247",
+          "$description": "Benchmark token 990 of type string"
+        },
+        "system.boolean.247": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 991 of type boolean"
+        },
+        "core.color.248": {
+          "$type": "color",
+          "$value": "#a8640b",
+          "$description": "Benchmark token 992 of type color"
+        },
+        "brand.number.248": {
+          "$type": "number",
+          "$value": 55,
+          "$description": "Benchmark token 993 of type number"
+        },
+        "components.string.248": {
+          "$type": "string",
+          "$value": "value-248",
+          "$description": "Benchmark token 994 of type string"
+        },
+        "system.boolean.248": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 995 of type boolean"
+        },
+        "core.color.249": {
+          "$type": "color",
+          "$value": "#464548",
+          "$description": "Benchmark token 996 of type color"
+        },
+        "brand.number.249": {
+          "$type": "number",
+          "$value": 58,
+          "$description": "Benchmark token 997 of type number"
+        },
+        "components.string.249": {
+          "$type": "string",
+          "$value": "value-249",
+          "$description": "Benchmark token 998 of type string"
+        },
+        "system.boolean.249": {
+          "$type": "boolean",
+          "$value": false,
+          "$description": "Benchmark token 999 of type boolean"
+        }
+      }
+    }
+  }
+]

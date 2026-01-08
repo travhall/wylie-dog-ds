@@ -3,6 +3,7 @@ import type {
   TokenConflict,
   ConflictResolution,
 } from "../../plugin/sync/types";
+import { useVirtualizer } from "../hooks/useVirtualizer";
 
 interface ConflictResolutionDisplayProps {
   conflicts: TokenConflict[];
@@ -107,6 +108,25 @@ export function ConflictResolutionDisplay({
   const allResolved = resolutions.size === conflicts.length;
   const groupedConflicts = getConflictsByType();
 
+  // Virtualization setup
+  const listRef = useRef<HTMLDivElement>(null);
+
+  // Simple height estimation:
+  // Base item (expanded) ~300px, collapsed ~100px.
+  // For now, we'll estimate a fixed size, but dealing with dynamic heights
+  // without a more complex virtualizer is tricky.
+  // A safe bet for a custom hook is to use a fixed estimate or maintain a cache.
+  // Our simple hook supports dynamic heights via ResizeObserver internally if we pass the right ref,
+  // but let's start with a rough estimate.
+  const estimateSize = () => 200; // Average pixel height
+
+  const { virtualItems, totalSize } = useVirtualizer({
+    count: conflicts.length,
+    getScrollElement: () => listRef.current,
+    estimateSize,
+    overscan: 5,
+  });
+
   return (
     <div
       role="dialog"
@@ -134,8 +154,10 @@ export function ConflictResolutionDisplay({
           padding: "var(--space-5)",
           maxWidth: "600px",
           width: "100%",
-          maxHeight: "80vh",
-          overflow: "auto",
+          height: "calc(100vh - 48px)", // Fixed height to ensure footer visibility
+          maxHeight: "800px",
+          display: "flex", // Change to flex column for layout
+          flexDirection: "column",
           boxShadow: "var(--shadow-lg)",
         }}
       >
@@ -145,9 +167,10 @@ export function ConflictResolutionDisplay({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            marginBottom: "var(--space-4)",
-            paddingBottom: "var(--space-3)",
+            marginBottom: "var(--space-3)",
+            paddingBottom: "var(--space-2)",
             borderBottom: "1px solid var(--border-default)",
+            flexShrink: 0, // Prevent header from shrinking
           }}
         >
           <div>
@@ -192,67 +215,91 @@ export function ConflictResolutionDisplay({
           </button>
         </div>
 
-        {/* Batch Actions */}
+        {/* Batch Actions & Stats Bar */}
         <div
-          role="group"
-          aria-label="Batch resolution actions"
+          style={{
+            display: "flex",
+            gap: "var(--space-3)",
+            marginBottom: "var(--space-3)",
+            flexShrink: 0,
+            flexWrap: "wrap",
+            alignItems: "center",
+          }}
+        >
+          {/* Batch Buttons */}
+          <div style={{ display: "flex", gap: "var(--space-2)", flex: 1 }}>
+            <button
+              onClick={() => handleBatchResolve("take-local")}
+              style={{
+                flex: 1,
+                padding: "var(--space-2)",
+                backgroundColor: "var(--surface-secondary)", // Neutral base
+                border: "1px solid var(--accent-primary)", // Color hint
+                color: "var(--accent-primary)",
+                borderRadius: "var(--radius-md)",
+                cursor: "pointer",
+                fontSize: "var(--font-size-xs)",
+                fontWeight: "var(--font-weight-bold)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "var(--space-2)",
+                transition: "var(--transition-base)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--accent-primary)";
+                e.currentTarget.style.color = "var(--text-inverse)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor =
+                  "var(--surface-secondary)";
+                e.currentTarget.style.color = "var(--accent-primary)";
+              }}
+            >
+              <span>📍</span> Keep All Local
+            </button>
+            <button
+              onClick={() => handleBatchResolve("take-remote")}
+              style={{
+                flex: 1,
+                padding: "var(--space-2)",
+                backgroundColor: "var(--surface-secondary)",
+                border: "1px solid var(--success)",
+                color: "var(--success)",
+                borderRadius: "var(--radius-md)",
+                cursor: "pointer",
+                fontSize: "var(--font-size-xs)",
+                fontWeight: "var(--font-weight-bold)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "var(--space-2)",
+                transition: "var(--transition-base)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--success)";
+                e.currentTarget.style.color = "var(--text-inverse)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor =
+                  "var(--surface-secondary)";
+                e.currentTarget.style.color = "var(--success)";
+              }}
+            >
+              <span>📥</span> Accept All Remote
+            </button>
+          </div>
+        </div>
+
+        {/* Stats Chips */}
+        <div
           style={{
             display: "flex",
             gap: "var(--space-2)",
-            marginBottom: "var(--space-4)",
-            padding: "var(--space-3)",
-            backgroundColor: "var(--surface-secondary)",
-            borderRadius: "var(--radius-md)",
-            border: "1px solid var(--border-default)",
-          }}
-        >
-          <button
-            onClick={() => handleBatchResolve("take-local")}
-            style={{
-              flex: 1,
-              padding: "var(--space-2) var(--space-3)",
-              backgroundColor: "var(--accent-primary)",
-              color: "var(--text-inverse)",
-              border: "none",
-              borderRadius: "var(--radius-sm)",
-              cursor: "pointer",
-              fontSize: "var(--font-size-sm)",
-              fontWeight: "var(--font-weight-bold)",
-              transition: "var(--transition-base)",
-            }}
-          >
-            <span aria-hidden="true">📍</span> Keep All Local Changes (
-            {resolutions.size === 0 ? conflicts.length : "..."})
-          </button>
-          <button
-            onClick={() => handleBatchResolve("take-remote")}
-            style={{
-              flex: 1,
-              padding: "var(--space-2) var(--space-3)",
-              backgroundColor: "var(--success)",
-              color: "var(--text-inverse)",
-              border: "none",
-              borderRadius: "var(--radius-sm)",
-              cursor: "pointer",
-              fontSize: "var(--font-size-sm)",
-              fontWeight: "var(--font-weight-bold)",
-              transition: "var(--transition-base)",
-            }}
-          >
-            <span aria-hidden="true">📥</span> Accept All Remote Changes (
-            {resolutions.size === 0 ? conflicts.length : "..."})
-          </button>
-        </div>
-
-        {/* Summary Stats */}
-        <div
-          role="status"
-          aria-label="Conflict statistics"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "var(--space-2)",
-            marginBottom: "var(--space-4)",
+            marginBottom: "var(--space-3)",
+            flexShrink: 0,
+            overflowX: "auto",
+            paddingBottom: "2px",
           }}
         >
           {Object.entries(groupedConflicts).map(
@@ -261,58 +308,76 @@ export function ConflictResolutionDisplay({
                 <div
                   key={type}
                   style={{
-                    padding: "var(--space-2)",
-                    backgroundColor:
-                      type === "deletion"
-                        ? "var(--error-light)"
-                        : "var(--info-light)",
-                    borderRadius: "var(--radius-sm)",
-                    textAlign: "center",
+                    padding: "2px 8px",
+                    backgroundColor: "var(--surface-tertiary)",
+                    borderRadius: "12px",
+                    fontSize: "var(--font-size-xs)",
+                    color: "var(--text-secondary)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    border: "1px solid var(--border-default)",
                   }}
                 >
-                  <div
-                    style={{
-                      fontSize: "var(--font-size-md)",
-                      fontWeight: "var(--font-weight-bold)",
-                    }}
+                  <span
+                    style={{ fontWeight: "bold", color: "var(--text-primary)" }}
                   >
                     {conflicts.length}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "var(--font-size-xs)",
-                      color: "var(--text-secondary)",
-                      textTransform: "capitalize",
-                    }}
-                  >
+                  </span>
+                  <span style={{ textTransform: "capitalize" }}>
                     {type.replace("-", " ")}
-                  </div>
+                  </span>
                 </div>
               )
           )}
         </div>
 
-        {/* Conflicts List */}
+        {/* Conflicts List (Virtual Scroll) */}
         <div
+          ref={listRef}
           role="list"
           aria-label="List of conflicts"
           style={{
-            maxHeight: "400px",
+            flex: 1, // Take remaining space
             overflowY: "auto",
-            marginBottom: "var(--space-4)",
+            marginBottom: "var(--space-3)",
+            position: "relative",
+            minHeight: 0, // Critical for flex scrolling
           }}
         >
-          {conflicts.map((conflict) => (
-            <ConflictItem
-              key={conflict.conflictId}
-              conflict={conflict}
-              resolution={resolutions.get(conflict.conflictId)}
-              onResolve={(resolution) =>
-                handleResolution(conflict.conflictId, resolution)
-              }
-              showAdvanced={showAdvanced}
-            />
-          ))}
+          <div
+            style={{
+              height: `${totalSize}px`,
+              width: "100%",
+              position: "relative",
+            }}
+          >
+            {virtualItems.map((virtualItem) => {
+              const conflict = conflicts[virtualItem.index];
+              return (
+                <div
+                  key={conflict.conflictId}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: `${virtualItem.size}px`,
+                    transform: `translateY(${virtualItem.start}px)`,
+                  }}
+                >
+                  <ConflictItem
+                    conflict={conflict}
+                    resolution={resolutions.get(conflict.conflictId)}
+                    onResolve={(resolution) =>
+                      handleResolution(conflict.conflictId, resolution)
+                    }
+                    showAdvanced={showAdvanced}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Progress Indicator */}
@@ -691,10 +756,21 @@ function ConflictItem({
             cursor: "pointer",
             fontSize: "var(--font-size-sm)",
             fontWeight: "var(--font-weight-medium)",
-            transition: "var(--transition-base)",
+            transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+            transform:
+              resolution?.resolution === "take-local"
+                ? "scale(1.02)"
+                : "scale(1)",
+            boxShadow:
+              resolution?.resolution === "take-local"
+                ? "0 2px 4px rgba(0,0,0,0.1)"
+                : "none",
           }}
         >
-          <span aria-hidden="true">📍</span> Keep Local
+          <span aria-hidden="true">
+            {resolution?.resolution === "take-local" ? "✅" : "📍"}
+          </span>{" "}
+          Keep Local
         </button>
         <button
           onClick={() => handleResolve("take-remote")}
@@ -716,10 +792,21 @@ function ConflictItem({
             cursor: "pointer",
             fontSize: "var(--font-size-sm)",
             fontWeight: "var(--font-weight-medium)",
-            transition: "var(--transition-base)",
+            transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+            transform:
+              resolution?.resolution === "take-remote"
+                ? "scale(1.02)"
+                : "scale(1)",
+            boxShadow:
+              resolution?.resolution === "take-remote"
+                ? "0 2px 4px rgba(0,0,0,0.1)"
+                : "none",
           }}
         >
-          <span aria-hidden="true">📥</span> Take Remote
+          <span aria-hidden="true">
+            {resolution?.resolution === "take-remote" ? "✅" : "📥"}
+          </span>{" "}
+          Take Remote
         </button>
       </div>
     </div>

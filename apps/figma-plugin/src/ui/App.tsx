@@ -17,7 +17,6 @@ import { UIProvider, useUIContext } from "./state";
 import { usePluginMessages } from "./hooks/usePluginMessages";
 import { useGitHubSync } from "./hooks/domain/useGitHubSync";
 import { ConflictAwareGitHubClient } from "../plugin/sync/conflict-aware-github-client";
-import JSZip from "jszip";
 import type { GitHubConfig } from "../shared/types";
 import type { ConflictResolution } from "../plugin/sync/types";
 
@@ -35,6 +34,7 @@ import { GitHubConfig as GitHubConfigDialog } from "./components/GitHubConfig";
 import { FirstRunOnboarding } from "./components/FirstRunOnboarding";
 import { ExistingTokensImporter } from "./components/ExistingTokensImporter";
 import { FormatGuidelinesDialog } from "./components/FormatGuidelinesDialog";
+import { HelpMenu } from "./components/HelpMenu";
 
 console.log("App.tsx loaded");
 
@@ -114,6 +114,9 @@ function AppInner() {
           } else {
             // Multiple files - create zip
             console.log(`📦 Creating zip archive with ${fileCount} files`);
+
+            // Dynamic import for JSZip to reduce bundle size
+            const { default: JSZip } = await import("jszip");
             const zip = new JSZip();
 
             pluginState.downloadQueue.forEach((file) => {
@@ -285,16 +288,33 @@ function AppInner() {
           borderBottom: "1px solid var(--border-primary)",
         }}
       >
-        <h2
+        <div
           style={{
-            margin: 0,
-            fontSize: "var(--font-size-xl)",
-            fontWeight: "var(--font-weight-semibold)",
-            color: "var(--text-primary)",
+            display: "flex",
+            alignItems: "center",
+            gap: "var(--space-3)",
           }}
         >
-          Token Bridge
-        </h2>
+          <h2
+            style={{
+              margin: 0,
+              fontSize: "var(--font-size-xl)",
+              fontWeight: "var(--font-weight-semibold)",
+              color: "var(--text-primary)",
+            }}
+          >
+            Token Bridge
+          </h2>
+        </div>
+        <HelpMenu
+          onReset={() => {
+            // Basic reset for now - clear UI state
+            dispatch({ type: "SET_TAB", tab: "tokens" });
+            pluginActions.setLoading(false);
+            pluginActions.setError(null);
+            // Could send a message to plugin to clear storage if needed
+          }}
+        />
       </div>
 
       {/* Error Display */}

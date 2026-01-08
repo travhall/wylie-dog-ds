@@ -4,6 +4,7 @@ import type {
   CollectionDetails,
 } from "../../hooks/usePluginMessages";
 import { EmptyTokensState } from "../EmptyTokensState";
+import { CollectionSkeleton } from "../common/Skeleton";
 
 interface TokensTabProps {
   collections: Collection[];
@@ -209,12 +210,14 @@ export function TokensTab({
       {loading ? (
         <div
           style={{
-            padding: "var(--space-8)",
-            textAlign: "center",
-            color: "var(--text-secondary)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--space-2)",
           }}
         >
-          Loading collections...
+          <CollectionSkeleton />
+          <CollectionSkeleton />
+          <CollectionSkeleton />
         </div>
       ) : hasCollections ? (
         <div

@@ -45,7 +45,25 @@ export function EnhancedErrorDisplay({
     }
   };
 
+  const getDocsLink = (error: PluginError): string | null => {
+    const baseUrl =
+      "https://github.com/wylie-dog-ds/apps/figma-plugin/blob/main/docs";
+    switch (error.type) {
+      case ErrorType.TOKEN_FORMAT_ERROR:
+        return `${baseUrl}/FORMATS.md`;
+      case ErrorType.AUTHENTICATION_ERROR:
+      case ErrorType.REPOSITORY_ERROR:
+      case ErrorType.NETWORK_ERROR:
+        return `${baseUrl}/SETUP.md`;
+      case ErrorType.CONFLICT_ERROR:
+        return `${baseUrl}/SYNC.md#conflicts`;
+      default:
+        return null;
+    }
+  };
+
   const friendlyMessage = getFriendlyMessage(pluginError);
+  const docsLink = getDocsLink(pluginError);
 
   return (
     <div
@@ -214,6 +232,27 @@ export function EnhancedErrorDisplay({
           justifyContent: "flex-end",
         }}
       >
+        {docsLink && (
+          <button
+            onClick={() => window.open(docsLink, "_blank")}
+            style={{
+              padding: "var(--space-2) var(--space-4)",
+              backgroundColor: "var(--surface-primary)",
+              color: "var(--text-primary)",
+              border: "1px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              cursor: "pointer",
+              fontSize: "var(--font-size-xs)",
+              fontWeight: "var(--font-weight-medium)",
+              transition: "var(--transition-base)",
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--space-2)",
+            }}
+          >
+            <span>📚</span> Read Docs
+          </button>
+        )}
         {pluginError.recoverable && onRetry && (
           <button
             onClick={onRetry}
