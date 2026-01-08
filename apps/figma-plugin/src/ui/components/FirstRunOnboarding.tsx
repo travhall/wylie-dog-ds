@@ -1,4 +1,4 @@
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 
 interface FirstRunOnboardingProps {
   onDemoTokens: () => void;
@@ -13,8 +13,50 @@ export const FirstRunOnboarding = ({
   onSetupGitHub,
   onSkip,
 }: FirstRunOnboardingProps) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Focus trap logic
+      if (e.key === "Tab" && modalRef.current) {
+        const focusableElements = modalRef.current.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[
+          focusableElements.length - 1
+        ] as HTMLElement;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement?.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement?.focus();
+          }
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Focus first element on mount
+    const firstButton = modalRef.current?.querySelector("button");
+    firstButton?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="onboarding-title"
       style={{
         position: "fixed",
         top: 0,
@@ -27,6 +69,7 @@ export const FirstRunOnboarding = ({
       }}
     >
       <div
+        ref={modalRef}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -38,6 +81,7 @@ export const FirstRunOnboarding = ({
         {/* Welcome Header */}
         <div style={{ marginBottom: "48px" }}>
           <h1
+            id="onboarding-title"
             style={{
               margin: "0 0 8px 0",
               fontSize: "20px",
@@ -61,6 +105,8 @@ export const FirstRunOnboarding = ({
 
         {/* Options Container */}
         <div
+          role="group"
+          aria-label="Getting started options"
           style={{
             width: "100%",
             maxWidth: "480px",
@@ -70,6 +116,7 @@ export const FirstRunOnboarding = ({
           }}
         >
           <div
+            id="start-options-label"
             style={{
               marginBottom: "8px",
               fontSize: "12px",
@@ -123,7 +170,9 @@ export const FirstRunOnboarding = ({
             }}
           >
             <div style={{ display: "flex", alignItems: "start", gap: "16px" }}>
-              <div style={{ fontSize: "32px" }}>⚡</div>
+              <div style={{ fontSize: "32px" }} aria-hidden="true">
+                ⚡
+              </div>
               <div style={{ flex: 1 }}>
                 <div
                   style={{
@@ -186,7 +235,9 @@ export const FirstRunOnboarding = ({
             }}
           >
             <div style={{ display: "flex", alignItems: "start", gap: "16px" }}>
-              <div style={{ fontSize: "32px" }}>📁</div>
+              <div style={{ fontSize: "32px" }} aria-hidden="true">
+                📁
+              </div>
               <div style={{ flex: 1 }}>
                 <div
                   style={{
@@ -248,7 +299,9 @@ export const FirstRunOnboarding = ({
             }}
           >
             <div style={{ display: "flex", alignItems: "start", gap: "16px" }}>
-              <div style={{ fontSize: "32px" }}>🔧</div>
+              <div style={{ fontSize: "32px" }} aria-hidden="true">
+                🔧
+              </div>
               <div style={{ flex: 1 }}>
                 <div
                   style={{

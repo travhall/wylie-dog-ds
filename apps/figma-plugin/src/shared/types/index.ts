@@ -39,3 +39,6 @@ export interface GitHubConfig {
   syncMode: SyncMode;
   isWylieDogProject?: boolean; // Auto-detected: true if repo has wylie-dog-ds structure
 }
+
+// Re-export ConflictResolution from sync types for convenience
+export type { ConflictResolution } from "../../plugin/sync/types";

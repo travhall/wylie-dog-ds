@@ -43,6 +43,7 @@ apps/figma-plugin/
 ├── src/
 │   ├── plugin/           # Plugin thread (Figma API access)
 │   │   ├── main.ts       # Entry point
+│   │   ├── handlers/     # Message handlers (Modular)
 │   │   ├── github/       # GitHub sync logic
 │   │   ├── sync/         # Conflict detection
 │   │   └── variables/    # Token processing
@@ -69,7 +70,7 @@ Token Bridge uses Figma's plugin architecture with two separate JavaScript conte
 
 - Has access to Figma API (`figma.variables`, `figma.clientStorage`, etc.)
 - Runs in sandboxed environment
-- Handles token processing, GitHub sync, file operations
+- Handles token processing, GitHub sync, file operations (via modular handlers)
 
 **UI Thread** (`src/ui/App.tsx`)
 

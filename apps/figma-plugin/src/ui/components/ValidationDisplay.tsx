@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { useEffect, useRef } from "preact/hooks";
 
 interface ValidationError {
   type:
@@ -41,9 +42,55 @@ export function ValidationDisplay({
   onClose,
 }: ValidationDisplayProps) {
   const { valid, errors, warnings, stats } = validationReport;
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Focus trap and Escape key handler
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (e.key === "Tab" && modalRef.current) {
+        const focusableElements = modalRef.current.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[
+          focusableElements.length - 1
+        ] as HTMLElement;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement?.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement?.focus();
+          }
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Focus close button on mount
+    closeButtonRef.current?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="validation-title"
       style={{
         position: "fixed",
         top: 0,
@@ -58,6 +105,7 @@ export function ValidationDisplay({
       }}
     >
       <div
+        ref={modalRef}
         style={{
           backgroundColor: "var(--surface-primary)",
           borderRadius: "var(--radius-lg)",
@@ -66,6 +114,7 @@ export function ValidationDisplay({
           maxHeight: "80vh",
           overflow: "auto",
           boxShadow: "var(--shadow-lg)",
+          width: "90%",
         }}
       >
         <div
@@ -77,17 +126,24 @@ export function ValidationDisplay({
           }}
         >
           <h2
+            id="validation-title"
             style={{
               margin: 0,
               fontSize: "var(--font-size-xl)",
               fontWeight: "var(--font-weight-bold)",
               color: valid ? "var(--success)" : "var(--error)",
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--space-2)",
             }}
           >
-            {valid ? "✅ Validation Passed" : "❌ Validation Failed"}
+            <span aria-hidden="true">{valid ? "✅" : "❌"}</span>
+            {valid ? "Validation Passed" : "Validation Failed"}
           </h2>
           <button
+            ref={closeButtonRef}
             onClick={onClose}
+            aria-label="Close validation report"
             style={{
               background: "none",
               border: "none",
@@ -95,14 +151,18 @@ export function ValidationDisplay({
               cursor: "pointer",
               color: "var(--text-secondary)",
               transition: "var(--transition-base)",
+              padding: "var(--space-1)",
+              borderRadius: "var(--radius-sm)",
             }}
           >
-            ×
+            <span aria-hidden="true">×</span>
           </button>
         </div>
 
         {/* Statistics */}
         <div
+          role="region"
+          aria-label="Validation Statistics"
           style={{
             backgroundColor: "var(--surface-secondary)",
             padding: "var(--space-3)",
@@ -116,9 +176,12 @@ export function ValidationDisplay({
               fontSize: "var(--font-size-md)",
               fontWeight: "var(--font-weight-semibold)",
               color: "var(--text-primary)",
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--space-2)",
             }}
           >
-            📊 Statistics
+            <span aria-hidden="true">📊</span> Statistics
           </h3>
           <div
             style={{
@@ -143,14 +206,18 @@ export function ValidationDisplay({
                 fontSize: "var(--font-size-md)",
                 fontWeight: "var(--font-weight-semibold)",
                 color: "var(--error)",
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-2)",
               }}
             >
-              ❌ Errors ({errors.length})
+              <span aria-hidden="true">❌</span> Errors ({errors.length})
             </h3>
-            <div style={{ maxHeight: "200px", overflow: "auto" }}>
+            <div role="list" style={{ maxHeight: "200px", overflow: "auto" }}>
               {errors.map((error, i) => (
                 <div
                   key={i}
+                  role="listitem"
                   style={{
                     backgroundColor: "var(--error-light)",
                     border: "1px solid var(--error)",
@@ -179,7 +246,7 @@ export function ValidationDisplay({
                         marginTop: "var(--space-1)",
                       }}
                     >
-                      💡 {error.suggestion}
+                      <span aria-hidden="true">💡</span> {error.suggestion}
                     </div>
                   )}
                 </div>
@@ -197,14 +264,18 @@ export function ValidationDisplay({
                 fontSize: "var(--font-size-md)",
                 fontWeight: "var(--font-weight-semibold)",
                 color: "var(--warning)",
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-2)",
               }}
             >
-              ⚠️ Warnings ({warnings.length})
+              <span aria-hidden="true">⚠️</span> Warnings ({warnings.length})
             </h3>
-            <div style={{ maxHeight: "200px", overflow: "auto" }}>
+            <div role="list" style={{ maxHeight: "200px", overflow: "auto" }}>
               {warnings.map((warning, i) => (
                 <div
                   key={i}
+                  role="listitem"
                   style={{
                     backgroundColor: "var(--warning-light)",
                     border: "1px solid var(--warning)",
@@ -233,7 +304,7 @@ export function ValidationDisplay({
                         marginTop: "var(--space-1)",
                       }}
                     >
-                      💡 {warning.suggestion}
+                      <span aria-hidden="true">💡</span> {warning.suggestion}
                     </div>
                   )}
                 </div>
@@ -252,6 +323,7 @@ export function ValidationDisplay({
         >
           <button
             onClick={onClose}
+            aria-label="Close validation report"
             style={{
               padding: "var(--space-2) var(--space-4)",
               backgroundColor: "var(--accent-primary)",

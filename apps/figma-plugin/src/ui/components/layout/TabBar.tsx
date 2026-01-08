@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { useRef, useEffect } from "preact/hooks";
 
 export type TabId = "tokens" | "import" | "sync";
 
@@ -46,6 +47,13 @@ export function TabBar({
     };
   });
 
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  // Update refs array size if tabs change
+  useEffect(() => {
+    tabRefs.current = tabRefs.current.slice(0, resolvedTabs.length);
+  }, [resolvedTabs.length]);
+
   const handleKeyDown = (e: KeyboardEvent, currentIndex: number) => {
     let newIndex = currentIndex;
 
@@ -72,17 +80,15 @@ export function TabBar({
     const tab = resolvedTabs[newIndex];
     if (tab && !tab.disabled) {
       onTabChange(tab.id);
-      // Focus the new tab button
-      const tabButton = document.querySelector(
-        `[data-tab-id="${tab.id}"]`
-      ) as HTMLButtonElement;
-      tabButton?.focus();
+      // Focus the new tab button using ref
+      tabRefs.current[newIndex]?.focus();
     }
   };
 
   return (
     <div
       role="tablist"
+      aria-label="Main Navigation"
       style={{
         display: "flex",
         gap: "var(--space-1)",
@@ -98,11 +104,14 @@ export function TabBar({
         return (
           <button
             key={tab.id}
+            ref={(el) => {
+              tabRefs.current[index] = el;
+            }}
             role="tab"
             aria-selected={isActive}
             aria-controls={`${tab.id}-panel`}
             aria-disabled={isDisabled}
-            data-tab-id={tab.id}
+            id={`tab-${tab.id}`}
             aria-label={TAB_ARIA_LABELS[tab.id] ?? tab.label}
             tabIndex={isActive ? 0 : -1}
             onClick={() => !isDisabled && onTabChange(tab.id)}
@@ -131,7 +140,12 @@ export function TabBar({
             }}
           >
             {tab.icon && (
-              <span style={{ marginRight: "var(--space-1)" }}>{tab.icon}</span>
+              <span
+                style={{ marginRight: "var(--space-1)" }}
+                aria-hidden="true"
+              >
+                {tab.icon}
+              </span>
             )}
             {tab.label}
 

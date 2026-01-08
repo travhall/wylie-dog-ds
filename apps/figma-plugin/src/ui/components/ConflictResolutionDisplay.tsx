@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 import type {
   TokenConflict,
   ConflictResolution,
@@ -22,43 +22,51 @@ export function ConflictResolutionDisplay({
   >(new Map());
   const [showAdvanced, setShowAdvanced] = useState(false);
 
-  // Helper to get display value that shows mode-specific changes
-  const getDisplayValue = (token: any) => {
-    if (!token) return "undefined";
+  const modalRef = useRef<HTMLDivElement>(null);
+  const cancelButtonRef = useRef<HTMLButtonElement>(null);
 
-    // If token has valuesByMode, show which modes have values
-    if (token.valuesByMode && Object.keys(token.valuesByMode).length > 0) {
-      const modes = Object.entries(token.valuesByMode)
-        .map(([mode, value]) => `${mode}: ${value}`)
-        .join(", ");
-      return modes;
-    }
-
-    return token.$value || "undefined";
-  };
-
-  // Helper to detect which modes changed
-  const getChangedModes = (localToken: any, remoteToken: any) => {
-    if (!localToken?.valuesByMode || !remoteToken?.valuesByMode) {
-      return null;
-    }
-
-    const changed: string[] = [];
-    const allModes = new Set([
-      ...Object.keys(localToken.valuesByMode),
-      ...Object.keys(remoteToken.valuesByMode),
-    ]);
-
-    for (const mode of allModes) {
-      const localValue = localToken.valuesByMode[mode];
-      const remoteValue = remoteToken.valuesByMode[mode];
-      if (localValue !== remoteValue) {
-        changed.push(mode);
+  // Focus trap and Escape key handler
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onCancel();
+        return;
       }
-    }
 
-    return changed.length > 0 ? changed : null;
-  };
+      if (e.key === "Tab" && modalRef.current) {
+        const focusableElements = modalRef.current.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[
+          focusableElements.length - 1
+        ] as HTMLElement;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement?.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement?.focus();
+          }
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Focus first actionable element (Cancel button for safety) on mount
+    cancelButtonRef.current?.focus();
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onCancel]);
+
+  // Helper code remains the same...
 
   const handleResolution = (
     conflictId: string,
@@ -101,6 +109,9 @@ export function ConflictResolutionDisplay({
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="conflict-dialog-title"
       style={{
         position: "fixed",
         top: 0,
@@ -116,11 +127,13 @@ export function ConflictResolutionDisplay({
       }}
     >
       <div
+        ref={modalRef}
         style={{
           backgroundColor: "var(--surface-primary)",
           borderRadius: "var(--radius-lg)",
           padding: "var(--space-5)",
           maxWidth: "600px",
+          width: "100%",
           maxHeight: "80vh",
           overflow: "auto",
           boxShadow: "var(--shadow-lg)",
@@ -139,14 +152,18 @@ export function ConflictResolutionDisplay({
         >
           <div>
             <h2
+              id="conflict-dialog-title"
               style={{
                 margin: "0",
                 fontSize: "var(--font-size-xl)",
                 fontWeight: "var(--font-weight-bold)",
                 color: "var(--text-primary)",
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-2)",
               }}
             >
-              🔄 Sync Conflicts Detected
+              <span aria-hidden="true">🔄</span> Sync Conflicts Detected
             </h2>
             <p
               style={{
@@ -160,6 +177,7 @@ export function ConflictResolutionDisplay({
           </div>
           <button
             onClick={() => setShowAdvanced(!showAdvanced)}
+            aria-pressed={showAdvanced}
             style={{
               padding: "var(--space-1) var(--space-2)",
               backgroundColor: "var(--surface-secondary)",
@@ -176,6 +194,8 @@ export function ConflictResolutionDisplay({
 
         {/* Batch Actions */}
         <div
+          role="group"
+          aria-label="Batch resolution actions"
           style={{
             display: "flex",
             gap: "var(--space-2)",
@@ -201,7 +221,7 @@ export function ConflictResolutionDisplay({
               transition: "var(--transition-base)",
             }}
           >
-            📍 Keep All Local Changes (
+            <span aria-hidden="true">📍</span> Keep All Local Changes (
             {resolutions.size === 0 ? conflicts.length : "..."})
           </button>
           <button
@@ -219,13 +239,15 @@ export function ConflictResolutionDisplay({
               transition: "var(--transition-base)",
             }}
           >
-            📥 Accept All Remote Changes (
+            <span aria-hidden="true">📥</span> Accept All Remote Changes (
             {resolutions.size === 0 ? conflicts.length : "..."})
           </button>
         </div>
 
         {/* Summary Stats */}
         <div
+          role="status"
+          aria-label="Conflict statistics"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
@@ -272,6 +294,8 @@ export function ConflictResolutionDisplay({
 
         {/* Conflicts List */}
         <div
+          role="list"
+          aria-label="List of conflicts"
           style={{
             maxHeight: "400px",
             overflowY: "auto",
@@ -293,6 +317,8 @@ export function ConflictResolutionDisplay({
 
         {/* Progress Indicator */}
         <div
+          role="status"
+          aria-live="polite"
           style={{
             marginBottom: "var(--space-4)",
             padding: "var(--space-2)",
@@ -324,6 +350,7 @@ export function ConflictResolutionDisplay({
           }}
         >
           <button
+            ref={cancelButtonRef}
             onClick={onCancel}
             disabled={loading}
             style={{
@@ -342,6 +369,7 @@ export function ConflictResolutionDisplay({
           <button
             onClick={() => onResolve(Array.from(resolutions.values()))}
             disabled={!allResolved || loading}
+            aria-busy={loading}
             style={{
               padding: "var(--space-2) var(--space-4)",
               backgroundColor:
@@ -423,6 +451,7 @@ function ConflictItem({
 
   return (
     <div
+      role="listitem"
       style={{
         marginBottom: "var(--space-3)",
         padding: "var(--space-3)",
@@ -450,7 +479,7 @@ function ConflictItem({
             gap: "var(--space-2)",
           }}
         >
-          <span style={{ fontSize: "var(--font-size-lg)" }}>
+          <span style={{ fontSize: "var(--font-size-lg)" }} aria-hidden="true">
             {getTypeIcon(conflict.type)}
           </span>
           <div>
@@ -469,7 +498,13 @@ function ConflictItem({
                 color: "var(--text-secondary)",
               }}
             >
-              {conflict.collectionName} • {conflict.type}
+              <span aria-label={`Collection: ${conflict.collectionName}`}>
+                {conflict.collectionName}
+              </span>
+              {" • "}
+              <span aria-label={`Conflict Type: ${conflict.type}`}>
+                {conflict.type}
+              </span>
             </div>
           </div>
         </div>
@@ -481,6 +516,7 @@ function ConflictItem({
           }}
         >
           <span
+            aria-label={`Severity: ${conflict.severity}`}
             style={{
               padding: "2px var(--space-2)",
               borderRadius: "var(--radius-sm)",
@@ -495,6 +531,7 @@ function ConflictItem({
           {showAdvanced && (
             <button
               onClick={() => setShowDetails(!showDetails)}
+              aria-expanded={showDetails}
               style={{
                 padding: "2px var(--space-2)",
                 backgroundColor: "var(--surface-secondary)",
@@ -549,7 +586,7 @@ function ConflictItem({
                 color: "var(--text-primary)",
               }}
             >
-              📍 Local Value
+              <span aria-hidden="true">📍</span> Local Value
             </div>
             <code
               style={{
@@ -581,7 +618,7 @@ function ConflictItem({
                 color: "var(--text-primary)",
               }}
             >
-              📥 Remote Value
+              <span aria-hidden="true">📥</span> Remote Value
             </div>
             <code
               style={{
@@ -636,6 +673,8 @@ function ConflictItem({
       <div style={{ display: "flex", gap: "var(--space-2)" }}>
         <button
           onClick={() => handleResolve("take-local")}
+          aria-label={`Keep Local: ${conflict.tokenName}`}
+          title={`Keep Local: ${conflict.tokenName}`}
           style={{
             flex: 1,
             padding: "var(--space-2) var(--space-3)",
@@ -655,10 +694,12 @@ function ConflictItem({
             transition: "var(--transition-base)",
           }}
         >
-          📍 Keep Local
+          <span aria-hidden="true">📍</span> Keep Local
         </button>
         <button
           onClick={() => handleResolve("take-remote")}
+          aria-label={`Take Remote: ${conflict.tokenName}`}
+          title={`Take Remote: ${conflict.tokenName}`}
           style={{
             flex: 1,
             padding: "var(--space-2) var(--space-3)",
@@ -678,7 +719,7 @@ function ConflictItem({
             transition: "var(--transition-base)",
           }}
         >
-          📥 Take Remote
+          <span aria-hidden="true">📥</span> Take Remote
         </button>
       </div>
     </div>
