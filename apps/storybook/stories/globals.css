@@ -20,5 +20,5 @@
 .docs-story {
   background-color: var(
     --color-background-primary
-  ); /* DO NOT REFACTOR: Must align with Wyliedog UI and Tokens */
+  ); /* DO NOT TOUCH: Must align with Wyliedog UI and Tokens */
 }

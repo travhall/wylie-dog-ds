@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "preact/hooks";
 interface FirstRunOnboardingProps {
   onDemoTokens: () => void;
   onImportFile: () => void;
+  onImportFigmaVariables: () => void;
   onSetupGitHub: () => void;
   onSkip: () => void;
 }
@@ -10,6 +11,7 @@ interface FirstRunOnboardingProps {
 export const FirstRunOnboarding = ({
   onDemoTokens,
   onImportFile,
+  onImportFigmaVariables,
   onSetupGitHub,
   onSkip,
 }: FirstRunOnboardingProps) => {
@@ -210,6 +212,89 @@ export const FirstRunOnboarding = ({
                   }}
                 >
                   Load pre-built tokens to explore the plugin
+                </div>
+              </div>
+            </div>
+          </button>
+
+          {/* Import Existing Figma Variables */}
+          <button
+            onClick={onImportFigmaVariables}
+            aria-label="Import existing Figma Variables from this file"
+            style={{
+              width: "100%",
+              padding: "20px",
+              backgroundColor: "var(--surface-secondary)",
+              color: "var(--text-primary)",
+              border: "2px solid var(--border-default)",
+              borderRadius: "var(--radius-lg)",
+              cursor: "pointer",
+              textAlign: "left",
+              transition: "var(--transition-base)",
+              outline: "none",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--surface-tertiary)";
+              e.currentTarget.style.borderColor = "var(--text-tertiary)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor =
+                "var(--surface-secondary)";
+              e.currentTarget.style.borderColor = "var(--border-default)";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
+            }}
+            onFocus={(e) => {
+              e.currentTarget.style.outline =
+                "2px solid var(--accent-secondary)";
+              e.currentTarget.style.outlineOffset = "2px";
+            }}
+            onBlur={(e) => {
+              e.currentTarget.style.outline = "none";
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "start", gap: "16px" }}>
+              <div
+                aria-hidden="true"
+                style={{
+                  width: "32px",
+                  height: "32px",
+                  color: "var(--text-primary)",
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                  />
+                </svg>
+              </div>
+              <div style={{ flex: 1 }}>
+                <div
+                  style={{
+                    fontSize: "var(--font-size-lg)",
+                    fontWeight: "var(--font-weight-bold)",
+                    marginBottom: "var(--space-1)",
+                  }}
+                >
+                  Import Existing Variables
+                </div>
+                <div
+                  style={{
+                    fontSize: "var(--font-size-sm)",
+                    color: "var(--text-secondary)",
+                  }}
+                >
+                  Convert Figma Variables in this file
                 </div>
               </div>
             </div>

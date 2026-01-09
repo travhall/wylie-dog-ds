@@ -373,6 +373,7 @@ function AppInner() {
         <TokensTab
           collections={pluginState.collections}
           selectedCollections={selectedCollections}
+          selectedCollection={pluginState.selectedCollection}
           onToggleCollection={(id: string) => {
             const newSet = new Set(selectedCollections);
             if (newSet.has(id)) {
@@ -585,6 +586,7 @@ function AppInner() {
             handleTokenImport();
             // Mark engaged after successful import (handled in tokens-imported message)
           }}
+          onImportFigmaVariables={handleImportFigmaVariables}
           onSetupGitHub={() => {
             setShowSetupWizard(true);
             // Mark engaged when wizard shows

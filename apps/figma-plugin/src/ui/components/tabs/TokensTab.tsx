@@ -1,10 +1,12 @@
 import { h } from "preact";
+import { useState, useEffect } from "preact/hooks";
 import type {
   Collection,
   CollectionDetails,
 } from "../../hooks/usePluginMessages";
 import { EmptyTokensState } from "../EmptyTokensState";
 import { CollectionSkeleton } from "../common/Skeleton";
+import { TokenBrowser } from "../TokenBrowser";
 
 interface TokensTabProps {
   collections: Collection[];
@@ -14,6 +16,8 @@ interface TokensTabProps {
   onSelectAll: () => void;
   onDeselectAll: () => void;
   loading: boolean;
+  // Collection details for TokenBrowser
+  selectedCollection?: CollectionDetails | null;
   // Enhanced empty state actions
   onImportFile?: () => void;
   onGenerateDemoTokens?: () => void;
@@ -36,6 +40,7 @@ export function TokensTab({
   onSelectAll,
   onDeselectAll,
   loading,
+  selectedCollection,
   onImportFile,
   onGenerateDemoTokens,
   onSetupGitHub,
@@ -45,6 +50,122 @@ export function TokensTab({
 }: TokensTabProps) {
   const hasCollections = collections.length > 0;
   const hasSelections = selectedCollections.size > 0;
+
+  // State for TokenBrowser modal
+  const [browserCollection, setBrowserCollection] = useState<{
+    name: string;
+    tokens: Record<string, any>;
+    modes: Array<{ modeId: string; name: string }>;
+  } | null>(null);
+
+  // Helper to convert Figma RGB (0-1) to hex
+  const rgbToHex = (color: { r: number; g: number; b: number }): string => {
+    const r = Math.round(color.r * 255);
+    const g = Math.round(color.g * 255);
+    const b = Math.round(color.b * 255);
+    return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+  };
+
+  // Transform Variable[] to ProcessedToken format for TokenBrowser
+  const prepareTokensForBrowser = (collectionDetails: CollectionDetails) => {
+    const tokens: Record<string, any> = {};
+
+    collectionDetails.variables.forEach((variable) => {
+      // Infer W3C DTCG type from Figma type
+      let $type = "string";
+      switch (variable.resolvedType) {
+        case "COLOR":
+          $type = "color";
+          break;
+        case "FLOAT":
+          // Infer from scopes
+          if (variable.scopes.includes("FONT_SIZE")) {
+            $type = "fontSize";
+          } else if (variable.scopes.includes("LINE_HEIGHT")) {
+            $type = "lineHeight";
+          } else if (variable.scopes.includes("LETTER_SPACING")) {
+            $type = "letterSpacing";
+          } else if (
+            variable.scopes.includes("GAP") ||
+            variable.scopes.includes("PADDING") ||
+            variable.scopes.includes("SPACING")
+          ) {
+            $type = "spacing";
+          } else if (
+            variable.scopes.includes("WIDTH") ||
+            variable.scopes.includes("HEIGHT")
+          ) {
+            $type = "dimension";
+          } else if (variable.scopes.includes("CORNER_RADIUS")) {
+            $type = "borderRadius";
+          } else {
+            $type = "number";
+          }
+          break;
+        case "STRING":
+          if (variable.scopes.includes("FONT_FAMILY")) {
+            $type = "fontFamily";
+          } else if (variable.scopes.includes("FONT_WEIGHT")) {
+            $type = "fontWeight";
+          } else {
+            $type = "string";
+          }
+          break;
+        case "BOOLEAN":
+          $type = "boolean";
+          break;
+      }
+
+      // Use first mode's value (or enhance later to support mode selection)
+      const firstModeId = collectionDetails.modes[0]?.modeId;
+      let $value = firstModeId ? variable.valuesByMode[firstModeId] : null;
+
+      // Convert Figma color format to hex for display
+      if (
+        $type === "color" &&
+        $value &&
+        typeof $value === "object" &&
+        "r" in $value
+      ) {
+        $value = rgbToHex($value);
+      }
+
+      // Add px suffix for spacing/dimension values if needed
+      if (
+        ($type === "spacing" ||
+          $type === "dimension" ||
+          $type === "fontSize") &&
+        typeof $value === "number"
+      ) {
+        $value = `${$value}px`;
+      }
+
+      tokens[variable.name] = {
+        $type,
+        $value,
+        $description: variable.description,
+      };
+    });
+
+    return tokens;
+  };
+
+  // Handle view details click
+  const handleViewDetails = (collectionId: string) => {
+    onViewDetails(collectionId);
+  };
+
+  // Open TokenBrowser when selectedCollection is loaded
+  useEffect(() => {
+    if (selectedCollection) {
+      const tokens = prepareTokensForBrowser(selectedCollection);
+      setBrowserCollection({
+        name: selectedCollection.name,
+        tokens,
+        modes: selectedCollection.modes,
+      });
+    }
+  }, [selectedCollection]);
 
   return (
     <div
@@ -346,6 +467,16 @@ export function TokensTab({
           </strong>{" "}
           collection{selectedCollections.size !== 1 ? "s" : ""} selected
         </div>
+      )}
+
+      {/* TokenBrowser Modal */}
+      {browserCollection && (
+        <TokenBrowser
+          collectionName={browserCollection.name}
+          tokens={browserCollection.tokens}
+          modes={browserCollection.modes}
+          onClose={() => setBrowserCollection(null)}
+        />
       )}
     </div>
   );
