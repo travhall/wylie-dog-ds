@@ -35,6 +35,8 @@ import { FirstRunOnboarding } from "./components/FirstRunOnboarding";
 import { ExistingTokensImporter } from "./components/ExistingTokensImporter";
 import { FormatGuidelinesDialog } from "./components/FormatGuidelinesDialog";
 import { HelpMenu } from "./components/HelpMenu";
+import { ImportPreview } from "./components/ImportPreview";
+import { TransformationSummary } from "./components/TransformationSummary";
 
 console.log("App.tsx loaded");
 
@@ -62,6 +64,13 @@ function AppInner() {
     useState(false);
   const [showFormatGuidelines, setShowFormatGuidelines] = useState(false);
 
+  // Import preview state
+  const [importPreviewData, setImportPreviewData] = useState<any>(null);
+  const [pendingImportFiles, setPendingImportFiles] = useState<any[]>([]);
+
+  // Transformation summary state
+  const [transformationSummary, setTransformationSummary] = useState<any>(null);
+
   // Plugin Messages Hook - no longer needs GitHub handlers as parameters
   const [pluginState, pluginActions] = usePluginMessages(githubClient);
 
@@ -77,6 +86,51 @@ function AppInner() {
     pluginState.pendingTokensForConflictResolution,
     pluginState.conflictOperationType
   );
+
+  // Handle import-validated message
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      const msg = event.data.pluginMessage;
+      if (!msg) return;
+
+      if (msg.type === "import-validated") {
+        console.log("Import validated:", msg.summary);
+        pluginActions.setLoading(false);
+        pluginActions.setLoadingMessage("");
+        setImportPreviewData(msg.summary);
+      } else if (msg.type === "import-validation-error") {
+        console.error("Import validation error:", msg.error);
+        pluginActions.setLoading(false);
+        pluginActions.setLoadingMessage("");
+        pluginActions.setError(msg.error);
+      } else if (msg.type === "tokens-imported" && msg.result?.success) {
+        // Show transformation summary after successful import
+        console.log("Tokens imported successfully, showing summary");
+        setTransformationSummary({
+          format: msg.adapterResults?.[0]?.detection?.format || "Unknown",
+          collectionsImported: msg.result.collectionsImported || 0,
+          tokensImported: msg.result.tokensImported || 0,
+          transformations:
+            msg.adapterResults?.[0]?.normalization?.transformations?.reduce(
+              (acc: any[], t: any) => {
+                const existing = acc.find((x) => x.type === t.type);
+                if (existing) {
+                  existing.count++;
+                } else {
+                  acc.push({ type: t.type, count: 1 });
+                }
+                return acc;
+              },
+              []
+            ) || [],
+          warnings: msg.result.warnings || [],
+        });
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [pluginActions]);
 
   // Auto-switch to Tokens tab after successful import
   useEffect(() => {
@@ -153,7 +207,7 @@ function AppInner() {
     }
   }, [pluginState.downloadQueue, pluginActions]);
 
-  // Token Import Handler
+  // Token Import Handler - now with preview
   const handleTokenImport = useCallback(() => {
     const fileInput = document.createElement("input");
     fileInput.type = "file";
@@ -165,9 +219,8 @@ function AppInner() {
       if (!files || files.length === 0) return;
 
       pluginActions.setLoading(true);
-      pluginActions.setLoadingMessage("Reading your files...");
+      pluginActions.setLoadingMessage("Validating files...");
       pluginActions.setError(null);
-      pluginActions.setCurrentOperation("token-import");
 
       try {
         const fileContents = [];
@@ -180,9 +233,12 @@ function AppInner() {
           });
         }
 
-        pluginActions.setLoadingMessage("Adding tokens to Figma...");
+        // Store files for later import
+        setPendingImportFiles(fileContents);
+
+        // Send validation request (will trigger import-validated message)
         pluginActions.sendMessage({
-          type: "import-tokens",
+          type: "validate-import",
           files: fileContents,
         });
       } catch (err) {
@@ -192,11 +248,31 @@ function AppInner() {
         );
         pluginActions.setLoading(false);
         pluginActions.setLoadingMessage("");
-        pluginActions.setCurrentOperation(null);
       }
     };
 
     fileInput.click();
+  }, [pluginActions]);
+
+  // Confirm import after preview
+  const handleConfirmImport = useCallback(() => {
+    setImportPreviewData(null);
+    pluginActions.setLoading(true);
+    pluginActions.setLoadingMessage("Importing tokens...");
+    pluginActions.setCurrentOperation("token-import");
+
+    pluginActions.sendMessage({
+      type: "import-tokens",
+      files: pendingImportFiles,
+    });
+  }, [pendingImportFiles, pluginActions]);
+
+  // Cancel import
+  const handleCancelImport = useCallback(() => {
+    setImportPreviewData(null);
+    setPendingImportFiles([]);
+    pluginActions.setLoading(false);
+    pluginActions.setLoadingMessage("");
   }, [pluginActions]);
 
   // Helper to read file as text
@@ -611,6 +687,27 @@ function AppInner() {
             setShowExistingTokensImporter(false);
           }}
           onCancel={() => setShowExistingTokensImporter(false)}
+        />
+      )}
+
+      {/* Import Preview */}
+      {importPreviewData && (
+        <ImportPreview
+          summary={importPreviewData}
+          onConfirm={handleConfirmImport}
+          onCancel={handleCancelImport}
+        />
+      )}
+
+      {/* Transformation Summary */}
+      {transformationSummary && (
+        <TransformationSummary
+          summary={transformationSummary}
+          onClose={() => setTransformationSummary(null)}
+          onViewCollections={() => {
+            setTransformationSummary(null);
+            dispatch({ type: "SET_TAB", tab: "tokens" });
+          }}
         />
       )}
 

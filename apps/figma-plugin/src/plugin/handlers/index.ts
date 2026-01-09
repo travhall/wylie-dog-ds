@@ -13,6 +13,7 @@ import {
 
 // Token handlers
 import {
+  handleValidateImport,
   handleImportTokens,
   handleExportTokens,
   handleGetLocalTokens,
@@ -70,6 +71,7 @@ export function createHandlerRegistry(): HandlerRegistry {
     "get-collection-details": handleGetCollectionDetails,
 
     // Token handlers
+    "validate-import": handleValidateImport,
     "import-tokens": handleImportTokens,
     "export-tokens": handleExportTokens,
     "get-local-tokens": handleGetLocalTokens,

@@ -14,6 +14,155 @@ import {
 import { setLoading, processInChunks, sendError } from "./utils";
 
 /**
+ * Validate import without actually importing - returns preview data
+ */
+export async function handleValidateImport(msg: any): Promise<void> {
+  console.log("Validating import for files:", msg.files?.length || 0);
+
+  try {
+    if (!msg.files || msg.files.length === 0) {
+      throw new Error("No files provided for validation");
+    }
+
+    // Parse all files with format adaptation (same as import)
+    const allTokenData = [];
+    const adapterResults: any[] = [];
+    const warnings: string[] = [];
+    const errors: string[] = [];
+    let totalTokens = 0;
+
+    for (const file of msg.files) {
+      console.log(`Validating file: ${file.filename}`);
+
+      try {
+        // Parse with format adapter
+        const parseResult = await parseTokenFile(file.content);
+        const tokenData = parseResult.data;
+
+        if (parseResult.adapterResult) {
+          adapterResults.push(
+            Object.assign(
+              {
+                filename: file.filename,
+              },
+              parseResult.adapterResult
+            )
+          );
+        }
+
+        // Validate structure
+        const validation = validateTokenStructure(tokenData);
+        if (!validation.valid) {
+          validation.errors.forEach((error) => errors.push(error));
+        }
+
+        // Count tokens
+        if (Array.isArray(tokenData)) {
+          tokenData.forEach((collection) => {
+            const collectionObj = Object.values(collection)[0] as any;
+            if (collectionObj?.variables) {
+              totalTokens += Object.keys(collectionObj.variables).length;
+            }
+          });
+          allTokenData.push(...tokenData);
+        } else {
+          const collectionObj = Object.values(tokenData)[0] as any;
+          if (collectionObj?.variables) {
+            totalTokens += Object.keys(collectionObj.variables).length;
+          }
+          allTokenData.push(tokenData);
+        }
+      } catch (fileError: unknown) {
+        console.error(`Error validating file ${file.filename}:`, fileError);
+        errors.push(
+          `Failed to validate ${file.filename}: ${fileError instanceof Error ? fileError.message : "Unknown error"}`
+        );
+      }
+    }
+
+    // Validate references
+    const referenceValidation = validateTokenReferences(allTokenData);
+    if (referenceValidation.missingReferences.length > 0) {
+      if (referenceValidation.missingReferences.length > 10) {
+        warnings.push(
+          `${referenceValidation.missingReferences.length} missing references detected. These will be created during import.`
+        );
+      } else {
+        referenceValidation.missingReferences.forEach((ref) => {
+          warnings.push(`Missing reference: ${ref}`);
+        });
+      }
+    }
+
+    // Build transformation summary
+    const transformations: any[] = [];
+    adapterResults.forEach((result) => {
+      if (result.normalization?.transformations) {
+        result.normalization.transformations.forEach((t: any) => {
+          const existing = transformations.find((x) => x.type === t.type);
+          if (existing) {
+            existing.count++;
+            if (t.description && !existing.examples.includes(t.description)) {
+              existing.examples.push(t.description);
+            }
+          } else {
+            transformations.push({
+              type: t.type,
+              count: 1,
+              examples: t.description ? [t.description] : [],
+            });
+          }
+        });
+      }
+    });
+
+    // Get format with highest confidence
+    const primaryFormat =
+      adapterResults.length > 0
+        ? adapterResults[0].detection?.format || "Unknown"
+        : "Unknown";
+    const confidence =
+      adapterResults.length > 0
+        ? adapterResults[0].detection?.confidence || 0
+        : 0;
+
+    // Send validation result
+    figma.ui.postMessage({
+      type: "import-validated",
+      summary: {
+        format: primaryFormat,
+        confidence: confidence,
+        collectionsFound: allTokenData.length,
+        tokensToImport: totalTokens,
+        transformations: transformations.map((t) => ({
+          type: t.type,
+          description: t.examples[0] || t.type.replace(/-/g, " "),
+          before: "",
+          after: "",
+        })),
+        warnings,
+        errors,
+      },
+      // Store files for actual import after confirmation
+      pendingFiles: msg.files,
+    });
+
+    console.log("Validation complete:", {
+      collections: allTokenData.length,
+      tokens: totalTokens,
+      warnings: warnings.length,
+      errors: errors.length,
+    });
+  } catch (error: unknown) {
+    console.error("Error validating import:", error);
+    figma.ui.postMessage({
+      type: "import-validation-error",
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+}
+
+/**
  * Import tokens from JSON files
  */
 export async function handleImportTokens(msg: any): Promise<void> {
