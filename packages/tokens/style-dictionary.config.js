@@ -30,8 +30,21 @@ StyleDictionary.registerFormat({
         baseVariables.push(`    ${spacingName}: ${token.$value};`);
       } else {
         const genericName = `--${name}`;
-        themeVariables.push(`  ${genericName}: ${token.$value};`);
-        baseVariables.push(`    ${genericName}: ${token.$value};`);
+        let value = token.$value;
+
+        // Abstract font families for the "Contract Pattern"
+        if (token.$type === "fontFamily") {
+          if (name.includes("sans")) {
+            value = "var(--font-sans, ui-sans-serif, system-ui, sans-serif)";
+          } else if (name.includes("serif")) {
+            value = "var(--font-serif, ui-serif, serif)";
+          } else if (name.includes("mono")) {
+            value = "var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace)";
+          }
+        }
+
+        themeVariables.push(`  ${genericName}: ${value};`);
+        baseVariables.push(`    ${genericName}: ${value};`);
       }
     });
 

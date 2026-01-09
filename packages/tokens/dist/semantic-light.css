@@ -106,8 +106,8 @@
   --spacing-spacing-20: 80px;
   --spacing-spacing-24: 96px;
   --spacing-spacing-32: 128px;
-  --typography-font-family-sans: Inter;
-  --typography-font-family-mono: 'JetBrains Mono';
+  --typography-font-family-sans: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  --typography-font-family-mono: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
   --typography-font-size-xs: 12px;
   --typography-font-size-sm: 14px;
   --typography-font-size-base: 16px;
@@ -561,8 +561,8 @@
     --spacing-spacing-20: 80px;
     --spacing-spacing-24: 96px;
     --spacing-spacing-32: 128px;
-    --typography-font-family-sans: Inter;
-    --typography-font-family-mono: 'JetBrains Mono';
+    --typography-font-family-sans: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+    --typography-font-family-mono: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
     --typography-font-size-xs: 12px;
     --typography-font-size-sm: 14px;
     --typography-font-size-base: 16px;

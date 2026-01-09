@@ -2,11 +2,6 @@
 @import "@wyliedog/ui/styles";
 
 @layer base {
-  :root {
-    --typography-font-family-sans: var(--font-sans), system-ui, sans-serif;
-    --typography-font-family-mono: var(--font-mono), ui-monospace, monospace;
-  }
-
   body {
     background-color: var(--color-background-primary);
     color: var(--color-text-primary);
