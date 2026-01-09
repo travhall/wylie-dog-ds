@@ -140,6 +140,14 @@ export async function handleConvertFigmaVariables(msg: any): Promise<void> {
       throw new Error("No Variables found in current file");
     }
 
+    // Filter collections if specific IDs were provided
+    const collectionIds = msg.collectionIds || null;
+    if (collectionIds && collectionIds.length > 0) {
+      console.log(
+        `Converting ${collectionIds.length} of ${detection.collections.length} collections`
+      );
+    }
+
     // Convert to W3C DTCG format with progress tracking
     const tokenSets = await FigmaVariableImporter.convertToTokens(
       (current, total, message) => {
@@ -147,7 +155,8 @@ export async function handleConvertFigmaVariables(msg: any): Promise<void> {
           true,
           message || `Converting ${current}/${total} variables...`
         );
-      }
+      },
+      collectionIds
     );
 
     setLoading(false);
@@ -159,7 +168,7 @@ export async function handleConvertFigmaVariables(msg: any): Promise<void> {
     });
 
     console.log(
-      `✅ Converted ${detection.totalVariables} Figma Variables to ${tokenSets.length} token sets`
+      `✅ Converted ${tokenSets.reduce((sum, set) => sum + Object.keys(set.tokens || {}).length, 0)} Figma Variables to ${tokenSets.length} token sets`
     );
   } catch (error: unknown) {
     console.error("Error converting variables:", error);

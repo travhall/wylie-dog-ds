@@ -81,8 +81,13 @@ export class FigmaVariableImporter {
    * Converts all Figma Variables to W3C DTCG format
    * Returns one file per collection per mode
    * Supports chunked processing with progress callbacks for large collections
+   * @param onProgress - Optional callback for progress updates
+   * @param collectionIds - Optional array of collection IDs to filter by
    */
-  static async convertToTokens(onProgress?: ProgressCallback): Promise<
+  static async convertToTokens(
+    onProgress?: ProgressCallback,
+    collectionIds?: string[] | null
+  ): Promise<
     Array<{
       collectionName: string;
       modeName: string;
@@ -90,8 +95,13 @@ export class FigmaVariableImporter {
       tokenCount: number;
     }>
   > {
-    const collections =
-      await figma.variables.getLocalVariableCollectionsAsync();
+    let collections = await figma.variables.getLocalVariableCollectionsAsync();
+
+    // Filter collections if specific IDs were provided
+    if (collectionIds && collectionIds.length > 0) {
+      collections = collections.filter((col) => collectionIds.includes(col.id));
+    }
+
     const results: Array<{
       collectionName: string;
       modeName: string;

@@ -116,33 +116,42 @@ export function TokensTab({
           break;
       }
 
-      // Use first mode's value (or enhance later to support mode selection)
+      // Process values for all modes
+      const $valuesByMode: Record<string, any> = {};
+      collectionDetails.modes.forEach((mode) => {
+        let modeValue = variable.valuesByMode[mode.modeId];
+
+        // Convert Figma color format to hex for display
+        if (
+          $type === "color" &&
+          modeValue &&
+          typeof modeValue === "object" &&
+          "r" in modeValue
+        ) {
+          modeValue = rgbToHex(modeValue);
+        }
+
+        // Add px suffix for spacing/dimension values if needed
+        if (
+          ($type === "spacing" ||
+            $type === "dimension" ||
+            $type === "fontSize") &&
+          typeof modeValue === "number"
+        ) {
+          modeValue = `${modeValue}px`;
+        }
+
+        $valuesByMode[mode.modeId] = modeValue;
+      });
+
+      // Use first mode's value as default
       const firstModeId = collectionDetails.modes[0]?.modeId;
-      let $value = firstModeId ? variable.valuesByMode[firstModeId] : null;
-
-      // Convert Figma color format to hex for display
-      if (
-        $type === "color" &&
-        $value &&
-        typeof $value === "object" &&
-        "r" in $value
-      ) {
-        $value = rgbToHex($value);
-      }
-
-      // Add px suffix for spacing/dimension values if needed
-      if (
-        ($type === "spacing" ||
-          $type === "dimension" ||
-          $type === "fontSize") &&
-        typeof $value === "number"
-      ) {
-        $value = `${$value}px`;
-      }
+      const $value = firstModeId ? $valuesByMode[firstModeId] : null;
 
       tokens[variable.name] = {
         $type,
         $value,
+        $valuesByMode,
         $description: variable.description,
       };
     });

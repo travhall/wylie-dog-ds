@@ -6,6 +6,7 @@ interface ProcessedToken {
   $type: string;
   $value: any;
   $description?: string;
+  $valuesByMode?: Record<string, any>; // Values for each mode
 }
 
 interface TokenBrowserProps {
@@ -23,6 +24,38 @@ interface TokenBrowserProps {
  * - Copy token reference to clipboard
  * - Organized by token type
  */
+// Token type icon mapping
+const TOKEN_TYPE_ICONS: Record<string, string> = {
+  color: "🎨",
+  spacing: "📏",
+  dimension: "📐",
+  sizing: "📏",
+  fontSize: "🔤",
+  fontFamily: "🔠",
+  fontWeight: "💪",
+  lineHeight: "↕️",
+  letterSpacing: "↔️",
+  typography: "✏️",
+  borderRadius: "⬛",
+  shadow: "🌑",
+  number: "🔢",
+  string: "📝",
+  boolean: "✓",
+};
+
+// Get friendly display name for token type
+const getTokenTypeLabel = (type: string): string => {
+  const labels: Record<string, string> = {
+    fontSize: "Font Size",
+    fontFamily: "Font Family",
+    fontWeight: "Font Weight",
+    lineHeight: "Line Height",
+    letterSpacing: "Letter Spacing",
+    borderRadius: "Border Radius",
+  };
+  return labels[type] || type.charAt(0).toUpperCase() + type.slice(1);
+};
+
 export function TokenBrowser({
   collectionName,
   tokens,
@@ -32,14 +65,42 @@ export function TokenBrowser({
   const [searchQuery, setSearchQuery] = useState("");
   const [copiedToken, setCopiedToken] = useState<string | null>(null);
   const [filterType, setFilterType] = useState<string>("all");
+  const [showReferencesOnly, setShowReferencesOnly] = useState(false);
+  const [searchInValues, setSearchInValues] = useState(false);
+  const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(
+    new Set()
+  );
+  const [selectedModeId, setSelectedModeId] = useState<string>(
+    modes[0]?.modeId || "default"
+  );
 
-  // Extract token entries
+  // Check if collection has multiple modes
+  const hasMultipleModes = modes.length > 1;
+
+  // Helper to check if value is a reference
+  const isReference = (value: any): boolean => {
+    return (
+      typeof value === "string" &&
+      (value.includes("{") || value.startsWith("$"))
+    );
+  };
+
+  // Extract token entries with selected mode's values
   const tokenEntries = useMemo(() => {
-    return Object.entries(tokens).map(([name, token]) => ({
-      name,
-      ...token,
-    }));
-  }, [tokens]);
+    return Object.entries(tokens).map(([name, token]) => {
+      // Use mode-specific value if available, otherwise fall back to $value
+      const displayValue =
+        token.$valuesByMode && token.$valuesByMode[selectedModeId]
+          ? token.$valuesByMode[selectedModeId]
+          : token.$value;
+
+      return {
+        name,
+        ...token,
+        $value: displayValue,
+      };
+    });
+  }, [tokens, selectedModeId]);
 
   // Get unique token types for filter
   const tokenTypes = useMemo(() => {
@@ -52,12 +113,21 @@ export function TokenBrowser({
   const filteredTokens = useMemo(() => {
     let filtered = tokenEntries;
 
-    // Apply search filter
+    // Apply search filter (fuzzy, case-insensitive)
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
-      filtered = filtered.filter((token) =>
-        token.name.toLowerCase().includes(query)
-      );
+      filtered = filtered.filter((token) => {
+        // Search in token name
+        const nameMatch = token.name.toLowerCase().includes(query);
+
+        // Optionally search in token value
+        if (searchInValues) {
+          const valueStr = String(token.$value).toLowerCase();
+          return nameMatch || valueStr.includes(query);
+        }
+
+        return nameMatch;
+      });
     }
 
     // Apply type filter
@@ -65,8 +135,44 @@ export function TokenBrowser({
       filtered = filtered.filter((token) => token.$type === filterType);
     }
 
+    // Apply references filter
+    if (showReferencesOnly) {
+      filtered = filtered.filter((token) => isReference(token.$value));
+    }
+
     return filtered;
-  }, [tokenEntries, searchQuery, filterType]);
+  }, [
+    tokenEntries,
+    searchQuery,
+    filterType,
+    showReferencesOnly,
+    searchInValues,
+  ]);
+
+  // Group tokens by type for hierarchical display
+  const groupedTokens = useMemo(() => {
+    const groups: Record<string, typeof filteredTokens> = {};
+    filteredTokens.forEach((token) => {
+      if (!groups[token.$type]) {
+        groups[token.$type] = [];
+      }
+      groups[token.$type].push(token);
+    });
+    return groups;
+  }, [filteredTokens]);
+
+  // Toggle group collapsed state
+  const toggleGroup = (type: string) => {
+    setCollapsedGroups((prev) => {
+      const next = new Set(prev);
+      if (next.has(type)) {
+        next.delete(type);
+      } else {
+        next.add(type);
+      }
+      return next;
+    });
+  };
 
   // Copy token reference to clipboard
   const handleCopyReference = (tokenName: string) => {
@@ -206,55 +312,213 @@ export function TokenBrowser({
             {modes.length} mode{modes.length !== 1 ? "s" : ""}
           </div>
 
+          {/* Mode Tabs */}
+          {hasMultipleModes && (
+            <div
+              style={{
+                marginBottom: "var(--space-3)",
+                display: "flex",
+                gap: "var(--space-1)",
+                padding: "var(--space-1)",
+                backgroundColor: "var(--surface-secondary)",
+                borderRadius: "var(--radius-md)",
+                border: "1px solid var(--border-default)",
+              }}
+            >
+              {modes.map((mode) => {
+                const isSelected = selectedModeId === mode.modeId;
+                return (
+                  <button
+                    key={mode.modeId}
+                    onClick={() => setSelectedModeId(mode.modeId)}
+                    style={{
+                      flex: 1,
+                      padding: "var(--space-2) var(--space-3)",
+                      fontSize: "var(--font-size-xs)",
+                      fontWeight: "var(--font-weight-medium)",
+                      color: isSelected
+                        ? "var(--text-inverse)"
+                        : "var(--text-secondary)",
+                      backgroundColor: isSelected
+                        ? "var(--accent-primary)"
+                        : "transparent",
+                      border: "none",
+                      borderRadius: "var(--radius-sm)",
+                      cursor: "pointer",
+                      transition: "var(--transition-base)",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isSelected) {
+                        e.currentTarget.style.backgroundColor =
+                          "var(--surface-tertiary)";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isSelected) {
+                        e.currentTarget.style.backgroundColor = "transparent";
+                      }
+                    }}
+                  >
+                    {mode.name}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
           {/* Search and Filter */}
           <div
             style={{
               display: "flex",
+              flexDirection: "column",
               gap: "var(--space-2)",
-              alignItems: "center",
             }}
           >
-            <input
-              type="text"
-              placeholder="Search tokens..."
-              value={searchQuery}
-              onInput={(e) =>
-                setSearchQuery((e.target as HTMLInputElement).value)
-              }
+            {/* Search and Type Filter Row */}
+            <div
               style={{
-                flex: 1,
-                padding: "var(--space-2)",
-                fontSize: "var(--font-size-sm)",
-                color: "var(--text-primary)",
-                backgroundColor: "var(--surface-secondary)",
-                border: "1px solid var(--border-default)",
-                borderRadius: "var(--radius-md)",
-                outline: "none",
-              }}
-            />
-            <select
-              value={filterType}
-              onChange={(e) =>
-                setFilterType((e.target as HTMLSelectElement).value)
-              }
-              style={{
-                padding: "var(--space-2)",
-                fontSize: "var(--font-size-sm)",
-                color: "var(--text-primary)",
-                backgroundColor: "var(--surface-secondary)",
-                border: "1px solid var(--border-default)",
-                borderRadius: "var(--radius-md)",
-                outline: "none",
-                cursor: "pointer",
+                display: "flex",
+                gap: "var(--space-2)",
+                alignItems: "center",
               }}
             >
-              <option value="all">All Types</option>
-              {tokenTypes.map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
+              <input
+                type="text"
+                placeholder={
+                  searchInValues
+                    ? "Search tokens by name or value..."
+                    : "Search tokens by name..."
+                }
+                value={searchQuery}
+                onInput={(e) =>
+                  setSearchQuery((e.target as HTMLInputElement).value)
+                }
+                style={{
+                  flex: 1,
+                  padding: "var(--space-2)",
+                  fontSize: "var(--font-size-sm)",
+                  color: "var(--text-primary)",
+                  backgroundColor: "var(--surface-secondary)",
+                  border: "1px solid var(--border-default)",
+                  borderRadius: "var(--radius-md)",
+                  outline: "none",
+                }}
+              />
+              <select
+                value={filterType}
+                onChange={(e) =>
+                  setFilterType((e.target as HTMLSelectElement).value)
+                }
+                style={{
+                  padding: "var(--space-2)",
+                  fontSize: "var(--font-size-sm)",
+                  color: "var(--text-primary)",
+                  backgroundColor: "var(--surface-secondary)",
+                  border: "1px solid var(--border-default)",
+                  borderRadius: "var(--radius-md)",
+                  outline: "none",
+                  cursor: "pointer",
+                }}
+              >
+                <option value="all">All Types</option>
+                {tokenTypes.map((type) => (
+                  <option key={type} value={type}>
+                    {getTokenTypeLabel(type)}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Filter Options Row */}
+            <div
+              style={{
+                display: "flex",
+                gap: "var(--space-2)",
+                alignItems: "center",
+              }}
+            >
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "var(--space-1)",
+                  fontSize: "var(--font-size-xs)",
+                  color: "var(--text-secondary)",
+                  cursor: "pointer",
+                  userSelect: "none",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={showReferencesOnly}
+                  onChange={(e) =>
+                    setShowReferencesOnly(
+                      (e.target as HTMLInputElement).checked
+                    )
+                  }
+                  style={{
+                    cursor: "pointer",
+                  }}
+                />
+                <span>References only</span>
+              </label>
+
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "var(--space-1)",
+                  fontSize: "var(--font-size-xs)",
+                  color: "var(--text-secondary)",
+                  cursor: "pointer",
+                  userSelect: "none",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={searchInValues}
+                  onChange={(e) =>
+                    setSearchInValues((e.target as HTMLInputElement).checked)
+                  }
+                  style={{
+                    cursor: "pointer",
+                  }}
+                />
+                <span>Search in values</span>
+              </label>
+
+              {/* Quick clear filters button */}
+              {(searchQuery || filterType !== "all" || showReferencesOnly) && (
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    setFilterType("all");
+                    setShowReferencesOnly(false);
+                  }}
+                  style={{
+                    marginLeft: "auto",
+                    padding: "var(--space-1) var(--space-2)",
+                    fontSize: "var(--font-size-xs)",
+                    fontWeight: "var(--font-weight-medium)",
+                    color: "var(--text-secondary)",
+                    backgroundColor: "transparent",
+                    border: "1px solid var(--border-default)",
+                    borderRadius: "var(--radius-sm)",
+                    cursor: "pointer",
+                    transition: "var(--transition-base)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor =
+                      "var(--surface-tertiary)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                  }}
+                >
+                  Clear filters
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -293,118 +557,202 @@ export function TokenBrowser({
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "var(--space-2)",
+                gap: "var(--space-4)",
               }}
             >
-              {filteredTokens.map((token) => (
-                <div
-                  key={token.name}
-                  style={{
-                    padding: "var(--space-3)",
-                    backgroundColor: "var(--surface-secondary)",
-                    border: "1px solid var(--border-default)",
-                    borderRadius: "var(--radius-md)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "var(--space-3)",
-                    transition: "var(--transition-base)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "var(--accent-primary)";
-                    e.currentTarget.style.backgroundColor =
-                      "var(--surface-tertiary)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "var(--border-default)";
-                    e.currentTarget.style.backgroundColor =
-                      "var(--surface-secondary)";
-                  }}
-                >
-                  {/* Preview */}
-                  <div style={{ flexShrink: 0 }}>
-                    <TokenPreview type={token.$type} value={token.$value} />
-                  </div>
+              {Object.entries(groupedTokens)
+                .sort(([typeA], [typeB]) => typeA.localeCompare(typeB))
+                .map(([type, tokensInGroup]) => {
+                  const isCollapsed = collapsedGroups.has(type);
+                  const icon = TOKEN_TYPE_ICONS[type] || "📦";
+                  const label = getTokenTypeLabel(type);
 
-                  {/* Token Info */}
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div
-                      style={{
-                        fontSize: "var(--font-size-sm)",
-                        fontWeight: "var(--font-weight-medium)",
-                        color: "var(--text-primary)",
-                        marginBottom: "var(--space-1)",
-                        fontFamily: "var(--font-mono)",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                      }}
-                      title={token.name}
-                    >
-                      {token.name}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "var(--font-size-xs)",
-                        color: "var(--text-secondary)",
-                      }}
-                    >
-                      <span
+                  return (
+                    <div key={type}>
+                      {/* Group Header */}
+                      <button
+                        onClick={() => toggleGroup(type)}
                         style={{
-                          display: "inline-block",
-                          padding: "2px 6px",
-                          backgroundColor: "var(--info-light)",
-                          borderRadius: "var(--radius-sm)",
-                          marginRight: "var(--space-2)",
+                          width: "100%",
+                          padding: "var(--space-2) var(--space-3)",
+                          backgroundColor: "var(--surface-tertiary)",
+                          border: "1px solid var(--border-default)",
+                          borderRadius: "var(--radius-md)",
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          marginBottom: isCollapsed ? 0 : "var(--space-2)",
+                          transition: "var(--transition-base)",
                         }}
                       >
-                        {token.$type}
-                      </span>
-                      {token.$description && (
-                        <span title={token.$description}>
-                          {token.$description.length > 50
-                            ? token.$description.substring(0, 50) + "..."
-                            : token.$description}
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "var(--space-2)",
+                          }}
+                        >
+                          <span style={{ fontSize: "var(--font-size-md)" }}>
+                            {icon}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: "var(--font-size-sm)",
+                              fontWeight: "var(--font-weight-semibold)",
+                              color: "var(--text-primary)",
+                            }}
+                          >
+                            {label}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: "var(--font-size-xs)",
+                              color: "var(--text-tertiary)",
+                              padding: "2px 6px",
+                              backgroundColor: "var(--surface-secondary)",
+                              borderRadius: "var(--radius-sm)",
+                            }}
+                          >
+                            {tokensInGroup.length}
+                          </span>
+                        </div>
+                        <span
+                          style={{
+                            fontSize: "var(--font-size-xs)",
+                            color: "var(--text-tertiary)",
+                            transition: "transform 0.2s",
+                            transform: isCollapsed
+                              ? "rotate(0deg)"
+                              : "rotate(90deg)",
+                          }}
+                        >
+                          ▶
                         </span>
+                      </button>
+
+                      {/* Group Content */}
+                      {!isCollapsed && (
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "var(--space-2)",
+                          }}
+                        >
+                          {tokensInGroup.map((token) => (
+                            <div
+                              key={token.name}
+                              style={{
+                                padding: "var(--space-3)",
+                                backgroundColor: "var(--surface-secondary)",
+                                border: "1px solid var(--border-default)",
+                                borderRadius: "var(--radius-md)",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "var(--space-3)",
+                                transition: "var(--transition-base)",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.borderColor =
+                                  "var(--accent-primary)";
+                                e.currentTarget.style.backgroundColor =
+                                  "var(--surface-tertiary)";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.borderColor =
+                                  "var(--border-default)";
+                                e.currentTarget.style.backgroundColor =
+                                  "var(--surface-secondary)";
+                              }}
+                            >
+                              {/* Preview */}
+                              <div style={{ flexShrink: 0 }}>
+                                <TokenPreview
+                                  type={token.$type}
+                                  value={token.$value}
+                                />
+                              </div>
+
+                              {/* Token Info */}
+                              <div style={{ flex: 1, minWidth: 0 }}>
+                                <div
+                                  style={{
+                                    fontSize: "var(--font-size-sm)",
+                                    fontWeight: "var(--font-weight-medium)",
+                                    color: "var(--text-primary)",
+                                    marginBottom: "var(--space-1)",
+                                    fontFamily: "var(--font-mono)",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                  }}
+                                  title={token.name}
+                                >
+                                  {token.name}
+                                </div>
+                                {token.$description && (
+                                  <div
+                                    style={{
+                                      fontSize: "var(--font-size-xs)",
+                                      color: "var(--text-secondary)",
+                                      overflow: "hidden",
+                                      textOverflow: "ellipsis",
+                                      whiteSpace: "nowrap",
+                                    }}
+                                    title={token.$description}
+                                  >
+                                    {token.$description}
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* Copy Button */}
+                              <button
+                                onClick={() => handleCopyReference(token.name)}
+                                style={{
+                                  padding: "var(--space-2) var(--space-3)",
+                                  fontSize: "var(--font-size-xs)",
+                                  fontWeight: "var(--font-weight-medium)",
+                                  color:
+                                    copiedToken === token.name
+                                      ? "var(--success)"
+                                      : "var(--accent-primary)",
+                                  backgroundColor: "transparent",
+                                  border: `1px solid ${copiedToken === token.name ? "var(--success)" : "var(--accent-primary)"}`,
+                                  borderRadius: "var(--radius-sm)",
+                                  cursor: "pointer",
+                                  transition: "var(--transition-base)",
+                                  flexShrink: 0,
+                                }}
+                                onMouseEnter={(e) => {
+                                  if (copiedToken !== token.name) {
+                                    e.currentTarget.style.backgroundColor =
+                                      "var(--accent-primary)";
+                                    e.currentTarget.style.color =
+                                      "var(--text-inverse)";
+                                  }
+                                }}
+                                onMouseLeave={(e) => {
+                                  if (copiedToken !== token.name) {
+                                    e.currentTarget.style.backgroundColor =
+                                      "transparent";
+                                    e.currentTarget.style.color =
+                                      "var(--accent-primary)";
+                                  }
+                                }}
+                              >
+                                {copiedToken === token.name
+                                  ? "✓ Copied!"
+                                  : "📋 Copy Ref"}
+                              </button>
+                            </div>
+                          ))}
+                        </div>
                       )}
                     </div>
-                  </div>
-
-                  {/* Copy Button */}
-                  <button
-                    onClick={() => handleCopyReference(token.name)}
-                    style={{
-                      padding: "var(--space-2) var(--space-3)",
-                      fontSize: "var(--font-size-xs)",
-                      fontWeight: "var(--font-weight-medium)",
-                      color:
-                        copiedToken === token.name
-                          ? "var(--success)"
-                          : "var(--accent-primary)",
-                      backgroundColor: "transparent",
-                      border: `1px solid ${copiedToken === token.name ? "var(--success)" : "var(--accent-primary)"}`,
-                      borderRadius: "var(--radius-sm)",
-                      cursor: "pointer",
-                      transition: "var(--transition-base)",
-                      flexShrink: 0,
-                    }}
-                    onMouseEnter={(e) => {
-                      if (copiedToken !== token.name) {
-                        e.currentTarget.style.backgroundColor =
-                          "var(--accent-primary)";
-                        e.currentTarget.style.color = "var(--text-inverse)";
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (copiedToken !== token.name) {
-                        e.currentTarget.style.backgroundColor = "transparent";
-                        e.currentTarget.style.color = "var(--accent-primary)";
-                      }
-                    }}
-                  >
-                    {copiedToken === token.name ? "✓ Copied!" : "📋 Copy Ref"}
-                  </button>
-                </div>
-              ))}
+                  );
+                })}
             </div>
           )}
         </div>
