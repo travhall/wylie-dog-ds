@@ -133,6 +133,17 @@ export class ConflictResolver {
       return;
     }
 
+    // DEBUG: Log description for font-family tokens
+    if (remoteToken.$type === "fontFamily") {
+      console.log(
+        `🔍 [CONFLICT-RESOLVER] Applying remote font-family token: ${collectionName}.${tokenName}`
+      );
+      console.log(
+        `  $description: "${remoteToken.$description || "undefined"}"`
+      );
+      console.log(`  $value: "${remoteToken.$value}"`);
+    }
+
     // Find or create the collection in resolved tokens
     const collection = this.findOrCreateCollection(
       resolvedTokens,
@@ -282,16 +293,28 @@ export class ConflictResolver {
         stripped[collectionName] = {
           ...collection,
           variables: Object.fromEntries(
-            Object.entries(collection.variables).map(([tokenName, token]) => [
-              tokenName,
-              {
-                $type: token.$type,
-                $value: token.$value,
-                $description: token.$description,
-                name: token.name,
-                valuesByMode: token.valuesByMode,
-              },
-            ])
+            Object.entries(collection.variables).map(([tokenName, token]) => {
+              // DEBUG: Log description for font-family tokens
+              if (token.$type === "fontFamily") {
+                console.log(
+                  `🔍 [CONFLICT-RESOLVER] stripSyncMetadata for ${collectionName}.${tokenName}`
+                );
+                console.log(
+                  `  $description: "${token.$description || "undefined"}"`
+                );
+              }
+
+              return [
+                tokenName,
+                {
+                  $type: token.$type,
+                  $value: token.$value,
+                  $description: token.$description,
+                  name: token.name,
+                  valuesByMode: token.valuesByMode,
+                },
+              ];
+            })
           ),
         };
       }

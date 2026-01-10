@@ -41,10 +41,12 @@ StyleDictionary.registerFormat({
             baseVariables.push(`    --font-family-sans: ${value};`);
           } else if (name.includes("serif")) {
             value = "var(--font-serif, ui-serif, serif)";
+            // Also add as Tailwind fontFamily theme property
             themeVariables.push(`  --font-family-serif: ${value};`);
             baseVariables.push(`    --font-family-serif: ${value};`);
           } else if (name.includes("mono")) {
-            value = "var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace)";
+            value =
+              "var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace)";
             // Also add as Tailwind fontFamily theme property
             themeVariables.push(`  --font-family-mono: ${value};`);
             baseVariables.push(`    --font-family-mono: ${value};`);
@@ -195,7 +197,7 @@ StyleDictionary.registerFormat({
 
       const name = cleanPath.join("-").toLowerCase();
       const variableName = `--${token.$type === "color" ? "color-" : ""}${name.replace(/^color-/, "")}`;
-      
+
       const tokenEntry = {
         name: token.name,
         path: token.path,
@@ -211,10 +213,15 @@ StyleDictionary.registerFormat({
       const isComponent = token.filePath.includes("component");
 
       if (isPrimitive) {
-        if (token.$type === "color" && cleanPath[0] === "color" && cleanPath[1]) {
+        if (
+          token.$type === "color" &&
+          cleanPath[0] === "color" &&
+          cleanPath[1]
+        ) {
           const group = cleanPath[1].toLowerCase();
           const shade = cleanPath[2] || "base";
-          if (!manifest.primitives.colors[group]) manifest.primitives.colors[group] = {};
+          if (!manifest.primitives.colors[group])
+            manifest.primitives.colors[group] = {};
           manifest.primitives.colors[group][shade] = tokenEntry;
         } else if (token.$type === "spacing") {
           manifest.primitives.spacing[name] = tokenEntry;
@@ -223,10 +230,14 @@ StyleDictionary.registerFormat({
         } else if (name.startsWith("border-width")) {
           manifest.primitives.borderWidth[name] = tokenEntry;
         } else if (name.startsWith("typography")) {
-          if (name.includes("family")) manifest.primitives.typography.family[name] = tokenEntry;
-          else if (name.includes("size")) manifest.primitives.typography.size[name] = tokenEntry;
-          else if (name.includes("weight")) manifest.primitives.typography.weight[name] = tokenEntry;
-          else if (name.includes("line-height")) manifest.primitives.typography.lineHeight[name] = tokenEntry;
+          if (name.includes("family"))
+            manifest.primitives.typography.family[name] = tokenEntry;
+          else if (name.includes("size"))
+            manifest.primitives.typography.size[name] = tokenEntry;
+          else if (name.includes("weight"))
+            manifest.primitives.typography.weight[name] = tokenEntry;
+          else if (name.includes("line-height"))
+            manifest.primitives.typography.lineHeight[name] = tokenEntry;
         }
       } else if (isSemantic) {
         if (token.$type === "color") {
@@ -239,7 +250,8 @@ StyleDictionary.registerFormat({
         }
       } else if (isComponent) {
         const component = cleanPath[0].toLowerCase();
-        if (!manifest.components[component]) manifest.components[component] = {};
+        if (!manifest.components[component])
+          manifest.components[component] = {};
         manifest.components[component][name] = tokenEntry;
       }
     });

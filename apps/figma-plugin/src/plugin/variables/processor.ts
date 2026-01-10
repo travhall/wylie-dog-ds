@@ -232,12 +232,6 @@ function processVariable(variable: any, modes: any[]): ProcessedToken {
             processedValue = undefined;
           } else {
             processedValue = rgbToHex(value);
-            // DEBUG: Log gray color exports
-            if (variable.name.includes("gray")) {
-              console.log(
-                `📤 [EXPORT] ${variable.name} (${mode.name}): RGB(${value.r.toFixed(3)}, ${value.g.toFixed(3)}, ${value.b.toFixed(3)}) → ${processedValue}`
-              );
-            }
           }
           break;
         case "FLOAT":

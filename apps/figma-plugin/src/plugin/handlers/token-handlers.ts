@@ -253,9 +253,6 @@ export async function handleImportTokens(msg: any): Promise<void> {
 
     // Use new global import function for cross-collection reference resolution
     setLoading(true, "Importing tokens with reference resolution...");
-    console.log(
-      `🚀 Starting global import with ${allTokenData.length} collections`
-    );
 
     const globalResult = await importMultipleCollections(allTokenData, {
       mergeStrategy: "merge",

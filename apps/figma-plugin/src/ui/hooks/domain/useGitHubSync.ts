@@ -255,14 +255,15 @@ export function useGitHubSync(
       actions.setProgressStep(3);
 
       if (pullResult.success && pullResult.tokens) {
-        const files = pullResult.tokens.map((tokenCollection, index) => {
-          const collectionName =
-            Object.keys(tokenCollection)[0] || `collection-${index}`;
-          return {
-            filename: `${collectionName.toLowerCase().replace(/\s+/g, "-")}.json`,
-            content: JSON.stringify([tokenCollection], null, 2),
-          };
-        });
+        // pullResult.tokens is already an array of collection objects from GitHub
+        // Each collection object is like: { "primitive": { modes: [...], variables: {...} } }
+        // We need to wrap the entire array in brackets for parseTokenFile
+        const files = [
+          {
+            filename: "remote-tokens.json",
+            content: JSON.stringify(pullResult.tokens, null, 2),
+          },
+        ];
 
         parent.postMessage(
           {

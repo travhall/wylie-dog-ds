@@ -72,7 +72,7 @@ export class WylieDogNativeAdapter implements FormatAdapter {
 
     try {
       // Native format should already be in correct structure
-      // Just validate and return as-is
+      // Deep clone to prevent mutations
       if (!Array.isArray(data)) {
         errors.push("Native format expects array of collection objects");
         return {
@@ -83,6 +83,9 @@ export class WylieDogNativeAdapter implements FormatAdapter {
           success: false,
         };
       }
+
+      // DEEP CLONE to preserve all fields including $description
+      data = JSON.parse(JSON.stringify(data));
 
       // Minimal validation
       for (let i = 0; i < data.length; i++) {

@@ -204,22 +204,6 @@ function convertTokenValueToFigma(
 ): any {
   const value = token.$value;
 
-  // Debug logging for dimension tokens
-  if (
-    token.$type === "dimension" ||
-    token.$type === "spacing" ||
-    token.$type === "borderRadius" ||
-    token.$type === "borderWidth"
-  ) {
-    console.log(`[Importer] Processing dimension token:`, {
-      name: token.name,
-      type: token.$type,
-      figmaType,
-      rawValue: value,
-      valueType: typeof value,
-    });
-  }
-
   switch (figmaType) {
     case "COLOR": {
       const figmaColor = convertColorToFigmaRgb(value);
@@ -227,39 +211,7 @@ function convertTokenValueToFigma(
     }
 
     case "FLOAT": {
-      const numericValue = parseNumericValue(value);
-
-      // Debug logging for problematic token types
-      if (
-        token.$type === "dimension" ||
-        token.$type === "spacing" ||
-        token.$type === "borderRadius" ||
-        token.$type === "borderWidth" ||
-        token.$type === "lineHeight"
-      ) {
-        console.log(`[Importer] FLOAT conversion:`, {
-          name: token.name,
-          type: token.$type,
-          originalValue: value,
-          numericValue,
-          isZero: numericValue === 0,
-        });
-      }
-
-      if (
-        typeof value === "string" &&
-        numericValue === 0 &&
-        value.trim() !== "" &&
-        !/^0+(\.0+)?$/.test(value.trim())
-      ) {
-        console.warn(
-          `[Importer] Parsed numeric value 0 for non-zero token`,
-          token.name || "unknown",
-          "raw value:",
-          value
-        );
-      }
-      return numericValue;
+      return parseNumericValue(value);
     }
 
     case "STRING":
@@ -296,9 +248,8 @@ async function ensureVariableCollection(
       if (!existingModeNames.includes(modeData.name)) {
         try {
           collection.addMode(modeData.name);
-          console.log(`Added mode "${modeData.name}"`);
         } catch (error) {
-          console.warn(`Failed to add mode "${modeData.name}":`, error);
+          // Silently continue
         }
       }
     }
@@ -309,10 +260,9 @@ async function ensureVariableCollection(
         const defaultMode = collection.modes.find((m) => m.name === "Mode 1");
         if (defaultMode && collection.modes.length > 1) {
           collection.removeMode(defaultMode.modeId);
-          console.log(`Removed default Mode 1`);
         }
       } catch (error) {
-        console.warn(`Failed to remove default mode:`, error);
+        // Silently continue
       }
     }
   }
@@ -350,12 +300,16 @@ async function createVariableWithReferences(
         figmaType as VariableResolvedDataType
       );
       variable.scopes = scopes as VariableScope[];
-      console.log(`Created variable: ${figmaName}`);
     }
 
     // Update description for both new and existing variables
     if (token.$description) {
       variable.description = token.$description;
+      if (token.$type === "fontFamily") {
+        console.log(`✅ SET: ${figmaName} description`);
+      }
+    } else if (token.$type === "fontFamily") {
+      console.log(`❌ MISSING: ${figmaName} has no $description`);
     }
 
     // Register in registry for reference resolution
@@ -368,16 +322,6 @@ async function createVariableWithReferences(
     if (token.valuesByMode) {
       // Multi-mode token
       const modeReferences = new Map<string, any>();
-
-      // DEBUG: Log multi-mode color tokens
-      if (token.$type === "color" && tokenName.includes("gray")) {
-        console.log(`🎨 [IMPORT] Multi-mode color: ${tokenName}`);
-        console.log(
-          `  valuesByMode:`,
-          JSON.stringify(token.valuesByMode, null, 2)
-        );
-        console.log(`  $value:`, token.$value);
-      }
 
       for (const [modeName, modeValue] of Object.entries(token.valuesByMode)) {
         const mode = collection.modes.find((m) => m.name === modeName);
@@ -407,14 +351,6 @@ async function createVariableWithReferences(
             Object.assign({}, token, { $value: modeValue }),
             figmaType
           );
-
-          // DEBUG: Log color conversion details for gray colors
-          if (token.$type === "color" && tokenName.includes("gray")) {
-            console.log(
-              `🔄 [CONVERT] ${tokenName} (${modeName}): "${modeValue}" → RGB`,
-              figmaValue
-            );
-          }
 
           try {
             variable.setValueForMode(mode.modeId, figmaValue);
@@ -464,31 +400,11 @@ async function createVariableWithReferences(
         }
       } else {
         // Set immediate value for every mode with type validation
-
-        // DEBUG: Log single-mode color tokens BEFORE conversion
-        if (token.$type === "color") {
-          console.log(
-            `🎨 [IMPORT-SINGLE] ${tokenName}: $value="${token.$value}", figmaType=${figmaType}`
-          );
-        }
-
         const figmaValue = convertTokenValueToFigma(token, figmaType);
-
-        // DEBUG: Log conversion result
-        if (token.$type === "color") {
-          console.log(
-            `🔄 [CONVERT-SINGLE] ${tokenName}: "${token.$value}" → RGB(${figmaValue?.r?.toFixed(3) || "null"}, ${figmaValue?.g?.toFixed(3) || "null"}, ${figmaValue?.b?.toFixed(3) || "null"})`
-          );
-        }
 
         for (const mode of targetModes) {
           try {
             variable.setValueForMode(mode.modeId, figmaValue);
-
-            // DEBUG: Confirm value was set
-            if (token.$type === "color") {
-              console.log(`✅ [SET] ${tokenName} in mode ${mode.name}`);
-            }
           } catch (error) {
             console.error(
               `Failed to set value for ${tokenName} mode ${mode.name}:`,
@@ -579,7 +495,6 @@ function sortTokensByDependencies(
     visit(tokenName);
   }
 
-  console.log(`   Sorted ${sorted.length} tokens by dependencies`);
   return sorted;
 }
 
@@ -606,38 +521,9 @@ export async function importMultipleCollections(
   };
 
   try {
-    console.log(
-      `🚀 Starting global import of ${tokenDataArray.length} collections`
-    );
-
     // ENHANCED VALIDATION - Run comprehensive validation before processing
-    console.log("🔍 Running enhanced token validation...");
     const validationReport = validateTokensForImport(tokenDataArray);
     result.validationReport = validationReport;
-
-    console.log(
-      `📊 Validation complete: ${validationReport.stats.totalTokens} tokens, ${validationReport.stats.totalReferences} references`
-    );
-    console.log(
-      `⚠️ Validation errors: ${validationReport.errors.length}, warnings: ${validationReport.warnings.length}`
-    );
-
-    // Log validation errors and warnings
-    if (validationReport.errors.length > 0) {
-      console.error("❌ Validation errors found:");
-      validationReport.errors.forEach((error) => {
-        console.error(`  - ${error.type}: ${error.message}`);
-        if (error.suggestion) console.error(`    💡 ${error.suggestion}`);
-      });
-    }
-
-    if (validationReport.warnings.length > 0) {
-      console.warn("⚠️ Validation warnings found:");
-      validationReport.warnings.forEach((warning) => {
-        console.warn(`  - ${warning.type}: ${warning.message}`);
-        if (warning.suggestion) console.warn(`    💡 ${warning.suggestion}`);
-      });
-    }
 
     // Stop import if critical errors found
     if (!validationReport.valid) {
@@ -646,18 +532,11 @@ export async function importMultipleCollections(
       return result;
     }
 
-    console.log("✅ Validation passed, proceeding with import...");
-    console.log(
-      "📊 Token data structure:",
-      tokenDataArray.map((data, i) => `${i}: ${Object.keys(data).join(", ")}`)
-    );
-
     // Create a single registry for all collections
     const globalRegistry = new VariableRegistry();
 
     // Analyze all collections to determine import order
     const importOrder = createImportOrder(tokenDataArray);
-    console.log(`📋 Import order determined: ${importOrder.join(" → ")}`);
 
     // Track all collections by name for ordered processing
     const collectionMap = new Map<
@@ -671,10 +550,6 @@ export async function importMultipleCollections(
       }
     }
 
-    console.log(
-      `📊 Found collections: ${Array.from(collectionMap.keys()).join(", ")}`
-    );
-
     // Process all collections in dependency order
     let totalCreated = 0;
 
@@ -684,11 +559,6 @@ export async function importMultipleCollections(
         console.warn(`⚠️  Collection not found in data: ${collectionName}`);
         continue;
       }
-
-      console.log(`\n📦 Processing collection: ${collectionName}`);
-      console.log(
-        `   Variables to process: ${Object.keys(collectionInfo.data.variables).length}`
-      );
 
       try {
         // Ensure collection exists
@@ -706,7 +576,6 @@ export async function importMultipleCollections(
         let collectionCreated = 0;
 
         for (const [tokenName, token] of sortedTokenEntries) {
-          console.log(`   Creating variable: ${tokenName}`);
           const variable = await createVariableWithReferences(
             collection,
             tokenName,
@@ -718,10 +587,6 @@ export async function importMultipleCollections(
             totalCreated++;
           }
         }
-
-        console.log(
-          `✅ Created ${collectionCreated} variables in ${collectionName}`
-        );
         result.collectionsProcessed++;
       } catch (error) {
         const errorMsg = `Failed to process collection ${collectionName}: ${error instanceof Error ? error.message : error}`;
@@ -730,10 +595,6 @@ export async function importMultipleCollections(
       }
     }
 
-    console.log(`\n🔗 Resolving all references globally...`);
-    console.log(
-      `   Registry size: ${globalRegistry.getRegistrySize()} variables registered`
-    );
     result.totalVariablesCreated = totalCreated;
 
     // Now resolve all references globally
@@ -742,10 +603,6 @@ export async function importMultipleCollections(
     result.unresolvedReferences = resolveResult.unresolved;
 
     if (result.unresolvedReferences.length > 0) {
-      console.warn(
-        `⚠️  Unresolved references found:`,
-        result.unresolvedReferences
-      );
       result.errors.push(
         `${result.unresolvedReferences.length} unresolved references`
       );
@@ -756,12 +613,6 @@ export async function importMultipleCollections(
     result.message = result.success
       ? `Successfully imported ${result.totalVariablesCreated} variables (${result.totalReferencesResolved} references resolved) across ${result.collectionsProcessed} collections`
       : `Import failed with ${result.errors.length} errors`;
-
-    console.log(`\n🎉 Global import complete:`);
-    console.log(`   Collections: ${result.collectionsProcessed}`);
-    console.log(`   Variables: ${result.totalVariablesCreated}`);
-    console.log(`   References: ${result.totalReferencesResolved}`);
-    console.log(`   Unresolved: ${result.unresolvedReferences.length}`);
   } catch (error) {
     result.success = false;
     result.message = `Global import failed: ${error instanceof Error ? error.message : error}`;
@@ -810,7 +661,31 @@ export async function parseTokenFile(content: string): Promise<{
   data: ExportData | ExportData[];
   adapterResult?: AdapterProcessResult;
 }> {
-  console.log("🔄 parseTokenFile: Using Format Adapter Manager");
+  // DEBUG: Check fontFamily tokens in raw content string
+  const parsed = JSON.parse(content);
+  if (Array.isArray(parsed)) {
+    const fontFamilies: any[] = [];
+    parsed.forEach((coll: any) => {
+      Object.entries(coll).forEach(([name, data]: [string, any]) => {
+        if (data?.variables) {
+          Object.entries(data.variables).forEach(
+            ([key, token]: [string, any]) => {
+              if (token?.$type === "fontFamily") {
+                fontFamilies.push({
+                  collection: name,
+                  token: key,
+                  hasDesc: !!token.$description,
+                });
+              }
+            }
+          );
+        }
+      });
+    });
+    if (fontFamilies.length > 0) {
+      console.log("📄 RAW CONTENT fontFamily tokens:", fontFamilies);
+    }
+  }
 
   const adapterManager = new FormatAdapterManager();
   const result = await adapterManager.processTokenFile(content);
