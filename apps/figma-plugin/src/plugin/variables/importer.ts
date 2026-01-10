@@ -350,8 +350,12 @@ async function createVariableWithReferences(
         figmaType as VariableResolvedDataType
       );
       variable.scopes = scopes as VariableScope[];
-      if (token.$description) variable.description = token.$description;
       console.log(`Created variable: ${figmaName}`);
+    }
+
+    // Update description for both new and existing variables
+    if (token.$description) {
+      variable.description = token.$description;
     }
 
     // Register in registry for reference resolution
