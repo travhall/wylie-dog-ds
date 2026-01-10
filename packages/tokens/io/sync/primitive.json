@@ -418,11 +418,27 @@
         },
         "typography.font-family.sans": {
           "$type": "fontFamily",
-          "$value": "Inter"
+          "$value": "Inter",
+          "$extensions": {
+            "com.wyliedog.fontSource": {
+              "provider": "google",
+              "weights": [400, 500, 600, 700, 800],
+              "subsets": ["latin"],
+              "display": "swap"
+            }
+          }
         },
         "typography.font-family.mono": {
           "$type": "fontFamily",
-          "$value": "JetBrains Mono"
+          "$value": "JetBrains Mono",
+          "$extensions": {
+            "com.wyliedog.fontSource": {
+              "provider": "google",
+              "weights": [400, 500, 600, 700],
+              "subsets": ["latin"],
+              "display": "swap"
+            }
+          }
         },
         "typography.font-size.xs": {
           "$type": "fontSize",

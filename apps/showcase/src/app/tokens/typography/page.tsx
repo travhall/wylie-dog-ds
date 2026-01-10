@@ -57,29 +57,51 @@ export default function TypographyPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-8">
-            {typographyPrimitives.families.map((f) => (
-              <div key={f.name} className="space-y-4">
-                <div className="text-xs font-black uppercase text-(--color-text-tertiary)">
-                  {f.name}
-                </div>
-                {typographyPrimitives.sizes.map((s) => (
-                  <div
-                    key={s.name}
-                    className="flex items-baseline justify-between border-b border-(--color-border-primary)/5 pb-2"
-                  >
-                    <span
-                      style={{ fontFamily: f.value, fontSize: s.value }}
-                      className="text-(--color-text-primary)"
-                    >
-                      Sample ({s.name})
-                    </span>
-                    <span className="text-[10px] font-mono text-(--color-text-tertiary) opacity-60">
-                      {s.value}
-                    </span>
+            {typographyPrimitives.families.map((f) => {
+              // Extract the font family type (sans, mono, serif)
+              const familyType = f.name.split("-").pop();
+              // Use standard Tailwind font utilities (mapped to tokens via config)
+              const fontFamilyClass = `font-${familyType}`;
+
+              return (
+                <div key={f.name} className="space-y-4">
+                  <div className="text-xs font-black uppercase text-(--color-text-tertiary)">
+                    {f.name} · {f.value}
                   </div>
-                ))}
-              </div>
-            ))}
+                  {typographyPrimitives.sizes.map((s) => {
+                    return (
+                      <div
+                        key={s.name}
+                        className="flex flex-col gap-1 border-b border-(--color-border-primary)/5 pb-3"
+                      >
+                        <div className="flex items-baseline justify-between">
+                          <span
+                            className={`${fontFamilyClass} text-(--color-text-primary)`}
+                            style={{ fontSize: s.var }}
+                          >
+                            Sample ({s.name})
+                          </span>
+                          <span className="text-[10px] font-mono text-(--color-text-tertiary) opacity-60">
+                            {s.value}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[9px] font-mono text-(--color-text-tertiary)/50">
+                            {fontFamilyClass}
+                          </span>
+                          <span className="text-(--color-text-tertiary)/30">
+                            ·
+                          </span>
+                          <span className="text-[9px] font-mono text-(--color-text-tertiary)/50">
+                            fontSize: {s.var}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
           </CardContent>
         </Card>
 

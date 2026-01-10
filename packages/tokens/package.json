@@ -19,7 +19,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm process-io && node style-dictionary.config.js",
+    "build": "pnpm process-io && node style-dictionary.config.js && node scripts/generate-font-loaders.js",
     "build:tokens": "pnpm build",
     "clean": "rm -rf dist io",
     "clean:legacy": "rm -rf src/",

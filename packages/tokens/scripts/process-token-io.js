@@ -117,6 +117,7 @@ class TokenIOProcessor {
           $type: token.$type || "string",
           $value: this.processValue(token),
           ...(token.$description && { $description: token.$description }),
+          ...(token.$extensions && { $extensions: token.$extensions }),
         };
 
         // Route to appropriate collection

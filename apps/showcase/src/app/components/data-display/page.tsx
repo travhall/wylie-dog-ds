@@ -38,7 +38,7 @@ export default function DataDisplayPage() {
         "A container for content and actions about a single subject.",
       status: "stable",
       preview: (
-        <Card className="glass w-[180px] h-20 flex items-center justify-center">
+        <Card className="glass w-45 h-20 flex items-center justify-center">
           <span className="text-xs font-bold">Standard Card</span>
         </Card>
       ),
@@ -61,7 +61,7 @@ export default function DataDisplayPage() {
         "A vertically stacked set of interactive headings that each reveal a section of content.",
       status: "stable",
       preview: (
-        <Accordion type="single" collapsible className="w-full max-w-[180px]">
+        <Accordion type="single" collapsible className="w-full max-w-45">
           <AccordionItem value="item-1" className="border-none">
             <AccordionTrigger className="text-xs py-2">
               Details
@@ -83,7 +83,7 @@ export default function DataDisplayPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[100px]">ID</TableHead>
+                <TableHead className="w-25">ID</TableHead>
                 <TableHead>Status</TableHead>
               </TableRow>
             </TableHeader>
@@ -145,7 +145,7 @@ export default function DataDisplayPage() {
               </p>
             </CardHeader>
             <CardContent className="p-6 pt-0 mt-auto">
-              <div className="glass bg-(--color-background-secondary)/20 rounded-xl p-4 min-h-[100px] flex items-center justify-center border border-(--color-border-primary)/5">
+              <div className="glass bg-(--color-background-secondary)/20 rounded-xl p-4 min-h-25 flex items-center justify-center border border-(--color-border-primary)/5">
                 {comp.preview}
               </div>
             </CardContent>

@@ -1376,7 +1376,23 @@
           "value": "Inter",
           "type": "fontFamily",
           "variable": "var(--typography-font-family-sans)",
-          "description": ""
+          "description": "",
+          "extensions": {
+            "com.wyliedog.fontSource": {
+              "provider": "google",
+              "weights": [
+                400,
+                500,
+                600,
+                700,
+                800
+              ],
+              "subsets": [
+                "latin"
+              ],
+              "display": "swap"
+            }
+          }
         },
         "typography-font-family-mono": {
           "name": "typographyFontFamilyMono",
@@ -1388,7 +1404,22 @@
           "value": "'JetBrains Mono'",
           "type": "fontFamily",
           "variable": "var(--typography-font-family-mono)",
-          "description": ""
+          "description": "",
+          "extensions": {
+            "com.wyliedog.fontSource": {
+              "provider": "google",
+              "weights": [
+                400,
+                500,
+                600,
+                700
+              ],
+              "subsets": [
+                "latin"
+              ],
+              "display": "swap"
+            }
+          }
         }
       },
       "size": {

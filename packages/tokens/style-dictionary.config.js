@@ -36,10 +36,18 @@ StyleDictionary.registerFormat({
         if (token.$type === "fontFamily") {
           if (name.includes("sans")) {
             value = "var(--font-sans, ui-sans-serif, system-ui, sans-serif)";
+            // Also add as Tailwind fontFamily theme property
+            themeVariables.push(`  --font-family-sans: ${value};`);
+            baseVariables.push(`    --font-family-sans: ${value};`);
           } else if (name.includes("serif")) {
             value = "var(--font-serif, ui-serif, serif)";
+            themeVariables.push(`  --font-family-serif: ${value};`);
+            baseVariables.push(`    --font-family-serif: ${value};`);
           } else if (name.includes("mono")) {
             value = "var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace)";
+            // Also add as Tailwind fontFamily theme property
+            themeVariables.push(`  --font-family-mono: ${value};`);
+            baseVariables.push(`    --font-family-mono: ${value};`);
           }
         }
 
@@ -195,6 +203,7 @@ StyleDictionary.registerFormat({
         type: token.$type,
         variable: `var(${variableName})`,
         description: token.$description || "",
+        ...(token.$extensions && { extensions: token.$extensions }),
       };
 
       const isPrimitive = token.filePath.includes("primitive");

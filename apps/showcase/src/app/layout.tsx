@@ -1,24 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
 import { PageLayout, SiteHeader, SiteFooter } from "@wyliedog/ui/compositions";
 import { Button } from "@wyliedog/ui/button";
 import { cn } from "@wyliedog/ui/lib/utils";
 import Link from "next/link";
+import { sansFont, monoFont } from "@/lib/fonts";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-});
 
 export const metadata: Metadata = {
   title: "Wylie Dog Design System",
   description: "A modern design system built with React and Tailwind CSS",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -68,8 +63,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          inter.variable,
-          jetbrainsMono.variable,
+          sansFont.variable,
+          monoFont.variable,
           "font-sans min-h-screen relative bg-(--color-background-secondary)"
         )}
       >
