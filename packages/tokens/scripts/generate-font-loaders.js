@@ -9,6 +9,87 @@ import path from 'path';
  */
 
 /**
+ * Parse @fontSource(...) pattern from $description field
+ * Example: @fontSource(provider:google,weights:400-700,subsets:latin,display:swap)
+ */
+function parseFontSourceDescription(description) {
+  if (!description || typeof description !== 'string') return null;
+
+  const match = description.match(/@fontSource\((.*)\)/);
+  if (!match) return null;
+
+  const content = match[1];
+  const config = {};
+
+  // Split by commas, but handle nested arrays
+  let currentKey = '';
+  let currentValue = '';
+  let depth = 0;
+
+  for (let i = 0; i < content.length; i++) {
+    const char = content[i];
+
+    if (char === '[') depth++;
+    if (char === ']') depth--;
+
+    if (char === ':' && depth === 0 && !currentKey) {
+      currentKey = currentValue.trim();
+      currentValue = '';
+    } else if (char === ',' && depth === 0) {
+      // End of key:value pair
+      if (currentKey) {
+        config[currentKey] = parseValue(currentKey, currentValue.trim());
+        currentKey = '';
+        currentValue = '';
+      }
+    } else {
+      currentValue += char;
+    }
+  }
+
+  // Handle last pair
+  if (currentKey && currentValue) {
+    config[currentKey] = parseValue(currentKey, currentValue.trim());
+  }
+
+  return Object.keys(config).length > 0 ? config : null;
+}
+
+/**
+ * Parse individual values based on key
+ */
+function parseValue(key, value) {
+  // Handle arrays (e.g., weights:400-700-800)
+  if (key === 'weights' && value.includes('-')) {
+    return value.split('-').map(Number);
+  }
+
+  if (key === 'subsets') {
+    return value.includes('-') ? value.split('-') : [value];
+  }
+
+  // Handle JSON arrays (e.g., fonts:[{...},{...}])
+  if (key === 'fonts' && value.startsWith('[')) {
+    try {
+      return JSON.parse(value);
+    } catch (e) {
+      console.warn(`Failed to parse fonts array: ${value}`);
+      return [];
+    }
+  }
+
+  // Handle booleans
+  if (value === 'true') return true;
+  if (value === 'false') return false;
+
+  // Handle numbers
+  if (!isNaN(value) && value !== '') return Number(value);
+
+  // Return as string
+  return value;
+}
+
+/**
  * Format JavaScript object without quoted keys for Next.js font config
  */
 function formatJSObject(obj, indent = 2) {
@@ -58,10 +139,17 @@ function generateFontLoaders() {
   const cssImports = [];
 
   Object.entries(fontFamilies).forEach(([key, token]) => {
-    const extensions = token.extensions?.['com.wyliedog.fontSource'];
+    // Try to get extensions from:
+    // 1. Explicit $extensions field (preferred)
+    // 2. Parse from $description field with @fontSource pattern
+    let extensions = token.extensions?.['com.wyliedog.fontSource'];
+
+    if (!extensions && token.description) {
+      extensions = parseFontSourceDescription(token.description);
+    }
 
     if (!extensions) {
-      console.warn(`⚠️  No font source extension found for ${key}`);
+      console.warn(`⚠️  No font source found for ${key} (no $extensions or @fontSource pattern in description), skipping`);
       return;
     }
 

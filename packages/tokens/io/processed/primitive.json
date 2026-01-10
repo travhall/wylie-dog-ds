@@ -414,7 +414,8 @@
   },
   "typography.font-family.mono": {
     "$type": "fontFamily",
-    "$value": "JetBrains Mono"
+    "$value": "JetBrains Mono",
+    "$description": "@fontSource(provider:google,weights:400-500-600-700,subsets:latin,display:swap)"
   },
   "typography.font-size.xs": {
     "$type": "fontSize",

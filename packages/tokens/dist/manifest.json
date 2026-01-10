@@ -1388,7 +1388,7 @@
           "value": "'JetBrains Mono'",
           "type": "fontFamily",
           "variable": "var(--typography-font-family-mono)",
-          "description": ""
+          "description": "@fontSource(provider:google,weights:400-500-600-700,subsets:latin,display:swap)"
         }
       },
       "size": {
