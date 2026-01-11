@@ -34,19 +34,19 @@ export class SyncMetadataManager {
     const tokenString = JSON.stringify(sortedObj);
 
     // Debug logging for hash generation
-    if (tokenForHash.valuesByMode) {
-      console.log(`🔐 Generating hash for token with valuesByMode`);
-      console.log(`  Token string to hash: ${tokenString}`);
-      console.log(
-        `  valuesByMode: ${JSON.stringify(tokenForHash.valuesByMode)}`
-      );
-    }
+    // if (tokenForHash.valuesByMode) {
+    //   console.log(`🔐 Generating hash for token with valuesByMode`);
+    //   console.log(`  Token string to hash: ${tokenString}`);
+    //   console.log(
+    //     `  valuesByMode: ${JSON.stringify(tokenForHash.valuesByMode)}`
+    //   );
+    // }
 
     const hash = this.simpleHash(tokenString);
 
-    if (tokenForHash.valuesByMode) {
-      console.log(`  Generated hash: ${hash}`);
-    }
+    // if (tokenForHash.valuesByMode) {
+    //   console.log(`  Generated hash: ${hash}`);
+    // }
 
     return hash;
   }
@@ -154,13 +154,13 @@ export class SyncMetadataManager {
 
     // Debug logging for tokens with valuesByMode
     if (localToken.valuesByMode || remoteToken.valuesByMode) {
-      console.log(`\n🔍 Hash comparison for token with valuesByMode:`);
-      console.log(`  Local hash: ${localHash} (freshly generated)`);
-      console.log(`  Remote hash: ${remoteHash} (freshly generated)`);
-      console.log(`  Has changed: ${hasChanged}`);
+      // console.log(`\n🔍 Hash comparison for token with valuesByMode:`);
+      // console.log(`  Local hash: ${localHash} (freshly generated)`);
+      // console.log(`  Remote hash: ${remoteHash} (freshly generated)`);
+      // console.log(`  Has changed: ${hasChanged}`);
 
       if (hasChanged) {
-        console.log(`  ✅ Change detected!`);
+        // console.log(`  ✅ Change detected!`);
         if (localToken.valuesByMode && remoteToken.valuesByMode) {
           const localDark = localToken.valuesByMode.Dark;
           const remoteDark = remoteToken.valuesByMode.Dark;

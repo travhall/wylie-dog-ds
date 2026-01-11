@@ -84,8 +84,20 @@ export class WylieDogNativeAdapter implements FormatAdapter {
         };
       }
 
-      // DEEP CLONE to preserve all fields including $description
-      data = JSON.parse(JSON.stringify(data));
+      // DEBUG: Check fontFamily descriptions in adapter
+      data.forEach((coll: any) => {
+        Object.entries(coll).forEach(([name, collData]: [string, any]) => {
+          if (collData?.variables) {
+            Object.entries(collData.variables).forEach(
+              ([key, token]: [string, any]) => {
+                if (token?.$type === "fontFamily" && !token.$description) {
+                  console.warn(`⚠️ ADAPTER MISSING: ${name}.${key}`);
+                }
+              }
+            );
+          }
+        });
+      });
 
       // Minimal validation
       for (let i = 0; i < data.length; i++) {

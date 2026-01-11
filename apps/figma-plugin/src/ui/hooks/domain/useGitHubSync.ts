@@ -255,9 +255,54 @@ export function useGitHubSync(
       actions.setProgressStep(3);
 
       if (pullResult.success && pullResult.tokens) {
-        // pullResult.tokens is already an array of collection objects from GitHub
-        // Each collection object is like: { "primitive": { modes: [...], variables: {...} } }
-        // We need to wrap the entire array in brackets for parseTokenFile
+        // Check fontFamily tokens in pullResult
+        let fontFamilyCount = 0;
+        let fontsWithDesc = 0;
+
+        if (Array.isArray(pullResult.tokens)) {
+          pullResult.tokens.forEach((coll: any) => {
+            Object.values(coll).forEach((data: any) => {
+              if (data?.variables) {
+                Object.values(data.variables).forEach((token: any) => {
+                  if (token?.$type === "fontFamily") {
+                    fontFamilyCount++;
+                    if (token.$description) fontsWithDesc++;
+                  }
+                });
+              }
+            });
+          });
+        }
+
+        console.log(
+          `📊 PULL CHECK: ${fontFamilyCount} fontFamily tokens, ${fontsWithDesc} have descriptions`
+        );
+
+        // DEBUG: Check if descriptions exist in pullResult.tokens before sending to import
+        if (Array.isArray(pullResult.tokens)) {
+          pullResult.tokens.forEach((coll: any) => {
+            Object.entries(coll).forEach(([name, data]: [string, any]) => {
+              if (data?.variables) {
+                const sans = data.variables["typography.font-family.sans"];
+                const mono = data.variables["typography.font-family.mono"];
+                if (sans || mono) {
+                  console.log(`🔍 BEFORE IMPORT (${name}):`);
+                  if (sans)
+                    console.log(
+                      `  sans $description:`,
+                      sans.$description || "MISSING"
+                    );
+                  if (mono)
+                    console.log(
+                      `  mono $description:`,
+                      mono.$description || "MISSING"
+                    );
+                }
+              }
+            });
+          });
+        }
+
         const files = [
           {
             filename: "remote-tokens.json",
@@ -296,6 +341,11 @@ export function useGitHubSync(
    */
   const handleConflictResolution = useCallback(
     async (resolutions: ConflictResolution[]) => {
+      console.log(
+        `🔧 handleConflictResolution called with ${resolutions.length} resolutions`
+      );
+      console.log(`  conflictOperationType: ${conflictOperationType}`);
+      console.log(`  pendingExportData type:`, typeof pendingExportData);
       try {
         actions.setLoading(true);
         actions.setShowConflictResolution(false);

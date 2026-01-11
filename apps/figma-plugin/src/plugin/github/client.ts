@@ -159,6 +159,21 @@ export class GitHubClient {
           const content = await response.text();
           const tokenData = JSON.parse(content);
 
+          // DEBUG: Log fontFamily token descriptions immediately after parse
+          if (fileName === "primitive.json" && Array.isArray(tokenData)) {
+            const coll = tokenData[0];
+            const primitiveData = coll?.primitive;
+            if (primitiveData?.variables) {
+              const sans =
+                primitiveData.variables["typography.font-family.sans"];
+              const mono =
+                primitiveData.variables["typography.font-family.mono"];
+              console.log(`🔍 CLIENT PARSED primitive.json:`);
+              console.log(`  sans has $description:`, !!sans?.$description);
+              console.log(`  mono has $description:`, !!mono?.$description);
+            }
+          }
+
           // Ensure token data is in array format for consistency
           if (Array.isArray(tokenData)) {
             tokens.push(...tokenData);

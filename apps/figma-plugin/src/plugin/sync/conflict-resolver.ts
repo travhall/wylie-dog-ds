@@ -19,7 +19,7 @@ export class ConflictResolver {
     remoteTokens: ExportData[],
     resolutions: ConflictResolution[]
   ): ExportData[] {
-    console.log(`🔧 Applying ${resolutions.length} conflict resolutions...`);
+    // console.log(`🔧 Applying ${resolutions.length} conflict resolutions...`);
 
     // Convert to sync-aware format
     const localWithSync = this.metadataManager.addSyncMetadataToExportData(
@@ -48,7 +48,7 @@ export class ConflictResolver {
     // Convert back to standard format (remove sync metadata for compatibility)
     const result = this.stripSyncMetadata(resolved);
 
-    console.log("✅ Conflict resolution complete");
+    // console.log("✅ Conflict resolution complete");
     return result;
   }
 
@@ -70,7 +70,7 @@ export class ConflictResolver {
     // Parse conflict ID to get token path info
     const pathInfo = this.parseConflictId(conflictId);
     if (!pathInfo) {
-      console.warn(`Invalid conflict ID: ${conflictId}`);
+      // console.warn(`Invalid conflict ID: ${conflictId}`);
       return;
     }
 
@@ -79,7 +79,7 @@ export class ConflictResolver {
     switch (strategy) {
       case "take-local":
         // Keep existing local token (no action needed)
-        console.log(`📍 Keeping local version of ${tokenPath}`);
+        // console.log(`📍 Keeping local version of ${tokenPath}`);
         break;
 
       case "take-remote":
@@ -89,7 +89,7 @@ export class ConflictResolver {
           collectionName,
           tokenName
         );
-        console.log(`📥 Applied remote version of ${tokenPath}`);
+        // console.log(`📥 Applied remote version of ${tokenPath}`);
         break;
 
       case "manual":
@@ -100,7 +100,7 @@ export class ConflictResolver {
             tokenName,
             manualToken
           );
-          console.log(`✏️ Applied manual resolution for ${tokenPath}`);
+          // console.log(`✏️ Applied manual resolution for ${tokenPath}`);
         } else if (manualValue !== undefined) {
           this.applyManualValue(
             resolvedTokens,
@@ -108,12 +108,12 @@ export class ConflictResolver {
             tokenName,
             manualValue
           );
-          console.log(`✏️ Applied manual value for ${tokenPath}`);
+          // console.log(`✏️ Applied manual value for ${tokenPath}`);
         }
         break;
 
       default:
-        console.warn(`Unknown resolution strategy: ${strategy}`);
+      // console.warn(`Unknown resolution strategy: ${strategy}`);
     }
   }
 
@@ -129,19 +129,8 @@ export class ConflictResolver {
     // Find the remote token
     const remoteToken = this.findToken(remoteTokens, collectionName, tokenName);
     if (!remoteToken) {
-      console.warn(`Remote token not found: ${collectionName}.${tokenName}`);
+      // console.warn(`Remote token not found: ${collectionName}.${tokenName}`);
       return;
-    }
-
-    // DEBUG: Log description for font-family tokens
-    if (remoteToken.$type === "fontFamily") {
-      console.log(
-        `🔍 [CONFLICT-RESOLVER] Applying remote font-family token: ${collectionName}.${tokenName}`
-      );
-      console.log(
-        `  $description: "${remoteToken.$description || "undefined"}"`
-      );
-      console.log(`  $value: "${remoteToken.$value}"`);
     }
 
     // Find or create the collection in resolved tokens
@@ -294,16 +283,6 @@ export class ConflictResolver {
           ...collection,
           variables: Object.fromEntries(
             Object.entries(collection.variables).map(([tokenName, token]) => {
-              // DEBUG: Log description for font-family tokens
-              if (token.$type === "fontFamily") {
-                console.log(
-                  `🔍 [CONFLICT-RESOLVER] stripSyncMetadata for ${collectionName}.${tokenName}`
-                );
-                console.log(
-                  `  $description: "${token.$description || "undefined"}"`
-                );
-              }
-
               return [
                 tokenName,
                 {

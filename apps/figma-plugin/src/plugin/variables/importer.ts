@@ -305,11 +305,6 @@ async function createVariableWithReferences(
     // Update description for both new and existing variables
     if (token.$description) {
       variable.description = token.$description;
-      if (token.$type === "fontFamily") {
-        console.log(`✅ SET: ${figmaName} description`);
-      }
-    } else if (token.$type === "fontFamily") {
-      console.log(`❌ MISSING: ${figmaName} has no $description`);
     }
 
     // Register in registry for reference resolution
@@ -661,32 +656,6 @@ export async function parseTokenFile(content: string): Promise<{
   data: ExportData | ExportData[];
   adapterResult?: AdapterProcessResult;
 }> {
-  // DEBUG: Check fontFamily tokens in raw content string
-  const parsed = JSON.parse(content);
-  if (Array.isArray(parsed)) {
-    const fontFamilies: any[] = [];
-    parsed.forEach((coll: any) => {
-      Object.entries(coll).forEach(([name, data]: [string, any]) => {
-        if (data?.variables) {
-          Object.entries(data.variables).forEach(
-            ([key, token]: [string, any]) => {
-              if (token?.$type === "fontFamily") {
-                fontFamilies.push({
-                  collection: name,
-                  token: key,
-                  hasDesc: !!token.$description,
-                });
-              }
-            }
-          );
-        }
-      });
-    });
-    if (fontFamilies.length > 0) {
-      console.log("📄 RAW CONTENT fontFamily tokens:", fontFamilies);
-    }
-  }
-
   const adapterManager = new FormatAdapterManager();
   const result = await adapterManager.processTokenFile(content);
 

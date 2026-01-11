@@ -18,7 +18,7 @@ export class VariableRegistry {
 
   register(tokenName: string, variableId: string): void {
     this.tokenToVariableMap.set(tokenName, variableId);
-    console.log(`Registry: ${tokenName} → ${variableId}`);
+    // console.log(`Registry: ${tokenName} → ${variableId}`);
   }
 
   addPendingResolution(
@@ -39,7 +39,7 @@ export class VariableRegistry {
     const variableId = this.tokenToVariableMap.get(cleanReference);
 
     if (variableId) {
-      console.log(`Resolved ${tokenReference} → ${variableId}`);
+      // console.log(`Resolved ${tokenReference} → ${variableId}`);
     } else {
       console.warn(`Failed to resolve: ${tokenReference}`);
     }
@@ -59,7 +59,7 @@ export class VariableRegistry {
     );
 
     for (const item of this.variablesToResolve) {
-      console.log(`Resolving references for: ${item.tokenName}`);
+      // console.log(`Resolving references for: ${item.tokenName}`);
 
       for (const [modeId, reference] of Array.from(item.references.entries())) {
         const referencedVariableId = this.resolve(reference.originalValue);
@@ -72,9 +72,9 @@ export class VariableRegistry {
               id: referencedVariableId,
             });
             resolvedCount++;
-            console.log(
-              `✅ Resolved ${item.tokenName} mode ${modeId}: ${reference.originalValue}`
-            );
+            // console.log(
+            //   `✅ Resolved ${item.tokenName} mode ${modeId}: ${reference.originalValue}`
+            // );
           } catch (error) {
             console.error(`Failed to set alias for ${item.tokenName}:`, error);
             unresolvedReferences.push(
@@ -193,7 +193,7 @@ export function createImportOrder(collections: any[]): string[] {
 
   function visit(name: string): void {
     if (visiting.has(name)) {
-      console.warn(`Circular dependency detected involving: ${name}`);
+      // console.warn(`Circular dependency detected involving: ${name}`);
       return;
     }
     if (visited.has(name)) return;
@@ -228,7 +228,7 @@ export function createImportOrder(collections: any[]): string[] {
     }
   }
 
-  console.log("Import order determined:", sorted);
+  // console.log("Import order determined:", sorted);
   return sorted;
 }
 

@@ -260,8 +260,6 @@ export async function handleImportTokens(msg: any): Promise<void> {
       preserveExistingVariables: false,
     });
 
-    console.log("🎉 Global import result:", globalResult);
-
     // Check if import was successful despite reference issues
     if (
       !globalResult.success &&

@@ -3,52 +3,47 @@
  * Handles OAuth-related messages from the UI
  */
 
-import { oauthHandler, type OAuthProvider } from "./handler";
+import { deviceFlowHandler } from "./device-flow-handler";
 import { getAccessToken } from "./token-storage";
 import type { GitHubConfig } from "../../shared/types";
 import { parseGitHubUrl } from "../../ui/utils/parseGitHubUrl";
 
+export type OAuthProvider = "github" | "gitlab" | "bitbucket";
+
 /**
  * Handle OAuth initiation message from UI
+ * Uses GitHub Device Flow for serverless authentication
  */
 export async function handleOAuthInitiate(
   provider: OAuthProvider,
   repoUrl?: string
 ): Promise<void> {
   try {
-    // Initiate OAuth flow
-    const tokens = await oauthHandler.initiateOAuth(provider);
-
-    // If repoUrl provided, create and test config
-    if (repoUrl) {
-      const parsed = parseGitHubUrl(repoUrl);
-      if (!parsed) {
-        throw new Error("Invalid repository URL");
-      }
-
-      const config: GitHubConfig = {
-        owner: parsed.owner,
-        repo: parsed.repo,
-        branch: "main",
-        tokenPath: "tokens",
-        accessToken: tokens.accessToken,
-        authMethod: "oauth",
-        syncMode: "direct",
-      };
-
-      // Send success with config
-      figma.ui.postMessage({
-        type: "oauth-success",
-        provider,
-        config,
-      });
-    } else {
-      // Just send success
-      figma.ui.postMessage({
-        type: "oauth-success",
-        provider,
-      });
+    // Only GitHub is supported with Device Flow
+    if (provider !== "github") {
+      throw new Error(
+        `Device Flow only supports GitHub. ${provider} coming soon!`
+      );
     }
+
+    // Initiate device flow
+    const status = await deviceFlowHandler.authenticate();
+
+    if (status.status === "error") {
+      throw new Error(status.error || "Failed to start authentication");
+    }
+
+    // Send device code info to UI for display
+    figma.ui.postMessage({
+      type: "oauth-device-code",
+      provider,
+      userCode: status.userCode,
+      verificationUri: status.verificationUri,
+      expiresIn: status.expiresIn,
+      repoUrl, // Pass through for later
+    });
+
+    // The polling happens in background and will send oauth-success when complete
   } catch (error: any) {
     console.error("OAuth initiation failed:", error);
     figma.ui.postMessage({
@@ -63,7 +58,7 @@ export async function handleOAuthInitiate(
  */
 export async function handleOAuthSignOut(): Promise<void> {
   try {
-    await oauthHandler.signOut();
+    await deviceFlowHandler.signOut();
     figma.ui.postMessage({
       type: "oauth-signout-success",
     });
@@ -81,7 +76,7 @@ export async function handleOAuthSignOut(): Promise<void> {
  */
 export async function handleOAuthStatus(): Promise<void> {
   try {
-    const isAuth = await oauthHandler.isAuthenticated();
+    const isAuth = await deviceFlowHandler.isAuthenticated();
     const token = isAuth ? await getAccessToken() : null;
 
     figma.ui.postMessage({
@@ -100,11 +95,12 @@ export async function handleOAuthStatus(): Promise<void> {
 }
 
 /**
- * Get current access token (refreshing if needed)
+ * Get current access token
+ * Note: Device Flow tokens don't expire, so no refresh needed
  */
 export async function handleGetAccessToken(): Promise<void> {
   try {
-    const token = await oauthHandler.getAccessToken();
+    const token = await deviceFlowHandler.getAccessToken();
 
     figma.ui.postMessage({
       type: "access-token",

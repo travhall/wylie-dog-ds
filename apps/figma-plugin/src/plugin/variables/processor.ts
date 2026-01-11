@@ -300,9 +300,6 @@ export async function processCollection(
       }
 
       variables[tokenName] = processedToken;
-      console.log(
-        `Processed token: ${tokenName} with ${collection.modes.length} mode(s)`
-      );
     } catch (error) {
       console.error(`Error processing variable ${variable.name}:`, error);
     }

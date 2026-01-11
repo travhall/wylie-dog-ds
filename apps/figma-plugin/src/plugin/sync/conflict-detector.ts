@@ -19,26 +19,37 @@ export class ConflictDetector {
     localTokens: ExportData[],
     remoteTokens: ExportData[]
   ): ConflictDetectionResult {
-    console.log("🔍 Starting conflict detection...");
-
-    // Debug logging
-    console.log("=== CONFLICT DETECTION DEBUG ===");
-    console.log("Local tokens count:", localTokens.length);
-    console.log("Remote tokens count:", remoteTokens.length);
+    // DEBUG: Check descriptions at entry point
+    console.log("🔍 CONFLICT DETECTOR ENTRY:");
+    remoteTokens.forEach((coll: any) => {
+      Object.entries(coll).forEach(([name, data]: [string, any]) => {
+        if (data?.variables) {
+          const sans = data.variables["typography.font-family.sans"];
+          const mono = data.variables["typography.font-family.mono"];
+          if (sans || mono) {
+            console.log(`  Collection ${name}:`);
+            if (sans)
+              console.log(`    sans $description:`, !!sans.$description);
+            if (mono)
+              console.log(`    mono $description:`, !!mono.$description);
+          }
+        }
+      });
+    });
 
     if (localTokens.length > 0) {
       const firstLocal = localTokens[0];
       const collectionName = Object.keys(firstLocal)[0];
-      console.log("First local collection:", collectionName);
+      // console.log("First local collection:", collectionName);
       if (firstLocal[collectionName]) {
         const varNames = Object.keys(firstLocal[collectionName].variables);
-        console.log("Local variable count:", varNames.length);
-        console.log("First 3 variables:", varNames.slice(0, 3));
+        // console.log("Local variable count:", varNames.length);
+        // console.log("First 3 variables:", varNames.slice(0, 3));
 
         // Log first variable details
         if (varNames.length > 0) {
           const firstVar = firstLocal[collectionName].variables[varNames[0]];
-          console.log("First variable value:", JSON.stringify(firstVar.$value));
+          // console.log("First variable value:", JSON.stringify(firstVar.$value));
         }
       }
     }
@@ -46,20 +57,20 @@ export class ConflictDetector {
     if (remoteTokens.length > 0) {
       const firstRemote = remoteTokens[0];
       const collectionName = Object.keys(firstRemote)[0];
-      console.log("First remote collection:", collectionName);
+      // console.log("First remote collection:", collectionName);
       if (firstRemote[collectionName]) {
         const varNames = Object.keys(firstRemote[collectionName].variables);
-        console.log("Remote variable count:", varNames.length);
-        console.log("First 3 variables:", varNames.slice(0, 3));
+        // console.log("Remote variable count:", varNames.length);
+        // console.log("First 3 variables:", varNames.slice(0, 3));
 
         // Log first variable details
         if (varNames.length > 0) {
           const firstVar = firstRemote[collectionName].variables[varNames[0]];
-          console.log("First variable value:", JSON.stringify(firstVar.$value));
+          // console.log("First variable value:", JSON.stringify(firstVar.$value));
         }
       }
     }
-    console.log("=== END DEBUG ===");
+    // console.log("=== END DEBUG ===");
 
     // Convert to sync-aware format
     const localWithSync = this.metadataManager.addSyncMetadataToExportData(
@@ -83,9 +94,9 @@ export class ConflictDetector {
       return localCollectionNames.has(collectionName);
     });
 
-    console.log(
-      `🔍 Comparing ${localCollectionNames.size} selected collections: ${Array.from(localCollectionNames).join(", ")}`
-    );
+    // console.log(
+    //   `🔍 Comparing ${localCollectionNames.size} selected collections: ${Array.from(localCollectionNames).join(", ")}`
+    // );
 
     // Create lookup maps for efficient comparison
     const localMap = this.createTokenMap(localWithSync);
@@ -115,12 +126,12 @@ export class ConflictDetector {
 
     const summary = this.generateConflictSummary(conflicts);
 
-    console.log(
-      `🔍 Conflict detection complete: ${conflicts.length} conflicts found`
-    );
-    console.log(
-      `   Auto-resolvable: ${summary.autoResolvable}, Manual: ${summary.requiresManualReview}`
-    );
+    // console.log(
+    //   `🔍 Conflict detection complete: ${conflicts.length} conflicts found`
+    // );
+    // console.log(
+    //   `   Auto-resolvable: ${summary.autoResolvable}, Manual: ${summary.requiresManualReview}`
+    // );
 
     return {
       conflicts,
@@ -152,9 +163,9 @@ export class ConflictDetector {
     }
 
     // Debug logging
-    console.log(`🗺️ Token map created with ${tokenMap.size} tokens`);
+    // console.log(`🗺️ Token map created with ${tokenMap.size} tokens`);
     const firstThree = Array.from(tokenMap.keys()).slice(0, 3);
-    console.log("First 3 token paths:", firstThree);
+    // console.log("First 3 token paths:", firstThree);
 
     return tokenMap;
   }
@@ -182,25 +193,23 @@ export class ConflictDetector {
       tokenPath.includes("blue") ||
       tokenPath.includes("primary")
     ) {
-      console.log(`\n📊 Comparing: ${tokenPath}`);
-      console.log("  Local value:", JSON.stringify(localToken.$value));
-      console.log("  Remote value:", JSON.stringify(remoteToken.$value));
-
+      // console.log(`\n📊 Comparing: ${tokenPath}`);
+      // console.log("  Local value:", JSON.stringify(localToken.$value));
+      // console.log("  Remote value:", JSON.stringify(remoteToken.$value));
       // Log valuesByMode if it exists
-      if (localToken.valuesByMode || remoteToken.valuesByMode) {
-        console.log(
-          "  Local valuesByMode:",
-          JSON.stringify(localToken.valuesByMode)
-        );
-        console.log(
-          "  Remote valuesByMode:",
-          JSON.stringify(remoteToken.valuesByMode)
-        );
-      }
-
-      console.log("  Has changed:", hasChanged);
-      console.log("  Local hash:", localToken.$syncMetadata?.hash || "none");
-      console.log("  Remote hash:", remoteToken.$syncMetadata?.hash || "none");
+      // if (localToken.valuesByMode || remoteToken.valuesByMode) {
+      //   console.log(
+      //     "  Local valuesByMode:",
+      //     JSON.stringify(localToken.valuesByMode)
+      //   );
+      //   console.log(
+      //     "  Remote valuesByMode:",
+      //     JSON.stringify(remoteToken.valuesByMode)
+      //   );
+      // }
+      // console.log("  Has changed:", hasChanged);
+      // console.log("  Local hash:", localToken.$syncMetadata?.hash || "none");
+      // console.log("  Remote hash:", remoteToken.$syncMetadata?.hash || "none");
     }
 
     // Quick hash comparison first

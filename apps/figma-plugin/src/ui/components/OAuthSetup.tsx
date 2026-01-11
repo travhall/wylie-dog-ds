@@ -9,7 +9,7 @@ interface OAuthSetupProps {
 
 /**
  * OAuth Setup Component
- * Handles OAuth authentication flow with visual feedback
+ * Handles OAuth Device Flow authentication with visual feedback
  */
 export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
   const [selectedProvider, setSelectedProvider] =
@@ -17,11 +17,17 @@ export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [status, setStatus] = useState<string>("");
+  const [deviceCode, setDeviceCode] = useState<{
+    userCode: string;
+    verificationUri: string;
+    expiresIn: number;
+  } | null>(null);
 
   const handleConnect = async () => {
     setLoading(true);
     setError(null);
-    setStatus("Opening authentication window...");
+    setDeviceCode(null);
+    setStatus("Starting authentication...");
 
     try {
       // Send message to plugin to initiate OAuth
@@ -35,13 +41,19 @@ export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
         "*"
       );
 
-      setStatus("Waiting for authorization...");
-
       // Listen for completion
       const handleMessage = (event: MessageEvent) => {
         const msg = event.data.pluginMessage;
 
-        if (msg?.type === "oauth-success") {
+        if (msg?.type === "oauth-device-code") {
+          // Display device code for user
+          setDeviceCode({
+            userCode: msg.userCode,
+            verificationUri: msg.verificationUri,
+            expiresIn: msg.expiresIn,
+          });
+          setStatus("Waiting for authorization...");
+        } else if (msg?.type === "oauth-success") {
           setStatus("Successfully authenticated!");
           setTimeout(() => {
             onSuccess(selectedProvider);
@@ -50,6 +62,7 @@ export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
           setError(msg.error || "Authentication failed");
           setLoading(false);
           setStatus("");
+          setDeviceCode(null);
         }
       };
 
@@ -191,6 +204,87 @@ export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
         </div>
       )}
 
+      {/* Device Code Display */}
+      {deviceCode && (
+        <div
+          style={{
+            padding: "var(--space-4)",
+            marginBottom: "var(--space-4)",
+            backgroundColor: "var(--accent-light)",
+            border: "2px solid var(--accent-primary)",
+            borderRadius: "var(--radius-lg)",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-medium)",
+              color: "var(--text-primary)",
+              marginBottom: "var(--space-3)",
+            }}
+          >
+            🔑 Enter this code on GitHub:
+          </div>
+
+          <div
+            style={{
+              padding: "var(--space-4)",
+              backgroundColor: "var(--surface-primary)",
+              border: "2px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              textAlign: "center",
+              marginBottom: "var(--space-4)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "32px",
+                fontWeight: "var(--font-weight-bold)",
+                letterSpacing: "0.25em",
+                fontFamily: "monospace",
+                color: "var(--accent-primary)",
+              }}
+            >
+              {deviceCode.userCode}
+            </div>
+          </div>
+
+          <div
+            style={{
+              fontSize: "var(--font-size-xs)",
+              color: "var(--text-secondary)",
+              marginBottom: "var(--space-3)",
+              lineHeight: "var(--line-height-relaxed)",
+            }}
+          >
+            1. Visit: <strong>{deviceCode.verificationUri}</strong>
+            <br />
+            2. Enter the code above
+            <br />
+            3. Authorize the application
+            <br />
+            4. Return here - we'll detect it automatically!
+          </div>
+
+          <button
+            onClick={() => window.open(deviceCode.verificationUri, "_blank")}
+            style={{
+              width: "100%",
+              padding: "var(--space-2)",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-medium)",
+              color: "var(--text-inverse)",
+              backgroundColor: "var(--accent-primary)",
+              border: "none",
+              borderRadius: "var(--radius-md)",
+              cursor: "pointer",
+            }}
+          >
+            Open GitHub →
+          </button>
+        </div>
+      )}
+
       {/* Provider Selection */}
       <div style={{ marginBottom: "var(--space-6)" }}>
         <label
@@ -268,33 +362,36 @@ export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
       </div>
 
       {/* Info Box */}
-      <div
-        style={{
-          padding: "var(--space-3)",
-          marginBottom: "var(--space-4)",
-          backgroundColor: "var(--info-light)",
-          border: "1px solid var(--info)",
-          borderRadius: "var(--radius-md)",
-          fontSize: "var(--font-size-xs)",
-          color: "var(--text-secondary)",
-          lineHeight: "var(--line-height-relaxed)",
-        }}
-      >
+      {!deviceCode && (
         <div
           style={{
-            fontWeight: "var(--font-weight-medium)",
-            marginBottom: "var(--space-1)",
-            color: "var(--text-primary)",
+            padding: "var(--space-3)",
+            marginBottom: "var(--space-4)",
+            backgroundColor: "var(--info-light)",
+            border: "1px solid var(--info)",
+            borderRadius: "var(--radius-md)",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
+            lineHeight: "var(--line-height-relaxed)",
           }}
         >
-          ℹ️ How OAuth works:
+          <div
+            style={{
+              fontWeight: "var(--font-weight-medium)",
+              marginBottom: "var(--space-1)",
+              color: "var(--text-primary)",
+            }}
+          >
+            ℹ️ How Device Flow works:
+          </div>
+          <ol style={{ margin: "0", paddingLeft: "var(--space-5)" }}>
+            <li>Click "Connect" to generate a unique code</li>
+            <li>Enter the code on GitHub's authorization page</li>
+            <li>Approve access - we'll detect it automatically!</li>
+            <li>No server required - completely free and secure</li>
+          </ol>
         </div>
-        <ol style={{ margin: "0", paddingLeft: "var(--space-5)" }}>
-          <li>Click "Connect" to open your browser</li>
-          <li>Authorize Token Bridge on your provider</li>
-          <li>Return to Figma - you're done!</li>
-        </ol>
-      </div>
+      )}
 
       {/* Actions */}
       <div
