@@ -74,6 +74,18 @@ export class W3CDTCGAdapter implements FormatAdapter {
     try {
       console.log("🔄 W3C DTCG: Starting normalization");
 
+      // Check for null or undefined input
+      if (!data || typeof data !== "object") {
+        errors.push("W3C DTCG format requires a valid object with token data");
+        return {
+          data: [],
+          transformations,
+          warnings,
+          errors,
+          success: false,
+        };
+      }
+
       // W3C DTCG format is close to our expected format
       // Main transformation is organizing into collections
       const collections = this.organizeIntoCollections(data);
@@ -146,6 +158,10 @@ export class W3CDTCGAdapter implements FormatAdapter {
 
   private flattenTokens(obj: any, prefix = ""): Record<string, any> {
     const flattened: Record<string, any> = {};
+
+    if (!obj || typeof obj !== "object") {
+      return flattened;
+    }
 
     for (const [key, value] of Object.entries(obj)) {
       // Skip metadata fields at root level
