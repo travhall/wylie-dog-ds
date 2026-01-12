@@ -85,19 +85,21 @@ export class WylieDogNativeAdapter implements FormatAdapter {
       }
 
       // DEBUG: Check fontFamily descriptions in adapter
-      data.forEach((coll: any) => {
-        Object.entries(coll).forEach(([name, collData]: [string, any]) => {
-          if (collData?.variables) {
-            Object.entries(collData.variables).forEach(
-              ([key, token]: [string, any]) => {
-                if (token?.$type === "fontFamily" && !token.$description) {
-                  console.warn(`⚠️ ADAPTER MISSING: ${name}.${key}`);
+      data
+        .filter((coll: any) => coll && typeof coll === "object")
+        .forEach((coll: any, index: number) => {
+          Object.entries(coll).forEach(([name, collData]: [string, any]) => {
+            if (collData?.variables) {
+              Object.entries(collData.variables).forEach(
+                ([key, token]: [string, any]) => {
+                  if (token?.$type === "fontFamily" && !token.$description) {
+                    console.warn(`⚠️ ADAPTER MISSING: ${name}.${key}`);
+                  }
                 }
-              }
-            );
-          }
+              );
+            }
+          });
         });
-      });
 
       // Minimal validation
       for (let i = 0; i < data.length; i++) {
