@@ -77,7 +77,7 @@ export const CardGrid = React.forwardRef<HTMLDivElement, CardGridProps>(
     );
 
     return (
-      <div className={gridClasses} ref={ref} {...props}>
+      <div className={gridClasses} ref={ref} role="region" {...props}>
         {children}
       </div>
     );

@@ -17,7 +17,7 @@ export interface FeatureItem {
 }
 
 export interface FeatureGridProps extends React.HTMLAttributes<HTMLDivElement> {
-  features: FeatureItem[];
+  features?: FeatureItem[];
   columns?: {
     sm?: number;
     md?: number;
@@ -32,7 +32,7 @@ export interface FeatureGridProps extends React.HTMLAttributes<HTMLDivElement> {
 export const FeatureGrid = React.forwardRef<HTMLDivElement, FeatureGridProps>(
   (
     {
-      features,
+      features = [],
       columns = { sm: 1, md: 2, lg: 3, xl: 4 },
       gap = "gap-8",
       centered = false,
@@ -65,7 +65,7 @@ export const FeatureGrid = React.forwardRef<HTMLDivElement, FeatureGridProps>(
     );
 
     return (
-      <div className={gridClasses} ref={ref} {...props}>
+      <div className={gridClasses} ref={ref} role="region" {...props}>
         {features.map((feature, index) => (
           <div key={index} className="group relative">
             <div className="glass border border-(--color-border-primary)/10 rounded-2xl p-6 transition-all duration-500 hover:border-(--color-interactive-primary)/20 hover:scale-105">

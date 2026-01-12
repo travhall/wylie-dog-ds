@@ -249,14 +249,16 @@ export function TransformationSummary({
               >
                 ⚠️ Notes
               </div>
-              {summary.warnings.map((warning, i) => (
+              {summary.warnings?.map((warning, i) => (
                 <div
                   key={i}
                   style={{
                     fontSize: "var(--font-size-xs)",
                     color: "#92400e",
                     marginBottom:
-                      i < summary.warnings!.length - 1 ? "var(--space-1)" : 0,
+                      i < (summary.warnings?.length || 0) - 1
+                        ? "var(--space-1)"
+                        : 0,
                   }}
                 >
                   • {warning}
