@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SiteFooter } from "@wyliedog/ui/compositions/site-footer";
 
 const meta: Meta<typeof SiteFooter> = {
-  title: "4. Patterns/SiteFooter",
+  title: "4. Patterns/Site Footer",
   component: SiteFooter,
   parameters: {
     layout: "centered",

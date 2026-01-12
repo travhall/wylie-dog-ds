@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PageLayout } from "@wyliedog/ui/compositions/page-layout";
 
 const meta: Meta<typeof PageLayout> = {
-  title: "4. Patterns/PageLayout",
+  title: "4. Patterns/Page Layout",
   component: PageLayout,
   parameters: {
     layout: "centered",

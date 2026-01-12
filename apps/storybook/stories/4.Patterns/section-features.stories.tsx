@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SectionFeatures } from "@wyliedog/ui/compositions/section-features";
 
 const meta: Meta<typeof SectionFeatures> = {
-  title: "4. Patterns/SectionFeatures",
+  title: "4. Patterns/Section Features",
   component: SectionFeatures,
   parameters: {
     layout: "centered",

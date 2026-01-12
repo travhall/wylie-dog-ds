@@ -3,7 +3,7 @@ import { SiteHeader } from "@wyliedog/ui/compositions/site-header";
 import { Heart, Menu } from "lucide-react";
 
 const meta: Meta<typeof SiteHeader> = {
-  title: "4. Patterns/SiteHeader",
+  title: "4. Patterns/Site Header",
   component: SiteHeader,
   parameters: {
     layout: "fullscreen",
