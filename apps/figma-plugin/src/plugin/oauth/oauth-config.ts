@@ -28,10 +28,7 @@
  * Option 3: Leave as default placeholder - users will need to configure
  */
 export const GITHUB_CLIENT_ID =
-  process.env.GITHUB_CLIENT_ID ||
-  // TODO: Replace with your actual Client ID when publishing
-  // For now, this is a placeholder that will show helpful error
-  "CONFIGURE_GITHUB_CLIENT_ID";
+  process.env.GITHUB_CLIENT_ID || "Ov23liQbrM4syqZ6Jj5z";
 
 /**
  * Validate configuration

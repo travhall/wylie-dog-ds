@@ -59,11 +59,10 @@ export default function PatternsPage() {
                     responsive behavior.
                   </p>
                   <div className="flex gap-2">
-                    <Link
-                      href="/patterns/application-shell"
-                      className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-(--color-button-outline-border) bg-transparent hover:bg-(--color-button-outline-hover) text-(--color-button-outline-text) h-8 px-3"
-                    >
-                      View Pattern
+                    <Link href="/patterns/application-shell">
+                      <Button variant="outline" size="sm">
+                        View Pattern
+                      </Button>
                     </Link>
                   </div>
                 </CardContent>
@@ -89,11 +88,10 @@ export default function PatternsPage() {
                     visualization areas.
                   </p>
                   <div className="flex gap-2">
-                    <Link
-                      href="/patterns/dashboard-layout"
-                      className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-(--color-button-outline-border) bg-transparent hover:bg-(--color-button-outline-hover) text-(--color-button-outline-text) h-8 px-3"
-                    >
-                      View Pattern
+                    <Link href="/patterns/dashboard-layout">
+                      <Button variant="outline" size="sm">
+                        View Pattern
+                      </Button>
                     </Link>
                   </div>
                 </CardContent>
@@ -128,11 +126,10 @@ export default function PatternsPage() {
                     accessibility features.
                   </p>
                   <div className="flex gap-2">
-                    <Link
-                      href="/patterns/authentication-form"
-                      className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-(--color-button-outline-border) bg-transparent hover:bg-(--color-button-outline-hover) text-(--color-button-outline-text) h-8 px-3"
-                    >
-                      View Pattern
+                    <Link href="/patterns/authentication-form">
+                      <Button variant="outline" size="sm">
+                        View Pattern
+                      </Button>
                     </Link>
                   </div>
                 </CardContent>
@@ -158,11 +155,10 @@ export default function PatternsPage() {
                     validation.
                   </p>
                   <div className="flex gap-2">
-                    <Link
-                      href="/patterns/settings-form"
-                      className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-(--color-button-outline-border) bg-transparent hover:bg-(--color-button-outline-hover) text-(--color-button-outline-text) h-8 px-3"
-                    >
-                      View Pattern
+                    <Link href="/patterns/settings-form">
+                      <Button variant="outline" size="sm">
+                        View Pattern
+                      </Button>
                     </Link>
                   </div>
                 </CardContent>
@@ -196,11 +192,10 @@ export default function PatternsPage() {
                     Sortable, filterable table with pagination and bulk actions.
                   </p>
                   <div className="flex gap-2">
-                    <Link
-                      href="/patterns/data-table"
-                      className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-(--color-button-outline-border) bg-transparent hover:bg-(--color-button-outline-hover) text-(--color-button-outline-text) h-8 px-3"
-                    >
-                      View Pattern
+                    <Link href="/patterns/data-table">
+                      <Button variant="outline" size="sm">
+                        View Pattern
+                      </Button>
                     </Link>
                   </div>
                 </CardContent>
@@ -225,11 +220,10 @@ export default function PatternsPage() {
                     Search interface with filters, tags, and result display.
                   </p>
                   <div className="flex gap-2">
-                    <Link
-                      href="/patterns/search-filter"
-                      className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-(--color-button-outline-border) bg-transparent hover:bg-(--color-button-outline-hover) text-(--color-button-outline-text) h-8 px-3"
-                    >
-                      View Pattern
+                    <Link href="/patterns/search-filter">
+                      <Button variant="outline" size="sm">
+                        View Pattern
+                      </Button>
                     </Link>
                   </div>
                 </CardContent>
@@ -263,11 +257,10 @@ export default function PatternsPage() {
                     Keyboard-first navigation with search and quick actions.
                   </p>
                   <div className="flex gap-2">
-                    <Link
-                      href="/patterns/command-palette"
-                      className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-(--color-button-outline-border) bg-transparent hover:bg-(--color-button-outline-hover) text-(--color-button-outline-text) h-8 px-3"
-                    >
-                      View Pattern
+                    <Link href="/patterns/command-palette">
+                      <Button variant="outline" size="sm">
+                        View Pattern
+                      </Button>
                     </Link>
                   </div>
                 </CardContent>
@@ -292,11 +285,10 @@ export default function PatternsPage() {
                     Hierarchical navigation with clear path indicators.
                   </p>
                   <div className="flex gap-2">
-                    <Link
-                      href="/patterns/breadcrumb-trail"
-                      className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-(--color-button-outline-border) bg-transparent hover:bg-(--color-button-outline-hover) text-(--color-button-outline-text) h-8 px-3"
-                    >
-                      View Pattern
+                    <Link href="/patterns/breadcrumb-trail">
+                      <Button variant="outline" size="sm">
+                        View Pattern
+                      </Button>
                     </Link>
                   </div>
                 </CardContent>

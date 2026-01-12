@@ -1,6 +1,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import { Badge } from "@wyliedog/ui/badge";
 import { cn } from "@wyliedog/ui/lib/utils";
+import { FeatureGrid } from "@wyliedog/ui/feature-grid";
 import {
   Figma,
   RefreshCw,
@@ -30,36 +31,48 @@ export default function PluginPage() {
       title: "Bi-directional Sync",
       description:
         "Advanced three-way merge between Figma variables and GitHub repositories with intelligent conflict detection.",
+      badge: "v0.2.0",
+      badgeVariant: "default" as const,
     },
     {
       icon: <Shield className="h-6 w-6 text-(--color-text-warning)" />,
-      title: "OAuth Authentication",
+      title: "Secure Authentication",
       description:
-        "Secure OAuth 2.0 + PKCE flow for GitHub, GitLab, and Bitbucket with no personal tokens required.",
+        "GitHub Personal Access Token authentication with encrypted storage - industry-standard security used by leading Figma plugins.",
+      badge: "Secure",
+      badgeVariant: "success" as const,
     },
     {
       icon: <Palette className="h-6 w-6 text-(--color-interactive-primary)" />,
       title: "Universal Format Support",
       description:
         "Import/export 8+ token formats including W3C DTCG, Tokens Studio, Style Dictionary, and Material Design.",
+      badge: "8+ Formats",
+      badgeVariant: "secondary" as const,
     },
     {
       icon: <Code className="h-6 w-6 text-(--color-text-warning)" />,
       title: "Smart Processing",
       description:
         "Confidence-based format detection with automatic transformation and reference resolution.",
+      badge: "AI-Powered",
+      badgeVariant: "warning" as const,
     },
     {
       icon: <Download className="h-6 w-6 text-(--color-interactive-primary)" />,
       title: "Bulk Operations",
       description:
         "Virtual scrolling and skeleton states enable handling 1000+ tokens efficiently.",
+      badge: "1000+ Tokens",
+      badgeVariant: "default" as const,
     },
     {
       icon: <Lock className="h-6 w-6 text-(--color-text-warning)" />,
       title: "Enterprise Ready",
       description:
-        "Comprehensive test suite with 60%+ coverage, type-safe error handling, and security-first design.",
+        "Comprehensive test suite with 60%+ coverage thresholds and type-safe error handling.",
+      badge: "Enterprise",
+      badgeVariant: "success" as const,
     },
   ];
 
@@ -101,27 +114,14 @@ export default function PluginPage() {
       </section>
 
       {/* Main Features */}
-      <section className="flex flex-wrap gap-8 justify-center">
-        {features.map((feature) => (
-          <Card
-            key={feature.title}
-            className="glass border-(--color-border-primary)/10 hover:border-(--color-interactive-primary)/20 transition-all duration-500 group w-72 shrink-0"
-          >
-            <CardHeader className="pb-4">
-              <div className="mb-4 p-3 w-fit rounded-2xl glass border-(--color-border-primary)/5 shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-                {feature.icon}
-              </div>
-              <CardTitle className="text-xl font-bold text-(--color-text-primary)">
-                {feature.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-(--color-text-secondary) leading-relaxed font-medium">
-                {feature.description}
-              </p>
-            </CardContent>
-          </Card>
-        ))}
+      <section className="py-12">
+        <FeatureGrid
+          features={features}
+          columns={{ sm: 1, md: 2, lg: 3 }}
+          gap="gap-8"
+          centered={true}
+          className="max-w-6xl mx-auto"
+        />
       </section>
 
       {/* Workflow Visualization */}
@@ -199,9 +199,9 @@ export default function PluginPage() {
               icon: <Zap className="h-5 w-5" />,
             },
             {
-              metric: "OAuth 2.0 + PKCE",
+              metric: "Encrypted Storage",
               description:
-                "Enterprise-grade authentication for GitHub, GitLab, and Bitbucket",
+                "Secure token storage using Figma's encrypted client storage API",
               icon: <Lock className="h-5 w-5" />,
             },
             {
@@ -266,7 +266,7 @@ export default function PluginPage() {
             variant="secondary"
             className="px-4 py-1 rounded-full glass border-(--color-border-primary)/10 text-(--color-text-secondary)"
           >
-            OAuth Support
+            Secure Storage
           </Badge>
         </div>
       </section>

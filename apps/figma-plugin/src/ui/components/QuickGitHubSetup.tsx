@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import type { GitHubConfig } from "../../shared/types";
 import { parseGitHubUrl } from "../utils/parseGitHubUrl";
 
@@ -25,6 +25,58 @@ export function QuickGitHubSetup({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [urlError, setUrlError] = useState<string | null>(null);
+  const [deviceCode, setDeviceCode] = useState<{
+    userCode: string;
+    verificationUri: string;
+    expiresIn: number;
+  } | null>(null);
+  const [status, setStatus] = useState<string>("");
+
+  // Listen for OAuth messages
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      const msg = event.data.pluginMessage;
+
+      if (msg?.type === "oauth-device-code") {
+        // Display device code for user
+        setDeviceCode({
+          userCode: msg.userCode,
+          verificationUri: msg.verificationUri,
+          expiresIn: msg.expiresIn,
+        });
+        setStatus("Waiting for authorization...");
+      } else if (msg?.type === "oauth-success") {
+        setStatus("Successfully authenticated!");
+
+        // Create config with OAuth token
+        const parsed = parseGitHubUrl(repoUrl);
+        if (parsed && msg.accessToken) {
+          const config: GitHubConfig = {
+            owner: parsed.owner,
+            repo: parsed.repo,
+            branch: "main",
+            tokenPath: "tokens",
+            accessToken: msg.accessToken,
+            authMethod: "oauth",
+            syncMode: "direct",
+          };
+
+          // Save config after short delay for user to see success message
+          setTimeout(() => {
+            onConfigSaved(config);
+          }, 1000);
+        }
+      } else if (msg?.type === "oauth-error") {
+        setError(msg.error || "Authentication failed");
+        setLoading(false);
+        setStatus("");
+        setDeviceCode(null);
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, [repoUrl, onConfigSaved]);
 
   const validateUrl = (url: string) => {
     if (!url.trim()) {
@@ -60,6 +112,8 @@ export function QuickGitHubSetup({
 
     setLoading(true);
     setError(null);
+    setDeviceCode(null);
+    setStatus("Starting authentication...");
 
     // Initiate OAuth flow
     parent.postMessage(
@@ -261,6 +315,118 @@ export function QuickGitHubSetup({
           }}
         >
           ❌ {error}
+        </div>
+      )}
+
+      {/* Status Display */}
+      {status && (
+        <div
+          style={{
+            padding: "var(--space-3)",
+            marginBottom: "var(--space-4)",
+            backgroundColor: "var(--info-light)",
+            border: "1px solid var(--info)",
+            borderRadius: "var(--radius-md)",
+            color: "var(--info)",
+            fontSize: "var(--font-size-sm)",
+            display: "flex",
+            alignItems: "center",
+            gap: "var(--space-2)",
+          }}
+        >
+          <span
+            style={{
+              display: "inline-block",
+              width: "16px",
+              height: "16px",
+              border: "2px solid currentColor",
+              borderTopColor: "transparent",
+              borderRadius: "50%",
+              animation: "spin 0.8s linear infinite",
+            }}
+          />
+          {status}
+        </div>
+      )}
+
+      {/* Device Code Display */}
+      {deviceCode && (
+        <div
+          style={{
+            padding: "var(--space-4)",
+            marginBottom: "var(--space-4)",
+            backgroundColor: "var(--accent-light)",
+            border: "2px solid var(--accent-primary)",
+            borderRadius: "var(--radius-lg)",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-medium)",
+              color: "var(--text-primary)",
+              marginBottom: "var(--space-3)",
+            }}
+          >
+            🔑 Enter this code on GitHub:
+          </div>
+
+          <div
+            style={{
+              padding: "var(--space-4)",
+              backgroundColor: "var(--surface-primary)",
+              border: "2px solid var(--border-default)",
+              borderRadius: "var(--radius-md)",
+              textAlign: "center",
+              marginBottom: "var(--space-4)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "32px",
+                fontWeight: "var(--font-weight-bold)",
+                letterSpacing: "0.25em",
+                fontFamily: "monospace",
+                color: "var(--accent-primary)",
+              }}
+            >
+              {deviceCode.userCode}
+            </div>
+          </div>
+
+          <div
+            style={{
+              fontSize: "var(--font-size-xs)",
+              color: "var(--text-secondary)",
+              marginBottom: "var(--space-3)",
+              lineHeight: "var(--line-height-relaxed)",
+            }}
+          >
+            1. Visit: <strong>{deviceCode.verificationUri}</strong>
+            <br />
+            2. Enter the code above
+            <br />
+            3. Authorize the application
+            <br />
+            4. Return here - we'll detect it automatically!
+          </div>
+
+          <button
+            onClick={() => window.open(deviceCode.verificationUri, "_blank")}
+            style={{
+              width: "100%",
+              padding: "var(--space-2)",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-medium)",
+              color: "var(--text-inverse)",
+              backgroundColor: "var(--accent-primary)",
+              border: "none",
+              borderRadius: "var(--radius-md)",
+              cursor: "pointer",
+            }}
+          >
+            Open GitHub →
+          </button>
         </div>
       )}
 
@@ -486,6 +652,12 @@ export function QuickGitHubSetup({
           Advanced
         </button>
       </div>
+
+      <style>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 }

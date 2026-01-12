@@ -18,6 +18,7 @@ import {
   clearTokens,
 } from "./token-storage";
 import { GITHUB_CLIENT_ID } from "./oauth-config";
+import { proxyFetch } from "../utils/network-proxy";
 
 export interface DeviceCodeResponse {
   device_code: string;
@@ -58,25 +59,46 @@ export class GitHubDeviceFlowHandler {
    * Returns device code and user code for authorization
    */
   async initiateDeviceFlow(): Promise<DeviceCodeResponse> {
-    const response = await fetch("https://github.com/login/device/code", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        client_id: this.clientId,
-        scope: "repo", // Permission to read/write repository contents
-      }),
-    });
+    try {
+      console.log(
+        "[DeviceFlow] Initiating device flow with client ID:",
+        this.clientId.substring(0, 10) + "..."
+      );
 
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`Failed to initiate device flow: ${error}`);
+      // Use proxy fetch to bypass CORS restrictions
+      const response = await proxyFetch(
+        "https://github.com/login/device/code",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            client_id: this.clientId,
+            scope: "repo", // Permission to read/write repository contents
+          }),
+        }
+      );
+
+      console.log("[DeviceFlow] Response status:", response.status);
+
+      if (!response.ok) {
+        const error = await response.text();
+        console.error("[DeviceFlow] GitHub API error:", error);
+        throw new Error(`Failed to initiate device flow: ${error}`);
+      }
+
+      const data: DeviceCodeResponse = await response.json();
+      console.log("[DeviceFlow] Device flow initiated successfully");
+      return data;
+    } catch (error: any) {
+      console.error("[DeviceFlow] Fetch error:", error);
+      // Re-throw with more details
+      throw new Error(
+        `Network error initiating device flow: ${error.message || "Unknown error"}`
+      );
     }
-
-    const data: DeviceCodeResponse = await response.json();
-    return data;
   }
 
   /**
@@ -96,7 +118,8 @@ export class GitHubDeviceFlowHandler {
       await this.sleep(interval * 1000);
 
       try {
-        const response = await fetch(
+        // Use proxy fetch to bypass CORS restrictions
+        const response = await proxyFetch(
           "https://github.com/login/oauth/access_token",
           {
             method: "POST",

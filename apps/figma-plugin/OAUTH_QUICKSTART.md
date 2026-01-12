@@ -9,12 +9,14 @@
 1. Go to **[GitHub Developer Settings](https://github.com/settings/developers)**
 2. Click **"New OAuth App"**
 3. Fill in the form:
-   ```
+
+   ```markdown
    Application name: Wylie Dog Design Tokens
    Homepage URL: https://github.com/YOUR_USERNAME/wylie-dog-ds
    Authorization callback URL: http://127.0.0.1
    Description: Design token sync for Figma (optional)
    ```
+
 4. Click **"Register application"**
 5. On the settings page, check **"Enable Device Flow"**
 6. Click **"Update application"**

@@ -97,7 +97,7 @@ export default function ComponentsOverviewPage() {
             accessibility.
           </p>
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-(--color-interactive-primary)/5 blur-[120px] -z-10 rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-75 bg-(--color-interactive-primary)/5 blur-[120px] -z-10 rounded-full" />
       </section>
 
       {/* Categories Grid */}
@@ -168,21 +168,17 @@ export default function ComponentsOverviewPage() {
                 href="https://github.com/wyliedog/ds"
                 target="_blank"
                 rel="noreferrer"
-                className="h-14 px-10 rounded-full glass border border-(--color-border-primary)/10 flex items-center gap-3 transition-all hover:bg-(--color-interactive-primary)/5 group/btn"
               >
-                <Github className="h-5 w-5 group-hover/btn:scale-110 transition-transform" />
-                <span className="font-bold text-(--color-text-primary)">
+                <Button variant="outline" size="lg">
+                  <Github className="h-5 w-5" />
                   Source Code
-                </span>
+                </Button>
               </a>
-              <Link
-                href="/storybook"
-                className="h-14 px-10 rounded-full glass border border-(--color-border-primary)/10 flex items-center gap-3 transition-all hover:bg-(--color-interactive-primary)/5 group/btn"
-              >
-                <ExternalLink className="h-5 w-5 group-hover/btn:scale-110 transition-transform" />
-                <span className="font-bold text-(--color-text-primary)">
+              <Link href="/storybook">
+                <Button variant="outline" size="lg">
+                  <ExternalLink className="h-5 w-5" />
                   Full Storybook
-                </span>
+                </Button>
               </Link>
             </div>
           </div>

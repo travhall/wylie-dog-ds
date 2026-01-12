@@ -19,6 +19,8 @@ import { useGitHubSync } from "./hooks/domain/useGitHubSync";
 import { ConflictAwareGitHubClient } from "../plugin/sync/conflict-aware-github-client";
 import type { GitHubConfig } from "../shared/types";
 import type { ConflictResolution } from "../plugin/sync/types";
+import { handleNetworkRequest } from "./utils/network-handler";
+import type { NetworkRequest } from "../shared/network-types";
 
 // Components
 import { TabBar } from "./components/layout/TabBar";
@@ -87,11 +89,22 @@ function AppInner() {
     pluginState.conflictOperationType
   );
 
-  // Handle import-validated message
+  // Handle import-validated and network request messages
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       const msg = event.data.pluginMessage;
       if (!msg) return;
+
+      // Handle network proxy requests
+      if (msg.type === "network-request") {
+        const request: NetworkRequest = {
+          id: msg.id,
+          url: msg.url,
+          options: msg.options,
+        };
+        handleNetworkRequest(request);
+        return;
+      }
 
       if (msg.type === "import-validated") {
         console.log("Import validated:", msg.summary);

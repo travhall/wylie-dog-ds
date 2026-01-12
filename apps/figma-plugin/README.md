@@ -9,12 +9,12 @@
 
 ## Overview
 
-Token Bridge is a sophisticated Figma plugin that enables seamless synchronization of design tokens between Figma Variables and code repositories. With support for 8+ token formats, OAuth authentication, intelligent conflict detection, and a modern UI, it's the most comprehensive token synchronization solution available.
+Token Bridge is a sophisticated Figma plugin that enables seamless synchronization of design tokens between Figma Variables and code repositories. With support for 8+ token formats, secure GitHub authentication, intelligent conflict detection, and a modern UI, it's a comprehensive token synchronization solution.
 
 ### Key Features
 
 - **🔄 Advanced Bi-directional Sync** - Three-way merge with intelligent conflict detection and resolution
-- **🔐 OAuth Authentication** - Secure OAuth flow for GitHub, GitLab, and Bitbucket (no personal tokens required)
+- **🔐 GitHub Authentication** - Secure Personal Access Token authentication for GitHub repositories
 - **📦 Universal Format Support** - Import/export W3C DTCG, Style Dictionary, Tokens Studio, Material Design, and more
 - **🌙 Adaptive Dark Mode** - Automatic theme detection with comprehensive CSS variable system
 - **⚡ Smart Processing** - Confidence-based format detection with automatic transformation
@@ -64,33 +64,22 @@ pnpm dev
 
 ---
 
-## Authentication Methods
-
-### OAuth Device Flow (Recommended) 🆕
-
-**Zero-cost, serverless authentication** perfect for open-source projects!
-
-- **GitHub** - Device Flow authentication (no backend server required!)
-- **GitLab** - Coming soon
-- **Bitbucket** - Coming soon
-
-**Why Device Flow?**
-
-- ✅ **Completely free** - No server infrastructure costs
-- ✅ **No secrets needed** - Client ID is safe to commit
-- ✅ **Simple UX** - User enters a code on GitHub's website
-- ✅ **Secure** - GitHub's official OAuth implementation
-- ✅ **Open-source friendly** - Perfect for community projects
-
-**Setup:** See [docs/OAUTH_SETUP.md](docs/OAUTH_SETUP.md) for complete configuration guide
+## Authentication
 
 ### Personal Access Tokens
 
-Traditional authentication method for:
+Secure GitHub authentication using Personal Access Tokens:
 
-- Self-hosted instances
-- Custom OAuth setups
-- Development environments
+1. Create a token at [GitHub Settings → Developer Settings → Personal Access Tokens](https://github.com/settings/tokens)
+2. Grant `repo` scope for repository access
+3. Paste the token into the plugin when connecting to GitHub
+
+**Benefits:**
+
+- ✅ **No server required** - Direct GitHub API access
+- ✅ **Industry standard** - Used by most Figma plugins
+- ✅ **Secure storage** - Encrypted in Figma's client storage
+- ✅ **Full control** - Revoke anytime from GitHub settings
 
 ---
 
@@ -135,20 +124,6 @@ Base Version (Ancestor)─┘
 - **take-remote** - Apply remote changes to Figma
 - **smart-merge** - Combine non-conflicting properties
 - **manual** - Custom resolution with preview
-
-### OAuth Integration
-
-Complete OAuth flow implementation:
-
-```typescript
-// One-click authentication
-const oauth = new FigmaOAuthHandler();
-const tokens = await oauth.initiateOAuth("github");
-
-// Automatic token management
-await oauth.refreshToken(); // Handles expiration
-await oauth.signOut(); // Clean logout
-```
 
 ### Dark Mode Support
 
@@ -197,7 +172,6 @@ Clean mental model with progressive disclosure:
 - **[Contributing Guide](CONTRIBUTING.md)** - Development workflow, code style, PR guidelines
 - **[Architecture](docs/ARCHITECTURE.md)** - Technical deep-dive into plugin architecture
 - **[Testing](docs/TESTING.md)** - Test setup, writing tests, CI/CD configuration
-- **[OAuth Setup](docs/OAUTH_SETUP.md)** - Complete guide to GitHub Device Flow setup
 - **[Changelog](CHANGELOG.md)** - Version history and release notes
 - **[GitHub Config](docs/GITHUB_CONFIG.md)** - GitHub configuration and sync details
 
@@ -214,7 +188,6 @@ apps/figma-plugin/
 │   │   ├── handlers/     # Message handlers (modular registry)
 │   │   ├── sync/         # Conflict detection & resolution
 │   │   ├── variables/    # Token format adapters (8+ formats)
-│   │   ├── oauth/        # OAuth authentication system
 │   │   ├── storage/      # Configuration persistence
 │   │   └── main.ts       # Entry point & message routing
 │   ├── ui/               # UI thread (Preact components)
@@ -286,14 +259,14 @@ Figma plugins run in two separate JavaScript contexts:
 - ✅ Full Figma API access
 - ✅ Token processing & validation
 - ✅ GitHub sync preparation
-- ✅ OAuth token management
+- ✅ Token storage management
 - ❌ No UI rendering
 
 **UI Thread** (`src/ui/App.tsx`)
 
 - ✅ Preact UI with modern hooks
 - ✅ Network requests (GitHub API)
-- ✅ OAuth flow orchestration
+- ✅ Authentication flow
 - ✅ State management (Context + Reducer)
 - ❌ No direct Figma API
 
@@ -313,30 +286,6 @@ JSON Input → FormatDetector → Adapter Selection → Normalization → Figma 
 - Confidence scoring algorithm
 - Reference resolution with circular dependency detection
 - Transformation logging with detailed feedback
-
-### OAuth Architecture
-
-GitHub Device Flow implementation (serverless, zero-cost):
-
-```text
-User Clicks OAuth → Device Code → GitHub Auth → Polling → Token Storage
-```
-
-**How It Works:**
-
-1. Plugin requests device code from GitHub
-2. User visits github.com/login/device and enters code
-3. Plugin polls GitHub for authorization
-4. On approval, token is securely stored in Figma
-5. Token used for all GitHub API calls
-
-**Security Features:**
-
-- Serverless (no backend required)
-- Secure token storage (figma.clientStorage with encryption)
-- Explicit user authorization required
-- Revocable at any time
-- No Client Secrets (Client ID is public)
 
 ### Result<T> Pattern
 
@@ -362,26 +311,21 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for complete technical document
 
 ## Usage Examples
 
-### OAuth Authentication
+### GitHub Authentication
 
 ```typescript
-// One-click setup
-const handleOAuthSetup = async () => {
-  const tokens = await oauthHandler.initiateOAuth("github");
-
-  // Auto-configuration
-  const config = {
-    owner: "user",
-    repo: "repository",
-    branch: "main",
-    tokenPath: "tokens/",
-    authMethod: "oauth" as const,
-    accessToken: tokens.accessToken,
-    syncMode: "direct" as const,
-  };
-
-  await saveGitHubConfig(config);
+// Configure GitHub integration
+const config = {
+  owner: "user",
+  repo: "repository",
+  branch: "main",
+  tokenPath: "tokens/",
+  authMethod: "pat" as const,
+  accessToken: "ghp_your_personal_access_token",
+  syncMode: "direct" as const,
 };
+
+await saveGitHubConfig(config);
 ```
 
 ### Import with Format Detection
@@ -467,11 +411,11 @@ const syncResult = await githubClient.syncWithConflictResolution({
 
 ### Authentication Security
 
-- **OAuth 2.0 + PKCE**: Industry-standard authentication flow
+- **Personal Access Tokens**: Industry-standard authentication method
 - **Token Storage**: Encrypted storage via `figma.clientStorage`
 - **Scope Limitation**: Minimum required permissions only
 - **HTTPS Only**: All communications over secure channels
-- **Token Refresh**: Automatic refresh with expiration handling
+- **User Control**: Tokens revocable anytime from GitHub settings
 
 ### Data Validation
 
@@ -493,7 +437,6 @@ const syncResult = await githubClient.syncWithConflictResolution({
 **Figma Web** (Limited Support)
 
 - Basic functionality available
-- OAuth requires desktop app for security
 - File import/export restricted
 
 ---
@@ -524,7 +467,7 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
 ### Completed ✅ (v0.2.0)
 
-- ✅ OAuth authentication system (GitHub, GitLab, Bitbucket)
+- ✅ GitHub Personal Access Token authentication
 - ✅ Visual onboarding experience with SVG illustrations
 - ✅ Help menu with contextual documentation links
 - ✅ Smart error handling with specific help links

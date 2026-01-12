@@ -52,7 +52,7 @@ Bidirectional design token synchronization between Figma and code:
 
 - **Multi-Format Support**: Style Dictionary, Tokens Studio, W3C DTCG, Material Design
 - **Conflict-Aware Sync**: Smart conflict detection and resolution
-- **GitHub Integration**: Direct push or pull-request workflows
+- **GitHub Integration**: Personal Access Token authentication with direct push or pull-request workflows
 - **OKLCH Support**: Industry-first OKLCH color space integration
 
 ### 📚 **Comprehensive Documentation**
@@ -455,7 +455,7 @@ The Wylie Dog Figma plugin enables seamless design-code token synchronization:
 
 - **Multi-Format Support**: Import from Style Dictionary, Tokens Studio, W3C DTCG, Material Design
 - **Smart Conflict Resolution**: Automated conflict detection with manual override options
-- **GitHub Integration**: Direct push or pull-request workflows with automated commits
+- **GitHub Integration**: Personal Access Token authentication with direct push or pull-request workflows
 - **OKLCH Colors**: Industry-first support for perceptual color space in Figma
 - **Format Adapter System**: Intelligent format detection with transformation logging
 - **Validation Pipeline**: Multi-stage token structure and reference validation

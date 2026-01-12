@@ -50,6 +50,8 @@ export default defineConfig((options) => ({
     "src/compositions/page-layout.tsx",
     "src/compositions/section-hero.tsx",
     "src/compositions/section-features.tsx",
+    "src/feature-grid.tsx",
+    "src/card-grid.tsx",
   ],
   format: ["cjs", "esm"],
   dts: true,

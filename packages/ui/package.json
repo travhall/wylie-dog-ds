@@ -262,6 +262,16 @@
       "types": "./src/compositions/section-features.tsx",
       "import": "./dist/compositions/section-features.mjs",
       "require": "./dist/compositions/section-features.js"
+    },
+    "./feature-grid": {
+      "types": "./src/feature-grid.tsx",
+      "import": "./dist/feature-grid.mjs",
+      "require": "./dist/feature-grid.js"
+    },
+    "./card-grid": {
+      "types": "./src/card-grid.tsx",
+      "import": "./dist/card-grid.mjs",
+      "require": "./dist/card-grid.js"
     }
   },
   "files": [

@@ -5,6 +5,7 @@
 
 import { deviceFlowHandler } from "./device-flow-handler";
 import { getAccessToken } from "./token-storage";
+import { validateOAuthConfig } from "./oauth-config";
 import type { GitHubConfig } from "../../shared/types";
 import { parseGitHubUrl } from "../../ui/utils/parseGitHubUrl";
 
@@ -25,6 +26,14 @@ export async function handleOAuthInitiate(
         `Device Flow only supports GitHub. ${provider} coming soon!`
       );
     }
+
+    // Validate OAuth configuration before attempting
+    const validation = validateOAuthConfig();
+    if (!validation.valid) {
+      throw new Error(validation.error);
+    }
+
+    console.log("[OAuth] Starting device flow authentication...");
 
     // Initiate device flow
     const status = await deviceFlowHandler.authenticate();
