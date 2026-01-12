@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FeatureGrid } from "@wyliedog/ui/feature-grid";
 
 const meta: Meta<typeof FeatureGrid> = {
-  title: "3. Components/FeatureGrid",
+  title: "4. Patterns/Feature Grid",
   component: FeatureGrid,
   parameters: {
     layout: "centered",

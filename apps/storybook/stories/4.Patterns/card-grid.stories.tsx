@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 
 const meta: Meta<typeof CardGrid> = {
-  title: "3. Components/CardGrid",
+  title: "4. Patterns/Card Grid",
   component: CardGrid,
   parameters: {
     layout: "centered",
