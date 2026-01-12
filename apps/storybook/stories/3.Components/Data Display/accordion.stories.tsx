@@ -50,30 +50,32 @@ export const Default: Story = {
     collapsible: true,
   },
   render: (args) => (
-    <Accordion className="w-full max-w-md" {...args}>
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It adheres to the WAI-ARIA design pattern and uses Radix UI
-          primitives for full accessibility support including proper focus
-          management and keyboard navigation.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Is it styled?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It comes with default styles that you can customize with your own
-          CSS or by using design tokens from the Wylie Dog design system.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Is it animated?</AccordionTrigger>
-        <AccordionContent>
-          Yes. The accordion includes smooth expand and collapse animations
-          using CSS transitions and transforms for optimal performance.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+    <div className="w-96">
+      <Accordion className="w-full" {...args}>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern and uses Radix UI
+            primitives for full accessibility support including proper focus
+            management and keyboard navigation.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Is it styled?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It comes with default styles that you can customize with your
+            own CSS or by using design tokens from the Wylie Dog design system.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Is it animated?</AccordionTrigger>
+          <AccordionContent>
+            Yes. The accordion includes smooth expand and collapse animations
+            using CSS transitions and transforms for optimal performance.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
   ),
 };
 

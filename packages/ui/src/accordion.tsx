@@ -10,6 +10,7 @@ const Accordion = React.forwardRef<
   <AccordionPrimitive.Root
     ref={ref}
     className={cn("w-full", className)}
+    style={{ width: "100%", minWidth: "320px" }}
     {...props}
   />
 ));
