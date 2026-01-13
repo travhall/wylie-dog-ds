@@ -107,7 +107,7 @@ export default function ColorsPage() {
                         <div className="text-sm font-bold text-(--color-text-primary)">
                           {token.name}
                         </div>
-                        <div className="text-[10px] font-mono text-(--color-text-tertiary) opacity-60 truncate max-w-[120px]">
+                        <div className="text-[10px] font-mono text-(--color-text-tertiary) opacity-60 truncate max-w-30">
                           {token.var}
                         </div>
                       </div>

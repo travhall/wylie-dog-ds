@@ -10,7 +10,7 @@ import { TokenFormatType } from "../format-adapter";
 import type { ProcessedToken } from "../processor";
 
 export class W3CDTCGAdapter implements FormatAdapter {
-  name = "W3C DTCG Format";
+  name = "W3C DTCG Format"; //cSpell:ignore DTCG CDTCG
 
   detect(data: any): FormatDetectionResult {
     let confidence = 0;

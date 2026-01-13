@@ -119,7 +119,7 @@ export default function MonorepoPage() {
         </div>
 
         {/* Background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-(--color-interactive-primary)/5 blur-[120px] -z-10 rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-75 bg-(--color-interactive-primary)/5 blur-[120px] -z-10 rounded-full" />
       </section>
 
       {/* Workspace Structure */}
@@ -154,7 +154,7 @@ export default function MonorepoPage() {
                   {category.description}
                 </p>
               </CardHeader>
-              <CardContent className="flex-grow p-0">
+              <CardContent className="grow p-0">
                 <div className="divide-y divide-(--color-border-primary)/10">
                   {category.items.map((item) => (
                     <div
@@ -222,7 +222,7 @@ export default function MonorepoPage() {
       </section>
 
       {/* Why a Monorepo? */}
-      <section className="glass rounded-[32px] p-10 md:p-16 relative overflow-hidden group border-(--color-border-primary)/5">
+      <section className="glass rounded-4xl p-10 md:p-16 relative overflow-hidden group border-(--color-border-primary)/5">
         <div className="relative z-10 grid gap-12 lg:grid-cols-3">
           <div className="lg:col-span-3 mb-4">
             <div className="flex items-center gap-3 mb-4">

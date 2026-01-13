@@ -195,7 +195,7 @@ export default function ExamplesPage() {
         </div>
 
         {/* Getting Started */}
-        <div className="bg-(--color-background-secondary)/30 glass border border-(--color-border-primary)/5 p-10 rounded-[32px] mt-16 space-y-6">
+        <div className="bg-(--color-background-secondary)/30 glass border border-(--color-border-primary)/5 p-10 rounded-4xl mt-16 space-y-6">
           <h2 className="text-2xl font-bold text-(--color-text-primary)">
             Build Your Own
           </h2>

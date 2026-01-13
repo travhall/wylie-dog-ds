@@ -376,7 +376,7 @@ export default function SearchFilterPage() {
 
           {/* Results */}
           <div className="lg:col-span-3">
-            <Card className="glass border-(--color-border-primary)/10 shadow-lg min-h-[600px] flex flex-col">
+            <Card className="glass border-(--color-border-primary)/10 shadow-lg min-h-150 flex flex-col">
               <CardHeader className="pb-4 border-b border-(--color-border-primary)/5 bg-(--color-background-secondary)/5">
                 <div className="flex items-center justify-between">
                   <div className="space-y-1">

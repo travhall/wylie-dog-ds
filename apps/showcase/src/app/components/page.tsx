@@ -117,7 +117,7 @@ export default function ComponentsOverviewPage() {
               <CardHeader className="p-8">
                 <div
                   className={cn(
-                    "inline-flex p-4 rounded-2xl mb-4 transition-transform duration-500 group-hover:scale-110 shadow-lg",
+                    "inline-flex p-4 rounded-xl mb-4 transition-transform duration-500 group-hover:scale-115 group-hover:-translate-y-4 shadow-lg",
                     category.bgColor
                   )}
                 >

@@ -97,7 +97,7 @@ export default function FoundationsPage() {
               </p>
             </CardHeader>
             <CardContent className="p-6 pt-0 mt-auto">
-              <div className="glass bg-(--color-background-secondary)/20 rounded-xl p-4 min-h-[100px] flex items-center justify-center border border-(--color-border-primary)/5">
+              <div className="glass bg-(--color-background-secondary)/20 rounded-xl p-4 min-h-25 flex items-center justify-center border border-(--color-border-primary)/5">
                 {comp.preview}
               </div>
             </CardContent>

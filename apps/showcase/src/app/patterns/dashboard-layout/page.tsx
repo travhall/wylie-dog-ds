@@ -199,7 +199,7 @@ export default function DashboardLayoutPage() {
                 </div>
               </div>
 
-              <div className="flex min-h-[500px]">
+              <div className="flex min-h-125">
                 {/* Sidebar */}
                 <div
                   className={`${sidebarCollapsed ? "w-16" : "w-64"} border-r border-(--color-border-primary)/20 transition-all duration-200 bg-(--color-background-secondary)/30`}

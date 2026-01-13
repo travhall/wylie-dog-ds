@@ -28,9 +28,7 @@ export default function FormsPage() {
       description:
         "Textual input fields for labels and interactive data entry.",
       status: "stable",
-      preview: (
-        <Input placeholder="Type something..." className="max-w-[200px]" />
-      ),
+      preview: <Input placeholder="Type something..." className="max-w-50" />,
     },
     {
       name: "Checkbox",
@@ -76,7 +74,7 @@ export default function FormsPage() {
         "An input where the user selects a value from a range of values.",
       status: "stable",
       preview: (
-        <Slider defaultValue={[50]} max={100} step={1} className="w-[150px]" />
+        <Slider defaultValue={[50]} max={100} step={1} className="w-37.5" />
       ),
     },
     {
@@ -121,7 +119,7 @@ export default function FormsPage() {
               </p>
             </CardHeader>
             <CardContent className="p-6 pt-0 mt-auto">
-              <div className="glass bg-(--color-background-secondary)/20 rounded-xl p-4 min-h-[100px] flex items-center justify-center border border-(--color-border-primary)/5">
+              <div className="glass bg-(--color-background-secondary)/20 rounded-xl p-4 min-h-25 flex items-center justify-center border border-(--color-border-primary)/5">
                 {comp.preview}
               </div>
             </CardContent>

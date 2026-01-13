@@ -41,7 +41,7 @@ export default function FeedbackPage() {
       preview: (
         <Progress
           value={66}
-          className="w-[150px] h-2 bg-(--color-interactive-primary)/10"
+          className="w-37.5 h-2 bg-(--color-interactive-primary)/10"
         />
       ),
     },
@@ -53,8 +53,8 @@ export default function FeedbackPage() {
         <div className="flex items-center space-x-4">
           <Skeleton className="h-10 w-10 rounded-full bg-(--color-border-primary)/10" />
           <div className="space-y-2">
-            <Skeleton className="h-3 w-[80px] bg-(--color-border-primary)/10" />
-            <Skeleton className="h-3 w-[50px] bg-(--color-border-primary)/10" />
+            <Skeleton className="h-3 w-20 bg-(--color-border-primary)/10" />
+            <Skeleton className="h-3 w-12.5 bg-(--color-border-primary)/10" />
           </div>
         </div>
       ),
@@ -96,7 +96,7 @@ export default function FeedbackPage() {
               </p>
             </CardHeader>
             <CardContent className="p-6 pt-0 mt-auto">
-              <div className="glass bg-(--color-background-secondary)/20 rounded-xl p-4 min-h-[100px] flex items-center justify-center border border-(--color-border-primary)/5">
+              <div className="glass bg-(--color-background-secondary)/20 rounded-xl p-4 min-h-25 flex items-center justify-center border border-(--color-border-primary)/5">
                 {comp.preview}
               </div>
             </CardContent>

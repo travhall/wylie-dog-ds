@@ -116,7 +116,7 @@ export default function ShowcasePage() {
         </div>
 
         {/* Decorative elements - Subtle and doesn't block text */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-(--color-interactive-primary)/3 blur-[120px] -z-10 rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-100 bg-(--color-interactive-primary)/3 blur-[120px] -z-10 rounded-full" />
       </section>
 
       {/* Ecosystem Grid */}
@@ -219,7 +219,7 @@ export default function ShowcasePage() {
         ].map((stat, i) => (
           <div
             key={i}
-            className="glass p-10 rounded-[32px] border-(--color-border-primary)/10 flex flex-col items-center text-center space-y-4 hover:border-(--color-interactive-primary)/20 transition-all duration-500 group"
+            className="glass p-10 rounded-4xl border-(--color-border-primary)/10 flex flex-col items-center text-center space-y-4 hover:border-(--color-interactive-primary)/20 transition-all duration-500 group"
           >
             <div className="w-16 h-16 rounded-2xl glass flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
               {React.cloneElement(stat.icon as any, { className: "h-8 w-8" })}
@@ -247,6 +247,7 @@ export default function ShowcasePage() {
               as code. Our ecosystem ensures that the gap between what a
               designer sees and what a developer builds is non-existent.
             </p>
+            {/* cSpell:ignore versionable */}
             <div className="flex flex-wrap gap-4">
               <Badge
                 variant="outline"

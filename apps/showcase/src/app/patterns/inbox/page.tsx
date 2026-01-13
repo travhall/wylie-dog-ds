@@ -404,7 +404,7 @@ export default function InboxPage() {
                                   <div className="h-8 w-8 rounded bg-red-500/10 flex items-center justify-center">
                                     <FileText className="h-4 w-4 text-red-500" />
                                   </div>
-                                  <span className="text-sm font-medium text-(--color-text-secondary) truncate max-w-[150px]">
+                                  <span className="text-sm font-medium text-(--color-text-secondary) truncate max-w-37.5">
                                     Q4_Revenue_Report.pdf
                                   </span>
                                 </div>

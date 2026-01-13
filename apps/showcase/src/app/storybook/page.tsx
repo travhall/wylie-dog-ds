@@ -81,7 +81,7 @@ export default function StorybookPage() {
         </div>
 
         {/* Background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-(--color-interactive-primary)/5 blur-[120px] -z-10 rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-75 bg-(--color-interactive-primary)/5 blur-[120px] -z-10 rounded-full" />
       </section>
 
       {/* Categories Grid */}

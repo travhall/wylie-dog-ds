@@ -38,7 +38,7 @@ export default function NavigationPage() {
         "A set of layered sections of content, known as tab panels, that are displayed one at a time.",
       status: "stable",
       preview: (
-        <Tabs defaultValue="one" className="w-[180px]">
+        <Tabs defaultValue="one" className="w-45">
           <TabsList className="grid w-full grid-cols-2 h-8">
             <TabsTrigger value="one" className="text-[10px]">
               One
@@ -126,7 +126,7 @@ export default function NavigationPage() {
               </p>
             </CardHeader>
             <CardContent className="p-6 pt-0 mt-auto">
-              <div className="glass bg-(--color-background-secondary)/20 rounded-xl p-4 min-h-[100px] flex items-center justify-center border border-(--color-border-primary)/5">
+              <div className="glass bg-(--color-background-secondary)/20 rounded-xl p-4 min-h-25 flex items-center justify-center border border-(--color-border-primary)/5">
                 {comp.preview}
               </div>
             </CardContent>

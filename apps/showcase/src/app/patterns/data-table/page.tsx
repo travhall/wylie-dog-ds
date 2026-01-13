@@ -242,21 +242,21 @@ export default function DataTablePage() {
                       <Button
                         variant="outline"
                         size="sm"
-                        className="border-(--color-border-primary)/20 text-(--color-text-secondary) min-w-[32px]"
+                        className="border-(--color-border-primary)/20 text-(--color-text-secondary) min-w-8"
                       >
                         1
                       </Button>
                       <Button
                         variant="outline"
                         size="sm"
-                        className="border-(--color-border-primary)/20 text-(--color-text-secondary) min-w-[32px]"
+                        className="border-(--color-border-primary)/20 text-(--color-text-secondary) min-w-8"
                       >
                         2
                       </Button>
                       <Button
                         variant="outline"
                         size="sm"
-                        className="border-(--color-border-primary)/20 text-(--color-text-secondary) min-w-[32px]"
+                        className="border-(--color-border-primary)/20 text-(--color-text-secondary) min-w-8"
                       >
                         3
                       </Button>
@@ -432,21 +432,21 @@ export default function DataTablePage() {
                       <Button
                         variant="outline"
                         size="sm"
-                        className="border-(--color-border-primary)/20 text-(--color-text-secondary) min-w-[32px]"
+                        className="border-(--color-border-primary)/20 text-(--color-text-secondary) min-w-8"
                       >
                         1
                       </Button>
                       <Button
                         variant="default"
                         size="sm"
-                        className="min-w-[32px] bg-(--color-interactive-primary) text-white shadow-sm hover:opacity-90"
+                        className="min-w-8 bg-(--color-interactive-primary) text-white shadow-sm hover:opacity-90"
                       >
                         2
                       </Button>
                       <Button
                         variant="outline"
                         size="sm"
-                        className="border-(--color-border-primary)/20 text-(--color-text-secondary) min-w-[32px]"
+                        className="border-(--color-border-primary)/20 text-(--color-text-secondary) min-w-8"
                       >
                         3
                       </Button>
