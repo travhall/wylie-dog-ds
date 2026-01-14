@@ -107,17 +107,17 @@ export default function ComponentsOverviewPage() {
             <Card className="glass h-full border border-(--color-border-primary)/10 hover:border-(--color-interactive-primary)/30 transition-all duration-500 overflow-hidden relative">
               <div
                 className={cn(
-                  "absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0",
+                  "absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0 delay-200",
                   category.color
                 )}
               >
-                <ArrowUpRight className="h-6 w-6" />
+                <ArrowUpRight className="h-10 w-10" />
               </div>
 
               <CardHeader className="p-8">
                 <div
                   className={cn(
-                    "inline-flex p-4 rounded-xl mb-4 transition-transform duration-500 group-hover:scale-115 group-hover:-translate-y-4 shadow-lg",
+                    "inline-flex p-4 rounded-lg mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-4 shadow-lg",
                     category.bgColor
                   )}
                 >
