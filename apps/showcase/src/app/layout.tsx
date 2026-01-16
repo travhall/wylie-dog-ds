@@ -4,6 +4,7 @@ import { Button } from "@wyliedog/ui/button";
 import { cn } from "@wyliedog/ui/lib/utils";
 import Link from "next/link";
 import { sansFont, monoFont } from "@/lib/fonts";
+import { WylieDogLogo } from "./wyliedoglogo";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -77,6 +78,11 @@ export default function RootLayout({
             <div className="sticky top-0 z-50 glass border-b border-(--color-border-secondary)/50">
               <SiteHeader
                 navigation={navigation}
+                logo={
+                  <Link href="/">
+                    <WylieDogLogo />
+                  </Link>
+                }
                 actions={
                   <div className="flex items-center gap-2">
                     <Link href="/docs">
