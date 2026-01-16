@@ -22,7 +22,11 @@ const PaginationContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ul
     ref={ref}
-    className={cn("flex flex-row items-center gap-1", className)}
+    className={cn(
+      "flex flex-row items-center",
+      "gap-(--spacing-pagination-item-gap)",
+      className
+    )}
     {...props}
   />
 ));
@@ -48,7 +52,10 @@ const PaginationLink = ({
   <a
     aria-current={isActive ? "page" : undefined}
     className={cn(
-      "flex h-10 w-10 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors",
+      "flex items-center justify-center whitespace-nowrap font-medium transition-colors",
+      "h-(--spacing-pagination-item-size) w-(--spacing-pagination-item-size)",
+      "rounded-(--spacing-pagination-item-radius)",
+      "text-(length:--spacing-pagination-item-font-size)",
       "hover:bg-(--color-pagination-hover) hover:text-(--color-pagination-text-hover)",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
       "disabled:pointer-events-none disabled:opacity-50",

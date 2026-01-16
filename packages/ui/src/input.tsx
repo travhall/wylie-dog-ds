@@ -29,9 +29,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const sizes = {
-      sm: "h-8 px-3 text-xs",
-      md: "h-10 px-3 text-sm",
-      lg: "h-12 px-4 text-base",
+      sm: "h-(--spacing-input-height-sm) px-(--spacing-input-padding-x) text-(length:--spacing-input-font-size)",
+      md: "h-(--spacing-input-height-md) px-(--spacing-input-padding-x) text-(length:--spacing-input-font-size)",
+      lg: "h-(--spacing-input-height-lg) px-(--spacing-input-padding-x) text-(length:--spacing-input-font-size)",
     };
 
     // Build aria-describedby from provided IDs
@@ -44,7 +44,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         aria-invalid={error}
         aria-describedby={describedBy || undefined}
         className={cn(
-          "flex w-full rounded-md border transition-colors",
+          "flex w-full border transition-colors",
+          "rounded-(--spacing-input-radius)",
           "placeholder:text-(--color-input-placeholder)",
           "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
           "disabled:cursor-not-allowed disabled:opacity-50",

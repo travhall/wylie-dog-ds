@@ -8,7 +8,11 @@ const Table = React.forwardRef<
   <div className="relative w-full overflow-auto">
     <table
       ref={ref}
-      className={cn("w-full caption-bottom text-sm", className)}
+      className={cn(
+        "w-full caption-bottom",
+        "text-(length:--spacing-table-cell-font-size)",
+        className
+      )}
       {...props}
     />
   </div>
@@ -42,7 +46,8 @@ const TableFooter = React.forwardRef<
   <tfoot
     ref={ref}
     className={cn(
-      "border-t bg-(--color-table-footer-background) font-medium [&>tr]:last:border-b-0",
+      "border-(length:--spacing-table-border-width) bg-(--color-table-footer-background) font-medium [&>tr]:last:border-b-0",
+      "border-t",
       className
     )}
     {...props}
@@ -57,7 +62,8 @@ const TableRow = React.forwardRef<
   <tr
     ref={ref}
     className={cn(
-      "border-b border-(--color-table-border) transition-colors hover:bg-(--color-table-row-hover) data-[state=selected]:bg-(--color-table-row-selected)",
+      "transition-colors hover:bg-(--color-table-row-hover) data-[state=selected]:bg-(--color-table-row-selected)",
+      "border-b border-(length:--spacing-table-border-width) border-(--color-table-border)",
       className
     )}
     {...props}
@@ -72,7 +78,10 @@ const TableHead = React.forwardRef<
   <th
     ref={ref}
     className={cn(
-      "h-12 px-4 text-left align-middle font-medium text-(--color-table-header-text) [&:has([role=checkbox])]:pr-0",
+      "h-12 text-left align-middle font-medium [&:has([role=checkbox])]:pr-0",
+      "px-(--spacing-table-cell-padding-x)",
+      "text-(length:--spacing-table-header-font-size)",
+      "text-(--color-table-header-text)",
       className
     )}
     {...props}
@@ -98,7 +107,12 @@ const TableCaption = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <caption
     ref={ref}
-    className={cn("mt-4 text-sm text-(--color-table-caption)", className)}
+    className={cn(
+      "text-(--color-table-caption)",
+      "text-(length:--spacing-table-caption-font-size)",
+      "mt-(--spacing-table-caption-margin-top)",
+      className
+    )}
     {...props}
   />
 ));

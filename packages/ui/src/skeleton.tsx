@@ -24,17 +24,17 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
     ref
   ) => {
     const variants = {
-      default: "rounded-md",
-      text: "rounded h-4",
+      default: "rounded-(--spacing-skeleton-radius)",
+      text: "h-(--spacing-skeleton-height-text) rounded-(--spacing-skeleton-radius)",
       circular: "rounded-full",
       rectangular: "rounded-sm",
     };
 
     const sizes = {
-      sm: "h-4 w-4",
-      md: "h-6 w-6",
-      lg: "h-8 w-8",
-      xl: "h-12 w-12",
+      sm: "h-(--spacing-skeleton-height-text) w-(--spacing-skeleton-height-text)",
+      md: "h-(--spacing-skeleton-height-title) w-(--spacing-skeleton-height-title)",
+      lg: "h-(--spacing-skeleton-height-button) w-(--spacing-skeleton-height-button)",
+      xl: "h-(--spacing-skeleton-height-avatar) w-(--spacing-skeleton-height-avatar)",
     };
 
     return (

@@ -29,9 +29,9 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
     ref
   ) => {
     const sizes = {
-      sm: "text-xs",
-      md: "text-sm",
-      lg: "text-base",
+      sm: "text-(length:--spacing-label-font-size)",
+      md: "text-(length:--spacing-label-font-size)",
+      lg: "text-(length:--spacing-label-font-size)",
     };
 
     return (

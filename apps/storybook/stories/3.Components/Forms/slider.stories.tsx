@@ -37,6 +37,13 @@ const meta: Meta<typeof Slider> = {
       description: "Whether the slider is disabled",
     },
   },
+  decorators: [
+    (Story) => (
+      <div className="w-[300px]">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -81,7 +88,7 @@ export const WithLabels: Story = {
     const [value, setValue] = useState([50]);
 
     return (
-      <div className="w-100 space-y-6">
+      <div className="w-full space-y-6">
         <div className="space-y-3">
           <div className="flex justify-between">
             <label className="text-sm font-medium">Volume</label>
@@ -99,7 +106,7 @@ export const PriceRange: Story = {
     const [priceRange, setPriceRange] = useState([200, 800]);
 
     return (
-      <div className="w-100 space-y-6">
+      <div className="w-full space-y-6">
         <div className="space-y-3">
           <div className="flex justify-between">
             <label className="text-sm font-medium">Price Range</label>
@@ -124,16 +131,16 @@ export const PriceRange: Story = {
   },
 };
 
-export const Vertical: Story = {
-  render: () => (
-    <div className="h-50 w-12.5">
-      <Slider
-        defaultValue={[50]}
-        max={100}
-        step={1}
-        orientation="vertical"
-        className="h-full"
-      />
-    </div>
-  ),
-};
+// export const Vertical: Story = {
+//   render: () => (
+//     <div className="h-50 w-12.5">
+//       <Slider
+//         defaultValue={[50]}
+//         max={100}
+//         step={1}
+//         orientation="vertical"
+//         className="h-full"
+//       />
+//     </div>
+//   ),
+// };

@@ -29,16 +29,23 @@ const RadioGroupItem = React.forwardRef<
   <RadioGroupPrimitive.Item
     ref={ref}
     className={cn(
-      "aspect-square h-4 w-4 rounded-full border border-(--color-radio-border) text-(--color-radio-indicator)",
-      "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
+      "aspect-square border text-(--color-radio-indicator)",
+      "h-(--spacing-radio-size-md) w-(--spacing-radio-size-md)",
+      "rounded-(--spacing-radio-border-radius)",
+      "border-(--color-radio-border)",
+      "focus:outline-none",
+      "focus:ring-(length:--spacing-radio-focus-ring-width)",
+      "focus:ring-(--color-border-focus)",
+      "focus:ring-offset-(length:--spacing-radio-focus-ring-offset)",
       "disabled:cursor-not-allowed disabled:opacity-50",
-      "data-[state=checked]:border-(--color-radio-border-checked) data-[state=checked]:bg-(--color-radio-background-checked)",
+      "data-[state=checked]:border-(--color-radio-border-checked)",
+      "data-[state=checked]:bg-(--color-radio-background-checked)",
       className
     )}
     {...props}
   >
     <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-      <div className="h-2 w-2 rounded-full bg-current" />
+      <div className="bg-current rounded-(--spacing-radio-border-radius) h-(--spacing-radio-indicator-size-md) w-(--spacing-radio-indicator-size-md)" />
     </RadioGroupPrimitive.Indicator>
   </RadioGroupPrimitive.Item>
 ));

@@ -16,23 +16,28 @@ export const Checkbox = React.forwardRef<
   CheckboxProps
 >(({ className, size = "md", error = false, ...props }, ref) => {
   const sizes = {
-    sm: "h-4 w-4",
-    md: "h-5 w-5",
-    lg: "h-6 w-6",
+    sm: "h-(--spacing-checkbox-size-sm) w-(--spacing-checkbox-size-sm)",
+    md: "h-(--spacing-checkbox-size-md) w-(--spacing-checkbox-size-md)",
+    lg: "h-(--spacing-checkbox-size-lg) w-(--spacing-checkbox-size-lg)",
   };
 
   const iconSizes = {
-    sm: "h-3 w-3",
-    md: "h-4 w-4",
-    lg: "h-5 w-5",
+    sm: "h-(--spacing-checkbox-icon-size-sm) w-(--spacing-checkbox-icon-size-sm)",
+    md: "h-(--spacing-checkbox-icon-size-md) w-(--spacing-checkbox-icon-size-md)",
+    lg: "h-(--spacing-checkbox-icon-size-lg) w-(--spacing-checkbox-icon-size-lg)",
   };
 
   return (
     <CheckboxPrimitive.Root
       ref={ref}
       className={cn(
-        "peer shrink-0 rounded-sm border-2 transition-all",
-        "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
+        "peer shrink-0 transition-all",
+        "rounded-(--spacing-checkbox-border-radius)",
+        "border-(length:--spacing-checkbox-border-width)",
+        "focus:outline-none",
+        "focus:ring-(length:--spacing-checkbox-focus-ring-width)",
+        "focus:ring-(--color-border-focus)",
+        "focus:ring-offset-(length:--spacing-checkbox-focus-ring-offset)",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "data-[state=checked]:bg-(--color-interactive-primary) data-[state=checked]:text-(--color-text-inverse)",
         "data-[state=checked]:border-(--color-interactive-primary)",

@@ -43,15 +43,16 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         "bg-(--color-button-ghost-background) hover:bg-(--color-button-ghost-background-hover) active:bg-(--color-button-ghost-background-active) text-(--color-button-ghost-text) border-transparent",
       link: "text-(--color-button-link-text) underline-offset-4 hover:underline bg-transparent border-transparent p-0 h-auto",
       destructive:
-        "bg-(--color-background-danger) hover:bg-(--color-red-700) text-(--color-text-inverse) border-(--color-background-danger)",
+        "bg-(--color-button-destructive-background) hover:bg-(--color-button-destructive-background-hover) text-(--color-button-destructive-text) border-(--color-button-destructive-border)",
     };
 
     const sizes = {
-      default: "h-10 px-4 text-sm rounded-md",
-      sm: "h-8 px-3 text-xs rounded-md",
-      md: "h-10 px-4 text-sm rounded-md",
-      lg: "h-12 px-6 text-base rounded-lg",
-      icon: "h-10 w-10 rounded-md",
+      default:
+        "h-(--spacing-button-height-md) px-(--spacing-button-padding-x-md) text-(length:--spacing-button-font-size-md) rounded-(--spacing-button-radius)",
+      sm: "h-(--spacing-button-height-sm) px-(--spacing-button-padding-x-sm) text-(length:--spacing-button-font-size-sm) rounded-(--spacing-button-radius)",
+      md: "h-(--spacing-button-height-md) px-(--spacing-button-padding-x-md) text-(length:--spacing-button-font-size-md) rounded-(--spacing-button-radius)",
+      lg: "h-(--spacing-button-height-lg) px-(--spacing-button-padding-x-lg) text-(length:--spacing-button-font-size-lg) rounded-(--spacing-button-radius)",
+      icon: "h-(--spacing-button-height-md) w-(--spacing-button-height-md) rounded-(--spacing-button-radius)",
     };
 
     return (

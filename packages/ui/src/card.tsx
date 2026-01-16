@@ -9,7 +9,11 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     <div
       ref={ref}
       className={cn(
-        "rounded-lg border border-(--color-border-primary) bg-(--color-background-primary) shadow-sm",
+        "border bg-(--color-background-primary) shadow-sm",
+        "rounded-(--spacing-card-radius)",
+        "border-(--color-border-primary)",
+        "p-(--spacing-card-padding)",
+        "gap-(--spacing-card-gap)",
         className
       )}
       {...props}
@@ -24,7 +28,11 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("flex flex-col space-y-1.5 p-6", className)}
+      className={cn(
+        "flex flex-col",
+        "space-y-(--spacing-card-header-gap)",
+        className
+      )}
       {...props}
     />
   )
@@ -38,7 +46,9 @@ export const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
     <h3
       ref={ref}
       className={cn(
-        "text-2xl font-semibold leading-none tracking-tight text-(--color-text-primary)",
+        "font-semibold leading-none tracking-tight",
+        "text-(length:--spacing-card-header-title-font-size)",
+        "text-(--color-card-header-title-color)",
         className
       )}
       {...props}
@@ -53,7 +63,12 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("p-6 pt-0 text-(--color-text-secondary)", className)}
+      className={cn(
+        "pt-0",
+        "text-(length:--spacing-card-header-description-font-size)",
+        "text-(--color-card-header-description-color)",
+        className
+      )}
       {...props}
     />
   )

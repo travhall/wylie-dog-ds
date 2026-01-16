@@ -14,25 +14,30 @@ export const Switch = React.forwardRef<
   SwitchProps
 >(({ className, size = "md", ...props }, ref) => {
   const sizes = {
-    sm: "h-5 w-9",
-    md: "h-6 w-11",
-    lg: "h-7 w-13",
+    sm: "h-(--spacing-switch-track-height-sm) w-(--spacing-switch-track-width-sm)",
+    md: "h-(--spacing-switch-track-height-md) w-(--spacing-switch-track-width-md)",
+    lg: "h-(--spacing-switch-track-height-lg) w-(--spacing-switch-track-width-lg)",
   };
 
   const thumbSizes = {
-    sm: "h-4 w-4 data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0",
-    md: "h-5 w-5 data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0",
-    lg: "h-6 w-6 data-[state=checked]:translate-x-6 data-[state=unchecked]:translate-x-0",
+    sm: "h-(--spacing-switch-thumb-size-sm) w-(--spacing-switch-thumb-size-sm) data-[state=checked]:translate-x-(--spacing-switch-thumb-translate-sm) data-[state=unchecked]:translate-x-0",
+    md: "h-(--spacing-switch-thumb-size-md) w-(--spacing-switch-thumb-size-md) data-[state=checked]:translate-x-(--spacing-switch-thumb-translate-md) data-[state=unchecked]:translate-x-0",
+    lg: "h-(--spacing-switch-thumb-size-lg) w-(--spacing-switch-thumb-size-lg) data-[state=checked]:translate-x-(--spacing-switch-thumb-translate-lg) data-[state=unchecked]:translate-x-0",
   };
 
   return (
     <SwitchPrimitive.Root
       className={cn(
-        "peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent",
-        "transition-colors focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
+        "peer inline-flex shrink-0 cursor-pointer items-center border-transparent",
+        "rounded-(--spacing-switch-track-radius)",
+        "border-(length:--spacing-switch-track-border-width)",
+        "transition-colors focus:outline-none",
+        "focus:ring-(length:--spacing-switch-focus-ring-width)",
+        "focus:ring-(--color-border-focus)",
+        "focus:ring-offset-(length:--spacing-switch-focus-ring-offset)",
         "disabled:cursor-not-allowed disabled:opacity-50",
-        "data-[state=checked]:bg-(--color-interactive-primary)",
-        "data-[state=unchecked]:bg-(--color-interactive-secondary)",
+        "data-[state=checked]:bg-(--color-switch-track-background-checked)",
+        "data-[state=unchecked]:bg-(--color-switch-track-background-unchecked)",
         sizes[size],
         className
       )}
@@ -41,7 +46,9 @@ export const Switch = React.forwardRef<
     >
       <SwitchPrimitive.Thumb
         className={cn(
-          "pointer-events-none block rounded-full bg-(--color-background-primary) shadow-lg ring-0 transition-transform",
+          "pointer-events-none block shadow-lg ring-0 transition-transform",
+          "rounded-(--spacing-switch-thumb-radius)",
+          "bg-(--color-switch-thumb-background)",
           thumbSizes[size]
         )}
       />

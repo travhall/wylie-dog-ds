@@ -24,9 +24,9 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
     const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
 
     const sizes = {
-      sm: "h-1",
-      md: "h-2",
-      lg: "h-3",
+      sm: "h-(--spacing-progress-height)",
+      md: "h-(--spacing-progress-height)",
+      lg: "h-(--spacing-progress-height)",
     };
 
     const variants = {
@@ -40,7 +40,8 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
       <div
         ref={ref}
         className={cn(
-          "relative w-full overflow-hidden rounded-full bg-(--color-progress-background)",
+          "relative w-full overflow-hidden bg-(--color-progress-background)",
+          "rounded-(--spacing-progress-radius)",
           sizes[size],
           className
         )}

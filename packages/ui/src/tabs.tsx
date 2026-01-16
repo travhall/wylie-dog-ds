@@ -27,7 +27,9 @@ export const TabsList = React.forwardRef<
     <TabsPrimitive.List
       ref={ref}
       className={cn(
-        "inline-flex items-center justify-center rounded-md bg-(--color-background-secondary) text-(--color-text-secondary)",
+        "inline-flex items-center justify-center bg-(--color-background-secondary) text-(--color-text-secondary)",
+        "rounded-(--spacing-tabs-trigger-radius-top)",
+        "border-b-(length:--spacing-tabs-list-border-width)",
         sizes[size],
         className
       )}
@@ -50,16 +52,18 @@ export const TabsTrigger = React.forwardRef<
   TabsTriggerProps
 >(({ className, size = "md", ...props }, ref) => {
   const sizes = {
-    sm: "px-2 py-1 text-xs",
-    md: "px-3 py-1.5 text-sm",
-    lg: "px-4 py-2 text-base",
+    sm: "px-(--spacing-tabs-trigger-padding-x) py-(--spacing-tabs-trigger-padding-y) text-(length:--spacing-tabs-trigger-font-size)",
+    md: "px-(--spacing-tabs-trigger-padding-x) py-(--spacing-tabs-trigger-padding-y) text-(length:--spacing-tabs-trigger-font-size)",
+    lg: "px-(--spacing-tabs-trigger-padding-x) py-(--spacing-tabs-trigger-padding-y) text-(length:--spacing-tabs-trigger-font-size)",
   };
 
   return (
     <TabsPrimitive.Trigger
       ref={ref}
       className={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-sm font-medium ring-offset-background transition-all",
+        "inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-all",
+        "rounded-(--spacing-tabs-trigger-radius-top)",
+        "border-b-(length:--spacing-tabs-trigger-border-width)",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",
         "data-[state=active]:bg-(--color-background-primary) data-[state=active]:text-(--color-text-primary) data-[state=active]:shadow-sm",
@@ -81,7 +85,8 @@ export const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      "mt-2 ring-offset-background",
+      "ring-offset-background",
+      "mt-(--spacing-tabs-content-margin-top)",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
       className
     )}
