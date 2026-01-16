@@ -3,11 +3,11 @@
     "components": {
       "modes": [
         {
-          "modeId": "mode:components:light",
+          "modeId": "1139:6",
           "name": "Light"
         },
         {
-          "modeId": "mode:components:dark",
+          "modeId": "1139:7",
           "name": "Dark"
         }
       ],
@@ -2738,14 +2738,6 @@
           "valuesByMode": {
             "Light": "{typography.font-size.base}",
             "Dark": "{typography.font-size.base}"
-          }
-        },
-        "tabs.trigger.radius.top": {
-          "$type": "spacing",
-          "$value": "{radius.md}",
-          "valuesByMode": {
-            "Light": "{radius.md}",
-            "Dark": "{radius.md}"
           }
         },
         "tabs.trigger.indicator-width": {
