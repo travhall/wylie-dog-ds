@@ -9,8 +9,10 @@ const Accordion = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Root
     ref={ref}
-    className={cn("w-full", className)}
-    style={{ width: "100%", minWidth: "320px" }}
+    className={cn(
+      "w-full min-w-(--spacing-accordion-root-min-width)",
+      className
+    )}
     {...props}
   />
 ));
@@ -27,7 +29,7 @@ const AccordionItem = React.forwardRef<
   <AccordionPrimitive.Item
     ref={ref}
     className={cn(
-      "border-b border-(--color-accordion-border) w-full relative",
+      "border-b border-(length:--spacing-accordion-item-border-width) border-(--color-accordion-border) w-full relative",
       className
     )}
     {...props}
@@ -47,7 +49,7 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between p-3 text-sm font-medium text-(--color-accordion-trigger-text) transition-all",
+        "flex flex-1 items-center justify-between p-(--spacing-accordion-trigger-padding) text-(length:--spacing-accordion-trigger-font-size) font-medium text-(--color-accordion-trigger-text) transition-all",
         "hover:bg-(--color-accordion-trigger-hover) hover:text-(--color-accordion-trigger-text-hover)",
         "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
         "data-[state=open]:text-(--color-accordion-trigger-text-open)",
@@ -57,7 +59,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <ChevronDownIcon className="h-4 w-4 shrink-0 text-(--color-accordion-icon) transition-transform duration-200" />
+      <ChevronDownIcon className="h-(--spacing-accordion-trigger-icon-size) w-(--spacing-accordion-trigger-icon-size) shrink-0 text-(--color-accordion-icon) transition-transform duration-200" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
@@ -73,10 +75,17 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden text-sm text-(--color-accordion-content-text) data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className="overflow-hidden text-(length:--spacing-accordion-content-font-size) text-(--color-accordion-content-text) data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}
   >
-    <div className={cn("p-3", className)}>{children}</div>
+    <div
+      className={cn(
+        "p-(--spacing-accordion-content-padding) text-(length:--spacing-accordion-content-font-size)",
+        className
+      )}
+    >
+      {children}
+    </div>
   </AccordionPrimitive.Content>
 ));
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;

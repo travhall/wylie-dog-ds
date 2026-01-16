@@ -20,7 +20,7 @@ const BreadcrumbList = React.forwardRef<HTMLOListElement, BreadcrumbListProps>(
     <ol
       ref={ref}
       className={cn(
-        "flex flex-wrap items-center gap-1.5 wrap-break-word text-sm text-(--color-breadcrumb-text)",
+        "flex flex-wrap items-center gap-(--spacing-breadcrumb-gap) wrap-break-word text-(length:--spacing-breadcrumb-font-size) text-(--color-breadcrumb-text)",
         className
       )}
       {...props}
@@ -35,7 +35,10 @@ const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>(
   ({ className, ...props }, ref) => (
     <li
       ref={ref}
-      className={cn("inline-flex items-center gap-1.5", className)}
+      className={cn(
+        "inline-flex items-center gap-(--spacing-breadcrumb-item-gap)",
+        className
+      )}
       {...props}
     />
   )
@@ -89,7 +92,10 @@ const BreadcrumbSeparator = React.forwardRef<
     ref={ref}
     role="presentation"
     aria-hidden="true"
-    className={cn("[&>svg]:size-3.5", className)}
+    className={cn(
+      "[&>svg]:size-(--spacing-breadcrumb-separator-size)",
+      className
+    )}
     {...props}
   >
     {children ?? <ChevronRightIcon />}
@@ -107,10 +113,13 @@ const BreadcrumbEllipsis = React.forwardRef<
     ref={ref}
     role="presentation"
     aria-hidden="true"
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    className={cn(
+      "flex h-(--spacing-breadcrumb-ellipsis-size) w-(--spacing-breadcrumb-ellipsis-size) items-center justify-center",
+      className
+    )}
     {...props}
   >
-    <MoreHorizontalIcon className="h-4 w-4" />
+    <MoreHorizontalIcon className="h-(--spacing-breadcrumb-separator-size) w-(--spacing-breadcrumb-separator-size)" />
     <span className="sr-only">More</span>
   </span>
 ));

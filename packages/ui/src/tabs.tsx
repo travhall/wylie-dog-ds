@@ -18,16 +18,16 @@ export const TabsList = React.forwardRef<
   TabsListProps
 >(({ className, size = "md", ...props }, ref) => {
   const sizes = {
-    sm: "h-8 p-1",
-    md: "h-10 p-1",
-    lg: "h-12 p-1.5",
+    sm: "h-(--spacing-tabs-list-height-sm) p-(--spacing-tabs-list-padding-sm)",
+    md: "h-(--spacing-tabs-list-height-md) p-(--spacing-tabs-list-padding-md)",
+    lg: "h-(--spacing-tabs-list-height-lg) p-(--spacing-tabs-list-padding-lg)",
   };
 
   return (
     <TabsPrimitive.List
       ref={ref}
       className={cn(
-        "inline-flex items-center justify-center bg-(--color-background-secondary) text-(--color-text-secondary)",
+        "inline-flex items-center justify-center bg-(--color-tabs-list-background) text-(--color-tabs-list-text)",
         "rounded-(--spacing-tabs-trigger-radius-top)",
         "border-b-(length:--spacing-tabs-list-border-width)",
         sizes[size],
@@ -52,9 +52,9 @@ export const TabsTrigger = React.forwardRef<
   TabsTriggerProps
 >(({ className, size = "md", ...props }, ref) => {
   const sizes = {
-    sm: "px-(--spacing-tabs-trigger-padding-x) py-(--spacing-tabs-trigger-padding-y) text-(length:--spacing-tabs-trigger-font-size)",
-    md: "px-(--spacing-tabs-trigger-padding-x) py-(--spacing-tabs-trigger-padding-y) text-(length:--spacing-tabs-trigger-font-size)",
-    lg: "px-(--spacing-tabs-trigger-padding-x) py-(--spacing-tabs-trigger-padding-y) text-(length:--spacing-tabs-trigger-font-size)",
+    sm: "px-(--spacing-tabs-trigger-padding-x-sm) py-(--spacing-tabs-trigger-padding-y-sm) text-(length:--spacing-tabs-trigger-font-size-sm)",
+    md: "px-(--spacing-tabs-trigger-padding-x-md) py-(--spacing-tabs-trigger-padding-y-md) text-(length:--spacing-tabs-trigger-font-size-md)",
+    lg: "px-(--spacing-tabs-trigger-padding-x-lg) py-(--spacing-tabs-trigger-padding-y-lg) text-(length:--spacing-tabs-trigger-font-size-lg)",
   };
 
   return (
@@ -63,11 +63,11 @@ export const TabsTrigger = React.forwardRef<
       className={cn(
         "inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-all",
         "rounded-(--spacing-tabs-trigger-radius-top)",
-        "border-b-(length:--spacing-tabs-trigger-border-width)",
+        "border-b-(length:--spacing-tabs-trigger-indicator-width)",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",
-        "data-[state=active]:bg-(--color-background-primary) data-[state=active]:text-(--color-text-primary) data-[state=active]:shadow-sm",
-        "hover:bg-(--color-background-tertiary) hover:text-(--color-text-primary)",
+        "data-[state=active]:bg-(--color-tabs-trigger-background-active) data-[state=active]:text-(--color-tabs-trigger-text-active) data-[state=active]:shadow-sm",
+        "hover:bg-(--color-tabs-trigger-background-hover) hover:text-(--color-tabs-trigger-text-hover)",
         sizes[size],
         className
       )}

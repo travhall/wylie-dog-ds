@@ -16,7 +16,7 @@ interface CarouselContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 const CarouselContent = React.forwardRef<HTMLDivElement, CarouselContentProps>(
   ({ className, ...props }, ref) => (
     <div ref={ref} className={cn("overflow-hidden", className)} {...props}>
-      <div className="flex -ml-4" {...props} />
+      <div className="flex -ml-(--spacing-carousel-item-spacing)" {...props} />
     </div>
   )
 );
@@ -28,7 +28,10 @@ const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("min-w-0 shrink-0 grow-0 basis-full pl-4", className)}
+      className={cn(
+        "min-w-0 shrink-0 grow-0 basis-full pl-(--spacing-carousel-item-spacing)",
+        className
+      )}
       {...props}
     />
   )
@@ -44,7 +47,7 @@ const CarouselPrevious = React.forwardRef<
   <button
     ref={ref}
     className={cn(
-      "absolute h-8 w-8 rounded-full border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) left-4 top-1/2 -translate-y-1/2",
+      "absolute h-(--spacing-carousel-button-size) w-(--spacing-carousel-button-size) rounded-full border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -left-(--spacing-carousel-button-offset) top-1/2 -translate-y-1/2",
       "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
       "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
       "disabled:pointer-events-none disabled:opacity-50",
@@ -52,7 +55,7 @@ const CarouselPrevious = React.forwardRef<
     )}
     {...props}
   >
-    <ChevronLeftIcon className="h-4 w-4" />
+    <ChevronLeftIcon className="h-(--spacing-carousel-button-icon-size) w-(--spacing-carousel-button-icon-size)" />
     <span className="sr-only">Previous slide</span>
   </button>
 ));
@@ -65,7 +68,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
     <button
       ref={ref}
       className={cn(
-        "absolute h-8 w-8 rounded-full border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) right-4 top-1/2 -translate-y-1/2",
+        "absolute h-(--spacing-carousel-button-size) w-(--spacing-carousel-button-size) rounded-full border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -right-(--spacing-carousel-button-offset) top-1/2 -translate-y-1/2",
         "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
         "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",
@@ -73,7 +76,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
       )}
       {...props}
     >
-      <ChevronRightIcon className="h-4 w-4" />
+      <ChevronRightIcon className="h-(--spacing-carousel-button-icon-size) w-(--spacing-carousel-button-icon-size)" />
       <span className="sr-only">Next slide</span>
     </button>
   )

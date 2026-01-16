@@ -1097,6 +1097,18 @@
         "variable": "var(--spacing-1)",
         "description": ""
       },
+      "spacing-1-5": {
+        "name": "spacing15",
+        "path": [
+          "spacing",
+          "1",
+          "5"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--spacing-1-5)",
+        "description": ""
+      },
       "spacing-2": {
         "name": "spacing2",
         "path": [
@@ -1108,6 +1120,18 @@
         "variable": "var(--spacing-2)",
         "description": ""
       },
+      "spacing-2-5": {
+        "name": "spacing25",
+        "path": [
+          "spacing",
+          "2",
+          "5"
+        ],
+        "value": "10px",
+        "type": "spacing",
+        "variable": "var(--spacing-2-5)",
+        "description": ""
+      },
       "spacing-3": {
         "name": "spacing3",
         "path": [
@@ -1117,6 +1141,18 @@
         "value": "12px",
         "type": "spacing",
         "variable": "var(--spacing-3)",
+        "description": ""
+      },
+      "spacing-3-5": {
+        "name": "spacing35",
+        "path": [
+          "spacing",
+          "3",
+          "5"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--spacing-3-5)",
         "description": ""
       },
       "spacing-4": {
@@ -1271,6 +1307,17 @@
         "value": "128px",
         "type": "spacing",
         "variable": "var(--spacing-32)",
+        "description": ""
+      },
+      "spacing-48": {
+        "name": "spacing48",
+        "path": [
+          "spacing",
+          "48"
+        ],
+        "value": "192px",
+        "type": "spacing",
+        "variable": "var(--spacing-48)",
         "description": ""
       },
       "spacing-64": {
@@ -3982,6 +4029,198 @@
         "type": "color",
         "variable": "var(--color-menubar-shortcut)",
         "description": ""
+      },
+      "menubar-root-height": {
+        "name": "menubarRootHeight",
+        "path": [
+          "menubar",
+          "root",
+          "height"
+        ],
+        "value": "40px",
+        "type": "spacing",
+        "variable": "var(--menubar-root-height)",
+        "description": ""
+      },
+      "menubar-root-padding": {
+        "name": "menubarRootPadding",
+        "path": [
+          "menubar",
+          "root",
+          "padding"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--menubar-root-padding)",
+        "description": ""
+      },
+      "menubar-trigger-padding-x": {
+        "name": "menubarTriggerPaddingX",
+        "path": [
+          "menubar",
+          "trigger",
+          "padding-x"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--menubar-trigger-padding-x)",
+        "description": ""
+      },
+      "menubar-trigger-padding-y": {
+        "name": "menubarTriggerPaddingY",
+        "path": [
+          "menubar",
+          "trigger",
+          "padding-y"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--menubar-trigger-padding-y)",
+        "description": ""
+      },
+      "menubar-content-min-width": {
+        "name": "menubarContentMinWidth",
+        "path": [
+          "menubar",
+          "content",
+          "min-width"
+        ],
+        "value": "192px",
+        "type": "spacing",
+        "variable": "var(--menubar-content-min-width)",
+        "description": ""
+      },
+      "menubar-sub-content-min-width": {
+        "name": "menubarSubContentMinWidth",
+        "path": [
+          "menubar",
+          "sub-content",
+          "min-width"
+        ],
+        "value": "128px",
+        "type": "spacing",
+        "variable": "var(--menubar-sub-content-min-width)",
+        "description": ""
+      },
+      "menubar-item-padding-x": {
+        "name": "menubarItemPaddingX",
+        "path": [
+          "menubar",
+          "item",
+          "padding-x"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--menubar-item-padding-x)",
+        "description": ""
+      },
+      "menubar-item-padding-y": {
+        "name": "menubarItemPaddingY",
+        "path": [
+          "menubar",
+          "item",
+          "padding-y"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--menubar-item-padding-y)",
+        "description": ""
+      },
+      "menubar-item-inset": {
+        "name": "menubarItemInset",
+        "path": [
+          "menubar",
+          "item",
+          "inset"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--menubar-item-inset)",
+        "description": ""
+      },
+      "menubar-item-indicator-size": {
+        "name": "menubarItemIndicatorSize",
+        "path": [
+          "menubar",
+          "item",
+          "indicator-size"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--menubar-item-indicator-size)",
+        "description": ""
+      },
+      "menubar-item-icon-size": {
+        "name": "menubarItemIconSize",
+        "path": [
+          "menubar",
+          "item",
+          "icon-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--menubar-item-icon-size)",
+        "description": ""
+      },
+      "menubar-item-font-size": {
+        "name": "menubarItemFontSize",
+        "path": [
+          "menubar",
+          "item",
+          "font-size"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--menubar-item-font-size)",
+        "description": ""
+      },
+      "menubar-shortcut-font-size": {
+        "name": "menubarShortcutFontSize",
+        "path": [
+          "menubar",
+          "shortcut",
+          "font-size"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--menubar-shortcut-font-size)",
+        "description": ""
+      },
+      "menubar-separator-height": {
+        "name": "menubarSeparatorHeight",
+        "path": [
+          "menubar",
+          "separator",
+          "height"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--menubar-separator-height)",
+        "description": ""
+      },
+      "menubar-separator-margin-y": {
+        "name": "menubarSeparatorMarginY",
+        "path": [
+          "menubar",
+          "separator",
+          "margin-y"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--menubar-separator-margin-y)",
+        "description": ""
+      },
+      "menubar-separator-margin-x": {
+        "name": "menubarSeparatorMarginX",
+        "path": [
+          "menubar",
+          "separator",
+          "margin-x"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--menubar-separator-margin-x)",
+        "description": ""
       }
     },
     "navigation": {
@@ -4217,6 +4456,482 @@
         "type": "color",
         "variable": "var(--color-command-shortcut)",
         "description": ""
+      },
+      "command-input-height": {
+        "name": "commandInputHeight",
+        "path": [
+          "command",
+          "input",
+          "height"
+        ],
+        "value": "40px",
+        "type": "spacing",
+        "variable": "var(--command-input-height)",
+        "description": ""
+      },
+      "command-input-padding-y": {
+        "name": "commandInputPaddingY",
+        "path": [
+          "command",
+          "input",
+          "padding-y"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--command-input-padding-y)",
+        "description": ""
+      },
+      "command-input-icon-size": {
+        "name": "commandInputIconSize",
+        "path": [
+          "command",
+          "input",
+          "icon",
+          "size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--command-input-icon-size)",
+        "description": ""
+      },
+      "command-list-max-height": {
+        "name": "commandListMaxHeight",
+        "path": [
+          "command",
+          "list",
+          "max-height"
+        ],
+        "value": "320px",
+        "type": "spacing",
+        "variable": "var(--command-list-max-height)",
+        "description": ""
+      },
+      "command-item-padding-x": {
+        "name": "commandItemPaddingX",
+        "path": [
+          "command",
+          "item",
+          "padding-x"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--command-item-padding-x)",
+        "description": ""
+      },
+      "command-item-padding-y": {
+        "name": "commandItemPaddingY",
+        "path": [
+          "command",
+          "item",
+          "padding-y"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--command-item-padding-y)",
+        "description": ""
+      },
+      "command-group-padding": {
+        "name": "commandGroupPadding",
+        "path": [
+          "command",
+          "group",
+          "padding"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--command-group-padding)",
+        "description": ""
+      }
+    },
+    "tabs": {
+      "tabs-list-background": {
+        "name": "tabsListBackground",
+        "path": [
+          "tabs",
+          "list",
+          "background"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-tabs-list-background)",
+        "description": ""
+      },
+      "tabs-list-text": {
+        "name": "tabsListText",
+        "path": [
+          "tabs",
+          "list",
+          "text"
+        ],
+        "value": "oklch(0.446 0.037 257.28)",
+        "type": "color",
+        "variable": "var(--color-tabs-list-text)",
+        "description": ""
+      },
+      "tabs-trigger-background-active": {
+        "name": "tabsTriggerBackgroundActive",
+        "path": [
+          "tabs",
+          "trigger",
+          "background-active"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-background-active)",
+        "description": ""
+      },
+      "tabs-trigger-text-active": {
+        "name": "tabsTriggerTextActive",
+        "path": [
+          "tabs",
+          "trigger",
+          "text-active"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-text-active)",
+        "description": ""
+      },
+      "tabs-trigger-background-hover": {
+        "name": "tabsTriggerBackgroundHover",
+        "path": [
+          "tabs",
+          "trigger",
+          "background-hover"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-background-hover)",
+        "description": ""
+      },
+      "tabs-trigger-text-hover": {
+        "name": "tabsTriggerTextHover",
+        "path": [
+          "tabs",
+          "trigger",
+          "text-hover"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-text-hover)",
+        "description": ""
+      },
+      "tabs-list-height-sm": {
+        "name": "tabsListHeightSm",
+        "path": [
+          "tabs",
+          "list",
+          "height",
+          "sm"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--tabs-list-height-sm)",
+        "description": ""
+      },
+      "tabs-list-height-md": {
+        "name": "tabsListHeightMd",
+        "path": [
+          "tabs",
+          "list",
+          "height",
+          "md"
+        ],
+        "value": "40px",
+        "type": "spacing",
+        "variable": "var(--tabs-list-height-md)",
+        "description": ""
+      },
+      "tabs-list-height-lg": {
+        "name": "tabsListHeightLg",
+        "path": [
+          "tabs",
+          "list",
+          "height",
+          "lg"
+        ],
+        "value": "48px",
+        "type": "spacing",
+        "variable": "var(--tabs-list-height-lg)",
+        "description": ""
+      },
+      "tabs-list-padding-sm": {
+        "name": "tabsListPaddingSm",
+        "path": [
+          "tabs",
+          "list",
+          "padding",
+          "sm"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--tabs-list-padding-sm)",
+        "description": ""
+      },
+      "tabs-list-padding-md": {
+        "name": "tabsListPaddingMd",
+        "path": [
+          "tabs",
+          "list",
+          "padding",
+          "md"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--tabs-list-padding-md)",
+        "description": ""
+      },
+      "tabs-list-padding-lg": {
+        "name": "tabsListPaddingLg",
+        "path": [
+          "tabs",
+          "list",
+          "padding",
+          "lg"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--tabs-list-padding-lg)",
+        "description": ""
+      },
+      "tabs-list-gap": {
+        "name": "tabsListGap",
+        "path": [
+          "tabs",
+          "list",
+          "gap"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--tabs-list-gap)",
+        "description": ""
+      },
+      "tabs-list-border-width": {
+        "name": "tabsListBorderWidth",
+        "path": [
+          "tabs",
+          "list",
+          "border",
+          "width"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--tabs-list-border-width)",
+        "description": ""
+      },
+      "tabs-trigger-padding-x-sm": {
+        "name": "tabsTriggerPaddingXSm",
+        "path": [
+          "tabs",
+          "trigger",
+          "padding-x",
+          "sm"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-padding-x-sm)",
+        "description": ""
+      },
+      "tabs-trigger-padding-x-md": {
+        "name": "tabsTriggerPaddingXMd",
+        "path": [
+          "tabs",
+          "trigger",
+          "padding-x",
+          "md"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-padding-x-md)",
+        "description": ""
+      },
+      "tabs-trigger-padding-x-lg": {
+        "name": "tabsTriggerPaddingXLg",
+        "path": [
+          "tabs",
+          "trigger",
+          "padding-x",
+          "lg"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-padding-x-lg)",
+        "description": ""
+      },
+      "tabs-trigger-padding-y-sm": {
+        "name": "tabsTriggerPaddingYSm",
+        "path": [
+          "tabs",
+          "trigger",
+          "padding-y",
+          "sm"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-padding-y-sm)",
+        "description": ""
+      },
+      "tabs-trigger-padding-y-md": {
+        "name": "tabsTriggerPaddingYMd",
+        "path": [
+          "tabs",
+          "trigger",
+          "padding-y",
+          "md"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-padding-y-md)",
+        "description": ""
+      },
+      "tabs-trigger-padding-y-lg": {
+        "name": "tabsTriggerPaddingYLg",
+        "path": [
+          "tabs",
+          "trigger",
+          "padding-y",
+          "lg"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-padding-y-lg)",
+        "description": ""
+      },
+      "tabs-trigger-font-size-sm": {
+        "name": "tabsTriggerFontSizeSm",
+        "path": [
+          "tabs",
+          "trigger",
+          "font-size",
+          "sm"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-font-size-sm)",
+        "description": ""
+      },
+      "tabs-trigger-font-size-md": {
+        "name": "tabsTriggerFontSizeMd",
+        "path": [
+          "tabs",
+          "trigger",
+          "font-size",
+          "md"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-font-size-md)",
+        "description": ""
+      },
+      "tabs-trigger-font-size-lg": {
+        "name": "tabsTriggerFontSizeLg",
+        "path": [
+          "tabs",
+          "trigger",
+          "font-size",
+          "lg"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-font-size-lg)",
+        "description": ""
+      },
+      "tabs-trigger-radius-top": {
+        "name": "tabsTriggerRadiusTop",
+        "path": [
+          "tabs",
+          "trigger",
+          "radius",
+          "top"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-radius-top)",
+        "description": ""
+      },
+      "tabs-trigger-indicator-width": {
+        "name": "tabsTriggerIndicatorWidth",
+        "path": [
+          "tabs",
+          "trigger",
+          "indicator-width"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-indicator-width)",
+        "description": ""
+      },
+      "tabs-trigger-border-width": {
+        "name": "tabsTriggerBorderWidth",
+        "path": [
+          "tabs",
+          "trigger",
+          "border",
+          "width"
+        ],
+        "value": "2px",
+        "type": "spacing",
+        "variable": "var(--tabs-trigger-border-width)",
+        "description": ""
+      },
+      "tabs-content-padding": {
+        "name": "tabsContentPadding",
+        "path": [
+          "tabs",
+          "content",
+          "padding"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--tabs-content-padding)",
+        "description": ""
+      },
+      "tabs-content-margin-top": {
+        "name": "tabsContentMarginTop",
+        "path": [
+          "tabs",
+          "content",
+          "margin-top"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--tabs-content-margin-top)",
+        "description": ""
+      }
+    },
+    "collapsible": {
+      "collapsible-background": {
+        "name": "collapsibleBackground",
+        "path": [
+          "collapsible",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-collapsible-background)",
+        "description": ""
+      },
+      "collapsible-radius": {
+        "name": "collapsibleRadius",
+        "path": [
+          "collapsible",
+          "radius"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--collapsible-radius)",
+        "description": ""
+      },
+      "collapsible-animation-duration": {
+        "name": "collapsibleAnimationDuration",
+        "path": [
+          "collapsible",
+          "animation-duration"
+        ],
+        "value": "300ms",
+        "type": "spacing",
+        "variable": "var(--collapsible-animation-duration)",
+        "description": ""
       }
     },
     "calendar": {
@@ -4307,6 +5022,68 @@
         "type": "color",
         "variable": "var(--color-calendar-day-text-selected)",
         "description": ""
+      },
+      "calendar-container-padding": {
+        "name": "calendarContainerPadding",
+        "path": [
+          "calendar",
+          "container",
+          "padding"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--calendar-container-padding)",
+        "description": ""
+      },
+      "calendar-nav-button-size": {
+        "name": "calendarNavButtonSize",
+        "path": [
+          "calendar",
+          "nav",
+          "button",
+          "size"
+        ],
+        "value": "28px",
+        "type": "spacing",
+        "variable": "var(--calendar-nav-button-size)",
+        "description": ""
+      },
+      "calendar-nav-icon-size": {
+        "name": "calendarNavIconSize",
+        "path": [
+          "calendar",
+          "nav",
+          "icon",
+          "size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--calendar-nav-icon-size)",
+        "description": ""
+      },
+      "calendar-cell-size": {
+        "name": "calendarCellSize",
+        "path": [
+          "calendar",
+          "cell",
+          "size"
+        ],
+        "value": "36px",
+        "type": "spacing",
+        "variable": "var(--calendar-cell-size)",
+        "description": ""
+      },
+      "calendar-day-size": {
+        "name": "calendarDaySize",
+        "path": [
+          "calendar",
+          "day",
+          "size"
+        ],
+        "value": "36px",
+        "type": "spacing",
+        "variable": "var(--calendar-day-size)",
+        "description": ""
       }
     },
     "accordion": {
@@ -4386,6 +5163,80 @@
         "type": "color",
         "variable": "var(--color-accordion-trigger-text-open)",
         "description": ""
+      },
+      "accordion-item-border-width": {
+        "name": "accordionItemBorderWidth",
+        "path": [
+          "accordion",
+          "item",
+          "border",
+          "width"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--accordion-item-border-width)",
+        "description": ""
+      },
+      "accordion-trigger-padding": {
+        "name": "accordionTriggerPadding",
+        "path": [
+          "accordion",
+          "trigger",
+          "padding"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--accordion-trigger-padding)",
+        "description": ""
+      },
+      "accordion-trigger-font-size": {
+        "name": "accordionTriggerFontSize",
+        "path": [
+          "accordion",
+          "trigger",
+          "font-size"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--accordion-trigger-font-size)",
+        "description": ""
+      },
+      "accordion-trigger-icon-size": {
+        "name": "accordionTriggerIconSize",
+        "path": [
+          "accordion",
+          "trigger",
+          "icon",
+          "size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--accordion-trigger-icon-size)",
+        "description": ""
+      },
+      "accordion-content-padding": {
+        "name": "accordionContentPadding",
+        "path": [
+          "accordion",
+          "content",
+          "padding"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--accordion-content-padding)",
+        "description": ""
+      },
+      "accordion-content-font-size": {
+        "name": "accordionContentFontSize",
+        "path": [
+          "accordion",
+          "content",
+          "font-size"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--accordion-content-font-size)",
+        "description": ""
       }
     },
     "avatar": {
@@ -4431,6 +5282,54 @@
         "value": "oklch(0.446 0.037 257.28)",
         "type": "color",
         "variable": "var(--color-avatar-fallback-text)",
+        "description": ""
+      },
+      "avatar-size-sm": {
+        "name": "avatarSizeSm",
+        "path": [
+          "avatar",
+          "size",
+          "sm"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--avatar-size-sm)",
+        "description": ""
+      },
+      "avatar-size-md": {
+        "name": "avatarSizeMd",
+        "path": [
+          "avatar",
+          "size",
+          "md"
+        ],
+        "value": "40px",
+        "type": "spacing",
+        "variable": "var(--avatar-size-md)",
+        "description": ""
+      },
+      "avatar-size-lg": {
+        "name": "avatarSizeLg",
+        "path": [
+          "avatar",
+          "size",
+          "lg"
+        ],
+        "value": "48px",
+        "type": "spacing",
+        "variable": "var(--avatar-size-lg)",
+        "description": ""
+      },
+      "avatar-size-xl": {
+        "name": "avatarSizeXl",
+        "path": [
+          "avatar",
+          "size",
+          "xl"
+        ],
+        "value": "64px",
+        "type": "spacing",
+        "variable": "var(--avatar-size-xl)",
         "description": ""
       }
     },
@@ -4478,6 +5377,76 @@
         "type": "color",
         "variable": "var(--color-breadcrumb-text)",
         "description": ""
+      },
+      "breadcrumb-list-gap": {
+        "name": "breadcrumbListGap",
+        "path": [
+          "breadcrumb",
+          "list",
+          "gap"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--breadcrumb-list-gap)",
+        "description": ""
+      },
+      "breadcrumb-item-gap": {
+        "name": "breadcrumbItemGap",
+        "path": [
+          "breadcrumb",
+          "item",
+          "gap"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--breadcrumb-item-gap)",
+        "description": ""
+      },
+      "breadcrumb-gap": {
+        "name": "breadcrumbGap",
+        "path": [
+          "breadcrumb",
+          "gap"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--breadcrumb-gap)",
+        "description": ""
+      },
+      "breadcrumb-font-size": {
+        "name": "breadcrumbFontSize",
+        "path": [
+          "breadcrumb",
+          "font-size"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--breadcrumb-font-size)",
+        "description": ""
+      },
+      "breadcrumb-separator-size": {
+        "name": "breadcrumbSeparatorSize",
+        "path": [
+          "breadcrumb",
+          "separator",
+          "size"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--breadcrumb-separator-size)",
+        "description": ""
+      },
+      "breadcrumb-ellipsis-size": {
+        "name": "breadcrumbEllipsisSize",
+        "path": [
+          "breadcrumb",
+          "ellipsis",
+          "size"
+        ],
+        "value": "36px",
+        "type": "spacing",
+        "variable": "var(--breadcrumb-ellipsis-size)",
+        "description": ""
       }
     },
     "carousel": {
@@ -4523,6 +5492,65 @@
         "value": "oklch(0.279 0.037 260.03)",
         "type": "color",
         "variable": "var(--color-carousel-nav-text-hover)",
+        "description": ""
+      },
+      "carousel-item-spacing": {
+        "name": "carouselItemSpacing",
+        "path": [
+          "carousel",
+          "item",
+          "spacing"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--carousel-item-spacing)",
+        "description": ""
+      },
+      "carousel-button-size": {
+        "name": "carouselButtonSize",
+        "path": [
+          "carousel",
+          "button",
+          "size"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--carousel-button-size)",
+        "description": ""
+      },
+      "carousel-button-offset": {
+        "name": "carouselButtonOffset",
+        "path": [
+          "carousel",
+          "button",
+          "offset"
+        ],
+        "value": "48px",
+        "type": "spacing",
+        "variable": "var(--carousel-button-offset)",
+        "description": ""
+      },
+      "carousel-button-icon-size": {
+        "name": "carouselButtonIconSize",
+        "path": [
+          "carousel",
+          "button",
+          "icon-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--carousel-button-icon-size)",
+        "description": ""
+      },
+      "carousel-gap": {
+        "name": "carouselGap",
+        "path": [
+          "carousel",
+          "gap"
+        ],
+        "value": "24px",
+        "type": "spacing",
+        "variable": "var(--carousel-gap)",
         "description": ""
       }
     },
@@ -5856,6 +6884,18 @@
         "type": "spacing",
         "variable": "var(--table-border-width)",
         "description": ""
+      },
+      "table-header-height": {
+        "name": "tableHeaderHeight",
+        "path": [
+          "table",
+          "header",
+          "height"
+        ],
+        "value": "48px",
+        "type": "spacing",
+        "variable": "var(--table-header-height)",
+        "description": ""
       }
     },
     "toast": {
@@ -6108,6 +7148,84 @@
         "value": "oklch(1 0 0)",
         "type": "color",
         "variable": "var(--color-toggle-text-pressed)",
+        "description": ""
+      },
+      "toggle-size-default-height": {
+        "name": "toggleSizeDefaultHeight",
+        "path": [
+          "toggle",
+          "size",
+          "default",
+          "height"
+        ],
+        "value": "40px",
+        "type": "spacing",
+        "variable": "var(--toggle-size-default-height)",
+        "description": ""
+      },
+      "toggle-size-default-padding-x": {
+        "name": "toggleSizeDefaultPaddingX",
+        "path": [
+          "toggle",
+          "size",
+          "default",
+          "padding-x"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--toggle-size-default-padding-x)",
+        "description": ""
+      },
+      "toggle-size-sm-height": {
+        "name": "toggleSizeSmHeight",
+        "path": [
+          "toggle",
+          "size",
+          "sm",
+          "height"
+        ],
+        "value": "36px",
+        "type": "spacing",
+        "variable": "var(--toggle-size-sm-height)",
+        "description": ""
+      },
+      "toggle-size-sm-padding-x": {
+        "name": "toggleSizeSmPaddingX",
+        "path": [
+          "toggle",
+          "size",
+          "sm",
+          "padding-x"
+        ],
+        "value": "10px",
+        "type": "spacing",
+        "variable": "var(--toggle-size-sm-padding-x)",
+        "description": ""
+      },
+      "toggle-size-lg-height": {
+        "name": "toggleSizeLgHeight",
+        "path": [
+          "toggle",
+          "size",
+          "lg",
+          "height"
+        ],
+        "value": "44px",
+        "type": "spacing",
+        "variable": "var(--toggle-size-lg-height)",
+        "description": ""
+      },
+      "toggle-size-lg-padding-x": {
+        "name": "toggleSizeLgPaddingX",
+        "path": [
+          "toggle",
+          "size",
+          "lg",
+          "padding-x"
+        ],
+        "value": "20px",
+        "type": "spacing",
+        "variable": "var(--toggle-size-lg-padding-x)",
         "description": ""
       }
     },
@@ -7093,119 +8211,6 @@
         "description": ""
       }
     },
-    "tabs": {
-      "tabs-list-gap": {
-        "name": "tabsListGap",
-        "path": [
-          "tabs",
-          "list",
-          "gap"
-        ],
-        "value": "8px",
-        "type": "spacing",
-        "variable": "var(--tabs-list-gap)",
-        "description": ""
-      },
-      "tabs-list-border-width": {
-        "name": "tabsListBorderWidth",
-        "path": [
-          "tabs",
-          "list",
-          "border",
-          "width"
-        ],
-        "value": "1px",
-        "type": "spacing",
-        "variable": "var(--tabs-list-border-width)",
-        "description": ""
-      },
-      "tabs-trigger-padding-x": {
-        "name": "tabsTriggerPaddingX",
-        "path": [
-          "tabs",
-          "trigger",
-          "padding-x"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--tabs-trigger-padding-x)",
-        "description": ""
-      },
-      "tabs-trigger-padding-y": {
-        "name": "tabsTriggerPaddingY",
-        "path": [
-          "tabs",
-          "trigger",
-          "padding-y"
-        ],
-        "value": "8px",
-        "type": "spacing",
-        "variable": "var(--tabs-trigger-padding-y)",
-        "description": ""
-      },
-      "tabs-trigger-font-size": {
-        "name": "tabsTriggerFontSize",
-        "path": [
-          "tabs",
-          "trigger",
-          "font-size"
-        ],
-        "value": "14px",
-        "type": "spacing",
-        "variable": "var(--tabs-trigger-font-size)",
-        "description": ""
-      },
-      "tabs-trigger-radius-top": {
-        "name": "tabsTriggerRadiusTop",
-        "path": [
-          "tabs",
-          "trigger",
-          "radius",
-          "top"
-        ],
-        "value": "6px",
-        "type": "spacing",
-        "variable": "var(--tabs-trigger-radius-top)",
-        "description": ""
-      },
-      "tabs-trigger-border-width": {
-        "name": "tabsTriggerBorderWidth",
-        "path": [
-          "tabs",
-          "trigger",
-          "border",
-          "width"
-        ],
-        "value": "2px",
-        "type": "spacing",
-        "variable": "var(--tabs-trigger-border-width)",
-        "description": ""
-      },
-      "tabs-content-padding": {
-        "name": "tabsContentPadding",
-        "path": [
-          "tabs",
-          "content",
-          "padding"
-        ],
-        "value": "24px",
-        "type": "spacing",
-        "variable": "var(--tabs-content-padding)",
-        "description": ""
-      },
-      "tabs-content-margin-top": {
-        "name": "tabsContentMarginTop",
-        "path": [
-          "tabs",
-          "content",
-          "margin-top"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--tabs-content-margin-top)",
-        "description": ""
-      }
-    },
     "separator": {
       "separator-height-horizontal": {
         "name": "separatorHeightHorizontal",
@@ -7253,6 +8258,242 @@
         "value": "16px",
         "type": "spacing",
         "variable": "var(--separator-margin-vertical)",
+        "description": ""
+      }
+    },
+    "context-menu": {
+      "context-menu-content-min-width": {
+        "name": "contextMenuContentMinWidth",
+        "path": [
+          "context-menu",
+          "content",
+          "min-width"
+        ],
+        "value": "128px",
+        "type": "spacing",
+        "variable": "var(--context-menu-content-min-width)",
+        "description": ""
+      },
+      "context-menu-content-padding": {
+        "name": "contextMenuContentPadding",
+        "path": [
+          "context-menu",
+          "content",
+          "padding"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--context-menu-content-padding)",
+        "description": ""
+      },
+      "context-menu-item-padding-y": {
+        "name": "contextMenuItemPaddingY",
+        "path": [
+          "context-menu",
+          "item",
+          "padding-y"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-padding-y)",
+        "description": ""
+      },
+      "context-menu-item-padding-x": {
+        "name": "contextMenuItemPaddingX",
+        "path": [
+          "context-menu",
+          "item",
+          "padding-x"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-padding-x)",
+        "description": ""
+      },
+      "context-menu-item-inset": {
+        "name": "contextMenuItemInset",
+        "path": [
+          "context-menu",
+          "item",
+          "inset"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-inset)",
+        "description": ""
+      },
+      "context-menu-item-indicator-size": {
+        "name": "contextMenuItemIndicatorSize",
+        "path": [
+          "context-menu",
+          "item",
+          "indicator",
+          "size"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-indicator-size)",
+        "description": ""
+      },
+      "context-menu-item-icon-size": {
+        "name": "contextMenuItemIconSize",
+        "path": [
+          "context-menu",
+          "item",
+          "icon",
+          "size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-icon-size)",
+        "description": ""
+      }
+    },
+    "dropdown-menu": {
+      "dropdown-menu-content-min-width": {
+        "name": "dropdownMenuContentMinWidth",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "min-width"
+        ],
+        "value": "128px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-content-min-width)",
+        "description": ""
+      },
+      "dropdown-menu-content-padding": {
+        "name": "dropdownMenuContentPadding",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "padding"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-content-padding)",
+        "description": ""
+      },
+      "dropdown-menu-item-padding-y": {
+        "name": "dropdownMenuItemPaddingY",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "padding-y"
+        ],
+        "value": "6px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-padding-y)",
+        "description": ""
+      },
+      "dropdown-menu-item-padding-x": {
+        "name": "dropdownMenuItemPaddingX",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "padding-x"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-padding-x)",
+        "description": ""
+      },
+      "dropdown-menu-item-inset": {
+        "name": "dropdownMenuItemInset",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "inset"
+        ],
+        "value": "32px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-inset)",
+        "description": ""
+      },
+      "dropdown-menu-item-icon-size": {
+        "name": "dropdownMenuItemIconSize",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "icon",
+          "size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-icon-size)",
+        "description": ""
+      },
+      "dropdown-menu-item-font-size": {
+        "name": "dropdownMenuItemFontSize",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "font-size"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-font-size)",
+        "description": ""
+      },
+      "dropdown-menu-shortcut-font-size": {
+        "name": "dropdownMenuShortcutFontSize",
+        "path": [
+          "dropdown-menu",
+          "shortcut",
+          "font-size"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-shortcut-font-size)",
+        "description": ""
+      },
+      "dropdown-menu-separator-height": {
+        "name": "dropdownMenuSeparatorHeight",
+        "path": [
+          "dropdown-menu",
+          "separator",
+          "height"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-separator-height)",
+        "description": ""
+      },
+      "dropdown-menu-separator-margin-y": {
+        "name": "dropdownMenuSeparatorMarginY",
+        "path": [
+          "dropdown-menu",
+          "separator",
+          "margin-y"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-separator-margin-y)",
+        "description": ""
+      },
+      "dropdown-menu-separator-margin-x": {
+        "name": "dropdownMenuSeparatorMarginX",
+        "path": [
+          "dropdown-menu",
+          "separator",
+          "margin-x"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-separator-margin-x)",
+        "description": ""
+      },
+      "dropdown-menu-item-indicator-size": {
+        "name": "dropdownMenuItemIndicatorSize",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "indicator",
+          "size"
+        ],
+        "value": "14px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-indicator-size)",
         "description": ""
       }
     }

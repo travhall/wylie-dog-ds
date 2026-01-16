@@ -55,13 +55,13 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
       cmdk-input-wrapper=""
     >
       <SearchIcon
-        className="mr-2 h-4 w-4 shrink-0 opacity-50"
+        className="mr-2 h-(--spacing-command-input-icon-size) w-(--spacing-command-input-icon-size) shrink-0 opacity-50"
         aria-hidden="true"
       />
       <input
         ref={ref}
         className={cn(
-          "flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:opacity-50",
+          "flex h-(--spacing-command-input-height) w-full rounded-md bg-transparent py-(--spacing-command-input-padding-y) text-sm outline-none placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:opacity-50",
           className
         )}
         role="combobox"
@@ -86,7 +86,10 @@ const CommandList = React.forwardRef<HTMLDivElement, CommandListProps>(
     <div
       ref={ref}
       id={id}
-      className={cn("max-h-75 overflow-y-auto overflow-x-hidden", className)}
+      className={cn(
+        "max-h-(--spacing-command-list-max-height) overflow-y-auto overflow-x-hidden",
+        className
+      )}
       role="listbox"
       aria-label="Command options"
       {...props}
@@ -123,7 +126,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
     <div
       ref={ref}
       className={cn(
-        "overflow-hidden p-1 text-(--color-command-text) **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group-heading]]:text-(--color-command-group-heading)",
+        "overflow-hidden p-(--spacing-command-group-padding) text-(--color-command-text) **:[[cmdk-group-heading]]:px-2 **:[[cmdk-group-heading]]:py-1.5 **:[[cmdk-group-heading]]:text-xs **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group-heading]]:text-(--color-command-group-heading)",
         className
       )}
       role="group"
@@ -172,7 +175,7 @@ const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
     <div
       ref={ref}
       className={cn(
-        "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-(--color-command-item-selected) aria-selected:text-(--color-command-item-text-selected) data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
+        "relative flex cursor-default select-none items-center rounded-sm px-(--spacing-command-item-padding-x) py-(--spacing-command-item-padding-y) text-sm outline-none aria-selected:bg-(--color-command-item-selected) aria-selected:text-(--color-command-item-text-selected) data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         className
       )}
       role="option"

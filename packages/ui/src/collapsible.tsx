@@ -1,5 +1,6 @@
 import React from "react";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
+import { cn } from "./lib/utils";
 
 const Collapsible = CollapsiblePrimitive.Root;
 const CollapsibleTrigger = CollapsiblePrimitive.Trigger;
@@ -14,7 +15,10 @@ const CollapsibleContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <CollapsiblePrimitive.Content
     ref={ref}
-    className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down"
+    className={cn(
+      "overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down",
+      "rounded-(--spacing-collapsible-radius) bg-(--color-collapsible-background)"
+    )}
     {...props}
   >
     <div className={className}>{children}</div>

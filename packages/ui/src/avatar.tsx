@@ -16,10 +16,10 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
     ref
   ) => {
     const sizes = {
-      sm: "h-8 w-8",
-      md: "h-10 w-10",
-      lg: "h-12 w-12",
-      xl: "h-16 w-16",
+      sm: "h-(--spacing-avatar-size-sm) w-(--spacing-avatar-size-sm)",
+      md: "h-(--spacing-avatar-size-md) w-(--spacing-avatar-size-md)",
+      lg: "h-(--spacing-avatar-size-lg) w-(--spacing-avatar-size-lg)",
+      xl: "h-(--spacing-avatar-size-xl) w-(--spacing-avatar-size-xl)",
     };
 
     const getAriaLabel = () => {

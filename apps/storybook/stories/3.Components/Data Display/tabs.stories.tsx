@@ -245,3 +245,61 @@ export const WithInteractions: Story = {
     },
   },
 };
+export const Sizes: Story = {
+  render: () => (
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-2">
+        <h3 className="text-sm font-medium text-gray-500">Small (sm)</h3>
+        <Tabs defaultValue="tab1" className="w-100">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="tab1" size="sm">
+              Tab 1
+            </TabsTrigger>
+            <TabsTrigger value="tab2" size="sm">
+              Tab 2
+            </TabsTrigger>
+            <TabsTrigger value="tab3" size="sm">
+              Tab 3
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <h3 className="text-sm font-medium text-gray-500">
+          Medium (md) - Default
+        </h3>
+        <Tabs defaultValue="tab1" className="w-100">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="tab1" size="md">
+              Tab 1
+            </TabsTrigger>
+            <TabsTrigger value="tab2" size="md">
+              Tab 2
+            </TabsTrigger>
+            <TabsTrigger value="tab3" size="md">
+              Tab 3
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <h3 className="text-sm font-medium text-gray-500">Large (lg)</h3>
+        <Tabs defaultValue="tab1" className="w-100">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="tab1" size="lg">
+              Tab 1
+            </TabsTrigger>
+            <TabsTrigger value="tab2" size="lg">
+              Tab 2
+            </TabsTrigger>
+            <TabsTrigger value="tab3" size="lg">
+              Tab 3
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+    </div>
+  ),
+};

@@ -359,13 +359,25 @@
     "$type": "spacing",
     "$value": "4px"
   },
+  "spacing.1.5": {
+    "$type": "spacing",
+    "$value": "6px"
+  },
   "spacing.2": {
     "$type": "spacing",
     "$value": "8px"
   },
+  "spacing.2.5": {
+    "$type": "spacing",
+    "$value": "10px"
+  },
   "spacing.3": {
     "$type": "spacing",
     "$value": "12px"
+  },
+  "spacing.3.5": {
+    "$type": "spacing",
+    "$value": "14px"
   },
   "spacing.4": {
     "$type": "spacing",
@@ -422,6 +434,10 @@
   "spacing.32": {
     "$type": "spacing",
     "$value": "128px"
+  },
+  "spacing.48": {
+    "$type": "spacing",
+    "$value": "192px"
   },
   "spacing.64": {
     "$type": "spacing",

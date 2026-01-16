@@ -20,9 +20,10 @@ const Toggle = React.forwardRef<
   };
 
   const sizes = {
-    default: "h-10 px-3",
-    sm: "h-9 px-2.5",
-    lg: "h-11 px-5",
+    default:
+      "h-(--spacing-toggle-size-default-height) px-(--spacing-toggle-size-default-padding-x)",
+    sm: "h-(--spacing-toggle-size-sm-height) px-(--spacing-toggle-size-sm-padding-x)",
+    lg: "h-(--spacing-toggle-size-lg-height) px-(--spacing-toggle-size-lg-padding-x)",
   };
 
   return (

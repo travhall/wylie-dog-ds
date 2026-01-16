@@ -295,6 +295,42 @@
     "$type": "spacing",
     "$value": "{spacing.1}"
   },
+  "space.1": {
+    "$type": "spacing",
+    "$value": "{spacing.1}"
+  },
+  "space.1.5": {
+    "$type": "spacing",
+    "$value": "{spacing.1.5}"
+  },
+  "space.2": {
+    "$type": "spacing",
+    "$value": "{spacing.2}"
+  },
+  "space.2.5": {
+    "$type": "spacing",
+    "$value": "{spacing.2.5}"
+  },
+  "space.3": {
+    "$type": "spacing",
+    "$value": "{spacing.3}"
+  },
+  "space.3.5": {
+    "$type": "spacing",
+    "$value": "{spacing.3.5}"
+  },
+  "space.4": {
+    "$type": "spacing",
+    "$value": "{spacing.4}"
+  },
+  "space.5": {
+    "$type": "spacing",
+    "$value": "{spacing.5}"
+  },
+  "space.6": {
+    "$type": "spacing",
+    "$value": "{spacing.6}"
+  },
   "space.sm": {
     "$type": "spacing",
     "$value": "{spacing.2}"
