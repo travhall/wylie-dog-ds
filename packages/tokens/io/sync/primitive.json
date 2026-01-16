@@ -388,17 +388,33 @@
           "$type": "spacing",
           "$value": "24px"
         },
+        "spacing.7": {
+          "$type": "spacing",
+          "$value": "28px"
+        },
         "spacing.8": {
           "$type": "spacing",
           "$value": "32px"
+        },
+        "spacing.9": {
+          "$type": "spacing",
+          "$value": "36px"
         },
         "spacing.10": {
           "$type": "spacing",
           "$value": "40px"
         },
+        "spacing.11": {
+          "$type": "spacing",
+          "$value": "44px"
+        },
         "spacing.12": {
           "$type": "spacing",
           "$value": "48px"
+        },
+        "spacing.13": {
+          "$type": "spacing",
+          "$value": "52px"
         },
         "spacing.16": {
           "$type": "spacing",
@@ -415,6 +431,26 @@
         "spacing.32": {
           "$type": "spacing",
           "$value": "128px"
+        },
+        "spacing.64": {
+          "$type": "spacing",
+          "$value": "256px"
+        },
+        "spacing.80": {
+          "$type": "spacing",
+          "$value": "320px"
+        },
+        "spacing.96": {
+          "$type": "spacing",
+          "$value": "384px"
+        },
+        "spacing.112": {
+          "$type": "spacing",
+          "$value": "448px"
+        },
+        "spacing.128": {
+          "$type": "spacing",
+          "$value": "512px"
         },
         "typography.font-family.sans": {
           "$type": "fontFamily",
