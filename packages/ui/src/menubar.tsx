@@ -202,7 +202,7 @@ const MenubarSeparator = React.forwardRef<
   <MenubarPrimitive.Separator
     ref={ref}
     className={cn(
-      "-mx-(length:--spacing-menubar-separator-margin-x) my-(--spacing-menubar-separator-margin-y) h-(--spacing-menubar-separator-height) bg-(--color-menubar-separator)",
+      "-mx-(--spacing-menubar-separator-margin-x) my-(--spacing-menubar-separator-margin-y) h-(--spacing-menubar-separator-height) bg-(--color-menubar-separator)",
       className
     )}
     {...props}
