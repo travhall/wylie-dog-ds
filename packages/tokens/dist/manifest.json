@@ -4862,19 +4862,6 @@
         "variable": "var(--tabs-trigger-font-size-lg)",
         "description": ""
       },
-      "tabs-trigger-radius-top": {
-        "name": "tabsTriggerRadiusTop",
-        "path": [
-          "tabs",
-          "trigger",
-          "radius",
-          "top"
-        ],
-        "value": "6px",
-        "type": "spacing",
-        "variable": "var(--tabs-trigger-radius-top)",
-        "description": ""
-      },
       "tabs-trigger-indicator-width": {
         "name": "tabsTriggerIndicatorWidth",
         "path": [
