@@ -29,7 +29,7 @@ export const TabsList = React.forwardRef<
       className={cn(
         "inline-flex items-center justify-center bg-(--color-tabs-list-background) text-(--color-tabs-list-text)",
         "rounded-(--spacing-tabs-trigger-radius-top)",
-        "border-b-(length:--spacing-tabs-list-border-width)",
+        "border-b border-(--color-tabs-list-border-color) gap-(--spacing-tabs-list-gap)",
         sizes[size],
         className
       )}
@@ -63,10 +63,11 @@ export const TabsTrigger = React.forwardRef<
       className={cn(
         "inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-all",
         "rounded-(--spacing-tabs-trigger-radius-top)",
-        "border-b-(length:--spacing-tabs-trigger-indicator-width)",
+        "border-b-(length:--spacing-tabs-trigger-indicator-width) border-transparent",
+        "-mb-[1px]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",
-        "data-[state=active]:bg-(--color-tabs-trigger-background-active) data-[state=active]:text-(--color-tabs-trigger-text-active) data-[state=active]:shadow-sm",
+        "data-[state=active]:bg-(--color-tabs-trigger-background-active) data-[state=active]:text-(--color-tabs-trigger-text-active) data-[state=active]:shadow-sm data-[state=active]:border-(--color-tabs-trigger-indicator-color)",
         "hover:bg-(--color-tabs-trigger-background-hover) hover:text-(--color-tabs-trigger-text-hover)",
         sizes[size],
         className

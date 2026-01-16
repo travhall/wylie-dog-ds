@@ -551,6 +551,14 @@
     "$type": "color",
     "$value": "{color.text.primary}"
   },
+  "tabs.list.border.color": {
+    "$type": "color",
+    "$value": "{color.border.primary}"
+  },
+  "tabs.trigger.indicator.color": {
+    "$type": "color",
+    "$value": "{color.primary.base}"
+  },
   "collapsible.background": {
     "$type": "color",
     "$value": "{color.background.primary}"
@@ -1821,7 +1829,7 @@
   },
   "accordion.trigger.font-size": {
     "$type": "spacing",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.base}"
   },
   "accordion.trigger.icon.size": {
     "$type": "spacing",

@@ -394,6 +394,8 @@
   --color-tabs-trigger-text-active: oklch(0.279 0.037 260.03);
   --color-tabs-trigger-background-hover: oklch(0.968 0.007 247.9);
   --color-tabs-trigger-text-hover: oklch(0.279 0.037 260.03);
+  --color-tabs-list-border-color: oklch(0.929 0.013 255.51);
+  --color-tabs-trigger-indicator-color: oklch(0.553 0.174 38.51);
   --color-collapsible-background: oklch(1 0 0);
   --color-calendar-nav-border: oklch(0.929 0.013 255.51);
   --color-calendar-nav-hover: oklch(0.984 0.003 247.86);
@@ -711,7 +713,7 @@
   --spacing-dropdown-menu-item-indicator-size: 14px;
   --spacing-accordion-item-border-width: 1px;
   --spacing-accordion-trigger-padding: 12px;
-  --spacing-accordion-trigger-font-size: 14px;
+  --spacing-accordion-trigger-font-size: 16px;
   --spacing-accordion-trigger-icon-size: 16px;
   --spacing-accordion-content-padding: 12px;
   --spacing-accordion-content-font-size: 14px;
@@ -1132,6 +1134,8 @@
     --color-tabs-trigger-text-active: oklch(0.279 0.037 260.03);
     --color-tabs-trigger-background-hover: oklch(0.968 0.007 247.9);
     --color-tabs-trigger-text-hover: oklch(0.279 0.037 260.03);
+    --color-tabs-list-border-color: oklch(0.929 0.013 255.51);
+    --color-tabs-trigger-indicator-color: oklch(0.553 0.174 38.51);
     --color-collapsible-background: oklch(1 0 0);
     --color-calendar-nav-border: oklch(0.929 0.013 255.51);
     --color-calendar-nav-hover: oklch(0.984 0.003 247.86);
@@ -1449,7 +1453,7 @@
     --spacing-dropdown-menu-item-indicator-size: 14px;
     --spacing-accordion-item-border-width: 1px;
     --spacing-accordion-trigger-padding: 12px;
-    --spacing-accordion-trigger-font-size: 14px;
+    --spacing-accordion-trigger-font-size: 16px;
     --spacing-accordion-trigger-icon-size: 16px;
     --spacing-accordion-content-padding: 12px;
     --spacing-accordion-content-font-size: 14px;

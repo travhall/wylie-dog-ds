@@ -516,7 +516,7 @@ export const spacing = {
   "dropdown-menu-item-indicator-size": "14px",
   "accordion-item-border-width": "1px",
   "accordion-trigger-padding": "12px",
-  "accordion-trigger-font-size": "14px",
+  "accordion-trigger-font-size": "16px",
   "accordion-trigger-icon-size": "16px",
   "accordion-content-padding": "12px",
   "accordion-content-font-size": "14px",

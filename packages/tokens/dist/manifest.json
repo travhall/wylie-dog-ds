@@ -4616,6 +4616,32 @@
         "variable": "var(--color-tabs-trigger-text-hover)",
         "description": ""
       },
+      "tabs-list-border-color": {
+        "name": "tabsListBorderColor",
+        "path": [
+          "tabs",
+          "list",
+          "border",
+          "color"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-tabs-list-border-color)",
+        "description": ""
+      },
+      "tabs-trigger-indicator-color": {
+        "name": "tabsTriggerIndicatorColor",
+        "path": [
+          "tabs",
+          "trigger",
+          "indicator",
+          "color"
+        ],
+        "value": "oklch(0.553 0.174 38.51)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-indicator-color)",
+        "description": ""
+      },
       "tabs-list-height-sm": {
         "name": "tabsListHeightSm",
         "path": [
@@ -5196,7 +5222,7 @@
           "trigger",
           "font-size"
         ],
-        "value": "14px",
+        "value": "16px",
         "type": "spacing",
         "variable": "var(--accordion-trigger-font-size)",
         "description": ""

@@ -93,7 +93,7 @@ const BreadcrumbSeparator = React.forwardRef<
     role="presentation"
     aria-hidden="true"
     className={cn(
-      "[&>svg]:size-(--spacing-breadcrumb-separator-size)",
+      "[&>svg]:h-(--spacing-breadcrumb-separator-size) [&>svg]:w-(--spacing-breadcrumb-separator-size)",
       className
     )}
     {...props}
