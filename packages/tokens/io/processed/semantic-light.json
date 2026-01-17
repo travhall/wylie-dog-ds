@@ -354,5 +354,320 @@
   "radius.full": {
     "$type": "spacing",
     "$value": "{border-radius.full}"
+  },
+  "color.interactive.hover": {
+    "$type": "color",
+    "$value": "{color.gray.100}",
+    "$description": "Generic hover background for interactive elements"
+  },
+  "color.interactive.pressed": {
+    "$type": "color",
+    "$value": "{color.gray.200}",
+    "$description": "Pressed/active state background"
+  },
+  "color.interactive.focus": {
+    "$type": "color",
+    "$value": "{color.blue.50}",
+    "$description": "Focus state background"
+  },
+  "color.interactive.disabled": {
+    "$type": "color",
+    "$value": "{color.gray.100}",
+    "$description": "Disabled state background"
+  },
+  "color.text.on-interactive": {
+    "$type": "color",
+    "$value": "{color.gray.900}",
+    "$description": "Text color on interactive backgrounds"
+  },
+  "border.width.none": {
+    "$type": "spacing",
+    "$value": "0px",
+    "$description": "No border"
+  },
+  "border.width.thin": {
+    "$type": "spacing",
+    "$value": "1px",
+    "$description": "Standard thin border"
+  },
+  "border.width.medium": {
+    "$type": "spacing",
+    "$value": "2px",
+    "$description": "Medium border for emphasis"
+  },
+  "border.width.thick": {
+    "$type": "spacing",
+    "$value": "4px",
+    "$description": "Thick border for strong emphasis"
+  },
+  "radius.interactive": {
+    "$type": "spacing",
+    "$value": "{border-radius.md}",
+    "$description": "Standard radius for interactive elements (buttons, inputs)"
+  },
+  "radius.container": {
+    "$type": "spacing",
+    "$value": "{border-radius.lg}",
+    "$description": "Standard radius for containers (cards, dialogs)"
+  },
+  "shadow.none": {
+    "$type": "shadow",
+    "$value": "none",
+    "$description": "No shadow"
+  },
+  "shadow.sm": {
+    "$type": "shadow",
+    "$value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+    "$description": "Subtle shadow for slight elevation"
+  },
+  "shadow.base": {
+    "$type": "shadow",
+    "$value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+    "$description": "Default shadow for cards and raised elements"
+  },
+  "shadow.md": {
+    "$type": "shadow",
+    "$value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+    "$description": "Medium shadow for dropdowns and popovers"
+  },
+  "shadow.lg": {
+    "$type": "shadow",
+    "$value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+    "$description": "Large shadow for modals and overlays"
+  },
+  "shadow.xl": {
+    "$type": "shadow",
+    "$value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+    "$description": "Extra large shadow for maximum elevation"
+  },
+  "shadow.inner": {
+    "$type": "shadow",
+    "$value": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
+    "$description": "Inner shadow for recessed elements"
+  },
+  "transition.duration.instant": {
+    "$type": "duration",
+    "$value": "0ms",
+    "$description": "Instant transition (no animation)"
+  },
+  "transition.duration.fast": {
+    "$type": "duration",
+    "$value": "150ms",
+    "$description": "Fast transition for micro-interactions"
+  },
+  "transition.duration.normal": {
+    "$type": "duration",
+    "$value": "250ms",
+    "$description": "Normal transition duration"
+  },
+  "transition.duration.slow": {
+    "$type": "duration",
+    "$value": "400ms",
+    "$description": "Slow transition for emphasized changes"
+  },
+  "z-index.base": {
+    "$type": "number",
+    "$value": "0",
+    "$description": "Base layer"
+  },
+  "z-index.dropdown": {
+    "$type": "number",
+    "$value": "1000",
+    "$description": "Dropdowns and popovers"
+  },
+  "z-index.sticky": {
+    "$type": "number",
+    "$value": "1020",
+    "$description": "Sticky headers and footers"
+  },
+  "z-index.modal": {
+    "$type": "number",
+    "$value": "1050",
+    "$description": "Modal dialogs"
+  },
+  "z-index.toast": {
+    "$type": "number",
+    "$value": "1090",
+    "$description": "Toast notifications"
+  },
+  "z-index.tooltip": {
+    "$type": "number",
+    "$value": "1100",
+    "$description": "Tooltips (highest)"
+  },
+  "component.gap": {
+    "$type": "spacing",
+    "$value": "{spacing.4}",
+    "$description": "Standard gap between related elements within a component"
+  },
+  "component.gap-sm": {
+    "$type": "spacing",
+    "$value": "{spacing.2}",
+    "$description": "Small gap for tightly grouped elements"
+  },
+  "component.gap-lg": {
+    "$type": "spacing",
+    "$value": "{spacing.6}",
+    "$description": "Large gap for loosely grouped elements"
+  },
+  "interactive.padding-x": {
+    "$type": "spacing",
+    "$value": "{spacing.4}",
+    "$description": "Horizontal padding for interactive elements (buttons, inputs)"
+  },
+  "interactive.padding-y": {
+    "$type": "spacing",
+    "$value": "{spacing.2}",
+    "$description": "Vertical padding for interactive elements"
+  },
+  "interactive.padding-sm-x": {
+    "$type": "spacing",
+    "$value": "{spacing.3}",
+    "$description": "Small horizontal padding for compact interactive elements"
+  },
+  "interactive.padding-sm-y": {
+    "$type": "spacing",
+    "$value": "{spacing.1}",
+    "$description": "Small vertical padding for compact interactive elements"
+  },
+  "interactive.padding-lg-x": {
+    "$type": "spacing",
+    "$value": "{spacing.6}",
+    "$description": "Large horizontal padding for prominent interactive elements"
+  },
+  "interactive.padding-lg-y": {
+    "$type": "spacing",
+    "$value": "{spacing.3}",
+    "$description": "Large vertical padding for prominent interactive elements"
+  },
+  "content.margin": {
+    "$type": "spacing",
+    "$value": "{spacing.6}",
+    "$description": "Standard margin for content blocks"
+  },
+  "content.margin-sm": {
+    "$type": "spacing",
+    "$value": "{spacing.4}",
+    "$description": "Small margin for compact content"
+  },
+  "content.margin-lg": {
+    "$type": "spacing",
+    "$value": "{spacing.8}",
+    "$description": "Large margin for section separation"
+  },
+  "section.gap": {
+    "$type": "spacing",
+    "$value": "{spacing.12}",
+    "$description": "Gap between major sections"
+  },
+  "inset.default": {
+    "$type": "spacing",
+    "$value": "{spacing.4}",
+    "$description": "Default inset/padding for containers"
+  },
+  "inset.sm": {
+    "$type": "spacing",
+    "$value": "{spacing.2}",
+    "$description": "Small inset for compact containers"
+  },
+  "inset.lg": {
+    "$type": "spacing",
+    "$value": "{spacing.6}",
+    "$description": "Large inset for spacious containers"
+  },
+  "font.body": {
+    "$type": "spacing",
+    "$value": "14px",
+    "$description": "Standard body text size"
+  },
+  "font.body-sm": {
+    "$type": "spacing",
+    "$value": "12px",
+    "$description": "Small body text (captions, helper text)"
+  },
+  "font.body-lg": {
+    "$type": "spacing",
+    "$value": "16px",
+    "$description": "Large body text (lead paragraphs)"
+  },
+  "font.label": {
+    "$type": "spacing",
+    "$value": "14px",
+    "$description": "Form labels and UI text"
+  },
+  "font.caption": {
+    "$type": "spacing",
+    "$value": "12px",
+    "$description": "Captions, metadata, secondary info"
+  },
+  "font.overline": {
+    "$type": "spacing",
+    "$value": "11px",
+    "$description": "Overline text, category labels"
+  },
+  "font.h1": {
+    "$type": "spacing",
+    "$value": "36px",
+    "$description": "Heading level 1"
+  },
+  "font.h2": {
+    "$type": "spacing",
+    "$value": "30px",
+    "$description": "Heading level 2"
+  },
+  "font.h3": {
+    "$type": "spacing",
+    "$value": "24px",
+    "$description": "Heading level 3"
+  },
+  "font.h4": {
+    "$type": "spacing",
+    "$value": "20px",
+    "$description": "Heading level 4"
+  },
+  "font.h5": {
+    "$type": "spacing",
+    "$value": "16px",
+    "$description": "Heading level 5"
+  },
+  "font.h6": {
+    "$type": "spacing",
+    "$value": "14px",
+    "$description": "Heading level 6"
+  },
+  "lineheight.tight": {
+    "$type": "number",
+    "$value": "1.25",
+    "$description": "Tight line height for headings"
+  },
+  "lineheight.normal": {
+    "$type": "number",
+    "$value": "1.5",
+    "$description": "Normal line height for body text"
+  },
+  "lineheight.relaxed": {
+    "$type": "number",
+    "$value": "1.75",
+    "$description": "Relaxed line height for comfortable reading"
+  },
+  "weight.regular": {
+    "$type": "number",
+    "$value": "400",
+    "$description": "Regular font weight"
+  },
+  "weight.medium": {
+    "$type": "number",
+    "$value": "500",
+    "$description": "Medium font weight for emphasis"
+  },
+  "weight.semibold": {
+    "$type": "number",
+    "$value": "600",
+    "$description": "Semibold for headings and labels"
+  },
+  "weight.bold": {
+    "$type": "number",
+    "$value": "700",
+    "$description": "Bold for strong emphasis"
   }
 }
