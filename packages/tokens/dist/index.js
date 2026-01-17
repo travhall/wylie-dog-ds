@@ -829,6 +829,7 @@ export const alertPaddingX = "16px";
 export const alertPaddingY = "12px";
 export const alertTitleMarginBottom = "4px";
 export const alertRadius = "8px";
+export const alertTitleFontSize = "16px";
 export const alertDescriptionFontSize = "14px";
 export const labelRequiredMarginLeft = "4px";
 export const cardContentPaddingTop = "0px";

@@ -595,6 +595,7 @@ export const spacing = {
   "alert-padding-y": "12px",
   "alert-title-margin-bottom": "4px",
   "alert-radius": "8px",
+  "alert-title-font-size": "16px",
   "alert-description-font-size": "14px",
   "label-required-margin-left": "4px",
   "card-content-padding-top": "0px",

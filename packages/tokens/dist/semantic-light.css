@@ -829,6 +829,7 @@
   --spacing-alert-padding-y: 12px;
   --spacing-alert-title-margin-bottom: 4px;
   --spacing-alert-radius: 8px;
+  --spacing-alert-title-font-size: 16px;
   --spacing-alert-description-font-size: 14px;
   --spacing-label-required-margin-left: 4px;
   --spacing-card-content-padding-top: 0px;
@@ -1733,6 +1734,7 @@
     --spacing-alert-padding-y: 12px;
     --spacing-alert-title-margin-bottom: 4px;
     --spacing-alert-radius: 8px;
+    --spacing-alert-title-font-size: 16px;
     --spacing-alert-description-font-size: 14px;
     --spacing-label-required-margin-left: 4px;
     --spacing-card-content-padding-top: 0px;

@@ -74,7 +74,7 @@ export const AlertTitle = React.forwardRef<HTMLHeadingElement, AlertTitleProps>(
     <h5
       ref={ref}
       className={cn(
-        "mb-(--spacing-alert-title-margin-bottom) font-medium leading-none tracking-tight",
+        "mb-(--spacing-alert-title-margin-bottom) text-(length:--spacing-alert-title-font-size) font-medium leading-none tracking-tight",
         className
       )}
       {...props}

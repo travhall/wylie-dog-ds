@@ -2075,6 +2075,10 @@
     "$type": "spacing",
     "$value": "8px"
   },
+  "alert.title.font-size": {
+    "$type": "spacing",
+    "$value": "{typography.font-size.base}"
+  },
   "alert.description-font-size": {
     "$type": "spacing",
     "$value": "14px"

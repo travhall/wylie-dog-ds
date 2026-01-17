@@ -33,7 +33,7 @@ const TooltipContent = React.forwardRef<
         "bg-(--color-tooltip-background)",
         "px-(--spacing-tooltip-padding-x)",
         "py-(--spacing-tooltip-padding-y)",
-        "text-(--spacing-tooltip-font-size)",
+        "text-(length:--spacing-tooltip-font-size)",
         "text-(--color-tooltip-text)",
         "max-w-(--spacing-tooltip-max-width)",
         "border-(--color-tooltip-border)",

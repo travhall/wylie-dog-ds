@@ -28,9 +28,9 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     ref
   ) => {
     const sizes = {
-      sm: "min-h-(--spacing-textarea-min-height-sm) px-(--spacing-textarea-padding) py-(--spacing-textarea-padding) text-(--spacing-textarea-font-size)",
-      md: "min-h-(--spacing-textarea-min-height-md) px-(--spacing-textarea-padding) py-(--spacing-textarea-padding) text-(--spacing-textarea-font-size)",
-      lg: "min-h-(--spacing-textarea-min-height-lg) px-(--spacing-textarea-padding) py-(--spacing-textarea-padding) text-(--spacing-textarea-font-size)",
+      sm: "min-h-(--spacing-textarea-min-height-sm) px-(--spacing-textarea-padding) py-(--spacing-textarea-padding) text-(length:--spacing-textarea-font-size)",
+      md: "min-h-(--spacing-textarea-min-height-md) px-(--spacing-textarea-padding) py-(--spacing-textarea-padding) text-(length:--spacing-textarea-font-size)",
+      lg: "min-h-(--spacing-textarea-min-height-lg) px-(--spacing-textarea-padding) py-(--spacing-textarea-padding) text-(length:--spacing-textarea-font-size)",
     };
 
     const resizeClasses = {

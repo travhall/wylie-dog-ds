@@ -158,7 +158,7 @@ export const DropdownMenuShortcut = React.forwardRef<
   <span
     ref={ref}
     className={cn(
-      "ml-auto text-(--spacing-dropdown-menu-shortcut-font-size) tracking-widest opacity-60",
+      "ml-auto text-(length:--spacing-dropdown-menu-shortcut-font-size) tracking-widest opacity-60",
       className
     )}
     {...props}

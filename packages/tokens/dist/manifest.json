@@ -4044,6 +4044,18 @@
         "variable": "var(--alert-radius)",
         "description": ""
       },
+      "alert-title-font-size": {
+        "name": "alertTitleFontSize",
+        "path": [
+          "alert",
+          "title",
+          "font-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--alert-title-font-size)",
+        "description": ""
+      },
       "alert-description-font-size": {
         "name": "alertDescriptionFontSize",
         "path": [
