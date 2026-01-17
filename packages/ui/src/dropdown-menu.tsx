@@ -12,7 +12,7 @@ export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
 // Dropdown Menu Content
 export const DropdownMenuContent = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Content>,
+  React.ComponentRef<typeof DropdownMenuPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
 >(({ className, sideOffset = 4, ...props }, ref) => (
   <DropdownMenuPrimitive.Portal>
@@ -37,7 +37,7 @@ DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 
 // Dropdown Menu Item
 export const DropdownMenuItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Item>,
+  React.ComponentRef<typeof DropdownMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
     inset?: boolean;
   }
@@ -58,7 +58,7 @@ DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
 
 // Dropdown Menu Checkbox Item
 export const DropdownMenuCheckboxItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
+  React.ComponentRef<typeof DropdownMenuPrimitive.CheckboxItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
 >(({ className, children, checked, ...props }, ref) => (
   <DropdownMenuPrimitive.CheckboxItem
@@ -92,7 +92,7 @@ DropdownMenuCheckboxItem.displayName =
 
 // Dropdown Menu Radio Item
 export const DropdownMenuRadioItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
+  React.ComponentRef<typeof DropdownMenuPrimitive.RadioItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem>
 >(({ className, children, ...props }, ref) => (
   <DropdownMenuPrimitive.RadioItem
@@ -117,7 +117,7 @@ DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
 
 // Dropdown Menu Label
 export const DropdownMenuLabel = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Label>,
+  React.ComponentRef<typeof DropdownMenuPrimitive.Label>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label> & {
     inset?: boolean;
   }
@@ -125,7 +125,7 @@ export const DropdownMenuLabel = React.forwardRef<
   <DropdownMenuPrimitive.Label
     ref={ref}
     className={cn(
-      "px-(--spacing-dropdown-menu-item-padding-x) py-(--spacing-dropdown-menu-item-padding-y) text-(length:--spacing-dropdown-menu-item-font-size) font-semibold text-(--color-text-secondary)",
+      "px-(--spacing-dropdown-menu-item-padding-x) py-(--spacing-dropdown-menu-item-padding-y) text-(--spacing-dropdown-menu-item-font-size) font-semibold",
       inset && "pl-(--spacing-dropdown-menu-item-inset)",
       className
     )}
@@ -136,7 +136,7 @@ DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName;
 
 // Dropdown Menu Separator
 export const DropdownMenuSeparator = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Separator>,
+  React.ComponentRef<typeof DropdownMenuPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Separator
@@ -158,7 +158,7 @@ export const DropdownMenuShortcut = React.forwardRef<
   <span
     ref={ref}
     className={cn(
-      "ml-auto text-(length:--spacing-dropdown-menu-shortcut-font-size) tracking-widest opacity-60",
+      "ml-auto text-(--spacing-dropdown-menu-shortcut-font-size) tracking-widest opacity-60",
       className
     )}
     {...props}

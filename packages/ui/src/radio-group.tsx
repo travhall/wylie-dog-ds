@@ -7,7 +7,7 @@ export interface RadioGroupProps extends React.ComponentPropsWithoutRef<
 > {}
 
 const RadioGroup = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Root>,
+  React.ComponentRef<typeof RadioGroupPrimitive.Root>,
   RadioGroupProps
 >(({ className, ...props }, ref) => (
   <RadioGroupPrimitive.Root
@@ -23,7 +23,7 @@ export interface RadioGroupItemProps extends React.ComponentPropsWithoutRef<
 > {}
 
 const RadioGroupItem = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Item>,
+  React.ComponentRef<typeof RadioGroupPrimitive.Item>,
   RadioGroupItemProps
 >(({ className, ...props }, ref) => (
   <RadioGroupPrimitive.Item
@@ -34,9 +34,9 @@ const RadioGroupItem = React.forwardRef<
       "rounded-(--spacing-radio-border-radius)",
       "border-(--color-radio-border)",
       "focus:outline-none",
-      "focus:ring-(length:--spacing-radio-focus-ring-width)",
+      "focus:ring-(--spacing-radio-focus-ring-width)",
       "focus:ring-(--color-border-focus)",
-      "focus:ring-offset-(length:--spacing-radio-focus-ring-offset)",
+      "focus:ring-offset-(--spacing-radio-focus-ring-offset)",
       "disabled:cursor-not-allowed disabled:opacity-50",
       "data-[state=checked]:border-(--color-radio-border-checked)",
       "data-[state=checked]:bg-(--color-radio-background-checked)",

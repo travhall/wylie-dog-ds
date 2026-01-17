@@ -11,7 +11,7 @@ const MenubarRadioGroup: typeof MenubarPrimitive.RadioGroup =
   MenubarPrimitive.RadioGroup;
 
 const Menubar = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Root>,
+  React.ComponentRef<typeof MenubarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Root>
 >(({ className, ...props }, ref) => (
   <MenubarPrimitive.Root
@@ -26,7 +26,7 @@ const Menubar = React.forwardRef<
 Menubar.displayName = MenubarPrimitive.Root.displayName;
 
 const MenubarTrigger = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Trigger>,
+  React.ComponentRef<typeof MenubarPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Trigger>
 >(({ className, ...props }, ref) => (
   <MenubarPrimitive.Trigger
@@ -43,7 +43,7 @@ const MenubarTrigger = React.forwardRef<
 MenubarTrigger.displayName = MenubarPrimitive.Trigger.displayName;
 
 const MenubarSubTrigger = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.SubTrigger>,
+  React.ComponentRef<typeof MenubarPrimitive.SubTrigger>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.SubTrigger> & {
     inset?: boolean;
   }
@@ -51,7 +51,7 @@ const MenubarSubTrigger = React.forwardRef<
   <MenubarPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-sm px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(length:--spacing-menubar-item-font-size) outline-none",
+      "flex cursor-default select-none items-center rounded-sm px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(--spacing-menubar-item-font-size) outline-none",
       "focus:bg-(--color-menubar-item-focus) focus:text-(--color-menubar-item-text-focus)",
       "data-[state=open]:bg-(--color-menubar-item-focus) data-[state=open]:text-(--color-menubar-item-text-focus)",
       inset && "pl-(--spacing-menubar-item-inset)",
@@ -65,7 +65,7 @@ const MenubarSubTrigger = React.forwardRef<
 ));
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName;
 const MenubarSubContent = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.SubContent>,
+  React.ComponentRef<typeof MenubarPrimitive.SubContent>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.SubContent>
 >(({ className, ...props }, ref) => (
   <MenubarPrimitive.SubContent
@@ -82,7 +82,7 @@ const MenubarSubContent = React.forwardRef<
 MenubarSubContent.displayName = MenubarPrimitive.SubContent.displayName;
 
 const MenubarContent = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Content>,
+  React.ComponentRef<typeof MenubarPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Content>
 >(
   (
@@ -109,7 +109,7 @@ const MenubarContent = React.forwardRef<
 MenubarContent.displayName = MenubarPrimitive.Content.displayName;
 
 const MenubarItem = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Item>,
+  React.ComponentRef<typeof MenubarPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Item> & {
     inset?: boolean;
   }
@@ -117,7 +117,7 @@ const MenubarItem = React.forwardRef<
   <MenubarPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(length:--spacing-menubar-item-font-size) outline-none",
+      "relative flex cursor-default select-none items-center rounded-sm px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(--spacing-menubar-item-font-size) outline-none",
       "focus:bg-(--color-menubar-item-focus) focus:text-(--color-menubar-item-text-focus)",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       inset && "pl-(--spacing-menubar-item-inset)",
@@ -129,7 +129,7 @@ const MenubarItem = React.forwardRef<
 MenubarItem.displayName = MenubarPrimitive.Item.displayName;
 
 const MenubarCheckboxItem = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.CheckboxItem>,
+  React.ComponentRef<typeof MenubarPrimitive.CheckboxItem>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.CheckboxItem>
 >(({ className, children, checked, ...props }, ref) => (
   <MenubarPrimitive.CheckboxItem
@@ -154,7 +154,7 @@ const MenubarCheckboxItem = React.forwardRef<
 MenubarCheckboxItem.displayName = MenubarPrimitive.CheckboxItem.displayName;
 
 const MenubarRadioItem = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.RadioItem>,
+  React.ComponentRef<typeof MenubarPrimitive.RadioItem>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.RadioItem>
 >(({ className, children, ...props }, ref) => (
   <MenubarPrimitive.RadioItem
@@ -178,7 +178,7 @@ const MenubarRadioItem = React.forwardRef<
 MenubarRadioItem.displayName = MenubarPrimitive.RadioItem.displayName;
 
 const MenubarLabel = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Label>,
+  React.ComponentRef<typeof MenubarPrimitive.Label>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Label> & {
     inset?: boolean;
   }
@@ -186,7 +186,7 @@ const MenubarLabel = React.forwardRef<
   <MenubarPrimitive.Label
     ref={ref}
     className={cn(
-      "px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(length:--spacing-menubar-item-font-size) font-semibold text-(--color-menubar-label)",
+      "px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(--spacing-menubar-item-font-size) font-semibold",
       inset && "pl-(--spacing-menubar-item-inset)",
       className
     )}
@@ -196,7 +196,7 @@ const MenubarLabel = React.forwardRef<
 MenubarLabel.displayName = MenubarPrimitive.Label.displayName;
 
 const MenubarSeparator = React.forwardRef<
-  React.ElementRef<typeof MenubarPrimitive.Separator>,
+  React.ComponentRef<typeof MenubarPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Separator>
 >(({ className, ...props }, ref) => (
   <MenubarPrimitive.Separator
@@ -217,7 +217,7 @@ const MenubarShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-(length:--spacing-menubar-shortcut-font-size) tracking-widest text-(--color-menubar-shortcut)",
+        "ml-auto text-(--spacing-menubar-shortcut-font-size) tracking-widest",
         className
       )}
       {...props}

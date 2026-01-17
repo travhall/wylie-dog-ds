@@ -10,7 +10,7 @@ export interface SwitchProps extends React.ComponentPropsWithoutRef<
 }
 
 export const Switch = React.forwardRef<
-  React.ElementRef<typeof SwitchPrimitive.Root>,
+  React.ComponentRef<typeof SwitchPrimitive.Root>,
   SwitchProps
 >(({ className, size = "md", ...props }, ref) => {
   const sizes = {
@@ -30,11 +30,11 @@ export const Switch = React.forwardRef<
       className={cn(
         "peer inline-flex shrink-0 cursor-pointer items-center border-transparent",
         "rounded-(--spacing-switch-track-radius)",
-        "border-(length:--spacing-switch-track-border-width)",
+        "border-(--spacing-switch-track-border-width)",
         "transition-colors focus:outline-none",
-        "focus:ring-(length:--spacing-switch-focus-ring-width)",
+        "focus:ring-(--spacing-switch-focus-ring-width)",
         "focus:ring-(--color-border-focus)",
-        "focus:ring-offset-(length:--spacing-switch-focus-ring-offset)",
+        "focus:ring-offset-(--spacing-switch-focus-ring-offset)",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "data-[state=checked]:bg-(--color-switch-track-background-checked)",
         "data-[state=unchecked]:bg-(--color-switch-track-background-unchecked)",

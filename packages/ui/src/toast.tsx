@@ -48,7 +48,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
         "inline-flex shrink-0 items-center justify-center rounded-md border bg-transparent ring-offset-(--color-background) transition-colors hover:bg-(--color-toast-action-hover) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
         "h-(--spacing-toast-action-height)",
         "px-(--spacing-toast-action-padding-x)",
-        "text-(length:--spacing-toast-action-font-size)",
+        "text-(--spacing-toast-action-font-size)",
         "font-medium",
         className
       )}
@@ -90,7 +90,7 @@ const ToastTitle = React.forwardRef<HTMLDivElement, ToastTitleProps>(
       ref={ref}
       className={cn(
         "font-semibold",
-        "text-(length:--spacing-toast-title-font-size)",
+        "text-(--spacing-toast-title-font-size)",
         className
       )}
       {...props}
@@ -109,7 +109,7 @@ const ToastDescription = React.forwardRef<
     ref={ref}
     className={cn(
       "opacity-90",
-      "text-(length:--spacing-toast-description-font-size)",
+      "text-(--spacing-toast-description-font-size)",
       className
     )}
     {...props}

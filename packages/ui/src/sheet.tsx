@@ -10,7 +10,7 @@ export const SheetPortal = DialogPrimitive.Portal;
 
 // Sheet Overlay
 export const SheetOverlay = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Overlay>,
+  React.ComponentRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
@@ -35,7 +35,7 @@ export interface SheetContentProps extends React.ComponentPropsWithoutRef<
 }
 
 export const SheetContent = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
+  React.ComponentRef<typeof DialogPrimitive.Content>,
   SheetContentProps
 >(({ side = "right", className, children, ...props }, ref) => {
   const sideVariants = {
@@ -122,14 +122,14 @@ SheetFooter.displayName = "SheetFooter";
 
 // Sheet Title
 export const SheetTitle = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Title>,
+  React.ComponentRef<typeof DialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
       "font-semibold text-(--color-text-primary)",
-      "text-(length:--spacing-sheet-title-font-size)",
+      "text-(--spacing-sheet-title-font-size)",
       className
     )}
     {...props}
@@ -139,13 +139,13 @@ SheetTitle.displayName = DialogPrimitive.Title.displayName;
 
 // Sheet Description
 export const SheetDescription = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Description>,
+  React.ComponentRef<typeof DialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
     className={cn(
-      "text-(length:--spacing-sheet-description-font-size)",
+      "text-(--spacing-sheet-description-font-size)",
       "text-(--color-text-secondary)",
       className
     )}

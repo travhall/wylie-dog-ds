@@ -12,7 +12,7 @@ export interface SeparatorProps extends React.ComponentPropsWithoutRef<
 }
 
 export const Separator = React.forwardRef<
-  React.ElementRef<typeof SeparatorPrimitive.Root>,
+  React.ComponentRef<typeof SeparatorPrimitive.Root>,
   SeparatorProps
 >(
   (

@@ -14,7 +14,7 @@ export interface TabsListProps extends React.ComponentPropsWithoutRef<
 }
 
 export const TabsList = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
+  React.ComponentRef<typeof TabsPrimitive.List>,
   TabsListProps
 >(({ className, size = "md", ...props }, ref) => {
   const sizes = {
@@ -28,7 +28,6 @@ export const TabsList = React.forwardRef<
       ref={ref}
       className={cn(
         "inline-flex items-center justify-center bg-(--color-tabs-list-background) text-(--color-tabs-list-text)",
-        "rounded-(--spacing-tabs-trigger-radius-top)",
         "border-b border-(--color-tabs-list-border-color) gap-(--spacing-tabs-list-gap)",
         sizes[size],
         className
@@ -48,7 +47,7 @@ export interface TabsTriggerProps extends React.ComponentPropsWithoutRef<
 }
 
 export const TabsTrigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
+  React.ComponentRef<typeof TabsPrimitive.Trigger>,
   TabsTriggerProps
 >(({ className, size = "md", ...props }, ref) => {
   const sizes = {
@@ -62,8 +61,7 @@ export const TabsTrigger = React.forwardRef<
       ref={ref}
       className={cn(
         "inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-all",
-        "rounded-(--spacing-tabs-trigger-radius-top)",
-        "border-b-(length:--spacing-tabs-trigger-indicator-width) border-transparent",
+        "border-b-(--spacing-tabs-trigger-indicator-width) border-transparent",
         "-mb-[1px]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",
@@ -80,7 +78,7 @@ TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 
 // Tabs Content (content for each tab)
 export const TabsContent = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
+  React.ComponentRef<typeof TabsPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Content

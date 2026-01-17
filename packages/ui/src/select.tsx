@@ -16,13 +16,13 @@ export interface SelectTriggerProps extends React.ComponentPropsWithoutRef<
 }
 
 export const SelectTrigger = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Trigger>,
+  React.ComponentRef<typeof SelectPrimitive.Trigger>,
   SelectTriggerProps
 >(({ className, size = "md", error = false, children, ...props }, ref) => {
   const sizes = {
-    sm: "h-(--spacing-select-trigger-height-sm) px-(--spacing-select-trigger-padding-x-sm) text-(length:--spacing-select-trigger-font-size-sm)",
-    md: "h-(--spacing-select-trigger-height-md) px-(--spacing-select-trigger-padding-x-md) text-(length:--spacing-select-trigger-font-size-md)",
-    lg: "h-(--spacing-select-trigger-height-lg) px-(--spacing-select-trigger-padding-x-lg) text-(length:--spacing-select-trigger-font-size-lg)",
+    sm: "h-(--spacing-select-trigger-height-sm) px-(--spacing-select-trigger-padding-x-sm) text-(--spacing-select-trigger-font-size-sm)",
+    md: "h-(--spacing-select-trigger-height-md) px-(--spacing-select-trigger-padding-x-md) text-(--spacing-select-trigger-font-size-md)",
+    lg: "h-(--spacing-select-trigger-height-lg) px-(--spacing-select-trigger-padding-x-lg) text-(--spacing-select-trigger-font-size-lg)",
   };
 
   return (
@@ -67,7 +67,7 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 // Select Content
 export const SelectContent = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Content>,
+  React.ComponentRef<typeof SelectPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
 >(({ className, children, position = "popper", ...props }, ref) => (
   <SelectPrimitive.Portal>
@@ -107,7 +107,7 @@ SelectContent.displayName = SelectPrimitive.Content.displayName;
 
 // Select Item
 export const SelectItem = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Item>,
+  React.ComponentRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
 >(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Item
@@ -118,7 +118,7 @@ export const SelectItem = React.forwardRef<
       "py-(--spacing-select-item-padding-y)",
       "pl-(--spacing-select-item-padding-left)",
       "pr-(--spacing-select-item-padding-right)",
-      "text-(length:--spacing-select-item-font-size)",
+      "text-(--spacing-select-item-font-size)",
       "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       className
@@ -144,7 +144,7 @@ SelectItem.displayName = SelectPrimitive.Item.displayName;
 
 // Select Separator
 export const SelectSeparator = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Separator>,
+  React.ComponentRef<typeof SelectPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator

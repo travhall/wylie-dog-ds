@@ -3,7 +3,7 @@ import * as SliderPrimitive from "@radix-ui/react-slider";
 import { cn } from "./lib/utils";
 
 const Slider = React.forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Root>,
+  React.ComponentRef<typeof SliderPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
 >(({ className, ...props }, ref) => {
   const { defaultValue = [0], value } = props;
@@ -24,7 +24,7 @@ const Slider = React.forwardRef<
       {values.map((_, i) => (
         <SliderPrimitive.Thumb
           key={i}
-          className="block ring-offset-(--color-background) transition-colors h-(--spacing-slider-thumb-size) w-(--spacing-slider-thumb-size) rounded-(--spacing-slider-thumb-radius) border-(length:--spacing-slider-thumb-border-width) border-(--color-slider-thumb-border) bg-(--color-slider-thumb) focus-visible:outline-none focus-visible:ring-(length:--spacing-slider-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(length:--spacing-slider-focus-ring-offset) disabled:pointer-events-none disabled:opacity-50"
+          className="block ring-offset-(--color-background) transition-colors h-(--spacing-slider-thumb-size) w-(--spacing-slider-thumb-size) rounded-(--spacing-slider-thumb-radius) border-(--spacing-slider-thumb-border-width) bg-(--color-slider-thumb) focus-visible:outline-none focus-visible:ring-(--spacing-slider-focus-ring-width) focus-visible:ring-offset-(--spacing-slider-focus-ring-offset) disabled:pointer-events-none disabled:opacity-50"
         />
       ))}
     </SliderPrimitive.Root>

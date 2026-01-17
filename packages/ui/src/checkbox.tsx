@@ -12,7 +12,7 @@ export interface CheckboxProps extends React.ComponentPropsWithoutRef<
 }
 
 export const Checkbox = React.forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
+  React.ComponentRef<typeof CheckboxPrimitive.Root>,
   CheckboxProps
 >(({ className, size = "md", error = false, ...props }, ref) => {
   const sizes = {
@@ -33,11 +33,11 @@ export const Checkbox = React.forwardRef<
       className={cn(
         "peer shrink-0 transition-all",
         "rounded-(--spacing-checkbox-border-radius)",
-        "border-(length:--spacing-checkbox-border-width)",
+        "border-(--spacing-checkbox-border-width)",
         "focus:outline-none",
-        "focus:ring-(length:--spacing-checkbox-focus-ring-width)",
+        "focus:ring-(--spacing-checkbox-focus-ring-width)",
         "focus:ring-(--color-border-focus)",
-        "focus:ring-offset-(length:--spacing-checkbox-focus-ring-offset)",
+        "focus:ring-offset-(--spacing-checkbox-focus-ring-offset)",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "data-[state=checked]:bg-(--color-interactive-primary) data-[state=checked]:text-(--color-text-inverse)",
         "data-[state=checked]:border-(--color-interactive-primary)",

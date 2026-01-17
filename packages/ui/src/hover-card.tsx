@@ -13,7 +13,7 @@ export interface HoverCardContentProps extends React.ComponentPropsWithoutRef<
 }
 
 const HoverCardContent = React.forwardRef<
-  React.ElementRef<typeof HoverCardPrimitive.Content>,
+  React.ComponentRef<typeof HoverCardPrimitive.Content>,
   HoverCardContentProps
 >(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
   <HoverCardPrimitive.Content

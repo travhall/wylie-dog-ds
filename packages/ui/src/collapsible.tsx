@@ -10,7 +10,7 @@ export interface CollapsibleContentProps extends React.ComponentPropsWithoutRef<
 > {}
 
 const CollapsibleContent = React.forwardRef<
-  React.ElementRef<typeof CollapsiblePrimitive.Content>,
+  React.ComponentRef<typeof CollapsiblePrimitive.Content>,
   CollapsibleContentProps
 >(({ className, children, ...props }, ref) => (
   <CollapsiblePrimitive.Content

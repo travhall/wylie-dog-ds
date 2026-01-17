@@ -4,7 +4,7 @@ import { ChevronDownIcon } from "lucide-react";
 import { cn } from "./lib/utils";
 
 const Accordion = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Root>,
+  React.ComponentRef<typeof AccordionPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Root
@@ -23,13 +23,13 @@ export interface AccordionItemProps extends React.ComponentPropsWithoutRef<
 > {}
 
 const AccordionItem = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentRef<typeof AccordionPrimitive.Item>,
   AccordionItemProps
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
     className={cn(
-      "border-b border-(length:--spacing-accordion-item-border-width) border-(--color-accordion-border) w-full relative",
+      "border-b border-b-(--spacing-accordion-item-border-width) border-(--color-accordion-border) w-full relative",
       className
     )}
     {...props}
@@ -42,14 +42,14 @@ export interface AccordionTriggerProps extends React.ComponentPropsWithoutRef<
 > {}
 
 const AccordionTrigger = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Trigger>,
+  React.ComponentRef<typeof AccordionPrimitive.Trigger>,
   AccordionTriggerProps
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between p-(--spacing-accordion-trigger-padding) text-(length:--spacing-accordion-trigger-font-size) font-medium text-(--color-accordion-trigger-text) transition-all",
+        "flex flex-1 items-center justify-between p-(--spacing-accordion-trigger-padding) text-(length:--spacing-accordion-trigger-font-size) font-medium transition-all",
         "hover:bg-(--color-accordion-trigger-hover) hover:text-(--color-accordion-trigger-text-hover)",
         "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
         "data-[state=open]:text-(--color-accordion-trigger-text-open)",
@@ -70,17 +70,17 @@ export interface AccordionContentProps extends React.ComponentPropsWithoutRef<
 > {}
 
 const AccordionContent = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Content>,
+  React.ComponentRef<typeof AccordionPrimitive.Content>,
   AccordionContentProps
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden text-(length:--spacing-accordion-content-font-size) text-(--color-accordion-content-text) data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className="overflow-hidden text-(--spacing-accordion-content-font-size) data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}
   >
     <div
       className={cn(
-        "p-(--spacing-accordion-content-padding) text-(length:--spacing-accordion-content-font-size)",
+        "p-(--spacing-accordion-content-padding) text-(--spacing-accordion-content-font-size)",
         className
       )}
     >

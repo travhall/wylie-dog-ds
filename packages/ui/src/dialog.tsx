@@ -12,7 +12,7 @@ export const DialogClose = DialogPrimitive.Close;
 
 // Dialog Overlay
 export const DialogOverlay = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Overlay>,
+  React.ComponentRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
@@ -37,7 +37,7 @@ export interface DialogContentProps extends React.ComponentPropsWithoutRef<
 }
 
 export const DialogContent = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
+  React.ComponentRef<typeof DialogPrimitive.Content>,
   DialogContentProps
 >(({ className, children, size = "md", ...props }, ref) => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -144,7 +144,7 @@ export const DialogTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "font-semibold leading-none tracking-tight text-(--color-text-primary)",
-      "text-(length:--spacing-dialog-title-font-size)",
+      "text-(--spacing-dialog-title-font-size)",
       className
     )}
     {...props}
@@ -160,7 +160,7 @@ export const DialogDescription = React.forwardRef<
   <DialogPrimitive.Description
     ref={ref}
     className={cn(
-      "text-(length:--spacing-dialog-description-font-size)",
+      "text-(--spacing-dialog-description-font-size)",
       "text-(--color-text-secondary)",
       className
     )}

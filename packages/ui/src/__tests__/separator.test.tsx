@@ -133,7 +133,7 @@ describe("Separator", () => {
 
   describe("Integration", () => {
     it("should forward ref to separator element", () => {
-      const ref = React.createRef<React.ElementRef<typeof Separator>>();
+      const ref = React.createRef<React.ComponentRef<typeof Separator>>();
       render(<Separator ref={ref} />);
       expect(ref.current).toBeInstanceOf(HTMLDivElement);
     });

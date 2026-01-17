@@ -10,7 +10,7 @@ export interface ToggleProps extends React.ComponentPropsWithoutRef<
 }
 
 const Toggle = React.forwardRef<
-  React.ElementRef<typeof TogglePrimitive.Root>,
+  React.ComponentRef<typeof TogglePrimitive.Root>,
   ToggleProps
 >(({ className, variant = "default", size = "default", ...props }, ref) => {
   const variants = {

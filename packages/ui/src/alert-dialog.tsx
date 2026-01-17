@@ -11,7 +11,7 @@ export interface AlertDialogOverlayProps extends React.ComponentPropsWithoutRef<
 > {}
 
 const AlertDialogOverlay = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Overlay>,
   AlertDialogOverlayProps
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
@@ -30,7 +30,7 @@ export interface AlertDialogContentProps extends React.ComponentPropsWithoutRef<
 > {}
 
 const AlertDialogContent = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Content>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Content>,
   AlertDialogContentProps
 >(({ className, ...props }, ref) => (
   <AlertDialogPortal>
@@ -80,7 +80,7 @@ export interface AlertDialogTitleProps extends React.ComponentPropsWithoutRef<
 > {}
 
 const AlertDialogTitle = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Title>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Title>,
   AlertDialogTitleProps
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Title

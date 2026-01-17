@@ -2740,14 +2740,6 @@
             "Dark": "{typography.font-size.base}"
           }
         },
-        "tabs.trigger.radius.top": {
-          "$type": "spacing",
-          "$value": "{radius.md}",
-          "valuesByMode": {
-            "Light": "{radius.md}",
-            "Dark": "{radius.md}"
-          }
-        },
         "tabs.trigger.indicator-width": {
           "$type": "spacing",
           "$value": "{border-width.4}",

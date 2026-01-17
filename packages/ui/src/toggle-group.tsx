@@ -3,7 +3,7 @@ import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 import { cn } from "./lib/utils";
 
 const ToggleGroup = React.forwardRef<
-  React.ElementRef<typeof ToggleGroupPrimitive.Root>,
+  React.ComponentRef<typeof ToggleGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
   <ToggleGroupPrimitive.Root
@@ -18,7 +18,7 @@ const ToggleGroup = React.forwardRef<
 ToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName;
 
 const ToggleGroupItem = React.forwardRef<
-  React.ElementRef<typeof ToggleGroupPrimitive.Item>,
+  React.ComponentRef<typeof ToggleGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Item>
 >(({ className, children, ...props }, ref) => (
   <ToggleGroupPrimitive.Item
