@@ -312,6 +312,13 @@
   --color-accordion-trigger-text: oklch(0.984 0.003 247.86);
   --color-accordion-trigger-text-hover: oklch(0.984 0.003 247.86);
   --color-accordion-trigger-text-open: oklch(0.984 0.003 247.86);
+  --color-accordion-trigger-pressed: oklch(0.446 0.037 257.28);
+  --color-accordion-trigger-focus: oklch(0.282 0.087 267.94);
+  --color-accordion-trigger-disabled: oklch(0.372 0.039 257.29);
+  --color-accordion-trigger-text-disabled: oklch(0.554 0.041 257.42);
+  --color-accordion-icon-hover: oklch(0.984 0.003 247.86);
+  --color-accordion-icon-open: oklch(0.984 0.003 247.86);
+  --color-accordion-icon-disabled: oklch(0.554 0.041 257.42);
   --color-avatar-background: oklch(0.279 0.037 260.03);
   --color-avatar-border: oklch(0.446 0.037 257.28);
   --color-avatar-fallback-background: oklch(0.372 0.039 257.29);

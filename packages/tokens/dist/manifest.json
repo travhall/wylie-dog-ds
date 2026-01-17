@@ -5574,6 +5574,83 @@
         "variable": "var(--color-accordion-trigger-text-open)",
         "description": ""
       },
+      "accordion-trigger-pressed": {
+        "name": "accordionTriggerPressed",
+        "path": [
+          "accordion",
+          "trigger-pressed"
+        ],
+        "value": "oklch(0.968 0.007 247.9)",
+        "type": "color",
+        "variable": "var(--color-accordion-trigger-pressed)",
+        "description": ""
+      },
+      "accordion-trigger-focus": {
+        "name": "accordionTriggerFocus",
+        "path": [
+          "accordion",
+          "trigger-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.6)",
+        "type": "color",
+        "variable": "var(--color-accordion-trigger-focus)",
+        "description": ""
+      },
+      "accordion-trigger-disabled": {
+        "name": "accordionTriggerDisabled",
+        "path": [
+          "accordion",
+          "trigger-disabled"
+        ],
+        "value": "oklch(0.984 0.003 247.86)",
+        "type": "color",
+        "variable": "var(--color-accordion-trigger-disabled)",
+        "description": ""
+      },
+      "accordion-trigger-text-disabled": {
+        "name": "accordionTriggerTextDisabled",
+        "path": [
+          "accordion",
+          "trigger-text-disabled"
+        ],
+        "value": "oklch(0.869 0.02 252.89)",
+        "type": "color",
+        "variable": "var(--color-accordion-trigger-text-disabled)",
+        "description": ""
+      },
+      "accordion-icon-hover": {
+        "name": "accordionIconHover",
+        "path": [
+          "accordion",
+          "icon-hover"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-accordion-icon-hover)",
+        "description": ""
+      },
+      "accordion-icon-open": {
+        "name": "accordionIconOpen",
+        "path": [
+          "accordion",
+          "icon-open"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-accordion-icon-open)",
+        "description": ""
+      },
+      "accordion-icon-disabled": {
+        "name": "accordionIconDisabled",
+        "path": [
+          "accordion",
+          "icon-disabled"
+        ],
+        "value": "oklch(0.869 0.02 252.89)",
+        "type": "color",
+        "variable": "var(--color-accordion-icon-disabled)",
+        "description": ""
+      },
       "accordion-item-border-width": {
         "name": "accordionItemBorderWidth",
         "path": [
