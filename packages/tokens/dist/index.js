@@ -584,7 +584,6 @@ export const tabsTriggerPaddingYLg = "8px";
 export const tabsTriggerFontSizeSm = "12px";
 export const tabsTriggerFontSizeMd = "14px";
 export const tabsTriggerFontSizeLg = "16px";
-export const tabsTriggerRadiusTop = "6px";
 export const tabsTriggerIndicatorWidth = "4px";
 export const tabsTriggerBorderWidth = "2px";
 export const tabsContentPadding = "24px";

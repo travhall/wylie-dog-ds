@@ -391,7 +391,6 @@ export const spacing = {
   "tabs-trigger-font-size-sm": "12px",
   "tabs-trigger-font-size-md": "14px",
   "tabs-trigger-font-size-lg": "16px",
-  "tabs-trigger-radius-top": "6px",
   "tabs-trigger-indicator-width": "4px",
   "tabs-trigger-border-width": "2px",
   "tabs-content-padding": "24px",

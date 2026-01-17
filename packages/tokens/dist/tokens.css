@@ -588,7 +588,6 @@
   --spacing-tabs-trigger-font-size-sm: 12px;
   --spacing-tabs-trigger-font-size-md: 14px;
   --spacing-tabs-trigger-font-size-lg: 16px;
-  --spacing-tabs-trigger-radius-top: 6px;
   --spacing-tabs-trigger-indicator-width: 4px;
   --spacing-tabs-trigger-border-width: 2px;
   --spacing-tabs-content-padding: 24px;
@@ -1319,7 +1318,6 @@
     --spacing-tabs-trigger-font-size-sm: 12px;
     --spacing-tabs-trigger-font-size-md: 14px;
     --spacing-tabs-trigger-font-size-lg: 16px;
-    --spacing-tabs-trigger-radius-top: 6px;
     --spacing-tabs-trigger-indicator-width: 4px;
     --spacing-tabs-trigger-border-width: 2px;
     --spacing-tabs-content-padding: 24px;
@@ -1901,7 +1899,6 @@
   --spacing-tabs-trigger-font-size-sm: 12px;
   --spacing-tabs-trigger-font-size-md: 14px;
   --spacing-tabs-trigger-font-size-lg: 16px;
-  --spacing-tabs-trigger-radius-top: 6px;
   --spacing-tabs-trigger-indicator-width: 4px;
   --spacing-tabs-trigger-border-width: 2px;
   --spacing-tabs-content-padding: 24px;
