@@ -20,7 +20,7 @@ export const DropdownMenuContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-        "z-50 min-w-(--spacing-dropdown-menu-content-min-width) overflow-hidden rounded-md border border-(--color-border-primary)",
+        "z-50 min-w-(--spacing-dropdown-menu-content-min-width) overflow-hidden rounded-(--spacing-dropdown-menu-content-radius) border border-(--color-border-primary)",
         "bg-(--color-background-primary) p-(--spacing-dropdown-menu-content-padding) text-(--color-text-primary) shadow-md",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -45,7 +45,7 @@ export const DropdownMenuItem = React.forwardRef<
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm px-(--spacing-dropdown-menu-item-padding-x) py-(--spacing-dropdown-menu-item-padding-y) text-sm outline-none transition-colors",
+      "relative flex cursor-default select-none items-center rounded-(--spacing-dropdown-menu-item-radius) px-(--spacing-dropdown-menu-item-padding-x) py-(--spacing-dropdown-menu-item-padding-y) text-(length:--spacing-dropdown-menu-item-font-size) outline-none transition-colors",
       "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       inset && "pl-(--spacing-dropdown-menu-item-inset)",
@@ -64,7 +64,7 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-(--spacing-dropdown-menu-item-padding-y) pl-(--spacing-dropdown-menu-item-inset) pr-(--spacing-dropdown-menu-item-padding-x) text-sm outline-none transition-colors",
+      "relative flex cursor-default select-none items-center rounded-(--spacing-dropdown-menu-item-radius) py-(--spacing-dropdown-menu-item-padding-y) pl-(--spacing-dropdown-menu-item-inset) pr-(--spacing-dropdown-menu-item-padding-x) text-(length:--spacing-dropdown-menu-item-font-size) outline-none transition-colors",
       "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       className
@@ -98,7 +98,7 @@ export const DropdownMenuRadioItem = React.forwardRef<
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-(--spacing-dropdown-menu-item-padding-y) pl-(--spacing-dropdown-menu-item-inset) pr-(--spacing-dropdown-menu-item-padding-x) text-sm outline-none transition-colors",
+      "relative flex cursor-default select-none items-center rounded-(--spacing-dropdown-menu-item-radius) py-(--spacing-dropdown-menu-item-padding-y) pl-(--spacing-dropdown-menu-item-inset) pr-(--spacing-dropdown-menu-item-padding-x) text-(length:--spacing-dropdown-menu-item-font-size) outline-none transition-colors",
       "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       className
@@ -125,7 +125,7 @@ export const DropdownMenuLabel = React.forwardRef<
   <DropdownMenuPrimitive.Label
     ref={ref}
     className={cn(
-      "px-(--spacing-dropdown-menu-item-padding-x) py-(--spacing-dropdown-menu-item-padding-y) text-(--spacing-dropdown-menu-item-font-size) font-semibold",
+      "px-(--spacing-dropdown-menu-item-padding-x) py-(--spacing-dropdown-menu-item-padding-y) text-(length:--spacing-dropdown-menu-item-font-size) font-semibold",
       inset && "pl-(--spacing-dropdown-menu-item-inset)",
       className
     )}

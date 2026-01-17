@@ -17,7 +17,7 @@ const Menubar = React.forwardRef<
   <MenubarPrimitive.Root
     ref={ref}
     className={cn(
-      "flex h-(--spacing-menubar-root-height) items-center space-x-1 rounded-md border border-(--color-menubar-border) bg-(--color-menubar-background) p-(--spacing-menubar-root-padding)",
+      "flex h-(--spacing-menubar-root-height) items-center space-x-(--spacing-menubar-list-gap) rounded-(--spacing-menubar-trigger-radius) border border-(--color-menubar-border) bg-(--color-menubar-background) p-(--spacing-menubar-root-padding)",
       className
     )}
     {...props}
@@ -32,7 +32,7 @@ const MenubarTrigger = React.forwardRef<
   <MenubarPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-sm px-(--spacing-menubar-trigger-padding-x) py-(--spacing-menubar-trigger-padding-y) text-sm font-medium outline-none",
+      "flex cursor-default select-none items-center rounded-(--spacing-menubar-item-radius) px-(--spacing-menubar-trigger-padding-x) py-(--spacing-menubar-trigger-padding-y) text-(length:--spacing-menubar-item-font-size) font-medium outline-none",
       "focus:bg-(--color-menubar-trigger-focus) focus:text-(--color-menubar-trigger-text-focus)",
       "data-[state=open]:bg-(--color-menubar-trigger-open) data-[state=open]:text-(--color-menubar-trigger-text-open)",
       className
@@ -51,7 +51,7 @@ const MenubarSubTrigger = React.forwardRef<
   <MenubarPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-sm px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(--spacing-menubar-item-font-size) outline-none",
+      "flex cursor-default select-none items-center rounded-(--spacing-menubar-item-radius) px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(length:--spacing-menubar-item-font-size) outline-none",
       "focus:bg-(--color-menubar-item-focus) focus:text-(--color-menubar-item-text-focus)",
       "data-[state=open]:bg-(--color-menubar-item-focus) data-[state=open]:text-(--color-menubar-item-text-focus)",
       inset && "pl-(--spacing-menubar-item-inset)",
@@ -71,7 +71,7 @@ const MenubarSubContent = React.forwardRef<
   <MenubarPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-50 min-w-(--spacing-menubar-sub-content-min-width) overflow-hidden rounded-md border border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-1 text-(--color-menubar-content-text) shadow-lg",
+      "z-50 min-w-(--spacing-menubar-sub-content-min-width) overflow-hidden rounded-(--spacing-menubar-trigger-radius) border border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--spacing-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-lg",
       "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
       "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
       className
@@ -96,7 +96,7 @@ const MenubarContent = React.forwardRef<
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-(--spacing-menubar-content-min-width) overflow-hidden rounded-md border border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-1 text-(--color-menubar-content-text) shadow-md",
+          "z-50 min-w-(--spacing-menubar-content-min-width) overflow-hidden rounded-(--spacing-menubar-trigger-radius) border border-(--color-menubar-content-border) bg-(--color-menubar-content-background) p-(--spacing-menubar-checkbox-padding) text-(--color-menubar-content-text) shadow-md",
           "data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           className
@@ -117,7 +117,7 @@ const MenubarItem = React.forwardRef<
   <MenubarPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(--spacing-menubar-item-font-size) outline-none",
+      "relative flex cursor-default select-none items-center rounded-(--spacing-menubar-item-radius) px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(length:--spacing-menubar-item-font-size) outline-none",
       "focus:bg-(--color-menubar-item-focus) focus:text-(--color-menubar-item-text-focus)",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       inset && "pl-(--spacing-menubar-item-inset)",
@@ -135,7 +135,7 @@ const MenubarCheckboxItem = React.forwardRef<
   <MenubarPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none",
+      "relative flex cursor-default select-none items-center rounded-(--spacing-menubar-item-radius) py-(--spacing-menubar-item-padding-y) pl-(--spacing-menubar-subitem-padding-left) pr-(--spacing-menubar-subitem-padding-right) text-(length:--spacing-menubar-item-font-size) outline-none",
       "focus:bg-(--color-menubar-item-focus) focus:text-(--color-menubar-item-text-focus)",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       className
@@ -160,7 +160,7 @@ const MenubarRadioItem = React.forwardRef<
   <MenubarPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none",
+      "relative flex cursor-default select-none items-center rounded-(--spacing-menubar-item-radius) py-(--spacing-menubar-item-padding-y) pl-(--spacing-menubar-subitem-padding-left) pr-(--spacing-menubar-subitem-padding-right) text-(length:--spacing-menubar-item-font-size) outline-none",
       "focus:bg-(--color-menubar-item-focus) focus:text-(--color-menubar-item-text-focus)",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       className
@@ -186,7 +186,7 @@ const MenubarLabel = React.forwardRef<
   <MenubarPrimitive.Label
     ref={ref}
     className={cn(
-      "px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(--spacing-menubar-item-font-size) font-semibold",
+      "px-(--spacing-menubar-item-padding-x) py-(--spacing-menubar-item-padding-y) text-(length:--spacing-menubar-item-font-size) font-semibold",
       inset && "pl-(--spacing-menubar-item-inset)",
       className
     )}
@@ -217,7 +217,7 @@ const MenubarShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-(--spacing-menubar-shortcut-font-size) tracking-widest",
+        "ml-auto text-(length:--spacing-menubar-item-font-size) tracking-widest",
         className
       )}
       {...props}

@@ -28,7 +28,7 @@ const NavigationMenuList = React.forwardRef<
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      "group flex flex-1 list-none items-center justify-center space-x-1",
+      "group flex flex-1 list-none items-center justify-center space-x-(--spacing-navigation-menu-list-gap)",
       className
     )}
     {...props}
@@ -39,7 +39,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cn(
-  "group inline-flex h-10 w-max items-center justify-center rounded-md bg-(--color-navigation-background) px-4 py-2 text-sm font-medium transition-colors",
+  "group inline-flex h-10 w-max items-center justify-center rounded-(--spacing-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--spacing-navigation-menu-trigger-padding-x) py-(--spacing-navigation-menu-trigger-padding-y) text-(length:--spacing-navigation-menu-trigger-font-size) font-medium transition-colors",
   "hover:bg-(--color-navigation-hover) hover:text-(--color-navigation-text-hover)",
   "focus:bg-(--color-navigation-focus) focus:text-(--color-navigation-text-focus) focus:outline-none",
   "disabled:pointer-events-none disabled:opacity-50",
@@ -57,7 +57,7 @@ const NavigationMenuTrigger = React.forwardRef<
   >
     {children}{" "}
     <ChevronDownIcon
-      className="relative top-px ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+      className="relative top-px ml-(--spacing-navigation-menu-indicator-margin-left) h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>
@@ -88,7 +88,7 @@ const NavigationMenuViewport = React.forwardRef<
   <div className={cn("absolute left-0 top-full flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative mt-1.5 h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-md border border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-(--radix-navigation-menu-viewport-width)",
+        "origin-top-center relative mt-(--spacing-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--spacing-navigation-menu-trigger-radius) border border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-(--radix-navigation-menu-viewport-width)",
         className
       )}
       ref={ref}

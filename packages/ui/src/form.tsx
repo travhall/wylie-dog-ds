@@ -29,7 +29,11 @@ interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {}
 
 const Form = React.forwardRef<HTMLFormElement, FormProps>(
   ({ className, ...props }, ref) => (
-    <form ref={ref} className={cn("space-y-6", className)} {...props} />
+    <form
+      ref={ref}
+      className={cn("space-y-(--spacing-form-item-gap)", className)}
+      {...props}
+    />
   )
 );
 Form.displayName = "Form";
@@ -56,7 +60,11 @@ const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>(
           isRequired: required,
         }}
       >
-        <div ref={ref} className={cn("space-y-2", className)} {...props} />
+        <div
+          ref={ref}
+          className={cn("space-y-(--spacing-form-label-gap)", className)}
+          {...props}
+        />
       </FormFieldContext.Provider>
     );
   }
@@ -68,7 +76,11 @@ interface FormItemProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const FormItem = React.forwardRef<HTMLDivElement, FormItemProps>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn("space-y-2", className)} {...props} />
+    <div
+      ref={ref}
+      className={cn("space-y-(--spacing-form-label-gap)", className)}
+      {...props}
+    />
   )
 );
 FormItem.displayName = "FormItem";
@@ -83,9 +95,9 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
     const { id, isRequired, isInvalid } = useFormField();
 
     const sizes = {
-      sm: "text-xs",
-      md: "text-sm",
-      lg: "text-base",
+      sm: "text-(length:--spacing-form-description-font-size)",
+      md: "text-(length:--spacing-form-label-font-size)",
+      lg: "text-(length:--spacing-form-error-font-size)",
     };
 
     return (
@@ -104,7 +116,10 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
       >
         {children}
         {isRequired && (
-          <span className="text-(--color-text-danger) ml-1" aria-hidden="true">
+          <span
+            className="text-(--color-text-danger) ml-(--spacing-form-error-margin)"
+            aria-hidden="true"
+          >
             *
           </span>
         )}
@@ -137,7 +152,10 @@ const FormDescription = React.forwardRef<
     <p
       ref={ref}
       id={descriptionId}
-      className={cn("text-sm text-(--color-form-description)", className)}
+      className={cn(
+        "text-(length:--spacing-form-description-font-size) text-(--color-form-description)",
+        className
+      )}
       {...props}
     />
   );
@@ -160,7 +178,7 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, FormMessageProps>(
         role="alert"
         aria-live="polite"
         className={cn(
-          "text-sm font-medium text-(--color-form-error)",
+          "text-(length:--spacing-form-error-font-size) font-medium text-(--color-form-error)",
           className
         )}
         {...props}

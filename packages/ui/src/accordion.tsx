@@ -9,10 +9,7 @@ const Accordion = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Root
     ref={ref}
-    className={cn(
-      "w-full min-w-(--spacing-accordion-root-min-width)",
-      className
-    )}
+    className={cn("w-full", className)}
     {...props}
   />
 ));

@@ -71,7 +71,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading && (
-          <span className="mr-2" aria-hidden="true">
+          <span
+            className="mr-(--spacing-button-icon-margin-right)"
+            aria-hidden="true"
+          >
             Loading...
           </span>
         )}

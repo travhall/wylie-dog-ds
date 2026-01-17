@@ -8,7 +8,10 @@ const ToggleGroup = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <ToggleGroupPrimitive.Root
     ref={ref}
-    className={cn("flex items-center justify-center gap-1", className)}
+    className={cn(
+      "flex items-center justify-center gap-(--spacing-toggle-group-gap)",
+      className
+    )}
     {...props}
   >
     {children}
@@ -24,12 +27,12 @@ const ToggleGroupItem = React.forwardRef<
   <ToggleGroupPrimitive.Item
     ref={ref}
     className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors",
+      "inline-flex items-center justify-center whitespace-nowrap rounded-(--spacing-toggle-group-item-radius) text-(length:--spacing-toggle-group-item-font-size) font-medium transition-colors",
       "hover:bg-(--color-toggle-hover) hover:text-(--color-toggle-text-hover)",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
       "disabled:pointer-events-none disabled:opacity-50",
       "data-[state=on]:bg-(--color-toggle-pressed) data-[state=on]:text-(--color-toggle-text-pressed)",
-      "h-10 px-3 bg-transparent text-(--color-toggle-text)",
+      "h-10 px-(--spacing-toggle-group-item-padding-x) bg-transparent text-(--color-toggle-text)",
       className
     )}
     {...props}

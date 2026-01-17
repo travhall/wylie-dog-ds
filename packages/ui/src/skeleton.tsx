@@ -26,8 +26,8 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
     const variants = {
       default: "rounded-(--spacing-skeleton-radius)",
       text: "h-(--spacing-skeleton-height-text) rounded-(--spacing-skeleton-radius)",
-      circular: "rounded-full",
-      rectangular: "rounded-sm",
+      circular: "rounded-(--spacing-skeleton-rounded-full)",
+      rectangular: "rounded-(--spacing-skeleton-rounded-sm)",
     };
 
     const sizes = {

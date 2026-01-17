@@ -54,7 +54,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
       <div
         ref={ref}
         className={cn(
-          "relative w-full rounded-lg border border-l-4 px-4 py-3 text-sm",
+          "relative w-full rounded-(--spacing-alert-radius) border border-l-4 px-(--spacing-alert-padding-x) py-(--spacing-alert-padding-y) text-(length:--spacing-alert-description-font-size)",
           variants[variant],
           className
         )}
@@ -73,7 +73,10 @@ export const AlertTitle = React.forwardRef<HTMLHeadingElement, AlertTitleProps>(
   ({ className, ...props }, ref) => (
     <h5
       ref={ref}
-      className={cn("mb-1 font-medium leading-none tracking-tight", className)}
+      className={cn(
+        "mb-(--spacing-alert-title-margin-bottom) font-medium leading-none tracking-tight",
+        className
+      )}
       {...props}
     />
   )
@@ -86,6 +89,13 @@ export const AlertDescription = React.forwardRef<
   HTMLParagraphElement,
   AlertDescriptionProps
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("text-sm opacity-90", className)} {...props} />
+  <div
+    ref={ref}
+    className={cn(
+      "text-(length:--spacing-alert-description-font-size) opacity-90",
+      className
+    )}
+    {...props}
+  />
 ));
 AlertDescription.displayName = "AlertDescription";

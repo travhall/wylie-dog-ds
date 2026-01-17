@@ -47,7 +47,7 @@ const CarouselPrevious = React.forwardRef<
   <button
     ref={ref}
     className={cn(
-      "absolute h-(--spacing-carousel-button-size) w-(--spacing-carousel-button-size) rounded-full border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -left-(--spacing-carousel-button-offset) top-1/2 -translate-y-1/2",
+      "absolute h-(--spacing-carousel-button-size) w-(--spacing-carousel-button-size) rounded-(--spacing-carousel-button-rounded-full) border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -left-(--spacing-carousel-button-offset) top-1/2 -translate-y-1/2",
       "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
       "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
       "disabled:pointer-events-none disabled:opacity-50",
@@ -68,7 +68,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
     <button
       ref={ref}
       className={cn(
-        "absolute h-(--spacing-carousel-button-size) w-(--spacing-carousel-button-size) rounded-full border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -right-(--spacing-carousel-button-offset) top-1/2 -translate-y-1/2",
+        "absolute h-(--spacing-carousel-button-size) w-(--spacing-carousel-button-size) rounded-(--spacing-carousel-button-rounded-full) border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -right-(--spacing-carousel-button-offset) top-1/2 -translate-y-1/2",
         "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
         "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",

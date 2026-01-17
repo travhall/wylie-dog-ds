@@ -20,7 +20,7 @@ export const CardGrid = React.forwardRef<HTMLDivElement, CardGridProps>(
     {
       children,
       columns = { sm: 1, md: 2, lg: 3, xl: 4 },
-      gap = "gap-6",
+      gap = "gap-(--spacing-card-grid-gap-horizontal)",
       centered = false,
       variant = "default",
       interactive = false,
@@ -32,14 +32,14 @@ export const CardGrid = React.forwardRef<HTMLDivElement, CardGridProps>(
     // Enhanced gap class logic with more variants
     const gapClass =
       variant === "compact"
-        ? "gap-3"
+        ? "gap-(--spacing-card-grid-gap-vertical)"
         : variant === "spacious"
-          ? "gap-8"
+          ? "gap-(--spacing-card-grid-gap-horizontal)"
           : variant === "masonry"
-            ? "gap-4"
+            ? "gap-(--spacing-card-grid-item-padding)"
             : variant === "elevated"
-              ? "gap-6"
-              : gap || "gap-6";
+              ? "gap-(--spacing-card-grid-gap-horizontal)"
+              : gap || "gap-(--spacing-card-grid-gap-horizontal)";
 
     // Build responsive column classes
     const columnClasses =
@@ -66,7 +66,7 @@ export const CardGrid = React.forwardRef<HTMLDivElement, CardGridProps>(
       centered && "justify-items-center",
 
       // Variant-specific styles
-      variant === "elevated" && "p-4",
+      variant === "elevated" && "p-(--spacing-card-grid-item-padding)",
       variant === "masonry" && "auto-rows-auto",
 
       // Interactive styles

@@ -64,7 +64,7 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
     <div
       ref={ref}
       className={cn(
-        "pt-0",
+        "pt-(--spacing-card-header-padding-top)",
         "text-(length:--spacing-card-header-description-font-size)",
         "text-(--color-card-header-description-color)",
         className

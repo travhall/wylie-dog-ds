@@ -26,7 +26,15 @@ const config: StorybookConfig = {
 
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),
-    options: {},
+    options: {
+      builder: {
+        viteConfigPath: undefined,
+      },
+    },
+  },
+
+  typescript: {
+    reactDocgen: false, // Disable react-docgen to avoid parsing issues with custom CSS syntax
   },
 
   core: {},
