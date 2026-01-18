@@ -48,10 +48,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const sizes = {
       default:
-        "h-(--spacing-button-height-md) px-(--spacing-button-padding-x-md) text-(length:--spacing-button-font-size-md) rounded-(--spacing-button-radius)",
-      sm: "h-(--spacing-button-height-sm) px-(--spacing-button-padding-x-sm) text-(length:--spacing-button-font-size-sm) rounded-(--spacing-button-radius)",
-      md: "h-(--spacing-button-height-md) px-(--spacing-button-padding-x-md) text-(length:--spacing-button-font-size-md) rounded-(--spacing-button-radius)",
-      lg: "h-(--spacing-button-height-lg) px-(--spacing-button-padding-x-lg) text-(length:--spacing-button-font-size-lg) rounded-(--spacing-button-radius)",
+        "h-(--spacing-button-height-md) px-(--spacing-button-padding-x-md) text-(length:--font-size-button-font-size-md) rounded-(--spacing-button-radius)",
+      sm: "h-(--spacing-button-height-sm) px-(--spacing-button-padding-x-sm) text-(length:--font-size-button-font-size-sm) rounded-(--spacing-button-radius)",
+      md: "h-(--spacing-button-height-md) px-(--spacing-button-padding-x-md) text-(length:--font-size-button-font-size-md) rounded-(--spacing-button-radius)",
+      lg: "h-(--spacing-button-height-lg) px-(--spacing-button-padding-x-lg) text-(length:--font-size-button-font-size-lg) rounded-(--spacing-button-radius)",
       icon: "h-(--spacing-button-height-md) w-(--spacing-button-height-md) rounded-(--spacing-button-radius)",
     };
 

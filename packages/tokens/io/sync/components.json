@@ -189,7 +189,7 @@
           }
         },
         "badge.font-size.sm": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.xs}",
           "valuesByMode": {
             "Light": "{typography.font-size.xs}",
@@ -197,7 +197,7 @@
           }
         },
         "badge.font-size.md": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -205,7 +205,7 @@
           }
         },
         "badge.font-size.lg": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.base}",
           "valuesByMode": {
             "Light": "{typography.font-size.base}",
@@ -445,7 +445,7 @@
           }
         },
         "button.font-size.sm": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -453,7 +453,7 @@
           }
         },
         "button.font-size.md": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.base}",
           "valuesByMode": {
             "Light": "{typography.font-size.base}",
@@ -461,7 +461,7 @@
           }
         },
         "button.font-size.lg": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.lg}",
           "valuesByMode": {
             "Light": "{typography.font-size.lg}",
@@ -517,7 +517,7 @@
           }
         },
         "card.header.title.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.xl}",
           "valuesByMode": {
             "Light": "{typography.font-size.xl}",
@@ -533,7 +533,7 @@
           }
         },
         "card.header.description.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -669,7 +669,7 @@
           }
         },
         "input.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.base}",
           "valuesByMode": {
             "Light": "{typography.font-size.base}",
@@ -1949,7 +1949,7 @@
           }
         },
         "tooltip.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.xs}",
           "valuesByMode": {
             "Light": "{typography.font-size.xs}",
@@ -2021,7 +2021,7 @@
           }
         },
         "select.trigger.font-size.sm": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.xs}",
           "valuesByMode": {
             "Light": "{typography.font-size.xs}",
@@ -2029,7 +2029,7 @@
           }
         },
         "select.trigger.font-size.md": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -2037,7 +2037,7 @@
           }
         },
         "select.trigger.font-size.lg": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.base}",
           "valuesByMode": {
             "Light": "{typography.font-size.base}",
@@ -2109,7 +2109,7 @@
           }
         },
         "select.item.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -2533,7 +2533,7 @@
           }
         },
         "textarea.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -2541,7 +2541,7 @@
           }
         },
         "label.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -2629,7 +2629,7 @@
           }
         },
         "sheet.title.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.xl}",
           "valuesByMode": {
             "Light": "{typography.font-size.xl}",
@@ -2637,7 +2637,7 @@
           }
         },
         "sheet.description.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -2773,7 +2773,7 @@
           }
         },
         "tabs.trigger.font-size.sm": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.xs}",
           "valuesByMode": {
             "Light": "{typography.font-size.xs}",
@@ -2781,7 +2781,7 @@
           }
         },
         "tabs.trigger.font-size.md": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -2789,7 +2789,7 @@
           }
         },
         "tabs.trigger.font-size.lg": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.base}",
           "valuesByMode": {
             "Light": "{typography.font-size.base}",
@@ -2901,7 +2901,7 @@
           }
         },
         "pagination.item.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -2989,7 +2989,7 @@
           }
         },
         "dialog.title.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.xl}",
           "valuesByMode": {
             "Light": "{typography.font-size.xl}",
@@ -2997,7 +2997,7 @@
           }
         },
         "dialog.description.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -3117,7 +3117,7 @@
           }
         },
         "toast.title.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -3125,7 +3125,7 @@
           }
         },
         "toast.description.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -3149,7 +3149,7 @@
           }
         },
         "toast.action.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.xs}",
           "valuesByMode": {
             "Light": "{typography.font-size.xs}",
@@ -3189,7 +3189,7 @@
           }
         },
         "table.header.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -3197,7 +3197,7 @@
           }
         },
         "table.cell.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -3205,7 +3205,7 @@
           }
         },
         "table.caption.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -3453,7 +3453,7 @@
           }
         },
         "breadcrumb.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -3621,7 +3621,7 @@
           }
         },
         "dropdown-menu.item.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -3629,7 +3629,7 @@
           }
         },
         "dropdown-menu.shortcut.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.xs}",
           "valuesByMode": {
             "Light": "{typography.font-size.xs}",
@@ -3685,7 +3685,7 @@
           }
         },
         "accordion.trigger.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.base}",
           "valuesByMode": {
             "Light": "{typography.font-size.base}",
@@ -3709,7 +3709,7 @@
           }
         },
         "accordion.content.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
@@ -3853,7 +3853,7 @@
           }
         },
         "menubar.shortcut.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.xs}",
           "valuesByMode": {
             "Light": "{typography.font-size.xs}",
@@ -4013,7 +4013,7 @@
           }
         },
         "feature-grid.title-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "20px",
           "valuesByMode": {
             "Light": "20px",
@@ -4021,7 +4021,7 @@
           }
         },
         "feature-grid.description-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "14px",
           "valuesByMode": {
             "Light": "14px",
@@ -4053,7 +4053,7 @@
           }
         },
         "form.description-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "12px",
           "valuesByMode": {
             "Light": "12px",
@@ -4061,7 +4061,7 @@
           }
         },
         "form.error-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "12px",
           "valuesByMode": {
             "Light": "12px",
@@ -4069,7 +4069,7 @@
           }
         },
         "form.label-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "14px",
           "valuesByMode": {
             "Light": "14px",
@@ -4117,7 +4117,7 @@
           }
         },
         "alert-dialog.title-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "18px",
           "valuesByMode": {
             "Light": "18px",
@@ -4125,7 +4125,7 @@
           }
         },
         "alert-dialog.description-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "14px",
           "valuesByMode": {
             "Light": "14px",
@@ -4165,7 +4165,7 @@
           }
         },
         "alert.title.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "{typography.font-size.base}",
           "valuesByMode": {
             "Light": "{typography.font-size.base}",
@@ -4173,7 +4173,7 @@
           }
         },
         "alert.description-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "14px",
           "valuesByMode": {
             "Light": "14px",
@@ -4285,7 +4285,7 @@
           }
         },
         "command.item-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "14px",
           "valuesByMode": {
             "Light": "14px",
@@ -4293,7 +4293,7 @@
           }
         },
         "command.group-heading-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "12px",
           "valuesByMode": {
             "Light": "12px",
@@ -4349,7 +4349,7 @@
           }
         },
         "navigation-menu.trigger-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "14px",
           "valuesByMode": {
             "Light": "14px",
@@ -4381,7 +4381,7 @@
           }
         },
         "toggle-group.item-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "14px",
           "valuesByMode": {
             "Light": "14px",
@@ -4421,7 +4421,7 @@
           }
         },
         "calendar.header-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "14px",
           "valuesByMode": {
             "Light": "14px",
@@ -4429,7 +4429,7 @@
           }
         },
         "calendar.day-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "12px",
           "valuesByMode": {
             "Light": "12px",
@@ -4509,7 +4509,7 @@
           }
         },
         "context-menu.item-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "14px",
           "valuesByMode": {
             "Light": "14px",
@@ -4517,7 +4517,7 @@
           }
         },
         "context-menu.shortcut-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "12px",
           "valuesByMode": {
             "Light": "12px",
@@ -4581,7 +4581,7 @@
           }
         },
         "menubar.item-font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "14px",
           "valuesByMode": {
             "Light": "14px",
@@ -4757,7 +4757,7 @@
           }
         },
         "toggle.font-size": {
-          "$type": "spacing",
+          "$type": "fontSize",
           "$value": "14px",
           "valuesByMode": {
             "Light": "14px",

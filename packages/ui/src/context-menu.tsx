@@ -19,7 +19,7 @@ const ContextMenuSubTrigger = React.forwardRef<
   <ContextMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) px-(--spacing-context-menu-item-padding-x) py-(--spacing-context-menu-item-padding-y) text-(length:--spacing-context-menu-item-font-size) outline-none focus:bg-accent data-[state=open]:bg-accent",
+      "flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) px-(--spacing-context-menu-item-padding-x) py-(--spacing-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-accent data-[state=open]:bg-accent",
       inset && "pl-(--spacing-context-menu-item-inset)",
       className
     )}
@@ -73,7 +73,7 @@ const ContextMenuItem = React.forwardRef<
   <ContextMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) px-(--spacing-context-menu-item-padding-x) py-(--spacing-context-menu-item-padding-y) text-(length:--spacing-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-50",
+      "relative flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) px-(--spacing-context-menu-item-padding-x) py-(--spacing-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-50",
       inset && "pl-(--spacing-context-menu-item-inset)",
       className
     )}
@@ -89,7 +89,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
   <ContextMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) py-(--spacing-context-menu-item-padding-y) pl-(--spacing-context-menu-item-inset) pr-(--spacing-context-menu-item-padding-x) text-(length:--spacing-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-50",
+      "relative flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) py-(--spacing-context-menu-item-padding-y) pl-(--spacing-context-menu-item-inset) pr-(--spacing-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-50",
       className
     )}
     checked={checked}
@@ -113,7 +113,7 @@ const ContextMenuRadioItem = React.forwardRef<
   <ContextMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) py-(--spacing-context-menu-item-padding-y) pl-(--spacing-context-menu-item-inset) pr-(--spacing-context-menu-item-padding-x) text-(length:--spacing-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-50",
+      "relative flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) py-(--spacing-context-menu-item-padding-y) pl-(--spacing-context-menu-item-inset) pr-(--spacing-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-50",
       className
     )}
     {...props}
@@ -137,7 +137,7 @@ const ContextMenuLabel = React.forwardRef<
   <ContextMenuPrimitive.Label
     ref={ref}
     className={cn(
-      "px-(--spacing-context-menu-item-padding-x) py-(--spacing-context-menu-item-padding-y) text-(length:--spacing-context-menu-item-font-size) font-semibold text-(--color-contextmenu-label)",
+      "px-(--spacing-context-menu-item-padding-x) py-(--spacing-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) font-semibold text-(--color-contextmenu-label)",
       inset && "pl-(--spacing-context-menu-item-inset)",
       className
     )}
@@ -168,7 +168,7 @@ const ContextMenuShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-(length:--spacing-context-menu-shortcut-font-size) tracking-widest text-(--color-contextmenu-shortcut)",
+        "ml-auto text-(length:--font-size-context-menu-shortcut-font-size) tracking-widest text-(--color-contextmenu-shortcut)",
         className
       )}
       {...props}

@@ -84,12 +84,12 @@ export const FeatureGrid = React.forwardRef<HTMLDivElement, FeatureGridProps>(
                 )}
 
                 {/* Title */}
-                <h3 className="text-(length:--spacing-feature-grid-title-font-size) font-bold text-(--color-text-primary) leading-tight">
+                <h3 className="text-(length:--font-size-feature-grid-title-font-size) font-bold text-(--color-text-primary) leading-tight">
                   {feature.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-(--color-text-secondary) leading-relaxed text-(length:--spacing-feature-grid-description-font-size)">
+                <p className="text-(--color-text-secondary) leading-relaxed text-(length:--font-size-feature-grid-description-font-size)">
                   {feature.description}
                 </p>
               </div>

@@ -20,9 +20,9 @@ export const SelectTrigger = React.forwardRef<
   SelectTriggerProps
 >(({ className, size = "md", error = false, children, ...props }, ref) => {
   const sizes = {
-    sm: "h-(--spacing-select-trigger-height-sm) px-(--spacing-select-trigger-padding-x-sm) text-(length:--spacing-select-trigger-font-size-sm)",
-    md: "h-(--spacing-select-trigger-height-md) px-(--spacing-select-trigger-padding-x-md) text-(length:--spacing-select-trigger-font-size-md)",
-    lg: "h-(--spacing-select-trigger-height-lg) px-(--spacing-select-trigger-padding-x-lg) text-(length:--spacing-select-trigger-font-size-lg)",
+    sm: "h-(--spacing-select-trigger-height-sm) px-(--spacing-select-trigger-padding-x-sm) text-(length:--font-size-select-trigger-font-size-sm)",
+    md: "h-(--spacing-select-trigger-height-md) px-(--spacing-select-trigger-padding-x-md) text-(length:--font-size-select-trigger-font-size-md)",
+    lg: "h-(--spacing-select-trigger-height-lg) px-(--spacing-select-trigger-padding-x-lg) text-(length:--font-size-select-trigger-font-size-lg)",
   };
 
   return (
@@ -118,7 +118,7 @@ export const SelectItem = React.forwardRef<
       "py-(--spacing-select-item-padding-y)",
       "pl-(--spacing-select-item-padding-left)",
       "pr-(--spacing-select-item-padding-right)",
-      "text-(length:--spacing-select-item-font-size)",
+      "text-(length:--font-size-select-item-font-size)",
       "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       className

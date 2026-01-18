@@ -88,15 +88,15 @@
     "$value": "{radius.full}"
   },
   "badge.font-size.sm": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.xs}"
   },
   "badge.font-size.md": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "badge.font-size.lg": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.base}"
   },
   "button.primary.background": {
@@ -216,15 +216,15 @@
     "$value": "{radius.md}"
   },
   "button.font-size.sm": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "button.font-size.md": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.base}"
   },
   "button.font-size.lg": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.lg}"
   },
   "card.background": {
@@ -252,7 +252,7 @@
     "$value": "{space.sm}"
   },
   "card.header.title.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.xl}"
   },
   "card.header.title.color": {
@@ -260,7 +260,7 @@
     "$value": "{color.text.primary}"
   },
   "card.header.description.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "card.header.description.color": {
@@ -328,7 +328,7 @@
     "$value": "{radius.md}"
   },
   "input.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.base}"
   },
   "button.outline.hover": {
@@ -968,7 +968,7 @@
     "$value": "{radius.md}"
   },
   "tooltip.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.xs}"
   },
   "tooltip.max-width": {
@@ -1004,15 +1004,15 @@
     "$value": "{radius.md}"
   },
   "select.trigger.font-size.sm": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.xs}"
   },
   "select.trigger.font-size.md": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "select.trigger.font-size.lg": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.base}"
   },
   "select.content.radius": {
@@ -1048,7 +1048,7 @@
     "$value": "{radius.sm}"
   },
   "select.item.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "select.separator.height": {
@@ -1260,11 +1260,11 @@
     "$value": "{radius.md}"
   },
   "textarea.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "label.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "label.margin-bottom": {
@@ -1308,11 +1308,11 @@
     "$value": "{space.lg}"
   },
   "sheet.title.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.xl}"
   },
   "sheet.description.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "sheet.footer.padding-top": {
@@ -1380,15 +1380,15 @@
     "$value": "{spacing.2}"
   },
   "tabs.trigger.font-size.sm": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.xs}"
   },
   "tabs.trigger.font-size.md": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "tabs.trigger.font-size.lg": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.base}"
   },
   "tabs.trigger.indicator-width": {
@@ -1444,7 +1444,7 @@
     "$value": "{radius.md}"
   },
   "pagination.item.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "pagination.item.gap": {
@@ -1488,11 +1488,11 @@
     "$value": "{space.lg}"
   },
   "dialog.title.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.xl}"
   },
   "dialog.description.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "dialog.footer.margin-top": {
@@ -1552,11 +1552,11 @@
     "$value": "{space.md}"
   },
   "toast.title.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "toast.description.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "toast.action.height": {
@@ -1568,7 +1568,7 @@
     "$value": "{space.sm}"
   },
   "toast.action.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.xs}"
   },
   "toast.close.size": {
@@ -1588,15 +1588,15 @@
     "$value": "{space.md}"
   },
   "table.header.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "table.cell.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "table.caption.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "table.caption.margin-top": {
@@ -1720,7 +1720,7 @@
     "$value": "{spacing.1.5}"
   },
   "breadcrumb.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "breadcrumb.separator.size": {
@@ -1804,11 +1804,11 @@
     "$value": "{spacing.4}"
   },
   "dropdown-menu.item.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "dropdown-menu.shortcut.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.xs}"
   },
   "dropdown-menu.separator.height": {
@@ -1836,7 +1836,7 @@
     "$value": "{spacing.3}"
   },
   "accordion.trigger.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.base}"
   },
   "accordion.trigger.icon.size": {
@@ -1848,7 +1848,7 @@
     "$value": "{spacing.3}"
   },
   "accordion.content.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
   "table.header.height": {
@@ -1920,7 +1920,7 @@
     "$value": "{spacing.4}"
   },
   "menubar.shortcut.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.xs}"
   },
   "menubar.separator.height": {
@@ -2000,11 +2000,11 @@
     "$value": "12px"
   },
   "feature-grid.title-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "20px"
   },
   "feature-grid.description-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "14px"
   },
   "form.item-gap": {
@@ -2020,15 +2020,15 @@
     "$value": "{spacing.1}"
   },
   "form.description-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "12px"
   },
   "form.error-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "12px"
   },
   "form.label-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "14px"
   },
   "alert-dialog.content-gap": {
@@ -2052,11 +2052,11 @@
     "$value": "8px"
   },
   "alert-dialog.title-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "18px"
   },
   "alert-dialog.description-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "14px"
   },
   "alert.padding-x": {
@@ -2076,11 +2076,11 @@
     "$value": "8px"
   },
   "alert.title.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "{typography.font-size.base}"
   },
   "alert.description-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "14px"
   },
   "label.required-margin-left": {
@@ -2136,11 +2136,11 @@
     "$value": "4px"
   },
   "command.item-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "14px"
   },
   "command.group-heading-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "12px"
   },
   "navigation-menu.list-gap": {
@@ -2168,7 +2168,7 @@
     "$value": "6px"
   },
   "navigation-menu.trigger-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "14px"
   },
   "toggle-group.gap": {
@@ -2184,7 +2184,7 @@
     "$value": "6px"
   },
   "toggle-group.item-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "14px"
   },
   "calendar.container-gap": {
@@ -2204,11 +2204,11 @@
     "$value": "6px"
   },
   "calendar.header-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "14px"
   },
   "calendar.day-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "12px"
   },
   "pagination.list-gap": {
@@ -2248,11 +2248,11 @@
     "$value": "6px"
   },
   "context-menu.item-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "14px"
   },
   "context-menu.shortcut-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "12px"
   },
   "menubar.list-gap": {
@@ -2284,7 +2284,7 @@
     "$value": "4px"
   },
   "menubar.item-font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "14px"
   },
   "dropdown-menu.content-radius": {
@@ -2372,7 +2372,7 @@
     "$value": "{spacing.2}"
   },
   "toggle.font-size": {
-    "$type": "spacing",
+    "$type": "fontSize",
     "$value": "14px"
   },
   "toast.action.radius": {

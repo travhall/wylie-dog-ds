@@ -36,7 +36,7 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
           "inline-flex items-center border font-semibold transition-colors",
           "rounded-(--spacing-badge-radius)",
           "px-(--spacing-badge-padding-md)",
-          "text-(length:--spacing-badge-font-size-md)",
+          "text-(length:--font-size-badge-font-size-md)",
           variants[variant],
           className
         )}

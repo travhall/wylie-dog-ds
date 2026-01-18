@@ -51,9 +51,9 @@ export const TabsTrigger = React.forwardRef<
   TabsTriggerProps
 >(({ className, size = "md", ...props }, ref) => {
   const sizes = {
-    sm: "px-(--spacing-tabs-trigger-padding-x-sm) py-(--spacing-tabs-trigger-padding-y-sm) text-(length:--spacing-tabs-trigger-font-size-sm)",
-    md: "px-(--spacing-tabs-trigger-padding-x-md) py-(--spacing-tabs-trigger-padding-y-md) text-(length:--spacing-tabs-trigger-font-size-md)",
-    lg: "px-(--spacing-tabs-trigger-padding-x-lg) py-(--spacing-tabs-trigger-padding-y-lg) text-(length:--spacing-tabs-trigger-font-size-lg)",
+    sm: "px-(--spacing-tabs-trigger-padding-x-sm) py-(--spacing-tabs-trigger-padding-y-sm) text-(length:--font-size-tabs-trigger-font-size-sm)",
+    md: "px-(--spacing-tabs-trigger-padding-x-md) py-(--spacing-tabs-trigger-padding-y-md) text-(length:--font-size-tabs-trigger-font-size-md)",
+    lg: "px-(--spacing-tabs-trigger-padding-x-lg) py-(--spacing-tabs-trigger-padding-y-lg) text-(length:--font-size-tabs-trigger-font-size-lg)",
   };
 
   return (

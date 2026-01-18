@@ -28,6 +28,11 @@ StyleDictionary.registerFormat({
         const spacingName = `--spacing-${name}`;
         themeVariables.push(`  ${spacingName}: ${token.$value};`);
         baseVariables.push(`    ${spacingName}: ${token.$value};`);
+      } else if (token.$type === "fontSize") {
+        // Handle fontSize tokens with dedicated prefix
+        const fontSizeName = `--font-size-${name}`;
+        themeVariables.push(`  ${fontSizeName}: ${token.$value};`);
+        baseVariables.push(`    ${fontSizeName}: ${token.$value};`);
       } else {
         const genericName = `--${name}`;
         let value = token.$value;

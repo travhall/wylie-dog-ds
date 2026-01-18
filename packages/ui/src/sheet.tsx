@@ -129,7 +129,7 @@ export const SheetTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "font-semibold text-(--color-text-primary)",
-      "text-(length:--spacing-sheet-title-font-size)",
+      "text-(length:--font-size-sheet-title-font-size)",
       className
     )}
     {...props}
@@ -145,7 +145,7 @@ export const SheetDescription = React.forwardRef<
   <DialogPrimitive.Description
     ref={ref}
     className={cn(
-      "text-(length:--spacing-sheet-description-font-size)",
+      "text-(length:--font-size-sheet-description-font-size)",
       "text-(--color-text-secondary)",
       className
     )}

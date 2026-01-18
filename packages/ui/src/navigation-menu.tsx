@@ -39,7 +39,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cn(
-  "group inline-flex h-10 w-max items-center justify-center rounded-(--spacing-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--spacing-navigation-menu-trigger-padding-x) py-(--spacing-navigation-menu-trigger-padding-y) text-(length:--spacing-navigation-menu-trigger-font-size) font-medium transition-colors",
+  "group inline-flex h-10 w-max items-center justify-center rounded-(--spacing-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--spacing-navigation-menu-trigger-padding-x) py-(--spacing-navigation-menu-trigger-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) font-medium transition-colors",
   "hover:bg-(--color-navigation-hover) hover:text-(--color-navigation-text-hover)",
   "focus:bg-(--color-navigation-focus) focus:text-(--color-navigation-text-focus) focus:outline-none",
   "disabled:pointer-events-none disabled:opacity-50",

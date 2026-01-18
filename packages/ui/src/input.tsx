@@ -29,9 +29,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const sizes = {
-      sm: "h-(--spacing-input-height-sm) px-(--spacing-input-padding-x) text-(length:--spacing-input-font-size)",
-      md: "h-(--spacing-input-height-md) px-(--spacing-input-padding-x) text-(length:--spacing-input-font-size)",
-      lg: "h-(--spacing-input-height-lg) px-(--spacing-input-padding-x) text-(length:--spacing-input-font-size)",
+      sm: "h-(--spacing-input-height-sm) px-(--spacing-input-padding-x) text-(length:--font-size-input-font-size)",
+      md: "h-(--spacing-input-height-md) px-(--spacing-input-padding-x) text-(length:--font-size-input-font-size)",
+      lg: "h-(--spacing-input-height-lg) px-(--spacing-input-padding-x) text-(length:--font-size-input-font-size)",
     };
 
     // Build aria-describedby from provided IDs

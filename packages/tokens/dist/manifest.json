@@ -3046,7 +3046,7 @@
           "sm"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--badge-font-size-sm)",
         "description": ""
       },
@@ -3058,7 +3058,7 @@
           "md"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--badge-font-size-md)",
         "description": ""
       },
@@ -3070,7 +3070,7 @@
           "lg"
         ],
         "value": "16px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--badge-font-size-lg)",
         "description": ""
       }
@@ -3431,7 +3431,7 @@
           "sm"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--button-font-size-sm)",
         "description": ""
       },
@@ -3443,7 +3443,7 @@
           "md"
         ],
         "value": "16px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--button-font-size-md)",
         "description": ""
       },
@@ -3455,7 +3455,7 @@
           "lg"
         ],
         "value": "18px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--button-font-size-lg)",
         "description": ""
       },
@@ -3605,7 +3605,7 @@
           "font-size"
         ],
         "value": "20px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--card-header-title-font-size)",
         "description": ""
       },
@@ -3631,7 +3631,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--card-header-description-font-size)",
         "description": ""
       },
@@ -3850,7 +3850,7 @@
           "font-size"
         ],
         "value": "16px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--input-font-size)",
         "description": ""
       }
@@ -4052,7 +4052,7 @@
           "font-size"
         ],
         "value": "16px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--alert-title-font-size)",
         "description": ""
       },
@@ -4063,7 +4063,7 @@
           "description-font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--alert-description-font-size)",
         "description": ""
       }
@@ -4351,7 +4351,7 @@
           "font-size"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--menubar-shortcut-font-size)",
         "description": ""
       },
@@ -4475,7 +4475,7 @@
           "item-font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--menubar-item-font-size)",
         "description": ""
       }
@@ -4870,7 +4870,7 @@
           "item-font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--command-item-font-size)",
         "description": ""
       },
@@ -4881,7 +4881,7 @@
           "group-heading-font-size"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--command-group-heading-font-size)",
         "description": ""
       }
@@ -5175,7 +5175,7 @@
           "sm"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--tabs-trigger-font-size-sm)",
         "description": ""
       },
@@ -5188,7 +5188,7 @@
           "md"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--tabs-trigger-font-size-md)",
         "description": ""
       },
@@ -5201,7 +5201,7 @@
           "lg"
         ],
         "value": "16px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--tabs-trigger-font-size-lg)",
         "description": ""
       },
@@ -5492,7 +5492,7 @@
           "header-font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--calendar-header-font-size)",
         "description": ""
       },
@@ -5503,7 +5503,7 @@
           "day-font-size"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--calendar-day-font-size)",
         "description": ""
       }
@@ -5696,7 +5696,7 @@
           "font-size"
         ],
         "value": "16px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--accordion-trigger-font-size)",
         "description": ""
       },
@@ -5733,7 +5733,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--accordion-content-font-size)",
         "description": ""
       }
@@ -5930,7 +5930,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--breadcrumb-font-size)",
         "description": ""
       },
@@ -6328,7 +6328,7 @@
           "font-size"
         ],
         "value": "20px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--dialog-title-font-size)",
         "description": ""
       },
@@ -6340,7 +6340,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--dialog-description-font-size)",
         "description": ""
       },
@@ -6454,7 +6454,7 @@
           "description-font-size"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--form-description-font-size)",
         "description": ""
       },
@@ -6465,7 +6465,7 @@
           "error-font-size"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--form-error-font-size)",
         "description": ""
       },
@@ -6476,7 +6476,7 @@
           "label-font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--form-label-font-size)",
         "description": ""
       }
@@ -6678,7 +6678,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--pagination-item-font-size)",
         "description": ""
       },
@@ -7506,7 +7506,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--table-header-font-size)",
         "description": ""
       },
@@ -7518,7 +7518,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--table-cell-font-size)",
         "description": ""
       },
@@ -7530,7 +7530,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--table-caption-font-size)",
         "description": ""
       },
@@ -7690,7 +7690,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--toast-title-font-size)",
         "description": ""
       },
@@ -7702,7 +7702,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--toast-description-font-size)",
         "description": ""
       },
@@ -7738,7 +7738,7 @@
           "font-size"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--toast-action-font-size)",
         "description": ""
       },
@@ -8058,7 +8058,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--toggle-font-size)",
         "description": ""
       }
@@ -8137,7 +8137,7 @@
           "font-size"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--tooltip-font-size)",
         "description": ""
       },
@@ -8253,7 +8253,7 @@
           "sm"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--select-trigger-font-size-sm)",
         "description": ""
       },
@@ -8266,7 +8266,7 @@
           "md"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--select-trigger-font-size-md)",
         "description": ""
       },
@@ -8279,7 +8279,7 @@
           "lg"
         ],
         "value": "16px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--select-trigger-font-size-lg)",
         "description": ""
       },
@@ -8387,7 +8387,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--select-item-font-size)",
         "description": ""
       },
@@ -8878,7 +8878,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--textarea-font-size)",
         "description": ""
       }
@@ -8891,7 +8891,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--label-font-size)",
         "description": ""
       },
@@ -9037,7 +9037,7 @@
           "font-size"
         ],
         "value": "20px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--sheet-title-font-size)",
         "description": ""
       },
@@ -9049,7 +9049,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--sheet-description-font-size)",
         "description": ""
       },
@@ -9288,7 +9288,7 @@
           "item-font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--context-menu-item-font-size)",
         "description": ""
       },
@@ -9299,7 +9299,7 @@
           "shortcut-font-size"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--context-menu-shortcut-font-size)",
         "description": ""
       }
@@ -9386,7 +9386,7 @@
           "font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--dropdown-menu-item-font-size)",
         "description": ""
       },
@@ -9398,7 +9398,7 @@
           "font-size"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--dropdown-menu-shortcut-font-size)",
         "description": ""
       },
@@ -9572,7 +9572,7 @@
           "title-font-size"
         ],
         "value": "20px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--feature-grid-title-font-size)",
         "description": ""
       },
@@ -9583,7 +9583,7 @@
           "description-font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--feature-grid-description-font-size)",
         "description": ""
       }
@@ -9651,7 +9651,7 @@
           "title-font-size"
         ],
         "value": "18px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--alert-dialog-title-font-size)",
         "description": ""
       },
@@ -9662,7 +9662,7 @@
           "description-font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--alert-dialog-description-font-size)",
         "description": ""
       }
@@ -9754,7 +9754,7 @@
           "trigger-font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--navigation-menu-trigger-font-size)",
         "description": ""
       }
@@ -9800,7 +9800,7 @@
           "item-font-size"
         ],
         "value": "14px",
-        "type": "spacing",
+        "type": "fontSize",
         "variable": "var(--toggle-group-item-font-size)",
         "description": ""
       }

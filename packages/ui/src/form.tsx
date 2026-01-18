@@ -95,9 +95,9 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
     const { id, isRequired, isInvalid } = useFormField();
 
     const sizes = {
-      sm: "text-(length:--spacing-form-description-font-size)",
-      md: "text-(length:--spacing-form-label-font-size)",
-      lg: "text-(length:--spacing-form-error-font-size)",
+      sm: "text-(length:--font-size-form-description-font-size)",
+      md: "text-(length:--font-size-form-label-font-size)",
+      lg: "text-(length:--font-size-form-error-font-size)",
     };
 
     return (
@@ -153,7 +153,7 @@ const FormDescription = React.forwardRef<
       ref={ref}
       id={descriptionId}
       className={cn(
-        "text-(length:--spacing-form-description-font-size) text-(--color-form-description)",
+        "text-(length:--font-size-form-description-font-size) text-(--color-form-description)",
         className
       )}
       {...props}
@@ -178,7 +178,7 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, FormMessageProps>(
         role="alert"
         aria-live="polite"
         className={cn(
-          "text-(length:--spacing-form-error-font-size) font-medium text-(--color-form-error)",
+          "text-(length:--font-size-form-error-font-size) font-medium text-(--color-form-error)",
           className
         )}
         {...props}

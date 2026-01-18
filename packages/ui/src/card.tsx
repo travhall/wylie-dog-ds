@@ -47,7 +47,7 @@ export const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
       ref={ref}
       className={cn(
         "font-semibold leading-none tracking-tight",
-        "text-(length:--spacing-card-header-title-font-size)",
+        "text-(length:--font-size-card-header-title-font-size)",
         "text-(--color-card-header-title-color)",
         className
       )}
@@ -65,7 +65,7 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
       ref={ref}
       className={cn(
         "pt-(--spacing-card-header-padding-top)",
-        "text-(length:--spacing-card-header-description-font-size)",
+        "text-(length:--font-size-card-header-description-font-size)",
         "text-(--color-card-header-description-color)",
         className
       )}

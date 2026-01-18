@@ -144,7 +144,7 @@ export const DialogTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "font-semibold leading-none tracking-tight text-(--color-text-primary)",
-      "text-(length:--spacing-dialog-title-font-size)",
+      "text-(length:--font-size-dialog-title-font-size)",
       className
     )}
     {...props}
@@ -160,7 +160,7 @@ export const DialogDescription = React.forwardRef<
   <DialogPrimitive.Description
     ref={ref}
     className={cn(
-      "text-(length:--spacing-dialog-description-font-size)",
+      "text-(length:--font-size-dialog-description-font-size)",
       "text-(--color-text-secondary)",
       className
     )}

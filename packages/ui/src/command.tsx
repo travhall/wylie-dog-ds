@@ -61,7 +61,7 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
       <input
         ref={ref}
         className={cn(
-          "flex h-(--spacing-command-input-height) w-full rounded-(--spacing-command-content-radius) bg-transparent py-(--spacing-command-input-padding-y) text-(length:--spacing-command-item-font-size) outline-none placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:opacity-50",
+          "flex h-(--spacing-command-input-height) w-full rounded-(--spacing-command-content-radius) bg-transparent py-(--spacing-command-input-padding-y) text-(length:--font-size-command-item-font-size) outline-none placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:opacity-50",
           className
         )}
         role="combobox"
@@ -105,7 +105,7 @@ const CommandEmpty = React.forwardRef<HTMLDivElement, CommandEmptyProps>(
     <div
       ref={ref}
       className={cn(
-        "py-(--spacing-command-empty-padding-y) text-center text-(length:--spacing-command-item-font-size) text-(--color-command-empty)",
+        "py-(--spacing-command-empty-padding-y) text-center text-(length:--font-size-command-item-font-size) text-(--color-command-empty)",
         className
       )}
       role="status"
@@ -126,7 +126,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
     <div
       ref={ref}
       className={cn(
-        "overflow-hidden p-(--spacing-command-group-padding) text-(--color-command-text) **:[[cmdk-group-heading]]:px-(--spacing-command-group-heading-padding-x) **:[[cmdk-group-heading]]:py-(--spacing-command-group-heading-padding-y) **:[[cmdk-group-heading]]:text-(length:--spacing-command-group-heading-font-size) **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group-heading]]:text-(--color-command-group-heading)",
+        "overflow-hidden p-(--spacing-command-group-padding) text-(--color-command-text) **:[[cmdk-group-heading]]:px-(--spacing-command-group-heading-padding-x) **:[[cmdk-group-heading]]:py-(--spacing-command-group-heading-padding-y) **:[[cmdk-group-heading]]:text-(length:--font-size-command-group-heading-font-size) **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group-heading]]:text-(--color-command-group-heading)",
         className
       )}
       role="group"
@@ -136,7 +136,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
       {heading && (
         <div
           cmdk-group-heading=""
-          className="px-(--spacing-command-group-heading-padding-x) py-(--spacing-command-group-heading-padding-y) text-(length:--spacing-command-group-heading-font-size) font-medium text-(--color-command-group-heading)"
+          className="px-(--spacing-command-group-heading-padding-x) py-(--spacing-command-group-heading-padding-y) text-(length:--font-size-command-group-heading-font-size) font-medium text-(--color-command-group-heading)"
         >
           {heading}
         </div>
@@ -178,7 +178,7 @@ const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
     <div
       ref={ref}
       className={cn(
-        "relative flex cursor-default select-none items-center rounded-(--spacing-command-item-radius) px-(--spacing-command-item-padding-x) py-(--spacing-command-item-padding-y) text-(length:--spacing-command-item-font-size) outline-none aria-selected:bg-(--color-command-item-selected) aria-selected:text-(--color-command-item-text-selected) data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
+        "relative flex cursor-default select-none items-center rounded-(--spacing-command-item-radius) px-(--spacing-command-item-padding-x) py-(--spacing-command-item-padding-y) text-(length:--font-size-command-item-font-size) outline-none aria-selected:bg-(--color-command-item-selected) aria-selected:text-(--color-command-item-text-selected) data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         className
       )}
       role="option"
@@ -200,7 +200,7 @@ const CommandShortcut = React.forwardRef<HTMLSpanElement, CommandShortcutProps>(
       <span
         ref={ref}
         className={cn(
-          "ml-auto text-(length:--spacing-command-group-heading-font-size) tracking-widest text-(--color-command-shortcut)",
+          "ml-auto text-(length:--font-size-command-group-heading-font-size) tracking-widest text-(--color-command-shortcut)",
           className
         )}
         aria-label="Keyboard shortcut"
