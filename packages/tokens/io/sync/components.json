@@ -181,7 +181,7 @@
           }
         },
         "badge.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.full}",
           "valuesByMode": {
             "Light": "{radius.full}",
@@ -437,7 +437,7 @@
           }
         },
         "button.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.md}",
           "valuesByMode": {
             "Light": "{radius.md}",
@@ -501,7 +501,7 @@
           }
         },
         "card.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.lg}",
           "valuesByMode": {
             "Light": "{radius.lg}",
@@ -661,7 +661,7 @@
           }
         },
         "input.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.md}",
           "valuesByMode": {
             "Light": "{radius.md}",
@@ -1941,7 +1941,7 @@
           }
         },
         "tooltip.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.md}",
           "valuesByMode": {
             "Light": "{radius.md}",
@@ -2013,7 +2013,7 @@
           }
         },
         "select.trigger.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.md}",
           "valuesByMode": {
             "Light": "{radius.md}",
@@ -2045,7 +2045,7 @@
           }
         },
         "select.content.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.md}",
           "valuesByMode": {
             "Light": "{radius.md}",
@@ -2101,7 +2101,7 @@
           }
         },
         "select.item.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.sm}",
           "valuesByMode": {
             "Light": "{radius.sm}",
@@ -2149,7 +2149,7 @@
           }
         },
         "checkbox.border.width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2157,7 +2157,7 @@
           }
         },
         "checkbox.border.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.sm}",
           "valuesByMode": {
             "Light": "{radius.sm}",
@@ -2253,7 +2253,7 @@
           }
         },
         "switch.track.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.full}",
           "valuesByMode": {
             "Light": "{radius.full}",
@@ -2261,7 +2261,7 @@
           }
         },
         "switch.track.border.width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2293,7 +2293,7 @@
           }
         },
         "switch.thumb.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.full}",
           "valuesByMode": {
             "Light": "{radius.full}",
@@ -2389,7 +2389,7 @@
           }
         },
         "radio.border.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.full}",
           "valuesByMode": {
             "Light": "{radius.full}",
@@ -2445,7 +2445,7 @@
           }
         },
         "slider.track.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.full}",
           "valuesByMode": {
             "Light": "{radius.full}",
@@ -2461,7 +2461,7 @@
           }
         },
         "slider.thumb.border.width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2469,7 +2469,7 @@
           }
         },
         "slider.thumb.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.full}",
           "valuesByMode": {
             "Light": "{radius.full}",
@@ -2525,7 +2525,7 @@
           }
         },
         "textarea.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.md}",
           "valuesByMode": {
             "Light": "{radius.md}",
@@ -2717,7 +2717,7 @@
           }
         },
         "tabs.list.border.width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.1}",
           "valuesByMode": {
             "Light": "{border-width.1}",
@@ -2805,7 +2805,7 @@
           }
         },
         "tabs.trigger.border.width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2829,7 +2829,7 @@
           }
         },
         "collapsible.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.md}",
           "valuesByMode": {
             "Light": "{radius.md}",
@@ -2837,7 +2837,7 @@
           }
         },
         "collapsible.animation-duration": {
-          "$type": "spacing",
+          "$type": "duration",
           "$value": "300ms",
           "valuesByMode": {
             "Light": "300ms",
@@ -2893,7 +2893,7 @@
           }
         },
         "pagination.item.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.md}",
           "valuesByMode": {
             "Light": "{radius.md}",
@@ -2965,7 +2965,7 @@
           }
         },
         "dialog.content.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.lg}",
           "valuesByMode": {
             "Light": "{radius.lg}",
@@ -3101,7 +3101,7 @@
           }
         },
         "toast.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.md}",
           "valuesByMode": {
             "Light": "{radius.md}",
@@ -3165,7 +3165,7 @@
           }
         },
         "toast.close.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.sm}",
           "valuesByMode": {
             "Light": "{radius.sm}",
@@ -3221,7 +3221,7 @@
           }
         },
         "table.border.width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.1}",
           "valuesByMode": {
             "Light": "{border-width.1}",
@@ -3229,7 +3229,7 @@
           }
         },
         "skeleton.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.md}",
           "valuesByMode": {
             "Light": "{radius.md}",
@@ -3277,7 +3277,7 @@
           }
         },
         "progress.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.full}",
           "valuesByMode": {
             "Light": "{radius.full}",
@@ -3293,7 +3293,7 @@
           }
         },
         "scrollbar.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.full}",
           "valuesByMode": {
             "Light": "{radius.full}",
@@ -3301,7 +3301,7 @@
           }
         },
         "scrollbar.thumb.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{radius.full}",
           "valuesByMode": {
             "Light": "{radius.full}",
@@ -3669,7 +3669,7 @@
           }
         },
         "accordion.item.border.width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.1}",
           "valuesByMode": {
             "Light": "{border-width.1}",
@@ -3933,7 +3933,7 @@
           }
         },
         "toast.border-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "8px",
           "valuesByMode": {
             "Light": "8px",
@@ -4157,7 +4157,7 @@
           }
         },
         "alert.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "8px",
           "valuesByMode": {
             "Light": "8px",
@@ -4661,7 +4661,7 @@
           }
         },
         "toggle.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "6px",
           "valuesByMode": {
             "Light": "6px",
@@ -4765,7 +4765,7 @@
           }
         },
         "toast.action.radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "6px",
           "valuesByMode": {
             "Light": "6px",

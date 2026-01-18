@@ -33,6 +33,41 @@ StyleDictionary.registerFormat({
         const fontSizeName = `--font-size-${name}`;
         themeVariables.push(`  ${fontSizeName}: ${token.$value};`);
         baseVariables.push(`    ${fontSizeName}: ${token.$value};`);
+      } else if (token.$type === "dimension") {
+        // Handle dimension tokens (border-radius, border-width, etc.)
+        if (name.startsWith("border-radius-")) {
+          // Primitive tokens like "border-radius-md"
+          const radiusName = `--border-radius-${name.replace(/^border-radius-/, '')}`;
+          themeVariables.push(`  ${radiusName}: ${token.$value};`);
+          baseVariables.push(`    ${radiusName}: ${token.$value};`);
+        } else if (name.startsWith("border-width-")) {
+          // Primitive tokens like "border-width-1"
+          const widthName = `--border-width-${name.replace(/^border-width-/, '')}`;
+          themeVariables.push(`  ${widthName}: ${token.$value};`);
+          baseVariables.push(`    ${widthName}: ${token.$value};`);
+        } else {
+          // Component dimension tokens (button-radius, checkbox-border-width, etc.)
+          // Keep as --spacing- prefix for consistency with existing UI component code
+          const spacingName = `--spacing-${name}`;
+          themeVariables.push(`  ${spacingName}: ${token.$value};`);
+          baseVariables.push(`    ${spacingName}: ${token.$value};`);
+        }
+      } else if (token.$type === "duration") {
+        const durationName = `--duration-${name}`;
+        themeVariables.push(`  ${durationName}: ${token.$value};`);
+        baseVariables.push(`    ${durationName}: ${token.$value};`);
+      } else if (token.$type === "shadow") {
+        const shadowName = `--shadow-${name}`;
+        themeVariables.push(`  ${shadowName}: ${token.$value};`);
+        baseVariables.push(`    ${shadowName}: ${token.$value};`);
+      } else if (token.$type === "fontWeight") {
+        const weightName = `--font-weight-${name}`;
+        themeVariables.push(`  ${weightName}: ${token.$value};`);
+        baseVariables.push(`    ${weightName}: ${token.$value};`);
+      } else if (token.$type === "lineHeight") {
+        const lineHeightName = `--line-height-${name}`;
+        themeVariables.push(`  ${lineHeightName}: ${token.$value};`);
+        baseVariables.push(`    ${lineHeightName}: ${token.$value};`);
       } else {
         const genericName = `--${name}`;
         let value = token.$value;

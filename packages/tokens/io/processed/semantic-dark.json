@@ -336,23 +336,23 @@
     "$value": "{spacing.16}"
   },
   "radius.sm": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.sm}"
   },
   "radius.md": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "radius.lg": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.lg}"
   },
   "radius.xl": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.xl}"
   },
   "radius.full": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "color.interactive.hover": {
@@ -381,32 +381,32 @@
     "$description": "Text color on interactive backgrounds"
   },
   "border.width.none": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "0px",
     "$description": "No border"
   },
   "border.width.thin": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "1px",
     "$description": "Standard thin border"
   },
   "border.width.medium": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "2px",
     "$description": "Medium border for emphasis"
   },
   "border.width.thick": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "4px",
     "$description": "Thick border for strong emphasis"
   },
   "radius.interactive": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}",
     "$description": "Standard radius for interactive elements (buttons, inputs)"
   },
   "radius.container": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.lg}",
     "$description": "Standard radius for containers (cards, dialogs)"
   },
