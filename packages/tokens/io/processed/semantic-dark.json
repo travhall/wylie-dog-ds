@@ -293,47 +293,47 @@
   },
   "space.xs": {
     "$type": "spacing",
-    "$value": "{spacing.1}"
+    "$value": "{spacing.xs}"
   },
   "space.sm": {
     "$type": "spacing",
-    "$value": "{spacing.2}"
+    "$value": "{spacing.sm}"
   },
   "space.md": {
     "$type": "spacing",
-    "$value": "{spacing.4}"
+    "$value": "{spacing.md}"
   },
   "space.lg": {
     "$type": "spacing",
-    "$value": "{spacing.6}"
+    "$value": "{spacing.lg}"
   },
   "space.xl": {
     "$type": "spacing",
-    "$value": "{spacing.8}"
+    "$value": "{spacing.xl}"
   },
   "space.2xl": {
     "$type": "spacing",
-    "$value": "{spacing.12}"
+    "$value": "{spacing.2xl}"
   },
   "size.xs": {
     "$type": "spacing",
-    "$value": "{spacing.6}"
+    "$value": "{spacing.lg}"
   },
   "size.sm": {
     "$type": "spacing",
-    "$value": "{spacing.8}"
+    "$value": "{spacing.xl}"
   },
   "size.md": {
     "$type": "spacing",
-    "$value": "{spacing.10}"
+    "$value": "{spacing.40}"
   },
   "size.lg": {
     "$type": "spacing",
-    "$value": "{spacing.12}"
+    "$value": "{spacing.2xl}"
   },
   "size.xl": {
     "$type": "spacing",
-    "$value": "{spacing.16}"
+    "$value": "{spacing.3xl}"
   },
   "radius.sm": {
     "$type": "dimension",
@@ -497,82 +497,82 @@
   },
   "component.gap": {
     "$type": "spacing",
-    "$value": "{spacing.4}",
+    "$value": "{spacing.md}",
     "$description": "Standard gap between related elements within a component"
   },
   "component.gap-sm": {
     "$type": "spacing",
-    "$value": "{spacing.2}",
+    "$value": "{spacing.sm}",
     "$description": "Small gap for tightly grouped elements"
   },
   "component.gap-lg": {
     "$type": "spacing",
-    "$value": "{spacing.6}",
+    "$value": "{spacing.lg}",
     "$description": "Large gap for loosely grouped elements"
   },
   "interactive.padding-x": {
     "$type": "spacing",
-    "$value": "{spacing.4}",
+    "$value": "{spacing.md}",
     "$description": "Horizontal padding for interactive elements (buttons, inputs)"
   },
   "interactive.padding-y": {
     "$type": "spacing",
-    "$value": "{spacing.2}",
+    "$value": "{spacing.sm}",
     "$description": "Vertical padding for interactive elements"
   },
   "interactive.padding-sm-x": {
     "$type": "spacing",
-    "$value": "{spacing.3}",
+    "$value": "{spacing.12}",
     "$description": "Small horizontal padding for compact interactive elements"
   },
   "interactive.padding-sm-y": {
     "$type": "spacing",
-    "$value": "{spacing.1}",
+    "$value": "{spacing.xs}",
     "$description": "Small vertical padding for compact interactive elements"
   },
   "interactive.padding-lg-x": {
     "$type": "spacing",
-    "$value": "{spacing.6}",
+    "$value": "{spacing.lg}",
     "$description": "Large horizontal padding for prominent interactive elements"
   },
   "interactive.padding-lg-y": {
     "$type": "spacing",
-    "$value": "{spacing.3}",
+    "$value": "{spacing.12}",
     "$description": "Large vertical padding for prominent interactive elements"
   },
   "content.margin": {
     "$type": "spacing",
-    "$value": "{spacing.6}",
+    "$value": "{spacing.lg}",
     "$description": "Standard margin for content blocks"
   },
   "content.margin-sm": {
     "$type": "spacing",
-    "$value": "{spacing.4}",
+    "$value": "{spacing.md}",
     "$description": "Small margin for compact content"
   },
   "content.margin-lg": {
     "$type": "spacing",
-    "$value": "{spacing.8}",
+    "$value": "{spacing.xl}",
     "$description": "Large margin for section separation"
   },
   "section.gap": {
     "$type": "spacing",
-    "$value": "{spacing.12}",
+    "$value": "{spacing.2xl}",
     "$description": "Gap between major sections"
   },
   "inset.default": {
     "$type": "spacing",
-    "$value": "{spacing.4}",
+    "$value": "{spacing.md}",
     "$description": "Default inset/padding for containers"
   },
   "inset.sm": {
     "$type": "spacing",
-    "$value": "{spacing.2}",
+    "$value": "{spacing.sm}",
     "$description": "Small inset for compact containers"
   },
   "inset.lg": {
     "$type": "spacing",
-    "$value": "{spacing.6}",
+    "$value": "{spacing.lg}",
     "$description": "Large inset for spacious containers"
   },
   "font.body": {

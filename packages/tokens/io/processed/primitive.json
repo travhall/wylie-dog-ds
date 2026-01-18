@@ -351,111 +351,111 @@
     "$type": "color",
     "$value": "oklch(0.312 0.064 86.37)"
   },
-  "spacing.0": {
+  "spacing.none": {
     "$type": "spacing",
     "$value": "0px"
   },
-  "spacing.1": {
+  "spacing.xs": {
     "$type": "spacing",
     "$value": "4px"
   },
-  "spacing.1.5": {
+  "spacing.6": {
     "$type": "spacing",
     "$value": "6px"
   },
-  "spacing.2": {
+  "spacing.sm": {
     "$type": "spacing",
     "$value": "8px"
   },
-  "spacing.2.5": {
+  "spacing.10": {
     "$type": "spacing",
     "$value": "10px"
   },
-  "spacing.3": {
+  "spacing.12": {
     "$type": "spacing",
     "$value": "12px"
   },
-  "spacing.3.5": {
+  "spacing.14": {
     "$type": "spacing",
     "$value": "14px"
   },
-  "spacing.4": {
+  "spacing.md": {
     "$type": "spacing",
     "$value": "16px"
   },
-  "spacing.5": {
+  "spacing.20": {
     "$type": "spacing",
     "$value": "20px"
   },
-  "spacing.6": {
+  "spacing.lg": {
     "$type": "spacing",
     "$value": "24px"
   },
-  "spacing.7": {
+  "spacing.28": {
     "$type": "spacing",
     "$value": "28px"
   },
-  "spacing.8": {
+  "spacing.xl": {
     "$type": "spacing",
     "$value": "32px"
   },
-  "spacing.9": {
+  "spacing.36": {
     "$type": "spacing",
     "$value": "36px"
   },
-  "spacing.10": {
+  "spacing.40": {
     "$type": "spacing",
     "$value": "40px"
   },
-  "spacing.11": {
+  "spacing.44": {
     "$type": "spacing",
     "$value": "44px"
   },
-  "spacing.12": {
+  "spacing.2xl": {
     "$type": "spacing",
     "$value": "48px"
   },
-  "spacing.13": {
+  "spacing.52": {
     "$type": "spacing",
     "$value": "52px"
   },
-  "spacing.16": {
+  "spacing.3xl": {
     "$type": "spacing",
     "$value": "64px"
   },
-  "spacing.20": {
+  "spacing.80": {
     "$type": "spacing",
     "$value": "80px"
   },
-  "spacing.24": {
+  "spacing.4xl": {
     "$type": "spacing",
     "$value": "96px"
   },
-  "spacing.32": {
+  "spacing.5xl": {
     "$type": "spacing",
     "$value": "128px"
   },
-  "spacing.48": {
+  "spacing.6xl": {
     "$type": "spacing",
     "$value": "192px"
   },
-  "spacing.64": {
+  "spacing.7xl": {
     "$type": "spacing",
     "$value": "256px"
   },
-  "spacing.80": {
+  "spacing.320": {
     "$type": "spacing",
     "$value": "320px"
   },
-  "spacing.96": {
+  "spacing.8xl": {
     "$type": "spacing",
     "$value": "384px"
   },
-  "spacing.112": {
+  "spacing.448": {
     "$type": "spacing",
     "$value": "448px"
   },
-  "spacing.128": {
+  "spacing.9xl": {
     "$type": "spacing",
     "$value": "512px"
   },
