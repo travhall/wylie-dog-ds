@@ -604,63 +604,63 @@
     "$description": "Large inset for spacious containers"
   },
   "font.body": {
-    "$type": "spacing",
-    "$value": "14px",
+    "$type": "fontSize",
+    "$value": "{typography.font-size.sm}",
     "$description": "Standard body text size"
   },
   "font.body-sm": {
-    "$type": "spacing",
-    "$value": "12px",
+    "$type": "fontSize",
+    "$value": "{typography.font-size.xs}",
     "$description": "Small body text (captions, helper text)"
   },
   "font.body-lg": {
-    "$type": "spacing",
-    "$value": "16px",
+    "$type": "fontSize",
+    "$value": "{typography.font-size.base}",
     "$description": "Large body text (lead paragraphs)"
   },
   "font.label": {
-    "$type": "spacing",
-    "$value": "14px",
+    "$type": "fontSize",
+    "$value": "{typography.font-size.sm}",
     "$description": "Form labels and UI text"
   },
   "font.caption": {
-    "$type": "spacing",
-    "$value": "12px",
+    "$type": "fontSize",
+    "$value": "{typography.font-size.xs}",
     "$description": "Captions, metadata, secondary info"
   },
   "font.overline": {
-    "$type": "spacing",
-    "$value": "11px",
-    "$description": "Overline text, category labels"
+    "$type": "fontSize",
+    "$value": "{typography.font-size.xs}",
+    "$description": "Overline text, category labels (12px)"
   },
   "font.h1": {
-    "$type": "spacing",
-    "$value": "36px",
+    "$type": "fontSize",
+    "$value": "{typography.font-size.4xl}",
     "$description": "Heading level 1"
   },
   "font.h2": {
-    "$type": "spacing",
-    "$value": "30px",
+    "$type": "fontSize",
+    "$value": "{typography.font-size.3xl}",
     "$description": "Heading level 2"
   },
   "font.h3": {
-    "$type": "spacing",
-    "$value": "24px",
+    "$type": "fontSize",
+    "$value": "{typography.font-size.2xl}",
     "$description": "Heading level 3"
   },
   "font.h4": {
-    "$type": "spacing",
-    "$value": "20px",
+    "$type": "fontSize",
+    "$value": "{typography.font-size.xl}",
     "$description": "Heading level 4"
   },
   "font.h5": {
-    "$type": "spacing",
-    "$value": "16px",
+    "$type": "fontSize",
+    "$value": "{typography.font-size.base}",
     "$description": "Heading level 5"
   },
   "font.h6": {
-    "$type": "spacing",
-    "$value": "14px",
+    "$type": "fontSize",
+    "$value": "{typography.font-size.sm}",
     "$description": "Heading level 6"
   },
   "lineheight.tight": {
