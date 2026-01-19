@@ -4386,7 +4386,7 @@
           "trigger-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--menubar-trigger-radius)",
         "description": ""
       },
@@ -4397,7 +4397,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--menubar-item-radius)",
         "description": ""
       },
@@ -4781,7 +4781,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--command-content-radius)",
         "description": ""
       },
@@ -4792,7 +4792,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--command-item-radius)",
         "description": ""
       },
@@ -5414,7 +5414,7 @@
           "nav-button-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--calendar-nav-button-radius)",
         "description": ""
       },
@@ -5771,7 +5771,7 @@
           "rounded"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--avatar-rounded)",
         "description": ""
       }
@@ -5898,7 +5898,7 @@
           "link-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--breadcrumb-link-radius)",
         "description": ""
       }
@@ -6014,7 +6014,7 @@
           "button-rounded-full"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--carousel-button-rounded-full)",
         "description": ""
       }
@@ -6308,7 +6308,7 @@
           "close-button-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--dialog-close-button-radius)",
         "description": ""
       }
@@ -6506,7 +6506,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--hover-card-content-radius)",
         "description": ""
       }
@@ -6765,7 +6765,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--popover-content-radius)",
         "description": ""
       }
@@ -7049,7 +7049,7 @@
           "handle-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--resizable-handle-radius)",
         "description": ""
       }
@@ -7191,7 +7191,7 @@
           "rounded-full"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--skeleton-rounded-full)",
         "description": ""
       },
@@ -7202,7 +7202,7 @@
           "rounded-sm"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--skeleton-rounded-sm)",
         "description": ""
       }
@@ -7811,7 +7811,7 @@
           "close-button-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--toast-close-button-radius)",
         "description": ""
       },
@@ -9017,7 +9017,7 @@
           "close-button-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--sheet-close-button-radius)",
         "description": ""
       }
@@ -9199,7 +9199,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--context-menu-content-radius)",
         "description": ""
       },
@@ -9210,7 +9210,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--context-menu-item-radius)",
         "description": ""
       },
@@ -9391,7 +9391,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--dropdown-menu-content-radius)",
         "description": ""
       },
@@ -9402,7 +9402,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--dropdown-menu-item-radius)",
         "description": ""
       }
@@ -9483,7 +9483,7 @@
           "item-radius"
         ],
         "value": "16px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--feature-grid-item-radius)",
         "description": ""
       },
@@ -9494,7 +9494,7 @@
           "icon-radius"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--feature-grid-icon-radius)",
         "description": ""
       },
@@ -9573,7 +9573,7 @@
           "content-radius"
         ],
         "value": "8px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--alert-dialog-content-radius)",
         "description": ""
       },
@@ -9676,7 +9676,7 @@
           "trigger-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--navigation-menu-trigger-radius)",
         "description": ""
       },
@@ -9722,7 +9722,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--toggle-group-item-radius)",
         "description": ""
       },

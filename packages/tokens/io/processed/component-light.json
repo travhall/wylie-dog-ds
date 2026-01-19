@@ -1992,11 +1992,11 @@
     "$value": "{spacing.300}"
   },
   "feature-grid.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.2xl}"
   },
   "feature-grid.icon-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.xl}"
   },
   "feature-grid.title-font-size": {
@@ -2048,7 +2048,7 @@
     "$value": "{spacing.100}"
   },
   "alert-dialog.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.lg}"
   },
   "alert-dialog.title-font-size": {
@@ -2128,11 +2128,11 @@
     "$value": "{spacing.050}"
   },
   "command.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "command.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "command.item-font-size": {
@@ -2164,7 +2164,7 @@
     "$value": "{spacing.050}"
   },
   "navigation-menu.trigger-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "navigation-menu.trigger-font-size": {
@@ -2180,7 +2180,7 @@
     "$value": "{spacing.150}"
   },
   "toggle-group.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "toggle-group.item-font-size": {
@@ -2200,7 +2200,7 @@
     "$value": "{spacing.0}"
   },
   "calendar.nav-button-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "calendar.header-font-size": {
@@ -2240,11 +2240,11 @@
     "$value": "{spacing.050}"
   },
   "context-menu.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "context-menu.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "context-menu.item-font-size": {
@@ -2276,11 +2276,11 @@
     "$value": "{spacing.100}"
   },
   "menubar.trigger-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "menubar.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "menubar.item-font-size": {
@@ -2288,15 +2288,15 @@
     "$value": "{typography.font-size.sm}"
   },
   "dropdown-menu.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "dropdown-menu.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "resizable.handle-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "card.header-padding-top": {
@@ -2304,11 +2304,11 @@
     "$value": "{spacing.0}"
   },
   "sheet.close-button-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "avatar.rounded": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "table.header-padding-right": {
@@ -2320,7 +2320,7 @@
     "$value": "{spacing.050}"
   },
   "toast.close-button-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "toggle.radius": {
@@ -2328,31 +2328,31 @@
     "$value": "{border-radius.md}"
   },
   "dialog.close-button-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "skeleton.rounded-full": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "skeleton.rounded-sm": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "breadcrumb.link-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "hover-card.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "popover.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "carousel.button-rounded-full": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "select.separator-margin-x": {

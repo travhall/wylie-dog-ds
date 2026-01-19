@@ -3997,7 +3997,7 @@
           }
         },
         "feature-grid.item-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.2xl}",
           "valuesByMode": {
             "Light": "{border-radius.2xl}",
@@ -4005,7 +4005,7 @@
           }
         },
         "feature-grid.icon-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.xl}",
           "valuesByMode": {
             "Light": "{border-radius.xl}",
@@ -4109,7 +4109,7 @@
           }
         },
         "alert-dialog.content-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.lg}",
           "valuesByMode": {
             "Light": "{border-radius.lg}",
@@ -4269,7 +4269,7 @@
           }
         },
         "command.content-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4277,7 +4277,7 @@
           }
         },
         "command.item-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4341,7 +4341,7 @@
           }
         },
         "navigation-menu.trigger-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4373,7 +4373,7 @@
           }
         },
         "toggle-group.item-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4413,7 +4413,7 @@
           }
         },
         "calendar.nav-button-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4493,7 +4493,7 @@
           }
         },
         "context-menu.content-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4501,7 +4501,7 @@
           }
         },
         "context-menu.item-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4565,7 +4565,7 @@
           }
         },
         "menubar.trigger-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4573,7 +4573,7 @@
           }
         },
         "menubar.item-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4589,7 +4589,7 @@
           }
         },
         "dropdown-menu.content-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4597,7 +4597,7 @@
           }
         },
         "dropdown-menu.item-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4605,7 +4605,7 @@
           }
         },
         "resizable.handle-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4621,7 +4621,7 @@
           }
         },
         "sheet.close-button-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4629,7 +4629,7 @@
           }
         },
         "avatar.rounded": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.full}",
           "valuesByMode": {
             "Light": "{border-radius.full}",
@@ -4653,7 +4653,7 @@
           }
         },
         "toast.close-button-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4669,7 +4669,7 @@
           }
         },
         "dialog.close-button-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4677,7 +4677,7 @@
           }
         },
         "skeleton.rounded-full": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.full}",
           "valuesByMode": {
             "Light": "{border-radius.full}",
@@ -4685,7 +4685,7 @@
           }
         },
         "skeleton.rounded-sm": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4693,7 +4693,7 @@
           }
         },
         "breadcrumb.link-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4701,7 +4701,7 @@
           }
         },
         "hover-card.content-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4709,7 +4709,7 @@
           }
         },
         "popover.content-radius": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.md}",
           "valuesByMode": {
             "Light": "{border-radius.md}",
@@ -4717,7 +4717,7 @@
           }
         },
         "carousel.button-rounded-full": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-radius.full}",
           "valuesByMode": {
             "Light": "{border-radius.full}",
