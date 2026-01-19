@@ -1052,7 +1052,7 @@
     "$value": "{typography.font-size.sm}"
   },
   "select.separator.height": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.1}"
   },
   "checkbox.size.sm": {
@@ -1088,11 +1088,11 @@
     "$value": "{spacing.300}"
   },
   "checkbox.focus.ring.width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "checkbox.focus.ring.offset": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "switch.track.height.sm": {
@@ -1156,11 +1156,11 @@
     "$value": "{spacing.300}"
   },
   "switch.focus.ring.width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "switch.focus.ring.offset": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "switch.track.background.checked": {
@@ -1204,11 +1204,11 @@
     "$value": "{spacing.150}"
   },
   "radio.focus.ring.width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "radio.focus.ring.offset": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "slider.track.height": {
@@ -1232,11 +1232,11 @@
     "$value": "{radius.full}"
   },
   "slider.focus.ring.width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "slider.focus.ring.offset": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "textarea.min-height.sm": {
@@ -1392,7 +1392,7 @@
     "$value": "{typography.font-size.base}"
   },
   "tabs.trigger.indicator-width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.4}"
   },
   "tabs.trigger.border.width": {
@@ -1416,11 +1416,11 @@
     "$value": "300ms"
   },
   "separator.height.horizontal": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.1}"
   },
   "separator.width.vertical": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.1}"
   },
   "separator.margin.horizontal": {
@@ -1812,7 +1812,7 @@
     "$value": "{typography.font-size.xs}"
   },
   "dropdown-menu.separator.height": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.1}"
   },
   "dropdown-menu.separator.margin-y": {
@@ -1924,7 +1924,7 @@
     "$value": "{typography.font-size.xs}"
   },
   "menubar.separator.height": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.1}"
   },
   "menubar.separator.margin-y": {

@@ -4296,7 +4296,7 @@
           "height"
         ],
         "value": "1px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--menubar-separator-height)",
         "description": ""
       },
@@ -5146,7 +5146,7 @@
           "indicator-width"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--tabs-trigger-indicator-width)",
         "description": ""
       },
@@ -6990,7 +6990,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--radio-focus-ring-width)",
         "description": ""
       },
@@ -7003,7 +7003,7 @@
           "offset"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--radio-focus-ring-offset)",
         "description": ""
       }
@@ -7322,7 +7322,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--slider-focus-ring-width)",
         "description": ""
       },
@@ -7335,7 +7335,7 @@
           "offset"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--slider-focus-ring-offset)",
         "description": ""
       }
@@ -8332,7 +8332,7 @@
           "height"
         ],
         "value": "1px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--select-separator-height)",
         "description": ""
       },
@@ -8468,7 +8468,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--checkbox-focus-ring-width)",
         "description": ""
       },
@@ -8481,7 +8481,7 @@
           "offset"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--checkbox-focus-ring-offset)",
         "description": ""
       }
@@ -8689,7 +8689,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--switch-focus-ring-width)",
         "description": ""
       },
@@ -8702,7 +8702,7 @@
           "offset"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--switch-focus-ring-offset)",
         "description": ""
       },
@@ -9031,7 +9031,7 @@
           "horizontal"
         ],
         "value": "1px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--separator-height-horizontal)",
         "description": ""
       },
@@ -9043,7 +9043,7 @@
           "vertical"
         ],
         "value": "1px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--separator-width-vertical)",
         "description": ""
       },
@@ -9343,7 +9343,7 @@
           "height"
         ],
         "value": "1px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--dropdown-menu-separator-height)",
         "description": ""
       },

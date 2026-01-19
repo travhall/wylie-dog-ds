@@ -2117,7 +2117,7 @@
           }
         },
         "select.separator.height": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.1}",
           "valuesByMode": {
             "Light": "{border-width.1}",
@@ -2189,7 +2189,7 @@
           }
         },
         "checkbox.focus.ring.width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2197,7 +2197,7 @@
           }
         },
         "checkbox.focus.ring.offset": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2325,7 +2325,7 @@
           }
         },
         "switch.focus.ring.width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2333,7 +2333,7 @@
           }
         },
         "switch.focus.ring.offset": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2421,7 +2421,7 @@
           }
         },
         "radio.focus.ring.width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2429,7 +2429,7 @@
           }
         },
         "radio.focus.ring.offset": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2477,7 +2477,7 @@
           }
         },
         "slider.focus.ring.width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2485,7 +2485,7 @@
           }
         },
         "slider.focus.ring.offset": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.2}",
           "valuesByMode": {
             "Light": "{border-width.2}",
@@ -2797,7 +2797,7 @@
           }
         },
         "tabs.trigger.indicator-width": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.4}",
           "valuesByMode": {
             "Light": "{border-width.4}",
@@ -2845,7 +2845,7 @@
           }
         },
         "separator.height.horizontal": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.1}",
           "valuesByMode": {
             "Light": "{border-width.1}",
@@ -2853,7 +2853,7 @@
           }
         },
         "separator.width.vertical": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.1}",
           "valuesByMode": {
             "Light": "{border-width.1}",
@@ -3637,7 +3637,7 @@
           }
         },
         "dropdown-menu.separator.height": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.1}",
           "valuesByMode": {
             "Light": "{border-width.1}",
@@ -3861,7 +3861,7 @@
           }
         },
         "menubar.separator.height": {
-          "$type": "spacing",
+          "$type": "dimension",
           "$value": "{border-width.1}",
           "valuesByMode": {
             "Light": "{border-width.1}",
