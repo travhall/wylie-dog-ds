@@ -2838,10 +2838,10 @@
         },
         "collapsible.animation-duration": {
           "$type": "duration",
-          "$value": "300ms",
+          "$value": "{transition.duration.normal}",
           "valuesByMode": {
-            "Light": "300ms",
-            "Dark": "300ms"
+            "Light": "{transition.duration.normal}",
+            "Dark": "{transition.duration.normal}"
           }
         },
         "separator.height.horizontal": {
@@ -3934,10 +3934,10 @@
         },
         "toast.border-radius": {
           "$type": "dimension",
-          "$value": "8px",
+          "$value": "{border-radius.lg}",
           "valuesByMode": {
-            "Light": "8px",
-            "Dark": "8px"
+            "Light": "{border-radius.lg}",
+            "Dark": "{border-radius.lg}"
           }
         },
         "toast.close-padding": {
@@ -3998,34 +3998,34 @@
         },
         "feature-grid.item-radius": {
           "$type": "spacing",
-          "$value": "16px",
+          "$value": "{border-radius.2xl}",
           "valuesByMode": {
-            "Light": "16px",
-            "Dark": "16px"
+            "Light": "{border-radius.2xl}",
+            "Dark": "{border-radius.2xl}"
           }
         },
         "feature-grid.icon-radius": {
           "$type": "spacing",
-          "$value": "12px",
+          "$value": "{border-radius.xl}",
           "valuesByMode": {
-            "Light": "12px",
-            "Dark": "12px"
+            "Light": "{border-radius.xl}",
+            "Dark": "{border-radius.xl}"
           }
         },
         "feature-grid.title-font-size": {
           "$type": "fontSize",
-          "$value": "20px",
+          "$value": "{typography.font-size.xl}",
           "valuesByMode": {
-            "Light": "20px",
-            "Dark": "20px"
+            "Light": "{typography.font-size.xl}",
+            "Dark": "{typography.font-size.xl}"
           }
         },
         "feature-grid.description-font-size": {
           "$type": "fontSize",
-          "$value": "14px",
+          "$value": "{typography.font-size.sm}",
           "valuesByMode": {
-            "Light": "14px",
-            "Dark": "14px"
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "form.item-gap": {
@@ -4054,26 +4054,26 @@
         },
         "form.description-font-size": {
           "$type": "fontSize",
-          "$value": "12px",
+          "$value": "{typography.font-size.xs}",
           "valuesByMode": {
-            "Light": "12px",
-            "Dark": "12px"
+            "Light": "{typography.font-size.xs}",
+            "Dark": "{typography.font-size.xs}"
           }
         },
         "form.error-font-size": {
           "$type": "fontSize",
-          "$value": "12px",
+          "$value": "{typography.font-size.xs}",
           "valuesByMode": {
-            "Light": "12px",
-            "Dark": "12px"
+            "Light": "{typography.font-size.xs}",
+            "Dark": "{typography.font-size.xs}"
           }
         },
         "form.label-font-size": {
           "$type": "fontSize",
-          "$value": "14px",
+          "$value": "{typography.font-size.sm}",
           "valuesByMode": {
-            "Light": "14px",
-            "Dark": "14px"
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "alert-dialog.content-gap": {
@@ -4110,26 +4110,26 @@
         },
         "alert-dialog.content-radius": {
           "$type": "spacing",
-          "$value": "8px",
+          "$value": "{border-radius.lg}",
           "valuesByMode": {
-            "Light": "8px",
-            "Dark": "8px"
+            "Light": "{border-radius.lg}",
+            "Dark": "{border-radius.lg}"
           }
         },
         "alert-dialog.title-font-size": {
           "$type": "fontSize",
-          "$value": "18px",
+          "$value": "{typography.font-size.lg}",
           "valuesByMode": {
-            "Light": "18px",
-            "Dark": "18px"
+            "Light": "{typography.font-size.lg}",
+            "Dark": "{typography.font-size.lg}"
           }
         },
         "alert-dialog.description-font-size": {
           "$type": "fontSize",
-          "$value": "14px",
+          "$value": "{typography.font-size.sm}",
           "valuesByMode": {
-            "Light": "14px",
-            "Dark": "14px"
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "alert.padding-x": {
@@ -4158,10 +4158,10 @@
         },
         "alert.radius": {
           "$type": "dimension",
-          "$value": "8px",
+          "$value": "{border-radius.lg}",
           "valuesByMode": {
-            "Light": "8px",
-            "Dark": "8px"
+            "Light": "{border-radius.lg}",
+            "Dark": "{border-radius.lg}"
           }
         },
         "alert.title.font-size": {
@@ -4174,10 +4174,10 @@
         },
         "alert.description-font-size": {
           "$type": "fontSize",
-          "$value": "14px",
+          "$value": "{typography.font-size.sm}",
           "valuesByMode": {
-            "Light": "14px",
-            "Dark": "14px"
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "label.required-margin-left": {
@@ -4270,34 +4270,34 @@
         },
         "command.content-radius": {
           "$type": "spacing",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "command.item-radius": {
           "$type": "spacing",
-          "$value": "4px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "4px",
-            "Dark": "4px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "command.item-font-size": {
           "$type": "fontSize",
-          "$value": "14px",
+          "$value": "{typography.font-size.sm}",
           "valuesByMode": {
-            "Light": "14px",
-            "Dark": "14px"
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "command.group-heading-font-size": {
           "$type": "fontSize",
-          "$value": "12px",
+          "$value": "{typography.font-size.xs}",
           "valuesByMode": {
-            "Light": "12px",
-            "Dark": "12px"
+            "Light": "{typography.font-size.xs}",
+            "Dark": "{typography.font-size.xs}"
           }
         },
         "navigation-menu.list-gap": {
@@ -4342,18 +4342,18 @@
         },
         "navigation-menu.trigger-radius": {
           "$type": "spacing",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "navigation-menu.trigger-font-size": {
           "$type": "fontSize",
-          "$value": "14px",
+          "$value": "{typography.font-size.sm}",
           "valuesByMode": {
-            "Light": "14px",
-            "Dark": "14px"
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "toggle-group.gap": {
@@ -4374,18 +4374,18 @@
         },
         "toggle-group.item-radius": {
           "$type": "spacing",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "toggle-group.item-font-size": {
           "$type": "fontSize",
-          "$value": "14px",
+          "$value": "{typography.font-size.sm}",
           "valuesByMode": {
-            "Light": "14px",
-            "Dark": "14px"
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "calendar.container-gap": {
@@ -4414,26 +4414,26 @@
         },
         "calendar.nav-button-radius": {
           "$type": "spacing",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "calendar.header-font-size": {
           "$type": "fontSize",
-          "$value": "14px",
+          "$value": "{typography.font-size.sm}",
           "valuesByMode": {
-            "Light": "14px",
-            "Dark": "14px"
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "calendar.day-font-size": {
           "$type": "fontSize",
-          "$value": "12px",
+          "$value": "{typography.font-size.xs}",
           "valuesByMode": {
-            "Light": "12px",
-            "Dark": "12px"
+            "Light": "{typography.font-size.xs}",
+            "Dark": "{typography.font-size.xs}"
           }
         },
         "pagination.list-gap": {
@@ -4494,34 +4494,34 @@
         },
         "context-menu.content-radius": {
           "$type": "spacing",
-          "$value": "4px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "4px",
-            "Dark": "4px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "context-menu.item-radius": {
           "$type": "spacing",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "context-menu.item-font-size": {
           "$type": "fontSize",
-          "$value": "14px",
+          "$value": "{typography.font-size.sm}",
           "valuesByMode": {
-            "Light": "14px",
-            "Dark": "14px"
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "context-menu.shortcut-font-size": {
           "$type": "fontSize",
-          "$value": "12px",
+          "$value": "{typography.font-size.xs}",
           "valuesByMode": {
-            "Light": "12px",
-            "Dark": "12px"
+            "Light": "{typography.font-size.xs}",
+            "Dark": "{typography.font-size.xs}"
           }
         },
         "menubar.list-gap": {
@@ -4566,50 +4566,50 @@
         },
         "menubar.trigger-radius": {
           "$type": "spacing",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "menubar.item-radius": {
           "$type": "spacing",
-          "$value": "4px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "4px",
-            "Dark": "4px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "menubar.item-font-size": {
           "$type": "fontSize",
-          "$value": "14px",
+          "$value": "{typography.font-size.sm}",
           "valuesByMode": {
-            "Light": "14px",
-            "Dark": "14px"
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "dropdown-menu.content-radius": {
           "$type": "spacing",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "dropdown-menu.item-radius": {
           "$type": "spacing",
-          "$value": "4px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "4px",
-            "Dark": "4px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "resizable.handle-radius": {
           "$type": "spacing",
-          "$value": "4px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "4px",
-            "Dark": "4px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "card.header-padding-top": {
@@ -4622,18 +4622,18 @@
         },
         "sheet.close-button-radius": {
           "$type": "spacing",
-          "$value": "4px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "4px",
-            "Dark": "4px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "avatar.rounded": {
           "$type": "spacing",
-          "$value": "9999px",
+          "$value": "{border-radius.full}",
           "valuesByMode": {
-            "Light": "9999px",
-            "Dark": "9999px"
+            "Light": "{border-radius.full}",
+            "Dark": "{border-radius.full}"
           }
         },
         "table.header-padding-right": {
@@ -4654,74 +4654,74 @@
         },
         "toast.close-button-radius": {
           "$type": "spacing",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "toggle.radius": {
           "$type": "dimension",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "dialog.close-button-radius": {
           "$type": "spacing",
-          "$value": "4px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "4px",
-            "Dark": "4px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "skeleton.rounded-full": {
           "$type": "spacing",
-          "$value": "9999px",
+          "$value": "{border-radius.full}",
           "valuesByMode": {
-            "Light": "9999px",
-            "Dark": "9999px"
+            "Light": "{border-radius.full}",
+            "Dark": "{border-radius.full}"
           }
         },
         "skeleton.rounded-sm": {
           "$type": "spacing",
-          "$value": "4px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "4px",
-            "Dark": "4px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "breadcrumb.link-radius": {
           "$type": "spacing",
-          "$value": "4px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "4px",
-            "Dark": "4px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "hover-card.content-radius": {
           "$type": "spacing",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "popover.content-radius": {
           "$type": "spacing",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         },
         "carousel.button-rounded-full": {
           "$type": "spacing",
-          "$value": "9999px",
+          "$value": "{border-radius.full}",
           "valuesByMode": {
-            "Light": "9999px",
-            "Dark": "9999px"
+            "Light": "{border-radius.full}",
+            "Dark": "{border-radius.full}"
           }
         },
         "select.separator-margin-x": {
@@ -4758,18 +4758,18 @@
         },
         "toggle.font-size": {
           "$type": "fontSize",
-          "$value": "14px",
+          "$value": "{typography.font-size.sm}",
           "valuesByMode": {
-            "Light": "14px",
-            "Dark": "14px"
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "toast.action.radius": {
           "$type": "dimension",
-          "$value": "6px",
+          "$value": "{border-radius.md}",
           "valuesByMode": {
-            "Light": "6px",
-            "Dark": "6px"
+            "Light": "{border-radius.md}",
+            "Dark": "{border-radius.md}"
           }
         }
       }

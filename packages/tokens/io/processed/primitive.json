@@ -547,7 +547,7 @@
   },
   "border-radius.md": {
     "$type": "dimension",
-    "$value": "6px"
+    "$value": "4px"
   },
   "border-radius.lg": {
     "$type": "dimension",
