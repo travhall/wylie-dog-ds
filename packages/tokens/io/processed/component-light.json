@@ -973,7 +973,7 @@
   },
   "tooltip.max-width": {
     "$type": "spacing",
-    "$value": "{spacing.320}"
+    "$value": "{spacing.1600}"
   },
   "select.trigger.height.sm": {
     "$type": "spacing",
@@ -1061,7 +1061,7 @@
   },
   "checkbox.size.md": {
     "$type": "spacing",
-    "$value": "{spacing.20}"
+    "$value": "{spacing.lg}"
   },
   "checkbox.size.lg": {
     "$type": "spacing",
@@ -1077,7 +1077,7 @@
   },
   "checkbox.icon.size.sm": {
     "$type": "spacing",
-    "$value": "{spacing.12}"
+    "$value": "{spacing.150}"
   },
   "checkbox.icon.size.md": {
     "$type": "spacing",
@@ -1085,7 +1085,7 @@
   },
   "checkbox.icon.size.lg": {
     "$type": "spacing",
-    "$value": "{spacing.20}"
+    "$value": "{spacing.lg}"
   },
   "checkbox.focus.ring.width": {
     "$type": "spacing",
@@ -1097,7 +1097,7 @@
   },
   "switch.track.height.sm": {
     "$type": "spacing",
-    "$value": "{spacing.20}"
+    "$value": "{spacing.lg}"
   },
   "switch.track.height.md": {
     "$type": "spacing",
@@ -1105,19 +1105,19 @@
   },
   "switch.track.height.lg": {
     "$type": "spacing",
-    "$value": "{spacing.28}"
+    "$value": "{spacing.300}"
   },
   "switch.track.width.sm": {
     "$type": "spacing",
-    "$value": "{spacing.36}"
+    "$value": "{spacing.xl}"
   },
   "switch.track.width.md": {
     "$type": "spacing",
-    "$value": "{spacing.44}"
+    "$value": "{spacing.500}"
   },
   "switch.track.width.lg": {
     "$type": "spacing",
-    "$value": "{spacing.52}"
+    "$value": "{spacing.700}"
   },
   "switch.track.radius": {
     "$type": "dimension",
@@ -1133,7 +1133,7 @@
   },
   "switch.thumb.size.md": {
     "$type": "spacing",
-    "$value": "{spacing.20}"
+    "$value": "{spacing.lg}"
   },
   "switch.thumb.size.lg": {
     "$type": "spacing",
@@ -1149,7 +1149,7 @@
   },
   "switch.thumb.translate.md": {
     "$type": "spacing",
-    "$value": "{spacing.20}"
+    "$value": "{spacing.lg}"
   },
   "switch.thumb.translate.lg": {
     "$type": "spacing",
@@ -1181,7 +1181,7 @@
   },
   "radio.size.md": {
     "$type": "spacing",
-    "$value": "{spacing.20}"
+    "$value": "{spacing.lg}"
   },
   "radio.size.lg": {
     "$type": "spacing",
@@ -1201,7 +1201,7 @@
   },
   "radio.indicator.size.lg": {
     "$type": "spacing",
-    "$value": "{spacing.12}"
+    "$value": "{spacing.150}"
   },
   "radio.focus.ring.width": {
     "$type": "spacing",
@@ -1221,7 +1221,7 @@
   },
   "slider.thumb.size": {
     "$type": "spacing",
-    "$value": "{spacing.20}"
+    "$value": "{spacing.lg}"
   },
   "slider.thumb.border.width": {
     "$type": "dimension",
@@ -1241,7 +1241,7 @@
   },
   "textarea.min-height.sm": {
     "$type": "spacing",
-    "$value": "{spacing.80}"
+    "$value": "{spacing.900}"
   },
   "textarea.min-height.md": {
     "$type": "spacing",
@@ -1285,7 +1285,7 @@
   },
   "sheet.content.width.sm": {
     "$type": "spacing",
-    "$value": "{spacing.320}"
+    "$value": "{spacing.1600}"
   },
   "sheet.content.width.md": {
     "$type": "spacing",
@@ -1345,7 +1345,7 @@
   },
   "tabs.list.padding.lg": {
     "$type": "spacing",
-    "$value": "{spacing.6}"
+    "$value": "{spacing.xs}"
   },
   "tabs.list.gap": {
     "$type": "spacing",
@@ -1373,7 +1373,7 @@
   },
   "tabs.trigger.padding-y.md": {
     "$type": "spacing",
-    "$value": "{spacing.6}"
+    "$value": "{spacing.xs}"
   },
   "tabs.trigger.padding-y.lg": {
     "$type": "spacing",
@@ -1573,7 +1573,7 @@
   },
   "toast.close.size": {
     "$type": "spacing",
-    "$value": "{spacing.20}"
+    "$value": "{spacing.lg}"
   },
   "toast.close.radius": {
     "$type": "dimension",
@@ -1685,11 +1685,11 @@
   },
   "calendar.cell.size": {
     "$type": "spacing",
-    "$value": "{spacing.36}"
+    "$value": "{spacing.xl}"
   },
   "calendar.day.size": {
     "$type": "spacing",
-    "$value": "{spacing.36}"
+    "$value": "{spacing.xl}"
   },
   "avatar.size.sm": {
     "$type": "spacing",
@@ -1709,15 +1709,15 @@
   },
   "breadcrumb.list.gap": {
     "$type": "spacing",
-    "$value": "{spacing.6}"
+    "$value": "{spacing.xs}"
   },
   "breadcrumb.item.gap": {
     "$type": "spacing",
-    "$value": "{spacing.6}"
+    "$value": "{spacing.xs}"
   },
   "breadcrumb.gap": {
     "$type": "spacing",
-    "$value": "{spacing.6}"
+    "$value": "{spacing.xs}"
   },
   "breadcrumb.font-size": {
     "$type": "fontSize",
@@ -1725,11 +1725,11 @@
   },
   "breadcrumb.separator.size": {
     "$type": "spacing",
-    "$value": "{spacing.14}"
+    "$value": "{spacing.md}"
   },
   "breadcrumb.ellipsis.size": {
     "$type": "spacing",
-    "$value": "{spacing.36}"
+    "$value": "{spacing.xl}"
   },
   "carousel.item.spacing": {
     "$type": "spacing",
@@ -1761,7 +1761,7 @@
   },
   "context-menu.item.padding-y": {
     "$type": "spacing",
-    "$value": "{spacing.6}"
+    "$value": "{spacing.xs}"
   },
   "context-menu.item.padding-x": {
     "$type": "spacing",
@@ -1773,7 +1773,7 @@
   },
   "context-menu.item.indicator.size": {
     "$type": "spacing",
-    "$value": "{spacing.14}"
+    "$value": "{spacing.md}"
   },
   "context-menu.item.icon.size": {
     "$type": "spacing",
@@ -1789,7 +1789,7 @@
   },
   "dropdown-menu.item.padding-y": {
     "$type": "spacing",
-    "$value": "{spacing.6}"
+    "$value": "{spacing.xs}"
   },
   "dropdown-menu.item.padding-x": {
     "$type": "spacing",
@@ -1825,7 +1825,7 @@
   },
   "dropdown-menu.item.indicator.size": {
     "$type": "spacing",
-    "$value": "{spacing.14}"
+    "$value": "{spacing.md}"
   },
   "accordion.item.border.width": {
     "$type": "dimension",
@@ -1865,11 +1865,11 @@
   },
   "toggle.size.sm.height": {
     "$type": "spacing",
-    "$value": "{spacing.36}"
+    "$value": "{spacing.xl}"
   },
   "toggle.size.sm.padding-x": {
     "$type": "spacing",
-    "$value": "{spacing.10}"
+    "$value": "{spacing.sm}"
   },
   "toggle.size.lg.height": {
     "$type": "spacing",
@@ -1877,7 +1877,7 @@
   },
   "toggle.size.lg.padding-x": {
     "$type": "spacing",
-    "$value": "{spacing.20}"
+    "$value": "{spacing.lg}"
   },
   "menubar.root.height": {
     "$type": "spacing",
@@ -1893,7 +1893,7 @@
   },
   "menubar.trigger.padding-y": {
     "$type": "spacing",
-    "$value": "{spacing.6}"
+    "$value": "{spacing.xs}"
   },
   "menubar.content.min-width": {
     "$type": "spacing",
@@ -1913,7 +1913,7 @@
   },
   "menubar.item.indicator-size": {
     "$type": "spacing",
-    "$value": "{spacing.14}"
+    "$value": "{spacing.md}"
   },
   "menubar.item.icon-size": {
     "$type": "spacing",

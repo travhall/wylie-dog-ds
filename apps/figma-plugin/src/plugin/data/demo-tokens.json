@@ -119,10 +119,6 @@
         "color.red.700": {
           "$type": "color",
           "$value": "oklch(0.505 0.19 27.52)"
-        },
-        "spacing.12": {
-          "$type": "spacing",
-          "$value": "12px"
         }
       }
     }

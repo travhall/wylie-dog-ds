@@ -1958,10 +1958,10 @@
         },
         "tooltip.max-width": {
           "$type": "spacing",
-          "$value": "{spacing.320}",
+          "$value": "{spacing.1600}",
           "valuesByMode": {
-            "Light": "{spacing.320}",
-            "Dark": "{spacing.320}"
+            "Light": "{spacing.1600}",
+            "Dark": "{spacing.1600}"
           }
         },
         "select.trigger.height.sm": {
@@ -2166,10 +2166,10 @@
         },
         "checkbox.icon.size.sm": {
           "$type": "spacing",
-          "$value": "{spacing.12}",
+          "$value": "{spacing.150}",
           "valuesByMode": {
-            "Light": "{spacing.12}",
-            "Dark": "{spacing.12}"
+            "Light": "{spacing.150}",
+            "Dark": "{spacing.150}"
           }
         },
         "checkbox.icon.size.md": {
@@ -2222,10 +2222,10 @@
         },
         "switch.track.height.lg": {
           "$type": "spacing",
-          "$value": "{spacing.28}",
+          "$value": "{spacing.300}",
           "valuesByMode": {
-            "Light": "{spacing.28}",
-            "Dark": "{spacing.28}"
+            "Light": "{spacing.300}",
+            "Dark": "{spacing.300}"
           }
         },
         "switch.track.width.sm": {
@@ -2238,18 +2238,18 @@
         },
         "switch.track.width.md": {
           "$type": "spacing",
-          "$value": "{spacing.44}",
+          "$value": "{spacing.500}",
           "valuesByMode": {
-            "Light": "{spacing.44}",
-            "Dark": "{spacing.44}"
+            "Light": "{spacing.500}",
+            "Dark": "{spacing.500}"
           }
         },
         "switch.track.width.lg": {
           "$type": "spacing",
-          "$value": "{spacing.52}",
+          "$value": "{spacing.700}",
           "valuesByMode": {
-            "Light": "{spacing.52}",
-            "Dark": "{spacing.52}"
+            "Light": "{spacing.700}",
+            "Dark": "{spacing.700}"
           }
         },
         "switch.track.radius": {
@@ -2414,10 +2414,10 @@
         },
         "radio.indicator.size.lg": {
           "$type": "spacing",
-          "$value": "{spacing.12}",
+          "$value": "{spacing.150}",
           "valuesByMode": {
-            "Light": "{spacing.12}",
-            "Dark": "{spacing.12}"
+            "Light": "{spacing.150}",
+            "Dark": "{spacing.150}"
           }
         },
         "radio.focus.ring.width": {
@@ -2494,10 +2494,10 @@
         },
         "textarea.min-height.sm": {
           "$type": "spacing",
-          "$value": "{spacing.80}",
+          "$value": "{spacing.900}",
           "valuesByMode": {
-            "Light": "{spacing.80}",
-            "Dark": "{spacing.80}"
+            "Light": "{spacing.900}",
+            "Dark": "{spacing.900}"
           }
         },
         "textarea.min-height.md": {
@@ -2582,10 +2582,10 @@
         },
         "sheet.content.width.sm": {
           "$type": "spacing",
-          "$value": "{spacing.320}",
+          "$value": "{spacing.1600}",
           "valuesByMode": {
-            "Light": "{spacing.320}",
-            "Dark": "{spacing.320}"
+            "Light": "{spacing.1600}",
+            "Dark": "{spacing.1600}"
           }
         },
         "sheet.content.width.md": {

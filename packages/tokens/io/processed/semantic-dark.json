@@ -293,47 +293,75 @@
   },
   "space.xs": {
     "$type": "spacing",
-    "$value": "{spacing.xs}"
+    "$value": "{spacing.050}"
   },
   "space.sm": {
     "$type": "spacing",
-    "$value": "{spacing.sm}"
+    "$value": "{spacing.100}"
   },
   "space.md": {
     "$type": "spacing",
-    "$value": "{spacing.md}"
+    "$value": "{spacing.200}"
   },
   "space.lg": {
     "$type": "spacing",
-    "$value": "{spacing.lg}"
+    "$value": "{spacing.300}"
   },
   "space.xl": {
     "$type": "spacing",
-    "$value": "{spacing.xl}"
+    "$value": "{spacing.400}"
   },
   "space.2xl": {
     "$type": "spacing",
-    "$value": "{spacing.2xl}"
+    "$value": "{spacing.600}"
+  },
+  "space.3xl": {
+    "$type": "spacing",
+    "$value": "{spacing.800}"
+  },
+  "space.4xl": {
+    "$type": "spacing",
+    "$value": "{spacing.1000}"
+  },
+  "space.5xl": {
+    "$type": "spacing",
+    "$value": "{spacing.1200}"
+  },
+  "space.6xl": {
+    "$type": "spacing",
+    "$value": "{spacing.1400}"
+  },
+  "space.7xl": {
+    "$type": "spacing",
+    "$value": "{spacing.1500}"
+  },
+  "space.8xl": {
+    "$type": "spacing",
+    "$value": "{spacing.1600}"
+  },
+  "space.9xl": {
+    "$type": "spacing",
+    "$value": "{spacing.1700}"
   },
   "size.xs": {
     "$type": "spacing",
-    "$value": "{spacing.lg}"
+    "$value": "{spacing.300}"
   },
   "size.sm": {
     "$type": "spacing",
-    "$value": "{spacing.xl}"
+    "$value": "{spacing.400}"
   },
   "size.md": {
     "$type": "spacing",
-    "$value": "{spacing.40}"
+    "$value": "{spacing.500}"
   },
   "size.lg": {
     "$type": "spacing",
-    "$value": "{spacing.2xl}"
+    "$value": "{spacing.600}"
   },
   "size.xl": {
     "$type": "spacing",
-    "$value": "{spacing.3xl}"
+    "$value": "{spacing.800}"
   },
   "radius.sm": {
     "$type": "dimension",
@@ -522,7 +550,7 @@
   },
   "interactive.padding-sm-x": {
     "$type": "spacing",
-    "$value": "{spacing.12}",
+    "$value": "{spacing.150}",
     "$description": "Small horizontal padding for compact interactive elements"
   },
   "interactive.padding-sm-y": {
@@ -537,7 +565,7 @@
   },
   "interactive.padding-lg-y": {
     "$type": "spacing",
-    "$value": "{spacing.12}",
+    "$value": "{spacing.150}",
     "$description": "Large vertical padding for prominent interactive elements"
   },
   "content.margin": {
