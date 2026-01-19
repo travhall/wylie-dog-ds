@@ -1075,301 +1075,235 @@
       }
     },
     "spacing": {
-      "spacing-none": {
-        "name": "spacingNone",
+      "spacing-0": {
+        "name": "spacing0",
         "path": [
           "spacing",
-          "none"
+          "0"
         ],
         "value": "0px",
         "type": "spacing",
-        "variable": "var(--spacing-none)",
+        "variable": "var(--spacing-0)",
         "description": ""
       },
-      "spacing-xs": {
-        "name": "spacingXs",
+      "spacing-050": {
+        "name": "spacing050",
         "path": [
           "spacing",
-          "xs"
+          "050"
         ],
         "value": "4px",
         "type": "spacing",
-        "variable": "var(--spacing-xs)",
+        "variable": "var(--spacing-050)",
         "description": ""
       },
-      "spacing-6": {
-        "name": "spacing6",
+      "spacing-100": {
+        "name": "spacing100",
         "path": [
           "spacing",
-          "6"
-        ],
-        "value": "6px",
-        "type": "spacing",
-        "variable": "var(--spacing-6)",
-        "description": ""
-      },
-      "spacing-sm": {
-        "name": "spacingSm",
-        "path": [
-          "spacing",
-          "sm"
+          "100"
         ],
         "value": "8px",
         "type": "spacing",
-        "variable": "var(--spacing-sm)",
+        "variable": "var(--spacing-100)",
         "description": ""
       },
-      "spacing-10": {
-        "name": "spacing10",
+      "spacing-150": {
+        "name": "spacing150",
         "path": [
           "spacing",
-          "10"
-        ],
-        "value": "10px",
-        "type": "spacing",
-        "variable": "var(--spacing-10)",
-        "description": ""
-      },
-      "spacing-12": {
-        "name": "spacing12",
-        "path": [
-          "spacing",
-          "12"
+          "150"
         ],
         "value": "12px",
         "type": "spacing",
-        "variable": "var(--spacing-12)",
+        "variable": "var(--spacing-150)",
         "description": ""
       },
-      "spacing-14": {
-        "name": "spacing14",
+      "spacing-200": {
+        "name": "spacing200",
         "path": [
           "spacing",
-          "14"
-        ],
-        "value": "14px",
-        "type": "spacing",
-        "variable": "var(--spacing-14)",
-        "description": ""
-      },
-      "spacing-md": {
-        "name": "spacingMd",
-        "path": [
-          "spacing",
-          "md"
+          "200"
         ],
         "value": "16px",
         "type": "spacing",
-        "variable": "var(--spacing-md)",
+        "variable": "var(--spacing-200)",
         "description": ""
       },
-      "spacing-20": {
-        "name": "spacing20",
+      "spacing-300": {
+        "name": "spacing300",
         "path": [
           "spacing",
-          "20"
-        ],
-        "value": "20px",
-        "type": "spacing",
-        "variable": "var(--spacing-20)",
-        "description": ""
-      },
-      "spacing-lg": {
-        "name": "spacingLg",
-        "path": [
-          "spacing",
-          "lg"
+          "300"
         ],
         "value": "24px",
         "type": "spacing",
-        "variable": "var(--spacing-lg)",
+        "variable": "var(--spacing-300)",
         "description": ""
       },
-      "spacing-28": {
-        "name": "spacing28",
+      "spacing-400": {
+        "name": "spacing400",
         "path": [
           "spacing",
-          "28"
-        ],
-        "value": "28px",
-        "type": "spacing",
-        "variable": "var(--spacing-28)",
-        "description": ""
-      },
-      "spacing-xl": {
-        "name": "spacingXl",
-        "path": [
-          "spacing",
-          "xl"
+          "400"
         ],
         "value": "32px",
         "type": "spacing",
-        "variable": "var(--spacing-xl)",
+        "variable": "var(--spacing-400)",
         "description": ""
       },
-      "spacing-36": {
-        "name": "spacing36",
+      "spacing-500": {
+        "name": "spacing500",
         "path": [
           "spacing",
-          "36"
-        ],
-        "value": "36px",
-        "type": "spacing",
-        "variable": "var(--spacing-36)",
-        "description": ""
-      },
-      "spacing-40": {
-        "name": "spacing40",
-        "path": [
-          "spacing",
-          "40"
+          "500"
         ],
         "value": "40px",
         "type": "spacing",
-        "variable": "var(--spacing-40)",
+        "variable": "var(--spacing-500)",
         "description": ""
       },
-      "spacing-44": {
-        "name": "spacing44",
+      "spacing-600": {
+        "name": "spacing600",
         "path": [
           "spacing",
-          "44"
-        ],
-        "value": "44px",
-        "type": "spacing",
-        "variable": "var(--spacing-44)",
-        "description": ""
-      },
-      "spacing-2xl": {
-        "name": "spacing2xl",
-        "path": [
-          "spacing",
-          "2xl"
+          "600"
         ],
         "value": "48px",
         "type": "spacing",
-        "variable": "var(--spacing-2xl)",
+        "variable": "var(--spacing-600)",
         "description": ""
       },
-      "spacing-52": {
-        "name": "spacing52",
+      "spacing-700": {
+        "name": "spacing700",
         "path": [
           "spacing",
-          "52"
+          "700"
         ],
-        "value": "52px",
+        "value": "60px",
         "type": "spacing",
-        "variable": "var(--spacing-52)",
+        "variable": "var(--spacing-700)",
         "description": ""
       },
-      "spacing-3xl": {
-        "name": "spacing3xl",
+      "spacing-800": {
+        "name": "spacing800",
         "path": [
           "spacing",
-          "3xl"
+          "800"
         ],
-        "value": "64px",
+        "value": "72px",
         "type": "spacing",
-        "variable": "var(--spacing-3xl)",
+        "variable": "var(--spacing-800)",
         "description": ""
       },
-      "spacing-80": {
-        "name": "spacing80",
+      "spacing-900": {
+        "name": "spacing900",
         "path": [
           "spacing",
-          "80"
+          "900"
         ],
-        "value": "80px",
+        "value": "84px",
         "type": "spacing",
-        "variable": "var(--spacing-80)",
+        "variable": "var(--spacing-900)",
         "description": ""
       },
-      "spacing-4xl": {
-        "name": "spacing4xl",
+      "spacing-1000": {
+        "name": "spacing1000",
         "path": [
           "spacing",
-          "4xl"
+          "1000"
         ],
         "value": "96px",
         "type": "spacing",
-        "variable": "var(--spacing-4xl)",
+        "variable": "var(--spacing-1000)",
         "description": ""
       },
-      "spacing-5xl": {
-        "name": "spacing5xl",
+      "spacing-1100": {
+        "name": "spacing1100",
         "path": [
           "spacing",
-          "5xl"
+          "1100"
+        ],
+        "value": "112px",
+        "type": "spacing",
+        "variable": "var(--spacing-1100)",
+        "description": ""
+      },
+      "spacing-1200": {
+        "name": "spacing1200",
+        "path": [
+          "spacing",
+          "1200"
         ],
         "value": "128px",
         "type": "spacing",
-        "variable": "var(--spacing-5xl)",
+        "variable": "var(--spacing-1200)",
         "description": ""
       },
-      "spacing-6xl": {
-        "name": "spacing6xl",
+      "spacing-1300": {
+        "name": "spacing1300",
         "path": [
           "spacing",
-          "6xl"
+          "1300"
+        ],
+        "value": "160px",
+        "type": "spacing",
+        "variable": "var(--spacing-1300)",
+        "description": ""
+      },
+      "spacing-1400": {
+        "name": "spacing1400",
+        "path": [
+          "spacing",
+          "1400"
         ],
         "value": "192px",
         "type": "spacing",
-        "variable": "var(--spacing-6xl)",
+        "variable": "var(--spacing-1400)",
         "description": ""
       },
-      "spacing-7xl": {
-        "name": "spacing7xl",
+      "spacing-1500": {
+        "name": "spacing1500",
         "path": [
           "spacing",
-          "7xl"
+          "1500"
         ],
         "value": "256px",
         "type": "spacing",
-        "variable": "var(--spacing-7xl)",
+        "variable": "var(--spacing-1500)",
         "description": ""
       },
-      "spacing-320": {
-        "name": "spacing320",
+      "spacing-1600": {
+        "name": "spacing1600",
         "path": [
           "spacing",
-          "320"
+          "1600"
         ],
         "value": "320px",
         "type": "spacing",
-        "variable": "var(--spacing-320)",
+        "variable": "var(--spacing-1600)",
         "description": ""
       },
-      "spacing-8xl": {
-        "name": "spacing8xl",
+      "spacing-1700": {
+        "name": "spacing1700",
         "path": [
           "spacing",
-          "8xl"
-        ],
-        "value": "384px",
-        "type": "spacing",
-        "variable": "var(--spacing-8xl)",
-        "description": ""
-      },
-      "spacing-448": {
-        "name": "spacing448",
-        "path": [
-          "spacing",
-          "448"
+          "1700"
         ],
         "value": "448px",
         "type": "spacing",
-        "variable": "var(--spacing-448)",
+        "variable": "var(--spacing-1700)",
         "description": ""
       },
-      "spacing-9xl": {
-        "name": "spacing9xl",
+      "spacing-1800": {
+        "name": "spacing1800",
         "path": [
           "spacing",
-          "9xl"
+          "1800"
         ],
-        "value": "512px",
+        "value": "576px",
         "type": "spacing",
-        "variable": "var(--spacing-9xl)",
+        "variable": "var(--spacing-1800)",
         "description": ""
       }
     },
@@ -4265,7 +4199,7 @@
           "trigger",
           "padding-y"
         ],
-        "value": "6px",
+        "value": "4px",
         "type": "spacing",
         "variable": "var(--menubar-trigger-padding-y)",
         "description": ""
@@ -4325,7 +4259,7 @@
           "item",
           "indicator-size"
         ],
-        "value": "14px",
+        "value": "16px",
         "type": "spacing",
         "variable": "var(--menubar-item-indicator-size)",
         "description": ""
@@ -5057,7 +4991,7 @@
           "padding",
           "lg"
         ],
-        "value": "6px",
+        "value": "4px",
         "type": "spacing",
         "variable": "var(--tabs-list-padding-lg)",
         "description": ""
@@ -5147,7 +5081,7 @@
           "padding-y",
           "md"
         ],
-        "value": "6px",
+        "value": "4px",
         "type": "spacing",
         "variable": "var(--tabs-trigger-padding-y-md)",
         "description": ""
@@ -5398,7 +5332,7 @@
           "button",
           "size"
         ],
-        "value": "28px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--calendar-nav-button-size)",
         "description": ""
@@ -5423,7 +5357,7 @@
           "cell",
           "size"
         ],
-        "value": "36px",
+        "value": "32px",
         "type": "spacing",
         "variable": "var(--calendar-cell-size)",
         "description": ""
@@ -5435,7 +5369,7 @@
           "day",
           "size"
         ],
-        "value": "36px",
+        "value": "32px",
         "type": "spacing",
         "variable": "var(--calendar-day-size)",
         "description": ""
@@ -5825,7 +5759,7 @@
           "size",
           "xl"
         ],
-        "value": "64px",
+        "value": "72px",
         "type": "spacing",
         "variable": "var(--avatar-size-xl)",
         "description": ""
@@ -5894,7 +5828,7 @@
           "list",
           "gap"
         ],
-        "value": "6px",
+        "value": "4px",
         "type": "spacing",
         "variable": "var(--breadcrumb-list-gap)",
         "description": ""
@@ -5906,7 +5840,7 @@
           "item",
           "gap"
         ],
-        "value": "6px",
+        "value": "4px",
         "type": "spacing",
         "variable": "var(--breadcrumb-item-gap)",
         "description": ""
@@ -5917,7 +5851,7 @@
           "breadcrumb",
           "gap"
         ],
-        "value": "6px",
+        "value": "4px",
         "type": "spacing",
         "variable": "var(--breadcrumb-gap)",
         "description": ""
@@ -5940,7 +5874,7 @@
           "separator",
           "size"
         ],
-        "value": "14px",
+        "value": "16px",
         "type": "spacing",
         "variable": "var(--breadcrumb-separator-size)",
         "description": ""
@@ -5952,7 +5886,7 @@
           "ellipsis",
           "size"
         ],
-        "value": "36px",
+        "value": "32px",
         "type": "spacing",
         "variable": "var(--breadcrumb-ellipsis-size)",
         "description": ""
@@ -6241,7 +6175,7 @@
           "width",
           "md"
         ],
-        "value": "384px",
+        "value": "320px",
         "type": "spacing",
         "variable": "var(--dialog-content-width-md)",
         "description": ""
@@ -6266,7 +6200,7 @@
           "content",
           "max-width"
         ],
-        "value": "512px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--dialog-content-max-width)",
         "description": ""
@@ -6548,7 +6482,7 @@
           "width",
           "lg"
         ],
-        "value": "384px",
+        "value": "320px",
         "type": "spacing",
         "variable": "var(--hover-card-content-width-lg)",
         "description": ""
@@ -6807,7 +6741,7 @@
           "width",
           "lg"
         ],
-        "value": "384px",
+        "value": "320px",
         "type": "spacing",
         "variable": "var(--popover-content-width-lg)",
         "description": ""
@@ -6979,7 +6913,7 @@
           "size",
           "md"
         ],
-        "value": "20px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--radio-size-md)",
         "description": ""
@@ -7349,7 +7283,7 @@
           "thumb",
           "size"
         ],
-        "value": "20px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--slider-thumb-size)",
         "description": ""
@@ -7643,7 +7577,7 @@
           "toast",
           "width"
         ],
-        "value": "384px",
+        "value": "320px",
         "type": "spacing",
         "variable": "var(--toast-width)",
         "description": ""
@@ -7748,7 +7682,7 @@
           "close",
           "size"
         ],
-        "value": "20px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--toast-close-size)",
         "description": ""
@@ -7995,7 +7929,7 @@
           "sm",
           "height"
         ],
-        "value": "36px",
+        "value": "32px",
         "type": "spacing",
         "variable": "var(--toggle-size-sm-height)",
         "description": ""
@@ -8008,7 +7942,7 @@
           "sm",
           "padding-x"
         ],
-        "value": "10px",
+        "value": "8px",
         "type": "spacing",
         "variable": "var(--toggle-size-sm-padding-x)",
         "description": ""
@@ -8021,7 +7955,7 @@
           "lg",
           "height"
         ],
-        "value": "44px",
+        "value": "40px",
         "type": "spacing",
         "variable": "var(--toggle-size-lg-height)",
         "description": ""
@@ -8034,7 +7968,7 @@
           "lg",
           "padding-x"
         ],
-        "value": "20px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--toggle-size-lg-padding-x)",
         "description": ""
@@ -8313,7 +8247,7 @@
           "content",
           "max-height"
         ],
-        "value": "384px",
+        "value": "320px",
         "type": "spacing",
         "variable": "var(--select-content-max-height)",
         "description": ""
@@ -8445,7 +8379,7 @@
           "size",
           "md"
         ],
-        "value": "20px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--checkbox-size-md)",
         "description": ""
@@ -8520,7 +8454,7 @@
           "size",
           "lg"
         ],
-        "value": "20px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--checkbox-icon-size-lg)",
         "description": ""
@@ -8561,7 +8495,7 @@
           "height",
           "sm"
         ],
-        "value": "20px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--switch-track-height-sm)",
         "description": ""
@@ -8587,7 +8521,7 @@
           "height",
           "lg"
         ],
-        "value": "28px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--switch-track-height-lg)",
         "description": ""
@@ -8600,7 +8534,7 @@
           "width",
           "sm"
         ],
-        "value": "36px",
+        "value": "32px",
         "type": "spacing",
         "variable": "var(--switch-track-width-sm)",
         "description": ""
@@ -8613,7 +8547,7 @@
           "width",
           "md"
         ],
-        "value": "44px",
+        "value": "40px",
         "type": "spacing",
         "variable": "var(--switch-track-width-md)",
         "description": ""
@@ -8626,7 +8560,7 @@
           "width",
           "lg"
         ],
-        "value": "52px",
+        "value": "60px",
         "type": "spacing",
         "variable": "var(--switch-track-width-lg)",
         "description": ""
@@ -8677,7 +8611,7 @@
           "size",
           "md"
         ],
-        "value": "20px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--switch-thumb-size-md)",
         "description": ""
@@ -8728,7 +8662,7 @@
           "translate",
           "md"
         ],
-        "value": "20px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--switch-thumb-translate-md)",
         "description": ""
@@ -8819,7 +8753,7 @@
           "min-height",
           "sm"
         ],
-        "value": "80px",
+        "value": "84px",
         "type": "spacing",
         "variable": "var(--textarea-min-height-sm)",
         "description": ""
@@ -8974,7 +8908,7 @@
           "width",
           "md"
         ],
-        "value": "384px",
+        "value": "320px",
         "type": "spacing",
         "variable": "var(--sheet-content-width-md)",
         "description": ""
@@ -9170,7 +9104,7 @@
           "item",
           "padding-y"
         ],
-        "value": "6px",
+        "value": "4px",
         "type": "spacing",
         "variable": "var(--context-menu-item-padding-y)",
         "description": ""
@@ -9207,7 +9141,7 @@
           "indicator",
           "size"
         ],
-        "value": "14px",
+        "value": "16px",
         "type": "spacing",
         "variable": "var(--context-menu-item-indicator-size)",
         "description": ""
@@ -9335,7 +9269,7 @@
           "item",
           "padding-y"
         ],
-        "value": "6px",
+        "value": "4px",
         "type": "spacing",
         "variable": "var(--dropdown-menu-item-padding-y)",
         "description": ""
@@ -9445,7 +9379,7 @@
           "indicator",
           "size"
         ],
-        "value": "14px",
+        "value": "16px",
         "type": "spacing",
         "variable": "var(--dropdown-menu-item-indicator-size)",
         "description": ""

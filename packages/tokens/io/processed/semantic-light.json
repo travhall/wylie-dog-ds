@@ -525,27 +525,27 @@
   },
   "component.gap": {
     "$type": "spacing",
-    "$value": "{spacing.md}",
+    "$value": "{spacing.200}",
     "$description": "Standard gap between related elements within a component"
   },
   "component.gap-sm": {
     "$type": "spacing",
-    "$value": "{spacing.sm}",
+    "$value": "{spacing.100}",
     "$description": "Small gap for tightly grouped elements"
   },
   "component.gap-lg": {
     "$type": "spacing",
-    "$value": "{spacing.lg}",
+    "$value": "{spacing.300}",
     "$description": "Large gap for loosely grouped elements"
   },
   "interactive.padding-x": {
     "$type": "spacing",
-    "$value": "{spacing.md}",
+    "$value": "{spacing.200}",
     "$description": "Horizontal padding for interactive elements (buttons, inputs)"
   },
   "interactive.padding-y": {
     "$type": "spacing",
-    "$value": "{spacing.sm}",
+    "$value": "{spacing.100}",
     "$description": "Vertical padding for interactive elements"
   },
   "interactive.padding-sm-x": {
@@ -555,12 +555,12 @@
   },
   "interactive.padding-sm-y": {
     "$type": "spacing",
-    "$value": "{spacing.xs}",
+    "$value": "{spacing.050}",
     "$description": "Small vertical padding for compact interactive elements"
   },
   "interactive.padding-lg-x": {
     "$type": "spacing",
-    "$value": "{spacing.lg}",
+    "$value": "{spacing.300}",
     "$description": "Large horizontal padding for prominent interactive elements"
   },
   "interactive.padding-lg-y": {
@@ -570,37 +570,37 @@
   },
   "content.margin": {
     "$type": "spacing",
-    "$value": "{spacing.lg}",
+    "$value": "{spacing.300}",
     "$description": "Standard margin for content blocks"
   },
   "content.margin-sm": {
     "$type": "spacing",
-    "$value": "{spacing.md}",
+    "$value": "{spacing.200}",
     "$description": "Small margin for compact content"
   },
   "content.margin-lg": {
     "$type": "spacing",
-    "$value": "{spacing.xl}",
+    "$value": "{spacing.400}",
     "$description": "Large margin for section separation"
   },
   "section.gap": {
     "$type": "spacing",
-    "$value": "{spacing.2xl}",
+    "$value": "{spacing.600}",
     "$description": "Gap between major sections"
   },
   "inset.default": {
     "$type": "spacing",
-    "$value": "{spacing.md}",
+    "$value": "{spacing.200}",
     "$description": "Default inset/padding for containers"
   },
   "inset.sm": {
     "$type": "spacing",
-    "$value": "{spacing.sm}",
+    "$value": "{spacing.100}",
     "$description": "Small inset for compact containers"
   },
   "inset.lg": {
     "$type": "spacing",
-    "$value": "{spacing.lg}",
+    "$value": "{spacing.300}",
     "$description": "Large inset for spacious containers"
   },
   "font.body": {

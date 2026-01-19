@@ -1034,46 +1034,46 @@
         },
         "component.gap": {
           "$type": "spacing",
-          "$value": "{spacing.md}",
+          "$value": "{spacing.200}",
           "valuesByMode": {
-            "Light": "{spacing.md}",
-            "Dark": "{spacing.md}"
+            "Light": "{spacing.200}",
+            "Dark": "{spacing.200}"
           },
           "$description": "Standard gap between related elements within a component"
         },
         "component.gap-sm": {
           "$type": "spacing",
-          "$value": "{spacing.sm}",
+          "$value": "{spacing.100}",
           "valuesByMode": {
-            "Light": "{spacing.sm}",
-            "Dark": "{spacing.sm}"
+            "Light": "{spacing.100}",
+            "Dark": "{spacing.100}"
           },
           "$description": "Small gap for tightly grouped elements"
         },
         "component.gap-lg": {
           "$type": "spacing",
-          "$value": "{spacing.lg}",
+          "$value": "{spacing.300}",
           "valuesByMode": {
-            "Light": "{spacing.lg}",
-            "Dark": "{spacing.lg}"
+            "Light": "{spacing.300}",
+            "Dark": "{spacing.300}"
           },
           "$description": "Large gap for loosely grouped elements"
         },
         "interactive.padding-x": {
           "$type": "spacing",
-          "$value": "{spacing.md}",
+          "$value": "{spacing.200}",
           "valuesByMode": {
-            "Light": "{spacing.md}",
-            "Dark": "{spacing.md}"
+            "Light": "{spacing.200}",
+            "Dark": "{spacing.200}"
           },
           "$description": "Horizontal padding for interactive elements (buttons, inputs)"
         },
         "interactive.padding-y": {
           "$type": "spacing",
-          "$value": "{spacing.sm}",
+          "$value": "{spacing.100}",
           "valuesByMode": {
-            "Light": "{spacing.sm}",
-            "Dark": "{spacing.sm}"
+            "Light": "{spacing.100}",
+            "Dark": "{spacing.100}"
           },
           "$description": "Vertical padding for interactive elements"
         },
@@ -1088,19 +1088,19 @@
         },
         "interactive.padding-sm-y": {
           "$type": "spacing",
-          "$value": "{spacing.xs}",
+          "$value": "{spacing.050}",
           "valuesByMode": {
-            "Light": "{spacing.xs}",
-            "Dark": "{spacing.xs}"
+            "Light": "{spacing.050}",
+            "Dark": "{spacing.050}"
           },
           "$description": "Small vertical padding for compact interactive elements"
         },
         "interactive.padding-lg-x": {
           "$type": "spacing",
-          "$value": "{spacing.lg}",
+          "$value": "{spacing.300}",
           "valuesByMode": {
-            "Light": "{spacing.lg}",
-            "Dark": "{spacing.lg}"
+            "Light": "{spacing.300}",
+            "Dark": "{spacing.300}"
           },
           "$description": "Large horizontal padding for prominent interactive elements"
         },
@@ -1115,64 +1115,64 @@
         },
         "content.margin": {
           "$type": "spacing",
-          "$value": "{spacing.lg}",
+          "$value": "{spacing.300}",
           "valuesByMode": {
-            "Light": "{spacing.lg}",
-            "Dark": "{spacing.lg}"
+            "Light": "{spacing.300}",
+            "Dark": "{spacing.300}"
           },
           "$description": "Standard margin for content blocks"
         },
         "content.margin-sm": {
           "$type": "spacing",
-          "$value": "{spacing.md}",
+          "$value": "{spacing.200}",
           "valuesByMode": {
-            "Light": "{spacing.md}",
-            "Dark": "{spacing.md}"
+            "Light": "{spacing.200}",
+            "Dark": "{spacing.200}"
           },
           "$description": "Small margin for compact content"
         },
         "content.margin-lg": {
           "$type": "spacing",
-          "$value": "{spacing.xl}",
+          "$value": "{spacing.400}",
           "valuesByMode": {
-            "Light": "{spacing.xl}",
-            "Dark": "{spacing.xl}"
+            "Light": "{spacing.400}",
+            "Dark": "{spacing.400}"
           },
           "$description": "Large margin for section separation"
         },
         "section.gap": {
           "$type": "spacing",
-          "$value": "{spacing.2xl}",
+          "$value": "{spacing.600}",
           "valuesByMode": {
-            "Light": "{spacing.2xl}",
-            "Dark": "{spacing.2xl}"
+            "Light": "{spacing.600}",
+            "Dark": "{spacing.600}"
           },
           "$description": "Gap between major sections"
         },
         "inset.default": {
           "$type": "spacing",
-          "$value": "{spacing.md}",
+          "$value": "{spacing.200}",
           "valuesByMode": {
-            "Light": "{spacing.md}",
-            "Dark": "{spacing.md}"
+            "Light": "{spacing.200}",
+            "Dark": "{spacing.200}"
           },
           "$description": "Default inset/padding for containers"
         },
         "inset.sm": {
           "$type": "spacing",
-          "$value": "{spacing.sm}",
+          "$value": "{spacing.100}",
           "valuesByMode": {
-            "Light": "{spacing.sm}",
-            "Dark": "{spacing.sm}"
+            "Light": "{spacing.100}",
+            "Dark": "{spacing.100}"
           },
           "$description": "Small inset for compact containers"
         },
         "inset.lg": {
           "$type": "spacing",
-          "$value": "{spacing.lg}",
+          "$value": "{spacing.300}",
           "valuesByMode": {
-            "Light": "{spacing.lg}",
-            "Dark": "{spacing.lg}"
+            "Light": "{spacing.300}",
+            "Dark": "{spacing.300}"
           },
           "$description": "Large inset for spacious containers"
         },
