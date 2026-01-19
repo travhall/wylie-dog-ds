@@ -2134,10 +2134,10 @@
         },
         "checkbox.size.md": {
           "$type": "spacing",
-          "$value": "{spacing.20}",
+          "$value": "{spacing.lg}",
           "valuesByMode": {
-            "Light": "{spacing.20}",
-            "Dark": "{spacing.20}"
+            "Light": "{spacing.lg}",
+            "Dark": "{spacing.lg}"
           }
         },
         "checkbox.size.lg": {
@@ -2182,10 +2182,10 @@
         },
         "checkbox.icon.size.lg": {
           "$type": "spacing",
-          "$value": "{spacing.20}",
+          "$value": "{spacing.lg}",
           "valuesByMode": {
-            "Light": "{spacing.20}",
-            "Dark": "{spacing.20}"
+            "Light": "{spacing.lg}",
+            "Dark": "{spacing.lg}"
           }
         },
         "checkbox.focus.ring.width": {
@@ -2206,10 +2206,10 @@
         },
         "switch.track.height.sm": {
           "$type": "spacing",
-          "$value": "{spacing.20}",
+          "$value": "{spacing.lg}",
           "valuesByMode": {
-            "Light": "{spacing.20}",
-            "Dark": "{spacing.20}"
+            "Light": "{spacing.lg}",
+            "Dark": "{spacing.lg}"
           }
         },
         "switch.track.height.md": {
@@ -2230,10 +2230,10 @@
         },
         "switch.track.width.sm": {
           "$type": "spacing",
-          "$value": "{spacing.36}",
+          "$value": "{spacing.xl}",
           "valuesByMode": {
-            "Light": "{spacing.36}",
-            "Dark": "{spacing.36}"
+            "Light": "{spacing.xl}",
+            "Dark": "{spacing.xl}"
           }
         },
         "switch.track.width.md": {
@@ -2278,10 +2278,10 @@
         },
         "switch.thumb.size.md": {
           "$type": "spacing",
-          "$value": "{spacing.20}",
+          "$value": "{spacing.lg}",
           "valuesByMode": {
-            "Light": "{spacing.20}",
-            "Dark": "{spacing.20}"
+            "Light": "{spacing.lg}",
+            "Dark": "{spacing.lg}"
           }
         },
         "switch.thumb.size.lg": {
@@ -2310,10 +2310,10 @@
         },
         "switch.thumb.translate.md": {
           "$type": "spacing",
-          "$value": "{spacing.20}",
+          "$value": "{spacing.lg}",
           "valuesByMode": {
-            "Light": "{spacing.20}",
-            "Dark": "{spacing.20}"
+            "Light": "{spacing.lg}",
+            "Dark": "{spacing.lg}"
           }
         },
         "switch.thumb.translate.lg": {
@@ -2374,10 +2374,10 @@
         },
         "radio.size.md": {
           "$type": "spacing",
-          "$value": "{spacing.20}",
+          "$value": "{spacing.lg}",
           "valuesByMode": {
-            "Light": "{spacing.20}",
-            "Dark": "{spacing.20}"
+            "Light": "{spacing.lg}",
+            "Dark": "{spacing.lg}"
           }
         },
         "radio.size.lg": {
@@ -2454,10 +2454,10 @@
         },
         "slider.thumb.size": {
           "$type": "spacing",
-          "$value": "{spacing.20}",
+          "$value": "{spacing.lg}",
           "valuesByMode": {
-            "Light": "{spacing.20}",
-            "Dark": "{spacing.20}"
+            "Light": "{spacing.lg}",
+            "Dark": "{spacing.lg}"
           }
         },
         "slider.thumb.border.width": {
@@ -2702,10 +2702,10 @@
         },
         "tabs.list.padding.lg": {
           "$type": "spacing",
-          "$value": "{spacing.6}",
+          "$value": "{spacing.xs}",
           "valuesByMode": {
-            "Light": "{spacing.6}",
-            "Dark": "{spacing.6}"
+            "Light": "{spacing.xs}",
+            "Dark": "{spacing.xs}"
           }
         },
         "tabs.list.gap": {
@@ -2758,10 +2758,10 @@
         },
         "tabs.trigger.padding-y.md": {
           "$type": "spacing",
-          "$value": "{spacing.6}",
+          "$value": "{spacing.xs}",
           "valuesByMode": {
-            "Light": "{spacing.6}",
-            "Dark": "{spacing.6}"
+            "Light": "{spacing.xs}",
+            "Dark": "{spacing.xs}"
           }
         },
         "tabs.trigger.padding-y.lg": {
@@ -3158,10 +3158,10 @@
         },
         "toast.close.size": {
           "$type": "spacing",
-          "$value": "{spacing.20}",
+          "$value": "{spacing.lg}",
           "valuesByMode": {
-            "Light": "{spacing.20}",
-            "Dark": "{spacing.20}"
+            "Light": "{spacing.lg}",
+            "Dark": "{spacing.lg}"
           }
         },
         "toast.close.radius": {
@@ -3382,18 +3382,18 @@
         },
         "calendar.cell.size": {
           "$type": "spacing",
-          "$value": "{spacing.36}",
+          "$value": "{spacing.xl}",
           "valuesByMode": {
-            "Light": "{spacing.36}",
-            "Dark": "{spacing.36}"
+            "Light": "{spacing.xl}",
+            "Dark": "{spacing.xl}"
           }
         },
         "calendar.day.size": {
           "$type": "spacing",
-          "$value": "{spacing.36}",
+          "$value": "{spacing.xl}",
           "valuesByMode": {
-            "Light": "{spacing.36}",
-            "Dark": "{spacing.36}"
+            "Light": "{spacing.xl}",
+            "Dark": "{spacing.xl}"
           }
         },
         "avatar.size.sm": {
@@ -3430,26 +3430,26 @@
         },
         "breadcrumb.list.gap": {
           "$type": "spacing",
-          "$value": "{spacing.6}",
+          "$value": "{spacing.xs}",
           "valuesByMode": {
-            "Light": "{spacing.6}",
-            "Dark": "{spacing.6}"
+            "Light": "{spacing.xs}",
+            "Dark": "{spacing.xs}"
           }
         },
         "breadcrumb.item.gap": {
           "$type": "spacing",
-          "$value": "{spacing.6}",
+          "$value": "{spacing.xs}",
           "valuesByMode": {
-            "Light": "{spacing.6}",
-            "Dark": "{spacing.6}"
+            "Light": "{spacing.xs}",
+            "Dark": "{spacing.xs}"
           }
         },
         "breadcrumb.gap": {
           "$type": "spacing",
-          "$value": "{spacing.6}",
+          "$value": "{spacing.xs}",
           "valuesByMode": {
-            "Light": "{spacing.6}",
-            "Dark": "{spacing.6}"
+            "Light": "{spacing.xs}",
+            "Dark": "{spacing.xs}"
           }
         },
         "breadcrumb.font-size": {
@@ -3462,18 +3462,18 @@
         },
         "breadcrumb.separator.size": {
           "$type": "spacing",
-          "$value": "{spacing.14}",
+          "$value": "{spacing.md}",
           "valuesByMode": {
-            "Light": "{spacing.14}",
-            "Dark": "{spacing.14}"
+            "Light": "{spacing.md}",
+            "Dark": "{spacing.md}"
           }
         },
         "breadcrumb.ellipsis.size": {
           "$type": "spacing",
-          "$value": "{spacing.36}",
+          "$value": "{spacing.xl}",
           "valuesByMode": {
-            "Light": "{spacing.36}",
-            "Dark": "{spacing.36}"
+            "Light": "{spacing.xl}",
+            "Dark": "{spacing.xl}"
           }
         },
         "carousel.item.spacing": {
@@ -3534,10 +3534,10 @@
         },
         "context-menu.item.padding-y": {
           "$type": "spacing",
-          "$value": "{spacing.6}",
+          "$value": "{spacing.xs}",
           "valuesByMode": {
-            "Light": "{spacing.6}",
-            "Dark": "{spacing.6}"
+            "Light": "{spacing.xs}",
+            "Dark": "{spacing.xs}"
           }
         },
         "context-menu.item.padding-x": {
@@ -3558,10 +3558,10 @@
         },
         "context-menu.item.indicator.size": {
           "$type": "spacing",
-          "$value": "{spacing.14}",
+          "$value": "{spacing.md}",
           "valuesByMode": {
-            "Light": "{spacing.14}",
-            "Dark": "{spacing.14}"
+            "Light": "{spacing.md}",
+            "Dark": "{spacing.md}"
           }
         },
         "context-menu.item.icon.size": {
@@ -3590,10 +3590,10 @@
         },
         "dropdown-menu.item.padding-y": {
           "$type": "spacing",
-          "$value": "{spacing.6}",
+          "$value": "{spacing.xs}",
           "valuesByMode": {
-            "Light": "{spacing.6}",
-            "Dark": "{spacing.6}"
+            "Light": "{spacing.xs}",
+            "Dark": "{spacing.xs}"
           }
         },
         "dropdown-menu.item.padding-x": {
@@ -3662,10 +3662,10 @@
         },
         "dropdown-menu.item.indicator.size": {
           "$type": "spacing",
-          "$value": "{spacing.14}",
+          "$value": "{spacing.md}",
           "valuesByMode": {
-            "Light": "{spacing.14}",
-            "Dark": "{spacing.14}"
+            "Light": "{spacing.md}",
+            "Dark": "{spacing.md}"
           }
         },
         "accordion.item.border.width": {
@@ -3742,18 +3742,18 @@
         },
         "toggle.size.sm.height": {
           "$type": "spacing",
-          "$value": "{spacing.36}",
+          "$value": "{spacing.xl}",
           "valuesByMode": {
-            "Light": "{spacing.36}",
-            "Dark": "{spacing.36}"
+            "Light": "{spacing.xl}",
+            "Dark": "{spacing.xl}"
           }
         },
         "toggle.size.sm.padding-x": {
           "$type": "spacing",
-          "$value": "{spacing.10}",
+          "$value": "{spacing.sm}",
           "valuesByMode": {
-            "Light": "{spacing.10}",
-            "Dark": "{spacing.10}"
+            "Light": "{spacing.sm}",
+            "Dark": "{spacing.sm}"
           }
         },
         "toggle.size.lg.height": {
@@ -3766,10 +3766,10 @@
         },
         "toggle.size.lg.padding-x": {
           "$type": "spacing",
-          "$value": "{spacing.20}",
+          "$value": "{spacing.lg}",
           "valuesByMode": {
-            "Light": "{spacing.20}",
-            "Dark": "{spacing.20}"
+            "Light": "{spacing.lg}",
+            "Dark": "{spacing.lg}"
           }
         },
         "menubar.root.height": {
@@ -3798,10 +3798,10 @@
         },
         "menubar.trigger.padding-y": {
           "$type": "spacing",
-          "$value": "{spacing.6}",
+          "$value": "{spacing.xs}",
           "valuesByMode": {
-            "Light": "{spacing.6}",
-            "Dark": "{spacing.6}"
+            "Light": "{spacing.xs}",
+            "Dark": "{spacing.xs}"
           }
         },
         "menubar.content.min-width": {
@@ -3838,10 +3838,10 @@
         },
         "menubar.item.indicator-size": {
           "$type": "spacing",
-          "$value": "{spacing.14}",
+          "$value": "{spacing.md}",
           "valuesByMode": {
-            "Light": "{spacing.14}",
-            "Dark": "{spacing.14}"
+            "Light": "{spacing.md}",
+            "Dark": "{spacing.md}"
           }
         },
         "menubar.item.icon-size": {

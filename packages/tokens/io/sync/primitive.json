@@ -368,33 +368,17 @@
           "$type": "spacing",
           "$value": "4px"
         },
-        "spacing.6": {
-          "$type": "spacing",
-          "$value": "6px"
-        },
         "spacing.sm": {
           "$type": "spacing",
           "$value": "8px"
-        },
-        "spacing.10": {
-          "$type": "spacing",
-          "$value": "10px"
         },
         "spacing.12": {
           "$type": "spacing",
           "$value": "12px"
         },
-        "spacing.14": {
-          "$type": "spacing",
-          "$value": "14px"
-        },
         "spacing.md": {
           "$type": "spacing",
           "$value": "16px"
-        },
-        "spacing.20": {
-          "$type": "spacing",
-          "$value": "20px"
         },
         "spacing.lg": {
           "$type": "spacing",
@@ -407,10 +391,6 @@
         "spacing.xl": {
           "$type": "spacing",
           "$value": "32px"
-        },
-        "spacing.36": {
-          "$type": "spacing",
-          "$value": "36px"
         },
         "spacing.40": {
           "$type": "spacing",
