@@ -120,33 +120,9 @@
           "$type": "color",
           "$value": "oklch(0.505 0.19 27.52)"
         },
-        "spacing.1": {
-          "$type": "spacing",
-          "$value": "4px"
-        },
-        "spacing.2": {
-          "$type": "spacing",
-          "$value": "8px"
-        },
-        "spacing.4": {
-          "$type": "spacing",
-          "$value": "16px"
-        },
-        "spacing.8": {
-          "$type": "spacing",
-          "$value": "32px"
-        },
         "spacing.12": {
           "$type": "spacing",
-          "$value": "48px"
-        },
-        "spacing.16": {
-          "$type": "spacing",
-          "$value": "64px"
-        },
-        "spacing.24": {
-          "$type": "spacing",
-          "$value": "96px"
+          "$value": "12px"
         }
       }
     }

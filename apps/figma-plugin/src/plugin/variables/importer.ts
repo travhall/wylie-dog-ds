@@ -52,7 +52,7 @@ export interface GlobalImportResult {
 const W3C_TO_FIGMA_TYPE_MAP: Record<string, string> = {
   color: "COLOR",
   fontSize: "FLOAT",
-  fontWeight: "STRING",
+  fontWeight: "FLOAT",
   fontFamily: "STRING",
   lineHeight: "FLOAT",
   letterSpacing: "FLOAT",
