@@ -1666,7 +1666,7 @@
             "font-weight",
             "thin"
           ],
-          "value": 100,
+          "value": "100",
           "type": "fontWeight",
           "variable": "var(--typography-font-weight-thin)",
           "description": ""
@@ -1678,7 +1678,7 @@
             "font-weight",
             "light"
           ],
-          "value": 300,
+          "value": "300",
           "type": "fontWeight",
           "variable": "var(--typography-font-weight-light)",
           "description": ""
@@ -1690,7 +1690,7 @@
             "font-weight",
             "normal"
           ],
-          "value": 400,
+          "value": "400",
           "type": "fontWeight",
           "variable": "var(--typography-font-weight-normal)",
           "description": ""
@@ -1702,7 +1702,7 @@
             "font-weight",
             "medium"
           ],
-          "value": 500,
+          "value": "500",
           "type": "fontWeight",
           "variable": "var(--typography-font-weight-medium)",
           "description": ""
@@ -1714,7 +1714,7 @@
             "font-weight",
             "semibold"
           ],
-          "value": 600,
+          "value": "600",
           "type": "fontWeight",
           "variable": "var(--typography-font-weight-semibold)",
           "description": ""
@@ -1726,7 +1726,7 @@
             "font-weight",
             "bold"
           ],
-          "value": 700,
+          "value": "700",
           "type": "fontWeight",
           "variable": "var(--typography-font-weight-bold)",
           "description": ""
@@ -1738,7 +1738,7 @@
             "font-weight",
             "extrabold"
           ],
-          "value": 800,
+          "value": "800",
           "type": "fontWeight",
           "variable": "var(--typography-font-weight-extrabold)",
           "description": ""
