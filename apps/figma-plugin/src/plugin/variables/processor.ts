@@ -185,10 +185,20 @@ function formatNumericValue(value: number, tokenType: string): string {
  */
 function processVariable(variable: any, modes: any[]): ProcessedToken {
   // Check for stored original type first (preserves round-trip fidelity)
-  const storedType = variable.getPluginData?.("originalType");
-  const tokenType =
-    storedType ||
-    getW3CTokenType(variable.resolvedType, variable.scopes, variable.name);
+  const storedType = variable.originalType;
+  const inferredType = getW3CTokenType(
+    variable.resolvedType,
+    variable.scopes,
+    variable.name
+  );
+  const tokenType = storedType || inferredType;
+
+  if (storedType !== inferredType) {
+    console.log(
+      `🔧 EXPORT: ${variable.name} - stored="${storedType || "none"}" inferred="${inferredType}" using="${tokenType}"`
+    );
+  }
+
   const valuesByMode: Record<string, any> = {};
   let primaryValue: any;
 

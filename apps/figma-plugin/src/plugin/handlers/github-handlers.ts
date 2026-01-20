@@ -34,6 +34,13 @@ export async function handleGitHubSyncTokens(msg: any): Promise<void> {
           const variable =
             await figma.variables.getVariableByIdAsync(variableId);
           if (variable) {
+            const originalType =
+              variable.getPluginData("originalType") || undefined;
+            if (originalType) {
+              console.log(
+                `🔧 HANDLER: ${variable.name} has originalType="${originalType}"`
+              );
+            }
             variables.push({
               id: variable.id,
               name: variable.name,
@@ -43,6 +50,7 @@ export async function handleGitHubSyncTokens(msg: any): Promise<void> {
               valuesByMode: variable.valuesByMode,
               remote: variable.remote,
               key: variable.key,
+              originalType: originalType,
             });
           }
         } catch (err) {
