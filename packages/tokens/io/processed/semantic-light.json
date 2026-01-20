@@ -662,40 +662,5 @@
     "$type": "fontSize",
     "$value": "{typography.font-size.sm}",
     "$description": "Heading level 6"
-  },
-  "lineheight.tight": {
-    "$type": "number",
-    "$value": "1.25",
-    "$description": "Tight line height for headings"
-  },
-  "lineheight.normal": {
-    "$type": "number",
-    "$value": "1.5",
-    "$description": "Normal line height for body text"
-  },
-  "lineheight.relaxed": {
-    "$type": "number",
-    "$value": "1.75",
-    "$description": "Relaxed line height for comfortable reading"
-  },
-  "weight.regular": {
-    "$type": "number",
-    "$value": "400",
-    "$description": "Regular font weight"
-  },
-  "weight.medium": {
-    "$type": "number",
-    "$value": "500",
-    "$description": "Medium font weight for emphasis"
-  },
-  "weight.semibold": {
-    "$type": "number",
-    "$value": "600",
-    "$description": "Semibold for headings and labels"
-  },
-  "weight.bold": {
-    "$type": "number",
-    "$value": "700",
-    "$description": "Bold for strong emphasis"
   }
 }
