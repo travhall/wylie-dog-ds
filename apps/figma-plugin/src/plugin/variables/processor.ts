@@ -184,11 +184,11 @@ function formatNumericValue(value: number, tokenType: string): string {
  * Process a single variable across all modes into W3C DTCG token format
  */
 function processVariable(variable: any, modes: any[]): ProcessedToken {
-  const tokenType = getW3CTokenType(
-    variable.resolvedType,
-    variable.scopes,
-    variable.name
-  );
+  // Check for stored original type first (preserves round-trip fidelity)
+  const storedType = variable.getPluginData?.("originalType");
+  const tokenType =
+    storedType ||
+    getW3CTokenType(variable.resolvedType, variable.scopes, variable.name);
   const valuesByMode: Record<string, any> = {};
   let primaryValue: any;
 

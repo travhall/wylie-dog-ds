@@ -307,6 +307,9 @@ async function createVariableWithReferences(
       variable.description = token.$description;
     }
 
+    // Store original $type in plugin data for round-trip fidelity
+    variable.setPluginData("originalType", token.$type);
+
     // Register in registry for reference resolution
     registry.register(tokenName, variable.id);
 

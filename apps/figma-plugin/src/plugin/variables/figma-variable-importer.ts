@@ -226,8 +226,10 @@ export class FigmaVariableImporter {
         };
 
       case "FLOAT":
+        // Retrieve original $type from plugin data (preserves spacing/dimension/fontSize etc.)
+        const originalType = variable.getPluginData("originalType");
         return {
-          $type: "number",
+          $type: (originalType || "number") as any,
           $value: value as number,
           $description: variable.description || undefined,
         };
