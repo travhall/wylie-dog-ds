@@ -19,21 +19,9 @@
     "$type": "color",
     "$value": "{color.orange.500}"
   },
-  "color.background.success": {
-    "$type": "color",
-    "$value": "{color.green.600}"
-  },
-  "color.background.warning": {
-    "$type": "color",
-    "$value": "{color.orange.600}"
-  },
   "color.background.danger": {
     "$type": "color",
     "$value": "{color.red.600}"
-  },
-  "color.background.info": {
-    "$type": "color",
-    "$value": "{color.blue.600}"
   },
   "color.surface.primary": {
     "$type": "color",
@@ -139,10 +127,6 @@
     "$type": "color",
     "$value": "{color.red.600}"
   },
-  "color.border.info": {
-    "$type": "color",
-    "$value": "{color.blue.600}"
-  },
   "color.interactive.primary": {
     "$type": "color",
     "$value": "{color.blue.600}"
@@ -231,10 +215,6 @@
     "$type": "color",
     "$value": "{color.gray.100}"
   },
-  "color.accent.base": {
-    "$type": "color",
-    "$value": "{color.purple.600}"
-  },
   "color.accent.hover": {
     "$type": "color",
     "$value": "{color.purple.500}"
@@ -291,98 +271,6 @@
     "$type": "color",
     "$value": "{color.yellow.400}"
   },
-  "space.xs": {
-    "$type": "spacing",
-    "$value": "{spacing.050}"
-  },
-  "space.sm": {
-    "$type": "spacing",
-    "$value": "{spacing.100}"
-  },
-  "space.md": {
-    "$type": "spacing",
-    "$value": "{spacing.200}"
-  },
-  "space.lg": {
-    "$type": "spacing",
-    "$value": "{spacing.300}"
-  },
-  "space.xl": {
-    "$type": "spacing",
-    "$value": "{spacing.400}"
-  },
-  "space.2xl": {
-    "$type": "spacing",
-    "$value": "{spacing.600}"
-  },
-  "space.3xl": {
-    "$type": "spacing",
-    "$value": "{spacing.800}"
-  },
-  "space.4xl": {
-    "$type": "spacing",
-    "$value": "{spacing.1000}"
-  },
-  "space.5xl": {
-    "$type": "spacing",
-    "$value": "{spacing.1200}"
-  },
-  "space.6xl": {
-    "$type": "spacing",
-    "$value": "{spacing.1400}"
-  },
-  "space.7xl": {
-    "$type": "spacing",
-    "$value": "{spacing.1500}"
-  },
-  "space.8xl": {
-    "$type": "spacing",
-    "$value": "{spacing.1600}"
-  },
-  "space.9xl": {
-    "$type": "spacing",
-    "$value": "{spacing.1700}"
-  },
-  "size.xs": {
-    "$type": "spacing",
-    "$value": "{spacing.300}"
-  },
-  "size.sm": {
-    "$type": "spacing",
-    "$value": "{spacing.400}"
-  },
-  "size.md": {
-    "$type": "spacing",
-    "$value": "{spacing.500}"
-  },
-  "size.lg": {
-    "$type": "spacing",
-    "$value": "{spacing.600}"
-  },
-  "size.xl": {
-    "$type": "spacing",
-    "$value": "{spacing.800}"
-  },
-  "radius.sm": {
-    "$type": "dimension",
-    "$value": "{border-radius.sm}"
-  },
-  "radius.md": {
-    "$type": "dimension",
-    "$value": "{border-radius.md}"
-  },
-  "radius.lg": {
-    "$type": "dimension",
-    "$value": "{border-radius.lg}"
-  },
-  "radius.xl": {
-    "$type": "dimension",
-    "$value": "{border-radius.xl}"
-  },
-  "radius.full": {
-    "$type": "dimension",
-    "$value": "{border-radius.full}"
-  },
   "color.interactive.hover": {
     "$type": "color",
     "$value": "{color.gray.800}",
@@ -407,36 +295,6 @@
     "$type": "color",
     "$value": "{color.gray.100}",
     "$description": "Text color on interactive backgrounds"
-  },
-  "border.width.none": {
-    "$type": "dimension",
-    "$value": "0px",
-    "$description": "No border"
-  },
-  "border.width.thin": {
-    "$type": "dimension",
-    "$value": "1px",
-    "$description": "Standard thin border"
-  },
-  "border.width.medium": {
-    "$type": "dimension",
-    "$value": "2px",
-    "$description": "Medium border for emphasis"
-  },
-  "border.width.thick": {
-    "$type": "dimension",
-    "$value": "4px",
-    "$description": "Thick border for strong emphasis"
-  },
-  "radius.interactive": {
-    "$type": "dimension",
-    "$value": "{border-radius.md}",
-    "$description": "Standard radius for interactive elements (buttons, inputs)"
-  },
-  "radius.container": {
-    "$type": "dimension",
-    "$value": "{border-radius.lg}",
-    "$description": "Standard radius for containers (cards, dialogs)"
   },
   "shadow.none": {
     "$type": "shadow",
@@ -522,145 +380,5 @@
     "$type": "number",
     "$value": "1100",
     "$description": "Tooltips (highest)"
-  },
-  "component.gap": {
-    "$type": "spacing",
-    "$value": "{spacing.200}",
-    "$description": "Standard gap between related elements within a component"
-  },
-  "component.gap-sm": {
-    "$type": "spacing",
-    "$value": "{spacing.100}",
-    "$description": "Small gap for tightly grouped elements"
-  },
-  "component.gap-lg": {
-    "$type": "spacing",
-    "$value": "{spacing.300}",
-    "$description": "Large gap for loosely grouped elements"
-  },
-  "interactive.padding-x": {
-    "$type": "spacing",
-    "$value": "{spacing.200}",
-    "$description": "Horizontal padding for interactive elements (buttons, inputs)"
-  },
-  "interactive.padding-y": {
-    "$type": "spacing",
-    "$value": "{spacing.100}",
-    "$description": "Vertical padding for interactive elements"
-  },
-  "interactive.padding-sm-x": {
-    "$type": "spacing",
-    "$value": "{spacing.150}",
-    "$description": "Small horizontal padding for compact interactive elements"
-  },
-  "interactive.padding-sm-y": {
-    "$type": "spacing",
-    "$value": "{spacing.050}",
-    "$description": "Small vertical padding for compact interactive elements"
-  },
-  "interactive.padding-lg-x": {
-    "$type": "spacing",
-    "$value": "{spacing.300}",
-    "$description": "Large horizontal padding for prominent interactive elements"
-  },
-  "interactive.padding-lg-y": {
-    "$type": "spacing",
-    "$value": "{spacing.150}",
-    "$description": "Large vertical padding for prominent interactive elements"
-  },
-  "content.margin": {
-    "$type": "spacing",
-    "$value": "{spacing.300}",
-    "$description": "Standard margin for content blocks"
-  },
-  "content.margin-sm": {
-    "$type": "spacing",
-    "$value": "{spacing.200}",
-    "$description": "Small margin for compact content"
-  },
-  "content.margin-lg": {
-    "$type": "spacing",
-    "$value": "{spacing.400}",
-    "$description": "Large margin for section separation"
-  },
-  "section.gap": {
-    "$type": "spacing",
-    "$value": "{spacing.600}",
-    "$description": "Gap between major sections"
-  },
-  "inset.default": {
-    "$type": "spacing",
-    "$value": "{spacing.200}",
-    "$description": "Default inset/padding for containers"
-  },
-  "inset.sm": {
-    "$type": "spacing",
-    "$value": "{spacing.100}",
-    "$description": "Small inset for compact containers"
-  },
-  "inset.lg": {
-    "$type": "spacing",
-    "$value": "{spacing.300}",
-    "$description": "Large inset for spacious containers"
-  },
-  "font.body": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.sm}",
-    "$description": "Standard body text size"
-  },
-  "font.body-sm": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.xs}",
-    "$description": "Small body text (captions, helper text)"
-  },
-  "font.body-lg": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.base}",
-    "$description": "Large body text (lead paragraphs)"
-  },
-  "font.label": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.sm}",
-    "$description": "Form labels and UI text"
-  },
-  "font.caption": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.xs}",
-    "$description": "Captions, metadata, secondary info"
-  },
-  "font.overline": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.xs}",
-    "$description": "Overline text, category labels (12px)"
-  },
-  "font.h1": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.4xl}",
-    "$description": "Heading level 1"
-  },
-  "font.h2": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.3xl}",
-    "$description": "Heading level 2"
-  },
-  "font.h3": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.2xl}",
-    "$description": "Heading level 3"
-  },
-  "font.h4": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.xl}",
-    "$description": "Heading level 4"
-  },
-  "font.h5": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.base}",
-    "$description": "Heading level 5"
-  },
-  "font.h6": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.sm}",
-    "$description": "Heading level 6"
   }
 }

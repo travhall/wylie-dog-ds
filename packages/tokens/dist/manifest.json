@@ -1816,30 +1816,6 @@
         "variable": "var(--color-background-brand)",
         "description": ""
       },
-      "color-background-success": {
-        "name": "colorBackgroundSuccess",
-        "path": [
-          "color",
-          "background",
-          "success"
-        ],
-        "value": "oklch(0.627 0.17 149.21)",
-        "type": "color",
-        "variable": "var(--color-background-success)",
-        "description": ""
-      },
-      "color-background-warning": {
-        "name": "colorBackgroundWarning",
-        "path": [
-          "color",
-          "background",
-          "warning"
-        ],
-        "value": "oklch(0.646 0.194 40.97)",
-        "type": "color",
-        "variable": "var(--color-background-warning)",
-        "description": ""
-      },
       "color-background-danger": {
         "name": "colorBackgroundDanger",
         "path": [
@@ -1850,18 +1826,6 @@
         "value": "oklch(0.577 0.215 27.33)",
         "type": "color",
         "variable": "var(--color-background-danger)",
-        "description": ""
-      },
-      "color-background-info": {
-        "name": "colorBackgroundInfo",
-        "path": [
-          "color",
-          "background",
-          "info"
-        ],
-        "value": "oklch(0.546 0.215 262.88)",
-        "type": "color",
-        "variable": "var(--color-background-info)",
         "description": ""
       }
     },
@@ -2192,18 +2156,6 @@
         "value": "oklch(0.577 0.215 27.33)",
         "type": "color",
         "variable": "var(--color-border-danger)",
-        "description": ""
-      },
-      "color-border-info": {
-        "name": "colorBorderInfo",
-        "path": [
-          "color",
-          "border",
-          "info"
-        ],
-        "value": "oklch(0.546 0.215 262.88)",
-        "type": "color",
-        "variable": "var(--color-border-info)",
         "description": ""
       }
     },
@@ -2582,18 +2534,6 @@
         "value": "oklch(0.279 0.037 260.03)",
         "type": "color",
         "variable": "var(--color-secondary-text)",
-        "description": ""
-      },
-      "color-accent-base": {
-        "name": "colorAccentBase",
-        "path": [
-          "color",
-          "accent",
-          "base"
-        ],
-        "value": "oklch(0.558 0.252 302.25)",
-        "type": "color",
-        "variable": "var(--color-accent-base)",
         "description": ""
       },
       "color-accent-hover": {

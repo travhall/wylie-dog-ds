@@ -73,19 +73,19 @@
   },
   "badge.padding.sm": {
     "$type": "spacing",
-    "$value": "{space.xs}"
+    "$value": "{spacing.050}"
   },
   "badge.padding.md": {
     "$type": "spacing",
-    "$value": "{space.sm}"
+    "$value": "{spacing.100}"
   },
   "badge.padding.lg": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "badge.radius": {
     "$type": "dimension",
-    "$value": "{radius.full}"
+    "$value": "{border-radius.full}"
   },
   "badge.font-size.sm": {
     "$type": "fontSize",
@@ -189,31 +189,31 @@
   },
   "button.height.sm": {
     "$type": "spacing",
-    "$value": "{size.sm}"
+    "$value": "{spacing.400}"
   },
   "button.height.md": {
     "$type": "spacing",
-    "$value": "{size.md}"
+    "$value": "{spacing.500}"
   },
   "button.height.lg": {
     "$type": "spacing",
-    "$value": "{size.lg}"
+    "$value": "{spacing.600}"
   },
   "button.padding-x.sm": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "button.padding-x.md": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "button.padding-x.lg": {
     "$type": "spacing",
-    "$value": "{space.xl}"
+    "$value": "{spacing.400}"
   },
   "button.radius": {
     "$type": "dimension",
-    "$value": "{radius.md}"
+    "$value": "{border-radius.md}"
   },
   "button.font-size.sm": {
     "$type": "fontSize",
@@ -237,19 +237,19 @@
   },
   "card.padding": {
     "$type": "spacing",
-    "$value": "{space.xl}"
+    "$value": "{spacing.400}"
   },
   "card.gap": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "card.radius": {
     "$type": "dimension",
-    "$value": "{radius.lg}"
+    "$value": "{border-radius.lg}"
   },
   "card.header.gap": {
     "$type": "spacing",
-    "$value": "{space.sm}"
+    "$value": "{spacing.100}"
   },
   "card.header.title.font-size": {
     "$type": "fontSize",
@@ -269,7 +269,7 @@
   },
   "card.footer.gap": {
     "$type": "spacing",
-    "$value": "{space.sm}"
+    "$value": "{spacing.100}"
   },
   "input.background": {
     "$type": "color",
@@ -309,23 +309,23 @@
   },
   "input.height.sm": {
     "$type": "spacing",
-    "$value": "{size.sm}"
+    "$value": "{spacing.400}"
   },
   "input.height.md": {
     "$type": "spacing",
-    "$value": "{size.md}"
+    "$value": "{spacing.500}"
   },
   "input.height.lg": {
     "$type": "spacing",
-    "$value": "{size.lg}"
+    "$value": "{spacing.600}"
   },
   "input.padding-x": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "input.radius": {
     "$type": "dimension",
-    "$value": "{radius.md}"
+    "$value": "{border-radius.md}"
   },
   "input.font-size": {
     "$type": "fontSize",
@@ -957,15 +957,15 @@
   },
   "tooltip.padding-x": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "tooltip.padding-y": {
     "$type": "spacing",
-    "$value": "{space.sm}"
+    "$value": "{spacing.100}"
   },
   "tooltip.radius": {
     "$type": "dimension",
-    "$value": "{radius.md}"
+    "$value": "{border-radius.md}"
   },
   "tooltip.font-size": {
     "$type": "fontSize",
@@ -977,31 +977,31 @@
   },
   "select.trigger.height.sm": {
     "$type": "spacing",
-    "$value": "{size.sm}"
+    "$value": "{spacing.400}"
   },
   "select.trigger.height.md": {
     "$type": "spacing",
-    "$value": "{size.md}"
+    "$value": "{spacing.500}"
   },
   "select.trigger.height.lg": {
     "$type": "spacing",
-    "$value": "{size.lg}"
+    "$value": "{spacing.600}"
   },
   "select.trigger.padding-x.sm": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "select.trigger.padding-x.md": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "select.trigger.padding-x.lg": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "select.trigger.radius": {
     "$type": "dimension",
-    "$value": "{radius.md}"
+    "$value": "{border-radius.md}"
   },
   "select.trigger.font-size.sm": {
     "$type": "fontSize",
@@ -1017,11 +1017,11 @@
   },
   "select.content.radius": {
     "$type": "dimension",
-    "$value": "{radius.md}"
+    "$value": "{border-radius.md}"
   },
   "select.content.padding": {
     "$type": "spacing",
-    "$value": "{space.xs}"
+    "$value": "{spacing.050}"
   },
   "select.content.max-height": {
     "$type": "spacing",
@@ -1033,7 +1033,7 @@
   },
   "select.item.padding-y": {
     "$type": "spacing",
-    "$value": "{space.sm}"
+    "$value": "{spacing.100}"
   },
   "select.item.padding-left": {
     "$type": "spacing",
@@ -1045,7 +1045,7 @@
   },
   "select.item.radius": {
     "$type": "dimension",
-    "$value": "{radius.sm}"
+    "$value": "{border-radius.sm}"
   },
   "select.item.font-size": {
     "$type": "fontSize",
@@ -1073,7 +1073,7 @@
   },
   "checkbox.border.radius": {
     "$type": "dimension",
-    "$value": "{radius.sm}"
+    "$value": "{border-radius.sm}"
   },
   "checkbox.icon.size.sm": {
     "$type": "spacing",
@@ -1121,7 +1121,7 @@
   },
   "switch.track.radius": {
     "$type": "dimension",
-    "$value": "{radius.full}"
+    "$value": "{border-radius.full}"
   },
   "switch.track.border.width": {
     "$type": "dimension",
@@ -1141,7 +1141,7 @@
   },
   "switch.thumb.radius": {
     "$type": "dimension",
-    "$value": "{radius.full}"
+    "$value": "{border-radius.full}"
   },
   "switch.thumb.translate.sm": {
     "$type": "spacing",
@@ -1189,7 +1189,7 @@
   },
   "radio.border.radius": {
     "$type": "dimension",
-    "$value": "{radius.full}"
+    "$value": "{border-radius.full}"
   },
   "radio.indicator.size.sm": {
     "$type": "spacing",
@@ -1217,7 +1217,7 @@
   },
   "slider.track.radius": {
     "$type": "dimension",
-    "$value": "{radius.full}"
+    "$value": "{border-radius.full}"
   },
   "slider.thumb.size": {
     "$type": "spacing",
@@ -1229,7 +1229,7 @@
   },
   "slider.thumb.radius": {
     "$type": "dimension",
-    "$value": "{radius.full}"
+    "$value": "{border-radius.full}"
   },
   "slider.focus.ring.width": {
     "$type": "dimension",
@@ -1253,11 +1253,11 @@
   },
   "textarea.padding": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "textarea.radius": {
     "$type": "dimension",
-    "$value": "{radius.md}"
+    "$value": "{border-radius.md}"
   },
   "textarea.font-size": {
     "$type": "fontSize",
@@ -1269,7 +1269,7 @@
   },
   "label.margin-bottom": {
     "$type": "spacing",
-    "$value": "{space.xs}"
+    "$value": "{spacing.050}"
   },
   "label.color": {
     "$type": "color",
@@ -1297,15 +1297,15 @@
   },
   "sheet.content.padding": {
     "$type": "spacing",
-    "$value": "{space.xl}"
+    "$value": "{spacing.400}"
   },
   "sheet.header.gap": {
     "$type": "spacing",
-    "$value": "{space.sm}"
+    "$value": "{spacing.100}"
   },
   "sheet.header.padding-bottom": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "sheet.title.font-size": {
     "$type": "fontSize",
@@ -1317,11 +1317,11 @@
   },
   "sheet.footer.padding-top": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "sheet.footer.gap": {
     "$type": "spacing",
-    "$value": "{space.sm}"
+    "$value": "{spacing.100}"
   },
   "tabs.list.height.sm": {
     "$type": "spacing",
@@ -1349,7 +1349,7 @@
   },
   "tabs.list.gap": {
     "$type": "spacing",
-    "$value": "{space.sm}"
+    "$value": "{spacing.100}"
   },
   "tabs.list.border.width": {
     "$type": "dimension",
@@ -1401,15 +1401,15 @@
   },
   "tabs.content.padding": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "tabs.content.margin-top": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "collapsible.radius": {
     "$type": "dimension",
-    "$value": "{radius.md}"
+    "$value": "{border-radius.md}"
   },
   "collapsible.animation-duration": {
     "$type": "duration",
@@ -1425,23 +1425,23 @@
   },
   "separator.margin.horizontal": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "separator.margin.vertical": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "pagination.item.size": {
     "$type": "spacing",
-    "$value": "{size.md}"
+    "$value": "{spacing.500}"
   },
   "pagination.item.padding-x": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "pagination.item.radius": {
     "$type": "dimension",
-    "$value": "{radius.md}"
+    "$value": "{border-radius.md}"
   },
   "pagination.item.font-size": {
     "$type": "fontSize",
@@ -1449,7 +1449,7 @@
   },
   "pagination.item.gap": {
     "$type": "spacing",
-    "$value": "{space.xs}"
+    "$value": "{spacing.050}"
   },
   "pagination.icon.size": {
     "$type": "spacing",
@@ -1473,19 +1473,19 @@
   },
   "dialog.content.padding": {
     "$type": "spacing",
-    "$value": "{space.xl}"
+    "$value": "{spacing.400}"
   },
   "dialog.content.radius": {
     "$type": "dimension",
-    "$value": "{radius.lg}"
+    "$value": "{border-radius.lg}"
   },
   "dialog.header.gap": {
     "$type": "spacing",
-    "$value": "{space.sm}"
+    "$value": "{spacing.100}"
   },
   "dialog.header.margin-bottom": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "dialog.title.font-size": {
     "$type": "fontSize",
@@ -1497,11 +1497,11 @@
   },
   "dialog.footer.margin-top": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "dialog.footer.gap": {
     "$type": "spacing",
-    "$value": "{space.sm}"
+    "$value": "{spacing.100}"
   },
   "popover.content.width.sm": {
     "$type": "spacing",
@@ -1517,7 +1517,7 @@
   },
   "popover.content.padding": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "hover-card.content.width.sm": {
     "$type": "spacing",
@@ -1533,7 +1533,7 @@
   },
   "hover-card.content.padding": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "toast.width": {
     "$type": "spacing",
@@ -1541,15 +1541,15 @@
   },
   "toast.padding": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "toast.radius": {
     "$type": "dimension",
-    "$value": "{radius.md}"
+    "$value": "{border-radius.md}"
   },
   "toast.gap": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "toast.title.font-size": {
     "$type": "fontSize",
@@ -1561,11 +1561,11 @@
   },
   "toast.action.height": {
     "$type": "spacing",
-    "$value": "{size.sm}"
+    "$value": "{spacing.400}"
   },
   "toast.action.padding-x": {
     "$type": "spacing",
-    "$value": "{space.sm}"
+    "$value": "{spacing.100}"
   },
   "toast.action.font-size": {
     "$type": "fontSize",
@@ -1577,15 +1577,15 @@
   },
   "toast.close.radius": {
     "$type": "dimension",
-    "$value": "{radius.sm}"
+    "$value": "{border-radius.sm}"
   },
   "table.cell.padding-x": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "table.cell.padding-y": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "table.header.font-size": {
     "$type": "fontSize",
@@ -1601,7 +1601,7 @@
   },
   "table.caption.margin-top": {
     "$type": "spacing",
-    "$value": "{space.md}"
+    "$value": "{spacing.200}"
   },
   "table.border.width": {
     "$type": "dimension",
@@ -1609,7 +1609,7 @@
   },
   "skeleton.radius": {
     "$type": "dimension",
-    "$value": "{radius.md}"
+    "$value": "{border-radius.md}"
   },
   "skeleton.height.text": {
     "$type": "spacing",
@@ -1621,7 +1621,7 @@
   },
   "skeleton.height.button": {
     "$type": "spacing",
-    "$value": "{size.md}"
+    "$value": "{spacing.500}"
   },
   "skeleton.height.avatar": {
     "$type": "spacing",
@@ -1633,7 +1633,7 @@
   },
   "progress.radius": {
     "$type": "dimension",
-    "$value": "{radius.full}"
+    "$value": "{border-radius.full}"
   },
   "scrollbar.width": {
     "$type": "spacing",
@@ -1641,11 +1641,11 @@
   },
   "scrollbar.radius": {
     "$type": "dimension",
-    "$value": "{radius.full}"
+    "$value": "{border-radius.full}"
   },
   "scrollbar.thumb.radius": {
     "$type": "dimension",
-    "$value": "{radius.full}"
+    "$value": "{border-radius.full}"
   },
   "scrollbar.thumb.min-height": {
     "$type": "spacing",
@@ -1749,7 +1749,7 @@
   },
   "carousel.gap": {
     "$type": "spacing",
-    "$value": "{space.lg}"
+    "$value": "{spacing.300}"
   },
   "context-menu.content.min-width": {
     "$type": "spacing",
