@@ -3,11 +3,11 @@
     "components": {
       "modes": [
         {
-          "modeId": "mode:components:light",
+          "modeId": "1241:6",
           "name": "Light"
         },
         {
-          "modeId": "mode:components:dark",
+          "modeId": "1241:7",
           "name": "Dark"
         }
       ],
@@ -2126,18 +2126,18 @@
         },
         "checkbox.size.sm": {
           "$type": "spacing",
-          "$value": "{spacing.200}",
+          "$value": "{spacing.150}",
           "valuesByMode": {
-            "Light": "{spacing.200}",
-            "Dark": "{spacing.200}"
+            "Light": "{spacing.150}",
+            "Dark": "{spacing.150}"
           }
         },
         "checkbox.size.md": {
           "$type": "spacing",
-          "$value": "{spacing.300}",
+          "$value": "{spacing.200}",
           "valuesByMode": {
-            "Light": "{spacing.300}",
-            "Dark": "{spacing.300}"
+            "Light": "{spacing.200}",
+            "Dark": "{spacing.200}"
           }
         },
         "checkbox.size.lg": {
