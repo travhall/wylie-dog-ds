@@ -1057,11 +1057,11 @@
   },
   "checkbox.size.sm": {
     "$type": "spacing",
-    "$value": "{spacing.200}"
+    "$value": "{spacing.150}"
   },
   "checkbox.size.md": {
     "$type": "spacing",
-    "$value": "{spacing.300}"
+    "$value": "{spacing.200}"
   },
   "checkbox.size.lg": {
     "$type": "spacing",

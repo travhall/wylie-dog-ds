@@ -151,3 +151,24 @@ export async function handleTestGitHubConfig(msg: any): Promise<void> {
     });
   }
 }
+
+/**
+ * Handle GitHub sync completion notification from UI
+ */
+export async function handleGitHubSyncComplete(msg: any): Promise<void> {
+  console.log("GitHub sync completed:", msg.result);
+  setLoading(false);
+
+  // If sync was successful, log success
+  if (msg.result?.success) {
+    console.log("✅ GitHub sync successful");
+    if (msg.result.commitUrl) {
+      console.log("📝 Commit URL:", msg.result.commitUrl);
+    }
+    if (msg.result.noChanges) {
+      console.log("ℹ️ No changes detected - nothing to commit");
+    }
+  } else if (msg.result?.error) {
+    console.error("❌ GitHub sync failed:", msg.result.error);
+  }
+}

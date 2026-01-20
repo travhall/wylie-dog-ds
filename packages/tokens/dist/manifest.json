@@ -8307,7 +8307,7 @@
           "size",
           "sm"
         ],
-        "value": "16px",
+        "value": "12px",
         "type": "spacing",
         "variable": "var(--checkbox-size-sm)",
         "description": ""
@@ -8319,7 +8319,7 @@
           "size",
           "md"
         ],
-        "value": "24px",
+        "value": "16px",
         "type": "spacing",
         "variable": "var(--checkbox-size-md)",
         "description": ""

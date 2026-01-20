@@ -26,6 +26,7 @@ import {
   handleGitHubPullWithConflicts,
   handleResolveConflicts,
   handleTestGitHubConfig,
+  handleGitHubSyncComplete,
 } from "./github-handlers";
 
 // Storage handlers
@@ -90,6 +91,7 @@ export function createHandlerRegistry(): HandlerRegistry {
     "github-pull-with-conflicts": handleGitHubPullWithConflicts,
     "resolve-conflicts": handleResolveConflicts,
     "test-github-config": handleTestGitHubConfig,
+    "github-sync-complete": handleGitHubSyncComplete,
 
     // Storage handlers
     "get-github-config": handleGetGitHubConfig,

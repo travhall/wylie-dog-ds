@@ -506,8 +506,8 @@
   --spacing-select-item-radius: 2px;
   --font-size-select-item-font-size: 14px;
   --spacing-select-separator-height: 1px;
-  --spacing-checkbox-size-sm: 16px;
-  --spacing-checkbox-size-md: 24px;
+  --spacing-checkbox-size-sm: 12px;
+  --spacing-checkbox-size-md: 16px;
   --spacing-checkbox-size-lg: 24px;
   --spacing-checkbox-border-width: 2px;
   --spacing-checkbox-border-radius: 2px;
@@ -1343,8 +1343,8 @@
     --spacing-select-item-radius: 2px;
     --font-size-select-item-font-size: 14px;
     --spacing-select-separator-height: 1px;
-    --spacing-checkbox-size-sm: 16px;
-    --spacing-checkbox-size-md: 24px;
+    --spacing-checkbox-size-sm: 12px;
+    --spacing-checkbox-size-md: 16px;
     --spacing-checkbox-size-lg: 24px;
     --spacing-checkbox-border-width: 2px;
     --spacing-checkbox-border-radius: 2px;
@@ -2037,8 +2037,8 @@
   --spacing-select-item-radius: 2px;
   --font-size-select-item-font-size: 14px;
   --spacing-select-separator-height: 1px;
-  --spacing-checkbox-size-sm: 16px;
-  --spacing-checkbox-size-md: 24px;
+  --spacing-checkbox-size-sm: 12px;
+  --spacing-checkbox-size-md: 16px;
   --spacing-checkbox-size-lg: 24px;
   --spacing-checkbox-border-width: 2px;
   --spacing-checkbox-border-radius: 2px;
