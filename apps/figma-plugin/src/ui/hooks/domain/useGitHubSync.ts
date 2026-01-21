@@ -33,7 +33,8 @@ export function useGitHubSync(
   pendingExportData?:
     | ExportData[]
     | { local: ExportData[]; remote: ExportData[] },
-  conflictOperationType?: "push" | "pull" | null
+  conflictOperationType?: "push" | "pull" | null,
+  onSyncSuccess?: () => void // Callback for successful sync (e.g., clear selection)
 ) {
   /**
    * Test GitHub configuration
@@ -155,6 +156,11 @@ export function useGitHubSync(
               : "✅ Saved to GitHub successfully!");
           actions.setSuccessMessage(message);
           setTimeout(() => actions.setSuccessMessage(null), 6000);
+
+          // Clear selection after successful sync
+          if (onSyncSuccess) {
+            onSyncSuccess();
+          }
         } else {
           actions.setError(syncResult.error || "GitHub sync failed");
         }
@@ -394,6 +400,11 @@ export function useGitHubSync(
               : "✅ Pushed to GitHub successfully!";
             actions.setSuccessMessage(message);
             setTimeout(() => actions.setSuccessMessage(null), 6000);
+
+            // Clear selection after successful conflict resolution & push
+            if (onSyncSuccess) {
+              onSyncSuccess();
+            }
           } else {
             actions.setError(
               syncResult.error || "Push failed after conflict resolution"

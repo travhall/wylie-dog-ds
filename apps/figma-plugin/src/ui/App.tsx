@@ -28,6 +28,7 @@ import { TokensTab } from "./components/tabs/TokensTab";
 import { ImportTab } from "./components/tabs/ImportTab";
 import { SyncTab } from "./components/tabs/SyncTab";
 import { EnhancedErrorDisplay } from "./components/EnhancedErrorDisplay";
+import { SuccessToast, ErrorToast } from "./components/Toast";
 import { ConflictResolutionDisplay } from "./components/ConflictResolutionDisplay";
 import { ValidationDisplay } from "./components/ValidationDisplay";
 import { ProgressFeedback } from "./components/ProgressFeedback";
@@ -86,7 +87,9 @@ function AppInner() {
     githubClient,
     pluginActions,
     pluginState.pendingTokensForConflictResolution,
-    pluginState.conflictOperationType
+    pluginState.conflictOperationType,
+    // Callback to clear selection after successful sync
+    () => setSelectedCollections(new Set())
   );
 
   // Handle import-validated and network request messages
@@ -424,21 +427,17 @@ function AppInner() {
         />
       )}
 
-      {/* Success Message */}
-      {pluginState.successMessage && (
-        <div
-          style={{
-            padding: "8px 12px",
-            marginBottom: "16px",
-            backgroundColor: "#f0f9ff",
-            border: "1px solid #bae6fd",
-            borderRadius: "4px",
-            color: "#0369a1",
-          }}
-        >
-          {pluginState.successMessage}
-        </div>
-      )}
+      {/* Success Toast */}
+      <SuccessToast
+        message={pluginState.successMessage}
+        onClose={() => pluginActions.setSuccessMessage(null)}
+      />
+
+      {/* Error Toast */}
+      <ErrorToast
+        message={pluginState.error}
+        onClose={() => pluginActions.setError(null)}
+      />
 
       {/* Tab Navigation */}
       <TabBar

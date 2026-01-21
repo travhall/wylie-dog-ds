@@ -126,7 +126,6 @@ export class ConflictResolver {
         // "take-local" means "keep the local token" - so do nothing (correct)
         //
         // For other conflicts: keep local version
-        console.log(`📍 RESOLVER: Keeping local version (no action needed)`);
 
         // CRITICAL: For addition conflicts where we're taking local (not adding),
         // ensure the token is NOT in the resolved set
@@ -148,6 +147,8 @@ export class ConflictResolver {
               `✅ RESOLVER: Token correctly absent from resolved set`
             );
           }
+        } else {
+          console.log(`📍 RESOLVER: Keeping local version (no action needed)`);
         }
         break;
 
