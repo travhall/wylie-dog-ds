@@ -31,7 +31,7 @@ export const Checkbox = React.forwardRef<
     <CheckboxPrimitive.Root
       ref={ref}
       className={cn(
-        "peer shrink-0 transition-all",
+        "peer transition-all",
         "rounded-(--spacing-checkbox-border-radius)",
         "border-(length:--spacing-checkbox-border-width)",
         "focus:outline-none",
@@ -49,19 +49,17 @@ export const Checkbox = React.forwardRef<
       )}
       {...props}
     >
-      <CheckboxPrimitive.Indicator
-        className={cn("flex items-center justify-center text-current")}
-      >
+      <CheckboxPrimitive.Indicator className={cn("flex items-start")}>
         <svg
           className={iconSizes[size]}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <polyline points="20,6 9,17 4,12" />
+          <polyline points="20,2 9,15 4,10" />
         </svg>
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
