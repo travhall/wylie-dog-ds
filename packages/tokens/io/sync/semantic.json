@@ -3,11 +3,11 @@
     "semantic": {
       "modes": [
         {
-          "modeId": "mode:semantic:light",
+          "modeId": "1249:3",
           "name": "Light"
         },
         {
-          "modeId": "mode:semantic:dark",
+          "modeId": "1249:4",
           "name": "Dark"
         }
       ],
@@ -559,200 +559,200 @@
         "color.interactive.hover": {
           "$type": "color",
           "$value": "{color.gray.100}",
+          "$description": "Generic hover background for interactive elements",
           "valuesByMode": {
             "Light": "{color.gray.100}",
             "Dark": "{color.gray.800}"
-          },
-          "$description": "Generic hover background for interactive elements"
+          }
         },
         "color.interactive.pressed": {
           "$type": "color",
           "$value": "{color.gray.200}",
+          "$description": "Pressed/active state background",
           "valuesByMode": {
             "Light": "{color.gray.200}",
             "Dark": "{color.gray.700}"
-          },
-          "$description": "Pressed/active state background"
+          }
         },
         "color.interactive.focus": {
           "$type": "color",
           "$value": "{color.blue.50}",
+          "$description": "Focus state background",
           "valuesByMode": {
             "Light": "{color.blue.50}",
             "Dark": "{color.blue.950}"
-          },
-          "$description": "Focus state background"
+          }
         },
         "color.interactive.disabled": {
           "$type": "color",
           "$value": "{color.gray.100}",
+          "$description": "Disabled state background",
           "valuesByMode": {
             "Light": "{color.gray.100}",
             "Dark": "{color.gray.800}"
-          },
-          "$description": "Disabled state background"
+          }
         },
         "color.text.on-interactive": {
           "$type": "color",
           "$value": "{color.gray.900}",
+          "$description": "Text color on interactive backgrounds",
           "valuesByMode": {
             "Light": "{color.gray.900}",
             "Dark": "{color.gray.100}"
-          },
-          "$description": "Text color on interactive backgrounds"
+          }
         },
         "shadow.none": {
           "$type": "shadow",
           "$value": "none",
+          "$description": "No shadow",
           "valuesByMode": {
             "Light": "none",
             "Dark": "none"
-          },
-          "$description": "No shadow"
+          }
         },
         "shadow.sm": {
           "$type": "shadow",
           "$value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+          "$description": "Subtle shadow for slight elevation",
           "valuesByMode": {
             "Light": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
             "Dark": "0 1px 2px 0 rgb(0 0 0 / 0.3)"
-          },
-          "$description": "Subtle shadow for slight elevation"
+          }
         },
         "shadow.base": {
           "$type": "shadow",
           "$value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+          "$description": "Default shadow for cards and raised elements",
           "valuesByMode": {
             "Light": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
             "Dark": "0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4)"
-          },
-          "$description": "Default shadow for cards and raised elements"
+          }
         },
         "shadow.md": {
           "$type": "shadow",
           "$value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+          "$description": "Medium shadow for dropdowns and popovers",
           "valuesByMode": {
             "Light": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
             "Dark": "0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4)"
-          },
-          "$description": "Medium shadow for dropdowns and popovers"
+          }
         },
         "shadow.lg": {
           "$type": "shadow",
           "$value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+          "$description": "Large shadow for modals and overlays",
           "valuesByMode": {
             "Light": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
             "Dark": "0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4)"
-          },
-          "$description": "Large shadow for modals and overlays"
+          }
         },
         "shadow.xl": {
           "$type": "shadow",
           "$value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+          "$description": "Extra large shadow for maximum elevation",
           "valuesByMode": {
             "Light": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
             "Dark": "0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4)"
-          },
-          "$description": "Extra large shadow for maximum elevation"
+          }
         },
         "shadow.inner": {
           "$type": "shadow",
           "$value": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
+          "$description": "Inner shadow for recessed elements",
           "valuesByMode": {
             "Light": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
             "Dark": "inset 0 2px 4px 0 rgb(0 0 0 / 0.2)"
-          },
-          "$description": "Inner shadow for recessed elements"
+          }
         },
         "transition.duration.instant": {
           "$type": "duration",
           "$value": "0ms",
+          "$description": "Instant transition (no animation)",
           "valuesByMode": {
             "Light": "0ms",
             "Dark": "0ms"
-          },
-          "$description": "Instant transition (no animation)"
+          }
         },
         "transition.duration.fast": {
           "$type": "duration",
           "$value": "150ms",
+          "$description": "Fast transition for micro-interactions",
           "valuesByMode": {
             "Light": "150ms",
             "Dark": "150ms"
-          },
-          "$description": "Fast transition for micro-interactions"
+          }
         },
         "transition.duration.normal": {
           "$type": "duration",
           "$value": "250ms",
+          "$description": "Normal transition duration",
           "valuesByMode": {
             "Light": "250ms",
             "Dark": "250ms"
-          },
-          "$description": "Normal transition duration"
+          }
         },
         "transition.duration.slow": {
           "$type": "duration",
           "$value": "400ms",
+          "$description": "Slow transition for emphasized changes",
           "valuesByMode": {
             "Light": "400ms",
             "Dark": "400ms"
-          },
-          "$description": "Slow transition for emphasized changes"
+          }
         },
         "z-index.base": {
           "$type": "number",
           "$value": "0",
+          "$description": "Base layer",
           "valuesByMode": {
             "Light": "0",
             "Dark": "0"
-          },
-          "$description": "Base layer"
+          }
         },
         "z-index.dropdown": {
           "$type": "number",
           "$value": "1000",
+          "$description": "Dropdowns and popovers",
           "valuesByMode": {
             "Light": "1000",
             "Dark": "1000"
-          },
-          "$description": "Dropdowns and popovers"
+          }
         },
         "z-index.sticky": {
           "$type": "number",
           "$value": "1020",
+          "$description": "Sticky headers and footers",
           "valuesByMode": {
             "Light": "1020",
             "Dark": "1020"
-          },
-          "$description": "Sticky headers and footers"
+          }
         },
         "z-index.modal": {
           "$type": "number",
           "$value": "1050",
+          "$description": "Modal dialogs",
           "valuesByMode": {
             "Light": "1050",
             "Dark": "1050"
-          },
-          "$description": "Modal dialogs"
+          }
         },
         "z-index.toast": {
           "$type": "number",
           "$value": "1090",
+          "$description": "Toast notifications",
           "valuesByMode": {
             "Light": "1090",
             "Dark": "1090"
-          },
-          "$description": "Toast notifications"
+          }
         },
         "z-index.tooltip": {
           "$type": "number",
           "$value": "1100",
+          "$description": "Tooltips (highest)",
           "valuesByMode": {
             "Light": "1100",
             "Dark": "1100"
-          },
-          "$description": "Tooltips (highest)"
+          }
         }
       }
     }
