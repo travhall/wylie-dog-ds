@@ -1281,7 +1281,7 @@
   },
   "label.color": {
     "$type": "color",
-    "$value": "{color.text.primary}"
+    "$value": "{color.text.secondary}"
   },
   "label.disabled.color": {
     "$type": "color",
@@ -2034,6 +2034,10 @@
   "form.error-font-size": {
     "$type": "fontSize",
     "$value": "{typography.font-size.xs}"
+  },
+  "form.label-font-size": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.sm}"
   },
   "alert-dialog.content-gap": {
     "$type": "spacing",

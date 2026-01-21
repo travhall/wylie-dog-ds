@@ -562,7 +562,7 @@
   --font-size-label-font-size-md: 16px;
   --font-size-label-font-size-lg: 18px;
   --spacing-label-margin-bottom: 4px;
-  --color-label-color: oklch(0.279 0.037 260.03);
+  --color-label-color: oklch(0.446 0.037 257.28);
   --color-label-disabled-color: oklch(0.869 0.02 252.89);
   --color-sheet-overlay-background: oklch(0.208 0.04 265.75);
   --spacing-sheet-content-width-sm: 320px;
@@ -751,6 +751,7 @@
   --spacing-form-error-margin: 4px;
   --font-size-form-description-font-size: 12px;
   --font-size-form-error-font-size: 12px;
+  --font-size-form-label-font-size: 14px;
   --spacing-alert-dialog-content-gap: 16px;
   --spacing-alert-dialog-content-padding: 24px;
   --spacing-alert-dialog-header-gap: 8px;
@@ -1400,7 +1401,7 @@
     --font-size-label-font-size-md: 16px;
     --font-size-label-font-size-lg: 18px;
     --spacing-label-margin-bottom: 4px;
-    --color-label-color: oklch(0.279 0.037 260.03);
+    --color-label-color: oklch(0.446 0.037 257.28);
     --color-label-disabled-color: oklch(0.869 0.02 252.89);
     --color-sheet-overlay-background: oklch(0.208 0.04 265.75);
     --spacing-sheet-content-width-sm: 320px;
@@ -1589,6 +1590,7 @@
     --spacing-form-error-margin: 4px;
     --font-size-form-description-font-size: 12px;
     --font-size-form-error-font-size: 12px;
+    --font-size-form-label-font-size: 14px;
     --spacing-alert-dialog-content-gap: 16px;
     --spacing-alert-dialog-content-padding: 24px;
     --spacing-alert-dialog-header-gap: 8px;
@@ -2095,7 +2097,7 @@
   --font-size-label-font-size-md: 16px;
   --font-size-label-font-size-lg: 18px;
   --spacing-label-margin-bottom: 4px;
-  --color-label-color: oklch(0.984 0.003 247.86);
+  --color-label-color: oklch(0.929 0.013 255.51);
   --color-label-disabled-color: oklch(0.554 0.041 257.42);
   --color-sheet-overlay-background: oklch(1 0 0);
   --spacing-sheet-content-width-sm: 320px;
@@ -2284,6 +2286,7 @@
   --spacing-form-error-margin: 4px;
   --font-size-form-description-font-size: 12px;
   --font-size-form-error-font-size: 12px;
+  --font-size-form-label-font-size: 14px;
   --spacing-alert-dialog-content-gap: 16px;
   --spacing-alert-dialog-content-padding: 24px;
   --spacing-alert-dialog-header-gap: 8px;
