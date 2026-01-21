@@ -3,11 +3,11 @@
     "components": {
       "modes": [
         {
-          "modeId": "1241:6",
+          "modeId": "1249:6",
           "name": "Light"
         },
         {
-          "modeId": "1241:7",
+          "modeId": "1249:7",
           "name": "Dark"
         }
       ],
@@ -2574,10 +2574,10 @@
         },
         "label.color": {
           "$type": "color",
-          "$value": "{color.text.primary}",
+          "$value": "{color.text.secondary}",
           "valuesByMode": {
-            "Light": "{color.text.primary}",
-            "Dark": "{color.text.primary}"
+            "Light": "{color.text.secondary}",
+            "Dark": "{color.text.secondary}"
           }
         },
         "label.disabled.color": {
@@ -4082,6 +4082,14 @@
           "valuesByMode": {
             "Light": "{typography.font-size.xs}",
             "Dark": "{typography.font-size.xs}"
+          }
+        },
+        "form.label-font-size": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.sm}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
           }
         },
         "alert-dialog.content-gap": {
