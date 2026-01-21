@@ -557,8 +557,10 @@
   --spacing-textarea-min-height-lg: 128px;
   --spacing-textarea-padding: 16px;
   --spacing-textarea-radius: 4px;
+  --font-size-label-font-size-sm: 14px;
   --font-size-textarea-font-size: 14px;
-  --font-size-label-font-size: 14px;
+  --font-size-label-font-size-md: 16px;
+  --font-size-label-font-size-lg: 18px;
   --spacing-label-margin-bottom: 4px;
   --color-label-color: oklch(0.279 0.037 260.03);
   --color-label-disabled-color: oklch(0.869 0.02 252.89);
@@ -749,7 +751,6 @@
   --spacing-form-error-margin: 4px;
   --font-size-form-description-font-size: 12px;
   --font-size-form-error-font-size: 12px;
-  --font-size-form-label-font-size: 14px;
   --spacing-alert-dialog-content-gap: 16px;
   --spacing-alert-dialog-content-padding: 24px;
   --spacing-alert-dialog-header-gap: 8px;
@@ -1394,8 +1395,10 @@
     --spacing-textarea-min-height-lg: 128px;
     --spacing-textarea-padding: 16px;
     --spacing-textarea-radius: 4px;
+    --font-size-label-font-size-sm: 14px;
     --font-size-textarea-font-size: 14px;
-    --font-size-label-font-size: 14px;
+    --font-size-label-font-size-md: 16px;
+    --font-size-label-font-size-lg: 18px;
     --spacing-label-margin-bottom: 4px;
     --color-label-color: oklch(0.279 0.037 260.03);
     --color-label-disabled-color: oklch(0.869 0.02 252.89);
@@ -1586,7 +1589,6 @@
     --spacing-form-error-margin: 4px;
     --font-size-form-description-font-size: 12px;
     --font-size-form-error-font-size: 12px;
-    --font-size-form-label-font-size: 14px;
     --spacing-alert-dialog-content-gap: 16px;
     --spacing-alert-dialog-content-padding: 24px;
     --spacing-alert-dialog-header-gap: 8px;

@@ -6341,17 +6341,6 @@
         "type": "fontSize",
         "variable": "var(--form-error-font-size)",
         "description": ""
-      },
-      "form-label-font-size": {
-        "name": "formLabelFontSize",
-        "path": [
-          "form",
-          "label-font-size"
-        ],
-        "value": "14px",
-        "type": "fontSize",
-        "variable": "var(--form-label-font-size)",
-        "description": ""
       }
     },
     "hover-card": {
@@ -8757,15 +8746,40 @@
       }
     },
     "label": {
-      "label-font-size": {
-        "name": "labelFontSize",
+      "label-font-size-sm": {
+        "name": "labelFontSizeSm",
         "path": [
           "label",
-          "font-size"
+          "font-size",
+          "sm"
         ],
         "value": "14px",
         "type": "fontSize",
-        "variable": "var(--label-font-size)",
+        "variable": "var(--label-font-size-sm)",
+        "description": ""
+      },
+      "label-font-size-md": {
+        "name": "labelFontSizeMd",
+        "path": [
+          "label",
+          "font-size",
+          "md"
+        ],
+        "value": "16px",
+        "type": "fontSize",
+        "variable": "var(--label-font-size-md)",
+        "description": ""
+      },
+      "label-font-size-lg": {
+        "name": "labelFontSizeLg",
+        "path": [
+          "label",
+          "font-size",
+          "lg"
+        ],
+        "value": "18px",
+        "type": "fontSize",
+        "variable": "var(--label-font-size-lg)",
         "description": ""
       },
       "label-margin-bottom": {

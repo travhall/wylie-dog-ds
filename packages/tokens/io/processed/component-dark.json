@@ -1259,13 +1259,21 @@
     "$type": "dimension",
     "$value": "{border-radius.md}"
   },
+  "label.font-size.sm": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.sm}"
+  },
   "textarea.font-size": {
     "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
   },
-  "label.font-size": {
+  "label.font-size.md": {
     "$type": "fontSize",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.base}"
+  },
+  "label.font-size.lg": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.lg}"
   },
   "label.margin-bottom": {
     "$type": "spacing",
@@ -2026,10 +2034,6 @@
   "form.error-font-size": {
     "$type": "fontSize",
     "$value": "{typography.font-size.xs}"
-  },
-  "form.label-font-size": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.sm}"
   },
   "alert-dialog.content-gap": {
     "$type": "spacing",

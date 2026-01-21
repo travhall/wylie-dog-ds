@@ -95,9 +95,9 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
     const { id, isRequired, isInvalid } = useFormField();
 
     const sizes = {
-      sm: "text-(length:--font-size-form-description-font-size)",
-      md: "text-(length:--font-size-form-label-font-size)",
-      lg: "text-(length:--font-size-form-error-font-size)",
+      sm: "text-(length:--font-size-label-font-size-sm)",
+      md: "text-(length:--font-size-label-font-size-md)",
+      lg: "text-(length:--font-size-label-font-size-lg)",
     };
 
     return (
