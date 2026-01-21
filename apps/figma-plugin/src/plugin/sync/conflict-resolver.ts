@@ -19,7 +19,26 @@ export class ConflictResolver {
     remoteTokens: ExportData[],
     resolutions: ConflictResolution[]
   ): ExportData[] {
-    // console.log(`🔧 Applying ${resolutions.length} conflict resolutions...`);
+    console.log(`🔧 RESOLVER: Starting conflict resolution`);
+    console.log(`   Local collections: ${localTokens.length}`);
+    console.log(`   Remote collections: ${remoteTokens.length}`);
+    console.log(`   Resolutions to apply: ${resolutions.length}`);
+
+    // DEBUG: Count tokens before resolution
+    const countTokens = (data: ExportData[]) => {
+      let total = 0;
+      data.forEach((coll) => {
+        Object.values(coll).forEach((collData: any) => {
+          if (collData?.variables) {
+            total += Object.keys(collData.variables).length;
+          }
+        });
+      });
+      return total;
+    };
+
+    console.log(`   Local token count: ${countTokens(localTokens)}`);
+    console.log(`   Remote token count: ${countTokens(remoteTokens)}`);
 
     // Convert to sync-aware format
     const localWithSync = this.metadataManager.addSyncMetadataToExportData(
@@ -48,7 +67,22 @@ export class ConflictResolver {
     // Convert back to standard format (remove sync metadata for compatibility)
     const result = this.stripSyncMetadata(resolved);
 
-    // console.log("✅ Conflict resolution complete");
+    console.log(`✅ RESOLVER: Conflict resolution complete`);
+    console.log(`   Resolved token count: ${countTokens(result)}`);
+
+    // DEBUG: Show token names for each collection
+    result.forEach((coll, idx) => {
+      const collName = Object.keys(coll)[0];
+      const tokens = coll[collName]?.variables || {};
+      const tokenNames = Object.keys(tokens);
+      console.log(
+        `   Collection ${idx + 1} (${collName}): ${tokenNames.length} tokens`
+      );
+      console.log(
+        `      ${tokenNames.slice(0, 5).join(", ")}${tokenNames.length > 5 ? "..." : ""}`
+      );
+    });
+
     return result;
   }
 
@@ -70,29 +104,79 @@ export class ConflictResolver {
     // Parse conflict ID to get token path info
     const pathInfo = this.parseConflictId(conflictId);
     if (!pathInfo) {
-      // console.warn(`Invalid conflict ID: ${conflictId}`);
+      console.warn(`❌ RESOLVER: Invalid conflict ID: ${conflictId}`);
       return;
     }
 
     const { tokenPath, collectionName, tokenName } = pathInfo;
 
+    // Extract conflict type from conflictId (format: conflict_{type}_{path}_{timestamp})
+    const conflictType = conflictId.split("_")[1]; // "addition", "deletion", etc.
+
+    console.log(`🔧 RESOLVER: Applying resolution for ${tokenPath}`);
+    console.log(`   Conflict type: ${conflictType}, Strategy: ${strategy}`);
+    console.log(`   Collection: ${collectionName}, Token: ${tokenName}`);
+
     switch (strategy) {
       case "take-local":
-        // Keep existing local token (no action needed)
-        // console.log(`📍 Keeping local version of ${tokenPath}`);
+        // For "addition" conflicts (token exists remotely but not locally):
+        // "take-local" means "don't add it" - so do nothing (correct)
+        //
+        // For "deletion" conflicts (token exists locally but not remotely):
+        // "take-local" means "keep the local token" - so do nothing (correct)
+        //
+        // For other conflicts: keep local version
+        console.log(`📍 RESOLVER: Keeping local version (no action needed)`);
+
+        // CRITICAL: For addition conflicts where we're taking local (not adding),
+        // ensure the token is NOT in the resolved set
+        if (conflictType === "addition") {
+          // The token should not exist in resolved (started with local tokens)
+          // Verify it's not there
+          const hasToken = this.findToken(
+            resolvedTokens,
+            collectionName,
+            tokenName
+          );
+          if (hasToken) {
+            console.warn(
+              `⚠️ RESOLVER: Addition conflict but token EXISTS in local! Removing it.`
+            );
+            this.removeToken(resolvedTokens, collectionName, tokenName);
+          } else {
+            console.log(
+              `✅ RESOLVER: Token correctly absent from resolved set`
+            );
+          }
+        }
         break;
 
       case "take-remote":
-        this.applyRemoteToken(
-          resolvedTokens,
-          remoteTokens,
-          collectionName,
-          tokenName
-        );
-        // console.log(`📥 Applied remote version of ${tokenPath}`);
+        console.log(`📥 RESOLVER: Applying remote version`);
+
+        // For "addition" conflicts: add the remote token
+        // For "deletion" conflicts: remote doesn't have it, so delete from local
+        // For other conflicts: replace with remote version
+
+        if (conflictType === "deletion") {
+          // Remote deleted it, so remove from resolved
+          console.log(
+            `🗑️ RESOLVER: Remote deleted token, removing from resolved set`
+          );
+          this.removeToken(resolvedTokens, collectionName, tokenName);
+        } else {
+          // Add or update with remote token
+          this.applyRemoteToken(
+            resolvedTokens,
+            remoteTokens,
+            collectionName,
+            tokenName
+          );
+        }
         break;
 
       case "manual":
+        console.log(`✏️ RESOLVER: Applying manual resolution`);
         if (manualToken) {
           this.applyManualToken(
             resolvedTokens,
@@ -100,7 +184,6 @@ export class ConflictResolver {
             tokenName,
             manualToken
           );
-          // console.log(`✏️ Applied manual resolution for ${tokenPath}`);
         } else if (manualValue !== undefined) {
           this.applyManualValue(
             resolvedTokens,
@@ -108,13 +191,14 @@ export class ConflictResolver {
             tokenName,
             manualValue
           );
-          // console.log(`✏️ Applied manual value for ${tokenPath}`);
         }
         break;
 
       default:
-      // console.warn(`Unknown resolution strategy: ${strategy}`);
+        console.warn(`❌ RESOLVER: Unknown resolution strategy: ${strategy}`);
     }
+
+    console.log(`✅ RESOLVER: Resolution complete for ${tokenPath}`);
   }
 
   /**
@@ -211,6 +295,30 @@ export class ConflictResolver {
       }
     }
     return null;
+  }
+
+  /**
+   * Remove a token from the export data
+   */
+  private removeToken(
+    exportData: ExportDataWithSync[],
+    collectionName: string,
+    tokenName: string
+  ): boolean {
+    for (const data of exportData) {
+      const collection = data[collectionName];
+      if (collection && collection.variables[tokenName]) {
+        console.log(
+          `🗑️ RESOLVER: Deleting token ${collectionName}.${tokenName}`
+        );
+        delete collection.variables[tokenName];
+        return true;
+      }
+    }
+    console.warn(
+      `⚠️ RESOLVER: Token ${collectionName}.${tokenName} not found for deletion`
+    );
+    return false;
   }
 
   /**

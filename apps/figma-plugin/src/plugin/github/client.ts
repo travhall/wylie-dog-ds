@@ -267,6 +267,23 @@ export class GitHubClient {
     const filesUpdated: string[] = [];
 
     try {
+      console.log(
+        `📤 GITHUB SYNC: Starting direct sync with ${exportData.length} collections`
+      );
+
+      // DEBUG: Log what we're about to sync
+      exportData.forEach((collectionData, idx) => {
+        const collectionName = Object.keys(collectionData)[0];
+        const tokens = collectionData[collectionName];
+        const tokenNames = Object.keys(tokens.variables || {});
+        console.log(
+          `   Collection ${idx + 1}: ${collectionName} (${tokenNames.length} tokens)`
+        );
+        console.log(
+          `   Token names: ${tokenNames.slice(0, 5).join(", ")}${tokenNames.length > 5 ? "..." : ""}`
+        );
+      });
+
       // Get the current commit SHA
       const { data: refData } = await this.octokit.git.getRef({
         owner: this.config.owner,
@@ -299,6 +316,12 @@ export class GitHubClient {
           [{ [collectionName]: tokens }],
           null,
           2
+        );
+
+        // DEBUG: Log token count in new content
+        const tokenCount = Object.keys(tokens.variables || {}).length;
+        console.log(
+          `📄 GITHUB SYNC: Preparing ${fileName} with ${tokenCount} tokens`
         );
 
         // Fetch existing file to compare content
