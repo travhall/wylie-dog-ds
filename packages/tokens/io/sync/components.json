@@ -2532,6 +2532,14 @@
             "Dark": "{border-radius.md}"
           }
         },
+        "label.font-size.sm": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.sm}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
+          }
+        },
         "textarea.font-size": {
           "$type": "fontSize",
           "$value": "{typography.font-size.sm}",
@@ -2540,12 +2548,20 @@
             "Dark": "{typography.font-size.sm}"
           }
         },
-        "label.font-size": {
+        "label.font-size.md": {
           "$type": "fontSize",
-          "$value": "{typography.font-size.sm}",
+          "$value": "{typography.font-size.base}",
           "valuesByMode": {
-            "Light": "{typography.font-size.sm}",
-            "Dark": "{typography.font-size.sm}"
+            "Light": "{typography.font-size.base}",
+            "Dark": "{typography.font-size.base}"
+          }
+        },
+        "label.font-size.lg": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.lg}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.lg}",
+            "Dark": "{typography.font-size.lg}"
           }
         },
         "label.margin-bottom": {
