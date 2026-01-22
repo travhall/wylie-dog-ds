@@ -323,13 +323,21 @@
     "$type": "spacing",
     "$value": "{spacing.200}"
   },
+  "input.font-size.sm": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.sm}"
+  },
   "input.radius": {
     "$type": "dimension",
     "$value": "{border-radius.md}"
   },
-  "input.font-size": {
+  "input.font-size.md": {
     "$type": "fontSize",
     "$value": "{typography.font-size.base}"
+  },
+  "input.font-size.lg": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.lg}"
   },
   "button.outline.hover": {
     "$type": "color",

@@ -175,8 +175,10 @@
   --spacing-input-height-md: 40px;
   --spacing-input-height-lg: 48px;
   --spacing-input-padding-x: 16px;
+  --font-size-input-font-size-sm: 14px;
   --spacing-input-radius: 4px;
-  --font-size-input-font-size: 16px;
+  --font-size-input-font-size-md: 16px;
+  --font-size-input-font-size-lg: 18px;
   --color-button-outline-hover: oklch(0.279 0.037 260.03);
   --color-button-link-text: oklch(0.546 0.215 262.88);
   --color-alert-default-background: oklch(0.279 0.037 260.03);

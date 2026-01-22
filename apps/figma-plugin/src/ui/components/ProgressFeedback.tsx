@@ -27,6 +27,13 @@ export function ProgressFeedback({
   onCancel,
   loadingMessage,
 }: ProgressStepProps) {
+  console.log("📊 ProgressFeedback render:", {
+    loading,
+    stepsLength: steps.length,
+    currentStep,
+    loadingMessage,
+  });
+
   if (!loading) return null;
 
   // Simple loading screen when no steps are defined

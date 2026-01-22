@@ -3705,6 +3705,18 @@
         "variable": "var(--input-padding-x)",
         "description": ""
       },
+      "input-font-size-sm": {
+        "name": "inputFontSizeSm",
+        "path": [
+          "input",
+          "font-size",
+          "sm"
+        ],
+        "value": "14px",
+        "type": "fontSize",
+        "variable": "var(--input-font-size-sm)",
+        "description": ""
+      },
       "input-radius": {
         "name": "inputRadius",
         "path": [
@@ -3716,15 +3728,28 @@
         "variable": "var(--input-radius)",
         "description": ""
       },
-      "input-font-size": {
-        "name": "inputFontSize",
+      "input-font-size-md": {
+        "name": "inputFontSizeMd",
         "path": [
           "input",
-          "font-size"
+          "font-size",
+          "md"
         ],
         "value": "16px",
         "type": "fontSize",
-        "variable": "var(--input-font-size)",
+        "variable": "var(--input-font-size-md)",
+        "description": ""
+      },
+      "input-font-size-lg": {
+        "name": "inputFontSizeLg",
+        "path": [
+          "input",
+          "font-size",
+          "lg"
+        ],
+        "value": "18px",
+        "type": "fontSize",
+        "variable": "var(--input-font-size-lg)",
         "description": ""
       }
     },

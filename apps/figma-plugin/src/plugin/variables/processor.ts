@@ -65,6 +65,34 @@ function getW3CTokenType(
       return "color";
 
     case "FLOAT":
+      // CRITICAL: Check for unitless number types FIRST
+
+      // Font-weight: unitless numbers (100, 400, 700)
+      if (
+        variableName.toLowerCase().includes("fontweight") ||
+        variableName.toLowerCase().includes("font-weight") ||
+        (variableName.toLowerCase().includes("weight") &&
+          !variableName.toLowerCase().includes("border"))
+      ) {
+        return "fontWeight";
+      }
+
+      // Z-index: unitless integers for stacking order
+      if (
+        variableName.toLowerCase().includes("z-index") ||
+        variableName.toLowerCase().includes("zindex") ||
+        (variableName.toLowerCase().includes("z.") &&
+          (variableName.toLowerCase().includes("index") ||
+            variableName.toLowerCase().includes("layer")))
+      ) {
+        return "number";
+      }
+
+      // Opacity: unitless 0-1 or 0-100 values
+      if (variableName.toLowerCase().includes("opacity")) {
+        return "number";
+      }
+
       // Infer semantic type from scopes and name
       if (
         scopes.includes("FONT_SIZE") ||
@@ -175,6 +203,12 @@ function formatNumericValue(value: number, tokenType: string): string {
       return `${value}px`;
     case "lineHeight":
       return `${value}%`;
+    case "fontWeight":
+    case "number":
+      // CRITICAL: These must be unitless
+      // - fontWeight: 100, 200, 300, etc.
+      // - number (z-index, opacity, etc.): 0, 1, 10, 100, etc.
+      return value.toString();
     default:
       return value.toString();
   }

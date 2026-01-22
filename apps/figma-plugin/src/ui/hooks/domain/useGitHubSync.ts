@@ -194,11 +194,16 @@ export function useGitHubSync(
    * Pull tokens from GitHub with conflict detection
    */
   const handleGitHubPull = useCallback(async () => {
+    console.log("🔽 PULL: Starting GitHub pull operation");
     try {
       actions.setLoading(true);
+      console.log("🔽 PULL: Loading state set to TRUE");
       actions.setLoadingMessage("Reading local tokens...");
+      console.log("🔽 PULL: Loading message set");
       actions.setProgressSteps(PULL_STEPS);
+      console.log("🔽 PULL: Progress steps set:", PULL_STEPS.length, "steps");
       actions.setProgressStep(0);
+      console.log("🔽 PULL: Progress step set to 0");
 
       // Step 1: Request local tokens from plugin thread
       const localTokensPromise = new Promise<ExportData[]>((resolve) => {
@@ -316,6 +321,10 @@ export function useGitHubSync(
           },
         ];
 
+        // Keep loading state active with import message
+        actions.setLoadingMessage("Importing tokens to Figma...");
+        actions.setProgressStep(3); // Final step
+
         parent.postMessage(
           {
             pluginMessage: {
@@ -325,6 +334,9 @@ export function useGitHubSync(
           },
           "*"
         );
+
+        // Don't clear loading/progress here - import-validated handler will do it
+        // This keeps the loading animation visible during import
       } else {
         // Handle pull failure directly
         actions.setLoading(false);
@@ -413,6 +425,10 @@ export function useGitHubSync(
         } else {
           // For pull: import the resolved tokens into Figma
           console.log("📥 Importing resolved tokens to Figma...");
+
+          // Keep loading state active - import will complete and show validation modal
+          actions.setLoadingMessage("Importing resolved tokens to Figma...");
+
           parent.postMessage(
             {
               pluginMessage: {
@@ -430,8 +446,8 @@ export function useGitHubSync(
             "*"
           );
 
-          actions.setSuccessMessage("✅ Conflicts resolved and applied!");
-          setTimeout(() => actions.setSuccessMessage(null), 3000);
+          // Don't show success toast - validation modal will provide feedback
+          // Loading state will be cleared when import completes
         }
       } catch (error: any) {
         console.error("Conflict resolution error:", error);

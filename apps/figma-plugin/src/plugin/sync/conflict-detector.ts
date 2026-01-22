@@ -217,10 +217,8 @@ export class ConflictDetector {
       return null; // No conflict
     }
 
-    // Detect specific type of conflict
-    if (localToken.$type !== remoteToken.$type) {
-      return this.createTypeChangeConflict(tokenPath, localEntry, remoteEntry);
-    }
+    // Check for type changes
+    const hasTypeChange = localToken.$type !== remoteToken.$type;
 
     // Check for value differences (primary $value OR valuesByMode)
     const hasPrimaryValueChange = this.isValueDifferent(
@@ -230,6 +228,23 @@ export class ConflictDetector {
     const hasModeValueChange =
       (localToken.valuesByMode || remoteToken.valuesByMode) &&
       this.hasModeValueConflicts(localToken, remoteToken);
+
+    // CRITICAL FIX: If type changed BUT values are semantically identical,
+    // this is just metadata normalization (e.g., spacing→dimension)
+    // Don't flag as a conflict
+    if (hasTypeChange && !hasPrimaryValueChange && !hasModeValueChange) {
+      console.log(
+        `✅ Type change but values identical - skipping conflict for: ${tokenPath}`
+      );
+      console.log(`   ${localToken.$type} → ${remoteToken.$type}`);
+      console.log(`   Value:`, JSON.stringify(localToken.$value));
+      return null; // Not a real conflict
+    }
+
+    // Detect specific type of conflict
+    if (hasTypeChange) {
+      return this.createTypeChangeConflict(tokenPath, localEntry, remoteEntry);
+    }
 
     // If either primary value or mode values differ, create conflict
     if (hasPrimaryValueChange || hasModeValueChange) {
@@ -334,15 +349,66 @@ export class ConflictDetector {
 
   /**
    * Check if two values are different
+   * Handles type coercion and normalization
    */
   private isValueDifferent(localValue: any, remoteValue: any): boolean {
-    // Handle simple value comparison
+    // Null/undefined handling
+    if (localValue == null && remoteValue == null) return false;
+    if (localValue == null || remoteValue == null) return true;
+
+    // Type coercion for primitives (handles "100" vs 100)
     if (typeof localValue !== "object" && typeof remoteValue !== "object") {
+      // Try loose equality first (handles "100" === 100)
+      if (localValue == remoteValue) return false;
+
+      // Try string comparison (handles whitespace)
+      if (String(localValue).trim() === String(remoteValue).trim()) {
+        return false;
+      }
+
+      // Strict comparison as fallback
       return localValue !== remoteValue;
     }
 
-    // Handle object comparison (like color objects)
-    return JSON.stringify(localValue) !== JSON.stringify(remoteValue);
+    // Object comparison - normalize before comparing
+    try {
+      const normalizedLocal = this.normalizeValue(localValue);
+      const normalizedRemote = this.normalizeValue(remoteValue);
+      return (
+        JSON.stringify(normalizedLocal) !== JSON.stringify(normalizedRemote)
+      );
+    } catch (e) {
+      // Fallback to simple stringify if normalization fails
+      return JSON.stringify(localValue) !== JSON.stringify(remoteValue);
+    }
+  }
+
+  /**
+   * Normalize a value for comparison (sort object keys, trim strings)
+   */
+  private normalizeValue(value: any): any {
+    if (value == null) return value;
+
+    if (typeof value === "string") {
+      return value.trim();
+    }
+
+    if (typeof value === "object") {
+      if (Array.isArray(value)) {
+        return value.map((v) => this.normalizeValue(v));
+      }
+
+      // Sort object keys for consistent comparison
+      const sorted: any = {};
+      Object.keys(value)
+        .sort()
+        .forEach((key) => {
+          sorted[key] = this.normalizeValue(value[key]);
+        });
+      return sorted;
+    }
+
+    return value;
   }
 
   /**
