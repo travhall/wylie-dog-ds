@@ -240,9 +240,9 @@ function processVariable(variable: any, modes: any[]): ProcessedToken {
   const tokenType = storedType || inferredType;
 
   if (storedType !== inferredType) {
-    console.log(
-      `🔧 EXPORT: ${variable.name} - stored="${storedType || "none"}" inferred="${inferredType}" using="${tokenType}"`
-    );
+    // console.log(
+    //   `🔧 EXPORT: ${variable.name} - stored="${storedType || "none"}" inferred="${inferredType}" using="${tokenType}"`
+    // );
   }
 
   const valuesByMode: Record<string, any> = {};

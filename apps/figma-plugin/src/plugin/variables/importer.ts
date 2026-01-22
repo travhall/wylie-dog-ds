@@ -309,9 +309,9 @@ async function createVariableWithReferences(
 
     // Store original $type in plugin data for round-trip fidelity
     variable.setPluginData("originalType", token.$type);
-    console.log(
-      `🔧 IMPORT: Stored originalType="${token.$type}" for ${tokenName}`
-    );
+    // console.log(
+    //   `🔧 IMPORT: Stored originalType="${token.$type}" for ${tokenName}`
+    // );
 
     // Register in registry for reference resolution
     registry.register(tokenName, variable.id);
