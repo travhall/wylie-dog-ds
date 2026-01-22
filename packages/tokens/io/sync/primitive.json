@@ -496,31 +496,31 @@
         },
         "typography.font-weight.thin": {
           "$type": "fontWeight",
-          "$value": "100"
+          "$value": 100
         },
         "typography.font-weight.light": {
           "$type": "fontWeight",
-          "$value": "300"
+          "$value": 300
         },
         "typography.font-weight.normal": {
           "$type": "fontWeight",
-          "$value": "400"
+          "$value": 400
         },
         "typography.font-weight.medium": {
           "$type": "fontWeight",
-          "$value": "500"
+          "$value": 500
         },
         "typography.font-weight.semibold": {
           "$type": "fontWeight",
-          "$value": "600"
+          "$value": 600
         },
         "typography.font-weight.bold": {
           "$type": "fontWeight",
-          "$value": "700"
+          "$value": 700
         },
         "typography.font-weight.extrabold": {
           "$type": "fontWeight",
-          "$value": "800"
+          "$value": 800
         },
         "typography.line-height.none": {
           "$type": "lineHeight",
