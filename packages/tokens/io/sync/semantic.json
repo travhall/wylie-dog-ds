@@ -665,7 +665,7 @@
           }
         },
         "transition.duration.instant": {
-          "$type": "duration",
+          "$type": "fontFamily",
           "$value": "0ms",
           "$description": "Instant transition (no animation)",
           "valuesByMode": {
@@ -674,7 +674,7 @@
           }
         },
         "transition.duration.fast": {
-          "$type": "duration",
+          "$type": "fontFamily",
           "$value": "150ms",
           "$description": "Fast transition for micro-interactions",
           "valuesByMode": {
@@ -683,7 +683,7 @@
           }
         },
         "transition.duration.normal": {
-          "$type": "duration",
+          "$type": "fontFamily",
           "$value": "250ms",
           "$description": "Normal transition duration",
           "valuesByMode": {
@@ -692,7 +692,7 @@
           }
         },
         "transition.duration.slow": {
-          "$type": "duration",
+          "$type": "fontFamily",
           "$value": "400ms",
           "$description": "Slow transition for emphasized changes",
           "valuesByMode": {
