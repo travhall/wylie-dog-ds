@@ -152,6 +152,17 @@ function getW3CTokenType(
       return "dimension";
 
     case "STRING":
+      // CRITICAL: Check duration FIRST (before font checks)
+      // Duration tokens are stored as strings like "150ms", "0.3s"
+      // Also catches animation-duration tokens
+      if (
+        variableName.toLowerCase().includes("duration") ||
+        variableName.toLowerCase().includes("transition") ||
+        variableName.toLowerCase().includes("animation")
+      ) {
+        return "duration";
+      }
+
       // Check for font size first (stored as string like "12px")
       if (variableName.toLowerCase().includes("fontsize")) {
         return "fontSize";
@@ -189,8 +200,9 @@ function getW3CTokenType(
 
 /**
  * Format numeric values with appropriate units
+ * Returns number for unitless types, string for types with units
  */
-function formatNumericValue(value: number, tokenType: string): string {
+function formatNumericValue(value: number, tokenType: string): string | number {
   switch (tokenType) {
     case "fontSize":
     case "letterSpacing":
@@ -205,10 +217,10 @@ function formatNumericValue(value: number, tokenType: string): string {
       return `${value}%`;
     case "fontWeight":
     case "number":
-      // CRITICAL: These must be unitless
-      // - fontWeight: 100, 200, 300, etc.
-      // - number (z-index, opacity, etc.): 0, 1, 10, 100, etc.
-      return value.toString();
+      // CRITICAL: These must remain as numbers (not strings)
+      // - fontWeight: 100, 200, 300, etc. (numbers)
+      // - number (z-index, opacity, etc.): 0, 1, 10, 100 (numbers)
+      return value;
     default:
       return value.toString();
   }
