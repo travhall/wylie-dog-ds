@@ -8,6 +8,7 @@ import type {
   TokenEntry,
 } from "./types";
 import { SyncMetadataManager } from "./metadata-manager";
+import { parse, formatHex, formatCss, differenceEuclidean } from "culori";
 
 export class ConflictDetector {
   private metadataManager = new SyncMetadataManager();
@@ -358,6 +359,16 @@ export class ConflictDetector {
 
     // Type coercion for primitives (handles "100" vs 100)
     if (typeof localValue !== "object" && typeof remoteValue !== "object") {
+      // Special case: Color comparison (hex vs oklch)
+      if (this.looksLikeColor(localValue) || this.looksLikeColor(remoteValue)) {
+        console.log(`🎨 COLOR COMPARISON TRIGGERED`);
+        console.log(`   Local:  ${localValue} (type: ${typeof localValue})`);
+        console.log(`   Remote: ${remoteValue} (type: ${typeof remoteValue})`);
+        const result = this.areColorsDifferent(localValue, remoteValue);
+        console.log(`   Result: ${result ? "DIFFERENT" : "SAME"}`);
+        return result;
+      }
+
       // Try loose equality first (handles "100" === 100)
       if (localValue == remoteValue) return false;
 
@@ -409,6 +420,76 @@ export class ConflictDetector {
     }
 
     return value;
+  }
+
+  /**
+   * Check if a value looks like a color (hex or oklch format)
+   */
+  private looksLikeColor(value: any): boolean {
+    if (typeof value !== "string") return false;
+    const str = value.trim();
+    return (
+      str.startsWith("#") || // hex: #fff, #ffffff
+      str.startsWith("oklch(") || // oklch: oklch(0.5 0.1 180)
+      str.startsWith("rgb(") || // rgb: rgb(255, 255, 255)
+      str.startsWith("hsl(") // hsl: hsl(180, 50%, 50%)
+    );
+  }
+
+  /**
+   * Compare two color values with format normalization
+   * Returns true if colors are different, false if they're the same
+   */
+  private areColorsDifferent(localValue: any, remoteValue: any): boolean {
+    console.log(`🎨 COLOR COMPARISON:`);
+    console.log(`   Local:  "${localValue}" (${typeof localValue})`);
+    console.log(`   Remote: "${remoteValue}" (${typeof remoteValue})`);
+
+    try {
+      // Parse both colors using culori
+      const localColor = parse(String(localValue));
+      const remoteColor = parse(String(remoteValue));
+
+      console.log(`   Parsed local:`, localColor ? "✓" : "✗");
+      console.log(`   Parsed remote:`, remoteColor ? "✓" : "✗");
+
+      // If either failed to parse, fall back to string comparison
+      if (!localColor || !remoteColor) {
+        console.warn(
+          `⚠️ Color parse failed - Local: ${localValue}, Remote: ${remoteValue}`
+        );
+        return String(localValue).trim() !== String(remoteValue).trim();
+      }
+
+      // Calculate perceptual difference (0 = identical, 1 = maximally different)
+      // Using Euclidean distance in OKLCH space
+      const diff = differenceEuclidean()(localColor, remoteColor);
+
+      console.log(`   Perceptual diff: ${diff.toFixed(6)}`);
+
+      // Tolerance: 0.002 accounts for hex→OKLCH conversion rounding
+      // This is imperceptible to humans - colors must be visually identical
+      const tolerance = 0.002;
+      const areDifferent = diff > tolerance;
+
+      if (!areDifferent && localValue !== remoteValue) {
+        console.log(
+          `✅ Color format mismatch but same color (diff: ${diff.toFixed(6)})`
+        );
+        console.log(`   Local:  ${localValue}`);
+        console.log(`   Remote: ${remoteValue}`);
+      } else if (areDifferent) {
+        console.log(
+          `❌ Colors are different (diff: ${diff.toFixed(6)} > ${tolerance})`
+        );
+      }
+
+      return areDifferent;
+    } catch (error) {
+      console.error("Color comparison error:", error);
+      // Fallback to string comparison on error
+      return String(localValue).trim() !== String(remoteValue).trim();
+    }
   }
 
   /**
