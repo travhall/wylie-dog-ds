@@ -422,8 +422,7 @@ export function usePluginMessages(
           console.log("GitHub sync complete:", msg.result);
           setLoading(false);
           setCurrentOperation(null);
-          setProgressSteps([]);
-          setProgressStep(0);
+          setLoadingMessage("");
 
           if (msg.result && msg.result.success) {
             const message = msg.result.pullRequestUrl
@@ -449,8 +448,7 @@ export function usePluginMessages(
           console.log("GitHub pull complete:", msg.result);
           setLoading(false);
           setCurrentOperation(null);
-          setProgressSteps([]);
-          setProgressStep(0);
+          setLoadingMessage("");
 
           if (msg.result && msg.result.success) {
             setSuccessMessage("✅ Got your tokens from GitHub!");
@@ -488,8 +486,6 @@ export function usePluginMessages(
           setImportLoading(false);
           setCurrentOperation(null);
           setLoadingMessage("");
-          setProgressSteps([]);
-          setProgressStep(0);
           setError(msg.message);
           break;
 

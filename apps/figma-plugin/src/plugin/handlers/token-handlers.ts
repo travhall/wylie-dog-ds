@@ -422,6 +422,9 @@ export async function handleGetLocalTokens(msg: any): Promise<void> {
     console.log("📍 Exporting local tokens for conflict detection...");
     setLoading(true, "Reading local variables...");
 
+    // CRITICAL: Yield to UI thread to paint loading state
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
     const collections =
       await figma.variables.getLocalVariableCollectionsAsync();
     console.log(`Found ${collections.length} local collections`);
@@ -473,6 +476,9 @@ export async function handleGetLocalTokens(msg: any): Promise<void> {
     }
 
     setLoading(true, "Converting to token format...");
+
+    // CRITICAL: Yield to UI thread to paint progress update
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
     // Convert to token format using processor
     const exportData = await processCollectionsForExport(

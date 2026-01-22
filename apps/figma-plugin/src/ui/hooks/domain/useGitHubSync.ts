@@ -94,42 +94,48 @@ export function useGitHubSync(
   );
 
   /**
-   * Sync tokens to GitHub (push)
+   * Sync tokens to GitHub (push) - Simple spinner mode
    */
   const handleGitHubSync = useCallback(
     async (exportData: ExportData[]) => {
       try {
         actions.setLoading(true);
-        actions.setProgressSteps(PUSH_STEPS);
-        actions.setProgressStep(0);
-
+        // DON'T set progress steps - use simple spinner mode
         actions.setLoadingMessage("Preparing your tokens...");
-        actions.setProgressStep(1);
+
+        // CRITICAL: Force render before heavy work
+        await new Promise((resolve) =>
+          requestAnimationFrame(() => resolve(undefined))
+        );
 
         actions.setLoadingMessage("Checking for changes...");
         const syncResult =
           await githubClient.syncTokensWithConflictDetection(exportData);
-        actions.setProgressStep(2);
+
+        // CRITICAL: Force render before processing result
+        await new Promise((resolve) =>
+          requestAnimationFrame(() => resolve(undefined))
+        );
 
         if (syncResult.conflicts && syncResult.conflicts.length > 0) {
           actions.setConflicts(syncResult.conflicts);
           actions.setConflictOperationType("push");
-          // For push conflicts, exportData is local, and we need to fetch remote
-          // We can get remote from the sync result or re-pull
-          // For now, store in the new format to be consistent
           actions.setPendingTokensForConflictResolution({
             local: exportData,
-            remote: syncResult.remoteTokens || [], // Need to add this to SyncResult
+            remote: syncResult.remoteTokens || [],
           });
           actions.setShowConflictResolution(true);
           actions.setLoading(false);
           actions.setLoadingMessage("");
-          actions.setProgressSteps([]);
           return;
         }
 
         actions.setLoadingMessage("Saving to GitHub...");
-        actions.setProgressStep(2); // Keep at step 3 (index 2) - don't exceed the 3 defined steps
+
+        // CRITICAL: Force render before sending message
+        await new Promise((resolve) =>
+          requestAnimationFrame(() => resolve(undefined))
+        );
 
         // Send success message back to plugin
         parent.postMessage(
@@ -145,8 +151,6 @@ export function useGitHubSync(
         // Clear loading state in UI after successful sync
         actions.setLoading(false);
         actions.setLoadingMessage("");
-        actions.setProgressSteps([]);
-        actions.setProgressStep(0);
 
         if (syncResult.success) {
           const message =
@@ -182,8 +186,6 @@ export function useGitHubSync(
         // Clear loading state and show error in UI
         actions.setLoading(false);
         actions.setLoadingMessage("");
-        actions.setProgressSteps([]);
-        actions.setProgressStep(0);
         actions.setError(error.message || "GitHub sync failed");
       }
     },
@@ -191,129 +193,32 @@ export function useGitHubSync(
   );
 
   /**
-   * Pull tokens from GitHub with conflict detection
+   * Pull tokens from GitHub - Simple mode with spinner (no steps)
+   * Pull is an explicit user action to import from GitHub, so overwrite is expected
    */
   const handleGitHubPull = useCallback(async () => {
     console.log("🔽 PULL: Starting GitHub pull operation");
     try {
       actions.setLoading(true);
-      console.log("🔽 PULL: Loading state set to TRUE");
-      actions.setLoadingMessage("Reading local tokens...");
-      console.log("🔽 PULL: Loading message set");
-      actions.setProgressSteps(PULL_STEPS);
-      console.log("🔽 PULL: Progress steps set:", PULL_STEPS.length, "steps");
-      actions.setProgressStep(0);
-      console.log("🔽 PULL: Progress step set to 0");
-
-      // Step 1: Request local tokens from plugin thread
-      const localTokensPromise = new Promise<ExportData[]>((resolve) => {
-        const handler = (event: MessageEvent) => {
-          if (event.data.pluginMessage?.type === "local-tokens-exported") {
-            window.removeEventListener("message", handler);
-            resolve(event.data.pluginMessage.localTokens || []);
-          } else if (event.data.pluginMessage?.type === "local-tokens-error") {
-            window.removeEventListener("message", handler);
-            console.warn(
-              "Failed to get local tokens, proceeding without conflict detection"
-            );
-            resolve([]);
-          }
-        };
-        window.addEventListener("message", handler);
-
-        // Request local tokens from plugin thread
-        parent.postMessage(
-          {
-            pluginMessage: {
-              type: "get-local-tokens",
-            },
-          },
-          "*"
-        );
-      });
-
-      const localTokens = await localTokensPromise;
-
+      // DON'T set progress steps - this makes it use simple spinner mode
       actions.setLoadingMessage("Pulling tokens from GitHub...");
-      actions.setProgressStep(1);
 
-      // Step 2: Pull with conflict detection
-      const pullResult =
-        await githubClient.pullTokensWithConflictDetection(localTokens);
+      // CRITICAL: Force render before heavy work
+      await new Promise((resolve) =>
+        requestAnimationFrame(() => resolve(undefined))
+      );
 
-      actions.setLoadingMessage("Checking for conflicts...");
-      actions.setProgressStep(2);
-
-      // Step 3: Handle conflicts if any
-      if (pullResult.requiresConflictResolution && pullResult.conflicts) {
-        actions.setConflicts(pullResult.conflicts);
-        actions.setConflictOperationType("pull");
-        // Store BOTH local and remote tokens for conflict resolution
-        // Format: { local: [...], remote: [...] }
-        actions.setPendingTokensForConflictResolution({
-          local: localTokens,
-          remote: pullResult.tokens || [],
-        });
-        actions.setShowConflictResolution(true);
-        actions.setLoading(false);
-        actions.setLoadingMessage("");
-        actions.setProgressSteps([]);
-        actions.setProgressStep(0);
-        return;
-      }
+      // Pull tokens directly from GitHub WITHOUT conflict detection
+      const pullResult = await githubClient.pullTokens();
 
       actions.setLoadingMessage("Preparing import...");
-      actions.setProgressStep(3);
+
+      // CRITICAL: Force render before processing
+      await new Promise((resolve) =>
+        requestAnimationFrame(() => resolve(undefined))
+      );
 
       if (pullResult.success && pullResult.tokens) {
-        // Check fontFamily tokens in pullResult
-        let fontFamilyCount = 0;
-        let fontsWithDesc = 0;
-
-        if (Array.isArray(pullResult.tokens)) {
-          pullResult.tokens.forEach((coll: any) => {
-            Object.values(coll).forEach((data: any) => {
-              if (data?.variables) {
-                Object.values(data.variables).forEach((token: any) => {
-                  if (token?.$type === "fontFamily") {
-                    fontFamilyCount++;
-                    if (token.$description) fontsWithDesc++;
-                  }
-                });
-              }
-            });
-          });
-        }
-
-        console.log(
-          `📊 PULL CHECK: ${fontFamilyCount} fontFamily tokens, ${fontsWithDesc} have descriptions`
-        );
-
-        // DEBUG: Check if descriptions exist in pullResult.tokens before sending to import
-        if (Array.isArray(pullResult.tokens)) {
-          pullResult.tokens.forEach((coll: any) => {
-            Object.entries(coll).forEach(([name, data]: [string, any]) => {
-              if (data?.variables) {
-                const sans = data.variables["typography.font-family.sans"];
-                const mono = data.variables["typography.font-family.mono"];
-                if (sans || mono) {
-                  console.log(`🔍 BEFORE IMPORT (${name}):`);
-                  if (sans)
-                    console.log(
-                      `  sans $description:`,
-                      sans.$description || "MISSING"
-                    );
-                  if (mono)
-                    console.log(
-                      `  mono $description:`,
-                      mono.$description || "MISSING"
-                    );
-                }
-              }
-            });
-          });
-        }
-
         const files = [
           {
             filename: "remote-tokens.json",
@@ -321,9 +226,12 @@ export function useGitHubSync(
           },
         ];
 
-        // Keep loading state active with import message
         actions.setLoadingMessage("Importing tokens to Figma...");
-        actions.setProgressStep(3); // Final step
+
+        // CRITICAL: Force render before sending import message
+        await new Promise((resolve) =>
+          requestAnimationFrame(() => resolve(undefined))
+        );
 
         parent.postMessage(
           {
@@ -340,16 +248,14 @@ export function useGitHubSync(
       } else {
         // Handle pull failure directly
         actions.setLoading(false);
-        actions.setProgressSteps([]);
-        actions.setProgressStep(0);
+        actions.setLoadingMessage("");
         actions.setError(pullResult.error || "GitHub pull failed");
       }
     } catch (error: any) {
       console.error("GitHub pull error:", error);
       // Handle error directly
       actions.setLoading(false);
-      actions.setProgressSteps([]);
-      actions.setProgressStep(0);
+      actions.setLoadingMessage("");
       actions.setError(error.message || "GitHub pull failed");
     }
   }, [githubClient, actions]);

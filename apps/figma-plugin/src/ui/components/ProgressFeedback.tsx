@@ -433,24 +433,17 @@ export const SYNC_STEPS: ProgressStep[] = [
 export const PULL_STEPS: ProgressStep[] = [
   {
     id: "fetching",
-    label: "Fetching Remote Tokens",
+    label: "Pulling from GitHub",
     icon: "📥",
-    description: "Downloading from GitHub repository...",
+    description: "Downloading tokens from repository...",
     estimatedDuration: 3,
-  },
-  {
-    id: "checking-conflicts",
-    label: "Checking for Conflicts",
-    icon: "🔍",
-    description: "Comparing with local variables...",
-    estimatedDuration: 2,
   },
   {
     id: "preparing",
     label: "Preparing Import",
     icon: "⚙️",
-    description: "Processing token format and references...",
-    estimatedDuration: 2,
+    description: "Processing token format...",
+    estimatedDuration: 1,
   },
   {
     id: "importing",
