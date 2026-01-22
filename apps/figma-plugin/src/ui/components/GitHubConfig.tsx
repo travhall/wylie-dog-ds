@@ -82,7 +82,12 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
     return suggestions;
   };
 
-  // Load saved configuration
+  // Load saved configuration on mount only
+  useEffect(() => {
+    loadSavedConfig();
+  }, []); // Empty deps - run once on mount
+
+  // Handle messages
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       const msg = event.data.pluginMessage;
@@ -102,12 +107,11 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
     };
 
     window.addEventListener("message", handleMessage);
-    loadSavedConfig();
 
     return () => {
       window.removeEventListener("message", handleMessage);
     };
-  }, []);
+  }, []); // No deps needed - just config loading
 
   const loadSavedConfig = () => {
     try {
@@ -134,19 +138,63 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
     setError(null);
 
     try {
-      // Test the configuration
+      // Import Octokit dynamically
+      const { Octokit } = await import("@octokit/rest");
+
+      // Test the configuration with Octokit
+      const octokit = new Octokit({
+        auth: config.accessToken,
+      });
+
+      // Test 1: Check repository access
+      const { data: repo } = await octokit.repos.get({
+        owner: config.owner,
+        repo: config.repo,
+      });
+
+      // Test 2: Check write permissions
+      const hasWriteAccess =
+        repo.permissions && (repo.permissions.push || repo.permissions.admin);
+
+      if (!hasWriteAccess) {
+        throw new Error("No write access to repository");
+      }
+
+      // Test 3: Verify branch exists
+      await octokit.repos.getBranch({
+        owner: config.owner,
+        repo: config.repo,
+        branch: config.branch,
+      });
+
+      // Success! Save the configuration
       parent.postMessage(
         {
           pluginMessage: {
-            type: "test-github-config",
+            type: "save-github-config",
             config,
           },
         },
         "*"
       );
-    } catch (err) {
+
+      // Close dialog and notify parent
+      onConfigSaved(config);
+      onClose();
+    } catch (err: any) {
       console.error("Failed to test GitHub config:", err);
-      setError("Failed to test configuration");
+
+      let errorMessage = err.message || "Configuration test failed";
+      if (err.status === 404) {
+        errorMessage = "Repository or branch not found";
+      } else if (err.status === 401) {
+        errorMessage = "Invalid access token";
+      } else if (err.status === 403) {
+        errorMessage = "Access forbidden - check token permissions";
+      }
+
+      setError(errorMessage);
+    } finally {
       setLoading(false);
     }
   };

@@ -396,18 +396,8 @@ export function usePluginMessages(
           }
           break;
 
-        case "test-github-config":
-          console.log("Testing GitHub config:", msg.config);
-          if (githubConfigTestHandlerRef.current) {
-            githubConfigTestHandlerRef.current(msg.config).catch((err) => {
-              console.error("GitHub config test failed:", err);
-              setError(`GitHub configuration test failed: ${err.message}`);
-              setLoading(false);
-            });
-          } else {
-            console.warn("No GitHub config test handler registered");
-          }
-          break;
+        // test-github-config is now handled by plugin thread
+        // Response comes back as github-config-test-result
 
         case "github-sync-tokens":
           console.log("GitHub sync initiated:", msg.exportData);

@@ -128,28 +128,11 @@ export async function handleResolveConflicts(msg: any): Promise<void> {
 }
 
 /**
- * Test GitHub configuration (forward to UI thread)
+ * Test GitHub configuration - No longer used (UI handles this directly)
+ * Kept for backwards compatibility
  */
 export async function handleTestGitHubConfig(msg: any): Promise<void> {
-  console.log(
-    "GitHub config test request - forwarding to UI storage operation"
-  );
-  try {
-    await figma.clientStorage.setAsync(
-      "pending-github-config",
-      JSON.stringify(msg.config)
-    );
-    figma.ui.postMessage({
-      type: "test-github-config",
-      config: msg.config,
-    });
-  } catch (error) {
-    console.error("Error handling GitHub config test:", error);
-    figma.ui.postMessage({
-      type: "error",
-      message: "Failed to process GitHub configuration test",
-    });
-  }
+  console.log("GitHub config test - handled in UI thread");
 }
 
 /**

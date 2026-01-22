@@ -37,21 +37,22 @@ export function useGitHubSync(
   onSyncSuccess?: () => void // Callback for successful sync (e.g., clear selection)
 ) {
   /**
-   * Test GitHub configuration
+   * Test GitHub configuration - sends request to plugin thread
    */
   const handleGitHubConfigTest = useCallback(
     async (config: GitHubConfig): Promise<Result<boolean>> => {
-      return ResultHandler.asyncOperation(
-        async () => {
-          actions.setLoading(true);
-          actions.setError(null);
+      return new Promise((resolve) => {
+        actions.setLoading(true);
+        actions.setError(null);
 
-          const initialized = await githubClient.initialize(config);
+        // Create one-time message handler for the test result
+        const handler = (event: MessageEvent) => {
+          const msg = event.data.pluginMessage;
+          if (msg?.type === "github-config-test-result") {
+            window.removeEventListener("message", handler);
+            actions.setLoading(false);
 
-          if (initialized) {
-            const validation = await githubClient.validateRepository();
-
-            if (validation.valid) {
+            if (msg.success) {
               // Save the configuration
               parent.postMessage(
                 {
@@ -67,30 +68,44 @@ export function useGitHubSync(
               actions.setGithubConfigured(true);
               actions.setSuccessMessage("✅ Connected to GitHub successfully!");
               setTimeout(() => actions.setSuccessMessage(null), 5000);
-              return true;
+
+              resolve({ success: true, data: true });
             } else {
-              throw new Error(
-                `Repository validation failed: ${validation.error || "Unknown validation error"}`
-              );
+              actions.setError(msg.error || "GitHub configuration test failed");
+              resolve({
+                success: false,
+                error: msg.error || "GitHub configuration test failed",
+              });
             }
-          } else {
-            throw new Error(
-              "Failed to initialize GitHub client. Please check your access token and repository details."
-            );
           }
-        },
-        "GitHub configuration test",
-        [
-          "Verify your access token has repo permissions",
-          "Check that the repository owner and name are correct",
-          "Ensure the repository exists and is accessible",
-          "Try regenerating your GitHub access token",
-        ]
-      ).finally(() => {
-        actions.setLoading(false);
+        };
+
+        window.addEventListener("message", handler);
+
+        // Send test request to plugin thread
+        parent.postMessage(
+          {
+            pluginMessage: {
+              type: "test-github-config",
+              config: config,
+            },
+          },
+          "*"
+        );
+
+        // Timeout after 30 seconds
+        setTimeout(() => {
+          window.removeEventListener("message", handler);
+          actions.setLoading(false);
+          actions.setError("GitHub configuration test timed out");
+          resolve({
+            success: false,
+            error: "Test timed out after 30 seconds",
+          });
+        }, 30000);
       });
     },
-    [githubClient, actions]
+    [actions]
   );
 
   /**

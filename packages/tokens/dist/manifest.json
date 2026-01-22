@@ -1305,9 +1305,7 @@
         "type": "spacing",
         "variable": "var(--spacing-1800)",
         "description": ""
-      }
-    },
-    "borderRadius": {
+      },
       "border-radius-none": {
         "name": "borderRadiusNone",
         "path": [
@@ -1315,7 +1313,7 @@
           "none"
         ],
         "value": "0px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-radius-none)",
         "description": ""
       },
@@ -1326,7 +1324,7 @@
           "sm"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-radius-sm)",
         "description": ""
       },
@@ -1337,7 +1335,7 @@
           "md"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-radius-md)",
         "description": ""
       },
@@ -1348,7 +1346,7 @@
           "lg"
         ],
         "value": "8px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-radius-lg)",
         "description": ""
       },
@@ -1359,7 +1357,7 @@
           "xl"
         ],
         "value": "12px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-radius-xl)",
         "description": ""
       },
@@ -1370,7 +1368,7 @@
           "2xl"
         ],
         "value": "16px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-radius-2xl)",
         "description": ""
       },
@@ -1381,12 +1379,10 @@
           "full"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-radius-full)",
         "description": ""
-      }
-    },
-    "borderWidth": {
+      },
       "border-width-0": {
         "name": "borderWidth0",
         "path": [
@@ -1394,7 +1390,7 @@
           "0"
         ],
         "value": "0px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-width-0)",
         "description": ""
       },
@@ -1405,7 +1401,7 @@
           "1"
         ],
         "value": "1px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-width-1)",
         "description": ""
       },
@@ -1416,7 +1412,7 @@
           "2"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-width-2)",
         "description": ""
       },
@@ -1427,7 +1423,7 @@
           "4"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-width-4)",
         "description": ""
       },
@@ -1438,11 +1434,13 @@
           "8"
         ],
         "value": "8px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--border-width-8)",
         "description": ""
       }
     },
+    "borderRadius": {},
+    "borderWidth": {},
     "typography": {
       "family": {
         "typography-font-family-sans": {
@@ -2907,7 +2905,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--badge-radius)",
         "description": ""
       },
@@ -3292,7 +3290,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--button-radius)",
         "description": ""
       },
@@ -3453,7 +3451,7 @@
           "radius"
         ],
         "value": "8px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--card-radius)",
         "description": ""
       },
@@ -3724,7 +3722,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--input-radius)",
         "description": ""
       },
@@ -3938,7 +3936,7 @@
           "radius"
         ],
         "value": "8px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--alert-radius)",
         "description": ""
       },
@@ -4261,7 +4259,7 @@
           "height"
         ],
         "value": "1px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--menubar-separator-height)",
         "description": ""
       },
@@ -4351,7 +4349,7 @@
           "trigger-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--menubar-trigger-radius)",
         "description": ""
       },
@@ -4362,7 +4360,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--menubar-item-radius)",
         "description": ""
       },
@@ -4746,7 +4744,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--command-content-radius)",
         "description": ""
       },
@@ -4757,7 +4755,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--command-item-radius)",
         "description": ""
       },
@@ -4982,7 +4980,7 @@
           "width"
         ],
         "value": "1px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--tabs-list-border-width)",
         "description": ""
       },
@@ -5111,7 +5109,7 @@
           "indicator-width"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--tabs-trigger-indicator-width)",
         "description": ""
       },
@@ -5124,7 +5122,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--tabs-trigger-border-width)",
         "description": ""
       },
@@ -5172,7 +5170,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--collapsible-radius)",
         "description": ""
       },
@@ -5183,7 +5181,7 @@
           "animation-duration"
         ],
         "value": "250ms",
-        "type": "duration",
+        "type": "fontFamily",
         "variable": "var(--collapsible-animation-duration)",
         "description": ""
       }
@@ -5379,7 +5377,7 @@
           "nav-button-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--calendar-nav-button-radius)",
         "description": ""
       },
@@ -5570,7 +5568,7 @@
           "width"
         ],
         "value": "1px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--accordion-item-border-width)",
         "description": ""
       },
@@ -5736,7 +5734,7 @@
           "rounded"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--avatar-rounded)",
         "description": ""
       }
@@ -5863,7 +5861,7 @@
           "link-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--breadcrumb-link-radius)",
         "description": ""
       }
@@ -5979,7 +5977,7 @@
           "button-rounded-full"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--carousel-button-rounded-full)",
         "description": ""
       }
@@ -6190,7 +6188,7 @@
           "radius"
         ],
         "value": "8px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--dialog-content-radius)",
         "description": ""
       },
@@ -6273,7 +6271,7 @@
           "close-button-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--dialog-close-button-radius)",
         "description": ""
       }
@@ -6471,7 +6469,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--hover-card-content-radius)",
         "description": ""
       }
@@ -6564,7 +6562,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--pagination-item-radius)",
         "description": ""
       },
@@ -6730,7 +6728,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--popover-content-radius)",
         "description": ""
       }
@@ -6809,7 +6807,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--progress-radius)",
         "description": ""
       }
@@ -6903,7 +6901,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--radio-border-radius)",
         "description": ""
       },
@@ -6955,7 +6953,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--radio-focus-ring-width)",
         "description": ""
       },
@@ -6968,7 +6966,7 @@
           "offset"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--radio-focus-ring-offset)",
         "description": ""
       }
@@ -7014,7 +7012,7 @@
           "handle-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--resizable-handle-radius)",
         "description": ""
       }
@@ -7049,7 +7047,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--scrollbar-radius)",
         "description": ""
       },
@@ -7061,7 +7059,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--scrollbar-thumb-radius)",
         "description": ""
       },
@@ -7097,7 +7095,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--skeleton-radius)",
         "description": ""
       },
@@ -7156,7 +7154,7 @@
           "rounded-full"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--skeleton-rounded-full)",
         "description": ""
       },
@@ -7167,7 +7165,7 @@
           "rounded-sm"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--skeleton-rounded-sm)",
         "description": ""
       }
@@ -7237,7 +7235,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--slider-track-radius)",
         "description": ""
       },
@@ -7262,7 +7260,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--slider-thumb-border-width)",
         "description": ""
       },
@@ -7274,7 +7272,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--slider-thumb-radius)",
         "description": ""
       },
@@ -7287,7 +7285,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--slider-focus-ring-width)",
         "description": ""
       },
@@ -7300,7 +7298,7 @@
           "offset"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--slider-focus-ring-offset)",
         "description": ""
       }
@@ -7452,7 +7450,7 @@
           "width"
         ],
         "value": "1px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--table-border-width)",
         "description": ""
       },
@@ -7565,7 +7563,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--toast-radius)",
         "description": ""
       },
@@ -7660,7 +7658,7 @@
           "radius"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--toast-close-radius)",
         "description": ""
       },
@@ -7743,7 +7741,7 @@
           "border-radius"
         ],
         "value": "8px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--toast-border-radius)",
         "description": ""
       },
@@ -7776,7 +7774,7 @@
           "close-button-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--toast-close-button-radius)",
         "description": ""
       },
@@ -7788,7 +7786,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--toast-action-radius)",
         "description": ""
       }
@@ -7945,7 +7943,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--toggle-radius)",
         "description": ""
       },
@@ -8024,7 +8022,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--tooltip-radius)",
         "description": ""
       },
@@ -8138,7 +8136,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--select-trigger-radius)",
         "description": ""
       },
@@ -8189,7 +8187,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--select-content-radius)",
         "description": ""
       },
@@ -8273,7 +8271,7 @@
           "radius"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--select-item-radius)",
         "description": ""
       },
@@ -8297,7 +8295,7 @@
           "height"
         ],
         "value": "1px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--select-separator-height)",
         "description": ""
       },
@@ -8369,7 +8367,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--checkbox-border-width)",
         "description": ""
       },
@@ -8381,7 +8379,7 @@
           "radius"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--checkbox-border-radius)",
         "description": ""
       },
@@ -8433,7 +8431,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--checkbox-focus-ring-width)",
         "description": ""
       },
@@ -8446,7 +8444,7 @@
           "offset"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--checkbox-focus-ring-offset)",
         "description": ""
       }
@@ -8538,7 +8536,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--switch-track-radius)",
         "description": ""
       },
@@ -8551,7 +8549,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--switch-track-border-width)",
         "description": ""
       },
@@ -8602,7 +8600,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--switch-thumb-radius)",
         "description": ""
       },
@@ -8654,7 +8652,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--switch-focus-ring-width)",
         "description": ""
       },
@@ -8667,7 +8665,7 @@
           "offset"
         ],
         "value": "2px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--switch-focus-ring-offset)",
         "description": ""
       },
@@ -8765,7 +8763,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--textarea-radius)",
         "description": ""
       },
@@ -9007,7 +9005,7 @@
           "close-button-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--sheet-close-button-radius)",
         "description": ""
       }
@@ -9021,7 +9019,7 @@
           "horizontal"
         ],
         "value": "1px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--separator-height-horizontal)",
         "description": ""
       },
@@ -9033,7 +9031,7 @@
           "vertical"
         ],
         "value": "1px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--separator-width-vertical)",
         "description": ""
       },
@@ -9189,7 +9187,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--context-menu-content-radius)",
         "description": ""
       },
@@ -9200,7 +9198,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--context-menu-item-radius)",
         "description": ""
       },
@@ -9333,7 +9331,7 @@
           "height"
         ],
         "value": "1px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--dropdown-menu-separator-height)",
         "description": ""
       },
@@ -9381,7 +9379,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--dropdown-menu-content-radius)",
         "description": ""
       },
@@ -9392,7 +9390,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--dropdown-menu-item-radius)",
         "description": ""
       }
@@ -9473,7 +9471,7 @@
           "item-radius"
         ],
         "value": "16px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--feature-grid-item-radius)",
         "description": ""
       },
@@ -9484,7 +9482,7 @@
           "icon-radius"
         ],
         "value": "12px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--feature-grid-icon-radius)",
         "description": ""
       },
@@ -9563,7 +9561,7 @@
           "content-radius"
         ],
         "value": "8px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--alert-dialog-content-radius)",
         "description": ""
       },
@@ -9666,7 +9664,7 @@
           "trigger-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--navigation-menu-trigger-radius)",
         "description": ""
       },
@@ -9712,7 +9710,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "dimension",
+        "type": "spacing",
         "variable": "var(--toggle-group-item-radius)",
         "description": ""
       },
