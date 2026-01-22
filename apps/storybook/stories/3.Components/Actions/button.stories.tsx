@@ -197,6 +197,10 @@ export const ButtonGroup: Story = {
 };
 
 export const ButtonsInForms: Story = {
+  args: {
+    size: "default",
+  },
+
   render: () => (
     <div className="w-80 space-y-4">
       <div className="space-y-2">
@@ -233,6 +237,7 @@ export const ButtonsInForms: Story = {
       </div>
     </div>
   ),
+
   parameters: {
     docs: {
       description: {
