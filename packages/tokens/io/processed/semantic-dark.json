@@ -332,22 +332,22 @@
     "$description": "Inner shadow for recessed elements"
   },
   "transition.duration.instant": {
-    "$type": "fontFamily",
+    "$type": "duration",
     "$value": "0ms",
     "$description": "Instant transition (no animation)"
   },
   "transition.duration.fast": {
-    "$type": "fontFamily",
+    "$type": "duration",
     "$value": "150ms",
     "$description": "Fast transition for micro-interactions"
   },
   "transition.duration.normal": {
-    "$type": "fontFamily",
+    "$type": "duration",
     "$value": "250ms",
     "$description": "Normal transition duration"
   },
   "transition.duration.slow": {
-    "$type": "fontFamily",
+    "$type": "duration",
     "$value": "400ms",
     "$description": "Slow transition for emphasized changes"
   },

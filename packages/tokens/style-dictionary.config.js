@@ -25,12 +25,28 @@ StyleDictionary.registerFormat({
         themeVariables.push(line);
         baseVariables.push(`    ${semanticName}: ${token.$value};`);
       } else if (token.$type === "spacing") {
-        const spacingName = `--spacing-${name}`;
-        themeVariables.push(`  ${spacingName}: ${token.$value};`);
-        baseVariables.push(`    ${spacingName}: ${token.$value};`);
+        // Handle special cases for border-radius and border-width first
+        if (name.startsWith("border-radius-")) {
+          const cleanName = name.replace(/^border-radius-/, '');
+          const radiusName = `--border-radius-${cleanName}`;
+          themeVariables.push(`  ${radiusName}: ${token.$value};`);
+          baseVariables.push(`    ${radiusName}: ${token.$value};`);
+        } else if (name.startsWith("border-width-")) {
+          const cleanName = name.replace(/^border-width-/, '');
+          const widthName = `--border-width-${cleanName}`;
+          themeVariables.push(`  ${widthName}: ${token.$value};`);
+          baseVariables.push(`    ${widthName}: ${token.$value};`);
+        } else {
+          // Regular spacing tokens - remove "spacing-" prefix to avoid double-prefixing
+          const cleanName = name.replace(/^spacing-/, '');
+          const spacingName = `--spacing-${cleanName}`;
+          themeVariables.push(`  ${spacingName}: ${token.$value};`);
+          baseVariables.push(`    ${spacingName}: ${token.$value};`);
+        }
       } else if (token.$type === "fontSize") {
-        // Handle fontSize tokens with dedicated prefix
-        const fontSizeName = `--font-size-${name}`;
+        // Remove "typography-font-size-" prefix to avoid double-prefixing
+        const cleanName = name.replace(/^typography-font-size-/, '');
+        const fontSizeName = `--font-size-${cleanName}`;
         themeVariables.push(`  ${fontSizeName}: ${token.$value};`);
         baseVariables.push(`    ${fontSizeName}: ${token.$value};`);
       } else if (token.$type === "dimension") {
@@ -53,19 +69,27 @@ StyleDictionary.registerFormat({
           baseVariables.push(`    ${spacingName}: ${token.$value};`);
         }
       } else if (token.$type === "duration") {
-        const durationName = `--duration-${name}`;
+        // Remove "transition-duration-" prefix to avoid double-prefixing
+        const cleanName = name.replace(/^transition-duration-/, '');
+        const durationName = `--duration-${cleanName}`;
         themeVariables.push(`  ${durationName}: ${token.$value};`);
         baseVariables.push(`    ${durationName}: ${token.$value};`);
       } else if (token.$type === "shadow") {
-        const shadowName = `--shadow-${name}`;
+        // Remove "shadow-" prefix to avoid double-prefixing
+        const cleanName = name.replace(/^shadow-/, '');
+        const shadowName = `--shadow-${cleanName}`;
         themeVariables.push(`  ${shadowName}: ${token.$value};`);
         baseVariables.push(`    ${shadowName}: ${token.$value};`);
       } else if (token.$type === "fontWeight") {
-        const weightName = `--font-weight-${name}`;
+        // Remove "typography-font-weight-" prefix to avoid double-prefixing
+        const cleanName = name.replace(/^typography-font-weight-/, '');
+        const weightName = `--font-weight-${cleanName}`;
         themeVariables.push(`  ${weightName}: ${token.$value};`);
         baseVariables.push(`    ${weightName}: ${token.$value};`);
       } else if (token.$type === "lineHeight") {
-        const lineHeightName = `--line-height-${name}`;
+        // Remove "typography-line-height-" prefix to avoid double-prefixing
+        const cleanName = name.replace(/^typography-line-height-/, '');
+        const lineHeightName = `--line-height-${cleanName}`;
         themeVariables.push(`  ${lineHeightName}: ${token.$value};`);
         baseVariables.push(`    ${lineHeightName}: ${token.$value};`);
       } else {
