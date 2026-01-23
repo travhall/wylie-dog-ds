@@ -118,34 +118,44 @@ function getW3CTokenType(
       ) {
         return "paragraphSpacing";
       }
+      // W3C DTCG Spec: All dimensional values should use "dimension" type
+      // Legacy types like borderRadius, borderWidth, sizing, spacing are not official
+
+      // Spacing is the only dimensional type that remains separate in some implementations
       if (
         scopes.includes("GAP") ||
         scopes.includes("PADDING") ||
-        scopes.includes("SPACING") ||
-        variableName.toLowerCase().includes("spacing") ||
-        variableName.toLowerCase().includes("space")
+        (scopes.includes("SPACING") &&
+          !variableName.toLowerCase().includes("border") &&
+          !variableName.toLowerCase().includes("radius")) ||
+        (variableName.toLowerCase().includes("spacing") &&
+          !variableName.toLowerCase().includes("border")) ||
+        (variableName.toLowerCase().includes("space") &&
+          !variableName.toLowerCase().includes("border"))
       ) {
         return "spacing";
       }
+
+      // Border-radius and border-width MUST use "dimension" per W3C DTCG spec
       if (
         scopes.includes("BORDER_RADIUS") ||
-        variableName.toLowerCase().includes("radius")
+        variableName.toLowerCase().includes("radius") ||
+        variableName.toLowerCase().includes("borderwidth") ||
+        (variableName.toLowerCase().includes("border") &&
+          (variableName.toLowerCase().includes("width") ||
+            variableName.toLowerCase().includes("radius")))
       ) {
-        return "borderRadius";
+        return "dimension";
       }
+
+      // Sizing/dimensions should use "dimension" type
       if (
         scopes.includes("WIDTH") ||
         scopes.includes("HEIGHT") ||
         variableName.toLowerCase().includes("size") ||
         variableName.toLowerCase().includes("height")
       ) {
-        return "sizing";
-      }
-      if (
-        variableName.toLowerCase().includes("borderwidth") ||
-        variableName.toLowerCase().includes("border")
-      ) {
-        return "borderWidth";
+        return "dimension";
       }
 
       // Default to dimension for other numeric values

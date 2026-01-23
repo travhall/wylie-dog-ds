@@ -83,7 +83,8 @@ const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
   sizing: ["WIDTH", "HEIGHT"],
   borderRadius: ["CORNER_RADIUS"],
   borderWidth: ["STROKE_WIDTH"],
-  dimension: ["GAP"],
+  // dimension type requires name-based scope inference (see inferScopesForDimension)
+  dimension: ["ALL_SCOPES"],
   shadow: ["EFFECT"],
   boolean: ["ALL_SCOPES"],
   // Add fallbacks for common token types
@@ -93,6 +94,51 @@ const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
   font: ["FONT_FAMILY"],
   size: ["FONT_SIZE"],
 };
+
+/**
+ * Infer Figma scopes for dimension tokens based on token name
+ * Per W3C DTCG spec, dimension type encompasses border-radius, border-width, sizing, spacing
+ */
+function inferScopesForDimension(tokenName: string): string[] {
+  const lowerName = tokenName.toLowerCase();
+
+  // Border radius tokens
+  if (lowerName.includes("radius") || lowerName.includes("border-radius")) {
+    return ["CORNER_RADIUS"];
+  }
+
+  // Border width tokens
+  if (
+    lowerName.includes("border-width") ||
+    lowerName.includes("borderwidth") ||
+    (lowerName.includes("border") && lowerName.includes("width"))
+  ) {
+    return ["STROKE_WIDTH"];
+  }
+
+  // Sizing tokens (width/height)
+  if (
+    lowerName.includes("width") ||
+    lowerName.includes("height") ||
+    lowerName.includes("size") ||
+    lowerName.includes("sizing")
+  ) {
+    return ["WIDTH", "HEIGHT"];
+  }
+
+  // Spacing/gap tokens (default for dimension)
+  if (
+    lowerName.includes("spacing") ||
+    lowerName.includes("space") ||
+    lowerName.includes("gap") ||
+    lowerName.includes("padding")
+  ) {
+    return ["GAP"];
+  }
+
+  // Default to GAP for unmatched dimension tokens
+  return ["GAP"];
+}
 
 const convertToRgb = culoriConverter("rgb");
 
@@ -281,7 +327,15 @@ async function createVariableWithReferences(
 ): Promise<Variable | null> {
   try {
     const figmaType = W3C_TO_FIGMA_TYPE_MAP[token.$type] || "STRING";
-    const scopes = W3C_TO_FIGMA_SCOPES_MAP[token.$type] || ["ALL_SCOPES"];
+
+    // Infer scopes - use name-based inference for dimension tokens
+    let scopes: string[];
+    if (token.$type === "dimension") {
+      scopes = inferScopesForDimension(tokenName);
+    } else {
+      scopes = W3C_TO_FIGMA_SCOPES_MAP[token.$type] || ["ALL_SCOPES"];
+    }
+
     const figmaName = tokenName.replace(/\./g, "/");
 
     // Check if variable already exists
