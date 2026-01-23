@@ -240,19 +240,50 @@ function formatNumericValue(value: number, tokenType: string): string | number {
  * Process a single variable across all modes into W3C DTCG token format
  */
 function processVariable(variable: any, modes: any[]): ProcessedToken {
-  // Check for stored original type first (preserves round-trip fidelity)
+  // Check for stored original type first
   const storedType = variable.originalType;
   const inferredType = getW3CTokenType(
     variable.resolvedType,
     variable.scopes,
     variable.name
   );
-  const tokenType = storedType || inferredType;
 
-  if (storedType !== inferredType) {
-    // console.log(
-    //   `🔧 EXPORT: ${variable.name} - stored="${storedType || "none"}" inferred="${inferredType}" using="${tokenType}"`
-    // );
+  // Convert legacy Tokens Studio types to W3C DTCG standard
+  let tokenType = storedType || inferredType;
+
+  // Legacy type conversion (Tokens Studio → W3C DTCG)
+  if (
+    tokenType === "borderRadius" ||
+    tokenType === "borderWidth" ||
+    tokenType === "sizing"
+  ) {
+    tokenType = "dimension";
+    console.log(
+      `🔄 Converting legacy type "${storedType}" → "dimension" for ${variable.name}`
+    );
+  }
+
+  // Special case: spacing used for border properties should be dimension
+  if (
+    tokenType === "spacing" &&
+    (variable.name.toLowerCase().includes("border") ||
+      variable.name.toLowerCase().includes("radius"))
+  ) {
+    tokenType = "dimension";
+    console.log(
+      `🔄 Converting spacing → dimension for border token ${variable.name}`
+    );
+  }
+
+  // Fix duration tokens misclassified as fontFamily
+  if (
+    tokenType === "fontFamily" &&
+    (variable.name.toLowerCase().includes("duration") ||
+      variable.name.toLowerCase().includes("transition") ||
+      variable.name.toLowerCase().includes("animation"))
+  ) {
+    tokenType = "duration";
+    console.log(`🔄 Converting fontFamily → duration for ${variable.name}`);
   }
 
   const valuesByMode: Record<string, any> = {};
