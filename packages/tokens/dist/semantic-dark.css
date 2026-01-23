@@ -84,10 +84,10 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4);
   --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.2);
-  --transition-duration-instant: 0ms;
-  --transition-duration-fast: 150ms;
-  --transition-duration-normal: 250ms;
-  --transition-duration-slow: 400ms;
+  --duration-instant: 0ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
   --z-index-dropdown: 1000;
   --z-index-sticky: 1020;
   --z-index-modal: 1050;
@@ -450,7 +450,7 @@
   --spacing-tabs-content-padding: 24px;
   --spacing-tabs-content-margin-top: 16px;
   --spacing-collapsible-radius: 4px;
-  --collapsible-animation-duration: 250ms;
+  --duration-collapsible-animation-duration: 250ms;
   --spacing-separator-height-horizontal: 1px;
   --spacing-separator-width-vertical: 1px;
   --spacing-separator-margin-horizontal: 16px;

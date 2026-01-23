@@ -1305,7 +1305,9 @@
         "type": "spacing",
         "variable": "var(--spacing-1800)",
         "description": ""
-      },
+      }
+    },
+    "borderRadius": {
       "border-radius-none": {
         "name": "borderRadiusNone",
         "path": [
@@ -1313,7 +1315,7 @@
           "none"
         ],
         "value": "0px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-radius-none)",
         "description": ""
       },
@@ -1324,7 +1326,7 @@
           "sm"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-radius-sm)",
         "description": ""
       },
@@ -1335,7 +1337,7 @@
           "md"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-radius-md)",
         "description": ""
       },
@@ -1346,7 +1348,7 @@
           "lg"
         ],
         "value": "8px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-radius-lg)",
         "description": ""
       },
@@ -1357,7 +1359,7 @@
           "xl"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-radius-xl)",
         "description": ""
       },
@@ -1368,7 +1370,7 @@
           "2xl"
         ],
         "value": "16px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-radius-2xl)",
         "description": ""
       },
@@ -1379,10 +1381,12 @@
           "full"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-radius-full)",
         "description": ""
-      },
+      }
+    },
+    "borderWidth": {
       "border-width-0": {
         "name": "borderWidth0",
         "path": [
@@ -1390,7 +1394,7 @@
           "0"
         ],
         "value": "0px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-width-0)",
         "description": ""
       },
@@ -1401,7 +1405,7 @@
           "1"
         ],
         "value": "1px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-width-1)",
         "description": ""
       },
@@ -1412,7 +1416,7 @@
           "2"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-width-2)",
         "description": ""
       },
@@ -1423,7 +1427,7 @@
           "4"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-width-4)",
         "description": ""
       },
@@ -1434,13 +1438,11 @@
           "8"
         ],
         "value": "8px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--border-width-8)",
         "description": ""
       }
     },
-    "borderRadius": {},
-    "borderWidth": {},
     "typography": {
       "family": {
         "typography-font-family-sans": {
@@ -2905,7 +2907,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--badge-radius)",
         "description": ""
       },
@@ -3290,7 +3292,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--button-radius)",
         "description": ""
       },
@@ -3451,7 +3453,7 @@
           "radius"
         ],
         "value": "8px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--card-radius)",
         "description": ""
       },
@@ -3722,7 +3724,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--input-radius)",
         "description": ""
       },
@@ -3936,7 +3938,7 @@
           "radius"
         ],
         "value": "8px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--alert-radius)",
         "description": ""
       },
@@ -4349,7 +4351,7 @@
           "trigger-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--menubar-trigger-radius)",
         "description": ""
       },
@@ -4360,7 +4362,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--menubar-item-radius)",
         "description": ""
       },
@@ -4744,7 +4746,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--command-content-radius)",
         "description": ""
       },
@@ -4755,7 +4757,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--command-item-radius)",
         "description": ""
       },
@@ -4980,7 +4982,7 @@
           "width"
         ],
         "value": "1px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--tabs-list-border-width)",
         "description": ""
       },
@@ -5122,7 +5124,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--tabs-trigger-border-width)",
         "description": ""
       },
@@ -5170,7 +5172,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--collapsible-radius)",
         "description": ""
       },
@@ -5181,7 +5183,7 @@
           "animation-duration"
         ],
         "value": "250ms",
-        "type": "fontFamily",
+        "type": "duration",
         "variable": "var(--collapsible-animation-duration)",
         "description": ""
       }
@@ -5377,7 +5379,7 @@
           "nav-button-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--calendar-nav-button-radius)",
         "description": ""
       },
@@ -5568,7 +5570,7 @@
           "width"
         ],
         "value": "1px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--accordion-item-border-width)",
         "description": ""
       },
@@ -5861,7 +5863,7 @@
           "link-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--breadcrumb-link-radius)",
         "description": ""
       }
@@ -6188,7 +6190,7 @@
           "radius"
         ],
         "value": "8px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--dialog-content-radius)",
         "description": ""
       },
@@ -6271,7 +6273,7 @@
           "close-button-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--dialog-close-button-radius)",
         "description": ""
       }
@@ -6469,7 +6471,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--hover-card-content-radius)",
         "description": ""
       }
@@ -6562,7 +6564,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--pagination-item-radius)",
         "description": ""
       },
@@ -6728,7 +6730,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--popover-content-radius)",
         "description": ""
       }
@@ -6807,7 +6809,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--progress-radius)",
         "description": ""
       }
@@ -6901,7 +6903,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--radio-border-radius)",
         "description": ""
       },
@@ -7012,7 +7014,7 @@
           "handle-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--resizable-handle-radius)",
         "description": ""
       }
@@ -7047,7 +7049,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--scrollbar-radius)",
         "description": ""
       },
@@ -7059,7 +7061,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--scrollbar-thumb-radius)",
         "description": ""
       },
@@ -7095,7 +7097,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--skeleton-radius)",
         "description": ""
       },
@@ -7235,7 +7237,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--slider-track-radius)",
         "description": ""
       },
@@ -7260,7 +7262,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--slider-thumb-border-width)",
         "description": ""
       },
@@ -7272,7 +7274,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--slider-thumb-radius)",
         "description": ""
       },
@@ -7450,7 +7452,7 @@
           "width"
         ],
         "value": "1px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--table-border-width)",
         "description": ""
       },
@@ -7563,7 +7565,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--toast-radius)",
         "description": ""
       },
@@ -7658,7 +7660,7 @@
           "radius"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--toast-close-radius)",
         "description": ""
       },
@@ -7741,7 +7743,7 @@
           "border-radius"
         ],
         "value": "8px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--toast-border-radius)",
         "description": ""
       },
@@ -7774,7 +7776,7 @@
           "close-button-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--toast-close-button-radius)",
         "description": ""
       },
@@ -7786,7 +7788,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--toast-action-radius)",
         "description": ""
       }
@@ -7943,7 +7945,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--toggle-radius)",
         "description": ""
       },
@@ -8022,7 +8024,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--tooltip-radius)",
         "description": ""
       },
@@ -8136,7 +8138,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--select-trigger-radius)",
         "description": ""
       },
@@ -8187,7 +8189,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--select-content-radius)",
         "description": ""
       },
@@ -8271,7 +8273,7 @@
           "radius"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--select-item-radius)",
         "description": ""
       },
@@ -8367,7 +8369,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--checkbox-border-width)",
         "description": ""
       },
@@ -8379,7 +8381,7 @@
           "radius"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--checkbox-border-radius)",
         "description": ""
       },
@@ -8536,7 +8538,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--switch-track-radius)",
         "description": ""
       },
@@ -8549,7 +8551,7 @@
           "width"
         ],
         "value": "2px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--switch-track-border-width)",
         "description": ""
       },
@@ -8600,7 +8602,7 @@
           "radius"
         ],
         "value": "9999px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--switch-thumb-radius)",
         "description": ""
       },
@@ -8763,7 +8765,7 @@
           "radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--textarea-radius)",
         "description": ""
       },
@@ -9005,7 +9007,7 @@
           "close-button-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--sheet-close-button-radius)",
         "description": ""
       }
@@ -9187,7 +9189,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--context-menu-content-radius)",
         "description": ""
       },
@@ -9198,7 +9200,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--context-menu-item-radius)",
         "description": ""
       },
@@ -9379,7 +9381,7 @@
           "content-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--dropdown-menu-content-radius)",
         "description": ""
       },
@@ -9390,7 +9392,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--dropdown-menu-item-radius)",
         "description": ""
       }
@@ -9471,7 +9473,7 @@
           "item-radius"
         ],
         "value": "16px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--feature-grid-item-radius)",
         "description": ""
       },
@@ -9482,7 +9484,7 @@
           "icon-radius"
         ],
         "value": "12px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--feature-grid-icon-radius)",
         "description": ""
       },
@@ -9561,7 +9563,7 @@
           "content-radius"
         ],
         "value": "8px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--alert-dialog-content-radius)",
         "description": ""
       },
@@ -9664,7 +9666,7 @@
           "trigger-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--navigation-menu-trigger-radius)",
         "description": ""
       },
@@ -9710,7 +9712,7 @@
           "item-radius"
         ],
         "value": "4px",
-        "type": "spacing",
+        "type": "dimension",
         "variable": "var(--toggle-group-item-radius)",
         "description": ""
       },

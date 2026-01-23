@@ -538,51 +538,51 @@
     "$value": "200%"
   },
   "border-radius.none": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "0px"
   },
   "border-radius.sm": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "2px"
   },
   "border-radius.md": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "4px"
   },
   "border-radius.lg": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "8px"
   },
   "border-radius.xl": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "12px"
   },
   "border-radius.2xl": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "16px"
   },
   "border-radius.full": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "9999px"
   },
   "border-width.0": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "0px"
   },
   "border-width.1": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "1px"
   },
   "border-width.2": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "2px"
   },
   "border-width.4": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "4px"
   },
   "border-width.8": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "8px"
   }
 }

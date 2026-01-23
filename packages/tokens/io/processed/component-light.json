@@ -84,7 +84,7 @@
     "$value": "{spacing.200}"
   },
   "badge.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "badge.font-size.sm": {
@@ -212,7 +212,7 @@
     "$value": "{spacing.400}"
   },
   "button.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "button.font-size.sm": {
@@ -244,7 +244,7 @@
     "$value": "{spacing.300}"
   },
   "card.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.lg}"
   },
   "card.header.gap": {
@@ -328,7 +328,7 @@
     "$value": "{typography.font-size.sm}"
   },
   "input.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "input.font-size.md": {
@@ -972,7 +972,7 @@
     "$value": "{spacing.100}"
   },
   "tooltip.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "tooltip.font-size": {
@@ -1008,7 +1008,7 @@
     "$value": "{spacing.300}"
   },
   "select.trigger.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "select.trigger.font-size.sm": {
@@ -1024,7 +1024,7 @@
     "$value": "{typography.font-size.base}"
   },
   "select.content.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "select.content.padding": {
@@ -1052,7 +1052,7 @@
     "$value": "{spacing.100}"
   },
   "select.item.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.sm}"
   },
   "select.item.font-size": {
@@ -1076,11 +1076,11 @@
     "$value": "{spacing.300}"
   },
   "checkbox.border.width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "checkbox.border.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.sm}"
   },
   "checkbox.icon.size.sm": {
@@ -1128,11 +1128,11 @@
     "$value": "{spacing.700}"
   },
   "switch.track.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "switch.track.border.width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "switch.thumb.size.sm": {
@@ -1148,7 +1148,7 @@
     "$value": "{spacing.300}"
   },
   "switch.thumb.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "switch.thumb.translate.sm": {
@@ -1196,7 +1196,7 @@
     "$value": "{spacing.300}"
   },
   "radio.border.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "radio.indicator.size.sm": {
@@ -1224,7 +1224,7 @@
     "$value": "{spacing.100}"
   },
   "slider.track.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "slider.thumb.size": {
@@ -1232,11 +1232,11 @@
     "$value": "{spacing.300}"
   },
   "slider.thumb.border.width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "slider.thumb.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "slider.focus.ring.width": {
@@ -1264,7 +1264,7 @@
     "$value": "{spacing.200}"
   },
   "textarea.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "label.font-size.sm": {
@@ -1368,7 +1368,7 @@
     "$value": "{spacing.100}"
   },
   "tabs.list.border.width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.1}"
   },
   "tabs.trigger.padding-x.sm": {
@@ -1412,7 +1412,7 @@
     "$value": "{border-width.4}"
   },
   "tabs.trigger.border.width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.2}"
   },
   "tabs.content.padding": {
@@ -1424,11 +1424,11 @@
     "$value": "{spacing.200}"
   },
   "collapsible.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "collapsible.animation-duration": {
-    "$type": "fontFamily",
+    "$type": "duration",
     "$value": "{transition.duration.normal}"
   },
   "separator.height.horizontal": {
@@ -1456,7 +1456,7 @@
     "$value": "{spacing.200}"
   },
   "pagination.item.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "pagination.item.font-size": {
@@ -1492,7 +1492,7 @@
     "$value": "{spacing.400}"
   },
   "dialog.content.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.lg}"
   },
   "dialog.header.gap": {
@@ -1560,7 +1560,7 @@
     "$value": "{spacing.300}"
   },
   "toast.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "toast.gap": {
@@ -1592,7 +1592,7 @@
     "$value": "{spacing.300}"
   },
   "toast.close.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.sm}"
   },
   "table.cell.padding-x": {
@@ -1620,11 +1620,11 @@
     "$value": "{spacing.200}"
   },
   "table.border.width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.1}"
   },
   "skeleton.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "skeleton.height.text": {
@@ -1648,7 +1648,7 @@
     "$value": "{spacing.100}"
   },
   "progress.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "scrollbar.width": {
@@ -1656,11 +1656,11 @@
     "$value": "{spacing.100}"
   },
   "scrollbar.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "scrollbar.thumb.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.full}"
   },
   "scrollbar.thumb.min-height": {
@@ -1844,7 +1844,7 @@
     "$value": "{spacing.200}"
   },
   "accordion.item.border.width": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-width.1}"
   },
   "accordion.trigger.padding": {
@@ -1976,7 +1976,7 @@
     "$value": "{color.yellow.500}"
   },
   "toast.border-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.lg}"
   },
   "toast.close-padding": {
@@ -2008,11 +2008,11 @@
     "$value": "{spacing.300}"
   },
   "feature-grid.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.2xl}"
   },
   "feature-grid.icon-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.xl}"
   },
   "feature-grid.title-font-size": {
@@ -2064,7 +2064,7 @@
     "$value": "{spacing.100}"
   },
   "alert-dialog.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.lg}"
   },
   "alert-dialog.title-font-size": {
@@ -2088,7 +2088,7 @@
     "$value": "{spacing.050}"
   },
   "alert.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.lg}"
   },
   "alert.title.font-size": {
@@ -2144,11 +2144,11 @@
     "$value": "{spacing.050}"
   },
   "command.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "command.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "command.item-font-size": {
@@ -2180,7 +2180,7 @@
     "$value": "{spacing.050}"
   },
   "navigation-menu.trigger-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "navigation-menu.trigger-font-size": {
@@ -2196,7 +2196,7 @@
     "$value": "{spacing.150}"
   },
   "toggle-group.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "toggle-group.item-font-size": {
@@ -2216,7 +2216,7 @@
     "$value": "{spacing.0}"
   },
   "calendar.nav-button-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "calendar.header-font-size": {
@@ -2256,11 +2256,11 @@
     "$value": "{spacing.050}"
   },
   "context-menu.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "context-menu.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "context-menu.item-font-size": {
@@ -2292,11 +2292,11 @@
     "$value": "{spacing.100}"
   },
   "menubar.trigger-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "menubar.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "menubar.item-font-size": {
@@ -2304,15 +2304,15 @@
     "$value": "{typography.font-size.sm}"
   },
   "dropdown-menu.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "dropdown-menu.item-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "resizable.handle-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "card.header-padding-top": {
@@ -2320,7 +2320,7 @@
     "$value": "{spacing.0}"
   },
   "sheet.close-button-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "avatar.rounded": {
@@ -2336,15 +2336,15 @@
     "$value": "{spacing.050}"
   },
   "toast.close-button-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "toggle.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "dialog.close-button-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "skeleton.rounded-full": {
@@ -2356,15 +2356,15 @@
     "$value": "{border-radius.md}"
   },
   "breadcrumb.link-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "hover-card.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "popover.content-radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   },
   "carousel.button-rounded-full": {
@@ -2392,7 +2392,7 @@
     "$value": "{typography.font-size.sm}"
   },
   "toast.action.radius": {
-    "$type": "spacing",
+    "$type": "dimension",
     "$value": "{border-radius.md}"
   }
 }
