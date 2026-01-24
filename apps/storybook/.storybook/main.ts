@@ -99,8 +99,8 @@ const config: StorybookConfig = {
                 }
                 // Storybook core packages
                 if (
-                  id.includes("@storybook/blocks") ||
-                  id.includes("@storybook/components")
+                  id.includes("@storybook/addon-docs/blocks") ||
+                  id.includes("storybook/internal/components")
                 ) {
                   return "vendor-storybook-ui";
                 }

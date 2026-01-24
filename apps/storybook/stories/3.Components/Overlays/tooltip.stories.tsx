@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen, waitFor } from "@storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import {
   Tooltip,
   TooltipContent,

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "@storybook/test";
+import { within, userEvent, expect } from "storybook/test";
 import { RadioGroup, RadioGroupItem } from "@wyliedog/ui/radio-group";
 import { Label } from "@wyliedog/ui/label";
 

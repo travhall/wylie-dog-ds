@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "@storybook/test";
+import { within, userEvent, expect, screen } from "storybook/test";
 import { Popover, PopoverContent, PopoverTrigger } from "@wyliedog/ui/popover";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";

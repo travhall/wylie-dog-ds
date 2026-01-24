@@ -1,14 +1,30 @@
 import "../stories/globals.css";
-import { addons } from "storybook/internal/preview-api";
+import { addons } from "storybook/preview-api";
 import { DOCS_RENDERED, GLOBALS_UPDATED } from "storybook/internal/core-events";
 import { themeManager } from "./theme-sync";
+import type { ThemeChoice } from "./theme-sync";
+import type { Preview } from "@storybook/react";
+import { INITIAL_VIEWPORTS } from "storybook/viewport";
+
+const preview: Preview = {
+  parameters: {
+    viewport: {
+      options: INITIAL_VIEWPORTS,
+    },
+  },
+  initialGlobals: {
+    viewport: { value: "ipad", isRotated: false },
+  },
+};
+
+export default preview;
 
 let hasInitializedTheme = false;
 let hasSyncedGlobals = false;
 const hasBootstrappedThemeKey = "__WYLIE_STORYBOOK_THEME_BOOTSTRAPPED__";
 
 const THEME_PARAM = "theme";
-const isThemeChoice = (value) =>
+const isThemeChoice = (value: any): value is ThemeChoice =>
   value === "light" || value === "dark" || value === "system";
 
 const getThemeFromQueryParam = () => {
@@ -43,7 +59,7 @@ const getThemeFromQueryParam = () => {
   return null;
 };
 
-const ensureThemeInitialized = (choice = "system") => {
+const ensureThemeInitialized = (choice: ThemeChoice = "system") => {
   if (typeof window === "undefined" || hasInitializedTheme) {
     return;
   }
@@ -57,7 +73,7 @@ const bootstrapThemeSync = () => {
     return;
   }
 
-  if (window[hasBootstrappedThemeKey]) {
+  if ((window as any)[hasBootstrappedThemeKey]) {
     return;
   }
 
@@ -68,7 +84,11 @@ const bootstrapThemeSync = () => {
 
   const channel = addons.getChannel();
 
-  const handleGlobalsUpdated = ({ globals }) => {
+  const handleGlobalsUpdated = ({
+    globals,
+  }: {
+    globals?: Record<string, any>;
+  }) => {
     const nextChoice = globals?.[THEME_PARAM];
 
     if (isThemeChoice(nextChoice)) {
@@ -87,12 +107,15 @@ const bootstrapThemeSync = () => {
   channel.on(GLOBALS_UPDATED, handleGlobalsUpdated);
   channel.on(DOCS_RENDERED, handleDocsRendered);
 
-  window[hasBootstrappedThemeKey] = true;
+  (window as any)[hasBootstrappedThemeKey] = true;
 };
 
 bootstrapThemeSync();
 
-const syncGlobalsWithPreferredChoice = (context, currentChoice) => {
+const syncGlobalsWithPreferredChoice = (
+  context: any,
+  currentChoice: string
+) => {
   if (
     hasSyncedGlobals ||
     typeof window === "undefined" ||
@@ -111,7 +134,7 @@ const syncGlobalsWithPreferredChoice = (context, currentChoice) => {
 };
 
 // Global types for toolbar controls
-export const globalTypes = {
+export const globalTypes: Preview["globalTypes"] = {
   theme: {
     name: "Theme",
     description: "Global theme for components",
@@ -125,12 +148,12 @@ export const globalTypes = {
       ],
       showName: true,
       dynamicTitle: true,
-    },
+    } as any,
   },
 };
 
 // Theme decorator - applies theme class to document root
-export const decorators = [
+export const decorators: Preview["decorators"] = [
   (Story, context) => {
     const themeChoice =
       context.globals.theme ||
@@ -148,7 +171,7 @@ export const decorators = [
   },
 ];
 
-export const parameters = {
+export const parameters: Preview["parameters"] = {
   controls: {
     matchers: {
       color: /(background|color)$/i,

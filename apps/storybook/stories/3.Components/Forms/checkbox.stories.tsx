@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "@storybook/test";
+import { within, userEvent, expect } from "storybook/test";
 import { Checkbox } from "@wyliedog/ui/checkbox";
 import { Label } from "@wyliedog/ui/label";
 
