@@ -50,14 +50,14 @@ class ThemeSync {
     const resolved = this.resolveChoice(choice);
     const hasChoiceChanged = this.state.choice !== choice;
 
-    // Always apply the theme (DOM might have been reset by Storybook)
+    // Update choice in state
     this.state.choice = choice;
 
     if (hasChoiceChanged) {
       this.persistChoice(choice);
     }
 
-    // Always apply resolved theme to handle Storybook iframe reloads
+    // Apply resolved theme (early return guard prevents redundant DOM updates)
     this.applyResolved(resolved);
   }
 
@@ -85,6 +85,14 @@ class ThemeSync {
 
   private applyResolved(resolved: ResolvedTheme) {
     if (typeof document === "undefined") {
+      return;
+    }
+
+    // Don't apply if already applied - prevents unnecessary DOM manipulations
+    if (
+      this.state.resolved === resolved &&
+      document.documentElement.classList.contains(resolved)
+    ) {
       return;
     }
 

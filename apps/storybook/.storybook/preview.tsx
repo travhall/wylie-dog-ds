@@ -20,7 +20,7 @@ const preview: Preview = {
 export default preview;
 
 let hasInitializedTheme = false;
-let hasSyncedGlobals = false;
+let lastSyncedChoice: string | null = null;
 const hasBootstrappedThemeKey = "__WYLIE_STORYBOOK_THEME_BOOTSTRAPPED__";
 
 const THEME_PARAM = "theme";
@@ -96,16 +96,10 @@ const bootstrapThemeSync = () => {
     }
   };
 
-  const handleDocsRendered = () => {
-    const docsChoice = themeManager.getState().choice;
-
-    if (isThemeChoice(docsChoice)) {
-      themeManager.setChoice(docsChoice);
-    }
-  };
+  // Note: DOCS_RENDERED handler removed - decorator handles theme application
+  // for both story and docs pages, preventing redundant DOM manipulation
 
   channel.on(GLOBALS_UPDATED, handleGlobalsUpdated);
-  channel.on(DOCS_RENDERED, handleDocsRendered);
 
   (window as any)[hasBootstrappedThemeKey] = true;
 };
@@ -117,7 +111,6 @@ const syncGlobalsWithPreferredChoice = (
   currentChoice: string
 ) => {
   if (
-    hasSyncedGlobals ||
     typeof window === "undefined" ||
     typeof context.updateGlobals !== "function"
   ) {
@@ -126,11 +119,16 @@ const syncGlobalsWithPreferredChoice = (
 
   const preferredChoice = themeManager.getState().choice;
 
-  if (preferredChoice && preferredChoice !== currentChoice) {
+  // Only sync if preference differs from current choice AND we haven't synced this choice yet
+  // This allows re-syncing when user changes localStorage preference between sessions
+  if (
+    preferredChoice &&
+    preferredChoice !== currentChoice &&
+    lastSyncedChoice !== preferredChoice
+  ) {
     context.updateGlobals({ theme: preferredChoice });
+    lastSyncedChoice = preferredChoice;
   }
-
-  hasSyncedGlobals = true;
 };
 
 // Global types for toolbar controls
@@ -155,15 +153,28 @@ export const globalTypes: Preview["globalTypes"] = {
 // Theme decorator - applies theme class to document root
 export const decorators: Preview["decorators"] = [
   (Story, context) => {
-    const themeChoice =
-      context.globals.theme ||
-      themeManager.getState().choice ||
-      themeManager.getPreferredChoice() ||
-      "system";
-
     if (typeof window !== "undefined") {
-      ensureThemeInitialized(themeChoice);
-      themeManager.setChoice(themeChoice);
+      // Determine theme choice with proper priority:
+      // 1. User's toolbar selection (context.globals.theme)
+      // 2. Current manager state (already initialized)
+      // 3. Stored preference or system default
+      const currentState = themeManager.getState();
+      const themeChoice =
+        context.globals.theme ||
+        currentState.choice ||
+        themeManager.getPreferredChoice() ||
+        "system";
+
+      // Only initialize once, not on every story navigation
+      if (!hasInitializedTheme) {
+        ensureThemeInitialized(themeChoice);
+      }
+
+      // Only update if theme actually changed from current state
+      if (currentState.choice !== themeChoice) {
+        themeManager.setChoice(themeChoice);
+      }
+
       syncGlobalsWithPreferredChoice(context, themeChoice);
     }
 
@@ -182,22 +193,54 @@ export const parameters: Preview["parameters"] = {
   options: {
     storySort: {
       order: [
-        "1. Introduction",
-        ["Welcome", "Getting Started", "Design Principles"],
-        "2. Foundations",
-        "3. Components",
+        "Introduction",
+        ["Welcome", "Getting Started", "Using This System"],
+        "Foundations",
         [
-          "Actions",
-          "Forms",
-          "Navigation",
-          "Feedback",
-          "Overlays",
-          "Data Display",
-          "Layout",
+          "Design Principles",
+          "Design Tokens",
+          [
+            "Usage Guide",
+            "Colors",
+            "Typography",
+            "Spacing",
+            "Radius",
+            "Elevation & Shadows",
+            "Motion & Animation",
+          ],
+          "Typography",
+          "Accessibility Guidelines",
         ],
-        "4. Patterns",
-        "5. Guides",
-        ["Theming", "Composition Patterns", "Testing", "Accessibility"],
+        "Components",
+        [
+          "Inputs & Controls",
+          "Navigation",
+          "Layout & Structure",
+          "Content Display",
+          "Feedback & Status",
+          "Overlays & Popovers",
+        ],
+        "Patterns",
+        [
+          "Overview",
+          "Form Patterns",
+          "Authentication Patterns",
+          "Data Patterns",
+          "Navigation Patterns",
+        ],
+        "Examples",
+        ["Page Compositions", "Common Application Flows"],
+        "Resources",
+        [
+          "Getting Started",
+          "Theming",
+          "Development",
+          "Design",
+          "Testing & Quality",
+          "Migration & Updates",
+        ],
+        "Contributing",
+        ["Guidelines", "Workflows"],
       ],
     },
   },

@@ -1,0 +1,558 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Contributing/Workflows/Component Development Process" />
+
+# Component Development Process
+
+A step-by-step guide for developing and contributing new components to the Wylie Dog Design System.
+
+## Overview
+
+Component development follows a structured workflow from initial proposal through release:
+
+1. **Proposal & Discovery** - Define the need and validate the approach
+2. **Design** - Create Figma designs following design standards
+3. **Development** - Build the component with tests and documentation
+4. **Review** - Peer review for quality and consistency
+5. **Documentation** - Complete Storybook stories and usage guides
+6. **Release** - Publish and communicate the new component
+
+## Phase 1: Proposal & Discovery
+
+### 1. Identify the Need
+
+Before creating a new component, verify it's necessary:
+
+```markdown
+✅ Create a new component when:
+- Pattern appears in 3+ different contexts
+- Existing components can't be composed to solve the need
+- Component represents a distinct, reusable interaction
+
+❌ Don't create a new component when:
+- It's a one-off variation (use composition instead)
+- Existing component can be extended with new props
+- It's application-specific (not system-level)
+```
+
+### 2. Research Existing Solutions
+
+Check if the component already exists:
+
+- Search the component library
+- Review [Patterns](/docs/patterns-overview--docs) for multi-component solutions
+- Check open issues/PRs for planned work
+- Review similar design systems (Radix UI, shadcn/ui, Material UI)
+
+### 3. Create a Proposal
+
+Document your proposal in a GitHub issue:
+
+```markdown
+## Component Proposal: [Component Name]
+
+### Problem Statement
+What user need does this solve?
+
+### Use Cases
+1. [Primary use case]
+2. [Secondary use case]
+3. [Edge cases to consider]
+
+### API Proposal
+```tsx
+interface ComponentProps {
+  // Proposed props
+}
+```
+
+### Design Considerations
+- Accessibility requirements
+- Responsive behavior
+- Theme support
+- Animation/interaction needs
+
+### Examples from Other Systems
+- [Links to similar components in other design systems]
+
+### Open Questions
+- [Questions for discussion]
+```
+
+### 4. Get Approval
+
+Discuss with the design system team:
+
+- Share the proposal in team channels
+- Get design and engineering feedback
+- Agree on scope and timeline
+- Assign owner(s)
+
+## Phase 2: Design
+
+### 1. Create Figma Designs
+
+Follow the [Design Standards](/docs/contributing-guidelines-design-standards--docs):
+
+```
+Component Checklist:
+□ Base component created
+□ All variants defined (sizes, states, styles)
+□ All states designed (default, hover, focus, active, disabled)
+□ Design tokens used (no hardcoded values)
+□ Accessibility verified (contrast, focus indicators)
+□ Responsive behavior defined
+□ Documentation annotations added
+```
+
+### 2. Design Review
+
+Get design feedback:
+
+- Share Figma link with design team
+- Walk through variants and states
+- Validate against design principles
+- Address feedback and iterate
+- Get final design approval
+
+### 3. Prepare for Handoff
+
+Complete the [Design Handoff Checklist](/docs/contributing-guidelines-design-standards--docs#design-handoff):
+
+- Clean up layers and naming
+- Verify all tokens are used
+- Add spacing and typography annotations
+- Export any required assets
+- Document responsive behavior
+- Note accessibility requirements
+
+## Phase 3: Development
+
+### 1. Set Up Your Branch
+
+```bash
+# Create feature branch from main
+git checkout main
+git pull origin main
+git checkout -b feat/component-name
+
+# Verify branch
+git branch
+```
+
+### 2. Create Component Files
+
+Follow the [file structure](/docs/contributing-guidelines-code-standards--docs#file-organization):
+
+```bash
+packages/ui/src/components/component-name/
+├── component-name.tsx       # Main component
+├── component-name.test.tsx  # Unit tests
+├── component-name.stories.tsx # Storybook stories
+└── index.ts                 # Public exports
+```
+
+### 3. Implement the Component
+
+Use the [component template](/docs/contributing-guidelines-code-standards--docs#component-template):
+
+```tsx
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+
+// 1. Type definitions
+export interface ComponentNameProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: 'default' | 'primary';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+// 2. Component implementation
+export const ComponentName = React.forwardRef<
+  HTMLDivElement,
+  ComponentNameProps
+>(({ className, variant = 'default', size = 'md', ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        'base-styles',
+        variantStyles[variant],
+        sizeStyles[size],
+        className
+      )}
+      {...props}
+    />
+  );
+});
+
+ComponentName.displayName = 'ComponentName';
+
+// 3. Style variants
+const variantStyles = {
+  default: 'bg-background text-foreground',
+  primary: 'bg-primary text-primary-foreground',
+};
+
+const sizeStyles = {
+  sm: 'text-sm px-2 py-1',
+  md: 'text-base px-3 py-2',
+  lg: 'text-lg px-4 py-3',
+};
+```
+
+### 4. Write Tests
+
+Ensure [minimum 80% coverage](/docs/contributing-guidelines-code-standards--docs#coverage-requirements):
+
+```tsx
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { ComponentName } from './component-name';
+
+describe('ComponentName', () => {
+  it('renders with children', () => {
+    render(<ComponentName>Content</ComponentName>);
+    expect(screen.getByText('Content')).toBeInTheDocument();
+  });
+
+  it('applies variant styles', () => {
+    render(<ComponentName variant="primary">Content</ComponentName>);
+    const element = screen.getByText('Content');
+    expect(element).toHaveClass('bg-primary');
+  });
+
+  it('forwards ref correctly', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    render(<ComponentName ref={ref}>Content</ComponentName>);
+    expect(ref.current).toBeInstanceOf(HTMLDivElement);
+  });
+
+  it('is keyboard accessible', async () => {
+    const handleClick = jest.fn();
+    render(<ComponentName onClick={handleClick}>Content</ComponentName>);
+
+    const element = screen.getByText('Content');
+    element.focus();
+    await userEvent.keyboard('{Enter}');
+    expect(handleClick).toHaveBeenCalled();
+  });
+});
+```
+
+Run tests locally:
+
+```bash
+# Run tests
+pnpm test
+
+# Check coverage
+pnpm test:coverage
+
+# Watch mode during development
+pnpm test:watch
+```
+
+### 5. Create Storybook Stories
+
+Document all variants and use cases:
+
+```tsx
+import type { Meta, StoryObj } from '@storybook/react';
+import { ComponentName } from './component-name';
+
+const meta: Meta<typeof ComponentName> = {
+  title: 'Components/Category/ComponentName',
+  component: ComponentName,
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component: 'Brief description of the component and its purpose.',
+      },
+    },
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['default', 'primary'],
+      description: 'Visual style variant',
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      description: 'Size of the component',
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof ComponentName>;
+
+// Default story
+export const Default: Story = {
+  args: {
+    children: 'Default component',
+  },
+};
+
+// Variant stories
+export const Primary: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Primary variant',
+  },
+};
+
+// Size stories
+export const Sizes: Story = {
+  render: () => (
+    <div className="flex gap-4 items-center">
+      <ComponentName size="sm">Small</ComponentName>
+      <ComponentName size="md">Medium</ComponentName>
+      <ComponentName size="lg">Large</ComponentName>
+    </div>
+  ),
+};
+
+// Usage example
+export const Example: Story = {
+  render: () => (
+    <div className="space-y-4">
+      <ComponentName variant="primary">
+        Real-world usage example
+      </ComponentName>
+    </div>
+  ),
+};
+```
+
+### 6. Add Documentation
+
+Create comprehensive docs in the story file:
+
+```tsx
+/**
+ * ComponentName provides [description of functionality].
+ *
+ * ## Usage
+ *
+ * ```tsx
+ * import { ComponentName } from '@wyliedog/ui/component-name';
+ *
+ * export function Example() {
+ *   return (
+ *     <ComponentName variant="primary" size="md">
+ *       Content
+ *     </ComponentName>
+ *   );
+ * }
+ * ```
+ *
+ * ## Accessibility
+ *
+ * - Keyboard navigable with Tab
+ * - ARIA attributes included
+ * - Screen reader friendly
+ *
+ * ## Best Practices
+ *
+ * - Use semantic variants (primary, not blue)
+ * - Provide meaningful labels
+ * - Consider responsive behavior
+ */
+```
+
+## Phase 4: Review
+
+### 1. Self-Review
+
+Before requesting review, check the [Code Review Checklist](/docs/contributing-guidelines-code-standards--docs#code-review-checklist):
+
+```markdown
+□ TypeScript types are complete and accurate
+□ Tests are written and passing (80%+ coverage)
+□ Component is accessible (keyboard, ARIA, contrast)
+□ Documentation is updated (component props, examples)
+□ Storybook stories demonstrate all variants
+□ Code follows style guidelines
+□ No console errors or warnings
+□ Bundle size impact is acceptable
+□ Design matches Figma specs
+□ Responsive behavior works as designed
+```
+
+### 2. Create Pull Request
+
+Write a comprehensive PR description:
+
+```markdown
+## Description
+
+[Brief description of the component and why it's needed]
+
+## Changes
+
+- Add ComponentName component
+- Add unit tests (coverage: X%)
+- Add Storybook stories
+- Update exports
+
+## Design
+
+Figma: [Link to Figma designs]
+
+## Testing
+
+- [ ] Unit tests pass
+- [ ] Storybook builds successfully
+- [ ] Manually tested all variants
+- [ ] Tested keyboard navigation
+- [ ] Tested screen reader compatibility
+- [ ] Tested in light and dark mode
+- [ ] Tested responsive behavior
+
+## Screenshots
+
+[Add screenshots of the component in different states]
+
+## Checklist
+
+- [ ] Follows code standards
+- [ ] Follows design standards
+- [ ] Tests included
+- [ ] Documentation complete
+- [ ] Accessibility verified
+```
+
+### 3. Request Reviews
+
+Get feedback from:
+
+- **Engineering**: Code quality, performance, tests
+- **Design**: Visual accuracy, design token usage
+- **Accessibility**: WCAG compliance, keyboard navigation
+
+### 4. Address Feedback
+
+Iterate based on review comments:
+
+```bash
+# Make changes based on feedback
+git add .
+git commit -m "fix: address review feedback"
+git push origin feat/component-name
+```
+
+## Phase 5: Documentation
+
+### 1. Finalize Storybook Stories
+
+Ensure stories cover:
+
+- All variants and sizes
+- All interactive states
+- Common usage patterns
+- Accessibility features
+- Best practices and anti-patterns
+
+### 2. Update Package Exports
+
+Add the component to package exports:
+
+```tsx
+// packages/ui/src/components/index.ts
+export * from './component-name';
+```
+
+### 3. Add Usage Examples
+
+Create example compositions in [Patterns](/docs/patterns-overview--docs) if applicable.
+
+## Phase 6: Release
+
+### 1. Final Verification
+
+Before merging:
+
+```bash
+# Run all checks
+pnpm build
+pnpm test
+pnpm lint
+pnpm type-check
+```
+
+### 2. Merge to Main
+
+Once approved:
+
+```bash
+# Squash and merge via GitHub UI
+# Or merge locally:
+git checkout main
+git pull origin main
+git merge --squash feat/component-name
+git commit -m "feat(component-name): add new component"
+git push origin main
+```
+
+### 3. Version and Publish
+
+Follow the [Release Process](/docs/contributing-workflows-release-process--docs):
+
+- Update CHANGELOG.md
+- Bump package version
+- Create release tag
+- Publish to npm
+
+### 4. Communicate Release
+
+Announce the new component:
+
+- Update design system documentation
+- Post in team channels
+- Add to release notes
+- Update component status in tracker
+
+## Common Pitfalls
+
+### Over-Engineering
+
+```tsx
+// ❌ Bad - Too many variants
+<Button variant="primary-large-with-icon-left-rounded-elevated" />
+
+// ✅ Good - Compose simple props
+<Button variant="primary" size="lg" icon={<Icon />}>
+  Click me
+</Button>
+```
+
+### Tight Coupling
+
+```tsx
+// ❌ Bad - Tightly coupled to application logic
+<UserProfileCard userId="123" fetchUser={apiClient.getUser} />
+
+// ✅ Good - Accepts data as props
+<UserProfileCard user={user} />
+```
+
+### Missing Accessibility
+
+```tsx
+// ❌ Bad - No keyboard support
+<div onClick={handleClick}>Click me</div>
+
+// ✅ Good - Proper semantics and keyboard support
+<button onClick={handleClick}>Click me</button>
+```
+
+## Questions?
+
+- Review existing components for examples
+- Check [Code Standards](/docs/contributing-guidelines-code-standards--docs)
+- Check [Design Standards](/docs/contributing-guidelines-design-standards--docs)
+- Ask in PR comments for clarification

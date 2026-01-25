@@ -18,7 +18,10 @@ const config: StorybookConfig = {
   addons: [
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-docs"),
-    getAbsolutePath("@storybook/addon-vitest"),
+    // Only include Vitest addon in development to prevent large test bundle in production
+    ...(process.env.NODE_ENV !== "production"
+      ? [getAbsolutePath("@storybook/addon-vitest")]
+      : []),
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@chromatic-com/storybook"),
     getAbsolutePath("storybook-design-token"),
@@ -34,10 +37,17 @@ const config: StorybookConfig = {
   },
 
   typescript: {
-    reactDocgen: false, // Disable react-docgen to avoid parsing issues with custom CSS syntax
+    reactDocgen: "react-docgen-typescript",
   },
 
   core: {},
+
+  build: {
+    test: {
+      // Disable test addon in production builds to reduce bundle size
+      disabledAddons: ["@storybook/addon-vitest"],
+    },
+  },
 
   async viteFinal(config) {
     // Customize the Vite config here

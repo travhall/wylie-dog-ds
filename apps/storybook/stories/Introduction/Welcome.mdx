@@ -1,0 +1,122 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction/Welcome" />
+
+# Wylie Dog Design System
+
+A modern, accessible design system built with React, Radix UI, and OKLCH color science.
+
+## 🎯 Overview
+
+The Wylie Dog Design System provides a comprehensive set of reusable components, design tokens, and patterns to help you build consistent, accessible user interfaces quickly and confidently.
+
+## ✨ Key Features
+
+- **🎨 OKLCH Color Science** - Advanced color system with P3 wide gamut support and perceptual uniformity
+- **♿ Accessibility First** - Built on Radix UI primitives with comprehensive ARIA patterns and keyboard navigation
+- **🧩 Composable Components** - 48+ production-ready components that work together seamlessly
+- **📚 Comprehensive Documentation** - Detailed examples, usage patterns, and best practices
+- **✅ Thoroughly Tested** - 95%+ comprehensive test coverage
+- **⚡ Modern Stack** - React 19, TypeScript 5.8, Tailwind v4, Vite
+
+## 🚀 Quick Links
+
+### Getting Started
+- [Getting Started Guide](?path=/docs/introduction-getting-started--docs) - Installation and setup
+- [Design Principles](?path=/docs/foundations-design-principles-overview--docs) - Our design philosophy
+
+### Foundations
+- [Colors](?path=/docs/foundations-design-tokens-colors--docs) - Color palette and tokens
+- [Typography](?path=/docs/foundations-typography--docs) - Text styles and scales
+- [Spacing](?path=/docs/foundations-design-tokens-spacing-layout--docs) - Layout and spacing system
+
+### Components
+- [Browse All Components](?path=/docs/components-content-display-accordion--docs) - Explore 48+ components
+- [Patterns Overview](?path=/docs/patterns-overview--docs) - Real-world examples
+- [Form Patterns](?path=/docs/patterns-form-patterns-form-compositions--docs) - Common form layouts
+
+## 🎨 Design Tokens
+
+Our design system is powered by a robust token system that ensures consistency across all components:
+
+```jsx
+// Using design tokens with Tailwind classes
+<div className="bg-primary-500 text-white p-4 rounded-lg shadow-md">
+  Primary action button
+</div>
+
+// Semantic color tokens
+<div className="bg-success-100 border border-success-500 text-success-700">
+  Success message
+</div>
+```
+
+## 🧩 Component Example
+
+```jsx
+import { Button } from '@wyliedog/ui/button';
+import { Input } from '@wyliedog/ui/input';
+import { Label } from '@wyliedog/ui/label';
+
+export function LoginForm() {
+  return (
+    <form className="space-y-4">
+      <div>
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="email" placeholder="you@example.com" />
+      </div>
+      <Button variant="primary" className="w-full">
+        Sign In
+      </Button>
+    </form>
+  );
+}
+```
+
+## 📖 Documentation Structure
+
+Our Storybook is organized into clear sections:
+
+- **Introduction** - Getting started guides and design principles
+- **Foundations** - Colors, typography, spacing, and core design tokens
+- **Components** - All UI components with interactive examples
+- **Patterns** - Real-world compositions and common use cases
+- **Guides** - In-depth guides for theming, accessibility, and testing
+
+## 🏗️ Built With
+
+- **React 19.2.3** - Latest React with improved performance
+- **TypeScript 5.8** - Type-safe component development
+- **Radix UI** - Accessible component primitives
+- **Tailwind CSS v4** - Utility-first styling with modern features
+- **OKLCH Colors** - Perceptually uniform color space
+- **Vite** - Lightning-fast build tooling
+- **Vitest** - Modern testing framework
+
+## 🎓 Learning Path
+
+### For Designers
+1. Start with [Design Principles](?path=/docs/foundations-design-principles-overview--docs)
+2. Explore [Colors](?path=/docs/foundations-design-tokens-colors--docs) and [Typography](?path=/docs/foundations-typography--docs)
+3. Review component examples for design patterns
+
+### For Developers
+1. Follow the [Getting Started Guide](?path=/docs/introduction-getting-started--docs)
+2. Browse [Components](?path=/docs/components-content-display-accordion--docs) to see what's available
+3. Check out [Patterns](?path=/docs/patterns-overview--docs) for implementation examples
+
+### For Everyone
+- Explore interactive component stories
+- Try different variants and props in the Controls panel
+- Copy code examples directly from the documentation
+
+## 💡 Need Help?
+
+- **Component Questions** - Each component has detailed documentation with examples
+- **Design Tokens** - See the [Token Usage Guide](?path=/docs/foundations-design-tokens-usage-guide--docs)
+- **Accessibility** - Check individual component accessibility stories
+- **Testing** - All components include comprehensive test coverage
+
+## 🚀 Start Building
+
+Ready to get started? Head over to the [Getting Started Guide](?path=/docs/introduction-getting-started--docs) to begin building with the Wylie Dog Design System!

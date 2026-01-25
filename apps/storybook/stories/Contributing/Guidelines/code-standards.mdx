@@ -1,0 +1,359 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Contributing/Guidelines/Code Standards" />
+
+# Code Standards
+
+Guidelines for contributing code to the Wylie Dog Design System.
+
+## TypeScript Guidelines
+
+### Type Safety
+
+All components must be fully typed with no `any` types except where absolutely necessary:
+
+```tsx
+// ✅ Good
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'default' | 'primary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+// ❌ Bad
+interface ButtonProps {
+  variant?: any;
+  props?: any;
+}
+```
+
+### Prop Types
+
+Use TypeScript interfaces for component props:
+
+```tsx
+// ✅ Prefer interface for extensibility
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  elevation?: 'sm' | 'md' | 'lg';
+}
+
+// Use type for unions or complex types
+export type CardVariant = 'default' | 'outlined' | 'elevated';
+```
+
+### Generic Components
+
+For components that work with different data types:
+
+```tsx
+interface SelectProps<T> {
+  value: T;
+  options: T[];
+  onChange: (value: T) => void;
+  renderOption?: (option: T) => React.ReactNode;
+}
+
+export function Select<T extends string | number>({
+  value,
+  options,
+  onChange,
+}: SelectProps<T>) {
+  // Implementation
+}
+```
+
+## Component Structure
+
+### File Organization
+
+```
+components/
+├── button/
+│   ├── button.tsx           # Main component
+│   ├── button.test.tsx      # Tests
+│   ├── button.stories.tsx   # Storybook stories
+│   └── index.ts             # Public exports
+```
+
+### Component Template
+
+Follow this structure for new components:
+
+```tsx
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+
+// 1. Type definitions
+export interface ComponentProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: 'default' | 'primary';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+// 2. Component implementation
+export const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
+  ({ className, variant = 'default', size = 'md', ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          'base-styles',
+          variantStyles[variant],
+          sizeStyles[size],
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
+
+Component.displayName = 'Component';
+
+// 3. Style variants (if complex)
+const variantStyles = {
+  default: 'bg-background text-foreground',
+  primary: 'bg-primary text-primary-foreground',
+};
+
+const sizeStyles = {
+  sm: 'text-sm px-2 py-1',
+  md: 'text-base px-3 py-2',
+  lg: 'text-lg px-4 py-3',
+};
+```
+
+## Testing Requirements
+
+### Unit Tests
+
+All components must have unit tests covering:
+
+1. **Rendering** - Component renders without errors
+2. **Props** - All props work as expected
+3. **Accessibility** - ARIA attributes and keyboard navigation
+4. **User Interactions** - Click, focus, keyboard events
+
+```tsx
+// button.test.tsx
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Button } from './button';
+
+describe('Button', () => {
+  it('renders with children', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole('button')).toHaveTextContent('Click me');
+  });
+
+  it('calls onClick when clicked', async () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick}>Click</Button>);
+
+    await userEvent.click(screen.getByRole('button'));
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('is keyboard accessible', async () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick}>Click</Button>);
+
+    const button = screen.getByRole('button');
+    button.focus();
+    await userEvent.keyboard('{Enter}');
+    expect(handleClick).toHaveBeenCalled();
+  });
+});
+```
+
+### Coverage Requirements
+
+- **Minimum**: 80% code coverage
+- **Target**: 90%+ for new components
+- Run tests: `pnpm test`
+- Check coverage: `pnpm test:coverage`
+
+## Performance Considerations
+
+### Bundle Size
+
+- Keep components focused and minimal
+- Avoid heavy dependencies
+- Use dynamic imports for large features
+- Check bundle impact: `pnpm size`
+
+### Runtime Performance
+
+```tsx
+// ✅ Good - Memoize expensive computations
+const sortedItems = useMemo(
+  () => items.sort((a, b) => a.id - b.id),
+  [items]
+);
+
+// ✅ Good - Memoize callbacks passed to children
+const handleChange = useCallback(
+  (value: string) => {
+    onChange(value);
+  },
+  [onChange]
+);
+
+// ❌ Bad - Creating new objects in render
+<Component style={{ margin: 10 }} /> // Creates new object every render
+```
+
+### Accessibility Requirements
+
+All components must meet WCAG 2.1 Level AA standards:
+
+#### Keyboard Navigation
+
+```tsx
+// Ensure focusable elements are keyboard accessible
+<button
+  onKeyDown={(e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleClick();
+    }
+  }}
+>
+  Click me
+</button>
+```
+
+#### ARIA Attributes
+
+```tsx
+// Provide meaningful labels and descriptions
+<button
+  aria-label="Close dialog"
+  aria-pressed={isActive}
+>
+  <Icon name="close" aria-hidden="true" />
+</button>
+```
+
+#### Color Contrast
+
+- Text: Minimum 4.5:1 ratio
+- Large text: Minimum 3:1 ratio
+- Use design tokens for consistent, accessible colors
+
+## Code Style
+
+### Naming Conventions
+
+```tsx
+// Components: PascalCase
+export const ButtonGroup = () => {};
+
+// Props interfaces: ComponentNameProps
+export interface ButtonGroupProps {}
+
+// Hooks: camelCase with 'use' prefix
+export const useButtonState = () => {};
+
+// Utilities: camelCase
+export const formatDate = () => {};
+
+// Constants: UPPER_SNAKE_CASE
+const MAX_ITEMS = 10;
+```
+
+### Import Order
+
+```tsx
+// 1. React and external libraries
+import * as React from 'react';
+import { cva } from 'class-variance-authority';
+
+// 2. Internal utilities
+import { cn } from '@/lib/utils';
+
+// 3. Types
+import type { ButtonProps } from './types';
+
+// 4. Relative imports
+import { Icon } from '../icon';
+```
+
+### Comments
+
+```tsx
+// Use JSDoc for public APIs
+/**
+ * A flexible button component with multiple variants and sizes.
+ *
+ * @example
+ * ```tsx
+ * <Button variant="primary" size="lg">
+ *   Click me
+ * </Button>
+ * ```
+ */
+export const Button = () => {};
+
+// Use inline comments sparingly, only for complex logic
+// Complex regex explanation
+const pattern = /^[a-z0-9]+$/i; // Alphanumeric only
+```
+
+## Git Commit Messages
+
+Follow conventional commit format:
+
+```
+type(scope): description
+
+[optional body]
+
+[optional footer]
+```
+
+### Types
+
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, etc.)
+- `refactor`: Code refactoring
+- `test`: Adding or updating tests
+- `chore`: Maintenance tasks
+
+### Examples
+
+```bash
+feat(button): add loading state prop
+
+Add isLoading prop to Button component that displays a spinner
+and disables interaction.
+
+Closes #123
+```
+
+```bash
+fix(input): correct focus ring color in dark mode
+
+The focus ring was barely visible in dark mode. Updated to use
+proper semantic token.
+```
+
+## Code Review Checklist
+
+Before submitting a PR, ensure:
+
+- [ ] TypeScript types are complete and accurate
+- [ ] Tests are written and passing
+- [ ] Component is accessible (keyboard, ARIA, contrast)
+- [ ] Documentation is updated (component props, examples)
+- [ ] Storybook stories demonstrate all variants
+- [ ] Code follows style guidelines
+- [ ] No console errors or warnings
+- [ ] Bundle size impact is acceptable
+
+## Questions?
+
+- Review existing components for examples
+- Ask in PR comments for clarification
+- Check the [Workflows](/docs/contributing-workflows--docs) guide for process details

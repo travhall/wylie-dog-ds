@@ -10,3 +10,10 @@
 
 /* Import design tokens */
 @import "@wyliedog/tokens/tokens.css";
+
+/*
+ * Source discovery for Storybook stories
+ * Tailwind v4 requires explicit source paths to scan for utility classes
+ */
+@source "../../stories/**/*.tsx";
+@source "../../stories/**/*.mdx";

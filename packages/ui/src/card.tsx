@@ -74,3 +74,38 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
   )
 );
 CardContent.displayName = "CardContent";
+
+export interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+
+export const CardDescription = React.forwardRef<
+  HTMLParagraphElement,
+  CardDescriptionProps
+>(({ className, ...props }, ref) => (
+  <p
+    ref={ref}
+    className={cn(
+      "text-(length:--font-size-card-header-description-font-size)",
+      "text-(--color-card-header-description-color)",
+      className
+    )}
+    {...props}
+  />
+));
+CardDescription.displayName = "CardDescription";
+
+export interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(
+        "flex items-center",
+        "pt-(--spacing-card-footer-padding-top)",
+        className
+      )}
+      {...props}
+    />
+  )
+);
+CardFooter.displayName = "CardFooter";

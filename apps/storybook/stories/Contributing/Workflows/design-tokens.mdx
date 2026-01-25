@@ -1,0 +1,520 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Contributing/Workflows/Design Token Workflow" />
+
+# Design Token Workflow
+
+A comprehensive guide for updating and synchronizing design tokens between Figma and code.
+
+## Overview
+
+The Wylie Dog Design System uses a **token-based design approach** where visual properties (colors, spacing, typography, etc.) are defined once in Figma and synchronized to code. This ensures consistency and makes theme updates efficient.
+
+### Token Flow
+
+```
+Figma Variables → Tokens Studio Plugin → JSON Export → Token Transformer → CSS Variables → React Components
+```
+
+## Token Architecture
+
+### Token Hierarchy
+
+Tokens are organized in three tiers:
+
+**1. Primitive Tokens** - Raw values, context-free
+```json
+{
+  "primitive": {
+    "blue": {
+      "50": { "value": "oklch(0.95 0.02 250)" }
+    }
+  }
+}
+```
+
+**2. Semantic Tokens** - Purpose-driven, reference primitives
+```json
+{
+  "semantic": {
+    "color": {
+      "background": {
+        "primary": { "value": "{primitive.blue.50}" }
+      }
+    }
+  }
+}
+```
+
+**3. Component Tokens** - Component-specific, reference semantic
+```json
+{
+  "components": {
+    "button": {
+      "primary": {
+        "background": { "value": "{semantic.color.background.primary}" }
+      }
+    }
+  }
+}
+```
+
+### Token Categories
+
+The system includes tokens for:
+
+- **Colors** - Brand, semantic, state colors
+- **Typography** - Font families, sizes, weights, line heights
+- **Spacing** - Margins, padding, gaps (4px/8px scale)
+- **Radius** - Border radius values
+- **Elevation** - Box shadows and z-index
+- **Motion** - Animation durations and easings
+
+## Figma Setup
+
+### 1. Install Tokens Studio Plugin
+
+1. Open Figma
+2. Go to Plugins → Browse plugins
+3. Search for "Tokens Studio for Figma"
+4. Install and run the plugin
+
+### 2. Connect to Token Repository
+
+Configure the plugin to sync with your token files:
+
+1. Open Tokens Studio plugin
+2. Click Settings (gear icon)
+3. Choose "GitHub" as sync provider
+4. Authenticate with GitHub
+5. Select repository: `wylie-dog-ds`
+6. Set branch: `main`
+7. Set file path: `apps/figma-plugin/src/plugin/data/`
+
+### 3. Load Existing Tokens
+
+```
+Tokens Studio UI:
+1. Click "Sync" tab
+2. Pull from GitHub
+3. Verify tokens loaded in "Tokens" tab
+4. Check collections: primitive, semantic, components
+```
+
+## Making Token Updates
+
+### Scenario 1: Update an Existing Token
+
+**Example: Change primary brand color**
+
+1. **In Figma:**
+   - Open Tokens Studio plugin
+   - Navigate to `primitive` collection
+   - Find `blue.600` (or relevant primitive)
+   - Update the value: `oklch(0.55 0.20 250)`
+   - Save changes
+
+2. **Apply to Components:**
+   - The semantic token `color.primary` references `blue.600`
+   - Components using `color.primary` update automatically
+   - Review affected components in Figma
+
+3. **Export Tokens:**
+   - In Tokens Studio, click "Export" tab
+   - Select all collections
+   - Copy JSON output
+   - Save to: `apps/figma-plugin/src/plugin/data/tokens.json`
+
+4. **Transform to CSS:**
+   ```bash
+   cd apps/figma-plugin
+   pnpm run build:tokens
+   ```
+
+   This runs the token transformer which:
+   - Reads `tokens.json`
+   - Resolves token references
+   - Generates CSS variables
+   - Outputs to `packages/tokens/src/`
+
+5. **Verify in Code:**
+   ```bash
+   # Start Storybook to preview changes
+   cd apps/storybook
+   pnpm dev
+   ```
+
+   Check that components reflect the new color.
+
+6. **Commit Changes:**
+   ```bash
+   git add apps/figma-plugin/src/plugin/data/tokens.json
+   git add packages/tokens/src/
+   git commit -m "feat(tokens): update primary brand color"
+   ```
+
+### Scenario 2: Add a New Token
+
+**Example: Add a new spacing value**
+
+1. **In Figma:**
+   - Open Tokens Studio plugin
+   - Navigate to `primitive` collection
+   - Add new token: `spacing.xl` = `48px`
+   - Save changes
+
+2. **Create Semantic Reference (if needed):**
+   - Navigate to `semantic` collection
+   - Add: `spacing.section.gap` = `{primitive.spacing.xl}`
+
+3. **Document Usage:**
+   - Add description in Tokens Studio
+   - Note intended use case: "Gap between major page sections"
+
+4. **Export and Transform:**
+   ```bash
+   # Export from Tokens Studio to tokens.json
+   # Then transform:
+   cd apps/figma-plugin
+   pnpm run build:tokens
+   ```
+
+5. **Update Documentation:**
+   - Add to spacing story in Storybook
+   - Document when to use the new spacing value
+
+6. **Use in Components:**
+   ```tsx
+   <div className="space-y-spacing-section-gap">
+     {/* Content */}
+   </div>
+   ```
+
+### Scenario 3: Add a Theme (Light/Dark Mode)
+
+**Example: Add dark mode values**
+
+1. **In Figma:**
+   - Tokens Studio supports mode-specific values
+   - For each semantic token, add mode variants:
+     ```json
+     {
+       "color": {
+         "background": {
+           "primary": {
+             "value": "{primitive.white}",
+             "$extensions": {
+               "mode": {
+                 "dark": "{primitive.gray.900}"
+               }
+             }
+           }
+         }
+       }
+     }
+     ```
+
+2. **Export with Modes:**
+   - Tokens Studio exports mode-specific values
+   - Transformer generates CSS for each mode:
+     ```css
+     :root {
+       --color-background-primary: oklch(1 0 0); /* light */
+     }
+
+     :root.dark {
+       --color-background-primary: oklch(0.2 0 0); /* dark */
+     }
+     ```
+
+3. **Test in Storybook:**
+   - Toggle dark mode in Storybook toolbar
+   - Verify components adapt correctly
+
+## Token Naming Conventions
+
+### Follow the Pattern
+
+```
+{category}.{property}.{variant}.{modifier}
+```
+
+### Examples
+
+**Colors:**
+```
+color.background.primary.default
+color.background.primary.hover
+color.text.secondary.default
+color.border.input.focus
+```
+
+**Typography:**
+```
+typography.heading.xl.fontFamily
+typography.heading.xl.fontSize
+typography.heading.xl.lineHeight
+typography.body.md.fontWeight
+```
+
+**Spacing:**
+```
+spacing.component.padding.sm
+spacing.component.gap.md
+spacing.layout.section.lg
+```
+
+### Naming Best Practices
+
+✅ **Do:**
+- Use semantic names: `color.background.primary` (not `color.blue.500`)
+- Be specific: `spacing.button.padding.horizontal` (not `spacing.4`)
+- Follow hierarchy: primitive → semantic → component
+- Use consistent terminology
+
+❌ **Don't:**
+- Use implementation details: `shadow-drop-15px` (use `elevation.card`)
+- Skip semantic layer: components shouldn't reference primitives directly
+- Use vague names: `spacing.big` (use `spacing.layout.section.lg`)
+
+## Token Transformer Configuration
+
+The token transformer converts JSON to CSS variables and TypeScript types.
+
+### Configuration File
+
+```javascript
+// apps/figma-plugin/token-transformer.config.js
+module.exports = {
+  source: ['src/plugin/data/tokens.json'],
+  platforms: {
+    css: {
+      transformGroup: 'css',
+      buildPath: '../../packages/tokens/src/',
+      files: [
+        {
+          destination: 'variables.css',
+          format: 'css/variables',
+        },
+      ],
+    },
+    ts: {
+      transformGroup: 'js',
+      buildPath: '../../packages/tokens/src/',
+      files: [
+        {
+          destination: 'tokens.ts',
+          format: 'javascript/es6',
+        },
+      ],
+    },
+  },
+};
+```
+
+### Output Files
+
+After running `pnpm run build:tokens`, you'll get:
+
+**1. CSS Variables** (`packages/tokens/src/variables.css`)
+```css
+:root {
+  --color-background-primary: oklch(0.98 0.01 250);
+  --spacing-component-padding-sm: 8px;
+  --typography-body-md-font-size: 16px;
+}
+```
+
+**2. TypeScript Tokens** (`packages/tokens/src/tokens.ts`)
+```typescript
+export const tokens = {
+  color: {
+    background: {
+      primary: 'var(--color-background-primary)',
+    },
+  },
+  spacing: {
+    component: {
+      padding: {
+        sm: 'var(--spacing-component-padding-sm)',
+      },
+    },
+  },
+};
+```
+
+## Validation and Testing
+
+### 1. Token Validation
+
+Before committing token changes:
+
+```bash
+# Validate token structure
+pnpm run validate:tokens
+
+# Check for broken references
+pnpm run check:token-refs
+```
+
+### 2. Visual Regression Testing
+
+Use Chromatic for visual diffs:
+
+```bash
+# Run visual regression tests
+pnpm run chromatic
+
+# Review changes in Chromatic UI
+# Approve or reject changes
+```
+
+### 3. Accessibility Testing
+
+Verify color contrast:
+
+```bash
+# Check all token combinations
+pnpm run test:contrast
+
+# Expected: All combinations pass WCAG AA (4.5:1 for text)
+```
+
+### 4. Manual Testing Checklist
+
+- [ ] All components render correctly in light mode
+- [ ] All components render correctly in dark mode
+- [ ] No broken token references (check console for CSS variable errors)
+- [ ] Typography scales consistently
+- [ ] Spacing follows the 4px/8px grid
+- [ ] Colors meet contrast requirements
+- [ ] Animations use consistent timing
+
+## Common Issues and Solutions
+
+### Issue: Token Not Updating in Code
+
+**Problem:** Changed token in Figma but component still shows old value.
+
+**Solution:**
+1. Verify token was exported from Tokens Studio
+2. Run `pnpm run build:tokens` to regenerate CSS
+3. Clear browser cache or hard refresh (Cmd/Ctrl + Shift + R)
+4. Check that CSS variables file is imported in your app
+
+### Issue: Broken Token Reference
+
+**Problem:** Token shows `undefined` or `[object Object]` in rendered output.
+
+**Solution:**
+1. Check that referenced token exists:
+   ```json
+   // ❌ Bad - typo in reference
+   "value": "{color.primry.default}"
+
+   // ✅ Good
+   "value": "{color.primary.default}"
+   ```
+2. Ensure token hierarchy is correct (semantic → primitive)
+3. Re-run token transformer
+
+### Issue: Dark Mode Not Working
+
+**Problem:** Dark mode tokens not applying.
+
+**Solution:**
+1. Verify mode-specific values are in token JSON
+2. Check that `.dark` class is applied to root element
+3. Confirm CSS output includes `:root.dark` selectors
+4. Test with browser DevTools to inspect computed styles
+
+### Issue: Token Naming Conflicts
+
+**Problem:** Multiple tokens with similar names causing confusion.
+
+**Solution:**
+1. Follow the naming convention strictly
+2. Use the full hierarchical path in references
+3. Add descriptions in Tokens Studio for clarity
+4. Document token purpose in Storybook
+
+## Syncing Figma and Code
+
+### Regular Sync Workflow
+
+**Weekly/Bi-weekly:**
+1. Designers make updates in Figma
+2. Export tokens from Tokens Studio
+3. Developer transforms tokens to CSS
+4. Run visual regression tests
+5. Review and approve changes
+6. Merge to main and publish
+
+### After Major Design Changes
+
+After significant design updates:
+
+1. **Audit Token Usage:**
+   ```bash
+   # Find unused tokens
+   pnpm run find:unused-tokens
+   ```
+
+2. **Update Component Stories:**
+   - Verify all Storybook stories reflect new tokens
+   - Update documentation for changed tokens
+
+3. **Deprecation Process:**
+   - Mark old tokens as deprecated in Tokens Studio
+   - Add migration guide in documentation
+   - Give teams 2-4 weeks to migrate
+   - Remove deprecated tokens in next major version
+
+## Best Practices
+
+### 1. Always Use Tokens
+
+```tsx
+// ❌ Bad - Hardcoded values
+<div style={{ color: '#3B82F6', padding: '16px' }}>
+
+// ✅ Good - Design tokens
+<div className="text-color-primary p-spacing-component-padding-md">
+```
+
+### 2. Document Token Decisions
+
+When adding or changing tokens, document why:
+
+```json
+{
+  "color": {
+    "accent": {
+      "cta": {
+        "value": "{primitive.orange.600}",
+        "description": "Primary CTA color. Changed from blue to orange to increase conversion (A/B test winner, 2024-01-15)"
+      }
+    }
+  }
+}
+```
+
+### 3. Test Across Themes
+
+Always test token changes in:
+- Light mode
+- Dark mode
+- High contrast mode (if supported)
+
+### 4. Coordinate with Teams
+
+Before major token updates:
+- Notify all teams using the design system
+- Provide migration timeline
+- Offer support for complex migrations
+
+## Questions?
+
+- Review [Design Standards](/docs/contributing-guidelines-design-standards--docs) for token usage
+- Check [Theming Guide](/docs/resources-theming-overview--docs) for theme customization
+- See [Figma UI Kit](/docs/resources-design-figma-ui-kit--docs) for design resources

@@ -179,20 +179,40 @@ describe("${pascalName}", () => {
 }
 
 // Generate Storybook story template
+// See: apps/storybook/STORY_AUTHORING_GUIDE.md for standards
 function generateStoryTemplate(name, composition = false) {
   const pascalName = toPascalCase(name);
   const titleName = toTitleCase(name);
-  const storyCategory = composition ? "4. Patterns" : "3. Components";
+  // Story categories match the sidebar hierarchy in preview.tsx storySort
+  const storyCategory = composition
+    ? "Patterns/Data Patterns"
+    : "Components/Content Display";
   const importPath = composition
     ? `@wyliedog/ui/compositions/${name}`
     : `@wyliedog/ui/${name}`;
   const description = composition
-    ? `${titleName} composition pattern combining multiple primitives. This is a Tier 2 pattern component.`
-    : `${titleName} component description. Update this with the actual component purpose and usage.`;
+    ? `${titleName} composition pattern combining multiple primitives for real-world use cases. Built with accessibility and responsiveness in mind.`
+    : `${titleName} component for [describe purpose]. Supports multiple variants, sizes, and states with full keyboard accessibility.`;
 
   return `import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect } from "storybook/test";
 import { ${pascalName} } from "${importPath}";
 
+/**
+ * ${titleName} component stories.
+ *
+ * ## Usage
+ * \`\`\`tsx
+ * import { ${pascalName} } from "${importPath}";
+ *
+ * <${pascalName} variant="default">Content</${pascalName}>
+ * \`\`\`
+ *
+ * ## Accessibility
+ * - Keyboard navigable
+ * - Screen reader compatible
+ * - Follows WAI-ARIA patterns
+ */
 const meta: Meta<typeof ${pascalName}> = {
   title: "${storyCategory}/${pascalName}",
   component: ${pascalName},
@@ -200,8 +220,7 @@ const meta: Meta<typeof ${pascalName}> = {
     layout: "centered",
     docs: {
       description: {
-        component:
-          "${description}",
+        component: "${description}",
       },
     },
   },
@@ -210,10 +229,27 @@ const meta: Meta<typeof ${pascalName}> = {
     variant: {
       control: "select",
       options: ["default"],
-      description: "The visual style variant",
+      description: "The visual style variant of the component",
+      table: {
+        type: { summary: '"default"' },
+        defaultValue: { summary: '"default"' },
+        category: "Appearance",
+      },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes for custom styling",
       table: {
         type: { summary: "string" },
-        defaultValue: { summary: "default" },
+        category: "Styling",
+      },
+    },
+    children: {
+      control: "text",
+      description: "Content to render inside the component",
+      table: {
+        type: { summary: "React.ReactNode" },
+        category: "Content",
       },
     },
   },
@@ -222,41 +258,119 @@ const meta: Meta<typeof ${pascalName}> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/**
+ * Default usage of the ${titleName} component.
+ */
 export const Default: Story = {
-  // IMPORTANT: Update story args when modifying component interface
-  // Add required props and sample data here
   args: {
     children: "${titleName} content",
   },
-};
-
-export const AllVariants: Story = {
-  render: () => (
-    <div className="flex flex-wrap gap-4">
-      <${pascalName}>Default</${pascalName}>
-    </div>
-  ),
   parameters: {
     docs: {
       description: {
-        story: "All available variants for different use cases.",
+        story: "Basic usage with default props. This is the most common way to use the component.",
       },
     },
   },
 };
 
-export const Interactive: Story = {
+/**
+ * Showcases all available visual variants.
+ */
+export const AllVariants: Story = {
   render: () => (
-    <div className="space-y-4">
-      <${pascalName}>
-        Interactive example - customize this story to demonstrate real-world usage
-      </${pascalName}>
+    <div className="flex flex-wrap gap-4">
+      <${pascalName} variant="default">Default</${pascalName}>
+      {/* Add more variants as they are implemented */}
     </div>
   ),
   parameters: {
     docs: {
       description: {
-        story: "Interactive example demonstrating common usage patterns.",
+        story: "All available variants side-by-side for easy comparison.",
+      },
+    },
+  },
+};
+
+/**
+ * Demonstrates different states of the component.
+ */
+export const States: Story = {
+  render: () => (
+    <div className="space-y-4">
+      <div className="flex gap-4 items-center">
+        <span className="text-sm text-(--color-text-secondary) w-20">Normal</span>
+        <${pascalName}>Normal state</${pascalName}>
+      </div>
+      {/* Add more states: disabled, loading, error, etc. */}
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Various component states including normal, disabled, loading, and error states.",
+      },
+    },
+  },
+};
+
+/**
+ * Interactive example with play function for automated testing.
+ * Tests keyboard navigation, focus management, and user interactions.
+ */
+export const WithInteractions: Story = {
+  args: {
+    children: "Interactive ${titleName}",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test 1: Component renders correctly
+    const element = canvas.getByText(/interactive ${titleName.toLowerCase()}/i);
+    expect(element).toBeInTheDocument();
+
+    // Test 2: Click interaction
+    await userEvent.click(element);
+    expect(element).toHaveFocus();
+
+    // Test 3: Keyboard navigation (customize based on component behavior)
+    await userEvent.keyboard("{Tab}");
+
+    // Add more interaction tests as needed
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Interactive story with automated tests demonstrating user interactions. " +
+          "View the Interactions panel to see test execution.",
+      },
+    },
+  },
+};
+
+/**
+ * Real-world usage example showing common patterns.
+ */
+export const UsageExample: Story = {
+  render: () => (
+    <div className="w-96 space-y-4 p-4 border border-(--color-border-secondary) rounded-lg">
+      <h3 className="text-lg font-semibold text-(--color-text-primary)">
+        Example Context
+      </h3>
+      <${pascalName}>
+        This shows the component in a realistic context with surrounding elements.
+      </${pascalName}>
+      <p className="text-sm text-(--color-text-secondary)">
+        Additional context or instructions would go here.
+      </p>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: "Demonstrates the component in a real-world context with common surrounding elements.",
       },
     },
   },

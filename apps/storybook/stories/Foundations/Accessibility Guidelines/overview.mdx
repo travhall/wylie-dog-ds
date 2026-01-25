@@ -1,0 +1,438 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Accessibility Guidelines/Overview" />
+
+# Accessibility Guide
+
+Building accessible interfaces is a core principle of the Wylie Dog Design System. This guide helps you create interfaces that work for everyone.
+
+## 🎯 Our Commitment
+
+All components in this design system are built with accessibility as a priority:
+
+- ✅ **WCAG 2.1 AA compliant** color contrasts
+- ✅ **Radix UI primitives** with comprehensive ARIA support
+- ✅ **Full keyboard navigation** for all interactive elements
+- ✅ **Screen reader compatible** with semantic HTML
+- ✅ **Tested with axe-core** (95%+ comprehensive coverage)
+
+---
+
+## ⌨️ Keyboard Navigation
+
+### Essential Keyboard Patterns
+
+All interactive components support keyboard navigation:
+
+| Key | Action |
+|-----|--------|
+| **Tab** | Move focus forward |
+| **Shift + Tab** | Move focus backward |
+| **Enter** | Activate buttons, links, and submit forms |
+| **Space** | Toggle checkboxes, switches, and buttons |
+| **Arrow Keys** | Navigate menus, tabs, radio groups, and sliders |
+| **Escape** | Close dialogs, popovers, and menus |
+| **Home/End** | Navigate to first/last item in lists |
+
+### Example: Keyboard-Accessible Form
+
+```tsx
+import { Button, Input, Label, Checkbox } from '@wyliedog/ui';
+
+export function AccessibleForm() {
+  return (
+    <form onSubmit={(e) => e.preventDefault()}>
+      {/* Properly labeled input */}
+      <div className="space-y-2">
+        <Label htmlFor="email">Email Address</Label>
+        <Input
+          id="email"
+          type="email"
+          aria-describedby="email-help"
+          aria-required="true"
+        />
+        <p id="email-help" className="text-sm text-neutral-600">
+          We'll never share your email
+        </p>
+      </div>
+
+      {/* Accessible checkbox */}
+      <div className="flex items-center gap-2">
+        <Checkbox id="terms" required />
+        <Label htmlFor="terms">
+          I agree to the terms and conditions
+        </Label>
+      </div>
+
+      {/* Clear submit button */}
+      <Button type="submit">
+        Create Account
+      </Button>
+    </form>
+  );
+}
+```
+
+---
+
+## 🏷️ ARIA Labels & Descriptions
+
+### When to Use ARIA
+
+**Use `aria-label`** when there's no visible text:
+```tsx
+<Button aria-label="Close dialog">
+  <XIcon className="h-4 w-4" />
+</Button>
+```
+
+**Use `aria-labelledby`** to reference existing text:
+```tsx
+<div role="region" aria-labelledby="section-title">
+  <h2 id="section-title">Account Settings</h2>
+  {/* Content */}
+</div>
+```
+
+**Use `aria-describedby`** for additional context:
+```tsx
+<Input
+  id="password"
+  type="password"
+  aria-describedby="password-requirements"
+/>
+<p id="password-requirements" className="text-sm">
+  Must be at least 8 characters with a number
+</p>
+```
+
+### Alert Patterns
+
+Use appropriate alert types for different urgency levels:
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from '@wyliedog/ui/alert';
+
+// Error - High urgency (aria-live="assertive")
+<Alert variant="destructive">
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>
+    Your payment could not be processed
+  </AlertDescription>
+</Alert>
+
+// Warning - Medium urgency (aria-live="polite")
+<Alert variant="warning">
+  <AlertTitle>Warning</AlertTitle>
+  <AlertDescription>
+    Your session will expire in 5 minutes
+  </AlertDescription>
+</Alert>
+
+// Success - Low urgency (aria-live="polite")
+<Alert variant="success">
+  <AlertTitle>Success</AlertTitle>
+  <AlertDescription>
+    Your changes have been saved
+  </AlertDescription>
+</Alert>
+```
+
+---
+
+## 🎨 Color & Contrast
+
+### WCAG AA Requirements
+
+- **Normal text (< 18pt)**: Minimum 4.5:1 contrast ratio
+- **Large text (≥ 18pt)**: Minimum 3:1 contrast ratio
+- **UI components**: Minimum 3:1 contrast ratio
+
+### Our Color System
+
+All design tokens meet WCAG AA standards:
+
+```tsx
+// ✅ Good - High contrast
+<div className="bg-primary-500 text-white">
+  Accessible text
+</div>
+
+// ✅ Good - Semantic colors with proper contrast
+<Alert variant="destructive">
+  Error message with proper contrast
+</Alert>
+
+// ❌ Bad - Insufficient contrast
+<div className="bg-neutral-200 text-neutral-300">
+  Hard to read
+</div>
+```
+
+### Don't Rely on Color Alone
+
+Always use multiple indicators:
+
+```tsx
+// ✅ Good - Icon + color + text
+<Alert variant="destructive">
+  <AlertCircleIcon className="h-4 w-4" />
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>Something went wrong</AlertDescription>
+</Alert>
+
+// ❌ Bad - Color only
+<div className="text-red-500">Error</div>
+```
+
+---
+
+## 📱 Focus Management
+
+### Visible Focus Indicators
+
+All components have clear focus states:
+
+```tsx
+// Focus rings are built-in
+<Button>
+  Focused button has visible ring
+</Button>
+
+// Custom focus styles
+<Button className="focus:ring-4 focus:ring-primary-500">
+  Enhanced focus ring
+</Button>
+```
+
+### Focus Trapping
+
+Dialogs automatically trap focus:
+
+```tsx
+import { Dialog, DialogContent, DialogTitle } from '@wyliedog/ui/dialog';
+
+<Dialog open={isOpen} onOpenChange={setIsOpen}>
+  <DialogContent>
+    <DialogTitle>Confirm Action</DialogTitle>
+    {/* Focus stays within dialog */}
+    <Button onClick={() => setIsOpen(false)}>
+      Cancel
+    </Button>
+    <Button onClick={handleConfirm}>
+      Confirm
+    </Button>
+  </DialogContent>
+</Dialog>
+```
+
+### Skip Links
+
+Add skip links for keyboard users:
+
+```tsx
+export function Layout({ children }) {
+  return (
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4"
+      >
+        Skip to main content
+      </a>
+      <nav>{/* Navigation */}</nav>
+      <main id="main-content">{children}</main>
+    </>
+  );
+}
+```
+
+---
+
+## 📖 Semantic HTML
+
+### Use the Right Elements
+
+```tsx
+// ✅ Good - Semantic markup
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+</nav>
+
+// ❌ Bad - Divs for everything
+<div>
+  <div onClick={goHome}>Home</div>
+  <div onClick={goAbout}>About</div>
+</div>
+```
+
+### Headings Hierarchy
+
+Maintain proper heading levels:
+
+```tsx
+// ✅ Good - Logical hierarchy
+<article>
+  <h1>Page Title</h1>
+  <section>
+    <h2>Section Title</h2>
+    <h3>Subsection Title</h3>
+  </section>
+</article>
+
+// ❌ Bad - Skipping levels
+<article>
+  <h1>Page Title</h1>
+  <h4>Section Title</h4> {/* Skipped h2, h3 */}
+</article>
+```
+
+---
+
+## 🧪 Testing for Accessibility
+
+### Automated Testing
+
+Use axe-core in your tests:
+
+```tsx
+import { render } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
+
+test('button is accessible', async () => {
+  const { container } = render(<Button>Click me</Button>);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+```
+
+### Manual Testing Checklist
+
+- [ ] **Keyboard only**: Can you complete all tasks using only keyboard?
+- [ ] **Screen reader**: Does it make sense with a screen reader?
+- [ ] **Zoom**: Is content readable at 200% zoom?
+- [ ] **Color blindness**: Use color-blind simulators
+- [ ] **Motion**: Does `prefers-reduced-motion` work?
+
+### Tools
+
+- **axe DevTools**: Browser extension for accessibility audits
+- **NVDA/JAWS**: Screen readers for Windows
+- **VoiceOver**: Screen reader for macOS
+- **Keyboard**: Unplug your mouse!
+
+---
+
+## 📋 Common Patterns
+
+### Forms
+
+```tsx
+// Always pair labels with inputs
+<div>
+  <Label htmlFor="username">Username</Label>
+  <Input
+    id="username"
+    aria-invalid={hasError}
+    aria-describedby={hasError ? "username-error" : undefined}
+  />
+  {hasError && (
+    <p id="username-error" className="text-error-700">
+      Username is required
+    </p>
+  )}
+</div>
+```
+
+### Loading States
+
+```tsx
+// Announce loading state to screen readers
+<div role="status" aria-live="polite">
+  {isLoading ? (
+    <>
+      <Skeleton />
+      <span className="sr-only">Loading content...</span>
+    </>
+  ) : (
+    <Content />
+  )}
+</div>
+```
+
+### Modals/Dialogs
+
+```tsx
+// Dialogs handle focus automatically
+<AlertDialog>
+  <AlertDialogTrigger>Delete Account</AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+    <AlertDialogDescription>
+      This action cannot be undone.
+    </AlertDialogDescription>
+    <AlertDialogAction>Delete</AlertDialogAction>
+    <AlertDialogCancel>Cancel</AlertDialogCancel>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+---
+
+## 💡 Best Practices
+
+### Do's ✅
+
+- Use semantic HTML elements
+- Provide text alternatives for images
+- Ensure sufficient color contrast
+- Support keyboard navigation
+- Test with real assistive technology
+- Use ARIA when HTML isn't enough
+- Provide clear error messages
+- Maintain focus indicators
+
+### Don'ts ❌
+
+- Use `div` when `button` would work
+- Rely on color alone
+- Disable focus indicators
+- Create keyboard traps
+- Use ambiguous link text ("click here")
+- Skip heading levels
+- Use `aria-label` on non-interactive elements
+- Forget to test with keyboard only
+
+---
+
+## 📚 Resources
+
+### Learn More
+
+- [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG21/quickref/)
+- [Radix UI Accessibility](https://www.radix-ui.com/primitives/docs/overview/accessibility)
+- [The A11Y Project](https://www.a11yproject.com/)
+- [WebAIM](https://webaim.org/)
+
+### Testing Tools
+
+- [axe DevTools](https://www.deque.com/axe/devtools/)
+- [WAVE Browser Extension](https://wave.webaim.org/extension/)
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+
+---
+
+## 🎓 Next Steps
+
+1. **Review** component stories for accessibility examples
+2. **Test** your interfaces with keyboard only
+3. **Audit** with axe DevTools
+4. **Practice** with a screen reader
+5. **Iterate** based on user feedback
+
+Remember: **Accessibility is not a feature—it's a requirement**. Build it in from the start, not as an afterthought.

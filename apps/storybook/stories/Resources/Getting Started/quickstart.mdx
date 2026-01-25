@@ -1,0 +1,360 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Resources/Getting Started/Quickstart Tutorial" />
+
+# Quickstart Tutorial
+
+Build your first interface with the Wylie Dog Design System in under 10 minutes.
+
+## What We'll Build
+
+A user profile card featuring:
+- Avatar with fallback
+- Editable form inputs
+- Action buttons
+- Responsive layout
+- Dark mode support
+
+## Step 1: Create Your Component File
+
+Create a new file for your profile card:
+
+```tsx
+// components/ProfileCard.tsx
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@wyliedog/ui/card';
+import { Avatar, AvatarImage, AvatarFallback } from '@wyliedog/ui/avatar';
+import { Input } from '@wyliedog/ui/input';
+import { Label } from '@wyliedog/ui/label';
+import { Button } from '@wyliedog/ui/button';
+
+export function ProfileCard() {
+  return (
+    <Card className="w-full max-w-md">
+      <CardHeader>
+        <CardTitle>Edit Profile</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {/* We'll add content here */}
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        {/* We'll add buttons here */}
+      </CardFooter>
+    </Card>
+  );
+}
+```
+
+## Step 2: Add the Avatar Section
+
+Add a centered avatar at the top of the card:
+
+```tsx
+<CardContent className="space-y-4">
+  {/* Avatar Section */}
+  <div className="flex flex-col items-center space-y-2">
+    <Avatar className="h-24 w-24">
+      <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+      <AvatarFallback>WD</AvatarFallback>
+    </Avatar>
+    <Button variant="ghost" size="sm">
+      Change Photo
+    </Button>
+  </div>
+
+  {/* Form fields will go here */}
+</CardContent>
+```
+
+**What's Happening:**
+- `Avatar` component handles the image with automatic fallback
+- `AvatarFallback` shows initials if the image fails to load
+- Button uses `variant="ghost"` for a subtle appearance
+
+## Step 3: Add Form Fields
+
+Add input fields for name and email:
+
+```tsx
+{/* After the Avatar Section */}
+<div className="space-y-4">
+  <div className="space-y-2">
+    <Label htmlFor="name">Full Name</Label>
+    <Input
+      id="name"
+      placeholder="Enter your name"
+      defaultValue="John Doe"
+    />
+  </div>
+
+  <div className="space-y-2">
+    <Label htmlFor="email">Email</Label>
+    <Input
+      id="email"
+      type="email"
+      placeholder="john@example.com"
+      defaultValue="john@example.com"
+    />
+  </div>
+</div>
+```
+
+**What's Happening:**
+- `Label` is associated with `Input` via `htmlFor` and `id` for accessibility
+- `space-y-*` utilities create consistent vertical spacing
+- Input types are properly set for mobile keyboard optimization
+
+## Step 4: Add Action Buttons
+
+Complete the card with save and cancel buttons:
+
+```tsx
+<CardFooter className="flex justify-between">
+  <Button variant="outline">
+    Cancel
+  </Button>
+  <Button variant="primary">
+    Save Changes
+  </Button>
+</CardFooter>
+```
+
+**What's Happening:**
+- `justify-between` spreads buttons to card edges
+- Different button variants create visual hierarchy
+- Primary button draws attention to the main action
+
+## Step 5: Add Interactivity
+
+Make the component interactive with state:
+
+```tsx
+'use client'; // Add this if using Next.js App Router
+
+import { useState } from 'react';
+// ... other imports
+
+export function ProfileCard() {
+  const [name, setName] = useState('John Doe');
+  const [email, setEmail] = useState('john@example.com');
+
+  const handleSave = () => {
+    console.log('Saving:', { name, email });
+    // Add your save logic here
+  };
+
+  const handleCancel = () => {
+    setName('John Doe');
+    setEmail('john@example.com');
+  };
+
+  return (
+    <Card className="w-full max-w-md">
+      {/* ... */}
+      <Input
+        id="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      {/* ... */}
+      <Input
+        id="email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      {/* ... */}
+      <Button variant="outline" onClick={handleCancel}>
+        Cancel
+      </Button>
+      <Button variant="primary" onClick={handleSave}>
+        Save Changes
+      </Button>
+    </Card>
+  );
+}
+```
+
+## Complete Code
+
+Here's the full component:
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@wyliedog/ui/card';
+import { Avatar, AvatarImage, AvatarFallback } from '@wyliedog/ui/avatar';
+import { Input } from '@wyliedog/ui/input';
+import { Label } from '@wyliedog/ui/label';
+import { Button } from '@wyliedog/ui/button';
+
+export function ProfileCard() {
+  const [name, setName] = useState('John Doe');
+  const [email, setEmail] = useState('john@example.com');
+
+  const handleSave = () => {
+    console.log('Saving:', { name, email });
+  };
+
+  const handleCancel = () => {
+    setName('John Doe');
+    setEmail('john@example.com');
+  };
+
+  return (
+    <Card className="w-full max-w-md">
+      <CardHeader>
+        <CardTitle>Edit Profile</CardTitle>
+      </CardHeader>
+
+      <CardContent className="space-y-4">
+        <div className="flex flex-col items-center space-y-2">
+          <Avatar className="h-24 w-24">
+            <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+            <AvatarFallback>WD</AvatarFallback>
+          </Avatar>
+          <Button variant="ghost" size="sm">
+            Change Photo
+          </Button>
+        </div>
+
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">Full Name</Label>
+            <Input
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your name"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="john@example.com"
+            />
+          </div>
+        </div>
+      </CardContent>
+
+      <CardFooter className="flex justify-between">
+        <Button variant="outline" onClick={handleCancel}>
+          Cancel
+        </Button>
+        <Button variant="primary" onClick={handleSave}>
+          Save Changes
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+```
+
+## Using Your Component
+
+Import and use your new component:
+
+```tsx
+// app/page.tsx or src/App.tsx
+import { ProfileCard } from '@/components/ProfileCard';
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <ProfileCard />
+    </div>
+  );
+}
+```
+
+## Key Concepts Learned
+
+### 1. **Component Composition**
+Components like `Card` are split into semantic parts (`CardHeader`, `CardContent`, `CardFooter`) for flexible composition.
+
+### 2. **Accessibility by Default**
+- Labels are properly associated with inputs
+- Semantic HTML is used throughout
+- ARIA attributes are built-in where needed
+
+### 3. **Utility-First Styling**
+Tailwind utilities (`space-y-*`, `flex`, `justify-between`) provide precise control while maintaining consistency.
+
+### 4. **Variant System**
+Components use variants (`primary`, `outline`, `ghost`) for semantic styling without custom CSS.
+
+## Next Steps
+
+### Enhance Your Component
+
+**Add Validation:**
+```tsx
+import { Alert, AlertDescription } from '@wyliedog/ui/alert';
+
+const [error, setError] = useState('');
+
+const handleSave = () => {
+  if (!name.trim()) {
+    setError('Name is required');
+    return;
+  }
+  // Save logic...
+};
+```
+
+**Add Loading State:**
+```tsx
+const [isLoading, setIsLoading] = useState(false);
+
+<Button variant="primary" onClick={handleSave} disabled={isLoading}>
+  {isLoading ? 'Saving...' : 'Save Changes'}
+</Button>
+```
+
+**Add Toast Notifications:**
+```tsx
+import { useToast } from '@wyliedog/ui/use-toast';
+
+const { toast } = useToast();
+
+const handleSave = () => {
+  // Save logic...
+  toast({
+    title: 'Profile updated',
+    description: 'Your changes have been saved.',
+  });
+};
+```
+
+### Explore More
+
+- **[Form Patterns](/docs/patterns-form-patterns--docs)** - Complex form layouts and validation
+- **[Component Documentation](/docs/components-inputs-controls-button--docs)** - All available components
+- **[Theming Guide](/docs/resources-theming-overview--docs)** - Customize colors and styles
+- **[Common Patterns](/docs/patterns-overview--docs)** - Multi-component solutions
+
+## Common Patterns Reference
+
+```tsx
+// Center content on page
+<div className="min-h-screen flex items-center justify-center p-4">
+
+// Vertical spacing between elements
+<div className="space-y-4">
+
+// Horizontal button group
+<div className="flex gap-2">
+
+// Full-width on mobile, fixed width on desktop
+<div className="w-full max-w-md">
+
+// Responsive padding
+<div className="p-4 md:p-6 lg:p-8">
+```
+
+You're now ready to build complete interfaces with the Wylie Dog Design System!

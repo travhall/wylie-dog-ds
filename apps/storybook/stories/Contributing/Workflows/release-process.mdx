@@ -1,0 +1,672 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Contributing/Workflows/Release Process" />
+
+# Release Process
+
+Guidelines for versioning, releasing, and communicating changes to the Wylie Dog Design System.
+
+## Overview
+
+The design system follows **semantic versioning (semver)** and uses a structured release process to ensure stability and clear communication of changes.
+
+## Semantic Versioning
+
+### Version Format: `MAJOR.MINOR.PATCH`
+
+**MAJOR** (1.0.0 → 2.0.0)
+- Breaking changes that require user action
+- API changes that are not backwards-compatible
+- Removing deprecated features
+- Major design overhauls
+
+**MINOR** (1.0.0 → 1.1.0)
+- New features added in a backwards-compatible manner
+- New components
+- New props or variants
+- Deprecations (but not removals)
+
+**PATCH** (1.0.0 → 1.0.1)
+- Backwards-compatible bug fixes
+- Documentation updates
+- Performance improvements
+- Dependency updates (non-breaking)
+
+### Examples
+
+```bash
+# Breaking change - remove deprecated prop
+1.5.3 → 2.0.0
+
+# New component added
+1.5.3 → 1.6.0
+
+# Bug fix in Button component
+1.5.3 → 1.5.4
+```
+
+## Release Cycle
+
+### Regular Release Schedule
+
+**Minor Releases**: Every 2-4 weeks
+- New features and components
+- Non-breaking enhancements
+- Deprecation notices
+
+**Patch Releases**: As needed
+- Critical bug fixes
+- Security updates
+- Hot fixes
+
+**Major Releases**: Quarterly or bi-annually
+- Breaking changes
+- Major redesigns
+- API overhauls
+
+### Pre-Release Versions
+
+For testing major changes before release:
+
+```bash
+# Alpha - Internal testing
+2.0.0-alpha.1
+
+# Beta - Public testing
+2.0.0-beta.1
+
+# Release Candidate - Final testing
+2.0.0-rc.1
+
+# Stable release
+2.0.0
+```
+
+## Release Workflow
+
+### Step 1: Prepare the Release
+
+#### 1. Update CHANGELOG.md
+
+Follow [Keep a Changelog](https://keepachangelog.com/) format:
+
+```markdown
+# Changelog
+
+## [1.6.0] - 2025-02-15
+
+### Added
+- New Tooltip component with positioning options
+- Button: Added `loading` prop for async actions
+- Toast: Added `duration` prop for custom timing
+
+### Changed
+- Card: Improved shadow tokens for better elevation
+- Input: Enhanced focus ring visibility in dark mode
+
+### Deprecated
+- Button: `isLoading` prop (use `loading` instead)
+
+### Fixed
+- Dialog: Fixed escape key not closing modal
+- Select: Fixed dropdown positioning on scroll
+- Tabs: Fixed keyboard navigation skipping disabled tabs
+
+### Security
+- Updated dependencies to address CVE-2025-1234
+```
+
+#### 2. Update Package Versions
+
+Use pnpm to bump versions across the monorepo:
+
+```bash
+# For a minor release (new features)
+pnpm -r version minor
+
+# For a patch release (bug fixes)
+pnpm -r version patch
+
+# For a major release (breaking changes)
+pnpm -r version major
+
+# For a specific version
+pnpm -r version 2.0.0
+```
+
+This updates `package.json` in all packages:
+- `packages/ui/package.json`
+- `packages/tokens/package.json`
+- `packages/eslint-config/package.json`
+
+#### 3. Review Dependency Updates
+
+Check for outdated dependencies:
+
+```bash
+# Check for updates
+pnpm outdated
+
+# Update non-breaking dependencies
+pnpm update
+
+# Update to latest (including breaking)
+pnpm update --latest
+```
+
+#### 4. Run Pre-Release Checks
+
+Ensure everything works before releasing:
+
+```bash
+# Clean install
+rm -rf node_modules
+pnpm install
+
+# Build all packages
+pnpm build
+
+# Run all tests
+pnpm test
+
+# Type checking
+pnpm type-check
+
+# Linting
+pnpm lint
+
+# Verify Storybook builds
+cd apps/storybook
+pnpm build
+```
+
+### Step 2: Create Release Commit and Tag
+
+#### 1. Commit Changes
+
+```bash
+# Stage all changes
+git add .
+
+# Create release commit
+git commit -m "chore: release v1.6.0"
+```
+
+#### 2. Create Git Tag
+
+```bash
+# Create annotated tag
+git tag -a v1.6.0 -m "Release v1.6.0
+
+### Added
+- New Tooltip component
+- Button loading prop
+
+### Changed
+- Improved Card shadows
+
+### Fixed
+- Dialog escape key behavior
+"
+
+# Push commit and tag
+git push origin main
+git push origin v1.6.0
+```
+
+### Step 3: Publish to npm
+
+#### 1. Verify npm Authentication
+
+```bash
+# Login to npm (if not already logged in)
+npm login
+
+# Verify you're logged in
+npm whoami
+```
+
+#### 2. Publish Packages
+
+```bash
+# Publish all packages
+pnpm -r publish --access public
+
+# Or publish specific package
+cd packages/ui
+pnpm publish --access public
+```
+
+#### 3. Verify Publication
+
+```bash
+# Check that package is available
+npm view @wyliedog/ui version
+
+# Expected: 1.6.0
+```
+
+### Step 4: Create GitHub Release
+
+#### 1. Create Release on GitHub
+
+```bash
+# Using GitHub CLI
+gh release create v1.6.0 \
+  --title "v1.6.0" \
+  --notes-file CHANGELOG.md
+
+# Or manually via GitHub UI:
+# https://github.com/your-org/wylie-dog-ds/releases/new
+```
+
+#### 2. Release Notes Template
+
+```markdown
+# v1.6.0
+
+## 🎉 New Components
+
+### Tooltip
+A flexible tooltip component with customizable positioning and arrow indicators.
+
+```tsx
+<Tooltip content="Helpful information">
+  <Button>Hover me</Button>
+</Tooltip>
+```
+
+[View documentation →](/docs/components-overlays-popovers-tooltip--docs)
+
+## ✨ Enhancements
+
+### Button Loading State
+Added `loading` prop for displaying async actions:
+
+```tsx
+<Button loading={isSubmitting} onClick={handleSubmit}>
+  Submit
+</Button>
+```
+
+### Card Elevation Improvements
+Refined shadow tokens for more natural elevation levels.
+
+## 🐛 Bug Fixes
+
+- **Dialog**: Fixed escape key not closing modal (#234)
+- **Select**: Corrected dropdown positioning on scroll (#245)
+- **Tabs**: Fixed keyboard navigation with disabled tabs (#256)
+
+## 📦 Installation
+
+```bash
+pnpm add @wyliedog/ui@1.6.0
+```
+
+## 🔄 Migration Guide
+
+### Deprecated: Button `isLoading` prop
+
+Replace `isLoading` with `loading`:
+
+```tsx
+// Before
+<Button isLoading={loading}>Submit</Button>
+
+// After
+<Button loading={loading}>Submit</Button>
+```
+
+The old `isLoading` prop will be removed in v2.0.0.
+
+## 📚 Documentation
+
+Updated documentation is available in Storybook:
+https://storybook.wyliedog.com
+
+## 🙏 Contributors
+
+Thank you to all contributors who made this release possible!
+```
+
+### Step 5: Communicate the Release
+
+#### 1. Announce Internally
+
+Post in team channels:
+
+```markdown
+🎉 **Design System v1.6.0 Released!**
+
+New in this release:
+• Tooltip component
+• Button loading state
+• Card shadow improvements
+• Multiple bug fixes
+
+📖 Full changelog: [link]
+📚 Documentation: [link to Storybook]
+🚀 Migration guide: [link if needed]
+
+Questions? Reach out in #design-system
+```
+
+#### 2. Update Documentation Sites
+
+- Deploy updated Storybook to production
+- Update any external documentation
+- Refresh component library website
+
+#### 3. Email Stakeholders
+
+For major releases, send email to design system users:
+
+```
+Subject: Wylie Dog Design System v2.0.0 Released
+
+We're excited to announce version 2.0.0 of the Wylie Dog Design System!
+
+🎨 What's New
+- Redesigned color system with OKLCH color space
+- 15 new components
+- Improved accessibility across all components
+- Comprehensive dark mode support
+
+⚠️ Breaking Changes
+This is a major version with breaking changes. Please review the migration guide:
+[Link to migration guide]
+
+📅 Upgrade Timeline
+- February 15-28: Testing and migration
+- March 1: v1.x support ends
+
+📚 Resources
+- Full changelog: [link]
+- Migration guide: [link]
+- Documentation: [link]
+
+Need help? Join our office hours or reach out in #design-system.
+```
+
+## Hotfix Process
+
+For critical bugs requiring immediate release:
+
+### 1. Create Hotfix Branch
+
+```bash
+# From main branch
+git checkout main
+git pull origin main
+
+# Create hotfix branch
+git checkout -b hotfix/v1.5.4
+```
+
+### 2. Fix the Issue
+
+```bash
+# Make the fix
+# ... edit files ...
+
+# Test thoroughly
+pnpm test
+pnpm build
+
+# Commit
+git commit -m "fix: critical bug in Dialog component"
+```
+
+### 3. Expedited Release
+
+```bash
+# Bump patch version
+pnpm -r version patch
+
+# Update CHANGELOG
+# ... add hotfix entry ...
+
+# Commit, tag, and push
+git commit -m "chore: release v1.5.4 (hotfix)"
+git tag -a v1.5.4 -m "Hotfix: Dialog bug"
+git push origin hotfix/v1.5.4
+git push origin v1.5.4
+
+# Merge to main
+git checkout main
+git merge hotfix/v1.5.4
+git push origin main
+
+# Publish
+pnpm -r publish --access public
+
+# Create GitHub release
+gh release create v1.5.4 --title "v1.5.4 (Hotfix)"
+```
+
+### 4. Communicate Urgently
+
+```markdown
+🚨 **Hotfix Released: v1.5.4**
+
+Critical bug fixed in Dialog component.
+
+What: Dialog escape key not working
+Impact: Users unable to close modals with keyboard
+Fix: Upgraded to v1.5.4
+
+Update immediately:
+```bash
+pnpm update @wyliedog/ui
+```
+
+Details: [link to GitHub release]
+```
+
+## Deprecation Policy
+
+### Marking Features as Deprecated
+
+1. **Add Deprecation Notice in Code:**
+
+```tsx
+/**
+ * @deprecated Use `loading` prop instead. Will be removed in v2.0.0.
+ */
+export interface ButtonProps {
+  isLoading?: boolean;
+}
+```
+
+2. **Add Runtime Warning:**
+
+```tsx
+export const Button = ({ isLoading, loading, ...props }: ButtonProps) => {
+  if (isLoading !== undefined) {
+    console.warn(
+      'Button: `isLoading` prop is deprecated. Use `loading` instead. ' +
+      'This prop will be removed in v2.0.0.'
+    );
+  }
+
+  const isLoadingState = loading ?? isLoading;
+  // ... rest of component
+};
+```
+
+3. **Document in CHANGELOG:**
+
+```markdown
+### Deprecated
+- Button: `isLoading` prop. Use `loading` instead. Will be removed in v2.0.0.
+```
+
+4. **Provide Migration Path:**
+
+Include migration instructions in documentation and release notes.
+
+### Deprecation Timeline
+
+- **Minor version**: Mark as deprecated, add warnings
+- **Wait period**: Minimum 2 minor versions or 2 months
+- **Major version**: Remove deprecated features
+
+Example timeline:
+```
+v1.5.0 - Feature added with isLoading prop
+v1.6.0 - Add loading prop, deprecate isLoading (warnings added)
+v1.7.0 - Still supported with warnings
+v1.8.0 - Still supported with warnings
+v2.0.0 - Remove isLoading prop (breaking change)
+```
+
+## Breaking Changes
+
+### Documenting Breaking Changes
+
+In CHANGELOG.md, clearly list all breaking changes:
+
+```markdown
+## [2.0.0] - 2025-03-01
+
+### Breaking Changes
+
+#### Removed deprecated `isLoading` prop from Button
+**Migration:**
+```tsx
+// Before
+<Button isLoading={loading}>Submit</Button>
+
+// After
+<Button loading={loading}>Submit</Button>
+```
+
+#### Updated color token naming
+**Migration:**
+```css
+/* Before */
+background-color: var(--color-blue-500);
+
+/* After */
+background-color: var(--color-primary-default);
+```
+
+See full migration guide: [link]
+```
+
+### Migration Guides
+
+For major versions, create detailed migration guides:
+
+```markdown
+# Migration Guide: v1.x to v2.0
+
+## Overview
+
+Version 2.0 introduces breaking changes to improve consistency and accessibility.
+
+Estimated migration time: 2-4 hours for most projects
+
+## Breaking Changes
+
+### 1. Color Token Renames
+
+| Old Token | New Token |
+|-----------|-----------|
+| `--color-blue-500` | `--color-primary-default` |
+| `--color-gray-100` | `--color-background-subtle` |
+
+**Find and replace:**
+```bash
+# Use this script to update your codebase
+find ./src -type f \( -name "*.tsx" -o -name "*.css" \) \
+  -exec sed -i '' 's/--color-blue-500/--color-primary-default/g' {} +
+```
+
+### 2. Button API Changes
+
+**Removed props:**
+- `isLoading` → use `loading`
+
+**Changed props:**
+- `variant="default"` is now `variant="secondary"`
+
+**Migration:**
+```tsx
+// Before (v1.x)
+<Button variant="default" isLoading={loading}>
+  Submit
+</Button>
+
+// After (v2.0)
+<Button variant="secondary" loading={loading}>
+  Submit
+</Button>
+```
+
+### 3. Updated Dependencies
+
+Minimum versions required:
+- React 19.2+
+- Node 20.16+
+
+## Step-by-Step Migration
+
+1. **Update dependencies**
+   ```bash
+   pnpm add @wyliedog/ui@2.0.0
+   ```
+
+2. **Run codemods**
+   ```bash
+   npx @wyliedog/codemod v2-migration
+   ```
+
+3. **Fix remaining issues**
+   - Review codemod report
+   - Manually fix flagged issues
+
+4. **Test thoroughly**
+   - Run automated tests
+   - Manually test critical flows
+   - Visual regression testing
+
+5. **Deploy**
+
+## Need Help?
+
+- Review [breaking changes in detail](#)
+- Join office hours: Fridays 2-3pm PT
+- Ask in #design-system channel
+```
+
+## Version Support Policy
+
+### Long-Term Support (LTS)
+
+- **Current major version**: Full support (new features, bug fixes, security updates)
+- **Previous major version**: Security updates only for 6 months
+- **Older versions**: No support
+
+Example timeline:
+```
+v2.0.0 released → v1.x receives security updates for 6 months
+v3.0.0 released → v2.x receives security updates for 6 months
+                  v1.x support ends
+```
+
+### Security Updates
+
+Security vulnerabilities receive immediate patches:
+
+1. Patch current major version
+2. Patch previous major version (if within support window)
+3. Release hotfix for both versions
+4. Announce with security advisory
+
+## Questions?
+
+- Review [Component Development Process](/docs/contributing-workflows-component-development--docs)
+- Check [Design Token Workflow](/docs/contributing-workflows-design-tokens--docs)
+- See existing releases for examples: [GitHub Releases](https://github.com/your-org/wylie-dog-ds/releases)
