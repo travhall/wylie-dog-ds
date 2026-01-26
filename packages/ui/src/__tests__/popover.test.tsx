@@ -293,11 +293,13 @@ describe("Popover", () => {
       await waitFor(() => {
         const content = screen
           .getByText("Popover Heading")
-          .closest('[class*="rounded-md"]');
-        expect(content).toHaveClass("rounded-md");
+          .closest('[class*="rounded-(--spacing-popover-content-radius)"]');
+        expect(content).toHaveClass(
+          "rounded-(--spacing-popover-content-radius)"
+        );
         expect(content).toHaveClass("border");
         expect(content).toHaveClass("bg-(--color-popover-background)");
-        expect(content).toHaveClass("p-4");
+        expect(content).toHaveClass("p-(--spacing-popover-content-padding)");
       });
     });
 
@@ -376,7 +378,7 @@ describe("Popover", () => {
       await waitFor(() => {
         const content =
           screen.getByText("Popover Heading").parentElement?.parentElement;
-        expect(content).toHaveClass("w-72");
+        expect(content).toHaveClass("w-(--spacing-popover-content-width-md)");
       });
     });
   });

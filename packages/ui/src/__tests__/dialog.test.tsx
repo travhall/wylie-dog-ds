@@ -381,7 +381,7 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass("max-w-sm");
+        expect(dialog).toHaveClass("max-w-(--spacing-dialog-content-width-sm)");
       });
     });
 
@@ -393,7 +393,7 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass("max-w-md");
+        expect(dialog).toHaveClass("max-w-(--spacing-dialog-content-width-md)");
       });
     });
 
@@ -405,7 +405,7 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass("max-w-lg");
+        expect(dialog).toHaveClass("max-w-(--spacing-dialog-content-width-lg)");
       });
     });
 
@@ -417,7 +417,9 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass("max-w-xl");
+        expect(dialog).toHaveClass(
+          "max-w-(--spacing-dialog-content-max-width)"
+        );
       });
     });
 
@@ -429,7 +431,8 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass("max-w-[95vw]", "max-h-[95vh]");
+        expect(dialog).toHaveClass("max-w-[95vw]");
+        expect(dialog).toHaveClass("max-h-[95vh]");
       });
     });
 
@@ -535,7 +538,7 @@ describe("Dialog", () => {
           .getByText("Dialog Title")
           .closest(".flex.flex-col");
         expect(header).toBeInTheDocument();
-        expect(header).toHaveClass("space-y-1.5");
+        expect(header).toHaveClass("space-y-(--spacing-dialog-header-gap)");
       });
     });
 
@@ -547,7 +550,11 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const title = screen.getByText("Dialog Title");
-        expect(title).toHaveClass("text-lg", "font-semibold", "leading-none");
+        expect(title).toHaveClass(
+          "text-(length:--font-size-dialog-title-font-size)"
+        );
+        expect(title).toHaveClass("font-semibold");
+        expect(title).toHaveClass("leading-none");
       });
     });
 
@@ -560,9 +567,9 @@ describe("Dialog", () => {
       await waitFor(() => {
         const description = screen.getByText(TEST_DIALOG_DESCRIPTION);
         expect(description).toHaveClass(
-          "text-sm",
-          "text-(--color-text-secondary)"
+          "text-(length:--font-size-dialog-description-font-size)"
         );
+        expect(description).toHaveClass("text-(--color-text-secondary)");
       });
     });
 
@@ -577,7 +584,9 @@ describe("Dialog", () => {
           .getByText("Cancel")
           .closest(".flex.flex-col-reverse");
         expect(footer).toBeInTheDocument();
-        expect(footer).toHaveClass("sm:flex-row", "sm:justify-end");
+        expect(footer).toHaveClass("sm:flex-row");
+        expect(footer).toHaveClass("sm:justify-end");
+        expect(footer).toHaveClass("sm:space-x-(--spacing-dialog-footer-gap)");
       });
     });
 

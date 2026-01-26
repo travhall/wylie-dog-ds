@@ -385,7 +385,9 @@ describe("AlertDialog", () => {
           .getByText("Are you absolutely sure?")
           .closest(".flex.flex-col");
         expect(header).toBeInTheDocument();
-        expect(header).toHaveClass("space-y-2");
+        expect(header).toHaveClass(
+          "space-y-(--spacing-alert-dialog-header-gap)"
+        );
       });
     });
 
@@ -397,7 +399,9 @@ describe("AlertDialog", () => {
 
       await waitFor(() => {
         const title = screen.getByText("Are you absolutely sure?");
-        expect(title).toHaveClass("text-lg");
+        expect(title).toHaveClass(
+          "text-(length:--font-size-alert-dialog-title-font-size)"
+        );
         expect(title).toHaveClass("font-semibold");
       });
     });
@@ -410,7 +414,9 @@ describe("AlertDialog", () => {
 
       await waitFor(() => {
         const description = screen.getByText(TEST_ALERT_DESCRIPTION);
-        expect(description).toHaveClass("text-sm");
+        expect(description).toHaveClass(
+          "text-(length:--font-size-alert-dialog-description-font-size)"
+        );
         expect(description).toHaveClass("text-(--color-dialog-description)");
       });
     });
