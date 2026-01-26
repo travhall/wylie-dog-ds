@@ -259,32 +259,44 @@ describe("Switch", () => {
     it("should apply size classes correctly for sm", () => {
       render(<Switch aria-label="Test" size="sm" />);
       const switchElement = screen.getByRole("switch");
-      expect(switchElement).toHaveClass("h-5", "w-9");
+      expect(switchElement).toHaveClass(
+        "h-(--spacing-switch-track-height-sm)",
+        "w-(--spacing-switch-track-width-sm)"
+      );
     });
 
     it("should apply size classes correctly for md", () => {
       render(<Switch aria-label="Test" size="md" />);
       const switchElement = screen.getByRole("switch");
-      expect(switchElement).toHaveClass("h-6", "w-11");
+      expect(switchElement).toHaveClass(
+        "h-(--spacing-switch-track-height-md)",
+        "w-(--spacing-switch-track-width-md)"
+      );
     });
 
     it("should apply size classes correctly for lg", () => {
       render(<Switch aria-label="Test" size="lg" />);
       const switchElement = screen.getByRole("switch");
-      expect(switchElement).toHaveClass("h-7", "w-13");
+      expect(switchElement).toHaveClass(
+        "h-(--spacing-switch-track-height-lg)",
+        "w-(--spacing-switch-track-width-lg)"
+      );
     });
 
     it("should have default size set to md", () => {
       render(<Switch aria-label="Test" />);
       const switchElement = screen.getByRole("switch");
-      expect(switchElement).toHaveClass("h-6", "w-11");
+      expect(switchElement).toHaveClass(
+        "h-(--spacing-switch-track-height-md)",
+        "w-(--spacing-switch-track-width-md)"
+      );
     });
 
     it("should have checked state styling", () => {
       render(<Switch aria-label="Test" checked />);
       const switchElement = screen.getByRole("switch");
       expect(switchElement).toHaveClass(
-        "data-[state=checked]:bg-(--color-interactive-primary)"
+        "data-[state=checked]:bg-(--color-switch-track-background-checked)"
       );
     });
 
@@ -292,7 +304,7 @@ describe("Switch", () => {
       render(<Switch aria-label="Test" checked={false} />);
       const switchElement = screen.getByRole("switch");
       expect(switchElement).toHaveClass(
-        "data-[state=unchecked]:bg-(--color-interactive-secondary)"
+        "data-[state=unchecked]:bg-(--color-switch-track-background-unchecked)"
       );
     });
 
@@ -305,7 +317,9 @@ describe("Switch", () => {
     it("should have focus styles", () => {
       render(<Switch aria-label="Test" />);
       const switchElement = screen.getByRole("switch");
-      expect(switchElement).toHaveClass("focus:ring-2");
+      expect(switchElement).toHaveClass(
+        "focus:ring-(--spacing-switch-focus-ring-width)"
+      );
       expect(switchElement).toHaveClass("focus:outline-none");
     });
 
@@ -539,15 +553,24 @@ describe("Switch", () => {
     it("should handle size changes dynamically", () => {
       const { rerender } = render(<Switch aria-label="Test" size="sm" />);
       let switchElement = screen.getByRole("switch");
-      expect(switchElement).toHaveClass("h-5", "w-9");
+      expect(switchElement).toHaveClass(
+        "h-(--spacing-switch-track-height-sm)",
+        "w-(--spacing-switch-track-width-sm)"
+      );
 
       rerender(<Switch aria-label="Test" size="md" />);
       switchElement = screen.getByRole("switch");
-      expect(switchElement).toHaveClass("h-6", "w-11");
+      expect(switchElement).toHaveClass(
+        "h-(--spacing-switch-track-height-md)",
+        "w-(--spacing-switch-track-width-md)"
+      );
 
       rerender(<Switch aria-label="Test" size="lg" />);
       switchElement = screen.getByRole("switch");
-      expect(switchElement).toHaveClass("h-7", "w-13");
+      expect(switchElement).toHaveClass(
+        "h-(--spacing-switch-track-height-lg)",
+        "w-(--spacing-switch-track-width-lg)"
+      );
     });
 
     it("should handle rapid state changes", () => {
@@ -579,7 +602,10 @@ describe("Switch", () => {
 
       const switchElement = screen.getByRole("switch");
       expect(switchElement).toHaveAttribute("data-state", "checked");
-      expect(switchElement).toHaveClass("h-7", "w-13");
+      expect(switchElement).toHaveClass(
+        "h-(--spacing-switch-track-height-lg)",
+        "w-(--spacing-switch-track-width-lg)"
+      );
       expect(switchElement).toHaveClass("custom-class");
       expect(switchElement).toHaveAttribute("data-testid", "test");
       expect(switchElement).toHaveAttribute("id", "switch-id");

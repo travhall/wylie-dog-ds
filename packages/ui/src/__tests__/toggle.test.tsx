@@ -187,7 +187,10 @@ describe("Toggle", () => {
     it("should apply default variant styles by default", () => {
       render(<Toggle aria-label="Toggle">Toggle</Toggle>);
       const toggle = screen.getByRole("button");
-      expect(toggle).toHaveClass("bg-transparent");
+      expect(toggle).toHaveClass(
+        "bg-transparent",
+        "text-(--color-toggle-text)"
+      );
     });
 
     it("should apply default variant styles explicitly", () => {
@@ -197,7 +200,10 @@ describe("Toggle", () => {
         </Toggle>
       );
       const toggle = screen.getByRole("button");
-      expect(toggle).toHaveClass("bg-transparent");
+      expect(toggle).toHaveClass(
+        "bg-transparent",
+        "text-(--color-toggle-text)"
+      );
     });
 
     it("should apply outline variant styles", () => {
@@ -207,7 +213,7 @@ describe("Toggle", () => {
         </Toggle>
       );
       const toggle = screen.getByRole("button");
-      expect(toggle).toHaveClass("border");
+      expect(toggle).toHaveClass("border", "border-(--color-toggle-border)");
     });
   });
 
@@ -215,7 +221,10 @@ describe("Toggle", () => {
     it("should apply default size by default", () => {
       render(<Toggle aria-label="Toggle">Toggle</Toggle>);
       const toggle = screen.getByRole("button");
-      expect(toggle).toHaveClass("h-10", "px-3");
+      expect(toggle).toHaveClass(
+        "h-(--spacing-toggle-size-default-height)",
+        "px-(--spacing-toggle-size-default-padding-x)"
+      );
     });
 
     it("should apply default size explicitly", () => {
@@ -225,7 +234,10 @@ describe("Toggle", () => {
         </Toggle>
       );
       const toggle = screen.getByRole("button");
-      expect(toggle).toHaveClass("h-10", "px-3");
+      expect(toggle).toHaveClass(
+        "h-(--spacing-toggle-size-default-height)",
+        "px-(--spacing-toggle-size-default-padding-x)"
+      );
     });
 
     it("should apply small size", () => {
@@ -235,7 +247,10 @@ describe("Toggle", () => {
         </Toggle>
       );
       const toggle = screen.getByRole("button");
-      expect(toggle).toHaveClass("h-9", "px-2.5");
+      expect(toggle).toHaveClass(
+        "h-(--spacing-toggle-size-sm-height)",
+        "px-(--spacing-toggle-size-sm-padding-x)"
+      );
     });
 
     it("should apply large size", () => {
@@ -245,7 +260,10 @@ describe("Toggle", () => {
         </Toggle>
       );
       const toggle = screen.getByRole("button");
-      expect(toggle).toHaveClass("h-11", "px-5");
+      expect(toggle).toHaveClass(
+        "h-(--spacing-toggle-size-lg-height)",
+        "px-(--spacing-toggle-size-lg-padding-x)"
+      );
     });
   });
 
@@ -257,7 +275,7 @@ describe("Toggle", () => {
         "inline-flex",
         "items-center",
         "justify-center",
-        "rounded-md"
+        "rounded-(--spacing-toggle-radius)"
       );
     });
 
@@ -278,7 +296,12 @@ describe("Toggle", () => {
         </Toggle>
       );
       const toggle = screen.getByRole("button");
-      expect(toggle).toHaveClass("border", "h-11", "px-5");
+      expect(toggle).toHaveClass(
+        "border",
+        "border-(--color-toggle-border)",
+        "h-(--spacing-toggle-size-lg-height)",
+        "px-(--spacing-toggle-size-lg-padding-x)"
+      );
     });
 
     it("should have pressed state styling", () => {
@@ -385,7 +408,13 @@ describe("Toggle", () => {
         </Toggle>
       );
       const toggle = screen.getByRole("button");
-      expect(toggle).toHaveClass("border", "h-11", "px-5", "custom");
+      expect(toggle).toHaveClass(
+        "border",
+        "border-(--color-toggle-border)",
+        "h-(--spacing-toggle-size-lg-height)",
+        "px-(--spacing-toggle-size-lg-padding-x)",
+        "custom"
+      );
       expect(toggle).toHaveAttribute("aria-pressed", "true");
     });
   });

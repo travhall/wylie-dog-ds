@@ -234,15 +234,24 @@ describe("Checkbox", () => {
     it("should apply size classes correctly", () => {
       const { rerender } = render(<Checkbox aria-label="Test" size="sm" />);
       let checkbox = screen.getByRole("checkbox");
-      expect(checkbox).toHaveClass("h-4", "w-4");
+      expect(checkbox).toHaveClass(
+        "h-(--spacing-checkbox-size-sm)",
+        "w-(--spacing-checkbox-size-sm)"
+      );
 
       rerender(<Checkbox aria-label="Test" size="md" />);
       checkbox = screen.getByRole("checkbox");
-      expect(checkbox).toHaveClass("h-5", "w-5");
+      expect(checkbox).toHaveClass(
+        "h-(--spacing-checkbox-size-md)",
+        "w-(--spacing-checkbox-size-md)"
+      );
 
       rerender(<Checkbox aria-label="Test" size="lg" />);
       checkbox = screen.getByRole("checkbox");
-      expect(checkbox).toHaveClass("h-6", "w-6");
+      expect(checkbox).toHaveClass(
+        "h-(--spacing-checkbox-size-lg)",
+        "w-(--spacing-checkbox-size-lg)"
+      );
     });
 
     it("should apply error styling when error prop is true", () => {

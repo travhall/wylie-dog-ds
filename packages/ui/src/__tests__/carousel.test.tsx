@@ -249,7 +249,10 @@ describe("Carousel", () => {
         </Carousel>
       );
       const button = screen.getByRole("button", { name: /previous slide/i });
-      expect(button).toHaveClass("absolute", "left-4");
+      expect(button).toHaveClass(
+        "absolute",
+        "-left-(--spacing-carousel-button-offset)"
+      );
     });
 
     it("should handle onClick", () => {
@@ -327,7 +330,10 @@ describe("Carousel", () => {
         </Carousel>
       );
       const button = screen.getByRole("button", { name: /next slide/i });
-      expect(button).toHaveClass("absolute", "right-4");
+      expect(button).toHaveClass(
+        "absolute",
+        "-right-(--spacing-carousel-button-offset)"
+      );
     });
 
     it("should handle onClick", () => {

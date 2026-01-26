@@ -434,7 +434,9 @@ describe("Slider", () => {
         <Slider defaultValue={[50]} max={100} step={1} aria-label="Volume" />
       );
 
-      const track = container.querySelector('[class*="rounded-full"]');
+      const track = container.querySelector(
+        '[class*="rounded-(--spacing-slider-track-radius)"]'
+      );
       expect(track).toBeInTheDocument();
     });
 
@@ -455,7 +457,7 @@ describe("Slider", () => {
       );
 
       const thumb = container.querySelector(
-        '[class*="rounded-full"][class*="h-5"]'
+        '[class*="rounded-(--spacing-slider-thumb-radius)"][class*="h-(--spacing-slider-thumb-size)"]'
       );
       expect(thumb).toBeInTheDocument();
     });

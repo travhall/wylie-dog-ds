@@ -196,9 +196,8 @@ describe("Badge", () => {
       expect(badge).toHaveClass("items-center");
       expect(badge).toHaveClass("rounded-(--spacing-badge-radius)");
       expect(badge).toHaveClass("border");
-      expect(badge).toHaveClass("px-2.5");
-      expect(badge).toHaveClass("py-0.5");
-      expect(badge).toHaveClass("text-xs");
+      expect(badge).toHaveClass("px-(--spacing-badge-padding-md)");
+      expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
       expect(badge).toHaveClass("font-semibold");
     });
 
@@ -220,7 +219,7 @@ describe("Badge", () => {
 
       // Should have base styles
       expect(badge).toHaveClass("inline-flex");
-      expect(badge).toHaveClass("text-xs");
+      expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
       // And custom styles
       expect(badge).toHaveClass("text-lg");
     });
@@ -479,9 +478,10 @@ describe("Badge", () => {
       expect(badges).toHaveLength(3);
 
       badges.forEach((badge) => {
-        expect(badge).toHaveClass("text-xs");
-        expect(badge).toHaveClass("px-2.5");
-        expect(badge).toHaveClass("py-0.5");
+        expect(badge).toHaveClass(
+          "text-(length:--font-size-badge-font-size-md)"
+        );
+        expect(badge).toHaveClass("px-(--spacing-badge-padding-md)");
       });
     });
 

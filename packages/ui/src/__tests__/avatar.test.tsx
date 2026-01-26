@@ -218,7 +218,7 @@ describe("Avatar", () => {
         "w-full",
         "items-center",
         "justify-center",
-        "rounded-full"
+        "rounded-(--spacing-avatar-rounded)"
       );
     });
   });
@@ -227,31 +227,46 @@ describe("Avatar", () => {
     it("should apply small size", () => {
       const { container } = render(<Avatar size="sm" />);
       const avatar = container.firstChild;
-      expect(avatar).toHaveClass("h-8", "w-8");
+      expect(avatar).toHaveClass(
+        "h-(--spacing-avatar-size-sm)",
+        "w-(--spacing-avatar-size-sm)"
+      );
     });
 
     it("should apply medium size by default", () => {
       const { container } = render(<Avatar />);
       const avatar = container.firstChild;
-      expect(avatar).toHaveClass("h-10", "w-10");
+      expect(avatar).toHaveClass(
+        "h-(--spacing-avatar-size-md)",
+        "w-(--spacing-avatar-size-md)"
+      );
     });
 
     it("should apply medium size explicitly", () => {
       const { container } = render(<Avatar size="md" />);
       const avatar = container.firstChild;
-      expect(avatar).toHaveClass("h-10", "w-10");
+      expect(avatar).toHaveClass(
+        "h-(--spacing-avatar-size-md)",
+        "w-(--spacing-avatar-size-md)"
+      );
     });
 
     it("should apply large size", () => {
       const { container } = render(<Avatar size="lg" />);
       const avatar = container.firstChild;
-      expect(avatar).toHaveClass("h-12", "w-12");
+      expect(avatar).toHaveClass(
+        "h-(--spacing-avatar-size-lg)",
+        "w-(--spacing-avatar-size-lg)"
+      );
     });
 
     it("should apply extra large size", () => {
       const { container } = render(<Avatar size="xl" />);
       const avatar = container.firstChild;
-      expect(avatar).toHaveClass("h-16", "w-16");
+      expect(avatar).toHaveClass(
+        "h-(--spacing-avatar-size-xl)",
+        "w-(--spacing-avatar-size-xl)"
+      );
     });
   });
 
@@ -264,7 +279,7 @@ describe("Avatar", () => {
         "flex",
         "shrink-0",
         "overflow-hidden",
-        "rounded-full"
+        "rounded-(--spacing-avatar-rounded)"
       );
     });
 
@@ -289,7 +304,11 @@ describe("Avatar", () => {
     it("should combine size and custom className", () => {
       const { container } = render(<Avatar size="lg" className="shadow-lg" />);
       const avatar = container.firstChild;
-      expect(avatar).toHaveClass("h-12", "w-12", "shadow-lg");
+      expect(avatar).toHaveClass(
+        "h-(--spacing-avatar-size-lg)",
+        "w-(--spacing-avatar-size-lg)",
+        "shadow-lg"
+      );
     });
   });
 

@@ -371,42 +371,63 @@ describe("Tabs", () => {
       render(<TestTabs defaultValue="tab1" size="sm" />);
 
       const tablist = screen.getByRole("tablist");
-      expect(tablist).toHaveClass("h-8", "p-1");
+      expect(tablist).toHaveClass(
+        "h-(--spacing-tabs-list-height-sm)",
+        "p-(--spacing-tabs-list-padding-sm)"
+      );
     });
 
     it("should apply medium size variant to list (default)", () => {
       render(<TestTabs defaultValue="tab1" size="md" />);
 
       const tablist = screen.getByRole("tablist");
-      expect(tablist).toHaveClass("h-10", "p-1");
+      expect(tablist).toHaveClass(
+        "h-(--spacing-tabs-list-height-md)",
+        "p-(--spacing-tabs-list-padding-md)"
+      );
     });
 
     it("should apply large size variant to list", () => {
       render(<TestTabs defaultValue="tab1" size="lg" />);
 
       const tablist = screen.getByRole("tablist");
-      expect(tablist).toHaveClass("h-12", "p-1.5");
+      expect(tablist).toHaveClass(
+        "h-(--spacing-tabs-list-height-lg)",
+        "p-(--spacing-tabs-list-padding-lg)"
+      );
     });
 
     it("should apply small size variant to triggers", () => {
       render(<TestTabs defaultValue="tab1" size="sm" />);
 
       const tab = screen.getByRole("tab", { name: "Tab 1" });
-      expect(tab).toHaveClass("px-2", "py-1", "text-xs");
+      expect(tab).toHaveClass(
+        "px-(--spacing-tabs-trigger-padding-x-sm)",
+        "py-(--spacing-tabs-trigger-padding-y-sm)",
+        "text-(length:--font-size-tabs-trigger-font-size-sm)"
+      );
     });
 
     it("should apply medium size variant to triggers (default)", () => {
       render(<TestTabs defaultValue="tab1" size="md" />);
 
       const tab = screen.getByRole("tab", { name: "Tab 1" });
-      expect(tab).toHaveClass("px-3", "py-1.5", "text-sm");
+      expect(tab).toHaveClass(
+        "px-(--spacing-tabs-trigger-padding-x-md)",
+        "py-(--spacing-tabs-trigger-padding-y-md)",
+        "text-(length:--font-size-tabs-trigger-font-size-md)"
+      );
     });
 
     it("should apply large size variant to triggers", () => {
       render(<TestTabs defaultValue="tab1" size="lg" />);
 
       const tab = screen.getByRole("tab", { name: "Tab 1" });
-      expect(tab).toHaveClass("px-4", "py-2", "text-base");
+      expect(tab).toHaveClass(
+        "px-(--spacing-tabs-trigger-padding-x-lg)",
+        "py-(--spacing-tabs-trigger-padding-y-lg)",
+        "text-(length:--font-size-tabs-trigger-font-size-lg)"
+      );
     });
 
     it("should have active tab styling", () => {
@@ -414,8 +435,8 @@ describe("Tabs", () => {
 
       const activeTab = screen.getByRole("tab", { name: "Tab 1" });
       expect(activeTab).toHaveClass(
-        "data-[state=active]:bg-(--color-background-primary)",
-        "data-[state=active]:text-(--color-text-primary)",
+        "data-[state=active]:bg-(--color-tabs-trigger-background-active)",
+        "data-[state=active]:text-(--color-tabs-trigger-text-active)",
         "data-[state=active]:shadow-sm"
       );
     });
@@ -425,8 +446,8 @@ describe("Tabs", () => {
 
       const tab = screen.getByRole("tab", { name: "Tab 2" });
       expect(tab).toHaveClass(
-        "hover:bg-(--color-background-tertiary)",
-        "hover:text-(--color-text-primary)"
+        "hover:bg-(--color-tabs-trigger-background-hover)",
+        "hover:text-(--color-tabs-trigger-text-hover)"
       );
     });
 

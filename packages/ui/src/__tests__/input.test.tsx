@@ -213,15 +213,27 @@ describe("Input", () => {
     it("should apply size classes correctly", () => {
       const { rerender } = render(<Input aria-label="Test" size="sm" />);
       let input = screen.getByLabelText("Test");
-      expect(input).toHaveClass("h-8", "px-3", "text-xs");
+      expect(input).toHaveClass(
+        "h-(--spacing-input-height-sm)",
+        "px-(--spacing-input-padding-x)",
+        "text-(length:--font-size-input-font-size-sm)"
+      );
 
       rerender(<Input aria-label="Test" size="md" />);
       input = screen.getByLabelText("Test");
-      expect(input).toHaveClass("h-10", "px-3", "text-sm");
+      expect(input).toHaveClass(
+        "h-(--spacing-input-height-md)",
+        "px-(--spacing-input-padding-x)",
+        "text-(length:--font-size-input-font-size-md)"
+      );
 
       rerender(<Input aria-label="Test" size="lg" />);
       input = screen.getByLabelText("Test");
-      expect(input).toHaveClass("h-12", "px-4", "text-base");
+      expect(input).toHaveClass(
+        "h-(--spacing-input-height-lg)",
+        "px-(--spacing-input-padding-x)",
+        "text-(length:--font-size-input-font-size-lg)"
+      );
     });
 
     it("should apply error styling when error prop is true", () => {

@@ -396,9 +396,9 @@ describe("RadioGroup", () => {
       const radios = screen.getAllByRole("radio");
       expect(radios[0]).toHaveClass(
         "focus:outline-none",
-        "focus:ring-2",
+        "focus:ring-(--spacing-radio-focus-ring-width)",
         "focus:ring-(--color-border-focus)",
-        "focus:ring-offset-2"
+        "focus:ring-offset-(--spacing-radio-focus-ring-offset)"
       );
     });
 
@@ -430,7 +430,9 @@ describe("RadioGroup", () => {
       render(<TestRadioGroup defaultValue="option1" />);
 
       const checkedRadio = screen.getByRole("radio", { name: "Option 1" });
-      const indicator = checkedRadio.querySelector('div[class*="h-2 w-2"]');
+      const indicator = checkedRadio.querySelector(
+        'div[class*="h-(--spacing-radio-indicator-size-md)"]'
+      );
       expect(indicator).toBeInTheDocument();
     });
   });

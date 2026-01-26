@@ -207,7 +207,8 @@ describe("Alert", () => {
       );
       const title = screen.getByText("Alert Title");
       expect(title).toHaveClass(
-        "mb-1",
+        "mb-(--spacing-alert-title-margin-bottom)",
+        "text-(length:--font-size-alert-title-font-size)",
         "font-medium",
         "leading-none",
         "tracking-tight"
@@ -252,7 +253,10 @@ describe("Alert", () => {
         </Alert>
       );
       const description = screen.getByText("Description");
-      expect(description).toHaveClass("text-sm", "opacity-90");
+      expect(description).toHaveClass(
+        "text-(length:--font-size-alert-description-font-size)",
+        "opacity-90"
+      );
     });
 
     it("should support custom className", () => {
@@ -287,12 +291,12 @@ describe("Alert", () => {
       expect(alert).toHaveClass(
         "relative",
         "w-full",
-        "rounded-lg",
+        "rounded-(--spacing-alert-radius)",
         "border",
         "border-l-4",
-        "px-4",
-        "py-3",
-        "text-sm"
+        "px-(--spacing-alert-padding-x)",
+        "py-(--spacing-alert-padding-y)",
+        "text-(length:--font-size-alert-description-font-size)"
       );
     });
 

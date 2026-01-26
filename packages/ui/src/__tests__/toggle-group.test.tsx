@@ -250,7 +250,10 @@ describe("ToggleGroup", () => {
         </ToggleGroup>
       );
       const item = screen.getByText("Test");
-      expect(item).toHaveClass("rounded-md", "text-sm");
+      expect(item).toHaveClass(
+        "rounded-(--spacing-toggle-group-item-radius)",
+        "text-(length:--font-size-toggle-group-item-font-size)"
+      );
     });
   });
 

@@ -52,25 +52,28 @@ describe("Skeleton", () => {
     it("should apply default variant styles", () => {
       render(<Skeleton />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("rounded-md");
+      expect(skeleton).toHaveClass("rounded-(--spacing-skeleton-radius)");
     });
 
     it("should apply text variant styles", () => {
       render(<Skeleton variant="text" />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("rounded", "h-4");
+      expect(skeleton).toHaveClass(
+        "rounded-(--spacing-skeleton-radius)",
+        "h-(--spacing-skeleton-height-text)"
+      );
     });
 
     it("should apply circular variant styles", () => {
       render(<Skeleton variant="circular" />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("rounded-full");
+      expect(skeleton).toHaveClass("rounded-(--spacing-skeleton-rounded-full)");
     });
 
     it("should apply rectangular variant styles", () => {
       render(<Skeleton variant="rectangular" />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("rounded-sm");
+      expect(skeleton).toHaveClass("rounded-(--spacing-skeleton-rounded-sm)");
     });
   });
 
@@ -78,31 +81,46 @@ describe("Skeleton", () => {
     it("should not apply size classes when size is not specified", () => {
       render(<Skeleton />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).not.toHaveClass("h-4", "w-4");
+      expect(skeleton).not.toHaveClass(
+        "h-(--spacing-skeleton-height-text)",
+        "w-(--spacing-skeleton-height-text)"
+      );
     });
 
     it("should apply small size", () => {
       render(<Skeleton size="sm" />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("h-4", "w-4");
+      expect(skeleton).toHaveClass(
+        "h-(--spacing-skeleton-height-text)",
+        "w-(--spacing-skeleton-height-text)"
+      );
     });
 
     it("should apply medium size", () => {
       render(<Skeleton size="md" />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("h-6", "w-6");
+      expect(skeleton).toHaveClass(
+        "h-(--spacing-skeleton-height-title)",
+        "w-(--spacing-skeleton-height-title)"
+      );
     });
 
     it("should apply large size", () => {
       render(<Skeleton size="lg" />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("h-8", "w-8");
+      expect(skeleton).toHaveClass(
+        "h-(--spacing-skeleton-height-button)",
+        "w-(--spacing-skeleton-height-button)"
+      );
     });
 
     it("should apply extra large size", () => {
       render(<Skeleton size="xl" />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("h-12", "w-12");
+      expect(skeleton).toHaveClass(
+        "h-(--spacing-skeleton-height-avatar)",
+        "w-(--spacing-skeleton-height-avatar)"
+      );
     });
   });
 
@@ -128,13 +146,21 @@ describe("Skeleton", () => {
     it("should combine variant and size classes", () => {
       render(<Skeleton variant="circular" size="lg" />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("rounded-full", "h-8", "w-8");
+      expect(skeleton).toHaveClass(
+        "rounded-(--spacing-skeleton-rounded-full)",
+        "h-(--spacing-skeleton-height-button)",
+        "w-(--spacing-skeleton-height-button)"
+      );
     });
 
     it("should combine variant and custom className", () => {
       render(<Skeleton variant="text" className="w-3/4" />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("rounded", "h-4", "w-3/4");
+      expect(skeleton).toHaveClass(
+        "rounded-(--spacing-skeleton-radius)",
+        "h-(--spacing-skeleton-height-text)",
+        "w-3/4"
+      );
     });
   });
 

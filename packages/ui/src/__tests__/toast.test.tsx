@@ -111,7 +111,10 @@ describe("Toast", () => {
         <Toast variant="destructive">Error toast</Toast>
       );
       const toast = container.firstChild as HTMLElement;
-      expect(toast).toHaveClass("bg-red-500", "text-white");
+      expect(toast).toHaveClass(
+        "bg-(--color-toast-destructive-background)",
+        "text-white"
+      );
     });
 
     it("should support success variant", () => {
@@ -119,7 +122,10 @@ describe("Toast", () => {
         <Toast variant="success">Success toast</Toast>
       );
       const toast = container.firstChild as HTMLElement;
-      expect(toast).toHaveClass("bg-green-500", "text-white");
+      expect(toast).toHaveClass(
+        "bg-(--color-toast-success-background)",
+        "text-white"
+      );
     });
 
     it("should support warning variant", () => {
@@ -127,7 +133,10 @@ describe("Toast", () => {
         <Toast variant="warning">Warning toast</Toast>
       );
       const toast = container.firstChild as HTMLElement;
-      expect(toast).toHaveClass("bg-yellow-500", "text-black");
+      expect(toast).toHaveClass(
+        "bg-(--color-toast-warning-background)",
+        "text-black"
+      );
     });
   });
 
@@ -169,7 +178,10 @@ describe("Toast", () => {
         </Toast>
       );
       const title = screen.getByText("Styled Title");
-      expect(title).toHaveClass("text-sm", "font-semibold");
+      expect(title).toHaveClass(
+        "text-(length:--font-size-toast-title-font-size)",
+        "font-semibold"
+      );
     });
   });
 
@@ -213,7 +225,10 @@ describe("Toast", () => {
         </Toast>
       );
       const description = screen.getByText("Styled description");
-      expect(description).toHaveClass("text-sm", "opacity-90");
+      expect(description).toHaveClass(
+        "text-(length:--font-size-toast-description-font-size)",
+        "opacity-90"
+      );
     });
   });
 
@@ -408,7 +423,7 @@ describe("Toast", () => {
         </Toast>
       );
       let toast = container.firstChild as HTMLElement;
-      expect(toast).toHaveClass("bg-green-500");
+      expect(toast).toHaveClass("bg-(--color-toast-success-background)");
 
       rerender(
         <Toast variant="destructive">
@@ -416,7 +431,7 @@ describe("Toast", () => {
         </Toast>
       );
       toast = container.firstChild as HTMLElement;
-      expect(toast).toHaveClass("bg-red-500");
+      expect(toast).toHaveClass("bg-(--color-toast-destructive-background)");
     });
   });
 

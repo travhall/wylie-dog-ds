@@ -214,15 +214,24 @@ describe("Textarea", () => {
     it("should apply size classes correctly", () => {
       const { rerender } = render(<Textarea aria-label="Test" size="sm" />);
       let textarea = screen.getByRole("textbox", { name: "Test" });
-      expect(textarea).toHaveClass("min-h-[80px]", "text-xs");
+      expect(textarea).toHaveClass(
+        "min-h-(--spacing-textarea-min-height-sm)",
+        "text-(length:--font-size-textarea-font-size)"
+      );
 
       rerender(<Textarea aria-label="Test" size="md" />);
       textarea = screen.getByRole("textbox", { name: "Test" });
-      expect(textarea).toHaveClass("min-h-[100px]", "text-sm");
+      expect(textarea).toHaveClass(
+        "min-h-(--spacing-textarea-min-height-md)",
+        "text-(length:--font-size-textarea-font-size)"
+      );
 
       rerender(<Textarea aria-label="Test" size="lg" />);
       textarea = screen.getByRole("textbox", { name: "Test" });
-      expect(textarea).toHaveClass("min-h-[120px]", "text-base");
+      expect(textarea).toHaveClass(
+        "min-h-(--spacing-textarea-min-height-lg)",
+        "text-(length:--font-size-textarea-font-size)"
+      );
     });
 
     it("should support all resize variants", async () => {
@@ -265,7 +274,10 @@ describe("Textarea", () => {
     it("should have default size set to md", () => {
       render(<Textarea aria-label="Test" />);
       const textarea = screen.getByRole("textbox", { name: "Test" });
-      expect(textarea).toHaveClass("min-h-[100px]", "text-sm");
+      expect(textarea).toHaveClass(
+        "min-h-(--spacing-textarea-min-height-md)",
+        "text-(length:--font-size-textarea-font-size)"
+      );
     });
 
     it("should accept custom className", () => {
@@ -506,7 +518,7 @@ describe("Textarea", () => {
 
       const textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass("border-(--color-input-border-error)");
-      expect(textarea).toHaveClass("min-h-[120px]");
+      expect(textarea).toHaveClass("min-h-(--spacing-textarea-min-height-lg)");
     });
 
     it("should handle error and resize together", () => {
@@ -535,7 +547,7 @@ describe("Textarea", () => {
 
       const textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass("border-(--color-input-border-error)");
-      expect(textarea).toHaveClass("min-h-[120px]");
+      expect(textarea).toHaveClass("min-h-(--spacing-textarea-min-height-lg)");
       expect(textarea).toHaveClass("resize-x");
       expect(textarea).toHaveAttribute("aria-describedby", "desc-id error-id");
       expect(textarea).toHaveAttribute("placeholder", "Enter text");

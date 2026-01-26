@@ -239,7 +239,7 @@ describe("Form", () => {
         </FormField>
       );
       let label = screen.getByText("Small");
-      expect(label).toHaveClass("text-xs");
+      expect(label).toHaveClass("text-(length:--font-size-label-font-size-sm)");
 
       rerender(
         <FormField>
@@ -247,7 +247,7 @@ describe("Form", () => {
         </FormField>
       );
       label = screen.getByText("Medium");
-      expect(label).toHaveClass("text-sm");
+      expect(label).toHaveClass("text-(length:--font-size-label-font-size-md)");
 
       rerender(
         <FormField>
@@ -255,7 +255,7 @@ describe("Form", () => {
         </FormField>
       );
       label = screen.getByText("Large");
-      expect(label).toHaveClass("text-base");
+      expect(label).toHaveClass("text-(length:--font-size-label-font-size-lg)");
     });
 
     it("should show required indicator when field is required", () => {

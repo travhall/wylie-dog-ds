@@ -304,21 +304,33 @@ describe("Select", () => {
       render(<TestSelect size="sm" />);
 
       const trigger = screen.getByRole("combobox");
-      expect(trigger).toHaveClass("h-8", "px-3", "text-xs");
+      expect(trigger).toHaveClass(
+        "h-(--spacing-select-trigger-height-sm)",
+        "px-(--spacing-select-trigger-padding-x-sm)",
+        "text-(length:--font-size-select-trigger-font-size-sm)"
+      );
     });
 
     it("should apply medium size variant (default)", () => {
       render(<TestSelect size="md" />);
 
       const trigger = screen.getByRole("combobox");
-      expect(trigger).toHaveClass("h-10", "px-3", "text-sm");
+      expect(trigger).toHaveClass(
+        "h-(--spacing-select-trigger-height-md)",
+        "px-(--spacing-select-trigger-padding-x-md)",
+        "text-(length:--font-size-select-trigger-font-size-md)"
+      );
     });
 
     it("should apply large size variant", () => {
       render(<TestSelect size="lg" />);
 
       const trigger = screen.getByRole("combobox");
-      expect(trigger).toHaveClass("h-12", "px-4", "text-base");
+      expect(trigger).toHaveClass(
+        "h-(--spacing-select-trigger-height-lg)",
+        "px-(--spacing-select-trigger-padding-x-lg)",
+        "text-(length:--font-size-select-trigger-font-size-lg)"
+      );
     });
 
     it("should apply error styling", () => {

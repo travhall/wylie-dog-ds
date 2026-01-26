@@ -250,21 +250,21 @@ describe("Progress", () => {
     it("should apply size classes correctly", () => {
       const { rerender } = render(<Progress value={50} size="sm" />);
       let progress = screen.getByRole("progressbar");
-      expect(progress).toHaveClass("h-1");
+      expect(progress).toHaveClass("h-(--spacing-progress-height)");
 
       rerender(<Progress value={50} size="md" />);
       progress = screen.getByRole("progressbar");
-      expect(progress).toHaveClass("h-2");
+      expect(progress).toHaveClass("h-(--spacing-progress-height)");
 
       rerender(<Progress value={50} size="lg" />);
       progress = screen.getByRole("progressbar");
-      expect(progress).toHaveClass("h-3");
+      expect(progress).toHaveClass("h-(--spacing-progress-height)");
     });
 
     it("should have default size set to md", () => {
       render(<Progress value={50} />);
       const progress = screen.getByRole("progressbar");
-      expect(progress).toHaveClass("h-2");
+      expect(progress).toHaveClass("h-(--spacing-progress-height)");
     });
 
     it("should support all variant types", async () => {
@@ -340,7 +340,7 @@ describe("Progress", () => {
     it("should have rounded corners", () => {
       render(<Progress value={50} />);
       const progress = screen.getByRole("progressbar");
-      expect(progress).toHaveClass("rounded-full");
+      expect(progress).toHaveClass("rounded-(--spacing-progress-radius)");
     });
 
     it("should have full width", () => {
@@ -532,7 +532,7 @@ describe("Progress", () => {
       render(<Progress value={75} size="lg" variant="success" />);
 
       const progress = screen.getByRole("progressbar");
-      expect(progress).toHaveClass("h-3");
+      expect(progress).toHaveClass("h-(--spacing-progress-height)");
 
       const innerDiv = progress.querySelector("div");
       expect(innerDiv).toHaveClass("bg-(--color-progress-success-fill)");
@@ -557,7 +557,10 @@ describe("Progress", () => {
       });
       expect(progress).toHaveAttribute("aria-valuenow", "60");
       expect(progress).toHaveAttribute("aria-valuemax", "100");
-      expect(progress).toHaveClass("h-3", "custom-class");
+      expect(progress).toHaveClass(
+        "h-(--spacing-progress-height)",
+        "custom-class"
+      );
       expect(progress).toHaveAttribute("id", "test-progress");
       expect(progress).toHaveAttribute("data-testid", "test");
     });

@@ -145,7 +145,10 @@ describe("Calendar", () => {
       ).filter((btn) => btn.querySelector("svg"));
 
       navButtons.forEach((button) => {
-        expect(button).toHaveClass("h-7", "w-7");
+        expect(button).toHaveClass(
+          "h-(--spacing-calendar-nav-button-size)",
+          "w-(--spacing-calendar-nav-button-size)"
+        );
       });
     });
   });
@@ -175,7 +178,9 @@ describe("Calendar", () => {
       ).filter((btn) => !btn.querySelector("svg") && btn.textContent?.trim());
 
       if (dayButtons.length > 0) {
-        expect(dayButtons[0]).toHaveClass("rounded-md");
+        expect(dayButtons[0]).toHaveClass(
+          "rounded-(--spacing-calendar-nav-button-radius)"
+        );
       }
     });
 
@@ -197,7 +202,7 @@ describe("Calendar", () => {
     it("should apply base styles", () => {
       const { container } = render(<Calendar />);
       const calendar = container.firstChild as HTMLElement;
-      expect(calendar).toHaveClass("p-3");
+      expect(calendar).toHaveClass("p-(--spacing-calendar-container-padding)");
     });
 
     it("should have grid layout for days", () => {
@@ -208,13 +213,17 @@ describe("Calendar", () => {
 
     it("should style day headers correctly", () => {
       const { container } = render(<Calendar />);
-      const headers = container.querySelectorAll(".h-9.w-9");
+      const headers = container.querySelectorAll(
+        'div[class*="h-(--spacing-calendar-cell-size)"]'
+      );
       expect(headers.length).toBeGreaterThanOrEqual(7);
     });
 
     it("should have proper spacing between elements", () => {
       const { container } = render(<Calendar />);
-      const spaceY = container.querySelector(".space-y-4");
+      const spaceY = container.querySelector(
+        'div[class*="space-y-(--spacing-calendar-container-gap)"]'
+      );
       expect(spaceY).toBeInTheDocument();
     });
   });

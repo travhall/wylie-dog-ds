@@ -104,7 +104,7 @@ describe("Label", () => {
       render(<Label error={false}>Normal Label</Label>);
 
       const label = screen.getByText("Normal Label");
-      expect(label).toHaveClass("text-(--color-text-primary)");
+      expect(label).toHaveClass("text-(--color-label-color)");
     });
   });
 
@@ -125,15 +125,15 @@ describe("Label", () => {
     it("should apply size classes correctly", () => {
       const { rerender } = render(<Label size="sm">Small</Label>);
       let label = screen.getByText("Small");
-      expect(label).toHaveClass("text-xs");
+      expect(label).toHaveClass("text-(length:--font-size-label-font-size-sm)");
 
       rerender(<Label size="md">Medium</Label>);
       label = screen.getByText("Medium");
-      expect(label).toHaveClass("text-sm");
+      expect(label).toHaveClass("text-(length:--font-size-label-font-size-md)");
 
       rerender(<Label size="lg">Large</Label>);
       label = screen.getByText("Large");
-      expect(label).toHaveClass("text-base");
+      expect(label).toHaveClass("text-(length:--font-size-label-font-size-lg)");
     });
 
     it("should accept custom className", () => {
