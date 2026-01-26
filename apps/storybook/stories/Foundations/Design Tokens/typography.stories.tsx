@@ -696,14 +696,16 @@ const lineHeights = {
 
 const fontFamilies = {
   sans: {
-    value: typographyFontFamilySans,
+    value: `${typographyFontFamilySans}, ui-sans-serif, system-ui, sans-serif`,
     token: "typography.font-family.sans",
     tailwind: "font-sans",
+    cssVar: "var(--font-family-sans)",
   },
   mono: {
-    value: typographyFontFamilyMono,
+    value: `${typographyFontFamilyMono}, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace`,
     token: "typography.font-family.mono",
     tailwind: "font-mono",
+    cssVar: "var(--font-family-mono)",
   },
 };
 
