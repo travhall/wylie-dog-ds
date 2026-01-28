@@ -411,10 +411,10 @@ export const RegistrationForm: Story = {
                               ? passwordStrength.strength === 1
                                 ? "bg-destructive"
                                 : passwordStrength.strength === 2
-                                  ? "bg-yellow-500"
+                                  ? "bg-(--color-status-warning)"
                                   : passwordStrength.strength === 3
-                                    ? "bg-blue-500"
-                                    : "bg-green-500"
+                                    ? "bg-(--color-status-info)"
+                                    : "bg-(--color-status-success)"
                               : "bg-muted"
                           }`}
                         />

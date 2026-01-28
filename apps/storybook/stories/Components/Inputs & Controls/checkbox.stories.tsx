@@ -74,7 +74,9 @@ export const WithError: Story = {
           I agree to the terms of service
         </Label>
       </div>
-      <p className="text-xs text-red-600 ml-6">This field is required</p>
+      <p className="text-xs text-(--color-status-danger) ml-6">
+        This field is required
+      </p>
     </div>
   ),
 };
@@ -108,7 +110,9 @@ export const States: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="space-y-3">
-        <h4 className="text-sm font-medium text-neutral-700">Normal States</h4>
+        <h4 className="text-sm font-medium text-(--color-text-secondary)">
+          Normal States
+        </h4>
         <div className="flex items-center space-x-2">
           <Checkbox id="unchecked" />
           <Label htmlFor="unchecked">Unchecked</Label>
@@ -120,7 +124,7 @@ export const States: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="text-sm font-medium text-neutral-700">
+        <h4 className="text-sm font-medium text-(--color-text-secondary)">
           Disabled States
         </h4>
         <div className="flex items-center space-x-2">
@@ -134,7 +138,9 @@ export const States: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="text-sm font-medium text-neutral-700">Error States</h4>
+        <h4 className="text-sm font-medium text-(--color-text-secondary)">
+          Error States
+        </h4>
         <div className="flex items-center space-x-2">
           <Checkbox id="error-unchecked" error />
           <Label htmlFor="error-unchecked" error>
@@ -233,7 +239,7 @@ export const FormExamples: Story = {
           <input
             id="reg-email"
             type="email"
-            className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
             placeholder="your@email.com"
           />
         </div>
@@ -245,7 +251,7 @@ export const FormExamples: Story = {
           <input
             id="reg-password"
             type="password"
-            className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
             placeholder="••••••••"
           />
         </div>
@@ -270,7 +276,7 @@ export const FormExamples: Story = {
       {/* Survey Form */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Quick Survey</h3>
-        <p className="text-sm text-neutral-600">
+        <p className="text-sm text-(--color-text-secondary)">
           What topics interest you? (Select all that apply)
         </p>
 

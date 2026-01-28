@@ -90,7 +90,11 @@ export const WithError: Story = {
         aria-invalid
         {...args}
       />
-      <p id="error-message" className="text-xs text-red-600" role="alert">
+      <p
+        id="error-message"
+        className="text-xs text-(--color-status-danger)"
+        role="alert"
+      >
         Username must be at least 3 characters long
       </p>
     </div>
@@ -281,7 +285,10 @@ export const WithInteractions: Story = {
             placeholder="Enter username"
             aria-describedby="username-help"
           />
-          <p id="username-help" className="text-xs text-neutral-600">
+          <p
+            id="username-help"
+            className="text-xs text-(--color-text-secondary)"
+          >
             At least 3 characters
           </p>
         </div>
@@ -296,7 +303,10 @@ export const WithInteractions: Story = {
             placeholder="Enter email"
             aria-describedby="email-error"
           />
-          <p id="email-error" className="text-xs text-red-600 hidden">
+          <p
+            id="email-error"
+            className="text-xs text-(--color-status-danger) hidden"
+          >
             Invalid email format
           </p>
         </div>
@@ -403,7 +413,9 @@ export const DosDonts: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-8 max-w-4xl">
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-green-700">✅ Do</h4>
+        <h4 className="text-lg font-semibold mb-4 text-(--color-status-success)">
+          ✅ Do
+        </h4>
 
         <div className="space-y-6">
           <div className="space-y-2">
@@ -431,7 +443,7 @@ export const DosDonts: Story = {
             />
             <p
               id="username-error"
-              className="text-xs text-red-600"
+              className="text-xs text-(--color-status-danger)"
               role="alert"
             >
               Username is required
@@ -461,7 +473,9 @@ export const DosDonts: Story = {
       </div>
 
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-red-700">❌ Don't</h4>
+        <h4 className="text-lg font-semibold mb-4 text-(--color-status-danger)">
+          ❌ Don't
+        </h4>
 
         <div className="space-y-6">
           <div className="space-y-2">
@@ -480,7 +494,9 @@ export const DosDonts: Story = {
               Username
             </Label>
             <Input id="bad-username" error />
-            <p className="text-xs text-red-600">Username is required</p>
+            <p className="text-xs text-(--color-status-danger)">
+              Username is required
+            </p>
             <p className="text-xs text-muted-foreground">
               Missing aria-describedby
             </p>

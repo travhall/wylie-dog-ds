@@ -80,20 +80,30 @@ export const WithValidation: Story = {
     return (
       <Form onSubmit={handleSubmit} className="w-100 space-y-6">
         <div className="space-y-2">
-          <Label htmlFor="name" className={errors.name ? "text-red-600" : ""}>
+          <Label
+            htmlFor="name"
+            className={errors.name ? "text-(--color-status-danger)" : ""}
+          >
             Name {errors.name && "*"}
           </Label>
           <Input
             id="name"
             name="name"
             placeholder="Enter your name"
-            className={errors.name ? "border-red-500" : ""}
+            className={errors.name ? "border-(--color-border-danger)" : ""}
           />
-          {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
+          {errors.name && (
+            <p className="text-sm text-(--color-status-danger)">
+              {errors.name}
+            </p>
+          )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="email" className={errors.email ? "text-red-600" : ""}>
+          <Label
+            htmlFor="email"
+            className={errors.email ? "text-(--color-status-danger)" : ""}
+          >
             Email {errors.email && "*"}
           </Label>
           <Input
@@ -101,10 +111,12 @@ export const WithValidation: Story = {
             name="email"
             type="email"
             placeholder="Enter your email"
-            className={errors.email ? "border-red-500" : ""}
+            className={errors.email ? "border-(--color-border-danger)" : ""}
           />
           {errors.email && (
-            <p className="text-sm text-red-600">{errors.email}</p>
+            <p className="text-sm text-(--color-status-danger)">
+              {errors.email}
+            </p>
           )}
         </div>
 

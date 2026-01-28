@@ -37,7 +37,7 @@ export const Basic: Story = {
         <CardTitle>Basic Card</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-neutral-600">
+        <p className="text-(--color-text-secondary)">
           This is a basic card with a title and some content text.
         </p>
       </CardContent>
@@ -52,7 +52,7 @@ export const WithActions: Story = {
         <CardTitle>Project Status</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-neutral-600">
+        <p className="text-(--color-text-secondary)">
           Track the progress of your current project with this status card.
         </p>
         <div className="flex items-center justify-between">
@@ -76,16 +76,19 @@ export const ProductCard: Story = {
         <div className="flex items-start justify-between">
           <div>
             <CardTitle>Premium Plan</CardTitle>
-            <p className="text-sm text-neutral-600 mt-1">For growing teams</p>
+            <p className="text-sm text-(--color-text-secondary) mt-1">
+              For growing teams
+            </p>
           </div>
           <Badge>Popular</Badge>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="text-3xl font-bold">
-          $29<span className="text-lg text-neutral-600">/month</span>
+          $29
+          <span className="text-lg text-(--color-text-secondary)">/month</span>
         </div>
-        <ul className="space-y-2 text-sm text-neutral-600">
+        <ul className="space-y-2 text-sm text-(--color-text-secondary)">
           <li>✓ Up to 10 team members</li>
           <li>✓ Advanced analytics</li>
           <li>✓ Priority support</li>
@@ -105,7 +108,7 @@ export const CardVariations: Story = {
           <CardTitle>Simple Card</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-neutral-600">
+          <p className="text-(--color-text-secondary)">
             A simple card with minimal content.
           </p>
         </CardContent>
@@ -116,7 +119,7 @@ export const CardVariations: Story = {
           <CardTitle className="text-primary-700">Highlighted Card</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-neutral-600">
+          <p className="text-(--color-text-secondary)">
             A card with custom border color for emphasis.
           </p>
         </CardContent>
@@ -127,18 +130,18 @@ export const CardVariations: Story = {
           <CardTitle>Elevated Card</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-neutral-600">
+          <p className="text-(--color-text-secondary)">
             A card with increased shadow for more prominence.
           </p>
         </CardContent>
       </Card>
 
-      <Card className="bg-neutral-50">
+      <Card className="bg-(--color-background-secondary)">
         <CardHeader>
           <CardTitle>Subtle Background</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-neutral-600">
+          <p className="text-(--color-text-secondary)">
             A card with a subtle background color variation.
           </p>
         </CardContent>

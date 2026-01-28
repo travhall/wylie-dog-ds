@@ -397,10 +397,12 @@ export const FormWithValidation: Story = {
                 name="email"
                 type="email"
                 placeholder="Enter your email"
-                className={errors.email ? "border-red-500" : ""}
+                className={errors.email ? "border-(--color-border-danger)" : ""}
               />
               {errors.email && (
-                <p className="text-sm text-red-600">{errors.email}</p>
+                <p className="text-sm text-(--color-status-danger)">
+                  {errors.email}
+                </p>
               )}
             </div>
 
@@ -413,10 +415,14 @@ export const FormWithValidation: Story = {
                 name="password"
                 type="password"
                 placeholder="Create a password"
-                className={errors.password ? "border-red-500" : ""}
+                className={
+                  errors.password ? "border-(--color-border-danger)" : ""
+                }
               />
               {errors.password && (
-                <p className="text-sm text-red-600">{errors.password}</p>
+                <p className="text-sm text-(--color-status-danger)">
+                  {errors.password}
+                </p>
               )}
               <p className="text-xs text-(--color-text-tertiary)">
                 Must be at least 8 characters long
@@ -432,10 +438,14 @@ export const FormWithValidation: Story = {
                 name="confirm-password"
                 type="password"
                 placeholder="Confirm your password"
-                className={errors.confirmPassword ? "border-red-500" : ""}
+                className={
+                  errors.confirmPassword ? "border-(--color-border-danger)" : ""
+                }
               />
               {errors.confirmPassword && (
-                <p className="text-sm text-red-600">{errors.confirmPassword}</p>
+                <p className="text-sm text-(--color-status-danger)">
+                  {errors.confirmPassword}
+                </p>
               )}
             </div>
 
@@ -464,8 +474,8 @@ export const FormWithValidation: Story = {
             </div>
 
             {submitted && Object.keys(errors).length === 0 && (
-              <div className="p-3 bg-green-50 border border-green-200 rounded-md">
-                <p className="text-sm text-green-800">
+              <div className="p-3 bg-(--color-interactive-success)/10 border border-(--color-interactive-success) rounded-md">
+                <p className="text-sm text-(--color-status-success)">
                   ✓ Account created successfully!
                 </p>
               </div>
@@ -539,7 +549,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="email-notifications">Email notifications</Label>
-                <p className="text-xs text-neutral-600">
+                <p className="text-xs text-(--color-text-secondary)">
                   Get notified about important updates
                 </p>
               </div>
@@ -549,7 +559,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="push-notifications">Push notifications</Label>
-                <p className="text-xs text-neutral-600">
+                <p className="text-xs text-(--color-text-secondary)">
                   Receive browser notifications
                 </p>
               </div>
@@ -559,7 +569,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="marketing-emails">Marketing emails</Label>
-                <p className="text-xs text-neutral-600">
+                <p className="text-xs text-(--color-text-secondary)">
                   Product updates and promotions
                 </p>
               </div>
@@ -747,7 +757,7 @@ export const ProjectCreation: Story = {
           <div className="flex items-center justify-between">
             <div>
               <Label htmlFor="auto-deploy">Auto-deploy to staging</Label>
-              <p className="text-xs text-neutral-600">
+              <p className="text-xs text-(--color-text-secondary)">
                 Automatically deploy commits to staging environment
               </p>
             </div>
@@ -757,7 +767,7 @@ export const ProjectCreation: Story = {
           <div className="flex items-center justify-between">
             <div>
               <Label htmlFor="notifications">Build notifications</Label>
-              <p className="text-xs text-neutral-600">
+              <p className="text-xs text-(--color-text-secondary)">
                 Get notified about build status
               </p>
             </div>
@@ -999,7 +1009,7 @@ export const WithInteractions: Story = {
                 <div className="flex items-center justify-between">
                   <div>
                     <Label htmlFor="marketing-int">Marketing emails</Label>
-                    <p className="text-xs text-neutral-600">
+                    <p className="text-xs text-(--color-text-secondary)">
                       Promotional content
                     </p>
                   </div>
@@ -1460,8 +1470,8 @@ export const RealTimeValidation: Story = {
                 className={
                   touched.email
                     ? errors.email
-                      ? "border-red-500 focus-visible:ring-red-500"
-                      : "border-green-500 focus-visible:ring-green-500"
+                      ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
+                      : "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
                     : ""
                 }
                 aria-invalid={touched.email && !!errors.email}
@@ -1472,14 +1482,17 @@ export const RealTimeValidation: Story = {
               {touched.email && errors.email && (
                 <p
                   id="email-error"
-                  className="text-sm text-red-600"
+                  className="text-sm text-(--color-status-danger)"
                   role="alert"
                 >
                   ✕ {errors.email}
                 </p>
               )}
               {touched.email && !errors.email && formValues.email && (
-                <p id="email-success" className="text-sm text-green-600">
+                <p
+                  id="email-success"
+                  className="text-sm text-(--color-status-success)"
+                >
                   ✓ Valid email address
                 </p>
               )}
@@ -1499,8 +1512,8 @@ export const RealTimeValidation: Story = {
                 className={
                   touched.username
                     ? errors.username
-                      ? "border-red-500 focus-visible:ring-red-500"
-                      : "border-green-500 focus-visible:ring-green-500"
+                      ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
+                      : "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
                     : ""
                 }
                 aria-invalid={touched.username && !!errors.username}
@@ -1511,14 +1524,14 @@ export const RealTimeValidation: Story = {
               {touched.username && errors.username && (
                 <p
                   id="username-error"
-                  className="text-sm text-red-600"
+                  className="text-sm text-(--color-status-danger)"
                   role="alert"
                 >
                   ✕ {errors.username}
                 </p>
               )}
               {touched.username && !errors.username && formValues.username && (
-                <p className="text-sm text-green-600">
+                <p className="text-sm text-(--color-status-success)">
                   ✓ Username is available
                 </p>
               )}
@@ -1546,22 +1559,27 @@ export const RealTimeValidation: Story = {
                   className={
                     touched.password
                       ? errors.password
-                        ? "border-red-500 focus-visible:ring-red-500"
-                        : "border-green-500 focus-visible:ring-green-500"
+                        ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
+                        : "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
                       : ""
                   }
                   aria-invalid={touched.password && !!errors.password}
                   aria-describedby="password-requirements"
                 />
                 {touched.password && errors.password && (
-                  <p className="text-sm text-red-600" role="alert">
+                  <p
+                    className="text-sm text-(--color-status-danger)"
+                    role="alert"
+                  >
                     ✕ {errors.password}
                   </p>
                 )}
                 {touched.password &&
                   !errors.password &&
                   formValues.password && (
-                    <p className="text-sm text-green-600">✓ Strong password</p>
+                    <p className="text-sm text-(--color-status-success)">
+                      ✓ Strong password
+                    </p>
                   )}
               </div>
 
@@ -1582,8 +1600,8 @@ export const RealTimeValidation: Story = {
                   className={
                     touched.confirmPassword
                       ? errors.confirmPassword
-                        ? "border-red-500 focus-visible:ring-red-500"
-                        : "border-green-500 focus-visible:ring-green-500"
+                        ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
+                        : "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
                       : ""
                   }
                   aria-invalid={
@@ -1591,14 +1609,19 @@ export const RealTimeValidation: Story = {
                   }
                 />
                 {touched.confirmPassword && errors.confirmPassword && (
-                  <p className="text-sm text-red-600" role="alert">
+                  <p
+                    className="text-sm text-(--color-status-danger)"
+                    role="alert"
+                  >
                     ✕ {errors.confirmPassword}
                   </p>
                 )}
                 {touched.confirmPassword &&
                   !errors.confirmPassword &&
                   formValues.confirmPassword && (
-                    <p className="text-sm text-green-600">✓ Passwords match</p>
+                    <p className="text-sm text-(--color-status-success)">
+                      ✓ Passwords match
+                    </p>
                   )}
               </div>
             </div>
@@ -1611,7 +1634,7 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     formValues.password.length >= 8
-                      ? "text-green-600"
+                      ? "text-(--color-status-success)"
                       : "text-(--color-text-secondary)"
                   }
                 >
@@ -1621,7 +1644,7 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[a-z])/.test(formValues.password)
-                      ? "text-green-600"
+                      ? "text-(--color-status-success)"
                       : "text-(--color-text-secondary)"
                   }
                 >
@@ -1631,7 +1654,7 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[A-Z])/.test(formValues.password)
-                      ? "text-green-600"
+                      ? "text-(--color-status-success)"
                       : "text-(--color-text-secondary)"
                   }
                 >
@@ -1641,7 +1664,7 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*\d)/.test(formValues.password)
-                      ? "text-green-600"
+                      ? "text-(--color-status-success)"
                       : "text-(--color-text-secondary)"
                   }
                 >
@@ -1650,7 +1673,7 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[@$!%*?&])/.test(formValues.password)
-                      ? "text-green-600"
+                      ? "text-(--color-status-success)"
                       : "text-(--color-text-secondary)"
                   }
                 >
@@ -1674,23 +1697,26 @@ export const RealTimeValidation: Story = {
                   className={
                     touched.phoneNumber
                       ? errors.phoneNumber
-                        ? "border-red-500 focus-visible:ring-red-500"
+                        ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
                         : formValues.phoneNumber
-                          ? "border-green-500 focus-visible:ring-green-500"
+                          ? "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
                           : ""
                       : ""
                   }
                   aria-invalid={touched.phoneNumber && !!errors.phoneNumber}
                 />
                 {touched.phoneNumber && errors.phoneNumber && (
-                  <p className="text-sm text-red-600" role="alert">
+                  <p
+                    className="text-sm text-(--color-status-danger)"
+                    role="alert"
+                  >
                     ✕ {errors.phoneNumber}
                   </p>
                 )}
                 {touched.phoneNumber &&
                   !errors.phoneNumber &&
                   formValues.phoneNumber && (
-                    <p className="text-sm text-green-600">
+                    <p className="text-sm text-(--color-status-success)">
                       ✓ Valid phone number
                     </p>
                   )}
@@ -1713,30 +1739,35 @@ export const RealTimeValidation: Story = {
                   className={
                     touched.age
                       ? errors.age
-                        ? "border-red-500 focus-visible:ring-red-500"
-                        : "border-green-500 focus-visible:ring-green-500"
+                        ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
+                        : "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
                       : ""
                   }
                   aria-invalid={touched.age && !!errors.age}
                 />
                 {touched.age && errors.age && (
-                  <p className="text-sm text-red-600" role="alert">
+                  <p
+                    className="text-sm text-(--color-status-danger)"
+                    role="alert"
+                  >
                     ✕ {errors.age}
                   </p>
                 )}
                 {touched.age && !errors.age && formValues.age && (
-                  <p className="text-sm text-green-600">✓ Valid age</p>
+                  <p className="text-sm text-(--color-status-success)">
+                    ✓ Valid age
+                  </p>
                 )}
               </div>
             </div>
 
             {submitSuccess && (
               <div
-                className="p-4 bg-green-50 border-2 border-green-500 rounded-md"
+                className="p-4 bg-(--color-interactive-success)/10 border-2 border-(--color-interactive-success) rounded-md"
                 role="alert"
                 aria-live="polite"
               >
-                <p className="text-sm font-medium text-green-800">
+                <p className="text-sm font-medium text-(--color-status-success)">
                   ✓ Registration successful! Welcome aboard.
                 </p>
               </div>

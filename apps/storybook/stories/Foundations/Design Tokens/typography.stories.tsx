@@ -709,6 +709,41 @@ const fontFamilies = {
   },
 };
 
+// Letter spacing tokens - placeholder for when tokens are added
+// TODO: Import from @wyliedog/tokens when letter-spacing tokens exist
+const letterSpacings = {
+  tighter: {
+    value: "-0.05em",
+    token: "typography.letter-spacing.tighter",
+    tailwind: "tracking-tighter",
+  },
+  tight: {
+    value: "-0.025em",
+    token: "typography.letter-spacing.tight",
+    tailwind: "tracking-tight",
+  },
+  normal: {
+    value: "0em",
+    token: "typography.letter-spacing.normal",
+    tailwind: "tracking-normal",
+  },
+  wide: {
+    value: "0.025em",
+    token: "typography.letter-spacing.wide",
+    tailwind: "tracking-wide",
+  },
+  wider: {
+    value: "0.05em",
+    token: "typography.letter-spacing.wider",
+    tailwind: "tracking-wider",
+  },
+  widest: {
+    value: "0.1em",
+    token: "typography.letter-spacing.widest",
+    tailwind: "tracking-widest",
+  },
+};
+
 // Extracted component for proper React hooks behavior
 function TypographyPlaygroundComponent() {
   const [selectedFontSize, setSelectedFontSize] = useState<string>("base");
@@ -717,6 +752,8 @@ function TypographyPlaygroundComponent() {
   const [selectedLineHeight, setSelectedLineHeight] =
     useState<string>("normal");
   const [selectedFontFamily, setSelectedFontFamily] = useState<string>("sans");
+  const [selectedLetterSpacing, setSelectedLetterSpacing] =
+    useState<string>("normal");
   const [previewText, setPreviewText] = useState(
     "The quick brown fox jumps over the lazy dog. Typography is the art and technique of arranging type to make written language legible, readable, and appealing."
   );
@@ -729,6 +766,8 @@ function TypographyPlaygroundComponent() {
     lineHeights[selectedLineHeight as keyof typeof lineHeights];
   const currentFontFamily =
     fontFamilies[selectedFontFamily as keyof typeof fontFamilies];
+  const currentLetterSpacing =
+    letterSpacings[selectedLetterSpacing as keyof typeof letterSpacings];
 
   return (
     <div className="space-y-6">
@@ -857,6 +896,33 @@ function TypographyPlaygroundComponent() {
             )}
           </div>
 
+          {/* Letter Spacing */}
+          <div className="space-y-3">
+            <Label className="text-sm font-semibold">Letter Spacing</Label>
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+              {Object.keys(letterSpacings).map((spacing) => (
+                <button
+                  key={spacing}
+                  type="button"
+                  onClick={() => setSelectedLetterSpacing(spacing)}
+                  className={`px-3 py-2 text-xs rounded-md border transition-all ${
+                    selectedLetterSpacing === spacing
+                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                      : "bg-background hover:bg-muted border-border"
+                  }`}
+                >
+                  {spacing}
+                </button>
+              ))}
+            </div>
+            {showTokenDetails && (
+              <div className="text-xs text-muted-foreground font-mono space-y-1">
+                <div>Value: {currentLetterSpacing.value}</div>
+                <div>Token: {currentLetterSpacing.token}</div>
+              </div>
+            )}
+          </div>
+
           {/* Toggle Token Details */}
           <div className="flex items-center gap-2 pt-2">
             <Switch
@@ -898,6 +964,7 @@ function TypographyPlaygroundComponent() {
               fontWeight: currentFontWeight.value,
               lineHeight: currentLineHeight.value,
               fontFamily: currentFontFamily.value,
+              letterSpacing: currentLetterSpacing.value,
             }}
           >
             {previewText}
@@ -920,6 +987,7 @@ function TypographyPlaygroundComponent() {
                 <div>font-weight: {currentFontWeight.value};</div>
                 <div>line-height: {currentLineHeight.value};</div>
                 <div>font-family: {currentFontFamily.value};</div>
+                <div>letter-spacing: {currentLetterSpacing.value};</div>
               </div>
             </div>
 
@@ -931,6 +999,7 @@ function TypographyPlaygroundComponent() {
                 <div>{currentFontWeight.token}</div>
                 <div>{currentLineHeight.token}</div>
                 <div>{currentFontFamily.token}</div>
+                <div>{currentLetterSpacing.token}</div>
               </div>
             </div>
           </div>
@@ -957,7 +1026,7 @@ function TypographyPlaygroundComponent() {
               <code>
                 className="{currentFontSize.tailwind}{" "}
                 {currentFontWeight.tailwind} {currentLineHeight.tailwind}{" "}
-                {currentFontFamily.tailwind}"
+                {currentFontFamily.tailwind} {currentLetterSpacing.tailwind}"
               </code>
             </div>
           </div>
@@ -968,7 +1037,7 @@ function TypographyPlaygroundComponent() {
               variant="outline"
               size="sm"
               onClick={() => {
-                const cssText = `font-size: ${currentFontSize.value};\nfont-weight: ${currentFontWeight.value};\nline-height: ${currentLineHeight.value};\nfont-family: ${currentFontFamily.value};`;
+                const cssText = `font-size: ${currentFontSize.value};\nfont-weight: ${currentFontWeight.value};\nline-height: ${currentLineHeight.value};\nfont-family: ${currentFontFamily.value};\nletter-spacing: ${currentLetterSpacing.value};`;
                 navigator.clipboard.writeText(cssText);
               }}
             >
@@ -978,7 +1047,7 @@ function TypographyPlaygroundComponent() {
               variant="outline"
               size="sm"
               onClick={() => {
-                const tokenText = `${currentFontSize.token}\n${currentFontWeight.token}\n${currentLineHeight.token}\n${currentFontFamily.token}`;
+                const tokenText = `${currentFontSize.token}\n${currentFontWeight.token}\n${currentLineHeight.token}\n${currentFontFamily.token}\n${currentLetterSpacing.token}`;
                 navigator.clipboard.writeText(tokenText);
               }}
             >
@@ -988,7 +1057,7 @@ function TypographyPlaygroundComponent() {
               variant="outline"
               size="sm"
               onClick={() => {
-                const tailwindText = `${currentFontSize.tailwind} ${currentFontWeight.tailwind} ${currentLineHeight.tailwind} ${currentFontFamily.tailwind}`;
+                const tailwindText = `${currentFontSize.tailwind} ${currentFontWeight.tailwind} ${currentLineHeight.tailwind} ${currentFontFamily.tailwind} ${currentLetterSpacing.tailwind}`;
                 navigator.clipboard.writeText(tailwindText);
               }}
             >
@@ -1008,6 +1077,7 @@ function TypographyPlaygroundComponent() {
             setSelectedFontWeight("normal");
             setSelectedLineHeight("normal");
             setSelectedFontFamily("sans");
+            setSelectedLetterSpacing("normal");
             setPreviewText(
               "The quick brown fox jumps over the lazy dog. Typography is the art and technique of arranging type to make written language legible, readable, and appealing."
             );

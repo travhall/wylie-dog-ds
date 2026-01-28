@@ -70,7 +70,9 @@ export const WithError: Story = {
           <SelectItem value="business">Business</SelectItem>
         </SelectContent>
       </Select>
-      <p className="text-xs text-red-600">Please select a category</p>
+      <p className="text-xs text-(--color-status-danger)">
+        Please select a category
+      </p>
     </div>
   ),
 };
@@ -212,7 +214,7 @@ export const FormExamples: Story = {
             </Label>
             <input
               id="first-name"
-              className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="John"
             />
           </div>
@@ -222,7 +224,7 @@ export const FormExamples: Story = {
             </Label>
             <input
               id="last-name"
-              className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Doe"
             />
           </div>

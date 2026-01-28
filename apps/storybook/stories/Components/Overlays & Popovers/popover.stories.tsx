@@ -108,7 +108,7 @@ export const WithForm: Story = {
         <div className="grid gap-4">
           <div className="space-y-2">
             <h4 className="font-medium leading-none">Add New User</h4>
-            <p className="text-sm text-neutral-600">
+            <p className="text-sm text-(--color-text-secondary)">
               Enter the user details below.
             </p>
           </div>
@@ -129,7 +129,7 @@ export const WithForm: Story = {
               <Label htmlFor="role">Role</Label>
               <select
                 id="role"
-                className="w-full px-3 py-2 border border-neutral-300 rounded-md text-sm"
+                className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md text-sm"
               >
                 <option>User</option>
                 <option>Admin</option>
@@ -210,7 +210,7 @@ export const Settings: Story = {
               </Label>
               <select
                 id="language"
-                className="w-full px-2 py-1 border border-neutral-300 rounded text-sm"
+                className="w-full px-2 py-1 border border-(--color-border-secondary) rounded text-sm"
               >
                 <option>English</option>
                 <option>Spanish</option>
@@ -235,7 +235,9 @@ export const Settings: Story = {
 export const FilterMenu: Story = {
   render: () => (
     <div className="space-y-4">
-      <p className="text-sm text-neutral-600">Filter your search results:</p>
+      <p className="text-sm text-(--color-text-secondary)">
+        Filter your search results:
+      </p>
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline">
@@ -247,7 +249,7 @@ export const FilterMenu: Story = {
           <div className="grid gap-4">
             <div className="space-y-2">
               <h4 className="font-medium leading-none">Filter Options</h4>
-              <p className="text-sm text-neutral-600">
+              <p className="text-sm text-(--color-text-secondary)">
                 Refine your search results
               </p>
             </div>
@@ -422,13 +424,27 @@ export const DatePicker: Story = {
             </div>
 
             <div className="grid grid-cols-7 gap-1 text-center text-sm">
-              <div className="p-2 font-medium text-neutral-600">S</div>
-              <div className="p-2 font-medium text-neutral-600">M</div>
-              <div className="p-2 font-medium text-neutral-600">T</div>
-              <div className="p-2 font-medium text-neutral-600">W</div>
-              <div className="p-2 font-medium text-neutral-600">T</div>
-              <div className="p-2 font-medium text-neutral-600">F</div>
-              <div className="p-2 font-medium text-neutral-600">S</div>
+              <div className="p-2 font-medium text-(--color-text-secondary)">
+                S
+              </div>
+              <div className="p-2 font-medium text-(--color-text-secondary)">
+                M
+              </div>
+              <div className="p-2 font-medium text-(--color-text-secondary)">
+                T
+              </div>
+              <div className="p-2 font-medium text-(--color-text-secondary)">
+                W
+              </div>
+              <div className="p-2 font-medium text-(--color-text-secondary)">
+                T
+              </div>
+              <div className="p-2 font-medium text-(--color-text-secondary)">
+                F
+              </div>
+              <div className="p-2 font-medium text-(--color-text-secondary)">
+                S
+              </div>
 
               {Array.from({ length: 35 }, (_, i) => {
                 const day = i - 6;
@@ -437,9 +453,9 @@ export const DatePicker: Story = {
                 return (
                   <button
                     key={i}
-                    className={`p-2 rounded text-sm hover:bg-neutral-100 ${
-                      !isCurrentMonth ? "text-neutral-300" : ""
-                    } ${isSelected ? "bg-blue-500 text-white hover:bg-blue-600" : ""}`}
+                    className={`p-2 rounded text-sm hover:bg-(--color-background-tertiary) ${
+                      !isCurrentMonth ? "text-(--color-text-tertiary)" : ""
+                    } ${isSelected ? "bg-(--color-interactive-primary) text-white hover:bg-(--color-interactive-primary-hover)" : ""}`}
                   >
                     {isCurrentMonth ? day : ""}
                   </button>
@@ -475,7 +491,9 @@ export const ActionMenu: Story = {
       <div className="flex items-center justify-between p-4 border rounded-lg">
         <div>
           <h4 className="font-medium">Project Alpha</h4>
-          <p className="text-sm text-neutral-600">Last updated 2 hours ago</p>
+          <p className="text-sm text-(--color-text-secondary)">
+            Last updated 2 hours ago
+          </p>
         </div>
         <Popover>
           <PopoverTrigger asChild>
@@ -485,20 +503,20 @@ export const ActionMenu: Story = {
           </PopoverTrigger>
           <PopoverContent className="w-48 p-1">
             <div className="space-y-1">
-              <button className="w-full text-left px-3 py-2 text-sm hover:bg-neutral-100 rounded">
+              <button className="w-full text-left px-3 py-2 text-sm hover:bg-(--color-background-tertiary) rounded">
                 Edit Project
               </button>
-              <button className="w-full text-left px-3 py-2 text-sm hover:bg-neutral-100 rounded">
+              <button className="w-full text-left px-3 py-2 text-sm hover:bg-(--color-background-tertiary) rounded">
                 Duplicate
               </button>
-              <button className="w-full text-left px-3 py-2 text-sm hover:bg-neutral-100 rounded">
+              <button className="w-full text-left px-3 py-2 text-sm hover:bg-(--color-background-tertiary) rounded">
                 Export
               </button>
               <Separator className="my-1" />
-              <button className="w-full text-left px-3 py-2 text-sm hover:bg-neutral-100 rounded">
+              <button className="w-full text-left px-3 py-2 text-sm hover:bg-(--color-background-tertiary) rounded">
                 Archive
               </button>
-              <button className="w-full text-left px-3 py-2 text-sm hover:bg-red-100 text-red-600 rounded">
+              <button className="w-full text-left px-3 py-2 text-sm hover:bg-(--color-status-danger)/10 text-(--color-status-danger) rounded">
                 Delete
               </button>
             </div>
@@ -530,14 +548,14 @@ export const Help: Story = {
           <PopoverContent className="w-80">
             <div className="space-y-2">
               <h4 className="font-medium">Password Requirements</h4>
-              <ul className="text-sm space-y-1 text-neutral-600">
+              <ul className="text-sm space-y-1 text-(--color-text-secondary)">
                 <li>• At least 8 characters long</li>
                 <li>• Contains at least one uppercase letter</li>
                 <li>• Contains at least one lowercase letter</li>
                 <li>• Contains at least one number</li>
                 <li>• Contains at least one special character (!@#$%^&*)</li>
               </ul>
-              <p className="text-xs text-neutral-500 pt-2">
+              <p className="text-xs text-(--color-text-tertiary) pt-2">
                 A strong password helps protect your account from unauthorized
                 access.
               </p>
@@ -567,7 +585,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-neutral-600">
+        <p className="text-sm text-(--color-text-secondary)">
           Popovers support keyboard navigation. Use Tab to focus triggers,
           Enter/Space to open, Escape to close, and Tab to navigate within.
         </p>
@@ -597,7 +615,10 @@ export const Accessibility: Story = {
                   defaultValue="John Doe"
                   aria-describedby="name-help"
                 />
-                <p id="name-help" className="text-xs text-neutral-600">
+                <p
+                  id="name-help"
+                  className="text-xs text-(--color-text-secondary)"
+                >
                   This name will be visible to other users
                 </p>
               </div>
@@ -623,7 +644,10 @@ export const Accessibility: Story = {
                   aria-describedby="notification-help"
                 />
               </div>
-              <p id="notification-help" className="text-xs text-neutral-600">
+              <p
+                id="notification-help"
+                className="text-xs text-(--color-text-secondary)"
+              >
                 Receive updates about your account activity
               </p>
             </div>
@@ -638,7 +662,10 @@ export const Accessibility: Story = {
         </PopoverContent>
       </Popover>
 
-      <p id="accessible-description" className="text-xs text-neutral-600">
+      <p
+        id="accessible-description"
+        className="text-xs text-(--color-text-secondary)"
+      >
         Click to open account settings panel
       </p>
     </div>

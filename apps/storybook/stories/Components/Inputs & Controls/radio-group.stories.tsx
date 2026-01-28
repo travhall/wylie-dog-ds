@@ -99,7 +99,7 @@ export const WithDescriptions: Story = {
             Basic Plan
           </Label>
         </div>
-        <p className="text-sm text-neutral-600 ml-6">
+        <p className="text-sm text-(--color-text-secondary) ml-6">
           Perfect for individuals. Includes 5GB storage and basic features.
         </p>
       </div>
@@ -111,7 +111,7 @@ export const WithDescriptions: Story = {
             Standard Plan
           </Label>
         </div>
-        <p className="text-sm text-neutral-600 ml-6">
+        <p className="text-sm text-(--color-text-secondary) ml-6">
           Great for small teams. Includes 50GB storage and collaboration tools.
         </p>
       </div>
@@ -123,7 +123,7 @@ export const WithDescriptions: Story = {
             Premium Plan
           </Label>
         </div>
-        <p className="text-sm text-neutral-600 ml-6">
+        <p className="text-sm text-(--color-text-secondary) ml-6">
           For growing businesses. Unlimited storage and advanced analytics.
         </p>
       </div>
@@ -150,12 +150,16 @@ export const WithPricing: Story = {
               <Label htmlFor="price-starter" className="font-medium">
                 Starter
               </Label>
-              <p className="text-sm text-neutral-600">For individuals</p>
+              <p className="text-sm text-(--color-text-secondary)">
+                For individuals
+              </p>
             </div>
           </div>
           <div className="text-right">
             <div className="font-semibold">$9/month</div>
-            <div className="text-sm text-neutral-600">billed monthly</div>
+            <div className="text-sm text-(--color-text-secondary)">
+              billed monthly
+            </div>
           </div>
         </div>
 
@@ -166,12 +170,16 @@ export const WithPricing: Story = {
               <Label htmlFor="price-pro" className="font-medium">
                 Pro
               </Label>
-              <p className="text-sm text-neutral-600">For small teams</p>
+              <p className="text-sm text-(--color-text-secondary)">
+                For small teams
+              </p>
             </div>
           </div>
           <div className="text-right">
             <div className="font-semibold">$29/month</div>
-            <div className="text-sm text-neutral-600">billed monthly</div>
+            <div className="text-sm text-(--color-text-secondary)">
+              billed monthly
+            </div>
           </div>
         </div>
 
@@ -182,14 +190,16 @@ export const WithPricing: Story = {
               <Label htmlFor="price-enterprise" className="font-medium">
                 Enterprise
               </Label>
-              <p className="text-sm text-neutral-600">
+              <p className="text-sm text-(--color-text-secondary)">
                 For large organizations
               </p>
             </div>
           </div>
           <div className="text-right">
             <div className="font-semibold">Custom</div>
-            <div className="text-sm text-neutral-600">contact sales</div>
+            <div className="text-sm text-(--color-text-secondary)">
+              contact sales
+            </div>
           </div>
         </div>
       </RadioGroup>
@@ -208,7 +218,9 @@ export const States: Story = {
   render: () => (
     <div className="space-y-6">
       <div className="space-y-3">
-        <h4 className="font-medium text-neutral-700">Normal States</h4>
+        <h4 className="font-medium text-(--color-text-secondary)">
+          Normal States
+        </h4>
         <RadioGroup defaultValue="selected">
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="unselected" id="normal-unselected" />
@@ -222,7 +234,9 @@ export const States: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="font-medium text-neutral-700">Disabled States</h4>
+        <h4 className="font-medium text-(--color-text-secondary)">
+          Disabled States
+        </h4>
         <RadioGroup defaultValue="disabled-selected">
           <div className="flex items-center space-x-2">
             <RadioGroupItem
@@ -267,21 +281,27 @@ export const FormExamples: Story = {
                 <RadioGroupItem value="standard" id="shipping-standard" />
                 <Label htmlFor="shipping-standard">Standard Shipping</Label>
               </div>
-              <span className="text-sm text-neutral-600">3-5 days</span>
+              <span className="text-sm text-(--color-text-secondary)">
+                3-5 days
+              </span>
             </div>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="express" id="shipping-express" />
                 <Label htmlFor="shipping-express">Express Shipping</Label>
               </div>
-              <span className="text-sm text-neutral-600">1-2 days</span>
+              <span className="text-sm text-(--color-text-secondary)">
+                1-2 days
+              </span>
             </div>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="overnight" id="shipping-overnight" />
                 <Label htmlFor="shipping-overnight">Overnight</Label>
               </div>
-              <span className="text-sm text-neutral-600">Next day</span>
+              <span className="text-sm text-(--color-text-secondary)">
+                Next day
+              </span>
             </div>
           </RadioGroup>
         </div>
@@ -358,7 +378,9 @@ export const Survey: Story = {
     <div className="max-w-lg space-y-6">
       <div className="space-y-2">
         <h3 className="text-xl font-semibold">Customer Satisfaction Survey</h3>
-        <p className="text-neutral-600">Help us improve our service</p>
+        <p className="text-(--color-text-secondary)">
+          Help us improve our service
+        </p>
       </div>
 
       <div className="space-y-6">
@@ -473,7 +495,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-neutral-600">
+        <p className="text-sm text-(--color-text-secondary)">
           Use Tab to navigate, Arrow keys to select within group, Space to
           select.
         </p>
@@ -497,7 +519,10 @@ export const Accessibility: Story = {
               />
               <Label htmlFor="contact-email">Email</Label>
             </div>
-            <p id="email-description" className="text-xs text-neutral-600 ml-6">
+            <p
+              id="email-description"
+              className="text-xs text-(--color-text-secondary) ml-6"
+            >
               We'll send updates to your email address
             </p>
 
@@ -509,7 +534,10 @@ export const Accessibility: Story = {
               />
               <Label htmlFor="contact-phone">Phone</Label>
             </div>
-            <p id="phone-description" className="text-xs text-neutral-600 ml-6">
+            <p
+              id="phone-description"
+              className="text-xs text-(--color-text-secondary) ml-6"
+            >
               We'll call you during business hours
             </p>
 
@@ -521,7 +549,10 @@ export const Accessibility: Story = {
               />
               <Label htmlFor="contact-mail">Postal Mail</Label>
             </div>
-            <p id="mail-description" className="text-xs text-neutral-600 ml-6">
+            <p
+              id="mail-description"
+              className="text-xs text-(--color-text-secondary) ml-6"
+            >
               We'll send physical letters to your address
             </p>
           </RadioGroup>

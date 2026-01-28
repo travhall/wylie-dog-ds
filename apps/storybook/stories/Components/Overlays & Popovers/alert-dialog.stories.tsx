@@ -300,7 +300,7 @@ export const UnsavedChanges: Story = {
         <input
           type="text"
           defaultValue="My Important Document"
-          className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
         />
       </div>
 
@@ -308,7 +308,7 @@ export const UnsavedChanges: Story = {
         <label className="text-sm font-medium">Content</label>
         <textarea
           defaultValue="This document contains important information..."
-          className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-24"
+          className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary) h-24"
         />
       </div>
 
@@ -360,15 +360,15 @@ export const BulkOperations: Story = {
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Selected Items (3)</h3>
         <div className="space-y-2">
-          <div className="flex items-center space-x-2 p-2 bg-blue-50 rounded">
+          <div className="flex items-center space-x-2 p-2 bg-(--color-interactive-primary)/10 rounded">
             <input type="checkbox" checked readOnly />
             <span>Project Alpha - Draft.docx</span>
           </div>
-          <div className="flex items-center space-x-2 p-2 bg-blue-50 rounded">
+          <div className="flex items-center space-x-2 p-2 bg-(--color-interactive-primary)/10 rounded">
             <input type="checkbox" checked readOnly />
             <span>Meeting Notes - Q4.pdf</span>
           </div>
-          <div className="flex items-center space-x-2 p-2 bg-blue-50 rounded">
+          <div className="flex items-center space-x-2 p-2 bg-(--color-interactive-primary)/10 rounded">
             <input type="checkbox" checked readOnly />
             <span>Budget Spreadsheet.xlsx</span>
           </div>
@@ -438,7 +438,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-neutral-600">
+        <p className="text-sm text-(--color-text-secondary)">
           Alert dialogs trap focus, support Escape key, and provide clear
           actions. Tab to navigate, Enter/Space to activate, Escape to cancel.
         </p>
@@ -481,7 +481,7 @@ export const Accessibility: Story = {
         </AlertDialogContent>
       </AlertDialog>
 
-      <p id="delete-help" className="text-xs text-neutral-600">
+      <p id="delete-help" className="text-xs text-(--color-text-secondary)">
         This action will permanently remove your account and cannot be undone.
       </p>
     </div>

@@ -165,7 +165,7 @@ export const InFormContext: Story = {
           <label className="block text-sm font-medium">Email</label>
           <input
             type="email"
-            className="mt-1 w-full px-3 py-2 border border-red-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="mt-1 w-full px-3 py-2 border border-(--color-status-danger) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-status-danger)"
             placeholder="Enter your email"
           />
         </div>
@@ -174,12 +174,12 @@ export const InFormContext: Story = {
           <label className="block text-sm font-medium">Password</label>
           <input
             type="password"
-            className="mt-1 w-full px-3 py-2 border border-red-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="mt-1 w-full px-3 py-2 border border-(--color-status-danger) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-status-danger)"
             placeholder="Create a password"
           />
         </div>
 
-        <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+        <button className="w-full bg-(--color-interactive-primary) text-white py-2 px-4 rounded-md hover:bg-(--color-interactive-primary-hover)">
           Create Account
         </button>
       </div>

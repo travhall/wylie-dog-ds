@@ -279,36 +279,38 @@ export const SettingsPage: Story = {
 
 export const LandingPage: Story = {
   render: () => (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-(--color-background-primary)">
       {/* Header */}
       <header className="border-b border-(--color-border-secondary)">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <span className="text-xl font-bold text-blue-600">WylieDog</span>
+              <span className="text-xl font-bold text-(--color-interactive-primary)">
+                WylieDog
+              </span>
             </div>
             <nav className="hidden md:flex space-x-8">
               <a
                 href="#"
-                className="text-(--color-text-secondary) hover:text-blue-600"
+                className="text-(--color-text-secondary) hover:text-(--color-interactive-primary)"
               >
                 Features
               </a>
               <a
                 href="#"
-                className="text-(--color-text-secondary) hover:text-blue-600"
+                className="text-(--color-text-secondary) hover:text-(--color-interactive-primary)"
               >
                 Pricing
               </a>
               <a
                 href="#"
-                className="text-(--color-text-secondary) hover:text-blue-600"
+                className="text-(--color-text-secondary) hover:text-(--color-interactive-primary)"
               >
                 About
               </a>
               <a
                 href="#"
-                className="text-(--color-text-secondary) hover:text-blue-600"
+                className="text-(--color-text-secondary) hover:text-(--color-interactive-primary)"
               >
                 Contact
               </a>
@@ -322,11 +324,14 @@ export const LandingPage: Story = {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-linear-to-r from-blue-50 to-indigo-100">
+      <section className="py-20 bg-(--color-background-secondary)">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-(--color-text-primary) mb-6">
             Build Better
-            <span className="text-blue-600"> Design Systems</span>
+            <span className="text-(--color-interactive-primary)">
+              {" "}
+              Design Systems
+            </span>
           </h1>
           <p className="text-xl text-(--color-text-secondary) mb-8 max-w-3xl mx-auto">
             Create consistent, accessible, and beautiful user interfaces with
@@ -481,7 +486,10 @@ export const UserProfile: Story = {
                     status: "Planning",
                   },
                 ].map((project, index) => (
-                  <div key={index} className="border-l-4 border-blue-500 pl-4">
+                  <div
+                    key={index}
+                    className="border-l-4 border-(--color-interactive-primary) pl-4"
+                  >
                     <h4 className="font-semibold">{project.name}</h4>
                     <p className="text-sm text-(--color-text-secondary) mb-1">
                       {project.description}

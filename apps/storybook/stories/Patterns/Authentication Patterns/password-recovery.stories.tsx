@@ -191,10 +191,22 @@ export const ResetPasswordForm: Story = {
       if (password.length < 8)
         return { strength: 1, label: "Too short", color: "bg-destructive" };
       if (password.length < 10)
-        return { strength: 2, label: "Weak", color: "bg-yellow-500" };
+        return {
+          strength: 2,
+          label: "Weak",
+          color: "bg-(--color-status-warning)",
+        };
       if (password.length < 14)
-        return { strength: 3, label: "Good", color: "bg-blue-500" };
-      return { strength: 4, label: "Strong", color: "bg-green-500" };
+        return {
+          strength: 3,
+          label: "Good",
+          color: "bg-(--color-status-info)",
+        };
+      return {
+        strength: 4,
+        label: "Strong",
+        color: "bg-(--color-status-success)",
+      };
     };
 
     const validateForm = () => {
@@ -320,7 +332,9 @@ export const ResetPasswordForm: Story = {
                     <ul className="list-disc list-inside space-y-1">
                       <li
                         className={
-                          formData.password.length >= 8 ? "text-green-600" : ""
+                          formData.password.length >= 8
+                            ? "text-(--color-status-success)"
+                            : ""
                         }
                       >
                         At least 8 characters
@@ -328,7 +342,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[A-Z]/.test(formData.password)
-                            ? "text-green-600"
+                            ? "text-(--color-status-success)"
                             : ""
                         }
                       >
@@ -337,7 +351,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[a-z]/.test(formData.password)
-                            ? "text-green-600"
+                            ? "text-(--color-status-success)"
                             : ""
                         }
                       >
@@ -346,7 +360,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[0-9]/.test(formData.password)
-                            ? "text-green-600"
+                            ? "text-(--color-status-success)"
                             : ""
                         }
                       >

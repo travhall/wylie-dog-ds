@@ -151,7 +151,9 @@ export const ButtonGroup: Story = {
   render: () => (
     <div className="space-y-6">
       <div className="space-y-2">
-        <h4 className="text-sm font-medium text-neutral-700">Action Group</h4>
+        <h4 className="text-sm font-medium text-(--color-text-secondary)">
+          Action Group
+        </h4>
         <div className="flex gap-2">
           <Button>Save</Button>
           <Button variant="ghost">Cancel</Button>
@@ -159,7 +161,7 @@ export const ButtonGroup: Story = {
       </div>
 
       <div className="space-y-2">
-        <h4 className="text-sm font-medium text-neutral-700">
+        <h4 className="text-sm font-medium text-(--color-text-secondary)">
           Navigation Group
         </h4>
         <div className="flex gap-2">
@@ -171,7 +173,9 @@ export const ButtonGroup: Story = {
       </div>
 
       <div className="space-y-2">
-        <h4 className="text-sm font-medium text-neutral-700">Toolbar</h4>
+        <h4 className="text-sm font-medium text-(--color-text-secondary)">
+          Toolbar
+        </h4>
         <div className="flex gap-1">
           <Button variant="ghost" size="sm">
             Edit
@@ -204,22 +208,24 @@ export const ButtonsInForms: Story = {
   render: () => (
     <div className="w-80 space-y-4">
       <div className="space-y-2">
-        <label className="text-sm font-medium text-neutral-700">
+        <label className="text-sm font-medium text-(--color-text-secondary)">
           Email Address
         </label>
         <input
           type="email"
           placeholder="your@email.com"
-          className="w-full px-3 py-2 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-500"
+          className="w-full px-3 py-2 border border-(--color-border-secondary) rounded focus:outline-none focus:ring-2 focus:ring-primary-500"
         />
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-medium text-neutral-700">Password</label>
+        <label className="text-sm font-medium text-(--color-text-secondary)">
+          Password
+        </label>
         <input
           type="password"
           placeholder="••••••••"
-          className="w-full px-3 py-2 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-500"
+          className="w-full px-3 py-2 border border-(--color-border-secondary) rounded focus:outline-none focus:ring-2 focus:ring-primary-500"
         />
       </div>
 
@@ -259,7 +265,7 @@ export const Loading: Story = {
       </Button>
       <Button variant="secondary" disabled>
         <span className="flex items-center gap-2">
-          <div className="w-4 h-4 border-2 border-neutral-600 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-4 h-4 border-2 border-(--color-text-secondary) border-t-transparent rounded-full animate-spin"></div>
           Processing...
         </span>
       </Button>

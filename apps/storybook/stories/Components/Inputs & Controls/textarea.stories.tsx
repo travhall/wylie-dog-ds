@@ -68,7 +68,7 @@ export const WithError: Story = {
         Description
       </Label>
       <Textarea id="error-textarea" {...args} />
-      <p className="text-xs text-red-600">
+      <p className="text-xs text-(--color-status-danger)">
         This field is required and must be at least 10 characters
       </p>
     </div>
@@ -187,7 +187,7 @@ export const FormExamples: Story = {
             </Label>
             <input
               id="feedback-name"
-              className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Your name"
             />
           </div>
@@ -198,7 +198,7 @@ export const FormExamples: Story = {
             <input
               id="feedback-email"
               type="email"
-              className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="your@email.com"
             />
           </div>
@@ -208,7 +208,7 @@ export const FormExamples: Story = {
           <Label htmlFor="feedback-subject">Subject</Label>
           <input
             id="feedback-subject"
-            className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="What's this about?"
           />
         </div>
@@ -240,7 +240,7 @@ export const FormExamples: Story = {
           />
         </div>
 
-        <div className="flex justify-between items-center text-xs text-neutral-500">
+        <div className="flex justify-between items-center text-xs text-(--color-text-tertiary)">
           <span>0 / 500 characters</span>
           <span>Markdown supported</span>
         </div>
@@ -270,7 +270,9 @@ export const WithInteractions: Story = {
             placeholder="Enter a brief description..."
             className="min-h-20"
           />
-          <p className="text-xs text-neutral-600">At least 10 characters</p>
+          <p className="text-xs text-(--color-text-secondary)">
+            At least 10 characters
+          </p>
         </div>
 
         <div className="space-y-2">

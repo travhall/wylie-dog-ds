@@ -113,7 +113,9 @@ export const CustomSeparator: Story = {
   render: () => (
     <div className="space-y-4">
       <div>
-        <p className="text-sm text-neutral-600 mb-2">Slash separator</p>
+        <p className="text-sm text-(--color-text-secondary) mb-2">
+          Slash separator
+        </p>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -136,7 +138,9 @@ export const CustomSeparator: Story = {
       </div>
 
       <div>
-        <p className="text-sm text-neutral-600 mb-2">Text separator</p>
+        <p className="text-sm text-(--color-text-secondary) mb-2">
+          Text separator
+        </p>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -446,7 +450,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 w-full max-w-2xl">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-neutral-600">
+        <p className="text-sm text-(--color-text-secondary)">
           Breadcrumbs use semantic HTML with proper ARIA attributes for screen
           readers. Use Tab to navigate links and Enter to activate.
         </p>
@@ -454,7 +458,7 @@ export const Accessibility: Story = {
 
       <div className="space-y-4">
         <div>
-          <p className="text-sm font-medium text-neutral-700 mb-2">
+          <p className="text-sm font-medium text-(--color-text-secondary) mb-2">
             With aria-label navigation
           </p>
           <Breadcrumb>
@@ -484,7 +488,7 @@ export const Accessibility: Story = {
         </div>
 
         <div>
-          <p className="text-sm font-medium text-neutral-700 mb-2">
+          <p className="text-sm font-medium text-(--color-text-secondary) mb-2">
             Screen reader friendly
           </p>
           <Breadcrumb aria-label="Page navigation">

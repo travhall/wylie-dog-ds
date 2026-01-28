@@ -83,7 +83,9 @@ export const WithError: Story = {
     <div className="w-64 space-y-2">
       <Label {...args} />
       <Input id="username-error" error placeholder="Username is required" />
-      <p className="text-xs text-red-600">This field is required</p>
+      <p className="text-xs text-(--color-status-danger)">
+        This field is required
+      </p>
     </div>
   ),
 };

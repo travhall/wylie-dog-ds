@@ -95,7 +95,7 @@ export const Default: Story = {
                     <div className="mb-2 mt-4 text-lg font-medium">
                       Featured Product
                     </div>
-                    <p className="text-sm leading-tight text-neutral-600">
+                    <p className="text-sm leading-tight text-(--color-text-secondary)">
                       Discover our most popular item with advanced features and
                       modern design.
                     </p>
@@ -165,7 +165,7 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-neutral-600">
+          <p className="line-clamp-2 text-sm leading-snug text-(--color-text-secondary)">
             {children}
           </p>
         </a>

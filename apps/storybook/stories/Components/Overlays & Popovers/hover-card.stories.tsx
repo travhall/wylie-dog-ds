@@ -82,7 +82,7 @@ export const Default: Story = {
 export const UserProfile: Story = {
   render: () => (
     <div className="space-y-4">
-      <p className="text-sm text-neutral-600 mb-4">
+      <p className="text-sm text-(--color-text-secondary) mb-4">
         Hover over team member names:
       </p>
 
@@ -104,7 +104,7 @@ export const UserProfile: Story = {
                 </Avatar>
                 <div className="space-y-1">
                   <h4 className="text-sm font-semibold">Sarah Chen</h4>
-                  <p className="text-sm text-neutral-600">
+                  <p className="text-sm text-(--color-text-secondary)">
                     Senior Product Designer
                   </p>
                   <p className="text-sm">
@@ -114,13 +114,13 @@ export const UserProfile: Story = {
                   <div className="flex items-center pt-2 space-x-4">
                     <div className="flex items-center">
                       <MapPinIcon className="mr-1 h-3 w-3 opacity-70" />
-                      <span className="text-xs text-neutral-500">
+                      <span className="text-xs text-(--color-text-tertiary)">
                         San Francisco
                       </span>
                     </div>
                     <div className="flex items-center">
                       <LinkIcon className="mr-1 h-3 w-3 opacity-70" />
-                      <span className="text-xs text-neutral-500">
+                      <span className="text-xs text-(--color-text-tertiary)">
                         @sarahchen
                       </span>
                     </div>
@@ -148,7 +148,7 @@ export const UserProfile: Story = {
                 </Avatar>
                 <div className="space-y-1">
                   <h4 className="text-sm font-semibold">Alex Rivera</h4>
-                  <p className="text-sm text-neutral-600">
+                  <p className="text-sm text-(--color-text-secondary)">
                     Full Stack Engineer
                   </p>
                   <p className="text-sm">
@@ -158,11 +158,15 @@ export const UserProfile: Story = {
                   <div className="flex items-center pt-2 space-x-4">
                     <div className="flex items-center">
                       <MapPinIcon className="mr-1 h-3 w-3 opacity-70" />
-                      <span className="text-xs text-neutral-500">Remote</span>
+                      <span className="text-xs text-(--color-text-tertiary)">
+                        Remote
+                      </span>
                     </div>
                     <div className="flex items-center">
                       <LinkIcon className="mr-1 h-3 w-3 opacity-70" />
-                      <span className="text-xs text-neutral-500">@alexdev</span>
+                      <span className="text-xs text-(--color-text-tertiary)">
+                        @alexdev
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -259,7 +263,9 @@ export const ProductInfo: Story = {
       <div className="grid grid-cols-2 gap-4">
         <div className="p-4 border rounded-lg">
           <h4 className="font-medium">MacBook Pro</h4>
-          <p className="text-sm text-neutral-600">Starting at $1,999</p>
+          <p className="text-sm text-(--color-text-secondary)">
+            Starting at $1,999
+          </p>
           <HoverCard>
             <HoverCardTrigger asChild>
               <Button variant="link" className="p-0 mt-2 h-auto">
@@ -296,7 +302,9 @@ export const ProductInfo: Story = {
 
         <div className="p-4 border rounded-lg">
           <h4 className="font-medium">iPad Pro</h4>
-          <p className="text-sm text-neutral-600">Starting at $1,099</p>
+          <p className="text-sm text-(--color-text-secondary)">
+            Starting at $1,099
+          </p>
           <HoverCard>
             <HoverCardTrigger asChild>
               <Button variant="link" className="p-0 mt-2 h-auto">
@@ -353,7 +361,7 @@ export const Documentation: Story = {
           The{" "}
           <HoverCard>
             <HoverCardTrigger asChild>
-              <code className="px-1 py-0.5 bg-neutral-100 rounded text-sm cursor-help">
+              <code className="px-1 py-0.5 bg-(--color-background-tertiary) rounded text-sm cursor-help">
                 useState
               </code>
             </HoverCardTrigger>
@@ -363,10 +371,10 @@ export const Documentation: Story = {
                 <p className="text-sm">
                   A Hook that lets you add state to functional components.
                 </p>
-                <div className="text-xs bg-neutral-50 p-2 rounded">
+                <div className="text-xs bg-(--color-background-secondary) p-2 rounded">
                   <code>const [state, setState] = useState(initialState)</code>
                 </div>
-                <p className="text-xs text-neutral-600">
+                <p className="text-xs text-(--color-text-secondary)">
                   Returns a stateful value and a function to update it.
                 </p>
               </div>
@@ -379,7 +387,7 @@ export const Documentation: Story = {
           You can also use{" "}
           <HoverCard>
             <HoverCardTrigger asChild>
-              <code className="px-1 py-0.5 bg-neutral-100 rounded text-sm cursor-help">
+              <code className="px-1 py-0.5 bg-(--color-background-tertiary) rounded text-sm cursor-help">
                 useEffect
               </code>
             </HoverCardTrigger>
@@ -390,10 +398,10 @@ export const Documentation: Story = {
                   A Hook that lets you perform side effects in functional
                   components.
                 </p>
-                <div className="text-xs bg-neutral-50 p-2 rounded">
+                <div className="text-xs bg-(--color-background-secondary) p-2 rounded">
                   <code>useEffect(effect, dependencies?)</code>
                 </div>
-                <p className="text-xs text-neutral-600">
+                <p className="text-xs text-(--color-text-secondary)">
                   Runs after every completed render, but can be optimized with
                   dependencies.
                 </p>
@@ -407,7 +415,7 @@ export const Documentation: Story = {
           For complex state logic, consider{" "}
           <HoverCard>
             <HoverCardTrigger asChild>
-              <code className="px-1 py-0.5 bg-neutral-100 rounded text-sm cursor-help">
+              <code className="px-1 py-0.5 bg-(--color-background-tertiary) rounded text-sm cursor-help">
                 useReducer
               </code>
             </HoverCardTrigger>
@@ -418,12 +426,12 @@ export const Documentation: Story = {
                   A Hook that is usually preferable to useState when you have
                   complex state logic.
                 </p>
-                <div className="text-xs bg-neutral-50 p-2 rounded">
+                <div className="text-xs bg-(--color-background-secondary) p-2 rounded">
                   <code>
                     const [state, dispatch] = useReducer(reducer, initialState)
                   </code>
                 </div>
-                <p className="text-xs text-neutral-600">
+                <p className="text-xs text-(--color-text-secondary)">
                   Accepts a reducer function and returns the current state
                   paired with a dispatch method.
                 </p>
@@ -449,7 +457,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-neutral-600">
+        <p className="text-sm text-(--color-text-secondary)">
           Hover cards support keyboard navigation. Use Tab to focus triggers,
           then hover or use keyboard shortcuts to reveal content.
         </p>
@@ -471,7 +479,9 @@ export const Accessibility: Story = {
               <h4 id="profile-title" className="font-semibold">
                 John Doe
               </h4>
-              <p className="text-sm text-neutral-600">Software Engineer</p>
+              <p className="text-sm text-(--color-text-secondary)">
+                Software Engineer
+              </p>
               <p className="text-sm">
                 Full-stack developer with 8 years of experience in React and
                 Node.js. Currently working on design systems and developer
@@ -479,13 +489,18 @@ export const Accessibility: Story = {
               </p>
               <div className="flex items-center pt-2">
                 <MapPinIcon className="mr-2 h-4 w-4 opacity-70" />
-                <span className="text-xs text-neutral-500">Seattle, WA</span>
+                <span className="text-xs text-(--color-text-tertiary)">
+                  Seattle, WA
+                </span>
               </div>
             </div>
           </HoverCardContent>
         </HoverCard>
 
-        <p id="accessible-description" className="text-xs text-neutral-600">
+        <p
+          id="accessible-description"
+          className="text-xs text-(--color-text-secondary)"
+        >
           Hover or focus to reveal additional profile information
         </p>
       </div>

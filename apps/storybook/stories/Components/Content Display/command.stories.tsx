@@ -277,9 +277,9 @@ export const WithModal: Story = {
     return (
       <div className="space-y-4">
         <div className="text-center space-y-2">
-          <p className="text-sm text-neutral-600">
+          <p className="text-sm text-(--color-text-secondary)">
             Press{" "}
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-neutral-100 px-1.5 font-mono text-[10px] font-medium text-neutral-600">
+            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-(--color-background-tertiary) px-1.5 font-mono text-[10px] font-medium text-(--color-text-secondary)">
               <span className="text-xs">⌘</span>K
             </kbd>{" "}
             to open command palette
@@ -477,7 +477,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 w-full max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-neutral-600">
+        <p className="text-sm text-(--color-text-secondary)">
           Command palette supports full keyboard navigation. Use arrows to
           navigate, Enter to select, Escape to close.
         </p>
@@ -518,7 +518,7 @@ export const Accessibility: Story = {
         </CommandList>
       </Command>
 
-      <p className="text-xs text-neutral-600">
+      <p className="text-xs text-(--color-text-secondary)">
         Screen readers announce group headings and selected items
       </p>
     </div>

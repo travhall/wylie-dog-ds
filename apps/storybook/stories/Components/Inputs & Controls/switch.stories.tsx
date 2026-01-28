@@ -100,14 +100,14 @@ export const AllSizes: Story = {
 
 export const SettingsPanel: Story = {
   render: () => (
-    <div className="w-80 space-y-6 p-6 border border-neutral-200 rounded-lg">
+    <div className="w-80 space-y-6 p-6 border border-(--color-border-secondary) rounded-lg">
       <h3 className="text-lg font-semibold">Preferences</h3>
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
             <Label htmlFor="notifications">Push notifications</Label>
-            <p className="text-xs text-neutral-600">
+            <p className="text-xs text-(--color-text-secondary)">
               Receive notifications on your device
             </p>
           </div>
@@ -117,7 +117,7 @@ export const SettingsPanel: Story = {
         <div className="flex items-center justify-between">
           <div>
             <Label htmlFor="email-digest">Email digest</Label>
-            <p className="text-xs text-neutral-600">
+            <p className="text-xs text-(--color-text-secondary)">
               Weekly summary of activity
             </p>
           </div>
@@ -127,7 +127,9 @@ export const SettingsPanel: Story = {
         <div className="flex items-center justify-between">
           <div>
             <Label htmlFor="dark-mode">Dark mode</Label>
-            <p className="text-xs text-neutral-600">Use dark theme interface</p>
+            <p className="text-xs text-(--color-text-secondary)">
+              Use dark theme interface
+            </p>
           </div>
           <Switch id="dark-mode" />
         </div>
@@ -135,7 +137,9 @@ export const SettingsPanel: Story = {
         <div className="flex items-center justify-between">
           <div>
             <Label htmlFor="analytics">Usage analytics</Label>
-            <p className="text-xs text-neutral-600">Help improve our service</p>
+            <p className="text-xs text-(--color-text-secondary)">
+              Help improve our service
+            </p>
           </div>
           <Switch id="analytics" defaultChecked />
         </div>
@@ -143,7 +147,7 @@ export const SettingsPanel: Story = {
         <div className="flex items-center justify-between">
           <div>
             <Label htmlFor="beta">Beta features</Label>
-            <p className="text-xs text-neutral-600">
+            <p className="text-xs text-(--color-text-secondary)">
               Access experimental features
             </p>
           </div>
@@ -161,30 +165,30 @@ export const FeatureToggles: Story = {
       <div className="space-y-4">
         <h3 className="text-base font-semibold">App Features</h3>
         <div className="grid gap-3">
-          <div className="flex items-center justify-between p-3 border border-neutral-200 rounded-md">
+          <div className="flex items-center justify-between p-3 border border-(--color-border-secondary) rounded-md">
             <div>
               <Label htmlFor="offline-mode">Offline mode</Label>
-              <p className="text-xs text-neutral-600">
+              <p className="text-xs text-(--color-text-secondary)">
                 Work without internet connection
               </p>
             </div>
             <Switch id="offline-mode" size="sm" />
           </div>
 
-          <div className="flex items-center justify-between p-3 border border-neutral-200 rounded-md">
+          <div className="flex items-center justify-between p-3 border border-(--color-border-secondary) rounded-md">
             <div>
               <Label htmlFor="auto-save">Auto-save</Label>
-              <p className="text-xs text-neutral-600">
+              <p className="text-xs text-(--color-text-secondary)">
                 Automatically save your work
               </p>
             </div>
             <Switch id="auto-save" size="sm" defaultChecked />
           </div>
 
-          <div className="flex items-center justify-between p-3 border border-neutral-200 rounded-md">
+          <div className="flex items-center justify-between p-3 border border-(--color-border-secondary) rounded-md">
             <div>
               <Label htmlFor="sync">Cloud sync</Label>
-              <p className="text-xs text-neutral-600">
+              <p className="text-xs text-(--color-text-secondary)">
                 Sync data across devices
               </p>
             </div>
@@ -197,30 +201,30 @@ export const FeatureToggles: Story = {
       <div className="space-y-4">
         <h3 className="text-base font-semibold">Privacy</h3>
         <div className="grid gap-3">
-          <div className="flex items-center justify-between p-3 border border-neutral-200 rounded-md">
+          <div className="flex items-center justify-between p-3 border border-(--color-border-secondary) rounded-md">
             <div>
               <Label htmlFor="location">Location services</Label>
-              <p className="text-xs text-neutral-600">
+              <p className="text-xs text-(--color-text-secondary)">
                 Allow location-based features
               </p>
             </div>
             <Switch id="location" size="sm" />
           </div>
 
-          <div className="flex items-center justify-between p-3 border border-neutral-200 rounded-md">
+          <div className="flex items-center justify-between p-3 border border-(--color-border-secondary) rounded-md">
             <div>
               <Label htmlFor="telemetry">Usage telemetry</Label>
-              <p className="text-xs text-neutral-600">
+              <p className="text-xs text-(--color-text-secondary)">
                 Share usage data to improve service
               </p>
             </div>
             <Switch id="telemetry" size="sm" defaultChecked />
           </div>
 
-          <div className="flex items-center justify-between p-3 border border-neutral-200 rounded-md">
+          <div className="flex items-center justify-between p-3 border border-(--color-border-secondary) rounded-md">
             <div>
               <Label htmlFor="marketing">Marketing emails</Label>
-              <p className="text-xs text-neutral-600">
+              <p className="text-xs text-(--color-text-secondary)">
                 Receive promotional content
               </p>
             </div>
@@ -236,7 +240,7 @@ export const InteractiveDemo: Story = {
   render: () => {
     return (
       <div className="space-y-6">
-        <div className="p-6 border border-neutral-200 rounded-lg">
+        <div className="p-6 border border-(--color-border-secondary) rounded-lg">
           <h3 className="text-lg font-semibold mb-4">Quick Settings</h3>
 
           <div className="grid grid-cols-2 gap-4">
@@ -284,14 +288,14 @@ export const InteractiveDemo: Story = {
           </div>
         </div>
 
-        <div className="p-6 border border-neutral-200 rounded-lg">
+        <div className="p-6 border border-(--color-border-secondary) rounded-lg">
           <h3 className="text-lg font-semibold mb-4">Account Settings</h3>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="two-factor">Two-factor authentication</Label>
-                <p className="text-xs text-neutral-600">
+                <p className="text-xs text-(--color-text-secondary)">
                   Add an extra layer of security
                 </p>
               </div>
@@ -301,7 +305,7 @@ export const InteractiveDemo: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="session-timeout">Auto logout</Label>
-                <p className="text-xs text-neutral-600">
+                <p className="text-xs text-(--color-text-secondary)">
                   Automatically log out after inactivity
                 </p>
               </div>
@@ -311,7 +315,7 @@ export const InteractiveDemo: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="login-alerts">Login alerts</Label>
-                <p className="text-xs text-neutral-600">
+                <p className="text-xs text-(--color-text-secondary)">
                   Get notified of new sign-ins
                 </p>
               </div>
@@ -341,7 +345,7 @@ export const WithInteractions: Story = {
         <div className="flex items-center justify-between">
           <div>
             <Label htmlFor="notifications-switch">Notifications</Label>
-            <p className="text-xs text-neutral-600">
+            <p className="text-xs text-(--color-text-secondary)">
               Receive push notifications
             </p>
           </div>
@@ -351,7 +355,9 @@ export const WithInteractions: Story = {
         <div className="flex items-center justify-between">
           <div>
             <Label htmlFor="dark-mode-switch">Dark Mode</Label>
-            <p className="text-xs text-neutral-600">Use dark theme</p>
+            <p className="text-xs text-(--color-text-secondary)">
+              Use dark theme
+            </p>
           </div>
           <Switch id="dark-mode-switch" defaultChecked />
         </div>
@@ -359,7 +365,9 @@ export const WithInteractions: Story = {
         <div className="flex items-center justify-between">
           <div>
             <Label htmlFor="sound-switch">Sound Effects</Label>
-            <p className="text-xs text-neutral-600">Play audio feedback</p>
+            <p className="text-xs text-(--color-text-secondary)">
+              Play audio feedback
+            </p>
           </div>
           <Switch id="sound-switch" />
         </div>
@@ -367,7 +375,9 @@ export const WithInteractions: Story = {
         <div className="flex items-center justify-between">
           <div>
             <Label htmlFor="disabled-switch">Beta Features</Label>
-            <p className="text-xs text-neutral-600">Disabled for now</p>
+            <p className="text-xs text-(--color-text-secondary)">
+              Disabled for now
+            </p>
           </div>
           <Switch id="disabled-switch" disabled />
         </div>
@@ -375,7 +385,9 @@ export const WithInteractions: Story = {
         <div className="flex items-center justify-between">
           <div>
             <Label htmlFor="disabled-on-switch">Required Feature</Label>
-            <p className="text-xs text-neutral-600">Always enabled</p>
+            <p className="text-xs text-(--color-text-secondary)">
+              Always enabled
+            </p>
           </div>
           <Switch id="disabled-on-switch" disabled defaultChecked />
         </div>

@@ -170,7 +170,7 @@ export const FAQ: Story = {
     <div className="w-full max-w-2xl space-y-6">
       <div className="space-y-2">
         <h3 className="text-xl font-semibold">Frequently Asked Questions</h3>
-        <p className="text-neutral-600">
+        <p className="text-(--color-text-secondary)">
           Find answers to common questions about our service.
         </p>
       </div>
@@ -251,7 +251,7 @@ export const SettingsPanel: Story = {
                 <input
                   type="text"
                   defaultValue="John Doe"
-                  className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div className="space-y-2">
@@ -259,7 +259,7 @@ export const SettingsPanel: Story = {
                 <input
                   type="email"
                   defaultValue="john@example.com"
-                  className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -323,7 +323,7 @@ export const ProductFeatures: Story = {
     <div className="w-full max-w-2xl space-y-6">
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Product Features</h2>
-        <p className="text-neutral-600">
+        <p className="text-(--color-text-secondary)">
           Explore what makes our platform special
         </p>
       </div>
@@ -341,7 +341,7 @@ export const ProductFeatures: Story = {
                 Get deep insights into your data with our comprehensive
                 analytics suite.
               </p>
-              <ul className="space-y-1 list-disc list-inside text-sm text-neutral-600">
+              <ul className="space-y-1 list-disc list-inside text-sm text-(--color-text-secondary)">
                 <li>Real-time dashboards</li>
                 <li>Custom report builder</li>
                 <li>Data export in multiple formats</li>
@@ -360,7 +360,7 @@ export const ProductFeatures: Story = {
           <AccordionContent>
             <div className="space-y-3">
               <p>Work together seamlessly with powerful collaboration tools.</p>
-              <ul className="space-y-1 list-disc list-inside text-sm text-neutral-600">
+              <ul className="space-y-1 list-disc list-inside text-sm text-(--color-text-secondary)">
                 <li>Real-time commenting and feedback</li>
                 <li>Version control and history</li>
                 <li>Team workspace management</li>
@@ -379,7 +379,7 @@ export const ProductFeatures: Story = {
           <AccordionContent>
             <div className="space-y-3">
               <p>Automate repetitive tasks and streamline your workflows.</p>
-              <ul className="space-y-1 list-disc list-inside text-sm text-neutral-600">
+              <ul className="space-y-1 list-disc list-inside text-sm text-(--color-text-secondary)">
                 <li>Drag-and-drop workflow builder</li>
                 <li>Trigger-based automation</li>
                 <li>Integration with popular tools</li>
@@ -398,7 +398,7 @@ export const ProductFeatures: Story = {
           <AccordionContent>
             <div className="space-y-3">
               <p>Bank-level security to protect your sensitive data.</p>
-              <ul className="space-y-1 list-disc list-inside text-sm text-neutral-600">
+              <ul className="space-y-1 list-disc list-inside text-sm text-(--color-text-secondary)">
                 <li>End-to-end encryption</li>
                 <li>SOC 2 Type II compliance</li>
                 <li>GDPR and CCPA compliance</li> {/* cSpell:ignore CCPA */}
@@ -426,7 +426,7 @@ export const Accessibility: Story = {
     <div className="w-full max-w-md space-y-4">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-neutral-600">
+        <p className="text-sm text-(--color-text-secondary)">
           Use Tab to navigate, Enter/Space to toggle, Arrow keys to move between
           items.
         </p>
