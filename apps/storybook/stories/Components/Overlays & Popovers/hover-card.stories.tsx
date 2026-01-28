@@ -98,7 +98,7 @@ export const UserProfile: Story = {
             <HoverCardContent className="w-80">
               <div className="flex space-x-4">
                 <Avatar>
-                  <div className="bg-purple-500 text-white flex items-center justify-center w-full h-full text-sm font-bold">
+                  <div className="bg-(--color-accent-hover) text-(--color-text-inverse) flex items-center justify-center w-full h-full text-sm font-bold">
                     SC
                   </div>
                 </Avatar>
@@ -142,7 +142,7 @@ export const UserProfile: Story = {
             <HoverCardContent className="w-80">
               <div className="flex space-x-4">
                 <Avatar>
-                  <div className="bg-blue-500 text-white flex items-center justify-center w-full h-full text-sm font-bold">
+                  <div className="bg-(--color-interactive-primary) text-(--color-text-inverse) flex items-center justify-center w-full h-full text-sm font-bold">
                     AR
                   </div>
                 </Avatar>
@@ -527,7 +527,7 @@ export const WithInteractions: Story = {
         <HoverCardContent className="w-80">
           <div className="flex justify-between space-x-4">
             <Avatar>
-              <div className="bg-blue-500 text-white flex items-center justify-center w-full h-full text-sm font-bold">
+              <div className="bg-(--color-interactive-primary) text-(--color-text-inverse) flex items-center justify-center w-full h-full text-sm font-bold">
                 TC
               </div>
             </Avatar>

@@ -216,7 +216,7 @@ export const InContext: Story = {
       <div className="border rounded-lg divide-y">
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-sm font-medium">
+            <div className="h-10 w-10 rounded-full bg-(--color-interactive-primary)/20 flex items-center justify-center text-sm font-medium">
               JD
             </div>
             <div>
@@ -229,7 +229,7 @@ export const InContext: Story = {
 
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-sm font-medium">
+            <div className="h-10 w-10 rounded-full bg-(--color-status-success)/20 flex items-center justify-center text-sm font-medium">
               AS
             </div>
             <div>
@@ -242,7 +242,7 @@ export const InContext: Story = {
 
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center text-sm font-medium">
+            <div className="h-10 w-10 rounded-full bg-(--color-accent-hover)/20 flex items-center justify-center text-sm font-medium">
               BJ
             </div>
             <div>
@@ -282,7 +282,9 @@ export const DosDonts: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-8 max-w-4xl">
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-green-700">✅ Do</h4>
+        <h4 className="text-lg font-semibold mb-4 text-(--color-status-success)">
+          ✅ Do
+        </h4>
 
         <div className="space-y-6">
           <div className="space-y-2">
@@ -327,7 +329,9 @@ export const DosDonts: Story = {
       </div>
 
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-red-700">❌ Don't</h4>
+        <h4 className="text-lg font-semibold mb-4 text-(--color-status-danger)">
+          ❌ Don't
+        </h4>
 
         <div className="space-y-6">
           <div className="space-y-2">

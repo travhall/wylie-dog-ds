@@ -49,7 +49,7 @@ export const SpacingScale: Story = {
   render: () => (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold">Spacing Scale</h3>
-      <p className="text-sm text-neutral-600">
+      <p className="text-sm text-(--color-text-secondary)">
         These spacing tokens are used throughout the design system for
         consistent layouts.
       </p>
@@ -57,8 +57,12 @@ export const SpacingScale: Story = {
         <div key={name} className="flex items-center space-x-4">
           <div className="w-16 text-sm font-mono">{name}</div>
           <div className={`bg-primary-200 h-4 ${className}`} />
-          <div className="text-sm text-neutral-500">{description}</div>
-          <div className="text-xs font-mono text-neutral-400">{className}</div>
+          <div className="text-sm text-(--color-text-tertiary)">
+            {description}
+          </div>
+          <div className="text-xs font-mono text-(--color-text-tertiary)">
+            {className}
+          </div>
         </div>
       ))}
     </div>
@@ -69,7 +73,7 @@ export const ShadowScale: Story = {
   render: () => (
     <div className="space-y-6">
       <h3 className="text-lg font-semibold">Shadow Scale</h3>
-      <p className="text-sm text-neutral-600">
+      <p className="text-sm text-(--color-text-secondary)">
         Elevation levels for depth and hierarchy in the interface.
       </p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -79,8 +83,12 @@ export const ShadowScale: Story = {
               className={`w-16 h-16 bg-white mx-auto rounded ${className}`}
             />
             <p className="text-sm font-mono">{name}</p>
-            <p className="text-xs text-neutral-500">{description}</p>
-            <p className="text-xs font-mono text-neutral-400">{className}</p>
+            <p className="text-xs text-(--color-text-tertiary)">
+              {description}
+            </p>
+            <p className="text-xs font-mono text-(--color-text-tertiary)">
+              {className}
+            </p>
           </div>
         ))}
       </div>
@@ -110,9 +118,9 @@ export const ComponentSpacingExamples: Story = {
 
       <div className="space-y-4">
         <h4 className="font-medium">Card Spacing</h4>
-        <div className="bg-white border border-neutral-200 rounded-lg p-6 shadow-md max-w-md">
+        <div className="bg-white border border-(--color-border-secondary) rounded-lg p-6 shadow-md max-w-md">
           <h5 className="font-semibold mb-4">Card Title (mb-4)</h5>
-          <p className="text-neutral-600 mb-6">
+          <p className="text-(--color-text-secondary) mb-6">
             Card content with proper spacing between elements using our spacing
             scale (mb-6).
           </p>
@@ -120,7 +128,7 @@ export const ComponentSpacingExamples: Story = {
             <button className="bg-primary-500 text-white px-4 py-2 rounded">
               Primary
             </button>
-            <button className="border border-neutral-300 text-neutral-900 px-4 py-2 rounded">
+            <button className="border border-(--color-border-secondary) text-(--color-text-primary) px-4 py-2 rounded">
               Secondary
             </button>
           </div>
@@ -130,27 +138,31 @@ export const ComponentSpacingExamples: Story = {
       <div className="space-y-4">
         <h4 className="font-medium">List Spacing</h4>
         <div className="space-y-3 max-w-md">
-          <div className="flex items-center p-3 bg-neutral-50 rounded">
+          <div className="flex items-center p-3 bg-(--color-background-secondary) rounded">
             <div className="w-10 h-10 bg-primary-200 rounded mr-3"></div>
             <div>
               <p className="font-medium">List Item 1</p>
-              <p className="text-sm text-neutral-600">
+              <p className="text-sm text-(--color-text-secondary)">
                 With consistent spacing
               </p>
             </div>
           </div>
-          <div className="flex items-center p-3 bg-neutral-50 rounded">
+          <div className="flex items-center p-3 bg-(--color-background-secondary) rounded">
             <div className="w-10 h-10 bg-primary-200 rounded mr-3"></div>
             <div>
               <p className="font-medium">List Item 2</p>
-              <p className="text-sm text-neutral-600">Using space-y-3</p>
+              <p className="text-sm text-(--color-text-secondary)">
+                Using space-y-3
+              </p>
             </div>
           </div>
-          <div className="flex items-center p-3 bg-neutral-50 rounded">
+          <div className="flex items-center p-3 bg-(--color-background-secondary) rounded">
             <div className="w-10 h-10 bg-primary-200 rounded mr-3"></div>
             <div>
               <p className="font-medium">List Item 3</p>
-              <p className="text-sm text-neutral-600">For visual rhythm</p>
+              <p className="text-sm text-(--color-text-secondary)">
+                For visual rhythm
+              </p>
             </div>
           </div>
         </div>
@@ -264,15 +276,15 @@ export const SpacingPlayground: Story = {
             <CardTitle className="text-base">Padding Preview</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="relative border-2 border-dashed border-blue-300 bg-blue-50 dark:bg-blue-950 dark:border-blue-700">
+            <div className="relative border-2 border-dashed border-(--color-status-info)/50 bg-(--color-status-info)/10">
               <div
-                className={`${padding} bg-white dark:bg-gray-800 border-2 border-blue-500`}
+                className={`${padding} bg-(--color-background-primary) border-2 border-(--color-status-info)`}
               >
                 <div className="text-sm text-center py-4">
                   Content with {padding}
                 </div>
               </div>
-              <div className="absolute top-2 left-2 text-xs font-mono text-blue-600 dark:text-blue-400">
+              <div className="absolute top-2 left-2 text-xs font-mono text-(--color-status-info)">
                 padding area
               </div>
             </div>
@@ -288,13 +300,13 @@ export const SpacingPlayground: Story = {
             <CardTitle className="text-base">Margin Preview</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="border-2 border-dashed border-orange-300 bg-orange-50 dark:bg-orange-950 dark:border-orange-700 p-4">
+            <div className="border-2 border-dashed border-(--color-status-warning)/50 bg-(--color-status-warning)/10 p-4">
               <div
-                className={`${margin} bg-white dark:bg-gray-800 border-2 border-orange-500 p-4`}
+                className={`${margin} bg-(--color-background-primary) border-2 border-(--color-status-warning) p-4`}
               >
                 <div className="text-sm text-center">Element with {margin}</div>
               </div>
-              <div className="mt-2 text-xs font-mono text-orange-600 dark:text-orange-400 text-center">
+              <div className="mt-2 text-xs font-mono text-(--color-status-warning) text-center">
                 margin area (orange)
               </div>
             </div>

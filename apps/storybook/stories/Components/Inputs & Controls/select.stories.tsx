@@ -214,7 +214,7 @@ export const FormExamples: Story = {
             </Label>
             <input
               id="first-name"
-              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
               placeholder="John"
             />
           </div>
@@ -224,7 +224,7 @@ export const FormExamples: Story = {
             </Label>
             <input
               id="last-name"
-              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
               placeholder="Doe"
             />
           </div>

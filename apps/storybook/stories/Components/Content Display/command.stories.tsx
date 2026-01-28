@@ -403,12 +403,14 @@ export const TeamDirectory: Story = {
 export const CodeEditor: Story = {
   render: () => (
     <div className="space-y-4 w-full max-w-2xl">
-      <div className="bg-neutral-900 text-white p-4 rounded-lg font-mono text-sm">
+      <div className="bg-(--color-background-inverse) text-(--color-text-inverse) p-4 rounded-lg font-mono text-sm">
         <div className="flex items-center justify-between mb-4">
           <span>editor.tsx</span>
-          <kbd className="text-xs bg-neutral-700 px-2 py-1 rounded">⌘K</kbd>
+          <kbd className="text-xs bg-(--color-background-tertiary) px-2 py-1 rounded">
+            ⌘K
+          </kbd>
         </div>
-        <div className="space-y-1 text-neutral-300">
+        <div className="space-y-1 text-(--color-text-tertiary)">
           <div>import React from 'react';</div>
           <div>import {"{ useState }"} from 'react';</div>
           <div></div>

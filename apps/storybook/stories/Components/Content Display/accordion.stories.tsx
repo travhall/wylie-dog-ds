@@ -251,7 +251,7 @@ export const SettingsPanel: Story = {
                 <input
                   type="text"
                   defaultValue="John Doe"
-                  className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
                 />
               </div>
               <div className="space-y-2">
@@ -259,7 +259,7 @@ export const SettingsPanel: Story = {
                 <input
                   type="email"
                   defaultValue="john@example.com"
-                  className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
                 />
               </div>
             </div>
@@ -298,7 +298,7 @@ export const SettingsPanel: Story = {
                 <span className="text-sm">Two-factor authentication</span>
                 <input type="checkbox" defaultChecked className="rounded" />
               </div>
-              <button className="text-sm text-blue-600 hover:text-blue-700">
+              <button className="text-sm text-(--color-interactive-primary) hover:text-(--color-interactive-primary-hover)">
                 Change password
               </button>
             </div>

@@ -187,7 +187,7 @@ export const FormExamples: Story = {
             </Label>
             <input
               id="feedback-name"
-              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
               placeholder="Your name"
             />
           </div>
@@ -198,7 +198,7 @@ export const FormExamples: Story = {
             <input
               id="feedback-email"
               type="email"
-              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
               placeholder="your@email.com"
             />
           </div>
@@ -208,7 +208,7 @@ export const FormExamples: Story = {
           <Label htmlFor="feedback-subject">Subject</Label>
           <input
             id="feedback-subject"
-            className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
             placeholder="What's this about?"
           />
         </div>

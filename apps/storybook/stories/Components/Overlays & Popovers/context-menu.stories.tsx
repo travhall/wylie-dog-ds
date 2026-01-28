@@ -482,7 +482,7 @@ export const Accessibility: Story = {
       </div>
 
       <ContextMenu>
-        <ContextMenuTrigger className="flex h-25 w-full items-center justify-center rounded-md border border-dashed text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <ContextMenuTrigger className="flex h-25 w-full items-center justify-center rounded-md border border-dashed text-sm focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)">
           Accessible Context Menu
         </ContextMenuTrigger>
         <ContextMenuContent className="w-64">

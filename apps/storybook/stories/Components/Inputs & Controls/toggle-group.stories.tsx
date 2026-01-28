@@ -397,7 +397,7 @@ export const EditorToolbar: Story = {
       </div>
 
       <textarea
-        className="w-full h-32 p-3 border border-(--color-border-secondary) rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full h-32 p-3 border border-(--color-border-secondary) rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
         placeholder="Start writing..."
       />
     </div>

@@ -147,13 +147,13 @@ export const CustomSeparator: Story = {
               <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <span className="text-neutral-400">→</span>
+              <span className="text-(--color-text-tertiary)">→</span>
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <span className="text-neutral-400">→</span>
+              <span className="text-(--color-text-tertiary)">→</span>
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbPage>Components</BreadcrumbPage>
@@ -314,7 +314,7 @@ export const ApplicationExamples: Story = {
   render: () => (
     <div className="space-y-8 w-full max-w-3xl">
       <div className="space-y-3">
-        <h4 className="font-medium text-neutral-800">
+        <h4 className="font-medium text-(--color-text-primary)">
           E-commerce Product Page
         </h4>
         <Breadcrumb>
@@ -347,7 +347,9 @@ export const ApplicationExamples: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="font-medium text-neutral-800">Documentation Site</h4>
+        <h4 className="font-medium text-(--color-text-primary)">
+          Documentation Site
+        </h4>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -377,7 +379,9 @@ export const ApplicationExamples: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="font-medium text-neutral-800">Admin Dashboard</h4>
+        <h4 className="font-medium text-(--color-text-primary)">
+          Admin Dashboard
+        </h4>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -404,7 +408,9 @@ export const ApplicationExamples: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="font-medium text-neutral-800">File Manager</h4>
+        <h4 className="font-medium text-(--color-text-primary)">
+          File Manager
+        </h4>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>

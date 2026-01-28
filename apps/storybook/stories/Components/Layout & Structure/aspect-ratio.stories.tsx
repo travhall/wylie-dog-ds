@@ -41,7 +41,7 @@ export const Square: Story = {
   render: () => (
     <div className="w-50">
       <AspectRatio ratio={1}>
-        <div className="bg-blue-100 w-full h-full flex items-center justify-center text-blue-700">
+        <div className="bg-(--color-interactive-primary)/20 w-full h-full flex items-center justify-center text-(--color-interactive-primary)">
           1:1 Square
         </div>
       </AspectRatio>
@@ -53,7 +53,7 @@ export const Portrait: Story = {
   render: () => (
     <div className="w-50">
       <AspectRatio ratio={3 / 4}>
-        <div className="bg-green-100 w-full h-full flex items-center justify-center text-green-700">
+        <div className="bg-(--color-status-success)/20 w-full h-full flex items-center justify-center text-(--color-status-success)">
           3:4 Portrait
         </div>
       </AspectRatio>
@@ -68,7 +68,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">16:9 Widescreen</h4>
         <div className="w-75">
           <AspectRatio ratio={16 / 9}>
-            <div className="bg-red-100 w-full h-full flex items-center justify-center text-red-700">
+            <div className="bg-(--color-status-danger)/20 w-full h-full flex items-center justify-center text-(--color-status-danger)">
               Video/Monitor
             </div>
           </AspectRatio>
@@ -79,7 +79,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">4:3 Traditional</h4>
         <div className="w-75">
           <AspectRatio ratio={4 / 3}>
-            <div className="bg-yellow-100 w-full h-full flex items-center justify-center text-yellow-700">
+            <div className="bg-(--color-status-warning)/20 w-full h-full flex items-center justify-center text-(--color-status-warning)">
               Old TV/Photo
             </div>
           </AspectRatio>
@@ -90,7 +90,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">1:1 Square</h4>
         <div className="w-50">
           <AspectRatio ratio={1}>
-            <div className="bg-purple-100 w-full h-full flex items-center justify-center text-purple-700">
+            <div className="bg-(--color-accent-hover)/20 w-full h-full flex items-center justify-center text-(--color-accent-hover)">
               Instagram
             </div>
           </AspectRatio>
