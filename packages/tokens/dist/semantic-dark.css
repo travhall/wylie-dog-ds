@@ -153,9 +153,9 @@
   --color-card-background: oklch(0.279 0.037 260.03);
   --color-card-border: oklch(0.446 0.037 257.28);
   --spacing-card-padding: 32px;
-  --spacing-card-gap: 24px;
+  --spacing-card-gap: 16px;
   --spacing-card-radius: 8px;
-  --spacing-card-header-gap: 24px;
+  --spacing-card-header-gap: 8px;
   --font-size-card-header-title-font-size: 20px;
   --color-card-header-title-color: oklch(0.984 0.003 247.86);
   --font-size-card-header-description-font-size: 14px;
@@ -626,7 +626,6 @@
   --font-size-alert-title-font-size: 16px;
   --font-size-alert-description-font-size: 14px;
   --spacing-label-required-margin-left: 4px;
-  --spacing-card-content-padding-top: 0px;
   --spacing-button-link-padding: 0px;
   --spacing-button-loading-margin-right: 8px;
   --spacing-radio-group-item-gap: 8px;
@@ -679,7 +678,6 @@
   --spacing-dropdown-menu-content-radius: 4px;
   --spacing-dropdown-menu-item-radius: 4px;
   --spacing-resizable-handle-radius: 4px;
-  --spacing-card-header-padding-top: 0px;
   --spacing-sheet-close-button-radius: 4px;
   --spacing-avatar-rounded: 9999px;
   --spacing-table-header-padding-right: 0px;

@@ -241,7 +241,7 @@
   },
   "card.gap": {
     "$type": "spacing",
-    "$value": "{spacing.300}"
+    "$value": "{spacing.200}"
   },
   "card.radius": {
     "$type": "dimension",
@@ -249,7 +249,7 @@
   },
   "card.header.gap": {
     "$type": "spacing",
-    "$value": "{spacing.300}"
+    "$value": "{spacing.100}"
   },
   "card.header.title.font-size": {
     "$type": "fontSize",
@@ -2131,10 +2131,6 @@
     "$type": "spacing",
     "$value": "{spacing.050}"
   },
-  "card.content-padding-top": {
-    "$type": "spacing",
-    "$value": "{spacing.0}"
-  },
   "button.link-padding": {
     "$type": "spacing",
     "$value": "{spacing.0}"
@@ -2342,10 +2338,6 @@
   "resizable.handle-radius": {
     "$type": "dimension",
     "$value": "{border-radius.md}"
-  },
-  "card.header-padding-top": {
-    "$type": "spacing",
-    "$value": "{spacing.0}"
   },
   "sheet.close-button-radius": {
     "$type": "dimension",

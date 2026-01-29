@@ -9,6 +9,7 @@
     "build:styles": {
       "inputs": ["src/**/*.css"],
       "outputs": ["dist/**/*.css"],
+      "dependsOn": ["^build"],
       "cache": true
     },
     "build:components": {
@@ -81,8 +82,13 @@
       "persistent": true
     },
     "@wyliedog/tokens#build": {
-      "inputs": ["src/**/*.json", "src/**/*.ts"],
-      "outputs": [],
+      "inputs": [
+        "io/sync/**/*.json",
+        "io/processed/**/*.json",
+        "scripts/**/*.js",
+        "style-dictionary.config.js"
+      ],
+      "outputs": ["dist/**"],
       "cache": true
     }
   }

@@ -9,6 +9,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     <div
       ref={ref}
       className={cn(
+        "flex flex-col",
         "border",
         "bg-(--color-card-background)",
         "shadow-(--shadow-card-shadow)",
@@ -32,8 +33,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
       ref={ref}
       className={cn(
         "flex flex-col",
-        "space-y-(--spacing-card-header-gap)",
-        "pt-(--spacing-card-header-padding-top)",
+        "gap-(--spacing-card-header-gap)",
         className
       )}
       {...props}
@@ -69,7 +69,6 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
     <div
       ref={ref}
       className={cn(
-        "pt-(--spacing-card-content-padding-top)",
         "text-(length:--font-size-card-content-font-size)",
         "text-(--color-card-content-color)",
         className

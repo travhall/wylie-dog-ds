@@ -1,0 +1,410 @@
+{
+  "generated": "2026-01-29T20:26:12.864Z",
+  "totalTokens": 18,
+  "totalComponents": 1,
+  "components": {
+    "card": {
+      "name": "card",
+      "tokens": [
+        {
+          "name": "card.background",
+          "type": "color",
+          "value": "{color.surface.primary}",
+          "valuesByMode": {
+            "Light": "{color.surface.primary}",
+            "Dark": "{color.surface.primary}"
+          },
+          "cssVariable": "--color-card-background",
+          "tailwindSyntax": "bg-(--color-card-background)"
+        },
+        {
+          "name": "card.border",
+          "type": "color",
+          "value": "{color.border.primary}",
+          "valuesByMode": {
+            "Light": "{color.border.primary}",
+            "Dark": "{color.border.primary}"
+          },
+          "cssVariable": "--color-card-border",
+          "tailwindSyntax": "border-(--color-card-border)"
+        },
+        {
+          "name": "card.padding",
+          "type": "spacing",
+          "value": "{spacing.400}",
+          "valuesByMode": {
+            "Light": "{spacing.400}",
+            "Dark": "{spacing.400}"
+          },
+          "cssVariable": "--spacing-card-padding",
+          "tailwindSyntax": "p-(--spacing-card-padding)"
+        },
+        {
+          "name": "card.gap",
+          "type": "spacing",
+          "value": "{spacing.200}",
+          "valuesByMode": {
+            "Light": "{spacing.200}",
+            "Dark": "{spacing.200}"
+          },
+          "cssVariable": "--spacing-card-gap",
+          "tailwindSyntax": "gap-(--spacing-card-gap)"
+        },
+        {
+          "name": "card.radius",
+          "type": "dimension",
+          "value": "{border-radius.lg}",
+          "valuesByMode": {
+            "Light": "{border-radius.lg}",
+            "Dark": "{border-radius.lg}"
+          },
+          "cssVariable": "--spacing-card-radius",
+          "tailwindSyntax": "rounded-(--spacing-card-radius)"
+        },
+        {
+          "name": "card.header.gap",
+          "type": "spacing",
+          "value": "{spacing.100}",
+          "valuesByMode": {
+            "Light": "{spacing.100}",
+            "Dark": "{spacing.100}"
+          },
+          "cssVariable": "--spacing-card-header-gap",
+          "tailwindSyntax": "gap-(--spacing-card-header-gap)"
+        },
+        {
+          "name": "card.header.title.font-size",
+          "type": "fontSize",
+          "value": "{typography.font-size.xl}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.xl}",
+            "Dark": "{typography.font-size.xl}"
+          },
+          "cssVariable": "--font-size-card-header-title-font-size",
+          "tailwindSyntax": "text-(length:--font-size-card-header-title-font-size)"
+        },
+        {
+          "name": "card.header.title.color",
+          "type": "color",
+          "value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          },
+          "cssVariable": "--color-card-header-title-color",
+          "tailwindSyntax": "text-(--color-card-header-title-color)"
+        },
+        {
+          "name": "card.header.description.font-size",
+          "type": "fontSize",
+          "value": "{typography.font-size.sm}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
+          },
+          "cssVariable": "--font-size-card-header-description-font-size",
+          "tailwindSyntax": "text-(length:--font-size-card-header-description-font-size)"
+        },
+        {
+          "name": "card.header.description.color",
+          "type": "color",
+          "value": "{color.text.secondary}",
+          "valuesByMode": {
+            "Light": "{color.text.secondary}",
+            "Dark": "{color.text.secondary}"
+          },
+          "cssVariable": "--color-card-header-description-color",
+          "tailwindSyntax": "text-(--color-card-header-description-color)"
+        },
+        {
+          "name": "card.footer.gap",
+          "type": "spacing",
+          "value": "{spacing.100}",
+          "valuesByMode": {
+            "Light": "{spacing.100}",
+            "Dark": "{spacing.100}"
+          },
+          "cssVariable": "--spacing-card-footer-gap",
+          "tailwindSyntax": "gap-(--spacing-card-footer-gap)"
+        },
+        {
+          "name": "card.footer.padding-top",
+          "type": "spacing",
+          "value": "{spacing.0}",
+          "valuesByMode": {
+            "Light": "{spacing.0}",
+            "Dark": "{spacing.0}"
+          },
+          "cssVariable": "--spacing-card-footer-padding-top",
+          "tailwindSyntax": "p-(--spacing-card-footer-padding-top)"
+        },
+        {
+          "name": "card.shadow",
+          "type": "shadow",
+          "value": "{shadow.sm}",
+          "valuesByMode": {
+            "Light": "{shadow.sm}",
+            "Dark": "{shadow.sm}"
+          },
+          "cssVariable": "--shadow-card-shadow",
+          "tailwindSyntax": "shadow-(--shadow-card-shadow)"
+        },
+        {
+          "name": "card.title.font-weight",
+          "type": "fontWeight",
+          "value": "{typography.font-weight.semibold}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.semibold}",
+            "Dark": "{typography.font-weight.semibold}"
+          },
+          "cssVariable": "--font-weight-card-title-font-weight",
+          "tailwindSyntax": "font-(--font-weight-card-title-font-weight)"
+        },
+        {
+          "name": "card.title.line-height",
+          "type": "lineHeight",
+          "value": "{typography.line-height.none}",
+          "valuesByMode": {
+            "Light": "{typography.line-height.none}",
+            "Dark": "{typography.line-height.none}"
+          },
+          "cssVariable": "--line-height-card-title-line-height",
+          "tailwindSyntax": "leading-(--line-height-card-title-line-height)"
+        },
+        {
+          "name": "card.title.letter-spacing",
+          "type": "dimension",
+          "value": "-0.025em",
+          "valuesByMode": {
+            "Light": "-0.025em",
+            "Dark": "-0.025em"
+          },
+          "cssVariable": "--spacing-card-title-letter-spacing",
+          "tailwindSyntax": "size-(--spacing-card-title-letter-spacing)"
+        },
+        {
+          "name": "card.content.font-size",
+          "type": "fontSize",
+          "value": "{typography.font-size.sm}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
+          },
+          "cssVariable": "--font-size-card-content-font-size",
+          "tailwindSyntax": "text-(length:--font-size-card-content-font-size)"
+        },
+        {
+          "name": "card.content.color",
+          "type": "color",
+          "value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          },
+          "cssVariable": "--color-card-content-color",
+          "tailwindSyntax": "text-(--color-card-content-color)"
+        }
+      ]
+    }
+  },
+  "tokens": [
+    {
+      "name": "card.background",
+      "type": "color",
+      "value": "{color.surface.primary}",
+      "valuesByMode": {
+        "Light": "{color.surface.primary}",
+        "Dark": "{color.surface.primary}"
+      },
+      "cssVariable": "--color-card-background",
+      "tailwindSyntax": "bg-(--color-card-background)"
+    },
+    {
+      "name": "card.border",
+      "type": "color",
+      "value": "{color.border.primary}",
+      "valuesByMode": {
+        "Light": "{color.border.primary}",
+        "Dark": "{color.border.primary}"
+      },
+      "cssVariable": "--color-card-border",
+      "tailwindSyntax": "border-(--color-card-border)"
+    },
+    {
+      "name": "card.padding",
+      "type": "spacing",
+      "value": "{spacing.400}",
+      "valuesByMode": {
+        "Light": "{spacing.400}",
+        "Dark": "{spacing.400}"
+      },
+      "cssVariable": "--spacing-card-padding",
+      "tailwindSyntax": "p-(--spacing-card-padding)"
+    },
+    {
+      "name": "card.gap",
+      "type": "spacing",
+      "value": "{spacing.200}",
+      "valuesByMode": {
+        "Light": "{spacing.200}",
+        "Dark": "{spacing.200}"
+      },
+      "cssVariable": "--spacing-card-gap",
+      "tailwindSyntax": "gap-(--spacing-card-gap)"
+    },
+    {
+      "name": "card.radius",
+      "type": "dimension",
+      "value": "{border-radius.lg}",
+      "valuesByMode": {
+        "Light": "{border-radius.lg}",
+        "Dark": "{border-radius.lg}"
+      },
+      "cssVariable": "--spacing-card-radius",
+      "tailwindSyntax": "rounded-(--spacing-card-radius)"
+    },
+    {
+      "name": "card.header.gap",
+      "type": "spacing",
+      "value": "{spacing.100}",
+      "valuesByMode": {
+        "Light": "{spacing.100}",
+        "Dark": "{spacing.100}"
+      },
+      "cssVariable": "--spacing-card-header-gap",
+      "tailwindSyntax": "gap-(--spacing-card-header-gap)"
+    },
+    {
+      "name": "card.header.title.font-size",
+      "type": "fontSize",
+      "value": "{typography.font-size.xl}",
+      "valuesByMode": {
+        "Light": "{typography.font-size.xl}",
+        "Dark": "{typography.font-size.xl}"
+      },
+      "cssVariable": "--font-size-card-header-title-font-size",
+      "tailwindSyntax": "text-(length:--font-size-card-header-title-font-size)"
+    },
+    {
+      "name": "card.header.title.color",
+      "type": "color",
+      "value": "{color.text.primary}",
+      "valuesByMode": {
+        "Light": "{color.text.primary}",
+        "Dark": "{color.text.primary}"
+      },
+      "cssVariable": "--color-card-header-title-color",
+      "tailwindSyntax": "text-(--color-card-header-title-color)"
+    },
+    {
+      "name": "card.header.description.font-size",
+      "type": "fontSize",
+      "value": "{typography.font-size.sm}",
+      "valuesByMode": {
+        "Light": "{typography.font-size.sm}",
+        "Dark": "{typography.font-size.sm}"
+      },
+      "cssVariable": "--font-size-card-header-description-font-size",
+      "tailwindSyntax": "text-(length:--font-size-card-header-description-font-size)"
+    },
+    {
+      "name": "card.header.description.color",
+      "type": "color",
+      "value": "{color.text.secondary}",
+      "valuesByMode": {
+        "Light": "{color.text.secondary}",
+        "Dark": "{color.text.secondary}"
+      },
+      "cssVariable": "--color-card-header-description-color",
+      "tailwindSyntax": "text-(--color-card-header-description-color)"
+    },
+    {
+      "name": "card.footer.gap",
+      "type": "spacing",
+      "value": "{spacing.100}",
+      "valuesByMode": {
+        "Light": "{spacing.100}",
+        "Dark": "{spacing.100}"
+      },
+      "cssVariable": "--spacing-card-footer-gap",
+      "tailwindSyntax": "gap-(--spacing-card-footer-gap)"
+    },
+    {
+      "name": "card.footer.padding-top",
+      "type": "spacing",
+      "value": "{spacing.0}",
+      "valuesByMode": {
+        "Light": "{spacing.0}",
+        "Dark": "{spacing.0}"
+      },
+      "cssVariable": "--spacing-card-footer-padding-top",
+      "tailwindSyntax": "p-(--spacing-card-footer-padding-top)"
+    },
+    {
+      "name": "card.shadow",
+      "type": "shadow",
+      "value": "{shadow.sm}",
+      "valuesByMode": {
+        "Light": "{shadow.sm}",
+        "Dark": "{shadow.sm}"
+      },
+      "cssVariable": "--shadow-card-shadow",
+      "tailwindSyntax": "shadow-(--shadow-card-shadow)"
+    },
+    {
+      "name": "card.title.font-weight",
+      "type": "fontWeight",
+      "value": "{typography.font-weight.semibold}",
+      "valuesByMode": {
+        "Light": "{typography.font-weight.semibold}",
+        "Dark": "{typography.font-weight.semibold}"
+      },
+      "cssVariable": "--font-weight-card-title-font-weight",
+      "tailwindSyntax": "font-(--font-weight-card-title-font-weight)"
+    },
+    {
+      "name": "card.title.line-height",
+      "type": "lineHeight",
+      "value": "{typography.line-height.none}",
+      "valuesByMode": {
+        "Light": "{typography.line-height.none}",
+        "Dark": "{typography.line-height.none}"
+      },
+      "cssVariable": "--line-height-card-title-line-height",
+      "tailwindSyntax": "leading-(--line-height-card-title-line-height)"
+    },
+    {
+      "name": "card.title.letter-spacing",
+      "type": "dimension",
+      "value": "-0.025em",
+      "valuesByMode": {
+        "Light": "-0.025em",
+        "Dark": "-0.025em"
+      },
+      "cssVariable": "--spacing-card-title-letter-spacing",
+      "tailwindSyntax": "size-(--spacing-card-title-letter-spacing)"
+    },
+    {
+      "name": "card.content.font-size",
+      "type": "fontSize",
+      "value": "{typography.font-size.sm}",
+      "valuesByMode": {
+        "Light": "{typography.font-size.sm}",
+        "Dark": "{typography.font-size.sm}"
+      },
+      "cssVariable": "--font-size-card-content-font-size",
+      "tailwindSyntax": "text-(length:--font-size-card-content-font-size)"
+    },
+    {
+      "name": "card.content.color",
+      "type": "color",
+      "value": "{color.text.primary}",
+      "valuesByMode": {
+        "Light": "{color.text.primary}",
+        "Dark": "{color.text.primary}"
+      },
+      "cssVariable": "--color-card-content-color",
+      "tailwindSyntax": "text-(--color-card-content-color)"
+    }
+  ]
+}

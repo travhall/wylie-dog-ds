@@ -225,8 +225,8 @@ export const AllVariants: Story = {
               Tight
             </p>
             <p className="leading-(--line-height-tight) text-(--color-text-secondary)">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              The old world is dying, and the new world struggles to be born;
+              now is the time of monsters.
             </p>
           </div>
           <div>
@@ -234,8 +234,8 @@ export const AllVariants: Story = {
               Normal
             </p>
             <p className="leading-(--line-height-normal) text-(--color-text-secondary)">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              The old world is dying, and the new world struggles to be born;
+              now is the time of monsters.
             </p>
           </div>
           <div>
@@ -243,8 +243,8 @@ export const AllVariants: Story = {
               Relaxed
             </p>
             <p className="leading-(--line-height-relaxed) text-(--color-text-secondary)">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              The old world is dying, and the new world struggles to be born;
+              now is the time of monsters.
             </p>
           </div>
         </div>
@@ -401,9 +401,8 @@ export const LineHeights: Story = {
           Tight (--line-height-tight)
         </h4>
         <p className="leading-(--line-height-tight) text-(--color-text-secondary)">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris.
+          The old world is dying, and the new world struggles to be born; now is
+          the time of monsters.
         </p>
       </div>
 
@@ -412,9 +411,8 @@ export const LineHeights: Story = {
           Normal (--line-height-normal)
         </h4>
         <p className="leading-(--line-height-normal) text-(--color-text-secondary)">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris.
+          The old world is dying, and the new world struggles to be born; now is
+          the time of monsters.
         </p>
       </div>
 
@@ -423,9 +421,8 @@ export const LineHeights: Story = {
           Relaxed (--line-height-relaxed)
         </h4>
         <p className="leading-(--line-height-relaxed) text-(--color-text-secondary)">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris.
+          The old world is dying, and the new world struggles to be born; now is
+          the time of monsters.
         </p>
       </div>
 
@@ -434,9 +431,8 @@ export const LineHeights: Story = {
           Loose (--line-height-loose)
         </h4>
         <p className="leading-(--line-height-loose) text-(--color-text-secondary)">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris.
+          The old world is dying, and the new world struggles to be born; now is
+          the time of monsters.
         </p>
       </div>
     </div>

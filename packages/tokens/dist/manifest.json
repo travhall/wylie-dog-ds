@@ -3465,7 +3465,7 @@
           "card",
           "gap"
         ],
-        "value": "24px",
+        "value": "16px",
         "type": "spacing",
         "variable": "var(--card-gap)",
         "description": ""
@@ -3488,7 +3488,7 @@
           "header",
           "gap"
         ],
-        "value": "24px",
+        "value": "8px",
         "type": "spacing",
         "variable": "var(--card-header-gap)",
         "description": ""
@@ -3638,28 +3638,6 @@
         "value": "oklch(0.279 0.037 260.03)",
         "type": "color",
         "variable": "var(--color-card-content-color)",
-        "description": ""
-      },
-      "card-content-padding-top": {
-        "name": "cardContentPaddingTop",
-        "path": [
-          "card",
-          "content-padding-top"
-        ],
-        "value": "0px",
-        "type": "spacing",
-        "variable": "var(--card-content-padding-top)",
-        "description": ""
-      },
-      "card-header-padding-top": {
-        "name": "cardHeaderPaddingTop",
-        "path": [
-          "card",
-          "header-padding-top"
-        ],
-        "value": "0px",
-        "type": "spacing",
-        "variable": "var(--card-header-padding-top)",
         "description": ""
       }
     },

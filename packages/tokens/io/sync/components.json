@@ -494,10 +494,10 @@
         },
         "card.gap": {
           "$type": "spacing",
-          "$value": "{spacing.300}",
+          "$value": "{spacing.200}",
           "valuesByMode": {
-            "Light": "{spacing.300}",
-            "Dark": "{spacing.300}"
+            "Light": "{spacing.200}",
+            "Dark": "{spacing.200}"
           }
         },
         "card.radius": {
@@ -510,10 +510,10 @@
         },
         "card.header.gap": {
           "$type": "spacing",
-          "$value": "{spacing.300}",
+          "$value": "{spacing.100}",
           "valuesByMode": {
-            "Light": "{spacing.300}",
-            "Dark": "{spacing.300}"
+            "Light": "{spacing.100}",
+            "Dark": "{spacing.100}"
           }
         },
         "card.header.title.font-size": {
@@ -4276,14 +4276,6 @@
             "Dark": "{spacing.050}"
           }
         },
-        "card.content-padding-top": {
-          "$type": "spacing",
-          "$value": "{spacing.0}",
-          "valuesByMode": {
-            "Light": "{spacing.0}",
-            "Dark": "{spacing.0}"
-          }
-        },
         "button.link-padding": {
           "$type": "spacing",
           "$value": "{spacing.0}",
@@ -4698,14 +4690,6 @@
           "valuesByMode": {
             "Light": "{border-radius.md}",
             "Dark": "{border-radius.md}"
-          }
-        },
-        "card.header-padding-top": {
-          "$type": "spacing",
-          "$value": "{spacing.0}",
-          "valuesByMode": {
-            "Light": "{spacing.0}",
-            "Dark": "{spacing.0}"
           }
         },
         "sheet.close-button-radius": {
