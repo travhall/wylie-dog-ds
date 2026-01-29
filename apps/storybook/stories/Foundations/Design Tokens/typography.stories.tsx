@@ -691,7 +691,7 @@ function TypographyPlaygroundComponent() {
     defaultLetterSpacing?.key || ""
   );
   const [previewText, setPreviewText] = useState(
-    "The quick brown fox jumps over the lazy dog. Typography is the art and technique of arranging type to make written language legible, readable, and appealing."
+    "The old world is dying, and the new world struggles to be born; now is the time of monsters."
   );
   const [showTokenDetails, setShowTokenDetails] = useState(false);
 
@@ -737,12 +737,67 @@ function TypographyPlaygroundComponent() {
         </p>
       </div>
 
+      {/* Live Preview */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base flex items-center justify-between">
+            <span>Live Preview</span>
+            <Badge variant="outline">Interactive</Badge>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div
+            className="p-6 rounded-lg border bg-background"
+            style={{
+              fontSize: String(currentFontSize.value),
+              fontWeight: String(currentFontWeight.value),
+              lineHeight: String(currentLineHeight.value),
+              fontFamily: String(currentFontFamily.value),
+              ...(currentLetterSpacing && {
+                letterSpacing: String(currentLetterSpacing.value),
+              }),
+            }}
+          >
+            {previewText}
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Controls */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Typography Controls</CardTitle>
+          <CardTitle className="text-base mb-2">Typography Controls</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
+          {/* Font Family */}
+          <div className="space-y-3">
+            <Label className="text-sm font-semibold">
+              Font Family ({fontFamilies.length} tokens)
+            </Label>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              {fontFamilies.map((token) => (
+                <button
+                  key={token.key}
+                  type="button"
+                  onClick={() => setSelectedFontFamily(token.key)}
+                  className={`px-3 py-2 text-xs rounded-md border transition-all ${
+                    selectedFontFamily === token.key
+                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                      : "bg-background hover:bg-muted border-border"
+                  }`}
+                >
+                  {token.key}
+                </button>
+              ))}
+            </div>
+            {showTokenDetails && (
+              <div className="text-xs text-muted-foreground font-mono truncate">
+                <div>Value: {currentFontFamily.value}</div>
+                <div>Token: {currentFontFamily.token}</div>
+              </div>
+            )}
+          </div>
+
           {/* Font Size */}
           <div className="space-y-3">
             <Label className="text-sm font-semibold">
@@ -830,35 +885,6 @@ function TypographyPlaygroundComponent() {
             )}
           </div>
 
-          {/* Font Family */}
-          <div className="space-y-3">
-            <Label className="text-sm font-semibold">
-              Font Family ({fontFamilies.length} tokens)
-            </Label>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-              {fontFamilies.map((token) => (
-                <button
-                  key={token.key}
-                  type="button"
-                  onClick={() => setSelectedFontFamily(token.key)}
-                  className={`px-3 py-2 text-xs rounded-md border transition-all ${
-                    selectedFontFamily === token.key
-                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                      : "bg-background hover:bg-muted border-border"
-                  }`}
-                >
-                  {token.key}
-                </button>
-              ))}
-            </div>
-            {showTokenDetails && (
-              <div className="text-xs text-muted-foreground font-mono truncate">
-                <div>Value: {currentFontFamily.value}</div>
-                <div>Token: {currentFontFamily.token}</div>
-              </div>
-            )}
-          </div>
-
           {/* Letter Spacing - only shown if tokens exist */}
           {hasLetterSpacingTokens && (
             <div className="space-y-3">
@@ -911,32 +937,6 @@ function TypographyPlaygroundComponent() {
               className="w-full min-h-[100px] px-3 py-2 text-sm rounded-md border border-input bg-background resize-y"
               placeholder="Enter your text here..."
             />
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Live Preview */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-base flex items-center justify-between">
-            <span>Live Preview</span>
-            <Badge variant="outline">Interactive</Badge>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div
-            className="p-6 rounded-lg border bg-background"
-            style={{
-              fontSize: String(currentFontSize.value),
-              fontWeight: String(currentFontWeight.value),
-              lineHeight: String(currentLineHeight.value),
-              fontFamily: String(currentFontFamily.value),
-              ...(currentLetterSpacing && {
-                letterSpacing: String(currentLetterSpacing.value),
-              }),
-            }}
-          >
-            {previewText}
           </div>
         </CardContent>
       </Card>
@@ -1091,7 +1091,7 @@ function TypographyPlaygroundComponent() {
               setSelectedLetterSpacing(defaultLetterSpacing?.key || "");
             }
             setPreviewText(
-              "The quick brown fox jumps over the lazy dog. Typography is the art and technique of arranging type to make written language legible, readable, and appealing."
+              "The old world is dying, and the new world struggles to be born; now is the time of monsters."
             );
           }}
         >

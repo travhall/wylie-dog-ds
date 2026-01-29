@@ -3488,7 +3488,7 @@
           "header",
           "gap"
         ],
-        "value": "8px",
+        "value": "24px",
         "type": "spacing",
         "variable": "var(--card-header-gap)",
         "description": ""
@@ -3555,6 +3555,89 @@
         "value": "8px",
         "type": "spacing",
         "variable": "var(--card-footer-gap)",
+        "description": ""
+      },
+      "card-footer-padding-top": {
+        "name": "cardFooterPaddingTop",
+        "path": [
+          "card",
+          "footer",
+          "padding-top"
+        ],
+        "value": "0px",
+        "type": "spacing",
+        "variable": "var(--card-footer-padding-top)",
+        "description": ""
+      },
+      "card-shadow": {
+        "name": "cardShadow",
+        "path": [
+          "card",
+          "shadow"
+        ],
+        "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "type": "shadow",
+        "variable": "var(--card-shadow)",
+        "description": ""
+      },
+      "card-title-font-weight": {
+        "name": "cardTitleFontWeight",
+        "path": [
+          "card",
+          "title",
+          "font-weight"
+        ],
+        "value": "600",
+        "type": "fontWeight",
+        "variable": "var(--card-title-font-weight)",
+        "description": ""
+      },
+      "card-title-line-height": {
+        "name": "cardTitleLineHeight",
+        "path": [
+          "card",
+          "title",
+          "line-height"
+        ],
+        "value": 1,
+        "type": "lineHeight",
+        "variable": "var(--card-title-line-height)",
+        "description": ""
+      },
+      "card-title-letter-spacing": {
+        "name": "cardTitleLetterSpacing",
+        "path": [
+          "card",
+          "title",
+          "letter-spacing"
+        ],
+        "value": "-0.025em",
+        "type": "dimension",
+        "variable": "var(--card-title-letter-spacing)",
+        "description": ""
+      },
+      "card-content-font-size": {
+        "name": "cardContentFontSize",
+        "path": [
+          "card",
+          "content",
+          "font-size"
+        ],
+        "value": "14px",
+        "type": "fontSize",
+        "variable": "var(--card-content-font-size)",
+        "description": ""
+      },
+      "card-content-color": {
+        "name": "cardContentColor",
+        "path": [
+          "card",
+          "content",
+          "color"
+        ],
+        "value": "oklch(0.279 0.037 260.03)",
+        "type": "color",
+        "variable": "var(--color-card-content-color)",
         "description": ""
       },
       "card-content-padding-top": {

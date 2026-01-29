@@ -9,9 +9,11 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     <div
       ref={ref}
       className={cn(
-        "border bg-(--color-background-primary) shadow-sm",
+        "border",
+        "bg-(--color-card-background)",
+        "shadow-(--shadow-card-shadow)",
         "rounded-(--spacing-card-radius)",
-        "border-(--color-border-primary)",
+        "border-(--color-card-border)",
         "p-(--spacing-card-padding)",
         "gap-(--spacing-card-gap)",
         className
@@ -31,6 +33,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
       className={cn(
         "flex flex-col",
         "space-y-(--spacing-card-header-gap)",
+        "pt-(--spacing-card-header-padding-top)",
         className
       )}
       {...props}
@@ -46,7 +49,9 @@ export const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
     <h3
       ref={ref}
       className={cn(
-        "font-semibold leading-none tracking-tight",
+        "font-(--font-weight-card-title-font-weight)",
+        "leading-(--line-height-card-title-line-height)",
+        "tracking-(--spacing-card-title-letter-spacing)",
         "text-(length:--font-size-card-header-title-font-size)",
         "text-(--color-card-header-title-color)",
         className
@@ -64,9 +69,9 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
     <div
       ref={ref}
       className={cn(
-        "pt-(--spacing-card-header-padding-top)",
-        "text-(length:--font-size-card-header-description-font-size)",
-        "text-(--color-card-header-description-color)",
+        "pt-(--spacing-card-content-padding-top)",
+        "text-(length:--font-size-card-content-font-size)",
+        "text-(--color-card-content-color)",
         className
       )}
       {...props}
@@ -102,6 +107,7 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
       className={cn(
         "flex items-center",
         "pt-(--spacing-card-footer-padding-top)",
+        "gap-(--spacing-card-footer-gap)",
         className
       )}
       {...props}

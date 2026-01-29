@@ -510,10 +510,10 @@
         },
         "card.header.gap": {
           "$type": "spacing",
-          "$value": "{spacing.100}",
+          "$value": "{spacing.300}",
           "valuesByMode": {
-            "Light": "{spacing.100}",
-            "Dark": "{spacing.100}"
+            "Light": "{spacing.300}",
+            "Dark": "{spacing.300}"
           }
         },
         "card.header.title.font-size": {
@@ -554,6 +554,62 @@
           "valuesByMode": {
             "Light": "{spacing.100}",
             "Dark": "{spacing.100}"
+          }
+        },
+        "card.footer.padding-top": {
+          "$type": "spacing",
+          "$value": "{spacing.0}",
+          "valuesByMode": {
+            "Light": "{spacing.0}",
+            "Dark": "{spacing.0}"
+          }
+        },
+        "card.shadow": {
+          "$type": "shadow",
+          "$value": "{shadow.sm}",
+          "valuesByMode": {
+            "Light": "{shadow.sm}",
+            "Dark": "{shadow.sm}"
+          }
+        },
+        "card.title.font-weight": {
+          "$type": "fontWeight",
+          "$value": "{typography.font-weight.semibold}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.semibold}",
+            "Dark": "{typography.font-weight.semibold}"
+          }
+        },
+        "card.title.line-height": {
+          "$type": "lineHeight",
+          "$value": "{typography.line-height.none}",
+          "valuesByMode": {
+            "Light": "{typography.line-height.none}",
+            "Dark": "{typography.line-height.none}"
+          }
+        },
+        "card.title.letter-spacing": {
+          "$type": "dimension",
+          "$value": "-0.025em",
+          "valuesByMode": {
+            "Light": "-0.025em",
+            "Dark": "-0.025em"
+          }
+        },
+        "card.content.font-size": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.sm}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
+          }
+        },
+        "card.content.color": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
           }
         },
         "input.background": {
