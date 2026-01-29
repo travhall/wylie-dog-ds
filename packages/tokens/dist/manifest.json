@@ -1452,9 +1452,21 @@
             "font-family",
             "sans"
           ],
-          "value": "Inter",
+          "value": "Manrope",
           "type": "fontFamily",
           "variable": "var(--typography-font-family-sans)",
+          "description": "@fontSource(provider:google,weights:200-300-400-500-600-700-800,subsets:latin,display:swap)"
+        },
+        "typography-font-family-serif": {
+          "name": "typographyFontFamilySerif",
+          "path": [
+            "typography",
+            "font-family",
+            "serif"
+          ],
+          "value": "Besley",
+          "type": "fontFamily",
+          "variable": "var(--typography-font-family-serif)",
           "description": "@fontSource(provider:google,weights:400-500-600-700-800,subsets:latin,display:swap)"
         },
         "typography-font-family-mono": {
@@ -1593,16 +1605,16 @@
         }
       },
       "weight": {
-        "typography-font-weight-thin": {
-          "name": "typographyFontWeightThin",
+        "typography-font-weight-extralight": {
+          "name": "typographyFontWeightExtralight",
           "path": [
             "typography",
             "font-weight",
-            "thin"
+            "extralight"
           ],
-          "value": "100",
+          "value": "200",
           "type": "fontWeight",
-          "variable": "var(--typography-font-weight-thin)",
+          "variable": "var(--typography-font-weight-extralight)",
           "description": ""
         },
         "typography-font-weight-light": {
@@ -1617,16 +1629,16 @@
           "variable": "var(--typography-font-weight-light)",
           "description": ""
         },
-        "typography-font-weight-normal": {
-          "name": "typographyFontWeightNormal",
+        "typography-font-weight-regular": {
+          "name": "typographyFontWeightRegular",
           "path": [
             "typography",
             "font-weight",
-            "normal"
+            "regular"
           ],
           "value": "400",
           "type": "fontWeight",
-          "variable": "var(--typography-font-weight-normal)",
+          "variable": "var(--typography-font-weight-regular)",
           "description": ""
         },
         "typography-font-weight-medium": {
@@ -1675,6 +1687,18 @@
           "value": "800",
           "type": "fontWeight",
           "variable": "var(--typography-font-weight-extrabold)",
+          "description": ""
+        },
+        "typography-font-weight-black": {
+          "name": "typographyFontWeightBlack",
+          "path": [
+            "typography",
+            "font-weight",
+            "black"
+          ],
+          "value": "900",
+          "type": "fontWeight",
+          "variable": "var(--typography-font-weight-black)",
           "description": ""
         }
       },

@@ -6,12 +6,19 @@
  * packages/tokens/io/sync/primitive.json
  */
 
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Manrope, Besley, JetBrains_Mono } from "next/font/google";
 
 
-export const sansFont = Inter({
+export const sansFont = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+  weight: ["200", "300", "400", "500", "600", "700", "800"]
+});
+
+export const serifFont = Besley({
+  subsets: ["latin"],
+  variable: "--font-serif",
   display: "swap",
   weight: ["400", "500", "600", "700", "800"]
 });
@@ -24,7 +31,7 @@ export const monoFont = JetBrains_Mono({
 });
 
 // Array of all font configurations for easy spreading
-export const allFonts = [sansFont, monoFont];
+export const allFonts = [sansFont, serifFont, monoFont];
 
 // Font variable strings for className concatenation
 export const fontVariables = allFonts.map(font => font.variable).join(' ');

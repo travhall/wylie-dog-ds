@@ -437,7 +437,12 @@
   },
   "typography.font-family.sans": {
     "$type": "fontFamily",
-    "$value": "Inter",
+    "$value": "Manrope",
+    "$description": "@fontSource(provider:google,weights:200-300-400-500-600-700-800,subsets:latin,display:swap)"
+  },
+  "typography.font-family.serif": {
+    "$type": "fontFamily",
+    "$value": "Besley",
     "$description": "@fontSource(provider:google,weights:400-500-600-700-800,subsets:latin,display:swap)"
   },
   "typography.font-family.mono": {
@@ -485,15 +490,15 @@
     "$type": "fontSize",
     "$value": "60px"
   },
-  "typography.font-weight.thin": {
+  "typography.font-weight.extralight": {
     "$type": "fontWeight",
-    "$value": 100
+    "$value": 200
   },
   "typography.font-weight.light": {
     "$type": "fontWeight",
     "$value": 300
   },
-  "typography.font-weight.normal": {
+  "typography.font-weight.regular": {
     "$type": "fontWeight",
     "$value": 400
   },
@@ -512,6 +517,10 @@
   "typography.font-weight.extrabold": {
     "$type": "fontWeight",
     "$value": 800
+  },
+  "typography.font-weight.black": {
+    "$type": "fontWeight",
+    "$value": 900
   },
   "typography.line-height.none": {
     "$type": "lineHeight",
