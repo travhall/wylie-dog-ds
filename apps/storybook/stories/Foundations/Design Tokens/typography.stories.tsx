@@ -569,132 +569,176 @@ export const ResponsiveTypography: Story = {
   ),
 };
 
-// Typography token data structures - defined outside component for stability
-const fontSizes = {
+// Typography token data structures - built from actual token imports
+// When new tokens are added to @wyliedog/tokens, import them and add entries here
+// This pattern makes it easy to add new tokens - just import and add an entry
+
+// Build font sizes from tokens - add new sizes here when tokens are added
+const fontSizes: Record<
+  string,
+  { value: string; token: string; tailwind: string; cssVar: string }
+> = {
   xs: {
     value: typographyFontSizeXs,
     token: "typography.font-size.xs",
     tailwind: "text-xs",
+    cssVar: "var(--font-size-xs)",
   },
   sm: {
     value: typographyFontSizeSm,
     token: "typography.font-size.sm",
     tailwind: "text-sm",
+    cssVar: "var(--font-size-sm)",
   },
   base: {
     value: typographyFontSizeBase,
     token: "typography.font-size.base",
     tailwind: "text-base",
+    cssVar: "var(--font-size-base)",
   },
   lg: {
     value: typographyFontSizeLg,
     token: "typography.font-size.lg",
     tailwind: "text-lg",
+    cssVar: "var(--font-size-lg)",
   },
   xl: {
     value: typographyFontSizeXl,
     token: "typography.font-size.xl",
     tailwind: "text-xl",
+    cssVar: "var(--font-size-xl)",
   },
   "2xl": {
     value: typographyFontSize2xl,
     token: "typography.font-size.2xl",
     tailwind: "text-2xl",
+    cssVar: "var(--font-size-2xl)",
   },
   "3xl": {
     value: typographyFontSize3xl,
     token: "typography.font-size.3xl",
     tailwind: "text-3xl",
+    cssVar: "var(--font-size-3xl)",
   },
   "4xl": {
     value: typographyFontSize4xl,
     token: "typography.font-size.4xl",
     tailwind: "text-4xl",
+    cssVar: "var(--font-size-4xl)",
   },
   "5xl": {
     value: typographyFontSize5xl,
     token: "typography.font-size.5xl",
     tailwind: "text-5xl",
+    cssVar: "var(--font-size-5xl)",
   },
   "6xl": {
     value: typographyFontSize6xl,
     token: "typography.font-size.6xl",
     tailwind: "text-6xl",
+    cssVar: "var(--font-size-6xl)",
   },
 };
 
-const fontWeights = {
+// Build font weights from tokens - add new weights here when tokens are added
+const fontWeights: Record<
+  string,
+  { value: string; token: string; tailwind: string; cssVar: string }
+> = {
   thin: {
     value: typographyFontWeightThin,
     token: "typography.font-weight.thin",
     tailwind: "font-thin",
+    cssVar: "var(--font-weight-thin)",
   },
   light: {
     value: typographyFontWeightLight,
     token: "typography.font-weight.light",
     tailwind: "font-light",
+    cssVar: "var(--font-weight-light)",
   },
   normal: {
     value: typographyFontWeightNormal,
     token: "typography.font-weight.normal",
     tailwind: "font-normal",
+    cssVar: "var(--font-weight-normal)",
   },
   medium: {
     value: typographyFontWeightMedium,
     token: "typography.font-weight.medium",
     tailwind: "font-medium",
+    cssVar: "var(--font-weight-medium)",
   },
   semibold: {
     value: typographyFontWeightSemibold,
     token: "typography.font-weight.semibold",
     tailwind: "font-semibold",
+    cssVar: "var(--font-weight-semibold)",
   },
   bold: {
     value: typographyFontWeightBold,
     token: "typography.font-weight.bold",
     tailwind: "font-bold",
+    cssVar: "var(--font-weight-bold)",
   },
   extrabold: {
     value: typographyFontWeightExtrabold,
     token: "typography.font-weight.extrabold",
     tailwind: "font-extrabold",
+    cssVar: "var(--font-weight-extrabold)",
   },
 };
 
-const lineHeights = {
+// Build line heights from tokens - add new line heights here when tokens are added
+const lineHeights: Record<
+  string,
+  { value: number; token: string; tailwind: string; cssVar: string }
+> = {
   none: {
     value: typographyLineHeightNone,
     token: "typography.line-height.none",
     tailwind: "leading-none",
+    cssVar: "var(--line-height-none)",
   },
   tight: {
     value: typographyLineHeightTight,
     token: "typography.line-height.tight",
     tailwind: "leading-tight",
+    cssVar: "var(--line-height-tight)",
   },
   snug: {
     value: typographyLineHeightSnug,
     token: "typography.line-height.snug",
     tailwind: "leading-snug",
+    cssVar: "var(--line-height-snug)",
   },
   normal: {
     value: typographyLineHeightNormal,
     token: "typography.line-height.normal",
     tailwind: "leading-normal",
+    cssVar: "var(--line-height-normal)",
   },
   relaxed: {
     value: typographyLineHeightRelaxed,
     token: "typography.line-height.relaxed",
     tailwind: "leading-relaxed",
+    cssVar: "var(--line-height-relaxed)",
   },
   loose: {
     value: typographyLineHeightLoose,
     token: "typography.line-height.loose",
     tailwind: "leading-loose",
+    cssVar: "var(--line-height-loose)",
   },
 };
 
-const fontFamilies = {
+// Build font families from tokens - add new families here when tokens are added
+// e.g., if you add typographyFontFamilySerif or typographyFontFamilyDisplay,
+// import them and add entries here
+const fontFamilies: Record<
+  string,
+  { value: string; token: string; tailwind: string; cssVar: string }
+> = {
   sans: {
     value: `${typographyFontFamilySans}, ui-sans-serif, system-ui, sans-serif`,
     token: "typography.font-family.sans",
@@ -707,67 +751,72 @@ const fontFamilies = {
     tailwind: "font-mono",
     cssVar: "var(--font-family-mono)",
   },
+  // Add new font families here when tokens are created, e.g.:
+  // serif: {
+  //   value: `${typographyFontFamilySerif}, ui-serif, Georgia, serif`,
+  //   token: "typography.font-family.serif",
+  //   tailwind: "font-serif",
+  //   cssVar: "var(--font-family-serif)",
+  // },
 };
 
-// Letter spacing tokens - placeholder for when tokens are added
-// TODO: Import from @wyliedog/tokens when letter-spacing tokens exist
-const letterSpacings = {
-  tighter: {
-    value: "-0.05em",
-    token: "typography.letter-spacing.tighter",
-    tailwind: "tracking-tighter",
-  },
-  tight: {
-    value: "-0.025em",
-    token: "typography.letter-spacing.tight",
-    tailwind: "tracking-tight",
-  },
-  normal: {
-    value: "0em",
-    token: "typography.letter-spacing.normal",
-    tailwind: "tracking-normal",
-  },
-  wide: {
-    value: "0.025em",
-    token: "typography.letter-spacing.wide",
-    tailwind: "tracking-wide",
-  },
-  wider: {
-    value: "0.05em",
-    token: "typography.letter-spacing.wider",
-    tailwind: "tracking-wider",
-  },
-  widest: {
-    value: "0.1em",
-    token: "typography.letter-spacing.widest",
-    tailwind: "tracking-widest",
-  },
+// Letter spacing tokens - currently none exist in the token system
+// When letter-spacing tokens are added to @wyliedog/tokens, import them and add entries here
+// Example of how to add when tokens exist:
+// import { typographyLetterSpacingTight, typographyLetterSpacingNormal, ... } from "@wyliedog/tokens";
+const letterSpacings: Record<
+  string,
+  { value: string; token: string; tailwind: string; cssVar: string }
+> = {
+  // Empty - no letter-spacing tokens currently exist
+  // When tokens are added, structure would be:
+  // tight: {
+  //   value: typographyLetterSpacingTight,
+  //   token: "typography.letter-spacing.tight",
+  //   tailwind: "tracking-tight",
+  //   cssVar: "var(--letter-spacing-tight)",
+  // },
 };
+
+// Check if tokens exist for each category
+const hasLetterSpacingTokens = Object.keys(letterSpacings).length > 0;
 
 // Extracted component for proper React hooks behavior
 function TypographyPlaygroundComponent() {
-  const [selectedFontSize, setSelectedFontSize] = useState<string>("base");
-  const [selectedFontWeight, setSelectedFontWeight] =
-    useState<string>("normal");
-  const [selectedLineHeight, setSelectedLineHeight] =
-    useState<string>("normal");
-  const [selectedFontFamily, setSelectedFontFamily] = useState<string>("sans");
-  const [selectedLetterSpacing, setSelectedLetterSpacing] =
-    useState<string>("normal");
+  // Initialize state with first available key from each token group
+  const fontSizeKeys = Object.keys(fontSizes);
+  const fontWeightKeys = Object.keys(fontWeights);
+  const lineHeightKeys = Object.keys(lineHeights);
+  const fontFamilyKeys = Object.keys(fontFamilies);
+  const letterSpacingKeys = Object.keys(letterSpacings);
+
+  const [selectedFontSize, setSelectedFontSize] = useState<string>(
+    fontSizeKeys.includes("base") ? "base" : fontSizeKeys[0]
+  );
+  const [selectedFontWeight, setSelectedFontWeight] = useState<string>(
+    fontWeightKeys.includes("normal") ? "normal" : fontWeightKeys[0]
+  );
+  const [selectedLineHeight, setSelectedLineHeight] = useState<string>(
+    lineHeightKeys.includes("normal") ? "normal" : lineHeightKeys[0]
+  );
+  const [selectedFontFamily, setSelectedFontFamily] = useState<string>(
+    fontFamilyKeys.includes("sans") ? "sans" : fontFamilyKeys[0]
+  );
+  const [selectedLetterSpacing, setSelectedLetterSpacing] = useState<string>(
+    letterSpacingKeys.includes("normal") ? "normal" : letterSpacingKeys[0] || ""
+  );
   const [previewText, setPreviewText] = useState(
     "The quick brown fox jumps over the lazy dog. Typography is the art and technique of arranging type to make written language legible, readable, and appealing."
   );
   const [showTokenDetails, setShowTokenDetails] = useState(false);
 
-  const currentFontSize = fontSizes[selectedFontSize as keyof typeof fontSizes];
-  const currentFontWeight =
-    fontWeights[selectedFontWeight as keyof typeof fontWeights];
-  const currentLineHeight =
-    lineHeights[selectedLineHeight as keyof typeof lineHeights];
-  const currentFontFamily =
-    fontFamilies[selectedFontFamily as keyof typeof fontFamilies];
-  const currentLetterSpacing =
-    letterSpacings[selectedLetterSpacing as keyof typeof letterSpacings];
+  const currentFontSize = fontSizes[selectedFontSize];
+  const currentFontWeight = fontWeights[selectedFontWeight];
+  const currentLineHeight = lineHeights[selectedLineHeight];
+  const currentFontFamily = fontFamilies[selectedFontFamily];
+  const currentLetterSpacing = hasLetterSpacingTokens
+    ? letterSpacings[selectedLetterSpacing]
+    : null;
 
   return (
     <div className="space-y-6">
@@ -896,32 +945,34 @@ function TypographyPlaygroundComponent() {
             )}
           </div>
 
-          {/* Letter Spacing */}
-          <div className="space-y-3">
-            <Label className="text-sm font-semibold">Letter Spacing</Label>
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-              {Object.keys(letterSpacings).map((spacing) => (
-                <button
-                  key={spacing}
-                  type="button"
-                  onClick={() => setSelectedLetterSpacing(spacing)}
-                  className={`px-3 py-2 text-xs rounded-md border transition-all ${
-                    selectedLetterSpacing === spacing
-                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                      : "bg-background hover:bg-muted border-border"
-                  }`}
-                >
-                  {spacing}
-                </button>
-              ))}
-            </div>
-            {showTokenDetails && (
-              <div className="text-xs text-muted-foreground font-mono space-y-1">
-                <div>Value: {currentLetterSpacing.value}</div>
-                <div>Token: {currentLetterSpacing.token}</div>
+          {/* Letter Spacing - only shown if tokens exist */}
+          {hasLetterSpacingTokens && letterSpacingKeys.length > 0 && (
+            <div className="space-y-3">
+              <Label className="text-sm font-semibold">Letter Spacing</Label>
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                {letterSpacingKeys.map((spacing) => (
+                  <button
+                    key={spacing}
+                    type="button"
+                    onClick={() => setSelectedLetterSpacing(spacing)}
+                    className={`px-3 py-2 text-xs rounded-md border transition-all ${
+                      selectedLetterSpacing === spacing
+                        ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                        : "bg-background hover:bg-muted border-border"
+                    }`}
+                  >
+                    {spacing}
+                  </button>
+                ))}
               </div>
-            )}
-          </div>
+              {showTokenDetails && currentLetterSpacing && (
+                <div className="text-xs text-muted-foreground font-mono space-y-1">
+                  <div>Value: {currentLetterSpacing.value}</div>
+                  <div>Token: {currentLetterSpacing.token}</div>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Toggle Token Details */}
           <div className="flex items-center gap-2 pt-2">
@@ -964,7 +1015,9 @@ function TypographyPlaygroundComponent() {
               fontWeight: currentFontWeight.value,
               lineHeight: currentLineHeight.value,
               fontFamily: currentFontFamily.value,
-              letterSpacing: currentLetterSpacing.value,
+              ...(currentLetterSpacing && {
+                letterSpacing: currentLetterSpacing.value,
+              }),
             }}
           >
             {previewText}
@@ -987,7 +1040,9 @@ function TypographyPlaygroundComponent() {
                 <div>font-weight: {currentFontWeight.value};</div>
                 <div>line-height: {currentLineHeight.value};</div>
                 <div>font-family: {currentFontFamily.value};</div>
-                <div>letter-spacing: {currentLetterSpacing.value};</div>
+                {currentLetterSpacing && (
+                  <div>letter-spacing: {currentLetterSpacing.value};</div>
+                )}
               </div>
             </div>
 
@@ -999,7 +1054,9 @@ function TypographyPlaygroundComponent() {
                 <div>{currentFontWeight.token}</div>
                 <div>{currentLineHeight.token}</div>
                 <div>{currentFontFamily.token}</div>
-                <div>{currentLetterSpacing.token}</div>
+                {currentLetterSpacing && (
+                  <div>{currentLetterSpacing.token}</div>
+                )}
               </div>
             </div>
           </div>
@@ -1026,7 +1083,8 @@ function TypographyPlaygroundComponent() {
               <code>
                 className="{currentFontSize.tailwind}{" "}
                 {currentFontWeight.tailwind} {currentLineHeight.tailwind}{" "}
-                {currentFontFamily.tailwind} {currentLetterSpacing.tailwind}"
+                {currentFontFamily.tailwind}
+                {currentLetterSpacing && ` ${currentLetterSpacing.tailwind}`}"
               </code>
             </div>
           </div>
@@ -1037,8 +1095,16 @@ function TypographyPlaygroundComponent() {
               variant="outline"
               size="sm"
               onClick={() => {
-                const cssText = `font-size: ${currentFontSize.value};\nfont-weight: ${currentFontWeight.value};\nline-height: ${currentLineHeight.value};\nfont-family: ${currentFontFamily.value};\nletter-spacing: ${currentLetterSpacing.value};`;
-                navigator.clipboard.writeText(cssText);
+                const lines = [
+                  `font-size: ${currentFontSize.value};`,
+                  `font-weight: ${currentFontWeight.value};`,
+                  `line-height: ${currentLineHeight.value};`,
+                  `font-family: ${currentFontFamily.value};`,
+                ];
+                if (currentLetterSpacing) {
+                  lines.push(`letter-spacing: ${currentLetterSpacing.value};`);
+                }
+                navigator.clipboard.writeText(lines.join("\n"));
               }}
             >
               Copy CSS
@@ -1047,8 +1113,16 @@ function TypographyPlaygroundComponent() {
               variant="outline"
               size="sm"
               onClick={() => {
-                const tokenText = `${currentFontSize.token}\n${currentFontWeight.token}\n${currentLineHeight.token}\n${currentFontFamily.token}\n${currentLetterSpacing.token}`;
-                navigator.clipboard.writeText(tokenText);
+                const tokens = [
+                  currentFontSize.token,
+                  currentFontWeight.token,
+                  currentLineHeight.token,
+                  currentFontFamily.token,
+                ];
+                if (currentLetterSpacing) {
+                  tokens.push(currentLetterSpacing.token);
+                }
+                navigator.clipboard.writeText(tokens.join("\n"));
               }}
             >
               Copy Token Names
@@ -1057,8 +1131,16 @@ function TypographyPlaygroundComponent() {
               variant="outline"
               size="sm"
               onClick={() => {
-                const tailwindText = `${currentFontSize.tailwind} ${currentFontWeight.tailwind} ${currentLineHeight.tailwind} ${currentFontFamily.tailwind} ${currentLetterSpacing.tailwind}`;
-                navigator.clipboard.writeText(tailwindText);
+                const classes = [
+                  currentFontSize.tailwind,
+                  currentFontWeight.tailwind,
+                  currentLineHeight.tailwind,
+                  currentFontFamily.tailwind,
+                ];
+                if (currentLetterSpacing) {
+                  classes.push(currentLetterSpacing.tailwind);
+                }
+                navigator.clipboard.writeText(classes.join(" "));
               }}
             >
               Copy Tailwind Classes
@@ -1073,11 +1155,25 @@ function TypographyPlaygroundComponent() {
           variant="outline"
           size="sm"
           onClick={() => {
-            setSelectedFontSize("base");
-            setSelectedFontWeight("normal");
-            setSelectedLineHeight("normal");
-            setSelectedFontFamily("sans");
-            setSelectedLetterSpacing("normal");
+            setSelectedFontSize(
+              fontSizeKeys.includes("base") ? "base" : fontSizeKeys[0]
+            );
+            setSelectedFontWeight(
+              fontWeightKeys.includes("normal") ? "normal" : fontWeightKeys[0]
+            );
+            setSelectedLineHeight(
+              lineHeightKeys.includes("normal") ? "normal" : lineHeightKeys[0]
+            );
+            setSelectedFontFamily(
+              fontFamilyKeys.includes("sans") ? "sans" : fontFamilyKeys[0]
+            );
+            if (hasLetterSpacingTokens && letterSpacingKeys.length > 0) {
+              setSelectedLetterSpacing(
+                letterSpacingKeys.includes("normal")
+                  ? "normal"
+                  : letterSpacingKeys[0]
+              );
+            }
             setPreviewText(
               "The quick brown fox jumps over the lazy dog. Typography is the art and technique of arranging type to make written language legible, readable, and appealing."
             );
