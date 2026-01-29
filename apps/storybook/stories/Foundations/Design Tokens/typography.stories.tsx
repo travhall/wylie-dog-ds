@@ -7,6 +7,7 @@ import { Badge } from "@wyliedog/ui/badge";
 import { Switch } from "@wyliedog/ui/switch";
 import {
   typographyFontFamilySans,
+  typographyFontFamilySerif,
   typographyFontFamilyMono,
   typographyFontSizeXs,
   typographyFontSizeSm,
@@ -18,13 +19,14 @@ import {
   typographyFontSize4xl,
   typographyFontSize5xl,
   typographyFontSize6xl,
-  typographyFontWeightThin,
+  typographyFontWeightExtralight,
   typographyFontWeightLight,
-  typographyFontWeightNormal,
+  typographyFontWeightRegular,
   typographyFontWeightMedium,
   typographyFontWeightSemibold,
   typographyFontWeightBold,
   typographyFontWeightExtrabold,
+  typographyFontWeightBlack,
   typographyLineHeightNone,
   typographyLineHeightTight,
   typographyLineHeightSnug,
@@ -645,11 +647,11 @@ const fontWeights: Record<
   string,
   { value: string; token: string; tailwind: string; cssVar: string }
 > = {
-  thin: {
-    value: typographyFontWeightThin,
-    token: "typography.font-weight.thin",
-    tailwind: "font-thin",
-    cssVar: "var(--font-weight-thin)",
+  extralight: {
+    value: typographyFontWeightExtralight,
+    token: "typography.font-weight.extralight",
+    tailwind: "font-extralight",
+    cssVar: "var(--font-weight-extralight)",
   },
   light: {
     value: typographyFontWeightLight,
@@ -657,11 +659,11 @@ const fontWeights: Record<
     tailwind: "font-light",
     cssVar: "var(--font-weight-light)",
   },
-  normal: {
-    value: typographyFontWeightNormal,
-    token: "typography.font-weight.normal",
+  regular: {
+    value: typographyFontWeightRegular,
+    token: "typography.font-weight.regular",
     tailwind: "font-normal",
-    cssVar: "var(--font-weight-normal)",
+    cssVar: "var(--font-weight-regular)",
   },
   medium: {
     value: typographyFontWeightMedium,
@@ -686,6 +688,12 @@ const fontWeights: Record<
     token: "typography.font-weight.extrabold",
     tailwind: "font-extrabold",
     cssVar: "var(--font-weight-extrabold)",
+  },
+  black: {
+    value: typographyFontWeightBlack,
+    token: "typography.font-weight.black",
+    tailwind: "font-black",
+    cssVar: "var(--font-weight-black)",
   },
 };
 
@@ -745,19 +753,18 @@ const fontFamilies: Record<
     tailwind: "font-sans",
     cssVar: "var(--font-family-sans)",
   },
+  serif: {
+    value: `${typographyFontFamilySerif}, ui-serif, Georgia, serif`,
+    token: "typography.font-family.serif",
+    tailwind: "font-serif",
+    cssVar: "var(--font-family-serif)",
+  },
   mono: {
     value: `${typographyFontFamilyMono}, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace`,
     token: "typography.font-family.mono",
     tailwind: "font-mono",
     cssVar: "var(--font-family-mono)",
   },
-  // Add new font families here when tokens are created, e.g.:
-  // serif: {
-  //   value: `${typographyFontFamilySerif}, ui-serif, Georgia, serif`,
-  //   token: "typography.font-family.serif",
-  //   tailwind: "font-serif",
-  //   cssVar: "var(--font-family-serif)",
-  // },
 };
 
 // Letter spacing tokens - currently none exist in the token system
@@ -794,7 +801,7 @@ function TypographyPlaygroundComponent() {
     fontSizeKeys.includes("base") ? "base" : fontSizeKeys[0]
   );
   const [selectedFontWeight, setSelectedFontWeight] = useState<string>(
-    fontWeightKeys.includes("normal") ? "normal" : fontWeightKeys[0]
+    fontWeightKeys.includes("regular") ? "regular" : fontWeightKeys[0]
   );
   const [selectedLineHeight, setSelectedLineHeight] = useState<string>(
     lineHeightKeys.includes("normal") ? "normal" : lineHeightKeys[0]
@@ -1159,7 +1166,7 @@ function TypographyPlaygroundComponent() {
               fontSizeKeys.includes("base") ? "base" : fontSizeKeys[0]
             );
             setSelectedFontWeight(
-              fontWeightKeys.includes("normal") ? "normal" : fontWeightKeys[0]
+              fontWeightKeys.includes("regular") ? "regular" : fontWeightKeys[0]
             );
             setSelectedLineHeight(
               lineHeightKeys.includes("normal") ? "normal" : lineHeightKeys[0]
