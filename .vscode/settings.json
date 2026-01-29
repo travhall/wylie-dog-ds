@@ -4,7 +4,7 @@
       "mode": "auto"
     }
   ],
-  "cSpell.words": ["argstable", "cmdk", "romeovs", "sbdocs"],
+  "cSpell.words": ["argstable", "Besley", "cmdk", "romeovs", "sbdocs"],
   "tailwindCSS.includeLanguages": {
     "css": "html"
   }
