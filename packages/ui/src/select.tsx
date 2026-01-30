@@ -150,7 +150,7 @@ export const SelectSeparator = React.forwardRef<
   <SelectPrimitive.Separator
     ref={ref}
     className={cn(
-      "-mx-1 my-1 bg-(--color-border-primary)",
+      "-mx-(--spacing-select-separator-margin-x) my-(--spacing-select-separator-margin-y) bg-(--color-border-primary)",
       "h-(--spacing-select-separator-height)",
       className
     )}

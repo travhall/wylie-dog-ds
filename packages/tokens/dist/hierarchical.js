@@ -444,8 +444,6 @@ export const spacing = {
   "alert-padding-y": "12px",
   "alert-title-margin-bottom": "4px",
   "label-required-margin-left": "4px",
-  "button-link-padding": "0px",
-  "button-loading-margin-right": "8px",
   "radio-group-item-gap": "8px",
   "command-item-padding-x": "12px",
   "command-item-indicator-margin-right": "8px",
@@ -482,9 +480,7 @@ export const spacing = {
   "skeleton-rounded-sm": "4px",
   "carousel-button-rounded-full": "9999px",
   "select-separator-margin-x": "4px",
-  "select-separator-margin-y": "4px",
-  "button-icon-only-padding": "0px",
-  "button-icon-margin-right": "8px"
+  "select-separator-margin-y": "4px"
 };
 
 // Empty shadow object for now

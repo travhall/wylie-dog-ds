@@ -48,7 +48,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           "rounded-(--spacing-input-radius)",
           "placeholder:text-(--color-input-placeholder)",
           "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
-          "disabled:cursor-not-allowed disabled:opacity-50",
+          "disabled:cursor-not-allowed disabled:bg-(--color-input-disabled-background) disabled:text-(--color-input-disabled-text)",
           error
             ? "border-(--color-input-border-error) bg-(--color-input-background)"
             : "border-(--color-input-border) bg-(--color-input-background) hover:bg-(--color-input-background-hover)",

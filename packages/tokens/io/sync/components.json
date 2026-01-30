@@ -4284,22 +4284,6 @@
             "Dark": "{spacing.050}"
           }
         },
-        "button.link-padding": {
-          "$type": "spacing",
-          "$value": "{spacing.0}",
-          "valuesByMode": {
-            "Light": "{spacing.0}",
-            "Dark": "{spacing.0}"
-          }
-        },
-        "button.loading-margin-right": {
-          "$type": "spacing",
-          "$value": "{spacing.100}",
-          "valuesByMode": {
-            "Light": "{spacing.100}",
-            "Dark": "{spacing.100}"
-          }
-        },
         "radio-group.item-gap": {
           "$type": "spacing",
           "$value": "{spacing.100}",
@@ -4818,22 +4802,6 @@
           "valuesByMode": {
             "Light": "{spacing.050}",
             "Dark": "{spacing.050}"
-          }
-        },
-        "button.icon-only-padding": {
-          "$type": "spacing",
-          "$value": "{spacing.0}",
-          "valuesByMode": {
-            "Light": "{spacing.0}",
-            "Dark": "{spacing.0}"
-          }
-        },
-        "button.icon-margin-right": {
-          "$type": "spacing",
-          "$value": "{spacing.100}",
-          "valuesByMode": {
-            "Light": "{spacing.100}",
-            "Dark": "{spacing.100}"
           }
         },
         "toggle.font-size": {

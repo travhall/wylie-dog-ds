@@ -2135,14 +2135,6 @@
     "$type": "spacing",
     "$value": "{spacing.050}"
   },
-  "button.link-padding": {
-    "$type": "spacing",
-    "$value": "{spacing.0}"
-  },
-  "button.loading-margin-right": {
-    "$type": "spacing",
-    "$value": "{spacing.100}"
-  },
   "radio-group.item-gap": {
     "$type": "spacing",
     "$value": "{spacing.100}"
@@ -2402,14 +2394,6 @@
   "select.separator-margin-y": {
     "$type": "spacing",
     "$value": "{spacing.050}"
-  },
-  "button.icon-only-padding": {
-    "$type": "spacing",
-    "$value": "{spacing.0}"
-  },
-  "button.icon-margin-right": {
-    "$type": "spacing",
-    "$value": "{spacing.100}"
   },
   "toggle.font-size": {
     "$type": "fontSize",

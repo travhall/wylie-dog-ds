@@ -61,7 +61,7 @@ export const DialogContent = React.forwardRef<
         className={cn(
           "fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%]",
           "gap-(--spacing-dialog-header-gap)",
-          "border bg-(--color-background-primary) shadow-lg duration-200",
+          "border bg-(--color-dialog-background) shadow-lg duration-200",
           "p-(--spacing-dialog-content-padding)",
           "data-[state=open]:animate-in data-[state=closed]:animate-out",
           "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -69,7 +69,7 @@ export const DialogContent = React.forwardRef<
           "data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
           "data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
           "rounded-(--spacing-dialog-content-radius)",
-          "border-(--color-border-primary)",
+          "border-(--color-dialog-border)",
           sizes[size],
           className
         )}
@@ -111,6 +111,7 @@ export const DialogHeader = React.forwardRef<
     className={cn(
       "flex flex-col text-center sm:text-left",
       "space-y-(--spacing-dialog-header-gap)",
+      "mb-(--spacing-dialog-header-margin-bottom)",
       className
     )}
     {...props}
@@ -128,6 +129,7 @@ export const DialogFooter = React.forwardRef<
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end",
       "sm:space-x-(--spacing-dialog-footer-gap)",
+      "mt-(--spacing-dialog-footer-margin-top)",
       className
     )}
     {...props}
@@ -143,7 +145,7 @@ export const DialogTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "font-semibold leading-none tracking-tight text-(--color-text-primary)",
+      "font-semibold leading-none tracking-tight text-(--color-dialog-title)",
       "text-(length:--font-size-dialog-title-font-size)",
       className
     )}
@@ -161,7 +163,7 @@ export const DialogDescription = React.forwardRef<
     ref={ref}
     className={cn(
       "text-(length:--font-size-dialog-description-font-size)",
-      "text-(--color-text-secondary)",
+      "text-(--color-dialog-description)",
       className
     )}
     {...props}

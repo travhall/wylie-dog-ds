@@ -38,7 +38,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       secondary:
         "bg-(--color-button-secondary-background) hover:bg-(--color-button-secondary-background-hover) active:bg-(--color-button-secondary-background-active) text-(--color-button-secondary-text) border-(--color-button-secondary-border)",
       outline:
-        "border border-(--color-button-outline-border) bg-transparent hover:bg-(--color-button-outline-hover) text-(--color-button-outline-text)",
+        "border border-(--color-button-outline-border) bg-(--color-button-outline-background) hover:bg-(--color-button-outline-hover) text-(--color-button-outline-text)",
       ghost:
         "bg-(--color-button-ghost-background) hover:bg-(--color-button-ghost-background-hover) active:bg-(--color-button-ghost-background-active) text-(--color-button-ghost-text) border-transparent",
       link: "text-(--color-button-link-text) underline-offset-4 hover:underline bg-transparent border-transparent p-0 h-auto",
@@ -71,10 +71,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading && (
-          <span
-            className="mr-(--spacing-button-icon-margin-right)"
-            aria-hidden="true"
-          >
+          <span className="mr-2" aria-hidden="true">
             Loading...
           </span>
         )}

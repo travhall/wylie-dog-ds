@@ -3379,50 +3379,6 @@
         "type": "color",
         "variable": "var(--color-button-link-text)",
         "description": ""
-      },
-      "button-link-padding": {
-        "name": "buttonLinkPadding",
-        "path": [
-          "button",
-          "link-padding"
-        ],
-        "value": "0px",
-        "type": "spacing",
-        "variable": "var(--button-link-padding)",
-        "description": ""
-      },
-      "button-loading-margin-right": {
-        "name": "buttonLoadingMarginRight",
-        "path": [
-          "button",
-          "loading-margin-right"
-        ],
-        "value": "8px",
-        "type": "spacing",
-        "variable": "var(--button-loading-margin-right)",
-        "description": ""
-      },
-      "button-icon-only-padding": {
-        "name": "buttonIconOnlyPadding",
-        "path": [
-          "button",
-          "icon-only-padding"
-        ],
-        "value": "0px",
-        "type": "spacing",
-        "variable": "var(--button-icon-only-padding)",
-        "description": ""
-      },
-      "button-icon-margin-right": {
-        "name": "buttonIconMarginRight",
-        "path": [
-          "button",
-          "icon-margin-right"
-        ],
-        "value": "8px",
-        "type": "spacing",
-        "variable": "var(--button-icon-margin-right)",
-        "description": ""
       }
     },
     "card": {
