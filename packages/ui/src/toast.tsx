@@ -71,7 +71,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
       ref={ref}
       className={cn(
         "absolute right-2 top-2 p-(--spacing-toast-close-button-padding) text-(--color-toast-close) opacity-0 transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100",
-        "rounded-(--spacing-toast-close-radius)",
+        "rounded-(--spacing-toast-close-button-radius)",
         "h-(--spacing-toast-close-size) w-(--spacing-toast-close-size)",
         className
       )}

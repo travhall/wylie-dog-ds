@@ -173,12 +173,17 @@ function extractComponentTokenNames(componentTokens) {
 }
 
 // Group tokens by component prefix
+// Handles hyphenated component names like "hover-card", "context-menu", etc.
 function groupTokensByComponent(tokenNames) {
   const grouped = {};
 
   for (const name of tokenNames) {
-    // Extract component name (first segment before the dot)
-    const componentName = name.split('.')[0];
+    // Extract component name - handles both single names and hyphenated names
+    // Token format: "component.property" or "component-name.property"
+    // We need to identify the component prefix, which may contain hyphens
+    const firstDotIndex = name.indexOf('.');
+    const componentName = firstDotIndex > -1 ? name.substring(0, firstDotIndex) : name;
+
     if (!grouped[componentName]) {
       grouped[componentName] = [];
     }
@@ -189,9 +194,12 @@ function groupTokensByComponent(tokenNames) {
 }
 
 // Scan UI components for token references
-function scanComponentTokenUsage() {
+function scanComponentTokenUsage(definedTokenNames) {
   const usage = {};
   const componentFiles = findFiles(UI_SRC_DIR, '.tsx');
+
+  // Create a lookup set for defined tokens
+  const definedTokenSet = new Set(definedTokenNames);
 
   for (const filePath of componentFiles) {
     const content = fs.readFileSync(filePath, 'utf-8');
@@ -213,8 +221,8 @@ function scanComponentTokenUsage() {
       const cssVar = `--${match[1]}`;
       usage[componentName].rawMatches.push(cssVar);
 
-      // Convert CSS variable to token name
-      const tokenName = cssVarToTokenName(cssVar);
+      // Convert CSS variable to token name, using defined tokens to resolve ambiguity
+      const tokenName = cssVarToTokenName(cssVar, definedTokenSet);
       if (tokenName && !usage[componentName].tokensUsed.includes(tokenName)) {
         usage[componentName].tokensUsed.push(tokenName);
       }
@@ -224,9 +232,18 @@ function scanComponentTokenUsage() {
   return usage;
 }
 
+// Map component file names to token prefixes
+// Handles cases where file name differs from token prefix (e.g., hover-card.tsx uses hover-card.* tokens)
+function getComponentTokenPrefix(componentFileName) {
+  // Direct mapping - file name IS the token prefix for hyphenated components
+  return componentFileName;
+}
+
 // Convert CSS variable name to token name
 // Example: --font-size-card-header-title-font-size -> card.header.title.font-size
-function cssVarToTokenName(cssVar) {
+// Example: --color-hover-card-background -> hover-card.background
+// Example: --font-size-badge-font-size-sm -> badge.font-size.sm
+function cssVarToTokenName(cssVar, definedTokenSet = null) {
   // Remove leading --
   let name = cssVar.replace(/^--/, '');
 
@@ -243,29 +260,165 @@ function cssVarToTokenName(cssVar) {
     }
   }
 
-  // Preserve known hyphenated suffixes that are part of token names
-  // These are type-related suffixes that should stay hyphenated
-  const preservedSuffixes = [
-    'font-size', 'font-weight', 'line-height', 'letter-spacing',
-    'padding-top', 'padding-bottom', 'padding-left', 'padding-right',
-    'padding-x', 'padding-y', 'margin-top', 'margin-bottom',
-    'border-radius', 'border-width', 'max-width', 'min-width'
+  // Known hyphenated component names that should be preserved
+  const hyphenatedComponents = [
+    'hover-card', 'context-menu', 'dropdown-menu', 'navigation-menu',
+    'radio-group', 'scroll-area', 'aspect-ratio', 'alert-dialog',
+    'toggle-group', 'card-grid', 'feature-grid'
   ];
 
-  // Convert hyphens to dots, but preserve known suffixes
-  // Strategy: work backwards from the end to find preserved suffixes
-  for (const suffix of preservedSuffixes) {
-    if (name.endsWith(suffix)) {
-      const prefix = name.slice(0, -(suffix.length + 1)); // -1 for the hyphen before suffix
-      if (prefix) {
-        return prefix.replace(/-/g, '.') + '.' + suffix;
-      }
-      return suffix;
+  // Known hyphenated property names that should be preserved
+  // These can appear anywhere in the token path, not just at the end
+  const preservedTerms = [
+    'font-size', 'font-weight', 'line-height', 'letter-spacing',
+    'padding-top', 'padding-bottom', 'padding-left', 'padding-right',
+    'padding-x', 'padding-y', 'margin-top', 'margin-bottom', 'margin-left', 'margin-right',
+    'margin-x', 'margin-y', 'border-radius', 'border-width', 'border-color',
+    'max-width', 'min-width', 'max-height', 'min-height',
+    'background-hover', 'background-active', 'background-checked',
+    'text-hover', 'text-active', 'text-focus', 'text-disabled', 'text-checked', 'text-pressed', 'text-open', 'text-selected',
+    'border-hover', 'border-focus', 'border-checked', 'border-error',
+    'close-button', 'item-indicator', 'nav-background', 'nav-border', 'nav-hover', 'nav-text-hover',
+    'group-heading', 'item-selected', 'item-text-selected', 'content-text',
+    'trigger-focus', 'trigger-text', 'trigger-text-focus', 'trigger-open', 'trigger-text-open',
+    'trigger-hover', 'trigger-text-hover', 'trigger-pressed', 'trigger-disabled', 'trigger-text-disabled',
+    'icon-hover', 'icon-open', 'icon-disabled', 'content-border', 'content-background',
+    'item-focus', 'item-text-focus', 'item-hover', 'item-text-hover',
+    'fallback-background', 'fallback-text', 'link-hover',
+    'thumb-border', 'track-border', 'header-text', 'footer-background',
+    'row-hover', 'row-selected', 'action-hover', 'close-hover',
+    'day-hover', 'day-text-hover', 'day-selected', 'day-text-selected',
+    'rounded-full', 'rounded-sm', 'required-margin-left',
+    'content-radius', 'item-radius', 'separator-margin-x', 'separator-margin-y',
+    'list-gap', 'container-gap', 'item-gap', 'item-padding', 'scrollbar-padding'
+  ];
+
+  // Check if the name starts with a hyphenated component name
+  let componentPrefix = null;
+  let restOfName = name;
+
+  for (const comp of hyphenatedComponents) {
+    if (name.startsWith(comp + '-')) {
+      componentPrefix = comp;
+      restOfName = name.substring(comp.length + 1); // +1 for the hyphen
+      break;
     }
   }
 
-  // No preserved suffix found, convert all hyphens to dots
-  return name.replace(/-/g, '.');
+  // Process restOfName by finding and preserving known terms
+  // Strategy: split by hyphens and rejoin, preserving multi-word terms
+  const segments = restOfName.split('-');
+  const result = [];
+  let i = 0;
+
+  while (i < segments.length) {
+    // Try to match multi-word preserved terms (longest first)
+    let matched = false;
+
+    for (let len = 4; len >= 2; len--) {
+      if (i + len <= segments.length) {
+        const candidate = segments.slice(i, i + len).join('-');
+        if (preservedTerms.includes(candidate)) {
+          result.push(candidate);
+          i += len;
+          matched = true;
+          break;
+        }
+      }
+    }
+
+    if (!matched) {
+      result.push(segments[i]);
+      i++;
+    }
+  }
+
+  // Combine with dots
+  const convertedRest = result.join('.');
+
+  // Combine component prefix with the rest
+  let tokenName;
+  if (componentPrefix) {
+    tokenName = componentPrefix + '.' + convertedRest;
+  } else {
+    tokenName = convertedRest;
+  }
+
+  // If we have defined tokens, try to find an exact match
+  // This handles cases where our heuristic conversion might be wrong
+  if (definedTokenSet && !definedTokenSet.has(tokenName)) {
+    // Try alternative conversions
+    // The raw name after prefix removal
+    const rawAfterPrefix = name;
+
+    // Generate alternative token names by trying different segmentation
+    const alternatives = generateAlternativeTokenNames(rawAfterPrefix, hyphenatedComponents);
+
+    for (const alt of alternatives) {
+      if (definedTokenSet.has(alt)) {
+        return alt;
+      }
+    }
+  }
+
+  return tokenName;
+}
+
+// Generate alternative token name interpretations
+function generateAlternativeTokenNames(rawName, hyphenatedComponents) {
+  const alternatives = [];
+  const segments = rawName.split('-');
+
+  // Try different ways of splitting hyphens into dots
+  // For a name like "checkbox-border-color", try:
+  // - checkbox.border.color
+  // - checkbox.border-color
+  // - checkbox-border.color
+
+  function generateCombinations(segs, index, current) {
+    if (index >= segs.length) {
+      alternatives.push(current.join('.'));
+      return;
+    }
+
+    // Option 1: Add this segment as its own dot-separated part
+    generateCombinations(segs, index + 1, [...current, segs[index]]);
+
+    // Option 2: Combine with previous segment using hyphen (if there is a previous)
+    if (current.length > 0) {
+      const prev = current[current.length - 1];
+      const combined = prev + '-' + segs[index];
+      generateCombinations(segs, index + 1, [...current.slice(0, -1), combined]);
+    }
+  }
+
+  // Handle hyphenated component prefix
+  for (const comp of hyphenatedComponents) {
+    if (rawName.startsWith(comp + '-')) {
+      const rest = rawName.substring(comp.length + 1);
+      const restSegs = rest.split('-');
+      const subAlts = [];
+
+      function genSubCombinations(segs, idx, curr) {
+        if (idx >= segs.length) {
+          subAlts.push(comp + '.' + curr.join('.'));
+          return;
+        }
+        genSubCombinations(segs, idx + 1, [...curr, segs[idx]]);
+        if (curr.length > 0) {
+          const prev = curr[curr.length - 1];
+          genSubCombinations(segs, idx + 1, [...curr.slice(0, -1), prev + '-' + segs[idx]]);
+        }
+      }
+
+      genSubCombinations(restSegs, 0, []);
+      alternatives.push(...subAlts);
+      return alternatives;
+    }
+  }
+
+  generateCombinations(segments, 0, []);
+  return alternatives;
 }
 
 // Analyze naming conventions
@@ -441,7 +594,7 @@ async function runAudit() {
   }
 
   log('Scanning UI components for token usage...', 'info');
-  const componentUsage = scanComponentTokenUsage();
+  const componentUsage = scanComponentTokenUsage(tokenNames);
   results.summary.totalComponents = Object.keys(componentUsage).length;
 
   // Run analyses
@@ -515,20 +668,55 @@ async function runAudit() {
   logSection('Component Token Coverage');
   const componentGroups = groupTokensByComponent(filteredTokens);
 
-  for (const [component, definedTokens] of Object.entries(componentGroups)) {
-    const usage = componentUsage[component];
-    const usedCount = usage ? usage.tokensUsed.filter(t => definedTokens.includes(t)).length : 0;
+  for (const [tokenPrefix, definedTokens] of Object.entries(componentGroups)) {
+    // Find the component file that uses these tokens
+    // Token prefix matches component file name (e.g., "hover-card" tokens in hover-card.tsx)
+    const usage = componentUsage[tokenPrefix];
+
+    // Count tokens used - check both from the component's own usage and cross-component usage
+    let usedCount = 0;
+    const usedTokensInComponent = new Set();
+
+    if (usage) {
+      // Direct usage in the matching component file
+      for (const token of usage.tokensUsed) {
+        if (definedTokens.includes(token)) {
+          usedTokensInComponent.add(token);
+        }
+      }
+    }
+
+    // Also check if any other component uses these tokens (e.g., shared tokens)
+    for (const [otherComponent, otherUsage] of Object.entries(componentUsage)) {
+      for (const token of otherUsage.tokensUsed) {
+        if (definedTokens.includes(token)) {
+          usedTokensInComponent.add(token);
+        }
+      }
+    }
+
+    usedCount = usedTokensInComponent.size;
     const coverage = definedTokens.length > 0 ? Math.round((usedCount / definedTokens.length) * 100) : 0;
 
-    results.details.componentCoverage[component] = {
+    results.details.componentCoverage[tokenPrefix] = {
       defined: definedTokens.length,
       used: usedCount,
       coverage: `${coverage}%`,
+      unusedTokens: definedTokens.filter(t => !usedTokensInComponent.has(t)),
     };
 
     const statusIcon = coverage === 100 ? '✓' : coverage >= 80 ? '○' : '✗';
     if (options.verbose || coverage < 100) {
-      console.log(`  ${statusIcon} ${component}: ${usedCount}/${definedTokens.length} tokens used (${coverage}%)`);
+      console.log(`  ${statusIcon} ${tokenPrefix}: ${usedCount}/${definedTokens.length} tokens used (${coverage}%)`);
+      if (options.verbose && coverage < 100) {
+        const unused = definedTokens.filter(t => !usedTokensInComponent.has(t));
+        for (const t of unused.slice(0, 5)) {
+          console.log(`      - ${t} (unused)`);
+        }
+        if (unused.length > 5) {
+          console.log(`      ... and ${unused.length - 5} more`);
+        }
+      }
     }
   }
 
