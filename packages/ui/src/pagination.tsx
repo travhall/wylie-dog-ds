@@ -53,7 +53,7 @@ const PaginationLink = ({
     aria-current={isActive ? "page" : undefined}
     className={cn(
       "flex items-center justify-center whitespace-nowrap font-medium transition-colors",
-      "h-(--spacing-pagination-item-size) w-(--spacing-pagination-item-size)",
+      "h-(--spacing-pagination-item-size) min-w-(--spacing-pagination-item-size) px-(--spacing-pagination-item-padding-x)",
       "rounded-(--spacing-pagination-item-radius)",
       "text-(length:--font-size-pagination-item-font-size)",
       "hover:bg-(--color-pagination-hover) hover:text-(--color-pagination-text-hover)",
@@ -81,7 +81,7 @@ const PaginationPrevious = ({
     )}
     {...props}
   >
-    <ChevronLeftIcon className="h-4 w-4" />
+    <ChevronLeftIcon className="h-(--spacing-pagination-icon-size) w-(--spacing-pagination-icon-size)" />
     <span>Previous</span>
   </PaginationLink>
 );
@@ -100,7 +100,7 @@ const PaginationNext = ({
     {...props}
   >
     <span>Next</span>
-    <ChevronRightIcon className="h-4 w-4" />
+    <ChevronRightIcon className="h-(--spacing-pagination-icon-size) w-(--spacing-pagination-icon-size)" />
   </PaginationLink>
 );
 PaginationNext.displayName = "PaginationNext";
@@ -114,7 +114,7 @@ const PaginationEllipsis = ({
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}
   >
-    <MoreHorizontalIcon className="h-4 w-4" />
+    <MoreHorizontalIcon className="h-(--spacing-pagination-icon-size) w-(--spacing-pagination-icon-size)" />
     <span className="sr-only">More pages</span>
   </span>
 );

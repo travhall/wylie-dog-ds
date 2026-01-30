@@ -38,7 +38,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
       <label
         ref={ref}
         className={cn(
-          "font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+          "font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:text-(--color-label-disabled-color)",
           error ? "text-(--color-text-danger)" : "text-(--color-label-color)",
           sizes[size],
           className

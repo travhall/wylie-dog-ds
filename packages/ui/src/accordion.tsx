@@ -80,7 +80,7 @@ const AccordionContent = React.forwardRef<
   >
     <div
       className={cn(
-        "p-(--spacing-accordion-content-padding) text-(length:--font-size-accordion-content-font-size)",
+        "p-(--spacing-accordion-content-padding) text-(length:--font-size-accordion-content-font-size) text-(--color-accordion-content-text)",
         className
       )}
     >

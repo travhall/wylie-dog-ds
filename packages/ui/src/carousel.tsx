@@ -16,7 +16,10 @@ interface CarouselContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 const CarouselContent = React.forwardRef<HTMLDivElement, CarouselContentProps>(
   ({ className, ...props }, ref) => (
     <div ref={ref} className={cn("overflow-hidden", className)} {...props}>
-      <div className="flex -ml-(--spacing-carousel-item-spacing)" {...props} />
+      <div
+        className="flex gap-(--spacing-carousel-gap) -ml-(--spacing-carousel-item-spacing)"
+        {...props}
+      />
     </div>
   )
 );

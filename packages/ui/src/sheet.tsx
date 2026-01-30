@@ -32,19 +32,25 @@ export interface SheetContentProps extends React.ComponentPropsWithoutRef<
   typeof DialogPrimitive.Content
 > {
   side?: "top" | "right" | "bottom" | "left";
+  size?: "sm" | "md" | "lg";
 }
 
 export const SheetContent = React.forwardRef<
   React.ComponentRef<typeof DialogPrimitive.Content>,
   SheetContentProps
->(({ side = "right", className, children, ...props }, ref) => {
+>(({ side = "right", size = "md", className, children, ...props }, ref) => {
+  const sizes = {
+    sm: "sm:max-w-(--spacing-sheet-content-width-sm)",
+    md: "sm:max-w-(--spacing-sheet-content-width-md)",
+    lg: "sm:max-w-(--spacing-sheet-content-width-lg)",
+  };
+
   const sideVariants = {
     top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
     bottom:
       "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-    left: "inset-y-0 left-0 h-full border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left w-3/4 sm:max-w-(--spacing-sheet-content-width-md)",
-    right:
-      "inset-y-0 right-0 h-full border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right w-3/4 sm:max-w-(--spacing-sheet-content-width-md)",
+    left: `inset-y-0 left-0 h-full border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left w-3/4 ${sizes[size]}`,
+    right: `inset-y-0 right-0 h-full border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right w-3/4 ${sizes[size]}`,
   };
 
   return (
@@ -96,6 +102,7 @@ export const SheetHeader = React.forwardRef<
     className={cn(
       "flex flex-col text-center sm:text-left",
       "space-y-(--spacing-sheet-header-gap)",
+      "pb-(--spacing-sheet-header-padding-bottom)",
       className
     )}
     {...props}
@@ -113,6 +120,7 @@ export const SheetFooter = React.forwardRef<
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end",
       "sm:space-x-(--spacing-sheet-footer-gap)",
+      "pt-(--spacing-sheet-footer-padding-top)",
       className
     )}
     {...props}
