@@ -10,10 +10,11 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
     | "warning"
     | "destructive"
     | "outline";
+  size?: "sm" | "md" | "lg";
 }
 
 export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
-  ({ className, variant = "default", ...props }, ref) => {
+  ({ className, variant = "default", size = "md", ...props }, ref) => {
     const variants = {
       default:
         "bg-(--color-badge-default-background) text-(--color-badge-default-text) border-(--color-badge-default-border)",
@@ -29,14 +30,19 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
         "bg-(--color-badge-outline-background) text-(--color-badge-outline-text) border-(--color-badge-outline-border)",
     };
 
+    const sizes = {
+      sm: "px-(--spacing-badge-padding-sm) text-(length:--font-size-badge-font-size-sm)",
+      md: "px-(--spacing-badge-padding-md) text-(length:--font-size-badge-font-size-md)",
+      lg: "px-(--spacing-badge-padding-lg) text-(length:--font-size-badge-font-size-lg)",
+    };
+
     return (
       <div
         ref={ref}
         className={cn(
           "inline-flex items-center border font-semibold transition-colors",
           "rounded-(--spacing-badge-radius)",
-          "px-(--spacing-badge-padding-md)",
-          "text-(length:--font-size-badge-font-size-md)",
+          sizes[size],
           variants[variant],
           className
         )}

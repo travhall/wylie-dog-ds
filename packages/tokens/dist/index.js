@@ -526,6 +526,7 @@ export const checkboxIconSizeMd = "16px";
 export const checkboxIconSizeLg = "24px";
 export const checkboxFocusRingWidth = "2px";
 export const checkboxFocusRingOffset = "2px";
+export const checkboxBorderColor = "oklch(0.929 0.013 255.51)";
 export const switchTrackHeightSm = "24px";
 export const switchTrackHeightMd = "24px";
 export const switchTrackHeightLg = "24px";

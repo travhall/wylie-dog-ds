@@ -8534,6 +8534,18 @@
         "type": "spacing",
         "variable": "var(--checkbox-focus-ring-offset)",
         "description": ""
+      },
+      "checkbox-border-color": {
+        "name": "checkboxBorderColor",
+        "path": [
+          "checkbox",
+          "border",
+          "color"
+        ],
+        "value": "oklch(0.929 0.013 255.51)",
+        "type": "color",
+        "variable": "var(--color-checkbox-border-color)",
+        "description": ""
       }
     },
     "switch": {

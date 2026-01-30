@@ -43,7 +43,7 @@ export const Checkbox = React.forwardRef<
         "data-[state=checked]:border-(--color-interactive-primary)",
         error
           ? "border-(--color-border-danger)"
-          : "border-(--color-checkbox-border)",
+          : "border-(--color-checkbox-border-color)",
         sizes[size],
         className
       )}

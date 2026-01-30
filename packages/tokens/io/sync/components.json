@@ -2276,6 +2276,14 @@
             "Dark": "{border-width.2}"
           }
         },
+        "checkbox.border.color": {
+          "$type": "color",
+          "$value": "{color.border.primary}",
+          "valuesByMode": {
+            "Light": "{color.border.primary}",
+            "Dark": "{color.border.primary}"
+          }
+        },
         "switch.track.height.sm": {
           "$type": "spacing",
           "$value": "{spacing.300}",

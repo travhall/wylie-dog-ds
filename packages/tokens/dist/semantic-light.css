@@ -527,6 +527,7 @@
   --spacing-checkbox-icon-size-lg: 24px;
   --spacing-checkbox-focus-ring-width: 2px;
   --spacing-checkbox-focus-ring-offset: 2px;
+  --color-checkbox-border-color: oklch(0.929 0.013 255.51);
   --spacing-switch-track-height-sm: 24px;
   --spacing-switch-track-height-md: 24px;
   --spacing-switch-track-height-lg: 24px;
@@ -1375,6 +1376,7 @@
     --spacing-checkbox-icon-size-lg: 24px;
     --spacing-checkbox-focus-ring-width: 2px;
     --spacing-checkbox-focus-ring-offset: 2px;
+    --color-checkbox-border-color: oklch(0.929 0.013 255.51);
     --spacing-switch-track-height-sm: 24px;
     --spacing-switch-track-height-md: 24px;
     --spacing-switch-track-height-lg: 24px;
