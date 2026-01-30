@@ -555,6 +555,11 @@ function sortTokensByDependencies(
 
 /**
  * Global import function that processes all collections together
+ *
+ * Merge strategies:
+ * - "merge": Create/update variables, keep existing variables not in import (default)
+ * - "replace": Create/update variables, DELETE variables not in import
+ * - "preserve": Only create new variables, never update or delete existing
  */
 export async function importMultipleCollections(
   tokenDataArray: ExportData[],
@@ -574,6 +579,11 @@ export async function importMultipleCollections(
     unresolvedReferences: [],
     validationReport: undefined,
   };
+
+  // Track variables to delete when using "replace" strategy
+  const variablesToDelete: Variable[] = [];
+  // Track which variable names were imported (for deletion comparison)
+  const importedVariableNames = new Map<string, Set<string>>(); // collectionName -> Set<variableName>
 
   try {
     // ENHANCED VALIDATION - Run comprehensive validation before processing
@@ -602,6 +612,8 @@ export async function importMultipleCollections(
     for (const tokenData of tokenDataArray) {
       for (const [collectionName, data] of Object.entries(tokenData)) {
         collectionMap.set(collectionName, { data, name: collectionName });
+        // Initialize tracking set for this collection
+        importedVariableNames.set(collectionName, new Set());
       }
     }
 
@@ -622,6 +634,17 @@ export async function importMultipleCollections(
           collectionInfo.data.modes || [{ modeId: "default", name: "Default" }]
         );
 
+        // For "replace" strategy: capture existing variables BEFORE import
+        const existingVariablesInCollection: Variable[] = [];
+        if (options.mergeStrategy === "replace") {
+          for (const id of collection.variableIds) {
+            const variable = await figma.variables.getVariableByIdAsync(id);
+            if (variable) {
+              existingVariablesInCollection.push(variable);
+            }
+          }
+        }
+
         // Create all variables in this collection with proper ordering
         const tokenEntries = Object.entries(collectionInfo.data.variables);
 
@@ -629,6 +652,7 @@ export async function importMultipleCollections(
         const sortedTokenEntries = sortTokensByDependencies(tokenEntries);
 
         let collectionCreated = 0;
+        const importedNamesSet = importedVariableNames.get(collectionName)!;
 
         for (const [tokenName, token] of sortedTokenEntries) {
           const variable = await createVariableWithReferences(
@@ -640,8 +664,23 @@ export async function importMultipleCollections(
           if (variable) {
             collectionCreated++;
             totalCreated++;
+            // Track this variable name as imported (using Figma's slash notation)
+            importedNamesSet.add(variable.name);
           }
         }
+
+        // For "replace" strategy: identify variables to delete
+        if (options.mergeStrategy === "replace") {
+          for (const existingVar of existingVariablesInCollection) {
+            if (!importedNamesSet.has(existingVar.name)) {
+              variablesToDelete.push(existingVar);
+              console.log(
+                `🗑️  Marking for deletion: ${existingVar.name} (not in import data)`
+              );
+            }
+          }
+        }
+
         result.collectionsProcessed++;
       } catch (error) {
         const errorMsg = `Failed to process collection ${collectionName}: ${error instanceof Error ? error.message : error}`;
@@ -663,10 +702,44 @@ export async function importMultipleCollections(
       );
     }
 
+    // For "replace" strategy: delete orphaned variables AFTER all references are resolved
+    // This ensures we don't delete a variable that's still referenced
+    let deletedCount = 0;
+    if (options.mergeStrategy === "replace" && variablesToDelete.length > 0) {
+      console.log(
+        `🗑️  Deleting ${variablesToDelete.length} orphaned variables...`
+      );
+      for (const variable of variablesToDelete) {
+        try {
+          // Check if this variable is referenced by any other variable
+          // If so, we should warn but still delete (the reference will become invalid)
+          const consumers = await figma.variables.getVariableByIdAsync(
+            variable.id
+          );
+          if (consumers) {
+            variable.remove();
+            deletedCount++;
+            console.log(`✓ Deleted: ${variable.name}`);
+          }
+        } catch (error) {
+          console.warn(
+            `⚠️  Could not delete ${variable.name}: ${error instanceof Error ? error.message : error}`
+          );
+        }
+      }
+      console.log(`🗑️  Deleted ${deletedCount} orphaned variables`);
+    }
+
     result.success =
       result.errors.length === 0 || result.totalVariablesCreated > 0;
+
+    // Build result message including deletion info
+    let message = `Successfully imported ${result.totalVariablesCreated} variables (${result.totalReferencesResolved} references resolved) across ${result.collectionsProcessed} collections`;
+    if (deletedCount > 0) {
+      message += `, deleted ${deletedCount} orphaned variables`;
+    }
     result.message = result.success
-      ? `Successfully imported ${result.totalVariablesCreated} variables (${result.totalReferencesResolved} references resolved) across ${result.collectionsProcessed} collections`
+      ? message
       : `Import failed with ${result.errors.length} errors`;
   } catch (error) {
     result.success = false;

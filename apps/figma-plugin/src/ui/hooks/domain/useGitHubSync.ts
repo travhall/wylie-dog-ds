@@ -253,6 +253,9 @@ export function useGitHubSync(
             pluginMessage: {
               type: "import-tokens",
               files: files,
+              // Use "replace" strategy to delete orphaned variables
+              // This ensures bi-directional sync: tokens deleted in code are deleted in Figma
+              mergeStrategy: "replace",
             },
           },
           "*"
@@ -362,6 +365,9 @@ export function useGitHubSync(
                     content: JSON.stringify([tokenCollection], null, 2),
                   };
                 }),
+                // Use "replace" strategy to delete orphaned variables
+                // This ensures bi-directional sync: tokens deleted in code are deleted in Figma
+                mergeStrategy: "replace",
               },
             },
             "*"

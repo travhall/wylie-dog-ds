@@ -252,10 +252,18 @@ export async function handleImportTokens(msg: any): Promise<void> {
     }
 
     // Use new global import function for cross-collection reference resolution
-    setLoading(true, "Importing tokens with reference resolution...");
+    // mergeStrategy can be passed from the UI:
+    // - "merge": Create/update variables, keep existing (default)
+    // - "replace": Create/update variables, DELETE variables not in import (for full sync)
+    // - "preserve": Only create new variables, never update existing
+    const mergeStrategy = msg.mergeStrategy || "merge";
+    setLoading(
+      true,
+      `Importing tokens with reference resolution (${mergeStrategy} mode)...`
+    );
 
     const globalResult = await importMultipleCollections(allTokenData, {
-      mergeStrategy: "merge",
+      mergeStrategy: mergeStrategy,
       createMissingModes: true,
       preserveExistingVariables: false,
     });
