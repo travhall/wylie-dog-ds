@@ -22,7 +22,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       <div
         ref={ref}
         className={cn(
-          "group pointer-events-auto relative flex items-center justify-between overflow-hidden border shadow-lg transition-all",
+          "group pointer-events-auto relative flex items-center justify-between overflow-hidden border shadow-(--shadow-lg) transition-all",
           "w-(--spacing-toast-width)",
           "space-x-(--spacing-toast-gap)",
           "rounded-(--spacing-toast-radius)",
@@ -78,7 +78,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
       aria-label={srText}
       {...props}
     >
-      <XIcon className="h-4 w-4" />
+      <XIcon className="h-(--spacing-icon-size-md) w-(--spacing-icon-size-md)" />
       <span className="sr-only">{srText}</span>
     </button>
   )
@@ -111,7 +111,7 @@ const ToastDescription = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "opacity-90",
+      "opacity-(--state-opacity-subtle)",
       "text-(length:--font-size-toast-description-font-size)",
       className
     )}

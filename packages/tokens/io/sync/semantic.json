@@ -744,6 +744,150 @@
             "Dark": 1100
           },
           "$description": "Tooltips (highest)"
+        },
+        "state.opacity.disabled": {
+          "$type": "number",
+          "$value": 0.5,
+          "valuesByMode": {
+            "Light": 0.5,
+            "Dark": 0.5
+          },
+          "$description": "Opacity for disabled elements"
+        },
+        "state.opacity.muted": {
+          "$type": "number",
+          "$value": 0.7,
+          "valuesByMode": {
+            "Light": 0.7,
+            "Dark": 0.7
+          },
+          "$description": "Opacity for muted/secondary elements"
+        },
+        "state.opacity.subtle": {
+          "$type": "number",
+          "$value": 0.9,
+          "valuesByMode": {
+            "Light": 0.9,
+            "Dark": 0.9
+          },
+          "$description": "Opacity for subtle elements"
+        },
+        "state.opacity.hover": {
+          "$type": "number",
+          "$value": 1,
+          "valuesByMode": {
+            "Light": 1,
+            "Dark": 1
+          },
+          "$description": "Opacity for hover state (full visibility)"
+        },
+        "state.opacity.overlay": {
+          "$type": "number",
+          "$value": 0.8,
+          "valuesByMode": {
+            "Light": 0.8,
+            "Dark": 0.8
+          },
+          "$description": "Opacity for overlay backgrounds"
+        },
+        "typography.tracking.tight": {
+          "$type": "dimension",
+          "$value": "-0.025em",
+          "valuesByMode": {
+            "Light": "-0.025em",
+            "Dark": "-0.025em"
+          },
+          "$description": "Tight letter-spacing for headings"
+        },
+        "typography.tracking.normal": {
+          "$type": "dimension",
+          "$value": "0em",
+          "valuesByMode": {
+            "Light": "0em",
+            "Dark": "0em"
+          },
+          "$description": "Normal letter-spacing for body text"
+        },
+        "typography.tracking.wide": {
+          "$type": "dimension",
+          "$value": "0.025em",
+          "valuesByMode": {
+            "Light": "0.025em",
+            "Dark": "0.025em"
+          },
+          "$description": "Wide letter-spacing for labels"
+        },
+        "typography.tracking.widest": {
+          "$type": "dimension",
+          "$value": "0.1em",
+          "valuesByMode": {
+            "Light": "0.1em",
+            "Dark": "0.1em"
+          },
+          "$description": "Widest letter-spacing for uppercase text"
+        },
+        "focus-ring.width": {
+          "$type": "dimension",
+          "$value": "2px",
+          "valuesByMode": {
+            "Light": "2px",
+            "Dark": "2px"
+          },
+          "$description": "Width of focus ring"
+        },
+        "focus-ring.offset": {
+          "$type": "dimension",
+          "$value": "2px",
+          "valuesByMode": {
+            "Light": "2px",
+            "Dark": "2px"
+          },
+          "$description": "Offset of focus ring from element"
+        },
+        "icon.size.xs": {
+          "$type": "dimension",
+          "$value": "12px",
+          "valuesByMode": {
+            "Light": "12px",
+            "Dark": "12px"
+          },
+          "$description": "Extra small icon size (12px)"
+        },
+        "icon.size.sm": {
+          "$type": "dimension",
+          "$value": "14px",
+          "valuesByMode": {
+            "Light": "14px",
+            "Dark": "14px"
+          },
+          "$description": "Small icon size (14px)"
+        },
+        "icon.size.md": {
+          "$type": "dimension",
+          "$value": "16px",
+          "valuesByMode": {
+            "Light": "16px",
+            "Dark": "16px"
+          },
+          "$description": "Medium icon size (16px)"
+        },
+        "icon.size.lg": {
+          "$type": "dimension",
+          "$value": "20px",
+          "valuesByMode": {
+            "Light": "20px",
+            "Dark": "20px"
+          },
+          "$description": "Large icon size (20px)"
+        },
+        "icon.size.xl": {
+          "$type": "dimension",
+          "$value": "24px",
+          "valuesByMode": {
+            "Light": "24px",
+            "Dark": "24px"
+          },
+          "$description": "Extra large icon size (24px)"
         }
       }
     }

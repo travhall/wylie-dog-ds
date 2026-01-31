@@ -476,6 +476,8 @@ export const spacing = {
   "avatar-rounded": "9999px",
   "table-header-padding-right": "0px",
   "toast-close-button-padding": "4px",
+  "dialog-close-button-offset": "16px",
+  "dialog-close-button-icon-size": "16px",
   "skeleton-rounded-full": "9999px",
   "skeleton-rounded-sm": "4px",
   "carousel-button-rounded-full": "9999px",

@@ -59,7 +59,7 @@ export const SheetContent = React.forwardRef<
       <DialogPrimitive.Content
         ref={ref}
         className={cn(
-          "fixed z-50 bg-(--color-background-primary) shadow-lg transition ease-in-out",
+          "fixed z-50 bg-(--color-background-primary) shadow-(--shadow-lg) transition ease-in-out",
           "gap-(--spacing-sheet-header-gap)",
           "p-(--spacing-sheet-content-padding)",
           "data-[state=open]:animate-in data-[state=closed]:animate-out",
@@ -70,9 +70,9 @@ export const SheetContent = React.forwardRef<
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="absolute right-4 top-4 rounded-(--spacing-sheet-close-button-radius) opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2 disabled:pointer-events-none">
+        <DialogPrimitive.Close className="absolute right-(--spacing-sheet-close-button-offset) top-(--spacing-sheet-close-button-offset) rounded-(--spacing-sheet-close-button-radius) opacity-(--state-opacity-muted) ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-(--spacing-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--spacing-focus-ring-offset) disabled:pointer-events-none">
           <svg
-            className="h-4 w-4"
+            className="h-(--spacing-icon-size-md) w-(--spacing-icon-size-md)"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

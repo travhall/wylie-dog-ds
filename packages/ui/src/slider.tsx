@@ -24,7 +24,7 @@ const Slider = React.forwardRef<
       {values.map((_, i) => (
         <SliderPrimitive.Thumb
           key={i}
-          className="block ring-offset-(--color-background) transition-colors h-(--spacing-slider-thumb-size) w-(--spacing-slider-thumb-size) rounded-(--spacing-slider-thumb-radius) border-(length:--spacing-slider-thumb-border-width) border-(--color-slider-thumb-border) bg-(--color-slider-thumb) focus-visible:outline-none focus-visible:ring-(--spacing-slider-focus-ring-width) focus-visible:ring-offset-(--spacing-slider-focus-ring-offset) disabled:pointer-events-none disabled:opacity-50"
+          className="block ring-offset-(--color-background) transition-colors h-(--spacing-slider-thumb-size) w-(--spacing-slider-thumb-size) rounded-(--spacing-slider-thumb-radius) border-(length:--spacing-slider-thumb-border-width) border-(--color-slider-thumb-border) bg-(--color-slider-thumb) focus-visible:outline-none focus-visible:ring-(--spacing-slider-focus-ring-width) focus-visible:ring-offset-(--spacing-slider-focus-ring-offset) disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)"
         />
       ))}
     </SliderPrimitive.Root>

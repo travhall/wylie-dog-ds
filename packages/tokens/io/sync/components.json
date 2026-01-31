@@ -4692,6 +4692,14 @@
             "Dark": "{border-radius.md}"
           }
         },
+        "sheet.close-button-offset": {
+          "$type": "dimension",
+          "$value": "{spacing.400}",
+          "valuesByMode": {
+            "Light": "{spacing.400}",
+            "Dark": "{spacing.400}"
+          }
+        },
         "avatar.rounded": {
           "$type": "spacing",
           "$value": "{border-radius.full}",
@@ -4738,6 +4746,22 @@
           "valuesByMode": {
             "Light": "{border-radius.md}",
             "Dark": "{border-radius.md}"
+          }
+        },
+        "dialog.close-button-offset": {
+          "$type": "spacing",
+          "$value": "{spacing.200}",
+          "valuesByMode": {
+            "Light": "{spacing.200}",
+            "Dark": "{spacing.200}"
+          }
+        },
+        "dialog.close-button-icon-size": {
+          "$type": "spacing",
+          "$value": "{spacing.200}",
+          "valuesByMode": {
+            "Light": "{spacing.200}",
+            "Dark": "{spacing.200}"
           }
         },
         "skeleton.rounded-full": {

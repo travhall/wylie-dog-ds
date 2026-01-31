@@ -35,7 +35,7 @@ const PopoverContent = React.forwardRef<
           align={align}
           sideOffset={sideOffset}
           className={cn(
-            "z-50 border outline-none shadow-md",
+            "z-50 border outline-none shadow-(--shadow-md)",
             sizes[size],
             "rounded-(--spacing-popover-content-radius)",
             "p-(--spacing-popover-content-padding)",

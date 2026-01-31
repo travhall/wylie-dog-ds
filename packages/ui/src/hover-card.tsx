@@ -34,7 +34,7 @@ const HoverCardContent = React.forwardRef<
         align={align}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 border outline-none shadow-md",
+          "z-50 border outline-none shadow-(--shadow-md)",
           sizes[size],
           "rounded-(--spacing-hover-card-content-radius)",
           "p-(--spacing-hover-card-content-padding)",

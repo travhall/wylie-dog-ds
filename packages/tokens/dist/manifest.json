@@ -6317,6 +6317,28 @@
         "type": "dimension",
         "variable": "var(--dialog-close-button-radius)",
         "description": ""
+      },
+      "dialog-close-button-offset": {
+        "name": "dialogCloseButtonOffset",
+        "path": [
+          "dialog",
+          "close-button-offset"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--dialog-close-button-offset)",
+        "description": ""
+      },
+      "dialog-close-button-icon-size": {
+        "name": "dialogCloseButtonIconSize",
+        "path": [
+          "dialog",
+          "close-button-icon-size"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--dialog-close-button-icon-size)",
+        "description": ""
       }
     },
     "form": {
@@ -9062,6 +9084,17 @@
         "value": "4px",
         "type": "dimension",
         "variable": "var(--sheet-close-button-radius)",
+        "description": ""
+      },
+      "sheet-close-button-offset": {
+        "name": "sheetCloseButtonOffset",
+        "path": [
+          "sheet",
+          "close-button-offset"
+        ],
+        "value": "32px",
+        "type": "dimension",
+        "variable": "var(--sheet-close-button-offset)",
         "description": ""
       }
     },

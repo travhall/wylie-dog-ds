@@ -61,7 +61,7 @@ export const DialogContent = React.forwardRef<
         className={cn(
           "fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%]",
           "gap-(--spacing-dialog-header-gap)",
-          "border bg-(--color-dialog-background) shadow-lg duration-200",
+          "border bg-(--color-dialog-background) shadow-(--shadow-lg) duration-(--transition-duration-normal)",
           "p-(--spacing-dialog-content-padding)",
           "data-[state=open]:animate-in data-[state=closed]:animate-out",
           "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -78,10 +78,10 @@ export const DialogContent = React.forwardRef<
         {children}
         <DialogPrimitive.Close
           ref={closeButtonRef}
-          className="absolute right-4 top-4 rounded-(--spacing-dialog-close-button-radius) opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2 disabled:pointer-events-none"
+          className="absolute right-(--spacing-dialog-close-button-offset) top-(--spacing-dialog-close-button-offset) rounded-(--spacing-dialog-close-button-radius) opacity-(--state-opacity-muted) ring-offset-background transition-opacity hover:opacity-(--state-opacity-hover) focus:outline-none focus:ring-(--spacing-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--spacing-focus-ring-offset) disabled:pointer-events-none"
         >
           <svg
-            className="h-4 w-4"
+            className="h-(--spacing-icon-size-md) w-(--spacing-icon-size-md)"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

@@ -217,7 +217,7 @@ const MenubarShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-(length:--font-size-menubar-shortcut-font-size) text-(--color-menubar-shortcut) tracking-widest",
+        "ml-auto text-(length:--font-size-menubar-shortcut-font-size) text-(--color-menubar-shortcut) tracking-(--spacing-typography-tracking-widest)",
         className
       )}
       {...props}

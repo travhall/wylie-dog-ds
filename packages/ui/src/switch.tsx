@@ -35,7 +35,7 @@ export const Switch = React.forwardRef<
         "focus:ring-(--spacing-switch-focus-ring-width)",
         "focus:ring-(--color-border-focus)",
         "focus:ring-offset-(--spacing-switch-focus-ring-offset)",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
         "data-[state=checked]:bg-(--color-switch-track-background-checked)",
         "data-[state=unchecked]:bg-(--color-switch-track-background-unchecked)",
         sizes[size],
@@ -46,7 +46,7 @@ export const Switch = React.forwardRef<
     >
       <SwitchPrimitive.Thumb
         className={cn(
-          "pointer-events-none block shadow-lg ring-0 transition-transform",
+          "pointer-events-none block shadow-(--shadow-lg) ring-0 transition-transform",
           "rounded-(--spacing-switch-thumb-radius)",
           "bg-(--color-switch-thumb-background)",
           thumbSizes[size]

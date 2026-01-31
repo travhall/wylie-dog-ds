@@ -51,7 +51,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           "rounded-(--spacing-textarea-radius)",
           "placeholder:text-(--color-input-placeholder)",
           "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
-          "disabled:cursor-not-allowed disabled:opacity-50",
+          "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
           // Background and border
           error
             ? "border-(--color-input-border-error) bg-(--color-input-background)"

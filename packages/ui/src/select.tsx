@@ -33,7 +33,7 @@ export const SelectTrigger = React.forwardRef<
         "rounded-(--spacing-select-trigger-radius)",
         "placeholder:text-(--color-input-placeholder)",
         "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
         "[&>span]:line-clamp-1",
         error
           ? "border-(--color-input-border-error) bg-(--color-input-background)"
@@ -47,7 +47,7 @@ export const SelectTrigger = React.forwardRef<
       {children}
       <SelectPrimitive.Icon asChild>
         <svg
-          className="h-4 w-4 opacity-50"
+          className="h-(--spacing-icon-size-md) w-(--spacing-icon-size-md) opacity-(--state-opacity-disabled)"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -78,7 +78,7 @@ export const SelectContent = React.forwardRef<
         "max-h-(--spacing-select-content-max-height)",
         "min-w-(--spacing-select-content-min-width)",
         "rounded-(--spacing-select-content-radius)",
-        "bg-(--color-background-primary) text-(--color-text-primary) shadow-md",
+        "bg-(--color-background-primary) text-(--color-text-primary) shadow-(--shadow-md)",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -120,15 +120,15 @@ export const SelectItem = React.forwardRef<
       "pr-(--spacing-select-item-padding-right)",
       "text-(length:--font-size-select-item-font-size)",
       "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
-      "data-disabled:pointer-events-none data-disabled:opacity-50",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
       className
     )}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute left-2 flex h-(--spacing-icon-size-sm) w-(--spacing-icon-size-sm) items-center justify-center">
       <SelectPrimitive.ItemIndicator>
         <svg
-          className="h-4 w-4"
+          className="h-(--spacing-icon-size-md) w-(--spacing-icon-size-md)"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

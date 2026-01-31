@@ -64,7 +64,7 @@ export const TabsTrigger = React.forwardRef<
         "border-b-(--spacing-tabs-trigger-indicator-width) border-transparent",
         "-mb-[1px]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
-        "disabled:pointer-events-none disabled:opacity-50",
+        "disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
         "data-[state=active]:bg-(--color-tabs-trigger-background-active) data-[state=active]:text-(--color-tabs-trigger-text-active) data-[state=active]:shadow-sm data-[state=active]:border-(--color-tabs-trigger-indicator-color)",
         "hover:bg-(--color-tabs-trigger-background-hover) hover:text-(--color-tabs-trigger-text-hover)",
         sizes[size],

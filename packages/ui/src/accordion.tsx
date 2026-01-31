@@ -59,7 +59,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <ChevronDownIcon className="h-(--spacing-accordion-trigger-icon-size) w-(--spacing-accordion-trigger-icon-size) shrink-0 text-(--color-accordion-icon) transition-transform duration-200 group-hover:text-(--color-accordion-icon-hover) group-data-[state=open]:text-(--color-accordion-icon-open) group-disabled:text-(--color-accordion-icon-disabled)" />
+      <ChevronDownIcon className="h-(--spacing-accordion-trigger-icon-size) w-(--spacing-accordion-trigger-icon-size) shrink-0 text-(--color-accordion-icon) transition-transform duration-(--transition-duration-normal) group-hover:text-(--color-accordion-icon-hover) group-data-[state=open]:text-(--color-accordion-icon-open) group-disabled:text-(--color-accordion-icon-disabled)" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));

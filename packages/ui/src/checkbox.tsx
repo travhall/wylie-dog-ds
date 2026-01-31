@@ -38,7 +38,7 @@ export const Checkbox = React.forwardRef<
         "focus:ring-(--spacing-checkbox-focus-ring-width)",
         "focus:ring-(--color-border-focus)",
         "focus:ring-offset-(--spacing-checkbox-focus-ring-offset)",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
         "data-[state=checked]:bg-(--color-interactive-primary) data-[state=checked]:text-(--color-text-inverse)",
         "data-[state=checked]:border-(--color-interactive-primary)",
         error

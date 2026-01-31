@@ -53,7 +53,7 @@ const RadioGroupItem = React.forwardRef<
         "focus:ring-(--spacing-radio-focus-ring-width)",
         "focus:ring-(--color-border-focus)",
         "focus:ring-offset-(--spacing-radio-focus-ring-offset)",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
         "data-[state=checked]:border-(--color-radio-border-checked)",
         "data-[state=checked]:bg-(--color-radio-background-checked)",
         className
