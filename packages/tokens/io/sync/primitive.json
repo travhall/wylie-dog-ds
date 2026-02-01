@@ -3,7 +3,7 @@
     "primitive": {
       "modes": [
         {
-          "modeId": "mode:primitive:value",
+          "modeId": "1249:1",
           "name": "Value"
         }
       ],
@@ -14,39 +14,39 @@
         },
         "color.gray.100": {
           "$type": "color",
-          "$value": "oklch(0.984 0.003 247.86)"
+          "$value": "oklch(0.984 0.003 248.29)"
         },
         "color.gray.200": {
           "$type": "color",
-          "$value": "oklch(0.968 0.007 247.9)"
+          "$value": "oklch(0.968 0.007 248.08)"
         },
         "color.gray.300": {
           "$type": "color",
-          "$value": "oklch(0.929 0.013 255.51)"
+          "$value": "oklch(0.929 0.013 255.56)"
         },
         "color.gray.400": {
           "$type": "color",
-          "$value": "oklch(0.869 0.02 252.89)"
+          "$value": "oklch(0.869 0.02 252.93)"
         },
         "color.gray.500": {
           "$type": "color",
-          "$value": "oklch(0.711 0.035 256.79)"
+          "$value": "oklch(0.711 0.035 256.81)"
         },
         "color.gray.600": {
           "$type": "color",
-          "$value": "oklch(0.554 0.041 257.42)"
+          "$value": "oklch(0.554 0.041 257.43)"
         },
         "color.gray.700": {
           "$type": "color",
-          "$value": "oklch(0.446 0.037 257.28)"
+          "$value": "oklch(0.446 0.037 257.29)"
         },
         "color.gray.800": {
           "$type": "color",
-          "$value": "oklch(0.372 0.039 257.29)"
+          "$value": "oklch(0.372 0.039 257.3)"
         },
         "color.gray.900": {
           "$type": "color",
-          "$value": "oklch(0.279 0.037 260.03)"
+          "$value": "oklch(0.279 0.037 260.04)"
         },
         "color.gray.950": {
           "$type": "color",
@@ -54,43 +54,43 @@
         },
         "color.blue.50": {
           "$type": "color",
-          "$value": "oklch(0.97 0.014 254.6)"
+          "$value": "oklch(0.97 0.014 254.66)"
         },
         "color.blue.100": {
           "$type": "color",
-          "$value": "oklch(0.932 0.032 255.59)"
+          "$value": "oklch(0.932 0.032 255.61)"
         },
         "color.blue.200": {
           "$type": "color",
-          "$value": "oklch(0.882 0.057 254.13)"
+          "$value": "oklch(0.882 0.057 254.15)"
         },
         "color.blue.300": {
           "$type": "color",
-          "$value": "oklch(0.809 0.096 251.81)"
+          "$value": "oklch(0.809 0.096 251.82)"
         },
         "color.blue.400": {
           "$type": "color",
-          "$value": "oklch(0.714 0.143 254.62)"
+          "$value": "oklch(0.714 0.143 254.63)"
         },
         "color.blue.500": {
           "$type": "color",
-          "$value": "oklch(0.623 0.188 259.81)"
+          "$value": "oklch(0.623 0.188 259.82)"
         },
         "color.blue.600": {
           "$type": "color",
-          "$value": "oklch(0.546 0.215 262.88)"
+          "$value": "oklch(0.546 0.215 262.89)"
         },
         "color.blue.700": {
           "$type": "color",
-          "$value": "oklch(0.488 0.217 264.38)"
+          "$value": "oklch(0.488 0.217 264.39)"
         },
         "color.blue.800": {
           "$type": "color",
-          "$value": "oklch(0.424 0.181 265.64)"
+          "$value": "oklch(0.424 0.181 265.65)"
         },
         "color.blue.900": {
           "$type": "color",
-          "$value": "oklch(0.379 0.138 265.52)"
+          "$value": "oklch(0.379 0.138 265.53)"
         },
         "color.blue.950": {
           "$type": "color",
@@ -98,155 +98,155 @@
         },
         "color.green.50": {
           "$type": "color",
-          "$value": "oklch(0.982 0.018 155.83)"
+          "$value": "oklch(0.982 0.018 156.09)"
         },
         "color.green.100": {
           "$type": "color",
-          "$value": "oklch(0.962 0.043 156.74)"
+          "$value": "oklch(0.962 0.043 156.85)"
         },
         "color.green.200": {
           "$type": "color",
-          "$value": "oklch(0.925 0.081 155.99)"
+          "$value": "oklch(0.925 0.081 156.05)"
         },
         "color.green.300": {
           "$type": "color",
-          "$value": "oklch(0.871 0.136 154.45)"
+          "$value": "oklch(0.871 0.136 154.48)"
         },
         "color.green.400": {
           "$type": "color",
-          "$value": "oklch(0.8 0.182 151.71)"
+          "$value": "oklch(0.8 0.182 151.73)"
         },
         "color.green.500": {
           "$type": "color",
-          "$value": "oklch(0.723 0.192 149.58)"
+          "$value": "oklch(0.723 0.192 149.6)"
         },
         "color.green.600": {
           "$type": "color",
-          "$value": "oklch(0.627 0.17 149.21)"
+          "$value": "oklch(0.627 0.17 149.23)"
         },
         "color.green.700": {
           "$type": "color",
-          "$value": "oklch(0.527 0.137 150.07)"
+          "$value": "oklch(0.527 0.137 150.09)"
         },
         "color.green.800": {
           "$type": "color",
-          "$value": "oklch(0.448 0.108 151.33)"
+          "$value": "oklch(0.448 0.108 151.35)"
         },
         "color.green.900": {
           "$type": "color",
-          "$value": "oklch(0.393 0.09 152.54)"
+          "$value": "oklch(0.393 0.09 152.56)"
         },
         "color.green.950": {
           "$type": "color",
-          "$value": "oklch(0.266 0.063 152.93)"
+          "$value": "oklch(0.266 0.063 152.95)"
         },
         "color.orange.50": {
           "$type": "color",
-          "$value": "oklch(0.98 0.016 73.68)"
+          "$value": "oklch(0.98 0.016 74.37)"
         },
         "color.orange.100": {
           "$type": "color",
-          "$value": "oklch(0.954 0.037 75.16)"
+          "$value": "oklch(0.954 0.037 75.15)"
         },
         "color.orange.200": {
           "$type": "color",
-          "$value": "oklch(0.901 0.073 70.7)"
+          "$value": "oklch(0.901 0.073 70.69)"
         },
         "color.orange.300": {
           "$type": "color",
-          "$value": "oklch(0.837 0.117 66.29)"
+          "$value": "oklch(0.837 0.117 66.28)"
         },
         "color.orange.400": {
           "$type": "color",
-          "$value": "oklch(0.758 0.159 55.93)"
+          "$value": "oklch(0.758 0.159 55.92)"
         },
         "color.orange.500": {
           "$type": "color",
-          "$value": "oklch(0.705 0.187 47.69)"
+          "$value": "oklch(0.705 0.187 47.68)"
         },
         "color.orange.600": {
           "$type": "color",
-          "$value": "oklch(0.646 0.194 40.97)"
+          "$value": "oklch(0.646 0.194 40.96)"
         },
         "color.orange.700": {
           "$type": "color",
-          "$value": "oklch(0.553 0.174 38.51)"
+          "$value": "oklch(0.553 0.174 38.5)"
         },
         "color.orange.800": {
           "$type": "color",
-          "$value": "oklch(0.47 0.143 37.3)"
+          "$value": "oklch(0.47 0.143 37.29)"
         },
         "color.orange.900": {
           "$type": "color",
-          "$value": "oklch(0.408 0.116 38.17)"
+          "$value": "oklch(0.408 0.116 38.16)"
         },
         "color.orange.950": {
           "$type": "color",
-          "$value": "oklch(0.266 0.076 36.26)"
+          "$value": "oklch(0.266 0.076 36.25)"
         },
         "color.red.50": {
           "$type": "color",
-          "$value": "oklch(0.971 0.013 17.38)"
+          "$value": "oklch(0.971 0.013 17.04)"
         },
         "color.red.100": {
           "$type": "color",
-          "$value": "oklch(0.936 0.031 17.72)"
+          "$value": "oklch(0.936 0.031 17.59)"
         },
         "color.red.200": {
           "$type": "color",
-          "$value": "oklch(0.885 0.059 18.33)"
+          "$value": "oklch(0.885 0.059 18.27)"
         },
         "color.red.300": {
           "$type": "color",
-          "$value": "oklch(0.808 0.103 19.57)"
+          "$value": "oklch(0.808 0.103 19.54)"
         },
         "color.red.400": {
           "$type": "color",
-          "$value": "oklch(0.711 0.166 22.22)"
+          "$value": "oklch(0.711 0.166 22.21)"
         },
         "color.red.500": {
           "$type": "color",
-          "$value": "oklch(0.637 0.208 25.33)"
+          "$value": "oklch(0.637 0.208 25.32)"
         },
         "color.red.600": {
           "$type": "color",
-          "$value": "oklch(0.577 0.215 27.33)"
+          "$value": "oklch(0.577 0.215 27.32)"
         },
         "color.red.700": {
           "$type": "color",
-          "$value": "oklch(0.505 0.19 27.52)"
+          "$value": "oklch(0.505 0.19 27.51)"
         },
         "color.red.800": {
           "$type": "color",
-          "$value": "oklch(0.444 0.161 26.9)"
+          "$value": "oklch(0.444 0.161 26.89)"
         },
         "color.red.900": {
           "$type": "color",
-          "$value": "oklch(0.396 0.133 25.72)"
+          "$value": "oklch(0.396 0.133 25.71)"
         },
         "color.red.950": {
           "$type": "color",
-          "$value": "oklch(0.258 0.089 26.04)"
+          "$value": "oklch(0.258 0.089 26.03)"
         },
         "color.purple.50": {
           "$type": "color",
-          "$value": "oklch(0.977 0.014 308.3)"
+          "$value": "oklch(0.977 0.014 308.06)"
         },
         "color.purple.100": {
           "$type": "color",
-          "$value": "oklch(0.946 0.033 307.17)"
+          "$value": "oklch(0.946 0.033 307.07)"
         },
         "color.purple.200": {
           "$type": "color",
-          "$value": "oklch(0.902 0.06 306.7)"
+          "$value": "oklch(0.902 0.06 306.65)"
         },
         "color.purple.300": {
           "$type": "color",
-          "$value": "oklch(0.827 0.108 306.38)"
+          "$value": "oklch(0.827 0.108 306.36)"
         },
         "color.purple.400": {
           "$type": "color",
-          "$value": "oklch(0.722 0.177 305.5)"
+          "$value": "oklch(0.722 0.177 305.49)"
         },
         "color.purple.500": {
           "$type": "color",
@@ -274,71 +274,71 @@
         },
         "color.pink.50": {
           "$type": "color",
-          "$value": "oklch(0.97 0.011 357)"
+          "$value": "oklch(0.97 0.011 356.57)"
         },
         "color.pink.100": {
           "$type": "color",
-          "$value": "oklch(0.943 0.027 354.52)"
+          "$value": "oklch(0.943 0.027 354.35)"
         },
         "color.pink.200": {
           "$type": "color",
-          "$value": "oklch(0.905 0.049 353.56)"
+          "$value": "oklch(0.905 0.049 353.47)"
         },
         "color.pink.300": {
           "$type": "color",
-          "$value": "oklch(0.847 0.085 357.33)"
+          "$value": "oklch(0.847 0.085 357.28)"
         },
         "color.pink.400": {
           "$type": "color",
-          "$value": "oklch(0.767 0.137 2.21)"
+          "$value": "oklch(0.767 0.137 2.19)"
         },
         "color.pink.500": {
           "$type": "color",
-          "$value": "oklch(0.694 0.177 5.41)"
+          "$value": "oklch(0.694 0.177 5.39)"
         },
         "color.pink.600": {
           "$type": "color",
-          "$value": "oklch(0.624 0.209 8.01)"
+          "$value": "oklch(0.624 0.209 8)"
         },
         "color.pink.700": {
           "$type": "color",
-          "$value": "oklch(0.554 0.221 10.55)"
+          "$value": "oklch(0.554 0.221 10.54)"
         },
         "color.pink.800": {
           "$type": "color",
-          "$value": "oklch(0.498 0.199 14.64)"
+          "$value": "oklch(0.498 0.199 14.63)"
         },
         "color.pink.900": {
           "$type": "color",
-          "$value": "oklch(0.438 0.175 15.98)"
+          "$value": "oklch(0.438 0.175 15.97)"
         },
         "color.pink.950": {
           "$type": "color",
-          "$value": "oklch(0.319 0.128 18.58)"
+          "$value": "oklch(0.319 0.128 18.6)"
         },
         "color.yellow.50": {
           "$type": "color",
-          "$value": "oklch(0.989 0.014 102.45)"
+          "$value": "oklch(0.989 0.014 102.57)"
         },
         "color.yellow.100": {
           "$type": "color",
-          "$value": "oklch(0.971 0.035 103.57)"
+          "$value": "oklch(0.971 0.035 103.62)"
         },
         "color.yellow.200": {
           "$type": "color",
-          "$value": "oklch(0.933 0.07 101.46)"
+          "$value": "oklch(0.933 0.07 101.48)"
         },
         "color.yellow.300": {
           "$type": "color",
-          "$value": "oklch(0.881 0.117 100.38)"
+          "$value": "oklch(0.881 0.117 100.39)"
         },
         "color.yellow.400": {
           "$type": "color",
-          "$value": "oklch(0.817 0.157 97.72)"
+          "$value": "oklch(0.817 0.157 97.73)"
         },
         "color.yellow.500": {
           "$type": "color",
-          "$value": "oklch(0.761 0.156 95.3)"
+          "$value": "oklch(0.761 0.156 95.31)"
         },
         "color.yellow.600": {
           "$type": "color",
@@ -350,15 +350,15 @@
         },
         "color.yellow.800": {
           "$type": "color",
-          "$value": "oklch(0.5 0.103 83.64)"
+          "$value": "oklch(0.5 0.103 83.55)"
         },
         "color.yellow.900": {
           "$type": "color",
-          "$value": "oklch(0.435 0.089 87.06)"
+          "$value": "oklch(0.435 0.089 87.05)"
         },
         "color.yellow.950": {
           "$type": "color",
-          "$value": "oklch(0.312 0.064 86.37)"
+          "$value": "oklch(0.312 0.064 86.31)"
         },
         "spacing.0": {
           "$type": "spacing",
@@ -669,7 +669,19 @@
         },
         "shadow.offset-x.sm": {
           "$type": "dimension",
-          "$value": "0px"
+          "$value": "1px"
+        },
+        "shadow.offset-x.md": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "shadow.offset-x.lg": {
+          "$type": "dimension",
+          "$value": "10px"
+        },
+        "shadow.offset-x.xl": {
+          "$type": "dimension",
+          "$value": "20px"
         },
         "shadow.offset-y.none": {
           "$type": "dimension",
@@ -747,13 +759,29 @@
           "$type": "duration",
           "$value": "150ms"
         },
+        "typography.tracking.tighter": {
+          "$type": "dimension",
+          "$value": "-0.05em"
+        },
         "duration.200": {
           "$type": "duration",
           "$value": "200ms"
         },
+        "typography.tracking.tight": {
+          "$type": "dimension",
+          "$value": "-0.025em"
+        },
         "duration.300": {
           "$type": "duration",
           "$value": "300ms"
+        },
+        "typography.tracking.normal": {
+          "$type": "dimension",
+          "$value": "0em"
+        },
+        "typography.tracking.wide": {
+          "$type": "dimension",
+          "$value": "0.025em"
         },
         "duration.500": {
           "$type": "duration",
@@ -763,33 +791,17 @@
           "$type": "duration",
           "$value": "700ms"
         },
-        "duration.1000": {
-          "$type": "duration",
-          "$value": "1000ms"
-        },
-        "tracking.tighter": {
-          "$type": "dimension",
-          "$value": "-0.05em"
-        },
-        "tracking.tight": {
-          "$type": "dimension",
-          "$value": "-0.025em"
-        },
-        "tracking.normal": {
-          "$type": "dimension",
-          "$value": "0em"
-        },
-        "tracking.wide": {
-          "$type": "dimension",
-          "$value": "0.025em"
-        },
-        "tracking.wider": {
+        "typography.tracking.wider": {
           "$type": "dimension",
           "$value": "0.05em"
         },
-        "tracking.widest": {
+        "typography.tracking.widest": {
           "$type": "dimension",
           "$value": "0.1em"
+        },
+        "duration.1000": {
+          "$type": "duration",
+          "$value": "1000ms"
         }
       }
     }
