@@ -375,13 +375,6 @@
   --font-size-card-header-description-font-size: 14px;
   --color-card-header-description-color: oklch(0.446 0.037 257.28);
   --spacing-card-footer-gap: 8px;
-  --spacing-card-footer-padding-top: 0px;
-  --shadow-card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --font-weight-card-title-font-weight: 600;
-  --line-height-card-title-line-height: 1;
-  --spacing-card-title-letter-spacing: -0.025em;
-  --font-size-card-content-font-size: 14px;
-  --color-card-content-color: oklch(0.279 0.037 260.03);
   --color-input-background: oklch(1 0 0);
   --color-input-background-hover: oklch(0.984 0.003 247.86);
   --color-input-border: oklch(0.929 0.013 255.51);
@@ -395,8 +388,8 @@
   --spacing-input-height-md: 40px;
   --spacing-input-height-lg: 48px;
   --spacing-input-padding-x: 16px;
-  --font-size-input-font-size-sm: 14px;
   --spacing-input-radius: 4px;
+  --font-size-input-font-size-sm: 14px;
   --font-size-input-font-size-md: 16px;
   --font-size-input-font-size-lg: 18px;
   --color-button-outline-hover: oklch(0.984 0.003 247.86);
@@ -590,7 +583,6 @@
   --spacing-checkbox-icon-size-lg: 24px;
   --spacing-checkbox-focus-ring-width: 2px;
   --spacing-checkbox-focus-ring-offset: 2px;
-  --color-checkbox-border-color: oklch(0.929 0.013 255.51);
   --spacing-switch-track-height-sm: 24px;
   --spacing-switch-track-height-md: 24px;
   --spacing-switch-track-height-lg: 24px;
@@ -892,15 +884,12 @@
   --spacing-dropdown-menu-item-radius: 4px;
   --spacing-resizable-handle-radius: 4px;
   --spacing-sheet-close-button-radius: 4px;
-  --spacing-sheet-close-button-offset: 32px;
   --spacing-avatar-rounded: 9999px;
   --spacing-table-header-padding-right: 0px;
   --spacing-toast-close-button-padding: 4px;
   --spacing-toast-close-button-radius: 4px;
   --spacing-toggle-radius: 4px;
   --spacing-dialog-close-button-radius: 4px;
-  --spacing-dialog-close-button-offset: 16px;
-  --spacing-dialog-close-button-icon-size: 16px;
   --spacing-skeleton-rounded-full: 9999px;
   --spacing-skeleton-rounded-sm: 4px;
   --spacing-breadcrumb-link-radius: 4px;
@@ -911,6 +900,17 @@
   --spacing-select-separator-margin-y: 4px;
   --font-size-toggle-font-size: 14px;
   --spacing-toast-action-radius: 4px;
+  --spacing-card-footer-padding-top: 0px;
+  --shadow-card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --font-weight-card-title-font-weight: 600;
+  --line-height-card-title-line-height: 1;
+  --spacing-card-title-letter-spacing: -0.025em;
+  --font-size-card-content-font-size: 14px;
+  --color-card-content-color: oklch(0.279 0.037 260.03);
+  --color-checkbox-border-color: oklch(0.929 0.013 255.51);
+  --spacing-sheet-close-button-offset: 32px;
+  --spacing-dialog-close-button-offset: 16px;
+  --spacing-dialog-close-button-icon-size: 16px;
 }
 
 @layer base {
@@ -1286,13 +1286,6 @@
     --font-size-card-header-description-font-size: 14px;
     --color-card-header-description-color: oklch(0.446 0.037 257.28);
     --spacing-card-footer-gap: 8px;
-    --spacing-card-footer-padding-top: 0px;
-    --shadow-card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --font-weight-card-title-font-weight: 600;
-    --line-height-card-title-line-height: 1;
-    --spacing-card-title-letter-spacing: -0.025em;
-    --font-size-card-content-font-size: 14px;
-    --color-card-content-color: oklch(0.279 0.037 260.03);
     --color-input-background: oklch(1 0 0);
     --color-input-background-hover: oklch(0.984 0.003 247.86);
     --color-input-border: oklch(0.929 0.013 255.51);
@@ -1306,8 +1299,8 @@
     --spacing-input-height-md: 40px;
     --spacing-input-height-lg: 48px;
     --spacing-input-padding-x: 16px;
-    --font-size-input-font-size-sm: 14px;
     --spacing-input-radius: 4px;
+    --font-size-input-font-size-sm: 14px;
     --font-size-input-font-size-md: 16px;
     --font-size-input-font-size-lg: 18px;
     --color-button-outline-hover: oklch(0.984 0.003 247.86);
@@ -1501,7 +1494,6 @@
     --spacing-checkbox-icon-size-lg: 24px;
     --spacing-checkbox-focus-ring-width: 2px;
     --spacing-checkbox-focus-ring-offset: 2px;
-    --color-checkbox-border-color: oklch(0.929 0.013 255.51);
     --spacing-switch-track-height-sm: 24px;
     --spacing-switch-track-height-md: 24px;
     --spacing-switch-track-height-lg: 24px;
@@ -1803,15 +1795,12 @@
     --spacing-dropdown-menu-item-radius: 4px;
     --spacing-resizable-handle-radius: 4px;
     --spacing-sheet-close-button-radius: 4px;
-    --spacing-sheet-close-button-offset: 32px;
     --spacing-avatar-rounded: 9999px;
     --spacing-table-header-padding-right: 0px;
     --spacing-toast-close-button-padding: 4px;
     --spacing-toast-close-button-radius: 4px;
     --spacing-toggle-radius: 4px;
     --spacing-dialog-close-button-radius: 4px;
-    --spacing-dialog-close-button-offset: 16px;
-    --spacing-dialog-close-button-icon-size: 16px;
     --spacing-skeleton-rounded-full: 9999px;
     --spacing-skeleton-rounded-sm: 4px;
     --spacing-breadcrumb-link-radius: 4px;
@@ -1822,5 +1811,16 @@
     --spacing-select-separator-margin-y: 4px;
     --font-size-toggle-font-size: 14px;
     --spacing-toast-action-radius: 4px;
+    --spacing-card-footer-padding-top: 0px;
+    --shadow-card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --font-weight-card-title-font-weight: 600;
+    --line-height-card-title-line-height: 1;
+    --spacing-card-title-letter-spacing: -0.025em;
+    --font-size-card-content-font-size: 14px;
+    --color-card-content-color: oklch(0.279 0.037 260.03);
+    --color-checkbox-border-color: oklch(0.929 0.013 255.51);
+    --spacing-sheet-close-button-offset: 32px;
+    --spacing-dialog-close-button-offset: 16px;
+    --spacing-dialog-close-button-icon-size: 16px;
   }
 }

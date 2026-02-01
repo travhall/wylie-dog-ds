@@ -3746,6 +3746,17 @@
         "variable": "var(--input-padding-x)",
         "description": ""
       },
+      "input-radius": {
+        "name": "inputRadius",
+        "path": [
+          "input",
+          "radius"
+        ],
+        "value": "4px",
+        "type": "dimension",
+        "variable": "var(--input-radius)",
+        "description": ""
+      },
       "input-font-size-sm": {
         "name": "inputFontSizeSm",
         "path": [
@@ -3756,17 +3767,6 @@
         "value": "14px",
         "type": "fontSize",
         "variable": "var(--input-font-size-sm)",
-        "description": ""
-      },
-      "input-radius": {
-        "name": "inputRadius",
-        "path": [
-          "input",
-          "radius"
-        ],
-        "value": "4px",
-        "type": "dimension",
-        "variable": "var(--input-radius)",
         "description": ""
       },
       "input-font-size-md": {

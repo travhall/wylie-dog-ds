@@ -237,7 +237,6 @@ export const spacing = {
   "card-gap": "16px",
   "card-header-gap": "8px",
   "card-footer-gap": "8px",
-  "card-footer-padding-top": "0px",
   "input-height-sm": "32px",
   "input-height-md": "40px",
   "input-height-lg": "48px",
@@ -476,13 +475,14 @@ export const spacing = {
   "avatar-rounded": "9999px",
   "table-header-padding-right": "0px",
   "toast-close-button-padding": "4px",
-  "dialog-close-button-offset": "16px",
-  "dialog-close-button-icon-size": "16px",
   "skeleton-rounded-full": "9999px",
   "skeleton-rounded-sm": "4px",
   "carousel-button-rounded-full": "9999px",
   "select-separator-margin-x": "4px",
-  "select-separator-margin-y": "4px"
+  "select-separator-margin-y": "4px",
+  "card-footer-padding-top": "0px",
+  "dialog-close-button-offset": "16px",
+  "dialog-close-button-icon-size": "16px"
 };
 
 // Empty shadow object for now

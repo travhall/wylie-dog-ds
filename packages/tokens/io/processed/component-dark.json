@@ -271,34 +271,6 @@
     "$type": "spacing",
     "$value": "{spacing.100}"
   },
-  "card.footer.padding-top": {
-    "$type": "spacing",
-    "$value": "{spacing.0}"
-  },
-  "card.shadow": {
-    "$type": "shadow",
-    "$value": "{shadow.sm}"
-  },
-  "card.title.font-weight": {
-    "$type": "fontWeight",
-    "$value": "{typography.font-weight.semibold}"
-  },
-  "card.title.line-height": {
-    "$type": "lineHeight",
-    "$value": "{typography.line-height.none}"
-  },
-  "card.title.letter-spacing": {
-    "$type": "dimension",
-    "$value": "-0.025em"
-  },
-  "card.content.font-size": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.sm}"
-  },
-  "card.content.color": {
-    "$type": "color",
-    "$value": "{color.text.primary}"
-  },
   "input.background": {
     "$type": "color",
     "$value": "{color.background.primary}"
@@ -351,13 +323,13 @@
     "$type": "spacing",
     "$value": "{spacing.200}"
   },
-  "input.font-size.sm": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.sm}"
-  },
   "input.radius": {
     "$type": "dimension",
     "$value": "{border-radius.md}"
+  },
+  "input.font-size.sm": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.sm}"
   },
   "input.font-size.md": {
     "$type": "fontSize",
@@ -1130,10 +1102,6 @@
   "checkbox.focus.ring.offset": {
     "$type": "spacing",
     "$value": "{border-width.2}"
-  },
-  "checkbox.border.color": {
-    "$type": "color",
-    "$value": "{color.border.primary}"
   },
   "switch.track.height.sm": {
     "$type": "spacing",
@@ -2339,10 +2307,6 @@
     "$type": "dimension",
     "$value": "{border-radius.md}"
   },
-  "sheet.close-button-offset": {
-    "$type": "dimension",
-    "$value": "{spacing.400}"
-  },
   "avatar.rounded": {
     "$type": "spacing",
     "$value": "{border-radius.full}"
@@ -2366,14 +2330,6 @@
   "dialog.close-button-radius": {
     "$type": "dimension",
     "$value": "{border-radius.md}"
-  },
-  "dialog.close-button-offset": {
-    "$type": "spacing",
-    "$value": "{spacing.200}"
-  },
-  "dialog.close-button-icon-size": {
-    "$type": "spacing",
-    "$value": "{spacing.200}"
   },
   "skeleton.rounded-full": {
     "$type": "spacing",
@@ -2414,5 +2370,49 @@
   "toast.action.radius": {
     "$type": "dimension",
     "$value": "{border-radius.md}"
+  },
+  "card.footer.padding-top": {
+    "$type": "spacing",
+    "$value": "{spacing.0}"
+  },
+  "card.shadow": {
+    "$type": "shadow",
+    "$value": "{shadow.sm}"
+  },
+  "card.title.font-weight": {
+    "$type": "fontWeight",
+    "$value": "{typography.font-weight.semibold}"
+  },
+  "card.title.line-height": {
+    "$type": "lineHeight",
+    "$value": "{typography.line-height.none}"
+  },
+  "card.title.letter-spacing": {
+    "$type": "dimension",
+    "$value": "-0.025em"
+  },
+  "card.content.font-size": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.sm}"
+  },
+  "card.content.color": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "checkbox.border.color": {
+    "$type": "color",
+    "$value": "{color.border.primary}"
+  },
+  "sheet.close-button-offset": {
+    "$type": "dimension",
+    "$value": "{spacing.400}"
+  },
+  "dialog.close-button-offset": {
+    "$type": "spacing",
+    "$value": "{spacing.200}"
+  },
+  "dialog.close-button-icon-size": {
+    "$type": "spacing",
+    "$value": "{spacing.200}"
   }
 }
