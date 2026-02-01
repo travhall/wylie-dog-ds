@@ -24,12 +24,130 @@ let variableReferenceMap: Map<string, string> = new Map();
 
 /**
  * Convert Figma RGB color (0-1 range) to hex format
+ * @deprecated Use rgbToOklch for export - kept for reference/debugging
  */
 function rgbToHex(color: { r: number; g: number; b: number }): string {
   const r = Math.round(color.r * 255);
   const g = Math.round(color.g * 255);
   const b = Math.round(color.b * 255);
   return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+}
+
+/**
+ * Apply sRGB gamma correction (linear to sRGB)
+ * Input: linear RGB value (0-1)
+ * Output: sRGB value (0-1)
+ */
+function linearToSrgb(value: number): number {
+  if (value <= 0.0031308) {
+    return value * 12.92;
+  }
+  return 1.055 * Math.pow(value, 1 / 2.4) - 0.055;
+}
+
+/**
+ * Remove sRGB gamma correction (sRGB to linear)
+ * Input: sRGB value (0-1)
+ * Output: linear RGB value (0-1)
+ */
+function srgbToLinear(value: number): number {
+  if (value <= 0.04045) {
+    return value / 12.92;
+  }
+  return Math.pow((value + 0.055) / 1.055, 2.4);
+}
+
+/**
+ * Convert linear sRGB to XYZ (D65 illuminant)
+ */
+function linearSrgbToXyz(
+  r: number,
+  g: number,
+  b: number
+): [number, number, number] {
+  // sRGB to XYZ matrix (D65)
+  const x = 0.4124564 * r + 0.3575761 * g + 0.1804375 * b;
+  const y = 0.2126729 * r + 0.7151522 * g + 0.072175 * b;
+  const z = 0.0193339 * r + 0.119192 * g + 0.9503041 * b;
+  return [x, y, z];
+}
+
+/**
+ * Convert XYZ to OKLab
+ */
+function xyzToOklab(x: number, y: number, z: number): [number, number, number] {
+  // XYZ to LMS matrix
+  const l = 0.8189330101 * x + 0.3618667424 * y - 0.1288597137 * z;
+  const m = 0.0329845436 * x + 0.9293118715 * y + 0.0361456387 * z;
+  const s = 0.0482003018 * x + 0.2643662691 * y + 0.6338517028 * z;
+
+  // Cube root
+  const l_ = Math.cbrt(l);
+  const m_ = Math.cbrt(m);
+  const s_ = Math.cbrt(s);
+
+  // LMS to OKLab
+  const L = 0.2104542553 * l_ + 0.793617785 * m_ - 0.0040720468 * s_;
+  const a = 1.9779984951 * l_ - 2.428592205 * m_ + 0.4505937099 * s_;
+  const b = 0.0259040371 * l_ + 0.7827717662 * m_ - 0.808675766 * s_;
+
+  return [L, a, b];
+}
+
+/**
+ * Convert OKLab to OKLCH (cylindrical coordinates)
+ */
+function oklabToOklch(
+  L: number,
+  a: number,
+  b: number
+): [number, number, number] {
+  const C = Math.sqrt(a * a + b * b);
+  let H = (Math.atan2(b, a) * 180) / Math.PI;
+  if (H < 0) H += 360;
+  return [L, C, H];
+}
+
+/**
+ * Convert Figma RGB color (0-1 range) to OKLCH format
+ * Matches the precision used in token files: L/C with 3 decimals, H with 2 decimals
+ */
+function rgbToOklch(color: { r: number; g: number; b: number }): string {
+  // Figma uses linear RGB, convert to sRGB first then to linear for XYZ
+  // Actually, Figma variables are already in sRGB gamma space (0-1 range)
+  // Convert sRGB to linear RGB
+  const linearR = srgbToLinear(color.r);
+  const linearG = srgbToLinear(color.g);
+  const linearB = srgbToLinear(color.b);
+
+  // Convert linear RGB to XYZ
+  const [x, y, z] = linearSrgbToXyz(linearR, linearG, linearB);
+
+  // Convert XYZ to OKLab
+  const [L, a, b] = xyzToOklab(x, y, z);
+
+  // Convert OKLab to OKLCH
+  const [l, c, h] = oklabToOklch(L, a, b);
+
+  // Format with precision matching token files
+  // L: 3 decimal places (e.g., 0.500)
+  // C: 3 decimal places (e.g., 0.103)
+  // H: 2 decimal places (e.g., 83.64)
+  // Special case: if chroma is near zero (grayscale), set hue to 0
+  const lRounded = parseFloat(l.toFixed(3));
+  const cRounded = parseFloat(c.toFixed(3));
+  const hRounded = c < 0.001 ? 0 : parseFloat(h.toFixed(2));
+
+  return `oklch(${lRounded} ${cRounded} ${hRounded})`;
+}
+
+/**
+ * Round a number to a specified precision, removing floating point errors
+ * E.g., 0.05000000074505806 → 0.05
+ */
+function roundToPrecision(value: number, precision: number = 4): number {
+  const multiplier = Math.pow(10, precision);
+  return Math.round(value * multiplier) / multiplier;
 }
 
 /**
@@ -211,28 +329,62 @@ function getW3CTokenType(
 /**
  * Format numeric values with appropriate units
  * Returns number for unitless types, string for types with units
+ *
+ * @param value - The numeric value from Figma
+ * @param tokenType - The W3C DTCG token type
+ * @param variableName - Optional variable name for context-aware formatting
  */
-function formatNumericValue(value: number, tokenType: string): string | number {
+function formatNumericValue(
+  value: number,
+  tokenType: string,
+  variableName?: string
+): string | number {
+  // Round to remove floating-point errors (e.g., 0.05000000074505806 → 0.05)
+  const roundedValue = roundToPrecision(value, 4);
+
   switch (tokenType) {
     case "fontSize":
-    case "letterSpacing":
     case "paragraphSpacing":
     case "spacing":
     case "borderRadius":
     case "sizing":
     case "borderWidth":
+      return `${roundedValue}px`;
+
+    case "letterSpacing":
+      // Letter-spacing/tracking tokens use em units for relative scaling
+      // This matches CSS best practices and the W3C DTCG spec
+      return `${roundedValue}em`;
+
     case "dimension":
-      return `${value}px`;
+      // Check if this is a tracking/letter-spacing token by name
+      // These should use em units even when typed as "dimension"
+      if (
+        variableName &&
+        (variableName.toLowerCase().includes("tracking") ||
+          variableName.toLowerCase().includes("letterspacing") ||
+          variableName.toLowerCase().includes("letter-spacing"))
+      ) {
+        return `${roundedValue}em`;
+      }
+      return `${roundedValue}px`;
+
     case "lineHeight":
-      return `${value}%`;
+      return `${roundedValue}%`;
+
     case "fontWeight":
+      // Font weights are unitless integers
+      return Math.round(roundedValue);
+
     case "number":
       // CRITICAL: These must remain as numbers (not strings)
-      // - fontWeight: 100, 200, 300, etc. (numbers)
-      // - number (z-index, opacity, etc.): 0, 1, 10, 100 (numbers)
-      return value;
+      // - opacity: 0-1 decimal values
+      // - z-index: integer values
+      // Round to clean up floating-point errors
+      return roundedValue;
+
     default:
-      return value.toString();
+      return roundedValue.toString();
   }
 }
 
@@ -328,11 +480,13 @@ function processVariable(variable: any, modes: any[]): ProcessedToken {
             );
             processedValue = undefined;
           } else {
-            processedValue = rgbToHex(value);
+            // Export colors in OKLCH format to match token file format
+            processedValue = rgbToOklch(value);
           }
           break;
         case "FLOAT":
-          processedValue = formatNumericValue(value, tokenType);
+          // Pass variable name for context-aware formatting (e.g., tracking → em)
+          processedValue = formatNumericValue(value, tokenType, variable.name);
           break;
         case "STRING":
         case "BOOLEAN":
