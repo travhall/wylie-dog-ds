@@ -378,53 +378,32 @@
   },
   "state.opacity.disabled": {
     "$type": "number",
-    "$value": 0.5,
+    "$value": "{opacity.50}",
     "$description": "Opacity for disabled elements"
   },
   "state.opacity.muted": {
     "$type": "number",
-    "$value": 0.7,
+    "$value": "{opacity.70}",
     "$description": "Opacity for muted/secondary elements"
   },
   "state.opacity.subtle": {
     "$type": "number",
-    "$value": 0.9,
+    "$value": "{opacity.90}",
     "$description": "Opacity for subtle elements"
   },
   "state.opacity.hover": {
     "$type": "number",
-    "$value": 1,
+    "$value": "{opacity.100}",
     "$description": "Opacity for hover state (full visibility)"
   },
   "state.opacity.overlay": {
     "$type": "number",
-    "$value": 0.8,
+    "$value": "{opacity.80}",
     "$description": "Opacity for overlay backgrounds"
-  },
-  "typography.tracking.tight": {
-    "$type": "dimension",
-    "$value": "-0.025em",
-    "$description": "Tight letter-spacing for headings"
-  },
-  "typography.tracking.normal": {
-    "$type": "dimension",
-    "$value": "0em",
-    "$description": "Normal letter-spacing for body text"
-  },
-  "typography.tracking.wide": {
-    "$type": "dimension",
-    "$value": "0.025em",
-    "$description": "Wide letter-spacing for labels"
-  },
-  "typography.tracking.widest": {
-    "$type": "dimension",
-    "$value": "0.1em",
-    "$description": "Widest letter-spacing for uppercase text"
   },
   "focus-ring.width": {
     "$type": "dimension",
-    "$value": "2px",
-    "$description": "Width of focus ring"
+    "$value": "2px"
   },
   "focus-ring.offset": {
     "$type": "dimension",
@@ -433,27 +412,22 @@
   },
   "icon.size.xs": {
     "$type": "dimension",
-    "$value": "12px",
-    "$description": "Extra small icon size (12px)"
+    "$value": "{spacing.150}"
   },
   "icon.size.sm": {
     "$type": "dimension",
-    "$value": "14px",
-    "$description": "Small icon size (14px)"
+    "$value": "{spacing.200}"
   },
   "icon.size.md": {
     "$type": "dimension",
-    "$value": "16px",
-    "$description": "Medium icon size (16px)"
+    "$value": "{spacing.300}"
   },
   "icon.size.lg": {
     "$type": "dimension",
-    "$value": "20px",
-    "$description": "Large icon size (20px)"
+    "$value": "{spacing.400}"
   },
   "icon.size.xl": {
     "$type": "dimension",
-    "$value": "24px",
-    "$description": "Extra large icon size (24px)"
+    "$value": "{spacing.500}"
   }
 }
