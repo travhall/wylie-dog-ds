@@ -119,6 +119,125 @@
         "color.red.700": {
           "$type": "color",
           "$value": "oklch(0.505 0.19 27.51)"
+        },
+        "typography.font-family.sans": {
+          "$type": "fontFamily",
+          "$value": "Manrope",
+          "$description": "@fontSource(provider:google,weights:200-300-400-500-600-700-800,subsets:latin,display:swap)"
+        },
+        "typography.font-family.serif": {
+          "$type": "fontFamily",
+          "$value": "Besley",
+          "$description": "@fontSource(provider:google,weights:400-500-600-700-800,subsets:latin,display:swap)"
+        },
+        "typography.font-family.mono": {
+          "$type": "fontFamily",
+          "$value": "JetBrains Mono",
+          "$description": "@fontSource(provider:google,weights:400-500-600-700,subsets:latin,display:swap)"
+        },
+        "typography.font-size.xs": {
+          "$type": "fontSize",
+          "$value": "12px"
+        },
+        "typography.font-size.sm": {
+          "$type": "fontSize",
+          "$value": "14px"
+        },
+        "typography.font-size.base": {
+          "$type": "fontSize",
+          "$value": "16px"
+        },
+        "typography.font-size.lg": {
+          "$type": "fontSize",
+          "$value": "18px"
+        },
+        "typography.font-size.xl": {
+          "$type": "fontSize",
+          "$value": "20px"
+        },
+        "typography.font-size.2xl": {
+          "$type": "fontSize",
+          "$value": "24px"
+        },
+        "typography.font-weight.regular": {
+          "$type": "fontWeight",
+          "$value": 400
+        },
+        "typography.font-weight.medium": {
+          "$type": "fontWeight",
+          "$value": 500
+        },
+        "typography.font-weight.semibold": {
+          "$type": "fontWeight",
+          "$value": 600
+        },
+        "typography.font-weight.bold": {
+          "$type": "fontWeight",
+          "$value": 700
+        },
+        "typography.line-height.tight": {
+          "$type": "lineHeight",
+          "$value": "125%"
+        },
+        "typography.line-height.normal": {
+          "$type": "lineHeight",
+          "$value": "150%"
+        },
+        "typography.line-height.relaxed": {
+          "$type": "lineHeight",
+          "$value": "162.5%"
+        },
+        "spacing.050": {
+          "$type": "spacing",
+          "$value": "4px"
+        },
+        "spacing.100": {
+          "$type": "spacing",
+          "$value": "8px"
+        },
+        "spacing.200": {
+          "$type": "spacing",
+          "$value": "16px"
+        },
+        "spacing.300": {
+          "$type": "spacing",
+          "$value": "24px"
+        },
+        "spacing.400": {
+          "$type": "spacing",
+          "$value": "32px"
+        },
+        "spacing.600": {
+          "$type": "spacing",
+          "$value": "48px"
+        },
+        "border-radius.sm": {
+          "$type": "dimension",
+          "$value": "2px"
+        },
+        "border-radius.md": {
+          "$type": "dimension",
+          "$value": "4px"
+        },
+        "border-radius.lg": {
+          "$type": "dimension",
+          "$value": "8px"
+        },
+        "border-radius.xl": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "border-radius.full": {
+          "$type": "dimension",
+          "$value": "9999px"
+        },
+        "border-width.1": {
+          "$type": "dimension",
+          "$value": "1px"
+        },
+        "border-width.2": {
+          "$type": "dimension",
+          "$value": "2px"
         }
       }
     }
