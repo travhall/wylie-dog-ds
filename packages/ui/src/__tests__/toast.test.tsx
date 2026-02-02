@@ -227,7 +227,7 @@ describe("Toast", () => {
       const description = screen.getByText("Styled description");
       expect(description).toHaveClass(
         "text-(length:--font-size-toast-description-font-size)",
-        "opacity-90"
+        "opacity-(--state-opacity-subtle)"
       );
     });
   });

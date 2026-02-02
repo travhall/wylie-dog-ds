@@ -327,7 +327,9 @@ describe("Switch", () => {
       render(<Switch aria-label="Test" disabled />);
       const switchElement = screen.getByRole("switch");
       expect(switchElement).toHaveClass("disabled:cursor-not-allowed");
-      expect(switchElement).toHaveClass("disabled:opacity-50");
+      expect(switchElement).toHaveClass(
+        "disabled:opacity-(--state-opacity-disabled)"
+      );
     });
 
     it("should have cursor-pointer class", () => {

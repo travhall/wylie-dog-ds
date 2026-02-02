@@ -297,7 +297,9 @@ describe("Textarea", () => {
       render(<Textarea aria-label="Test" disabled />);
       const textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass("disabled:cursor-not-allowed");
-      expect(textarea).toHaveClass("disabled:opacity-50");
+      expect(textarea).toHaveClass(
+        "disabled:opacity-(--state-opacity-disabled)"
+      );
     });
 
     it("should have hover styles when not in error state", () => {

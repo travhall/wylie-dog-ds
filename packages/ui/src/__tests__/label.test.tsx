@@ -148,7 +148,9 @@ describe("Label", () => {
 
       const label = screen.getByText("Disabled Field");
       expect(label).toHaveClass("peer-disabled:cursor-not-allowed");
-      expect(label).toHaveClass("peer-disabled:opacity-70");
+      expect(label).toHaveClass(
+        "peer-disabled:text-(--color-label-disabled-color)"
+      );
     });
   });
 

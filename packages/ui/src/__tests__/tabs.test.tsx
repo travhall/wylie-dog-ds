@@ -478,7 +478,7 @@ describe("Tabs", () => {
       const tab = screen.getByRole("tab");
       expect(tab).toHaveClass(
         "disabled:pointer-events-none",
-        "disabled:opacity-50"
+        "disabled:opacity-(--state-opacity-disabled)"
       );
     });
 

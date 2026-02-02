@@ -365,7 +365,7 @@ describe("RadioGroup", () => {
       render(<TestRadioGroup />);
 
       const group = screen.getByRole("radiogroup");
-      expect(group).toHaveClass("grid", "gap-2");
+      expect(group).toHaveClass("grid", "gap-(--spacing-radio-group-item-gap)");
     });
 
     it("should apply custom className to radio group", () => {
@@ -412,7 +412,7 @@ describe("RadioGroup", () => {
       const radio = screen.getByRole("radio");
       expect(radio).toHaveClass(
         "disabled:cursor-not-allowed",
-        "disabled:opacity-50"
+        "disabled:opacity-(--state-opacity-disabled)"
       );
     });
 

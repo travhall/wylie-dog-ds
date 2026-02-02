@@ -569,7 +569,7 @@ describe("Dialog", () => {
         expect(description).toHaveClass(
           "text-(length:--font-size-dialog-description-font-size)"
         );
-        expect(description).toHaveClass("text-(--color-text-secondary)");
+        expect(description).toHaveClass("text-(--color-dialog-description)");
       });
     });
 
@@ -598,7 +598,11 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const closeButton = screen.getByRole("button", { name: "Close" });
-        expect(closeButton).toHaveClass("absolute", "right-4", "top-4");
+        expect(closeButton).toHaveClass(
+          "absolute",
+          "right-(--spacing-dialog-close-button-offset)",
+          "top-(--spacing-dialog-close-button-offset)"
+        );
         expect(closeButton.querySelector("svg")).toBeInTheDocument();
       });
     });
