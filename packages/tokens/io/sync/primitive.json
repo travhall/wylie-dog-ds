@@ -875,13 +875,13 @@
           "$type": "number",
           "$value": 0.8
         },
-        "opacity.90": {
-          "$type": "number",
-          "$value": 0.9
-        },
         "shadow.offset.-lg": {
           "$type": "dimension",
           "$value": "-8px"
+        },
+        "opacity.90": {
+          "$type": "number",
+          "$value": 0.9
         },
         "shadow.offset.-md": {
           "$type": "dimension",
@@ -931,29 +931,29 @@
           "$type": "dimension",
           "$value": "2px"
         },
-        "shadow.spread.-lg": {
-          "$type": "dimension",
-          "$value": "-4px"
-        },
         "shadow.blur.md": {
           "$type": "dimension",
           "$value": "4px"
         },
-        "shadow.blur.lg": {
+        "shadow.spread.-lg": {
           "$type": "dimension",
-          "$value": "8px"
+          "$value": "-4px"
         },
         "shadow.spread.-md": {
           "$type": "dimension",
           "$value": "-2px"
         },
-        "shadow.spread.-sm": {
+        "shadow.blur.lg": {
           "$type": "dimension",
-          "$value": "-1px"
+          "$value": "8px"
         },
         "shadow.blur.xl": {
           "$type": "dimension",
           "$value": "12px"
+        },
+        "shadow.spread.-sm": {
+          "$type": "dimension",
+          "$value": "-1px"
         },
         "shadow.spread.none": {
           "$type": "dimension",
@@ -1019,13 +1019,13 @@
           "$type": "duration",
           "$value": "500ms"
         },
-        "duration.700": {
-          "$type": "duration",
-          "$value": "700ms"
-        },
         "typography.tracking.wider": {
           "$type": "dimension",
           "$value": "0.05em"
+        },
+        "duration.700": {
+          "$type": "duration",
+          "$value": "700ms"
         },
         "duration.1000": {
           "$type": "duration",
