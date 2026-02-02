@@ -4,6 +4,8 @@ node_modules
 *.log
 .next
 apps/showcase/next-env.d.ts
+*/**/next-env.d.ts
+next-env.d.ts
 apps/figma-plugin/dist
 apps/storybook/dist
 packages/ui/dist
