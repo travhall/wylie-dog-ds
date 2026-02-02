@@ -397,7 +397,7 @@
             "sandcastle",
             "950"
           ],
-          "value": "oklch(0.292 0.013 72.31)",
+          "value": "oklch(0.376 0.018 75.85)",
           "type": "color",
           "variable": "var(--color-sandcastle-950)",
           "description": ""
