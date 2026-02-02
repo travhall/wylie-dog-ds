@@ -225,8 +225,9 @@ export const AllVariants: Story = {
               Tight
             </p>
             <p className="leading-(--line-height-tight) text-(--color-text-secondary)">
-              The old world is dying, and the new world struggles to be born;
-              now is the time of monsters.
+              The crisis consists precisely in the fact that the old is dying
+              and the new cannot be born: in this interregnum, morbid phenomena
+              of the most varied kind come to pass.
             </p>
           </div>
           <div>
@@ -234,8 +235,9 @@ export const AllVariants: Story = {
               Normal
             </p>
             <p className="leading-(--line-height-normal) text-(--color-text-secondary)">
-              The old world is dying, and the new world struggles to be born;
-              now is the time of monsters.
+              The crisis consists precisely in the fact that the old is dying
+              and the new cannot be born: in this interregnum, morbid phenomena
+              of the most varied kind come to pass.
             </p>
           </div>
           <div>
@@ -243,8 +245,9 @@ export const AllVariants: Story = {
               Relaxed
             </p>
             <p className="leading-(--line-height-relaxed) text-(--color-text-secondary)">
-              The old world is dying, and the new world struggles to be born;
-              now is the time of monsters.
+              The crisis consists precisely in the fact that the old is dying
+              and the new cannot be born: in this interregnum, morbid phenomena
+              of the most varied kind come to pass.
             </p>
           </div>
         </div>
@@ -401,8 +404,9 @@ export const LineHeights: Story = {
           Tight (--line-height-tight)
         </h4>
         <p className="leading-(--line-height-tight) text-(--color-text-secondary)">
-          The old world is dying, and the new world struggles to be born; now is
-          the time of monsters.
+          The crisis consists precisely in the fact that the old is dying and
+          the new cannot be born: in this interregnum, morbid phenomena of the
+          most varied kind come to pass.
         </p>
       </div>
 
@@ -411,8 +415,9 @@ export const LineHeights: Story = {
           Normal (--line-height-normal)
         </h4>
         <p className="leading-(--line-height-normal) text-(--color-text-secondary)">
-          The old world is dying, and the new world struggles to be born; now is
-          the time of monsters.
+          The crisis consists precisely in the fact that the old is dying and
+          the new cannot be born: in this interregnum, morbid phenomena of the
+          most varied kind come to pass.
         </p>
       </div>
 
@@ -421,8 +426,9 @@ export const LineHeights: Story = {
           Relaxed (--line-height-relaxed)
         </h4>
         <p className="leading-(--line-height-relaxed) text-(--color-text-secondary)">
-          The old world is dying, and the new world struggles to be born; now is
-          the time of monsters.
+          The crisis consists precisely in the fact that the old is dying and
+          the new cannot be born: in this interregnum, morbid phenomena of the
+          most varied kind come to pass.
         </p>
       </div>
 
@@ -431,8 +437,9 @@ export const LineHeights: Story = {
           Loose (--line-height-loose)
         </h4>
         <p className="leading-(--line-height-loose) text-(--color-text-secondary)">
-          The old world is dying, and the new world struggles to be born; now is
-          the time of monsters.
+          The crisis consists precisely in the fact that the old is dying and
+          the new cannot be born: in this interregnum, morbid phenomena of the
+          most varied kind come to pass.
         </p>
       </div>
     </div>
@@ -687,7 +694,7 @@ function TypographyPlaygroundComponent() {
     defaultLetterSpacing?.key || ""
   );
   const [previewText, setPreviewText] = useState(
-    "The old world is dying, and the new world struggles to be born; now is the time of monsters."
+    "The crisis consists precisely in the fact that the old is dying and the new cannot be born: in this interregnum, morbid phenomena of the most varied kind come to pass."
   );
   const [showTokenDetails, setShowTokenDetails] = useState(false);
 
@@ -1087,7 +1094,7 @@ function TypographyPlaygroundComponent() {
               setSelectedLetterSpacing(defaultLetterSpacing?.key || "");
             }
             setPreviewText(
-              "The old world is dying, and the new world struggles to be born; now is the time of monsters."
+              "The crisis consists precisely in the fact that the old is dying and the new cannot be born: in this interregnum, morbid phenomena of the most varied kind come to pass."
             );
           }}
         >
