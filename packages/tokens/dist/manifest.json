@@ -1,13 +1,132 @@
 {
   "primitives": {
     "colors": {
-      "polar": {
-        "night": {
+      "polar-night": {
+        "50": {
+          "name": "colorPolarNight50",
+          "path": [
+            "color",
+            "polar-night",
+            "50"
+          ],
+          "value": "oklch(0.94 0.006 223.95)",
+          "type": "color",
+          "variable": "var(--color-polar-night-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorPolarNight100",
+          "path": [
+            "color",
+            "polar-night",
+            "100"
+          ],
+          "value": "oklch(0.813 0.019 218.57)",
+          "type": "color",
+          "variable": "var(--color-polar-night-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorPolarNight200",
+          "path": [
+            "color",
+            "polar-night",
+            "200"
+          ],
+          "value": "oklch(0.719 0.028 218.14)",
+          "type": "color",
+          "variable": "var(--color-polar-night-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorPolarNight300",
+          "path": [
+            "color",
+            "polar-night",
+            "300"
+          ],
+          "value": "oklch(0.584 0.041 217.9)",
+          "type": "color",
+          "variable": "var(--color-polar-night-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorPolarNight400",
+          "path": [
+            "color",
+            "polar-night",
+            "400"
+          ],
+          "value": "oklch(0.496 0.049 218.91)",
+          "type": "color",
+          "variable": "var(--color-polar-night-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorPolarNight500",
+          "path": [
+            "color",
+            "polar-night",
+            "500"
+          ],
+          "value": "oklch(0.361 0.058 221.76)",
+          "type": "color",
+          "variable": "var(--color-polar-night-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorPolarNight600",
+          "path": [
+            "color",
+            "polar-night",
+            "600"
+          ],
+          "value": "oklch(0.34 0.054 221.99)",
+          "type": "color",
+          "variable": "var(--color-polar-night-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorPolarNight700",
+          "path": [
+            "color",
+            "polar-night",
+            "700"
+          ],
+          "value": "oklch(0.289 0.045 221.99)",
+          "type": "color",
+          "variable": "var(--color-polar-night-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorPolarNight800",
+          "path": [
+            "color",
+            "polar-night",
+            "800"
+          ],
+          "value": "oklch(0.248 0.037 222.68)",
+          "type": "color",
+          "variable": "var(--color-polar-night-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorPolarNight900",
+          "path": [
+            "color",
+            "polar-night",
+            "900"
+          ],
+          "value": "oklch(0.216 0.03 218.39)",
+          "type": "color",
+          "variable": "var(--color-polar-night-900)",
+          "description": ""
+        },
+        "950": {
           "name": "colorPolarNight950",
           "path": [
             "color",
-            "polar",
-            "night",
+            "polar-night",
             "950"
           ],
           "value": "oklch(0.17 0.022 211.98)",
@@ -16,13 +135,132 @@
           "description": ""
         }
       },
-      "fiery": {
-        "coral": {
+      "fiery-coral": {
+        "50": {
+          "name": "colorFieryCoral50",
+          "path": [
+            "color",
+            "fiery-coral",
+            "50"
+          ],
+          "value": "oklch(0.962 0.017 40.61)",
+          "type": "color",
+          "variable": "var(--color-fiery-coral-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorFieryCoral100",
+          "path": [
+            "color",
+            "fiery-coral",
+            "100"
+          ],
+          "value": "oklch(0.882 0.053 38.77)",
+          "type": "color",
+          "variable": "var(--color-fiery-coral-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorFieryCoral200",
+          "path": [
+            "color",
+            "fiery-coral",
+            "200"
+          ],
+          "value": "oklch(0.825 0.081 37.77)",
+          "type": "color",
+          "variable": "var(--color-fiery-coral-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorFieryCoral300",
+          "path": [
+            "color",
+            "fiery-coral",
+            "300"
+          ],
+          "value": "oklch(0.751 0.122 38.44)",
+          "type": "color",
+          "variable": "var(--color-fiery-coral-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorFieryCoral400",
+          "path": [
+            "color",
+            "fiery-coral",
+            "400"
+          ],
+          "value": "oklch(0.709 0.147 38.46)",
+          "type": "color",
+          "variable": "var(--color-fiery-coral-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorFieryCoral500",
+          "path": [
+            "color",
+            "fiery-coral",
+            "500"
+          ],
+          "value": "oklch(0.653 0.183 37.63)",
+          "type": "color",
+          "variable": "var(--color-fiery-coral-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorFieryCoral600",
+          "path": [
+            "color",
+            "fiery-coral",
+            "600"
+          ],
+          "value": "oklch(0.61 0.169 37.73)",
+          "type": "color",
+          "variable": "var(--color-fiery-coral-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorFieryCoral700",
+          "path": [
+            "color",
+            "fiery-coral",
+            "700"
+          ],
+          "value": "oklch(0.508 0.139 37.85)",
+          "type": "color",
+          "variable": "var(--color-fiery-coral-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorFieryCoral800",
+          "path": [
+            "color",
+            "fiery-coral",
+            "800"
+          ],
+          "value": "oklch(0.425 0.113 38.02)",
+          "type": "color",
+          "variable": "var(--color-fiery-coral-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorFieryCoral900",
+          "path": [
+            "color",
+            "fiery-coral",
+            "900"
+          ],
+          "value": "oklch(0.354 0.091 38.07)",
+          "type": "color",
+          "variable": "var(--color-fiery-coral-900)",
+          "description": ""
+        },
+        "950": {
           "name": "colorFieryCoral950",
           "path": [
             "color",
-            "fiery",
-            "coral",
+            "fiery-coral",
             "950"
           ],
           "value": "oklch(0.223 0.049 38.44)",
@@ -165,13 +403,132 @@
           "description": ""
         }
       },
-      "petrified": {
-        "wood": {
+      "petrified-wood": {
+        "50": {
+          "name": "colorPetrifiedWood50",
+          "path": [
+            "color",
+            "petrified-wood",
+            "50"
+          ],
+          "value": "oklch(0.962 0.002 47.62)",
+          "type": "color",
+          "variable": "var(--color-petrified-wood-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorPetrifiedWood100",
+          "path": [
+            "color",
+            "petrified-wood",
+            "100"
+          ],
+          "value": "oklch(0.882 0.009 67.58)",
+          "type": "color",
+          "variable": "var(--color-petrified-wood-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorPetrifiedWood200",
+          "path": [
+            "color",
+            "petrified-wood",
+            "200"
+          ],
+          "value": "oklch(0.824 0.013 71.24)",
+          "type": "color",
+          "variable": "var(--color-petrified-wood-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorPetrifiedWood300",
+          "path": [
+            "color",
+            "petrified-wood",
+            "300"
+          ],
+          "value": "oklch(0.74 0.019 70.12)",
+          "type": "color",
+          "variable": "var(--color-petrified-wood-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorPetrifiedWood400",
+          "path": [
+            "color",
+            "petrified-wood",
+            "400"
+          ],
+          "value": "oklch(0.686 0.023 69.62)",
+          "type": "color",
+          "variable": "var(--color-petrified-wood-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorPetrifiedWood500",
+          "path": [
+            "color",
+            "petrified-wood",
+            "500"
+          ],
+          "value": "oklch(0.602 0.03 69)",
+          "type": "color",
+          "variable": "var(--color-petrified-wood-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorPetrifiedWood600",
+          "path": [
+            "color",
+            "petrified-wood",
+            "600"
+          ],
+          "value": "oklch(0.563 0.028 71.18)",
+          "type": "color",
+          "variable": "var(--color-petrified-wood-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorPetrifiedWood700",
+          "path": [
+            "color",
+            "petrified-wood",
+            "700"
+          ],
+          "value": "oklch(0.471 0.022 67.21)",
+          "type": "color",
+          "variable": "var(--color-petrified-wood-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorPetrifiedWood800",
+          "path": [
+            "color",
+            "petrified-wood",
+            "800"
+          ],
+          "value": "oklch(0.397 0.018 63.9)",
+          "type": "color",
+          "variable": "var(--color-petrified-wood-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorPetrifiedWood900",
+          "path": [
+            "color",
+            "petrified-wood",
+            "900"
+          ],
+          "value": "oklch(0.333 0.015 71.54)",
+          "type": "color",
+          "variable": "var(--color-petrified-wood-900)",
+          "description": ""
+        },
+        "950": {
           "name": "colorPetrifiedWood950",
           "path": [
             "color",
-            "petrified",
-            "wood",
+            "petrified-wood",
             "950"
           ],
           "value": "oklch(0.261 0.016 71.34)",
@@ -180,13 +537,132 @@
           "description": ""
         }
       },
-      "black": {
-        "bear": {
+      "black-bear": {
+        "50": {
+          "name": "colorBlackBear50",
+          "path": [
+            "color",
+            "black-bear",
+            "50"
+          ],
+          "value": "oklch(0.941 0.002 67.05)",
+          "type": "color",
+          "variable": "var(--color-black-bear-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorBlackBear100",
+          "path": [
+            "color",
+            "black-bear",
+            "100"
+          ],
+          "value": "oklch(0.808 0.006 42.91)",
+          "type": "color",
+          "variable": "var(--color-black-bear-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorBlackBear200",
+          "path": [
+            "color",
+            "black-bear",
+            "200"
+          ],
+          "value": "oklch(0.713 0.009 56.08)",
+          "type": "color",
+          "variable": "var(--color-black-bear-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorBlackBear300",
+          "path": [
+            "color",
+            "black-bear",
+            "300"
+          ],
+          "value": "oklch(0.572 0.013 51.07)",
+          "type": "color",
+          "variable": "var(--color-black-bear-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorBlackBear400",
+          "path": [
+            "color",
+            "black-bear",
+            "400"
+          ],
+          "value": "oklch(0.48 0.017 50.48)",
+          "type": "color",
+          "variable": "var(--color-black-bear-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorBlackBear500",
+          "path": [
+            "color",
+            "black-bear",
+            "500"
+          ],
+          "value": "oklch(0.33 0.024 47.95)",
+          "type": "color",
+          "variable": "var(--color-black-bear-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorBlackBear600",
+          "path": [
+            "color",
+            "black-bear",
+            "600"
+          ],
+          "value": "oklch(0.312 0.021 51.87)",
+          "type": "color",
+          "variable": "var(--color-black-bear-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorBlackBear700",
+          "path": [
+            "color",
+            "black-bear",
+            "700"
+          ],
+          "value": "oklch(0.269 0.016 50.69)",
+          "type": "color",
+          "variable": "var(--color-black-bear-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorBlackBear800",
+          "path": [
+            "color",
+            "black-bear",
+            "800"
+          ],
+          "value": "oklch(0.233 0.013 51.47)",
+          "type": "color",
+          "variable": "var(--color-black-bear-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorBlackBear900",
+          "path": [
+            "color",
+            "black-bear",
+            "900"
+          ],
+          "value": "oklch(0.202 0.011 48.09)",
+          "type": "color",
+          "variable": "var(--color-black-bear-900)",
+          "description": ""
+        },
+        "950": {
           "name": "colorBlackBear950",
           "path": [
             "color",
-            "black",
-            "bear",
+            "black-bear",
             "950"
           ],
           "value": "oklch(0.138 0.008 60.38)",
