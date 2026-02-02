@@ -3,6 +3,7 @@ node_modules
 .turbo
 *.log
 .next
+next-env.d.ts
 apps/figma-plugin/dist
 apps/storybook/dist
 packages/ui/dist
