@@ -1,6 +1,200 @@
 {
   "primitives": {
     "colors": {
+      "polar": {
+        "night": {
+          "name": "colorPolarNight950",
+          "path": [
+            "color",
+            "polar",
+            "night",
+            "950"
+          ],
+          "value": "oklch(0.17 0.022 211.98)",
+          "type": "color",
+          "variable": "var(--color-polar-night-950)",
+          "description": ""
+        }
+      },
+      "fiery": {
+        "coral": {
+          "name": "colorFieryCoral950",
+          "path": [
+            "color",
+            "fiery",
+            "coral",
+            "950"
+          ],
+          "value": "oklch(0.223 0.049 38.44)",
+          "type": "color",
+          "variable": "var(--color-fiery-coral-950)",
+          "description": ""
+        }
+      },
+      "sandcastle": {
+        "50": {
+          "name": "colorSandcastle50",
+          "path": [
+            "color",
+            "sandcastle",
+            "50"
+          ],
+          "value": "oklch(0.977 0.003 67.4)",
+          "type": "color",
+          "variable": "var(--color-sandcastle-50)",
+          "description": ""
+        },
+        "100": {
+          "name": "colorSandcastle100",
+          "path": [
+            "color",
+            "sandcastle",
+            "100"
+          ],
+          "value": "oklch(0.927 0.012 75.32)",
+          "type": "color",
+          "variable": "var(--color-sandcastle-100)",
+          "description": ""
+        },
+        "200": {
+          "name": "colorSandcastle200",
+          "path": [
+            "color",
+            "sandcastle",
+            "200"
+          ],
+          "value": "oklch(0.893 0.018 73.02)",
+          "type": "color",
+          "variable": "var(--color-sandcastle-200)",
+          "description": ""
+        },
+        "300": {
+          "name": "colorSandcastle300",
+          "path": [
+            "color",
+            "sandcastle",
+            "300"
+          ],
+          "value": "oklch(0.843 0.027 71.12)",
+          "type": "color",
+          "variable": "var(--color-sandcastle-300)",
+          "description": ""
+        },
+        "400": {
+          "name": "colorSandcastle400",
+          "path": [
+            "color",
+            "sandcastle",
+            "400"
+          ],
+          "value": "oklch(0.813 0.033 73.44)",
+          "type": "color",
+          "variable": "var(--color-sandcastle-400)",
+          "description": ""
+        },
+        "500": {
+          "name": "colorSandcastle500",
+          "path": [
+            "color",
+            "sandcastle",
+            "500"
+          ],
+          "value": "oklch(0.765 0.041 73.29)",
+          "type": "color",
+          "variable": "var(--color-sandcastle-500)",
+          "description": ""
+        },
+        "600": {
+          "name": "colorSandcastle600",
+          "path": [
+            "color",
+            "sandcastle",
+            "600"
+          ],
+          "value": "oklch(0.712 0.037 72.7)",
+          "type": "color",
+          "variable": "var(--color-sandcastle-600)",
+          "description": ""
+        },
+        "700": {
+          "name": "colorSandcastle700",
+          "path": [
+            "color",
+            "sandcastle",
+            "700"
+          ],
+          "value": "oklch(0.594 0.03 72.54)",
+          "type": "color",
+          "variable": "var(--color-sandcastle-700)",
+          "description": ""
+        },
+        "800": {
+          "name": "colorSandcastle800",
+          "path": [
+            "color",
+            "sandcastle",
+            "800"
+          ],
+          "value": "oklch(0.496 0.025 71.83)",
+          "type": "color",
+          "variable": "var(--color-sandcastle-800)",
+          "description": ""
+        },
+        "900": {
+          "name": "colorSandcastle900",
+          "path": [
+            "color",
+            "sandcastle",
+            "900"
+          ],
+          "value": "oklch(0.414 0.021 75.84)",
+          "type": "color",
+          "variable": "var(--color-sandcastle-900)",
+          "description": ""
+        },
+        "950": {
+          "name": "colorSandcastle950",
+          "path": [
+            "color",
+            "sandcastle",
+            "950"
+          ],
+          "value": "oklch(0.292 0.013 72.31)",
+          "type": "color",
+          "variable": "var(--color-sandcastle-950)",
+          "description": ""
+        }
+      },
+      "petrified": {
+        "wood": {
+          "name": "colorPetrifiedWood950",
+          "path": [
+            "color",
+            "petrified",
+            "wood",
+            "950"
+          ],
+          "value": "oklch(0.261 0.016 71.34)",
+          "type": "color",
+          "variable": "var(--color-petrified-wood-950)",
+          "description": ""
+        }
+      },
+      "black": {
+        "bear": {
+          "name": "colorBlackBear950",
+          "path": [
+            "color",
+            "black",
+            "bear",
+            "950"
+          ],
+          "value": "oklch(0.138 0.008 60.38)",
+          "type": "color",
+          "variable": "var(--color-black-bear-950)",
+          "description": ""
+        }
+      },
       "gray": {
         "50": {
           "name": "colorGray50",
