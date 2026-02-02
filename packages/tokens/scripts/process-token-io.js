@@ -325,28 +325,28 @@ class TokenIOProcessor {
     if (processedData.primitive) {
       await writeFile(
         join(this.processedDir, "primitive.json"),
-        JSON.stringify(processedData.primitive, null, 2)
+        JSON.stringify(processedData.primitive, null, 2) + "\n"
       );
     }
 
     await writeFile(
       join(this.processedDir, "semantic-light.json"),
-      JSON.stringify(processedData.semantic.light, null, 2)
+      JSON.stringify(processedData.semantic.light, null, 2) + "\n"
     );
 
     await writeFile(
       join(this.processedDir, "semantic-dark.json"),
-      JSON.stringify(processedData.semantic.dark, null, 2)
+      JSON.stringify(processedData.semantic.dark, null, 2) + "\n"
     );
 
     await writeFile(
       join(this.processedDir, "component-light.json"),
-      JSON.stringify(processedData.components.light, null, 2)
+      JSON.stringify(processedData.components.light, null, 2) + "\n"
     );
 
     await writeFile(
       join(this.processedDir, "component-dark.json"),
-      JSON.stringify(processedData.components.dark, null, 2)
+      JSON.stringify(processedData.components.dark, null, 2) + "\n"
     );
 
     console.log("✅ Token I/O processing complete");
@@ -396,17 +396,17 @@ class TokenIOProcessor {
     // Write W3C exports to sync directory for Figma plugin (array format)
     await writeFile(
       join(this.syncDir, "primitive.json"),
-      JSON.stringify([w3cExports[0]], null, 2)
+      JSON.stringify([w3cExports[0]], null, 2) + "\n"
     );
 
     await writeFile(
       join(this.syncDir, "semantic.json"),
-      JSON.stringify([w3cExports[1]], null, 2)
+      JSON.stringify([w3cExports[1]], null, 2) + "\n"
     );
 
     await writeFile(
       join(this.syncDir, "components.json"),
-      JSON.stringify([w3cExports[2]], null, 2)
+      JSON.stringify([w3cExports[2]], null, 2) + "\n"
     );
 
     console.log("✅ Export files generated");

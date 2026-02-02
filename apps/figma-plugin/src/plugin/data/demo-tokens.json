@@ -233,11 +233,11 @@
         },
         "border-width.1": {
           "$type": "dimension",
-          "$value": "1px"
+          "$value": "1"
         },
         "border-width.2": {
           "$type": "dimension",
-          "$value": "2px"
+          "$value": "2"
         }
       }
     }
