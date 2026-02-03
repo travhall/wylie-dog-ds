@@ -235,7 +235,7 @@ export const color = {
     "base": "oklch(0.553 0.174 38.5)",
     "hover": "oklch(0.47 0.143 37.29)",
     "active": "oklch(0.408 0.116 38.16)",
-    "surface": "oklch(0.97 0.014 254.66)",
+    "surface": "oklch(0.98 0.016 74.37)",
     "text": "oklch(0.208 0.04 265.75)"
   },
   "secondary": {
@@ -264,6 +264,18 @@ export const color = {
     "danger": "oklch(0.577 0.215 27.32)",
     "info": "oklch(0.546 0.215 262.89)",
     "highlight": "oklch(0.881 0.117 100.39)"
+  },
+  "link": {
+    "default": "oklch(0.546 0.215 262.89)",
+    "hover": "oklch(0.488 0.217 264.39)",
+    "visited": "oklch(0.558 0.252 302.25)",
+    "disabled": "oklch(0.869 0.02 252.93)"
+  },
+  "input": {
+    "background": "oklch(1 0 0)",
+    "border": "oklch(0.929 0.013 255.56)",
+    "text": "oklch(0.279 0.037 260.04)",
+    "placeholder": "oklch(0.869 0.02 252.93)"
   }
 };
 
@@ -309,8 +321,8 @@ export const spacing = {
   "blur-md": "4px",
   "blur-lg": "8px",
   "spread--md": "-2px",
-  "blur-xl": "12px",
   "spread--sm": "-1px",
+  "blur-xl": "12px",
   "spread-none": "0px",
   "spread-sm": "1px",
   "spread-md": "2px",
@@ -340,7 +352,7 @@ export const spacing = {
   "padding-x-md": "24px",
   "padding-x-lg": "32px",
   "padding": "24px",
-  "gap": "4px",
+  "gap": "16px",
   "header-gap": "8px",
   "footer-gap": "8px",
   "padding-x": "16px",
@@ -511,7 +523,8 @@ export const spacing = {
   "action-radius": "4px",
   "title-letter-spacing": "-0.025em",
   "close-button-offset": "16px",
-  "close-button-icon-size": "16px"
+  "close-button-icon-size": "16px",
+  "fieldset-gap": "24px"
 };
 
 export const shadow = {
@@ -565,7 +578,9 @@ export const fontSize = {
   "error-font-size": "12px",
   "label-font-size": "14px",
   "group-heading-font-size": "12px",
-  "day-font-size": "12px"
+  "day-font-size": "12px",
+  "hint-font-size": "12px",
+  "fieldset-legend-font-size": "16px"
 };
 
 export const fontWeight = {
@@ -577,7 +592,9 @@ export const fontWeight = {
   "font-weight-bold": "700",
   "font-weight-extrabold": "800",
   "font-weight-black": "900",
-  "title-font-weight": "600"
+  "title-font-weight": "600",
+  "label-font-weight": "500",
+  "fieldset-legend-font-weight": "600"
 };
 
 export const lineHeight = {

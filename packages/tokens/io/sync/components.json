@@ -3,11 +3,11 @@
     "components": {
       "modes": [
         {
-          "modeId": "1249:6",
+          "modeId": "mode:components:light",
           "name": "Light"
         },
         {
-          "modeId": "1249:7",
+          "modeId": "mode:components:dark",
           "name": "Dark"
         }
       ],
@@ -154,6 +154,54 @@
           "valuesByMode": {
             "Light": "{color.border.primary}",
             "Dark": "{color.border.primary}"
+          }
+        },
+        "badge.default.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.primary-hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.primary-hover}",
+            "Dark": "{color.interactive.primary-hover}"
+          }
+        },
+        "badge.secondary.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.secondary-hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.secondary-hover}",
+            "Dark": "{color.interactive.secondary-hover}"
+          }
+        },
+        "badge.success.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.success-hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.success-hover}",
+            "Dark": "{color.interactive.success-hover}"
+          }
+        },
+        "badge.warning.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.warning-hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.warning-hover}",
+            "Dark": "{color.interactive.warning-hover}"
+          }
+        },
+        "badge.destructive.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.danger-hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.danger-hover}",
+            "Dark": "{color.interactive.danger-hover}"
+          }
+        },
+        "badge.outline.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.hover}",
+            "Dark": "{color.interactive.hover}"
           }
         },
         "badge.padding.sm": {
@@ -484,6 +532,22 @@
             "Dark": "{color.border.primary}"
           }
         },
+        "card.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.hover}",
+            "Dark": "{color.interactive.hover}"
+          }
+        },
+        "card.border-hover": {
+          "$type": "color",
+          "$value": "{color.border.focus}",
+          "valuesByMode": {
+            "Light": "{color.border.focus}",
+            "Dark": "{color.border.focus}"
+          }
+        },
         "card.padding": {
           "$type": "spacing",
           "$value": "{spacing.400}",
@@ -734,10 +798,10 @@
         },
         "alert.destructive.background": {
           "$type": "color",
-          "$value": "{color.red.50}",
+          "$value": "{color.surface.danger}",
           "valuesByMode": {
-            "Light": "{color.red.50}",
-            "Dark": "{color.red.950}"
+            "Light": "{color.surface.danger}",
+            "Dark": "{color.surface.danger}"
           }
         },
         "alert.destructive.border": {
@@ -758,10 +822,10 @@
         },
         "alert.warning.background": {
           "$type": "color",
-          "$value": "{color.orange.50}",
+          "$value": "{color.surface.warning}",
           "valuesByMode": {
-            "Light": "{color.orange.50}",
-            "Dark": "{color.orange.950}"
+            "Light": "{color.surface.warning}",
+            "Dark": "{color.surface.warning}"
           }
         },
         "alert.warning.border": {
@@ -782,10 +846,10 @@
         },
         "alert.success.background": {
           "$type": "color",
-          "$value": "{color.green.50}",
+          "$value": "{color.surface.success}",
           "valuesByMode": {
-            "Light": "{color.green.50}",
-            "Dark": "{color.green.950}"
+            "Light": "{color.surface.success}",
+            "Dark": "{color.surface.success}"
           }
         },
         "alert.success.border": {
@@ -1628,6 +1692,14 @@
             "Dark": "{color.border.primary}"
           }
         },
+        "popover.border-focus": {
+          "$type": "color",
+          "$value": "{color.border.focus}",
+          "valuesByMode": {
+            "Light": "{color.border.focus}",
+            "Dark": "{color.border.focus}"
+          }
+        },
         "popover.text": {
           "$type": "color",
           "$value": "{color.text.primary}",
@@ -1926,10 +1998,10 @@
         },
         "tooltip.border": {
           "$type": "color",
-          "$value": "{color.border.primary}",
+          "$value": "{color.border.secondary}",
           "valuesByMode": {
-            "Light": "{color.border.primary}",
-            "Dark": "{color.border.primary}"
+            "Light": "{color.border.secondary}",
+            "Dark": "{color.border.secondary}"
           }
         },
         "tooltip.text": {
@@ -1942,10 +2014,10 @@
         },
         "tooltip.padding-x": {
           "$type": "spacing",
-          "$value": "{spacing.200}",
+          "$value": "{spacing.150}",
           "valuesByMode": {
-            "Light": "{spacing.200}",
-            "Dark": "{spacing.200}"
+            "Light": "{spacing.150}",
+            "Dark": "{spacing.150}"
           }
         },
         "tooltip.padding-y": {
@@ -3918,50 +3990,50 @@
         },
         "toast.destructive.border": {
           "$type": "color",
-          "$value": "{color.red.500}",
+          "$value": "{color.status.danger}",
           "valuesByMode": {
-            "Light": "{color.red.500}",
-            "Dark": "{color.red.400}"
+            "Light": "{color.status.danger}",
+            "Dark": "{color.status.danger}"
           }
         },
         "toast.destructive.background": {
           "$type": "color",
-          "$value": "{color.red.500}",
+          "$value": "{color.status.danger}",
           "valuesByMode": {
-            "Light": "{color.red.500}",
-            "Dark": "{color.red.400}"
+            "Light": "{color.status.danger}",
+            "Dark": "{color.status.danger}"
           }
         },
         "toast.success.border": {
           "$type": "color",
-          "$value": "{color.green.500}",
+          "$value": "{color.status.success}",
           "valuesByMode": {
-            "Light": "{color.green.500}",
-            "Dark": "{color.green.400}"
+            "Light": "{color.status.success}",
+            "Dark": "{color.status.success}"
           }
         },
         "toast.success.background": {
           "$type": "color",
-          "$value": "{color.green.500}",
+          "$value": "{color.status.success}",
           "valuesByMode": {
-            "Light": "{color.green.500}",
-            "Dark": "{color.green.400}"
+            "Light": "{color.status.success}",
+            "Dark": "{color.status.success}"
           }
         },
         "toast.warning.border": {
           "$type": "color",
-          "$value": "{color.yellow.500}",
+          "$value": "{color.status.highlight}",
           "valuesByMode": {
-            "Light": "{color.yellow.500}",
-            "Dark": "{color.yellow.400}"
+            "Light": "{color.status.highlight}",
+            "Dark": "{color.status.highlight}"
           }
         },
         "toast.warning.background": {
           "$type": "color",
-          "$value": "{color.yellow.500}",
+          "$value": "{color.status.highlight}",
           "valuesByMode": {
-            "Light": "{color.yellow.500}",
-            "Dark": "{color.yellow.400}"
+            "Light": "{color.status.highlight}",
+            "Dark": "{color.status.highlight}"
           }
         },
         "toast.border-radius": {
@@ -4842,6 +4914,102 @@
           "valuesByMode": {
             "Light": "{spacing.200}",
             "Dark": "{spacing.200}"
+          }
+        },
+        "form.label.text": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "form.label.font-size": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.sm}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
+          }
+        },
+        "form.label.font-weight": {
+          "$type": "fontWeight",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          }
+        },
+        "form.hint.text": {
+          "$type": "color",
+          "$value": "{color.text.secondary}",
+          "valuesByMode": {
+            "Light": "{color.text.secondary}",
+            "Dark": "{color.text.secondary}"
+          }
+        },
+        "form.hint.font-size": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.xs}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.xs}",
+            "Dark": "{typography.font-size.xs}"
+          }
+        },
+        "form.error.text": {
+          "$type": "color",
+          "$value": "{color.text.danger}",
+          "valuesByMode": {
+            "Light": "{color.text.danger}",
+            "Dark": "{color.text.danger}"
+          }
+        },
+        "form.error.font-size": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.xs}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.xs}",
+            "Dark": "{typography.font-size.xs}"
+          }
+        },
+        "form.required.color": {
+          "$type": "color",
+          "$value": "{color.status.danger}",
+          "valuesByMode": {
+            "Light": "{color.status.danger}",
+            "Dark": "{color.status.danger}"
+          }
+        },
+        "form.gap": {
+          "$type": "spacing",
+          "$value": "{spacing.200}",
+          "valuesByMode": {
+            "Light": "{spacing.200}",
+            "Dark": "{spacing.200}"
+          }
+        },
+        "form.fieldset.gap": {
+          "$type": "spacing",
+          "$value": "{spacing.300}",
+          "valuesByMode": {
+            "Light": "{spacing.300}",
+            "Dark": "{spacing.300}"
+          }
+        },
+        "form.fieldset.legend.font-size": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.base}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.base}",
+            "Dark": "{typography.font-size.base}"
+          }
+        },
+        "form.fieldset.legend.font-weight": {
+          "$type": "fontWeight",
+          "$value": "{typography.font-weight.semibold}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.semibold}",
+            "Dark": "{typography.font-weight.semibold}"
           }
         }
       }

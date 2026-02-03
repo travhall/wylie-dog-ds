@@ -71,6 +71,30 @@
     "$type": "color",
     "$value": "{color.border.primary}"
   },
+  "badge.default.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.primary-hover}"
+  },
+  "badge.secondary.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.secondary-hover}"
+  },
+  "badge.success.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.success-hover}"
+  },
+  "badge.warning.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.warning-hover}"
+  },
+  "badge.destructive.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.danger-hover}"
+  },
+  "badge.outline.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.hover}"
+  },
   "badge.padding.sm": {
     "$type": "spacing",
     "$value": "{spacing.050}"
@@ -235,6 +259,14 @@
     "$type": "color",
     "$value": "{color.border.primary}"
   },
+  "card.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.hover}"
+  },
+  "card.border-hover": {
+    "$type": "color",
+    "$value": "{color.border.focus}"
+  },
   "card.padding": {
     "$type": "spacing",
     "$value": "{spacing.400}"
@@ -361,7 +393,7 @@
   },
   "alert.destructive.background": {
     "$type": "color",
-    "$value": "{color.red.950}"
+    "$value": "{color.surface.danger}"
   },
   "alert.destructive.border": {
     "$type": "color",
@@ -373,7 +405,7 @@
   },
   "alert.warning.background": {
     "$type": "color",
-    "$value": "{color.orange.950}"
+    "$value": "{color.surface.warning}"
   },
   "alert.warning.border": {
     "$type": "color",
@@ -385,7 +417,7 @@
   },
   "alert.success.background": {
     "$type": "color",
-    "$value": "{color.green.950}"
+    "$value": "{color.surface.success}"
   },
   "alert.success.border": {
     "$type": "color",
@@ -807,6 +839,10 @@
     "$type": "color",
     "$value": "{color.border.primary}"
   },
+  "popover.border-focus": {
+    "$type": "color",
+    "$value": "{color.border.focus}"
+  },
   "popover.text": {
     "$type": "color",
     "$value": "{color.text.primary}"
@@ -957,7 +993,7 @@
   },
   "tooltip.border": {
     "$type": "color",
-    "$value": "{color.border.primary}"
+    "$value": "{color.border.secondary}"
   },
   "tooltip.text": {
     "$type": "color",
@@ -965,7 +1001,7 @@
   },
   "tooltip.padding-x": {
     "$type": "spacing",
-    "$value": "{spacing.200}"
+    "$value": "{spacing.150}"
   },
   "tooltip.padding-y": {
     "$type": "spacing",
@@ -1953,27 +1989,27 @@
   },
   "toast.destructive.border": {
     "$type": "color",
-    "$value": "{color.red.400}"
+    "$value": "{color.status.danger}"
   },
   "toast.destructive.background": {
     "$type": "color",
-    "$value": "{color.red.400}"
+    "$value": "{color.status.danger}"
   },
   "toast.success.border": {
     "$type": "color",
-    "$value": "{color.green.400}"
+    "$value": "{color.status.success}"
   },
   "toast.success.background": {
     "$type": "color",
-    "$value": "{color.green.400}"
+    "$value": "{color.status.success}"
   },
   "toast.warning.border": {
     "$type": "color",
-    "$value": "{color.yellow.400}"
+    "$value": "{color.status.highlight}"
   },
   "toast.warning.background": {
     "$type": "color",
-    "$value": "{color.yellow.400}"
+    "$value": "{color.status.highlight}"
   },
   "toast.border-radius": {
     "$type": "dimension",
@@ -2414,5 +2450,53 @@
   "dialog.close-button-icon-size": {
     "$type": "spacing",
     "$value": "{spacing.200}"
+  },
+  "form.label.text": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "form.label.font-size": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.sm}"
+  },
+  "form.label.font-weight": {
+    "$type": "fontWeight",
+    "$value": "{typography.font-weight.medium}"
+  },
+  "form.hint.text": {
+    "$type": "color",
+    "$value": "{color.text.secondary}"
+  },
+  "form.hint.font-size": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.xs}"
+  },
+  "form.error.text": {
+    "$type": "color",
+    "$value": "{color.text.danger}"
+  },
+  "form.error.font-size": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.xs}"
+  },
+  "form.required.color": {
+    "$type": "color",
+    "$value": "{color.status.danger}"
+  },
+  "form.gap": {
+    "$type": "spacing",
+    "$value": "{spacing.200}"
+  },
+  "form.fieldset.gap": {
+    "$type": "spacing",
+    "$value": "{spacing.300}"
+  },
+  "form.fieldset.legend.font-size": {
+    "$type": "fontSize",
+    "$value": "{typography.font-size.base}"
+  },
+  "form.fieldset.legend.font-weight": {
+    "$type": "fontWeight",
+    "$value": "{typography.font-weight.semibold}"
   }
 }

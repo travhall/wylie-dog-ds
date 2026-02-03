@@ -90,6 +90,23 @@
       ],
       "outputs": ["dist/**"],
       "cache": true
+    },
+    "storybook#build": {
+      "dependsOn": ["@wyliedog/tokens#build", "@wyliedog/ui#build"],
+      "inputs": ["src/**", "stories/**", ".storybook/**"],
+      "outputs": ["dist/**", "storybook-static/**"],
+      "cache": true
+    },
+    "storybook#build:css": {
+      "dependsOn": ["@wyliedog/tokens#build"],
+      "inputs": ["src/styles/**/*.css"],
+      "outputs": ["dist/**/*.css"],
+      "cache": true
+    },
+    "storybook#dev": {
+      "dependsOn": ["@wyliedog/tokens#build", "@wyliedog/ui#build:styles"],
+      "cache": false,
+      "persistent": true
     }
   }
 }
