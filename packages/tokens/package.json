@@ -6,7 +6,6 @@
   "exports": {
     ".": "./dist/index.js",
     "./tokens.css": "./dist/tokens.css",
-    "./primitives.css": "./dist/primitives.css",
     "./semantic-light.css": "./dist/semantic-light.css",
     "./semantic-dark.css": "./dist/semantic-dark.css",
     "./hierarchical": "./dist/hierarchical.js",
@@ -23,17 +22,13 @@
     "audit:verbose": "node scripts/audit-tokens.js --verbose",
     "build": "pnpm process-io && node style-dictionary.config.js && node scripts/generate-font-loaders.js",
     "build:tokens": "pnpm build",
-    "clean": "rm -rf dist io",
-    "clean:legacy": "rm -rf src/",
+    "clean": "rm -rf dist io/processed",
     "dev": "node scripts/watch-tokens.js",
     "export-demo-tokens": "node scripts/export-demo-tokens.mjs",
     "generate:token-map": "node scripts/generate-token-map.js --markdown",
-    "process": "node scripts/process-token-io.js",
-    "process:legacy": "node scripts/process-figma-exports.js",
     "process-io": "node scripts/process-token-io.js",
     "report:tokens": "node scripts/report-token-usage.mjs",
     "report:usage": "node scripts/analyze-component-usage.js",
-    "sync:figma": "node scripts/figma-sync.js",
     "test:tokens": "node scripts/validate-tokens.js"
   },
   "dependencies": {

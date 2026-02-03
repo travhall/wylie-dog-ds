@@ -97,7 +97,7 @@ const primaryColor = color.primary[500];
 
 ### Add a New Color
 
-1. Add to `io/input/primitive.json`:
+1. Add to `io/sync/primitive.json`:
 
 ```json
 {
@@ -124,7 +124,7 @@ const primaryColor = color.primary[500];
 
 ### Create a Semantic Token
 
-1. Add to `io/input/semantic.json`:
+1. Add to `io/sync/semantic.json`:
 
 ```json
 {
@@ -144,7 +144,7 @@ const primaryColor = color.primary[500];
 
 ### Add a New Component Token
 
-1. Add to `io/input/components.json`:
+1. Add to `io/sync/components.json`:
 
 ```json
 {

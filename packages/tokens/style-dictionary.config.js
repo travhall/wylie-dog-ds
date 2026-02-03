@@ -3,6 +3,117 @@ import { register } from "@tokens-studio/sd-transforms";
 
 await register(StyleDictionary);
 
+/**
+ * Token type → CSS variable configuration
+ * Maps token types to their CSS variable prefix and any path prefixes to strip
+ */
+const TOKEN_TYPE_CONFIG = {
+  color: {
+    prefix: "color",
+    stripPrefixes: ["color-"],
+  },
+  spacing: {
+    prefix: "spacing",
+    stripPrefixes: ["spacing-"],
+    // Special handling for border tokens within spacing type
+    specialCases: {
+      "border-radius-": { prefix: "border-radius" },
+      "border-width-": { prefix: "border-width" },
+    },
+  },
+  dimension: {
+    prefix: "spacing",
+    stripPrefixes: [],
+    specialCases: {
+      "border-radius-": { prefix: "border-radius" },
+      "border-width-": { prefix: "border-width" },
+    },
+  },
+  fontSize: {
+    prefix: "font-size",
+    stripPrefixes: ["typography-font-size-"],
+  },
+  fontWeight: {
+    prefix: "font-weight",
+    stripPrefixes: ["typography-font-weight-"],
+  },
+  lineHeight: {
+    prefix: "line-height",
+    stripPrefixes: ["typography-line-height-"],
+  },
+  duration: {
+    prefix: "duration",
+    stripPrefixes: ["transition-duration-"],
+  },
+  shadow: {
+    prefix: "shadow",
+    stripPrefixes: ["shadow-"],
+  },
+  fontFamily: {
+    prefix: null, // Handled specially with contract pattern
+    stripPrefixes: [],
+  },
+};
+
+/**
+ * Font family contract pattern values
+ */
+const FONT_FAMILY_CONTRACTS = {
+  sans: "var(--font-sans, ui-sans-serif, system-ui, sans-serif)",
+  serif: "var(--font-serif, ui-serif, serif)",
+  mono: "var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace)",
+};
+
+/**
+ * Generate CSS variable name and value for a token
+ */
+function generateCSSVariable(token, name) {
+  const config = TOKEN_TYPE_CONFIG[token.$type];
+
+  if (!config) {
+    // Unknown type - use generic naming
+    return { varName: `--${name}`, value: token.$value };
+  }
+
+  let cleanName = name;
+  let prefix = config.prefix;
+  let value = token.$value;
+
+  // Check for special cases first (e.g., border-radius within spacing type)
+  if (config.specialCases) {
+    for (const [pattern, override] of Object.entries(config.specialCases)) {
+      if (name.startsWith(pattern)) {
+        cleanName = name.replace(new RegExp(`^${pattern}`), "");
+        prefix = override.prefix;
+        return { varName: `--${prefix}-${cleanName}`, value };
+      }
+    }
+  }
+
+  // Strip known prefixes to avoid double-prefixing
+  for (const stripPrefix of config.stripPrefixes) {
+    if (cleanName.startsWith(stripPrefix)) {
+      cleanName = cleanName.slice(stripPrefix.length);
+      break;
+    }
+  }
+
+  // Handle font family contract pattern
+  if (token.$type === "fontFamily") {
+    const extras = [];
+    for (const [fontType, contractValue] of Object.entries(FONT_FAMILY_CONTRACTS)) {
+      if (name.includes(fontType)) {
+        value = contractValue;
+        extras.push({ varName: `--font-family-${fontType}`, value: contractValue });
+        break;
+      }
+    }
+    return { varName: `--${name}`, value, extras };
+  }
+
+  return { varName: `--${prefix}-${cleanName}`, value };
+}
+
 // Register format for semantic/component tokens (& primitives when included) in @theme
 StyleDictionary.registerFormat({
   name: "css/semantic",
@@ -11,114 +122,24 @@ StyleDictionary.registerFormat({
     const baseVariables = [];
 
     dictionary.allTokens.forEach((token) => {
+      // Clean path: remove duplicate segments like "Color.Color"
       const cleanPath = token.path.filter((segment, index, arr) => {
         if (segment === "Color" && arr[index - 1] === "Color") return false;
         return true;
       });
 
       const name = cleanPath.join("-").toLowerCase();
+      const { varName, value, extras } = generateCSSVariable(token, name);
 
-      if (token.$type === "color") {
-        const colorName = name.startsWith("color-") ? name.slice(6) : name;
-        const semanticName = `--color-${colorName}`;
-        const line = `  ${semanticName}: ${token.$value};`;
-        themeVariables.push(line);
-        baseVariables.push(`    ${semanticName}: ${token.$value};`);
-      } else if (token.$type === "spacing") {
-        // Handle special cases for border-radius and border-width first
-        if (name.startsWith("border-radius-")) {
-          const cleanName = name.replace(/^border-radius-/, '');
-          const radiusName = `--border-radius-${cleanName}`;
-          themeVariables.push(`  ${radiusName}: ${token.$value};`);
-          baseVariables.push(`    ${radiusName}: ${token.$value};`);
-        } else if (name.startsWith("border-width-")) {
-          const cleanName = name.replace(/^border-width-/, '');
-          const widthName = `--border-width-${cleanName}`;
-          themeVariables.push(`  ${widthName}: ${token.$value};`);
-          baseVariables.push(`    ${widthName}: ${token.$value};`);
-        } else {
-          // Regular spacing tokens - remove "spacing-" prefix to avoid double-prefixing
-          const cleanName = name.replace(/^spacing-/, '');
-          const spacingName = `--spacing-${cleanName}`;
-          themeVariables.push(`  ${spacingName}: ${token.$value};`);
-          baseVariables.push(`    ${spacingName}: ${token.$value};`);
-        }
-      } else if (token.$type === "fontSize") {
-        // Remove "typography-font-size-" prefix to avoid double-prefixing
-        const cleanName = name.replace(/^typography-font-size-/, '');
-        const fontSizeName = `--font-size-${cleanName}`;
-        themeVariables.push(`  ${fontSizeName}: ${token.$value};`);
-        baseVariables.push(`    ${fontSizeName}: ${token.$value};`);
-      } else if (token.$type === "dimension") {
-        // Handle dimension tokens (border-radius, border-width, etc.)
-        if (name.startsWith("border-radius-")) {
-          // Primitive tokens like "border-radius-md"
-          const radiusName = `--border-radius-${name.replace(/^border-radius-/, '')}`;
-          themeVariables.push(`  ${radiusName}: ${token.$value};`);
-          baseVariables.push(`    ${radiusName}: ${token.$value};`);
-        } else if (name.startsWith("border-width-")) {
-          // Primitive tokens like "border-width-1"
-          const widthName = `--border-width-${name.replace(/^border-width-/, '')}`;
-          themeVariables.push(`  ${widthName}: ${token.$value};`);
-          baseVariables.push(`    ${widthName}: ${token.$value};`);
-        } else {
-          // Component dimension tokens (button-radius, checkbox-border-width, etc.)
-          // Keep as --spacing- prefix for consistency with existing UI component code
-          const spacingName = `--spacing-${name}`;
-          themeVariables.push(`  ${spacingName}: ${token.$value};`);
-          baseVariables.push(`    ${spacingName}: ${token.$value};`);
-        }
-      } else if (token.$type === "duration") {
-        // Remove "transition-duration-" prefix to avoid double-prefixing
-        const cleanName = name.replace(/^transition-duration-/, '');
-        const durationName = `--duration-${cleanName}`;
-        themeVariables.push(`  ${durationName}: ${token.$value};`);
-        baseVariables.push(`    ${durationName}: ${token.$value};`);
-      } else if (token.$type === "shadow") {
-        // Remove "shadow-" prefix to avoid double-prefixing
-        const cleanName = name.replace(/^shadow-/, '');
-        const shadowName = `--shadow-${cleanName}`;
-        themeVariables.push(`  ${shadowName}: ${token.$value};`);
-        baseVariables.push(`    ${shadowName}: ${token.$value};`);
-      } else if (token.$type === "fontWeight") {
-        // Remove "typography-font-weight-" prefix to avoid double-prefixing
-        const cleanName = name.replace(/^typography-font-weight-/, '');
-        const weightName = `--font-weight-${cleanName}`;
-        themeVariables.push(`  ${weightName}: ${token.$value};`);
-        baseVariables.push(`    ${weightName}: ${token.$value};`);
-      } else if (token.$type === "lineHeight") {
-        // Remove "typography-line-height-" prefix to avoid double-prefixing
-        const cleanName = name.replace(/^typography-line-height-/, '');
-        const lineHeightName = `--line-height-${cleanName}`;
-        themeVariables.push(`  ${lineHeightName}: ${token.$value};`);
-        baseVariables.push(`    ${lineHeightName}: ${token.$value};`);
-      } else {
-        const genericName = `--${name}`;
-        let value = token.$value;
+      themeVariables.push(`  ${varName}: ${value};`);
+      baseVariables.push(`    ${varName}: ${value};`);
 
-        // Abstract font families for the "Contract Pattern"
-        if (token.$type === "fontFamily") {
-          if (name.includes("sans")) {
-            value = "var(--font-sans, ui-sans-serif, system-ui, sans-serif)";
-            // Also add as Tailwind fontFamily theme property
-            themeVariables.push(`  --font-family-sans: ${value};`);
-            baseVariables.push(`    --font-family-sans: ${value};`);
-          } else if (name.includes("serif")) {
-            value = "var(--font-serif, ui-serif, serif)";
-            // Also add as Tailwind fontFamily theme property
-            themeVariables.push(`  --font-family-serif: ${value};`);
-            baseVariables.push(`    --font-family-serif: ${value};`);
-          } else if (name.includes("mono")) {
-            value =
-              "var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace)";
-            // Also add as Tailwind fontFamily theme property
-            themeVariables.push(`  --font-family-mono: ${value};`);
-            baseVariables.push(`    --font-family-mono: ${value};`);
-          }
+      // Handle any extra variables (e.g., font-family aliases)
+      if (extras) {
+        for (const extra of extras) {
+          themeVariables.push(`  ${extra.varName}: ${extra.value};`);
+          baseVariables.push(`    ${extra.varName}: ${extra.value};`);
         }
-
-        themeVariables.push(`  ${genericName}: ${value};`);
-        baseVariables.push(`    ${genericName}: ${value};`);
       }
     });
 
@@ -154,73 +175,115 @@ ${baseVariables.join("\n")}
 StyleDictionary.registerFormat({
   name: "javascript/hierarchical",
   format: function ({ dictionary }) {
-    const hierarchical = {};
+    const hierarchical = {
+      color: {},
+      spacing: {},
+      shadow: {},
+      borderRadius: {},
+      fontSize: {},
+      fontWeight: {},
+      lineHeight: {},
+      duration: {},
+    };
 
     dictionary.allTokens.forEach((token) => {
+      // Clean path: remove duplicate segments like "Color.Color"
       const cleanPath = token.path.filter((segment, index, arr) => {
         if (segment === "Color" && arr[index - 1] === "Color") return false;
         return true;
       });
 
-      if (token.$type === "color") {
-        if (!hierarchical.color) hierarchical.color = {};
+      const pathKey = cleanPath.slice(1).join("-").toLowerCase() || cleanPath[0]?.toLowerCase();
+      const firstSegment = cleanPath[0]?.toLowerCase();
 
-        // Handle dot notation like "color.gray.50" -> { gray: { 50: value } }
-        if (cleanPath[0] === "color" && cleanPath[1] && cleanPath[2]) {
-          const colorName = cleanPath[1].toLowerCase();
-          const shade = cleanPath[2];
-
-          if (!hierarchical.color[colorName]) {
-            hierarchical.color[colorName] = {};
+      // Route by token type
+      switch (token.$type) {
+        case "color":
+          // Handle nested color tokens: color.gray.50 -> { gray: { 50: value } }
+          if (firstSegment === "color" && cleanPath[1] && cleanPath[2]) {
+            const colorName = cleanPath[1].toLowerCase();
+            const shade = cleanPath[2];
+            if (!hierarchical.color[colorName]) {
+              hierarchical.color[colorName] = {};
+            }
+            hierarchical.color[colorName][shade] = token.$value;
           }
-          hierarchical.color[colorName][shade] = token.$value;
-        }
-        // Handle semantic colors like "color.primary.base" -> { primary: { base: value } }
-        else if (cleanPath[0] === "color" && cleanPath[1]) {
-          const colorName = cleanPath[1].toLowerCase();
-          const shade = cleanPath[2] || "base";
-
-          if (!hierarchical.color[colorName]) {
-            hierarchical.color[colorName] = {};
+          // Handle semantic colors: color.primary -> { primary: { base: value } }
+          else if (firstSegment === "color" && cleanPath[1]) {
+            const colorName = cleanPath[1].toLowerCase();
+            const shade = cleanPath[2] || "base";
+            if (!hierarchical.color[colorName]) {
+              hierarchical.color[colorName] = {};
+            }
+            hierarchical.color[colorName][shade] = token.$value;
           }
-          hierarchical.color[colorName][shade] = token.$value;
-        }
-      } else if (token.$type === "dimension" && cleanPath[0] === "Spacing") {
-        if (!hierarchical.spacing) hierarchical.spacing = {};
-        const key = cleanPath[1];
-        if (key) {
-          hierarchical.spacing[key] = token.$value;
-        }
-      } else if (token.$type === "boxShadow" && cleanPath[0] === "Shadow") {
-        if (!hierarchical.shadow) hierarchical.shadow = {};
-        const key = cleanPath[1]?.toLowerCase();
-        if (key) {
-          hierarchical.shadow[key] = token.$value;
-        }
-      } else if (token.$type === "spacing") {
-        if (!hierarchical.spacing) hierarchical.spacing = {};
-        const key = cleanPath.join("-").toLowerCase();
-        hierarchical.spacing[key] = token.$value;
-      } else if (token.$type === "boxShadow") {
-        if (!hierarchical.shadow) hierarchical.shadow = {};
-        const key = cleanPath.join("-").toLowerCase();
-        hierarchical.shadow[key] = token.$value;
+          break;
+
+        case "shadow":
+          // Handle shadow.sm, shadow.md, etc.
+          if (firstSegment === "shadow" && cleanPath[1]) {
+            hierarchical.shadow[cleanPath[1].toLowerCase()] = token.$value;
+          }
+          break;
+
+        case "spacing":
+        case "dimension":
+          // Handle spacing tokens and dimension tokens used for spacing
+          if (firstSegment === "spacing" || firstSegment === "border-radius" || firstSegment === "border-width") {
+            if (firstSegment === "border-radius") {
+              hierarchical.borderRadius[pathKey.replace("border-radius-", "")] = token.$value;
+            } else {
+              hierarchical.spacing[pathKey.replace("spacing-", "")] = token.$value;
+            }
+          } else if (pathKey) {
+            hierarchical.spacing[pathKey] = token.$value;
+          }
+          break;
+
+        case "fontSize":
+          if (cleanPath[1]) {
+            const key = cleanPath.slice(1).join("-").toLowerCase().replace("typography-font-size-", "");
+            hierarchical.fontSize[key] = token.$value;
+          }
+          break;
+
+        case "fontWeight":
+          if (cleanPath[1]) {
+            const key = cleanPath.slice(1).join("-").toLowerCase().replace("typography-font-weight-", "");
+            hierarchical.fontWeight[key] = token.$value;
+          }
+          break;
+
+        case "lineHeight":
+          if (cleanPath[1]) {
+            const key = cleanPath.slice(1).join("-").toLowerCase().replace("typography-line-height-", "");
+            hierarchical.lineHeight[key] = token.$value;
+          }
+          break;
+
+        case "duration":
+          if (cleanPath[1]) {
+            const key = cleanPath.slice(1).join("-").toLowerCase().replace("transition-duration-", "");
+            hierarchical.duration[key] = token.$value;
+          }
+          break;
       }
     });
+
+    // Filter out empty categories
+    const nonEmptyCategories = Object.entries(hierarchical)
+      .filter(([_, tokens]) => Object.keys(tokens).length > 0);
 
     return `/**
  * Do not edit directly, this file was auto-generated.
  */
 
-${Object.entries(hierarchical)
+${nonEmptyCategories
   .map(
     ([category, tokens]) =>
       `export const ${category} = ${JSON.stringify(tokens, null, 2)};`
   )
-  .join("\n\n")}
-
-// Empty shadow object for now
-export const shadow = {};`;
+  .join("\n\n")}`;
   },
 });
 

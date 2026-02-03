@@ -68,6 +68,10 @@ class TokenWatcher {
       console.log("🏗️ Building token outputs...");
       await execAsync("node style-dictionary.config.js");
 
+      // Generate font loaders
+      console.log("🔤 Generating font loaders...");
+      await execAsync("node scripts/generate-font-loaders.js");
+
       console.log("✅ Tokens processed and built successfully");
     } catch (error) {
       console.error("❌ Error processing tokens:", error.message);

@@ -10,12 +10,12 @@ The design token system is a single source of truth for design decisions that po
 packages/tokens/
 ├── dist/                    # Built assets (CSS, JS, etc.)
 ├── io/                      # Token I/O pipeline
-│   ├── input/               # Raw Figma exports (version controlled)
-│   ├── processed/           # Normalized token files
-│   └── export/              # Distribution-ready token files
+│   ├── sync/                # Bi-directional Figma sync (version controlled)
+│   └── processed/           # Normalized token files (build artifacts)
 ├── scripts/                 # Build and processing scripts
 │   ├── process-token-io.js  # Main token processor
-│   └── export-demo-tokens.mjs  # Demo token exporter
+│   ├── validate-tokens.js   # Token validation
+│   └── audit-tokens.js      # Token usage auditing
 └── style-dictionary.config.js  # Style Dictionary configuration
 ```
 
@@ -23,19 +23,19 @@ packages/tokens/
 
 1. **Primitive Tokens**
    - Basic design values (colors, spacing, typography, etc.)
-   - Defined in `io/input/primitive.json`
+   - Synced to `io/sync/primitive.json` via Token Bridge plugin
    - Processed into `io/processed/primitive.json`
 
 2. **Semantic Tokens**
    - Contextual tokens that reference primitives
-   - Light/Dark mode variants
-   - Defined in `io/input/semantic.json`
+   - Light/Dark mode variants via `valuesByMode`
+   - Synced to `io/sync/semantic.json`
    - Processed into `io/processed/semantic-light.json` and `semantic-dark.json`
 
 3. **Component Tokens**
    - Component-specific tokens
-   - Defined in `io/input/components.json`
-   - Processed into component-specific token files
+   - Synced to `io/sync/components.json`
+   - Processed into `io/processed/component-light.json` and `component-dark.json`
 
 ## Build Process
 
@@ -43,11 +43,12 @@ packages/tokens/
 
 ```mermaid
 graph LR
-    A[Figma Export] -->|Save to| B[io/input/]
+    A[Figma Token Bridge] -->|Sync via GitHub| B[io/sync/]
     B --> C[process-token-io.js]
     C --> D[io/processed/]
     D --> E[style-dictionary.config.js]
     E --> F[dist/]
+    C -->|Write back| B
 ```
 
 ### 2. Build Commands
@@ -62,11 +63,14 @@ pnpm build
 # Process tokens only
 pnpm process-io
 
-# Clean build artifacts
+# Clean build artifacts (preserves io/sync/)
 pnpm clean
 
-# Clean legacy src/ directory (one-time use)
-pnpm clean:legacy
+# Validate token structure and references
+pnpm test:tokens
+
+# Audit token usage across components
+pnpm audit
 ```
 
 ### 3. Output Files

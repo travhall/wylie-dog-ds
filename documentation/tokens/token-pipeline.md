@@ -2,39 +2,40 @@
 
 ## Overview
 
-The Wylie Dog design token system features a sophisticated **three-stage I/O pipeline** that transforms raw Figma exports into production-ready CSS and JavaScript assets. This document explains the complete flow from design to code.
+The Wylie Dog design token system features a sophisticated **bi-directional I/O pipeline** that enables round-trip synchronization between Figma and code. The Token Bridge Figma plugin syncs directly with GitHub, and the build process transforms tokens into production-ready CSS and JavaScript assets.
 
 ## Pipeline Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     TOKEN PIPELINE FLOW                          │
+│                  BI-DIRECTIONAL TOKEN FLOW                       │
 └─────────────────────────────────────────────────────────────────┘
 
     FIGMA DESIGN TOOL
           │
-          │ Export (Token Bridge Plugin)
+          │ Token Bridge Plugin (syncs via GitHub API)
           │
           ▼
     ┌──────────────┐
-    │  io/input/   │  ← Raw Figma exports (version controlled)
-    └──────┬───────┘
+    │   io/sync/   │  ← Bi-directional: Figma writes, build reads & writes back
+    └──────┬───────┘    (W3C DTCG format, version controlled)
            │
            │ process-token-io.js
            │ • Format detection (W3C DTCG / Legacy / Raw)
            │ • Hex → OKLCH conversion (Culori)
            │ • Mode separation (Light / Dark)
            │ • Reference normalization
+           │ • Write-back to io/sync/ (preserves Figma-compatible format)
            │
            ▼
     ┌──────────────┐
-    │io/processed/ │  ← Normalized W3C DTCG tokens
+    │io/processed/ │  ← Normalized tokens with mode separation
     └──────┬───────┘
            │
            │ style-dictionary.config.js
-           │ • CSS generation (@theme + :root)
+           │ • CSS generation (@theme + :root + .dark)
            │ • JS hierarchical export
-           │ • Type definition generation
+           │ • Manifest generation
            │
            ▼
     ┌──────────────┐
@@ -50,16 +51,28 @@ The Wylie Dog design token system features a sophisticated **three-stage I/O pip
     └──────────────┘
 ```
 
-## Stage 1: Input (`io/input/`)
+## Stage 1: Sync (`io/sync/`)
 
-**Purpose:** Store raw token exports from Figma in a version-controlled format.
+**Purpose:** Bi-directional hub for Figma ↔ Code synchronization. This directory is both the source of truth from Figma AND the export target for the build process.
+
+**Write Path (Figma → Code):**
+
+1. Designer exports tokens via Token Bridge Figma plugin
+2. Plugin commits directly to GitHub at `packages/tokens/io/sync/`
+3. Build process reads and transforms tokens
+
+**Read Path (Code → Figma):**
+
+1. Build process writes normalized W3C DTCG format back to `io/sync/`
+2. Token Bridge plugin can pull updated tokens from GitHub
+3. Designer imports into Figma Variables
 
 **Files:**
 
 ```
-io/input/
+io/sync/
 ├── primitive.json    # Foundation color scales, spacing, typography
-├── semantic.json     # Contextual tokens (light + dark modes mixed)
+├── semantic.json     # Contextual tokens (light + dark modes with valuesByMode)
 └── components.json   # Component-specific tokens
 ```
 
@@ -311,22 +324,18 @@ import tokens from "@wyliedog/tokens";
 const primary = tokens["color.blue.500"];
 ```
 
-## Stage 4: Export (`io/export/`)
+## Round-Trip Capability
 
-**Purpose:** Generate Figma-compatible token files for re-import to design tool.
+The bi-directional sync is enabled by the write-back in `process-token-io.js`:
 
-**Process:** Processed tokens are copied to export directory in a format the Figma plugin can import.
+1. **Figma → Code**: Token Bridge plugin exports to `io/sync/`
+2. **Processing**: Build transforms and normalizes tokens
+3. **Code → Figma**: Build writes W3C DTCG format back to `io/sync/`
+4. **Figma Import**: Token Bridge can pull updated tokens from GitHub
 
-**Files:**
+This enables the complete **round-trip workflow**: Figma → Code → Figma
 
-```
-io/export/
-├── primitive.json    # For Figma import
-├── semantic.json     # For Figma import
-└── components.json   # For Figma import
-```
-
-This completes the **round-trip capability**: Figma → Code → Figma
+**Note:** The `io/sync/` directory serves as both input AND output, eliminating the need for a separate export directory. The Token Bridge plugin auto-detects Wylie Dog projects and uses `packages/tokens/io/sync/` as the default path.
 
 ## Complete Workflow Examples
 
@@ -334,7 +343,7 @@ This completes the **round-trip capability**: Figma → Code → Figma
 
 **Step 1:** Export from Figma Token Bridge plugin
 
-- Exports to `io/input/primitive.json` with hex values
+- Plugin syncs directly to GitHub at `io/sync/primitive.json` with hex values
 
 **Step 2:** Process tokens
 
@@ -368,7 +377,7 @@ const primaryBlue = color.blue[500];
 **Step 1:** Export from Figma
 
 - Add `color.background.brand` referencing `{color.blue.600}`
-- Export to `io/input/semantic.json`
+- Token Bridge syncs to `io/sync/semantic.json`
 
 **Step 2:** Process tokens
 
@@ -400,7 +409,7 @@ pnpm build
 **Step 1:** Update in Figma
 
 - Change dark mode `background.primary` to lighter gray
-- Export to `io/input/semantic.json`
+- Token Bridge syncs changes to `io/sync/semantic.json`
 
 **Step 2:** Process and build
 
@@ -427,21 +436,23 @@ cat dist/semantic-dark.css
 ## Build Commands Reference
 
 ```bash
-# Full pipeline (process + build)
+# Full pipeline (process + build + font loaders)
 pnpm build
 
-# Process tokens only (input → processed)
+# Process tokens only (sync → processed)
 pnpm process-io
 
 # Build outputs only (processed → dist)
-# (Run style-dictionary directly if needed)
 node style-dictionary.config.js
 
-# Clean all build artifacts
+# Clean build artifacts (preserves io/sync source files)
 pnpm clean
 
-# Clean legacy src/ directory (one-time)
-pnpm clean:legacy
+# Run token validation
+pnpm test:tokens
+
+# Audit token usage
+pnpm audit
 ```
 
 ## File Watching & Development
@@ -576,7 +587,7 @@ pnpm test:tokens  # Validates references (if implemented)
 
 ### 1. Version Control
 
-✅ **Commit:** `io/input/` files (source of truth)
+✅ **Commit:** `io/sync/` files (source of truth for bi-directional sync)
 ❌ **Don't commit:** `io/processed/` and `dist/` (build artifacts)
 
 ### 2. Token Naming
