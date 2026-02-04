@@ -3,11 +3,11 @@
     "semantic": {
       "modes": [
         {
-          "modeId": "mode:semantic:light",
+          "modeId": "1249:3",
           "name": "Light"
         },
         {
-          "modeId": "mode:semantic:dark",
+          "modeId": "1249:4",
           "name": "Dark"
         }
       ],
@@ -15,1019 +15,938 @@
         "color.background.primary": {
           "$type": "color",
           "$value": "{color.gray.50}",
+          "$description": "Main page background color",
           "valuesByMode": {
             "Light": "{color.gray.50}",
             "Dark": "{color.gray.950}"
-          },
-          "$description": "Main page background color"
+          }
         },
         "color.background.secondary": {
           "$type": "color",
           "$value": "{color.gray.100}",
+          "$description": "Secondary background for sections and containers",
           "valuesByMode": {
             "Light": "{color.gray.100}",
             "Dark": "{color.gray.900}"
-          },
-          "$description": "Secondary background for sections and containers"
+          }
         },
         "color.background.tertiary": {
           "$type": "color",
           "$value": "{color.gray.200}",
+          "$description": "Tertiary background for nested elements",
           "valuesByMode": {
             "Light": "{color.gray.200}",
             "Dark": "{color.gray.800}"
-          },
-          "$description": "Tertiary background for nested elements"
+          }
         },
         "color.background.inverse": {
           "$type": "color",
           "$value": "{color.gray.950}",
+          "$description": "Inverted background for high contrast areas",
           "valuesByMode": {
             "Light": "{color.gray.950}",
             "Dark": "{color.gray.50}"
-          },
-          "$description": "Inverted background for high contrast areas"
+          }
         },
         "color.background.brand": {
           "$type": "color",
           "$value": "{color.orange.600}",
+          "$description": "Brand-colored background for emphasis",
           "valuesByMode": {
             "Light": "{color.orange.600}",
             "Dark": "{color.orange.500}"
-          },
-          "$description": "Brand-colored background for emphasis"
+          }
         },
         "color.background.danger": {
           "$type": "color",
           "$value": "{color.red.600}",
+          "$description": "Danger/error background for critical states",
           "valuesByMode": {
             "Light": "{color.red.600}",
             "Dark": "{color.red.600}"
-          },
-          "$description": "Danger/error background for critical states"
+          }
         },
         "color.surface.primary": {
           "$type": "color",
           "$value": "{color.gray.50}",
+          "$description": "Primary surface for cards and panels",
           "valuesByMode": {
             "Light": "{color.gray.50}",
             "Dark": "{color.gray.900}"
-          },
-          "$description": "Primary surface for cards and panels"
+          }
         },
         "color.surface.secondary": {
           "$type": "color",
           "$value": "{color.gray.100}",
+          "$description": "Secondary surface for nested containers",
           "valuesByMode": {
             "Light": "{color.gray.100}",
             "Dark": "{color.gray.800}"
-          },
-          "$description": "Secondary surface for nested containers"
+          }
         },
         "color.surface.raised": {
           "$type": "color",
           "$value": "{color.gray.50}",
+          "$description": "Raised surface for elevated components",
           "valuesByMode": {
             "Light": "{color.gray.50}",
             "Dark": "{color.gray.800}"
-          },
-          "$description": "Raised surface for elevated components"
+          }
         },
         "color.surface.overlay": {
           "$type": "color",
           "$value": "{color.gray.50}",
+          "$description": "Overlay surface for modals and popovers",
           "valuesByMode": {
             "Light": "{color.gray.50}",
             "Dark": "{color.gray.700}"
-          },
-          "$description": "Overlay surface for modals and popovers"
+          }
         },
         "color.surface.brand": {
           "$type": "color",
           "$value": "{color.blue.50}",
+          "$description": "Interactive brand surface (blue theme)",
           "valuesByMode": {
             "Light": "{color.blue.50}",
             "Dark": "{color.blue.950}"
-          },
-          "$description": "Interactive brand surface (blue theme)"
+          }
         },
         "color.surface.success": {
           "$type": "color",
           "$value": "{color.green.50}",
+          "$description": "Success state surface background",
           "valuesByMode": {
             "Light": "{color.green.50}",
             "Dark": "{color.green.950}"
-          },
-          "$description": "Success state surface background"
+          }
         },
         "color.surface.warning": {
           "$type": "color",
           "$value": "{color.orange.50}",
+          "$description": "Warning state surface background",
           "valuesByMode": {
             "Light": "{color.orange.50}",
             "Dark": "{color.orange.950}"
-          },
-          "$description": "Warning state surface background"
+          }
         },
         "color.surface.danger": {
           "$type": "color",
           "$value": "{color.red.50}",
+          "$description": "Danger/error state surface background",
           "valuesByMode": {
             "Light": "{color.red.50}",
             "Dark": "{color.red.950}"
-          },
-          "$description": "Danger/error state surface background"
+          }
         },
         "color.surface.info": {
           "$type": "color",
           "$value": "{color.blue.50}",
+          "$description": "Informational state surface background",
           "valuesByMode": {
             "Light": "{color.blue.50}",
             "Dark": "{color.blue.950}"
-          },
-          "$description": "Informational state surface background"
+          }
         },
         "color.text.primary": {
           "$type": "color",
           "$value": "{color.gray.900}",
+          "$description": "Primary text for headings and body content",
           "valuesByMode": {
             "Light": "{color.gray.900}",
             "Dark": "{color.gray.100}"
-          },
-          "$description": "Primary text for headings and body content"
+          }
         },
         "color.text.secondary": {
           "$type": "color",
           "$value": "{color.gray.700}",
+          "$description": "Secondary text for supporting content",
           "valuesByMode": {
             "Light": "{color.gray.700}",
             "Dark": "{color.gray.300}"
-          },
-          "$description": "Secondary text for supporting content"
+          }
         },
         "color.text.tertiary": {
           "$type": "color",
           "$value": "{color.gray.500}",
+          "$description": "Tertiary text for captions and hints",
           "valuesByMode": {
             "Light": "{color.gray.500}",
             "Dark": "{color.gray.500}"
-          },
-          "$description": "Tertiary text for captions and hints"
+          }
         },
         "color.text.disabled": {
           "$type": "color",
           "$value": "{color.gray.400}",
+          "$description": "Disabled text color",
           "valuesByMode": {
             "Light": "{color.gray.400}",
             "Dark": "{color.gray.600}"
-          },
-          "$description": "Disabled text color"
+          }
         },
         "color.text.inverse": {
           "$type": "color",
           "$value": "{color.gray.50}",
+          "$description": "Inverted text for dark backgrounds",
           "valuesByMode": {
             "Light": "{color.gray.50}",
             "Dark": "{color.gray.900}"
-          },
-          "$description": "Inverted text for dark backgrounds"
+          }
         },
         "color.text.brand": {
           "$type": "color",
           "$value": "{color.orange.600}",
+          "$description": "Brand-colored text for emphasis",
           "valuesByMode": {
             "Light": "{color.orange.600}",
             "Dark": "{color.orange.500}"
-          },
-          "$description": "Brand-colored text for emphasis"
+          }
         },
         "color.text.success": {
           "$type": "color",
           "$value": "{color.green.700}",
+          "$description": "Success state text color",
           "valuesByMode": {
             "Light": "{color.green.700}",
             "Dark": "{color.green.400}"
-          },
-          "$description": "Success state text color"
+          }
         },
         "color.text.warning": {
           "$type": "color",
           "$value": "{color.orange.700}",
+          "$description": "Warning state text color",
           "valuesByMode": {
             "Light": "{color.orange.700}",
             "Dark": "{color.orange.400}"
-          },
-          "$description": "Warning state text color"
+          }
         },
         "color.text.danger": {
           "$type": "color",
           "$value": "{color.red.700}",
+          "$description": "Danger/error state text color",
           "valuesByMode": {
             "Light": "{color.red.700}",
             "Dark": "{color.red.400}"
-          },
-          "$description": "Danger/error state text color"
+          }
         },
         "color.text.info": {
           "$type": "color",
           "$value": "{color.blue.700}",
+          "$description": "Informational text color",
           "valuesByMode": {
             "Light": "{color.blue.700}",
             "Dark": "{color.blue.400}"
-          },
-          "$description": "Informational text color"
+          }
         },
         "color.border.primary": {
           "$type": "color",
           "$value": "{color.gray.300}",
+          "$description": "Primary border for cards and containers",
           "valuesByMode": {
             "Light": "{color.gray.300}",
             "Dark": "{color.gray.700}"
-          },
-          "$description": "Primary border for cards and containers"
+          }
         },
         "color.border.secondary": {
           "$type": "color",
           "$value": "{color.gray.200}",
+          "$description": "Secondary border for subtle dividers",
           "valuesByMode": {
             "Light": "{color.gray.200}",
             "Dark": "{color.gray.800}"
-          },
-          "$description": "Secondary border for subtle dividers"
+          }
         },
         "color.border.focus": {
           "$type": "color",
           "$value": "{color.blue.500}",
+          "$description": "Focus ring border color",
           "valuesByMode": {
             "Light": "{color.blue.500}",
             "Dark": "{color.blue.500}"
-          },
-          "$description": "Focus ring border color"
+          }
         },
         "color.border.brand": {
           "$type": "color",
           "$value": "{color.orange.600}",
+          "$description": "Brand-colored border for emphasis",
           "valuesByMode": {
             "Light": "{color.orange.600}",
             "Dark": "{color.orange.500}"
-          },
-          "$description": "Brand-colored border for emphasis"
+          }
         },
         "color.border.success": {
           "$type": "color",
           "$value": "{color.green.600}",
+          "$description": "Success state border color",
           "valuesByMode": {
             "Light": "{color.green.600}",
             "Dark": "{color.green.600}"
-          },
-          "$description": "Success state border color"
+          }
         },
         "color.border.warning": {
           "$type": "color",
           "$value": "{color.orange.600}",
+          "$description": "Warning state border color",
           "valuesByMode": {
             "Light": "{color.orange.600}",
             "Dark": "{color.orange.600}"
-          },
-          "$description": "Warning state border color"
+          }
         },
         "color.border.danger": {
           "$type": "color",
           "$value": "{color.red.600}",
+          "$description": "Danger/error state border color",
           "valuesByMode": {
             "Light": "{color.red.600}",
             "Dark": "{color.red.600}"
-          },
-          "$description": "Danger/error state border color"
+          }
         },
         "color.interactive.primary": {
           "$type": "color",
           "$value": "{color.blue.600}",
+          "$description": "Primary interactive element background (buttons, links)",
           "valuesByMode": {
             "Light": "{color.blue.600}",
             "Dark": "{color.blue.600}"
-          },
-          "$description": "Primary interactive element background (buttons, links)"
+          }
         },
         "color.interactive.primary-hover": {
           "$type": "color",
           "$value": "{color.blue.700}",
+          "$description": "Primary interactive hover state",
           "valuesByMode": {
             "Light": "{color.blue.700}",
             "Dark": "{color.blue.500}"
-          },
-          "$description": "Primary interactive hover state"
+          }
         },
         "color.interactive.primary-active": {
           "$type": "color",
           "$value": "{color.blue.800}",
+          "$description": "Primary interactive pressed/active state",
           "valuesByMode": {
             "Light": "{color.blue.800}",
             "Dark": "{color.blue.400}"
-          },
-          "$description": "Primary interactive pressed/active state"
+          }
         },
         "color.interactive.secondary": {
           "$type": "color",
           "$value": "{color.gray.100}",
+          "$description": "Secondary interactive element background",
           "valuesByMode": {
             "Light": "{color.gray.100}",
             "Dark": "{color.gray.800}"
-          },
-          "$description": "Secondary interactive element background"
+          }
         },
         "color.interactive.secondary-hover": {
           "$type": "color",
           "$value": "{color.gray.200}",
+          "$description": "Secondary interactive hover state",
           "valuesByMode": {
             "Light": "{color.gray.200}",
             "Dark": "{color.gray.700}"
-          },
-          "$description": "Secondary interactive hover state"
+          }
         },
         "color.interactive.secondary-active": {
           "$type": "color",
           "$value": "{color.gray.300}",
+          "$description": "Secondary interactive pressed/active state",
           "valuesByMode": {
             "Light": "{color.gray.300}",
             "Dark": "{color.gray.600}"
-          },
-          "$description": "Secondary interactive pressed/active state"
+          }
         },
         "color.interactive.success": {
           "$type": "color",
           "$value": "{color.green.600}",
+          "$description": "Success interactive element background",
           "valuesByMode": {
             "Light": "{color.green.600}",
             "Dark": "{color.green.600}"
-          },
-          "$description": "Success interactive element background"
+          }
         },
         "color.interactive.success-hover": {
           "$type": "color",
           "$value": "{color.green.700}",
+          "$description": "Success interactive hover state",
           "valuesByMode": {
             "Light": "{color.green.700}",
             "Dark": "{color.green.500}"
-          },
-          "$description": "Success interactive hover state"
+          }
         },
         "color.interactive.warning": {
           "$type": "color",
           "$value": "{color.orange.600}",
+          "$description": "Warning interactive element background",
           "valuesByMode": {
             "Light": "{color.orange.600}",
             "Dark": "{color.orange.600}"
-          },
-          "$description": "Warning interactive element background"
+          }
         },
         "color.interactive.warning-hover": {
           "$type": "color",
           "$value": "{color.orange.700}",
+          "$description": "Warning interactive hover state",
           "valuesByMode": {
             "Light": "{color.orange.700}",
             "Dark": "{color.orange.500}"
-          },
-          "$description": "Warning interactive hover state"
+          }
         },
         "color.interactive.danger": {
           "$type": "color",
           "$value": "{color.red.600}",
+          "$description": "Danger interactive element background",
           "valuesByMode": {
             "Light": "{color.red.600}",
             "Dark": "{color.red.600}"
-          },
-          "$description": "Danger interactive element background"
+          }
         },
         "color.interactive.danger-hover": {
           "$type": "color",
           "$value": "{color.red.700}",
+          "$description": "Danger interactive hover state",
           "valuesByMode": {
             "Light": "{color.red.700}",
             "Dark": "{color.red.500}"
-          },
-          "$description": "Danger interactive hover state"
+          }
         },
         "color.primary.base": {
           "$type": "color",
           "$value": "{color.orange.700}",
+          "$description": "Brand primary color (orange) - base state",
           "valuesByMode": {
             "Light": "{color.orange.700}",
             "Dark": "{color.orange.400}"
-          },
-          "$description": "Brand primary color (orange) - base state"
+          }
         },
         "color.primary.hover": {
           "$type": "color",
           "$value": "{color.orange.800}",
+          "$description": "Brand primary color - hover state",
           "valuesByMode": {
             "Light": "{color.orange.800}",
             "Dark": "{color.orange.500}"
-          },
-          "$description": "Brand primary color - hover state"
+          }
         },
         "color.primary.active": {
           "$type": "color",
           "$value": "{color.orange.900}",
+          "$description": "Brand primary color - active/pressed state",
           "valuesByMode": {
             "Light": "{color.orange.900}",
             "Dark": "{color.orange.600}"
-          },
-          "$description": "Brand primary color - active/pressed state"
+          }
         },
         "color.primary.surface": {
           "$type": "color",
           "$value": "{color.orange.50}",
+          "$description": "Surface background for brand primary themed containers",
           "valuesByMode": {
             "Light": "{color.orange.50}",
             "Dark": "{color.orange.950}"
-          },
-          "$description": "Surface background for brand primary themed containers"
+          }
         },
         "color.primary.text": {
           "$type": "color",
           "$value": "{color.gray.950}",
+          "$description": "Text color on brand primary backgrounds",
           "valuesByMode": {
             "Light": "{color.gray.950}",
             "Dark": "{color.gray.50}"
-          },
-          "$description": "Text color on brand primary backgrounds"
+          }
         },
         "color.secondary.base": {
           "$type": "color",
           "$value": "{color.gray.200}",
+          "$description": "Secondary variant - base state",
           "valuesByMode": {
             "Light": "{color.gray.200}",
             "Dark": "{color.gray.100}"
-          },
-          "$description": "Secondary variant - base state"
+          }
         },
         "color.secondary.hover": {
           "$type": "color",
           "$value": "{color.gray.300}",
+          "$description": "Secondary variant - hover state",
           "valuesByMode": {
             "Light": "{color.gray.300}",
             "Dark": "{color.gray.200}"
-          },
-          "$description": "Secondary variant - hover state"
+          }
         },
         "color.secondary.active": {
           "$type": "color",
           "$value": "{color.gray.400}",
+          "$description": "Secondary variant - active/pressed state",
           "valuesByMode": {
             "Light": "{color.gray.400}",
             "Dark": "{color.gray.300}"
-          },
-          "$description": "Secondary variant - active/pressed state"
+          }
         },
         "color.secondary.surface": {
           "$type": "color",
           "$value": "{color.gray.100}",
+          "$description": "Secondary surface background",
           "valuesByMode": {
             "Light": "{color.gray.100}",
             "Dark": "{color.gray.900}"
-          },
-          "$description": "Secondary surface background"
+          }
         },
         "color.secondary.text": {
           "$type": "color",
           "$value": "{color.gray.900}",
+          "$description": "Text color on secondary backgrounds",
           "valuesByMode": {
             "Light": "{color.gray.900}",
             "Dark": "{color.gray.100}"
-          },
-          "$description": "Text color on secondary backgrounds"
+          }
         },
         "color.accent.hover": {
           "$type": "color",
           "$value": "{color.purple.700}",
+          "$description": "Accent color (purple) - hover state",
           "valuesByMode": {
             "Light": "{color.purple.700}",
             "Dark": "{color.purple.500}"
-          },
-          "$description": "Accent color (purple) - hover state"
+          }
         },
         "color.accent.active": {
           "$type": "color",
           "$value": "{color.purple.800}",
+          "$description": "Accent color (purple) - active/pressed state",
           "valuesByMode": {
             "Light": "{color.purple.800}",
             "Dark": "{color.purple.400}"
-          },
-          "$description": "Accent color (purple) - active/pressed state"
+          }
         },
         "color.accent.surface": {
           "$type": "color",
           "$value": "{color.purple.50}",
+          "$description": "Accent surface background",
           "valuesByMode": {
             "Light": "{color.purple.50}",
             "Dark": "{color.purple.950}"
-          },
-          "$description": "Accent surface background"
+          }
         },
         "color.accent.text": {
           "$type": "color",
           "$value": "{color.purple.900}",
+          "$description": "Text color on accent backgrounds",
           "valuesByMode": {
             "Light": "{color.purple.900}",
             "Dark": "{color.purple.50}"
-          },
-          "$description": "Text color on accent backgrounds"
+          }
         },
         "color.accent.highlight": {
           "$type": "color",
           "$value": "{color.pink.300}",
+          "$description": "Highlight accent for special emphasis",
           "valuesByMode": {
             "Light": "{color.pink.300}",
             "Dark": "{color.pink.700}"
-          },
-          "$description": "Highlight accent for special emphasis"
+          }
         },
         "color.neutral.base": {
           "$type": "color",
           "$value": "{color.gray.600}",
+          "$description": "Neutral base color for icons and borders",
           "valuesByMode": {
             "Light": "{color.gray.600}",
             "Dark": "{color.gray.100}"
-          },
-          "$description": "Neutral base color for icons and borders"
+          }
         },
         "color.neutral.muted": {
           "$type": "color",
           "$value": "{color.gray.400}",
+          "$description": "Muted neutral for de-emphasized elements",
           "valuesByMode": {
             "Light": "{color.gray.400}",
             "Dark": "{color.gray.300}"
-          },
-          "$description": "Muted neutral for de-emphasized elements"
+          }
         },
         "color.neutral.subtle": {
           "$type": "color",
           "$value": "{color.gray.200}",
+          "$description": "Subtle neutral for backgrounds and borders",
           "valuesByMode": {
             "Light": "{color.gray.200}",
             "Dark": "{color.gray.500}"
-          },
-          "$description": "Subtle neutral for backgrounds and borders"
+          }
         },
         "color.neutral.on": {
           "$type": "color",
           "$value": "{color.gray.900}",
+          "$description": "Text color on neutral backgrounds",
           "valuesByMode": {
             "Light": "{color.gray.900}",
             "Dark": "{color.gray.50}"
-          },
-          "$description": "Text color on neutral backgrounds"
+          }
         },
         "color.status.success": {
           "$type": "color",
           "$value": "{color.green.600}",
+          "$description": "Success status indicator color",
           "valuesByMode": {
             "Light": "{color.green.600}",
             "Dark": "{color.green.500}"
-          },
-          "$description": "Success status indicator color"
+          }
         },
         "color.status.warning": {
           "$type": "color",
           "$value": "{color.orange.600}",
+          "$description": "Warning status indicator color",
           "valuesByMode": {
             "Light": "{color.orange.600}",
             "Dark": "{color.orange.500}"
-          },
-          "$description": "Warning status indicator color"
+          }
         },
         "color.status.danger": {
           "$type": "color",
           "$value": "{color.red.600}",
+          "$description": "Danger/error status indicator color",
           "valuesByMode": {
             "Light": "{color.red.600}",
             "Dark": "{color.red.500}"
-          },
-          "$description": "Danger/error status indicator color"
+          }
         },
         "color.status.info": {
           "$type": "color",
           "$value": "{color.blue.600}",
+          "$description": "Informational status indicator color",
           "valuesByMode": {
             "Light": "{color.blue.600}",
             "Dark": "{color.blue.500}"
-          },
-          "$description": "Informational status indicator color"
+          }
         },
         "color.status.highlight": {
           "$type": "color",
           "$value": "{color.yellow.300}",
+          "$description": "Highlight status for emphasis",
           "valuesByMode": {
             "Light": "{color.yellow.300}",
             "Dark": "{color.yellow.400}"
-          },
-          "$description": "Highlight status for emphasis"
-        },
-        "color.link.default": {
-          "$type": "color",
-          "$value": "{color.blue.600}",
-          "valuesByMode": {
-            "Light": "{color.blue.600}",
-            "Dark": "{color.blue.400}"
-          },
-          "$description": "Default link color"
-        },
-        "color.link.hover": {
-          "$type": "color",
-          "$value": "{color.blue.700}",
-          "valuesByMode": {
-            "Light": "{color.blue.700}",
-            "Dark": "{color.blue.300}"
-          },
-          "$description": "Link hover color"
-        },
-        "color.link.visited": {
-          "$type": "color",
-          "$value": "{color.purple.600}",
-          "valuesByMode": {
-            "Light": "{color.purple.600}",
-            "Dark": "{color.purple.400}"
-          },
-          "$description": "Visited link color"
-        },
-        "color.link.disabled": {
-          "$type": "color",
-          "$value": "{color.gray.400}",
-          "valuesByMode": {
-            "Light": "{color.gray.400}",
-            "Dark": "{color.gray.600}"
-          },
-          "$description": "Disabled link color"
-        },
-        "color.input.background": {
-          "$type": "color",
-          "$value": "{color.gray.50}",
-          "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.gray.900}"
-          },
-          "$description": "Input field background color"
-        },
-        "color.input.border": {
-          "$type": "color",
-          "$value": "{color.gray.300}",
-          "valuesByMode": {
-            "Light": "{color.gray.300}",
-            "Dark": "{color.gray.700}"
-          },
-          "$description": "Input field border color"
-        },
-        "color.input.text": {
-          "$type": "color",
-          "$value": "{color.gray.900}",
-          "valuesByMode": {
-            "Light": "{color.gray.900}",
-            "Dark": "{color.gray.100}"
-          },
-          "$description": "Input field text color"
-        },
-        "color.input.placeholder": {
-          "$type": "color",
-          "$value": "{color.gray.400}",
-          "valuesByMode": {
-            "Light": "{color.gray.400}",
-            "Dark": "{color.gray.500}"
-          },
-          "$description": "Input field placeholder text color"
+          }
         },
         "color.interactive.hover": {
           "$type": "color",
           "$value": "{color.gray.100}",
+          "$description": "Generic hover background for interactive elements",
           "valuesByMode": {
             "Light": "{color.gray.100}",
             "Dark": "{color.gray.800}"
-          },
-          "$description": "Generic hover background for interactive elements"
+          }
         },
         "color.interactive.pressed": {
           "$type": "color",
           "$value": "{color.gray.200}",
+          "$description": "Pressed/active state background",
           "valuesByMode": {
             "Light": "{color.gray.200}",
             "Dark": "{color.gray.700}"
-          },
-          "$description": "Pressed/active state background"
+          }
         },
         "color.interactive.focus": {
           "$type": "color",
           "$value": "{color.blue.50}",
+          "$description": "Focus state background",
           "valuesByMode": {
             "Light": "{color.blue.50}",
             "Dark": "{color.blue.950}"
-          },
-          "$description": "Focus state background"
+          }
         },
         "color.interactive.disabled": {
           "$type": "color",
           "$value": "{color.gray.100}",
+          "$description": "Disabled state background",
           "valuesByMode": {
             "Light": "{color.gray.100}",
             "Dark": "{color.gray.800}"
-          },
-          "$description": "Disabled state background"
-        },
-        "color.text.on-interactive": {
-          "$type": "color",
-          "$value": "{color.gray.900}",
-          "valuesByMode": {
-            "Light": "{color.gray.900}",
-            "Dark": "{color.gray.100}"
-          },
-          "$description": "Text color on interactive backgrounds"
+          }
         },
         "shadow.none": {
           "$type": "shadow",
           "$value": "none",
+          "$description": "No shadow",
           "valuesByMode": {
             "Light": "none",
             "Dark": "none"
-          },
-          "$description": "No shadow"
+          }
         },
         "shadow.sm": {
           "$type": "shadow",
           "$value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+          "$description": "Subtle shadow for slight elevation",
           "valuesByMode": {
             "Light": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
             "Dark": "0 1px 2px 0 rgb(0 0 0 / 0.3)"
-          },
-          "$description": "Subtle shadow for slight elevation"
+          }
         },
         "shadow.base": {
           "$type": "shadow",
           "$value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+          "$description": "Default shadow for cards and raised elements",
           "valuesByMode": {
             "Light": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
             "Dark": "0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4)"
-          },
-          "$description": "Default shadow for cards and raised elements"
+          }
         },
         "shadow.md": {
           "$type": "shadow",
           "$value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+          "$description": "Medium shadow for dropdowns and popovers",
           "valuesByMode": {
             "Light": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
             "Dark": "0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4)"
-          },
-          "$description": "Medium shadow for dropdowns and popovers"
+          }
         },
         "shadow.lg": {
           "$type": "shadow",
           "$value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+          "$description": "Large shadow for modals and overlays",
           "valuesByMode": {
             "Light": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
             "Dark": "0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4)"
-          },
-          "$description": "Large shadow for modals and overlays"
+          }
         },
         "shadow.xl": {
           "$type": "shadow",
           "$value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+          "$description": "Extra large shadow for maximum elevation",
           "valuesByMode": {
             "Light": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
             "Dark": "0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4)"
-          },
-          "$description": "Extra large shadow for maximum elevation"
+          }
         },
         "shadow.inner": {
           "$type": "shadow",
           "$value": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
+          "$description": "Inner shadow for recessed elements",
           "valuesByMode": {
             "Light": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
             "Dark": "inset 0 2px 4px 0 rgb(0 0 0 / 0.2)"
-          },
-          "$description": "Inner shadow for recessed elements"
+          }
         },
         "transition.duration.instant": {
           "$type": "duration",
           "$value": "0ms",
+          "$description": "Instant transition (no animation)",
           "valuesByMode": {
             "Light": "0ms",
             "Dark": "0ms"
-          },
-          "$description": "Instant transition (no animation)"
+          }
         },
         "transition.duration.fast": {
           "$type": "duration",
           "$value": "150ms",
+          "$description": "Fast transition for micro-interactions",
           "valuesByMode": {
             "Light": "150ms",
             "Dark": "150ms"
-          },
-          "$description": "Fast transition for micro-interactions"
+          }
         },
         "transition.duration.normal": {
           "$type": "duration",
           "$value": "250ms",
+          "$description": "Normal transition duration",
           "valuesByMode": {
             "Light": "250ms",
             "Dark": "250ms"
-          },
-          "$description": "Normal transition duration"
+          }
         },
         "transition.duration.slow": {
           "$type": "duration",
           "$value": "400ms",
+          "$description": "Slow transition for emphasized changes",
           "valuesByMode": {
             "Light": "400ms",
             "Dark": "400ms"
-          },
-          "$description": "Slow transition for emphasized changes"
-        },
-        "transition.easing.default": {
-          "$type": "cubicBezier",
-          "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
-          "valuesByMode": {
-            "Light": "cubic-bezier(0.4, 0, 0.2, 1)",
-            "Dark": "cubic-bezier(0.4, 0, 0.2, 1)"
-          },
-          "$description": "Default easing for most transitions"
-        },
-        "transition.easing.in": {
-          "$type": "cubicBezier",
-          "$value": "cubic-bezier(0.4, 0, 1, 1)",
-          "valuesByMode": {
-            "Light": "cubic-bezier(0.4, 0, 1, 1)",
-            "Dark": "cubic-bezier(0.4, 0, 1, 1)"
-          },
-          "$description": "Ease-in for elements entering"
-        },
-        "transition.easing.out": {
-          "$type": "cubicBezier",
-          "$value": "cubic-bezier(0, 0, 0.2, 1)",
-          "valuesByMode": {
-            "Light": "cubic-bezier(0, 0, 0.2, 1)",
-            "Dark": "cubic-bezier(0, 0, 0.2, 1)"
-          },
-          "$description": "Ease-out for elements exiting"
-        },
-        "transition.easing.in-out": {
-          "$type": "cubicBezier",
-          "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
-          "valuesByMode": {
-            "Light": "cubic-bezier(0.4, 0, 0.2, 1)",
-            "Dark": "cubic-bezier(0.4, 0, 0.2, 1)"
-          },
-          "$description": "Ease-in-out for symmetric transitions"
+          }
         },
         "z-index.dropdown": {
           "$type": "number",
           "$value": 1000,
+          "$description": "Dropdowns and popovers",
           "valuesByMode": {
             "Light": 1000,
             "Dark": 1000
-          },
-          "$description": "Dropdowns and popovers"
+          }
         },
         "z-index.sticky": {
           "$type": "number",
           "$value": 1020,
+          "$description": "Sticky headers and footers",
           "valuesByMode": {
             "Light": 1020,
             "Dark": 1020
-          },
-          "$description": "Sticky headers and footers"
+          }
         },
         "z-index.modal": {
           "$type": "number",
           "$value": 1050,
+          "$description": "Modal dialogs",
           "valuesByMode": {
             "Light": 1050,
             "Dark": 1050
-          },
-          "$description": "Modal dialogs"
+          }
         },
         "z-index.toast": {
           "$type": "number",
           "$value": 1090,
+          "$description": "Toast notifications",
           "valuesByMode": {
             "Light": 1090,
             "Dark": 1090
-          },
-          "$description": "Toast notifications"
+          }
         },
         "z-index.tooltip": {
           "$type": "number",
           "$value": 1100,
+          "$description": "Tooltips (highest)",
           "valuesByMode": {
             "Light": 1100,
             "Dark": 1100
-          },
-          "$description": "Tooltips (highest)"
+          }
         },
         "state.opacity.disabled": {
           "$type": "number",
           "$value": "{opacity.50}",
+          "$description": "Opacity for disabled elements",
           "valuesByMode": {
             "Light": "{opacity.50}",
             "Dark": "{opacity.50}"
-          },
-          "$description": "Opacity for disabled elements"
+          }
         },
         "state.opacity.muted": {
           "$type": "number",
           "$value": "{opacity.70}",
+          "$description": "Opacity for muted/secondary elements",
           "valuesByMode": {
             "Light": "{opacity.70}",
             "Dark": "{opacity.70}"
-          },
-          "$description": "Opacity for muted/secondary elements"
+          }
         },
         "state.opacity.subtle": {
           "$type": "number",
           "$value": "{opacity.90}",
+          "$description": "Opacity for subtle elements",
           "valuesByMode": {
             "Light": "{opacity.90}",
             "Dark": "{opacity.90}"
-          },
-          "$description": "Opacity for subtle elements"
+          }
         },
         "state.opacity.hover": {
           "$type": "number",
           "$value": "{opacity.100}",
+          "$description": "Opacity for hover state (full visibility)",
           "valuesByMode": {
             "Light": "{opacity.100}",
             "Dark": "{opacity.100}"
-          },
-          "$description": "Opacity for hover state (full visibility)"
+          }
         },
         "state.opacity.overlay": {
           "$type": "number",
           "$value": "{opacity.80}",
+          "$description": "Opacity for overlay backgrounds",
           "valuesByMode": {
             "Light": "{opacity.80}",
             "Dark": "{opacity.80}"
-          },
-          "$description": "Opacity for overlay backgrounds"
+          }
         },
         "focus-ring.width": {
           "$type": "dimension",
           "$value": "2px",
+          "$description": "Width of focus ring outline",
           "valuesByMode": {
             "Light": "2px",
             "Dark": "2px"
-          },
-          "$description": "Width of focus ring outline"
+          }
         },
         "focus-ring.offset": {
           "$type": "dimension",
           "$value": "2px",
+          "$description": "Offset of focus ring from element",
           "valuesByMode": {
             "Light": "2px",
             "Dark": "2px"
-          },
-          "$description": "Offset of focus ring from element"
+          }
         },
         "icon.size.xs": {
           "$type": "dimension",
           "$value": "{spacing.150}",
+          "$description": "Extra small icon size (12px)",
           "valuesByMode": {
             "Light": "{spacing.150}",
             "Dark": "{spacing.150}"
-          },
-          "$description": "Extra small icon size (12px)"
+          }
         },
         "icon.size.sm": {
           "$type": "dimension",
           "$value": "{spacing.200}",
+          "$description": "Small icon size (16px)",
           "valuesByMode": {
             "Light": "{spacing.200}",
             "Dark": "{spacing.200}"
-          },
-          "$description": "Small icon size (16px)"
+          }
         },
         "icon.size.md": {
           "$type": "dimension",
           "$value": "{spacing.300}",
+          "$description": "Medium icon size (24px)",
           "valuesByMode": {
             "Light": "{spacing.300}",
             "Dark": "{spacing.300}"
-          },
-          "$description": "Medium icon size (24px)"
+          }
         },
         "icon.size.lg": {
           "$type": "dimension",
           "$value": "{spacing.400}",
+          "$description": "Large icon size (32px)",
           "valuesByMode": {
             "Light": "{spacing.400}",
             "Dark": "{spacing.400}"
-          },
-          "$description": "Large icon size (32px)"
+          }
         },
         "icon.size.xl": {
           "$type": "dimension",
           "$value": "{spacing.500}",
+          "$description": "Extra large icon size (40px)",
           "valuesByMode": {
             "Light": "{spacing.500}",
             "Dark": "{spacing.500}"
-          },
-          "$description": "Extra large icon size (40px)"
+          }
+        },
+        "transition.easing.default": {
+          "$type": "cubicBezier",
+          "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+          "$description": "Default easing for most transitions",
+          "valuesByMode": {
+            "Light": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "Dark": "cubic-bezier(0.4, 0, 0.2, 1)"
+          }
+        },
+        "transition.easing.in": {
+          "$type": "cubicBezier",
+          "$value": "cubic-bezier(0.4, 0, 1, 1)",
+          "$description": "Ease-in for elements entering",
+          "valuesByMode": {
+            "Light": "cubic-bezier(0.4, 0, 1, 1)",
+            "Dark": "cubic-bezier(0.4, 0, 1, 1)"
+          }
+        },
+        "transition.easing.out": {
+          "$type": "cubicBezier",
+          "$value": "cubic-bezier(0, 0, 0.2, 1)",
+          "$description": "Ease-out for elements exiting",
+          "valuesByMode": {
+            "Light": "cubic-bezier(0, 0, 0.2, 1)",
+            "Dark": "cubic-bezier(0, 0, 0.2, 1)"
+          }
+        },
+        "transition.easing.in-out": {
+          "$type": "cubicBezier",
+          "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+          "$description": "Ease-in-out for symmetric transitions",
+          "valuesByMode": {
+            "Light": "cubic-bezier(0.4, 0, 0.2, 1)",
+            "Dark": "cubic-bezier(0.4, 0, 0.2, 1)"
+          }
         }
       }
     }
