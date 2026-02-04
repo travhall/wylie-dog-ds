@@ -204,6 +204,102 @@
             "Dark": "{color.interactive.hover}"
           }
         },
+        "badge.default.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.default.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "badge.secondary.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.secondary.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "badge.success.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.success.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "badge.warning.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.warning.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "badge.destructive.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.destructive.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "badge.outline.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.outline.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
         "badge.padding.sm": {
           "$type": "spacing",
           "$value": "{spacing.050}",
@@ -318,10 +414,10 @@
         },
         "button.secondary.background-active": {
           "$type": "color",
-          "$value": "{color.gray.300}",
+          "$value": "{color.interactive.secondary-active}",
           "valuesByMode": {
-            "Light": "{color.gray.300}",
-            "Dark": "{color.gray.700}"
+            "Light": "{color.interactive.secondary-active}",
+            "Dark": "{color.interactive.secondary-active}"
           }
         },
         "button.secondary.text": {
@@ -382,10 +478,10 @@
         },
         "button.outline.background-hover": {
           "$type": "color",
-          "$value": "{color.interactive.secondary}",
+          "$value": "{color.background.secondary}",
           "valuesByMode": {
-            "Light": "{color.interactive.secondary}",
-            "Dark": "{color.interactive.secondary}"
+            "Light": "{color.background.secondary}",
+            "Dark": "{color.background.secondary}"
           }
         },
         "button.outline.text": {
@@ -546,6 +642,30 @@
           "valuesByMode": {
             "Light": "{color.border.focus}",
             "Dark": "{color.border.focus}"
+          }
+        },
+        "card.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "card.background-active": {
+          "$type": "color",
+          "$value": "{color.interactive.pressed}",
+          "valuesByMode": {
+            "Light": "{color.interactive.pressed}",
+            "Dark": "{color.interactive.pressed}"
+          }
+        },
+        "card.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
           }
         },
         "card.padding": {
@@ -754,14 +874,6 @@
           "valuesByMode": {
             "Light": "{typography.font-size.lg}",
             "Dark": "{typography.font-size.lg}"
-          }
-        },
-        "button.outline.hover": {
-          "$type": "color",
-          "$value": "{color.background.secondary}",
-          "valuesByMode": {
-            "Light": "{color.background.secondary}",
-            "Dark": "{color.background.secondary}"
           }
         },
         "button.link.text": {
@@ -988,12 +1100,12 @@
             "Dark": "{color.background.primary}"
           }
         },
-        "navigation.hover": {
+        "navigation.background-hover": {
           "$type": "color",
-          "$value": "{color.background.secondary}",
+          "$value": "{color.interactive.hover}",
           "valuesByMode": {
-            "Light": "{color.background.secondary}",
-            "Dark": "{color.background.secondary}"
+            "Light": "{color.interactive.hover}",
+            "Dark": "{color.interactive.hover}"
           }
         },
         "navigation.text-hover": {
@@ -1206,10 +1318,10 @@
         },
         "tabs.trigger.indicator.color": {
           "$type": "color",
-          "$value": "{color.primary.base}",
+          "$value": "{color.interactive.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.base}",
-            "Dark": "{color.primary.base}"
+            "Light": "{color.interactive.primary}",
+            "Dark": "{color.interactive.primary}"
           }
         },
         "collapsible.background": {
@@ -1261,6 +1373,38 @@
           }
         },
         "calendar.day-text-hover": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "calendar.day-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "calendar.day-text-focus": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "calendar.nav-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "calendar.nav-text-focus": {
           "$type": "color",
           "$value": "{color.text.primary}",
           "valuesByMode": {
@@ -1450,6 +1594,22 @@
           "valuesByMode": {
             "Light": "{color.interactive.primary-hover}",
             "Dark": "{color.interactive.primary-hover}"
+          }
+        },
+        "breadcrumb.link-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "breadcrumb.link-disabled": {
+          "$type": "color",
+          "$value": "{color.text.disabled}",
+          "valuesByMode": {
+            "Light": "{color.text.disabled}",
+            "Dark": "{color.text.disabled}"
           }
         },
         "breadcrumb.text": {
@@ -1644,7 +1804,7 @@
             "Dark": "{color.interactive.primary}"
           }
         },
-        "pagination.hover": {
+        "pagination.background-hover": {
           "$type": "color",
           "$value": "{color.interactive.secondary}",
           "valuesByMode": {
@@ -1892,6 +2052,14 @@
             "Dark": "{color.interactive.secondary}"
           }
         },
+        "table.row-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
         "table.row-selected": {
           "$type": "color",
           "$value": "{color.interactive.secondary}",
@@ -1948,7 +2116,7 @@
             "Dark": "{color.border.primary}"
           }
         },
-        "toggle.hover": {
+        "toggle.background-hover": {
           "$type": "color",
           "$value": "{color.interactive.secondary}",
           "valuesByMode": {

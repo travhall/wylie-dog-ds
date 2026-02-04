@@ -391,6 +391,18 @@
   --color-badge-warning-background-hover: oklch(0.553 0.174 38.5);
   --color-badge-destructive-background-hover: oklch(0.505 0.19 27.51);
   --color-badge-outline-background-hover: oklch(0.984 0.003 248.29);
+  --color-badge-default-background-focus: oklch(0.97 0.014 254.66);
+  --color-badge-default-background-disabled: oklch(0.984 0.003 248.29);
+  --color-badge-secondary-background-focus: oklch(0.97 0.014 254.66);
+  --color-badge-secondary-background-disabled: oklch(0.984 0.003 248.29);
+  --color-badge-success-background-focus: oklch(0.97 0.014 254.66);
+  --color-badge-success-background-disabled: oklch(0.984 0.003 248.29);
+  --color-badge-warning-background-focus: oklch(0.97 0.014 254.66);
+  --color-badge-warning-background-disabled: oklch(0.984 0.003 248.29);
+  --color-badge-destructive-background-focus: oklch(0.97 0.014 254.66);
+  --color-badge-destructive-background-disabled: oklch(0.984 0.003 248.29);
+  --color-badge-outline-background-focus: oklch(0.97 0.014 254.66);
+  --color-badge-outline-background-disabled: oklch(0.984 0.003 248.29);
   --spacing-badge-padding-sm: 4px;
   --spacing-badge-padding-md: 8px;
   --spacing-badge-padding-lg: 16px;
@@ -434,6 +446,9 @@
   --color-card-border: oklch(0.929 0.013 255.56);
   --color-card-background-hover: oklch(0.984 0.003 248.29);
   --color-card-border-hover: oklch(0.623 0.188 259.82);
+  --color-card-background-focus: oklch(0.97 0.014 254.66);
+  --color-card-background-active: oklch(0.968 0.007 248.08);
+  --color-card-background-disabled: oklch(0.984 0.003 248.29);
   --spacing-card-padding: 32px;
   --spacing-card-gap: 16px;
   --spacing-card-radius: 8px;
@@ -460,7 +475,6 @@
   --font-size-input-font-size-sm: 14px;
   --font-size-input-font-size-md: 16px;
   --font-size-input-font-size-lg: 18px;
-  --color-button-outline-hover: oklch(0.984 0.003 248.29);
   --color-button-link-text: oklch(0.546 0.215 262.89);
   --color-alert-default-background: oklch(0.984 0.003 248.29);
   --color-alert-default-border: oklch(0.929 0.013 255.56);
@@ -489,7 +503,7 @@
   --color-menubar-separator: oklch(0.929 0.013 255.56);
   --color-menubar-shortcut: oklch(0.446 0.037 257.29);
   --color-navigation-background: oklch(1 0 0);
-  --color-navigation-hover: oklch(0.984 0.003 248.29);
+  --color-navigation-background-hover: oklch(0.984 0.003 248.29);
   --color-navigation-text-hover: oklch(0.279 0.037 260.04);
   --color-navigation-focus: oklch(0.984 0.003 248.29);
   --color-navigation-text-focus: oklch(0.279 0.037 260.04);
@@ -516,7 +530,7 @@
   --color-tabs-trigger-background-hover: oklch(0.968 0.007 248.08);
   --color-tabs-trigger-text-hover: oklch(0.279 0.037 260.04);
   --color-tabs-list-border-color: oklch(0.929 0.013 255.56);
-  --color-tabs-trigger-indicator-color: oklch(0.553 0.174 38.5);
+  --color-tabs-trigger-indicator-color: oklch(0.546 0.215 262.89);
   --color-collapsible-background: oklch(1 0 0);
   --color-calendar-nav-border: oklch(0.929 0.013 255.56);
   --color-calendar-nav-hover: oklch(0.984 0.003 248.29);
@@ -524,6 +538,10 @@
   --color-calendar-header-text: oklch(0.446 0.037 257.29);
   --color-calendar-day-hover: oklch(0.984 0.003 248.29);
   --color-calendar-day-text-hover: oklch(0.279 0.037 260.04);
+  --color-calendar-day-focus: oklch(0.97 0.014 254.66);
+  --color-calendar-day-text-focus: oklch(0.279 0.037 260.04);
+  --color-calendar-nav-focus: oklch(0.97 0.014 254.66);
+  --color-calendar-nav-text-focus: oklch(0.279 0.037 260.04);
   --color-calendar-day-selected: oklch(0.546 0.215 262.89);
   --color-calendar-day-text-selected: oklch(1 0 0);
   --color-accordion-border: oklch(0.929 0.013 255.56);
@@ -547,6 +565,8 @@
   --color-breadcrumb-current: oklch(0.279 0.037 260.04);
   --color-breadcrumb-link: oklch(0.546 0.215 262.89);
   --color-breadcrumb-link-hover: oklch(0.488 0.217 264.39);
+  --color-breadcrumb-link-focus: oklch(0.97 0.014 254.66);
+  --color-breadcrumb-link-disabled: oklch(0.869 0.02 252.93);
   --color-breadcrumb-text: oklch(0.446 0.037 257.29);
   --color-carousel-nav-background: oklch(1 0 0);
   --color-carousel-nav-border: oklch(0.929 0.013 255.56);
@@ -571,7 +591,7 @@
   --color-hover-card-border: oklch(0.929 0.013 255.56);
   --color-hover-card-text: oklch(0.279 0.037 260.04);
   --color-pagination-active: oklch(0.546 0.215 262.89);
-  --color-pagination-hover: oklch(0.984 0.003 248.29);
+  --color-pagination-background-hover: oklch(0.984 0.003 248.29);
   --color-pagination-text: oklch(0.279 0.037 260.04);
   --color-pagination-text-active: oklch(1 0 0);
   --color-pagination-text-hover: oklch(0.279 0.037 260.04);
@@ -602,6 +622,7 @@
   --color-table-footer-background: oklch(0.968 0.007 248.08);
   --color-table-header-text: oklch(0.279 0.037 260.04);
   --color-table-row-hover: oklch(0.984 0.003 248.29);
+  --color-table-row-focus: oklch(0.97 0.014 254.66);
   --color-table-row-selected: oklch(0.984 0.003 248.29);
   --color-toast-action-hover: oklch(0.984 0.003 248.29);
   --color-toast-background: oklch(1 0 0);
@@ -609,7 +630,7 @@
   --color-toast-close-hover: oklch(0.279 0.037 260.04);
   --color-toast-text: oklch(0.279 0.037 260.04);
   --color-toggle-border: oklch(0.929 0.013 255.56);
-  --color-toggle-hover: oklch(0.984 0.003 248.29);
+  --color-toggle-background-hover: oklch(0.984 0.003 248.29);
   --color-toggle-pressed: oklch(0.546 0.215 262.89);
   --color-toggle-text: oklch(0.279 0.037 260.04);
   --color-toggle-text-hover: oklch(0.279 0.037 260.04);
@@ -1383,6 +1404,18 @@
     --color-badge-warning-background-hover: oklch(0.553 0.174 38.5);
     --color-badge-destructive-background-hover: oklch(0.505 0.19 27.51);
     --color-badge-outline-background-hover: oklch(0.984 0.003 248.29);
+    --color-badge-default-background-focus: oklch(0.97 0.014 254.66);
+    --color-badge-default-background-disabled: oklch(0.984 0.003 248.29);
+    --color-badge-secondary-background-focus: oklch(0.97 0.014 254.66);
+    --color-badge-secondary-background-disabled: oklch(0.984 0.003 248.29);
+    --color-badge-success-background-focus: oklch(0.97 0.014 254.66);
+    --color-badge-success-background-disabled: oklch(0.984 0.003 248.29);
+    --color-badge-warning-background-focus: oklch(0.97 0.014 254.66);
+    --color-badge-warning-background-disabled: oklch(0.984 0.003 248.29);
+    --color-badge-destructive-background-focus: oklch(0.97 0.014 254.66);
+    --color-badge-destructive-background-disabled: oklch(0.984 0.003 248.29);
+    --color-badge-outline-background-focus: oklch(0.97 0.014 254.66);
+    --color-badge-outline-background-disabled: oklch(0.984 0.003 248.29);
     --spacing-badge-padding-sm: 4px;
     --spacing-badge-padding-md: 8px;
     --spacing-badge-padding-lg: 16px;
@@ -1426,6 +1459,9 @@
     --color-card-border: oklch(0.929 0.013 255.56);
     --color-card-background-hover: oklch(0.984 0.003 248.29);
     --color-card-border-hover: oklch(0.623 0.188 259.82);
+    --color-card-background-focus: oklch(0.97 0.014 254.66);
+    --color-card-background-active: oklch(0.968 0.007 248.08);
+    --color-card-background-disabled: oklch(0.984 0.003 248.29);
     --spacing-card-padding: 32px;
     --spacing-card-gap: 16px;
     --spacing-card-radius: 8px;
@@ -1452,7 +1488,6 @@
     --font-size-input-font-size-sm: 14px;
     --font-size-input-font-size-md: 16px;
     --font-size-input-font-size-lg: 18px;
-    --color-button-outline-hover: oklch(0.984 0.003 248.29);
     --color-button-link-text: oklch(0.546 0.215 262.89);
     --color-alert-default-background: oklch(0.984 0.003 248.29);
     --color-alert-default-border: oklch(0.929 0.013 255.56);
@@ -1481,7 +1516,7 @@
     --color-menubar-separator: oklch(0.929 0.013 255.56);
     --color-menubar-shortcut: oklch(0.446 0.037 257.29);
     --color-navigation-background: oklch(1 0 0);
-    --color-navigation-hover: oklch(0.984 0.003 248.29);
+    --color-navigation-background-hover: oklch(0.984 0.003 248.29);
     --color-navigation-text-hover: oklch(0.279 0.037 260.04);
     --color-navigation-focus: oklch(0.984 0.003 248.29);
     --color-navigation-text-focus: oklch(0.279 0.037 260.04);
@@ -1508,7 +1543,7 @@
     --color-tabs-trigger-background-hover: oklch(0.968 0.007 248.08);
     --color-tabs-trigger-text-hover: oklch(0.279 0.037 260.04);
     --color-tabs-list-border-color: oklch(0.929 0.013 255.56);
-    --color-tabs-trigger-indicator-color: oklch(0.553 0.174 38.5);
+    --color-tabs-trigger-indicator-color: oklch(0.546 0.215 262.89);
     --color-collapsible-background: oklch(1 0 0);
     --color-calendar-nav-border: oklch(0.929 0.013 255.56);
     --color-calendar-nav-hover: oklch(0.984 0.003 248.29);
@@ -1516,6 +1551,10 @@
     --color-calendar-header-text: oklch(0.446 0.037 257.29);
     --color-calendar-day-hover: oklch(0.984 0.003 248.29);
     --color-calendar-day-text-hover: oklch(0.279 0.037 260.04);
+    --color-calendar-day-focus: oklch(0.97 0.014 254.66);
+    --color-calendar-day-text-focus: oklch(0.279 0.037 260.04);
+    --color-calendar-nav-focus: oklch(0.97 0.014 254.66);
+    --color-calendar-nav-text-focus: oklch(0.279 0.037 260.04);
     --color-calendar-day-selected: oklch(0.546 0.215 262.89);
     --color-calendar-day-text-selected: oklch(1 0 0);
     --color-accordion-border: oklch(0.929 0.013 255.56);
@@ -1539,6 +1578,8 @@
     --color-breadcrumb-current: oklch(0.279 0.037 260.04);
     --color-breadcrumb-link: oklch(0.546 0.215 262.89);
     --color-breadcrumb-link-hover: oklch(0.488 0.217 264.39);
+    --color-breadcrumb-link-focus: oklch(0.97 0.014 254.66);
+    --color-breadcrumb-link-disabled: oklch(0.869 0.02 252.93);
     --color-breadcrumb-text: oklch(0.446 0.037 257.29);
     --color-carousel-nav-background: oklch(1 0 0);
     --color-carousel-nav-border: oklch(0.929 0.013 255.56);
@@ -1563,7 +1604,7 @@
     --color-hover-card-border: oklch(0.929 0.013 255.56);
     --color-hover-card-text: oklch(0.279 0.037 260.04);
     --color-pagination-active: oklch(0.546 0.215 262.89);
-    --color-pagination-hover: oklch(0.984 0.003 248.29);
+    --color-pagination-background-hover: oklch(0.984 0.003 248.29);
     --color-pagination-text: oklch(0.279 0.037 260.04);
     --color-pagination-text-active: oklch(1 0 0);
     --color-pagination-text-hover: oklch(0.279 0.037 260.04);
@@ -1594,6 +1635,7 @@
     --color-table-footer-background: oklch(0.968 0.007 248.08);
     --color-table-header-text: oklch(0.279 0.037 260.04);
     --color-table-row-hover: oklch(0.984 0.003 248.29);
+    --color-table-row-focus: oklch(0.97 0.014 254.66);
     --color-table-row-selected: oklch(0.984 0.003 248.29);
     --color-toast-action-hover: oklch(0.984 0.003 248.29);
     --color-toast-background: oklch(1 0 0);
@@ -1601,7 +1643,7 @@
     --color-toast-close-hover: oklch(0.279 0.037 260.04);
     --color-toast-text: oklch(0.279 0.037 260.04);
     --color-toggle-border: oklch(0.929 0.013 255.56);
-    --color-toggle-hover: oklch(0.984 0.003 248.29);
+    --color-toggle-background-hover: oklch(0.984 0.003 248.29);
     --color-toggle-pressed: oklch(0.546 0.215 262.89);
     --color-toggle-text: oklch(0.279 0.037 260.04);
     --color-toggle-text-hover: oklch(0.279 0.037 260.04);

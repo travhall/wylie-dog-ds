@@ -95,6 +95,54 @@
     "$type": "color",
     "$value": "{color.interactive.hover}"
   },
+  "badge.default.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.default.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "badge.secondary.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.secondary.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "badge.success.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.success.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "badge.warning.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.warning.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "badge.destructive.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.destructive.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "badge.outline.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.outline.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
   "badge.padding.sm": {
     "$type": "spacing",
     "$value": "{spacing.050}"
@@ -153,7 +201,7 @@
   },
   "button.secondary.background-active": {
     "$type": "color",
-    "$value": "{color.gray.300}"
+    "$value": "{color.interactive.secondary-active}"
   },
   "button.secondary.text": {
     "$type": "color",
@@ -185,7 +233,7 @@
   },
   "button.outline.background-hover": {
     "$type": "color",
-    "$value": "{color.interactive.secondary}"
+    "$value": "{color.background.secondary}"
   },
   "button.outline.text": {
     "$type": "color",
@@ -266,6 +314,18 @@
   "card.border-hover": {
     "$type": "color",
     "$value": "{color.border.focus}"
+  },
+  "card.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "card.background-active": {
+    "$type": "color",
+    "$value": "{color.interactive.pressed}"
+  },
+  "card.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
   },
   "card.padding": {
     "$type": "spacing",
@@ -370,10 +430,6 @@
   "input.font-size.lg": {
     "$type": "fontSize",
     "$value": "{typography.font-size.lg}"
-  },
-  "button.outline.hover": {
-    "$type": "color",
-    "$value": "{color.background.secondary}"
   },
   "button.link.text": {
     "$type": "color",
@@ -487,9 +543,9 @@
     "$type": "color",
     "$value": "{color.background.primary}"
   },
-  "navigation.hover": {
+  "navigation.background-hover": {
     "$type": "color",
-    "$value": "{color.background.secondary}"
+    "$value": "{color.interactive.hover}"
   },
   "navigation.text-hover": {
     "$type": "color",
@@ -597,7 +653,7 @@
   },
   "tabs.trigger.indicator.color": {
     "$type": "color",
-    "$value": "{color.primary.base}"
+    "$value": "{color.interactive.primary}"
   },
   "collapsible.background": {
     "$type": "color",
@@ -624,6 +680,22 @@
     "$value": "{color.interactive.secondary}"
   },
   "calendar.day-text-hover": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "calendar.day-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "calendar.day-text-focus": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "calendar.nav-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "calendar.nav-text-focus": {
     "$type": "color",
     "$value": "{color.text.primary}"
   },
@@ -718,6 +790,14 @@
   "breadcrumb.link-hover": {
     "$type": "color",
     "$value": "{color.interactive.primary-hover}"
+  },
+  "breadcrumb.link-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "breadcrumb.link-disabled": {
+    "$type": "color",
+    "$value": "{color.text.disabled}"
   },
   "breadcrumb.text": {
     "$type": "color",
@@ -815,7 +895,7 @@
     "$type": "color",
     "$value": "{color.interactive.primary}"
   },
-  "pagination.hover": {
+  "pagination.background-hover": {
     "$type": "color",
     "$value": "{color.interactive.secondary}"
   },
@@ -939,6 +1019,10 @@
     "$type": "color",
     "$value": "{color.interactive.secondary}"
   },
+  "table.row-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
   "table.row-selected": {
     "$type": "color",
     "$value": "{color.interactive.secondary}"
@@ -967,7 +1051,7 @@
     "$type": "color",
     "$value": "{color.border.primary}"
   },
-  "toggle.hover": {
+  "toggle.background-hover": {
     "$type": "color",
     "$value": "{color.interactive.secondary}"
   },
