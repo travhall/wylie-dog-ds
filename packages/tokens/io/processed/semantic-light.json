@@ -339,46 +339,6 @@
     "$value": "{color.yellow.300}",
     "$description": "Highlight status for emphasis"
   },
-  "color.link.default": {
-    "$type": "color",
-    "$value": "{color.blue.600}",
-    "$description": "Default link color"
-  },
-  "color.link.hover": {
-    "$type": "color",
-    "$value": "{color.blue.700}",
-    "$description": "Link hover color"
-  },
-  "color.link.visited": {
-    "$type": "color",
-    "$value": "{color.purple.600}",
-    "$description": "Visited link color"
-  },
-  "color.link.disabled": {
-    "$type": "color",
-    "$value": "{color.gray.400}",
-    "$description": "Disabled link color"
-  },
-  "color.input.background": {
-    "$type": "color",
-    "$value": "{color.gray.50}",
-    "$description": "Input field background color"
-  },
-  "color.input.border": {
-    "$type": "color",
-    "$value": "{color.gray.300}",
-    "$description": "Input field border color"
-  },
-  "color.input.text": {
-    "$type": "color",
-    "$value": "{color.gray.900}",
-    "$description": "Input field text color"
-  },
-  "color.input.placeholder": {
-    "$type": "color",
-    "$value": "{color.gray.400}",
-    "$description": "Input field placeholder text color"
-  },
   "color.interactive.hover": {
     "$type": "color",
     "$value": "{color.gray.100}",
@@ -398,11 +358,6 @@
     "$type": "color",
     "$value": "{color.gray.100}",
     "$description": "Disabled state background"
-  },
-  "color.text.on-interactive": {
-    "$type": "color",
-    "$value": "{color.gray.900}",
-    "$description": "Text color on interactive backgrounds"
   },
   "shadow.none": {
     "$type": "shadow",
@@ -458,26 +413,6 @@
     "$type": "duration",
     "$value": "400ms",
     "$description": "Slow transition for emphasized changes"
-  },
-  "transition.easing.default": {
-    "$type": "cubicBezier",
-    "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
-    "$description": "Default easing for most transitions"
-  },
-  "transition.easing.in": {
-    "$type": "cubicBezier",
-    "$value": "cubic-bezier(0.4, 0, 1, 1)",
-    "$description": "Ease-in for elements entering"
-  },
-  "transition.easing.out": {
-    "$type": "cubicBezier",
-    "$value": "cubic-bezier(0, 0, 0.2, 1)",
-    "$description": "Ease-out for elements exiting"
-  },
-  "transition.easing.in-out": {
-    "$type": "cubicBezier",
-    "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
-    "$description": "Ease-in-out for symmetric transitions"
   },
   "z-index.dropdown": {
     "$type": "number",
@@ -563,5 +498,25 @@
     "$type": "dimension",
     "$value": "{spacing.500}",
     "$description": "Extra large icon size (40px)"
+  },
+  "transition.easing.default": {
+    "$type": "cubicBezier",
+    "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "$description": "Default easing for most transitions"
+  },
+  "transition.easing.in": {
+    "$type": "cubicBezier",
+    "$value": "cubic-bezier(0.4, 0, 1, 1)",
+    "$description": "Ease-in for elements entering"
+  },
+  "transition.easing.out": {
+    "$type": "cubicBezier",
+    "$value": "cubic-bezier(0, 0, 0.2, 1)",
+    "$description": "Ease-out for elements exiting"
+  },
+  "transition.easing.in-out": {
+    "$type": "cubicBezier",
+    "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "$description": "Ease-in-out for symmetric transitions"
   }
 }

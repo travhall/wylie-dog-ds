@@ -2753,18 +2753,6 @@
         "type": "color",
         "variable": "var(--color-text-info)",
         "description": "Informational text color"
-      },
-      "color-text-on-interactive": {
-        "name": "colorTextOnInteractive",
-        "path": [
-          "color",
-          "text",
-          "on-interactive"
-        ],
-        "value": "oklch(0.279 0.037 260.04)",
-        "type": "color",
-        "variable": "var(--color-text-on-interactive)",
-        "description": "Text color on interactive backgrounds"
       }
     },
     "border": {
@@ -3337,102 +3325,6 @@
         "type": "color",
         "variable": "var(--color-neutral-on)",
         "description": "Text color on neutral backgrounds"
-      },
-      "color-link-default": {
-        "name": "colorLinkDefault",
-        "path": [
-          "color",
-          "link",
-          "default"
-        ],
-        "value": "oklch(0.546 0.215 262.89)",
-        "type": "color",
-        "variable": "var(--color-link-default)",
-        "description": "Default link color"
-      },
-      "color-link-hover": {
-        "name": "colorLinkHover",
-        "path": [
-          "color",
-          "link",
-          "hover"
-        ],
-        "value": "oklch(0.488 0.217 264.39)",
-        "type": "color",
-        "variable": "var(--color-link-hover)",
-        "description": "Link hover color"
-      },
-      "color-link-visited": {
-        "name": "colorLinkVisited",
-        "path": [
-          "color",
-          "link",
-          "visited"
-        ],
-        "value": "oklch(0.558 0.252 302.25)",
-        "type": "color",
-        "variable": "var(--color-link-visited)",
-        "description": "Visited link color"
-      },
-      "color-link-disabled": {
-        "name": "colorLinkDisabled",
-        "path": [
-          "color",
-          "link",
-          "disabled"
-        ],
-        "value": "oklch(0.869 0.02 252.93)",
-        "type": "color",
-        "variable": "var(--color-link-disabled)",
-        "description": "Disabled link color"
-      },
-      "color-input-background": {
-        "name": "colorInputBackground",
-        "path": [
-          "color",
-          "input",
-          "background"
-        ],
-        "value": "oklch(1 0 0)",
-        "type": "color",
-        "variable": "var(--color-input-background)",
-        "description": "Input field background color"
-      },
-      "color-input-border": {
-        "name": "colorInputBorder",
-        "path": [
-          "color",
-          "input",
-          "border"
-        ],
-        "value": "oklch(0.929 0.013 255.56)",
-        "type": "color",
-        "variable": "var(--color-input-border)",
-        "description": "Input field border color"
-      },
-      "color-input-text": {
-        "name": "colorInputText",
-        "path": [
-          "color",
-          "input",
-          "text"
-        ],
-        "value": "oklch(0.279 0.037 260.04)",
-        "type": "color",
-        "variable": "var(--color-input-text)",
-        "description": "Input field text color"
-      },
-      "color-input-placeholder": {
-        "name": "colorInputPlaceholder",
-        "path": [
-          "color",
-          "input",
-          "placeholder"
-        ],
-        "value": "oklch(0.869 0.02 252.93)",
-        "type": "color",
-        "variable": "var(--color-input-placeholder)",
-        "description": "Input field placeholder text color"
       }
     }
   },

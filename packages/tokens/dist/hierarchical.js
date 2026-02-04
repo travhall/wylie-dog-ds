@@ -201,8 +201,7 @@ export const color = {
     "success": "oklch(0.527 0.137 150.09)",
     "warning": "oklch(0.553 0.174 38.5)",
     "danger": "oklch(0.505 0.19 27.51)",
-    "info": "oklch(0.488 0.217 264.39)",
-    "on-interactive": "oklch(0.279 0.037 260.04)"
+    "info": "oklch(0.488 0.217 264.39)"
   },
   "border": {
     "primary": "oklch(0.929 0.013 255.56)",
@@ -264,18 +263,6 @@ export const color = {
     "danger": "oklch(0.577 0.215 27.32)",
     "info": "oklch(0.546 0.215 262.89)",
     "highlight": "oklch(0.881 0.117 100.39)"
-  },
-  "link": {
-    "default": "oklch(0.546 0.215 262.89)",
-    "hover": "oklch(0.488 0.217 264.39)",
-    "visited": "oklch(0.558 0.252 302.25)",
-    "disabled": "oklch(0.869 0.02 252.93)"
-  },
-  "input": {
-    "background": "oklch(1 0 0)",
-    "border": "oklch(0.929 0.013 255.56)",
-    "text": "oklch(0.279 0.037 260.04)",
-    "placeholder": "oklch(0.869 0.02 252.93)"
   }
 };
 
