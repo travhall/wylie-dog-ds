@@ -562,11 +562,11 @@ export const fontSize = {
   "shortcut-font-size": "12px",
   "trigger-font-size": "14px",
   "content-font-size": "14px",
-  "error-font-size": "12px",
-  "label-font-size": "14px",
   "group-heading-font-size": "12px",
   "day-font-size": "12px",
+  "label-font-size": "14px",
   "hint-font-size": "12px",
+  "error-font-size": "12px",
   "fieldset-legend-font-size": "16px"
 };
 

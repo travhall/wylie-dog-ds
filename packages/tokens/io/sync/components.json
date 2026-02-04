@@ -4060,22 +4060,6 @@
             "Dark": "{typography.font-size.xs}"
           }
         },
-        "form.error-font-size": {
-          "$type": "fontSize",
-          "$value": "{typography.font-size.xs}",
-          "valuesByMode": {
-            "Light": "{typography.font-size.xs}",
-            "Dark": "{typography.font-size.xs}"
-          }
-        },
-        "form.label-font-size": {
-          "$type": "fontSize",
-          "$value": "{typography.font-size.sm}",
-          "valuesByMode": {
-            "Light": "{typography.font-size.sm}",
-            "Dark": "{typography.font-size.sm}"
-          }
-        },
         "alert-dialog.content-gap": {
           "$type": "spacing",
           "$value": "{spacing.200}",

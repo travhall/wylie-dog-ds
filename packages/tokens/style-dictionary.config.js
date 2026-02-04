@@ -100,15 +100,13 @@ function generateCSSVariable(token, name) {
 
   // Handle font family contract pattern
   if (token.$type === "fontFamily") {
-    const extras = [];
     for (const [fontType, contractValue] of Object.entries(FONT_FAMILY_CONTRACTS)) {
       if (name.includes(fontType)) {
         value = contractValue;
-        extras.push({ varName: `--font-family-${fontType}`, value: contractValue });
         break;
       }
     }
-    return { varName: `--${name}`, value, extras };
+    return { varName: `--${name}`, value };
   }
 
   return { varName: `--${prefix}-${cleanName}`, value };
@@ -133,14 +131,6 @@ StyleDictionary.registerFormat({
 
       themeVariables.push(`  ${varName}: ${value};`);
       baseVariables.push(`    ${varName}: ${value};`);
-
-      // Handle any extra variables (e.g., font-family aliases)
-      if (extras) {
-        for (const extra of extras) {
-          themeVariables.push(`  ${extra.varName}: ${extra.value};`);
-          baseVariables.push(`    ${extra.varName}: ${extra.value};`);
-        }
-      }
     });
 
     if (options.mode === "dark") {

@@ -2023,14 +2023,6 @@
     "$type": "fontSize",
     "$value": "{typography.font-size.xs}"
   },
-  "form.error-font-size": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.xs}"
-  },
-  "form.label-font-size": {
-    "$type": "fontSize",
-    "$value": "{typography.font-size.sm}"
-  },
   "alert-dialog.content-gap": {
     "$type": "spacing",
     "$value": "{spacing.200}"

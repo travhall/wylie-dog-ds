@@ -7402,16 +7402,16 @@
         "variable": "var(--form-description-font-size)",
         "description": ""
       },
-      "form-error-font-size": {
-        "name": "formErrorFontSize",
+      "form-label-text": {
+        "name": "formLabelText",
         "path": [
           "form",
-          "error",
-          "font-size"
+          "label",
+          "text"
         ],
-        "value": "12px",
-        "type": "fontSize",
-        "variable": "var(--form-error-font-size)",
+        "value": "oklch(0.279 0.037 260.04)",
+        "type": "color",
+        "variable": "var(--color-form-label-text)",
         "description": ""
       },
       "form-label-font-size": {
@@ -7424,18 +7424,6 @@
         "value": "14px",
         "type": "fontSize",
         "variable": "var(--form-label-font-size)",
-        "description": ""
-      },
-      "form-label-text": {
-        "name": "formLabelText",
-        "path": [
-          "form",
-          "label",
-          "text"
-        ],
-        "value": "oklch(0.279 0.037 260.04)",
-        "type": "color",
-        "variable": "var(--color-form-label-text)",
         "description": ""
       },
       "form-label-font-weight": {
@@ -7484,6 +7472,18 @@
         "value": "oklch(0.505 0.19 27.5)",
         "type": "color",
         "variable": "var(--color-form-error-text)",
+        "description": ""
+      },
+      "form-error-font-size": {
+        "name": "formErrorFontSize",
+        "path": [
+          "form",
+          "error",
+          "font-size"
+        ],
+        "value": "12px",
+        "type": "fontSize",
+        "variable": "var(--form-error-font-size)",
         "description": ""
       },
       "form-required-color": {
