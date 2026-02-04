@@ -3,11 +3,11 @@
     "components": {
       "modes": [
         {
-          "modeId": "mode:components:light",
+          "modeId": "1249:6",
           "name": "Light"
         },
         {
-          "modeId": "mode:components:dark",
+          "modeId": "1249:7",
           "name": "Dark"
         }
       ],
@@ -154,150 +154,6 @@
           "valuesByMode": {
             "Light": "{color.border.primary}",
             "Dark": "{color.border.primary}"
-          }
-        },
-        "badge.default.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.primary-hover}",
-          "valuesByMode": {
-            "Light": "{color.interactive.primary-hover}",
-            "Dark": "{color.interactive.primary-hover}"
-          }
-        },
-        "badge.secondary.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.secondary-hover}",
-          "valuesByMode": {
-            "Light": "{color.interactive.secondary-hover}",
-            "Dark": "{color.interactive.secondary-hover}"
-          }
-        },
-        "badge.success.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.success-hover}",
-          "valuesByMode": {
-            "Light": "{color.interactive.success-hover}",
-            "Dark": "{color.interactive.success-hover}"
-          }
-        },
-        "badge.warning.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.warning-hover}",
-          "valuesByMode": {
-            "Light": "{color.interactive.warning-hover}",
-            "Dark": "{color.interactive.warning-hover}"
-          }
-        },
-        "badge.destructive.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.danger-hover}",
-          "valuesByMode": {
-            "Light": "{color.interactive.danger-hover}",
-            "Dark": "{color.interactive.danger-hover}"
-          }
-        },
-        "badge.outline.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.hover}",
-          "valuesByMode": {
-            "Light": "{color.interactive.hover}",
-            "Dark": "{color.interactive.hover}"
-          }
-        },
-        "badge.default.background-focus": {
-          "$type": "color",
-          "$value": "{color.interactive.focus}",
-          "valuesByMode": {
-            "Light": "{color.interactive.focus}",
-            "Dark": "{color.interactive.focus}"
-          }
-        },
-        "badge.default.background-disabled": {
-          "$type": "color",
-          "$value": "{color.interactive.disabled}",
-          "valuesByMode": {
-            "Light": "{color.interactive.disabled}",
-            "Dark": "{color.interactive.disabled}"
-          }
-        },
-        "badge.secondary.background-focus": {
-          "$type": "color",
-          "$value": "{color.interactive.focus}",
-          "valuesByMode": {
-            "Light": "{color.interactive.focus}",
-            "Dark": "{color.interactive.focus}"
-          }
-        },
-        "badge.secondary.background-disabled": {
-          "$type": "color",
-          "$value": "{color.interactive.disabled}",
-          "valuesByMode": {
-            "Light": "{color.interactive.disabled}",
-            "Dark": "{color.interactive.disabled}"
-          }
-        },
-        "badge.success.background-focus": {
-          "$type": "color",
-          "$value": "{color.interactive.focus}",
-          "valuesByMode": {
-            "Light": "{color.interactive.focus}",
-            "Dark": "{color.interactive.focus}"
-          }
-        },
-        "badge.success.background-disabled": {
-          "$type": "color",
-          "$value": "{color.interactive.disabled}",
-          "valuesByMode": {
-            "Light": "{color.interactive.disabled}",
-            "Dark": "{color.interactive.disabled}"
-          }
-        },
-        "badge.warning.background-focus": {
-          "$type": "color",
-          "$value": "{color.interactive.focus}",
-          "valuesByMode": {
-            "Light": "{color.interactive.focus}",
-            "Dark": "{color.interactive.focus}"
-          }
-        },
-        "badge.warning.background-disabled": {
-          "$type": "color",
-          "$value": "{color.interactive.disabled}",
-          "valuesByMode": {
-            "Light": "{color.interactive.disabled}",
-            "Dark": "{color.interactive.disabled}"
-          }
-        },
-        "badge.destructive.background-focus": {
-          "$type": "color",
-          "$value": "{color.interactive.focus}",
-          "valuesByMode": {
-            "Light": "{color.interactive.focus}",
-            "Dark": "{color.interactive.focus}"
-          }
-        },
-        "badge.destructive.background-disabled": {
-          "$type": "color",
-          "$value": "{color.interactive.disabled}",
-          "valuesByMode": {
-            "Light": "{color.interactive.disabled}",
-            "Dark": "{color.interactive.disabled}"
-          }
-        },
-        "badge.outline.background-focus": {
-          "$type": "color",
-          "$value": "{color.interactive.focus}",
-          "valuesByMode": {
-            "Light": "{color.interactive.focus}",
-            "Dark": "{color.interactive.focus}"
-          }
-        },
-        "badge.outline.background-disabled": {
-          "$type": "color",
-          "$value": "{color.interactive.disabled}",
-          "valuesByMode": {
-            "Light": "{color.interactive.disabled}",
-            "Dark": "{color.interactive.disabled}"
           }
         },
         "badge.padding.sm": {
@@ -626,46 +482,6 @@
           "valuesByMode": {
             "Light": "{color.border.primary}",
             "Dark": "{color.border.primary}"
-          }
-        },
-        "card.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.hover}",
-          "valuesByMode": {
-            "Light": "{color.interactive.hover}",
-            "Dark": "{color.interactive.hover}"
-          }
-        },
-        "card.border-hover": {
-          "$type": "color",
-          "$value": "{color.border.focus}",
-          "valuesByMode": {
-            "Light": "{color.border.focus}",
-            "Dark": "{color.border.focus}"
-          }
-        },
-        "card.background-focus": {
-          "$type": "color",
-          "$value": "{color.interactive.focus}",
-          "valuesByMode": {
-            "Light": "{color.interactive.focus}",
-            "Dark": "{color.interactive.focus}"
-          }
-        },
-        "card.background-active": {
-          "$type": "color",
-          "$value": "{color.interactive.pressed}",
-          "valuesByMode": {
-            "Light": "{color.interactive.pressed}",
-            "Dark": "{color.interactive.pressed}"
-          }
-        },
-        "card.background-disabled": {
-          "$type": "color",
-          "$value": "{color.interactive.disabled}",
-          "valuesByMode": {
-            "Light": "{color.interactive.disabled}",
-            "Dark": "{color.interactive.disabled}"
           }
         },
         "card.padding": {
@@ -1100,14 +916,6 @@
             "Dark": "{color.background.primary}"
           }
         },
-        "navigation.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.hover}",
-          "valuesByMode": {
-            "Light": "{color.interactive.hover}",
-            "Dark": "{color.interactive.hover}"
-          }
-        },
         "navigation.text-hover": {
           "$type": "color",
           "$value": "{color.text.primary}",
@@ -1380,38 +1188,6 @@
             "Dark": "{color.text.primary}"
           }
         },
-        "calendar.day-focus": {
-          "$type": "color",
-          "$value": "{color.interactive.focus}",
-          "valuesByMode": {
-            "Light": "{color.interactive.focus}",
-            "Dark": "{color.interactive.focus}"
-          }
-        },
-        "calendar.day-text-focus": {
-          "$type": "color",
-          "$value": "{color.text.primary}",
-          "valuesByMode": {
-            "Light": "{color.text.primary}",
-            "Dark": "{color.text.primary}"
-          }
-        },
-        "calendar.nav-focus": {
-          "$type": "color",
-          "$value": "{color.interactive.focus}",
-          "valuesByMode": {
-            "Light": "{color.interactive.focus}",
-            "Dark": "{color.interactive.focus}"
-          }
-        },
-        "calendar.nav-text-focus": {
-          "$type": "color",
-          "$value": "{color.text.primary}",
-          "valuesByMode": {
-            "Light": "{color.text.primary}",
-            "Dark": "{color.text.primary}"
-          }
-        },
         "calendar.day-selected": {
           "$type": "color",
           "$value": "{color.interactive.primary}",
@@ -1594,22 +1370,6 @@
           "valuesByMode": {
             "Light": "{color.interactive.primary-hover}",
             "Dark": "{color.interactive.primary-hover}"
-          }
-        },
-        "breadcrumb.link-focus": {
-          "$type": "color",
-          "$value": "{color.interactive.focus}",
-          "valuesByMode": {
-            "Light": "{color.interactive.focus}",
-            "Dark": "{color.interactive.focus}"
-          }
-        },
-        "breadcrumb.link-disabled": {
-          "$type": "color",
-          "$value": "{color.text.disabled}",
-          "valuesByMode": {
-            "Light": "{color.text.disabled}",
-            "Dark": "{color.text.disabled}"
           }
         },
         "breadcrumb.text": {
@@ -1804,14 +1564,6 @@
             "Dark": "{color.interactive.primary}"
           }
         },
-        "pagination.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.secondary}",
-          "valuesByMode": {
-            "Light": "{color.interactive.secondary}",
-            "Dark": "{color.interactive.secondary}"
-          }
-        },
         "pagination.text": {
           "$type": "color",
           "$value": "{color.text.primary}",
@@ -1850,14 +1602,6 @@
           "valuesByMode": {
             "Light": "{color.border.primary}",
             "Dark": "{color.border.primary}"
-          }
-        },
-        "popover.border-focus": {
-          "$type": "color",
-          "$value": "{color.border.focus}",
-          "valuesByMode": {
-            "Light": "{color.border.focus}",
-            "Dark": "{color.border.focus}"
           }
         },
         "popover.text": {
@@ -2052,14 +1796,6 @@
             "Dark": "{color.interactive.secondary}"
           }
         },
-        "table.row-focus": {
-          "$type": "color",
-          "$value": "{color.interactive.focus}",
-          "valuesByMode": {
-            "Light": "{color.interactive.focus}",
-            "Dark": "{color.interactive.focus}"
-          }
-        },
         "table.row-selected": {
           "$type": "color",
           "$value": "{color.interactive.secondary}",
@@ -2114,14 +1850,6 @@
           "valuesByMode": {
             "Light": "{color.border.primary}",
             "Dark": "{color.border.primary}"
-          }
-        },
-        "toggle.background-hover": {
-          "$type": "color",
-          "$value": "{color.interactive.secondary}",
-          "valuesByMode": {
-            "Light": "{color.interactive.secondary}",
-            "Dark": "{color.interactive.secondary}"
           }
         },
         "toggle.pressed": {
@@ -5084,6 +4812,78 @@
             "Dark": "{spacing.200}"
           }
         },
+        "badge.default.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.primary-hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.primary-hover}",
+            "Dark": "{color.interactive.primary-hover}"
+          }
+        },
+        "badge.secondary.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.secondary-hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.secondary-hover}",
+            "Dark": "{color.interactive.secondary-hover}"
+          }
+        },
+        "badge.success.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.success-hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.success-hover}",
+            "Dark": "{color.interactive.success-hover}"
+          }
+        },
+        "badge.warning.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.warning-hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.warning-hover}",
+            "Dark": "{color.interactive.warning-hover}"
+          }
+        },
+        "badge.destructive.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.danger-hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.danger-hover}",
+            "Dark": "{color.interactive.danger-hover}"
+          }
+        },
+        "badge.outline.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.hover}",
+            "Dark": "{color.interactive.hover}"
+          }
+        },
+        "card.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.hover}",
+            "Dark": "{color.interactive.hover}"
+          }
+        },
+        "card.border-hover": {
+          "$type": "color",
+          "$value": "{color.border.focus}",
+          "valuesByMode": {
+            "Light": "{color.border.focus}",
+            "Dark": "{color.border.focus}"
+          }
+        },
+        "popover.border-focus": {
+          "$type": "color",
+          "$value": "{color.border.focus}",
+          "valuesByMode": {
+            "Light": "{color.border.focus}",
+            "Dark": "{color.border.focus}"
+          }
+        },
         "form.label.text": {
           "$type": "color",
           "$value": "{color.text.primary}",
@@ -5178,6 +4978,206 @@
           "valuesByMode": {
             "Light": "{typography.font-weight.semibold}",
             "Dark": "{typography.font-weight.semibold}"
+          }
+        },
+        "badge.default.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.default.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "badge.secondary.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.secondary.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "badge.success.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.success.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "badge.warning.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.warning.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "badge.destructive.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.destructive.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "badge.outline.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "badge.outline.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "card.background-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "card.background-active": {
+          "$type": "color",
+          "$value": "{color.interactive.pressed}",
+          "valuesByMode": {
+            "Light": "{color.interactive.pressed}",
+            "Dark": "{color.interactive.pressed}"
+          }
+        },
+        "card.background-disabled": {
+          "$type": "color",
+          "$value": "{color.interactive.disabled}",
+          "valuesByMode": {
+            "Light": "{color.interactive.disabled}",
+            "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "navigation.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.hover}",
+          "valuesByMode": {
+            "Light": "{color.interactive.hover}",
+            "Dark": "{color.interactive.hover}"
+          }
+        },
+        "calendar.day-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "calendar.day-text-focus": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "calendar.nav-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "calendar.nav-text-focus": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "breadcrumb.link-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "breadcrumb.link-disabled": {
+          "$type": "color",
+          "$value": "{color.text.disabled}",
+          "valuesByMode": {
+            "Light": "{color.text.disabled}",
+            "Dark": "{color.text.disabled}"
+          }
+        },
+        "pagination.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.secondary}",
+          "valuesByMode": {
+            "Light": "{color.interactive.secondary}",
+            "Dark": "{color.interactive.secondary}"
+          }
+        },
+        "table.row-focus": {
+          "$type": "color",
+          "$value": "{color.interactive.focus}",
+          "valuesByMode": {
+            "Light": "{color.interactive.focus}",
+            "Dark": "{color.interactive.focus}"
+          }
+        },
+        "toggle.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.secondary}",
+          "valuesByMode": {
+            "Light": "{color.interactive.secondary}",
+            "Dark": "{color.interactive.secondary}"
           }
         }
       }
