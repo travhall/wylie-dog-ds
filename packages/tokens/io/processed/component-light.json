@@ -71,78 +71,6 @@
     "$type": "color",
     "$value": "{color.border.primary}"
   },
-  "badge.default.background-hover": {
-    "$type": "color",
-    "$value": "{color.interactive.primary-hover}"
-  },
-  "badge.secondary.background-hover": {
-    "$type": "color",
-    "$value": "{color.interactive.secondary-hover}"
-  },
-  "badge.success.background-hover": {
-    "$type": "color",
-    "$value": "{color.interactive.success-hover}"
-  },
-  "badge.warning.background-hover": {
-    "$type": "color",
-    "$value": "{color.interactive.warning-hover}"
-  },
-  "badge.destructive.background-hover": {
-    "$type": "color",
-    "$value": "{color.interactive.danger-hover}"
-  },
-  "badge.outline.background-hover": {
-    "$type": "color",
-    "$value": "{color.interactive.hover}"
-  },
-  "badge.default.background-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.focus}"
-  },
-  "badge.default.background-disabled": {
-    "$type": "color",
-    "$value": "{color.interactive.disabled}"
-  },
-  "badge.secondary.background-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.focus}"
-  },
-  "badge.secondary.background-disabled": {
-    "$type": "color",
-    "$value": "{color.interactive.disabled}"
-  },
-  "badge.success.background-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.focus}"
-  },
-  "badge.success.background-disabled": {
-    "$type": "color",
-    "$value": "{color.interactive.disabled}"
-  },
-  "badge.warning.background-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.focus}"
-  },
-  "badge.warning.background-disabled": {
-    "$type": "color",
-    "$value": "{color.interactive.disabled}"
-  },
-  "badge.destructive.background-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.focus}"
-  },
-  "badge.destructive.background-disabled": {
-    "$type": "color",
-    "$value": "{color.interactive.disabled}"
-  },
-  "badge.outline.background-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.focus}"
-  },
-  "badge.outline.background-disabled": {
-    "$type": "color",
-    "$value": "{color.interactive.disabled}"
-  },
   "badge.padding.sm": {
     "$type": "spacing",
     "$value": "{spacing.050}"
@@ -306,26 +234,6 @@
   "card.border": {
     "$type": "color",
     "$value": "{color.border.primary}"
-  },
-  "card.background-hover": {
-    "$type": "color",
-    "$value": "{color.interactive.hover}"
-  },
-  "card.border-hover": {
-    "$type": "color",
-    "$value": "{color.border.focus}"
-  },
-  "card.background-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.focus}"
-  },
-  "card.background-active": {
-    "$type": "color",
-    "$value": "{color.interactive.pressed}"
-  },
-  "card.background-disabled": {
-    "$type": "color",
-    "$value": "{color.interactive.disabled}"
   },
   "card.padding": {
     "$type": "spacing",
@@ -543,10 +451,6 @@
     "$type": "color",
     "$value": "{color.background.primary}"
   },
-  "navigation.background-hover": {
-    "$type": "color",
-    "$value": "{color.interactive.hover}"
-  },
   "navigation.text-hover": {
     "$type": "color",
     "$value": "{color.text.primary}"
@@ -683,22 +587,6 @@
     "$type": "color",
     "$value": "{color.text.primary}"
   },
-  "calendar.day-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.focus}"
-  },
-  "calendar.day-text-focus": {
-    "$type": "color",
-    "$value": "{color.text.primary}"
-  },
-  "calendar.nav-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.focus}"
-  },
-  "calendar.nav-text-focus": {
-    "$type": "color",
-    "$value": "{color.text.primary}"
-  },
   "calendar.day-selected": {
     "$type": "color",
     "$value": "{color.interactive.primary}"
@@ -790,14 +678,6 @@
   "breadcrumb.link-hover": {
     "$type": "color",
     "$value": "{color.interactive.primary-hover}"
-  },
-  "breadcrumb.link-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.focus}"
-  },
-  "breadcrumb.link-disabled": {
-    "$type": "color",
-    "$value": "{color.text.disabled}"
   },
   "breadcrumb.text": {
     "$type": "color",
@@ -895,10 +775,6 @@
     "$type": "color",
     "$value": "{color.interactive.primary}"
   },
-  "pagination.background-hover": {
-    "$type": "color",
-    "$value": "{color.interactive.secondary}"
-  },
   "pagination.text": {
     "$type": "color",
     "$value": "{color.text.primary}"
@@ -918,10 +794,6 @@
   "popover.border": {
     "$type": "color",
     "$value": "{color.border.primary}"
-  },
-  "popover.border-focus": {
-    "$type": "color",
-    "$value": "{color.border.focus}"
   },
   "popover.text": {
     "$type": "color",
@@ -1019,10 +891,6 @@
     "$type": "color",
     "$value": "{color.interactive.secondary}"
   },
-  "table.row-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.focus}"
-  },
   "table.row-selected": {
     "$type": "color",
     "$value": "{color.interactive.secondary}"
@@ -1050,10 +918,6 @@
   "toggle.border": {
     "$type": "color",
     "$value": "{color.border.primary}"
-  },
-  "toggle.background-hover": {
-    "$type": "color",
-    "$value": "{color.interactive.secondary}"
   },
   "toggle.pressed": {
     "$type": "color",
@@ -2535,6 +2399,42 @@
     "$type": "spacing",
     "$value": "{spacing.200}"
   },
+  "badge.default.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.primary-hover}"
+  },
+  "badge.secondary.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.secondary-hover}"
+  },
+  "badge.success.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.success-hover}"
+  },
+  "badge.warning.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.warning-hover}"
+  },
+  "badge.destructive.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.danger-hover}"
+  },
+  "badge.outline.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.hover}"
+  },
+  "card.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.hover}"
+  },
+  "card.border-hover": {
+    "$type": "color",
+    "$value": "{color.border.focus}"
+  },
+  "popover.border-focus": {
+    "$type": "color",
+    "$value": "{color.border.focus}"
+  },
   "form.label.text": {
     "$type": "color",
     "$value": "{color.text.primary}"
@@ -2582,5 +2482,105 @@
   "form.fieldset.legend.font-weight": {
     "$type": "fontWeight",
     "$value": "{typography.font-weight.semibold}"
+  },
+  "badge.default.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.default.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "badge.secondary.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.secondary.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "badge.success.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.success.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "badge.warning.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.warning.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "badge.destructive.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.destructive.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "badge.outline.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "badge.outline.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "card.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "card.background-active": {
+    "$type": "color",
+    "$value": "{color.interactive.pressed}"
+  },
+  "card.background-disabled": {
+    "$type": "color",
+    "$value": "{color.interactive.disabled}"
+  },
+  "navigation.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.hover}"
+  },
+  "calendar.day-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "calendar.day-text-focus": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "calendar.nav-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "calendar.nav-text-focus": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "breadcrumb.link-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "breadcrumb.link-disabled": {
+    "$type": "color",
+    "$value": "{color.text.disabled}"
+  },
+  "pagination.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.secondary}"
+  },
+  "table.row-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.focus}"
+  },
+  "toggle.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.secondary}"
   }
 }

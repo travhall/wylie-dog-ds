@@ -3,7 +3,7 @@
     "primitive": {
       "modes": [
         {
-          "modeId": "1249:1",
+          "modeId": "mode:primitive:value",
           "name": "Value"
         }
       ],

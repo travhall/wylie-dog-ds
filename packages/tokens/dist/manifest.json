@@ -57,7 +57,7 @@
             "polar-night",
             "400"
           ],
-          "value": "oklch(0.496 0.049 218.91)",
+          "value": "oklch(0.496 0.049 218.95)",
           "type": "color",
           "variable": "var(--color-polar-night-400)",
           "description": ""
@@ -81,7 +81,7 @@
             "polar-night",
             "600"
           ],
-          "value": "oklch(0.34 0.054 221.99)",
+          "value": "oklch(0.34 0.054 222.01)",
           "type": "color",
           "variable": "var(--color-polar-night-600)",
           "description": ""
@@ -93,7 +93,7 @@
             "polar-night",
             "700"
           ],
-          "value": "oklch(0.289 0.045 221.99)",
+          "value": "oklch(0.289 0.045 222.01)",
           "type": "color",
           "variable": "var(--color-polar-night-700)",
           "description": ""
@@ -117,7 +117,7 @@
             "polar-night",
             "900"
           ],
-          "value": "oklch(0.216 0.03 218.39)",
+          "value": "oklch(0.216 0.03 218.42)",
           "type": "color",
           "variable": "var(--color-polar-night-900)",
           "description": ""
@@ -129,7 +129,7 @@
             "polar-night",
             "950"
           ],
-          "value": "oklch(0.17 0.022 211.98)",
+          "value": "oklch(0.17 0.022 212.01)",
           "type": "color",
           "variable": "var(--color-polar-night-950)",
           "description": ""
@@ -143,7 +143,7 @@
             "fiery-coral",
             "50"
           ],
-          "value": "oklch(0.962 0.017 40.61)",
+          "value": "oklch(0.962 0.017 40.42)",
           "type": "color",
           "variable": "var(--color-fiery-coral-50)",
           "description": ""
@@ -155,7 +155,7 @@
             "fiery-coral",
             "100"
           ],
-          "value": "oklch(0.882 0.053 38.77)",
+          "value": "oklch(0.882 0.053 38.72)",
           "type": "color",
           "variable": "var(--color-fiery-coral-100)",
           "description": ""
@@ -215,7 +215,7 @@
             "fiery-coral",
             "600"
           ],
-          "value": "oklch(0.61 0.169 37.73)",
+          "value": "oklch(0.61 0.169 37.72)",
           "type": "color",
           "variable": "var(--color-fiery-coral-600)",
           "description": ""
@@ -227,7 +227,7 @@
             "fiery-coral",
             "700"
           ],
-          "value": "oklch(0.508 0.139 37.85)",
+          "value": "oklch(0.508 0.139 37.84)",
           "type": "color",
           "variable": "var(--color-fiery-coral-700)",
           "description": ""
@@ -277,7 +277,7 @@
             "sandcastle",
             "50"
           ],
-          "value": "oklch(0.977 0.003 67.4)",
+          "value": "oklch(0.977 0.003 66.95)",
           "type": "color",
           "variable": "var(--color-sandcastle-50)",
           "description": ""
@@ -289,7 +289,7 @@
             "sandcastle",
             "100"
           ],
-          "value": "oklch(0.927 0.012 75.32)",
+          "value": "oklch(0.927 0.012 75.27)",
           "type": "color",
           "variable": "var(--color-sandcastle-100)",
           "description": ""
@@ -301,7 +301,7 @@
             "sandcastle",
             "200"
           ],
-          "value": "oklch(0.893 0.018 73.02)",
+          "value": "oklch(0.893 0.018 72.98)",
           "type": "color",
           "variable": "var(--color-sandcastle-200)",
           "description": ""
@@ -337,7 +337,7 @@
             "sandcastle",
             "500"
           ],
-          "value": "oklch(0.765 0.041 73.29)",
+          "value": "oklch(0.765 0.041 73.28)",
           "type": "color",
           "variable": "var(--color-sandcastle-500)",
           "description": ""
@@ -349,7 +349,7 @@
             "sandcastle",
             "600"
           ],
-          "value": "oklch(0.712 0.037 72.7)",
+          "value": "oklch(0.712 0.037 72.69)",
           "type": "color",
           "variable": "var(--color-sandcastle-600)",
           "description": ""
@@ -361,7 +361,7 @@
             "sandcastle",
             "700"
           ],
-          "value": "oklch(0.594 0.03 72.54)",
+          "value": "oklch(0.594 0.03 72.53)",
           "type": "color",
           "variable": "var(--color-sandcastle-700)",
           "description": ""
@@ -373,7 +373,7 @@
             "sandcastle",
             "800"
           ],
-          "value": "oklch(0.496 0.025 71.83)",
+          "value": "oklch(0.496 0.025 71.81)",
           "type": "color",
           "variable": "var(--color-sandcastle-800)",
           "description": ""
@@ -411,7 +411,7 @@
             "petrified-wood",
             "50"
           ],
-          "value": "oklch(0.962 0.002 47.62)",
+          "value": "oklch(0.962 0.002 46.18)",
           "type": "color",
           "variable": "var(--color-petrified-wood-50)",
           "description": ""
@@ -423,7 +423,7 @@
             "petrified-wood",
             "100"
           ],
-          "value": "oklch(0.882 0.009 67.58)",
+          "value": "oklch(0.882 0.009 67.45)",
           "type": "color",
           "variable": "var(--color-petrified-wood-100)",
           "description": ""
@@ -435,7 +435,7 @@
             "petrified-wood",
             "200"
           ],
-          "value": "oklch(0.824 0.013 71.24)",
+          "value": "oklch(0.824 0.013 71.18)",
           "type": "color",
           "variable": "var(--color-petrified-wood-200)",
           "description": ""
@@ -519,7 +519,7 @@
             "petrified-wood",
             "900"
           ],
-          "value": "oklch(0.333 0.015 71.54)",
+          "value": "oklch(0.333 0.015 71.52)",
           "type": "color",
           "variable": "var(--color-petrified-wood-900)",
           "description": ""
@@ -545,7 +545,7 @@
             "black-bear",
             "50"
           ],
-          "value": "oklch(0.941 0.002 67.05)",
+          "value": "oklch(0.941 0.002 66.37)",
           "type": "color",
           "variable": "var(--color-black-bear-50)",
           "description": ""
@@ -557,7 +557,7 @@
             "black-bear",
             "100"
           ],
-          "value": "oklch(0.808 0.006 42.91)",
+          "value": "oklch(0.808 0.006 42.48)",
           "type": "color",
           "variable": "var(--color-black-bear-100)",
           "description": ""
@@ -593,7 +593,7 @@
             "black-bear",
             "400"
           ],
-          "value": "oklch(0.48 0.017 50.48)",
+          "value": "oklch(0.48 0.017 50.41)",
           "type": "color",
           "variable": "var(--color-black-bear-400)",
           "description": ""
@@ -617,7 +617,7 @@
             "black-bear",
             "600"
           ],
-          "value": "oklch(0.312 0.021 51.87)",
+          "value": "oklch(0.312 0.021 51.84)",
           "type": "color",
           "variable": "var(--color-black-bear-600)",
           "description": ""
@@ -629,7 +629,7 @@
             "black-bear",
             "700"
           ],
-          "value": "oklch(0.269 0.016 50.69)",
+          "value": "oklch(0.269 0.016 50.65)",
           "type": "color",
           "variable": "var(--color-black-bear-700)",
           "description": ""
@@ -641,7 +641,7 @@
             "black-bear",
             "800"
           ],
-          "value": "oklch(0.233 0.013 51.47)",
+          "value": "oklch(0.233 0.013 51.43)",
           "type": "color",
           "variable": "var(--color-black-bear-800)",
           "description": ""
@@ -653,7 +653,7 @@
             "black-bear",
             "900"
           ],
-          "value": "oklch(0.202 0.011 48.09)",
+          "value": "oklch(0.202 0.011 48.04)",
           "type": "color",
           "variable": "var(--color-black-bear-900)",
           "description": ""
@@ -665,7 +665,7 @@
             "black-bear",
             "950"
           ],
-          "value": "oklch(0.138 0.008 60.38)",
+          "value": "oklch(0.138 0.008 60.35)",
           "type": "color",
           "variable": "var(--color-black-bear-950)",
           "description": ""
@@ -739,7 +739,7 @@
             "gray",
             "500"
           ],
-          "value": "oklch(0.711 0.035 256.81)",
+          "value": "oklch(0.711 0.035 256.83)",
           "type": "color",
           "variable": "var(--color-gray-500)",
           "description": ""
@@ -813,7 +813,7 @@
             "blue",
             "50"
           ],
-          "value": "oklch(0.97 0.014 254.66)",
+          "value": "oklch(0.97 0.014 254.72)",
           "type": "color",
           "variable": "var(--color-blue-50)",
           "description": ""
@@ -947,7 +947,7 @@
             "green",
             "50"
           ],
-          "value": "oklch(0.982 0.018 156.09)",
+          "value": "oklch(0.982 0.018 156.35)",
           "type": "color",
           "variable": "var(--color-green-50)",
           "description": ""
@@ -983,7 +983,7 @@
             "green",
             "300"
           ],
-          "value": "oklch(0.871 0.136 154.48)",
+          "value": "oklch(0.871 0.136 154.51)",
           "type": "color",
           "variable": "var(--color-green-300)",
           "description": ""
@@ -1007,7 +1007,7 @@
             "green",
             "500"
           ],
-          "value": "oklch(0.723 0.192 149.6)",
+          "value": "oklch(0.723 0.192 149.62)",
           "type": "color",
           "variable": "var(--color-green-500)",
           "description": ""
@@ -1019,7 +1019,7 @@
             "green",
             "600"
           ],
-          "value": "oklch(0.627 0.17 149.23)",
+          "value": "oklch(0.627 0.17 149.25)",
           "type": "color",
           "variable": "var(--color-green-600)",
           "description": ""
@@ -1153,7 +1153,7 @@
             "orange",
             "600"
           ],
-          "value": "oklch(0.646 0.194 40.96)",
+          "value": "oklch(0.646 0.194 40.95)",
           "type": "color",
           "variable": "var(--color-orange-600)",
           "description": ""
@@ -1165,7 +1165,7 @@
             "orange",
             "700"
           ],
-          "value": "oklch(0.553 0.174 38.5)",
+          "value": "oklch(0.553 0.174 38.49)",
           "type": "color",
           "variable": "var(--color-orange-700)",
           "description": ""
@@ -1227,7 +1227,7 @@
             "red",
             "100"
           ],
-          "value": "oklch(0.936 0.031 17.59)",
+          "value": "oklch(0.936 0.031 17.46)",
           "type": "color",
           "variable": "var(--color-red-100)",
           "description": ""
@@ -1239,7 +1239,7 @@
             "red",
             "200"
           ],
-          "value": "oklch(0.885 0.059 18.27)",
+          "value": "oklch(0.885 0.059 18.21)",
           "type": "color",
           "variable": "var(--color-red-200)",
           "description": ""
@@ -1251,7 +1251,7 @@
             "red",
             "300"
           ],
-          "value": "oklch(0.808 0.103 19.54)",
+          "value": "oklch(0.808 0.103 19.51)",
           "type": "color",
           "variable": "var(--color-red-300)",
           "description": ""
@@ -1299,7 +1299,7 @@
             "red",
             "700"
           ],
-          "value": "oklch(0.505 0.19 27.51)",
+          "value": "oklch(0.505 0.19 27.5)",
           "type": "color",
           "variable": "var(--color-red-700)",
           "description": ""
@@ -1323,7 +1323,7 @@
             "red",
             "900"
           ],
-          "value": "oklch(0.396 0.133 25.71)",
+          "value": "oklch(0.396 0.133 25.7)",
           "type": "color",
           "variable": "var(--color-red-900)",
           "description": ""
@@ -1373,7 +1373,7 @@
             "purple",
             "200"
           ],
-          "value": "oklch(0.902 0.06 306.65)",
+          "value": "oklch(0.902 0.06 306.6)",
           "type": "color",
           "variable": "var(--color-purple-200)",
           "description": ""
@@ -1665,7 +1665,7 @@
             "yellow",
             "400"
           ],
-          "value": "oklch(0.817 0.157 97.73)",
+          "value": "oklch(0.817 0.157 97.74)",
           "type": "color",
           "variable": "var(--color-yellow-400)",
           "description": ""
@@ -2505,7 +2505,7 @@
           "background",
           "brand"
         ],
-        "value": "oklch(0.646 0.194 40.96)",
+        "value": "oklch(0.646 0.194 40.95)",
         "type": "color",
         "variable": "var(--color-background-brand)",
         "description": "Brand-colored background for emphasis"
@@ -2579,7 +2579,7 @@
           "surface",
           "brand"
         ],
-        "value": "oklch(0.97 0.014 254.66)",
+        "value": "oklch(0.97 0.014 254.72)",
         "type": "color",
         "variable": "var(--color-surface-brand)",
         "description": "Interactive brand surface (blue theme)"
@@ -2591,7 +2591,7 @@
           "surface",
           "success"
         ],
-        "value": "oklch(0.982 0.018 156.09)",
+        "value": "oklch(0.982 0.018 156.35)",
         "type": "color",
         "variable": "var(--color-surface-success)",
         "description": "Success state surface background"
@@ -2627,7 +2627,7 @@
           "surface",
           "info"
         ],
-        "value": "oklch(0.97 0.014 254.66)",
+        "value": "oklch(0.97 0.014 254.72)",
         "type": "color",
         "variable": "var(--color-surface-info)",
         "description": "Informational state surface background"
@@ -2665,7 +2665,7 @@
           "text",
           "tertiary"
         ],
-        "value": "oklch(0.711 0.035 256.81)",
+        "value": "oklch(0.711 0.035 256.83)",
         "type": "color",
         "variable": "var(--color-text-tertiary)",
         "description": "Tertiary text for captions and hints"
@@ -2701,7 +2701,7 @@
           "text",
           "brand"
         ],
-        "value": "oklch(0.646 0.194 40.96)",
+        "value": "oklch(0.646 0.194 40.95)",
         "type": "color",
         "variable": "var(--color-text-brand)",
         "description": "Brand-colored text for emphasis"
@@ -2725,7 +2725,7 @@
           "text",
           "warning"
         ],
-        "value": "oklch(0.553 0.174 38.5)",
+        "value": "oklch(0.553 0.174 38.49)",
         "type": "color",
         "variable": "var(--color-text-warning)",
         "description": "Warning state text color"
@@ -2737,7 +2737,7 @@
           "text",
           "danger"
         ],
-        "value": "oklch(0.505 0.19 27.51)",
+        "value": "oklch(0.505 0.19 27.5)",
         "type": "color",
         "variable": "var(--color-text-danger)",
         "description": "Danger/error state text color"
@@ -2799,7 +2799,7 @@
           "border",
           "brand"
         ],
-        "value": "oklch(0.646 0.194 40.96)",
+        "value": "oklch(0.646 0.194 40.95)",
         "type": "color",
         "variable": "var(--color-border-brand)",
         "description": "Brand-colored border for emphasis"
@@ -2811,7 +2811,7 @@
           "border",
           "success"
         ],
-        "value": "oklch(0.627 0.17 149.23)",
+        "value": "oklch(0.627 0.17 149.25)",
         "type": "color",
         "variable": "var(--color-border-success)",
         "description": "Success state border color"
@@ -2823,7 +2823,7 @@
           "border",
           "warning"
         ],
-        "value": "oklch(0.646 0.194 40.96)",
+        "value": "oklch(0.646 0.194 40.95)",
         "type": "color",
         "variable": "var(--color-border-warning)",
         "description": "Warning state border color"
@@ -2921,7 +2921,7 @@
           "interactive",
           "success"
         ],
-        "value": "oklch(0.627 0.17 149.23)",
+        "value": "oklch(0.627 0.17 149.25)",
         "type": "color",
         "variable": "var(--color-interactive-success)",
         "description": "Success interactive element background"
@@ -2945,7 +2945,7 @@
           "interactive",
           "warning"
         ],
-        "value": "oklch(0.646 0.194 40.96)",
+        "value": "oklch(0.646 0.194 40.95)",
         "type": "color",
         "variable": "var(--color-interactive-warning)",
         "description": "Warning interactive element background"
@@ -2957,7 +2957,7 @@
           "interactive",
           "warning-hover"
         ],
-        "value": "oklch(0.553 0.174 38.5)",
+        "value": "oklch(0.553 0.174 38.49)",
         "type": "color",
         "variable": "var(--color-interactive-warning-hover)",
         "description": "Warning interactive hover state"
@@ -2981,7 +2981,7 @@
           "interactive",
           "danger-hover"
         ],
-        "value": "oklch(0.505 0.19 27.51)",
+        "value": "oklch(0.505 0.19 27.5)",
         "type": "color",
         "variable": "var(--color-interactive-danger-hover)",
         "description": "Danger interactive hover state"
@@ -3017,7 +3017,7 @@
           "interactive",
           "focus"
         ],
-        "value": "oklch(0.97 0.014 254.66)",
+        "value": "oklch(0.97 0.014 254.72)",
         "type": "color",
         "variable": "var(--color-interactive-focus)",
         "description": "Focus state background"
@@ -3043,7 +3043,7 @@
           "status",
           "success"
         ],
-        "value": "oklch(0.627 0.17 149.23)",
+        "value": "oklch(0.627 0.17 149.25)",
         "type": "color",
         "variable": "var(--color-status-success)",
         "description": "Success status indicator color"
@@ -3055,7 +3055,7 @@
           "status",
           "warning"
         ],
-        "value": "oklch(0.646 0.194 40.96)",
+        "value": "oklch(0.646 0.194 40.95)",
         "type": "color",
         "variable": "var(--color-status-warning)",
         "description": "Warning status indicator color"
@@ -3105,7 +3105,7 @@
           "primary",
           "base"
         ],
-        "value": "oklch(0.553 0.174 38.5)",
+        "value": "oklch(0.553 0.174 38.49)",
         "type": "color",
         "variable": "var(--color-primary-base)",
         "description": "Brand primary color (orange) - base state"
@@ -3409,7 +3409,7 @@
           "success",
           "background"
         ],
-        "value": "oklch(0.627 0.17 149.23)",
+        "value": "oklch(0.627 0.17 149.25)",
         "type": "color",
         "variable": "var(--color-badge-success-background)",
         "description": ""
@@ -3433,7 +3433,7 @@
           "success",
           "border"
         ],
-        "value": "oklch(0.627 0.17 149.23)",
+        "value": "oklch(0.627 0.17 149.25)",
         "type": "color",
         "variable": "var(--color-badge-success-border)",
         "description": ""
@@ -3445,7 +3445,7 @@
           "warning",
           "background"
         ],
-        "value": "oklch(0.646 0.194 40.96)",
+        "value": "oklch(0.646 0.194 40.95)",
         "type": "color",
         "variable": "var(--color-badge-warning-background)",
         "description": ""
@@ -3469,7 +3469,7 @@
           "warning",
           "border"
         ],
-        "value": "oklch(0.646 0.194 40.96)",
+        "value": "oklch(0.646 0.194 40.95)",
         "type": "color",
         "variable": "var(--color-badge-warning-border)",
         "description": ""
@@ -3493,7 +3493,7 @@
           "destructive",
           "text"
         ],
-        "value": "oklch(0.505 0.19 27.51)",
+        "value": "oklch(0.505 0.19 27.5)",
         "type": "color",
         "variable": "var(--color-badge-destructive-text)",
         "description": ""
@@ -3544,222 +3544,6 @@
         "value": "oklch(0.929 0.013 255.56)",
         "type": "color",
         "variable": "var(--color-badge-outline-border)",
-        "description": ""
-      },
-      "badge-default-background-hover": {
-        "name": "badgeDefaultBackgroundHover",
-        "path": [
-          "badge",
-          "default",
-          "background-hover"
-        ],
-        "value": "oklch(0.488 0.217 264.39)",
-        "type": "color",
-        "variable": "var(--color-badge-default-background-hover)",
-        "description": ""
-      },
-      "badge-secondary-background-hover": {
-        "name": "badgeSecondaryBackgroundHover",
-        "path": [
-          "badge",
-          "secondary",
-          "background-hover"
-        ],
-        "value": "oklch(0.968 0.007 248.08)",
-        "type": "color",
-        "variable": "var(--color-badge-secondary-background-hover)",
-        "description": ""
-      },
-      "badge-success-background-hover": {
-        "name": "badgeSuccessBackgroundHover",
-        "path": [
-          "badge",
-          "success",
-          "background-hover"
-        ],
-        "value": "oklch(0.527 0.137 150.09)",
-        "type": "color",
-        "variable": "var(--color-badge-success-background-hover)",
-        "description": ""
-      },
-      "badge-warning-background-hover": {
-        "name": "badgeWarningBackgroundHover",
-        "path": [
-          "badge",
-          "warning",
-          "background-hover"
-        ],
-        "value": "oklch(0.553 0.174 38.5)",
-        "type": "color",
-        "variable": "var(--color-badge-warning-background-hover)",
-        "description": ""
-      },
-      "badge-destructive-background-hover": {
-        "name": "badgeDestructiveBackgroundHover",
-        "path": [
-          "badge",
-          "destructive",
-          "background-hover"
-        ],
-        "value": "oklch(0.505 0.19 27.51)",
-        "type": "color",
-        "variable": "var(--color-badge-destructive-background-hover)",
-        "description": ""
-      },
-      "badge-outline-background-hover": {
-        "name": "badgeOutlineBackgroundHover",
-        "path": [
-          "badge",
-          "outline",
-          "background-hover"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-badge-outline-background-hover)",
-        "description": ""
-      },
-      "badge-default-background-focus": {
-        "name": "badgeDefaultBackgroundFocus",
-        "path": [
-          "badge",
-          "default",
-          "background-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.66)",
-        "type": "color",
-        "variable": "var(--color-badge-default-background-focus)",
-        "description": ""
-      },
-      "badge-default-background-disabled": {
-        "name": "badgeDefaultBackgroundDisabled",
-        "path": [
-          "badge",
-          "default",
-          "background-disabled"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-badge-default-background-disabled)",
-        "description": ""
-      },
-      "badge-secondary-background-focus": {
-        "name": "badgeSecondaryBackgroundFocus",
-        "path": [
-          "badge",
-          "secondary",
-          "background-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.66)",
-        "type": "color",
-        "variable": "var(--color-badge-secondary-background-focus)",
-        "description": ""
-      },
-      "badge-secondary-background-disabled": {
-        "name": "badgeSecondaryBackgroundDisabled",
-        "path": [
-          "badge",
-          "secondary",
-          "background-disabled"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-badge-secondary-background-disabled)",
-        "description": ""
-      },
-      "badge-success-background-focus": {
-        "name": "badgeSuccessBackgroundFocus",
-        "path": [
-          "badge",
-          "success",
-          "background-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.66)",
-        "type": "color",
-        "variable": "var(--color-badge-success-background-focus)",
-        "description": ""
-      },
-      "badge-success-background-disabled": {
-        "name": "badgeSuccessBackgroundDisabled",
-        "path": [
-          "badge",
-          "success",
-          "background-disabled"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-badge-success-background-disabled)",
-        "description": ""
-      },
-      "badge-warning-background-focus": {
-        "name": "badgeWarningBackgroundFocus",
-        "path": [
-          "badge",
-          "warning",
-          "background-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.66)",
-        "type": "color",
-        "variable": "var(--color-badge-warning-background-focus)",
-        "description": ""
-      },
-      "badge-warning-background-disabled": {
-        "name": "badgeWarningBackgroundDisabled",
-        "path": [
-          "badge",
-          "warning",
-          "background-disabled"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-badge-warning-background-disabled)",
-        "description": ""
-      },
-      "badge-destructive-background-focus": {
-        "name": "badgeDestructiveBackgroundFocus",
-        "path": [
-          "badge",
-          "destructive",
-          "background-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.66)",
-        "type": "color",
-        "variable": "var(--color-badge-destructive-background-focus)",
-        "description": ""
-      },
-      "badge-destructive-background-disabled": {
-        "name": "badgeDestructiveBackgroundDisabled",
-        "path": [
-          "badge",
-          "destructive",
-          "background-disabled"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-badge-destructive-background-disabled)",
-        "description": ""
-      },
-      "badge-outline-background-focus": {
-        "name": "badgeOutlineBackgroundFocus",
-        "path": [
-          "badge",
-          "outline",
-          "background-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.66)",
-        "type": "color",
-        "variable": "var(--color-badge-outline-background-focus)",
-        "description": ""
-      },
-      "badge-outline-background-disabled": {
-        "name": "badgeOutlineBackgroundDisabled",
-        "path": [
-          "badge",
-          "outline",
-          "background-disabled"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-badge-outline-background-disabled)",
         "description": ""
       },
       "badge-padding-sm": {
@@ -3843,6 +3627,222 @@
         "value": "16px",
         "type": "fontSize",
         "variable": "var(--badge-font-size-lg)",
+        "description": ""
+      },
+      "badge-default-background-hover": {
+        "name": "badgeDefaultBackgroundHover",
+        "path": [
+          "badge",
+          "default",
+          "background-hover"
+        ],
+        "value": "oklch(0.488 0.217 264.39)",
+        "type": "color",
+        "variable": "var(--color-badge-default-background-hover)",
+        "description": ""
+      },
+      "badge-secondary-background-hover": {
+        "name": "badgeSecondaryBackgroundHover",
+        "path": [
+          "badge",
+          "secondary",
+          "background-hover"
+        ],
+        "value": "oklch(0.968 0.007 248.08)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-background-hover)",
+        "description": ""
+      },
+      "badge-success-background-hover": {
+        "name": "badgeSuccessBackgroundHover",
+        "path": [
+          "badge",
+          "success",
+          "background-hover"
+        ],
+        "value": "oklch(0.527 0.137 150.09)",
+        "type": "color",
+        "variable": "var(--color-badge-success-background-hover)",
+        "description": ""
+      },
+      "badge-warning-background-hover": {
+        "name": "badgeWarningBackgroundHover",
+        "path": [
+          "badge",
+          "warning",
+          "background-hover"
+        ],
+        "value": "oklch(0.553 0.174 38.49)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-background-hover)",
+        "description": ""
+      },
+      "badge-destructive-background-hover": {
+        "name": "badgeDestructiveBackgroundHover",
+        "path": [
+          "badge",
+          "destructive",
+          "background-hover"
+        ],
+        "value": "oklch(0.505 0.19 27.5)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-background-hover)",
+        "description": ""
+      },
+      "badge-outline-background-hover": {
+        "name": "badgeOutlineBackgroundHover",
+        "path": [
+          "badge",
+          "outline",
+          "background-hover"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-background-hover)",
+        "description": ""
+      },
+      "badge-default-background-focus": {
+        "name": "badgeDefaultBackgroundFocus",
+        "path": [
+          "badge",
+          "default",
+          "background-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.72)",
+        "type": "color",
+        "variable": "var(--color-badge-default-background-focus)",
+        "description": ""
+      },
+      "badge-default-background-disabled": {
+        "name": "badgeDefaultBackgroundDisabled",
+        "path": [
+          "badge",
+          "default",
+          "background-disabled"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-badge-default-background-disabled)",
+        "description": ""
+      },
+      "badge-secondary-background-focus": {
+        "name": "badgeSecondaryBackgroundFocus",
+        "path": [
+          "badge",
+          "secondary",
+          "background-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.72)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-background-focus)",
+        "description": ""
+      },
+      "badge-secondary-background-disabled": {
+        "name": "badgeSecondaryBackgroundDisabled",
+        "path": [
+          "badge",
+          "secondary",
+          "background-disabled"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-background-disabled)",
+        "description": ""
+      },
+      "badge-success-background-focus": {
+        "name": "badgeSuccessBackgroundFocus",
+        "path": [
+          "badge",
+          "success",
+          "background-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.72)",
+        "type": "color",
+        "variable": "var(--color-badge-success-background-focus)",
+        "description": ""
+      },
+      "badge-success-background-disabled": {
+        "name": "badgeSuccessBackgroundDisabled",
+        "path": [
+          "badge",
+          "success",
+          "background-disabled"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-badge-success-background-disabled)",
+        "description": ""
+      },
+      "badge-warning-background-focus": {
+        "name": "badgeWarningBackgroundFocus",
+        "path": [
+          "badge",
+          "warning",
+          "background-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.72)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-background-focus)",
+        "description": ""
+      },
+      "badge-warning-background-disabled": {
+        "name": "badgeWarningBackgroundDisabled",
+        "path": [
+          "badge",
+          "warning",
+          "background-disabled"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-background-disabled)",
+        "description": ""
+      },
+      "badge-destructive-background-focus": {
+        "name": "badgeDestructiveBackgroundFocus",
+        "path": [
+          "badge",
+          "destructive",
+          "background-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.72)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-background-focus)",
+        "description": ""
+      },
+      "badge-destructive-background-disabled": {
+        "name": "badgeDestructiveBackgroundDisabled",
+        "path": [
+          "badge",
+          "destructive",
+          "background-disabled"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-background-disabled)",
+        "description": ""
+      },
+      "badge-outline-background-focus": {
+        "name": "badgeOutlineBackgroundFocus",
+        "path": [
+          "badge",
+          "outline",
+          "background-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.72)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-background-focus)",
+        "description": ""
+      },
+      "badge-outline-background-disabled": {
+        "name": "badgeOutlineBackgroundDisabled",
+        "path": [
+          "badge",
+          "outline",
+          "background-disabled"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-background-disabled)",
         "description": ""
       }
     },
@@ -4082,7 +4082,7 @@
           "destructive",
           "background-hover"
         ],
-        "value": "oklch(0.505 0.19 27.51)",
+        "value": "oklch(0.505 0.19 27.5)",
         "type": "color",
         "variable": "var(--color-button-destructive-background-hover)",
         "description": ""
@@ -4264,61 +4264,6 @@
         "value": "oklch(0.929 0.013 255.56)",
         "type": "color",
         "variable": "var(--color-card-border)",
-        "description": ""
-      },
-      "card-background-hover": {
-        "name": "cardBackgroundHover",
-        "path": [
-          "card",
-          "background-hover"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-card-background-hover)",
-        "description": ""
-      },
-      "card-border-hover": {
-        "name": "cardBorderHover",
-        "path": [
-          "card",
-          "border-hover"
-        ],
-        "value": "oklch(0.623 0.188 259.82)",
-        "type": "color",
-        "variable": "var(--color-card-border-hover)",
-        "description": ""
-      },
-      "card-background-focus": {
-        "name": "cardBackgroundFocus",
-        "path": [
-          "card",
-          "background-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.66)",
-        "type": "color",
-        "variable": "var(--color-card-background-focus)",
-        "description": ""
-      },
-      "card-background-active": {
-        "name": "cardBackgroundActive",
-        "path": [
-          "card",
-          "background-active"
-        ],
-        "value": "oklch(0.968 0.007 248.08)",
-        "type": "color",
-        "variable": "var(--color-card-background-active)",
-        "description": ""
-      },
-      "card-background-disabled": {
-        "name": "cardBackgroundDisabled",
-        "path": [
-          "card",
-          "background-disabled"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-card-background-disabled)",
         "description": ""
       },
       "card-padding": {
@@ -4511,6 +4456,61 @@
         "value": "oklch(0.279 0.037 260.04)",
         "type": "color",
         "variable": "var(--color-card-content-color)",
+        "description": ""
+      },
+      "card-background-hover": {
+        "name": "cardBackgroundHover",
+        "path": [
+          "card",
+          "background-hover"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-card-background-hover)",
+        "description": ""
+      },
+      "card-border-hover": {
+        "name": "cardBorderHover",
+        "path": [
+          "card",
+          "border-hover"
+        ],
+        "value": "oklch(0.623 0.188 259.82)",
+        "type": "color",
+        "variable": "var(--color-card-border-hover)",
+        "description": ""
+      },
+      "card-background-focus": {
+        "name": "cardBackgroundFocus",
+        "path": [
+          "card",
+          "background-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.72)",
+        "type": "color",
+        "variable": "var(--color-card-background-focus)",
+        "description": ""
+      },
+      "card-background-active": {
+        "name": "cardBackgroundActive",
+        "path": [
+          "card",
+          "background-active"
+        ],
+        "value": "oklch(0.968 0.007 248.08)",
+        "type": "color",
+        "variable": "var(--color-card-background-active)",
+        "description": ""
+      },
+      "card-background-disabled": {
+        "name": "cardBackgroundDisabled",
+        "path": [
+          "card",
+          "background-disabled"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-card-background-disabled)",
         "description": ""
       }
     },
@@ -4779,7 +4779,7 @@
           "destructive",
           "text"
         ],
-        "value": "oklch(0.505 0.19 27.51)",
+        "value": "oklch(0.505 0.19 27.5)",
         "type": "color",
         "variable": "var(--color-alert-destructive-text)",
         "description": ""
@@ -4803,7 +4803,7 @@
           "warning",
           "border"
         ],
-        "value": "oklch(0.646 0.194 40.96)",
+        "value": "oklch(0.646 0.194 40.95)",
         "type": "color",
         "variable": "var(--color-alert-warning-border)",
         "description": ""
@@ -4815,7 +4815,7 @@
           "warning",
           "text"
         ],
-        "value": "oklch(0.553 0.174 38.5)",
+        "value": "oklch(0.553 0.174 38.49)",
         "type": "color",
         "variable": "var(--color-alert-warning-text)",
         "description": ""
@@ -4827,7 +4827,7 @@
           "success",
           "background"
         ],
-        "value": "oklch(0.982 0.018 156.09)",
+        "value": "oklch(0.982 0.018 156.35)",
         "type": "color",
         "variable": "var(--color-alert-success-background)",
         "description": ""
@@ -4839,7 +4839,7 @@
           "success",
           "border"
         ],
-        "value": "oklch(0.627 0.17 149.23)",
+        "value": "oklch(0.627 0.17 149.25)",
         "type": "color",
         "variable": "var(--color-alert-success-border)",
         "description": ""
@@ -5348,17 +5348,6 @@
         "variable": "var(--color-navigation-background)",
         "description": ""
       },
-      "navigation-background-hover": {
-        "name": "navigationBackgroundHover",
-        "path": [
-          "navigation",
-          "background-hover"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-navigation-background-hover)",
-        "description": ""
-      },
       "navigation-text-hover": {
         "name": "navigationTextHover",
         "path": [
@@ -5456,6 +5445,17 @@
         "value": "oklch(0.929 0.013 255.56)",
         "type": "color",
         "variable": "var(--color-navigation-indicator)",
+        "description": ""
+      },
+      "navigation-background-hover": {
+        "name": "navigationBackgroundHover",
+        "path": [
+          "navigation",
+          "background-hover"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-navigation-background-hover)",
         "description": ""
       }
     },
@@ -6213,50 +6213,6 @@
         "variable": "var(--color-calendar-day-text-hover)",
         "description": ""
       },
-      "calendar-day-focus": {
-        "name": "calendarDayFocus",
-        "path": [
-          "calendar",
-          "day-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.66)",
-        "type": "color",
-        "variable": "var(--color-calendar-day-focus)",
-        "description": ""
-      },
-      "calendar-day-text-focus": {
-        "name": "calendarDayTextFocus",
-        "path": [
-          "calendar",
-          "day-text-focus"
-        ],
-        "value": "oklch(0.279 0.037 260.04)",
-        "type": "color",
-        "variable": "var(--color-calendar-day-text-focus)",
-        "description": ""
-      },
-      "calendar-nav-focus": {
-        "name": "calendarNavFocus",
-        "path": [
-          "calendar",
-          "nav-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.66)",
-        "type": "color",
-        "variable": "var(--color-calendar-nav-focus)",
-        "description": ""
-      },
-      "calendar-nav-text-focus": {
-        "name": "calendarNavTextFocus",
-        "path": [
-          "calendar",
-          "nav-text-focus"
-        ],
-        "value": "oklch(0.279 0.037 260.04)",
-        "type": "color",
-        "variable": "var(--color-calendar-nav-text-focus)",
-        "description": ""
-      },
       "calendar-day-selected": {
         "name": "calendarDaySelected",
         "path": [
@@ -6406,6 +6362,50 @@
         "type": "fontSize",
         "variable": "var(--calendar-day-font-size)",
         "description": ""
+      },
+      "calendar-day-focus": {
+        "name": "calendarDayFocus",
+        "path": [
+          "calendar",
+          "day-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.72)",
+        "type": "color",
+        "variable": "var(--color-calendar-day-focus)",
+        "description": ""
+      },
+      "calendar-day-text-focus": {
+        "name": "calendarDayTextFocus",
+        "path": [
+          "calendar",
+          "day-text-focus"
+        ],
+        "value": "oklch(0.279 0.037 260.04)",
+        "type": "color",
+        "variable": "var(--color-calendar-day-text-focus)",
+        "description": ""
+      },
+      "calendar-nav-focus": {
+        "name": "calendarNavFocus",
+        "path": [
+          "calendar",
+          "nav-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.72)",
+        "type": "color",
+        "variable": "var(--color-calendar-nav-focus)",
+        "description": ""
+      },
+      "calendar-nav-text-focus": {
+        "name": "calendarNavTextFocus",
+        "path": [
+          "calendar",
+          "nav-text-focus"
+        ],
+        "value": "oklch(0.279 0.037 260.04)",
+        "type": "color",
+        "variable": "var(--color-calendar-nav-text-focus)",
+        "description": ""
       }
     },
     "accordion": {
@@ -6503,7 +6503,7 @@
           "accordion",
           "trigger-focus"
         ],
-        "value": "oklch(0.97 0.014 254.66)",
+        "value": "oklch(0.97 0.014 254.72)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-focus)",
         "description": ""
@@ -6777,28 +6777,6 @@
         "variable": "var(--color-breadcrumb-link-hover)",
         "description": ""
       },
-      "breadcrumb-link-focus": {
-        "name": "breadcrumbLinkFocus",
-        "path": [
-          "breadcrumb",
-          "link-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.66)",
-        "type": "color",
-        "variable": "var(--color-breadcrumb-link-focus)",
-        "description": ""
-      },
-      "breadcrumb-link-disabled": {
-        "name": "breadcrumbLinkDisabled",
-        "path": [
-          "breadcrumb",
-          "link-disabled"
-        ],
-        "value": "oklch(0.869 0.02 252.93)",
-        "type": "color",
-        "variable": "var(--color-breadcrumb-link-disabled)",
-        "description": ""
-      },
       "breadcrumb-text": {
         "name": "breadcrumbText",
         "path": [
@@ -6889,6 +6867,28 @@
         "value": "4px",
         "type": "dimension",
         "variable": "var(--breadcrumb-link-radius)",
+        "description": ""
+      },
+      "breadcrumb-link-focus": {
+        "name": "breadcrumbLinkFocus",
+        "path": [
+          "breadcrumb",
+          "link-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.72)",
+        "type": "color",
+        "variable": "var(--color-breadcrumb-link-focus)",
+        "description": ""
+      },
+      "breadcrumb-link-disabled": {
+        "name": "breadcrumbLinkDisabled",
+        "path": [
+          "breadcrumb",
+          "link-disabled"
+        ],
+        "value": "oklch(0.869 0.02 252.93)",
+        "type": "color",
+        "variable": "var(--color-breadcrumb-link-disabled)",
         "description": ""
       }
     },
@@ -7070,7 +7070,7 @@
           "contextmenu",
           "shortcut"
         ],
-        "value": "oklch(0.711 0.035 256.81)",
+        "value": "oklch(0.711 0.035 256.83)",
         "type": "color",
         "variable": "var(--color-contextmenu-shortcut)",
         "description": ""
@@ -7342,7 +7342,7 @@
           "form",
           "error"
         ],
-        "value": "oklch(0.505 0.19 27.51)",
+        "value": "oklch(0.505 0.19 27.5)",
         "type": "color",
         "variable": "var(--color-form-error)",
         "description": ""
@@ -7481,7 +7481,7 @@
           "error",
           "text"
         ],
-        "value": "oklch(0.505 0.19 27.51)",
+        "value": "oklch(0.505 0.19 27.5)",
         "type": "color",
         "variable": "var(--color-form-error-text)",
         "description": ""
@@ -7657,17 +7657,6 @@
         "variable": "var(--color-pagination-active)",
         "description": ""
       },
-      "pagination-background-hover": {
-        "name": "paginationBackgroundHover",
-        "path": [
-          "pagination",
-          "background-hover"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-pagination-background-hover)",
-        "description": ""
-      },
       "pagination-text": {
         "name": "paginationText",
         "path": [
@@ -7805,6 +7794,17 @@
         "type": "spacing",
         "variable": "var(--pagination-ellipsis-padding-right)",
         "description": ""
+      },
+      "pagination-background-hover": {
+        "name": "paginationBackgroundHover",
+        "path": [
+          "pagination",
+          "background-hover"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-pagination-background-hover)",
+        "description": ""
       }
     },
     "popover": {
@@ -7828,17 +7828,6 @@
         "value": "oklch(0.929 0.013 255.56)",
         "type": "color",
         "variable": "var(--color-popover-border)",
-        "description": ""
-      },
-      "popover-border-focus": {
-        "name": "popoverBorderFocus",
-        "path": [
-          "popover",
-          "border-focus"
-        ],
-        "value": "oklch(0.623 0.188 259.82)",
-        "type": "color",
-        "variable": "var(--color-popover-border-focus)",
         "description": ""
       },
       "popover-text": {
@@ -7913,6 +7902,17 @@
         "type": "dimension",
         "variable": "var(--popover-content-radius)",
         "description": ""
+      },
+      "popover-border-focus": {
+        "name": "popoverBorderFocus",
+        "path": [
+          "popover",
+          "border-focus"
+        ],
+        "value": "oklch(0.623 0.188 259.82)",
+        "type": "color",
+        "variable": "var(--color-popover-border-focus)",
+        "description": ""
       }
     },
     "progress": {
@@ -7955,7 +7955,7 @@
           "progress",
           "success-fill"
         ],
-        "value": "oklch(0.627 0.17 149.23)",
+        "value": "oklch(0.627 0.17 149.25)",
         "type": "color",
         "variable": "var(--color-progress-success-fill)",
         "description": ""
@@ -7966,7 +7966,7 @@
           "progress",
           "warning-fill"
         ],
-        "value": "oklch(0.646 0.194 40.96)",
+        "value": "oklch(0.646 0.194 40.95)",
         "type": "color",
         "variable": "var(--color-progress-warning-fill)",
         "description": ""
@@ -8541,17 +8541,6 @@
         "variable": "var(--color-table-row-hover)",
         "description": ""
       },
-      "table-row-focus": {
-        "name": "tableRowFocus",
-        "path": [
-          "table",
-          "row-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.66)",
-        "type": "color",
-        "variable": "var(--color-table-row-focus)",
-        "description": ""
-      },
       "table-row-selected": {
         "name": "tableRowSelected",
         "path": [
@@ -8668,6 +8657,17 @@
         "value": "0px",
         "type": "spacing",
         "variable": "var(--table-header-padding-right)",
+        "description": ""
+      },
+      "table-row-focus": {
+        "name": "tableRowFocus",
+        "path": [
+          "table",
+          "row-focus"
+        ],
+        "value": "oklch(0.97 0.014 254.72)",
+        "type": "color",
+        "variable": "var(--color-table-row-focus)",
         "description": ""
       }
     },
@@ -8886,7 +8886,7 @@
           "success",
           "border"
         ],
-        "value": "oklch(0.627 0.17 149.23)",
+        "value": "oklch(0.627 0.17 149.25)",
         "type": "color",
         "variable": "var(--color-toast-success-border)",
         "description": ""
@@ -8898,7 +8898,7 @@
           "success",
           "background"
         ],
-        "value": "oklch(0.627 0.17 149.23)",
+        "value": "oklch(0.627 0.17 149.25)",
         "type": "color",
         "variable": "var(--color-toast-success-background)",
         "description": ""
@@ -8994,17 +8994,6 @@
         "value": "oklch(0.929 0.013 255.56)",
         "type": "color",
         "variable": "var(--color-toggle-border)",
-        "description": ""
-      },
-      "toggle-background-hover": {
-        "name": "toggleBackgroundHover",
-        "path": [
-          "toggle",
-          "background-hover"
-        ],
-        "value": "oklch(0.984 0.003 248.29)",
-        "type": "color",
-        "variable": "var(--color-toggle-background-hover)",
         "description": ""
       },
       "toggle-pressed": {
@@ -9149,6 +9138,17 @@
         "value": "14px",
         "type": "fontSize",
         "variable": "var(--toggle-font-size)",
+        "description": ""
+      },
+      "toggle-background-hover": {
+        "name": "toggleBackgroundHover",
+        "path": [
+          "toggle",
+          "background-hover"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-toggle-background-hover)",
         "description": ""
       }
     },
