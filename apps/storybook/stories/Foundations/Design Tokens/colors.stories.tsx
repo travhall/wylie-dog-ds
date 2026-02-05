@@ -9,6 +9,13 @@ import { Progress } from "@wyliedog/ui/progress";
 import { Switch } from "@wyliedog/ui/switch";
 import { Label } from "@wyliedog/ui/label";
 import { Input } from "@wyliedog/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@wyliedog/ui/select";
 
 const meta: Meta = {
   title: "Foundations/Design Tokens/Colors",
@@ -235,10 +242,11 @@ const ColorPalette = ({
       <h3 className="text-lg font-semibold capitalize">{colorName}</h3>
       <div className="grid grid-cols-11 gap-2">
         {shadeEntries.map(([shade, value]) => (
-          <button
+          <Button
             key={shade}
+            variant="ghost"
             onClick={() => handleCopy(shade)}
-            className="text-center group relative cursor-pointer"
+            className="text-center group relative cursor-pointer h-auto p-0 flex flex-col items-center"
             title={`Copy ${colorName}-${shade}`}
           >
             <div
@@ -251,7 +259,7 @@ const ColorPalette = ({
                 Copied!
               </div>
             )}
-          </button>
+          </Button>
         ))}
       </div>
     </div>
@@ -1041,17 +1049,23 @@ export const TokenBrowser: Story = {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-4 py-2 rounded-md border border-(--color-border-primary) bg-(--color-background-primary) text-(--color-text-primary)"
-          >
-            {categories.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat === "all" ? "All Colors" : cat}
-              </option>
-            ))}
-          </select>
+          <div className="w-40">
+            <Select
+              value={selectedCategory}
+              onValueChange={setSelectedCategory}
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {categories.map((cat) => (
+                  <SelectItem key={cat} value={cat}>
+                    {cat === "all" ? "All Colors" : cat}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
         {/* Results Count */}
@@ -1062,10 +1076,11 @@ export const TokenBrowser: Story = {
         {/* Token Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-[600px] overflow-y-auto">
           {filteredTokens.map((token) => (
-            <button
+            <Button
               key={token.name}
+              variant="ghost"
               onClick={() => handleCopy(token.cssVar, token.name)}
-              className="flex items-center gap-3 p-3 rounded-lg border border-(--color-border-secondary) bg-(--color-background-primary) hover:border-(--color-border-focus) hover:bg-(--color-background-secondary) transition-all text-left group relative"
+              className="flex items-center gap-3 p-3 h-auto rounded-lg border border-(--color-border-secondary) bg-(--color-background-primary) hover:border-(--color-border-focus) hover:bg-(--color-background-secondary) transition-all text-left group relative justify-start"
             >
               <div
                 className="w-12 h-12 rounded border border-(--color-border-primary) shrink-0"
@@ -1084,7 +1099,7 @@ export const TokenBrowser: Story = {
                   Copied!
                 </div>
               )}
-            </button>
+            </Button>
           ))}
         </div>
 

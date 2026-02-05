@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
 import { Textarea } from "@wyliedog/ui/textarea";
+import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta<typeof Textarea> = {
@@ -185,20 +186,15 @@ export const FormExamples: Story = {
             <Label htmlFor="feedback-name" required>
               Name
             </Label>
-            <input
-              id="feedback-name"
-              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
-              placeholder="Your name"
-            />
+            <Input id="feedback-name" placeholder="Your name" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="feedback-email" required>
               Email
             </Label>
-            <input
+            <Input
               id="feedback-email"
               type="email"
-              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
               placeholder="your@email.com"
             />
           </div>
@@ -206,11 +202,7 @@ export const FormExamples: Story = {
 
         <div className="space-y-2">
           <Label htmlFor="feedback-subject">Subject</Label>
-          <input
-            id="feedback-subject"
-            className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
-            placeholder="What's this about?"
-          />
+          <Input id="feedback-subject" placeholder="What's this about?" />
         </div>
 
         <div className="space-y-2">

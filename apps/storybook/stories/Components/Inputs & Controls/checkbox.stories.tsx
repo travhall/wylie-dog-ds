@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
 import { Checkbox } from "@wyliedog/ui/checkbox";
+import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta<typeof Checkbox> = {
@@ -236,24 +237,14 @@ export const FormExamples: Story = {
           <Label htmlFor="reg-email" required>
             Email
           </Label>
-          <input
-            id="reg-email"
-            type="email"
-            className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
-            placeholder="your@email.com"
-          />
+          <Input id="reg-email" type="email" placeholder="your@email.com" />
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="reg-password" required>
             Password
           </Label>
-          <input
-            id="reg-password"
-            type="password"
-            className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
-            placeholder="••••••••"
-          />
+          <Input id="reg-password" type="password" placeholder="••••••••" />
         </div>
 
         <div className="space-y-3 pt-2">

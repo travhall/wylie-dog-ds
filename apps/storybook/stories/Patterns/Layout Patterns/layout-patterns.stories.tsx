@@ -3,6 +3,7 @@ import { Button } from "@wyliedog/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
+import { Textarea } from "@wyliedog/ui/textarea";
 import { Badge } from "@wyliedog/ui/badge";
 import { Avatar } from "@wyliedog/ui/avatar";
 import { Separator } from "@wyliedog/ui/separator";
@@ -254,9 +255,8 @@ export const SettingsPage: Story = {
 
                 <div className="space-y-2">
                   <Label htmlFor="bio">Bio</Label>
-                  <textarea
+                  <Textarea
                     id="bio"
-                    className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md"
                     rows={4}
                     defaultValue="Software developer passionate about creating great user experiences."
                   />

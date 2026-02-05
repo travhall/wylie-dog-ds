@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ToggleGroup, ToggleGroupItem } from "@wyliedog/ui/toggle-group";
+import { Textarea } from "@wyliedog/ui/textarea";
 import {
   BoldIcon,
   ItalicIcon,
@@ -396,10 +397,7 @@ export const EditorToolbar: Story = {
         </ToggleGroup>
       </div>
 
-      <textarea
-        className="w-full h-32 p-3 border border-(--color-border-secondary) rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
-        placeholder="Start writing..."
-      />
+      <Textarea className="h-32 resize-none" placeholder="Start writing..." />
     </div>
   ),
   parameters: {

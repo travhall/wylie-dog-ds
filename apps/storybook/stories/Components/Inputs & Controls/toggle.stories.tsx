@@ -1,6 +1,8 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Toggle } from "@wyliedog/ui/toggle";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
 import {
   BoldIcon,
   ItalicIcon,
@@ -305,12 +307,13 @@ export const ViewToggle: Story = {
     return (
       <div className="space-y-4 max-w-sm">
         <div className="space-y-2">
-          <label className="text-sm font-medium">Password</label>
+          <Label htmlFor="password-input">Password</Label>
           <div className="flex items-center gap-2">
-            <input
+            <Input
+              id="password-input"
               type={showPassword ? "text" : "password"}
               defaultValue="secretpassword123"
-              className="flex-1 px-3 py-2 border rounded-md text-sm"
+              className="flex-1"
             />
             <Toggle
               pressed={showPassword}

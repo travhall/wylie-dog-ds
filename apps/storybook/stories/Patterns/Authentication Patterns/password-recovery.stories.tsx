@@ -73,15 +73,16 @@ export const ForgotPasswordEmail: Story = {
             <Alert>
               <AlertDescription>
                 If you don't see the email, check your spam folder or{" "}
-                <button
+                <Button
+                  variant="link"
+                  className="h-auto p-0 font-medium"
                   onClick={() => {
                     setIsSubmitted(false);
                     setEmail("");
                   }}
-                  className="font-medium text-primary hover:underline"
                 >
                   try another email address
-                </button>
+                </Button>
                 .
               </AlertDescription>
             </Alert>
@@ -671,13 +672,14 @@ export const MultiStepPasswordRecovery: Story = {
                 />
                 <p className="text-sm text-muted-foreground">
                   Didn't receive the code?{" "}
-                  <button
+                  <Button
                     type="button"
-                    className="text-primary hover:underline"
+                    variant="link"
+                    className="h-auto p-0"
                     onClick={() => console.log("Resend code")}
                   >
                     Resend
-                  </button>
+                  </Button>
                 </p>
               </div>
               <Button type="submit" className="w-full" disabled={isLoading}>

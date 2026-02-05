@@ -8,6 +8,7 @@ import {
   SelectValue,
   SelectSeparator,
 } from "@wyliedog/ui/select";
+import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta<typeof Select> = {
@@ -212,21 +213,13 @@ export const FormExamples: Story = {
             <Label htmlFor="first-name" required>
               First Name
             </Label>
-            <input
-              id="first-name"
-              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
-              placeholder="John"
-            />
+            <Input id="first-name" placeholder="John" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="last-name" required>
               Last Name
             </Label>
-            <input
-              id="last-name"
-              className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
-              placeholder="Doe"
-            />
+            <Input id="last-name" placeholder="Doe" />
           </div>
         </div>
 

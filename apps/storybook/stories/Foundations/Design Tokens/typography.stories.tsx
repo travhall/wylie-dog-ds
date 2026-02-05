@@ -780,18 +780,16 @@ function TypographyPlaygroundComponent() {
             </Label>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {fontFamilies.map((token) => (
-                <button
+                <Button
                   key={token.key}
-                  type="button"
+                  size="sm"
+                  variant={
+                    selectedFontFamily === token.key ? "default" : "outline"
+                  }
                   onClick={() => setSelectedFontFamily(token.key)}
-                  className={`px-3 py-2 text-xs rounded-md border transition-all ${
-                    selectedFontFamily === token.key
-                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                      : "bg-background hover:bg-muted border-border"
-                  }`}
                 >
                   {token.key}
-                </button>
+                </Button>
               ))}
             </div>
             {showTokenDetails && (
@@ -809,18 +807,16 @@ function TypographyPlaygroundComponent() {
             </Label>
             <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
               {fontSizes.map((token) => (
-                <button
+                <Button
                   key={token.key}
-                  type="button"
+                  size="sm"
+                  variant={
+                    selectedFontSize === token.key ? "default" : "outline"
+                  }
                   onClick={() => setSelectedFontSize(token.key)}
-                  className={`px-3 py-2 text-xs rounded-md border transition-all ${
-                    selectedFontSize === token.key
-                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                      : "bg-background hover:bg-muted border-border"
-                  }`}
                 >
                   {token.key}
-                </button>
+                </Button>
               ))}
             </div>
             {showTokenDetails && (
@@ -838,18 +834,16 @@ function TypographyPlaygroundComponent() {
             </Label>
             <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
               {fontWeights.map((token) => (
-                <button
+                <Button
                   key={token.key}
-                  type="button"
+                  size="sm"
+                  variant={
+                    selectedFontWeight === token.key ? "default" : "outline"
+                  }
                   onClick={() => setSelectedFontWeight(token.key)}
-                  className={`px-3 py-2 text-xs rounded-md border transition-all ${
-                    selectedFontWeight === token.key
-                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                      : "bg-background hover:bg-muted border-border"
-                  }`}
                 >
                   {token.key}
-                </button>
+                </Button>
               ))}
             </div>
             {showTokenDetails && (
@@ -867,18 +861,16 @@ function TypographyPlaygroundComponent() {
             </Label>
             <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
               {lineHeights.map((token) => (
-                <button
+                <Button
                   key={token.key}
-                  type="button"
+                  size="sm"
+                  variant={
+                    selectedLineHeight === token.key ? "default" : "outline"
+                  }
                   onClick={() => setSelectedLineHeight(token.key)}
-                  className={`px-3 py-2 text-xs rounded-md border transition-all ${
-                    selectedLineHeight === token.key
-                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                      : "bg-background hover:bg-muted border-border"
-                  }`}
                 >
                   {token.key}
-                </button>
+                </Button>
               ))}
             </div>
             {showTokenDetails && (
@@ -897,18 +889,18 @@ function TypographyPlaygroundComponent() {
               </Label>
               <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                 {letterSpacings.map((token) => (
-                  <button
+                  <Button
                     key={token.key}
-                    type="button"
-                    onClick={() => setSelectedLetterSpacing(token.key)}
-                    className={`px-3 py-2 text-xs rounded-md border transition-all ${
+                    size="sm"
+                    variant={
                       selectedLetterSpacing === token.key
-                        ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                        : "bg-background hover:bg-muted border-border"
-                    }`}
+                        ? "default"
+                        : "outline"
+                    }
+                    onClick={() => setSelectedLetterSpacing(token.key)}
                   >
                     {token.key}
-                  </button>
+                  </Button>
                 ))}
               </div>
               {showTokenDetails && currentLetterSpacing && (
