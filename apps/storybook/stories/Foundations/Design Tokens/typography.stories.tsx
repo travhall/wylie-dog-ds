@@ -5,6 +5,7 @@ import { Label } from "@wyliedog/ui/label";
 import { Button } from "@wyliedog/ui/button";
 import { Badge } from "@wyliedog/ui/badge";
 import { Switch } from "@wyliedog/ui/switch";
+import { Textarea } from "@wyliedog/ui/textarea";
 import manifest from "@wyliedog/tokens/manifest.json";
 
 const meta: Meta = {
@@ -933,11 +934,14 @@ function TypographyPlaygroundComponent() {
 
           {/* Custom Text Input */}
           <div className="space-y-3">
-            <Label className="text-sm font-semibold">Preview Text</Label>
-            <textarea
+            <Label htmlFor="preview-text" className="text-sm font-semibold">
+              Preview Text
+            </Label>
+            <Textarea
+              id="preview-text"
               value={previewText}
               onChange={(e) => setPreviewText(e.target.value)}
-              className="w-full min-h-[100px] px-3 py-2 text-sm rounded-md border border-input bg-background resize-y"
+              className="min-h-[100px] resize-y"
               placeholder="Enter your text here..."
             />
           </div>

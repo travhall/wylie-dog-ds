@@ -364,9 +364,13 @@ export const Interactive: Story = {
                         {item.badge}
                       </Badge>
                     )}
-                    <button className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="opacity-0 group-hover:opacity-100 transition-opacity h-6 w-6"
+                    >
                       <MoreHorizontal className="h-4 w-4 text-(--color-text-tertiary)" />
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </CardHeader>

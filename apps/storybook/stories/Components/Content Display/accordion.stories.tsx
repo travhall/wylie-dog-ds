@@ -6,6 +6,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@wyliedog/ui/accordion";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
+import { Checkbox } from "@wyliedog/ui/checkbox";
+import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta<typeof Accordion> = {
   title: "Components/Content Display/Accordion",
@@ -247,19 +251,15 @@ export const SettingsPanel: Story = {
           <AccordionContent>
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Display Name</label>
-                <input
-                  type="text"
-                  defaultValue="John Doe"
-                  className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
-                />
+                <Label htmlFor="display-name">Display Name</Label>
+                <Input id="display-name" type="text" defaultValue="John Doe" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium">Email</label>
-                <input
+                <Label htmlFor="settings-email">Email</Label>
+                <Input
+                  id="settings-email"
                   type="email"
                   defaultValue="john@example.com"
-                  className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
                 />
               </div>
             </div>
@@ -271,16 +271,22 @@ export const SettingsPanel: Story = {
           <AccordionContent>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm">Email notifications</span>
-                <input type="checkbox" defaultChecked className="rounded" />
+                <Label htmlFor="email-notif" className="font-normal">
+                  Email notifications
+                </Label>
+                <Checkbox id="email-notif" defaultChecked />
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm">Push notifications</span>
-                <input type="checkbox" className="rounded" />
+                <Label htmlFor="push-notif" className="font-normal">
+                  Push notifications
+                </Label>
+                <Checkbox id="push-notif" />
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm">SMS notifications</span>
-                <input type="checkbox" className="rounded" />
+                <Label htmlFor="sms-notif" className="font-normal">
+                  SMS notifications
+                </Label>
+                <Checkbox id="sms-notif" />
               </div>
             </div>
           </AccordionContent>
@@ -291,16 +297,20 @@ export const SettingsPanel: Story = {
           <AccordionContent>
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm">Make profile public</span>
-                <input type="checkbox" className="rounded" />
+                <Label htmlFor="public-profile" className="font-normal">
+                  Make profile public
+                </Label>
+                <Checkbox id="public-profile" />
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm">Two-factor authentication</span>
-                <input type="checkbox" defaultChecked className="rounded" />
+                <Label htmlFor="two-factor" className="font-normal">
+                  Two-factor authentication
+                </Label>
+                <Checkbox id="two-factor" defaultChecked />
               </div>
-              <button className="text-sm text-(--color-interactive-primary) hover:text-(--color-interactive-primary-hover)">
+              <Button variant="link" className="p-0 h-auto text-sm">
                 Change password
-              </button>
+              </Button>
             </div>
           </AccordionContent>
         </AccordionItem>

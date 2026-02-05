@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SiteHeader } from "@wyliedog/ui/compositions/site-header";
+import { Button } from "@wyliedog/ui/button";
 import { Heart, Menu } from "lucide-react";
 
 const meta: Meta<typeof SiteHeader> = {
@@ -117,12 +118,10 @@ export const WithCustomActions: Story = {
     ],
     actions: (
       <div className="flex items-center space-x-2">
-        <button className="text-sm text-muted-foreground hover:text-foreground">
+        <Button variant="ghost" size="sm">
           Login
-        </button>
-        <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90">
-          Sign Up
-        </button>
+        </Button>
+        <Button size="sm">Sign Up</Button>
       </div>
     ),
   },

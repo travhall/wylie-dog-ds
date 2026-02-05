@@ -12,6 +12,10 @@ import {
   AlertDialogTrigger,
 } from "@wyliedog/ui/alert-dialog";
 import { Button } from "@wyliedog/ui/button";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
+import { Textarea } from "@wyliedog/ui/textarea";
+import { Checkbox } from "@wyliedog/ui/checkbox";
 
 const meta: Meta<typeof AlertDialog> = {
   title: "Components/Overlays & Popovers/AlertDialog",
@@ -296,19 +300,20 @@ export const UnsavedChanges: Story = {
   render: () => (
     <div className="space-y-4 p-4 max-w-md">
       <div className="space-y-2">
-        <label className="text-sm font-medium">Document Title</label>
-        <input
+        <Label htmlFor="doc-title">Document Title</Label>
+        <Input
+          id="doc-title"
           type="text"
           defaultValue="My Important Document"
-          className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)"
         />
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-medium">Content</label>
-        <textarea
+        <Label htmlFor="doc-content">Content</Label>
+        <Textarea
+          id="doc-content"
           defaultValue="This document contains important information..."
-          className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary) h-24"
+          className="h-24"
         />
       </div>
 
@@ -361,16 +366,22 @@ export const BulkOperations: Story = {
         <h3 className="text-lg font-semibold">Selected Items (3)</h3>
         <div className="space-y-2">
           <div className="flex items-center space-x-2 p-2 bg-(--color-interactive-primary)/10 rounded">
-            <input type="checkbox" checked readOnly />
-            <span>Project Alpha - Draft.docx</span>
+            <Checkbox id="file-1" checked disabled />
+            <Label htmlFor="file-1" className="font-normal">
+              Project Alpha - Draft.docx
+            </Label>
           </div>
           <div className="flex items-center space-x-2 p-2 bg-(--color-interactive-primary)/10 rounded">
-            <input type="checkbox" checked readOnly />
-            <span>Meeting Notes - Q4.pdf</span>
+            <Checkbox id="file-2" checked disabled />
+            <Label htmlFor="file-2" className="font-normal">
+              Meeting Notes - Q4.pdf
+            </Label>
           </div>
           <div className="flex items-center space-x-2 p-2 bg-(--color-interactive-primary)/10 rounded">
-            <input type="checkbox" checked readOnly />
-            <span>Budget Spreadsheet.xlsx</span>
+            <Checkbox id="file-3" checked disabled />
+            <Label htmlFor="file-3" className="font-normal">
+              Budget Spreadsheet.xlsx
+            </Label>
           </div>
         </div>
       </div>

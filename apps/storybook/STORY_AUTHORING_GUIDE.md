@@ -46,7 +46,37 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { Meta, StoryObj } from "@storybook/react";
 ```
 
-### 2. Meta Configuration
+### 2. UI Component Imports (Critical)
+
+**All UI components must be imported from `@wyliedog/ui`.** Never use raw HTML elements for interactive controls or form elements. This ensures consistent styling, accessibility, and design token usage across all stories.
+
+```typescript
+// ✅ Correct - Import UI components from the design system
+import { Button } from "@wyliedog/ui/button";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
+import { Checkbox } from "@wyliedog/ui/checkbox";
+import { Switch } from "@wyliedog/ui/switch";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@wyliedog/ui/select";
+import { Textarea } from "@wyliedog/ui/textarea";
+import { RadioGroup, RadioGroupItem } from "@wyliedog/ui/radio-group";
+
+// ❌ Wrong - Raw HTML elements
+<button className="...">Submit</button>
+<input type="text" className="..." />
+<input type="checkbox" />
+<select><option>...</option></select>
+<textarea className="..." />
+```
+
+**Why this matters:**
+
+- UI components use CSS variable tokens for theming and dark mode support
+- They include proper accessibility attributes (ARIA labels, keyboard navigation)
+- They maintain visual consistency across the design system
+- Raw HTML elements require manual styling that may not follow the design system
+
+### 3. Meta Configuration
 
 Every story file must include a complete meta configuration:
 
@@ -79,7 +109,7 @@ const meta: Meta<typeof ComponentName> = {
 };
 ```
 
-### 3. ArgTypes Structure
+### 4. ArgTypes Structure
 
 All props should have complete argTypes definitions:
 
@@ -133,7 +163,7 @@ argTypes: {
 - `Behavior` - Event handlers, controlled state
 - `Styling` - className, style props
 
-### 4. Story-Level Descriptions
+### 5. Story-Level Descriptions
 
 Every story should have a description:
 
@@ -444,6 +474,11 @@ Use this checklist when writing or reviewing stories:
 - [ ] Includes `tags: ["autodocs"]`
 - [ ] All props have complete argTypes
 
+### Component Usage
+
+- [ ] All UI elements use `@wyliedog/ui` components (no raw HTML buttons, inputs, selects, etc.)
+- [ ] Form controls use proper Label, Input, Select, Checkbox, Switch, etc. from the design system
+
 ### ArgTypes
 
 - [ ] Every controllable prop has an argType
@@ -493,6 +528,12 @@ const meta: Meta = {
 
 // ❌ Hardcoded colors in story renders
 <p className="text-gray-600">Text</p>
+
+// ❌ Raw HTML elements instead of UI components
+<button className="...">Submit</button>
+<input type="text" className="..." />
+<input type="checkbox" />
+<select><option>...</option></select>
 ```
 
 ### Should Fix

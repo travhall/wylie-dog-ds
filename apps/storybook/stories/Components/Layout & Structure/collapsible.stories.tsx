@@ -7,6 +7,16 @@ import {
   CollapsibleTrigger,
 } from "@wyliedog/ui/collapsible";
 import { Button } from "@wyliedog/ui/button";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
+import { Switch } from "@wyliedog/ui/switch";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@wyliedog/ui/select";
 import { ChevronDownIcon, PlusIcon, MinusIcon } from "lucide-react";
 
 const meta: Meta<typeof Collapsible> = {
@@ -98,22 +108,22 @@ export const WithCustomTrigger: Story = {
 
         <div className="rounded-md border p-4 space-y-3">
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium">Enable notifications</label>
-            <input type="checkbox" defaultChecked />
+            <Label htmlFor="notifications-switch">Enable notifications</Label>
+            <Switch id="notifications-switch" defaultChecked />
           </div>
 
           <CollapsibleContent className="space-y-3">
             <div className="flex items-center justify-between">
-              <label className="text-sm font-medium">Auto-save changes</label>
-              <input type="checkbox" />
+              <Label htmlFor="autosave-switch">Auto-save changes</Label>
+              <Switch id="autosave-switch" />
             </div>
             <div className="flex items-center justify-between">
-              <label className="text-sm font-medium">Dark mode</label>
-              <input type="checkbox" defaultChecked />
+              <Label htmlFor="darkmode-switch">Dark mode</Label>
+              <Switch id="darkmode-switch" defaultChecked />
             </div>
             <div className="flex items-center justify-between">
-              <label className="text-sm font-medium">Beta features</label>
-              <input type="checkbox" />
+              <Label htmlFor="beta-switch">Beta features</Label>
+              <Switch id="beta-switch" />
             </div>
           </CollapsibleContent>
         </div>
@@ -274,19 +284,19 @@ export const FormSections: Story = {
           <CollapsibleContent>
             <div className="px-4 pb-4 space-y-3">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Full Name</label>
-                <input
+                <Label htmlFor="fullname-input">Full Name</Label>
+                <Input
+                  id="fullname-input"
                   type="text"
                   defaultValue="John Doe"
-                  className="w-full px-3 py-2 border rounded-md text-sm"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium">Email</label>
-                <input
+                <Label htmlFor="email-input">Email</Label>
+                <Input
+                  id="email-input"
                   type="email"
                   defaultValue="john@example.com"
-                  className="w-full px-3 py-2 border rounded-md text-sm"
                 />
               </div>
             </div>
@@ -301,16 +311,16 @@ export const FormSections: Story = {
           <CollapsibleContent>
             <div className="px-4 pb-4 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm">Email notifications</span>
-                <input type="checkbox" defaultChecked />
+                <Label htmlFor="email-notif-switch">Email notifications</Label>
+                <Switch id="email-notif-switch" defaultChecked />
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm">Push notifications</span>
-                <input type="checkbox" />
+                <Label htmlFor="push-notif-switch">Push notifications</Label>
+                <Switch id="push-notif-switch" />
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm">SMS notifications</span>
-                <input type="checkbox" />
+                <Label htmlFor="sms-notif-switch">SMS notifications</Label>
+                <Switch id="sms-notif-switch" />
               </div>
             </div>
           </CollapsibleContent>
@@ -324,16 +334,21 @@ export const FormSections: Story = {
           <CollapsibleContent>
             <div className="px-4 pb-4 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm">Profile visibility</span>
-                <select className="text-sm border rounded px-2 py-1">
-                  <option>Public</option>
-                  <option>Private</option>
-                  <option>Friends only</option>
-                </select>
+                <Label htmlFor="visibility-select">Profile visibility</Label>
+                <Select defaultValue="public">
+                  <SelectTrigger id="visibility-select" className="w-32">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="public">Public</SelectItem>
+                    <SelectItem value="private">Private</SelectItem>
+                    <SelectItem value="friends">Friends only</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm">Activity status</span>
-                <input type="checkbox" defaultChecked />
+                <Label htmlFor="activity-switch">Activity status</Label>
+                <Switch id="activity-switch" defaultChecked />
               </div>
             </div>
           </CollapsibleContent>

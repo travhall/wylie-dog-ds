@@ -5,6 +5,16 @@ import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 import { Separator } from "@wyliedog/ui/separator";
+import { Checkbox } from "@wyliedog/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@wyliedog/ui/radio-group";
+import { Switch } from "@wyliedog/ui/switch";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@wyliedog/ui/select";
 import {
   SettingsIcon,
   HelpCircleIcon,
@@ -126,15 +136,17 @@ export const WithForm: Story = {
               <Input id="email" type="email" placeholder="john@example.com" />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="role">Role</Label>
-              <select
-                id="role"
-                className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md text-sm"
-              >
-                <option>User</option>
-                <option>Admin</option>
-                <option>Editor</option>
-              </select>
+              <Label>Role</Label>
+              <Select defaultValue="user">
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a role" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="user">User</SelectItem>
+                  <SelectItem value="admin">Admin</SelectItem>
+                  <SelectItem value="editor">Editor</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <div className="flex gap-2 pt-2">
               <Button size="sm" className="flex-1">
@@ -174,49 +186,39 @@ export const Settings: Story = {
           </div>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label htmlFor="notifications" className="text-sm">
+              <Label htmlFor="notifications" className="text-sm font-normal">
                 Notifications
               </Label>
-              <input
-                type="checkbox"
-                id="notifications"
-                defaultChecked
-                className="rounded"
-              />
+              <Switch id="notifications" defaultChecked />
             </div>
             <div className="flex items-center justify-between">
-              <Label htmlFor="darkMode" className="text-sm">
+              <Label htmlFor="darkMode" className="text-sm font-normal">
                 Dark Mode
               </Label>
-              <input type="checkbox" id="darkMode" className="rounded" />
+              <Switch id="darkMode" />
             </div>
             <div className="flex items-center justify-between">
-              <Label htmlFor="autoSave" className="text-sm">
+              <Label htmlFor="autoSave" className="text-sm font-normal">
                 Auto Save
               </Label>
-              <input
-                type="checkbox"
-                id="autoSave"
-                defaultChecked
-                className="rounded"
-              />
+              <Switch id="autoSave" defaultChecked />
             </div>
           </div>
           <Separator />
           <div className="space-y-2">
             <div className="space-y-1">
-              <Label htmlFor="language" className="text-sm">
-                Language
-              </Label>
-              <select
-                id="language"
-                className="w-full px-2 py-1 border border-(--color-border-secondary) rounded text-sm"
-              >
-                <option>English</option>
-                <option>Spanish</option>
-                <option>French</option>
-                <option>German</option>
-              </select>
+              <Label className="text-sm">Language</Label>
+              <Select defaultValue="english">
+                <SelectTrigger size="sm">
+                  <SelectValue placeholder="Select language" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="english">English</SelectItem>
+                  <SelectItem value="spanish">Spanish</SelectItem>
+                  <SelectItem value="french">French</SelectItem>
+                  <SelectItem value="german">German</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </div>
@@ -257,19 +259,28 @@ export const FilterMenu: Story = {
             <div className="space-y-3">
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Category</Label>
-                <div className="space-y-1">
-                  <label className="flex items-center space-x-2 text-sm">
-                    <input type="checkbox" defaultChecked className="rounded" />
-                    <span>Electronics</span>
-                  </label>
-                  <label className="flex items-center space-x-2 text-sm">
-                    <input type="checkbox" className="rounded" />
-                    <span>Clothing</span>
-                  </label>
-                  <label className="flex items-center space-x-2 text-sm">
-                    <input type="checkbox" className="rounded" />
-                    <span>Books</span>
-                  </label>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="electronics" defaultChecked />
+                    <Label
+                      htmlFor="electronics"
+                      className="text-sm font-normal"
+                    >
+                      Electronics
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="clothing" />
+                    <Label htmlFor="clothing" className="text-sm font-normal">
+                      Clothing
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="books" />
+                    <Label htmlFor="books" className="text-sm font-normal">
+                      Books
+                    </Label>
+                  </div>
                 </div>
               </div>
 
@@ -283,33 +294,26 @@ export const FilterMenu: Story = {
 
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Rating</Label>
-                <div className="space-y-1">
-                  <label className="flex items-center space-x-2 text-sm">
-                    <input
-                      type="radio"
-                      name="rating"
-                      className="rounded-full"
-                    />
-                    <span>4+ Stars</span>
-                  </label>
-                  <label className="flex items-center space-x-2 text-sm">
-                    <input
-                      type="radio"
-                      name="rating"
-                      className="rounded-full"
-                    />
-                    <span>3+ Stars</span>
-                  </label>
-                  <label className="flex items-center space-x-2 text-sm">
-                    <input
-                      type="radio"
-                      name="rating"
-                      defaultChecked
-                      className="rounded-full"
-                    />
-                    <span>Any Rating</span>
-                  </label>
-                </div>
+                <RadioGroup defaultValue="any">
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="4plus" id="rating-4" />
+                    <Label htmlFor="rating-4" className="text-sm font-normal">
+                      4+ Stars
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="3plus" id="rating-3" />
+                    <Label htmlFor="rating-3" className="text-sm font-normal">
+                      3+ Stars
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="any" id="rating-any" />
+                    <Label htmlFor="rating-any" className="text-sm font-normal">
+                      Any Rating
+                    </Label>
+                  </div>
+                </RadioGroup>
               </div>
             </div>
 
@@ -451,14 +455,17 @@ export const DatePicker: Story = {
                 const isCurrentMonth = day > 0 && day <= 31;
                 const isSelected = day === 15;
                 return (
-                  <button
+                  <Button
                     key={i}
-                    className={`p-2 rounded text-sm hover:bg-(--color-background-tertiary) ${
+                    variant={isSelected ? "default" : "ghost"}
+                    size="sm"
+                    className={`p-2 h-8 w-8 ${
                       !isCurrentMonth ? "text-(--color-text-tertiary)" : ""
-                    } ${isSelected ? "bg-(--color-interactive-primary) text-white hover:bg-(--color-interactive-primary-hover)" : ""}`}
+                    }`}
+                    disabled={!isCurrentMonth}
                   >
                     {isCurrentMonth ? day : ""}
-                  </button>
+                  </Button>
                 );
               })}
             </div>
@@ -503,22 +510,37 @@ export const ActionMenu: Story = {
           </PopoverTrigger>
           <PopoverContent className="w-48 p-1">
             <div className="space-y-1">
-              <button className="w-full text-left px-3 py-2 text-sm hover:bg-(--color-background-tertiary) rounded">
+              <Button
+                variant="ghost"
+                className="w-full justify-start px-3 py-2 h-auto text-sm"
+              >
                 Edit Project
-              </button>
-              <button className="w-full text-left px-3 py-2 text-sm hover:bg-(--color-background-tertiary) rounded">
+              </Button>
+              <Button
+                variant="ghost"
+                className="w-full justify-start px-3 py-2 h-auto text-sm"
+              >
                 Duplicate
-              </button>
-              <button className="w-full text-left px-3 py-2 text-sm hover:bg-(--color-background-tertiary) rounded">
+              </Button>
+              <Button
+                variant="ghost"
+                className="w-full justify-start px-3 py-2 h-auto text-sm"
+              >
                 Export
-              </button>
+              </Button>
               <Separator className="my-1" />
-              <button className="w-full text-left px-3 py-2 text-sm hover:bg-(--color-background-tertiary) rounded">
+              <Button
+                variant="ghost"
+                className="w-full justify-start px-3 py-2 h-auto text-sm"
+              >
                 Archive
-              </button>
-              <button className="w-full text-left px-3 py-2 text-sm hover:bg-(--color-status-danger)/10 text-(--color-status-danger) rounded">
+              </Button>
+              <Button
+                variant="ghost"
+                className="w-full justify-start px-3 py-2 h-auto text-sm text-(--color-status-danger) hover:text-(--color-status-danger) hover:bg-(--color-status-danger)/10"
+              >
                 Delete
-              </button>
+              </Button>
             </div>
           </PopoverContent>
         </Popover>
@@ -633,14 +655,15 @@ export const Accessibility: Story = {
               </div>
 
               <div className="flex items-center justify-between">
-                <Label htmlFor="email-notifications" className="text-sm">
+                <Label
+                  htmlFor="email-notifications"
+                  className="text-sm font-normal"
+                >
                   Email Notifications
                 </Label>
-                <input
-                  type="checkbox"
+                <Switch
                   id="email-notifications"
                   defaultChecked
-                  className="rounded"
                   aria-describedby="notification-help"
                 />
               </div>

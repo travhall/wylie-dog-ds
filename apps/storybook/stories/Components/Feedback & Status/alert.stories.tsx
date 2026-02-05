@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Alert, AlertTitle, AlertDescription } from "@wyliedog/ui/alert";
+import { Button } from "@wyliedog/ui/button";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta<typeof Alert> = {
   title: "Components/Feedback & Status/Alert",
@@ -161,27 +164,21 @@ export const InFormContext: Story = {
       </Alert>
 
       <div className="space-y-3">
-        <div>
-          <label className="block text-sm font-medium">Email</label>
-          <input
-            type="email"
-            className="mt-1 w-full px-3 py-2 border border-(--color-status-danger) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-status-danger)"
-            placeholder="Enter your email"
-          />
+        <div className="space-y-1">
+          <Label htmlFor="email-input">Email</Label>
+          <Input id="email-input" type="email" placeholder="Enter your email" />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium">Password</label>
-          <input
+        <div className="space-y-1">
+          <Label htmlFor="password-input">Password</Label>
+          <Input
+            id="password-input"
             type="password"
-            className="mt-1 w-full px-3 py-2 border border-(--color-status-danger) rounded-md focus:outline-none focus:ring-2 focus:ring-(--color-status-danger)"
             placeholder="Create a password"
           />
         </div>
 
-        <button className="w-full bg-(--color-interactive-primary) text-white py-2 px-4 rounded-md hover:bg-(--color-interactive-primary-hover)">
-          Create Account
-        </button>
+        <Button className="w-full">Create Account</Button>
       </div>
     </div>
   ),

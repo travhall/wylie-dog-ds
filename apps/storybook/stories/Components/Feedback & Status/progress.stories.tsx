@@ -2,6 +2,15 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Progress } from "@wyliedog/ui/progress";
 import { Button } from "@wyliedog/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@wyliedog/ui/select";
 import { useState, useEffect } from "react";
 
 const meta: Meta<typeof Progress> = {
@@ -224,41 +233,47 @@ export const FormProgress: Story = {
             {currentStep === 1 && (
               <div className="space-y-3">
                 <h3 className="font-medium">Basic Information</h3>
-                <input
-                  className="w-full px-3 py-2 border rounded-md"
-                  placeholder="Full name"
-                />
-                <input
-                  className="w-full px-3 py-2 border rounded-md"
-                  placeholder="Email address"
-                />
+                <div className="space-y-2">
+                  <Label htmlFor="fullname">Full name</Label>
+                  <Input id="fullname" placeholder="Full name" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email address</Label>
+                  <Input id="email" type="email" placeholder="Email address" />
+                </div>
               </div>
             )}
 
             {currentStep === 2 && (
               <div className="space-y-3">
                 <h3 className="font-medium">Account Details</h3>
-                <input
-                  className="w-full px-3 py-2 border rounded-md"
-                  placeholder="Username"
-                />
-                <input
-                  type="password"
-                  className="w-full px-3 py-2 border rounded-md"
-                  placeholder="Password"
-                />
+                <div className="space-y-2">
+                  <Label htmlFor="username">Username</Label>
+                  <Input id="username" placeholder="Username" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="password">Password</Label>
+                  <Input id="password" type="password" placeholder="Password" />
+                </div>
               </div>
             )}
 
             {currentStep === 3 && (
               <div className="space-y-3">
                 <h3 className="font-medium">Preferences</h3>
-                <select className="w-full px-3 py-2 border rounded-md">
-                  <option>Select timezone</option>
-                  <option>EST</option>
-                  <option>PST</option>
-                  <option>GMT</option>
-                </select>
+                <div className="space-y-2">
+                  <Label htmlFor="timezone">Timezone</Label>
+                  <Select>
+                    <SelectTrigger id="timezone" className="w-full">
+                      <SelectValue placeholder="Select timezone" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="est">EST</SelectItem>
+                      <SelectItem value="pst">PST</SelectItem>
+                      <SelectItem value="gmt">GMT</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
             )}
 

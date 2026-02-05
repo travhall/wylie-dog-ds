@@ -104,15 +104,9 @@ export const ComponentSpacingExamples: Story = {
       <div className="space-y-4">
         <h4 className="font-medium">Button Sizes</h4>
         <div className="flex gap-4 items-center">
-          <button className="bg-primary-500 text-white px-3 py-1.5 rounded text-sm">
-            Small (px-3 py-1.5)
-          </button>
-          <button className="bg-primary-500 text-white px-4 py-2 rounded">
-            Medium (px-4 py-2)
-          </button>
-          <button className="bg-primary-500 text-white px-6 py-3 rounded text-lg">
-            Large (px-6 py-3)
-          </button>
+          <Button size="sm">Small (px-3 py-1.5)</Button>
+          <Button size="md">Medium (px-4 py-2)</Button>
+          <Button size="lg">Large (px-6 py-3)</Button>
         </div>
       </div>
 
@@ -125,12 +119,8 @@ export const ComponentSpacingExamples: Story = {
             scale (mb-6).
           </p>
           <div className="flex gap-3">
-            <button className="bg-primary-500 text-white px-4 py-2 rounded">
-              Primary
-            </button>
-            <button className="border border-(--color-border-secondary) text-(--color-text-primary) px-4 py-2 rounded">
-              Secondary
-            </button>
+            <Button>Primary</Button>
+            <Button variant="outline">Secondary</Button>
           </div>
         </div>
       </div>
@@ -213,17 +203,16 @@ export const SpacingPlayground: Story = {
               <Label className="text-sm font-medium">Padding</Label>
               <div className="grid grid-cols-5 gap-2">
                 {spacingValues.map((item) => (
-                  <button
+                  <Button
                     key={`p-${item.value}`}
+                    size="sm"
+                    variant={
+                      padding === `p-${item.value}` ? "default" : "outline"
+                    }
                     onClick={() => setPadding(`p-${item.value}`)}
-                    className={`px-2 py-1.5 text-xs rounded-md border transition-colors ${
-                      padding === `p-${item.value}`
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background border-border hover:bg-muted"
-                    }`}
                   >
                     {item.label}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -233,17 +222,16 @@ export const SpacingPlayground: Story = {
               <Label className="text-sm font-medium">Margin</Label>
               <div className="grid grid-cols-5 gap-2">
                 {spacingValues.map((item) => (
-                  <button
+                  <Button
                     key={`m-${item.value}`}
+                    size="sm"
+                    variant={
+                      margin === `m-${item.value}` ? "default" : "outline"
+                    }
                     onClick={() => setMargin(`m-${item.value}`)}
-                    className={`px-2 py-1.5 text-xs rounded-md border transition-colors ${
-                      margin === `m-${item.value}`
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background border-border hover:bg-muted"
-                    }`}
                   >
                     {item.label}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -253,17 +241,16 @@ export const SpacingPlayground: Story = {
               <Label className="text-sm font-medium">Gap (for flex/grid)</Label>
               <div className="grid grid-cols-5 gap-2">
                 {spacingValues.map((item) => (
-                  <button
+                  <Button
                     key={`gap-${item.value}`}
+                    size="sm"
+                    variant={
+                      gap === `gap-${item.value}` ? "default" : "outline"
+                    }
                     onClick={() => setGap(`gap-${item.value}`)}
-                    className={`px-2 py-1.5 text-xs rounded-md border transition-colors ${
-                      gap === `gap-${item.value}`
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background border-border hover:bg-muted"
-                    }`}
                   >
                     {item.label}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>

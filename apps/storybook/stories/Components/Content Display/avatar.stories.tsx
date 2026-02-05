@@ -154,17 +154,17 @@ export const GroupDisplay: Story = {
       <div>
         <h4 className="text-sm font-medium mb-3">Overlapping Avatars</h4>
         <div className="flex -space-x-2">
-          <Avatar className="border-2 border-white">
+          <Avatar className="border-2 border-(--color-background-primary)">
             <AvatarImage src="https://github.com/shadcn.png" alt="User 1" />
             <AvatarFallback>U1</AvatarFallback>
           </Avatar>
-          <Avatar className="border-2 border-white">
+          <Avatar className="border-2 border-(--color-background-primary)">
             <AvatarFallback>U2</AvatarFallback>
           </Avatar>
-          <Avatar className="border-2 border-white">
+          <Avatar className="border-2 border-(--color-background-primary)">
             <AvatarFallback>U3</AvatarFallback>
           </Avatar>
-          <Avatar className="border-2 border-white">
+          <Avatar className="border-2 border-(--color-background-primary)">
             <AvatarFallback>+2</AvatarFallback>
           </Avatar>
         </div>

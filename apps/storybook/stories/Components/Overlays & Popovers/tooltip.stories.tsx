@@ -8,6 +8,9 @@ import {
 } from "@wyliedog/ui/tooltip";
 import { Button } from "@wyliedog/ui/button";
 import { Badge } from "@wyliedog/ui/badge";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
+import { Checkbox } from "@wyliedog/ui/checkbox";
 
 const meta: Meta<any> = {
   title: "Components/Overlays & Popovers/Tooltip",
@@ -188,12 +191,16 @@ export const InFormContext: Story = {
       <h3 className="text-lg font-semibold">Account Settings</h3>
 
       <div className="space-y-3">
-        <div>
+        <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <label className="text-sm font-medium">Username</label>
+            <Label htmlFor="username-input">Username</Label>
             <Tooltip>
               <TooltipTrigger asChild>
-                <button className="text-(--color-text-tertiary) hover:text-(--color-text-secondary)">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-5 w-5 text-(--color-text-tertiary) hover:text-(--color-text-secondary)"
+                >
                   <svg
                     className="w-4 h-4"
                     fill="currentColor"
@@ -205,26 +212,26 @@ export const InFormContext: Story = {
                       clipRule="evenodd"
                     />
                   </svg>
-                </button>
+                </Button>
               </TooltipTrigger>
               <TooltipContent>
                 <p>Username must be 3-20 characters and unique</p>
               </TooltipContent>
             </Tooltip>
           </div>
-          <input
-            type="text"
-            className="w-full px-3 py-2 border border-(--color-border-secondary) rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-            placeholder="Enter username"
-          />
+          <Input id="username-input" type="text" placeholder="Enter username" />
         </div>
 
-        <div>
+        <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <label className="text-sm font-medium">Email notifications</label>
+            <Label>Email notifications</Label>
             <Tooltip>
               <TooltipTrigger asChild>
-                <button className="text-(--color-text-tertiary) hover:text-(--color-text-secondary)">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-5 w-5 text-(--color-text-tertiary) hover:text-(--color-text-secondary)"
+                >
                   <svg
                     className="w-4 h-4"
                     fill="currentColor"
@@ -236,17 +243,22 @@ export const InFormContext: Story = {
                       clipRule="evenodd"
                     />
                   </svg>
-                </button>
+                </Button>
               </TooltipTrigger>
               <TooltipContent>
                 <p>Receive email notifications for important updates</p>
               </TooltipContent>
             </Tooltip>
           </div>
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" className="rounded" />
-            <span className="text-sm">Enable email notifications</span>
-          </label>
+          <div className="flex items-center gap-2">
+            <Checkbox id="email-notifications" />
+            <Label
+              htmlFor="email-notifications"
+              className="font-normal cursor-pointer"
+            >
+              Enable email notifications
+            </Label>
+          </div>
         </div>
       </div>
     </div>

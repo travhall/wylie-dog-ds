@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
 import { Button } from "@wyliedog/ui/button";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Inputs & Controls/Button",
@@ -208,25 +210,13 @@ export const ButtonsInForms: Story = {
   render: () => (
     <div className="w-80 space-y-4">
       <div className="space-y-2">
-        <label className="text-sm font-medium text-(--color-text-secondary)">
-          Email Address
-        </label>
-        <input
-          type="email"
-          placeholder="your@email.com"
-          className="w-full px-3 py-2 border border-(--color-border-secondary) rounded focus:outline-none focus:ring-2 focus:ring-primary-500"
-        />
+        <Label htmlFor="email-input">Email Address</Label>
+        <Input id="email-input" type="email" placeholder="your@email.com" />
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-medium text-(--color-text-secondary)">
-          Password
-        </label>
-        <input
-          type="password"
-          placeholder="••••••••"
-          className="w-full px-3 py-2 border border-(--color-border-secondary) rounded focus:outline-none focus:ring-2 focus:ring-primary-500"
-        />
+        <Label htmlFor="password-input">Password</Label>
+        <Input id="password-input" type="password" placeholder="••••••••" />
       </div>
 
       <div className="flex flex-col gap-2">
@@ -259,13 +249,13 @@ export const Loading: Story = {
     <div className="flex gap-4">
       <Button disabled>
         <span className="flex items-center gap-2">
-          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-4 h-4 border-2 border-(--color-button-primary-text) border-t-transparent rounded-full animate-spin"></div>
           Loading...
         </span>
       </Button>
       <Button variant="secondary" disabled>
         <span className="flex items-center gap-2">
-          <div className="w-4 h-4 border-2 border-(--color-text-secondary) border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-4 h-4 border-2 border-(--color-button-secondary-text) border-t-transparent rounded-full animate-spin"></div>
           Processing...
         </span>
       </Button>
