@@ -18,7 +18,7 @@ import {
 } from "@wyliedog/ui/select";
 
 const meta: Meta = {
-  title: "Foundations/Design Tokens/Colors",
+  title: "Foundations/Colors",
   parameters: {
     layout: "padded",
     docs: {

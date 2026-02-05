@@ -5,7 +5,7 @@ import { Label } from "@wyliedog/ui/label";
 import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta = {
-  title: "Foundations/Design Tokens/Spacing & Layout",
+  title: "Foundations/Spacing & Layout",
   parameters: {
     layout: "padded",
     docs: {

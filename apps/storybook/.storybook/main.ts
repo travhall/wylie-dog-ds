@@ -4,16 +4,10 @@ import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import { visualizer } from "rollup-plugin-visualizer";
 
-const __filename = fileURLToPath(import.meta.url);
-
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const config: StorybookConfig = {
-  stories: [
-    "../stories/**/*.mdx",
-    "../stories/*.stories.tsx",
-    "../stories/**/*.stories.tsx",
-  ],
+  stories: ["../stories/**/*.mdx", "../stories/**/*.stories.tsx"],
 
   addons: [
     getAbsolutePath("@storybook/addon-links"),
@@ -53,7 +47,6 @@ const config: StorybookConfig = {
     // Customize the Vite config here
     return {
       ...config,
-      define: { "process.env": {} },
       resolve: {
         ...config.resolve,
         alias: [
@@ -132,15 +125,21 @@ const config: StorybookConfig = {
           "react-dom",
           "@radix-ui/react-accordion",
           "@radix-ui/react-alert-dialog",
+          "@radix-ui/react-aspect-ratio",
           "@radix-ui/react-avatar",
           "@radix-ui/react-checkbox",
           "@radix-ui/react-collapsible",
+          "@radix-ui/react-context-menu",
           "@radix-ui/react-dialog",
           "@radix-ui/react-dropdown-menu",
+          "@radix-ui/react-hover-card",
           "@radix-ui/react-label",
+          "@radix-ui/react-menubar",
+          "@radix-ui/react-navigation-menu",
           "@radix-ui/react-popover",
           "@radix-ui/react-progress",
           "@radix-ui/react-radio-group",
+          "@radix-ui/react-scroll-area",
           "@radix-ui/react-select",
           "@radix-ui/react-separator",
           "@radix-ui/react-slider",

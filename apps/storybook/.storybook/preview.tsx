@@ -1,6 +1,6 @@
 import "../stories/globals.css";
 import { addons } from "storybook/preview-api";
-import { DOCS_RENDERED, GLOBALS_UPDATED } from "storybook/internal/core-events";
+import { GLOBALS_UPDATED } from "storybook/internal/core-events";
 import { themeManager } from "./theme-sync";
 import type { ThemeChoice } from "./theme-sync";
 import type { Preview } from "@storybook/react";
@@ -12,9 +12,7 @@ const preview: Preview = {
       options: INITIAL_VIEWPORTS,
     },
   },
-  initialGlobals: {
-    viewport: { value: "ipad", isRotated: false },
-  },
+  initialGlobals: {},
 };
 
 export default preview;
@@ -198,17 +196,10 @@ export const parameters: Preview["parameters"] = {
         "Foundations",
         [
           "Design Principles",
-          "Design Tokens",
-          [
-            "Usage Guide",
-            "Colors",
-            "Typography",
-            "Spacing",
-            "Radius",
-            "Elevation & Shadows",
-            "Motion & Animation",
-          ],
+          "Design Token Usage Guide",
+          "Colors",
           "Typography",
+          "Spacing & Layout",
           "Accessibility Guidelines",
         ],
         "Components",
@@ -227,6 +218,8 @@ export const parameters: Preview["parameters"] = {
           "Authentication Patterns",
           "Data Patterns",
           "Navigation Patterns",
+          "Layout Patterns",
+          "Feedback Patterns",
         ],
         "Examples",
         ["Page Compositions", "Common Application Flows"],
