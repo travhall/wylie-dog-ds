@@ -88,17 +88,17 @@ const config: StorybookConfig = {
                 if (id.includes("axe-core")) {
                   return "vendor-axe";
                 }
-                // Separate React and React DOM
-                if (id.includes("react") || id.includes("react-dom")) {
-                  return "vendor-react";
-                }
-                // Separate Radix UI primitives into smaller chunks
+                // Separate Radix UI primitives
                 if (id.includes("@radix-ui")) {
                   return "vendor-radix";
                 }
                 // Lucide icons
                 if (id.includes("lucide-react")) {
                   return "vendor-lucide";
+                }
+                // Syntax highlighter
+                if (id.includes("react-syntax-highlighter")) {
+                  return "vendor-highlighter";
                 }
                 // Storybook core packages
                 if (
@@ -107,11 +107,7 @@ const config: StorybookConfig = {
                 ) {
                   return "vendor-storybook-ui";
                 }
-                // Syntax highlighter
-                if (id.includes("react-syntax-highlighter")) {
-                  return "vendor-highlighter";
-                }
-                // All other node_modules
+                // All other node_modules (including React)
                 return "vendor";
               }
             },

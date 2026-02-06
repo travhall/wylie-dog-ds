@@ -19,22 +19,47 @@ const meta: Meta<typeof Slider> = {
     defaultValue: {
       control: "object",
       description: "Default value(s) for the slider",
+      table: {
+        type: { summary: "number[]" },
+        defaultValue: { summary: "[0]" },
+        category: "Content",
+      },
     },
     max: {
       control: "number",
       description: "Maximum value",
+      table: {
+        type: { summary: "number" },
+        defaultValue: { summary: "100" },
+        category: "Content",
+      },
     },
     min: {
       control: "number",
       description: "Minimum value",
+      table: {
+        type: { summary: "number" },
+        defaultValue: { summary: "0" },
+        category: "Content",
+      },
     },
     step: {
       control: "number",
       description: "Step increment",
+      table: {
+        type: { summary: "number" },
+        defaultValue: { summary: "1" },
+        category: "Behavior",
+      },
     },
     disabled: {
       control: "boolean",
       description: "Whether the slider is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
   },
   decorators: [
@@ -55,6 +80,13 @@ export const Default: Story = {
     max: 100,
     step: 1,
   },
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic slider with a single handle at the midpoint.",
+      },
+    },
+  },
 };
 
 export const Range: Story = {
@@ -62,6 +94,13 @@ export const Range: Story = {
     defaultValue: [25, 75],
     max: 100,
     step: 1,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Dual-handle slider for selecting a value range.",
+      },
+    },
   },
 };
 
@@ -72,6 +111,13 @@ export const CustomRange: Story = {
     max: 20,
     step: 2,
   },
+  parameters: {
+    docs: {
+      description: {
+        story: "Slider with custom min, max, and step values.",
+      },
+    },
+  },
 };
 
 export const Disabled: Story = {
@@ -81,9 +127,24 @@ export const Disabled: Story = {
     step: 1,
     disabled: true,
   },
+  parameters: {
+    docs: {
+      description: {
+        story: "Slider in a disabled state that cannot be interacted with.",
+      },
+    },
+  },
 };
 
 export const WithLabels: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Slider with a label and live value display showing the current selection.",
+      },
+    },
+  },
   render: () => {
     const [value, setValue] = useState([50]);
 
@@ -104,6 +165,14 @@ export const WithLabels: Story = {
 };
 
 export const PriceRange: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dual-handle range slider for filtering by price with formatted currency labels.",
+      },
+    },
+  },
   render: () => {
     const [priceRange, setPriceRange] = useState([200, 800]);
 
@@ -132,17 +201,3 @@ export const PriceRange: Story = {
     );
   },
 };
-
-// export const Vertical: Story = {
-//   render: () => (
-//     <div className="h-50 w-12.5">
-//       <Slider
-//         defaultValue={[50]}
-//         max={100}
-//         step={1}
-//         orientation="vertical"
-//         className="h-full"
-//       />
-//     </div>
-//   ),
-// };

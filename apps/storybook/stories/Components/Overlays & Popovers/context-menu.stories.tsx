@@ -36,6 +36,7 @@ const meta: Meta<typeof ContextMenu> = {
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "true" },
+        category: "Behavior",
       },
     },
     dir: {
@@ -46,6 +47,7 @@ const meta: Meta<typeof ContextMenu> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "ltr" },
+        category: "Appearance",
       },
     },
     onOpenChange: {
@@ -53,6 +55,7 @@ const meta: Meta<typeof ContextMenu> = {
       description: "Callback fired when the context menu open state changes",
       table: {
         type: { summary: "(open: boolean) => void" },
+        category: "Behavior",
       },
     },
     children: {
@@ -60,6 +63,7 @@ const meta: Meta<typeof ContextMenu> = {
       description: "Context menu trigger and content components",
       table: {
         type: { summary: "React.ReactNode" },
+        category: "Content",
       },
     },
   },
@@ -69,6 +73,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Basic context menu with navigation actions and keyboard shortcuts.",
+      },
+    },
+  },
   render: () => (
     <div className="flex h-37.5 w-75 items-center justify-center rounded-md border border-dashed text-sm">
       <ContextMenu>

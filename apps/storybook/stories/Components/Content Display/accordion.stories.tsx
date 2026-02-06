@@ -32,6 +32,7 @@ const meta: Meta<typeof Accordion> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "single" },
+        category: "Behavior",
       },
     },
     collapsible: {
@@ -40,6 +41,7 @@ const meta: Meta<typeof Accordion> = {
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
+        category: "Behavior",
       },
     },
   },
@@ -52,6 +54,13 @@ export const Default: Story = {
   args: {
     type: "single",
     collapsible: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Single collapsible accordion with three FAQ-style items.",
+      },
+    },
   },
   render: (args) => (
     <div className="w-96">

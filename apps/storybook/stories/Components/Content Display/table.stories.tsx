@@ -32,6 +32,7 @@ const meta: Meta<typeof Table> = {
       description: "Additional CSS classes to apply to the table element",
       table: {
         type: { summary: "string" },
+        category: "Styling",
       },
     },
     children: {
@@ -40,6 +41,7 @@ const meta: Meta<typeof Table> = {
         "Table content including TableHeader, TableBody, TableFooter, and TableCaption components",
       table: {
         type: { summary: "React.ReactNode" },
+        category: "Content",
       },
     },
   },
@@ -94,6 +96,14 @@ const invoices = [
 ];
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Basic table with header, body rows, and a caption for invoice data.",
+      },
+    },
+  },
   render: () => (
     <Table>
       <TableCaption>A list of your recent invoices.</TableCaption>
@@ -120,6 +130,13 @@ export const Default: Story = {
 };
 
 export const WithSelection: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Table with row selection checkboxes and status badges.",
+      },
+    },
+  },
   render: () => (
     <Table>
       <TableHeader>
@@ -163,6 +180,14 @@ export const WithSelection: Story = {
 };
 
 export const WithActions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Table with inline action buttons for viewing and editing each row.",
+      },
+    },
+  },
   render: () => (
     <Table>
       <TableHeader>
@@ -211,6 +236,14 @@ export const WithActions: Story = {
 };
 
 export const Empty: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Table displaying an empty state message when no data is available.",
+      },
+    },
+  },
   render: () => (
     <Table>
       <TableHeader>
@@ -233,6 +266,13 @@ export const Empty: Story = {
 };
 
 export const WithFooter: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Table with a footer row displaying a calculated total amount.",
+      },
+    },
+  },
   render: () => (
     <Table>
       <TableHeader>

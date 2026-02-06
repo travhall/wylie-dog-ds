@@ -18,6 +18,11 @@ const meta: Meta<typeof AspectRatio> = {
     ratio: {
       control: "number",
       description: "The aspect ratio (width / height)",
+      table: {
+        type: { summary: "number" },
+        defaultValue: { summary: "1" },
+        category: "Appearance",
+      },
     },
   },
 };
@@ -26,6 +31,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Standard 16:9 widescreen aspect ratio container.",
+      },
+    },
+  },
   render: () => (
     <div className="w-75">
       <AspectRatio ratio={16 / 9}>
@@ -38,6 +50,14 @@ export const Default: Story = {
 };
 
 export const Square: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "1:1 square aspect ratio, ideal for profile images and thumbnails.",
+      },
+    },
+  },
   render: () => (
     <div className="w-50">
       <AspectRatio ratio={1}>
@@ -50,6 +70,13 @@ export const Square: Story = {
 };
 
 export const Portrait: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "3:4 portrait aspect ratio for vertical content.",
+      },
+    },
+  },
   render: () => (
     <div className="w-50">
       <AspectRatio ratio={3 / 4}>
@@ -62,6 +89,13 @@ export const Portrait: Story = {
 };
 
 export const CommonRatios: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Comparison of common aspect ratios: 16:9, 4:3, and 1:1.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-6">
       <div className="space-y-2">
@@ -101,6 +135,14 @@ export const CommonRatios: Story = {
 };
 
 export const WithImage: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Aspect ratio container with a responsive image using object-cover.",
+      },
+    },
+  },
   render: () => (
     <div className="w-100">
       <AspectRatio ratio={16 / 9}>
@@ -116,6 +158,13 @@ export const WithImage: Story = {
 };
 
 export const VideoFrame: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "16:9 video player placeholder with a play button overlay.",
+      },
+    },
+  },
   render: () => (
     <div className="w-125">
       <AspectRatio ratio={16 / 9}>
@@ -133,6 +182,14 @@ export const VideoFrame: Story = {
 };
 
 export const ResponsiveGallery: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Responsive grid of square aspect ratio items that reflow across breakpoints.",
+      },
+    },
+  },
   render: () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {Array.from({ length: 6 }, (_, i) => (

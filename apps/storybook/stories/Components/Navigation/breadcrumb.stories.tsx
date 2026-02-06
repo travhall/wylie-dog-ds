@@ -30,6 +30,7 @@ const meta: Meta<typeof Breadcrumb> = {
         "Additional CSS classes to apply to the breadcrumb navigation container",
       table: {
         type: { summary: "string" },
+        category: "Styling",
       },
     },
     children: {
@@ -38,6 +39,7 @@ const meta: Meta<typeof Breadcrumb> = {
         "Breadcrumb content, typically a BreadcrumbList containing BreadcrumbItems",
       table: {
         type: { summary: "React.ReactNode" },
+        category: "Content",
       },
     },
     separator: {
@@ -46,6 +48,7 @@ const meta: Meta<typeof Breadcrumb> = {
         "Custom separator element to display between breadcrumb items (can be text, icon, or React component)",
       table: {
         type: { summary: "React.ReactNode" },
+        category: "Appearance",
       },
     },
   },
@@ -55,6 +58,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic three-level breadcrumb with default chevron separators.",
+      },
+    },
+  },
   render: () => (
     <Breadcrumb>
       <BreadcrumbList>

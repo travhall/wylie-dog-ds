@@ -34,6 +34,7 @@ const meta: Meta<typeof Sheet> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "right" },
+        category: "Appearance",
       },
     },
   },
@@ -43,6 +44,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Right-side sheet panel with a profile editing form.",
+      },
+    },
+  },
   render: () => (
     <Sheet>
       <SheetTrigger asChild>
@@ -89,6 +97,13 @@ export const Default: Story = {
 };
 
 export const FromLeft: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Left-side sheet with navigation menu links.",
+      },
+    },
+  },
   render: () => (
     <Sheet>
       <SheetTrigger asChild>
@@ -135,6 +150,13 @@ export const FromLeft: Story = {
 };
 
 export const FromTop: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Top-edge sheet for notification preference settings.",
+      },
+    },
+  },
   render: () => (
     <Sheet>
       <SheetTrigger asChild>

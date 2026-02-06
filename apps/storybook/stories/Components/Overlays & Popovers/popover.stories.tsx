@@ -44,6 +44,7 @@ const meta: Meta<any> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "bottom" },
+        category: "Appearance",
       },
     },
     align: {
@@ -54,6 +55,7 @@ const meta: Meta<any> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "center" },
+        category: "Appearance",
       },
     },
   },
@@ -63,6 +65,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Basic popover with dimension input fields for layer configuration.",
+      },
+    },
+  },
   render: () => (
     <Popover>
       <PopoverTrigger asChild>

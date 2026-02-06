@@ -34,21 +34,28 @@ const meta: Meta<typeof ToggleGroup> = {
       options: ["single", "multiple"],
       description: "Whether only one or multiple items can be selected",
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "single" },
+        type: { summary: '"single" | "multiple"' },
+        defaultValue: { summary: '"single"' },
+        category: "Behavior",
       },
     },
     disabled: {
       control: "boolean",
       description: "Whether the entire group is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     orientation: {
       control: "radio",
       options: ["horizontal", "vertical"],
       description: "Layout orientation of the toggle group",
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "horizontal" },
+        type: { summary: '"horizontal" | "vertical"' },
+        defaultValue: { summary: '"horizontal"' },
+        category: "Appearance",
       },
     },
   },
@@ -58,6 +65,14 @@ export default meta;
 type Story = StoryObj<typeof ToggleGroup>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Single-select toggle group for text alignment with icon buttons.",
+      },
+    },
+  },
   render: () => (
     <ToggleGroup type="single" defaultValue="center">
       <ToggleGroupItem value="left" aria-label="Align left">

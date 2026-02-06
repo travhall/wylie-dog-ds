@@ -31,8 +31,12 @@ const meta: Meta<typeof Button> = {
       ],
       description: "The visual style variant of the button",
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "default" },
+        type: {
+          summary:
+            '"default" | "primary" | "secondary" | "outline" | "ghost" | "link" | "destructive"',
+        },
+        defaultValue: { summary: '"default"' },
+        category: "Appearance",
       },
     },
     size: {
@@ -40,17 +44,28 @@ const meta: Meta<typeof Button> = {
       options: ["default", "sm", "md", "lg", "icon"],
       description: "The size variant of the button",
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "default" },
+        type: { summary: '"default" | "sm" | "md" | "lg" | "icon"' },
+        defaultValue: { summary: '"default"' },
+        category: "Appearance",
       },
     },
     disabled: {
       control: "boolean",
       description: "Whether the button is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     loading: {
       control: "boolean",
       description: "Whether the button is in a loading state",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
   },
 };
@@ -58,10 +73,30 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const Default: Story = {
+  args: {
+    children: "Button",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic button usage with default variant and size.",
+      },
+    },
+  },
+};
+
 export const Primary: Story = {
   args: {
     children: "Primary Button",
     variant: "primary",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Primary action button for the most important action on a page.",
+      },
+    },
   },
 };
 
@@ -70,12 +105,28 @@ export const Secondary: Story = {
     variant: "secondary",
     children: "Secondary Button",
   },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Secondary action for less prominent actions alongside a primary button.",
+      },
+    },
+  },
 };
 
 export const Outline: Story = {
   args: {
     variant: "outline",
     children: "Outline Button",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Outline variant for tertiary actions or when a lighter visual weight is needed.",
+      },
+    },
   },
 };
 
@@ -276,7 +327,7 @@ export const WithPlayFunction: Story = {
     children: "Click to Test",
     variant: "primary",
   },
-  play: async ({ canvasElement, args }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
     // Find the button using accessible query

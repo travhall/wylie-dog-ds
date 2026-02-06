@@ -22,6 +22,7 @@ const meta: Meta<typeof Card> = {
       description: "Additional CSS classes for custom styling",
       table: {
         type: { summary: "string" },
+        category: "Styling",
       },
     },
   },
@@ -30,7 +31,14 @@ const meta: Meta<typeof Card> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Basic: Story = {
+export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic card with a title and content text.",
+      },
+    },
+  },
   render: () => (
     <Card className="w-80">
       <CardHeader>
@@ -46,6 +54,14 @@ export const Basic: Story = {
 };
 
 export const WithActions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Card with action buttons and a status badge for interactive content.",
+      },
+    },
+  },
   render: () => (
     <Card className="w-80">
       <CardHeader>
@@ -70,6 +86,14 @@ export const WithActions: Story = {
 };
 
 export const ProductCard: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Product pricing card with features list, badge, and call-to-action button.",
+      },
+    },
+  },
   render: () => (
     <Card className="w-80">
       <CardHeader>
@@ -101,6 +125,14 @@ export const ProductCard: Story = {
 };
 
 export const CardVariations: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Cards with different styling variations including custom borders, shadows, and backgrounds.",
+      },
+    },
+  },
   render: () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
       <Card>

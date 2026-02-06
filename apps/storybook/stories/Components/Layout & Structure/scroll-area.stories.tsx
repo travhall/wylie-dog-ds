@@ -21,6 +21,7 @@ const meta: Meta<typeof ScrollArea> = {
         "Additional CSS classes to apply to the scroll area container",
       table: {
         type: { summary: "string" },
+        category: "Styling",
       },
     },
     type: {
@@ -29,8 +30,9 @@ const meta: Meta<typeof ScrollArea> = {
       description:
         "Scrollbar visibility behavior: 'auto' (native), 'always' (always visible), 'scroll' (visible when scrolling), 'hover' (visible on hover)",
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "hover" },
+        type: { summary: '"auto" | "always" | "scroll" | "hover"' },
+        defaultValue: { summary: '"hover"' },
+        category: "Behavior",
       },
     },
     scrollHideDelay: {
@@ -40,6 +42,7 @@ const meta: Meta<typeof ScrollArea> = {
       table: {
         type: { summary: "number" },
         defaultValue: { summary: "600" },
+        category: "Behavior",
       },
     },
     dir: {
@@ -48,8 +51,9 @@ const meta: Meta<typeof ScrollArea> = {
       description:
         "The reading direction for the scroll area (left-to-right or right-to-left)",
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "ltr" },
+        type: { summary: '"ltr" | "rtl"' },
+        defaultValue: { summary: '"ltr"' },
+        category: "Appearance",
       },
     },
     children: {
@@ -57,6 +61,7 @@ const meta: Meta<typeof ScrollArea> = {
       description: "Content to be rendered inside the scrollable area",
       table: {
         type: { summary: "React.ReactNode" },
+        category: "Content",
       },
     },
   },
@@ -68,6 +73,13 @@ type Story = StoryObj<typeof meta>;
 const TAGS = Array.from({ length: 50 }, (_, i) => `tag-${i + 1}`);
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Vertical scroll area with a long list of tags.",
+      },
+    },
+  },
   render: () => (
     <ScrollArea className="h-72 w-48 rounded-md border">
       <div className="p-4">
@@ -83,6 +95,13 @@ export const Default: Story = {
 };
 
 export const Horizontal: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Horizontal scroll area with a row of items that overflow.",
+      },
+    },
+  },
   render: () => (
     <ScrollArea className="w-96 whitespace-nowrap rounded-md border">
       <div className="flex w-max space-x-4 p-4">
@@ -100,6 +119,13 @@ export const Horizontal: Story = {
 };
 
 export const LongContent: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Scroll area containing a long block of text content.",
+      },
+    },
+  },
   render: () => (
     <ScrollArea className="h-50 w-87.5 rounded-md border p-4">
       Rich beings for pretty waiting be known bits cosmic for arena sky star
@@ -141,6 +167,13 @@ export const LongContent: Story = {
 };
 
 export const InCard: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Scroll area embedded in a card for a notification feed.",
+      },
+    },
+  },
   render: () => (
     <div className="rounded-lg border bg-card text-card-foreground shadow-sm w-87.5">
       <div className="flex flex-col space-y-1.5 p-6 pb-3">
@@ -171,6 +204,14 @@ export const InCard: Story = {
 };
 
 export const ChatMessages: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Chat interface with scrollable message history and alternating message alignment.",
+      },
+    },
+  },
   render: () => (
     <div className="border rounded-lg w-100">
       <div className="p-3 border-b">

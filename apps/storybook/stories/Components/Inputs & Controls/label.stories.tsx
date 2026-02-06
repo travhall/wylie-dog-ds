@@ -22,18 +22,37 @@ const meta: Meta<typeof Label> = {
       control: "radio",
       options: ["sm", "md", "lg"],
       description: "The size of the label text",
+      table: {
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: '"md"' },
+        category: "Appearance",
+      },
     },
     required: {
       control: "boolean",
       description: "Whether to show the required indicator (*)",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     error: {
       control: "boolean",
       description: "Whether the label should show error styling",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     children: {
       control: "text",
       description: "The label text content",
+      table: {
+        type: { summary: "ReactNode" },
+        category: "Content",
+      },
     },
   },
 };
@@ -45,6 +64,13 @@ export const Default: Story = {
   args: {
     children: "Email Address",
     htmlFor: "email-default",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic label paired with a text input.",
+      },
+    },
   },
   render: (args) => (
     <div className="w-64 space-y-2">
@@ -59,6 +85,13 @@ export const Required: Story = {
     children: "Password",
     htmlFor: "password-required",
     required: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Label with a required field indicator asterisk.",
+      },
+    },
   },
   render: (args) => (
     <div className="w-64 space-y-2">
@@ -79,6 +112,14 @@ export const WithError: Story = {
     required: true,
     error: true,
   },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Label with error styling alongside an error input and validation message.",
+      },
+    },
+  },
   render: (args) => (
     <div className="w-64 space-y-2">
       <Label {...args} />
@@ -91,6 +132,13 @@ export const WithError: Story = {
 };
 
 export const AllSizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Label size variants (sm, md, lg) paired with matching inputs.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-6">
       <div className="w-64 space-y-2">
@@ -116,6 +164,14 @@ export const AllSizes: Story = {
 };
 
 export const WithCheckboxes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Labels used alongside checkboxes, including required and error states.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-4">
       <div className="flex items-center space-x-2">
@@ -139,6 +195,13 @@ export const WithCheckboxes: Story = {
 };
 
 export const WithSwitches: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Labels paired with switch toggles in a settings-style layout.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-4 w-64">
       <div className="flex items-center justify-between">
@@ -160,6 +223,14 @@ export const WithSwitches: Story = {
 };
 
 export const FormExamples: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Contact form demonstrating labels with various input types including checkboxes.",
+      },
+    },
+  },
   render: () => (
     <div className="max-w-md space-y-6">
       <div className="space-y-4">

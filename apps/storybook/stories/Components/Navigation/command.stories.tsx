@@ -41,6 +41,7 @@ const meta: Meta<typeof Command> = {
       description: "Additional CSS classes to apply to the command container",
       table: {
         type: { summary: "string" },
+        category: "Styling",
       },
     },
     value: {
@@ -48,6 +49,7 @@ const meta: Meta<typeof Command> = {
       description: "The controlled selected value of the command item",
       table: {
         type: { summary: "string" },
+        category: "State",
       },
     },
     defaultValue: {
@@ -56,6 +58,7 @@ const meta: Meta<typeof Command> = {
         "The default selected value of the command item (uncontrolled)",
       table: {
         type: { summary: "string" },
+        category: "State",
       },
     },
     onValueChange: {
@@ -63,6 +66,7 @@ const meta: Meta<typeof Command> = {
       description: "Callback fired when the selected value changes",
       table: {
         type: { summary: "(value: string) => void" },
+        category: "Behavior",
       },
     },
     filter: {
@@ -71,6 +75,7 @@ const meta: Meta<typeof Command> = {
         "Custom filter function for command items, receives (value, search) and returns a score (0-1)",
       table: {
         type: { summary: "(value: string, search: string) => number" },
+        category: "Behavior",
       },
     },
     shouldFilter: {
@@ -80,6 +85,7 @@ const meta: Meta<typeof Command> = {
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "true" },
+        category: "Behavior",
       },
     },
     loop: {
@@ -89,6 +95,7 @@ const meta: Meta<typeof Command> = {
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
+        category: "Behavior",
       },
     },
     children: {
@@ -97,6 +104,7 @@ const meta: Meta<typeof Command> = {
         "Command content including CommandInput, CommandList with groups and items",
       table: {
         type: { summary: "React.ReactNode" },
+        category: "Content",
       },
     },
   },
@@ -106,6 +114,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Basic command palette with suggestion and settings groups, keyboard shortcuts, and search.",
+      },
+    },
+  },
   render: () => (
     <Command className="rounded-lg border shadow-md w-112.5">
       <CommandInput placeholder="Type a command or search..." />

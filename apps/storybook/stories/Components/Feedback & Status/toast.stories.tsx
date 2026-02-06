@@ -29,6 +29,7 @@ const meta: Meta<typeof Toast> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "default" },
+        category: "Appearance",
       },
     },
   },
@@ -38,6 +39,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Default toast notification with a title and description.",
+      },
+    },
+  },
   render: () => (
     <Toast>
       <ToastTitle>Success!</ToastTitle>
@@ -47,6 +55,13 @@ export const Default: Story = {
 };
 
 export const WithAction: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Toast notification with an undo action button.",
+      },
+    },
+  },
   render: () => (
     <Toast>
       <ToastTitle>Email sent</ToastTitle>
@@ -59,6 +74,14 @@ export const WithAction: Story = {
 };
 
 export const ErrorToast: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Destructive toast variant for displaying error messages with a retry action.",
+      },
+    },
+  },
   render: () => (
     <Toast variant="destructive">
       <ToastTitle>Error!</ToastTitle>
@@ -71,6 +94,13 @@ export const ErrorToast: Story = {
 };
 
 export const SuccessToast: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Success toast variant for positive confirmation messages.",
+      },
+    },
+  },
   render: () => (
     <Toast variant="success">
       <ToastTitle>Success!</ToastTitle>
@@ -80,6 +110,13 @@ export const SuccessToast: Story = {
 };
 
 export const WarningToast: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Warning toast variant for cautionary notifications.",
+      },
+    },
+  },
   render: () => (
     <Toast variant="warning">
       <ToastTitle>Warning</ToastTitle>
@@ -91,6 +128,13 @@ export const WarningToast: Story = {
 };
 
 export const SimpleMessage: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Minimal toast with only a description and no title.",
+      },
+    },
+  },
   render: () => (
     <Toast>
       <ToastDescription>File uploaded successfully</ToastDescription>
@@ -99,6 +143,13 @@ export const SimpleMessage: Story = {
 };
 
 export const LongMessage: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Toast with extended description text and a view action button.",
+      },
+    },
+  },
   render: () => (
     <Toast>
       <ToastTitle>Upload Complete</ToastTitle>

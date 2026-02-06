@@ -22,23 +22,47 @@ const meta: Meta<typeof Textarea> = {
       control: "radio",
       options: ["sm", "md", "lg"],
       description: "The size of the textarea",
+      table: {
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: '"md"' },
+        category: "Appearance",
+      },
     },
     error: {
       control: "boolean",
       description: "Whether the textarea should show error styling",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     resize: {
       control: "select",
       options: ["none", "both", "horizontal", "vertical"],
       description: "Resize behavior of the textarea",
+      table: {
+        type: { summary: '"none" | "both" | "horizontal" | "vertical"' },
+        defaultValue: { summary: '"vertical"' },
+        category: "Behavior",
+      },
     },
     disabled: {
       control: "boolean",
       description: "Whether the textarea is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     placeholder: {
       control: "text",
       description: "Placeholder text",
+      table: {
+        type: { summary: "string" },
+        category: "Content",
+      },
     },
   },
 };
@@ -49,6 +73,13 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     placeholder: "Enter your message...",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic textarea with label for multi-line text input.",
+      },
+    },
   },
   render: (args) => (
     <div className="w-96 space-y-2">
@@ -62,6 +93,14 @@ export const WithError: Story = {
   args: {
     error: true,
     placeholder: "This field has an error",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Error state with validation message for required or invalid content.",
+      },
+    },
   },
   render: (args) => (
     <div className="w-96 space-y-2">
@@ -77,6 +116,14 @@ export const WithError: Story = {
 };
 
 export const AllSizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Size variants with matching label sizes for different interface densities.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-6">
       <div className="w-96 space-y-2">
@@ -105,6 +152,14 @@ export const AllSizes: Story = {
 };
 
 export const ResizeOptions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Resize behavior options: none, vertical, horizontal, and both directions.",
+      },
+    },
+  },
   render: () => (
     <div className="grid grid-cols-2 gap-6">
       <div className="space-y-2">
@@ -144,6 +199,14 @@ export const ResizeOptions: Story = {
 };
 
 export const States: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Normal, disabled, error, and filled states showing visual feedback for each condition.",
+      },
+    },
+  },
   render: () => (
     <div className="grid grid-cols-2 gap-6">
       <div className="space-y-2">
@@ -175,6 +238,14 @@ export const States: Story = {
 };
 
 export const FormExamples: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Real-world form patterns showing textareas in feedback and comment form contexts.",
+      },
+    },
+  },
   render: () => (
     <div className="max-w-2xl space-y-8">
       {/* Feedback Form */}

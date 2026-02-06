@@ -35,6 +35,7 @@ const meta: Meta<typeof Progress> = {
       table: {
         type: { summary: "number" },
         defaultValue: { summary: "0" },
+        category: "State",
       },
     },
     max: {
@@ -43,6 +44,7 @@ const meta: Meta<typeof Progress> = {
       table: {
         type: { summary: "number" },
         defaultValue: { summary: "100" },
+        category: "State",
       },
     },
     variant: {
@@ -52,6 +54,7 @@ const meta: Meta<typeof Progress> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "default" },
+        category: "Appearance",
       },
     },
     size: {
@@ -61,6 +64,7 @@ const meta: Meta<typeof Progress> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "md" },
+        category: "Appearance",
       },
     },
   },
@@ -70,12 +74,27 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Default progress bar at 33% completion.",
+      },
+    },
+  },
   args: {
     value: 33,
   },
 };
 
 export const AllVariants: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "All progress bar color variants displayed together for comparison.",
+      },
+    },
+  },
   render: () => (
     <div className="w-100 space-y-6">
       <div>
@@ -102,6 +121,13 @@ export const AllVariants: Story = {
 };
 
 export const AllSizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Progress bars in small, medium, and large sizes.",
+      },
+    },
+  },
   render: () => (
     <div className="w-100 space-y-6">
       <div>
@@ -123,6 +149,13 @@ export const AllSizes: Story = {
 };
 
 export const AnimatedProgress: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Progress bar with animated transition from 0% to 66%.",
+      },
+    },
+  },
   render: () => {
     const [progress, setProgress] = useState(0);
 
@@ -144,6 +177,14 @@ export const AnimatedProgress: Story = {
 };
 
 export const LoadingStates: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Multiple concurrent progress bars simulating real-time loading states.",
+      },
+    },
+  },
   render: () => {
     const [fileProgress, setFileProgress] = useState(0);
     const [uploadProgress, setUploadProgress] = useState(0);
@@ -209,6 +250,13 @@ export const LoadingStates: Story = {
 };
 
 export const FormProgress: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Progress bar used within a multi-step registration form.",
+      },
+    },
+  },
   render: () => {
     const [currentStep, setCurrentStep] = useState(1);
     const totalSteps = 4;
@@ -312,6 +360,14 @@ export const FormProgress: Story = {
 };
 
 export const ProgressWithLabels: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Progress bars with descriptive labels and contextual information.",
+      },
+    },
+  },
   render: () => (
     <div className="w-100 space-y-6">
       <div>

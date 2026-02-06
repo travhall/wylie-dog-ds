@@ -21,14 +21,28 @@ const meta: Meta<typeof Switch> = {
       control: "radio",
       options: ["sm", "md", "lg"],
       description: "The size of the switch",
+      table: {
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: '"md"' },
+        category: "Appearance",
+      },
     },
     disabled: {
       control: "boolean",
       description: "Whether the switch is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     checked: {
       control: "boolean",
       description: "Whether the switch is checked/on",
+      table: {
+        type: { summary: "boolean" },
+        category: "State",
+      },
     },
   },
 };
@@ -38,6 +52,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic switch with label for binary on/off choices.",
+      },
+    },
+  },
   render: (args) => (
     <div className="flex items-center space-x-3">
       <Switch id="default-switch" {...args} />
@@ -50,6 +71,13 @@ export const Checked: Story = {
   args: {
     defaultChecked: true,
   },
+  parameters: {
+    docs: {
+      description: {
+        story: "Pre-enabled state for active settings or features.",
+      },
+    },
+  },
   render: (args) => (
     <div className="flex items-center space-x-3">
       <Switch id="checked-switch" {...args} />
@@ -59,6 +87,14 @@ export const Checked: Story = {
 };
 
 export const Disabled: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Disabled switches in both on and off states for locked or unavailable settings.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-4">
       <div className="flex items-center space-x-3">
@@ -74,6 +110,14 @@ export const Disabled: Story = {
 };
 
 export const AllSizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Size variants with matching label sizes for different interface densities.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-4">
       <div className="flex items-center space-x-3">
@@ -99,6 +143,14 @@ export const AllSizes: Story = {
 };
 
 export const SettingsPanel: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Settings panel pattern with switches for app preferences and feature toggles.",
+      },
+    },
+  },
   render: () => (
     <div className="w-80 space-y-6 p-6 border border-(--color-border-secondary) rounded-lg">
       <h3 className="text-lg font-semibold">Preferences</h3>
@@ -159,6 +211,14 @@ export const SettingsPanel: Story = {
 };
 
 export const FeatureToggles: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Feature toggle cards for app capabilities and privacy settings with descriptions.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-6">
       {/* App Features */}
@@ -237,6 +297,14 @@ export const FeatureToggles: Story = {
 };
 
 export const InteractiveDemo: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Rich settings panels combining quick toggles and account security options.",
+      },
+    },
+  },
   render: () => {
     return (
       <div className="space-y-6">

@@ -33,6 +33,7 @@ const meta: Meta<any> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "top" },
+        category: "Appearance",
       },
     },
     delayDuration: {
@@ -41,6 +42,7 @@ const meta: Meta<any> = {
       table: {
         type: { summary: "number" },
         defaultValue: { summary: "700" },
+        category: "Behavior",
       },
     },
   },
@@ -57,6 +59,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic tooltip with a simple text message on hover.",
+      },
+    },
+  },
   render: () => (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -70,6 +79,14 @@ export const Default: Story = {
 };
 
 export const Positioning: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Tooltip placement options for top, right, bottom, and left sides.",
+      },
+    },
+  },
   render: () => (
     <div className="grid grid-cols-2 gap-8 place-items-center">
       <Tooltip>
@@ -112,6 +129,13 @@ export const Positioning: Story = {
 };
 
 export const WithDelay: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Tooltips with varying delay durations from instant to 1500ms.",
+      },
+    },
+  },
   render: () => (
     <div className="flex gap-4">
       <Tooltip delayDuration={0}>
@@ -145,6 +169,14 @@ export const WithDelay: Story = {
 };
 
 export const RichContent: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Tooltips with rich content including badges and keyboard shortcut lists.",
+      },
+    },
+  },
   render: () => (
     <div className="flex gap-4">
       <Tooltip>
@@ -186,6 +218,14 @@ export const RichContent: Story = {
 };
 
 export const InFormContext: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Help tooltips integrated with form fields for contextual guidance.",
+      },
+    },
+  },
   render: () => (
     <div className="w-80 space-y-4">
       <h3 className="text-lg font-semibold">Account Settings</h3>
@@ -266,6 +306,13 @@ export const InFormContext: Story = {
 };
 
 export const ButtonTooltips: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Icon button toolbar with descriptive tooltips for each action.",
+      },
+    },
+  },
   render: () => (
     <div className="flex gap-2">
       <Tooltip>

@@ -31,6 +31,7 @@ const meta: Meta<typeof NavigationMenu> = {
         "Additional CSS classes to apply to the navigation menu container",
       table: {
         type: { summary: "string" },
+        category: "Styling",
       },
     },
     orientation: {
@@ -38,8 +39,9 @@ const meta: Meta<typeof NavigationMenu> = {
       options: ["horizontal", "vertical"],
       description: "The orientation of the navigation menu",
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "horizontal" },
+        type: { summary: '"horizontal" | "vertical"' },
+        defaultValue: { summary: '"horizontal"' },
+        category: "Appearance",
       },
     },
     delayDuration: {
@@ -48,6 +50,7 @@ const meta: Meta<typeof NavigationMenu> = {
       table: {
         type: { summary: "number" },
         defaultValue: { summary: "200" },
+        category: "Behavior",
       },
     },
     skipDelayDuration: {
@@ -57,6 +60,7 @@ const meta: Meta<typeof NavigationMenu> = {
       table: {
         type: { summary: "number" },
         defaultValue: { summary: "300" },
+        category: "Behavior",
       },
     },
     children: {
@@ -65,6 +69,7 @@ const meta: Meta<typeof NavigationMenu> = {
         "Navigation menu content, typically NavigationMenuList with nested items",
       table: {
         type: { summary: "React.ReactNode" },
+        category: "Content",
       },
     },
   },
@@ -74,6 +79,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Full-featured navigation menu with dropdown content panels, featured product highlight, and direct links.",
+      },
+    },
+  },
   render: () => (
     <NavigationMenu>
       <NavigationMenuList>
@@ -176,6 +189,13 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem";
 
 export const Simple: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Flat navigation menu with simple text links and no dropdowns.",
+      },
+    },
+  },
   render: () => (
     <NavigationMenu>
       <NavigationMenuList>
@@ -205,6 +225,14 @@ export const Simple: Story = {
 };
 
 export const WithSubmenu: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Navigation menu with multiple dropdown submenus for services and resources.",
+      },
+    },
+  },
   render: () => (
     <NavigationMenu>
       <NavigationMenuList>

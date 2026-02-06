@@ -35,19 +35,38 @@ const meta: Meta<typeof Toggle> = {
       control: "radio",
       options: ["default", "outline"],
       description: "Visual style variant",
+      table: {
+        type: { summary: '"default" | "outline"' },
+        defaultValue: { summary: '"default"' },
+        category: "Appearance",
+      },
     },
     size: {
       control: "radio",
       options: ["sm", "default", "lg"],
       description: "Size variant",
+      table: {
+        type: { summary: '"sm" | "default" | "lg"' },
+        defaultValue: { summary: '"default"' },
+        category: "Appearance",
+      },
     },
     pressed: {
       control: "boolean",
       description: "Whether the toggle is pressed/active",
+      table: {
+        type: { summary: "boolean" },
+        category: "State",
+      },
     },
     disabled: {
       control: "boolean",
       description: "Whether the toggle is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
   },
 };
@@ -58,6 +77,13 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     children: "Toggle",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic toggle button with text label.",
+      },
+    },
   },
 };
 

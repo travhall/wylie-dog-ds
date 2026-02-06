@@ -25,6 +25,7 @@ const meta: Meta<typeof Alert> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "default" },
+        category: "Appearance",
       },
     },
   },
@@ -34,6 +35,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Default alert with informational styling and content.",
+      },
+    },
+  },
   render: () => (
     <Alert>
       <AlertTitle>Default Alert</AlertTitle>
@@ -45,6 +53,13 @@ export const Default: Story = {
 };
 
 export const Destructive: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Destructive alert variant for error messages.",
+      },
+    },
+  },
   render: () => (
     <Alert variant="destructive">
       <AlertTitle>Error</AlertTitle>
@@ -56,6 +71,13 @@ export const Destructive: Story = {
 };
 
 export const Warning: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Warning alert variant for cautionary messages.",
+      },
+    },
+  },
   render: () => (
     <Alert variant="warning">
       <AlertTitle>Warning</AlertTitle>
@@ -67,6 +89,13 @@ export const Warning: Story = {
 };
 
 export const Success: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Success alert variant for positive confirmation messages.",
+      },
+    },
+  },
   render: () => (
     <Alert variant="success">
       <AlertTitle>Success</AlertTitle>
@@ -78,6 +107,13 @@ export const Success: Story = {
 };
 
 export const AllVariants: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "All alert variants displayed together for comparison.",
+      },
+    },
+  },
   render: () => (
     <div className="w-150 space-y-4">
       <Alert>
@@ -112,6 +148,13 @@ export const AllVariants: Story = {
 };
 
 export const WithoutTitle: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Alert messages rendered without a title component.",
+      },
+    },
+  },
   render: () => (
     <div className="w-125 space-y-4">
       <Alert>
@@ -130,6 +173,14 @@ export const WithoutTitle: Story = {
 };
 
 export const LongContent: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Alert with extended description text to demonstrate content wrapping.",
+      },
+    },
+  },
   render: () => (
     <div className="w-150">
       <Alert variant="warning">
@@ -147,6 +198,14 @@ export const LongContent: Story = {
 };
 
 export const InFormContext: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Destructive alert used within a form to display validation errors.",
+      },
+    },
+  },
   render: () => (
     <div className="w-125 space-y-4">
       <h3 className="text-lg font-semibold">User Registration</h3>

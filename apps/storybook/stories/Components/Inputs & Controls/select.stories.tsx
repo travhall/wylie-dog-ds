@@ -28,6 +28,11 @@ const meta: Meta<typeof Select> = {
     disabled: {
       control: "boolean",
       description: "Whether the select is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
   },
 };
@@ -36,6 +41,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Basic select with label and placeholder for single-value selection.",
+      },
+    },
+  },
   render: () => (
     <div className="w-64 space-y-2">
       <Label htmlFor="default-select">Choose a country</Label>
@@ -56,6 +69,13 @@ export const Default: Story = {
 };
 
 export const WithError: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Error state with validation message for required selections.",
+      },
+    },
+  },
   render: () => (
     <div className="w-64 space-y-2">
       <Label htmlFor="error-select" error required>
@@ -79,6 +99,14 @@ export const WithError: Story = {
 };
 
 export const AllSizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Size variants with matching label sizes for different interface densities.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-6">
       <div className="w-64 space-y-2">
@@ -127,6 +155,14 @@ export const AllSizes: Story = {
 };
 
 export const WithSeparators: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Using separators to visually group related options within a select.",
+      },
+    },
+  },
   render: () => (
     <div className="w-64 space-y-2">
       <Label>Choose your timezone</Label>
@@ -150,6 +186,14 @@ export const WithSeparators: Story = {
 };
 
 export const LongLists: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Selects with many options demonstrating scrollable content areas.",
+      },
+    },
+  },
   render: () => (
     <div className="grid grid-cols-2 gap-6">
       <div className="w-64 space-y-2">
@@ -202,6 +246,14 @@ export const LongLists: Story = {
 };
 
 export const FormExamples: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Real-world form patterns using selects for user profiles and project settings.",
+      },
+    },
+  },
   render: () => (
     <div className="max-w-2xl space-y-8">
       {/* User Profile Form */}

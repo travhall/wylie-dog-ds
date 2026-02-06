@@ -22,6 +22,7 @@ const meta: Meta<typeof Avatar> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "md" },
+        category: "Appearance",
       },
     },
   },
@@ -31,6 +32,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Default avatar displaying initials as fallback content.",
+      },
+    },
+  },
   render: () => (
     <Avatar>
       <AvatarFallback>JD</AvatarFallback>
@@ -39,6 +47,13 @@ export const Default: Story = {
 };
 
 export const WithImage: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Avatar with a profile image and fallback initials.",
+      },
+    },
+  },
   render: () => (
     <Avatar>
       <AvatarImage src="https://github.com/shadcn.png" alt="Profile" />
@@ -48,6 +63,13 @@ export const WithImage: Story = {
 };
 
 export const AllSizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "All available avatar sizes from small to extra large.",
+      },
+    },
+  },
   render: () => (
     <div className="flex items-center gap-4">
       <div className="text-center">
@@ -82,6 +104,13 @@ export const AllSizes: Story = {
 };
 
 export const WithInitials: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Multiple avatars showing different user initials as fallback.",
+      },
+    },
+  },
   render: () => (
     <div className="flex gap-4">
       <Avatar>
@@ -101,6 +130,14 @@ export const WithInitials: Story = {
 };
 
 export const UserProfiles: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Avatars paired with user names and roles in a team member list.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-6">
       <div className="space-y-4">
@@ -149,6 +186,13 @@ export const UserProfiles: Story = {
 };
 
 export const GroupDisplay: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Overlapping avatar stack and grid layout for group displays.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-6">
       <div>
@@ -204,6 +248,14 @@ export const GroupDisplay: Story = {
 };
 
 export const Loading: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Avatars in a loading state with pulsing animation placeholders.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-4">
       <h4 className="text-sm font-medium">Loading States</h4>

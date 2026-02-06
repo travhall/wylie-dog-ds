@@ -22,23 +22,50 @@ const meta: Meta<typeof Input> = {
       control: "radio",
       options: ["sm", "md", "lg"],
       description: "The size of the input",
+      table: {
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: '"md"' },
+        category: "Appearance",
+      },
     },
     error: {
       control: "boolean",
       description: "Whether the input should show error styling",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     disabled: {
       control: "boolean",
       description: "Whether the input is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     type: {
       control: "select",
       options: ["text", "email", "password", "number", "search", "url", "tel"],
       description: "The type of input",
+      table: {
+        type: {
+          summary:
+            '"text" | "email" | "password" | "number" | "search" | "url" | "tel"',
+        },
+        defaultValue: { summary: '"text"' },
+        category: "Content",
+      },
     },
     placeholder: {
       control: "text",
       description: "Placeholder text",
+      table: {
+        type: { summary: "string" },
+        category: "Content",
+      },
     },
   },
 };
@@ -102,6 +129,14 @@ export const WithError: Story = {
 };
 
 export const AllSizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Size variants with matching label sizes for different interface densities.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-6">
       <div className="w-64 space-y-2">
@@ -121,6 +156,14 @@ export const AllSizes: Story = {
 };
 
 export const InputTypes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Various HTML input types demonstrating proper type usage for improved mobile keyboards and validation.",
+      },
+    },
+  },
   render: () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
       <div className="space-y-2">
@@ -160,6 +203,14 @@ export const InputTypes: Story = {
 };
 
 export const States: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Normal, disabled, error, and filled states showing visual feedback for each condition.",
+      },
+    },
+  },
   render: () => (
     <div className="grid grid-cols-2 gap-6">
       <div className="space-y-2">
@@ -200,6 +251,14 @@ export const States: Story = {
 };
 
 export const FormExample: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Real-world registration form showing inputs with labels, required fields, and proper layout.",
+      },
+    },
+  },
   render: () => (
     <div className="w-96 space-y-6">
       <h3 className="text-lg font-semibold">Registration Form</h3>

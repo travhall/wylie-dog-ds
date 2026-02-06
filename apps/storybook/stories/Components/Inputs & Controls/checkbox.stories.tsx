@@ -22,18 +22,37 @@ const meta: Meta<typeof Checkbox> = {
       control: "radio",
       options: ["sm", "md", "lg"],
       description: "The size of the checkbox",
+      table: {
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: '"md"' },
+        category: "Appearance",
+      },
     },
     error: {
       control: "boolean",
       description: "Whether the checkbox should show error styling",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     disabled: {
       control: "boolean",
       description: "Whether the checkbox is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     checked: {
       control: "boolean",
       description: "Whether the checkbox is checked",
+      table: {
+        type: { summary: "boolean" },
+        category: "State",
+      },
     },
   },
 };
@@ -43,6 +62,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic checkbox with label for boolean choices.",
+      },
+    },
+  },
   render: (args) => (
     <div className="flex items-center space-x-2">
       <Checkbox id="default-checkbox" {...args} />
@@ -55,6 +81,14 @@ export const Checked: Story = {
   args: {
     defaultChecked: true,
   },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Pre-checked state for defaults or previously saved preferences.",
+      },
+    },
+  },
   render: (args) => (
     <div className="flex items-center space-x-2">
       <Checkbox id="checked-checkbox" {...args} />
@@ -66,6 +100,14 @@ export const Checked: Story = {
 export const WithError: Story = {
   args: {
     error: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Error state with validation message for required checkbox fields.",
+      },
+    },
   },
   render: (args) => (
     <div className="space-y-2">
@@ -83,6 +125,14 @@ export const WithError: Story = {
 };
 
 export const AllSizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Size variants with matching label sizes for different interface densities.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-4">
       <div className="flex items-center space-x-2">
@@ -108,6 +158,14 @@ export const AllSizes: Story = {
 };
 
 export const States: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "All checkbox states: unchecked, checked, disabled, and error combinations.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-4">
       <div className="space-y-3">
@@ -160,6 +218,14 @@ export const States: Story = {
 };
 
 export const CheckboxGroups: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Grouped checkboxes for notification preferences, features, and legal agreements.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-6">
       {/* Preferences Group */}
@@ -227,6 +293,14 @@ export const CheckboxGroups: Story = {
 };
 
 export const FormExamples: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Real-world form patterns using checkboxes for registration consent and survey selections.",
+      },
+    },
+  },
   render: () => (
     <div className="max-w-md space-y-8">
       {/* Registration Form */}

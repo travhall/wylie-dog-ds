@@ -25,8 +25,9 @@ const meta: Meta<typeof ResizablePanelGroup> = {
       description:
         "The orientation of the panel group (horizontal splits left-right, vertical splits top-bottom)",
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "horizontal" },
+        type: { summary: '"horizontal" | "vertical"' },
+        defaultValue: { summary: '"horizontal"' },
+        category: "Appearance",
       },
     },
     autoSaveId: {
@@ -35,6 +36,7 @@ const meta: Meta<typeof ResizablePanelGroup> = {
         "Unique ID for automatically persisting panel sizes to localStorage",
       table: {
         type: { summary: "string" },
+        category: "Behavior",
       },
     },
     className: {
@@ -43,6 +45,7 @@ const meta: Meta<typeof ResizablePanelGroup> = {
         "Additional CSS classes to apply to the panel group container",
       table: {
         type: { summary: "string" },
+        category: "Styling",
       },
     },
     onLayout: {
@@ -51,6 +54,7 @@ const meta: Meta<typeof ResizablePanelGroup> = {
         "Callback fired when panel sizes change, receives array of panel sizes as percentages",
       table: {
         type: { summary: "(sizes: number[]) => void" },
+        category: "Behavior",
       },
     },
     children: {
@@ -59,6 +63,7 @@ const meta: Meta<typeof ResizablePanelGroup> = {
         "ResizablePanel components separated by ResizableHandle components",
       table: {
         type: { summary: "React.ReactNode" },
+        category: "Content",
       },
     },
   },
@@ -68,6 +73,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Horizontal: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Two-panel horizontal split with draggable divider.",
+      },
+    },
+  },
   render: () => (
     <ResizablePanelGroup
       direction="horizontal"
@@ -89,6 +101,13 @@ export const Horizontal: Story = {
 };
 
 export const Vertical: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Two-panel vertical split with header and content areas.",
+      },
+    },
+  },
   render: () => (
     <ResizablePanelGroup
       direction="vertical"
@@ -110,6 +129,14 @@ export const Vertical: Story = {
 };
 
 export const ThreePanels: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Three-panel layout with sidebar, main content, and details panel.",
+      },
+    },
+  },
   render: () => (
     <ResizablePanelGroup
       direction="horizontal"
@@ -137,6 +164,14 @@ export const ThreePanels: Story = {
 };
 
 export const IDELayout: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "IDE-style layout with nested panels: file explorer, editor, terminal, and properties.",
+      },
+    },
+  },
   render: () => (
     <ResizablePanelGroup
       direction="horizontal"
@@ -220,6 +255,14 @@ export const IDELayout: Story = {
 };
 
 export const Dashboard: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dashboard layout with header, sidebar, main area, and activity feed using nested panel groups.",
+      },
+    },
+  },
   render: () => (
     <ResizablePanelGroup
       direction="vertical"

@@ -4,17 +4,36 @@ import { Separator } from "@wyliedog/ui/separator";
 const meta: Meta<typeof Separator> = {
   title: "Components/Layout & Structure/Separator",
   component: Separator,
-  parameters: { layout: "centered" },
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Visual divider for separating content sections. Built on Radix UI with proper ARIA role handling for decorative and semantic separators.",
+      },
+    },
+  },
   tags: ["autodocs"],
   argTypes: {
     orientation: {
       control: "radio",
       options: ["horizontal", "vertical"],
       description: "The orientation of the separator",
+      table: {
+        type: { summary: '"horizontal" | "vertical"' },
+        defaultValue: { summary: '"horizontal"' },
+        category: "Appearance",
+      },
     },
     decorative: {
       control: "boolean",
-      description: "Whether the separator is purely decorative",
+      description:
+        "Whether the separator is purely decorative (hides from screen readers)",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "true" },
+        category: "State",
+      },
     },
   },
 };
@@ -25,6 +44,14 @@ type Story = StoryObj<typeof meta>;
 export const Horizontal: Story = {
   args: {
     orientation: "horizontal",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Horizontal separator dividing a heading from inline navigation links.",
+      },
+    },
   },
   render: (args) => (
     <div className="w-64">
@@ -50,6 +77,13 @@ export const Vertical: Story = {
   args: {
     orientation: "vertical",
   },
+  parameters: {
+    docs: {
+      description: {
+        story: "Vertical separator between inline text elements.",
+      },
+    },
+  },
   render: (args) => (
     <div className="flex h-5 items-center space-x-4 text-sm">
       <div>Blog</div>
@@ -62,6 +96,14 @@ export const Vertical: Story = {
 };
 
 export const InContent: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Separators dividing stacked content sections with headings and descriptions.",
+      },
+    },
+  },
   render: () => (
     <div className="max-w-md space-y-4">
       <div>
@@ -93,6 +135,14 @@ export const InContent: Story = {
 };
 
 export const InLists: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Separators grouping related items in a sidebar-style menu list.",
+      },
+    },
+  },
   render: () => (
     <div className="w-64 space-y-1">
       <div className="px-3 py-2 text-sm hover:bg-(--color-background-secondary) rounded">

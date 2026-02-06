@@ -39,11 +39,17 @@ const meta: Meta<typeof Collapsible> = {
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
+        category: "State",
       },
     },
     disabled: {
       control: "boolean",
       description: "Whether the collapsible is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
   },
 };
@@ -52,6 +58,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Basic collapsible section showing starred repositories with a toggle trigger.",
+      },
+    },
+  },
   render: () => (
     <Collapsible className="w-full max-w-md space-y-2">
       <div className="flex items-center justify-between space-x-4 px-4">

@@ -32,6 +32,7 @@ const meta: Meta<typeof Dialog> = {
       description: "Controlled open state of the dialog",
       table: {
         type: { summary: "boolean" },
+        category: "State",
       },
     },
     modal: {
@@ -41,6 +42,7 @@ const meta: Meta<typeof Dialog> = {
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "true" },
+        category: "Behavior",
       },
     },
   },
@@ -50,6 +52,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Profile editing dialog with form fields and save action.",
+      },
+    },
+  },
   render: () => (
     <Dialog>
       <DialogTrigger asChild>
@@ -95,6 +104,14 @@ export const Default: Story = {
 };
 
 export const Confirmation: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Destructive action confirmation dialog with cancel and delete options.",
+      },
+    },
+  },
   render: () => (
     <Dialog>
       <DialogTrigger asChild>
@@ -118,6 +135,14 @@ export const Confirmation: Story = {
 };
 
 export const SimpleAlert: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Simple success notification dialog with a single dismiss button.",
+      },
+    },
+  },
   render: () => (
     <Dialog>
       <DialogTrigger asChild>

@@ -20,6 +20,12 @@ const meta: Meta<typeof Badge> = {
       control: "select",
       options: ["default", "secondary", "destructive", "outline"],
       description: "Visual style variant of the badge",
+      table: {
+        type: {
+          summary: '"default" | "secondary" | "destructive" | "outline"',
+        },
+        category: "Appearance",
+      },
     },
   },
 };

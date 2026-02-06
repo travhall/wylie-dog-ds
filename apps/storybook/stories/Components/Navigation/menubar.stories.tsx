@@ -28,6 +28,7 @@ const meta: Meta<typeof Menubar> = {
       description: "Additional CSS classes to apply to the menubar container",
       table: {
         type: { summary: "string" },
+        category: "Styling",
       },
     },
     loop: {
@@ -37,6 +38,7 @@ const meta: Meta<typeof Menubar> = {
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
+        category: "Behavior",
       },
     },
     dir: {
@@ -45,8 +47,9 @@ const meta: Meta<typeof Menubar> = {
       description:
         "The reading direction for the menubar (left-to-right or right-to-left)",
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "ltr" },
+        type: { summary: '"ltr" | "rtl"' },
+        defaultValue: { summary: '"ltr"' },
+        category: "Appearance",
       },
     },
     children: {
@@ -55,6 +58,7 @@ const meta: Meta<typeof Menubar> = {
         "Menubar content, typically multiple MenubarMenu components with triggers and content",
       table: {
         type: { summary: "React.ReactNode" },
+        category: "Content",
       },
     },
   },
@@ -64,6 +68,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Browser-style menubar with File, Edit, and View menus including keyboard shortcuts.",
+      },
+    },
+  },
   render: () => (
     <Menubar>
       <MenubarMenu>
@@ -126,6 +138,14 @@ export const Default: Story = {
 };
 
 export const Simple: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Minimal website navigation menubar with a single dropdown menu.",
+      },
+    },
+  },
   render: () => (
     <Menubar>
       <MenubarMenu>
@@ -150,6 +170,14 @@ export const Simple: Story = {
 };
 
 export const ApplicationMenu: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Desktop application-style menubar with app, file, tools, and help menus.",
+      },
+    },
+  },
   render: () => (
     <Menubar>
       <MenubarMenu>

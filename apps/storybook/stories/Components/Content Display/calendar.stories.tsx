@@ -20,6 +20,10 @@ const meta: Meta<typeof Calendar> = {
       control: "select",
       options: ["single", "multiple", "range"],
       description: "Selection mode for the calendar",
+      table: {
+        type: { summary: '"single" | "multiple" | "range"' },
+        category: "Behavior",
+      },
     },
   },
 };
@@ -28,6 +32,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Single date selection calendar with today pre-selected.",
+      },
+    },
+  },
   render: () => {
     const [date, setDate] = useState<Date | undefined>(new Date());
 
@@ -49,6 +60,13 @@ export const Default: Story = {
 };
 
 export const Multiple: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Calendar allowing multiple individual dates to be selected.",
+      },
+    },
+  },
   render: () => {
     const [dates, setDates] = useState<Date[]>([]);
 
@@ -68,6 +86,13 @@ export const Multiple: Story = {
 };
 
 export const Range: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Calendar with date range selection for start and end dates.",
+      },
+    },
+  },
   render: () => {
     const [range, setRange] = useState<{ from?: Date; to?: Date }>({});
 
@@ -91,6 +116,14 @@ export const Range: Story = {
 };
 
 export const WithPreselected: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Range calendar initialized with a pre-selected one-week date range.",
+      },
+    },
+  },
   render: () => {
     const today = new Date();
     const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
@@ -120,6 +153,14 @@ export const WithPreselected: Story = {
 };
 
 export const InForm: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Calendar embedded within a form layout with a label and selected date display.",
+      },
+    },
+  },
   render: () => {
     const [date, setDate] = useState<Date | undefined>();
 

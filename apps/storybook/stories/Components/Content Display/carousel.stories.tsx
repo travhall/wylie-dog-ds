@@ -29,6 +29,7 @@ const meta: Meta<typeof Carousel> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "horizontal" },
+        category: "Behavior",
       },
     },
     opts: {
@@ -36,6 +37,7 @@ const meta: Meta<typeof Carousel> = {
         "Embla Carousel options for advanced configuration (loop, align, etc.)",
       table: {
         type: { summary: "EmblaOptionsType" },
+        category: "Behavior",
       },
     },
   },
@@ -45,6 +47,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Basic horizontal carousel with numbered slides and navigation controls.",
+      },
+    },
+  },
   render: () => (
     <Carousel className="w-full max-w-xs">
       <CarouselContent>
@@ -67,6 +77,14 @@ export const Default: Story = {
 };
 
 export const ProductCarousel: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Product showcase carousel with cards displaying names and prices.",
+      },
+    },
+  },
   render: () => (
     <Carousel className="w-full max-w-sm">
       <CarouselContent>
@@ -120,6 +138,14 @@ export const ProductCarousel: Story = {
 };
 
 export const MultipleItems: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Carousel displaying multiple visible items per view with responsive breakpoints.",
+      },
+    },
+  },
   render: () => (
     <Carousel className="w-full max-w-4xl mx-auto">
       <CarouselContent className="-ml-1">
@@ -142,6 +168,14 @@ export const MultipleItems: Story = {
 };
 
 export const Testimonials: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Testimonial carousel with quoted text, author names, and roles.",
+      },
+    },
+  },
   render: () => (
     <Carousel className="w-full max-w-lg">
       <CarouselContent>
@@ -191,6 +225,14 @@ export const Testimonials: Story = {
 };
 
 export const WithoutControls: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Carousel without previous/next navigation buttons for swipe-only interaction.",
+      },
+    },
+  },
   render: () => (
     <Carousel className="w-full max-w-xs">
       <CarouselContent>
@@ -211,6 +253,14 @@ export const WithoutControls: Story = {
 };
 
 export const ImageGallery: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Image gallery carousel with aspect-ratio placeholders and navigation controls.",
+      },
+    },
+  },
   render: () => (
     <Carousel className="w-full max-w-lg">
       <CarouselContent>

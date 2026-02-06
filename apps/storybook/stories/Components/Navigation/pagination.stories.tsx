@@ -29,6 +29,7 @@ const meta: Meta<typeof Pagination> = {
         "Additional CSS classes to apply to the pagination container",
       table: {
         type: { summary: "string" },
+        category: "Styling",
       },
     },
     children: {
@@ -37,6 +38,7 @@ const meta: Meta<typeof Pagination> = {
         "Pagination content, typically PaginationContent with nested PaginationItems",
       table: {
         type: { summary: "React.ReactNode" },
+        category: "Content",
       },
     },
   },
@@ -46,6 +48,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Standard pagination with previous/next buttons, page numbers, and ellipsis.",
+      },
+    },
+  },
   render: () => (
     <Pagination>
       <PaginationContent>
@@ -75,6 +85,14 @@ export const Default: Story = {
 };
 
 export const Simple: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Minimal pagination with just page numbers and navigation arrows.",
+      },
+    },
+  },
   render: () => (
     <Pagination>
       <PaginationContent>
@@ -101,6 +119,13 @@ export const Simple: Story = {
 };
 
 export const FirstPage: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Pagination on the first page with a disabled previous button.",
+      },
+    },
+  },
   render: () => (
     <Pagination>
       <PaginationContent>
@@ -136,6 +161,13 @@ export const FirstPage: Story = {
 };
 
 export const LastPage: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Pagination on the last page with a disabled next button.",
+      },
+    },
+  },
   render: () => (
     <Pagination>
       <PaginationContent>
@@ -168,6 +200,14 @@ export const LastPage: Story = {
 };
 
 export const WithManyPages: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Pagination for large datasets with dual ellipsis and surrounding page numbers.",
+      },
+    },
+  },
   render: () => (
     <Pagination>
       <PaginationContent>

@@ -32,6 +32,7 @@ const meta: Meta<typeof DropdownMenu> = {
       description: "Controlled open state of the dropdown",
       table: {
         type: { summary: "boolean" },
+        category: "State",
       },
     },
     modal: {
@@ -40,6 +41,7 @@ const meta: Meta<typeof DropdownMenu> = {
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
+        category: "Behavior",
       },
     },
   },
@@ -49,6 +51,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic dropdown menu with labeled account navigation items.",
+      },
+    },
+  },
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -67,6 +76,14 @@ export const Default: Story = {
 };
 
 export const WithCheckboxes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dropdown menu with toggleable checkbox items for display settings.",
+      },
+    },
+  },
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -86,6 +103,14 @@ export const WithCheckboxes: Story = {
 };
 
 export const WithRadioGroup: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dropdown menu with radio group for single-select theme options.",
+      },
+    },
+  },
   render: () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

@@ -23,12 +23,17 @@ const meta: Meta<typeof Skeleton> = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: "default" },
+        category: "Appearance",
       },
     },
     size: {
       control: "radio",
       options: ["sm", "md", "lg", "xl"],
       description: "Predefined size for circular/square skeletons",
+      table: {
+        type: { summary: "string" },
+        category: "Appearance",
+      },
     },
   },
 };
@@ -37,10 +42,25 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Basic skeleton placeholder with default rectangular shape.",
+      },
+    },
+  },
   render: () => <Skeleton className="w-48 h-4" />,
 };
 
 export const AllVariants: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "All skeleton shape variants including text, circular, and rectangular.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-6">
       <div>
@@ -71,6 +91,13 @@ export const AllVariants: Story = {
 };
 
 export const CircularSizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Circular skeleton placeholders in all available sizes.",
+      },
+    },
+  },
   render: () => (
     <div className="space-y-4">
       <h4 className="text-sm font-medium">Circular Skeleton Sizes</h4>
@@ -97,6 +124,14 @@ export const CircularSizes: Story = {
 };
 
 export const CardLoading: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Skeleton layout mimicking a card with avatar, text, and action areas.",
+      },
+    },
+  },
   render: () => (
     <Card className="w-87.5">
       <CardHeader>
@@ -127,6 +162,14 @@ export const CardLoading: Story = {
 };
 
 export const TableLoading: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Skeleton layout representing a data table with header and rows.",
+      },
+    },
+  },
   render: () => (
     <div className="w-150 space-y-4">
       <div className="flex justify-between items-center">
@@ -168,6 +211,14 @@ export const TableLoading: Story = {
 };
 
 export const ListLoading: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Skeleton layout for a list with avatar, text, and action placeholders.",
+      },
+    },
+  },
   render: () => (
     <div className="w-100 space-y-4">
       <div className="flex justify-between items-center">
@@ -195,6 +246,14 @@ export const ListLoading: Story = {
 };
 
 export const FormLoading: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Skeleton layout representing a form with labels, inputs, and buttons.",
+      },
+    },
+  },
   render: () => (
     <div className="w-100 space-y-6">
       <div>
@@ -232,6 +291,14 @@ export const FormLoading: Story = {
 };
 
 export const DashboardLoading: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Full dashboard skeleton with stats cards, chart area, and activity lists.",
+      },
+    },
+  },
   render: () => (
     <div className="w-200 space-y-6">
       {/* Header */}

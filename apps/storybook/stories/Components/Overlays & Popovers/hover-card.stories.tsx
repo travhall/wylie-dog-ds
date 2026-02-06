@@ -29,6 +29,7 @@ const meta: Meta<typeof HoverCard> = {
       table: {
         type: { summary: "number" },
         defaultValue: { summary: "700" },
+        category: "Behavior",
       },
     },
     closeDelay: {
@@ -37,6 +38,7 @@ const meta: Meta<typeof HoverCard> = {
       table: {
         type: { summary: "number" },
         defaultValue: { summary: "300" },
+        category: "Behavior",
       },
     },
   },
@@ -46,6 +48,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Basic hover card displaying a user profile summary with avatar and join date.",
+      },
+    },
+  },
   render: () => (
     <div className="flex items-center space-x-4">
       <span className="text-sm">Hover over the link:</span>

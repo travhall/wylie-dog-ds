@@ -30,12 +30,54 @@ const meta: Meta<typeof AlertDialog> = {
     },
   },
   tags: ["autodocs"],
+  argTypes: {
+    open: {
+      control: "boolean",
+      description: "Controlled open state of the alert dialog",
+      table: {
+        type: { summary: "boolean" },
+        category: "State",
+      },
+    },
+    onOpenChange: {
+      control: false,
+      description: "Callback fired when the alert dialog open state changes",
+      table: {
+        type: { summary: "(open: boolean) => void" },
+        category: "Behavior",
+      },
+    },
+    children: {
+      control: false,
+      description: "Alert dialog trigger and content components",
+      table: {
+        type: { summary: "React.ReactNode" },
+        category: "Content",
+      },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes to apply",
+      table: {
+        type: { summary: "string" },
+        category: "Styling",
+      },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Standard alert dialog for confirming a destructive account deletion action.",
+      },
+    },
+  },
   render: () => (
     <AlertDialog>
       <AlertDialogTrigger asChild>

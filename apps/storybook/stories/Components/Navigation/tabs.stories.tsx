@@ -9,17 +9,34 @@ import { Label } from "@wyliedog/ui/label";
 const meta: Meta<typeof Tabs> = {
   title: "Components/Navigation/Tabs",
   component: Tabs,
-  parameters: { layout: "centered" },
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Tabbed navigation component for organizing content into switchable panels. Built on Radix UI primitives with full keyboard navigation and ARIA support.",
+      },
+    },
+  },
   tags: ["autodocs"],
   argTypes: {
     defaultValue: {
       control: "text",
-      description: "The default active tab",
+      description: "The default active tab value",
+      table: {
+        type: { summary: "string" },
+        category: "State",
+      },
     },
     orientation: {
       control: "radio",
       options: ["horizontal", "vertical"],
       description: "The orientation of the tabs",
+      table: {
+        type: { summary: '"horizontal" | "vertical"' },
+        defaultValue: { summary: '"horizontal"' },
+        category: "Appearance",
+      },
     },
   },
 };
@@ -30,6 +47,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     defaultValue: "account",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Account settings tabs with form inputs for name, username, and password.",
+      },
+    },
   },
   render: (args) => (
     <Tabs {...args} className="w-(--spacing-1700)">
@@ -64,6 +89,14 @@ export const Default: Story = {
 };
 
 export const WithCards: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dashboard-style tabs with card content panels for overview, analytics, reports, and notifications.",
+      },
+    },
+  },
   render: () => (
     <Tabs defaultValue="overview" className="w-150">
       <TabsList>
@@ -246,6 +279,13 @@ export const WithInteractions: Story = {
   },
 };
 export const Sizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Tab trigger size variants: small, medium (default), and large.",
+      },
+    },
+  },
   render: () => (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">

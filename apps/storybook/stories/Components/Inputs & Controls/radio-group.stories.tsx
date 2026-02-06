@@ -22,17 +22,28 @@ const meta: Meta<typeof RadioGroup> = {
       options: ["horizontal", "vertical"],
       description: "Layout orientation of the radio group",
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "vertical" },
+        type: { summary: '"horizontal" | "vertical"' },
+        defaultValue: { summary: '"vertical"' },
+        category: "Appearance",
       },
     },
     disabled: {
       control: "boolean",
       description: "Whether the entire group is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
     required: {
       control: "boolean",
       description: "Whether selection is required",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
     },
   },
 };
@@ -41,6 +52,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Basic radio group with vertical layout and pre-selected default value.",
+      },
+    },
+  },
   render: () => (
     <RadioGroup defaultValue="option1">
       <div className="flex items-center space-x-2">

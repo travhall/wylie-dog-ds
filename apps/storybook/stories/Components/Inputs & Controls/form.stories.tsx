@@ -28,12 +28,36 @@ const meta: Meta<typeof Form> = {
     },
   },
   tags: ["autodocs"],
+  argTypes: {
+    className: {
+      control: "text",
+      description: "Additional CSS classes for layout and spacing",
+      table: {
+        type: { summary: "string" },
+        category: "Styling",
+      },
+    },
+    onSubmit: {
+      description: "Form submission handler",
+      table: {
+        type: { summary: "(e: React.FormEvent) => void" },
+        category: "Behavior",
+      },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Basic: Story = {
+export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: "Simple contact form with name, email, and message fields.",
+      },
+    },
+  },
   render: () => (
     <Form className="w-100 space-y-6">
       <div className="space-y-2">
@@ -59,6 +83,14 @@ export const Basic: Story = {
 };
 
 export const WithValidation: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Form with client-side validation that shows error states on required fields.",
+      },
+    },
+  },
   render: () => {
     const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -129,6 +161,14 @@ export const WithValidation: Story = {
 };
 
 export const Registration: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Multi-field registration form with text inputs, select, radio group, and checkbox.",
+      },
+    },
+  },
   render: () => (
     <Form className="w-100 space-y-6">
       <div className="grid grid-cols-2 gap-4">
@@ -200,6 +240,14 @@ export const Registration: Story = {
 };
 
 export const Login: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Compact login form with email, password, remember-me checkbox, and sign-up option.",
+      },
+    },
+  },
   render: () => (
     <Form className="w-87.5 space-y-6">
       <div className="space-y-2 text-center">
