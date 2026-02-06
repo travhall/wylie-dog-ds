@@ -13,7 +13,9 @@ import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 
-const meta: Meta<typeof Sheet> = {
+// Use bare Meta to document props from sub-components (e.g. SheetContent.side)
+// that don't exist on the root Sheet (DialogPrimitive.Root) element.
+const meta: Meta = {
   title: "Components/Overlays & Popovers/Sheet",
   component: Sheet,
   parameters: {

@@ -17,7 +17,9 @@ import { Label } from "@wyliedog/ui/label";
 import { Textarea } from "@wyliedog/ui/textarea";
 import { Checkbox } from "@wyliedog/ui/checkbox";
 
-const meta: Meta<typeof AlertDialog> = {
+// Use bare Meta to document props from sub-components (e.g. AlertDialogContent.className)
+// that don't exist on the root AlertDialog element.
+const meta: Meta = {
   title: "Components/Overlays & Popovers/AlertDialog",
   component: AlertDialog,
   parameters: {

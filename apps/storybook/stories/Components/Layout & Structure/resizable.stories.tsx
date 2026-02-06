@@ -5,7 +5,9 @@ import {
   ResizableHandle,
 } from "@wyliedog/ui/resizable";
 
-const meta: Meta<typeof ResizablePanelGroup> = {
+// Use bare Meta to document props from sub-components (e.g. autoSaveId)
+// that don't exist on the root ResizablePanelGroup element.
+const meta: Meta = {
   title: "Components/Layout & Structure/Resizable",
   component: ResizablePanelGroup,
   parameters: {

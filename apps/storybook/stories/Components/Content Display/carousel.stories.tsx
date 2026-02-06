@@ -8,7 +8,9 @@ import {
 } from "@wyliedog/ui/carousel";
 import { Card, CardContent } from "@wyliedog/ui/card";
 
-const meta: Meta<typeof Carousel> = {
+// Use bare Meta to document props from sub-components (e.g. orientation)
+// that don't exist on the root Carousel element.
+const meta: Meta = {
   title: "Components/Content Display/Carousel",
   component: Carousel,
   parameters: {

@@ -22,7 +22,9 @@ import {
   PlusIcon,
 } from "lucide-react";
 
-const meta: Meta<typeof Command> = {
+// Use bare Meta to document props from sub-components (e.g. CommandItem.value)
+// that don't exist on the root Command element.
+const meta: Meta = {
   title: "Components/Navigation/Command",
   component: Command,
   parameters: {

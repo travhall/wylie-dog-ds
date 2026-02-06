@@ -6,52 +6,77 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 A modern, accessible design system built with React, Radix UI, and OKLCH color science.
 
-## 🎯 Overview
+## Overview
 
-The Wylie Dog Design System provides a comprehensive set of reusable components, design tokens, and patterns to help you build consistent, accessible user interfaces quickly and confidently.
+The Wylie Dog Design System provides a comprehensive set of reusable components, design tokens, and patterns for building consistent, accessible user interfaces. It combines accessible Radix UI primitives with a Figma-synced token pipeline powered by OKLCH color science for perceptually uniform, wide-gamut color across every component.
 
-## ✨ Key Features
+## Key Features
 
-- **🎨 OKLCH Color Science** - Advanced color system with P3 wide gamut support and perceptual uniformity
-- **♿ Accessibility First** - Built on Radix UI primitives with comprehensive ARIA patterns and keyboard navigation
-- **🧩 Composable Components** - 48+ production-ready components that work together seamlessly
-- **📚 Comprehensive Documentation** - Detailed examples, usage patterns, and best practices
-- **✅ Thoroughly Tested** - 95%+ comprehensive test coverage
-- **⚡ Modern Stack** - React 19, TypeScript 5.8, Tailwind v4, Vite
+- **OKLCH Color Science** — Perceptually uniform color space with P3 wide gamut support. Colors look consistent across lightness levels and render beautifully on modern displays.
+- **Three-Tier Token Architecture** — Primitives, semantic aliases, and component-level tokens. Synced bidirectionally with Figma via Token Bridge in W3C DTCG format.
+- **Accessibility First** — Built on Radix UI primitives with ARIA patterns, keyboard navigation, and focus management baked into every component.
+- **44 Components + 5 Compositions** — Production-ready building blocks from inputs and dialogs to full page layouts, all sharing the same token foundation.
+- **Modern Stack** — React 19, TypeScript 5.9, Tailwind CSS v4, Vite 7, and Storybook 10.
 
-## 🚀 Quick Links
+## Quick Links
 
 ### Getting Started
-- [Getting Started Guide](?path=/docs/introduction-getting-started--docs) - Installation and setup
-- [Design Principles](?path=/docs/foundations-design-principles-overview--docs) - Our design philosophy
+- [Getting Started Guide](?path=/docs/introduction-getting-started--docs) — Installation and setup
+- [Using This System](?path=/docs/introduction-using-this-system--docs) — How to navigate this Storybook
+- [Design Principles](?path=/docs/foundations-design-principles-overview--docs) — Our design philosophy
 
 ### Foundations
-- [Colors](?path=/docs/foundations-design-tokens-colors--docs) - Color palette and tokens
-- [Typography](?path=/docs/foundations-typography--docs) - Text styles and scales
-- [Spacing](?path=/docs/foundations-design-tokens-spacing-layout--docs) - Layout and spacing system
+- [Colors](?path=/docs/foundations-colors--docs) — OKLCH color palette with 10 scales and semantic aliases
+- [Typography](?path=/docs/foundations-typography--docs) — Type scales, weights, and font tokens
+- [Spacing & Layout](?path=/docs/foundations-spacing-layout--docs) — Spacing system and layout tokens
 
 ### Components
-- [Browse All Components](?path=/docs/components-content-display-accordion--docs) - Explore 48+ components
-- [Patterns Overview](?path=/docs/patterns-overview--docs) - Real-world examples
-- [Form Patterns](?path=/docs/patterns-form-patterns-form-compositions--docs) - Common form layouts
+- [Button](?path=/docs/components-inputs-controls-button--docs) — Start here for a feel of the component API
+- [Patterns Overview](?path=/docs/patterns-overview--docs) — Real-world compositions and usage examples
+- [Form Patterns](?path=/docs/patterns-form-patterns-form-compositions--docs) — Common form layouts
 
-## 🎨 Design Tokens
+## Design Tokens
 
-Our design system is powered by a robust token system that ensures consistency across all components:
+The system is powered by over 1,000 tokens organized in three tiers:
 
-```jsx
-// Using design tokens with Tailwind classes
-<div className="bg-primary-500 text-white p-4 rounded-lg shadow-md">
-  Primary action button
-</div>
+**Primitive tokens** define the raw values — color scales, font sizes, spacing steps:
 
-// Semantic color tokens
-<div className="bg-success-100 border border-success-500 text-success-700">
-  Success message
-</div>
+```css
+--color-blue-500: oklch(0.623 0.188 259.82);
+--color-gray-900: oklch(0.279 0.037 260.04);
+--spacing-4: 1rem;
+--font-size-lg: 1.125rem;
 ```
 
-## 🧩 Component Example
+**Semantic tokens** map primitives to intent, with automatic light/dark mode switching:
+
+```css
+/* Light mode */
+--color-background-primary: oklch(1 0 0);         /* gray-50 */
+--color-text-primary: oklch(0.279 0.037 260.04);   /* gray-900 */
+
+/* Dark mode */
+--color-background-primary: oklch(0.208 0.04 265.75);  /* gray-950 */
+--color-text-primary: oklch(0.984 0.003 248.29);        /* gray-100 */
+```
+
+**Component tokens** tie everything together at the component level:
+
+```css
+--color-button-primary-background: var(--color-interactive-primary);
+--spacing-button-height-md: var(--spacing-10);
+```
+
+Components reference these tokens through Tailwind's CSS variable syntax:
+
+```jsx
+// How components use tokens internally
+<button className="bg-(--color-button-primary-background) text-(--color-button-primary-text)">
+  Save Changes
+</button>
+```
+
+As a consumer, you don't need to think about token wiring — just use the components:
 
 ```jsx
 import { Button } from '@wyliedog/ui/button';
@@ -65,58 +90,121 @@ export function LoginForm() {
         <Label htmlFor="email">Email</Label>
         <Input id="email" type="email" placeholder="you@example.com" />
       </div>
-      <Button variant="primary" className="w-full">
-        Sign In
-      </Button>
+      <Button className="w-full">Sign In</Button>
     </form>
   );
 }
 ```
 
-## 📖 Documentation Structure
+## Documentation Structure
 
-Our Storybook is organized into clear sections:
+This Storybook is organized into the following sections:
 
-- **Introduction** - Getting started guides and design principles
-- **Foundations** - Colors, typography, spacing, and core design tokens
-- **Components** - All UI components with interactive examples
-- **Patterns** - Real-world compositions and common use cases
-- **Guides** - In-depth guides for theming, accessibility, and testing
+<table>
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>What's Inside</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Introduction</strong></td>
+      <td>Setup guides and system overview (you are here)</td>
+    </tr>
+    <tr>
+      <td><strong>Foundations</strong></td>
+      <td>Colors, typography, spacing — the design token layer</td>
+    </tr>
+    <tr>
+      <td><strong>Components</strong></td>
+      <td>All 44 UI components with interactive examples and controls</td>
+    </tr>
+    <tr>
+      <td><strong>Patterns</strong></td>
+      <td>Multi-component compositions: forms, auth flows, navigation, layouts</td>
+    </tr>
+    <tr>
+      <td><strong>Examples</strong></td>
+      <td>Full-page compositions combining headers, content, and footers</td>
+    </tr>
+    <tr>
+      <td><strong>Resources</strong></td>
+      <td>In-depth guides for theming, installation, and performance</td>
+    </tr>
+    <tr>
+      <td><strong>Contributing</strong></td>
+      <td>Code standards, design workflows, and release process</td>
+    </tr>
+  </tbody>
+</table>
 
-## 🏗️ Built With
+## Built With
 
-- **React 19.2.3** - Latest React with improved performance
-- **TypeScript 5.8** - Type-safe component development
-- **Radix UI** - Accessible component primitives
-- **Tailwind CSS v4** - Utility-first styling with modern features
-- **OKLCH Colors** - Perceptually uniform color space
-- **Vite** - Lightning-fast build tooling
-- **Vitest** - Modern testing framework
+<table>
+  <thead>
+    <tr>
+      <th>Technology</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>React 19</strong></td>
+      <td>UI framework</td>
+    </tr>
+    <tr>
+      <td><strong>TypeScript 5.9</strong></td>
+      <td>Type-safe component development</td>
+    </tr>
+    <tr>
+      <td><strong>Radix UI</strong></td>
+      <td>Accessible component primitives (24 packages)</td>
+    </tr>
+    <tr>
+      <td><strong>Tailwind CSS v4</strong></td>
+      <td>Utility-first styling consuming token CSS variables</td>
+    </tr>
+    <tr>
+      <td><strong>OKLCH + P3</strong></td>
+      <td>Perceptually uniform color space with wide gamut support</td>
+    </tr>
+    <tr>
+      <td><strong>Style Dictionary</strong></td>
+      <td>Token build pipeline (W3C DTCG format)</td>
+    </tr>
+    <tr>
+      <td><strong>Figma + Token Bridge</strong></td>
+      <td>Design-to-code token sync</td>
+    </tr>
+    <tr>
+      <td><strong>Vite 7</strong></td>
+      <td>Build tooling</td>
+    </tr>
+    <tr>
+      <td><strong>Storybook 10</strong></td>
+      <td>Component documentation and testing</td>
+    </tr>
+  </tbody>
+</table>
 
-## 🎓 Learning Path
+## Learning Path
 
 ### For Designers
 1. Start with [Design Principles](?path=/docs/foundations-design-principles-overview--docs)
-2. Explore [Colors](?path=/docs/foundations-design-tokens-colors--docs) and [Typography](?path=/docs/foundations-typography--docs)
-3. Review component examples for design patterns
+2. Explore [Colors](?path=/docs/foundations-colors--docs) and [Typography](?path=/docs/foundations-typography--docs)
+3. Review component stories to see interactive examples of every variant
 
 ### For Developers
 1. Follow the [Getting Started Guide](?path=/docs/introduction-getting-started--docs)
-2. Browse [Components](?path=/docs/components-content-display-accordion--docs) to see what's available
-3. Check out [Patterns](?path=/docs/patterns-overview--docs) for implementation examples
+2. Browse components — start with [Button](?path=/docs/components-inputs-controls-button--docs) to see the API patterns
+3. Check out [Patterns](?path=/docs/patterns-overview--docs) for real-world implementations
 
-### For Everyone
-- Explore interactive component stories
-- Try different variants and props in the Controls panel
-- Copy code examples directly from the documentation
+## Need Help?
 
-## 💡 Need Help?
+- **Component Questions** — Each component page has interactive controls, code examples, and accessibility notes
+- **Token System** — See the [Design Token Usage Guide](?path=/docs/foundations-design-token-usage-guide--docs)
+- **Accessibility** — Review the [Accessibility Guidelines](?path=/docs/foundations-accessibility-guidelines-overview--docs)
+- **Theming** — See [Theming Overview](?path=/docs/resources-theming-overview--docs) for light/dark mode and customization
 
-- **Component Questions** - Each component has detailed documentation with examples
-- **Design Tokens** - See the [Token Usage Guide](?path=/docs/foundations-design-tokens-usage-guide--docs)
-- **Accessibility** - Check individual component accessibility stories
-- **Testing** - All components include comprehensive test coverage
-
-## 🚀 Start Building
-
-Ready to get started? Head over to the [Getting Started Guide](?path=/docs/introduction-getting-started--docs) to begin building with the Wylie Dog Design System!
+Ready to get started? Head to the [Getting Started Guide](?path=/docs/introduction-getting-started--docs).

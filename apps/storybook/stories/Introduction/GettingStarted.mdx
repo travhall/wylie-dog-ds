@@ -6,60 +6,37 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 Get up and running with the Wylie Dog Design System in minutes.
 
-## 📦 Installation
+## Installation
 
-Install the component library using your preferred package manager:
+Install the UI library and tokens package:
 
 ```bash
 # Using pnpm (recommended)
-pnpm add @wyliedog/ui
+pnpm add @wyliedog/ui @wyliedog/tokens
 
 # Using npm
-npm install @wyliedog/ui
+npm install @wyliedog/ui @wyliedog/tokens
 
 # Using yarn
-yarn add @wyliedog/ui
+yarn add @wyliedog/ui @wyliedog/tokens
 ```
 
-## ⚙️ Setup
+## Setup
 
-### 1. Import Global Styles
+### 1. Import Styles
 
-Import the design system's global CSS in your app's entry point:
+Import the design system's stylesheet in your app's entry point. This brings in all component styles and design token CSS custom properties:
 
 ```tsx
-// app/layout.tsx or main.tsx
+// app/layout.tsx (Next.js) or main.tsx (Vite)
 import '@wyliedog/ui/styles';
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
-}
 ```
 
-### 2. Configure Tailwind (Optional)
+That single import gives you every token and component style. No Tailwind configuration required on your end unless you want to use Tailwind utilities in your own code.
 
-If you're using Tailwind CSS in your project, extend our configuration:
+### 2. TypeScript Configuration
 
-```js
-// tailwind.config.js
-import { tailwindConfig } from '@wyliedog/ui/tailwind.config';
-
-export default {
-  ...tailwindConfig,
-  content: [
-    './src/**/*.{js,ts,jsx,tsx}',
-    './node_modules/@wyliedog/ui/**/*.{js,ts,jsx,tsx}',
-  ],
-};
-```
-
-### 3. TypeScript Configuration (Optional)
-
-For optimal TypeScript support, ensure your `tsconfig.json` includes:
+For full type safety, make sure your `tsconfig.json` includes:
 
 ```json
 {
@@ -71,25 +48,27 @@ For optimal TypeScript support, ensure your `tsconfig.json` includes:
 }
 ```
 
-## 🎨 Your First Component
+## Your First Component
 
-Let's create a simple button:
+Components are imported individually from their subpaths:
 
 ```tsx
 import { Button } from '@wyliedog/ui/button';
 
 export function MyComponent() {
   return (
-    <Button variant="primary" onClick={() => alert('Hello!')}>
+    <Button onClick={() => alert('Hello!')}>
       Click Me
     </Button>
   );
 }
 ```
 
-## 🧩 Building a Form
+The default variant is used when no `variant` prop is specified. Available variants include `default`, `primary`, `secondary`, `outline`, `ghost`, `link`, and `destructive`.
 
-Here's a complete form example using multiple components:
+## Building a Form
+
+Here's a complete login form using multiple components:
 
 ```tsx
 import { Button } from '@wyliedog/ui/button';
@@ -115,7 +94,7 @@ export function LoginForm() {
         <Input
           id="password"
           type="password"
-          placeholder="••••••••"
+          placeholder="Enter your password"
           required
         />
       </div>
@@ -127,7 +106,7 @@ export function LoginForm() {
         </Label>
       </div>
 
-      <Button type="submit" variant="primary" className="w-full">
+      <Button type="submit" className="w-full">
         Sign In
       </Button>
     </form>
@@ -135,27 +114,31 @@ export function LoginForm() {
 }
 ```
 
-## 🎯 Common Patterns
+## Using Design Tokens
 
-### Using Design Tokens
-
-Components automatically use design tokens, but you can also use them directly:
+Components use design tokens automatically — you get theming and dark mode support without any extra work. If you need to reference tokens directly in your own markup, use the CSS custom property syntax:
 
 ```tsx
-// Using Tailwind classes
-<div className="bg-primary-500 text-white p-4 rounded-lg">
-  Primary colored box
-</div>
-
-// Using CSS variables
-<div style={{ backgroundColor: 'var(--color-primary-500)' }}>
-  Custom styled element
+// Reference semantic tokens via CSS variables
+<div style={{ backgroundColor: 'var(--color-background-secondary)' }}>
+  Styled with a semantic background token
 </div>
 ```
 
-### Composing Components
+If your project uses Tailwind CSS v4, you can use the parenthesized variable syntax:
 
-Components are designed to work together seamlessly:
+```tsx
+// Tailwind v4 CSS variable syntax
+<div className="bg-(--color-background-secondary) text-(--color-text-primary) p-(--spacing-4)">
+  Styled with tokens through Tailwind
+</div>
+```
+
+See the [Design Token Usage Guide](?path=/docs/foundations-design-token-usage-guide--docs) for the full list of available tokens.
+
+## Composing Components
+
+Components are designed to work together:
 
 ```tsx
 import { Card, CardHeader, CardTitle, CardContent } from '@wyliedog/ui/card';
@@ -167,21 +150,17 @@ export function UserCard() {
     <Card className="w-80">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle>John Doe</CardTitle>
+          <CardTitle>Jane Doe</CardTitle>
           <Badge variant="success">Active</Badge>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-sm text-neutral-600">
+        <p className="text-sm text-(--color-text-secondary)">
           Senior Frontend Developer
         </p>
         <div className="flex gap-2">
-          <Button variant="primary" size="sm">
-            Message
-          </Button>
-          <Button variant="outline" size="sm">
-            View Profile
-          </Button>
+          <Button size="sm">Message</Button>
+          <Button variant="outline" size="sm">View Profile</Button>
         </div>
       </CardContent>
     </Card>
@@ -189,9 +168,9 @@ export function UserCard() {
 }
 ```
 
-### Handling States
+## Handling States
 
-Components support various states for different use cases:
+Components support contextual variants for feedback:
 
 ```tsx
 import { Alert, AlertTitle, AlertDescription } from '@wyliedog/ui/alert';
@@ -199,37 +178,28 @@ import { Alert, AlertTitle, AlertDescription } from '@wyliedog/ui/alert';
 export function Notifications() {
   return (
     <div className="space-y-4">
-      {/* Success state */}
       <Alert variant="success">
         <AlertTitle>Success!</AlertTitle>
-        <AlertDescription>
-          Your changes have been saved.
-        </AlertDescription>
+        <AlertDescription>Your changes have been saved.</AlertDescription>
       </Alert>
 
-      {/* Warning state */}
       <Alert variant="warning">
         <AlertTitle>Warning</AlertTitle>
-        <AlertDescription>
-          This action cannot be undone.
-        </AlertDescription>
+        <AlertDescription>This action cannot be undone.</AlertDescription>
       </Alert>
 
-      {/* Error state */}
       <Alert variant="destructive">
         <AlertTitle>Error</AlertTitle>
-        <AlertDescription>
-          Something went wrong. Please try again.
-        </AlertDescription>
+        <AlertDescription>Something went wrong. Please try again.</AlertDescription>
       </Alert>
     </div>
   );
 }
 ```
 
-## ♿ Accessibility
+## Accessibility
 
-All components are built with accessibility in mind:
+All components are built on [Radix UI](https://www.radix-ui.com/) primitives with full keyboard navigation, focus management, and ARIA attributes. Follow these patterns for best results:
 
 ```tsx
 import { Button } from '@wyliedog/ui/button';
@@ -246,101 +216,32 @@ export function AccessibleForm() {
         aria-describedby="username-help"
         required
       />
-      <p id="username-help" className="text-sm text-neutral-600">
+      <p id="username-help" className="text-sm text-(--color-text-tertiary)">
         Choose a unique username
       </p>
 
-      {/* Use semantic button types */}
-      <Button type="submit" aria-label="Submit form">
-        Submit
-      </Button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 }
 ```
 
-## 📱 Responsive Design
+## Responsive Design
 
-Components are responsive by default. Use Tailwind's responsive utilities:
+Components work at any viewport width. Use Tailwind's responsive utilities for layout:
 
 ```tsx
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-  <Card>Mobile: 1 col, Tablet: 2 col, Desktop: 3 col</Card>
-  <Card>Automatically responsive</Card>
-  <Card>No extra configuration needed</Card>
+  <Card>Stacks on mobile</Card>
+  <Card>Two columns on tablet</Card>
+  <Card>Three columns on desktop</Card>
 </div>
 ```
 
-## 🎨 Customization
+## Next Steps
 
-### Custom Styling
-
-Extend component styles with className:
-
-```tsx
-<Button
-  variant="primary"
-  className="rounded-full px-8 shadow-lg hover:shadow-xl"
->
-  Custom Styled Button
-</Button>
-```
-
-### Size Variants
-
-Most components support size variants:
-
-```tsx
-<div className="flex items-center gap-2">
-  <Button size="sm">Small</Button>
-  <Button size="md">Medium</Button>
-  <Button size="lg">Large</Button>
-</div>
-```
-
-## 🧪 Testing
-
-Components are thoroughly tested. When testing your app:
-
-```tsx
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Button } from '@wyliedog/ui/button';
-
-test('button handles clicks', async () => {
-  const user = userEvent.setup();
-  const handleClick = vi.fn();
-
-  render(<Button onClick={handleClick}>Click me</Button>);
-
-  await user.click(screen.getByRole('button'));
-
-  expect(handleClick).toHaveBeenCalledOnce();
-});
-```
-
-## 📚 Next Steps
-
-Now that you're set up, explore more:
-
-1. **Browse Components** - Check out the [Components](/story/3-components-data-display-accordion--default) section
-2. **View Patterns** - See [real-world examples](/story/4-patterns-compositions--docs)
-3. **Learn Design Tokens** - Read the [Token Usage Guide](/story/2-foundations-token-usage--docs)
-4. **Understand Colors** - Explore the [Color System](/story/2-foundations-design-tokens-colors--all-colors)
-
-## 💡 Tips
-
-- 🎨 **Use design tokens** for consistent styling
-- ♿ **Follow accessibility patterns** in our examples
-- 🧪 **Write tests** for your components
-- 📱 **Design mobile-first** with responsive utilities
-- 🎯 **Start simple** and compose components as needed
-
-## 🆘 Need Help?
-
-- Check component stories for detailed examples
-- Review the Foundations section for design token usage
-- Look at Patterns for common compositions
-- Explore the Controls panel in each story to experiment
-
-Happy building! 🚀
+- [Using This System](?path=/docs/introduction-using-this-system--docs) — How to navigate this Storybook
+- [Colors](?path=/docs/foundations-colors--docs) — Explore the OKLCH color palette
+- [Button](?path=/docs/components-inputs-controls-button--docs) — See all variants, sizes, and states
+- [Patterns](?path=/docs/patterns-overview--docs) — Multi-component compositions for real-world use cases
+- [Design Token Usage Guide](?path=/docs/foundations-design-token-usage-guide--docs) — Deep dive into the token system

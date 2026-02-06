@@ -4,114 +4,136 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Using This System
 
-Learn how to navigate and make the most of the Wylie Dog Design System documentation.
+A quick guide to navigating and getting the most from this Storybook.
 
 ## Documentation Structure
 
-The design system is organized into seven main sections, each serving a specific purpose:
+The sidebar is organized into seven sections:
 
 ### 1. Introduction
-Start here if you're new to the system. Learn what it is, how to get started, and how to navigate the documentation.
+You're here. Setup guides and an overview of the design system.
 
 ### 2. Foundations
-Explore the core principles and building blocks:
-- **Design Principles**: The "why" behind our design decisions
-- **Design Tokens**: Visual design primitives (colors, typography, spacing, etc.)
-- **Accessibility Guidelines**: Standards and best practices for inclusive design
+The building blocks that every component shares:
+- **Design Principles** — The reasoning behind our design decisions
+- **Design Token Usage Guide** — How the three-tier token system works (primitive, semantic, component)
+- **Colors** — OKLCH color palette with 10 scales and semantic aliases
+- **Typography** — Type scale, font weights, and font family tokens
+- **Spacing & Layout** — Spacing steps and layout tokens
+- **Accessibility Guidelines** — Standards for inclusive, WCAG-compliant interfaces
 
 ### 3. Components
-Browse reusable UI components organized by function:
-- **Inputs & Controls**: Form elements and interactive controls
-- **Navigation**: Menus, tabs, breadcrumbs, and navigation patterns
-- **Layout & Structure**: Grid systems, containers, and layout primitives
-- **Content Display**: Cards, tables, lists, and content presentation
-- **Feedback & Status**: Alerts, toasts, progress indicators
-- **Overlays & Popovers**: Modals, dialogs, tooltips, and floating elements
+All 44 UI components, organized by function:
+- **Inputs & Controls** — Button, Input, Checkbox, Select, Slider, Switch, and more
+- **Navigation** — Tabs, Breadcrumb, Menubar, Command Palette, Pagination
+- **Layout & Structure** — Separator, AspectRatio, ScrollArea, Resizable
+- **Content Display** — Card, Badge, Avatar, Accordion, Table, Calendar, Carousel
+- **Feedback & Status** — Alert, Progress, Skeleton, Toast
+- **Overlays & Popovers** — Dialog, Sheet, Popover, Tooltip, DropdownMenu, ContextMenu
 
 ### 4. Patterns
-Discover multi-component solutions for common use cases:
-- **Form Patterns**: Complete form layouts and validation patterns
-- **Data Patterns**: Tables, filtering, search, and data loading states
-- **Navigation Patterns**: App navigation and responsive menu structures
+Multi-component compositions for common use cases:
+- **Form Patterns** — Settings forms, multi-step forms, validation patterns
+- **Authentication Patterns** — Login, registration, password recovery flows
+- **Data Patterns** — Card grids, feature grids
+- **Navigation Patterns** — Site header, site footer
+- **Layout Patterns** — Full-page layout compositions
+- **Feedback Patterns** — Error boundaries
 
 ### 5. Examples
-See real-world compositions and application flows:
-- **Page Compositions**: Complete page layouts (dashboard, settings, etc.)
-- **Common Application Flows**: Multi-step processes and user journeys
+Complete page-level compositions:
+- **Page Layout** — Full pages with header, sidebar, content, and footer
+- **Hero Section** — Landing page hero patterns with multiple layout variants
+- **Features Section** — Feature showcase grids
 
 ### 6. Resources
-Task-oriented guides for implementation:
-- **Getting Started**: Installation and quick tutorials
-- **Theming**: Customizing tokens and creating themes
-- **Development**: Component APIs and TypeScript usage
-- **Design**: Figma kit and design token workflow
-- **Testing & Quality**: Testing and performance monitoring
-- **Migration & Updates**: Changelog and upgrade guides
+In-depth implementation guides:
+- **Getting Started** — Installation, quickstart tutorial
+- **Theming** — Light/dark mode, token customization
+- **Development** — Composition patterns
+- **Testing & Quality** — Component testing, performance
 
 ### 7. Contributing
-Guidelines for contributing to the design system.
+How to extend and contribute to the system:
+- **Guidelines** — Code standards, design standards
+- **Workflows** — Component development, design token workflow, release process
+
+## Navigating a Component Page
+
+Each component page provides:
+
+1. **Docs view** — Component description, all story variants rendered inline, and a prop table generated from TypeScript types
+2. **Individual stories** — Click any story in the sidebar to view it in isolation on the Canvas
+3. **Controls panel** — Interactive prop editor in the bottom panel (toggle with the `Controls` tab)
+4. **Accessibility panel** — Run the a11y checker from the `Accessibility` tab (click the play button to scan)
+
+### What Each Story Shows
+
+<table>
+  <thead>
+    <tr>
+      <th>Story Name</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Default</strong></td>
+      <td>Baseline usage with sensible defaults</td>
+    </tr>
+    <tr>
+      <td><strong>AllVariants / AllSizes</strong></td>
+      <td>Visual reference of every option</td>
+    </tr>
+    <tr>
+      <td><strong>WithIcons / WithError / Disabled</strong></td>
+      <td>Specific feature or state</td>
+    </tr>
+    <tr>
+      <td><strong>DosDonts</strong></td>
+      <td>Best practices with do/don't examples</td>
+    </tr>
+    <tr>
+      <td><strong>Accessibility</strong></td>
+      <td>Accessible usage patterns</td>
+    </tr>
+    <tr>
+      <td><strong>WithInteractions</strong></td>
+      <td>Automated tests you can watch run</td>
+    </tr>
+  </tbody>
+</table>
 
 ## How to Find What You Need
 
+### Quickest path: Search
+Use the search field at the top of the sidebar (`/` shortcut) to jump directly to any component or page.
+
 ### For Designers
-
-**Getting started:**
-1. Review [Design Principles](?path=/docs/foundations-design-principles-overview--docs)
-2. Explore [Design Tokens](?path=/docs/foundations-design-tokens-usage-guide--docs)
-3. Download the [Figma UI Kit](?path=/docs/resources-design--docs)
-
-**Building interfaces:**
-1. Browse components by category
-2. Check [Patterns](?path=/docs/patterns-overview--docs) for multi-component solutions
-3. Review [Examples](?path=/docs/examples-page-compositions-page-layout--docs) for inspiration
+1. Start with [Design Principles](?path=/docs/foundations-design-principles-overview--docs) to understand the rationale
+2. Explore [Colors](?path=/docs/foundations-colors--docs) and [Typography](?path=/docs/foundations-typography--docs) for the visual foundation
+3. Browse component stories to see every variant and state
 
 ### For Developers
-
-**Getting started:**
-1. Follow the [Installation Guide](?path=/docs/resources-getting-started-installation--docs)
-2. Review [Component API Reference](?path=/docs/resources-development-composition-patterns--docs)
-3. Try the [Quickstart Tutorial](?path=/docs/resources-getting-started-quickstart--docs)
-
-**Implementing:**
-1. Find the component you need
-2. Check the "Props" and "Usage" tabs
-3. Copy code examples and adapt to your needs
+1. Follow the [Getting Started Guide](?path=/docs/introduction-getting-started--docs) for installation
+2. Try the [Quickstart Tutorial](?path=/docs/resources-getting-started-quickstart-tutorial--docs) for a hands-on walkthrough
+3. Read the [Composition Patterns](?path=/docs/resources-development-composition-patterns--docs) guide for advanced usage
 
 ### For Product Teams
+1. Review [Patterns](?path=/docs/patterns-overview--docs) for pre-built solutions to common flows
+2. Check [Examples](?path=/docs/examples-page-compositions-page-layout--docs) for reference page layouts
+3. Use [Accessibility Guidelines](?path=/docs/foundations-accessibility-guidelines-overview--docs) for compliance requirements
 
-**Planning features:**
-1. Review [Patterns](?path=/docs/patterns-overview--docs) for complete solutions
-2. Check [Examples](?path=/docs/examples-page-compositions-page-layout--docs) for reference implementations
-3. Consult [Accessibility Guidelines](?path=/docs/foundations-accessibility-guidelines-overview--docs)
+## Toolbar Features
 
-## Tips for Navigation
+The top toolbar provides:
 
-- **Use the search** to quickly find components or topics
-- **Browse by category** when exploring
-- **Check "Docs" tab** for detailed documentation
-- **Try "Canvas" tab** for interactive examples
-- **Use the theme toggle** to test dark mode
-- **Adjust viewport** to test responsive behavior
-
-## Component Documentation Format
-
-Each component page includes:
-
-1. **Overview**: Purpose and key features
-2. **Props**: Interactive controls to explore variations
-3. **Usage Guidelines**: Best practices and patterns
-4. **Accessibility**: ARIA attributes and keyboard support
-5. **Code Examples**: Copy-paste ready implementations
-
-## Getting Help
-
-- Check the component's "Docs" tab for detailed information
-- Review [Patterns](?path=/docs/patterns-overview--docs) for common use cases
-- See [Examples](?path=/docs/examples-page-compositions-page-layout--docs) for complete implementations
-- Consult [Contributing](?path=/docs/contributing-guidelines-code-standards--docs) for questions about extending the system
+- **Theme toggle** — Switch between Light, Dark, and System preference modes
+- **Viewport selector** — Test components at different screen sizes
+- **Canvas / Docs toggle** — Switch between isolated component view and documentation view
 
 ## Next Steps
 
-- **New to design systems?** Start with [Design Principles](?path=/docs/foundations-design-principles-overview--docs)
+- **New to the system?** Start with [Design Principles](?path=/docs/foundations-design-principles-overview--docs)
 - **Ready to build?** Jump to [Getting Started](?path=/docs/introduction-getting-started--docs)
-- **Looking for inspiration?** Browse [Examples](?path=/docs/examples-page-compositions-page-layout--docs)
+- **Looking for inspiration?** Browse [Patterns](?path=/docs/patterns-overview--docs) and [Examples](?path=/docs/examples-page-compositions-page-layout--docs)
