@@ -1,24 +1,24 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="Foundations/Accessibility Guidelines/Overview" />
+<Meta title="Foundations/Accessibility Guidelines" />
 
-# Accessibility Guide
+# Accessibility Guidelines
 
 Building accessible interfaces is a core principle of the Wylie Dog Design System. This guide helps you create interfaces that work for everyone.
 
-## 🎯 Our Commitment
+## Our Commitment
 
 All components in this design system are built with accessibility as a priority:
 
-- ✅ **WCAG 2.1 AA compliant** color contrasts
-- ✅ **Radix UI primitives** with comprehensive ARIA support
-- ✅ **Full keyboard navigation** for all interactive elements
-- ✅ **Screen reader compatible** with semantic HTML
-- ✅ **Tested with axe-core** (95%+ comprehensive coverage)
+- **WCAG 2.1 AA compliant** color contrasts
+- **Radix UI primitives** with comprehensive ARIA support
+- **Full keyboard navigation** for all interactive elements
+- **Screen reader compatible** with semantic HTML
+- **Tested with axe-core** in Storybook's accessibility addon
 
 ---
 
-## ⌨️ Keyboard Navigation
+## Keyboard Navigation
 
 ### Essential Keyboard Patterns
 
@@ -66,12 +66,14 @@ All interactive components support keyboard navigation:
 ### Example: Keyboard-Accessible Form
 
 ```tsx
-import { Button, Input, Label, Checkbox } from '@wyliedog/ui';
+import { Button } from '@wyliedog/ui/button';
+import { Input } from '@wyliedog/ui/input';
+import { Label } from '@wyliedog/ui/label';
+import { Checkbox } from '@wyliedog/ui/checkbox';
 
 export function AccessibleForm() {
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      {/* Properly labeled input */}
       <div className="space-y-2">
         <Label htmlFor="email">Email Address</Label>
         <Input
@@ -80,12 +82,11 @@ export function AccessibleForm() {
           aria-describedby="email-help"
           aria-required="true"
         />
-        <p id="email-help" className="text-sm text-neutral-600">
+        <p id="email-help" className="text-sm text-(--color-text-secondary)">
           We'll never share your email
         </p>
       </div>
 
-      {/* Accessible checkbox */}
       <div className="flex items-center gap-2">
         <Checkbox id="terms" required />
         <Label htmlFor="terms">
@@ -93,7 +94,6 @@ export function AccessibleForm() {
         </Label>
       </div>
 
-      {/* Clear submit button */}
       <Button type="submit">
         Create Account
       </Button>
@@ -104,7 +104,7 @@ export function AccessibleForm() {
 
 ---
 
-## 🏷️ ARIA Labels & Descriptions
+## ARIA Labels & Descriptions
 
 ### When to Use ARIA
 
@@ -130,7 +130,7 @@ export function AccessibleForm() {
   type="password"
   aria-describedby="password-requirements"
 />
-<p id="password-requirements" className="text-sm">
+<p id="password-requirements" className="text-sm text-(--color-text-secondary)">
   Must be at least 8 characters with a number
 </p>
 ```
@@ -142,7 +142,7 @@ Use appropriate alert types for different urgency levels:
 ```tsx
 import { Alert, AlertTitle, AlertDescription } from '@wyliedog/ui/alert';
 
-// Error - High urgency (aria-live="assertive")
+// Error - High urgency
 <Alert variant="destructive">
   <AlertTitle>Error</AlertTitle>
   <AlertDescription>
@@ -150,7 +150,7 @@ import { Alert, AlertTitle, AlertDescription } from '@wyliedog/ui/alert';
   </AlertDescription>
 </Alert>
 
-// Warning - Medium urgency (aria-live="polite")
+// Warning - Medium urgency
 <Alert variant="warning">
   <AlertTitle>Warning</AlertTitle>
   <AlertDescription>
@@ -158,7 +158,7 @@ import { Alert, AlertTitle, AlertDescription } from '@wyliedog/ui/alert';
   </AlertDescription>
 </Alert>
 
-// Success - Low urgency (aria-live="polite")
+// Success - Low urgency
 <Alert variant="success">
   <AlertTitle>Success</AlertTitle>
   <AlertDescription>
@@ -169,7 +169,7 @@ import { Alert, AlertTitle, AlertDescription } from '@wyliedog/ui/alert';
 
 ---
 
-## 🎨 Color & Contrast
+## Color & Contrast
 
 ### WCAG AA Requirements
 
@@ -179,23 +179,17 @@ import { Alert, AlertTitle, AlertDescription } from '@wyliedog/ui/alert';
 
 ### Our Color System
 
-All design tokens meet WCAG AA standards:
+All semantic tokens are designed to meet WCAG AA standards. Use semantic tokens to ensure compliance:
 
 ```tsx
-// ✅ Good - High contrast
-<div className="bg-primary-500 text-white">
-  Accessible text
-</div>
+// Semantic tokens have tested contrast ratios
+<p className="text-(--color-text-primary)">High contrast body text</p>
+<p className="text-(--color-text-secondary)">Secondary descriptions</p>
 
-// ✅ Good - Semantic colors with proper contrast
+// Status colors pair with their background tokens
 <Alert variant="destructive">
   Error message with proper contrast
 </Alert>
-
-// ❌ Bad - Insufficient contrast
-<div className="bg-neutral-200 text-neutral-300">
-  Hard to read
-</div>
 ```
 
 ### Don't Rely on Color Alone
@@ -203,40 +197,28 @@ All design tokens meet WCAG AA standards:
 Always use multiple indicators:
 
 ```tsx
-// ✅ Good - Icon + color + text
+// Good - Icon + color + text
 <Alert variant="destructive">
   <AlertCircleIcon className="h-4 w-4" />
   <AlertTitle>Error</AlertTitle>
   <AlertDescription>Something went wrong</AlertDescription>
 </Alert>
 
-// ❌ Bad - Color only
-<div className="text-red-500">Error</div>
+// Bad - Color only, no supporting context
+<p className="text-(--color-text-danger)">Error</p>
 ```
 
 ---
 
-## 📱 Focus Management
+## Focus Management
 
 ### Visible Focus Indicators
 
-All components have clear focus states:
-
-```tsx
-// Focus rings are built-in
-<Button>
-  Focused button has visible ring
-</Button>
-
-// Custom focus styles
-<Button className="focus:ring-4 focus:ring-primary-500">
-  Enhanced focus ring
-</Button>
-```
+All components have built-in focus ring styles using the `--color-border-focus` token. These are applied automatically — no extra configuration needed.
 
 ### Focus Trapping
 
-Dialogs automatically trap focus:
+Dialogs automatically trap focus using Radix UI primitives:
 
 ```tsx
 import { Dialog, DialogContent, DialogTitle } from '@wyliedog/ui/dialog';
@@ -245,12 +227,8 @@ import { Dialog, DialogContent, DialogTitle } from '@wyliedog/ui/dialog';
   <DialogContent>
     <DialogTitle>Confirm Action</DialogTitle>
     {/* Focus stays within dialog */}
-    <Button onClick={() => setIsOpen(false)}>
-      Cancel
-    </Button>
-    <Button onClick={handleConfirm}>
-      Confirm
-    </Button>
+    <Button onClick={() => setIsOpen(false)}>Cancel</Button>
+    <Button onClick={handleConfirm}>Confirm</Button>
   </DialogContent>
 </Dialog>
 ```
@@ -278,12 +256,12 @@ export function Layout({ children }) {
 
 ---
 
-## 📖 Semantic HTML
+## Semantic HTML
 
 ### Use the Right Elements
 
 ```tsx
-// ✅ Good - Semantic markup
+// Good - Semantic markup
 <nav>
   <ul>
     <li><a href="/">Home</a></li>
@@ -291,19 +269,19 @@ export function Layout({ children }) {
   </ul>
 </nav>
 
-// ❌ Bad - Divs for everything
+// Bad - Divs for everything
 <div>
   <div onClick={goHome}>Home</div>
   <div onClick={goAbout}>About</div>
 </div>
 ```
 
-### Headings Hierarchy
+### Heading Hierarchy
 
 Maintain proper heading levels:
 
 ```tsx
-// ✅ Good - Logical hierarchy
+// Good - Logical hierarchy
 <article>
   <h1>Page Title</h1>
   <section>
@@ -312,7 +290,7 @@ Maintain proper heading levels:
   </section>
 </article>
 
-// ❌ Bad - Skipping levels
+// Bad - Skipping levels
 <article>
   <h1>Page Title</h1>
   <h4>Section Title</h4> {/* Skipped h2, h3 */}
@@ -321,7 +299,7 @@ Maintain proper heading levels:
 
 ---
 
-## 🧪 Testing for Accessibility
+## Testing for Accessibility
 
 ### Automated Testing
 
@@ -342,22 +320,22 @@ test('button is accessible', async () => {
 
 ### Manual Testing Checklist
 
-- [ ] **Keyboard only**: Can you complete all tasks using only keyboard?
-- [ ] **Screen reader**: Does it make sense with a screen reader?
-- [ ] **Zoom**: Is content readable at 200% zoom?
-- [ ] **Color blindness**: Use color-blind simulators
-- [ ] **Motion**: Does `prefers-reduced-motion` work?
+- **Keyboard only**: Can you complete all tasks using only keyboard?
+- **Screen reader**: Does it make sense with a screen reader?
+- **Zoom**: Is content readable at 200% zoom?
+- **Color blindness**: Use color-blind simulators
+- **Motion**: Does `prefers-reduced-motion` work?
 
 ### Tools
 
-- **axe DevTools**: Browser extension for accessibility audits
-- **NVDA/JAWS**: Screen readers for Windows
-- **VoiceOver**: Screen reader for macOS
-- **Keyboard**: Unplug your mouse!
+- **axe DevTools** — Browser extension for accessibility audits
+- **NVDA / JAWS** — Screen readers for Windows
+- **VoiceOver** — Screen reader for macOS
+- **Keyboard** — Unplug your mouse!
 
 ---
 
-## 📋 Common Patterns
+## Common Patterns
 
 ### Forms
 
@@ -371,7 +349,7 @@ test('button is accessible', async () => {
     aria-describedby={hasError ? "username-error" : undefined}
   />
   {hasError && (
-    <p id="username-error" className="text-error-700">
+    <p id="username-error" className="text-(--color-text-danger)">
       Username is required
     </p>
   )}
@@ -394,10 +372,10 @@ test('button is accessible', async () => {
 </div>
 ```
 
-### Modals/Dialogs
+### Modals / Dialogs
 
 ```tsx
-// Dialogs handle focus automatically
+// Radix dialogs handle focus trapping automatically
 <AlertDialog>
   <AlertDialogTrigger>Delete Account</AlertDialogTrigger>
   <AlertDialogContent>
@@ -413,9 +391,9 @@ test('button is accessible', async () => {
 
 ---
 
-## 💡 Best Practices
+## Best Practices
 
-### Do's ✅
+### Do
 
 - Use semantic HTML elements
 - Provide text alternatives for images
@@ -426,10 +404,10 @@ test('button is accessible', async () => {
 - Provide clear error messages
 - Maintain focus indicators
 
-### Don'ts ❌
+### Don't
 
 - Use `div` when `button` would work
-- Rely on color alone
+- Rely on color alone to convey meaning
 - Disable focus indicators
 - Create keyboard traps
 - Use ambiguous link text ("click here")
@@ -439,29 +417,14 @@ test('button is accessible', async () => {
 
 ---
 
-## 📚 Resources
-
-### Learn More
+## External Resources
 
 - [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/WCAG21/quickref/)
 - [Radix UI Accessibility](https://www.radix-ui.com/primitives/docs/overview/accessibility)
 - [The A11Y Project](https://www.a11yproject.com/)
 - [WebAIM](https://webaim.org/)
-
-### Testing Tools
-
 - [axe DevTools](https://www.deque.com/axe/devtools/)
-- [WAVE Browser Extension](https://wave.webaim.org/extension/)
-- [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
 ---
 
-## 🎓 Next Steps
-
-1. **Review** component stories for accessibility examples
-2. **Test** your interfaces with keyboard only
-3. **Audit** with axe DevTools
-4. **Practice** with a screen reader
-5. **Iterate** based on user feedback
-
-Remember: **Accessibility is not a feature—it's a requirement**. Build it in from the start, not as an afterthought.
+Remember: **Accessibility is not a feature — it's a requirement**. Build it in from the start, not as an afterthought.

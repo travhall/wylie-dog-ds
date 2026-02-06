@@ -196,7 +196,6 @@ export const parameters: Preview["parameters"] = {
         "Foundations",
         [
           "Design Principles",
-          "Design Token Usage Guide",
           "Colors",
           "Typography",
           "Spacing & Layout",

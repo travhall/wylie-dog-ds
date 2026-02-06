@@ -1,22 +1,22 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 
-<Meta title="Foundations/Design Principles/Overview" />
+<Meta title="Foundations/Design Principles" />
 
 # Design Principles
 
 The Wylie Dog Design System is built on core principles that guide every design and development decision.
 
-## 🎯 Our Principles
+## Our Principles
 
 ### 1. Accessibility First
 
 **Every component must be accessible to all users, regardless of ability.**
 
-- ♿ Built on Radix UI primitives with comprehensive ARIA support
-- ⌨️ Full keyboard navigation for all interactive elements
-- 📱 Screen reader compatible with proper semantic HTML
-- 🎨 WCAG 2.1 AA compliant color contrasts
-- 🧪 Tested with axe-core for accessibility violations
+- Built on Radix UI primitives with comprehensive ARIA support
+- Full keyboard navigation for all interactive elements
+- Screen reader compatible with proper semantic HTML
+- WCAG 2.1 AA compliant color contrasts
+- Tested with axe-core for accessibility violations
 
 **Example:**
 
@@ -38,10 +38,10 @@ The Wylie Dog Design System is built on core principles that guide every design 
 
 **Maintain visual and behavioral consistency across all touch points.**
 
-- 🎨 Centralized design tokens ensure visual harmony
-- 🧩 Predictable component APIs reduce cognitive load
-- 📏 Consistent spacing scale for aligned layouts
-- 🎭 Standardized interaction patterns
+- Centralized design tokens ensure visual harmony
+- Predictable component APIs reduce cognitive load
+- Consistent spacing scale for aligned layouts
+- Standardized interaction patterns
 
 **Why it matters:**
 Users build mental models of your interface. Consistency helps them predict how things work, reducing learning time and errors.
@@ -49,10 +49,10 @@ Users build mental models of your interface. Consistency helps them predict how 
 **Example:**
 
 ```tsx
-// All form inputs share the same size variants
+// Form inputs share the same size variants
 <Input size="sm" />
-<Textarea size="sm" />
-<Select size="sm" />
+<Input size="md" />
+<Input size="lg" />
 ```
 
 ---
@@ -61,10 +61,10 @@ Users build mental models of your interface. Consistency helps them predict how 
 
 **Components should work together seamlessly while remaining flexible.**
 
-- 🧩 Compound components for complex patterns
-- 🎯 Single responsibility principle
-- 🔗 Designed to compose naturally
-- 🎨 Easy to extend with className
+- Compound components for complex patterns
+- Single responsibility principle
+- Designed to compose naturally
+- Easy to extend with className
 
 **Example:**
 
@@ -87,16 +87,10 @@ Users build mental models of your interface. Consistency helps them predict how 
 
 **Fast interfaces feel more reliable and professional.**
 
-- ⚡ Lightweight components with minimal dependencies
-- 🎯 Tree-shakeable exports for smaller bundles
-- 🚀 Optimized re-renders with React best practices
-- 📦 No unnecessary abstractions
-
-**Metrics:**
-
-- Each component typically < 5KB gzipped
-- Zero runtime CSS-in-JS overhead
-- Efficient Radix UI primitives
+- Lightweight components with minimal dependencies
+- Tree-shakeable per-component exports for smaller bundles
+- Optimized re-renders with React best practices
+- No runtime CSS-in-JS overhead — tokens compile to CSS custom properties
 
 ---
 
@@ -104,20 +98,19 @@ Users build mental models of your interface. Consistency helps them predict how 
 
 **Happy developers build better products.**
 
-- 📘 TypeScript-first with full type safety
-- 📚 Comprehensive documentation and examples
-- ✅ Test coverage percentage (95%+)
-- 🎨 Intuitive prop names and sensible defaults
-- 🔧 Helpful error messages
+- TypeScript-first with full type safety
+- Comprehensive documentation and interactive examples
+- Intuitive prop names and sensible defaults
+- Per-component imports for clear dependency trees
 
 **Example:**
 
 ```tsx
 // Clear prop names and TypeScript autocomplete
 <Button
-  variant="primary" // Autocompletes: primary | secondary | outline
-  size="lg" // Autocompletes: sm | md | lg
-  disabled={false} // Type-safe boolean
+  variant="default"  // default | secondary | outline | ghost | link | destructive
+  size="lg"          // default | sm | md | lg | icon
+  disabled={false}
 >
   Submit
 </Button>
@@ -129,31 +122,30 @@ Users build mental models of your interface. Consistency helps them predict how 
 
 **Components should look polished without extra effort.**
 
-- 🎨 OKLCH color science for perceptual uniformity
-- 🌈 P3 wide gamut support for vibrant colors
-- ✨ Thoughtful hover and focus states
-- 🎭 Smooth transitions and animations
-- 📐 Golden ratio spacing for visual balance
+- OKLCH color science for perceptual uniformity
+- P3 wide gamut support for vibrant colors on modern displays
+- Thoughtful hover and focus states
+- Smooth transitions and animations
 
 **Color Science:**
 We use OKLCH instead of traditional color spaces because:
 
-- Perceptually uniform (equal changes look equal)
-- Better accessibility with predictable contrasts
-- Future-proof with wide gamut support
-- Human-readable values
+- Perceptually uniform — equal numerical changes produce equal visual changes
+- Better accessibility with predictable contrast ratios
+- Future-proof with P3 wide gamut support
+- Human-readable lightness, chroma, and hue values
 
 ```css
 /* Traditional HSL - not perceptually uniform */
 hsl(210, 100%, 50%)
 
 /* OKLCH - perceptually uniform */
-oklch(0.661 0.241 266.19)
+oklch(0.623 0.188 259.82)
 ```
 
 ---
 
-## 🎨 Design Philosophy
+## Design Philosophy
 
 ### Progressive Disclosure
 
@@ -163,9 +155,8 @@ Show only what's needed, when it's needed.
 // Simple by default
 <Button>Save</Button>
 
-// Progressive complexity
+// Progressive complexity when needed
 <Button
-  variant="primary"
   size="lg"
   disabled={isLoading}
   aria-label="Save changes"
@@ -191,22 +182,19 @@ Handle errors and edge cases elegantly.
 
 ```tsx
 <Input
-  error={hasError}
   aria-invalid={hasError}
   aria-describedby={hasError ? "error-message" : undefined}
-/>;
-{
-  hasError && (
-    <p id="error-message" className="text-error-700">
-      Please enter a valid email
-    </p>
-  );
-}
+/>
+{hasError && (
+  <p id="error-message" className="text-(--color-text-danger)">
+    Please enter a valid email
+  </p>
+)}
 ```
 
 ---
 
-## 🧩 Component Design Patterns
+## Component Design Patterns
 
 ### 1. Compound Components
 
@@ -243,7 +231,7 @@ Components that adapt to their context:
 // Renders as <button>
 <Button>Click me</Button>
 
-// Renders as <a>
+// Renders as <a> via Radix asChild
 <Button asChild>
   <a href="/page">Link button</a>
 </Button>
@@ -251,71 +239,36 @@ Components that adapt to their context:
 
 ---
 
-## 🎯 When to Break the Rules
+## When to Break the Rules
 
 Principles are guidelines, not laws. Break them when:
 
-1. **Accessibility requires it** - Always prioritize users
-2. **Performance demands it** - Speed matters
-3. **User research shows better alternatives** - Data beats opinions
-4. **The context is unique** - Edge cases exist
+1. **Accessibility requires it** — Always prioritize users
+2. **Performance demands it** — Speed matters
+3. **User research shows better alternatives** — Data beats opinions
+4. **The context is unique** — Edge cases exist
 
 ---
 
-## 📊 Measuring Success
-
-We evaluate our system against these metrics:
-
-### Adoption Metrics
-
-- ✅ Developer satisfaction surveys
-- ✅ Component usage analytics
-- ✅ Time to ship new features
-
-### Quality Metrics
-
-- ✅ Accessibility audit scores (WCAG 2.1 AA)
-- ✅ Test coverage percentage (95%+)
-- ✅ Bug report frequency
-
-### Performance Metrics
-
-- ✅ Bundle size impact
-- ✅ First contentful paint
-- ✅ Time to interactive
-
----
-
-## 🚀 Living Principles
-
-These principles evolve as we learn:
-
-- **User feedback** shapes accessibility priorities
-- **Developer experience** guides API design
-- **Performance data** informs optimization
-- **Industry standards** keep us modern
-
----
-
-## 💡 Applying These Principles
+## Applying These Principles
 
 When building with our design system:
 
-1. **Start with accessibility** - Use semantic HTML and ARIA
-2. **Use design tokens** - Maintain visual consistency
-3. **Compose components** - Build complex UIs from simple pieces
-4. **Test thoroughly** - Verify functionality and accessibility
-5. **Optimize for performance** - Keep bundles small
-6. **Document your work** - Help future maintainers
+1. **Start with accessibility** — Use semantic HTML and ARIA
+2. **Use design tokens** — Reference semantic tokens, not raw values
+3. **Compose components** — Build complex UIs from simple pieces
+4. **Test thoroughly** — Verify functionality and accessibility
+5. **Optimize for performance** — Keep bundles small with per-component imports
+6. **Document your work** — Help future maintainers
 
 ---
 
-## 📚 Further Reading
+## Further Reading
 
-- [Getting Started Guide](/story/1-introduction-getting-started--docs) - Begin using the system
-- [Color System](/story/2-foundations-design-tokens-colors--all-colors) - OKLCH color science
-- [Component Patterns](/story/4-patterns-compositions--docs) - Real-world examples
-- [Token Usage Guide](/story/2-foundations-token-usage--docs) - Best practices
+- [Getting Started Guide](?path=/docs/introduction-getting-started--docs) — Installation and setup
+- [Colors](?path=/docs/foundations-colors--docs) — OKLCH color system and token browser
+- [Patterns](?path=/docs/patterns-overview--docs) — Real-world component compositions
+- [Accessibility Guidelines](?path=/docs/foundations-accessibility-guidelines--docs) — WCAG compliance and best practices
 
 ---
 
