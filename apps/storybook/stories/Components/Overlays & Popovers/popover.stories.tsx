@@ -82,7 +82,7 @@ export const Default: Story = {
         <div className="grid gap-4">
           <div className="space-y-2">
             <h4 className="font-medium leading-none">Dimensions</h4>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-(--color-text-secondary)">
               Set the dimensions for the layer.
             </p>
           </div>
@@ -724,7 +724,7 @@ export const WithInteractions: Story = {
           <div className="grid gap-4">
             <div className="space-y-2">
               <h4 className="font-medium leading-none">User Information</h4>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-(--color-text-secondary)">
                 Update your profile details below.
               </p>
             </div>

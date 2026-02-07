@@ -77,7 +77,7 @@ export const Default: Story = {
               </p>
               <div className="flex items-center pt-2">
                 <CalendarIcon className="mr-2 h-4 w-4 opacity-70" />
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs text-(--color-text-secondary)">
                   Joined December 2021
                 </span>
               </div>
@@ -548,7 +548,7 @@ export const WithInteractions: Story = {
               </p>
               <div className="flex items-center pt-2">
                 <CalendarIcon className="mr-2 h-4 w-4 opacity-70" />
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs text-(--color-text-secondary)">
                   Created January 2026
                 </span>
               </div>

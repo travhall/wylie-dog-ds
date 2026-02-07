@@ -307,7 +307,7 @@ export const WithModal: Story = {
 
         {open && (
           <div className="fixed inset-0 bg-black/50 flex items-start justify-center pt-[20vh] z-50">
-            <Command className="rounded-lg border shadow-md w-125 bg-white">
+            <Command className="rounded-lg border shadow-md w-125 bg-(--color-background-primary)">
               <CommandInput
                 placeholder="Type a command or search..."
                 onKeyDown={(e) => {

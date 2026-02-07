@@ -46,6 +46,11 @@ const meta: Meta<typeof RadioGroup> = {
       },
     },
   },
+  args: {
+    orientation: "vertical",
+    disabled: false,
+    required: false,
+  },
 };
 
 export default meta;
@@ -56,12 +61,17 @@ export const Default: Story = {
     docs: {
       description: {
         story:
-          "Basic radio group with vertical layout and pre-selected default value.",
+          "Basic radio group with vertical layout and pre-selected default value. Use the controls panel to change orientation, disabled, and required states.",
       },
     },
   },
-  render: () => (
-    <RadioGroup defaultValue="option1">
+  render: (args) => (
+    <RadioGroup
+      defaultValue="option1"
+      orientation={args.orientation}
+      disabled={args.disabled}
+      required={args.required}
+    >
       <div className="flex items-center space-x-2">
         <RadioGroupItem value="option1" id="option1" />
         <Label htmlFor="option1">Option 1</Label>
@@ -78,13 +88,79 @@ export const Default: Story = {
   ),
 };
 
+export const Sizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "RadioGroupItem supports three sizes: `sm`, `md` (default), and `lg`. Size is applied to individual radio items via the `size` prop.",
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-6">
+      <div className="space-y-3">
+        <h4 className="font-medium text-(--color-text-secondary)">Small</h4>
+        <RadioGroup defaultValue="sm-1">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="sm-1" id="sm-1" size="sm" />
+            <Label htmlFor="sm-1" size="sm">
+              Small radio
+            </Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="sm-2" id="sm-2" size="sm" />
+            <Label htmlFor="sm-2" size="sm">
+              Small radio
+            </Label>
+          </div>
+        </RadioGroup>
+      </div>
+
+      <div className="space-y-3">
+        <h4 className="font-medium text-(--color-text-secondary)">
+          Medium (default)
+        </h4>
+        <RadioGroup defaultValue="md-1">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="md-1" id="md-1" size="md" />
+            <Label htmlFor="md-1" size="md">
+              Medium radio
+            </Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="md-2" id="md-2" size="md" />
+            <Label htmlFor="md-2" size="md">
+              Medium radio
+            </Label>
+          </div>
+        </RadioGroup>
+      </div>
+
+      <div className="space-y-3">
+        <h4 className="font-medium text-(--color-text-secondary)">Large</h4>
+        <RadioGroup defaultValue="lg-1">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="lg-1" id="lg-1" size="lg" />
+            <Label htmlFor="lg-1" size="lg">
+              Large radio
+            </Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="lg-2" id="lg-2" size="lg" />
+            <Label htmlFor="lg-2" size="lg">
+              Large radio
+            </Label>
+          </div>
+        </RadioGroup>
+      </div>
+    </div>
+  ),
+};
+
 export const Horizontal: Story = {
   render: () => (
-    <RadioGroup
-      orientation="horizontal"
-      defaultValue="small"
-      className="flex gap-6"
-    >
+    <RadioGroup orientation="horizontal" defaultValue="small">
       <div className="flex items-center space-x-2">
         <RadioGroupItem value="small" id="size-small" />
         <Label htmlFor="size-small">Small</Label>

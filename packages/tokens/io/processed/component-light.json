@@ -1177,7 +1177,7 @@
   },
   "radio.size.lg": {
     "$type": "spacing",
-    "$value": "{spacing.300}"
+    "$value": "{spacing.400}"
   },
   "radio.border.radius": {
     "$type": "dimension",
@@ -1189,11 +1189,11 @@
   },
   "radio.indicator.size.md": {
     "$type": "spacing",
-    "$value": "{spacing.100}"
+    "$value": "{spacing.150}"
   },
   "radio.indicator.size.lg": {
     "$type": "spacing",
-    "$value": "{spacing.150}"
+    "$value": "{spacing.200}"
   },
   "radio.focus.ring.width": {
     "$type": "spacing",

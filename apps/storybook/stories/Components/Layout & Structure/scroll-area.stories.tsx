@@ -175,12 +175,12 @@ export const InCard: Story = {
     },
   },
   render: () => (
-    <div className="rounded-lg border bg-card text-card-foreground shadow-sm w-87.5">
+    <div className="rounded-lg border bg-(--color-background-primary) text-(--color-text-primary) shadow-sm w-87.5">
       <div className="flex flex-col space-y-1.5 p-6 pb-3">
         <h3 className="text-2xl font-semibold leading-none tracking-tight">
           Recent Activity
         </h3>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-(--color-text-secondary)">
           Your latest notifications and updates
         </p>
       </div>
@@ -191,7 +191,7 @@ export const InCard: Story = {
               <div className="w-2 h-2 bg-(--color-interactive-primary) rounded-full" />
               <div className="space-y-1">
                 <p className="text-sm font-medium">Notification {i + 1}</p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-(--color-text-secondary)">
                   Description for notification {i + 1}
                 </p>
               </div>

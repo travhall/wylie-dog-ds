@@ -18,11 +18,19 @@ const meta: Meta<typeof Badge> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "secondary", "destructive", "outline"],
+      options: [
+        "default",
+        "secondary",
+        "success",
+        "warning",
+        "destructive",
+        "outline",
+      ],
       description: "Visual style variant of the badge",
       table: {
         type: {
-          summary: '"default" | "secondary" | "destructive" | "outline"',
+          summary:
+            '"default" | "secondary" | "success" | "warning" | "destructive" | "outline"',
         },
         category: "Appearance",
       },
@@ -183,7 +191,7 @@ export const Categories: Story = {
     <div className="space-y-4 max-w-md">
       <div className="p-4 border rounded-lg">
         <h4 className="font-medium mb-2">Building a Design System</h4>
-        <p className="text-sm text-muted-foreground mb-3">
+        <p className="text-sm text-(--color-text-secondary) mb-3">
           Learn how to create and maintain a scalable design system.
         </p>
         <div className="flex flex-wrap gap-2">
@@ -195,7 +203,7 @@ export const Categories: Story = {
 
       <div className="p-4 border rounded-lg">
         <h4 className="font-medium mb-2">Accessibility Testing Guide</h4>
-        <p className="text-sm text-muted-foreground mb-3">
+        <p className="text-sm text-(--color-text-secondary) mb-3">
           Essential practices for testing web accessibility.
         </p>
         <div className="flex flex-wrap gap-2">
@@ -227,7 +235,9 @@ export const InContext: Story = {
             </div>
             <div>
               <p className="font-medium text-sm">John Doe</p>
-              <p className="text-xs text-muted-foreground">john@example.com</p>
+              <p className="text-xs text-(--color-text-secondary)">
+                john@example.com
+              </p>
             </div>
           </div>
           <Badge>Admin</Badge>
@@ -240,7 +250,9 @@ export const InContext: Story = {
             </div>
             <div>
               <p className="font-medium text-sm">Alice Smith</p>
-              <p className="text-xs text-muted-foreground">alice@example.com</p>
+              <p className="text-xs text-(--color-text-secondary)">
+                alice@example.com
+              </p>
             </div>
           </div>
           <Badge variant="secondary">Member</Badge>
@@ -253,7 +265,9 @@ export const InContext: Story = {
             </div>
             <div>
               <p className="font-medium text-sm">Bob Johnson</p>
-              <p className="text-xs text-muted-foreground">bob@example.com</p>
+              <p className="text-xs text-(--color-text-secondary)">
+                bob@example.com
+              </p>
             </div>
           </div>
           <Badge variant="outline">Guest</Badge>
@@ -266,7 +280,7 @@ export const InContext: Story = {
           <h4 className="font-medium text-sm">System Updates</h4>
           <Badge variant="destructive">3 New</Badge>
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-(--color-text-secondary)">
           Important updates are available for your system.
         </p>
       </div>
@@ -299,7 +313,7 @@ export const DosDonts: Story = {
               <Badge>Active</Badge>
               <Badge variant="destructive">Error</Badge>
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-(--color-text-secondary)">
               Match variant to meaning
             </p>
           </div>
@@ -310,7 +324,9 @@ export const DosDonts: Story = {
               <Badge>New</Badge>
               <Badge variant="secondary">Beta</Badge>
             </div>
-            <p className="text-xs text-muted-foreground">1-2 words is ideal</p>
+            <p className="text-xs text-(--color-text-secondary)">
+              1-2 words is ideal
+            </p>
           </div>
 
           <div className="space-y-2">
@@ -320,7 +336,7 @@ export const DosDonts: Story = {
                 <span className="font-medium text-sm">Premium Plan</span>
                 <Badge>Popular</Badge>
               </div>
-              <p className="text-xs text-muted-foreground">$99/month</p>
+              <p className="text-xs text-(--color-text-secondary)">$99/month</p>
             </div>
           </div>
 
@@ -346,7 +362,7 @@ export const DosDonts: Story = {
               <Badge variant="destructive">Success</Badge>
               <Badge>Error Message</Badge>
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-(--color-text-secondary)">
               Variant doesn't match meaning
             </p>
           </div>
@@ -354,7 +370,7 @@ export const DosDonts: Story = {
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Use long text</p>
             <Badge>This is a very long badge with too much text</Badge>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-(--color-text-secondary)">
               Badges should be brief
             </p>
           </div>
@@ -362,7 +378,7 @@ export const DosDonts: Story = {
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Use as buttons</p>
             <Badge className="cursor-pointer">Click me</Badge>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-(--color-text-secondary)">
               Use Button component instead
             </p>
           </div>
@@ -379,7 +395,7 @@ export const DosDonts: Story = {
               <Badge>Tag</Badge>
               <Badge>Tag</Badge>
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-(--color-text-secondary)">
               Too many reduces impact
             </p>
           </div>

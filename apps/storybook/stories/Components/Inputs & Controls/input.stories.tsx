@@ -540,7 +540,7 @@ export const DosDonts: Story = {
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">No label (inaccessible)</p>
             <Input type="email" placeholder="Email Address" />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-(--color-text-secondary)">
               Screen readers can't identify this field
             </p>
           </div>
@@ -556,7 +556,7 @@ export const DosDonts: Story = {
             <p className="text-xs text-(--color-status-danger)">
               Username is required
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-(--color-text-secondary)">
               Missing aria-describedby
             </p>
           </div>
@@ -565,7 +565,7 @@ export const DosDonts: Story = {
             <p className="text-sm font-medium mb-2">Wrong input type</p>
             <Label htmlFor="bad-phone">Phone Number</Label>
             <Input id="bad-phone" type="text" placeholder="+1 (555) 123-4567" />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-(--color-text-secondary)">
               Use type="tel" for phone numbers
             </p>
           </div>
@@ -573,7 +573,7 @@ export const DosDonts: Story = {
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Placeholder as label</p>
             <Input placeholder="Search products..." />
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-(--color-text-secondary)">
               Placeholders disappear when typing
             </p>
           </div>

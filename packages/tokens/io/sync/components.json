@@ -2366,10 +2366,10 @@
         },
         "radio.size.lg": {
           "$type": "spacing",
-          "$value": "{spacing.300}",
+          "$value": "{spacing.400}",
           "valuesByMode": {
-            "Light": "{spacing.300}",
-            "Dark": "{spacing.300}"
+            "Light": "{spacing.400}",
+            "Dark": "{spacing.400}"
           }
         },
         "radio.border.radius": {
@@ -2390,18 +2390,18 @@
         },
         "radio.indicator.size.md": {
           "$type": "spacing",
-          "$value": "{spacing.100}",
-          "valuesByMode": {
-            "Light": "{spacing.100}",
-            "Dark": "{spacing.100}"
-          }
-        },
-        "radio.indicator.size.lg": {
-          "$type": "spacing",
           "$value": "{spacing.150}",
           "valuesByMode": {
             "Light": "{spacing.150}",
             "Dark": "{spacing.150}"
+          }
+        },
+        "radio.indicator.size.lg": {
+          "$type": "spacing",
+          "$value": "{spacing.200}",
+          "valuesByMode": {
+            "Light": "{spacing.200}",
+            "Dark": "{spacing.200}"
           }
         },
         "radio.focus.ring.width": {

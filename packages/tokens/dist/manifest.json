@@ -8070,7 +8070,7 @@
           "size",
           "lg"
         ],
-        "value": "24px",
+        "value": "32px",
         "type": "spacing",
         "variable": "var(--radio-size-lg)",
         "description": ""
@@ -8108,7 +8108,7 @@
           "size",
           "md"
         ],
-        "value": "8px",
+        "value": "12px",
         "type": "spacing",
         "variable": "var(--radio-indicator-size-md)",
         "description": ""
@@ -8121,7 +8121,7 @@
           "size",
           "lg"
         ],
-        "value": "12px",
+        "value": "16px",
         "type": "spacing",
         "variable": "var(--radio-indicator-size-lg)",
         "description": ""

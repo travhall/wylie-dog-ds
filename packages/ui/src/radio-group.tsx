@@ -9,9 +9,14 @@ export interface RadioGroupProps extends React.ComponentPropsWithoutRef<
 const RadioGroup = React.forwardRef<
   React.ComponentRef<typeof RadioGroupPrimitive.Root>,
   RadioGroupProps
->(({ className, ...props }, ref) => (
+>(({ className, orientation, ...props }, ref) => (
   <RadioGroupPrimitive.Root
-    className={cn("grid gap-(--spacing-radio-group-item-gap)", className)}
+    className={cn(
+      "gap-(--spacing-radio-group-item-gap)",
+      orientation === "horizontal" ? "flex flex-wrap" : "grid",
+      className
+    )}
+    orientation={orientation}
     {...props}
     ref={ref}
   />
@@ -50,9 +55,9 @@ const RadioGroupItem = React.forwardRef<
         "rounded-(--spacing-radio-border-radius)",
         "border-(--color-radio-border)",
         "focus:outline-none",
-        "focus:ring-(--spacing-radio-focus-ring-width)",
+        "focus:ring-(length:--spacing-radio-focus-ring-width)",
         "focus:ring-(--color-border-focus)",
-        "focus:ring-offset-(--spacing-radio-focus-ring-offset)",
+        "focus:ring-offset-(length:--spacing-radio-focus-ring-offset)",
         "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
         "data-[state=checked]:border-(--color-radio-border-checked)",
         "data-[state=checked]:bg-(--color-radio-background-checked)",
