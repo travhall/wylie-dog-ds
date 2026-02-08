@@ -3,7 +3,7 @@
     "primitive": {
       "modes": [
         {
-          "modeId": "mode:primitive:value",
+          "modeId": "1249:1",
           "name": "Value"
         }
       ],
@@ -146,7 +146,7 @@
         },
         "color.black-bear.50": {
           "$type": "color",
-          "$value": "oklch(0.941 0.002 66.37)"
+          "$value": "oklch(0.941 0.002 65.67)"
         },
         "color.black-bear.100": {
           "$type": "color",
@@ -214,7 +214,7 @@
         },
         "color.polar-night.700": {
           "$type": "color",
-          "$value": "oklch(0.289 0.045 222.01)"
+          "$value": "oklch(0.289 0.045 222.03)"
         },
         "color.polar-night.800": {
           "$type": "color",
@@ -342,7 +342,7 @@
         },
         "color.green.600": {
           "$type": "color",
-          "$value": "oklch(0.627 0.17 149.25)"
+          "$value": "oklch(0.627 0.17 149.27)"
         },
         "color.green.700": {
           "$type": "color",
@@ -390,7 +390,7 @@
         },
         "color.orange.700": {
           "$type": "color",
-          "$value": "oklch(0.553 0.174 38.49)"
+          "$value": "oklch(0.553 0.174 38.48)"
         },
         "color.orange.800": {
           "$type": "color",
@@ -410,7 +410,7 @@
         },
         "color.red.100": {
           "$type": "color",
-          "$value": "oklch(0.936 0.031 17.46)"
+          "$value": "oklch(0.936 0.031 17.33)"
         },
         "color.red.200": {
           "$type": "color",
@@ -580,87 +580,87 @@
           "$type": "color",
           "$value": "oklch(0.312 0.064 86.31)"
         },
-        "spacing.0": {
+        "space.0": {
           "$type": "spacing",
           "$value": "0px"
         },
-        "spacing.050": {
+        "space.050": {
           "$type": "spacing",
           "$value": "4px"
         },
-        "spacing.100": {
+        "space.100": {
           "$type": "spacing",
           "$value": "8px"
         },
-        "spacing.150": {
+        "space.150": {
           "$type": "spacing",
           "$value": "12px"
         },
-        "spacing.200": {
+        "space.200": {
           "$type": "spacing",
           "$value": "16px"
         },
-        "spacing.300": {
+        "space.300": {
           "$type": "spacing",
           "$value": "24px"
         },
-        "spacing.400": {
+        "space.400": {
           "$type": "spacing",
           "$value": "32px"
         },
-        "spacing.500": {
+        "space.500": {
           "$type": "spacing",
           "$value": "40px"
         },
-        "spacing.600": {
+        "space.600": {
           "$type": "spacing",
           "$value": "48px"
         },
-        "spacing.700": {
+        "space.700": {
           "$type": "spacing",
           "$value": "60px"
         },
-        "spacing.800": {
+        "space.800": {
           "$type": "spacing",
           "$value": "72px"
         },
-        "spacing.900": {
+        "space.900": {
           "$type": "spacing",
           "$value": "84px"
         },
-        "spacing.1000": {
+        "space.1000": {
           "$type": "spacing",
           "$value": "96px"
         },
-        "spacing.1100": {
+        "space.1100": {
           "$type": "spacing",
           "$value": "112px"
         },
-        "spacing.1200": {
+        "space.1200": {
           "$type": "spacing",
           "$value": "128px"
         },
-        "spacing.1300": {
+        "space.1300": {
           "$type": "spacing",
           "$value": "160px"
         },
-        "spacing.1400": {
+        "space.1400": {
           "$type": "spacing",
           "$value": "192px"
         },
-        "spacing.1500": {
+        "space.1500": {
           "$type": "spacing",
           "$value": "256px"
         },
-        "spacing.1600": {
+        "space.1600": {
           "$type": "spacing",
           "$value": "320px"
         },
-        "spacing.1700": {
+        "space.1700": {
           "$type": "spacing",
           "$value": "448px"
         },
-        "spacing.1800": {
+        "space.1800": {
           "$type": "spacing",
           "$value": "576px"
         },
@@ -867,13 +867,13 @@
           "$type": "number",
           "$value": 0.75
         },
-        "shadow.offset.-xl": {
-          "$type": "dimension",
-          "$value": "-12px"
-        },
         "opacity.80": {
           "$type": "number",
           "$value": 0.8
+        },
+        "shadow.offset.-xl": {
+          "$type": "dimension",
+          "$value": "-12px"
         },
         "opacity.90": {
           "$type": "number",
@@ -883,21 +883,21 @@
           "$type": "dimension",
           "$value": "-8px"
         },
-        "shadow.offset.-md": {
-          "$type": "dimension",
-          "$value": "-4px"
-        },
         "opacity.95": {
           "$type": "number",
           "$value": 0.95
         },
-        "opacity.100": {
-          "$type": "number",
-          "$value": 1
+        "shadow.offset.-md": {
+          "$type": "dimension",
+          "$value": "-4px"
         },
         "shadow.offset.-sm": {
           "$type": "dimension",
           "$value": "-2px"
+        },
+        "opacity.100": {
+          "$type": "number",
+          "$value": 1
         },
         "shadow.offset.none": {
           "$type": "dimension",
@@ -923,13 +923,13 @@
           "$type": "dimension",
           "$value": "0px"
         },
-        "shadow.spread.-xl": {
-          "$type": "dimension",
-          "$value": "-8px"
-        },
         "shadow.blur.sm": {
           "$type": "dimension",
           "$value": "2px"
+        },
+        "shadow.spread.-xl": {
+          "$type": "dimension",
+          "$value": "-8px"
         },
         "shadow.blur.md": {
           "$type": "dimension",
@@ -1003,29 +1003,29 @@
           "$type": "duration",
           "$value": "200ms"
         },
-        "duration.300": {
-          "$type": "duration",
-          "$value": "300ms"
-        },
         "typography.tracking.normal": {
           "$type": "dimension",
           "$value": "0em"
         },
-        "duration.500": {
+        "duration.300": {
           "$type": "duration",
-          "$value": "500ms"
+          "$value": "300ms"
         },
         "typography.tracking.wide": {
           "$type": "dimension",
           "$value": "0.025em"
         },
-        "duration.700": {
+        "duration.500": {
           "$type": "duration",
-          "$value": "700ms"
+          "$value": "500ms"
         },
         "typography.tracking.wider": {
           "$type": "dimension",
           "$value": "0.05em"
+        },
+        "duration.700": {
+          "$type": "duration",
+          "$value": "700ms"
         },
         "duration.1000": {
           "$type": "duration",
