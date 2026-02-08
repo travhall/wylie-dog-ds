@@ -73,15 +73,26 @@ type Story = StoryObj<typeof meta>;
 const TAGS = Array.from({ length: 50 }, (_, i) => `tag-${i + 1}`);
 
 export const Default: Story = {
+  args: {
+    type: "hover",
+    scrollHideDelay: 600,
+    dir: "ltr",
+  },
   parameters: {
     docs: {
       description: {
-        story: "Vertical scroll area with a long list of tags.",
+        story:
+          "Vertical scroll area with a long list of tags. Use the controls panel to change scrollbar visibility behavior, hide delay, and text direction.",
       },
     },
   },
-  render: () => (
-    <ScrollArea className="h-72 w-48 rounded-md border">
+  render: (args) => (
+    <ScrollArea
+      className="h-72 w-48 rounded-md border"
+      type={args.type}
+      scrollHideDelay={args.scrollHideDelay}
+      dir={args.dir}
+    >
       <div className="p-4">
         <h4 className="mb-4 text-sm font-medium leading-none">Tags</h4>
         {TAGS.map((tag) => (

@@ -36,6 +36,9 @@ const meta: Meta<typeof Skeleton> = {
       },
     },
   },
+  args: {
+    variant: "default",
+  },
 };
 
 export default meta;
@@ -45,11 +48,14 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Basic skeleton placeholder with default rectangular shape.",
+        story:
+          "Basic skeleton placeholder. Use the controls panel to switch between variants and sizes.",
       },
     },
   },
-  render: () => <Skeleton className="w-48 h-4" />,
+  render: (args) => (
+    <Skeleton variant={args.variant} size={args.size} className="w-48 h-4" />
+  ),
 };
 
 export const AllVariants: Story = {

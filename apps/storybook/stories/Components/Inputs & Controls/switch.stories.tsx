@@ -45,6 +45,10 @@ const meta: Meta<typeof Switch> = {
       },
     },
   },
+  args: {
+    size: "md",
+    disabled: false,
+  },
 };
 
 export default meta;

@@ -26,6 +26,9 @@ const meta: Meta<typeof Avatar> = {
       },
     },
   },
+  args: {
+    size: "md",
+  },
 };
 
 export default meta;
@@ -35,12 +38,13 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Default avatar displaying initials as fallback content.",
+        story:
+          "Default avatar displaying initials as fallback content. Use the controls panel to change the size.",
       },
     },
   },
-  render: () => (
-    <Avatar>
+  render: (args) => (
+    <Avatar size={args.size}>
       <AvatarFallback>JD</AvatarFallback>
     </Avatar>
   ),

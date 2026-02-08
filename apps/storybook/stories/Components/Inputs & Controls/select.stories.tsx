@@ -35,6 +35,9 @@ const meta: Meta<typeof Select> = {
       },
     },
   },
+  args: {
+    disabled: false,
+  },
 };
 
 export default meta;
@@ -49,10 +52,10 @@ export const Default: Story = {
       },
     },
   },
-  render: () => (
+  render: (args) => (
     <div className="w-64 space-y-2">
       <Label htmlFor="default-select">Choose a country</Label>
-      <Select>
+      <Select disabled={args.disabled}>
         <SelectTrigger>
           <SelectValue placeholder="Select a country" />
         </SelectTrigger>

@@ -65,6 +65,13 @@ const meta: Meta<typeof Textarea> = {
       },
     },
   },
+  args: {
+    size: "md",
+    error: false,
+    resize: "vertical",
+    disabled: false,
+    placeholder: "Enter your message...",
+  },
 };
 
 export default meta;

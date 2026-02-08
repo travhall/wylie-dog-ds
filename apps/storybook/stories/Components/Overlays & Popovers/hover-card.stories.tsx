@@ -48,18 +48,22 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {
+    openDelay: 700,
+    closeDelay: 300,
+  },
   parameters: {
     docs: {
       description: {
         story:
-          "Basic hover card displaying a user profile summary with avatar and join date.",
+          "Basic hover card displaying a user profile summary with avatar and join date. Use the controls panel to adjust open and close delays.",
       },
     },
   },
-  render: () => (
+  render: (args) => (
     <div className="flex items-center space-x-4">
       <span className="text-sm">Hover over the link:</span>
-      <HoverCard>
+      <HoverCard openDelay={args.openDelay} closeDelay={args.closeDelay}>
         <HoverCardTrigger asChild>
           <Button variant="link">@nextjs</Button>
         </HoverCardTrigger>

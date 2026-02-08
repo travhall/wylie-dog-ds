@@ -68,6 +68,12 @@ const meta: Meta<typeof Button> = {
       },
     },
   },
+  args: {
+    variant: "default",
+    size: "default",
+    disabled: false,
+    loading: false,
+  },
 };
 
 export default meta;

@@ -68,6 +68,12 @@ const meta: Meta<typeof Progress> = {
       },
     },
   },
+  args: {
+    value: 33,
+    max: 100,
+    variant: "default",
+    size: "md",
+  },
 };
 
 export default meta;

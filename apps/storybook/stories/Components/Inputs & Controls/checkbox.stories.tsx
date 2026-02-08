@@ -55,6 +55,11 @@ const meta: Meta<typeof Checkbox> = {
       },
     },
   },
+  args: {
+    size: "md",
+    error: false,
+    disabled: false,
+  },
 };
 
 export default meta;

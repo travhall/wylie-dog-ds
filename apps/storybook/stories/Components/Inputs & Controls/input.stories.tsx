@@ -68,6 +68,13 @@ const meta: Meta<typeof Input> = {
       },
     },
   },
+  args: {
+    size: "md",
+    error: false,
+    disabled: false,
+    type: "text",
+    placeholder: "Enter text...",
+  },
 };
 
 export default meta;

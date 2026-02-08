@@ -59,19 +59,24 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {
+    side: "top",
+    delayDuration: 700,
+  },
   parameters: {
     docs: {
       description: {
-        story: "Basic tooltip with a simple text message on hover.",
+        story:
+          "Basic tooltip with a simple text message on hover. Use the controls panel to change positioning and delay.",
       },
     },
   },
-  render: () => (
-    <Tooltip>
+  render: (args) => (
+    <Tooltip delayDuration={args.delayDuration}>
       <TooltipTrigger asChild>
         <Button variant="secondary">Hover me</Button>
       </TooltipTrigger>
-      <TooltipContent>
+      <TooltipContent side={args.side}>
         <p>This is a helpful tooltip</p>
       </TooltipContent>
     </Tooltip>

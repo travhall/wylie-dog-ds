@@ -65,20 +65,24 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {
+    side: "bottom",
+    align: "center",
+  },
   parameters: {
     docs: {
       description: {
         story:
-          "Basic popover with dimension input fields for layer configuration.",
+          "Basic popover with dimension input fields for layer configuration. Use the controls panel to change positioning and alignment.",
       },
     },
   },
-  render: () => (
+  render: (args) => (
     <Popover>
       <PopoverTrigger asChild>
         <Button variant="outline">Open popover</Button>
       </PopoverTrigger>
-      <PopoverContent className="w-80">
+      <PopoverContent className="w-80" side={args.side} align={args.align}>
         <div className="grid gap-4">
           <div className="space-y-2">
             <h4 className="font-medium leading-none">Dimensions</h4>

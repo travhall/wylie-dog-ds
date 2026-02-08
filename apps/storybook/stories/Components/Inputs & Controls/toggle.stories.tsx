@@ -69,6 +69,11 @@ const meta: Meta<typeof Toggle> = {
       },
     },
   },
+  args: {
+    variant: "default",
+    size: "default",
+    disabled: false,
+  },
 };
 
 export default meta;

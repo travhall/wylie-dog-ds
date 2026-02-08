@@ -79,16 +79,25 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {
+    orientation: "horizontal",
+    delayDuration: 200,
+    skipDelayDuration: 300,
+  },
   parameters: {
     docs: {
       description: {
         story:
-          "Full-featured navigation menu with dropdown content panels, featured product highlight, and direct links.",
+          "Full-featured navigation menu with dropdown content panels, featured product highlight, and direct links. Use the controls panel to adjust orientation and delay durations.",
       },
     },
   },
-  render: () => (
-    <NavigationMenu>
+  render: (args) => (
+    <NavigationMenu
+      orientation={args.orientation}
+      delayDuration={args.delayDuration}
+      skipDelayDuration={args.skipDelayDuration}
+    >
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink className={navigationMenuTriggerStyle}>

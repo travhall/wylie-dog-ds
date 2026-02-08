@@ -29,6 +29,9 @@ const meta: Meta<typeof Alert> = {
       },
     },
   },
+  args: {
+    variant: "default",
+  },
 };
 
 export default meta;
@@ -38,12 +41,13 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Default alert with informational styling and content.",
+        story:
+          "Default alert with informational styling and content. Use the controls panel to switch between variants.",
       },
     },
   },
-  render: () => (
-    <Alert>
+  render: (args) => (
+    <Alert variant={args.variant}>
       <AlertTitle>Default Alert</AlertTitle>
       <AlertDescription>
         This is a default alert message with informational content.

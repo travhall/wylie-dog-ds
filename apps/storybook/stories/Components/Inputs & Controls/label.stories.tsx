@@ -55,6 +55,11 @@ const meta: Meta<typeof Label> = {
       },
     },
   },
+  args: {
+    size: "md",
+    required: false,
+    error: false,
+  },
 };
 
 export default meta;

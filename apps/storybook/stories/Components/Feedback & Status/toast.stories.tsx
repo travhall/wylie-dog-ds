@@ -33,6 +33,9 @@ const meta: Meta<typeof Toast> = {
       },
     },
   },
+  args: {
+    variant: "default",
+  },
 };
 
 export default meta;
@@ -42,13 +45,14 @@ export const Default: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Default toast notification with a title and description.",
+        story:
+          "Default toast notification with a title and description. Use the controls panel to switch between variants.",
       },
     },
   },
-  render: () => (
-    <Toast>
-      <ToastTitle>Success!</ToastTitle>
+  render: (args) => (
+    <Toast variant={args.variant}>
+      <ToastTitle>Notification</ToastTitle>
       <ToastDescription>Your changes have been saved.</ToastDescription>
     </Toast>
   ),

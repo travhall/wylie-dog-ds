@@ -58,16 +58,24 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {
+    defaultOpen: false,
+    disabled: false,
+  },
   parameters: {
     docs: {
       description: {
         story:
-          "Basic collapsible section showing starred repositories with a toggle trigger.",
+          "Basic collapsible section showing starred repositories with a toggle trigger. Use the controls panel to toggle default open state and disabled.",
       },
     },
   },
-  render: () => (
-    <Collapsible className="w-full max-w-md space-y-2">
+  render: (args) => (
+    <Collapsible
+      defaultOpen={args.defaultOpen}
+      disabled={args.disabled}
+      className="w-full max-w-md space-y-2"
+    >
       <div className="flex items-center justify-between space-x-4 px-4">
         <h4 className="text-sm font-semibold">
           @peduarte starred 3 repositories

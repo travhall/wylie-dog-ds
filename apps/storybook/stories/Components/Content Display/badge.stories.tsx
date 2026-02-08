@@ -35,6 +35,20 @@ const meta: Meta<typeof Badge> = {
         category: "Appearance",
       },
     },
+    size: {
+      control: "radio",
+      options: ["sm", "md", "lg"],
+      description: "Size variant of the badge",
+      table: {
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: '"md"' },
+        category: "Appearance",
+      },
+    },
+  },
+  args: {
+    variant: "default",
+    size: "md",
   },
 };
 

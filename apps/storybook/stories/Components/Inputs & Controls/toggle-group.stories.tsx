@@ -65,16 +65,26 @@ export default meta;
 type Story = StoryObj<typeof ToggleGroup>;
 
 export const Default: Story = {
+  args: {
+    type: "single",
+    disabled: false,
+    orientation: "horizontal",
+  },
   parameters: {
     docs: {
       description: {
         story:
-          "Single-select toggle group for text alignment with icon buttons.",
+          "Single-select toggle group for text alignment with icon buttons. Use the controls panel to switch type, orientation, and disabled state.",
       },
     },
   },
-  render: () => (
-    <ToggleGroup type="single" defaultValue="center">
+  render: (args) => (
+    <ToggleGroup
+      type={args.type as "single"}
+      disabled={args.disabled}
+      orientation={args.orientation}
+      defaultValue="center"
+    >
       <ToggleGroupItem value="left" aria-label="Align left">
         <AlignLeftIcon className="h-4 w-4" />
       </ToggleGroupItem>

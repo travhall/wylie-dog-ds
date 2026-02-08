@@ -46,19 +46,23 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {
+    side: "right",
+  },
   parameters: {
     docs: {
       description: {
-        story: "Right-side sheet panel with a profile editing form.",
+        story:
+          "Sheet panel with a profile editing form. Use the controls panel to change which side the sheet slides in from.",
       },
     },
   },
-  render: () => (
+  render: (args) => (
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline">Open Sheet</Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent side={args.side}>
         <SheetHeader>
           <SheetTitle>Edit profile</SheetTitle>
           <SheetDescription>
