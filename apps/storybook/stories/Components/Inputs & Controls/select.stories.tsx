@@ -11,7 +11,8 @@ import {
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 
-const meta: Meta<typeof Select> = {
+// Using bare Meta because `size` lives on SelectTrigger, not the Select root
+const meta: Meta = {
   title: "Components/Inputs & Controls/Select",
   component: Select,
   parameters: {
@@ -25,6 +26,16 @@ const meta: Meta<typeof Select> = {
   },
   tags: ["autodocs"],
   argTypes: {
+    size: {
+      control: "radio",
+      options: ["sm", "md", "lg"],
+      description: "The size of the select trigger and label",
+      table: {
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: '"md"' },
+        category: "Appearance",
+      },
+    },
     disabled: {
       control: "boolean",
       description: "Whether the select is disabled",
@@ -36,12 +47,18 @@ const meta: Meta<typeof Select> = {
     },
   },
   args: {
+    size: "md",
     disabled: false,
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+type SelectStoryArgs = {
+  size?: "sm" | "md" | "lg";
+  disabled?: boolean;
+};
 
 export const Default: Story = {
   parameters: {
@@ -52,23 +69,28 @@ export const Default: Story = {
       },
     },
   },
-  render: (args) => (
-    <div className="w-64 space-y-2">
-      <Label htmlFor="default-select">Choose a country</Label>
-      <Select disabled={args.disabled}>
-        <SelectTrigger>
-          <SelectValue placeholder="Select a country" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="us">United States</SelectItem>
-          <SelectItem value="ca">Canada</SelectItem>
-          <SelectItem value="uk">United Kingdom</SelectItem>
-          <SelectItem value="de">Germany</SelectItem>
-          <SelectItem value="fr">France</SelectItem>
-        </SelectContent>
-      </Select>
-    </div>
-  ),
+  render: (args) => {
+    const { size, disabled } = args as SelectStoryArgs;
+    return (
+      <div className="w-64 space-y-2">
+        <Label htmlFor="default-select" size={size}>
+          Choose a country
+        </Label>
+        <Select disabled={disabled}>
+          <SelectTrigger size={size}>
+            <SelectValue placeholder="Select a country" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="us">United States</SelectItem>
+            <SelectItem value="ca">Canada</SelectItem>
+            <SelectItem value="uk">United Kingdom</SelectItem>
+            <SelectItem value="de">Germany</SelectItem>
+            <SelectItem value="fr">France</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+    );
+  },
 };
 
 export const WithError: Story = {

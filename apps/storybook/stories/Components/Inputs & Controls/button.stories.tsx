@@ -3,6 +3,7 @@ import { within, userEvent, expect } from "storybook/test";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
+import { Heart } from "lucide-react";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Inputs & Controls/Button",
@@ -69,6 +70,7 @@ const meta: Meta<typeof Button> = {
     },
   },
   args: {
+    children: "Button",
     variant: "default",
     size: "default",
     disabled: false,
@@ -80,9 +82,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    children: "Button",
-  },
+  render: ({ children, ...args }) => (
+    <Button {...args}>{args.size === "icon" ? <Heart /> : children}</Button>
+  ),
   parameters: {
     docs: {
       description: {
@@ -304,17 +306,9 @@ export const ButtonsInForms: Story = {
 export const Loading: Story = {
   render: () => (
     <div className="flex gap-4">
-      <Button disabled>
-        <span className="flex items-center gap-2">
-          <div className="w-4 h-4 border-2 border-(--color-button-primary-text) border-t-transparent rounded-full animate-spin"></div>
-          Loading...
-        </span>
-      </Button>
-      <Button variant="secondary" disabled>
-        <span className="flex items-center gap-2">
-          <div className="w-4 h-4 border-2 border-(--color-button-secondary-text) border-t-transparent rounded-full animate-spin"></div>
-          Processing...
-        </span>
+      <Button loading>Loading...</Button>
+      <Button variant="secondary" loading>
+        Processing...
       </Button>
     </div>
   ),
@@ -322,7 +316,7 @@ export const Loading: Story = {
     docs: {
       description: {
         story:
-          "Loading state pattern with spinner and disabled state to prevent multiple submissions.",
+          "Loading state with spinner and auto-disabled to prevent multiple submissions.",
       },
     },
   },

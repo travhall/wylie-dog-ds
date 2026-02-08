@@ -71,11 +71,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading && (
-          <span className="mr-2" aria-hidden="true">
-            Loading...
-          </span>
+          <span
+            className={cn(
+              "inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin",
+              size !== "icon" && "mr-2"
+            )}
+            aria-hidden="true"
+          />
         )}
-        {children}
+        {!(loading && size === "icon") && children}
       </button>
     );
   }
