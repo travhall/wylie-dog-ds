@@ -3,7 +3,9 @@ import { within, userEvent, expect } from "storybook/test";
 import { RadioGroup, RadioGroupItem } from "@wyliedog/ui/radio-group";
 import { Label } from "@wyliedog/ui/label";
 
-const meta: Meta<typeof RadioGroup> = {
+// Use bare Meta to include RadioGroupItem props (e.g. size)
+// that don't exist on the root RadioGroup element.
+const meta: Meta = {
   title: "Components/Inputs & Controls/RadioGroup",
   component: RadioGroup,
   parameters: {
@@ -24,6 +26,17 @@ const meta: Meta<typeof RadioGroup> = {
       table: {
         type: { summary: '"horizontal" | "vertical"' },
         defaultValue: { summary: '"vertical"' },
+        category: "Appearance",
+      },
+    },
+    size: {
+      control: "radio",
+      options: ["sm", "md", "lg"],
+      description:
+        "Size of the radio items and labels (applied to RadioGroupItem)",
+      table: {
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: '"md"' },
         category: "Appearance",
       },
     },
@@ -48,6 +61,7 @@ const meta: Meta<typeof RadioGroup> = {
   },
   args: {
     orientation: "vertical",
+    size: "md",
     disabled: false,
     required: false,
   },
@@ -55,6 +69,13 @@ const meta: Meta<typeof RadioGroup> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+type RadioGroupStoryArgs = {
+  orientation?: "horizontal" | "vertical";
+  size?: "sm" | "md" | "lg";
+  disabled?: boolean;
+  required?: boolean;
+};
 
 export const Default: Story = {
   parameters: {
@@ -65,27 +86,37 @@ export const Default: Story = {
       },
     },
   },
-  render: (args) => (
-    <RadioGroup
-      defaultValue="option1"
-      orientation={args.orientation}
-      disabled={args.disabled}
-      required={args.required}
-    >
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option1" id="option1" />
-        <Label htmlFor="option1">Option 1</Label>
-      </div>
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option2" id="option2" />
-        <Label htmlFor="option2">Option 2</Label>
-      </div>
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option3" id="option3" />
-        <Label htmlFor="option3">Option 3</Label>
-      </div>
-    </RadioGroup>
-  ),
+  render: (args) => {
+    const { orientation, size, disabled, required } =
+      args as RadioGroupStoryArgs;
+    return (
+      <RadioGroup
+        defaultValue="option1"
+        orientation={orientation}
+        disabled={disabled}
+        required={required}
+      >
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="option1" id="option1" size={size} />
+          <Label htmlFor="option1" size={size}>
+            Option 1
+          </Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="option2" id="option2" size={size} />
+          <Label htmlFor="option2" size={size}>
+            Option 2
+          </Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="option3" id="option3" size={size} />
+          <Label htmlFor="option3" size={size}>
+            Option 3
+          </Label>
+        </div>
+      </RadioGroup>
+    );
+  },
 };
 
 export const Sizes: Story = {

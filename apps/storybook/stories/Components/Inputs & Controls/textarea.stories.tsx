@@ -90,7 +90,9 @@ export const Default: Story = {
   },
   render: (args) => (
     <div className="w-96 space-y-2">
-      <Label htmlFor="default-textarea">Message</Label>
+      <Label htmlFor="default-textarea" size={args.size}>
+        Message
+      </Label>
       <Textarea id="default-textarea" {...args} />
     </div>
   ),

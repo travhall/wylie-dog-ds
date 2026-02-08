@@ -66,7 +66,9 @@ export const Default: Story = {
   render: (args) => (
     <div className="flex items-center space-x-3">
       <Switch id="default-switch" {...args} />
-      <Label htmlFor="default-switch">Enable notifications</Label>
+      <Label htmlFor="default-switch" size={args.size}>
+        Enable notifications
+      </Label>
     </div>
   ),
 };

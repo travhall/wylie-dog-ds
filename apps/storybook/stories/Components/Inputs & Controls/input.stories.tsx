@@ -94,7 +94,9 @@ export const Default: Story = {
   },
   render: (args) => (
     <div className="w-64 space-y-2">
-      <Label htmlFor="default-input">Default Input</Label>
+      <Label htmlFor="default-input" size={args.size}>
+        Default Input
+      </Label>
       <Input id="default-input" {...args} />
     </div>
   ),

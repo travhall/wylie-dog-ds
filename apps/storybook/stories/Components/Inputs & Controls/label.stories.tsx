@@ -80,7 +80,11 @@ export const Default: Story = {
   render: (args) => (
     <div className="w-64 space-y-2">
       <Label {...args} />
-      <Input id="email-default" placeholder="Enter your email" />
+      <Input
+        id="email-default"
+        size={args.size}
+        placeholder="Enter your email"
+      />
     </div>
   ),
 };

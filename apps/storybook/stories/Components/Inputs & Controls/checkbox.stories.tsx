@@ -77,7 +77,9 @@ export const Default: Story = {
   render: (args) => (
     <div className="flex items-center space-x-2">
       <Checkbox id="default-checkbox" {...args} />
-      <Label htmlFor="default-checkbox">Accept terms and conditions</Label>
+      <Label htmlFor="default-checkbox" size={args.size}>
+        Accept terms and conditions
+      </Label>
     </div>
   ),
 };
