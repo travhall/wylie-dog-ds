@@ -11,7 +11,7 @@ export const color = {
     "400": "oklch(0.496 0.049 218.95)",
     "500": "oklch(0.361 0.058 221.76)",
     "600": "oklch(0.34 0.054 222.01)",
-    "700": "oklch(0.289 0.045 222.01)",
+    "700": "oklch(0.289 0.045 222.03)",
     "800": "oklch(0.248 0.037 222.68)",
     "900": "oklch(0.216 0.03 218.42)",
     "950": "oklch(0.17 0.022 212.01)"
@@ -56,7 +56,7 @@ export const color = {
     "950": "oklch(0.261 0.016 71.34)"
   },
   "black-bear": {
-    "50": "oklch(0.941 0.002 66.37)",
+    "50": "oklch(0.941 0.002 65.67)",
     "100": "oklch(0.808 0.006 42.48)",
     "200": "oklch(0.713 0.009 56.08)",
     "300": "oklch(0.572 0.013 51.07)",
@@ -101,7 +101,7 @@ export const color = {
     "300": "oklch(0.871 0.136 154.51)",
     "400": "oklch(0.8 0.182 151.73)",
     "500": "oklch(0.723 0.192 149.62)",
-    "600": "oklch(0.627 0.17 149.25)",
+    "600": "oklch(0.627 0.17 149.27)",
     "700": "oklch(0.527 0.137 150.09)",
     "800": "oklch(0.448 0.108 151.35)",
     "900": "oklch(0.393 0.09 152.56)",
@@ -115,14 +115,14 @@ export const color = {
     "400": "oklch(0.758 0.159 55.92)",
     "500": "oklch(0.705 0.187 47.68)",
     "600": "oklch(0.646 0.194 40.95)",
-    "700": "oklch(0.553 0.174 38.49)",
+    "700": "oklch(0.553 0.174 38.48)",
     "800": "oklch(0.47 0.143 37.29)",
     "900": "oklch(0.408 0.116 38.16)",
     "950": "oklch(0.266 0.076 36.25)"
   },
   "red": {
     "50": "oklch(0.971 0.013 17.04)",
-    "100": "oklch(0.936 0.031 17.46)",
+    "100": "oklch(0.936 0.031 17.33)",
     "200": "oklch(0.885 0.059 18.21)",
     "300": "oklch(0.808 0.103 19.51)",
     "400": "oklch(0.711 0.166 22.21)",
@@ -199,7 +199,7 @@ export const color = {
     "inverse": "oklch(1 0 0)",
     "brand": "oklch(0.646 0.194 40.95)",
     "success": "oklch(0.527 0.137 150.09)",
-    "warning": "oklch(0.553 0.174 38.49)",
+    "warning": "oklch(0.553 0.174 38.48)",
     "danger": "oklch(0.505 0.19 27.5)",
     "info": "oklch(0.488 0.217 264.39)"
   },
@@ -208,7 +208,7 @@ export const color = {
     "secondary": "oklch(0.968 0.007 248.08)",
     "focus": "oklch(0.623 0.188 259.82)",
     "brand": "oklch(0.646 0.194 40.95)",
-    "success": "oklch(0.627 0.17 149.25)",
+    "success": "oklch(0.627 0.17 149.27)",
     "warning": "oklch(0.646 0.194 40.95)",
     "danger": "oklch(0.577 0.215 27.32)"
   },
@@ -219,10 +219,10 @@ export const color = {
     "secondary": "oklch(0.984 0.003 248.29)",
     "secondary-hover": "oklch(0.968 0.007 248.08)",
     "secondary-active": "oklch(0.929 0.013 255.56)",
-    "success": "oklch(0.627 0.17 149.25)",
+    "success": "oklch(0.627 0.17 149.27)",
     "success-hover": "oklch(0.527 0.137 150.09)",
     "warning": "oklch(0.646 0.194 40.95)",
-    "warning-hover": "oklch(0.553 0.174 38.49)",
+    "warning-hover": "oklch(0.553 0.174 38.48)",
     "danger": "oklch(0.577 0.215 27.32)",
     "danger-hover": "oklch(0.505 0.19 27.5)",
     "hover": "oklch(0.984 0.003 248.29)",
@@ -231,7 +231,7 @@ export const color = {
     "disabled": "oklch(0.984 0.003 248.29)"
   },
   "primary": {
-    "base": "oklch(0.553 0.174 38.49)",
+    "base": "oklch(0.553 0.174 38.48)",
     "hover": "oklch(0.47 0.143 37.29)",
     "active": "oklch(0.408 0.116 38.16)",
     "surface": "oklch(0.98 0.016 74.37)",
@@ -258,7 +258,7 @@ export const color = {
     "on": "oklch(0.279 0.037 260.04)"
   },
   "status": {
-    "success": "oklch(0.627 0.17 149.25)",
+    "success": "oklch(0.627 0.17 149.27)",
     "warning": "oklch(0.646 0.194 40.95)",
     "danger": "oklch(0.577 0.215 27.32)",
     "info": "oklch(0.546 0.215 262.89)",
@@ -302,8 +302,8 @@ export const spacing = {
   "offset-lg": "8px",
   "offset-xl": "12px",
   "blur-none": "0px",
-  "spread--xl": "-8px",
   "blur-sm": "2px",
+  "spread--xl": "-8px",
   "blur-md": "4px",
   "spread--lg": "-4px",
   "blur-lg": "8px",

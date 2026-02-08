@@ -476,27 +476,27 @@
   },
   "icon.size.xs": {
     "$type": "dimension",
-    "$value": "{spacing.150}",
+    "$value": "{space.150}",
     "$description": "Extra small icon size (12px)"
   },
   "icon.size.sm": {
     "$type": "dimension",
-    "$value": "{spacing.200}",
+    "$value": "{space.200}",
     "$description": "Small icon size (16px)"
   },
   "icon.size.md": {
     "$type": "dimension",
-    "$value": "{spacing.300}",
+    "$value": "{space.300}",
     "$description": "Medium icon size (24px)"
   },
   "icon.size.lg": {
     "$type": "dimension",
-    "$value": "{spacing.400}",
+    "$value": "{space.400}",
     "$description": "Large icon size (32px)"
   },
   "icon.size.xl": {
     "$type": "dimension",
-    "$value": "{spacing.500}",
+    "$value": "{space.500}",
     "$description": "Extra large icon size (40px)"
   },
   "transition.easing.default": {

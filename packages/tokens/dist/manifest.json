@@ -93,7 +93,7 @@
             "polar-night",
             "700"
           ],
-          "value": "oklch(0.289 0.045 222.01)",
+          "value": "oklch(0.289 0.045 222.03)",
           "type": "color",
           "variable": "var(--color-polar-night-700)",
           "description": ""
@@ -545,7 +545,7 @@
             "black-bear",
             "50"
           ],
-          "value": "oklch(0.941 0.002 66.37)",
+          "value": "oklch(0.941 0.002 65.67)",
           "type": "color",
           "variable": "var(--color-black-bear-50)",
           "description": ""
@@ -1019,7 +1019,7 @@
             "green",
             "600"
           ],
-          "value": "oklch(0.627 0.17 149.25)",
+          "value": "oklch(0.627 0.17 149.27)",
           "type": "color",
           "variable": "var(--color-green-600)",
           "description": ""
@@ -1165,7 +1165,7 @@
             "orange",
             "700"
           ],
-          "value": "oklch(0.553 0.174 38.49)",
+          "value": "oklch(0.553 0.174 38.48)",
           "type": "color",
           "variable": "var(--color-orange-700)",
           "description": ""
@@ -1227,7 +1227,7 @@
             "red",
             "100"
           ],
-          "value": "oklch(0.936 0.031 17.46)",
+          "value": "oklch(0.936 0.031 17.33)",
           "type": "color",
           "variable": "var(--color-red-100)",
           "description": ""
@@ -1745,235 +1745,235 @@
       }
     },
     "spacing": {
-      "spacing-0": {
-        "name": "spacing0",
+      "space-0": {
+        "name": "space0",
         "path": [
-          "spacing",
+          "space",
           "0"
         ],
         "value": "0px",
         "type": "spacing",
-        "variable": "var(--spacing-0)",
+        "variable": "var(--space-0)",
         "description": ""
       },
-      "spacing-050": {
-        "name": "spacing050",
+      "space-050": {
+        "name": "space050",
         "path": [
-          "spacing",
+          "space",
           "050"
         ],
         "value": "4px",
         "type": "spacing",
-        "variable": "var(--spacing-050)",
+        "variable": "var(--space-050)",
         "description": ""
       },
-      "spacing-100": {
-        "name": "spacing100",
+      "space-100": {
+        "name": "space100",
         "path": [
-          "spacing",
+          "space",
           "100"
         ],
         "value": "8px",
         "type": "spacing",
-        "variable": "var(--spacing-100)",
+        "variable": "var(--space-100)",
         "description": ""
       },
-      "spacing-150": {
-        "name": "spacing150",
+      "space-150": {
+        "name": "space150",
         "path": [
-          "spacing",
+          "space",
           "150"
         ],
         "value": "12px",
         "type": "spacing",
-        "variable": "var(--spacing-150)",
+        "variable": "var(--space-150)",
         "description": ""
       },
-      "spacing-200": {
-        "name": "spacing200",
+      "space-200": {
+        "name": "space200",
         "path": [
-          "spacing",
+          "space",
           "200"
         ],
         "value": "16px",
         "type": "spacing",
-        "variable": "var(--spacing-200)",
+        "variable": "var(--space-200)",
         "description": ""
       },
-      "spacing-300": {
-        "name": "spacing300",
+      "space-300": {
+        "name": "space300",
         "path": [
-          "spacing",
+          "space",
           "300"
         ],
         "value": "24px",
         "type": "spacing",
-        "variable": "var(--spacing-300)",
+        "variable": "var(--space-300)",
         "description": ""
       },
-      "spacing-400": {
-        "name": "spacing400",
+      "space-400": {
+        "name": "space400",
         "path": [
-          "spacing",
+          "space",
           "400"
         ],
         "value": "32px",
         "type": "spacing",
-        "variable": "var(--spacing-400)",
+        "variable": "var(--space-400)",
         "description": ""
       },
-      "spacing-500": {
-        "name": "spacing500",
+      "space-500": {
+        "name": "space500",
         "path": [
-          "spacing",
+          "space",
           "500"
         ],
         "value": "40px",
         "type": "spacing",
-        "variable": "var(--spacing-500)",
+        "variable": "var(--space-500)",
         "description": ""
       },
-      "spacing-600": {
-        "name": "spacing600",
+      "space-600": {
+        "name": "space600",
         "path": [
-          "spacing",
+          "space",
           "600"
         ],
         "value": "48px",
         "type": "spacing",
-        "variable": "var(--spacing-600)",
+        "variable": "var(--space-600)",
         "description": ""
       },
-      "spacing-700": {
-        "name": "spacing700",
+      "space-700": {
+        "name": "space700",
         "path": [
-          "spacing",
+          "space",
           "700"
         ],
         "value": "60px",
         "type": "spacing",
-        "variable": "var(--spacing-700)",
+        "variable": "var(--space-700)",
         "description": ""
       },
-      "spacing-800": {
-        "name": "spacing800",
+      "space-800": {
+        "name": "space800",
         "path": [
-          "spacing",
+          "space",
           "800"
         ],
         "value": "72px",
         "type": "spacing",
-        "variable": "var(--spacing-800)",
+        "variable": "var(--space-800)",
         "description": ""
       },
-      "spacing-900": {
-        "name": "spacing900",
+      "space-900": {
+        "name": "space900",
         "path": [
-          "spacing",
+          "space",
           "900"
         ],
         "value": "84px",
         "type": "spacing",
-        "variable": "var(--spacing-900)",
+        "variable": "var(--space-900)",
         "description": ""
       },
-      "spacing-1000": {
-        "name": "spacing1000",
+      "space-1000": {
+        "name": "space1000",
         "path": [
-          "spacing",
+          "space",
           "1000"
         ],
         "value": "96px",
         "type": "spacing",
-        "variable": "var(--spacing-1000)",
+        "variable": "var(--space-1000)",
         "description": ""
       },
-      "spacing-1100": {
-        "name": "spacing1100",
+      "space-1100": {
+        "name": "space1100",
         "path": [
-          "spacing",
+          "space",
           "1100"
         ],
         "value": "112px",
         "type": "spacing",
-        "variable": "var(--spacing-1100)",
+        "variable": "var(--space-1100)",
         "description": ""
       },
-      "spacing-1200": {
-        "name": "spacing1200",
+      "space-1200": {
+        "name": "space1200",
         "path": [
-          "spacing",
+          "space",
           "1200"
         ],
         "value": "128px",
         "type": "spacing",
-        "variable": "var(--spacing-1200)",
+        "variable": "var(--space-1200)",
         "description": ""
       },
-      "spacing-1300": {
-        "name": "spacing1300",
+      "space-1300": {
+        "name": "space1300",
         "path": [
-          "spacing",
+          "space",
           "1300"
         ],
         "value": "160px",
         "type": "spacing",
-        "variable": "var(--spacing-1300)",
+        "variable": "var(--space-1300)",
         "description": ""
       },
-      "spacing-1400": {
-        "name": "spacing1400",
+      "space-1400": {
+        "name": "space1400",
         "path": [
-          "spacing",
+          "space",
           "1400"
         ],
         "value": "192px",
         "type": "spacing",
-        "variable": "var(--spacing-1400)",
+        "variable": "var(--space-1400)",
         "description": ""
       },
-      "spacing-1500": {
-        "name": "spacing1500",
+      "space-1500": {
+        "name": "space1500",
         "path": [
-          "spacing",
+          "space",
           "1500"
         ],
         "value": "256px",
         "type": "spacing",
-        "variable": "var(--spacing-1500)",
+        "variable": "var(--space-1500)",
         "description": ""
       },
-      "spacing-1600": {
-        "name": "spacing1600",
+      "space-1600": {
+        "name": "space1600",
         "path": [
-          "spacing",
+          "space",
           "1600"
         ],
         "value": "320px",
         "type": "spacing",
-        "variable": "var(--spacing-1600)",
+        "variable": "var(--space-1600)",
         "description": ""
       },
-      "spacing-1700": {
-        "name": "spacing1700",
+      "space-1700": {
+        "name": "space1700",
         "path": [
-          "spacing",
+          "space",
           "1700"
         ],
         "value": "448px",
         "type": "spacing",
-        "variable": "var(--spacing-1700)",
+        "variable": "var(--space-1700)",
         "description": ""
       },
-      "spacing-1800": {
-        "name": "spacing1800",
+      "space-1800": {
+        "name": "space1800",
         "path": [
-          "spacing",
+          "space",
           "1800"
         ],
         "value": "576px",
         "type": "spacing",
-        "variable": "var(--spacing-1800)",
+        "variable": "var(--space-1800)",
         "description": ""
       }
     },
@@ -2725,7 +2725,7 @@
           "text",
           "warning"
         ],
-        "value": "oklch(0.553 0.174 38.49)",
+        "value": "oklch(0.553 0.174 38.48)",
         "type": "color",
         "variable": "var(--color-text-warning)",
         "description": "Warning state text color"
@@ -2811,7 +2811,7 @@
           "border",
           "success"
         ],
-        "value": "oklch(0.627 0.17 149.25)",
+        "value": "oklch(0.627 0.17 149.27)",
         "type": "color",
         "variable": "var(--color-border-success)",
         "description": "Success state border color"
@@ -2921,7 +2921,7 @@
           "interactive",
           "success"
         ],
-        "value": "oklch(0.627 0.17 149.25)",
+        "value": "oklch(0.627 0.17 149.27)",
         "type": "color",
         "variable": "var(--color-interactive-success)",
         "description": "Success interactive element background"
@@ -2957,7 +2957,7 @@
           "interactive",
           "warning-hover"
         ],
-        "value": "oklch(0.553 0.174 38.49)",
+        "value": "oklch(0.553 0.174 38.48)",
         "type": "color",
         "variable": "var(--color-interactive-warning-hover)",
         "description": "Warning interactive hover state"
@@ -3043,7 +3043,7 @@
           "status",
           "success"
         ],
-        "value": "oklch(0.627 0.17 149.25)",
+        "value": "oklch(0.627 0.17 149.27)",
         "type": "color",
         "variable": "var(--color-status-success)",
         "description": "Success status indicator color"
@@ -3105,7 +3105,7 @@
           "primary",
           "base"
         ],
-        "value": "oklch(0.553 0.174 38.49)",
+        "value": "oklch(0.553 0.174 38.48)",
         "type": "color",
         "variable": "var(--color-primary-base)",
         "description": "Brand primary color (orange) - base state"
@@ -3409,7 +3409,7 @@
           "success",
           "background"
         ],
-        "value": "oklch(0.627 0.17 149.25)",
+        "value": "oklch(0.627 0.17 149.27)",
         "type": "color",
         "variable": "var(--color-badge-success-background)",
         "description": ""
@@ -3433,7 +3433,7 @@
           "success",
           "border"
         ],
-        "value": "oklch(0.627 0.17 149.25)",
+        "value": "oklch(0.627 0.17 149.27)",
         "type": "color",
         "variable": "var(--color-badge-success-border)",
         "description": ""
@@ -3672,7 +3672,7 @@
           "warning",
           "background-hover"
         ],
-        "value": "oklch(0.553 0.174 38.49)",
+        "value": "oklch(0.553 0.174 38.48)",
         "type": "color",
         "variable": "var(--color-badge-warning-background-hover)",
         "description": ""
@@ -4815,7 +4815,7 @@
           "warning",
           "text"
         ],
-        "value": "oklch(0.553 0.174 38.49)",
+        "value": "oklch(0.553 0.174 38.48)",
         "type": "color",
         "variable": "var(--color-alert-warning-text)",
         "description": ""
@@ -4839,7 +4839,7 @@
           "success",
           "border"
         ],
-        "value": "oklch(0.627 0.17 149.25)",
+        "value": "oklch(0.627 0.17 149.27)",
         "type": "color",
         "variable": "var(--color-alert-success-border)",
         "description": ""
@@ -7955,7 +7955,7 @@
           "progress",
           "success-fill"
         ],
-        "value": "oklch(0.627 0.17 149.25)",
+        "value": "oklch(0.627 0.17 149.27)",
         "type": "color",
         "variable": "var(--color-progress-success-fill)",
         "description": ""
@@ -8886,7 +8886,7 @@
           "success",
           "border"
         ],
-        "value": "oklch(0.627 0.17 149.25)",
+        "value": "oklch(0.627 0.17 149.27)",
         "type": "color",
         "variable": "var(--color-toast-success-border)",
         "description": ""
@@ -8898,7 +8898,7 @@
           "success",
           "background"
         ],
-        "value": "oklch(0.627 0.17 149.25)",
+        "value": "oklch(0.627 0.17 149.27)",
         "type": "color",
         "variable": "var(--color-toast-success-background)",
         "description": ""
