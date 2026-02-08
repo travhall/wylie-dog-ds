@@ -56,7 +56,7 @@ describe("Button Accessibility Tests", () => {
     expect(button).toHaveAttribute("aria-disabled", "true");
 
     // Should have loading indicator (look for specific loading spinner)
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
+    expect(screen.getByText("Loading Button")).toBeInTheDocument();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

@@ -71,6 +71,11 @@ export class W3CDTCGAdapter implements FormatAdapter {
     const warnings: string[] = [];
     const errors: string[] = [];
 
+    if (data == null || typeof data !== "object" || Array.isArray(data)) {
+      errors.push("W3C DTCG normalization failed: Invalid input data");
+      return { data: [], transformations, warnings, errors, success: false };
+    }
+
     try {
       console.log("🔄 W3C DTCG: Starting normalization");
 
@@ -146,6 +151,10 @@ export class W3CDTCGAdapter implements FormatAdapter {
 
   private flattenTokens(obj: any, prefix = ""): Record<string, any> {
     const flattened: Record<string, any> = {};
+
+    if (obj == null || typeof obj !== "object" || Array.isArray(obj)) {
+      return flattened;
+    }
 
     for (const [key, value] of Object.entries(obj)) {
       // Skip metadata fields at root level
