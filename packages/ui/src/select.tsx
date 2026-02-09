@@ -2,8 +2,34 @@ import React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { cn } from "./lib/utils";
 
+// Select Context
+type SelectContextValue = {
+  size: "sm" | "md" | "lg";
+};
+
+const SelectContext = React.createContext<SelectContextValue>({
+  size: "md",
+});
+
+const useSelectContext = () => React.useContext(SelectContext);
+
 // Select Root
-export const Select = SelectPrimitive.Root;
+export interface SelectProps extends React.ComponentProps<
+  typeof SelectPrimitive.Root
+> {
+  size?: "sm" | "md" | "lg";
+}
+
+export const Select: React.FC<SelectProps> = ({
+  size = "md",
+  children,
+  ...props
+}) => (
+  <SelectContext.Provider value={{ size }}>
+    <SelectPrimitive.Root {...props}>{children}</SelectPrimitive.Root>
+  </SelectContext.Provider>
+);
+
 export const SelectGroup = SelectPrimitive.Group;
 export const SelectValue = SelectPrimitive.Value;
 
@@ -11,6 +37,7 @@ export const SelectValue = SelectPrimitive.Value;
 export interface SelectTriggerProps extends React.ComponentPropsWithoutRef<
   typeof SelectPrimitive.Trigger
 > {
+  /** @deprecated Size should be passed to the Select root component */
   size?: "sm" | "md" | "lg";
   error?: boolean;
 }
@@ -18,7 +45,11 @@ export interface SelectTriggerProps extends React.ComponentPropsWithoutRef<
 export const SelectTrigger = React.forwardRef<
   React.ComponentRef<typeof SelectPrimitive.Trigger>,
   SelectTriggerProps
->(({ className, size = "md", error = false, children, ...props }, ref) => {
+>(({ className, size: propSize, error = false, children, ...props }, ref) => {
+  const context = useSelectContext();
+  // Fallback to propSize for backward compatibility, otherwise use context
+  const size = propSize || context.size;
+
   const sizes = {
     sm: "h-(--spacing-select-trigger-height-sm) px-(--spacing-select-trigger-padding-x-sm) text-(length:--font-size-select-trigger-font-size-sm)",
     md: "h-(--spacing-select-trigger-height-md) px-(--spacing-select-trigger-padding-x-md) text-(length:--font-size-select-trigger-font-size-md)",
@@ -109,37 +140,47 @@ SelectContent.displayName = SelectPrimitive.Content.displayName;
 export const SelectItem = React.forwardRef<
   React.ComponentRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Item
-    ref={ref}
-    className={cn(
-      "relative flex w-full cursor-default select-none items-center outline-none",
-      "rounded-(--spacing-select-item-radius)",
-      "py-(--spacing-select-item-padding-y)",
-      "pl-(--spacing-select-item-padding-left)",
-      "pr-(--spacing-select-item-padding-right)",
-      "text-(length:--font-size-select-item-font-size)",
-      "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
-      "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
-      className
-    )}
-    {...props}
-  >
-    <span className="absolute left-2 flex h-(--spacing-icon-size-sm) w-(--spacing-icon-size-sm) items-center justify-center">
-      <SelectPrimitive.ItemIndicator>
-        <svg
-          className="h-(--spacing-icon-size-md) w-(--spacing-icon-size-md)"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <polyline points="20,6 9,17 4,12" />
-        </svg>
-      </SelectPrimitive.ItemIndicator>
-    </span>
-    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-  </SelectPrimitive.Item>
-));
+>(({ className, children, ...props }, ref) => {
+  const { size } = useSelectContext();
+
+  const fontSizes = {
+    sm: "text-(length:--font-size-select-trigger-font-size-sm)",
+    md: "text-(length:--font-size-select-trigger-font-size-md)",
+    lg: "text-(length:--font-size-select-trigger-font-size-lg)",
+  };
+
+  return (
+    <SelectPrimitive.Item
+      ref={ref}
+      className={cn(
+        "relative flex w-full cursor-default select-none items-center outline-none",
+        "rounded-(--spacing-select-item-radius)",
+        "py-(--spacing-select-item-padding-y)",
+        "pl-(--spacing-select-item-padding-left)",
+        "pr-(--spacing-select-item-padding-right)",
+        fontSizes[size],
+        "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
+        "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
+        className
+      )}
+      {...props}
+    >
+      <span className="absolute left-2 flex h-(--spacing-icon-size-sm) w-(--spacing-icon-size-sm) items-center justify-center">
+        <SelectPrimitive.ItemIndicator>
+          <svg
+            className="h-(--spacing-icon-size-md) w-(--spacing-icon-size-md)"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <polyline points="20,6 9,17 4,12" />
+          </svg>
+        </SelectPrimitive.ItemIndicator>
+      </span>
+      <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+    </SelectPrimitive.Item>
+  );
+});
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 
 // Select Separator

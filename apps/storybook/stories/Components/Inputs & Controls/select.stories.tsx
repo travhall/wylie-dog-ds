@@ -76,8 +76,8 @@ export const Default: Story = {
         <Label htmlFor="default-select" size={size}>
           Choose a country
         </Label>
-        <Select disabled={disabled}>
-          <SelectTrigger size={size}>
+        <Select disabled={disabled} size={size}>
+          <SelectTrigger>
             <SelectValue placeholder="Select a country" />
           </SelectTrigger>
           <SelectContent>
@@ -136,8 +136,8 @@ export const AllSizes: Story = {
     <div className="space-y-6">
       <div className="w-64 space-y-2">
         <Label size="sm">Small Select</Label>
-        <Select>
-          <SelectTrigger size="sm">
+        <Select size="sm">
+          <SelectTrigger>
             <SelectValue placeholder="Small select" />
           </SelectTrigger>
           <SelectContent>
@@ -150,8 +150,8 @@ export const AllSizes: Story = {
 
       <div className="w-64 space-y-2">
         <Label size="md">Medium Select (Default)</Label>
-        <Select>
-          <SelectTrigger size="md">
+        <Select size="md">
+          <SelectTrigger>
             <SelectValue placeholder="Medium select" />
           </SelectTrigger>
           <SelectContent>
@@ -164,8 +164,8 @@ export const AllSizes: Story = {
 
       <div className="w-64 space-y-2">
         <Label size="lg">Large Select</Label>
-        <Select>
-          <SelectTrigger size="lg">
+        <Select size="lg">
+          <SelectTrigger>
             <SelectValue placeholder="Large select" />
           </SelectTrigger>
           <SelectContent>

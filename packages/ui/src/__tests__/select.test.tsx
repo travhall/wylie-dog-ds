@@ -35,8 +35,9 @@ const TestSelect = ({
     value={value}
     onValueChange={onValueChange}
     disabled={disabled}
+    size={size}
   >
-    <SelectTrigger size={size} error={error} aria-label="Select option">
+    <SelectTrigger error={error} aria-label="Select option">
       <SelectValue placeholder="Select a fruit" />
     </SelectTrigger>
     <SelectContent>
@@ -375,6 +376,48 @@ describe("Select", () => {
 
       await waitFor(() => {
         expect(screen.getByText("Apple")).toBeInTheDocument();
+      });
+    });
+
+    it("should receive correct font size from context (sm)", async () => {
+      const user = userEvent.setup();
+      render(<TestSelect size="sm" />);
+
+      await user.click(screen.getByRole("combobox"));
+
+      await waitFor(() => {
+        const apple = screen.getByText("Apple");
+        expect(apple.closest("div")).toHaveClass(
+          "text-(length:--font-size-select-trigger-font-size-sm)"
+        );
+      });
+    });
+
+    it("should receive correct font size from context (md)", async () => {
+      const user = userEvent.setup();
+      render(<TestSelect size="md" />);
+
+      await user.click(screen.getByRole("combobox"));
+
+      await waitFor(() => {
+        const apple = screen.getByText("Apple");
+        expect(apple.closest("div")).toHaveClass(
+          "text-(length:--font-size-select-trigger-font-size-md)"
+        );
+      });
+    });
+
+    it("should receive correct font size from context (lg)", async () => {
+      const user = userEvent.setup();
+      render(<TestSelect size="lg" />);
+
+      await user.click(screen.getByRole("combobox"));
+
+      await waitFor(() => {
+        const apple = screen.getByText("Apple");
+        expect(apple.closest("div")).toHaveClass(
+          "text-(length:--font-size-select-trigger-font-size-lg)"
+        );
       });
     });
 
