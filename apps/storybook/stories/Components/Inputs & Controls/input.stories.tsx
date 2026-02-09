@@ -48,12 +48,21 @@ const meta: Meta<typeof Input> = {
     },
     type: {
       control: "select",
-      options: ["text", "email", "password", "number", "search", "url", "tel"],
+      options: [
+        "text",
+        "email",
+        "password",
+        "number",
+        "search",
+        "url",
+        "tel",
+        "date",
+      ],
       description: "The type of input",
       table: {
         type: {
           summary:
-            '"text" | "email" | "password" | "number" | "search" | "url" | "tel"',
+            '"text" | "email" | "password" | "number" | "search" | "url" | "tel" | "date"',
         },
         defaultValue: { summary: '"text"' },
         category: "Content",
@@ -206,6 +215,43 @@ export const InputTypes: Story = {
       <div className="space-y-2">
         <Label htmlFor="date-input">Date</Label>
         <Input id="date-input" type="date" />
+      </div>
+    </div>
+  ),
+};
+
+export const TypeAwareStyling: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Number, search, and date inputs include type-aware styling that makes native browser chrome (spin buttons, clear button, calendar picker) visible and on-brand.",
+      },
+    },
+  },
+  render: () => (
+    <div className="grid grid-cols-1 gap-8 max-w-sm">
+      <div className="space-y-2">
+        <Label htmlFor="number-styled">Number — spin buttons visible</Label>
+        <Input
+          id="number-styled"
+          type="number"
+          defaultValue={42}
+          placeholder="Enter a number"
+        />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="search-styled">Search — type &amp; clear with ×</Label>
+        <Input
+          id="search-styled"
+          type="search"
+          defaultValue="Try clearing me"
+          placeholder="Search..."
+        />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="date-styled">Date — calendar picker icon</Label>
+        <Input id="date-styled" type="date" />
       </div>
     </div>
   ),

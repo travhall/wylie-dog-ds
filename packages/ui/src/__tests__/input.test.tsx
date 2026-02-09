@@ -249,6 +249,80 @@ describe("Input", () => {
     });
   });
 
+  describe("Type-Aware Styling", () => {
+    it("should apply spin button classes for number type", () => {
+      render(<Input aria-label="Quantity" type="number" />);
+      const input = screen.getByLabelText("Quantity");
+      expect(input).toHaveClass(
+        "[&::-webkit-inner-spin-button]:appearance-auto"
+      );
+      expect(input).toHaveClass(
+        "[&::-webkit-outer-spin-button]:appearance-auto"
+      );
+      expect(input).toHaveClass("[&::-webkit-inner-spin-button]:opacity-100");
+    });
+
+    it("should apply appearance-none for search type", () => {
+      render(<Input aria-label="Search" type="search" />);
+      const input = screen.getByLabelText("Search");
+      expect(input).toHaveClass("appearance-none");
+    });
+
+    it("should apply calendar picker classes for date type", () => {
+      render(<Input aria-label="Date" type="date" />);
+      const input = screen.getByLabelText("Date");
+      expect(input).toHaveClass(
+        "[&::-webkit-calendar-picker-indicator]:cursor-pointer"
+      );
+    });
+
+    it("should not apply type-specific classes for text type", () => {
+      render(<Input aria-label="Name" type="text" />);
+      const input = screen.getByLabelText("Name");
+      expect(input).not.toHaveClass("appearance-none");
+      expect(input).not.toHaveClass(
+        "[&::-webkit-inner-spin-button]:appearance-auto"
+      );
+      expect(input).not.toHaveClass(
+        "[&::-webkit-calendar-picker-indicator]:cursor-pointer"
+      );
+    });
+
+    it("should not apply type-specific classes for email type", () => {
+      render(<Input aria-label="Email" type="email" />);
+      const input = screen.getByLabelText("Email");
+      expect(input).not.toHaveClass("appearance-none");
+      expect(input).not.toHaveClass(
+        "[&::-webkit-inner-spin-button]:appearance-auto"
+      );
+      expect(input).not.toHaveClass(
+        "[&::-webkit-calendar-picker-indicator]:cursor-pointer"
+      );
+    });
+
+    it("should combine type styles with size variants", () => {
+      render(<Input aria-label="Quantity" type="number" size="lg" />);
+      const input = screen.getByLabelText("Quantity");
+      // Size classes
+      expect(input).toHaveClass("h-(--spacing-input-height-lg)");
+      // Type classes
+      expect(input).toHaveClass(
+        "[&::-webkit-inner-spin-button]:appearance-auto"
+      );
+    });
+
+    it("should combine type styles with error state", () => {
+      render(<Input aria-label="Quantity" type="number" error />);
+      const input = screen.getByLabelText("Quantity");
+      // Error classes
+      expect(input).toHaveClass("border-(--color-input-border-error)");
+      // Type classes
+      expect(input).toHaveClass(
+        "[&::-webkit-inner-spin-button]:appearance-auto"
+      );
+    });
+  });
+
   describe("Edge Cases", () => {
     it("should handle very long input values", () => {
       const longValue = "a".repeat(1000);

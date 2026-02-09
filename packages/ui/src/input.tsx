@@ -34,6 +34,17 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       lg: "h-(--spacing-input-height-lg) px-(--spacing-input-padding-x) text-(length:--font-size-input-font-size-lg)",
     };
 
+    // Type-aware styling for native browser chrome
+    const typeStyles: Partial<Record<string, string>> = {
+      number: [
+        "[&::-webkit-inner-spin-button]:appearance-auto",
+        "[&::-webkit-outer-spin-button]:appearance-auto",
+        "[&::-webkit-inner-spin-button]:opacity-100",
+      ].join(" "),
+      search: "appearance-none",
+      date: "[&::-webkit-calendar-picker-indicator]:cursor-pointer",
+    };
+
     // Build aria-describedby from provided IDs
     const describedBy = [descriptionId, errorId].filter(Boolean).join(" ");
 
@@ -54,6 +65,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             : "border-(--color-input-border) bg-(--color-input-background) hover:bg-(--color-input-background-hover)",
           "text-(--color-input-text)",
           sizes[size],
+          typeStyles[type],
           className
         )}
         {...props}

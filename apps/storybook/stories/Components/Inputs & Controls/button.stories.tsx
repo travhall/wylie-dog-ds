@@ -322,7 +322,7 @@ export const Loading: Story = {
   },
 };
 
-export const WithPlayFunction: Story = {
+export const WithInteractions: Story = {
   args: {
     children: "Click to Test",
     variant: "primary",
