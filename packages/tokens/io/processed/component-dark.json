@@ -1023,6 +1023,10 @@
     "$type": "spacing",
     "$value": "{space.1200}"
   },
+  "select.content.z-index": {
+    "$type": "number",
+    "$value": "{z-index.dropdown}"
+  },
   "select.item.padding-y": {
     "$type": "spacing",
     "$value": "{space.100}"
@@ -1042,6 +1046,18 @@
   "select.item.font-size": {
     "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
+  },
+  "select.item.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.secondary}"
+  },
+  "select.item.text-focus": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "select.item.indicator-left": {
+    "$type": "spacing",
+    "$value": "{space.100}"
   },
   "select.separator.height": {
     "$type": "spacing",

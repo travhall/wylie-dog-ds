@@ -360,6 +360,7 @@ export const spacing = {
   "item-padding-left": "32px",
   "item-padding-right": "8px",
   "item-radius": "4px",
+  "item-indicator-left": "8px",
   "separator-height": "1px",
   "border-width": "1px",
   "border-radius": "8px",

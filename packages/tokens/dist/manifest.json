@@ -9420,6 +9420,18 @@
         "variable": "var(--select-content-min-width)",
         "description": ""
       },
+      "select-content-z-index": {
+        "name": "selectContentZIndex",
+        "path": [
+          "select",
+          "content",
+          "z-index"
+        ],
+        "value": 1000,
+        "type": "number",
+        "variable": "var(--select-content-z-index)",
+        "description": ""
+      },
       "select-item-padding-y": {
         "name": "selectItemPaddingY",
         "path": [
@@ -9478,6 +9490,42 @@
         "value": "14px",
         "type": "fontSize",
         "variable": "var(--select-item-font-size)",
+        "description": ""
+      },
+      "select-item-background-focus": {
+        "name": "selectItemBackgroundFocus",
+        "path": [
+          "select",
+          "item",
+          "background-focus"
+        ],
+        "value": "oklch(0.984 0.003 248.29)",
+        "type": "color",
+        "variable": "var(--color-select-item-background-focus)",
+        "description": ""
+      },
+      "select-item-text-focus": {
+        "name": "selectItemTextFocus",
+        "path": [
+          "select",
+          "item",
+          "text-focus"
+        ],
+        "value": "oklch(0.279 0.037 260.04)",
+        "type": "color",
+        "variable": "var(--color-select-item-text-focus)",
+        "description": ""
+      },
+      "select-item-indicator-left": {
+        "name": "selectItemIndicatorLeft",
+        "path": [
+          "select",
+          "item",
+          "indicator-left"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--select-item-indicator-left)",
         "description": ""
       },
       "select-separator-height": {

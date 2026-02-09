@@ -364,11 +364,15 @@
   --spacing-select-content-padding: 4px;
   --spacing-select-content-max-height: 320px;
   --spacing-select-content-min-width: 128px;
+  --select-content-z-index: 1000;
   --spacing-select-item-padding-y: 8px;
   --spacing-select-item-padding-left: 32px;
   --spacing-select-item-padding-right: 8px;
   --spacing-select-item-radius: 2px;
   --font-size-select-item-font-size: 14px;
+  --color-select-item-background-focus: oklch(0.372 0.039 257.3);
+  --color-select-item-text-focus: oklch(0.984 0.003 248.29);
+  --spacing-select-item-indicator-left: 8px;
   --spacing-select-separator-height: 1px;
   --spacing-checkbox-size-sm: 12px;
   --spacing-checkbox-size-md: 16px;

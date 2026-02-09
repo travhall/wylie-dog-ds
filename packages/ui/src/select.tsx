@@ -60,10 +60,10 @@ export const SelectTrigger = React.forwardRef<
     <SelectPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex w-full items-center justify-between border transition-colors",
+        "flex w-full items-center justify-between border border-(--color-input-border) transition-colors",
         "rounded-(--spacing-select-trigger-radius)",
         "placeholder:text-(--color-input-placeholder)",
-        "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
+        "focus:outline-none focus:ring-(length:--spacing-focus-ring-width) focus:ring-(--color-input-border-focus) focus:ring-offset-(--spacing-focus-ring-offset)",
         "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
         "[&>span]:line-clamp-1",
         error
@@ -105,7 +105,7 @@ export const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "relative z-50 overflow-hidden border",
+        "relative z-(--select-content-z-index) overflow-hidden border border-(--color-input-border)",
         "max-h-(--spacing-select-content-max-height)",
         "min-w-(--spacing-select-content-min-width)",
         "rounded-(--spacing-select-content-radius)",
@@ -159,13 +159,13 @@ export const SelectItem = React.forwardRef<
         "pl-(--spacing-select-item-padding-left)",
         "pr-(--spacing-select-item-padding-right)",
         fontSizes[size],
-        "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
+        "focus:bg-(--color-select-item-background-focus) focus:text-(--color-select-item-text-focus) hover:bg-(--color-select-item-background-focus) hover:text-(--color-select-item-text-focus)",
         "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
         className
       )}
       {...props}
     >
-      <span className="absolute left-2 flex h-(--spacing-icon-size-sm) w-(--spacing-icon-size-sm) items-center justify-center">
+      <span className="absolute left-(--spacing-select-item-indicator-left) flex h-(--spacing-icon-size-sm) w-(--spacing-icon-size-sm) items-center justify-center">
         <SelectPrimitive.ItemIndicator>
           <svg
             className="h-(--spacing-icon-size-md) w-(--spacing-icon-size-md)"
