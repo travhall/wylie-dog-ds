@@ -620,15 +620,11 @@
   --spacing-select-content-padding: 4px;
   --spacing-select-content-max-height: 320px;
   --spacing-select-content-min-width: 128px;
-  --select-content-z-index: 1000;
   --spacing-select-item-padding-y: 8px;
   --spacing-select-item-padding-left: 32px;
   --spacing-select-item-padding-right: 8px;
   --spacing-select-item-radius: 2px;
   --font-size-select-item-font-size: 14px;
-  --color-select-item-background-focus: oklch(0.984 0.003 248.29);
-  --color-select-item-text-focus: oklch(0.279 0.037 260.04);
-  --spacing-select-item-indicator-left: 8px;
   --spacing-select-separator-height: 1px;
   --spacing-checkbox-size-sm: 12px;
   --spacing-checkbox-size-md: 16px;
@@ -640,21 +636,21 @@
   --spacing-checkbox-icon-size-lg: 24px;
   --spacing-checkbox-focus-ring-width: 2px;
   --spacing-checkbox-focus-ring-offset: 2px;
-  --spacing-switch-track-height-sm: 24px;
+  --spacing-switch-track-height-sm: 16px;
   --spacing-switch-track-height-md: 24px;
-  --spacing-switch-track-height-lg: 24px;
+  --spacing-switch-track-height-lg: 32px;
   --spacing-switch-track-width-sm: 32px;
-  --spacing-switch-track-width-md: 40px;
+  --spacing-switch-track-width-md: 48px;
   --spacing-switch-track-width-lg: 60px;
   --spacing-switch-track-radius: 9999px;
   --spacing-switch-track-border-width: 2px;
   --spacing-switch-thumb-size-sm: 16px;
   --spacing-switch-thumb-size-md: 24px;
-  --spacing-switch-thumb-size-lg: 24px;
+  --spacing-switch-thumb-size-lg: 32px;
   --spacing-switch-thumb-radius: 9999px;
   --spacing-switch-thumb-translate-sm: 16px;
   --spacing-switch-thumb-translate-md: 24px;
-  --spacing-switch-thumb-translate-lg: 24px;
+  --spacing-switch-thumb-translate-lg: 32px;
   --spacing-switch-focus-ring-width: 2px;
   --spacing-switch-focus-ring-offset: 2px;
   --color-switch-track-background-checked: oklch(0.546 0.215 262.89);
@@ -1012,6 +1008,10 @@
   --color-pagination-background-hover: oklch(0.984 0.003 248.29);
   --color-table-row-focus: oklch(0.97 0.014 254.72);
   --color-toggle-background-hover: oklch(0.984 0.003 248.29);
+  --select-content-z-index: 1000;
+  --color-select-item-background-focus: oklch(0.984 0.003 248.29);
+  --color-select-item-text-focus: oklch(0.279 0.037 260.04);
+  --spacing-select-item-indicator-left: 8px;
 }
 
 @layer base {
@@ -1632,15 +1632,11 @@
     --spacing-select-content-padding: 4px;
     --spacing-select-content-max-height: 320px;
     --spacing-select-content-min-width: 128px;
-    --select-content-z-index: 1000;
     --spacing-select-item-padding-y: 8px;
     --spacing-select-item-padding-left: 32px;
     --spacing-select-item-padding-right: 8px;
     --spacing-select-item-radius: 2px;
     --font-size-select-item-font-size: 14px;
-    --color-select-item-background-focus: oklch(0.984 0.003 248.29);
-    --color-select-item-text-focus: oklch(0.279 0.037 260.04);
-    --spacing-select-item-indicator-left: 8px;
     --spacing-select-separator-height: 1px;
     --spacing-checkbox-size-sm: 12px;
     --spacing-checkbox-size-md: 16px;
@@ -1652,21 +1648,21 @@
     --spacing-checkbox-icon-size-lg: 24px;
     --spacing-checkbox-focus-ring-width: 2px;
     --spacing-checkbox-focus-ring-offset: 2px;
-    --spacing-switch-track-height-sm: 24px;
+    --spacing-switch-track-height-sm: 16px;
     --spacing-switch-track-height-md: 24px;
-    --spacing-switch-track-height-lg: 24px;
+    --spacing-switch-track-height-lg: 32px;
     --spacing-switch-track-width-sm: 32px;
-    --spacing-switch-track-width-md: 40px;
+    --spacing-switch-track-width-md: 48px;
     --spacing-switch-track-width-lg: 60px;
     --spacing-switch-track-radius: 9999px;
     --spacing-switch-track-border-width: 2px;
     --spacing-switch-thumb-size-sm: 16px;
     --spacing-switch-thumb-size-md: 24px;
-    --spacing-switch-thumb-size-lg: 24px;
+    --spacing-switch-thumb-size-lg: 32px;
     --spacing-switch-thumb-radius: 9999px;
     --spacing-switch-thumb-translate-sm: 16px;
     --spacing-switch-thumb-translate-md: 24px;
-    --spacing-switch-thumb-translate-lg: 24px;
+    --spacing-switch-thumb-translate-lg: 32px;
     --spacing-switch-focus-ring-width: 2px;
     --spacing-switch-focus-ring-offset: 2px;
     --color-switch-track-background-checked: oklch(0.546 0.215 262.89);
@@ -2024,6 +2020,10 @@
     --color-pagination-background-hover: oklch(0.984 0.003 248.29);
     --color-table-row-focus: oklch(0.97 0.014 254.72);
     --color-toggle-background-hover: oklch(0.984 0.003 248.29);
+    --select-content-z-index: 1000;
+    --color-select-item-background-focus: oklch(0.984 0.003 248.29);
+    --color-select-item-text-focus: oklch(0.279 0.037 260.04);
+    --spacing-select-item-indicator-left: 8px;
   }
 }
 
@@ -2393,15 +2393,11 @@
   --spacing-select-content-padding: 4px;
   --spacing-select-content-max-height: 320px;
   --spacing-select-content-min-width: 128px;
-  --select-content-z-index: 1000;
   --spacing-select-item-padding-y: 8px;
   --spacing-select-item-padding-left: 32px;
   --spacing-select-item-padding-right: 8px;
   --spacing-select-item-radius: 2px;
   --font-size-select-item-font-size: 14px;
-  --color-select-item-background-focus: oklch(0.372 0.039 257.3);
-  --color-select-item-text-focus: oklch(0.984 0.003 248.29);
-  --spacing-select-item-indicator-left: 8px;
   --spacing-select-separator-height: 1px;
   --spacing-checkbox-size-sm: 12px;
   --spacing-checkbox-size-md: 16px;
@@ -2413,21 +2409,21 @@
   --spacing-checkbox-icon-size-lg: 24px;
   --spacing-checkbox-focus-ring-width: 2px;
   --spacing-checkbox-focus-ring-offset: 2px;
-  --spacing-switch-track-height-sm: 24px;
+  --spacing-switch-track-height-sm: 16px;
   --spacing-switch-track-height-md: 24px;
-  --spacing-switch-track-height-lg: 24px;
+  --spacing-switch-track-height-lg: 32px;
   --spacing-switch-track-width-sm: 32px;
-  --spacing-switch-track-width-md: 40px;
+  --spacing-switch-track-width-md: 48px;
   --spacing-switch-track-width-lg: 60px;
   --spacing-switch-track-radius: 9999px;
   --spacing-switch-track-border-width: 2px;
   --spacing-switch-thumb-size-sm: 16px;
   --spacing-switch-thumb-size-md: 24px;
-  --spacing-switch-thumb-size-lg: 24px;
+  --spacing-switch-thumb-size-lg: 32px;
   --spacing-switch-thumb-radius: 9999px;
   --spacing-switch-thumb-translate-sm: 16px;
   --spacing-switch-thumb-translate-md: 24px;
-  --spacing-switch-thumb-translate-lg: 24px;
+  --spacing-switch-thumb-translate-lg: 32px;
   --spacing-switch-focus-ring-width: 2px;
   --spacing-switch-focus-ring-offset: 2px;
   --color-switch-track-background-checked: oklch(0.546 0.215 262.89);
@@ -2785,4 +2781,8 @@
   --color-pagination-background-hover: oklch(0.372 0.039 257.3);
   --color-table-row-focus: oklch(0.282 0.087 267.94);
   --color-toggle-background-hover: oklch(0.372 0.039 257.3);
+  --select-content-z-index: 1000;
+  --color-select-item-background-focus: oklch(0.372 0.039 257.3);
+  --color-select-item-text-focus: oklch(0.984 0.003 248.29);
+  --spacing-select-item-indicator-left: 8px;
 }

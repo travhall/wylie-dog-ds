@@ -9420,18 +9420,6 @@
         "variable": "var(--select-content-min-width)",
         "description": ""
       },
-      "select-content-z-index": {
-        "name": "selectContentZIndex",
-        "path": [
-          "select",
-          "content",
-          "z-index"
-        ],
-        "value": 1000,
-        "type": "number",
-        "variable": "var(--select-content-z-index)",
-        "description": ""
-      },
       "select-item-padding-y": {
         "name": "selectItemPaddingY",
         "path": [
@@ -9492,6 +9480,52 @@
         "variable": "var(--select-item-font-size)",
         "description": ""
       },
+      "select-separator-height": {
+        "name": "selectSeparatorHeight",
+        "path": [
+          "select",
+          "separator",
+          "height"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--select-separator-height)",
+        "description": ""
+      },
+      "select-separator-margin-x": {
+        "name": "selectSeparatorMarginX",
+        "path": [
+          "select",
+          "separator-margin-x"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--select-separator-margin-x)",
+        "description": ""
+      },
+      "select-separator-margin-y": {
+        "name": "selectSeparatorMarginY",
+        "path": [
+          "select",
+          "separator-margin-y"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--select-separator-margin-y)",
+        "description": ""
+      },
+      "select-content-z-index": {
+        "name": "selectContentZIndex",
+        "path": [
+          "select",
+          "content",
+          "z-index"
+        ],
+        "value": 1000,
+        "type": "number",
+        "variable": "var(--select-content-z-index)",
+        "description": ""
+      },
       "select-item-background-focus": {
         "name": "selectItemBackgroundFocus",
         "path": [
@@ -9526,40 +9560,6 @@
         "value": "8px",
         "type": "spacing",
         "variable": "var(--select-item-indicator-left)",
-        "description": ""
-      },
-      "select-separator-height": {
-        "name": "selectSeparatorHeight",
-        "path": [
-          "select",
-          "separator",
-          "height"
-        ],
-        "value": "1px",
-        "type": "spacing",
-        "variable": "var(--select-separator-height)",
-        "description": ""
-      },
-      "select-separator-margin-x": {
-        "name": "selectSeparatorMarginX",
-        "path": [
-          "select",
-          "separator-margin-x"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--select-separator-margin-x)",
-        "description": ""
-      },
-      "select-separator-margin-y": {
-        "name": "selectSeparatorMarginY",
-        "path": [
-          "select",
-          "separator-margin-y"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--select-separator-margin-y)",
         "description": ""
       }
     },
@@ -9711,7 +9711,7 @@
           "height",
           "sm"
         ],
-        "value": "24px",
+        "value": "16px",
         "type": "spacing",
         "variable": "var(--switch-track-height-sm)",
         "description": ""
@@ -9737,7 +9737,7 @@
           "height",
           "lg"
         ],
-        "value": "24px",
+        "value": "32px",
         "type": "spacing",
         "variable": "var(--switch-track-height-lg)",
         "description": ""
@@ -9763,7 +9763,7 @@
           "width",
           "md"
         ],
-        "value": "40px",
+        "value": "48px",
         "type": "spacing",
         "variable": "var(--switch-track-width-md)",
         "description": ""
@@ -9840,7 +9840,7 @@
           "size",
           "lg"
         ],
-        "value": "24px",
+        "value": "32px",
         "type": "spacing",
         "variable": "var(--switch-thumb-size-lg)",
         "description": ""
@@ -9891,7 +9891,7 @@
           "translate",
           "lg"
         ],
-        "value": "24px",
+        "value": "32px",
         "type": "spacing",
         "variable": "var(--switch-thumb-translate-lg)",
         "description": ""

@@ -1023,10 +1023,6 @@
     "$type": "spacing",
     "$value": "{space.1200}"
   },
-  "select.content.z-index": {
-    "$type": "number",
-    "$value": "{z-index.dropdown}"
-  },
   "select.item.padding-y": {
     "$type": "spacing",
     "$value": "{space.100}"
@@ -1046,18 +1042,6 @@
   "select.item.font-size": {
     "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
-  },
-  "select.item.background-focus": {
-    "$type": "color",
-    "$value": "{color.interactive.secondary}"
-  },
-  "select.item.text-focus": {
-    "$type": "color",
-    "$value": "{color.text.primary}"
-  },
-  "select.item.indicator-left": {
-    "$type": "spacing",
-    "$value": "{space.100}"
   },
   "select.separator.height": {
     "$type": "spacing",
@@ -1105,7 +1089,7 @@
   },
   "switch.track.height.sm": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.200}"
   },
   "switch.track.height.md": {
     "$type": "spacing",
@@ -1113,7 +1097,7 @@
   },
   "switch.track.height.lg": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.400}"
   },
   "switch.track.width.sm": {
     "$type": "spacing",
@@ -1121,7 +1105,7 @@
   },
   "switch.track.width.md": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.600}"
   },
   "switch.track.width.lg": {
     "$type": "spacing",
@@ -1145,7 +1129,7 @@
   },
   "switch.thumb.size.lg": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.400}"
   },
   "switch.thumb.radius": {
     "$type": "dimension",
@@ -1161,7 +1145,7 @@
   },
   "switch.thumb.translate.lg": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.400}"
   },
   "switch.focus.ring.width": {
     "$type": "spacing",
@@ -2590,5 +2574,21 @@
   "toggle.background-hover": {
     "$type": "color",
     "$value": "{color.interactive.secondary}"
+  },
+  "select.content.z-index": {
+    "$type": "number",
+    "$value": "{z-index.dropdown}"
+  },
+  "select.item.background-focus": {
+    "$type": "color",
+    "$value": "{color.interactive.secondary}"
+  },
+  "select.item.text-focus": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "select.item.indicator-left": {
+    "$type": "spacing",
+    "$value": "{space.100}"
   }
 }
