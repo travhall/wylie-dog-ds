@@ -381,7 +381,7 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass("max-w-(--spacing-dialog-content-width-sm)");
+        expect(dialog).toHaveClass("max-w-(--space-dialog-content-width-sm)");
       });
     });
 
@@ -393,7 +393,7 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass("max-w-(--spacing-dialog-content-width-md)");
+        expect(dialog).toHaveClass("max-w-(--space-dialog-content-width-md)");
       });
     });
 
@@ -405,7 +405,7 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass("max-w-(--spacing-dialog-content-width-lg)");
+        expect(dialog).toHaveClass("max-w-(--space-dialog-content-width-lg)");
       });
     });
 
@@ -417,9 +417,7 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass(
-          "max-w-(--spacing-dialog-content-max-width)"
-        );
+        expect(dialog).toHaveClass("max-w-(--space-dialog-content-max-width)");
       });
     });
 
@@ -538,7 +536,7 @@ describe("Dialog", () => {
           .getByText("Dialog Title")
           .closest(".flex.flex-col");
         expect(header).toBeInTheDocument();
-        expect(header).toHaveClass("space-y-(--spacing-dialog-header-gap)");
+        expect(header).toHaveClass("space-y-(--space-dialog-header-gap)");
       });
     });
 
@@ -586,7 +584,7 @@ describe("Dialog", () => {
         expect(footer).toBeInTheDocument();
         expect(footer).toHaveClass("sm:flex-row");
         expect(footer).toHaveClass("sm:justify-end");
-        expect(footer).toHaveClass("sm:space-x-(--spacing-dialog-footer-gap)");
+        expect(footer).toHaveClass("sm:space-x-(--space-dialog-footer-gap)");
       });
     });
 
@@ -600,8 +598,8 @@ describe("Dialog", () => {
         const closeButton = screen.getByRole("button", { name: "Close" });
         expect(closeButton).toHaveClass(
           "absolute",
-          "right-(--spacing-dialog-close-button-offset)",
-          "top-(--spacing-dialog-close-button-offset)"
+          "right-(--space-dialog-close-button-offset)",
+          "top-(--space-dialog-close-button-offset)"
         );
         expect(closeButton.querySelector("svg")).toBeInTheDocument();
       });

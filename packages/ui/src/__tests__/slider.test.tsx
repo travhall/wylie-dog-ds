@@ -435,7 +435,7 @@ describe("Slider", () => {
       );
 
       const track = container.querySelector(
-        '[class*="rounded-(--spacing-slider-track-radius)"]'
+        '[class*="rounded-(--space-slider-track-radius)"]'
       );
       expect(track).toBeInTheDocument();
     });
@@ -457,7 +457,7 @@ describe("Slider", () => {
       );
 
       const thumb = container.querySelector(
-        '[class*="rounded-(--spacing-slider-thumb-radius)"][class*="h-(--spacing-slider-thumb-size)"]'
+        '[class*="rounded-(--space-slider-thumb-radius)"][class*="h-(--space-slider-thumb-size)"]'
       );
       expect(thumb).toBeInTheDocument();
     });

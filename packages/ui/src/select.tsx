@@ -51,9 +51,9 @@ export const SelectTrigger = React.forwardRef<
   const size = propSize || context.size;
 
   const sizes = {
-    sm: "h-(--spacing-select-trigger-height-sm) px-(--spacing-select-trigger-padding-x-sm) text-(length:--font-size-select-trigger-font-size-sm)",
-    md: "h-(--spacing-select-trigger-height-md) px-(--spacing-select-trigger-padding-x-md) text-(length:--font-size-select-trigger-font-size-md)",
-    lg: "h-(--spacing-select-trigger-height-lg) px-(--spacing-select-trigger-padding-x-lg) text-(length:--font-size-select-trigger-font-size-lg)",
+    sm: "h-(--space-select-trigger-height-sm) px-(--space-select-trigger-padding-x-sm) text-(length:--font-size-select-trigger-font-size-sm)",
+    md: "h-(--space-select-trigger-height-md) px-(--space-select-trigger-padding-x-md) text-(length:--font-size-select-trigger-font-size-md)",
+    lg: "h-(--space-select-trigger-height-lg) px-(--space-select-trigger-padding-x-lg) text-(length:--font-size-select-trigger-font-size-lg)",
   };
 
   return (
@@ -61,9 +61,9 @@ export const SelectTrigger = React.forwardRef<
       ref={ref}
       className={cn(
         "flex w-full items-center justify-between border border-(--color-input-border) transition-colors",
-        "rounded-(--spacing-select-trigger-radius)",
+        "rounded-(--space-select-trigger-radius)",
         "placeholder:text-(--color-input-placeholder)",
-        "focus:outline-none focus:ring-(length:--spacing-focus-ring-width) focus:ring-(--color-input-border-focus) focus:ring-offset-(--spacing-focus-ring-offset)",
+        "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-input-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
         "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
         "[&>span]:line-clamp-1",
         error
@@ -78,7 +78,7 @@ export const SelectTrigger = React.forwardRef<
       {children}
       <SelectPrimitive.Icon asChild>
         <svg
-          className="h-(--spacing-icon-size-md) w-(--spacing-icon-size-md) opacity-(--state-opacity-disabled)"
+          className="h-(--space-icon-size-md) w-(--space-icon-size-md) opacity-(--state-opacity-disabled)"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -106,9 +106,9 @@ export const SelectContent = React.forwardRef<
       ref={ref}
       className={cn(
         "relative z-(--select-content-z-index) overflow-hidden border border-(--color-input-border)",
-        "max-h-(--spacing-select-content-max-height)",
-        "min-w-(--spacing-select-content-min-width)",
-        "rounded-(--spacing-select-content-radius)",
+        "max-h-(--space-select-content-max-height)",
+        "min-w-(--space-select-content-min-width)",
+        "rounded-(--space-select-content-radius)",
         "bg-(--color-background-primary) text-(--color-text-primary) shadow-(--shadow-md)",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -124,7 +124,7 @@ export const SelectContent = React.forwardRef<
     >
       <SelectPrimitive.Viewport
         className={cn(
-          "p-(--spacing-select-content-padding)",
+          "p-(--space-select-content-padding)",
           position === "popper" &&
             "h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width)"
         )}
@@ -154,10 +154,10 @@ export const SelectItem = React.forwardRef<
       ref={ref}
       className={cn(
         "relative flex w-full cursor-default select-none items-center outline-none",
-        "rounded-(--spacing-select-item-radius)",
-        "py-(--spacing-select-item-padding-y)",
-        "pl-(--spacing-select-item-padding-left)",
-        "pr-(--spacing-select-item-padding-right)",
+        "rounded-(--space-select-item-radius)",
+        "py-(--space-select-item-padding-y)",
+        "pl-(--space-select-item-padding-left)",
+        "pr-(--space-select-item-padding-right)",
         fontSizes[size],
         "focus:bg-(--color-select-item-background-focus) focus:text-(--color-select-item-text-focus) hover:bg-(--color-select-item-background-focus) hover:text-(--color-select-item-text-focus)",
         "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
@@ -165,10 +165,10 @@ export const SelectItem = React.forwardRef<
       )}
       {...props}
     >
-      <span className="absolute left-(--spacing-select-item-indicator-left) flex h-(--spacing-icon-size-sm) w-(--spacing-icon-size-sm) items-center justify-center">
+      <span className="absolute left-(--space-select-item-indicator-left) flex h-(--space-icon-size-sm) w-(--space-icon-size-sm) items-center justify-center">
         <SelectPrimitive.ItemIndicator>
           <svg
-            className="h-(--spacing-icon-size-md) w-(--spacing-icon-size-md)"
+            className="h-(--space-icon-size-md) w-(--space-icon-size-md)"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -191,8 +191,8 @@ export const SelectSeparator = React.forwardRef<
   <SelectPrimitive.Separator
     ref={ref}
     className={cn(
-      "-mx-(--spacing-select-separator-margin-x) my-(--spacing-select-separator-margin-y) bg-(--color-border-primary)",
-      "h-(--spacing-select-separator-height)",
+      "-mx-(--space-select-separator-margin-x) my-(--space-select-separator-margin-y) bg-(--color-border-primary)",
+      "h-(--space-select-separator-height)",
       className
     )}
     {...props}

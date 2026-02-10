@@ -24,17 +24,17 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
     ref
   ) => {
     const variants = {
-      default: "rounded-(--spacing-skeleton-radius)",
-      text: "h-(--spacing-skeleton-height-text) rounded-(--spacing-skeleton-radius)",
-      circular: "rounded-(--spacing-skeleton-rounded-full)",
-      rectangular: "rounded-(--spacing-skeleton-rounded-sm)",
+      default: "rounded-(--space-skeleton-radius)",
+      text: "h-(--space-skeleton-height-text) rounded-(--space-skeleton-radius)",
+      circular: "rounded-(--space-skeleton-rounded-full)",
+      rectangular: "rounded-(--space-skeleton-rounded-sm)",
     };
 
     const sizes = {
-      sm: "h-(--spacing-skeleton-height-text) w-(--spacing-skeleton-height-text)",
-      md: "h-(--spacing-skeleton-height-title) w-(--spacing-skeleton-height-title)",
-      lg: "h-(--spacing-skeleton-height-button) w-(--spacing-skeleton-height-button)",
-      xl: "h-(--spacing-skeleton-height-avatar) w-(--spacing-skeleton-height-avatar)",
+      sm: "h-(--space-skeleton-height-text) w-(--space-skeleton-height-text)",
+      md: "h-(--space-skeleton-height-title) w-(--space-skeleton-height-title)",
+      lg: "h-(--space-skeleton-height-button) w-(--space-skeleton-height-button)",
+      xl: "h-(--space-skeleton-height-avatar) w-(--space-skeleton-height-avatar)",
     };
 
     return (

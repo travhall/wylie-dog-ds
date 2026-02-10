@@ -19,14 +19,14 @@ const ContextMenuSubTrigger = React.forwardRef<
   <ContextMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) px-(--spacing-context-menu-item-padding-x) py-(--spacing-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-accent data-[state=open]:bg-accent",
-      inset && "pl-(--spacing-context-menu-item-inset)",
+      "flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) px-(--space-context-menu-item-padding-x) py-(--space-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-accent data-[state=open]:bg-accent",
+      inset && "pl-(--space-context-menu-item-inset)",
       className
     )}
     {...props}
   >
     {children}
-    <ChevronRightIcon className="ml-auto h-(--spacing-icon-size-md) w-(--spacing-icon-size-md)" />
+    <ChevronRightIcon className="ml-auto h-(--space-icon-size-md) w-(--space-icon-size-md)" />
   </ContextMenuPrimitive.SubTrigger>
 ));
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName;
@@ -38,7 +38,7 @@ const ContextMenuSubContent = React.forwardRef<
   <ContextMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-50 min-w-(--spacing-context-menu-sub-content-min-width) overflow-hidden rounded-(--spacing-context-menu-content-radius) border bg-(--color-contextmenu-background) p-(--spacing-context-menu-checkbox-padding) text-(--color-contextmenu-text) shadow-(--shadow-lg) data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+      "z-50 min-w-(--space-context-menu-sub-content-min-width) overflow-hidden rounded-(--space-context-menu-content-radius) border bg-(--color-contextmenu-background) p-(--space-context-menu-checkbox-padding) text-(--color-contextmenu-text) shadow-(--shadow-lg) data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
       className
     )}
     {...props}
@@ -54,7 +54,7 @@ const ContextMenuContent = React.forwardRef<
     <ContextMenuPrimitive.Content
       ref={ref}
       className={cn(
-        "z-50 min-w-(--spacing-context-menu-content-min-width) overflow-hidden rounded-(--spacing-context-menu-content-radius) border bg-(--color-contextmenu-background) p-(--spacing-context-menu-content-padding) text-(--color-contextmenu-text) shadow-(--shadow-md)",
+        "z-50 min-w-(--space-context-menu-content-min-width) overflow-hidden rounded-(--space-context-menu-content-radius) border bg-(--color-contextmenu-background) p-(--space-context-menu-content-padding) text-(--color-contextmenu-text) shadow-(--shadow-md)",
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
         className
       )}
@@ -73,8 +73,8 @@ const ContextMenuItem = React.forwardRef<
   <ContextMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) px-(--spacing-context-menu-item-padding-x) py-(--spacing-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
-      inset && "pl-(--spacing-context-menu-item-inset)",
+      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) px-(--space-context-menu-item-padding-x) py-(--space-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
+      inset && "pl-(--space-context-menu-item-inset)",
       className
     )}
     {...props}
@@ -89,15 +89,15 @@ const ContextMenuCheckboxItem = React.forwardRef<
   <ContextMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) py-(--spacing-context-menu-item-padding-y) pl-(--spacing-context-menu-item-inset) pr-(--spacing-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
+      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) py-(--space-context-menu-item-padding-y) pl-(--space-context-menu-item-inset) pr-(--space-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
       className
     )}
     checked={checked}
     {...props}
   >
-    <span className="absolute left-2 flex h-(--spacing-context-menu-item-indicator-size) w-(--spacing-context-menu-item-indicator-size) items-center justify-center">
+    <span className="absolute left-2 flex h-(--space-context-menu-item-indicator-size) w-(--space-context-menu-item-indicator-size) items-center justify-center">
       <ContextMenuPrimitive.ItemIndicator>
-        <CheckIcon className="h-(--spacing-context-menu-item-icon-size) w-(--spacing-context-menu-item-icon-size)" />
+        <CheckIcon className="h-(--space-context-menu-item-icon-size) w-(--space-context-menu-item-icon-size)" />
       </ContextMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -113,14 +113,14 @@ const ContextMenuRadioItem = React.forwardRef<
   <ContextMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-(--spacing-context-menu-item-radius) py-(--spacing-context-menu-item-padding-y) pl-(--spacing-context-menu-item-inset) pr-(--spacing-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
+      "relative flex cursor-default select-none items-center rounded-(--space-context-menu-item-radius) py-(--space-context-menu-item-padding-y) pl-(--space-context-menu-item-inset) pr-(--space-context-menu-item-padding-x) text-(length:--font-size-context-menu-item-font-size) outline-none focus:bg-(--color-contextmenu-item-hover) focus:text-(--color-contextmenu-item-text-hover) data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
       className
     )}
     {...props}
   >
-    <span className="absolute left-2 flex h-(--spacing-context-menu-item-indicator-size) w-(--spacing-context-menu-item-indicator-size) items-center justify-center">
+    <span className="absolute left-2 flex h-(--space-context-menu-item-indicator-size) w-(--space-context-menu-item-indicator-size) items-center justify-center">
       <ContextMenuPrimitive.ItemIndicator>
-        <CircleIcon className="h-(--spacing-context-menu-item-icon-size) w-(--spacing-context-menu-item-icon-size) fill-current" />
+        <CircleIcon className="h-(--space-context-menu-item-icon-size) w-(--space-context-menu-item-icon-size) fill-current" />
       </ContextMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -137,8 +137,8 @@ const ContextMenuLabel = React.forwardRef<
   <ContextMenuPrimitive.Label
     ref={ref}
     className={cn(
-      "px-(--spacing-context-menu-item-padding-x) py-(--spacing-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) font-semibold text-(--color-contextmenu-label)",
-      inset && "pl-(--spacing-context-menu-item-inset)",
+      "px-(--space-context-menu-item-padding-x) py-(--space-context-menu-item-padding-y) text-(length:--font-size-context-menu-item-font-size) font-semibold text-(--color-contextmenu-label)",
+      inset && "pl-(--space-context-menu-item-inset)",
       className
     )}
     {...props}
@@ -153,7 +153,7 @@ const ContextMenuSeparator = React.forwardRef<
   <ContextMenuPrimitive.Separator
     ref={ref}
     className={cn(
-      "-mx-(--spacing-context-menu-separator-margin-x) my-(--spacing-context-menu-separator-margin-y) h-px bg-(--color-contextmenu-separator)",
+      "-mx-(--space-context-menu-separator-margin-x) my-(--space-context-menu-separator-margin-y) h-px bg-(--color-contextmenu-separator)",
       className
     )}
     {...props}
@@ -168,7 +168,7 @@ const ContextMenuShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-(length:--font-size-context-menu-shortcut-font-size) tracking-(--spacing-typography-tracking-widest) text-(--color-contextmenu-shortcut)",
+        "ml-auto text-(length:--font-size-context-menu-shortcut-font-size) tracking-(--space-typography-tracking-widest) text-(--color-contextmenu-shortcut)",
         className
       )}
       {...props}

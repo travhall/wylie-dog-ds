@@ -16,15 +16,15 @@ export const Checkbox = React.forwardRef<
   CheckboxProps
 >(({ className, size = "md", error = false, ...props }, ref) => {
   const sizes = {
-    sm: "h-(--spacing-checkbox-size-sm) w-(--spacing-checkbox-size-sm)",
-    md: "h-(--spacing-checkbox-size-md) w-(--spacing-checkbox-size-md)",
-    lg: "h-(--spacing-checkbox-size-lg) w-(--spacing-checkbox-size-lg)",
+    sm: "h-(--space-checkbox-size-sm) w-(--space-checkbox-size-sm)",
+    md: "h-(--space-checkbox-size-md) w-(--space-checkbox-size-md)",
+    lg: "h-(--space-checkbox-size-lg) w-(--space-checkbox-size-lg)",
   };
 
   const iconSizes = {
-    sm: "h-(--spacing-checkbox-icon-size-sm) w-(--spacing-checkbox-icon-size-sm)",
-    md: "h-(--spacing-checkbox-icon-size-md) w-(--spacing-checkbox-icon-size-md)",
-    lg: "h-(--spacing-checkbox-icon-size-lg) w-(--spacing-checkbox-icon-size-lg)",
+    sm: "h-(--space-checkbox-icon-size-sm) w-(--space-checkbox-icon-size-sm)",
+    md: "h-(--space-checkbox-icon-size-md) w-(--space-checkbox-icon-size-md)",
+    lg: "h-(--space-checkbox-icon-size-lg) w-(--space-checkbox-icon-size-lg)",
   };
 
   return (
@@ -32,12 +32,12 @@ export const Checkbox = React.forwardRef<
       ref={ref}
       className={cn(
         "peer transition-all",
-        "rounded-(--spacing-checkbox-border-radius)",
-        "border-(length:--spacing-checkbox-border-width)",
+        "rounded-(--space-checkbox-border-radius)",
+        "border-(length:--space-checkbox-border-width)",
         "focus:outline-none",
-        "focus:ring-(--spacing-checkbox-focus-ring-width)",
+        "focus:ring-(--space-checkbox-focus-ring-width)",
         "focus:ring-(--color-border-focus)",
-        "focus:ring-offset-(--spacing-checkbox-focus-ring-offset)",
+        "focus:ring-offset-(--space-checkbox-focus-ring-offset)",
         "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
         "data-[state=checked]:bg-(--color-interactive-primary) data-[state=checked]:text-(--color-text-inverse)",
         "data-[state=checked]:border-(--color-interactive-primary)",

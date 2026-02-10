@@ -28,7 +28,7 @@ const NavigationMenuList = React.forwardRef<
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      "group flex flex-1 list-none items-center justify-center space-x-(--spacing-navigation-menu-list-gap)",
+      "group flex flex-1 list-none items-center justify-center space-x-(--space-navigation-menu-list-gap)",
       className
     )}
     {...props}
@@ -39,7 +39,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cn(
-  "group inline-flex h-10 w-max items-center justify-center rounded-(--spacing-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--spacing-navigation-menu-trigger-padding-x) py-(--spacing-navigation-menu-trigger-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) font-medium transition-colors",
+  "group inline-flex h-10 w-max items-center justify-center rounded-(--space-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--space-navigation-menu-trigger-padding-x) py-(--space-navigation-menu-trigger-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) font-medium transition-colors",
   "hover:bg-(--color-navigation-hover) hover:text-(--color-navigation-text-hover)",
   "focus:bg-(--color-navigation-focus) focus:text-(--color-navigation-text-focus) focus:outline-none",
   "disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
@@ -57,7 +57,7 @@ const NavigationMenuTrigger = React.forwardRef<
   >
     {children}{" "}
     <ChevronDownIcon
-      className="relative top-px ml-(--spacing-navigation-menu-indicator-margin-left) h-(--spacing-icon-size-sm) w-(--spacing-icon-size-sm) transition duration-(--transition-duration-normal) group-data-[state=open]:rotate-180"
+      className="relative top-px ml-(--space-navigation-menu-indicator-margin-left) h-(--space-icon-size-sm) w-(--space-icon-size-sm) transition duration-(--transition-duration-normal) group-data-[state=open]:rotate-180"
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>
@@ -88,7 +88,7 @@ const NavigationMenuViewport = React.forwardRef<
   <div className={cn("absolute left-0 top-full flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative mt-(--spacing-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--spacing-navigation-menu-trigger-radius) border border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-(--shadow-lg) data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-(--radix-navigation-menu-viewport-width)",
+        "origin-top-center relative mt-(--space-navigation-menu-indicator-margin-top) h-(--radix-navigation-menu-viewport-height) w-full overflow-hidden rounded-(--space-navigation-menu-trigger-radius) border border-(--color-navigation-content-border) bg-(--color-navigation-content-background) text-(--color-navigation-content-text) shadow-(--shadow-lg) data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-(--radix-navigation-menu-viewport-width)",
         className
       )}
       ref={ref}
@@ -111,7 +111,7 @@ const NavigationMenuIndicator = React.forwardRef<
     )}
     {...props}
   >
-    <div className="relative top-[60%] h-(--spacing-icon-size-xs) w-(--spacing-icon-size-xs) rotate-45 rounded-tl-sm bg-(--color-navigation-indicator) shadow-(--shadow-md)" />
+    <div className="relative top-[60%] h-(--space-icon-size-xs) w-(--space-icon-size-xs) rotate-45 rounded-tl-sm bg-(--color-navigation-indicator) shadow-(--shadow-md)" />
   </NavigationMenuPrimitive.Indicator>
 ));
 NavigationMenuIndicator.displayName =

@@ -365,7 +365,7 @@ describe("RadioGroup", () => {
       render(<TestRadioGroup />);
 
       const group = screen.getByRole("radiogroup");
-      expect(group).toHaveClass("grid", "gap-(--spacing-radio-group-item-gap)");
+      expect(group).toHaveClass("grid", "gap-(--space-radio-group-item-gap)");
     });
 
     it("should apply custom className to radio group", () => {
@@ -396,9 +396,9 @@ describe("RadioGroup", () => {
       const radios = screen.getAllByRole("radio");
       expect(radios[0]).toHaveClass(
         "focus:outline-none",
-        "focus:ring-(length:--spacing-radio-focus-ring-width)",
+        "focus:ring-(length:--space-radio-focus-ring-width)",
         "focus:ring-(--color-border-focus)",
-        "focus:ring-offset-(length:--spacing-radio-focus-ring-offset)"
+        "focus:ring-offset-(length:--space-radio-focus-ring-offset)"
       );
     });
 
@@ -431,7 +431,7 @@ describe("RadioGroup", () => {
 
       const checkedRadio = screen.getByRole("radio", { name: "Option 1" });
       const indicator = checkedRadio.querySelector(
-        'div[class*="h-(--spacing-radio-indicator-size-md)"]'
+        'div[class*="h-(--space-radio-indicator-size-md)"]'
       );
       expect(indicator).toBeInTheDocument();
     });

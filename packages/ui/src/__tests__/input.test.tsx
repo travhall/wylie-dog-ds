@@ -214,24 +214,24 @@ describe("Input", () => {
       const { rerender } = render(<Input aria-label="Test" size="sm" />);
       let input = screen.getByLabelText("Test");
       expect(input).toHaveClass(
-        "h-(--spacing-input-height-sm)",
-        "px-(--spacing-input-padding-x)",
+        "h-(--space-input-height-sm)",
+        "px-(--space-input-padding-x)",
         "text-(length:--font-size-input-font-size-sm)"
       );
 
       rerender(<Input aria-label="Test" size="md" />);
       input = screen.getByLabelText("Test");
       expect(input).toHaveClass(
-        "h-(--spacing-input-height-md)",
-        "px-(--spacing-input-padding-x)",
+        "h-(--space-input-height-md)",
+        "px-(--space-input-padding-x)",
         "text-(length:--font-size-input-font-size-md)"
       );
 
       rerender(<Input aria-label="Test" size="lg" />);
       input = screen.getByLabelText("Test");
       expect(input).toHaveClass(
-        "h-(--spacing-input-height-lg)",
-        "px-(--spacing-input-padding-x)",
+        "h-(--space-input-height-lg)",
+        "px-(--space-input-padding-x)",
         "text-(length:--font-size-input-font-size-lg)"
       );
     });
@@ -304,7 +304,7 @@ describe("Input", () => {
       render(<Input aria-label="Quantity" type="number" size="lg" />);
       const input = screen.getByLabelText("Quantity");
       // Size classes
-      expect(input).toHaveClass("h-(--spacing-input-height-lg)");
+      expect(input).toHaveClass("h-(--space-input-height-lg)");
       // Type classes
       expect(input).toHaveClass(
         "[&::-webkit-inner-spin-button]:appearance-auto"

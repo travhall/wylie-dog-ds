@@ -31,7 +31,7 @@ const Form = React.forwardRef<HTMLFormElement, FormProps>(
   ({ className, ...props }, ref) => (
     <form
       ref={ref}
-      className={cn("space-y-(--spacing-form-item-gap)", className)}
+      className={cn("space-y-(--space-form-item-gap)", className)}
       {...props}
     />
   )
@@ -62,7 +62,7 @@ const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>(
       >
         <div
           ref={ref}
-          className={cn("space-y-(--spacing-form-label-gap)", className)}
+          className={cn("space-y-(--space-form-label-gap)", className)}
           {...props}
         />
       </FormFieldContext.Provider>
@@ -78,7 +78,7 @@ const FormItem = React.forwardRef<HTMLDivElement, FormItemProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("space-y-(--spacing-form-label-gap)", className)}
+      className={cn("space-y-(--space-form-label-gap)", className)}
       {...props}
     />
   )
@@ -117,7 +117,7 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
         {children}
         {isRequired && (
           <span
-            className="text-(--color-text-danger) ml-(--spacing-form-error-margin)"
+            className="text-(--color-text-danger) ml-(--space-form-error-margin)"
             aria-hidden="true"
           >
             *

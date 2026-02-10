@@ -23,9 +23,9 @@ const HoverCardContent = React.forwardRef<
     ref
   ) => {
     const sizes = {
-      sm: "w-(--spacing-hover-card-content-width-sm)",
-      md: "w-(--spacing-hover-card-content-width-md)",
-      lg: "w-(--spacing-hover-card-content-width-lg)",
+      sm: "w-(--space-hover-card-content-width-sm)",
+      md: "w-(--space-hover-card-content-width-md)",
+      lg: "w-(--space-hover-card-content-width-lg)",
     };
 
     return (
@@ -36,8 +36,8 @@ const HoverCardContent = React.forwardRef<
         className={cn(
           "z-50 border outline-none shadow-(--shadow-md)",
           sizes[size],
-          "rounded-(--spacing-hover-card-content-radius)",
-          "p-(--spacing-hover-card-content-padding)",
+          "rounded-(--space-hover-card-content-radius)",
+          "p-(--space-hover-card-content-padding)",
           "border-(--color-hover-card-border)",
           "bg-(--color-hover-card-background)",
           "text-(--color-hover-card-text)",

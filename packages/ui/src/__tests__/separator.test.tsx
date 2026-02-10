@@ -73,7 +73,7 @@ describe("Separator", () => {
       const { container } = render(<Separator />);
       const separator = container.querySelector("[data-orientation]");
       expect(separator).toHaveClass(
-        "h-(--spacing-separator-height-horizontal)",
+        "h-(--space-separator-height-horizontal)",
         "w-full"
       );
     });
@@ -84,7 +84,7 @@ describe("Separator", () => {
         '[data-orientation="horizontal"]'
       );
       expect(separator).toHaveClass(
-        "h-(--spacing-separator-height-horizontal)",
+        "h-(--space-separator-height-horizontal)",
         "w-full"
       );
     });
@@ -96,7 +96,7 @@ describe("Separator", () => {
       );
       expect(separator).toHaveClass(
         "h-full",
-        "w-(--spacing-separator-width-vertical)"
+        "w-(--space-separator-width-vertical)"
       );
     });
 
@@ -194,7 +194,7 @@ describe("Separator", () => {
       );
       const separator = container.querySelector("[data-orientation]");
       expect(separator).toHaveClass(
-        "w-(--spacing-separator-width-vertical)",
+        "w-(--space-separator-width-vertical)",
         "h-full",
         "bg-red-500"
       );

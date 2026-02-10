@@ -28,9 +28,9 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     ref
   ) => {
     const sizes = {
-      sm: "min-h-(--spacing-textarea-min-height-sm) px-(--spacing-textarea-padding) py-(--spacing-textarea-padding) text-(length:--font-size-textarea-font-size)",
-      md: "min-h-(--spacing-textarea-min-height-md) px-(--spacing-textarea-padding) py-(--spacing-textarea-padding) text-(length:--font-size-textarea-font-size)",
-      lg: "min-h-(--spacing-textarea-min-height-lg) px-(--spacing-textarea-padding) py-(--spacing-textarea-padding) text-(length:--font-size-textarea-font-size)",
+      sm: "min-h-(--space-textarea-min-height-sm) px-(--space-textarea-padding) py-(--space-textarea-padding) text-(length:--font-size-textarea-font-size)",
+      md: "min-h-(--space-textarea-min-height-md) px-(--space-textarea-padding) py-(--space-textarea-padding) text-(length:--font-size-textarea-font-size)",
+      lg: "min-h-(--space-textarea-min-height-lg) px-(--space-textarea-padding) py-(--space-textarea-padding) text-(length:--font-size-textarea-font-size)",
     };
 
     const resizeClasses = {
@@ -48,7 +48,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         className={cn(
           // Base styles
           "flex w-full border font-normal transition-colors",
-          "rounded-(--spacing-textarea-radius)",
+          "rounded-(--space-textarea-radius)",
           "placeholder:text-(--color-input-placeholder)",
           "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
           "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",

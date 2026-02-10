@@ -215,21 +215,21 @@ describe("Textarea", () => {
       const { rerender } = render(<Textarea aria-label="Test" size="sm" />);
       let textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass(
-        "min-h-(--spacing-textarea-min-height-sm)",
+        "min-h-(--space-textarea-min-height-sm)",
         "text-(length:--font-size-textarea-font-size)"
       );
 
       rerender(<Textarea aria-label="Test" size="md" />);
       textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass(
-        "min-h-(--spacing-textarea-min-height-md)",
+        "min-h-(--space-textarea-min-height-md)",
         "text-(length:--font-size-textarea-font-size)"
       );
 
       rerender(<Textarea aria-label="Test" size="lg" />);
       textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass(
-        "min-h-(--spacing-textarea-min-height-lg)",
+        "min-h-(--space-textarea-min-height-lg)",
         "text-(length:--font-size-textarea-font-size)"
       );
     });
@@ -275,7 +275,7 @@ describe("Textarea", () => {
       render(<Textarea aria-label="Test" />);
       const textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass(
-        "min-h-(--spacing-textarea-min-height-md)",
+        "min-h-(--space-textarea-min-height-md)",
         "text-(length:--font-size-textarea-font-size)"
       );
     });
@@ -520,7 +520,7 @@ describe("Textarea", () => {
 
       const textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass("border-(--color-input-border-error)");
-      expect(textarea).toHaveClass("min-h-(--spacing-textarea-min-height-lg)");
+      expect(textarea).toHaveClass("min-h-(--space-textarea-min-height-lg)");
     });
 
     it("should handle error and resize together", () => {
@@ -549,7 +549,7 @@ describe("Textarea", () => {
 
       const textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass("border-(--color-input-border-error)");
-      expect(textarea).toHaveClass("min-h-(--spacing-textarea-min-height-lg)");
+      expect(textarea).toHaveClass("min-h-(--space-textarea-min-height-lg)");
       expect(textarea).toHaveClass("resize-x");
       expect(textarea).toHaveAttribute("aria-describedby", "desc-id error-id");
       expect(textarea).toHaveAttribute("placeholder", "Enter text");

@@ -24,7 +24,7 @@ const PaginationContent = React.forwardRef<
     ref={ref}
     className={cn(
       "flex flex-row items-center",
-      "gap-(--spacing-pagination-item-gap)",
+      "gap-(--space-pagination-item-gap)",
       className
     )}
     {...props}
@@ -53,8 +53,8 @@ const PaginationLink = ({
     aria-current={isActive ? "page" : undefined}
     className={cn(
       "flex items-center justify-center whitespace-nowrap font-medium transition-colors",
-      "h-(--spacing-pagination-item-size) min-w-(--spacing-pagination-item-size) px-(--spacing-pagination-item-padding-x)",
-      "rounded-(--spacing-pagination-item-radius)",
+      "h-(--space-pagination-item-size) min-w-(--space-pagination-item-size) px-(--space-pagination-item-padding-x)",
+      "rounded-(--space-pagination-item-radius)",
       "text-(length:--font-size-pagination-item-font-size)",
       "hover:bg-(--color-pagination-hover) hover:text-(--color-pagination-text-hover)",
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
@@ -76,12 +76,12 @@ const PaginationPrevious = ({
   <PaginationLink
     aria-label="Go to previous page"
     className={cn(
-      "gap-(--spacing-pagination-list-gap) pl-(--spacing-pagination-ellipsis-padding-left)",
+      "gap-(--space-pagination-list-gap) pl-(--space-pagination-ellipsis-padding-left)",
       className
     )}
     {...props}
   >
-    <ChevronLeftIcon className="h-(--spacing-pagination-icon-size) w-(--spacing-pagination-icon-size)" />
+    <ChevronLeftIcon className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)" />
     <span>Previous</span>
   </PaginationLink>
 );
@@ -94,13 +94,13 @@ const PaginationNext = ({
   <PaginationLink
     aria-label="Go to next page"
     className={cn(
-      "gap-(--spacing-pagination-list-gap) pr-(--spacing-pagination-ellipsis-padding-right)",
+      "gap-(--space-pagination-list-gap) pr-(--space-pagination-ellipsis-padding-right)",
       className
     )}
     {...props}
   >
     <span>Next</span>
-    <ChevronRightIcon className="h-(--spacing-pagination-icon-size) w-(--spacing-pagination-icon-size)" />
+    <ChevronRightIcon className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)" />
   </PaginationLink>
 );
 PaginationNext.displayName = "PaginationNext";
@@ -114,7 +114,7 @@ const PaginationEllipsis = ({
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}
   >
-    <MoreHorizontalIcon className="h-(--spacing-pagination-icon-size) w-(--spacing-pagination-icon-size)" />
+    <MoreHorizontalIcon className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)" />
     <span className="sr-only">More pages</span>
   </span>
 );

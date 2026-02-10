@@ -372,8 +372,8 @@ describe("Tabs", () => {
 
       const tablist = screen.getByRole("tablist");
       expect(tablist).toHaveClass(
-        "h-(--spacing-tabs-list-height-sm)",
-        "p-(--spacing-tabs-list-padding-sm)"
+        "h-(--space-tabs-list-height-sm)",
+        "p-(--space-tabs-list-padding-sm)"
       );
     });
 
@@ -382,8 +382,8 @@ describe("Tabs", () => {
 
       const tablist = screen.getByRole("tablist");
       expect(tablist).toHaveClass(
-        "h-(--spacing-tabs-list-height-md)",
-        "p-(--spacing-tabs-list-padding-md)"
+        "h-(--space-tabs-list-height-md)",
+        "p-(--space-tabs-list-padding-md)"
       );
     });
 
@@ -392,8 +392,8 @@ describe("Tabs", () => {
 
       const tablist = screen.getByRole("tablist");
       expect(tablist).toHaveClass(
-        "h-(--spacing-tabs-list-height-lg)",
-        "p-(--spacing-tabs-list-padding-lg)"
+        "h-(--space-tabs-list-height-lg)",
+        "p-(--space-tabs-list-padding-lg)"
       );
     });
 
@@ -402,8 +402,8 @@ describe("Tabs", () => {
 
       const tab = screen.getByRole("tab", { name: "Tab 1" });
       expect(tab).toHaveClass(
-        "px-(--spacing-tabs-trigger-padding-x-sm)",
-        "py-(--spacing-tabs-trigger-padding-y-sm)",
+        "px-(--space-tabs-trigger-padding-x-sm)",
+        "py-(--space-tabs-trigger-padding-y-sm)",
         "text-(length:--font-size-tabs-trigger-font-size-sm)"
       );
     });
@@ -413,8 +413,8 @@ describe("Tabs", () => {
 
       const tab = screen.getByRole("tab", { name: "Tab 1" });
       expect(tab).toHaveClass(
-        "px-(--spacing-tabs-trigger-padding-x-md)",
-        "py-(--spacing-tabs-trigger-padding-y-md)",
+        "px-(--space-tabs-trigger-padding-x-md)",
+        "py-(--space-tabs-trigger-padding-y-md)",
         "text-(length:--font-size-tabs-trigger-font-size-md)"
       );
     });
@@ -424,8 +424,8 @@ describe("Tabs", () => {
 
       const tab = screen.getByRole("tab", { name: "Tab 1" });
       expect(tab).toHaveClass(
-        "px-(--spacing-tabs-trigger-padding-x-lg)",
-        "py-(--spacing-tabs-trigger-padding-y-lg)",
+        "px-(--space-tabs-trigger-padding-x-lg)",
+        "py-(--space-tabs-trigger-padding-y-lg)",
         "text-(length:--font-size-tabs-trigger-font-size-lg)"
       );
     });

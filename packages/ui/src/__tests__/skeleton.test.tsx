@@ -52,28 +52,28 @@ describe("Skeleton", () => {
     it("should apply default variant styles", () => {
       render(<Skeleton />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("rounded-(--spacing-skeleton-radius)");
+      expect(skeleton).toHaveClass("rounded-(--space-skeleton-radius)");
     });
 
     it("should apply text variant styles", () => {
       render(<Skeleton variant="text" />);
       const skeleton = screen.getByRole("status");
       expect(skeleton).toHaveClass(
-        "rounded-(--spacing-skeleton-radius)",
-        "h-(--spacing-skeleton-height-text)"
+        "rounded-(--space-skeleton-radius)",
+        "h-(--space-skeleton-height-text)"
       );
     });
 
     it("should apply circular variant styles", () => {
       render(<Skeleton variant="circular" />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("rounded-(--spacing-skeleton-rounded-full)");
+      expect(skeleton).toHaveClass("rounded-(--space-skeleton-rounded-full)");
     });
 
     it("should apply rectangular variant styles", () => {
       render(<Skeleton variant="rectangular" />);
       const skeleton = screen.getByRole("status");
-      expect(skeleton).toHaveClass("rounded-(--spacing-skeleton-rounded-sm)");
+      expect(skeleton).toHaveClass("rounded-(--space-skeleton-rounded-sm)");
     });
   });
 
@@ -82,8 +82,8 @@ describe("Skeleton", () => {
       render(<Skeleton />);
       const skeleton = screen.getByRole("status");
       expect(skeleton).not.toHaveClass(
-        "h-(--spacing-skeleton-height-text)",
-        "w-(--spacing-skeleton-height-text)"
+        "h-(--space-skeleton-height-text)",
+        "w-(--space-skeleton-height-text)"
       );
     });
 
@@ -91,8 +91,8 @@ describe("Skeleton", () => {
       render(<Skeleton size="sm" />);
       const skeleton = screen.getByRole("status");
       expect(skeleton).toHaveClass(
-        "h-(--spacing-skeleton-height-text)",
-        "w-(--spacing-skeleton-height-text)"
+        "h-(--space-skeleton-height-text)",
+        "w-(--space-skeleton-height-text)"
       );
     });
 
@@ -100,8 +100,8 @@ describe("Skeleton", () => {
       render(<Skeleton size="md" />);
       const skeleton = screen.getByRole("status");
       expect(skeleton).toHaveClass(
-        "h-(--spacing-skeleton-height-title)",
-        "w-(--spacing-skeleton-height-title)"
+        "h-(--space-skeleton-height-title)",
+        "w-(--space-skeleton-height-title)"
       );
     });
 
@@ -109,8 +109,8 @@ describe("Skeleton", () => {
       render(<Skeleton size="lg" />);
       const skeleton = screen.getByRole("status");
       expect(skeleton).toHaveClass(
-        "h-(--spacing-skeleton-height-button)",
-        "w-(--spacing-skeleton-height-button)"
+        "h-(--space-skeleton-height-button)",
+        "w-(--space-skeleton-height-button)"
       );
     });
 
@@ -118,8 +118,8 @@ describe("Skeleton", () => {
       render(<Skeleton size="xl" />);
       const skeleton = screen.getByRole("status");
       expect(skeleton).toHaveClass(
-        "h-(--spacing-skeleton-height-avatar)",
-        "w-(--spacing-skeleton-height-avatar)"
+        "h-(--space-skeleton-height-avatar)",
+        "w-(--space-skeleton-height-avatar)"
       );
     });
   });
@@ -147,9 +147,9 @@ describe("Skeleton", () => {
       render(<Skeleton variant="circular" size="lg" />);
       const skeleton = screen.getByRole("status");
       expect(skeleton).toHaveClass(
-        "rounded-(--spacing-skeleton-rounded-full)",
-        "h-(--spacing-skeleton-height-button)",
-        "w-(--spacing-skeleton-height-button)"
+        "rounded-(--space-skeleton-rounded-full)",
+        "h-(--space-skeleton-height-button)",
+        "w-(--space-skeleton-height-button)"
       );
     });
 
@@ -157,8 +157,8 @@ describe("Skeleton", () => {
       render(<Skeleton variant="text" className="w-3/4" />);
       const skeleton = screen.getByRole("status");
       expect(skeleton).toHaveClass(
-        "rounded-(--spacing-skeleton-radius)",
-        "h-(--spacing-skeleton-height-text)",
+        "rounded-(--space-skeleton-radius)",
+        "h-(--space-skeleton-height-text)",
         "w-3/4"
       );
     });

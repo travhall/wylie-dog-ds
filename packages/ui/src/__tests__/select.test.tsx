@@ -306,8 +306,8 @@ describe("Select", () => {
 
       const trigger = screen.getByRole("combobox");
       expect(trigger).toHaveClass(
-        "h-(--spacing-select-trigger-height-sm)",
-        "px-(--spacing-select-trigger-padding-x-sm)",
+        "h-(--space-select-trigger-height-sm)",
+        "px-(--space-select-trigger-padding-x-sm)",
         "text-(length:--font-size-select-trigger-font-size-sm)"
       );
     });
@@ -317,8 +317,8 @@ describe("Select", () => {
 
       const trigger = screen.getByRole("combobox");
       expect(trigger).toHaveClass(
-        "h-(--spacing-select-trigger-height-md)",
-        "px-(--spacing-select-trigger-padding-x-md)",
+        "h-(--space-select-trigger-height-md)",
+        "px-(--space-select-trigger-padding-x-md)",
         "text-(length:--font-size-select-trigger-font-size-md)"
       );
     });
@@ -328,8 +328,8 @@ describe("Select", () => {
 
       const trigger = screen.getByRole("combobox");
       expect(trigger).toHaveClass(
-        "h-(--spacing-select-trigger-height-lg)",
-        "px-(--spacing-select-trigger-padding-x-lg)",
+        "h-(--space-select-trigger-height-lg)",
+        "px-(--space-select-trigger-padding-x-lg)",
         "text-(length:--font-size-select-trigger-font-size-lg)"
       );
     });

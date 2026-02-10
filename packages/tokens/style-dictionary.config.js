@@ -13,8 +13,8 @@ const TOKEN_TYPE_CONFIG = {
     stripPrefixes: ["color-"],
   },
   spacing: {
-    prefix: "spacing",
-    stripPrefixes: ["spacing-"],
+    prefix: "space",
+    stripPrefixes: ["space-"],
     // Special handling for border tokens within spacing type
     specialCases: {
       "border-radius-": { prefix: "border-radius" },
@@ -22,7 +22,7 @@ const TOKEN_TYPE_CONFIG = {
     },
   },
   dimension: {
-    prefix: "spacing",
+    prefix: "space",
     stripPrefixes: [],
     specialCases: {
       "border-radius-": { prefix: "border-radius" },
@@ -100,7 +100,9 @@ function generateCSSVariable(token, name) {
 
   // Handle font family contract pattern
   if (token.$type === "fontFamily") {
-    for (const [fontType, contractValue] of Object.entries(FONT_FAMILY_CONTRACTS)) {
+    for (const [fontType, contractValue] of Object.entries(
+      FONT_FAMILY_CONTRACTS
+    )) {
       if (name.includes(fontType)) {
         value = contractValue;
         break;
@@ -183,7 +185,9 @@ StyleDictionary.registerFormat({
         return true;
       });
 
-      const pathKey = cleanPath.slice(1).join("-").toLowerCase() || cleanPath[0]?.toLowerCase();
+      const pathKey =
+        cleanPath.slice(1).join("-").toLowerCase() ||
+        cleanPath[0]?.toLowerCase();
       const firstSegment = cleanPath[0]?.toLowerCase();
 
       // Route by token type
@@ -219,11 +223,17 @@ StyleDictionary.registerFormat({
         case "spacing":
         case "dimension":
           // Handle spacing tokens and dimension tokens used for spacing
-          if (firstSegment === "spacing" || firstSegment === "border-radius" || firstSegment === "border-width") {
+          if (
+            firstSegment === "spacing" ||
+            firstSegment === "border-radius" ||
+            firstSegment === "border-width"
+          ) {
             if (firstSegment === "border-radius") {
-              hierarchical.borderRadius[pathKey.replace("border-radius-", "")] = token.$value;
+              hierarchical.borderRadius[pathKey.replace("border-radius-", "")] =
+                token.$value;
             } else {
-              hierarchical.spacing[pathKey.replace("spacing-", "")] = token.$value;
+              hierarchical.spacing[pathKey.replace("spacing-", "")] =
+                token.$value;
             }
           } else if (pathKey) {
             hierarchical.spacing[pathKey] = token.$value;
@@ -232,28 +242,44 @@ StyleDictionary.registerFormat({
 
         case "fontSize":
           if (cleanPath[1]) {
-            const key = cleanPath.slice(1).join("-").toLowerCase().replace("typography-font-size-", "");
+            const key = cleanPath
+              .slice(1)
+              .join("-")
+              .toLowerCase()
+              .replace("typography-font-size-", "");
             hierarchical.fontSize[key] = token.$value;
           }
           break;
 
         case "fontWeight":
           if (cleanPath[1]) {
-            const key = cleanPath.slice(1).join("-").toLowerCase().replace("typography-font-weight-", "");
+            const key = cleanPath
+              .slice(1)
+              .join("-")
+              .toLowerCase()
+              .replace("typography-font-weight-", "");
             hierarchical.fontWeight[key] = token.$value;
           }
           break;
 
         case "lineHeight":
           if (cleanPath[1]) {
-            const key = cleanPath.slice(1).join("-").toLowerCase().replace("typography-line-height-", "");
+            const key = cleanPath
+              .slice(1)
+              .join("-")
+              .toLowerCase()
+              .replace("typography-line-height-", "");
             hierarchical.lineHeight[key] = token.$value;
           }
           break;
 
         case "duration":
           if (cleanPath[1]) {
-            const key = cleanPath.slice(1).join("-").toLowerCase().replace("transition-duration-", "");
+            const key = cleanPath
+              .slice(1)
+              .join("-")
+              .toLowerCase()
+              .replace("transition-duration-", "");
             hierarchical.duration[key] = token.$value;
           }
           break;
@@ -261,8 +287,9 @@ StyleDictionary.registerFormat({
     });
 
     // Filter out empty categories
-    const nonEmptyCategories = Object.entries(hierarchical)
-      .filter(([_, tokens]) => Object.keys(tokens).length > 0);
+    const nonEmptyCategories = Object.entries(hierarchical).filter(
+      ([_, tokens]) => Object.keys(tokens).length > 0
+    );
 
     return `/**
  * Do not edit directly, this file was auto-generated.

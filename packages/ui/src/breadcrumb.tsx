@@ -20,7 +20,7 @@ const BreadcrumbList = React.forwardRef<HTMLOListElement, BreadcrumbListProps>(
     <ol
       ref={ref}
       className={cn(
-        "flex flex-wrap items-center gap-(--spacing-breadcrumb-list-gap) wrap-break-word text-(length:--font-size-breadcrumb-font-size) text-(--color-breadcrumb-text)",
+        "flex flex-wrap items-center gap-(--space-breadcrumb-list-gap) wrap-break-word text-(length:--font-size-breadcrumb-font-size) text-(--color-breadcrumb-text)",
         className
       )}
       {...props}
@@ -36,7 +36,7 @@ const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>(
     <li
       ref={ref}
       className={cn(
-        "inline-flex items-center gap-(--spacing-breadcrumb-item-gap)",
+        "inline-flex items-center gap-(--space-breadcrumb-item-gap)",
         className
       )}
       {...props}
@@ -54,7 +54,7 @@ const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
         ref={ref}
         className={cn(
           "transition-colors text-(--color-breadcrumb-link) hover:text-(--color-breadcrumb-link-hover)",
-          "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2 rounded-(--spacing-breadcrumb-link-radius)",
+          "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2 rounded-(--space-breadcrumb-link-radius)",
           className
         )}
         {...props}
@@ -93,7 +93,7 @@ const BreadcrumbSeparator = React.forwardRef<
     role="presentation"
     aria-hidden="true"
     className={cn(
-      "[&>svg]:h-(--spacing-breadcrumb-separator-size) [&>svg]:w-(--spacing-breadcrumb-separator-size)",
+      "[&>svg]:h-(--space-breadcrumb-separator-size) [&>svg]:w-(--space-breadcrumb-separator-size)",
       className
     )}
     {...props}
@@ -114,12 +114,12 @@ const BreadcrumbEllipsis = React.forwardRef<
     role="presentation"
     aria-hidden="true"
     className={cn(
-      "flex h-(--spacing-breadcrumb-ellipsis-size) w-(--spacing-breadcrumb-ellipsis-size) items-center justify-center",
+      "flex h-(--space-breadcrumb-ellipsis-size) w-(--space-breadcrumb-ellipsis-size) items-center justify-center",
       className
     )}
     {...props}
   >
-    <MoreHorizontalIcon className="h-(--spacing-breadcrumb-separator-size) w-(--spacing-breadcrumb-separator-size)" />
+    <MoreHorizontalIcon className="h-(--space-breadcrumb-separator-size) w-(--space-breadcrumb-separator-size)" />
     <span className="sr-only">More</span>
   </span>
 ));

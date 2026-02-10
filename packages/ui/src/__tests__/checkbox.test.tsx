@@ -235,22 +235,22 @@ describe("Checkbox", () => {
       const { rerender } = render(<Checkbox aria-label="Test" size="sm" />);
       let checkbox = screen.getByRole("checkbox");
       expect(checkbox).toHaveClass(
-        "h-(--spacing-checkbox-size-sm)",
-        "w-(--spacing-checkbox-size-sm)"
+        "h-(--space-checkbox-size-sm)",
+        "w-(--space-checkbox-size-sm)"
       );
 
       rerender(<Checkbox aria-label="Test" size="md" />);
       checkbox = screen.getByRole("checkbox");
       expect(checkbox).toHaveClass(
-        "h-(--spacing-checkbox-size-md)",
-        "w-(--spacing-checkbox-size-md)"
+        "h-(--space-checkbox-size-md)",
+        "w-(--space-checkbox-size-md)"
       );
 
       rerender(<Checkbox aria-label="Test" size="lg" />);
       checkbox = screen.getByRole("checkbox");
       expect(checkbox).toHaveClass(
-        "h-(--spacing-checkbox-size-lg)",
-        "w-(--spacing-checkbox-size-lg)"
+        "h-(--space-checkbox-size-lg)",
+        "w-(--space-checkbox-size-lg)"
       );
     });
 

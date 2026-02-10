@@ -222,8 +222,8 @@ describe("Toggle", () => {
       render(<Toggle aria-label="Toggle">Toggle</Toggle>);
       const toggle = screen.getByRole("button");
       expect(toggle).toHaveClass(
-        "h-(--spacing-toggle-size-default-height)",
-        "px-(--spacing-toggle-size-default-padding-x)"
+        "h-(--space-toggle-size-default-height)",
+        "px-(--space-toggle-size-default-padding-x)"
       );
     });
 
@@ -235,8 +235,8 @@ describe("Toggle", () => {
       );
       const toggle = screen.getByRole("button");
       expect(toggle).toHaveClass(
-        "h-(--spacing-toggle-size-default-height)",
-        "px-(--spacing-toggle-size-default-padding-x)"
+        "h-(--space-toggle-size-default-height)",
+        "px-(--space-toggle-size-default-padding-x)"
       );
     });
 
@@ -248,8 +248,8 @@ describe("Toggle", () => {
       );
       const toggle = screen.getByRole("button");
       expect(toggle).toHaveClass(
-        "h-(--spacing-toggle-size-sm-height)",
-        "px-(--spacing-toggle-size-sm-padding-x)"
+        "h-(--space-toggle-size-sm-height)",
+        "px-(--space-toggle-size-sm-padding-x)"
       );
     });
 
@@ -261,8 +261,8 @@ describe("Toggle", () => {
       );
       const toggle = screen.getByRole("button");
       expect(toggle).toHaveClass(
-        "h-(--spacing-toggle-size-lg-height)",
-        "px-(--spacing-toggle-size-lg-padding-x)"
+        "h-(--space-toggle-size-lg-height)",
+        "px-(--space-toggle-size-lg-padding-x)"
       );
     });
   });
@@ -275,7 +275,7 @@ describe("Toggle", () => {
         "inline-flex",
         "items-center",
         "justify-center",
-        "rounded-(--spacing-toggle-radius)"
+        "rounded-(--space-toggle-radius)"
       );
     });
 
@@ -299,8 +299,8 @@ describe("Toggle", () => {
       expect(toggle).toHaveClass(
         "border",
         "border-(--color-toggle-border)",
-        "h-(--spacing-toggle-size-lg-height)",
-        "px-(--spacing-toggle-size-lg-padding-x)"
+        "h-(--space-toggle-size-lg-height)",
+        "px-(--space-toggle-size-lg-padding-x)"
       );
     });
 
@@ -411,8 +411,8 @@ describe("Toggle", () => {
       expect(toggle).toHaveClass(
         "border",
         "border-(--color-toggle-border)",
-        "h-(--spacing-toggle-size-lg-height)",
-        "px-(--spacing-toggle-size-lg-padding-x)",
+        "h-(--space-toggle-size-lg-height)",
+        "px-(--space-toggle-size-lg-padding-x)",
         "custom"
       );
       expect(toggle).toHaveAttribute("aria-pressed", "true");

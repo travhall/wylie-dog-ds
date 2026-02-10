@@ -42,10 +42,10 @@ export const DialogContent = React.forwardRef<
 >(({ className, children, size = "md", ...props }, ref) => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const sizes = {
-    sm: "max-w-(--spacing-dialog-content-width-sm)",
-    md: "max-w-(--spacing-dialog-content-width-md)",
-    lg: "max-w-(--spacing-dialog-content-width-lg)",
-    xl: "max-w-(--spacing-dialog-content-max-width)",
+    sm: "max-w-(--space-dialog-content-width-sm)",
+    md: "max-w-(--space-dialog-content-width-md)",
+    lg: "max-w-(--space-dialog-content-width-lg)",
+    xl: "max-w-(--space-dialog-content-max-width)",
     full: "max-w-[95vw] max-h-[95vh]",
   };
 
@@ -60,15 +60,15 @@ export const DialogContent = React.forwardRef<
         }}
         className={cn(
           "fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%]",
-          "gap-(--spacing-dialog-header-gap)",
+          "gap-(--space-dialog-header-gap)",
           "border bg-(--color-dialog-background) shadow-(--shadow-lg) duration-(--transition-duration-normal)",
-          "p-(--spacing-dialog-content-padding)",
+          "p-(--space-dialog-content-padding)",
           "data-[state=open]:animate-in data-[state=closed]:animate-out",
           "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
           "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           "data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
           "data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
-          "rounded-(--spacing-dialog-content-radius)",
+          "rounded-(--space-dialog-content-radius)",
           "border-(--color-dialog-border)",
           sizes[size],
           className
@@ -78,10 +78,10 @@ export const DialogContent = React.forwardRef<
         {children}
         <DialogPrimitive.Close
           ref={closeButtonRef}
-          className="absolute right-(--spacing-dialog-close-button-offset) top-(--spacing-dialog-close-button-offset) rounded-(--spacing-dialog-close-button-radius) opacity-(--state-opacity-muted) ring-offset-background transition-opacity hover:opacity-(--state-opacity-hover) focus:outline-none focus:ring-(--spacing-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--spacing-focus-ring-offset) disabled:pointer-events-none"
+          className="absolute right-(--space-dialog-close-button-offset) top-(--space-dialog-close-button-offset) rounded-(--space-dialog-close-button-radius) opacity-(--state-opacity-muted) ring-offset-background transition-opacity hover:opacity-(--state-opacity-hover) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none"
         >
           <svg
-            className="h-(--spacing-icon-size-md) w-(--spacing-icon-size-md)"
+            className="h-(--space-icon-size-md) w-(--space-icon-size-md)"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -110,8 +110,8 @@ export const DialogHeader = React.forwardRef<
     ref={ref}
     className={cn(
       "flex flex-col text-center sm:text-left",
-      "space-y-(--spacing-dialog-header-gap)",
-      "mb-(--spacing-dialog-header-margin-bottom)",
+      "space-y-(--space-dialog-header-gap)",
+      "mb-(--space-dialog-header-margin-bottom)",
       className
     )}
     {...props}
@@ -128,8 +128,8 @@ export const DialogFooter = React.forwardRef<
     ref={ref}
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end",
-      "sm:space-x-(--spacing-dialog-footer-gap)",
-      "mt-(--spacing-dialog-footer-margin-top)",
+      "sm:space-x-(--space-dialog-footer-gap)",
+      "mt-(--space-dialog-footer-margin-top)",
       className
     )}
     {...props}

@@ -26,7 +26,7 @@ const AccordionItem = React.forwardRef<
   <AccordionPrimitive.Item
     ref={ref}
     className={cn(
-      "border-b border-(length:--spacing-accordion-item-border-width) border-(--color-accordion-border) w-full relative",
+      "border-b border-(length:--space-accordion-item-border-width) border-(--color-accordion-border) w-full relative",
       className
     )}
     {...props}
@@ -46,7 +46,7 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between p-(--spacing-accordion-trigger-padding) text-(length:--font-size-accordion-trigger-font-size) font-medium transition-all",
+        "flex flex-1 items-center justify-between p-(--space-accordion-trigger-padding) text-(length:--font-size-accordion-trigger-font-size) font-medium transition-all",
         "text-(--color-accordion-trigger-text)",
         "hover:bg-(--color-accordion-trigger-hover) hover:text-(--color-accordion-trigger-text-hover)",
         "active:bg-(--color-accordion-trigger-pressed)",
@@ -59,7 +59,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <ChevronDownIcon className="h-(--spacing-accordion-trigger-icon-size) w-(--spacing-accordion-trigger-icon-size) shrink-0 text-(--color-accordion-icon) transition-transform duration-(--transition-duration-normal) group-hover:text-(--color-accordion-icon-hover) group-data-[state=open]:text-(--color-accordion-icon-open) group-disabled:text-(--color-accordion-icon-disabled)" />
+      <ChevronDownIcon className="h-(--space-accordion-trigger-icon-size) w-(--space-accordion-trigger-icon-size) shrink-0 text-(--color-accordion-icon) transition-transform duration-(--transition-duration-normal) group-hover:text-(--color-accordion-icon-hover) group-data-[state=open]:text-(--color-accordion-icon-open) group-disabled:text-(--color-accordion-icon-disabled)" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
@@ -80,7 +80,7 @@ const AccordionContent = React.forwardRef<
   >
     <div
       className={cn(
-        "p-(--spacing-accordion-content-padding) text-(length:--font-size-accordion-content-font-size) text-(--color-accordion-content-text)",
+        "p-(--space-accordion-content-padding) text-(length:--font-size-accordion-content-font-size) text-(--color-accordion-content-text)",
         className
       )}
     >

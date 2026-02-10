@@ -34,7 +34,7 @@ export const FeatureGrid = React.forwardRef<HTMLDivElement, FeatureGridProps>(
     {
       features = [],
       columns = { sm: 1, md: 2, lg: 3, xl: 4 },
-      gap = "gap-(--spacing-feature-grid-container-gap)",
+      gap = "gap-(--space-feature-grid-container-gap)",
       centered = false,
       variant = "default",
       className,
@@ -45,10 +45,10 @@ export const FeatureGrid = React.forwardRef<HTMLDivElement, FeatureGridProps>(
     // Simple gap class logic to avoid TypeScript issues
     const gapClass =
       variant === "compact"
-        ? "gap-(--spacing-feature-grid-item-gap)"
+        ? "gap-(--space-feature-grid-item-gap)"
         : variant === "spacious"
-          ? "gap-(--spacing-feature-grid-container-gap)"
-          : gap || "gap-(--spacing-feature-grid-container-gap)";
+          ? "gap-(--space-feature-grid-container-gap)"
+          : gap || "gap-(--space-feature-grid-container-gap)";
 
     const gridClasses = cn(
       // Base grid
@@ -68,14 +68,14 @@ export const FeatureGrid = React.forwardRef<HTMLDivElement, FeatureGridProps>(
       <div className={gridClasses} ref={ref} role="region" {...props}>
         {features.map((feature, index) => (
           <div key={index} className="group relative">
-            <div className="glass border border-(--color-border-primary)/10 rounded-(--spacing-feature-grid-item-radius) p-(--spacing-feature-grid-item-padding) transition-all duration-500 hover:border-(--color-interactive-primary)/20 hover:scale-105">
+            <div className="glass border border-(--color-border-primary)/10 rounded-(--space-feature-grid-item-radius) p-(--space-feature-grid-item-padding) transition-all duration-500 hover:border-(--color-interactive-primary)/20 hover:scale-105">
               {/* Icon */}
-              <div className="mb-(--spacing-feature-grid-item-gap) flex items-center justify-center w-12 h-12 rounded-(--spacing-feature-grid-icon-radius) glass border-(--color-border-primary)/5 shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+              <div className="mb-(--space-feature-grid-item-gap) flex items-center justify-center w-12 h-12 rounded-(--space-feature-grid-icon-radius) glass border-(--color-border-primary)/5 shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
                 {feature.icon}
               </div>
 
               {/* Content */}
-              <div className="space-y-(--spacing-feature-grid-item-gap)">
+              <div className="space-y-(--space-feature-grid-item-gap)">
                 {/* Badge */}
                 {feature.badge && (
                   <Badge variant={feature.badgeVariant || "default"}>

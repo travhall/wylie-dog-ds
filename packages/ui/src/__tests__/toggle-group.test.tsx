@@ -251,7 +251,7 @@ describe("ToggleGroup", () => {
       );
       const item = screen.getByText("Test");
       expect(item).toHaveClass(
-        "rounded-(--spacing-toggle-group-item-radius)",
+        "rounded-(--space-toggle-group-item-radius)",
         "text-(length:--font-size-toggle-group-item-font-size)"
       );
     });

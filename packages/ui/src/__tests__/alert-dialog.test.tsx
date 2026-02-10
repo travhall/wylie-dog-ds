@@ -385,9 +385,7 @@ describe("AlertDialog", () => {
           .getByText("Are you absolutely sure?")
           .closest(".flex.flex-col");
         expect(header).toBeInTheDocument();
-        expect(header).toHaveClass(
-          "space-y-(--spacing-alert-dialog-header-gap)"
-        );
+        expect(header).toHaveClass("space-y-(--space-alert-dialog-header-gap)");
       });
     });
 

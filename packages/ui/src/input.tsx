@@ -29,9 +29,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const sizes = {
-      sm: "h-(--spacing-input-height-sm) px-(--spacing-input-padding-x) text-(length:--font-size-input-font-size-sm)",
-      md: "h-(--spacing-input-height-md) px-(--spacing-input-padding-x) text-(length:--font-size-input-font-size-md)",
-      lg: "h-(--spacing-input-height-lg) px-(--spacing-input-padding-x) text-(length:--font-size-input-font-size-lg)",
+      sm: "h-(--space-input-height-sm) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-sm)",
+      md: "h-(--space-input-height-md) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-md)",
+      lg: "h-(--space-input-height-lg) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-lg)",
     };
 
     // Type-aware styling for native browser chrome
@@ -56,7 +56,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         aria-describedby={describedBy || undefined}
         className={cn(
           "flex w-full border transition-colors",
-          "rounded-(--spacing-input-radius)",
+          "rounded-(--space-input-radius)",
           "placeholder:text-(--color-input-placeholder)",
           "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
           "disabled:cursor-not-allowed disabled:bg-(--color-input-disabled-background) disabled:text-(--color-input-disabled-text)",

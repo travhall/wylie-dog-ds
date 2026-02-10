@@ -21,16 +21,16 @@ const Toggle = React.forwardRef<
 
   const sizes = {
     default:
-      "h-(--spacing-toggle-size-default-height) px-(--spacing-toggle-size-default-padding-x)",
-    sm: "h-(--spacing-toggle-size-sm-height) px-(--spacing-toggle-size-sm-padding-x)",
-    lg: "h-(--spacing-toggle-size-lg-height) px-(--spacing-toggle-size-lg-padding-x)",
+      "h-(--space-toggle-size-default-height) px-(--space-toggle-size-default-padding-x)",
+    sm: "h-(--space-toggle-size-sm-height) px-(--space-toggle-size-sm-padding-x)",
+    lg: "h-(--space-toggle-size-lg-height) px-(--space-toggle-size-lg-padding-x)",
   };
 
   return (
     <TogglePrimitive.Root
       ref={ref}
       className={cn(
-        "inline-flex items-center justify-center rounded-(--spacing-toggle-radius) text-(length:--font-size-toggle-font-size) font-medium transition-colors",
+        "inline-flex items-center justify-center rounded-(--space-toggle-radius) text-(length:--font-size-toggle-font-size) font-medium transition-colors",
         "hover:bg-(--color-toggle-hover) hover:text-(--color-toggle-text-hover)",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
         "disabled:pointer-events-none disabled:opacity-50",

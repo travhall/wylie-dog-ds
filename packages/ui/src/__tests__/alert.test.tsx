@@ -207,7 +207,7 @@ describe("Alert", () => {
       );
       const title = screen.getByText("Alert Title");
       expect(title).toHaveClass(
-        "mb-(--spacing-alert-title-margin-bottom)",
+        "mb-(--space-alert-title-margin-bottom)",
         "text-(length:--font-size-alert-title-font-size)",
         "font-medium",
         "leading-none",
@@ -291,11 +291,11 @@ describe("Alert", () => {
       expect(alert).toHaveClass(
         "relative",
         "w-full",
-        "rounded-(--spacing-alert-radius)",
+        "rounded-(--space-alert-radius)",
         "border",
         "border-l-4",
-        "px-(--spacing-alert-padding-x)",
-        "py-(--spacing-alert-padding-y)",
+        "px-(--space-alert-padding-x)",
+        "py-(--space-alert-padding-y)",
         "text-(length:--font-size-alert-description-font-size)"
       );
     });

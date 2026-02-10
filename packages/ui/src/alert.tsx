@@ -54,7 +54,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
       <div
         ref={ref}
         className={cn(
-          "relative w-full rounded-(--spacing-alert-radius) border border-l-4 px-(--spacing-alert-padding-x) py-(--spacing-alert-padding-y) text-(length:--font-size-alert-description-font-size)",
+          "relative w-full rounded-(--space-alert-radius) border border-l-4 px-(--space-alert-padding-x) py-(--space-alert-padding-y) text-(length:--font-size-alert-description-font-size)",
           variants[variant],
           className
         )}
@@ -74,7 +74,7 @@ export const AlertTitle = React.forwardRef<HTMLHeadingElement, AlertTitleProps>(
     <h5
       ref={ref}
       className={cn(
-        "mb-(--spacing-alert-title-margin-bottom) text-(length:--font-size-alert-title-font-size) font-medium leading-none tracking-tight",
+        "mb-(--space-alert-title-margin-bottom) text-(length:--font-size-alert-title-font-size) font-medium leading-none tracking-tight",
         className
       )}
       {...props}

@@ -13,10 +13,10 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         "border",
         "bg-(--color-card-background)",
         "shadow-(--shadow-card-shadow)",
-        "rounded-(--spacing-card-radius)",
+        "rounded-(--space-card-radius)",
         "border-(--color-card-border)",
-        "p-(--spacing-card-padding)",
-        "gap-(--spacing-card-gap)",
+        "p-(--space-card-padding)",
+        "gap-(--space-card-gap)",
         className
       )}
       {...props}
@@ -33,7 +33,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
       ref={ref}
       className={cn(
         "flex flex-col",
-        "gap-(--spacing-card-header-gap)",
+        "gap-(--space-card-header-gap)",
         className
       )}
       {...props}
@@ -51,7 +51,7 @@ export const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
       className={cn(
         "font-(--font-weight-card-title-font-weight)",
         "leading-(--line-height-card-title-line-height)",
-        "tracking-(--spacing-card-title-letter-spacing)",
+        "tracking-(--space-card-title-letter-spacing)",
         "text-(length:--font-size-card-header-title-font-size)",
         "text-(--color-card-header-title-color)",
         className
@@ -105,8 +105,8 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
       ref={ref}
       className={cn(
         "flex items-center",
-        "pt-(--spacing-card-footer-padding-top)",
-        "gap-(--spacing-card-footer-gap)",
+        "pt-(--space-card-footer-padding-top)",
+        "gap-(--space-card-footer-gap)",
         className
       )}
       {...props}

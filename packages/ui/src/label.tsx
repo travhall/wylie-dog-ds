@@ -49,7 +49,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
         {required && (
           <span
             className={cn(
-              "text-(--color-text-danger) ml-(--spacing-label-required-margin-left)",
+              "text-(--color-text-danger) ml-(--space-label-required-margin-left)",
               requiredIndicatorSrOnly && "sr-only"
             )}
             aria-label="required"

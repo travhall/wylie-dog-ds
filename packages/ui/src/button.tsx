@@ -48,18 +48,18 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const sizes = {
       default:
-        "h-(--spacing-button-height-md) px-(--spacing-button-padding-x-md) text-(length:--font-size-button-font-size-md) rounded-(--spacing-button-radius)",
-      sm: "h-(--spacing-button-height-sm) px-(--spacing-button-padding-x-sm) text-(length:--font-size-button-font-size-sm) rounded-(--spacing-button-radius)",
-      md: "h-(--spacing-button-height-md) px-(--spacing-button-padding-x-md) text-(length:--font-size-button-font-size-md) rounded-(--spacing-button-radius)",
-      lg: "h-(--spacing-button-height-lg) px-(--spacing-button-padding-x-lg) text-(length:--font-size-button-font-size-lg) rounded-(--spacing-button-radius)",
-      icon: "h-(--spacing-button-height-md) w-(--spacing-button-height-md) rounded-(--spacing-button-radius)",
+        "h-(--space-button-height-md) px-(--space-button-padding-x-md) text-(length:--font-size-button-font-size-md) rounded-(--space-button-radius)",
+      sm: "h-(--space-button-height-sm) px-(--space-button-padding-x-sm) text-(length:--font-size-button-font-size-sm) rounded-(--space-button-radius)",
+      md: "h-(--space-button-height-md) px-(--space-button-padding-x-md) text-(length:--font-size-button-font-size-md) rounded-(--space-button-radius)",
+      lg: "h-(--space-button-height-lg) px-(--space-button-padding-x-lg) text-(length:--font-size-button-font-size-lg) rounded-(--space-button-radius)",
+      icon: "h-(--space-button-height-md) w-(--space-button-height-md) rounded-(--space-button-radius)",
     };
 
     return (
       <button
         className={cn(
           "inline-flex items-center justify-center font-medium border transition-colors",
-          "focus:outline-none focus:ring-(length:--spacing-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--spacing-focus-ring-offset)",
+          "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
           "disabled:opacity-(--state-opacity-disabled) disabled:pointer-events-none",
           variants[variant],
           sizes[size],

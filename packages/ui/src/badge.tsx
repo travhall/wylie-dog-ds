@@ -31,9 +31,9 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
     };
 
     const sizes = {
-      sm: "px-(--spacing-badge-padding-sm) text-(length:--font-size-badge-font-size-sm)",
-      md: "px-(--spacing-badge-padding-md) text-(length:--font-size-badge-font-size-md)",
-      lg: "px-(--spacing-badge-padding-lg) text-(length:--font-size-badge-font-size-lg)",
+      sm: "px-(--space-badge-padding-sm) text-(length:--font-size-badge-font-size-sm)",
+      md: "px-(--space-badge-padding-md) text-(length:--font-size-badge-font-size-md)",
+      lg: "px-(--space-badge-padding-lg) text-(length:--font-size-badge-font-size-lg)",
     };
 
     return (
@@ -41,7 +41,7 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
         ref={ref}
         className={cn(
           "inline-flex items-center border font-semibold transition-colors",
-          "rounded-(--spacing-badge-radius)",
+          "rounded-(--space-badge-radius)",
           sizes[size],
           variants[variant],
           className

@@ -194,9 +194,9 @@ describe("Badge", () => {
 
       expect(badge).toHaveClass("inline-flex");
       expect(badge).toHaveClass("items-center");
-      expect(badge).toHaveClass("rounded-(--spacing-badge-radius)");
+      expect(badge).toHaveClass("rounded-(--space-badge-radius)");
       expect(badge).toHaveClass("border");
-      expect(badge).toHaveClass("px-(--spacing-badge-padding-md)");
+      expect(badge).toHaveClass("px-(--space-badge-padding-md)");
       expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
       expect(badge).toHaveClass("font-semibold");
     });
@@ -481,7 +481,7 @@ describe("Badge", () => {
         expect(badge).toHaveClass(
           "text-(length:--font-size-badge-font-size-md)"
         );
-        expect(badge).toHaveClass("px-(--spacing-badge-padding-md)");
+        expect(badge).toHaveClass("px-(--space-badge-padding-md)");
       });
     });
 

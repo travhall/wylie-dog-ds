@@ -16,10 +16,10 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
     ref
   ) => {
     const sizes = {
-      sm: "h-(--spacing-avatar-size-sm) w-(--spacing-avatar-size-sm)",
-      md: "h-(--spacing-avatar-size-md) w-(--spacing-avatar-size-md)",
-      lg: "h-(--spacing-avatar-size-lg) w-(--spacing-avatar-size-lg)",
-      xl: "h-(--spacing-avatar-size-xl) w-(--spacing-avatar-size-xl)",
+      sm: "h-(--space-avatar-size-sm) w-(--space-avatar-size-sm)",
+      md: "h-(--space-avatar-size-md) w-(--space-avatar-size-md)",
+      lg: "h-(--space-avatar-size-lg) w-(--space-avatar-size-lg)",
+      xl: "h-(--space-avatar-size-xl) w-(--space-avatar-size-xl)",
     };
 
     const getAriaLabel = () => {
@@ -36,7 +36,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
       <div
         ref={ref}
         className={cn(
-          "relative flex shrink-0 overflow-hidden rounded-(--spacing-avatar-rounded) bg-(--color-avatar-background) border border-(--color-avatar-border)",
+          "relative flex shrink-0 overflow-hidden rounded-(--space-avatar-rounded) bg-(--color-avatar-background) border border-(--color-avatar-border)",
           sizes[size],
           className
         )}
@@ -109,7 +109,7 @@ export const AvatarFallback = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "flex h-full w-full items-center justify-center rounded-(--spacing-avatar-rounded) bg-(--color-avatar-fallback-background) text-(--color-avatar-fallback-text) font-medium",
+        "flex h-full w-full items-center justify-center rounded-(--space-avatar-rounded) bg-(--color-avatar-fallback-background) text-(--color-avatar-fallback-text) font-medium",
         className
       )}
       aria-hidden="true" // Fallback is decorative since parent Avatar has aria-label

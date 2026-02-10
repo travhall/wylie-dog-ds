@@ -23,9 +23,9 @@ const PopoverContent = React.forwardRef<
     ref
   ) => {
     const sizes = {
-      sm: "w-(--spacing-popover-content-width-sm)",
-      md: "w-(--spacing-popover-content-width-md)",
-      lg: "w-(--spacing-popover-content-width-lg)",
+      sm: "w-(--space-popover-content-width-sm)",
+      md: "w-(--space-popover-content-width-md)",
+      lg: "w-(--space-popover-content-width-lg)",
     };
 
     return (
@@ -37,8 +37,8 @@ const PopoverContent = React.forwardRef<
           className={cn(
             "z-50 border outline-none shadow-(--shadow-md)",
             sizes[size],
-            "rounded-(--spacing-popover-content-radius)",
-            "p-(--spacing-popover-content-padding)",
+            "rounded-(--space-popover-content-radius)",
+            "p-(--space-popover-content-padding)",
             "border-(--color-popover-border)",
             "bg-(--color-popover-background)",
             "text-(--color-popover-text)",
