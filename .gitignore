@@ -13,6 +13,7 @@ dist-ssr
 *.local
 .env
 .cache
+.claude
 .serena
 server/dist
 public/dist
