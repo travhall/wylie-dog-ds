@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@wyliedog/ui/select";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const meta: Meta<typeof Progress> = {
   title: "Components/Feedback & Status/Progress",
@@ -196,32 +196,39 @@ export const LoadingStates: Story = {
     const [uploadProgress, setUploadProgress] = useState(0);
     const [installProgress, setInstallProgress] = useState(0);
 
+    const fileTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const uploadTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const installTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
     useEffect(() => {
-      const fileTimer = setInterval(() => {
+      fileTimerRef.current = setInterval(() => {
         setFileProgress((prev) => {
-          if (prev >= 100) return 100;
-          return prev + Math.random() * 10;
+          const next = Math.min(prev + Math.random() * 10, 100);
+          if (next >= 100) clearInterval(fileTimerRef.current!);
+          return next;
         });
       }, 200);
 
-      const uploadTimer = setInterval(() => {
+      uploadTimerRef.current = setInterval(() => {
         setUploadProgress((prev) => {
-          if (prev >= 100) return 100;
-          return prev + Math.random() * 5;
+          const next = Math.min(prev + Math.random() * 5, 100);
+          if (next >= 100) clearInterval(uploadTimerRef.current!);
+          return next;
         });
       }, 300);
 
-      const installTimer = setInterval(() => {
+      installTimerRef.current = setInterval(() => {
         setInstallProgress((prev) => {
-          if (prev >= 100) return 100;
-          return prev + Math.random() * 15;
+          const next = Math.min(prev + Math.random() * 15, 100);
+          if (next >= 100) clearInterval(installTimerRef.current!);
+          return next;
         });
       }, 150);
 
       return () => {
-        clearInterval(fileTimer);
-        clearInterval(uploadTimer);
-        clearInterval(installTimer);
+        clearInterval(fileTimerRef.current!);
+        clearInterval(uploadTimerRef.current!);
+        clearInterval(installTimerRef.current!);
       };
     }, []);
 
