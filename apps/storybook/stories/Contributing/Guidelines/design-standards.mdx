@@ -4,346 +4,149 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Design Standards
 
-Guidelines for contributing designs to the Wylie Dog Design System.
+Standards for contributing design work to the Wylie Dog Design System. These apply whether you're designing a new component, updating an existing one, or reviewing a contribution.
 
-## Design File Organization
+---
 
-### Figma Structure
+## Component Anatomy
 
-Organize Figma files following this hierarchy:
+Every component must include a clearly defined anatomy:
 
-```
-Wylie Dog Design System/
-├── 📄 Foundations
-│   ├── Color Tokens
-│   ├── Typography Scales
-│   ├── Spacing System
-│   └── Elevation & Shadows
-├── 📄 Components
-│   ├── Inputs & Controls
-│   ├── Navigation
-│   ├── Layout & Structure
-│   └── ...other categories
-├── 📄 Patterns
-│   └── Common compositions
-└── 📄 Templates
-    └── Page layouts
-```
+| Part | Requirement |
+|---|---|
+| Base component | Default state, no interaction |
+| Variants | All visual styles (e.g. Primary, Secondary, Outline, Ghost) |
+| Sizes | Small, Medium, Large where applicable |
+| States | Default, Hover, Focus, Active, Disabled |
+| Optional parts | Clearly marked as optional (e.g. icon slots) |
 
-### Component Anatomy
-
-Each component in Figma should include:
-
-1. **Base Component** - Default state
-2. **Variants** - All visual variations
-3. **States** - Hover, focus, active, disabled
-4. **Documentation** - Usage notes and specs
-5. **Examples** - Real-world usage
-
-## Token Implementation
-
-### Using Design Tokens
-
-All designs must use design tokens (variables in Figma) instead of hardcoded values:
+**Example — Button anatomy:**
 
 ```
-✅ Use: {color.background.primary}
-❌ Don't: #FFFFFF
-
-✅ Use: {spacing.4}
-❌ Don't: 16px
-
-✅ Use: {typography.body.medium}
-❌ Don't: 16px Inter Regular
-```
-
-### Token Naming Convention
-
-Follow the hierarchical token structure:
-
-```
-{category}.{property}.{variant}.{state}
-
-Examples:
-- color.button.primary.default
-- color.button.primary.hover
-- spacing.component.padding.sm
-- typography.heading.large
-```
-
-## Component Naming
-
-### Naming Guidelines
-
-- Use **clear, descriptive names**: "Primary Button" not "Blue Button"
-- Be **consistent**: If you use "Card Header", use "Card Content" (not "Card Body")
-- Avoid **implementation details**: "Elevated Card" not "Card with Drop Shadow"
-- Use **standard terminology**: "Disabled" not "Inactive" or "Greyed Out"
-
-### Layer Naming in Figma
-
-```
-✅ Good Structure:
 Button
-├── Container
-├── Icon (optional)
-└── Label
-
-❌ Bad Structure:
-Button
-├── Rectangle 1
-├── icon
-└── text_123
+├── Container (required)
+├── Label (required)
+└── Icon (optional — left, right, or icon-only)
 ```
+
+---
+
+## Naming Conventions
+
+### Component Names
+
+- **Descriptive over stylistic**: "Primary Button" not "Blue Button"
+- **Consistent across parts**: "Card Header" / "Card Content" / "Card Footer" — not "Card Header" / "Card Body"
+- **No implementation details**: "Elevated Card" → "Card"; "Card with Drop Shadow" ❌
+- **Standard terminology**: "Disabled" not "Inactive" or "Greyed Out"
+
+### Variant Names
+
+Match the code API exactly. The design system uses these standard values:
+
+| Property | Values |
+|---|---|
+| `variant` | `default`, `secondary`, `outline`, `ghost`, `destructive`, `link` |
+| `size` | `sm`, `md`, `lg` |
+| `state` | `default`, `hover`, `focus`, `active`, `disabled` |
+
+If a new component needs variant names not listed here, align with engineering before finalizing.
+
+---
+
+## Token Usage
+
+All designs must use semantic design tokens — never hardcoded values:
+
+```
+✅ Use: color.background.primary    ❌ Don't: #FFFFFF
+✅ Use: color.text.brand            ❌ Don't: #2563EB
+✅ Use: spacing.4 (16px)           ❌ Don't: 16px
+✅ Use: typography.body.medium      ❌ Don't: 16px Inter Regular
+```
+
+Refer to the [Theming Overview](/story/resources-theming-overview--docs) for the full token hierarchy and semantic token names.
+
+---
 
 ## Accessibility Standards
 
-### Color Contrast
+### Color Contrast (WCAG 2.1 AA)
 
-All text must meet WCAG 2.1 Level AA standards:
-
-- **Normal text** (< 18px): 4.5:1 minimum contrast
-- **Large text** (≥ 18px or 14px bold): 3:1 minimum contrast
-- **UI components**: 3:1 minimum contrast
-
-Use Figma plugins to check contrast:
-- Stark
-- A11y - Color Contrast Checker
-- Able – Friction-free Accessibility
+| Text type | Minimum ratio |
+|---|---|
+| Normal text (< 18px) | 4.5:1 |
+| Large text (≥ 18px or 14px bold) | 3:1 |
+| UI components and boundaries | 3:1 |
 
 ### Focus States
 
-All interactive elements must have visible focus indicators:
+All interactive elements must have a visible focus indicator:
 
-```
 - Minimum 2px outline
-- Contrast ratio of 3:1 against background
-- Clearly distinguishable from other states
-```
+- 3:1 contrast ratio against the background
+- Clearly distinguishable from hover and active states
 
 ### Touch Targets
 
-Minimum touch target sizes:
+- Mobile: 44×44px minimum (iOS) / 48×48px (Android)
+- Desktop: 24×24px minimum
+- 8px minimum spacing between adjacent targets
 
-- **Mobile**: 44×44px (iOS) or 48×48px (Android)
-- **Desktop**: 24×24px minimum
-- **Spacing**: 8px minimum between targets
-
-## Component Variants
-
-### Creating Variants
-
-Use Figma variants for:
-
-1. **Visual styles**: Primary, Secondary, Outline
-2. **Sizes**: Small, Medium, Large
-3. **States**: Default, Hover, Focus, Active, Disabled
-4. **Content types**: With icon, without icon
-
-```
-Button Component Variants:
-- Variant: Primary, Secondary, Outline, Ghost, Link
-- Size: Small, Medium, Large
-- State: Default, Hover, Focus, Active, Disabled
-- Icon: None, Left, Right, Only
-```
-
-### Variant Properties
-
-Set variant properties systematically:
-
-```
-Property: Variant
-Values: Primary, Secondary, Outline, Ghost, Destructive
-
-Property: Size
-Values: SM, MD, LG
-
-Property: State
-Values: Default, Hover, Focus, Active, Disabled
-
-Property: Icon
-Values: None, Left, Right, Icon-only
-```
+---
 
 ## Responsive Design
 
-### Breakpoints
+Design mobile-first at these breakpoints:
 
-Design for these standard breakpoints:
+| Name | Width |
+|---|---|
+| Mobile | 375px–767px |
+| Tablet | 768px–1023px |
+| Desktop | 1024px–1439px |
+| Large | 1440px+ |
 
-- **Mobile**: 375px - 767px
-- **Tablet**: 768px - 1023px
-- **Desktop**: 1024px - 1439px
-- **Large Desktop**: 1440px+
+Use the 4px base spacing scale. Prefer Tailwind spacing tokens (`space-4` = 16px, `space-6` = 24px, etc.) when annotating specs for engineering.
 
-### Spacing Scale
+---
 
-Use the 4px/8px spacing system:
-
-- **Micro**: 4px, 8px
-- **Small**: 12px, 16px
-- **Medium**: 20px, 24px
-- **Large**: 32px, 40px, 48px
-- **XLarge**: 64px, 80px, 96px
-
-### Layout Patterns
-
-```
-Mobile-first approach:
-1. Design mobile first (375px)
-2. Adapt for tablet (768px)
-3. Optimize for desktop (1024px+)
-```
-
-## Documentation Requirements
-
-### Component Specifications
-
-Every component should include:
-
-```
-Component: Button
-├── Description: Interactive element for user actions
-├── Anatomy:
-│   ├── Container (required)
-│   ├── Label (required)
-│   └── Icon (optional)
-├── Props:
-│   ├── variant: primary | secondary | outline | ghost
-│   ├── size: sm | md | lg
-│   └── disabled: boolean
-├── States: default, hover, focus, active, disabled
-├── Accessibility:
-│   ├── Role: button
-│   ├── Keyboard: Enter, Space
-│   └── ARIA: aria-disabled when disabled
-└── Usage Guidelines:
-    ├── Do: Use primary for main actions
-    ├── Don't: Use multiple primaries per view
-    └── Example: Save, Submit, Continue buttons
-```
-
-### Annotation
-
-Annotate designs with:
-
-- **Spacing**: Show padding and margins
-- **Typography**: Font size, weight, line height
-- **Colors**: Token names, not hex values
-- **States**: How component changes on interaction
-- **Responsive behavior**: How layout adapts
-
-## Design Handoff
-
-### Preparing for Handoff
-
-Before handing off to development:
-
-1. **Clean up layers** - Remove unused components and layers
-2. **Name everything** - Use clear, consistent naming
-3. **Use tokens** - Replace hardcoded values with design tokens
-4. **Add specs** - Annotate spacing, colors, typography
-5. **Document states** - Show all interactive states
-6. **Test contrast** - Verify accessibility
-7. **Export assets** - Provide icons, images at correct sizes
-
-### Handoff Checklist
-
-- [ ] All layers properly named
-- [ ] Design tokens used throughout
-- [ ] Component variants are complete
-- [ ] All states are designed (hover, focus, disabled)
-- [ ] Spacing is annotated
-- [ ] Typography specs are clear
-- [ ] Colors use token names
-- [ ] Accessibility requirements met
-- [ ] Responsive behavior documented
-- [ ] Assets exported (if needed)
-
-## Asset Export Guidelines
+## Asset Export
 
 ### Icons
 
-- **Format**: SVG
-- **Size**: Design at 24×24px
-- **Stroke**: 2px (set as outline, not stroke)
-- **Color**: Use `currentColor` for flexibility
-- **Naming**: `icon-name.svg` (lowercase, kebab-case)
+- Format: SVG
+- Size: 24×24px
+- Color: `currentColor`
+- Naming: `icon-name.svg` (kebab-case)
 
 ### Images
 
-- **Format**: WebP (with PNG fallback)
-- **Sizes**: Export @1x, @2x, @3x for mobile
-- **Optimization**: Compress before committing
-- **Naming**: Descriptive, kebab-case
+- Format: WebP (PNG fallback)
+- Export: @1x, @2x, @3x
+- Naming: descriptive, kebab-case, compressed before committing
 
-### Illustrations
+---
 
-- **Format**: SVG for vectors, WebP for raster
-- **Colors**: Use design token values
-- **Accessibility**: Include alt text descriptions
+## Handoff Checklist
 
-## Figma Best Practices
+Before marking a design ready for development:
 
-### Auto Layout
+- [ ] All component variants and states are complete
+- [ ] Design tokens used throughout (no hardcoded values)
+- [ ] All interactive states designed (hover, focus, active, disabled)
+- [ ] Spacing annotated using token names
+- [ ] Typography specs reference token names, not raw values
+- [ ] Color annotations use token names, not hex
+- [ ] WCAG AA contrast verified for all text and UI elements
+- [ ] Focus states visible and meet 3:1 contrast
+- [ ] Touch targets meet minimum size requirements
+- [ ] Responsive behavior documented for all breakpoints
+- [ ] Layer/component naming is clean and consistent
+- [ ] Assets exported at correct sizes (if applicable)
 
-Use Auto Layout for all components:
-
-```
-✅ Benefits:
-- Responsive components
-- Consistent spacing
-- Easy maintenance
-- Better handoff
-```
-
-### Components vs Instances
-
-- **Create a component** for reusable elements
-- **Create an instance** when using components in designs
-- **Detach carefully** - Only when truly unique
-
-### Styles and Variables
-
-```
-✅ Use Styles for:
-- Typography
-- Colors (as variables)
-- Effects (shadows, blurs)
-
-✅ Use Variables for:
-- Color tokens
-- Spacing values
-- Numeric properties
-```
-
-## Review Process
-
-### Design Review Checklist
-
-Before requesting review:
-
-- [ ] Follows design token system
-- [ ] All variants and states included
-- [ ] Meets accessibility standards
-- [ ] Properly documented
-- [ ] Consistent with existing components
-- [ ] Responsive behavior defined
-- [ ] Ready for development handoff
-
-### Feedback Integration
-
-When receiving feedback:
-
-1. **Acknowledge** - Confirm you understand the feedback
-2. **Ask questions** - Clarify any unclear points
-3. **Update** - Make requested changes
-4. **Document** - Note any decisions made
-5. **Re-request review** - Once updates are complete
+---
 
 ## Questions?
 
-- Review existing Figma components for examples
-- Check the [Design Token Workflow](/docs/resources-design-token-workflow--docs)
-- See [Component Development Process](/docs/contributing-workflows-component-development--docs)
+- Token reference: [Theming Overview](/story/resources-theming-overview--docs)
+- Development workflow: [Component Development](/story/contributing-workflows-component-development--docs)

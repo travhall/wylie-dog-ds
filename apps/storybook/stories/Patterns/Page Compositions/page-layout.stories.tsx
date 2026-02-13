@@ -5,7 +5,7 @@ import { SiteFooter } from "@wyliedog/ui/compositions/site-footer";
 import { Heart } from "lucide-react";
 
 const meta: Meta<typeof PageLayout> = {
-  title: "Examples/Page Compositions/Page Layout",
+  title: "Patterns/Page Compositions/Page Layout",
   component: PageLayout,
   parameters: {
     layout: "fullscreen",

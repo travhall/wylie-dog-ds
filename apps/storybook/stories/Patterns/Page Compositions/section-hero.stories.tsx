@@ -3,7 +3,7 @@ import { SectionHero } from "@wyliedog/ui/compositions/section-hero";
 import { Code2, Sparkles } from "lucide-react";
 
 const meta: Meta<typeof SectionHero> = {
-  title: "Examples/Page Compositions/Hero Section",
+  title: "Patterns/Page Compositions/Hero Section",
   component: SectionHero,
   parameters: {
     layout: "fullscreen",

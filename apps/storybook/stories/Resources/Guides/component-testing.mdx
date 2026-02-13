@@ -1,10 +1,10 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="Resources/Testing & Quality/Component Testing" />
+<Meta title="Resources/Guides/Component Testing" />
 
 # Testing Guide
 
-Learn how to write comprehensive tests for components using Vitest, Testing Library, and jest-axe for accessibility testing.
+Learn how to write comprehensive tests for components using Vitest, Testing Library, and axe-core for accessibility testing.
 
 ## 🎯 Testing Philosophy
 
@@ -23,7 +23,7 @@ Our testing strategy focuses on:
 
 - **Vitest** - Fast unit test framework
 - **Testing Library** - User-centric testing utilities
-- **jest-axe** - Automated accessibility testing
+- **axe-core** (via `@axe-core/react`) - Automated accessibility testing integrated with Storybook's a11y addon
 - **Playwright** - Browser-based component testing
 
 ### Configuration
@@ -87,9 +87,9 @@ describe('Button', () => {
 ### Accessibility Testing
 
 ```typescript
-import { axe, toHaveNoViolations } from 'jest-axe';
-
-expect.extend(toHaveNoViolations);
+// Accessibility violations are caught via the Storybook a11y addon (axe-core).
+// For unit-level a11y assertions in Vitest, use @axe-core/react:
+// import { checkA11y } from 'axe-playwright'; // for Playwright tests
 
 describe('Button Accessibility', () => {
   it('should pass axe accessibility audit', async () => {
@@ -1156,7 +1156,7 @@ screen.logRoles();
 ## 📚 Additional Resources
 
 - [Testing Library Docs](https://testing-library.com/docs/react-testing-library/intro/)
-- [jest-axe Documentation](https://github.com/nickcolley/jest-axe)
+- [axe-core Documentation](https://github.com/dequelabs/axe-core)
 - [Vitest Documentation](https://vitest.dev/)
 - [Accessibility Guide](/story/5-guides-accessibility--docs)
 - [ARIA Practices](https://www.w3.org/WAI/ARIA/apg/)

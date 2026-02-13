@@ -1,0 +1,197 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Resources/Guides/Performance" />
+
+# Performance Guide
+
+Practical guidance for keeping apps built with this design system fast. The system is designed to be tree-shakeable and token-driven — following these patterns ensures you don't leave performance on the table.
+
+## Bundle Size
+
+### Tree Shaking — Import per Component
+
+Components are published as individual subpath exports. Always import from the specific subpath, never from the package root:
+
+```tsx
+// ✅ Correct — only imports Button
+import { Button } from '@wyliedog/ui/button';
+
+// ❌ Incorrect — may pull in the entire library
+import { Button } from '@wyliedog/ui';
+```
+
+### Analyze Your Bundle
+
+```bash
+# With Vite
+pnpm add -D rollup-plugin-visualizer
+
+# vite.config.ts
+import { visualizer } from 'rollup-plugin-visualizer';
+export default defineConfig({
+  plugins: [visualizer({ open: true, gzipSize: true })],
+});
+```
+
+Set size budgets in CI to catch regressions:
+
+```bash
+# Example using size-limit
+pnpm add -D size-limit @size-limit/preset-react-app
+```
+
+```json
+// package.json
+{
+  "size-limit": [
+    { "path": "dist/button.js", "limit": "15 KB" },
+    { "path": "dist/index.js", "limit": "50 KB" }
+  ]
+}
+```
+
+## Rendering Performance
+
+### Memoization
+
+Memoize expensive renders and stable callback references:
+
+```tsx
+import { memo, useCallback, useMemo } from 'react';
+
+const UserCard = memo(({ user, onSelect }) => (
+  <Card onClick={() => onSelect(user.id)}>
+    <CardContent>{user.name}</CardContent>
+  </Card>
+));
+
+// In the parent:
+const handleSelect = useCallback((id: string) => {
+  // handle selection
+}, []);
+
+const sortedUsers = useMemo(() =>
+  [...users].sort((a, b) => a.name.localeCompare(b.name)),
+  [users]
+);
+```
+
+### Avoid Inline Objects and Functions
+
+Inline objects and functions create new references on every render, defeating memoization:
+
+```tsx
+// ❌ Creates a new style object on every render
+<Button style={{ marginTop: 8 }}>Save</Button>
+
+// ✅ Use a className or extract to a constant
+<Button className="mt-2">Save</Button>
+```
+
+### Virtualize Long Lists
+
+For lists with 50+ items, use a virtualizer to render only what's visible:
+
+```tsx
+import { useVirtualizer } from '@tanstack/react-virtual';
+
+function VirtualList({ items }: { items: string[] }) {
+  const parentRef = useRef<HTMLDivElement>(null);
+  const rowVirtualizer = useVirtualizer({
+    count: items.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 48,
+  });
+
+  return (
+    <div ref={parentRef} className="h-96 overflow-auto">
+      <div style={{ height: rowVirtualizer.getTotalSize() }}>
+        {rowVirtualizer.getVirtualItems().map((virtualRow) => (
+          <div
+            key={virtualRow.index}
+            style={{ transform: `translateY(${virtualRow.start}px)` }}
+            className="absolute w-full"
+          >
+            {items[virtualRow.index]}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+## Form Performance
+
+Controlled forms with many fields re-render on every keystroke. Use an uncontrolled library for complex forms:
+
+```tsx
+import { useForm } from 'react-hook-form';
+import { Input } from '@wyliedog/ui/input';
+import { Label } from '@wyliedog/ui/label';
+import { Button } from '@wyliedog/ui/button';
+
+function ProfileForm() {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  return (
+    <form onSubmit={handleSubmit(console.log)} className="space-y-4">
+      <div className="space-y-2">
+        <Label htmlFor="name">Name</Label>
+        <Input id="name" {...register('name', { required: true })} />
+      </div>
+      <Button type="submit">Save</Button>
+    </form>
+  );
+}
+```
+
+## Code Splitting
+
+Lazy-load heavy compositions (page layouts, dashboards) so they don't inflate your initial bundle:
+
+```tsx
+import { lazy, Suspense } from 'react';
+import { Skeleton } from '@wyliedog/ui/skeleton';
+
+const Dashboard = lazy(() => import('./Dashboard'));
+
+function App() {
+  return (
+    <Suspense fallback={<Skeleton className="h-96 w-full" />}>
+      <Dashboard />
+    </Suspense>
+  );
+}
+```
+
+## Measuring Performance
+
+### In the Browser
+
+Use React DevTools Profiler to identify slow renders:
+1. Open React DevTools → Profiler tab
+2. Click Record, interact with your UI, click Stop
+3. Look for components with high render durations or unnecessary re-renders (grey bars)
+
+Use Chrome DevTools Performance tab for a full timeline including layout, paint, and scripting.
+
+### Core Web Vitals
+
+Target these thresholds for a good user experience:
+
+| Metric | Good | Needs Work | Poor |
+|---|---|---|---|
+| LCP (Largest Contentful Paint) | < 2.5s | 2.5–4s | > 4s |
+| CLS (Cumulative Layout Shift) | < 0.1 | 0.1–0.25 | > 0.25 |
+| INP (Interaction to Next Paint) | < 200ms | 200–500ms | > 500ms |
+
+### Performance Checklist
+
+- [ ] Components imported from individual subpaths (not package root)
+- [ ] Stable callback references with `useCallback` where memoization matters
+- [ ] No inline objects/functions in render-critical paths
+- [ ] Lists with 50+ items use virtualization
+- [ ] Heavy routes/pages are code-split with `lazy` + `Suspense`
+- [ ] Bundle analyzed and size budgets set in CI
+- [ ] Core Web Vitals measured in production (Lighthouse, PageSpeed Insights)

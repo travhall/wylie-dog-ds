@@ -4,63 +4,54 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Installation & Setup
 
-Get up and running with the Wylie Dog Design System in minutes.
+Detailed setup reference for all supported environments. For a quick introduction, see the [Getting Started guide](?path=/docs/introduction-getting-started--docs).
 
 ## Prerequisites
 
-Before installing, ensure you have:
+| Requirement | Version |
+|---|---|
+| **Node.js** | 20.16+, 22.19+, or 24+ |
+| **React** | 19.2+ or 18.3+ |
+| **Package manager** | npm, yarn, or pnpm |
 
-- **Node.js** 20.16+ or 22.19+ or 24+ (ESM support required)
-- **React** 19.2+ or 18.3+
-- **Package Manager**: npm, yarn, or pnpm
-
-## Installation
-
-### 1. Install the UI Package
+## Install Packages
 
 ```bash
-# Using pnpm (recommended)
+# pnpm (recommended)
 pnpm add @wyliedog/ui @wyliedog/tokens
 
-# Using npm
+# npm
 npm install @wyliedog/ui @wyliedog/tokens
 
-# Using yarn
+# yarn
 yarn add @wyliedog/ui @wyliedog/tokens
 ```
 
-### 2. Install Peer Dependencies
-
-The design system requires React and Radix UI primitives:
+### Peer Dependencies
 
 ```bash
 pnpm add react react-dom lucide-react
 ```
 
-Most Radix UI dependencies are included, but verify peer dependency warnings during installation.
+## CSS Setup
 
-## Configuration
-
-### Tailwind CSS Setup
-
-The design system uses Tailwind CSS v4 for styling. Add the required configuration:
-
-**1. Install Tailwind CSS:**
+Install Tailwind and its PostCSS plugin:
 
 ```bash
 pnpm add tailwindcss @tailwindcss/postcss
 ```
 
-**2. Import the UI styles in your main CSS file:**
+Import the design system styles in your root CSS file:
 
 ```css
 /* app/globals.css or src/index.css */
 @import "@wyliedog/ui/styles";
 ```
 
-**3. Configure PostCSS (postcss.config.js):**
+Configure PostCSS:
 
 ```javascript
+// postcss.config.js
 export default {
   plugins: {
     '@tailwindcss/postcss': {},
@@ -68,9 +59,7 @@ export default {
 };
 ```
 
-### TypeScript Configuration
-
-For optimal TypeScript support, ensure your `tsconfig.json` includes:
+## TypeScript
 
 ```json
 {
@@ -83,67 +72,17 @@ For optimal TypeScript support, ensure your `tsconfig.json` includes:
 }
 ```
 
-## Project Structure
-
-Organize your project to work effectively with the design system:
-
-```
-your-app/
-├── app/                    # Next.js app directory
-│   ├── globals.css        # Import @wyliedog/ui/styles here
-│   └── layout.tsx         # Root layout
-├── components/            # Your custom components
-│   ├── ui/               # Extended UI components (optional)
-│   └── features/         # Feature-specific components
-├── lib/                   # Utilities and helpers
-└── public/               # Static assets
-```
-
-## Verify Installation
-
-Create a test file to verify everything works:
-
-```tsx
-// app/test/page.tsx or src/App.tsx
-import { Button } from '@wyliedog/ui/button';
-import { Card, CardHeader, CardTitle, CardContent } from '@wyliedog/ui/card';
-
-export default function TestPage() {
-  return (
-    <div className="p-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>Installation Successful! 🎉</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="mb-4">
-            The Wylie Dog Design System is ready to use.
-          </p>
-          <Button>Get Started</Button>
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
-```
-
-Run your development server and navigate to the test page. You should see a styled card with a button.
-
 ## Framework-Specific Setup
 
 ### Next.js 15+
 
-The design system works seamlessly with Next.js App Router:
+Import styles in your root layout:
 
 ```tsx
 // app/layout.tsx
 import '@wyliedog/ui/styles';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>{children}</body>
@@ -152,9 +91,13 @@ export default function RootLayout({
 }
 ```
 
-### Vite
+For dark mode, add the class to `<html>`. The design system only requires the `dark` class to be present at render time — manage it with a server action, cookie, or client-side toggle as appropriate for your setup:
 
-Configure Vite to handle the design system:
+```tsx
+<html lang="en" className="dark">
+```
+
+### Vite
 
 ```typescript
 // vite.config.ts
@@ -169,72 +112,82 @@ export default defineConfig({
 });
 ```
 
-### Create React App
-
-CRA works with minimal configuration:
+Import styles in your entry point:
 
 ```tsx
-// src/index.tsx or src/index.jsx
+// src/main.tsx
 import '@wyliedog/ui/styles';
-import './index.css'; // Your additional styles
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
 
-// ... rest of your app
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
 ```
 
-## Dark Mode Setup
-
-The design system includes built-in dark mode support:
+### Remix
 
 ```tsx
-// app/layout.tsx or your root component
-export default function RootLayout({ children }) {
+// app/root.tsx
+import stylesheet from '@wyliedog/ui/styles?url';
+
+export const links = () => [{ rel: 'stylesheet', href: stylesheet }];
+```
+
+## Verify Installation
+
+```tsx
+import { Button } from '@wyliedog/ui/button';
+import { Card, CardHeader, CardTitle, CardContent } from '@wyliedog/ui/card';
+
+export default function TestPage() {
   return (
-    <html lang="en" className="dark"> {/* Add 'dark' class for dark mode */}
-      <body>{children}</body>
-    </html>
+    <div className="p-8">
+      <Card>
+        <CardHeader>
+          <CardTitle>Installation successful</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p className="text-(--color-text-secondary)">
+            If this card is styled correctly, the design system is working.
+          </p>
+          <Button>Get started</Button>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
 ```
 
-For dynamic theme switching, see [Dark Mode Implementation](/docs/resources-theming-dark-mode--docs).
-
 ## Troubleshooting
 
-### Styles Not Loading
+### Styles not loading
+1. Confirm `@import "@wyliedog/ui/styles"` is in your root CSS file and that file is imported in your entry point
+2. Check that `@tailwindcss/postcss` is listed in your PostCSS config
+3. Clear your bundler cache and restart the dev server
 
-**Problem:** Components appear unstyled.
+### TypeScript errors on imports
+1. Set `moduleResolution: "bundler"` in `tsconfig.json`
+2. Restart the TypeScript language server (`Cmd/Ctrl+Shift+P` → "TypeScript: Restart TS Server")
+3. If errors persist, clear `node_modules` and reinstall: `pnpm install --frozen-lockfile`
 
-**Solution:**
-1. Verify `@import "@wyliedog/ui/styles"` is in your main CSS file
-2. Ensure Tailwind CSS is configured correctly
-3. Check that your bundler processes CSS imports
+### Dark mode not applying
+The system applies dark tokens via a `.dark` class on `<html>` — no separate CSS import is needed:
 
-### TypeScript Errors
+```html
+<html class="dark">
+```
 
-**Problem:** Type errors when importing components.
-
-**Solution:**
-1. Ensure TypeScript is configured with `moduleResolution: "bundler"`
-2. Restart your TypeScript server (VS Code: Cmd/Ctrl + Shift + P → "Restart TS Server")
-3. Clear your build cache and node_modules, then reinstall
-
-### Build Errors
-
-**Problem:** Build fails with module resolution errors.
-
-**Solution:**
-1. Verify Node.js version (20.16+, 22.19+, or 24+)
-2. Check that all peer dependencies are installed
-3. Clear your package manager cache: `pnpm store prune` or `npm cache clean --force`
+### Build errors
+1. Confirm Node.js version: `node --version` (need 20.16+, 22.19+, or 24+)
+2. Verify peer dependencies: `pnpm list react react-dom lucide-react`
+3. Clear the pnpm store: `pnpm store prune`
 
 ## Next Steps
 
-- **[Quickstart Tutorial](/docs/resources-getting-started-quickstart--docs)** - Build your first component
-- **[Theming Guide](/docs/resources-theming-overview--docs)** - Customize colors and tokens
-- **[Component API Reference](/docs/resources-development-api-reference--docs)** - Explore all components
-
-## Need Help?
-
-- Check the [Component Documentation](/docs/components-inputs-controls-button--docs) for usage examples
-- Review [Common Patterns](/docs/patterns-overview--docs) for multi-component solutions
-- See [Migration Guide](/docs/resources-migration-updates--docs) for upgrade paths
+- [Quickstart Tutorial](?path=/docs/resources-getting-started-quickstart-tutorial--docs) — Build a complete interface in 10 minutes
+- [Theming](?path=/docs/resources-theming-overview--docs) — Customize colors and dark mode
+- [Composition Patterns](?path=/docs/resources-guides-composition-patterns--docs) — Patterns for building complex UIs

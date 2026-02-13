@@ -201,7 +201,7 @@ export default function RootLayout({ children }) {
 Dark mode is achieved by overriding tokens in a `.dark` class:
 
 ```css
-/* tokens-dark.css */
+/* Dark mode tokens — included automatically via @wyliedog/ui/styles */
 .dark {
   --color-background-primary: oklch(0.208 0.040 265.75);
   --color-background-secondary: oklch(0.279 0.037 260.03);
@@ -485,7 +485,7 @@ color: oklch(0.75 0.12 240);
 ### Dark Mode Not Working
 
 1. Verify `.dark` class is on `<html>` or `<body>`
-2. Check that `tokens-dark.css` is imported
+2. Confirm `@import "@wyliedog/ui/styles"` is in your root CSS — dark tokens are bundled there
 3. Ensure semantic tokens are used (not primitive colors)
 
 ### Tailwind Classes Not Working
