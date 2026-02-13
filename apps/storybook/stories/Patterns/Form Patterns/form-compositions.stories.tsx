@@ -1808,3 +1808,145 @@ export const RealTimeValidation: Story = {
     );
   },
 };
+
+export const SettingsForm: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Tabbed account settings form demonstrating how Tabs, Inputs, Selects, Switches, and Checkboxes compose into a cohesive settings UI with profile, preferences, and security sections.",
+      },
+    },
+  },
+  render: () => (
+    <Card className="w-[600px]">
+      <CardHeader>
+        <CardTitle>Account Settings</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Tabs defaultValue="profile" className="w-full">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="profile">Profile</TabsTrigger>
+            <TabsTrigger value="preferences">Preferences</TabsTrigger>
+            <TabsTrigger value="security">Security</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="profile" className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="settings-name">Full Name</Label>
+              <Input id="settings-name" placeholder="Enter your name" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="settings-email">Email Address</Label>
+              <Input
+                id="settings-email"
+                type="email"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="settings-bio">Bio</Label>
+              <Textarea
+                id="settings-bio"
+                placeholder="Tell us about yourself"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="settings-country">Country</Label>
+              <Select>
+                <SelectTrigger id="settings-country">
+                  <SelectValue placeholder="Select your country" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="us">United States</SelectItem>
+                  <SelectItem value="ca">Canada</SelectItem>
+                  <SelectItem value="uk">United Kingdom</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="preferences" className="space-y-4">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <Label>Email notifications</Label>
+                  <div className="text-sm text-(--color-text-tertiary)">
+                    Receive notifications via email
+                  </div>
+                </div>
+                <Switch />
+              </div>
+              <Separator />
+              <div className="flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <Label>Marketing emails</Label>
+                  <div className="text-sm text-(--color-text-tertiary)">
+                    Receive promotional content
+                  </div>
+                </div>
+                <Switch />
+              </div>
+              <Separator />
+              <div className="space-y-3">
+                <Label>Newsletter preferences</Label>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="settings-weekly" />
+                    <Label htmlFor="settings-weekly">Weekly digest</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="settings-monthly" />
+                    <Label htmlFor="settings-monthly">Monthly newsletter</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="settings-breaking" />
+                    <Label htmlFor="settings-breaking">
+                      Breaking news alerts
+                    </Label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="security" className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="settings-current-password">
+                Current Password
+              </Label>
+              <Input id="settings-current-password" type="password" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="settings-new-password">New Password</Label>
+              <Input id="settings-new-password" type="password" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="settings-confirm-password">
+                Confirm Password
+              </Label>
+              <Input id="settings-confirm-password" type="password" />
+            </div>
+            <Separator />
+            <div className="flex items-center justify-between">
+              <div className="space-y-0.5">
+                <Label>Two-factor authentication</Label>
+                <div className="text-sm text-(--color-text-tertiary)">
+                  Add an extra layer of security
+                </div>
+              </div>
+              <Switch />
+            </div>
+          </TabsContent>
+        </Tabs>
+
+        <Separator className="my-6" />
+
+        <div className="flex justify-end space-x-2">
+          <Button variant="outline">Cancel</Button>
+          <Button>Save Changes</Button>
+        </div>
+      </CardContent>
+    </Card>
+  ),
+};

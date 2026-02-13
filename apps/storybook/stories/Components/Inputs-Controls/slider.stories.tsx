@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect } from "storybook/test";
 import { Slider } from "@wyliedog/ui/slider";
+import { Label } from "@wyliedog/ui/label";
 import { useState } from "react";
 
 const meta: Meta<typeof Slider> = {
@@ -159,7 +161,7 @@ export const WithLabels: Story = {
       <div className="w-full space-y-6">
         <div className="space-y-3">
           <div className="flex justify-between">
-            <label className="text-sm font-medium">Volume</label>
+            <Label className="text-sm font-medium">Volume</Label>
             <span className="text-sm text-(--color-text-secondary)">
               {value[0]}%
             </span>
@@ -187,7 +189,7 @@ export const PriceRange: Story = {
       <div className="w-full space-y-6">
         <div className="space-y-3">
           <div className="flex justify-between">
-            <label className="text-sm font-medium">Price Range</label>
+            <Label className="text-sm font-medium">Price Range</Label>
             <span className="text-sm text-(--color-text-secondary)">
               ${priceRange[0]} - ${priceRange[1]}
             </span>
@@ -206,5 +208,61 @@ export const PriceRange: Story = {
         </div>
       </div>
     );
+  },
+};
+
+export const WithInteractions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Interactive tests covering keyboard navigation (Arrow keys, Home, End) and value constraints.",
+      },
+    },
+  },
+  render: () => {
+    const [value, setValue] = useState([50]);
+    return (
+      <div className="w-full space-y-4">
+        <Label id="slider-label">Volume: {value[0]}%</Label>
+        <Slider
+          aria-labelledby="slider-label"
+          value={value}
+          onValueChange={setValue}
+          max={100}
+          step={10}
+        />
+      </div>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test 1: Slider thumb is present and accessible
+    const thumb = canvas.getByRole("slider");
+    expect(thumb).toBeInTheDocument();
+    expect(thumb).toHaveAttribute("aria-valuenow", "50");
+    expect(thumb).toHaveAttribute("aria-valuemin", "0");
+    expect(thumb).toHaveAttribute("aria-valuemax", "100");
+
+    // Test 2: Focus the slider thumb
+    await userEvent.click(thumb);
+    expect(thumb).toHaveFocus();
+
+    // Test 3: Arrow Right increases value by step
+    await userEvent.keyboard("{ArrowRight}");
+    expect(thumb).toHaveAttribute("aria-valuenow", "60");
+
+    // Test 4: Arrow Left decreases value by step
+    await userEvent.keyboard("{ArrowLeft}");
+    expect(thumb).toHaveAttribute("aria-valuenow", "50");
+
+    // Test 5: End key jumps to max
+    await userEvent.keyboard("{End}");
+    expect(thumb).toHaveAttribute("aria-valuenow", "100");
+
+    // Test 6: Home key jumps to min
+    await userEvent.keyboard("{Home}");
+    expect(thumb).toHaveAttribute("aria-valuenow", "0");
   },
 };

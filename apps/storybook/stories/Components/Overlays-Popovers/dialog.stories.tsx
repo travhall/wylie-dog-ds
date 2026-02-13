@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect, screen } from "storybook/test";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -12,6 +13,10 @@ import {
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
+import { Textarea } from "@wyliedog/ui/textarea";
+import { Checkbox } from "@wyliedog/ui/checkbox";
+import { Separator } from "@wyliedog/ui/separator";
+import { useState } from "react";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components/Overlays & Popovers/Dialog",
@@ -288,5 +293,219 @@ export const WithInteractions: Story = {
           "Comprehensive interaction test demonstrating dialog functionality including opening, closing, focus management, and keyboard navigation. Uses play functions to simulate real user interactions. View the Interactions panel to see the automated test execution.",
       },
     },
+  },
+};
+
+export const WithForm: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dialog containing a full form with validation. Demonstrates the common pattern of placing a form inside a dialog with cancel and submit actions.",
+      },
+    },
+  },
+  render: () => {
+    const [open, setOpen] = useState(false);
+    const [errors, setErrors] = useState<Record<string, string>>({});
+
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      const data = new FormData(e.target as HTMLFormElement);
+      const newErrors: Record<string, string> = {};
+      if (!data.get("dialog-title")) newErrors.title = "Title is required";
+      if (!data.get("dialog-desc")) newErrors.desc = "Description is required";
+      setErrors(newErrors);
+      if (Object.keys(newErrors).length === 0) setOpen(false);
+    };
+
+    return (
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogTrigger asChild>
+          <Button>Create Issue</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <form onSubmit={handleSubmit}>
+            <DialogHeader>
+              <DialogTitle>Create new issue</DialogTitle>
+              <DialogDescription>
+                Fill in the details below. All required fields must be completed
+                before submitting.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4 py-4">
+              <div className="space-y-2">
+                <Label htmlFor="dialog-title" required>
+                  Title
+                </Label>
+                <Input
+                  id="dialog-title"
+                  name="dialog-title"
+                  placeholder="Short, descriptive title"
+                  className={
+                    errors.title ? "border-(--color-border-danger)" : ""
+                  }
+                />
+                {errors.title && (
+                  <p
+                    role="alert"
+                    className="text-sm text-(--color-status-danger)"
+                  >
+                    {errors.title}
+                  </p>
+                )}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="dialog-desc" required>
+                  Description
+                </Label>
+                <Textarea
+                  id="dialog-desc"
+                  name="dialog-desc"
+                  placeholder="Describe the issue in detail"
+                  className={
+                    errors.desc ? "border-(--color-border-danger)" : ""
+                  }
+                />
+                {errors.desc && (
+                  <p
+                    role="alert"
+                    className="text-sm text-(--color-status-danger)"
+                  >
+                    {errors.desc}
+                  </p>
+                )}
+              </div>
+              <div className="flex items-center space-x-2">
+                <Checkbox id="dialog-urgent" name="dialog-urgent" />
+                <Label htmlFor="dialog-urgent">Mark as urgent</Label>
+              </div>
+            </div>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button type="button" variant="outline">
+                  Cancel
+                </Button>
+              </DialogClose>
+              <Button type="submit">Create issue</Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+    );
+  },
+};
+
+export const WithScrollableContent: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dialog with a long scrollable body. The header and footer remain fixed while the content area scrolls independently — useful for terms, changelogs, and detail views.",
+      },
+    },
+  },
+  render: () => (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">View Terms</Button>
+      </DialogTrigger>
+      <DialogContent className="flex flex-col max-h-[80vh]">
+        <DialogHeader>
+          <DialogTitle>Terms of Service</DialogTitle>
+          <DialogDescription>
+            Please read the full terms before accepting.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="overflow-y-auto flex-1 py-4 space-y-4 text-sm text-(--color-text-secondary)">
+          {Array.from({ length: 8 }, (_, i) => (
+            <div key={i}>
+              <p className="font-medium text-(--color-text-primary) mb-1">
+                {i + 1}.{" "}
+                {
+                  [
+                    "Acceptance of Terms",
+                    "Use of Service",
+                    "Privacy Policy",
+                    "Intellectual Property",
+                    "Termination",
+                    "Limitation of Liability",
+                    "Governing Law",
+                    "Changes to Terms",
+                  ][i]
+                }
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur.
+              </p>
+            </div>
+          ))}
+        </div>
+        <Separator />
+        <DialogFooter className="pt-4">
+          <DialogClose asChild>
+            <Button variant="outline">Decline</Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button>Accept Terms</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  ),
+};
+
+export const NonClosable: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dialog that cannot be dismissed by clicking the backdrop or pressing Escape. Used for critical flows (onboarding, required agreements) where the user must take an explicit action to proceed.",
+      },
+    },
+  },
+  render: () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogTrigger asChild>
+          <Button variant="outline">Start Onboarding</Button>
+        </DialogTrigger>
+        <DialogContent
+          onEscapeKeyDown={(e) => e.preventDefault()}
+          onInteractOutside={(e) => e.preventDefault()}
+          // Hide the default close button for truly non-dismissable dialogs
+          className="[&>button:last-of-type]:hidden"
+        >
+          <DialogHeader>
+            <DialogTitle>Welcome! Let's get you set up</DialogTitle>
+            <DialogDescription>
+              Complete these steps to finish setting up your account. You must
+              choose an option to continue.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3 py-4">
+            {["Personal account", "Team account", "Enterprise account"].map(
+              (option) => (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  className="w-full text-left px-4 py-3 rounded-md border border-(--color-border-default) hover:bg-(--color-background-secondary) transition-colors"
+                >
+                  <p className="font-medium text-sm">{option}</p>
+                </button>
+              )
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
   },
 };

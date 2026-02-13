@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect, screen } from "storybook/test";
+import { useState } from "react";
 import {
   Menubar,
   MenubarContent,
@@ -7,6 +9,13 @@ import {
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
+  MenubarCheckboxItem,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarLabel,
+  MenubarSub,
+  MenubarSubTrigger,
+  MenubarSubContent,
 } from "@wyliedog/ui/menubar";
 
 const meta: Meta<typeof Menubar> = {
@@ -228,4 +237,174 @@ export const ApplicationMenu: Story = {
       </MenubarMenu>
     </Menubar>
   ),
+};
+
+export const WithCheckboxesAndRadio: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Menubar with checkbox items for toggleable view options and a radio group for mutually exclusive theme selection.",
+      },
+    },
+  },
+  render: () => {
+    const [showStatusBar, setShowStatusBar] = useState(true);
+    const [showPanel, setShowPanel] = useState(false);
+    const [theme, setTheme] = useState("system");
+
+    return (
+      <Menubar>
+        <MenubarMenu>
+          <MenubarTrigger>View</MenubarTrigger>
+          <MenubarContent>
+            <MenubarLabel>Panels</MenubarLabel>
+            <MenubarSeparator />
+            <MenubarCheckboxItem
+              checked={showStatusBar}
+              onCheckedChange={setShowStatusBar}
+            >
+              Status Bar
+            </MenubarCheckboxItem>
+            <MenubarCheckboxItem
+              checked={showPanel}
+              onCheckedChange={setShowPanel}
+            >
+              Activity Panel
+            </MenubarCheckboxItem>
+          </MenubarContent>
+        </MenubarMenu>
+        <MenubarMenu>
+          <MenubarTrigger>Appearance</MenubarTrigger>
+          <MenubarContent>
+            <MenubarLabel>Theme</MenubarLabel>
+            <MenubarSeparator />
+            <MenubarRadioGroup value={theme} onValueChange={setTheme}>
+              <MenubarRadioItem value="light">Light</MenubarRadioItem>
+              <MenubarRadioItem value="dark">Dark</MenubarRadioItem>
+              <MenubarRadioItem value="system">System</MenubarRadioItem>
+            </MenubarRadioGroup>
+          </MenubarContent>
+        </MenubarMenu>
+      </Menubar>
+    );
+  },
+};
+
+export const WithSubmenus: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Menubar with nested submenus for hierarchical navigation — a common pattern in text editors and IDEs.",
+      },
+    },
+  },
+  render: () => (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>
+            New <MenubarShortcut>⌘N</MenubarShortcut>
+          </MenubarItem>
+          <MenubarSub>
+            <MenubarSubTrigger>Open Recent</MenubarSubTrigger>
+            <MenubarSubContent>
+              <MenubarItem>project-alpha.md</MenubarItem>
+              <MenubarItem>design-tokens.json</MenubarItem>
+              <MenubarItem>README.md</MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem>Clear Recent</MenubarItem>
+            </MenubarSubContent>
+          </MenubarSub>
+          <MenubarSeparator />
+          <MenubarItem>
+            Save <MenubarShortcut>⌘S</MenubarShortcut>
+          </MenubarItem>
+          <MenubarSub>
+            <MenubarSubTrigger>Export As</MenubarSubTrigger>
+            <MenubarSubContent>
+              <MenubarItem>PDF</MenubarItem>
+              <MenubarItem>HTML</MenubarItem>
+              <MenubarItem>Markdown</MenubarItem>
+            </MenubarSubContent>
+          </MenubarSub>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  ),
+};
+
+export const WithInteractions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Interactive tests covering menubar open/close via click, arrow key navigation within a menu, and Escape key dismissal.",
+      },
+    },
+  },
+  render: () => (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>
+            Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem>
+            Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem>Cut</MenubarItem>
+          <MenubarItem>Copy</MenubarItem>
+          <MenubarItem>Paste</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>View</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>Zoom In</MenubarItem>
+          <MenubarItem>Zoom Out</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test 1: Menus are initially closed
+    expect(
+      screen.queryByRole("menuitem", { name: /undo/i })
+    ).not.toBeInTheDocument();
+
+    // Test 2: Clicking "Edit" trigger opens the menu
+    const editTrigger = canvas.getByRole("menuitem", { name: /edit/i });
+    await userEvent.click(editTrigger);
+
+    await new Promise((resolve) => setTimeout(resolve, 300));
+
+    // Test 3: Menu items are visible
+    expect(screen.getByRole("menuitem", { name: /undo/i })).toBeInTheDocument();
+    expect(screen.getByRole("menuitem", { name: /redo/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("menuitem", { name: /^cut$/i })
+    ).toBeInTheDocument();
+
+    // Test 4: Arrow Down navigates to first item
+    await userEvent.keyboard("{ArrowDown}");
+    expect(screen.getByRole("menuitem", { name: /undo/i })).toHaveFocus();
+
+    // Test 5: Arrow Down again moves focus
+    await userEvent.keyboard("{ArrowDown}");
+    expect(screen.getByRole("menuitem", { name: /redo/i })).toHaveFocus();
+
+    // Test 6: Escape closes the menu
+    await userEvent.keyboard("{Escape}");
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    expect(
+      screen.queryByRole("menuitem", { name: /undo/i })
+    ).not.toBeInTheDocument();
+  },
 };

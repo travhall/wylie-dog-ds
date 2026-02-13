@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect } from "storybook/test";
 import { ToggleGroup, ToggleGroupItem } from "@wyliedog/ui/toggle-group";
 import { Textarea } from "@wyliedog/ui/textarea";
 import {
@@ -528,5 +529,94 @@ export const Accessibility: Story = {
           "Demonstrates comprehensive accessibility features including ARIA attributes and keyboard navigation.",
       },
     },
+  },
+};
+
+export const WithInteractions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Interactive tests covering single-select group (only one item active at a time) and multiple-select group (independent toggles). Uses play functions to validate keyboard and click interactions.",
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <p className="text-sm font-medium">Text Alignment (single)</p>
+        <ToggleGroup
+          type="single"
+          defaultValue="left"
+          aria-label="Text alignment"
+        >
+          <ToggleGroupItem value="left" aria-label="Align left">
+            Left
+          </ToggleGroupItem>
+          <ToggleGroupItem value="center" aria-label="Align center">
+            Center
+          </ToggleGroupItem>
+          <ToggleGroupItem value="right" aria-label="Align right">
+            Right
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </div>
+      <div className="space-y-2">
+        <p className="text-sm font-medium">Text Style (multiple)</p>
+        <ToggleGroup type="multiple" aria-label="Text formatting">
+          <ToggleGroupItem value="bold" aria-label="Bold">
+            Bold
+          </ToggleGroupItem>
+          <ToggleGroupItem value="italic" aria-label="Italic">
+            Italic
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </div>
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // --- Single-select group ---
+    const leftBtn = canvas.getByRole("radio", { name: /align left/i });
+    const centerBtn = canvas.getByRole("radio", { name: /align center/i });
+    const rightBtn = canvas.getByRole("radio", { name: /align right/i });
+
+    // Test 1: Initial state — "left" is selected
+    expect(leftBtn).toHaveAttribute("data-state", "on");
+    expect(centerBtn).toHaveAttribute("data-state", "off");
+
+    // Test 2: Clicking "center" selects it and deselects "left"
+    await userEvent.click(centerBtn);
+    expect(centerBtn).toHaveAttribute("data-state", "on");
+    expect(leftBtn).toHaveAttribute("data-state", "off");
+
+    // Test 3: Clicking "right" selects it and deselects "center"
+    await userEvent.click(rightBtn);
+    expect(rightBtn).toHaveAttribute("data-state", "on");
+    expect(centerBtn).toHaveAttribute("data-state", "off");
+
+    // --- Multiple-select group ---
+    const boldBtn = canvas.getByRole("button", { name: /^bold$/i });
+    const italicBtn = canvas.getByRole("button", { name: /^italic$/i });
+
+    // Test 4: Both start off
+    expect(boldBtn).toHaveAttribute("data-state", "off");
+    expect(italicBtn).toHaveAttribute("data-state", "off");
+
+    // Test 5: Toggle bold on
+    await userEvent.click(boldBtn);
+    expect(boldBtn).toHaveAttribute("data-state", "on");
+    expect(italicBtn).toHaveAttribute("data-state", "off");
+
+    // Test 6: Toggle italic on independently
+    await userEvent.click(italicBtn);
+    expect(boldBtn).toHaveAttribute("data-state", "on");
+    expect(italicBtn).toHaveAttribute("data-state", "on");
+
+    // Test 7: Toggle bold off while italic stays on
+    await userEvent.click(boldBtn);
+    expect(boldBtn).toHaveAttribute("data-state", "off");
+    expect(italicBtn).toHaveAttribute("data-state", "on");
   },
 };

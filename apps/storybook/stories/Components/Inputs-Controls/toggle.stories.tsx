@@ -1,5 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect } from "storybook/test";
 import { Toggle } from "@wyliedog/ui/toggle";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
@@ -491,5 +492,72 @@ export const Accessibility: Story = {
           "Demonstrates comprehensive accessibility features including ARIA labels and descriptions.",
       },
     },
+  },
+};
+
+export const WithInteractions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Interactive tests covering initial state, click to toggle, ARIA attribute updates, Space key toggle, and that disabled toggles cannot be activated.",
+      },
+    },
+  },
+  render: () => {
+    const [boldPressed, setBoldPressed] = React.useState(false);
+    const [italicPressed, setItalicPressed] = React.useState(true);
+    return (
+      <div className="flex items-center gap-2">
+        <Toggle
+          aria-label="Toggle bold"
+          pressed={boldPressed}
+          onPressedChange={setBoldPressed}
+        >
+          <BoldIcon className="h-4 w-4" />
+        </Toggle>
+        <Toggle
+          aria-label="Toggle italic"
+          pressed={italicPressed}
+          onPressedChange={setItalicPressed}
+        >
+          <ItalicIcon className="h-4 w-4" />
+        </Toggle>
+        <Toggle aria-label="Toggle underline" disabled>
+          <UnderlineIcon className="h-4 w-4" />
+        </Toggle>
+      </div>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const boldToggle = canvas.getByRole("button", { name: /toggle bold/i });
+    const italicToggle = canvas.getByRole("button", { name: /toggle italic/i });
+    const underlineToggle = canvas.getByRole("button", {
+      name: /toggle underline/i,
+    });
+
+    // Test 1: Initial state — bold off, italic on, underline disabled
+    expect(boldToggle).toHaveAttribute("aria-pressed", "false");
+    expect(italicToggle).toHaveAttribute("aria-pressed", "true");
+    expect(underlineToggle).toBeDisabled();
+
+    // Test 2: Click bold to press it
+    await userEvent.click(boldToggle);
+    expect(boldToggle).toHaveAttribute("aria-pressed", "true");
+
+    // Test 3: Click bold again to unpress
+    await userEvent.click(boldToggle);
+    expect(boldToggle).toHaveAttribute("aria-pressed", "false");
+
+    // Test 4: Space key toggles italic off
+    italicToggle.focus();
+    await userEvent.keyboard(" ");
+    expect(italicToggle).toHaveAttribute("aria-pressed", "false");
+
+    // Test 5: Disabled toggle cannot be activated
+    await userEvent.click(underlineToggle);
+    expect(underlineToggle).toHaveAttribute("aria-pressed", "false");
   },
 };

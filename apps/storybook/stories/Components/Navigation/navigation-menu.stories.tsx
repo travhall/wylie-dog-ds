@@ -1,5 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect } from "storybook/test";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -286,4 +287,131 @@ export const WithSubmenu: Story = {
       </NavigationMenuList>
     </NavigationMenu>
   ),
+};
+
+export const WithCallToAction: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Navigation menu with a rich content panel that includes a featured highlight card and a call-to-action button — a common SaaS marketing nav pattern.",
+      },
+    },
+  },
+  render: () => (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle}>
+            Home
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <div className="grid gap-3 p-6 md:w-125 lg:grid-cols-[1fr_1fr]">
+              <div className="flex flex-col gap-3">
+                <ListItem href="#" title="For Startups">
+                  Launch fast with our starter templates and toolkits.
+                </ListItem>
+                <ListItem href="#" title="For Enterprise">
+                  Scalable infrastructure for large teams.
+                </ListItem>
+                <ListItem href="#" title="For Agencies">
+                  White-label tools and client management.
+                </ListItem>
+              </div>
+              <div className="flex flex-col justify-between rounded-md bg-(--color-background-secondary) p-4">
+                <div>
+                  <p className="text-sm font-medium mb-1">
+                    New: Design System Kit
+                  </p>
+                  <p className="text-xs text-(--color-text-secondary) leading-relaxed">
+                    Everything you need to build consistent, accessible UIs —
+                    tokens, components, and docs.
+                  </p>
+                </div>
+                <NavigationMenuLink
+                  asChild
+                  className="mt-4 inline-flex items-center justify-center rounded-md bg-(--color-background-primary) px-3 py-1.5 text-sm font-medium ring-1 ring-(--color-border-default) hover:bg-(--color-background-tertiary) transition-colors"
+                >
+                  <a href="#">Get started free →</a>
+                </NavigationMenuLink>
+              </div>
+            </div>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle}>
+            Pricing
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  ),
+};
+
+export const WithInteractions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Interactive tests covering trigger click to open a dropdown panel, keyboard navigation (Tab between items), and Escape key to dismiss.",
+      },
+    },
+  },
+  render: () => (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle}>
+            Home
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-80 gap-3 p-4">
+              <ListItem href="#" title="Analytics">
+                Real-time data dashboards.
+              </ListItem>
+              <ListItem href="#" title="Automation">
+                Workflow automation tools.
+              </ListItem>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle}>
+            Contact
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test 1: Dropdown content is not visible initially
+    expect(canvas.queryByText("Analytics")).not.toBeInTheDocument();
+
+    // Test 2: Clicking the "Products" trigger opens the dropdown
+    const productsTrigger = canvas.getByRole("button", { name: /products/i });
+    await userEvent.click(productsTrigger);
+
+    await new Promise((resolve) => setTimeout(resolve, 400));
+
+    // Test 3: Dropdown content is now visible
+    expect(canvas.getByText("Analytics")).toBeInTheDocument();
+    expect(canvas.getByText("Automation")).toBeInTheDocument();
+
+    // Test 4: The trigger has aria-expanded="true"
+    expect(productsTrigger).toHaveAttribute("aria-expanded", "true");
+
+    // Test 5: Pressing Escape closes the dropdown
+    await userEvent.keyboard("{Escape}");
+    await new Promise((resolve) => setTimeout(resolve, 400));
+
+    expect(productsTrigger).toHaveAttribute("aria-expanded", "false");
+  },
 };

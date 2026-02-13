@@ -10,8 +10,20 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
+  DropdownMenuGroup,
+  DropdownMenuShortcut,
 } from "@wyliedog/ui/dropdown-menu";
 import { Button } from "@wyliedog/ui/button";
+import {
+  UserIcon,
+  CreditCardIcon,
+  SettingsIcon,
+  LogOutIcon,
+  PlusIcon,
+  TrashIcon,
+  EditIcon,
+  CopyIcon,
+} from "lucide-react";
 
 const meta: Meta<typeof DropdownMenu> = {
   title: "Components/Overlays & Popovers/DropdownMenu",
@@ -237,4 +249,116 @@ export const WithInteractions: Story = {
       },
     },
   },
+};
+
+export const WithIcons: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dropdown menu with icons and keyboard shortcuts alongside each item — a common pattern for application menus.",
+      },
+    },
+  },
+  render: () => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Account</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <UserIcon className="mr-2 h-4 w-4" />
+            Profile
+            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <CreditCardIcon className="mr-2 h-4 w-4" />
+            Billing
+            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <SettingsIcon className="mr-2 h-4 w-4" />
+            Settings
+            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <LogOutIcon className="mr-2 h-4 w-4" />
+          Log out
+          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  ),
+};
+
+export const WithDestructiveItem: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dropdown menu with a destructive action item styled in danger colors. Use for irreversible operations like delete or remove.",
+      },
+    },
+  },
+  render: () => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Actions</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-48">
+        <DropdownMenuItem>
+          <EditIcon className="mr-2 h-4 w-4" />
+          Edit
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <CopyIcon className="mr-2 h-4 w-4" />
+          Duplicate
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem className="text-(--color-status-danger) focus:text-(--color-status-danger)">
+          <TrashIcon className="mr-2 h-4 w-4" />
+          Delete
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  ),
+};
+
+export const WithDisabledItems: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Dropdown menu with a mix of enabled and disabled items. Disabled items are visually muted and cannot be selected.",
+      },
+    },
+  },
+  render: () => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">File</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-48">
+        <DropdownMenuItem>
+          <PlusIcon className="mr-2 h-4 w-4" />
+          New File
+          <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+        </DropdownMenuItem>
+        <DropdownMenuItem disabled>
+          <CopyIcon className="mr-2 h-4 w-4" />
+          Copy (unavailable)
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem disabled>
+          <TrashIcon className="mr-2 h-4 w-4" />
+          Delete (read-only)
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  ),
 };

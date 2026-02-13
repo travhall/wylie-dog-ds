@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect } from "storybook/test";
 import { Form } from "@wyliedog/ui/form";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
@@ -295,4 +296,126 @@ export const Login: Story = {
       </div>
     </Form>
   ),
+};
+
+export const WithInteractions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Interactive tests covering validation error display on empty submit, error clearing on valid input, and successful submission.",
+      },
+    },
+  },
+  render: () => {
+    const [errors, setErrors] = useState<Record<string, string>>({});
+    const [submitted, setSubmitted] = useState(false);
+
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      const formData = new FormData(e.target as HTMLFormElement);
+      const newErrors: Record<string, string> = {};
+
+      if (!formData.get("wi-name")) newErrors.name = "Name is required";
+      if (!formData.get("wi-email")) newErrors.email = "Email is required";
+
+      setErrors(newErrors);
+      if (Object.keys(newErrors).length === 0) setSubmitted(true);
+    };
+
+    return (
+      <Form onSubmit={handleSubmit} className="w-100 space-y-6">
+        {submitted && (
+          <p
+            role="status"
+            className="text-sm font-medium text-(--color-status-success)"
+          >
+            Form submitted successfully!
+          </p>
+        )}
+        <div className="space-y-2">
+          <Label
+            htmlFor="wi-name"
+            className={errors.name ? "text-(--color-status-danger)" : ""}
+          >
+            Name {errors.name && "*"}
+          </Label>
+          <Input
+            id="wi-name"
+            name="wi-name"
+            placeholder="Enter your name"
+            className={errors.name ? "border-(--color-border-danger)" : ""}
+          />
+          {errors.name && (
+            <p role="alert" className="text-sm text-(--color-status-danger)">
+              {errors.name}
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-2">
+          <Label
+            htmlFor="wi-email"
+            className={errors.email ? "text-(--color-status-danger)" : ""}
+          >
+            Email {errors.email && "*"}
+          </Label>
+          <Input
+            id="wi-email"
+            name="wi-email"
+            type="email"
+            placeholder="Enter your email"
+            className={errors.email ? "border-(--color-border-danger)" : ""}
+          />
+          {errors.email && (
+            <p role="alert" className="text-sm text-(--color-status-danger)">
+              {errors.email}
+            </p>
+          )}
+        </div>
+
+        <Button type="submit" className="w-full">
+          Submit
+        </Button>
+      </Form>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test 1: Inputs are present and initially empty
+    const nameInput = canvas.getByLabelText(/name/i);
+    const emailInput = canvas.getByLabelText(/email/i);
+    expect(nameInput).toBeInTheDocument();
+    expect(emailInput).toBeInTheDocument();
+
+    // Test 2: Submitting with empty fields shows both error messages
+    const submitButton = canvas.getByRole("button", { name: /submit/i });
+    await userEvent.click(submitButton);
+
+    const nameError = await canvas.findByRole("alert", {
+      name: /name is required/i,
+    });
+    expect(nameError).toBeInTheDocument();
+
+    const emailError = canvas.getByText(/email is required/i);
+    expect(emailError).toBeInTheDocument();
+
+    // Test 3: Typing into name field (errors remain until re-submit)
+    await userEvent.type(nameInput, "Jane Doe");
+    expect(nameInput).toHaveValue("Jane Doe");
+
+    // Test 4: Typing a valid email
+    await userEvent.type(emailInput, "jane@example.com");
+    expect(emailInput).toHaveValue("jane@example.com");
+
+    // Test 5: Re-submitting with valid values clears errors and shows success
+    await userEvent.click(submitButton);
+
+    expect(canvas.queryByText(/name is required/i)).not.toBeInTheDocument();
+    expect(canvas.queryByText(/email is required/i)).not.toBeInTheDocument();
+
+    const successMessage = canvas.getByRole("status");
+    expect(successMessage).toHaveTextContent(/form submitted successfully/i);
+  },
 };

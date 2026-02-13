@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect, screen } from "storybook/test";
 import {
   Sheet,
   SheetClose,
@@ -178,4 +179,133 @@ export const FromTop: Story = {
       </SheetContent>
     </Sheet>
   ),
+};
+
+export const FromBottom: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Bottom-edge sheet — a common mobile pattern for action menus, quick settings, and confirmations. Grows upward from the bottom of the viewport.",
+      },
+    },
+  },
+  render: () => (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline">Open from Bottom</Button>
+      </SheetTrigger>
+      <SheetContent side="bottom">
+        <SheetHeader>
+          <SheetTitle>Share post</SheetTitle>
+          <SheetDescription>
+            Choose how you'd like to share this post.
+          </SheetDescription>
+        </SheetHeader>
+        <div className="grid grid-cols-3 gap-4 py-4">
+          <Button variant="outline" className="flex flex-col h-auto gap-1 py-3">
+            <span className="text-base">✉️</span>
+            <span className="text-xs">Email</span>
+          </Button>
+          <Button variant="outline" className="flex flex-col h-auto gap-1 py-3">
+            <span className="text-base">💬</span>
+            <span className="text-xs">Message</span>
+          </Button>
+          <Button variant="outline" className="flex flex-col h-auto gap-1 py-3">
+            <span className="text-base">🔗</span>
+            <span className="text-xs">Copy link</span>
+          </Button>
+        </div>
+        <SheetFooter>
+          <SheetClose asChild>
+            <Button variant="outline" className="w-full">
+              Cancel
+            </Button>
+          </SheetClose>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  ),
+};
+
+export const WithInteractions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Interactive tests covering open/close via trigger click, Escape key dismissal, and focus management inside the sheet.",
+      },
+    },
+  },
+  render: () => (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline">Open Sheet</Button>
+      </SheetTrigger>
+      <SheetContent side="right">
+        <SheetHeader>
+          <SheetTitle>Edit profile</SheetTitle>
+          <SheetDescription>
+            Make changes to your profile here. Click save when you're done.
+          </SheetDescription>
+        </SheetHeader>
+        <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="sheet-name" className="text-right">
+              Name
+            </Label>
+            <Input
+              id="sheet-name"
+              defaultValue="Pedro Duarte"
+              className="col-span-3"
+            />
+          </div>
+        </div>
+        <SheetFooter>
+          <SheetClose asChild>
+            <Button type="submit">Save changes</Button>
+          </SheetClose>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test 1: Sheet is initially closed
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+    // Test 2: Clicking the trigger opens the sheet
+    const triggerButton = canvas.getByRole("button", { name: /open sheet/i });
+    await userEvent.click(triggerButton);
+
+    // Wait for open animation
+    await new Promise((resolve) => setTimeout(resolve, 300));
+
+    // Test 3: Sheet dialog is visible with title and description
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("heading", { name: /edit profile/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/make changes to your profile here/i)
+    ).toBeInTheDocument();
+
+    // Test 4: Input inside the sheet is accessible
+    const nameInput = screen.getByLabelText(/name/i);
+    expect(nameInput).toBeInTheDocument();
+    await userEvent.clear(nameInput);
+    await userEvent.type(nameInput, "Jane Doe");
+    expect(nameInput).toHaveValue("Jane Doe");
+
+    // Test 5: Escape key closes the sheet
+    await userEvent.keyboard("{Escape}");
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+    // Test 6: Trigger regains focus after close
+    expect(triggerButton).toHaveFocus();
+  },
 };
