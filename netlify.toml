@@ -1,0 +1,17 @@
+[build]
+  # Run from the repo root so Turborepo can resolve all workspace packages
+  base = "."
+  command = "pnpm install --frozen-lockfile && pnpm turbo run build --filter=storybook"
+  publish = "apps/storybook/storybook-static"
+
+[build.environment]
+  NODE_VERSION = "20"
+  PNPM_VERSION = "10"
+  # Turbo cache is handled by Netlify's build cache automatically
+  TURBO_TELEMETRY_DISABLED = "1"
+
+# Storybook is a client-side SPA — all routes are handled by index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
