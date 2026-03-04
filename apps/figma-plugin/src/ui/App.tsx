@@ -435,7 +435,13 @@ function AppInner() {
 
       {/* Error Toast */}
       <ErrorToast
-        message={pluginState.error}
+        message={
+          pluginState.error === null
+            ? null
+            : typeof pluginState.error === "string"
+              ? pluginState.error
+              : pluginState.error.message
+        }
         onClose={() => pluginActions.setError(null)}
       />
 
