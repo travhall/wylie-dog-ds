@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SiteFooter } from "@wyliedog/ui/compositions/site-footer";
-import { Heart, Github, Twitter } from "lucide-react";
+import { Heart, GitBranch, AtSign } from "lucide-react";
 
 const meta: Meta<typeof SiteFooter> = {
   title: "Patterns/Navigation Patterns/Site Footer",
@@ -102,12 +102,12 @@ const defaultSocialLinks = [
   {
     label: "GitHub",
     href: "#github",
-    icon: <Github className="h-5 w-5" />,
+    icon: <GitBranch className="h-5 w-5" />,
   },
   {
     label: "Twitter",
     href: "#twitter",
-    icon: <Twitter className="h-5 w-5" />,
+    icon: <AtSign className="h-5 w-5" />,
   },
 ];
 

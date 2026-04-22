@@ -11,7 +11,7 @@ import {
   Box,
   Code2,
   BookOpen,
-  Figma,
+  PenTool,
   Zap,
   ArrowRight,
   Shield,
@@ -59,7 +59,7 @@ export default function ShowcasePage() {
     },
     {
       title: "Figma Plugin",
-      icon: <Figma className="h-6 w-6 text-[#F24E1E]" />,
+      icon: <PenTool className="h-6 w-6 text-[#F24E1E]" />,
       description:
         "Bridging design and code with instant token and component sync.",
       href: "/plugin",

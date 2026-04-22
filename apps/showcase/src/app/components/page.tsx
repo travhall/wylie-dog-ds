@@ -14,7 +14,7 @@ import {
   Sparkles,
   Shield,
   Zap,
-  Github,
+  Code2,
   ExternalLink,
 } from "lucide-react";
 import { Button } from "@wyliedog/ui/button";
@@ -170,7 +170,7 @@ export default function ComponentsOverviewPage() {
                 rel="noreferrer"
               >
                 <Button variant="outline" size="lg">
-                  <Github className="h-5 w-5" />
+                  <Code2 className="h-5 w-5" />
                   Source Code
                 </Button>
               </a>

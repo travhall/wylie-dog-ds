@@ -17,8 +17,8 @@ import {
   AlertCircle,
   CheckCircle,
   ExternalLink,
-  Github,
-  Twitter,
+  GitBranch,
+  AtSign,
 } from "lucide-react";
 
 export default function AuthenticationFormPage() {
@@ -138,14 +138,14 @@ export default function AuthenticationFormPage() {
                       variant="outline"
                       className="w-full border-(--color-border-primary)/20"
                     >
-                      <Github className="h-4 w-4 mr-2" />
+                      <GitBranch className="h-4 w-4 mr-2" />
                       GitHub
                     </Button>
                     <Button
                       variant="outline"
                       className="w-full border-(--color-border-primary)/20"
                     >
-                      <Twitter className="h-4 w-4 mr-2" />
+                      <AtSign className="h-4 w-4 mr-2" />
                       Twitter
                     </Button>
                   </div>
@@ -240,14 +240,14 @@ export default function AuthenticationFormPage() {
                       variant="outline"
                       className="w-full border-(--color-border-primary)/20"
                     >
-                      <Github className="h-4 w-4 mr-2" />
+                      <GitBranch className="h-4 w-4 mr-2" />
                       GitHub
                     </Button>
                     <Button
                       variant="outline"
                       className="w-full border-(--color-border-primary)/20"
                     >
-                      <Twitter className="h-4 w-4 mr-2" />
+                      <AtSign className="h-4 w-4 mr-2" />
                       Twitter
                     </Button>
                   </div>

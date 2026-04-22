@@ -3,7 +3,7 @@ import { Badge } from "@wyliedog/ui/badge";
 import { cn } from "@wyliedog/ui/lib/utils";
 import { FeatureGrid } from "@wyliedog/ui/feature-grid";
 import {
-  Figma,
+  PenTool,
   RefreshCw,
   Zap,
   Layout,
@@ -12,7 +12,6 @@ import {
   MousePointer2,
   Clock,
   ArrowRight,
-  Github,
   Shield,
   Code,
   Palette,
@@ -101,7 +100,7 @@ export default function PluginPage() {
 
         <div className="flex justify-center items-center gap-6 relative z-10 pt-4">
           <div className="w-16 h-16 bg-white dark:bg-zinc-900 rounded-2xl shadow-lg flex items-center justify-center p-4">
-            <Figma className="h-full w-full text-[#F24E1E]" />
+            <PenTool className="h-full w-full text-[#F24E1E]" />
           </div>
           <RefreshCw className="h-6 w-6 text-(--color-text-tertiary)/30" />
           <div className="w-16 h-16 bg-white dark:bg-zinc-900 rounded-2xl shadow-lg flex items-center justify-center p-4">
@@ -242,7 +241,7 @@ export default function PluginPage() {
       {/* Status Section */}
       <section className="text-center space-y-6">
         <div className="inline-flex glass p-3 rounded-2xl border-(--color-border-primary)/5">
-          <Github className="h-6 w-6 text-(--color-text-tertiary)" />
+          <GitBranch className="h-6 w-6 text-(--color-text-tertiary)" />
         </div>
         <h2 className="text-3xl font-bold tracking-tight text-(--color-text-primary)">
           Available Now - Version 0.2.0
