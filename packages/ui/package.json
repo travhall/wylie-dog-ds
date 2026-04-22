@@ -320,7 +320,7 @@
     "@wyliedog/tokens": "workspace:*",
     "cmdk": "^1.1.1",
     "lucide-react": "^0.577.0",
-    "react": "^19.2.4"
+    "react": "^19.2.5"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
