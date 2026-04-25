@@ -35,7 +35,7 @@ const CalendarHeader = () => (
   <div className="flex items-center justify-between">
     <button
       aria-label="Previous month"
-      className="inline-flex items-center justify-center rounded-(--space-calendar-nav-button-radius) text-(length:--font-size-calendar-header-font-size) font-medium ring-offset-(--color-background) transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled) border border-(--color-calendar-nav-border) bg-transparent hover:bg-(--color-calendar-nav-hover) hover:text-(--color-calendar-nav-text-hover) h-(--space-calendar-nav-button-size) w-(--space-calendar-nav-button-size) p-(--space-calendar-nav-button-padding) opacity-(--state-opacity-disabled) hover:opacity-100"
+      className="inline-flex items-center justify-center rounded-(--space-calendar-nav-button-radius) text-(length:--font-size-calendar-header-font-size) font-medium ring-offset-(--color-background-primary) transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled) border border-(--color-calendar-nav-border) bg-transparent hover:bg-(--color-calendar-nav-hover) hover:text-(--color-calendar-nav-text-hover) h-(--space-calendar-nav-button-size) w-(--space-calendar-nav-button-size) p-(--space-calendar-nav-button-padding) opacity-(--state-opacity-disabled) hover:opacity-100"
     >
       <ChevronLeftIcon className="h-(--space-calendar-nav-icon-size) w-(--space-calendar-nav-icon-size)" />
     </button>
@@ -44,7 +44,7 @@ const CalendarHeader = () => (
     </div>
     <button
       aria-label="Next month"
-      className="inline-flex items-center justify-center rounded-(--space-calendar-nav-button-radius) text-(length:--font-size-calendar-header-font-size) font-medium ring-offset-(--color-background) transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled) border border-(--color-calendar-nav-border) bg-transparent hover:bg-(--color-calendar-nav-hover) hover:text-(--color-calendar-nav-text-hover) h-(--space-calendar-nav-button-size) w-(--space-calendar-nav-button-size) p-(--space-calendar-nav-button-padding) opacity-(--state-opacity-disabled) hover:opacity-100"
+      className="inline-flex items-center justify-center rounded-(--space-calendar-nav-button-radius) text-(length:--font-size-calendar-header-font-size) font-medium ring-offset-(--color-background-primary) transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled) border border-(--color-calendar-nav-border) bg-transparent hover:bg-(--color-calendar-nav-hover) hover:text-(--color-calendar-nav-text-hover) h-(--space-calendar-nav-button-size) w-(--space-calendar-nav-button-size) p-(--space-calendar-nav-button-padding) opacity-(--state-opacity-disabled) hover:opacity-100"
     >
       <ChevronRightIcon className="h-(--space-calendar-nav-icon-size) w-(--space-calendar-nav-icon-size)" />
     </button>

@@ -17,7 +17,10 @@ const config: StorybookConfig = {
       ? [getAbsolutePath("@storybook/addon-vitest")]
       : []),
     getAbsolutePath("@storybook/addon-a11y"),
-    getAbsolutePath("storybook-design-token"),
+    // Removed: storybook-design-token was registered but never actually used.
+    // Design-token documentation is handled by custom stories under
+    // stories/Foundations/Design Tokens/ which render from the tokens package
+    // manifest/hierarchical exports directly.
   ],
 
   framework: {

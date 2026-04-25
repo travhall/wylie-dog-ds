@@ -271,7 +271,7 @@
     "$type": "spacing",
     "$value": "{space.100}"
   },
-  "input.background": {
+  "input.default.background": {
     "$type": "color",
     "$value": "{color.background.primary}"
   },
@@ -291,7 +291,7 @@
     "$type": "color",
     "$value": "{color.border.danger}"
   },
-  "input.text": {
+  "input.default.text": {
     "$type": "color",
     "$value": "{color.text.primary}"
   },
@@ -899,7 +899,7 @@
     "$type": "color",
     "$value": "{color.interactive.secondary}"
   },
-  "toast.background": {
+  "toast.default.background": {
     "$type": "color",
     "$value": "{color.background.primary}"
   },
@@ -1271,7 +1271,7 @@
     "$type": "spacing",
     "$value": "{space.050}"
   },
-  "label.color": {
+  "label.default.color": {
     "$type": "color",
     "$value": "{color.text.secondary}"
   },
@@ -1755,6 +1755,10 @@
     "$type": "spacing",
     "$value": "{space.1200}"
   },
+  "context-menu.sub-content.min-width": {
+    "$type": "spacing",
+    "$value": "{space.1000}"
+  },
   "context-menu.content.padding": {
     "$type": "spacing",
     "$value": "{space.050}"
@@ -2086,6 +2090,10 @@
   "command.item-padding-x": {
     "$type": "spacing",
     "$value": "{space.150}"
+  },
+  "command.item-padding-y": {
+    "$type": "spacing",
+    "$value": "{space.050}"
   },
   "command.item-indicator-margin-right": {
     "$type": "spacing",

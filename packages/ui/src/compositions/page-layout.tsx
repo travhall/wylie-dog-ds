@@ -1,8 +1,25 @@
 import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 
-export interface PageLayoutProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "full-width" | "centered";
+export const pageLayoutMainVariants = cva("flex-1 py-8", {
+  variants: {
+    variant: {
+      default: "container mx-auto px-4 sm:px-6 lg:px-8",
+      "full-width": "w-full",
+      centered: "container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
+export interface PageLayoutProps
+  extends
+    Omit<React.HTMLAttributes<HTMLDivElement>, "children">,
+    VariantProps<typeof pageLayoutMainVariants> {
+  children?: React.ReactNode;
   header?: React.ReactNode;
   footer?: React.ReactNode;
   sidebar?: React.ReactNode;
@@ -13,7 +30,7 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
   (
     {
       className,
-      variant = "default",
+      variant,
       header,
       footer,
       sidebar,
@@ -23,12 +40,6 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
     },
     ref
   ) => {
-    const variants = {
-      default: "container mx-auto px-4 sm:px-6 lg:px-8",
-      "full-width": "w-full",
-      centered: "container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl",
-    };
-
     return (
       <div
         className={cn("min-h-screen flex flex-col", className)}
@@ -48,7 +59,7 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
           )}
 
           {/* Main Content */}
-          <main className={cn("flex-1 py-8", variants[variant])}>
+          <main className={pageLayoutMainVariants({ variant })}>
             {children}
           </main>
 

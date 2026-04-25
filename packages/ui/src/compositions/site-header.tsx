@@ -1,6 +1,20 @@
 import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 import { Button } from "../button";
+
+export const siteHeaderVariants = cva("w-full transition-colors duration-200", {
+  variants: {
+    variant: {
+      default:
+        "bg-(--color-background-primary) border-b border-(--color-border-primary) sticky top-0 z-(--z-index-sticky) backdrop-blur supports-[backdrop-filter]:bg-(--color-background-primary)/95",
+      transparent: "bg-transparent border-b border-transparent",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -8,8 +22,10 @@ import {
   NavigationMenuLink,
 } from "../navigation-menu";
 
-export interface SiteHeaderProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: "default" | "transparent";
+export interface SiteHeaderProps
+  extends
+    React.HTMLAttributes<HTMLElement>,
+    VariantProps<typeof siteHeaderVariants> {
   logo?: React.ReactNode;
   navigation?: Array<{
     label: string;
@@ -19,30 +35,10 @@ export interface SiteHeaderProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
-  (
-    {
-      className,
-      variant = "default",
-      logo,
-      navigation = [],
-      actions,
-      ...props
-    },
-    ref
-  ) => {
-    const variants = {
-      default:
-        "bg-(--color-background-primary) border-b border-(--color-border-primary) sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-(--color-background-primary)/95",
-      transparent: "bg-transparent border-b border-transparent",
-    };
-
+  ({ className, variant, logo, navigation = [], actions, ...props }, ref) => {
     return (
       <header
-        className={cn(
-          "w-full transition-colors duration-200",
-          variants[variant],
-          className
-        )}
+        className={cn(siteHeaderVariants({ variant }), className)}
         ref={ref}
         {...props}
       >
@@ -65,7 +61,7 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
                     <NavigationMenuItem key={index}>
                       <NavigationMenuLink
                         href={item.href}
-                        className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-(--color-background-primary) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-interactive-secondary) hover:text-(--color-text-primary) focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary) focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                        className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-(--color-background-primary) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-interactive-secondary) hover:text-(--color-text-primary) focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary) focus:outline-none disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)"
                       >
                         {item.label}
                       </NavigationMenuLink>

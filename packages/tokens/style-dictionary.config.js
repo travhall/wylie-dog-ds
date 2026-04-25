@@ -114,12 +114,31 @@ function generateCSSVariable(token, name) {
   return { varName: `--${prefix}-${cleanName}`, value };
 }
 
-// Register format for semantic/component tokens (& primitives when included) in @theme
+// Register format for tiered token emission
+//
+// Tier 1 — Primitives (`@theme inline`):
+//   Static scales (color palettes, spacing, radii, etc.) that sit on top of
+//   Tailwind's defaults. Emitted as @theme so they generate utility classes
+//   (bg-polar-night-500, text-blue-700, etc.); `inline` is safe because these
+//   values never change between themes.
+//
+// Tier 2 — Semantic (`@theme` non-inline):
+//   Themeable tokens (--color-background-primary, --color-text-primary).
+//   Emitted as @theme (no `inline`) so generated utilities reference the var
+//   via var(--...), allowing .dark overrides to flow through at runtime.
+//
+// Tier 3 — Component (`:root`):
+//   Internal component plumbing (--color-button-primary-background,
+//   --select-content-z-index). NOT in @theme — exposing these as utilities is
+//   noise. Emitted on :root so var(--...) lookups in component source work.
+//
+// Dark mode: a single `.dark { }` block overrides semantic + component vars.
 StyleDictionary.registerFormat({
   name: "css/semantic",
   format: function ({ dictionary, options }) {
-    const themeVariables = [];
-    const baseVariables = [];
+    const primitiveVars = [];
+    const semanticVars = [];
+    const componentVars = [];
 
     dictionary.allTokens.forEach((token) => {
       // Clean path: remove duplicate segments like "Color.Color"
@@ -129,37 +148,56 @@ StyleDictionary.registerFormat({
       });
 
       const name = cleanPath.join("-").toLowerCase();
-      const { varName, value, extras } = generateCSSVariable(token, name);
+      const { varName, value } = generateCSSVariable(token, name);
+      const line = `  ${varName}: ${value};`;
 
-      themeVariables.push(`  ${varName}: ${value};`);
-      baseVariables.push(`    ${varName}: ${value};`);
+      // Route by source file (filePath). Matches the manifest format's
+      // discriminator convention.
+      if (token.filePath.includes("component")) {
+        componentVars.push(line);
+      } else if (token.filePath.includes("semantic")) {
+        semanticVars.push(line);
+      } else if (token.filePath.includes("primitive")) {
+        primitiveVars.push(line);
+      } else {
+        // Defensive fallback: treat unclassified tokens as primitives.
+        primitiveVars.push(line);
+      }
     });
 
     if (options.mode === "dark") {
+      // Dark mode overrides semantic + component tokens on .dark.
+      const darkVars = [...semanticVars, ...componentVars];
       return `/**
- * Dark mode semantic and component tokens
- * Applied via .dark class
+ * Dark mode overrides for semantic and component tokens.
+ * Applied via .dark class.
  */
 
 .dark {
-${themeVariables.join("\n")}
+${darkVars.join("\n")}
 }`;
-    } else {
-      return `/**
- * Light mode semantic and component tokens
- * These are in @theme for Tailwind utility generation
+    }
+
+    // Light mode: emit three tiered blocks.
+    return `/**
+ * Light mode tokens — tiered emission.
+ *
+ * - Primitives: @theme inline (static scales, generate utilities).
+ * - Semantic:   @theme (themeable, utilities use var() for .dark support).
+ * - Component:  :root (internal, not exposed as utilities).
  */
 
 @theme inline {
-${themeVariables.join("\n")}
+${primitiveVars.join("\n")}
 }
 
-@layer base {
-  :root {
-${baseVariables.join("\n")}
-  }
+@theme {
+${semanticVars.join("\n")}
+}
+
+:root {
+${componentVars.join("\n")}
 }`;
-    }
   },
 });
 

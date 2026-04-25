@@ -14,7 +14,8 @@ export interface ValidationError {
     | "missing_reference"
     | "circular_dependency"
     | "type_mismatch"
-    | "invalid_format";
+    | "invalid_format"
+    | "primitive_reference";
   token: string;
   reference?: string;
   message: string;
@@ -115,6 +116,30 @@ export function validateTokensForImport(
             suggestion: "Verify this reference is intentional",
           });
         }
+      }
+    }
+  }
+
+  // Hardening: SYNC_CONTRACT invariant — primitive tokens MUST be literal
+  // values, never references. A primitive with {color.gray.500} breaks the
+  // 3-tier architecture (primitive → semantic → component) and causes
+  // downstream consumers to silently fail when resolving the chain.
+  for (const [tokenName, referencedTokens] of Array.from(allReferences)) {
+    const tokenInfo = allTokens.get(tokenName);
+    if (!tokenInfo) continue;
+    // Collection names for primitives are typically "primitive" (per sync
+    // contract). Match case-insensitively to be resilient to capitalization.
+    if (tokenInfo.collection.toLowerCase().includes("primitive")) {
+      for (const ref of referencedTokens) {
+        report.errors.push({
+          type: "primitive_reference",
+          token: tokenName,
+          reference: ref,
+          message: `Primitive token "${tokenName}" must not contain a reference (found "{${ref}}"). Primitives must be literal values per the 3-tier architecture.`,
+          suggestion:
+            "Inline the literal value, or move this token out of the primitive collection.",
+        });
+        report.valid = false;
       }
     }
   }

@@ -1,10 +1,30 @@
 import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 import { Button } from "../button";
 import { Badge } from "../badge";
 
-export interface SectionHeroProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: "default" | "gradient" | "centered";
+export const sectionHeroVariants = cva(
+  "relative w-full py-20 md:py-32 overflow-hidden",
+  {
+    variants: {
+      variant: {
+        default: "bg-(--color-background-primary)",
+        gradient:
+          "bg-gradient-to-br from-blue-500/10 via-(--color-background-primary) to-purple-500/10",
+        centered: "bg-(--color-background-primary) text-center",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
+export interface SectionHeroProps
+  extends
+    React.HTMLAttributes<HTMLElement>,
+    VariantProps<typeof sectionHeroVariants> {
   badge?: string;
   title: string;
   description?: string;
@@ -26,7 +46,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
   (
     {
       className,
-      variant = "default",
+      variant,
       badge,
       title,
       description,
@@ -38,23 +58,12 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
     },
     ref
   ) => {
-    const variants = {
-      default: "bg-(--color-background-primary)",
-      gradient:
-        "bg-gradient-to-br from-blue-500/10 via-(--color-background-primary) to-purple-500/10",
-      centered: "bg-(--color-background-primary) text-center",
-    };
-
     const isCentered = variant === "centered";
     const hasImage = !!image;
 
     return (
       <section
-        className={cn(
-          "relative w-full py-20 md:py-32 overflow-hidden",
-          variants[variant],
-          className
-        )}
+        className={cn(sectionHeroVariants({ variant }), className)}
         ref={ref}
         {...props}
       >

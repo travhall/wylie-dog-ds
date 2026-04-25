@@ -61,7 +61,7 @@ export const SystemOverview: Story = {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded bg-(--color-blue-500) flex items-center justify-center text-white text-xs font-bold">
+                <div className="w-8 h-8 rounded bg-blue-500 flex items-center justify-center text-white text-xs font-bold">
                   1
                 </div>
                 <h4 className="font-semibold">Primitive</h4>
@@ -79,7 +79,7 @@ export const SystemOverview: Story = {
 
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded bg-(--color-blue-600) flex items-center justify-center text-white text-xs font-bold">
+                <div className="w-8 h-8 rounded bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
                   2
                 </div>
                 <h4 className="font-semibold">Semantic</h4>
@@ -97,7 +97,7 @@ export const SystemOverview: Story = {
 
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded bg-(--color-blue-700) flex items-center justify-center text-white text-xs font-bold">
+                <div className="w-8 h-8 rounded bg-blue-700 flex items-center justify-center text-white text-xs font-bold">
                   3
                 </div>
                 <h4 className="font-semibold">Component</h4>
@@ -251,7 +251,11 @@ const ColorPalette = ({
           >
             <div
               className="w-12 h-12 rounded border border-(--color-border-secondary) group-hover:ring-2 group-hover:ring-(--color-border-focus) transition-all"
-              style={{ backgroundColor: `var(--color-${colorName}-${shade})` }}
+              // Render the literal value, not var(--color-...).
+              // Primitives live in `@theme inline` → no :root custom property,
+              // so var() would return empty. The hierarchical export already
+              // contains the OKLCH literal; use it directly.
+              style={{ backgroundColor: value }}
             />
             <p className="text-xs mt-1 font-mono">{shade}</p>
             {copiedShade === shade && (
@@ -1084,7 +1088,9 @@ export const TokenBrowser: Story = {
             >
               <div
                 className="w-12 h-12 rounded border border-(--color-border-primary) shrink-0"
-                style={{ backgroundColor: token.cssVar }}
+                // Same reason as ColorPalette: primitives live in `@theme inline`
+                // so var(--color-...) returns empty. Use the OKLCH literal.
+                style={{ backgroundColor: token.value }}
               />
               <div className="flex-1 min-w-0">
                 <div className="font-mono text-xs font-medium truncate">

@@ -1,6 +1,43 @@
 import React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
+
+export const selectTriggerVariants = cva(
+  cn(
+    "flex w-full items-center justify-between border border-(--color-input-border) transition-colors",
+    "rounded-(--space-select-trigger-radius)",
+    "placeholder:text-(--color-input-placeholder)",
+    "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-input-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
+    "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
+    "[&>span]:line-clamp-1",
+    "text-(--color-input-default-text)"
+  ),
+  {
+    variants: {
+      size: {
+        sm: "h-(--space-select-trigger-height-sm) px-(--space-select-trigger-padding-x-sm) text-(length:--font-size-select-trigger-font-size-sm)",
+        md: "h-(--space-select-trigger-height-md) px-(--space-select-trigger-padding-x-md) text-(length:--font-size-select-trigger-font-size-md)",
+        lg: "h-(--space-select-trigger-height-lg) px-(--space-select-trigger-padding-x-lg) text-(length:--font-size-select-trigger-font-size-lg)",
+      },
+      error: {
+        true: "border-(--color-input-border-error) bg-(--color-input-default-background)",
+        false:
+          "border-(--color-input-border) bg-(--color-input-default-background) hover:bg-(--color-input-background-hover)",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+      error: false,
+    },
+  }
+);
+
+const selectItemFontSizes = {
+  sm: "text-(length:--font-size-select-trigger-font-size-sm)",
+  md: "text-(length:--font-size-select-trigger-font-size-md)",
+  lg: "text-(length:--font-size-select-trigger-font-size-lg)",
+} as const;
 
 // Select Context
 type SelectContextValue = {
@@ -50,29 +87,10 @@ export const SelectTrigger = React.forwardRef<
   // Fallback to propSize for backward compatibility, otherwise use context
   const size = propSize || context.size;
 
-  const sizes = {
-    sm: "h-(--space-select-trigger-height-sm) px-(--space-select-trigger-padding-x-sm) text-(length:--font-size-select-trigger-font-size-sm)",
-    md: "h-(--space-select-trigger-height-md) px-(--space-select-trigger-padding-x-md) text-(length:--font-size-select-trigger-font-size-md)",
-    lg: "h-(--space-select-trigger-height-lg) px-(--space-select-trigger-padding-x-lg) text-(length:--font-size-select-trigger-font-size-lg)",
-  };
-
   return (
     <SelectPrimitive.Trigger
       ref={ref}
-      className={cn(
-        "flex w-full items-center justify-between border border-(--color-input-border) transition-colors",
-        "rounded-(--space-select-trigger-radius)",
-        "placeholder:text-(--color-input-placeholder)",
-        "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-input-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
-        "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
-        "[&>span]:line-clamp-1",
-        error
-          ? "border-(--color-input-border-error) bg-(--color-input-background)"
-          : "border-(--color-input-border) bg-(--color-input-background) hover:bg-(--color-input-background-hover)",
-        "text-(--color-input-text)",
-        sizes[size],
-        className
-      )}
+      className={cn(selectTriggerVariants({ size, error }), className)}
       {...props}
     >
       {children}
@@ -143,12 +161,6 @@ export const SelectItem = React.forwardRef<
 >(({ className, children, ...props }, ref) => {
   const { size } = useSelectContext();
 
-  const fontSizes = {
-    sm: "text-(length:--font-size-select-trigger-font-size-sm)",
-    md: "text-(length:--font-size-select-trigger-font-size-md)",
-    lg: "text-(length:--font-size-select-trigger-font-size-lg)",
-  };
-
   return (
     <SelectPrimitive.Item
       ref={ref}
@@ -158,7 +170,7 @@ export const SelectItem = React.forwardRef<
         "py-(--space-select-item-padding-y)",
         "pl-(--space-select-item-padding-left)",
         "pr-(--space-select-item-padding-right)",
-        fontSizes[size],
+        selectItemFontSizes[size],
         "focus:bg-(--color-select-item-background-focus) focus:text-(--color-select-item-text-focus) hover:bg-(--color-select-item-background-focus) hover:text-(--color-select-item-text-focus)",
         "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
         className

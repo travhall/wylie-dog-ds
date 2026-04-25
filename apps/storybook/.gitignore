@@ -1,0 +1,4 @@
+# Playwright
+playwright-report/
+test-results/
+# Keep baselines under tests/visual.spec.ts-snapshots/ — do NOT ignore.

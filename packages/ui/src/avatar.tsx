@@ -1,9 +1,29 @@
 // avatar.tsx
 import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
-export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
-  size?: "sm" | "md" | "lg" | "xl";
+export const avatarVariants = cva(
+  "relative flex shrink-0 overflow-hidden rounded-(--space-avatar-rounded) bg-(--color-avatar-background) border border-(--color-avatar-border)",
+  {
+    variants: {
+      size: {
+        sm: "h-(--space-avatar-size-sm) w-(--space-avatar-size-sm)",
+        md: "h-(--space-avatar-size-md) w-(--space-avatar-size-md)",
+        lg: "h-(--space-avatar-size-lg) w-(--space-avatar-size-lg)",
+        xl: "h-(--space-avatar-size-xl) w-(--space-avatar-size-xl)",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  }
+);
+
+export interface AvatarProps
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof avatarVariants> {
   /** Semantic role for the avatar context */
   semanticRole?: "profile" | "user" | "decorative";
   /** Name of the person for accessibility context */
@@ -11,17 +31,7 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
-  (
-    { className, size = "md", semanticRole = "profile", name, ...props },
-    ref
-  ) => {
-    const sizes = {
-      sm: "h-(--space-avatar-size-sm) w-(--space-avatar-size-sm)",
-      md: "h-(--space-avatar-size-md) w-(--space-avatar-size-md)",
-      lg: "h-(--space-avatar-size-lg) w-(--space-avatar-size-lg)",
-      xl: "h-(--space-avatar-size-xl) w-(--space-avatar-size-xl)",
-    };
-
+  ({ className, size, semanticRole = "profile", name, ...props }, ref) => {
     const getAriaLabel = () => {
       if (semanticRole === "decorative") return undefined;
       if (name) {
@@ -35,11 +45,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
     return (
       <div
         ref={ref}
-        className={cn(
-          "relative flex shrink-0 overflow-hidden rounded-(--space-avatar-rounded) bg-(--color-avatar-background) border border-(--color-avatar-border)",
-          sizes[size],
-          className
-        )}
+        className={cn(avatarVariants({ size }), className)}
         role={semanticRole === "decorative" ? "presentation" : "img"}
         aria-label={getAriaLabel()}
         {...props}

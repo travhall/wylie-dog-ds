@@ -2,7 +2,38 @@
 
 import React, { useRef } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
+
+export const dialogContentVariants = cva(
+  cn(
+    "fixed left-[50%] top-[50%] z-(--z-index-modal) grid w-full translate-x-[-50%] translate-y-[-50%]",
+    "gap-(--space-dialog-header-gap)",
+    "border bg-(--color-dialog-background) shadow-(--shadow-lg) duration-(--duration-normal)",
+    "p-(--space-dialog-content-padding)",
+    "data-[state=open]:animate-in data-[state=closed]:animate-out",
+    "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+    "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+    "data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
+    "data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
+    "rounded-(--space-dialog-content-radius)",
+    "border-(--color-dialog-border)"
+  ),
+  {
+    variants: {
+      size: {
+        sm: "max-w-(--space-dialog-content-width-sm)",
+        md: "max-w-(--space-dialog-content-width-md)",
+        lg: "max-w-(--space-dialog-content-width-lg)",
+        xl: "max-w-(--space-dialog-content-max-width)",
+        full: "max-w-[95vw] max-h-[95vh]",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  }
+);
 
 // Dialog Root and Trigger
 export const Dialog = DialogPrimitive.Root;
@@ -18,7 +49,7 @@ export const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-(--color-dialog-overlay) backdrop-blur-sm",
+      "fixed inset-0 z-(--z-index-modal-backdrop) bg-(--color-dialog-overlay) backdrop-blur-sm",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
@@ -29,25 +60,16 @@ export const DialogOverlay = React.forwardRef<
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 // Dialog Content
-export interface DialogContentProps extends React.ComponentPropsWithoutRef<
-  typeof DialogPrimitive.Content
-> {
-  /** Size variant for the dialog */
-  size?: "sm" | "md" | "lg" | "xl" | "full";
-}
+export interface DialogContentProps
+  extends
+    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>,
+    VariantProps<typeof dialogContentVariants> {}
 
 export const DialogContent = React.forwardRef<
   React.ComponentRef<typeof DialogPrimitive.Content>,
   DialogContentProps
->(({ className, children, size = "md", ...props }, ref) => {
+>(({ className, children, size, ...props }, ref) => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const sizes = {
-    sm: "max-w-(--space-dialog-content-width-sm)",
-    md: "max-w-(--space-dialog-content-width-md)",
-    lg: "max-w-(--space-dialog-content-width-lg)",
-    xl: "max-w-(--space-dialog-content-max-width)",
-    full: "max-w-[95vw] max-h-[95vh]",
-  };
 
   return (
     <DialogPortal>
@@ -58,21 +80,7 @@ export const DialogContent = React.forwardRef<
           event.preventDefault();
           closeButtonRef.current?.focus();
         }}
-        className={cn(
-          "fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%]",
-          "gap-(--space-dialog-header-gap)",
-          "border bg-(--color-dialog-background) shadow-(--shadow-lg) duration-(--transition-duration-normal)",
-          "p-(--space-dialog-content-padding)",
-          "data-[state=open]:animate-in data-[state=closed]:animate-out",
-          "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-          "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-          "data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
-          "data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
-          "rounded-(--space-dialog-content-radius)",
-          "border-(--color-dialog-border)",
-          sizes[size],
-          className
-        )}
+        className={cn(dialogContentVariants({ size }), className)}
         {...props}
       >
         {children}

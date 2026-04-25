@@ -1,7 +1,29 @@
 "use client";
 
 import React, { createContext, useContext, useId } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
+
+export const formLabelVariants = cva(
+  "font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-(--state-opacity-muted)",
+  {
+    variants: {
+      size: {
+        sm: "text-(length:--font-size-label-font-size-sm)",
+        md: "text-(length:--font-size-label-font-size-md)",
+        lg: "text-(length:--font-size-label-font-size-lg)",
+      },
+      invalid: {
+        true: "text-(--color-text-danger)",
+        false: "text-(--color-form-label)",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+      invalid: false,
+    },
+  }
+);
 
 // Form Field Context for accessibility
 interface FormFieldContextValue {
@@ -86,30 +108,21 @@ const FormItem = React.forwardRef<HTMLDivElement, FormItemProps>(
 FormItem.displayName = "FormItem";
 
 // Enhanced FormLabel with automatic accessibility features
-interface FormLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  size?: "sm" | "md" | "lg";
-}
+interface FormLabelProps
+  extends
+    React.LabelHTMLAttributes<HTMLLabelElement>,
+    Omit<VariantProps<typeof formLabelVariants>, "invalid"> {}
 
 const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
-  ({ className, size = "md", children, ...props }, ref) => {
+  ({ className, size, children, ...props }, ref) => {
     const { id, isRequired, isInvalid } = useFormField();
-
-    const sizes = {
-      sm: "text-(length:--font-size-label-font-size-sm)",
-      md: "text-(length:--font-size-label-font-size-md)",
-      lg: "text-(length:--font-size-label-font-size-lg)",
-    };
 
     return (
       <label
         ref={ref}
         htmlFor={id}
         className={cn(
-          "font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-          isInvalid
-            ? "text-(--color-text-danger)"
-            : "text-(--color-form-label)",
-          sizes[size],
+          formLabelVariants({ size, invalid: isInvalid }),
           className
         )}
         {...props}

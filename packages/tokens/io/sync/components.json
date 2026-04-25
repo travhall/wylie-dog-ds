@@ -556,7 +556,7 @@
             "Dark": "{space.100}"
           }
         },
-        "input.background": {
+        "input.default.background": {
           "$type": "color",
           "$value": "{color.background.primary}",
           "valuesByMode": {
@@ -596,7 +596,7 @@
             "Dark": "{color.border.danger}"
           }
         },
-        "input.text": {
+        "input.default.text": {
           "$type": "color",
           "$value": "{color.text.primary}",
           "valuesByMode": {
@@ -1812,7 +1812,7 @@
             "Dark": "{color.interactive.secondary}"
           }
         },
-        "toast.background": {
+        "toast.default.background": {
           "$type": "color",
           "$value": "{color.background.primary}",
           "valuesByMode": {
@@ -2556,7 +2556,7 @@
             "Dark": "{space.050}"
           }
         },
-        "label.color": {
+        "label.default.color": {
           "$type": "color",
           "$value": "{color.text.secondary}",
           "valuesByMode": {
@@ -3524,6 +3524,14 @@
             "Dark": "{space.1200}"
           }
         },
+        "context-menu.sub-content.min-width": {
+          "$type": "spacing",
+          "$value": "{space.1000}",
+          "valuesByMode": {
+            "Light": "{space.1000}",
+            "Dark": "{space.1000}"
+          }
+        },
         "context-menu.content.padding": {
           "$type": "spacing",
           "$value": "{space.050}",
@@ -4186,6 +4194,14 @@
           "valuesByMode": {
             "Light": "{space.150}",
             "Dark": "{space.150}"
+          }
+        },
+        "command.item-padding-y": {
+          "$type": "spacing",
+          "$value": "{space.050}",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
           }
         },
         "command.item-indicator-margin-right": {

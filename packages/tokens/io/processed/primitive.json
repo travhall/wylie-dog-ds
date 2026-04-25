@@ -862,7 +862,7 @@
     "$type": "number",
     "$value": 0.8
   },
-  "shadow.offset.-xl": {
+  "shadow.offset.neg-xl": {
     "$type": "dimension",
     "$value": "-12px"
   },
@@ -870,7 +870,7 @@
     "$type": "number",
     "$value": 0.9
   },
-  "shadow.offset.-lg": {
+  "shadow.offset.neg-lg": {
     "$type": "dimension",
     "$value": "-8px"
   },
@@ -878,11 +878,11 @@
     "$type": "number",
     "$value": 0.95
   },
-  "shadow.offset.-md": {
+  "shadow.offset.neg-md": {
     "$type": "dimension",
     "$value": "-4px"
   },
-  "shadow.offset.-sm": {
+  "shadow.offset.neg-sm": {
     "$type": "dimension",
     "$value": "-2px"
   },
@@ -918,7 +918,7 @@
     "$type": "dimension",
     "$value": "2px"
   },
-  "shadow.spread.-xl": {
+  "shadow.spread.neg-xl": {
     "$type": "dimension",
     "$value": "-8px"
   },
@@ -926,7 +926,7 @@
     "$type": "dimension",
     "$value": "4px"
   },
-  "shadow.spread.-lg": {
+  "shadow.spread.neg-lg": {
     "$type": "dimension",
     "$value": "-4px"
   },
@@ -934,7 +934,7 @@
     "$type": "dimension",
     "$value": "8px"
   },
-  "shadow.spread.-md": {
+  "shadow.spread.neg-md": {
     "$type": "dimension",
     "$value": "-2px"
   },
@@ -942,7 +942,7 @@
     "$type": "dimension",
     "$value": "12px"
   },
-  "shadow.spread.-sm": {
+  "shadow.spread.neg-sm": {
     "$type": "dimension",
     "$value": "-1px"
   },
@@ -1025,5 +1025,49 @@
   "typography.tracking.widest": {
     "$type": "dimension",
     "$value": "0.1em"
+  },
+  "z-index.0": {
+    "$type": "number",
+    "$value": 0
+  },
+  "z-index.10": {
+    "$type": "number",
+    "$value": 10
+  },
+  "z-index.20": {
+    "$type": "number",
+    "$value": 20
+  },
+  "z-index.30": {
+    "$type": "number",
+    "$value": 30
+  },
+  "z-index.40": {
+    "$type": "number",
+    "$value": 40
+  },
+  "z-index.50": {
+    "$type": "number",
+    "$value": 50
+  },
+  "z-index.60": {
+    "$type": "number",
+    "$value": 60
+  },
+  "z-index.70": {
+    "$type": "number",
+    "$value": 70
+  },
+  "z-index.80": {
+    "$type": "number",
+    "$value": 80
+  },
+  "z-index.90": {
+    "$type": "number",
+    "$value": 90
+  },
+  "z-index.100": {
+    "$type": "number",
+    "$value": 100
   }
 }

@@ -761,48 +761,48 @@
         },
         "z-index.dropdown": {
           "$type": "number",
-          "$value": 1000,
+          "$value": "{z-index.10}",
           "valuesByMode": {
-            "Light": 1000,
-            "Dark": 1000
+            "Light": "{z-index.10}",
+            "Dark": "{z-index.10}"
           },
-          "$description": "Dropdowns and popovers"
+          "$description": "Dropdown menus and select panels"
         },
         "z-index.sticky": {
           "$type": "number",
-          "$value": 1020,
+          "$value": "{z-index.20}",
           "valuesByMode": {
-            "Light": 1020,
-            "Dark": 1020
+            "Light": "{z-index.20}",
+            "Dark": "{z-index.20}"
           },
-          "$description": "Sticky headers and footers"
+          "$description": "Sticky positioned elements (sticky headers, etc.)"
         },
         "z-index.modal": {
           "$type": "number",
-          "$value": 1050,
+          "$value": "{z-index.50}",
           "valuesByMode": {
-            "Light": 1050,
-            "Dark": 1050
+            "Light": "{z-index.50}",
+            "Dark": "{z-index.50}"
           },
-          "$description": "Modal dialogs"
+          "$description": "Modal dialogs, sheets, and similar blocking overlays"
         },
         "z-index.toast": {
           "$type": "number",
-          "$value": 1090,
+          "$value": "{z-index.80}",
           "valuesByMode": {
-            "Light": 1090,
-            "Dark": 1090
+            "Light": "{z-index.80}",
+            "Dark": "{z-index.80}"
           },
-          "$description": "Toast notifications"
+          "$description": "Toast notifications — above all UI"
         },
         "z-index.tooltip": {
           "$type": "number",
-          "$value": 1100,
+          "$value": "{z-index.70}",
           "valuesByMode": {
-            "Light": 1100,
-            "Dark": 1100
+            "Light": "{z-index.70}",
+            "Dark": "{z-index.70}"
           },
-          "$description": "Tooltips (highest)"
+          "$description": "Tooltips — highest priority for transient hints"
         },
         "state.opacity.disabled": {
           "$type": "number",
@@ -947,6 +947,105 @@
             "Dark": "cubic-bezier(0.4, 0, 0.2, 1)"
           },
           "$description": "Ease-in-out for symmetric transitions"
+        },
+        "z-index.base": {
+          "$type": "number",
+          "$value": "{z-index.0}",
+          "valuesByMode": {
+            "Light": "{z-index.0}",
+            "Dark": "{z-index.0}"
+          },
+          "$description": "Default stacking context"
+        },
+        "z-index.fixed": {
+          "$type": "number",
+          "$value": "{z-index.30}",
+          "valuesByMode": {
+            "Light": "{z-index.30}",
+            "Dark": "{z-index.30}"
+          },
+          "$description": "Fixed positioned elements (app shell)"
+        },
+        "z-index.modal-backdrop": {
+          "$type": "number",
+          "$value": "{z-index.40}",
+          "valuesByMode": {
+            "Light": "{z-index.40}",
+            "Dark": "{z-index.40}"
+          },
+          "$description": "Modal/dialog backdrop overlay"
+        },
+        "z-index.popover": {
+          "$type": "number",
+          "$value": "{z-index.60}",
+          "valuesByMode": {
+            "Light": "{z-index.60}",
+            "Dark": "{z-index.60}"
+          },
+          "$description": "Popovers, hover cards, and floating panels"
+        },
+        "opacity.interactive.hover": {
+          "$type": "number",
+          "$value": "{opacity.80}",
+          "valuesByMode": {
+            "Light": "{opacity.80}",
+            "Dark": "{opacity.80}"
+          },
+          "$description": "Hover-state opacity for interactive elements"
+        },
+        "opacity.interactive.active": {
+          "$type": "number",
+          "$value": "{opacity.90}",
+          "valuesByMode": {
+            "Light": "{opacity.90}",
+            "Dark": "{opacity.90}"
+          },
+          "$description": "Active/pressed-state opacity for interactive elements"
+        },
+        "opacity.interactive.disabled": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          },
+          "$description": "Disabled-state opacity for interactive elements"
+        },
+        "opacity.muted": {
+          "$type": "number",
+          "$value": "{opacity.70}",
+          "valuesByMode": {
+            "Light": "{opacity.70}",
+            "Dark": "{opacity.70}"
+          },
+          "$description": "Muted/secondary content opacity"
+        },
+        "opacity.subtle": {
+          "$type": "number",
+          "$value": "{opacity.60}",
+          "valuesByMode": {
+            "Light": "{opacity.60}",
+            "Dark": "{opacity.60}"
+          },
+          "$description": "Subtle/tertiary content opacity"
+        },
+        "opacity.overlay": {
+          "$type": "number",
+          "$value": "{opacity.40}",
+          "valuesByMode": {
+            "Light": "{opacity.40}",
+            "Dark": "{opacity.40}"
+          },
+          "$description": "Overlay/scrim opacity for partial backdrops"
+        },
+        "opacity.scrim": {
+          "$type": "number",
+          "$value": "{opacity.80}",
+          "valuesByMode": {
+            "Light": "{opacity.80}",
+            "Dark": "{opacity.80}"
+          },
+          "$description": "Heavy scrim opacity for modal backdrops"
         }
       }
     }

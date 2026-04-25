@@ -730,8 +730,14 @@ export async function importMultipleCollections(
       console.log(`🗑️  Deleted ${deletedCount} orphaned variables`);
     }
 
+    // Hardening: unresolved references indicate a broken sync and must fail
+    // loudly. Previously, any variable creation counted as success even with
+    // 50% broken aliases — corrupting Figma silently. Now any unresolved ref
+    // forces failure so the user sees the error modal and can re-sync.
     result.success =
-      result.errors.length === 0 || result.totalVariablesCreated > 0;
+      result.errors.length === 0 &&
+      result.unresolvedReferences.length === 0 &&
+      result.totalVariablesCreated > 0;
 
     // Build result message including deletion info
     let message = `Successfully imported ${result.totalVariablesCreated} variables (${result.totalReferencesResolved} references resolved) across ${result.collectionsProcessed} collections`;

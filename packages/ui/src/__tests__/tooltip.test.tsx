@@ -439,7 +439,7 @@ describe("Tooltip", () => {
 
       await waitFor(() => {
         const tooltip = screen.getByRole("tooltip");
-        expect(tooltip).toHaveClass("z-50");
+        expect(tooltip).toHaveClass("z-(--z-index-tooltip)");
       });
     });
 

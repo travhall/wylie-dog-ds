@@ -53,7 +53,7 @@ const CarouselPrevious = React.forwardRef<
       "absolute h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -left-(--space-carousel-button-offset) top-1/2 -translate-y-1/2",
       "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
       "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
-      "disabled:pointer-events-none disabled:opacity-50",
+      "disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
       className
     )}
     {...props}
@@ -74,7 +74,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
         "absolute h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -right-(--space-carousel-button-offset) top-1/2 -translate-y-1/2",
         "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
         "focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
-        "disabled:pointer-events-none disabled:opacity-50",
+        "disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
         className
       )}
       {...props}

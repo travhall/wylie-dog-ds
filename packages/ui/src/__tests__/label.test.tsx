@@ -104,7 +104,7 @@ describe("Label", () => {
       render(<Label error={false}>Normal Label</Label>);
 
       const label = screen.getByText("Normal Label");
-      expect(label).toHaveClass("text-(--color-label-color)");
+      expect(label).toHaveClass("text-(--color-label-default-color)");
     });
   });
 

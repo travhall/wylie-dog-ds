@@ -11,7 +11,9 @@
     "dev": "pnpm build:css && storybook dev -p 6006",
     "dev:css:watch": "tailwindcss -i ./src/styles/index.css -o ./dist/storybook.css --watch",
     "lint": "eslint \"./stories/**/*.stories.tsx\" --max-warnings 0",
-    "preview-storybook": "serve storybook-static"
+    "preview-storybook": "serve storybook-static",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots"
   },
   "dependencies": {
     "@wyliedog/tokens": "workspace:*",
@@ -21,6 +23,7 @@
     "react-dom": "^19.2.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@repo/eslint-config": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
@@ -42,7 +45,6 @@
     "rollup-plugin-visualizer": "^7.0.1",
     "serve": "^14.2.6",
     "storybook": "^10.3.5",
-    "storybook-design-token": "^5.0.0",
     "tailwindcss": "^4.2.3",
     "typescript": "6.0.3",
     "vite": "^8.0.9",

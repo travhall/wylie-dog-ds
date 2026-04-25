@@ -1,7 +1,21 @@
 import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 import { Card, CardHeader, CardTitle, CardContent } from "../card";
 import { Badge } from "../badge";
+
+export const sectionFeaturesVariants = cva("relative w-full py-20 md:py-32", {
+  variants: {
+    variant: {
+      default: "bg-(--color-background-primary)",
+      cards: "bg-(--color-background-secondary)",
+      grid: "bg-(--color-background-primary)",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 export interface Feature {
   icon?: React.ReactNode;
@@ -10,8 +24,10 @@ export interface Feature {
   badge?: string;
 }
 
-export interface SectionFeaturesProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: "default" | "cards" | "grid";
+export interface SectionFeaturesProps
+  extends
+    React.HTMLAttributes<HTMLElement>,
+    VariantProps<typeof sectionFeaturesVariants> {
   title?: string;
   description?: string;
   features: Feature[];
@@ -23,23 +39,9 @@ export const SectionFeatures = React.forwardRef<
   SectionFeaturesProps
 >(
   (
-    {
-      className,
-      variant = "default",
-      title,
-      description,
-      features,
-      columns = 3,
-      ...props
-    },
+    { className, variant, title, description, features, columns = 3, ...props },
     ref
   ) => {
-    const variants = {
-      default: "bg-(--color-background-primary)",
-      cards: "bg-(--color-background-secondary)",
-      grid: "bg-(--color-background-primary)",
-    };
-
     const gridCols = {
       2: "md:grid-cols-2",
       3: "md:grid-cols-2 lg:grid-cols-3",
@@ -48,11 +50,7 @@ export const SectionFeatures = React.forwardRef<
 
     return (
       <section
-        className={cn(
-          "relative w-full py-20 md:py-32",
-          variants[variant],
-          className
-        )}
+        className={cn(sectionFeaturesVariants({ variant }), className)}
         ref={ref}
         {...props}
       >

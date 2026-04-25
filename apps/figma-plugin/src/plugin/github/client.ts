@@ -121,9 +121,11 @@ export class GitHubClient {
         `Pulling tokens from ${this.config.owner}/${this.config.repo}:${this.config.branch}`
       );
 
-      // Try to fetch common token file names directly from raw.githubusercontent.com
-      // This avoids CORS issues with the GitHub API directory listing
-      const commonFileNames = [
+      // Resolve the canonical file list. We first try MANIFEST.json (the
+      // sync contract — see packages/tokens/SYNC_CONTRACT.md). If the repo
+      // doesn't ship a manifest yet (older repos / non-Wylie-Dog repos), fall
+      // back to the legacy hardcoded list so existing users keep working.
+      const fallbackFileNames = [
         "primitive.json",
         "semantic.json",
         "components.json",
@@ -131,13 +133,38 @@ export class GitHubClient {
         "tokens.json",
       ];
 
-      const tokens = [];
-      let filesFound = 0;
-
       // Normalize path - remove trailing slash if present
       const basePath = this.config.tokenPath.endsWith("/")
         ? this.config.tokenPath.slice(0, -1)
         : this.config.tokenPath;
+
+      let commonFileNames = fallbackFileNames;
+      let manifestSource: "manifest" | "fallback" = "fallback";
+      try {
+        const manifestUrl = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${this.config.branch}/${basePath}/MANIFEST.json`;
+        const manifestResponse = await fetch(manifestUrl);
+        if (manifestResponse.ok) {
+          const manifest = JSON.parse(await manifestResponse.text());
+          if (Array.isArray(manifest?.files) && manifest.files.length > 0) {
+            commonFileNames = manifest.files
+              .map((f: { name?: string }) => f.name)
+              .filter((n: unknown): n is string => typeof n === "string");
+            manifestSource = "manifest";
+            console.log(
+              `📋 Loaded sync MANIFEST.json (${commonFileNames.length} files)`
+            );
+          }
+        }
+      } catch (err) {
+        console.warn(
+          "Could not load MANIFEST.json, falling back to default file list:",
+          err
+        );
+      }
+      console.log(`Token file source: ${manifestSource}`);
+
+      const tokens = [];
+      let filesFound = 0;
 
       for (const fileName of commonFileNames) {
         try {
@@ -157,7 +184,21 @@ export class GitHubClient {
           }
 
           const content = await response.text();
-          const tokenData = JSON.parse(content);
+          let tokenData;
+          try {
+            tokenData = JSON.parse(content);
+          } catch (parseErr) {
+            // Hardening: JSON parse failures must surface with file context so a
+            // user can locate the corrupted sync file without digging through raw
+            // stack traces. Log size + preview + re-throw with actionable message.
+            const preview = content.slice(0, 200).replace(/\s+/g, " ");
+            console.error(
+              `❌ Failed to parse ${fileName} (${content.length} bytes). Preview: ${preview}`
+            );
+            throw new Error(
+              `Failed to parse ${fileName}: ${parseErr instanceof Error ? parseErr.message : String(parseErr)}. File may be corrupted or mid-sync. Check the branch on GitHub.`
+            );
+          }
 
           // DEBUG: Log fontFamily token descriptions immediately after parse
           if (fileName === "primitive.json" && Array.isArray(tokenData)) {
@@ -193,9 +234,13 @@ export class GitHubClient {
       }
 
       if (filesFound === 0) {
+        const sourceNote =
+          manifestSource === "manifest"
+            ? "Files listed in MANIFEST.json are missing from the repo"
+            : "No MANIFEST.json found and none of the fallback filenames matched";
         return {
           success: false,
-          error: `No token files found in ${basePath}/. Tried: ${commonFileNames.join(", ")}`,
+          error: `No token files found in ${this.config.owner}/${this.config.repo}@${this.config.branch}:${basePath}/. ${sourceNote}. Tried: ${commonFileNames.join(", ")}`,
         };
       }
 

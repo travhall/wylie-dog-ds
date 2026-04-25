@@ -1,14 +1,44 @@
 import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
-export interface InputProps extends Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "size"
-> {
+export const inputVariants = cva(
+  cn(
+    "flex w-full border transition-colors",
+    "rounded-(--space-input-radius)",
+    "placeholder:text-(--color-input-placeholder)",
+    "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
+    "disabled:cursor-not-allowed disabled:bg-(--color-input-disabled-background) disabled:text-(--color-input-disabled-text)",
+    "text-(--color-input-default-text)"
+  ),
+  {
+    variants: {
+      size: {
+        sm: "h-(--space-input-height-sm) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-sm)",
+        md: "h-(--space-input-height-md) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-md)",
+        lg: "h-(--space-input-height-lg) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-lg)",
+      },
+      error: {
+        true: "border-(--color-input-border-error) bg-(--color-input-default-background)",
+        false:
+          "border-(--color-input-border) bg-(--color-input-default-background) hover:bg-(--color-input-background-hover)",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+      error: false,
+    },
+  }
+);
+
+type InputVariantProps = VariantProps<typeof inputVariants>;
+
+export interface InputProps
+  extends
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
+    Omit<InputVariantProps, "error"> {
   /** Whether the input has an error */
   error?: boolean;
-  /** Size variant */
-  size?: "sm" | "md" | "lg";
   /** ID of error message element for aria-describedby */
   errorId?: string;
   /** ID of description element for aria-describedby */
@@ -20,7 +50,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     {
       className,
       error = false,
-      size = "md",
+      size,
       type = "text",
       errorId,
       descriptionId,
@@ -28,12 +58,6 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    const sizes = {
-      sm: "h-(--space-input-height-sm) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-sm)",
-      md: "h-(--space-input-height-md) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-md)",
-      lg: "h-(--space-input-height-lg) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-lg)",
-    };
-
     // Type-aware styling for native browser chrome
     const typeStyles: Partial<Record<string, string>> = {
       number: [
@@ -55,16 +79,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         aria-invalid={error}
         aria-describedby={describedBy || undefined}
         className={cn(
-          "flex w-full border transition-colors",
-          "rounded-(--space-input-radius)",
-          "placeholder:text-(--color-input-placeholder)",
-          "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
-          "disabled:cursor-not-allowed disabled:bg-(--color-input-disabled-background) disabled:text-(--color-input-disabled-text)",
-          error
-            ? "border-(--color-input-border-error) bg-(--color-input-background)"
-            : "border-(--color-input-border) bg-(--color-input-background) hover:bg-(--color-input-background-hover)",
-          "text-(--color-input-text)",
-          sizes[size],
+          inputVariants({ size, error }),
           typeStyles[type],
           className
         )}

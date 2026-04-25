@@ -1,6 +1,70 @@
 import React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
+
+export const sheetContentVariants = cva(
+  cn(
+    "fixed z-(--z-index-modal) bg-(--color-background-primary) shadow-(--shadow-lg) transition ease-in-out",
+    "gap-(--space-sheet-header-gap)",
+    "p-(--space-sheet-content-padding)",
+    "data-[state=open]:animate-in data-[state=closed]:animate-out",
+    "data-[state=closed]:duration-300 data-[state=open]:duration-500"
+  ),
+  {
+    variants: {
+      side: {
+        top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
+        bottom:
+          "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
+        left: "inset-y-0 left-0 h-full border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left w-3/4",
+        right:
+          "inset-y-0 right-0 h-full border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right w-3/4",
+      },
+      size: {
+        sm: "",
+        md: "",
+        lg: "",
+      },
+    },
+    compoundVariants: [
+      {
+        side: "left",
+        size: "sm",
+        class: "sm:max-w-(--space-sheet-content-width-sm)",
+      },
+      {
+        side: "left",
+        size: "md",
+        class: "sm:max-w-(--space-sheet-content-width-md)",
+      },
+      {
+        side: "left",
+        size: "lg",
+        class: "sm:max-w-(--space-sheet-content-width-lg)",
+      },
+      {
+        side: "right",
+        size: "sm",
+        class: "sm:max-w-(--space-sheet-content-width-sm)",
+      },
+      {
+        side: "right",
+        size: "md",
+        class: "sm:max-w-(--space-sheet-content-width-md)",
+      },
+      {
+        side: "right",
+        size: "lg",
+        class: "sm:max-w-(--space-sheet-content-width-lg)",
+      },
+    ],
+    defaultVariants: {
+      side: "right",
+      size: "md",
+    },
+  }
+);
 
 // Sheet Root and Trigger (using Dialog primitives)
 export const Sheet = DialogPrimitive.Root;
@@ -15,7 +79,7 @@ export const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     className={cn(
-      "fixed inset-0 z-50 backdrop-blur-sm",
+      "fixed inset-0 z-(--z-index-modal-backdrop) backdrop-blur-sm",
       "bg-(--color-sheet-overlay-background)",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -28,45 +92,21 @@ export const SheetOverlay = React.forwardRef<
 SheetOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 // Sheet Content
-export interface SheetContentProps extends React.ComponentPropsWithoutRef<
-  typeof DialogPrimitive.Content
-> {
-  side?: "top" | "right" | "bottom" | "left";
-  size?: "sm" | "md" | "lg";
-}
+export interface SheetContentProps
+  extends
+    React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>,
+    VariantProps<typeof sheetContentVariants> {}
 
 export const SheetContent = React.forwardRef<
   React.ComponentRef<typeof DialogPrimitive.Content>,
   SheetContentProps
->(({ side = "right", size = "md", className, children, ...props }, ref) => {
-  const sizes = {
-    sm: "sm:max-w-(--space-sheet-content-width-sm)",
-    md: "sm:max-w-(--space-sheet-content-width-md)",
-    lg: "sm:max-w-(--space-sheet-content-width-lg)",
-  };
-
-  const sideVariants = {
-    top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
-    bottom:
-      "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-    left: `inset-y-0 left-0 h-full border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left w-3/4 ${sizes[size]}`,
-    right: `inset-y-0 right-0 h-full border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right w-3/4 ${sizes[size]}`,
-  };
-
+>(({ side, size, className, children, ...props }, ref) => {
   return (
     <SheetPortal>
       <SheetOverlay />
       <DialogPrimitive.Content
         ref={ref}
-        className={cn(
-          "fixed z-50 bg-(--color-background-primary) shadow-(--shadow-lg) transition ease-in-out",
-          "gap-(--space-sheet-header-gap)",
-          "p-(--space-sheet-content-padding)",
-          "data-[state=open]:animate-in data-[state=closed]:animate-out",
-          "data-[state=closed]:duration-300 data-[state=open]:duration-500",
-          sideVariants[side],
-          className
-        )}
+        className={cn(sheetContentVariants({ side, size }), className)}
         {...props}
       >
         {children}

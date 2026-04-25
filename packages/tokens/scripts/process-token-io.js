@@ -11,6 +11,35 @@ class TokenIOProcessor {
   constructor(syncDir = "io/sync", processedDir = "io/processed") {
     this.syncDir = syncDir;
     this.processedDir = processedDir;
+    this.manifest = null;
+  }
+
+  /**
+   * Load the sync manifest. The manifest is the source of truth for which
+   * files are part of the sync contract. See packages/tokens/SYNC_CONTRACT.md.
+   */
+  async loadManifest() {
+    if (this.manifest) return this.manifest;
+    const manifestPath = join(this.syncDir, "MANIFEST.json");
+    try {
+      const raw = await readFile(manifestPath, "utf8");
+      this.manifest = JSON.parse(raw);
+    } catch (error) {
+      throw new Error(
+        `Failed to load sync manifest at ${manifestPath}: ${error.message}. ` +
+          `See packages/tokens/SYNC_CONTRACT.md.`
+      );
+    }
+    if (!this.manifest.files || !Array.isArray(this.manifest.files)) {
+      throw new Error(
+        `Invalid sync manifest at ${manifestPath}: missing "files" array.`
+      );
+    }
+    return this.manifest;
+  }
+
+  fileFor(collection) {
+    return this.manifest.files.find((f) => f.collection === collection);
   }
 
   /**
@@ -274,7 +303,8 @@ class TokenIOProcessor {
     await mkdir(this.processedDir, { recursive: true });
     await mkdir(this.syncDir, { recursive: true });
 
-    const files = ["primitive.json", "semantic.json", "components.json"];
+    await this.loadManifest();
+    const files = this.manifest.files.map((f) => f.name);
     const processedData = {
       primitive: {},
       semantic: { light: {}, dark: {} },
@@ -358,56 +388,47 @@ class TokenIOProcessor {
    */
   async generateExports(processedData) {
     console.log("📤 Generating export files...");
+    await this.loadManifest();
 
-    // Generate W3C DTCG format for modern tools
-    const w3cExports = [
-      {
-        primitive: {
-          modes: [{ modeId: "mode:primitive:value", name: "Value" }],
-          variables: processedData.primitive || {},
-        },
-      },
-      {
-        semantic: {
-          modes: [
-            { modeId: "mode:semantic:light", name: "Light" },
-            { modeId: "mode:semantic:dark", name: "Dark" },
-          ],
-          variables: this.mergeModes(
-            processedData.semantic.light,
-            processedData.semantic.dark
-          ),
-        },
-      },
-      {
-        components: {
-          modes: [
-            { modeId: "mode:components:light", name: "Light" },
-            { modeId: "mode:components:dark", name: "Dark" },
-          ],
-          variables: this.mergeModes(
-            processedData.components.light,
-            processedData.components.dark
-          ),
-        },
-      },
-    ];
+    // Build a wrapped collection for one entry in the manifest. Mode IDs
+    // follow the canonical convention documented in SYNC_CONTRACT.md:
+    //   mode:<collection>:<lowercased-mode-name>
+    const buildCollection = (entry) => {
+      const modes = entry.modes.map((name) => ({
+        modeId: `mode:${entry.collection}:${name.toLowerCase()}`,
+        name,
+      }));
 
-    // Write W3C exports to sync directory for Figma plugin (array format)
-    await writeFile(
-      join(this.syncDir, "primitive.json"),
-      JSON.stringify([w3cExports[0]], null, 2) + "\n"
-    );
+      let variables;
+      if (entry.collection === "primitive") {
+        variables = processedData.primitive || {};
+      } else if (entry.collection === "semantic") {
+        variables = this.mergeModes(
+          processedData.semantic.light,
+          processedData.semantic.dark
+        );
+      } else if (entry.collection === "components") {
+        variables = this.mergeModes(
+          processedData.components.light,
+          processedData.components.dark
+        );
+      } else {
+        throw new Error(
+          `Manifest declares unknown collection "${entry.collection}". ` +
+            `Update process-token-io.js to handle it, or remove from MANIFEST.json.`
+        );
+      }
 
-    await writeFile(
-      join(this.syncDir, "semantic.json"),
-      JSON.stringify([w3cExports[1]], null, 2) + "\n"
-    );
+      return { [entry.collection]: { modes, variables } };
+    };
 
-    await writeFile(
-      join(this.syncDir, "components.json"),
-      JSON.stringify([w3cExports[2]], null, 2) + "\n"
-    );
+    for (const entry of this.manifest.files) {
+      const wrapped = [buildCollection(entry)];
+      await writeFile(
+        join(this.syncDir, entry.name),
+        JSON.stringify(wrapped, null, 2) + "\n"
+      );
+    }
 
     console.log("✅ Export files generated");
   }

@@ -40,7 +40,7 @@ const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cn(
   "group inline-flex h-10 w-max items-center justify-center rounded-(--space-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--space-navigation-menu-trigger-padding-x) py-(--space-navigation-menu-trigger-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) font-medium transition-colors",
-  "hover:bg-(--color-navigation-hover) hover:text-(--color-navigation-text-hover)",
+  "hover:bg-(--color-navigation-background-hover) hover:text-(--color-navigation-text-hover)",
   "focus:bg-(--color-navigation-focus) focus:text-(--color-navigation-text-focus) focus:outline-none",
   "disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
   "data-[active]:bg-(--color-navigation-active) data-[state=open]:bg-(--color-navigation-open)"
@@ -57,7 +57,7 @@ const NavigationMenuTrigger = React.forwardRef<
   >
     {children}{" "}
     <ChevronDownIcon
-      className="relative top-px ml-(--space-navigation-menu-indicator-margin-left) h-(--space-icon-size-sm) w-(--space-icon-size-sm) transition duration-(--transition-duration-normal) group-data-[state=open]:rotate-180"
+      className="relative top-px ml-(--space-navigation-menu-indicator-margin-left) h-(--space-icon-size-sm) w-(--space-icon-size-sm) transition duration-(--duration-normal) group-data-[state=open]:rotate-180"
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>

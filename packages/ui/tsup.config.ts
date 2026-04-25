@@ -2,6 +2,8 @@ import { defineConfig } from "tsup";
 
 export default defineConfig((options) => ({
   entryPoints: [
+    "src/index.ts",
+    "src/lib/utils.ts",
     "src/button.tsx",
     "src/badge.tsx",
     "src/card.tsx",
@@ -56,9 +58,13 @@ export default defineConfig((options) => ({
   format: ["cjs", "esm"],
   dts: true,
   external: ["react"],
+  // Match Node's dual-package resolution with "type": "module":
+  // - ESM → .js (default for type:module)
+  // - CJS → .cjs (explicit opt-out of ESM)
+  // Inverse of this caused a crash: Node parsed CJS content as ESM.
   outExtension({ format }) {
     return {
-      js: format === "cjs" ? ".js" : ".mjs",
+      js: format === "cjs" ? ".cjs" : ".js",
     };
   },
   ...options,

@@ -1,43 +1,51 @@
 import React from "react";
 import { XIcon } from "lucide-react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
-interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "destructive" | "success" | "warning";
-}
+export const toastVariants = cva(
+  cn(
+    "group pointer-events-auto relative flex items-center justify-between overflow-hidden border shadow-(--shadow-lg) transition-all",
+    "w-(--space-toast-width)",
+    "space-x-(--space-toast-gap)",
+    "rounded-(--space-toast-radius)",
+    "p-(--space-toast-padding)",
+    "data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-(--radix-toast-swipe-end-x) data-[swipe=move]:translate-x-(--radix-toast-swipe-move-x) data-[swipe=move]:transition-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-top-full data-[state=open]:sm:slide-in-from-bottom-full"
+  ),
+  {
+    variants: {
+      variant: {
+        default:
+          "border bg-(--color-toast-default-background) text-(--color-toast-text)",
+        destructive:
+          "border-(--color-toast-destructive-border) bg-(--color-toast-destructive-background) text-white",
+        success:
+          "border-(--color-toast-success-border) bg-(--color-toast-success-background) text-white",
+        warning:
+          "border-(--color-toast-warning-border) bg-(--color-toast-warning-background) text-black",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
+interface ToastProps
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof toastVariants> {}
 
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
-  ({ className, variant = "default", ...props }, ref) => {
-    const variants = {
-      default: "border bg-(--color-toast-background) text-(--color-toast-text)",
-      destructive:
-        "border-(--color-toast-destructive-border) bg-(--color-toast-destructive-background) text-white",
-      success:
-        "border-(--color-toast-success-border) bg-(--color-toast-success-background) text-white",
-      warning:
-        "border-(--color-toast-warning-border) bg-(--color-toast-warning-background) text-black",
-    };
-
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          "group pointer-events-auto relative flex items-center justify-between overflow-hidden border shadow-(--shadow-lg) transition-all",
-          "w-(--space-toast-width)",
-          "space-x-(--space-toast-gap)",
-          "rounded-(--space-toast-radius)",
-          "p-(--space-toast-padding)",
-
-          "data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-(--radix-toast-swipe-end-x) data-[swipe=move]:translate-x-(--radix-toast-swipe-move-x) data-[swipe=move]:transition-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-top-full data-[state=open]:sm:slide-in-from-bottom-full",
-          variants[variant],
-          className
-        )}
-        role="alert"
-        aria-live="assertive"
-        {...props}
-      />
-    );
-  }
+  ({ className, variant, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(toastVariants({ variant }), className)}
+      role="alert"
+      aria-live="assertive"
+      {...props}
+    />
+  )
 );
 Toast.displayName = "Toast";
 
@@ -48,7 +56,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
     <button
       ref={ref}
       className={cn(
-        "inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border bg-transparent ring-offset-(--color-background) transition-colors hover:bg-(--color-toast-action-hover) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+        "inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border bg-transparent ring-offset-(--color-background-primary) transition-colors hover:bg-(--color-toast-action-hover) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
         "h-(--space-toast-action-height)",
         "px-(--space-toast-action-padding-x)",
         "text-(length:--font-size-toast-action-font-size)",

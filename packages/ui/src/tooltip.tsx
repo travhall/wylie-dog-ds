@@ -28,7 +28,7 @@ const TooltipContent = React.forwardRef<
       side={side}
       sideOffset={sideOffset}
       className={cn(
-        "z-50 overflow-hidden border shadow-(--shadow-md)",
+        "z-(--z-index-tooltip) overflow-hidden border shadow-(--shadow-md)",
         "rounded-(--space-tooltip-radius)",
         "bg-(--color-tooltip-background)",
         "px-(--space-tooltip-padding-x)",

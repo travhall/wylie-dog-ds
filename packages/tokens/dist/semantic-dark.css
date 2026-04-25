@@ -1,6 +1,6 @@
 /**
- * Dark mode semantic and component tokens
- * Applied via .dark class
+ * Dark mode overrides for semantic and component tokens.
+ * Applied via .dark class.
  */
 
 .dark {
@@ -87,11 +87,11 @@
   --duration-fast: 150ms;
   --duration-normal: 250ms;
   --duration-slow: 400ms;
-  --z-index-dropdown: 1000;
-  --z-index-sticky: 1020;
-  --z-index-modal: 1050;
-  --z-index-toast: 1090;
-  --z-index-tooltip: 1100;
+  --z-index-dropdown: 10;
+  --z-index-sticky: 20;
+  --z-index-modal: 50;
+  --z-index-toast: 80;
+  --z-index-tooltip: 70;
   --state-opacity-disabled: 0.5;
   --state-opacity-muted: 0.7;
   --state-opacity-subtle: 0.9;
@@ -108,6 +108,17 @@
   --transition-easing-in: cubic-bezier(0.4, 0, 1, 1);
   --transition-easing-out: cubic-bezier(0, 0, 0.2, 1);
   --transition-easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --z-index-base: 0;
+  --z-index-fixed: 30;
+  --z-index-modal-backdrop: 40;
+  --z-index-popover: 60;
+  --opacity-interactive-hover: 0.8;
+  --opacity-interactive-active: 0.9;
+  --opacity-interactive-disabled: 0.5;
+  --opacity-muted: 0.7;
+  --opacity-subtle: 0.6;
+  --opacity-overlay: 0.4;
+  --opacity-scrim: 0.8;
   --color-badge-default-background: oklch(0.546 0.215 262.89);
   --color-badge-default-text: oklch(0.279 0.037 260.04);
   --color-badge-default-border: oklch(0.546 0.215 262.89);
@@ -176,12 +187,12 @@
   --font-size-card-header-description-font-size: 14px;
   --color-card-header-description-color: oklch(0.929 0.013 255.56);
   --space-card-footer-gap: 8px;
-  --color-input-background: oklch(0.208 0.04 265.75);
+  --color-input-default-background: oklch(0.208 0.04 265.75);
   --color-input-background-hover: oklch(0.279 0.037 260.04);
   --color-input-border: oklch(0.446 0.037 257.29);
   --color-input-border-focus: oklch(0.623 0.188 259.82);
   --color-input-border-error: oklch(0.577 0.215 27.32);
-  --color-input-text: oklch(0.984 0.003 248.29);
+  --color-input-default-text: oklch(0.984 0.003 248.29);
   --color-input-placeholder: oklch(0.929 0.013 255.56);
   --color-input-disabled-background: oklch(0.372 0.039 257.3);
   --color-input-disabled-text: oklch(0.554 0.041 257.43);
@@ -333,7 +344,7 @@
   --color-table-row-hover: oklch(0.372 0.039 257.3);
   --color-table-row-selected: oklch(0.372 0.039 257.3);
   --color-toast-action-hover: oklch(0.372 0.039 257.3);
-  --color-toast-background: oklch(0.208 0.04 265.75);
+  --color-toast-default-background: oklch(0.208 0.04 265.75);
   --color-toast-close: oklch(0.929 0.013 255.56);
   --color-toast-close-hover: oklch(0.984 0.003 248.29);
   --color-toast-text: oklch(0.984 0.003 248.29);
@@ -426,7 +437,7 @@
   --font-size-label-font-size-md: 16px;
   --font-size-label-font-size-lg: 18px;
   --space-label-margin-bottom: 4px;
-  --color-label-color: oklch(0.929 0.013 255.56);
+  --color-label-default-color: oklch(0.929 0.013 255.56);
   --color-label-disabled-color: oklch(0.554 0.041 257.43);
   --color-sheet-overlay-background: oklch(1 0 0);
   --space-sheet-content-width-sm: 320px;
@@ -547,6 +558,7 @@
   --space-carousel-button-icon-size: 16px;
   --space-carousel-gap: 24px;
   --space-context-menu-content-min-width: 128px;
+  --space-context-menu-sub-content-min-width: 96px;
   --space-context-menu-content-padding: 4px;
   --space-context-menu-item-padding-y: 4px;
   --space-context-menu-item-padding-x: 8px;
@@ -630,6 +642,7 @@
   --space-label-required-margin-left: 4px;
   --space-radio-group-item-gap: 8px;
   --space-command-item-padding-x: 12px;
+  --space-command-item-padding-y: 4px;
   --space-command-item-indicator-margin-right: 8px;
   --space-command-empty-padding-y: 24px;
   --space-command-group-heading-padding-x: 8px;
@@ -752,7 +765,7 @@
   --color-pagination-background-hover: oklch(0.372 0.039 257.3);
   --color-table-row-focus: oklch(0.282 0.087 267.94);
   --color-toggle-background-hover: oklch(0.372 0.039 257.3);
-  --select-content-z-index: 1000;
+  --select-content-z-index: 10;
   --color-select-item-background-focus: oklch(0.372 0.039 257.3);
   --color-select-item-text-focus: oklch(0.984 0.003 248.29);
   --space-select-item-indicator-left: 8px;

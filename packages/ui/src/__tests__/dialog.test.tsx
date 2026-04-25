@@ -446,7 +446,7 @@ describe("Dialog", () => {
           "bg-(--color-dialog-overlay)",
           "fixed",
           "inset-0",
-          "z-50"
+          "z-(--z-index-modal-backdrop)"
         );
       });
     });
@@ -496,7 +496,7 @@ describe("Dialog", () => {
 
       await waitFor(() => {
         const dialog = screen.getByRole("dialog");
-        expect(dialog).toHaveClass("z-50");
+        expect(dialog).toHaveClass("z-(--z-index-modal)");
       });
     });
 

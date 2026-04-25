@@ -437,7 +437,7 @@ describe("Tabs", () => {
       expect(activeTab).toHaveClass(
         "data-[state=active]:bg-(--color-tabs-trigger-background-active)",
         "data-[state=active]:text-(--color-tabs-trigger-text-active)",
-        "data-[state=active]:shadow-sm"
+        "data-[state=active]:shadow-(--shadow-sm)"
       );
     });
 

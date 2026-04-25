@@ -70,7 +70,7 @@ export const FeatureGrid = React.forwardRef<HTMLDivElement, FeatureGridProps>(
           <div key={index} className="group relative">
             <div className="glass border border-(--color-border-primary)/10 rounded-(--space-feature-grid-item-radius) p-(--space-feature-grid-item-padding) transition-all duration-500 hover:border-(--color-interactive-primary)/20 hover:scale-105">
               {/* Icon */}
-              <div className="mb-(--space-feature-grid-item-gap) flex items-center justify-center w-12 h-12 rounded-(--space-feature-grid-icon-radius) glass border-(--color-border-primary)/5 shadow-sm group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+              <div className="mb-(--space-feature-grid-item-gap) flex items-center justify-center w-12 h-12 rounded-(--space-feature-grid-icon-radius) glass border-(--color-border-primary)/5 shadow-(--shadow-sm) group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
                 {feature.icon}
               </div>
 

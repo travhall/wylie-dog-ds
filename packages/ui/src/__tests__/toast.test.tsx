@@ -103,7 +103,7 @@ describe("Toast", () => {
         <Toast variant="default">Default toast</Toast>
       );
       const toast = container.firstChild as HTMLElement;
-      expect(toast).toHaveClass("bg-(--color-toast-background)");
+      expect(toast).toHaveClass("bg-(--color-toast-default-background)");
     });
 
     it("should support destructive variant", () => {

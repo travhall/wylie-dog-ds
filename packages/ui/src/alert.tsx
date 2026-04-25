@@ -1,26 +1,39 @@
 // alert.tsx
 import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
-export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "destructive" | "warning" | "success";
+export const alertVariants = cva(
+  "relative w-full rounded-(--space-alert-radius) border border-l-4 px-(--space-alert-padding-x) py-(--space-alert-padding-y) text-(length:--font-size-alert-description-font-size)",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-(--color-alert-default-background) border-(--color-alert-default-border) text-(--color-alert-default-text)",
+        destructive:
+          "bg-(--color-alert-destructive-background) border-(--color-alert-destructive-border) text-(--color-alert-destructive-text)",
+        warning:
+          "bg-(--color-alert-warning-background) border-(--color-alert-warning-border) text-(--color-alert-warning-text)",
+        success:
+          "bg-(--color-alert-success-background) border-(--color-alert-success-border) text-(--color-alert-success-text)",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
+export interface AlertProps
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof alertVariants> {
   /** Override the ARIA role for custom urgency handling */
   role?: "alert" | "status" | "region";
 }
 
 export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ className, variant = "default", role, ...props }, ref) => {
-    const variants = {
-      default:
-        "bg-(--color-alert-default-background) border-(--color-alert-default-border) text-(--color-alert-default-text)",
-      destructive:
-        "bg-(--color-alert-destructive-background) border-(--color-alert-destructive-border) text-(--color-alert-destructive-text)",
-      warning:
-        "bg-(--color-alert-warning-background) border-(--color-alert-warning-border) text-(--color-alert-warning-text)",
-      success:
-        "bg-(--color-alert-success-background) border-(--color-alert-success-border) text-(--color-alert-success-text)",
-    };
-
+  ({ className, variant, role, ...props }, ref) => {
     // Smart urgency handling based on variant
     const getAriaRole = () => {
       if (role) return role; // Allow override
@@ -53,11 +66,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
     return (
       <div
         ref={ref}
-        className={cn(
-          "relative w-full rounded-(--space-alert-radius) border border-l-4 px-(--space-alert-padding-x) py-(--space-alert-padding-y) text-(length:--font-size-alert-description-font-size)",
-          variants[variant],
-          className
-        )}
+        className={cn(alertVariants({ variant }), className)}
         role={getAriaRole()}
         aria-live={getAriaLive()}
         {...props}

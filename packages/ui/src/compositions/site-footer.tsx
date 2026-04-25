@@ -1,6 +1,21 @@
 import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 import { Separator } from "../separator";
+
+export const siteFooterVariants = cva("w-full mt-auto", {
+  variants: {
+    variant: {
+      default:
+        "bg-(--color-background-secondary) border-t border-(--color-border-primary)",
+      minimal:
+        "bg-(--color-background-primary) border-t border-(--color-border-primary)",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 export interface FooterColumn {
   title: string;
@@ -10,8 +25,10 @@ export interface FooterColumn {
   }>;
 }
 
-export interface SiteFooterProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: "default" | "minimal";
+export interface SiteFooterProps
+  extends
+    React.HTMLAttributes<HTMLElement>,
+    VariantProps<typeof siteFooterVariants> {
   logo?: React.ReactNode;
   columns?: FooterColumn[];
   copyright?: string;
@@ -26,7 +43,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
   (
     {
       className,
-      variant = "default",
+      variant,
       logo,
       columns = [],
       copyright,
@@ -35,19 +52,12 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
     },
     ref
   ) => {
-    const variants = {
-      default:
-        "bg-(--color-background-secondary) border-t border-(--color-border-primary)",
-      minimal:
-        "bg-(--color-background-primary) border-t border-(--color-border-primary)",
-    };
-
     const currentYear = new Date().getFullYear();
     const copyrightText = copyright || `© ${currentYear} All rights reserved.`;
 
     return (
       <footer
-        className={cn("w-full mt-auto", variants[variant], className)}
+        className={cn(siteFooterVariants({ variant }), className)}
         ref={ref}
         {...props}
       >
