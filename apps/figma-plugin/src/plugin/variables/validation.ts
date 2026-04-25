@@ -15,7 +15,8 @@ export interface ValidationError {
     | "circular_dependency"
     | "type_mismatch"
     | "invalid_format"
-    | "primitive_reference";
+    | "primitive_reference"
+    | "mode_mismatch";
   token: string;
   reference?: string;
   message: string;
@@ -115,6 +116,60 @@ export function validateTokensForImport(
             message: `Type mismatch: ${tokenInfo.token.$type} references ${referencedTokenInfo.token.$type}`,
             suggestion: "Verify this reference is intentional",
           });
+        }
+      }
+    }
+  }
+
+  // Hardening: valuesByMode cardinality. If a collection declares modes
+  // ["Light", "Dark"] but a token only provides {"Light": ...}, the dark
+  // variant silently inherits the light value at import time — invisible
+  // bug that only shows up when a designer toggles modes. Same problem in
+  // reverse for typos like "Ligth": the misspelled key gets dropped.
+  // Validate that every multi-mode token's keys exactly match the
+  // collection's declared mode names (case-insensitive, trimmed).
+  for (const collection of tokenData) {
+    for (const [collectionName, data] of Object.entries(collection)) {
+      const declaredModes = data.modes?.map((m) => m.name) ?? [];
+      // Single-mode collections (e.g. `primitive` with mode "Value") never
+      // need valuesByMode; tokens there should use $value directly.
+      if (declaredModes.length === 0) continue;
+
+      const normalizedDeclared = new Set(
+        declaredModes.map((n) => n.trim().toLowerCase())
+      );
+
+      for (const [tokenName, token] of Object.entries(data.variables)) {
+        if (!token.valuesByMode) continue;
+        const provided = Object.keys(token.valuesByMode);
+        const normalizedProvided = new Set(
+          provided.map((n) => n.trim().toLowerCase())
+        );
+
+        // Unknown mode names (typos, leftover from old schema)
+        for (const name of provided) {
+          if (!normalizedDeclared.has(name.trim().toLowerCase())) {
+            report.errors.push({
+              type: "mode_mismatch",
+              token: tokenName,
+              message: `Token "${tokenName}" in collection "${collectionName}" provides mode "${name}", which is not declared in the collection's modes (${declaredModes.join(", ")}).`,
+              suggestion: `Rename the key to one of: ${declaredModes.join(", ")}.`,
+            });
+            report.valid = false;
+          }
+        }
+
+        // Missing modes (incomplete coverage)
+        for (const declared of declaredModes) {
+          if (!normalizedProvided.has(declared.trim().toLowerCase())) {
+            report.errors.push({
+              type: "mode_mismatch",
+              token: tokenName,
+              message: `Token "${tokenName}" in collection "${collectionName}" is missing a value for mode "${declared}". Declared modes: ${declaredModes.join(", ")}.`,
+              suggestion: `Add a "${declared}" entry to valuesByMode.`,
+            });
+            report.valid = false;
+          }
         }
       }
     }

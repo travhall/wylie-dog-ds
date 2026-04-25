@@ -138,6 +138,12 @@ export class GitHubClient {
         ? this.config.tokenPath.slice(0, -1)
         : this.config.tokenPath;
 
+      // Sync contract version this plugin build understands. If the manifest
+      // declares a higher major version, refuse to import — the schema may
+      // have moved in ways we can't safely interpret. Bump alongside any
+      // breaking change to the MANIFEST shape.
+      const SUPPORTED_MANIFEST_VERSION = 1;
+
       let commonFileNames = fallbackFileNames;
       let manifestSource: "manifest" | "fallback" = "fallback";
       try {
@@ -145,13 +151,32 @@ export class GitHubClient {
         const manifestResponse = await fetch(manifestUrl);
         if (manifestResponse.ok) {
           const manifest = JSON.parse(await manifestResponse.text());
+
+          // Hardening: enforce manifest version compatibility. A future
+          // manifest could add required fields (e.g. per-collection schema
+          // refs) that this plugin can't honor. Fail closed rather than
+          // silently importing partial data.
+          const manifestVersion = manifest?.version;
+          if (typeof manifestVersion === "number") {
+            if (manifestVersion > SUPPORTED_MANIFEST_VERSION) {
+              return {
+                success: false,
+                error: `MANIFEST.json declares version ${manifestVersion}, but this plugin build supports up to version ${SUPPORTED_MANIFEST_VERSION}. Update the Token Bridge plugin to a newer release.`,
+              };
+            }
+          } else {
+            console.warn(
+              `MANIFEST.json missing numeric "version" field. Treating as v${SUPPORTED_MANIFEST_VERSION}; future manifests should declare a version.`
+            );
+          }
+
           if (Array.isArray(manifest?.files) && manifest.files.length > 0) {
             commonFileNames = manifest.files
               .map((f: { name?: string }) => f.name)
               .filter((n: unknown): n is string => typeof n === "string");
             manifestSource = "manifest";
             console.log(
-              `📋 Loaded sync MANIFEST.json (${commonFileNames.length} files)`
+              `📋 Loaded sync MANIFEST.json v${manifestVersion ?? "?"} (${commonFileNames.length} files)`
             );
           }
         }
@@ -369,14 +394,21 @@ export class GitHubClient {
           `📄 GITHUB SYNC: Preparing ${fileName} with ${tokenCount} tokens`
         );
 
-        // Fetch existing file to compare content
+        // Fetch existing file to compare content. Pin to the exact commit
+        // SHA captured at the start of the sync (currentCommitSha), NOT the
+        // moving branch ref. Otherwise: another commit lands mid-sync that
+        // modifies this file, our diff fetches the NEWER content, sees no
+        // change vs our payload, and we silently drop the user's edit.
+        // The downstream updateRef() will still catch concurrent commits
+        // via parents:[currentCommitSha] + force:false, but that only
+        // protects the commit step — not our skip-unchanged logic.
         let existingContent = "";
         try {
           const { data: existingFile } = await this.octokit.repos.getContent({
             owner: this.config.owner,
             repo: this.config.repo,
             path: filePath,
-            ref: this.config.branch,
+            ref: currentCommitSha,
           });
 
           if ("content" in existingFile && existingFile.content) {
@@ -387,7 +419,11 @@ export class GitHubClient {
           console.log(`File ${filePath} doesn't exist, will create it`);
         }
 
-        // Only create blob if content actually changed
+        // Only create blob if content actually changed.
+        // Note: this is byte-exact comparison. Both sides are produced by
+        // JSON.stringify(..., null, 2) with the same shape, so whitespace
+        // is stable. If the on-disk file gets reformatted by a different
+        // serializer we'd over-commit (no-op churn) but never under-commit.
         if (newContent !== existingContent) {
           const { data: blob } = await this.octokit.git.createBlob({
             owner: this.config.owner,

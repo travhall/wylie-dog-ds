@@ -378,8 +378,17 @@ async function createVariableWithReferences(
       // Multi-mode token
       const modeReferences = new Map<string, any>();
 
+      // Mode-name lookup is normalized (trim + lowercase) so
+      // {"Light": ...} matches a Figma mode named "light" or " Light ".
+      // Outright mismatches are blocked upstream by validation.ts; this
+      // tolerance is only for cosmetic casing/whitespace drift.
+      const normalize = (n: string) => n.trim().toLowerCase();
+      const modeByNormalizedName = new Map(
+        collection.modes.map((m) => [normalize(m.name), m])
+      );
+
       for (const [modeName, modeValue] of Object.entries(token.valuesByMode)) {
-        const mode = collection.modes.find((m) => m.name === modeName);
+        const mode = modeByNormalizedName.get(normalize(modeName));
         if (!mode) continue;
 
         if (isTokenReference(modeValue)) {

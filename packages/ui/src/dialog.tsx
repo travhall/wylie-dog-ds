@@ -41,6 +41,24 @@ export const DialogTrigger = DialogPrimitive.Trigger;
 export const DialogPortal = DialogPrimitive.Portal;
 export const DialogClose = DialogPrimitive.Close;
 
+/**
+ * Props for the Dialog root component (controlled `open`/`onOpenChange`,
+ * `defaultOpen`, `modal`, etc). Re-exported so consumers don't have to
+ * reach into `@radix-ui/react-dialog` directly.
+ */
+export type DialogProps = React.ComponentPropsWithoutRef<
+  typeof DialogPrimitive.Root
+>;
+export type DialogTriggerProps = React.ComponentPropsWithoutRef<
+  typeof DialogPrimitive.Trigger
+>;
+export type DialogPortalProps = React.ComponentPropsWithoutRef<
+  typeof DialogPrimitive.Portal
+>;
+export type DialogCloseProps = React.ComponentPropsWithoutRef<
+  typeof DialogPrimitive.Close
+>;
+
 // Dialog Overlay
 export const DialogOverlay = React.forwardRef<
   React.ComponentRef<typeof DialogPrimitive.Overlay>,
