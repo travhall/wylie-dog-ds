@@ -7,6 +7,23 @@ import type { GitHubConfig, SyncMode } from "../../shared/types";
 // Make fetch available globally for Octokit
 (globalThis as any).fetch = fetch;
 
+// btoa/atob only handle Latin-1 (U+0000–U+00FF). Token content can contain
+// arbitrary Unicode (descriptions with curly quotes, arrows, em dashes, etc.).
+// These helpers encode/decode via UTF-8 bytes so all Unicode is preserved.
+function toBase64(str: string): string {
+  const bytes = new TextEncoder().encode(str);
+  let binary = "";
+  bytes.forEach((b) => (binary += String.fromCharCode(b)));
+  return btoa(binary);
+}
+
+function fromBase64(b64: string): string {
+  const binary = atob(b64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
 export interface SyncResult {
   success: boolean;
   pullRequestUrl?: string;
@@ -412,7 +429,9 @@ export class GitHubClient {
           });
 
           if ("content" in existingFile && existingFile.content) {
-            existingContent = atob(existingFile.content.replace(/\n/g, ""));
+            existingContent = fromBase64(
+              existingFile.content.replace(/\n/g, "")
+            );
           }
         } catch (error: any) {
           // File doesn't exist yet, will be created
@@ -428,7 +447,7 @@ export class GitHubClient {
           const { data: blob } = await this.octokit.git.createBlob({
             owner: this.config.owner,
             repo: this.config.repo,
-            content: btoa(newContent),
+            content: toBase64(newContent),
             encoding: "base64",
           });
 
@@ -586,7 +605,7 @@ export class GitHubClient {
         repo: this.config.repo,
         path: filePath,
         message: commitMessage,
-        content: btoa(content),
+        content: toBase64(content),
         branch: this.config.branch,
         sha: Array.isArray(existingFile) ? undefined : existingFile.sha,
       });
@@ -598,7 +617,7 @@ export class GitHubClient {
           repo: this.config.repo,
           path: filePath,
           message: `Create ${filePath}`,
-          content: btoa(content),
+          content: toBase64(content),
           branch: this.config.branch,
         });
       } else {
@@ -654,7 +673,7 @@ export class GitHubClient {
         repo: this.config.repo,
         path: filePath,
         message: `Update ${filePath}`,
-        content: btoa(content),
+        content: toBase64(content),
         branch: branch,
         sha: Array.isArray(existingFile) ? undefined : existingFile.sha,
       });
@@ -666,7 +685,7 @@ export class GitHubClient {
           repo: this.config.repo,
           path: filePath,
           message: `Create ${filePath}`,
-          content: btoa(content),
+          content: toBase64(content),
           branch: branch,
         });
       } else {

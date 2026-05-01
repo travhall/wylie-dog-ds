@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "packages/tokens/io/sync/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -46,6 +48,9 @@ jobs:
 
       - name: Install Playwright Browsers
         run: pnpm --filter storybook exec playwright install --with-deps chromium
+
+      - name: Build Package Dependencies
+        run: pnpm --filter @wyliedog/tokens build && pnpm --filter @wyliedog/ui build
 
       - name: Build Storybook
         run: pnpm --filter storybook build
