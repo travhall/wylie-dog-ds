@@ -3,11 +3,11 @@
     "components": {
       "modes": [
         {
-          "modeId": "1249:6",
+          "modeId": "mode:components:light",
           "name": "Light"
         },
         {
-          "modeId": "1249:7",
+          "modeId": "mode:components:dark",
           "name": "Dark"
         }
       ],
