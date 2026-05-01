@@ -11,7 +11,7 @@
   "dependencies": {
     "@wyliedog/tokens": "workspace:*",
     "@wyliedog/ui": "workspace:*",
-    "lucide-react": "^1.8.0",
+    "lucide-react": "^1.14.0",
     "next": "^16.2.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
@@ -20,15 +20,15 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@tailwindcss/postcss": "^4.2.3",
+    "@tailwindcss/postcss": "^4.2.4",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.5.0",
-    "eslint": "^10.2.1",
+    "eslint": "^10.3.0",
     "eslint-config-next": "^16.2.4",
-    "postcss": "^8.5.10",
-    "tailwindcss": "^4.2.3",
+    "postcss": "^8.5.13",
+    "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3"
   }
 }
