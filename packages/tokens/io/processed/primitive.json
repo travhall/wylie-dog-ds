@@ -862,29 +862,13 @@
     "$type": "number",
     "$value": 0.8
   },
-  "shadow.offset.neg-xl": {
-    "$type": "dimension",
-    "$value": "-12px"
-  },
   "opacity.90": {
     "$type": "number",
     "$value": 0.9
   },
-  "shadow.offset.neg-lg": {
-    "$type": "dimension",
-    "$value": "-8px"
-  },
   "opacity.95": {
     "$type": "number",
     "$value": 0.95
-  },
-  "shadow.offset.neg-md": {
-    "$type": "dimension",
-    "$value": "-4px"
-  },
-  "shadow.offset.neg-sm": {
-    "$type": "dimension",
-    "$value": "-2px"
   },
   "opacity.100": {
     "$type": "number",
@@ -918,33 +902,17 @@
     "$type": "dimension",
     "$value": "2px"
   },
-  "shadow.spread.neg-xl": {
-    "$type": "dimension",
-    "$value": "-8px"
-  },
   "shadow.blur.md": {
     "$type": "dimension",
     "$value": "4px"
-  },
-  "shadow.spread.neg-lg": {
-    "$type": "dimension",
-    "$value": "-4px"
   },
   "shadow.blur.lg": {
     "$type": "dimension",
     "$value": "8px"
   },
-  "shadow.spread.neg-md": {
-    "$type": "dimension",
-    "$value": "-2px"
-  },
   "shadow.blur.xl": {
     "$type": "dimension",
     "$value": "12px"
-  },
-  "shadow.spread.neg-sm": {
-    "$type": "dimension",
-    "$value": "-1px"
   },
   "shadow.spread.none": {
     "$type": "dimension",
@@ -978,13 +946,13 @@
     "$type": "duration",
     "$value": "100ms"
   },
-  "duration.150": {
-    "$type": "duration",
-    "$value": "150ms"
-  },
   "typography.tracking.tighter": {
     "$type": "dimension",
     "$value": "-0.05em"
+  },
+  "duration.150": {
+    "$type": "duration",
+    "$value": "150ms"
   },
   "typography.tracking.tight": {
     "$type": "dimension",
@@ -1025,6 +993,38 @@
   "typography.tracking.widest": {
     "$type": "dimension",
     "$value": "0.1em"
+  },
+  "shadow.offset.neg-xl": {
+    "$type": "dimension",
+    "$value": "-12px"
+  },
+  "shadow.offset.neg-lg": {
+    "$type": "dimension",
+    "$value": "-8px"
+  },
+  "shadow.offset.neg-md": {
+    "$type": "dimension",
+    "$value": "-4px"
+  },
+  "shadow.offset.neg-sm": {
+    "$type": "dimension",
+    "$value": "-2px"
+  },
+  "shadow.spread.neg-xl": {
+    "$type": "dimension",
+    "$value": "-8px"
+  },
+  "shadow.spread.neg-lg": {
+    "$type": "dimension",
+    "$value": "-4px"
+  },
+  "shadow.spread.neg-md": {
+    "$type": "dimension",
+    "$value": "-2px"
+  },
+  "shadow.spread.neg-sm": {
+    "$type": "dimension",
+    "$value": "-1px"
   },
   "z-index.0": {
     "$type": "number",

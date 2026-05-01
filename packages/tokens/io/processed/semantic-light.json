@@ -466,12 +466,12 @@
   },
   "focus-ring.width": {
     "$type": "dimension",
-    "$value": "2px",
+    "$value": "{border-width.2}",
     "$description": "Width of focus ring outline"
   },
   "focus-ring.offset": {
     "$type": "dimension",
-    "$value": "2px",
+    "$value": "{border-width.2}",
     "$description": "Offset of focus ring from element"
   },
   "icon.size.xs": {

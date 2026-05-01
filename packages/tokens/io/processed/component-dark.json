@@ -271,10 +271,6 @@
     "$type": "spacing",
     "$value": "{space.100}"
   },
-  "input.default.background": {
-    "$type": "color",
-    "$value": "{color.background.primary}"
-  },
   "input.background-hover": {
     "$type": "color",
     "$value": "{color.background.secondary}"
@@ -290,10 +286,6 @@
   "input.border-error": {
     "$type": "color",
     "$value": "{color.border.danger}"
-  },
-  "input.default.text": {
-    "$type": "color",
-    "$value": "{color.text.primary}"
   },
   "input.placeholder": {
     "$type": "color",
@@ -323,13 +315,13 @@
     "$type": "spacing",
     "$value": "{space.200}"
   },
-  "input.radius": {
-    "$type": "dimension",
-    "$value": "{border-radius.md}"
-  },
   "input.font-size.sm": {
     "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
+  },
+  "input.radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.md}"
   },
   "input.font-size.md": {
     "$type": "fontSize",
@@ -899,10 +891,6 @@
     "$type": "color",
     "$value": "{color.interactive.secondary}"
   },
-  "toast.default.background": {
-    "$type": "color",
-    "$value": "{color.background.primary}"
-  },
   "toast.close": {
     "$type": "color",
     "$value": "{color.text.secondary}"
@@ -1270,10 +1258,6 @@
   "label.margin-bottom": {
     "$type": "spacing",
     "$value": "{space.050}"
-  },
-  "label.default.color": {
-    "$type": "color",
-    "$value": "{color.text.secondary}"
   },
   "label.disabled.color": {
     "$type": "color",
@@ -1755,10 +1739,6 @@
     "$type": "spacing",
     "$value": "{space.1200}"
   },
-  "context-menu.sub-content.min-width": {
-    "$type": "spacing",
-    "$value": "{space.1000}"
-  },
   "context-menu.content.padding": {
     "$type": "spacing",
     "$value": "{space.050}"
@@ -2090,10 +2070,6 @@
   "command.item-padding-x": {
     "$type": "spacing",
     "$value": "{space.150}"
-  },
-  "command.item-padding-y": {
-    "$type": "spacing",
-    "$value": "{space.050}"
   },
   "command.item-indicator-margin-right": {
     "$type": "spacing",
@@ -2598,5 +2574,29 @@
   "select.item.indicator-left": {
     "$type": "spacing",
     "$value": "{space.100}"
+  },
+  "input.default.background": {
+    "$type": "color",
+    "$value": "{color.background.primary}"
+  },
+  "input.default.text": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "toast.default.background": {
+    "$type": "color",
+    "$value": "{color.background.primary}"
+  },
+  "label.default.color": {
+    "$type": "color",
+    "$value": "{color.text.secondary}"
+  },
+  "context-menu.sub-content.min-width": {
+    "$type": "spacing",
+    "$value": "{space.1000}"
+  },
+  "command.item-padding-y": {
+    "$type": "spacing",
+    "$value": "{space.050}"
   }
 }

@@ -4515,18 +4515,6 @@
       }
     },
     "input": {
-      "input-default-background": {
-        "name": "inputDefaultBackground",
-        "path": [
-          "input",
-          "default",
-          "background"
-        ],
-        "value": "oklch(1 0 0)",
-        "type": "color",
-        "variable": "var(--color-input-default-background)",
-        "description": ""
-      },
       "input-background-hover": {
         "name": "inputBackgroundHover",
         "path": [
@@ -4569,18 +4557,6 @@
         "value": "oklch(0.577 0.215 27.32)",
         "type": "color",
         "variable": "var(--color-input-border-error)",
-        "description": ""
-      },
-      "input-default-text": {
-        "name": "inputDefaultText",
-        "path": [
-          "input",
-          "default",
-          "text"
-        ],
-        "value": "oklch(0.279 0.037 260.04)",
-        "type": "color",
-        "variable": "var(--color-input-default-text)",
         "description": ""
       },
       "input-placeholder": {
@@ -4665,17 +4641,6 @@
         "variable": "var(--input-padding-x)",
         "description": ""
       },
-      "input-radius": {
-        "name": "inputRadius",
-        "path": [
-          "input",
-          "radius"
-        ],
-        "value": "4px",
-        "type": "dimension",
-        "variable": "var(--input-radius)",
-        "description": ""
-      },
       "input-font-size-sm": {
         "name": "inputFontSizeSm",
         "path": [
@@ -4686,6 +4651,17 @@
         "value": "14px",
         "type": "fontSize",
         "variable": "var(--input-font-size-sm)",
+        "description": ""
+      },
+      "input-radius": {
+        "name": "inputRadius",
+        "path": [
+          "input",
+          "radius"
+        ],
+        "value": "4px",
+        "type": "dimension",
+        "variable": "var(--input-radius)",
         "description": ""
       },
       "input-font-size-md": {
@@ -4710,6 +4686,30 @@
         "value": "18px",
         "type": "fontSize",
         "variable": "var(--input-font-size-lg)",
+        "description": ""
+      },
+      "input-default-background": {
+        "name": "inputDefaultBackground",
+        "path": [
+          "input",
+          "default",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-input-default-background)",
+        "description": ""
+      },
+      "input-default-text": {
+        "name": "inputDefaultText",
+        "path": [
+          "input",
+          "default",
+          "text"
+        ],
+        "value": "oklch(0.279 0.037 260.04)",
+        "type": "color",
+        "variable": "var(--color-input-default-text)",
         "description": ""
       }
     },
@@ -5644,17 +5644,6 @@
         "variable": "var(--command-item-padding-x)",
         "description": ""
       },
-      "command-item-padding-y": {
-        "name": "commandItemPaddingY",
-        "path": [
-          "command",
-          "item-padding-y"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--command-item-padding-y)",
-        "description": ""
-      },
       "command-item-indicator-margin-right": {
         "name": "commandItemIndicatorMarginRight",
         "path": [
@@ -5752,6 +5741,17 @@
         "value": "12px",
         "type": "fontSize",
         "variable": "var(--command-group-heading-font-size)",
+        "description": ""
+      },
+      "command-item-padding-y": {
+        "name": "commandItemPaddingY",
+        "path": [
+          "command",
+          "item-padding-y"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--command-item-padding-y)",
         "description": ""
       }
     },
@@ -8696,18 +8696,6 @@
         "variable": "var(--color-toast-action-hover)",
         "description": ""
       },
-      "toast-default-background": {
-        "name": "toastDefaultBackground",
-        "path": [
-          "toast",
-          "default",
-          "background"
-        ],
-        "value": "oklch(1 0 0)",
-        "type": "color",
-        "variable": "var(--color-toast-default-background)",
-        "description": ""
-      },
       "toast-close": {
         "name": "toastClose",
         "path": [
@@ -8995,6 +8983,18 @@
         "value": "4px",
         "type": "dimension",
         "variable": "var(--toast-action-radius)",
+        "description": ""
+      },
+      "toast-default-background": {
+        "name": "toastDefaultBackground",
+        "path": [
+          "toast",
+          "default",
+          "background"
+        ],
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "variable": "var(--color-toast-default-background)",
         "description": ""
       }
     },
@@ -10094,18 +10094,6 @@
         "variable": "var(--label-margin-bottom)",
         "description": ""
       },
-      "label-default-color": {
-        "name": "labelDefaultColor",
-        "path": [
-          "label",
-          "default",
-          "color"
-        ],
-        "value": "oklch(0.446 0.037 257.29)",
-        "type": "color",
-        "variable": "var(--color-label-default-color)",
-        "description": ""
-      },
       "label-disabled-color": {
         "name": "labelDisabledColor",
         "path": [
@@ -10127,6 +10115,18 @@
         "value": "4px",
         "type": "spacing",
         "variable": "var(--label-required-margin-left)",
+        "description": ""
+      },
+      "label-default-color": {
+        "name": "labelDefaultColor",
+        "path": [
+          "label",
+          "default",
+          "color"
+        ],
+        "value": "oklch(0.446 0.037 257.29)",
+        "type": "color",
+        "variable": "var(--color-label-default-color)",
         "description": ""
       }
     },
@@ -10352,18 +10352,6 @@
         "variable": "var(--context-menu-content-min-width)",
         "description": ""
       },
-      "context-menu-sub-content-min-width": {
-        "name": "contextMenuSubContentMinWidth",
-        "path": [
-          "context-menu",
-          "sub-content",
-          "min-width"
-        ],
-        "value": "96px",
-        "type": "spacing",
-        "variable": "var(--context-menu-sub-content-min-width)",
-        "description": ""
-      },
       "context-menu-content-padding": {
         "name": "contextMenuContentPadding",
         "path": [
@@ -10513,6 +10501,18 @@
         "value": "12px",
         "type": "fontSize",
         "variable": "var(--context-menu-shortcut-font-size)",
+        "description": ""
+      },
+      "context-menu-sub-content-min-width": {
+        "name": "contextMenuSubContentMinWidth",
+        "path": [
+          "context-menu",
+          "sub-content",
+          "min-width"
+        ],
+        "value": "96px",
+        "type": "spacing",
+        "variable": "var(--context-menu-sub-content-min-width)",
         "description": ""
       }
     },

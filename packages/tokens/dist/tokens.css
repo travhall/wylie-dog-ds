@@ -222,12 +222,8 @@
   --opacity-70: 0.7;
   --opacity-75: 0.75;
   --opacity-80: 0.8;
-  --space-shadow-offset-neg-xl: -12px;
   --opacity-90: 0.9;
-  --space-shadow-offset-neg-lg: -8px;
   --opacity-95: 0.95;
-  --space-shadow-offset-neg-md: -4px;
-  --space-shadow-offset-neg-sm: -2px;
   --opacity-100: 1;
   --space-shadow-offset-none: 0px;
   --space-shadow-offset-sm: 2px;
@@ -236,13 +232,9 @@
   --space-shadow-offset-xl: 12px;
   --space-shadow-blur-none: 0px;
   --space-shadow-blur-sm: 2px;
-  --space-shadow-spread-neg-xl: -8px;
   --space-shadow-blur-md: 4px;
-  --space-shadow-spread-neg-lg: -4px;
   --space-shadow-blur-lg: 8px;
-  --space-shadow-spread-neg-md: -2px;
   --space-shadow-blur-xl: 12px;
-  --space-shadow-spread-neg-sm: -1px;
   --space-shadow-spread-none: 0px;
   --space-shadow-spread-sm: 1px;
   --space-shadow-spread-md: 2px;
@@ -251,8 +243,8 @@
   --duration-duration-0: 0ms;
   --duration-duration-75: 75ms;
   --duration-duration-100: 100ms;
-  --duration-duration-150: 150ms;
   --space-typography-tracking-tighter: -0.05em;
+  --duration-duration-150: 150ms;
   --space-typography-tracking-tight: -0.025em;
   --duration-duration-200: 200ms;
   --space-typography-tracking-normal: 0em;
@@ -263,6 +255,14 @@
   --duration-duration-700: 700ms;
   --duration-duration-1000: 1000ms;
   --space-typography-tracking-widest: 0.1em;
+  --space-shadow-offset-neg-xl: -12px;
+  --space-shadow-offset-neg-lg: -8px;
+  --space-shadow-offset-neg-md: -4px;
+  --space-shadow-offset-neg-sm: -2px;
+  --space-shadow-spread-neg-xl: -8px;
+  --space-shadow-spread-neg-lg: -4px;
+  --space-shadow-spread-neg-md: -2px;
+  --space-shadow-spread-neg-sm: -1px;
   --z-index-0: 0;
   --z-index-10: 10;
   --z-index-20: 20;
@@ -463,12 +463,10 @@
   --font-size-card-header-description-font-size: 14px;
   --color-card-header-description-color: oklch(0.446 0.037 257.29);
   --space-card-footer-gap: 8px;
-  --color-input-default-background: oklch(1 0 0);
   --color-input-background-hover: oklch(0.984 0.003 248.29);
   --color-input-border: oklch(0.929 0.013 255.56);
   --color-input-border-focus: oklch(0.623 0.188 259.82);
   --color-input-border-error: oklch(0.577 0.215 27.32);
-  --color-input-default-text: oklch(0.279 0.037 260.04);
   --color-input-placeholder: oklch(0.446 0.037 257.29);
   --color-input-disabled-background: oklch(0.968 0.007 248.08);
   --color-input-disabled-text: oklch(0.869 0.02 252.93);
@@ -476,8 +474,8 @@
   --space-input-height-md: 40px;
   --space-input-height-lg: 48px;
   --space-input-padding-x: 16px;
-  --space-input-radius: 4px;
   --font-size-input-font-size-sm: 14px;
+  --space-input-radius: 4px;
   --font-size-input-font-size-md: 16px;
   --font-size-input-font-size-lg: 18px;
   --color-button-link-text: oklch(0.546 0.215 262.89);
@@ -620,7 +618,6 @@
   --color-table-row-hover: oklch(0.984 0.003 248.29);
   --color-table-row-selected: oklch(0.984 0.003 248.29);
   --color-toast-action-hover: oklch(0.984 0.003 248.29);
-  --color-toast-default-background: oklch(1 0 0);
   --color-toast-close: oklch(0.446 0.037 257.29);
   --color-toast-close-hover: oklch(0.279 0.037 260.04);
   --color-toast-text: oklch(0.279 0.037 260.04);
@@ -713,7 +710,6 @@
   --font-size-label-font-size-md: 16px;
   --font-size-label-font-size-lg: 18px;
   --space-label-margin-bottom: 4px;
-  --color-label-default-color: oklch(0.446 0.037 257.29);
   --color-label-disabled-color: oklch(0.869 0.02 252.93);
   --color-sheet-overlay-background: oklch(0.208 0.04 265.75);
   --space-sheet-content-width-sm: 320px;
@@ -834,7 +830,6 @@
   --space-carousel-button-icon-size: 16px;
   --space-carousel-gap: 24px;
   --space-context-menu-content-min-width: 128px;
-  --space-context-menu-sub-content-min-width: 96px;
   --space-context-menu-content-padding: 4px;
   --space-context-menu-item-padding-y: 4px;
   --space-context-menu-item-padding-x: 8px;
@@ -918,7 +913,6 @@
   --space-label-required-margin-left: 4px;
   --space-radio-group-item-gap: 8px;
   --space-command-item-padding-x: 12px;
-  --space-command-item-padding-y: 4px;
   --space-command-item-indicator-margin-right: 8px;
   --space-command-empty-padding-y: 24px;
   --space-command-group-heading-padding-x: 8px;
@@ -1045,6 +1039,12 @@
   --color-select-item-background-focus: oklch(0.984 0.003 248.29);
   --color-select-item-text-focus: oklch(0.279 0.037 260.04);
   --space-select-item-indicator-left: 8px;
+  --color-input-default-background: oklch(1 0 0);
+  --color-input-default-text: oklch(0.279 0.037 260.04);
+  --color-toast-default-background: oklch(1 0 0);
+  --color-label-default-color: oklch(0.446 0.037 257.29);
+  --space-context-menu-sub-content-min-width: 96px;
+  --space-command-item-padding-y: 4px;
 }
 
 /**
@@ -1236,12 +1236,10 @@
   --font-size-card-header-description-font-size: 14px;
   --color-card-header-description-color: oklch(0.929 0.013 255.56);
   --space-card-footer-gap: 8px;
-  --color-input-default-background: oklch(0.208 0.04 265.75);
   --color-input-background-hover: oklch(0.279 0.037 260.04);
   --color-input-border: oklch(0.446 0.037 257.29);
   --color-input-border-focus: oklch(0.623 0.188 259.82);
   --color-input-border-error: oklch(0.577 0.215 27.32);
-  --color-input-default-text: oklch(0.984 0.003 248.29);
   --color-input-placeholder: oklch(0.929 0.013 255.56);
   --color-input-disabled-background: oklch(0.372 0.039 257.3);
   --color-input-disabled-text: oklch(0.554 0.041 257.43);
@@ -1249,8 +1247,8 @@
   --space-input-height-md: 40px;
   --space-input-height-lg: 48px;
   --space-input-padding-x: 16px;
-  --space-input-radius: 4px;
   --font-size-input-font-size-sm: 14px;
+  --space-input-radius: 4px;
   --font-size-input-font-size-md: 16px;
   --font-size-input-font-size-lg: 18px;
   --color-button-link-text: oklch(0.546 0.215 262.89);
@@ -1393,7 +1391,6 @@
   --color-table-row-hover: oklch(0.372 0.039 257.3);
   --color-table-row-selected: oklch(0.372 0.039 257.3);
   --color-toast-action-hover: oklch(0.372 0.039 257.3);
-  --color-toast-default-background: oklch(0.208 0.04 265.75);
   --color-toast-close: oklch(0.929 0.013 255.56);
   --color-toast-close-hover: oklch(0.984 0.003 248.29);
   --color-toast-text: oklch(0.984 0.003 248.29);
@@ -1486,7 +1483,6 @@
   --font-size-label-font-size-md: 16px;
   --font-size-label-font-size-lg: 18px;
   --space-label-margin-bottom: 4px;
-  --color-label-default-color: oklch(0.929 0.013 255.56);
   --color-label-disabled-color: oklch(0.554 0.041 257.43);
   --color-sheet-overlay-background: oklch(1 0 0);
   --space-sheet-content-width-sm: 320px;
@@ -1607,7 +1603,6 @@
   --space-carousel-button-icon-size: 16px;
   --space-carousel-gap: 24px;
   --space-context-menu-content-min-width: 128px;
-  --space-context-menu-sub-content-min-width: 96px;
   --space-context-menu-content-padding: 4px;
   --space-context-menu-item-padding-y: 4px;
   --space-context-menu-item-padding-x: 8px;
@@ -1691,7 +1686,6 @@
   --space-label-required-margin-left: 4px;
   --space-radio-group-item-gap: 8px;
   --space-command-item-padding-x: 12px;
-  --space-command-item-padding-y: 4px;
   --space-command-item-indicator-margin-right: 8px;
   --space-command-empty-padding-y: 24px;
   --space-command-group-heading-padding-x: 8px;
@@ -1818,4 +1812,10 @@
   --color-select-item-background-focus: oklch(0.372 0.039 257.3);
   --color-select-item-text-focus: oklch(0.984 0.003 248.29);
   --space-select-item-indicator-left: 8px;
+  --color-input-default-background: oklch(0.208 0.04 265.75);
+  --color-input-default-text: oklch(0.984 0.003 248.29);
+  --color-toast-default-background: oklch(0.208 0.04 265.75);
+  --color-label-default-color: oklch(0.929 0.013 255.56);
+  --space-context-menu-sub-content-min-width: 96px;
+  --space-command-item-padding-y: 4px;
 }
