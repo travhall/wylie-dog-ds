@@ -103,6 +103,11 @@
       "outputs": ["dist/**/*.css"],
       "cache": true
     },
+    "showcase#dev": {
+      "dependsOn": ["@wyliedog/tokens#build", "@wyliedog/ui#build"],
+      "cache": false,
+      "persistent": true
+    },
     "storybook#dev": {
       "dependsOn": ["@wyliedog/tokens#build", "@wyliedog/ui#build:styles"],
       "cache": false,
