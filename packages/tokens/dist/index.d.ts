@@ -239,7 +239,7 @@ export declare const typographyTrackingTighter: "-0.05em";
 export declare const duration150: "150ms";
 export declare const typographyTrackingTight: "-0.025em";
 export declare const duration200: "200ms";
-export declare const typographyTrackingNormal: "0em";
+export declare const typographyTrackingNormal: "0px";
 export declare const duration300: "300ms";
 export declare const typographyTrackingWide: "0.025em";
 export declare const duration500: "500ms";

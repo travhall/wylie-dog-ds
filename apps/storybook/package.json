@@ -18,7 +18,7 @@
   "dependencies": {
     "@wyliedog/tokens": "workspace:*",
     "@wyliedog/ui": "workspace:*",
-    "lucide-react": "^1.8.0",
+    "lucide-react": "^1.14.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
   },
@@ -32,22 +32,22 @@
     "@storybook/addon-links": "^10.3.6",
     "@storybook/addon-vitest": "^10.3.6",
     "@storybook/react-vite": "^10.3.6",
-    "@tailwindcss/cli": "^4.2.3",
-    "@tailwindcss/postcss": "^4.2.3",
+    "@tailwindcss/cli": "^4.2.4",
+    "@tailwindcss/postcss": "^4.2.4",
     "@vitejs/plugin-react": "^6.0.1",
-    "@vitest/browser-playwright": "^4.1.4",
-    "@vitest/coverage-v8": "^4.1.4",
-    "eslint": "^10.2.1",
+    "@vitest/browser-playwright": "^4.1.5",
+    "@vitest/coverage-v8": "^4.1.5",
+    "eslint": "^10.3.0",
     "eslint-plugin-storybook": "10.3.6",
     "playwright": "^1.59.1",
-    "postcss": "^8.5.10",
+    "postcss": "^8.5.13",
     "prettier-plugin-packagejson": "^3.0.2",
     "rollup-plugin-visualizer": "^7.0.1",
     "serve": "^14.2.6",
     "storybook": "^10.3.6",
-    "tailwindcss": "^4.2.3",
+    "tailwindcss": "^4.2.4",
     "typescript": "6.0.3",
-    "vite": "^8.0.9",
-    "vitest": "^4.1.4"
+    "vite": "^8.0.10",
+    "vitest": "^4.1.5"
   }
 }

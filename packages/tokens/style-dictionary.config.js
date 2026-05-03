@@ -3,6 +3,52 @@ import { register } from "@tokens-studio/sd-transforms";
 
 await register(StyleDictionary);
 
+// The tokens-studio transformGroup strips CSS units from zero-value dimension
+// tokens ("0px" → 0) as a CSS file-size micro-optimisation. This is harmless
+// in CSS (0px === 0), but it breaks generate-token-types.js: the type
+// generator sees a bare numeric 0 and correctly types it as `number` instead
+// of the string-literal type `"0px"` that consumers expect for type-safe
+// dimension tokens.
+//
+// Fix: register a corrective transform that runs after the tokens-studio
+// pipeline and restores the unit on any dimension-like token whose resolved
+// value is the number 0.
+StyleDictionary.registerTransform({
+  name: "wd/dimension/preserveZeroPx",
+  type: "value",
+  filter: (token) => {
+    // SD v4 parses the W3C dimension "0px" to the number 0 during ingestion
+    // (stripping the unit because 0px === 0 in CSS). The subsequent
+    // ts/size/px transform then leaves numeric 0 as-is (0 → 0 rather
+    // than 0 → "0px"). We fix that here by re-attaching the px unit so
+    // the JS format emits "0px" and the type generator produces the
+    // string-literal type "0px" instead of widening it to `number`.
+    const dimensionTypes = new Set([
+      "dimension",
+      "spacing",
+      "fontSize",
+      "lineHeight",
+      "letterSpacing",
+      "borderRadius",
+    ]);
+    const type = token.$type ?? token.type;
+    // In SD v4 transforms, the current value lives on token.$value (not
+    // token.value) by the time our transform runs.
+    return dimensionTypes.has(type) && token.$value === 0;
+  },
+  transform: () => "0px",
+});
+
+// Build a custom transform group that layers our fix on top of tokens-studio.
+// We read the registered group at runtime so this stays in sync if the
+// upstream package adds or removes transforms in future versions.
+const tokensStudioTransforms =
+  StyleDictionary.hooks.transformGroups["tokens-studio"];
+StyleDictionary.registerTransformGroup({
+  name: "tokens-studio-wd",
+  transforms: [...tokensStudioTransforms, "wd/dimension/preserveZeroPx"],
+});
+
 /**
  * Token type → CSS variable configuration
  * Maps token types to their CSS variable prefix and any path prefixes to strip
@@ -451,7 +497,7 @@ const lightSd = new StyleDictionary({
   ],
   platforms: {
     css: {
-      transformGroup: "tokens-studio",
+      transformGroup: "tokens-studio-wd",
       buildPath: "dist/",
       options: { mode: "light" },
       files: [
@@ -462,7 +508,7 @@ const lightSd = new StyleDictionary({
       ],
     },
     js: {
-      transformGroup: "tokens-studio",
+      transformGroup: "tokens-studio-wd",
       buildPath: "dist/",
       files: [
         {
@@ -491,7 +537,7 @@ const darkSd = new StyleDictionary({
   ],
   platforms: {
     css: {
-      transformGroup: "tokens-studio",
+      transformGroup: "tokens-studio-wd",
       buildPath: "dist/",
       options: { mode: "dark" },
       files: [
