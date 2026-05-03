@@ -1,46 +1,35 @@
 # Sync Contract
 
-This document defines the JSON contract for files in `packages/tokens/io/sync/`. These files are the **source of truth** for design tokens and the integration boundary between three systems:
+This document defines the **JSON data format** for token files used by the Figma plugin and build pipeline. It is a format contract, not a file-list contract.
 
 ```text
 ┌──────────────────┐  read/write   ┌──────────────────┐  read   ┌──────────────────┐
-│  Figma Plugin    │ ◄───────────► │  io/sync/*.json  │ ──────► │  Build pipeline  │
-│ (apps/figma-     │  via GitHub   │  (this contract) │         │  (process-token- │
-│  plugin)         │  API          │                  │         │   io.js → SD)    │
+│  Figma Plugin    │ ◄───────────► │  token files     │ ──────► │  Build pipeline  │
+│ (apps/figma-     │  via storage  │  (any .json in   │         │  (process-token- │
+│  plugin)         │  adapter      │   configured dir)│         │   io.js → SD)    │
 └──────────────────┘               └──────────────────┘         └──────────────────┘
 ```
 
-**Any change to this contract requires coordinated updates in:**
+**File discovery is open:** consumers can put any number of `.json` files in any directory they configure. The plugin discovers them automatically, or users can specify an explicit list in plugin settings. No manifest file is required.
+
+**Any change to the data format requires coordinated updates in:**
 
 - `packages/tokens/scripts/process-token-io.js` (consumer)
 - `apps/figma-plugin/src/plugin/github/client.ts` (consumer/producer)
 - `apps/figma-plugin/src/plugin/variables/{importer,processor,reference-resolver}.ts`
 - `apps/figma-plugin/test-data/` fixtures
-- `packages/tokens/SYNC_MANIFEST.json` (see [§ Filename manifest](#filename-manifest))
 
 ---
 
-## Schema version
+## Wylie Dog default file layout
 
-```json
-"$schema": "https://wyliedog.dev/tokens/sync/v1"
-```
-
-The `$schema` field is **required at the top of every sync file** as of v1. Producers must emit it; consumers must validate it and reject incompatible versions with a clear error. Bump the minor version for additive changes, major for breaking changes.
-
-> **Status:** Not yet enforced. Adding `$schema` is the first task once this contract is ratified. Until then, both producer and consumer assume v1 implicitly.
-
----
-
-## File layout
+The reference implementation uses three files, but this is not required of consumers:
 
 | File              | Collection name | Modes               | Purpose                                                                          |
 | ----------------- | --------------- | ------------------- | -------------------------------------------------------------------------------- |
 | `primitive.json`  | `primitive`     | 1 (`Value`)         | Raw scales: color palettes, spacing scale, type scale, radii, durations, easings |
 | `semantic.json`   | `semantic`      | 2 (`Light`, `Dark`) | Intent-named tokens that reference primitives                                    |
 | `components.json` | `components`    | 2 (`Light`, `Dark`) | Component-specific tokens that reference semantic (and occasionally primitive)   |
-
-The set of files is fixed by the [filename manifest](#filename-manifest). Adding a new sync file requires updating the manifest **and** all three consumers above.
 
 ---
 
@@ -202,37 +191,6 @@ A reference is a string of the form `{<dot.path.to.token>}` — exactly one set 
 
 ---
 
-## Filename manifest
-
-The set of canonical sync filenames lives in:
-
-```text
-packages/tokens/io/sync/MANIFEST.json
-```
-
-```json
-{
-  "$schema": "https://wyliedog.dev/tokens/sync/v1",
-  "files": [
-    { "name": "primitive.json", "collection": "primitive", "modes": ["Value"] },
-    {
-      "name": "semantic.json",
-      "collection": "semantic",
-      "modes": ["Light", "Dark"]
-    },
-    {
-      "name": "components.json",
-      "collection": "components",
-      "modes": ["Light", "Dark"]
-    }
-  ]
-}
-```
-
-**Both consumers must read this manifest at startup** rather than hardcoding filenames. (Phase 1.0c migrates `apps/figma-plugin/src/plugin/github/client.ts:125` and `packages/tokens/scripts/process-token-io.js:277` to read from MANIFEST.json.)
-
----
-
 ## Invariants
 
 A sync file is **valid** if and only if:
@@ -276,7 +234,6 @@ When changing this contract:
 
 - [ ] Update this document
 - [ ] Bump `$schema` version if breaking
-- [ ] Update `packages/tokens/io/sync/MANIFEST.json` if file set changed
 - [ ] Update `packages/tokens/scripts/process-token-io.js`
 - [ ] Update `packages/tokens/scripts/validate-tokens.js`
 - [ ] Update `apps/figma-plugin/src/plugin/github/client.ts`

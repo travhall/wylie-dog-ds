@@ -33,11 +33,18 @@ export interface GitHubConfig {
   owner: string;
   repo: string;
   branch: string;
-  tokenPath: string; // Path in repo to sync tokens (e.g., "packages/tokens/io/sync/" or "tokens/")
+  /** Path in the repo where token files live, e.g. "tokens" or "packages/tokens/io/sync" */
+  tokenPath: string;
+  /**
+   * Optional explicit list of token filenames, comma-separated.
+   * e.g. "primitive.json, semantic.json, components.json"
+   * Leave blank to auto-discover all .json files at tokenPath.
+   */
+  tokenFiles?: string;
   authMethod?: "oauth" | "pat";
   accessToken?: string;
   syncMode: SyncMode;
-  isWylieDogProject?: boolean; // Auto-detected: true if repo has wylie-dog-ds structure
+  isWylieDogProject?: boolean;
 }
 
 // Re-export ConflictResolution from sync types for convenience

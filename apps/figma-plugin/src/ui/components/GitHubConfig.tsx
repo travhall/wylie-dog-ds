@@ -12,8 +12,9 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
     repo: "",
     branch: "main",
     tokenPath: "tokens",
+    tokenFiles: "",
     accessToken: "",
-    syncMode: "pull-request", // Quick Win #8 - Smart default to safer mode
+    syncMode: "pull-request",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -100,6 +101,7 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
           repo: msg.config.repo || "",
           branch: msg.config.branch || "main",
           tokenPath: msg.config.tokenPath || "tokens",
+          tokenFiles: msg.config.tokenFiles || "",
           accessToken: msg.config.accessToken || "",
           syncMode: msg.config.syncMode || "direct",
         });
@@ -551,6 +553,63 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
             color: "var(--text-primary)",
           }}
         >
+          Token Files{" "}
+          <span style={{ color: "var(--text-tertiary)", fontWeight: "normal" }}>
+            (optional)
+          </span>
+        </label>
+        <input
+          type="text"
+          value={config.tokenFiles ?? ""}
+          onChange={(e) =>
+            handleInputChange(
+              "tokenFiles",
+              (e.target as HTMLInputElement).value
+            )
+          }
+          placeholder="Leave blank to auto-discover all JSON files"
+          style={{
+            width: "100%",
+            padding: "var(--space-2)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-md)",
+            fontSize: "var(--font-size-sm)",
+            backgroundColor: "var(--surface-primary)",
+            color: "var(--text-primary)",
+          }}
+        />
+        <div
+          style={{
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
+            marginTop: "var(--space-1)",
+            lineHeight: "var(--line-height-relaxed)",
+          }}
+        >
+          Comma-separated list, e.g.{" "}
+          <code
+            style={{
+              backgroundColor: "var(--surface-secondary)",
+              padding: "1px var(--space-1)",
+              borderRadius: "var(--radius-sm)",
+            }}
+          >
+            primitive.json, semantic.json
+          </code>
+          . When blank, all JSON files in the token path are synced.
+        </div>
+      </div>
+
+      <div style={{ marginBottom: "var(--space-4)" }}>
+        <label
+          style={{
+            display: "block",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-semibold)",
+            marginBottom: "var(--space-1)",
+            color: "var(--text-primary)",
+          }}
+        >
           Personal Access Token <span style={{ color: "var(--error)" }}>*</span>
         </label>
         <input
@@ -621,20 +680,41 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
             lineHeight: "var(--line-height-relaxed)",
           }}
         >
-          Each collection will be saved as a separate file:
-          <br />
-          <code
-            style={{
-              backgroundColor: "var(--surface-secondary)",
-              padding: "2px var(--space-1)",
-              borderRadius: "var(--radius-sm)",
-              color: "var(--text-primary)",
-            }}
-          >
-            {config.tokenPath}/primitive.json
-            <br />
-            {config.tokenPath}/semantic-light.json
-          </code>
+          {config.tokenFiles?.trim() ? (
+            <>
+              Syncing the files you specified:{" "}
+              <code
+                style={{
+                  backgroundColor: "var(--surface-secondary)",
+                  padding: "2px var(--space-1)",
+                  borderRadius: "var(--radius-sm)",
+                  color: "var(--text-primary)",
+                }}
+              >
+                {config.tokenFiles
+                  .split(",")
+                  .map((f) => f.trim())
+                  .filter(Boolean)
+                  .map((f) => `${config.tokenPath}/${f}`)
+                  .join(", ")}
+              </code>
+            </>
+          ) : (
+            <>
+              All JSON files in{" "}
+              <code
+                style={{
+                  backgroundColor: "var(--surface-secondary)",
+                  padding: "2px var(--space-1)",
+                  borderRadius: "var(--radius-sm)",
+                  color: "var(--text-primary)",
+                }}
+              >
+                {config.tokenPath}/
+              </code>{" "}
+              will be discovered and synced automatically.
+            </>
+          )}
         </div>
       </div>
 

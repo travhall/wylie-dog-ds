@@ -3,6 +3,7 @@
 import fetch from "cross-fetch";
 import { Octokit } from "@octokit/rest";
 import type { GitHubConfig, SyncMode } from "../../shared/types";
+import type { StorageAdapter } from "../storage/storage-adapter";
 
 // Make fetch available globally for Octokit
 (globalThis as any).fetch = fetch;
@@ -40,7 +41,7 @@ export interface PullResult {
   lastModified?: string;
 }
 
-export class GitHubClient {
+export class GitHubClient implements StorageAdapter {
   private octokit: Octokit | null = null;
   private config: GitHubConfig | null = null;
 
@@ -128,6 +129,88 @@ export class GitHubClient {
     }
   }
 
+  // ─── StorageAdapter implementation ────────────────────────────────────────
+
+  private basePath(): string {
+    if (!this.config) throw new Error("GitHub client not initialized");
+    return this.config.tokenPath.endsWith("/")
+      ? this.config.tokenPath.slice(0, -1)
+      : this.config.tokenPath;
+  }
+
+  /**
+   * Resolve the list of filenames to sync.
+   *
+   * Priority:
+   *   1. Explicit list from plugin settings (tokenFiles) — user always wins.
+   *   2. GitHub directory listing — discover all .json files at tokenPath.
+   *
+   * No hardcoded fallback list, no MANIFEST.json. Consumers put whatever
+   * files they want in their token directory and this picks them all up.
+   */
+  async listFiles(): Promise<string[]> {
+    if (!this.octokit || !this.config) {
+      throw new Error("GitHub client not initialized");
+    }
+
+    // 1. User-configured explicit list
+    if (this.config.tokenFiles?.trim()) {
+      const files = this.config.tokenFiles
+        .split(",")
+        .map((f) => f.trim())
+        .filter((f) => f.length > 0);
+      console.log(
+        `📋 Using configured token files (${files.length}): ${files.join(", ")}`
+      );
+      return files;
+    }
+
+    // 2. Auto-discover via GitHub contents API
+    const { data } = await this.octokit.repos.getContent({
+      owner: this.config.owner,
+      repo: this.config.repo,
+      path: this.basePath(),
+      ref: this.config.branch,
+    });
+
+    if (!Array.isArray(data)) {
+      throw new Error(
+        `${this.basePath()} is not a directory in the repository`
+      );
+    }
+
+    const jsonFiles = data
+      .filter((entry) => entry.type === "file" && entry.name.endsWith(".json"))
+      .map((entry) => entry.name);
+
+    console.log(
+      `📂 Auto-discovered ${jsonFiles.length} JSON file(s): ${jsonFiles.join(", ")}`
+    );
+    return jsonFiles;
+  }
+
+  async fetchFile(filename: string): Promise<string> {
+    if (!this.config) throw new Error("GitHub client not initialized");
+    const url = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${this.config.branch}/${this.basePath()}/${filename}`;
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${filename}: HTTP ${response.status}`);
+    }
+    return response.text();
+  }
+
+  async pushFiles(
+    files: Array<{ filename: string; content: string }>,
+    commitMessage: string
+  ): Promise<{ changed: boolean; ref?: string }> {
+    // Delegated to directSync internals — see directSync() below.
+    // This method exists to satisfy StorageAdapter; call syncTokens() for
+    // the full push flow with PR support.
+    throw new Error("Use syncTokens() to push files via the GitHub adapter");
+  }
+
+  // ─── Pull ──────────────────────────────────────────────────────────────────
+
   async pullTokens(): Promise<PullResult> {
     if (!this.octokit || !this.config) {
       return { success: false, error: "GitHub client not initialized" };
@@ -138,126 +221,36 @@ export class GitHubClient {
         `Pulling tokens from ${this.config.owner}/${this.config.repo}:${this.config.branch}`
       );
 
-      // Resolve the canonical file list. We first try MANIFEST.json (the
-      // sync contract — see packages/tokens/SYNC_CONTRACT.md). If the repo
-      // doesn't ship a manifest yet (older repos / non-Wylie-Dog repos), fall
-      // back to the legacy hardcoded list so existing users keep working.
-      const fallbackFileNames = [
-        "primitive.json",
-        "semantic.json",
-        "components.json",
-        "component.json",
-        "tokens.json",
-      ];
+      const fileNames = await this.listFiles().catch((err) => {
+        throw new Error(`Could not list token files: ${err.message}`);
+      });
 
-      // Normalize path - remove trailing slash if present
-      const basePath = this.config.tokenPath.endsWith("/")
-        ? this.config.tokenPath.slice(0, -1)
-        : this.config.tokenPath;
-
-      // Sync contract version this plugin build understands. If the manifest
-      // declares a higher major version, refuse to import — the schema may
-      // have moved in ways we can't safely interpret. Bump alongside any
-      // breaking change to the MANIFEST shape.
-      const SUPPORTED_MANIFEST_VERSION = 1;
-
-      let commonFileNames = fallbackFileNames;
-      let manifestSource: "manifest" | "fallback" = "fallback";
-      try {
-        const manifestUrl = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${this.config.branch}/${basePath}/MANIFEST.json`;
-        const manifestResponse = await fetch(manifestUrl);
-        if (manifestResponse.ok) {
-          const manifest = JSON.parse(await manifestResponse.text());
-
-          // Hardening: enforce manifest version compatibility. A future
-          // manifest could add required fields (e.g. per-collection schema
-          // refs) that this plugin can't honor. Fail closed rather than
-          // silently importing partial data.
-          const manifestVersion = manifest?.version;
-          if (typeof manifestVersion === "number") {
-            if (manifestVersion > SUPPORTED_MANIFEST_VERSION) {
-              return {
-                success: false,
-                error: `MANIFEST.json declares version ${manifestVersion}, but this plugin build supports up to version ${SUPPORTED_MANIFEST_VERSION}. Update the Token Bridge plugin to a newer release.`,
-              };
-            }
-          } else {
-            console.warn(
-              `MANIFEST.json missing numeric "version" field. Treating as v${SUPPORTED_MANIFEST_VERSION}; future manifests should declare a version.`
-            );
-          }
-
-          if (Array.isArray(manifest?.files) && manifest.files.length > 0) {
-            commonFileNames = manifest.files
-              .map((f: { name?: string }) => f.name)
-              .filter((n: unknown): n is string => typeof n === "string");
-            manifestSource = "manifest";
-            console.log(
-              `📋 Loaded sync MANIFEST.json v${manifestVersion ?? "?"} (${commonFileNames.length} files)`
-            );
-          }
-        }
-      } catch (err) {
-        console.warn(
-          "Could not load MANIFEST.json, falling back to default file list:",
-          err
-        );
+      if (fileNames.length === 0) {
+        return {
+          success: false,
+          error: `No JSON files found at ${this.basePath()} in ${this.config.owner}/${this.config.repo}@${this.config.branch}. Configure "Token Files" in plugin settings or add .json files to that path.`,
+        };
       }
-      console.log(`Token file source: ${manifestSource}`);
 
       const tokens = [];
       let filesFound = 0;
 
-      for (const fileName of commonFileNames) {
+      for (const fileName of fileNames) {
         try {
-          const rawUrl = `https://raw.githubusercontent.com/${this.config.owner}/${this.config.repo}/${this.config.branch}/${basePath}/${fileName}`;
-          console.log(`Attempting to fetch: ${fileName}`);
-
-          const response = await fetch(rawUrl);
-
-          // 404 is expected for files that don't exist - skip silently
-          if (response.status === 404) {
-            console.log(`File not found (skipping): ${fileName}`);
-            continue;
-          }
-
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-          }
-
-          const content = await response.text();
+          const content = await this.fetchFile(fileName);
           let tokenData;
           try {
             tokenData = JSON.parse(content);
           } catch (parseErr) {
-            // Hardening: JSON parse failures must surface with file context so a
-            // user can locate the corrupted sync file without digging through raw
-            // stack traces. Log size + preview + re-throw with actionable message.
             const preview = content.slice(0, 200).replace(/\s+/g, " ");
             console.error(
               `❌ Failed to parse ${fileName} (${content.length} bytes). Preview: ${preview}`
             );
             throw new Error(
-              `Failed to parse ${fileName}: ${parseErr instanceof Error ? parseErr.message : String(parseErr)}. File may be corrupted or mid-sync. Check the branch on GitHub.`
+              `Failed to parse ${fileName}: ${parseErr instanceof Error ? parseErr.message : String(parseErr)}. File may be corrupted or mid-sync.`
             );
           }
 
-          // DEBUG: Log fontFamily token descriptions immediately after parse
-          if (fileName === "primitive.json" && Array.isArray(tokenData)) {
-            const coll = tokenData[0];
-            const primitiveData = coll?.primitive;
-            if (primitiveData?.variables) {
-              const sans =
-                primitiveData.variables["typography.font-family.sans"];
-              const mono =
-                primitiveData.variables["typography.font-family.mono"];
-              console.log(`🔍 CLIENT PARSED primitive.json:`);
-              console.log(`  sans has $description:`, !!sans?.$description);
-              console.log(`  mono has $description:`, !!mono?.$description);
-            }
-          }
-
-          // Ensure token data is in array format for consistency
           if (Array.isArray(tokenData)) {
             tokens.push(...tokenData);
           } else {
@@ -267,22 +260,15 @@ export class GitHubClient {
           filesFound++;
           console.log(`✅ Loaded tokens from: ${fileName}`);
         } catch (fileError: any) {
-          // Only log non-404 errors
-          if (!fileError.message?.includes("404")) {
-            console.error(`Error loading file ${fileName}:`, fileError);
-          }
-          // Continue with other files rather than failing completely
+          console.error(`Error loading file ${fileName}:`, fileError);
+          // Continue — one bad file shouldn't block the rest
         }
       }
 
       if (filesFound === 0) {
-        const sourceNote =
-          manifestSource === "manifest"
-            ? "Files listed in MANIFEST.json are missing from the repo"
-            : "No MANIFEST.json found and none of the fallback filenames matched";
         return {
           success: false,
-          error: `No token files found in ${this.config.owner}/${this.config.repo}@${this.config.branch}:${basePath}/. ${sourceNote}. Tried: ${commonFileNames.join(", ")}`,
+          error: `Found file names but could not load any content from ${this.basePath()}. Check the files exist and are valid JSON.`,
         };
       }
 
