@@ -331,7 +331,11 @@ function isValidTypeReference(fromType: string, toType: string): boolean {
 
   // Valid cross-references in design tokens
   const validCrossReferences: Record<string, string[]> = {
+    // dimension and spacing are functionally identical (both are CSS measurements
+    // with units). The W3C DTCG spec absorbed spacing into dimension in later
+    // drafts. Allow references in both directions without warning.
     dimension: ["spacing", "fontSize", "borderRadius"],
+    spacing: ["dimension", "fontSize", "borderRadius"],
     sizing: ["spacing", "dimension"],
     fontFamily: ["fontSize"], // Composite typography tokens
     fontWeight: ["fontSize"],
