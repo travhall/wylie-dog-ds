@@ -30,7 +30,7 @@
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@typescript-eslint/parser": "^8.59.1",
-    "eslint": "^10.3.0",
+    "eslint": "catalog:",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.3",

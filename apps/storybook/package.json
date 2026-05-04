@@ -42,7 +42,7 @@
     "eslint": "catalog:",
     "eslint-plugin-storybook": "10.3.6",
     "playwright": "^1.59.1",
-    "postcss": "^8.5.13",
+    "postcss": "^8.5.14",
     "prettier-plugin-packagejson": "^3.0.2",
     "rollup-plugin-visualizer": "^7.0.1",
     "serve": "^14.2.6",
