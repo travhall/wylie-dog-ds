@@ -207,14 +207,6 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
       if (response.ok) {
         const repos = await response.json();
         setSuggestedRepos(repos);
-
-        // Auto-select first repo if none specified
-        if (!owner && !repo && repos.length > 0) {
-          const firstRepo = repos[0];
-          const [repoOwner, repoName] = firstRepo.full_name.split("/");
-          setOwner(repoOwner);
-          setRepo(repoName);
-        }
       }
     } catch (error) {
       console.warn("Failed to fetch repositories:", error);

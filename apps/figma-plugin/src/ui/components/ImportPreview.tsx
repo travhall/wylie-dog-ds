@@ -58,33 +58,14 @@ export function ImportPreview({
   return (
     <div
       style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.6)",
+        border: "1px solid var(--border-default)",
+        borderRadius: "var(--radius-lg)",
+        backgroundColor: "var(--surface-primary)",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 10000,
-        padding: "var(--space-4)",
+        flexDirection: "column",
+        boxShadow: "var(--shadow-md)",
       }}
-      onClick={onCancel}
     >
-      <div
-        style={{
-          backgroundColor: "var(--surface-primary)",
-          borderRadius: "var(--radius-lg)",
-          width: "100%",
-          maxWidth: "600px",
-          maxHeight: "90vh",
-          display: "flex",
-          flexDirection: "column",
-          boxShadow: "var(--shadow-lg)",
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
         {/* Header */}
         <div
           style={{
@@ -448,7 +429,6 @@ export function ImportPreview({
             {hasErrors ? "Cannot Import" : "✓ Import Tokens"}
           </button>
         </div>
-      </div>
     </div>
   );
 }

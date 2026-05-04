@@ -7,10 +7,10 @@ import type {
 import { EmptyTokensState } from "../EmptyTokensState";
 import { CollectionSkeleton } from "../common/Skeleton";
 import { TokenBrowser } from "../TokenBrowser";
+import { useUIContext } from "../../state";
 
 interface TokensTabProps {
   collections: Collection[];
-  selectedCollections: Set<string>;
   onToggleCollection: (id: string) => void;
   onViewDetails: (id: string) => void;
   onSelectAll: () => void;
@@ -34,7 +34,6 @@ interface TokensTabProps {
  */
 export function TokensTab({
   collections,
-  selectedCollections,
   onToggleCollection,
   onViewDetails,
   onSelectAll,
@@ -48,6 +47,8 @@ export function TokensTab({
   onDownloadJSON,
   onPushToGitHub,
 }: TokensTabProps) {
+  const { state: uiState } = useUIContext();
+  const selectedCollections = uiState.selectedCollections;
   const hasCollections = collections.length > 0;
   const hasSelections = selectedCollections.size > 0;
 

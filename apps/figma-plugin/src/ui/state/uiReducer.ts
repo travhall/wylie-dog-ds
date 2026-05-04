@@ -94,11 +94,28 @@ export function uiReducer(state: UIState, action: UIAction): UIState {
         activeTab: "tokens",
         activeModal: null,
         selectedCollectionId: null,
+        selectedCollections: new Set<string>(),
         showAdvancedGitHub: false,
         showAdvancedExport: false,
         showHelp: false,
         helpContext: null,
       };
+
+    case "TOGGLE_COLLECTION": {
+      const next = new Set(state.selectedCollections);
+      if (next.has(action.id)) {
+        next.delete(action.id);
+      } else {
+        next.add(action.id);
+      }
+      return { ...state, selectedCollections: next };
+    }
+
+    case "SELECT_ALL_COLLECTIONS":
+      return { ...state, selectedCollections: new Set(action.ids) };
+
+    case "DESELECT_ALL_COLLECTIONS":
+      return { ...state, selectedCollections: new Set<string>() };
 
     default:
       // Exhaustiveness check

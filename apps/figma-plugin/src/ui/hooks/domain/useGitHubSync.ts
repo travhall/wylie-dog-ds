@@ -5,7 +5,7 @@
  * Handles config testing, push, pull, and conflict resolution
  */
 
-import { useCallback, useEffect } from "preact/hooks";
+import { useCallback, useEffect, useRef } from "preact/hooks";
 import type { GitHubConfig } from "../../../shared/types";
 import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aware-github-client";
 import type { ExportData } from "../../../plugin/variables/processor";
@@ -36,6 +36,10 @@ export function useGitHubSync(
   conflictOperationType?: "push" | "pull" | null,
   onSyncSuccess?: () => void // Callback for successful sync (e.g., clear selection)
 ) {
+  // Ref to hold the pull handler so handleGitHubConfigTest can call it
+  // without creating a circular dependency
+  const pullHandlerRef = useRef<() => Promise<void>>();
+
   /**
    * Test GitHub configuration - sends request to plugin thread
    */
@@ -66,8 +70,13 @@ export function useGitHubSync(
 
               actions.setGithubConfig(config);
               actions.setGithubConfigured(true);
-              actions.setSuccessMessage("✅ Connected to GitHub successfully!");
+              actions.setSuccessMessage("GitHub connected! Pulling your tokens now…");
               setTimeout(() => actions.setSuccessMessage(null), 5000);
+
+              // Auto-pull after a short delay so UI can update first
+              setTimeout(() => {
+                pullHandlerRef.current?.();
+              }, 400);
 
               resolve({ success: true, data: true });
             } else {
@@ -115,7 +124,8 @@ export function useGitHubSync(
     async (exportData: ExportData[]) => {
       try {
         actions.setLoading(true);
-        // DON'T set progress steps - use simple spinner mode
+        actions.setProgressSteps(PUSH_STEPS);
+        actions.setProgressStep(0);
         actions.setLoadingMessage("Preparing your tokens...");
 
         // CRITICAL: Force render before heavy work
@@ -123,6 +133,7 @@ export function useGitHubSync(
           requestAnimationFrame(() => resolve(undefined))
         );
 
+        actions.setProgressStep(1);
         actions.setLoadingMessage("Checking for changes...");
         const syncResult =
           await githubClient.syncTokensWithConflictDetection(exportData);
@@ -145,6 +156,7 @@ export function useGitHubSync(
           return;
         }
 
+        actions.setProgressStep(2);
         actions.setLoadingMessage("Saving to GitHub...");
 
         // CRITICAL: Force render before sending message
@@ -215,7 +227,8 @@ export function useGitHubSync(
     console.log("🔽 PULL: Starting GitHub pull operation");
     try {
       actions.setLoading(true);
-      // DON'T set progress steps - this makes it use simple spinner mode
+      actions.setProgressSteps(PULL_STEPS);
+      actions.setProgressStep(0);
       actions.setLoadingMessage("Pulling tokens from GitHub...");
 
       // CRITICAL: Force render before heavy work
@@ -226,6 +239,7 @@ export function useGitHubSync(
       // Pull tokens directly from GitHub WITHOUT conflict detection
       const pullResult = await githubClient.pullTokens();
 
+      actions.setProgressStep(1);
       actions.setLoadingMessage("Preparing import...");
 
       // CRITICAL: Force render before processing
@@ -241,6 +255,7 @@ export function useGitHubSync(
           },
         ];
 
+        actions.setProgressStep(2);
         actions.setLoadingMessage("Importing tokens to Figma...");
 
         // CRITICAL: Force render before sending import message
@@ -277,6 +292,9 @@ export function useGitHubSync(
       actions.setError(error.message || "GitHub pull failed");
     }
   }, [githubClient, actions]);
+
+  // Keep the ref current so handleGitHubConfigTest can invoke pull
+  pullHandlerRef.current = handleGitHubPull;
 
   /**
    * Resolve conflicts and continue with operation

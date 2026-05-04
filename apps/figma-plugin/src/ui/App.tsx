@@ -28,7 +28,7 @@ import { TokensTab } from "./components/tabs/TokensTab";
 import { ImportTab } from "./components/tabs/ImportTab";
 import { SyncTab } from "./components/tabs/SyncTab";
 import { EnhancedErrorDisplay } from "./components/EnhancedErrorDisplay";
-import { SuccessToast, ErrorToast } from "./components/Toast";
+import { SuccessToast } from "./components/Toast";
 import { ConflictResolutionDisplay } from "./components/ConflictResolutionDisplay";
 import { ValidationDisplay } from "./components/ValidationDisplay";
 import { ProgressFeedback } from "./components/ProgressFeedback";
@@ -38,7 +38,6 @@ import { FirstRunOnboarding } from "./components/FirstRunOnboarding";
 import { ExistingTokensImporter } from "./components/ExistingTokensImporter";
 import { FormatGuidelinesDialog } from "./components/FormatGuidelinesDialog";
 import { HelpMenu } from "./components/HelpMenu";
-import { ImportPreview } from "./components/ImportPreview";
 import { TransformationSummary } from "./components/TransformationSummary";
 
 console.log("App.tsx loaded");
@@ -55,10 +54,8 @@ function AppInner() {
   // GitHub client (singleton)
   const [githubClient] = useState(() => new ConflictAwareGitHubClient());
 
-  // Selected collections (local state - not part of UI context)
-  const [selectedCollections, setSelectedCollections] = useState<Set<string>>(
-    new Set()
-  );
+  // selectedCollections is now managed in UIContext
+  const selectedCollections = uiState.selectedCollections;
 
   // Modals (local state)
   const [showSetupWizard, setShowSetupWizard] = useState(false);
@@ -89,7 +86,7 @@ function AppInner() {
     pluginState.pendingTokensForConflictResolution,
     pluginState.conflictOperationType,
     // Callback to clear selection after successful sync
-    () => setSelectedCollections(new Set())
+    () => dispatch({ type: "DESELECT_ALL_COLLECTIONS" })
   );
 
   // Handle import-validated and network request messages
@@ -147,6 +144,11 @@ function AppInner() {
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
   }, [pluginActions]);
+
+  // Close validation display when active tab changes
+  useEffect(() => {
+    pluginActions.setShowValidation(false);
+  }, [uiState.activeTab]);
 
   // Auto-switch to Tokens tab after successful import
   useEffect(() => {
@@ -433,18 +435,6 @@ function AppInner() {
         onClose={() => pluginActions.setSuccessMessage(null)}
       />
 
-      {/* Error Toast */}
-      <ErrorToast
-        message={
-          pluginState.error === null
-            ? null
-            : typeof pluginState.error === "string"
-              ? pluginState.error
-              : pluginState.error.message
-        }
-        onClose={() => pluginActions.setError(null)}
-      />
-
       {/* Tab Navigation */}
       <TabBar
         tabs={[
@@ -466,27 +456,21 @@ function AppInner() {
       {uiState.activeTab === "tokens" && (
         <TokensTab
           collections={pluginState.collections}
-          selectedCollections={selectedCollections}
           selectedCollection={pluginState.selectedCollection}
           onToggleCollection={(id: string) => {
-            const newSet = new Set(selectedCollections);
-            if (newSet.has(id)) {
-              newSet.delete(id);
-            } else {
-              newSet.add(id);
-            }
-            setSelectedCollections(newSet);
+            dispatch({ type: "TOGGLE_COLLECTION", id });
           }}
           onViewDetails={(id: string) => {
             pluginActions.loadCollectionDetails(id);
           }}
           onSelectAll={() => {
-            setSelectedCollections(
-              new Set(pluginState.collections.map((c) => c.id))
-            );
+            dispatch({
+              type: "SELECT_ALL_COLLECTIONS",
+              ids: pluginState.collections.map((c) => c.id),
+            });
           }}
           onDeselectAll={() => {
-            setSelectedCollections(new Set());
+            dispatch({ type: "DESELECT_ALL_COLLECTIONS" });
           }}
           loading={pluginState.loading}
           // Enhanced empty state actions
@@ -556,6 +540,9 @@ function AppInner() {
           onSetupGitHub={() => setShowSetupWizard(true)}
           loading={pluginState.loading || pluginState.importLoading}
           hasGitHubConfig={pluginState.githubConfigured}
+          importPreview={importPreviewData}
+          onConfirmImport={handleConfirmImport}
+          onCancelImport={handleCancelImport}
         />
       )}
 
@@ -584,20 +571,7 @@ function AppInner() {
             });
           }}
           onPullFromGitHub={handleGitHubPull}
-          onPushToGitHub={() => {
-            if (selectedCollections.size === 0) {
-              pluginActions.setError(
-                "Please select at least one collection to sync"
-              );
-              return;
-            }
-            pluginActions.sendMessage({
-              type: "github-sync-tokens",
-              collectionIds: Array.from(selectedCollections),
-            });
-          }}
           loading={pluginState.loading}
-          selectedCollections={selectedCollections}
         />
       )}
 
@@ -705,15 +679,6 @@ function AppInner() {
             setShowExistingTokensImporter(false);
           }}
           onCancel={() => setShowExistingTokensImporter(false)}
-        />
-      )}
-
-      {/* Import Preview */}
-      {importPreviewData && (
-        <ImportPreview
-          summary={importPreviewData}
-          onConfirm={handleConfirmImport}
-          onCancel={handleCancelImport}
         />
       )}
 

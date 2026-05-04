@@ -42,6 +42,7 @@ export interface UIState {
   // Selections
   selectedCollectionId: string | null;
   selectedExportFormat: string;
+  selectedCollections: Set<string>;
 
   // Advanced mode toggles
   showAdvancedGitHub: boolean;
@@ -70,7 +71,10 @@ export type UIAction =
   | { type: "SHOW_HELP"; context?: string }
   | { type: "HIDE_HELP" }
   | { type: "COMPLETE_ONBOARDING" }
-  | { type: "RESET_UI" };
+  | { type: "RESET_UI" }
+  | { type: "TOGGLE_COLLECTION"; id: string }
+  | { type: "SELECT_ALL_COLLECTIONS"; ids: string[] }
+  | { type: "DESELECT_ALL_COLLECTIONS" };
 
 /**
  * Initial UI state
@@ -88,6 +92,7 @@ export const initialUIState: UIState = {
   // Selections
   selectedCollectionId: null,
   selectedExportFormat: "w3c-dtcg",
+  selectedCollections: new Set<string>(),
 
   // Advanced toggles
   showAdvancedGitHub: false,

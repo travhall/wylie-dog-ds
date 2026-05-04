@@ -1,15 +1,15 @@
 import { h } from "preact";
+import { useState } from "preact/hooks";
 import { SyncStatus } from "../SyncStatus";
 import type { GitHubConfig } from "../../../shared/types";
+import { useUIContext } from "../../state";
 
 interface SyncTabProps {
   githubConfig: GitHubConfig | null;
   onConfigureGitHub: () => void;
   onQuickSync: () => void;
   onPullFromGitHub: () => void;
-  onPushToGitHub: () => void;
   loading: boolean;
-  selectedCollections: Set<string>;
 }
 
 /**
@@ -21,12 +21,13 @@ export function SyncTab({
   onConfigureGitHub,
   onQuickSync,
   onPullFromGitHub,
-  onPushToGitHub,
   loading,
-  selectedCollections,
 }: SyncTabProps) {
+  const { state: uiState } = useUIContext();
+  const selectedCollections = uiState.selectedCollections;
   const isConnected = githubConfig !== null;
   const hasSelections = selectedCollections.size > 0;
+  const [confirmingPull, setConfirmingPull] = useState(false);
 
   return (
     <div
@@ -198,12 +199,12 @@ export function SyncTab({
             gap: "var(--space-3)",
           }}
         >
-          {/* Quick Sync */}
+          {/* Push to GitHub (with conflict detection) */}
           <SyncAction
-            icon="🔄"
-            title="Smart Sync"
-            description="Automatic conflict detection and resolution"
-            buttonLabel="Sync Now"
+            icon="⬆️"
+            title="Push to GitHub"
+            description="Syncs selected collections with conflict detection. Creates a PR if conflicts are found."
+            buttonLabel="Push to GitHub"
             onClick={onQuickSync}
             disabled={loading || !hasSelections}
             variant="primary"
@@ -218,22 +219,69 @@ export function SyncTab({
             title="Pull from GitHub"
             description="Import tokens from repository (overwrites local)"
             buttonLabel="Pull"
-            onClick={onPullFromGitHub}
+            onClick={() => setConfirmingPull(true)}
             disabled={loading}
           />
 
-          {/* Push Only */}
-          <SyncAction
-            icon="⬆️"
-            title="Push to GitHub"
-            description="Export selected tokens to repository"
-            buttonLabel="Push"
-            onClick={onPushToGitHub}
-            disabled={loading || !hasSelections}
-            badge={
-              hasSelections ? `${selectedCollections.size} selected` : undefined
-            }
-          />
+          {/* Pull Confirmation */}
+          {confirmingPull && (
+            <div
+              style={{
+                padding: "var(--space-4)",
+                backgroundColor: "var(--warning-light)",
+                border: "1px solid var(--warning)",
+                borderRadius: "var(--radius-lg)",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "var(--font-size-sm)",
+                  color: "var(--text-primary)",
+                  marginBottom: "var(--space-3)",
+                  lineHeight: "var(--line-height-relaxed)",
+                }}
+              >
+                ⚠️ This will overwrite your local tokens with the repository version. This cannot be undone.
+              </div>
+              <div style={{ display: "flex", gap: "var(--space-2)" }}>
+                <button
+                  onClick={() => setConfirmingPull(false)}
+                  style={{
+                    padding: "var(--space-2) var(--space-4)",
+                    fontSize: "var(--font-size-sm)",
+                    fontWeight: "var(--font-weight-medium)",
+                    color: "var(--text-secondary)",
+                    backgroundColor: "transparent",
+                    border: "1px solid var(--border-default)",
+                    borderRadius: "var(--radius-md)",
+                    cursor: "pointer",
+                    transition: "var(--transition-base)",
+                  }}
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    onPullFromGitHub();
+                    setConfirmingPull(false);
+                  }}
+                  style={{
+                    padding: "var(--space-2) var(--space-4)",
+                    fontSize: "var(--font-size-sm)",
+                    fontWeight: "var(--font-weight-medium)",
+                    color: "var(--text-inverse)",
+                    backgroundColor: "var(--warning)",
+                    border: "none",
+                    borderRadius: "var(--radius-md)",
+                    cursor: "pointer",
+                    transition: "var(--transition-base)",
+                  }}
+                >
+                  Confirm Pull
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { ImportPreview } from "../ImportPreview";
 
 interface ImportTabProps {
   onImportFile: () => void;
@@ -8,6 +9,9 @@ interface ImportTabProps {
   onShowFormatGuidelines?: () => void;
   loading: boolean;
   hasGitHubConfig: boolean;
+  importPreview?: any | null;
+  onConfirmImport?: () => void;
+  onCancelImport?: () => void;
 }
 
 /**
@@ -22,7 +26,30 @@ export function ImportTab({
   onShowFormatGuidelines,
   loading,
   hasGitHubConfig,
+  importPreview,
+  onConfirmImport,
+  onCancelImport,
 }: ImportTabProps) {
+  // If preview data is available, show it inline instead of the import options
+  if (importPreview && onConfirmImport && onCancelImport) {
+    return (
+      <div
+        role="tabpanel"
+        id="import-panel"
+        aria-labelledby="import-tab"
+        style={{
+          padding: "var(--space-4) 0",
+        }}
+      >
+        <ImportPreview
+          summary={importPreview}
+          onConfirm={onConfirmImport}
+          onCancel={onCancelImport}
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       role="tabpanel"
