@@ -12,6 +12,9 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuGroup,
   DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
 } from "@wyliedog/ui/dropdown-menu";
 import { Button } from "@wyliedog/ui/button";
 import {
@@ -327,6 +330,51 @@ export const WithDestructiveItem: Story = {
       </DropdownMenuContent>
     </DropdownMenu>
   ),
+};
+
+export const WithSubMenuNavigation: Story = {
+  render: () => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Options</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-48">
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger>More actions</DropdownMenuSubTrigger>
+          <DropdownMenuSubContent>
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>Billing</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="text-(--color-text-danger)">
+              Delete account
+            </DropdownMenuItem>
+          </DropdownMenuSubContent>
+        </DropdownMenuSub>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>Logout</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByRole("button", { name: /options/i });
+    await userEvent.click(trigger);
+    const subTrigger = await canvas.findByText(/more actions/i);
+    expect(subTrigger).toBeInTheDocument();
+    await userEvent.hover(subTrigger);
+    await new Promise((r) => setTimeout(r, 300));
+    expect(document.querySelector('[role="menu"]')).toBeInTheDocument();
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Nested submenus using DropdownMenuSub, DropdownMenuSubTrigger, and DropdownMenuSubContent. Hover or press ArrowRight on the sub-trigger to open.",
+      },
+    },
+  },
 };
 
 export const WithDisabledItems: Story = {

@@ -1,5 +1,6 @@
 import React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { ChevronRight } from "lucide-react";
 import { cn } from "./lib/utils";
 
 // Root components
@@ -149,6 +150,55 @@ export const DropdownMenuSeparator = React.forwardRef<
   />
 ));
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
+
+// Dropdown Menu Sub Trigger
+export const DropdownMenuSubTrigger = React.forwardRef<
+  React.ComponentRef<typeof DropdownMenuPrimitive.SubTrigger>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & {
+    inset?: boolean;
+  }
+>(({ className, inset, children, ...props }, ref) => (
+  <DropdownMenuPrimitive.SubTrigger
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-(--space-dropdown-menu-item-radius) px-(--space-dropdown-menu-item-padding-x) py-(--space-dropdown-menu-item-padding-y) text-(length:--font-size-dropdown-menu-item-font-size) outline-none transition-colors",
+      "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
+      "data-[state=open]:bg-(--color-interactive-secondary)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
+      inset && "pl-(--space-dropdown-menu-item-inset)",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <ChevronRight className="ml-auto h-4 w-4" />
+  </DropdownMenuPrimitive.SubTrigger>
+));
+DropdownMenuSubTrigger.displayName =
+  DropdownMenuPrimitive.SubTrigger.displayName;
+
+// Dropdown Menu Sub Content
+export const DropdownMenuSubContent = React.forwardRef<
+  React.ComponentRef<typeof DropdownMenuPrimitive.SubContent>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent>
+>(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.SubContent
+    ref={ref}
+    className={cn(
+      "z-(--z-index-dropdown) min-w-(--space-dropdown-menu-content-min-width) overflow-hidden rounded-(--space-dropdown-menu-content-radius) border border-(--color-border-primary)",
+      "bg-(--color-background-primary) p-(--space-dropdown-menu-content-padding) text-(--color-text-primary) shadow-(--shadow-md)",
+      "data-[state=open]:animate-in data-[state=closed]:animate-out",
+      "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+      "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
+      "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+      className
+    )}
+    {...props}
+  />
+));
+DropdownMenuSubContent.displayName =
+  DropdownMenuPrimitive.SubContent.displayName;
 
 // Dropdown Menu Shortcut
 export const DropdownMenuShortcut = React.forwardRef<

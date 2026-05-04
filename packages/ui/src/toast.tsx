@@ -128,4 +128,82 @@ const ToastDescription = React.forwardRef<
 ));
 ToastDescription.displayName = "ToastDescription";
 
+// ─── Imperative toast API ────────────────────────────────────────────────────
+
+type ToastData = {
+  id: string;
+  title?: string;
+  description?: string;
+  variant?: "default" | "destructive" | "warning" | "success";
+  duration?: number;
+};
+
+type ToastState = {
+  toasts: ToastData[];
+};
+
+const listeners: Array<(state: ToastState) => void> = [];
+let memoryState: ToastState = { toasts: [] };
+
+function dispatch(toasts: ToastData[]) {
+  memoryState = { toasts };
+  listeners.forEach((l) => l(memoryState));
+}
+
+export function toast(data: Omit<ToastData, "id">) {
+  const id = Math.random().toString(36).slice(2);
+  const newToast = { ...data, id, duration: data.duration ?? 5000 };
+  dispatch([...memoryState.toasts, newToast]);
+  setTimeout(() => {
+    dispatch(memoryState.toasts.filter((t) => t.id !== id));
+  }, newToast.duration);
+  return id;
+}
+
+export function useToast() {
+  const [state, setState] = React.useState<ToastState>(memoryState);
+  React.useEffect(() => {
+    listeners.push(setState);
+    return () => {
+      const idx = listeners.indexOf(setState);
+      if (idx > -1) listeners.splice(idx, 1);
+    };
+  }, []);
+  return {
+    toasts: state.toasts,
+    toast,
+    dismiss: (id: string) =>
+      dispatch(memoryState.toasts.filter((t) => t.id !== id)),
+  };
+}
+
+export function Toaster() {
+  const { toasts, dismiss } = useToast();
+  if (toasts.length === 0) return null;
+  return (
+    <div
+      className="fixed bottom-0 right-0 z-50 flex max-h-screen w-full flex-col-reverse gap-2 p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"
+      aria-live="polite"
+      aria-label="Notifications"
+    >
+      {toasts.map((t) => (
+        <Toast
+          key={t.id}
+          variant={t.variant}
+          role="status"
+          aria-atomic="true"
+        >
+          <div className="grid gap-1">
+            {t.title && <ToastTitle>{t.title}</ToastTitle>}
+            {t.description && (
+              <ToastDescription>{t.description}</ToastDescription>
+            )}
+          </div>
+          <ToastClose onClick={() => dismiss(t.id)} />
+        </Toast>
+      ))}
+    </div>
+  );
+}
+
 export { Toast, ToastAction, ToastClose, ToastTitle, ToastDescription };
