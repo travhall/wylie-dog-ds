@@ -25,16 +25,13 @@ import type { NetworkRequest } from "../shared/network-types";
 // Components
 import { TabBar } from "./components/layout/TabBar";
 import { TokensTab } from "./components/tabs/TokensTab";
-import { ImportTab } from "./components/tabs/ImportTab";
 import { SyncTab } from "./components/tabs/SyncTab";
 import { EnhancedErrorDisplay } from "./components/EnhancedErrorDisplay";
 import { SuccessToast } from "./components/Toast";
 import { ConflictResolutionDisplay } from "./components/ConflictResolutionDisplay";
 import { ValidationDisplay } from "./components/ValidationDisplay";
 import { ProgressFeedback } from "./components/ProgressFeedback";
-import { SetupWizard } from "./components/SetupWizard";
-import { GitHubConfig as GitHubConfigDialog } from "./components/GitHubConfig";
-import { FirstRunOnboarding } from "./components/FirstRunOnboarding";
+import { OnboardingScreen } from "./components/OnboardingScreen";
 import { ExistingTokensImporter } from "./components/ExistingTokensImporter";
 import { FormatGuidelinesDialog } from "./components/FormatGuidelinesDialog";
 import { HelpMenu } from "./components/HelpMenu";
@@ -58,8 +55,6 @@ function AppInner() {
   const selectedCollections = uiState.selectedCollections;
 
   // Modals (local state)
-  const [showSetupWizard, setShowSetupWizard] = useState(false);
-  const [showGitHubSettings, setShowGitHubSettings] = useState(false);
   const [showExistingTokensImporter, setShowExistingTokensImporter] =
     useState(false);
   const [showFormatGuidelines, setShowFormatGuidelines] = useState(false);
@@ -322,27 +317,10 @@ function AppInner() {
     if (pluginState.githubConfigured) {
       handleGitHubPull();
     } else {
-      setShowSetupWizard(true);
+      // Navigate to Sync tab where the wizard lives inline
+      dispatch({ type: "SET_TAB", tab: "sync" });
     }
   }, [dispatch, pluginState.githubConfigured, handleGitHubPull]);
-
-  // Setup Wizard Complete
-  const handleSetupWizardComplete = useCallback(
-    (config: GitHubConfig) => {
-      setShowSetupWizard(false);
-      handleGitHubConfigTest(config);
-    },
-    [handleGitHubConfigTest]
-  );
-
-  // GitHub Config Save (from settings)
-  const handleGitHubConfigSave = useCallback(
-    (config: GitHubConfig) => {
-      setShowGitHubSettings(false);
-      handleGitHubConfigTest(config);
-    },
-    [handleGitHubConfigTest]
-  );
 
   // Operation Cancellation
   const handleCancelOperation = useCallback(() => {
@@ -435,241 +413,153 @@ function AppInner() {
         onClose={() => pluginActions.setSuccessMessage(null)}
       />
 
-      {/* Tab Navigation */}
-      <TabBar
-        tabs={[
-          { id: "tokens", label: "Tokens", icon: "🎨" },
-          { id: "import", label: "Import", icon: "📥" },
-          {
-            id: "sync",
-            label: "Sync",
-            icon: "🔄",
-            // Always enabled - shows configuration prompt when not configured
-            disabled: false,
-          },
-        ]}
-        activeTab={uiState.activeTab}
-        onTabChange={(tab) => dispatch({ type: "SET_TAB", tab })}
-      />
-
-      {/* TOKENS TAB */}
-      {uiState.activeTab === "tokens" && (
-        <TokensTab
-          collections={pluginState.collections}
-          selectedCollection={pluginState.selectedCollection}
-          onToggleCollection={(id: string) => {
-            dispatch({ type: "TOGGLE_COLLECTION", id });
-          }}
-          onViewDetails={(id: string) => {
-            pluginActions.loadCollectionDetails(id);
-          }}
-          onSelectAll={() => {
-            dispatch({
-              type: "SELECT_ALL_COLLECTIONS",
-              ids: pluginState.collections.map((c) => c.id),
-            });
-          }}
-          onDeselectAll={() => {
-            dispatch({ type: "DESELECT_ALL_COLLECTIONS" });
-          }}
-          loading={pluginState.loading}
-          // Enhanced empty state actions
-          onImportFile={() => {
-            handleTokenImport();
-            // Mark engaged after successful import (handled in tokens-imported message)
-          }}
-          onGenerateDemoTokens={() => {
-            pluginActions.setLoading(true);
-            pluginActions.setLoadingMessage("Loading demo tokens...");
-            pluginActions.sendMessage({ type: "generate-demo-tokens" });
-            // Mark engaged after successful import (handled in tokens-imported message)
-          }}
-          onSetupGitHub={() => {
-            // If GitHub is configured, pull tokens; otherwise show setup wizard
-            if (pluginState.githubConfigured) {
-              handleGitHubPull();
-              // Mark engaged after successful pull (handled in github-pull-complete message)
-            } else {
-              setShowSetupWizard(true);
-              // Mark engaged when wizard shows
-              parent.postMessage(
-                { pluginMessage: { type: "mark-file-engaged" } },
-                "*"
-              );
-            }
-          }}
-          githubConfigured={pluginState.githubConfigured}
-          // Export actions
-          onDownloadJSON={() => {
-            if (selectedCollections.size === 0) {
-              pluginActions.setError(
-                "Please select at least one collection to export"
-              );
-              return;
-            }
-            pluginActions.sendMessage({
-              type: "export-tokens",
-              collectionIds: Array.from(selectedCollections),
-            });
-          }}
-          onPushToGitHub={() => {
-            if (!pluginState.githubConfigured) {
-              setShowSetupWizard(true);
-              return;
-            }
-            if (selectedCollections.size === 0) {
-              pluginActions.setError(
-                "Please select at least one collection to export"
-              );
-              return;
-            }
-            pluginActions.sendMessage({
-              type: "github-sync-tokens",
-              collectionIds: Array.from(selectedCollections),
-            });
-          }}
-        />
-      )}
-
-      {/* IMPORT TAB */}
-      {uiState.activeTab === "import" && (
-        <ImportTab
-          onImportFile={handleTokenImport}
-          onImportFromGitHub={handleGitHubPull}
-          onLoadDemoTokens={handleGenerateDemoTokens}
-          onSetupGitHub={() => setShowSetupWizard(true)}
-          loading={pluginState.loading || pluginState.importLoading}
-          hasGitHubConfig={pluginState.githubConfigured}
-          importPreview={importPreviewData}
-          onConfirmImport={handleConfirmImport}
-          onCancelImport={handleCancelImport}
-        />
-      )}
-
-      {/* SYNC TAB */}
-      {uiState.activeTab === "sync" && (
-        <SyncTab
-          githubConfig={pluginState.githubConfig}
-          onConfigureGitHub={() => {
-            // If already configured, show settings dialog; otherwise show setup wizard
-            if (pluginState.githubConfigured && pluginState.githubConfig) {
-              setShowGitHubSettings(true);
-            } else {
-              setShowSetupWizard(true);
-            }
-          }}
-          onQuickSync={() => {
-            if (selectedCollections.size === 0) {
-              pluginActions.setError(
-                "Please select at least one collection to sync"
-              );
-              return;
-            }
-            pluginActions.sendMessage({
-              type: "github-sync-tokens",
-              collectionIds: Array.from(selectedCollections),
-            });
-          }}
-          onPullFromGitHub={handleGitHubPull}
-          loading={pluginState.loading}
-        />
-      )}
-
-      {/* Conflict Resolution */}
-      {pluginState.showConflictResolution &&
-        pluginState.conflicts.length > 0 && (
-          <ConflictResolutionDisplay
-            conflicts={pluginState.conflicts}
-            onResolve={handleConflictResolution}
-            onCancel={() => {
-              pluginActions.setShowConflictResolution(false);
-              pluginActions.setConflicts([]);
-              pluginActions.setLoading(false);
-            }}
-            loading={pluginState.loading}
-          />
-        )}
-
-      {/* Validation Display */}
-      {pluginState.showValidation && pluginState.validationReport && (
-        <ValidationDisplay
-          validationReport={pluginState.validationReport}
-          onClose={() => pluginActions.setShowValidation(false)}
-        />
-      )}
-
-      {/* Setup Wizard (for new configuration) */}
-      {showSetupWizard && (
-        <SetupWizard
-          onComplete={handleSetupWizardComplete}
-          onClose={() => setShowSetupWizard(false)}
-        />
-      )}
-
-      {/* GitHub Settings (for editing existing configuration) */}
-      {showGitHubSettings && (
-        <div
-          style={{
-            position: "fixed",
-            top: "0",
-            left: "0",
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 10000,
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: "var(--surface-primary)",
-              borderRadius: "var(--radius-lg)",
-              width: "90%",
-              maxWidth: "480px",
-              maxHeight: "90vh",
-              overflowY: "auto",
-              boxShadow: "var(--shadow-lg)",
-            }}
-          >
-            <GitHubConfigDialog
-              onConfigSaved={handleGitHubConfigSave}
-              onClose={() => setShowGitHubSettings(false)}
-            />
-          </div>
-        </div>
-      )}
-
-      {/* Onboarding */}
-      {pluginState.showOnboarding && (
-        <FirstRunOnboarding
-          onDemoTokens={() => {
-            pluginActions.setLoading(true);
-            pluginActions.setLoadingMessage("Loading demo tokens...");
-            pluginActions.sendMessage({ type: "generate-demo-tokens" });
-            // Mark engaged after successful import (handled in tokens-imported message)
+      {/* Onboarding — replaces tab system on first run */}
+      {pluginState.showOnboarding ? (
+        <OnboardingScreen
+          onSetupSync={() => {
+            dispatch({ type: "COMPLETE_ONBOARDING" });
+            dispatch({ type: "SET_TAB", tab: "sync" });
           }}
           onImportFile={() => {
+            dispatch({ type: "COMPLETE_ONBOARDING" });
             handleTokenImport();
-            // Mark engaged after successful import (handled in tokens-imported message)
           }}
           onImportFigmaVariables={handleImportFigmaVariables}
-          onSetupGitHub={() => {
-            setShowSetupWizard(true);
-            // Mark engaged when wizard shows
-            parent.postMessage(
-              { pluginMessage: { type: "mark-file-engaged" } },
-              "*"
-            );
-          }}
+          onDemoTokens={handleGenerateDemoTokens}
           onSkip={() => {
+            dispatch({ type: "COMPLETE_ONBOARDING" });
             parent.postMessage(
               { pluginMessage: { type: "mark-file-engaged" } },
               "*"
             );
           }}
         />
+      ) : (
+        <>
+          {/* Tab Navigation */}
+          <TabBar
+            tabs={[
+              { id: "tokens", label: "Tokens", icon: "🎨" },
+              { id: "sync", label: "Sync", icon: "🔄" },
+            ]}
+            activeTab={uiState.activeTab}
+            onTabChange={(tab) => dispatch({ type: "SET_TAB", tab })}
+          />
+
+          {/* TOKENS TAB */}
+          {uiState.activeTab === "tokens" && (
+            <TokensTab
+              collections={pluginState.collections}
+              selectedCollection={pluginState.selectedCollection}
+              onToggleCollection={(id: string) => {
+                dispatch({ type: "TOGGLE_COLLECTION", id });
+              }}
+              onViewDetails={(id: string) => {
+                pluginActions.loadCollectionDetails(id);
+              }}
+              onSelectAll={() => {
+                dispatch({
+                  type: "SELECT_ALL_COLLECTIONS",
+                  ids: pluginState.collections.map((c) => c.id),
+                });
+              }}
+              onDeselectAll={() => {
+                dispatch({ type: "DESELECT_ALL_COLLECTIONS" });
+              }}
+              loading={pluginState.loading}
+              onImportFile={handleTokenImport}
+              onGenerateDemoTokens={() => {
+                pluginActions.setLoading(true);
+                pluginActions.setLoadingMessage("Loading demo tokens...");
+                pluginActions.sendMessage({ type: "generate-demo-tokens" });
+              }}
+              onSetupGitHub={() => {
+                // Navigate to Sync tab — wizard lives there inline
+                dispatch({ type: "SET_TAB", tab: "sync" });
+              }}
+              githubConfigured={pluginState.githubConfigured}
+              onDownloadJSON={() => {
+                if (selectedCollections.size === 0) {
+                  pluginActions.setError(
+                    "Please select at least one collection to export"
+                  );
+                  return;
+                }
+                pluginActions.sendMessage({
+                  type: "export-tokens",
+                  collectionIds: Array.from(selectedCollections),
+                });
+              }}
+              onPushToGitHub={() => {
+                if (!pluginState.githubConfigured) {
+                  dispatch({ type: "SET_TAB", tab: "sync" });
+                  return;
+                }
+                if (selectedCollections.size === 0) {
+                  pluginActions.setError(
+                    "Please select at least one collection to export"
+                  );
+                  return;
+                }
+                pluginActions.sendMessage({
+                  type: "github-sync-tokens",
+                  collectionIds: Array.from(selectedCollections),
+                });
+              }}
+            />
+          )}
+
+          {/* SYNC TAB */}
+          {uiState.activeTab === "sync" && (
+            <SyncTab
+              githubConfig={pluginState.githubConfig}
+              githubConfigured={pluginState.githubConfigured}
+              collections={pluginState.collections}
+              loading={pluginState.loading}
+              onPushToGitHub={() => {
+                if (selectedCollections.size === 0) {
+                  pluginActions.setError(
+                    "Please select at least one collection to sync"
+                  );
+                  return;
+                }
+                pluginActions.sendMessage({
+                  type: "github-sync-tokens",
+                  collectionIds: Array.from(selectedCollections),
+                });
+              }}
+              onPullFromGitHub={handleGitHubPull}
+              onImportFile={handleTokenImport}
+              onGitHubConfigComplete={handleGitHubConfigTest}
+              importPreview={importPreviewData}
+              onConfirmImport={handleConfirmImport}
+              onCancelImport={handleCancelImport}
+            />
+          )}
+
+          {/* Conflict Resolution */}
+          {pluginState.showConflictResolution &&
+            pluginState.conflicts.length > 0 && (
+              <ConflictResolutionDisplay
+                conflicts={pluginState.conflicts}
+                onResolve={handleConflictResolution}
+                onCancel={() => {
+                  pluginActions.setShowConflictResolution(false);
+                  pluginActions.setConflicts([]);
+                  pluginActions.setLoading(false);
+                }}
+                loading={pluginState.loading}
+              />
+            )}
+
+          {/* Validation Display */}
+          {pluginState.showValidation && pluginState.validationReport && (
+            <ValidationDisplay
+              validationReport={pluginState.validationReport}
+              onClose={() => pluginActions.setShowValidation(false)}
+            />
+          )}
+        </>
       )}
 
       {/* Existing Tokens Importer */}

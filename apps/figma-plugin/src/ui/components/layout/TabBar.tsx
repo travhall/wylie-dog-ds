@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { useRef, useEffect } from "preact/hooks";
 
-export type TabId = "tokens" | "import" | "sync";
+export type TabId = "tokens" | "sync";
 
 export interface Tab {
   id: TabId;
@@ -12,14 +12,12 @@ export interface Tab {
 
 const DEFAULT_TABS: Tab[] = [
   { id: "tokens", label: "Tokens", icon: "🎨" },
-  { id: "import", label: "Import", icon: "📥" },
   { id: "sync", label: "Sync", icon: "🔄" },
 ];
 
 const TAB_ARIA_LABELS: Record<TabId, string> = {
-  tokens: "Select tokens",
-  import: "Import tokens",
-  sync: "Sync with GitHub",
+  tokens: "View tokens",
+  sync: "Sync and import",
 };
 
 interface TabBarProps {
@@ -39,13 +37,10 @@ export function TabBar({
   onTabChange,
   githubConnected = false,
 }: TabBarProps) {
-  const resolvedTabs = (tabs ?? DEFAULT_TABS).map((tab) => {
-    if (tab.id !== "sync") return tab;
-    return {
-      ...tab,
-      disabled: tab.disabled ?? !githubConnected,
-    };
-  });
+  const resolvedTabs = (tabs ?? DEFAULT_TABS).map((tab) => ({
+    ...tab,
+    disabled: tab.disabled ?? false,
+  }));
 
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 

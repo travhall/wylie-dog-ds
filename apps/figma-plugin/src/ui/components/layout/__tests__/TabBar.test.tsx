@@ -14,26 +14,23 @@ describe("TabBar", () => {
       <TabBar
         activeTab="tokens"
         onTabChange={mockOnTabChange}
-        githubConnected={false}
       />
     );
 
     expect(screen.getByText("Tokens")).toBeInTheDocument();
-    expect(screen.getByText("Import")).toBeInTheDocument();
     expect(screen.getByText("Sync")).toBeInTheDocument();
   });
 
   it("should highlight the active tab", () => {
     render(
       <TabBar
-        activeTab="import"
+        activeTab="sync"
         onTabChange={mockOnTabChange}
-        githubConnected={false}
       />
     );
 
-    const importTab = screen.getByRole("tab", { name: /import tokens/i });
-    expect(importTab).toHaveAttribute("aria-selected", "true");
+    const syncTab = screen.getByRole("tab", { name: /sync and import/i });
+    expect(syncTab).toHaveAttribute("aria-selected", "true");
   });
 
   it("should call onTabChange when clicking a tab", () => {
@@ -41,39 +38,24 @@ describe("TabBar", () => {
       <TabBar
         activeTab="tokens"
         onTabChange={mockOnTabChange}
-        githubConnected={false}
       />
     );
 
-    const importTab = screen.getByRole("tab", { name: /import tokens/i });
-    fireEvent.click(importTab);
+    const syncTab = screen.getByRole("tab", { name: /sync and import/i });
+    fireEvent.click(syncTab);
 
-    expect(mockOnTabChange).toHaveBeenCalledWith("import");
+    expect(mockOnTabChange).toHaveBeenCalledWith("sync");
   });
 
-  it("should disable sync tab when GitHub is not connected", () => {
+  it("should not disable tabs by default", () => {
     render(
       <TabBar
         activeTab="tokens"
         onTabChange={mockOnTabChange}
-        githubConnected={false}
       />
     );
 
-    const syncTab = screen.getByRole("tab", { name: /sync with github/i });
-    expect(syncTab).toBeDisabled();
-  });
-
-  it("should enable sync tab when GitHub is connected", () => {
-    render(
-      <TabBar
-        activeTab="tokens"
-        onTabChange={mockOnTabChange}
-        githubConnected={true}
-      />
-    );
-
-    const syncTab = screen.getByRole("tab", { name: /sync with github/i });
+    const syncTab = screen.getByRole("tab", { name: /sync and import/i });
     expect(syncTab).not.toBeDisabled();
   });
 
@@ -82,7 +64,6 @@ describe("TabBar", () => {
       <TabBar
         activeTab="tokens"
         onTabChange={mockOnTabChange}
-        githubConnected={false}
       />
     );
 
@@ -96,20 +77,19 @@ describe("TabBar", () => {
     });
   });
 
-  it("should support keyboard navigation", () => {
+  it("should support keyboard navigation from Tokens to Sync", () => {
     render(
       <TabBar
         activeTab="tokens"
         onTabChange={mockOnTabChange}
-        githubConnected={false}
       />
     );
 
-    const tokensTab = screen.getByRole("tab", { name: /select tokens/i });
+    const tokensTab = screen.getByRole("tab", { name: /view tokens/i });
     tokensTab.focus();
 
-    // Press ArrowRight to move to next tab
+    // Press ArrowRight to move to next tab (Sync)
     fireEvent.keyDown(tokensTab, { key: "ArrowRight" });
-    expect(mockOnTabChange).toHaveBeenCalledWith("import");
+    expect(mockOnTabChange).toHaveBeenCalledWith("sync");
   });
 });

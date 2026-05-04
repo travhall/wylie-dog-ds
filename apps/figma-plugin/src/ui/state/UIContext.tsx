@@ -68,8 +68,8 @@ export function UIProvider({ children, initialState }: UIProviderProps) {
  *   const { state, dispatch } = useUIContext();
  *
  *   return (
- *     <button onClick={() => dispatch({ type: "SET_TAB", tab: "import" })}>
- *       Go to Import
+ *     <button onClick={() => dispatch({ type: "SET_TAB", tab: "sync" })}>
+ *       Go to Sync
  *     </button>
  *   );
  * }

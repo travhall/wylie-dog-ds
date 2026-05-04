@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import type { GitHubConfig, SyncMode } from "../../shared/types";
 
 interface SetupWizardProps {
@@ -62,10 +62,10 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
 
   return (
     <div>
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <h3
           style={{
-            margin: "0 0 8px 0",
+            margin: "0 0 var(--space-2) 0",
             fontSize: "var(--font-size-md)",
             fontWeight: "var(--font-weight-bold)",
           }}
@@ -85,7 +85,7 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
             href="https://github.com/settings/tokens"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "#0066cc", textDecoration: "none" }}
+            style={{ color: "var(--accent-primary)", textDecoration: "none" }}
             aria-label="GitHub Settings (opens in new tab)"
           >
             GitHub Settings
@@ -94,7 +94,7 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
         </p>
       </div>
 
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <label
           htmlFor="access-token-input"
           style={{
@@ -134,9 +134,9 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
             id="token-validation-msg"
             role="alert"
             style={{
-              marginTop: "4px",
-              fontSize: "10px",
-              color: validationResult.valid ? "#059669" : "#dc2626",
+              marginTop: "var(--space-1)",
+              fontSize: "var(--font-size-xs)",
+              color: validationResult.valid ? "var(--success)" : "var(--error)",
             }}
           >
             {validationResult.valid
@@ -146,22 +146,30 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
         )}
       </div>
 
-      <div style={{ display: "flex", gap: "8px", justifyContent: "flex-end" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "var(--space-2)",
+          justifyContent: "flex-end",
+        }}
+      >
         <button
           onClick={handleNext}
           disabled={!accessToken.trim() || isValidating}
           aria-busy={isValidating}
           style={{
-            padding: "8px 16px",
+            padding: "var(--space-2) var(--space-4)",
             backgroundColor:
-              !accessToken.trim() || isValidating ? "#cbd5e1" : "#0066cc",
-            color: "white",
+              !accessToken.trim() || isValidating
+                ? "var(--surface-tertiary)"
+                : "var(--accent-primary)",
+            color: "var(--text-inverse)",
             border: "none",
-            borderRadius: "4px",
+            borderRadius: "var(--radius-sm)",
             cursor:
               !accessToken.trim() || isValidating ? "not-allowed" : "pointer",
-            fontSize: "12px",
-            fontWeight: "bold",
+            fontSize: "var(--font-size-base)",
+            fontWeight: "var(--font-weight-bold)",
           }}
         >
           {isValidating ? "Validating..." : "Next →"}
@@ -259,10 +267,10 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
 
   return (
     <div>
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <h3
           style={{
-            margin: "0 0 8px 0",
+            margin: "0 0 var(--space-2) 0",
             fontSize: "var(--font-size-md)",
             fontWeight: "var(--font-weight-bold)",
           }}
@@ -284,14 +292,14 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
 
       {/* Suggested repositories */}
       {suggestedRepos.length > 0 && (
-        <div style={{ marginBottom: "16px" }}>
+        <div style={{ marginBottom: "var(--space-4)" }}>
           <label
             id="recent-repos-label"
             style={{
               display: "block",
-              fontSize: "12px",
-              fontWeight: "bold",
-              marginBottom: "8px",
+              fontSize: "var(--font-size-base)",
+              fontWeight: "var(--font-weight-bold)",
+              marginBottom: "var(--space-2)",
             }}
           >
             Recent Repositories
@@ -302,74 +310,72 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "4px",
+              gap: "var(--space-1)",
               maxHeight: "120px",
               overflowY: "auto",
             }}
           >
-            {suggestedRepos.slice(0, 5).map((suggestedRepo) => (
-              <button
-                key={suggestedRepo.full_name}
-                role="option"
-                aria-selected={`${owner}/${repo}` === suggestedRepo.full_name}
-                onClick={() => {
-                  const [repoOwner, repoName] =
-                    suggestedRepo.full_name.split("/");
-                  setOwner(repoOwner);
-                  setRepo(repoName);
-                  setValidationResult(null);
-                }}
-                style={{
-                  padding: "8px 12px",
-                  backgroundColor:
-                    `${owner}/${repo}` === suggestedRepo.full_name
-                      ? "#e0f2fe"
-                      : "#f9fafb",
-                  border:
-                    "1px solid " +
-                    (`${owner}/${repo}` === suggestedRepo.full_name
-                      ? "#0891b2"
-                      : "#e5e7eb"),
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  fontSize: "11px",
-                  textAlign: "left",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <span>{suggestedRepo.full_name}</span>
-                {suggestedRepo.private && (
-                  <span
-                    aria-label="Private repository"
-                    style={{
-                      fontSize: "9px",
-                      backgroundColor: "#f3f4f6",
-                      padding: "2px 4px",
-                      borderRadius: "2px",
-                    }}
-                  >
-                    Private
-                  </span>
-                )}
-              </button>
-            ))}
+            {suggestedRepos.slice(0, 5).map((suggestedRepo) => {
+              const isSelected = `${owner}/${repo}` === suggestedRepo.full_name;
+              return (
+                <button
+                  key={suggestedRepo.full_name}
+                  role="option"
+                  aria-selected={isSelected}
+                  onClick={() => {
+                    const [repoOwner, repoName] =
+                      suggestedRepo.full_name.split("/");
+                    setOwner(repoOwner);
+                    setRepo(repoName);
+                    setValidationResult(null);
+                  }}
+                  style={{
+                    padding: "var(--space-2) var(--space-3)",
+                    backgroundColor: isSelected
+                      ? "var(--info-light)"
+                      : "var(--surface-secondary)",
+                    border: `1px solid ${isSelected ? "var(--accent-secondary)" : "var(--border-default)"}`,
+                    borderRadius: "var(--radius-sm)",
+                    cursor: "pointer",
+                    fontSize: "var(--font-size-sm)",
+                    textAlign: "left",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <span>{suggestedRepo.full_name}</span>
+                  {suggestedRepo.private && (
+                    <span
+                      aria-label="Private repository"
+                      style={{
+                        fontSize: "var(--font-size-xs)",
+                        backgroundColor: "var(--surface-tertiary)",
+                        padding: "2px var(--space-1)",
+                        borderRadius: "var(--radius-sm)",
+                      }}
+                    >
+                      Private
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       )}
 
       {/* Manual repository input */}
-      <div style={{ marginBottom: "12px" }}>
-        <div style={{ display: "flex", gap: "8px" }}>
+      <div style={{ marginBottom: "var(--space-3)" }}>
+        <div style={{ display: "flex", gap: "var(--space-2)" }}>
           <div style={{ flex: 1 }}>
             <label
               htmlFor="owner-input"
               style={{
                 display: "block",
-                fontSize: "12px",
-                fontWeight: "bold",
-                marginBottom: "4px",
+                fontSize: "var(--font-size-base)",
+                fontWeight: "var(--font-weight-bold)",
+                marginBottom: "var(--space-1)",
               }}
             >
               Owner
@@ -385,10 +391,10 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
               placeholder="username"
               style={{
                 width: "100%",
-                padding: "8px 12px",
-                border: "1px solid #d1d5db",
-                borderRadius: "4px",
-                fontSize: "11px",
+                padding: "var(--space-2) var(--space-3)",
+                border: "1px solid var(--border-strong)",
+                borderRadius: "var(--radius-sm)",
+                fontSize: "var(--font-size-sm)",
               }}
             />
           </div>
@@ -397,9 +403,9 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
               htmlFor="repo-input"
               style={{
                 display: "block",
-                fontSize: "12px",
-                fontWeight: "bold",
-                marginBottom: "4px",
+                fontSize: "var(--font-size-base)",
+                fontWeight: "var(--font-weight-bold)",
+                marginBottom: "var(--space-1)",
               }}
             >
               Repository
@@ -415,17 +421,17 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
               placeholder="repository-name"
               style={{
                 width: "100%",
-                padding: "8px 12px",
-                border: "1px solid #d1d5db",
-                borderRadius: "4px",
-                fontSize: "11px",
+                padding: "var(--space-2) var(--space-3)",
+                border: "1px solid var(--border-strong)",
+                borderRadius: "var(--radius-sm)",
+                fontSize: "var(--font-size-sm)",
               }}
             />
           </div>
         </div>
       </div>
 
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <label
           htmlFor="branch-input"
           style={{
@@ -461,9 +467,9 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
             id="repo-validation-msg"
             role="alert"
             style={{
-              marginTop: "4px",
-              fontSize: "10px",
-              color: validationResult.valid ? "#059669" : "#dc2626",
+              marginTop: "var(--space-1)",
+              fontSize: "var(--font-size-xs)",
+              color: validationResult.valid ? "var(--success)" : "var(--error)",
             }}
           >
             {validationResult.valid
@@ -474,7 +480,11 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
       </div>
 
       <div
-        style={{ display: "flex", gap: "8px", justifyContent: "space-between" }}
+        style={{
+          display: "flex",
+          gap: "var(--space-2)",
+          justifyContent: "space-between",
+        }}
       >
         <button
           onClick={onBack}
@@ -498,20 +508,20 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
           }
           aria-busy={isValidating}
           style={{
-            padding: "8px 16px",
+            padding: "var(--space-2) var(--space-4)",
             backgroundColor:
               !owner.trim() || !repo.trim() || !branch.trim() || isValidating
-                ? "#cbd5e1"
-                : "#0066cc",
-            color: "white",
+                ? "var(--surface-tertiary)"
+                : "var(--accent-primary)",
+            color: "var(--text-inverse)",
             border: "none",
-            borderRadius: "4px",
+            borderRadius: "var(--radius-sm)",
             cursor:
               !owner.trim() || !repo.trim() || !branch.trim() || isValidating
                 ? "not-allowed"
                 : "pointer",
-            fontSize: "12px",
-            fontWeight: "bold",
+            fontSize: "var(--font-size-base)",
+            fontWeight: "var(--font-weight-bold)",
           }}
         >
           {isValidating ? "Validating..." : "Next →"}
@@ -536,10 +546,10 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
 
   return (
     <div>
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <h3
           style={{
-            margin: "0 0 8px 0",
+            margin: "0 0 var(--space-2) 0",
             fontSize: "var(--font-size-md)",
             fontWeight: "var(--font-weight-bold)",
           }}
@@ -558,7 +568,7 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
         </p>
       </div>
 
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <label
           htmlFor="token-path-input"
           style={{
@@ -588,7 +598,7 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
         <div
           id="path-hint"
           style={{
-            fontSize: "10px",
+            fontSize: "var(--font-size-xs)",
             color: "var(--text-secondary)",
             marginTop: "2px",
           }}
@@ -598,14 +608,14 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
         </div>
       </div>
 
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "var(--space-4)" }}>
         <label
           id="sync-mode-label"
           style={{
             display: "block",
-            fontSize: "12px",
-            fontWeight: "bold",
-            marginBottom: "8px",
+            fontSize: "var(--font-size-base)",
+            fontWeight: "var(--font-weight-bold)",
+            marginBottom: "var(--space-2)",
           }}
         >
           Sync Mode
@@ -614,14 +624,18 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
         <div
           role="radiogroup"
           aria-labelledby="sync-mode-label"
-          style={{ display: "flex", flexDirection: "column", gap: "8px" }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--space-2)",
+          }}
         >
           <label
             style={{
               display: "flex",
               alignItems: "flex-start",
               cursor: "pointer",
-              gap: "8px",
+              gap: "var(--space-2)",
             }}
           >
             <input
@@ -633,14 +647,19 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
               style={{ marginTop: "2px" }}
             />
             <div>
-              <div style={{ fontSize: "11px", fontWeight: "bold" }}>
+              <div
+                style={{
+                  fontSize: "var(--font-size-sm)",
+                  fontWeight: "var(--font-weight-bold)",
+                }}
+              >
                 Pull Request Mode (Recommended)
               </div>
               <div
                 style={{
-                  fontSize: "10px",
+                  fontSize: "var(--font-size-xs)",
                   color: "var(--text-secondary)",
-                  lineHeight: "1.3",
+                  lineHeight: "var(--line-height-relaxed)",
                 }}
               >
                 Creates pull requests for review before merging changes. Safer
@@ -654,7 +673,7 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
               display: "flex",
               alignItems: "flex-start",
               cursor: "pointer",
-              gap: "8px",
+              gap: "var(--space-2)",
             }}
           >
             <input
@@ -666,14 +685,19 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
               style={{ marginTop: "2px" }}
             />
             <div>
-              <div style={{ fontSize: "11px", fontWeight: "bold" }}>
+              <div
+                style={{
+                  fontSize: "var(--font-size-sm)",
+                  fontWeight: "var(--font-weight-bold)",
+                }}
+              >
                 Direct Sync
               </div>
               <div
                 style={{
-                  fontSize: "10px",
+                  fontSize: "var(--font-size-xs)",
                   color: "var(--text-secondary)",
-                  lineHeight: "1.3",
+                  lineHeight: "var(--line-height-relaxed)",
                 }}
               >
                 Pushes and pulls changes directly to the branch. Faster but
@@ -685,7 +709,11 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
       </div>
 
       <div
-        style={{ display: "flex", gap: "8px", justifyContent: "space-between" }}
+        style={{
+          display: "flex",
+          gap: "var(--space-2)",
+          justifyContent: "space-between",
+        }}
       >
         <button
           onClick={onBack}
@@ -706,14 +734,16 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
           onClick={handleNext}
           disabled={!tokenPath.trim()}
           style={{
-            padding: "8px 16px",
-            backgroundColor: !tokenPath.trim() ? "#cbd5e1" : "#16a34a",
-            color: "white",
+            padding: "var(--space-2) var(--space-4)",
+            backgroundColor: !tokenPath.trim()
+              ? "var(--surface-tertiary)"
+              : "var(--success)",
+            color: "var(--text-inverse)",
             border: "none",
-            borderRadius: "4px",
+            borderRadius: "var(--radius-sm)",
             cursor: !tokenPath.trim() ? "not-allowed" : "pointer",
-            fontSize: "12px",
-            fontWeight: "bold",
+            fontSize: "var(--font-size-base)",
+            fontWeight: "var(--font-weight-bold)",
           }}
         >
           {isLast ? "Complete Setup ✓" : "Next →"}
@@ -732,50 +762,6 @@ export function SetupWizard({
   const [config, setConfig] = useState<Partial<GitHubConfig>>(
     initialConfig || {}
   );
-
-  const modalRef = useRef<HTMLDivElement>(null);
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
-
-  // Focus trap and Escape key handler
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-        return;
-      }
-
-      if (e.key === "Tab" && modalRef.current) {
-        const focusableElements = modalRef.current.querySelectorAll(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
-        const firstElement = focusableElements[0] as HTMLElement;
-        const lastElement = focusableElements[
-          focusableElements.length - 1
-        ] as HTMLElement;
-
-        if (e.shiftKey) {
-          if (document.activeElement === firstElement) {
-            e.preventDefault();
-            lastElement?.focus();
-          }
-        } else {
-          if (document.activeElement === lastElement) {
-            e.preventDefault();
-            firstElement?.focus();
-          }
-        }
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    // Focus close button on mount
-    closeButtonRef.current?.focus();
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose, currentStep]); // Re-run when step changes to re-calc focus trap if needed
 
   const steps = [
     { component: AccessTokenStep, title: "Access Token" },
@@ -802,120 +788,76 @@ export function SetupWizard({
 
   const CurrentStepComponent = steps[currentStep].component;
 
+  // Inline rendering — fills its container naturally (no fixed overlay or modal shell)
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="wizard-title"
-      style={{
-        position: "fixed",
-        top: "0",
-        left: "0",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "var(--surface-overlay)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 10000,
-      }}
-    >
+    <div aria-labelledby="wizard-title">
+      {/* Header */}
       <div
-        ref={modalRef}
         style={{
-          backgroundColor: "var(--surface-primary)",
-          borderRadius: "var(--radius-lg)",
-          padding: "var(--space-6)",
-          width: "90%",
-          maxWidth: "480px",
-          maxHeight: "90vh",
-          overflowY: "auto",
-          boxShadow: "var(--shadow-lg)",
+          marginBottom: "var(--space-4)",
         }}
       >
-        {/* Header */}
-        <div
+        <h2
+          id="wizard-title"
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "20px",
+            margin: "0 0 var(--space-1) 0",
+            fontSize: "var(--font-size-md)",
+            fontWeight: "var(--font-weight-bold)",
           }}
         >
-          <div>
-            <h2
-              id="wizard-title"
-              style={{ margin: "0", fontSize: "16px", fontWeight: "bold" }}
-            >
-              🚀 GitHub Setup Wizard
-            </h2>
-            <div
-              aria-live="polite"
-              style={{
-                fontSize: "11px",
-                color: "var(--text-secondary)",
-                marginTop: "2px",
-              }}
-            >
-              Step {currentStep + 1} of {steps.length}:{" "}
-              {steps[currentStep].title}
-            </div>
-          </div>
-          <button
-            ref={closeButtonRef}
-            onClick={onClose}
-            aria-label="Close setup wizard"
-            style={{
-              padding: "4px 8px",
-              backgroundColor: "#f3f4f6",
-              border: "1px solid #d1d5db",
-              borderRadius: "4px",
-              cursor: "pointer",
-              fontSize: "12px",
-              color: "#374151",
-            }}
-          >
-            ✕
-          </button>
-        </div>
-
-        {/* Progress indicator */}
+          🚀 GitHub Setup Wizard
+        </h2>
         <div
-          role="progressbar"
-          aria-valuenow={currentStep + 1}
-          aria-valuemin={1}
-          aria-valuemax={steps.length}
-          aria-label="Setup progress"
+          aria-live="polite"
           style={{
-            display: "flex",
-            gap: "4px",
-            marginBottom: "24px",
-            justifyContent: "center",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
           }}
         >
-          {steps.map((_, index) => (
-            <div
-              key={index}
-              style={{
-                width: "40px",
-                height: "4px",
-                backgroundColor: index <= currentStep ? "#0066cc" : "#e5e7eb",
-                borderRadius: "2px",
-                transition: "background-color 0.3s ease",
-              }}
-            />
-          ))}
+          Step {currentStep + 1} of {steps.length}:{" "}
+          {steps[currentStep].title}
         </div>
-
-        {/* Current step */}
-        <CurrentStepComponent
-          onNext={handleNext}
-          onBack={handleBack}
-          data={config}
-          isFirst={currentStep === 0}
-          isLast={currentStep === steps.length - 1}
-        />
       </div>
+
+      {/* Progress indicator */}
+      <div
+        role="progressbar"
+        aria-valuenow={currentStep + 1}
+        aria-valuemin={1}
+        aria-valuemax={steps.length}
+        aria-label="Setup progress"
+        style={{
+          display: "flex",
+          gap: "var(--space-1)",
+          marginBottom: "var(--space-6)",
+          justifyContent: "center",
+        }}
+      >
+        {steps.map((_, index) => (
+          <div
+            key={index}
+            style={{
+              width: "40px",
+              height: "4px",
+              backgroundColor:
+                index <= currentStep
+                  ? "var(--accent-primary)"
+                  : "var(--border-default)",
+              borderRadius: "var(--radius-sm)",
+              transition: "background-color 0.3s ease",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Current step */}
+      <CurrentStepComponent
+        onNext={handleNext}
+        onBack={handleBack}
+        data={config}
+        isFirst={currentStep === 0}
+        isLast={currentStep === steps.length - 1}
+      />
     </div>
   );
 }
