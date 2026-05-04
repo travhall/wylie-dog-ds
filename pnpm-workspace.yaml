@@ -2,6 +2,17 @@ packages:
   - apps/*
   - packages/*
 
+# Catalog: canonical versions for deps that appear in multiple packages.
+# Update here → update everywhere. Prevents the kind of drift where one
+# package silently falls behind and breaks shared config (e.g. ignoreDeprecations).
+catalog:
+  typescript: "6.0.3"
+  vitest: "^4.1.5"
+  eslint: "^10.3.0"
+  tailwindcss: "^4.2.4"
+  react: "^19.2.5"
+  react-dom: "^19.2.5"
+
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild

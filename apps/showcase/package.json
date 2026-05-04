@@ -13,8 +13,8 @@
     "@wyliedog/ui": "workspace:*",
     "lucide-react": "^1.14.0",
     "next": "^16.2.4",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -25,10 +25,10 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.5.0",
-    "eslint": "^10.3.0",
+    "eslint": "catalog:",
     "eslint-config-next": "^16.2.4",
     "postcss": "^8.5.13",
-    "tailwindcss": "^4.2.4",
-    "typescript": "^6.0.3"
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
   }
 }
