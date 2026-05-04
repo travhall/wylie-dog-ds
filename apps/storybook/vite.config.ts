@@ -44,12 +44,12 @@ export default defineConfig({
       // in-memory counters that flush instantly with no large browser→Node
       // transfer. The Coverage checkbox in the Storybook panel works correctly.
       provider: "istanbul",
-      // Exclude everything — story files are tests, not the thing being tested,
-      // so there is no meaningful coverage to report here. The Coverage checkbox
-      // in the Storybook panel works without timing out the server; it just shows
-      // no files. The meaningful component coverage lives in packages/ui:
+      // Instrument only the two .storybook helpers that actually execute during
+      // tests (theme bootstrap + decorator). main.ts only runs at server startup
+      // so it's excluded — including it would add a 0% file and drag the number
+      // down. The meaningful component coverage lives in packages/ui:
       //   pnpm --filter @wyliedog/ui test:coverage
-      exclude: ["**"],
+      include: [".storybook/preview.tsx", ".storybook/theme-sync.ts"],
     },
     projects: [
       {
