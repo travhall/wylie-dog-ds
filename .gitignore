@@ -11,8 +11,13 @@ apps/storybook/dist
 packages/ui/dist
 dist-ssr
 *.local
+# Local env files
 .env
-.cache
+.env.local
+.env.production
+
+# Playwright MCP temp files
+.playwright-mcp/
 .claude
 .serena
 .vscode
