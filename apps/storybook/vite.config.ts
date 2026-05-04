@@ -35,6 +35,19 @@ export default defineConfig({
     },
   },
   test: {
+    coverage: {
+      // Use istanbul instead of v8. v8 collects coverage by dumping raw CDP
+      // data from the browser for every JS file Chromium executed (Storybook
+      // internals, axe-core, Radix, Lucide, etc.) and piping it back over the
+      // addon WebSocket — tens of MB that reliably times out the dev server.
+      // Istanbul instruments source files at build time; coverage is just
+      // in-memory counters that flush instantly with no large browser→Node
+      // transfer. The Coverage checkbox in the Storybook panel works correctly.
+      provider: "istanbul",
+      // Only instrument the .storybook config helpers — the meaningful component
+      // coverage lives in packages/ui (pnpm --filter @wyliedog/ui test:coverage).
+      include: [".storybook/**"],
+    },
     projects: [
       {
         extends: true,
