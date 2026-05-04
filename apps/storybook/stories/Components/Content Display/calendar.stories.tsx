@@ -158,18 +158,23 @@ export const DateSelection: Story = {
     const [date, setDate] = useState<Date | undefined>(undefined);
     return (
       <div className="space-y-4">
-        <Calendar mode="single" selected={date} onSelect={setDate} />
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={(d) => setDate(d as Date | undefined)}
+        />
         <p className="text-sm text-(--color-text-secondary)">
-          {date ? `Selected: ${date.toLocaleDateString()}` : 'No date selected'}
+          {date ? `Selected: ${date.toLocaleDateString()}` : "No date selected"}
         </p>
       </div>
     );
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const dayButtons = canvas.getAllByRole('gridcell');
+    const dayButtons = canvas.getAllByRole("gridcell");
     const enabledDay = dayButtons.find(
-      btn => !btn.hasAttribute('aria-disabled') && btn.textContent?.trim() !== ''
+      (btn) =>
+        !btn.hasAttribute("aria-disabled") && btn.textContent?.trim() !== ""
     );
     if (enabledDay) {
       await userEvent.click(enabledDay);
@@ -177,7 +182,12 @@ export const DateSelection: Story = {
     }
   },
   parameters: {
-    docs: { description: { story: 'Single date selection mode. Selected date is shown below the calendar.' } },
+    docs: {
+      description: {
+        story:
+          "Single date selection mode. Selected date is shown below the calendar.",
+      },
+    },
   },
 };
 

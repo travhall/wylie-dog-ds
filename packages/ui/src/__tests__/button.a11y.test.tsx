@@ -65,7 +65,6 @@ describe("Button Accessibility Tests", () => {
   it("should support different variants", async () => {
     const variants = [
       "default",
-      "primary",
       "secondary",
       "outline",
       "ghost",

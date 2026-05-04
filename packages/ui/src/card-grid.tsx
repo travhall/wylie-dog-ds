@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "./lib/utils";
 
 export interface CardGridProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   columns?: {
     sm?: number;
     md?: number;
