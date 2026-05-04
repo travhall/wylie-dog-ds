@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "storybook/test";
+import { within, userEvent, expect, screen } from "storybook/test";
 import {
   Dialog,
   DialogTrigger,
@@ -112,14 +112,16 @@ export const FocusManagement: Story = {
     const openBtn = canvas.getByTestId("open-dialog-btn");
     await userEvent.click(openBtn);
 
-    // DialogContent auto-focuses its close button on open (onOpenAutoFocus override in dialog.tsx)
-    // Tab through dialog elements
-    await userEvent.tab();
-    await userEvent.tab();
-    await userEvent.tab();
+    // Dialog renders into a portal — use screen to query across the whole document
+    // Wait for dialog animation before querying portal content
+    await new Promise((r) => setTimeout(r, 300));
+    const dialogInput = screen.getByRole("textbox", { name: /your name/i });
+    expect(dialogInput).toBeInTheDocument();
 
-    // Dialog should still be open — focus should not have escaped
-    expect(canvas.getByTestId("dialog-input")).toBeInTheDocument();
+    // Tab through dialog elements (close button → input → cancel → confirm)
+    await userEvent.tab();
+    await userEvent.tab();
+    await userEvent.tab();
 
     // Press Escape to close
     await userEvent.keyboard("{Escape}");
@@ -398,9 +400,9 @@ export const KeyboardOnlyForm: Story = {
     await userEvent.keyboard("{Enter}");
 
     // Success state should appear
-    expect(
-      await canvas.findByRole("status")
-    ).toHaveTextContent(/keyboard only/i);
+    expect(await canvas.findByRole("status")).toHaveTextContent(
+      /keyboard only/i
+    );
   },
 };
 
@@ -634,9 +636,9 @@ function SkipNavigationComponent() {
             Main content
           </h1>
           <p className="text-sm text-(--color-text-secondary) mb-4">
-            Press Tab from the browser address bar (or the start of the page)
-            to reveal the skip link. Press Enter to jump directly here,
-            bypassing the nav and sidebar.
+            Press Tab from the browser address bar (or the start of the page) to
+            reveal the skip link. Press Enter to jump directly here, bypassing
+            the nav and sidebar.
           </p>
           <div className="rounded-(--space-dialog-content-radius) border border-(--color-border-default) bg-(--color-background-secondary) p-3 text-sm space-y-1">
             <p className="font-semibold text-(--color-text-primary)">

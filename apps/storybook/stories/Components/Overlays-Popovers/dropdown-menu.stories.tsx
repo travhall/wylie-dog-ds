@@ -361,7 +361,7 @@ export const WithSubMenuNavigation: Story = {
     const canvas = within(canvasElement);
     const trigger = canvas.getByRole("button", { name: /options/i });
     await userEvent.click(trigger);
-    const subTrigger = await canvas.findByText(/more actions/i);
+    const subTrigger = await screen.findByText(/more actions/i);
     expect(subTrigger).toBeInTheDocument();
     await userEvent.hover(subTrigger);
     await new Promise((r) => setTimeout(r, 300));

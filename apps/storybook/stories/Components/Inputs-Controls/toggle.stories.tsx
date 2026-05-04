@@ -557,7 +557,7 @@ export const WithInteractions: Story = {
     expect(italicToggle).toHaveAttribute("aria-pressed", "false");
 
     // Test 5: Disabled toggle cannot be activated
-    await userEvent.click(underlineToggle);
-    expect(underlineToggle).toHaveAttribute("aria-pressed", "false");
+    // pointer-events:none prevents click — assert disabled state directly
+    expect(underlineToggle).toBeDisabled();
   },
 };

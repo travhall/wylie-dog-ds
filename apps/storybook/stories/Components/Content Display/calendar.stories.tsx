@@ -171,15 +171,16 @@ export const DateSelection: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const dayButtons = canvas.getAllByRole("gridcell");
-    const enabledDay = dayButtons.find(
+    // Calendar days are plain <button> elements — filter out nav buttons
+    const allButtons = await canvas.findAllByRole("button");
+    const dayButtons = allButtons.filter(
       (btn) =>
-        !btn.hasAttribute("aria-disabled") && btn.textContent?.trim() !== ""
+        !btn.getAttribute("aria-label")?.includes("month") &&
+        btn.textContent?.trim() !== ""
     );
-    if (enabledDay) {
-      await userEvent.click(enabledDay);
-      expect(canvas.getByText(/selected:/i)).toBeInTheDocument();
-    }
+    expect(dayButtons.length).toBeGreaterThan(0);
+    await userEvent.click(dayButtons[0]);
+    expect(canvas.getByText(/selected:/i)).toBeInTheDocument();
   },
   parameters: {
     docs: {

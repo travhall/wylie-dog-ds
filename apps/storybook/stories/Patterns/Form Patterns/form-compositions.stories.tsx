@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "storybook/test";
+import { within, userEvent, expect, screen } from "storybook/test";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
@@ -1097,8 +1097,8 @@ export const WithInteractions: Story = {
     // Wait for select animation
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    // Select United States
-    const usOption = canvas.getByRole("option", { name: /united states/i });
+    // Select options render in a portal — use screen, not canvas
+    const usOption = screen.getByRole("option", { name: /united states/i });
     await userEvent.click(usOption);
 
     // Wait for select to close

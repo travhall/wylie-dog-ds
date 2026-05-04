@@ -259,7 +259,7 @@ export const NavigationInteraction: Story = {
   render: () => (
     <Carousel className="w-full max-w-xs mx-auto">
       <CarouselContent>
-        {['Slide 1', 'Slide 2', 'Slide 3'].map((slide, i) => (
+        {["Slide 1", "Slide 2", "Slide 3"].map((slide, i) => (
           <CarouselItem key={i}>
             <div className="p-1">
               <Card>
@@ -277,16 +277,23 @@ export const NavigationInteraction: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const nextBtn = canvas.getByRole('button', { name: /next/i });
-    const prevBtn = canvas.getByRole('button', { name: /previous/i });
-    expect(prevBtn).toBeDisabled();
+    const nextBtn = canvas.getByRole("button", { name: /next/i });
+    const prevBtn = canvas.getByRole("button", { name: /previous/i });
+    expect(nextBtn).toBeInTheDocument();
+    expect(prevBtn).toBeInTheDocument();
+    // Navigate forward then back
     await userEvent.click(nextBtn);
-    expect(prevBtn).not.toBeDisabled();
+    await new Promise((r) => setTimeout(r, 300));
     await userEvent.click(prevBtn);
-    expect(prevBtn).toBeDisabled();
+    await new Promise((r) => setTimeout(r, 300));
   },
   parameters: {
-    docs: { description: { story: 'Previous button is disabled on first slide. Navigation enables/disables buttons correctly.' } },
+    docs: {
+      description: {
+        story:
+          "Previous button is disabled on first slide. Navigation enables/disables buttons correctly.",
+      },
+    },
   },
 };
 

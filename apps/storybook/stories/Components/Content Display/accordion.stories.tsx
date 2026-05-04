@@ -517,8 +517,9 @@ export const WithInteractions: Story = {
     const canvas = within(canvasElement);
 
     // Test 1: All accordions are initially closed
+    // Radix Accordion unmounts content when collapsed, so queryByText returns null
     const reactContent = canvas.queryByText(/react is a javascript library/i);
-    expect(reactContent).not.toBeVisible();
+    expect(reactContent).not.toBeInTheDocument();
 
     // Test 2: Click first accordion trigger to open
     const reactTrigger = canvas.getByRole("button", { name: /what is react/i });

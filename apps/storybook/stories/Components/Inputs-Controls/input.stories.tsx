@@ -499,9 +499,8 @@ export const WithInteractions: Story = {
     await userEvent.tab();
     expect(disabledInput).not.toHaveFocus();
 
-    // Test 9: Select all text in username and replace
-    await userEvent.click(usernameInput);
-    await userEvent.keyboard("{Control>}a{/Control}");
+    // Test 9: Clear username and replace (Ctrl+A unreliable in Playwright)
+    await userEvent.clear(usernameInput);
     await userEvent.type(usernameInput, "new_user");
     expect(usernameInput).toHaveValue("new_user");
 

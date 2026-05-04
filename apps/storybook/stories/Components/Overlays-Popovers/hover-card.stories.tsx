@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "storybook/test";
+import { within, userEvent, expect, screen } from "storybook/test";
 import {
   HoverCard,
   HoverCardContent,
@@ -543,16 +543,25 @@ export const HoverInteraction: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const trigger = canvas.getByRole('button', { name: /@wyliedog/i });
+    const trigger = canvas.getByRole("button", { name: /@wyliedog/i });
     await userEvent.hover(trigger);
-    await new Promise(r => setTimeout(r, 800));
-    const content = document.querySelector('[data-radix-hover-card-content]');
+    // HoverCard renders into a portal — use screen, not canvas
+    const content = await screen.findByText(
+      /Design system by Wylie Dog/i,
+      {},
+      { timeout: 1500 }
+    );
     expect(content).toBeInTheDocument();
     await userEvent.unhover(trigger);
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise((r) => setTimeout(r, 500));
   },
   parameters: {
-    docs: { description: { story: 'Content appears after hover delay and disappears on mouse leave.' } },
+    docs: {
+      description: {
+        story:
+          "Content appears after hover delay and disappears on mouse leave.",
+      },
+    },
   },
 };
 

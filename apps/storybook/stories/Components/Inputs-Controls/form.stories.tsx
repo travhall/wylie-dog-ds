@@ -393,9 +393,9 @@ export const WithInteractions: Story = {
     const submitButton = canvas.getByRole("button", { name: /submit/i });
     await userEvent.click(submitButton);
 
-    const nameError = await canvas.findByRole("alert", {
-      name: /name is required/i,
-    });
+    // role="alert" accessible name is not computed from text content,
+    // so query by text directly rather than role+name
+    const nameError = await canvas.findByText(/name is required/i);
     expect(nameError).toBeInTheDocument();
 
     const emailError = canvas.getByText(/email is required/i);
