@@ -91,6 +91,11 @@
       "outputs": ["dist/**"],
       "cache": true
     },
+    "storybook#test": {
+      "dependsOn": ["@wyliedog/tokens#build", "@wyliedog/ui#build"],
+      "inputs": ["stories/**", ".storybook/**", "vite.config.ts"],
+      "cache": true
+    },
     "storybook#build": {
       "dependsOn": ["@wyliedog/tokens#build", "@wyliedog/ui#build"],
       "inputs": ["src/**", "stories/**", ".storybook/**"],

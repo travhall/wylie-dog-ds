@@ -14,6 +14,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# Write access is needed to commit newly seeded baselines back to the branch.
+permissions:
+  contents: write
+
 jobs:
   visual:
     name: Playwright Visual Diff
@@ -23,10 +27,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 20.x
+      - name: Setup Node.js 24.x
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -64,11 +68,49 @@ jobs:
         run: npx wait-on http://localhost:4173 -t 60000
 
       - name: Run Visual Tests
+        id: visual_tests
         working-directory: apps/storybook
         env:
           CI: "true"
           STORYBOOK_URL: http://localhost:4173
         run: pnpm test:visual
+        continue-on-error: true
+
+      # When tests fail only because linux baselines don't exist yet, generate
+      # them and commit them back. This is a one-time bootstrap operation; on
+      # subsequent runs the baselines exist and the comparison runs normally.
+      - name: Seed missing baselines
+        if: steps.visual_tests.outcome == 'failure'
+        working-directory: apps/storybook
+        env:
+          CI: "true"
+          STORYBOOK_URL: http://localhost:4173
+        run: pnpm test:visual:update || true
+
+      - name: Commit new baselines (push to main only)
+        if: steps.visual_tests.outcome == 'failure' && github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add apps/storybook/tests/visual.spec.ts-snapshots/
+          ADDED=$(git diff --staged --name-only --diff-filter=A | wc -l | tr -d ' ')
+          MODIFIED=$(git diff --staged --name-only --diff-filter=M | wc -l | tr -d ' ')
+          if [ "$ADDED" -gt 0 ] && [ "$MODIFIED" -eq 0 ]; then
+            echo "Seeding $ADDED new baseline(s) — no existing baselines changed"
+            git commit -m "chore: seed linux visual regression baselines [skip ci]"
+            git push
+            echo "SEEDED_ONLY=true" >> $GITHUB_ENV
+          else
+            git restore --staged .
+            echo "Visual diffs detected in $MODIFIED existing baseline(s)"
+            echo "SEEDED_ONLY=false" >> $GITHUB_ENV
+          fi
+
+      - name: Fail on real visual diffs
+        if: steps.visual_tests.outcome == 'failure' && env.SEEDED_ONLY != 'true'
+        run: |
+          echo "::error::Visual regression tests failed. Download the artifacts to review diffs."
+          exit 1
 
       - name: Upload Playwright Report
         if: always()
