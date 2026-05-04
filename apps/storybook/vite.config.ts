@@ -44,9 +44,12 @@ export default defineConfig({
       // in-memory counters that flush instantly with no large browser→Node
       // transfer. The Coverage checkbox in the Storybook panel works correctly.
       provider: "istanbul",
-      // Only instrument the .storybook config helpers — the meaningful component
-      // coverage lives in packages/ui (pnpm --filter @wyliedog/ui test:coverage).
-      include: [".storybook/**"],
+      // Exclude everything — story files are tests, not the thing being tested,
+      // so there is no meaningful coverage to report here. The Coverage checkbox
+      // in the Storybook panel works without timing out the server; it just shows
+      // no files. The meaningful component coverage lives in packages/ui:
+      //   pnpm --filter @wyliedog/ui test:coverage
+      exclude: ["**"],
     },
     projects: [
       {
