@@ -35,6 +35,12 @@ export default defineConfig({
     },
   },
   test: {
+    coverage: {
+      // .storybook config files are infrastructure (theme toolbar, channel setup)
+      // whose uncovered branches require real Storybook UI interaction to hit.
+      // Excluding them keeps the coverage report meaningful.
+      exclude: [".storybook/**"],
+    },
     projects: [
       {
         extends: true,
