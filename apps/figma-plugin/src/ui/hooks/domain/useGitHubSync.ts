@@ -70,7 +70,9 @@ export function useGitHubSync(
 
               actions.setGithubConfig(config);
               actions.setGithubConfigured(true);
-              actions.setSuccessMessage("GitHub connected! Pulling your tokens now…");
+              actions.setSuccessMessage(
+                "GitHub connected! Pulling your tokens now…"
+              );
               setTimeout(() => actions.setSuccessMessage(null), 5000);
 
               // Auto-pull after a short delay so UI can update first

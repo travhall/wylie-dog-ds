@@ -314,15 +314,24 @@ export const LoadingToContent: Story = {
           </>
         ) : (
           <div className="space-y-3">
-            <p className="text-sm text-(--color-text-primary)">Content has loaded successfully.</p>
-            <p className="text-sm text-(--color-text-secondary)">This is the real content that replaced the skeleton.</p>
+            <p className="text-sm text-(--color-text-primary)">
+              Content has loaded successfully.
+            </p>
+            <p className="text-sm text-(--color-text-secondary)">
+              This is the real content that replaced the skeleton.
+            </p>
           </div>
         )}
       </div>
     );
   },
   parameters: {
-    docs: { description: { story: 'Skeleton placeholder transitions to real content after a simulated load delay.' } },
+    docs: {
+      description: {
+        story:
+          "Skeleton placeholder transitions to real content after a simulated load delay.",
+      },
+    },
   },
 };
 

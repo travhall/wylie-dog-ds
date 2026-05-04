@@ -326,21 +326,23 @@ export const InputInteraction: Story = {
   render: () => <Textarea placeholder="Type something here..." />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const textarea = canvas.getByRole('textbox');
+    const textarea = canvas.getByRole("textbox");
     await userEvent.click(textarea);
-    await userEvent.type(textarea, 'Hello, design system!');
-    expect(textarea).toHaveValue('Hello, design system!');
+    await userEvent.type(textarea, "Hello, design system!");
+    expect(textarea).toHaveValue("Hello, design system!");
     await userEvent.clear(textarea);
-    expect(textarea).toHaveValue('');
+    expect(textarea).toHaveValue("");
   },
   parameters: {
-    docs: { description: { story: 'Type and clear interactions on a textarea.' } },
+    docs: {
+      description: { story: "Type and clear interactions on a textarea." },
+    },
   },
 };
 
 export const CharacterCount: Story = {
   render: () => {
-    const [value, setValue] = React.useState('');
+    const [value, setValue] = React.useState("");
     const max = 120;
     return (
       <div className="space-y-2">
@@ -357,7 +359,12 @@ export const CharacterCount: Story = {
     );
   },
   parameters: {
-    docs: { description: { story: 'Character counter pattern using maxLength and controlled value.' } },
+    docs: {
+      description: {
+        story:
+          "Character counter pattern using maxLength and controlled value.",
+      },
+    },
   },
 };
 

@@ -187,12 +187,7 @@ export function Toaster() {
       aria-label="Notifications"
     >
       {toasts.map((t) => (
-        <Toast
-          key={t.id}
-          variant={t.variant}
-          role="status"
-          aria-atomic="true"
-        >
+        <Toast key={t.id} variant={t.variant} role="status" aria-atomic="true">
           <div className="grid gap-1">
             {t.title && <ToastTitle>{t.title}</ToastTitle>}
             {t.description && (

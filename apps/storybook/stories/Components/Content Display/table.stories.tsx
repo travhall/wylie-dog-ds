@@ -239,14 +239,14 @@ export const WithActions: Story = {
 
 export const SortableTable: Story = {
   render: () => {
-    const [sortDir, setSortDir] = React.useState<'asc' | 'desc'>('asc');
+    const [sortDir, setSortDir] = React.useState<"asc" | "desc">("asc");
     const data = [
-      { name: 'Charlie', amount: 300 },
-      { name: 'Alice', amount: 100 },
-      { name: 'Bob', amount: 200 },
+      { name: "Charlie", amount: 300 },
+      { name: "Alice", amount: 100 },
+      { name: "Bob", amount: 200 },
     ];
     const sorted = [...data].sort((a, b) =>
-      sortDir === 'asc' ? a.amount - b.amount : b.amount - a.amount
+      sortDir === "asc" ? a.amount - b.amount : b.amount - a.amount
     );
     return (
       <Table>
@@ -255,15 +255,15 @@ export const SortableTable: Story = {
             <TableHead>Name</TableHead>
             <TableHead
               className="cursor-pointer select-none"
-              onClick={() => setSortDir(d => d === 'asc' ? 'desc' : 'asc')}
-              aria-sort={sortDir === 'asc' ? 'ascending' : 'descending'}
+              onClick={() => setSortDir((d) => (d === "asc" ? "desc" : "asc"))}
+              aria-sort={sortDir === "asc" ? "ascending" : "descending"}
             >
-              Amount {sortDir === 'asc' ? '↑' : '↓'}
+              Amount {sortDir === "asc" ? "↑" : "↓"}
             </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {sorted.map(row => (
+          {sorted.map((row) => (
             <TableRow key={row.name}>
               <TableCell>{row.name}</TableCell>
               <TableCell>${row.amount}</TableCell>
@@ -275,15 +275,20 @@ export const SortableTable: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const amountHeader = canvas.getByRole('columnheader', { name: /amount/i });
-    const rowsBefore = canvas.getAllByRole('row');
-    expect(rowsBefore[1]).toHaveTextContent('Alice');
+    const amountHeader = canvas.getByRole("columnheader", { name: /amount/i });
+    const rowsBefore = canvas.getAllByRole("row");
+    expect(rowsBefore[1]).toHaveTextContent("Alice");
     await userEvent.click(amountHeader);
-    const rowsAfter = canvas.getAllByRole('row');
-    expect(rowsAfter[1]).toHaveTextContent('Charlie');
+    const rowsAfter = canvas.getAllByRole("row");
+    expect(rowsAfter[1]).toHaveTextContent("Charlie");
   },
   parameters: {
-    docs: { description: { story: 'Click column header to sort ascending/descending. aria-sort reflects current direction.' } },
+    docs: {
+      description: {
+        story:
+          "Click column header to sort ascending/descending. aria-sort reflects current direction.",
+      },
+    },
   },
 };
 

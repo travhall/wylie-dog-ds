@@ -206,22 +206,30 @@ export const Interactive: Story = {
     const [page, setPage] = React.useState(3);
     return (
       <div className="space-y-4">
-        <p className="text-sm text-(--color-text-secondary)">Current page: {page}</p>
+        <p className="text-sm text-(--color-text-secondary)">
+          Current page: {page}
+        </p>
         <Pagination>
           <PaginationContent>
             <PaginationItem>
               <PaginationPrevious
                 href="#"
-                onClick={(e) => { e.preventDefault(); setPage(p => Math.max(1, p - 1)); }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPage((p) => Math.max(1, p - 1));
+                }}
                 aria-disabled={page === 1}
               />
             </PaginationItem>
-            {[1, 2, 3, 4, 5].map(n => (
+            {[1, 2, 3, 4, 5].map((n) => (
               <PaginationItem key={n}>
                 <PaginationLink
                   href="#"
                   isActive={page === n}
-                  onClick={(e) => { e.preventDefault(); setPage(n); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setPage(n);
+                  }}
                 >
                   {n}
                 </PaginationLink>
@@ -230,7 +238,10 @@ export const Interactive: Story = {
             <PaginationItem>
               <PaginationNext
                 href="#"
-                onClick={(e) => { e.preventDefault(); setPage(p => Math.min(5, p + 1)); }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPage((p) => Math.min(5, p + 1));
+                }}
                 aria-disabled={page === 5}
               />
             </PaginationItem>
@@ -241,15 +252,20 @@ export const Interactive: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const nextButton = canvas.getByRole('link', { name: /next/i });
+    const nextButton = canvas.getByRole("link", { name: /next/i });
     await userEvent.click(nextButton);
-    expect(canvas.getByText('Current page: 4')).toBeInTheDocument();
-    const prevButton = canvas.getByRole('link', { name: /previous/i });
+    expect(canvas.getByText("Current page: 4")).toBeInTheDocument();
+    const prevButton = canvas.getByRole("link", { name: /previous/i });
     await userEvent.click(prevButton);
-    expect(canvas.getByText('Current page: 3')).toBeInTheDocument();
+    expect(canvas.getByText("Current page: 3")).toBeInTheDocument();
   },
   parameters: {
-    docs: { description: { story: 'Controlled pagination with next/previous navigation and active page tracking.' } },
+    docs: {
+      description: {
+        story:
+          "Controlled pagination with next/previous navigation and active page tracking.",
+      },
+    },
   },
 };
 

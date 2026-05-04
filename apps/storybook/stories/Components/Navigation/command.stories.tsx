@@ -509,19 +509,24 @@ export const KeyboardNavigation: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByRole('combobox');
+    const input = canvas.getByRole("combobox");
     await userEvent.click(input);
-    await userEvent.type(input, 'cal');
-    expect(canvas.getByText('Calendar')).toBeInTheDocument();
+    await userEvent.type(input, "cal");
+    expect(canvas.getByText("Calendar")).toBeInTheDocument();
     await userEvent.clear(input);
-    const allItems = canvas.getAllByRole('option');
+    const allItems = canvas.getAllByRole("option");
     expect(allItems.length).toBe(3);
-    await userEvent.keyboard('{ArrowDown}');
-    await userEvent.keyboard('{ArrowDown}');
-    await userEvent.keyboard('{Escape}');
+    await userEvent.keyboard("{ArrowDown}");
+    await userEvent.keyboard("{ArrowDown}");
+    await userEvent.keyboard("{Escape}");
   },
   parameters: {
-    docs: { description: { story: 'Type to filter results. Arrow keys navigate items. Escape clears focus.' } },
+    docs: {
+      description: {
+        story:
+          "Type to filter results. Arrow keys navigate items. Escape clears focus.",
+      },
+    },
   },
 };
 

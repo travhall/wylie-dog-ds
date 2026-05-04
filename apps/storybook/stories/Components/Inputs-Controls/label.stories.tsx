@@ -182,13 +182,18 @@ export const ClickFocusesInput: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const label = canvas.getByText('Email address');
-    const input = canvas.getByRole('textbox');
+    const label = canvas.getByText("Email address");
+    const input = canvas.getByRole("textbox");
     await userEvent.click(label);
     expect(input).toHaveFocus();
   },
   parameters: {
-    docs: { description: { story: 'Clicking a label focuses its associated input via htmlFor/id association.' } },
+    docs: {
+      description: {
+        story:
+          "Clicking a label focuses its associated input via htmlFor/id association.",
+      },
+    },
   },
 };
 

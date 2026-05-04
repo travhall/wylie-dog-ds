@@ -814,8 +814,7 @@ export function SetupWizard({
             color: "var(--text-secondary)",
           }}
         >
-          Step {currentStep + 1} of {steps.length}:{" "}
-          {steps[currentStep].title}
+          Step {currentStep + 1} of {steps.length}: {steps[currentStep].title}
         </div>
       </div>
 

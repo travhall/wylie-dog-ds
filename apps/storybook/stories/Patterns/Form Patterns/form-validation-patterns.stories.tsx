@@ -40,9 +40,7 @@ type Story = StoryObj<typeof meta>;
  * An Input that automatically receives the `id` from the nearest FormField
  * context. All other Input props are passed through.
  */
-function FormInput(
-  props: Omit<React.ComponentProps<typeof Input>, "id">
-) {
+function FormInput(props: Omit<React.ComponentProps<typeof Input>, "id">) {
   const { id } = useFormField();
   return <Input id={id} {...props} />;
 }
@@ -124,9 +122,7 @@ function RequiredFieldValidationComponent() {
           name="rfv-name"
           placeholder="Your full name"
           value={values.name}
-          onChange={(e) =>
-            setValues((v) => ({ ...v, name: e.target.value }))
-          }
+          onChange={(e) => setValues((v) => ({ ...v, name: e.target.value }))}
         />
         <FormMessage>{errors.name}</FormMessage>
       </FormField>
@@ -138,9 +134,7 @@ function RequiredFieldValidationComponent() {
           type="email"
           placeholder="you@example.com"
           value={values.email}
-          onChange={(e) =>
-            setValues((v) => ({ ...v, email: e.target.value }))
-          }
+          onChange={(e) => setValues((v) => ({ ...v, email: e.target.value }))}
         />
         <FormMessage>{errors.email}</FormMessage>
       </FormField>
@@ -569,14 +563,14 @@ function MultiStepValidationComponent() {
 
           <FormField>
             <FormLabel>Bio</FormLabel>
-            <FormDescription>Optional — tell us about yourself.</FormDescription>
+            <FormDescription>
+              Optional — tell us about yourself.
+            </FormDescription>
             <FormTextarea
               placeholder="A few words about you…"
               rows={3}
               value={step2.bio}
-              onChange={(e) =>
-                setStep2((v) => ({ ...v, bio: e.target.value }))
-              }
+              onChange={(e) => setStep2((v) => ({ ...v, bio: e.target.value }))}
             />
           </FormField>
 
@@ -627,9 +621,7 @@ export const MultiStepValidation: Story = {
     await userEvent.click(canvas.getByRole("button", { name: /next/i }));
 
     // Step 2 should now be visible
-    expect(
-      await canvas.findByPlaceholderText("Jane")
-    ).toBeInTheDocument();
+    expect(await canvas.findByPlaceholderText("Jane")).toBeInTheDocument();
   },
 };
 
@@ -705,9 +697,7 @@ function AsyncValidationComponent() {
             ✓ Available
           </p>
         )}
-        {status === "taken" && (
-          <FormMessage>✗ Already taken</FormMessage>
-        )}
+        {status === "taken" && <FormMessage>✗ Already taken</FormMessage>}
       </FormField>
     </Form>
   );

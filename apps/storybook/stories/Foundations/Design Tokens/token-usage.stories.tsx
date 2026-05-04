@@ -119,7 +119,9 @@ export const SemanticVsPrimitive: Story = {
                 <th className="text-left p-3 font-medium">Category</th>
                 <th className="text-left p-3 font-medium">Token Name</th>
                 <th className="text-left p-3 font-medium">CSS Variable</th>
-                <th className="text-left p-3 font-medium">Primitive Reference</th>
+                <th className="text-left p-3 font-medium">
+                  Primitive Reference
+                </th>
                 <th className="text-left p-3 font-medium">Visual Result</th>
               </tr>
             </thead>

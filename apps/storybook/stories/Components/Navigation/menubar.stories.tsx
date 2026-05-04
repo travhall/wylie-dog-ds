@@ -357,7 +357,12 @@ export const SubmenuNavigation: Story = {
     </Menubar>
   ),
   parameters: {
-    docs: { description: { story: 'Submenu opens on hover or ArrowRight. All items are keyboard accessible.' } },
+    docs: {
+      description: {
+        story:
+          "Submenu opens on hover or ArrowRight. All items are keyboard accessible.",
+      },
+    },
   },
 };
 

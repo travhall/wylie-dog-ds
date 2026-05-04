@@ -72,8 +72,7 @@ export function OnboardingScreen({
           textAlign: "left",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor =
-            "var(--accent-primary-hover)";
+          e.currentTarget.style.backgroundColor = "var(--accent-primary-hover)";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.backgroundColor = "var(--accent-primary)";
