@@ -73,7 +73,12 @@ export default defineConfig({
               },
             ],
           },
-          setupFiles: [".storybook/vitest.setup.ts"],
+          // No setupFiles: @storybook/addon-vitest 10.3+ applies setProjectAnnotations
+          // (including addon-a11y) automatically and more efficiently than the
+          // manual vitest.setup.ts we previously had. The setup file was causing
+          // axe-core to run as a blocking in-process hook on every story, which
+          // combined with 409 interaction tests and coverage collection was
+          // exceeding the Storybook addon WebSocket timeout.
         },
       },
     ],
