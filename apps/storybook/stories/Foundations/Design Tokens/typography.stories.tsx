@@ -594,7 +594,7 @@ export const CodeTypography: Story = {
         </h4>
         <pre className="bg-(--color-background-inverse) text-(--color-text-inverse) p-4 rounded-lg overflow-x-auto">
           <code className="font-(--font-family-mono) text-(length:--font-size-sm)">
-            {`function Button({ children, variant = "primary" }) {
+            {`function Button({ children, variant = "default" }) {
   return (
     <button className={\`btn btn-\${variant}\`}>
       {children}

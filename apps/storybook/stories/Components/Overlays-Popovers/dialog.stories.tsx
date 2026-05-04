@@ -172,7 +172,7 @@ export const WithInteractions: Story = {
   render: () => (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="primary">Open Dialog</Button>
+        <Button variant="default">Open Dialog</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -195,7 +195,7 @@ export const WithInteractions: Story = {
         </div>
         <DialogFooter>
           <Button variant="ghost">Cancel</Button>
-          <Button variant="primary">Confirm</Button>
+          <Button variant="default">Confirm</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

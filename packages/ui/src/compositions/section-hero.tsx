@@ -125,14 +125,14 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
                   {primaryAction &&
                     (primaryAction.href ? (
                       <a href={primaryAction.href}>
-                        <Button size="lg" variant="primary">
+                        <Button size="lg" variant="default">
                           {primaryAction.label}
                         </Button>
                       </a>
                     ) : (
                       <Button
                         size="lg"
-                        variant="primary"
+                        variant="default"
                         onClick={primaryAction.onClick}
                       >
                         {primaryAction.label}

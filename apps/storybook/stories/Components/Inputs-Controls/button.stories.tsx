@@ -23,7 +23,6 @@ const meta: Meta<typeof Button> = {
       control: "select",
       options: [
         "default",
-        "primary",
         "secondary",
         "outline",
         "ghost",
@@ -34,7 +33,7 @@ const meta: Meta<typeof Button> = {
       table: {
         type: {
           summary:
-            '"default" | "primary" | "secondary" | "outline" | "ghost" | "link" | "destructive"',
+            '"default" | "secondary" | "outline" | "ghost" | "link" | "destructive"',
         },
         defaultValue: { summary: '"default"' },
         category: "Appearance",
@@ -94,20 +93,6 @@ export const Default: Story = {
   },
 };
 
-export const Primary: Story = {
-  args: {
-    children: "Primary Button",
-    variant: "primary",
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "Primary action button for the most important action on a page.",
-      },
-    },
-  },
-};
-
 export const Secondary: Story = {
   args: {
     variant: "secondary",
@@ -142,7 +127,6 @@ export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
       <Button variant="default">Default</Button>
-      <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="outline">Outline</Button>
       <Button variant="ghost">Ghost</Button>
@@ -325,7 +309,7 @@ export const Loading: Story = {
 export const WithInteractions: Story = {
   args: {
     children: "Click to Test",
-    variant: "primary",
+    variant: "default",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
