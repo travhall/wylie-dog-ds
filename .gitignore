@@ -16,6 +16,7 @@ dist-ssr
 .claude
 .serena
 .vscode
+*.tsbuildinfo
 server/dist
 public/dist
 storybook-static/
@@ -23,4 +24,6 @@ packages/tokens/src/debug-tokens.json
 packages/tokens/src/tokens.generated.ts
 debug-storybook.log
 apps/figma-plugin/coverage
+apps/storybook/coverage
+packages/ui/coverage
 apps/storybook/tests/visual.spec.ts-snapshots/**
