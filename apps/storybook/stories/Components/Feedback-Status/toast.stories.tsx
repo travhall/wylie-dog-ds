@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect } from "storybook/test";
 import {
   Toast,
   ToastAction,
@@ -144,6 +145,38 @@ export const SimpleMessage: Story = {
       <ToastDescription>File uploaded successfully</ToastDescription>
     </Toast>
   ),
+};
+
+export const Triggered: Story = {
+  render: () => {
+    const [visible, setVisible] = useState(false);
+    return (
+      <div className="space-y-4">
+        <Button
+          onClick={() => setVisible(true)}
+        >
+          Show Toast
+        </Button>
+        {visible && (
+          <Toast role="status">
+            <ToastTitle>Scheduled</ToastTitle>
+            <ToastDescription>Your event has been saved.</ToastDescription>
+            <ToastAction onClick={() => setVisible(false)}>Dismiss</ToastAction>
+          </Toast>
+        )}
+      </div>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: /show toast/i });
+    await userEvent.click(button);
+    await new Promise(r => setTimeout(r, 300));
+    expect(document.querySelector('[role="status"]')).toBeTruthy();
+  },
+  parameters: {
+    docs: { description: { story: 'Toasts are triggered imperatively via a button click. This example uses local state since useToast/Toaster are not exported from the package — mount toast markup directly.' } },
+  },
 };
 
 export const LongMessage: Story = {

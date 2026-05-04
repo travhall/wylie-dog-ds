@@ -10,6 +10,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@wyliedog/ui/command";
+import { within, userEvent, expect } from "storybook/test";
 import { Button } from "@wyliedog/ui/button";
 import {
   FileIcon,
@@ -489,6 +490,38 @@ export const CodeEditor: Story = {
           "Code editor command palette with editing, view, and git commands.",
       },
     },
+  },
+};
+
+export const KeyboardNavigation: Story = {
+  render: () => (
+    <Command className="rounded-lg border shadow-md w-72">
+      <CommandInput placeholder="Type a command..." />
+      <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandGroup heading="Suggestions">
+          <CommandItem>Calendar</CommandItem>
+          <CommandItem>Search Emoji</CommandItem>
+          <CommandItem>Calculator</CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('combobox');
+    await userEvent.click(input);
+    await userEvent.type(input, 'cal');
+    expect(canvas.getByText('Calendar')).toBeInTheDocument();
+    await userEvent.clear(input);
+    const allItems = canvas.getAllByRole('option');
+    expect(allItems.length).toBe(3);
+    await userEvent.keyboard('{ArrowDown}');
+    await userEvent.keyboard('{ArrowDown}');
+    await userEvent.keyboard('{Escape}');
+  },
+  parameters: {
+    docs: { description: { story: 'Type to filter results. Arrow keys navigate items. Escape clears focus.' } },
   },
 };
 

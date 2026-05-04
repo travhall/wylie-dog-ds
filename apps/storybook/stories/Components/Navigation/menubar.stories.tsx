@@ -336,6 +336,31 @@ export const WithSubmenus: Story = {
   ),
 };
 
+export const SubmenuNavigation: Story = {
+  render: () => (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>New Tab</MenubarItem>
+          <MenubarSub>
+            <MenubarSubTrigger>Share</MenubarSubTrigger>
+            <MenubarSubContent>
+              <MenubarItem>Email Link</MenubarItem>
+              <MenubarItem>Copy Link</MenubarItem>
+            </MenubarSubContent>
+          </MenubarSub>
+          <MenubarSeparator />
+          <MenubarItem>Quit</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  ),
+  parameters: {
+    docs: { description: { story: 'Submenu opens on hover or ArrowRight. All items are keyboard accessible.' } },
+  },
+};
+
 export const WithInteractions: Story = {
   parameters: {
     docs: {

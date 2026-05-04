@@ -12,6 +12,7 @@
     "dev:css:watch": "tailwindcss -i ./src/styles/index.css -o ./dist/storybook.css --watch",
     "lint": "eslint \"./stories/**/*.stories.tsx\" --max-warnings 0",
     "preview-storybook": "serve storybook-static",
+    "test": "storybook test",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots"
   },

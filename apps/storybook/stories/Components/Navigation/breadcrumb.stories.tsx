@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect } from "storybook/test";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -317,6 +318,40 @@ export const TruncatedPath: Story = {
           "Strategic truncation keeps important context while saving space.",
       },
     },
+  },
+};
+
+export const KeyboardNavigation: Story = {
+  render: () => (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="#">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href="#">Components</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const homeLink = canvas.getByRole('link', { name: /home/i });
+    await userEvent.tab();
+    expect(homeLink).toHaveFocus();
+    await userEvent.tab();
+    const componentsLink = canvas.getByRole('link', { name: /components/i });
+    expect(componentsLink).toHaveFocus();
+    const currentPage = canvas.getByText('Breadcrumb');
+    expect(currentPage).toHaveAttribute('aria-current', 'page');
+  },
+  parameters: {
+    docs: { description: { story: 'Tab moves focus through breadcrumb links in order. Final item has aria-current="page".' } },
   },
 };
 

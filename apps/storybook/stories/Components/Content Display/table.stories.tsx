@@ -1,4 +1,6 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect } from "storybook/test";
 import {
   Table,
   TableBody,
@@ -233,6 +235,56 @@ export const WithActions: Story = {
       </TableBody>
     </Table>
   ),
+};
+
+export const SortableTable: Story = {
+  render: () => {
+    const [sortDir, setSortDir] = React.useState<'asc' | 'desc'>('asc');
+    const data = [
+      { name: 'Charlie', amount: 300 },
+      { name: 'Alice', amount: 100 },
+      { name: 'Bob', amount: 200 },
+    ];
+    const sorted = [...data].sort((a, b) =>
+      sortDir === 'asc' ? a.amount - b.amount : b.amount - a.amount
+    );
+    return (
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Name</TableHead>
+            <TableHead
+              className="cursor-pointer select-none"
+              onClick={() => setSortDir(d => d === 'asc' ? 'desc' : 'asc')}
+              aria-sort={sortDir === 'asc' ? 'ascending' : 'descending'}
+            >
+              Amount {sortDir === 'asc' ? '↑' : '↓'}
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {sorted.map(row => (
+            <TableRow key={row.name}>
+              <TableCell>{row.name}</TableCell>
+              <TableCell>${row.amount}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const amountHeader = canvas.getByRole('columnheader', { name: /amount/i });
+    const rowsBefore = canvas.getAllByRole('row');
+    expect(rowsBefore[1]).toHaveTextContent('Alice');
+    await userEvent.click(amountHeader);
+    const rowsAfter = canvas.getAllByRole('row');
+    expect(rowsAfter[1]).toHaveTextContent('Charlie');
+  },
+  parameters: {
+    docs: { description: { story: 'Click column header to sort ascending/descending. aria-sort reflects current direction.' } },
+  },
 };
 
 export const Empty: Story = {

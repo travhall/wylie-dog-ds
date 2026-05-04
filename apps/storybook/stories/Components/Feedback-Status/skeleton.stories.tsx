@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Skeleton } from "@wyliedog/ui/skeleton";
 import { Card, CardContent, CardHeader } from "@wyliedog/ui/card";
@@ -294,6 +295,35 @@ export const FormLoading: Story = {
       </div>
     </div>
   ),
+};
+
+export const LoadingToContent: Story = {
+  render: () => {
+    const [loaded, setLoaded] = React.useState(false);
+    React.useEffect(() => {
+      const timer = setTimeout(() => setLoaded(true), 1500);
+      return () => clearTimeout(timer);
+    }, []);
+    return (
+      <div className="space-y-3 w-64">
+        {!loaded ? (
+          <>
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-4/5" />
+            <Skeleton className="h-4 w-3/5" />
+          </>
+        ) : (
+          <div className="space-y-3">
+            <p className="text-sm text-(--color-text-primary)">Content has loaded successfully.</p>
+            <p className="text-sm text-(--color-text-secondary)">This is the real content that replaced the skeleton.</p>
+          </div>
+        )}
+      </div>
+    );
+  },
+  parameters: {
+    docs: { description: { story: 'Skeleton placeholder transitions to real content after a simulated load delay.' } },
+  },
 };
 
 export const DashboardLoading: Story = {

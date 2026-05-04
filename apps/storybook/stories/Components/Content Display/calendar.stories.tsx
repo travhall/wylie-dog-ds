@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect } from "storybook/test";
 import { Calendar } from "@wyliedog/ui/calendar";
 import { useState } from "react";
 
@@ -149,6 +150,34 @@ export const WithPreselected: Story = {
         className="rounded-md border"
       />
     );
+  },
+};
+
+export const DateSelection: Story = {
+  render: () => {
+    const [date, setDate] = useState<Date | undefined>(undefined);
+    return (
+      <div className="space-y-4">
+        <Calendar mode="single" selected={date} onSelect={setDate} />
+        <p className="text-sm text-(--color-text-secondary)">
+          {date ? `Selected: ${date.toLocaleDateString()}` : 'No date selected'}
+        </p>
+      </div>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const dayButtons = canvas.getAllByRole('gridcell');
+    const enabledDay = dayButtons.find(
+      btn => !btn.hasAttribute('aria-disabled') && btn.textContent?.trim() !== ''
+    );
+    if (enabledDay) {
+      await userEvent.click(enabledDay);
+      expect(canvas.getByText(/selected:/i)).toBeInTheDocument();
+    }
+  },
+  parameters: {
+    docs: { description: { story: 'Single date selection mode. Selected date is shown below the calendar.' } },
   },
 };
 

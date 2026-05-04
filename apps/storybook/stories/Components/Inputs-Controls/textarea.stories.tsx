@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
 import { Textarea } from "@wyliedog/ui/textarea";
@@ -319,6 +320,45 @@ export const FormExamples: Story = {
       </div>
     </div>
   ),
+};
+
+export const InputInteraction: Story = {
+  render: () => <Textarea placeholder="Type something here..." />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const textarea = canvas.getByRole('textbox');
+    await userEvent.click(textarea);
+    await userEvent.type(textarea, 'Hello, design system!');
+    expect(textarea).toHaveValue('Hello, design system!');
+    await userEvent.clear(textarea);
+    expect(textarea).toHaveValue('');
+  },
+  parameters: {
+    docs: { description: { story: 'Type and clear interactions on a textarea.' } },
+  },
+};
+
+export const CharacterCount: Story = {
+  render: () => {
+    const [value, setValue] = React.useState('');
+    const max = 120;
+    return (
+      <div className="space-y-2">
+        <Textarea
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          maxLength={max}
+          placeholder="Write a short bio..."
+        />
+        <p className="text-xs text-(--color-text-secondary) text-right">
+          {value.length} / {max}
+        </p>
+      </div>
+    );
+  },
+  parameters: {
+    docs: { description: { story: 'Character counter pattern using maxLength and controlled value.' } },
+  },
 };
 
 export const WithInteractions: Story = {

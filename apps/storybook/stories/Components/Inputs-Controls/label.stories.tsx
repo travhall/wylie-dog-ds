@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect } from "storybook/test";
 import { Label } from "@wyliedog/ui/label";
 import { Input } from "@wyliedog/ui/input";
 import { Checkbox } from "@wyliedog/ui/checkbox";
@@ -170,6 +171,25 @@ export const AllSizes: Story = {
       </div>
     </div>
   ),
+};
+
+export const ClickFocusesInput: Story = {
+  render: () => (
+    <div className="flex flex-col gap-2">
+      <Label htmlFor="test-field">Email address</Label>
+      <Input id="test-field" type="email" placeholder="you@example.com" />
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const label = canvas.getByText('Email address');
+    const input = canvas.getByRole('textbox');
+    await userEvent.click(label);
+    expect(input).toHaveFocus();
+  },
+  parameters: {
+    docs: { description: { story: 'Clicking a label focuses its associated input via htmlFor/id association.' } },
+  },
 };
 
 export const WithCheckboxes: Story = {

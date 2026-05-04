@@ -530,6 +530,32 @@ export const Accessibility: Story = {
   },
 };
 
+export const HoverInteraction: Story = {
+  render: () => (
+    <HoverCard>
+      <HoverCardTrigger asChild>
+        <Button variant="link">@wyliedog</Button>
+      </HoverCardTrigger>
+      <HoverCardContent>
+        <p className="text-sm">Design system by Wylie Dog.</p>
+      </HoverCardContent>
+    </HoverCard>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByRole('button', { name: /@wyliedog/i });
+    await userEvent.hover(trigger);
+    await new Promise(r => setTimeout(r, 800));
+    const content = document.querySelector('[data-radix-hover-card-content]');
+    expect(content).toBeInTheDocument();
+    await userEvent.unhover(trigger);
+    await new Promise(r => setTimeout(r, 500));
+  },
+  parameters: {
+    docs: { description: { story: 'Content appears after hover delay and disappears on mouse leave.' } },
+  },
+};
+
 export const WithInteractions: Story = {
   render: () => (
     <div className="flex items-center space-x-4">

@@ -696,6 +696,42 @@ export const Accessibility: Story = {
   },
 };
 
+export const KeyboardNavigation: Story = {
+  render: () => (
+    <RadioGroup defaultValue="option-1">
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="option-1" id="r1" />
+        <Label htmlFor="r1">Option One</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="option-2" id="r2" />
+        <Label htmlFor="r2">Option Two</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="option-3" id="r3" />
+        <Label htmlFor="r3">Option Three</Label>
+      </div>
+    </RadioGroup>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const firstRadio = canvas.getByRole('radio', { name: /option one/i });
+    await userEvent.click(firstRadio);
+    expect(firstRadio).toBeChecked();
+    await userEvent.keyboard('{ArrowDown}');
+    const secondRadio = canvas.getByRole('radio', { name: /option two/i });
+    expect(secondRadio).toBeChecked();
+    await userEvent.keyboard('{ArrowDown}');
+    const thirdRadio = canvas.getByRole('radio', { name: /option three/i });
+    expect(thirdRadio).toBeChecked();
+    await userEvent.keyboard('{ArrowUp}');
+    expect(secondRadio).toBeChecked();
+  },
+  parameters: {
+    docs: { description: { story: 'Arrow keys move selection within the group. Tab exits the group.' } },
+  },
+};
+
 export const WithInteractions: Story = {
   parameters: {
     docs: {
