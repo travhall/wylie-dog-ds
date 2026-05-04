@@ -14,7 +14,7 @@
     "clean:dist": "rm -rf dist",
     "dev": "pnpm run clean:dist && pnpm run build && pnpm run build:watch",
     "lint": "eslint src --ext .ts,.tsx --max-warnings 0",
-    "test": "vitest",
+    "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:run": "vitest run",
     "test:ui": "vitest --ui",
