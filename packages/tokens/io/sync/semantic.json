@@ -1046,6 +1046,60 @@
             "Dark": "{opacity.80}"
           },
           "$description": "Heavy scrim opacity for modal backdrops"
+        },
+        "typography.font-size.display.lg": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.6xl}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.6xl}",
+            "Dark": "{typography.font-size.6xl}"
+          },
+          "$description": "Display Large — hero H1 at largest breakpoint (60px)"
+        },
+        "typography.font-size.display.md": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.5xl}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.5xl}",
+            "Dark": "{typography.font-size.5xl}"
+          },
+          "$description": "Display Medium — hero H1 at medium breakpoint (48px)"
+        },
+        "typography.font-size.display.sm": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.4xl}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.4xl}",
+            "Dark": "{typography.font-size.4xl}"
+          },
+          "$description": "Display Small — hero H1 base or section H2 large (36px)"
+        },
+        "typography.font-size.heading.lg": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.3xl}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.3xl}",
+            "Dark": "{typography.font-size.3xl}"
+          },
+          "$description": "Heading Large — section H2 base breakpoint (30px)"
+        },
+        "typography.font-size.heading.md": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.2xl}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.2xl}",
+            "Dark": "{typography.font-size.2xl}"
+          },
+          "$description": "Heading Medium — subheadings and prominent labels (24px)"
+        },
+        "typography.font-size.heading.sm": {
+          "$type": "fontSize",
+          "$value": "{typography.font-size.xl}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.xl}",
+            "Dark": "{typography.font-size.xl}"
+          },
+          "$description": "Heading Small — card titles and feature item headings (20px)"
         }
       }
     }

@@ -5,7 +5,7 @@ import { cn } from "./lib/utils";
 
 export const badgeVariants = cva(
   cn(
-    "inline-flex items-center border font-semibold transition-colors",
+    "inline-flex items-center border font-(--font-weight-semibold) transition-colors",
     "rounded-(--space-badge-radius)"
   ),
   {

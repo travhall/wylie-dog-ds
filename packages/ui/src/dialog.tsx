@@ -171,7 +171,7 @@ export const DialogTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "font-semibold leading-none tracking-tight text-(--color-dialog-title)",
+      "font-semibold leading-(--line-height-none) tracking-(--space-typography-tracking-tight) text-(--color-dialog-title)",
       "text-(length:--font-size-dialog-title-font-size)",
       className
     )}

@@ -480,7 +480,7 @@ export const spacing = {
   "icon-radius": "12px",
   "label-gap": "8px",
   "error-margin": "4px",
-  "content-gap": "16px",
+  "content-gap": "4px",
   "title-margin-bottom": "4px",
   "required-margin-left": "4px",
   "item-indicator-margin-right": "8px",
@@ -512,7 +512,14 @@ export const spacing = {
   "close-button-offset": "16px",
   "close-button-icon-size": "16px",
   "fieldset-gap": "24px",
-  "item-indicator-left": "8px"
+  "item-indicator-left": "8px",
+  "viewport-padding": "16px",
+  "viewport-gap": "8px",
+  "handle-height": "16px",
+  "handle-width": "12px",
+  "icon-container-size": "48px",
+  "radio-indicator-size": "8px",
+  "indicator-height": "6px"
 };
 
 export const shadow = {
@@ -546,6 +553,12 @@ export const fontSize = {
   "font-size-4xl": "36px",
   "font-size-5xl": "48px",
   "font-size-6xl": "60px",
+  "font-size-display-lg": "60px",
+  "font-size-display-md": "48px",
+  "font-size-display-sm": "36px",
+  "font-size-heading-lg": "30px",
+  "font-size-heading-md": "24px",
+  "font-size-heading-sm": "20px",
   "font-size-md": "16px",
   "header-title-font-size": "20px",
   "header-description-font-size": "14px",

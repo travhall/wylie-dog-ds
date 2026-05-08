@@ -83,7 +83,7 @@ export const AlertTitle = React.forwardRef<HTMLHeadingElement, AlertTitleProps>(
     <h5
       ref={ref}
       className={cn(
-        "mb-(--space-alert-title-margin-bottom) text-(length:--font-size-alert-title-font-size) font-medium leading-none tracking-tight",
+        "mb-(--space-alert-title-margin-bottom) text-(length:--font-size-alert-title-font-size) font-medium leading-(--line-height-none) tracking-(--space-typography-tracking-tight)",
         className
       )}
       {...props}
@@ -101,7 +101,7 @@ export const AlertDescription = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "text-(length:--font-size-alert-description-font-size) opacity-90",
+      "text-(length:--font-size-alert-description-font-size) opacity-(--opacity-90)",
       className
     )}
     {...props}

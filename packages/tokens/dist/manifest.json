@@ -5336,6 +5336,18 @@
         "type": "fontSize",
         "variable": "var(--menubar-item-font-size)",
         "description": ""
+      },
+      "menubar-radio-indicator-size": {
+        "name": "menubarRadioIndicatorSize",
+        "path": [
+          "menubar",
+          "radio",
+          "indicator-size"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--menubar-radio-indicator-size)",
+        "description": ""
       }
     },
     "navigation": {
@@ -8210,6 +8222,30 @@
         "type": "dimension",
         "variable": "var(--resizable-handle-radius)",
         "description": ""
+      },
+      "resizable-handle-height": {
+        "name": "resizableHandleHeight",
+        "path": [
+          "resizable",
+          "handle",
+          "height"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--resizable-handle-height)",
+        "description": ""
+      },
+      "resizable-handle-width": {
+        "name": "resizableHandleWidth",
+        "path": [
+          "resizable",
+          "handle",
+          "width"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--resizable-handle-width)",
+        "description": ""
       }
     },
     "scrollbar": {
@@ -8995,6 +9031,42 @@
         "value": "oklch(1 0 0)",
         "type": "color",
         "variable": "var(--color-toast-default-background)",
+        "description": ""
+      },
+      "toast-viewport-padding": {
+        "name": "toastViewportPadding",
+        "path": [
+          "toast",
+          "viewport",
+          "padding"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--toast-viewport-padding)",
+        "description": ""
+      },
+      "toast-viewport-gap": {
+        "name": "toastViewportGap",
+        "path": [
+          "toast",
+          "viewport",
+          "gap"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--toast-viewport-gap)",
+        "description": ""
+      },
+      "toast-content-gap": {
+        "name": "toastContentGap",
+        "path": [
+          "toast",
+          "content",
+          "gap"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--toast-content-gap)",
         "description": ""
       }
     },
@@ -10798,6 +10870,17 @@
         "type": "fontSize",
         "variable": "var(--feature-grid-description-font-size)",
         "description": ""
+      },
+      "feature-grid-icon-container-size": {
+        "name": "featureGridIconContainerSize",
+        "path": [
+          "feature-grid",
+          "icon-container-size"
+        ],
+        "value": "48px",
+        "type": "spacing",
+        "variable": "var(--feature-grid-icon-container-size)",
+        "description": ""
       }
     },
     "alert-dialog": {
@@ -10968,6 +11051,18 @@
         "value": "14px",
         "type": "fontSize",
         "variable": "var(--navigation-menu-trigger-font-size)",
+        "description": ""
+      },
+      "navigation-menu-indicator-height": {
+        "name": "navigationMenuIndicatorHeight",
+        "path": [
+          "navigation-menu",
+          "indicator",
+          "height"
+        ],
+        "value": "6px",
+        "type": "dimension",
+        "variable": "var(--navigation-menu-indicator-height)",
         "description": ""
       }
     },

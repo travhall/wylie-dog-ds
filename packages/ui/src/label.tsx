@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
 export const labelVariants = cva(
-  "font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:text-(--color-label-disabled-color)",
+  "font-medium leading-(--line-height-none) peer-disabled:cursor-not-allowed peer-disabled:text-(--color-label-disabled-color)",
   {
     variants: {
       size: {

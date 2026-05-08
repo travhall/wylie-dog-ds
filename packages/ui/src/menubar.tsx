@@ -169,7 +169,7 @@ const MenubarRadioItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-(--space-menubar-item-indicator-size) w-(--space-menubar-item-indicator-size) items-center justify-center">
       <MenubarPrimitive.ItemIndicator>
-        <CircleIcon className="h-2 w-2 fill-current" />
+        <CircleIcon className="h-(--space-menubar-radio-indicator-size) w-(--space-menubar-radio-indicator-size) fill-current" />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}

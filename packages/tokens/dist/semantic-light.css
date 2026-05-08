@@ -392,6 +392,12 @@
   --opacity-subtle: 0.6;
   --opacity-overlay: 0.4;
   --opacity-scrim: 0.8;
+  --font-size-display-lg: 60px;
+  --font-size-display-md: 48px;
+  --font-size-display-sm: 36px;
+  --font-size-heading-lg: 30px;
+  --font-size-heading-md: 24px;
+  --font-size-heading-sm: 20px;
 }
 
 :root {
@@ -1045,4 +1051,12 @@
   --color-label-default-color: oklch(0.446 0.037 257.29);
   --space-context-menu-sub-content-min-width: 96px;
   --space-command-item-padding-y: 4px;
+  --space-toast-viewport-padding: 16px;
+  --space-toast-viewport-gap: 8px;
+  --space-toast-content-gap: 4px;
+  --space-resizable-handle-height: 16px;
+  --space-resizable-handle-width: 12px;
+  --space-feature-grid-icon-container-size: 48px;
+  --space-menubar-radio-indicator-size: 8px;
+  --space-navigation-menu-indicator-height: 6px;
 }

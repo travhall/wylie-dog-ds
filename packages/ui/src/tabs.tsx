@@ -44,7 +44,7 @@ TabsList.displayName = TabsPrimitive.List.displayName;
 
 export const tabsTriggerVariants = cva(
   cn(
-    "inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-all",
+    "inline-flex items-center justify-center whitespace-nowrap font-(--font-weight-medium) ring-offset-background transition-all",
     "border-b-(--space-tabs-trigger-indicator-width) border-transparent",
     "-mb-[1px]",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",

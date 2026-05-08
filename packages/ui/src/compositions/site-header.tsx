@@ -3,18 +3,21 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 import { Button } from "../button";
 
-export const siteHeaderVariants = cva("w-full transition-colors duration-200", {
-  variants: {
-    variant: {
-      default:
-        "bg-(--color-background-primary) border-b border-(--color-border-primary) sticky top-0 z-(--z-index-sticky) backdrop-blur supports-[backdrop-filter]:bg-(--color-background-primary)/95",
-      transparent: "bg-transparent border-b border-transparent",
+export const siteHeaderVariants = cva(
+  "w-full transition-colors duration-(--duration-duration-200)",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-(--color-background-primary) border-b border-(--color-border-primary) sticky top-0 z-(--z-index-sticky) backdrop-blur supports-[backdrop-filter]:bg-(--color-background-primary)/95",
+        transparent: "bg-transparent border-b border-transparent",
+      },
     },
-  },
-  defaultVariants: {
-    variant: "default",
-  },
-});
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -48,7 +51,9 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
             <div className="flex items-center">
               {logo || (
                 <a href="/" className="flex items-center space-x-2">
-                  <span className="text-xl font-bold">Logo</span>
+                  <span className="text-(length:--font-size-heading-sm) font-(--font-weight-bold)">
+                    Logo
+                  </span>
                 </a>
               )}
             </div>
@@ -61,7 +66,7 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
                     <NavigationMenuItem key={index}>
                       <NavigationMenuLink
                         href={item.href}
-                        className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-(--color-background-primary) px-4 py-2 text-sm font-medium transition-colors hover:bg-(--color-interactive-secondary) hover:text-(--color-text-primary) focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary) focus:outline-none disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)"
+                        className="group inline-flex h-9 w-max items-center justify-center rounded-(--border-radius-md) bg-(--color-background-primary) px-4 py-2 text-(length:--font-size-sm) font-(--font-weight-medium) transition-colors hover:bg-(--color-interactive-secondary) hover:text-(--color-text-primary) focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary) focus:outline-none disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)"
                       >
                         {item.label}
                       </NavigationMenuLink>

@@ -5211,6 +5211,70 @@
             "Light": "{space.050}",
             "Dark": "{space.050}"
           }
+        },
+        "toast.viewport.padding": {
+          "$type": "spacing",
+          "$value": "{space.200}",
+          "valuesByMode": {
+            "Light": "{space.200}",
+            "Dark": "{space.200}"
+          }
+        },
+        "toast.viewport.gap": {
+          "$type": "spacing",
+          "$value": "{space.100}",
+          "valuesByMode": {
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
+          }
+        },
+        "toast.content.gap": {
+          "$type": "spacing",
+          "$value": "{space.050}",
+          "valuesByMode": {
+            "Light": "{space.050}",
+            "Dark": "{space.050}"
+          }
+        },
+        "resizable.handle.height": {
+          "$type": "spacing",
+          "$value": "{space.200}",
+          "valuesByMode": {
+            "Light": "{space.200}",
+            "Dark": "{space.200}"
+          }
+        },
+        "resizable.handle.width": {
+          "$type": "spacing",
+          "$value": "{space.150}",
+          "valuesByMode": {
+            "Light": "{space.150}",
+            "Dark": "{space.150}"
+          }
+        },
+        "feature-grid.icon-container-size": {
+          "$type": "spacing",
+          "$value": "{space.600}",
+          "valuesByMode": {
+            "Light": "{space.600}",
+            "Dark": "{space.600}"
+          }
+        },
+        "menubar.radio.indicator-size": {
+          "$type": "spacing",
+          "$value": "{space.100}",
+          "valuesByMode": {
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
+          }
+        },
+        "navigation-menu.indicator.height": {
+          "$type": "dimension",
+          "$value": "6px",
+          "valuesByMode": {
+            "Light": "6px",
+            "Dark": "6px"
+          }
         }
       }
     }

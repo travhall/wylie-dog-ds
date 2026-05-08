@@ -533,6 +533,9 @@ export type CssVarName =
   | "--font-size-context-menu-shortcut-font-size"
   | "--font-size-dialog-description-font-size"
   | "--font-size-dialog-title-font-size"
+  | "--font-size-display-lg"
+  | "--font-size-display-md"
+  | "--font-size-display-sm"
   | "--font-size-dropdown-menu-item-font-size"
   | "--font-size-dropdown-menu-shortcut-font-size"
   | "--font-size-feature-grid-description-font-size"
@@ -542,6 +545,9 @@ export type CssVarName =
   | "--font-size-form-fieldset-legend-font-size"
   | "--font-size-form-hint-font-size"
   | "--font-size-form-label-font-size"
+  | "--font-size-heading-lg"
+  | "--font-size-heading-md"
+  | "--font-size-heading-sm"
   | "--font-size-input-font-size-lg"
   | "--font-size-input-font-size-md"
   | "--font-size-input-font-size-sm"
@@ -769,6 +775,7 @@ export type CssVarName =
   | "--space-dropdown-menu-separator-margin-x"
   | "--space-dropdown-menu-separator-margin-y"
   | "--space-feature-grid-container-gap"
+  | "--space-feature-grid-icon-container-size"
   | "--space-feature-grid-icon-radius"
   | "--space-feature-grid-item-gap"
   | "--space-feature-grid-item-padding"
@@ -806,6 +813,7 @@ export type CssVarName =
   | "--space-menubar-item-padding-y"
   | "--space-menubar-item-radius"
   | "--space-menubar-list-gap"
+  | "--space-menubar-radio-indicator-size"
   | "--space-menubar-root-height"
   | "--space-menubar-root-padding"
   | "--space-menubar-separator-height"
@@ -817,6 +825,7 @@ export type CssVarName =
   | "--space-menubar-trigger-padding-x"
   | "--space-menubar-trigger-padding-y"
   | "--space-menubar-trigger-radius"
+  | "--space-navigation-menu-indicator-height"
   | "--space-navigation-menu-indicator-margin-left"
   | "--space-navigation-menu-indicator-margin-top"
   | "--space-navigation-menu-list-gap"
@@ -848,7 +857,9 @@ export type CssVarName =
   | "--space-radio-size-lg"
   | "--space-radio-size-md"
   | "--space-radio-size-sm"
+  | "--space-resizable-handle-height"
   | "--space-resizable-handle-radius"
+  | "--space-resizable-handle-width"
   | "--space-scroll-area-scrollbar-padding"
   | "--space-scrollbar-radius"
   | "--space-scrollbar-thumb-min-height"
@@ -979,9 +990,12 @@ export type CssVarName =
   | "--space-toast-close-padding"
   | "--space-toast-close-radius"
   | "--space-toast-close-size"
+  | "--space-toast-content-gap"
   | "--space-toast-gap"
   | "--space-toast-padding"
   | "--space-toast-radius"
+  | "--space-toast-viewport-gap"
+  | "--space-toast-viewport-padding"
   | "--space-toast-width"
   | "--space-toggle-group-gap"
   | "--space-toggle-group-item-padding-x"
@@ -1569,6 +1583,9 @@ export declare const cssVars: Readonly<{
   "fontSizeContextMenuShortcutFontSize": "--font-size-context-menu-shortcut-font-size";
   "fontSizeDialogDescriptionFontSize": "--font-size-dialog-description-font-size";
   "fontSizeDialogTitleFontSize": "--font-size-dialog-title-font-size";
+  "fontSizeDisplayLg": "--font-size-display-lg";
+  "fontSizeDisplayMd": "--font-size-display-md";
+  "fontSizeDisplaySm": "--font-size-display-sm";
   "fontSizeDropdownMenuItemFontSize": "--font-size-dropdown-menu-item-font-size";
   "fontSizeDropdownMenuShortcutFontSize": "--font-size-dropdown-menu-shortcut-font-size";
   "fontSizeFeatureGridDescriptionFontSize": "--font-size-feature-grid-description-font-size";
@@ -1578,6 +1595,9 @@ export declare const cssVars: Readonly<{
   "fontSizeFormFieldsetLegendFontSize": "--font-size-form-fieldset-legend-font-size";
   "fontSizeFormHintFontSize": "--font-size-form-hint-font-size";
   "fontSizeFormLabelFontSize": "--font-size-form-label-font-size";
+  "fontSizeHeadingLg": "--font-size-heading-lg";
+  "fontSizeHeadingMd": "--font-size-heading-md";
+  "fontSizeHeadingSm": "--font-size-heading-sm";
   "fontSizeInputFontSizeLg": "--font-size-input-font-size-lg";
   "fontSizeInputFontSizeMd": "--font-size-input-font-size-md";
   "fontSizeInputFontSizeSm": "--font-size-input-font-size-sm";
@@ -1805,6 +1825,7 @@ export declare const cssVars: Readonly<{
   "spaceDropdownMenuSeparatorMarginX": "--space-dropdown-menu-separator-margin-x";
   "spaceDropdownMenuSeparatorMarginY": "--space-dropdown-menu-separator-margin-y";
   "spaceFeatureGridContainerGap": "--space-feature-grid-container-gap";
+  "spaceFeatureGridIconContainerSize": "--space-feature-grid-icon-container-size";
   "spaceFeatureGridIconRadius": "--space-feature-grid-icon-radius";
   "spaceFeatureGridItemGap": "--space-feature-grid-item-gap";
   "spaceFeatureGridItemPadding": "--space-feature-grid-item-padding";
@@ -1842,6 +1863,7 @@ export declare const cssVars: Readonly<{
   "spaceMenubarItemPaddingY": "--space-menubar-item-padding-y";
   "spaceMenubarItemRadius": "--space-menubar-item-radius";
   "spaceMenubarListGap": "--space-menubar-list-gap";
+  "spaceMenubarRadioIndicatorSize": "--space-menubar-radio-indicator-size";
   "spaceMenubarRootHeight": "--space-menubar-root-height";
   "spaceMenubarRootPadding": "--space-menubar-root-padding";
   "spaceMenubarSeparatorHeight": "--space-menubar-separator-height";
@@ -1853,6 +1875,7 @@ export declare const cssVars: Readonly<{
   "spaceMenubarTriggerPaddingX": "--space-menubar-trigger-padding-x";
   "spaceMenubarTriggerPaddingY": "--space-menubar-trigger-padding-y";
   "spaceMenubarTriggerRadius": "--space-menubar-trigger-radius";
+  "spaceNavigationMenuIndicatorHeight": "--space-navigation-menu-indicator-height";
   "spaceNavigationMenuIndicatorMarginLeft": "--space-navigation-menu-indicator-margin-left";
   "spaceNavigationMenuIndicatorMarginTop": "--space-navigation-menu-indicator-margin-top";
   "spaceNavigationMenuListGap": "--space-navigation-menu-list-gap";
@@ -1884,7 +1907,9 @@ export declare const cssVars: Readonly<{
   "spaceRadioSizeLg": "--space-radio-size-lg";
   "spaceRadioSizeMd": "--space-radio-size-md";
   "spaceRadioSizeSm": "--space-radio-size-sm";
+  "spaceResizableHandleHeight": "--space-resizable-handle-height";
   "spaceResizableHandleRadius": "--space-resizable-handle-radius";
+  "spaceResizableHandleWidth": "--space-resizable-handle-width";
   "spaceScrollAreaScrollbarPadding": "--space-scroll-area-scrollbar-padding";
   "spaceScrollbarRadius": "--space-scrollbar-radius";
   "spaceScrollbarThumbMinHeight": "--space-scrollbar-thumb-min-height";
@@ -2015,9 +2040,12 @@ export declare const cssVars: Readonly<{
   "spaceToastClosePadding": "--space-toast-close-padding";
   "spaceToastCloseRadius": "--space-toast-close-radius";
   "spaceToastCloseSize": "--space-toast-close-size";
+  "spaceToastContentGap": "--space-toast-content-gap";
   "spaceToastGap": "--space-toast-gap";
   "spaceToastPadding": "--space-toast-padding";
   "spaceToastRadius": "--space-toast-radius";
+  "spaceToastViewportGap": "--space-toast-viewport-gap";
+  "spaceToastViewportPadding": "--space-toast-viewport-padding";
   "spaceToastWidth": "--space-toast-width";
   "spaceToggleGroupGap": "--space-toggle-group-gap";
   "spaceToggleGroupItemPaddingX": "--space-toggle-group-item-padding-x";

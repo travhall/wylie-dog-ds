@@ -59,12 +59,12 @@ export const SectionFeatures = React.forwardRef<
           {(title || description) && (
             <div className="text-center max-w-3xl mx-auto mb-16">
               {title && (
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+                <h2 className="text-(length:--font-size-heading-lg) md:text-(length:--font-size-display-sm) lg:text-(length:--font-size-display-md) font-(--font-weight-bold) tracking-(--space-typography-tracking-tight) mb-4">
                   {title}
                 </h2>
               )}
               {description && (
-                <p className="text-lg text-(--color-text-secondary)">
+                <p className="text-(length:--font-size-lg) text-(--color-text-secondary)">
                   {description}
                 </p>
               )}
@@ -80,7 +80,7 @@ export const SectionFeatures = React.forwardRef<
                     <CardHeader>
                       <div className="flex items-start justify-between mb-2">
                         {feature.icon && (
-                          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4">
+                          <div className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-interactive-primary)/10 text-(--color-interactive-primary) mb-4">
                             {feature.icon}
                           </div>
                         )}
@@ -88,7 +88,9 @@ export const SectionFeatures = React.forwardRef<
                           <Badge variant="secondary">{feature.badge}</Badge>
                         )}
                       </div>
-                      <CardTitle className="text-xl">{feature.title}</CardTitle>
+                      <CardTitle className="text-(length:--font-size-heading-sm)">
+                        {feature.title}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-(--color-text-secondary)">
@@ -105,7 +107,7 @@ export const SectionFeatures = React.forwardRef<
                     {/* Icon and Badge Row */}
                     <div className="flex items-start justify-between">
                       {feature.icon && (
-                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <div className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-interactive-primary)/10 text-(--color-interactive-primary)">
                           {feature.icon}
                         </div>
                       )}
@@ -115,7 +117,9 @@ export const SectionFeatures = React.forwardRef<
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-semibold">{feature.title}</h3>
+                    <h3 className="text-(length:--font-size-heading-sm) font-(--font-weight-semibold)">
+                      {feature.title}
+                    </h3>
 
                     {/* Description */}
                     <p className="text-(--color-text-secondary)">

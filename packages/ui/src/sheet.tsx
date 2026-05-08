@@ -9,7 +9,7 @@ export const sheetContentVariants = cva(
     "gap-(--space-sheet-header-gap)",
     "p-(--space-sheet-content-padding)",
     "data-[state=open]:animate-in data-[state=closed]:animate-out",
-    "data-[state=closed]:duration-300 data-[state=open]:duration-500"
+    "data-[state=closed]:duration-(--duration-duration-300) data-[state=open]:duration-(--duration-duration-500)"
   ),
   {
     variants: {

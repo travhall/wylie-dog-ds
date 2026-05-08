@@ -63,7 +63,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       number: [
         "[&::-webkit-inner-spin-button]:appearance-auto",
         "[&::-webkit-outer-spin-button]:appearance-auto",
-        "[&::-webkit-inner-spin-button]:opacity-100",
+        "[&::-webkit-inner-spin-button]:opacity-(--opacity-100)",
       ].join(" "),
       search: "appearance-none",
       date: "[&::-webkit-calendar-picker-indicator]:cursor-pointer",

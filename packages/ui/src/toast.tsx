@@ -60,7 +60,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
         "h-(--space-toast-action-height)",
         "px-(--space-toast-action-padding-x)",
         "text-(length:--font-size-toast-action-font-size)",
-        "font-medium",
+        "font-(--font-weight-medium)",
         className
       )}
       {...props}
@@ -100,7 +100,7 @@ const ToastTitle = React.forwardRef<HTMLDivElement, ToastTitleProps>(
     <div
       ref={ref}
       className={cn(
-        "font-semibold",
+        "font-(--font-weight-semibold)",
         "text-(length:--font-size-toast-title-font-size)",
         className
       )}
@@ -182,13 +182,13 @@ export function Toaster() {
   if (toasts.length === 0) return null;
   return (
     <div
-      className="fixed bottom-0 right-0 z-50 flex max-h-screen w-full flex-col-reverse gap-2 p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"
+      className="fixed bottom-0 right-0 z-(--z-index-toast) flex max-h-screen w-full flex-col-reverse gap-(--space-toast-viewport-gap) p-(--space-toast-viewport-padding) sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"
       aria-live="polite"
       aria-label="Notifications"
     >
       {toasts.map((t) => (
         <Toast key={t.id} variant={t.variant} role="status" aria-atomic="true">
-          <div className="grid gap-1">
+          <div className="grid gap-(--space-toast-content-gap)">
             {t.title && <ToastTitle>{t.title}</ToastTitle>}
             {t.description && (
               <ToastDescription>{t.description}</ToastDescription>

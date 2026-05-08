@@ -69,10 +69,12 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                 <div className="col-span-2 md:col-span-1">
                   {logo || (
                     <div className="mb-4">
-                      <span className="text-lg font-bold">Logo</span>
+                      <span className="text-(length:--font-size-lg) font-(--font-weight-bold)">
+                        Logo
+                      </span>
                     </div>
                   )}
-                  <p className="text-sm text-(--color-text-secondary)">
+                  <p className="text-(length:--font-size-sm) text-(--color-text-secondary)">
                     Building amazing experiences with modern design systems.
                   </p>
                 </div>
@@ -80,7 +82,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                 {/* Footer Columns */}
                 {columns.map((column, index) => (
                   <div key={index}>
-                    <h3 className="font-semibold text-sm mb-4">
+                    <h3 className="font-(--font-weight-semibold) text-(length:--font-size-sm) mb-4">
                       {column.title}
                     </h3>
                     <ul className="space-y-2">
@@ -105,7 +107,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
 
           {/* Bottom Bar */}
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-(--color-text-secondary)">
+            <p className="text-(length:--font-size-sm) text-(--color-text-secondary)">
               {copyrightText}
             </p>
 
