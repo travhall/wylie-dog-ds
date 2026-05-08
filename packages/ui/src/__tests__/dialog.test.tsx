@@ -552,7 +552,7 @@ describe("Dialog", () => {
           "text-(length:--font-size-dialog-title-font-size)"
         );
         expect(title).toHaveClass("font-semibold");
-        expect(title).toHaveClass("leading-none");
+        expect(title).toHaveClass("leading-(--line-height-none)");
       });
     });
 

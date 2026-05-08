@@ -259,7 +259,9 @@ describe("Input", () => {
       expect(input).toHaveClass(
         "[&::-webkit-outer-spin-button]:appearance-auto"
       );
-      expect(input).toHaveClass("[&::-webkit-inner-spin-button]:opacity-100");
+      expect(input).toHaveClass(
+        "[&::-webkit-inner-spin-button]:opacity-(--opacity-100)"
+      );
     });
 
     it("should apply appearance-none for search type", () => {

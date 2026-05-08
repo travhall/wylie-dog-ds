@@ -2,7 +2,15 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { vi } from "vitest";
-import { Card, CardHeader, CardTitle, CardContent } from "../card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+  cardVariants,
+} from "../card";
 
 expect.extend(toHaveNoViolations);
 
@@ -268,6 +276,323 @@ describe("Card", () => {
       expect(screen.getByText("Paragraph 2")).toBeInTheDocument();
       expect(screen.getByText("Item 1")).toBeInTheDocument();
       expect(screen.getByText("Item 2")).toBeInTheDocument();
+    });
+  });
+
+  describe("CardDescription Component", () => {
+    it("should render as paragraph element", () => {
+      render(
+        <Card>
+          <CardHeader>
+            <CardDescription>Description text</CardDescription>
+          </CardHeader>
+        </Card>
+      );
+      const desc = screen.getByText("Description text");
+      expect(desc.tagName).toBe("P");
+    });
+
+    it("should apply custom className", () => {
+      render(
+        <Card>
+          <CardHeader>
+            <CardDescription className="custom-desc">
+              Description
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      );
+      expect(screen.getByText("Description")).toHaveClass("custom-desc");
+    });
+
+    it("should forward ref correctly", () => {
+      const ref = React.createRef<HTMLParagraphElement>();
+      render(
+        <Card>
+          <CardHeader>
+            <CardDescription ref={ref}>Description</CardDescription>
+          </CardHeader>
+        </Card>
+      );
+      expect(ref.current).toBeInstanceOf(HTMLParagraphElement);
+    });
+
+    it("should apply description token classes", () => {
+      render(
+        <Card>
+          <CardHeader>
+            <CardDescription>Description</CardDescription>
+          </CardHeader>
+        </Card>
+      );
+      const desc = screen.getByText("Description");
+      expect(desc).toHaveClass(
+        "text-(length:--font-size-card-header-description-font-size)"
+      );
+      expect(desc).toHaveClass("text-(--color-card-header-description-color)");
+    });
+  });
+
+  describe("CardFooter Component", () => {
+    it("should render with children", () => {
+      render(
+        <Card>
+          <CardFooter>Footer content</CardFooter>
+        </Card>
+      );
+      expect(screen.getByText("Footer content")).toBeInTheDocument();
+    });
+
+    it("should apply custom className", () => {
+      render(
+        <Card>
+          <CardFooter className="custom-footer">Footer</CardFooter>
+        </Card>
+      );
+      expect(screen.getByText("Footer")).toHaveClass("custom-footer");
+    });
+
+    it("should forward ref correctly", () => {
+      const ref = React.createRef<HTMLDivElement>();
+      render(
+        <Card>
+          <CardFooter ref={ref}>Footer</CardFooter>
+        </Card>
+      );
+      expect(ref.current).toBeInstanceOf(HTMLDivElement);
+    });
+
+    it("should apply flex layout by default", () => {
+      const { container } = render(
+        <Card>
+          <CardFooter>Footer</CardFooter>
+        </Card>
+      );
+      const footer = container.querySelector('[class*="flex items-center"]');
+      expect(footer).toBeInTheDocument();
+    });
+
+    it("should render multiple footer actions", () => {
+      render(
+        <Card>
+          <CardFooter>
+            <button>Cancel</button>
+            <button>Submit</button>
+          </CardFooter>
+        </Card>
+      );
+      expect(screen.getByText("Cancel")).toBeInTheDocument();
+      expect(screen.getByText("Submit")).toBeInTheDocument();
+    });
+  });
+
+  describe("Interactive Prop", () => {
+    it("should apply cursor-pointer and transition-colors when interactive", () => {
+      const { container } = render(<Card interactive>Content</Card>);
+      const card = container.firstChild as HTMLElement;
+      expect(card).toHaveClass("cursor-pointer");
+      expect(card).toHaveClass("transition-colors");
+    });
+
+    it("should apply hover state token class when interactive", () => {
+      const { container } = render(<Card interactive>Content</Card>);
+      const card = container.firstChild as HTMLElement;
+      expect(card).toHaveClass("hover:bg-(--color-card-background-hover)");
+    });
+
+    it("should apply focus state token classes when interactive", () => {
+      const { container } = render(<Card interactive>Content</Card>);
+      const card = container.firstChild as HTMLElement;
+      expect(card).toHaveClass("focus:bg-(--color-card-background-focus)");
+      expect(card).toHaveClass("focus:outline-none");
+      expect(card).toHaveClass("focus:ring-(length:--space-focus-ring-width)");
+      expect(card).toHaveClass("focus:ring-(--color-border-focus)");
+    });
+
+    it("should apply active and disabled state token classes when interactive", () => {
+      const { container } = render(<Card interactive>Content</Card>);
+      const card = container.firstChild as HTMLElement;
+      expect(card).toHaveClass("active:bg-(--color-card-background-active)");
+      expect(card).toHaveClass(
+        "disabled:bg-(--color-card-background-disabled)"
+      );
+    });
+
+    it("should auto-inject role=button and tabIndex=0 when interactive without asChild", () => {
+      const { container } = render(<Card interactive>Content</Card>);
+      const card = container.firstChild as HTMLElement;
+      expect(card).toHaveAttribute("role", "button");
+      expect(card).toHaveAttribute("tabindex", "0");
+    });
+
+    it("should not inject role or tabIndex when interactive is false (default)", () => {
+      const { container } = render(<Card>Content</Card>);
+      const card = container.firstChild as HTMLElement;
+      expect(card).not.toHaveAttribute("role", "button");
+      expect(card).not.toHaveAttribute("tabindex");
+    });
+
+    it("should not apply interactive classes when interactive is false", () => {
+      const { container } = render(<Card>Content</Card>);
+      const card = container.firstChild as HTMLElement;
+      expect(card).not.toHaveClass("cursor-pointer");
+      expect(card).not.toHaveClass("hover:bg-(--color-card-background-hover)");
+    });
+
+    it("should handle click events when interactive", () => {
+      const handleClick = vi.fn();
+      render(
+        <Card interactive onClick={handleClick}>
+          Content
+        </Card>
+      );
+      fireEvent.click(screen.getByRole("button"));
+      expect(handleClick).toHaveBeenCalledTimes(1);
+    });
+
+    it("should handle keyboard events when interactive", () => {
+      const handleKeyDown = vi.fn();
+      render(
+        <Card interactive onKeyDown={handleKeyDown}>
+          Content
+        </Card>
+      );
+      fireEvent.keyDown(screen.getByRole("button"), { key: "Enter" });
+      expect(handleKeyDown).toHaveBeenCalledTimes(1);
+    });
+
+    it("should pass accessibility audit when interactive with aria-label", async () => {
+      const { container } = render(
+        <Card interactive aria-label="Select premium plan">
+          <CardHeader>
+            <CardTitle>Premium Plan</CardTitle>
+          </CardHeader>
+          <CardContent>Click to select</CardContent>
+        </Card>
+      );
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+  });
+
+  describe("asChild Prop", () => {
+    it("should render as button when asChild with <button>", () => {
+      const { container } = render(
+        <Card asChild>
+          <button type="button">Content</button>
+        </Card>
+      );
+      expect((container.firstChild as HTMLElement).tagName).toBe("BUTTON");
+    });
+
+    it("should render as anchor when asChild with <a>", () => {
+      const { container } = render(
+        <Card asChild>
+          <a href="#demo">Content</a>
+        </Card>
+      );
+      expect((container.firstChild as HTMLElement).tagName).toBe("A");
+    });
+
+    it("should apply card styles to child element", () => {
+      const { container } = render(
+        <Card asChild>
+          <button type="button">Content</button>
+        </Card>
+      );
+      const el = container.firstChild as HTMLElement;
+      expect(el).toHaveClass("bg-(--color-card-background)");
+      expect(el).toHaveClass("rounded-(--space-card-radius)");
+      expect(el).toHaveClass("border-(--color-card-border)");
+    });
+
+    it("should apply interactive styles when both interactive and asChild", () => {
+      const { container } = render(
+        <Card interactive asChild>
+          <button type="button">Content</button>
+        </Card>
+      );
+      const el = container.firstChild as HTMLElement;
+      expect(el.tagName).toBe("BUTTON");
+      expect(el).toHaveClass("cursor-pointer");
+      expect(el).toHaveClass("hover:bg-(--color-card-background-hover)");
+    });
+
+    it("should not inject role or tabIndex when asChild is true", () => {
+      const { container } = render(
+        <Card interactive asChild>
+          <button type="button">Content</button>
+        </Card>
+      );
+      const el = container.firstChild as HTMLElement;
+      // The <button> element natively has role=button — Card should not add it again
+      expect(el).not.toHaveAttribute("role");
+    });
+
+    it("should pass accessibility audit with asChild anchor", async () => {
+      const { container } = render(
+        <Card interactive asChild>
+          <a href="#demo">
+            <CardHeader>
+              <CardTitle>Linked Card</CardTitle>
+            </CardHeader>
+            <CardContent>Navigate somewhere</CardContent>
+          </a>
+        </Card>
+      );
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+
+    it("should pass accessibility audit with asChild button", async () => {
+      const { container } = render(
+        <Card interactive asChild>
+          <button type="button">
+            <CardHeader>
+              <CardTitle>Button Card</CardTitle>
+            </CardHeader>
+            <CardContent>Click to select</CardContent>
+          </button>
+        </Card>
+      );
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+  });
+
+  describe("cardVariants Function", () => {
+    it("should return base classes", () => {
+      const classes = cardVariants({});
+      expect(classes).toContain("flex");
+      expect(classes).toContain("flex-col");
+      expect(classes).toContain("border");
+      expect(classes).toContain("bg-(--color-card-background)");
+      expect(classes).toContain("rounded-(--space-card-radius)");
+    });
+
+    it("should return interactive classes when interactive is true", () => {
+      const classes = cardVariants({ interactive: true });
+      expect(classes).toContain("cursor-pointer");
+      expect(classes).toContain("transition-colors");
+      expect(classes).toContain("hover:bg-(--color-card-background-hover)");
+      expect(classes).toContain("focus:bg-(--color-card-background-focus)");
+      expect(classes).toContain("active:bg-(--color-card-background-active)");
+      expect(classes).toContain(
+        "disabled:bg-(--color-card-background-disabled)"
+      );
+    });
+
+    it("should not return interactive classes when interactive is false", () => {
+      const classes = cardVariants({ interactive: false });
+      expect(classes).not.toContain("cursor-pointer");
+      expect(classes).not.toContain("hover:bg-(--color-card-background-hover)");
+    });
+
+    it("should return same base classes regardless of interactive value", () => {
+      const base = cardVariants({ interactive: false });
+      const interactive = cardVariants({ interactive: true });
+      expect(interactive).toContain("bg-(--color-card-background)");
+      expect(base).toContain("bg-(--color-card-background)");
     });
   });
 

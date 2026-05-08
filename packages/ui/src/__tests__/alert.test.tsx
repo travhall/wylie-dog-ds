@@ -210,8 +210,8 @@ describe("Alert", () => {
         "mb-(--space-alert-title-margin-bottom)",
         "text-(length:--font-size-alert-title-font-size)",
         "font-medium",
-        "leading-none",
-        "tracking-tight"
+        "leading-(--line-height-none)",
+        "tracking-(--space-typography-tracking-tight)"
       );
     });
 
@@ -255,7 +255,7 @@ describe("Alert", () => {
       const description = screen.getByText("Description");
       expect(description).toHaveClass(
         "text-(length:--font-size-alert-description-font-size)",
-        "opacity-90"
+        "opacity-(--opacity-90)"
       );
     });
 

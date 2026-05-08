@@ -1,8 +1,8 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { vi } from "vitest";
-import { Badge } from "../badge";
+import { Badge, badgeVariants } from "../badge";
 
 expect.extend(toHaveNoViolations);
 
@@ -187,6 +187,333 @@ describe("Badge", () => {
     });
   });
 
+  describe("Size Variants", () => {
+    it("should apply sm size token classes", () => {
+      render(<Badge size="sm">Small</Badge>);
+      const badge = screen.getByText("Small");
+      expect(badge).toHaveClass("px-(--space-badge-padding-sm)");
+      expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-sm)");
+    });
+
+    it("should apply md size token classes (default)", () => {
+      render(<Badge size="md">Medium</Badge>);
+      const badge = screen.getByText("Medium");
+      expect(badge).toHaveClass("px-(--space-badge-padding-md)");
+      expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
+    });
+
+    it("should apply lg size token classes", () => {
+      render(<Badge size="lg">Large</Badge>);
+      const badge = screen.getByText("Large");
+      expect(badge).toHaveClass("px-(--space-badge-padding-lg)");
+      expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-lg)");
+    });
+
+    it("should default to md size when size is not specified", () => {
+      render(<Badge>Badge</Badge>);
+      const badge = screen.getByText("Badge");
+      expect(badge).toHaveClass("px-(--space-badge-padding-md)");
+      expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
+    });
+
+    it("should change size classes dynamically", () => {
+      const { rerender } = render(<Badge size="sm">Badge</Badge>);
+      let badge = screen.getByText("Badge");
+      expect(badge).toHaveClass("px-(--space-badge-padding-sm)");
+
+      rerender(<Badge size="lg">Badge</Badge>);
+      badge = screen.getByText("Badge");
+      expect(badge).toHaveClass("px-(--space-badge-padding-lg)");
+    });
+
+    it("should pass accessibility audit for all sizes", async () => {
+      for (const size of ["sm", "md", "lg"] as const) {
+        const { container, unmount } = render(
+          <Badge size={size}>{size}</Badge>
+        );
+        const results = await axe(container);
+        expect(results).toHaveNoViolations();
+        unmount();
+      }
+    });
+  });
+
+  describe("Interactive Prop", () => {
+    it("should apply cursor-pointer when interactive", () => {
+      render(<Badge interactive>Badge</Badge>);
+      expect(screen.getByText("Badge")).toHaveClass("cursor-pointer");
+    });
+
+    it("should apply focus ring token classes when interactive", () => {
+      render(<Badge interactive>Badge</Badge>);
+      const badge = screen.getByText("Badge");
+      expect(badge).toHaveClass("focus:outline-none");
+      expect(badge).toHaveClass("focus:ring-(length:--space-focus-ring-width)");
+      expect(badge).toHaveClass("focus:ring-(--color-border-focus)");
+      expect(badge).toHaveClass(
+        "focus:ring-offset-(--space-focus-ring-offset)"
+      );
+    });
+
+    it("should apply disabled state classes when interactive", () => {
+      render(<Badge interactive>Badge</Badge>);
+      const badge = screen.getByText("Badge");
+      expect(badge).toHaveClass("disabled:opacity-(--state-opacity-disabled)");
+      expect(badge).toHaveClass("disabled:cursor-not-allowed");
+    });
+
+    it("should auto-inject role=button and tabIndex=0 when interactive without asChild", () => {
+      render(<Badge interactive>Badge</Badge>);
+      const badge = screen.getByRole("button");
+      expect(badge).toHaveAttribute("tabindex", "0");
+      expect(badge).toHaveTextContent("Badge");
+    });
+
+    it("should not inject role or tabIndex when interactive is false", () => {
+      const { container } = render(<Badge>Badge</Badge>);
+      const badge = container.firstChild as HTMLElement;
+      expect(badge).not.toHaveAttribute("role", "button");
+      expect(badge).not.toHaveAttribute("tabindex");
+    });
+
+    it("should not apply cursor-pointer when not interactive", () => {
+      render(<Badge>Badge</Badge>);
+      expect(screen.getByText("Badge")).not.toHaveClass("cursor-pointer");
+    });
+
+    it("should apply compound hover/focus/disabled classes for default variant", () => {
+      render(
+        <Badge interactive variant="default">
+          Badge
+        </Badge>
+      );
+      const badge = screen.getByText("Badge");
+      expect(badge).toHaveClass(
+        "hover:bg-(--color-badge-default-background-hover)"
+      );
+      expect(badge).toHaveClass(
+        "focus:bg-(--color-badge-default-background-focus)"
+      );
+      expect(badge).toHaveClass(
+        "disabled:bg-(--color-badge-default-background-disabled)"
+      );
+    });
+
+    it("should apply compound classes for all variants when interactive", () => {
+      const variants = [
+        "default",
+        "secondary",
+        "success",
+        "warning",
+        "destructive",
+        "outline",
+      ] as const;
+
+      for (const variant of variants) {
+        const { unmount } = render(
+          <Badge interactive variant={variant}>
+            {variant}
+          </Badge>
+        );
+        const badge = screen.getByText(variant);
+        expect(badge).toHaveClass(
+          `hover:bg-(--color-badge-${variant}-background-hover)`
+        );
+        expect(badge).toHaveClass(
+          `focus:bg-(--color-badge-${variant}-background-focus)`
+        );
+        expect(badge).toHaveClass(
+          `disabled:bg-(--color-badge-${variant}-background-disabled)`
+        );
+        unmount();
+      }
+    });
+
+    it("should handle click events when interactive", () => {
+      const handleClick = vi.fn();
+      render(
+        <Badge interactive onClick={handleClick}>
+          Badge
+        </Badge>
+      );
+      fireEvent.click(screen.getByRole("button"));
+      expect(handleClick).toHaveBeenCalledTimes(1);
+    });
+
+    it("should handle keyboard events when interactive", () => {
+      const handleKeyDown = vi.fn();
+      render(
+        <Badge interactive onKeyDown={handleKeyDown}>
+          Badge
+        </Badge>
+      );
+      fireEvent.keyDown(screen.getByRole("button"), { key: "Enter" });
+      expect(handleKeyDown).toHaveBeenCalledTimes(1);
+    });
+
+    it("should pass accessibility audit when interactive with aria-label", async () => {
+      const { container } = render(
+        <Badge interactive aria-label="Filter: active">
+          Active
+        </Badge>
+      );
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+  });
+
+  describe("asChild Prop", () => {
+    it("should render as anchor when asChild with <a>", () => {
+      const { container } = render(
+        <Badge asChild>
+          <a href="#docs">Documentation</a>
+        </Badge>
+      );
+      expect((container.firstChild as HTMLElement).tagName).toBe("A");
+    });
+
+    it("should render as button when asChild with <button>", () => {
+      const { container } = render(
+        <Badge asChild>
+          <button type="button">Action</button>
+        </Badge>
+      );
+      expect((container.firstChild as HTMLElement).tagName).toBe("BUTTON");
+    });
+
+    it("should apply badge styles to child element", () => {
+      const { container } = render(
+        <Badge asChild variant="success">
+          <a href="#docs">Success link</a>
+        </Badge>
+      );
+      const el = container.firstChild as HTMLElement;
+      expect(el).toHaveClass("bg-(--color-badge-success-background)");
+      expect(el).toHaveClass("rounded-(--space-badge-radius)");
+      expect(el).toHaveClass("border");
+    });
+
+    it("should apply interactive compound classes when both interactive and asChild", () => {
+      const { container } = render(
+        <Badge interactive asChild variant="destructive">
+          <a href="#action">Danger</a>
+        </Badge>
+      );
+      const el = container.firstChild as HTMLElement;
+      expect(el.tagName).toBe("A");
+      expect(el).toHaveClass("cursor-pointer");
+      expect(el).toHaveClass(
+        "hover:bg-(--color-badge-destructive-background-hover)"
+      );
+    });
+
+    it("should not inject role or tabIndex when asChild is true", () => {
+      const { container } = render(
+        <Badge interactive asChild>
+          <a href="#link">Link Badge</a>
+        </Badge>
+      );
+      const el = container.firstChild as HTMLElement;
+      // The <a> has its own implicit role — Card should not add role="button"
+      expect(el).not.toHaveAttribute("role");
+      expect(el).not.toHaveAttribute("tabindex");
+    });
+
+    it("should pass accessibility audit with asChild anchor", async () => {
+      const { container } = render(
+        <Badge interactive asChild variant="default">
+          <a href="#docs">Documentation</a>
+        </Badge>
+      );
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+
+    it("should pass accessibility audit with asChild button", async () => {
+      const { container } = render(
+        <Badge interactive asChild variant="success">
+          <button type="button">Approve</button>
+        </Badge>
+      );
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+  });
+
+  describe("badgeVariants Function", () => {
+    it("should return base classes", () => {
+      const classes = badgeVariants({});
+      expect(classes).toContain("inline-flex");
+      expect(classes).toContain("items-center");
+      expect(classes).toContain("border");
+      expect(classes).toContain("rounded-(--space-badge-radius)");
+      expect(classes).toContain("transition-colors");
+    });
+
+    it("should include default variant classes when no variant specified", () => {
+      const classes = badgeVariants({});
+      expect(classes).toContain("bg-(--color-badge-default-background)");
+      expect(classes).toContain("text-(--color-badge-default-text)");
+    });
+
+    it("should return correct classes for each variant", () => {
+      const variants = [
+        "default",
+        "secondary",
+        "success",
+        "warning",
+        "destructive",
+        "outline",
+      ] as const;
+
+      for (const variant of variants) {
+        const classes = badgeVariants({ variant });
+        expect(classes).toContain(`bg-(--color-badge-${variant}-background)`);
+        expect(classes).toContain(`text-(--color-badge-${variant}-text)`);
+      }
+    });
+
+    it("should include interactive classes when interactive is true", () => {
+      const classes = badgeVariants({ interactive: true });
+      expect(classes).toContain("cursor-pointer");
+      expect(classes).toContain("focus:outline-none");
+    });
+
+    it("should include compound hover classes for variant + interactive", () => {
+      const classes = badgeVariants({
+        variant: "destructive",
+        interactive: true,
+      });
+      expect(classes).toContain(
+        "hover:bg-(--color-badge-destructive-background-hover)"
+      );
+      expect(classes).toContain(
+        "focus:bg-(--color-badge-destructive-background-focus)"
+      );
+      expect(classes).toContain(
+        "disabled:bg-(--color-badge-destructive-background-disabled)"
+      );
+    });
+
+    it("should not include interactive classes when interactive is false", () => {
+      const classes = badgeVariants({ interactive: false });
+      expect(classes).not.toContain("cursor-pointer");
+      expect(classes).not.toContain("focus:outline-none");
+    });
+
+    it("should include correct size classes", () => {
+      expect(badgeVariants({ size: "sm" })).toContain(
+        "px-(--space-badge-padding-sm)"
+      );
+      expect(badgeVariants({ size: "md" })).toContain(
+        "px-(--space-badge-padding-md)"
+      );
+      expect(badgeVariants({ size: "lg" })).toContain(
+        "px-(--space-badge-padding-lg)"
+      );
+    });
+  });
+
   describe("Styling", () => {
     it("should have base styles applied", () => {
       render(<Badge>Badge</Badge>);
@@ -198,7 +525,7 @@ describe("Badge", () => {
       expect(badge).toHaveClass("border");
       expect(badge).toHaveClass("px-(--space-badge-padding-md)");
       expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
-      expect(badge).toHaveClass("font-semibold");
+      expect(badge).toHaveClass("font-(--font-weight-semibold)");
     });
 
     it("should have transition-colors class", () => {
