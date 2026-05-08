@@ -45,6 +45,26 @@ const meta: Meta<typeof Badge> = {
         category: "Appearance",
       },
     },
+    interactive: {
+      control: "boolean",
+      description:
+        'Enables hover, focus, and disabled state styling using per-variant tokens. When `true` and `asChild` is `false`, also adds `role="button"` and `tabIndex={0}`. Use `asChild` when the badge needs to be a real `<button>` or `<a>`.',
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "Behavior",
+      },
+    },
+    asChild: {
+      control: "boolean",
+      description:
+        "Merges badge styles onto the immediate child element. Use with `<a>` or `<button>` for proper interactive semantics.",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "Behavior",
+      },
+    },
   },
   args: {
     variant: "default",
@@ -454,10 +474,11 @@ export const DosDonts: Story = {
           </div>
 
           <div className="space-y-2">
-            <p className="text-sm font-medium mb-2">Use as buttons</p>
+            <p className="text-sm font-medium mb-2">Hand-craft interactivity</p>
             <Badge className="cursor-pointer">Click me</Badge>
             <p className="text-xs text-gray-500">
-              Use Button component instead
+              Use the <code>interactive</code> prop or <code>asChild</code>{" "}
+              instead
             </p>
           </div>
 
@@ -476,6 +497,123 @@ export const DosDonts: Story = {
             <p className="text-xs text-gray-500">Too many reduces impact</p>
           </div>
         </div>
+      </div>
+    </div>
+  ),
+};
+
+export const InteractiveBadges: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Badges with `interactive` enabled respond to hover and focus using per-variant tokens. Each variant has its own hover and focus color defined in the token system. Try tabbing through — each badge is individually focusable.",
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-6">
+      <div>
+        <h4 className="text-sm font-medium mb-3">Interactive — all variants</h4>
+        <div className="flex flex-wrap gap-2">
+          <Badge interactive>Default</Badge>
+          <Badge interactive variant="secondary">
+            Secondary
+          </Badge>
+          <Badge interactive variant="success">
+            Success
+          </Badge>
+          <Badge interactive variant="warning">
+            Warning
+          </Badge>
+          <Badge interactive variant="destructive">
+            Destructive
+          </Badge>
+          <Badge interactive variant="outline">
+            Outline
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h4 className="text-sm font-medium mb-3">Disabled state</h4>
+        <div className="flex flex-wrap gap-2">
+          <Badge
+            interactive
+            aria-disabled="true"
+            className="pointer-events-none opacity-50"
+          >
+            Default
+          </Badge>
+          <Badge
+            interactive
+            variant="destructive"
+            aria-disabled="true"
+            className="pointer-events-none opacity-50"
+          >
+            Destructive
+          </Badge>
+        </div>
+        <p className="text-xs text-gray-500 mt-2">
+          Badges are not form elements so use <code>aria-disabled</code> +{" "}
+          <code>pointer-events-none</code> rather than the HTML{" "}
+          <code>disabled</code> attribute.
+        </p>
+      </div>
+    </div>
+  ),
+};
+
+export const InteractiveAsChild: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Use `asChild` to merge badge styles onto a real `<a>` or `<button>` element. This gives you correct semantics — link badges navigate, button badges fire click handlers — while keeping the full token-based appearance.",
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-6">
+      <div>
+        <h4 className="text-sm font-medium mb-3">As anchor links</h4>
+        <div className="flex flex-wrap gap-2">
+          <Badge interactive asChild>
+            <a href="#" onClick={(e) => e.preventDefault()}>
+              Documentation
+            </a>
+          </Badge>
+          <Badge interactive asChild variant="secondary">
+            <a href="#" onClick={(e) => e.preventDefault()}>
+              Changelog
+            </a>
+          </Badge>
+          <Badge interactive asChild variant="outline">
+            <a href="#" onClick={(e) => e.preventDefault()}>
+              GitHub ↗
+            </a>
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h4 className="text-sm font-medium mb-3">As buttons</h4>
+        <div className="flex flex-wrap gap-2">
+          <Badge interactive asChild variant="success">
+            <button type="button" onClick={() => alert("Approved!")}>
+              ✓ Approve
+            </button>
+          </Badge>
+          <Badge interactive asChild variant="destructive">
+            <button type="button" onClick={() => alert("Rejected!")}>
+              ✕ Reject
+            </button>
+          </Badge>
+        </div>
+        <p className="text-xs text-gray-500 mt-2">
+          Use <code>asChild</code> + <code>&lt;button&gt;</code> when the badge
+          triggers an action. This avoids nesting interactive elements.
+        </p>
       </div>
     </div>
   ),

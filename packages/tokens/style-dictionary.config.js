@@ -89,7 +89,7 @@ const TOKEN_TYPE_CONFIG = {
   },
   duration: {
     prefix: "duration",
-    stripPrefixes: ["transition-duration-"],
+    stripPrefixes: ["transition-duration-", "duration-"],
   },
   shadow: {
     prefix: "shadow",

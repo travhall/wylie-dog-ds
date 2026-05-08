@@ -130,7 +130,7 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
         {children}
         {isRequired && (
           <span
-            className="text-(--color-text-danger) ml-(--space-form-error-margin)"
+            className="text-(--color-form-required-color) ml-(--space-form-error-margin)"
             aria-hidden="true"
           >
             *

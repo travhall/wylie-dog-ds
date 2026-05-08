@@ -69,7 +69,7 @@ export const Default: Story = {
       <DialogTrigger asChild>
         <Button variant="outline">Edit Profile</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-106.25">
+      <DialogContent size="md">
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
@@ -174,7 +174,7 @@ export const WithInteractions: Story = {
       <DialogTrigger asChild>
         <Button variant="default">Open Dialog</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent size="md">
         <DialogHeader>
           <DialogTitle>Dialog Test</DialogTitle>
           <DialogDescription>

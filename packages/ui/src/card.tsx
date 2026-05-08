@@ -1,27 +1,61 @@
 // card.tsx
 import React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
+export const cardVariants = cva(
+  cn(
+    "flex flex-col",
+    "border",
+    "bg-(--color-card-background)",
+    "shadow-(--shadow-card-shadow)",
+    "rounded-(--space-card-radius)",
+    "border-(--color-card-border)",
+    "p-(--space-card-padding)",
+    "gap-(--space-card-gap)"
+  ),
+  {
+    variants: {
+      interactive: {
+        true: cn(
+          "cursor-pointer transition-colors",
+          "hover:bg-(--color-card-background-hover)",
+          "focus:bg-(--color-card-background-focus)",
+          "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
+          "active:bg-(--color-card-background-active)",
+          "disabled:bg-(--color-card-background-disabled)",
+          "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)"
+        ),
+        false: "",
+      },
+    },
+    defaultVariants: {
+      interactive: false,
+    },
+  }
+);
+
+export interface CardProps
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof cardVariants> {
+  /** Render the card's styles on a child element (e.g. `<a>` or `<button>`). */
+  asChild?: boolean;
+}
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn(
-        "flex flex-col",
-        "border",
-        "bg-(--color-card-background)",
-        "shadow-(--shadow-card-shadow)",
-        "rounded-(--space-card-radius)",
-        "border-(--color-card-border)",
-        "p-(--space-card-padding)",
-        "gap-(--space-card-gap)",
-        className
-      )}
-      {...props}
-    />
-  )
+  ({ className, interactive, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "div";
+    return (
+      <Comp
+        ref={ref}
+        className={cn(cardVariants({ interactive }), className)}
+        {...(interactive && !asChild ? { role: "button", tabIndex: 0 } : {})}
+        {...props}
+      />
+    );
+  }
 );
 Card.displayName = "Card";
 

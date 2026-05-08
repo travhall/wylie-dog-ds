@@ -1,5 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@wyliedog/ui/card";
 import { Button } from "@wyliedog/ui/button";
 import { Badge } from "@wyliedog/ui/badge";
 
@@ -17,6 +24,26 @@ const meta: Meta<typeof Card> = {
   },
   tags: ["autodocs"],
   argTypes: {
+    interactive: {
+      control: "boolean",
+      description:
+        'Enables hover, focus, active, and disabled state styling. When `true` and `asChild` is `false`, also adds `role="button"` and `tabIndex={0}` for keyboard accessibility. Use `asChild` when you need a real `<button>` or `<a>` element.',
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "Behavior",
+      },
+    },
+    asChild: {
+      control: "boolean",
+      description:
+        'Merges card styles onto the immediate child element instead of rendering a `<div>`. Use with a `<button>` or `<a>` for proper interactive semantics — e.g. `<Card asChild><a href="/">…</a></Card>`.',
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "Behavior",
+      },
+    },
     className: {
       control: "text",
       description: "Additional CSS classes for custom styling",
@@ -173,6 +200,98 @@ export const CardVariations: Story = {
             A card with a subtle background color variation.
           </p>
         </CardContent>
+      </Card>
+    </div>
+  ),
+};
+
+export const InteractiveCard: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Cards with `interactive` enabled respond to hover, focus, and active states using purpose-built tokens. The card gains `role="button"` and `tabIndex={0}` automatically — try navigating with Tab and pressing Enter.',
+      },
+    },
+  },
+  render: () => (
+    <div className="flex flex-col gap-4 w-80">
+      <Card interactive>
+        <CardHeader>
+          <CardTitle>Hover &amp; Focus Me</CardTitle>
+          <CardDescription>
+            Hover, tab into, or click this card to see state transitions.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-gray-500 text-sm">
+            Background transitions through hover → focus → active using
+            component-scoped tokens.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card interactive>
+        <CardHeader>
+          <CardTitle>Another Selection</CardTitle>
+          <CardDescription>
+            Tab between cards to test focus trap.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-gray-500 text-sm">
+            Each card is individually focusable and keyboard-activatable.
+          </p>
+        </CardContent>
+      </Card>
+    </div>
+  ),
+};
+
+export const InteractiveAsLink: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Use `asChild` to merge card styles onto a real `<a>` element. This gives you proper link semantics (right-click → open in new tab, visited state, screen reader announcement) without wrapping a button inside a div.",
+      },
+    },
+  },
+  render: () => (
+    <div className="flex flex-col gap-4 w-80">
+      <Card interactive asChild>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          <CardHeader>
+            <CardTitle>Linked Card (anchor)</CardTitle>
+            <CardDescription>Renders as an &lt;a&gt; element.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-500 text-sm">
+              Right-click to confirm this is a real anchor. All card tokens
+              apply; hover/focus/active states use the interactive token set.
+            </p>
+          </CardContent>
+          <CardFooter>
+            <Badge variant="secondary">→ View details</Badge>
+          </CardFooter>
+        </a>
+      </Card>
+
+      <Card interactive asChild>
+        <button type="button">
+          <CardHeader>
+            <CardTitle>Button Card</CardTitle>
+            <CardDescription>
+              Renders as a &lt;button&gt; element.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-500 text-sm">
+              Ideal for selection UIs (plan picker, option grid) where a click
+              triggers an action rather than navigation.
+            </p>
+          </CardContent>
+        </button>
       </Card>
     </div>
   ),
