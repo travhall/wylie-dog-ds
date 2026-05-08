@@ -18,6 +18,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@wyliedog/ui/radio-group";
 import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@wyliedog/ui/tabs";
+import { Alert, AlertDescription } from "@wyliedog/ui/alert";
 import { useState, useCallback } from "react";
 
 const meta: Meta = {
@@ -156,7 +157,7 @@ export const MultiStepForm: Story = {
                   </Label>
                   <Input id="username" placeholder="johndoe" />{" "}
                   {/* cSpell:ignore johndoe */}
-                  <p className="text-xs text-(--color-text-tertiary)">
+                  <p className="text-xs text-gray-400">
                     This will be your unique identifier
                   </p>
                 </div>
@@ -397,12 +398,10 @@ export const FormWithValidation: Story = {
                 name="email"
                 type="email"
                 placeholder="Enter your email"
-                className={errors.email ? "border-(--color-border-danger)" : ""}
+                className={errors.email ? "border-red-500" : ""}
               />
               {errors.email && (
-                <p className="text-sm text-(--color-status-danger)">
-                  {errors.email}
-                </p>
+                <p className="text-sm text-red-600">{errors.email}</p>
               )}
             </div>
 
@@ -415,16 +414,12 @@ export const FormWithValidation: Story = {
                 name="password"
                 type="password"
                 placeholder="Create a password"
-                className={
-                  errors.password ? "border-(--color-border-danger)" : ""
-                }
+                className={errors.password ? "border-red-500" : ""}
               />
               {errors.password && (
-                <p className="text-sm text-(--color-status-danger)">
-                  {errors.password}
-                </p>
+                <p className="text-sm text-red-600">{errors.password}</p>
               )}
-              <p className="text-xs text-(--color-text-tertiary)">
+              <p className="text-xs text-gray-400">
                 Must be at least 8 characters long
               </p>
             </div>
@@ -438,14 +433,10 @@ export const FormWithValidation: Story = {
                 name="confirm-password"
                 type="password"
                 placeholder="Confirm your password"
-                className={
-                  errors.confirmPassword ? "border-(--color-border-danger)" : ""
-                }
+                className={errors.confirmPassword ? "border-red-500" : ""}
               />
               {errors.confirmPassword && (
-                <p className="text-sm text-(--color-status-danger)">
-                  {errors.confirmPassword}
-                </p>
+                <p className="text-sm text-red-600">{errors.confirmPassword}</p>
               )}
             </div>
 
@@ -474,11 +465,11 @@ export const FormWithValidation: Story = {
             </div>
 
             {submitted && Object.keys(errors).length === 0 && (
-              <div className="p-3 bg-(--color-interactive-success)/10 border border-(--color-interactive-success) rounded-md">
-                <p className="text-sm text-(--color-status-success)">
-                  ✓ Account created successfully!
-                </p>
-              </div>
+              <Alert variant="success">
+                <AlertDescription>
+                  Account created successfully!
+                </AlertDescription>
+              </Alert>
             )}
 
             <Button type="submit" className="w-full">
@@ -549,7 +540,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="email-notifications">Email notifications</Label>
-                <p className="text-xs text-(--color-text-secondary)">
+                <p className="text-xs text-gray-500">
                   Get notified about important updates
                 </p>
               </div>
@@ -559,7 +550,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="push-notifications">Push notifications</Label>
-                <p className="text-xs text-(--color-text-secondary)">
+                <p className="text-xs text-gray-500">
                   Receive browser notifications
                 </p>
               </div>
@@ -569,7 +560,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="marketing-emails">Marketing emails</Label>
-                <p className="text-xs text-(--color-text-secondary)">
+                <p className="text-xs text-gray-500">
                   Product updates and promotions
                 </p>
               </div>
@@ -757,7 +748,7 @@ export const ProjectCreation: Story = {
           <div className="flex items-center justify-between">
             <div>
               <Label htmlFor="auto-deploy">Auto-deploy to staging</Label>
-              <p className="text-xs text-(--color-text-secondary)">
+              <p className="text-xs text-gray-500">
                 Automatically deploy commits to staging environment
               </p>
             </div>
@@ -767,7 +758,7 @@ export const ProjectCreation: Story = {
           <div className="flex items-center justify-between">
             <div>
               <Label htmlFor="notifications">Build notifications</Label>
-              <p className="text-xs text-(--color-text-secondary)">
+              <p className="text-xs text-gray-500">
                 Get notified about build status
               </p>
             </div>
@@ -793,12 +784,10 @@ export const PaymentForm: Story = {
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-4 bg-(--color-background-secondary) rounded-lg">
+          <div className="flex items-center justify-between p-4 bg-gray-100 rounded-lg">
             <div>
               <p className="font-medium">Pro Plan</p>
-              <p className="text-sm text-(--color-text-secondary)">
-                Monthly subscription
-              </p>
+              <p className="text-sm text-gray-500">Monthly subscription</p>
             </div>
             <div className="text-right">
               <p className="font-bold text-lg">$29.99</p>
@@ -1009,9 +998,7 @@ export const WithInteractions: Story = {
                 <div className="flex items-center justify-between">
                   <div>
                     <Label htmlFor="marketing-int">Marketing emails</Label>
-                    <p className="text-xs text-(--color-text-secondary)">
-                      Promotional content
-                    </p>
+                    <p className="text-xs text-gray-500">Promotional content</p>
                   </div>
                   <Switch id="marketing-int" name="marketing" />
                 </div>
@@ -1470,8 +1457,8 @@ export const RealTimeValidation: Story = {
                 className={
                   touched.email
                     ? errors.email
-                      ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
-                      : "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
+                      ? "border-red-500 focus-visible:ring-red-600"
+                      : "border-green-600 focus-visible:ring-green-600"
                     : ""
                 }
                 aria-invalid={touched.email && !!errors.email}
@@ -1482,17 +1469,14 @@ export const RealTimeValidation: Story = {
               {touched.email && errors.email && (
                 <p
                   id="email-error"
-                  className="text-sm text-(--color-status-danger)"
+                  className="text-sm text-red-600"
                   role="alert"
                 >
                   ✕ {errors.email}
                 </p>
               )}
               {touched.email && !errors.email && formValues.email && (
-                <p
-                  id="email-success"
-                  className="text-sm text-(--color-status-success)"
-                >
+                <p id="email-success" className="text-sm text-green-600">
                   ✓ Valid email address
                 </p>
               )}
@@ -1512,8 +1496,8 @@ export const RealTimeValidation: Story = {
                 className={
                   touched.username
                     ? errors.username
-                      ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
-                      : "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
+                      ? "border-red-500 focus-visible:ring-red-600"
+                      : "border-green-600 focus-visible:ring-green-600"
                     : ""
                 }
                 aria-invalid={touched.username && !!errors.username}
@@ -1524,21 +1508,18 @@ export const RealTimeValidation: Story = {
               {touched.username && errors.username && (
                 <p
                   id="username-error"
-                  className="text-sm text-(--color-status-danger)"
+                  className="text-sm text-red-600"
                   role="alert"
                 >
                   ✕ {errors.username}
                 </p>
               )}
               {touched.username && !errors.username && formValues.username && (
-                <p className="text-sm text-(--color-status-success)">
+                <p className="text-sm text-green-600">
                   ✓ Username is available
                 </p>
               )}
-              <p
-                id="username-help"
-                className="text-xs text-(--color-text-tertiary)"
-              >
+              <p id="username-help" className="text-xs text-gray-400">
                 3-20 characters, letters, numbers, and underscores only
               </p>
             </div>
@@ -1559,27 +1540,22 @@ export const RealTimeValidation: Story = {
                   className={
                     touched.password
                       ? errors.password
-                        ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
-                        : "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
+                        ? "border-red-500 focus-visible:ring-red-600"
+                        : "border-green-600 focus-visible:ring-green-600"
                       : ""
                   }
                   aria-invalid={touched.password && !!errors.password}
                   aria-describedby="password-requirements"
                 />
                 {touched.password && errors.password && (
-                  <p
-                    className="text-sm text-(--color-status-danger)"
-                    role="alert"
-                  >
+                  <p className="text-sm text-red-600" role="alert">
                     ✕ {errors.password}
                   </p>
                 )}
                 {touched.password &&
                   !errors.password &&
                   formValues.password && (
-                    <p className="text-sm text-(--color-status-success)">
-                      ✓ Strong password
-                    </p>
+                    <p className="text-sm text-green-600">✓ Strong password</p>
                   )}
               </div>
 
@@ -1600,8 +1576,8 @@ export const RealTimeValidation: Story = {
                   className={
                     touched.confirmPassword
                       ? errors.confirmPassword
-                        ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
-                        : "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
+                        ? "border-red-500 focus-visible:ring-red-600"
+                        : "border-green-600 focus-visible:ring-green-600"
                       : ""
                   }
                   aria-invalid={
@@ -1609,33 +1585,28 @@ export const RealTimeValidation: Story = {
                   }
                 />
                 {touched.confirmPassword && errors.confirmPassword && (
-                  <p
-                    className="text-sm text-(--color-status-danger)"
-                    role="alert"
-                  >
+                  <p className="text-sm text-red-600" role="alert">
                     ✕ {errors.confirmPassword}
                   </p>
                 )}
                 {touched.confirmPassword &&
                   !errors.confirmPassword &&
                   formValues.confirmPassword && (
-                    <p className="text-sm text-(--color-status-success)">
-                      ✓ Passwords match
-                    </p>
+                    <p className="text-sm text-green-600">✓ Passwords match</p>
                   )}
               </div>
             </div>
 
             <div id="password-requirements" className="space-y-2">
-              <p className="text-xs font-medium text-(--color-text-secondary)">
+              <p className="text-xs font-medium text-gray-500">
                 Password requirements:
               </p>
-              <ul className="text-xs text-(--color-text-secondary) space-y-1 pl-4">
+              <ul className="text-xs text-gray-500 space-y-1 pl-4">
                 <li
                   className={
                     formValues.password.length >= 8
-                      ? "text-(--color-status-success)"
-                      : "text-(--color-text-secondary)"
+                      ? "text-green-600"
+                      : "text-gray-500"
                   }
                 >
                   {formValues.password.length >= 8 ? "✓" : "○"} At least 8
@@ -1644,8 +1615,8 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[a-z])/.test(formValues.password)
-                      ? "text-(--color-status-success)"
-                      : "text-(--color-text-secondary)"
+                      ? "text-green-600"
+                      : "text-gray-500"
                   }
                 >
                   {/(?=.*[a-z])/.test(formValues.password) ? "✓" : "○"} One
@@ -1654,8 +1625,8 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[A-Z])/.test(formValues.password)
-                      ? "text-(--color-status-success)"
-                      : "text-(--color-text-secondary)"
+                      ? "text-green-600"
+                      : "text-gray-500"
                   }
                 >
                   {/(?=.*[A-Z])/.test(formValues.password) ? "✓" : "○"} One
@@ -1664,8 +1635,8 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*\d)/.test(formValues.password)
-                      ? "text-(--color-status-success)"
-                      : "text-(--color-text-secondary)"
+                      ? "text-green-600"
+                      : "text-gray-500"
                   }
                 >
                   {/(?=.*\d)/.test(formValues.password) ? "✓" : "○"} One number
@@ -1673,8 +1644,8 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[@$!%*?&])/.test(formValues.password)
-                      ? "text-(--color-status-success)"
-                      : "text-(--color-text-secondary)"
+                      ? "text-green-600"
+                      : "text-gray-500"
                   }
                 >
                   {/(?=.*[@$!%*?&])/.test(formValues.password) ? "✓" : "○"} One
@@ -1697,26 +1668,23 @@ export const RealTimeValidation: Story = {
                   className={
                     touched.phoneNumber
                       ? errors.phoneNumber
-                        ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
+                        ? "border-red-500 focus-visible:ring-red-600"
                         : formValues.phoneNumber
-                          ? "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
+                          ? "border-green-600 focus-visible:ring-green-600"
                           : ""
                       : ""
                   }
                   aria-invalid={touched.phoneNumber && !!errors.phoneNumber}
                 />
                 {touched.phoneNumber && errors.phoneNumber && (
-                  <p
-                    className="text-sm text-(--color-status-danger)"
-                    role="alert"
-                  >
+                  <p className="text-sm text-red-600" role="alert">
                     ✕ {errors.phoneNumber}
                   </p>
                 )}
                 {touched.phoneNumber &&
                   !errors.phoneNumber &&
                   formValues.phoneNumber && (
-                    <p className="text-sm text-(--color-status-success)">
+                    <p className="text-sm text-green-600">
                       ✓ Valid phone number
                     </p>
                   )}
@@ -1739,38 +1707,29 @@ export const RealTimeValidation: Story = {
                   className={
                     touched.age
                       ? errors.age
-                        ? "border-(--color-border-danger) focus-visible:ring-(--color-status-danger)"
-                        : "border-(--color-interactive-success) focus-visible:ring-(--color-status-success)"
+                        ? "border-red-500 focus-visible:ring-red-600"
+                        : "border-green-600 focus-visible:ring-green-600"
                       : ""
                   }
                   aria-invalid={touched.age && !!errors.age}
                 />
                 {touched.age && errors.age && (
-                  <p
-                    className="text-sm text-(--color-status-danger)"
-                    role="alert"
-                  >
+                  <p className="text-sm text-red-600" role="alert">
                     ✕ {errors.age}
                   </p>
                 )}
                 {touched.age && !errors.age && formValues.age && (
-                  <p className="text-sm text-(--color-status-success)">
-                    ✓ Valid age
-                  </p>
+                  <p className="text-sm text-green-600">✓ Valid age</p>
                 )}
               </div>
             </div>
 
             {submitSuccess && (
-              <div
-                className="p-4 bg-(--color-interactive-success)/10 border-2 border-(--color-interactive-success) rounded-md"
-                role="alert"
-                aria-live="polite"
-              >
-                <p className="text-sm font-medium text-(--color-status-success)">
-                  ✓ Registration successful! Welcome aboard.
-                </p>
-              </div>
+              <Alert variant="success">
+                <AlertDescription>
+                  Registration successful! Welcome aboard.
+                </AlertDescription>
+              </Alert>
             )}
 
             <div className="flex gap-3 pt-2">
@@ -1871,7 +1830,7 @@ export const SettingsForm: Story = {
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label>Email notifications</Label>
-                  <div className="text-sm text-(--color-text-tertiary)">
+                  <div className="text-sm text-gray-400">
                     Receive notifications via email
                   </div>
                 </div>
@@ -1881,7 +1840,7 @@ export const SettingsForm: Story = {
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label>Marketing emails</Label>
-                  <div className="text-sm text-(--color-text-tertiary)">
+                  <div className="text-sm text-gray-400">
                     Receive promotional content
                   </div>
                 </div>
@@ -1931,7 +1890,7 @@ export const SettingsForm: Story = {
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
                 <Label>Two-factor authentication</Label>
-                <div className="text-sm text-(--color-text-tertiary)">
+                <div className="text-sm text-gray-400">
                   Add an extra layer of security
                 </div>
               </div>

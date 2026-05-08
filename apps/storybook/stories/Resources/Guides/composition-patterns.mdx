@@ -500,7 +500,7 @@ useEffect(() => {
 ```tsx
 <div className="flex min-h-screen">
   {/* Sidebar */}
-  <aside className="w-64 border-r bg-background-secondary">
+  <aside className="w-64 border-r bg-(--color-background-secondary)">
     <nav className="space-y-2 p-4">
       {/* Navigation items */}
     </nav>
@@ -521,11 +521,11 @@ useEffect(() => {
   <Card>
     <CardHeader className="flex flex-row items-center justify-between pb-2">
       <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-      <DollarSign className="h-4 w-4 text-muted-foreground" />
+      <DollarSign className="h-4 w-4 text-(--color-text-secondary)" />
     </CardHeader>
     <CardContent>
       <div className="text-2xl font-bold">$45,231.89</div>
-      <p className="text-xs text-muted-foreground">+20.1% from last month</p>
+      <p className="text-xs text-(--color-text-secondary)">+20.1% from last month</p>
     </CardContent>
   </Card>
   {/* More stat cards */}

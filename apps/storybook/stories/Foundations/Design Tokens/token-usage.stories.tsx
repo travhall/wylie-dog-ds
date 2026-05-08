@@ -105,17 +105,17 @@ export const SemanticVsPrimitive: Story = {
           <h2 className="text-2xl font-semibold tracking-tight mb-2">
             Semantic vs Primitive Tokens
           </h2>
-          <p className="text-sm text-(--color-text-secondary) mb-4">
+          <p className="text-sm text-gray-500 mb-4">
             Semantic tokens map to primitive values and automatically adapt
             between light and dark themes. Always prefer semantic tokens in your
             components.
           </p>
         </div>
 
-        <div className="overflow-x-auto rounded-lg border border-(--color-border-primary)">
+        <div className="overflow-x-auto rounded-lg border border-gray-200">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-(--color-border-primary) bg-(--color-background-secondary)">
+              <tr className="border-b border-gray-200 bg-gray-100">
                 <th className="text-left p-3 font-medium">Category</th>
                 <th className="text-left p-3 font-medium">Token Name</th>
                 <th className="text-left p-3 font-medium">CSS Variable</th>
@@ -129,22 +129,22 @@ export const SemanticVsPrimitive: Story = {
               {examples.map((ex) => (
                 <tr
                   key={ex.token}
-                  className="border-b border-(--color-border-secondary) last:border-0"
+                  className="border-b border-gray-300 last:border-0"
                 >
-                  <td className="p-3 text-(--color-text-secondary) font-medium text-xs">
+                  <td className="p-3 text-gray-500 font-medium text-xs">
                     {ex.category}
                   </td>
                   <td className="p-3">
-                    <code className="text-xs font-mono bg-(--color-background-secondary) px-1.5 py-0.5 rounded">
+                    <code className="text-xs font-mono bg-gray-100 px-1.5 py-0.5 rounded">
                       {ex.token}
                     </code>
                   </td>
                   <td className="p-3">
-                    <code className="text-xs font-mono text-(--color-text-secondary)">
+                    <code className="text-xs font-mono text-gray-500">
                       var({ex.token})
                     </code>
                   </td>
-                  <td className="p-3 text-xs text-(--color-text-tertiary) font-mono">
+                  <td className="p-3 text-xs text-gray-400 font-mono">
                     {ex.primitive}
                   </td>
                   <td className="p-3">
@@ -158,7 +158,7 @@ export const SemanticVsPrimitive: Story = {
                     )}
                     {ex.type === "bg" && (
                       <div
-                        className="w-24 h-8 rounded border border-(--color-border-secondary) flex items-center justify-center text-xs"
+                        className="w-24 h-8 rounded border border-gray-300 flex items-center justify-center text-xs"
                         style={{ backgroundColor: `var(${ex.token})` }}
                       >
                         {ex.label}
@@ -166,7 +166,7 @@ export const SemanticVsPrimitive: Story = {
                     )}
                     {ex.type === "border" && (
                       <div
-                        className="w-24 h-8 rounded flex items-center justify-center text-xs text-(--color-text-secondary)"
+                        className="w-24 h-8 rounded flex items-center justify-center text-xs text-gray-500"
                         style={{ border: `2px solid var(${ex.token})` }}
                       >
                         {ex.label}
@@ -183,18 +183,18 @@ export const SemanticVsPrimitive: Story = {
           <CardContent className="pt-6">
             <div className="flex gap-6 text-sm">
               <div className="flex-1">
-                <p className="font-medium text-(--color-status-danger) mb-1">
+                <p className="font-medium text-red-600 mb-1">
                   Avoid: Primitive tokens
                 </p>
-                <code className="block bg-(--color-background-secondary) p-2 rounded text-xs font-mono">
+                <code className="block bg-gray-100 p-2 rounded text-xs font-mono">
                   color: var(--color-gray-900);
                 </code>
               </div>
               <div className="flex-1">
-                <p className="font-medium text-(--color-status-success) mb-1">
+                <p className="font-medium text-green-600 mb-1">
                   Prefer: Semantic tokens
                 </p>
-                <code className="block bg-(--color-background-secondary) p-2 rounded text-xs font-mono">
+                <code className="block bg-gray-100 p-2 rounded text-xs font-mono">
                   color: var(--color-text-primary);
                 </code>
               </div>
@@ -248,10 +248,10 @@ export const DarkModeTokenDiff: Story = {
             {tokens.map((token) => (
               <div key={token} className="flex items-center gap-3">
                 <div
-                  className="w-8 h-8 rounded border border-(--color-border-secondary) shrink-0"
+                  className="w-8 h-8 rounded border border-gray-300 shrink-0"
                   style={{ backgroundColor: `var(${token})` }}
                 />
-                <code className="text-xs font-mono text-(--color-text-secondary) truncate">
+                <code className="text-xs font-mono text-gray-500 truncate">
                   {token}
                 </code>
               </div>
@@ -267,7 +267,7 @@ export const DarkModeTokenDiff: Story = {
           <h2 className="text-2xl font-semibold tracking-tight mb-2">
             Dark Mode Token Adaptation
           </h2>
-          <p className="text-sm text-(--color-text-secondary)">
+          <p className="text-sm text-gray-500">
             Semantic tokens resolve to different values in light vs dark themes.
             Use the Theme toolbar to toggle the global theme.
           </p>
@@ -280,13 +280,13 @@ export const DarkModeTokenDiff: Story = {
 
         <Card>
           <CardContent className="pt-6">
-            <p className="text-sm text-(--color-text-secondary)">
+            <p className="text-sm text-gray-500">
               The CSS custom properties in{" "}
-              <code className="font-mono text-xs bg-(--color-background-secondary) px-1 py-0.5 rounded">
+              <code className="font-mono text-xs bg-gray-100 px-1 py-0.5 rounded">
                 :root
               </code>{" "}
               and{" "}
-              <code className="font-mono text-xs bg-(--color-background-secondary) px-1 py-0.5 rounded">
+              <code className="font-mono text-xs bg-gray-100 px-1 py-0.5 rounded">
                 .dark
               </code>{" "}
               scopes define the token values for each theme. Components never
@@ -369,9 +369,9 @@ export const ColorTokenMap: Story = {
           <h2 className="text-2xl font-semibold tracking-tight mb-2">
             Color Token Map
           </h2>
-          <p className="text-sm text-(--color-text-secondary)">
+          <p className="text-sm text-gray-500">
             All semantic{" "}
-            <code className="font-mono text-xs bg-(--color-background-secondary) px-1 py-0.5 rounded">
+            <code className="font-mono text-xs bg-gray-100 px-1 py-0.5 rounded">
               --color-*
             </code>{" "}
             tokens, organized by category. These tokens adapt automatically to
@@ -383,25 +383,23 @@ export const ColorTokenMap: Story = {
           <div key={group.category} className="space-y-3">
             <div>
               <h3 className="font-semibold">{group.category}</h3>
-              <p className="text-sm text-(--color-text-secondary)">
-                {group.description}
-              </p>
+              <p className="text-sm text-gray-500">{group.description}</p>
             </div>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               {group.tokens.map((token) => (
                 <div
                   key={token.name}
-                  className="rounded-lg border border-(--color-border-secondary) overflow-hidden"
+                  className="rounded-lg border border-gray-300 overflow-hidden"
                 >
                   <div
                     className="h-16 w-full"
                     style={{ backgroundColor: `var(${token.name})` }}
                   />
-                  <div className="p-2 bg-(--color-background-primary)">
-                    <p className="text-xs font-medium text-(--color-text-primary)">
+                  <div className="p-2 bg-white">
+                    <p className="text-xs font-medium text-gray-900">
                       {token.label}
                     </p>
-                    <code className="text-xs font-mono text-(--color-text-tertiary) break-all">
+                    <code className="text-xs font-mono text-gray-400 break-all">
                       {token.name}
                     </code>
                   </div>

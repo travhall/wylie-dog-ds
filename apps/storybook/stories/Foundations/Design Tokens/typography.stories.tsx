@@ -149,103 +149,71 @@ export const AllVariants: Story = {
   render: () => (
     <div className="space-y-12">
       <div className="space-y-4">
-        <h2 className="text-(length:--font-size-2xl) font-bold">Type Scale</h2>
+        <h2 className="text-2xl font-bold">Type Scale</h2>
         <div className="space-y-4">
           <div>
-            <h1 className="text-(length:--font-size-5xl) font-bold">
-              Heading 1 - 48px
-            </h1>
+            <h1 className="text-5xl font-bold">Heading 1 - 48px</h1>
           </div>
           <div>
-            <h2 className="text-(length:--font-size-4xl) font-bold">
-              Heading 2 - 36px
-            </h2>
+            <h2 className="text-4xl font-bold">Heading 2 - 36px</h2>
           </div>
           <div>
-            <h3 className="text-(length:--font-size-3xl) font-bold">
-              Heading 3 - 30px
-            </h3>
+            <h3 className="text-3xl font-bold">Heading 3 - 30px</h3>
           </div>
           <div>
-            <h4 className="text-(length:--font-size-2xl) font-bold">
-              Heading 4 - 24px
-            </h4>
+            <h4 className="text-2xl font-bold">Heading 4 - 24px</h4>
           </div>
           <div>
-            <h5 className="text-(length:--font-size-xl) font-bold">
-              Heading 5 - 20px
-            </h5>
+            <h5 className="text-xl font-bold">Heading 5 - 20px</h5>
           </div>
           <div>
-            <h6 className="text-(length:--font-size-lg) font-bold">
-              Heading 6 - 18px
-            </h6>
+            <h6 className="text-lg font-bold">Heading 6 - 18px</h6>
           </div>
           <div>
-            <p className="text-(length:--font-size-base)">Body (Base) - 16px</p>
+            <p className="text-base">Body (Base) - 16px</p>
           </div>
           <div>
-            <p className="text-(length:--font-size-sm)">Small - 14px</p>
+            <p className="text-sm">Small - 14px</p>
           </div>
           <div>
-            <p className="text-(length:--font-size-xs)">Extra Small - 12px</p>
+            <p className="text-xs">Extra Small - 12px</p>
           </div>
         </div>
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-(length:--font-size-2xl) font-bold">
-          Font Weights
-        </h2>
+        <h2 className="text-2xl font-bold">Font Weights</h2>
         <div className="space-y-2">
-          <p className="text-(length:--font-size-xl) font-(--font-weight-light)">
-            Light (300)
-          </p>
-          <p className="text-(length:--font-size-xl) font-(--font-weight-normal)">
-            Normal (400)
-          </p>
-          <p className="text-(length:--font-size-xl) font-(--font-weight-medium)">
-            Medium (500)
-          </p>
-          <p className="text-(length:--font-size-xl) font-(--font-weight-semibold)">
-            Semibold (600)
-          </p>
-          <p className="text-(length:--font-size-xl) font-(--font-weight-bold)">
-            Bold (700)
-          </p>
+          <p className="text-xl font-light">Light (300)</p>
+          <p className="text-xl font-normal">Normal (400)</p>
+          <p className="text-xl font-medium">Medium (500)</p>
+          <p className="text-xl font-semibold">Semibold (600)</p>
+          <p className="text-xl font-bold">Bold (700)</p>
         </div>
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-(length:--font-size-2xl) font-bold">
-          Line Heights
-        </h2>
+        <h2 className="text-2xl font-bold">Line Heights</h2>
         <div className="space-y-4 max-w-2xl">
           <div>
-            <p className="text-(length:--font-size-sm) font-semibold mb-1">
-              Tight
-            </p>
-            <p className="leading-(--line-height-tight) text-(--color-text-secondary)">
+            <p className="text-sm font-semibold mb-1">Tight</p>
+            <p className="leading-tight text-gray-500">
               The crisis consists precisely in the fact that the old is dying
               and the new cannot be born: in this interregnum, morbid phenomena
               of the most varied kind come to pass.
             </p>
           </div>
           <div>
-            <p className="text-(length:--font-size-sm) font-semibold mb-1">
-              Normal
-            </p>
-            <p className="leading-(--line-height-normal) text-(--color-text-secondary)">
+            <p className="text-sm font-semibold mb-1">Normal</p>
+            <p className="leading-normal text-gray-500">
               The crisis consists precisely in the fact that the old is dying
               and the new cannot be born: in this interregnum, morbid phenomena
               of the most varied kind come to pass.
             </p>
           </div>
           <div>
-            <p className="text-(length:--font-size-sm) font-semibold mb-1">
-              Relaxed
-            </p>
-            <p className="leading-(--line-height-relaxed) text-(--color-text-secondary)">
+            <p className="text-sm font-semibold mb-1">Relaxed</p>
+            <p className="leading-relaxed text-gray-500">
               The crisis consists precisely in the fact that the old is dying
               and the new cannot be born: in this interregnum, morbid phenomena
               of the most varied kind come to pass.
@@ -269,78 +237,58 @@ export const TypeScale: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <h1 className="text-(length:--font-size-5xl) font-bold mb-2">
-          Heading 1
-        </h1>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <h1 className="text-5xl font-bold mb-2">Heading 1</h1>
+        <p className="text-sm text-gray-500 font-mono">
           --font-size-5xl / 48px
         </p>
       </div>
 
       <div>
-        <h2 className="text-(length:--font-size-4xl) font-bold mb-2">
-          Heading 2
-        </h2>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <h2 className="text-4xl font-bold mb-2">Heading 2</h2>
+        <p className="text-sm text-gray-500 font-mono">
           --font-size-4xl / 36px
         </p>
       </div>
 
       <div>
-        <h3 className="text-(length:--font-size-3xl) font-bold mb-2">
-          Heading 3
-        </h3>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <h3 className="text-3xl font-bold mb-2">Heading 3</h3>
+        <p className="text-sm text-gray-500 font-mono">
           --font-size-3xl / 30px
         </p>
       </div>
 
       <div>
-        <h4 className="text-(length:--font-size-2xl) font-bold mb-2">
-          Heading 4
-        </h4>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <h4 className="text-2xl font-bold mb-2">Heading 4</h4>
+        <p className="text-sm text-gray-500 font-mono">
           --font-size-2xl / 24px
         </p>
       </div>
 
       <div>
-        <h5 className="text-(length:--font-size-xl) font-bold mb-2">
-          Heading 5
-        </h5>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
-          --font-size-xl / 20px
-        </p>
+        <h5 className="text-xl font-bold mb-2">Heading 5</h5>
+        <p className="text-sm text-gray-500 font-mono">--font-size-xl / 20px</p>
       </div>
 
       <div>
-        <h6 className="text-(length:--font-size-lg) font-bold mb-2">
-          Heading 6
-        </h6>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
-          --font-size-lg / 18px
-        </p>
+        <h6 className="text-lg font-bold mb-2">Heading 6</h6>
+        <p className="text-sm text-gray-500 font-mono">--font-size-lg / 18px</p>
       </div>
 
       <div>
-        <p className="text-(length:--font-size-base) mb-2">Body Large (Base)</p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <p className="text-base mb-2">Body Large (Base)</p>
+        <p className="text-sm text-gray-500 font-mono">
           --font-size-base / 16px
         </p>
       </div>
 
       <div>
-        <p className="text-(length:--font-size-sm) mb-2">Body Small</p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
-          --font-size-sm / 14px
-        </p>
+        <p className="text-sm mb-2">Body Small</p>
+        <p className="text-sm text-gray-500 font-mono">--font-size-sm / 14px</p>
       </div>
 
       <div>
-        <p className="text-(length:--font-size-xs) mb-2">Caption</p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
-          --font-size-xs / 12px
-        </p>
+        <p className="text-xs mb-2">Caption</p>
+        <p className="text-sm text-gray-500 font-mono">--font-size-xs / 12px</p>
       </div>
     </div>
   ),
@@ -350,46 +298,36 @@ export const FontWeights: Story = {
   render: () => (
     <div className="space-y-4">
       <div>
-        <p className="text-(length:--font-size-xl) font-(--font-weight-light) mb-1">
-          Light Weight
-        </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <p className="text-xl font-light mb-1">Light Weight</p>
+        <p className="text-sm text-gray-500 font-mono">
           --font-weight-light / 300
         </p>
       </div>
 
       <div>
-        <p className="text-(length:--font-size-xl) font-(--font-weight-normal) mb-1">
-          Normal Weight
-        </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <p className="text-xl font-normal mb-1">Normal Weight</p>
+        <p className="text-sm text-gray-500 font-mono">
           --font-weight-normal / 400
         </p>
       </div>
 
       <div>
-        <p className="text-(length:--font-size-xl) font-(--font-weight-medium) mb-1">
-          Medium Weight
-        </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <p className="text-xl font-medium mb-1">Medium Weight</p>
+        <p className="text-sm text-gray-500 font-mono">
           --font-weight-medium / 500
         </p>
       </div>
 
       <div>
-        <p className="text-(length:--font-size-xl) font-(--font-weight-semibold) mb-1">
-          Semibold Weight
-        </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <p className="text-xl font-semibold mb-1">Semibold Weight</p>
+        <p className="text-sm text-gray-500 font-mono">
           --font-weight-semibold / 600
         </p>
       </div>
 
       <div>
-        <p className="text-(length:--font-size-xl) font-(--font-weight-bold) mb-1">
-          Bold Weight
-        </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <p className="text-xl font-bold mb-1">Bold Weight</p>
+        <p className="text-sm text-gray-500 font-mono">
           --font-weight-bold / 700
         </p>
       </div>
@@ -401,10 +339,10 @@ export const LineHeights: Story = {
   render: () => (
     <div className="space-y-8 max-w-2xl">
       <div>
-        <h4 className="text-(length:--font-size-lg) font-semibold mb-2">
+        <h4 className="text-lg font-semibold mb-2">
           Tight (--line-height-tight)
         </h4>
-        <p className="leading-(--line-height-tight) text-(--color-text-secondary)">
+        <p className="leading-tight text-gray-500">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -412,10 +350,10 @@ export const LineHeights: Story = {
       </div>
 
       <div>
-        <h4 className="text-(length:--font-size-lg) font-semibold mb-2">
+        <h4 className="text-lg font-semibold mb-2">
           Normal (--line-height-normal)
         </h4>
-        <p className="leading-(--line-height-normal) text-(--color-text-secondary)">
+        <p className="leading-normal text-gray-500">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -423,10 +361,10 @@ export const LineHeights: Story = {
       </div>
 
       <div>
-        <h4 className="text-(length:--font-size-lg) font-semibold mb-2">
+        <h4 className="text-lg font-semibold mb-2">
           Relaxed (--line-height-relaxed)
         </h4>
-        <p className="leading-(--line-height-relaxed) text-(--color-text-secondary)">
+        <p className="leading-relaxed text-gray-500">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -434,10 +372,10 @@ export const LineHeights: Story = {
       </div>
 
       <div>
-        <h4 className="text-(length:--font-size-lg) font-semibold mb-2">
+        <h4 className="text-lg font-semibold mb-2">
           Loose (--line-height-loose)
         </h4>
-        <p className="leading-(--line-height-loose) text-(--color-text-secondary)">
+        <p className="leading-loose text-gray-500">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -451,55 +389,35 @@ export const TextColors: Story = {
   render: () => (
     <div className="space-y-4">
       <div>
-        <p className="text-(--color-text-primary) text-(length:--font-size-lg) mb-1">
-          Primary Text
-        </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
-          --color-text-primary
-        </p>
+        <p className="text-gray-900 text-lg mb-1">Primary Text</p>
+        <p className="text-sm text-gray-500 font-mono">--color-text-primary</p>
       </div>
 
       <div>
-        <p className="text-(--color-text-secondary) text-(length:--font-size-lg) mb-1">
-          Secondary Text
-        </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <p className="text-gray-500 text-lg mb-1">Secondary Text</p>
+        <p className="text-sm text-gray-500 font-mono">
           --color-text-secondary
         </p>
       </div>
 
       <div>
-        <p className="text-(--color-text-tertiary) text-(length:--font-size-lg) mb-1">
-          Muted Text
-        </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
-          --color-text-tertiary
-        </p>
+        <p className="text-gray-400 text-lg mb-1">Muted Text</p>
+        <p className="text-sm text-gray-500 font-mono">--color-text-tertiary</p>
       </div>
 
       <div>
-        <p className="text-(--color-status-info) text-(length:--font-size-lg) mb-1">
-          Link Text
-        </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
-          --color-status-info
-        </p>
+        <p className="text-blue-600 text-lg mb-1">Link Text</p>
+        <p className="text-sm text-gray-500 font-mono">--color-status-info</p>
       </div>
 
       <div>
-        <p className="text-(--color-status-error) text-(length:--font-size-lg) mb-1">
-          Error Text
-        </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
-          --color-status-error
-        </p>
+        <p className="text-red-600 text-lg mb-1">Error Text</p>
+        <p className="text-sm text-gray-500 font-mono">--color-status-error</p>
       </div>
 
       <div>
-        <p className="text-(--color-status-success) text-(length:--font-size-lg) mb-1">
-          Success Text
-        </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <p className="text-green-600 text-lg mb-1">Success Text</p>
+        <p className="text-sm text-gray-500 font-mono">
           --color-status-success
         </p>
       </div>
@@ -512,7 +430,7 @@ export const TypographyHierarchy: Story = {
     <div className="max-w-4xl space-y-6">
       <article className="prose prose-gray max-w-none">
         <h1>The Future of Design Systems</h1>
-        <p className="lead text-(length:--font-size-xl) text-(--color-text-secondary)">
+        <p className="lead text-xl text-gray-500">
           How OKLCH color science and modern web technologies are
           revolutionizing the way we build consistent user interfaces.
         </p>
@@ -576,12 +494,10 @@ export const CodeTypography: Story = {
   render: () => (
     <div className="space-y-6">
       <div>
-        <h4 className="text-(--font-size-lg) font-semibold mb-3">
-          Inline Code
-        </h4>
+        <h4 className="text-lg font-semibold mb-3">Inline Code</h4>
         <p>
           Use the{" "}
-          <code className="bg-(--color-background-secondary) px-1.5 py-0.5 rounded text-(length:--font-size-sm) font-(--font-family-mono)">
+          <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">
             useState
           </code>{" "}
           hook to manage state in React components.
@@ -589,11 +505,9 @@ export const CodeTypography: Story = {
       </div>
 
       <div>
-        <h4 className="text-(length:--font-size-lg) font-semibold mb-3">
-          Code Block
-        </h4>
-        <pre className="bg-(--color-background-inverse) text-(--color-text-inverse) p-4 rounded-lg overflow-x-auto">
-          <code className="font-(--font-family-mono) text-(length:--font-size-sm)">
+        <h4 className="text-lg font-semibold mb-3">Code Block</h4>
+        <pre className="bg-gray-900 text-white p-4 rounded-lg overflow-x-auto">
+          <code className="font-mono text-sm">
             {`function Button({ children, variant = "default" }) {
   return (
     <button className={\`btn btn-\${variant}\`}>
@@ -606,10 +520,8 @@ export const CodeTypography: Story = {
       </div>
 
       <div>
-        <h4 className="text-(length:--font-size-lg) font-semibold mb-3">
-          Terminal Output
-        </h4>
-        <pre className="bg-(--color-background-inverse) text-(--color-status-success) p-4 rounded-lg font-(--font-family-mono) text-(length:--font-size-sm)">
+        <h4 className="text-lg font-semibold mb-3">Terminal Output</h4>
+        <pre className="bg-gray-900 text-green-600 p-4 rounded-lg font-mono text-sm">
           {`$ npm install @wyliedog/ui
 + @wyliedog/ui@1.0.0
 added 1 package from 1 contributor
@@ -624,40 +536,40 @@ export const ResponsiveTypography: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <h1 className="text-(length:--font-size-2xl) md:text-(length:--font-size-4xl) lg:text-(length:--font-size-5xl) font-bold mb-2">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2">
           Responsive Heading
         </h1>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-gray-500 font-mono">
           --font-size-2xl → md:--font-size-4xl → lg:--font-size-5xl
         </p>
       </div>
 
       <div>
-        <p className="text-(length:--font-size-sm) md:text-(length:--font-size-base) lg:text-(length:--font-size-lg) mb-2">
+        <p className="text-sm md:text-base lg:text-lg mb-2">
           This paragraph adapts its size based on screen size. On mobile it's
           smaller, on tablet it's medium, and on desktop it's larger for better
           readability.
         </p>
-        <p className="text-(length:--font-size-sm) text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-gray-500 font-mono">
           --font-size-sm → md:--font-size-base → lg:--font-size-lg
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <h3 className="text-(length:--font-size-lg) md:text-(length:--font-size-xl) font-semibold mb-2">
+          <h3 className="text-lg md:text-xl font-semibold mb-2">
             Mobile First
           </h3>
-          <p className="text-(length:--font-size-sm) md:text-(length:--font-size-base) text-(--color-text-secondary)">
+          <p className="text-sm md:text-base text-gray-500">
             Typography scales up from mobile to larger screens, ensuring
             readability across all devices.
           </p>
         </div>
         <div>
-          <h3 className="text-(length:--font-size-lg) md:text-(length:--font-size-xl) font-semibold mb-2">
+          <h3 className="text-lg md:text-xl font-semibold mb-2">
             Flexible Layout
           </h3>
-          <p className="text-(length:--font-size-sm) md:text-(length:--font-size-base) text-(--color-text-secondary)">
+          <p className="text-sm md:text-base text-gray-500">
             Text size and layout adjust automatically to provide optimal reading
             experience on any device.
           </p>
@@ -722,7 +634,7 @@ function TypographyPlaygroundComponent() {
     !currentFontFamily
   ) {
     return (
-      <div className="p-4 text-center text-muted-foreground">
+      <div className="p-4 text-center text-gray-500">
         No typography tokens found in manifest.
       </div>
     );
@@ -734,7 +646,7 @@ function TypographyPlaygroundComponent() {
         <h3 className="text-2xl font-semibold tracking-tight mb-2">
           Typography Playground
         </h3>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-gray-500">
           Interactive explorer for typography tokens. All options are
           dynamically generated from the design token manifest - when tokens
           change in Figma, this playground automatically updates.
@@ -751,7 +663,7 @@ function TypographyPlaygroundComponent() {
         </CardHeader>
         <CardContent>
           <div
-            className="p-6 rounded-lg border bg-background"
+            className="p-6 rounded-lg border bg-white"
             style={{
               fontSize: String(currentFontSize.value),
               fontWeight: String(currentFontWeight.value),
@@ -793,7 +705,7 @@ function TypographyPlaygroundComponent() {
               ))}
             </div>
             {showTokenDetails && (
-              <div className="text-xs text-muted-foreground font-mono truncate">
+              <div className="text-xs text-gray-500 font-mono truncate">
                 <div>Value: {currentFontFamily.value}</div>
                 <div>Token: {currentFontFamily.token}</div>
               </div>
@@ -820,7 +732,7 @@ function TypographyPlaygroundComponent() {
               ))}
             </div>
             {showTokenDetails && (
-              <div className="text-xs text-muted-foreground font-mono space-y-1">
+              <div className="text-xs text-gray-500 font-mono space-y-1">
                 <div>Value: {currentFontSize.value}</div>
                 <div>Token: {currentFontSize.token}</div>
               </div>
@@ -847,7 +759,7 @@ function TypographyPlaygroundComponent() {
               ))}
             </div>
             {showTokenDetails && (
-              <div className="text-xs text-muted-foreground font-mono space-y-1">
+              <div className="text-xs text-gray-500 font-mono space-y-1">
                 <div>Value: {currentFontWeight.value}</div>
                 <div>Token: {currentFontWeight.token}</div>
               </div>
@@ -874,7 +786,7 @@ function TypographyPlaygroundComponent() {
               ))}
             </div>
             {showTokenDetails && (
-              <div className="text-xs text-muted-foreground font-mono space-y-1">
+              <div className="text-xs text-gray-500 font-mono space-y-1">
                 <div>Value: {currentLineHeight.value}</div>
                 <div>Token: {currentLineHeight.token}</div>
               </div>
@@ -904,7 +816,7 @@ function TypographyPlaygroundComponent() {
                 ))}
               </div>
               {showTokenDetails && currentLetterSpacing && (
-                <div className="text-xs text-muted-foreground font-mono space-y-1">
+                <div className="text-xs text-gray-500 font-mono space-y-1">
                   <div>Value: {currentLetterSpacing.value}</div>
                   <div>Token: {currentLetterSpacing.token}</div>
                 </div>
@@ -950,7 +862,7 @@ function TypographyPlaygroundComponent() {
             {/* CSS */}
             <div className="space-y-2">
               <div className="text-sm font-semibold">CSS Properties</div>
-              <div className="p-3 rounded-md bg-muted/50 text-xs font-mono space-y-1">
+              <div className="p-3 rounded-md bg-gray-100/50 text-xs font-mono space-y-1">
                 <div>font-size: {currentFontSize.value};</div>
                 <div>font-weight: {currentFontWeight.value};</div>
                 <div>line-height: {currentLineHeight.value};</div>
@@ -964,7 +876,7 @@ function TypographyPlaygroundComponent() {
             {/* Token Names */}
             <div className="space-y-2">
               <div className="text-sm font-semibold">Design Token Names</div>
-              <div className="p-3 rounded-md bg-muted/50 text-xs font-mono space-y-1">
+              <div className="p-3 rounded-md bg-gray-100/50 text-xs font-mono space-y-1">
                 <div>{currentFontSize.token}</div>
                 <div>{currentFontWeight.token}</div>
                 <div>{currentLineHeight.token}</div>
@@ -979,8 +891,8 @@ function TypographyPlaygroundComponent() {
           {/* JavaScript Import Example */}
           <div className="space-y-2">
             <div className="text-sm font-semibold">JavaScript Import</div>
-            <div className="p-3 rounded-md bg-muted/50 text-xs font-mono">
-              <code className="text-muted-foreground">
+            <div className="p-3 rounded-md bg-gray-100/50 text-xs font-mono">
+              <code className="text-gray-500">
                 {`import {
   ${currentFontSize.jsName},
   ${currentFontWeight.jsName},
@@ -994,7 +906,7 @@ function TypographyPlaygroundComponent() {
           {/* CSS Variables */}
           <div className="space-y-2">
             <div className="text-sm font-semibold">CSS Variables</div>
-            <div className="p-3 rounded-md bg-muted/50 text-xs font-mono space-y-1">
+            <div className="p-3 rounded-md bg-gray-100/50 text-xs font-mono space-y-1">
               <div>{currentFontSize.cssVar}</div>
               <div>{currentFontWeight.cssVar}</div>
               <div>{currentLineHeight.cssVar}</div>
@@ -1006,7 +918,7 @@ function TypographyPlaygroundComponent() {
           {/* Tailwind Classes */}
           <div className="space-y-2">
             <div className="text-sm font-semibold">Tailwind CSS Classes</div>
-            <div className="p-3 rounded-md bg-muted/50 text-xs font-mono">
+            <div className="p-3 rounded-md bg-gray-100/50 text-xs font-mono">
               <code>
                 className="{currentFontSize.tailwind}{" "}
                 {currentFontWeight.tailwind} {currentLineHeight.tailwind}{" "}

@@ -119,7 +119,7 @@ export const Horizontal: Story = {
         {Array.from({ length: 20 }, (_, i) => (
           <div
             key={i}
-            className="shrink-0 rounded-md bg-(--color-background-secondary) h-20 w-32 flex items-center justify-center text-sm"
+            className="shrink-0 rounded-md bg-gray-100 h-20 w-32 flex items-center justify-center text-sm"
           >
             Item {i + 1}
           </div>
@@ -186,12 +186,12 @@ export const InCard: Story = {
     },
   },
   render: () => (
-    <div className="rounded-lg border bg-(--color-background-primary) text-(--color-text-primary) shadow-sm w-87.5">
+    <div className="rounded-lg border bg-white text-gray-900 shadow-sm w-87.5">
       <div className="flex flex-col space-y-1.5 p-6 pb-3">
         <h3 className="text-2xl font-semibold leading-none tracking-tight">
           Recent Activity
         </h3>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           Your latest notifications and updates
         </p>
       </div>
@@ -199,10 +199,10 @@ export const InCard: Story = {
         <ScrollArea className="h-75 pr-4">
           {Array.from({ length: 20 }, (_, i) => (
             <div key={i} className="flex items-center space-x-4 py-3">
-              <div className="w-2 h-2 bg-(--color-interactive-primary) rounded-full" />
+              <div className="w-2 h-2 bg-blue-600 rounded-full" />
               <div className="space-y-1">
                 <p className="text-sm font-medium">Notification {i + 1}</p>
-                <p className="text-sm text-(--color-text-secondary)">
+                <p className="text-sm text-gray-500">
                   Description for notification {i + 1}
                 </p>
               </div>
@@ -238,8 +238,8 @@ export const ChatMessages: Story = {
               <div
                 className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
                   i % 3 === 0
-                    ? "bg-(--color-interactive-primary) text-(--color-text-inverse)"
-                    : "bg-(--color-background-secondary) text-(--color-text-primary)"
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-100 text-gray-900"
                 }`}
               >
                 This is message {i + 1}. Ever how the carbon in our apple pies

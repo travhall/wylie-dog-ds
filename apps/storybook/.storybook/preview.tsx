@@ -220,7 +220,10 @@ export const parameters: Preview["parameters"] = {
           "Layout Patterns",
           "Feedback Patterns",
           "Page Compositions",
+          "Accessibility",
+          "Responsive",
         ],
+        "Showcase",
         "Resources",
         [
           "Getting Started",

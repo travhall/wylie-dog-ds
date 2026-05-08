@@ -207,7 +207,7 @@ export const FileManagerMenu: Story = {
       <h3 className="text-lg font-semibold">File Manager</h3>
       <div className="grid grid-cols-3 gap-4">
         <ContextMenu>
-          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-(--color-background-secondary)">
+          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-gray-100">
             <div className="text-4xl mb-2">📁</div>
             <span className="text-sm">Documents</span>
           </ContextMenuTrigger>
@@ -224,7 +224,7 @@ export const FileManagerMenu: Story = {
         </ContextMenu>
 
         <ContextMenu>
-          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-(--color-background-secondary)">
+          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-gray-100">
             <div className="text-4xl mb-2">📄</div>
             <span className="text-sm">Report.pdf</span>
           </ContextMenuTrigger>
@@ -251,7 +251,7 @@ export const FileManagerMenu: Story = {
         </ContextMenu>
 
         <ContextMenu>
-          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-(--color-background-secondary)">
+          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-gray-100">
             <div className="text-4xl mb-2">🖼️</div>
             <span className="text-sm">Photo.jpg</span>
           </ContextMenuTrigger>
@@ -302,9 +302,7 @@ export const TextEditor: Story = {
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
-            <p className="text-(--color-text-tertiary)">
-              Right-click anywhere to see options
-            </p>
+            <p className="text-gray-400">Right-click anywhere to see options</p>
           </div>
         </ContextMenuTrigger>
         <ContextMenuContent className="w-64">
@@ -362,7 +360,7 @@ export const DataTable: Story = {
       <div className="rounded-md border">
         <table className="w-full">
           <thead>
-            <tr className="border-b bg-(--color-background-secondary)">
+            <tr className="border-b bg-gray-100">
               <th className="px-4 py-2 text-left text-sm font-medium">Name</th>
               <th className="px-4 py-2 text-left text-sm font-medium">Email</th>
               <th className="px-4 py-2 text-left text-sm font-medium">
@@ -373,7 +371,7 @@ export const DataTable: Story = {
           <tbody>
             <ContextMenu>
               <ContextMenuTrigger asChild>
-                <tr className="border-b hover:bg-(--color-background-secondary)">
+                <tr className="border-b hover:bg-gray-100">
                   <td className="px-4 py-2 text-sm">John Doe</td>
                   <td className="px-4 py-2 text-sm">john@example.com</td>
                   <td className="px-4 py-2 text-sm">Active</td>
@@ -387,7 +385,7 @@ export const DataTable: Story = {
                 <ContextMenuItem>Reset Password</ContextMenuItem>
                 <ContextMenuSeparator />
                 <ContextMenuItem>Deactivate User</ContextMenuItem>
-                <ContextMenuItem className="text-(--color-status-danger)">
+                <ContextMenuItem className="text-red-600">
                   Delete User
                 </ContextMenuItem>
               </ContextMenuContent>
@@ -395,7 +393,7 @@ export const DataTable: Story = {
 
             <ContextMenu>
               <ContextMenuTrigger asChild>
-                <tr className="border-b hover:bg-(--color-background-secondary)">
+                <tr className="border-b hover:bg-gray-100">
                   <td className="px-4 py-2 text-sm">Jane Smith</td>
                   <td className="px-4 py-2 text-sm">jane@example.com</td>
                   <td className="px-4 py-2 text-sm">Inactive</td>
@@ -408,7 +406,7 @@ export const DataTable: Story = {
                 <ContextMenuItem>Send Message</ContextMenuItem>
                 <ContextMenuItem>Activate User</ContextMenuItem>
                 <ContextMenuSeparator />
-                <ContextMenuItem className="text-(--color-status-danger)">
+                <ContextMenuItem className="text-red-600">
                   Delete User
                 </ContextMenuItem>
               </ContextMenuContent>
@@ -416,7 +414,7 @@ export const DataTable: Story = {
           </tbody>
         </table>
       </div>
-      <p className="text-sm text-(--color-text-secondary)">
+      <p className="text-sm text-gray-500">
         Right-click on any row to see user actions
       </p>
     </div>
@@ -437,7 +435,7 @@ export const ImageGallery: Story = {
       <div className="grid grid-cols-3 gap-4">
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <ContextMenu key={i}>
-            <ContextMenuTrigger className="aspect-square bg-(--color-background-tertiary) rounded-lg flex items-center justify-center text-2xl hover:bg-(--color-background-tertiary)">
+            <ContextMenuTrigger className="aspect-square bg-gray-50 rounded-lg flex items-center justify-center text-2xl hover:bg-gray-50">
               🖼️
             </ContextMenuTrigger>
             <ContextMenuContent>
@@ -464,9 +462,7 @@ export const ImageGallery: Story = {
               <ContextMenuItem>Set as Wallpaper</ContextMenuItem>
               <ContextMenuItem>Edit Image</ContextMenuItem>
               <ContextMenuSeparator />
-              <ContextMenuItem className="text-(--color-status-danger)">
-                Delete
-              </ContextMenuItem>
+              <ContextMenuItem className="text-red-600">Delete</ContextMenuItem>
             </ContextMenuContent>
           </ContextMenu>
         ))}
@@ -487,14 +483,14 @@ export const Accessibility: Story = {
     <div className="space-y-6 w-full max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           Context menus support keyboard navigation. Right-click to open, use
           arrows to navigate, Enter to select, Escape to close.
         </p>
       </div>
 
       <ContextMenu>
-        <ContextMenuTrigger className="flex h-25 w-full items-center justify-center rounded-md border border-dashed text-sm focus:outline-none focus:ring-2 focus:ring-(--color-interactive-primary)">
+        <ContextMenuTrigger className="flex h-25 w-full items-center justify-center rounded-md border border-dashed text-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
           Accessible Context Menu
         </ContextMenuTrigger>
         <ContextMenuContent className="w-64">
@@ -524,7 +520,7 @@ export const Accessibility: Story = {
         </ContextMenuContent>
       </ContextMenu>
 
-      <p className="text-xs text-(--color-text-secondary)">
+      <p className="text-xs text-gray-500">
         Focus the trigger with Tab, then right-click or use the context menu key
       </p>
     </div>

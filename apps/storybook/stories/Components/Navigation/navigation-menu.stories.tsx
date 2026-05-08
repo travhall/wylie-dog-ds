@@ -118,7 +118,7 @@ export const Default: Story = {
                     <div className="mb-2 mt-4 text-lg font-medium">
                       Featured Product
                     </div>
-                    <p className="text-sm leading-tight text-(--color-text-secondary)">
+                    <p className="text-sm leading-tight text-gray-500">
                       Discover our most popular item with advanced features and
                       modern design.
                     </p>
@@ -182,13 +182,13 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-(--color-background-tertiary) hover:text-(--color-text-primary) focus:bg-(--color-background-tertiary) focus:text-(--color-text-primary)",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-50 hover:text-gray-900 focus:bg-gray-50 focus:text-gray-900",
             className
           )}
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-(--color-text-secondary)">
+          <p className="line-clamp-2 text-sm leading-snug text-gray-500">
             {children}
           </p>
         </a>
@@ -321,19 +321,19 @@ export const WithCallToAction: Story = {
                   White-label tools and client management.
                 </ListItem>
               </div>
-              <div className="flex flex-col justify-between rounded-md bg-(--color-background-secondary) p-4">
+              <div className="flex flex-col justify-between rounded-md bg-gray-100 p-4">
                 <div>
                   <p className="text-sm font-medium mb-1">
                     New: Design System Kit
                   </p>
-                  <p className="text-xs text-(--color-text-secondary) leading-relaxed">
+                  <p className="text-xs text-gray-500 leading-relaxed">
                     Everything you need to build consistent, accessible UIs —
                     tokens, components, and docs.
                   </p>
                 </div>
                 <NavigationMenuLink
                   asChild
-                  className="mt-4 inline-flex items-center justify-center rounded-md bg-(--color-background-primary) px-3 py-1.5 text-sm font-medium ring-1 ring-(--color-border-default) hover:bg-(--color-background-tertiary) transition-colors"
+                  className="mt-4 inline-flex items-center justify-center rounded-md bg-white px-3 py-1.5 text-sm font-medium ring-1 ring-gray-200 hover:bg-gray-50 transition-colors"
                 >
                   <a href="#">Get started free →</a>
                 </NavigationMenuLink>

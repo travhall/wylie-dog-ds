@@ -162,9 +162,7 @@ export const WithLabels: Story = {
         <div className="space-y-3">
           <div className="flex justify-between">
             <Label className="text-sm font-medium">Volume</Label>
-            <span className="text-sm text-(--color-text-secondary)">
-              {value[0]}%
-            </span>
+            <span className="text-sm text-gray-500">{value[0]}%</span>
           </div>
           <Slider value={value} onValueChange={setValue} max={100} step={1} />
         </div>
@@ -190,7 +188,7 @@ export const PriceRange: Story = {
         <div className="space-y-3">
           <div className="flex justify-between">
             <Label className="text-sm font-medium">Price Range</Label>
-            <span className="text-sm text-(--color-text-secondary)">
+            <span className="text-sm text-gray-500">
               ${priceRange[0]} - ${priceRange[1]}
             </span>
           </div>
@@ -201,7 +199,7 @@ export const PriceRange: Story = {
             min={0}
             step={10}
           />
-          <div className="flex justify-between text-xs text-(--color-text-tertiary)">
+          <div className="flex justify-between text-xs text-gray-400">
             <span>$0</span>
             <span>$1,000</span>
           </div>

@@ -74,7 +74,7 @@ const sampleHeader = (
   <SiteHeader
     logo={
       <a href="/" className="flex items-center space-x-2">
-        <Heart className="h-6 w-6 text-primary" />
+        <Heart className="h-6 w-6 text-blue-600" />
         <span className="text-xl font-bold">Wylie Dog</span>
       </a>
     }
@@ -91,7 +91,7 @@ const sampleFooter = (
     variant="minimal"
     logo={
       <div className="flex items-center space-x-2">
-        <Heart className="h-5 w-5 text-primary" />
+        <Heart className="h-5 w-5 text-blue-600" />
         <span className="font-bold">Wylie Dog</span>
       </div>
     }
@@ -101,15 +101,13 @@ const sampleFooter = (
 
 const sampleSidebar = (
   <nav className="space-y-2 p-4">
-    <h3 className="mb-3 text-sm font-semibold text-muted-foreground">
-      Navigation
-    </h3>
+    <h3 className="mb-3 text-sm font-semibold text-gray-500">Navigation</h3>
     {["Dashboard", "Settings", "Profile", "Notifications", "Help"].map(
       (item) => (
         <a
           key={item}
           href="#"
-          className="block rounded-md px-3 py-2 text-sm hover:bg-muted"
+          className="block rounded-md px-3 py-2 text-sm hover:bg-gray-100"
         >
           {item}
         </a>
@@ -122,7 +120,7 @@ const sampleContent = (
   <div className="space-y-6 py-8">
     <div>
       <h1 className="text-3xl font-bold">Page Title</h1>
-      <p className="mt-2 text-muted-foreground">
+      <p className="mt-2 text-gray-500">
         This demonstrates a complete page layout with header, content, and
         footer.
       </p>
@@ -131,7 +129,7 @@ const sampleContent = (
       {[1, 2, 3].map((i) => (
         <div key={i} className="rounded-lg border p-6">
           <h3 className="font-semibold">Card {i}</h3>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <p className="mt-1 text-sm text-gray-500">
             Sample content card for layout demonstration.
           </p>
         </div>

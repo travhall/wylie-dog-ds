@@ -113,30 +113,20 @@ export const WithValidation: Story = {
     return (
       <Form onSubmit={handleSubmit} className="w-100 space-y-6">
         <div className="space-y-2">
-          <Label
-            htmlFor="name"
-            className={errors.name ? "text-(--color-status-danger)" : ""}
-          >
+          <Label htmlFor="name" className={errors.name ? "text-red-600" : ""}>
             Name {errors.name && "*"}
           </Label>
           <Input
             id="name"
             name="name"
             placeholder="Enter your name"
-            className={errors.name ? "border-(--color-border-danger)" : ""}
+            className={errors.name ? "border-red-500" : ""}
           />
-          {errors.name && (
-            <p className="text-sm text-(--color-status-danger)">
-              {errors.name}
-            </p>
-          )}
+          {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
         </div>
 
         <div className="space-y-2">
-          <Label
-            htmlFor="email"
-            className={errors.email ? "text-(--color-status-danger)" : ""}
-          >
+          <Label htmlFor="email" className={errors.email ? "text-red-600" : ""}>
             Email {errors.email && "*"}
           </Label>
           <Input
@@ -144,12 +134,10 @@ export const WithValidation: Story = {
             name="email"
             type="email"
             placeholder="Enter your email"
-            className={errors.email ? "border-(--color-border-danger)" : ""}
+            className={errors.email ? "border-red-500" : ""}
           />
           {errors.email && (
-            <p className="text-sm text-(--color-status-danger)">
-              {errors.email}
-            </p>
+            <p className="text-sm text-red-600">{errors.email}</p>
           )}
         </div>
 
@@ -253,7 +241,7 @@ export const Login: Story = {
     <Form className="w-87.5 space-y-6">
       <div className="space-y-2 text-center">
         <h1 className="text-2xl font-semibold">Sign In</h1>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           Enter your credentials to access your account
         </p>
       </div>
@@ -326,17 +314,14 @@ export const WithInteractions: Story = {
     return (
       <Form onSubmit={handleSubmit} className="w-100 space-y-6">
         {submitted && (
-          <p
-            role="status"
-            className="text-sm font-medium text-(--color-status-success)"
-          >
+          <p role="status" className="text-sm font-medium text-green-600">
             Form submitted successfully!
           </p>
         )}
         <div className="space-y-2">
           <Label
             htmlFor="wi-name"
-            className={errors.name ? "text-(--color-status-danger)" : ""}
+            className={errors.name ? "text-red-600" : ""}
           >
             Name {errors.name && "*"}
           </Label>
@@ -344,10 +329,10 @@ export const WithInteractions: Story = {
             id="wi-name"
             name="wi-name"
             placeholder="Enter your name"
-            className={errors.name ? "border-(--color-border-danger)" : ""}
+            className={errors.name ? "border-red-500" : ""}
           />
           {errors.name && (
-            <p role="alert" className="text-sm text-(--color-status-danger)">
+            <p role="alert" className="text-sm text-red-600">
               {errors.name}
             </p>
           )}
@@ -356,7 +341,7 @@ export const WithInteractions: Story = {
         <div className="space-y-2">
           <Label
             htmlFor="wi-email"
-            className={errors.email ? "text-(--color-status-danger)" : ""}
+            className={errors.email ? "text-red-600" : ""}
           >
             Email {errors.email && "*"}
           </Label>
@@ -365,10 +350,10 @@ export const WithInteractions: Story = {
             name="wi-email"
             type="email"
             placeholder="Enter your email"
-            className={errors.email ? "border-(--color-border-danger)" : ""}
+            className={errors.email ? "border-red-500" : ""}
           />
           {errors.email && (
-            <p role="alert" className="text-sm text-(--color-status-danger)">
+            <p role="alert" className="text-sm text-red-600">
               {errors.email}
             </p>
           )}

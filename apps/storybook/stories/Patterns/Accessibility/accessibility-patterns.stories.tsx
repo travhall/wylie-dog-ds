@@ -13,6 +13,8 @@ import {
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
+import { Alert, AlertDescription } from "@wyliedog/ui/alert";
+import { Badge } from "@wyliedog/ui/badge";
 import {
   Select,
   SelectContent,
@@ -48,7 +50,7 @@ function FocusManagementComponent() {
 
   return (
     <div className="space-y-4">
-      <p className="text-sm text-(--color-text-secondary) max-w-sm">
+      <p className="text-sm text-gray-500 max-w-sm">
         Open the dialog and press Tab — focus cycles within the dialog. Press
         Escape to close; focus returns to the trigger button.
       </p>
@@ -158,14 +160,14 @@ function LiveRegionAnnouncementsComponent() {
 
   const statusColor =
     status === "saved"
-      ? "text-(--color-text-success)"
+      ? "text-green-600"
       : status === "error"
-        ? "text-(--color-text-danger)"
-        : "text-(--color-text-secondary)";
+        ? "text-red-600"
+        : "text-gray-500";
 
   return (
     <div className="w-100 space-y-6">
-      <p className="text-sm text-(--color-text-secondary)">
+      <p className="text-sm text-gray-500">
         Click Save to trigger a status update. Screen readers announce the
         message via the <code>aria-live</code> region even though the visible
         badge updates simultaneously.
@@ -202,11 +204,9 @@ function LiveRegionAnnouncementsComponent() {
       </div>
 
       {/* Implementation callout */}
-      <div className="rounded-(--space-dialog-content-radius) border border-(--color-border-default) bg-(--color-background-secondary) p-4 text-sm space-y-1">
-        <p className="font-semibold text-(--color-text-primary)">
-          Pattern: aria-live region
-        </p>
-        <pre className="text-xs text-(--color-text-secondary) overflow-x-auto whitespace-pre-wrap">
+      <div className="rounded-lg border border-gray-200 bg-gray-100 p-4 text-sm space-y-1">
+        <p className="font-semibold text-gray-900">Pattern: aria-live region</p>
+        <pre className="text-xs text-gray-500 overflow-x-auto whitespace-pre-wrap">
           {`<div
   aria-live="polite"
   aria-atomic="true"
@@ -273,17 +273,14 @@ function KeyboardOnlyFormComponent() {
 
   if (submitted) {
     return (
-      <div
-        role="status"
-        className="w-100 rounded-(--space-dialog-content-radius) border border-(--color-border-success) bg-(--color-background-success-subtle) p-6 text-center space-y-2"
-      >
-        <p className="font-semibold text-(--color-text-success)">
-          Form submitted via keyboard only!
-        </p>
-        <p className="text-sm text-(--color-text-secondary)">
-          {name} · {email} · {role}
-        </p>
-      </div>
+      <Alert variant="success" className="w-100">
+        <AlertDescription>
+          <p className="font-semibold">Form submitted via keyboard only!</p>
+          <p className="text-sm mt-1">
+            {name} · {email} · {role}
+          </p>
+        </AlertDescription>
+      </Alert>
     );
   }
 
@@ -294,8 +291,8 @@ function KeyboardOnlyFormComponent() {
       noValidate
       aria-label="Keyboard-only form demo"
     >
-      <div className="rounded-(--space-dialog-content-radius) border border-(--color-border-default) bg-(--color-background-secondary) p-3 text-sm text-(--color-text-secondary) space-y-1">
-        <p className="font-semibold text-(--color-text-primary)">Key map</p>
+      <div className="rounded-lg border border-gray-200 bg-gray-100 p-3 text-sm text-gray-500 space-y-1">
+        <p className="font-semibold text-gray-900">Key map</p>
         <ul className="list-none space-y-0.5">
           <li>
             <kbd className="font-mono text-xs">Tab</kbd> — next field
@@ -423,11 +420,11 @@ interface ContrastSample {
 
 const contrastSamples: ContrastSample[] = [
   {
-    label: "text-primary on background-primary",
+    label: "text-blue-600 on background-primary",
     textToken: "--color-text-primary",
     bgToken: "--color-background-primary",
-    textClass: "text-(--color-text-primary)",
-    bgClass: "bg-(--color-background-primary)",
+    textClass: "text-gray-900",
+    bgClass: "bg-white",
     sampleText: "The quick brown fox",
     compliant: true,
   },
@@ -435,8 +432,8 @@ const contrastSamples: ContrastSample[] = [
     label: "text-secondary on background-primary",
     textToken: "--color-text-secondary",
     bgToken: "--color-background-primary",
-    textClass: "text-(--color-text-secondary)",
-    bgClass: "bg-(--color-background-primary)",
+    textClass: "text-gray-500",
+    bgClass: "bg-white",
     sampleText: "Supporting information",
     compliant: true,
   },
@@ -444,8 +441,8 @@ const contrastSamples: ContrastSample[] = [
     label: "text-inverse on background-inverse",
     textToken: "--color-text-inverse",
     bgToken: "--color-background-inverse",
-    textClass: "text-(--color-text-inverse)",
-    bgClass: "bg-(--color-background-inverse)",
+    textClass: "text-white",
+    bgClass: "bg-gray-900",
     sampleText: "Inverted surface text",
     compliant: true,
   },
@@ -453,8 +450,8 @@ const contrastSamples: ContrastSample[] = [
     label: "text-danger on background-primary",
     textToken: "--color-text-danger",
     bgToken: "--color-background-primary",
-    textClass: "text-(--color-text-danger)",
-    bgClass: "bg-(--color-background-primary)",
+    textClass: "text-red-600",
+    bgClass: "bg-white",
     sampleText: "Error message text",
     compliant: true,
   },
@@ -471,8 +468,8 @@ const contrastSamples: ContrastSample[] = [
     label: "text-success on background-success-subtle",
     textToken: "--color-text-success",
     bgToken: "--color-background-success-subtle",
-    textClass: "text-(--color-text-success)",
-    bgClass: "bg-(--color-background-success-subtle)",
+    textClass: "text-green-600",
+    bgClass: "bg-green-50",
     sampleText: "Success state text",
     isLargeText: true,
     compliant: true,
@@ -492,14 +489,14 @@ export const ColorContrastCheck: Story = {
   render: () => (
     <div className="space-y-6 max-w-2xl">
       <div className="space-y-1">
-        <h2 className="text-lg font-semibold text-(--color-text-primary)">
+        <h2 className="text-lg font-semibold text-gray-900">
           Colour contrast — semantic token pairs
         </h2>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           WCAG 2.2 AA: 4.5:1 for normal text · 3:1 for large text (18px+ or
           14px+ bold). "Large text" samples are marked below.
         </p>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           Note: Compliance labels reflect design intent. Use the a11y addon
           (Accessibility panel) to verify computed contrast ratios against live
           rendered colours.
@@ -510,12 +507,10 @@ export const ColorContrastCheck: Story = {
         {contrastSamples.map((sample) => (
           <div
             key={sample.label}
-            className={`flex items-center justify-between gap-4 rounded-(--space-dialog-content-radius) border border-(--color-border-default) p-4 ${sample.bgClass}`}
+            className={`flex items-center justify-between gap-4 rounded-lg border border-gray-200 p-4 ${sample.bgClass}`}
           >
             <div className="min-w-0 flex-1 space-y-1">
-              <p
-                className={`font-mono text-xs text-(--color-text-secondary) truncate`}
-              >
+              <p className={`font-mono text-xs text-gray-500 truncate`}>
                 {sample.textToken}
                 <span className="mx-1 opacity-50">on</span>
                 {sample.bgToken}
@@ -531,15 +526,12 @@ export const ColorContrastCheck: Story = {
                 )}
               </p>
             </div>
-            <span
-              className={`shrink-0 rounded px-2 py-0.5 text-xs font-semibold ${
-                sample.compliant
-                  ? "bg-(--color-background-success-subtle) text-(--color-text-success)"
-                  : "bg-(--color-background-danger-subtle) text-(--color-text-danger)"
-              }`}
+            <Badge
+              variant={sample.compliant ? "success" : "destructive"}
+              className="shrink-0"
             >
               {sample.compliant ? "AA Compliant" : "FAIL"}
-            </span>
+            </Badge>
           </div>
         ))}
       </div>
@@ -555,7 +547,7 @@ function SkipNavigationComponent() {
   const mainRef = useRef<HTMLElement>(null);
 
   return (
-    <div className="relative w-full min-h-[400px] border border-(--color-border-default) rounded-(--space-dialog-content-radius) overflow-hidden bg-(--color-background-primary)">
+    <div className="relative w-full min-h-[400px] border border-gray-200 rounded-lg overflow-hidden bg-white">
       {/*
        * PATTERN: Skip-to-content link
        * - Visually hidden until focused (sr-only + focus:not-sr-only)
@@ -564,7 +556,7 @@ function SkipNavigationComponent() {
        */}
       <a
         href="#skip-nav-main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-(--color-background-primary) focus:text-(--color-text-primary) focus:rounded focus:shadow-lg focus:border focus:border-(--color-border-focus) focus:outline-none"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-gray-900 focus:rounded focus:shadow-lg focus:border focus:border-blue-500 focus:outline-none"
         onClick={(e) => {
           e.preventDefault();
           mainRef.current?.focus();
@@ -576,26 +568,26 @@ function SkipNavigationComponent() {
 
       {/* Simulated navigation bar */}
       <nav
-        className="border-b border-(--color-border-default) px-4 py-3 flex gap-4 bg-(--color-background-secondary)"
+        className="border-b border-gray-200 px-4 py-3 flex gap-4 bg-gray-100"
         aria-label="Site navigation"
       >
         <a
           href="#"
-          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-text-accent) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-gray-900 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Home
         </a>
         <a
           href="#"
-          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-text-accent) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-gray-900 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           About
         </a>
         <a
           href="#"
-          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-text-accent) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-gray-900 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Contact
@@ -605,8 +597,8 @@ function SkipNavigationComponent() {
       {/* Simulated page layout */}
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-40 border-r border-(--color-border-default) p-4 bg-(--color-background-secondary)">
-          <p className="text-xs font-semibold uppercase tracking-wider text-(--color-text-secondary) mb-3">
+        <aside className="w-40 border-r border-gray-200 p-4 bg-gray-100">
+          <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">
             Sidebar
           </p>
           <ul className="space-y-2">
@@ -614,7 +606,7 @@ function SkipNavigationComponent() {
               <li key={item}>
                 <a
                   href="#"
-                  className="text-sm text-(--color-text-primary) hover:text-(--color-text-accent) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+                  className="text-sm text-gray-900 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-1"
                   onClick={(e) => e.preventDefault()}
                 >
                   {item}
@@ -629,22 +621,22 @@ function SkipNavigationComponent() {
           id="skip-nav-main"
           ref={mainRef}
           tabIndex={-1}
-          className="flex-1 p-6 focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-inset"
+          className="flex-1 p-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset"
           aria-label="Main content"
         >
-          <h1 className="text-lg font-semibold text-(--color-text-primary) mb-2">
+          <h1 className="text-lg font-semibold text-gray-900 mb-2">
             Main content
           </h1>
-          <p className="text-sm text-(--color-text-secondary) mb-4">
+          <p className="text-sm text-gray-500 mb-4">
             Press Tab from the browser address bar (or the start of the page) to
             reveal the skip link. Press Enter to jump directly here, bypassing
             the nav and sidebar.
           </p>
-          <div className="rounded-(--space-dialog-content-radius) border border-(--color-border-default) bg-(--color-background-secondary) p-3 text-sm space-y-1">
-            <p className="font-semibold text-(--color-text-primary)">
+          <div className="rounded-lg border border-gray-200 bg-gray-100 p-3 text-sm space-y-1">
+            <p className="font-semibold text-gray-900">
               Pattern: skip-to-content link
             </p>
-            <pre className="text-xs text-(--color-text-secondary) overflow-x-auto whitespace-pre-wrap">
+            <pre className="text-xs text-gray-500 overflow-x-auto whitespace-pre-wrap">
               {`<a
   href="#main-content"
   className="sr-only focus:not-sr-only

@@ -82,7 +82,7 @@ export const SimpleLogin: Story = {
                 <Label htmlFor="password">Password</Label>
                 <a
                   href="#"
-                  className="text-sm text-primary hover:underline"
+                  className="text-sm text-blue-600 hover:underline"
                   onClick={(e) => e.preventDefault()}
                 >
                   Forgot password?
@@ -115,9 +115,9 @@ export const SimpleLogin: Story = {
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Signing in..." : "Sign in"}
             </Button>
-            <p className="text-sm text-center text-muted-foreground">
+            <p className="text-sm text-center text-gray-500">
               Don't have an account?{" "}
-              <a href="#" className="text-primary hover:underline">
+              <a href="#" className="text-blue-600 hover:underline">
                 Sign up
               </a>
             </p>
@@ -213,7 +213,7 @@ export const LoginWithSocialAuth: Story = {
               <Separator />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
+              <span className="bg-white px-2 text-gray-500">
                 Or continue with email
               </span>
             </div>
@@ -249,9 +249,9 @@ export const LoginWithSocialAuth: Story = {
           </form>
         </CardContent>
         <CardFooter>
-          <p className="text-sm text-center text-muted-foreground w-full">
+          <p className="text-sm text-center text-gray-500 w-full">
             Don't have an account?{" "}
-            <a href="#" className="text-primary hover:underline">
+            <a href="#" className="text-blue-600 hover:underline">
               Sign up
             </a>
           </p>
@@ -412,16 +412,16 @@ export const RegistrationForm: Story = {
                               ? passwordStrength.strength === 1
                                 ? "bg-destructive"
                                 : passwordStrength.strength === 2
-                                  ? "bg-(--color-status-warning)"
+                                  ? "bg-yellow-600"
                                   : passwordStrength.strength === 3
-                                    ? "bg-(--color-status-info)"
-                                    : "bg-(--color-status-success)"
-                              : "bg-muted"
+                                    ? "bg-blue-600"
+                                    : "bg-green-600"
+                              : "bg-gray-100"
                           }`}
                         />
                       ))}
                     </div>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-gray-500">
                       Password strength: {passwordStrength.label}
                     </p>
                   </div>
@@ -469,11 +469,11 @@ export const RegistrationForm: Story = {
                   className="text-sm font-normal leading-none cursor-pointer"
                 >
                   I agree to the{" "}
-                  <a href="#" className="text-primary hover:underline">
+                  <a href="#" className="text-blue-600 hover:underline">
                     Terms of Service
                   </a>{" "}
                   and{" "}
-                  <a href="#" className="text-primary hover:underline">
+                  <a href="#" className="text-blue-600 hover:underline">
                     Privacy Policy
                   </a>
                 </Label>
@@ -489,9 +489,9 @@ export const RegistrationForm: Story = {
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Creating account..." : "Create account"}
             </Button>
-            <p className="text-sm text-center text-muted-foreground">
+            <p className="text-sm text-center text-gray-500">
               Already have an account?{" "}
-              <a href="#" className="text-primary hover:underline">
+              <a href="#" className="text-blue-600 hover:underline">
                 Sign in
               </a>
             </p>
@@ -572,7 +572,7 @@ export const LoginRegistrationTabs: Story = {
                     <Label htmlFor="login-password">Password</Label>
                     <a
                       href="#"
-                      className="text-sm text-primary hover:underline"
+                      className="text-sm text-blue-600 hover:underline"
                       onClick={(e) => e.preventDefault()}
                     >
                       Forgot?
@@ -641,7 +641,7 @@ export const LoginRegistrationTabs: Story = {
                     }
                     required
                   />
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-gray-500">
                     Must be at least 8 characters
                   </p>
                 </div>

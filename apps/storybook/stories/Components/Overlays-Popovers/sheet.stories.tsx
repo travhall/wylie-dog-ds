@@ -125,28 +125,16 @@ export const FromLeft: Story = {
         </SheetHeader>
         <div className="py-4">
           <nav className="space-y-2">
-            <a
-              href="#"
-              className="block px-2 py-1 hover:bg-(--color-background-secondary) rounded"
-            >
+            <a href="#" className="block px-2 py-1 hover:bg-gray-100 rounded">
               Dashboard
             </a>
-            <a
-              href="#"
-              className="block px-2 py-1 hover:bg-(--color-background-secondary) rounded"
-            >
+            <a href="#" className="block px-2 py-1 hover:bg-gray-100 rounded">
               Projects
             </a>
-            <a
-              href="#"
-              className="block px-2 py-1 hover:bg-(--color-background-secondary) rounded"
-            >
+            <a href="#" className="block px-2 py-1 hover:bg-gray-100 rounded">
               Team
             </a>
-            <a
-              href="#"
-              className="block px-2 py-1 hover:bg-(--color-background-secondary) rounded"
-            >
+            <a href="#" className="block px-2 py-1 hover:bg-gray-100 rounded">
               Settings
             </a>
           </nav>

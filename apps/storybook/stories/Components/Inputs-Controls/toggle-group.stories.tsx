@@ -391,7 +391,7 @@ export const EditorToolbar: Story = {
           </ToggleGroupItem>
         </ToggleGroup>
 
-        <div className="w-px h-6 bg-(--color-background-tertiary)" />
+        <div className="w-px h-6 bg-gray-50" />
 
         <ToggleGroup type="single" defaultValue="left">
           <ToggleGroupItem value="left" aria-label="Align left">
@@ -405,7 +405,7 @@ export const EditorToolbar: Story = {
           </ToggleGroupItem>
         </ToggleGroup>
 
-        <div className="w-px h-6 bg-(--color-background-tertiary)" />
+        <div className="w-px h-6 bg-gray-50" />
 
         <ToggleGroup type="multiple">
           <ToggleGroupItem value="list" aria-label="Bullet list">
@@ -441,7 +441,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           Use Tab to navigate between groups, Arrow keys within groups, Space to
           toggle.
         </p>
@@ -455,7 +455,7 @@ export const Accessibility: Story = {
           <ToggleGroup
             type="multiple"
             aria-label="Text formatting options"
-            className="border border-(--color-border-secondary) rounded-md p-1"
+            className="border border-gray-300 rounded-md p-1"
           >
             <ToggleGroupItem
               value="bold"
@@ -480,19 +480,13 @@ export const Accessibility: Story = {
             </ToggleGroupItem>
           </ToggleGroup>
           <div className="mt-2 space-y-1">
-            <p id="bold-desc" className="text-xs text-(--color-text-secondary)">
+            <p id="bold-desc" className="text-xs text-gray-500">
               Bold: Ctrl+B
             </p>
-            <p
-              id="italic-desc"
-              className="text-xs text-(--color-text-secondary)"
-            >
+            <p id="italic-desc" className="text-xs text-gray-500">
               Italic: Ctrl+I
             </p>
-            <p
-              id="underline-desc"
-              className="text-xs text-(--color-text-secondary)"
-            >
+            <p id="underline-desc" className="text-xs text-gray-500">
               Underline: Ctrl+U
             </p>
           </div>
@@ -506,7 +500,7 @@ export const Accessibility: Story = {
             type="single"
             defaultValue="list"
             aria-label="Choose view mode"
-            className="border border-(--color-border-secondary) rounded-md p-1"
+            className="border border-gray-300 rounded-md p-1"
           >
             <ToggleGroupItem value="list" aria-label="List view mode">
               List

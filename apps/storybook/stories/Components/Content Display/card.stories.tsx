@@ -45,7 +45,7 @@ export const Default: Story = {
         <CardTitle>Basic Card</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-(--color-text-secondary)">
+        <p className="text-gray-500">
           This is a basic card with a title and some content text.
         </p>
       </CardContent>
@@ -68,7 +68,7 @@ export const WithActions: Story = {
         <CardTitle>Project Status</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-(--color-text-secondary)">
+        <p className="text-gray-500">
           Track the progress of your current project with this status card.
         </p>
         <div className="flex items-center justify-between">
@@ -100,9 +100,7 @@ export const ProductCard: Story = {
         <div className="flex items-start justify-between">
           <div>
             <CardTitle>Premium Plan</CardTitle>
-            <p className="text-sm text-(--color-text-secondary) mt-1">
-              For growing teams
-            </p>
+            <p className="text-sm text-gray-500 mt-1">For growing teams</p>
           </div>
           <Badge>Popular</Badge>
         </div>
@@ -110,9 +108,9 @@ export const ProductCard: Story = {
       <CardContent className="space-y-4">
         <div className="text-3xl font-bold">
           $29
-          <span className="text-lg text-(--color-text-secondary)">/month</span>
+          <span className="text-lg text-gray-500">/month</span>
         </div>
-        <ul className="space-y-2 text-sm text-(--color-text-secondary)">
+        <ul className="space-y-2 text-sm text-gray-500">
           <li>✓ Up to 10 team members</li>
           <li>✓ Advanced analytics</li>
           <li>✓ Priority support</li>
@@ -140,20 +138,16 @@ export const CardVariations: Story = {
           <CardTitle>Simple Card</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-text-secondary)">
-            A simple card with minimal content.
-          </p>
+          <p className="text-gray-500">A simple card with minimal content.</p>
         </CardContent>
       </Card>
 
-      <Card className="border-(--color-border-focus)">
+      <Card className="border-blue-500">
         <CardHeader>
-          <CardTitle className="text-(--color-interactive-primary)">
-            Highlighted Card
-          </CardTitle>
+          <CardTitle className="text-blue-600">Highlighted Card</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-text-secondary)">
+          <p className="text-gray-500">
             A card with custom border color for emphasis.
           </p>
         </CardContent>
@@ -164,18 +158,18 @@ export const CardVariations: Story = {
           <CardTitle>Elevated Card</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-text-secondary)">
+          <p className="text-gray-500">
             A card with increased shadow for more prominence.
           </p>
         </CardContent>
       </Card>
 
-      <Card className="bg-(--color-background-secondary)">
+      <Card className="bg-gray-100">
         <CardHeader>
           <CardTitle>Subtle Background</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-text-secondary)">
+          <p className="text-gray-500">
             A card with a subtle background color variation.
           </p>
         </CardContent>

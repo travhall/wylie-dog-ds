@@ -116,9 +116,7 @@ export const WithError: Story = {
           <SelectItem value="business">Business</SelectItem>
         </SelectContent>
       </Select>
-      <p className="text-xs text-(--color-status-danger)">
-        Please select a category
-      </p>
+      <p className="text-xs text-red-600">Please select a category</p>
     </div>
   ),
 };

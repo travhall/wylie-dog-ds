@@ -342,15 +342,10 @@ export const WithForm: Story = {
                   id="dialog-title"
                   name="dialog-title"
                   placeholder="Short, descriptive title"
-                  className={
-                    errors.title ? "border-(--color-border-danger)" : ""
-                  }
+                  className={errors.title ? "border-red-500" : ""}
                 />
                 {errors.title && (
-                  <p
-                    role="alert"
-                    className="text-sm text-(--color-status-danger)"
-                  >
+                  <p role="alert" className="text-sm text-red-600">
                     {errors.title}
                   </p>
                 )}
@@ -363,15 +358,10 @@ export const WithForm: Story = {
                   id="dialog-desc"
                   name="dialog-desc"
                   placeholder="Describe the issue in detail"
-                  className={
-                    errors.desc ? "border-(--color-border-danger)" : ""
-                  }
+                  className={errors.desc ? "border-red-500" : ""}
                 />
                 {errors.desc && (
-                  <p
-                    role="alert"
-                    className="text-sm text-(--color-status-danger)"
-                  >
+                  <p role="alert" className="text-sm text-red-600">
                     {errors.desc}
                   </p>
                 )}
@@ -417,10 +407,10 @@ export const WithScrollableContent: Story = {
             Please read the full terms before accepting.
           </DialogDescription>
         </DialogHeader>
-        <div className="overflow-y-auto flex-1 py-4 space-y-4 text-sm text-(--color-text-secondary)">
+        <div className="overflow-y-auto flex-1 py-4 space-y-4 text-sm text-gray-500">
           {Array.from({ length: 8 }, (_, i) => (
             <div key={i}>
-              <p className="font-medium text-(--color-text-primary) mb-1">
+              <p className="font-medium text-gray-900 mb-1">
                 {i + 1}.{" "}
                 {
                   [
@@ -497,7 +487,7 @@ export const NonClosable: Story = {
                   key={option}
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="w-full text-left px-4 py-3 rounded-md border border-(--color-border-default) hover:bg-(--color-background-secondary) transition-colors"
+                  className="w-full text-left px-4 py-3 rounded-md border border-gray-200 hover:bg-gray-100 transition-colors"
                 >
                   <p className="font-medium text-sm">{option}</p>
                 </button>

@@ -95,22 +95,22 @@ export const ProductCarousel: Story = {
           {
             name: "Product 1",
             price: "$99",
-            color: "bg-(--color-background-tertiary)",
+            color: "bg-gray-50",
           },
           {
             name: "Product 2",
             price: "$149",
-            color: "bg-(--color-background-tertiary)",
+            color: "bg-gray-50",
           },
           {
             name: "Product 3",
             price: "$199",
-            color: "bg-(--color-background-tertiary)",
+            color: "bg-gray-50",
           },
           {
             name: "Product 4",
             price: "$79",
-            color: "bg-(--color-background-tertiary)",
+            color: "bg-gray-50",
           },
         ].map((product, index) => (
           <CarouselItem key={index}>
@@ -120,12 +120,10 @@ export const ProductCarousel: Story = {
                   <div
                     className={`${product.color} h-32 rounded mb-4 flex items-center justify-center`}
                   >
-                    <span className="text-sm text-(--color-text-secondary)">
-                      Image
-                    </span>
+                    <span className="text-sm text-gray-500">Image</span>
                   </div>
                   <h3 className="font-semibold">{product.name}</h3>
-                  <p className="text-xl font-bold text-(--color-text-primary)">
+                  <p className="text-xl font-bold text-gray-900">
                     {product.price}
                   </p>
                 </CardContent>
@@ -211,9 +209,7 @@ export const Testimonials: Story = {
                   </blockquote>
                   <div className="text-right">
                     <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-(--color-text-secondary)">
-                      {testimonial.role}
-                    </p>
+                    <p className="text-sm text-gray-500">{testimonial.role}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -317,7 +313,7 @@ export const ImageGallery: Story = {
                   <div
                     className={`aspect-video rounded bg-linear-to-br from-gray-200 to-gray-300 flex items-center justify-center`}
                   >
-                    <span className="text-lg text-(--color-text-secondary)">
+                    <span className="text-lg text-gray-500">
                       Image {index + 1}
                     </span>
                   </div>

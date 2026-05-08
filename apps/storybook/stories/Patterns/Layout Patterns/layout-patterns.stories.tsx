@@ -60,7 +60,7 @@ export const Dashboard: Story = {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-(--color-text-secondary)">
+              <CardTitle className="text-sm font-medium text-gray-500">
                 Total Revenue
               </CardTitle>
             </CardHeader>
@@ -74,7 +74,7 @@ export const Dashboard: Story = {
 
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-(--color-text-secondary)">
+              <CardTitle className="text-sm font-medium text-gray-500">
                 Subscriptions
               </CardTitle>
             </CardHeader>
@@ -88,7 +88,7 @@ export const Dashboard: Story = {
 
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-(--color-text-secondary)">
+              <CardTitle className="text-sm font-medium text-gray-500">
                 Sales
               </CardTitle>
             </CardHeader>
@@ -102,7 +102,7 @@ export const Dashboard: Story = {
 
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium text-(--color-text-secondary)">
+              <CardTitle className="text-sm font-medium text-gray-500">
                 Active Now
               </CardTitle>
             </CardHeader>
@@ -122,15 +122,13 @@ export const Dashboard: Story = {
             <Card>
               <CardHeader>
                 <CardTitle>Analytics Overview</CardTitle>
-                <p className="text-sm text-(--color-text-secondary)">
+                <p className="text-sm text-gray-500">
                   Your performance metrics for the last 30 days
                 </p>
               </CardHeader>
               <CardContent>
-                <div className="h-75 bg-(--color-background-secondary) rounded flex items-center justify-center">
-                  <p className="text-(--color-text-tertiary)">
-                    Chart Component Placeholder
-                  </p>
+                <div className="h-75 bg-gray-100 rounded flex items-center justify-center">
+                  <p className="text-gray-400">Chart Component Placeholder</p>
                 </div>
               </CardContent>
             </Card>
@@ -168,15 +166,11 @@ export const Dashboard: Story = {
                         .join("")}
                     </Avatar>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-(--color-text-primary)">
+                      <p className="text-sm font-medium text-gray-900">
                         {activity.user}
                       </p>
-                      <p className="text-sm text-(--color-text-tertiary)">
-                        {activity.action}
-                      </p>
-                      <p className="text-xs text-(--color-text-tertiary)">
-                        {activity.time}
-                      </p>
+                      <p className="text-sm text-gray-400">{activity.action}</p>
+                      <p className="text-xs text-gray-400">{activity.time}</p>
                     </div>
                   </div>
                 ))}
@@ -196,7 +190,7 @@ export const SettingsPage: Story = {
         {/* Page Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Settings</h1>
-          <p className="mt-2 text-(--color-text-secondary)">
+          <p className="mt-2 text-gray-500">
             Manage your account settings and preferences.
           </p>
         </div>
@@ -228,7 +222,7 @@ export const SettingsPage: Story = {
             <Card>
               <CardHeader>
                 <CardTitle>General Settings</CardTitle>
-                <p className="text-sm text-(--color-text-secondary)">
+                <p className="text-sm text-gray-500">
                   Update your account information and preferences.
                 </p>
               </CardHeader>
@@ -279,39 +273,25 @@ export const SettingsPage: Story = {
 
 export const LandingPage: Story = {
   render: () => (
-    <div className="min-h-screen bg-(--color-background-primary)">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b border-(--color-border-secondary)">
+      <header className="border-b border-gray-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <span className="text-xl font-bold text-(--color-interactive-primary)">
-                WylieDog
-              </span>
+              <span className="text-xl font-bold text-blue-600">WylieDog</span>
             </div>
             <nav className="hidden md:flex space-x-8">
-              <a
-                href="#"
-                className="text-(--color-text-secondary) hover:text-(--color-interactive-primary)"
-              >
+              <a href="#" className="text-gray-500 hover:text-blue-600">
                 Features
               </a>
-              <a
-                href="#"
-                className="text-(--color-text-secondary) hover:text-(--color-interactive-primary)"
-              >
+              <a href="#" className="text-gray-500 hover:text-blue-600">
                 Pricing
               </a>
-              <a
-                href="#"
-                className="text-(--color-text-secondary) hover:text-(--color-interactive-primary)"
-              >
+              <a href="#" className="text-gray-500 hover:text-blue-600">
                 About
               </a>
-              <a
-                href="#"
-                className="text-(--color-text-secondary) hover:text-(--color-interactive-primary)"
-              >
+              <a href="#" className="text-gray-500 hover:text-blue-600">
                 Contact
               </a>
             </nav>
@@ -324,16 +304,13 @@ export const LandingPage: Story = {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-(--color-background-secondary)">
+      <section className="py-20 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-(--color-text-primary) mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
             Build Better
-            <span className="text-(--color-interactive-primary)">
-              {" "}
-              Design Systems
-            </span>
+            <span className="text-blue-600"> Design Systems</span>
           </h1>
-          <p className="text-xl text-(--color-text-secondary) mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-500 mb-8 max-w-3xl mx-auto">
             Create consistent, accessible, and beautiful user interfaces with
             our modern design system built on cutting-edge OKLCH color science.
           </p>
@@ -350,10 +327,10 @@ export const LandingPage: Story = {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-(--color-text-primary) mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Everything you need to build at scale
             </h2>
-            <p className="text-lg text-(--color-text-secondary) max-w-2xl mx-auto">
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
               Our design system provides all the tools and components you need
               to create consistent user experiences.
             </p>
@@ -386,9 +363,7 @@ export const LandingPage: Story = {
                   <h3 className="text-xl font-semibold mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-(--color-text-secondary)">
-                    {feature.description}
-                  </p>
+                  <p className="text-gray-500">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -397,12 +372,12 @@ export const LandingPage: Story = {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-(--color-background-secondary)">
+      <section className="py-20 bg-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-(--color-text-primary) mb-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
             Ready to get started?
           </h2>
-          <p className="text-lg text-(--color-text-secondary) mb-8">
+          <p className="text-lg text-gray-500 mb-8">
             Join thousands of developers already building with Wylie Dog Design
             System.
           </p>
@@ -415,7 +390,7 @@ export const LandingPage: Story = {
 
 export const UserProfile: Story = {
   render: () => (
-    <div className=" bg-(--color-background-secondary)">
+    <div className=" bg-gray-100">
       <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         {/* Profile Header */}
         <Card className="mb-8">
@@ -423,15 +398,9 @@ export const UserProfile: Story = {
             <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
               <Avatar className="h-24 w-24 text-2xl">JD</Avatar>
               <div className="text-center sm:text-left flex-1">
-                <h1 className="text-2xl font-bold text-(--color-text-primary)">
-                  John Doe
-                </h1>
-                <p className="text-(--color-text-secondary)">
-                  Senior Product Designer
-                </p>
-                <p className="text-sm text-(--color-text-tertiary) mt-1">
-                  San Francisco, CA
-                </p>
+                <h1 className="text-2xl font-bold text-gray-900">John Doe</h1>
+                <p className="text-gray-500">Senior Product Designer</p>
+                <p className="text-sm text-gray-400 mt-1">San Francisco, CA</p>
                 <div className="flex flex-wrap gap-2 mt-3 justify-center sm:justify-start">
                   <Badge>React</Badge>
                   <Badge>TypeScript</Badge>
@@ -455,7 +424,7 @@ export const UserProfile: Story = {
                 <CardTitle>About</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-(--color-text-secondary)">
+                <p className="text-gray-500">
                   Passionate product designer with 8+ years of experience
                   creating user-centered digital experiences. Specialized in
                   design systems, accessibility, and modern web technologies.
@@ -486,12 +455,9 @@ export const UserProfile: Story = {
                     status: "Planning",
                   },
                 ].map((project, index) => (
-                  <div
-                    key={index}
-                    className="border-l-4 border-(--color-interactive-primary) pl-4"
-                  >
+                  <div key={index} className="border-l-4 border-blue-600 pl-4">
                     <h4 className="font-semibold">{project.name}</h4>
-                    <p className="text-sm text-(--color-text-secondary) mb-1">
+                    <p className="text-sm text-gray-500 mb-1">
                       {project.description}
                     </p>
                     <Badge
@@ -519,21 +485,15 @@ export const UserProfile: Story = {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-(--color-text-secondary)">
-                    Projects
-                  </span>
+                  <span className="text-gray-500">Projects</span>
                   <span className="font-semibold">24</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-(--color-text-secondary)">
-                    Followers
-                  </span>
+                  <span className="text-gray-500">Followers</span>
                   <span className="font-semibold">1.2k</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-(--color-text-secondary)">
-                    Following
-                  </span>
+                  <span className="text-gray-500">Following</span>
                   <span className="font-semibold">387</span>
                 </div>
               </CardContent>

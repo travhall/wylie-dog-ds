@@ -190,8 +190,8 @@ ComponentName.displayName = 'ComponentName';
 
 // 3. Style variants
 const variantStyles = {
-  default: 'bg-background text-foreground',
-  primary: 'bg-primary text-primary-foreground',
+  default: 'bg-(--color-background-primary) text-(--color-text-primary)',
+  primary: 'bg-(--color-interactive-primary) text-white',
 };
 
 const sizeStyles = {
@@ -219,7 +219,7 @@ describe('ComponentName', () => {
   it('applies variant styles', () => {
     render(<ComponentName variant="primary">Content</ComponentName>);
     const element = screen.getByText('Content');
-    expect(element).toHaveClass('bg-primary');
+    expect(element).toHaveClass('bg-(--color-interactive-primary)');
   });
 
   it('forwards ref correctly', () => {

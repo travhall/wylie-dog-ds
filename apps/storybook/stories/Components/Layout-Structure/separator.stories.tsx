@@ -57,7 +57,7 @@ export const Horizontal: Story = {
     <div className="w-64">
       <div className="space-y-1">
         <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           An open-source UI component library.
         </p>
       </div>
@@ -108,7 +108,7 @@ export const InContent: Story = {
     <div className="max-w-md space-y-4">
       <div>
         <h3 className="text-lg font-semibold">Navigation</h3>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           Primary navigation items for the application.
         </p>
       </div>
@@ -117,7 +117,7 @@ export const InContent: Story = {
 
       <div>
         <h3 className="text-lg font-semibold">Settings</h3>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           Configuration options and preferences.
         </p>
       </div>
@@ -126,7 +126,7 @@ export const InContent: Story = {
 
       <div>
         <h3 className="text-lg font-semibold">Account</h3>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           User account management and profile settings.
         </p>
       </div>
@@ -145,23 +145,15 @@ export const InLists: Story = {
   },
   render: () => (
     <div className="w-64 space-y-1">
-      <div className="px-3 py-2 text-sm hover:bg-(--color-background-secondary) rounded">
-        Profile
-      </div>
-      <div className="px-3 py-2 text-sm hover:bg-(--color-background-secondary) rounded">
+      <div className="px-3 py-2 text-sm hover:bg-gray-100 rounded">Profile</div>
+      <div className="px-3 py-2 text-sm hover:bg-gray-100 rounded">
         Settings
       </div>
       <Separator className="my-1" />
-      <div className="px-3 py-2 text-sm hover:bg-(--color-background-secondary) rounded">
-        Team
-      </div>
-      <div className="px-3 py-2 text-sm hover:bg-(--color-background-secondary) rounded">
-        Billing
-      </div>
+      <div className="px-3 py-2 text-sm hover:bg-gray-100 rounded">Team</div>
+      <div className="px-3 py-2 text-sm hover:bg-gray-100 rounded">Billing</div>
       <Separator className="my-1" />
-      <div className="px-3 py-2 text-sm hover:bg-(--color-background-secondary) rounded">
-        Logout
-      </div>
+      <div className="px-3 py-2 text-sm hover:bg-gray-100 rounded">Logout</div>
     </div>
   ),
 };

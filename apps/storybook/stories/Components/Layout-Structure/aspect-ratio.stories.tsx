@@ -41,7 +41,7 @@ export const Default: Story = {
   render: () => (
     <div className="w-75">
       <AspectRatio ratio={16 / 9}>
-        <div className="bg-(--color-background-secondary) w-full h-full flex items-center justify-center text-(--color-text-secondary)">
+        <div className="bg-gray-100 w-full h-full flex items-center justify-center text-gray-500">
           16:9 Aspect Ratio
         </div>
       </AspectRatio>
@@ -61,7 +61,7 @@ export const Square: Story = {
   render: () => (
     <div className="w-50">
       <AspectRatio ratio={1}>
-        <div className="bg-(--color-interactive-primary)/20 w-full h-full flex items-center justify-center text-(--color-interactive-primary)">
+        <div className="bg-blue-600/20 w-full h-full flex items-center justify-center text-blue-600">
           1:1 Square
         </div>
       </AspectRatio>
@@ -80,7 +80,7 @@ export const Portrait: Story = {
   render: () => (
     <div className="w-50">
       <AspectRatio ratio={3 / 4}>
-        <div className="bg-(--color-status-success)/20 w-full h-full flex items-center justify-center text-(--color-status-success)">
+        <div className="bg-green-600/20 w-full h-full flex items-center justify-center text-green-600">
           3:4 Portrait
         </div>
       </AspectRatio>
@@ -102,7 +102,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">16:9 Widescreen</h4>
         <div className="w-75">
           <AspectRatio ratio={16 / 9}>
-            <div className="bg-(--color-status-danger)/20 w-full h-full flex items-center justify-center text-(--color-status-danger)">
+            <div className="bg-red-600/20 w-full h-full flex items-center justify-center text-red-600">
               Video/Monitor
             </div>
           </AspectRatio>
@@ -113,7 +113,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">4:3 Traditional</h4>
         <div className="w-75">
           <AspectRatio ratio={4 / 3}>
-            <div className="bg-(--color-status-warning)/20 w-full h-full flex items-center justify-center text-(--color-status-warning)">
+            <div className="bg-yellow-600/20 w-full h-full flex items-center justify-center text-yellow-600">
               Old TV/Photo
             </div>
           </AspectRatio>
@@ -124,7 +124,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">1:1 Square</h4>
         <div className="w-50">
           <AspectRatio ratio={1}>
-            <div className="bg-(--color-accent-hover)/20 w-full h-full flex items-center justify-center text-(--color-accent-hover)">
+            <div className="bg-purple-500/20 w-full h-full flex items-center justify-center text-purple-500">
               Instagram
             </div>
           </AspectRatio>
@@ -168,7 +168,7 @@ export const VideoFrame: Story = {
   render: () => (
     <div className="w-125">
       <AspectRatio ratio={16 / 9}>
-        <div className="bg-(--color-background-inverse) w-full h-full flex items-center justify-center text-(--color-text-inverse) rounded-md">
+        <div className="bg-gray-900 w-full h-full flex items-center justify-center text-white rounded-md">
           <div className="text-center">
             <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-2">
               <div className="w-0 h-0 border-l-4 border-l-white border-t-2 border-t-transparent border-b-2 border-b-transparent ml-1"></div>
@@ -193,12 +193,8 @@ export const ResponsiveGallery: Story = {
   render: () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {Array.from({ length: 6 }, (_, i) => (
-        <AspectRatio
-          key={i}
-          ratio={1}
-          className="bg-(--color-background-secondary) rounded-lg"
-        >
-          <div className="w-full h-full flex items-center justify-center text-(--color-text-secondary)">
+        <AspectRatio key={i} ratio={1} className="bg-gray-100 rounded-lg">
+          <div className="w-full h-full flex items-center justify-center text-gray-500">
             Item {i + 1}
           </div>
         </AspectRatio>

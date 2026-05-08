@@ -135,11 +135,7 @@ export const WithError: Story = {
         aria-invalid
         {...args}
       />
-      <p
-        id="error-message"
-        className="text-xs text-(--color-status-danger)"
-        role="alert"
-      >
+      <p id="error-message" className="text-xs text-red-600" role="alert">
         Username must be at least 3 characters long
       </p>
     </div>
@@ -399,10 +395,7 @@ export const WithInteractions: Story = {
             placeholder="Enter username"
             aria-describedby="username-help"
           />
-          <p
-            id="username-help"
-            className="text-xs text-(--color-text-secondary)"
-          >
+          <p id="username-help" className="text-xs text-gray-500">
             At least 3 characters
           </p>
         </div>
@@ -417,10 +410,7 @@ export const WithInteractions: Story = {
             placeholder="Enter email"
             aria-describedby="email-error"
           />
-          <p
-            id="email-error"
-            className="text-xs text-(--color-status-danger) hidden"
-          >
+          <p id="email-error" className="text-xs text-red-600 hidden">
             Invalid email format
           </p>
         </div>
@@ -526,9 +516,7 @@ export const DosDonts: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-8 max-w-4xl">
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-(--color-status-success)">
-          ✅ Do
-        </h4>
+        <h4 className="text-lg font-semibold mb-4 text-green-600">✅ Do</h4>
 
         <div className="space-y-6">
           <div className="space-y-2">
@@ -556,7 +544,7 @@ export const DosDonts: Story = {
             />
             <p
               id="username-error"
-              className="text-xs text-(--color-status-danger)"
+              className="text-xs text-red-600"
               role="alert"
             >
               Username is required
@@ -586,15 +574,13 @@ export const DosDonts: Story = {
       </div>
 
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-(--color-status-danger)">
-          ❌ Don't
-        </h4>
+        <h4 className="text-lg font-semibold mb-4 text-red-600">❌ Don't</h4>
 
         <div className="space-y-6">
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">No label (inaccessible)</p>
             <Input type="email" placeholder="Email Address" />
-            <p className="text-xs text-(--color-text-secondary)">
+            <p className="text-xs text-gray-500">
               Screen readers can't identify this field
             </p>
           </div>
@@ -607,19 +593,15 @@ export const DosDonts: Story = {
               Username
             </Label>
             <Input id="bad-username" error />
-            <p className="text-xs text-(--color-status-danger)">
-              Username is required
-            </p>
-            <p className="text-xs text-(--color-text-secondary)">
-              Missing aria-describedby
-            </p>
+            <p className="text-xs text-red-600">Username is required</p>
+            <p className="text-xs text-gray-500">Missing aria-describedby</p>
           </div>
 
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Wrong input type</p>
             <Label htmlFor="bad-phone">Phone Number</Label>
             <Input id="bad-phone" type="text" placeholder="+1 (555) 123-4567" />
-            <p className="text-xs text-(--color-text-secondary)">
+            <p className="text-xs text-gray-500">
               Use type="tel" for phone numbers
             </p>
           </div>
@@ -627,7 +609,7 @@ export const DosDonts: Story = {
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Placeholder as label</p>
             <Input placeholder="Search products..." />
-            <p className="text-xs text-(--color-text-secondary)">
+            <p className="text-xs text-gray-500">
               Placeholders disappear when typing
             </p>
           </div>

@@ -154,9 +154,7 @@ export const UserProfiles: Story = {
             </Avatar>
             <div>
               <p className="text-sm font-medium">John Doe</p>
-              <p className="text-xs text-(--color-text-tertiary)">
-                Product Manager
-              </p>
+              <p className="text-xs text-gray-400">Product Manager</p>
             </div>
           </div>
 
@@ -166,9 +164,7 @@ export const UserProfiles: Story = {
             </Avatar>
             <div>
               <p className="text-sm font-medium">Sarah Anderson</p>
-              <p className="text-xs text-(--color-text-tertiary)">
-                UI/UX Designer
-              </p>
+              <p className="text-xs text-gray-400">UI/UX Designer</p>
             </div>
           </div>
 
@@ -178,9 +174,7 @@ export const UserProfiles: Story = {
             </Avatar>
             <div>
               <p className="text-sm font-medium">Michael Kim</p>
-              <p className="text-xs text-(--color-text-tertiary)">
-                Frontend Developer
-              </p>
+              <p className="text-xs text-gray-400">Frontend Developer</p>
             </div>
           </div>
         </div>
@@ -202,17 +196,17 @@ export const GroupDisplay: Story = {
       <div>
         <h4 className="text-sm font-medium mb-3">Overlapping Avatars</h4>
         <div className="flex -space-x-2">
-          <Avatar className="border-2 border-(--color-background-primary)">
+          <Avatar className="border-2 border-white">
             <AvatarImage src="https://github.com/shadcn.png" alt="User 1" />
             <AvatarFallback>U1</AvatarFallback>
           </Avatar>
-          <Avatar className="border-2 border-(--color-background-primary)">
+          <Avatar className="border-2 border-white">
             <AvatarFallback>U2</AvatarFallback>
           </Avatar>
-          <Avatar className="border-2 border-(--color-background-primary)">
+          <Avatar className="border-2 border-white">
             <AvatarFallback>U3</AvatarFallback>
           </Avatar>
-          <Avatar className="border-2 border-(--color-background-primary)">
+          <Avatar className="border-2 border-white">
             <AvatarFallback>+2</AvatarFallback>
           </Avatar>
         </div>
@@ -265,13 +259,13 @@ export const Loading: Story = {
       <h4 className="text-sm font-medium">Loading States</h4>
       <div className="flex gap-4">
         <Avatar>
-          <div className="w-full h-full bg-(--color-background-tertiary) animate-pulse rounded-full" />
+          <div className="w-full h-full bg-gray-50 animate-pulse rounded-full" />
         </Avatar>
         <Avatar>
-          <div className="w-full h-full bg-(--color-background-tertiary) animate-pulse rounded-full" />
+          <div className="w-full h-full bg-gray-50 animate-pulse rounded-full" />
         </Avatar>
         <Avatar>
-          <div className="w-full h-full bg-(--color-background-tertiary) animate-pulse rounded-full" />
+          <div className="w-full h-full bg-gray-50 animate-pulse rounded-full" />
         </Avatar>
       </div>
     </div>

@@ -77,11 +77,11 @@ export const Default: Story = {
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-(--color-text-secondary) mb-4">
+          <p className="text-sm text-gray-500 mb-4">
             Advanced design system with comprehensive token management and
             real-time synchronization.
           </p>
-          <div className="flex items-center justify-between text-xs text-(--color-text-tertiary)">
+          <div className="flex items-center justify-between text-xs text-gray-400">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">
                 <Star className="h-3 w-3" /> 4.8
@@ -105,11 +105,11 @@ export const Default: Story = {
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-(--color-text-secondary) mb-4">
+          <p className="text-sm text-gray-500 mb-4">
             Cross-platform mobile application with React Native and TypeScript
             integration.
           </p>
-          <div className="flex items-center justify-between text-xs text-(--color-text-tertiary)">
+          <div className="flex items-center justify-between text-xs text-gray-400">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">
                 <Star className="h-3 w-3" /> 4.6
@@ -133,11 +133,11 @@ export const Default: Story = {
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-(--color-text-secondary) mb-4">
+          <p className="text-sm text-gray-500 mb-4">
             Comprehensive component library with accessibility features and dark
             mode support.
           </p>
-          <div className="flex items-center justify-between text-xs text-(--color-text-tertiary)">
+          <div className="flex items-center justify-between text-xs text-gray-400">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">
                 <Star className="h-3 w-3" /> 4.9
@@ -164,7 +164,7 @@ export const AllVariants: Story = {
     <div className="space-y-16">
       {/* Default Variant */}
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-text-primary)">
+        <h3 className="text-lg font-semibold mb-4 text-gray-900">
           Default Variant
         </h3>
         <CardGrid columns={{ sm: 1, md: 2 }}>
@@ -193,7 +193,7 @@ export const AllVariants: Story = {
 
       {/* Compact Variant */}
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-text-primary)">
+        <h3 className="text-lg font-semibold mb-4 text-gray-900">
           Compact Variant
         </h3>
         <CardGrid variant="compact" columns={{ sm: 1, md: 3, lg: 4 }}>
@@ -201,8 +201,8 @@ export const AllVariants: Story = {
             <Card key={label} className="hover:shadow-sm transition-shadow">
               <CardContent className="p-4">
                 <div className="text-center">
-                  <div className="w-8 h-8 bg-(--color-interactive-primary)/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                    <Zap className="h-4 w-4 text-(--color-interactive-primary)" />
+                  <div className="w-8 h-8 bg-blue-600/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <Zap className="h-4 w-4 text-blue-600" />
                   </div>
                   <h4 className="font-medium text-sm">{label} Card</h4>
                 </div>
@@ -214,7 +214,7 @@ export const AllVariants: Story = {
 
       {/* Spacious Variant */}
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-text-primary)">
+        <h3 className="text-lg font-semibold mb-4 text-gray-900">
           Spacious Variant
         </h3>
         <CardGrid variant="spacious" columns={{ sm: 1, md: 2 }}>
@@ -227,7 +227,7 @@ export const AllVariants: Story = {
                 Extra spacing creates a luxurious feel with more visual
                 hierarchy and emphasis on content.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-sm text-(--color-text-tertiary)">
+              <div className="mt-6 flex items-center gap-2 text-sm text-gray-400">
                 <Clock className="h-4 w-4" />
                 <span>5 min read</span>
               </div>
@@ -242,7 +242,7 @@ export const AllVariants: Story = {
                 Perfect for premium content and featured sections that need more
                 visual impact.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-sm text-(--color-text-tertiary)">
+              <div className="mt-6 flex items-center gap-2 text-sm text-gray-400">
                 <TrendingUp className="h-4 w-4" />
                 <span>Trending</span>
               </div>
@@ -253,14 +253,14 @@ export const AllVariants: Story = {
 
       {/* Elevated Variant */}
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-text-primary)">
+        <h3 className="text-lg font-semibold mb-4 text-gray-900">
           Elevated Variant
         </h3>
         <CardGrid variant="elevated" columns={{ sm: 1, md: 2, lg: 3 }}>
           {["Premium", "Featured", "Spotlight"].map((label, index) => (
             <Card
               key={label}
-              className="bg-linear-to-br from-(--color-background-secondary) to-(--color-background-primary) border-(--color-border-primary)/20 shadow-md hover:shadow-xl transition-all duration-300"
+              className="bg-linear-to-br from-gray-100 to-white border-gray-200/20 shadow-md hover:shadow-xl transition-all duration-300"
             >
               <CardHeader>
                 <div className="flex items-center justify-between">
@@ -299,7 +299,7 @@ export const Interactive: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-text-primary)">
+        <h3 className="text-lg font-semibold mb-4 text-gray-900">
           Interactive Grid
         </h3>
         <CardGrid
@@ -351,11 +351,11 @@ export const Interactive: Story = {
           ].map((item, index) => (
             <Card
               key={index}
-              className="group cursor-pointer border-(--color-border-primary)/20 hover:border-(--color-interactive-primary)/30 hover:shadow-lg transition-all duration-300"
+              className="group cursor-pointer border-gray-200/20 hover:border-blue-600/30 hover:shadow-lg transition-all duration-300"
             >
               <CardHeader>
                 <div className="flex items-start justify-between">
-                  <CardTitle className="text-base group-hover:text-(--color-interactive-primary) transition-colors">
+                  <CardTitle className="text-base group-hover:text-blue-600 transition-colors">
                     {item.title}
                   </CardTitle>
                   <div className="flex items-center gap-2">
@@ -369,17 +369,15 @@ export const Interactive: Story = {
                       size="icon"
                       className="opacity-0 group-hover:opacity-100 transition-opacity h-6 w-6"
                     >
-                      <MoreHorizontal className="h-4 w-4 text-(--color-text-tertiary)" />
+                      <MoreHorizontal className="h-4 w-4 text-gray-400" />
                     </Button>
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-(--color-text-secondary) mb-4">
-                  {item.description}
-                </p>
+                <p className="text-sm text-gray-500 mb-4">{item.description}</p>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-xs text-(--color-text-tertiary)">
+                  <div className="flex items-center gap-3 text-xs text-gray-400">
                     <span className="flex items-center gap-1">
                       <TrendingUp className="h-3 w-3" /> {item.stats.views}
                     </span>
@@ -387,7 +385,7 @@ export const Interactive: Story = {
                       <Heart className="h-3 w-3" /> {item.stats.likes}
                     </span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-(--color-text-tertiary) group-hover:text-(--color-interactive-primary) group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
                 </div>
               </CardContent>
             </Card>
@@ -396,7 +394,7 @@ export const Interactive: Story = {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4 text-(--color-text-primary)">
+        <h3 className="text-lg font-semibold mb-4 text-gray-900">
           Centered Layout
         </h3>
         <CardGrid
@@ -405,26 +403,26 @@ export const Interactive: Story = {
           columns={{ sm: 1, md: 2, lg: 2 }}
           className="max-w-2xl"
         >
-          <Card className="bg-linear-to-r from-(--color-interactive-primary)/5 to-(--color-interactive-secondary)/5 border-(--color-interactive-primary)/20">
+          <Card className="bg-linear-to-r from-blue-600/5 to-blue-200/5 border-blue-600/20">
             <CardContent className="p-8 text-center">
-              <div className="w-12 h-12 bg-(--color-interactive-primary) rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Star className="h-6 w-6 text-white" />
               </div>
               <CardTitle className="text-xl mb-2">Featured Content</CardTitle>
-              <p className="text-sm text-(--color-text-secondary) mb-4">
+              <p className="text-sm text-gray-500 mb-4">
                 Centered cards work great for highlighting important
                 information.
               </p>
               <Button size="sm">Get Started</Button>
             </CardContent>
           </Card>
-          <Card className="bg-linear-to-r from-(--color-interactive-success)/5 to-(--color-interactive-warning)/5 border-(--color-interactive-success)/20">
+          <Card className="bg-linear-to-r from-green-600/5 to-yellow-600/5 border-green-600/20">
             <CardContent className="p-8 text-center">
-              <div className="w-12 h-12 bg-(--color-interactive-success) rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Zap className="h-6 w-6 text-white" />
               </div>
               <CardTitle className="text-xl mb-2">Quick Actions</CardTitle>
-              <p className="text-sm text-(--color-text-secondary) mb-4">
+              <p className="text-sm text-gray-500 mb-4">
                 Perfect for call-to-action cards and user interactions.
               </p>
               <Button size="sm" variant="outline">

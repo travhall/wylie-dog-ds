@@ -163,7 +163,7 @@ export const DateSelection: Story = {
           selected={date}
           onSelect={(d) => setDate(d as Date | undefined)}
         />
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           {date ? `Selected: ${date.toLocaleDateString()}` : "No date selected"}
         </p>
       </div>
@@ -221,7 +221,7 @@ export const InForm: Story = {
             className="rounded-md border"
           />
         </div>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-gray-500">
           Selected: {date ? date.toLocaleDateString() : "None"}
         </p>
       </div>

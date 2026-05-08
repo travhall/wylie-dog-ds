@@ -118,7 +118,7 @@ export const WithError: Story = {
         Description
       </Label>
       <Textarea id="error-textarea" {...args} />
-      <p className="text-xs text-(--color-status-danger)">
+      <p className="text-xs text-red-600">
         This field is required and must be at least 10 characters
       </p>
     </div>
@@ -313,7 +313,7 @@ export const FormExamples: Story = {
           />
         </div>
 
-        <div className="flex justify-between items-center text-xs text-(--color-text-tertiary)">
+        <div className="flex justify-between items-center text-xs text-gray-400">
           <span>0 / 500 characters</span>
           <span>Markdown supported</span>
         </div>
@@ -352,7 +352,7 @@ export const CharacterCount: Story = {
           maxLength={max}
           placeholder="Write a short bio..."
         />
-        <p className="text-xs text-(--color-text-secondary) text-right">
+        <p className="text-xs text-gray-500 text-right">
           {value.length} / {max}
         </p>
       </div>
@@ -389,9 +389,7 @@ export const WithInteractions: Story = {
             placeholder="Enter a brief description..."
             className="min-h-20"
           />
-          <p className="text-xs text-(--color-text-secondary)">
-            At least 10 characters
-          </p>
+          <p className="text-xs text-gray-500">At least 10 characters</p>
         </div>
 
         <div className="space-y-2">

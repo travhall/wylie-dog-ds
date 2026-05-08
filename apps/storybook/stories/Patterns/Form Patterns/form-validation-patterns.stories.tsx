@@ -11,6 +11,7 @@ import {
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
 import { Textarea } from "@wyliedog/ui/textarea";
+import { Alert, AlertDescription } from "@wyliedog/ui/alert";
 import { useState, useRef, useEffect } from "react";
 
 const meta: Meta = {
@@ -88,20 +89,15 @@ function RequiredFieldValidationComponent() {
 
   if (submitted) {
     return (
-      <div
-        role="status"
-        className="w-100 rounded-(--space-dialog-content-radius) border border-(--color-border-success) bg-(--color-background-success-subtle) p-6 text-center"
-      >
-        <p className="font-semibold text-(--color-text-success)">
-          Message sent successfully!
-        </p>
-        <p className="mt-1 text-sm text-(--color-text-secondary)">
-          We'll get back to you at {values.email}.
-        </p>
+      <div className="w-100 space-y-4">
+        <Alert variant="success">
+          <AlertDescription>
+            Message sent successfully! We'll get back to you at {values.email}.
+          </AlertDescription>
+        </Alert>
         <Button
           variant="outline"
           size="sm"
-          className="mt-4"
           onClick={() => {
             setSubmitted(false);
             setValues({ name: "", email: "", message: "" });
@@ -282,15 +278,15 @@ function getStrength(password: string): Strength | null {
 }
 
 const strengthBarColor: Record<Strength, string> = {
-  Weak: "bg-(--color-status-danger)",
-  Fair: "bg-(--color-status-warning)",
-  Strong: "bg-(--color-status-success)",
+  Weak: "bg-red-600",
+  Fair: "bg-yellow-600",
+  Strong: "bg-green-600",
 };
 
 const strengthTextColor: Record<Strength, string> = {
-  Weak: "text-(--color-text-danger)",
-  Fair: "text-(--color-text-warning)",
-  Strong: "text-(--color-text-success)",
+  Weak: "text-red-600",
+  Fair: "text-yellow-600",
+  Strong: "text-green-600",
 };
 
 const strengthBarWidth: Record<Strength, string> = {
@@ -346,7 +342,7 @@ function PasswordStrengthComponent() {
         />
         {strength && (
           <div className="space-y-1" aria-live="polite">
-            <div className="h-1.5 w-full rounded-full bg-(--color-border-default)">
+            <div className="h-1.5 w-full rounded-full bg-gray-200">
               <div
                 className={`h-full rounded-full transition-all duration-300 ${strengthBarWidth[strength]} ${strengthBarColor[strength]}`}
               />
@@ -469,10 +465,8 @@ function MultiStepValidationComponent() {
   if (done) {
     return (
       <div role="status" className="w-100 space-y-2 text-center p-6">
-        <p className="font-semibold text-(--color-text-success)">
-          Account created!
-        </p>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="font-semibold text-green-600">Account created!</p>
+        <p className="text-sm text-gray-500">
           Welcome, {step2.firstName || step1.username}.
         </p>
       </div>
@@ -488,21 +482,19 @@ function MultiStepValidationComponent() {
             <span
               className={`flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold ${
                 step === n
-                  ? "bg-(--color-background-accent-primary) text-(--color-text-on-accent)"
+                  ? "bg-blue-600 text-white"
                   : step > n
-                    ? "bg-(--color-background-success-subtle) text-(--color-text-success)"
-                    : "bg-(--color-background-secondary) text-(--color-text-secondary)"
+                    ? "bg-green-50 text-green-600"
+                    : "bg-gray-100 text-gray-500"
               }`}
               aria-current={step === n ? "step" : undefined}
             >
               {n}
             </span>
-            <span className="text-sm text-(--color-text-secondary)">
+            <span className="text-sm text-gray-500">
               {n === 1 ? "Account" : "Profile"}
             </span>
-            {n < 2 && (
-              <span className="text-(--color-border-default) mx-1">—</span>
-            )}
+            {n < 2 && <span className="text-gray-200 mx-1">—</span>}
           </div>
         ))}
       </div>
@@ -682,7 +674,7 @@ function AsyncValidationComponent() {
               aria-label="Checking availability"
             >
               <span
-                className="block h-4 w-4 animate-spin rounded-full border-2 border-(--color-border-focus) border-t-transparent"
+                className="block h-4 w-4 animate-spin rounded-full border-2 border-blue-500 border-t-transparent"
                 aria-hidden="true"
               />
             </span>
@@ -690,10 +682,7 @@ function AsyncValidationComponent() {
         </div>
 
         {status === "available" && (
-          <p
-            className="text-sm font-medium text-(--color-text-success)"
-            role="status"
-          >
+          <p className="text-sm font-medium text-green-600" role="status">
             ✓ Available
           </p>
         )}

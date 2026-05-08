@@ -45,7 +45,7 @@ export const SystemOverview: Story = {
         <h2 className="text-2xl font-semibold tracking-tight mb-2">
           Wylie Dog Color System
         </h2>
-        <p className="text-sm text-(--color-text-secondary) mb-6">
+        <p className="text-sm text-gray-500 mb-6">
           A comprehensive color system built on OKLCH color space with 8 color
           scales, semantic tokens, and component-specific tokens. All colors are
           perceptually uniform and support P3 wide color gamut.
@@ -66,11 +66,11 @@ export const SystemOverview: Story = {
                 </div>
                 <h4 className="font-semibold">Primitive</h4>
               </div>
-              <p className="text-sm text-(--color-text-secondary)">
+              <p className="text-sm text-gray-500">
                 Base color scales with 11 shades each (50-950). Raw OKLCH
                 values.
               </p>
-              <div className="text-xs font-mono bg-(--color-background-secondary) p-2 rounded">
+              <div className="text-xs font-mono bg-gray-100 p-2 rounded">
                 color.gray.500
                 <br />
                 color.blue.600
@@ -84,11 +84,11 @@ export const SystemOverview: Story = {
                 </div>
                 <h4 className="font-semibold">Semantic</h4>
               </div>
-              <p className="text-sm text-(--color-text-secondary)">
+              <p className="text-sm text-gray-500">
                 Purpose-driven tokens that map to primitives. Adapt to
                 light/dark themes.
               </p>
-              <div className="text-xs font-mono bg-(--color-background-secondary) p-2 rounded">
+              <div className="text-xs font-mono bg-gray-100 p-2 rounded">
                 --color-text-primary
                 <br />
                 --color-background-primary
@@ -102,10 +102,10 @@ export const SystemOverview: Story = {
                 </div>
                 <h4 className="font-semibold">Component</h4>
               </div>
-              <p className="text-sm text-(--color-text-secondary)">
+              <p className="text-sm text-gray-500">
                 Component-specific tokens for buttons, cards, inputs, etc.
               </p>
-              <div className="text-xs font-mono bg-(--color-background-secondary) p-2 rounded">
+              <div className="text-xs font-mono bg-gray-100 p-2 rounded">
                 --color-button-primary-background
                 <br />
                 --color-card-border
@@ -128,40 +128,26 @@ export const SystemOverview: Story = {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card>
           <CardContent className="pt-6">
-            <div className="text-3xl font-bold text-(--color-text-primary)">
-              8
-            </div>
-            <p className="text-sm text-(--color-text-secondary)">
-              Color Scales
-            </p>
+            <div className="text-3xl font-bold text-gray-900">8</div>
+            <p className="text-sm text-gray-500">Color Scales</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="pt-6">
-            <div className="text-3xl font-bold text-(--color-text-primary)">
-              161
-            </div>
-            <p className="text-sm text-(--color-text-secondary)">
-              Color Tokens
-            </p>
+            <div className="text-3xl font-bold text-gray-900">161</div>
+            <p className="text-sm text-gray-500">Color Tokens</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="pt-6">
-            <div className="text-3xl font-bold text-(--color-text-primary)">
-              30%
-            </div>
-            <p className="text-sm text-(--color-text-secondary)">
-              More Colors (P3)
-            </p>
+            <div className="text-3xl font-bold text-gray-900">30%</div>
+            <p className="text-sm text-gray-500">More Colors (P3)</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="pt-6">
-            <div className="text-3xl font-bold text-(--color-text-primary)">
-              AA
-            </div>
-            <p className="text-sm text-(--color-text-secondary)">WCAG Level</p>
+            <div className="text-3xl font-bold text-gray-900">AA</div>
+            <p className="text-sm text-gray-500">WCAG Level</p>
           </CardContent>
         </Card>
       </div>
@@ -175,7 +161,7 @@ export const SystemOverview: Story = {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <h5 className="font-semibold text-sm">Perceptually Uniform</h5>
-              <p className="text-sm text-(--color-text-secondary)">
+              <p className="text-sm text-gray-500">
                 Equal numerical changes produce equal visual changes across all
                 hues. HSL yellow at 50% lightness appears much brighter than HSL
                 blue at 50%.
@@ -183,7 +169,7 @@ export const SystemOverview: Story = {
             </div>
             <div className="space-y-2">
               <h5 className="font-semibold text-sm">P3 Wide Gamut</h5>
-              <p className="text-sm text-(--color-text-secondary)">
+              <p className="text-sm text-gray-500">
                 Access to 30% more vibrant colors on modern displays (iPhone,
                 MacBook Pro, iPad Pro). Gracefully falls back to sRGB.
               </p>
@@ -250,7 +236,7 @@ const ColorPalette = ({
             title={`Copy ${colorName}-${shade}`}
           >
             <div
-              className="w-12 h-12 rounded border border-(--color-border-secondary) group-hover:ring-2 group-hover:ring-(--color-border-focus) transition-all"
+              className="w-12 h-12 rounded border border-gray-300 group-hover:ring-2 group-hover:ring-blue-500 transition-all"
               // Render the literal value, not var(--color-...).
               // Primitives live in `@theme inline` → no :root custom property,
               // so var() would return empty. The hierarchical export already
@@ -259,7 +245,7 @@ const ColorPalette = ({
             />
             <p className="text-xs mt-1 font-mono">{shade}</p>
             {copiedShade === shade && (
-              <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-(--color-background-inverse) text-(--color-text-inverse) text-xs px-2 py-1 rounded">
+              <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded">
                 Copied!
               </div>
             )}
@@ -334,7 +320,7 @@ export const SemanticTokens: Story = {
           <h2 className="text-2xl font-semibold tracking-tight mb-2">
             Semantic Color Tokens
           </h2>
-          <p className="text-sm text-(--color-text-secondary) mb-6">
+          <p className="text-sm text-gray-500 mb-6">
             Purpose-driven tokens that map primitive colors to specific use
             cases. They automatically adapt between light and dark themes.
           </p>
@@ -344,25 +330,23 @@ export const SemanticTokens: Story = {
           <div key={group.category} className="space-y-4">
             <div>
               <h3 className="text-lg font-semibold">{group.category}</h3>
-              <p className="text-sm text-(--color-text-secondary)">
-                {group.description}
-              </p>
+              <p className="text-sm text-gray-500">{group.description}</p>
             </div>
             <div className="grid gap-3">
               {group.tokens.map((token) => (
                 <div
                   key={token.name}
-                  className="flex items-center gap-4 p-3 rounded-lg border border-(--color-border-secondary) bg-(--color-background-primary)"
+                  className="flex items-center gap-4 p-3 rounded-lg border border-gray-300 bg-white"
                 >
                   <div
-                    className="w-16 h-16 rounded-md border border-(--color-border-primary) shrink-0"
+                    className="w-16 h-16 rounded-md border border-gray-200 shrink-0"
                     style={{ backgroundColor: `var(${token.name})` }}
                   />
                   <div className="flex-1 min-w-0">
                     <div className="font-mono text-sm font-medium">
                       {token.name}
                     </div>
-                    <div className="text-xs text-(--color-text-tertiary) mt-1">
+                    <div className="text-xs text-gray-400 mt-1">
                       {token.usage}
                     </div>
                   </div>
@@ -389,9 +373,9 @@ export const SemanticTokens: Story = {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <h4 className="font-medium text-sm">Meaningful Names</h4>
-              <p className="text-sm text-(--color-text-secondary)">
+              <p className="text-sm text-gray-500">
                 Use{" "}
-                <code className="px-1 py-0.5 rounded bg-(--color-background-secondary) text-xs font-mono">
+                <code className="px-1 py-0.5 rounded bg-gray-100 text-xs font-mono">
                   --color-text-primary
                 </code>{" "}
                 instead of remembering which gray shade to use.
@@ -399,14 +383,14 @@ export const SemanticTokens: Story = {
             </div>
             <div className="space-y-2">
               <h4 className="font-medium text-sm">Theme Flexibility</h4>
-              <p className="text-sm text-(--color-text-secondary)">
+              <p className="text-sm text-gray-500">
                 Change your design once in the semantic layer, and it
                 automatically updates everywhere.
               </p>
             </div>
             <div className="space-y-2">
               <h4 className="font-medium text-sm">Automatic Dark Mode</h4>
-              <p className="text-sm text-(--color-text-secondary)">
+              <p className="text-sm text-gray-500">
                 Semantic tokens map to different values in light vs. dark mode
                 without conditional logic.
               </p>
@@ -429,7 +413,7 @@ export const ComponentUsage: Story = {
         <h2 className="text-2xl font-semibold tracking-tight mb-2">
           Component Usage Examples
         </h2>
-        <p className="text-sm text-(--color-text-secondary) mb-6">
+        <p className="text-sm text-gray-500 mb-6">
           Semantic color tokens applied to real components. All examples use
           design system components styled with tokens.
         </p>
@@ -439,7 +423,7 @@ export const ComponentUsage: Story = {
       <div className="space-y-4">
         <div>
           <h3 className="text-lg font-semibold">Buttons</h3>
-          <p className="text-sm text-(--color-text-secondary)">
+          <p className="text-sm text-gray-500">
             Interactive button variants with hover and focus states
           </p>
         </div>
@@ -457,7 +441,7 @@ export const ComponentUsage: Story = {
       <div className="space-y-4">
         <div>
           <h3 className="text-lg font-semibold">Alert Messages</h3>
-          <p className="text-sm text-(--color-text-secondary)">
+          <p className="text-sm text-gray-500">
             Status colors for feedback and notifications
           </p>
         </div>
@@ -496,7 +480,7 @@ export const ComponentUsage: Story = {
       <div className="space-y-4">
         <div>
           <h3 className="text-lg font-semibold">Badges</h3>
-          <p className="text-sm text-(--color-text-secondary)">
+          <p className="text-sm text-gray-500">
             Small labels for status and categories
           </p>
         </div>
@@ -514,7 +498,7 @@ export const ComponentUsage: Story = {
       <div className="space-y-4">
         <div>
           <h3 className="text-lg font-semibold">Cards</h3>
-          <p className="text-sm text-(--color-text-secondary)">
+          <p className="text-sm text-gray-500">
             Content containers with surface and border tokens
           </p>
         </div>
@@ -524,7 +508,7 @@ export const ComponentUsage: Story = {
               <CardTitle>Default Card</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-(--color-text-secondary)">
+              <p className="text-sm text-gray-500">
                 Uses default surface and border colors from semantic tokens.
               </p>
               <div className="mt-4">
@@ -540,7 +524,7 @@ export const ComponentUsage: Story = {
               <CardTitle>Featured Card</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-(--color-text-secondary)">
+              <p className="text-sm text-gray-500">
                 Elevated surface with increased border prominence.
               </p>
               <div className="mt-4">
@@ -565,7 +549,7 @@ export const OKLCHAndP3: Story = {
         <h2 className="text-2xl font-semibold tracking-tight mb-2">
           OKLCH & P3 Wide Gamut
         </h2>
-        <p className="text-sm text-(--color-text-secondary) mb-6">
+        <p className="text-sm text-gray-500 mb-6">
           Understanding the color space and gamut behind the design system.
         </p>
       </div>
@@ -576,7 +560,7 @@ export const OKLCHAndP3: Story = {
           <CardTitle>What is OKLCH?</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-sm text-(--color-text-secondary)">
+          <p className="text-sm text-gray-500">
             OKLCH is a cylindrical representation of the Oklab color space,
             designed to be perceptually uniform. Equal numerical changes produce
             equal visual changes.
@@ -584,7 +568,7 @@ export const OKLCHAndP3: Story = {
           <div className="grid md:grid-cols-3 gap-4">
             <div className="space-y-2">
               <div className="font-semibold text-sm">L - Lightness</div>
-              <div className="text-xs text-(--color-text-secondary)">
+              <div className="text-xs text-gray-500">
                 0 = pure black, 1 = pure white
               </div>
               <Progress value={70} className="h-2" />
@@ -592,7 +576,7 @@ export const OKLCHAndP3: Story = {
             </div>
             <div className="space-y-2">
               <div className="font-semibold text-sm">C - Chroma</div>
-              <div className="text-xs text-(--color-text-secondary)">
+              <div className="text-xs text-gray-500">
                 0 = grayscale, higher = more vibrant
               </div>
               <Progress value={50} className="h-2" />
@@ -600,7 +584,7 @@ export const OKLCHAndP3: Story = {
             </div>
             <div className="space-y-2">
               <div className="font-semibold text-sm">H - Hue</div>
-              <div className="text-xs text-(--color-text-secondary)">
+              <div className="text-xs text-gray-500">
                 0-360 degrees around color wheel
               </div>
               <Progress value={72} className="h-2" />
@@ -616,7 +600,7 @@ export const OKLCHAndP3: Story = {
           <CardTitle>P3 Wide Color Gamut</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-sm text-(--color-text-secondary)">
+          <p className="text-sm text-gray-500">
             Display P3 can show <strong>30% more colors</strong> than sRGB.
             Modern devices (iPhone, MacBook Pro, iPad Pro) support P3.
           </p>
@@ -624,7 +608,7 @@ export const OKLCHAndP3: Story = {
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <div className="font-semibold text-sm">✅ Advantages</div>
-              <ul className="text-xs space-y-1 text-(--color-text-secondary)">
+              <ul className="text-xs space-y-1 text-gray-500">
                 <li>• More vibrant, saturated colors</li>
                 <li>• Smoother gradients</li>
                 <li>• Better natural color representation</li>
@@ -633,7 +617,7 @@ export const OKLCHAndP3: Story = {
             </div>
             <div className="space-y-2">
               <div className="font-semibold text-sm">📱 Device Support</div>
-              <ul className="text-xs space-y-1 text-(--color-text-secondary)">
+              <ul className="text-xs space-y-1 text-gray-500">
                 <li>• iPhone X and later</li>
                 <li>• iPad Pro (all generations)</li>
                 <li>• MacBook Pro (2016+)</li>
@@ -661,10 +645,10 @@ export const OKLCHAndP3: Story = {
         <CardContent>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <div className="font-semibold text-sm text-(--color-text-danger)">
+              <div className="font-semibold text-sm text-red-600">
                 ❌ Problems with HSL
               </div>
-              <ul className="text-xs space-y-2 text-(--color-text-secondary)">
+              <ul className="text-xs space-y-2 text-gray-500">
                 <li>
                   • Not perceptually uniform (yellow appears brighter than blue
                   at same lightness)
@@ -674,10 +658,10 @@ export const OKLCHAndP3: Story = {
               </ul>
             </div>
             <div className="space-y-2">
-              <div className="font-semibold text-sm text-(--color-text-success)">
+              <div className="font-semibold text-sm text-green-600">
                 ✅ Benefits of OKLCH
               </div>
-              <ul className="text-xs space-y-2 text-(--color-text-secondary)">
+              <ul className="text-xs space-y-2 text-gray-500">
                 <li>• Equal lightness = equal brightness across all hues</li>
                 <li>• Predictable color manipulation</li>
                 <li>• Supports P3 wide gamut</li>
@@ -693,7 +677,7 @@ export const OKLCHAndP3: Story = {
           <CardTitle>Perceptual Uniformity Demo</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-sm text-(--color-text-secondary)">
+          <p className="text-sm text-gray-500">
             Compare how OKLCH maintains consistent brightness while HSL does
             not.
           </p>
@@ -734,7 +718,7 @@ export const OKLCHAndP3: Story = {
                   title="Magenta"
                 />
               </div>
-              <div className="text-xs text-(--color-text-tertiary)">
+              <div className="text-xs text-gray-400">
                 All colors appear equally bright
               </div>
             </div>
@@ -775,7 +759,7 @@ export const OKLCHAndP3: Story = {
                   title="Magenta"
                 />
               </div>
-              <div className="text-xs text-(--color-text-tertiary)">
+              <div className="text-xs text-gray-400">
                 Yellow/green appear much brighter than blue
               </div>
             </div>
@@ -826,7 +810,7 @@ export const Accessibility: Story = {
           <h2 className="text-2xl font-semibold tracking-tight mb-2">
             Color Accessibility
           </h2>
-          <p className="text-sm text-(--color-text-secondary) mb-6">
+          <p className="text-sm text-gray-500 mb-6">
             All semantic tokens meet WCAG 2.1 Level AA contrast requirements for
             their intended use cases.
           </p>
@@ -839,52 +823,40 @@ export const Accessibility: Story = {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 rounded-lg border border-(--color-border-primary) bg-(--color-background-secondary)">
+              <div className="p-4 rounded-lg border border-gray-200 bg-gray-100">
                 <div className="font-semibold text-sm mb-2">
                   Level AA (Minimum)
                 </div>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center justify-between">
-                    <span className="text-(--color-text-secondary)">
-                      Normal text
-                    </span>
+                    <span className="text-gray-500">Normal text</span>
                     <Badge variant="outline">4.5:1</Badge>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-(--color-text-secondary)">
-                      Large text (18pt+)
-                    </span>
+                    <span className="text-gray-500">Large text (18pt+)</span>
                     <Badge variant="outline">3:1</Badge>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-(--color-text-secondary)">
-                      UI Components
-                    </span>
+                    <span className="text-gray-500">UI Components</span>
                     <Badge variant="outline">3:1</Badge>
                   </div>
                 </div>
               </div>
-              <div className="p-4 rounded-lg border border-(--color-border-primary) bg-(--color-background-secondary)">
+              <div className="p-4 rounded-lg border border-gray-200 bg-gray-100">
                 <div className="font-semibold text-sm mb-2">
                   Level AAA (Enhanced)
                 </div>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center justify-between">
-                    <span className="text-(--color-text-secondary)">
-                      Normal text
-                    </span>
+                    <span className="text-gray-500">Normal text</span>
                     <Badge variant="outline">7:1</Badge>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-(--color-text-secondary)">
-                      Large text (18pt+)
-                    </span>
+                    <span className="text-gray-500">Large text (18pt+)</span>
                     <Badge variant="outline">4.5:1</Badge>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-(--color-text-secondary)">
-                      UI Components
-                    </span>
+                    <span className="text-gray-500">UI Components</span>
                     <Badge variant="outline">4.5:1</Badge>
                   </div>
                 </div>
@@ -904,9 +876,7 @@ export const Accessibility: Story = {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="font-medium text-sm">{example.name}</div>
-                    <div className="text-xs text-(--color-text-tertiary)">
-                      {example.usage}
-                    </div>
+                    <div className="text-xs text-gray-400">{example.usage}</div>
                   </div>
                   <div className="text-right">
                     <div className="font-mono text-sm font-semibold">
@@ -923,7 +893,7 @@ export const Accessibility: Story = {
                   </div>
                 </div>
                 <div
-                  className="p-6 rounded-lg border border-(--color-border-secondary)"
+                  className="p-6 rounded-lg border border-gray-300"
                   style={{
                     backgroundColor: example.background,
                     color: example.foreground,
@@ -952,7 +922,7 @@ export const Accessibility: Story = {
                   <div className="font-medium text-sm mb-1">
                     Use Semantic Tokens
                   </div>
-                  <p className="text-xs text-(--color-text-secondary)">
+                  <p className="text-xs text-gray-500">
                     Semantic tokens are pre-tested for contrast compliance.
                     Always prefer them over primitive colors.
                   </p>
@@ -964,7 +934,7 @@ export const Accessibility: Story = {
                   <div className="font-medium text-sm mb-1">
                     Test Custom Combinations
                   </div>
-                  <p className="text-xs text-(--color-text-secondary)">
+                  <p className="text-xs text-gray-500">
                     When creating custom pairings, verify contrast ratios using
                     browser DevTools or accessibility checkers.
                   </p>
@@ -976,7 +946,7 @@ export const Accessibility: Story = {
                   <div className="font-medium text-sm mb-1">
                     Don't Rely on Color Alone
                   </div>
-                  <p className="text-xs text-(--color-text-secondary)">
+                  <p className="text-xs text-gray-500">
                     Use icons, labels, or patterns alongside color for users
                     with color vision deficiencies.
                   </p>
@@ -1037,7 +1007,7 @@ export const TokenBrowser: Story = {
           <h2 className="text-2xl font-semibold tracking-tight mb-2">
             Token Browser
           </h2>
-          <p className="text-sm text-(--color-text-secondary) mb-6">
+          <p className="text-sm text-gray-500 mb-6">
             Search and copy any color token reference. Click to copy the CSS
             variable syntax.
           </p>
@@ -1073,7 +1043,7 @@ export const TokenBrowser: Story = {
         </div>
 
         {/* Results Count */}
-        <div className="text-sm text-(--color-text-secondary)">
+        <div className="text-sm text-gray-500">
           Showing {filteredTokens.length} of {allTokens.length} tokens
         </div>
 
@@ -1084,10 +1054,10 @@ export const TokenBrowser: Story = {
               key={token.name}
               variant="ghost"
               onClick={() => handleCopy(token.cssVar, token.name)}
-              className="flex items-center gap-3 p-3 h-auto rounded-lg border border-(--color-border-secondary) bg-(--color-background-primary) hover:border-(--color-border-focus) hover:bg-(--color-background-secondary) transition-all text-left group relative justify-start"
+              className="flex items-center gap-3 p-3 h-auto rounded-lg border border-gray-300 bg-white hover:border-blue-500 hover:bg-gray-100 transition-all text-left group relative justify-start"
             >
               <div
-                className="w-12 h-12 rounded border border-(--color-border-primary) shrink-0"
+                className="w-12 h-12 rounded border border-gray-200 shrink-0"
                 // Same reason as ColorPalette: primitives live in `@theme inline`
                 // so var(--color-...) returns empty. Use the OKLCH literal.
                 style={{ backgroundColor: token.value }}
@@ -1096,12 +1066,12 @@ export const TokenBrowser: Story = {
                 <div className="font-mono text-xs font-medium truncate">
                   {token.displayName}
                 </div>
-                <div className="font-mono text-xs text-(--color-text-tertiary) truncate">
+                <div className="font-mono text-xs text-gray-400 truncate">
                   {token.value}
                 </div>
               </div>
               {copiedToken === token.name && (
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-(--color-background-inverse) text-(--color-text-inverse) text-xs px-3 py-1 rounded shadow-lg">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-900 text-white text-xs px-3 py-1 rounded shadow-lg">
                   Copied!
                 </div>
               )}
@@ -1110,7 +1080,7 @@ export const TokenBrowser: Story = {
         </div>
 
         {filteredTokens.length === 0 && (
-          <div className="text-center py-12 text-(--color-text-secondary)">
+          <div className="text-center py-12 text-gray-500">
             No tokens found matching "{searchQuery}"
           </div>
         )}

@@ -87,9 +87,9 @@ export const ForgotPasswordEmail: Story = {
               </AlertDescription>
             </Alert>
 
-            <div className="rounded-lg border border-border p-4 space-y-2">
+            <div className="rounded-lg border border-gray-200 p-4 space-y-2">
               <p className="text-sm font-medium">Didn't receive the email?</p>
-              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+              <ul className="text-sm text-gray-500 space-y-1 list-disc list-inside">
                 <li>Check your spam or junk folder</li>
                 <li>Make sure you entered the correct email</li>
                 <li>Wait a few minutes for the email to arrive</li>
@@ -109,7 +109,7 @@ export const ForgotPasswordEmail: Story = {
             </Button>
             <a
               href="#"
-              className="text-sm text-center text-muted-foreground hover:text-foreground"
+              className="text-sm text-center text-gray-500 hover:text-gray-900"
             >
               Back to login
             </a>
@@ -150,7 +150,7 @@ export const ForgotPasswordEmail: Story = {
                 aria-invalid={!!error}
                 aria-describedby={error ? "email-error" : undefined}
               />
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-gray-500">
                 We'll send a password reset link to this email
               </p>
             </div>
@@ -161,7 +161,7 @@ export const ForgotPasswordEmail: Story = {
             </Button>
             <a
               href="#"
-              className="text-sm text-center text-muted-foreground hover:text-foreground"
+              className="text-sm text-center text-gray-500 hover:text-gray-900"
             >
               Back to login
             </a>
@@ -196,18 +196,18 @@ export const ResetPasswordForm: Story = {
         return {
           strength: 2,
           label: "Weak",
-          color: "bg-(--color-status-warning)",
+          color: "bg-yellow-600",
         };
       if (password.length < 14)
         return {
           strength: 3,
           label: "Good",
-          color: "bg-(--color-status-info)",
+          color: "bg-blue-600",
         };
       return {
         strength: 4,
         label: "Strong",
-        color: "bg-(--color-status-success)",
+        color: "bg-green-600",
       };
     };
 
@@ -316,27 +316,25 @@ export const ResetPasswordForm: Story = {
                             className={`h-1 flex-1 rounded-full ${
                               level <= passwordStrength.strength
                                 ? passwordStrength.color
-                                : "bg-muted"
+                                : "bg-gray-100"
                             }`}
                           />
                         ))}
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-gray-500">
                         Password strength: {passwordStrength.label}
                       </p>
                     </div>
                   )}
                   <div
                     id="password-requirements"
-                    className="text-sm text-muted-foreground space-y-1"
+                    className="text-sm text-gray-500 space-y-1"
                   >
                     <p className="font-medium">Password must contain:</p>
                     <ul className="list-disc list-inside space-y-1">
                       <li
                         className={
-                          formData.password.length >= 8
-                            ? "text-(--color-status-success)"
-                            : ""
+                          formData.password.length >= 8 ? "text-green-600" : ""
                         }
                       >
                         At least 8 characters
@@ -344,7 +342,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[A-Z]/.test(formData.password)
-                            ? "text-(--color-status-success)"
+                            ? "text-green-600"
                             : ""
                         }
                       >
@@ -353,7 +351,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[a-z]/.test(formData.password)
-                            ? "text-(--color-status-success)"
+                            ? "text-green-600"
                             : ""
                         }
                       >
@@ -362,7 +360,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[0-9]/.test(formData.password)
-                            ? "text-(--color-status-success)"
+                            ? "text-green-600"
                             : ""
                         }
                       >
@@ -451,7 +449,7 @@ export const InvalidResetLink: Story = {
           <CardFooter>
             <a
               href="#"
-              className="text-sm text-center text-muted-foreground hover:text-foreground w-full"
+              className="text-sm text-center text-gray-500 hover:text-gray-900 w-full"
             >
               Back to login
             </a>
@@ -475,9 +473,9 @@ export const InvalidResetLink: Story = {
             </AlertDescription>
           </Alert>
 
-          <div className="rounded-lg border border-border p-4 space-y-2">
+          <div className="rounded-lg border border-gray-200 p-4 space-y-2">
             <p className="text-sm font-medium">Why did this happen?</p>
-            <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+            <ul className="text-sm text-gray-500 space-y-1 list-disc list-inside">
               <li>The link has expired (older than 1 hour)</li>
               <li>The link has already been used</li>
               <li>You requested a new reset link</li>
@@ -495,7 +493,7 @@ export const InvalidResetLink: Story = {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-gray-500">
                 We'll send you a new reset link
               </p>
             </div>
@@ -508,7 +506,7 @@ export const InvalidResetLink: Story = {
         <CardFooter>
           <a
             href="#"
-            className="text-sm text-center text-muted-foreground hover:text-foreground w-full"
+            className="text-sm text-center text-gray-500 hover:text-gray-900 w-full"
           >
             Back to login
           </a>
@@ -582,20 +580,18 @@ export const MultiStepPasswordRecovery: Story = {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                       index <= currentStepIndex
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground"
+                        ? "bg-blue-600 text-primary-foreground"
+                        : "bg-gray-100 text-gray-500"
                     }`}
                   >
                     {index + 1}
                   </div>
-                  <span className="text-xs mt-1 text-muted-foreground">
-                    {s.label}
-                  </span>
+                  <span className="text-xs mt-1 text-gray-500">{s.label}</span>
                 </div>
                 {index < steps.length - 1 && (
                   <div
                     className={`flex-1 h-0.5 ${
-                      index < currentStepIndex ? "bg-primary" : "bg-muted"
+                      index < currentStepIndex ? "bg-blue-600" : "bg-gray-100"
                     }`}
                   />
                 )}
@@ -670,7 +666,7 @@ export const MultiStepPasswordRecovery: Story = {
                   maxLength={6}
                   required
                 />
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-gray-500">
                   Didn't receive the code?{" "}
                   <Button
                     type="button"
@@ -737,7 +733,7 @@ export const MultiStepPasswordRecovery: Story = {
           <CardFooter>
             <a
               href="#"
-              className="text-sm text-center text-muted-foreground hover:text-foreground w-full"
+              className="text-sm text-center text-gray-500 hover:text-gray-900 w-full"
             >
               Back to login
             </a>

@@ -57,7 +57,7 @@ export const Default: Story = {
     },
   },
   render: (args) => (
-    <Tabs {...args} className="w-(--spacing-1700)">
+    <Tabs {...args} className="w-[425px]">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
@@ -112,7 +112,7 @@ export const WithCards: Story = {
             <CardTitle>Overview</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-text-secondary)">
+            <p className="text-sm text-gray-500">
               This is the overview tab content. Here you can see a summary of
               your account.
             </p>
@@ -126,7 +126,7 @@ export const WithCards: Story = {
             <CardTitle>Analytics</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-text-secondary)">
+            <p className="text-sm text-gray-500">
               View your analytics and performance metrics here.
             </p>
           </CardContent>
@@ -139,7 +139,7 @@ export const WithCards: Story = {
             <CardTitle>Reports</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-text-secondary)">
+            <p className="text-sm text-gray-500">
               Generate and download reports from this section.
             </p>
           </CardContent>
@@ -152,7 +152,7 @@ export const WithCards: Story = {
             <CardTitle>Notifications</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-text-secondary)">
+            <p className="text-sm text-gray-500">
               Manage your notification preferences here.
             </p>
           </CardContent>
@@ -164,7 +164,7 @@ export const WithCards: Story = {
 
 export const WithInteractions: Story = {
   render: () => (
-    <Tabs defaultValue="home" className="w-(--spacing-1700)">
+    <Tabs defaultValue="home" className="w-[425px]">
       <TabsList className="grid w-full grid-cols-3">
         <TabsTrigger value="home">Home</TabsTrigger>
         <TabsTrigger value="profile">Profile</TabsTrigger>
@@ -289,10 +289,8 @@ export const Sizes: Story = {
   render: () => (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-(--color-text-tertiary)">
-          Small (sm)
-        </h3>
-        <Tabs defaultValue="tab1" className="w-(--spacing-1700)">
+        <h3 className="text-sm font-medium text-gray-400">Small (sm)</h3>
+        <Tabs defaultValue="tab1" className="w-[425px]">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="tab1" size="sm">
               Tab 1
@@ -308,10 +306,10 @@ export const Sizes: Story = {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-(--color-text-tertiary)">
+        <h3 className="text-sm font-medium text-gray-400">
           Medium (md) - Default
         </h3>
-        <Tabs defaultValue="tab1" className="w-(--spacing-1700)">
+        <Tabs defaultValue="tab1" className="w-[425px]">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="tab1" size="md">
               Tab 1
@@ -327,10 +325,8 @@ export const Sizes: Story = {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-(--color-text-tertiary)">
-          Large (lg)
-        </h3>
-        <Tabs defaultValue="tab1" className="w-(--spacing-1700)">
+        <h3 className="text-sm font-medium text-gray-400">Large (lg)</h3>
+        <Tabs defaultValue="tab1" className="w-[425px]">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="tab1" size="lg">
               Tab 1
