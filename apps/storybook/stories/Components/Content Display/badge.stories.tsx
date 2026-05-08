@@ -66,6 +66,84 @@ export const Default: Story = {
   },
 };
 
+export const SizeVariants: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Three sizes for different interface densities. `sm` for tight spaces like table cells, `md` (default) for most contexts, `lg` for prominent status labels.",
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-4">
+      <div className="flex items-center gap-4">
+        <div className="w-8 text-xs font-mono text-gray-400">sm</div>
+        <div className="flex gap-2 items-center">
+          <Badge size="sm">Default</Badge>
+          <Badge size="sm" variant="secondary">
+            Secondary
+          </Badge>
+          <Badge size="sm" variant="success">
+            Success
+          </Badge>
+          <Badge size="sm" variant="warning">
+            Warning
+          </Badge>
+          <Badge size="sm" variant="destructive">
+            Destructive
+          </Badge>
+          <Badge size="sm" variant="outline">
+            Outline
+          </Badge>
+        </div>
+      </div>
+      <div className="flex items-center gap-4">
+        <div className="w-8 text-xs font-mono text-gray-400">md</div>
+        <div className="flex gap-2 items-center">
+          <Badge size="md">Default</Badge>
+          <Badge size="md" variant="secondary">
+            Secondary
+          </Badge>
+          <Badge size="md" variant="success">
+            Success
+          </Badge>
+          <Badge size="md" variant="warning">
+            Warning
+          </Badge>
+          <Badge size="md" variant="destructive">
+            Destructive
+          </Badge>
+          <Badge size="md" variant="outline">
+            Outline
+          </Badge>
+        </div>
+      </div>
+      <div className="flex items-center gap-4">
+        <div className="w-8 text-xs font-mono text-gray-400">lg</div>
+        <div className="flex gap-2 items-center">
+          <Badge size="lg">Default</Badge>
+          <Badge size="lg" variant="secondary">
+            Secondary
+          </Badge>
+          <Badge size="lg" variant="success">
+            Success
+          </Badge>
+          <Badge size="lg" variant="warning">
+            Warning
+          </Badge>
+          <Badge size="lg" variant="destructive">
+            Destructive
+          </Badge>
+          <Badge size="lg" variant="outline">
+            Outline
+          </Badge>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
 export const AllVariants: Story = {
   parameters: {
     docs: {

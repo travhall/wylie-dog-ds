@@ -28,6 +28,16 @@ const meta: Meta<typeof Alert> = {
         category: "Appearance",
       },
     },
+    role: {
+      control: "radio",
+      options: ["alert", "status", "region"],
+      description:
+        'Override the ARIA role. By default the component derives urgency from variant: destructive/warning → role="alert" (assertive); others → role="status" (polite). Only set this when the default doesn\'t match the actual urgency of the message.',
+      table: {
+        type: { summary: '"alert" | "status" | "region"' },
+        category: "Accessibility",
+      },
+    },
   },
   args: {
     variant: "default",

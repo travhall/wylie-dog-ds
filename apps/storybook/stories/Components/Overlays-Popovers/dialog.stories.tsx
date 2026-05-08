@@ -450,6 +450,83 @@ export const WithScrollableContent: Story = {
   ),
 };
 
+export const SizeVariants: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "DialogContent supports five sizes: `sm` for confirmations, `md` (default) for standard forms, `lg` for complex content, `xl` for wide layouts, and `full` for immersive experiences.",
+      },
+    },
+  },
+  render: () => {
+    const sizes = [
+      {
+        size: "sm" as const,
+        label: "Small",
+        description: "Compact confirmations and simple prompts",
+      },
+      {
+        size: "md" as const,
+        label: "Medium",
+        description: "Standard forms and dialogs (default)",
+      },
+      {
+        size: "lg" as const,
+        label: "Large",
+        description: "Complex forms and multi-column layouts",
+      },
+      {
+        size: "xl" as const,
+        label: "Extra Large",
+        description: "Wide content like data tables or media",
+      },
+      {
+        size: "full" as const,
+        label: "Full",
+        description: "Immersive flows and full-viewport content",
+      },
+    ];
+
+    return (
+      <div className="flex flex-wrap gap-3">
+        {sizes.map(({ size, label, description }) => (
+          <Dialog key={size}>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm">
+                {label}
+              </Button>
+            </DialogTrigger>
+            <DialogContent size={size}>
+              <DialogHeader>
+                <DialogTitle>
+                  {label} Dialog ({size})
+                </DialogTitle>
+                <DialogDescription>{description}</DialogDescription>
+              </DialogHeader>
+              <div className="py-4">
+                <p className="text-sm text-gray-500">
+                  This dialog uses{" "}
+                  <code className="font-mono bg-gray-100 px-1 rounded">
+                    size="{size}"
+                  </code>
+                  . The content area adjusts to the maximum width defined by
+                  that size token.
+                </p>
+              </div>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="outline">Close</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        ))}
+      </div>
+    );
+  },
+};
+
 export const NonClosable: Story = {
   parameters: {
     docs: {
@@ -483,14 +560,14 @@ export const NonClosable: Story = {
           <div className="space-y-3 py-4">
             {["Personal account", "Team account", "Enterprise account"].map(
               (option) => (
-                <button
+                <Button
                   key={option}
-                  type="button"
+                  variant="outline"
                   onClick={() => setOpen(false)}
-                  className="w-full text-left px-4 py-3 rounded-md border border-gray-200 hover:bg-gray-100 transition-colors"
+                  className="w-full justify-start px-4 py-3 h-auto"
                 >
                   <p className="font-medium text-sm">{option}</p>
-                </button>
+                </Button>
               )
             )}
           </div>

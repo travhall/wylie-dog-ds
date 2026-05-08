@@ -102,7 +102,7 @@ export const FocusManagement: Story = {
     docs: {
       description: {
         story:
-          "Demonstrates focus trapping inside a Dialog and focus restoration to the trigger button on close (Escape key or Cancel). Radix UI's Dialog primitive provides this behaviour automatically.",
+          "Demonstrates focus trapping inside a Dialog and focus restoration to the trigger button on close (Escape key or Cancel). Radix UI's Dialog primitive provides this behavior automatically.",
       },
     },
   },
@@ -482,7 +482,7 @@ export const ColorContrastCheck: Story = {
     docs: {
       description: {
         story:
-          "Visual reference of semantic token pairs labelled as AA Compliant based on the design intent of the token system. Normal text requires 4.5:1 contrast; large text (18px+ or 14px+ bold) requires 3:1. Run the a11y addon (configured in preview.tsx) to confirm computed contrast ratios against the rendered colours.",
+          "Visual reference of semantic token pairs labelled as AA Compliant based on the design intent of the token system. Normal text requires 4.5:1 contrast; large text (18px+ or 14px+ bold) requires 3:1. Run the a11y addon (configured in preview.tsx) to confirm computed contrast ratios against the rendered colors.",
       },
     },
   },
@@ -499,7 +499,7 @@ export const ColorContrastCheck: Story = {
         <p className="text-sm text-gray-500">
           Note: Compliance labels reflect design intent. Use the a11y addon
           (Accessibility panel) to verify computed contrast ratios against live
-          rendered colours.
+          rendered colors.
         </p>
       </div>
 

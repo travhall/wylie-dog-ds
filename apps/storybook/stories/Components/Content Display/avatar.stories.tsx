@@ -25,6 +25,26 @@ const meta: Meta<typeof Avatar> = {
         category: "Appearance",
       },
     },
+    semanticRole: {
+      control: "radio",
+      options: ["profile", "user", "decorative"],
+      description:
+        'Semantic intent of the avatar. "profile" generates alt text like "Jane\'s profile picture"; "user" generates "Jane\'s avatar"; "decorative" sets role="presentation" and suppresses the alt text entirely (use when the avatar is redundant with adjacent text).',
+      table: {
+        type: { summary: '"profile" | "user" | "decorative"' },
+        defaultValue: { summary: '"profile"' },
+        category: "Accessibility",
+      },
+    },
+    name: {
+      control: "text",
+      description:
+        "The person's name. Used to generate accessible alt text (e.g. \"Jane's profile picture\") and fallback initials when no image or explicit initials are provided.",
+      table: {
+        type: { summary: "string" },
+        category: "Accessibility",
+      },
+    },
   },
   args: {
     size: "md",

@@ -36,6 +36,16 @@ const meta: Meta<typeof Skeleton> = {
         category: "Appearance",
       },
     },
+    loadingText: {
+      control: "text",
+      description:
+        'Screen-reader label announced while the skeleton is visible. Defaults to "Loading content". Rendered as a visually-hidden <span> so it doesn\'t affect layout.',
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: '"Loading content"' },
+        category: "Accessibility",
+      },
+    },
   },
   args: {
     variant: "default",
