@@ -31,6 +31,45 @@
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 
+  .glass-dark {
+    background-color: color-mix(in oklch, var(--color-background-inverse), transparent 82%);
+    backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in oklch, var(--color-text-primary), transparent 85%);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.15), 0 2px 4px -2px rgb(0 0 0 / 0.15);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+
+  .dark .glass-dark {
+    background-color: color-mix(in oklch, var(--color-background-inverse), transparent 50%);
+    border: 1px solid color-mix(in oklch, var(--color-background-primary), transparent 85%);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.25), 0 4px 6px -4px rgb(0 0 0 / 0.2);
+  }
+
+  .kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1;
+    padding: 0.2rem 0.45rem;
+    min-width: 1.5rem;
+    border-radius: 0.25rem;
+    background-color: color-mix(in oklch, var(--color-background-secondary), transparent 20%);
+    color: var(--color-text-primary);
+    border: 1px solid color-mix(in oklch, var(--color-text-primary), transparent 75%);
+    box-shadow: 0 1px 0 0 color-mix(in oklch, var(--color-text-primary), transparent 70%);
+  }
+
+  .kbd-sm {
+    font-size: 0.625rem;
+    padding: 0.15rem 0.3rem;
+    min-width: 1.25rem;
+  }
+
   .grid-bg {
     background-image: radial-gradient(var(--color-border-primary) 1px, transparent 1px);
     background-size: 20px 20px;
