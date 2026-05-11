@@ -1,4 +1,6 @@
 import { h } from "preact";
+import { Icon } from "./common/Icon";
+import type { IconName } from "./common/Icon";
 
 interface OnboardingScreenProps {
   onSetupSync: () => void;
@@ -9,9 +11,9 @@ interface OnboardingScreenProps {
 }
 
 /**
- * OnboardingScreen — inline first-run experience.
- * Renders as a regular block (no fixed overlay) that replaces
- * the tab system when showOnboarding is true in App.tsx.
+ * OnboardingScreen — first-run 2×2 card grid.
+ * Renders as a block (no overlay) replacing the tab system when
+ * showOnboarding is true in App.tsx.
  */
 export function OnboardingScreen({
   onSetupSync,
@@ -20,128 +22,96 @@ export function OnboardingScreen({
   onDemoTokens,
   onSkip,
 }: OnboardingScreenProps) {
+  const cards: Array<{
+    icon: IconName;
+    label: string;
+    desc: string;
+    onClick: () => void;
+    primary?: boolean;
+  }> = [
+    {
+      icon: "github",
+      label: "Connect GitHub",
+      desc: "Bidirectional sync",
+      onClick: onSetupSync,
+      primary: true,
+    },
+    {
+      icon: "upload",
+      label: "Import File",
+      desc: "JSON or W3C format",
+      onClick: onImportFile,
+    },
+    {
+      icon: "tokens",
+      label: "Import Variables",
+      desc: "From this Figma file",
+      onClick: onImportFigmaVariables,
+    },
+    {
+      icon: "file",
+      label: "Try Demo",
+      desc: "Explore with sample data",
+      onClick: onDemoTokens,
+    },
+  ];
+
   return (
     <div
       style={{
-        padding: "var(--space-4) 0",
         display: "flex",
         flexDirection: "column",
-        gap: "var(--space-3)",
+        gap: 0,
       }}
     >
-      {/* Heading */}
-      <div style={{ marginBottom: "var(--space-2)" }}>
-        <h3
+      {/* Welcome heading */}
+      <div
+        style={{
+          padding: "16px 12px 12px",
+        }}
+      >
+        <div
           style={{
-            margin: "0 0 var(--space-1) 0",
             fontSize: "var(--font-size-md)",
             fontWeight: "var(--font-weight-semibold)",
             color: "var(--text-primary)",
+            marginBottom: 4,
           }}
         >
           Welcome to Token Bridge
-        </h3>
-        <p
+        </div>
+        <div
           style={{
-            margin: 0,
             fontSize: "var(--font-size-sm)",
             color: "var(--text-secondary)",
             lineHeight: "var(--line-height-relaxed)",
           }}
         >
           How would you like to get started?
-        </p>
+        </div>
       </div>
 
-      {/* Primary: Connect to GitHub */}
-      <button
-        onClick={onSetupSync}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          gap: "var(--space-1)",
-          width: "100%",
-          padding: "var(--space-4)",
-          backgroundColor: "var(--accent-primary)",
-          color: "var(--text-inverse)",
-          border: "none",
-          borderRadius: "var(--radius-lg)",
-          cursor: "pointer",
-          transition: "var(--transition-base)",
-          textAlign: "left",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "var(--accent-primary-hover)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "var(--accent-primary)";
-        }}
-      >
-        <div
-          style={{
-            fontSize: "var(--font-size-sm)",
-            fontWeight: "var(--font-weight-semibold)",
-          }}
-        >
-          🔄 Connect to GitHub
-        </div>
-        <div
-          style={{
-            fontSize: "var(--font-size-xs)",
-            opacity: 0.85,
-            lineHeight: "var(--line-height-relaxed)",
-          }}
-        >
-          Recommended — sync tokens bidirectionally with your repository
-        </div>
-      </button>
-
-      {/* Secondary options */}
+      {/* 2×2 grid */}
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "var(--space-2)",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 8,
+          padding: "0 12px",
         }}
       >
-        <SecondaryButton
-          icon="📁"
-          label="Import Token File"
-          description="Upload JSON tokens from your local file"
-          onClick={onImportFile}
-        />
-        <SecondaryButton
-          icon="🎨"
-          label="Import Figma Variables"
-          description="Convert existing Figma variables to tokens"
-          onClick={onImportFigmaVariables}
-        />
+        {cards.map((card) => (
+          <OnboardingCard key={card.label} {...card} />
+        ))}
       </div>
 
-      {/* Tertiary text links */}
+      {/* Skip */}
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "var(--space-4)",
-          paddingTop: "var(--space-2)",
+          padding: "12px 12px 16px",
+          textAlign: "center",
         }}
       >
-        <button
-          onClick={onDemoTokens}
-          style={{
-            fontSize: "var(--font-size-xs)",
-            color: "var(--text-secondary)",
-            backgroundColor: "transparent",
-            border: "none",
-            cursor: "pointer",
-            padding: 0,
-            textDecoration: "underline",
-          }}
-        >
-          Try demo tokens
-        </button>
         <button
           onClick={onSkip}
           style={{
@@ -160,52 +130,57 @@ export function OnboardingScreen({
   );
 }
 
-interface SecondaryButtonProps {
-  icon: string;
+interface OnboardingCardProps {
+  icon: IconName;
   label: string;
-  description: string;
+  desc: string;
   onClick: () => void;
+  primary?: boolean;
 }
 
-function SecondaryButton({
+function OnboardingCard({
   icon,
   label,
-  description,
+  desc,
   onClick,
-}: SecondaryButtonProps) {
+  primary = false,
+}: OnboardingCardProps) {
   return (
     <button
       onClick={onClick}
       style={{
         display: "flex",
-        alignItems: "center",
-        gap: "var(--space-3)",
-        width: "100%",
-        padding: "var(--space-3) var(--space-4)",
-        backgroundColor: "var(--surface-primary)",
-        color: "var(--text-primary)",
-        border: "1px solid var(--border-default)",
+        flexDirection: "column",
+        gap: 8,
+        padding: 12,
+        minHeight: 108,
+        border: `1px solid ${primary ? "var(--accent-primary)" : "var(--border-default)"}`,
         borderRadius: "var(--radius-lg)",
+        background: primary ? "var(--accent-tint)" : "var(--surface-primary)",
         cursor: "pointer",
-        transition: "var(--transition-base)",
         textAlign: "left",
+        transition: "var(--transition-fast)",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = "var(--surface-secondary)";
-        e.currentTarget.style.borderColor = "var(--border-strong)";
+        e.currentTarget.style.borderColor = "var(--accent-primary)";
+        e.currentTarget.style.background = "var(--accent-tint)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = "var(--surface-primary)";
-        e.currentTarget.style.borderColor = "var(--border-default)";
+        e.currentTarget.style.borderColor = primary
+          ? "var(--accent-primary)"
+          : "var(--border-default)";
+        e.currentTarget.style.background = primary
+          ? "var(--accent-tint)"
+          : "var(--surface-primary)";
       }}
     >
-      <span style={{ fontSize: "var(--font-size-lg)" }}>{icon}</span>
-      <div>
+      <Icon name={icon} size={20} color="var(--accent-primary)" />
+      <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
         <div
           style={{
-            fontSize: "var(--font-size-sm)",
+            fontSize: "var(--font-size-base)",
             fontWeight: "var(--font-weight-medium)",
-            marginBottom: "2px",
+            color: "var(--text-primary)",
           }}
         >
           {label}
@@ -213,10 +188,10 @@ function SecondaryButton({
         <div
           style={{
             fontSize: "var(--font-size-xs)",
-            color: "var(--text-secondary)",
+            color: "var(--text-tertiary)",
           }}
         >
-          {description}
+          {desc}
         </div>
       </div>
     </button>

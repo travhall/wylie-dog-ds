@@ -6,13 +6,13 @@ export type TabId = "tokens" | "sync";
 export interface Tab {
   id: TabId;
   label: string;
-  icon?: string;
+  count?: number;
   disabled?: boolean;
 }
 
 const DEFAULT_TABS: Tab[] = [
-  { id: "tokens", label: "Tokens", icon: "🎨" },
-  { id: "sync", label: "Sync", icon: "🔄" },
+  { id: "tokens", label: "Tokens" },
+  { id: "sync", label: "Sync" },
 ];
 
 const TAB_ARIA_LABELS: Record<TabId, string> = {
@@ -28,8 +28,9 @@ interface TabBarProps {
 }
 
 /**
- * TabBar - Provides clear navigation between plugin sections
- * Supports keyboard navigation (Arrow keys, Home, End)
+ * TabBar — navigation between plugin sections.
+ * Supports keyboard navigation (Arrow keys, Home, End).
+ * Renders edge-to-edge; no outer padding.
  */
 export function TabBar({
   tabs,
@@ -44,7 +45,6 @@ export function TabBar({
 
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  // Update refs array size if tabs change
   useEffect(() => {
     tabRefs.current = tabRefs.current.slice(0, resolvedTabs.length);
   }, [resolvedTabs.length]);
@@ -68,14 +68,13 @@ export function TabBar({
         newIndex = resolvedTabs.length - 1;
         break;
       default:
-        return; // Don't prevent default for other keys
+        return;
     }
 
     e.preventDefault();
     const tab = resolvedTabs[newIndex];
     if (tab && !tab.disabled) {
       onTabChange(tab.id);
-      // Focus the new tab button using ref
       tabRefs.current[newIndex]?.focus();
     }
   };
@@ -86,10 +85,10 @@ export function TabBar({
       aria-label="Main Navigation"
       style={{
         display: "flex",
-        gap: "var(--space-1)",
-        borderBottom: "2px solid var(--border-default)",
-        marginBottom: "var(--space-4)",
-        paddingBottom: "0",
+        borderBottom: "1px solid var(--border-default)",
+        background: "var(--surface-primary)",
+        padding: "0 8px",
+        flexShrink: 0,
       }}
     >
       {resolvedTabs.map((tab, index) => {
@@ -113,52 +112,50 @@ export function TabBar({
             onKeyDown={(e) => !isDisabled && handleKeyDown(e, index)}
             disabled={isDisabled}
             style={{
-              position: "relative",
-              padding: "var(--space-3)",
-              flexGrow: 1,
-              fontSize: "var(--font-size-md)",
-              fontWeight: isActive
-                ? "var(--font-weight-semibold)"
-                : "var(--font-weight-semibold)",
+              height: 32,
+              padding: "0 4px",
+              margin: "0 4px",
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              background: "transparent",
+              border: "none",
+              borderBottom: `2px solid ${isActive ? "var(--accent-primary)" : "transparent"}`,
               color: isDisabled
                 ? "var(--text-tertiary)"
                 : isActive
-                  ? "var(--accent-primary)"
+                  ? "var(--text-primary)"
                   : "var(--text-secondary)",
-              backgroundColor: "transparent",
-              border: "none",
-              borderBottom: `2px solid ${isActive ? "var(--accent-primary)" : "transparent"}`,
-              marginBottom: "-2px",
+              fontFamily: "var(--font-family-base)",
+              fontSize: "var(--font-size-base)",
+              fontWeight: isActive
+                ? "var(--font-weight-semibold)"
+                : "var(--font-weight-medium)",
               cursor: isDisabled ? "not-allowed" : "pointer",
-              transition: "var(--transition-base)",
+              transition: "var(--transition-fast)",
               outline: "none",
             }}
           >
-            {tab.icon && (
-              <span
-                style={{ marginRight: "var(--space-1)" }}
-                aria-hidden="true"
-              >
-                {tab.icon}
-              </span>
-            )}
             {tab.label}
 
-            {/* Focus indicator */}
-            <span
-              style={{
-                position: "absolute",
-                inset: "0",
-                borderRadius: "var(--radius-sm)",
-                boxShadow: isActive
-                  ? "0 0 0 2px var(--accent-primary)"
-                  : "none",
-                opacity: "0",
-                transition: "var(--transition-fast)",
-                pointerEvents: "none",
-              }}
-              aria-hidden="true"
-            />
+            {/* Count badge */}
+            {tab.count !== undefined && tab.count > 0 && (
+              <span
+                style={{
+                  fontFamily: "var(--font-family-mono)",
+                  fontSize: "var(--font-size-xs)",
+                  background: isActive
+                    ? "var(--accent-primary)"
+                    : "var(--surface-tertiary)",
+                  color: isActive ? "#fff" : "var(--text-secondary)",
+                  padding: "1px 6px",
+                  borderRadius: 999,
+                  lineHeight: 1.4,
+                }}
+              >
+                {tab.count}
+              </span>
+            )}
           </button>
         );
       })}

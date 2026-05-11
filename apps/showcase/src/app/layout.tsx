@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { PageLayout, SiteHeader, SiteFooter } from "@wyliedog/ui/compositions";
-import { Button } from "@wyliedog/ui/button";
-import { cn } from "@wyliedog/ui/lib/utils";
 import Link from "next/link";
-import { sansFont, monoFont } from "@/lib/fonts";
+import { fontVariables } from "@/lib/fonts";
 import { WylieDogLogo } from "./wyliedoglogo";
+import { NavLink } from "./nav-link";
+import { ThemeToggle } from "./theme-toggle";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Wylie Dog Design System",
-  description: "A modern design system built with React and Tailwind CSS",
+  description:
+    "A typed React component library, an OKLCH token system, and a pattern catalog — shared across every surface we ship.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -17,101 +17,192 @@ export const metadata: Metadata = {
   },
 };
 
+const navLinks = [
+  { label: "Overview", href: "/" },
+  { label: "Architecture", href: "/architecture" },
+  { label: "Tokens", href: "/tokens" },
+  { label: "Components", href: "/components" },
+  { label: "Patterns", href: "/patterns" },
+  { label: "Token Bridge", href: "/plugin" },
+];
+
+const footerColumns = [
+  {
+    heading: "Tokens",
+    links: [
+      { label: "Colors", href: "/tokens/colors" },
+      { label: "Spacing", href: "/tokens/spacing" },
+      { label: "Typography", href: "/tokens/typography" },
+      { label: "Borders", href: "/tokens/borders" },
+    ],
+  },
+  {
+    heading: "Components",
+    links: [
+      { label: "Content Display", href: "/components/content-display" },
+      { label: "Inputs & Controls", href: "/components/inputs" },
+      { label: "Navigation", href: "/components/navigation" },
+      { label: "Overlays & Popovers", href: "/components/overlays" },
+      { label: "Layout & Structure", href: "/components/layout" },
+      { label: "Feedback & Status", href: "/components/feedback" },
+    ],
+  },
+  {
+    heading: "Tools",
+    links: [
+      { label: "Token Bridge for Figma", href: "/plugin" },
+      { label: "Storybook ↗", href: "https://storybook.wyliedog.dev" },
+    ],
+  },
+  {
+    heading: "Patterns",
+    links: [
+      { label: "Layout Patterns", href: "/patterns/layout" },
+      { label: "Authentication", href: "/patterns/auth" },
+      { label: "Form Compositions", href: "/patterns/forms" },
+      { label: "Data Patterns", href: "/patterns/data" },
+      { label: "All patterns →", href: "/patterns" },
+    ],
+  },
+];
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const navigation = [
-    { label: "Home", href: "/" },
-    { label: "Monorepo", href: "/monorepo" },
-    { label: "Tokens", href: "/tokens" },
-    { label: "Components", href: "/components" },
-    { label: "Storybook", href: "/storybook" },
-    { label: "Plugin", href: "/plugin" },
-  ];
-
-  const footerColumns = [
-    {
-      title: "Ecosystem",
-      links: [
-        { label: "Monorepo", href: "/monorepo" },
-        { label: "Tokens", href: "/tokens" },
-        { label: "Components", href: "/components" },
-        { label: "Storybook", href: "/storybook" },
-        { label: "Figma Plugin", href: "/plugin" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        { label: "Documentation", href: "/docs" },
-        { label: "Examples", href: "/examples" },
-        { label: "GitHub", href: "https://github.com" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { label: "About", href: "/about" },
-        { label: "Blog", href: "/blog" },
-        { label: "Contact", href: "/contact" },
-      ],
-    },
-  ];
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(
-          sansFont.variable,
-          monoFont.variable,
-          "font-sans min-h-screen relative bg-(--color-background-secondary)"
-        )}
+        className={`${fontVariables} font-sans min-h-screen antialiased bg-(--color-background-primary) text-(--color-text-primary)`}
       >
-        {/* Global Background Decoration */}
-        <div className="fixed inset-0 grid-bg opacity-[0.03] pointer-events-none -z-10" />
-        <div className="fixed inset-0 hero-gradient opacity-40 pointer-events-none -z-10" />
+        {/* ── Site Header ── */}
+        <header className="sticky top-0 z-40 border-b border-(--color-border-primary) bg-(--color-background-primary)/80 backdrop-blur-md">
+          <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+            {/* Wordmark */}
+            <Link href="/" className="flex items-center gap-2 shrink-0">
+              <span
+                className="grid h-7 w-7 place-items-center rounded-md"
+                style={{ background: "var(--color-interactive-primary)" }}
+              >
+                <WylieDogLogo />
+              </span>
+              <span className="font-serif text-[1.0625rem] font-semibold tracking-tight">
+                Wylie Dog
+              </span>
+            </Link>
 
-        <PageLayout
-          header={
-            <div className="sticky top-0 z-50 glass border-b border-(--color-border-secondary)/50">
-              <SiteHeader
-                navigation={navigation}
-                logo={
-                  <Link href="/">
-                    <WylieDogLogo />
-                  </Link>
-                }
-                actions={
-                  <div className="flex items-center gap-2">
-                    <Link href="/docs">
-                      <Button variant="outline" size="sm">
-                        Docs
-                      </Button>
-                    </Link>
-                    <Link href="https://github.com">
-                      <Button variant="outline" size="sm">
-                        GitHub
-                      </Button>
-                    </Link>
-                  </div>
-                }
-              />
+            {/* Primary navigation */}
+            <nav className="hidden md:flex items-center gap-1">
+              {navLinks.map((item) => (
+                <NavLink key={item.href} href={item.href} label={item.label} />
+              ))}
+            </nav>
+
+            {/* Actions */}
+            <div className="ml-auto flex items-center gap-2">
+              <button
+                type="button"
+                aria-label="Search"
+                className="grid h-8 w-8 place-items-center rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) text-(--color-text-tertiary) hover:text-(--color-text-secondary) transition-colors"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+              </button>
+
+              <ThemeToggle />
+
+              <Link
+                href="https://storybook.wyliedog.dev"
+                className="hidden md:flex h-8 items-center gap-1.5 rounded-md border border-(--color-border-primary) px-3 text-sm font-medium text-(--color-text-primary) hover:bg-(--color-background-secondary) transition-colors"
+              >
+                Storybook
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M7 17 17 7M9 7h8v8" />
+                </svg>
+              </Link>
             </div>
-          }
-          footer={
-            <SiteFooter
-              className="border-t border-(--color-border-primary)/50 bg-(--color-background-secondary)/30"
-              columns={footerColumns}
-              copyright="© 2026 Wylie Dog Design System. All rights reserved."
-            />
-          }
-        >
-          <main className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl animate-in fade-in duration-700">
-            {children}
-          </main>
-        </PageLayout>
+          </div>
+        </header>
+
+        {/* ── Page content — full width; each page manages its own containers ── */}
+        <main className="min-h-screen">{children}</main>
+
+        {/* ── Site Footer ── */}
+        <footer className="border-t border-(--color-border-primary) bg-(--color-background-primary) border-default">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
+              {/* Brand */}
+              <div className="col-span-2 md:col-span-1">
+                <div className="flex items-center gap-2">
+                  <span
+                    className="grid h-7 w-7 place-items-center rounded-md shrink-0"
+                    style={{ background: "var(--color-interactive-primary)" }}
+                  >
+                    <WylieDogLogo />
+                  </span>
+                  <span className="font-serif text-base font-semibold tracking-tight">
+                    Wylie Dog
+                  </span>
+                </div>
+                <p className="mt-3 text-sm text-(--color-text-secondary)">
+                  The shared design system for everything we ship.
+                </p>
+              </div>
+
+              {/* Link columns */}
+              {footerColumns.map((col) => (
+                <div key={col.heading}>
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+                    {col.heading}
+                  </p>
+                  <ul className="mt-3 space-y-2 text-sm">
+                    {col.links.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            {/* Copyright */}
+            <div className="mt-10 border-t border-(--color-border-primary) pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <p className="font-mono text-[11px] text-(--color-text-tertiary)">
+                © 2026 Wylie Dog
+              </p>
+              <div className="inline-flex items-center gap-2">
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ background: "var(--color-success)" }}
+                />
+                <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  All systems operational
+                </span>
+              </div>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );

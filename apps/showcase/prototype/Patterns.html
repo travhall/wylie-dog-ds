@@ -1,0 +1,1891 @@
+<!doctype html>
+<html lang="en" class="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Patterns · Wylie Dog</title>
+
+    <!-- Tailwind (Play CDN — dev only; production uses Tailwind 4 in Next.js) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Besley:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =========================================================
+         Token surface — mirrors @wyliedog/ui contract.
+         Identical to Homepage.html / Tokens.html / Components.html.
+         ========================================================= */
+      :root {
+        --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+        --font-serif: "Besley", ui-serif, Georgia, serif;
+        --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+        --color-background-primary: oklch(99% 0.004 250);
+        --color-background-secondary: oklch(97% 0.006 250);
+        --color-background-tertiary: oklch(94% 0.008 250);
+        --color-surface-primary: oklch(100% 0 0);
+        --color-surface-elevated: oklch(99% 0.003 250);
+
+        --color-text-primary: oklch(20% 0.02 260);
+        --color-text-secondary: oklch(42% 0.02 260);
+        --color-text-tertiary: oklch(58% 0.015 260);
+        --color-text-inverse: oklch(99% 0.004 250);
+
+        --color-border-primary: oklch(90% 0.01 260);
+        --color-border-secondary: oklch(94% 0.008 260);
+        --color-border-strong: oklch(80% 0.012 260);
+
+        --color-interactive-primary: oklch(54% 0.18 274);
+        --color-interactive-primary-hover: oklch(48% 0.19 274);
+        --color-interactive-primary-active: oklch(42% 0.2 274);
+
+        --color-success: oklch(60% 0.14 155);
+        --color-warning: oklch(72% 0.15 75);
+        --color-destructive: oklch(58% 0.2 25);
+
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+        --radius-xl: 20px;
+
+        --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+        --ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+        --duration-fast: 120ms;
+        --duration-base: 200ms;
+        --duration-slow: 320ms;
+
+        --shadow-xs: 0 1px 2px -1px oklch(20% 0.05 260 / 0.08);
+        --shadow-sm: 0 1px 3px oklch(20% 0.05 260 / 0.1), 0 1px 2px -1px oklch(20% 0.05 260 / 0.06);
+        --shadow-md: 0 4px 12px -2px oklch(20% 0.05 260 / 0.12), 0 2px 4px -2px oklch(20% 0.05 260 / 0.06);
+        --shadow-lg: 0 12px 28px -8px oklch(20% 0.05 260 / 0.18), 0 4px 8px -4px oklch(20% 0.05 260 / 0.08);
+        --shadow-xl: 0 24px 48px -12px oklch(20% 0.05 260 / 0.25), 0 8px 16px -8px oklch(20% 0.05 260 / 0.1);
+      }
+
+      .dark {
+        --color-background-primary: oklch(15% 0.012 260);
+        --color-background-secondary: oklch(18% 0.014 260);
+        --color-background-tertiary: oklch(22% 0.016 260);
+        --color-surface-primary: oklch(20% 0.014 260);
+        --color-surface-elevated: oklch(24% 0.016 260);
+
+        --color-text-primary: oklch(96% 0.005 250);
+        --color-text-secondary: oklch(74% 0.012 250);
+        --color-text-tertiary: oklch(58% 0.015 250);
+        --color-text-inverse: oklch(18% 0.014 260);
+
+        --color-border-primary: oklch(30% 0.018 260);
+        --color-border-secondary: oklch(26% 0.016 260);
+        --color-border-strong: oklch(40% 0.02 260);
+
+        --color-interactive-primary: oklch(68% 0.17 274);
+        --color-interactive-primary-hover: oklch(74% 0.16 274);
+        --color-interactive-primary-active: oklch(80% 0.14 274);
+
+        --shadow-xs: 0 1px 2px -1px oklch(0% 0 0 / 0.4);
+        --shadow-sm: 0 1px 3px oklch(0% 0 0 / 0.5), 0 1px 2px -1px oklch(0% 0 0 / 0.3);
+        --shadow-md: 0 4px 12px -2px oklch(0% 0 0 / 0.55), 0 2px 4px -2px oklch(0% 0 0 / 0.3);
+        --shadow-lg: 0 12px 28px -8px oklch(0% 0 0 / 0.6), 0 4px 8px -4px oklch(0% 0 0 / 0.35);
+        --shadow-xl: 0 24px 48px -12px oklch(0% 0 0 / 0.7), 0 8px 16px -8px oklch(0% 0 0 / 0.4);
+      }
+
+      html,
+      body {
+        background: var(--color-background-primary);
+        color: var(--color-text-primary);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .font-serif { font-family: var(--font-serif); }
+      .font-mono { font-family: var(--font-mono); }
+
+      /* ---- Signature utilities ---- */
+      .glass {
+        background: color-mix(in oklch, var(--color-surface-primary) 70%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid color-mix(in oklch, var(--color-border-primary) 80%, transparent);
+      }
+      .glass-dark {
+        background: color-mix(in oklch, var(--color-background-tertiary) 80%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid color-mix(in oklch, var(--color-border-primary) 70%, transparent);
+      }
+      .grid-bg {
+        background-image: radial-gradient(
+          color-mix(in oklch, var(--color-text-primary) 14%, transparent) 1px,
+          transparent 1px
+        );
+        background-size: 24px 24px;
+      }
+      .hero-gradient {
+        background: radial-gradient(
+          ellipse 80% 60% at 50% 0%,
+          color-mix(in oklch, var(--color-interactive-primary) 22%, transparent) 0%,
+          transparent 60%
+        );
+      }
+      .kbd {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        line-height: 1;
+        padding: 4px 7px;
+        border-radius: 6px;
+        background: var(--color-surface-primary);
+        border: 1px solid var(--color-border-primary);
+        border-bottom-width: 2px;
+        color: var(--color-text-secondary);
+        display: inline-flex;
+        align-items: center;
+      }
+      .kbd-sm { font-size: 0.6875rem; padding: 2px 5px; }
+
+      .bg-surface { background: var(--color-surface-primary); }
+      .bg-surface-elev { background: var(--color-surface-elevated); }
+      .bg-bg-primary { background: var(--color-background-primary); }
+      .bg-bg-secondary { background: var(--color-background-secondary); }
+      .bg-bg-tertiary { background: var(--color-background-tertiary); }
+      .text-fg { color: var(--color-text-primary); }
+      .text-fg-secondary { color: var(--color-text-secondary); }
+      .text-fg-tertiary { color: var(--color-text-tertiary); }
+      .text-interactive { color: var(--color-interactive-primary); }
+      .border-default { border-color: var(--color-border-primary); }
+      .border-secondary { border-color: var(--color-border-secondary); }
+      .border-strong { border-color: var(--color-border-strong); }
+
+      .btn-primary {
+        background: var(--color-interactive-primary);
+        color: var(--color-text-inverse);
+      }
+      .btn-primary:hover { background: var(--color-interactive-primary-hover); }
+      .btn-outline {
+        background: transparent;
+        color: var(--color-text-primary);
+        border: 1px solid var(--color-border-strong);
+      }
+      .btn-outline:hover { background: var(--color-background-secondary); }
+      .btn-ghost { background: transparent; color: var(--color-text-secondary); }
+      .btn-ghost:hover {
+        background: var(--color-background-secondary);
+        color: var(--color-text-primary);
+      }
+
+      /* Pattern card */
+      .pat-card {
+        background: var(--color-surface-primary);
+        border: 1px solid var(--color-border-primary);
+        border-radius: var(--radius-lg);
+        transition: border-color var(--duration-base) var(--ease-standard),
+                    box-shadow  var(--duration-base) var(--ease-standard);
+        display: flex; flex-direction: column;
+        overflow: hidden;
+      }
+      .pat-card:hover {
+        border-color: var(--color-border-strong);
+        box-shadow: var(--shadow-md);
+      }
+      .pat-card .preview {
+        position: relative;
+        background: var(--color-background-secondary);
+        border-bottom: 1px solid var(--color-border-primary);
+        padding: 20px;
+        overflow: hidden;
+      }
+      .pat-card .preview::before {
+        content: "";
+        position: absolute; inset: 0;
+        background-image: radial-gradient(
+          color-mix(in oklch, var(--color-text-primary) 8%, transparent) 1px,
+          transparent 1px
+        );
+        background-size: 16px 16px;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      .pat-card .preview > * { position: relative; }
+
+      /* shared mini-UI primitives used inside previews */
+      .mini-input {
+        height: 28px;
+        display: flex; align-items: center;
+        padding: 0 8px;
+        font-size: 11px;
+        border-radius: 6px;
+        border: 1px solid var(--color-border-primary);
+        background: var(--color-surface-primary);
+        color: var(--color-text-primary);
+      }
+      .mini-label {
+        font-size: 10px;
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        display: block;
+        margin-bottom: 4px;
+      }
+      .mini-btn {
+        height: 28px;
+        display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+        padding: 0 12px;
+        font-size: 11px;
+        font-weight: 600;
+        border-radius: 6px;
+      }
+      .mini-btn.primary { background: var(--color-interactive-primary); color: var(--color-text-inverse); }
+      .mini-btn.outline { border: 1px solid var(--color-border-strong); color: var(--color-text-primary); }
+      .mini-btn.ghost { color: var(--color-text-secondary); }
+
+      .tag {
+        display: inline-flex; align-items: center;
+        padding: 2px 8px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        border-radius: 999px;
+        border: 1px solid var(--color-border-primary);
+        color: var(--color-text-secondary);
+        background: var(--color-surface-primary);
+      }
+
+      ::selection {
+        background: color-mix(in oklch, var(--color-interactive-primary) 30%, transparent);
+        color: var(--color-text-primary);
+      }
+      * { scrollbar-width: thin; scrollbar-color: var(--color-border-strong) transparent; }
+    </style>
+  </head>
+
+  <body class="min-h-screen antialiased">
+    <!-- =====================================================================
+         <SiteHeader>
+         ===================================================================== -->
+    <header class="sticky top-0 z-40 border-b border-default bg-bg-primary/80 backdrop-blur-md">
+      <div class="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+        <a href="Homepage.html" class="flex items-center gap-2 shrink-0">
+          <span class="grid h-7 w-7 place-items-center rounded-md" style="background: var(--color-interactive-primary);">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--color-text-inverse);">
+              <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/>
+              <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="font-serif text-[1.0625rem] font-semibold tracking-tight">Wylie Dog</span>
+          <span class="hidden sm:inline font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">design system</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="Homepage.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Overview</a>
+          <a href="Architecture.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Architecture</a>
+          <a href="Tokens.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Tokens</a>
+          <a href="Components.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Components</a>
+          <a href="Patterns.html" class="rounded-md px-3 py-1.5 text-sm font-medium" style="background: var(--color-background-secondary);">Patterns</a>
+          <a href="Token-Bridge.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Token Bridge</a>
+        </nav>
+
+        <div class="ml-auto flex items-center gap-2">
+          <button class="hidden sm:flex h-8 items-center gap-2 rounded-md border border-default bg-bg-secondary px-2.5 text-sm text-fg-tertiary hover:text-fg-secondary">
+            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <span>Search</span>
+            <span class="kbd kbd-sm ml-6">⌘K</span>
+          </button>
+
+          <button id="theme-toggle" aria-label="Toggle theme" class="grid h-8 w-8 place-items-center rounded-md text-fg-secondary hover:text-fg btn-ghost">
+            <svg id="icon-sun" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <svg id="icon-moon" viewBox="0 0 24 24" class="hidden h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+
+          <a href="https://storybook.wyliedog.dev" class="hidden sm:inline-flex h-8 items-center gap-1.5 rounded-md btn-outline px-3 text-sm font-medium">
+            Storybook
+            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- =====================================================================
+         HERO
+         ===================================================================== -->
+    <section class="relative overflow-hidden border-b border-default">
+      <div class="absolute inset-0 grid-bg opacity-60"></div>
+      <div class="absolute inset-0 hero-gradient"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-24 lg:pb-20">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 rounded-full border border-default bg-surface/60 px-3 py-1">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-secondary">Section 04</span>
+            <span class="text-fg-tertiary">·</span>
+            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">patterns gallery</span>
+          </div>
+
+          <h1 class="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98]">
+            Complete UI solutions, <span class="text-interactive">not just components.</span>
+          </h1>
+
+          <p class="mt-6 max-w-2xl text-lg sm:text-xl text-fg-secondary text-balance">
+            Patterns are higher-order compositions &mdash; assembled from primitives, wired to the same
+            token system, and tested against the same accessibility checklist. When the tokens move,
+            every pattern moves with them.
+          </p>
+        </div>
+
+        <!-- relationship diagram: components + tokens → patterns → pages -->
+        <div class="mt-12 grid lg:grid-cols-5 items-stretch gap-3">
+          <div class="lg:col-span-2 rounded-xl border border-default bg-surface p-5">
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">inputs</p>
+            <div class="mt-3 grid grid-cols-2 gap-2">
+              <div class="rounded-md border border-default bg-bg-secondary p-3">
+                <p class="text-xs font-semibold">Components</p>
+                <p class="font-mono text-[10px] text-fg-tertiary mt-1">42 typed primitives</p>
+                <div class="mt-3 flex flex-wrap gap-1">
+                  <span class="tag" style="font-size:9px;padding:1px 6px;">Button</span>
+                  <span class="tag" style="font-size:9px;padding:1px 6px;">Input</span>
+                  <span class="tag" style="font-size:9px;padding:1px 6px;">Card</span>
+                </div>
+              </div>
+              <div class="rounded-md border border-default bg-bg-secondary p-3">
+                <p class="text-xs font-semibold">Tokens</p>
+                <p class="font-mono text-[10px] text-fg-tertiary mt-1">340 OKLCH values</p>
+                <div class="mt-3 flex gap-1">
+                  <span class="h-4 w-4 rounded" style="background: oklch(54% 0.18 274);"></span>
+                  <span class="h-4 w-4 rounded" style="background: var(--color-success);"></span>
+                  <span class="h-4 w-4 rounded" style="background: var(--color-warning);"></span>
+                  <span class="h-4 w-4 rounded" style="background: var(--color-destructive);"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hidden lg:flex items-center justify-center">
+            <svg viewBox="0 0 80 24" class="w-16 h-6 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 12h70M62 4l10 8-10 8" stroke-dasharray="3 3"/>
+            </svg>
+          </div>
+
+          <div class="rounded-xl border-2 p-5" style="border-color: var(--color-interactive-primary); background: color-mix(in oklch, var(--color-interactive-primary) 6%, var(--color-surface-primary));">
+            <p class="font-mono text-[10px] uppercase tracking-wider" style="color: var(--color-interactive-primary);">composed into</p>
+            <p class="mt-3 font-serif text-2xl font-semibold">Patterns</p>
+            <p class="text-xs text-fg-secondary mt-1">15 reference compositions across 8 categories.</p>
+            <div class="mt-3 grid grid-cols-3 gap-1">
+              <div class="h-6 rounded" style="background: color-mix(in oklch, var(--color-interactive-primary) 22%, transparent);"></div>
+              <div class="h-6 rounded" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent);"></div>
+              <div class="h-6 rounded" style="background: color-mix(in oklch, var(--color-interactive-primary) 14%, transparent);"></div>
+            </div>
+          </div>
+
+          <div class="hidden lg:flex items-center justify-center">
+            <svg viewBox="0 0 80 24" class="w-16 h-6 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 12h70M62 4l10 8-10 8" stroke-dasharray="3 3"/>
+            </svg>
+          </div>
+        </div>
+        <div class="lg:hidden mt-3"></div>
+        <div class="hidden lg:grid grid-cols-5 gap-3 -mt-[140px] pointer-events-none">
+          <div class="col-span-4"></div>
+          <div class="rounded-xl border border-default bg-surface p-5 pointer-events-auto">
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">shipped as</p>
+            <p class="mt-3 font-serif text-2xl font-semibold">Pages</p>
+            <p class="text-xs text-fg-secondary mt-1">Real product surfaces, end-to-end.</p>
+            <div class="mt-3 space-y-1">
+              <div class="h-1.5 w-3/4 rounded-full bg-bg-tertiary"></div>
+              <div class="h-1.5 w-full rounded-full bg-bg-tertiary"></div>
+              <div class="h-1.5 w-2/3 rounded-full bg-bg-tertiary"></div>
+            </div>
+          </div>
+        </div>
+        <!-- mobile-only "Pages" card -->
+        <div class="lg:hidden mt-3 rounded-xl border border-default bg-surface p-5">
+          <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">shipped as</p>
+          <p class="mt-3 font-serif text-2xl font-semibold">Pages</p>
+          <p class="text-xs text-fg-secondary mt-1">Real product surfaces, end-to-end.</p>
+        </div>
+      </div>
+
+      <!-- Stats strip -->
+      <div class="relative border-t border-default bg-bg-primary/60 backdrop-blur-sm">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <dl class="grid grid-cols-2 lg:grid-cols-4">
+            <div class="px-2 py-6 lg:py-7 lg:border-r border-default">
+              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Patterns</dt>
+              <dd class="mt-1 flex items-baseline gap-2">
+                <span class="font-serif text-3xl sm:text-4xl font-semibold">15</span>
+                <span class="text-xs text-fg-tertiary">reference compositions</span>
+              </dd>
+            </div>
+            <div class="px-2 py-6 lg:py-7 lg:border-r border-default lg:pl-8">
+              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Categories</dt>
+              <dd class="mt-1 flex items-baseline gap-2">
+                <span class="font-serif text-3xl sm:text-4xl font-semibold">9</span>
+                <span class="text-xs text-fg-tertiary">auth, data, layout, a11y&hellip;</span>
+              </dd>
+            </div>
+            <div class="px-2 py-6 lg:py-7 lg:border-r border-default lg:pl-8 border-t lg:border-t-0">
+              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Composable</dt>
+              <dd class="mt-1 flex items-baseline gap-2">
+                <span class="font-serif text-3xl sm:text-4xl font-semibold">100%</span>
+                <span class="text-xs text-fg-tertiary">built from primitives</span>
+              </dd>
+            </div>
+            <div class="px-2 py-6 lg:py-7 lg:pl-8 border-t lg:border-t-0">
+              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Accessible</dt>
+              <dd class="mt-1 flex items-baseline gap-2">
+                <span class="font-serif text-3xl sm:text-4xl font-semibold">WCAG 2.2</span>
+                <span class="text-xs text-fg-tertiary">AA verified per pattern</span>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CATEGORY: Authentication
+         ===================================================================== -->
+    <section id="cat-auth" class="border-b border-default">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <header class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Category 01</span>
+              <span class="font-mono text-[11px] text-fg-tertiary">·</span>
+              <span class="font-mono text-[11px] text-fg-tertiary">2 patterns</span>
+            </div>
+            <h2 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Authentication</h2>
+            <p class="mt-2 max-w-2xl text-fg-secondary">
+              Sign-in, sign-up, and account recovery. The hard parts &mdash; validation states,
+              async submission, error recovery, social SSO &mdash; are wired up so product teams don&rsquo;t
+              re-invent the flow on every new surface.
+            </p>
+          </div>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Login & Registration -->
+          <article class="pat-card">
+            <div class="preview" style="min-height:280px;">
+              <!-- live login form -->
+              <div class="mx-auto max-w-[320px] rounded-lg bg-surface border border-default p-5" style="box-shadow: var(--shadow-md);">
+                <div class="flex items-center gap-2">
+                  <span class="grid h-6 w-6 place-items-center rounded" style="background: var(--color-interactive-primary);">
+                    <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--color-text-inverse);"><path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/><circle cx="12" cy="11" r="1.5" fill="currentColor"/></svg>
+                  </span>
+                  <span class="font-serif text-sm font-semibold">Wylie Dog</span>
+                </div>
+                <h3 class="mt-3 font-serif text-lg font-semibold leading-tight">Welcome back</h3>
+                <p class="text-[11px] text-fg-tertiary">Sign in to continue to your workspace.</p>
+
+                <div class="mt-4 space-y-2.5">
+                  <div>
+                    <label class="mini-label">Email</label>
+                    <div class="mini-input"><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="37525b52595677404e5b5e5253585019535241">[email&#160;protected]</a></span></div>
+                  </div>
+                  <div>
+                    <div class="flex items-center justify-between mb-1">
+                      <label class="mini-label" style="margin-bottom:0;">Password</label>
+                      <a class="font-mono text-[9px]" style="color: var(--color-interactive-primary);">Forgot?</a>
+                    </div>
+                    <div class="mini-input justify-between">
+                      <span class="tracking-[0.3em] text-fg-tertiary">••••••••</span>
+                      <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                  </div>
+                  <button class="mini-btn primary w-full" style="height:30px;">Sign in</button>
+                </div>
+
+                <div class="mt-3 flex items-center gap-2">
+                  <span class="h-px flex-1" style="background: var(--color-border-primary);"></span>
+                  <span class="font-mono text-[9px] uppercase text-fg-tertiary">or continue with</span>
+                  <span class="h-px flex-1" style="background: var(--color-border-primary);"></span>
+                </div>
+                <div class="mt-3 grid grid-cols-3 gap-1.5">
+                  <button class="mini-btn outline" style="padding:0;">
+                    <svg viewBox="0 0 24 24" class="h-3 w-3" fill="currentColor"><path d="M12.48 10.92v2.16h5.94c-.24 1.5-1.74 4.38-5.94 4.38-3.58 0-6.5-2.96-6.5-6.6s2.92-6.6 6.5-6.6c2.04 0 3.4.86 4.18 1.6l2.84-2.74C17.66 1.32 15.3.36 12.48.36c-5.86 0-10.6 4.74-10.6 10.6s4.74 10.6 10.6 10.6c6.12 0 10.18-4.3 10.18-10.36 0-.7-.08-1.22-.18-1.74H12.48z"/></svg>
+                  </button>
+                  <button class="mini-btn outline" style="padding:0;">
+                    <svg viewBox="0 0 24 24" class="h-3 w-3" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.78.84 1.24 1.9 1.24 3.22 0 4.6-2.81 5.62-5.48 5.91.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .3z"/></svg>
+                  </button>
+                  <button class="mini-btn outline" style="padding:0;">
+                    <svg viewBox="0 0 24 24" class="h-3 w-3" fill="currentColor"><path d="M16.36 1.43c0 1.14-.42 2.21-1.27 2.97-.84.77-1.86 1.21-2.95 1.13-.02-1.14.45-2.25 1.26-3 .82-.76 1.94-1.21 2.96-1.1zM20.5 17.26c-.3.7-.65 1.34-1.07 1.93-.56.79-1.02 1.34-1.38 1.65-.55.5-1.15.76-1.79.78-.46 0-1.02-.13-1.66-.4-.65-.27-1.24-.4-1.79-.4-.57 0-1.18.13-1.84.4-.66.27-1.19.41-1.59.43-.62.03-1.23-.24-1.83-.79-.39-.34-.86-.91-1.42-1.7-.59-.85-1.08-1.83-1.46-2.96-.41-1.22-.62-2.4-.62-3.54 0-1.31.28-2.44.85-3.39.45-.76 1.04-1.36 1.79-1.8.74-.44 1.55-.66 2.42-.68.49 0 1.13.15 1.94.45.8.3 1.32.45 1.55.45.17 0 .75-.18 1.74-.53.94-.32 1.73-.46 2.38-.41 1.77.14 3.1.84 3.98 2.1-1.58.96-2.36 2.3-2.35 4.04.01 1.35.51 2.48 1.49 3.37.44.42.94.74 1.49.97-.12.34-.25.67-.39.99z"/></svg>
+                  </button>
+                </div>
+                <p class="mt-3 text-center text-[10px] text-fg-tertiary">No account? <span class="font-medium" style="color: var(--color-interactive-primary);">Create one</span></p>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Login &amp; Registration</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1">
+                Sign-in form, registration flow, social auth options. Same schema, three layouts &mdash;
+                page, modal, and drawer.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Form</span>
+                <span class="tag">Input</span>
+                <span class="tag">Button</span>
+                <span class="tag">Separator</span>
+                <span class="tag">Link</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Password Recovery -->
+          <article class="pat-card">
+            <div class="preview" style="min-height:280px;">
+              <!-- two-state stack: input → check email -->
+              <div class="grid grid-cols-2 gap-3 max-w-[460px] mx-auto">
+                <div class="rounded-lg bg-surface border border-default p-4" style="box-shadow: var(--shadow-sm);">
+                  <span class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">step 1</span>
+                  <h4 class="mt-1 font-serif text-sm font-semibold leading-tight">Reset password</h4>
+                  <p class="text-[10px] text-fg-tertiary mt-0.5">We&rsquo;ll send a link.</p>
+                  <div class="mt-3 space-y-2">
+                    <label class="mini-label">Email</label>
+                    <div class="mini-input"><span class="text-fg-tertiary"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="30495f4570535f5d40515e491e535f5d">[email&#160;protected]</a></span></div>
+                    <button class="mini-btn primary w-full">Send reset link</button>
+                  </div>
+                </div>
+                <div class="rounded-lg bg-surface border-2 p-4" style="border-color: var(--color-success); box-shadow: var(--shadow-md);">
+                  <div class="flex items-center gap-2">
+                    <span class="font-mono text-[9px] uppercase tracking-wider" style="color: var(--color-success);">step 2 · sent</span>
+                  </div>
+                  <div class="mt-2 grid h-9 w-9 place-items-center rounded-full" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">
+                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                  </div>
+                  <h4 class="mt-2 font-serif text-sm font-semibold leading-tight">Check your inbox</h4>
+                  <p class="text-[10px] text-fg-tertiary mt-0.5">Link valid for 15 min.</p>
+                  <div class="mt-3 flex items-center gap-1">
+                    <span class="font-mono text-[10px] text-fg-secondary truncate">e****@wyliedog.dev</span>
+                  </div>
+                  <button class="mini-btn ghost mt-2 px-0" style="height:24px;">
+                    <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>
+                    Resend in 0:42
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Password Recovery</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1">
+                Forgot-password entry, throttled resend, magic-link return state. Handles all five
+                edge cases auth audits flag: expired token, used token, mismatched email, rate-limit,
+                and SSO-only accounts.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Form</span>
+                <span class="tag">Input</span>
+                <span class="tag">Alert</span>
+                <span class="tag">Button</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CATEGORY: Data
+         ===================================================================== -->
+    <section id="cat-data" class="border-b border-default bg-bg-secondary">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <header class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Category 02</span>
+              <span class="font-mono text-[11px] text-fg-tertiary">· 2 patterns</span>
+            </div>
+            <h2 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Data display</h2>
+            <p class="mt-2 max-w-2xl text-fg-secondary">
+              Browsable grids and showcase grids. Both share the same card primitive but differ in
+              density and what they ask the user to do next.
+            </p>
+          </div>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Card Grid -->
+          <article class="pat-card">
+            <div class="preview" style="min-height:280px;">
+              <div class="space-y-2 max-w-[420px] mx-auto">
+                <div class="flex items-center justify-between text-[10px]">
+                  <span class="font-mono text-fg-tertiary">Showing 3 of 248</span>
+                  <span class="inline-flex h-5 items-center rounded border border-default bg-surface px-1.5 font-mono text-[9px] text-fg-secondary">grid · 3 cols</span>
+                </div>
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="rounded-md bg-surface border border-default p-2.5">
+                    <div class="aspect-[4/3] rounded mb-2" style="background: linear-gradient(135deg, oklch(78% 0.13 35), oklch(70% 0.16 25));"></div>
+                    <p class="text-[10px] font-semibold leading-tight">Helios Workspace</p>
+                    <p class="font-mono text-[9px] text-fg-tertiary mt-0.5">12 members</p>
+                    <div class="mt-1.5 flex items-center justify-between">
+                      <span class="inline-flex items-center gap-0.5 rounded-full px-1 py-px font-mono text-[8px]" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">●&nbsp;active</span>
+                      <span class="font-mono text-[8px] text-fg-tertiary">$42/mo</span>
+                    </div>
+                  </div>
+                  <div class="rounded-md bg-surface border border-default p-2.5">
+                    <div class="aspect-[4/3] rounded mb-2" style="background: linear-gradient(135deg, oklch(78% 0.13 274), oklch(68% 0.17 250));"></div>
+                    <p class="text-[10px] font-semibold leading-tight">Atlas Studio</p>
+                    <p class="font-mono text-[9px] text-fg-tertiary mt-0.5">5 members</p>
+                    <div class="mt-1.5 flex items-center justify-between">
+                      <span class="inline-flex items-center gap-0.5 rounded-full px-1 py-px font-mono text-[8px]" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">●&nbsp;active</span>
+                      <span class="font-mono text-[8px] text-fg-tertiary">$24/mo</span>
+                    </div>
+                  </div>
+                  <div class="rounded-md bg-surface border border-default p-2.5">
+                    <div class="aspect-[4/3] rounded mb-2" style="background: linear-gradient(135deg, oklch(78% 0.13 155), oklch(70% 0.14 130));"></div>
+                    <p class="text-[10px] font-semibold leading-tight">Northwind Co.</p>
+                    <p class="font-mono text-[9px] text-fg-tertiary mt-0.5">28 members</p>
+                    <div class="mt-1.5 flex items-center justify-between">
+                      <span class="inline-flex items-center gap-0.5 rounded-full px-1 py-px font-mono text-[8px]" style="background: color-mix(in oklch, var(--color-warning) 22%, transparent); color: var(--color-warning);">●&nbsp;trial</span>
+                      <span class="font-mono text-[8px] text-fg-tertiary">14d left</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-center gap-1 pt-1">
+                  <span class="font-mono text-[9px] text-fg-tertiary">1</span>
+                  <span class="grid h-4 w-4 place-items-center rounded font-mono text-[9px]" style="background: var(--color-interactive-primary); color: var(--color-text-inverse);">2</span>
+                  <span class="font-mono text-[9px] text-fg-tertiary">3</span>
+                  <span class="font-mono text-[9px] text-fg-tertiary">…</span>
+                  <span class="font-mono text-[9px] text-fg-tertiary">83</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Card Grid</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1">
+                Responsive grid of data cards with pagination, filtering, and empty states.
+                Reflows 4 &rarr; 3 &rarr; 2 &rarr; 1 columns across our breakpoints.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Card</span>
+                <span class="tag">Badge</span>
+                <span class="tag">Pagination</span>
+                <span class="tag">Avatar</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Feature Grid -->
+          <article class="pat-card">
+            <div class="preview" style="min-height:280px;">
+              <div class="grid grid-cols-2 gap-2 max-w-[420px] mx-auto">
+                <div class="rounded-md bg-surface border border-default p-3">
+                  <span class="grid h-7 w-7 place-items-center rounded" style="background: color-mix(in oklch, var(--color-interactive-primary) 14%, transparent); color: var(--color-interactive-primary);">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>
+                  </span>
+                  <p class="mt-2 text-[11px] font-semibold leading-tight">Lightning fast</p>
+                  <p class="text-[10px] text-fg-tertiary mt-0.5">Edge-rendered. 38ms p95.</p>
+                </div>
+                <div class="rounded-md bg-surface border border-default p-3">
+                  <span class="grid h-7 w-7 place-items-center rounded" style="background: color-mix(in oklch, var(--color-success) 14%, transparent); color: var(--color-success);">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </span>
+                  <p class="mt-2 text-[11px] font-semibold leading-tight">SOC 2 Type II</p>
+                  <p class="text-[10px] text-fg-tertiary mt-0.5">Audited yearly.</p>
+                </div>
+                <div class="rounded-md bg-surface border border-default p-3">
+                  <span class="grid h-7 w-7 place-items-center rounded" style="background: color-mix(in oklch, var(--color-warning) 14%, transparent); color: var(--color-warning);">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                  </span>
+                  <p class="mt-2 text-[11px] font-semibold leading-tight">24/7 monitoring</p>
+                  <p class="text-[10px] text-fg-tertiary mt-0.5">Status &amp; alerts built in.</p>
+                </div>
+                <div class="rounded-md bg-surface border border-default p-3">
+                  <span class="grid h-7 w-7 place-items-center rounded" style="background: color-mix(in oklch, var(--color-destructive) 14%, transparent); color: var(--color-destructive);">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </span>
+                  <p class="mt-2 text-[11px] font-semibold leading-tight">Human support</p>
+                  <p class="text-[10px] text-fg-tertiary mt-0.5">Median reply 4 min.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Feature Grid</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1">
+                Marketing-grade feature showcase: 2&times;2, 3&times;2, or 4&times;1 layouts with iconography,
+                titles, and one-line benefit copy. Designed to be skimmed.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Card</span>
+                <span class="tag">Icon</span>
+                <span class="tag">Heading</span>
+                <span class="tag">Text</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CATEGORY: Feedback
+         ===================================================================== -->
+    <section id="cat-feedback" class="border-b border-default">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <header class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Category 03</span>
+              <span class="font-mono text-[11px] text-fg-tertiary">· 1 pattern</span>
+            </div>
+            <h2 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Feedback</h2>
+            <p class="mt-2 max-w-2xl text-fg-secondary">
+              When something fails, the pattern catches it. Error states aren&rsquo;t an afterthought
+              &mdash; they&rsquo;re designed as carefully as the happy path.
+            </p>
+          </div>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Error Boundary -->
+          <article class="pat-card md:col-span-2">
+            <div class="preview" style="min-height:280px;">
+              <div class="grid lg:grid-cols-2 gap-3 max-w-[640px] mx-auto">
+                <!-- friendly recovery state -->
+                <div class="rounded-lg bg-surface border border-default p-4">
+                  <span class="grid h-9 w-9 place-items-center rounded-full" style="background: color-mix(in oklch, var(--color-destructive) 14%, transparent); color: var(--color-destructive);">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+                  </span>
+                  <h4 class="mt-3 font-serif text-base font-semibold leading-tight">Something broke on our end</h4>
+                  <p class="text-[11px] text-fg-secondary mt-1">The team has been pinged. Your work was auto-saved 12s ago.</p>
+                  <div class="mt-3 rounded border border-default bg-bg-secondary p-2 font-mono text-[9px] text-fg-tertiary">
+                    error.id&nbsp;&nbsp;<span class="text-fg-secondary">err_8f3a2b1c</span>
+                  </div>
+                  <div class="mt-3 flex gap-1.5">
+                    <button class="mini-btn primary">
+                      <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>
+                      Try again
+                    </button>
+                    <button class="mini-btn outline">Go to dashboard</button>
+                  </div>
+                </div>
+
+                <!-- inline component-level error -->
+                <div class="rounded-lg bg-surface border border-default p-4">
+                  <p class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">component-scoped</p>
+                  <div class="mt-2 rounded-md border bg-bg-primary p-3" style="border-color: color-mix(in oklch, var(--color-destructive) 40%, transparent);">
+                    <div class="flex items-start gap-2">
+                      <span class="grid h-4 w-4 mt-px place-items-center rounded" style="color: var(--color-destructive);">
+                        <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2 2 22h20z"/><path d="M12 9v5M12 18h.01"/></svg>
+                      </span>
+                      <div class="flex-1">
+                        <p class="text-[11px] font-semibold">Chart failed to render</p>
+                        <p class="text-[10px] text-fg-tertiary mt-0.5">RangeError: data points exceed buffer.</p>
+                        <button class="mt-2 inline-flex h-5 items-center rounded px-1.5 font-mono text-[9px]" style="background: color-mix(in oklch, var(--color-destructive) 14%, transparent); color: var(--color-destructive);">Retry isolated</button>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="font-mono text-[9px] mt-3 text-fg-tertiary">
+                    <span style="color: var(--color-success);">●</span> rest of the page still works
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Error Boundary Patterns</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1 max-w-2xl">
+                Page-level and component-scoped error states with recovery UI. Captures the error,
+                auto-saves the user&rsquo;s in-flight work, and offers a non-destructive path back to
+                a working state &mdash; without unmounting the whole tree.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Alert</span>
+                <span class="tag">Button</span>
+                <span class="tag">Card</span>
+                <span class="tag">Icon</span>
+                <span class="tag">Code</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CATEGORY: Forms
+         ===================================================================== -->
+    <section id="cat-forms" class="border-b border-default bg-bg-secondary">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <header class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Category 04</span>
+              <span class="font-mono text-[11px] text-fg-tertiary">· 2 patterns</span>
+            </div>
+            <h2 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Forms</h2>
+            <p class="mt-2 max-w-2xl text-fg-secondary">
+              Form composition and validation are the largest source of bespoke UI in any product.
+              These patterns close the gap so teams stop reinventing field groupings, error display,
+              and async submit states.
+            </p>
+          </div>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Form Compositions -->
+          <article class="pat-card">
+            <div class="preview" style="min-height:280px;">
+              <div class="mx-auto max-w-[360px] rounded-lg bg-surface border border-default p-4" style="box-shadow: var(--shadow-sm);">
+                <div class="flex items-center gap-2">
+                  <p class="font-serif text-sm font-semibold">Workspace settings</p>
+                  <span class="ml-auto font-mono text-[9px] text-fg-tertiary">Step 2 of 3</span>
+                </div>
+
+                <!-- field group: General -->
+                <div class="mt-3">
+                  <p class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">General</p>
+                  <div class="mt-1.5 space-y-2 rounded-md border border-default p-2.5">
+                    <div>
+                      <label class="mini-label">Name</label>
+                      <div class="mini-input"><span>Helios Workspace</span></div>
+                    </div>
+                    <div>
+                      <label class="mini-label">URL</label>
+                      <div class="mini-input justify-between">
+                        <span class="font-mono text-fg-tertiary">wyliedog.dev/</span>
+                        <span class="font-mono text-fg">helios</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- field group: Billing -->
+                <div class="mt-3">
+                  <p class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">Billing</p>
+                  <div class="mt-1.5 space-y-2 rounded-md border border-default p-2.5">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p class="text-[11px] font-semibold">Annual billing</p>
+                        <p class="text-[9px] text-fg-tertiary">Save 20%</p>
+                      </div>
+                      <span class="relative inline-flex h-4 w-7 items-center rounded-full" style="background: var(--color-interactive-primary);">
+                        <span class="inline-block h-3 w-3 translate-x-3 rounded-full" style="background: var(--color-text-inverse);"></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-3 flex justify-between">
+                  <button class="mini-btn ghost">Back</button>
+                  <button class="mini-btn primary">
+                    Continue
+                    <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Form Compositions</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1">
+                Multi-field forms, field groupings, and step indicators. Standard layout primitives
+                so a 30-field settings page reads like a 5-field one.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Form</span>
+                <span class="tag">Input</span>
+                <span class="tag">Switch</span>
+                <span class="tag">Stepper</span>
+                <span class="tag">Fieldset</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Form Validation -->
+          <article class="pat-card">
+            <div class="preview" style="min-height:280px;">
+              <div class="mx-auto max-w-[360px] rounded-lg bg-surface border border-default p-4 space-y-3" style="box-shadow: var(--shadow-sm);">
+                <!-- error state -->
+                <div>
+                  <label class="mini-label">Email</label>
+                  <div class="mini-input justify-between" style="border-color: var(--color-destructive); background: color-mix(in oklch, var(--color-destructive) 6%, var(--color-surface-primary));">
+                    <span>elena@wyl</span>
+                    <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.4" style="color: var(--color-destructive);"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+                  </div>
+                  <p class="mt-1 flex items-center gap-1 text-[10px]" style="color: var(--color-destructive);">
+                    <span>Invalid email format. Expected <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dbb5bab6be9bbfb4b6bab2b5f5afb7bf">[email&#160;protected]</a>.</span>
+                  </p>
+                </div>
+
+                <!-- async state -->
+                <div>
+                  <label class="mini-label">Workspace URL</label>
+                  <div class="mini-input justify-between">
+                    <span>acme-co</span>
+                    <span class="inline-flex items-center gap-1 font-mono text-[9px] text-fg-tertiary">
+                      <svg viewBox="0 0 24 24" class="h-3 w-3 animate-spin" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9"/></svg>
+                      checking…
+                    </span>
+                  </div>
+                  <p class="mt-1 text-[10px] text-fg-tertiary">Checking availability&hellip;</p>
+                </div>
+
+                <!-- success state -->
+                <div>
+                  <label class="mini-label">Password</label>
+                  <div class="mini-input justify-between" style="border-color: var(--color-success);">
+                    <span class="tracking-[0.3em] text-fg-tertiary">••••••••••••</span>
+                    <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.4" style="color: var(--color-success);"><path d="m5 12 5 5L20 7"/></svg>
+                  </div>
+                  <div class="mt-1 flex items-center gap-1">
+                    <span class="h-1 w-6 rounded-full" style="background: var(--color-success);"></span>
+                    <span class="h-1 w-6 rounded-full" style="background: var(--color-success);"></span>
+                    <span class="h-1 w-6 rounded-full" style="background: var(--color-success);"></span>
+                    <span class="h-1 w-6 rounded-full" style="background: var(--color-success);"></span>
+                    <span class="ml-1 text-[10px]" style="color: var(--color-success);">Strong</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Form Validation Patterns</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1">
+                Error, async, and success states with consistent messaging. Validation fires on
+                blur, runs async checks against the server, and recovers when the user corrects.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Input</span>
+                <span class="tag">Form</span>
+                <span class="tag">Icon</span>
+                <span class="tag">Progress</span>
+                <span class="tag">Text</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CATEGORY: Layout
+         ===================================================================== -->
+    <section id="cat-layout" class="border-b border-default">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <header class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Category 05</span>
+              <span class="font-mono text-[11px] text-fg-tertiary">· 1 pattern</span>
+            </div>
+            <h2 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Layout</h2>
+            <p class="mt-2 max-w-2xl text-fg-secondary">
+              The page shell &mdash; what holds every product surface together. One layout primitive
+              wired for sidebar, content, and overlay regions, with responsive collapse built in.
+            </p>
+          </div>
+        </header>
+
+        <article class="pat-card">
+          <div class="preview" style="min-height:300px; padding:24px;">
+            <!-- Mini app shell -->
+            <div class="mx-auto max-w-[720px] rounded-lg overflow-hidden border border-default bg-surface" style="box-shadow: var(--shadow-md);">
+              <!-- top bar -->
+              <div class="flex items-center gap-2 px-3 py-2 border-b border-default bg-bg-secondary">
+                <div class="flex gap-1">
+                  <span class="h-2 w-2 rounded-full" style="background: oklch(70% 0.18 25);"></span>
+                  <span class="h-2 w-2 rounded-full" style="background: oklch(80% 0.15 85);"></span>
+                  <span class="h-2 w-2 rounded-full" style="background: oklch(70% 0.16 145);"></span>
+                </div>
+                <span class="font-mono text-[9px] text-fg-tertiary ml-2">helios.wyliedog.dev/projects</span>
+                <span class="ml-auto inline-flex h-4 items-center rounded border border-default bg-surface px-1 font-mono text-[8px] text-fg-secondary">⌘K</span>
+              </div>
+
+              <div class="grid grid-cols-12 h-[220px]">
+                <!-- Sidebar -->
+                <aside class="col-span-3 border-r border-default p-3 bg-bg-primary">
+                  <div class="flex items-center gap-1.5">
+                    <span class="grid h-4 w-4 place-items-center rounded" style="background: var(--color-interactive-primary);"></span>
+                    <span class="text-[10px] font-serif font-semibold">Helios</span>
+                  </div>
+                  <div class="mt-3 space-y-0.5">
+                    <div class="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] font-medium" style="background: color-mix(in oklch, var(--color-interactive-primary) 14%, transparent); color: var(--color-interactive-primary);">
+                      <span class="h-1 w-1 rounded-full" style="background: currentColor;"></span>
+                      Projects
+                    </div>
+                    <div class="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] text-fg-secondary">Tasks</div>
+                    <div class="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] text-fg-secondary">Members</div>
+                    <div class="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] text-fg-secondary">Reports</div>
+                  </div>
+                  <div class="mt-3 pt-2 border-t border-default">
+                    <p class="font-mono text-[8px] uppercase tracking-wider text-fg-tertiary px-1.5">Workspaces</p>
+                    <div class="mt-1 space-y-0.5">
+                      <div class="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] text-fg-secondary">
+                        <span class="h-2 w-2 rounded-sm" style="background: oklch(78% 0.13 35);"></span>
+                        Helios
+                      </div>
+                      <div class="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] text-fg-tertiary">
+                        <span class="h-2 w-2 rounded-sm" style="background: oklch(78% 0.13 155);"></span>
+                        Atlas
+                      </div>
+                    </div>
+                  </div>
+                </aside>
+
+                <!-- Content -->
+                <main class="col-span-9 p-3">
+                  <div class="flex items-center justify-between">
+                    <p class="text-[11px] font-serif font-semibold">Projects</p>
+                    <button class="mini-btn primary" style="height:22px; font-size:10px; padding:0 8px;">+ New</button>
+                  </div>
+                  <div class="mt-2 grid grid-cols-3 gap-1.5">
+                    <div class="rounded border border-default p-2">
+                      <div class="h-1.5 w-3/4 rounded-full bg-bg-tertiary"></div>
+                      <div class="mt-1.5 h-1.5 w-1/2 rounded-full bg-bg-tertiary"></div>
+                      <div class="mt-2 h-1 w-full rounded-full" style="background: var(--color-background-tertiary);">
+                        <div class="h-full rounded-full" style="width: 60%; background: var(--color-interactive-primary);"></div>
+                      </div>
+                    </div>
+                    <div class="rounded border border-default p-2">
+                      <div class="h-1.5 w-2/3 rounded-full bg-bg-tertiary"></div>
+                      <div class="mt-1.5 h-1.5 w-3/4 rounded-full bg-bg-tertiary"></div>
+                      <div class="mt-2 h-1 w-full rounded-full" style="background: var(--color-background-tertiary);">
+                        <div class="h-full rounded-full" style="width: 30%; background: var(--color-interactive-primary);"></div>
+                      </div>
+                    </div>
+                    <div class="rounded border border-default p-2">
+                      <div class="h-1.5 w-1/2 rounded-full bg-bg-tertiary"></div>
+                      <div class="mt-1.5 h-1.5 w-2/3 rounded-full bg-bg-tertiary"></div>
+                      <div class="mt-2 h-1 w-full rounded-full" style="background: var(--color-background-tertiary);">
+                        <div class="h-full rounded-full" style="width: 85%; background: var(--color-success);"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-3 rounded border border-default">
+                    <div class="grid grid-cols-4 px-2 py-1 bg-bg-secondary font-mono text-[8px] uppercase tracking-wider text-fg-tertiary">
+                      <span>Name</span><span>Owner</span><span>Due</span><span class="text-right">Status</span>
+                    </div>
+                    <div class="grid grid-cols-4 px-2 py-1 border-t border-default text-[9px]">
+                      <span>Migration v1.4</span><span class="text-fg-secondary">EM</span><span class="text-fg-secondary">Jun 12</span>
+                      <span class="text-right"><span class="inline-block rounded px-1 font-mono text-[8px]" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">on track</span></span>
+                    </div>
+                    <div class="grid grid-cols-4 px-2 py-1 border-t border-default text-[9px]">
+                      <span>Token bridge</span><span class="text-fg-secondary">JR</span><span class="text-fg-secondary">Jun 18</span>
+                      <span class="text-right"><span class="inline-block rounded px-1 font-mono text-[8px]" style="background: color-mix(in oklch, var(--color-warning) 22%, transparent); color: var(--color-warning);">at risk</span></span>
+                    </div>
+                  </div>
+                </main>
+              </div>
+            </div>
+
+            <!-- breakpoint indicator -->
+            <div class="mt-3 mx-auto max-w-[720px] flex items-center gap-1.5 font-mono text-[9px] text-fg-tertiary">
+              <span>breakpoints:</span>
+              <span class="rounded border border-default bg-surface px-1.5 py-0.5">sm 640</span>
+              <span class="rounded border border-default bg-surface px-1.5 py-0.5">md 768</span>
+              <span class="rounded px-1.5 py-0.5" style="background: var(--color-interactive-primary); color: var(--color-text-inverse);">lg 1024</span>
+              <span class="rounded border border-default bg-surface px-1.5 py-0.5">xl 1280</span>
+              <span class="rounded border border-default bg-surface px-1.5 py-0.5">2xl 1536</span>
+            </div>
+          </div>
+
+          <div class="p-5 flex-1 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
+            <div>
+              <h3 class="font-serif text-lg font-semibold">Layout Patterns</h3>
+              <p class="text-sm text-fg-secondary mt-1 max-w-2xl">
+                Page shell, sidebar, content area, and responsive breakpoints. The sidebar collapses
+                to a sheet below <span class="font-mono text-xs">lg</span>; the content area never
+                exceeds a 1280px reading measure.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tag">Sidebar</span>
+              <span class="tag">NavigationMenu</span>
+              <span class="tag">Container</span>
+              <span class="tag">Sheet</span>
+              <span class="tag">Card</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CATEGORY: Navigation
+         ===================================================================== -->
+    <section id="cat-nav" class="border-b border-default bg-bg-secondary">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <header class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Category 06</span>
+              <span class="font-mono text-[11px] text-fg-tertiary">· 2 patterns</span>
+            </div>
+            <h2 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Navigation</h2>
+            <p class="mt-2 max-w-2xl text-fg-secondary">
+              Header and footer for marketing surfaces &mdash; the bookends of every public page.
+              Used on this site too, so they&rsquo;re self-eating dogfood.
+            </p>
+          </div>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Site Header -->
+          <article class="pat-card">
+            <div class="preview" style="min-height:280px;">
+              <div class="mx-auto max-w-[420px] rounded-lg overflow-hidden border border-default bg-surface" style="box-shadow: var(--shadow-sm);">
+                <!-- header chrome -->
+                <div class="flex items-center gap-2 px-3 py-2 border-b border-default" style="background: color-mix(in oklch, var(--color-surface-primary) 80%, transparent);">
+                  <span class="grid h-4 w-4 place-items-center rounded" style="background: var(--color-interactive-primary);">
+                    <svg viewBox="0 0 24 24" class="h-2.5 w-2.5" fill="none" stroke="currentColor" stroke-width="2.4" style="color: var(--color-text-inverse);"><path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/></svg>
+                  </span>
+                  <span class="font-serif text-[11px] font-semibold">Wylie Dog</span>
+                  <nav class="ml-3 flex items-center gap-0.5 text-[9px]">
+                    <span class="rounded px-1.5 py-0.5 font-medium" style="background: var(--color-background-secondary);">Home</span>
+                    <span class="rounded px-1.5 py-0.5 text-fg-secondary">Docs</span>
+                    <span class="rounded px-1.5 py-0.5 text-fg-secondary">Pricing</span>
+                  </nav>
+                  <div class="ml-auto flex items-center gap-1">
+                    <span class="inline-flex h-4 items-center gap-1 rounded border border-default px-1 font-mono text-[8px] text-fg-tertiary">
+                      <svg viewBox="0 0 24 24" class="h-2 w-2" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                      ⌘K
+                    </span>
+                    <span class="grid h-4 w-4 place-items-center rounded text-fg-tertiary">
+                      <svg viewBox="0 0 24 24" class="h-2.5 w-2.5" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/></svg>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- sticky scroll indicator -->
+                <div class="px-3 py-4 bg-bg-secondary">
+                  <div class="space-y-1.5">
+                    <div class="h-2 w-3/4 rounded-full bg-bg-tertiary"></div>
+                    <div class="h-2 w-full rounded-full bg-bg-tertiary"></div>
+                    <div class="h-2 w-2/3 rounded-full bg-bg-tertiary"></div>
+                  </div>
+                  <div class="mt-2 font-mono text-[9px] text-fg-tertiary flex items-center gap-1">
+                    <svg viewBox="0 0 24 24" class="h-2.5 w-2.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+                    sticky · blurs on scroll
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Site Header</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1">
+                Sticky header with logo, primary nav, search trigger, and theme toggle. Blurs the
+                content beneath on scroll. Used as the header on this very page.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">NavigationMenu</span>
+                <span class="tag">Button</span>
+                <span class="tag">Command</span>
+                <span class="tag">ToggleGroup</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Site Footer -->
+          <article class="pat-card">
+            <div class="preview" style="min-height:280px;">
+              <div class="mx-auto max-w-[420px] rounded-lg overflow-hidden border border-default bg-surface" style="box-shadow: var(--shadow-sm);">
+                <div class="p-3">
+                  <div class="grid grid-cols-4 gap-3">
+                    <div class="col-span-1">
+                      <span class="grid h-4 w-4 place-items-center rounded" style="background: var(--color-interactive-primary);"></span>
+                      <p class="mt-1.5 font-serif text-[10px] font-semibold">Wylie Dog</p>
+                      <p class="text-[8px] text-fg-tertiary mt-0.5 leading-tight">The shared system for everything we ship.</p>
+                    </div>
+                    <div>
+                      <p class="font-mono text-[7px] uppercase tracking-wider text-fg-tertiary">Product</p>
+                      <ul class="mt-1 space-y-0.5 text-[9px] text-fg-secondary">
+                        <li>Tokens</li><li>Components</li><li>Patterns</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p class="font-mono text-[7px] uppercase tracking-wider text-fg-tertiary">Tools</p>
+                      <ul class="mt-1 space-y-0.5 text-[9px] text-fg-secondary">
+                        <li>Storybook</li><li>Figma plugin</li><li>CLI</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p class="font-mono text-[7px] uppercase tracking-wider text-fg-tertiary">Legal</p>
+                      <ul class="mt-1 space-y-0.5 text-[9px] text-fg-secondary">
+                        <li>Privacy</li><li>Terms</li><li>Security</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="mt-3 pt-2 border-t border-default flex items-center justify-between">
+                    <span class="font-mono text-[8px] text-fg-tertiary">© 2026 Wylie Dog</span>
+                    <span class="inline-flex items-center gap-1 font-mono text-[8px] text-fg-tertiary">
+                      <span class="h-1 w-1 rounded-full" style="background: var(--color-success);"></span>
+                      All systems operational
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Site Footer</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1">
+                Multi-column footer with brand block, sitemap columns, legal links, and a live status
+                indicator. Collapses to two columns on mobile, brand stacked above.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Separator</span>
+                <span class="tag">Link</span>
+                <span class="tag">Badge</span>
+                <span class="tag">Heading</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CATEGORY: Page compositions
+         ===================================================================== -->
+    <section id="cat-page" class="border-b border-default">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <header class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Category 07</span>
+              <span class="font-mono text-[11px] text-fg-tertiary">· 3 patterns</span>
+            </div>
+            <h2 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Page compositions</h2>
+            <p class="mt-2 max-w-2xl text-fg-secondary">
+              Pre-assembled marketing surfaces &mdash; the big building blocks of a public page. Each
+              section composes lower-order patterns; the page composition wires them together
+              end-to-end.
+            </p>
+          </div>
+        </header>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <!-- Section: Hero -->
+          <article class="pat-card">
+            <div class="preview" style="min-height:240px;">
+              <div class="rounded-lg overflow-hidden border border-default bg-surface" style="box-shadow: var(--shadow-sm);">
+                <div class="relative p-4" style="background: radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-interactive-primary) 22%, transparent) 0%, transparent 60%);">
+                  <span class="inline-flex items-center gap-1 rounded-full border border-default bg-surface px-1.5 py-0.5 font-mono text-[8px] text-fg-secondary">
+                    <span class="h-1 w-1 rounded-full" style="background: var(--color-success);"></span>
+                    v1.4 just shipped
+                  </span>
+                  <p class="mt-2 font-serif text-base font-semibold leading-[1.1]">Build faster.<br/>Ship calmer.</p>
+                  <p class="text-[9px] text-fg-secondary mt-1.5 leading-tight">The shared system that finally keeps brand and product in sync.</p>
+                  <div class="mt-2 flex gap-1">
+                    <span class="mini-btn primary" style="height:20px; font-size:9px; padding:0 8px;">Start free</span>
+                    <span class="mini-btn outline" style="height:20px; font-size:9px; padding:0 8px;">Docs</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Section: Hero</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1">
+                Headline, lead, CTAs, optional eyebrow badge. Three layout variants: centered,
+                split, and asymmetric.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Heading</span>
+                <span class="tag">Button</span>
+                <span class="tag">Badge</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section: Features -->
+          <article class="pat-card">
+            <div class="preview" style="min-height:240px;">
+              <div class="rounded-lg overflow-hidden border border-default bg-surface p-3" style="box-shadow: var(--shadow-sm);">
+                <p class="font-mono text-[8px] uppercase tracking-wider text-fg-tertiary">Why teams choose us</p>
+                <p class="mt-1 font-serif text-sm font-semibold leading-tight">Three pillars,<br/>one promise.</p>
+                <div class="mt-3 space-y-2">
+                  <div class="flex items-start gap-2">
+                    <span class="grid h-5 w-5 shrink-0 place-items-center rounded" style="background: color-mix(in oklch, var(--color-interactive-primary) 14%, transparent); color: var(--color-interactive-primary);">
+                      <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>
+                    </span>
+                    <div class="flex-1">
+                      <p class="text-[10px] font-semibold leading-tight">Token-driven</p>
+                      <p class="text-[9px] text-fg-tertiary leading-tight">Change one variable, every surface updates.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="grid h-5 w-5 shrink-0 place-items-center rounded" style="background: color-mix(in oklch, var(--color-success) 14%, transparent); color: var(--color-success);">
+                      <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>
+                    </span>
+                    <div class="flex-1">
+                      <p class="text-[10px] font-semibold leading-tight">Accessible by default</p>
+                      <p class="text-[9px] text-fg-tertiary leading-tight">WCAG 2.2 AA across every state.</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="grid h-5 w-5 shrink-0 place-items-center rounded" style="background: color-mix(in oklch, var(--color-warning) 14%, transparent); color: var(--color-warning);">
+                      <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 12 5 5L20 7"/></svg>
+                    </span>
+                    <div class="flex-1">
+                      <p class="text-[10px] font-semibold leading-tight">Typed end-to-end</p>
+                      <p class="text-[9px] text-fg-tertiary leading-tight">No prop guesswork in your IDE.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Section: Features</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1">
+                Features / benefits with optional icons and supporting copy. Two-column, three-up
+                row, or alternating screenshot+text variants.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Heading</span>
+                <span class="tag">Icon</span>
+                <span class="tag">Card</span>
+                <span class="tag">Text</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Page Layout -->
+          <article class="pat-card">
+            <div class="preview" style="min-height:240px;">
+              <div class="rounded-lg overflow-hidden border border-default bg-surface" style="box-shadow: var(--shadow-sm);">
+                <!-- header strip -->
+                <div class="h-3 border-b border-default flex items-center px-2 gap-1 bg-bg-secondary">
+                  <span class="h-1 w-6 rounded-full bg-bg-tertiary"></span>
+                  <span class="ml-auto h-1 w-3 rounded-full bg-bg-tertiary"></span>
+                </div>
+                <!-- hero -->
+                <div class="p-2 border-b border-default" style="background: radial-gradient(ellipse at top, color-mix(in oklch, var(--color-interactive-primary) 18%, transparent), transparent);">
+                  <div class="h-1.5 w-2/3 rounded-full bg-bg-tertiary"></div>
+                  <div class="mt-1 h-1.5 w-1/2 rounded-full bg-bg-tertiary"></div>
+                  <div class="mt-1.5 flex gap-1">
+                    <span class="h-2 w-8 rounded-sm" style="background: var(--color-interactive-primary);"></span>
+                    <span class="h-2 w-6 rounded-sm bg-bg-tertiary"></span>
+                  </div>
+                </div>
+                <!-- features -->
+                <div class="grid grid-cols-3 gap-1 p-2 border-b border-default">
+                  <div class="rounded border border-default p-1.5 space-y-1">
+                    <span class="block h-2 w-2 rounded" style="background: var(--color-interactive-primary);"></span>
+                    <div class="h-1 w-3/4 rounded-full bg-bg-tertiary"></div>
+                    <div class="h-1 w-full rounded-full bg-bg-tertiary"></div>
+                  </div>
+                  <div class="rounded border border-default p-1.5 space-y-1">
+                    <span class="block h-2 w-2 rounded" style="background: var(--color-success);"></span>
+                    <div class="h-1 w-3/4 rounded-full bg-bg-tertiary"></div>
+                    <div class="h-1 w-full rounded-full bg-bg-tertiary"></div>
+                  </div>
+                  <div class="rounded border border-default p-1.5 space-y-1">
+                    <span class="block h-2 w-2 rounded" style="background: var(--color-warning);"></span>
+                    <div class="h-1 w-3/4 rounded-full bg-bg-tertiary"></div>
+                    <div class="h-1 w-full rounded-full bg-bg-tertiary"></div>
+                  </div>
+                </div>
+                <!-- cta -->
+                <div class="p-2 border-b border-default bg-bg-secondary">
+                  <div class="rounded border border-default bg-surface p-1.5 flex items-center justify-between">
+                    <div class="h-1.5 w-16 rounded-full bg-bg-tertiary"></div>
+                    <span class="h-2.5 w-8 rounded-sm" style="background: var(--color-interactive-primary);"></span>
+                  </div>
+                </div>
+                <!-- footer -->
+                <div class="p-2 grid grid-cols-4 gap-1">
+                  <div class="h-1 rounded-full bg-bg-tertiary"></div>
+                  <div class="h-1 rounded-full bg-bg-tertiary"></div>
+                  <div class="h-1 rounded-full bg-bg-tertiary"></div>
+                  <div class="h-1 rounded-full bg-bg-tertiary"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Page Layout</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1">
+                Full page assembly &mdash; header, hero, features, CTA, footer &mdash; wired together
+                with consistent rhythm and section spacing.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Header</span>
+                <span class="tag">Hero</span>
+                <span class="tag">Features</span>
+                <span class="tag">CTA</span>
+                <span class="tag">Footer</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CATEGORY: Responsive
+         ===================================================================== -->
+    <section id="cat-responsive" class="border-b border-default bg-bg-secondary">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <header class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Category 08</span>
+              <span class="font-mono text-[11px] text-fg-tertiary">· 1 pattern</span>
+            </div>
+            <h2 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Responsive</h2>
+            <p class="mt-2 max-w-2xl text-fg-secondary">
+              Breakpoint-aware layout decisions. Not just &ldquo;shrink the desktop&rdquo; &mdash; structural
+              reflows that pick the right pattern for each surface size.
+            </p>
+          </div>
+        </header>
+
+        <article class="pat-card">
+          <div class="preview" style="min-height:280px; padding:24px;">
+            <div class="grid grid-cols-12 gap-3 max-w-[820px] mx-auto">
+              <!-- mobile -->
+              <div class="col-span-3">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">sm · 375</span>
+                  <span class="font-mono text-[9px] text-fg-tertiary">1 col</span>
+                </div>
+                <div class="rounded-lg overflow-hidden border border-default bg-surface aspect-[3/5] p-1.5 space-y-1" style="box-shadow: var(--shadow-xs);">
+                  <div class="h-3 rounded bg-bg-tertiary"></div>
+                  <div class="rounded p-1.5" style="background: color-mix(in oklch, var(--color-interactive-primary) 10%, transparent);">
+                    <div class="h-1 w-3/4 rounded-full bg-bg-tertiary"></div>
+                    <div class="mt-1 h-1 w-1/2 rounded-full bg-bg-tertiary"></div>
+                  </div>
+                  <div class="grid grid-cols-1 gap-1">
+                    <div class="rounded border border-default h-5"></div>
+                    <div class="rounded border border-default h-5"></div>
+                    <div class="rounded border border-default h-5"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- tablet -->
+              <div class="col-span-4">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">md · 768</span>
+                  <span class="font-mono text-[9px] text-fg-tertiary">2 col</span>
+                </div>
+                <div class="rounded-lg overflow-hidden border border-default bg-surface aspect-[4/5] p-2 space-y-1.5" style="box-shadow: var(--shadow-xs);">
+                  <div class="h-3 rounded bg-bg-tertiary"></div>
+                  <div class="rounded p-2" style="background: color-mix(in oklch, var(--color-interactive-primary) 10%, transparent);">
+                    <div class="h-1.5 w-2/3 rounded-full bg-bg-tertiary"></div>
+                    <div class="mt-1 h-1.5 w-1/2 rounded-full bg-bg-tertiary"></div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-1">
+                    <div class="rounded border border-default h-6"></div>
+                    <div class="rounded border border-default h-6"></div>
+                    <div class="rounded border border-default h-6"></div>
+                    <div class="rounded border border-default h-6"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- desktop -->
+              <div class="col-span-5">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="rounded px-1.5 py-0.5 font-mono text-[9px]" style="background: var(--color-interactive-primary); color: var(--color-text-inverse);">lg · 1280</span>
+                  <span class="font-mono text-[9px] text-fg-tertiary">sidebar + 3 col</span>
+                </div>
+                <div class="rounded-lg overflow-hidden border border-default bg-surface aspect-[5/4] p-2" style="box-shadow: var(--shadow-xs);">
+                  <div class="h-3 rounded bg-bg-tertiary mb-1.5"></div>
+                  <div class="grid grid-cols-4 gap-1.5">
+                    <div class="col-span-1 space-y-1">
+                      <div class="rounded h-1.5 bg-bg-tertiary"></div>
+                      <div class="rounded h-1.5 bg-bg-tertiary"></div>
+                      <div class="rounded h-1.5 bg-bg-tertiary"></div>
+                      <div class="rounded h-1.5" style="background: var(--color-interactive-primary);"></div>
+                    </div>
+                    <div class="col-span-3 space-y-1">
+                      <div class="rounded p-1.5" style="background: color-mix(in oklch, var(--color-interactive-primary) 10%, transparent);">
+                        <div class="h-1.5 w-1/2 rounded-full bg-bg-tertiary"></div>
+                      </div>
+                      <div class="grid grid-cols-3 gap-1">
+                        <div class="rounded border border-default h-6"></div>
+                        <div class="rounded border border-default h-6"></div>
+                        <div class="rounded border border-default h-6"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- decision strip -->
+            <div class="mt-4 mx-auto max-w-[820px] rounded-md border border-default bg-surface px-3 py-2 grid grid-cols-3 gap-3 text-[10px]">
+              <div>
+                <span class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">Below md</span>
+                <p class="mt-0.5 text-fg-secondary">Sidebar → drawer. Tabs → segmented control. Tables → cards.</p>
+              </div>
+              <div>
+                <span class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">md → lg</span>
+                <p class="mt-0.5 text-fg-secondary">Sidebar compact. 2-up content. Sticky filters.</p>
+              </div>
+              <div>
+                <span class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">lg and up</span>
+                <p class="mt-0.5 text-fg-secondary">Full sidebar. 3-up content. Inline filters.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-5 flex-1 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
+            <div>
+              <h3 class="font-serif text-lg font-semibold">Responsive Patterns</h3>
+              <p class="text-sm text-fg-secondary mt-1 max-w-2xl">
+                Structural reflows for sidebar, table, and filter UIs across breakpoints &mdash;
+                not pure shrink-to-fit. Each pattern declares which alternate component it morphs
+                into at each step.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tag">Sidebar</span>
+              <span class="tag">Sheet</span>
+              <span class="tag">Table</span>
+              <span class="tag">Card</span>
+              <span class="tag">Tabs</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CATEGORY: Accessibility
+         ===================================================================== -->
+    <section id="cat-accessibility" class="border-b border-default bg-bg-secondary">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <header class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Category 09</span>
+              <span class="font-mono text-[11px] text-fg-tertiary">· 1 pattern</span>
+            </div>
+            <h2 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">Accessibility</h2>
+            <p class="mt-2 max-w-2xl text-fg-secondary">
+              Every component ships WCAG 2.2 AA&ndash;verified. These patterns demonstrate the
+              practices behind that claim &mdash; focus management, error announcement, keyboard
+              navigation, and visible focus rings backed by the token system.
+            </p>
+          </div>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Accessibility Patterns -->
+          <article class="pat-card md:col-span-2">
+            <div class="preview" style="min-height:280px;">
+              <div class="grid lg:grid-cols-3 gap-3 max-w-[820px] mx-auto">
+
+                <!-- Focus ring demo -->
+                <div class="rounded-lg bg-surface border border-default p-4">
+                  <p class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">Focus management</p>
+                  <div class="mt-3 flex flex-col gap-2">
+                    <button class="mini-btn primary w-full" style="box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-interactive-primary) 30%, transparent);">
+                      Focused button
+                    </button>
+                    <div class="mini-input" style="border-color: var(--color-interactive-primary); box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-interactive-primary) 22%, transparent);">
+                      <span class="text-fg-tertiary">Focused input</span>
+                    </div>
+                    <p class="text-[10px] text-fg-tertiary">3px offset ring · OKLCH token</p>
+                  </div>
+                </div>
+
+                <!-- Error announcement demo -->
+                <div class="rounded-lg bg-surface border border-default p-4">
+                  <p class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">Error announcement</p>
+                  <div class="mt-3 space-y-2">
+                    <div>
+                      <label class="mini-label">Email <span style="color: var(--color-destructive);" aria-hidden="true">*</span></label>
+                      <div class="mini-input" style="border-color: var(--color-destructive); background: color-mix(in oklch, var(--color-destructive) 6%, var(--color-surface-primary));">
+                        <span>elena@wyl</span>
+                      </div>
+                      <p class="mt-1 flex items-center gap-1 text-[10px]" style="color: var(--color-destructive);" role="alert">
+                        <svg viewBox="0 0 24 24" class="h-3 w-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+                        Invalid email format
+                      </p>
+                    </div>
+                    <p class="font-mono text-[9px] text-fg-tertiary">role="alert" · aria-describedby</p>
+                  </div>
+                </div>
+
+                <!-- Keyboard nav demo -->
+                <div class="rounded-lg bg-surface border border-default p-4">
+                  <p class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">Keyboard navigation</p>
+                  <div class="mt-3 space-y-1.5">
+                    <div class="flex items-center justify-between rounded px-2 py-1.5 text-[11px]" style="background: color-mix(in oklch, var(--color-interactive-primary) 12%, transparent); color: var(--color-interactive-primary);">
+                      <span>Option one</span>
+                      <kbd class="font-mono text-[9px]">↑ ↓</kbd>
+                    </div>
+                    <div class="flex items-center justify-between rounded px-2 py-1.5 text-[11px] text-fg-secondary">
+                      <span>Option two</span>
+                    </div>
+                    <div class="flex items-center justify-between rounded px-2 py-1.5 text-[11px] text-fg-secondary">
+                      <span>Option three</span>
+                    </div>
+                    <p class="font-mono text-[9px] text-fg-tertiary mt-2">roving tabIndex · Arrow keys</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h3 class="font-serif text-lg font-semibold">Accessibility Patterns</h3>
+                <a href="https://storybook.wyliedog.dev" class="font-mono text-[10px] text-fg-tertiary hover:text-interactive">View ↗</a>
+              </div>
+              <p class="text-sm text-fg-secondary mt-1 max-w-2xl">
+                Reference implementations for focus rings, live regions, error announcement,
+                keyboard navigation, and skip links. Built with the token system &mdash;
+                <span class="font-mono text-xs">--color-interactive-primary</span> drives every
+                focus indicator so a single token change updates the entire a11y surface.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                <span class="tag">Form</span>
+                <span class="tag">Alert</span>
+                <span class="tag">Input</span>
+                <span class="tag">Button</span>
+                <span class="tag">Dialog</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PHILOSOPHY ASIDE
+         ===================================================================== -->
+    <section class="border-b border-default">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Philosophy</span>
+            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight leading-[1.05] text-balance">
+              A component is a primitive. <br/><span class="text-interactive">A pattern is a decision.</span>
+            </h2>
+            <p class="mt-5 text-fg-secondary text-balance">
+              Components answer &ldquo;what&rdquo;. Patterns answer &ldquo;when, how, and in what order&rdquo;.
+              Two teams shipping the same Input on the same Card with the same Button can still
+              produce two different sign-in forms &mdash; that&rsquo;s the inconsistency patterns exist
+              to eliminate.
+            </p>
+          </div>
+
+          <div class="lg:col-span-7 space-y-3">
+            <div class="rounded-xl border border-default bg-surface p-6">
+              <div class="flex items-start gap-3">
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded font-mono text-xs font-semibold" style="background: color-mix(in oklch, var(--color-interactive-primary) 14%, transparent); color: var(--color-interactive-primary);">01</span>
+                <div>
+                  <h3 class="font-serif text-lg font-semibold">Use a pattern when the answer is already known.</h3>
+                  <p class="text-sm text-fg-secondary mt-1">
+                    Sign-in flows, error boundaries, responsive sidebars &mdash; these have all been
+                    designed before. Reach for the pattern; spend your novelty budget on the
+                    product, not the plumbing.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-default bg-surface p-6">
+              <div class="flex items-start gap-3">
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded font-mono text-xs font-semibold" style="background: color-mix(in oklch, var(--color-success) 14%, transparent); color: var(--color-success);">02</span>
+                <div>
+                  <h3 class="font-serif text-lg font-semibold">Build from scratch when the problem is genuinely new.</h3>
+                  <p class="text-sm text-fg-secondary mt-1">
+                    If no pattern fits, compose from components instead of bending a near-miss
+                    pattern out of shape. Then nominate the result for inclusion &mdash; that&rsquo;s how
+                    the catalog grows.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-default bg-surface p-6">
+              <div class="flex items-start gap-3">
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded font-mono text-xs font-semibold" style="background: color-mix(in oklch, var(--color-warning) 14%, transparent); color: var(--color-warning);">03</span>
+                <div>
+                  <h3 class="font-serif text-lg font-semibold">Patterns stay in sync via the token layer.</h3>
+                  <p class="text-sm text-fg-secondary mt-1">
+                    When <span class="font-mono text-xs">--color-interactive-primary</span> moves,
+                    every button, badge, and focus ring across every pattern moves with it &mdash; no
+                    pattern-by-pattern refactor required.
+                  </p>
+                  <!-- mini token-flow visual -->
+                  <div class="mt-4 flex items-center gap-2 rounded-md border border-default bg-bg-secondary px-3 py-2.5">
+                    <span class="font-mono text-[10px] text-fg-secondary">tokens</span>
+                    <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    <span class="font-mono text-[10px] text-fg-secondary">components</span>
+                    <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    <span class="font-mono text-[10px]" style="color: var(--color-interactive-primary);">patterns</span>
+                    <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    <span class="font-mono text-[10px] text-fg-secondary">your pages</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CTA STRIP
+         ===================================================================== -->
+    <section class="border-b border-default">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div class="glass rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+          <div class="flex-1">
+            <h2 class="font-serif text-2xl sm:text-3xl font-semibold tracking-tight">See every pattern live in Storybook.</h2>
+            <p class="mt-2 text-fg-secondary max-w-xl">
+              Each pattern ships with full states, controls, and copy-paste source. The Storybook
+              entries are what we test, audit, and ship from &mdash; this page is just the index.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <a href="https://storybook.wyliedog.dev" class="inline-flex h-10 items-center gap-1.5 rounded-md btn-primary px-4 text-sm font-semibold">
+              Open Storybook
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+            <a href="Components.html" class="inline-flex h-10 items-center gap-1.5 rounded-md btn-outline px-4 text-sm font-medium">Browse components</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         <SiteFooter>
+         ===================================================================== -->
+    <footer class="border-default bg-bg-primary">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-10">
+          <div class="col-span-2 md:col-span-1">
+            <div class="flex items-center gap-2">
+              <span class="grid h-7 w-7 place-items-center rounded-md" style="background: var(--color-interactive-primary);">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--color-text-inverse);">
+                  <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/>
+                  <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+                </svg>
+              </span>
+              <span class="font-serif text-base font-semibold tracking-tight">Wylie Dog</span>
+            </div>
+            <p class="mt-3 text-sm text-fg-secondary">
+              The shared design system for everything we ship.
+            </p>
+          </div>
+
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Tokens</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="Tokens.html#colors" class="text-fg-secondary hover:text-fg">Colors</a></li>
+              <li><a href="Tokens.html#spacing" class="text-fg-secondary hover:text-fg">Spacing</a></li>
+              <li><a href="Tokens.html#typography" class="text-fg-secondary hover:text-fg">Typography</a></li>
+              <li><a href="Tokens.html#borders" class="text-fg-secondary hover:text-fg">Borders &amp; radius</a></li>
+              <li><a href="Tokens.html#shadows" class="text-fg-secondary hover:text-fg">Shadows</a></li>
+              <li><a href="Tokens.html#motion" class="text-fg-secondary hover:text-fg">Motion</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Components</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="Components.html#content-display" class="text-fg-secondary hover:text-fg">Content Display</a></li>
+              <li><a href="Components.html#inputs" class="text-fg-secondary hover:text-fg">Inputs &amp; Controls</a></li>
+              <li><a href="Components.html#navigation" class="text-fg-secondary hover:text-fg">Navigation</a></li>
+              <li><a href="Components.html#overlays" class="text-fg-secondary hover:text-fg">Overlays &amp; Popovers</a></li>
+              <li><a href="Components.html#layout" class="text-fg-secondary hover:text-fg">Layout &amp; Structure</a></li>
+              <li><a href="Components.html#feedback" class="text-fg-secondary hover:text-fg">Feedback &amp; Status</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Tools</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="Token-Bridge.html" class="text-fg-secondary hover:text-fg">Token Bridge for Figma</a></li>
+              <li><a href="https://storybook.wyliedog.dev" class="text-fg-secondary hover:text-fg">Storybook ↗</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Patterns</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="#cat-auth" class="text-fg-secondary hover:text-fg">Authentication</a></li>
+              <li><a href="#cat-data" class="text-fg-secondary hover:text-fg">Data display</a></li>
+              <li><a href="#cat-feedback" class="text-fg-secondary hover:text-fg">Feedback</a></li>
+              <li><a href="#cat-forms" class="text-fg-secondary hover:text-fg">Forms</a></li>
+              <li><a href="#cat-layout" class="text-fg-secondary hover:text-fg">Layout</a></li>
+              <li><a href="#cat-nav" class="text-fg-secondary hover:text-fg">Navigation</a></li>
+              <li><a href="#cat-page" class="text-fg-secondary hover:text-fg">Page compositions</a></li>
+              <li><a href="#cat-responsive" class="text-fg-secondary hover:text-fg">Responsive</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-10 border-t border-default pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p class="font-mono text-[11px] text-fg-tertiary">© 2026 Wylie Dog</p>
+          <div class="inline-flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+            <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">All systems operational</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+      // theme toggle (persists to localStorage; honors prefers-color-scheme)
+      (function () {
+        const root = document.documentElement;
+        const stored = localStorage.getItem("wd-theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (stored === "dark" || (!stored && prefersDark)) root.classList.add("dark");
+        function syncIcons() {
+          const dark = root.classList.contains("dark");
+          document.getElementById("icon-sun").classList.toggle("hidden", !dark);
+          document.getElementById("icon-moon").classList.toggle("hidden", dark);
+        }
+        syncIcons();
+        document.getElementById("theme-toggle").addEventListener("click", () => {
+          root.classList.toggle("dark");
+          localStorage.setItem("wd-theme", root.classList.contains("dark") ? "dark" : "light");
+          syncIcons();
+        });
+      })();
+    </script>
+  </body>
+</html>

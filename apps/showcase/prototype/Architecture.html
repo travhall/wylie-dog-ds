@@ -1,0 +1,1493 @@
+<!doctype html>
+<html lang="en" class="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Architecture · Wylie Dog Design System</title>
+
+    <!-- Tailwind (Play CDN — dev only; production uses Tailwind 4 in Next.js) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Besley:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =========================================================
+         Token surface — mirrors the @wyliedog/ui token contract.
+         Identical contract to Homepage.html and Tokens.html so
+         the artifact can be lifted straight into the Next.js app.
+         ========================================================= */
+      :root {
+        --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+        --font-serif: "Besley", ui-serif, Georgia, serif;
+        --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+        /* Backgrounds */
+        --color-background-primary: oklch(99% 0.004 250);
+        --color-background-secondary: oklch(97% 0.006 250);
+        --color-background-tertiary: oklch(94% 0.008 250);
+
+        /* Surfaces */
+        --color-surface-primary: oklch(100% 0 0);
+        --color-surface-elevated: oklch(99% 0.003 250);
+
+        /* Text */
+        --color-text-primary: oklch(20% 0.02 260);
+        --color-text-secondary: oklch(42% 0.02 260);
+        --color-text-tertiary: oklch(58% 0.015 260);
+        --color-text-inverse: oklch(99% 0.004 250);
+
+        /* Borders */
+        --color-border-primary: oklch(90% 0.01 260);
+        --color-border-secondary: oklch(94% 0.008 260);
+        --color-border-strong: oklch(80% 0.012 260);
+
+        /* Interactive */
+        --color-interactive-primary: oklch(54% 0.18 274);
+        --color-interactive-primary-hover: oklch(48% 0.19 274);
+        --color-interactive-primary-active: oklch(42% 0.2 274);
+
+        /* States */
+        --color-success: oklch(60% 0.14 155);
+        --color-warning: oklch(72% 0.15 75);
+        --color-destructive: oklch(58% 0.2 25);
+
+        /* Radius */
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+        --radius-xl: 20px;
+
+        /* Motion */
+        --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+        --ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+        --duration-fast: 120ms;
+        --duration-base: 200ms;
+        --duration-slow: 320ms;
+
+        /* Elevation */
+        --shadow-xs: 0 1px 2px -1px oklch(20% 0.05 260 / 0.08);
+        --shadow-sm: 0 1px 3px oklch(20% 0.05 260 / 0.1), 0 1px 2px -1px oklch(20% 0.05 260 / 0.06);
+        --shadow-md: 0 4px 12px -2px oklch(20% 0.05 260 / 0.12), 0 2px 4px -2px oklch(20% 0.05 260 / 0.06);
+        --shadow-lg: 0 12px 28px -8px oklch(20% 0.05 260 / 0.18), 0 4px 8px -4px oklch(20% 0.05 260 / 0.08);
+        --shadow-xl: 0 24px 48px -12px oklch(20% 0.05 260 / 0.25), 0 8px 16px -8px oklch(20% 0.05 260 / 0.1);
+      }
+
+      .dark {
+        --color-background-primary: oklch(15% 0.012 260);
+        --color-background-secondary: oklch(18% 0.014 260);
+        --color-background-tertiary: oklch(22% 0.016 260);
+        --color-surface-primary: oklch(20% 0.014 260);
+        --color-surface-elevated: oklch(24% 0.016 260);
+
+        --color-text-primary: oklch(96% 0.005 250);
+        --color-text-secondary: oklch(74% 0.012 250);
+        --color-text-tertiary: oklch(58% 0.015 250);
+        --color-text-inverse: oklch(18% 0.014 260);
+
+        --color-border-primary: oklch(30% 0.018 260);
+        --color-border-secondary: oklch(26% 0.016 260);
+        --color-border-strong: oklch(40% 0.02 260);
+
+        --color-interactive-primary: oklch(68% 0.17 274);
+        --color-interactive-primary-hover: oklch(74% 0.16 274);
+        --color-interactive-primary-active: oklch(80% 0.14 274);
+
+        --shadow-xs: 0 1px 2px -1px oklch(0% 0 0 / 0.4);
+        --shadow-sm: 0 1px 3px oklch(0% 0 0 / 0.5), 0 1px 2px -1px oklch(0% 0 0 / 0.3);
+        --shadow-md: 0 4px 12px -2px oklch(0% 0 0 / 0.55), 0 2px 4px -2px oklch(0% 0 0 / 0.3);
+        --shadow-lg: 0 12px 28px -8px oklch(0% 0 0 / 0.6), 0 4px 8px -4px oklch(0% 0 0 / 0.35);
+        --shadow-xl: 0 24px 48px -12px oklch(0% 0 0 / 0.7), 0 8px 16px -8px oklch(0% 0 0 / 0.4);
+      }
+
+      html, body {
+        background: var(--color-background-primary);
+        color: var(--color-text-primary);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .font-serif { font-family: var(--font-serif); }
+      .font-mono { font-family: var(--font-mono); }
+
+      /* ---- Signature utilities ---- */
+      .glass {
+        background: color-mix(in oklch, var(--color-surface-primary) 70%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid color-mix(in oklch, var(--color-border-primary) 80%, transparent);
+      }
+      .glass-dark {
+        background: color-mix(in oklch, var(--color-background-tertiary) 80%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid color-mix(in oklch, var(--color-border-primary) 70%, transparent);
+      }
+      .grid-bg {
+        background-image: radial-gradient(
+          color-mix(in oklch, var(--color-text-primary) 14%, transparent) 1px,
+          transparent 1px
+        );
+        background-size: 24px 24px;
+      }
+      .hero-gradient {
+        background: radial-gradient(
+          ellipse 80% 60% at 50% 0%,
+          color-mix(in oklch, var(--color-interactive-primary) 22%, transparent) 0%,
+          transparent 60%
+        );
+      }
+      .kbd {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        line-height: 1;
+        padding: 4px 7px;
+        border-radius: 6px;
+        background: var(--color-surface-primary);
+        border: 1px solid var(--color-border-primary);
+        border-bottom-width: 2px;
+        color: var(--color-text-secondary);
+        display: inline-flex;
+        align-items: center;
+      }
+      .kbd-sm { font-size: 0.6875rem; padding: 2px 5px; }
+
+      /* token-bridge utilities matching Homepage / Tokens */
+      .bg-surface { background: var(--color-surface-primary); }
+      .bg-surface-elev { background: var(--color-surface-elevated); }
+      .bg-bg-primary { background: var(--color-background-primary); }
+      .bg-bg-secondary { background: var(--color-background-secondary); }
+      .bg-bg-tertiary { background: var(--color-background-tertiary); }
+      .text-fg { color: var(--color-text-primary); }
+      .text-fg-secondary { color: var(--color-text-secondary); }
+      .text-fg-tertiary { color: var(--color-text-tertiary); }
+      .text-interactive { color: var(--color-interactive-primary); }
+      .border-default { border-color: var(--color-border-primary); }
+      .border-secondary { border-color: var(--color-border-secondary); }
+      .border-strong { border-color: var(--color-border-strong); }
+
+      .btn-primary { background: var(--color-interactive-primary); color: var(--color-text-inverse); }
+      .btn-primary:hover { background: var(--color-interactive-primary-hover); }
+      .btn-outline {
+        background: transparent;
+        color: var(--color-text-primary);
+        border: 1px solid var(--color-border-strong);
+      }
+      .btn-outline:hover { background: var(--color-background-secondary); }
+      .btn-ghost { background: transparent; color: var(--color-text-secondary); }
+      .btn-ghost:hover { background: var(--color-background-secondary); color: var(--color-text-primary); }
+
+      .card-interactive { transition: border-color 160ms var(--ease-standard), transform 160ms var(--ease-standard), background 160ms var(--ease-standard); }
+      .card-interactive:hover { border-color: var(--color-border-strong); background: var(--color-surface-elevated); }
+
+      ::selection {
+        background: color-mix(in oklch, var(--color-interactive-primary) 30%, transparent);
+        color: var(--color-text-primary);
+      }
+      * { scrollbar-width: thin; scrollbar-color: var(--color-border-strong) transparent; }
+
+      /* ============================================================
+         Architecture-specific visuals
+         ============================================================ */
+
+      /* Dependency graph — animated dashed edges */
+      .edge-line {
+        stroke: color-mix(in oklch, var(--color-interactive-primary) 55%, transparent);
+        stroke-width: 1.4;
+        fill: none;
+        stroke-dasharray: 4 4;
+        animation: edge-flow 3s linear infinite;
+      }
+      .edge-line.muted {
+        stroke: var(--color-border-strong);
+        animation-duration: 5s;
+      }
+      @keyframes edge-flow {
+        from { stroke-dashoffset: 16; }
+        to   { stroke-dashoffset: 0; }
+      }
+
+      .node {
+        font-family: var(--font-mono);
+        transition: transform var(--duration-base) var(--ease-standard);
+      }
+      .node:hover { transform: translateY(-1px); }
+
+      /* Pipeline stage card — used in token pipeline section */
+      .stage {
+        position: relative;
+        background: var(--color-surface-primary);
+        border: 1px solid var(--color-border-primary);
+        border-radius: var(--radius-lg);
+      }
+      .stage-label {
+        position: absolute;
+        top: -10px; left: 16px;
+        padding: 2px 8px;
+        background: var(--color-background-primary);
+        border: 1px solid var(--color-border-primary);
+        border-radius: 999px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--color-text-tertiary);
+      }
+
+      /* Cascade beam from Tokens.html — brought back for the pipeline */
+      .cascade-beam {
+        position: absolute; left: 0; right: 0; top: 50%;
+        height: 1px; transform: translateY(-50%);
+        background-image: linear-gradient(to right,
+          transparent 0%,
+          color-mix(in oklch, var(--color-interactive-primary) 35%, transparent) 18%,
+          color-mix(in oklch, var(--color-interactive-primary) 80%, transparent) 50%,
+          color-mix(in oklch, var(--color-interactive-primary) 35%, transparent) 82%,
+          transparent 100%);
+      }
+      .cascade-beam::after {
+        content: ""; position: absolute; right: 22%; top: -2px;
+        width: 5px; height: 5px; border-radius: 50%;
+        background: var(--color-interactive-primary);
+        box-shadow: 0 0 0 4px color-mix(in oklch, var(--color-interactive-primary) 25%, transparent);
+        animation: pulse-beam 2.4s var(--ease-standard) infinite;
+      }
+      @keyframes pulse-beam {
+        0%   { right: 100%; opacity: 0; }
+        10%  { opacity: 1; }
+        90%  { opacity: 1; }
+        100% { right: 0%; opacity: 0; }
+      }
+
+      /* Code block treatment */
+      pre.code-block {
+        background: var(--color-background-secondary);
+        border: 1px solid var(--color-border-primary);
+        border-radius: var(--radius-md);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        line-height: 1.6;
+        padding: 16px 18px;
+        overflow-x: auto;
+        color: var(--color-text-primary);
+        white-space: pre;
+        tab-size: 2;
+      }
+      pre.code-block .c-key   { color: oklch(54% 0.18 274); }
+      pre.code-block .c-str   { color: oklch(50% 0.14 155); }
+      pre.code-block .c-num   { color: oklch(58% 0.14 35); }
+      pre.code-block .c-com   { color: var(--color-text-tertiary); font-style: italic; }
+      pre.code-block .c-kw    { color: oklch(48% 0.18 320); }
+      pre.code-block .c-fn    { color: oklch(48% 0.14 200); }
+      pre.code-block .c-type  { color: oklch(52% 0.13 75); }
+      pre.code-block .c-tag   { color: oklch(48% 0.18 274); }
+      pre.code-block .c-attr  { color: oklch(54% 0.14 35); }
+      pre.code-block .c-punc  { color: var(--color-text-secondary); }
+      .dark pre.code-block .c-key  { color: oklch(74% 0.16 274); }
+      .dark pre.code-block .c-str  { color: oklch(72% 0.14 155); }
+      .dark pre.code-block .c-num  { color: oklch(76% 0.14 35); }
+      .dark pre.code-block .c-kw   { color: oklch(76% 0.16 320); }
+      .dark pre.code-block .c-fn   { color: oklch(76% 0.13 200); }
+      .dark pre.code-block .c-type { color: oklch(78% 0.12 75); }
+      .dark pre.code-block .c-tag  { color: oklch(74% 0.16 274); }
+      .dark pre.code-block .c-attr { color: oklch(76% 0.13 35); }
+
+      /* Annotation lines for the component anatomy diagram */
+      .anno-line {
+        stroke: var(--color-border-strong);
+        stroke-width: 1;
+        fill: none;
+      }
+      .anno-line.active { stroke: var(--color-interactive-primary); }
+      .anno-dot { fill: var(--color-interactive-primary); }
+
+      /* Build flow rail */
+      .rail {
+        background-image: linear-gradient(to right,
+          transparent 0%,
+          color-mix(in oklch, var(--color-border-strong) 80%, transparent) 8%,
+          color-mix(in oklch, var(--color-border-strong) 80%, transparent) 92%,
+          transparent 100%);
+      }
+
+      /* Terminal */
+      .term {
+        background: oklch(18% 0.014 260);
+        color: oklch(92% 0.01 260);
+        border-radius: var(--radius-lg);
+        font-family: var(--font-mono);
+        border: 1px solid color-mix(in oklch, var(--color-border-primary) 60%, transparent);
+        overflow: hidden;
+      }
+      .dark .term { background: oklch(12% 0.012 260); }
+      .term .term-bar {
+        background: oklch(22% 0.014 260);
+        border-bottom: 1px solid oklch(28% 0.014 260);
+      }
+      .term .prompt { color: oklch(72% 0.14 155); }
+      .term .flag { color: oklch(74% 0.14 274); }
+      .term .dim { color: oklch(60% 0.012 260); }
+      .term .ok { color: oklch(72% 0.14 155); }
+      .term .warn { color: oklch(78% 0.15 75); }
+      .term .file { color: oklch(80% 0.12 35); }
+
+      /* Animated build dot */
+      .build-dot {
+        animation: blink 1.2s var(--ease-standard) infinite;
+      }
+      @keyframes blink {
+        0%, 60%, 100% { opacity: 1; }
+        80% { opacity: 0.25; }
+      }
+
+      /* Table-style file tree rows */
+      .tree-row { display: grid; grid-template-columns: 1.2rem 1fr auto; align-items: center; gap: 6px; padding: 4px 0; }
+
+      /* Subtle vertical drop shadow under cards in dark to lift them */
+      .lift { box-shadow: var(--shadow-md); }
+    </style>
+  </head>
+
+  <body class="min-h-screen antialiased">
+    <!-- =====================================================================
+         <SiteHeader> — same shell as other pages, "Architecture" active
+         ===================================================================== -->
+    <header class="sticky top-0 z-40 border-b border-default bg-bg-primary/80 backdrop-blur-md">
+      <div class="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+        <a href="Homepage.html" class="flex items-center gap-2 shrink-0">
+          <span class="grid h-7 w-7 place-items-center rounded-md" style="background: var(--color-interactive-primary);">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--color-text-inverse);">
+              <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/>
+              <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="font-serif text-[1.0625rem] font-semibold tracking-tight">Wylie Dog</span>
+          <span class="hidden sm:inline font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">design system</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="Homepage.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Overview</a>
+          <a href="Architecture.html" class="rounded-md px-3 py-1.5 text-sm font-medium" style="background: var(--color-background-secondary);">Architecture</a>
+          <a href="Tokens.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Tokens</a>
+          <a href="Components.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Components</a>
+          <a href="Patterns.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Patterns</a>
+          <a href="Token-Bridge.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Token Bridge</a>
+        </nav>
+
+        <div class="ml-auto flex items-center gap-2">
+          <button class="hidden sm:flex h-8 items-center gap-2 rounded-md border border-default bg-bg-secondary px-2.5 text-sm text-fg-tertiary hover:text-fg-secondary">
+            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <span>Search</span>
+            <span class="kbd kbd-sm ml-6">⌘K</span>
+          </button>
+
+          <button id="theme-toggle" aria-label="Toggle theme" class="grid h-8 w-8 place-items-center rounded-md text-fg-secondary hover:text-fg btn-ghost">
+            <svg id="icon-sun" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <svg id="icon-moon" viewBox="0 0 24 24" class="hidden h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+
+          <a href="https://storybook.wyliedog.dev" class="hidden sm:inline-flex h-8 items-center gap-1.5 rounded-md btn-outline px-3 text-sm font-medium">
+            Storybook
+            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- =====================================================================
+         HERO — "The monorepo that ships everything"
+         Right side: live dependency graph (real, not lorem boxes).
+         ===================================================================== -->
+    <section class="relative overflow-hidden border-b border-default">
+      <div class="absolute inset-0 grid-bg opacity-60"></div>
+      <div class="absolute inset-0 hero-gradient"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-24 lg:pb-28">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <!-- Left: messaging -->
+          <div class="lg:col-span-5">
+            <div class="inline-flex items-center gap-2 rounded-full border border-default bg-surface/60 px-3 py-1">
+              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-secondary">02 · Architecture</span>
+              <span class="text-fg-tertiary">·</span>
+              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">pnpm workspaces</span>
+            </div>
+
+            <h1 class="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.25rem] font-semibold tracking-tight leading-[0.98]">
+              The monorepo that <span class="text-interactive">ships everything</span>.
+            </h1>
+
+            <p class="mt-6 max-w-lg text-lg text-fg-secondary text-balance">
+              Two packages, two apps, one cascade. Tokens flow into UI, UI flows into Storybook and
+              the public showcase &mdash; all wired at install time, no copy-paste between repos.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#packages" class="inline-flex h-10 items-center gap-2 rounded-md btn-primary px-4 text-sm font-semibold">
+                Tour the packages
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a href="#build-flow" class="inline-flex h-10 items-center gap-2 rounded-md btn-outline px-4 text-sm font-medium">
+                See the build flow
+              </a>
+            </div>
+
+            <!-- meta strip -->
+            <dl class="mt-10 grid grid-cols-3 gap-6 max-w-md">
+              <div>
+                <dt class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Packages</dt>
+                <dd class="mt-1 flex items-baseline gap-1">
+                  <span class="font-serif text-2xl font-semibold">2</span>
+                  <span class="text-xs text-fg-tertiary">+ 2 apps</span>
+                </dd>
+              </div>
+              <div>
+                <dt class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Token tiers</dt>
+                <dd class="mt-1 flex items-baseline gap-1">
+                  <span class="font-serif text-2xl font-semibold">3</span>
+                  <span class="text-xs text-fg-tertiary">primitive → comp.</span>
+                </dd>
+              </div>
+              <div>
+                <dt class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Cold build</dt>
+                <dd class="mt-1 flex items-baseline gap-1">
+                  <span class="font-serif text-2xl font-semibold">11<span class="text-base font-mono text-fg-secondary">s</span></span>
+                  <span class="text-xs text-fg-tertiary">tokens + ui</span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Right: dependency graph -->
+          <div class="lg:col-span-7">
+            <div class="relative">
+              <div class="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary">
+                <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="6" cy="18" r="2"/><path d="M6 8v8M8 6h8M8 18h8"/></svg>
+                Dependency graph
+              </div>
+
+              <div class="glass rounded-2xl p-5 sm:p-7 lift">
+                <!-- Graph -->
+                <div class="relative">
+                  <svg viewBox="0 0 560 360" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <!-- edges drawn behind nodes -->
+                    <!-- tokens -> ui -->
+                    <path class="edge-line" d="M 280 296 L 280 232" />
+                    <!-- ui -> storybook (top-left consumer) -->
+                    <path class="edge-line" d="M 240 168 C 200 130, 150 110, 120 86" />
+                    <!-- ui -> showcase (top-right consumer) -->
+                    <path class="edge-line" d="M 320 168 C 360 130, 410 110, 440 86" />
+                    <!-- tokens -> token bridge (Figma side, dotted) -->
+                    <path class="edge-line muted" d="M 320 320 C 400 320, 470 290, 510 250" />
+
+                    <!-- arrowhead defs -->
+                    <defs>
+                      <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-interactive-primary)"/>
+                      </marker>
+                    </defs>
+
+                    <!-- arrowheads as small triangles (decoupled from path animation) -->
+                    <polygon points="276,232 284,232 280,224" fill="var(--color-interactive-primary)"/>
+                    <polygon points="116,90 124,90 120,82" fill="var(--color-interactive-primary)"/>
+                    <polygon points="436,90 444,90 440,82" fill="var(--color-interactive-primary)"/>
+                  </svg>
+
+                  <!-- DOM-positioned node cards layered on top of SVG -->
+                  <div class="absolute inset-0">
+                    <!-- apps/storybook (top-left) -->
+                    <a href="#packages" class="node absolute" style="top: 4%; left: 4%; width: 38%;">
+                      <div class="rounded-lg border border-default bg-surface p-3 lift">
+                        <div class="flex items-center justify-between">
+                          <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">
+                            <span class="h-1.5 w-1.5 rounded-full" style="background: oklch(72% 0.15 35);"></span>
+                            App
+                          </span>
+                          <span class="font-mono text-[10px] text-fg-tertiary">10.2.1</span>
+                        </div>
+                        <p class="mt-1.5 text-sm font-semibold text-fg">apps/storybook</p>
+                        <p class="font-mono text-[10px] text-fg-secondary mt-0.5">component docs</p>
+                      </div>
+                    </a>
+
+                    <!-- apps/showcase (top-right) -->
+                    <a href="#packages" class="node absolute" style="top: 4%; right: 4%; width: 38%;">
+                      <div class="rounded-lg border border-default bg-surface p-3 lift">
+                        <div class="flex items-center justify-between">
+                          <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">
+                            <span class="h-1.5 w-1.5 rounded-full" style="background: oklch(72% 0.15 200);"></span>
+                            App
+                          </span>
+                          <span class="font-mono text-[10px] text-fg-tertiary">Next.js 16</span>
+                        </div>
+                        <p class="mt-1.5 text-sm font-semibold text-fg">apps/showcase</p>
+                        <p class="font-mono text-[10px] text-fg-secondary mt-0.5">this site</p>
+                      </div>
+                    </a>
+
+                    <!-- packages/ui (middle) -->
+                    <a href="#packages" class="node absolute" style="top: 42%; left: 26%; right: 26%;">
+                      <div class="rounded-xl border-2 p-3.5 lift" style="border-color: var(--color-interactive-primary); background: var(--color-surface-elevated);">
+                        <div class="flex items-center justify-between">
+                          <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider" style="color: var(--color-interactive-primary);">
+                            <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-interactive-primary);"></span>
+                            Package · components
+                          </span>
+                          <span class="font-mono text-[10px] text-fg-tertiary">v1.4.0</span>
+                        </div>
+                        <p class="mt-1.5 text-sm font-semibold">packages/ui</p>
+                        <p class="font-mono text-[10px] text-fg-secondary mt-0.5">42 React components on Radix</p>
+                      </div>
+                    </a>
+
+                    <!-- packages/tokens (bottom) -->
+                    <a href="Tokens.html" class="node absolute" style="bottom: 4%; left: 26%; right: 26%;">
+                      <div class="rounded-xl border border-default bg-surface p-3.5 lift">
+                        <div class="flex items-center justify-between">
+                          <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">
+                            <span class="h-1.5 w-1.5 rounded-full" style="background: oklch(72% 0.15 274);"></span>
+                            Package · tokens
+                          </span>
+                          <span class="font-mono text-[10px] text-fg-tertiary">v1.4.0</span>
+                        </div>
+                        <p class="mt-1.5 text-sm font-semibold">packages/tokens</p>
+                        <p class="font-mono text-[10px] text-fg-secondary mt-0.5">340 OKLCH design tokens</p>
+                      </div>
+                    </a>
+
+                    <!-- Token Bridge satellite -->
+                    <div class="absolute" style="bottom: 24%; right: 1%; width: 18%;">
+                      <div class="rounded-md border border-dashed border-strong bg-bg-primary/70 p-2">
+                        <p class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">Figma plugin</p>
+                        <p class="text-[11px] font-semibold mt-0.5 leading-tight">Token Bridge</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="mt-6 pt-4 border-t border-default flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">
+                  <span class="inline-flex items-center gap-1.5">
+                    <span class="inline-block h-px w-6" style="border-top: 1.4px dashed var(--color-interactive-primary);"></span>
+                    workspace dep
+                  </span>
+                  <span class="inline-flex items-center gap-1.5">
+                    <span class="inline-block h-px w-6" style="border-top: 1.4px dashed var(--color-border-strong);"></span>
+                    sync only (no install)
+                  </span>
+                  <span class="ml-auto inline-flex items-center gap-1.5 normal-case">
+                    <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+                    <span class="text-fg-secondary">graph in sync · 4m ago</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary">
+                <span>4 nodes · 3 edges</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 1 — PACKAGE OVERVIEW
+         Four cards, real role / tech / consumers
+         ===================================================================== -->
+    <section id="packages" class="border-b border-default">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-10 mb-12">
+          <div class="lg:col-span-5">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">01 · Workspaces</span>
+            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
+              Two packages, two apps.
+            </h2>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-fg-secondary text-lg text-balance">
+              Each workspace has one job. Tokens publish raw values; UI publishes typed components;
+              Storybook documents them; Showcase puts them in front of the world.
+              No package reaches across &mdash; all dependencies flow upward through
+              <span class="font-mono text-sm">@wyliedog/*</span>.
+            </p>
+          </div>
+        </div>
+
+        <!-- file tree + cards -->
+        <div class="grid lg:grid-cols-12 gap-3 lg:gap-4">
+          <!-- file tree (sticky left) -->
+          <aside class="lg:col-span-4">
+            <div class="rounded-xl border border-default bg-surface p-5 lift">
+              <div class="flex items-center justify-between mb-3">
+                <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Repo layout</p>
+                <span class="font-mono text-[10px] text-fg-tertiary">pnpm-workspace.yaml</span>
+              </div>
+              <div class="font-mono text-[12px] leading-[1.65] text-fg-secondary">
+                <div class="tree-row">
+                  <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-9l-2-3H4a1 1 0 0 0-1 1v1z"/></svg>
+                  <span class="text-fg">wyliedog/</span>
+                  <span class="text-fg-tertiary text-[10px]">root</span>
+                </div>
+                <div class="pl-4 border-l border-default ml-1.5">
+                  <div class="tree-row">
+                    <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-9l-2-3H4a1 1 0 0 0-1 1v1z"/></svg>
+                    <span>apps/</span>
+                    <span></span>
+                  </div>
+                  <div class="pl-4 border-l border-default ml-1.5">
+                    <div class="tree-row">
+                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-9l-2-3H4a1 1 0 0 0-1 1v1z"/></svg>
+                      <span class="text-fg">storybook/</span>
+                      <span class="font-mono text-[10px] text-fg-tertiary">10.2</span>
+                    </div>
+                    <div class="tree-row">
+                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-9l-2-3H4a1 1 0 0 0-1 1v1z"/></svg>
+                      <span class="text-fg">showcase/</span>
+                      <span class="font-mono text-[10px] text-fg-tertiary">Next 16</span>
+                    </div>
+                  </div>
+                  <div class="tree-row">
+                    <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-9l-2-3H4a1 1 0 0 0-1 1v1z"/></svg>
+                    <span>packages/</span>
+                    <span></span>
+                  </div>
+                  <div class="pl-4 border-l border-default ml-1.5">
+                    <div class="tree-row">
+                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-9l-2-3H4a1 1 0 0 0-1 1v1z"/></svg>
+                      <span class="text-fg">tokens/</span>
+                      <span class="font-mono text-[10px] text-fg-tertiary">style-dict</span>
+                    </div>
+                    <div class="tree-row">
+                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-9l-2-3H4a1 1 0 0 0-1 1v1z"/></svg>
+                      <span class="text-fg">ui/</span>
+                      <span class="font-mono text-[10px] text-fg-tertiary">React 19</span>
+                    </div>
+                  </div>
+                  <div class="tree-row">
+                    <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                    <span>pnpm-workspace.yaml</span>
+                    <span></span>
+                  </div>
+                  <div class="tree-row">
+                    <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                    <span>turbo.json</span>
+                    <span></span>
+                  </div>
+                  <div class="tree-row">
+                    <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                    <span>tsconfig.base.json</span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- pnpm workspace snippet -->
+              <div class="mt-5">
+                <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary mb-2">pnpm-workspace.yaml</p>
+<pre class="code-block"><span class="c-key">packages</span><span class="c-punc">:</span>
+  <span class="c-punc">-</span> <span class="c-str">"packages/*"</span>
+  <span class="c-punc">-</span> <span class="c-str">"apps/*"</span></pre>
+              </div>
+            </div>
+          </aside>
+
+          <!-- 4 package cards -->
+          <div class="lg:col-span-8 grid sm:grid-cols-2 gap-3">
+            <!-- packages/tokens -->
+            <article class="rounded-xl border border-default bg-surface p-5 flex flex-col card-interactive">
+              <header class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-2">
+                  <span class="grid h-8 w-8 place-items-center rounded-md" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/></svg>
+                  </span>
+                  <div>
+                    <p class="text-xs font-mono text-fg-tertiary">@wyliedog/tokens</p>
+                    <h3 class="font-semibold text-base">packages/tokens</h3>
+                  </div>
+                </div>
+                <span class="font-mono text-[10px] text-fg-tertiary mt-1">v1.4.0</span>
+              </header>
+
+              <p class="mt-4 text-sm text-fg-secondary">
+                The single source of truth. Source JSON files plus a Style Dictionary config that
+                emits <span class="font-mono text-xs">tokens.css</span> with primitive, semantic, and
+                component tiers as CSS custom properties.
+              </p>
+
+              <dl class="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-[11px]">
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Stack</dt>
+                <dd class="text-fg-secondary">Style Dictionary · TypeScript</dd>
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Outputs</dt>
+                <dd class="text-fg-secondary">tokens.css · tokens.js · tokens.d.ts</dd>
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Depended on by</dt>
+                <dd class="flex flex-wrap gap-1">
+                  <span class="inline-flex items-center rounded-full border border-default px-1.5 py-0.5 font-mono text-[10px]">@wyliedog/ui</span>
+                </dd>
+              </dl>
+
+              <footer class="mt-auto pt-4 border-t border-default mt-5 flex items-center gap-2 text-[11px] font-mono text-fg-tertiary">
+                <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                340 tokens · 6 categories
+              </footer>
+            </article>
+
+            <!-- packages/ui -->
+            <article class="rounded-xl border border-default bg-surface p-5 flex flex-col card-interactive">
+              <header class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-2">
+                  <span class="grid h-8 w-8 place-items-center rounded-md" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                  </span>
+                  <div>
+                    <p class="text-xs font-mono text-fg-tertiary">@wyliedog/ui</p>
+                    <h3 class="font-semibold text-base">packages/ui</h3>
+                  </div>
+                </div>
+                <span class="font-mono text-[10px] text-fg-tertiary mt-1">v1.4.0</span>
+              </header>
+
+              <p class="mt-4 text-sm text-fg-secondary">
+                42 typed React components, each a forwardRef wrapper around a Radix primitive with
+                CVA variants. Imports tokens.css and re-exports it as
+                <span class="font-mono text-xs">@wyliedog/ui/styles</span>.
+              </p>
+
+              <dl class="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-[11px]">
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Stack</dt>
+                <dd class="text-fg-secondary">React 19 · TS 5.9 · Vite 7</dd>
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Foundation</dt>
+                <dd class="text-fg-secondary">Radix UI · CVA · Slot</dd>
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Depended on by</dt>
+                <dd class="flex flex-wrap gap-1">
+                  <span class="inline-flex items-center rounded-full border border-default px-1.5 py-0.5 font-mono text-[10px]">storybook</span>
+                  <span class="inline-flex items-center rounded-full border border-default px-1.5 py-0.5 font-mono text-[10px]">showcase</span>
+                </dd>
+              </dl>
+
+              <footer class="mt-auto pt-4 border-t border-default mt-5 flex items-center gap-2 text-[11px] font-mono text-fg-tertiary">
+                <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+                tree-shakeable · subpath exports
+              </footer>
+            </article>
+
+            <!-- apps/storybook -->
+            <article class="rounded-xl border border-default bg-surface p-5 flex flex-col card-interactive">
+              <header class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-2">
+                  <span class="grid h-8 w-8 place-items-center rounded-md" style="background: color-mix(in oklch, oklch(72% 0.15 35) 22%, transparent); color: oklch(58% 0.18 35);">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h12a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H4z"/><path d="M8 9h8M8 13h6"/></svg>
+                  </span>
+                  <div>
+                    <p class="text-xs font-mono text-fg-tertiary">@wyliedog/storybook</p>
+                    <h3 class="font-semibold text-base">apps/storybook</h3>
+                  </div>
+                </div>
+                <span class="font-mono text-[10px] text-fg-tertiary mt-1">v10.2.1</span>
+              </header>
+
+              <p class="mt-4 text-sm text-fg-secondary">
+                Component documentation and the pattern playground. Every export from
+                <span class="font-mono text-xs">@wyliedog/ui</span> has a story; every story is its
+                own a11y harness, prop matrix, and visual diff target.
+              </p>
+
+              <dl class="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-[11px]">
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Stack</dt>
+                <dd class="text-fg-secondary">Storybook 10.2 · Vite 7</dd>
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Consumes</dt>
+                <dd class="font-mono text-fg-secondary">@wyliedog/ui</dd>
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Deploy</dt>
+                <dd class="text-fg-secondary">storybook.wyliedog.dev · Vercel</dd>
+              </dl>
+
+              <footer class="mt-auto pt-4 border-t border-default mt-5 flex items-center gap-2 text-[11px] font-mono text-fg-tertiary">
+                <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+                184 stories · 0 a11y warnings
+              </footer>
+            </article>
+
+            <!-- apps/showcase -->
+            <article class="rounded-xl border border-default bg-surface p-5 flex flex-col card-interactive">
+              <header class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-2">
+                  <span class="grid h-8 w-8 place-items-center rounded-md" style="background: color-mix(in oklch, oklch(72% 0.15 200) 22%, transparent); color: oklch(48% 0.16 200);">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                  </span>
+                  <div>
+                    <p class="text-xs font-mono text-fg-tertiary">@wyliedog/showcase</p>
+                    <h3 class="font-semibold text-base">apps/showcase</h3>
+                  </div>
+                </div>
+                <span class="font-mono text-[10px] text-fg-tertiary mt-1">Next 16</span>
+              </header>
+
+              <p class="mt-4 text-sm text-fg-secondary">
+                The page you're reading. A Next.js 16 App Router site that consumes
+                <span class="font-mono text-xs">@wyliedog/ui</span> as its only component dependency
+                &mdash; the marketing site eats its own design system.
+              </p>
+
+              <dl class="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 text-[11px]">
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Stack</dt>
+                <dd class="text-fg-secondary">Next.js 16 · App Router</dd>
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Consumes</dt>
+                <dd class="font-mono text-fg-secondary">@wyliedog/ui</dd>
+                <dt class="font-mono uppercase tracking-wider text-fg-tertiary">Deploy</dt>
+                <dd class="text-fg-secondary">wyliedog.dev · Vercel edge</dd>
+              </dl>
+
+              <footer class="mt-auto pt-4 border-t border-default mt-5 flex items-center gap-2 text-[11px] font-mono text-fg-tertiary">
+                <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>
+                Lighthouse 100 · LCP 0.8s
+              </footer>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 2 — TOKEN PIPELINE
+         JSON sources → Style Dictionary → tokens.css → Tailwind 4
+         ===================================================================== -->
+    <section class="border-b border-default bg-bg-secondary">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-10 mb-10">
+          <div class="lg:col-span-5">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">02 · Token pipeline</span>
+            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
+              From JSON to <span class="text-interactive">CSS variables</span>, in three tiers.
+            </h2>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-fg-secondary text-lg text-balance">
+              Source files describe the design intent in human terms. Style Dictionary expands them
+              into raw values, role aliases, and component-specific surfaces &mdash; all emitted as a
+              single <span class="font-mono text-sm">tokens.css</span> that Tailwind 4 reads at build time.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pipeline lane: 4 columns connected by a beam -->
+        <div class="relative">
+          <div class="cascade-beam hidden lg:block" style="top: 38%;"></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-4">
+
+            <!-- STAGE 1 — JSON source -->
+            <div class="stage p-5 pt-7">
+              <span class="stage-label">01 · source</span>
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-[10px] text-fg-tertiary">packages/tokens/src/</span>
+              </div>
+              <h3 class="mt-1 font-semibold text-sm">color.primitive.json</h3>
+
+<pre class="code-block mt-3" style="font-size: 11px;"><span class="c-punc">{</span>
+  <span class="c-key">"color"</span><span class="c-punc">:</span> <span class="c-punc">{</span>
+    <span class="c-key">"violet"</span><span class="c-punc">:</span> <span class="c-punc">{</span>
+      <span class="c-key">"500"</span><span class="c-punc">:</span> <span class="c-punc">{</span>
+        <span class="c-key">"value"</span><span class="c-punc">:</span> <span class="c-str">"oklch(54% .18 274)"</span>
+      <span class="c-punc">}</span>
+    <span class="c-punc">}</span>
+  <span class="c-punc">}</span>
+<span class="c-punc">}</span></pre>
+
+              <div class="mt-3 flex items-center gap-2 text-[11px] text-fg-tertiary font-mono">
+                <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                184 primitive entries
+              </div>
+            </div>
+
+            <!-- STAGE 2 — Style Dictionary transform -->
+            <div class="stage p-5 pt-7">
+              <span class="stage-label">02 · transform</span>
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-[10px] text-fg-tertiary">style-dictionary.config.ts</span>
+              </div>
+              <h3 class="mt-1 font-semibold text-sm">build pipeline</h3>
+
+              <ul class="mt-3 space-y-2 text-[11px] font-mono">
+                <li class="flex items-center gap-2">
+                  <span class="grid h-4 w-4 place-items-center rounded text-[10px]" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">1</span>
+                  <span class="text-fg-secondary">parse JSON refs</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="grid h-4 w-4 place-items-center rounded text-[10px]" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">2</span>
+                  <span class="text-fg-secondary">resolve alias chains</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="grid h-4 w-4 place-items-center rounded text-[10px]" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">3</span>
+                  <span class="text-fg-secondary">attribute/cti naming</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="grid h-4 w-4 place-items-center rounded text-[10px]" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">4</span>
+                  <span class="text-fg-secondary">format → css/variables</span>
+                </li>
+              </ul>
+
+              <div class="mt-4 rounded-md border border-default bg-bg-primary px-3 py-2 flex items-center gap-2 text-[11px] font-mono">
+                <span class="build-dot inline-block h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+                <span class="text-fg-secondary">style-dictionary build</span>
+                <span class="ml-auto text-fg-tertiary">2.4s</span>
+              </div>
+            </div>
+
+            <!-- STAGE 3 — tokens.css output -->
+            <div class="stage p-5 pt-7">
+              <span class="stage-label">03 · output</span>
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-[10px] text-fg-tertiary">packages/tokens/dist/</span>
+              </div>
+              <h3 class="mt-1 font-semibold text-sm">tokens.css</h3>
+
+<pre class="code-block mt-3" style="font-size: 11px;"><span class="c-com">/* primitive */</span>
+<span class="c-attr">--color-violet-500</span><span class="c-punc">:</span> <span class="c-fn">oklch</span>(54% .18 274)<span class="c-punc">;</span>
+
+<span class="c-com">/* semantic */</span>
+<span class="c-attr">--color-interactive-primary</span><span class="c-punc">:</span>
+  <span class="c-fn">var</span>(<span class="c-attr">--color-violet-500</span>)<span class="c-punc">;</span>
+
+<span class="c-com">/* component */</span>
+<span class="c-attr">--color-button-primary-bg</span><span class="c-punc">:</span>
+  <span class="c-fn">var</span>(<span class="c-attr">--color-interactive-primary</span>)<span class="c-punc">;</span></pre>
+
+              <div class="mt-3 flex items-center gap-3 text-[11px] font-mono text-fg-tertiary">
+                <span class="inline-flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full" style="background: oklch(72% 0.15 274);"></span>184</span>
+                <span class="inline-flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>112</span>
+                <span class="inline-flex items-center gap-1"><span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-warning);"></span>44</span>
+                <span class="ml-auto">340 vars</span>
+              </div>
+            </div>
+
+            <!-- STAGE 4 — Tailwind 4 consumption -->
+            <div class="stage p-5 pt-7">
+              <span class="stage-label">04 · consume</span>
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-[10px] text-fg-tertiary">JSX · Tailwind 4</span>
+              </div>
+              <h3 class="mt-1 font-semibold text-sm">Button.tsx</h3>
+
+<pre class="code-block mt-3" style="font-size: 11px;"><span class="c-punc">&lt;</span><span class="c-tag">button</span>
+  <span class="c-attr">className</span><span class="c-punc">=</span><span class="c-str">"</span>
+    <span class="c-str">bg-(--color-button-primary-bg)</span>
+    <span class="c-str">text-(--color-text-inverse)</span>
+    <span class="c-str">rounded-(--radius-md)</span>
+    <span class="c-str">px-4 h-10 text-sm font-semibold</span>
+  <span class="c-str">"</span>
+<span class="c-punc">&gt;</span>
+  Save changes
+<span class="c-punc">&lt;/</span><span class="c-tag">button</span><span class="c-punc">&gt;</span></pre>
+
+              <!-- live result -->
+              <div class="mt-3 rounded-md border border-default bg-bg-primary p-3">
+                <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary mb-2">render</p>
+                <button class="inline-flex h-9 items-center rounded-md btn-primary px-3.5 text-xs font-semibold">Save changes</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- inline narrative under the lane -->
+          <div class="mt-10 grid lg:grid-cols-3 gap-6">
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Tier 1 · primitive</p>
+              <p class="mt-2 text-sm text-fg-secondary">
+                Raw OKLCH ramps. <span class="font-mono text-xs">--color-violet-500</span> doesn't know
+                what it'll be used for &mdash; it just is.
+              </p>
+            </div>
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Tier 2 · semantic</p>
+              <p class="mt-2 text-sm text-fg-secondary">
+                Role aliases. <span class="font-mono text-xs">--color-interactive-primary</span> maps to
+                violet-500 in light, violet-400 in dark, and re-resolves under any future theme.
+              </p>
+            </div>
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Tier 3 · component</p>
+              <p class="mt-2 text-sm text-fg-secondary">
+                Surface-specific. <span class="font-mono text-xs">--color-button-primary-bg</span>
+                points at the semantic role &mdash; never at the primitive directly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 3 — BUILD FLOW
+         pnpm build:tokens → tokens.css → ui picks up → SB+Showcase consume
+         ===================================================================== -->
+    <section id="build-flow" class="border-b border-default">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-10 mb-10">
+          <div class="lg:col-span-5">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">03 · Build flow</span>
+            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
+              One command, four artifacts.
+            </h2>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-fg-secondary text-lg text-balance">
+              Turbo orchestrates the graph. Tokens build first, UI rebuilds against the new CSS,
+              and Storybook + Showcase pick up the changes through their workspace symlinks.
+              No package republishes &mdash; everything resolves through pnpm.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="grid lg:grid-cols-12 gap-6">
+          <!-- left: terminal -->
+          <div class="lg:col-span-5">
+            <div class="term lift">
+              <div class="term-bar flex items-center gap-2 px-3 py-2">
+                <div class="flex gap-1.5">
+                  <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(70% 0.18 25);"></span>
+                  <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(80% 0.15 85);"></span>
+                  <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(70% 0.16 145);"></span>
+                </div>
+                <span class="ml-2 text-[11px] dim">~/wyliedog · main</span>
+                <span class="ml-auto text-[10px] dim">zsh</span>
+              </div>
+              <div class="px-4 py-4 text-[12px] leading-[1.65]">
+                <div><span class="prompt">$</span> pnpm <span class="flag">build</span></div>
+                <div class="dim">turbo run build --filter=...^...</div>
+                <div class="mt-2"><span class="ok">▸</span> <span class="file">@wyliedog/tokens#build</span> <span class="dim">style-dictionary</span></div>
+                <div class="pl-4 dim">→ dist/tokens.css <span class="ok">340 vars</span></div>
+                <div class="pl-4 dim">→ dist/tokens.js</div>
+                <div class="pl-4 dim">→ dist/tokens.d.ts</div>
+                <div class="pl-4 ok">✓ done in 2.4s</div>
+                <div class="mt-2"><span class="ok">▸</span> <span class="file">@wyliedog/ui#build</span> <span class="dim">vite build</span></div>
+                <div class="pl-4 dim">→ dist/index.js   <span class="ok">194 KB</span></div>
+                <div class="pl-4 dim">→ dist/index.d.ts</div>
+                <div class="pl-4 ok">✓ done in 8.6s</div>
+                <div class="mt-2"><span class="ok">▸</span> <span class="file">@wyliedog/storybook#build</span></div>
+                <div class="pl-4 ok">✓ cached <span class="dim">(no input change)</span></div>
+                <div class="mt-2"><span class="ok">▸</span> <span class="file">@wyliedog/showcase#build</span></div>
+                <div class="pl-4 ok">✓ cached <span class="dim">(no input change)</span></div>
+                <div class="mt-3 ok">Tasks: 4 successful, 4 total</div>
+                <div class="dim">Time:  11.0s <span class="ok">>>></span> FULL TURBO</div>
+                <div class="mt-2"><span class="prompt">$</span> <span class="build-dot inline-block w-1.5 h-3 align-middle" style="background: oklch(92% 0.01 260);"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- right: build flowchart -->
+          <div class="lg:col-span-7">
+            <div class="rounded-2xl border border-default bg-surface p-6 lift">
+              <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary mb-5">Build dependency graph</p>
+
+              <!-- 4-step flow -->
+              <ol class="relative space-y-5">
+                <!-- vertical rail -->
+                <span class="absolute left-[15px] top-3 bottom-3 w-px" style="background: linear-gradient(to bottom, color-mix(in oklch, var(--color-interactive-primary) 70%, transparent), color-mix(in oklch, var(--color-interactive-primary) 70%, transparent) 70%, var(--color-border-strong));"></span>
+
+                <li class="relative pl-12">
+                  <span class="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full" style="background: var(--color-interactive-primary); color: var(--color-text-inverse);">
+                    <span class="font-mono text-xs font-semibold">1</span>
+                  </span>
+                  <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 class="font-semibold">Tokens build</h3>
+                    <span class="font-mono text-[10px] text-fg-tertiary">2.4s · style-dictionary</span>
+                  </div>
+                  <p class="mt-1 text-sm text-fg-secondary">
+                    Source JSON is parsed, aliases resolve, and the CSS-variables formatter writes
+                    <span class="font-mono text-xs">packages/tokens/dist/tokens.css</span>.
+                  </p>
+                  <div class="mt-2 inline-flex items-center gap-2 rounded-md bg-bg-secondary border border-default px-2.5 py-1 font-mono text-[11px]">
+                    <span class="text-fg-secondary">$</span>
+                    <span class="text-fg">pnpm --filter @wyliedog/tokens build</span>
+                  </div>
+                </li>
+
+                <li class="relative pl-12">
+                  <span class="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full" style="background: var(--color-interactive-primary); color: var(--color-text-inverse);">
+                    <span class="font-mono text-xs font-semibold">2</span>
+                  </span>
+                  <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 class="font-semibold">UI re-bundles against new tokens</h3>
+                    <span class="font-mono text-[10px] text-fg-tertiary">8.6s · vite</span>
+                  </div>
+                  <p class="mt-1 text-sm text-fg-secondary">
+                    Vite bundles the components and re-exports
+                    <span class="font-mono text-xs">@wyliedog/ui/styles</span>, which is just the
+                    upstream <span class="font-mono text-xs">tokens.css</span> with a CSS
+                    <span class="font-mono text-xs">@import</span>.
+                  </p>
+                  <div class="mt-2 inline-flex items-center gap-2 rounded-md bg-bg-secondary border border-default px-2.5 py-1 font-mono text-[11px]">
+                    <span class="text-fg-secondary">$</span>
+                    <span class="text-fg">pnpm --filter @wyliedog/ui build</span>
+                  </div>
+                </li>
+
+                <li class="relative pl-12">
+                  <span class="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full" style="background: var(--color-interactive-primary); color: var(--color-text-inverse);">
+                    <span class="font-mono text-xs font-semibold">3</span>
+                  </span>
+                  <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 class="font-semibold">Storybook & Showcase resolve through pnpm</h3>
+                    <span class="font-mono text-[10px] text-fg-tertiary">workspace:* · symlinks</span>
+                  </div>
+                  <p class="mt-1 text-sm text-fg-secondary">
+                    Both apps already import from <span class="font-mono text-xs">@wyliedog/ui</span>.
+                    pnpm resolves it as a <span class="font-mono text-xs">workspace:*</span> symlink &mdash;
+                    no publish step, no version drift.
+                  </p>
+                  <div class="mt-2 grid gap-1">
+                    <div class="rounded-md bg-bg-secondary border border-default px-2.5 py-1 font-mono text-[11px] flex items-center gap-2">
+                      <span class="text-fg-tertiary">apps/storybook/package.json</span>
+                      <span class="text-fg-tertiary">→</span>
+                      <span class="text-fg">"@wyliedog/ui": "workspace:*"</span>
+                    </div>
+                    <div class="rounded-md bg-bg-secondary border border-default px-2.5 py-1 font-mono text-[11px] flex items-center gap-2">
+                      <span class="text-fg-tertiary">apps/showcase/package.json</span>
+                      <span class="text-fg-tertiary">→</span>
+                      <span class="text-fg">"@wyliedog/ui": "workspace:*"</span>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="relative pl-12">
+                  <span class="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full" style="background: var(--color-interactive-primary); color: var(--color-text-inverse);">
+                    <span class="font-mono text-xs font-semibold">4</span>
+                  </span>
+                  <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 class="font-semibold">Tailwind 4 reads CSS variables at build</h3>
+                    <span class="font-mono text-[10px] text-fg-tertiary">arbitrary values</span>
+                  </div>
+                  <p class="mt-1 text-sm text-fg-secondary">
+                    Markup uses <span class="font-mono text-xs">bg-(--color-card-background)</span>
+                    syntax. Tailwind 4 expands this to the CSS variable; theme switches live, with no
+                    rebuild.
+                  </p>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- bottom strip: cache + invalidation facts -->
+        <div class="mt-8 grid sm:grid-cols-3 gap-3">
+          <div class="rounded-lg border border-default bg-bg-secondary p-4">
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Cold build</p>
+            <p class="mt-1 font-serif text-2xl font-semibold">11.0s</p>
+            <p class="text-xs text-fg-tertiary mt-0.5">tokens + ui from a clean install</p>
+          </div>
+          <div class="rounded-lg border border-default bg-bg-secondary p-4">
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Cached rebuild</p>
+            <p class="mt-1 font-serif text-2xl font-semibold">0.4s</p>
+            <p class="text-xs text-fg-tertiary mt-0.5">when only docs change · turbo cache hit</p>
+          </div>
+          <div class="rounded-lg border border-default bg-bg-secondary p-4">
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Token-only edit</p>
+            <p class="mt-1 font-serif text-2xl font-semibold">2.4s</p>
+            <p class="text-xs text-fg-tertiary mt-0.5">tokens rebuild, css hot-reloads downstream</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 4 — COMPONENT ARCHITECTURE
+         How a single component is composed: Radix → forwardRef → CVA → tokens → asChild
+         ===================================================================== -->
+    <section class="border-b border-default bg-bg-secondary">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-10 mb-10">
+          <div class="lg:col-span-5">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">04 · Component anatomy</span>
+            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
+              Every component, the same five layers.
+            </h2>
+          </div>
+          <div class="lg:col-span-7">
+            <p class="text-fg-secondary text-lg text-balance">
+              No bespoke component shapes. Every export from <span class="font-mono text-sm">@wyliedog/ui</span>
+              is a forwardRef wrapper around a Radix primitive, with CVA-driven variants, token-tier
+              classes, and an <span class="font-mono text-sm">asChild</span> escape hatch through Slot.
+            </p>
+          </div>
+        </div>
+
+        <!-- Anatomy: code on the left, annotations on the right -->
+        <div class="grid lg:grid-cols-12 gap-4">
+          <!-- code with annotation gutter -->
+          <div class="lg:col-span-7 rounded-2xl border border-default bg-surface p-5 lift">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-2">
+                <span class="grid h-7 w-7 place-items-center rounded-md" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">
+                  <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>
+                </span>
+                <p class="text-sm font-semibold">Button.tsx</p>
+              </div>
+              <span class="font-mono text-[10px] text-fg-tertiary">packages/ui/src/components/button/</span>
+            </div>
+
+<pre class="code-block" style="font-size: 12.5px; line-height: 1.7;"><span data-anno="1"><span class="c-kw">import</span> <span class="c-punc">{</span> forwardRef <span class="c-punc">}</span> <span class="c-kw">from</span> <span class="c-str">"react"</span><span class="c-punc">;</span></span>
+<span data-anno="0"><span class="c-kw">import</span> <span class="c-punc">{</span> Slot <span class="c-punc">}</span> <span class="c-kw">from</span> <span class="c-str">"@radix-ui/react-slot"</span><span class="c-punc">;</span></span>
+<span data-anno="3"><span class="c-kw">import</span> <span class="c-punc">{</span> cva<span class="c-punc">,</span> <span class="c-kw">type</span> VariantProps <span class="c-punc">}</span> <span class="c-kw">from</span> <span class="c-str">"class-variance-authority"</span><span class="c-punc">;</span></span>
+
+<span data-anno="3"><span class="c-kw">const</span> <span class="c-fn">buttonVariants</span> <span class="c-punc">=</span> <span class="c-fn">cva</span><span class="c-punc">(</span>
+  <span class="c-str">"inline-flex items-center justify-center gap-2 rounded-(--radius-md) text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-(--color-interactive-primary) disabled:opacity-50"</span><span class="c-punc">,</span>
+  <span class="c-punc">{</span>
+    <span class="c-key">variants</span><span class="c-punc">:</span> <span class="c-punc">{</span>
+      <span class="c-key">variant</span><span class="c-punc">:</span> <span class="c-punc">{</span>
+        <span class="c-key">primary</span><span class="c-punc">:</span>     <span class="c-str">"bg-(--color-button-primary-bg) text-(--color-text-inverse) hover:bg-(--color-interactive-primary-hover)"</span><span class="c-punc">,</span>
+        <span class="c-key">outline</span><span class="c-punc">:</span>     <span class="c-str">"border border-(--color-border-strong) text-(--color-text-primary) hover:bg-(--color-background-secondary)"</span><span class="c-punc">,</span>
+        <span class="c-key">ghost</span><span class="c-punc">:</span>       <span class="c-str">"text-(--color-text-secondary) hover:bg-(--color-background-secondary)"</span><span class="c-punc">,</span>
+        <span class="c-key">destructive</span><span class="c-punc">:</span> <span class="c-str">"bg-(--color-destructive) text-(--color-text-inverse)"</span>
+      <span class="c-punc">},</span>
+      <span class="c-key">size</span><span class="c-punc">:</span> <span class="c-punc">{</span>
+        <span class="c-key">sm</span><span class="c-punc">:</span> <span class="c-str">"h-8 px-3"</span><span class="c-punc">,</span>
+        <span class="c-key">md</span><span class="c-punc">:</span> <span class="c-str">"h-9 px-3.5"</span><span class="c-punc">,</span>
+        <span class="c-key">lg</span><span class="c-punc">:</span> <span class="c-str">"h-11 px-5"</span>
+      <span class="c-punc">}</span>
+    <span class="c-punc">},</span>
+    <span class="c-key">defaultVariants</span><span class="c-punc">:</span> <span class="c-punc">{</span> <span class="c-key">variant</span><span class="c-punc">:</span> <span class="c-str">"primary"</span><span class="c-punc">,</span> <span class="c-key">size</span><span class="c-punc">:</span> <span class="c-str">"md"</span> <span class="c-punc">}</span>
+  <span class="c-punc">}</span>
+<span class="c-punc">);</span></span>
+
+<span data-anno="2"><span class="c-kw">export interface</span> <span class="c-type">ButtonProps</span> <span class="c-kw">extends</span>
+  <span class="c-type">React.ButtonHTMLAttributes</span><span class="c-punc">&lt;</span><span class="c-type">HTMLButtonElement</span><span class="c-punc">&gt;,</span>
+          <span class="c-type">VariantProps</span><span class="c-punc">&lt;</span><span class="c-kw">typeof</span> buttonVariants<span class="c-punc">&gt;</span> <span class="c-punc">{</span>
+  <span class="c-key">asChild</span><span class="c-punc">?:</span> <span class="c-type">boolean</span><span class="c-punc">;</span>
+<span class="c-punc">}</span></span>
+
+<span data-anno="2"><span class="c-kw">export const</span> <span class="c-fn">Button</span> <span class="c-punc">=</span> <span class="c-fn">forwardRef</span><span class="c-punc">&lt;</span><span class="c-type">HTMLButtonElement</span><span class="c-punc">,</span> <span class="c-type">ButtonProps</span><span class="c-punc">&gt;(</span>
+  <span class="c-punc">(</span><span class="c-punc">{</span> className<span class="c-punc">,</span> variant<span class="c-punc">,</span> size<span class="c-punc">,</span> asChild <span class="c-punc">=</span> <span class="c-kw">false</span><span class="c-punc">,</span> ...props <span class="c-punc">},</span> ref<span class="c-punc">)</span> <span class="c-punc">=&gt;</span> <span class="c-punc">{</span>
+    <span class="c-kw">const</span> Comp <span class="c-punc">=</span> asChild ? Slot : <span class="c-str">"button"</span><span class="c-punc">;</span>
+    <span class="c-kw">return</span> <span class="c-punc">&lt;</span><span class="c-tag">Comp</span> <span class="c-attr">ref</span><span class="c-punc">={</span>ref<span class="c-punc">}</span> <span class="c-attr">className</span><span class="c-punc">={</span><span class="c-fn">buttonVariants</span><span class="c-punc">({</span> variant<span class="c-punc">,</span> size<span class="c-punc">,</span> className <span class="c-punc">})}</span> <span class="c-punc">{...</span>props<span class="c-punc">}</span> <span class="c-punc">/&gt;;</span>
+  <span class="c-punc">}</span>
+<span class="c-punc">);</span></span></pre>
+          </div>
+
+          <!-- annotations: clickable, highlight matching code -->
+          <aside class="lg:col-span-5 space-y-2.5">
+            <button type="button" data-anno-target="0" class="anno-card w-full text-left rounded-xl border border-default bg-surface p-4 card-interactive flex gap-3">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full font-mono text-xs font-semibold" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">1</span>
+              <div class="min-w-0">
+                <p class="text-sm font-semibold">Radix primitive provides behavior</p>
+                <p class="text-xs text-fg-secondary mt-0.5">
+                  <span class="font-mono">@radix-ui/react-slot</span> handles the <span class="font-mono">asChild</span>
+                  pattern; for components like Dialog or Tabs, the Radix primitive owns focus, keyboard,
+                  and ARIA semantics &mdash; we never re-implement them.
+                </p>
+              </div>
+            </button>
+
+            <button type="button" data-anno-target="1" class="anno-card w-full text-left rounded-xl border border-default bg-surface p-4 card-interactive flex gap-3">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full font-mono text-xs font-semibold" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">2</span>
+              <div class="min-w-0">
+                <p class="text-sm font-semibold">forwardRef wrapper · typed props</p>
+                <p class="text-xs text-fg-secondary mt-0.5">
+                  Every export is <span class="font-mono">forwardRef&lt;Element, Props&gt;</span> so refs
+                  punch through cleanly. The <span class="font-mono">ButtonProps</span> interface
+                  composes native HTML attributes with the variant types from CVA.
+                </p>
+              </div>
+            </button>
+
+            <button type="button" data-anno-target="3" class="anno-card w-full text-left rounded-xl border border-default bg-surface p-4 card-interactive flex gap-3">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full font-mono text-xs font-semibold" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">3</span>
+              <div class="min-w-0">
+                <p class="text-sm font-semibold">CVA variants · static class strings</p>
+                <p class="text-xs text-fg-secondary mt-0.5">
+                  <span class="font-mono">class-variance-authority</span> defines variants and sizes as
+                  literal strings, so Tailwind's content scan can see them. Every value is a Tailwind
+                  4 arbitrary class pointing at a token.
+                </p>
+              </div>
+            </button>
+
+            <div class="rounded-xl border border-default bg-surface p-4 flex gap-3">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full font-mono text-xs font-semibold" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">4</span>
+              <div class="min-w-0">
+                <p class="text-sm font-semibold">Token classes · component → semantic</p>
+                <p class="text-xs text-fg-secondary mt-0.5">
+                  Buttons reference <span class="font-mono">--color-button-primary-bg</span>, which
+                  resolves to <span class="font-mono">--color-interactive-primary</span>. Theme
+                  switches and brand swaps happen at the semantic layer, untouched.
+                </p>
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-default bg-surface p-4 flex gap-3">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full font-mono text-xs font-semibold" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">5</span>
+              <div class="min-w-0">
+                <p class="text-sm font-semibold">asChild · polymorphic via Slot</p>
+                <p class="text-xs text-fg-secondary mt-0.5">
+                  Pass <span class="font-mono">asChild</span> and the component clones its props onto
+                  the child element &mdash; turn any <span class="font-mono">&lt;Button&gt;</span> into
+                  a <span class="font-mono">&lt;Link&gt;</span> without losing styles or types.
+                </p>
+              </div>
+            </div>
+
+            <!-- usage row -->
+            <div class="rounded-xl border border-default bg-bg-primary p-4">
+              <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary mb-2">in apps/showcase</p>
+<pre class="code-block" style="font-size: 11.5px; padding: 10px 12px; background: var(--color-background-secondary);"><span class="c-punc">&lt;</span><span class="c-tag">Button</span> <span class="c-attr">size</span><span class="c-punc">=</span><span class="c-str">"lg"</span> <span class="c-attr">asChild</span><span class="c-punc">&gt;</span>
+  <span class="c-punc">&lt;</span><span class="c-tag">Link</span> <span class="c-attr">href</span><span class="c-punc">=</span><span class="c-str">"/components"</span><span class="c-punc">&gt;</span>Browse components<span class="c-punc">&lt;/</span><span class="c-tag">Link</span><span class="c-punc">&gt;</span>
+<span class="c-punc">&lt;/</span><span class="c-tag">Button</span><span class="c-punc">&gt;</span></pre>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CTA STRIP — "Everything wires together at install time"
+         ===================================================================== -->
+    <section class="border-b border-default">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div class="glass rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+          <div class="flex-1">
+            <h2 class="font-serif text-2xl sm:text-3xl font-semibold tracking-tight">
+              Everything wires together at install time.
+            </h2>
+            <p class="mt-2 text-fg-secondary max-w-xl">
+              No copy-paste tokens, no version drift between Figma and code. Open the live components
+              in Storybook, or push a token edit through the Figma plugin &mdash; both end up in the
+              same place.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <a href="https://storybook.wyliedog.dev" class="inline-flex h-10 items-center gap-1.5 rounded-md btn-primary px-4 text-sm font-semibold">
+              Open Storybook
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+            <a href="Token-Bridge.html" class="inline-flex h-10 items-center gap-1.5 rounded-md btn-outline px-4 text-sm font-medium">
+              Token Bridge for Figma
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         <SiteFooter> — same five-column layout as Homepage
+         ===================================================================== -->
+    <footer class="border-default bg-bg-primary">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-10">
+          <div class="col-span-2 md:col-span-1">
+            <div class="flex items-center gap-2">
+              <span class="grid h-7 w-7 place-items-center rounded-md" style="background: var(--color-interactive-primary);">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--color-text-inverse);">
+                  <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/>
+                  <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+                </svg>
+              </span>
+              <span class="font-serif text-base font-semibold tracking-tight">Wylie Dog</span>
+            </div>
+            <p class="mt-3 text-sm text-fg-secondary">
+              The shared design system for everything we ship.
+            </p>
+          </div>
+
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Tokens</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="Tokens.html#colors" class="text-fg-secondary hover:text-fg">Colors</a></li>
+              <li><a href="Tokens.html#spacing" class="text-fg-secondary hover:text-fg">Spacing</a></li>
+              <li><a href="Tokens.html#typography" class="text-fg-secondary hover:text-fg">Typography</a></li>
+              <li><a href="Tokens.html#borders" class="text-fg-secondary hover:text-fg">Borders</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Components</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="Components.html#content-display" class="text-fg-secondary hover:text-fg">Content Display</a></li>
+              <li><a href="Components.html#inputs" class="text-fg-secondary hover:text-fg">Inputs &amp; Controls</a></li>
+              <li><a href="Components.html#navigation" class="text-fg-secondary hover:text-fg">Navigation</a></li>
+              <li><a href="Components.html#overlays" class="text-fg-secondary hover:text-fg">Overlays &amp; Popovers</a></li>
+              <li><a href="Components.html#layout" class="text-fg-secondary hover:text-fg">Layout &amp; Structure</a></li>
+              <li><a href="Components.html#feedback" class="text-fg-secondary hover:text-fg">Feedback &amp; Status</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Tools</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="Token-Bridge.html" class="text-fg-secondary hover:text-fg">Token Bridge for Figma</a></li>
+              <li><a href="https://storybook.wyliedog.dev" class="text-fg-secondary hover:text-fg">Storybook ↗</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Patterns</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="Patterns.html#cat-layout" class="text-fg-secondary hover:text-fg">Layout Patterns</a></li>
+              <li><a href="Patterns.html#cat-auth" class="text-fg-secondary hover:text-fg">Authentication</a></li>
+              <li><a href="Patterns.html#cat-forms" class="text-fg-secondary hover:text-fg">Form Compositions</a></li>
+              <li><a href="Patterns.html" class="text-fg-secondary hover:text-fg">All patterns →</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-10 border-t border-default pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p class="font-mono text-[11px] text-fg-tertiary">© 2026 Wylie Dog</p>
+          <div class="inline-flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+            <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">All systems operational</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // theme toggle (persists to localStorage; honors prefers-color-scheme) — same as Homepage
+      (function () {
+        const root = document.documentElement;
+        const stored = localStorage.getItem("wd-theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (stored === "dark" || (!stored && prefersDark)) root.classList.add("dark");
+        function syncIcons() {
+          const dark = root.classList.contains("dark");
+          document.getElementById("icon-sun").classList.toggle("hidden", !dark);
+          document.getElementById("icon-moon").classList.toggle("hidden", dark);
+        }
+        syncIcons();
+        document.getElementById("theme-toggle").addEventListener("click", () => {
+          root.classList.toggle("dark");
+          localStorage.setItem("wd-theme", root.classList.contains("dark") ? "dark" : "light");
+          syncIcons();
+        });
+      })();
+
+      // anatomy: hover/click an annotation card to highlight matching code spans
+      (function () {
+        const cards = document.querySelectorAll(".anno-card");
+        const allSpans = document.querySelectorAll("[data-anno]");
+        function setActive(target) {
+          allSpans.forEach((s) => {
+            if (target == null) {
+              s.style.background = "";
+              s.style.borderRadius = "";
+            } else {
+              const match = s.getAttribute("data-anno") === String(target);
+              s.style.background = match ? "color-mix(in oklch, var(--color-interactive-primary) 14%, transparent)" : "";
+              s.style.borderRadius = match ? "4px" : "";
+            }
+          });
+        }
+        cards.forEach((c) => {
+          const t = c.getAttribute("data-anno-target");
+          c.addEventListener("mouseenter", () => setActive(t));
+          c.addEventListener("mouseleave", () => setActive(null));
+          c.addEventListener("focus", () => setActive(t));
+          c.addEventListener("blur", () => setActive(null));
+        });
+      })();
+    </script>
+  </body>
+</html>

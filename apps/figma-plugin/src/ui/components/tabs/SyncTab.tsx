@@ -2,6 +2,7 @@ import { h } from "preact";
 import { useState } from "preact/hooks";
 import { SetupWizard } from "../SetupWizard";
 import { ImportPreview } from "../ImportPreview";
+import { Icon } from "../common/Icon";
 import { useUIContext } from "../../state";
 import type { GitHubConfig } from "../../../shared/types";
 import type { Collection } from "../../hooks/usePluginMessages";
@@ -24,7 +25,7 @@ interface SyncTabProps {
  * SyncTab — unified import + sync hub.
  *
  * Sub-view A: Not configured → inline SetupWizard
- * Sub-view B: Configured → connection status + action cards
+ * Sub-view B: Configured → connection strip + side-by-side Push/Pull cards
  * Sub-view C: Edit config → inline SetupWizard with cancel
  */
 export function SyncTab({
@@ -42,20 +43,19 @@ export function SyncTab({
 }: SyncTabProps) {
   const { state: uiState, dispatch } = useUIContext();
   const selectedCollections = uiState.selectedCollections;
+  const hasSelections = selectedCollections.size > 0;
 
   const [showEditConfig, setShowEditConfig] = useState(false);
   const [confirmingPull, setConfirmingPull] = useState(false);
 
-  const hasSelections = selectedCollections.size > 0;
-
-  // If import preview is active, show it inline regardless of sub-view
+  // Import preview active
   if (importPreview && onConfirmImport && onCancelImport) {
     return (
       <div
         role="tabpanel"
         id="sync-panel"
         aria-labelledby="tab-sync"
-        style={{ padding: "var(--space-4) 0" }}
+        style={{ padding: 12 }}
       >
         <ImportPreview
           summary={importPreview}
@@ -66,130 +66,132 @@ export function SyncTab({
     );
   }
 
-  // Sub-view A: Not configured — show setup wizard inline
+  // Sub-view A: Not configured
   if (!githubConfigured && !showEditConfig) {
     return (
       <div
         role="tabpanel"
         id="sync-panel"
         aria-labelledby="tab-sync"
-        style={{ padding: "var(--space-4) 0" }}
+        style={{
+          padding: 12,
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+        }}
       >
-        <div style={{ marginBottom: "var(--space-4)" }}>
-          <h3
+        <div>
+          <div
             style={{
-              margin: "0 0 var(--space-1) 0",
               fontSize: "var(--font-size-md)",
               fontWeight: "var(--font-weight-semibold)",
               color: "var(--text-primary)",
+              marginBottom: 4,
             }}
           >
-            Connect to GitHub
-          </h3>
-          <p
+            Connect GitHub
+          </div>
+          <div
             style={{
-              margin: 0,
               fontSize: "var(--font-size-sm)",
               color: "var(--text-secondary)",
               lineHeight: "var(--line-height-relaxed)",
             }}
           >
             Set up bi-directional token sync with your repository.
-          </p>
+          </div>
         </div>
 
-        {/* Inline wizard — no modal shell */}
-        <SetupWizard
-          onComplete={onGitHubConfigComplete}
-          onClose={() => {
-            // No-op in inline mode — there's nowhere to "close" to.
-            // The tab system handles navigation.
-          }}
-        />
+        <SetupWizard onComplete={onGitHubConfigComplete} onClose={() => {}} />
 
-        {/* Secondary: import from file without GitHub */}
         <div
           style={{
-            marginTop: "var(--space-4)",
-            paddingTop: "var(--space-4)",
+            paddingTop: 12,
             borderTop: "1px solid var(--border-default)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          <p
+          <span
             style={{
-              margin: "0 0 var(--space-2) 0",
               fontSize: "var(--font-size-xs)",
-              color: "var(--text-secondary)",
+              color: "var(--text-tertiary)",
+              fontFamily: "var(--font-family-mono)",
             }}
           >
-            Not using GitHub?
-          </p>
+            or
+          </span>
           <button
             onClick={onImportFile}
             disabled={loading}
             style={{
-              padding: "var(--space-2) var(--space-4)",
               fontSize: "var(--font-size-sm)",
-              fontWeight: "var(--font-weight-medium)",
               color: "var(--text-secondary)",
-              backgroundColor: "transparent",
-              border: "1px solid var(--border-default)",
-              borderRadius: "var(--radius-md)",
+              background: "transparent",
+              border: "none",
               cursor: loading ? "not-allowed" : "pointer",
-              transition: "var(--transition-base)",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              padding: 0,
               opacity: loading ? 0.5 : 1,
             }}
           >
-            📁 Import from file
+            <Icon name="upload" size={12} />
+            Import from file
           </button>
+          <span style={{ width: 14 }} />
         </div>
       </div>
     );
   }
 
-  // Sub-view C: Editing existing config
+  // Sub-view C: Editing config
   if (showEditConfig) {
     return (
       <div
         role="tabpanel"
         id="sync-panel"
         aria-labelledby="tab-sync"
-        style={{ padding: "var(--space-4) 0" }}
+        style={{
+          padding: 12,
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+        }}
       >
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "var(--space-3)",
-            marginBottom: "var(--space-4)",
+            gap: 12,
           }}
         >
           <button
             onClick={() => setShowEditConfig(false)}
             style={{
-              padding: "var(--space-1) var(--space-3)",
+              padding: "4px 12px",
               fontSize: "var(--font-size-xs)",
               fontWeight: "var(--font-weight-medium)",
               color: "var(--text-secondary)",
-              backgroundColor: "transparent",
+              background: "transparent",
               border: "1px solid var(--border-default)",
               borderRadius: "var(--radius-md)",
               cursor: "pointer",
-              transition: "var(--transition-base)",
             }}
           >
             ← Cancel
           </button>
-          <h3
+          <div
             style={{
-              margin: 0,
               fontSize: "var(--font-size-md)",
               fontWeight: "var(--font-weight-semibold)",
               color: "var(--text-primary)",
             }}
           >
             Edit GitHub Configuration
-          </h3>
+          </div>
         </div>
 
         <SetupWizard
@@ -204,121 +206,110 @@ export function SyncTab({
     );
   }
 
-  // Sub-view B: Configured — show actions
+  // Sub-view B: Configured
   return (
     <div
       role="tabpanel"
       id="sync-panel"
       aria-labelledby="tab-sync"
-      style={{ padding: "var(--space-4) 0" }}
+      style={{ display: "flex", flexDirection: "column", flex: 1 }}
     >
-      {/* Connection status card */}
+      {/* Connection strip */}
       <div
         style={{
-          padding: "var(--space-3) var(--space-4)",
-          marginBottom: "var(--space-4)",
-          backgroundColor: "var(--success-light)",
-          border: "1px solid var(--success)",
-          borderRadius: "var(--radius-lg)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          background: "var(--surface-secondary)",
+          padding: "8px 12px",
+          borderBottom: "1px solid var(--border-default)",
         }}
       >
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
-            marginBottom: "var(--space-1)",
+            gap: 8,
+            minWidth: 0,
+            flex: 1,
           }}
         >
-          <div
+          <span
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "var(--space-2)",
-              fontSize: "var(--font-size-sm)",
-              fontWeight: "var(--font-weight-semibold)",
-              color: "var(--text-primary)",
+              width: 6,
+              height: 6,
+              borderRadius: "50%",
+              background: "var(--success)",
+              flexShrink: 0,
             }}
-          >
+          />
+          {githubConfig ? (
             <span
               style={{
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                backgroundColor: "var(--success)",
-                display: "inline-block",
+                fontFamily: "var(--font-family-mono)",
+                fontSize: "var(--font-size-sm)",
+                color: "var(--text-primary)",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
               }}
-            />
-            Connected
-          </div>
-          <button
-            onClick={() => setShowEditConfig(true)}
-            style={{
-              padding: "var(--space-1) var(--space-2)",
-              fontSize: "var(--font-size-xs)",
-              fontWeight: "var(--font-weight-medium)",
-              color: "var(--text-secondary)",
-              backgroundColor: "transparent",
-              border: "1px solid var(--border-default)",
-              borderRadius: "var(--radius-sm)",
-              cursor: "pointer",
-              transition: "var(--transition-base)",
-            }}
-          >
-            Edit
-          </button>
-        </div>
-        {githubConfig && (
-          <div
-            style={{
-              fontSize: "var(--font-size-xs)",
-              color: "var(--text-secondary)",
-              lineHeight: "var(--line-height-relaxed)",
-            }}
-          >
-            <span style={{ fontWeight: "var(--font-weight-medium)" }}>
+            >
               {githubConfig.owner}/{githubConfig.repo}
-            </span>{" "}
-            · {githubConfig.branch} · {githubConfig.tokenPath}
-          </div>
-        )}
-      </div>
-
-      {/* Collection picker */}
-      {collections.length > 0 && (
-        <div
+              <span style={{ color: "var(--text-tertiary)" }}>
+                {" "}
+                / {githubConfig.branch}
+              </span>
+            </span>
+          ) : (
+            <span
+              style={{
+                fontFamily: "var(--font-family-mono)",
+                fontSize: "var(--font-size-sm)",
+                color: "var(--text-primary)",
+              }}
+            >
+              Connected
+            </span>
+          )}
+        </div>
+        <button
+          onClick={() => setShowEditConfig(true)}
           style={{
-            padding: "var(--space-3) var(--space-4)",
-            marginBottom: "var(--space-3)",
-            border: "1px solid var(--border-default)",
-            borderRadius: "var(--radius-lg)",
-            backgroundColor: "var(--surface-primary)",
+            fontFamily: "var(--font-family-mono)",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--accent-primary)",
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+            padding: 0,
+            flexShrink: 0,
           }}
         >
+          Edit
+        </button>
+      </div>
+
+      {/* Collection selector */}
+      {collections.length > 0 && (
+        <div style={{ padding: "12px 12px 8px" }}>
           <div
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              marginBottom: "var(--space-2)",
+              marginBottom: 8,
             }}
           >
-            <div
+            <span
               style={{
-                fontSize: "var(--font-size-sm)",
                 fontWeight: "var(--font-weight-semibold)",
+                fontSize: "var(--font-size-sm)",
                 color: "var(--text-primary)",
               }}
             >
               Collections
-            </div>
-            <div
-              style={{
-                display: "flex",
-                gap: "var(--space-3)",
-                fontSize: "var(--font-size-xs)",
-              }}
-            >
+            </span>
+            <span style={{ fontSize: "var(--font-size-xs)" }}>
               <button
                 onClick={() =>
                   dispatch({
@@ -328,7 +319,7 @@ export function SyncTab({
                 }
                 style={{
                   color: "var(--accent-primary)",
-                  backgroundColor: "transparent",
+                  background: "transparent",
                   border: "none",
                   cursor: "pointer",
                   padding: 0,
@@ -337,328 +328,324 @@ export function SyncTab({
               >
                 Select all
               </button>
+              <span
+                style={{
+                  margin: "0 6px",
+                  color: "var(--border-strong)",
+                }}
+              >
+                ·
+              </span>
               <button
                 onClick={() => dispatch({ type: "DESELECT_ALL_COLLECTIONS" })}
                 style={{
-                  color: "var(--text-secondary)",
-                  backgroundColor: "transparent",
+                  color: "var(--accent-primary)",
+                  background: "transparent",
                   border: "none",
                   cursor: "pointer",
                   padding: 0,
                   fontSize: "var(--font-size-xs)",
                 }}
               >
-                Deselect all
+                Clear
               </button>
-            </div>
+            </span>
           </div>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "var(--space-1)",
-            }}
-          >
+          <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
             {collections.map((collection) => {
               const isSelected = selectedCollections.has(collection.id);
               return (
-                <label
+                <div
                   key={collection.id}
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "var(--space-2)",
-                    padding: "var(--space-1) 0",
+                    gap: 8,
+                    padding: "6px 4px",
+                    borderRadius: 3,
                     cursor: "pointer",
-                    fontSize: "var(--font-size-sm)",
-                    color: "var(--text-primary)",
                   }}
+                  onClick={() =>
+                    dispatch({ type: "TOGGLE_COLLECTION", id: collection.id })
+                  }
                 >
-                  <input
-                    type="checkbox"
-                    checked={isSelected}
-                    onChange={() =>
-                      dispatch({ type: "TOGGLE_COLLECTION", id: collection.id })
-                    }
-                    style={{ cursor: "pointer" }}
-                  />
-                  {collection.name}
+                  {/* Custom checkbox */}
                   <span
                     style={{
-                      marginLeft: "auto",
+                      width: 14,
+                      height: 14,
+                      borderRadius: 3,
+                      flexShrink: 0,
+                      border: `1.5px solid ${isSelected ? "var(--accent-primary)" : "var(--border-strong)"}`,
+                      background: isSelected
+                        ? "var(--accent-primary)"
+                        : "transparent",
+                      display: "grid",
+                      placeItems: "center",
+                    }}
+                  >
+                    {isSelected && <Icon name="check" size={10} color="#fff" />}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-family-mono)",
+                      fontSize: "var(--font-size-sm)",
+                      flex: 1,
+                      color: "var(--text-primary)",
+                    }}
+                  >
+                    {collection.name}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-family-mono)",
                       fontSize: "var(--font-size-xs)",
                       color: "var(--text-tertiary)",
                     }}
                   >
-                    {collection.variableIds.length} tokens
+                    {collection.variableIds.length}
                   </span>
-                </label>
+                </div>
               );
             })}
           </div>
         </div>
       )}
 
-      {/* Action cards */}
+      {/* Push / Pull action cards — side by side */}
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "var(--space-3)",
+          padding: "8px 12px 4px",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 8,
         }}
       >
-        {/* Push to GitHub */}
+        {/* Push card */}
         <div
           style={{
-            padding: "var(--space-4)",
             border: "1px solid var(--border-default)",
             borderRadius: "var(--radius-lg)",
-            backgroundColor: "var(--surface-primary)",
+            background: "var(--surface-primary)",
+            padding: 12,
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
           }}
         >
-          <div
+          <Icon name="upload" size={20} color="var(--accent-primary)" />
+          <div>
+            <div
+              style={{
+                fontWeight: "var(--font-weight-semibold)",
+                fontSize: "var(--font-size-base)",
+                color: "var(--text-primary)",
+              }}
+            >
+              Push
+            </div>
+            <div
+              style={{
+                fontFamily: "var(--font-family-mono)",
+                fontSize: "var(--font-size-xs)",
+                color: "var(--text-secondary)",
+              }}
+            >
+              Figma → GitHub
+            </div>
+          </div>
+          <button
+            onClick={onPushToGitHub}
+            disabled={loading || !hasSelections}
             style={{
-              display: "flex",
-              alignItems: "flex-start",
-              gap: "var(--space-3)",
+              height: 28,
+              borderRadius: "var(--radius-sm)",
+              border: `1px solid ${loading || !hasSelections ? "var(--border-default)" : "var(--accent-primary)"}`,
+              background:
+                loading || !hasSelections
+                  ? "var(--surface-secondary)"
+                  : "var(--accent-primary)",
+              color:
+                loading || !hasSelections ? "var(--text-tertiary)" : "#fff",
+              fontFamily: "var(--font-family-base)",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: "var(--font-weight-semibold)",
+              cursor: loading || !hasSelections ? "not-allowed" : "pointer",
+              opacity: loading || !hasSelections ? 0.5 : 1,
+              transition: "var(--transition-fast)",
             }}
           >
-            <div style={{ fontSize: "var(--font-size-2xl)", lineHeight: 1 }}>
-              ⬆️
+            {hasSelections ? `Push ${selectedCollections.size}` : "Push"}
+          </button>
+        </div>
+
+        {/* Pull card */}
+        <div
+          style={{
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-lg)",
+            background: "var(--surface-primary)",
+            padding: 12,
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
+          }}
+        >
+          <Icon name="download" size={20} color="var(--accent-primary)" />
+          <div>
+            <div
+              style={{
+                fontWeight: "var(--font-weight-semibold)",
+                fontSize: "var(--font-size-base)",
+                color: "var(--text-primary)",
+              }}
+            >
+              Pull
             </div>
-            <div style={{ flex: 1 }}>
+            <div
+              style={{
+                fontFamily: "var(--font-family-mono)",
+                fontSize: "var(--font-size-xs)",
+                color: "var(--text-secondary)",
+              }}
+            >
+              GitHub → Figma
+            </div>
+          </div>
+
+          {confirmingPull ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              {/* Warning notice */}
               <div
                 style={{
                   display: "flex",
-                  alignItems: "center",
-                  gap: "var(--space-2)",
-                  marginBottom: "var(--space-1)",
+                  gap: 6,
+                  padding: "6px 8px",
+                  borderRadius: "var(--radius-sm)",
+                  background: "var(--warning-light)",
+                  border: "1px solid var(--warning)",
+                  alignItems: "flex-start",
                 }}
               >
-                <div
+                <Icon
+                  name="warning"
+                  size={12}
+                  color="var(--warning)"
+                  style={{ marginTop: 1, flexShrink: 0 }}
+                />
+                <span
                   style={{
+                    fontSize: "var(--font-size-xs)",
+                    color: "var(--text-secondary)",
+                    lineHeight: "var(--line-height-relaxed)",
+                  }}
+                >
+                  Overwrites local Figma variables.
+                </span>
+              </div>
+              <div style={{ display: "flex", gap: 4 }}>
+                <button
+                  onClick={() => {
+                    onPullFromGitHub();
+                    setConfirmingPull(false);
+                  }}
+                  style={{
+                    flex: 1,
+                    height: 26,
+                    borderRadius: "var(--radius-sm)",
+                    background: "var(--warning)",
+                    color: "#fff",
+                    border: "none",
+                    fontFamily: "var(--font-family-base)",
                     fontSize: "var(--font-size-sm)",
                     fontWeight: "var(--font-weight-semibold)",
-                    color: "var(--text-primary)",
+                    cursor: "pointer",
                   }}
                 >
-                  Push to GitHub
-                </div>
-                {hasSelections && (
-                  <span
-                    style={{
-                      padding: "2px var(--space-2)",
-                      fontSize: "var(--font-size-xs)",
-                      fontWeight: "var(--font-weight-medium)",
-                      color: "var(--accent-primary)",
-                      backgroundColor: "var(--info-light)",
-                      border: "1px solid var(--accent-primary)",
-                      borderRadius: "var(--radius-sm)",
-                    }}
-                  >
-                    {selectedCollections.size} selected
-                  </span>
-                )}
-              </div>
-              <div
-                style={{
-                  fontSize: "var(--font-size-xs)",
-                  color: "var(--text-secondary)",
-                  lineHeight: "var(--line-height-relaxed)",
-                  marginBottom: "var(--space-3)",
-                }}
-              >
-                Sync selected collections with conflict detection. Creates a PR
-                if conflicts are found.
-              </div>
-              <button
-                onClick={onPushToGitHub}
-                disabled={loading || !hasSelections}
-                style={{
-                  padding: "var(--space-2) var(--space-4)",
-                  fontSize: "var(--font-size-sm)",
-                  fontWeight: "var(--font-weight-medium)",
-                  color:
-                    !loading && hasSelections
-                      ? "var(--text-inverse)"
-                      : "var(--text-secondary)",
-                  backgroundColor:
-                    !loading && hasSelections
-                      ? "var(--accent-primary)"
-                      : "var(--surface-secondary)",
-                  border: `1px solid ${!loading && hasSelections ? "var(--accent-primary)" : "var(--border-default)"}`,
-                  borderRadius: "var(--radius-md)",
-                  cursor: loading || !hasSelections ? "not-allowed" : "pointer",
-                  transition: "var(--transition-base)",
-                  opacity: loading || !hasSelections ? 0.5 : 1,
-                }}
-              >
-                Push to GitHub
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Pull from GitHub */}
-        <div
-          style={{
-            padding: "var(--space-4)",
-            border: "1px solid var(--border-default)",
-            borderRadius: "var(--radius-lg)",
-            backgroundColor: "var(--surface-primary)",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              gap: "var(--space-3)",
-            }}
-          >
-            <div style={{ fontSize: "var(--font-size-2xl)", lineHeight: 1 }}>
-              ⬇️
-            </div>
-            <div style={{ flex: 1 }}>
-              <div
-                style={{
-                  fontSize: "var(--font-size-sm)",
-                  fontWeight: "var(--font-weight-semibold)",
-                  color: "var(--text-primary)",
-                  marginBottom: "var(--space-1)",
-                }}
-              >
-                Pull from GitHub
-              </div>
-              <div
-                style={{
-                  fontSize: "var(--font-size-xs)",
-                  color: "var(--text-secondary)",
-                  lineHeight: "var(--line-height-relaxed)",
-                  marginBottom: "var(--space-3)",
-                }}
-              >
-                Import tokens from repository (overwrites local tokens).
-              </div>
-
-              {!confirmingPull ? (
-                <button
-                  onClick={() => setConfirmingPull(true)}
-                  disabled={loading}
-                  style={{
-                    padding: "var(--space-2) var(--space-4)",
-                    fontSize: "var(--font-size-sm)",
-                    fontWeight: "var(--font-weight-medium)",
-                    color: "var(--text-secondary)",
-                    backgroundColor: "transparent",
-                    border: "1px solid var(--border-default)",
-                    borderRadius: "var(--radius-md)",
-                    cursor: loading ? "not-allowed" : "pointer",
-                    transition: "var(--transition-base)",
-                    opacity: loading ? 0.5 : 1,
-                  }}
-                >
-                  Pull
+                  Confirm
                 </button>
-              ) : (
-                <div
+                <button
+                  onClick={() => setConfirmingPull(false)}
                   style={{
-                    padding: "var(--space-3)",
-                    backgroundColor: "var(--warning-light)",
-                    border: "1px solid var(--warning)",
-                    borderRadius: "var(--radius-md)",
+                    height: 26,
+                    padding: "0 8px",
+                    borderRadius: "var(--radius-sm)",
+                    border: "1px solid var(--border-default)",
+                    background: "var(--surface-primary)",
+                    color: "var(--text-secondary)",
+                    fontFamily: "var(--font-family-base)",
+                    fontSize: "var(--font-size-sm)",
+                    cursor: "pointer",
                   }}
                 >
-                  <div
-                    style={{
-                      fontSize: "var(--font-size-xs)",
-                      color: "var(--text-primary)",
-                      marginBottom: "var(--space-2)",
-                      lineHeight: "var(--line-height-relaxed)",
-                    }}
-                  >
-                    ⚠️ This will overwrite your local tokens with the repository
-                    version. This cannot be undone.
-                  </div>
-                  <div style={{ display: "flex", gap: "var(--space-2)" }}>
-                    <button
-                      onClick={() => setConfirmingPull(false)}
-                      style={{
-                        padding: "var(--space-1) var(--space-3)",
-                        fontSize: "var(--font-size-xs)",
-                        fontWeight: "var(--font-weight-medium)",
-                        color: "var(--text-secondary)",
-                        backgroundColor: "transparent",
-                        border: "1px solid var(--border-default)",
-                        borderRadius: "var(--radius-md)",
-                        cursor: "pointer",
-                        transition: "var(--transition-base)",
-                      }}
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      onClick={() => {
-                        onPullFromGitHub();
-                        setConfirmingPull(false);
-                      }}
-                      style={{
-                        padding: "var(--space-1) var(--space-3)",
-                        fontSize: "var(--font-size-xs)",
-                        fontWeight: "var(--font-weight-medium)",
-                        color: "var(--text-inverse)",
-                        backgroundColor: "var(--warning)",
-                        border: "none",
-                        borderRadius: "var(--radius-md)",
-                        cursor: "pointer",
-                        transition: "var(--transition-base)",
-                      }}
-                    >
-                      Confirm Pull
-                    </button>
-                  </div>
-                </div>
-              )}
+                  Cancel
+                </button>
+              </div>
             </div>
-          </div>
+          ) : (
+            <button
+              onClick={() => setConfirmingPull(true)}
+              disabled={loading}
+              style={{
+                height: 28,
+                borderRadius: "var(--radius-sm)",
+                border: "1px solid var(--border-default)",
+                background: "var(--surface-primary)",
+                color: "var(--text-primary)",
+                fontFamily: "var(--font-family-base)",
+                fontSize: "var(--font-size-sm)",
+                fontWeight: "var(--font-weight-semibold)",
+                cursor: loading ? "not-allowed" : "pointer",
+                opacity: loading ? 0.5 : 1,
+                transition: "var(--transition-fast)",
+              }}
+            >
+              Pull
+            </button>
+          )}
         </div>
+      </div>
 
-        {/* Import from file (secondary) */}
-        <div
+      {/* Import from file footer */}
+      <div style={{ flex: 1 }} />
+      <div
+        style={{
+          borderTop: "1px solid var(--border-default)",
+          padding: "10px 12px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <span
           style={{
-            paddingTop: "var(--space-2)",
-            display: "flex",
-            alignItems: "center",
-            gap: "var(--space-3)",
+            fontFamily: "var(--font-family-mono)",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-tertiary)",
           }}
         >
-          <span
-            style={{
-              fontSize: "var(--font-size-xs)",
-              color: "var(--text-tertiary)",
-            }}
-          >
-            or
-          </span>
-          <button
-            onClick={onImportFile}
-            disabled={loading}
-            style={{
-              padding: "var(--space-2) var(--space-3)",
-              fontSize: "var(--font-size-xs)",
-              fontWeight: "var(--font-weight-medium)",
-              color: "var(--text-secondary)",
-              backgroundColor: "transparent",
-              border: "1px solid var(--border-default)",
-              borderRadius: "var(--radius-md)",
-              cursor: loading ? "not-allowed" : "pointer",
-              transition: "var(--transition-base)",
-              opacity: loading ? 0.5 : 1,
-            }}
-          >
-            📁 Import from file
-          </button>
-        </div>
+          or
+        </span>
+        <button
+          onClick={onImportFile}
+          disabled={loading}
+          style={{
+            fontSize: "var(--font-size-sm)",
+            color: "var(--text-secondary)",
+            background: "transparent",
+            border: "none",
+            cursor: loading ? "not-allowed" : "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            padding: 0,
+            opacity: loading ? 0.5 : 1,
+          }}
+        >
+          <Icon name="upload" size={12} />
+          Import from file
+        </button>
+        <span style={{ width: 14 }} />
       </div>
     </div>
   );

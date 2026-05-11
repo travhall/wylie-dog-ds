@@ -4,27 +4,29 @@
     <meta charset="utf-8" />
     <title>Token Bridge</title>
 
-    <!-- Manrope Variable Font from Google Fonts -->
+    <!-- Manrope + JetBrains Mono from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@200..800&display=swap"
       rel="stylesheet"
     />
 
     <style>
       /* CSS Variables - Design System Foundation */
       :root {
-        /* Typography Scale (Manrope Variable Font) */
+        /* Typography */
         --font-family-base:
           "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           sans-serif;
+        --font-family-mono:
+          "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
         --font-weight-regular: 400;
         --font-weight-medium: 500;
         --font-weight-semibold: 600;
         --font-weight-bold: 700;
 
-        /* Font Sizes (Fluid Typography) */
+        /* Font Sizes */
         --font-size-xs: 10px;
         --font-size-sm: 11px;
         --font-size-base: 12px;
@@ -55,90 +57,95 @@
         --radius-xl: 12px;
 
         /* Shadows */
-        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-        --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
-        --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.12);
-        --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.15);
+        --shadow-sm: 0 1px 2px rgba(20, 20, 40, 0.06);
+        --shadow-md: 0 4px 12px -2px rgba(20, 20, 40, 0.10), 0 2px 4px -2px rgba(20, 20, 40, 0.06);
+        --shadow-lg: 0 8px 24px -4px rgba(20, 20, 40, 0.12);
+        --shadow-xl: 0 16px 40px -8px rgba(20, 20, 40, 0.15);
 
         /* Transitions */
         --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
         --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
         --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
-        /* Colors - Light Theme (Default) */
+        /* Colors - Light Theme (Wylie Dog system, sRGB-translated from OKLCH) */
         --surface-primary: #ffffff;
-        --surface-secondary: #f3f4f6;
-        --surface-tertiary: #e5e7eb;
-        --surface-overlay: rgba(0, 0, 0, 0.5);
+        --surface-secondary: #f7f7f9;
+        --surface-tertiary: #eeeef2;
+        --surface-elevated: #ffffff;
+        --surface-overlay: rgba(15, 15, 18, 0.5);
 
-        --text-primary: #111827;
-        --text-secondary: #6b7280;
-        --text-tertiary: #9ca3af;
+        --text-primary: #0f0f12;
+        --text-secondary: #5c5c6e;
+        --text-tertiary: #9191a3;
         --text-inverse: #ffffff;
 
-        --border-light: #f3f4f6;
-        --border-default: #e5e7eb;
-        --border-strong: #d1d5db;
+        --border-light: #f0f0f5;
+        --border-default: #e2e2ea;
+        --border-strong: #c8c8d8;
 
-        --accent-primary: #3b82f6;
-        --accent-primary-hover: #2563eb;
-        --accent-secondary: #0ea5e9;
-        --accent-secondary-hover: #0284c7;
+        --accent-primary: #3554a6;
+        --accent-primary-hover: #2a4396;
+        --accent-tint: #eef1fb;
+        --accent-secondary: #3554a6;
+        --accent-secondary-hover: #2a4396;
 
-        --success: #10b981;
-        --success-hover: #059669;
-        --success-light: #d1fae5;
+        --success: #1a9e6c;
+        --success-hover: #158a5c;
+        --success-light: #e6f7f2;
 
-        --error: #ef4444;
-        --error-hover: #dc2626;
-        --error-light: #fee2e2;
+        --error: #c63b28;
+        --error-hover: #b03221;
+        --error-light: #fdecea;
 
-        --warning: #f59e0b;
-        --warning-hover: #d97706;
-        --warning-light: #fef3c7;
+        --warning: #c88a00;
+        --warning-hover: #b07800;
+        --warning-light: #fef8e6;
 
-        --info: #0ea5e9;
-        --info-hover: #0284c7;
-        --info-light: #e0f2fe;
+        /* info aliases accent for Wylie Dog system */
+        --info: #3554a6;
+        --info-hover: #2a4396;
+        --info-light: #eef1fb;
       }
 
-      /* Dark Theme Support (auto-detects Figma theme) */
+      /* Dark Theme (auto-detects Figma theme) */
       @media (prefers-color-scheme: dark) {
         :root {
-          --surface-primary: #1e1e1e;
-          --surface-secondary: #2d2d2d;
-          --surface-tertiary: #404040;
+          --surface-primary: #1c1c1f;
+          --surface-secondary: #262629;
+          --surface-tertiary: #313135;
+          --surface-elevated: #2a2a2e;
           --surface-overlay: rgba(0, 0, 0, 0.7);
 
-          --text-primary: #e5e7eb;
-          --text-secondary: #9ca3af;
-          --text-tertiary: #6b7280;
-          --text-inverse: #111827;
+          --text-primary: #f0f0f5;
+          --text-secondary: #9191a3;
+          --text-tertiary: #5c5c6e;
+          --text-inverse: #0f0f12;
 
-          --border-light: #2d2d2d;
-          --border-default: #404040;
-          --border-strong: #525252;
+          --border-light: #2a2a2e;
+          --border-default: #3a3a42;
+          --border-strong: #52525c;
 
-          --accent-primary: #60a5fa;
-          --accent-primary-hover: #3b82f6;
-          --accent-secondary: #38bdf8;
-          --accent-secondary-hover: #0ea5e9;
+          --accent-primary: #6b8ef5;
+          --accent-primary-hover: #5a7be8;
+          --accent-tint: #262a3a;
+          --accent-secondary: #6b8ef5;
+          --accent-secondary-hover: #5a7be8;
 
-          --success: #34d399;
-          --success-hover: #10b981;
-          --success-light: #064e3b;
+          --success: #34c98a;
+          --success-hover: #2bb578;
+          --success-light: #162b22;
 
-          --error: #f87171;
-          --error-hover: #ef4444;
-          --error-light: #7f1d1d;
+          --error: #f06b56;
+          --error-hover: #e85540;
+          --error-light: #2d1614;
 
-          --warning: #fbbf24;
-          --warning-hover: #f59e0b;
-          --warning-light: #78350f;
+          --warning: #f0b429;
+          --warning-hover: #e0a418;
+          --warning-light: #2b1f08;
 
-          --info: #38bdf8;
-          --info-hover: #0ea5e9;
-          --info-light: #0d3b4c;
+          --info: #6b8ef5;
+          --info-hover: #5a7be8;
+          --info-light: #262a3a;
         }
       }
 
@@ -149,7 +156,7 @@
 
       body {
         margin: 0;
-        padding: var(--space-4);
+        padding: 0;
         font-family: var(--font-family-base);
         font-size: var(--font-size-base);
         font-weight: var(--font-weight-regular);

@@ -1,5 +1,13 @@
-@import "tailwindcss";
 @import "@wyliedog/ui/styles";
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
 
 @layer base {
   body {
@@ -10,41 +18,73 @@
   }
 
   ::selection {
-    background-color: color-mix(in oklch, var(--color-interactive-primary), transparent 80%);
+    background-color: color-mix(
+      in oklch,
+      var(--color-interactive-primary),
+      transparent 80%
+    );
   }
 }
 
 @layer utilities {
   .glass {
-    background-color: color-mix(in oklch, var(--color-background-primary), transparent 30%);
+    background-color: color-mix(
+      in oklch,
+      var(--color-background-primary),
+      transparent 30%
+    );
     backdrop-filter: blur(12px);
-    border: 1px solid color-mix(in oklch, var(--color-text-primary), transparent 90%);
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    border: 1px solid
+      color-mix(in oklch, var(--color-text-primary), transparent 90%);
+    box-shadow:
+      0 1px 3px 0 rgb(0 0 0 / 0.1),
+      0 1px 2px -1px rgb(0 0 0 / 0.1);
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
   }
-  
+
   .dark .glass {
-    background-color: color-mix(in oklch, var(--color-background-inverse), transparent 60%);
-    border: 1px solid color-mix(in oklch, var(--color-background-primary), transparent 90%);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    background-color: color-mix(
+      in oklch,
+      var(--color-background-inverse),
+      transparent 60%
+    );
+    border: 1px solid
+      color-mix(in oklch, var(--color-background-primary), transparent 90%);
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 
   .glass-dark {
-    background-color: color-mix(in oklch, var(--color-background-inverse), transparent 82%);
+    background-color: color-mix(
+      in oklch,
+      var(--color-background-inverse),
+      transparent 82%
+    );
     backdrop-filter: blur(12px);
-    border: 1px solid color-mix(in oklch, var(--color-text-primary), transparent 85%);
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.15), 0 2px 4px -2px rgb(0 0 0 / 0.15);
+    border: 1px solid
+      color-mix(in oklch, var(--color-text-primary), transparent 85%);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.15),
+      0 2px 4px -2px rgb(0 0 0 / 0.15);
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
   }
 
   .dark .glass-dark {
-    background-color: color-mix(in oklch, var(--color-background-inverse), transparent 50%);
-    border: 1px solid color-mix(in oklch, var(--color-background-primary), transparent 85%);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.25), 0 4px 6px -4px rgb(0 0 0 / 0.2);
+    background-color: color-mix(
+      in oklch,
+      var(--color-background-inverse),
+      transparent 50%
+    );
+    border: 1px solid
+      color-mix(in oklch, var(--color-background-primary), transparent 85%);
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.25),
+      0 4px 6px -4px rgb(0 0 0 / 0.2);
   }
 
   .kbd {
@@ -58,10 +98,16 @@
     padding: 0.2rem 0.45rem;
     min-width: 1.5rem;
     border-radius: 0.25rem;
-    background-color: color-mix(in oklch, var(--color-background-secondary), transparent 20%);
+    background-color: color-mix(
+      in oklch,
+      var(--color-background-secondary),
+      transparent 20%
+    );
     color: var(--color-text-primary);
-    border: 1px solid color-mix(in oklch, var(--color-text-primary), transparent 75%);
-    box-shadow: 0 1px 0 0 color-mix(in oklch, var(--color-text-primary), transparent 70%);
+    border: 1px solid
+      color-mix(in oklch, var(--color-text-primary), transparent 75%);
+    box-shadow: 0 1px 0 0
+      color-mix(in oklch, var(--color-text-primary), transparent 70%);
   }
 
   .kbd-sm {
@@ -71,12 +117,20 @@
   }
 
   .grid-bg {
-    background-image: radial-gradient(var(--color-border-primary) 1px, transparent 1px);
+    background-image: radial-gradient(
+      var(--color-border-primary) 1px,
+      transparent 1px
+    );
     background-size: 20px 20px;
   }
 
   .hero-gradient {
-    background-image: radial-gradient(at 50% 0%, color-mix(in oklch, var(--color-interactive-primary), transparent 80%), var(--color-background-primary), var(--color-background-primary));
+    background-image: radial-gradient(
+      at 50% 0%,
+      color-mix(in oklch, var(--color-interactive-primary), transparent 80%),
+      var(--color-background-primary),
+      var(--color-background-primary)
+    );
   }
 
   .animate-float {
@@ -84,7 +138,12 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 }

@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Token Bridge · Plugin Redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  :root {
+    --font-base: "Manrope", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  html, body { margin: 0; padding: 0; font-family: var(--font-base); background: #eeeef2; }
+  * { box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel">
+const { useState } = React;
+
+/* ============================================================
+   Wylie Dog Plugin tokens (translated to sRGB for iframe-safe)
+   ============================================================ */
+const L = {
+  surfacePrimary: '#ffffff',
+  surfaceSecondary: '#f7f7f9',
+  surfaceTertiary: '#eeeef2',
+  surfaceElevated: '#ffffff',
+  textPrimary: '#0f0f12',
+  textSecondary: '#5c5c6e',
+  textTertiary: '#9191a3',
+  borderDefault: '#e2e2ea',
+  borderStrong: '#c8c8d8',
+  accent: '#3554a6',
+  accentTint: '#eef1fb',
+  success: '#1a9e6c',
+  warning: '#c88a00',
+  destructive: '#c63b28',
+  shadowMd: '0 4px 12px -2px rgba(20,20,40,0.10), 0 2px 4px -2px rgba(20,20,40,0.06)',
+};
+const D = {
+  surfacePrimary: '#1c1c1f',
+  surfaceSecondary: '#262629',
+  surfaceTertiary: '#313135',
+  surfaceElevated: '#2a2a2e',
+  textPrimary: '#f0f0f5',
+  textSecondary: '#9191a3',
+  textTertiary: '#5c5c6e',
+  borderDefault: '#3a3a42',
+  borderStrong: '#52525c',
+  accent: '#6b8ef5',
+  accentTint: '#262a3a',
+  success: '#34c98a',
+  warning: '#f0b429',
+  destructive: '#f06b56',
+  shadowMd: '0 4px 12px -2px rgba(0,0,0,0.55), 0 2px 4px -2px rgba(0,0,0,0.3)',
+};
+
+/* ============================================================
+   Icon component (mirrors src/ui/components/common/Icon.tsx)
+   ============================================================ */
+const PATHS = {
+  'sync':         '<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>',
+  'upload':       '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
+  'download':     '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>',
+  'file':         '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>',
+  'tokens':       '<circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22a4 4 0 0 1-4-4c0-1.9.7-3.3 2-4.5l1-1"/>',
+  'github':       '<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>',
+  'check':        '<polyline points="20 6 9 17 4 12"/>',
+  'warning':      '<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+  'info':         '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+  'close':        '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',
+  'settings':     '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+  'arrow-right':  '<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',
+  'eye':          '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
+  'chevron-right':'<polyline points="9 18 15 12 9 6"/>',
+  'plus':         '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',
+};
+function Icon({ name, size = 16, color = 'currentColor', style }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color}
+         strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" style={style}>
+      <g dangerouslySetInnerHTML={{ __html: PATHS[name] }} />
+    </svg>
+  );
+}
+
+/* Bridge wordmark icon (20×20 rounded square, accent fill) */
+function BridgeMark({ size = 20, t }) {
+  return (
+    <span style={{
+      display:'inline-grid', placeItems:'center',
+      width:size, height:size, borderRadius: size*0.25,
+      background: t.accent, color:'#fff',
+    }}>
+      <svg width={size*0.7} height={size*0.7} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+        <path d="M4 8h16"/><path d="M4 16h16"/><path d="M12 8v8"/>
+      </svg>
+    </span>
+  );
+}
+
+/* ============================================================
+   Plugin Frame — the 360×640 panel chrome
+   ============================================================ */
+function PluginFrame({ t, children, label }) {
+  return (
+    <div style={{
+      width: 360,
+      minHeight: 640,
+      background: t.surfacePrimary,
+      color: t.textPrimary,
+      fontFamily: 'var(--font-base)',
+      display: 'flex',
+      flexDirection: 'column',
+      border: `1px solid ${t.borderDefault}`,
+      borderRadius: 6,
+      overflow: 'hidden',
+      boxShadow: t.shadowMd,
+      fontSize: 12,
+      lineHeight: 1.4,
+    }}>
+      {/* Header (44px) */}
+      <div style={{
+        height: 44, flexShrink: 0,
+        display: 'flex', alignItems: 'center', gap: 8,
+        padding: '0 12px',
+        borderBottom: `1px solid ${t.borderDefault}`,
+        background: t.surfacePrimary,
+      }}>
+        <BridgeMark t={t} />
+        <span style={{ fontWeight: 600, fontSize: 13, letterSpacing: -0.1 }}>Token Bridge</span>
+        <span style={{ flex: 1 }} />
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: t.textTertiary }}>v0.9.2</span>
+        <button style={{
+          width: 24, height: 24, display:'grid', placeItems:'center',
+          background:'transparent', border:'none', borderRadius:4,
+          color: t.textSecondary, cursor:'pointer',
+        }}><Icon name="settings" size={14} /></button>
+      </div>
+      {children}
+    </div>
+  );
+}
+
+/* TabBar */
+function TabBar({ t, active, counts }) {
+  const tabs = [
+    { id: 'tokens', label: 'Tokens', count: counts?.tokens },
+    { id: 'sync',   label: 'Sync' },
+  ];
+  return (
+    <div style={{
+      display:'flex', borderBottom:`1px solid ${t.borderDefault}`,
+      background: t.surfacePrimary, padding: '0 8px', flexShrink:0,
+    }}>
+      {tabs.map(tab => {
+        const on = tab.id === active;
+        return (
+          <div key={tab.id} style={{
+            height: 32, padding: '0 4px', margin: '0 4px',
+            display:'flex', alignItems:'center', gap:6,
+            borderBottom: `2px solid ${on ? t.accent : 'transparent'}`,
+            color: on ? t.textPrimary : t.textSecondary,
+            fontWeight: on ? 600 : 500, fontSize: 12,
+            cursor:'pointer',
+          }}>
+            {tab.label}
+            {tab.count > 0 && (
+              <span style={{
+                fontFamily:'var(--font-mono)', fontSize:10,
+                background: on ? t.accent : t.surfaceTertiary,
+                color: on ? '#fff' : t.textSecondary,
+                padding:'1px 6px', borderRadius:999, lineHeight:1.4,
+              }}>{tab.count}</span>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ============================================================
+   Onboarding Screen
+   ============================================================ */
+function OnboardingScreen({ t }) {
+  const cards = [
+    { icon:'github', label:'Connect GitHub', desc:'Bidirectional sync' },
+    { icon:'upload', label:'Import File',     desc:'JSON or W3C format' },
+    { icon:'tokens', label:'Import Variables',desc:'From this Figma file' },
+    { icon:'file',   label:'Try Demo',        desc:'Explore with sample data' },
+  ];
+  return (
+    <PluginFrame t={t}>
+      {/* Hero */}
+      <div style={{
+        background: t.surfaceSecondary, height: 80, flexShrink:0,
+        display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center',
+        gap: 4, borderBottom:`1px solid ${t.borderDefault}`,
+      }}>
+        <BridgeMark size={20} t={t} />
+        <div style={{ fontWeight:600, fontSize:14, marginTop: 4 }}>Token Bridge</div>
+        <div style={{ fontSize:11, color:t.textSecondary }}>Sync design tokens to Figma Variables</div>
+      </div>
+
+      {/* 2×2 grid */}
+      <div style={{
+        display:'grid', gridTemplateColumns:'1fr 1fr', gap:8,
+        padding: 12,
+      }}>
+        {cards.map(c => (
+          <div key={c.label} style={{
+            border:`1px solid ${t.borderDefault}`, borderRadius:8,
+            background: t.surfacePrimary, padding:12, cursor:'pointer',
+            display:'flex', flexDirection:'column', gap:8, minHeight:108,
+          }}>
+            <Icon name={c.icon} size={20} color={t.accent} />
+            <div style={{ display:'flex', flexDirection:'column', gap:2 }}>
+              <div style={{ fontWeight:500, fontSize:12, color:t.textPrimary }}>{c.label}</div>
+              <div style={{ fontSize:10, color:t.textTertiary }}>{c.desc}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ flex:1 }} />
+      <div style={{
+        padding:'12px 12px 16px', textAlign:'center',
+        fontSize:10, color:t.textTertiary, cursor:'pointer',
+      }}>Skip for now</div>
+    </PluginFrame>
+  );
+}
+
+/* ============================================================
+   Tokens Tab — empty & selected states
+   ============================================================ */
+const COLLECTIONS = [
+  { name:'color/primitives',   tokens: 142, modes: 1 },
+  { name:'color/semantic',     tokens: 96,  modes: 2 },
+  { name:'typography/scale',   tokens: 24,  modes: 1 },
+  { name:'spacing/scale',      tokens: 18,  modes: 1 },
+  { name:'radius/scale',       tokens: 8,   modes: 1 },
+  { name:'shadow/elevation',   tokens: 12,  modes: 2 },
+];
+const BAR_COLORS = (t) => [t.accent, t.success, t.warning, t.destructive];
+
+function CollectionCard({ t, c, idx, selected, onToggle }) {
+  const barColors = BAR_COLORS(t);
+  const barBase = barColors[idx % 4];
+  return (
+    <div style={{
+      display:'flex', alignItems:'stretch',
+      border:`1px solid ${selected ? t.accent : t.borderDefault}`,
+      borderRadius:6, overflow:'hidden',
+      background: selected ? t.accentTint : t.surfacePrimary,
+      cursor:'pointer',
+    }}>
+      <div style={{ width:4, background: selected ? t.accent : barBase, flexShrink:0 }} />
+      <div style={{ flex:1, padding:'10px 12px', display:'flex', flexDirection:'column', gap:4 }}>
+        <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+          <span style={{ fontFamily:'var(--font-mono)', fontWeight:500, fontSize:12, color:t.textPrimary }}>{c.name}</span>
+          <Checkbox t={t} checked={selected} />
+        </div>
+        <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+          <span style={{ fontFamily:'var(--font-mono)', fontSize:10, color:t.textTertiary }}>
+            {c.tokens} tokens · {c.modes} mode{c.modes>1?'s':''}
+          </span>
+          <span style={{ fontFamily:'var(--font-mono)', fontSize:10, color:t.accent, cursor:'pointer' }}>View →</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Checkbox({ t, checked }) {
+  return (
+    <span style={{
+      width:14, height:14, borderRadius:3, flexShrink:0,
+      border:`1.5px solid ${checked ? t.accent : t.borderStrong}`,
+      background: checked ? t.accent : 'transparent',
+      display:'grid', placeItems:'center',
+    }}>
+      {checked && <Icon name="check" size={10} color="#fff" />}
+    </span>
+  );
+}
+
+function GhostButton({ t, children, height=24 }) {
+  return (
+    <button style={{
+      height, padding:'0 8px', borderRadius:4,
+      border:`1px solid ${t.borderDefault}`,
+      background:t.surfacePrimary, color:t.textSecondary,
+      fontSize:11, fontFamily:'var(--font-base)', cursor:'pointer',
+      display:'inline-flex', alignItems:'center', gap:4,
+    }}>{children}</button>
+  );
+}
+
+function TokensTab({ t, selected }) {
+  return (
+    <PluginFrame t={t}>
+      <TabBar t={t} active="tokens" counts={{ tokens: COLLECTIONS.length }} />
+      {/* Header bar */}
+      <div style={{
+        display:'flex', alignItems:'center', justifyContent:'space-between',
+        padding:'10px 12px', borderBottom:`1px solid ${t.borderDefault}`,
+      }}>
+        <span style={{ fontFamily:'var(--font-mono)', fontSize:10, color:t.textTertiary }}>
+          {COLLECTIONS.length} collections
+        </span>
+        <div style={{ display:'flex', gap:6 }}>
+          <GhostButton t={t}>Select all</GhostButton>
+          <GhostButton t={t}>Clear</GhostButton>
+        </div>
+      </div>
+
+      {/* Cards */}
+      <div style={{
+        padding:12, display:'flex', flexDirection:'column', gap:8,
+        flex:1, overflow:'auto',
+      }}>
+        {COLLECTIONS.map((c, i) => (
+          <CollectionCard
+            key={c.name}
+            t={t} c={c} idx={i}
+            selected={selected.includes(i)}
+          />
+        ))}
+      </div>
+
+      {/* Sticky footer when selections > 0 */}
+      {selected.length > 0 && (
+        <div style={{
+          position:'sticky', bottom:0,
+          background: t.surfaceElevated,
+          borderTop: `1px solid ${t.borderDefault}`,
+          padding:'8px 12px',
+          display:'flex', alignItems:'center', justifyContent:'space-between',
+          gap:8,
+        }}>
+          <span style={{ fontFamily:'var(--font-mono)', fontSize:10, color:t.textSecondary }}>
+            {selected.length} selected
+          </span>
+          <div style={{ display:'flex', gap:6 }}>
+            <button style={{
+              height:28, padding:'0 10px', borderRadius:4,
+              border:`1px solid ${t.borderDefault}`,
+              background: t.surfacePrimary, color: t.textPrimary,
+              fontSize:11, fontWeight:500, cursor:'pointer',
+              display:'inline-flex', alignItems:'center', gap:6,
+            }}>
+              <Icon name="download" size={12} /> JSON
+            </button>
+            <button style={{
+              height:28, padding:'0 10px', borderRadius:4,
+              border:`1px solid ${t.accent}`,
+              background: t.accent, color: '#fff',
+              fontSize:11, fontWeight:600, cursor:'pointer',
+              display:'inline-flex', alignItems:'center', gap:6,
+            }}>
+              <Icon name="github" size={12} /> Push
+            </button>
+          </div>
+        </div>
+      )}
+    </PluginFrame>
+  );
+}
+
+/* ============================================================
+   Sync Tab — Not configured
+   ============================================================ */
+function SyncTabNotConfigured({ t }) {
+  return (
+    <PluginFrame t={t}>
+      <TabBar t={t} active="sync" />
+      <div style={{ padding:'14px 12px 0 12px' }}>
+        <div style={{ fontWeight:600, fontSize:13 }}>Connect GitHub</div>
+        <div style={{ fontSize:11, color:t.textSecondary, marginTop:2 }}>
+          Sync tokens bidirectionally with your repository.
+        </div>
+      </div>
+
+      {/* SetupWizard placeholder (we don't redesign internals) */}
+      <div style={{ padding:'14px 12px', display:'flex', flexDirection:'column', gap:10 }}>
+        <Stepper t={t} step={1} steps={['Token','Repo','Branch']} />
+
+        <FieldLabel t={t} label="GitHub Personal Access Token">
+          <Input t={t} mono placeholder="ghp_••••••••••••••••••••" />
+          <Helper t={t}>Needs <span style={{ fontFamily:'var(--font-mono)' }}>repo</span> scope. <span style={{ color:t.accent, cursor:'pointer' }}>Create token →</span></Helper>
+        </FieldLabel>
+
+        <FieldLabel t={t} label="Repository">
+          <Input t={t} mono value="wylie-dog/design-tokens" />
+        </FieldLabel>
+
+        <FieldLabel t={t} label="Branch">
+          <Input t={t} mono value="main" />
+        </FieldLabel>
+
+        <FieldLabel t={t} label="Tokens path">
+          <Input t={t} mono value="tokens/" />
+        </FieldLabel>
+
+        <div style={{ display:'flex', gap:6, marginTop:4 }}>
+          <button style={{
+            flex:1, height:32, borderRadius:4,
+            border:`1px solid ${t.accent}`,
+            background:t.accent, color:'#fff',
+            fontSize:12, fontWeight:600, cursor:'pointer',
+          }}>Connect</button>
+          <GhostButton t={t} height={32}>Cancel</GhostButton>
+        </div>
+      </div>
+    </PluginFrame>
+  );
+}
+
+function Stepper({ t, step, steps }) {
+  return (
+    <div style={{ display:'flex', alignItems:'center', gap:6, fontFamily:'var(--font-mono)', fontSize:10 }}>
+      {steps.map((s,i) => (
+        <React.Fragment key={s}>
+          <span style={{
+            color: i+1 === step ? t.textPrimary : t.textTertiary,
+            fontWeight: i+1 === step ? 600 : 400,
+          }}>{String(i+1).padStart(2,'0')} {s}</span>
+          {i < steps.length-1 && <span style={{ color:t.textTertiary }}>·</span>}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+function FieldLabel({ t, label, children }) {
+  return (
+    <label style={{ display:'flex', flexDirection:'column', gap:4 }}>
+      <span style={{
+        fontSize:10, fontWeight:600, letterSpacing:0.6,
+        textTransform:'uppercase', color:t.textSecondary,
+      }}>{label}</span>
+      {children}
+    </label>
+  );
+}
+function Input({ t, mono, value, placeholder }) {
+  return (
+    <input defaultValue={value} placeholder={placeholder} style={{
+      height:30, padding:'0 10px', borderRadius:4,
+      border:`1px solid ${t.borderDefault}`, background:t.surfacePrimary,
+      color:t.textPrimary,
+      fontFamily: mono ? 'var(--font-mono)' : 'var(--font-base)',
+      fontSize: mono ? 11 : 12,
+      outline:'none',
+    }} />
+  );
+}
+function Helper({ t, children }) {
+  return <span style={{ fontSize:10, color:t.textTertiary }}>{children}</span>;
+}
+
+/* ============================================================
+   Sync Tab — Configured
+   ============================================================ */
+function SyncTabConfigured({ t, showPullWarning }) {
+  return (
+    <PluginFrame t={t}>
+      <TabBar t={t} active="sync" />
+
+      {/* Connection strip */}
+      <div style={{
+        display:'flex', alignItems:'center', justifyContent:'space-between',
+        background:t.surfaceSecondary, padding:'8px 12px',
+        borderBottom:`1px solid ${t.borderDefault}`,
+      }}>
+        <div style={{ display:'flex', alignItems:'center', gap:8, minWidth:0 }}>
+          <span style={{ width:6, height:6, borderRadius:'50%', background:t.success, flexShrink:0 }} />
+          <span style={{ fontFamily:'var(--font-mono)', fontSize:11, color:t.textPrimary, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
+            wylie-dog/design-tokens
+            <span style={{ color:t.textTertiary }}> / main</span>
+          </span>
+        </div>
+        <span style={{ fontFamily:'var(--font-mono)', fontSize:10, color:t.accent, cursor:'pointer' }}>Edit</span>
+      </div>
+
+      {/* Collection selector */}
+      <div style={{ padding:'12px 12px 8px' }}>
+        <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:8 }}>
+          <span style={{ fontWeight:600, fontSize:11 }}>Collections</span>
+          <span style={{ fontSize:10, color:t.textSecondary }}>
+            <span style={{ color:t.accent, cursor:'pointer' }}>Select all</span>
+            <span style={{ margin:'0 6px', color:t.borderStrong }}>·</span>
+            <span style={{ color:t.accent, cursor:'pointer' }}>Clear</span>
+          </span>
+        </div>
+        <div style={{ display:'flex', flexDirection:'column', gap:2 }}>
+          {COLLECTIONS.slice(0,4).map((c, i) => (
+            <div key={c.name} style={{
+              display:'flex', alignItems:'center', gap:8,
+              padding:'6px 4px', borderRadius:3,
+            }}>
+              <Checkbox t={t} checked={i < 3} />
+              <span style={{ fontFamily:'var(--font-mono)', fontSize:11, flex:1, color:t.textPrimary }}>{c.name}</span>
+              <span style={{ fontFamily:'var(--font-mono)', fontSize:10, color:t.textTertiary }}>{c.tokens}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Action cards */}
+      <div style={{ padding:'8px 12px 4px', display:'grid', gridTemplateColumns:'1fr 1fr', gap:8 }}>
+        <ActionCard t={t} icon="upload" label="Push" sub="Figma → GitHub"
+          button={<PrimaryBtn t={t}>Push 3</PrimaryBtn>} />
+        <ActionCard t={t} icon="download" label="Pull" sub="GitHub → Figma"
+          button={
+            showPullWarning ? (
+              <div style={{ display:'flex', flexDirection:'column', gap:6 }}>
+                <div style={{
+                  display:'flex', gap:6, padding:'6px 8px', borderRadius:4,
+                  background:`color-mix(in srgb, ${t.warning} 14%, transparent)`,
+                  border:`1px solid color-mix(in srgb, ${t.warning} 40%, transparent)`,
+                  alignItems:'flex-start',
+                }}>
+                  <Icon name="warning" size={12} color={t.warning} style={{ marginTop:1, flexShrink:0 }} />
+                  <span style={{ fontSize:10, color:t.textSecondary, lineHeight:1.4 }}>
+                    Overwrites local Figma variables.
+                  </span>
+                </div>
+                <div style={{ display:'flex', gap:4 }}>
+                  <button style={{
+                    flex:1, height:26, borderRadius:4,
+                    background:t.warning, color:'#fff', border:'none',
+                    fontSize:11, fontWeight:600, cursor:'pointer',
+                  }}>Confirm</button>
+                  <GhostButton t={t} height={26}>Cancel</GhostButton>
+                </div>
+              </div>
+            ) : <OutlineBtn t={t}>Pull</OutlineBtn>
+          }
+        />
+      </div>
+
+      {/* Import file footer */}
+      <div style={{ flex:1 }} />
+      <div style={{
+        borderTop:`1px solid ${t.borderDefault}`,
+        padding:'10px 12px',
+        display:'flex', alignItems:'center', justifyContent:'space-between',
+      }}>
+        <span style={{ fontSize:10, color:t.textTertiary, fontFamily:'var(--font-mono)' }}>or</span>
+        <span style={{
+          fontSize:11, color:t.textSecondary, cursor:'pointer',
+          display:'inline-flex', alignItems:'center', gap:6,
+        }}>
+          <Icon name="upload" size={12} /> Import from file
+        </span>
+        <span style={{ width:14 }} />
+      </div>
+    </PluginFrame>
+  );
+}
+
+function ActionCard({ t, icon, label, sub, button }) {
+  return (
+    <div style={{
+      border:`1px solid ${t.borderDefault}`, borderRadius:8,
+      background:t.surfacePrimary, padding:12,
+      display:'flex', flexDirection:'column', gap:8,
+    }}>
+      <Icon name={icon} size={20} color={t.accent} />
+      <div>
+        <div style={{ fontWeight:600, fontSize:12 }}>{label}</div>
+        <div style={{ fontSize:10, color:t.textSecondary, fontFamily:'var(--font-mono)' }}>{sub}</div>
+      </div>
+      {button}
+    </div>
+  );
+}
+function PrimaryBtn({ t, children }) {
+  return (
+    <button style={{
+      height:28, borderRadius:4, border:`1px solid ${t.accent}`,
+      background:t.accent, color:'#fff',
+      fontSize:11, fontWeight:600, cursor:'pointer',
+    }}>{children}</button>
+  );
+}
+function OutlineBtn({ t, children }) {
+  return (
+    <button style={{
+      height:28, borderRadius:4,
+      border:`1px solid ${t.borderDefault}`,
+      background:t.surfacePrimary, color:t.textPrimary,
+      fontSize:11, fontWeight:600, cursor:'pointer',
+    }}>{children}</button>
+  );
+}
+
+/* ============================================================
+   Token-system Inspector Artboard (specs for redlines)
+   ============================================================ */
+function TokenSpecArtboard() {
+  const t = L;
+  const swatches = [
+    { name:'--accent-primary',   light:'#3554a6', dark:'#6b8ef5' },
+    { name:'--success',          light:'#1a9e6c', dark:'#34c98a' },
+    { name:'--warning',          light:'#c88a00', dark:'#f0b429' },
+    { name:'--destructive',      light:'#c63b28', dark:'#f06b56' },
+  ];
+  const surfaces = [
+    { name:'surface-primary',    light:'#ffffff', dark:'#1c1c1f' },
+    { name:'surface-secondary',  light:'#f7f7f9', dark:'#262629' },
+    { name:'surface-tertiary',   light:'#eeeef2', dark:'#313135' },
+    { name:'surface-elevated',   light:'#ffffff', dark:'#2a2a2e' },
+  ];
+  return (
+    <div style={{
+      width:560, padding:20, background:'#ffffff',
+      border:`1px solid ${t.borderDefault}`, borderRadius:6,
+      color:t.textPrimary, fontSize:12, fontFamily:'var(--font-base)',
+      display:'flex', flexDirection:'column', gap:16,
+    }}>
+      <div>
+        <div style={{
+          fontFamily:'var(--font-mono)', fontSize:10,
+          textTransform:'uppercase', letterSpacing:0.8,
+          color:t.textSecondary,
+        }}>Design tokens · light & dark</div>
+        <div style={{ fontWeight:600, fontSize:16, marginTop:2 }}>Plugin :root variables</div>
+      </div>
+
+      <SwatchGrid title="Brand & semantic" rows={swatches} t={t} />
+      <SwatchGrid title="Surfaces" rows={surfaces} t={t} />
+
+      <div>
+        <SectionEyebrow t={t}>Typography</SectionEyebrow>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12, marginTop:8 }}>
+          <SpecRow t={t} label="font-family-base" value="Manrope" sample="Aa Bb Cc 12px" />
+          <SpecRow t={t} label="font-family-mono" value="JetBrains Mono" sample="--accent" mono />
+          <SpecRow t={t} label="size-mono-xs" value="10px" sample="0.9.2" mono />
+          <SpecRow t={t} label="size-mono-sm" value="11px" sample="repo/branch" mono />
+        </div>
+      </div>
+
+      <div>
+        <SectionEyebrow t={t}>Iconography</SectionEyebrow>
+        <div style={{
+          display:'grid', gridTemplateColumns:'repeat(8, 1fr)', gap:8, marginTop:8,
+        }}>
+          {Object.keys(PATHS).map(n => (
+            <div key={n} style={{
+              display:'flex', flexDirection:'column', alignItems:'center', gap:4,
+              padding:'8px 4px', border:`1px solid ${t.borderDefault}`, borderRadius:4,
+              color: t.textPrimary,
+            }}>
+              <Icon name={n} size={16} />
+              <span style={{ fontFamily:'var(--font-mono)', fontSize:9, color:t.textTertiary, textAlign:'center' }}>{n}</span>
+            </div>
+          ))}
+        </div>
+        <div style={{ fontSize:11, color:t.textSecondary, marginTop:8, lineHeight:1.5 }}>
+          16×16 nominal, drawn on 24-viewBox · stroke-width 1.5 · stroke="currentColor" · fill="none"
+        </div>
+      </div>
+    </div>
+  );
+}
+function SectionEyebrow({ t, children }) {
+  return (
+    <div style={{
+      fontFamily:'var(--font-mono)', fontSize:10,
+      textTransform:'uppercase', letterSpacing:0.8,
+      color:t.textSecondary,
+    }}>{children}</div>
+  );
+}
+function SwatchGrid({ title, rows, t }) {
+  return (
+    <div>
+      <SectionEyebrow t={t}>{title}</SectionEyebrow>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr 1fr', gap:8, marginTop:8 }}>
+        {rows.map(r => (
+          <div key={r.name} style={{
+            border:`1px solid ${t.borderDefault}`, borderRadius:6, overflow:'hidden',
+          }}>
+            <div style={{ display:'flex', height:36 }}>
+              <div style={{ flex:1, background:r.light }} />
+              <div style={{ flex:1, background:r.dark }} />
+            </div>
+            <div style={{ padding:'6px 8px', display:'flex', flexDirection:'column', gap:2 }}>
+              <div style={{ fontFamily:'var(--font-mono)', fontSize:10, color:t.textPrimary }}>{r.name}</div>
+              <div style={{ fontFamily:'var(--font-mono)', fontSize:9, color:t.textTertiary }}>{r.light} · {r.dark}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+function SpecRow({ t, label, value, sample, mono }) {
+  return (
+    <div style={{
+      border:`1px solid ${t.borderDefault}`, borderRadius:6, padding:10,
+      display:'flex', flexDirection:'column', gap:4,
+    }}>
+      <div style={{ fontFamily:'var(--font-mono)', fontSize:10, color:t.textTertiary }}>{label}</div>
+      <div style={{ fontSize:13, fontFamily: mono ? 'var(--font-mono)' : 'var(--font-base)' }}>{value}</div>
+      <div style={{ fontSize:11, fontFamily: mono ? 'var(--font-mono)' : 'var(--font-base)', color:t.textSecondary }}>{sample}</div>
+    </div>
+  );
+}
+
+/* ============================================================
+   App
+   ============================================================ */
+function App() {
+  return (
+    <DesignCanvas
+      title="Token Bridge · Plugin redesign"
+      subtitle="360 px plugin panel for Figma, retuned to Wylie Dog system"
+      bg="#eeeef2"
+    >
+      <DCSection id="onboarding" title="01 · Onboarding">
+        <DCArtboard id="onb-light" label="Light" width={360} height={640}>
+          <OnboardingScreen t={L} />
+        </DCArtboard>
+        <DCArtboard id="onb-dark" label="Dark" width={360} height={640}>
+          <OnboardingScreen t={D} />
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="tokens" title="02 · Tokens tab">
+        <DCArtboard id="tok-empty" label="Empty selection" width={360} height={640}>
+          <TokensTab t={L} selected={[]} />
+        </DCArtboard>
+        <DCArtboard id="tok-selected" label="3 selected · footer active" width={360} height={640}>
+          <TokensTab t={L} selected={[0,1,3]} />
+        </DCArtboard>
+        <DCArtboard id="tok-dark" label="Dark · 3 selected" width={360} height={640}>
+          <TokensTab t={D} selected={[0,1,3]} />
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="sync" title="03 · Sync tab">
+        <DCArtboard id="sync-notconfig" label="Not configured · setup wizard" width={360} height={640}>
+          <SyncTabNotConfigured t={L} />
+        </DCArtboard>
+        <DCArtboard id="sync-configured" label="Configured · default" width={360} height={640}>
+          <SyncTabConfigured t={L} />
+        </DCArtboard>
+        <DCArtboard id="sync-pullwarn" label="Configured · pull confirm" width={360} height={640}>
+          <SyncTabConfigured t={L} showPullWarning />
+        </DCArtboard>
+        <DCArtboard id="sync-dark" label="Dark · configured" width={360} height={640}>
+          <SyncTabConfigured t={D} />
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="tokens-spec" title="04 · Token system spec">
+        <DCArtboard id="spec" label="Variables, type, icons" width={600} height={720}>
+          <TokenSpecArtboard />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

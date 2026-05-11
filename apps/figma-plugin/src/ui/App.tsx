@@ -36,6 +36,7 @@ import { ExistingTokensImporter } from "./components/ExistingTokensImporter";
 import { FormatGuidelinesDialog } from "./components/FormatGuidelinesDialog";
 import { HelpMenu } from "./components/HelpMenu";
 import { TransformationSummary } from "./components/TransformationSummary";
+import { Icon } from "./components/common/Icon";
 
 console.log("App.tsx loaded");
 
@@ -343,77 +344,114 @@ function AppInner() {
   return (
     <div
       style={{
-        padding: "var(--space-4)",
         minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
         backgroundColor: "var(--surface-primary)",
         color: "var(--text-primary)",
       }}
     >
-      {/* Header */}
-      <div
+      {/* ── Header (44px, edge-to-edge) ── */}
+      <header
         style={{
+          height: 44,
+          flexShrink: 0,
           display: "flex",
-          justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: "var(--space-4)",
-          paddingBottom: "var(--space-3)",
-          borderBottom: "1px solid var(--border-primary)",
+          gap: 8,
+          padding: "0 12px",
+          borderBottom: "1px solid var(--border-default)",
+          background: "var(--surface-primary)",
         }}
       >
-        <div
+        {/* BridgeMark logomark */}
+        <span
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "var(--space-3)",
+            display: "inline-grid",
+            placeItems: "center",
+            width: 20,
+            height: 20,
+            borderRadius: 5,
+            background: "var(--accent-primary)",
+            color: "#fff",
+            flexShrink: 0,
           }}
         >
-          <h2
-            style={{
-              margin: 0,
-              fontSize: "var(--font-size-xl)",
-              fontWeight: "var(--font-weight-semibold)",
-              color: "var(--text-primary)",
-            }}
+          <svg
+            width={14}
+            height={14}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            aria-hidden="true"
           >
-            Token Bridge
-          </h2>
-        </div>
+            <path d="M4 8h16" />
+            <path d="M4 16h16" />
+            <path d="M12 8v8" />
+          </svg>
+        </span>
+
+        <span
+          style={{
+            fontWeight: "var(--font-weight-semibold)",
+            fontSize: "var(--font-size-md)",
+            letterSpacing: -0.1,
+            color: "var(--text-primary)",
+          }}
+        >
+          Token Bridge
+        </span>
+
+        <span style={{ flex: 1 }} />
+
+        <span
+          style={{
+            fontFamily: "var(--font-family-mono)",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-tertiary)",
+          }}
+        >
+          v0.9.2
+        </span>
+
+        {/* Settings / help menu */}
         <HelpMenu
           onReset={() => {
-            // Basic reset for now - clear UI state
             dispatch({ type: "SET_TAB", tab: "tokens" });
             pluginActions.setLoading(false);
             pluginActions.setError(null);
-            // Could send a message to plugin to clear storage if needed
           }}
         />
-      </div>
+      </header>
 
-      {/* Error Display */}
+      {/* ── Alerts ── */}
       {pluginState.error && (
-        <EnhancedErrorDisplay
-          error={pluginState.error}
-          onDismiss={() => pluginActions.setError(null)}
-          onRetry={() => {
-            pluginActions.setError(null);
-            if (
-              pluginState.error &&
-              typeof pluginState.error !== "string" &&
-              pluginState.error.type === "network-error"
-            ) {
-              pluginActions.loadCollections();
-            }
-          }}
-        />
+        <div style={{ padding: "8px 12px 0" }}>
+          <EnhancedErrorDisplay
+            error={pluginState.error}
+            onDismiss={() => pluginActions.setError(null)}
+            onRetry={() => {
+              pluginActions.setError(null);
+              if (
+                pluginState.error &&
+                typeof pluginState.error !== "string" &&
+                pluginState.error.type === "network-error"
+              ) {
+                pluginActions.loadCollections();
+              }
+            }}
+          />
+        </div>
       )}
 
-      {/* Success Toast */}
       <SuccessToast
         message={pluginState.successMessage}
         onClose={() => pluginActions.setSuccessMessage(null)}
       />
 
-      {/* Onboarding — replaces tab system on first run */}
+      {/* ── Main content ── */}
       {pluginState.showOnboarding ? (
         <OnboardingScreen
           onSetupSync={() => {
@@ -436,133 +474,150 @@ function AppInner() {
         />
       ) : (
         <>
-          {/* Tab Navigation */}
+          {/* Tab Navigation — edge-to-edge */}
           <TabBar
             tabs={[
-              { id: "tokens", label: "Tokens", icon: "🎨" },
-              { id: "sync", label: "Sync", icon: "🔄" },
+              {
+                id: "tokens",
+                label: "Tokens",
+                count: pluginState.collections.length || undefined,
+              },
+              { id: "sync", label: "Sync" },
             ]}
             activeTab={uiState.activeTab}
             onTabChange={(tab) => dispatch({ type: "SET_TAB", tab })}
           />
 
-          {/* TOKENS TAB */}
-          {uiState.activeTab === "tokens" && (
-            <TokensTab
-              collections={pluginState.collections}
-              selectedCollection={pluginState.selectedCollection}
-              onToggleCollection={(id: string) => {
-                dispatch({ type: "TOGGLE_COLLECTION", id });
-              }}
-              onViewDetails={(id: string) => {
-                pluginActions.loadCollectionDetails(id);
-              }}
-              onSelectAll={() => {
-                dispatch({
-                  type: "SELECT_ALL_COLLECTIONS",
-                  ids: pluginState.collections.map((c) => c.id),
-                });
-              }}
-              onDeselectAll={() => {
-                dispatch({ type: "DESELECT_ALL_COLLECTIONS" });
-              }}
-              loading={pluginState.loading}
-              onImportFile={handleTokenImport}
-              onGenerateDemoTokens={() => {
-                pluginActions.setLoading(true);
-                pluginActions.setLoadingMessage("Loading demo tokens...");
-                pluginActions.sendMessage({ type: "generate-demo-tokens" });
-              }}
-              onSetupGitHub={() => {
-                // Navigate to Sync tab — wizard lives there inline
-                dispatch({ type: "SET_TAB", tab: "sync" });
-              }}
-              githubConfigured={pluginState.githubConfigured}
-              onDownloadJSON={() => {
-                if (selectedCollections.size === 0) {
-                  pluginActions.setError(
-                    "Please select at least one collection to export"
-                  );
-                  return;
-                }
-                pluginActions.sendMessage({
-                  type: "export-tokens",
-                  collectionIds: Array.from(selectedCollections),
-                });
-              }}
-              onPushToGitHub={() => {
-                if (!pluginState.githubConfigured) {
-                  dispatch({ type: "SET_TAB", tab: "sync" });
-                  return;
-                }
-                if (selectedCollections.size === 0) {
-                  pluginActions.setError(
-                    "Please select at least one collection to export"
-                  );
-                  return;
-                }
-                pluginActions.sendMessage({
-                  type: "github-sync-tokens",
-                  collectionIds: Array.from(selectedCollections),
-                });
-              }}
-            />
-          )}
-
-          {/* SYNC TAB */}
-          {uiState.activeTab === "sync" && (
-            <SyncTab
-              githubConfig={pluginState.githubConfig}
-              githubConfigured={pluginState.githubConfigured}
-              collections={pluginState.collections}
-              loading={pluginState.loading}
-              onPushToGitHub={() => {
-                if (selectedCollections.size === 0) {
-                  pluginActions.setError(
-                    "Please select at least one collection to sync"
-                  );
-                  return;
-                }
-                pluginActions.sendMessage({
-                  type: "github-sync-tokens",
-                  collectionIds: Array.from(selectedCollections),
-                });
-              }}
-              onPullFromGitHub={handleGitHubPull}
-              onImportFile={handleTokenImport}
-              onGitHubConfigComplete={handleGitHubConfigTest}
-              importPreview={importPreviewData}
-              onConfirmImport={handleConfirmImport}
-              onCancelImport={handleCancelImport}
-            />
-          )}
-
-          {/* Conflict Resolution */}
-          {pluginState.showConflictResolution &&
-            pluginState.conflicts.length > 0 && (
-              <ConflictResolutionDisplay
-                conflicts={pluginState.conflicts}
-                onResolve={handleConflictResolution}
-                onCancel={() => {
-                  pluginActions.setShowConflictResolution(false);
-                  pluginActions.setConflicts([]);
-                  pluginActions.setLoading(false);
+          {/* Tab panels */}
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              minHeight: 0,
+            }}
+          >
+            {/* TOKENS TAB */}
+            {uiState.activeTab === "tokens" && (
+              <TokensTab
+                collections={pluginState.collections}
+                selectedCollection={pluginState.selectedCollection}
+                onToggleCollection={(id: string) => {
+                  dispatch({ type: "TOGGLE_COLLECTION", id });
+                }}
+                onViewDetails={(id: string) => {
+                  pluginActions.loadCollectionDetails(id);
+                }}
+                onSelectAll={() => {
+                  dispatch({
+                    type: "SELECT_ALL_COLLECTIONS",
+                    ids: pluginState.collections.map((c) => c.id),
+                  });
+                }}
+                onDeselectAll={() => {
+                  dispatch({ type: "DESELECT_ALL_COLLECTIONS" });
                 }}
                 loading={pluginState.loading}
+                onImportFile={handleTokenImport}
+                onGenerateDemoTokens={() => {
+                  pluginActions.setLoading(true);
+                  pluginActions.setLoadingMessage("Loading demo tokens...");
+                  pluginActions.sendMessage({ type: "generate-demo-tokens" });
+                }}
+                onSetupGitHub={() => {
+                  dispatch({ type: "SET_TAB", tab: "sync" });
+                }}
+                githubConfigured={pluginState.githubConfigured}
+                onDownloadJSON={() => {
+                  if (selectedCollections.size === 0) {
+                    pluginActions.setError(
+                      "Please select at least one collection to export"
+                    );
+                    return;
+                  }
+                  pluginActions.sendMessage({
+                    type: "export-tokens",
+                    collectionIds: Array.from(selectedCollections),
+                  });
+                }}
+                onPushToGitHub={() => {
+                  if (!pluginState.githubConfigured) {
+                    dispatch({ type: "SET_TAB", tab: "sync" });
+                    return;
+                  }
+                  if (selectedCollections.size === 0) {
+                    pluginActions.setError(
+                      "Please select at least one collection to export"
+                    );
+                    return;
+                  }
+                  pluginActions.sendMessage({
+                    type: "github-sync-tokens",
+                    collectionIds: Array.from(selectedCollections),
+                  });
+                }}
               />
             )}
 
-          {/* Validation Display */}
-          {pluginState.showValidation && pluginState.validationReport && (
-            <ValidationDisplay
-              validationReport={pluginState.validationReport}
-              onClose={() => pluginActions.setShowValidation(false)}
-            />
-          )}
+            {/* SYNC TAB */}
+            {uiState.activeTab === "sync" && (
+              <SyncTab
+                githubConfig={pluginState.githubConfig}
+                githubConfigured={pluginState.githubConfigured}
+                collections={pluginState.collections}
+                loading={pluginState.loading}
+                onPushToGitHub={() => {
+                  if (selectedCollections.size === 0) {
+                    pluginActions.setError(
+                      "Please select at least one collection to sync"
+                    );
+                    return;
+                  }
+                  pluginActions.sendMessage({
+                    type: "github-sync-tokens",
+                    collectionIds: Array.from(selectedCollections),
+                  });
+                }}
+                onPullFromGitHub={handleGitHubPull}
+                onImportFile={handleTokenImport}
+                onGitHubConfigComplete={handleGitHubConfigTest}
+                importPreview={importPreviewData}
+                onConfirmImport={handleConfirmImport}
+                onCancelImport={handleCancelImport}
+              />
+            )}
+
+            {/* Conflict Resolution */}
+            {pluginState.showConflictResolution &&
+              pluginState.conflicts.length > 0 && (
+                <div style={{ padding: "0 12px 12px" }}>
+                  <ConflictResolutionDisplay
+                    conflicts={pluginState.conflicts}
+                    onResolve={handleConflictResolution}
+                    onCancel={() => {
+                      pluginActions.setShowConflictResolution(false);
+                      pluginActions.setConflicts([]);
+                      pluginActions.setLoading(false);
+                    }}
+                    loading={pluginState.loading}
+                  />
+                </div>
+              )}
+
+            {/* Validation Display */}
+            {pluginState.showValidation && pluginState.validationReport && (
+              <div style={{ padding: "0 12px 12px" }}>
+                <ValidationDisplay
+                  validationReport={pluginState.validationReport}
+                  onClose={() => pluginActions.setShowValidation(false)}
+                />
+              </div>
+            )}
+          </div>
         </>
       )}
 
-      {/* Existing Tokens Importer */}
+      {/* ── Modals ── */}
       {showExistingTokensImporter && (
         <ExistingTokensImporter
           onImport={() => {
@@ -572,7 +627,6 @@ function AppInner() {
         />
       )}
 
-      {/* Transformation Summary */}
       {transformationSummary && (
         <TransformationSummary
           summary={transformationSummary}
@@ -584,7 +638,6 @@ function AppInner() {
         />
       )}
 
-      {/* Format Guidelines */}
       {showFormatGuidelines && (
         <FormatGuidelinesDialog
           onClose={() => setShowFormatGuidelines(false)}
