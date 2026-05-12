@@ -44,7 +44,7 @@
     background-color: color-mix(
       in oklch,
       var(--color-background-inverse),
-      transparent 60%
+      transparent 90%
     );
     border: 1px solid
       color-mix(in oklch, var(--color-background-primary), transparent 90%);
@@ -74,7 +74,7 @@
     background-color: color-mix(
       in oklch,
       var(--color-background-inverse),
-      transparent 50%
+      transparent 90%
     );
     border: 1px solid
       color-mix(in oklch, var(--color-background-primary), transparent 85%);
