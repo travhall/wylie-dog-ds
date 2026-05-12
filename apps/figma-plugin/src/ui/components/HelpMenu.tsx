@@ -1,5 +1,6 @@
 import { h } from "preact";
 import { useState, useRef, useEffect } from "preact/hooks";
+import { Icon } from "./common/Icon";
 
 interface HelpMenuProps {
   onReset?: () => void;
@@ -69,7 +70,7 @@ export function HelpMenu({ onReset }: HelpMenuProps) {
           e.currentTarget.style.color = "var(--text-secondary)";
         }}
       >
-        <span style={{ fontSize: "var(--font-size-lg)" }}>❓</span>
+        <Icon name="info" size={16} color="var(--text-secondary)" />
       </button>
 
       {isOpen && (
@@ -123,7 +124,8 @@ export function HelpMenu({ onReset }: HelpMenuProps) {
               (e.currentTarget.style.backgroundColor = "transparent")
             }
           >
-            <span>📚</span> Documentation
+            <Icon name="file" size={14} color="var(--text-primary)" />{" "}
+            Documentation
           </button>
 
           {/* Report Issue */}
@@ -156,7 +158,8 @@ export function HelpMenu({ onReset }: HelpMenuProps) {
               (e.currentTarget.style.backgroundColor = "transparent")
             }
           >
-            <span>🐛</span> Report an Issue
+            <Icon name="warning" size={14} color="var(--text-primary)" /> Report
+            an Issue
           </button>
 
           {onReset && (
@@ -192,7 +195,7 @@ export function HelpMenu({ onReset }: HelpMenuProps) {
                   (e.currentTarget.style.backgroundColor = "transparent")
                 }
               >
-                <span>🔄</span> Reset Plugin
+                <Icon name="sync" size={14} color="var(--error)" /> Reset Plugin
               </button>
             </>
           )}

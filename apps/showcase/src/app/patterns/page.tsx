@@ -359,7 +359,7 @@ export default function PatternsPage() {
                       <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
                         Email
                       </label>
-                      <div className="flex items-center h-[28px] border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-primary)">
+                      <div className="flex items-center h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-primary)">
                         elena@wyliedog.dev
                       </div>
                     </div>
@@ -375,7 +375,7 @@ export default function PatternsPage() {
                           Forgot?
                         </a>
                       </div>
-                      <div className="flex items-center justify-between h-[28px] border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
+                      <div className="flex items-center justify-between h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
                         <span className="tracking-[0.3em] text-(--color-text-tertiary)">
                           ••••••••
                         </span>
@@ -392,7 +392,7 @@ export default function PatternsPage() {
                       </div>
                     </div>
                     <button
-                      className="w-full h-[30px] flex items-center justify-center rounded-md text-[11px] font-semibold"
+                      className="w-full h-7.5 flex items-center justify-center rounded-md text-[11px] font-semibold"
                       style={{
                         background: "var(--color-interactive-primary)",
                         color: "var(--color-text-inverse)",
@@ -418,7 +418,7 @@ export default function PatternsPage() {
                     {["G", "GH", ""].map((label, i) => (
                       <button
                         key={i}
-                        className="flex items-center justify-center h-[28px] border border-(--color-border-strong) rounded-md text-[11px] font-semibold text-(--color-text-primary)"
+                        className="flex items-center justify-center h-7 border border-(--color-border-strong) rounded-md text-[11px] font-semibold text-(--color-text-primary)"
                       >
                         {i === 0 ? (
                           "G"
@@ -460,7 +460,7 @@ export default function PatternsPage() {
               desc="Forgot-password entry, throttled resend, magic-link return state. Handles all five edge cases auth audits flag: expired token, used token, mismatched email, rate-limit, and SSO-only accounts."
               tags={["Form", "Input", "Alert", "Button"]}
               preview={
-                <div className="grid grid-cols-2 gap-3 max-w-[460px] mx-auto">
+                <div className="grid grid-cols-2 gap-3 max-w-115 mx-auto">
                   <div
                     className="rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4"
                     style={{ boxShadow: "var(--shadow-sm)" }}
@@ -478,11 +478,11 @@ export default function PatternsPage() {
                       <label className="block text-[10px] font-medium text-(--color-text-secondary)">
                         Email
                       </label>
-                      <div className="flex items-center h-[28px] border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
+                      <div className="flex items-center h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
                         elena@…
                       </div>
                       <button
-                        className="w-full h-[28px] flex items-center justify-center rounded-md text-[11px] font-semibold"
+                        className="w-full h-7 flex items-center justify-center rounded-md text-[11px] font-semibold"
                         style={{
                           background: "var(--color-interactive-primary)",
                           color: "var(--color-text-inverse)",
@@ -535,7 +535,7 @@ export default function PatternsPage() {
                         e****@wyliedog.dev
                       </span>
                     </div>
-                    <button className="mt-2 inline-flex h-[24px] items-center gap-1 text-[11px] text-(--color-text-secondary)">
+                    <button className="mt-2 inline-flex h-6 items-center gap-1 text-[11px] text-(--color-text-secondary)">
                       <svg
                         viewBox="0 0 24 24"
                         className="h-3 w-3"
@@ -567,7 +567,7 @@ export default function PatternsPage() {
             num="02"
             count={2}
             title="Data display"
-            desc="Browsable grids and showcase grids. Both share the same card primitive but differ in density and what they ask the user to do next."
+            desc="Browseable grids and showcase grids. Both share the same card primitive but differ in density and what they ask the user to do next."
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
@@ -575,7 +575,7 @@ export default function PatternsPage() {
               desc="Responsive grid of data cards with pagination, filtering, and empty states. Reflows 4 → 3 → 2 → 1 columns across our breakpoints."
               tags={["Card", "Badge", "Pagination", "Avatar"]}
               preview={
-                <div className="space-y-2 max-w-[420px] mx-auto">
+                <div className="space-y-2 max-w-105 mx-auto">
                   <div className="flex items-center justify-between text-[10px]">
                     <span className="font-mono text-(--color-text-tertiary)">
                       Showing 3 of 248
@@ -603,7 +603,7 @@ export default function PatternsPage() {
                         bg: "linear-gradient(135deg, oklch(78% 0.13 274), oklch(68% 0.17 250))",
                       },
                       {
-                        name: "Northwind Co.",
+                        name: "Northwind Co.", //cSpell:ignore Northwind
                         members: 28,
                         status: "trial",
                         statusColor: "var(--color-warning)",
@@ -617,7 +617,7 @@ export default function PatternsPage() {
                           className="rounded-md bg-(--color-surface-primary) border border-(--color-border-primary) p-2.5"
                         >
                           <div
-                            className="aspect-[4/3] rounded mb-2"
+                            className="aspect-4/3 rounded mb-2"
                             style={{ background: bg }}
                           />
                           <p className="text-[10px] font-semibold leading-tight text-(--color-text-primary)">
@@ -670,7 +670,7 @@ export default function PatternsPage() {
               desc="Marketing-grade feature showcase: 2×2, 3×2, or 4×1 layouts with iconography, titles, and one-line benefit copy. Designed to be skimmed."
               tags={["Card", "Icon", "Heading", "Text"]}
               preview={
-                <div className="grid grid-cols-2 gap-2 max-w-[420px] mx-auto">
+                <div className="grid grid-cols-2 gap-2 max-w-105 mx-auto">
                   {[
                     {
                       color: "var(--color-interactive-primary)",
@@ -754,7 +754,7 @@ export default function PatternsPage() {
               desc="Page-level and component-scoped error states with recovery UI. Captures the error, auto-saves the user's in-flight work, and offers a non-destructive path back to a working state — without unmounting the whole tree."
               tags={["Alert", "Button", "Card", "Icon", "Code"]}
               preview={
-                <div className="grid lg:grid-cols-2 gap-3 max-w-[640px] mx-auto">
+                <div className="grid lg:grid-cols-2 gap-3 max-w-160 mx-auto">
                   <div className="rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4">
                     <span
                       className="grid h-9 w-9 place-items-center rounded-full"
@@ -790,7 +790,7 @@ export default function PatternsPage() {
                     </div>
                     <div className="mt-3 flex gap-1.5">
                       <button
-                        className="inline-flex h-[28px] items-center gap-1 rounded-md px-2.5 text-[11px] font-semibold"
+                        className="inline-flex h-7 items-center gap-1 rounded-md px-2.5 text-[11px] font-semibold"
                         style={{
                           background: "var(--color-interactive-primary)",
                           color: "var(--color-text-inverse)",
@@ -807,7 +807,7 @@ export default function PatternsPage() {
                         </svg>
                         Try again
                       </button>
-                      <button className="inline-flex h-[28px] items-center rounded-md border border-(--color-border-primary) px-2.5 text-[11px] font-semibold text-(--color-text-primary)">
+                      <button className="inline-flex h-7 items-center rounded-md border border-(--color-border-primary) px-2.5 text-[11px] font-semibold text-(--color-text-primary)">
                         Go to dashboard
                       </button>
                     </div>
@@ -892,7 +892,7 @@ export default function PatternsPage() {
               tags={["Form", "Input", "Switch", "Stepper", "Fieldset"]}
               preview={
                 <div
-                  className="mx-auto max-w-[360px] rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4"
+                  className="mx-auto max-w-90 rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   <div className="flex items-center gap-2">
@@ -912,7 +912,7 @@ export default function PatternsPage() {
                         <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
                           Name
                         </label>
-                        <div className="flex items-center h-[28px] border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-primary)">
+                        <div className="flex items-center h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-primary)">
                           Helios Workspace
                         </div>
                       </div>
@@ -920,7 +920,7 @@ export default function PatternsPage() {
                         <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
                           URL
                         </label>
-                        <div className="flex items-center h-[28px] border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
+                        <div className="flex items-center h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
                           <span className="font-mono text-(--color-text-tertiary)">
                             wyliedog.dev/
                           </span>
@@ -960,11 +960,11 @@ export default function PatternsPage() {
                     </div>
                   </div>
                   <div className="mt-3 flex justify-between">
-                    <button className="inline-flex h-[28px] items-center px-2.5 text-[11px] font-semibold text-(--color-text-secondary)">
+                    <button className="inline-flex h-7 items-center px-2.5 text-[11px] font-semibold text-(--color-text-secondary)">
                       Back
                     </button>
                     <button
-                      className="inline-flex h-[28px] items-center gap-1 rounded-md px-2.5 text-[11px] font-semibold"
+                      className="inline-flex h-7 items-center gap-1 rounded-md px-2.5 text-[11px] font-semibold"
                       style={{
                         background: "var(--color-interactive-primary)",
                         color: "var(--color-text-inverse)",
@@ -992,7 +992,7 @@ export default function PatternsPage() {
               tags={["Input", "Form", "Icon", "Progress", "Text"]}
               preview={
                 <div
-                  className="mx-auto max-w-[360px] rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4 space-y-3"
+                  className="mx-auto max-w-90 rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4 space-y-3"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   <div>
@@ -1000,7 +1000,7 @@ export default function PatternsPage() {
                       Email
                     </label>
                     <div
-                      className="flex items-center justify-between h-[28px] border rounded-md px-2 text-[11px]"
+                      className="flex items-center justify-between h-7 border rounded-md px-2 text-[11px]"
                       style={{
                         borderColor: "var(--color-destructive)",
                         background:
@@ -1033,7 +1033,7 @@ export default function PatternsPage() {
                     <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
                       Workspace URL
                     </label>
-                    <div className="flex items-center justify-between h-[28px] border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
+                    <div className="flex items-center justify-between h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
                       <span className="text-(--color-text-primary)">
                         acme-co
                       </span>
@@ -1056,7 +1056,7 @@ export default function PatternsPage() {
                       Password
                     </label>
                     <div
-                      className="flex items-center justify-between h-[28px] border rounded-md px-2 text-[11px] bg-(--color-surface-primary)"
+                      className="flex items-center justify-between h-7 border rounded-md px-2 text-[11px] bg-(--color-surface-primary)"
                       style={{ borderColor: "var(--color-success)" }}
                     >
                       <span className="tracking-[0.3em] text-(--color-text-tertiary)">
@@ -1117,7 +1117,7 @@ export default function PatternsPage() {
             tags={["Sidebar", "NavigationMenu", "Container", "Sheet", "Card"]}
             preview={
               <div
-                className="mx-auto max-w-[720px] rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
+                className="mx-auto max-w-180 rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
                 style={{ boxShadow: "var(--shadow-md)" }}
               >
                 <div className="flex items-center gap-2 px-3 py-2 border-b border-(--color-border-primary) bg-(--color-background-secondary)">
@@ -1141,7 +1141,7 @@ export default function PatternsPage() {
                     ⌘K
                   </span>
                 </div>
-                <div className="grid grid-cols-12 h-[220px]">
+                <div className="grid grid-cols-12 h-55">
                   <aside className="col-span-3 border-r border-(--color-border-primary) p-3 bg-(--color-background-primary)">
                     <div className="flex items-center gap-1.5">
                       <span
@@ -1185,7 +1185,7 @@ export default function PatternsPage() {
                         Projects
                       </p>
                       <button
-                        className="inline-flex h-[22px] items-center rounded-md px-2 text-[10px] font-semibold"
+                        className="inline-flex h-5.5 items-center rounded-md px-2 text-[10px] font-semibold"
                         style={{
                           background: "var(--color-interactive-primary)",
                           color: "var(--color-text-inverse)",
@@ -1290,7 +1290,7 @@ export default function PatternsPage() {
             num="06"
             count={2}
             title="Navigation"
-            desc="Header and footer for marketing surfaces — the bookends of every public page. Used on this site too, so they're self-eating dogfood."
+            desc="Header and footer for marketing surfaces — the bookends of every public page. Used on this site too, so they're self-eating dog food."
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
@@ -1299,7 +1299,7 @@ export default function PatternsPage() {
               tags={["NavigationMenu", "Button", "Command", "ToggleGroup"]}
               preview={
                 <div
-                  className="mx-auto max-w-[420px] rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
+                  className="mx-auto max-w-105 rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   <div
@@ -1378,7 +1378,7 @@ export default function PatternsPage() {
               tags={["Separator", "Link", "Badge", "Heading"]}
               preview={
                 <div
-                  className="mx-auto max-w-[420px] rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
+                  className="mx-auto max-w-105 rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   <div className="p-3">
@@ -1679,7 +1679,7 @@ export default function PatternsPage() {
             tags={["Sidebar", "Sheet", "Table", "Card", "Tabs"]}
             preview={
               <div>
-                <div className="grid grid-cols-12 gap-3 max-w-[820px] mx-auto">
+                <div className="grid grid-cols-12 gap-3 max-w-205 mx-auto">
                   {/* mobile */}
                   <div className="col-span-3">
                     <div className="flex items-center justify-between mb-1.5">
@@ -1690,7 +1690,7 @@ export default function PatternsPage() {
                         1 col
                       </span>
                     </div>
-                    <div className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary) aspect-[3/5] p-1.5 space-y-1">
+                    <div className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary) aspect-3/5 p-1.5 space-y-1">
                       <div className="h-3 rounded bg-(--color-background-tertiary)" />
                       <div
                         className="rounded p-1.5"
@@ -1722,7 +1722,7 @@ export default function PatternsPage() {
                         2 col
                       </span>
                     </div>
-                    <div className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary) aspect-[4/5] p-2 space-y-1.5">
+                    <div className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary) aspect-4/5 p-2 space-y-1.5">
                       <div className="h-3 rounded bg-(--color-background-tertiary)" />
                       <div
                         className="rounded p-2"
@@ -1760,7 +1760,7 @@ export default function PatternsPage() {
                         sidebar + 3 col
                       </span>
                     </div>
-                    <div className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary) aspect-[5/4] p-2">
+                    <div className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary) aspect-5/4 p-2">
                       <div className="h-3 rounded bg-(--color-background-tertiary) mb-1.5" />
                       <div className="grid grid-cols-4 gap-1.5">
                         <div className="col-span-1 space-y-1">
@@ -1801,7 +1801,7 @@ export default function PatternsPage() {
                   </div>
                 </div>
                 {/* decision strip */}
-                <div className="mt-4 mx-auto max-w-[820px] rounded-md border border-(--color-border-primary) bg-(--color-background-primary) px-3 py-2 grid grid-cols-3 gap-3 text-[10px]">
+                <div className="mt-4 mx-auto max-w-205 rounded-md border border-(--color-border-primary) bg-(--color-background-primary) px-3 py-2 grid grid-cols-3 gap-3 text-[10px]">
                   {[
                     {
                       label: "Below md",
@@ -1853,7 +1853,7 @@ export default function PatternsPage() {
               desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. Built with the token system — --color-interactive-primary drives every focus indicator so a single token change updates the entire a11y surface.`}
               tags={["Form", "Alert", "Input", "Button", "Dialog"]}
               preview={
-                <div className="grid md:grid-cols-3 gap-3 max-w-[820px] mx-auto">
+                <div className="grid md:grid-cols-3 gap-3 max-w-205 mx-auto">
                   {/* Focus ring demo */}
                   <div className="rounded-lg bg-(--color-background-primary) border border-(--color-border-primary) p-4">
                     <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">

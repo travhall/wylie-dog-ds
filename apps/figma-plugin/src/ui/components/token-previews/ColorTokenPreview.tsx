@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { Icon } from "../common/Icon";
 
 interface ColorTokenPreviewProps {
   value: string;
@@ -40,7 +41,7 @@ export function ColorTokenPreview({
           backgroundColor: "var(--surface-secondary)",
         }}
       >
-        🔗
+        <Icon name="arrow-right" size={10} color="var(--text-tertiary)" />
       </div>
     );
   }

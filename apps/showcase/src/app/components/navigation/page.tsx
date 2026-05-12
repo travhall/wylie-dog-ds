@@ -93,7 +93,7 @@ export default function NavigationPage() {
   ];
 
   return (
-    <div className="space-y-12">
+    <div className="relative mx-auto max-w-7xl space-y-12 p-4 lg:p-8 xl:p-12">
       <section className="space-y-4">
         <h1 className="text-4xl font-bold tracking-tight text-(--color-text-primary)">
           Navigation

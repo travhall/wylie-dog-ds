@@ -1,5 +1,6 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
+import { Icon } from "./common/Icon";
 
 interface TransformationLog {
   type: string;
@@ -81,7 +82,25 @@ export function ImportPreview({
             color: "var(--text-primary)",
           }}
         >
-          {hasErrors ? "⚠️ Import Preview" : "✨ Ready to Import"}
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--space-2)",
+            }}
+          >
+            {hasErrors ? (
+              <>
+                <Icon name="warning" size={16} color="var(--warning)" /> Import
+                Preview
+              </>
+            ) : (
+              <>
+                <Icon name="check" size={16} color="var(--success)" /> Ready to
+                Import
+              </>
+            )}
+          </span>
         </h3>
         <p
           style={{
@@ -120,7 +139,16 @@ export function ImportPreview({
               marginBottom: "var(--space-2)",
             }}
           >
-            📋 Format Detected
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-1)",
+              }}
+            >
+              <Icon name="file" size={14} color="var(--text-primary)" /> Format
+              Detected
+            </span>
           </div>
           <div
             style={{
@@ -249,8 +277,17 @@ export function ImportPreview({
                   color: "var(--text-primary)",
                 }}
               >
-                🔄 {summary.transformations.length} Transformation
-                {summary.transformations.length !== 1 ? "s" : ""} Required
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "var(--space-1)",
+                  }}
+                >
+                  <Icon name="sync" size={13} color="var(--text-primary)" />{" "}
+                  {summary.transformations.length} Transformation
+                  {summary.transformations.length !== 1 ? "s" : ""} Required
+                </span>
               </div>
               <span style={{ color: "var(--text-tertiary)" }}>
                 {showTransformations ? "▼" : "▶"}
@@ -315,7 +352,15 @@ export function ImportPreview({
                 marginBottom: "var(--space-2)",
               }}
             >
-              ⚠️ Warnings
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "var(--space-1)",
+                }}
+              >
+                <Icon name="warning" size={13} color="#92400e" /> Warnings
+              </span>
             </div>
             {summary.warnings.map((warning, i) => (
               <div
@@ -352,7 +397,15 @@ export function ImportPreview({
                 marginBottom: "var(--space-2)",
               }}
             >
-              ❌ Errors
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "var(--space-1)",
+                }}
+              >
+                <Icon name="close" size={13} color="#991b1b" /> Errors
+              </span>
             </div>
             {summary.errors.map((error, i) => (
               <div
@@ -426,7 +479,20 @@ export function ImportPreview({
             }
           }}
         >
-          {hasErrors ? "Cannot Import" : "✓ Import Tokens"}
+          {hasErrors ? (
+            "Cannot Import"
+          ) : (
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-1)",
+              }}
+            >
+              <Icon name="check" size={14} color="var(--text-inverse)" /> Import
+              Tokens
+            </span>
+          )}
         </button>
       </div>
     </div>

@@ -268,13 +268,13 @@ export function usePluginMessages(
 
       switch (msg.type) {
         case "collections-loaded":
-          console.log("📦 Collections loaded from plugin:", msg.collections);
+          console.log("Collections loaded from plugin:", msg.collections);
           console.log(`📊 Collection count: ${msg.collections?.length || 0}`);
           setCollections(msg.collections || []);
           setLoading(false);
           setError(null);
           setCurrentOperation(null);
-          console.log("✅ Collections state updated");
+          console.log("Collections state updated");
           break;
 
         case "collection-details-loaded":
@@ -296,7 +296,7 @@ export function usePluginMessages(
           break;
 
         case "tokens-imported":
-          console.log("📥 Received tokens-imported message:", msg);
+          console.log("Received tokens-imported message:", msg);
           setImportLoading(false);
           setLoading(false);
           setCurrentOperation(null);
@@ -306,7 +306,7 @@ export function usePluginMessages(
             const collectionCount = msg.result.totalCollectionsCreated || 0;
 
             console.log(
-              `✅ Import success: ${tokenCount} tokens in ${collectionCount} collections`
+              `Import success: ${tokenCount} tokens in ${collectionCount} collections`
             );
             console.log("Current collections state:", collections);
 

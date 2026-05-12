@@ -1,5 +1,6 @@
 import { h } from "preact";
 import { useState, useMemo } from "preact/hooks";
+import { Icon, type IconName } from "./common/Icon";
 import { TokenPreview } from "./token-previews";
 
 interface ProcessedToken {
@@ -25,22 +26,22 @@ interface TokenBrowserProps {
  * - Organized by token type
  */
 // Token type icon mapping
-const TOKEN_TYPE_ICONS: Record<string, string> = {
-  color: "🎨",
-  spacing: "📏",
-  dimension: "📐",
-  sizing: "📏",
-  fontSize: "🔤",
-  fontFamily: "🔠",
-  fontWeight: "💪",
-  lineHeight: "↕️",
-  letterSpacing: "↔️",
-  typography: "✏️",
-  borderRadius: "⬛",
-  shadow: "🌑",
-  number: "🔢",
-  string: "📝",
-  boolean: "✓",
+const TOKEN_TYPE_ICONS: Record<string, IconName> = {
+  color: "tokens",
+  spacing: "eye",
+  dimension: "eye",
+  sizing: "eye",
+  fontSize: "file",
+  fontFamily: "file",
+  fontWeight: "file",
+  lineHeight: "file",
+  letterSpacing: "file",
+  typography: "file",
+  borderRadius: "settings",
+  shadow: "settings",
+  number: "tokens",
+  string: "file",
+  boolean: "check",
 };
 
 // Get friendly display name for token type
@@ -297,7 +298,8 @@ export function TokenBrowser({
                 transition: "var(--transition-base)",
               }}
             >
-              ✕ Close
+              <Icon name="close" size={12} color="var(--text-secondary)" />{" "}
+              Close
             </button>
           </div>
 
@@ -564,7 +566,7 @@ export function TokenBrowser({
                 .sort(([typeA], [typeB]) => typeA.localeCompare(typeB))
                 .map(([type, tokensInGroup]) => {
                   const isCollapsed = collapsedGroups.has(type);
-                  const icon = TOKEN_TYPE_ICONS[type] || "📦";
+                  const icon: IconName = TOKEN_TYPE_ICONS[type] || "tokens";
                   const label = getTokenTypeLabel(type);
 
                   return (
@@ -593,9 +595,11 @@ export function TokenBrowser({
                             gap: "var(--space-2)",
                           }}
                         >
-                          <span style={{ fontSize: "var(--font-size-md)" }}>
-                            {icon}
-                          </span>
+                          <Icon
+                            name={icon}
+                            size={15}
+                            color="var(--text-secondary)"
+                          />
                           <span
                             style={{
                               fontSize: "var(--font-size-sm)",
@@ -742,9 +746,37 @@ export function TokenBrowser({
                                   }
                                 }}
                               >
-                                {copiedToken === token.name
-                                  ? "✓ Copied!"
-                                  : "📋 Copy Ref"}
+                                {copiedToken === token.name ? (
+                                  <span
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      gap: "4px",
+                                    }}
+                                  >
+                                    <Icon
+                                      name="check"
+                                      size={12}
+                                      color="currentColor"
+                                    />{" "}
+                                    Copied!
+                                  </span>
+                                ) : (
+                                  <span
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "center",
+                                      gap: "4px",
+                                    }}
+                                  >
+                                    <Icon
+                                      name="file"
+                                      size={12}
+                                      color="currentColor"
+                                    />{" "}
+                                    Copy Ref
+                                  </span>
+                                )}
                               </button>
                             </div>
                           ))}

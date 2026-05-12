@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { Icon } from "./common/Icon";
 
 interface TransformationSummaryProps {
   summary: {
@@ -69,11 +70,18 @@ export function TransformationSummary({
         >
           <div
             style={{
-              fontSize: "48px",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "48px",
+              height: "48px",
+              borderRadius: "50%",
+              backgroundColor: "var(--success-light)",
+              border: "2px solid var(--success)",
               marginBottom: "var(--space-2)",
             }}
           >
-            ✅
+            <Icon name="check" size={24} color="var(--success)" />
           </div>
           <h3
             style={{
@@ -209,7 +217,16 @@ export function TransformationSummary({
                   marginBottom: "var(--space-2)",
                 }}
               >
-                🔄 Transformations Applied
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "var(--space-1)",
+                  }}
+                >
+                  <Icon name="sync" size={13} color="var(--text-primary)" />{" "}
+                  Transformations Applied
+                </span>
               </div>
               {summary.transformations.map((t, i) => (
                 <div
@@ -247,7 +264,15 @@ export function TransformationSummary({
                   marginBottom: "var(--space-2)",
                 }}
               >
-                ⚠️ Notes
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "var(--space-1)",
+                  }}
+                >
+                  <Icon name="warning" size={13} color="#92400e" /> Notes
+                </span>
               </div>
               {summary.warnings?.map((warning, i) => (
                 <div

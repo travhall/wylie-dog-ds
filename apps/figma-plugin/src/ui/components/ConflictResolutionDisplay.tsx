@@ -1,4 +1,6 @@
+import { h } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
+import { Icon, type IconName } from "./common/Icon";
 import type {
   TokenConflict,
   ConflictResolution,
@@ -186,7 +188,8 @@ export function ConflictResolutionDisplay({
                 gap: "var(--space-2)",
               }}
             >
-              <span aria-hidden="true">🔄</span> Sync Conflicts Detected
+              <Icon name="sync" size={18} color="var(--text-primary)" /> Sync
+              Conflicts Detected
             </h2>
             <p
               style={{
@@ -256,7 +259,8 @@ export function ConflictResolutionDisplay({
                 e.currentTarget.style.color = "var(--accent-primary)";
               }}
             >
-              <span>📍</span> Keep All Local
+              <Icon name="check" size={13} color="currentColor" /> Keep All
+              Local
             </button>
             <button
               onClick={() => handleBatchResolve("take-remote")}
@@ -286,7 +290,8 @@ export function ConflictResolutionDisplay({
                 e.currentTarget.style.color = "var(--success)";
               }}
             >
-              <span>📥</span> Accept All Remote
+              <Icon name="download" size={13} color="currentColor" /> Accept All
+              Remote
             </button>
           </div>
         </div>
@@ -396,12 +401,21 @@ export function ConflictResolutionDisplay({
           }}
         >
           {allResolved ? (
-            <span style={{ color: "var(--success)" }}>
-              ✅ All conflicts resolved ({resolutions.size}/{conflicts.length})
+            <span
+              style={{
+                color: "var(--success)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "var(--space-1)",
+              }}
+            >
+              <Icon name="check" size={14} color="var(--success)" /> All
+              conflicts resolved ({resolutions.size}/{conflicts.length})
             </span>
           ) : (
             <span style={{ color: "var(--warning)" }}>
-              ⏳ {resolutions.size}/{conflicts.length} conflicts resolved
+              {resolutions.size}/{conflicts.length} conflicts resolved
             </span>
           )}
         </div>
@@ -499,18 +513,18 @@ function ConflictItem({
     }
   };
 
-  const getTypeIcon = (type: string) => {
+  const getTypeIcon = (type: string): IconName => {
     switch (type) {
       case "value-change":
-        return "🔄";
+        return "sync";
       case "addition":
-        return "➕";
+        return "plus";
       case "deletion":
-        return "🗑️";
+        return "close";
       case "name-conflict":
-        return "🏷️";
+        return "tokens";
       default:
-        return "❓";
+        return "info";
     }
   };
 
@@ -544,9 +558,11 @@ function ConflictItem({
             gap: "var(--space-2)",
           }}
         >
-          <span style={{ fontSize: "var(--font-size-lg)" }} aria-hidden="true">
-            {getTypeIcon(conflict.type)}
-          </span>
+          <Icon
+            name={getTypeIcon(conflict.type)}
+            size={16}
+            color="var(--text-secondary)"
+          />
           <div>
             <div
               style={{
@@ -651,7 +667,8 @@ function ConflictItem({
                 color: "var(--text-primary)",
               }}
             >
-              <span aria-hidden="true">📍</span> Local Value
+              <Icon name="check" size={12} color="var(--text-primary)" /> Local
+              Value
             </div>
             <code
               style={{
@@ -683,7 +700,8 @@ function ConflictItem({
                 color: "var(--text-primary)",
               }}
             >
-              <span aria-hidden="true">📥</span> Remote Value
+              <Icon name="download" size={12} color="var(--text-primary)" />{" "}
+              Remote Value
             </div>
             <code
               style={{
@@ -767,9 +785,13 @@ function ConflictItem({
                 : "none",
           }}
         >
-          <span aria-hidden="true">
-            {resolution?.resolution === "take-local" ? "✅" : "📍"}
-          </span>{" "}
+          <Icon
+            name={
+              resolution?.resolution === "take-local" ? "check" : "arrow-right"
+            }
+            size={13}
+            color="currentColor"
+          />{" "}
           Keep Local
         </button>
         <button
@@ -803,9 +825,13 @@ function ConflictItem({
                 : "none",
           }}
         >
-          <span aria-hidden="true">
-            {resolution?.resolution === "take-remote" ? "✅" : "📥"}
-          </span>{" "}
+          <Icon
+            name={
+              resolution?.resolution === "take-remote" ? "check" : "download"
+            }
+            size={13}
+            color="currentColor"
+          />{" "}
           Take Remote
         </button>
       </div>

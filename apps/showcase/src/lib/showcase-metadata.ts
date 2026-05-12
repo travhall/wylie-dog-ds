@@ -28,7 +28,7 @@ const TOKENS_SYNC_DIR = path.join(MONOREPO_ROOT, "packages/tokens/io/sync");
 const UI_SRC_DIR = path.join(MONOREPO_ROOT, "packages/ui/src");
 const PATTERNS_DIR = path.join(
   MONOREPO_ROOT,
-  "apps/storybook/stories/patterns"
+  "apps/storybook/stories/Patterns"
 );
 
 // ---------------------------------------------------------------------------

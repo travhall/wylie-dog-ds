@@ -5,7 +5,9 @@
  * with smooth animations and auto-dismiss
  */
 
+import { h } from "preact";
 import { useEffect, useState } from "preact/hooks";
+import { Icon } from "./common/Icon";
 
 export type ToastType = "success" | "error" | "info" | "warning";
 
@@ -101,33 +103,23 @@ export function Toast({
     return { ...baseStyles, ...typeStyles[type] };
   };
 
-  const getIcon = () => {
-    switch (type) {
-      case "success":
-        return "✅";
-      case "error":
-        return "❌";
-      case "warning":
-        return "⚠️";
-      case "info":
-      default:
-        return "ℹ️";
-    }
+  const ICON_MAP: Record<
+    string,
+    { name: "check" | "close" | "warning" | "info"; color: string }
+  > = {
+    success: { name: "check", color: "var(--success)" },
+    error: { name: "close", color: "var(--error)" },
+    warning: { name: "warning", color: "var(--warning)" },
+    info: { name: "info", color: "var(--info)" },
   };
+  const iconCfg = ICON_MAP[type] ?? ICON_MAP.info;
 
   return (
     <>
       <div style={getStyles()}>
         {/* Icon */}
-        <div
-          style={{
-            fontSize: "var(--font-size-xl)",
-            flexShrink: 0,
-            animation:
-              type === "success" ? "successPulse 0.5s ease-in-out" : "none",
-          }}
-        >
-          {getIcon()}
+        <div style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>
+          <Icon name={iconCfg.name} size={16} color={iconCfg.color} />
         </div>
 
         {/* Message */}
@@ -168,7 +160,7 @@ export function Toast({
           }}
           aria-label="Close notification"
         >
-          ✕
+          <Icon name="close" size={12} color="var(--text-secondary)" />
         </button>
       </div>
 

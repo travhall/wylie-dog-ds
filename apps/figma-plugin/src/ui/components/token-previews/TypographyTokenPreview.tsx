@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { Icon } from "../common/Icon";
 
 interface TypographyTokenPreviewProps {
   value: any;
@@ -25,7 +26,7 @@ export function TypographyTokenPreview({
           color: "var(--text-tertiary)",
         }}
       >
-        <span>🔗</span>
+        <Icon name="arrow-right" size={11} color="var(--text-tertiary)" />
         <span style={{ fontFamily: "var(--font-mono)" }}>ref</span>
       </div>
     );

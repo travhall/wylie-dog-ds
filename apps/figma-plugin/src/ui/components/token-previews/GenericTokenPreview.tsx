@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { Icon } from "../common/Icon";
 
 interface GenericTokenPreviewProps {
   value: any;
@@ -22,7 +23,7 @@ export function GenericTokenPreview({ value, type }: GenericTokenPreviewProps) {
           color: "var(--text-tertiary)",
         }}
       >
-        <span>🔗</span>
+        <Icon name="arrow-right" size={11} color="var(--text-tertiary)" />
         <code
           style={{
             fontFamily: "var(--font-mono)",

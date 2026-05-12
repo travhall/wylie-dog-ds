@@ -1,4 +1,6 @@
+import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
+import { Icon } from "./common/Icon";
 import type { GitHubConfig } from "../../shared/types";
 import { parseGitHubUrl } from "../utils/parseGitHubUrl";
 
@@ -219,7 +221,7 @@ export function QuickGitHubSetup({
             transition: "var(--transition-base)",
           }}
         >
-          ✕
+          <Icon name="close" size={12} color="var(--text-secondary)" />
         </button>
       </div>
 
@@ -314,7 +316,15 @@ export function QuickGitHubSetup({
             fontSize: "var(--font-size-sm)",
           }}
         >
-          ❌ {error}
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--space-1)",
+            }}
+          >
+            <Icon name="close" size={12} color="var(--error)" /> {error}
+          </span>
         </div>
       )}
 
@@ -368,7 +378,16 @@ export function QuickGitHubSetup({
               marginBottom: "var(--space-3)",
             }}
           >
-            🔑 Enter this code on GitHub:
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-1)",
+              }}
+            >
+              <Icon name="github" size={14} color="var(--text-primary)" /> Enter
+              this code on GitHub:
+            </span>
           </div>
 
           <div
@@ -452,7 +471,7 @@ export function QuickGitHubSetup({
               color: "var(--info)",
             }}
           >
-            ℹ️
+            <Icon name="info" size={12} color="var(--info)" />
           </span>
         </label>
         <input
@@ -518,7 +537,7 @@ export function QuickGitHubSetup({
                 color: "var(--info)",
               }}
             >
-              ℹ️
+              <Icon name="info" size={12} color="var(--info)" />
             </span>
           </label>
           <input
@@ -586,7 +605,16 @@ export function QuickGitHubSetup({
             color: "var(--text-primary)",
           }}
         >
-          ℹ️ Quick setup uses smart defaults:
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--space-1)",
+            }}
+          >
+            <Icon name="info" size={12} color="var(--text-primary)" /> Quick
+            setup uses smart defaults:
+          </span>
         </div>
         <ul style={{ margin: "0", paddingLeft: "var(--space-5)" }}>
           <li>

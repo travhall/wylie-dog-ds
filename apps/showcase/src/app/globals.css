@@ -1,15 +1,11 @@
 @import "@wyliedog/ui/styles";
 @import "tailwindcss";
 
-@theme {
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
-}
-
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-background-primary);
     color: var(--color-text-primary);

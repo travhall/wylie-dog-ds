@@ -7,6 +7,7 @@
 
 import { useState } from "preact/hooks";
 import { h } from "preact";
+import { Icon } from "./common/Icon";
 
 interface GettingStartedGuideProps {
   onClose: () => void;
@@ -65,7 +66,12 @@ export function GettingStartedGuide({
                   marginBottom: "4px",
                 }}
               >
-                📥 Import Tokens
+                <span
+                  style={{ display: "flex", alignItems: "center", gap: "6px" }}
+                >
+                  <Icon name="download" size={14} color="var(--text-primary)" />{" "}
+                  Import Tokens
+                </span>
               </div>
               <div
                 style={{
@@ -95,7 +101,12 @@ export function GettingStartedGuide({
                   marginBottom: "4px",
                 }}
               >
-                📤 Export Tokens
+                <span
+                  style={{ display: "flex", alignItems: "center", gap: "6px" }}
+                >
+                  <Icon name="upload" size={14} color="var(--text-primary)" />{" "}
+                  Export Tokens
+                </span>
               </div>
               <div
                 style={{
@@ -125,7 +136,12 @@ export function GettingStartedGuide({
                   marginBottom: "4px",
                 }}
               >
-                🔄 GitHub Sync
+                <span
+                  style={{ display: "flex", alignItems: "center", gap: "6px" }}
+                >
+                  <Icon name="sync" size={14} color="var(--text-primary)" />{" "}
+                  GitHub Sync
+                </span>
               </div>
               <div
                 style={{
@@ -408,7 +424,12 @@ export function GettingStartedGuide({
                 marginBottom: "4px",
               }}
             >
-              💡 Pro Tip
+              <span
+                style={{ display: "flex", alignItems: "center", gap: "6px" }}
+              >
+                <Icon name="info" size={12} color="var(--text-primary)" /> Pro
+                Tip
+              </span>
             </div>
             <div
               style={{
@@ -459,7 +480,12 @@ export function GettingStartedGuide({
                 marginBottom: "var(--space-2)",
               }}
             >
-              📤 Push to GitHub
+              <span
+                style={{ display: "flex", alignItems: "center", gap: "6px" }}
+              >
+                <Icon name="upload" size={13} color="var(--text-primary)" />{" "}
+                Push to GitHub
+              </span>
             </h4>
             <p
               style={{
@@ -480,7 +506,12 @@ export function GettingStartedGuide({
                 marginBottom: "var(--space-2)",
               }}
             >
-              📥 Pull from GitHub
+              <span
+                style={{ display: "flex", alignItems: "center", gap: "6px" }}
+              >
+                <Icon name="download" size={13} color="var(--text-primary)" />{" "}
+                Pull from GitHub
+              </span>
             </h4>
             <p
               style={{
@@ -501,7 +532,12 @@ export function GettingStartedGuide({
                 marginBottom: "var(--space-2)",
               }}
             >
-              ⚔️ Conflict Resolution
+              <span
+                style={{ display: "flex", alignItems: "center", gap: "6px" }}
+              >
+                <Icon name="warning" size={13} color="var(--text-primary)" />{" "}
+                Conflict Resolution
+              </span>
             </h4>
             <p
               style={{

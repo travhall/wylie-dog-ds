@@ -1,4 +1,6 @@
+import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
+import { Icon } from "./common/Icon";
 import type { GitHubConfig, SyncMode } from "../../shared/types";
 
 interface GitHubConfigProps {
@@ -64,19 +66,19 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
 
     if (repoLower.includes("mono") || repoLower.includes("workspace")) {
       suggestions.push(
-        "📦 Detected monorepo - suggested path: packages/tokens/src"
+        "Detected monorepo - suggested path: packages/tokens/src"
       );
     }
 
     if (repoLower.includes("design-system") || repoLower.includes("ds")) {
       suggestions.push(
-        "🎨 Design system detected - consider organizing by token types"
+        "Design system detected - consider organizing by token types"
       );
     }
 
     if (repoLower.includes("component") || repoLower.includes("ui")) {
       suggestions.push(
-        "🧩 Component library - tokens often in src/tokens or tokens/"
+        "Component library - tokens often in src/tokens or tokens/"
       );
     }
 
@@ -254,7 +256,7 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
             transition: "var(--transition-base)",
           }}
         >
-          ✕
+          <Icon name="close" size={12} color="var(--text-secondary)" />
         </button>
       </div>
 
@@ -270,7 +272,15 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
             fontSize: "var(--font-size-sm)",
           }}
         >
-          ❌ {error}
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--space-1)",
+            }}
+          >
+            <Icon name="close" size={12} color="var(--error)" /> {error}
+          </span>
         </div>
       )}
 
@@ -452,7 +462,16 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
                   color: "var(--text-primary)",
                 }}
               >
-                💡 Repository Insights:
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "var(--space-1)",
+                  }}
+                >
+                  <Icon name="info" size={12} color="var(--text-primary)" />{" "}
+                  Repository Insights:
+                </span>
               </div>
               {getRepositoryStructureSuggestions(config.repo).map(
                 (suggestion, index) => (
@@ -671,7 +690,16 @@ export function GitHubConfig({ onConfigSaved, onClose }: GitHubConfigProps) {
             color: "var(--text-primary)",
           }}
         >
-          📁 Token File Organization
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--space-1)",
+            }}
+          >
+            <Icon name="file" size={12} color="var(--text-primary)" /> Token
+            File Organization
+          </span>
         </div>
         <div
           style={{

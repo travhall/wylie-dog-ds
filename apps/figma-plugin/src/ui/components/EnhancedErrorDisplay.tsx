@@ -1,15 +1,27 @@
+import { h } from "preact";
+import { useState } from "preact/hooks";
+import { Icon, type IconName } from "./common/Icon";
 import {
   ErrorHandler,
   PluginError,
   ErrorType,
 } from "../../shared/error-handler";
-import { useState } from "preact/hooks";
 
 interface EnhancedErrorDisplayProps {
   error: PluginError | string;
   onDismiss: () => void;
   onRetry?: () => void;
 }
+
+const ERROR_ICON_MAP: Record<string, IconName> = {
+  [ErrorType.NETWORK_ERROR]: "warning",
+  [ErrorType.AUTHENTICATION_ERROR]: "github",
+  [ErrorType.REPOSITORY_ERROR]: "file",
+  [ErrorType.TOKEN_FORMAT_ERROR]: "file",
+  [ErrorType.CONFLICT_ERROR]: "sync",
+  [ErrorType.FIGMA_API_ERROR]: "warning",
+  [ErrorType.VALIDATION_ERROR]: "warning",
+};
 
 export function EnhancedErrorDisplay({
   error,
@@ -92,9 +104,11 @@ export function EnhancedErrorDisplay({
             flex: 1,
           }}
         >
-          <span style={{ fontSize: "var(--font-size-lg)" }}>
-            {ErrorHandler.getErrorIcon(pluginError.type)}
-          </span>
+          <Icon
+            name={ERROR_ICON_MAP[pluginError.type] ?? "warning"}
+            size={16}
+            color={ErrorHandler.getErrorColor(pluginError.type)}
+          />
           <div style={{ flex: 1 }}>
             <div
               style={{
@@ -115,7 +129,7 @@ export function EnhancedErrorDisplay({
               }}
             >
               <span>
-                {pluginError.recoverable ? "✓ Fixable" : "⚠ Needs attention"}
+                {pluginError.recoverable ? "Fixable" : "Needs attention"}
               </span>
               <button
                 onClick={() => setShowDetails(!showDetails)}
@@ -150,7 +164,7 @@ export function EnhancedErrorDisplay({
             transition: "var(--transition-base)",
           }}
         >
-          ✕
+          <Icon name="close" size={12} color="var(--text-secondary)" />
         </button>
       </div>
 
@@ -198,7 +212,16 @@ export function EnhancedErrorDisplay({
               color: "var(--text-primary)",
             }}
           >
-            💡 Try this:
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-1)",
+              }}
+            >
+              <Icon name="info" size={12} color="var(--text-primary)" /> Try
+              this:
+            </span>
           </div>
           <ul
             style={{
@@ -250,7 +273,7 @@ export function EnhancedErrorDisplay({
               gap: "var(--space-2)",
             }}
           >
-            <span>📚</span> Read Docs
+            <Icon name="file" size={13} color="var(--text-primary)" /> Read Docs
           </button>
         )}
         {pluginError.recoverable && onRetry && (

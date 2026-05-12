@@ -1,3 +1,6 @@
+import { h } from "preact";
+import { Icon } from "./common/Icon";
+
 interface FormatGuidelinesDialogProps {
   onClose: () => void;
 }
@@ -339,7 +342,16 @@ export const FormatGuidelinesDialog = ({
               color: "var(--accent-secondary)",
             }}
           >
-            📚 Need Help?
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-1)",
+              }}
+            >
+              <Icon name="file" size={13} color="var(--accent-secondary)" />{" "}
+              Need Help?
+            </span>
           </h4>
           <ul
             style={{

@@ -1,4 +1,6 @@
+import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
+import { Icon } from "./common/Icon";
 
 interface ExistingTokensImporterProps {
   onImport: () => void;
@@ -143,48 +145,60 @@ export const ExistingTokensImporter = ({
     return (
       <div
         style={{
-          padding: "var(--space-10) var(--space-5)",
+          padding: "40px 20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 12,
           textAlign: "center",
         }}
       >
-        <div
+        <span
           style={{
-            fontSize: "48px",
-            marginBottom: "var(--space-4)",
+            display: "inline-grid",
+            placeItems: "center",
+            width: 48,
+            height: 48,
+            borderRadius: "var(--radius-lg)",
+            background: "var(--surface-tertiary)",
+            color: "var(--text-tertiary)",
           }}
         >
-          📭
+          <Icon name="tokens" size={24} color="var(--text-tertiary)" />
+        </span>
+        <div>
+          <div
+            style={{
+              fontSize: "var(--font-size-md)",
+              fontWeight: "var(--font-weight-semibold)",
+              color: "var(--text-primary)",
+              marginBottom: 4,
+            }}
+          >
+            No Variables Found
+          </div>
+          <div
+            style={{
+              fontSize: "var(--font-size-sm)",
+              color: "var(--text-secondary)",
+              lineHeight: "var(--line-height-relaxed)",
+            }}
+          >
+            This Figma file doesn't contain any Variables to convert.
+          </div>
         </div>
-        <h3
-          style={{
-            margin: "0 0 var(--space-2) 0",
-            fontSize: "var(--font-size-lg)",
-            fontWeight: "var(--font-weight-bold)",
-            color: "var(--text-primary)",
-          }}
-        >
-          No Variables Found
-        </h3>
-        <p
-          style={{
-            margin: "0 0 var(--space-6) 0",
-            fontSize: "var(--font-size-sm)",
-            color: "var(--text-secondary)",
-          }}
-        >
-          This Figma file doesn't contain any Variables to convert.
-        </p>
         <button
           onClick={onCancel}
           style={{
             padding: "var(--space-2) var(--space-4)",
             backgroundColor: "var(--surface-secondary)",
             color: "var(--text-primary)",
-            border: "1px solid var(--border-strong)",
+            border: "1px solid var(--border-default)",
             borderRadius: "var(--radius-md)",
             cursor: "pointer",
             fontSize: "var(--font-size-sm)",
-            transition: "var(--transition-base)",
+            fontFamily: "var(--font-family-base)",
+            transition: "var(--transition-fast)",
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = "var(--surface-tertiary)";
@@ -276,8 +290,8 @@ export const ExistingTokensImporter = ({
           color: "var(--text-primary)",
         }}
       >
-        💡 <strong>Select collections to convert:</strong> Your Variables will
-        be converted to W3C DTCG format tokens and can be exported as JSON.
+        <strong>Select collections to convert.</strong> Your Variables will be
+        converted to W3C DTCG format tokens and can be exported as JSON.
       </div>
 
       <div
@@ -345,17 +359,7 @@ export const ExistingTokensImporter = ({
                       transition: "var(--transition-base)",
                     }}
                   >
-                    {isSelected && (
-                      <span
-                        style={{
-                          color: "var(--text-inverse)",
-                          fontSize: "var(--font-size-xs)",
-                          fontWeight: "var(--font-weight-bold)",
-                        }}
-                      >
-                        ✓
-                      </span>
-                    )}
+                    {isSelected && <Icon name="check" size={12} color="#fff" />}
                   </div>
 
                   {/* Collection Info */}

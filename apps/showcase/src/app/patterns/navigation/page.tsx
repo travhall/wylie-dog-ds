@@ -67,7 +67,7 @@ function PatternCard({
 
 export default function NavigationPatternsPage() {
   return (
-    <div className="space-y-12 py-8">
+    <div className="relative mx-auto max-w-7xl space-y-12 p-4 lg:p-8 xl:p-12">
       <div className="space-y-2 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <Link
           href="/patterns"

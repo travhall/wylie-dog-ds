@@ -55,7 +55,7 @@ export default function ColorsPage() {
         <h2 className="text-2xl font-bold tracking-tight text-(--color-text-primary)">
           Primitive Palettes
         </h2>
-        <div className="space-y-12">
+        <div className="relative mx-auto max-w-7xl space-y-12 p-4 lg:p-8 xl:p-12">
           {colorPrimitives.map((color) => (
             <div key={color.name} className="space-y-4">
               <h3 className="text-lg font-bold text-(--color-text-primary)">

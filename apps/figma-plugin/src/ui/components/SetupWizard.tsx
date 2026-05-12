@@ -1,4 +1,6 @@
+import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
+import { Icon } from "./common/Icon";
 import type { GitHubConfig, SyncMode } from "../../shared/types";
 
 interface SetupWizardProps {
@@ -70,7 +72,7 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
             fontWeight: "var(--font-weight-bold)",
           }}
         >
-          🔐 GitHub Access Token
+          GitHub Access Token
         </h3>
         <p
           style={{
@@ -139,9 +141,24 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
               color: validationResult.valid ? "var(--success)" : "var(--error)",
             }}
           >
-            {validationResult.valid
-              ? "✅ Token is valid"
-              : `❌ ${validationResult.error}`}
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-1)",
+              }}
+            >
+              <Icon
+                name={validationResult.valid ? "check" : "close"}
+                size={12}
+                color={
+                  validationResult.valid ? "var(--success)" : "var(--error)"
+                }
+              />
+              {validationResult.valid
+                ? "Token is valid"
+                : validationResult.error}
+            </span>
           </div>
         )}
       </div>
@@ -275,7 +292,7 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
             fontWeight: "var(--font-weight-bold)",
           }}
         >
-          📁 Repository Selection
+          Repository Selection
         </h3>
         <p
           style={{
@@ -472,9 +489,24 @@ function RepositoryStep({ onNext, onBack, data }: StepProps) {
               color: validationResult.valid ? "var(--success)" : "var(--error)",
             }}
           >
-            {validationResult.valid
-              ? "✅ Repository is accessible"
-              : `❌ ${validationResult.error}`}
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-1)",
+              }}
+            >
+              <Icon
+                name={validationResult.valid ? "check" : "close"}
+                size={12}
+                color={
+                  validationResult.valid ? "var(--success)" : "var(--error)"
+                }
+              />
+              {validationResult.valid
+                ? "Repository is accessible"
+                : validationResult.error}
+            </span>
           </div>
         )}
       </div>
@@ -554,7 +586,7 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
             fontWeight: "var(--font-weight-bold)",
           }}
         >
-          ⚙️ Configuration
+          Configuration
         </h3>
         <p
           style={{
@@ -746,7 +778,20 @@ function ConfigurationStep({ onNext, onBack, data, isLast }: StepProps) {
             fontWeight: "var(--font-weight-bold)",
           }}
         >
-          {isLast ? "Complete Setup ✓" : "Next →"}
+          {isLast ? (
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-1)",
+              }}
+            >
+              Complete Setup
+              <Icon name="check" size={14} color="var(--text-inverse)" />
+            </span>
+          ) : (
+            "Next →"
+          )}
         </button>
       </div>
     </div>
@@ -805,7 +850,16 @@ export function SetupWizard({
             fontWeight: "var(--font-weight-bold)",
           }}
         >
-          🚀 GitHub Setup Wizard
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--space-2)",
+            }}
+          >
+            <Icon name="github" size={16} color="var(--text-primary)" />
+            GitHub Setup Wizard
+          </span>
         </h2>
         <div
           aria-live="polite"

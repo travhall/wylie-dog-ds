@@ -1,4 +1,6 @@
 import { h } from "preact";
+import { Icon } from "./common/Icon";
+import type { IconName } from "./common/Icon";
 
 interface EmptyTokensStateProps {
   onImportFile: () => void;
@@ -8,8 +10,8 @@ interface EmptyTokensStateProps {
 }
 
 /**
- * Enhanced empty state for Tokens tab
- * Provides clear paths to get started
+ * EmptyTokensState — shown in the Tokens tab when no collections exist.
+ * Uses the same card pattern as OnboardingScreen.
  */
 export function EmptyTokensState({
   onImportFile,
@@ -20,177 +22,128 @@ export function EmptyTokensState({
   return (
     <div
       style={{
-        padding: "var(--space-4) 0",
+        padding: "16px 0 12px",
+        display: "flex",
+        flexDirection: "column",
+        gap: 12,
       }}
     >
-      <div
-        style={{
-          fontSize: "var(--font-size-xl)",
-          fontWeight: "var(--font-weight-semibold)",
-          color: "var(--text-primary)",
-          marginBottom: "var(--space-2)",
-        }}
-      >
-        🚀 Get Started with Token Bridge
+      <div>
+        <div
+          style={{
+            fontSize: "var(--font-size-base)",
+            fontWeight: "var(--font-weight-semibold)",
+            color: "var(--text-primary)",
+            marginBottom: 4,
+          }}
+        >
+          No token collections yet
+        </div>
+        <div
+          style={{
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-secondary)",
+            lineHeight: "var(--line-height-relaxed)",
+          }}
+        >
+          Create Figma Variables, import a token file, or pull from GitHub to
+          get started.
+        </div>
       </div>
 
-      <p
-        style={{
-          fontSize: "var(--font-size-sm)",
-          color: "var(--text-secondary)",
-          marginBottom: "var(--space-4)",
-          lineHeight: "var(--line-height-relaxed)",
-        }}
-      >
-        No token collections found. Choose an option below to begin:
-      </p>
-
-      {/* Action Cards */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "var(--space-3)",
-          maxWidth: "360px",
-          margin: "0 auto",
-        }}
-      >
-        {/* Import Tokens */}
-        <button
+      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        <EmptyCard
+          icon="upload"
+          label="Import token file"
+          desc="JSON or W3C DTCG format"
           onClick={onImportFile}
-          style={{
-            padding: "var(--space-4)",
-            backgroundColor: "var(--surface-secondary)",
-            border: "1px solid var(--border-default)",
-            borderRadius: "var(--radius-lg)",
-            cursor: "pointer",
-            textAlign: "left",
-            transition: "var(--transition-base)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "var(--accent-primary)";
-            e.currentTarget.style.backgroundColor = "var(--surface-hover)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = "var(--border-default)";
-            e.currentTarget.style.backgroundColor = "var(--surface-secondary)";
-          }}
-        >
-          <div
-            style={{
-              fontSize: "var(--font-size-md)",
-              fontWeight: "var(--font-weight-semibold)",
-              color: "var(--text-primary)",
-              marginBottom: "var(--space-1)",
-            }}
-          >
-            📥 Import Existing Tokens
-          </div>
-          <div
-            style={{
-              fontSize: "var(--font-size-xs)",
-              color: "var(--text-secondary)",
-              lineHeight: "var(--line-height-relaxed)",
-            }}
-          >
-            Upload JSON token files from your design system
-          </div>
-        </button>
-
-        {/* Sync from GitHub */}
-        <button
+        />
+        <EmptyCard
+          icon={githubConfigured ? "download" : "github"}
+          label={githubConfigured ? "Pull from GitHub" : "Connect GitHub"}
+          desc={
+            githubConfigured
+              ? "Pull tokens from your repository"
+              : "Set up bidirectional sync"
+          }
           onClick={onSetupGitHub}
-          style={{
-            padding: "var(--space-4)",
-            backgroundColor: githubConfigured
-              ? "var(--success-light)"
-              : "var(--surface-secondary)",
-            border: `1px solid ${githubConfigured ? "var(--success)" : "var(--border-default)"}`,
-            borderRadius: "var(--radius-lg)",
-            cursor: "pointer",
-            textAlign: "left",
-            transition: "var(--transition-base)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "var(--accent-primary)";
-            e.currentTarget.style.backgroundColor = githubConfigured
-              ? "var(--success-light)"
-              : "var(--surface-hover)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = githubConfigured
-              ? "var(--success)"
-              : "var(--border-default)";
-            e.currentTarget.style.backgroundColor = githubConfigured
-              ? "var(--success-light)"
-              : "var(--surface-secondary)";
-          }}
-        >
-          <div
-            style={{
-              fontSize: "var(--font-size-md)",
-              fontWeight: "var(--font-weight-semibold)",
-              color: "var(--text-primary)",
-              marginBottom: "var(--space-1)",
-            }}
-          >
-            🔄 {githubConfigured ? "Pull from" : "Connect to"} GitHub
-          </div>
-          <div
-            style={{
-              fontSize: "var(--font-size-xs)",
-              color: "var(--text-secondary)",
-              lineHeight: "var(--line-height-relaxed)",
-            }}
-          >
-            {githubConfigured
-              ? "Pull tokens from your connected repository"
-              : "Sync tokens with your GitHub repository"}
-          </div>
-        </button>
-
-        {/* Generate Demo Tokens */}
-        <button
+          accent={githubConfigured}
+        />
+        <EmptyCard
+          icon="file"
+          label="Try demo tokens"
+          desc="Explore with sample data"
           onClick={onGenerateDemoTokens}
-          style={{
-            padding: "var(--space-4)",
-            backgroundColor: "var(--surface-secondary)",
-            border: "1px solid var(--border-default)",
-            borderRadius: "var(--radius-lg)",
-            cursor: "pointer",
-            textAlign: "left",
-            transition: "var(--transition-base)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "var(--accent-primary)";
-            e.currentTarget.style.backgroundColor = "var(--surface-hover)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = "var(--border-default)";
-            e.currentTarget.style.backgroundColor = "var(--surface-secondary)";
-          }}
-        >
-          <div
-            style={{
-              fontSize: "var(--font-size-md)",
-              fontWeight: "var(--font-weight-semibold)",
-              color: "var(--text-primary)",
-              marginBottom: "var(--space-1)",
-            }}
-          >
-            🎨 Try Demo Tokens
-          </div>
-          <div
-            style={{
-              fontSize: "var(--font-size-xs)",
-              color: "var(--text-secondary)",
-              lineHeight: "var(--line-height-relaxed)",
-            }}
-          >
-            See Token Bridge in action with example tokens
-          </div>
-        </button>
+        />
       </div>
     </div>
+  );
+}
+
+interface EmptyCardProps {
+  icon: IconName;
+  label: string;
+  desc: string;
+  onClick: () => void;
+  accent?: boolean;
+}
+
+function EmptyCard({
+  icon,
+  label,
+  desc,
+  onClick,
+  accent = false,
+}: EmptyCardProps) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 12,
+        width: "100%",
+        padding: "10px 12px",
+        border: `1px solid ${accent ? "var(--success)" : "var(--border-default)"}`,
+        borderRadius: "var(--radius-md)",
+        background: accent ? "var(--success-light)" : "var(--surface-primary)",
+        cursor: "pointer",
+        textAlign: "left",
+        transition: "var(--transition-fast)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = "var(--accent-primary)";
+        e.currentTarget.style.background = "var(--accent-tint)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = accent
+          ? "var(--success)"
+          : "var(--border-default)";
+        e.currentTarget.style.background = accent
+          ? "var(--success-light)"
+          : "var(--surface-primary)";
+      }}
+    >
+      <Icon name={icon} size={16} color="var(--accent-primary)" />
+      <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+        <div
+          style={{
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-medium)",
+            color: "var(--text-primary)",
+          }}
+        >
+          {label}
+        </div>
+        <div
+          style={{
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-tertiary)",
+          }}
+        >
+          {desc}
+        </div>
+      </div>
+    </button>
   );
 }

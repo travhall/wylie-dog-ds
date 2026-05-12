@@ -226,7 +226,7 @@ export function useGitHubSync(
    * Pull is an explicit user action to import from GitHub, so overwrite is expected
    */
   const handleGitHubPull = useCallback(async () => {
-    console.log("🔽 PULL: Starting GitHub pull operation");
+    console.log("PULL: Starting GitHub pull operation");
     try {
       actions.setLoading(true);
       actions.setProgressSteps(PULL_STEPS);
@@ -342,7 +342,7 @@ export function useGitHubSync(
         // Handle based on operation type
         if (conflictOperationType === "push") {
           // For push: sync the resolved tokens to GitHub
-          console.log("🔄 Resuming push after conflict resolution...");
+          console.log("Resuming push after conflict resolution...");
           actions.setLoadingMessage("Pushing resolved tokens to GitHub...");
 
           const syncResult = await githubClient.syncTokens(resolvedTokens);
@@ -368,7 +368,7 @@ export function useGitHubSync(
           }
         } else {
           // For pull: import the resolved tokens into Figma
-          console.log("📥 Importing resolved tokens to Figma...");
+          console.log("Importing resolved tokens to Figma...");
 
           // Keep loading state active - import will complete and show validation modal
           actions.setLoadingMessage("Importing resolved tokens to Figma...");

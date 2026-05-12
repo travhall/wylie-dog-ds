@@ -1164,7 +1164,7 @@ export default function ArchitecturePage() {
                 </p>
                 <ol className="relative space-y-5">
                   <span
-                    className="absolute left-[15px] top-3 bottom-3 w-px"
+                    className="absolute left-3.75 top-3 bottom-3 w-px"
                     style={{
                       background:
                         "linear-gradient(to bottom, color-mix(in oklch, var(--color-interactive-primary) 70%, transparent), color-mix(in oklch, var(--color-interactive-primary) 70%, transparent) 70%, var(--color-border-primary))",

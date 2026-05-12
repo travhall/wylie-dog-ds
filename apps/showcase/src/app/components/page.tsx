@@ -243,6 +243,7 @@ export default function ComponentsPage() {
                           <p className="text-sm font-semibold text-(--color-text-primary)">
                             Elena Mori
                           </p>
+                          {/* cSpell:ignore Mori */}
                           <p className="text-[11px] text-(--color-text-tertiary)">
                             Lead, Design Systems
                           </p>
@@ -301,7 +302,7 @@ export default function ComponentsPage() {
                       Search components
                     </label>
                     <div
-                      className="mt-1 flex items-center gap-2 h-[34px] rounded-[10px] border px-2.5 text-sm"
+                      className="mt-1 flex items-center gap-2 h-8.5 rounded-[10px] border px-2.5 text-sm"
                       style={{
                         borderColor: "var(--color-interactive-primary)",
                         boxShadow:
@@ -457,7 +458,7 @@ export default function ComponentsPage() {
               desc="Vertically stacked sections that expand one at a time or independently."
               href="accordion"
               preview={
-                <div className="w-full max-w-[220px] rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden">
+                <div className="w-full max-w-55 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden">
                   <div className="flex items-center justify-between px-3 py-2 text-xs font-semibold border-b border-(--color-border-primary) bg-(--color-background-secondary)">
                     <span>Shipping</span>
                     <svg
@@ -616,7 +617,7 @@ export default function ComponentsPage() {
               desc="Single date, range, or multi-select — locale-aware via Intl."
               href="calendar"
               preview={
-                <div className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-2 w-full max-w-[220px]">
+                <div className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-2 w-full max-w-55">
                   <div className="flex items-center justify-between text-[11px] font-semibold pb-1.5 text-(--color-text-primary)">
                     <svg
                       viewBox="0 0 24 24"
@@ -686,7 +687,7 @@ export default function ComponentsPage() {
               href="card"
               preview={
                 <div
-                  className="w-full max-w-[220px] rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-3"
+                  className="w-full max-w-55 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-3"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   <p className="text-[10px] font-mono uppercase tracking-wider text-(--color-text-tertiary)">
@@ -742,7 +743,7 @@ export default function ComponentsPage() {
               desc="Embla-powered slider with keyboard, swipe, autoplay, and snap controls."
               href="carousel"
               preview={
-                <div className="w-full max-w-[230px] flex items-center gap-2">
+                <div className="w-full max-w-57.5 flex items-center gap-2">
                   <button className="grid h-7 w-7 place-items-center rounded-full border border-(--color-border-primary) bg-(--color-surface-primary) text-(--color-text-secondary) shrink-0">
                     <svg
                       viewBox="0 0 24 24"
@@ -756,15 +757,15 @@ export default function ComponentsPage() {
                   </button>
                   <div className="flex-1 grid grid-cols-3 gap-1.5">
                     <div
-                      className="aspect-[3/4] rounded"
+                      className="aspect-3/4 rounded"
                       style={{ background: "oklch(78% 0.10 35)" }}
                     />
                     <div
-                      className="aspect-[3/4] rounded ring-2 ring-(--color-interactive-primary)"
+                      className="aspect-3/4 rounded ring-2 ring-(--color-interactive-primary)"
                       style={{ background: "oklch(72% 0.14 274)" }}
                     />
                     <div
-                      className="aspect-[3/4] rounded"
+                      className="aspect-3/4 rounded"
                       style={{ background: "oklch(78% 0.10 155)" }}
                     />
                   </div>
@@ -791,7 +792,7 @@ export default function ComponentsPage() {
               desc="Sortable headers, sticky rows, dense or comfortable density."
               href="table"
               preview={
-                <div className="w-full max-w-[230px] rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden text-[10px]">
+                <div className="w-full max-w-57.5 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden text-[10px]">
                   <div
                     className="grid px-2.5 py-1.5 font-mono uppercase tracking-wider text-(--color-text-tertiary) text-[8px] bg-(--color-background-secondary)"
                     style={{
@@ -883,7 +884,7 @@ export default function ComponentsPage() {
               desc="Inline status banner — default, success, warning, destructive."
               href="alert"
               preview={
-                <div className="w-full max-w-[230px] flex flex-col gap-1.5">
+                <div className="w-full max-w-57.5 flex flex-col gap-1.5">
                   {[
                     {
                       color: "var(--color-success)",
@@ -940,7 +941,7 @@ export default function ComponentsPage() {
               desc="Linear, circular, determinate, indeterminate — for any wait state."
               href="progress"
               preview={
-                <div className="w-full max-w-[220px] flex flex-col gap-3">
+                <div className="w-full max-w-55 flex flex-col gap-3">
                   <div>
                     <div className="flex items-center justify-between text-[10px] mb-1">
                       <span className="text-(--color-text-secondary)">
@@ -1019,7 +1020,7 @@ export default function ComponentsPage() {
               desc="Shimmering placeholder shapes for content that's loading."
               href="skeleton"
               preview={
-                <div className="w-full max-w-[220px] flex items-center gap-3">
+                <div className="w-full max-w-55 flex items-center gap-3">
                   <div
                     className="h-9 w-9 rounded-full animate-pulse"
                     style={{ background: "var(--color-background-tertiary)" }}
@@ -1047,7 +1048,7 @@ export default function ComponentsPage() {
               desc="Transient stack of notifications with auto-dismiss and swipe-to-clear."
               href="toast"
               preview={
-                <div className="w-full max-w-[230px] flex flex-col gap-1.5 items-end">
+                <div className="w-full max-w-57.5 flex flex-col gap-1.5 items-end">
                   <div
                     className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-2 flex items-start gap-2 w-full"
                     style={{ boxShadow: "var(--shadow-md)" }}
@@ -1245,11 +1246,11 @@ export default function ComponentsPage() {
               desc="react-hook-form + zod schema; field-level error and aria-* wiring built-in."
               href="form"
               preview={
-                <div className="w-full max-w-[230px] flex flex-col gap-1.5">
+                <div className="w-full max-w-57.5 flex flex-col gap-1.5">
                   <label className="text-[10px] font-medium text-(--color-text-primary)">
                     Email
                   </label>
-                  <div className="flex items-center h-[30px] border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
+                  <div className="flex items-center h-7.5 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
                     <span className="text-(--color-text-primary)">
                       elena@wyliedog.dev
                     </span>
@@ -1264,7 +1265,7 @@ export default function ComponentsPage() {
                     Password
                   </label>
                   <div
-                    className="flex items-center h-[30px] border rounded-md px-2 text-[11px] bg-(--color-surface-primary)"
+                    className="flex items-center h-7.5 border rounded-md px-2 text-[11px] bg-(--color-surface-primary)"
                     style={{ borderColor: "var(--color-destructive)" }}
                   >
                     <span className="text-(--color-text-tertiary)">
@@ -1280,8 +1281,8 @@ export default function ComponentsPage() {
               desc="Text, email, password, search, file — with leading/trailing slots."
               href="input"
               preview={
-                <div className="w-full max-w-[230px] flex flex-col gap-1.5">
-                  <div className="flex items-center h-[34px] border border-(--color-border-primary) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-surface-primary)">
+                <div className="w-full max-w-57.5 flex flex-col gap-1.5">
+                  <div className="flex items-center h-8.5 border border-(--color-border-primary) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-surface-primary)">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3 text-(--color-text-tertiary)"
@@ -1297,7 +1298,7 @@ export default function ComponentsPage() {
                     </span>
                   </div>
                   <div
-                    className="flex items-center h-[34px] border rounded-[10px] px-2.5 text-[12px] bg-(--color-surface-primary)"
+                    className="flex items-center h-8.5 border rounded-[10px] px-2.5 text-[12px] bg-(--color-surface-primary)"
                     style={{
                       borderColor: "var(--color-interactive-primary)",
                       boxShadow:
@@ -1308,7 +1309,7 @@ export default function ComponentsPage() {
                       elena@wyliedog.dev
                     </span>
                   </div>
-                  <div className="flex items-center h-[34px] border border-(--color-border-primary) rounded-[10px] px-2.5 text-[12px] bg-(--color-surface-primary) opacity-55">
+                  <div className="flex items-center h-8.5 border border-(--color-border-primary) rounded-[10px] px-2.5 text-[12px] bg-(--color-surface-primary) opacity-55">
                     <span className="text-(--color-text-tertiary)">
                       Disabled
                     </span>
@@ -1332,14 +1333,14 @@ export default function ComponentsPage() {
               desc="Required marker, optional hint, and click-to-focus association."
               href="label"
               preview={
-                <div className="w-full max-w-[220px] flex flex-col gap-1.5">
+                <div className="w-full max-w-55 flex flex-col gap-1.5">
                   <div className="flex items-center gap-1">
                     <label className="text-xs font-semibold text-(--color-text-primary)">
                       Display name
                     </label>
                     <span style={{ color: "var(--color-destructive)" }}>*</span>
                   </div>
-                  <div className="flex items-center h-[30px] border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
+                  <div className="flex items-center h-7.5 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
                     e.g. Elena Mori
                   </div>
                   <div className="flex items-center gap-1 mt-1">
@@ -1350,7 +1351,7 @@ export default function ComponentsPage() {
                       optional
                     </span>
                   </div>
-                  <div className="flex items-start min-h-[38px] border border-(--color-border-primary) rounded-md px-2 pt-1.5 text-[11px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
+                  <div className="flex items-start min-h-9.5 border border-(--color-border-primary) rounded-md px-2 pt-1.5 text-[11px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
                     Tell people who you are.
                   </div>
                 </div>
@@ -1402,8 +1403,8 @@ export default function ComponentsPage() {
               desc="Native-feeling dropdown with search, sections, and keyboard nav."
               href="select"
               preview={
-                <div className="w-full max-w-[220px] relative">
-                  <div className="flex items-center h-[34px] border border-(--color-border-primary) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-surface-primary) text-(--color-text-primary)">
+                <div className="w-full max-w-55 relative">
+                  <div className="flex items-center h-8.5 border border-(--color-border-primary) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-surface-primary) text-(--color-text-primary)">
                     <span className="flex-1">Engineering</span>
                     <svg
                       viewBox="0 0 24 24"
@@ -1454,7 +1455,7 @@ export default function ComponentsPage() {
               desc="Single value, range, or stepped — vertical or horizontal."
               href="slider"
               preview={
-                <div className="w-full max-w-[230px] flex flex-col gap-3">
+                <div className="w-full max-w-57.5 flex flex-col gap-3">
                   <div>
                     <div className="flex justify-between text-[10px] mb-1.5">
                       <span className="text-(--color-text-secondary)">
@@ -1595,7 +1596,7 @@ export default function ComponentsPage() {
               href="textarea"
               preview={
                 <div
-                  className="w-full max-w-[230px] rounded-md border bg-(--color-surface-primary) px-2.5 py-2 text-[11px] text-(--color-text-primary)"
+                  className="w-full max-w-57.5 rounded-md border bg-(--color-surface-primary) px-2.5 py-2 text-[11px] text-(--color-text-primary)"
                   style={{
                     borderColor: "var(--color-interactive-primary)",
                     boxShadow:
@@ -1614,6 +1615,7 @@ export default function ComponentsPage() {
               }
             />
 
+            {/* cSpell:ignore pressable */}
             <CompCard
               name="Toggle"
               desc="A two-state pressable button — the foundation for Toggle Group."
@@ -1741,8 +1743,8 @@ export default function ComponentsPage() {
               desc="Searchable select with async loading, multi-select, and custom option rendering."
               href="combobox"
               preview={
-                <div className="w-full max-w-[220px]">
-                  <div className="flex items-center h-[34px] border border-(--color-border-primary) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-surface-primary)">
+                <div className="w-full max-w-55">
+                  <div className="flex items-center h-8.5 border border-(--color-border-primary) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-surface-primary)">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3 text-(--color-text-tertiary)"
@@ -1823,9 +1825,9 @@ export default function ComponentsPage() {
               desc="Maintain a fixed ratio for media or canvases regardless of viewport."
               href="aspect-ratio"
               preview={
-                <div className="w-full max-w-[200px] flex gap-1.5">
+                <div className="w-full max-w-50 flex gap-1.5">
                   <div
-                    className="aspect-[16/9] flex-1 rounded border border-(--color-border-primary) flex items-center justify-center font-mono text-[9px] text-(--color-text-tertiary)"
+                    className="aspect-video flex-1 rounded border border-(--color-border-primary) flex items-center justify-center font-mono text-[9px] text-(--color-text-tertiary)"
                     style={{ background: "var(--color-background-tertiary)" }}
                   >
                     16 : 9
@@ -1839,7 +1841,7 @@ export default function ComponentsPage() {
               desc="A single open/closed disclosure region — the building block of Accordion."
               href="collapsible"
               preview={
-                <div className="w-full max-w-[220px]">
+                <div className="w-full max-w-55">
                   <div className="flex items-center justify-between text-xs font-semibold py-1 text-(--color-text-primary)">
                     <span>Advanced settings</span>
                     <svg
@@ -1879,7 +1881,7 @@ export default function ComponentsPage() {
               desc="Split panes with drag handles — horizontal, vertical, nested."
               href="resizable"
               preview={
-                <div className="w-full max-w-[220px] flex h-[100px] rounded-md border border-(--color-border-primary) overflow-hidden bg-(--color-surface-primary)">
+                <div className="w-full max-w-55 flex h-25 rounded-md border border-(--color-border-primary) overflow-hidden bg-(--color-surface-primary)">
                   <div className="flex-[0_0_38%] grid place-items-center font-mono text-[10px] text-(--color-text-tertiary)">
                     Sidebar
                   </div>
@@ -1907,7 +1909,7 @@ export default function ComponentsPage() {
               desc="Custom-styled scrollbars that show on hover and stay accessible."
               href="scroll-area"
               preview={
-                <div className="w-full max-w-[200px] h-[110px] rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden flex">
+                <div className="w-full max-w-50 h-27.5 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden flex">
                   <div className="flex-1 p-2 text-[10px] leading-relaxed text-(--color-text-secondary) overflow-hidden">
                     <p className="font-semibold text-(--color-text-primary)">
                       Changelog
@@ -1939,7 +1941,7 @@ export default function ComponentsPage() {
               desc="Horizontal or vertical divider with optional inline label."
               href="separator"
               preview={
-                <div className="w-full max-w-[220px] flex flex-col gap-2 items-center">
+                <div className="w-full max-w-55 flex flex-col gap-2 items-center">
                   <p className="text-[11px] font-semibold text-(--color-text-primary)">
                     Workspace
                   </p>
@@ -1981,7 +1983,7 @@ export default function ComponentsPage() {
           <SectionHeader
             num="05"
             title="Navigation"
-            desc="Wayfinding — from a single breadcrumb to a global command palette. All six share keyboard semantics and the same focus-ring token."
+            desc="Way finding — from a single breadcrumb to a global command palette. All six share keyboard semantics and the same focus-ring token."
             count={6}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -2026,7 +2028,7 @@ export default function ComponentsPage() {
               href="command"
               preview={
                 <div
-                  className="w-full max-w-[260px] rounded-md border border-(--color-border-primary) bg-(--color-surface-primary)"
+                  className="w-full max-w-65 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary)"
                   style={{ boxShadow: "var(--shadow-md)" }}
                 >
                   <div className="flex items-center gap-2 px-2.5 py-1.5 border-b border-(--color-border-primary)">
@@ -2074,7 +2076,7 @@ export default function ComponentsPage() {
               desc="Application-style top bar with cascading menus and keyboard shortcuts."
               href="menubar"
               preview={
-                <div className="w-full max-w-[260px] flex flex-col gap-1">
+                <div className="w-full max-w-65 flex flex-col gap-1">
                   <div className="flex items-center gap-1 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) px-1 py-1 text-[11px]">
                     <span
                       className="px-2 py-0.5 rounded font-medium text-(--color-text-primary)"
@@ -2120,7 +2122,7 @@ export default function ComponentsPage() {
               desc="Multi-level top nav with mega-menu panels and viewport positioning."
               href="navigation-menu"
               preview={
-                <div className="w-full max-w-[260px]">
+                <div className="w-full max-w-65">
                   <div className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) flex items-center px-2 py-1 text-[11px] gap-1">
                     <span
                       className="px-2 py-0.5 rounded font-medium text-(--color-text-primary)"
@@ -2226,7 +2228,7 @@ export default function ComponentsPage() {
               desc="Underline, contained, or vertical — with lazy-mounted panels."
               href="tabs"
               preview={
-                <div className="w-full max-w-[230px]">
+                <div className="w-full max-w-57.5">
                   <div className="flex border-b border-(--color-border-primary) text-xs text-(--color-text-primary)">
                     <span
                       className="-mb-px border-b-2 px-3 py-1.5 font-medium"
@@ -2277,7 +2279,7 @@ export default function ComponentsPage() {
               href="alert-dialog"
               preview={
                 <div
-                  className="w-full max-w-[230px] rounded-md border bg-(--color-surface-primary) p-3"
+                  className="w-full max-w-57.5 rounded-md border bg-(--color-surface-primary) p-3"
                   style={{
                     borderColor: "var(--color-border-strong)",
                     boxShadow: "var(--shadow-lg)",
@@ -2336,7 +2338,7 @@ export default function ComponentsPage() {
               desc="Right-click menu with sub-items, checkboxes, and shortcut hints."
               href="context-menu"
               preview={
-                <div className="w-full max-w-[230px] relative h-[120px] rounded-md border border-(--color-border-primary) bg-(--color-surface-primary)">
+                <div className="w-full max-w-57.5 relative h-30 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary)">
                   <div
                     className="absolute rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-1 text-[11px]"
                     style={{
@@ -2381,7 +2383,7 @@ export default function ComponentsPage() {
               desc="Modal panel with header, footer, and overlay — the workhorse modal."
               href="dialog"
               preview={
-                <div className="relative w-full max-w-[230px] h-[120px]">
+                <div className="relative w-full max-w-57.5 h-30">
                   <div
                     className="absolute inset-0 rounded-md"
                     style={{
@@ -2410,7 +2412,7 @@ export default function ComponentsPage() {
                         <path d="M18 6 6 18M6 6l12 12" />
                       </svg>
                     </div>
-                    <div className="mt-2 flex items-center h-[26px] border border-(--color-border-primary) rounded-md px-2 text-[10px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
+                    <div className="mt-2 flex items-center h-6.5 border border-(--color-border-primary) rounded-md px-2 text-[10px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
                       name@example.com
                     </div>
                     <div className="mt-2 flex justify-end">

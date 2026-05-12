@@ -1,4 +1,6 @@
+import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
+import { Icon } from "./common/Icon";
 import type { ConflictAwareGitHubClient } from "../../plugin/sync/conflict-aware-github-client";
 import type { ExportData } from "../../plugin/variables/processor";
 
@@ -35,18 +37,18 @@ export function SyncStatus({
     setStatus((prev) => ({ ...prev, checking: true, error: undefined }));
 
     try {
-      console.log("🔍 Requesting local tokens for sync status check...");
+      console.log("Requesting local tokens for sync status check...");
 
       // Request local tokens from plugin thread
       const localTokensPromise = new Promise<ExportData[]>((resolve) => {
         const handler = (event: MessageEvent) => {
           if (event.data.pluginMessage?.type === "local-tokens-exported") {
             window.removeEventListener("message", handler);
-            console.log("✅ Local tokens received for sync status");
+            console.log("Local tokens received for sync status");
             resolve(event.data.pluginMessage.localTokens || []);
           } else if (event.data.pluginMessage?.type === "local-tokens-error") {
             window.removeEventListener("message", handler);
-            console.warn("⚠️ Failed to get local tokens for sync status");
+            console.warn(" Failed to get local tokens for sync status");
             resolve([]);
           }
         };
@@ -65,7 +67,7 @@ export function SyncStatus({
         // Timeout after 10 seconds
         setTimeout(() => {
           window.removeEventListener("message", handler);
-          console.warn("⚠️ Timeout getting local tokens for sync status");
+          console.warn(" Timeout getting local tokens for sync status");
           resolve([]);
         }, 10000);
       });
@@ -112,7 +114,10 @@ export function SyncStatus({
           color: "#6b7280",
         }}
       >
-        🔗 Configure GitHub to see sync status
+        <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          <Icon name="github" size={12} color="#6b7280" /> Configure GitHub to
+          see sync status
+        </span>
       </div>
     );
   }
@@ -146,11 +151,11 @@ export function SyncStatus({
     return "#10b981";
   };
 
-  const getStatusIcon = () => {
-    if (status.error) return "❌";
-    if (status.checking) return "🔄";
-    if (!status.upToDate) return "⚠️";
-    return "✅";
+  const getStatusIconName = () => {
+    if (status.error) return "close" as const;
+    if (status.checking) return "sync" as const;
+    if (!status.upToDate) return "warning" as const;
+    return "check" as const;
   };
 
   const getStatusText = () => {
@@ -187,7 +192,7 @@ export function SyncStatus({
             color: getStatusColor(),
           }}
         >
-          <span>{getStatusIcon()}</span>
+          <Icon name={getStatusIconName()} size={12} color={getStatusColor()} />
           <span>{getStatusText()}</span>
         </div>
 
@@ -221,13 +226,15 @@ export function SyncStatus({
               <div style={{ marginTop: "4px", fontSize: "10px" }}>
                 {status.localChanges > 0 && (
                   <span style={{ color: "#f59e0b" }}>
-                    📍 {status.localChanges} local changes
+                    <Icon name="check" size={10} color="#f59e0b" />{" "}
+                    {status.localChanges} local changes
                   </span>
                 )}
                 {status.localChanges > 0 && status.remoteChanges > 0 && " • "}
                 {status.remoteChanges > 0 && (
                   <span style={{ color: "#3b82f6" }}>
-                    📥 {status.remoteChanges} remote changes
+                    <Icon name="download" size={10} color="#3b82f6" />{" "}
+                    {status.remoteChanges} remote changes
                   </span>
                 )}
               </div>

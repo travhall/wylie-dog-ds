@@ -1,4 +1,6 @@
 // Format Transformation Display Component
+import { h } from "preact";
+import { Icon } from "./common/Icon";
 import type {
   AdapterProcessResult,
   TransformationLog,
@@ -140,7 +142,15 @@ export function TransformationFeedback({
                     marginBottom: "2px",
                   }}
                 >
-                  ⚠️ {warning}
+                  <span
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "4px",
+                    }}
+                  >
+                    <Icon name="warning" size={11} color="#b08800" /> {warning}
+                  </span>
                 </div>
               ))}
             </div>

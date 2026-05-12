@@ -477,7 +477,7 @@ export default function PluginPage() {
                       </div>
                       {/* outbound arrow circle */}
                       <span
-                        className="absolute right-[-18px] top-1/2 -translate-y-1/2 z-10 grid h-4 w-4 place-items-center rounded-full"
+                        className="absolute -right-4.5 top-1/2 -translate-y-1/2 z-10 grid h-4 w-4 place-items-center rounded-full"
                         style={{
                           background: "var(--color-interactive-primary)",
                           color: "white",
@@ -971,7 +971,7 @@ export default function PluginPage() {
               <p className="mt-4 text-sm text-(--color-text-secondary) leading-relaxed">
                 Token Bridge runs from anywhere a pnpm script can: your laptop,
                 CI, a release workflow, a pre-commit hook. The output is
-                diffable, the auth is keychain-managed, and a dry-run flag
+                diff-able, the auth is keychain-managed, and a dry-run flag
                 previews changes before they hit the file.
               </p>
 
@@ -1074,7 +1074,7 @@ export default function PluginPage() {
                 </span>
               </div>
 
-              <div className="flex min-h-[340px]">
+              <div className="flex min-h-85">
                 {/* Collections rail */}
                 <div className="w-44 border-r border-(--color-border-primary) bg-(--color-background-secondary) p-3 shrink-0">
                   <div className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary) mb-3 px-1">

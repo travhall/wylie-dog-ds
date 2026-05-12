@@ -1,4 +1,6 @@
+import { h } from "preact";
 import { useState } from "preact/hooks";
+import { Icon, type IconName } from "./common/Icon";
 
 type OAuthProvider = "github" | "gitlab" | "bitbucket";
 
@@ -79,23 +81,28 @@ export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
     }
   };
 
-  const providers = [
+  const providers: Array<{
+    id: OAuthProvider;
+    name: string;
+    icon: IconName;
+    description: string;
+  }> = [
     {
       id: "github" as const,
       name: "GitHub",
-      icon: "🐙",
+      icon: "github",
       description: "Connect to GitHub repositories",
     },
     {
       id: "gitlab" as const,
       name: "GitLab",
-      icon: "🦊",
+      icon: "upload",
       description: "Connect to GitLab projects",
     },
     {
       id: "bitbucket" as const,
       name: "Bitbucket",
-      icon: "🪣",
+      icon: "download",
       description: "Connect to Bitbucket repositories",
     },
   ];
@@ -140,7 +147,7 @@ export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
             opacity: loading ? 0.5 : 1,
           }}
         >
-          ✕
+          <Icon name="close" size={12} color="var(--text-secondary)" />
         </button>
       </div>
 
@@ -169,7 +176,15 @@ export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
             fontSize: "var(--font-size-sm)",
           }}
         >
-          ❌ {error}
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--space-1)",
+            }}
+          >
+            <Icon name="close" size={12} color="var(--error)" /> {error}
+          </span>
         </div>
       )}
 
@@ -223,7 +238,16 @@ export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
               marginBottom: "var(--space-3)",
             }}
           >
-            🔑 Enter this code on GitHub:
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-1)",
+              }}
+            >
+              <Icon name="github" size={14} color="var(--text-primary)" /> Enter
+              this code on GitHub:
+            </span>
           </div>
 
           <div
@@ -335,7 +359,11 @@ export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
                   gap: "var(--space-3)",
                 }}
               >
-                <span style={{ fontSize: "24px" }}>{provider.icon}</span>
+                <Icon
+                  name={provider.icon}
+                  size={24}
+                  color="var(--text-primary)"
+                />
                 <div>
                   <div
                     style={{
@@ -382,7 +410,16 @@ export function OAuthSetup({ onSuccess, onCancel }: OAuthSetupProps) {
               color: "var(--text-primary)",
             }}
           >
-            ℹ️ How Device Flow works:
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--space-1)",
+              }}
+            >
+              <Icon name="info" size={12} color="var(--text-primary)" /> How
+              Device Flow works:
+            </span>
           </div>
           <ol style={{ margin: "0", paddingLeft: "var(--space-5)" }}>
             <li>Click "Connect" to generate a unique code</li>

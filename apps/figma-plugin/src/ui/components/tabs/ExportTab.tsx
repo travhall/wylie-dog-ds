@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { Icon, type IconName } from "../common/Icon";
 
 interface ExportTabProps {
   selectedCollections: Set<string>;
@@ -68,7 +69,13 @@ export function ExportTab({
             color: "var(--text-secondary)",
           }}
         >
-          ⚠️ Select token collections from the{" "}
+          <Icon
+            name="warning"
+            size={13}
+            color="var(--warning)"
+            style={{ flexShrink: 0 }}
+          />{" "}
+          Select token collections from the{" "}
           <button
             onClick={onSwitchToTokensTab}
             style={{
@@ -111,7 +118,16 @@ export function ExportTab({
             gap: "var(--space-2)",
           }}
         >
-          <span>💡 Want to push tokens to GitHub?</span>
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--space-1)",
+            }}
+          >
+            <Icon name="info" size={13} color="var(--text-secondary)" /> Want to
+            push tokens to GitHub?
+          </span>
           <button
             onClick={onSetupGitHub}
             style={{
@@ -147,7 +163,7 @@ export function ExportTab({
       >
         {/* Download JSON */}
         <ExportOption
-          icon="💾"
+          icon="download"
           title="Download as JSON"
           description="Save token files to your computer"
           buttonLabel="Download"
@@ -160,7 +176,7 @@ export function ExportTab({
 
         {/* Push to GitHub */}
         <ExportOption
-          icon="📤"
+          icon="upload"
           title="Push to GitHub"
           description={
             hasGitHubConfig
@@ -180,7 +196,7 @@ export function ExportTab({
 }
 
 interface ExportOptionProps {
-  icon: string;
+  icon: IconName;
   title: string;
   description: string;
   buttonLabel: string;
@@ -217,11 +233,17 @@ function ExportOption({
       >
         <div
           style={{
-            fontSize: "var(--font-size-2xl)",
-            lineHeight: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "32px",
+            height: "32px",
+            borderRadius: "var(--radius-md)",
+            backgroundColor: "var(--surface-secondary)",
+            flexShrink: 0,
           }}
         >
-          {icon}
+          <Icon name={icon} size={18} color="var(--accent-primary)" />
         </div>
         <div style={{ flex: 1 }}>
           <div

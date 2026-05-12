@@ -1,5 +1,6 @@
 import { h } from "preact";
 import { useEffect, useRef } from "preact/hooks";
+import { Icon } from "./common/Icon";
 
 interface ValidationError {
   type:
@@ -137,7 +138,11 @@ export function ValidationDisplay({
               gap: "var(--space-2)",
             }}
           >
-            <span aria-hidden="true">{valid ? "✅" : "❌"}</span>
+            <Icon
+              name={valid ? "check" : "close"}
+              size={18}
+              color={valid ? "var(--success)" : "var(--error)"}
+            />
             {valid ? "Validation Passed" : "Validation Failed"}
           </h2>
           <button
@@ -181,7 +186,8 @@ export function ValidationDisplay({
               gap: "var(--space-2)",
             }}
           >
-            <span aria-hidden="true">📊</span> Statistics
+            <Icon name="tokens" size={14} color="var(--text-primary)" />{" "}
+            Statistics
           </h3>
           <div
             style={{
@@ -211,7 +217,8 @@ export function ValidationDisplay({
                 gap: "var(--space-2)",
               }}
             >
-              <span aria-hidden="true">❌</span> Errors ({errors.length})
+              <Icon name="close" size={14} color="var(--error)" /> Errors (
+              {errors.length})
             </h3>
             <div role="list" style={{ maxHeight: "200px", overflow: "auto" }}>
               {errors.map((error, i) => (
@@ -246,7 +253,12 @@ export function ValidationDisplay({
                         marginTop: "var(--space-1)",
                       }}
                     >
-                      <span aria-hidden="true">💡</span> {error.suggestion}
+                      <Icon
+                        name="info"
+                        size={11}
+                        color="var(--text-secondary)"
+                      />{" "}
+                      {error.suggestion}
                     </div>
                   )}
                 </div>
@@ -269,7 +281,8 @@ export function ValidationDisplay({
                 gap: "var(--space-2)",
               }}
             >
-              <span aria-hidden="true">⚠️</span> Warnings ({warnings.length})
+              <Icon name="warning" size={14} color="var(--warning)" /> Warnings
+              ({warnings.length})
             </h3>
             <div role="list" style={{ maxHeight: "200px", overflow: "auto" }}>
               {warnings.map((warning, i) => (
@@ -304,7 +317,12 @@ export function ValidationDisplay({
                         marginTop: "var(--space-1)",
                       }}
                     >
-                      <span aria-hidden="true">💡</span> {warning.suggestion}
+                      <Icon
+                        name="info"
+                        size={11}
+                        color="var(--text-secondary)"
+                      />{" "}
+                      {warning.suggestion}
                     </div>
                   )}
                 </div>

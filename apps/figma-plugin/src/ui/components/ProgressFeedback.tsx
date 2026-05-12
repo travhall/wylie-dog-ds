@@ -27,7 +27,7 @@ export function ProgressFeedback({
   onCancel,
   loadingMessage,
 }: ProgressStepProps) {
-  console.log("📊 ProgressFeedback render:", {
+  console.log("ProgressFeedback render:", {
     loading,
     stepsLength: steps.length,
     currentStep,
@@ -229,9 +229,6 @@ export function ProgressFeedback({
             gap: "var(--space-2)",
           }}
         >
-          <span style={{ fontSize: "var(--font-size-2xl)" }}>
-            {currentStepData?.icon}
-          </span>
           <span>{currentStepData?.label}</span>
         </div>
 
@@ -403,28 +400,28 @@ export const SYNC_STEPS: ProgressStep[] = [
   {
     id: "loading-local",
     label: "Loading Local Tokens",
-    icon: "📍",
+    icon: "",
     description: "Reading current Figma variables...",
     estimatedDuration: 2,
   },
   {
     id: "fetching-remote",
     label: "Fetching Remote Tokens",
-    icon: "📥",
+    icon: "",
     description: "Downloading from GitHub repository...",
     estimatedDuration: 3,
   },
   {
     id: "detecting-conflicts",
     label: "Detecting Conflicts",
-    icon: "🔍",
+    icon: "",
     description: "Comparing local and remote changes...",
     estimatedDuration: 2,
   },
   {
     id: "analyzing",
     label: "Analyzing Changes",
-    icon: "🧠",
+    icon: "",
     description: "Determining resolution strategies...",
     estimatedDuration: 1,
   },
@@ -434,21 +431,21 @@ export const PULL_STEPS: ProgressStep[] = [
   {
     id: "fetching",
     label: "Pulling from GitHub",
-    icon: "📥",
+    icon: "",
     description: "Downloading tokens from repository...",
     estimatedDuration: 3,
   },
   {
     id: "preparing",
     label: "Preparing Import",
-    icon: "⚙️",
+    icon: "",
     description: "Processing token format...",
     estimatedDuration: 1,
   },
   {
     id: "importing",
     label: "Importing to Figma",
-    icon: "🎨",
+    icon: "",
     description: "Creating variables and collections...",
     estimatedDuration: 4,
   },
@@ -458,21 +455,21 @@ export const PUSH_STEPS: ProgressStep[] = [
   {
     id: "exporting",
     label: "Exporting Tokens",
-    icon: "📤",
+    icon: "",
     description: "Converting Figma variables to JSON...",
     estimatedDuration: 2,
   },
   {
     id: "checking-remote",
     label: "Checking Remote Changes",
-    icon: "🔍",
+    icon: "",
     description: "Looking for conflicts...",
     estimatedDuration: 2,
   },
   {
     id: "uploading",
     label: "Uploading to GitHub",
-    icon: "☁️",
+    icon: "",
     description: "Syncing with repository...",
     estimatedDuration: 3,
   },
@@ -482,28 +479,28 @@ export const IMPORT_STEPS: ProgressStep[] = [
   {
     id: "parsing",
     label: "Parsing Token Files",
-    icon: "📄",
+    icon: "",
     description: "Reading and validating JSON files...",
     estimatedDuration: 2,
   },
   {
     id: "format-detection",
     label: "Detecting Format",
-    icon: "🔍",
+    icon: "",
     description: "Identifying token format and structure...",
     estimatedDuration: 1,
   },
   {
     id: "validation",
     label: "Validating Tokens",
-    icon: "✅",
+    icon: "",
     description: "Checking references and structure...",
     estimatedDuration: 2,
   },
   {
     id: "importing",
     label: "Creating Variables",
-    icon: "🎨",
+    icon: "",
     description: "Adding to Figma collections...",
     estimatedDuration: 3,
   },
@@ -513,21 +510,21 @@ export const EXPORT_STEPS: ProgressStep[] = [
   {
     id: "collecting",
     label: "Collecting Variables",
-    icon: "📦",
+    icon: "",
     description: "Reading selected collections...",
     estimatedDuration: 2,
   },
   {
     id: "processing",
     label: "Processing Tokens",
-    icon: "⚙️",
+    icon: "",
     description: "Converting to export format...",
     estimatedDuration: 2,
   },
   {
     id: "preparing",
     label: "Preparing Download",
-    icon: "💾",
+    icon: "",
     description: "Generating JSON files...",
     estimatedDuration: 1,
   },

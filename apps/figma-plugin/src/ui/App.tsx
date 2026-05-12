@@ -55,6 +55,11 @@ function AppInner() {
   // selectedCollections is now managed in UIContext
   const selectedCollections = uiState.selectedCollections;
 
+  // Local onboarding override — dismisses the screen immediately on any action
+  // (pluginState.showOnboarding is backend-driven and only clears after a token
+  // load / mark-file-engaged message; this prevents the UX stall on "Connect GitHub")
+  const [onboardingCompleted, setOnboardingCompleted] = useState(false);
+
   // Modals (local state)
   const [showExistingTokensImporter, setShowExistingTokensImporter] =
     useState(false);
@@ -160,7 +165,7 @@ function AppInner() {
     if (pluginState.downloadQueue && pluginState.downloadQueue.length > 0) {
       const fileCount = pluginState.downloadQueue.length;
       console.log(
-        `📦 Starting download for ${fileCount} file${fileCount !== 1 ? "s" : ""}`
+        `Starting download for ${fileCount} file${fileCount !== 1 ? "s" : ""}`
       );
 
       const downloadFiles = async () => {
@@ -168,7 +173,7 @@ function AppInner() {
           if (fileCount === 1) {
             // Single file - direct download
             const file = pluginState.downloadQueue[0];
-            console.log(`📄 Downloading single file: ${file.filename}`);
+            console.log(`Downloading single file: ${file.filename}`);
             const blob = new Blob([file.content], { type: "application/json" });
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
@@ -178,10 +183,10 @@ function AppInner() {
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            console.log(`✅ Downloaded: ${file.filename}`);
+            console.log(`Downloaded: ${file.filename}`);
           } else {
             // Multiple files - create zip
-            console.log(`📦 Creating zip archive with ${fileCount} files`);
+            console.log(`Creating zip archive with ${fileCount} files`);
 
             // Dynamic import for JSZip to reduce bundle size
             const { default: JSZip } = await import("jszip");
@@ -192,10 +197,10 @@ function AppInner() {
               zip.file(file.filename, file.content);
             });
 
-            console.log(`🔨 Generating zip file...`);
+            console.log(`Generating zip file...`);
             const zipBlob = await zip.generateAsync({ type: "blob" });
 
-            console.log(`💾 Triggering zip download`);
+            console.log(`Triggering zip download`);
             const url = URL.createObjectURL(zipBlob);
             const a = document.createElement("a");
             a.href = url;
@@ -205,13 +210,13 @@ function AppInner() {
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
             console.log(
-              `✅ Downloaded: token-collections.zip (${fileCount} files)`
+              `Downloaded: token-collections.zip (${fileCount} files)`
             );
           }
 
           pluginActions.clearDownloadQueue();
         } catch (error) {
-          console.error(`❌ Error creating download:`, error);
+          console.error(`Error creating download:`, error);
           pluginActions.setError("Failed to download files. Please try again.");
           pluginActions.clearDownloadQueue();
         }
@@ -330,7 +335,7 @@ function AppInner() {
     pluginActions.setProgressSteps([]);
     pluginActions.setProgressStep(0);
     pluginActions.setCurrentOperation(null);
-    pluginActions.setSuccessMessage("⚠️ Operation cancelled");
+    pluginActions.setSuccessMessage("Operation cancelled");
     setTimeout(() => pluginActions.setSuccessMessage(null), 3000);
 
     if (pluginState.currentOperation) {
@@ -393,17 +398,6 @@ function AppInner() {
           </svg>
         </span>
 
-        <span
-          style={{
-            fontWeight: "var(--font-weight-semibold)",
-            fontSize: "var(--font-size-md)",
-            letterSpacing: -0.1,
-            color: "var(--text-primary)",
-          }}
-        >
-          Token Bridge
-        </span>
-
         <span style={{ flex: 1 }} />
 
         <span
@@ -452,19 +446,36 @@ function AppInner() {
       />
 
       {/* ── Main content ── */}
-      {pluginState.showOnboarding ? (
+      {pluginState.showOnboarding && !onboardingCompleted ? (
         <OnboardingScreen
           onSetupSync={() => {
+            setOnboardingCompleted(true);
             dispatch({ type: "COMPLETE_ONBOARDING" });
             dispatch({ type: "SET_TAB", tab: "sync" });
+            parent.postMessage(
+              { pluginMessage: { type: "mark-file-engaged" } },
+              "*"
+            );
           }}
           onImportFile={() => {
+            setOnboardingCompleted(true);
             dispatch({ type: "COMPLETE_ONBOARDING" });
             handleTokenImport();
+            parent.postMessage(
+              { pluginMessage: { type: "mark-file-engaged" } },
+              "*"
+            );
           }}
-          onImportFigmaVariables={handleImportFigmaVariables}
-          onDemoTokens={handleGenerateDemoTokens}
+          onImportFigmaVariables={() => {
+            setOnboardingCompleted(true);
+            handleImportFigmaVariables();
+          }}
+          onDemoTokens={() => {
+            setOnboardingCompleted(true);
+            handleGenerateDemoTokens();
+          }}
           onSkip={() => {
+            setOnboardingCompleted(true);
             dispatch({ type: "COMPLETE_ONBOARDING" });
             parent.postMessage(
               { pluginMessage: { type: "mark-file-engaged" } },
@@ -617,14 +628,24 @@ function AppInner() {
         </>
       )}
 
-      {/* ── Modals ── */}
+      {/* ── Modals (fixed overlay within plugin iframe) ── */}
       {showExistingTokensImporter && (
-        <ExistingTokensImporter
-          onImport={() => {
-            setShowExistingTokensImporter(false);
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "var(--surface-primary)",
+            zIndex: 100,
+            overflowY: "auto",
           }}
-          onCancel={() => setShowExistingTokensImporter(false)}
-        />
+        >
+          <ExistingTokensImporter
+            onImport={() => {
+              setShowExistingTokensImporter(false);
+            }}
+            onCancel={() => setShowExistingTokensImporter(false)}
+          />
+        </div>
       )}
 
       {transformationSummary && (
