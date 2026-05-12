@@ -46,7 +46,7 @@
   },
   "color.surface.overlay": {
     "$type": "color",
-    "$value": "{color.gray.50}",
+    "$value": "{color.gray.300}",
     "$description": "Overlay surface for modals and popovers"
   },
   "color.surface.brand": {

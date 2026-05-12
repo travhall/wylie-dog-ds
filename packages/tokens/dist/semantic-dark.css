@@ -10,9 +10,9 @@
   --color-background-inverse: oklch(1 0 0);
   --color-background-brand: oklch(0.705 0.187 47.68);
   --color-background-danger: oklch(0.577 0.215 27.32);
-  --color-surface-primary: oklch(0.279 0.037 260.04);
-  --color-surface-secondary: oklch(0.372 0.039 257.3);
-  --color-surface-raised: oklch(0.372 0.039 257.3);
+  --color-surface-primary: oklch(0.208 0.04 265.75);
+  --color-surface-secondary: oklch(0.279 0.037 260.04);
+  --color-surface-raised: oklch(0.208 0.04 265.75);
   --color-surface-overlay: oklch(0.446 0.037 257.29);
   --color-surface-brand: oklch(0.282 0.087 267.94);
   --color-surface-success: oklch(0.266 0.063 152.95);
@@ -161,7 +161,7 @@
   --color-button-secondary-text: oklch(0.984 0.003 248.29);
   --color-button-secondary-border: oklch(0.446 0.037 257.29);
   --color-button-outline-background: oklch(0.208 0.04 265.75);
-  --color-button-ghost-background: oklch(0.279 0.037 260.04);
+  --color-button-ghost-background: oklch(0.208 0.04 265.75);
   --color-button-ghost-background-hover: oklch(0.279 0.037 260.04);
   --color-button-ghost-background-active: oklch(0.372 0.039 257.3);
   --color-button-ghost-text: oklch(0.984 0.003 248.29);
@@ -182,7 +182,7 @@
   --font-size-button-font-size-sm: 14px;
   --font-size-button-font-size-md: 16px;
   --font-size-button-font-size-lg: 18px;
-  --color-card-background: oklch(0.279 0.037 260.04);
+  --color-card-background: oklch(0.208 0.04 265.75);
   --color-card-border: oklch(0.446 0.037 257.29);
   --space-card-padding: 32px;
   --space-card-gap: 16px;
@@ -782,5 +782,5 @@
   --space-resizable-handle-width: 12px;
   --space-feature-grid-icon-container-size: 48px;
   --space-menubar-radio-indicator-size: 8px;
-  --space-navigation-menu-indicator-height: 6px;
+  --space-navigation-menu-indicator-height: 0px;
 }

@@ -184,7 +184,7 @@ export const color = {
     "primary": "oklch(1 0 0)",
     "secondary": "oklch(0.984 0.003 248.29)",
     "raised": "oklch(1 0 0)",
-    "overlay": "oklch(1 0 0)",
+    "overlay": "oklch(0.929 0.013 255.56)",
     "brand": "oklch(0.97 0.014 254.72)",
     "success": "oklch(0.982 0.018 156.35)",
     "warning": "oklch(0.98 0.016 74.37)",
@@ -519,7 +519,7 @@ export const spacing = {
   "handle-width": "12px",
   "icon-container-size": "48px",
   "radio-indicator-size": "8px",
-  "indicator-height": "6px"
+  "indicator-height": "0px"
 };
 
 export const shadow = {

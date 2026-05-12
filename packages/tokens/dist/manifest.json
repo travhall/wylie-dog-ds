@@ -2567,7 +2567,7 @@
           "surface",
           "overlay"
         ],
-        "value": "oklch(1 0 0)",
+        "value": "oklch(0.929 0.013 255.56)",
         "type": "color",
         "variable": "var(--color-surface-overlay)",
         "description": "Overlay surface for modals and popovers"
@@ -11060,7 +11060,7 @@
           "indicator",
           "height"
         ],
-        "value": "6px",
+        "value": "0px",
         "type": "dimension",
         "variable": "var(--navigation-menu-indicator-height)",
         "description": ""

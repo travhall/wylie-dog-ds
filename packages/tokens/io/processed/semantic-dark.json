@@ -31,17 +31,17 @@
   },
   "color.surface.primary": {
     "$type": "color",
-    "$value": "{color.gray.900}",
+    "$value": "{color.gray.950}",
     "$description": "Primary surface for cards and panels"
   },
   "color.surface.secondary": {
     "$type": "color",
-    "$value": "{color.gray.800}",
+    "$value": "{color.gray.900}",
     "$description": "Secondary surface for nested containers"
   },
   "color.surface.raised": {
     "$type": "color",
-    "$value": "{color.gray.800}",
+    "$value": "{color.gray.950}",
     "$description": "Raised surface for elevated components"
   },
   "color.surface.overlay": {

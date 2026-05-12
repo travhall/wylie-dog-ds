@@ -2629,6 +2629,6 @@
   },
   "navigation-menu.indicator.height": {
     "$type": "dimension",
-    "$value": "6px"
+    "$value": "0px"
   }
 }
