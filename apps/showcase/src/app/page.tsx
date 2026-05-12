@@ -260,7 +260,7 @@ export default function ShowcasePage() {
 
         {/* Stats strip */}
         <div className="relative border-t border-(--color-border-primary)">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-330 px-4 sm:px-6 lg:px-8">
             <dl className="grid grid-cols-2 lg:grid-cols-4">
               {[
                 {
@@ -286,12 +286,12 @@ export default function ShowcasePage() {
               ].map((stat, i) => (
                 <div
                   key={stat.label}
-                  className={`px-2 py-6 lg:py-7 ${i < 3 ? "lg:border-r border-(--color-border-primary)" : ""} ${i >= 2 ? "border-t lg:border-t-0" : ""}`}
+                  className={`px-3 py-6 lg:py-7 ${i < 3 ? "lg:border-r border-(--color-border-primary)" : ""} ${i >= 2 ? "border-t border-(--color-border-primary) lg:border-t-0" : ""}`}
                 >
                   <dt className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
                     {stat.label}
                   </dt>
-                  <dd className="mt-1 flex items-baseline gap-2">
+                  <dd className="mt-1 flex flex-wrap items-baseline gap-2">
                     <span className="font-serif text-3xl sm:text-4xl font-semibold">
                       {stat.value}
                     </span>
@@ -394,7 +394,7 @@ export default function ShowcasePage() {
                   ].map((s) => (
                     <div
                       key={s.stop}
-                      className={`aspect-[3/4] rounded${s.active ? " ring-2 ring-offset-2" : ""}`}
+                      className={`aspect-3/4 rounded${s.active ? " ring-2 ring-offset-2" : ""}`}
                       style={{
                         background: `oklch(${s.l} ${s.c} 274)`,
                         ...(s.active
@@ -696,7 +696,7 @@ export default function ShowcasePage() {
               <p className="text-sm text-(--color-text-secondary) mt-0.5">
                 Modal, sheet, popover, tooltip, hover card.
               </p>
-              <div className="mt-5 relative h-[110px]">
+              <div className="mt-5 relative h-27.5">
                 <div className="absolute inset-x-2 top-2 rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) p-3 opacity-60">
                   <div className="h-2 w-20 rounded-full bg-(--color-background-secondary)" />
                   <div className="mt-2 h-2 w-32 rounded-full bg-(--color-background-secondary)" />
@@ -880,7 +880,7 @@ export default function ShowcasePage() {
               className="group rounded-xl border border-(--color-border-primary) overflow-hidden flex flex-col hover:border-(--color-border-strong) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
-              <div className="relative aspect-[16/10] grid-bg overflow-hidden">
+              <div className="relative aspect-16/10 grid-bg overflow-hidden">
                 <div
                   className="absolute inset-0"
                   style={{
@@ -955,7 +955,7 @@ export default function ShowcasePage() {
               className="group rounded-xl border border-(--color-border-primary) overflow-hidden flex flex-col hover:border-(--color-border-strong) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
-              <div className="relative aspect-[16/10] grid-bg overflow-hidden">
+              <div className="relative aspect-16/10 grid-bg overflow-hidden">
                 <div
                   className="absolute inset-0"
                   style={{
@@ -1014,7 +1014,7 @@ export default function ShowcasePage() {
               className="group rounded-xl border border-(--color-border-primary) overflow-hidden flex flex-col hover:border-(--color-border-strong) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
-              <div className="relative aspect-[16/10] grid-bg overflow-hidden">
+              <div className="relative aspect-16/10 grid-bg overflow-hidden">
                 <div
                   className="absolute inset-0"
                   style={{

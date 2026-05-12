@@ -76,7 +76,7 @@ export default function RootLayout({
       <body
         className={`${fontVariables} font-sans min-h-screen antialiased bg-(--color-background-primary) text-(--color-text-primary)`}
       >
-        {/* ── Site Header ── */}
+        {/* ── Site Header - NEEDS TO BE REPLACED WITH packages/ui/src/compositions/site-header.tsx component / site-header.tsx needs to evolve to support this design first ── */}
         <header className="sticky top-0 z-40 border-b border-(--color-border-primary) bg-(--color-background-primary)/80 backdrop-blur-md">
           <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
             {/* Wordmark */}
@@ -142,7 +142,7 @@ export default function RootLayout({
         {/* ── Page content — full width; each page manages its own containers ── */}
         <main className="min-h-screen">{children}</main>
 
-        {/* ── Site Footer ── */}
+        {/* ── Site Footer - NEEDS TO BE REPLACED WITH packages/ui/src/compositions/site-footer.tsx component / site-footer.tsx needs to evolve to support this design first ── */}
         <footer className="border-t border-(--color-border-primary) bg-(--color-background-primary) border-default">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">

@@ -90,21 +90,35 @@
         text-rendering: optimizeLegibility;
       }
 
-      .font-serif { font-family: var(--font-serif); }
-      .font-mono { font-family: var(--font-mono); }
+      .font-serif {
+        font-family: var(--font-serif);
+      }
+      .font-mono {
+        font-family: var(--font-mono);
+      }
 
       /* ---- Signature utilities (.glass, .glass-dark, .grid-bg, .hero-gradient, .kbd) ---- */
       .glass {
-        background: color-mix(in oklch, var(--color-surface-primary) 70%, transparent);
+        background: color-mix(
+          in oklch,
+          var(--color-surface-primary) 70%,
+          transparent
+        );
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid color-mix(in oklch, var(--color-border-primary) 80%, transparent);
+        border: 1px solid
+          color-mix(in oklch, var(--color-border-primary) 80%, transparent);
       }
       .glass-dark {
-        background: color-mix(in oklch, var(--color-background-tertiary) 80%, transparent);
+        background: color-mix(
+          in oklch,
+          var(--color-background-tertiary) 80%,
+          transparent
+        );
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid color-mix(in oklch, var(--color-border-primary) 70%, transparent);
+        border: 1px solid
+          color-mix(in oklch, var(--color-border-primary) 70%, transparent);
       }
       .grid-bg {
         background-image: radial-gradient(
@@ -116,7 +130,8 @@
       .hero-gradient {
         background: radial-gradient(
           ellipse 80% 60% at 50% 0%,
-          color-mix(in oklch, var(--color-interactive-primary) 22%, transparent) 0%,
+          color-mix(in oklch, var(--color-interactive-primary) 22%, transparent)
+            0%,
           transparent 60%
         );
       }
@@ -133,43 +148,84 @@
         display: inline-flex;
         align-items: center;
       }
-      .kbd-sm { font-size: 0.6875rem; padding: 2px 5px; }
+      .kbd-sm {
+        font-size: 0.6875rem;
+        padding: 2px 5px;
+      }
 
       /* token bridge so Tailwind utilities in the markup land on tokens */
-      .bg-surface { background: var(--color-surface-primary); }
-      .bg-surface-elev { background: var(--color-surface-elevated); }
-      .bg-bg-primary { background: var(--color-background-primary); }
-      .bg-bg-secondary { background: var(--color-background-secondary); }
-      .bg-bg-tertiary { background: var(--color-background-tertiary); }
-      .text-fg { color: var(--color-text-primary); }
-      .text-fg-secondary { color: var(--color-text-secondary); }
-      .text-fg-tertiary { color: var(--color-text-tertiary); }
-      .text-interactive { color: var(--color-interactive-primary); }
-      .border-default { border-color: var(--color-border-primary); }
-      .border-secondary { border-color: var(--color-border-secondary); }
-      .border-strong { border-color: var(--color-border-strong); }
-      .ring-interactive { --tw-ring-color: var(--color-interactive-primary); }
+      .bg-surface {
+        background: var(--color-surface-primary);
+      }
+      .bg-surface-elev {
+        background: var(--color-surface-elevated);
+      }
+      .bg-bg-primary {
+        background: var(--color-background-primary);
+      }
+      .bg-bg-secondary {
+        background: var(--color-background-secondary);
+      }
+      .bg-bg-tertiary {
+        background: var(--color-background-tertiary);
+      }
+      .text-fg {
+        color: var(--color-text-primary);
+      }
+      .text-fg-secondary {
+        color: var(--color-text-secondary);
+      }
+      .text-fg-tertiary {
+        color: var(--color-text-tertiary);
+      }
+      .text-interactive {
+        color: var(--color-interactive-primary);
+      }
+      .border-default {
+        border-color: var(--color-border-primary);
+      }
+      .border-secondary {
+        border-color: var(--color-border-secondary);
+      }
+      .border-strong {
+        border-color: var(--color-border-strong);
+      }
+      .ring-interactive {
+        --tw-ring-color: var(--color-interactive-primary);
+      }
 
       /* button surfaces — token-driven, not hex */
       .btn-primary {
         background: var(--color-interactive-primary);
         color: var(--color-text-inverse);
       }
-      .btn-primary:hover { background: var(--color-interactive-primary-hover); }
+      .btn-primary:hover {
+        background: var(--color-interactive-primary-hover);
+      }
       .btn-outline {
         background: transparent;
         color: var(--color-text-primary);
         border: 1px solid var(--color-border-strong);
       }
-      .btn-outline:hover { background: var(--color-background-secondary); }
-      .btn-ghost { background: transparent; color: var(--color-text-secondary); }
+      .btn-outline:hover {
+        background: var(--color-background-secondary);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--color-text-secondary);
+      }
       .btn-ghost:hover {
         background: var(--color-background-secondary);
         color: var(--color-text-primary);
       }
 
       /* card hover for interactive cards */
-      .card-interactive { transition: border-color 160ms ease, transform 160ms ease, background 160ms ease; }
+      .card-interactive {
+        transition:
+          border-color 160ms ease,
+          transform 160ms ease,
+          background 160ms ease;
+      }
       .card-interactive:hover {
         border-color: var(--color-border-strong);
         background: var(--color-surface-elevated);
@@ -177,12 +233,19 @@
 
       /* selection */
       ::selection {
-        background: color-mix(in oklch, var(--color-interactive-primary) 30%, transparent);
+        background: color-mix(
+          in oklch,
+          var(--color-interactive-primary) 30%,
+          transparent
+        );
         color: var(--color-text-primary);
       }
 
       /* scrollbar — quiet */
-      * { scrollbar-width: thin; scrollbar-color: var(--color-border-strong) transparent; }
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-border-strong) transparent;
+      }
     </style>
   </head>
 
@@ -190,49 +253,140 @@
     <!-- =====================================================================
          <SiteHeader>
          ===================================================================== -->
-    <header class="sticky top-0 z-40 border-b border-default bg-bg-primary/80 backdrop-blur-md">
-      <div class="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+    <header
+      class="sticky top-0 z-40 border-b border-default bg-bg-primary/80 backdrop-blur-md"
+    >
+      <div
+        class="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8"
+      >
         <!-- Wordmark -->
         <a href="/" class="flex items-center gap-2 shrink-0">
-          <span class="grid h-7 w-7 place-items-center rounded-md" style="background: var(--color-interactive-primary);">
+          <span
+            class="grid h-7 w-7 place-items-center rounded-md"
+            style="background: var(--color-interactive-primary)"
+          >
             <!-- logo glyph: dog tag -->
-            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--color-text-inverse);">
-              <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/>
-              <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+            <svg
+              viewBox="0 0 24 24"
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              style="color: var(--color-text-inverse)"
+            >
+              <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
+              <circle cx="12" cy="11" r="1.5" fill="currentColor" />
             </svg>
           </span>
-          <span class="font-serif text-[1.0625rem] font-semibold tracking-tight">Wylie Dog</span>
-          <span class="hidden sm:inline font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">design system</span>
+          <span class="font-serif text-[1.0625rem] font-semibold tracking-tight"
+            >Wylie Dog</span
+          >
+          <span
+            class="hidden sm:inline font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+            >design system</span
+          >
         </a>
 
         <!-- {/* <NavigationMenu> */} -->
         <nav class="hidden md:flex items-center gap-1">
-          <a href="Homepage.html" class="rounded-md px-3 py-1.5 text-sm font-medium" style="background: var(--color-background-secondary);">Overview</a>
-          <a href="Architecture.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Architecture</a>
-          <a href="Tokens.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Tokens</a>
-          <a href="Components.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Components</a>
-          <a href="Patterns.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Patterns</a>
-          <a href="Token-Bridge.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Token Bridge</a>
+          <a
+            href="Homepage.html"
+            class="rounded-md px-3 py-1.5 text-sm font-medium"
+            style="background: var(--color-background-secondary)"
+            >Overview</a
+          >
+          <a
+            href="Architecture.html"
+            class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg"
+            >Architecture</a
+          >
+          <a
+            href="Tokens.html"
+            class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg"
+            >Tokens</a
+          >
+          <a
+            href="Components.html"
+            class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg"
+            >Components</a
+          >
+          <a
+            href="Patterns.html"
+            class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg"
+            >Patterns</a
+          >
+          <a
+            href="Token-Bridge.html"
+            class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg"
+            >Token Bridge</a
+          >
         </nav>
 
         <div class="ml-auto flex items-center gap-2">
           <!-- {/* <Button variant="ghost" size="sm" onClick={openCommand}> */} -->
-          <button class="hidden sm:flex h-8 items-center gap-2 rounded-md border border-default bg-bg-secondary px-2.5 text-sm text-fg-tertiary hover:text-fg-secondary">
-            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <button
+            class="hidden sm:flex h-8 items-center gap-2 rounded-md border border-default bg-bg-secondary px-2.5 text-sm text-fg-tertiary hover:text-fg-secondary"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="h-3.5 w-3.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
             <span>Search</span>
             <span class="kbd kbd-sm ml-6">⌘K</span>
           </button>
 
           <!-- {/* <Button variant="ghost" size="icon" aria-label="Toggle theme"> */} -->
-          <button id="theme-toggle" aria-label="Toggle theme" class="grid h-8 w-8 place-items-center rounded-md text-fg-secondary hover:text-fg btn-ghost">
-            <svg id="icon-sun" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-            <svg id="icon-moon" viewBox="0 0 24 24" class="hidden h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <button
+            id="theme-toggle"
+            aria-label="Toggle theme"
+            class="grid h-8 w-8 place-items-center rounded-md text-fg-secondary hover:text-fg btn-ghost"
+          >
+            <svg
+              id="icon-sun"
+              viewBox="0 0 24 24"
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              />
+            </svg>
+            <svg
+              id="icon-moon"
+              viewBox="0 0 24 24"
+              class="hidden h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
           </button>
 
           <!-- {/* <Button variant="outline" size="sm" asChild><a href="https://storybook..." /></Button> */} -->
-          <a href="https://storybook.wyliedog.dev" class="hidden sm:inline-flex h-8 items-center gap-1.5 rounded-md btn-outline px-3 text-sm font-medium">
+          <a
+            href="https://storybook.wyliedog.dev"
+            class="hidden sm:inline-flex h-8 items-center gap-1.5 rounded-md btn-outline px-3 text-sm font-medium"
+          >
             Storybook
-            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            <svg
+              viewBox="0 0 24 24"
+              class="h-3.5 w-3.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M7 17 17 7M9 7h8v8" />
+            </svg>
           </a>
         </div>
       </div>
@@ -247,36 +401,69 @@
       <div class="absolute inset-0 grid-bg opacity-60"></div>
       <div class="absolute inset-0 hero-gradient"></div>
 
-      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
+      <div
+        class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32"
+      >
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <!-- Left: messaging -->
           <div class="lg:col-span-7">
             <!-- {/* <Badge variant="outline" size="sm"> */} -->
-            <div class="inline-flex items-center gap-2 rounded-full border border-default bg-surface/60 px-3 py-1">
-              <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
-              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-secondary">v1.4.0 · stable</span>
+            <div
+              class="inline-flex items-center gap-2 rounded-full border border-default bg-surface/60 px-3 py-1"
+            >
+              <span
+                class="h-1.5 w-1.5 rounded-full"
+                style="background: var(--color-success)"
+              ></span>
+              <span
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-secondary"
+                >v1.4.0 · stable</span
+              >
               <span class="text-fg-tertiary">·</span>
-              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">react 19 · tailwind 4</span>
+              <span
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+                >react 19 · tailwind 4</span
+              >
             </div>
 
-            <h1 class="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98]">
-              One design system <span class="text-interactive">for everything</span> we ship.
+            <h1
+              class="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98]"
+            >
+              One design system
+              <span class="text-interactive">for everything</span> we ship.
             </h1>
 
-            <p class="mt-6 max-w-xl text-lg sm:text-xl text-fg-secondary text-balance">
-              A typed React component library, an OKLCH token system, and a pattern catalog &mdash;
-              shared across every surface our team ships.
+            <p
+              class="mt-6 max-w-xl text-lg sm:text-xl text-fg-secondary text-balance"
+            >
+              A typed React component library, an OKLCH token system, and a
+              pattern catalog &mdash; shared across every surface our team
+              ships.
             </p>
 
             <!-- CTAs -->
             <div class="mt-8 flex flex-col sm:flex-row gap-3">
               <!-- {/* <Button size="lg" asChild><Link href="/components" /></Button> */} -->
-              <a href="/components" class="inline-flex h-11 items-center justify-center gap-2 rounded-md btn-primary px-5 text-sm font-semibold">
+              <a
+                href="/components"
+                class="inline-flex h-11 items-center justify-center gap-2 rounded-md btn-primary px-5 text-sm font-semibold"
+              >
                 Browse components
-                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
               </a>
               <!-- {/* <Button size="lg" variant="outline" asChild><Link href="/tokens" /></Button> */} -->
-              <a href="/tokens" class="inline-flex h-11 items-center justify-center gap-2 rounded-md btn-outline px-5 text-sm font-semibold">
+              <a
+                href="/tokens"
+                class="inline-flex h-11 items-center justify-center gap-2 rounded-md btn-outline px-5 text-sm font-semibold"
+              >
                 Explore tokens
               </a>
             </div>
@@ -288,22 +475,54 @@
           <div class="lg:col-span-5">
             <div class="relative">
               <!-- floating tag -->
-              <div class="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary">
-                <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+              <div
+                class="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-3 w-3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="3" />
+                  <path
+                    d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                  />
+                </svg>
                 Live components
               </div>
 
-              <div class="glass rounded-2xl p-5 sm:p-6 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)]">
+              <div
+                class="glass rounded-2xl p-5 sm:p-6 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)]"
+              >
                 <!-- {/* <Card><CardHeader>...</CardHeader><CardContent>...</CardContent></Card> */} -->
                 <div class="rounded-lg border border-default bg-surface p-5">
                   <div class="flex items-start justify-between">
                     <div>
-                      <p class="text-xs font-medium text-fg-tertiary">Project</p>
-                      <h3 class="mt-1 text-base font-semibold">Migration to v1.4</h3>
+                      <p class="text-xs font-medium text-fg-tertiary">
+                        Project
+                      </p>
+                      <h3 class="mt-1 text-base font-semibold">
+                        Migration to v1.4
+                      </h3>
                     </div>
                     <!-- {/* <Badge variant="success" size="sm"> */} -->
-                    <span class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">
-                      <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+                    <span
+                      class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
+                      style="
+                        background: color-mix(
+                          in oklch,
+                          var(--color-success) 18%,
+                          transparent
+                        );
+                        color: var(--color-success);
+                      "
+                    >
+                      <span
+                        class="h-1.5 w-1.5 rounded-full"
+                        style="background: var(--color-success)"
+                      ></span>
                       On track
                     </span>
                   </div>
@@ -311,26 +530,79 @@
                   <!-- {/* <Progress value={68} /> */} -->
                   <div class="mt-4">
                     <div class="flex items-center justify-between text-xs">
-                      <span class="text-fg-secondary">68 of 100 components migrated</span>
+                      <span class="text-fg-secondary"
+                        >68 of 100 components migrated</span
+                      >
                       <span class="font-mono text-fg-tertiary">68%</span>
                     </div>
-                    <div class="mt-2 h-1.5 w-full overflow-hidden rounded-full" style="background: var(--color-background-tertiary);">
-                      <div class="h-full rounded-full" style="width: 68%; background: var(--color-interactive-primary);"></div>
+                    <div
+                      class="mt-2 h-1.5 w-full overflow-hidden rounded-full"
+                      style="background: var(--color-background-tertiary)"
+                    >
+                      <div
+                        class="h-full rounded-full"
+                        style="
+                          width: 68%;
+                          background: var(--color-interactive-primary);
+                        "
+                      ></div>
                     </div>
                   </div>
 
                   <!-- {/* <Avatar /> stack */} -->
                   <div class="mt-5 flex items-center justify-between">
                     <div class="flex -space-x-2">
-                      <span class="grid h-7 w-7 place-items-center rounded-full border-2 text-[10px] font-semibold" style="border-color: var(--color-surface-primary); background: oklch(78% 0.13 35); color: oklch(20% 0.05 35);">EM</span>
-                      <span class="grid h-7 w-7 place-items-center rounded-full border-2 text-[10px] font-semibold" style="border-color: var(--color-surface-primary); background: oklch(78% 0.13 155); color: oklch(20% 0.05 155);">JR</span>
-                      <span class="grid h-7 w-7 place-items-center rounded-full border-2 text-[10px] font-semibold" style="border-color: var(--color-surface-primary); background: oklch(78% 0.13 274); color: oklch(20% 0.05 274);">AK</span>
-                      <span class="grid h-7 w-7 place-items-center rounded-full border-2 text-[10px] font-semibold" style="border-color: var(--color-surface-primary); background: var(--color-background-tertiary); color: var(--color-text-secondary);">+4</span>
+                      <span
+                        class="grid h-7 w-7 place-items-center rounded-full border-2 text-[10px] font-semibold"
+                        style="
+                          border-color: var(--color-surface-primary);
+                          background: oklch(78% 0.13 35);
+                          color: oklch(20% 0.05 35);
+                        "
+                        >EM</span
+                      >
+                      <span
+                        class="grid h-7 w-7 place-items-center rounded-full border-2 text-[10px] font-semibold"
+                        style="
+                          border-color: var(--color-surface-primary);
+                          background: oklch(78% 0.13 155);
+                          color: oklch(20% 0.05 155);
+                        "
+                        >JR</span
+                      >
+                      <span
+                        class="grid h-7 w-7 place-items-center rounded-full border-2 text-[10px] font-semibold"
+                        style="
+                          border-color: var(--color-surface-primary);
+                          background: oklch(78% 0.13 274);
+                          color: oklch(20% 0.05 274);
+                        "
+                        >AK</span
+                      >
+                      <span
+                        class="grid h-7 w-7 place-items-center rounded-full border-2 text-[10px] font-semibold"
+                        style="
+                          border-color: var(--color-surface-primary);
+                          background: var(--color-background-tertiary);
+                          color: var(--color-text-secondary);
+                        "
+                        >+4</span
+                      >
                     </div>
                     <!-- {/* <Button variant="ghost" size="sm"> */} -->
-                    <button class="inline-flex h-7 items-center gap-1 rounded-md btn-ghost px-2 text-xs font-medium">
+                    <button
+                      class="inline-flex h-7 items-center gap-1 rounded-md btn-ghost px-2 text-xs font-medium"
+                    >
                       View team
-                      <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3 w-3"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
                     </button>
                   </div>
                 </div>
@@ -342,11 +614,19 @@
                     <div class="flex items-center justify-between">
                       <div>
                         <p class="text-xs font-semibold">Auto-deploy</p>
-                        <p class="text-[11px] text-fg-tertiary">on merge to main</p>
+                        <p class="text-[11px] text-fg-tertiary">
+                          on merge to main
+                        </p>
                       </div>
                       <!-- {/* <Switch defaultChecked /> */} -->
-                      <span class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full" style="background: var(--color-interactive-primary);">
-                        <span class="inline-block h-4 w-4 translate-x-4 rounded-full transition" style="background: var(--color-text-inverse);"></span>
+                      <span
+                        class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full"
+                        style="background: var(--color-interactive-primary)"
+                      >
+                        <span
+                          class="inline-block h-4 w-4 translate-x-4 rounded-full transition"
+                          style="background: var(--color-text-inverse)"
+                        ></span>
                       </span>
                     </div>
                   </div>
@@ -354,16 +634,28 @@
                   <div class="rounded-lg border border-default bg-surface p-3">
                     <p class="text-xs font-semibold">Theme</p>
                     <!-- {/* <Select> */} -->
-                    <div class="mt-1.5 flex h-7 items-center justify-between rounded-md border border-default bg-bg-secondary px-2 text-xs">
+                    <div
+                      class="mt-1.5 flex h-7 items-center justify-between rounded-md border border-default bg-bg-secondary px-2 text-xs"
+                    >
                       <span>System</span>
-                      <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3 w-3 text-fg-tertiary"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
                     </div>
                   </div>
                 </div>
               </div>
 
               <!-- corner annotations -->
-              <div class="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary">
+              <div
+                class="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary"
+              >
                 <span>5 components rendered</span>
               </div>
             </div>
@@ -376,31 +668,63 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <dl class="grid grid-cols-2 lg:grid-cols-4">
             <div class="px-2 py-6 lg:py-7 lg:border-r border-default">
-              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Components</dt>
+              <dt
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Components
+              </dt>
               <dd class="mt-1 flex items-baseline gap-2">
-                <span class="font-serif text-3xl sm:text-4xl font-semibold">42</span>
-                <span class="text-xs text-fg-tertiary">across 6 categories</span>
+                <span class="font-serif text-3xl sm:text-4xl font-semibold"
+                  >42</span
+                >
+                <span class="text-xs text-fg-tertiary"
+                  >across 6 categories</span
+                >
               </dd>
             </div>
             <div class="px-2 py-6 lg:py-7 lg:border-r border-default lg:pl-8">
-              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Tokens</dt>
+              <dt
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Tokens
+              </dt>
               <dd class="mt-1 flex items-baseline gap-2">
-                <span class="font-serif text-3xl sm:text-4xl font-semibold">340</span>
-                <span class="text-xs text-fg-tertiary">primitive · semantic · component</span>
+                <span class="font-serif text-3xl sm:text-4xl font-semibold"
+                  >340</span
+                >
+                <span class="text-xs text-fg-tertiary"
+                  >primitive · semantic · component</span
+                >
               </dd>
             </div>
-            <div class="px-2 py-6 lg:py-7 lg:border-r border-default lg:pl-8 border-t lg:border-t-0">
-              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Accessibility</dt>
+            <div
+              class="px-2 py-6 lg:py-7 lg:border-r border-default lg:pl-8 border-t lg:border-t-0"
+            >
+              <dt
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Accessibility
+              </dt>
               <dd class="mt-1 flex items-baseline gap-2">
-                <span class="font-serif text-3xl sm:text-4xl font-semibold">WCAG 2.2</span>
+                <span class="font-serif text-3xl sm:text-4xl font-semibold"
+                  >WCAG 2.2</span
+                >
                 <span class="text-xs text-fg-tertiary">AA verified</span>
               </dd>
             </div>
             <div class="px-2 py-6 lg:py-7 lg:pl-8 border-t lg:border-t-0">
-              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Patterns</dt>
+              <dt
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Patterns
+              </dt>
               <dd class="mt-1 flex items-baseline gap-2">
-                <span class="font-serif text-3xl sm:text-4xl font-semibold">15</span>
-                <span class="text-xs text-fg-tertiary">reference compositions</span>
+                <span class="font-serif text-3xl sm:text-4xl font-semibold"
+                  >15</span
+                >
+                <span class="text-xs text-fg-tertiary"
+                  >reference compositions</span
+                >
               </dd>
             </div>
           </dl>
@@ -416,25 +740,59 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <div class="grid lg:grid-cols-12 gap-10">
           <div class="lg:col-span-4">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">01 · Tokens</span>
-            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
+            <span
+              class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >01 · Tokens</span
+            >
+            <h2
+              class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight"
+            >
               An OKLCH-native token system.
             </h2>
             <p class="mt-4 text-fg-secondary text-balance">
-              Three tiers &mdash; primitives, semantic, and component &mdash; so a single source of truth
-              flows from <span class="font-mono text-xs">--color-blue-500</span> to
-              <span class="font-mono text-xs">--color-button-primary-background</span>.
-              Light and dark are mirror twins of the same contract.
+              Three tiers &mdash; primitives, semantic, and component &mdash; so
+              a single source of truth flows from
+              <span class="font-mono text-xs">--color-blue-500</span> to
+              <span class="font-mono text-xs"
+                >--color-button-primary-background</span
+              >. Light and dark are mirror twins of the same contract.
             </p>
             <div class="mt-6 flex flex-wrap gap-2">
-              <a href="/tokens/colors" class="inline-flex h-8 items-center gap-1 rounded-md btn-outline px-3 text-xs font-medium">Colors</a>
-              <a href="/tokens/spacing" class="inline-flex h-8 items-center gap-1 rounded-md btn-outline px-3 text-xs font-medium">Spacing</a>
-              <a href="/tokens/typography" class="inline-flex h-8 items-center gap-1 rounded-md btn-outline px-3 text-xs font-medium">Typography</a>
-              <a href="/tokens/borders" class="inline-flex h-8 items-center gap-1 rounded-md btn-outline px-3 text-xs font-medium">Borders</a>
+              <a
+                href="/tokens/colors"
+                class="inline-flex h-8 items-center gap-1 rounded-md btn-outline px-3 text-xs font-medium"
+                >Colors</a
+              >
+              <a
+                href="/tokens/spacing"
+                class="inline-flex h-8 items-center gap-1 rounded-md btn-outline px-3 text-xs font-medium"
+                >Spacing</a
+              >
+              <a
+                href="/tokens/typography"
+                class="inline-flex h-8 items-center gap-1 rounded-md btn-outline px-3 text-xs font-medium"
+                >Typography</a
+              >
+              <a
+                href="/tokens/borders"
+                class="inline-flex h-8 items-center gap-1 rounded-md btn-outline px-3 text-xs font-medium"
+                >Borders</a
+              >
             </div>
-            <a href="/tokens" class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-interactive">
+            <a
+              href="/tokens"
+              class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-interactive"
+            >
               Open the token explorer
-              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <svg
+                viewBox="0 0 24 24"
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
             </a>
           </div>
 
@@ -442,75 +800,183 @@
             <!-- color ramp -->
             <div class="rounded-lg border border-default bg-surface p-5">
               <div class="flex items-center justify-between mb-3">
-                <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">interactive · primary</p>
-                <p class="font-mono text-[11px] text-fg-tertiary">oklch(L C 274)</p>
+                <p
+                  class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+                >
+                  interactive · primary
+                </p>
+                <p class="font-mono text-[11px] text-fg-tertiary">
+                  oklch(L C 274)
+                </p>
               </div>
               <div class="grid grid-cols-11 gap-1">
                 <!-- swatches: 50..950 -->
-                <div class="aspect-[3/4] rounded" style="background: oklch(98% 0.02 274);"></div>
-                <div class="aspect-[3/4] rounded" style="background: oklch(94% 0.05 274);"></div>
-                <div class="aspect-[3/4] rounded" style="background: oklch(88% 0.09 274);"></div>
-                <div class="aspect-[3/4] rounded" style="background: oklch(80% 0.13 274);"></div>
-                <div class="aspect-[3/4] rounded" style="background: oklch(70% 0.16 274);"></div>
-                <div class="aspect-[3/4] rounded ring-2 ring-offset-2" style="background: oklch(54% 0.18 274); --tw-ring-color: var(--color-interactive-primary); --tw-ring-offset-color: var(--color-surface-primary);"></div>
-                <div class="aspect-[3/4] rounded" style="background: oklch(46% 0.18 274);"></div>
-                <div class="aspect-[3/4] rounded" style="background: oklch(38% 0.16 274);"></div>
-                <div class="aspect-[3/4] rounded" style="background: oklch(30% 0.13 274);"></div>
-                <div class="aspect-[3/4] rounded" style="background: oklch(22% 0.09 274);"></div>
-                <div class="aspect-[3/4] rounded" style="background: oklch(15% 0.05 274);"></div>
+                <div
+                  class="aspect-3/4 rounded"
+                  style="background: oklch(98% 0.02 274)"
+                ></div>
+                <div
+                  class="aspect-3/4 rounded"
+                  style="background: oklch(94% 0.05 274)"
+                ></div>
+                <div
+                  class="aspect-3/4 rounded"
+                  style="background: oklch(88% 0.09 274)"
+                ></div>
+                <div
+                  class="aspect-3/4 rounded"
+                  style="background: oklch(80% 0.13 274)"
+                ></div>
+                <div
+                  class="aspect-3/4 rounded"
+                  style="background: oklch(70% 0.16 274)"
+                ></div>
+                <div
+                  class="aspect-3/4 rounded ring-2 ring-offset-2"
+                  style="
+                    background: oklch(54% 0.18 274);
+                    --tw-ring-color: var(--color-interactive-primary);
+                    --tw-ring-offset-color: var(--color-surface-primary);
+                  "
+                ></div>
+                <div
+                  class="aspect-3/4 rounded"
+                  style="background: oklch(46% 0.18 274)"
+                ></div>
+                <div
+                  class="aspect-3/4 rounded"
+                  style="background: oklch(38% 0.16 274)"
+                ></div>
+                <div
+                  class="aspect-3/4 rounded"
+                  style="background: oklch(30% 0.13 274)"
+                ></div>
+                <div
+                  class="aspect-3/4 rounded"
+                  style="background: oklch(22% 0.09 274)"
+                ></div>
+                <div
+                  class="aspect-3/4 rounded"
+                  style="background: oklch(15% 0.05 274)"
+                ></div>
               </div>
-              <div class="mt-2 grid grid-cols-11 gap-1 font-mono text-[9px] text-fg-tertiary text-center">
-                <span>50</span><span>100</span><span>200</span><span>300</span><span>400</span><span class="text-fg">500</span><span>600</span><span>700</span><span>800</span><span>900</span><span>950</span>
+              <div
+                class="mt-2 grid grid-cols-11 gap-1 font-mono text-[9px] text-fg-tertiary text-center"
+              >
+                <span>50</span><span>100</span><span>200</span><span>300</span
+                ><span>400</span><span class="text-fg">500</span><span>600</span
+                ><span>700</span><span>800</span><span>900</span
+                ><span>950</span>
               </div>
             </div>
 
             <div class="grid sm:grid-cols-2 gap-3">
               <!-- type scale -->
               <div class="rounded-lg border border-default bg-surface p-5">
-                <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">type scale</p>
+                <p
+                  class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+                >
+                  type scale
+                </p>
                 <div class="mt-3 space-y-2">
                   <div class="flex items-baseline justify-between gap-3">
-                    <span class="font-serif text-3xl font-semibold leading-none">Display</span>
-                    <span class="font-mono text-[10px] text-fg-tertiary">--font-size-3xl · 30/36</span>
+                    <span class="font-serif text-3xl font-semibold leading-none"
+                      >Display</span
+                    >
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >--font-size-3xl · 30/36</span
+                    >
                   </div>
                   <div class="flex items-baseline justify-between gap-3">
-                    <span class="text-xl font-semibold leading-none">Heading</span>
-                    <span class="font-mono text-[10px] text-fg-tertiary">--font-size-xl · 20/28</span>
+                    <span class="text-xl font-semibold leading-none"
+                      >Heading</span
+                    >
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >--font-size-xl · 20/28</span
+                    >
                   </div>
                   <div class="flex items-baseline justify-between gap-3">
                     <span class="text-base leading-none">Body</span>
-                    <span class="font-mono text-[10px] text-fg-tertiary">--font-size-base · 16/24</span>
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >--font-size-base · 16/24</span
+                    >
                   </div>
                   <div class="flex items-baseline justify-between gap-3">
                     <span class="font-mono text-xs leading-none">code()</span>
-                    <span class="font-mono text-[10px] text-fg-tertiary">--font-size-xs · mono</span>
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >--font-size-xs · mono</span
+                    >
                   </div>
                 </div>
               </div>
 
               <!-- spacing -->
               <div class="rounded-lg border border-default bg-surface p-5">
-                <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">spacing</p>
+                <p
+                  class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+                >
+                  spacing
+                </p>
                 <div class="mt-3 space-y-2">
                   <div class="flex items-center gap-3">
-                    <span class="font-mono text-[10px] text-fg-tertiary w-10">0.5</span>
-                    <div class="h-2 rounded-sm" style="width: 4px; background: var(--color-interactive-primary);"></div>
-                    <span class="font-mono text-[10px] text-fg-tertiary">4px</span>
+                    <span class="font-mono text-[10px] text-fg-tertiary w-10"
+                      >0.5</span
+                    >
+                    <div
+                      class="h-2 rounded-sm"
+                      style="
+                        width: 4px;
+                        background: var(--color-interactive-primary);
+                      "
+                    ></div>
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >4px</span
+                    >
                   </div>
                   <div class="flex items-center gap-3">
-                    <span class="font-mono text-[10px] text-fg-tertiary w-10">2</span>
-                    <div class="h-2 rounded-sm" style="width: 16px; background: var(--color-interactive-primary);"></div>
-                    <span class="font-mono text-[10px] text-fg-tertiary">16px</span>
+                    <span class="font-mono text-[10px] text-fg-tertiary w-10"
+                      >2</span
+                    >
+                    <div
+                      class="h-2 rounded-sm"
+                      style="
+                        width: 16px;
+                        background: var(--color-interactive-primary);
+                      "
+                    ></div>
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >16px</span
+                    >
                   </div>
                   <div class="flex items-center gap-3">
-                    <span class="font-mono text-[10px] text-fg-tertiary w-10">4</span>
-                    <div class="h-2 rounded-sm" style="width: 32px; background: var(--color-interactive-primary);"></div>
-                    <span class="font-mono text-[10px] text-fg-tertiary">32px</span>
+                    <span class="font-mono text-[10px] text-fg-tertiary w-10"
+                      >4</span
+                    >
+                    <div
+                      class="h-2 rounded-sm"
+                      style="
+                        width: 32px;
+                        background: var(--color-interactive-primary);
+                      "
+                    ></div>
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >32px</span
+                    >
                   </div>
                   <div class="flex items-center gap-3">
-                    <span class="font-mono text-[10px] text-fg-tertiary w-10">8</span>
-                    <div class="h-2 rounded-sm" style="width: 64px; background: var(--color-interactive-primary);"></div>
-                    <span class="font-mono text-[10px] text-fg-tertiary">64px</span>
+                    <span class="font-mono text-[10px] text-fg-tertiary w-10"
+                      >8</span
+                    >
+                    <div
+                      class="h-2 rounded-sm"
+                      style="
+                        width: 64px;
+                        background: var(--color-interactive-primary);
+                      "
+                    ></div>
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >64px</span
+                    >
                   </div>
                 </div>
               </div>
@@ -526,22 +992,41 @@
          ===================================================================== -->
     <section class="border-b border-default bg-bg-secondary">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
-        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+        <div
+          class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10"
+        >
           <div class="max-w-xl">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">02 · Components</span>
-            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
+            <span
+              class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >02 · Components</span
+            >
+            <h2
+              class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight"
+            >
               42 typed React components.
             </h2>
             <p class="mt-3 text-fg-secondary">
               Headless primitives, fully composable, accessible by default.
-              Every component ships with TypeScript types, Storybook stories, and a Figma counterpart.
+              Every component ships with TypeScript types, Storybook stories,
+              and a Figma counterpart.
             </p>
           </div>
           <div class="flex items-center gap-2">
             <!-- {/* <Button variant="outline" asChild><Link href="/components" /></Button> */} -->
-            <a href="Components.html" class="inline-flex h-9 items-center gap-1.5 rounded-md btn-outline px-3.5 text-sm font-medium">
+            <a
+              href="Components.html"
+              class="inline-flex h-9 items-center gap-1.5 rounded-md btn-outline px-3.5 text-sm font-medium"
+            >
               All components
-              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <svg
+                viewBox="0 0 24 24"
+                class="h-3.5 w-3.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
             </a>
           </div>
         </div>
@@ -549,49 +1034,111 @@
         <!-- Component preview grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           <!-- Buttons -->
-          <a href="/components/foundations" class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col">
+          <a
+            href="/components/foundations"
+            class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col"
+          >
             <div class="flex items-center justify-between">
-              <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Foundations</p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Foundations
+              </p>
               <span class="font-mono text-[11px] text-fg-tertiary">12</span>
             </div>
             <h3 class="mt-2 font-semibold">Button</h3>
-            <p class="text-sm text-fg-secondary mt-0.5">Primary, secondary, outline, ghost, destructive.</p>
+            <p class="text-sm text-fg-secondary mt-0.5">
+              Primary, secondary, outline, ghost, destructive.
+            </p>
             <!-- preview -->
             <div class="mt-5 flex flex-wrap gap-2">
-              <span class="inline-flex h-8 items-center rounded-md btn-primary px-3 text-xs font-semibold">Save changes</span>
-              <span class="inline-flex h-8 items-center rounded-md btn-outline px-3 text-xs font-semibold">Cancel</span>
-              <span class="inline-flex h-8 items-center rounded-md btn-ghost px-3 text-xs font-semibold">Skip</span>
+              <span
+                class="inline-flex h-8 items-center rounded-md btn-primary px-3 text-xs font-semibold"
+                >Save changes</span
+              >
+              <span
+                class="inline-flex h-8 items-center rounded-md btn-outline px-3 text-xs font-semibold"
+                >Cancel</span
+              >
+              <span
+                class="inline-flex h-8 items-center rounded-md btn-ghost px-3 text-xs font-semibold"
+                >Skip</span
+              >
             </div>
           </a>
 
           <!-- Inputs -->
-          <a href="/components/forms" class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col">
+          <a
+            href="/components/forms"
+            class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col"
+          >
             <div class="flex items-center justify-between">
-              <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Forms</p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Forms
+              </p>
               <span class="font-mono text-[11px] text-fg-tertiary">14</span>
             </div>
             <h3 class="mt-2 font-semibold">Input</h3>
-            <p class="text-sm text-fg-secondary mt-0.5">Text, email, password, search, file.</p>
+            <p class="text-sm text-fg-secondary mt-0.5">
+              Text, email, password, search, file.
+            </p>
             <div class="mt-5 space-y-2">
-              <label class="block text-[11px] font-medium text-fg-secondary">Email</label>
-              <div class="flex h-9 items-center gap-2 rounded-md border border-default bg-bg-primary px-3">
-                <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-                <span class="text-xs text-fg"><span class="__cf_email__" data-cfemail="dcb9b0b9b2bd9caba5b0b5b9b8b3bbf2b8b9aa">[email&#160;protected]</span></span>
+              <label class="block text-[11px] font-medium text-fg-secondary"
+                >Email</label
+              >
+              <div
+                class="flex h-9 items-center gap-2 rounded-md border border-default bg-bg-primary px-3"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-3.5 w-3.5 text-fg-tertiary"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m3 7 9 6 9-6" />
+                </svg>
+                <span class="text-xs text-fg"
+                  ><span
+                    class="__cf_email__"
+                    data-cfemail="dcb9b0b9b2bd9caba5b0b5b9b8b3bbf2b8b9aa"
+                    >[email&#160;protected]</span
+                  ></span
+                >
               </div>
             </div>
           </a>
 
           <!-- Tabs -->
-          <a href="/components/navigation" class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col">
+          <a
+            href="/components/navigation"
+            class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col"
+          >
             <div class="flex items-center justify-between">
-              <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Navigation</p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Navigation
+              </p>
               <span class="font-mono text-[11px] text-fg-tertiary">9</span>
             </div>
             <h3 class="mt-2 font-semibold">Tabs</h3>
-            <p class="text-sm text-fg-secondary mt-0.5">Underline, contained, vertical orientations.</p>
+            <p class="text-sm text-fg-secondary mt-0.5">
+              Underline, contained, vertical orientations.
+            </p>
             <div class="mt-5">
               <div class="flex border-b border-default text-xs">
-                <span class="-mb-px border-b-2 px-3 py-2 font-medium" style="border-color: var(--color-interactive-primary); color: var(--color-text-primary);">Overview</span>
+                <span
+                  class="-mb-px border-b-2 px-3 py-2 font-medium"
+                  style="
+                    border-color: var(--color-interactive-primary);
+                    color: var(--color-text-primary);
+                  "
+                  >Overview</span
+                >
                 <span class="px-3 py-2 text-fg-tertiary">Activity</span>
                 <span class="px-3 py-2 text-fg-tertiary">Members</span>
               </div>
@@ -599,68 +1146,161 @@
           </a>
 
           <!-- Dialog -->
-          <a href="/components/overlays" class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col">
+          <a
+            href="/components/overlays"
+            class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col"
+          >
             <div class="flex items-center justify-between">
-              <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Overlays</p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Overlays
+              </p>
               <span class="font-mono text-[11px] text-fg-tertiary">8</span>
             </div>
             <h3 class="mt-2 font-semibold">Dialog</h3>
-            <p class="text-sm text-fg-secondary mt-0.5">Modal, sheet, popover, tooltip, hover card.</p>
-            <div class="mt-5 relative h-[110px]">
-              <div class="absolute inset-x-2 top-2 rounded-md border border-default bg-bg-secondary p-3 opacity-60">
+            <p class="text-sm text-fg-secondary mt-0.5">
+              Modal, sheet, popover, tooltip, hover card.
+            </p>
+            <div class="mt-5 relative h-27.5">
+              <div
+                class="absolute inset-x-2 top-2 rounded-md border border-default bg-bg-secondary p-3 opacity-60"
+              >
                 <div class="h-2 w-20 rounded-full bg-bg-tertiary"></div>
                 <div class="mt-2 h-2 w-32 rounded-full bg-bg-tertiary"></div>
               </div>
-              <div class="absolute inset-x-0 top-6 rounded-md border border-strong bg-surface p-3 shadow-lg">
+              <div
+                class="absolute inset-x-0 top-6 rounded-md border border-strong bg-surface p-3 shadow-lg"
+              >
                 <p class="text-xs font-semibold">Delete project?</p>
-                <p class="text-[11px] text-fg-tertiary mt-0.5">This cannot be undone.</p>
+                <p class="text-[11px] text-fg-tertiary mt-0.5">
+                  This cannot be undone.
+                </p>
                 <div class="mt-2 flex justify-end gap-1.5">
-                  <span class="inline-flex h-6 items-center rounded btn-outline px-2 text-[10px] font-medium">Cancel</span>
-                  <span class="inline-flex h-6 items-center rounded px-2 text-[10px] font-semibold" style="background: var(--color-destructive); color: var(--color-text-inverse);">Delete</span>
+                  <span
+                    class="inline-flex h-6 items-center rounded btn-outline px-2 text-[10px] font-medium"
+                    >Cancel</span
+                  >
+                  <span
+                    class="inline-flex h-6 items-center rounded px-2 text-[10px] font-semibold"
+                    style="
+                      background: var(--color-destructive);
+                      color: var(--color-text-inverse);
+                    "
+                    >Delete</span
+                  >
                 </div>
               </div>
             </div>
           </a>
 
           <!-- Table -->
-          <a href="/components/data-display" class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col">
+          <a
+            href="/components/data-display"
+            class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col"
+          >
             <div class="flex items-center justify-between">
-              <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Data Display</p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Data Display
+              </p>
               <span class="font-mono text-[11px] text-fg-tertiary">11</span>
             </div>
             <h3 class="mt-2 font-semibold">Table</h3>
-            <p class="text-sm text-fg-secondary mt-0.5">Sortable, sticky headers, dense or comfortable.</p>
-            <div class="mt-5 rounded-md border border-default overflow-hidden text-xs">
-              <div class="grid grid-cols-3 bg-bg-secondary px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">
-                <span>Name</span><span>Role</span><span class="text-right">Status</span>
+            <p class="text-sm text-fg-secondary mt-0.5">
+              Sortable, sticky headers, dense or comfortable.
+            </p>
+            <div
+              class="mt-5 rounded-md border border-default overflow-hidden text-xs"
+            >
+              <div
+                class="grid grid-cols-3 bg-bg-secondary px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+              >
+                <span>Name</span><span>Role</span
+                ><span class="text-right">Status</span>
               </div>
               <div class="grid grid-cols-3 px-3 py-2 border-t border-default">
-                <span>Elena Mori</span><span class="text-fg-secondary">Lead</span>
-                <span class="text-right inline-flex justify-end"><span class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[9px] font-medium" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">Active</span></span>
+                <span>Elena Mori</span
+                ><span class="text-fg-secondary">Lead</span>
+                <span class="text-right inline-flex justify-end"
+                  ><span
+                    class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[9px] font-medium"
+                    style="
+                      background: color-mix(
+                        in oklch,
+                        var(--color-success) 18%,
+                        transparent
+                      );
+                      color: var(--color-success);
+                    "
+                    >Active</span
+                  ></span
+                >
               </div>
               <div class="grid grid-cols-3 px-3 py-2 border-t border-default">
-                <span>Jude Reyes</span><span class="text-fg-secondary">Eng</span>
+                <span>Jude Reyes</span
+                ><span class="text-fg-secondary">Eng</span>
                 <span class="text-right text-fg-tertiary">—</span>
               </div>
             </div>
           </a>
 
           <!-- Toast / Alert -->
-          <a href="/components/feedback" class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col">
+          <a
+            href="/components/feedback"
+            class="card-interactive rounded-lg border border-default bg-surface p-5 flex flex-col"
+          >
             <div class="flex items-center justify-between">
-              <p class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Feedback</p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Feedback
+              </p>
               <span class="font-mono text-[11px] text-fg-tertiary">8</span>
             </div>
             <h3 class="mt-2 font-semibold">Alert</h3>
-            <p class="text-sm text-fg-secondary mt-0.5">Default, success, warning, destructive.</p>
+            <p class="text-sm text-fg-secondary mt-0.5">
+              Default, success, warning, destructive.
+            </p>
             <div class="mt-5 space-y-1.5">
-              <div class="flex items-start gap-2 rounded-md border px-3 py-2" style="border-color: color-mix(in oklch, var(--color-success) 35%, transparent); background: color-mix(in oklch, var(--color-success) 10%, transparent);">
-                <span class="grid h-4 w-4 mt-px place-items-center rounded-full" style="background: var(--color-success); color: var(--color-text-inverse);">
-                  <svg viewBox="0 0 24 24" class="h-2.5 w-2.5" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+              <div
+                class="flex items-start gap-2 rounded-md border px-3 py-2"
+                style="
+                  border-color: color-mix(
+                    in oklch,
+                    var(--color-success) 35%,
+                    transparent
+                  );
+                  background: color-mix(
+                    in oklch,
+                    var(--color-success) 10%,
+                    transparent
+                  );
+                "
+              >
+                <span
+                  class="grid h-4 w-4 mt-px place-items-center rounded-full"
+                  style="
+                    background: var(--color-success);
+                    color: var(--color-text-inverse);
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-2.5 w-2.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  >
+                    <path d="m5 12 5 5L20 7" />
+                  </svg>
                 </span>
                 <div>
                   <p class="text-[11px] font-semibold">Build passed</p>
-                  <p class="text-[10px] text-fg-secondary">3,402 tests · 1m 14s</p>
+                  <p class="text-[10px] text-fg-secondary">
+                    3,402 tests · 1m 14s
+                  </p>
                 </div>
               </div>
             </div>
@@ -675,125 +1315,310 @@
          ===================================================================== -->
     <section class="border-b border-default">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
-        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+        <div
+          class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10"
+        >
           <div class="max-w-xl">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">03 · Patterns</span>
-            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
+            <span
+              class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >03 · Patterns</span
+            >
+            <h2
+              class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight"
+            >
               From components to compositions.
             </h2>
             <p class="mt-3 text-fg-secondary">
-              Fifteen reference patterns that show how the primitives compose into the screens you actually
-              ship &mdash; auth flows, form compositions, layout shells, page compositions, and more.
+              Fifteen reference patterns that show how the primitives compose
+              into the screens you actually ship &mdash; auth flows, form
+              compositions, layout shells, page compositions, and more.
             </p>
           </div>
-          <a href="Patterns.html" class="inline-flex h-9 items-center gap-1.5 rounded-md btn-outline px-3.5 text-sm font-medium">
+          <a
+            href="Patterns.html"
+            class="inline-flex h-9 items-center gap-1.5 rounded-md btn-outline px-3.5 text-sm font-medium"
+          >
             All patterns
-            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <svg
+              viewBox="0 0 24 24"
+              class="h-3.5 w-3.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
           </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           <!-- Layout Patterns -->
-          <a href="Patterns.html#cat-layout" class="card-interactive group rounded-xl border border-default bg-surface overflow-hidden flex flex-col">
-            <div class="relative aspect-[16/10] grid-bg overflow-hidden">
-              <div class="absolute inset-0" style="background: color-mix(in oklch, var(--color-interactive-primary) 8%, transparent);"></div>
+          <a
+            href="Patterns.html#cat-layout"
+            class="card-interactive group rounded-xl border border-default bg-surface overflow-hidden flex flex-col"
+          >
+            <div class="relative aspect-16/10 grid-bg overflow-hidden">
+              <div
+                class="absolute inset-0"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-interactive-primary) 8%,
+                    transparent
+                  );
+                "
+              ></div>
               <!-- mini dashboard -->
               <div class="absolute inset-3 flex gap-2">
                 <div class="w-1/4 rounded-md glass-dark p-2 space-y-1">
                   <div class="h-1.5 w-2/3 rounded-full bg-bg-tertiary"></div>
                   <div class="h-1.5 w-1/2 rounded-full bg-bg-tertiary"></div>
-                  <div class="h-1.5 w-3/4 rounded-full" style="background: var(--color-interactive-primary);"></div>
+                  <div
+                    class="h-1.5 w-3/4 rounded-full"
+                    style="background: var(--color-interactive-primary)"
+                  ></div>
                   <div class="h-1.5 w-1/2 rounded-full bg-bg-tertiary"></div>
                 </div>
                 <div class="flex-1 grid grid-cols-2 grid-rows-3 gap-1.5">
                   <div class="rounded-md glass-dark"></div>
                   <div class="rounded-md glass-dark"></div>
-                  <div class="col-span-2 row-span-2 rounded-md glass-dark p-2 flex items-end gap-1">
-                    <div class="w-2 h-1/3 rounded-sm" style="background: var(--color-interactive-primary);"></div>
-                    <div class="w-2 h-1/2 rounded-sm" style="background: var(--color-interactive-primary);"></div>
-                    <div class="w-2 h-2/3 rounded-sm" style="background: var(--color-interactive-primary);"></div>
-                    <div class="w-2 h-1/2 rounded-sm" style="background: var(--color-interactive-primary);"></div>
-                    <div class="w-2 h-3/4 rounded-sm" style="background: var(--color-interactive-primary);"></div>
-                    <div class="w-2 h-full rounded-sm" style="background: var(--color-interactive-primary);"></div>
-                    <div class="w-2 h-2/3 rounded-sm" style="background: var(--color-interactive-primary);"></div>
+                  <div
+                    class="col-span-2 row-span-2 rounded-md glass-dark p-2 flex items-end gap-1"
+                  >
+                    <div
+                      class="w-2 h-1/3 rounded-sm"
+                      style="background: var(--color-interactive-primary)"
+                    ></div>
+                    <div
+                      class="w-2 h-1/2 rounded-sm"
+                      style="background: var(--color-interactive-primary)"
+                    ></div>
+                    <div
+                      class="w-2 h-2/3 rounded-sm"
+                      style="background: var(--color-interactive-primary)"
+                    ></div>
+                    <div
+                      class="w-2 h-1/2 rounded-sm"
+                      style="background: var(--color-interactive-primary)"
+                    ></div>
+                    <div
+                      class="w-2 h-3/4 rounded-sm"
+                      style="background: var(--color-interactive-primary)"
+                    ></div>
+                    <div
+                      class="w-2 h-full rounded-sm"
+                      style="background: var(--color-interactive-primary)"
+                    ></div>
+                    <div
+                      class="w-2 h-2/3 rounded-sm"
+                      style="background: var(--color-interactive-primary)"
+                    ></div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="p-5">
               <div class="flex items-center justify-between">
-                <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Layout</span>
-                <svg viewBox="0 0 24 24" class="h-4 w-4 text-fg-tertiary group-hover:text-interactive transition" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+                <span
+                  class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+                  >Layout</span
+                >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4 text-fg-tertiary group-hover:text-interactive transition"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M7 17 17 7M9 7h8v8" />
+                </svg>
               </div>
               <h3 class="mt-2 font-semibold">Layout Patterns</h3>
-              <p class="text-sm text-fg-secondary mt-0.5">Page shell, sidebar, content area &mdash; collapses to a sheet below lg.</p>
+              <p class="text-sm text-fg-secondary mt-0.5">
+                Page shell, sidebar, content area &mdash; collapses to a sheet
+                below lg.
+              </p>
               <div class="mt-3 flex flex-wrap gap-1">
-                <span class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary">Card</span>
-                <span class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary">NavigationMenu</span>
-                <span class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary">Sheet</span>
+                <span
+                  class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary"
+                  >Card</span
+                >
+                <span
+                  class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary"
+                  >NavigationMenu</span
+                >
+                <span
+                  class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary"
+                  >Sheet</span
+                >
               </div>
             </div>
           </a>
 
           <!-- Login & Registration -->
-          <a href="Patterns.html#cat-auth" class="card-interactive group rounded-xl border border-default bg-surface overflow-hidden flex flex-col">
-            <div class="relative aspect-[16/10] grid-bg overflow-hidden">
-              <div class="absolute inset-0" style="background: color-mix(in oklch, var(--color-interactive-primary) 8%, transparent);"></div>
+          <a
+            href="Patterns.html#cat-auth"
+            class="card-interactive group rounded-xl border border-default bg-surface overflow-hidden flex flex-col"
+          >
+            <div class="relative aspect-16/10 grid-bg overflow-hidden">
+              <div
+                class="absolute inset-0"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-interactive-primary) 8%,
+                    transparent
+                  );
+                "
+              ></div>
               <div class="absolute inset-0 grid place-items-center">
                 <div class="w-3/4 rounded-md glass-dark p-3 space-y-2">
                   <div class="h-2 w-1/3 rounded-full bg-bg-tertiary"></div>
-                  <div class="h-5 rounded border border-default bg-bg-primary"></div>
-                  <div class="h-5 rounded border border-default bg-bg-primary"></div>
-                  <div class="h-5 rounded" style="background: var(--color-interactive-primary);"></div>
+                  <div
+                    class="h-5 rounded border border-default bg-bg-primary"
+                  ></div>
+                  <div
+                    class="h-5 rounded border border-default bg-bg-primary"
+                  ></div>
+                  <div
+                    class="h-5 rounded"
+                    style="background: var(--color-interactive-primary)"
+                  ></div>
                 </div>
               </div>
             </div>
             <div class="p-5">
               <div class="flex items-center justify-between">
-                <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Form</span>
-                <svg viewBox="0 0 24 24" class="h-4 w-4 text-fg-tertiary group-hover:text-interactive transition" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+                <span
+                  class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+                  >Form</span
+                >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4 text-fg-tertiary group-hover:text-interactive transition"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M7 17 17 7M9 7h8v8" />
+                </svg>
               </div>
               <h3 class="mt-2 font-semibold">Login &amp; Registration</h3>
-              <p class="text-sm text-fg-secondary mt-0.5">Sign-in, registration, social auth. Same schema, three layouts &mdash; page, modal, drawer.</p>
+              <p class="text-sm text-fg-secondary mt-0.5">
+                Sign-in, registration, social auth. Same schema, three layouts
+                &mdash; page, modal, drawer.
+              </p>
               <div class="mt-3 flex flex-wrap gap-1">
-                <span class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary">Form</span>
-                <span class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary">Input</span>
-                <span class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary">+3</span>
+                <span
+                  class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary"
+                  >Form</span
+                >
+                <span
+                  class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary"
+                  >Input</span
+                >
+                <span
+                  class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary"
+                  >+3</span
+                >
               </div>
             </div>
           </a>
 
           <!-- Site Header -->
-          <a href="Patterns.html#cat-nav" class="card-interactive group rounded-xl border border-default bg-surface overflow-hidden flex flex-col">
-            <div class="relative aspect-[16/10] grid-bg overflow-hidden">
-              <div class="absolute inset-0" style="background: color-mix(in oklch, var(--color-interactive-primary) 8%, transparent);"></div>
+          <a
+            href="Patterns.html#cat-nav"
+            class="card-interactive group rounded-xl border border-default bg-surface overflow-hidden flex flex-col"
+          >
+            <div class="relative aspect-16/10 grid-bg overflow-hidden">
+              <div
+                class="absolute inset-0"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-interactive-primary) 8%,
+                    transparent
+                  );
+                "
+              ></div>
               <div class="absolute inset-0 grid place-items-center px-4">
                 <div class="w-full rounded-md glass-dark p-2.5 space-y-1.5">
                   <div class="flex items-center gap-2">
-                    <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="h-3 w-3 text-fg-tertiary"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <circle cx="11" cy="11" r="7" />
+                      <path d="m21 21-4.3-4.3" />
+                    </svg>
                     <div class="h-2 w-1/3 rounded-full bg-bg-tertiary"></div>
                     <span class="ml-auto kbd kbd-sm">esc</span>
                   </div>
-                  <div class="h-px w-full" style="background: var(--color-border-primary);"></div>
-                  <div class="rounded p-1" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent);">
-                    <div class="h-1.5 w-1/2 rounded-full" style="background: var(--color-interactive-primary);"></div>
+                  <div
+                    class="h-px w-full"
+                    style="background: var(--color-border-primary)"
+                  ></div>
+                  <div
+                    class="rounded p-1"
+                    style="
+                      background: color-mix(
+                        in oklch,
+                        var(--color-interactive-primary) 18%,
+                        transparent
+                      );
+                    "
+                  >
+                    <div
+                      class="h-1.5 w-1/2 rounded-full"
+                      style="background: var(--color-interactive-primary)"
+                    ></div>
                   </div>
-                  <div class="h-1.5 w-2/3 rounded-full bg-bg-tertiary ml-1"></div>
-                  <div class="h-1.5 w-1/2 rounded-full bg-bg-tertiary ml-1"></div>
+                  <div
+                    class="h-1.5 w-2/3 rounded-full bg-bg-tertiary ml-1"
+                  ></div>
+                  <div
+                    class="h-1.5 w-1/2 rounded-full bg-bg-tertiary ml-1"
+                  ></div>
                 </div>
               </div>
             </div>
             <div class="p-5">
               <div class="flex items-center justify-between">
-                <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Navigation</span>
-                <svg viewBox="0 0 24 24" class="h-4 w-4 text-fg-tertiary group-hover:text-interactive transition" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+                <span
+                  class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+                  >Navigation</span
+                >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4 text-fg-tertiary group-hover:text-interactive transition"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M7 17 17 7M9 7h8v8" />
+                </svg>
               </div>
               <h3 class="mt-2 font-semibold">Site Header</h3>
-              <p class="text-sm text-fg-secondary mt-0.5">Sticky nav, search trigger, theme toggle &mdash; used on this very page.</p>
+              <p class="text-sm text-fg-secondary mt-0.5">
+                Sticky nav, search trigger, theme toggle &mdash; used on this
+                very page.
+              </p>
               <div class="mt-3 flex flex-wrap gap-1">
-                <span class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary">NavigationMenu</span>
-                <span class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary">Command</span>
-                <span class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary">+2</span>
+                <span
+                  class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary"
+                  >NavigationMenu</span
+                >
+                <span
+                  class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary"
+                  >Command</span
+                >
+                <span
+                  class="inline-flex items-center rounded-full border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary"
+                  >+2</span
+                >
               </div>
             </div>
           </a>
@@ -801,35 +1626,79 @@
 
         <!-- pattern row 2 -->
         <div class="mt-10 grid grid-cols-2 lg:grid-cols-6 gap-2">
-          <a href="Patterns.html#cat-data" class="card-interactive rounded-lg border border-default bg-surface p-4">
-            <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Data</span>
+          <a
+            href="Patterns.html#cat-data"
+            class="card-interactive rounded-lg border border-default bg-surface p-4"
+          >
+            <span
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+              >Data</span
+            >
             <p class="mt-2 text-sm font-semibold">Card Grid</p>
-            <p class="text-xs text-fg-tertiary mt-0.5">Paginated · filterable</p>
+            <p class="text-xs text-fg-tertiary mt-0.5">
+              Paginated · filterable
+            </p>
           </a>
-          <a href="Patterns.html#cat-data" class="card-interactive rounded-lg border border-default bg-surface p-4">
-            <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Data</span>
+          <a
+            href="Patterns.html#cat-data"
+            class="card-interactive rounded-lg border border-default bg-surface p-4"
+          >
+            <span
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+              >Data</span
+            >
             <p class="mt-2 text-sm font-semibold">Feature Grid</p>
             <p class="text-xs text-fg-tertiary mt-0.5">2×2 · 3×2 · 4×1</p>
           </a>
-          <a href="Patterns.html#cat-forms" class="card-interactive rounded-lg border border-default bg-surface p-4">
-            <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Form</span>
+          <a
+            href="Patterns.html#cat-forms"
+            class="card-interactive rounded-lg border border-default bg-surface p-4"
+          >
+            <span
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+              >Form</span
+            >
             <p class="mt-2 text-sm font-semibold">Form Compositions</p>
             <p class="text-xs text-fg-tertiary mt-0.5">Multi-field · stepped</p>
           </a>
-          <a href="Patterns.html#cat-forms" class="card-interactive rounded-lg border border-default bg-surface p-4">
-            <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Form</span>
+          <a
+            href="Patterns.html#cat-forms"
+            class="card-interactive rounded-lg border border-default bg-surface p-4"
+          >
+            <span
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+              >Form</span
+            >
             <p class="mt-2 text-sm font-semibold">Form Validation</p>
-            <p class="text-xs text-fg-tertiary mt-0.5">Error · async · success</p>
+            <p class="text-xs text-fg-tertiary mt-0.5">
+              Error · async · success
+            </p>
           </a>
-          <a href="Patterns.html#cat-feedback" class="card-interactive rounded-lg border border-default bg-surface p-4">
-            <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Feedback</span>
+          <a
+            href="Patterns.html#cat-feedback"
+            class="card-interactive rounded-lg border border-default bg-surface p-4"
+          >
+            <span
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+              >Feedback</span
+            >
             <p class="mt-2 text-sm font-semibold">Error Boundary</p>
-            <p class="text-xs text-fg-tertiary mt-0.5">Page · component scope</p>
+            <p class="text-xs text-fg-tertiary mt-0.5">
+              Page · component scope
+            </p>
           </a>
-          <a href="Patterns.html#cat-responsive" class="card-interactive rounded-lg border border-default bg-surface p-4">
-            <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Responsive</span>
+          <a
+            href="Patterns.html#cat-responsive"
+            class="card-interactive rounded-lg border border-default bg-surface p-4"
+          >
+            <span
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+              >Responsive</span
+            >
             <p class="mt-2 text-sm font-semibold">Responsive Patterns</p>
-            <p class="text-xs text-fg-tertiary mt-0.5">Mobile · tablet · desktop</p>
+            <p class="text-xs text-fg-tertiary mt-0.5">
+              Mobile · tablet · desktop
+            </p>
           </a>
         </div>
       </div>
@@ -844,46 +1713,143 @@
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <!-- Messaging -->
           <div class="lg:col-span-5">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">04 · Figma plugin</span>
-            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
-              Token Bridge keeps Figma and code <span class="text-interactive">in sync</span>.
+            <span
+              class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >04 · Figma plugin</span
+            >
+            <h2
+              class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight"
+            >
+              Token Bridge keeps Figma and code
+              <span class="text-interactive">in sync</span>.
             </h2>
             <p class="mt-4 text-fg-secondary text-balance">
-              Pull the latest tokens into Figma as variables, or push your edits back to a pull request.
-              No more drift between the file you're designing in and the code that ships.
+              Pull the latest tokens into Figma as variables, or push your edits
+              back to a pull request. No more drift between the file you're
+              designing in and the code that ships.
             </p>
 
             <!-- feature list -->
             <ul class="mt-6 space-y-3 text-sm">
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">
-                  <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+                <span
+                  class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full"
+                  style="
+                    background: color-mix(
+                      in oklch,
+                      var(--color-interactive-primary) 18%,
+                      transparent
+                    );
+                    color: var(--color-interactive-primary);
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-3 w-3"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  >
+                    <path d="m5 12 5 5L20 7" />
+                  </svg>
                 </span>
-                <span><span class="font-medium text-fg">Two-way sync.</span> <span class="text-fg-secondary">Figma variables &harr; CSS custom properties &harr; Tailwind theme.</span></span>
+                <span
+                  ><span class="font-medium text-fg">Two-way sync.</span>
+                  <span class="text-fg-secondary"
+                    >Figma variables &harr; CSS custom properties &harr;
+                    Tailwind theme.</span
+                  ></span
+                >
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">
-                  <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+                <span
+                  class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full"
+                  style="
+                    background: color-mix(
+                      in oklch,
+                      var(--color-interactive-primary) 18%,
+                      transparent
+                    );
+                    color: var(--color-interactive-primary);
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-3 w-3"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  >
+                    <path d="m5 12 5 5L20 7" />
+                  </svg>
                 </span>
-                <span><span class="font-medium text-fg">Mode-aware.</span> <span class="text-fg-secondary">Light, dark, and high-contrast collections map to a single token contract.</span></span>
+                <span
+                  ><span class="font-medium text-fg">Mode-aware.</span>
+                  <span class="text-fg-secondary"
+                    >Light, dark, and high-contrast collections map to a single
+                    token contract.</span
+                  ></span
+                >
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent); color: var(--color-interactive-primary);">
-                  <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+                <span
+                  class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full"
+                  style="
+                    background: color-mix(
+                      in oklch,
+                      var(--color-interactive-primary) 18%,
+                      transparent
+                    );
+                    color: var(--color-interactive-primary);
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-3 w-3"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  >
+                    <path d="m5 12 5 5L20 7" />
+                  </svg>
                 </span>
-                <span><span class="font-medium text-fg">Opens a PR.</span> <span class="text-fg-secondary">Designer-side edits land in GitHub with a diff and a reviewer assigned.</span></span>
+                <span
+                  ><span class="font-medium text-fg">Opens a PR.</span>
+                  <span class="text-fg-secondary"
+                    >Designer-side edits land in GitHub with a diff and a
+                    reviewer assigned.</span
+                  ></span
+                >
               </li>
             </ul>
 
             <!-- CTAs -->
             <div class="mt-8 flex flex-wrap gap-2">
-              <a href="https://figma.com/community/plugin/wyliedog-token-bridge" class="inline-flex h-10 items-center gap-2 rounded-md btn-primary px-4 text-sm font-semibold">
-                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M8 24a4 4 0 0 0 4-4v-4H8a4 4 0 1 0 0 8zm-4-12a4 4 0 0 1 4-4h4v8H8a4 4 0 0 1-4-4zm0-8a4 4 0 0 1 4-4h4v8H8a4 4 0 0 1-4-4zm8-4h4a4 4 0 1 1 0 8h-4V0zm8 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/></svg>
+              <a
+                href="https://figma.com/community/plugin/wyliedog-token-bridge"
+                class="inline-flex h-10 items-center gap-2 rounded-md btn-primary px-4 text-sm font-semibold"
+              >
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+                  <path
+                    d="M8 24a4 4 0 0 0 4-4v-4H8a4 4 0 1 0 0 8zm-4-12a4 4 0 0 1 4-4h4v8H8a4 4 0 0 1-4-4zm0-8a4 4 0 0 1 4-4h4v8H8a4 4 0 0 1-4-4zm8-4h4a4 4 0 1 1 0 8h-4V0zm8 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"
+                  />
+                </svg>
                 Open in Figma
               </a>
-              <a href="/token-bridge" class="inline-flex h-10 items-center gap-1.5 rounded-md btn-outline px-4 text-sm font-medium">
+              <a
+                href="/token-bridge"
+                class="inline-flex h-10 items-center gap-1.5 rounded-md btn-outline px-4 text-sm font-medium"
+              >
                 Read the docs
-                <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
               </a>
             </div>
 
@@ -896,63 +1862,185 @@
           <div class="lg:col-span-7">
             <div class="relative">
               <!-- floating tag -->
-              <div class="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary">
+              <div
+                class="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary"
+              >
                 <span class="relative flex h-1.5 w-1.5">
-                  <span class="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60" style="background: var(--color-success);"></span>
-                  <span class="relative inline-flex h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+                  <span
+                    class="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60"
+                    style="background: var(--color-success)"
+                  ></span>
+                  <span
+                    class="relative inline-flex h-1.5 w-1.5 rounded-full"
+                    style="background: var(--color-success)"
+                  ></span>
                 </span>
                 Connected to main
               </div>
 
               <!-- Figma-style window -->
-              <div class="rounded-xl border border-default bg-surface overflow-hidden shadow-[0_8px_40px_-12px_rgba(0,0,0,0.18)]">
+              <div
+                class="rounded-xl border border-default bg-surface overflow-hidden shadow-[0_8px_40px_-12px_rgba(0,0,0,0.18)]"
+              >
                 <!-- title bar -->
-                <div class="flex items-center gap-2 border-b border-default bg-bg-secondary px-3 py-2">
+                <div
+                  class="flex items-center gap-2 border-b border-default bg-bg-secondary px-3 py-2"
+                >
                   <div class="flex gap-1.5">
-                    <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(70% 0.18 25);"></span>
-                    <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(80% 0.15 85);"></span>
-                    <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(70% 0.16 145);"></span>
+                    <span
+                      class="h-2.5 w-2.5 rounded-full"
+                      style="background: oklch(70% 0.18 25)"
+                    ></span>
+                    <span
+                      class="h-2.5 w-2.5 rounded-full"
+                      style="background: oklch(80% 0.15 85)"
+                    ></span>
+                    <span
+                      class="h-2.5 w-2.5 rounded-full"
+                      style="background: oklch(70% 0.16 145)"
+                    ></span>
                   </div>
-                  <div class="flex-1 text-center font-mono text-[11px] text-fg-tertiary">Token Bridge · wyliedog/ui · main</div>
-                  <span class="font-mono text-[10px] text-fg-tertiary">v0.9.2</span>
+                  <div
+                    class="flex-1 text-center font-mono text-[11px] text-fg-tertiary"
+                  >
+                    Token Bridge · wyliedog/ui · main
+                  </div>
+                  <span class="font-mono text-[10px] text-fg-tertiary"
+                    >v0.9.2</span
+                  >
                 </div>
 
                 <!-- two-pane body -->
                 <div class="grid grid-cols-12">
                   <!-- sidebar -->
-                  <div class="col-span-4 border-r border-default p-3 space-y-1 bg-bg-primary">
-                    <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary px-2 py-1">Collections</p>
-                    <div class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs font-medium" style="background: color-mix(in oklch, var(--color-interactive-primary) 14%, transparent); color: var(--color-interactive-primary);">
-                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/></svg>
+                  <div
+                    class="col-span-4 border-r border-default p-3 space-y-1 bg-bg-primary"
+                  >
+                    <p
+                      class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary px-2 py-1"
+                    >
+                      Collections
+                    </p>
+                    <div
+                      class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs font-medium"
+                      style="
+                        background: color-mix(
+                          in oklch,
+                          var(--color-interactive-primary) 14%,
+                          transparent
+                        );
+                        color: var(--color-interactive-primary);
+                      "
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="12" cy="12" r="9" />
+                      </svg>
                       Color
                       <span class="ml-auto font-mono text-[10px]">186</span>
                     </div>
-                    <div class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary hover:text-fg">
-                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-                      Spacing <span class="ml-auto font-mono text-[10px] text-fg-tertiary">28</span>
+                    <div
+                      class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary hover:text-fg"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M3 6h18M3 12h18M3 18h18" />
+                      </svg>
+                      Spacing
+                      <span
+                        class="ml-auto font-mono text-[10px] text-fg-tertiary"
+                        >28</span
+                      >
                     </div>
-                    <div class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary hover:text-fg">
-                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
-                      Typography <span class="ml-auto font-mono text-[10px] text-fg-tertiary">42</span>
+                    <div
+                      class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary hover:text-fg"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M4 7V4h16v3M9 20h6M12 4v16" />
+                      </svg>
+                      Typography
+                      <span
+                        class="ml-auto font-mono text-[10px] text-fg-tertiary"
+                        >42</span
+                      >
                     </div>
-                    <div class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary hover:text-fg">
-                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>
-                      Radius <span class="ml-auto font-mono text-[10px] text-fg-tertiary">12</span>
+                    <div
+                      class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary hover:text-fg"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <rect x="4" y="4" width="16" height="16" rx="3" />
+                      </svg>
+                      Radius
+                      <span
+                        class="ml-auto font-mono text-[10px] text-fg-tertiary"
+                        >12</span
+                      >
                     </div>
-                    <div class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary hover:text-fg">
-                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg>
-                      Shadow <span class="ml-auto font-mono text-[10px] text-fg-tertiary">9</span>
+                    <div
+                      class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary hover:text-fg"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M3 12h18M12 3v18" />
+                      </svg>
+                      Shadow
+                      <span
+                        class="ml-auto font-mono text-[10px] text-fg-tertiary"
+                        >9</span
+                      >
                     </div>
 
                     <div class="mt-4 pt-3 border-t border-default">
-                      <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary px-2 py-1">Modes</p>
-                      <div class="px-2 py-1 text-xs flex items-center justify-between">
+                      <p
+                        class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary px-2 py-1"
+                      >
+                        Modes
+                      </p>
+                      <div
+                        class="px-2 py-1 text-xs flex items-center justify-between"
+                      >
                         <span class="text-fg-secondary">Light</span>
-                        <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+                        <span
+                          class="h-1.5 w-1.5 rounded-full"
+                          style="background: var(--color-success)"
+                        ></span>
                       </div>
-                      <div class="px-2 py-1 text-xs flex items-center justify-between">
+                      <div
+                        class="px-2 py-1 text-xs flex items-center justify-between"
+                      >
                         <span class="text-fg-secondary">Dark</span>
-                        <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+                        <span
+                          class="h-1.5 w-1.5 rounded-full"
+                          style="background: var(--color-success)"
+                        ></span>
                       </div>
                     </div>
                   </div>
@@ -960,9 +2048,24 @@
                   <!-- main: token diff list -->
                   <div class="col-span-8 p-4 space-y-2">
                     <div class="flex items-center justify-between">
-                      <p class="text-xs font-semibold">Pending sync · 3 changes</p>
-                      <span class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[10px]" style="background: color-mix(in oklch, var(--color-warning) 18%, transparent); color: var(--color-warning);">
-                        <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-warning);"></span>
+                      <p class="text-xs font-semibold">
+                        Pending sync · 3 changes
+                      </p>
+                      <span
+                        class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[10px]"
+                        style="
+                          background: color-mix(
+                            in oklch,
+                            var(--color-warning) 18%,
+                            transparent
+                          );
+                          color: var(--color-warning);
+                        "
+                      >
+                        <span
+                          class="h-1.5 w-1.5 rounded-full"
+                          style="background: var(--color-warning)"
+                        ></span>
                         ahead by 3
                       </span>
                     </div>
@@ -970,17 +2073,56 @@
                     <!-- row: modified -->
                     <div class="rounded-md border border-default p-3">
                       <div class="flex items-center gap-2">
-                        <span class="font-mono text-[10px] rounded px-1.5 py-0.5" style="background: color-mix(in oklch, var(--color-warning) 18%, transparent); color: var(--color-warning);">M</span>
-                        <span class="font-mono text-xs">color/interactive/primary</span>
+                        <span
+                          class="font-mono text-[10px] rounded px-1.5 py-0.5"
+                          style="
+                            background: color-mix(
+                              in oklch,
+                              var(--color-warning) 18%,
+                              transparent
+                            );
+                            color: var(--color-warning);
+                          "
+                          >M</span
+                        >
+                        <span class="font-mono text-xs"
+                          >color/interactive/primary</span
+                        >
                       </div>
                       <div class="mt-2 grid grid-cols-2 gap-2 text-[11px]">
-                        <div class="flex items-center gap-2 rounded border border-default px-2 py-1.5">
-                          <span class="h-4 w-4 rounded" style="background: oklch(58% 0.16 274);"></span>
-                          <span class="font-mono text-fg-tertiary line-through">oklch(58% .16 274)</span>
+                        <div
+                          class="flex items-center gap-2 rounded border border-default px-2 py-1.5"
+                        >
+                          <span
+                            class="h-4 w-4 rounded"
+                            style="background: oklch(58% 0.16 274)"
+                          ></span>
+                          <span class="font-mono text-fg-tertiary line-through"
+                            >oklch(58% .16 274)</span
+                          >
                         </div>
-                        <div class="flex items-center gap-2 rounded border px-2 py-1.5" style="border-color: color-mix(in oklch, var(--color-interactive-primary) 50%, transparent); background: color-mix(in oklch, var(--color-interactive-primary) 8%, transparent);">
-                          <span class="h-4 w-4 rounded" style="background: oklch(54% 0.18 274);"></span>
-                          <span class="font-mono text-fg">oklch(54% .18 274)</span>
+                        <div
+                          class="flex items-center gap-2 rounded border px-2 py-1.5"
+                          style="
+                            border-color: color-mix(
+                              in oklch,
+                              var(--color-interactive-primary) 50%,
+                              transparent
+                            );
+                            background: color-mix(
+                              in oklch,
+                              var(--color-interactive-primary) 8%,
+                              transparent
+                            );
+                          "
+                        >
+                          <span
+                            class="h-4 w-4 rounded"
+                            style="background: oklch(54% 0.18 274)"
+                          ></span>
+                          <span class="font-mono text-fg"
+                            >oklch(54% .18 274)</span
+                          >
                         </div>
                       </div>
                     </div>
@@ -988,36 +2130,103 @@
                     <!-- row: added -->
                     <div class="rounded-md border border-default p-3">
                       <div class="flex items-center gap-2">
-                        <span class="font-mono text-[10px] rounded px-1.5 py-0.5" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">+</span>
-                        <span class="font-mono text-xs">color/surface/elevated</span>
-                        <span class="ml-auto font-mono text-[10px] text-fg-tertiary">new in v1.4</span>
+                        <span
+                          class="font-mono text-[10px] rounded px-1.5 py-0.5"
+                          style="
+                            background: color-mix(
+                              in oklch,
+                              var(--color-success) 18%,
+                              transparent
+                            );
+                            color: var(--color-success);
+                          "
+                          >+</span
+                        >
+                        <span class="font-mono text-xs"
+                          >color/surface/elevated</span
+                        >
+                        <span
+                          class="ml-auto font-mono text-[10px] text-fg-tertiary"
+                          >new in v1.4</span
+                        >
                       </div>
                     </div>
 
                     <!-- row: modified radius -->
                     <div class="rounded-md border border-default p-3">
                       <div class="flex items-center gap-2">
-                        <span class="font-mono text-[10px] rounded px-1.5 py-0.5" style="background: color-mix(in oklch, var(--color-warning) 18%, transparent); color: var(--color-warning);">M</span>
+                        <span
+                          class="font-mono text-[10px] rounded px-1.5 py-0.5"
+                          style="
+                            background: color-mix(
+                              in oklch,
+                              var(--color-warning) 18%,
+                              transparent
+                            );
+                            color: var(--color-warning);
+                          "
+                          >M</span
+                        >
                         <span class="font-mono text-xs">radius/lg</span>
                       </div>
                       <div class="mt-2 flex items-center gap-3 text-[11px]">
-                        <span class="font-mono text-fg-tertiary line-through">12px</span>
-                        <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        <span class="font-mono text-fg-tertiary line-through"
+                          >12px</span
+                        >
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-3 w-3 text-fg-tertiary"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
                         <span class="font-mono text-fg">14px</span>
                       </div>
                     </div>
 
                     <!-- footer actions -->
-                    <div class="mt-3 flex items-center justify-between border-t border-default pt-3">
-                      <div class="flex items-center gap-2 text-[11px] text-fg-tertiary">
-                        <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
+                    <div
+                      class="mt-3 flex items-center justify-between border-t border-default pt-3"
+                    >
+                      <div
+                        class="flex items-center gap-2 text-[11px] text-fg-tertiary"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-3.5 w-3.5"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <circle cx="12" cy="12" r="3" />
+                          <path
+                            d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"
+                          />
+                        </svg>
                         <span class="font-mono">last synced 4m ago</span>
                       </div>
                       <div class="flex items-center gap-2">
-                        <span class="inline-flex h-7 items-center rounded-md btn-outline px-2.5 text-[11px] font-medium">Discard</span>
-                        <span class="inline-flex h-7 items-center gap-1.5 rounded-md btn-primary px-2.5 text-[11px] font-semibold">
+                        <span
+                          class="inline-flex h-7 items-center rounded-md btn-outline px-2.5 text-[11px] font-medium"
+                          >Discard</span
+                        >
+                        <span
+                          class="inline-flex h-7 items-center gap-1.5 rounded-md btn-primary px-2.5 text-[11px] font-semibold"
+                        >
                           Open PR
-                          <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M6 8v8a4 4 0 0 0 4 4h6"/></svg>
+                          <svg
+                            viewBox="0 0 24 24"
+                            class="h-3 w-3"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <circle cx="6" cy="6" r="2" />
+                            <circle cx="18" cy="18" r="2" />
+                            <path d="M6 8v8a4 4 0 0 0 4 4h6" />
+                          </svg>
                         </span>
                       </div>
                     </div>
@@ -1026,8 +2235,19 @@
               </div>
 
               <!-- corner annotation -->
-              <div class="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary">
-                <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="m9 12 2 2 4-4"/></svg>
+              <div
+                class="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-3 w-3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
                 3 tokens · ready to push
               </div>
             </div>
@@ -1041,20 +2261,42 @@
          ===================================================================== -->
     <section class="border-b border-default">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-        <div class="glass rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+        <div
+          class="glass rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10"
+        >
           <div class="flex-1">
-            <h2 class="font-serif text-2xl sm:text-3xl font-semibold tracking-tight">See it in action.</h2>
+            <h2
+              class="font-serif text-2xl sm:text-3xl font-semibold tracking-tight"
+            >
+              See it in action.
+            </h2>
             <p class="mt-2 text-fg-secondary max-w-xl">
-              Every component on this page is rendered with the live library &mdash; explore the full
-              set of states, props, and accessibility behaviors in Storybook.
+              Every component on this page is rendered with the live library
+              &mdash; explore the full set of states, props, and accessibility
+              behaviors in Storybook.
             </p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <a href="https://storybook.wyliedog.dev" class="inline-flex h-10 items-center gap-1.5 rounded-md btn-primary px-4 text-sm font-semibold">
+            <a
+              href="https://storybook.wyliedog.dev"
+              class="inline-flex h-10 items-center gap-1.5 rounded-md btn-primary px-4 text-sm font-semibold"
+            >
               Open Storybook
-              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              <svg
+                viewBox="0 0 24 24"
+                class="h-3.5 w-3.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M7 17 17 7M9 7h8v8" />
+              </svg>
             </a>
-            <a href="/components" class="inline-flex h-10 items-center gap-1.5 rounded-md btn-outline px-4 text-sm font-medium">Browse components</a>
+            <a
+              href="/components"
+              class="inline-flex h-10 items-center gap-1.5 rounded-md btn-outline px-4 text-sm font-medium"
+              >Browse components</a
+            >
           </div>
         </div>
       </div>
@@ -1068,13 +2310,25 @@
         <div class="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-10">
           <div class="col-span-2 md:col-span-1">
             <div class="flex items-center gap-2">
-              <span class="grid h-7 w-7 place-items-center rounded-md" style="background: var(--color-interactive-primary);">
-                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--color-text-inverse);">
-                  <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/>
-                  <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+              <span
+                class="grid h-7 w-7 place-items-center rounded-md"
+                style="background: var(--color-interactive-primary)"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  style="color: var(--color-text-inverse)"
+                >
+                  <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
+                  <circle cx="12" cy="11" r="1.5" fill="currentColor" />
                 </svg>
               </span>
-              <span class="font-serif text-base font-semibold tracking-tight">Wylie Dog</span>
+              <span class="font-serif text-base font-semibold tracking-tight"
+                >Wylie Dog</span
+              >
             </div>
             <p class="mt-3 text-sm text-fg-secondary">
               The shared design system for everything we ship.
@@ -1082,76 +2336,212 @@
           </div>
 
           <div>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Tokens</p>
+            <p
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+            >
+              Tokens
+            </p>
             <ul class="mt-3 space-y-2 text-sm">
-              <li><a href="Tokens.html#colors" class="text-fg-secondary hover:text-fg">Colors</a></li>
-              <li><a href="Tokens.html#spacing" class="text-fg-secondary hover:text-fg">Spacing</a></li>
-              <li><a href="Tokens.html#typography" class="text-fg-secondary hover:text-fg">Typography</a></li>
-              <li><a href="Tokens.html#borders" class="text-fg-secondary hover:text-fg">Borders</a></li>
+              <li>
+                <a
+                  href="Tokens.html#colors"
+                  class="text-fg-secondary hover:text-fg"
+                  >Colors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Tokens.html#spacing"
+                  class="text-fg-secondary hover:text-fg"
+                  >Spacing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Tokens.html#typography"
+                  class="text-fg-secondary hover:text-fg"
+                  >Typography</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Tokens.html#borders"
+                  class="text-fg-secondary hover:text-fg"
+                  >Borders</a
+                >
+              </li>
             </ul>
           </div>
 
           <div>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Components</p>
+            <p
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+            >
+              Components
+            </p>
             <ul class="mt-3 space-y-2 text-sm">
-              <li><a href="Components.html#content-display" class="text-fg-secondary hover:text-fg">Content Display</a></li>
-              <li><a href="Components.html#inputs" class="text-fg-secondary hover:text-fg">Inputs &amp; Controls</a></li>
-              <li><a href="Components.html#navigation" class="text-fg-secondary hover:text-fg">Navigation</a></li>
-              <li><a href="Components.html#overlays" class="text-fg-secondary hover:text-fg">Overlays &amp; Popovers</a></li>
-              <li><a href="Components.html#layout" class="text-fg-secondary hover:text-fg">Layout &amp; Structure</a></li>
-              <li><a href="Components.html#feedback" class="text-fg-secondary hover:text-fg">Feedback &amp; Status</a></li>
+              <li>
+                <a
+                  href="Components.html#content-display"
+                  class="text-fg-secondary hover:text-fg"
+                  >Content Display</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Components.html#inputs"
+                  class="text-fg-secondary hover:text-fg"
+                  >Inputs &amp; Controls</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Components.html#navigation"
+                  class="text-fg-secondary hover:text-fg"
+                  >Navigation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Components.html#overlays"
+                  class="text-fg-secondary hover:text-fg"
+                  >Overlays &amp; Popovers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Components.html#layout"
+                  class="text-fg-secondary hover:text-fg"
+                  >Layout &amp; Structure</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Components.html#feedback"
+                  class="text-fg-secondary hover:text-fg"
+                  >Feedback &amp; Status</a
+                >
+              </li>
             </ul>
           </div>
 
           <div>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Tools</p>
+            <p
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+            >
+              Tools
+            </p>
             <ul class="mt-3 space-y-2 text-sm">
-              <li><a href="Token-Bridge.html" class="text-fg-secondary hover:text-fg">Token Bridge for Figma</a></li>
-              <li><a href="https://storybook.wyliedog.dev" class="text-fg-secondary hover:text-fg">Storybook ↗</a></li>
+              <li>
+                <a
+                  href="Token-Bridge.html"
+                  class="text-fg-secondary hover:text-fg"
+                  >Token Bridge for Figma</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://storybook.wyliedog.dev"
+                  class="text-fg-secondary hover:text-fg"
+                  >Storybook ↗</a
+                >
+              </li>
             </ul>
           </div>
 
           <div>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Patterns</p>
+            <p
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+            >
+              Patterns
+            </p>
             <ul class="mt-3 space-y-2 text-sm">
-              <li><a href="Patterns.html#cat-layout" class="text-fg-secondary hover:text-fg">Layout Patterns</a></li>
-              <li><a href="Patterns.html#cat-auth" class="text-fg-secondary hover:text-fg">Authentication</a></li>
-              <li><a href="Patterns.html#cat-forms" class="text-fg-secondary hover:text-fg">Form Compositions</a></li>
-              <li><a href="Patterns.html#cat-data" class="text-fg-secondary hover:text-fg">Data Patterns</a></li>
-              <li><a href="Patterns.html" class="text-fg-secondary hover:text-fg">All patterns →</a></li>
+              <li>
+                <a
+                  href="Patterns.html#cat-layout"
+                  class="text-fg-secondary hover:text-fg"
+                  >Layout Patterns</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Patterns.html#cat-auth"
+                  class="text-fg-secondary hover:text-fg"
+                  >Authentication</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Patterns.html#cat-forms"
+                  class="text-fg-secondary hover:text-fg"
+                  >Form Compositions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Patterns.html#cat-data"
+                  class="text-fg-secondary hover:text-fg"
+                  >Data Patterns</a
+                >
+              </li>
+              <li>
+                <a href="Patterns.html" class="text-fg-secondary hover:text-fg"
+                  >All patterns →</a
+                >
+              </li>
             </ul>
           </div>
         </div>
 
         <!-- {/* <Separator /> */} -->
-        <div class="mt-10 border-t border-default pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div
+          class="mt-10 border-t border-default pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
+        >
           <p class="font-mono text-[11px] text-fg-tertiary">© 2026 Wylie Dog</p>
           <div class="inline-flex items-center gap-2">
-            <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
-            <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">All systems operational</span>
+            <span
+              class="h-1.5 w-1.5 rounded-full"
+              style="background: var(--color-success)"
+            ></span>
+            <span
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+              >All systems operational</span
+            >
           </div>
         </div>
       </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script>
       // theme toggle (persists to localStorage; honors prefers-color-scheme)
       (function () {
         const root = document.documentElement;
         const stored = localStorage.getItem("wd-theme");
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (stored === "dark" || (!stored && prefersDark)) root.classList.add("dark");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (stored === "dark" || (!stored && prefersDark))
+          root.classList.add("dark");
         function syncIcons() {
           const dark = root.classList.contains("dark");
           document.getElementById("icon-sun").classList.toggle("hidden", !dark);
           document.getElementById("icon-moon").classList.toggle("hidden", dark);
         }
         syncIcons();
-        document.getElementById("theme-toggle").addEventListener("click", () => {
-          root.classList.toggle("dark");
-          localStorage.setItem("wd-theme", root.classList.contains("dark") ? "dark" : "light");
-          syncIcons();
-        });
+        document
+          .getElementById("theme-toggle")
+          .addEventListener("click", () => {
+            root.classList.toggle("dark");
+            localStorage.setItem(
+              "wd-theme",
+              root.classList.contains("dark") ? "dark" : "light"
+            );
+            syncIcons();
+          });
       })();
     </script>
   </body>

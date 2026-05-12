@@ -55,10 +55,18 @@
         --duration-slow: 320ms;
 
         --shadow-xs: 0 1px 2px -1px oklch(20% 0.05 260 / 0.08);
-        --shadow-sm: 0 1px 3px oklch(20% 0.05 260 / 0.1), 0 1px 2px -1px oklch(20% 0.05 260 / 0.06);
-        --shadow-md: 0 4px 12px -2px oklch(20% 0.05 260 / 0.12), 0 2px 4px -2px oklch(20% 0.05 260 / 0.06);
-        --shadow-lg: 0 12px 28px -8px oklch(20% 0.05 260 / 0.18), 0 4px 8px -4px oklch(20% 0.05 260 / 0.08);
-        --shadow-xl: 0 24px 48px -12px oklch(20% 0.05 260 / 0.25), 0 8px 16px -8px oklch(20% 0.05 260 / 0.1);
+        --shadow-sm:
+          0 1px 3px oklch(20% 0.05 260 / 0.1),
+          0 1px 2px -1px oklch(20% 0.05 260 / 0.06);
+        --shadow-md:
+          0 4px 12px -2px oklch(20% 0.05 260 / 0.12),
+          0 2px 4px -2px oklch(20% 0.05 260 / 0.06);
+        --shadow-lg:
+          0 12px 28px -8px oklch(20% 0.05 260 / 0.18),
+          0 4px 8px -4px oklch(20% 0.05 260 / 0.08);
+        --shadow-xl:
+          0 24px 48px -12px oklch(20% 0.05 260 / 0.25),
+          0 8px 16px -8px oklch(20% 0.05 260 / 0.1);
 
         /* Terminal palette — derived from tokens, light mode */
         --term-bg: oklch(18% 0.014 260);
@@ -90,17 +98,25 @@
         --color-interactive-primary-active: oklch(80% 0.14 274);
 
         --shadow-xs: 0 1px 2px -1px oklch(0% 0 0 / 0.4);
-        --shadow-sm: 0 1px 3px oklch(0% 0 0 / 0.5), 0 1px 2px -1px oklch(0% 0 0 / 0.3);
-        --shadow-md: 0 4px 12px -2px oklch(0% 0 0 / 0.55), 0 2px 4px -2px oklch(0% 0 0 / 0.3);
-        --shadow-lg: 0 12px 28px -8px oklch(0% 0 0 / 0.6), 0 4px 8px -4px oklch(0% 0 0 / 0.35);
-        --shadow-xl: 0 24px 48px -12px oklch(0% 0 0 / 0.7), 0 8px 16px -8px oklch(0% 0 0 / 0.4);
+        --shadow-sm:
+          0 1px 3px oklch(0% 0 0 / 0.5), 0 1px 2px -1px oklch(0% 0 0 / 0.3);
+        --shadow-md:
+          0 4px 12px -2px oklch(0% 0 0 / 0.55),
+          0 2px 4px -2px oklch(0% 0 0 / 0.3);
+        --shadow-lg:
+          0 12px 28px -8px oklch(0% 0 0 / 0.6),
+          0 4px 8px -4px oklch(0% 0 0 / 0.35);
+        --shadow-xl:
+          0 24px 48px -12px oklch(0% 0 0 / 0.7),
+          0 8px 16px -8px oklch(0% 0 0 / 0.4);
 
         --term-bg: oklch(11% 0.01 260);
         --term-fg: oklch(94% 0.005 250);
         --term-dim: oklch(58% 0.015 250);
       }
 
-      html, body {
+      html,
+      body {
         background: var(--color-background-primary);
         color: var(--color-text-primary);
         font-family: var(--font-sans);
@@ -108,20 +124,34 @@
         text-rendering: optimizeLegibility;
       }
 
-      .font-serif { font-family: var(--font-serif); }
-      .font-mono { font-family: var(--font-mono); }
+      .font-serif {
+        font-family: var(--font-serif);
+      }
+      .font-mono {
+        font-family: var(--font-mono);
+      }
 
       .glass {
-        background: color-mix(in oklch, var(--color-surface-primary) 70%, transparent);
+        background: color-mix(
+          in oklch,
+          var(--color-surface-primary) 70%,
+          transparent
+        );
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid color-mix(in oklch, var(--color-border-primary) 80%, transparent);
+        border: 1px solid
+          color-mix(in oklch, var(--color-border-primary) 80%, transparent);
       }
       .glass-dark {
-        background: color-mix(in oklch, var(--color-background-tertiary) 80%, transparent);
+        background: color-mix(
+          in oklch,
+          var(--color-background-tertiary) 80%,
+          transparent
+        );
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid color-mix(in oklch, var(--color-border-primary) 70%, transparent);
+        border: 1px solid
+          color-mix(in oklch, var(--color-border-primary) 70%, transparent);
       }
       .grid-bg {
         background-image: radial-gradient(
@@ -133,7 +163,8 @@
       .hero-gradient {
         background: radial-gradient(
           ellipse 80% 60% at 50% 0%,
-          color-mix(in oklch, var(--color-interactive-primary) 22%, transparent) 0%,
+          color-mix(in oklch, var(--color-interactive-primary) 22%, transparent)
+            0%,
           transparent 60%
         );
       }
@@ -150,35 +181,69 @@
         display: inline-flex;
         align-items: center;
       }
-      .kbd-sm { font-size: 0.6875rem; padding: 2px 5px; }
+      .kbd-sm {
+        font-size: 0.6875rem;
+        padding: 2px 5px;
+      }
 
-      .bg-surface { background: var(--color-surface-primary); }
-      .bg-surface-elev { background: var(--color-surface-elevated); }
-      .bg-bg-primary { background: var(--color-background-primary); }
-      .bg-bg-secondary { background: var(--color-background-secondary); }
-      .bg-bg-tertiary { background: var(--color-background-tertiary); }
-      .text-fg { color: var(--color-text-primary); }
-      .text-fg-secondary { color: var(--color-text-secondary); }
-      .text-fg-tertiary { color: var(--color-text-tertiary); }
-      .text-interactive { color: var(--color-interactive-primary); }
-      .border-default { border-color: var(--color-border-primary); }
-      .border-secondary { border-color: var(--color-border-secondary); }
-      .border-strong { border-color: var(--color-border-strong); }
+      .bg-surface {
+        background: var(--color-surface-primary);
+      }
+      .bg-surface-elev {
+        background: var(--color-surface-elevated);
+      }
+      .bg-bg-primary {
+        background: var(--color-background-primary);
+      }
+      .bg-bg-secondary {
+        background: var(--color-background-secondary);
+      }
+      .bg-bg-tertiary {
+        background: var(--color-background-tertiary);
+      }
+      .text-fg {
+        color: var(--color-text-primary);
+      }
+      .text-fg-secondary {
+        color: var(--color-text-secondary);
+      }
+      .text-fg-tertiary {
+        color: var(--color-text-tertiary);
+      }
+      .text-interactive {
+        color: var(--color-interactive-primary);
+      }
+      .border-default {
+        border-color: var(--color-border-primary);
+      }
+      .border-secondary {
+        border-color: var(--color-border-secondary);
+      }
+      .border-strong {
+        border-color: var(--color-border-strong);
+      }
 
       .btn-primary {
         background: var(--color-interactive-primary);
         color: var(--color-text-inverse);
         transition: background var(--duration-fast) var(--ease-standard);
       }
-      .btn-primary:hover { background: var(--color-interactive-primary-hover); }
+      .btn-primary:hover {
+        background: var(--color-interactive-primary-hover);
+      }
       .btn-outline {
         background: transparent;
         color: var(--color-text-primary);
         border: 1px solid var(--color-border-strong);
         transition: background var(--duration-fast) var(--ease-standard);
       }
-      .btn-outline:hover { background: var(--color-background-secondary); }
-      .btn-ghost { background: transparent; color: var(--color-text-secondary); }
+      .btn-outline:hover {
+        background: var(--color-background-secondary);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--color-text-secondary);
+      }
       .btn-ghost:hover {
         background: var(--color-background-secondary);
         color: var(--color-text-primary);
@@ -188,7 +253,8 @@
       .dashed-flow {
         background-image: linear-gradient(
           to right,
-          color-mix(in oklch, var(--color-interactive-primary) 60%, transparent) 50%,
+          color-mix(in oklch, var(--color-interactive-primary) 60%, transparent)
+            50%,
           transparent 50%
         );
         background-size: 10px 1.5px;
@@ -198,7 +264,8 @@
       .dashed-flow-y {
         background-image: linear-gradient(
           to bottom,
-          color-mix(in oklch, var(--color-interactive-primary) 60%, transparent) 50%,
+          color-mix(in oklch, var(--color-interactive-primary) 60%, transparent)
+            50%,
           transparent 50%
         );
         background-size: 1.5px 10px;
@@ -225,12 +292,30 @@
         font-size: 12.5px;
         line-height: 1.65;
       }
-      .term .prompt { color: var(--term-accent); }
-      .term .ok { color: var(--term-success); }
-      .term .warn { color: var(--term-warning); }
-      .term .dim { color: var(--term-dim); }
-      .term .accent { color: var(--term-accent); }
-      .term .underline-link { text-decoration: underline; text-decoration-color: color-mix(in oklch, var(--term-accent) 50%, transparent); text-underline-offset: 3px; }
+      .term .prompt {
+        color: var(--term-accent);
+      }
+      .term .ok {
+        color: var(--term-success);
+      }
+      .term .warn {
+        color: var(--term-warning);
+      }
+      .term .dim {
+        color: var(--term-dim);
+      }
+      .term .accent {
+        color: var(--term-accent);
+      }
+      .term .underline-link {
+        text-decoration: underline;
+        text-decoration-color: color-mix(
+          in oklch,
+          var(--term-accent) 50%,
+          transparent
+        );
+        text-underline-offset: 3px;
+      }
       .blink::after {
         content: "▎";
         display: inline-block;
@@ -238,7 +323,11 @@
         animation: term-blink 1.05s steps(1) infinite;
         color: var(--term-fg);
       }
-      @keyframes term-blink { 50% { opacity: 0; } }
+      @keyframes term-blink {
+        50% {
+          opacity: 0;
+        }
+      }
 
       /* Token row in Figma mockup */
       .fig-row {
@@ -250,9 +339,19 @@
         border-top: 1px solid var(--color-border-secondary);
         font-size: 11.5px;
       }
-      .fig-row:first-child { border-top: 0; }
-      .fig-row:hover { background: var(--color-background-secondary); }
-      .fig-row.selected { background: color-mix(in oklch, var(--color-interactive-primary) 10%, transparent); }
+      .fig-row:first-child {
+        border-top: 0;
+      }
+      .fig-row:hover {
+        background: var(--color-background-secondary);
+      }
+      .fig-row.selected {
+        background: color-mix(
+          in oklch,
+          var(--color-interactive-primary) 10%,
+          transparent
+        );
+      }
 
       .step-num {
         font-family: var(--font-serif);
@@ -262,10 +361,17 @@
       }
 
       ::selection {
-        background: color-mix(in oklch, var(--color-interactive-primary) 30%, transparent);
+        background: color-mix(
+          in oklch,
+          var(--color-interactive-primary) 30%,
+          transparent
+        );
         color: var(--color-text-primary);
       }
-      * { scrollbar-width: thin; scrollbar-color: var(--color-border-strong) transparent; }
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-border-strong) transparent;
+      }
     </style>
   </head>
 
@@ -273,43 +379,134 @@
     <!-- =====================================================================
          <SiteHeader>
          ===================================================================== -->
-    <header class="sticky top-0 z-40 border-b border-default bg-bg-primary/80 backdrop-blur-md">
-      <div class="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+    <header
+      class="sticky top-0 z-40 border-b border-default bg-bg-primary/80 backdrop-blur-md"
+    >
+      <div
+        class="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8"
+      >
         <a href="Homepage.html" class="flex items-center gap-2 shrink-0">
-          <span class="grid h-7 w-7 place-items-center rounded-md" style="background: var(--color-interactive-primary);">
-            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--color-text-inverse);">
-              <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/>
-              <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+          <span
+            class="grid h-7 w-7 place-items-center rounded-md"
+            style="background: var(--color-interactive-primary)"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              style="color: var(--color-text-inverse)"
+            >
+              <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
+              <circle cx="12" cy="11" r="1.5" fill="currentColor" />
             </svg>
           </span>
-          <span class="font-serif text-[1.0625rem] font-semibold tracking-tight">Wylie Dog</span>
-          <span class="hidden sm:inline font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">design system</span>
+          <span class="font-serif text-[1.0625rem] font-semibold tracking-tight"
+            >Wylie Dog</span
+          >
+          <span
+            class="hidden sm:inline font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+            >design system</span
+          >
         </a>
 
         <nav class="hidden md:flex items-center gap-1">
-          <a href="Homepage.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Overview</a>
-          <a href="Architecture.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Architecture</a>
-          <a href="Tokens.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Tokens</a>
-          <a href="Components.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Components</a>
-          <a href="Patterns.html" class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg">Patterns</a>
-          <a href="Token-Bridge.html" class="rounded-md px-3 py-1.5 text-sm font-medium" style="background: var(--color-background-secondary);">Token Bridge</a>
+          <a
+            href="Homepage.html"
+            class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg"
+            >Overview</a
+          >
+          <a
+            href="Architecture.html"
+            class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg"
+            >Architecture</a
+          >
+          <a
+            href="Tokens.html"
+            class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg"
+            >Tokens</a
+          >
+          <a
+            href="Components.html"
+            class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg"
+            >Components</a
+          >
+          <a
+            href="Patterns.html"
+            class="rounded-md px-3 py-1.5 text-sm text-fg-secondary hover:text-fg"
+            >Patterns</a
+          >
+          <a
+            href="Token-Bridge.html"
+            class="rounded-md px-3 py-1.5 text-sm font-medium"
+            style="background: var(--color-background-secondary)"
+            >Token Bridge</a
+          >
         </nav>
 
         <div class="ml-auto flex items-center gap-2">
-          <button class="hidden sm:flex h-8 items-center gap-2 rounded-md border border-default bg-bg-secondary px-2.5 text-sm text-fg-tertiary hover:text-fg-secondary">
-            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <button
+            class="hidden sm:flex h-8 items-center gap-2 rounded-md border border-default bg-bg-secondary px-2.5 text-sm text-fg-tertiary hover:text-fg-secondary"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="h-3.5 w-3.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
             <span>Search</span>
             <span class="kbd kbd-sm ml-6">⌘K</span>
           </button>
 
-          <button id="theme-toggle" aria-label="Toggle theme" class="grid h-8 w-8 place-items-center rounded-md text-fg-secondary hover:text-fg btn-ghost">
-            <svg id="icon-sun" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-            <svg id="icon-moon" viewBox="0 0 24 24" class="hidden h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <button
+            id="theme-toggle"
+            aria-label="Toggle theme"
+            class="grid h-8 w-8 place-items-center rounded-md text-fg-secondary hover:text-fg btn-ghost"
+          >
+            <svg
+              id="icon-sun"
+              viewBox="0 0 24 24"
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              />
+            </svg>
+            <svg
+              id="icon-moon"
+              viewBox="0 0 24 24"
+              class="hidden h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
           </button>
 
-          <a href="https://storybook.wyliedog.dev" class="hidden sm:inline-flex h-8 items-center gap-1.5 rounded-md btn-outline px-3 text-sm font-medium">
+          <a
+            href="https://storybook.wyliedog.dev"
+            class="hidden sm:inline-flex h-8 items-center gap-1.5 rounded-md btn-outline px-3 text-sm font-medium"
+          >
             Storybook
-            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            <svg
+              viewBox="0 0 24 24"
+              class="h-3.5 w-3.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M7 17 17 7M9 7h8v8" />
+            </svg>
           </a>
         </div>
       </div>
@@ -322,44 +519,92 @@
       <div class="absolute inset-0 grid-bg opacity-60"></div>
       <div class="absolute inset-0 hero-gradient"></div>
 
-      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-24 lg:pb-20">
+      <div
+        class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-24 lg:pb-20"
+      >
         <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           <!-- Left: messaging -->
           <div class="lg:col-span-6">
-            <div class="inline-flex items-center gap-2 rounded-full border border-default bg-surface/60 px-3 py-1">
-              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-secondary">Token Bridge</span>
+            <div
+              class="inline-flex items-center gap-2 rounded-full border border-default bg-surface/60 px-3 py-1"
+            >
+              <span
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-secondary"
+                >Token Bridge</span
+              >
               <span class="text-fg-tertiary">·</span>
-              <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">v0.9.2 · beta</span>
+              <span
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+                >v0.9.2 · beta</span
+              >
             </div>
 
-            <h1 class="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.5rem] font-semibold tracking-tight leading-[0.98]">
-              One source of truth. <span class="text-interactive">No manual handoff.</span>
+            <h1
+              class="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.5rem] font-semibold tracking-tight leading-[0.98]"
+            >
+              One source of truth.
+              <span class="text-interactive">No manual handoff.</span>
             </h1>
 
-            <p class="mt-6 max-w-xl text-lg sm:text-xl text-fg-secondary text-balance">
-              Token Bridge syncs <span class="font-mono text-base">@wyliedog/tokens</span> to Figma
-              Variables &mdash; so design references the same contract as code. When a value moves in
-              the repo, the next sync moves Figma with it.
+            <p
+              class="mt-6 max-w-xl text-lg sm:text-xl text-fg-secondary text-balance"
+            >
+              Token Bridge syncs
+              <span class="font-mono text-base">@wyliedog/tokens</span> to Figma
+              Variables &mdash; so design references the same contract as code.
+              When a value moves in the repo, the next sync moves Figma with it.
             </p>
 
             <div class="mt-8 flex flex-col sm:flex-row gap-3">
-              <a href="#install" class="inline-flex h-11 items-center justify-center gap-2 rounded-md btn-primary px-5 text-sm font-semibold">
+              <a
+                href="#install"
+                class="inline-flex h-11 items-center justify-center gap-2 rounded-md btn-primary px-5 text-sm font-semibold"
+              >
                 Get started
-                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
               </a>
-              <a href="Tokens.html" class="inline-flex h-11 items-center justify-center gap-2 rounded-md btn-outline px-5 text-sm font-semibold">
+              <a
+                href="Tokens.html"
+                class="inline-flex h-11 items-center justify-center gap-2 rounded-md btn-outline px-5 text-sm font-semibold"
+              >
                 View token reference
               </a>
             </div>
 
             <!-- inline run hint -->
-            <div class="mt-8 inline-flex items-center gap-3 rounded-lg border border-default bg-surface px-3 py-2" style="box-shadow: var(--shadow-xs);">
+            <div
+              class="mt-8 inline-flex items-center gap-3 rounded-lg border border-default bg-surface px-3 py-2"
+              style="box-shadow: var(--shadow-xs)"
+            >
               <span class="font-mono text-xs text-fg-tertiary">$</span>
               <span class="font-mono text-xs">pnpm sync:figma</span>
               <span class="text-fg-tertiary">·</span>
-              <span class="font-mono text-[10px] text-fg-tertiary">2.1s · 340 variables</span>
-              <span class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[10px]" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">
-                <span class="h-1 w-1 rounded-full" style="background: currentColor;"></span>
+              <span class="font-mono text-[10px] text-fg-tertiary"
+                >2.1s · 340 variables</span
+              >
+              <span
+                class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[10px]"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-success) 18%,
+                    transparent
+                  );
+                  color: var(--color-success);
+                "
+              >
+                <span
+                  class="h-1 w-1 rounded-full"
+                  style="background: currentColor"
+                ></span>
                 synced
               </span>
             </div>
@@ -369,88 +614,215 @@
           <div class="lg:col-span-6">
             <div class="relative">
               <!-- corner annotation -->
-              <div class="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary">
+              <div
+                class="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary"
+              >
                 <span class="relative flex h-1.5 w-1.5">
-                  <span class="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style="background: var(--color-success);"></span>
-                  <span class="relative h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+                  <span
+                    class="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping"
+                    style="background: var(--color-success)"
+                  ></span>
+                  <span
+                    class="relative h-1.5 w-1.5 rounded-full"
+                    style="background: var(--color-success)"
+                  ></span>
                 </span>
                 Live pipeline
               </div>
 
-              <div class="glass rounded-2xl p-5 sm:p-6" style="box-shadow: var(--shadow-xl);">
+              <div
+                class="glass rounded-2xl p-5 sm:p-6"
+                style="box-shadow: var(--shadow-xl)"
+              >
                 <!-- 3-node diagram -->
                 <div class="grid grid-cols-3 gap-3 items-stretch">
                   <!-- Node 1: tokens -->
                   <div class="rounded-lg border border-default bg-surface p-3">
-                    <p class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">source</p>
-                    <p class="mt-1 font-mono text-[11px] font-semibold">@wyliedog/<wbr/>tokens</p>
-                    <p class="font-mono text-[9px] text-fg-tertiary mt-0.5">v1.4.0</p>
+                    <p
+                      class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary"
+                    >
+                      source
+                    </p>
+                    <p class="mt-1 font-mono text-[11px] font-semibold">
+                      @wyliedog/<wbr />tokens
+                    </p>
+                    <p class="font-mono text-[9px] text-fg-tertiary mt-0.5">
+                      v1.4.0
+                    </p>
                     <div class="mt-2.5 space-y-1">
                       <div class="flex items-center gap-1.5">
-                        <span class="h-2 w-2 rounded-sm" style="background: oklch(54% 0.18 274);"></span>
-                        <span class="font-mono text-[9px] text-fg-secondary">--color-interactive</span>
+                        <span
+                          class="h-2 w-2 rounded-sm"
+                          style="background: oklch(54% 0.18 274)"
+                        ></span>
+                        <span class="font-mono text-[9px] text-fg-secondary"
+                          >--color-interactive</span
+                        >
                       </div>
                       <div class="flex items-center gap-1.5">
-                        <span class="h-2 w-2 rounded-sm" style="background: var(--color-success);"></span>
-                        <span class="font-mono text-[9px] text-fg-secondary">--color-success</span>
+                        <span
+                          class="h-2 w-2 rounded-sm"
+                          style="background: var(--color-success)"
+                        ></span>
+                        <span class="font-mono text-[9px] text-fg-secondary"
+                          >--color-success</span
+                        >
                       </div>
                       <div class="flex items-center gap-1.5">
-                        <span class="h-2 w-2 rounded-sm" style="background: var(--color-warning);"></span>
-                        <span class="font-mono text-[9px] text-fg-secondary">--color-warning</span>
+                        <span
+                          class="h-2 w-2 rounded-sm"
+                          style="background: var(--color-warning)"
+                        ></span>
+                        <span class="font-mono text-[9px] text-fg-secondary"
+                          >--color-warning</span
+                        >
                       </div>
                       <div class="flex items-center gap-1.5">
-                        <span class="block h-2 w-2 rounded-sm border border-default"></span>
-                        <span class="font-mono text-[9px] text-fg-tertiary">+183 more</span>
+                        <span
+                          class="block h-2 w-2 rounded-sm border border-default"
+                        ></span>
+                        <span class="font-mono text-[9px] text-fg-tertiary"
+                          >+183 more</span
+                        >
                       </div>
                     </div>
                   </div>
 
                   <!-- Node 2: bridge (centered, emphasized) -->
-                  <div class="relative rounded-lg border-2 p-3" style="border-color: var(--color-interactive-primary); background: color-mix(in oklch, var(--color-interactive-primary) 6%, var(--color-surface-primary));">
-                    <p class="font-mono text-[9px] uppercase tracking-wider" style="color: var(--color-interactive-primary);">transform</p>
-                    <p class="mt-1 font-mono text-[11px] font-semibold">Token Bridge</p>
-                    <p class="font-mono text-[9px] text-fg-tertiary mt-0.5">v0.9.2</p>
+                  <div
+                    class="relative rounded-lg border-2 p-3"
+                    style="
+                      border-color: var(--color-interactive-primary);
+                      background: color-mix(
+                        in oklch,
+                        var(--color-interactive-primary) 6%,
+                        var(--color-surface-primary)
+                      );
+                    "
+                  >
+                    <p
+                      class="font-mono text-[9px] uppercase tracking-wider"
+                      style="color: var(--color-interactive-primary)"
+                    >
+                      transform
+                    </p>
+                    <p class="mt-1 font-mono text-[11px] font-semibold">
+                      Token Bridge
+                    </p>
+                    <p class="font-mono text-[9px] text-fg-tertiary mt-0.5">
+                      v0.9.2
+                    </p>
                     <!-- mini activity -->
                     <div class="mt-2.5 space-y-1.5">
-                      <div class="h-1 rounded-full overflow-hidden" style="background: color-mix(in oklch, var(--color-interactive-primary) 18%, transparent);">
-                        <div class="h-full" style="width: 92%; background: var(--color-interactive-primary);"></div>
+                      <div
+                        class="h-1 rounded-full overflow-hidden"
+                        style="
+                          background: color-mix(
+                            in oklch,
+                            var(--color-interactive-primary) 18%,
+                            transparent
+                          );
+                        "
+                      >
+                        <div
+                          class="h-full"
+                          style="
+                            width: 92%;
+                            background: var(--color-interactive-primary);
+                          "
+                        ></div>
                       </div>
-                      <p class="font-mono text-[9px] text-fg-secondary">Mapping &hellip; 312/340</p>
+                      <p class="font-mono text-[9px] text-fg-secondary">
+                        Mapping &hellip; 312/340
+                      </p>
                       <div class="grid grid-cols-3 gap-0.5">
-                        <span class="h-0.5 rounded-full" style="background: var(--color-interactive-primary);"></span>
-                        <span class="h-0.5 rounded-full" style="background: var(--color-interactive-primary);"></span>
-                        <span class="h-0.5 rounded-full" style="background: color-mix(in oklch, var(--color-interactive-primary) 30%, transparent);"></span>
+                        <span
+                          class="h-0.5 rounded-full"
+                          style="background: var(--color-interactive-primary)"
+                        ></span>
+                        <span
+                          class="h-0.5 rounded-full"
+                          style="background: var(--color-interactive-primary)"
+                        ></span>
+                        <span
+                          class="h-0.5 rounded-full"
+                          style="
+                            background: color-mix(
+                              in oklch,
+                              var(--color-interactive-primary) 30%,
+                              transparent
+                            );
+                          "
+                        ></span>
                       </div>
                     </div>
 
                     <!-- inbound + outbound arrows -->
-                    <span class="absolute left-[-22px] top-1/2 -translate-y-1/2 h-px w-5 dashed-flow" style="background-size: 6px 1.5px;"></span>
-                    <span class="absolute right-[-22px] top-1/2 -translate-y-1/2 h-px w-5 dashed-flow" style="background-size: 6px 1.5px;"></span>
-                    <span class="absolute right-[-26px] top-1/2 -translate-y-1/2 grid h-4 w-4 place-items-center rounded-full" style="background: var(--color-interactive-primary); color: var(--color-text-inverse);">
-                      <svg viewBox="0 0 24 24" class="h-2.5 w-2.5" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h12M13 7l5 5-5 5"/></svg>
+                    <span
+                      class="absolute -left-5.5 top-1/2 -translate-y-1/2 h-px w-5 dashed-flow"
+                      style="background-size: 6px 1.5px"
+                    ></span>
+                    <span
+                      class="absolute -right-5.5 top-1/2 -translate-y-1/2 h-px w-5 dashed-flow"
+                      style="background-size: 6px 1.5px"
+                    ></span>
+                    <span
+                      class="absolute -right-6.5 top-1/2 -translate-y-1/2 grid h-4 w-4 place-items-center rounded-full"
+                      style="
+                        background: var(--color-interactive-primary);
+                        color: var(--color-text-inverse);
+                      "
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-2.5 w-2.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                      >
+                        <path d="M5 12h12M13 7l5 5-5 5" />
+                      </svg>
                     </span>
                   </div>
 
                   <!-- Node 3: figma -->
                   <div class="rounded-lg border border-default bg-surface p-3">
-                    <p class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">target</p>
-                    <p class="mt-1 font-mono text-[11px] font-semibold">Figma Variables</p>
-                    <p class="font-mono text-[9px] text-fg-tertiary mt-0.5">Wylie Dog · UI</p>
+                    <p
+                      class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary"
+                    >
+                      target
+                    </p>
+                    <p class="mt-1 font-mono text-[11px] font-semibold">
+                      Figma Variables
+                    </p>
+                    <p class="font-mono text-[9px] text-fg-tertiary mt-0.5">
+                      Wylie Dog · UI
+                    </p>
                     <div class="mt-2.5 space-y-1">
-                      <div class="flex items-center justify-between font-mono text-[9px]">
+                      <div
+                        class="flex items-center justify-between font-mono text-[9px]"
+                      >
                         <span class="text-fg-secondary">Primitives</span>
                         <span class="text-fg-tertiary">186</span>
                       </div>
-                      <div class="flex items-center justify-between font-mono text-[9px]">
+                      <div
+                        class="flex items-center justify-between font-mono text-[9px]"
+                      >
                         <span class="text-fg-secondary">Semantic</span>
                         <span class="text-fg-tertiary">124</span>
                       </div>
-                      <div class="flex items-center justify-between font-mono text-[9px]">
+                      <div
+                        class="flex items-center justify-between font-mono text-[9px]"
+                      >
                         <span class="text-fg-secondary">Components</span>
                         <span class="text-fg-tertiary">30</span>
                       </div>
-                      <div class="mt-1 pt-1 border-t border-default flex items-center justify-between font-mono text-[9px]">
-                        <span style="color: var(--color-success);">●&nbsp;synced</span>
+                      <div
+                        class="mt-1 pt-1 border-t border-default flex items-center justify-between font-mono text-[9px]"
+                      >
+                        <span style="color: var(--color-success)"
+                          >●&nbsp;synced</span
+                        >
                         <span class="text-fg-tertiary">4s ago</span>
                       </div>
                     </div>
@@ -459,23 +831,69 @@
 
                 <!-- mode strip -->
                 <div class="mt-4 grid grid-cols-2 gap-2">
-                  <div class="rounded-md border border-default bg-bg-secondary px-3 py-2 flex items-center gap-2">
-                    <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-secondary" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/></svg>
+                  <div
+                    class="rounded-md border border-default bg-bg-secondary px-3 py-2 flex items-center gap-2"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="h-3.5 w-3.5 text-fg-secondary"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <circle cx="12" cy="12" r="4" />
+                      <path
+                        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"
+                      />
+                    </svg>
                     <span class="text-xs">Light mode</span>
-                    <span class="ml-auto font-mono text-[10px] text-fg-tertiary">340 vars</span>
-                    <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+                    <span class="ml-auto font-mono text-[10px] text-fg-tertiary"
+                      >340 vars</span
+                    >
+                    <span
+                      class="h-1.5 w-1.5 rounded-full"
+                      style="background: var(--color-success)"
+                    ></span>
                   </div>
-                  <div class="rounded-md border border-default bg-bg-secondary px-3 py-2 flex items-center gap-2">
-                    <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-fg-secondary" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                  <div
+                    class="rounded-md border border-default bg-bg-secondary px-3 py-2 flex items-center gap-2"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="h-3.5 w-3.5 text-fg-secondary"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                      />
+                    </svg>
                     <span class="text-xs">Dark mode</span>
-                    <span class="ml-auto font-mono text-[10px] text-fg-tertiary">340 vars</span>
-                    <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+                    <span class="ml-auto font-mono text-[10px] text-fg-tertiary"
+                      >340 vars</span
+                    >
+                    <span
+                      class="h-1.5 w-1.5 rounded-full"
+                      style="background: var(--color-success)"
+                    ></span>
                   </div>
                 </div>
               </div>
 
-              <div class="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary">
-                <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="m9 12 2 2 4-4"/></svg>
+              <div
+                class="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-fg-secondary"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-3 w-3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
                 3 collections · 2 modes
               </div>
             </div>
@@ -484,34 +902,62 @@
       </div>
 
       <!-- Stats strip -->
-      <div class="relative border-t border-default bg-bg-primary/60 backdrop-blur-sm">
+      <div
+        class="relative border-t border-default bg-bg-primary/60 backdrop-blur-sm"
+      >
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <dl class="grid grid-cols-2 lg:grid-cols-4">
             <div class="px-2 py-6 lg:py-7 lg:border-r border-default">
-              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Variables synced</dt>
+              <dt
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Variables synced
+              </dt>
               <dd class="mt-1 flex items-baseline gap-2">
-                <span class="font-serif text-3xl sm:text-4xl font-semibold">340</span>
+                <span class="font-serif text-3xl sm:text-4xl font-semibold"
+                  >340</span
+                >
                 <span class="text-xs text-fg-tertiary">light + dark</span>
               </dd>
             </div>
             <div class="px-2 py-6 lg:py-7 lg:border-r border-default lg:pl-8">
-              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Avg sync time</dt>
+              <dt
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Avg sync time
+              </dt>
               <dd class="mt-1 flex items-baseline gap-2">
-                <span class="font-serif text-3xl sm:text-4xl font-semibold">2.1s</span>
+                <span class="font-serif text-3xl sm:text-4xl font-semibold"
+                  >2.1s</span
+                >
                 <span class="text-xs text-fg-tertiary">incremental diffs</span>
               </dd>
             </div>
-            <div class="px-2 py-6 lg:py-7 lg:border-r border-default lg:pl-8 border-t lg:border-t-0">
-              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Manual handoffs</dt>
+            <div
+              class="px-2 py-6 lg:py-7 lg:border-r border-default lg:pl-8 border-t lg:border-t-0"
+            >
+              <dt
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Manual handoffs
+              </dt>
               <dd class="mt-1 flex items-baseline gap-2">
-                <span class="font-serif text-3xl sm:text-4xl font-semibold">0</span>
+                <span class="font-serif text-3xl sm:text-4xl font-semibold"
+                  >0</span
+                >
                 <span class="text-xs text-fg-tertiary">since v0.9</span>
               </dd>
             </div>
             <div class="px-2 py-6 lg:py-7 lg:pl-8 border-t lg:border-t-0">
-              <dt class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">Drift</dt>
+              <dt
+                class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >
+                Drift
+              </dt>
               <dd class="mt-1 flex items-baseline gap-2">
-                <span class="font-serif text-3xl sm:text-4xl font-semibold">none</span>
+                <span class="font-serif text-3xl sm:text-4xl font-semibold"
+                  >none</span
+                >
                 <span class="text-xs text-fg-tertiary">monitored hourly</span>
               </dd>
             </div>
@@ -526,38 +972,62 @@
     <section class="border-b border-default">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <div class="max-w-2xl">
-          <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">How it works</span>
-          <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
+          <span
+            class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+            >How it works</span
+          >
+          <h2
+            class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight"
+          >
             Five steps from JSON to Figma.
           </h2>
           <p class="mt-3 text-fg-secondary">
-            Token Bridge is a thin transform layer. It reads tokens from where they already live, maps
-            them to the Figma Variables API, and preserves the three-tier hierarchy on both sides.
+            Token Bridge is a thin transform layer. It reads tokens from where
+            they already live, maps them to the Figma Variables API, and
+            preserves the three-tier hierarchy on both sides.
           </p>
         </div>
 
         <ol class="mt-10 space-y-3">
           <!-- Step 1 -->
-          <li class="rounded-xl border border-default bg-surface overflow-hidden">
+          <li
+            class="rounded-xl border border-default bg-surface overflow-hidden"
+          >
             <div class="grid lg:grid-cols-12">
-              <div class="lg:col-span-5 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-default">
+              <div
+                class="lg:col-span-5 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-default"
+              >
                 <div class="flex items-baseline gap-3">
                   <span class="step-num text-fg-tertiary">01</span>
-                  <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">source</span>
+                  <span
+                    class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+                    >source</span
+                  >
                 </div>
-                <h3 class="mt-3 font-serif text-xl font-semibold leading-tight">Tokens are defined as JSON.</h3>
+                <h3 class="mt-3 font-serif text-xl font-semibold leading-tight">
+                  Tokens are defined as JSON.
+                </h3>
                 <p class="mt-2 text-sm text-fg-secondary">
-                  Designers and engineers edit the same JSON files in <span class="font-mono text-xs">packages/tokens</span>.
-                  Style Dictionary compiles them to CSS custom properties; the same JSON is the
-                  Token Bridge input.
+                  Designers and engineers edit the same JSON files in
+                  <span class="font-mono text-xs">packages/tokens</span>. Style
+                  Dictionary compiles them to CSS custom properties; the same
+                  JSON is the Token Bridge input.
                 </p>
               </div>
               <div class="lg:col-span-7 p-6 lg:p-8 bg-bg-secondary">
-                <div class="rounded-md border border-default bg-surface overflow-hidden">
-                  <div class="flex items-center gap-2 px-3 py-1.5 border-b border-default bg-bg-secondary">
-                    <span class="font-mono text-[10px] text-fg-tertiary">packages/tokens/color/interactive.json</span>
+                <div
+                  class="rounded-md border border-default bg-surface overflow-hidden"
+                >
+                  <div
+                    class="flex items-center gap-2 px-3 py-1.5 border-b border-default bg-bg-secondary"
+                  >
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >packages/tokens/color/interactive.json</span
+                    >
                   </div>
-                  <pre class="px-4 py-3 font-mono text-[11.5px] leading-relaxed overflow-x-auto"><span class="text-fg-tertiary">{</span>
+                  <pre
+                    class="px-4 py-3 font-mono text-[11.5px] leading-relaxed overflow-x-auto"
+                  ><span class="text-fg-tertiary">{</span>
   <span class="text-fg">"interactive"</span><span class="text-fg-tertiary">: {</span>
     <span class="text-fg">"primary"</span><span class="text-fg-tertiary">: {</span>
       <span class="text-fg">"value"</span><span class="text-fg-tertiary">:</span> <span style="color: var(--color-interactive-primary);">"oklch(54% 0.18 274)"</span><span class="text-fg-tertiary">,</span>
@@ -574,31 +1044,56 @@
           </li>
 
           <!-- Step 2 -->
-          <li class="rounded-xl border border-default bg-surface overflow-hidden">
+          <li
+            class="rounded-xl border border-default bg-surface overflow-hidden"
+          >
             <div class="grid lg:grid-cols-12">
-              <div class="lg:col-span-5 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-default">
+              <div
+                class="lg:col-span-5 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-default"
+              >
                 <div class="flex items-baseline gap-3">
                   <span class="step-num text-fg-tertiary">02</span>
-                  <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">trigger</span>
+                  <span
+                    class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+                    >trigger</span
+                  >
                 </div>
-                <h3 class="mt-3 font-serif text-xl font-semibold leading-tight">Run <span class="font-mono text-lg">pnpm sync:figma</span>.</h3>
+                <h3 class="mt-3 font-serif text-xl font-semibold leading-tight">
+                  Run <span class="font-mono text-lg">pnpm sync:figma</span>.
+                </h3>
                 <p class="mt-2 text-sm text-fg-secondary">
-                  Local for one-offs; CI on every merge to <span class="font-mono text-xs">main</span>.
-                  The first sync from a clean Figma file takes ~6 seconds; incremental syncs run in 2.
+                  Local for one-offs; CI on every merge to
+                  <span class="font-mono text-xs">main</span>. The first sync
+                  from a clean Figma file takes ~6 seconds; incremental syncs
+                  run in 2.
                 </p>
               </div>
               <div class="lg:col-span-7 p-6 lg:p-8 bg-bg-secondary">
                 <div class="term">
                   <div class="titlebar flex items-center gap-2 px-3 py-2">
                     <div class="flex gap-1.5">
-                      <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(70% 0.18 25);"></span>
-                      <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(80% 0.15 85);"></span>
-                      <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(70% 0.16 145);"></span>
+                      <span
+                        class="h-2.5 w-2.5 rounded-full"
+                        style="background: oklch(70% 0.18 25)"
+                      ></span>
+                      <span
+                        class="h-2.5 w-2.5 rounded-full"
+                        style="background: oklch(80% 0.15 85)"
+                      ></span>
+                      <span
+                        class="h-2.5 w-2.5 rounded-full"
+                        style="background: oklch(70% 0.16 145)"
+                      ></span>
                     </div>
-                    <span class="font-mono text-[10px] dim ml-2">~/wyliedog/ui — zsh</span>
+                    <span class="font-mono text-[10px] dim ml-2"
+                      >~/wyliedog/ui — zsh</span
+                    >
                   </div>
                   <div class="body">
-                    <div><span class="prompt">~/wyliedog/ui</span> <span class="ok">❯</span> pnpm sync:figma</div>
+                    <div>
+                      <span class="prompt">~/wyliedog/ui</span>
+                      <span class="ok">❯</span> pnpm sync:figma
+                    </div>
                     <div class="mt-1 dim">⏵ wyliedog-tokens/bridge run</div>
                   </div>
                 </div>
@@ -607,54 +1102,145 @@
           </li>
 
           <!-- Step 3 -->
-          <li class="rounded-xl border border-default bg-surface overflow-hidden">
+          <li
+            class="rounded-xl border border-default bg-surface overflow-hidden"
+          >
             <div class="grid lg:grid-cols-12">
-              <div class="lg:col-span-5 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-default">
+              <div
+                class="lg:col-span-5 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-default"
+              >
                 <div class="flex items-baseline gap-3">
                   <span class="step-num text-fg-tertiary">03</span>
-                  <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">map</span>
+                  <span
+                    class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+                    >map</span
+                  >
                 </div>
-                <h3 class="mt-3 font-serif text-xl font-semibold leading-tight">CSS properties &rarr; Figma Variables.</h3>
+                <h3 class="mt-3 font-serif text-xl font-semibold leading-tight">
+                  CSS properties &rarr; Figma Variables.
+                </h3>
                 <p class="mt-2 text-sm text-fg-secondary">
-                  Each tier becomes a Figma Variable Collection. Aliases (semantic referencing
-                  primitive) become Figma variable aliases &mdash; not flattened copies &mdash; so the
-                  hierarchy survives the trip.
+                  Each tier becomes a Figma Variable Collection. Aliases
+                  (semantic referencing primitive) become Figma variable aliases
+                  &mdash; not flattened copies &mdash; so the hierarchy survives
+                  the trip.
                 </p>
               </div>
               <div class="lg:col-span-7 p-6 lg:p-8 bg-bg-secondary">
                 <!-- 3-tier hierarchy diagram -->
                 <div class="space-y-2">
-                  <div class="rounded-md border border-default bg-surface p-3 flex items-center gap-3">
-                    <span class="grid h-7 w-7 place-items-center rounded font-mono text-[10px] font-semibold" style="background: color-mix(in oklch, var(--color-interactive-primary) 14%, transparent); color: var(--color-interactive-primary);">P</span>
+                  <div
+                    class="rounded-md border border-default bg-surface p-3 flex items-center gap-3"
+                  >
+                    <span
+                      class="grid h-7 w-7 place-items-center rounded font-mono text-[10px] font-semibold"
+                      style="
+                        background: color-mix(
+                          in oklch,
+                          var(--color-interactive-primary) 14%,
+                          transparent
+                        );
+                        color: var(--color-interactive-primary);
+                      "
+                      >P</span
+                    >
                     <div class="flex-1 min-w-0">
-                      <p class="font-mono text-[11px] font-semibold">Primitives</p>
-                      <p class="font-mono text-[10px] text-fg-tertiary truncate">color.blue.500 = oklch(54% 0.18 274)</p>
+                      <p class="font-mono text-[11px] font-semibold">
+                        Primitives
+                      </p>
+                      <p
+                        class="font-mono text-[10px] text-fg-tertiary truncate"
+                      >
+                        color.blue.500 = oklch(54% 0.18 274)
+                      </p>
                     </div>
-                    <span class="font-mono text-[10px] text-fg-tertiary">186</span>
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >186</span
+                    >
                   </div>
                   <div class="relative pl-7">
-                    <span class="absolute left-3 -top-1 h-3 w-px" style="background: var(--color-border-strong);"></span>
-                    <span class="absolute left-3 top-1/2 h-px w-4" style="background: var(--color-border-strong);"></span>
+                    <span
+                      class="absolute left-3 -top-1 h-3 w-px"
+                      style="background: var(--color-border-strong)"
+                    ></span>
+                    <span
+                      class="absolute left-3 top-1/2 h-px w-4"
+                      style="background: var(--color-border-strong)"
+                    ></span>
                   </div>
-                  <div class="rounded-md border border-default bg-surface p-3 flex items-center gap-3 ml-4">
-                    <span class="grid h-7 w-7 place-items-center rounded font-mono text-[10px] font-semibold" style="background: color-mix(in oklch, var(--color-success) 14%, transparent); color: var(--color-success);">S</span>
+                  <div
+                    class="rounded-md border border-default bg-surface p-3 flex items-center gap-3 ml-4"
+                  >
+                    <span
+                      class="grid h-7 w-7 place-items-center rounded font-mono text-[10px] font-semibold"
+                      style="
+                        background: color-mix(
+                          in oklch,
+                          var(--color-success) 14%,
+                          transparent
+                        );
+                        color: var(--color-success);
+                      "
+                      >S</span
+                    >
                     <div class="flex-1 min-w-0">
-                      <p class="font-mono text-[11px] font-semibold">Semantic <span class="text-fg-tertiary font-normal">→ alias to primitive</span></p>
-                      <p class="font-mono text-[10px] text-fg-tertiary truncate">interactive.primary = {color.blue.500}</p>
+                      <p class="font-mono text-[11px] font-semibold">
+                        Semantic
+                        <span class="text-fg-tertiary font-normal"
+                          >→ alias to primitive</span
+                        >
+                      </p>
+                      <p
+                        class="font-mono text-[10px] text-fg-tertiary truncate"
+                      >
+                        interactive.primary = {color.blue.500}
+                      </p>
                     </div>
-                    <span class="font-mono text-[10px] text-fg-tertiary">124</span>
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >124</span
+                    >
                   </div>
                   <div class="relative pl-11">
-                    <span class="absolute left-7 -top-1 h-3 w-px" style="background: var(--color-border-strong);"></span>
-                    <span class="absolute left-7 top-1/2 h-px w-4" style="background: var(--color-border-strong);"></span>
+                    <span
+                      class="absolute left-7 -top-1 h-3 w-px"
+                      style="background: var(--color-border-strong)"
+                    ></span>
+                    <span
+                      class="absolute left-7 top-1/2 h-px w-4"
+                      style="background: var(--color-border-strong)"
+                    ></span>
                   </div>
-                  <div class="rounded-md border border-default bg-surface p-3 flex items-center gap-3 ml-8">
-                    <span class="grid h-7 w-7 place-items-center rounded font-mono text-[10px] font-semibold" style="background: color-mix(in oklch, var(--color-warning) 14%, transparent); color: var(--color-warning);">C</span>
+                  <div
+                    class="rounded-md border border-default bg-surface p-3 flex items-center gap-3 ml-8"
+                  >
+                    <span
+                      class="grid h-7 w-7 place-items-center rounded font-mono text-[10px] font-semibold"
+                      style="
+                        background: color-mix(
+                          in oklch,
+                          var(--color-warning) 14%,
+                          transparent
+                        );
+                        color: var(--color-warning);
+                      "
+                      >C</span
+                    >
                     <div class="flex-1 min-w-0">
-                      <p class="font-mono text-[11px] font-semibold">Components <span class="text-fg-tertiary font-normal">→ alias to semantic</span></p>
-                      <p class="font-mono text-[10px] text-fg-tertiary truncate">button.primary.bg = {interactive.primary}</p>
+                      <p class="font-mono text-[11px] font-semibold">
+                        Components
+                        <span class="text-fg-tertiary font-normal"
+                          >→ alias to semantic</span
+                        >
+                      </p>
+                      <p
+                        class="font-mono text-[10px] text-fg-tertiary truncate"
+                      >
+                        button.primary.bg = {interactive.primary}
+                      </p>
                     </div>
-                    <span class="font-mono text-[10px] text-fg-tertiary">30</span>
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >30</span
+                    >
                   </div>
                 </div>
               </div>
@@ -662,46 +1248,139 @@
           </li>
 
           <!-- Step 4 -->
-          <li class="rounded-xl border border-default bg-surface overflow-hidden">
+          <li
+            class="rounded-xl border border-default bg-surface overflow-hidden"
+          >
             <div class="grid lg:grid-cols-12">
-              <div class="lg:col-span-5 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-default">
+              <div
+                class="lg:col-span-5 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-default"
+              >
                 <div class="flex items-baseline gap-3">
                   <span class="step-num text-fg-tertiary">04</span>
-                  <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">modes</span>
+                  <span
+                    class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+                    >modes</span
+                  >
                 </div>
-                <h3 class="mt-3 font-serif text-xl font-semibold leading-tight">Light and dark, in lockstep.</h3>
+                <h3 class="mt-3 font-serif text-xl font-semibold leading-tight">
+                  Light and dark, in lockstep.
+                </h3>
                 <p class="mt-2 text-sm text-fg-secondary">
-                  Each Figma Variable carries both mode values. Switching the Figma mode swaps every
-                  bound layer in one click &mdash; the same swap that the <span class="font-mono text-xs">.dark</span> class
-                  does in code.
+                  Each Figma Variable carries both mode values. Switching the
+                  Figma mode swaps every bound layer in one click &mdash; the
+                  same swap that the
+                  <span class="font-mono text-xs">.dark</span> class does in
+                  code.
                 </p>
               </div>
               <div class="lg:col-span-7 p-6 lg:p-8 bg-bg-secondary">
-                <div class="rounded-md border border-default bg-surface overflow-hidden">
-                  <div class="grid grid-cols-12 px-3 py-2 border-b border-default bg-bg-secondary font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">
+                <div
+                  class="rounded-md border border-default bg-surface overflow-hidden"
+                >
+                  <div
+                    class="grid grid-cols-12 px-3 py-2 border-b border-default bg-bg-secondary font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+                  >
                     <div class="col-span-6">Variable</div>
                     <div class="col-span-3">Light</div>
                     <div class="col-span-3">Dark</div>
                   </div>
-                  <div class="px-3 py-2 grid grid-cols-12 items-center border-b border-default text-xs">
-                    <div class="col-span-6 font-mono text-[11px]">interactive.primary</div>
-                    <div class="col-span-3 flex items-center gap-1.5"><span class="h-3 w-3 rounded" style="background: oklch(54% 0.18 274);"></span><span class="font-mono text-[10px] text-fg-tertiary">54 .18</span></div>
-                    <div class="col-span-3 flex items-center gap-1.5"><span class="h-3 w-3 rounded" style="background: oklch(68% 0.17 274);"></span><span class="font-mono text-[10px] text-fg-tertiary">68 .17</span></div>
+                  <div
+                    class="px-3 py-2 grid grid-cols-12 items-center border-b border-default text-xs"
+                  >
+                    <div class="col-span-6 font-mono text-[11px]">
+                      interactive.primary
+                    </div>
+                    <div class="col-span-3 flex items-center gap-1.5">
+                      <span
+                        class="h-3 w-3 rounded"
+                        style="background: oklch(54% 0.18 274)"
+                      ></span
+                      ><span class="font-mono text-[10px] text-fg-tertiary"
+                        >54 .18</span
+                      >
+                    </div>
+                    <div class="col-span-3 flex items-center gap-1.5">
+                      <span
+                        class="h-3 w-3 rounded"
+                        style="background: oklch(68% 0.17 274)"
+                      ></span
+                      ><span class="font-mono text-[10px] text-fg-tertiary"
+                        >68 .17</span
+                      >
+                    </div>
                   </div>
-                  <div class="px-3 py-2 grid grid-cols-12 items-center border-b border-default text-xs">
-                    <div class="col-span-6 font-mono text-[11px]">background.primary</div>
-                    <div class="col-span-3 flex items-center gap-1.5"><span class="h-3 w-3 rounded border border-default" style="background: oklch(99% 0.004 250);"></span><span class="font-mono text-[10px] text-fg-tertiary">99 0</span></div>
-                    <div class="col-span-3 flex items-center gap-1.5"><span class="h-3 w-3 rounded" style="background: oklch(15% 0.012 260);"></span><span class="font-mono text-[10px] text-fg-tertiary">15 .01</span></div>
+                  <div
+                    class="px-3 py-2 grid grid-cols-12 items-center border-b border-default text-xs"
+                  >
+                    <div class="col-span-6 font-mono text-[11px]">
+                      background.primary
+                    </div>
+                    <div class="col-span-3 flex items-center gap-1.5">
+                      <span
+                        class="h-3 w-3 rounded border border-default"
+                        style="background: oklch(99% 0.004 250)"
+                      ></span
+                      ><span class="font-mono text-[10px] text-fg-tertiary"
+                        >99 0</span
+                      >
+                    </div>
+                    <div class="col-span-3 flex items-center gap-1.5">
+                      <span
+                        class="h-3 w-3 rounded"
+                        style="background: oklch(15% 0.012 260)"
+                      ></span
+                      ><span class="font-mono text-[10px] text-fg-tertiary"
+                        >15 .01</span
+                      >
+                    </div>
                   </div>
-                  <div class="px-3 py-2 grid grid-cols-12 items-center border-b border-default text-xs">
-                    <div class="col-span-6 font-mono text-[11px]">text.primary</div>
-                    <div class="col-span-3 flex items-center gap-1.5"><span class="h-3 w-3 rounded" style="background: oklch(20% 0.02 260);"></span><span class="font-mono text-[10px] text-fg-tertiary">20 .02</span></div>
-                    <div class="col-span-3 flex items-center gap-1.5"><span class="h-3 w-3 rounded border border-default" style="background: oklch(96% 0.005 250);"></span><span class="font-mono text-[10px] text-fg-tertiary">96 0</span></div>
+                  <div
+                    class="px-3 py-2 grid grid-cols-12 items-center border-b border-default text-xs"
+                  >
+                    <div class="col-span-6 font-mono text-[11px]">
+                      text.primary
+                    </div>
+                    <div class="col-span-3 flex items-center gap-1.5">
+                      <span
+                        class="h-3 w-3 rounded"
+                        style="background: oklch(20% 0.02 260)"
+                      ></span
+                      ><span class="font-mono text-[10px] text-fg-tertiary"
+                        >20 .02</span
+                      >
+                    </div>
+                    <div class="col-span-3 flex items-center gap-1.5">
+                      <span
+                        class="h-3 w-3 rounded border border-default"
+                        style="background: oklch(96% 0.005 250)"
+                      ></span
+                      ><span class="font-mono text-[10px] text-fg-tertiary"
+                        >96 0</span
+                      >
+                    </div>
                   </div>
                   <div class="px-3 py-2 grid grid-cols-12 items-center text-xs">
-                    <div class="col-span-6 font-mono text-[11px]">border.primary</div>
-                    <div class="col-span-3 flex items-center gap-1.5"><span class="h-3 w-3 rounded" style="background: oklch(90% 0.01 260);"></span><span class="font-mono text-[10px] text-fg-tertiary">90 .01</span></div>
-                    <div class="col-span-3 flex items-center gap-1.5"><span class="h-3 w-3 rounded" style="background: oklch(30% 0.018 260);"></span><span class="font-mono text-[10px] text-fg-tertiary">30 .01</span></div>
+                    <div class="col-span-6 font-mono text-[11px]">
+                      border.primary
+                    </div>
+                    <div class="col-span-3 flex items-center gap-1.5">
+                      <span
+                        class="h-3 w-3 rounded"
+                        style="background: oklch(90% 0.01 260)"
+                      ></span
+                      ><span class="font-mono text-[10px] text-fg-tertiary"
+                        >90 .01</span
+                      >
+                    </div>
+                    <div class="col-span-3 flex items-center gap-1.5">
+                      <span
+                        class="h-3 w-3 rounded"
+                        style="background: oklch(30% 0.018 260)"
+                      ></span
+                      ><span class="font-mono text-[10px] text-fg-tertiary"
+                        >30 .01</span
+                      >
+                    </div>
                   </div>
                 </div>
               </div>
@@ -709,35 +1388,78 @@
           </li>
 
           <!-- Step 5 -->
-          <li class="rounded-xl border border-default bg-surface overflow-hidden">
+          <li
+            class="rounded-xl border border-default bg-surface overflow-hidden"
+          >
             <div class="grid lg:grid-cols-12">
-              <div class="lg:col-span-5 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-default">
+              <div
+                class="lg:col-span-5 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-default"
+              >
                 <div class="flex items-baseline gap-3">
                   <span class="step-num text-fg-tertiary">05</span>
-                  <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">propagate</span>
+                  <span
+                    class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+                    >propagate</span
+                  >
                 </div>
-                <h3 class="mt-3 font-serif text-xl font-semibold leading-tight">Figma components update on the spot.</h3>
+                <h3 class="mt-3 font-serif text-xl font-semibold leading-tight">
+                  Figma components update on the spot.
+                </h3>
                 <p class="mt-2 text-sm text-fg-secondary">
-                  Every Figma layer bound to a synced variable refreshes the moment the file
-                  reopens &mdash; no detach, no rebinding, no &ldquo;please pull&rdquo; ping. Designers
-                  notice the same way engineers do: their work suddenly matches reality.
+                  Every Figma layer bound to a synced variable refreshes the
+                  moment the file reopens &mdash; no detach, no rebinding, no
+                  &ldquo;please pull&rdquo; ping. Designers notice the same way
+                  engineers do: their work suddenly matches reality.
                 </p>
               </div>
               <div class="lg:col-span-7 p-6 lg:p-8 bg-bg-secondary">
                 <div class="grid grid-cols-2 gap-3 items-center">
                   <div class="rounded-md border border-default bg-surface p-4">
-                    <span class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary">before sync</span>
-                    <div class="mt-3 h-12 rounded-md flex items-center justify-center font-semibold text-sm" style="background: oklch(58% 0.16 274); color: oklch(99% 0.004 250);">
+                    <span
+                      class="font-mono text-[9px] uppercase tracking-wider text-fg-tertiary"
+                      >before sync</span
+                    >
+                    <div
+                      class="mt-3 h-12 rounded-md flex items-center justify-center font-semibold text-sm"
+                      style="
+                        background: oklch(58% 0.16 274);
+                        color: oklch(99% 0.004 250);
+                      "
+                    >
                       Save changes
                     </div>
-                    <p class="mt-2 font-mono text-[10px] text-fg-tertiary">oklch(58% .16 274)</p>
+                    <p class="mt-2 font-mono text-[10px] text-fg-tertiary">
+                      oklch(58% .16 274)
+                    </p>
                   </div>
-                  <div class="rounded-md border-2 p-4" style="border-color: var(--color-interactive-primary); background: color-mix(in oklch, var(--color-interactive-primary) 4%, var(--color-surface-primary));">
-                    <span class="font-mono text-[9px] uppercase tracking-wider" style="color: var(--color-interactive-primary);">after sync</span>
-                    <div class="mt-3 h-12 rounded-md flex items-center justify-center font-semibold text-sm" style="background: var(--color-interactive-primary); color: var(--color-text-inverse);">
+                  <div
+                    class="rounded-md border-2 p-4"
+                    style="
+                      border-color: var(--color-interactive-primary);
+                      background: color-mix(
+                        in oklch,
+                        var(--color-interactive-primary) 4%,
+                        var(--color-surface-primary)
+                      );
+                    "
+                  >
+                    <span
+                      class="font-mono text-[9px] uppercase tracking-wider"
+                      style="color: var(--color-interactive-primary)"
+                      >after sync</span
+                    >
+                    <div
+                      class="mt-3 h-12 rounded-md flex items-center justify-center font-semibold text-sm"
+                      style="
+                        background: var(--color-interactive-primary);
+                        color: var(--color-text-inverse);
+                      "
+                    >
                       Save changes
                     </div>
-                    <p class="mt-2 font-mono text-[10px] text-fg-tertiary">oklch(54% .18 274)</p>
+                    <p class="mt-2 font-mono text-[10px] text-fg-tertiary">
+                      oklch(54% .18 274)
+                    </p>
                   </div>
                 </div>
               </div>
@@ -752,26 +1474,46 @@
          ===================================================================== -->
     <section class="border-b border-default bg-bg-secondary">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
-        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10">
+        <div
+          class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10"
+        >
           <div class="max-w-2xl">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">What syncs</span>
-            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
+            <span
+              class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >What syncs</span
+            >
+            <h2
+              class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight"
+            >
               Every token category. Both modes.
             </h2>
             <p class="mt-3 text-fg-secondary">
-              Token Bridge handles every primitive type Figma Variables supports. What it can&rsquo;t
-              represent natively (motion easings, complex shadows) we expose as documented
-              strings &mdash; with a fallback hex for backwards compatibility.
+              Token Bridge handles every primitive type Figma Variables
+              supports. What it can&rsquo;t represent natively (motion easings,
+              complex shadows) we expose as documented strings &mdash; with a
+              fallback hex for backwards compatibility.
             </p>
           </div>
-          <div class="inline-flex items-center gap-2 rounded-full border border-default bg-surface px-3 py-1.5">
-            <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
-            <span class="font-mono text-[10px] uppercase tracking-wider text-fg-secondary">340 variables · last sync 4s ago</span>
+          <div
+            class="inline-flex items-center gap-2 rounded-full border border-default bg-surface px-3 py-1.5"
+          >
+            <span
+              class="h-1.5 w-1.5 rounded-full"
+              style="background: var(--color-success)"
+            ></span>
+            <span
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-secondary"
+              >340 variables · last sync 4s ago</span
+            >
           </div>
         </div>
 
-        <div class="rounded-xl border border-default bg-surface overflow-hidden">
-          <div class="grid grid-cols-12 px-5 py-3 border-b border-default bg-bg-secondary font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">
+        <div
+          class="rounded-xl border border-default bg-surface overflow-hidden"
+        >
+          <div
+            class="grid grid-cols-12 px-5 py-3 border-b border-default bg-bg-secondary font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+          >
             <div class="col-span-4">Category</div>
             <div class="col-span-3">CSS property prefix</div>
             <div class="col-span-2">Figma type</div>
@@ -780,122 +1522,330 @@
           </div>
 
           <!-- Color -->
-          <div class="grid grid-cols-12 items-center px-5 py-3 border-b border-default">
+          <div
+            class="grid grid-cols-12 items-center px-5 py-3 border-b border-default"
+          >
             <div class="col-span-4 flex items-center gap-3">
-              <span class="grid h-8 w-8 place-items-center rounded-md" style="background: color-mix(in oklch, var(--color-interactive-primary) 14%, transparent); color: var(--color-interactive-primary);">
-                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/></svg>
+              <span
+                class="grid h-8 w-8 place-items-center rounded-md"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-interactive-primary) 14%,
+                    transparent
+                  );
+                  color: var(--color-interactive-primary);
+                "
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="12" cy="12" r="9" />
+                </svg>
               </span>
               <div>
                 <p class="text-sm font-semibold">Color</p>
-                <p class="text-[11px] text-fg-tertiary">All 3 tiers, light + dark</p>
+                <p class="text-[11px] text-fg-tertiary">
+                  All 3 tiers, light + dark
+                </p>
               </div>
             </div>
-            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">--color-*</div>
-            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">COLOR</div>
-            <div class="col-span-2 text-right font-mono text-sm font-semibold">186</div>
+            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">
+              --color-*
+            </div>
+            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">
+              COLOR
+            </div>
+            <div class="col-span-2 text-right font-mono text-sm font-semibold">
+              186
+            </div>
             <div class="col-span-1 text-right">
-              <span class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px]" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">2</span>
+              <span
+                class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px]"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-success) 18%,
+                    transparent
+                  );
+                  color: var(--color-success);
+                "
+                >2</span
+              >
             </div>
           </div>
 
           <!-- Typography -->
-          <div class="grid grid-cols-12 items-center px-5 py-3 border-b border-default">
+          <div
+            class="grid grid-cols-12 items-center px-5 py-3 border-b border-default"
+          >
             <div class="col-span-4 flex items-center gap-3">
-              <span class="grid h-8 w-8 place-items-center rounded-md" style="background: color-mix(in oklch, var(--color-text-primary) 8%, transparent); color: var(--color-text-secondary);">
-                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+              <span
+                class="grid h-8 w-8 place-items-center rounded-md"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-text-primary) 8%,
+                    transparent
+                  );
+                  color: var(--color-text-secondary);
+                "
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M4 7V4h16v3M9 20h6M12 4v16" />
+                </svg>
               </span>
               <div>
                 <p class="text-sm font-semibold">Typography</p>
-                <p class="text-[11px] text-fg-tertiary">Size, weight, line height, letter spacing</p>
+                <p class="text-[11px] text-fg-tertiary">
+                  Size, weight, line height, letter spacing
+                </p>
               </div>
             </div>
-            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">--font-*, --text-*</div>
-            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">FLOAT &middot; STRING</div>
-            <div class="col-span-2 text-right font-mono text-sm font-semibold">42</div>
+            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">
+              --font-*, --text-*
+            </div>
+            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">
+              FLOAT &middot; STRING
+            </div>
+            <div class="col-span-2 text-right font-mono text-sm font-semibold">
+              42
+            </div>
             <div class="col-span-1 text-right">
-              <span class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px] text-fg-tertiary" style="background: var(--color-background-tertiary);">1</span>
+              <span
+                class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px] text-fg-tertiary"
+                style="background: var(--color-background-tertiary)"
+                >1</span
+              >
             </div>
           </div>
 
           <!-- Spacing -->
-          <div class="grid grid-cols-12 items-center px-5 py-3 border-b border-default">
+          <div
+            class="grid grid-cols-12 items-center px-5 py-3 border-b border-default"
+          >
             <div class="col-span-4 flex items-center gap-3">
-              <span class="grid h-8 w-8 place-items-center rounded-md" style="background: color-mix(in oklch, var(--color-text-primary) 8%, transparent); color: var(--color-text-secondary);">
-                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+              <span
+                class="grid h-8 w-8 place-items-center rounded-md"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-text-primary) 8%,
+                    transparent
+                  );
+                  color: var(--color-text-secondary);
+                "
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M3 6h18M3 12h18M3 18h18" />
+                </svg>
               </span>
               <div>
                 <p class="text-sm font-semibold">Spacing</p>
-                <p class="text-[11px] text-fg-tertiary">28-step scale, 0 through 96</p>
+                <p class="text-[11px] text-fg-tertiary">
+                  28-step scale, 0 through 96
+                </p>
               </div>
             </div>
-            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">--space-*</div>
-            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">FLOAT</div>
-            <div class="col-span-2 text-right font-mono text-sm font-semibold">28</div>
+            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">
+              --space-*
+            </div>
+            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">
+              FLOAT
+            </div>
+            <div class="col-span-2 text-right font-mono text-sm font-semibold">
+              28
+            </div>
             <div class="col-span-1 text-right">
-              <span class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px] text-fg-tertiary" style="background: var(--color-background-tertiary);">1</span>
+              <span
+                class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px] text-fg-tertiary"
+                style="background: var(--color-background-tertiary)"
+                >1</span
+              >
             </div>
           </div>
 
           <!-- Radius -->
-          <div class="grid grid-cols-12 items-center px-5 py-3 border-b border-default">
+          <div
+            class="grid grid-cols-12 items-center px-5 py-3 border-b border-default"
+          >
             <div class="col-span-4 flex items-center gap-3">
-              <span class="grid h-8 w-8 place-items-center rounded-md" style="background: color-mix(in oklch, var(--color-text-primary) 8%, transparent); color: var(--color-text-secondary);">
-                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="6"/></svg>
+              <span
+                class="grid h-8 w-8 place-items-center rounded-md"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-text-primary) 8%,
+                    transparent
+                  );
+                  color: var(--color-text-secondary);
+                "
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="6" />
+                </svg>
               </span>
               <div>
                 <p class="text-sm font-semibold">Radius</p>
-                <p class="text-[11px] text-fg-tertiary">sm 6px &middot; md 10px &middot; lg 14px &middot; xl 20px</p>
+                <p class="text-[11px] text-fg-tertiary">
+                  sm 6px &middot; md 10px &middot; lg 14px &middot; xl 20px
+                </p>
               </div>
             </div>
-            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">--radius-*</div>
-            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">FLOAT</div>
-            <div class="col-span-2 text-right font-mono text-sm font-semibold">12</div>
+            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">
+              --radius-*
+            </div>
+            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">
+              FLOAT
+            </div>
+            <div class="col-span-2 text-right font-mono text-sm font-semibold">
+              12
+            </div>
             <div class="col-span-1 text-right">
-              <span class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px] text-fg-tertiary" style="background: var(--color-background-tertiary);">1</span>
+              <span
+                class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px] text-fg-tertiary"
+                style="background: var(--color-background-tertiary)"
+                >1</span
+              >
             </div>
           </div>
 
           <!-- Shadow -->
-          <div class="grid grid-cols-12 items-center px-5 py-3 border-b border-default">
+          <div
+            class="grid grid-cols-12 items-center px-5 py-3 border-b border-default"
+          >
             <div class="col-span-4 flex items-center gap-3">
-              <span class="grid h-8 w-8 place-items-center rounded-md" style="background: color-mix(in oklch, var(--color-text-primary) 8%, transparent); color: var(--color-text-secondary);">
-                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="14" height="14" rx="2"/><rect x="7" y="7" width="14" height="14" rx="2"/></svg>
+              <span
+                class="grid h-8 w-8 place-items-center rounded-md"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-text-primary) 8%,
+                    transparent
+                  );
+                  color: var(--color-text-secondary);
+                "
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="3" y="3" width="14" height="14" rx="2" />
+                  <rect x="7" y="7" width="14" height="14" rx="2" />
+                </svg>
               </span>
               <div>
                 <p class="text-sm font-semibold">Elevation</p>
-                <p class="text-[11px] text-fg-tertiary">xs &middot; sm &middot; md &middot; lg &middot; xl</p>
+                <p class="text-[11px] text-fg-tertiary">
+                  xs &middot; sm &middot; md &middot; lg &middot; xl
+                </p>
               </div>
             </div>
-            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">--shadow-*</div>
-            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">EFFECT</div>
-            <div class="col-span-2 text-right font-mono text-sm font-semibold">9</div>
+            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">
+              --shadow-*
+            </div>
+            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">
+              EFFECT
+            </div>
+            <div class="col-span-2 text-right font-mono text-sm font-semibold">
+              9
+            </div>
             <div class="col-span-1 text-right">
-              <span class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px]" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">2</span>
+              <span
+                class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px]"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-success) 18%,
+                    transparent
+                  );
+                  color: var(--color-success);
+                "
+                >2</span
+              >
             </div>
           </div>
 
           <!-- Motion -->
           <div class="grid grid-cols-12 items-center px-5 py-3">
             <div class="col-span-4 flex items-center gap-3">
-              <span class="grid h-8 w-8 place-items-center rounded-md" style="background: color-mix(in oklch, var(--color-text-primary) 8%, transparent); color: var(--color-text-secondary);">
-                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17c4 0 6-12 10-12s6 12 10 12"/></svg>
+              <span
+                class="grid h-8 w-8 place-items-center rounded-md"
+                style="
+                  background: color-mix(
+                    in oklch,
+                    var(--color-text-primary) 8%,
+                    transparent
+                  );
+                  color: var(--color-text-secondary);
+                "
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M3 17c4 0 6-12 10-12s6 12 10 12" />
+                </svg>
               </span>
               <div>
                 <p class="text-sm font-semibold">Motion</p>
-                <p class="text-[11px] text-fg-tertiary">Easing curves, durations</p>
+                <p class="text-[11px] text-fg-tertiary">
+                  Easing curves, durations
+                </p>
               </div>
             </div>
-            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">--ease-*, --duration-*</div>
-            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">STRING</div>
-            <div class="col-span-2 text-right font-mono text-sm font-semibold">8</div>
+            <div class="col-span-3 font-mono text-[11px] text-fg-secondary">
+              --ease-*, --duration-*
+            </div>
+            <div class="col-span-2 font-mono text-[11px] text-fg-secondary">
+              STRING
+            </div>
+            <div class="col-span-2 text-right font-mono text-sm font-semibold">
+              8
+            </div>
             <div class="col-span-1 text-right">
-              <span class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px] text-fg-tertiary" style="background: var(--color-background-tertiary);">1</span>
+              <span
+                class="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[9px] text-fg-tertiary"
+                style="background: var(--color-background-tertiary)"
+                >1</span
+              >
             </div>
           </div>
         </div>
 
         <p class="mt-4 text-xs text-fg-tertiary text-center">
-          <span class="font-mono">+ aliases</span> &middot; semantic and component variables resolve through Figma&rsquo;s native aliasing, not as flattened copies.
+          <span class="font-mono">+ aliases</span> &middot; semantic and
+          component variables resolve through Figma&rsquo;s native aliasing, not
+          as flattened copies.
         </p>
       </div>
     </section>
@@ -907,95 +1857,289 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <div class="grid lg:grid-cols-12 gap-10 items-start">
           <div class="lg:col-span-4 lg:sticky lg:top-24">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">For designers</span>
-            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
-              The variables panel <span class="text-interactive">you already use.</span>
+            <span
+              class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >For designers</span
+            >
+            <h2
+              class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight"
+            >
+              The variables panel
+              <span class="text-interactive">you already use.</span>
             </h2>
             <p class="mt-4 text-fg-secondary text-balance">
-              No plugin to install, no proprietary panel. Token Bridge writes into Figma&rsquo;s native
-              Variables &mdash; so designers see token names like <span class="font-mono text-xs">interactive/primary</span>,
-              not raw OKLCH strings, in every fill, stroke, and effect picker.
+              No plugin to install, no proprietary panel. Token Bridge writes
+              into Figma&rsquo;s native Variables &mdash; so designers see token
+              names like
+              <span class="font-mono text-xs">interactive/primary</span>, not
+              raw OKLCH strings, in every fill, stroke, and effect picker.
             </p>
             <ul class="mt-6 space-y-2.5 text-sm">
               <li class="flex items-start gap-2.5">
-                <span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">
-                  <svg viewBox="0 0 24 24" class="h-2.5 w-2.5" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+                <span
+                  class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full"
+                  style="
+                    background: color-mix(
+                      in oklch,
+                      var(--color-success) 18%,
+                      transparent
+                    );
+                    color: var(--color-success);
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-2.5 w-2.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  >
+                    <path d="m5 12 5 5L20 7" />
+                  </svg>
                 </span>
-                <span class="text-fg-secondary">Bind any layer property to a token by name.</span>
+                <span class="text-fg-secondary"
+                  >Bind any layer property to a token by name.</span
+                >
               </li>
               <li class="flex items-start gap-2.5">
-                <span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">
-                  <svg viewBox="0 0 24 24" class="h-2.5 w-2.5" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+                <span
+                  class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full"
+                  style="
+                    background: color-mix(
+                      in oklch,
+                      var(--color-success) 18%,
+                      transparent
+                    );
+                    color: var(--color-success);
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-2.5 w-2.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  >
+                    <path d="m5 12 5 5L20 7" />
+                  </svg>
                 </span>
-                <span class="text-fg-secondary">Switch Light &harr; Dark on any frame in one click.</span>
+                <span class="text-fg-secondary"
+                  >Switch Light &harr; Dark on any frame in one click.</span
+                >
               </li>
               <li class="flex items-start gap-2.5">
-                <span class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">
-                  <svg viewBox="0 0 24 24" class="h-2.5 w-2.5" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>
+                <span
+                  class="mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full"
+                  style="
+                    background: color-mix(
+                      in oklch,
+                      var(--color-success) 18%,
+                      transparent
+                    );
+                    color: var(--color-success);
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-2.5 w-2.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                  >
+                    <path d="m5 12 5 5L20 7" />
+                  </svg>
                 </span>
-                <span class="text-fg-secondary">Code-set values are read-only in Figma. No accidental drift.</span>
+                <span class="text-fg-secondary"
+                  >Code-set values are read-only in Figma. No accidental
+                  drift.</span
+                >
               </li>
             </ul>
           </div>
 
           <!-- Figma Variables panel mockup -->
           <div class="lg:col-span-8">
-            <div class="rounded-xl border border-default bg-surface overflow-hidden" style="box-shadow: var(--shadow-xl);">
+            <div
+              class="rounded-xl border border-default bg-surface overflow-hidden"
+              style="box-shadow: var(--shadow-xl)"
+            >
               <!-- titlebar -->
-              <div class="flex items-center gap-2 border-b border-default px-3 py-2 bg-bg-secondary">
+              <div
+                class="flex items-center gap-2 border-b border-default px-3 py-2 bg-bg-secondary"
+              >
                 <div class="flex gap-1.5">
-                  <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(70% 0.18 25);"></span>
-                  <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(80% 0.15 85);"></span>
-                  <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(70% 0.16 145);"></span>
+                  <span
+                    class="h-2.5 w-2.5 rounded-full"
+                    style="background: oklch(70% 0.18 25)"
+                  ></span>
+                  <span
+                    class="h-2.5 w-2.5 rounded-full"
+                    style="background: oklch(80% 0.15 85)"
+                  ></span>
+                  <span
+                    class="h-2.5 w-2.5 rounded-full"
+                    style="background: oklch(70% 0.16 145)"
+                  ></span>
                 </div>
-                <div class="flex-1 text-center font-mono text-[11px] text-fg-tertiary">Figma · Wylie Dog · UI</div>
-                <span class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[10px]" style="background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success);">
-                  <span class="h-1 w-1 rounded-full" style="background: currentColor;"></span>
+                <div
+                  class="flex-1 text-center font-mono text-[11px] text-fg-tertiary"
+                >
+                  Figma · Wylie Dog · UI
+                </div>
+                <span
+                  class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[10px]"
+                  style="
+                    background: color-mix(
+                      in oklch,
+                      var(--color-success) 18%,
+                      transparent
+                    );
+                    color: var(--color-success);
+                  "
+                >
+                  <span
+                    class="h-1 w-1 rounded-full"
+                    style="background: currentColor"
+                  ></span>
                   bound to bridge
                 </span>
               </div>
 
               <!-- variables modal -->
-              <div class="grid grid-cols-12 h-[520px]">
+              <div class="grid grid-cols-12 h-130">
                 <!-- left rail: collections -->
-                <aside class="col-span-3 border-r border-default p-3 bg-bg-primary overflow-y-auto">
-                  <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary px-2 py-1">Collections</p>
+                <aside
+                  class="col-span-3 border-r border-default p-3 bg-bg-primary overflow-y-auto"
+                >
+                  <p
+                    class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary px-2 py-1"
+                  >
+                    Collections
+                  </p>
 
                   <div class="mt-1 space-y-0.5">
-                    <div class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary">
-                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/></svg>
+                    <div
+                      class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="12" cy="12" r="9" />
+                      </svg>
                       Primitives
-                      <span class="ml-auto font-mono text-[10px] text-fg-tertiary">186</span>
+                      <span
+                        class="ml-auto font-mono text-[10px] text-fg-tertiary"
+                        >186</span
+                      >
                     </div>
-                    <div class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs font-medium" style="background: color-mix(in oklch, var(--color-interactive-primary) 14%, transparent); color: var(--color-interactive-primary);">
-                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    <div
+                      class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs font-medium"
+                      style="
+                        background: color-mix(
+                          in oklch,
+                          var(--color-interactive-primary) 14%,
+                          transparent
+                        );
+                        color: var(--color-interactive-primary);
+                      "
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M12 2 2 7l10 5 10-5z" />
+                        <path d="M2 17l10 5 10-5" />
+                        <path d="M2 12l10 5 10-5" />
+                      </svg>
                       Semantic
                       <span class="ml-auto font-mono text-[10px]">124</span>
                     </div>
-                    <div class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary">
-                      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                    <div
+                      class="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-fg-secondary"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <rect x="3" y="3" width="7" height="7" rx="1" />
+                        <rect x="14" y="3" width="7" height="7" rx="1" />
+                        <rect x="3" y="14" width="7" height="7" rx="1" />
+                        <rect x="14" y="14" width="7" height="7" rx="1" />
+                      </svg>
                       Components
-                      <span class="ml-auto font-mono text-[10px] text-fg-tertiary">30</span>
+                      <span
+                        class="ml-auto font-mono text-[10px] text-fg-tertiary"
+                        >30</span
+                      >
                     </div>
                   </div>
 
                   <div class="mt-4 pt-3 border-t border-default">
-                    <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary px-2 py-1">Modes</p>
-                    <div class="px-2 py-1 text-xs flex items-center justify-between rounded-md" style="background: color-mix(in oklch, var(--color-interactive-primary) 8%, transparent);">
+                    <p
+                      class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary px-2 py-1"
+                    >
+                      Modes
+                    </p>
+                    <div
+                      class="px-2 py-1 text-xs flex items-center justify-between rounded-md"
+                      style="
+                        background: color-mix(
+                          in oklch,
+                          var(--color-interactive-primary) 8%,
+                          transparent
+                        );
+                      "
+                    >
                       <span class="font-medium">Light</span>
-                      <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-interactive-primary);"></span>
+                      <span
+                        class="h-1.5 w-1.5 rounded-full"
+                        style="background: var(--color-interactive-primary)"
+                      ></span>
                     </div>
-                    <div class="px-2 py-1 text-xs flex items-center justify-between">
+                    <div
+                      class="px-2 py-1 text-xs flex items-center justify-between"
+                    >
                       <span class="text-fg-secondary">Dark</span>
-                      <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-border-strong);"></span>
+                      <span
+                        class="h-1.5 w-1.5 rounded-full"
+                        style="background: var(--color-border-strong)"
+                      ></span>
                     </div>
                   </div>
 
                   <div class="mt-4 pt-3 border-t border-default">
-                    <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary px-2 py-1">Filter</p>
-                    <div class="flex h-7 items-center gap-1.5 rounded-md border border-default bg-surface px-2 mt-1">
-                      <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-                      <span class="font-mono text-[10px] text-fg-tertiary">interactive&hellip;</span>
+                    <p
+                      class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary px-2 py-1"
+                    >
+                      Filter
+                    </p>
+                    <div
+                      class="flex h-7 items-center gap-1.5 rounded-md border border-default bg-surface px-2 mt-1"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3 w-3 text-fg-tertiary"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="m21 21-4.3-4.3" />
+                      </svg>
+                      <span class="font-mono text-[10px] text-fg-tertiary"
+                        >interactive&hellip;</span
+                      >
                     </div>
                   </div>
                 </aside>
@@ -1003,21 +2147,42 @@
                 <!-- main: variables list -->
                 <div class="col-span-9 flex flex-col">
                   <!-- header -->
-                  <div class="flex items-center gap-2 border-b border-default px-4 py-2.5">
+                  <div
+                    class="flex items-center gap-2 border-b border-default px-4 py-2.5"
+                  >
                     <p class="text-xs font-semibold">Semantic</p>
-                    <span class="font-mono text-[10px] text-fg-tertiary">/ interactive</span>
-                    <span class="ml-auto inline-flex items-center gap-1 rounded-md border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary">
-                      <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
+                    <span class="font-mono text-[10px] text-fg-tertiary"
+                      >/ interactive</span
+                    >
+                    <span
+                      class="ml-auto inline-flex items-center gap-1 rounded-md border border-default px-2 py-0.5 font-mono text-[10px] text-fg-secondary"
+                    >
+                      <span
+                        class="h-1.5 w-1.5 rounded-full"
+                        style="background: var(--color-success)"
+                      ></span>
                       Synced 4s ago
                     </span>
-                    <button class="inline-flex h-6 items-center gap-1 rounded-md px-2 text-[11px] btn-ghost">
-                      <svg viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>
+                    <button
+                      class="inline-flex h-6 items-center gap-1 rounded-md px-2 text-[11px] btn-ghost"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3 w-3"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" />
+                      </svg>
                       Resync
                     </button>
                   </div>
 
                   <!-- column header -->
-                  <div class="grid grid-cols-12 px-4 py-1.5 border-b border-default bg-bg-secondary font-mono text-[9.5px] uppercase tracking-wider text-fg-tertiary">
+                  <div
+                    class="grid grid-cols-12 px-4 py-1.5 border-b border-default bg-bg-secondary font-mono text-[9.5px] uppercase tracking-wider text-fg-tertiary"
+                  >
                     <div class="col-span-5">Variable</div>
                     <div class="col-span-3">Value</div>
                     <div class="col-span-3">Alias</div>
@@ -1027,107 +2192,327 @@
                   <!-- rows -->
                   <div class="flex-1 overflow-y-auto">
                     <!-- selected row -->
-                    <div class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs" style="background: color-mix(in oklch, var(--color-interactive-primary) 8%, transparent);">
+                    <div
+                      class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs"
+                      style="
+                        background: color-mix(
+                          in oklch,
+                          var(--color-interactive-primary) 8%,
+                          transparent
+                        );
+                      "
+                    >
                       <div class="col-span-5 flex items-center gap-2">
-                        <span class="h-3.5 w-3.5 rounded" style="background: var(--color-interactive-primary); border: 1px solid color-mix(in oklch, var(--color-text-primary) 20%, transparent);"></span>
-                        <span class="font-mono text-[11px] font-medium">interactive/primary</span>
+                        <span
+                          class="h-3.5 w-3.5 rounded"
+                          style="
+                            background: var(--color-interactive-primary);
+                            border: 1px solid
+                              color-mix(
+                                in oklch,
+                                var(--color-text-primary) 20%,
+                                transparent
+                              );
+                          "
+                        ></span>
+                        <span class="font-mono text-[11px] font-medium"
+                          >interactive/primary</span
+                        >
                       </div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-secondary">oklch(54% .18 274)</div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-secondary"
+                      >
+                        oklch(54% .18 274)
+                      </div>
                       <div class="col-span-3 font-mono text-[10.5px]">
-                        <span class="inline-flex items-center gap-1 rounded px-1.5 py-0.5" style="background: color-mix(in oklch, var(--color-interactive-primary) 14%, transparent); color: var(--color-interactive-primary);">
-                          <svg viewBox="0 0 24 24" class="h-2.5 w-2.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.5 0l3-3a5 5 0 1 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.5 0l-3 3a5 5 0 1 0 7 7l1.5-1.5"/></svg>
+                        <span
+                          class="inline-flex items-center gap-1 rounded px-1.5 py-0.5"
+                          style="
+                            background: color-mix(
+                              in oklch,
+                              var(--color-interactive-primary) 14%,
+                              transparent
+                            );
+                            color: var(--color-interactive-primary);
+                          "
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            class="h-2.5 w-2.5"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <path
+                              d="M10 13a5 5 0 0 0 7.5 0l3-3a5 5 0 1 0-7-7l-1.5 1.5"
+                            />
+                            <path
+                              d="M14 11a5 5 0 0 0-7.5 0l-3 3a5 5 0 1 0 7 7l1.5-1.5"
+                            />
+                          </svg>
                           color/blue/500
                         </span>
                       </div>
-                      <div class="col-span-1 text-right font-mono text-[10px] text-fg-secondary">42</div>
+                      <div
+                        class="col-span-1 text-right font-mono text-[10px] text-fg-secondary"
+                      >
+                        42
+                      </div>
                     </div>
 
-                    <div class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs">
+                    <div
+                      class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs"
+                    >
                       <div class="col-span-5 flex items-center gap-2">
-                        <span class="h-3.5 w-3.5 rounded" style="background: oklch(48% 0.19 274);"></span>
-                        <span class="font-mono text-[11px]">interactive/primary-hover</span>
+                        <span
+                          class="h-3.5 w-3.5 rounded"
+                          style="background: oklch(48% 0.19 274)"
+                        ></span>
+                        <span class="font-mono text-[11px]"
+                          >interactive/primary-hover</span
+                        >
                       </div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-secondary">oklch(48% .19 274)</div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-tertiary">color/blue/600</div>
-                      <div class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary">12</div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-secondary"
+                      >
+                        oklch(48% .19 274)
+                      </div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-tertiary"
+                      >
+                        color/blue/600
+                      </div>
+                      <div
+                        class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary"
+                      >
+                        12
+                      </div>
                     </div>
 
-                    <div class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs">
+                    <div
+                      class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs"
+                    >
                       <div class="col-span-5 flex items-center gap-2">
-                        <span class="h-3.5 w-3.5 rounded" style="background: oklch(42% 0.2 274);"></span>
-                        <span class="font-mono text-[11px]">interactive/primary-active</span>
+                        <span
+                          class="h-3.5 w-3.5 rounded"
+                          style="background: oklch(42% 0.2 274)"
+                        ></span>
+                        <span class="font-mono text-[11px]"
+                          >interactive/primary-active</span
+                        >
                       </div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-secondary">oklch(42% .20 274)</div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-tertiary">color/blue/700</div>
-                      <div class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary">8</div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-secondary"
+                      >
+                        oklch(42% .20 274)
+                      </div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-tertiary"
+                      >
+                        color/blue/700
+                      </div>
+                      <div
+                        class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary"
+                      >
+                        8
+                      </div>
                     </div>
 
-                    <div class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs">
+                    <div
+                      class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs"
+                    >
                       <div class="col-span-5 flex items-center gap-2">
-                        <span class="h-3.5 w-3.5 rounded" style="background: var(--color-success);"></span>
-                        <span class="font-mono text-[11px]">interactive/success</span>
+                        <span
+                          class="h-3.5 w-3.5 rounded"
+                          style="background: var(--color-success)"
+                        ></span>
+                        <span class="font-mono text-[11px]"
+                          >interactive/success</span
+                        >
                       </div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-secondary">oklch(60% .14 155)</div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-tertiary">color/green/500</div>
-                      <div class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary">22</div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-secondary"
+                      >
+                        oklch(60% .14 155)
+                      </div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-tertiary"
+                      >
+                        color/green/500
+                      </div>
+                      <div
+                        class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary"
+                      >
+                        22
+                      </div>
                     </div>
 
-                    <div class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs">
+                    <div
+                      class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs"
+                    >
                       <div class="col-span-5 flex items-center gap-2">
-                        <span class="h-3.5 w-3.5 rounded" style="background: var(--color-warning);"></span>
-                        <span class="font-mono text-[11px]">interactive/warning</span>
+                        <span
+                          class="h-3.5 w-3.5 rounded"
+                          style="background: var(--color-warning)"
+                        ></span>
+                        <span class="font-mono text-[11px]"
+                          >interactive/warning</span
+                        >
                       </div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-secondary">oklch(72% .15 75)</div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-tertiary">color/amber/500</div>
-                      <div class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary">15</div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-secondary"
+                      >
+                        oklch(72% .15 75)
+                      </div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-tertiary"
+                      >
+                        color/amber/500
+                      </div>
+                      <div
+                        class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary"
+                      >
+                        15
+                      </div>
                     </div>
 
-                    <div class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs">
+                    <div
+                      class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs"
+                    >
                       <div class="col-span-5 flex items-center gap-2">
-                        <span class="h-3.5 w-3.5 rounded" style="background: var(--color-destructive);"></span>
-                        <span class="font-mono text-[11px]">interactive/destructive</span>
+                        <span
+                          class="h-3.5 w-3.5 rounded"
+                          style="background: var(--color-destructive)"
+                        ></span>
+                        <span class="font-mono text-[11px]"
+                          >interactive/destructive</span
+                        >
                       </div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-secondary">oklch(58% .20 25)</div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-tertiary">color/red/500</div>
-                      <div class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary">9</div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-secondary"
+                      >
+                        oklch(58% .20 25)
+                      </div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-tertiary"
+                      >
+                        color/red/500
+                      </div>
+                      <div
+                        class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary"
+                      >
+                        9
+                      </div>
                     </div>
 
-                    <div class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs">
+                    <div
+                      class="grid grid-cols-12 items-center px-4 py-2 border-b border-secondary text-xs"
+                    >
                       <div class="col-span-5 flex items-center gap-2">
-                        <span class="h-3.5 w-3.5 rounded" style="background: oklch(90% 0.01 260); border: 1px solid var(--color-border-strong);"></span>
-                        <span class="font-mono text-[11px]">interactive/focus-ring</span>
+                        <span
+                          class="h-3.5 w-3.5 rounded"
+                          style="
+                            background: oklch(90% 0.01 260);
+                            border: 1px solid var(--color-border-strong);
+                          "
+                        ></span>
+                        <span class="font-mono text-[11px]"
+                          >interactive/focus-ring</span
+                        >
                       </div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-secondary">oklch(70% .16 274)</div>
-                      <div class="col-span-3 font-mono text-[10.5px] text-fg-tertiary">color/blue/400</div>
-                      <div class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary">62</div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-secondary"
+                      >
+                        oklch(70% .16 274)
+                      </div>
+                      <div
+                        class="col-span-3 font-mono text-[10.5px] text-fg-tertiary"
+                      >
+                        color/blue/400
+                      </div>
+                      <div
+                        class="col-span-1 text-right font-mono text-[10px] text-fg-tertiary"
+                      >
+                        62
+                      </div>
                     </div>
                   </div>
 
                   <!-- bound layer preview -->
                   <div class="border-t border-default p-4 bg-bg-secondary">
                     <div class="flex items-center gap-2 mb-3">
-                      <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Layers bound to</p>
-                      <span class="font-mono text-[11px] font-medium">interactive/primary</span>
-                      <span class="font-mono text-[10px] text-fg-tertiary">· 42 in this file</span>
+                      <p
+                        class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+                      >
+                        Layers bound to
+                      </p>
+                      <span class="font-mono text-[11px] font-medium"
+                        >interactive/primary</span
+                      >
+                      <span class="font-mono text-[10px] text-fg-tertiary"
+                        >· 42 in this file</span
+                      >
                     </div>
                     <div class="flex flex-wrap gap-1.5">
-                      <span class="inline-flex h-7 items-center gap-1.5 rounded-md border border-default bg-surface px-2 text-[11px]">
-                        <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+                      <span
+                        class="inline-flex h-7 items-center gap-1.5 rounded-md border border-default bg-surface px-2 text-[11px]"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-3 w-3 text-fg-tertiary"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <rect x="3" y="3" width="18" height="18" rx="3" />
+                        </svg>
                         Button / Primary
                       </span>
-                      <span class="inline-flex h-7 items-center gap-1.5 rounded-md border border-default bg-surface px-2 text-[11px]">
-                        <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+                      <span
+                        class="inline-flex h-7 items-center gap-1.5 rounded-md border border-default bg-surface px-2 text-[11px]"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-3 w-3 text-fg-tertiary"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <circle cx="12" cy="12" r="9" />
+                        </svg>
                         Badge / Brand
                       </span>
-                      <span class="inline-flex h-7 items-center gap-1.5 rounded-md border border-default bg-surface px-2 text-[11px]">
-                        <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V7l8-4 8 4v14"/></svg>
+                      <span
+                        class="inline-flex h-7 items-center gap-1.5 rounded-md border border-default bg-surface px-2 text-[11px]"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-3 w-3 text-fg-tertiary"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path d="M4 21V7l8-4 8 4v14" />
+                        </svg>
                         Logo Mark
                       </span>
-                      <span class="inline-flex h-7 items-center gap-1.5 rounded-md border border-default bg-surface px-2 text-[11px]">
-                        <svg viewBox="0 0 24 24" class="h-3 w-3 text-fg-tertiary" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/></svg>
+                      <span
+                        class="inline-flex h-7 items-center gap-1.5 rounded-md border border-default bg-surface px-2 text-[11px]"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-3 w-3 text-fg-tertiary"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <rect x="2" y="6" width="20" height="12" rx="2" />
+                        </svg>
                         Tab / Active
                       </span>
-                      <span class="inline-flex h-7 items-center rounded-md border border-default bg-surface px-2 text-[11px] text-fg-tertiary font-mono">
+                      <span
+                        class="inline-flex h-7 items-center rounded-md border border-default bg-surface px-2 text-[11px] text-fg-tertiary font-mono"
+                      >
                         + 38 more
                       </span>
                     </div>
@@ -1137,7 +2522,8 @@
             </div>
 
             <p class="mt-4 text-center font-mono text-[10px] text-fg-tertiary">
-              Native Figma Variables panel &middot; rendered with Wylie Dog tokens
+              Native Figma Variables panel &middot; rendered with Wylie Dog
+              tokens
             </p>
           </div>
         </div>
@@ -1155,45 +2541,150 @@
             <div class="term">
               <div class="titlebar flex items-center gap-2 px-3 py-2">
                 <div class="flex gap-1.5">
-                  <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(70% 0.18 25);"></span>
-                  <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(80% 0.15 85);"></span>
-                  <span class="h-2.5 w-2.5 rounded-full" style="background: oklch(70% 0.16 145);"></span>
+                  <span
+                    class="h-2.5 w-2.5 rounded-full"
+                    style="background: oklch(70% 0.18 25)"
+                  ></span>
+                  <span
+                    class="h-2.5 w-2.5 rounded-full"
+                    style="background: oklch(80% 0.15 85)"
+                  ></span>
+                  <span
+                    class="h-2.5 w-2.5 rounded-full"
+                    style="background: oklch(70% 0.16 145)"
+                  ></span>
                 </div>
-                <span class="font-mono text-[10px] dim ml-2">~/wyliedog/ui — zsh</span>
+                <span class="font-mono text-[10px] dim ml-2"
+                  >~/wyliedog/ui — zsh</span
+                >
                 <span class="ml-auto font-mono text-[10px] dim">100×34</span>
               </div>
               <div class="body">
-<div><span class="prompt">~/wyliedog/ui</span> <span class="ok">❯</span> pnpm sync:figma</div>
-<div class="mt-3 dim">⏵ <span style="color: var(--term-fg);">@wyliedog/token-bridge</span> v0.9.2</div>
-<div class="dim">  ↳ Reading <span style="color: var(--term-fg);">@wyliedog/tokens</span> <span class="accent">v1.4.0</span></div>
-<div class="dim">  ↳ Connecting to Figma file <span class="underline-link accent">Wylie&nbsp;Dog · UI</span></div>
-<div class="mt-3"><span class="ok">✓</span>  Authenticated <span class="dim">as <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c2a0b0aba6a5a7efa0adb682b5bbaeaba7a6ada5eca6a7b4">[email&#160;protected]</a></span></div>
-<div><span class="ok">✓</span>  3 collections discovered <span class="dim">(Primitives, Semantic, Components)</span></div>
-<div><span class="ok">✓</span>  2 modes confirmed <span class="dim">(Light, Dark)</span></div>
-<div class="mt-3 dim">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
-<div class="mt-2"><span class="dim">  Primitives</span>          <span class="ok">✓</span>  186 vars  <span class="warn">+2</span>  <span class="dim">~0</span>  <span class="dim">-0</span></div>
-<div><span class="dim">    └─ palette/blue</span>   <span class="warn">~1</span>  <span class="dim">oklch(58 .16 274) → oklch(54 .18 274)</span></div>
-<div><span class="dim">    └─ palette/slate</span>  <span class="warn">+1</span>  <span class="dim">slate/25 (new)</span></div>
-<div class="mt-1"><span class="dim">  Semantic</span>            <span class="ok">✓</span>  124 vars  <span class="warn">+1</span>  <span class="dim">~0</span>  <span class="dim">-0</span></div>
-<div><span class="dim">    └─ Light mode</span>     <span class="ok">✓</span>  124</div>
-<div><span class="dim">    └─ Dark mode</span>      <span class="ok">✓</span>  124</div>
-<div><span class="dim">    └─ surface/elevated</span> <span class="warn">+1</span>  <span class="dim">new in v1.4</span></div>
-<div class="mt-1"><span class="dim">  Components</span>          <span class="ok">✓</span>  30 vars   <span class="dim">~0</span>  <span class="dim">~0</span>  <span class="dim">-0</span></div>
-<div class="mt-3 dim">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
-<div class="mt-2"><span class="ok">✓</span>  <span style="color: var(--term-fg);">340 variables synced</span> in 2.14s</div>
-<div class="dim">    3 changes · 0 conflicts · 0 detached layers</div>
-<div class="mt-2 dim">    Open in Figma →&nbsp;<span class="underline-link accent">figma.com/file/wyliedog-ui?variables</span></div>
-<div class="mt-3"><span class="prompt">~/wyliedog/ui</span> <span class="ok">❯</span> <span class="blink"></span></div>
+                <div>
+                  <span class="prompt">~/wyliedog/ui</span>
+                  <span class="ok">❯</span> pnpm sync:figma
+                </div>
+                <div class="mt-3 dim">
+                  ⏵
+                  <span style="color: var(--term-fg)"
+                    >@wyliedog/token-bridge</span
+                  >
+                  v0.9.2
+                </div>
+                <div class="dim">
+                  ↳ Reading
+                  <span style="color: var(--term-fg)">@wyliedog/tokens</span>
+                  <span class="accent">v1.4.0</span>
+                </div>
+                <div class="dim">
+                  ↳ Connecting to Figma file
+                  <span class="underline-link accent">Wylie&nbsp;Dog · UI</span>
+                </div>
+                <div class="mt-3">
+                  <span class="ok">✓</span> Authenticated
+                  <span class="dim"
+                    >as
+                    <a
+                      href="/cdn-cgi/l/email-protection"
+                      class="__cf_email__"
+                      data-cfemail="c2a0b0aba6a5a7efa0adb682b5bbaeaba7a6ada5eca6a7b4"
+                      >[email&#160;protected]</a
+                    ></span
+                  >
+                </div>
+                <div>
+                  <span class="ok">✓</span> 3 collections discovered
+                  <span class="dim">(Primitives, Semantic, Components)</span>
+                </div>
+                <div>
+                  <span class="ok">✓</span> 2 modes confirmed
+                  <span class="dim">(Light, Dark)</span>
+                </div>
+                <div class="mt-3 dim">
+                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                </div>
+                <div class="mt-2">
+                  <span class="dim"> Primitives</span>
+                  <span class="ok">✓</span> 186 vars
+                  <span class="warn">+2</span> <span class="dim">~0</span>
+                  <span class="dim">-0</span>
+                </div>
+                <div>
+                  <span class="dim"> └─ palette/blue</span>
+                  <span class="warn">~1</span>
+                  <span class="dim">oklch(58 .16 274) → oklch(54 .18 274)</span>
+                </div>
+                <div>
+                  <span class="dim"> └─ palette/slate</span>
+                  <span class="warn">+1</span>
+                  <span class="dim">slate/25 (new)</span>
+                </div>
+                <div class="mt-1">
+                  <span class="dim"> Semantic</span>
+                  <span class="ok">✓</span> 124 vars
+                  <span class="warn">+1</span> <span class="dim">~0</span>
+                  <span class="dim">-0</span>
+                </div>
+                <div>
+                  <span class="dim"> └─ Light mode</span>
+                  <span class="ok">✓</span> 124
+                </div>
+                <div>
+                  <span class="dim"> └─ Dark mode</span>
+                  <span class="ok">✓</span> 124
+                </div>
+                <div>
+                  <span class="dim"> └─ surface/elevated</span>
+                  <span class="warn">+1</span>
+                  <span class="dim">new in v1.4</span>
+                </div>
+                <div class="mt-1">
+                  <span class="dim"> Components</span>
+                  <span class="ok">✓</span> 30 vars <span class="dim">~0</span>
+                  <span class="dim">~0</span> <span class="dim">-0</span>
+                </div>
+                <div class="mt-3 dim">
+                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                </div>
+                <div class="mt-2">
+                  <span class="ok">✓</span>
+                  <span style="color: var(--term-fg)"
+                    >340 variables synced</span
+                  >
+                  in 2.14s
+                </div>
+                <div class="dim">
+                  3 changes · 0 conflicts · 0 detached layers
+                </div>
+                <div class="mt-2 dim">
+                  Open in Figma →&nbsp;<span class="underline-link accent"
+                    >figma.com/file/wyliedog-ui?variables</span
+                  >
+                </div>
+                <div class="mt-3">
+                  <span class="prompt">~/wyliedog/ui</span>
+                  <span class="ok">❯</span> <span class="blink"></span>
+                </div>
               </div>
             </div>
 
             <!-- CI snippet -->
-            <div class="mt-4 rounded-lg border border-default bg-surface overflow-hidden">
-              <div class="flex items-center justify-between px-4 py-2 border-b border-default bg-bg-secondary">
-                <p class="font-mono text-[10px] text-fg-tertiary">.github/workflows/tokens.yml</p>
-                <span class="font-mono text-[10px] text-fg-tertiary">runs on push to main</span>
+            <div
+              class="mt-4 rounded-lg border border-default bg-surface overflow-hidden"
+            >
+              <div
+                class="flex items-center justify-between px-4 py-2 border-b border-default bg-bg-secondary"
+              >
+                <p class="font-mono text-[10px] text-fg-tertiary">
+                  .github/workflows/tokens.yml
+                </p>
+                <span class="font-mono text-[10px] text-fg-tertiary"
+                  >runs on push to main</span
+                >
               </div>
-              <pre class="px-4 py-3 font-mono text-[11.5px] leading-relaxed overflow-x-auto"><span class="text-fg-tertiary">- </span><span class="text-fg">name</span><span class="text-fg-tertiary">:</span> <span class="text-fg-secondary">Sync design tokens to Figma</span>
+              <pre
+                class="px-4 py-3 font-mono text-[11.5px] leading-relaxed overflow-x-auto"
+              ><span class="text-fg-tertiary">- </span><span class="text-fg">name</span><span class="text-fg-tertiary">:</span> <span class="text-fg-secondary">Sync design tokens to Figma</span>
   <span class="text-fg">if</span><span class="text-fg-tertiary">:</span> <span class="text-fg-secondary">contains(github.event.head_commit.modified, 'packages/tokens')</span>
   <span class="text-fg">run</span><span class="text-fg-tertiary">:</span> <span style="color: var(--color-interactive-primary);">pnpm sync:figma</span>
   <span class="text-fg">env</span><span class="text-fg-tertiary">:</span>
@@ -1203,38 +2694,64 @@
 
           <!-- Right: messaging -->
           <div class="lg:col-span-4 order-1 lg:order-2 lg:sticky lg:top-24">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary">For engineers</span>
-            <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
-              One command. <span class="text-interactive">No GUI required.</span>
+            <span
+              class="font-mono text-[11px] uppercase tracking-wider text-fg-tertiary"
+              >For engineers</span
+            >
+            <h2
+              class="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight"
+            >
+              One command.
+              <span class="text-interactive">No GUI required.</span>
             </h2>
             <p class="mt-4 text-fg-secondary text-balance">
-              Token Bridge runs from anywhere a pnpm script can: your laptop, CI, a release
-              workflow, a pre-commit hook. The output is diffable, the auth is keychain-managed,
-              and a dry-run flag previews the changes before they hit the file.
+              Token Bridge runs from anywhere a pnpm script can: your laptop,
+              CI, a release workflow, a pre-commit hook. The output is diffable,
+              the auth is keychain-managed, and a dry-run flag previews the
+              changes before they hit the file.
             </p>
 
             <div class="mt-6 space-y-2 text-sm">
-              <div class="rounded-md border border-default bg-surface px-3 py-2 flex items-center gap-3">
-                <span class="font-mono text-[10px] text-fg-tertiary w-16">install</span>
-                <span class="font-mono text-xs">pnpm add -D @wyliedog/token-bridge</span>
+              <div
+                class="rounded-md border border-default bg-surface px-3 py-2 flex items-center gap-3"
+              >
+                <span class="font-mono text-[10px] text-fg-tertiary w-16"
+                  >install</span
+                >
+                <span class="font-mono text-xs"
+                  >pnpm add -D @wyliedog/token-bridge</span
+                >
               </div>
-              <div class="rounded-md border border-default bg-surface px-3 py-2 flex items-center gap-3">
-                <span class="font-mono text-[10px] text-fg-tertiary w-16">init</span>
+              <div
+                class="rounded-md border border-default bg-surface px-3 py-2 flex items-center gap-3"
+              >
+                <span class="font-mono text-[10px] text-fg-tertiary w-16"
+                  >init</span
+                >
                 <span class="font-mono text-xs">pnpm bridge init</span>
               </div>
-              <div class="rounded-md border border-default bg-surface px-3 py-2 flex items-center gap-3">
-                <span class="font-mono text-[10px] text-fg-tertiary w-16">sync</span>
+              <div
+                class="rounded-md border border-default bg-surface px-3 py-2 flex items-center gap-3"
+              >
+                <span class="font-mono text-[10px] text-fg-tertiary w-16"
+                  >sync</span
+                >
                 <span class="font-mono text-xs">pnpm sync:figma</span>
               </div>
-              <div class="rounded-md border border-default bg-surface px-3 py-2 flex items-center gap-3">
-                <span class="font-mono text-[10px] text-fg-tertiary w-16">preview</span>
+              <div
+                class="rounded-md border border-default bg-surface px-3 py-2 flex items-center gap-3"
+              >
+                <span class="font-mono text-[10px] text-fg-tertiary w-16"
+                  >preview</span
+                >
                 <span class="font-mono text-xs">pnpm sync:figma --dry-run</span>
               </div>
             </div>
 
             <p class="mt-6 text-xs text-fg-tertiary">
-              Requires Node 20+ and a Figma file with editor access. The bridge talks to Figma&rsquo;s
-              REST Variables API &mdash; no plugin install.
+              Requires Node 20+ and a Figma file with editor access. The bridge
+              talks to Figma&rsquo;s REST Variables API &mdash; no plugin
+              install.
             </p>
           </div>
         </div>
@@ -1246,23 +2763,51 @@
          ===================================================================== -->
     <section class="border-b border-default">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-        <div class="glass rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+        <div
+          class="glass rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10"
+        >
           <div class="flex-1">
-            <h2 class="font-serif text-2xl sm:text-3xl font-semibold tracking-tight">Keep design and code in sync.</h2>
+            <h2
+              class="font-serif text-2xl sm:text-3xl font-semibold tracking-tight"
+            >
+              Keep design and code in sync.
+            </h2>
             <p class="mt-2 text-fg-secondary max-w-xl">
-              Set it up once, forget it forever. Your designers stop asking which value is current,
-              your engineers stop chasing drift, and your tokens become the single thing that&rsquo;s
-              actually true.
+              Set it up once, forget it forever. Your designers stop asking
+              which value is current, your engineers stop chasing drift, and
+              your tokens become the single thing that&rsquo;s actually true.
             </p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <a href="#install" class="inline-flex h-10 items-center gap-1.5 rounded-md btn-primary px-4 text-sm font-semibold">
+            <a
+              href="#install"
+              class="inline-flex h-10 items-center gap-1.5 rounded-md btn-primary px-4 text-sm font-semibold"
+            >
               Get started
-              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <svg
+                viewBox="0 0 24 24"
+                class="h-3.5 w-3.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
             </a>
-            <a href="Tokens.html" class="inline-flex h-10 items-center gap-1.5 rounded-md btn-outline px-4 text-sm font-medium">
+            <a
+              href="Tokens.html"
+              class="inline-flex h-10 items-center gap-1.5 rounded-md btn-outline px-4 text-sm font-medium"
+            >
               View token reference
-              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <svg
+                viewBox="0 0 24 24"
+                class="h-3.5 w-3.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
             </a>
           </div>
         </div>
@@ -1277,13 +2822,25 @@
         <div class="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-10">
           <div class="col-span-2 md:col-span-1">
             <div class="flex items-center gap-2">
-              <span class="grid h-7 w-7 place-items-center rounded-md" style="background: var(--color-interactive-primary);">
-                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--color-text-inverse);">
-                  <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/>
-                  <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+              <span
+                class="grid h-7 w-7 place-items-center rounded-md"
+                style="background: var(--color-interactive-primary)"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  style="color: var(--color-text-inverse)"
+                >
+                  <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
+                  <circle cx="12" cy="11" r="1.5" fill="currentColor" />
                 </svg>
               </span>
-              <span class="font-serif text-base font-semibold tracking-tight">Wylie Dog</span>
+              <span class="font-serif text-base font-semibold tracking-tight"
+                >Wylie Dog</span
+              >
             </div>
             <p class="mt-3 text-sm text-fg-secondary">
               The shared design system for everything we ship.
@@ -1291,75 +2848,217 @@
           </div>
 
           <div>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Tokens</p>
+            <p
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+            >
+              Tokens
+            </p>
             <ul class="mt-3 space-y-2 text-sm">
-              <li><a href="Tokens.html#colors" class="text-fg-secondary hover:text-fg">Colors</a></li>
-              <li><a href="Tokens.html#spacing" class="text-fg-secondary hover:text-fg">Spacing</a></li>
-              <li><a href="Tokens.html#typography" class="text-fg-secondary hover:text-fg">Typography</a></li>
-              <li><a href="Tokens.html#borders" class="text-fg-secondary hover:text-fg">Borders &amp; radius</a></li>
-              <li><a href="Tokens.html#shadows" class="text-fg-secondary hover:text-fg">Shadows</a></li>
-              <li><a href="Tokens.html#motion" class="text-fg-secondary hover:text-fg">Motion</a></li>
+              <li>
+                <a
+                  href="Tokens.html#colors"
+                  class="text-fg-secondary hover:text-fg"
+                  >Colors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Tokens.html#spacing"
+                  class="text-fg-secondary hover:text-fg"
+                  >Spacing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Tokens.html#typography"
+                  class="text-fg-secondary hover:text-fg"
+                  >Typography</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Tokens.html#borders"
+                  class="text-fg-secondary hover:text-fg"
+                  >Borders &amp; radius</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Tokens.html#shadows"
+                  class="text-fg-secondary hover:text-fg"
+                  >Shadows</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Tokens.html#motion"
+                  class="text-fg-secondary hover:text-fg"
+                  >Motion</a
+                >
+              </li>
             </ul>
           </div>
 
           <div>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Components</p>
+            <p
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+            >
+              Components
+            </p>
             <ul class="mt-3 space-y-2 text-sm">
-              <li><a href="Components.html#foundations" class="text-fg-secondary hover:text-fg">Foundations</a></li>
-              <li><a href="Components.html#forms" class="text-fg-secondary hover:text-fg">Forms</a></li>
-              <li><a href="Components.html#navigation" class="text-fg-secondary hover:text-fg">Navigation</a></li>
-              <li><a href="Components.html#overlays" class="text-fg-secondary hover:text-fg">Overlays</a></li>
-              <li><a href="Components.html#data-display" class="text-fg-secondary hover:text-fg">Data Display</a></li>
-              <li><a href="Components.html#feedback" class="text-fg-secondary hover:text-fg">Feedback</a></li>
+              <li>
+                <a
+                  href="Components.html#foundations"
+                  class="text-fg-secondary hover:text-fg"
+                  >Foundations</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Components.html#forms"
+                  class="text-fg-secondary hover:text-fg"
+                  >Forms</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Components.html#navigation"
+                  class="text-fg-secondary hover:text-fg"
+                  >Navigation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Components.html#overlays"
+                  class="text-fg-secondary hover:text-fg"
+                  >Overlays</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Components.html#data-display"
+                  class="text-fg-secondary hover:text-fg"
+                  >Data Display</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Components.html#feedback"
+                  class="text-fg-secondary hover:text-fg"
+                  >Feedback</a
+                >
+              </li>
             </ul>
           </div>
 
           <div>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Tools</p>
+            <p
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+            >
+              Tools
+            </p>
             <ul class="mt-3 space-y-2 text-sm">
-              <li><a href="Token-Bridge.html" class="text-fg-secondary hover:text-fg">Token Bridge for Figma</a></li>
-              <li><a href="https://storybook.wyliedog.dev" class="text-fg-secondary hover:text-fg">Storybook ↗</a></li>
+              <li>
+                <a
+                  href="Token-Bridge.html"
+                  class="text-fg-secondary hover:text-fg"
+                  >Token Bridge for Figma</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://storybook.wyliedog.dev"
+                  class="text-fg-secondary hover:text-fg"
+                  >Storybook ↗</a
+                >
+              </li>
             </ul>
           </div>
 
           <div>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">Patterns</p>
+            <p
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+            >
+              Patterns
+            </p>
             <ul class="mt-3 space-y-2 text-sm">
-              <li><a href="Patterns.html#cat-layout" class="text-fg-secondary hover:text-fg">Dashboard layout</a></li>
-              <li><a href="Patterns.html#cat-auth" class="text-fg-secondary hover:text-fg">Authentication</a></li>
-              <li><a href="Patterns.html#cat-forms" class="text-fg-secondary hover:text-fg">Form compositions</a></li>
-              <li><a href="Patterns.html" class="text-fg-secondary hover:text-fg">All patterns →</a></li>
+              <li>
+                <a
+                  href="Patterns.html#cat-layout"
+                  class="text-fg-secondary hover:text-fg"
+                  >Dashboard layout</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Patterns.html#cat-auth"
+                  class="text-fg-secondary hover:text-fg"
+                  >Authentication</a
+                >
+              </li>
+              <li>
+                <a
+                  href="Patterns.html#cat-forms"
+                  class="text-fg-secondary hover:text-fg"
+                  >Form compositions</a
+                >
+              </li>
+              <li>
+                <a href="Patterns.html" class="text-fg-secondary hover:text-fg"
+                  >All patterns →</a
+                >
+              </li>
             </ul>
           </div>
         </div>
 
-        <div class="mt-10 border-t border-default pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div
+          class="mt-10 border-t border-default pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
+        >
           <p class="font-mono text-[11px] text-fg-tertiary">© 2026 Wylie Dog</p>
           <div class="inline-flex items-center gap-2">
-            <span class="h-1.5 w-1.5 rounded-full" style="background: var(--color-success);"></span>
-            <span class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary">All systems operational</span>
+            <span
+              class="h-1.5 w-1.5 rounded-full"
+              style="background: var(--color-success)"
+            ></span>
+            <span
+              class="font-mono text-[10px] uppercase tracking-wider text-fg-tertiary"
+              >All systems operational</span
+            >
           </div>
         </div>
       </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script>
       (function () {
         const root = document.documentElement;
         const stored = localStorage.getItem("wd-theme");
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (stored === "dark" || (!stored && prefersDark)) root.classList.add("dark");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (stored === "dark" || (!stored && prefersDark))
+          root.classList.add("dark");
         function syncIcons() {
           const dark = root.classList.contains("dark");
           document.getElementById("icon-sun").classList.toggle("hidden", !dark);
           document.getElementById("icon-moon").classList.toggle("hidden", dark);
         }
         syncIcons();
-        document.getElementById("theme-toggle").addEventListener("click", () => {
-          root.classList.toggle("dark");
-          localStorage.setItem("wd-theme", root.classList.contains("dark") ? "dark" : "light");
-          syncIcons();
-        });
+        document
+          .getElementById("theme-toggle")
+          .addEventListener("click", () => {
+            root.classList.toggle("dark");
+            localStorage.setItem(
+              "wd-theme",
+              root.classList.contains("dark") ? "dark" : "light"
+            );
+            syncIcons();
+          });
       })();
     </script>
   </body>
