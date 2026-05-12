@@ -38,7 +38,7 @@ export default function TokensPage() {
         <div className="absolute inset-0 grid-bg opacity-60" />
         <div className="absolute inset-0 hero-gradient" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-0 lg:pt-20">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
             <Link href="/" className="hover:text-(--color-text-secondary)">
               Wylie Dog

@@ -261,7 +261,7 @@ export default function PluginPage() {
         <div className="absolute inset-0 grid-bg opacity-60" />
         <div className="absolute inset-0 hero-gradient" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-24 lg:pb-20">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="grid md:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left: messaging */}
             <div className="md:col-span-6">
@@ -589,7 +589,7 @@ export default function PluginPage() {
       </section>
 
       {/* ── Stats strip ── */}
-      <section className="border-b border-(--color-border-primary) bg-(--color-background-secondary)">
+      <section className="border-b border-(--color-border-primary) bg-(--color-background-primary)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
           <dl className="grid grid-cols-2 md:grid-cols-4 divide-x divide-(--color-border-primary)">
             {[
