@@ -69,17 +69,17 @@ export const color = {
     "950": "oklch(0.138 0.008 60.35)"
   },
   "gray": {
-    "50": "oklch(1 0 0)",
-    "100": "oklch(0.984 0.003 248.29)",
-    "200": "oklch(0.968 0.007 248.08)",
-    "300": "oklch(0.929 0.013 255.56)",
-    "400": "oklch(0.869 0.02 252.93)",
-    "500": "oklch(0.711 0.035 256.83)",
-    "600": "oklch(0.554 0.041 257.43)",
-    "700": "oklch(0.446 0.037 257.29)",
-    "800": "oklch(0.372 0.039 257.3)",
-    "900": "oklch(0.279 0.037 260.04)",
-    "950": "oklch(0.208 0.04 265.75)"
+    "50": "oklch(0.991 0.003 264.51)",
+    "100": "oklch(0.952 0.003 264.51)",
+    "200": "oklch(0.87 0.003 264.51)",
+    "300": "oklch(0.786 0.004 271.24)",
+    "400": "oklch(0.699 0.005 271.25)",
+    "500": "oklch(0.613 0.005 258.39)",
+    "600": "oklch(0.52 0.007 264.5)",
+    "700": "oklch(0.423 0.007 264.49)",
+    "800": "oklch(0.321 0.009 268.37)",
+    "900": "oklch(0.209 0.01 268.18)",
+    "950": "oklch(0.149 0.012 259.7)"
   },
   "blue": {
     "50": "oklch(0.97 0.014 254.72)",
@@ -173,18 +173,18 @@ export const color = {
     "950": "oklch(0.312 0.064 86.31)"
   },
   "background": {
-    "primary": "oklch(1 0 0)",
-    "secondary": "oklch(0.984 0.003 248.29)",
-    "tertiary": "oklch(0.968 0.007 248.08)",
-    "inverse": "oklch(0.208 0.04 265.75)",
+    "primary": "oklch(0.991 0.003 264.51)",
+    "secondary": "oklch(0.952 0.003 264.51)",
+    "tertiary": "oklch(0.87 0.003 264.51)",
+    "inverse": "oklch(0.149 0.012 259.7)",
     "brand": "oklch(0.646 0.194 40.95)",
     "danger": "oklch(0.577 0.215 27.32)"
   },
   "surface": {
-    "primary": "oklch(1 0 0)",
-    "secondary": "oklch(0.984 0.003 248.29)",
-    "raised": "oklch(1 0 0)",
-    "overlay": "oklch(0.929 0.013 255.56)",
+    "primary": "oklch(0.991 0.003 264.51)",
+    "secondary": "oklch(0.952 0.003 264.51)",
+    "raised": "oklch(0.991 0.003 264.51)",
+    "overlay": "oklch(0.786 0.004 271.24)",
     "brand": "oklch(0.97 0.014 254.72)",
     "success": "oklch(0.982 0.018 156.35)",
     "warning": "oklch(0.98 0.016 74.37)",
@@ -192,11 +192,11 @@ export const color = {
     "info": "oklch(0.97 0.014 254.72)"
   },
   "text": {
-    "primary": "oklch(0.279 0.037 260.04)",
-    "secondary": "oklch(0.446 0.037 257.29)",
-    "tertiary": "oklch(0.711 0.035 256.83)",
-    "disabled": "oklch(0.869 0.02 252.93)",
-    "inverse": "oklch(1 0 0)",
+    "primary": "oklch(0.209 0.01 268.18)",
+    "secondary": "oklch(0.423 0.007 264.49)",
+    "tertiary": "oklch(0.613 0.005 258.39)",
+    "disabled": "oklch(0.699 0.005 271.25)",
+    "inverse": "oklch(0.991 0.003 264.51)",
     "brand": "oklch(0.646 0.194 40.95)",
     "success": "oklch(0.527 0.137 150.09)",
     "warning": "oklch(0.553 0.174 38.48)",
@@ -204,8 +204,8 @@ export const color = {
     "info": "oklch(0.488 0.217 264.39)"
   },
   "border": {
-    "primary": "oklch(0.929 0.013 255.56)",
-    "secondary": "oklch(0.968 0.007 248.08)",
+    "primary": "oklch(0.786 0.004 271.24)",
+    "secondary": "oklch(0.87 0.003 264.51)",
     "focus": "oklch(0.623 0.188 259.82)",
     "brand": "oklch(0.646 0.194 40.95)",
     "success": "oklch(0.627 0.17 149.27)",
@@ -216,33 +216,33 @@ export const color = {
     "primary": "oklch(0.546 0.215 262.89)",
     "primary-hover": "oklch(0.488 0.217 264.39)",
     "primary-active": "oklch(0.424 0.181 265.65)",
-    "secondary": "oklch(0.984 0.003 248.29)",
-    "secondary-hover": "oklch(0.968 0.007 248.08)",
-    "secondary-active": "oklch(0.929 0.013 255.56)",
+    "secondary": "oklch(0.952 0.003 264.51)",
+    "secondary-hover": "oklch(0.87 0.003 264.51)",
+    "secondary-active": "oklch(0.786 0.004 271.24)",
     "success": "oklch(0.627 0.17 149.27)",
     "success-hover": "oklch(0.527 0.137 150.09)",
     "warning": "oklch(0.646 0.194 40.95)",
     "warning-hover": "oklch(0.553 0.174 38.48)",
     "danger": "oklch(0.577 0.215 27.32)",
     "danger-hover": "oklch(0.505 0.19 27.5)",
-    "hover": "oklch(0.984 0.003 248.29)",
-    "pressed": "oklch(0.968 0.007 248.08)",
+    "hover": "oklch(0.952 0.003 264.51)",
+    "pressed": "oklch(0.87 0.003 264.51)",
     "focus": "oklch(0.97 0.014 254.72)",
-    "disabled": "oklch(0.984 0.003 248.29)"
+    "disabled": "oklch(0.952 0.003 264.51)"
   },
   "primary": {
     "base": "oklch(0.553 0.174 38.48)",
     "hover": "oklch(0.47 0.143 37.29)",
     "active": "oklch(0.408 0.116 38.16)",
     "surface": "oklch(0.98 0.016 74.37)",
-    "text": "oklch(0.208 0.04 265.75)"
+    "text": "oklch(0.149 0.012 259.7)"
   },
   "secondary": {
-    "base": "oklch(0.968 0.007 248.08)",
-    "hover": "oklch(0.929 0.013 255.56)",
-    "active": "oklch(0.869 0.02 252.93)",
-    "surface": "oklch(0.984 0.003 248.29)",
-    "text": "oklch(0.279 0.037 260.04)"
+    "base": "oklch(0.87 0.003 264.51)",
+    "hover": "oklch(0.786 0.004 271.24)",
+    "active": "oklch(0.699 0.005 271.25)",
+    "surface": "oklch(0.952 0.003 264.51)",
+    "text": "oklch(0.209 0.01 268.18)"
   },
   "accent": {
     "hover": "oklch(0.541 0.247 293.01)",
@@ -252,10 +252,10 @@ export const color = {
     "highlight": "oklch(0.847 0.085 357.28)"
   },
   "neutral": {
-    "base": "oklch(0.554 0.041 257.43)",
-    "muted": "oklch(0.869 0.02 252.93)",
-    "subtle": "oklch(0.968 0.007 248.08)",
-    "on": "oklch(0.279 0.037 260.04)"
+    "base": "oklch(0.52 0.007 264.5)",
+    "muted": "oklch(0.699 0.005 271.25)",
+    "subtle": "oklch(0.87 0.003 264.51)",
+    "on": "oklch(0.209 0.01 268.18)"
   },
   "status": {
     "success": "oklch(0.627 0.17 149.27)",
