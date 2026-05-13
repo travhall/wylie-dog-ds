@@ -3,6 +3,7 @@ import { Button } from "@wyliedog/ui/button";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 import { SpacingDemo } from "./spacing-demo";
 import { MotionPreview } from "./motion-preview";
+import { TokensSubnav } from "./tokens-subnav";
 
 export default function TokensPage() {
   const meta = getShowcaseMeta();
@@ -190,50 +191,14 @@ export default function TokensPage() {
         </div>
       </section>
 
-      {/* ── Section anchor rail — full-width, sticky below main header ── */}
-      <div className="sticky top-14 z-30 border-b border-(--color-border-primary) bg-(--color-background-primary)/95 backdrop-blur-md">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <nav
-            aria-label="Token categories"
-            className="flex items-center gap-1 overflow-x-auto py-2 text-sm"
-          >
-            {[
-              { n: "01", label: "Color", href: "#color", active: true },
-              { n: "02", label: "Typography", href: "#typography" },
-              { n: "03", label: "Spacing", href: "#spacing" },
-              { n: "04", label: "Radius", href: "#radius" },
-              { n: "05", label: "Elevation", href: "#elevation" },
-              { n: "06", label: "Motion", href: "#motion" },
-            ].map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="rounded-md px-3 py-1.5 whitespace-nowrap text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
-                style={
-                  item.active
-                    ? {
-                        background: "var(--color-background-secondary)",
-                        color: "var(--color-text-primary)",
-                      }
-                    : undefined
-                }
-              >
-                <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary) mr-1.5">
-                  {item.n}
-                </span>
-                {item.label}
-              </a>
-            ))}
-            <span className="ml-auto hidden md:flex font-mono text-[11px] text-(--color-text-tertiary) shrink-0 pl-4">
-              {meta.tokens.total.toLocaleString()} tokens · v1.4.0
-            </span>
-          </nav>
-        </div>
-      </div>
+      <TokensSubnav total={meta.tokens.total} />
 
       {/* ── 01 · COLOR ── */}
-      <section id="color" className="border-b border-(--color-border-primary)">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+      <section
+        id="color"
+        className="border-b border-(--color-border-primary) scroll-mt-16"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
@@ -602,9 +567,9 @@ export default function TokensPage() {
       {/* ── 02 · TYPOGRAPHY ── */}
       <section
         id="typography"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary)"
+        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-16"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
@@ -772,9 +737,9 @@ export default function TokensPage() {
       {/* ── 03 · SPACING ── */}
       <section
         id="spacing"
-        className="border-b border-(--color-border-primary)"
+        className="border-b border-(--color-border-primary) scroll-mt-16"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
@@ -885,9 +850,9 @@ export default function TokensPage() {
       {/* ── 04 · RADIUS ── */}
       <section
         id="radius"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary)"
+        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-16"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
@@ -1084,9 +1049,9 @@ export default function TokensPage() {
       {/* ── 05 · ELEVATION ── */}
       <section
         id="elevation"
-        className="border-b border-(--color-border-primary)"
+        className="border-b border-(--color-border-primary) scroll-mt-16"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
@@ -1281,9 +1246,9 @@ export default function TokensPage() {
       {/* ── 06 · MOTION ── */}
       <section
         id="motion"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary)"
+        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-16"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-2xl">
               <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">

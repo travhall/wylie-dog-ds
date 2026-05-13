@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ComponentsSubnav } from "./components-subnav";
+import { getShowcaseMeta } from "@/lib/showcase-metadata";
 
 /* ─── Reusable comp card ─────────────────────────────────────── */
 function CompCard({
@@ -122,6 +124,7 @@ function Av({
 }
 
 export default function ComponentsPage() {
+  const meta = getShowcaseMeta();
   return (
     <div className="min-h-screen bg-(--color-background-primary)">
       {/* ── HERO ───────────────────────────────────────────────── */}
@@ -408,42 +411,14 @@ export default function ComponentsPage() {
       </section>
 
       {/* ── STICKY CATEGORY RAIL ───────────────────────────────── */}
-      <div className="sticky top-14 z-30 border-b border-(--color-border-primary) bg-(--color-background-primary)/80 backdrop-blur-md">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center gap-1 overflow-x-auto py-2">
-          <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary) mr-2 shrink-0">
-            Categories
-          </span>
-          {[
-            { href: "#content-display", label: "Content Display", count: 7 },
-            { href: "#feedback", label: "Feedback & Status", count: 4 },
-            { href: "#inputs", label: "Inputs & Controls", count: 13 },
-            { href: "#layout", label: "Layout & Structure", count: 5 },
-            { href: "#navigation", label: "Navigation", count: 6 },
-            { href: "#overlays", label: "Overlays & Popovers", count: 8 },
-          ].map(({ href, label, count }) => (
-            <a
-              key={href}
-              href={href}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs text-(--color-text-secondary) hover:text-(--color-text-primary) hover:bg-(--color-background-secondary) whitespace-nowrap"
-            >
-              {label}{" "}
-              <span className="font-mono text-[10px] text-(--color-text-tertiary)">
-                {count}
-              </span>
-            </a>
-          ))}
-          <span className="ml-auto shrink-0 font-mono text-[10px] text-(--color-text-tertiary)">
-            43 total
-          </span>
-        </div>
-      </div>
+      <ComponentsSubnav total={meta.components.count} />
 
       {/* ══════════════════════════════════════════════════════════
           01 — CONTENT DISPLAY (7)
           ══════════════════════════════════════════════════════════ */}
       <section
         id="content-display"
-        className="border-b border-(--color-border-primary) scroll-mt-28"
+        className="border-b border-(--color-border-primary) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -869,7 +844,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="feedback"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-28"
+        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -1115,7 +1090,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="inputs"
-        className="border-b border-(--color-border-primary) scroll-mt-28"
+        className="border-b border-(--color-border-primary) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -1810,7 +1785,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="layout"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-28"
+        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -1977,7 +1952,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="navigation"
-        className="border-b border-(--color-border-primary) scroll-mt-28"
+        className="border-b border-(--color-border-primary) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -2263,7 +2238,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="overlays"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-28"
+        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
