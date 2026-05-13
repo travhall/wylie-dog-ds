@@ -3,7 +3,7 @@ import { Button } from "@wyliedog/ui/button";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 import { SpacingDemo } from "./spacing-demo";
 import { MotionPreview } from "./motion-preview";
-import { TokensSubnav } from "./tokens-subnav";
+import { SectionSubnav } from "@/components/section-subnav";
 
 export default function TokensPage() {
   const meta = getShowcaseMeta();
@@ -191,7 +191,18 @@ export default function TokensPage() {
         </div>
       </section>
 
-      <TokensSubnav total={meta.tokens.total} />
+      <SectionSubnav
+        sections={[
+          { n: "01", label: "Color", id: "color" },
+          { n: "02", label: "Typography", id: "typography" },
+          { n: "03", label: "Spacing", id: "spacing" },
+          { n: "04", label: "Radius", id: "radius" },
+          { n: "05", label: "Elevation", id: "elevation" },
+          { n: "06", label: "Motion", id: "motion" },
+        ]}
+        label="Token categories"
+        meta={`${meta.tokens.total.toLocaleString()} tokens · v1.4.0`}
+      />
 
       {/* ── 01 · COLOR ── */}
       <section

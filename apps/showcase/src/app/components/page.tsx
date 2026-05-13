@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ComponentsSubnav } from "./components-subnav";
+import { SectionSubnav } from "@/components/section-subnav";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 
 /* ─── Reusable comp card ─────────────────────────────────────── */
@@ -411,7 +411,23 @@ export default function ComponentsPage() {
       </section>
 
       {/* ── STICKY CATEGORY RAIL ───────────────────────────────── */}
-      <ComponentsSubnav total={meta.components.count} />
+      <SectionSubnav
+        sections={[
+          {
+            n: "01",
+            label: "Content Display",
+            id: "content-display",
+            count: 7,
+          },
+          { n: "02", label: "Feedback & Status", id: "feedback", count: 4 },
+          { n: "03", label: "Inputs & Controls", id: "inputs", count: 13 },
+          { n: "04", label: "Layout & Structure", id: "layout", count: 5 },
+          { n: "05", label: "Navigation", id: "navigation", count: 6 },
+          { n: "06", label: "Overlays & Popovers", id: "overlays", count: 8 },
+        ]}
+        label="Component categories"
+        meta={`${meta.components.count} total`}
+      />
 
       {/* ══════════════════════════════════════════════════════════
           01 — CONTENT DISPLAY (7)

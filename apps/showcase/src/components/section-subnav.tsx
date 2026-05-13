@@ -2,17 +2,27 @@
 
 import { useState, useEffect } from "react";
 
-const SECTIONS = [
-  { n: "01", label: "Content Display", id: "content-display", count: 7 },
-  { n: "02", label: "Feedback & Status", id: "feedback", count: 4 },
-  { n: "03", label: "Inputs & Controls", id: "inputs", count: 13 },
-  { n: "04", label: "Layout & Structure", id: "layout", count: 5 },
-  { n: "05", label: "Navigation", id: "navigation", count: 6 },
-  { n: "06", label: "Overlays & Popovers", id: "overlays", count: 8 },
-];
+export interface SubnavSection {
+  n: string;
+  label: string;
+  id: string;
+  count?: number;
+}
 
-export function ComponentsSubnav({ total }: { total: number }) {
-  const [active, setActive] = useState("content-display");
+interface SectionSubnavProps {
+  sections: SubnavSection[];
+  label: string;
+  meta?: string;
+  defaultActive?: string;
+}
+
+export function SectionSubnav({
+  sections,
+  label,
+  meta,
+  defaultActive,
+}: SectionSubnavProps) {
+  const [active, setActive] = useState(defaultActive ?? sections[0]?.id ?? "");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,22 +37,22 @@ export function ComponentsSubnav({ total }: { total: number }) {
       { rootMargin: "-104px 0px -50% 0px", threshold: 0 }
     );
 
-    SECTIONS.forEach(({ id }) => {
+    sections.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [sections]);
 
   return (
     <div className="sticky top-14 z-30 border-b border-(--color-border-primary) bg-(--color-background-primary)/95 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav
-          aria-label="Component categories"
+          aria-label={label}
           className="flex items-center gap-1 overflow-x-auto py-2 text-sm"
         >
-          {SECTIONS.map((item) => (
+          {sections.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -60,14 +70,18 @@ export function ComponentsSubnav({ total }: { total: number }) {
                 {item.n}
               </span>
               {item.label}
-              <span className="font-mono text-[10px] text-(--color-text-tertiary)">
-                {item.count}
-              </span>
+              {item.count !== undefined && (
+                <span className="font-mono text-[10px] text-(--color-text-tertiary)">
+                  {item.count}
+                </span>
+              )}
             </a>
           ))}
-          <span className="ml-auto shrink-0 font-mono text-[10px] text-(--color-text-tertiary)">
-            {total} total
-          </span>
+          {meta && (
+            <span className="ml-auto hidden md:flex font-mono text-[11px] text-(--color-text-tertiary) shrink-0 pl-4">
+              {meta}
+            </span>
+          )}
         </nav>
       </div>
     </div>
