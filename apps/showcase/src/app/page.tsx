@@ -47,17 +47,14 @@ export default function ShowcasePage() {
                 between design and code.
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg sm:text-xl text-(--color-text-secondary)">
+              <p className="mt-6 max-w-xl text-lg text-(--color-text-secondary)">
                 A typed React component library, an OKLCH token system, and a
                 pattern catalog — shared across every surface we ship.
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <Link href="/components">
-                  <Button
-                    size="lg"
-                    className="h-11 rounded-md px-5 font-semibold gap-2"
-                  >
+                  <Button className="gap-2">
                     Browse components
                     <svg
                       viewBox="0 0 24 24"
@@ -71,13 +68,7 @@ export default function ShowcasePage() {
                   </Button>
                 </Link>
                 <Link href="/tokens">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="h-11 rounded-md px-5 font-semibold"
-                  >
-                    Explore tokens
-                  </Button>
+                  <Button variant="outline">Explore tokens</Button>
                 </Link>
               </div>
             </div>

@@ -14,11 +14,8 @@
   }
 
   ::selection {
-    background-color: color-mix(
-      in oklch,
-      var(--color-interactive-primary),
-      transparent 80%
-    );
+    background-color: var(--color-text-primary);
+    color: var(--color-background-primary);
   }
 }
 

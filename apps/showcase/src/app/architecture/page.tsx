@@ -22,7 +22,7 @@ export default function ArchitecturePage() {
                 }}
               >
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">
-                  02 · Architecture
+                  01 · Architecture
                 </span>
                 <span className="text-(--color-text-tertiary)">·</span>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">

@@ -39,20 +39,20 @@ export default function TokensPage() {
         <div className="absolute inset-0 hero-gradient" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
-          <div className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-            <Link href="/" className="hover:text-(--color-text-secondary)">
-              Wylie Dog
-            </Link>
-            <svg
-              viewBox="0 0 24 24"
-              className="h-3 w-3"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
-            <span className="text-(--color-text-secondary)">Tokens</span>
+          <div
+            className="inline-flex items-center gap-2 rounded-full border border-(--color-border-primary) px-3 py-1"
+            style={{
+              background:
+                "color-mix(in oklch, var(--color-background-primary) 60%, transparent)",
+            }}
+          >
+            <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">
+              02 · Tokens
+            </span>
+            <span className="text-(--color-text-tertiary)">·</span>
+            <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+              Three-tiered System
+            </span>
           </div>
 
           <div className="mt-5 grid lg:grid-cols-12 gap-10 items-end">

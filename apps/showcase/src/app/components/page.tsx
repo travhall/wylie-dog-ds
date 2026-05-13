@@ -147,7 +147,7 @@ export default function ComponentsPage() {
             <div className="lg:col-span-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-primary) bg-(--color-surface-primary)/60 px-3 py-1">
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">
-                  04 · Components
+                  03 · Components
                 </span>
                 <span className="text-(--color-text-tertiary)">·</span>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">

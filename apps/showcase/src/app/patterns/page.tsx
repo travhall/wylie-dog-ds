@@ -127,11 +127,11 @@ export default function PatternsPage() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-primary) bg-(--color-surface-primary)/60 px-3 py-1">
               <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">
-                Section 04
+                04 · Patterns
               </span>
               <span className="text-(--color-text-tertiary)">·</span>
               <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-                patterns gallery
+                @wyliedog/ui v1.4
               </span>
             </div>
 
@@ -142,7 +142,7 @@ export default function PatternsPage() {
               </span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg sm:text-xl text-(--color-text-secondary) text-balance">
+            <p className="mt-6 max-w-2xl text-lg text-(--color-text-secondary) text-balance">
               Patterns are higher-order compositions — assembled from
               primitives, wired to the same token system, and tested against the
               same accessibility checklist. When the tokens move, every pattern

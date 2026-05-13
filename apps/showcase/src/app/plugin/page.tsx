@@ -268,7 +268,7 @@ export default function PluginPage() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-primary) bg-(--color-background-primary)/60 px-3 py-1">
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">
-                  Token Bridge
+                  05 · Token Bridge
                 </span>
                 <span className="text-(--color-text-tertiary)">·</span>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
@@ -283,7 +283,7 @@ export default function PluginPage() {
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg sm:text-xl text-(--color-text-secondary)">
+              <p className="mt-6 max-w-xl text-lg text-(--color-text-secondary)">
                 Token Bridge syncs{" "}
                 <code className="font-mono text-base">@wyliedog/tokens</code> to
                 Figma Variables — so design references the same contract as
