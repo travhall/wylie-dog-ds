@@ -71,17 +71,34 @@
     "$type": "color",
     "$value": "{color.border.primary}"
   },
-  "badge.padding.sm": {
+  "badge.padding-x.sm": {
     "$type": "spacing",
     "$value": "{space.050}"
   },
-  "badge.padding.md": {
+  "badge.padding-x.md": {
     "$type": "spacing",
     "$value": "{space.100}"
   },
-  "badge.padding.lg": {
+  "badge.padding-x.lg": {
     "$type": "spacing",
     "$value": "{space.200}"
+  },
+  "badge.padding-y.sm": {
+    "$type": "spacing",
+    "$value": "{space.050}"
+  },
+  "badge.padding-y.md": {
+    "$type": "spacing",
+    "$value": "{space.050}"
+  },
+  "badge.padding-y.lg": {
+    "$type": "spacing",
+    "$value": "{space.100}"
+  },
+  "badge.font-weight": {
+    "$type": "fontWeight",
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight for badge labels"
   },
   "badge.radius": {
     "$type": "dimension",

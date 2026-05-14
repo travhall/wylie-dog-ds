@@ -419,9 +419,13 @@
   --color-badge-outline-background: oklch(0.991 0.003 264.51);
   --color-badge-outline-text: oklch(0.209 0.01 268.18);
   --color-badge-outline-border: oklch(0.786 0.004 271.24);
-  --space-badge-padding-sm: 4px;
-  --space-badge-padding-md: 8px;
-  --space-badge-padding-lg: 16px;
+  --space-badge-padding-x-sm: 4px;
+  --space-badge-padding-x-md: 8px;
+  --space-badge-padding-x-lg: 16px;
+  --space-badge-padding-y-sm: 4px;
+  --space-badge-padding-y-md: 4px;
+  --space-badge-padding-y-lg: 8px;
+  --font-weight-badge-font-weight: 600;
   --space-badge-radius: 9999px;
   --font-size-badge-font-size-sm: 12px;
   --font-size-badge-font-size-md: 14px;

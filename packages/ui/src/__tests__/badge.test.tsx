@@ -191,39 +191,45 @@ describe("Badge", () => {
     it("should apply sm size token classes", () => {
       render(<Badge size="sm">Small</Badge>);
       const badge = screen.getByText("Small");
-      expect(badge).toHaveClass("px-(--space-badge-padding-sm)");
+      expect(badge).toHaveClass("px-(--space-badge-padding-x-sm)");
+      expect(badge).toHaveClass("py-(--space-badge-padding-y-sm)");
       expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-sm)");
     });
 
     it("should apply md size token classes (default)", () => {
       render(<Badge size="md">Medium</Badge>);
       const badge = screen.getByText("Medium");
-      expect(badge).toHaveClass("px-(--space-badge-padding-md)");
+      expect(badge).toHaveClass("px-(--space-badge-padding-x-md)");
+      expect(badge).toHaveClass("py-(--space-badge-padding-y-md)");
       expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
     });
 
     it("should apply lg size token classes", () => {
       render(<Badge size="lg">Large</Badge>);
       const badge = screen.getByText("Large");
-      expect(badge).toHaveClass("px-(--space-badge-padding-lg)");
+      expect(badge).toHaveClass("px-(--space-badge-padding-x-lg)");
+      expect(badge).toHaveClass("py-(--space-badge-padding-y-lg)");
       expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-lg)");
     });
 
     it("should default to md size when size is not specified", () => {
       render(<Badge>Badge</Badge>);
       const badge = screen.getByText("Badge");
-      expect(badge).toHaveClass("px-(--space-badge-padding-md)");
+      expect(badge).toHaveClass("px-(--space-badge-padding-x-md)");
+      expect(badge).toHaveClass("py-(--space-badge-padding-y-md)");
       expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
     });
 
     it("should change size classes dynamically", () => {
       const { rerender } = render(<Badge size="sm">Badge</Badge>);
       let badge = screen.getByText("Badge");
-      expect(badge).toHaveClass("px-(--space-badge-padding-sm)");
+      expect(badge).toHaveClass("px-(--space-badge-padding-x-sm)");
+      expect(badge).toHaveClass("py-(--space-badge-padding-y-sm)");
 
       rerender(<Badge size="lg">Badge</Badge>);
       badge = screen.getByText("Badge");
-      expect(badge).toHaveClass("px-(--space-badge-padding-lg)");
+      expect(badge).toHaveClass("px-(--space-badge-padding-x-lg)");
+      expect(badge).toHaveClass("py-(--space-badge-padding-y-lg)");
     });
 
     it("should pass accessibility audit for all sizes", async () => {
@@ -503,13 +509,13 @@ describe("Badge", () => {
 
     it("should include correct size classes", () => {
       expect(badgeVariants({ size: "sm" })).toContain(
-        "px-(--space-badge-padding-sm)"
+        "px-(--space-badge-padding-x-sm)"
       );
       expect(badgeVariants({ size: "md" })).toContain(
-        "px-(--space-badge-padding-md)"
+        "px-(--space-badge-padding-x-md)"
       );
       expect(badgeVariants({ size: "lg" })).toContain(
-        "px-(--space-badge-padding-lg)"
+        "px-(--space-badge-padding-x-lg)"
       );
     });
   });
@@ -523,9 +529,10 @@ describe("Badge", () => {
       expect(badge).toHaveClass("items-center");
       expect(badge).toHaveClass("rounded-(--space-badge-radius)");
       expect(badge).toHaveClass("border");
-      expect(badge).toHaveClass("px-(--space-badge-padding-md)");
+      expect(badge).toHaveClass("px-(--space-badge-padding-x-md)");
+      expect(badge).toHaveClass("py-(--space-badge-padding-y-md)");
       expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
-      expect(badge).toHaveClass("font-(--font-weight-semibold)");
+      expect(badge).toHaveClass("font-(--font-weight-badge-font-weight)");
     });
 
     it("should have transition-colors class", () => {
@@ -808,7 +815,7 @@ describe("Badge", () => {
         expect(badge).toHaveClass(
           "text-(length:--font-size-badge-font-size-md)"
         );
-        expect(badge).toHaveClass("px-(--space-badge-padding-md)");
+        expect(badge).toHaveClass("px-(--space-badge-padding-x-md)");
       });
     });
 

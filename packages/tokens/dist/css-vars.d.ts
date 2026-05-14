@@ -584,6 +584,7 @@ export type CssVarName =
   | "--font-size-tooltip-font-size"
   | "--font-size-xl"
   | "--font-size-xs"
+  | "--font-weight-badge-font-weight"
   | "--font-weight-black"
   | "--font-weight-bold"
   | "--font-weight-card-title-font-weight"
@@ -672,9 +673,12 @@ export type CssVarName =
   | "--space-avatar-size-md"
   | "--space-avatar-size-sm"
   | "--space-avatar-size-xl"
-  | "--space-badge-padding-lg"
-  | "--space-badge-padding-md"
-  | "--space-badge-padding-sm"
+  | "--space-badge-padding-x-lg"
+  | "--space-badge-padding-x-md"
+  | "--space-badge-padding-x-sm"
+  | "--space-badge-padding-y-lg"
+  | "--space-badge-padding-y-md"
+  | "--space-badge-padding-y-sm"
   | "--space-badge-radius"
   | "--space-breadcrumb-ellipsis-size"
   | "--space-breadcrumb-gap"
@@ -1640,6 +1644,7 @@ export declare const cssVars: Readonly<{
   "fontSizeTooltipFontSize": "--font-size-tooltip-font-size";
   "fontSizeXl": "--font-size-xl";
   "fontSizeXs": "--font-size-xs";
+  "fontWeightBadgeFontWeight": "--font-weight-badge-font-weight";
   "fontWeightBlack": "--font-weight-black";
   "fontWeightBold": "--font-weight-bold";
   "fontWeightCardTitleFontWeight": "--font-weight-card-title-font-weight";
@@ -1728,9 +1733,12 @@ export declare const cssVars: Readonly<{
   "spaceAvatarSizeMd": "--space-avatar-size-md";
   "spaceAvatarSizeSm": "--space-avatar-size-sm";
   "spaceAvatarSizeXl": "--space-avatar-size-xl";
-  "spaceBadgePaddingLg": "--space-badge-padding-lg";
-  "spaceBadgePaddingMd": "--space-badge-padding-md";
-  "spaceBadgePaddingSm": "--space-badge-padding-sm";
+  "spaceBadgePaddingXLg": "--space-badge-padding-x-lg";
+  "spaceBadgePaddingXMd": "--space-badge-padding-x-md";
+  "spaceBadgePaddingXSm": "--space-badge-padding-x-sm";
+  "spaceBadgePaddingYLg": "--space-badge-padding-y-lg";
+  "spaceBadgePaddingYMd": "--space-badge-padding-y-md";
+  "spaceBadgePaddingYSm": "--space-badge-padding-y-sm";
   "spaceBadgeRadius": "--space-badge-radius";
   "spaceBreadcrumbEllipsisSize": "--space-breadcrumb-ellipsis-size";
   "spaceBreadcrumbGap": "--space-breadcrumb-gap";

@@ -3546,41 +3546,88 @@
         "variable": "var(--color-badge-outline-border)",
         "description": ""
       },
-      "badge-padding-sm": {
-        "name": "badgePaddingSm",
+      "badge-padding-x-sm": {
+        "name": "badgePaddingXSm",
         "path": [
           "badge",
-          "padding",
+          "padding-x",
           "sm"
         ],
         "value": "4px",
         "type": "spacing",
-        "variable": "var(--badge-padding-sm)",
+        "variable": "var(--badge-padding-x-sm)",
         "description": ""
       },
-      "badge-padding-md": {
-        "name": "badgePaddingMd",
+      "badge-padding-x-md": {
+        "name": "badgePaddingXMd",
         "path": [
           "badge",
-          "padding",
+          "padding-x",
           "md"
         ],
         "value": "8px",
         "type": "spacing",
-        "variable": "var(--badge-padding-md)",
+        "variable": "var(--badge-padding-x-md)",
         "description": ""
       },
-      "badge-padding-lg": {
-        "name": "badgePaddingLg",
+      "badge-padding-x-lg": {
+        "name": "badgePaddingXLg",
         "path": [
           "badge",
-          "padding",
+          "padding-x",
           "lg"
         ],
         "value": "16px",
         "type": "spacing",
-        "variable": "var(--badge-padding-lg)",
+        "variable": "var(--badge-padding-x-lg)",
         "description": ""
+      },
+      "badge-padding-y-sm": {
+        "name": "badgePaddingYSm",
+        "path": [
+          "badge",
+          "padding-y",
+          "sm"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--badge-padding-y-sm)",
+        "description": ""
+      },
+      "badge-padding-y-md": {
+        "name": "badgePaddingYMd",
+        "path": [
+          "badge",
+          "padding-y",
+          "md"
+        ],
+        "value": "4px",
+        "type": "spacing",
+        "variable": "var(--badge-padding-y-md)",
+        "description": ""
+      },
+      "badge-padding-y-lg": {
+        "name": "badgePaddingYLg",
+        "path": [
+          "badge",
+          "padding-y",
+          "lg"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--badge-padding-y-lg)",
+        "description": ""
+      },
+      "badge-font-weight": {
+        "name": "badgeFontWeight",
+        "path": [
+          "badge",
+          "font-weight"
+        ],
+        "value": "600",
+        "type": "fontWeight",
+        "variable": "var(--badge-font-weight)",
+        "description": "Font weight for badge labels"
       },
       "badge-radius": {
         "name": "badgeRadius",

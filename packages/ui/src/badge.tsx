@@ -6,7 +6,7 @@ import { cn } from "./lib/utils";
 
 export const badgeVariants = cva(
   cn(
-    "inline-flex items-center border font-(--font-weight-semibold) transition-colors",
+    "inline-flex items-center border font-(--font-weight-badge-font-weight) transition-colors",
     "rounded-(--space-badge-radius)"
   ),
   {
@@ -26,9 +26,9 @@ export const badgeVariants = cva(
           "bg-(--color-badge-outline-background) text-(--color-badge-outline-text) border-(--color-badge-outline-border)",
       },
       size: {
-        sm: "px-(--space-badge-padding-sm) text-(length:--font-size-badge-font-size-sm)",
-        md: "px-(--space-badge-padding-md) text-(length:--font-size-badge-font-size-md)",
-        lg: "px-(--space-badge-padding-lg) text-(length:--font-size-badge-font-size-lg)",
+        sm: "px-(--space-badge-padding-x-sm) py-(--space-badge-padding-y-sm) text-(length:--font-size-badge-font-size-sm)",
+        md: "px-(--space-badge-padding-x-md) py-(--space-badge-padding-y-md) text-(length:--font-size-badge-font-size-md)",
+        lg: "px-(--space-badge-padding-x-lg) py-(--space-badge-padding-y-lg) text-(length:--font-size-badge-font-size-lg)",
       },
       interactive: {
         true: cn(
