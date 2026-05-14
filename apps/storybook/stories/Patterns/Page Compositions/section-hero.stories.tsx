@@ -13,6 +13,8 @@ const meta: Meta<typeof SectionHero> = {
           "Real-world hero section composition for landing pages with title, description, action buttons, and optional images. Supports multiple layouts (default, gradient, centered) and image positioning for flexible page designs.",
       },
     },
+    // Override global a11y config here if needed, e.g. to disable a rule or set a specific ARIA config.
+    // a11y: { config: { rules: [{ id: "color-contrast", enabled: false }] } },
   },
   tags: ["autodocs"],
   argTypes: {

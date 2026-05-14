@@ -14,6 +14,8 @@ const meta: Meta<typeof SiteHeader> = {
           "Real-world site header composition with logo, navigation links, and action buttons. Production-ready with responsive design, sticky positioning, and backdrop blur. Supports default and transparent variants for different page contexts.",
       },
     },
+    // Override global a11y config here if needed, e.g. to disable a rule or set a specific ARIA config.
+    // a11y: { config: { rules: [{ id: "color-contrast", enabled: false }] } },
   },
   tags: ["autodocs"],
   argTypes: {

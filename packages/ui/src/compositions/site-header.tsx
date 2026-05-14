@@ -2,6 +2,12 @@ import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 import { Button } from "../button";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuLink,
+} from "../navigation-menu";
 
 export const siteHeaderVariants = cva(
   "w-full transition-colors duration-(--duration-duration-200)",
@@ -18,12 +24,6 @@ export const siteHeaderVariants = cva(
     },
   }
 );
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuLink,
-} from "../navigation-menu";
 
 export interface SiteHeaderProps
   extends
@@ -60,7 +60,10 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
 
             {/* Navigation Section */}
             {navigation.length > 0 && (
-              <NavigationMenu className="hidden md:flex">
+              <NavigationMenu
+                className="hidden md:flex"
+                aria-label="Main navigation"
+              >
                 <NavigationMenuList>
                   {navigation.map((item, index) => (
                     <NavigationMenuItem key={index}>

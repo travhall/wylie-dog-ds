@@ -42,6 +42,7 @@ export const SectionFeatures = React.forwardRef<
     { className, variant, title, description, features, columns = 3, ...props },
     ref
   ) => {
+    const headingId = React.useId();
     const gridCols = {
       2: "md:grid-cols-2",
       3: "md:grid-cols-2 lg:grid-cols-3",
@@ -52,6 +53,8 @@ export const SectionFeatures = React.forwardRef<
       <section
         className={cn(sectionFeaturesVariants({ variant }), className)}
         ref={ref}
+        // aria-labelledby ties the section to its heading, making it a proper ARIA landmark
+        aria-labelledby={title ? headingId : undefined}
         {...props}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,7 +62,10 @@ export const SectionFeatures = React.forwardRef<
           {(title || description) && (
             <div className="text-center max-w-3xl mx-auto mb-16">
               {title && (
-                <h2 className="text-(length:--font-size-heading-lg) md:text-(length:--font-size-display-sm) lg:text-(length:--font-size-display-md) font-(--font-weight-bold) tracking-(--space-typography-tracking-tight) mb-4">
+                <h2
+                  id={headingId}
+                  className="text-(length:--font-size-heading-lg) md:text-(length:--font-size-display-sm) lg:text-(length:--font-size-display-md) font-(--font-weight-bold) tracking-(--space-typography-tracking-tight) mb-4"
+                >
                   {title}
                 </h2>
               )}
@@ -80,7 +86,10 @@ export const SectionFeatures = React.forwardRef<
                     <CardHeader>
                       <div className="flex items-start justify-between mb-2">
                         {feature.icon && (
-                          <div className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-interactive-primary)/10 text-(--color-interactive-primary) mb-4">
+                          <div
+                            aria-hidden="true"
+                            className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-interactive-primary)/10 text-(--color-interactive-primary) mb-4"
+                          >
                             {feature.icon}
                           </div>
                         )}
@@ -107,7 +116,10 @@ export const SectionFeatures = React.forwardRef<
                     {/* Icon and Badge Row */}
                     <div className="flex items-start justify-between">
                       {feature.icon && (
-                        <div className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-interactive-primary)/10 text-(--color-interactive-primary)">
+                        <div
+                          aria-hidden="true"
+                          className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-interactive-primary)/10 text-(--color-interactive-primary)"
+                        >
                           {feature.icon}
                         </div>
                       )}

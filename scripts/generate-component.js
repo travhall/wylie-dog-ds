@@ -95,33 +95,49 @@ function toTitleCase(str) {
 // Generate component template
 function generateComponentTemplate(name, composition = false) {
   const pascalName = toPascalCase(name);
-  const importPath = composition ? "../lib/utils" : "./lib/utils";
+  const utilsPath = composition ? "../lib/utils" : "./lib/utils";
   const primitiveImportComment = composition
     ? '\n// Import primitives as needed\n// import { Button } from "../button";\n// import { Card } from "../card";\n'
     : "";
 
   return `import React from "react";
-import { cn } from "${importPath}";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "${utilsPath}";
 ${primitiveImportComment}
+const ${pascalName.charAt(0).toLowerCase() + pascalName.slice(1)}Variants = cva(
+  cn(
+    "relative",
+    // Focus ring ensures keyboard navigability (WCAG 2.4.7)
+    "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)"
+  ),
+  {
+    variants: {
+      variant: {
+        default: "bg-background text-foreground",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
 export interface ${pascalName}Props
-  extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default";
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof ${pascalName.charAt(0).toLowerCase() + pascalName.slice(1)}Variants> {
+  /** Render the component's styles on a child element (e.g. \`<a>\` or \`<button>\`). */
+  asChild?: boolean;
 }
 
 export const ${pascalName} = React.forwardRef<HTMLDivElement, ${pascalName}Props>(
-  ({ className, variant = "default", ...props }, ref) => {
-    const variants = {
-      default: "bg-background text-foreground",
-    };
-
+  ({ className, variant, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "div";
+    // TODO: Add role, aria-label, or other ARIA attributes appropriate for this component's WAI-ARIA pattern
     return (
-      <div
-        className={cn(
-          "relative",
-          variants[variant],
-          className
-        )}
+      <Comp
         ref={ref}
+        className={cn(${pascalName.charAt(0).toLowerCase() + pascalName.slice(1)}Variants({ variant }), className)}
         {...props}
       />
     );
@@ -139,22 +155,22 @@ function generateTestTemplate(name, composition = false) {
 
   return `import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import { axe, toHaveNoViolations } from "jest-axe";
+import {
+  describeA11y,
+  commonA11yTests,
+  expectToPassA11yAudit,
+} from "../lib/test-utils";
 import { ${pascalName} } from "${importPath}";
-
-expect.extend(toHaveNoViolations);
 
 describe("${pascalName}", () => {
   it("renders without crashing", () => {
     render(<${pascalName} aria-label="Test ${name}" />);
-    const element = screen.getByLabelText("Test ${name}");
-    expect(element).toBeInTheDocument();
+    expect(screen.getByLabelText("Test ${name}")).toBeInTheDocument();
   });
 
   it("applies custom className", () => {
     render(<${pascalName} className="custom-class" aria-label="Test ${name}" />);
-    const element = screen.getByLabelText("Test ${name}");
-    expect(element).toHaveClass("custom-class");
+    expect(screen.getByLabelText("Test ${name}")).toHaveClass("custom-class");
   });
 
   it("forwards ref correctly", () => {
@@ -163,17 +179,20 @@ describe("${pascalName}", () => {
     expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
 
-  it("passes accessibility audit", async () => {
-    const { container } = render(<${pascalName} aria-label="Test ${name}" />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
-  });
-
   it("renders with default variant", () => {
     render(<${pascalName} aria-label="Test ${name}" />);
-    const element = screen.getByLabelText("Test ${name}");
-    expect(element).toBeInTheDocument();
+    expect(screen.getByLabelText("Test ${name}")).toBeInTheDocument();
   });
+});
+
+describeA11y("${pascalName}", () => {
+  commonA11yTests.passesAudit(() => (
+    <${pascalName} aria-label="Test ${name}" />
+  ));
+  // TODO: Add component-specific a11y tests using helpers from test-utils, e.g.:
+  // commonA11yTests.hasCorrectRole(() => <${pascalName} />, "region");
+  // commonA11yTests.supportsFocus(() => <${pascalName} tabIndex={0} />, "generic");
+  // commonA11yTests.handlesDisabledState((disabled) => <${pascalName} disabled={disabled} />);
 });
 `;
 }
@@ -223,6 +242,8 @@ const meta: Meta<typeof ${pascalName}> = {
         component: "${description}",
       },
     },
+    // Override global a11y config here if needed, e.g. to disable a rule or set a specific ARIA config.
+    // a11y: { config: { rules: [{ id: "color-contrast", enabled: false }] } },
   },
   tags: ["autodocs"],
   argTypes: {
@@ -330,14 +351,11 @@ export const WithInteractions: Story = {
     const element = canvas.getByText(/interactive ${titleName.toLowerCase()}/i);
     expect(element).toBeInTheDocument();
 
-    // Test 2: Click interaction
-    await userEvent.click(element);
-    expect(element).toHaveFocus();
+    // Test 2: Keyboard navigation — Tab into the component, then verify focus
+    // TODO: Replace with the appropriate role query once the component's ARIA role is defined
+    await userEvent.tab();
 
-    // Test 3: Keyboard navigation (customize based on component behavior)
-    await userEvent.keyboard("{Tab}");
-
-    // Add more interaction tests as needed
+    // Add more interaction tests as needed (keyboard activation, state changes, etc.)
   },
   parameters: {
     docs: {

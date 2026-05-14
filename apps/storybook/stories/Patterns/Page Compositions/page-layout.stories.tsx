@@ -15,6 +15,8 @@ const meta: Meta<typeof PageLayout> = {
           "Full-page layout composition combining header, footer, sidebar, and main content area. Supports multiple width variants and optional sidebar positioning for building complete page structures.",
       },
     },
+    // Override global a11y config here if needed, e.g. to disable a rule or set a specific ARIA config.
+    // a11y: { config: { rules: [{ id: "color-contrast", enabled: false }] } },
   },
   tags: ["autodocs"],
   argTypes: {

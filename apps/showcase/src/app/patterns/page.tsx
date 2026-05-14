@@ -21,7 +21,7 @@ function PatCard({
       style={{ boxShadow: "var(--shadow-sm)" }}
     >
       <div
-        className="relative bg-(--color-background-secondary) border-b border-(--color-border-primary) overflow-hidden"
+        className="relative bg-(--color-background-secondary) border-b border-(--color-border-primary) overflow-hidden flex place-content-center grow"
         style={{
           minHeight: 280,
           padding: 20,
@@ -35,7 +35,9 @@ function PatCard({
             backgroundSize: "16px 16px",
           }}
         />
-        <div className="relative">{preview}</div>
+        <div className="relative flex items-center justify-center">
+          {preview}
+        </div>
       </div>
       <div className="p-5 flex-1 flex flex-col">
         <div className="flex items-center justify-between">
@@ -151,9 +153,9 @@ export default function PatternsPage() {
           </div>
 
           {/* relationship diagram */}
-          <div className="mt-12 grid gap-3 md:grid-cols-4">
+          <div className="mt-12 flex flex-col lg:flex-row gap-3">
             {/* INPUTS — takes 2/4 cols */}
-            <div className="md:col-span-2 rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5">
+            <div className="md:col-span-2 rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5 grow">
               <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
                 inputs
               </p>
@@ -201,9 +203,21 @@ export default function PatternsPage() {
               </div>
             </div>
 
+            <div className="hidden lg:flex items-center justify-center w-16">
+              <svg
+                viewBox="0 0 80 24"
+                className="w-16 h-6 text-fg-tertiary"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
+                <path d="M2 12h70M62 4l10 8-10 8" strokeDasharray="3 3" />
+              </svg>
+            </div>
+
             {/* COMPOSED INTO — Patterns */}
             <div
-              className="rounded-xl border-2 p-5"
+              className="rounded-xl border-2 p-5 grow"
               style={{
                 borderColor: "var(--color-interactive-primary)",
                 background:
@@ -235,8 +249,20 @@ export default function PatternsPage() {
               </div>
             </div>
 
+            <div className="hidden lg:flex items-center justify-center w-16">
+              <svg
+                viewBox="0 0 80 24"
+                className="w-16 h-6 text-fg-tertiary"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
+                <path d="M2 12h70M62 4l10 8-10 8" strokeDasharray="3 3" />
+              </svg>
+            </div>
+
             {/* SHIPPED AS — Pages */}
-            <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5">
+            <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5 grow">
               <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
                 shipped as
               </p>
@@ -257,7 +283,7 @@ export default function PatternsPage() {
 
         {/* stats strip */}
         <div className="relative border-t border-(--color-border-primary) bg-(--color-background-primary)/60 backdrop-blur-sm">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-330 px-4 sm:px-6 lg:px-8">
             <dl className="grid grid-cols-2 lg:grid-cols-4">
               {[
                 {
@@ -278,7 +304,7 @@ export default function PatternsPage() {
                 {
                   label: "Accessible",
                   value: "WCAG 2.2",
-                  sub: "AA verified per pattern",
+                  sub: "AA verified",
                 },
               ].map(({ label, value, sub }, i) => (
                 <div

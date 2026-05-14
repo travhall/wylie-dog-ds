@@ -12,6 +12,8 @@ const meta: Meta<typeof SectionFeatures> = {
           "Real-world features section composition for showcasing product features and benefits. This Tier 2 pattern component displays features in a grid layout with optional badges, supporting multiple column configurations and style variants.",
       },
     },
+    // Override global a11y config here if needed, e.g. to disable a rule or set a specific ARIA config.
+    // a11y: { config: { rules: [{ id: "color-contrast", enabled: false }] } },
   },
   tags: ["autodocs"],
   argTypes: {

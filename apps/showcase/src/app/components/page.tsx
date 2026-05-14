@@ -174,14 +174,14 @@ export default function ComponentsPage() {
                 <span className="font-mono text-sm">WCAG 2.2 AA</span>.
               </p>
 
-              <dl className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4 max-w-xl">
+              <dl className="mt-10 flex flex-wrap gap-6 max-w-xl">
                 {[
                   { label: "Components", value: "43" },
                   { label: "Categories", value: "6" },
                   { label: "Built on", value: "Radix" },
                   { label: "Audited", value: "WCAG 2.2" },
                 ].map(({ label, value }) => (
-                  <div key={label}>
+                  <div key={label} className="self-stretch">
                     <dt className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
                       {label}
                     </dt>

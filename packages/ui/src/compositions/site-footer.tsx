@@ -62,7 +62,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
         {...props}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {variant === "default" && columns.length > 0 && (
+          {(variant ?? "default") === "default" && columns.length > 0 && (
             <>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8">
                 {/* Logo/Brand Column */}
@@ -79,9 +79,9 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                   </p>
                 </div>
 
-                {/* Footer Columns */}
+                {/* Footer Columns — each is a named nav landmark for screen reader navigation */}
                 {columns.map((column, index) => (
-                  <div key={index}>
+                  <nav key={index} aria-label={column.title}>
                     <h3 className="font-(--font-weight-semibold) text-(length:--font-size-sm) mb-4">
                       {column.title}
                     </h3>
@@ -97,7 +97,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </nav>
                 ))}
               </div>
 

@@ -46,6 +46,14 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
         ref={ref}
         {...props}
       >
+        {/* Skip navigation — lets keyboard users jump past repeated header content (WCAG 2.4.1) */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-(--border-radius-md) focus:bg-(--color-background-primary) focus:px-4 focus:py-2 focus:text-(--color-text-primary) focus:ring-2 focus:ring-(--color-border-focus)"
+        >
+          Skip to main content
+        </a>
+
         {/* Header */}
         {header && <div className="shrink-0">{header}</div>}
 
@@ -53,19 +61,28 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
         <div className="flex-1 flex">
           {/* Left Sidebar */}
           {sidebar && sidebarPosition === "left" && (
-            <aside className="hidden lg:block w-64 shrink-0 border-r border-(--color-border-primary)">
+            <aside
+              aria-label="Sidebar"
+              className="hidden lg:block w-64 shrink-0 border-r border-(--color-border-primary)"
+            >
               {sidebar}
             </aside>
           )}
 
           {/* Main Content */}
-          <main className={pageLayoutMainVariants({ variant })}>
+          <main
+            id="main-content"
+            className={pageLayoutMainVariants({ variant })}
+          >
             {children}
           </main>
 
           {/* Right Sidebar */}
           {sidebar && sidebarPosition === "right" && (
-            <aside className="hidden lg:block w-64 shrink-0 border-l border-(--color-border-primary)">
+            <aside
+              aria-label="Sidebar"
+              className="hidden lg:block w-64 shrink-0 border-l border-(--color-border-primary)"
+            >
               {sidebar}
             </aside>
           )}

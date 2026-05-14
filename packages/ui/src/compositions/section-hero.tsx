@@ -1,7 +1,7 @@
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
-import { Button } from "../button";
+import { Button, buttonVariants } from "../button";
 import { Badge } from "../badge";
 
 export const sectionHeroVariants = cva(
@@ -58,6 +58,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
     },
     ref
   ) => {
+    const headingId = React.useId();
     const isCentered = variant === "centered";
     const hasImage = !!image;
 
@@ -65,6 +66,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
       <section
         className={cn(sectionHeroVariants({ variant }), className)}
         ref={ref}
+        aria-labelledby={headingId}
         {...props}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,8 +94,9 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
                 </div>
               )}
 
-              {/* Title */}
+              {/* Title — id ties this heading to the section landmark via aria-labelledby */}
               <h1
+                id={headingId}
                 className={cn(
                   "text-(length:--font-size-display-sm) md:text-(length:--font-size-display-md) lg:text-(length:--font-size-display-lg) font-(--font-weight-bold) tracking-(--space-typography-tracking-tight)",
                   isCentered && "text-center"
@@ -124,10 +127,15 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
                 >
                   {primaryAction &&
                     (primaryAction.href ? (
-                      <a href={primaryAction.href}>
-                        <Button size="lg" variant="default">
-                          {primaryAction.label}
-                        </Button>
+                      // Use buttonVariants on <a> directly — Button always renders <button>,
+                      // so wrapping it in <a> would create invalid nested interactive elements
+                      <a
+                        href={primaryAction.href}
+                        className={cn(
+                          buttonVariants({ size: "lg", variant: "default" })
+                        )}
+                      >
+                        {primaryAction.label}
                       </a>
                     ) : (
                       <Button
@@ -140,10 +148,13 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
                     ))}
                   {secondaryAction &&
                     (secondaryAction.href ? (
-                      <a href={secondaryAction.href}>
-                        <Button size="lg" variant="outline">
-                          {secondaryAction.label}
-                        </Button>
+                      <a
+                        href={secondaryAction.href}
+                        className={cn(
+                          buttonVariants({ size: "lg", variant: "outline" })
+                        )}
+                      >
+                        {secondaryAction.label}
                       </a>
                     ) : (
                       <Button
