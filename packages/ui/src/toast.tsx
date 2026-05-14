@@ -18,11 +18,11 @@ export const toastVariants = cva(
         default:
           "border bg-(--color-toast-default-background) text-(--color-toast-text)",
         destructive:
-          "border-(--color-toast-destructive-border) bg-(--color-toast-destructive-background) text-white",
+          "border-(--color-toast-destructive-border) bg-(--color-toast-destructive-background) text-(--color-toast-destructive-text)",
         success:
-          "border-(--color-toast-success-border) bg-(--color-toast-success-background) text-white",
+          "border-(--color-toast-success-border) bg-(--color-toast-success-background) text-(--color-toast-success-text)",
         warning:
-          "border-(--color-toast-warning-border) bg-(--color-toast-warning-background) text-black",
+          "border-(--color-toast-warning-border) bg-(--color-toast-warning-background) text-(--color-toast-warning-text)",
       },
     },
     defaultVariants: {
@@ -56,7 +56,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
     <button
       ref={ref}
       className={cn(
-        "inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border bg-transparent ring-offset-(--color-background-primary) transition-colors hover:bg-(--color-toast-action-hover) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
+        "inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border bg-transparent ring-offset-(--color-background-primary) transition-colors hover:bg-(--color-toast-action-hover) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
         "h-(--space-toast-action-height)",
         "px-(--space-toast-action-padding-x)",
         "text-(length:--font-size-toast-action-font-size)",
@@ -78,7 +78,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
     <button
       ref={ref}
       className={cn(
-        "absolute right-2 top-2 p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-0 transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100",
+        "absolute right-2 top-2 p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-(--opacity-0) transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-(--opacity-100) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) group-hover:opacity-(--opacity-100)",
         "rounded-(--space-toast-close-button-radius)",
         "h-(--space-toast-close-size) w-(--space-toast-close-size)",
         className

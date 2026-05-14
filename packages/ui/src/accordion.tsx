@@ -46,11 +46,11 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between p-(--space-accordion-trigger-padding) text-(length:--font-size-accordion-trigger-font-size) font-medium transition-all",
+        "flex flex-1 items-center justify-between p-(--space-accordion-trigger-padding) text-(length:--font-size-accordion-trigger-font-size) font-(--font-weight-medium) transition-all",
         "text-(--color-accordion-trigger-text)",
         "hover:bg-(--color-accordion-trigger-hover) hover:text-(--color-accordion-trigger-text-hover)",
         "active:bg-(--color-accordion-trigger-pressed)",
-        "focus:outline-none focus:bg-(--color-accordion-trigger-focus) focus:ring-2 focus:ring-(--color-border-focus) focus:ring-offset-2",
+        "focus:outline-none focus:bg-(--color-accordion-trigger-focus) focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
         "disabled:bg-(--color-accordion-trigger-disabled) disabled:text-(--color-accordion-trigger-text-disabled) disabled:cursor-not-allowed",
         "data-[state=open]:text-(--color-accordion-trigger-text-open)",
         "[&[data-state=open]>svg]:rotate-180",

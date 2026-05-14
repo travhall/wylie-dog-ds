@@ -51,7 +51,7 @@ const ResizableHandle = React.forwardRef<HTMLDivElement, ResizableHandleProps>(
     >
       {withHandle && (
         <div className="z-(--z-index-dropdown) flex h-(--space-resizable-handle-height) w-(--space-resizable-handle-width) items-center justify-center rounded-(--space-resizable-handle-radius) border border-(--color-resizable-handle-border) bg-(--color-resizable-handle-background)">
-          <GripVerticalIcon className="h-2.5 w-2.5" />
+          <GripVerticalIcon className="h-(--space-resizable-grip-icon-size) w-(--space-resizable-grip-icon-size)" />
         </div>
       )}
     </div>

@@ -8246,6 +8246,17 @@
         "type": "spacing",
         "variable": "var(--resizable-handle-width)",
         "description": ""
+      },
+      "resizable-grip-icon-size": {
+        "name": "resizableGripIconSize",
+        "path": [
+          "resizable",
+          "grip-icon-size"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--resizable-grip-icon-size)",
+        "description": "Size of the grip icon inside the resizable handle (xs icon, 12px)"
       }
     },
     "scrollbar": {
@@ -8964,6 +8975,42 @@
         "type": "color",
         "variable": "var(--color-toast-warning-background)",
         "description": ""
+      },
+      "toast-destructive-text": {
+        "name": "toastDestructiveText",
+        "path": [
+          "toast",
+          "destructive",
+          "text"
+        ],
+        "value": "oklch(0.991 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-toast-destructive-text)",
+        "description": "Text color on destructive toast (saturated red background)"
+      },
+      "toast-success-text": {
+        "name": "toastSuccessText",
+        "path": [
+          "toast",
+          "success",
+          "text"
+        ],
+        "value": "oklch(0.991 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-toast-success-text)",
+        "description": "Text color on success toast (saturated green background)"
+      },
+      "toast-warning-text": {
+        "name": "toastWarningText",
+        "path": [
+          "toast",
+          "warning",
+          "text"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-toast-warning-text)",
+        "description": "Text color on warning toast (yellow highlight background)"
       },
       "toast-border-radius": {
         "name": "toastBorderRadius",
@@ -10254,6 +10301,19 @@
         "variable": "var(--sheet-content-width-lg)",
         "description": ""
       },
+      "sheet-content-width-default": {
+        "name": "sheetContentWidthDefault",
+        "path": [
+          "sheet",
+          "content",
+          "width",
+          "default"
+        ],
+        "value": "75%",
+        "type": "dimension",
+        "variable": "var(--sheet-content-width-default)",
+        "description": "Default width for left/right sheet panels before size modifier is applied"
+      },
       "sheet-content-padding": {
         "name": "sheetContentPadding",
         "path": [
@@ -11110,6 +11170,17 @@
         "type": "fontSize",
         "variable": "var(--toggle-group-item-font-size)",
         "description": ""
+      },
+      "toggle-group-item-height": {
+        "name": "toggleGroupItemHeight",
+        "path": [
+          "toggle-group",
+          "item-height"
+        ],
+        "value": "40px",
+        "type": "spacing",
+        "variable": "var(--toggle-group-item-height)",
+        "description": "Height of toggle group items (40px, matches default toggle height)"
       }
     },
     "scroll-area": {

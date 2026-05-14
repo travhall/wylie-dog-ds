@@ -464,11 +464,14 @@ export type CssVarName =
   | "--color-toast-default-background"
   | "--color-toast-destructive-background"
   | "--color-toast-destructive-border"
+  | "--color-toast-destructive-text"
   | "--color-toast-success-background"
   | "--color-toast-success-border"
+  | "--color-toast-success-text"
   | "--color-toast-text"
   | "--color-toast-warning-background"
   | "--color-toast-warning-border"
+  | "--color-toast-warning-text"
   | "--color-toggle-background-hover"
   | "--color-toggle-border"
   | "--color-toggle-pressed"
@@ -857,6 +860,7 @@ export type CssVarName =
   | "--space-radio-size-lg"
   | "--space-radio-size-md"
   | "--space-radio-size-sm"
+  | "--space-resizable-grip-icon-size"
   | "--space-resizable-handle-height"
   | "--space-resizable-handle-radius"
   | "--space-resizable-handle-width"
@@ -914,6 +918,7 @@ export type CssVarName =
   | "--space-sheet-close-button-offset"
   | "--space-sheet-close-button-radius"
   | "--space-sheet-content-padding"
+  | "--space-sheet-content-width-default"
   | "--space-sheet-content-width-lg"
   | "--space-sheet-content-width-md"
   | "--space-sheet-content-width-sm"
@@ -998,6 +1003,7 @@ export type CssVarName =
   | "--space-toast-viewport-padding"
   | "--space-toast-width"
   | "--space-toggle-group-gap"
+  | "--space-toggle-group-item-height"
   | "--space-toggle-group-item-padding-x"
   | "--space-toggle-group-item-radius"
   | "--space-toggle-radius"
@@ -1514,11 +1520,14 @@ export declare const cssVars: Readonly<{
   "colorToastDefaultBackground": "--color-toast-default-background";
   "colorToastDestructiveBackground": "--color-toast-destructive-background";
   "colorToastDestructiveBorder": "--color-toast-destructive-border";
+  "colorToastDestructiveText": "--color-toast-destructive-text";
   "colorToastSuccessBackground": "--color-toast-success-background";
   "colorToastSuccessBorder": "--color-toast-success-border";
+  "colorToastSuccessText": "--color-toast-success-text";
   "colorToastText": "--color-toast-text";
   "colorToastWarningBackground": "--color-toast-warning-background";
   "colorToastWarningBorder": "--color-toast-warning-border";
+  "colorToastWarningText": "--color-toast-warning-text";
   "colorToggleBackgroundHover": "--color-toggle-background-hover";
   "colorToggleBorder": "--color-toggle-border";
   "colorTogglePressed": "--color-toggle-pressed";
@@ -1907,6 +1916,7 @@ export declare const cssVars: Readonly<{
   "spaceRadioSizeLg": "--space-radio-size-lg";
   "spaceRadioSizeMd": "--space-radio-size-md";
   "spaceRadioSizeSm": "--space-radio-size-sm";
+  "spaceResizableGripIconSize": "--space-resizable-grip-icon-size";
   "spaceResizableHandleHeight": "--space-resizable-handle-height";
   "spaceResizableHandleRadius": "--space-resizable-handle-radius";
   "spaceResizableHandleWidth": "--space-resizable-handle-width";
@@ -1964,6 +1974,7 @@ export declare const cssVars: Readonly<{
   "spaceSheetCloseButtonOffset": "--space-sheet-close-button-offset";
   "spaceSheetCloseButtonRadius": "--space-sheet-close-button-radius";
   "spaceSheetContentPadding": "--space-sheet-content-padding";
+  "spaceSheetContentWidthDefault": "--space-sheet-content-width-default";
   "spaceSheetContentWidthLg": "--space-sheet-content-width-lg";
   "spaceSheetContentWidthMd": "--space-sheet-content-width-md";
   "spaceSheetContentWidthSm": "--space-sheet-content-width-sm";
@@ -2048,6 +2059,7 @@ export declare const cssVars: Readonly<{
   "spaceToastViewportPadding": "--space-toast-viewport-padding";
   "spaceToastWidth": "--space-toast-width";
   "spaceToggleGroupGap": "--space-toggle-group-gap";
+  "spaceToggleGroupItemHeight": "--space-toggle-group-item-height";
   "spaceToggleGroupItemPaddingX": "--space-toggle-group-item-padding-x";
   "spaceToggleGroupItemRadius": "--space-toggle-group-item-radius";
   "spaceToggleRadius": "--space-toggle-radius";

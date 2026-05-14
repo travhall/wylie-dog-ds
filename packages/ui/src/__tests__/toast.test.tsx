@@ -113,7 +113,7 @@ describe("Toast", () => {
       const toast = container.firstChild as HTMLElement;
       expect(toast).toHaveClass(
         "bg-(--color-toast-destructive-background)",
-        "text-white"
+        "text-(--color-toast-destructive-text)"
       );
     });
 
@@ -124,7 +124,7 @@ describe("Toast", () => {
       const toast = container.firstChild as HTMLElement;
       expect(toast).toHaveClass(
         "bg-(--color-toast-success-background)",
-        "text-white"
+        "text-(--color-toast-success-text)"
       );
     });
 
@@ -135,7 +135,7 @@ describe("Toast", () => {
       const toast = container.firstChild as HTMLElement;
       expect(toast).toHaveClass(
         "bg-(--color-toast-warning-background)",
-        "text-black"
+        "text-(--color-toast-warning-text)"
       );
     });
   });

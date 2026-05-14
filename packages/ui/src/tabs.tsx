@@ -47,7 +47,7 @@ export const tabsTriggerVariants = cva(
     "inline-flex items-center justify-center whitespace-nowrap font-(--font-weight-medium) ring-offset-background transition-all",
     "border-b-(--space-tabs-trigger-indicator-width) border-transparent",
     "-mb-[1px]",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
+    "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(--space-focus-ring-offset)",
     "disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
     "data-[state=active]:bg-(--color-tabs-trigger-background-active) data-[state=active]:text-(--color-tabs-trigger-text-active) data-[state=active]:shadow-(--shadow-sm) data-[state=active]:border-(--color-tabs-trigger-indicator-color)",
     "hover:bg-(--color-tabs-trigger-background-hover) hover:text-(--color-tabs-trigger-text-hover)"
@@ -94,7 +94,7 @@ export const TabsContent = React.forwardRef<
       "ring-offset-background",
       "mt-(--space-tabs-content-margin-top)",
       "p-(--space-tabs-content-padding)",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
+      "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(--space-focus-ring-offset)",
       className
     )}
     {...props}

@@ -209,7 +209,7 @@ describe("Alert", () => {
       expect(title).toHaveClass(
         "mb-(--space-alert-title-margin-bottom)",
         "text-(length:--font-size-alert-title-font-size)",
-        "font-medium",
+        "font-(--font-weight-medium)",
         "leading-(--line-height-none)",
         "tracking-(--space-typography-tracking-tight)"
       );

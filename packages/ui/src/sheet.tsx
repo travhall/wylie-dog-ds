@@ -17,9 +17,9 @@ export const sheetContentVariants = cva(
         top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
         bottom:
           "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-        left: "inset-y-0 left-0 h-full border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left w-3/4",
+        left: "inset-y-0 left-0 h-full border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left w-(--space-sheet-content-width-default)",
         right:
-          "inset-y-0 right-0 h-full border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right w-3/4",
+          "inset-y-0 right-0 h-full border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right w-(--space-sheet-content-width-default)",
       },
       size: {
         sm: "",
@@ -110,7 +110,7 @@ export const SheetContent = React.forwardRef<
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="absolute right-(--space-sheet-close-button-offset) top-(--space-sheet-close-button-offset) rounded-(--space-sheet-close-button-radius) opacity-(--state-opacity-muted) ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none">
+        <DialogPrimitive.Close className="absolute right-(--space-sheet-close-button-offset) top-(--space-sheet-close-button-offset) rounded-(--space-sheet-close-button-radius) opacity-(--state-opacity-muted) ring-offset-background transition-opacity hover:opacity-(--opacity-100) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none">
           <svg
             className="h-(--space-icon-size-md) w-(--space-icon-size-md)"
             fill="none"
@@ -176,7 +176,7 @@ export const SheetTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "font-semibold text-(--color-text-primary)",
+      "font-(--font-weight-semibold) text-(--color-text-primary)",
       "text-(length:--font-size-sheet-title-font-size)",
       className
     )}

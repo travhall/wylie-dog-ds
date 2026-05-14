@@ -289,7 +289,9 @@ describe("Textarea", () => {
     it("should have focus styles", () => {
       render(<Textarea aria-label="Test" />);
       const textarea = screen.getByRole("textbox", { name: "Test" });
-      expect(textarea).toHaveClass("focus:ring-2");
+      expect(textarea).toHaveClass(
+        "focus:ring-(length:--space-focus-ring-width)"
+      );
       expect(textarea).toHaveClass("focus:outline-none");
     });
 

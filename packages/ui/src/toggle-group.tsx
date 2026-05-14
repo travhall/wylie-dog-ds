@@ -27,12 +27,12 @@ const ToggleGroupItem = React.forwardRef<
   <ToggleGroupPrimitive.Item
     ref={ref}
     className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-(--space-toggle-group-item-radius) text-(length:--font-size-toggle-group-item-font-size) font-medium transition-colors",
+      "inline-flex items-center justify-center whitespace-nowrap rounded-(--space-toggle-group-item-radius) text-(length:--font-size-toggle-group-item-font-size) font-(--font-weight-medium) transition-colors",
       "hover:bg-(--color-toggle-background-hover) hover:text-(--color-toggle-text-hover)",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
+      "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(--space-focus-ring-offset)",
       "disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
       "data-[state=on]:bg-(--color-toggle-pressed) data-[state=on]:text-(--color-toggle-text-pressed)",
-      "h-10 px-(--space-toggle-group-item-padding-x) bg-transparent text-(--color-toggle-text)",
+      "h-(--space-toggle-group-item-height) px-(--space-toggle-group-item-padding-x) bg-transparent text-(--color-toggle-text)",
       className
     )}
     {...props}

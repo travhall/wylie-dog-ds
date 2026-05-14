@@ -7,7 +7,7 @@ export const textareaVariants = cva(
     "flex w-full border font-normal transition-colors",
     "rounded-(--space-textarea-radius)",
     "placeholder:text-(--color-input-placeholder)",
-    "focus:outline-none focus:ring-2 focus:ring-(--color-input-border-focus) focus:ring-offset-1",
+    "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-input-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
     "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
     "text-(--color-input-default-text)"
   ),

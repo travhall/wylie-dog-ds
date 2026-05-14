@@ -57,7 +57,7 @@ const PaginationLink = ({
       "rounded-(--space-pagination-item-radius)",
       "text-(length:--font-size-pagination-item-font-size)",
       "hover:bg-(--color-pagination-background-hover) hover:text-(--color-pagination-text-hover)",
-      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-2",
+      "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(--space-focus-ring-offset)",
       "disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
       isActive
         ? "bg-(--color-pagination-active) text-(--color-pagination-text-active)"
@@ -111,7 +111,10 @@ const PaginationEllipsis = ({
 }: React.ComponentProps<"span">) => (
   <span
     aria-hidden
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    className={cn(
+      "flex h-(--space-pagination-item-size) w-(--space-pagination-item-size) items-center justify-center",
+      className
+    )}
     {...props}
   >
     <MoreHorizontalIcon className="h-(--space-pagination-icon-size) w-(--space-pagination-icon-size)" />

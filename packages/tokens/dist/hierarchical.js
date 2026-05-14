@@ -396,6 +396,7 @@ export const spacing = {
   "content-width-sm": "256px",
   "content-width-md": "320px",
   "content-width-lg": "320px",
+  "content-width-default": "75%",
   "header-padding-bottom": "24px",
   "footer-padding-top": "0px",
   "list-height-sm": "32px",
@@ -489,6 +490,7 @@ export const spacing = {
   "group-heading-padding-y": "4px",
   "indicator-margin-left": "4px",
   "indicator-margin-top": "4px",
+  "item-height": "40px",
   "months-gap": "4px",
   "nav-button-padding": "0px",
   "nav-button-radius": "4px",
@@ -517,6 +519,7 @@ export const spacing = {
   "viewport-gap": "8px",
   "handle-height": "16px",
   "handle-width": "12px",
+  "grip-icon-size": "12px",
   "icon-container-size": "48px",
   "radio-indicator-size": "8px",
   "indicator-height": "0px"

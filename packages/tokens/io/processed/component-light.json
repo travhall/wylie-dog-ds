@@ -1279,6 +1279,11 @@
     "$type": "spacing",
     "$value": "{space.1700}"
   },
+  "sheet.content.width.default": {
+    "$type": "dimension",
+    "$value": "75%",
+    "$description": "Default width for left/right sheet panels before size modifier is applied"
+  },
   "sheet.content.padding": {
     "$type": "spacing",
     "$value": "{space.400}"
@@ -1943,6 +1948,21 @@
     "$type": "color",
     "$value": "{color.status.highlight}"
   },
+  "toast.destructive.text": {
+    "$type": "color",
+    "$value": "{color.text.inverse}",
+    "$description": "Text color on destructive toast (saturated red background)"
+  },
+  "toast.success.text": {
+    "$type": "color",
+    "$value": "{color.text.inverse}",
+    "$description": "Text color on success toast (saturated green background)"
+  },
+  "toast.warning.text": {
+    "$type": "color",
+    "$value": "{color.text.primary}",
+    "$description": "Text color on warning toast (yellow highlight background)"
+  },
   "toast.border-radius": {
     "$type": "dimension",
     "$value": "{border-radius.lg}"
@@ -2150,6 +2170,11 @@
   "toggle-group.item-font-size": {
     "$type": "fontSize",
     "$value": "{typography.font-size.sm}"
+  },
+  "toggle-group.item-height": {
+    "$type": "spacing",
+    "$value": "{space.500}",
+    "$description": "Height of toggle group items (40px, matches default toggle height)"
   },
   "calendar.container-gap": {
     "$type": "spacing",
@@ -2618,6 +2643,11 @@
   "resizable.handle.width": {
     "$type": "spacing",
     "$value": "{space.150}"
+  },
+  "resizable.grip-icon-size": {
+    "$type": "spacing",
+    "$value": "{icon.size.xs}",
+    "$description": "Size of the grip icon inside the resizable handle (xs icon, 12px)"
   },
   "feature-grid.icon-container-size": {
     "$type": "spacing",

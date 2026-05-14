@@ -445,6 +445,7 @@
   --space-sheet-content-width-sm: 320px;
   --space-sheet-content-width-md: 320px;
   --space-sheet-content-width-lg: 448px;
+  --space-sheet-content-width-default: 75%;
   --space-sheet-content-padding: 32px;
   --space-sheet-header-gap: 8px;
   --space-sheet-header-padding-bottom: 24px;
@@ -611,6 +612,9 @@
   --color-toast-success-background: oklch(0.723 0.192 149.62);
   --color-toast-warning-border: oklch(0.817 0.157 97.74);
   --color-toast-warning-background: oklch(0.817 0.157 97.74);
+  --color-toast-destructive-text: oklch(0.209 0.01 268.18);
+  --color-toast-success-text: oklch(0.209 0.01 268.18);
+  --color-toast-warning-text: oklch(0.952 0.003 264.51);
   --space-toast-border-radius: 8px;
   --space-toast-close-padding: 4px;
   --space-card-grid-gap-horizontal: 24px;
@@ -663,6 +667,7 @@
   --space-toggle-group-item-padding-x: 12px;
   --space-toggle-group-item-radius: 4px;
   --font-size-toggle-group-item-font-size: 14px;
+  --space-toggle-group-item-height: 40px;
   --space-calendar-container-gap: 16px;
   --space-calendar-months-gap: 4px;
   --space-calendar-nav-button-padding: 0px;
@@ -780,6 +785,7 @@
   --space-toast-content-gap: 4px;
   --space-resizable-handle-height: 16px;
   --space-resizable-handle-width: 12px;
+  --space-resizable-grip-icon-size: 12px;
   --space-feature-grid-icon-container-size: 48px;
   --space-menubar-radio-indicator-size: 8px;
   --space-navigation-menu-indicator-height: 0px;
