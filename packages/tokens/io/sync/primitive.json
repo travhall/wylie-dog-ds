@@ -752,28 +752,28 @@
           "$value": 900
         },
         "typography.line-height.none": {
-          "$type": "lineHeight",
-          "$value": "100%"
+          "$type": "number",
+          "$value": 100
         },
         "typography.line-height.tight": {
-          "$type": "lineHeight",
-          "$value": "125%"
+          "$type": "number",
+          "$value": 125
         },
         "typography.line-height.snug": {
-          "$type": "lineHeight",
-          "$value": "137.5%"
+          "$type": "number",
+          "$value": 137.5
         },
         "typography.line-height.normal": {
-          "$type": "lineHeight",
-          "$value": "150%"
+          "$type": "number",
+          "$value": 150
         },
         "typography.line-height.relaxed": {
-          "$type": "lineHeight",
-          "$value": "162.5%"
+          "$type": "number",
+          "$value": 162.5
         },
         "typography.line-height.loose": {
-          "$type": "lineHeight",
-          "$value": "200%"
+          "$type": "number",
+          "$value": 200
         },
         "border-radius.none": {
           "$type": "dimension",

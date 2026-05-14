@@ -101,7 +101,7 @@
     "$description": "Font weight for badge labels"
   },
   "badge.line-height": {
-    "$type": "lineHeight",
+    "$type": "number",
     "$value": "{typography.line-height.none}",
     "$description": "Line height for badge labels — tight (1) prevents extra vertical space from browser default"
   },
@@ -2391,7 +2391,7 @@
     "$value": "{typography.font-weight.semibold}"
   },
   "card.title.line-height": {
-    "$type": "lineHeight",
+    "$type": "number",
     "$value": "{typography.line-height.none}"
   },
   "card.title.letter-spacing": {

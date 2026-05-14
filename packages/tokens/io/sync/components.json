@@ -214,7 +214,7 @@
           "$description": "Font weight for badge labels"
         },
         "badge.line-height": {
-          "$type": "lineHeight",
+          "$type": "number",
           "$value": "{typography.line-height.none}",
           "valuesByMode": {
             "Light": "{typography.line-height.none}",
@@ -4788,7 +4788,7 @@
           }
         },
         "card.title.line-height": {
-          "$type": "lineHeight",
+          "$type": "number",
           "$value": "{typography.line-height.none}",
           "valuesByMode": {
             "Light": "{typography.line-height.none}",

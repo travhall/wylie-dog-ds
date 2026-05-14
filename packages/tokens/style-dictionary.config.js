@@ -121,6 +121,8 @@ function generateCSSVariable(token, name) {
   const effectiveType =
     token.$type === "number" && name.includes("font-weight")
       ? "fontWeight"
+      : token.$type === "number" && name.includes("line-height")
+      ? "lineHeight"
       : token.$type;
 
   const config = TOKEN_TYPE_CONFIG[effectiveType];
@@ -133,6 +135,12 @@ function generateCSSVariable(token, name) {
   let cleanName = name;
   let prefix = config.prefix;
   let value = token.$value;
+
+  // number-typed line-height tokens store values as percentage integers
+  // (e.g. 100 = 100%). Convert to unitless decimal for CSS (÷ 100).
+  if (effectiveType === "lineHeight" && token.$type === "number" && typeof value === "number") {
+    value = value / 100;
+  }
 
   // Check for special cases first (e.g., border-radius within spacing type)
   if (config.specialCases) {
@@ -345,32 +353,36 @@ StyleDictionary.registerFormat({
           break;
 
         case "fontWeight":
+        case "lineHeight":
         case "number": {
+          const pathStr = cleanPath.join("-").toLowerCase();
           const isWeight =
             token.$type === "fontWeight" ||
-            (token.$type === "number" &&
-              cleanPath.join("-").toLowerCase().includes("font-weight"));
+            (token.$type === "number" && pathStr.includes("font-weight"));
+          const isLineHeight =
+            token.$type === "lineHeight" ||
+            (token.$type === "number" && pathStr.includes("line-height"));
           if (isWeight && cleanPath[1]) {
-            const key = cleanPath
+            const key = pathStr
+              .split("-")
               .slice(1)
               .join("-")
-              .toLowerCase()
               .replace("typography-font-weight-", "");
             hierarchical.fontWeight[key] = token.$value;
+          } else if (isLineHeight && cleanPath[1]) {
+            const key = pathStr
+              .split("-")
+              .slice(1)
+              .join("-")
+              .replace("typography-line-height-", "");
+            const lhValue =
+              token.$type === "number" && typeof token.$value === "number"
+                ? token.$value / 100
+                : token.$value;
+            hierarchical.lineHeight[key] = lhValue;
           }
           break;
         }
-
-        case "lineHeight":
-          if (cleanPath[1]) {
-            const key = cleanPath
-              .slice(1)
-              .join("-")
-              .toLowerCase()
-              .replace("typography-line-height-", "");
-            hierarchical.lineHeight[key] = token.$value;
-          }
-          break;
 
         case "duration":
           if (cleanPath[1]) {
