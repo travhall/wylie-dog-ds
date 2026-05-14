@@ -4169,40 +4169,52 @@
         "variable": "var(--color-button-destructive-border)",
         "description": ""
       },
-      "button-height-sm": {
-        "name": "buttonHeightSm",
+      "button-padding-y-sm": {
+        "name": "buttonPaddingYSm",
         "path": [
           "button",
-          "height",
+          "padding-y",
           "sm"
         ],
-        "value": "32px",
+        "value": "8px",
         "type": "spacing",
-        "variable": "var(--button-height-sm)",
+        "variable": "var(--button-padding-y-sm)",
         "description": ""
       },
-      "button-height-md": {
-        "name": "buttonHeightMd",
+      "button-padding-y-md": {
+        "name": "buttonPaddingYMd",
         "path": [
           "button",
-          "height",
+          "padding-y",
           "md"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--button-padding-y-md)",
+        "description": ""
+      },
+      "button-padding-y-lg": {
+        "name": "buttonPaddingYLg",
+        "path": [
+          "button",
+          "padding-y",
+          "lg"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--button-padding-y-lg)",
+        "description": ""
+      },
+      "button-icon-size": {
+        "name": "buttonIconSize",
+        "path": [
+          "button",
+          "icon",
+          "size"
         ],
         "value": "40px",
         "type": "spacing",
-        "variable": "var(--button-height-md)",
-        "description": ""
-      },
-      "button-height-lg": {
-        "name": "buttonHeightLg",
-        "path": [
-          "button",
-          "height",
-          "lg"
-        ],
-        "value": "48px",
-        "type": "spacing",
-        "variable": "var(--button-height-lg)",
+        "variable": "var(--button-icon-size)",
         "description": ""
       },
       "button-padding-x-sm": {
@@ -4287,6 +4299,28 @@
         "type": "fontSize",
         "variable": "var(--button-font-size-lg)",
         "description": ""
+      },
+      "button-font-weight": {
+        "name": "buttonFontWeight",
+        "path": [
+          "button",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--button-font-weight)",
+        "description": "Font weight for button labels"
+      },
+      "button-line-height": {
+        "name": "buttonLineHeight",
+        "path": [
+          "button",
+          "line-height"
+        ],
+        "value": 100,
+        "type": "number",
+        "variable": "var(--button-line-height)",
+        "description": "Line height for button labels — tight (1) prevents extra vertical space from browser default"
       },
       "button-link-text": {
         "name": "buttonLinkText",

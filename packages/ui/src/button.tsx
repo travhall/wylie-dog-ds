@@ -5,7 +5,7 @@ import { cn } from "./lib/utils";
 
 export const buttonVariants = cva(
   cn(
-    "inline-flex items-center justify-center font-(--font-weight-medium) border transition-colors",
+    "inline-flex items-center justify-center font-(--font-weight-button-font-weight) leading-(--line-height-button-line-height) border transition-colors",
     "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
     "disabled:opacity-(--state-opacity-disabled) disabled:pointer-events-none"
   ),
@@ -26,11 +26,11 @@ export const buttonVariants = cva(
       },
       size: {
         default:
-          "h-(--space-button-height-md) px-(--space-button-padding-x-md) text-(length:--font-size-button-font-size-md) rounded-(--space-button-radius)",
-        sm: "h-(--space-button-height-sm) px-(--space-button-padding-x-sm) text-(length:--font-size-button-font-size-sm) rounded-(--space-button-radius)",
-        md: "h-(--space-button-height-md) px-(--space-button-padding-x-md) text-(length:--font-size-button-font-size-md) rounded-(--space-button-radius)",
-        lg: "h-(--space-button-height-lg) px-(--space-button-padding-x-lg) text-(length:--font-size-button-font-size-lg) rounded-(--space-button-radius)",
-        icon: "h-(--space-button-height-md) w-(--space-button-height-md) rounded-(--space-button-radius)",
+          "px-(--space-button-padding-x-md) py-(--space-button-padding-y-md) text-(length:--font-size-button-font-size-md) rounded-(--space-button-radius)",
+        sm: "px-(--space-button-padding-x-sm) py-(--space-button-padding-y-sm) text-(length:--font-size-button-font-size-sm) rounded-(--space-button-radius)",
+        md: "px-(--space-button-padding-x-md) py-(--space-button-padding-y-md) text-(length:--font-size-button-font-size-md) rounded-(--space-button-radius)",
+        lg: "px-(--space-button-padding-x-lg) py-(--space-button-padding-y-lg) text-(length:--font-size-button-font-size-lg) rounded-(--space-button-radius)",
+        icon: "h-(--space-button-icon-size) w-(--space-button-icon-size) rounded-(--space-button-radius)",
       },
     },
     defaultVariants: {

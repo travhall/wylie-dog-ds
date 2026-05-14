@@ -209,17 +209,21 @@
     "$type": "color",
     "$value": "{color.interactive.danger}"
   },
-  "button.height.sm": {
+  "button.padding-y.sm": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.100}"
   },
-  "button.height.md": {
+  "button.padding-y.md": {
+    "$type": "spacing",
+    "$value": "{space.150}"
+  },
+  "button.padding-y.lg": {
+    "$type": "spacing",
+    "$value": "{space.200}"
+  },
+  "button.icon.size": {
     "$type": "spacing",
     "$value": "{space.500}"
-  },
-  "button.height.lg": {
-    "$type": "spacing",
-    "$value": "{space.600}"
   },
   "button.padding-x.sm": {
     "$type": "spacing",
@@ -248,6 +252,20 @@
   "button.font-size.lg": {
     "$type": "fontSize",
     "$value": "{typography.font-size.lg}"
+  },
+  "button.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight for button labels"
+  },
+  "button.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.none}",
+    "$description": "Line height for button labels — tight (1) prevents extra vertical space from browser default"
+  },
+  "button.link.text": {
+    "$type": "color",
+    "$value": "{color.interactive.primary}"
   },
   "card.background": {
     "$type": "color",
@@ -352,10 +370,6 @@
   "input.font-size.lg": {
     "$type": "fontSize",
     "$value": "{typography.font-size.lg}"
-  },
-  "button.link.text": {
-    "$type": "color",
-    "$value": "{color.interactive.primary}"
   },
   "alert.default.background": {
     "$type": "color",

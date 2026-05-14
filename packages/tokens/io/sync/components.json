@@ -430,28 +430,36 @@
             "Dark": "{color.interactive.danger}"
           }
         },
-        "button.height.sm": {
+        "button.padding-y.sm": {
           "$type": "spacing",
-          "$value": "{space.400}",
+          "$value": "{space.100}",
           "valuesByMode": {
-            "Light": "{space.400}",
-            "Dark": "{space.400}"
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
           }
         },
-        "button.height.md": {
+        "button.padding-y.md": {
+          "$type": "spacing",
+          "$value": "{space.150}",
+          "valuesByMode": {
+            "Light": "{space.150}",
+            "Dark": "{space.150}"
+          }
+        },
+        "button.padding-y.lg": {
+          "$type": "spacing",
+          "$value": "{space.200}",
+          "valuesByMode": {
+            "Light": "{space.200}",
+            "Dark": "{space.200}"
+          }
+        },
+        "button.icon.size": {
           "$type": "spacing",
           "$value": "{space.500}",
           "valuesByMode": {
             "Light": "{space.500}",
             "Dark": "{space.500}"
-          }
-        },
-        "button.height.lg": {
-          "$type": "spacing",
-          "$value": "{space.600}",
-          "valuesByMode": {
-            "Light": "{space.600}",
-            "Dark": "{space.600}"
           }
         },
         "button.padding-x.sm": {
@@ -508,6 +516,32 @@
           "valuesByMode": {
             "Light": "{typography.font-size.lg}",
             "Dark": "{typography.font-size.lg}"
+          }
+        },
+        "button.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          },
+          "$description": "Font weight for button labels"
+        },
+        "button.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.none}",
+          "valuesByMode": {
+            "Light": "{typography.line-height.none}",
+            "Dark": "{typography.line-height.none}"
+          },
+          "$description": "Line height for button labels — tight (1) prevents extra vertical space from browser default"
+        },
+        "button.link.text": {
+          "$type": "color",
+          "$value": "{color.interactive.primary}",
+          "valuesByMode": {
+            "Light": "{color.interactive.primary}",
+            "Dark": "{color.interactive.primary}"
           }
         },
         "card.background": {
@@ -716,14 +750,6 @@
           "valuesByMode": {
             "Light": "{typography.font-size.lg}",
             "Dark": "{typography.font-size.lg}"
-          }
-        },
-        "button.link.text": {
-          "$type": "color",
-          "$value": "{color.interactive.primary}",
-          "valuesByMode": {
-            "Light": "{color.interactive.primary}",
-            "Dark": "{color.interactive.primary}"
           }
         },
         "alert.default.background": {

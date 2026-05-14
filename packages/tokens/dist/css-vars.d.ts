@@ -587,6 +587,7 @@ export type CssVarName =
   | "--font-weight-badge-font-weight"
   | "--font-weight-black"
   | "--font-weight-bold"
+  | "--font-weight-button-font-weight"
   | "--font-weight-card-title-font-weight"
   | "--font-weight-extrabold"
   | "--font-weight-extralight"
@@ -597,6 +598,7 @@ export type CssVarName =
   | "--font-weight-regular"
   | "--font-weight-semibold"
   | "--line-height-badge-line-height"
+  | "--line-height-button-line-height"
   | "--line-height-card-title-line-height"
   | "--line-height-loose"
   | "--line-height-none"
@@ -687,12 +689,13 @@ export type CssVarName =
   | "--space-breadcrumb-link-radius"
   | "--space-breadcrumb-list-gap"
   | "--space-breadcrumb-separator-size"
-  | "--space-button-height-lg"
-  | "--space-button-height-md"
-  | "--space-button-height-sm"
+  | "--space-button-icon-size"
   | "--space-button-padding-x-lg"
   | "--space-button-padding-x-md"
   | "--space-button-padding-x-sm"
+  | "--space-button-padding-y-lg"
+  | "--space-button-padding-y-md"
+  | "--space-button-padding-y-sm"
   | "--space-button-radius"
   | "--space-calendar-cell-size"
   | "--space-calendar-container-gap"
@@ -1648,6 +1651,7 @@ export declare const cssVars: Readonly<{
   "fontWeightBadgeFontWeight": "--font-weight-badge-font-weight";
   "fontWeightBlack": "--font-weight-black";
   "fontWeightBold": "--font-weight-bold";
+  "fontWeightButtonFontWeight": "--font-weight-button-font-weight";
   "fontWeightCardTitleFontWeight": "--font-weight-card-title-font-weight";
   "fontWeightExtrabold": "--font-weight-extrabold";
   "fontWeightExtralight": "--font-weight-extralight";
@@ -1658,6 +1662,7 @@ export declare const cssVars: Readonly<{
   "fontWeightRegular": "--font-weight-regular";
   "fontWeightSemibold": "--font-weight-semibold";
   "lineHeightBadgeLineHeight": "--line-height-badge-line-height";
+  "lineHeightButtonLineHeight": "--line-height-button-line-height";
   "lineHeightCardTitleLineHeight": "--line-height-card-title-line-height";
   "lineHeightLoose": "--line-height-loose";
   "lineHeightNone": "--line-height-none";
@@ -1748,12 +1753,13 @@ export declare const cssVars: Readonly<{
   "spaceBreadcrumbLinkRadius": "--space-breadcrumb-link-radius";
   "spaceBreadcrumbListGap": "--space-breadcrumb-list-gap";
   "spaceBreadcrumbSeparatorSize": "--space-breadcrumb-separator-size";
-  "spaceButtonHeightLg": "--space-button-height-lg";
-  "spaceButtonHeightMd": "--space-button-height-md";
-  "spaceButtonHeightSm": "--space-button-height-sm";
+  "spaceButtonIconSize": "--space-button-icon-size";
   "spaceButtonPaddingXLg": "--space-button-padding-x-lg";
   "spaceButtonPaddingXMd": "--space-button-padding-x-md";
   "spaceButtonPaddingXSm": "--space-button-padding-x-sm";
+  "spaceButtonPaddingYLg": "--space-button-padding-y-lg";
+  "spaceButtonPaddingYMd": "--space-button-padding-y-md";
+  "spaceButtonPaddingYSm": "--space-button-padding-y-sm";
   "spaceButtonRadius": "--space-button-radius";
   "spaceCalendarCellSize": "--space-calendar-cell-size";
   "spaceCalendarContainerGap": "--space-calendar-container-gap";

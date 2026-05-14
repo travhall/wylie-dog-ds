@@ -453,9 +453,10 @@
   --color-button-destructive-background-hover: oklch(0.505 0.19 27.5);
   --color-button-destructive-text: oklch(0.991 0.003 264.51);
   --color-button-destructive-border: oklch(0.577 0.215 27.32);
-  --space-button-height-sm: 32px;
-  --space-button-height-md: 40px;
-  --space-button-height-lg: 48px;
+  --space-button-padding-y-sm: 8px;
+  --space-button-padding-y-md: 12px;
+  --space-button-padding-y-lg: 16px;
+  --space-button-icon-size: 40px;
   --space-button-padding-x-sm: 16px;
   --space-button-padding-x-md: 24px;
   --space-button-padding-x-lg: 32px;
@@ -463,6 +464,9 @@
   --font-size-button-font-size-sm: 14px;
   --font-size-button-font-size-md: 16px;
   --font-size-button-font-size-lg: 18px;
+  --font-weight-button-font-weight: 500;
+  --line-height-button-line-height: 1;
+  --color-button-link-text: oklch(0.546 0.215 262.89);
   --color-card-background: oklch(0.991 0.003 264.51);
   --color-card-border: oklch(0.786 0.004 271.24);
   --space-card-padding: 32px;
@@ -489,7 +493,6 @@
   --space-input-radius: 4px;
   --font-size-input-font-size-md: 16px;
   --font-size-input-font-size-lg: 18px;
-  --color-button-link-text: oklch(0.546 0.215 262.89);
   --color-alert-default-background: oklch(0.952 0.003 264.51);
   --color-alert-default-border: oklch(0.786 0.004 271.24);
   --color-alert-default-text: oklch(0.209 0.01 268.18);
