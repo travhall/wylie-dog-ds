@@ -6,7 +6,7 @@ import { cn } from "./lib/utils";
 
 export const badgeVariants = cva(
   cn(
-    "inline-flex items-center border font-(--font-weight-badge-font-weight) transition-colors",
+    "inline-flex items-center border font-(--font-weight-badge-font-weight) leading-(--line-height-badge-line-height) transition-colors",
     "rounded-(--space-badge-radius)"
   ),
   {

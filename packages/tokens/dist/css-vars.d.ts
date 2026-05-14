@@ -596,6 +596,7 @@ export type CssVarName =
   | "--font-weight-medium"
   | "--font-weight-regular"
   | "--font-weight-semibold"
+  | "--line-height-badge-line-height"
   | "--line-height-card-title-line-height"
   | "--line-height-loose"
   | "--line-height-none"
@@ -1656,6 +1657,7 @@ export declare const cssVars: Readonly<{
   "fontWeightMedium": "--font-weight-medium";
   "fontWeightRegular": "--font-weight-regular";
   "fontWeightSemibold": "--font-weight-semibold";
+  "lineHeightBadgeLineHeight": "--line-height-badge-line-height";
   "lineHeightCardTitleLineHeight": "--line-height-card-title-line-height";
   "lineHeightLoose": "--line-height-loose";
   "lineHeightNone": "--line-height-none";

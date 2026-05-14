@@ -2282,8 +2282,8 @@
             "font-weight",
             "extralight"
           ],
-          "value": "200",
-          "type": "fontWeight",
+          "value": 200,
+          "type": "number",
           "variable": "var(--typography-font-weight-extralight)",
           "description": ""
         },
@@ -2294,8 +2294,8 @@
             "font-weight",
             "light"
           ],
-          "value": "300",
-          "type": "fontWeight",
+          "value": 300,
+          "type": "number",
           "variable": "var(--typography-font-weight-light)",
           "description": ""
         },
@@ -2306,8 +2306,8 @@
             "font-weight",
             "regular"
           ],
-          "value": "400",
-          "type": "fontWeight",
+          "value": 400,
+          "type": "number",
           "variable": "var(--typography-font-weight-regular)",
           "description": ""
         },
@@ -2318,8 +2318,8 @@
             "font-weight",
             "medium"
           ],
-          "value": "500",
-          "type": "fontWeight",
+          "value": 500,
+          "type": "number",
           "variable": "var(--typography-font-weight-medium)",
           "description": ""
         },
@@ -2330,8 +2330,8 @@
             "font-weight",
             "semibold"
           ],
-          "value": "600",
-          "type": "fontWeight",
+          "value": 600,
+          "type": "number",
           "variable": "var(--typography-font-weight-semibold)",
           "description": ""
         },
@@ -2342,8 +2342,8 @@
             "font-weight",
             "bold"
           ],
-          "value": "700",
-          "type": "fontWeight",
+          "value": 700,
+          "type": "number",
           "variable": "var(--typography-font-weight-bold)",
           "description": ""
         },
@@ -2354,8 +2354,8 @@
             "font-weight",
             "extrabold"
           ],
-          "value": "800",
-          "type": "fontWeight",
+          "value": 800,
+          "type": "number",
           "variable": "var(--typography-font-weight-extrabold)",
           "description": ""
         },
@@ -2366,8 +2366,8 @@
             "font-weight",
             "black"
           ],
-          "value": "900",
-          "type": "fontWeight",
+          "value": 900,
+          "type": "number",
           "variable": "var(--typography-font-weight-black)",
           "description": ""
         }
@@ -3624,10 +3624,21 @@
           "badge",
           "font-weight"
         ],
-        "value": "600",
-        "type": "fontWeight",
+        "value": 600,
+        "type": "number",
         "variable": "var(--badge-font-weight)",
         "description": "Font weight for badge labels"
+      },
+      "badge-line-height": {
+        "name": "badgeLineHeight",
+        "path": [
+          "badge",
+          "line-height"
+        ],
+        "value": 1,
+        "type": "lineHeight",
+        "variable": "var(--badge-line-height)",
+        "description": "Line height for badge labels — tight (1) prevents extra vertical space from browser default"
       },
       "badge-radius": {
         "name": "badgeRadius",
@@ -4452,8 +4463,8 @@
           "title",
           "font-weight"
         ],
-        "value": "600",
-        "type": "fontWeight",
+        "value": 600,
+        "type": "number",
         "variable": "var(--card-title-font-weight)",
         "description": ""
       },
@@ -7505,8 +7516,8 @@
           "label",
           "font-weight"
         ],
-        "value": "500",
-        "type": "fontWeight",
+        "value": 500,
+        "type": "number",
         "variable": "var(--form-label-font-weight)",
         "description": ""
       },
@@ -7614,8 +7625,8 @@
           "legend",
           "font-weight"
         ],
-        "value": "600",
-        "type": "fontWeight",
+        "value": 600,
+        "type": "number",
         "variable": "var(--form-fieldset-legend-font-weight)",
         "description": ""
       }

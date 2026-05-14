@@ -114,7 +114,16 @@ const FONT_FAMILY_CONTRACTS = {
  * Generate CSS variable name and value for a token
  */
 function generateCSSVariable(token, name) {
-  const config = TOKEN_TYPE_CONFIG[token.$type];
+  // 'number' type tokens whose name contains 'font-weight' follow the
+  // fontWeight naming convention. Figma Variables doesn't support the W3C
+  // 'fontWeight' type natively, so these tokens use 'number' in the sync
+  // source but must still generate --font-weight-* CSS variables.
+  const effectiveType =
+    token.$type === "number" && name.includes("font-weight")
+      ? "fontWeight"
+      : token.$type;
+
+  const config = TOKEN_TYPE_CONFIG[effectiveType];
 
   if (!config) {
     // Unknown type - use generic naming
@@ -336,7 +345,12 @@ StyleDictionary.registerFormat({
           break;
 
         case "fontWeight":
-          if (cleanPath[1]) {
+        case "number": {
+          const isWeight =
+            token.$type === "fontWeight" ||
+            (token.$type === "number" &&
+              cleanPath.join("-").toLowerCase().includes("font-weight"));
+          if (isWeight && cleanPath[1]) {
             const key = cleanPath
               .slice(1)
               .join("-")
@@ -345,6 +359,7 @@ StyleDictionary.registerFormat({
             hierarchical.fontWeight[key] = token.$value;
           }
           break;
+        }
 
         case "lineHeight":
           if (cleanPath[1]) {

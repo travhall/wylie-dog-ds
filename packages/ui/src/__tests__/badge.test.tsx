@@ -533,6 +533,7 @@ describe("Badge", () => {
       expect(badge).toHaveClass("py-(--space-badge-padding-y-md)");
       expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
       expect(badge).toHaveClass("font-(--font-weight-badge-font-weight)");
+      expect(badge).toHaveClass("leading-(--line-height-badge-line-height)");
     });
 
     it("should have transition-colors class", () => {

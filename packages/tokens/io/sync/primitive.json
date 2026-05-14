@@ -720,35 +720,35 @@
           "$value": "60px"
         },
         "typography.font-weight.extralight": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": 200
         },
         "typography.font-weight.light": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": 300
         },
         "typography.font-weight.regular": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": 400
         },
         "typography.font-weight.medium": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": 500
         },
         "typography.font-weight.semibold": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": 600
         },
         "typography.font-weight.bold": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": 700
         },
         "typography.font-weight.extrabold": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": 800
         },
         "typography.font-weight.black": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": 900
         },
         "typography.line-height.none": {

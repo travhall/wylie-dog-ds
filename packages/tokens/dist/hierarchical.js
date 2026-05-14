@@ -588,18 +588,18 @@ export const fontSize = {
 };
 
 export const fontWeight = {
-  "font-weight-extralight": "200",
-  "font-weight-light": "300",
-  "font-weight-regular": "400",
-  "font-weight-medium": "500",
-  "font-weight-semibold": "600",
-  "font-weight-bold": "700",
-  "font-weight-extrabold": "800",
-  "font-weight-black": "900",
-  "font-weight": "600",
-  "title-font-weight": "600",
-  "label-font-weight": "500",
-  "fieldset-legend-font-weight": "600"
+  "font-weight-extralight": 200,
+  "font-weight-light": 300,
+  "font-weight-regular": 400,
+  "font-weight-medium": 500,
+  "font-weight-semibold": 600,
+  "font-weight-bold": 700,
+  "font-weight-extrabold": 800,
+  "font-weight-black": 900,
+  "font-weight": 600,
+  "title-font-weight": 600,
+  "label-font-weight": 500,
+  "fieldset-legend-font-weight": 600
 };
 
 export const lineHeight = {
@@ -609,6 +609,7 @@ export const lineHeight = {
   "line-height-normal": 1.5,
   "line-height-relaxed": 1.625,
   "line-height-loose": 2,
+  "line-height": 1,
   "title-line-height": 1
 };
 

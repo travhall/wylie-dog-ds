@@ -205,13 +205,22 @@
           }
         },
         "badge.font-weight": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": "{typography.font-weight.semibold}",
           "valuesByMode": {
             "Light": "{typography.font-weight.semibold}",
             "Dark": "{typography.font-weight.semibold}"
           },
           "$description": "Font weight for badge labels"
+        },
+        "badge.line-height": {
+          "$type": "lineHeight",
+          "$value": "{typography.line-height.none}",
+          "valuesByMode": {
+            "Light": "{typography.line-height.none}",
+            "Dark": "{typography.line-height.none}"
+          },
+          "$description": "Line height for badge labels — tight (1) prevents extra vertical space from browser default"
         },
         "badge.radius": {
           "$type": "dimension",
@@ -4771,7 +4780,7 @@
           }
         },
         "card.title.font-weight": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": "{typography.font-weight.semibold}",
           "valuesByMode": {
             "Light": "{typography.font-weight.semibold}",
@@ -4931,7 +4940,7 @@
           }
         },
         "form.label.font-weight": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": "{typography.font-weight.medium}",
           "valuesByMode": {
             "Light": "{typography.font-weight.medium}",
@@ -5003,7 +5012,7 @@
           }
         },
         "form.fieldset.legend.font-weight": {
-          "$type": "fontWeight",
+          "$type": "number",
           "$value": "{typography.font-weight.semibold}",
           "valuesByMode": {
             "Light": "{typography.font-weight.semibold}",
