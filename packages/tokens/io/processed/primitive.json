@@ -671,44 +671,44 @@
     "$description": "@fontSource(provider:google,weights:400-500-600-700,subsets:latin,display:swap)"
   },
   "typography.font-size.xs": {
-    "$type": "fontSize",
-    "$value": "12px"
+    "$type": "number",
+    "$value": 12
   },
   "typography.font-size.sm": {
-    "$type": "fontSize",
-    "$value": "14px"
+    "$type": "number",
+    "$value": 14
   },
   "typography.font-size.base": {
-    "$type": "fontSize",
-    "$value": "16px"
+    "$type": "number",
+    "$value": 16
   },
   "typography.font-size.lg": {
-    "$type": "fontSize",
-    "$value": "18px"
+    "$type": "number",
+    "$value": 18
   },
   "typography.font-size.xl": {
-    "$type": "fontSize",
-    "$value": "20px"
+    "$type": "number",
+    "$value": 20
   },
   "typography.font-size.2xl": {
-    "$type": "fontSize",
-    "$value": "24px"
+    "$type": "number",
+    "$value": 24
   },
   "typography.font-size.3xl": {
-    "$type": "fontSize",
-    "$value": "30px"
+    "$type": "number",
+    "$value": 30
   },
   "typography.font-size.4xl": {
-    "$type": "fontSize",
-    "$value": "36px"
+    "$type": "number",
+    "$value": 36
   },
   "typography.font-size.5xl": {
-    "$type": "fontSize",
-    "$value": "48px"
+    "$type": "number",
+    "$value": 48
   },
   "typography.font-size.6xl": {
-    "$type": "fontSize",
-    "$value": "60px"
+    "$type": "number",
+    "$value": 60
   },
   "typography.font-weight.extralight": {
     "$type": "number",

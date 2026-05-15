@@ -110,15 +110,15 @@
     "$value": "{border-radius.full}"
   },
   "badge.font-size.sm": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "badge.font-size.md": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "badge.font-size.lg": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.base}"
   },
   "button.primary.background": {
@@ -242,15 +242,15 @@
     "$value": "{border-radius.md}"
   },
   "button.font-size.sm": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "button.font-size.md": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.base}"
   },
   "button.font-size.lg": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.lg}"
   },
   "button.font-weight": {
@@ -292,7 +292,7 @@
     "$value": "{space.100}"
   },
   "card.header.title.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xl}"
   },
   "card.header.title.color": {
@@ -300,7 +300,7 @@
     "$value": "{color.text.primary}"
   },
   "card.header.description.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "card.header.description.color": {
@@ -356,7 +356,7 @@
     "$value": "{space.200}"
   },
   "input.font-size.sm": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "input.radius": {
@@ -364,11 +364,11 @@
     "$value": "{border-radius.md}"
   },
   "input.font-size.md": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.base}"
   },
   "input.font-size.lg": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.lg}"
   },
   "alert.default.background": {
@@ -984,7 +984,7 @@
     "$value": "{border-radius.md}"
   },
   "tooltip.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "tooltip.max-width": {
@@ -1020,15 +1020,15 @@
     "$value": "{border-radius.md}"
   },
   "select.trigger.font-size.sm": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "select.trigger.font-size.md": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "select.trigger.font-size.lg": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.base}"
   },
   "select.content.radius": {
@@ -1064,7 +1064,7 @@
     "$value": "{border-radius.sm}"
   },
   "select.item.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "select.separator.height": {
@@ -1276,19 +1276,19 @@
     "$value": "{border-radius.md}"
   },
   "label.font-size.sm": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "textarea.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "label.font-size.md": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.base}"
   },
   "label.font-size.lg": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.lg}"
   },
   "label.margin-bottom": {
@@ -1333,11 +1333,11 @@
     "$value": "{space.300}"
   },
   "sheet.title.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xl}"
   },
   "sheet.description.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "sheet.footer.padding-top": {
@@ -1405,15 +1405,15 @@
     "$value": "{space.100}"
   },
   "tabs.trigger.font-size.sm": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "tabs.trigger.font-size.md": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "tabs.trigger.font-size.lg": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.base}"
   },
   "tabs.trigger.indicator-width": {
@@ -1469,7 +1469,7 @@
     "$value": "{border-radius.md}"
   },
   "pagination.item.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "pagination.item.gap": {
@@ -1513,11 +1513,11 @@
     "$value": "{space.300}"
   },
   "dialog.title.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xl}"
   },
   "dialog.description.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "dialog.footer.margin-top": {
@@ -1577,11 +1577,11 @@
     "$value": "{space.200}"
   },
   "toast.title.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "toast.description.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "toast.action.height": {
@@ -1593,7 +1593,7 @@
     "$value": "{space.100}"
   },
   "toast.action.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "toast.close.size": {
@@ -1613,15 +1613,15 @@
     "$value": "{space.200}"
   },
   "table.header.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "table.cell.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "table.caption.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "table.caption.margin-top": {
@@ -1745,7 +1745,7 @@
     "$value": "{space.050}"
   },
   "breadcrumb.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "breadcrumb.separator.size": {
@@ -1829,11 +1829,11 @@
     "$value": "{space.200}"
   },
   "dropdown-menu.item.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "dropdown-menu.shortcut.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "dropdown-menu.separator.height": {
@@ -1861,7 +1861,7 @@
     "$value": "{space.150}"
   },
   "accordion.trigger.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.base}"
   },
   "accordion.trigger.icon.size": {
@@ -1873,7 +1873,7 @@
     "$value": "{space.150}"
   },
   "accordion.content.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "table.header.height": {
@@ -1945,7 +1945,7 @@
     "$value": "{space.200}"
   },
   "menubar.shortcut.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "menubar.separator.height": {
@@ -2040,11 +2040,11 @@
     "$value": "{border-radius.xl}"
   },
   "feature-grid.title-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xl}"
   },
   "feature-grid.description-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "form.item-gap": {
@@ -2060,7 +2060,7 @@
     "$value": "{space.050}"
   },
   "form.description-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "alert-dialog.content-gap": {
@@ -2084,11 +2084,11 @@
     "$value": "{border-radius.lg}"
   },
   "alert-dialog.title-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.lg}"
   },
   "alert-dialog.description-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "alert.padding-x": {
@@ -2108,11 +2108,11 @@
     "$value": "{border-radius.lg}"
   },
   "alert.title.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.base}"
   },
   "alert.description-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "label.required-margin-left": {
@@ -2156,11 +2156,11 @@
     "$value": "{border-radius.md}"
   },
   "command.item-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "command.group-heading-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "navigation-menu.list-gap": {
@@ -2188,7 +2188,7 @@
     "$value": "{border-radius.md}"
   },
   "navigation-menu.trigger-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "toggle-group.gap": {
@@ -2204,7 +2204,7 @@
     "$value": "{border-radius.md}"
   },
   "toggle-group.item-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "toggle-group.item-height": {
@@ -2229,11 +2229,11 @@
     "$value": "{border-radius.md}"
   },
   "calendar.header-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "calendar.day-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "pagination.list-gap": {
@@ -2273,11 +2273,11 @@
     "$value": "{border-radius.md}"
   },
   "context-menu.item-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "context-menu.shortcut-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "menubar.list-gap": {
@@ -2309,7 +2309,7 @@
     "$value": "{border-radius.md}"
   },
   "menubar.item-font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "dropdown-menu.content-radius": {
@@ -2385,7 +2385,7 @@
     "$value": "{space.050}"
   },
   "toggle.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "toast.action.radius": {
@@ -2413,7 +2413,7 @@
     "$value": "-0.025em"
   },
   "card.content.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "card.content.color": {
@@ -2477,7 +2477,7 @@
     "$value": "{color.text.primary}"
   },
   "form.label.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
   "form.label.font-weight": {
@@ -2489,7 +2489,7 @@
     "$value": "{color.text.secondary}"
   },
   "form.hint.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "form.error.text": {
@@ -2497,7 +2497,7 @@
     "$value": "{color.text.danger}"
   },
   "form.error.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
   "form.required.color": {
@@ -2513,7 +2513,7 @@
     "$value": "{space.300}"
   },
   "form.fieldset.legend.font-size": {
-    "$type": "fontSize",
+    "$type": "number",
     "$value": "{typography.font-size.base}"
   },
   "form.fieldset.legend.font-weight": {

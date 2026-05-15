@@ -123,6 +123,8 @@ function generateCSSVariable(token, name) {
       ? "fontWeight"
       : token.$type === "number" && name.includes("line-height")
       ? "lineHeight"
+      : token.$type === "number" && name.includes("font-size")
+      ? "fontSize"
       : token.$type;
 
   const config = TOKEN_TYPE_CONFIG[effectiveType];
@@ -140,6 +142,12 @@ function generateCSSVariable(token, name) {
   // (e.g. 100 = 100%). Convert to unitless decimal for CSS (÷ 100).
   if (effectiveType === "lineHeight" && token.$type === "number" && typeof value === "number") {
     value = value / 100;
+  }
+
+  // number-typed font-size tokens store values as raw integers (e.g. 14 = 14px).
+  // Re-add the px unit for CSS output.
+  if (effectiveType === "fontSize" && token.$type === "number" && typeof value === "number") {
+    value = `${value}px`;
   }
 
   // Check for special cases first (e.g., border-radius within spacing type)
@@ -342,16 +350,6 @@ StyleDictionary.registerFormat({
           break;
 
         case "fontSize":
-          if (cleanPath[1]) {
-            const key = cleanPath
-              .slice(1)
-              .join("-")
-              .toLowerCase()
-              .replace("typography-font-size-", "");
-            hierarchical.fontSize[key] = token.$value;
-          }
-          break;
-
         case "fontWeight":
         case "lineHeight":
         case "number": {
@@ -362,7 +360,21 @@ StyleDictionary.registerFormat({
           const isLineHeight =
             token.$type === "lineHeight" ||
             (token.$type === "number" && pathStr.includes("line-height"));
-          if (isWeight && cleanPath[1]) {
+          const isFontSize =
+            token.$type === "fontSize" ||
+            (token.$type === "number" && pathStr.includes("font-size"));
+          if (isFontSize && cleanPath[1]) {
+            const key = pathStr
+              .split("-")
+              .slice(1)
+              .join("-")
+              .replace("typography-font-size-", "");
+            const fsValue =
+              token.$type === "number" && typeof token.$value === "number"
+                ? `${token.$value}px`
+                : token.$value;
+            hierarchical.fontSize[key] = fsValue;
+          } else if (isWeight && cleanPath[1]) {
             const key = pathStr
               .split("-")
               .slice(1)

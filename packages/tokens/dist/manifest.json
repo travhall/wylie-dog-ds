@@ -2160,8 +2160,8 @@
             "font-size",
             "xs"
           ],
-          "value": "12px",
-          "type": "fontSize",
+          "value": 12,
+          "type": "number",
           "variable": "var(--typography-font-size-xs)",
           "description": ""
         },
@@ -2172,8 +2172,8 @@
             "font-size",
             "sm"
           ],
-          "value": "14px",
-          "type": "fontSize",
+          "value": 14,
+          "type": "number",
           "variable": "var(--typography-font-size-sm)",
           "description": ""
         },
@@ -2184,8 +2184,8 @@
             "font-size",
             "base"
           ],
-          "value": "16px",
-          "type": "fontSize",
+          "value": 16,
+          "type": "number",
           "variable": "var(--typography-font-size-base)",
           "description": ""
         },
@@ -2196,8 +2196,8 @@
             "font-size",
             "lg"
           ],
-          "value": "18px",
-          "type": "fontSize",
+          "value": 18,
+          "type": "number",
           "variable": "var(--typography-font-size-lg)",
           "description": ""
         },
@@ -2208,8 +2208,8 @@
             "font-size",
             "xl"
           ],
-          "value": "20px",
-          "type": "fontSize",
+          "value": 20,
+          "type": "number",
           "variable": "var(--typography-font-size-xl)",
           "description": ""
         },
@@ -2220,8 +2220,8 @@
             "font-size",
             "2xl"
           ],
-          "value": "24px",
-          "type": "fontSize",
+          "value": 24,
+          "type": "number",
           "variable": "var(--typography-font-size-2xl)",
           "description": ""
         },
@@ -2232,8 +2232,8 @@
             "font-size",
             "3xl"
           ],
-          "value": "30px",
-          "type": "fontSize",
+          "value": 30,
+          "type": "number",
           "variable": "var(--typography-font-size-3xl)",
           "description": ""
         },
@@ -2244,8 +2244,8 @@
             "font-size",
             "4xl"
           ],
-          "value": "36px",
-          "type": "fontSize",
+          "value": 36,
+          "type": "number",
           "variable": "var(--typography-font-size-4xl)",
           "description": ""
         },
@@ -2256,8 +2256,8 @@
             "font-size",
             "5xl"
           ],
-          "value": "48px",
-          "type": "fontSize",
+          "value": 48,
+          "type": "number",
           "variable": "var(--typography-font-size-5xl)",
           "description": ""
         },
@@ -2268,8 +2268,8 @@
             "font-size",
             "6xl"
           ],
-          "value": "60px",
-          "type": "fontSize",
+          "value": 60,
+          "type": "number",
           "variable": "var(--typography-font-size-6xl)",
           "description": ""
         }
@@ -3658,8 +3658,8 @@
           "font-size",
           "sm"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--badge-font-size-sm)",
         "description": ""
       },
@@ -3670,8 +3670,8 @@
           "font-size",
           "md"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--badge-font-size-md)",
         "description": ""
       },
@@ -3682,8 +3682,8 @@
           "font-size",
           "lg"
         ],
-        "value": "16px",
-        "type": "fontSize",
+        "value": 16,
+        "type": "number",
         "variable": "var(--badge-font-size-lg)",
         "description": ""
       },
@@ -4271,8 +4271,8 @@
           "font-size",
           "sm"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--button-font-size-sm)",
         "description": ""
       },
@@ -4283,8 +4283,8 @@
           "font-size",
           "md"
         ],
-        "value": "16px",
-        "type": "fontSize",
+        "value": 16,
+        "type": "number",
         "variable": "var(--button-font-size-md)",
         "description": ""
       },
@@ -4295,8 +4295,8 @@
           "font-size",
           "lg"
         ],
-        "value": "18px",
-        "type": "fontSize",
+        "value": 18,
+        "type": "number",
         "variable": "var(--button-font-size-lg)",
         "description": ""
       },
@@ -4411,8 +4411,8 @@
           "title",
           "font-size"
         ],
-        "value": "20px",
-        "type": "fontSize",
+        "value": 20,
+        "type": "number",
         "variable": "var(--card-header-title-font-size)",
         "description": ""
       },
@@ -4437,8 +4437,8 @@
           "description",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--card-header-description-font-size)",
         "description": ""
       },
@@ -4533,8 +4533,8 @@
           "content",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--card-content-font-size)",
         "description": ""
       },
@@ -4740,8 +4740,8 @@
           "font-size",
           "sm"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--input-font-size-sm)",
         "description": ""
       },
@@ -4763,8 +4763,8 @@
           "font-size",
           "md"
         ],
-        "value": "16px",
-        "type": "fontSize",
+        "value": 16,
+        "type": "number",
         "variable": "var(--input-font-size-md)",
         "description": ""
       },
@@ -4775,8 +4775,8 @@
           "font-size",
           "lg"
         ],
-        "value": "18px",
-        "type": "fontSize",
+        "value": 18,
+        "type": "number",
         "variable": "var(--input-font-size-lg)",
         "description": ""
       },
@@ -5001,8 +5001,8 @@
           "title",
           "font-size"
         ],
-        "value": "16px",
-        "type": "fontSize",
+        "value": 16,
+        "type": "number",
         "variable": "var(--alert-title-font-size)",
         "description": ""
       },
@@ -5012,8 +5012,8 @@
           "alert",
           "description-font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--alert-description-font-size)",
         "description": ""
       }
@@ -5300,8 +5300,8 @@
           "shortcut",
           "font-size"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--menubar-shortcut-font-size)",
         "description": ""
       },
@@ -5424,8 +5424,8 @@
           "menubar",
           "item-font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--menubar-item-font-size)",
         "description": ""
       },
@@ -5831,8 +5831,8 @@
           "command",
           "item-font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--command-item-font-size)",
         "description": ""
       },
@@ -5842,8 +5842,8 @@
           "command",
           "group-heading-font-size"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--command-group-heading-font-size)",
         "description": ""
       },
@@ -6147,8 +6147,8 @@
           "font-size",
           "sm"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--tabs-trigger-font-size-sm)",
         "description": ""
       },
@@ -6160,8 +6160,8 @@
           "font-size",
           "md"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--tabs-trigger-font-size-md)",
         "description": ""
       },
@@ -6173,8 +6173,8 @@
           "font-size",
           "lg"
         ],
-        "value": "16px",
-        "type": "fontSize",
+        "value": 16,
+        "type": "number",
         "variable": "var(--tabs-trigger-font-size-lg)",
         "description": ""
       },
@@ -6464,8 +6464,8 @@
           "calendar",
           "header-font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--calendar-header-font-size)",
         "description": ""
       },
@@ -6475,8 +6475,8 @@
           "calendar",
           "day-font-size"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--calendar-day-font-size)",
         "description": ""
       },
@@ -6712,8 +6712,8 @@
           "trigger",
           "font-size"
         ],
-        "value": "16px",
-        "type": "fontSize",
+        "value": 16,
+        "type": "number",
         "variable": "var(--accordion-trigger-font-size)",
         "description": ""
       },
@@ -6749,8 +6749,8 @@
           "content",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--accordion-content-font-size)",
         "description": ""
       }
@@ -6946,8 +6946,8 @@
           "breadcrumb",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--breadcrumb-font-size)",
         "description": ""
       },
@@ -7366,8 +7366,8 @@
           "title",
           "font-size"
         ],
-        "value": "20px",
-        "type": "fontSize",
+        "value": 20,
+        "type": "number",
         "variable": "var(--dialog-title-font-size)",
         "description": ""
       },
@@ -7378,8 +7378,8 @@
           "description",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--dialog-description-font-size)",
         "description": ""
       },
@@ -7514,8 +7514,8 @@
           "form",
           "description-font-size"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--form-description-font-size)",
         "description": ""
       },
@@ -7538,8 +7538,8 @@
           "label",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--form-label-font-size)",
         "description": ""
       },
@@ -7574,8 +7574,8 @@
           "hint",
           "font-size"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--form-hint-font-size)",
         "description": ""
       },
@@ -7598,8 +7598,8 @@
           "error",
           "font-size"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--form-error-font-size)",
         "description": ""
       },
@@ -7646,8 +7646,8 @@
           "legend",
           "font-size"
         ],
-        "value": "16px",
-        "type": "fontSize",
+        "value": 16,
+        "type": "number",
         "variable": "var(--form-fieldset-legend-font-size)",
         "description": ""
       },
@@ -7850,8 +7850,8 @@
           "item",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--pagination-item-font-size)",
         "description": ""
       },
@@ -8735,8 +8735,8 @@
           "header",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--table-header-font-size)",
         "description": ""
       },
@@ -8747,8 +8747,8 @@
           "cell",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--table-cell-font-size)",
         "description": ""
       },
@@ -8759,8 +8759,8 @@
           "caption",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--table-caption-font-size)",
         "description": ""
       },
@@ -8919,8 +8919,8 @@
           "title",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--toast-title-font-size)",
         "description": ""
       },
@@ -8931,8 +8931,8 @@
           "description",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--toast-description-font-size)",
         "description": ""
       },
@@ -8967,8 +8967,8 @@
           "action",
           "font-size"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--toast-action-font-size)",
         "description": ""
       },
@@ -9360,8 +9360,8 @@
           "toggle",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--toggle-font-size)",
         "description": ""
       },
@@ -9450,8 +9450,8 @@
           "tooltip",
           "font-size"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--tooltip-font-size)",
         "description": ""
       },
@@ -9566,8 +9566,8 @@
           "font-size",
           "sm"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--select-trigger-font-size-sm)",
         "description": ""
       },
@@ -9579,8 +9579,8 @@
           "font-size",
           "md"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--select-trigger-font-size-md)",
         "description": ""
       },
@@ -9592,8 +9592,8 @@
           "font-size",
           "lg"
         ],
-        "value": "16px",
-        "type": "fontSize",
+        "value": 16,
+        "type": "number",
         "variable": "var(--select-trigger-font-size-lg)",
         "description": ""
       },
@@ -9700,8 +9700,8 @@
           "item",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--select-item-font-size)",
         "description": ""
       },
@@ -10251,8 +10251,8 @@
           "textarea",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--textarea-font-size)",
         "description": ""
       }
@@ -10265,8 +10265,8 @@
           "font-size",
           "sm"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--label-font-size-sm)",
         "description": ""
       },
@@ -10277,8 +10277,8 @@
           "font-size",
           "md"
         ],
-        "value": "16px",
-        "type": "fontSize",
+        "value": 16,
+        "type": "number",
         "variable": "var(--label-font-size-md)",
         "description": ""
       },
@@ -10289,8 +10289,8 @@
           "font-size",
           "lg"
         ],
-        "value": "18px",
-        "type": "fontSize",
+        "value": 18,
+        "type": "number",
         "variable": "var(--label-font-size-lg)",
         "description": ""
       },
@@ -10449,8 +10449,8 @@
           "title",
           "font-size"
         ],
-        "value": "20px",
-        "type": "fontSize",
+        "value": 20,
+        "type": "number",
         "variable": "var(--sheet-title-font-size)",
         "description": ""
       },
@@ -10461,8 +10461,8 @@
           "description",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--sheet-description-font-size)",
         "description": ""
       },
@@ -10711,8 +10711,8 @@
           "context-menu",
           "item-font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--context-menu-item-font-size)",
         "description": ""
       },
@@ -10722,8 +10722,8 @@
           "context-menu",
           "shortcut-font-size"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--context-menu-shortcut-font-size)",
         "description": ""
       },
@@ -10821,8 +10821,8 @@
           "item",
           "font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--dropdown-menu-item-font-size)",
         "description": ""
       },
@@ -10833,8 +10833,8 @@
           "shortcut",
           "font-size"
         ],
-        "value": "12px",
-        "type": "fontSize",
+        "value": 12,
+        "type": "number",
         "variable": "var(--dropdown-menu-shortcut-font-size)",
         "description": ""
       },
@@ -11007,8 +11007,8 @@
           "feature-grid",
           "title-font-size"
         ],
-        "value": "20px",
-        "type": "fontSize",
+        "value": 20,
+        "type": "number",
         "variable": "var(--feature-grid-title-font-size)",
         "description": ""
       },
@@ -11018,8 +11018,8 @@
           "feature-grid",
           "description-font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--feature-grid-description-font-size)",
         "description": ""
       },
@@ -11097,8 +11097,8 @@
           "alert-dialog",
           "title-font-size"
         ],
-        "value": "18px",
-        "type": "fontSize",
+        "value": 18,
+        "type": "number",
         "variable": "var(--alert-dialog-title-font-size)",
         "description": ""
       },
@@ -11108,8 +11108,8 @@
           "alert-dialog",
           "description-font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--alert-dialog-description-font-size)",
         "description": ""
       }
@@ -11200,8 +11200,8 @@
           "navigation-menu",
           "trigger-font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--navigation-menu-trigger-font-size)",
         "description": ""
       },
@@ -11258,8 +11258,8 @@
           "toggle-group",
           "item-font-size"
         ],
-        "value": "14px",
-        "type": "fontSize",
+        "value": 14,
+        "type": "number",
         "variable": "var(--toggle-group-item-font-size)",
         "description": ""
       },
