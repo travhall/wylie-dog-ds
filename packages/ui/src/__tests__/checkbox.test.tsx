@@ -257,7 +257,7 @@ describe("Checkbox", () => {
     it("should apply error styling when error prop is true", () => {
       render(<Checkbox aria-label="Test" error />);
       const checkbox = screen.getByRole("checkbox");
-      expect(checkbox).toHaveClass("border-(--color-border-danger)");
+      expect(checkbox).toHaveClass("border-(--color-checkbox-error-border)");
     });
 
     it("should accept custom className", () => {

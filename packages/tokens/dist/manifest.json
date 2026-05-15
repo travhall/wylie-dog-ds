@@ -4629,6 +4629,18 @@
         "type": "color",
         "variable": "var(--color-card-background-disabled)",
         "description": ""
+      },
+      "card-disabled-opacity": {
+        "name": "cardDisabledOpacity",
+        "path": [
+          "card",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--card-disabled-opacity)",
+        "description": ""
       }
     },
     "input": {
@@ -5952,6 +5964,70 @@
         "value": "4px",
         "type": "spacing",
         "variable": "var(--command-item-padding-y)",
+        "description": ""
+      },
+      "command-input-icon-opacity": {
+        "name": "commandInputIconOpacity",
+        "path": [
+          "command",
+          "input",
+          "icon",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--command-input-icon-opacity)",
+        "description": ""
+      },
+      "command-input-disabled-opacity": {
+        "name": "commandInputDisabledOpacity",
+        "path": [
+          "command",
+          "input",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--command-input-disabled-opacity)",
+        "description": ""
+      },
+      "command-item-disabled-opacity": {
+        "name": "commandItemDisabledOpacity",
+        "path": [
+          "command",
+          "item",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--command-item-disabled-opacity)",
+        "description": ""
+      },
+      "command-group-heading-font-weight": {
+        "name": "commandGroupHeadingFontWeight",
+        "path": [
+          "command",
+          "group",
+          "heading",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--command-group-heading-font-weight)",
+        "description": ""
+      },
+      "command-shortcut-letter-spacing": {
+        "name": "commandShortcutLetterSpacing",
+        "path": [
+          "command",
+          "shortcut",
+          "letter-spacing"
+        ],
+        "value": "0.1em",
+        "type": "dimension",
+        "variable": "var(--command-shortcut-letter-spacing)",
         "description": ""
       }
     },
@@ -7346,6 +7422,19 @@
         "variable": "var(--color-carousel-nav-text-hover)",
         "description": ""
       },
+      "carousel-nav-button-disabled-opacity": {
+        "name": "carouselNavButtonDisabledOpacity",
+        "path": [
+          "carousel",
+          "nav-button",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--carousel-nav-button-disabled-opacity)",
+        "description": ""
+      },
       "carousel-item-spacing": {
         "name": "carouselItemSpacing",
         "path": [
@@ -7731,6 +7820,54 @@
         "type": "spacing",
         "variable": "var(--dialog-close-button-icon-size)",
         "description": ""
+      },
+      "dialog-close-button-opacity": {
+        "name": "dialogCloseButtonOpacity",
+        "path": [
+          "dialog",
+          "close-button",
+          "opacity"
+        ],
+        "value": 0.7,
+        "type": "number",
+        "variable": "var(--dialog-close-button-opacity)",
+        "description": ""
+      },
+      "dialog-close-button-opacity-hover": {
+        "name": "dialogCloseButtonOpacityHover",
+        "path": [
+          "dialog",
+          "close-button",
+          "opacity-hover"
+        ],
+        "value": 1,
+        "type": "number",
+        "variable": "var(--dialog-close-button-opacity-hover)",
+        "description": ""
+      },
+      "dialog-title-font-weight": {
+        "name": "dialogTitleFontWeight",
+        "path": [
+          "dialog",
+          "title",
+          "font-weight"
+        ],
+        "value": 600,
+        "type": "number",
+        "variable": "var(--dialog-title-font-weight)",
+        "description": ""
+      },
+      "dialog-title-letter-spacing": {
+        "name": "dialogTitleLetterSpacing",
+        "path": [
+          "dialog",
+          "title",
+          "letter-spacing"
+        ],
+        "value": "-0.025em",
+        "type": "dimension",
+        "variable": "var(--dialog-title-letter-spacing)",
+        "description": ""
       }
     },
     "form": {
@@ -7845,6 +7982,31 @@
         "value": 500,
         "type": "number",
         "variable": "var(--form-label-font-weight)",
+        "description": ""
+      },
+      "form-label-disabled-opacity": {
+        "name": "formLabelDisabledOpacity",
+        "path": [
+          "form",
+          "label",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.7,
+        "type": "number",
+        "variable": "var(--form-label-disabled-opacity)",
+        "description": ""
+      },
+      "form-message-font-weight": {
+        "name": "formMessageFontWeight",
+        "path": [
+          "form",
+          "message",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--form-message-font-weight)",
         "description": ""
       },
       "form-hint-text": {
@@ -10312,6 +10474,66 @@
         "type": "color",
         "variable": "var(--color-checkbox-border-color)",
         "description": ""
+      },
+      "checkbox-checked-background": {
+        "name": "checkboxCheckedBackground",
+        "path": [
+          "checkbox",
+          "checked",
+          "background"
+        ],
+        "value": "oklch(0.546 0.215 262.89)",
+        "type": "color",
+        "variable": "var(--color-checkbox-checked-background)",
+        "description": ""
+      },
+      "checkbox-checked-text": {
+        "name": "checkboxCheckedText",
+        "path": [
+          "checkbox",
+          "checked",
+          "text"
+        ],
+        "value": "oklch(0.991 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-checkbox-checked-text)",
+        "description": ""
+      },
+      "checkbox-checked-border": {
+        "name": "checkboxCheckedBorder",
+        "path": [
+          "checkbox",
+          "checked",
+          "border"
+        ],
+        "value": "oklch(0.546 0.215 262.89)",
+        "type": "color",
+        "variable": "var(--color-checkbox-checked-border)",
+        "description": ""
+      },
+      "checkbox-error-border": {
+        "name": "checkboxErrorBorder",
+        "path": [
+          "checkbox",
+          "error",
+          "border"
+        ],
+        "value": "oklch(0.577 0.215 27.32)",
+        "type": "color",
+        "variable": "var(--color-checkbox-error-border)",
+        "description": ""
+      },
+      "checkbox-disabled-opacity": {
+        "name": "checkboxDisabledOpacity",
+        "path": [
+          "checkbox",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--checkbox-disabled-opacity)",
+        "description": ""
       }
     },
     "switch": {
@@ -11138,6 +11360,56 @@
         "variable": "var(--context-menu-shortcut-font-size)",
         "description": ""
       },
+      "context-menu-item-disabled-opacity": {
+        "name": "contextMenuItemDisabledOpacity",
+        "path": [
+          "context-menu",
+          "item",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--context-menu-item-disabled-opacity)",
+        "description": ""
+      },
+      "context-menu-label-font-weight": {
+        "name": "contextMenuLabelFontWeight",
+        "path": [
+          "context-menu",
+          "label",
+          "font-weight"
+        ],
+        "value": 600,
+        "type": "number",
+        "variable": "var(--context-menu-label-font-weight)",
+        "description": ""
+      },
+      "context-menu-shortcut-letter-spacing": {
+        "name": "contextMenuShortcutLetterSpacing",
+        "path": [
+          "context-menu",
+          "shortcut",
+          "letter-spacing"
+        ],
+        "value": "0.1em",
+        "type": "dimension",
+        "variable": "var(--context-menu-shortcut-letter-spacing)",
+        "description": ""
+      },
+      "context-menu-item-indicator-left": {
+        "name": "contextMenuItemIndicatorLeft",
+        "path": [
+          "context-menu",
+          "item",
+          "indicator",
+          "left"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--context-menu-item-indicator-left)",
+        "description": ""
+      },
       "context-menu-sub-content-min-width": {
         "name": "contextMenuSubContentMinWidth",
         "path": [
@@ -11319,6 +11591,153 @@
         "type": "dimension",
         "variable": "var(--dropdown-menu-item-radius)",
         "description": ""
+      },
+      "dropdown-menu-content-background": {
+        "name": "dropdownMenuContentBackground",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-content-background)",
+        "description": ""
+      },
+      "dropdown-menu-content-text": {
+        "name": "dropdownMenuContentText",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "text"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-content-text)",
+        "description": ""
+      },
+      "dropdown-menu-content-border": {
+        "name": "dropdownMenuContentBorder",
+        "path": [
+          "dropdown-menu",
+          "content",
+          "border"
+        ],
+        "value": "oklch(0.786 0.004 271.24)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-content-border)",
+        "description": ""
+      },
+      "dropdown-menu-item-background-hover": {
+        "name": "dropdownMenuItemBackgroundHover",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "background-hover"
+        ],
+        "value": "oklch(0.952 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-item-background-hover)",
+        "description": ""
+      },
+      "dropdown-menu-item-text-hover": {
+        "name": "dropdownMenuItemTextHover",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "text-hover"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-item-text-hover)",
+        "description": ""
+      },
+      "dropdown-menu-separator-background": {
+        "name": "dropdownMenuSeparatorBackground",
+        "path": [
+          "dropdown-menu",
+          "separator",
+          "background"
+        ],
+        "value": "oklch(0.786 0.004 271.24)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-separator-background)",
+        "description": ""
+      },
+      "dropdown-menu-item-disabled-opacity": {
+        "name": "dropdownMenuItemDisabledOpacity",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--dropdown-menu-item-disabled-opacity)",
+        "description": ""
+      },
+      "dropdown-menu-shortcut-opacity": {
+        "name": "dropdownMenuShortcutOpacity",
+        "path": [
+          "dropdown-menu",
+          "shortcut",
+          "opacity"
+        ],
+        "value": 0.7,
+        "type": "number",
+        "variable": "var(--dropdown-menu-shortcut-opacity)",
+        "description": ""
+      },
+      "dropdown-menu-label-font-weight": {
+        "name": "dropdownMenuLabelFontWeight",
+        "path": [
+          "dropdown-menu",
+          "label",
+          "font-weight"
+        ],
+        "value": 600,
+        "type": "number",
+        "variable": "var(--dropdown-menu-label-font-weight)",
+        "description": ""
+      },
+      "dropdown-menu-shortcut-letter-spacing": {
+        "name": "dropdownMenuShortcutLetterSpacing",
+        "path": [
+          "dropdown-menu",
+          "shortcut",
+          "letter-spacing"
+        ],
+        "value": "0.1em",
+        "type": "dimension",
+        "variable": "var(--dropdown-menu-shortcut-letter-spacing)",
+        "description": ""
+      },
+      "dropdown-menu-item-indicator-left": {
+        "name": "dropdownMenuItemIndicatorLeft",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "indicator",
+          "left"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--dropdown-menu-item-indicator-left)",
+        "description": ""
+      },
+      "dropdown-menu-item-radio-indicator-radius": {
+        "name": "dropdownMenuItemRadioIndicatorRadius",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "radio-indicator",
+          "radius"
+        ],
+        "value": "9999px",
+        "type": "dimension",
+        "variable": "var(--dropdown-menu-item-radio-indicator-radius)",
+        "description": ""
       }
     },
     "card-grid": {
@@ -11443,6 +11862,42 @@
         "value": "48px",
         "type": "spacing",
         "variable": "var(--feature-grid-icon-container-size)",
+        "description": ""
+      },
+      "feature-grid-title-font-weight": {
+        "name": "featureGridTitleFontWeight",
+        "path": [
+          "feature-grid",
+          "title",
+          "font-weight"
+        ],
+        "value": 700,
+        "type": "number",
+        "variable": "var(--feature-grid-title-font-weight)",
+        "description": ""
+      },
+      "feature-grid-title-text": {
+        "name": "featureGridTitleText",
+        "path": [
+          "feature-grid",
+          "title",
+          "text"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-feature-grid-title-text)",
+        "description": ""
+      },
+      "feature-grid-description-text": {
+        "name": "featureGridDescriptionText",
+        "path": [
+          "feature-grid",
+          "description",
+          "text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-feature-grid-description-text)",
         "description": ""
       }
     },

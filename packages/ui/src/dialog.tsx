@@ -104,7 +104,7 @@ export const DialogContent = React.forwardRef<
         {children}
         <DialogPrimitive.Close
           ref={closeButtonRef}
-          className="absolute right-(--space-dialog-close-button-offset) top-(--space-dialog-close-button-offset) rounded-(--space-dialog-close-button-radius) opacity-(--state-opacity-muted) ring-offset-background transition-opacity hover:opacity-(--state-opacity-hover) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none"
+          className="absolute right-(--space-dialog-close-button-offset) top-(--space-dialog-close-button-offset) rounded-(--space-dialog-close-button-radius) opacity-(--dialog-close-button-opacity) ring-offset-(--color-dialog-background) transition-opacity hover:opacity-(--dialog-close-button-opacity-hover) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none"
         >
           <svg
             className="h-(--space-icon-size-md) w-(--space-icon-size-md)"
@@ -171,7 +171,7 @@ export const DialogTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "font-semibold leading-(--line-height-none) tracking-(--space-typography-tracking-tight) text-(--color-dialog-title)",
+      "font-(--font-weight-dialog-title-font-weight) leading-(--line-height-none) tracking-(--space-dialog-title-letter-spacing) text-(--color-dialog-title)",
       "text-(length:--font-size-dialog-title-font-size)",
       className
     )}

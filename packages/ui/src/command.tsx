@@ -55,13 +55,13 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
       cmdk-input-wrapper=""
     >
       <SearchIcon
-        className="mr-(--space-command-item-indicator-margin-right) h-(--space-command-input-icon-size) w-(--space-command-input-icon-size) shrink-0 opacity-(--state-opacity-disabled)"
+        className="mr-(--space-command-item-indicator-margin-right) h-(--space-command-input-icon-size) w-(--space-command-input-icon-size) shrink-0 opacity-(--command-input-icon-opacity)"
         aria-hidden="true"
       />
       <input
         ref={ref}
         className={cn(
-          "flex h-(--space-command-input-height) w-full rounded-(--space-command-content-radius) bg-transparent py-(--space-command-input-padding-y) text-(length:--font-size-command-item-font-size) outline-none placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
+          "flex h-(--space-command-input-height) w-full rounded-(--space-command-content-radius) bg-transparent py-(--space-command-input-padding-y) text-(length:--font-size-command-item-font-size) outline-none placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:opacity-(--command-input-disabled-opacity)",
           className
         )}
         role="combobox"
@@ -126,7 +126,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
     <div
       ref={ref}
       className={cn(
-        "overflow-hidden p-(--space-command-group-padding) text-(--color-command-text) **:[[cmdk-group-heading]]:px-(--space-command-group-heading-padding-x) **:[[cmdk-group-heading]]:py-(--space-command-group-heading-padding-y) **:[[cmdk-group-heading]]:text-(length:--font-size-command-group-heading-font-size) **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group-heading]]:text-(--color-command-group-heading)",
+        "overflow-hidden p-(--space-command-group-padding) text-(--color-command-text) **:[[cmdk-group-heading]]:px-(--space-command-group-heading-padding-x) **:[[cmdk-group-heading]]:py-(--space-command-group-heading-padding-y) **:[[cmdk-group-heading]]:text-(length:--font-size-command-group-heading-font-size) **:[[cmdk-group-heading]]:font-(--font-weight-command-group-heading-font-weight) **:[[cmdk-group-heading]]:text-(--color-command-group-heading)",
         className
       )}
       role="group"
@@ -136,7 +136,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
       {heading && (
         <div
           cmdk-group-heading=""
-          className="px-(--space-command-group-heading-padding-x) py-(--space-command-group-heading-padding-y) text-(length:--font-size-command-group-heading-font-size) font-medium text-(--color-command-group-heading)"
+          className="px-(--space-command-group-heading-padding-x) py-(--space-command-group-heading-padding-y) text-(length:--font-size-command-group-heading-font-size) font-(--font-weight-command-group-heading-font-weight) text-(--color-command-group-heading)"
         >
           {heading}
         </div>
@@ -178,7 +178,7 @@ const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
     <div
       ref={ref}
       className={cn(
-        "relative flex cursor-default select-none items-center rounded-(--space-command-item-radius) px-(--space-command-item-padding-x) py-(--space-command-item-padding-y) text-(length:--font-size-command-item-font-size) outline-none aria-selected:bg-(--color-command-item-selected) aria-selected:text-(--color-command-item-text-selected) data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-(--state-opacity-disabled)",
+        "relative flex cursor-default select-none items-center rounded-(--space-command-item-radius) px-(--space-command-item-padding-x) py-(--space-command-item-padding-y) text-(length:--font-size-command-item-font-size) outline-none aria-selected:bg-(--color-command-item-selected) aria-selected:text-(--color-command-item-text-selected) data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-(--command-item-disabled-opacity)",
         className
       )}
       role="option"
@@ -200,7 +200,7 @@ const CommandShortcut = React.forwardRef<HTMLSpanElement, CommandShortcutProps>(
       <span
         ref={ref}
         className={cn(
-          "ml-auto text-(length:--font-size-command-group-heading-font-size) tracking-(--space-typography-tracking-widest) text-(--color-command-shortcut)",
+          "ml-auto text-(length:--font-size-command-group-heading-font-size) tracking-(--space-command-shortcut-letter-spacing) text-(--color-command-shortcut)",
           className
         )}
         aria-label="Keyboard shortcut"

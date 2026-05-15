@@ -500,8 +500,11 @@ export const spacing = {
   "ellipsis-padding-right": "8px",
   "scrollbar-padding": "1px",
   "checkbox-padding": "4px",
+  "shortcut-letter-spacing": "0.1em",
+  "item-indicator-left": "8px",
   "subitem-padding-left": "32px",
   "subitem-padding-right": "8px",
+  "item-radio-indicator-radius": "9999px",
   "handle-radius": "4px",
   "close-button-radius": "4px",
   "rounded": "9999px",
@@ -515,7 +518,6 @@ export const spacing = {
   "close-button-offset": "16px",
   "close-button-icon-size": "16px",
   "fieldset-gap": "24px",
-  "item-indicator-left": "8px",
   "viewport-padding": "16px",
   "viewport-gap": "8px",
   "handle-height": "16px",
@@ -615,16 +617,20 @@ export const fontWeight = {
   "description-font-weight": 500,
   "dialog-title-font-weight": 600,
   "group-item-font-weight": 500,
+  "menu-label-font-weight": 600,
   "fallback-font-weight": 500,
   "header-font-weight": 500,
   "footer-font-weight": 500,
   "label-font-weight": 500,
+  "message-font-weight": 500,
   "fieldset-legend-font-weight": 600,
   "nav-button-font-weight": 500,
   "day-header-font-weight": 400,
   "day-font-weight": 400,
   "page-font-weight": 400,
-  "item-font-weight": 500
+  "item-font-weight": 500,
+  "group-heading-font-weight": 500,
+  "grid-title-font-weight": 700
 };
 
 export const lineHeight = {

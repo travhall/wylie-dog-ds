@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
 export const formLabelVariants = cva(
-  "font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-(--state-opacity-muted)",
+  "font-(--font-weight-form-label-font-weight) leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-(--form-label-disabled-opacity)",
   {
     variants: {
       size: {
@@ -191,7 +191,7 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, FormMessageProps>(
         role="alert"
         aria-live="polite"
         className={cn(
-          "text-(length:--font-size-form-error-font-size) font-medium text-(--color-form-error)",
+          "text-(length:--font-size-form-error-font-size) font-(--font-weight-form-message-font-weight) text-(--color-form-error)",
           className
         )}
         {...props}

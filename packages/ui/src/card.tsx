@@ -26,7 +26,7 @@ export const cardVariants = cva(
           "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
           "active:bg-(--color-card-background-active)",
           "disabled:bg-(--color-card-background-disabled)",
-          "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)"
+          "disabled:cursor-not-allowed disabled:opacity-(--card-disabled-opacity)"
         ),
         false: "",
       },

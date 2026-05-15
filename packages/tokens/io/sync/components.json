@@ -1472,6 +1472,14 @@
             "Dark": "{color.text.primary}"
           }
         },
+        "carousel.nav-button.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
         "contextmenu.background": {
           "$type": "color",
           "$value": "{color.background.primary}",
@@ -4693,6 +4701,38 @@
             "Dark": "{typography.font-size.xs}"
           }
         },
+        "context-menu.item.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
+        "context-menu.label.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.semibold}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.semibold}",
+            "Dark": "{typography.font-weight.semibold}"
+          }
+        },
+        "context-menu.shortcut.letter-spacing": {
+          "$type": "dimension",
+          "$value": "{typography.tracking.widest}",
+          "valuesByMode": {
+            "Light": "{typography.tracking.widest}",
+            "Dark": "{typography.tracking.widest}"
+          }
+        },
+        "context-menu.item.indicator.left": {
+          "$type": "spacing",
+          "$value": "{space.100}",
+          "valuesByMode": {
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
+          }
+        },
         "menubar.list-gap": {
           "$type": "spacing",
           "$value": "{space.050}",
@@ -4771,6 +4811,102 @@
           "valuesByMode": {
             "Light": "{border-radius.md}",
             "Dark": "{border-radius.md}"
+          }
+        },
+        "dropdown-menu.content.background": {
+          "$type": "color",
+          "$value": "{color.background.primary}",
+          "valuesByMode": {
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
+          }
+        },
+        "dropdown-menu.content.text": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "dropdown-menu.content.border": {
+          "$type": "color",
+          "$value": "{color.border.primary}",
+          "valuesByMode": {
+            "Light": "{color.border.primary}",
+            "Dark": "{color.border.primary}"
+          }
+        },
+        "dropdown-menu.item.background-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.secondary}",
+          "valuesByMode": {
+            "Light": "{color.interactive.secondary}",
+            "Dark": "{color.interactive.secondary}"
+          }
+        },
+        "dropdown-menu.item.text-hover": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "dropdown-menu.separator.background": {
+          "$type": "color",
+          "$value": "{color.border.primary}",
+          "valuesByMode": {
+            "Light": "{color.border.primary}",
+            "Dark": "{color.border.primary}"
+          }
+        },
+        "dropdown-menu.item.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
+        "dropdown-menu.shortcut.opacity": {
+          "$type": "number",
+          "$value": "{opacity.70}",
+          "valuesByMode": {
+            "Light": "{opacity.70}",
+            "Dark": "{opacity.70}"
+          }
+        },
+        "dropdown-menu.label.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.semibold}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.semibold}",
+            "Dark": "{typography.font-weight.semibold}"
+          }
+        },
+        "dropdown-menu.shortcut.letter-spacing": {
+          "$type": "dimension",
+          "$value": "{typography.tracking.widest}",
+          "valuesByMode": {
+            "Light": "{typography.tracking.widest}",
+            "Dark": "{typography.tracking.widest}"
+          }
+        },
+        "dropdown-menu.item.indicator.left": {
+          "$type": "spacing",
+          "$value": "{space.100}",
+          "valuesByMode": {
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
+          }
+        },
+        "dropdown-menu.item.radio-indicator.radius": {
+          "$type": "dimension",
+          "$value": "{border-radius.full}",
+          "valuesByMode": {
+            "Light": "{border-radius.full}",
+            "Dark": "{border-radius.full}"
           }
         },
         "resizable.handle-radius": {
@@ -5053,6 +5189,46 @@
             "Dark": "{color.border.primary}"
           }
         },
+        "checkbox.checked.background": {
+          "$type": "color",
+          "$value": "{color.interactive.primary}",
+          "valuesByMode": {
+            "Light": "{color.interactive.primary}",
+            "Dark": "{color.interactive.primary}"
+          }
+        },
+        "checkbox.checked.text": {
+          "$type": "color",
+          "$value": "{color.text.inverse}",
+          "valuesByMode": {
+            "Light": "{color.text.inverse}",
+            "Dark": "{color.text.inverse}"
+          }
+        },
+        "checkbox.checked.border": {
+          "$type": "color",
+          "$value": "{color.interactive.primary}",
+          "valuesByMode": {
+            "Light": "{color.interactive.primary}",
+            "Dark": "{color.interactive.primary}"
+          }
+        },
+        "checkbox.error.border": {
+          "$type": "color",
+          "$value": "{color.border.danger}",
+          "valuesByMode": {
+            "Light": "{color.border.danger}",
+            "Dark": "{color.border.danger}"
+          }
+        },
+        "checkbox.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
         "sheet.close-button-offset": {
           "$type": "dimension",
           "$value": "{space.400}",
@@ -5083,6 +5259,38 @@
           "valuesByMode": {
             "Light": "{space.200}",
             "Dark": "{space.200}"
+          }
+        },
+        "dialog.close-button.opacity": {
+          "$type": "number",
+          "$value": "{opacity.70}",
+          "valuesByMode": {
+            "Light": "{opacity.70}",
+            "Dark": "{opacity.70}"
+          }
+        },
+        "dialog.close-button.opacity-hover": {
+          "$type": "number",
+          "$value": "{opacity.100}",
+          "valuesByMode": {
+            "Light": "{opacity.100}",
+            "Dark": "{opacity.100}"
+          }
+        },
+        "dialog.title.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.semibold}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.semibold}",
+            "Dark": "{typography.font-weight.semibold}"
+          }
+        },
+        "dialog.title.letter-spacing": {
+          "$type": "dimension",
+          "$value": "{typography.tracking.tight}",
+          "valuesByMode": {
+            "Light": "{typography.tracking.tight}",
+            "Dark": "{typography.tracking.tight}"
           }
         },
         "badge.default.background-hover": {
@@ -5174,6 +5382,22 @@
           }
         },
         "form.label.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          }
+        },
+        "form.label.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.70}",
+          "valuesByMode": {
+            "Light": "{opacity.70}",
+            "Dark": "{opacity.70}"
+          }
+        },
+        "form.message.font-weight": {
           "$type": "number",
           "$value": "{typography.font-weight.medium}",
           "valuesByMode": {
@@ -5371,6 +5595,14 @@
           "valuesByMode": {
             "Light": "{color.interactive.disabled}",
             "Dark": "{color.interactive.disabled}"
+          }
+        },
+        "card.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
           }
         },
         "navigation.background-hover": {
@@ -5597,6 +5829,46 @@
             "Dark": "{space.050}"
           }
         },
+        "command.input.icon.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
+        "command.input.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
+        "command.item.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
+        "command.group.heading.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          }
+        },
+        "command.shortcut.letter-spacing": {
+          "$type": "dimension",
+          "$value": "{typography.tracking.widest}",
+          "valuesByMode": {
+            "Light": "{typography.tracking.widest}",
+            "Dark": "{typography.tracking.widest}"
+          }
+        },
         "toast.viewport.padding": {
           "$type": "spacing",
           "$value": "{space.200}",
@@ -5668,6 +5940,30 @@
           "valuesByMode": {
             "Light": "{space.600}",
             "Dark": "{space.600}"
+          }
+        },
+        "feature-grid.title.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.bold}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.bold}",
+            "Dark": "{typography.font-weight.bold}"
+          }
+        },
+        "feature-grid.title.text": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "feature-grid.description.text": {
+          "$type": "color",
+          "$value": "{color.text.secondary}",
+          "valuesByMode": {
+            "Light": "{color.text.secondary}",
+            "Dark": "{color.text.secondary}"
           }
         },
         "menubar.radio.indicator-size": {

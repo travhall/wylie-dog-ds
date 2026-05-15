@@ -71,7 +71,7 @@ export const CardGrid = React.forwardRef<HTMLDivElement, CardGridProps>(
 
       // Interactive styles
       interactive &&
-        "[&>*]:transition-all [&>*]:duration-(--duration-duration-300) [&>*]:hover:scale-105 [&>*]:hover:-translate-y-1",
+        "[&>*]:transition-all [&>*]:duration-(--duration-300) [&>*]:hover:scale-105 [&>*]:hover:-translate-y-1",
 
       className
     );

@@ -18,6 +18,9 @@ export type CssVarName =
   | "--border-width-8"
   | "--calendar-nav-button-opacity"
   | "--calendar-nav-button-opacity-hover"
+  | "--card-disabled-opacity"
+  | "--carousel-nav-button-disabled-opacity"
+  | "--checkbox-disabled-opacity"
   | "--color-accent-active"
   | "--color-accent-highlight"
   | "--color-accent-hover"
@@ -180,6 +183,10 @@ export type CssVarName =
   | "--color-carousel-nav-hover"
   | "--color-carousel-nav-text-hover"
   | "--color-checkbox-border-color"
+  | "--color-checkbox-checked-background"
+  | "--color-checkbox-checked-border"
+  | "--color-checkbox-checked-text"
+  | "--color-checkbox-error-border"
   | "--color-collapsible-background"
   | "--color-command-background"
   | "--color-command-border"
@@ -203,6 +210,14 @@ export type CssVarName =
   | "--color-dialog-description"
   | "--color-dialog-overlay"
   | "--color-dialog-title"
+  | "--color-dropdown-menu-content-background"
+  | "--color-dropdown-menu-content-border"
+  | "--color-dropdown-menu-content-text"
+  | "--color-dropdown-menu-item-background-hover"
+  | "--color-dropdown-menu-item-text-hover"
+  | "--color-dropdown-menu-separator-background"
+  | "--color-feature-grid-description-text"
+  | "--color-feature-grid-title-text"
   | "--color-fiery-coral-100"
   | "--color-fiery-coral-200"
   | "--color-fiery-coral-300"
@@ -495,6 +510,14 @@ export type CssVarName =
   | "--color-yellow-800"
   | "--color-yellow-900"
   | "--color-yellow-950"
+  | "--command-input-disabled-opacity"
+  | "--command-input-icon-opacity"
+  | "--command-item-disabled-opacity"
+  | "--context-menu-item-disabled-opacity"
+  | "--dialog-close-button-opacity"
+  | "--dialog-close-button-opacity-hover"
+  | "--dropdown-menu-item-disabled-opacity"
+  | "--dropdown-menu-shortcut-opacity"
   | "--duration-0"
   | "--duration-100"
   | "--duration-1000"
@@ -605,10 +628,16 @@ export type CssVarName =
   | "--font-weight-calendar-header-font-weight"
   | "--font-weight-calendar-nav-button-font-weight"
   | "--font-weight-card-title-font-weight"
+  | "--font-weight-command-group-heading-font-weight"
+  | "--font-weight-context-menu-label-font-weight"
+  | "--font-weight-dialog-title-font-weight"
+  | "--font-weight-dropdown-menu-label-font-weight"
   | "--font-weight-extrabold"
   | "--font-weight-extralight"
+  | "--font-weight-feature-grid-title-font-weight"
   | "--font-weight-form-fieldset-legend-font-weight"
   | "--font-weight-form-label-font-weight"
+  | "--font-weight-form-message-font-weight"
   | "--font-weight-light"
   | "--font-weight-medium"
   | "--font-weight-pagination-item-font-weight"
@@ -622,6 +651,7 @@ export type CssVarName =
   | "--font-weight-toast-title-font-weight"
   | "--font-weight-toggle-font-weight"
   | "--font-weight-toggle-group-item-font-weight"
+  | "--form-label-disabled-opacity"
   | "--line-height-accordion-content-line-height"
   | "--line-height-accordion-trigger-line-height"
   | "--line-height-alert-description-line-height"
@@ -781,11 +811,13 @@ export type CssVarName =
   | "--space-command-item-radius"
   | "--space-command-list-max-height"
   | "--space-command-separator-margin-x"
+  | "--space-command-shortcut-letter-spacing"
   | "--space-context-menu-checkbox-padding"
   | "--space-context-menu-content-min-width"
   | "--space-context-menu-content-padding"
   | "--space-context-menu-content-radius"
   | "--space-context-menu-item-icon-size"
+  | "--space-context-menu-item-indicator-left"
   | "--space-context-menu-item-indicator-size"
   | "--space-context-menu-item-inset"
   | "--space-context-menu-item-padding-x"
@@ -793,6 +825,7 @@ export type CssVarName =
   | "--space-context-menu-item-radius"
   | "--space-context-menu-separator-margin-x"
   | "--space-context-menu-separator-margin-y"
+  | "--space-context-menu-shortcut-letter-spacing"
   | "--space-context-menu-sub-content-min-width"
   | "--space-dialog-close-button-icon-size"
   | "--space-dialog-close-button-offset"
@@ -807,18 +840,22 @@ export type CssVarName =
   | "--space-dialog-footer-margin-top"
   | "--space-dialog-header-gap"
   | "--space-dialog-header-margin-bottom"
+  | "--space-dialog-title-letter-spacing"
   | "--space-dropdown-menu-content-min-width"
   | "--space-dropdown-menu-content-padding"
   | "--space-dropdown-menu-content-radius"
   | "--space-dropdown-menu-item-icon-size"
+  | "--space-dropdown-menu-item-indicator-left"
   | "--space-dropdown-menu-item-indicator-size"
   | "--space-dropdown-menu-item-inset"
   | "--space-dropdown-menu-item-padding-x"
   | "--space-dropdown-menu-item-padding-y"
+  | "--space-dropdown-menu-item-radio-indicator-radius"
   | "--space-dropdown-menu-item-radius"
   | "--space-dropdown-menu-separator-height"
   | "--space-dropdown-menu-separator-margin-x"
   | "--space-dropdown-menu-separator-margin-y"
+  | "--space-dropdown-menu-shortcut-letter-spacing"
   | "--space-feature-grid-container-gap"
   | "--space-feature-grid-icon-container-size"
   | "--space-feature-grid-icon-radius"
@@ -1118,6 +1155,9 @@ export declare const cssVars: Readonly<{
   "borderWidth8": "--border-width-8";
   "calendarNavButtonOpacity": "--calendar-nav-button-opacity";
   "calendarNavButtonOpacityHover": "--calendar-nav-button-opacity-hover";
+  "cardDisabledOpacity": "--card-disabled-opacity";
+  "carouselNavButtonDisabledOpacity": "--carousel-nav-button-disabled-opacity";
+  "checkboxDisabledOpacity": "--checkbox-disabled-opacity";
   "colorAccentActive": "--color-accent-active";
   "colorAccentHighlight": "--color-accent-highlight";
   "colorAccentHover": "--color-accent-hover";
@@ -1280,6 +1320,10 @@ export declare const cssVars: Readonly<{
   "colorCarouselNavHover": "--color-carousel-nav-hover";
   "colorCarouselNavTextHover": "--color-carousel-nav-text-hover";
   "colorCheckboxBorderColor": "--color-checkbox-border-color";
+  "colorCheckboxCheckedBackground": "--color-checkbox-checked-background";
+  "colorCheckboxCheckedBorder": "--color-checkbox-checked-border";
+  "colorCheckboxCheckedText": "--color-checkbox-checked-text";
+  "colorCheckboxErrorBorder": "--color-checkbox-error-border";
   "colorCollapsibleBackground": "--color-collapsible-background";
   "colorCommandBackground": "--color-command-background";
   "colorCommandBorder": "--color-command-border";
@@ -1303,6 +1347,14 @@ export declare const cssVars: Readonly<{
   "colorDialogDescription": "--color-dialog-description";
   "colorDialogOverlay": "--color-dialog-overlay";
   "colorDialogTitle": "--color-dialog-title";
+  "colorDropdownMenuContentBackground": "--color-dropdown-menu-content-background";
+  "colorDropdownMenuContentBorder": "--color-dropdown-menu-content-border";
+  "colorDropdownMenuContentText": "--color-dropdown-menu-content-text";
+  "colorDropdownMenuItemBackgroundHover": "--color-dropdown-menu-item-background-hover";
+  "colorDropdownMenuItemTextHover": "--color-dropdown-menu-item-text-hover";
+  "colorDropdownMenuSeparatorBackground": "--color-dropdown-menu-separator-background";
+  "colorFeatureGridDescriptionText": "--color-feature-grid-description-text";
+  "colorFeatureGridTitleText": "--color-feature-grid-title-text";
   "colorFieryCoral100": "--color-fiery-coral-100";
   "colorFieryCoral200": "--color-fiery-coral-200";
   "colorFieryCoral300": "--color-fiery-coral-300";
@@ -1595,6 +1647,14 @@ export declare const cssVars: Readonly<{
   "colorYellow800": "--color-yellow-800";
   "colorYellow900": "--color-yellow-900";
   "colorYellow950": "--color-yellow-950";
+  "commandInputDisabledOpacity": "--command-input-disabled-opacity";
+  "commandInputIconOpacity": "--command-input-icon-opacity";
+  "commandItemDisabledOpacity": "--command-item-disabled-opacity";
+  "contextMenuItemDisabledOpacity": "--context-menu-item-disabled-opacity";
+  "dialogCloseButtonOpacity": "--dialog-close-button-opacity";
+  "dialogCloseButtonOpacityHover": "--dialog-close-button-opacity-hover";
+  "dropdownMenuItemDisabledOpacity": "--dropdown-menu-item-disabled-opacity";
+  "dropdownMenuShortcutOpacity": "--dropdown-menu-shortcut-opacity";
   "duration0": "--duration-0";
   "duration100": "--duration-100";
   "duration1000": "--duration-1000";
@@ -1705,10 +1765,16 @@ export declare const cssVars: Readonly<{
   "fontWeightCalendarHeaderFontWeight": "--font-weight-calendar-header-font-weight";
   "fontWeightCalendarNavButtonFontWeight": "--font-weight-calendar-nav-button-font-weight";
   "fontWeightCardTitleFontWeight": "--font-weight-card-title-font-weight";
+  "fontWeightCommandGroupHeadingFontWeight": "--font-weight-command-group-heading-font-weight";
+  "fontWeightContextMenuLabelFontWeight": "--font-weight-context-menu-label-font-weight";
+  "fontWeightDialogTitleFontWeight": "--font-weight-dialog-title-font-weight";
+  "fontWeightDropdownMenuLabelFontWeight": "--font-weight-dropdown-menu-label-font-weight";
   "fontWeightExtrabold": "--font-weight-extrabold";
   "fontWeightExtralight": "--font-weight-extralight";
+  "fontWeightFeatureGridTitleFontWeight": "--font-weight-feature-grid-title-font-weight";
   "fontWeightFormFieldsetLegendFontWeight": "--font-weight-form-fieldset-legend-font-weight";
   "fontWeightFormLabelFontWeight": "--font-weight-form-label-font-weight";
+  "fontWeightFormMessageFontWeight": "--font-weight-form-message-font-weight";
   "fontWeightLight": "--font-weight-light";
   "fontWeightMedium": "--font-weight-medium";
   "fontWeightPaginationItemFontWeight": "--font-weight-pagination-item-font-weight";
@@ -1722,6 +1788,7 @@ export declare const cssVars: Readonly<{
   "fontWeightToastTitleFontWeight": "--font-weight-toast-title-font-weight";
   "fontWeightToggleFontWeight": "--font-weight-toggle-font-weight";
   "fontWeightToggleGroupItemFontWeight": "--font-weight-toggle-group-item-font-weight";
+  "formLabelDisabledOpacity": "--form-label-disabled-opacity";
   "lineHeightAccordionContentLineHeight": "--line-height-accordion-content-line-height";
   "lineHeightAccordionTriggerLineHeight": "--line-height-accordion-trigger-line-height";
   "lineHeightAlertDescriptionLineHeight": "--line-height-alert-description-line-height";
@@ -1881,11 +1948,13 @@ export declare const cssVars: Readonly<{
   "spaceCommandItemRadius": "--space-command-item-radius";
   "spaceCommandListMaxHeight": "--space-command-list-max-height";
   "spaceCommandSeparatorMarginX": "--space-command-separator-margin-x";
+  "spaceCommandShortcutLetterSpacing": "--space-command-shortcut-letter-spacing";
   "spaceContextMenuCheckboxPadding": "--space-context-menu-checkbox-padding";
   "spaceContextMenuContentMinWidth": "--space-context-menu-content-min-width";
   "spaceContextMenuContentPadding": "--space-context-menu-content-padding";
   "spaceContextMenuContentRadius": "--space-context-menu-content-radius";
   "spaceContextMenuItemIconSize": "--space-context-menu-item-icon-size";
+  "spaceContextMenuItemIndicatorLeft": "--space-context-menu-item-indicator-left";
   "spaceContextMenuItemIndicatorSize": "--space-context-menu-item-indicator-size";
   "spaceContextMenuItemInset": "--space-context-menu-item-inset";
   "spaceContextMenuItemPaddingX": "--space-context-menu-item-padding-x";
@@ -1893,6 +1962,7 @@ export declare const cssVars: Readonly<{
   "spaceContextMenuItemRadius": "--space-context-menu-item-radius";
   "spaceContextMenuSeparatorMarginX": "--space-context-menu-separator-margin-x";
   "spaceContextMenuSeparatorMarginY": "--space-context-menu-separator-margin-y";
+  "spaceContextMenuShortcutLetterSpacing": "--space-context-menu-shortcut-letter-spacing";
   "spaceContextMenuSubContentMinWidth": "--space-context-menu-sub-content-min-width";
   "spaceDialogCloseButtonIconSize": "--space-dialog-close-button-icon-size";
   "spaceDialogCloseButtonOffset": "--space-dialog-close-button-offset";
@@ -1907,18 +1977,22 @@ export declare const cssVars: Readonly<{
   "spaceDialogFooterMarginTop": "--space-dialog-footer-margin-top";
   "spaceDialogHeaderGap": "--space-dialog-header-gap";
   "spaceDialogHeaderMarginBottom": "--space-dialog-header-margin-bottom";
+  "spaceDialogTitleLetterSpacing": "--space-dialog-title-letter-spacing";
   "spaceDropdownMenuContentMinWidth": "--space-dropdown-menu-content-min-width";
   "spaceDropdownMenuContentPadding": "--space-dropdown-menu-content-padding";
   "spaceDropdownMenuContentRadius": "--space-dropdown-menu-content-radius";
   "spaceDropdownMenuItemIconSize": "--space-dropdown-menu-item-icon-size";
+  "spaceDropdownMenuItemIndicatorLeft": "--space-dropdown-menu-item-indicator-left";
   "spaceDropdownMenuItemIndicatorSize": "--space-dropdown-menu-item-indicator-size";
   "spaceDropdownMenuItemInset": "--space-dropdown-menu-item-inset";
   "spaceDropdownMenuItemPaddingX": "--space-dropdown-menu-item-padding-x";
   "spaceDropdownMenuItemPaddingY": "--space-dropdown-menu-item-padding-y";
+  "spaceDropdownMenuItemRadioIndicatorRadius": "--space-dropdown-menu-item-radio-indicator-radius";
   "spaceDropdownMenuItemRadius": "--space-dropdown-menu-item-radius";
   "spaceDropdownMenuSeparatorHeight": "--space-dropdown-menu-separator-height";
   "spaceDropdownMenuSeparatorMarginX": "--space-dropdown-menu-separator-margin-x";
   "spaceDropdownMenuSeparatorMarginY": "--space-dropdown-menu-separator-margin-y";
+  "spaceDropdownMenuShortcutLetterSpacing": "--space-dropdown-menu-shortcut-letter-spacing";
   "spaceFeatureGridContainerGap": "--space-feature-grid-container-gap";
   "spaceFeatureGridIconContainerSize": "--space-feature-grid-icon-container-size";
   "spaceFeatureGridIconRadius": "--space-feature-grid-icon-radius";

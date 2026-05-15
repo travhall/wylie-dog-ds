@@ -9,12 +9,12 @@ export const checkboxVariants = cva(
     "rounded-(--space-checkbox-border-radius)",
     "border-(length:--space-checkbox-border-width)",
     "focus:outline-none",
-    "focus:ring-(--space-checkbox-focus-ring-width)",
+    "focus:ring-(length:--space-checkbox-focus-ring-width)",
     "focus:ring-(--color-border-focus)",
     "focus:ring-offset-(--space-checkbox-focus-ring-offset)",
-    "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
-    "data-[state=checked]:bg-(--color-interactive-primary) data-[state=checked]:text-(--color-text-inverse)",
-    "data-[state=checked]:border-(--color-interactive-primary)"
+    "disabled:cursor-not-allowed disabled:opacity-(--checkbox-disabled-opacity)",
+    "data-[state=checked]:bg-(--color-checkbox-checked-background) data-[state=checked]:text-(--color-checkbox-checked-text)",
+    "data-[state=checked]:border-(--color-checkbox-checked-border)"
   ),
   {
     variants: {
@@ -24,7 +24,7 @@ export const checkboxVariants = cva(
         lg: "h-(--space-checkbox-size-lg) w-(--space-checkbox-size-lg)",
       },
       error: {
-        true: "border-(--color-border-danger)",
+        true: "border-(--color-checkbox-error-border)",
         false: "border-(--color-checkbox-border-color)",
       },
     },

@@ -68,9 +68,9 @@ export const FeatureGrid = React.forwardRef<HTMLDivElement, FeatureGridProps>(
       <div className={gridClasses} ref={ref} role="region" {...props}>
         {features.map((feature, index) => (
           <div key={index} className="group relative">
-            <div className="glass border border-(--color-border-primary)/10 rounded-(--space-feature-grid-item-radius) p-(--space-feature-grid-item-padding) transition-all duration-(--duration-duration-500) hover:border-(--color-interactive-primary)/20 hover:scale-105">
+            <div className="glass border border-(--color-border-primary)/10 rounded-(--space-feature-grid-item-radius) p-(--space-feature-grid-item-padding) transition-all duration-(--duration-500) hover:border-(--color-interactive-primary)/20 hover:scale-105">
               {/* Icon */}
-              <div className="mb-(--space-feature-grid-item-gap) flex items-center justify-center w-(--space-feature-grid-icon-container-size) h-(--space-feature-grid-icon-container-size) rounded-(--space-feature-grid-icon-radius) glass border-(--color-border-primary)/5 shadow-(--shadow-sm) group-hover:scale-110 group-hover:rotate-3 transition-transform duration-(--duration-duration-500)">
+              <div className="mb-(--space-feature-grid-item-gap) flex items-center justify-center w-(--space-feature-grid-icon-container-size) h-(--space-feature-grid-icon-container-size) rounded-(--space-feature-grid-icon-radius) glass border-(--color-border-primary)/5 shadow-(--shadow-sm) group-hover:scale-110 group-hover:rotate-3 transition-transform duration-(--duration-500)">
                 {feature.icon}
               </div>
 
@@ -84,12 +84,12 @@ export const FeatureGrid = React.forwardRef<HTMLDivElement, FeatureGridProps>(
                 )}
 
                 {/* Title */}
-                <h3 className="text-(length:--font-size-feature-grid-title-font-size) font-bold text-(--color-text-primary) leading-(--line-height-tight)">
+                <h3 className="text-(length:--font-size-feature-grid-title-font-size) font-(--font-weight-feature-grid-title-font-weight) text-(--color-feature-grid-title-text) leading-(--line-height-tight)">
                   {feature.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-(--color-text-secondary) leading-(--line-height-relaxed) text-(length:--font-size-feature-grid-description-font-size)">
+                <p className="text-(--color-feature-grid-description-text) leading-(--line-height-relaxed) text-(length:--font-size-feature-grid-description-font-size)">
                   {feature.description}
                 </p>
               </div>

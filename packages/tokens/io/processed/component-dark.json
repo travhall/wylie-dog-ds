@@ -731,6 +731,10 @@
     "$type": "color",
     "$value": "{color.text.primary}"
   },
+  "carousel.nav-button.disabled.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
+  },
   "contextmenu.background": {
     "$type": "color",
     "$value": "{color.background.primary}"
@@ -2344,6 +2348,22 @@
     "$type": "number",
     "$value": "{typography.font-size.xs}"
   },
+  "context-menu.item.disabled.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
+  },
+  "context-menu.label.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}"
+  },
+  "context-menu.shortcut.letter-spacing": {
+    "$type": "dimension",
+    "$value": "{typography.tracking.widest}"
+  },
+  "context-menu.item.indicator.left": {
+    "$type": "spacing",
+    "$value": "{space.100}"
+  },
   "menubar.list-gap": {
     "$type": "spacing",
     "$value": "{space.050}"
@@ -2383,6 +2403,54 @@
   "dropdown-menu.item-radius": {
     "$type": "dimension",
     "$value": "{border-radius.md}"
+  },
+  "dropdown-menu.content.background": {
+    "$type": "color",
+    "$value": "{color.background.primary}"
+  },
+  "dropdown-menu.content.text": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "dropdown-menu.content.border": {
+    "$type": "color",
+    "$value": "{color.border.primary}"
+  },
+  "dropdown-menu.item.background-hover": {
+    "$type": "color",
+    "$value": "{color.interactive.secondary}"
+  },
+  "dropdown-menu.item.text-hover": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "dropdown-menu.separator.background": {
+    "$type": "color",
+    "$value": "{color.border.primary}"
+  },
+  "dropdown-menu.item.disabled.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
+  },
+  "dropdown-menu.shortcut.opacity": {
+    "$type": "number",
+    "$value": "{opacity.70}"
+  },
+  "dropdown-menu.label.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}"
+  },
+  "dropdown-menu.shortcut.letter-spacing": {
+    "$type": "dimension",
+    "$value": "{typography.tracking.widest}"
+  },
+  "dropdown-menu.item.indicator.left": {
+    "$type": "spacing",
+    "$value": "{space.100}"
+  },
+  "dropdown-menu.item.radio-indicator.radius": {
+    "$type": "dimension",
+    "$value": "{border-radius.full}"
   },
   "resizable.handle-radius": {
     "$type": "dimension",
@@ -2524,6 +2592,26 @@
     "$type": "color",
     "$value": "{color.border.primary}"
   },
+  "checkbox.checked.background": {
+    "$type": "color",
+    "$value": "{color.interactive.primary}"
+  },
+  "checkbox.checked.text": {
+    "$type": "color",
+    "$value": "{color.text.inverse}"
+  },
+  "checkbox.checked.border": {
+    "$type": "color",
+    "$value": "{color.interactive.primary}"
+  },
+  "checkbox.error.border": {
+    "$type": "color",
+    "$value": "{color.border.danger}"
+  },
+  "checkbox.disabled.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
+  },
   "sheet.close-button-offset": {
     "$type": "dimension",
     "$value": "{space.400}"
@@ -2539,6 +2627,22 @@
   "dialog.close-button-icon-size": {
     "$type": "spacing",
     "$value": "{space.200}"
+  },
+  "dialog.close-button.opacity": {
+    "$type": "number",
+    "$value": "{opacity.70}"
+  },
+  "dialog.close-button.opacity-hover": {
+    "$type": "number",
+    "$value": "{opacity.100}"
+  },
+  "dialog.title.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}"
+  },
+  "dialog.title.letter-spacing": {
+    "$type": "dimension",
+    "$value": "{typography.tracking.tight}"
   },
   "badge.default.background-hover": {
     "$type": "color",
@@ -2585,6 +2689,14 @@
     "$value": "{typography.font-size.sm}"
   },
   "form.label.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
+  },
+  "form.label.disabled.opacity": {
+    "$type": "number",
+    "$value": "{opacity.70}"
+  },
+  "form.message.font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.medium}"
   },
@@ -2683,6 +2795,10 @@
   "card.background-disabled": {
     "$type": "color",
     "$value": "{color.interactive.disabled}"
+  },
+  "card.disabled.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
   },
   "navigation.background-hover": {
     "$type": "color",
@@ -2796,6 +2912,26 @@
     "$type": "spacing",
     "$value": "{space.050}"
   },
+  "command.input.icon.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
+  },
+  "command.input.disabled.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
+  },
+  "command.item.disabled.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
+  },
+  "command.group.heading.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
+  },
+  "command.shortcut.letter-spacing": {
+    "$type": "dimension",
+    "$value": "{typography.tracking.widest}"
+  },
   "toast.viewport.padding": {
     "$type": "spacing",
     "$value": "{space.200}"
@@ -2832,6 +2968,18 @@
   "feature-grid.icon-container-size": {
     "$type": "spacing",
     "$value": "{space.600}"
+  },
+  "feature-grid.title.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.bold}"
+  },
+  "feature-grid.title.text": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "feature-grid.description.text": {
+    "$type": "color",
+    "$value": "{color.text.secondary}"
   },
   "menubar.radio.indicator-size": {
     "$type": "spacing",
