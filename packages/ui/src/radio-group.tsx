@@ -33,7 +33,7 @@ export const radioGroupItemVariants = cva(
     "focus:ring-(length:--space-radio-focus-ring-width)",
     "focus:ring-(--color-border-focus)",
     "focus:ring-offset-(length:--space-radio-focus-ring-offset)",
-    "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
+    "disabled:cursor-not-allowed disabled:opacity-(--radio-group-item-disabled-opacity)",
     "data-[state=checked]:border-(--color-radio-border-checked)",
     "data-[state=checked]:bg-(--color-radio-background-checked)"
   ),

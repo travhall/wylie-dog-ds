@@ -525,7 +525,10 @@ export const spacing = {
   "grip-icon-size": "12px",
   "icon-container-size": "48px",
   "radio-indicator-size": "8px",
-  "indicator-height": "0px"
+  "indicator-height": "0px",
+  "trigger-height": "40px",
+  "handle-focus-ring-width": "2px",
+  "handle-focus-ring-offset": "2px"
 };
 
 export const shadow = {
@@ -621,7 +624,7 @@ export const fontWeight = {
   "fallback-font-weight": 500,
   "header-font-weight": 500,
   "footer-font-weight": 500,
-  "label-font-weight": 500,
+  "label-font-weight": 600,
   "message-font-weight": 500,
   "fieldset-legend-font-weight": 600,
   "nav-button-font-weight": 500,
@@ -630,7 +633,8 @@ export const fontWeight = {
   "page-font-weight": 400,
   "item-font-weight": 500,
   "group-heading-font-weight": 500,
-  "grid-title-font-weight": 700
+  "grid-title-font-weight": 700,
+  "menu-trigger-font-weight": 500
 };
 
 export const lineHeight = {

@@ -5548,6 +5548,68 @@
         "type": "spacing",
         "variable": "var(--menubar-radio-indicator-size)",
         "description": ""
+      },
+      "menubar-trigger-font-weight": {
+        "name": "menubarTriggerFontWeight",
+        "path": [
+          "menubar",
+          "trigger",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--menubar-trigger-font-weight)",
+        "description": ""
+      },
+      "menubar-label-font-weight": {
+        "name": "menubarLabelFontWeight",
+        "path": [
+          "menubar",
+          "label",
+          "font-weight"
+        ],
+        "value": 600,
+        "type": "number",
+        "variable": "var(--menubar-label-font-weight)",
+        "description": ""
+      },
+      "menubar-item-disabled-opacity": {
+        "name": "menubarItemDisabledOpacity",
+        "path": [
+          "menubar",
+          "item",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--menubar-item-disabled-opacity)",
+        "description": ""
+      },
+      "menubar-item-indicator-left": {
+        "name": "menubarItemIndicatorLeft",
+        "path": [
+          "menubar",
+          "item",
+          "indicator",
+          "left"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--menubar-item-indicator-left)",
+        "description": ""
+      },
+      "menubar-shortcut-letter-spacing": {
+        "name": "menubarShortcutLetterSpacing",
+        "path": [
+          "menubar",
+          "shortcut",
+          "letter-spacing"
+        ],
+        "value": "0.1em",
+        "type": "dimension",
+        "variable": "var(--menubar-shortcut-letter-spacing)",
+        "description": ""
       }
     },
     "navigation": {
@@ -8388,6 +8450,19 @@
         "type": "number",
         "variable": "var(--pagination-item-font-weight)",
         "description": ""
+      },
+      "pagination-link-disabled-opacity": {
+        "name": "paginationLinkDisabledOpacity",
+        "path": [
+          "pagination",
+          "link",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--pagination-link-disabled-opacity)",
+        "description": ""
       }
     },
     "popover": {
@@ -8815,6 +8890,30 @@
         "type": "spacing",
         "variable": "var(--resizable-grip-icon-size)",
         "description": "Size of the grip icon inside the resizable handle (xs icon, 12px)"
+      },
+      "resizable-handle-focus-ring-width": {
+        "name": "resizableHandleFocusRingWidth",
+        "path": [
+          "resizable",
+          "handle",
+          "focus-ring-width"
+        ],
+        "value": "2px",
+        "type": "spacing",
+        "variable": "var(--resizable-handle-focus-ring-width)",
+        "description": ""
+      },
+      "resizable-handle-focus-ring-offset": {
+        "name": "resizableHandleFocusRingOffset",
+        "path": [
+          "resizable",
+          "handle",
+          "focus-ring-offset"
+        ],
+        "value": "2px",
+        "type": "spacing",
+        "variable": "var(--resizable-handle-focus-ring-offset)",
+        "description": ""
       }
     },
     "scrollbar": {
@@ -9100,6 +9199,31 @@
         "value": "2px",
         "type": "spacing",
         "variable": "var(--slider-focus-ring-offset)",
+        "description": ""
+      },
+      "slider-thumb-disabled-opacity": {
+        "name": "sliderThumbDisabledOpacity",
+        "path": [
+          "slider",
+          "thumb",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--slider-thumb-disabled-opacity)",
+        "description": ""
+      },
+      "slider-thumb-ring-offset": {
+        "name": "sliderThumbRingOffset",
+        "path": [
+          "slider",
+          "thumb",
+          "ring-offset"
+        ],
+        "value": "oklch(0.991 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-slider-thumb-ring-offset)",
         "description": ""
       }
     },
@@ -10335,6 +10459,81 @@
         "type": "spacing",
         "variable": "var(--select-item-indicator-left)",
         "description": ""
+      },
+      "select-trigger-disabled-opacity": {
+        "name": "selectTriggerDisabledOpacity",
+        "path": [
+          "select",
+          "trigger",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--select-trigger-disabled-opacity)",
+        "description": ""
+      },
+      "select-trigger-icon-opacity": {
+        "name": "selectTriggerIconOpacity",
+        "path": [
+          "select",
+          "trigger",
+          "icon",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--select-trigger-icon-opacity)",
+        "description": ""
+      },
+      "select-content-background": {
+        "name": "selectContentBackground",
+        "path": [
+          "select",
+          "content",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-select-content-background)",
+        "description": ""
+      },
+      "select-content-text": {
+        "name": "selectContentText",
+        "path": [
+          "select",
+          "content",
+          "text"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-select-content-text)",
+        "description": ""
+      },
+      "select-item-disabled-opacity": {
+        "name": "selectItemDisabledOpacity",
+        "path": [
+          "select",
+          "item",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--select-item-disabled-opacity)",
+        "description": ""
+      },
+      "select-separator-background": {
+        "name": "selectSeparatorBackground",
+        "path": [
+          "select",
+          "separator",
+          "background"
+        ],
+        "value": "oklch(0.786 0.004 271.24)",
+        "type": "color",
+        "variable": "var(--color-select-separator-background)",
+        "description": ""
       }
     },
     "checkbox": {
@@ -10793,6 +10992,18 @@
         "type": "color",
         "variable": "var(--color-switch-thumb-background)",
         "description": ""
+      },
+      "switch-disabled-opacity": {
+        "name": "switchDisabledOpacity",
+        "path": [
+          "switch",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--switch-disabled-opacity)",
+        "description": ""
       }
     },
     "textarea": {
@@ -10863,6 +11074,29 @@
         "value": 14,
         "type": "number",
         "variable": "var(--textarea-font-size)",
+        "description": ""
+      },
+      "textarea-font-weight": {
+        "name": "textareaFontWeight",
+        "path": [
+          "textarea",
+          "font-weight"
+        ],
+        "value": 400,
+        "type": "number",
+        "variable": "var(--textarea-font-weight)",
+        "description": ""
+      },
+      "textarea-disabled-opacity": {
+        "name": "textareaDisabledOpacity",
+        "path": [
+          "textarea",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--textarea-disabled-opacity)",
         "description": ""
       }
     },
@@ -10947,6 +11181,41 @@
         "value": "oklch(0.423 0.007 264.49)",
         "type": "color",
         "variable": "var(--color-label-default-color)",
+        "description": ""
+      },
+      "label-font-weight": {
+        "name": "labelFontWeight",
+        "path": [
+          "label",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--label-font-weight)",
+        "description": ""
+      },
+      "label-error-text": {
+        "name": "labelErrorText",
+        "path": [
+          "label",
+          "error",
+          "text"
+        ],
+        "value": "oklch(0.505 0.19 27.5)",
+        "type": "color",
+        "variable": "var(--color-label-error-text)",
+        "description": ""
+      },
+      "label-required-text": {
+        "name": "labelRequiredText",
+        "path": [
+          "label",
+          "required",
+          "text"
+        ],
+        "value": "oklch(0.505 0.19 27.5)",
+        "type": "color",
+        "variable": "var(--color-label-required-text)",
         "description": ""
       }
     },
@@ -11193,6 +11462,17 @@
         "value": "16px",
         "type": "spacing",
         "variable": "var(--separator-margin-vertical)",
+        "description": ""
+      },
+      "separator-color": {
+        "name": "separatorColor",
+        "path": [
+          "separator",
+          "color"
+        ],
+        "value": "oklch(0.786 0.004 271.24)",
+        "type": "color",
+        "variable": "var(--color-separator-color)",
         "description": ""
       }
     },
@@ -12003,6 +12283,19 @@
         "type": "spacing",
         "variable": "var(--radio-group-item-gap)",
         "description": ""
+      },
+      "radio-group-item-disabled-opacity": {
+        "name": "radioGroupItemDisabledOpacity",
+        "path": [
+          "radio-group",
+          "item",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--radio-group-item-disabled-opacity)",
+        "description": ""
       }
     },
     "navigation-menu": {
@@ -12093,6 +12386,43 @@
         "value": "0px",
         "type": "dimension",
         "variable": "var(--navigation-menu-indicator-height)",
+        "description": ""
+      },
+      "navigation-menu-trigger-height": {
+        "name": "navigationMenuTriggerHeight",
+        "path": [
+          "navigation-menu",
+          "trigger",
+          "height"
+        ],
+        "value": "40px",
+        "type": "spacing",
+        "variable": "var(--navigation-menu-trigger-height)",
+        "description": ""
+      },
+      "navigation-menu-trigger-font-weight": {
+        "name": "navigationMenuTriggerFontWeight",
+        "path": [
+          "navigation-menu",
+          "trigger",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--navigation-menu-trigger-font-weight)",
+        "description": ""
+      },
+      "navigation-menu-trigger-disabled-opacity": {
+        "name": "navigationMenuTriggerDisabledOpacity",
+        "path": [
+          "navigation-menu",
+          "trigger",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--navigation-menu-trigger-disabled-opacity)",
         "description": ""
       }
     },

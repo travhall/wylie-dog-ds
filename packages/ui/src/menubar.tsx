@@ -32,7 +32,7 @@ const MenubarTrigger = React.forwardRef<
   <MenubarPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-(--space-menubar-item-radius) px-(--space-menubar-trigger-padding-x) py-(--space-menubar-trigger-padding-y) text-(length:--font-size-menubar-item-font-size) font-medium outline-none",
+      "flex cursor-default select-none items-center rounded-(--space-menubar-item-radius) px-(--space-menubar-trigger-padding-x) py-(--space-menubar-trigger-padding-y) text-(length:--font-size-menubar-item-font-size) font-(--font-weight-menubar-trigger-font-weight) outline-none",
       "focus:bg-(--color-menubar-trigger-focus) focus:text-(--color-menubar-trigger-text-focus)",
       "data-[state=open]:bg-(--color-menubar-trigger-open) data-[state=open]:text-(--color-menubar-trigger-text-open)",
       className
@@ -119,7 +119,7 @@ const MenubarItem = React.forwardRef<
     className={cn(
       "relative flex cursor-default select-none items-center rounded-(--space-menubar-item-radius) px-(--space-menubar-item-padding-x) py-(--space-menubar-item-padding-y) text-(length:--font-size-menubar-item-font-size) outline-none",
       "focus:bg-(--color-menubar-item-focus) focus:text-(--color-menubar-item-text-focus)",
-      "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--menubar-item-disabled-opacity)",
       inset && "pl-(--space-menubar-item-inset)",
       className
     )}
@@ -137,13 +137,13 @@ const MenubarCheckboxItem = React.forwardRef<
     className={cn(
       "relative flex cursor-default select-none items-center rounded-(--space-menubar-item-radius) py-(--space-menubar-item-padding-y) pl-(--space-menubar-subitem-padding-left) pr-(--space-menubar-subitem-padding-right) text-(length:--font-size-menubar-item-font-size) outline-none",
       "focus:bg-(--color-menubar-item-focus) focus:text-(--color-menubar-item-text-focus)",
-      "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--menubar-item-disabled-opacity)",
       className
     )}
     checked={checked}
     {...props}
   >
-    <span className="absolute left-2 flex h-(--space-menubar-item-indicator-size) w-(--space-menubar-item-indicator-size) items-center justify-center">
+    <span className="absolute left-(--space-menubar-item-indicator-left) flex h-(--space-menubar-item-indicator-size) w-(--space-menubar-item-indicator-size) items-center justify-center">
       <MenubarPrimitive.ItemIndicator>
         <CheckIcon className="h-(--space-menubar-item-icon-size) w-(--space-menubar-item-icon-size)" />
       </MenubarPrimitive.ItemIndicator>
@@ -162,12 +162,12 @@ const MenubarRadioItem = React.forwardRef<
     className={cn(
       "relative flex cursor-default select-none items-center rounded-(--space-menubar-item-radius) py-(--space-menubar-item-padding-y) pl-(--space-menubar-subitem-padding-left) pr-(--space-menubar-subitem-padding-right) text-(length:--font-size-menubar-item-font-size) outline-none",
       "focus:bg-(--color-menubar-item-focus) focus:text-(--color-menubar-item-text-focus)",
-      "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--menubar-item-disabled-opacity)",
       className
     )}
     {...props}
   >
-    <span className="absolute left-2 flex h-(--space-menubar-item-indicator-size) w-(--space-menubar-item-indicator-size) items-center justify-center">
+    <span className="absolute left-(--space-menubar-item-indicator-left) flex h-(--space-menubar-item-indicator-size) w-(--space-menubar-item-indicator-size) items-center justify-center">
       <MenubarPrimitive.ItemIndicator>
         <CircleIcon className="h-(--space-menubar-radio-indicator-size) w-(--space-menubar-radio-indicator-size) fill-current" />
       </MenubarPrimitive.ItemIndicator>
@@ -186,7 +186,7 @@ const MenubarLabel = React.forwardRef<
   <MenubarPrimitive.Label
     ref={ref}
     className={cn(
-      "px-(--space-menubar-item-padding-x) py-(--space-menubar-item-padding-y) text-(length:--font-size-menubar-item-font-size) text-(--color-menubar-label) font-semibold",
+      "px-(--space-menubar-item-padding-x) py-(--space-menubar-item-padding-y) text-(length:--font-size-menubar-item-font-size) text-(--color-menubar-label) font-(--font-weight-menubar-label-font-weight)",
       inset && "pl-(--space-menubar-item-inset)",
       className
     )}
@@ -217,7 +217,7 @@ const MenubarShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-(length:--font-size-menubar-shortcut-font-size) text-(--color-menubar-shortcut) tracking-(--space-typography-tracking-widest)",
+        "ml-auto text-(length:--font-size-menubar-shortcut-font-size) text-(--color-menubar-shortcut) tracking-(--space-menubar-shortcut-letter-spacing)",
         className
       )}
       {...props}

@@ -318,7 +318,7 @@ describe("Switch", () => {
       render(<Switch aria-label="Test" />);
       const switchElement = screen.getByRole("switch");
       expect(switchElement).toHaveClass(
-        "focus:ring-(--space-switch-focus-ring-width)"
+        "focus:ring-(length:--space-switch-focus-ring-width)"
       );
       expect(switchElement).toHaveClass("focus:outline-none");
     });
@@ -328,7 +328,7 @@ describe("Switch", () => {
       const switchElement = screen.getByRole("switch");
       expect(switchElement).toHaveClass("disabled:cursor-not-allowed");
       expect(switchElement).toHaveClass(
-        "disabled:opacity-(--state-opacity-disabled)"
+        "disabled:opacity-(--switch-disabled-opacity)"
       );
     });
 

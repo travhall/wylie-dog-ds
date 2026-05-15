@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
 export const labelVariants = cva(
-  "font-medium leading-(--line-height-none) peer-disabled:cursor-not-allowed peer-disabled:text-(--color-label-disabled-color)",
+  "font-(--font-weight-label-font-weight) leading-(--line-height-none) peer-disabled:cursor-not-allowed peer-disabled:text-(--color-label-disabled-color)",
   {
     variants: {
       size: {
@@ -12,7 +12,7 @@ export const labelVariants = cva(
         lg: "text-(length:--font-size-label-font-size-lg)",
       },
       error: {
-        true: "text-(--color-text-danger)",
+        true: "text-(--color-label-error-text)",
         false: "text-(--color-label-default-color)",
       },
     },
@@ -62,7 +62,7 @@ export const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
       {required && (
         <span
           className={cn(
-            "text-(--color-text-danger) ml-(--space-label-required-margin-left)",
+            "text-(--color-label-required-text) ml-(--space-label-required-margin-left)",
             requiredIndicatorSrOnly && "sr-only"
           )}
           aria-label="required"

@@ -9,7 +9,7 @@ export const selectTriggerVariants = cva(
     "rounded-(--space-select-trigger-radius)",
     "placeholder:text-(--color-input-placeholder)",
     "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-input-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
-    "disabled:cursor-not-allowed disabled:opacity-(--state-opacity-disabled)",
+    "disabled:cursor-not-allowed disabled:opacity-(--select-trigger-disabled-opacity)",
     "[&>span]:line-clamp-1",
     "text-(--color-input-default-text)"
   ),
@@ -96,7 +96,7 @@ export const SelectTrigger = React.forwardRef<
       {children}
       <SelectPrimitive.Icon asChild>
         <svg
-          className="h-(--space-icon-size-md) w-(--space-icon-size-md) opacity-(--state-opacity-disabled)"
+          className="h-(--space-icon-size-md) w-(--space-icon-size-md) opacity-(--select-trigger-icon-opacity)"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -127,7 +127,7 @@ export const SelectContent = React.forwardRef<
         "max-h-(--space-select-content-max-height)",
         "min-w-(--space-select-content-min-width)",
         "rounded-(--space-select-content-radius)",
-        "bg-(--color-background-primary) text-(--color-text-primary) shadow-(--shadow-md)",
+        "bg-(--color-select-content-background) text-(--color-select-content-text) shadow-(--shadow-md)",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -172,7 +172,7 @@ export const SelectItem = React.forwardRef<
         "pr-(--space-select-item-padding-right)",
         selectItemFontSizes[size],
         "focus:bg-(--color-select-item-background-focus) focus:text-(--color-select-item-text-focus) hover:bg-(--color-select-item-background-focus) hover:text-(--color-select-item-text-focus)",
-        "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
+        "data-disabled:pointer-events-none data-disabled:opacity-(--select-item-disabled-opacity)",
         className
       )}
       {...props}
@@ -203,7 +203,7 @@ export const SelectSeparator = React.forwardRef<
   <SelectPrimitive.Separator
     ref={ref}
     className={cn(
-      "-mx-(--space-select-separator-margin-x) my-(--space-select-separator-margin-y) bg-(--color-border-primary)",
+      "-mx-(--space-select-separator-margin-x) my-(--space-select-separator-margin-y) bg-(--color-select-separator-background)",
       "h-(--space-select-separator-height)",
       className
     )}

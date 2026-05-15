@@ -110,7 +110,7 @@ describe("Separator", () => {
       const { container } = render(<Separator />);
       const separator = container.querySelector("[data-orientation]");
       expect(separator).toHaveClass("shrink-0");
-      expect(separator).toHaveClass("bg-(--color-border-primary)");
+      expect(separator).toHaveClass("bg-(--color-separator-color)");
     });
   });
 

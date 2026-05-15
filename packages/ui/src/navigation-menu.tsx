@@ -39,10 +39,10 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cn(
-  "group inline-flex h-10 w-max items-center justify-center rounded-(--space-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--space-navigation-menu-trigger-padding-x) py-(--space-navigation-menu-trigger-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) font-medium transition-colors",
+  "group inline-flex h-(--space-navigation-menu-trigger-height) w-max items-center justify-center rounded-(--space-navigation-menu-trigger-radius) bg-(--color-navigation-background) px-(--space-navigation-menu-trigger-padding-x) py-(--space-navigation-menu-trigger-padding-y) text-(length:--font-size-navigation-menu-trigger-font-size) font-(--font-weight-navigation-menu-trigger-font-weight) transition-colors",
   "hover:bg-(--color-navigation-background-hover) hover:text-(--color-navigation-text-hover)",
   "focus:bg-(--color-navigation-focus) focus:text-(--color-navigation-text-focus) focus:outline-none",
-  "disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
+  "disabled:pointer-events-none disabled:opacity-(--navigation-menu-trigger-disabled-opacity)",
   "data-[active]:bg-(--color-navigation-active) data-[state=open]:bg-(--color-navigation-open)"
 );
 
