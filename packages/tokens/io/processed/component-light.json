@@ -3096,5 +3096,45 @@
   "resizable.handle.focus-ring-offset": {
     "$type": "spacing",
     "$value": "{border-width.2}"
+  },
+  "sheet.content.background": {
+    "$type": "color",
+    "$value": "{color.background.primary}"
+  },
+  "sheet.close-button.opacity": {
+    "$type": "number",
+    "$value": "{opacity.70}"
+  },
+  "sheet.title.text": {
+    "$type": "color",
+    "$value": "{color.text.primary}"
+  },
+  "sheet.description.text": {
+    "$type": "color",
+    "$value": "{color.text.secondary}"
+  },
+  "toast.action.ring-offset": {
+    "$type": "color",
+    "$value": "{color.background.primary}"
+  },
+  "toast.action.disabled.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
+  },
+  "toast.close-button.position": {
+    "$type": "spacing",
+    "$value": "{space.100}"
+  },
+  "toast.description.opacity": {
+    "$type": "number",
+    "$value": "{opacity.90}"
+  },
+  "toggle.disabled.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
+  },
+  "toggle-group.item.disabled.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
   }
 }

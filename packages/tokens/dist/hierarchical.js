@@ -528,7 +528,8 @@ export const spacing = {
   "indicator-height": "0px",
   "trigger-height": "40px",
   "handle-focus-ring-width": "2px",
-  "handle-focus-ring-offset": "2px"
+  "handle-focus-ring-offset": "2px",
+  "close-button-position": "8px"
 };
 
 export const shadow = {

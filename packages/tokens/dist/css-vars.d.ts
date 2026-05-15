@@ -434,7 +434,10 @@ export type CssVarName =
   | "--color-select-item-text-focus"
   | "--color-select-separator-background"
   | "--color-separator-color"
+  | "--color-sheet-content-background"
+  | "--color-sheet-description-text"
   | "--color-sheet-overlay-background"
+  | "--color-sheet-title-text"
   | "--color-skeleton-background"
   | "--color-slider-range"
   | "--color-slider-thumb"
@@ -484,6 +487,7 @@ export type CssVarName =
   | "--color-text-tertiary"
   | "--color-text-warning"
   | "--color-toast-action-hover"
+  | "--color-toast-action-ring-offset"
   | "--color-toast-close"
   | "--color-toast-close-hover"
   | "--color-toast-default-background"
@@ -717,6 +721,7 @@ export type CssVarName =
   | "--shadow-none"
   | "--shadow-sm"
   | "--shadow-xl"
+  | "--sheet-close-button-opacity"
   | "--sheet-close-button-opacity-hover"
   | "--slider-thumb-disabled-opacity"
   | "--space-0"
@@ -1095,6 +1100,7 @@ export type CssVarName =
   | "--space-toast-action-radius"
   | "--space-toast-border-radius"
   | "--space-toast-close-button-padding"
+  | "--space-toast-close-button-position"
   | "--space-toast-close-button-radius"
   | "--space-toast-close-padding"
   | "--space-toast-close-radius"
@@ -1134,8 +1140,12 @@ export type CssVarName =
   | "--state-opacity-subtle"
   | "--switch-disabled-opacity"
   | "--textarea-disabled-opacity"
+  | "--toast-action-disabled-opacity"
   | "--toast-close-button-opacity"
   | "--toast-close-button-opacity-hover"
+  | "--toast-description-opacity"
+  | "--toggle-disabled-opacity"
+  | "--toggle-group-item-disabled-opacity"
   | "--transition-easing-default"
   | "--transition-easing-in"
   | "--transition-easing-in-out"
@@ -1598,7 +1608,10 @@ export declare const cssVars: Readonly<{
   "colorSelectItemTextFocus": "--color-select-item-text-focus";
   "colorSelectSeparatorBackground": "--color-select-separator-background";
   "colorSeparatorColor": "--color-separator-color";
+  "colorSheetContentBackground": "--color-sheet-content-background";
+  "colorSheetDescriptionText": "--color-sheet-description-text";
   "colorSheetOverlayBackground": "--color-sheet-overlay-background";
+  "colorSheetTitleText": "--color-sheet-title-text";
   "colorSkeletonBackground": "--color-skeleton-background";
   "colorSliderRange": "--color-slider-range";
   "colorSliderThumb": "--color-slider-thumb";
@@ -1648,6 +1661,7 @@ export declare const cssVars: Readonly<{
   "colorTextTertiary": "--color-text-tertiary";
   "colorTextWarning": "--color-text-warning";
   "colorToastActionHover": "--color-toast-action-hover";
+  "colorToastActionRingOffset": "--color-toast-action-ring-offset";
   "colorToastClose": "--color-toast-close";
   "colorToastCloseHover": "--color-toast-close-hover";
   "colorToastDefaultBackground": "--color-toast-default-background";
@@ -1881,6 +1895,7 @@ export declare const cssVars: Readonly<{
   "shadowNone": "--shadow-none";
   "shadowSm": "--shadow-sm";
   "shadowXl": "--shadow-xl";
+  "sheetCloseButtonOpacity": "--sheet-close-button-opacity";
   "sheetCloseButtonOpacityHover": "--sheet-close-button-opacity-hover";
   "sliderThumbDisabledOpacity": "--slider-thumb-disabled-opacity";
   "space0": "--space-0";
@@ -2259,6 +2274,7 @@ export declare const cssVars: Readonly<{
   "spaceToastActionRadius": "--space-toast-action-radius";
   "spaceToastBorderRadius": "--space-toast-border-radius";
   "spaceToastCloseButtonPadding": "--space-toast-close-button-padding";
+  "spaceToastCloseButtonPosition": "--space-toast-close-button-position";
   "spaceToastCloseButtonRadius": "--space-toast-close-button-radius";
   "spaceToastClosePadding": "--space-toast-close-padding";
   "spaceToastCloseRadius": "--space-toast-close-radius";
@@ -2298,8 +2314,12 @@ export declare const cssVars: Readonly<{
   "stateOpacitySubtle": "--state-opacity-subtle";
   "switchDisabledOpacity": "--switch-disabled-opacity";
   "textareaDisabledOpacity": "--textarea-disabled-opacity";
+  "toastActionDisabledOpacity": "--toast-action-disabled-opacity";
   "toastCloseButtonOpacity": "--toast-close-button-opacity";
   "toastCloseButtonOpacityHover": "--toast-close-button-opacity-hover";
+  "toastDescriptionOpacity": "--toast-description-opacity";
+  "toggleDisabledOpacity": "--toggle-disabled-opacity";
+  "toggleGroupItemDisabledOpacity": "--toggle-group-item-disabled-opacity";
   "transitionEasingDefault": "--transition-easing-default";
   "transitionEasingIn": "--transition-easing-in";
   "transitionEasingInOut": "--transition-easing-in-out";

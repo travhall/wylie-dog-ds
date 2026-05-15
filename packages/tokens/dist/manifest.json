@@ -9869,6 +9869,55 @@
         "type": "number",
         "variable": "var(--toast-close-button-opacity-hover)",
         "description": ""
+      },
+      "toast-action-ring-offset": {
+        "name": "toastActionRingOffset",
+        "path": [
+          "toast",
+          "action",
+          "ring-offset"
+        ],
+        "value": "oklch(0.991 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-toast-action-ring-offset)",
+        "description": ""
+      },
+      "toast-action-disabled-opacity": {
+        "name": "toastActionDisabledOpacity",
+        "path": [
+          "toast",
+          "action",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--toast-action-disabled-opacity)",
+        "description": ""
+      },
+      "toast-close-button-position": {
+        "name": "toastCloseButtonPosition",
+        "path": [
+          "toast",
+          "close-button",
+          "position"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--toast-close-button-position)",
+        "description": ""
+      },
+      "toast-description-opacity": {
+        "name": "toastDescriptionOpacity",
+        "path": [
+          "toast",
+          "description",
+          "opacity"
+        ],
+        "value": 0.9,
+        "type": "number",
+        "variable": "var(--toast-description-opacity)",
+        "description": ""
       }
     },
     "toggle": {
@@ -10047,6 +10096,18 @@
         "value": "oklch(0.952 0.003 264.51)",
         "type": "color",
         "variable": "var(--color-toggle-background-hover)",
+        "description": ""
+      },
+      "toggle-disabled-opacity": {
+        "name": "toggleDisabledOpacity",
+        "path": [
+          "toggle",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--toggle-disabled-opacity)",
         "description": ""
       }
     },
@@ -11413,6 +11474,54 @@
         "type": "number",
         "variable": "var(--sheet-close-button-opacity-hover)",
         "description": ""
+      },
+      "sheet-content-background": {
+        "name": "sheetContentBackground",
+        "path": [
+          "sheet",
+          "content",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-sheet-content-background)",
+        "description": ""
+      },
+      "sheet-close-button-opacity": {
+        "name": "sheetCloseButtonOpacity",
+        "path": [
+          "sheet",
+          "close-button",
+          "opacity"
+        ],
+        "value": 0.7,
+        "type": "number",
+        "variable": "var(--sheet-close-button-opacity)",
+        "description": ""
+      },
+      "sheet-title-text": {
+        "name": "sheetTitleText",
+        "path": [
+          "sheet",
+          "title",
+          "text"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-sheet-title-text)",
+        "description": ""
+      },
+      "sheet-description-text": {
+        "name": "sheetDescriptionText",
+        "path": [
+          "sheet",
+          "description",
+          "text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-sheet-description-text)",
+        "description": ""
       }
     },
     "separator": {
@@ -12493,6 +12602,19 @@
         "type": "spacing",
         "variable": "var(--toggle-group-item-height)",
         "description": "Height of toggle group items (40px, matches default toggle height)"
+      },
+      "toggle-group-item-disabled-opacity": {
+        "name": "toggleGroupItemDisabledOpacity",
+        "path": [
+          "toggle-group",
+          "item",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--toggle-group-item-disabled-opacity)",
+        "description": ""
       }
     },
     "scroll-area": {

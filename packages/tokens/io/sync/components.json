@@ -6197,6 +6197,86 @@
             "Light": "{border-width.2}",
             "Dark": "{border-width.2}"
           }
+        },
+        "sheet.content.background": {
+          "$type": "color",
+          "$value": "{color.background.primary}",
+          "valuesByMode": {
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
+          }
+        },
+        "sheet.close-button.opacity": {
+          "$type": "number",
+          "$value": "{opacity.70}",
+          "valuesByMode": {
+            "Light": "{opacity.70}",
+            "Dark": "{opacity.70}"
+          }
+        },
+        "sheet.title.text": {
+          "$type": "color",
+          "$value": "{color.text.primary}",
+          "valuesByMode": {
+            "Light": "{color.text.primary}",
+            "Dark": "{color.text.primary}"
+          }
+        },
+        "sheet.description.text": {
+          "$type": "color",
+          "$value": "{color.text.secondary}",
+          "valuesByMode": {
+            "Light": "{color.text.secondary}",
+            "Dark": "{color.text.secondary}"
+          }
+        },
+        "toast.action.ring-offset": {
+          "$type": "color",
+          "$value": "{color.background.primary}",
+          "valuesByMode": {
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
+          }
+        },
+        "toast.action.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
+        "toast.close-button.position": {
+          "$type": "spacing",
+          "$value": "{space.100}",
+          "valuesByMode": {
+            "Light": "{space.100}",
+            "Dark": "{space.100}"
+          }
+        },
+        "toast.description.opacity": {
+          "$type": "number",
+          "$value": "{opacity.90}",
+          "valuesByMode": {
+            "Light": "{opacity.90}",
+            "Dark": "{opacity.90}"
+          }
+        },
+        "toggle.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
+        "toggle-group.item.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
         }
       }
     }

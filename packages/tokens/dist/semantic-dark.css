@@ -897,4 +897,14 @@
   --color-separator-color: oklch(0.423 0.007 264.49);
   --space-resizable-handle-focus-ring-width: 2px;
   --space-resizable-handle-focus-ring-offset: 2px;
+  --color-sheet-content-background: oklch(0.149 0.012 259.7);
+  --sheet-close-button-opacity: 0.7;
+  --color-sheet-title-text: oklch(0.952 0.003 264.51);
+  --color-sheet-description-text: oklch(0.786 0.004 271.24);
+  --color-toast-action-ring-offset: oklch(0.149 0.012 259.7);
+  --toast-action-disabled-opacity: 0.5;
+  --space-toast-close-button-position: 8px;
+  --toast-description-opacity: 0.9;
+  --toggle-disabled-opacity: 0.5;
+  --toggle-group-item-disabled-opacity: 0.5;
 }

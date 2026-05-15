@@ -5,11 +5,11 @@ import { cn } from "./lib/utils";
 
 export const sheetContentVariants = cva(
   cn(
-    "fixed z-(--z-index-modal) bg-(--color-background-primary) shadow-(--shadow-lg) transition ease-in-out",
+    "fixed z-(--z-index-modal) bg-(--color-sheet-content-background) shadow-(--shadow-lg) transition ease-in-out",
     "gap-(--space-sheet-header-gap)",
     "p-(--space-sheet-content-padding)",
     "data-[state=open]:animate-in data-[state=closed]:animate-out",
-    "data-[state=closed]:duration-(--duration-duration-300) data-[state=open]:duration-(--duration-duration-500)"
+    "data-[state=closed]:duration-(--duration-300) data-[state=open]:duration-(--duration-500)"
   ),
   {
     variants: {
@@ -110,7 +110,7 @@ export const SheetContent = React.forwardRef<
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="absolute right-(--space-sheet-close-button-offset) top-(--space-sheet-close-button-offset) rounded-(--space-sheet-close-button-radius) opacity-(--state-opacity-muted) ring-offset-background transition-opacity hover:opacity-(--sheet-close-button-opacity-hover) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none">
+        <DialogPrimitive.Close className="absolute right-(--space-sheet-close-button-offset) top-(--space-sheet-close-button-offset) rounded-(--space-sheet-close-button-radius) opacity-(--sheet-close-button-opacity) ring-offset-(--color-sheet-content-background) transition-opacity hover:opacity-(--sheet-close-button-opacity-hover) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none">
           <svg
             className="h-(--space-icon-size-md) w-(--space-icon-size-md)"
             fill="none"
@@ -176,7 +176,7 @@ export const SheetTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "font-(--font-weight-sheet-title-font-weight) text-(--color-text-primary)",
+      "font-(--font-weight-sheet-title-font-weight) text-(--color-sheet-title-text)",
       "text-(length:--font-size-sheet-title-font-size)",
       className
     )}
@@ -194,7 +194,7 @@ export const SheetDescription = React.forwardRef<
     ref={ref}
     className={cn(
       "text-(length:--font-size-sheet-description-font-size)",
-      "text-(--color-text-secondary)",
+      "text-(--color-sheet-description-text)",
       className
     )}
     {...props}

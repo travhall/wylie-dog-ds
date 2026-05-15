@@ -25,14 +25,14 @@ beforeAll(() => {
   (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
 
   // Mock ResizeObserver (used by some Radix components)
-  global.ResizeObserver = class ResizeObserver {
+  globalThis.ResizeObserver = class ResizeObserver {
     observe() {}
     unobserve() {}
     disconnect() {}
   };
 
   // Mock IntersectionObserver
-  (global as any).IntersectionObserver = class IntersectionObserver {
+  (globalThis as any).IntersectionObserver = class IntersectionObserver {
     constructor() {}
     observe() {}
     unobserve() {}
