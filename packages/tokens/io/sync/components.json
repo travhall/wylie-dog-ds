@@ -6277,6 +6277,86 @@
             "Light": "{opacity.50}",
             "Dark": "{opacity.50}"
           }
+        },
+        "tabs.trigger.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
+        "tabs.trigger.ring-offset": {
+          "$type": "color",
+          "$value": "{color.background.primary}",
+          "valuesByMode": {
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
+          }
+        },
+        "tabs.content.ring-offset": {
+          "$type": "color",
+          "$value": "{color.background.primary}",
+          "valuesByMode": {
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
+          }
+        },
+        "badge.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
+        "button.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
+        "calendar.nav-button.disabled.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
+        "calendar.nav-button.ring-offset": {
+          "$type": "color",
+          "$value": "{color.background.primary}",
+          "valuesByMode": {
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
+          }
+        },
+        "form.label.error.text": {
+          "$type": "color",
+          "$value": "{color.text.danger}",
+          "valuesByMode": {
+            "Light": "{color.text.danger}",
+            "Dark": "{color.text.danger}"
+          }
+        },
+        "feature-grid.item.border-color": {
+          "$type": "color",
+          "$value": "{color.border.primary}",
+          "valuesByMode": {
+            "Light": "{color.border.primary}",
+            "Dark": "{color.border.primary}"
+          }
+        },
+        "feature-grid.item.border-color-hover": {
+          "$type": "color",
+          "$value": "{color.interactive.primary}",
+          "valuesByMode": {
+            "Light": "{color.interactive.primary}",
+            "Dark": "{color.interactive.primary}"
+          }
         }
       }
     }

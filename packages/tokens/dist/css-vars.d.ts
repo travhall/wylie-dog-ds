@@ -4,6 +4,7 @@
 
 export type CssVarName =
   | "--alert-description-opacity"
+  | "--badge-disabled-opacity"
   | "--border-radius-2xl"
   | "--border-radius-full"
   | "--border-radius-lg"
@@ -16,6 +17,8 @@ export type CssVarName =
   | "--border-width-2"
   | "--border-width-4"
   | "--border-width-8"
+  | "--button-disabled-opacity"
+  | "--calendar-nav-button-disabled-opacity"
   | "--calendar-nav-button-opacity"
   | "--calendar-nav-button-opacity-hover"
   | "--card-disabled-opacity"
@@ -164,6 +167,7 @@ export type CssVarName =
   | "--color-calendar-day-text-selected"
   | "--color-calendar-header-text"
   | "--color-calendar-nav-border"
+  | "--color-calendar-nav-button-ring-offset"
   | "--color-calendar-nav-focus"
   | "--color-calendar-nav-hover"
   | "--color-calendar-nav-text-focus"
@@ -217,6 +221,8 @@ export type CssVarName =
   | "--color-dropdown-menu-item-text-hover"
   | "--color-dropdown-menu-separator-background"
   | "--color-feature-grid-description-text"
+  | "--color-feature-grid-item-border-color"
+  | "--color-feature-grid-item-border-color-hover"
   | "--color-feature-grid-title-text"
   | "--color-fiery-coral-100"
   | "--color-fiery-coral-200"
@@ -234,6 +240,7 @@ export type CssVarName =
   | "--color-form-error-text"
   | "--color-form-hint-text"
   | "--color-form-label"
+  | "--color-form-label-error-text"
   | "--color-form-label-text"
   | "--color-form-required-color"
   | "--color-gray-100"
@@ -468,12 +475,14 @@ export type CssVarName =
   | "--color-table-row-focus"
   | "--color-table-row-hover"
   | "--color-table-row-selected"
+  | "--color-tabs-content-ring-offset"
   | "--color-tabs-list-background"
   | "--color-tabs-list-border-color"
   | "--color-tabs-list-text"
   | "--color-tabs-trigger-background-active"
   | "--color-tabs-trigger-background-hover"
   | "--color-tabs-trigger-indicator-color"
+  | "--color-tabs-trigger-ring-offset"
   | "--color-tabs-trigger-text-active"
   | "--color-tabs-trigger-text-hover"
   | "--color-text-brand"
@@ -1139,6 +1148,7 @@ export type CssVarName =
   | "--state-opacity-overlay"
   | "--state-opacity-subtle"
   | "--switch-disabled-opacity"
+  | "--tabs-trigger-disabled-opacity"
   | "--textarea-disabled-opacity"
   | "--toast-action-disabled-opacity"
   | "--toast-close-button-opacity"
@@ -1178,6 +1188,7 @@ export type CssVarKey = keyof typeof cssVars;
 
 export declare const cssVars: Readonly<{
   "alertDescriptionOpacity": "--alert-description-opacity";
+  "badgeDisabledOpacity": "--badge-disabled-opacity";
   "borderRadius2xl": "--border-radius-2xl";
   "borderRadiusFull": "--border-radius-full";
   "borderRadiusLg": "--border-radius-lg";
@@ -1190,6 +1201,8 @@ export declare const cssVars: Readonly<{
   "borderWidth2": "--border-width-2";
   "borderWidth4": "--border-width-4";
   "borderWidth8": "--border-width-8";
+  "buttonDisabledOpacity": "--button-disabled-opacity";
+  "calendarNavButtonDisabledOpacity": "--calendar-nav-button-disabled-opacity";
   "calendarNavButtonOpacity": "--calendar-nav-button-opacity";
   "calendarNavButtonOpacityHover": "--calendar-nav-button-opacity-hover";
   "cardDisabledOpacity": "--card-disabled-opacity";
@@ -1338,6 +1351,7 @@ export declare const cssVars: Readonly<{
   "colorCalendarDayTextSelected": "--color-calendar-day-text-selected";
   "colorCalendarHeaderText": "--color-calendar-header-text";
   "colorCalendarNavBorder": "--color-calendar-nav-border";
+  "colorCalendarNavButtonRingOffset": "--color-calendar-nav-button-ring-offset";
   "colorCalendarNavFocus": "--color-calendar-nav-focus";
   "colorCalendarNavHover": "--color-calendar-nav-hover";
   "colorCalendarNavTextFocus": "--color-calendar-nav-text-focus";
@@ -1391,6 +1405,8 @@ export declare const cssVars: Readonly<{
   "colorDropdownMenuItemTextHover": "--color-dropdown-menu-item-text-hover";
   "colorDropdownMenuSeparatorBackground": "--color-dropdown-menu-separator-background";
   "colorFeatureGridDescriptionText": "--color-feature-grid-description-text";
+  "colorFeatureGridItemBorderColor": "--color-feature-grid-item-border-color";
+  "colorFeatureGridItemBorderColorHover": "--color-feature-grid-item-border-color-hover";
   "colorFeatureGridTitleText": "--color-feature-grid-title-text";
   "colorFieryCoral100": "--color-fiery-coral-100";
   "colorFieryCoral200": "--color-fiery-coral-200";
@@ -1408,6 +1424,7 @@ export declare const cssVars: Readonly<{
   "colorFormErrorText": "--color-form-error-text";
   "colorFormHintText": "--color-form-hint-text";
   "colorFormLabel": "--color-form-label";
+  "colorFormLabelErrorText": "--color-form-label-error-text";
   "colorFormLabelText": "--color-form-label-text";
   "colorFormRequiredColor": "--color-form-required-color";
   "colorGray100": "--color-gray-100";
@@ -1642,12 +1659,14 @@ export declare const cssVars: Readonly<{
   "colorTableRowFocus": "--color-table-row-focus";
   "colorTableRowHover": "--color-table-row-hover";
   "colorTableRowSelected": "--color-table-row-selected";
+  "colorTabsContentRingOffset": "--color-tabs-content-ring-offset";
   "colorTabsListBackground": "--color-tabs-list-background";
   "colorTabsListBorderColor": "--color-tabs-list-border-color";
   "colorTabsListText": "--color-tabs-list-text";
   "colorTabsTriggerBackgroundActive": "--color-tabs-trigger-background-active";
   "colorTabsTriggerBackgroundHover": "--color-tabs-trigger-background-hover";
   "colorTabsTriggerIndicatorColor": "--color-tabs-trigger-indicator-color";
+  "colorTabsTriggerRingOffset": "--color-tabs-trigger-ring-offset";
   "colorTabsTriggerTextActive": "--color-tabs-trigger-text-active";
   "colorTabsTriggerTextHover": "--color-tabs-trigger-text-hover";
   "colorTextBrand": "--color-text-brand";
@@ -2313,6 +2332,7 @@ export declare const cssVars: Readonly<{
   "stateOpacityOverlay": "--state-opacity-overlay";
   "stateOpacitySubtle": "--state-opacity-subtle";
   "switchDisabledOpacity": "--switch-disabled-opacity";
+  "tabsTriggerDisabledOpacity": "--tabs-trigger-disabled-opacity";
   "textareaDisabledOpacity": "--textarea-disabled-opacity";
   "toastActionDisabledOpacity": "--toast-action-disabled-opacity";
   "toastCloseButtonOpacity": "--toast-close-button-opacity";

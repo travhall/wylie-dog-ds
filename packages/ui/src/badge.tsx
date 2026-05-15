@@ -34,7 +34,7 @@ export const badgeVariants = cva(
         true: cn(
           "cursor-pointer",
           "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
-          "disabled:opacity-(--state-opacity-disabled) disabled:cursor-not-allowed"
+          "disabled:opacity-(--badge-disabled-opacity) disabled:cursor-not-allowed"
         ),
         false: "",
       },

@@ -14,7 +14,7 @@ export const formLabelVariants = cva(
         lg: "text-(length:--font-size-label-font-size-lg)",
       },
       invalid: {
-        true: "text-(--color-text-danger)",
+        true: "text-(--color-form-label-error-text)",
         false: "text-(--color-form-label)",
       },
     },

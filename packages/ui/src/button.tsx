@@ -7,7 +7,7 @@ export const buttonVariants = cva(
   cn(
     "inline-flex items-center justify-center font-(--font-weight-button-font-weight) leading-(--line-height-button-line-height) border transition-colors",
     "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
-    "disabled:opacity-(--state-opacity-disabled) disabled:pointer-events-none"
+    "disabled:opacity-(--button-disabled-opacity) disabled:pointer-events-none"
   ),
   {
     variants: {

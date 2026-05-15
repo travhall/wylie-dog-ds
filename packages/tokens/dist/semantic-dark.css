@@ -907,4 +907,14 @@
   --toast-description-opacity: 0.9;
   --toggle-disabled-opacity: 0.5;
   --toggle-group-item-disabled-opacity: 0.5;
+  --tabs-trigger-disabled-opacity: 0.5;
+  --color-tabs-trigger-ring-offset: oklch(0.149 0.012 259.7);
+  --color-tabs-content-ring-offset: oklch(0.149 0.012 259.7);
+  --badge-disabled-opacity: 0.5;
+  --button-disabled-opacity: 0.5;
+  --calendar-nav-button-disabled-opacity: 0.5;
+  --color-calendar-nav-button-ring-offset: oklch(0.149 0.012 259.7);
+  --color-form-label-error-text: oklch(0.711 0.166 22.21);
+  --color-feature-grid-item-border-color: oklch(0.423 0.007 264.49);
+  --color-feature-grid-item-border-color-hover: oklch(0.546 0.215 262.89);
 }

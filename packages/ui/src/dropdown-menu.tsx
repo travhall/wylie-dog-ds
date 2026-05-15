@@ -162,9 +162,9 @@ export const DropdownMenuSubTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       "relative flex cursor-default select-none items-center rounded-(--space-dropdown-menu-item-radius) px-(--space-dropdown-menu-item-padding-x) py-(--space-dropdown-menu-item-padding-y) text-(length:--font-size-dropdown-menu-item-font-size) outline-none transition-colors",
-      "focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary)",
+      "focus:bg-(--color-dropdown-menu-item-background-hover) focus:text-(--color-dropdown-menu-item-text-hover)",
       "data-[state=open]:bg-(--color-dropdown-menu-item-background-hover)",
-      "data-disabled:pointer-events-none data-disabled:opacity-(--state-opacity-disabled)",
+      "data-disabled:pointer-events-none data-disabled:opacity-(--dropdown-menu-item-disabled-opacity)",
       inset && "pl-(--space-dropdown-menu-item-inset)",
       className
     )}
@@ -185,8 +185,8 @@ export const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-(--z-index-dropdown) min-w-(--space-dropdown-menu-content-min-width) overflow-hidden rounded-(--space-dropdown-menu-content-radius) border border-(--color-border-primary)",
-      "bg-(--color-background-primary) p-(--space-dropdown-menu-content-padding) text-(--color-text-primary) shadow-(--shadow-md)",
+      "z-(--z-index-dropdown) min-w-(--space-dropdown-menu-content-min-width) overflow-hidden rounded-(--space-dropdown-menu-content-radius) border border-(--color-dropdown-menu-content-border)",
+      "bg-(--color-dropdown-menu-content-background) p-(--space-dropdown-menu-content-padding) text-(--color-dropdown-menu-content-text) shadow-(--shadow-md)",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",

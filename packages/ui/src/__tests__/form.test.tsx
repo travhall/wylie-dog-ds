@@ -275,7 +275,7 @@ describe("Form", () => {
         </FormField>
       );
       const label = screen.getByText("Error Field");
-      expect(label).toHaveClass("text-(--color-text-danger)");
+      expect(label).toHaveClass("text-(--color-form-label-error-text)");
     });
   });
 
@@ -506,7 +506,7 @@ describe("Form", () => {
       );
 
       const label = screen.getByText("Email");
-      expect(label).toHaveClass("text-(--color-text-danger)");
+      expect(label).toHaveClass("text-(--color-form-label-error-text)");
       expect(screen.getByRole("alert")).toHaveTextContent(
         "Invalid email format"
       );
@@ -556,7 +556,7 @@ describe("Form", () => {
 
       const label = screen.getByText("Email");
       expect(label.textContent).toContain("*");
-      expect(label).toHaveClass("text-(--color-text-danger)");
+      expect(label).toHaveClass("text-(--color-form-label-error-text)");
       expect(screen.getByRole("alert")).toHaveTextContent("Required field");
     });
   });

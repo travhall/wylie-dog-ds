@@ -3902,6 +3902,18 @@
         "type": "color",
         "variable": "var(--color-badge-outline-background-disabled)",
         "description": ""
+      },
+      "badge-disabled-opacity": {
+        "name": "badgeDisabledOpacity",
+        "path": [
+          "badge",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--badge-disabled-opacity)",
+        "description": ""
       }
     },
     "button": {
@@ -4332,6 +4344,18 @@
         "value": "oklch(0.546 0.215 262.89)",
         "type": "color",
         "variable": "var(--color-button-link-text)",
+        "description": ""
+      },
+      "button-disabled-opacity": {
+        "name": "buttonDisabledOpacity",
+        "path": [
+          "button",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--button-disabled-opacity)",
         "description": ""
       }
     },
@@ -6472,6 +6496,43 @@
         "type": "number",
         "variable": "var(--tabs-trigger-font-weight)",
         "description": ""
+      },
+      "tabs-trigger-disabled-opacity": {
+        "name": "tabsTriggerDisabledOpacity",
+        "path": [
+          "tabs",
+          "trigger",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--tabs-trigger-disabled-opacity)",
+        "description": ""
+      },
+      "tabs-trigger-ring-offset": {
+        "name": "tabsTriggerRingOffset",
+        "path": [
+          "tabs",
+          "trigger",
+          "ring-offset"
+        ],
+        "value": "oklch(0.991 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-ring-offset)",
+        "description": ""
+      },
+      "tabs-content-ring-offset": {
+        "name": "tabsContentRingOffset",
+        "path": [
+          "tabs",
+          "content",
+          "ring-offset"
+        ],
+        "value": "oklch(0.991 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-tabs-content-ring-offset)",
+        "description": ""
       }
     },
     "collapsible": {
@@ -6840,6 +6901,31 @@
         "value": 400,
         "type": "number",
         "variable": "var(--calendar-day-font-weight)",
+        "description": ""
+      },
+      "calendar-nav-button-disabled-opacity": {
+        "name": "calendarNavButtonDisabledOpacity",
+        "path": [
+          "calendar",
+          "nav-button",
+          "disabled",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--calendar-nav-button-disabled-opacity)",
+        "description": ""
+      },
+      "calendar-nav-button-ring-offset": {
+        "name": "calendarNavButtonRingOffset",
+        "path": [
+          "calendar",
+          "nav-button",
+          "ring-offset"
+        ],
+        "value": "oklch(0.991 0.003 264.51)",
+        "type": "color",
+        "variable": "var(--color-calendar-nav-button-ring-offset)",
         "description": ""
       }
     },
@@ -8178,6 +8264,19 @@
         "value": 600,
         "type": "number",
         "variable": "var(--form-fieldset-legend-font-weight)",
+        "description": ""
+      },
+      "form-label-error-text": {
+        "name": "formLabelErrorText",
+        "path": [
+          "form",
+          "label",
+          "error",
+          "text"
+        ],
+        "value": "oklch(0.505 0.19 27.5)",
+        "type": "color",
+        "variable": "var(--color-form-label-error-text)",
         "description": ""
       }
     },
@@ -12287,6 +12386,30 @@
         "value": "oklch(0.423 0.007 264.49)",
         "type": "color",
         "variable": "var(--color-feature-grid-description-text)",
+        "description": ""
+      },
+      "feature-grid-item-border-color": {
+        "name": "featureGridItemBorderColor",
+        "path": [
+          "feature-grid",
+          "item",
+          "border-color"
+        ],
+        "value": "oklch(0.786 0.004 271.24)",
+        "type": "color",
+        "variable": "var(--color-feature-grid-item-border-color)",
+        "description": ""
+      },
+      "feature-grid-item-border-color-hover": {
+        "name": "featureGridItemBorderColorHover",
+        "path": [
+          "feature-grid",
+          "item",
+          "border-color-hover"
+        ],
+        "value": "oklch(0.546 0.215 262.89)",
+        "type": "color",
+        "variable": "var(--color-feature-grid-item-border-color-hover)",
         "description": ""
       }
     },
