@@ -624,6 +624,14 @@
             "Dark": "{color.text.secondary}"
           }
         },
+        "card.header.description.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "card.footer.gap": {
           "$type": "spacing",
           "$value": "{space.100}",
@@ -2681,6 +2689,14 @@
             "Dark": "{typography.font-size.xl}"
           }
         },
+        "sheet.title.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.semibold}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.semibold}",
+            "Dark": "{typography.font-weight.semibold}"
+          }
+        },
         "sheet.description.font-size": {
           "$type": "number",
           "$value": "{typography.font-size.sm}",
@@ -2871,6 +2887,14 @@
           "valuesByMode": {
             "Light": "{space.200}",
             "Dark": "{space.200}"
+          }
+        },
+        "tabs.trigger.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
           }
         },
         "collapsible.radius": {
@@ -3169,12 +3193,28 @@
             "Dark": "{typography.font-size.sm}"
           }
         },
+        "toast.title.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.semibold}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.semibold}",
+            "Dark": "{typography.font-weight.semibold}"
+          }
+        },
         "toast.description.font-size": {
           "$type": "number",
           "$value": "{typography.font-size.sm}",
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
             "Dark": "{typography.font-size.sm}"
+          }
+        },
+        "toast.description.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
           }
         },
         "toast.action.height": {
@@ -3761,6 +3801,14 @@
             "Dark": "{typography.font-size.sm}"
           }
         },
+        "accordion.trigger.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          }
+        },
         "table.header.height": {
           "$type": "spacing",
           "$value": "{space.600}",
@@ -4236,6 +4284,54 @@
             "Dark": "{typography.font-size.sm}"
           }
         },
+        "alert.title.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          }
+        },
+        "alert.title.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.none}",
+          "valuesByMode": {
+            "Light": "{typography.line-height.none}",
+            "Dark": "{typography.line-height.none}"
+          }
+        },
+        "alert.title.letter-spacing": {
+          "$type": "dimension",
+          "$value": "{typography.tracking.tight}",
+          "valuesByMode": {
+            "Light": "{typography.tracking.tight}",
+            "Dark": "{typography.tracking.tight}"
+          }
+        },
+        "alert.description.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
+        "alert.description.opacity": {
+          "$type": "number",
+          "$value": "{opacity.90}",
+          "valuesByMode": {
+            "Light": "{opacity.90}",
+            "Dark": "{opacity.90}"
+          }
+        },
+        "alert.border-left-width": {
+          "$type": "dimension",
+          "$value": "{border-width.4}",
+          "valuesByMode": {
+            "Light": "{border-width.4}",
+            "Dark": "{border-width.4}"
+          }
+        },
         "label.required-margin-left": {
           "$type": "spacing",
           "$value": "{space.050}",
@@ -4418,6 +4514,14 @@
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
             "Dark": "{typography.font-size.sm}"
+          }
+        },
+        "toggle-group.item.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
           }
         },
         "toggle-group.item-height": {
@@ -4677,6 +4781,22 @@
             "Dark": "{space.0}"
           }
         },
+        "table.header.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          }
+        },
+        "table.footer.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          }
+        },
         "toast.close-button-padding": {
           "$type": "spacing",
           "$value": "{space.050}",
@@ -4781,6 +4901,14 @@
             "Dark": "{typography.font-size.sm}"
           }
         },
+        "toggle.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          }
+        },
         "toast.action.radius": {
           "$type": "dimension",
           "$value": "{border-radius.md}",
@@ -4845,6 +4973,14 @@
             "Dark": "{color.text.primary}"
           }
         },
+        "card.content.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "checkbox.border.color": {
           "$type": "color",
           "$value": "{color.border.primary}",
@@ -4859,6 +4995,14 @@
           "valuesByMode": {
             "Light": "{space.400}",
             "Dark": "{space.400}"
+          }
+        },
+        "sheet.close-button.opacity-hover": {
+          "$type": "number",
+          "$value": "{opacity.100}",
+          "valuesByMode": {
+            "Light": "{opacity.100}",
+            "Dark": "{opacity.100}"
           }
         },
         "dialog.close-button-offset": {
@@ -5205,6 +5349,30 @@
             "Dark": "{color.text.primary}"
           }
         },
+        "calendar.nav-button.opacity-hover": {
+          "$type": "number",
+          "$value": "{opacity.100}",
+          "valuesByMode": {
+            "Light": "{opacity.100}",
+            "Dark": "{opacity.100}"
+          }
+        },
+        "calendar.header.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          }
+        },
+        "calendar.nav-button.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          }
+        },
         "breadcrumb.link-focus": {
           "$type": "color",
           "$value": "{color.interactive.focus}",
@@ -5227,6 +5395,14 @@
           "valuesByMode": {
             "Light": "{color.interactive.secondary}",
             "Dark": "{color.interactive.secondary}"
+          }
+        },
+        "pagination.item.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
           }
         },
         "table.row-focus": {
@@ -5347,6 +5523,22 @@
           "valuesByMode": {
             "Light": "{space.050}",
             "Dark": "{space.050}"
+          }
+        },
+        "toast.close-button.opacity": {
+          "$type": "number",
+          "$value": "{opacity.0}",
+          "valuesByMode": {
+            "Light": "{opacity.0}",
+            "Dark": "{opacity.0}"
+          }
+        },
+        "toast.close-button.opacity-hover": {
+          "$type": "number",
+          "$value": "{opacity.100}",
+          "valuesByMode": {
+            "Light": "{opacity.100}",
+            "Dark": "{opacity.100}"
           }
         },
         "resizable.handle.height": {

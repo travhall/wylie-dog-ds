@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
 export const alertVariants = cva(
-  "relative w-full rounded-(--space-alert-radius) border border-l-4 px-(--space-alert-padding-x) py-(--space-alert-padding-y) text-(length:--font-size-alert-description-font-size)",
+  "relative w-full rounded-(--space-alert-radius) border border-l-(--space-alert-border-left-width) px-(--space-alert-padding-x) py-(--space-alert-padding-y) text-(length:--font-size-alert-description-font-size)",
   {
     variants: {
       variant: {
@@ -83,7 +83,7 @@ export const AlertTitle = React.forwardRef<HTMLHeadingElement, AlertTitleProps>(
     <h5
       ref={ref}
       className={cn(
-        "mb-(--space-alert-title-margin-bottom) text-(length:--font-size-alert-title-font-size) font-(--font-weight-medium) leading-(--line-height-none) tracking-(--space-typography-tracking-tight)",
+        "mb-(--space-alert-title-margin-bottom) text-(length:--font-size-alert-title-font-size) font-(--font-weight-alert-title-font-weight) leading-(--line-height-alert-title-line-height) tracking-(--space-alert-title-letter-spacing)",
         className
       )}
       {...props}
@@ -101,7 +101,7 @@ export const AlertDescription = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "text-(length:--font-size-alert-description-font-size) opacity-(--opacity-90)",
+      "text-(length:--font-size-alert-description-font-size) leading-(--line-height-alert-description-line-height) opacity-(--alert-description-opacity)",
       className
     )}
     {...props}

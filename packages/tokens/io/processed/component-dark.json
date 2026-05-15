@@ -307,6 +307,10 @@
     "$type": "color",
     "$value": "{color.text.secondary}"
   },
+  "card.header.description.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}"
+  },
   "card.footer.gap": {
     "$type": "spacing",
     "$value": "{space.100}"
@@ -1336,6 +1340,10 @@
     "$type": "number",
     "$value": "{typography.font-size.xl}"
   },
+  "sheet.title.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}"
+  },
   "sheet.description.font-size": {
     "$type": "number",
     "$value": "{typography.font-size.sm}"
@@ -1431,6 +1439,10 @@
   "tabs.content.margin-top": {
     "$type": "spacing",
     "$value": "{space.200}"
+  },
+  "tabs.trigger.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
   },
   "collapsible.radius": {
     "$type": "dimension",
@@ -1580,9 +1592,17 @@
     "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
+  "toast.title.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}"
+  },
   "toast.description.font-size": {
     "$type": "number",
     "$value": "{typography.font-size.sm}"
+  },
+  "toast.description.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
   },
   "toast.action.height": {
     "$type": "spacing",
@@ -1876,6 +1896,10 @@
     "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
+  "accordion.trigger.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
+  },
   "table.header.height": {
     "$type": "spacing",
     "$value": "{space.600}"
@@ -2115,6 +2139,30 @@
     "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
+  "alert.title.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
+  },
+  "alert.title.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.none}"
+  },
+  "alert.title.letter-spacing": {
+    "$type": "dimension",
+    "$value": "{typography.tracking.tight}"
+  },
+  "alert.description.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}"
+  },
+  "alert.description.opacity": {
+    "$type": "number",
+    "$value": "{opacity.90}"
+  },
+  "alert.border-left-width": {
+    "$type": "dimension",
+    "$value": "{border-width.4}"
+  },
   "label.required-margin-left": {
     "$type": "spacing",
     "$value": "{space.050}"
@@ -2206,6 +2254,10 @@
   "toggle-group.item-font-size": {
     "$type": "number",
     "$value": "{typography.font-size.sm}"
+  },
+  "toggle-group.item.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
   },
   "toggle-group.item-height": {
     "$type": "spacing",
@@ -2336,6 +2388,14 @@
     "$type": "spacing",
     "$value": "{space.0}"
   },
+  "table.header.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
+  },
+  "table.footer.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
+  },
   "toast.close-button-padding": {
     "$type": "spacing",
     "$value": "{space.050}"
@@ -2388,6 +2448,10 @@
     "$type": "number",
     "$value": "{typography.font-size.sm}"
   },
+  "toggle.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
+  },
   "toast.action.radius": {
     "$type": "dimension",
     "$value": "{border-radius.md}"
@@ -2420,6 +2484,10 @@
     "$type": "color",
     "$value": "{color.text.primary}"
   },
+  "card.content.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}"
+  },
   "checkbox.border.color": {
     "$type": "color",
     "$value": "{color.border.primary}"
@@ -2427,6 +2495,10 @@
   "sheet.close-button-offset": {
     "$type": "dimension",
     "$value": "{space.400}"
+  },
+  "sheet.close-button.opacity-hover": {
+    "$type": "number",
+    "$value": "{opacity.100}"
   },
   "dialog.close-button-offset": {
     "$type": "spacing",
@@ -2600,6 +2672,18 @@
     "$type": "color",
     "$value": "{color.text.primary}"
   },
+  "calendar.nav-button.opacity-hover": {
+    "$type": "number",
+    "$value": "{opacity.100}"
+  },
+  "calendar.header.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
+  },
+  "calendar.nav-button.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
+  },
   "breadcrumb.link-focus": {
     "$type": "color",
     "$value": "{color.interactive.focus}"
@@ -2611,6 +2695,10 @@
   "pagination.background-hover": {
     "$type": "color",
     "$value": "{color.interactive.secondary}"
+  },
+  "pagination.item.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
   },
   "table.row-focus": {
     "$type": "color",
@@ -2671,6 +2759,14 @@
   "toast.content.gap": {
     "$type": "spacing",
     "$value": "{space.050}"
+  },
+  "toast.close-button.opacity": {
+    "$type": "number",
+    "$value": "{opacity.0}"
+  },
+  "toast.close-button.opacity-hover": {
+    "$type": "number",
+    "$value": "{opacity.100}"
   },
   "resizable.handle.height": {
     "$type": "spacing",

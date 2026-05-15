@@ -60,7 +60,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
         "h-(--space-toast-action-height)",
         "px-(--space-toast-action-padding-x)",
         "text-(length:--font-size-toast-action-font-size)",
-        "font-(--font-weight-medium)",
+        "font-(--font-weight-toast-description-font-weight)",
         className
       )}
       {...props}
@@ -78,7 +78,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
     <button
       ref={ref}
       className={cn(
-        "absolute right-2 top-2 p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-(--opacity-0) transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-(--opacity-100) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) group-hover:opacity-(--opacity-100)",
+        "absolute right-2 top-2 p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-(--toast-close-button-opacity) transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-(--toast-close-button-opacity-hover) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) group-hover:opacity-(--toast-close-button-opacity-hover)",
         "rounded-(--space-toast-close-button-radius)",
         "h-(--space-toast-close-size) w-(--space-toast-close-size)",
         className
@@ -100,7 +100,7 @@ const ToastTitle = React.forwardRef<HTMLDivElement, ToastTitleProps>(
     <div
       ref={ref}
       className={cn(
-        "font-(--font-weight-semibold)",
+        "font-(--font-weight-toast-title-font-weight)",
         "text-(length:--font-size-toast-title-font-size)",
         className
       )}

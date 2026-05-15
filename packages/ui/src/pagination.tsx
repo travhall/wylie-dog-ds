@@ -52,7 +52,7 @@ const PaginationLink = ({
   <a
     aria-current={isActive ? "page" : undefined}
     className={cn(
-      "flex items-center justify-center whitespace-nowrap font-(--font-weight-medium) transition-colors",
+      "flex items-center justify-center whitespace-nowrap font-(--font-weight-pagination-item-font-weight) transition-colors",
       "h-(--space-pagination-item-size) min-w-(--space-pagination-item-size) px-(--space-pagination-item-padding-x)",
       "rounded-(--space-pagination-item-radius)",
       "text-(length:--font-size-pagination-item-font-size)",

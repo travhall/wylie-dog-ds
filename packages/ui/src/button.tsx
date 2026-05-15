@@ -65,7 +65,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {loading && (
           <span
             className={cn(
-              "inline-block w-(--space-icon-size-sm) h-(--space-icon-size-sm) border-(--border-width-2) border-current border-t-transparent rounded-(--border-radius-full) animate-spin",
+              "inline-block w-(--space-icon-size-sm) h-(--space-icon-size-sm) border-(length:--border-width-2) border-current border-t-transparent rounded-(--border-radius-full) animate-spin",
               size !== "icon" && "mr-2"
             )}
             aria-hidden="true"

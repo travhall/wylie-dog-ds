@@ -483,6 +483,8 @@ export const spacing = {
   "error-margin": "4px",
   "content-gap": "4px",
   "title-margin-bottom": "4px",
+  "title-letter-spacing": "-0.025em",
+  "border-left-width": "4px",
   "required-margin-left": "4px",
   "item-indicator-margin-right": "8px",
   "empty-padding-y": "24px",
@@ -510,7 +512,6 @@ export const spacing = {
   "link-radius": "4px",
   "button-rounded-full": "9999px",
   "action-radius": "4px",
-  "title-letter-spacing": "-0.025em",
   "close-button-offset": "16px",
   "close-button-icon-size": "16px",
   "fieldset-gap": "24px",
@@ -606,8 +607,15 @@ export const fontWeight = {
   "font-weight-black": 900,
   "font-weight": 500,
   "title-font-weight": 600,
+  "trigger-font-weight": 500,
+  "description-font-weight": 500,
+  "group-item-font-weight": 500,
+  "header-font-weight": 500,
+  "footer-font-weight": 500,
   "label-font-weight": 500,
-  "fieldset-legend-font-weight": 600
+  "fieldset-legend-font-weight": 600,
+  "nav-button-font-weight": 500,
+  "item-font-weight": 500
 };
 
 export const lineHeight = {
@@ -618,7 +626,10 @@ export const lineHeight = {
   "line-height-relaxed": 1.625,
   "line-height-loose": 2,
   "line-height": 1,
-  "title-line-height": 1
+  "header-description-line-height": 1.5,
+  "title-line-height": 1,
+  "description-line-height": 1.5,
+  "content-line-height": 1.5
 };
 
 export const duration = {

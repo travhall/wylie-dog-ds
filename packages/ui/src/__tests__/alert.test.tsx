@@ -209,9 +209,9 @@ describe("Alert", () => {
       expect(title).toHaveClass(
         "mb-(--space-alert-title-margin-bottom)",
         "text-(length:--font-size-alert-title-font-size)",
-        "font-(--font-weight-medium)",
-        "leading-(--line-height-none)",
-        "tracking-(--space-typography-tracking-tight)"
+        "font-(--font-weight-alert-title-font-weight)",
+        "leading-(--line-height-alert-title-line-height)",
+        "tracking-(--space-alert-title-letter-spacing)"
       );
     });
 
@@ -255,7 +255,8 @@ describe("Alert", () => {
       const description = screen.getByText("Description");
       expect(description).toHaveClass(
         "text-(length:--font-size-alert-description-font-size)",
-        "opacity-(--opacity-90)"
+        "leading-(--line-height-alert-description-line-height)",
+        "opacity-(--alert-description-opacity)"
       );
     });
 
@@ -293,7 +294,7 @@ describe("Alert", () => {
         "w-full",
         "rounded-(--space-alert-radius)",
         "border",
-        "border-l-4",
+        "border-l-(--space-alert-border-left-width)",
         "px-(--space-alert-padding-x)",
         "py-(--space-alert-padding-y)",
         "text-(length:--font-size-alert-description-font-size)"

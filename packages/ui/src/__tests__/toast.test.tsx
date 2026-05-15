@@ -180,7 +180,7 @@ describe("Toast", () => {
       const title = screen.getByText("Styled Title");
       expect(title).toHaveClass(
         "text-(length:--font-size-toast-title-font-size)",
-        "font-(--font-weight-semibold)"
+        "font-(--font-weight-toast-title-font-weight)"
       );
     });
   });

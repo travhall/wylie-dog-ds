@@ -46,7 +46,7 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between p-(--space-accordion-trigger-padding) text-(length:--font-size-accordion-trigger-font-size) font-(--font-weight-medium) transition-all",
+        "flex flex-1 items-center justify-between p-(--space-accordion-trigger-padding) text-(length:--font-size-accordion-trigger-font-size) font-(--font-weight-accordion-trigger-font-weight) transition-all",
         "text-(--color-accordion-trigger-text)",
         "hover:bg-(--color-accordion-trigger-hover) hover:text-(--color-accordion-trigger-text-hover)",
         "active:bg-(--color-accordion-trigger-pressed)",

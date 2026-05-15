@@ -4455,6 +4455,19 @@
         "variable": "var(--color-card-header-description-color)",
         "description": ""
       },
+      "card-header-description-line-height": {
+        "name": "cardHeaderDescriptionLineHeight",
+        "path": [
+          "card",
+          "header",
+          "description",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--card-header-description-line-height)",
+        "description": ""
+      },
       "card-footer-gap": {
         "name": "cardFooterGap",
         "path": [
@@ -4548,6 +4561,18 @@
         "value": "oklch(0.209 0.01 268.18)",
         "type": "color",
         "variable": "var(--color-card-content-color)",
+        "description": ""
+      },
+      "card-content-line-height": {
+        "name": "cardContentLineHeight",
+        "path": [
+          "card",
+          "content",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--card-content-line-height)",
         "description": ""
       },
       "card-background-hover": {
@@ -5015,6 +5040,77 @@
         "value": 14,
         "type": "number",
         "variable": "var(--alert-description-font-size)",
+        "description": ""
+      },
+      "alert-title-font-weight": {
+        "name": "alertTitleFontWeight",
+        "path": [
+          "alert",
+          "title",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--alert-title-font-weight)",
+        "description": ""
+      },
+      "alert-title-line-height": {
+        "name": "alertTitleLineHeight",
+        "path": [
+          "alert",
+          "title",
+          "line-height"
+        ],
+        "value": 100,
+        "type": "number",
+        "variable": "var(--alert-title-line-height)",
+        "description": ""
+      },
+      "alert-title-letter-spacing": {
+        "name": "alertTitleLetterSpacing",
+        "path": [
+          "alert",
+          "title",
+          "letter-spacing"
+        ],
+        "value": "-0.025em",
+        "type": "dimension",
+        "variable": "var(--alert-title-letter-spacing)",
+        "description": ""
+      },
+      "alert-description-line-height": {
+        "name": "alertDescriptionLineHeight",
+        "path": [
+          "alert",
+          "description",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--alert-description-line-height)",
+        "description": ""
+      },
+      "alert-description-opacity": {
+        "name": "alertDescriptionOpacity",
+        "path": [
+          "alert",
+          "description",
+          "opacity"
+        ],
+        "value": 0.9,
+        "type": "number",
+        "variable": "var(--alert-description-opacity)",
+        "description": ""
+      },
+      "alert-border-left-width": {
+        "name": "alertBorderLeftWidth",
+        "path": [
+          "alert",
+          "border-left-width"
+        ],
+        "value": "4px",
+        "type": "dimension",
+        "variable": "var(--alert-border-left-width)",
         "description": ""
       }
     },
@@ -6226,6 +6322,18 @@
         "type": "spacing",
         "variable": "var(--tabs-content-margin-top)",
         "description": ""
+      },
+      "tabs-trigger-font-weight": {
+        "name": "tabsTriggerFontWeight",
+        "path": [
+          "tabs",
+          "trigger",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--tabs-trigger-font-weight)",
+        "description": ""
       }
     },
     "collapsible": {
@@ -6523,6 +6631,42 @@
         "type": "color",
         "variable": "var(--color-calendar-nav-text-focus)",
         "description": ""
+      },
+      "calendar-nav-button-opacity-hover": {
+        "name": "calendarNavButtonOpacityHover",
+        "path": [
+          "calendar",
+          "nav-button",
+          "opacity-hover"
+        ],
+        "value": 1,
+        "type": "number",
+        "variable": "var(--calendar-nav-button-opacity-hover)",
+        "description": ""
+      },
+      "calendar-header-font-weight": {
+        "name": "calendarHeaderFontWeight",
+        "path": [
+          "calendar",
+          "header",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--calendar-header-font-weight)",
+        "description": ""
+      },
+      "calendar-nav-button-font-weight": {
+        "name": "calendarNavButtonFontWeight",
+        "path": [
+          "calendar",
+          "nav-button",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--calendar-nav-button-font-weight)",
+        "description": ""
       }
     },
     "accordion": {
@@ -6752,6 +6896,18 @@
         "value": 14,
         "type": "number",
         "variable": "var(--accordion-content-font-size)",
+        "description": ""
+      },
+      "accordion-trigger-font-weight": {
+        "name": "accordionTriggerFontWeight",
+        "path": [
+          "accordion",
+          "trigger",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--accordion-trigger-font-weight)",
         "description": ""
       }
     },
@@ -7922,6 +8078,18 @@
         "type": "color",
         "variable": "var(--color-pagination-background-hover)",
         "description": ""
+      },
+      "pagination-item-font-weight": {
+        "name": "paginationItemFontWeight",
+        "path": [
+          "pagination",
+          "item",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--pagination-item-font-weight)",
+        "description": ""
       }
     },
     "popover": {
@@ -8811,6 +8979,30 @@
         "variable": "var(--table-header-padding-right)",
         "description": ""
       },
+      "table-header-font-weight": {
+        "name": "tableHeaderFontWeight",
+        "path": [
+          "table",
+          "header",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--table-header-font-weight)",
+        "description": ""
+      },
+      "table-footer-font-weight": {
+        "name": "tableFooterFontWeight",
+        "path": [
+          "table",
+          "footer",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--table-footer-font-weight)",
+        "description": ""
+      },
       "table-row-focus": {
         "name": "tableRowFocus",
         "path": [
@@ -8924,6 +9116,18 @@
         "variable": "var(--toast-title-font-size)",
         "description": ""
       },
+      "toast-title-font-weight": {
+        "name": "toastTitleFontWeight",
+        "path": [
+          "toast",
+          "title",
+          "font-weight"
+        ],
+        "value": 600,
+        "type": "number",
+        "variable": "var(--toast-title-font-weight)",
+        "description": ""
+      },
       "toast-description-font-size": {
         "name": "toastDescriptionFontSize",
         "path": [
@@ -8934,6 +9138,18 @@
         "value": 14,
         "type": "number",
         "variable": "var(--toast-description-font-size)",
+        "description": ""
+      },
+      "toast-description-font-weight": {
+        "name": "toastDescriptionFontWeight",
+        "path": [
+          "toast",
+          "description",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--toast-description-font-weight)",
         "description": ""
       },
       "toast-action-height": {
@@ -9207,6 +9423,30 @@
         "type": "spacing",
         "variable": "var(--toast-content-gap)",
         "description": ""
+      },
+      "toast-close-button-opacity": {
+        "name": "toastCloseButtonOpacity",
+        "path": [
+          "toast",
+          "close-button",
+          "opacity"
+        ],
+        "value": 0,
+        "type": "number",
+        "variable": "var(--toast-close-button-opacity)",
+        "description": ""
+      },
+      "toast-close-button-opacity-hover": {
+        "name": "toastCloseButtonOpacityHover",
+        "path": [
+          "toast",
+          "close-button",
+          "opacity-hover"
+        ],
+        "value": 1,
+        "type": "number",
+        "variable": "var(--toast-close-button-opacity-hover)",
+        "description": ""
       }
     },
     "toggle": {
@@ -9363,6 +9603,17 @@
         "value": 14,
         "type": "number",
         "variable": "var(--toggle-font-size)",
+        "description": ""
+      },
+      "toggle-font-weight": {
+        "name": "toggleFontWeight",
+        "path": [
+          "toggle",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--toggle-font-weight)",
         "description": ""
       },
       "toggle-background-hover": {
@@ -10454,6 +10705,18 @@
         "variable": "var(--sheet-title-font-size)",
         "description": ""
       },
+      "sheet-title-font-weight": {
+        "name": "sheetTitleFontWeight",
+        "path": [
+          "sheet",
+          "title",
+          "font-weight"
+        ],
+        "value": 600,
+        "type": "number",
+        "variable": "var(--sheet-title-font-weight)",
+        "description": ""
+      },
       "sheet-description-font-size": {
         "name": "sheetDescriptionFontSize",
         "path": [
@@ -10510,6 +10773,18 @@
         "value": "32px",
         "type": "dimension",
         "variable": "var(--sheet-close-button-offset)",
+        "description": ""
+      },
+      "sheet-close-button-opacity-hover": {
+        "name": "sheetCloseButtonOpacityHover",
+        "path": [
+          "sheet",
+          "close-button",
+          "opacity-hover"
+        ],
+        "value": 1,
+        "type": "number",
+        "variable": "var(--sheet-close-button-opacity-hover)",
         "description": ""
       }
     },
@@ -11261,6 +11536,18 @@
         "value": 14,
         "type": "number",
         "variable": "var(--toggle-group-item-font-size)",
+        "description": ""
+      },
+      "toggle-group-item-font-weight": {
+        "name": "toggleGroupItemFontWeight",
+        "path": [
+          "toggle-group",
+          "item",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--toggle-group-item-font-weight)",
         "description": ""
       },
       "toggle-group-item-height": {

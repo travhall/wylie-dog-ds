@@ -110,7 +110,7 @@ export const SheetContent = React.forwardRef<
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="absolute right-(--space-sheet-close-button-offset) top-(--space-sheet-close-button-offset) rounded-(--space-sheet-close-button-radius) opacity-(--state-opacity-muted) ring-offset-background transition-opacity hover:opacity-(--opacity-100) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none">
+        <DialogPrimitive.Close className="absolute right-(--space-sheet-close-button-offset) top-(--space-sheet-close-button-offset) rounded-(--space-sheet-close-button-radius) opacity-(--state-opacity-muted) ring-offset-background transition-opacity hover:opacity-(--sheet-close-button-opacity-hover) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none">
           <svg
             className="h-(--space-icon-size-md) w-(--space-icon-size-md)"
             fill="none"
@@ -176,7 +176,7 @@ export const SheetTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "font-(--font-weight-semibold) text-(--color-text-primary)",
+      "font-(--font-weight-sheet-title-font-weight) text-(--color-text-primary)",
       "text-(length:--font-size-sheet-title-font-size)",
       className
     )}

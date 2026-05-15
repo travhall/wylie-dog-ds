@@ -21,6 +21,7 @@ export const cardVariants = cva(
         true: cn(
           "cursor-pointer transition-colors",
           "hover:bg-(--color-card-background-hover)",
+          "hover:border-(--color-card-border-hover)",
           "focus:bg-(--color-card-background-focus)",
           "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
           "active:bg-(--color-card-background-active)",
@@ -105,6 +106,7 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
       className={cn(
         "text-(length:--font-size-card-content-font-size)",
         "text-(--color-card-content-color)",
+        "leading-(--line-height-card-content-line-height)",
         className
       )}
       {...props}
@@ -124,6 +126,7 @@ export const CardDescription = React.forwardRef<
     className={cn(
       "text-(length:--font-size-card-header-description-font-size)",
       "text-(--color-card-header-description-color)",
+      "leading-(--line-height-card-header-description-line-height)",
       className
     )}
     {...props}

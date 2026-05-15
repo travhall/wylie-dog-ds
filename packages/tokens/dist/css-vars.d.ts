@@ -3,6 +3,7 @@
  */
 
 export type CssVarName =
+  | "--alert-description-opacity"
   | "--border-radius-2xl"
   | "--border-radius-full"
   | "--border-radius-lg"
@@ -15,6 +16,7 @@ export type CssVarName =
   | "--border-width-2"
   | "--border-width-4"
   | "--border-width-8"
+  | "--calendar-nav-button-opacity-hover"
   | "--color-accent-active"
   | "--color-accent-highlight"
   | "--color-accent-hover"
@@ -584,10 +586,14 @@ export type CssVarName =
   | "--font-size-tooltip-font-size"
   | "--font-size-xl"
   | "--font-size-xs"
+  | "--font-weight-accordion-trigger-font-weight"
+  | "--font-weight-alert-title-font-weight"
   | "--font-weight-badge-font-weight"
   | "--font-weight-black"
   | "--font-weight-bold"
   | "--font-weight-button-font-weight"
+  | "--font-weight-calendar-header-font-weight"
+  | "--font-weight-calendar-nav-button-font-weight"
   | "--font-weight-card-title-font-weight"
   | "--font-weight-extrabold"
   | "--font-weight-extralight"
@@ -595,10 +601,23 @@ export type CssVarName =
   | "--font-weight-form-label-font-weight"
   | "--font-weight-light"
   | "--font-weight-medium"
+  | "--font-weight-pagination-item-font-weight"
   | "--font-weight-regular"
   | "--font-weight-semibold"
+  | "--font-weight-sheet-title-font-weight"
+  | "--font-weight-table-footer-font-weight"
+  | "--font-weight-table-header-font-weight"
+  | "--font-weight-tabs-trigger-font-weight"
+  | "--font-weight-toast-description-font-weight"
+  | "--font-weight-toast-title-font-weight"
+  | "--font-weight-toggle-font-weight"
+  | "--font-weight-toggle-group-item-font-weight"
+  | "--line-height-alert-description-line-height"
+  | "--line-height-alert-title-line-height"
   | "--line-height-badge-line-height"
   | "--line-height-button-line-height"
+  | "--line-height-card-content-line-height"
+  | "--line-height-card-header-description-line-height"
   | "--line-height-card-title-line-height"
   | "--line-height-loose"
   | "--line-height-none"
@@ -637,6 +656,7 @@ export type CssVarName =
   | "--shadow-none"
   | "--shadow-sm"
   | "--shadow-xl"
+  | "--sheet-close-button-opacity-hover"
   | "--space-0"
   | "--space-050"
   | "--space-100"
@@ -662,6 +682,7 @@ export type CssVarName =
   | "--space-accordion-item-border-width"
   | "--space-accordion-trigger-icon-size"
   | "--space-accordion-trigger-padding"
+  | "--space-alert-border-left-width"
   | "--space-alert-dialog-content-gap"
   | "--space-alert-dialog-content-padding"
   | "--space-alert-dialog-content-radius"
@@ -670,6 +691,7 @@ export type CssVarName =
   | "--space-alert-padding-x"
   | "--space-alert-padding-y"
   | "--space-alert-radius"
+  | "--space-alert-title-letter-spacing"
   | "--space-alert-title-margin-bottom"
   | "--space-avatar-rounded"
   | "--space-avatar-size-lg"
@@ -1036,6 +1058,8 @@ export type CssVarName =
   | "--state-opacity-muted"
   | "--state-opacity-overlay"
   | "--state-opacity-subtle"
+  | "--toast-close-button-opacity"
+  | "--toast-close-button-opacity-hover"
   | "--transition-easing-default"
   | "--transition-easing-in"
   | "--transition-easing-in-out"
@@ -1067,6 +1091,7 @@ export type CssVarName =
 export type CssVarKey = keyof typeof cssVars;
 
 export declare const cssVars: Readonly<{
+  "alertDescriptionOpacity": "--alert-description-opacity";
   "borderRadius2xl": "--border-radius-2xl";
   "borderRadiusFull": "--border-radius-full";
   "borderRadiusLg": "--border-radius-lg";
@@ -1079,6 +1104,7 @@ export declare const cssVars: Readonly<{
   "borderWidth2": "--border-width-2";
   "borderWidth4": "--border-width-4";
   "borderWidth8": "--border-width-8";
+  "calendarNavButtonOpacityHover": "--calendar-nav-button-opacity-hover";
   "colorAccentActive": "--color-accent-active";
   "colorAccentHighlight": "--color-accent-highlight";
   "colorAccentHover": "--color-accent-hover";
@@ -1648,10 +1674,14 @@ export declare const cssVars: Readonly<{
   "fontSizeTooltipFontSize": "--font-size-tooltip-font-size";
   "fontSizeXl": "--font-size-xl";
   "fontSizeXs": "--font-size-xs";
+  "fontWeightAccordionTriggerFontWeight": "--font-weight-accordion-trigger-font-weight";
+  "fontWeightAlertTitleFontWeight": "--font-weight-alert-title-font-weight";
   "fontWeightBadgeFontWeight": "--font-weight-badge-font-weight";
   "fontWeightBlack": "--font-weight-black";
   "fontWeightBold": "--font-weight-bold";
   "fontWeightButtonFontWeight": "--font-weight-button-font-weight";
+  "fontWeightCalendarHeaderFontWeight": "--font-weight-calendar-header-font-weight";
+  "fontWeightCalendarNavButtonFontWeight": "--font-weight-calendar-nav-button-font-weight";
   "fontWeightCardTitleFontWeight": "--font-weight-card-title-font-weight";
   "fontWeightExtrabold": "--font-weight-extrabold";
   "fontWeightExtralight": "--font-weight-extralight";
@@ -1659,10 +1689,23 @@ export declare const cssVars: Readonly<{
   "fontWeightFormLabelFontWeight": "--font-weight-form-label-font-weight";
   "fontWeightLight": "--font-weight-light";
   "fontWeightMedium": "--font-weight-medium";
+  "fontWeightPaginationItemFontWeight": "--font-weight-pagination-item-font-weight";
   "fontWeightRegular": "--font-weight-regular";
   "fontWeightSemibold": "--font-weight-semibold";
+  "fontWeightSheetTitleFontWeight": "--font-weight-sheet-title-font-weight";
+  "fontWeightTableFooterFontWeight": "--font-weight-table-footer-font-weight";
+  "fontWeightTableHeaderFontWeight": "--font-weight-table-header-font-weight";
+  "fontWeightTabsTriggerFontWeight": "--font-weight-tabs-trigger-font-weight";
+  "fontWeightToastDescriptionFontWeight": "--font-weight-toast-description-font-weight";
+  "fontWeightToastTitleFontWeight": "--font-weight-toast-title-font-weight";
+  "fontWeightToggleFontWeight": "--font-weight-toggle-font-weight";
+  "fontWeightToggleGroupItemFontWeight": "--font-weight-toggle-group-item-font-weight";
+  "lineHeightAlertDescriptionLineHeight": "--line-height-alert-description-line-height";
+  "lineHeightAlertTitleLineHeight": "--line-height-alert-title-line-height";
   "lineHeightBadgeLineHeight": "--line-height-badge-line-height";
   "lineHeightButtonLineHeight": "--line-height-button-line-height";
+  "lineHeightCardContentLineHeight": "--line-height-card-content-line-height";
+  "lineHeightCardHeaderDescriptionLineHeight": "--line-height-card-header-description-line-height";
   "lineHeightCardTitleLineHeight": "--line-height-card-title-line-height";
   "lineHeightLoose": "--line-height-loose";
   "lineHeightNone": "--line-height-none";
@@ -1701,6 +1744,7 @@ export declare const cssVars: Readonly<{
   "shadowNone": "--shadow-none";
   "shadowSm": "--shadow-sm";
   "shadowXl": "--shadow-xl";
+  "sheetCloseButtonOpacityHover": "--sheet-close-button-opacity-hover";
   "space0": "--space-0";
   "space050": "--space-050";
   "space100": "--space-100";
@@ -1726,6 +1770,7 @@ export declare const cssVars: Readonly<{
   "spaceAccordionItemBorderWidth": "--space-accordion-item-border-width";
   "spaceAccordionTriggerIconSize": "--space-accordion-trigger-icon-size";
   "spaceAccordionTriggerPadding": "--space-accordion-trigger-padding";
+  "spaceAlertBorderLeftWidth": "--space-alert-border-left-width";
   "spaceAlertDialogContentGap": "--space-alert-dialog-content-gap";
   "spaceAlertDialogContentPadding": "--space-alert-dialog-content-padding";
   "spaceAlertDialogContentRadius": "--space-alert-dialog-content-radius";
@@ -1734,6 +1779,7 @@ export declare const cssVars: Readonly<{
   "spaceAlertPaddingX": "--space-alert-padding-x";
   "spaceAlertPaddingY": "--space-alert-padding-y";
   "spaceAlertRadius": "--space-alert-radius";
+  "spaceAlertTitleLetterSpacing": "--space-alert-title-letter-spacing";
   "spaceAlertTitleMarginBottom": "--space-alert-title-margin-bottom";
   "spaceAvatarRounded": "--space-avatar-rounded";
   "spaceAvatarSizeLg": "--space-avatar-size-lg";
@@ -2100,6 +2146,8 @@ export declare const cssVars: Readonly<{
   "stateOpacityMuted": "--state-opacity-muted";
   "stateOpacityOverlay": "--state-opacity-overlay";
   "stateOpacitySubtle": "--state-opacity-subtle";
+  "toastCloseButtonOpacity": "--toast-close-button-opacity";
+  "toastCloseButtonOpacityHover": "--toast-close-button-opacity-hover";
   "transitionEasingDefault": "--transition-easing-default";
   "transitionEasingIn": "--transition-easing-in";
   "transitionEasingInOut": "--transition-easing-in-out";

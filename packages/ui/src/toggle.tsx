@@ -5,7 +5,7 @@ import { cn } from "./lib/utils";
 
 export const toggleVariants = cva(
   cn(
-    "inline-flex items-center justify-center rounded-(--space-toggle-radius) text-(length:--font-size-toggle-font-size) font-(--font-weight-medium) transition-colors",
+    "inline-flex items-center justify-center rounded-(--space-toggle-radius) text-(length:--font-size-toggle-font-size) font-(--font-weight-toggle-font-weight) transition-colors",
     "hover:bg-(--color-toggle-background-hover) hover:text-(--color-toggle-text-hover)",
     "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(--space-focus-ring-offset)",
     "disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)",
