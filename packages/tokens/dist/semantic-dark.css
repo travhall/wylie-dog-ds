@@ -599,6 +599,8 @@
   --space-accordion-content-padding: 12px;
   --font-size-accordion-content-font-size: 14px;
   --font-weight-accordion-trigger-font-weight: 500;
+  --line-height-accordion-trigger-line-height: 1;
+  --line-height-accordion-content-line-height: 1.5;
   --space-table-header-height: 48px;
   --space-toggle-size-default-height: 40px;
   --space-toggle-size-default-padding-x: 12px;
@@ -652,6 +654,7 @@
   --space-alert-dialog-content-radius: 8px;
   --font-size-alert-dialog-title-font-size: 18px;
   --font-size-alert-dialog-description-font-size: 14px;
+  --font-weight-alert-dialog-title-font-weight: 600;
   --space-alert-padding-x: 16px;
   --space-alert-padding-y: 12px;
   --space-alert-title-margin-bottom: 4px;
@@ -719,6 +722,11 @@
   --space-resizable-handle-radius: 4px;
   --space-sheet-close-button-radius: 4px;
   --space-avatar-rounded: 9999px;
+  --font-weight-avatar-fallback-font-weight: 500;
+  --font-size-avatar-fallback-font-size-sm: 12px;
+  --font-size-avatar-fallback-font-size-md: 14px;
+  --font-size-avatar-fallback-font-size-lg: 16px;
+  --font-size-avatar-fallback-font-size-xl: 20px;
   --space-table-header-padding-right: 0px;
   --font-weight-table-header-font-weight: 500;
   --font-weight-table-footer-font-weight: 500;
@@ -791,9 +799,13 @@
   --color-calendar-day-text-focus: oklch(0.952 0.003 264.51);
   --color-calendar-nav-focus: oklch(0.282 0.087 267.94);
   --color-calendar-nav-text-focus: oklch(0.952 0.003 264.51);
+  --calendar-nav-button-opacity: 0.5;
   --calendar-nav-button-opacity-hover: 1;
   --font-weight-calendar-header-font-weight: 500;
   --font-weight-calendar-nav-button-font-weight: 500;
+  --font-weight-calendar-day-header-font-weight: 400;
+  --font-weight-calendar-day-font-weight: 400;
+  --font-weight-breadcrumb-page-font-weight: 400;
   --color-breadcrumb-link-focus: oklch(0.282 0.087 267.94);
   --color-breadcrumb-link-disabled: oklch(0.52 0.007 264.5);
   --color-pagination-background-hover: oklch(0.321 0.009 268.37);

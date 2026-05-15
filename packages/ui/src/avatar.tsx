@@ -89,12 +89,21 @@ export interface AvatarFallbackProps extends React.HTMLAttributes<HTMLDivElement
   name?: string;
   /** Custom initials - if not provided, will be generated from name */
   initials?: string;
+  /** Must match the size passed to the parent Avatar */
+  size?: "sm" | "md" | "lg" | "xl";
 }
+
+const fallbackFontSizeMap = {
+  sm: "text-(length:--font-size-avatar-fallback-font-size-sm)",
+  md: "text-(length:--font-size-avatar-fallback-font-size-md)",
+  lg: "text-(length:--font-size-avatar-fallback-font-size-lg)",
+  xl: "text-(length:--font-size-avatar-fallback-font-size-xl)",
+};
 
 export const AvatarFallback = React.forwardRef<
   HTMLDivElement,
   AvatarFallbackProps
->(({ className, name, initials, children, ...props }, ref) => {
+>(({ className, name, initials, children, size = "md", ...props }, ref) => {
   // Generate initials from name if not provided
   const getInitials = () => {
     if (initials) return initials;
@@ -115,7 +124,8 @@ export const AvatarFallback = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "flex h-full w-full items-center justify-center rounded-(--space-avatar-rounded) bg-(--color-avatar-fallback-background) text-(--color-avatar-fallback-text) font-medium",
+        "flex h-full w-full items-center justify-center rounded-(--space-avatar-rounded) bg-(--color-avatar-fallback-background) text-(--color-avatar-fallback-text) font-(--font-weight-avatar-fallback-font-weight)",
+        fallbackFontSizeMap[size],
         className
       )}
       aria-hidden="true" // Fallback is decorative since parent Avatar has aria-label

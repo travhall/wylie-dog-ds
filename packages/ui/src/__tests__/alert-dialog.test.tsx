@@ -400,7 +400,9 @@ describe("AlertDialog", () => {
         expect(title).toHaveClass(
           "text-(length:--font-size-alert-dialog-title-font-size)"
         );
-        expect(title).toHaveClass("font-semibold");
+        expect(title).toHaveClass(
+          "font-(--font-weight-alert-dialog-title-font-weight)"
+        );
       });
     });
 

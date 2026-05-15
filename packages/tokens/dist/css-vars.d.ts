@@ -16,6 +16,7 @@ export type CssVarName =
   | "--border-width-2"
   | "--border-width-4"
   | "--border-width-8"
+  | "--calendar-nav-button-opacity"
   | "--calendar-nav-button-opacity-hover"
   | "--color-accent-active"
   | "--color-accent-highlight"
@@ -519,6 +520,10 @@ export type CssVarName =
   | "--font-size-alert-dialog-description-font-size"
   | "--font-size-alert-dialog-title-font-size"
   | "--font-size-alert-title-font-size"
+  | "--font-size-avatar-fallback-font-size-lg"
+  | "--font-size-avatar-fallback-font-size-md"
+  | "--font-size-avatar-fallback-font-size-sm"
+  | "--font-size-avatar-fallback-font-size-xl"
   | "--font-size-badge-font-size-lg"
   | "--font-size-badge-font-size-md"
   | "--font-size-badge-font-size-sm"
@@ -587,11 +592,16 @@ export type CssVarName =
   | "--font-size-xl"
   | "--font-size-xs"
   | "--font-weight-accordion-trigger-font-weight"
+  | "--font-weight-alert-dialog-title-font-weight"
   | "--font-weight-alert-title-font-weight"
+  | "--font-weight-avatar-fallback-font-weight"
   | "--font-weight-badge-font-weight"
   | "--font-weight-black"
   | "--font-weight-bold"
+  | "--font-weight-breadcrumb-page-font-weight"
   | "--font-weight-button-font-weight"
+  | "--font-weight-calendar-day-font-weight"
+  | "--font-weight-calendar-day-header-font-weight"
   | "--font-weight-calendar-header-font-weight"
   | "--font-weight-calendar-nav-button-font-weight"
   | "--font-weight-card-title-font-weight"
@@ -612,6 +622,8 @@ export type CssVarName =
   | "--font-weight-toast-title-font-weight"
   | "--font-weight-toggle-font-weight"
   | "--font-weight-toggle-group-item-font-weight"
+  | "--line-height-accordion-content-line-height"
+  | "--line-height-accordion-trigger-line-height"
   | "--line-height-alert-description-line-height"
   | "--line-height-alert-title-line-height"
   | "--line-height-badge-line-height"
@@ -1104,6 +1116,7 @@ export declare const cssVars: Readonly<{
   "borderWidth2": "--border-width-2";
   "borderWidth4": "--border-width-4";
   "borderWidth8": "--border-width-8";
+  "calendarNavButtonOpacity": "--calendar-nav-button-opacity";
   "calendarNavButtonOpacityHover": "--calendar-nav-button-opacity-hover";
   "colorAccentActive": "--color-accent-active";
   "colorAccentHighlight": "--color-accent-highlight";
@@ -1607,6 +1620,10 @@ export declare const cssVars: Readonly<{
   "fontSizeAlertDialogDescriptionFontSize": "--font-size-alert-dialog-description-font-size";
   "fontSizeAlertDialogTitleFontSize": "--font-size-alert-dialog-title-font-size";
   "fontSizeAlertTitleFontSize": "--font-size-alert-title-font-size";
+  "fontSizeAvatarFallbackFontSizeLg": "--font-size-avatar-fallback-font-size-lg";
+  "fontSizeAvatarFallbackFontSizeMd": "--font-size-avatar-fallback-font-size-md";
+  "fontSizeAvatarFallbackFontSizeSm": "--font-size-avatar-fallback-font-size-sm";
+  "fontSizeAvatarFallbackFontSizeXl": "--font-size-avatar-fallback-font-size-xl";
   "fontSizeBadgeFontSizeLg": "--font-size-badge-font-size-lg";
   "fontSizeBadgeFontSizeMd": "--font-size-badge-font-size-md";
   "fontSizeBadgeFontSizeSm": "--font-size-badge-font-size-sm";
@@ -1675,11 +1692,16 @@ export declare const cssVars: Readonly<{
   "fontSizeXl": "--font-size-xl";
   "fontSizeXs": "--font-size-xs";
   "fontWeightAccordionTriggerFontWeight": "--font-weight-accordion-trigger-font-weight";
+  "fontWeightAlertDialogTitleFontWeight": "--font-weight-alert-dialog-title-font-weight";
   "fontWeightAlertTitleFontWeight": "--font-weight-alert-title-font-weight";
+  "fontWeightAvatarFallbackFontWeight": "--font-weight-avatar-fallback-font-weight";
   "fontWeightBadgeFontWeight": "--font-weight-badge-font-weight";
   "fontWeightBlack": "--font-weight-black";
   "fontWeightBold": "--font-weight-bold";
+  "fontWeightBreadcrumbPageFontWeight": "--font-weight-breadcrumb-page-font-weight";
   "fontWeightButtonFontWeight": "--font-weight-button-font-weight";
+  "fontWeightCalendarDayFontWeight": "--font-weight-calendar-day-font-weight";
+  "fontWeightCalendarDayHeaderFontWeight": "--font-weight-calendar-day-header-font-weight";
   "fontWeightCalendarHeaderFontWeight": "--font-weight-calendar-header-font-weight";
   "fontWeightCalendarNavButtonFontWeight": "--font-weight-calendar-nav-button-font-weight";
   "fontWeightCardTitleFontWeight": "--font-weight-card-title-font-weight";
@@ -1700,6 +1722,8 @@ export declare const cssVars: Readonly<{
   "fontWeightToastTitleFontWeight": "--font-weight-toast-title-font-weight";
   "fontWeightToggleFontWeight": "--font-weight-toggle-font-weight";
   "fontWeightToggleGroupItemFontWeight": "--font-weight-toggle-group-item-font-weight";
+  "lineHeightAccordionContentLineHeight": "--line-height-accordion-content-line-height";
+  "lineHeightAccordionTriggerLineHeight": "--line-height-accordion-trigger-line-height";
   "lineHeightAlertDescriptionLineHeight": "--line-height-alert-description-line-height";
   "lineHeightAlertTitleLineHeight": "--line-height-alert-title-line-height";
   "lineHeightBadgeLineHeight": "--line-height-badge-line-height";

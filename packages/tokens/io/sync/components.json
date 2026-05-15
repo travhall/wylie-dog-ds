@@ -3809,6 +3809,22 @@
             "Dark": "{typography.font-weight.medium}"
           }
         },
+        "accordion.trigger.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.none}",
+          "valuesByMode": {
+            "Light": "{typography.line-height.none}",
+            "Dark": "{typography.line-height.none}"
+          }
+        },
+        "accordion.content.line-height": {
+          "$type": "number",
+          "$value": "{typography.line-height.normal}",
+          "valuesByMode": {
+            "Light": "{typography.line-height.normal}",
+            "Dark": "{typography.line-height.normal}"
+          }
+        },
         "table.header.height": {
           "$type": "spacing",
           "$value": "{space.600}",
@@ -4234,6 +4250,14 @@
           "valuesByMode": {
             "Light": "{typography.font-size.sm}",
             "Dark": "{typography.font-size.sm}"
+          }
+        },
+        "alert-dialog.title.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.semibold}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.semibold}",
+            "Dark": "{typography.font-weight.semibold}"
           }
         },
         "alert.padding-x": {
@@ -4771,6 +4795,46 @@
           "valuesByMode": {
             "Light": "{border-radius.full}",
             "Dark": "{border-radius.full}"
+          }
+        },
+        "avatar.fallback.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.medium}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.medium}",
+            "Dark": "{typography.font-weight.medium}"
+          }
+        },
+        "avatar.fallback.font-size.sm": {
+          "$type": "number",
+          "$value": "{typography.font-size.xs}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.xs}",
+            "Dark": "{typography.font-size.xs}"
+          }
+        },
+        "avatar.fallback.font-size.md": {
+          "$type": "number",
+          "$value": "{typography.font-size.sm}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.sm}",
+            "Dark": "{typography.font-size.sm}"
+          }
+        },
+        "avatar.fallback.font-size.lg": {
+          "$type": "number",
+          "$value": "{typography.font-size.base}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.base}",
+            "Dark": "{typography.font-size.base}"
+          }
+        },
+        "avatar.fallback.font-size.xl": {
+          "$type": "number",
+          "$value": "{typography.font-size.xl}",
+          "valuesByMode": {
+            "Light": "{typography.font-size.xl}",
+            "Dark": "{typography.font-size.xl}"
           }
         },
         "table.header-padding-right": {
@@ -5349,6 +5413,14 @@
             "Dark": "{color.text.primary}"
           }
         },
+        "calendar.nav-button.opacity": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "valuesByMode": {
+            "Light": "{opacity.50}",
+            "Dark": "{opacity.50}"
+          }
+        },
         "calendar.nav-button.opacity-hover": {
           "$type": "number",
           "$value": "{opacity.100}",
@@ -5371,6 +5443,30 @@
           "valuesByMode": {
             "Light": "{typography.font-weight.medium}",
             "Dark": "{typography.font-weight.medium}"
+          }
+        },
+        "calendar.day-header.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.regular}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.regular}",
+            "Dark": "{typography.font-weight.regular}"
+          }
+        },
+        "calendar.day.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.regular}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.regular}",
+            "Dark": "{typography.font-weight.regular}"
+          }
+        },
+        "breadcrumb.page.font-weight": {
+          "$type": "number",
+          "$value": "{typography.font-weight.regular}",
+          "valuesByMode": {
+            "Light": "{typography.font-weight.regular}",
+            "Dark": "{typography.font-weight.regular}"
           }
         },
         "breadcrumb.link-focus": {

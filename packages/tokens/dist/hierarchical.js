@@ -590,6 +590,10 @@ export const fontSize = {
   "menu-trigger-font-size": "14px",
   "group-item-font-size": "14px",
   "day-font-size": "12px",
+  "fallback-font-size-sm": "12px",
+  "fallback-font-size-md": "14px",
+  "fallback-font-size-lg": "16px",
+  "fallback-font-size-xl": "20px",
   "label-font-size": "14px",
   "hint-font-size": "12px",
   "error-font-size": "12px",
@@ -609,12 +613,17 @@ export const fontWeight = {
   "title-font-weight": 600,
   "trigger-font-weight": 500,
   "description-font-weight": 500,
+  "dialog-title-font-weight": 600,
   "group-item-font-weight": 500,
+  "fallback-font-weight": 500,
   "header-font-weight": 500,
   "footer-font-weight": 500,
   "label-font-weight": 500,
   "fieldset-legend-font-weight": 600,
   "nav-button-font-weight": 500,
+  "day-header-font-weight": 400,
+  "day-font-weight": 400,
+  "page-font-weight": 400,
   "item-font-weight": 500
 };
 
@@ -627,9 +636,10 @@ export const lineHeight = {
   "line-height-loose": 2,
   "line-height": 1,
   "header-description-line-height": 1.5,
+  "trigger-line-height": 1,
+  "content-line-height": 1.5,
   "title-line-height": 1,
-  "description-line-height": 1.5,
-  "content-line-height": 1.5
+  "description-line-height": 1.5
 };
 
 export const duration = {

@@ -1900,6 +1900,14 @@
     "$type": "number",
     "$value": "{typography.font-weight.medium}"
   },
+  "accordion.trigger.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.none}"
+  },
+  "accordion.content.line-height": {
+    "$type": "number",
+    "$value": "{typography.line-height.normal}"
+  },
   "table.header.height": {
     "$type": "spacing",
     "$value": "{space.600}"
@@ -2114,6 +2122,10 @@
   "alert-dialog.description-font-size": {
     "$type": "number",
     "$value": "{typography.font-size.sm}"
+  },
+  "alert-dialog.title.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.semibold}"
   },
   "alert.padding-x": {
     "$type": "spacing",
@@ -2383,6 +2395,26 @@
   "avatar.rounded": {
     "$type": "spacing",
     "$value": "{border-radius.full}"
+  },
+  "avatar.fallback.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.medium}"
+  },
+  "avatar.fallback.font-size.sm": {
+    "$type": "number",
+    "$value": "{typography.font-size.xs}"
+  },
+  "avatar.fallback.font-size.md": {
+    "$type": "number",
+    "$value": "{typography.font-size.sm}"
+  },
+  "avatar.fallback.font-size.lg": {
+    "$type": "number",
+    "$value": "{typography.font-size.base}"
+  },
+  "avatar.fallback.font-size.xl": {
+    "$type": "number",
+    "$value": "{typography.font-size.xl}"
   },
   "table.header-padding-right": {
     "$type": "spacing",
@@ -2672,6 +2704,10 @@
     "$type": "color",
     "$value": "{color.text.primary}"
   },
+  "calendar.nav-button.opacity": {
+    "$type": "number",
+    "$value": "{opacity.50}"
+  },
   "calendar.nav-button.opacity-hover": {
     "$type": "number",
     "$value": "{opacity.100}"
@@ -2683,6 +2719,18 @@
   "calendar.nav-button.font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.medium}"
+  },
+  "calendar.day-header.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.regular}"
+  },
+  "calendar.day.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.regular}"
+  },
+  "breadcrumb.page.font-weight": {
+    "$type": "number",
+    "$value": "{typography.font-weight.regular}"
   },
   "breadcrumb.link-focus": {
     "$type": "color",

@@ -6632,6 +6632,18 @@
         "variable": "var(--color-calendar-nav-text-focus)",
         "description": ""
       },
+      "calendar-nav-button-opacity": {
+        "name": "calendarNavButtonOpacity",
+        "path": [
+          "calendar",
+          "nav-button",
+          "opacity"
+        ],
+        "value": 0.5,
+        "type": "number",
+        "variable": "var(--calendar-nav-button-opacity)",
+        "description": ""
+      },
       "calendar-nav-button-opacity-hover": {
         "name": "calendarNavButtonOpacityHover",
         "path": [
@@ -6666,6 +6678,30 @@
         "value": 500,
         "type": "number",
         "variable": "var(--calendar-nav-button-font-weight)",
+        "description": ""
+      },
+      "calendar-day-header-font-weight": {
+        "name": "calendarDayHeaderFontWeight",
+        "path": [
+          "calendar",
+          "day-header",
+          "font-weight"
+        ],
+        "value": 400,
+        "type": "number",
+        "variable": "var(--calendar-day-header-font-weight)",
+        "description": ""
+      },
+      "calendar-day-font-weight": {
+        "name": "calendarDayFontWeight",
+        "path": [
+          "calendar",
+          "day",
+          "font-weight"
+        ],
+        "value": 400,
+        "type": "number",
+        "variable": "var(--calendar-day-font-weight)",
         "description": ""
       }
     },
@@ -6909,6 +6945,30 @@
         "type": "number",
         "variable": "var(--accordion-trigger-font-weight)",
         "description": ""
+      },
+      "accordion-trigger-line-height": {
+        "name": "accordionTriggerLineHeight",
+        "path": [
+          "accordion",
+          "trigger",
+          "line-height"
+        ],
+        "value": 100,
+        "type": "number",
+        "variable": "var(--accordion-trigger-line-height)",
+        "description": ""
+      },
+      "accordion-content-line-height": {
+        "name": "accordionContentLineHeight",
+        "path": [
+          "accordion",
+          "content",
+          "line-height"
+        ],
+        "value": 150,
+        "type": "number",
+        "variable": "var(--accordion-content-line-height)",
+        "description": ""
       }
     },
     "avatar": {
@@ -7013,6 +7073,70 @@
         "value": "9999px",
         "type": "spacing",
         "variable": "var(--avatar-rounded)",
+        "description": ""
+      },
+      "avatar-fallback-font-weight": {
+        "name": "avatarFallbackFontWeight",
+        "path": [
+          "avatar",
+          "fallback",
+          "font-weight"
+        ],
+        "value": 500,
+        "type": "number",
+        "variable": "var(--avatar-fallback-font-weight)",
+        "description": ""
+      },
+      "avatar-fallback-font-size-sm": {
+        "name": "avatarFallbackFontSizeSm",
+        "path": [
+          "avatar",
+          "fallback",
+          "font-size",
+          "sm"
+        ],
+        "value": 12,
+        "type": "number",
+        "variable": "var(--avatar-fallback-font-size-sm)",
+        "description": ""
+      },
+      "avatar-fallback-font-size-md": {
+        "name": "avatarFallbackFontSizeMd",
+        "path": [
+          "avatar",
+          "fallback",
+          "font-size",
+          "md"
+        ],
+        "value": 14,
+        "type": "number",
+        "variable": "var(--avatar-fallback-font-size-md)",
+        "description": ""
+      },
+      "avatar-fallback-font-size-lg": {
+        "name": "avatarFallbackFontSizeLg",
+        "path": [
+          "avatar",
+          "fallback",
+          "font-size",
+          "lg"
+        ],
+        "value": 16,
+        "type": "number",
+        "variable": "var(--avatar-fallback-font-size-lg)",
+        "description": ""
+      },
+      "avatar-fallback-font-size-xl": {
+        "name": "avatarFallbackFontSizeXl",
+        "path": [
+          "avatar",
+          "fallback",
+          "font-size",
+          "xl"
+        ],
+        "value": 20,
+        "type": "number",
+        "variable": "var(--avatar-fallback-font-size-xl)",
         "description": ""
       }
     },
@@ -7140,6 +7264,18 @@
         "value": "4px",
         "type": "dimension",
         "variable": "var(--breadcrumb-link-radius)",
+        "description": ""
+      },
+      "breadcrumb-page-font-weight": {
+        "name": "breadcrumbPageFontWeight",
+        "path": [
+          "breadcrumb",
+          "page",
+          "font-weight"
+        ],
+        "value": 400,
+        "type": "number",
+        "variable": "var(--breadcrumb-page-font-weight)",
         "description": ""
       },
       "breadcrumb-link-focus": {
@@ -11386,6 +11522,18 @@
         "value": 14,
         "type": "number",
         "variable": "var(--alert-dialog-description-font-size)",
+        "description": ""
+      },
+      "alert-dialog-title-font-weight": {
+        "name": "alertDialogTitleFontWeight",
+        "path": [
+          "alert-dialog",
+          "title",
+          "font-weight"
+        ],
+        "value": 600,
+        "type": "number",
+        "variable": "var(--alert-dialog-title-font-weight)",
         "description": ""
       }
     },
