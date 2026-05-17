@@ -207,7 +207,7 @@ export const FileManagerMenu: Story = {
       <h3 className="text-lg font-semibold">File Manager</h3>
       <div className="grid grid-cols-3 gap-4">
         <ContextMenu>
-          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-gray-100">
+          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-(--color-interactive-hover)">
             <div className="text-4xl mb-2">📁</div>
             <span className="text-sm">Documents</span>
           </ContextMenuTrigger>
@@ -224,7 +224,7 @@ export const FileManagerMenu: Story = {
         </ContextMenu>
 
         <ContextMenu>
-          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-gray-100">
+          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-(--color-interactive-hover)">
             <div className="text-4xl mb-2">📄</div>
             <span className="text-sm">Report.pdf</span>
           </ContextMenuTrigger>
@@ -251,7 +251,7 @@ export const FileManagerMenu: Story = {
         </ContextMenu>
 
         <ContextMenu>
-          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-gray-100">
+          <ContextMenuTrigger className="flex flex-col items-center p-4 border rounded-lg hover:bg-(--color-interactive-hover)">
             <div className="text-4xl mb-2">🖼️</div>
             <span className="text-sm">Photo.jpg</span>
           </ContextMenuTrigger>
@@ -371,7 +371,7 @@ export const DataTable: Story = {
           <tbody>
             <ContextMenu>
               <ContextMenuTrigger asChild>
-                <tr className="border-b hover:bg-gray-100">
+                <tr className="border-b hover:bg-(--color-interactive-hover)">
                   <td className="px-4 py-2 text-sm">John Doe</td>
                   <td className="px-4 py-2 text-sm">john@example.com</td>
                   <td className="px-4 py-2 text-sm">Active</td>
@@ -393,7 +393,7 @@ export const DataTable: Story = {
 
             <ContextMenu>
               <ContextMenuTrigger asChild>
-                <tr className="border-b hover:bg-gray-100">
+                <tr className="border-b hover:bg-(--color-interactive-hover)">
                   <td className="px-4 py-2 text-sm">Jane Smith</td>
                   <td className="px-4 py-2 text-sm">jane@example.com</td>
                   <td className="px-4 py-2 text-sm">Inactive</td>
@@ -435,7 +435,7 @@ export const ImageGallery: Story = {
       <div className="grid grid-cols-3 gap-4">
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <ContextMenu key={i}>
-            <ContextMenuTrigger className="aspect-square bg-gray-50 rounded-lg flex items-center justify-center text-2xl hover:bg-gray-50">
+            <ContextMenuTrigger className="aspect-square bg-(--color-background-secondary) rounded-lg flex items-center justify-center text-2xl hover:bg-(--color-interactive-hover)">
               🖼️
             </ContextMenuTrigger>
             <ContextMenuContent>

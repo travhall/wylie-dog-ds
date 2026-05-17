@@ -146,6 +146,7 @@ export const colorYellow800 = "oklch(0.5 0.103 83.55)";
 export const colorYellow900 = "oklch(0.435 0.089 87.05)";
 export const colorYellow950 = "oklch(0.312 0.064 86.31)";
 export const space0 = "0px";
+export const space025 = "1px";
 export const space050 = "4px";
 export const space100 = "8px";
 export const space150 = "12px";

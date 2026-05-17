@@ -11,6 +11,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@wyliedog/ui/navigation-menu";
 import { cn } from "@wyliedog/ui/lib/utils";
+import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta<typeof NavigationMenu> = {
   title: "Components/Navigation/Navigation Menu",
@@ -112,7 +113,7 @@ export const Default: Story = {
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-neutral-50 to-neutral-100 p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-neutral-50 to-neutral-100 p-6 no-underline outline-none focus:shadow-md"
                     href="#"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
@@ -182,7 +183,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-50 hover:text-gray-900 focus:bg-gray-50 focus:text-gray-900",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-(--color-interactive-hover) hover:text-(--color-text-primary) focus:bg-(--color-interactive-hover) focus:text-(--color-text-primary)",
             className
           )}
           {...props}
@@ -331,12 +332,14 @@ export const WithCallToAction: Story = {
                     tokens, components, and docs.
                   </p>
                 </div>
-                <NavigationMenuLink
-                  asChild
-                  className="mt-4 inline-flex items-center justify-center rounded-md bg-white px-3 py-1.5 text-sm font-medium ring-1 ring-gray-200 hover:bg-gray-50 transition-colors"
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="mt-4"
+                  onClick={(e) => e.preventDefault()}
                 >
-                  <a href="#">Get started free →</a>
-                </NavigationMenuLink>
+                  Get started free →
+                </Button>
               </div>
             </div>
           </NavigationMenuContent>

@@ -146,6 +146,7 @@ export declare const colorYellow800: "oklch(0.5 0.103 83.55)";
 export declare const colorYellow900: "oklch(0.435 0.089 87.05)";
 export declare const colorYellow950: "oklch(0.312 0.064 86.31)";
 export declare const space0: "0px";
+export declare const space025: "1px";
 export declare const space050: "4px";
 export declare const space100: "8px";
 export declare const space150: "12px";

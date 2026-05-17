@@ -63,7 +63,7 @@ export const Default: Story = {
     },
   },
   render: (args) => (
-    <div className="w-96">
+    <div className="w-full max-w-sm">
       <Accordion className="w-full" {...args}>
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>

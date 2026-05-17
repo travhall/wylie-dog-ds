@@ -331,16 +331,15 @@ describe('Select', () => {
 
 ```typescript
 describe('Button Variants', () => {
-  const variants = ['default', 'primary', 'secondary', 'outline', 'ghost'] as const;
+  const variants = ['default', 'secondary', 'outline', 'ghost', 'link', 'destructive'] as const;
 
   variants.forEach((variant) => {
-    it(`renders ${variant} variant correctly`, async () => {
+    it(`renders ${variant} variant without errors`, async () => {
       const { container } = render(<Button variant={variant}>Button</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toHaveClass(`btn-${variant}`);
+      // Verify the button renders and is accessible
+      expect(screen.getByRole('button')).toBeInTheDocument();
 
-      // Each variant should pass accessibility
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
@@ -458,9 +457,8 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
-    variant: 'primary',
     children: 'Click Me',
   },
   play: async ({ canvasElement }) => {
@@ -924,27 +922,16 @@ describe('Select Interactions', () => {
 
 ### Accessibility Testing in Stories
 
-```typescript
-// .storybook/preview.tsx
-import { withTests } from '@storybook/addon-jest';
-import results from '../.jest-test-results.json';
+Accessibility audits run automatically in Storybook via the `@storybook/addon-a11y` addon (powered by axe-core). The design system configures it in `manual` mode, meaning you trigger the audit from the **Accessibility** panel rather than it running on every render. This avoids false positives during theme transitions.
 
-export const decorators = [withTests({ results })];
+To check a11y compliance in CI, use Storybook's test runner with `@storybook/addon-vitest`:
 
-// Run axe on all stories
-export const parameters = {
-  a11y: {
-    config: {
-      rules: [
-        {
-          id: 'color-contrast',
-          enabled: true,
-        },
-      ],
-    },
-  },
-};
+```bash
+# Run all story play functions and a11y checks
+pnpm test:storybook
 ```
+
+Individual components also run axe in their Vitest unit tests via `@axe-core/react` — see existing `__tests__/` files for examples.
 
 ---
 
@@ -1024,7 +1011,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -1084,11 +1071,13 @@ fireEvent.click(button);
 
 ❌ **Don't test styling details**
 ```typescript
-// Bad: Brittle, tests implementation
+// Bad: Brittle, tied to implementation
 expect(button).toHaveStyle({ backgroundColor: '#0000ff' });
-
-// Good: Test functional behavior
 expect(button).toHaveClass('btn-primary');
+
+// Good: Test functional behavior and accessibility
+expect(button).toBeInTheDocument();
+expect(button).not.toBeDisabled();
 ```
 
 ❌ **Don't test third-party libraries**
@@ -1158,7 +1147,7 @@ screen.logRoles();
 - [Testing Library Docs](https://testing-library.com/docs/react-testing-library/intro/)
 - [axe-core Documentation](https://github.com/dequelabs/axe-core)
 - [Vitest Documentation](https://vitest.dev/)
-- [Accessibility Guide](/story/5-guides-accessibility--docs)
+- [Accessibility Guidelines](?path=/docs/foundations-accessibility-guidelines--docs)
 - [ARIA Practices](https://www.w3.org/WAI/ARIA/apg/)
 
 ---

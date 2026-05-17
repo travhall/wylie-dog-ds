@@ -281,19 +281,12 @@ export const LandingPage: Story = {
             <div className="flex items-center">
               <span className="text-xl font-bold text-blue-600">WylieDog</span>
             </div>
-            <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-500 hover:text-blue-600">
-                Features
-              </a>
-              <a href="#" className="text-gray-500 hover:text-blue-600">
-                Pricing
-              </a>
-              <a href="#" className="text-gray-500 hover:text-blue-600">
-                About
-              </a>
-              <a href="#" className="text-gray-500 hover:text-blue-600">
-                Contact
-              </a>
+            <nav className="hidden md:flex space-x-2">
+              {["Features", "Pricing", "About", "Contact"].map((item) => (
+                <Button key={item} variant="ghost" size="sm">
+                  {item}
+                </Button>
+              ))}
             </nav>
             <div className="flex items-center space-x-4">
               <Button variant="ghost">Sign In</Button>

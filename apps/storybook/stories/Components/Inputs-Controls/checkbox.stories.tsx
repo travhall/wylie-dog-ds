@@ -3,6 +3,7 @@ import { within, userEvent, expect } from "storybook/test";
 import { Checkbox } from "@wyliedog/ui/checkbox";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
+import { Form, FormField, FormMessage } from "@wyliedog/ui/form";
 
 const meta: Meta<typeof Checkbox> = {
   title: "Components/Inputs & Controls/Checkbox",
@@ -117,15 +118,19 @@ export const WithError: Story = {
     },
   },
   render: (args) => (
-    <div className="space-y-2">
-      <div className="flex items-center space-x-2">
-        <Checkbox id="error-checkbox" {...args} />
-        <Label htmlFor="error-checkbox" error required>
-          I agree to the terms of service
-        </Label>
-      </div>
-      <p className="text-xs text-red-600 ml-6">This field is required</p>
-    </div>
+    <Form>
+      <FormField error={args.error} required>
+        <div className="space-y-2">
+          <div className="flex items-center space-x-2">
+            <Checkbox id="error-checkbox" {...args} />
+            <Label htmlFor="error-checkbox" error required>
+              I agree to the terms of service
+            </Label>
+          </div>
+          <FormMessage className="ml-6">This field is required</FormMessage>
+        </div>
+      </FormField>
+    </Form>
   ),
 };
 

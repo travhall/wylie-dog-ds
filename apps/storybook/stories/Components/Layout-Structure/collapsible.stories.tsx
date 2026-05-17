@@ -168,7 +168,7 @@ export const FAQ: Story = {
 
       <div className="space-y-2">
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-100">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
             <span className="font-medium">What is your refund policy?</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
@@ -184,7 +184,7 @@ export const FAQ: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-100">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
             <span className="font-medium">How do I track my order?</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
@@ -200,7 +200,7 @@ export const FAQ: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-100">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
             <span className="font-medium">Do you ship internationally?</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
@@ -232,7 +232,7 @@ export const NestedContent: Story = {
       <h3 className="text-lg font-semibold">Project Structure</h3>
 
       <Collapsible className="rounded-lg border">
-        <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-100">
+        <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
           <span className="font-medium">📁 src</span>
           <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
         </CollapsibleTrigger>
@@ -241,7 +241,7 @@ export const NestedContent: Story = {
             <div className="text-sm text-gray-500">📄 index.ts</div>
 
             <Collapsible className="ml-4 rounded border">
-              <CollapsibleTrigger className="flex w-full items-center justify-between p-3 text-left hover:bg-gray-100">
+              <CollapsibleTrigger className="flex w-full items-center justify-between p-3 text-left hover:bg-(--color-interactive-hover)">
                 <span className="text-sm font-medium">📁 components</span>
                 <ChevronDownIcon className="h-3 w-3 transition-transform data-[state=open]:rotate-180" />
               </CollapsibleTrigger>
@@ -255,7 +255,7 @@ export const NestedContent: Story = {
             </Collapsible>
 
             <Collapsible className="ml-4 rounded border">
-              <CollapsibleTrigger className="flex w-full items-center justify-between p-3 text-left hover:bg-gray-100">
+              <CollapsibleTrigger className="flex w-full items-center justify-between p-3 text-left hover:bg-(--color-interactive-hover)">
                 <span className="text-sm font-medium">📁 utils</span>
                 <ChevronDownIcon className="h-3 w-3 transition-transform data-[state=open]:rotate-180" />
               </CollapsibleTrigger>
@@ -287,7 +287,7 @@ export const FormSections: Story = {
 
       <div className="space-y-3">
         <Collapsible defaultOpen className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-100">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
             <span className="font-medium">Personal Information</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
@@ -314,7 +314,7 @@ export const FormSections: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-100">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
             <span className="font-medium">Notification Preferences</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
@@ -337,7 +337,7 @@ export const FormSections: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-100">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
             <span className="font-medium">Privacy Settings</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
@@ -382,7 +382,7 @@ export const ProductFeatures: Story = {
 
       <div className="grid gap-3">
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-100">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
             <div className="flex items-center space-x-3">
               <span className="text-2xl">📊</span>
               <span className="font-medium">Advanced Analytics</span>
@@ -406,7 +406,7 @@ export const ProductFeatures: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-100">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
             <div className="flex items-center space-x-3">
               <span className="text-2xl">🤝</span>
               <span className="font-medium">Team Collaboration</span>
@@ -429,7 +429,7 @@ export const ProductFeatures: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-100">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
             <div className="flex items-center space-x-3">
               <span className="text-2xl">🔒</span>
               <span className="font-medium">Enterprise Security</span>
@@ -475,7 +475,7 @@ export const Accessibility: Story = {
 
       <Collapsible className="rounded-lg border">
         <CollapsibleTrigger
-          className="flex w-full items-center justify-between p-4 text-left hover:bg-gray-100"
+          className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)"
           aria-describedby="keyboard-help"
         >
           <span className="font-medium">Keyboard Navigation</span>

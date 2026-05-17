@@ -10,13 +10,22 @@ import {
 } from "@wyliedog/ui/select";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
+import {
+  Form,
+  FormField,
+  FormLabel,
+  FormMessage,
+  FormDescription,
+  useFormField,
+} from "@wyliedog/ui/form";
+import { Separator } from "@wyliedog/ui/separator";
 
 // Using bare Meta because `size` lives on SelectTrigger, not the Select root
 const meta: Meta = {
   title: "Components/Inputs & Controls/Select",
   component: Select,
   parameters: {
-    layout: "centered",
+    layout: "padded",
     docs: {
       description: {
         component:
@@ -72,7 +81,7 @@ export const Default: Story = {
   render: (args) => {
     const { size, disabled } = args as SelectStoryArgs;
     return (
-      <div className="w-64 space-y-2">
+      <div className="mx-auto w-full max-w-xs space-y-2">
         <Label htmlFor="default-select" size={size}>
           Choose a country
         </Label>
@@ -97,27 +106,28 @@ export const WithError: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Error state with validation message for required selections.",
+        story:
+          "Error state using `<FormField error>` so label, trigger, and message all switch to error styling from a single prop — no manual color classes needed.",
       },
     },
   },
   render: () => (
-    <div className="w-64 space-y-2">
-      <Label htmlFor="error-select" error required>
-        Choose a category
-      </Label>
-      <Select>
-        <SelectTrigger error>
-          <SelectValue placeholder="This field is required" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="tech">Technology</SelectItem>
-          <SelectItem value="design">Design</SelectItem>
-          <SelectItem value="business">Business</SelectItem>
-        </SelectContent>
-      </Select>
-      <p className="text-xs text-red-600">Please select a category</p>
-    </div>
+    <Form className="mx-auto w-full max-w-xs">
+      <FormField error required>
+        <FormLabel>Category</FormLabel>
+        <Select>
+          <SelectTrigger error>
+            <SelectValue placeholder="This field is required" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="tech">Technology</SelectItem>
+            <SelectItem value="design">Design</SelectItem>
+            <SelectItem value="business">Business</SelectItem>
+          </SelectContent>
+        </Select>
+        <FormMessage>Please select a category.</FormMessage>
+      </FormField>
+    </Form>
   ),
 };
 
@@ -131,8 +141,8 @@ export const AllSizes: Story = {
     },
   },
   render: () => (
-    <div className="space-y-6">
-      <div className="w-64 space-y-2">
+    <div className="mx-auto w-full max-w-xs space-y-6">
+      <div className="space-y-2">
         <Label size="sm">Small Select</Label>
         <Select size="sm">
           <SelectTrigger>
@@ -146,7 +156,7 @@ export const AllSizes: Story = {
         </Select>
       </div>
 
-      <div className="w-64 space-y-2">
+      <div className="space-y-2">
         <Label size="md">Medium Select (Default)</Label>
         <Select size="md">
           <SelectTrigger>
@@ -160,7 +170,7 @@ export const AllSizes: Story = {
         </Select>
       </div>
 
-      <div className="w-64 space-y-2">
+      <div className="space-y-2">
         <Label size="lg">Large Select</Label>
         <Select size="lg">
           <SelectTrigger>
@@ -187,7 +197,7 @@ export const WithSeparators: Story = {
     },
   },
   render: () => (
-    <div className="w-64 space-y-2">
+    <div className="mx-auto w-full max-w-xs space-y-2">
       <Label>Choose your timezone</Label>
       <Select>
         <SelectTrigger>
@@ -218,8 +228,8 @@ export const LongLists: Story = {
     },
   },
   render: () => (
-    <div className="grid grid-cols-2 gap-6">
-      <div className="w-64 space-y-2">
+    <div className="mx-auto grid w-full max-w-2xl grid-cols-2 gap-6">
+      <div className="space-y-2">
         <Label>Choose a language</Label>
         <Select>
           <SelectTrigger>
@@ -242,7 +252,7 @@ export const LongLists: Story = {
         </Select>
       </div>
 
-      <div className="w-64 space-y-2">
+      <div className="space-y-2">
         <Label>Programming language</Label>
         <Select>
           <SelectTrigger>
@@ -273,36 +283,30 @@ export const FormExamples: Story = {
     docs: {
       description: {
         story:
-          "Real-world form patterns using selects for user profiles and project settings.",
+          "Real-world patterns showing `Select` integrated with `Form` and `FormField` for consistent label wiring, spacing, and validation context.",
       },
     },
   },
   render: () => (
-    <div className="max-w-2xl space-y-8">
-      {/* User Profile Form */}
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold">User Profile</h3>
-
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label htmlFor="first-name" required>
-              First Name
-            </Label>
-            <Input id="first-name" placeholder="John" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="last-name" required>
-              Last Name
-            </Label>
-            <Input id="last-name" placeholder="Doe" />
-          </div>
+    <div className="mx-auto w-full max-w-2xl space-y-8">
+      {/* User Profile */}
+      <Form>
+        <p className="text-sm font-semibold">User profile</p>
+        <div className="grid grid-cols-2 gap-2">
+          <FormField required>
+            <FormLabel>First name</FormLabel>
+            <Input placeholder="Jane" />
+          </FormField>
+          <FormField required>
+            <FormLabel>Last name</FormLabel>
+            <Input placeholder="Doe" />
+          </FormField>
         </div>
-
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-2">
           <div className="space-y-2">
-            <Label>Country</Label>
+            <Label htmlFor="fe-country">Country</Label>
             <Select>
-              <SelectTrigger>
+              <SelectTrigger id="fe-country">
                 <SelectValue placeholder="Select country" />
               </SelectTrigger>
               <SelectContent>
@@ -316,11 +320,10 @@ export const FormExamples: Story = {
               </SelectContent>
             </Select>
           </div>
-
           <div className="space-y-2">
-            <Label>Occupation</Label>
+            <Label htmlFor="fe-occupation">Occupation</Label>
             <Select>
-              <SelectTrigger>
+              <SelectTrigger id="fe-occupation">
                 <SelectValue placeholder="Select occupation" />
               </SelectTrigger>
               <SelectContent>
@@ -336,17 +339,20 @@ export const FormExamples: Story = {
             </Select>
           </div>
         </div>
-      </div>
+      </Form>
+
+      <Separator />
 
       {/* Project Settings */}
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Project Settings</h3>
-
-        <div className="grid grid-cols-3 gap-4">
+      <Form>
+        <p className="text-sm font-semibold">Project settings</p>
+        <div className="grid grid-cols-3 gap-2">
           <div className="space-y-2">
-            <Label required>Project Type</Label>
+            <Label htmlFor="fe-type" required>
+              Project type
+            </Label>
             <Select>
-              <SelectTrigger>
+              <SelectTrigger id="fe-type">
                 <SelectValue placeholder="Select type" />
               </SelectTrigger>
               <SelectContent>
@@ -357,11 +363,10 @@ export const FormExamples: Story = {
               </SelectContent>
             </Select>
           </div>
-
           <div className="space-y-2">
-            <Label>Framework</Label>
+            <Label htmlFor="fe-framework">Framework</Label>
             <Select>
-              <SelectTrigger>
+              <SelectTrigger id="fe-framework">
                 <SelectValue placeholder="Choose framework" />
               </SelectTrigger>
               <SelectContent>
@@ -375,30 +380,29 @@ export const FormExamples: Story = {
               </SelectContent>
             </Select>
           </div>
-
           <div className="space-y-2">
-            <Label>Team Size</Label>
+            <Label htmlFor="fe-team">Team size</Label>
             <Select>
-              <SelectTrigger>
+              <SelectTrigger id="fe-team">
                 <SelectValue placeholder="Select size" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="solo">Solo (1 person)</SelectItem>
-                <SelectItem value="small">Small (2-5 people)</SelectItem>
-                <SelectItem value="medium">Medium (6-15 people)</SelectItem>
-                <SelectItem value="large">Large (16+ people)</SelectItem>
+                <SelectItem value="small">Small (2–5)</SelectItem>
+                <SelectItem value="medium">Medium (6–15)</SelectItem>
+                <SelectItem value="large">Large (16+)</SelectItem>
               </SelectContent>
             </Select>
           </div>
         </div>
-      </div>
+      </Form>
     </div>
   ),
 };
 
 export const WithInteractions: Story = {
   render: () => (
-    <div className="w-64 space-y-2">
+    <div className="mx-auto w-full max-w-xs space-y-2">
       <Label htmlFor="test-select">Choose a fruit</Label>
       <Select>
         <SelectTrigger id="test-select">

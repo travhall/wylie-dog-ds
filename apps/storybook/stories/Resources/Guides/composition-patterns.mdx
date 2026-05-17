@@ -28,7 +28,7 @@ Prefer composing small, focused components over large, configurable ones:
   <UserProfile.Avatar size="lg" />
   <UserProfile.Bio maxLength={200} />
   <UserProfile.Actions>
-    <Button variant="primary">Follow</Button>
+    <Button>Follow</Button>
   </UserProfile.Actions>
 </UserProfile>
 ```
@@ -109,7 +109,7 @@ Wrap related elements in container components for consistent spacing and layout:
     aria-invalid={hasError}
   />
   {hasError && (
-    <p id="email-error" className="text-sm text-red-600">
+    <p id="email-error" className="text-sm text-(--color-text-danger)">
       Please enter a valid email address
     </p>
   )}
@@ -164,7 +164,7 @@ Wrap related elements in container components for consistent spacing and layout:
   {users.map((user, index) => (
     <Avatar
       key={user.id}
-      className="ring-2 ring-background"
+      className="ring-2 ring-(--color-background-primary)"
       style={{ zIndex: users.length - index }}
     >
       <AvatarImage src={user.avatar} alt={user.name} />
@@ -212,7 +212,7 @@ Wrap related elements in container components for consistent spacing and layout:
               <DropdownMenuItem>Edit</DropdownMenuItem>
               <DropdownMenuItem>Duplicate</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
+              <DropdownMenuItem className="text-(--color-text-danger)">Delete</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </TableCell>
@@ -598,13 +598,13 @@ useEffect(() => {
 
 ---
 
-## 📚 Related Resources
+## Related Resources
 
-- [Accessibility Guide](/story/5-guides-accessibility--docs)
-- [Theming Guide](/story/5-guides-theming--docs)
-- [Component Examples](/story/4-patterns-compositions--docs)
-- [Form Patterns](/story/4-patterns-form-compositions--docs)
-- [Layout Patterns](/story/4-patterns-layout-patterns--docs)
+- [Accessibility Guidelines](?path=/docs/foundations-accessibility-guidelines--docs)
+- [Theming Guide](?path=/docs/resources-theming-overview--docs)
+- [Form Patterns](?path=/docs/patterns-form-patterns-form-compositions--docs)
+- [Layout Patterns](?path=/docs/patterns-layout-patterns-layout-patterns--docs)
+- [Patterns Overview](?path=/docs/patterns-overview--docs)
 
 ---
 
@@ -652,4 +652,4 @@ useEffect(() => {
 
 ---
 
-Need more examples? Check out the [Patterns section](/story/4-patterns-compositions--docs) for interactive examples of these patterns in action.
+Need more examples? Check out the [Patterns section](?path=/docs/patterns-overview--docs) for interactive examples of these patterns in action.

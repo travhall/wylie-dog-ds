@@ -185,7 +185,7 @@ Tokens Studio UI:
 
 6. **Use in Components:**
    ```tsx
-   <div className="space-y-spacing-section-gap">
+   <div className="space-y-(--space-layout-section-gap)">
      {/* Content */}
    </div>
    ```
@@ -316,31 +316,16 @@ module.exports = {
 
 After running `pnpm run build:tokens`, you'll get:
 
-**1. CSS Variables** (`packages/tokens/src/variables.css`)
+**CSS Variables** (`packages/tokens/dist/tokens.css`)
+
+Tokens are emitted with category-based prefixes: `--color-*`, `--space-*`, `--font-size-*`, `--font-weight-*`, `--shadow-*`, `--duration-*`, etc.
+
 ```css
 :root {
   --color-background-primary: oklch(0.98 0.01 250);
-  --spacing-component-padding-sm: 8px;
-  --typography-body-md-font-size: 16px;
+  --space-button-padding-md: 0.625rem 1rem;
+  --font-size-body-md: 1rem;
 }
-```
-
-**2. TypeScript Tokens** (`packages/tokens/src/tokens.ts`)
-```typescript
-export const tokens = {
-  color: {
-    background: {
-      primary: 'var(--color-background-primary)',
-    },
-  },
-  spacing: {
-    component: {
-      padding: {
-        sm: 'var(--spacing-component-padding-sm)',
-      },
-    },
-  },
-};
 ```
 
 ## Validation and Testing
@@ -478,8 +463,8 @@ After significant design updates:
 // ❌ Bad - Hardcoded values
 <div style={{ color: '#3B82F6', padding: '16px' }}>
 
-// ✅ Good - Design tokens
-<div className="text-color-primary p-spacing-component-padding-md">
+// ✅ Good - Design tokens via Tailwind v4 CSS variable syntax
+<div className="text-(--color-text-primary) p-(--space-component-padding-md)">
 ```
 
 ### 2. Document Token Decisions

@@ -53,7 +53,7 @@ Add a centered avatar at the top of the card:
   {/* Avatar Section */}
   <div className="flex flex-col items-center space-y-2">
     <Avatar className="h-24 w-24">
-      <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+      <AvatarImage src="https://i.pravatar.cc/96" alt="User" />
       <AvatarFallback>WD</AvatarFallback>
     </Avatar>
     <Button variant="ghost" size="sm">
@@ -112,7 +112,7 @@ Complete the card with save and cancel buttons:
   <Button variant="outline">
     Cancel
   </Button>
-  <Button variant="primary">
+  <Button>
     Save Changes
   </Button>
 </CardFooter>
@@ -166,7 +166,7 @@ export function ProfileCard() {
       <Button variant="outline" onClick={handleCancel}>
         Cancel
       </Button>
-      <Button variant="primary" onClick={handleSave}>
+      <Button onClick={handleSave}>
         Save Changes
       </Button>
     </Card>
@@ -210,7 +210,7 @@ export function ProfileCard() {
       <CardContent className="space-y-4">
         <div className="flex flex-col items-center space-y-2">
           <Avatar className="h-24 w-24">
-            <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+            <AvatarImage src="https://i.pravatar.cc/96" alt="User" />
             <AvatarFallback>WD</AvatarFallback>
           </Avatar>
           <Button variant="ghost" size="sm">
@@ -286,7 +286,7 @@ Components like `Card` are split into semantic parts (`CardHeader`, `CardContent
 Tailwind utilities (`space-y-*`, `flex`, `justify-between`) provide precise control while maintaining consistency.
 
 ### 4. **Variant System**
-Components use variants (`primary`, `outline`, `ghost`) for semantic styling without custom CSS.
+Components use variants (`default`, `secondary`, `outline`, `ghost`, `link`, `destructive`) for semantic styling without custom CSS.
 
 ## Next Steps
 
@@ -311,7 +311,7 @@ const handleSave = () => {
 ```tsx
 const [isLoading, setIsLoading] = useState(false);
 
-<Button variant="primary" onClick={handleSave} disabled={isLoading}>
+<Button onClick={handleSave} loading={isLoading}>
   {isLoading ? 'Saving...' : 'Save Changes'}
 </Button>
 ```

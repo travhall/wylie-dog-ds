@@ -21,150 +21,375 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-// Real spacing tokens from Tailwind
+// Unified spacing data — pixel values drive both the scale table and visual bar widths
 const spacingScale = [
-  { name: "0", class: "w-0", description: "0" },
-  { name: "px", class: "w-px", description: "1px" },
-  { name: "0.5", class: "w-0.5", description: "0.125rem (2px)" },
-  { name: "1", class: "w-1", description: "0.25rem (4px)" },
-  { name: "2", class: "w-2", description: "0.5rem (8px)" },
-  { name: "3", class: "w-3", description: "0.75rem (12px)" },
-  { name: "4", class: "w-4", description: "1rem (16px)" },
-  { name: "6", class: "w-6", description: "1.5rem (24px)" },
-  { name: "8", class: "w-8", description: "2rem (32px)" },
-  { name: "12", class: "w-12", description: "3rem (48px)" },
-  { name: "16", class: "w-16", description: "4rem (64px)" },
-  { name: "20", class: "w-20", description: "5rem (80px)" },
-  { name: "24", class: "w-24", description: "6rem (96px)" },
+  { name: "0", px: 0, rem: "0", class: "w-0" },
+  { name: "px", px: 1, rem: "1px", class: "w-px" },
+  { name: "0.5", px: 2, rem: "0.125rem", class: "w-0.5" },
+  { name: "1", px: 4, rem: "0.25rem", class: "w-1" },
+  { name: "2", px: 8, rem: "0.5rem", class: "w-2" },
+  { name: "3", px: 12, rem: "0.75rem", class: "w-3" },
+  { name: "4", px: 16, rem: "1rem", class: "w-4" },
+  { name: "6", px: 24, rem: "1.5rem", class: "w-6" },
+  { name: "8", px: 32, rem: "2rem", class: "w-8" },
+  { name: "12", px: 48, rem: "3rem", class: "w-12" },
+  { name: "16", px: 64, rem: "4rem", class: "w-16" },
+  { name: "20", px: 80, rem: "5rem", class: "w-20" },
+  { name: "24", px: 96, rem: "6rem", class: "w-24" },
 ];
+
+// Subset used in the playground controls
+const playgroundSteps = spacingScale.filter((s) =>
+  ["0", "0.5", "1", "2", "3", "4", "6", "8", "12", "16"].includes(s.name)
+);
 
 const shadowScale = [
-  { name: "sm", class: "shadow-sm", description: "Subtle shadow" },
-  { name: "md", class: "shadow-md", description: "Medium shadow" },
-  { name: "lg", class: "shadow-lg", description: "Large shadow" },
-  { name: "xl", class: "shadow-xl", description: "Extra large shadow" },
+  {
+    name: "sm",
+    class: "shadow-sm",
+    description: "Subtle lift — tooltips, chips",
+  },
+  { name: "md", class: "shadow-md", description: "Medium — cards, dropdowns" },
+  { name: "lg", class: "shadow-lg", description: "Strong — modals, panels" },
+  { name: "xl", class: "shadow-xl", description: "Dramatic — overlays" },
 ];
 
+// ============================================================================
+// STORY 1: SpacingScale
+// ============================================================================
+
 export const SpacingScale: Story = {
-  render: () => (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold">Spacing Scale</h3>
-      <p className="text-sm text-gray-500">
-        These spacing tokens are used throughout the design system for
-        consistent layouts.
-      </p>
-      {spacingScale.map(({ name, class: className, description }) => (
-        <div key={name} className="flex items-center space-x-4">
-          <div className="w-16 text-sm font-mono">{name}</div>
-          <div className={`bg-blue-200 h-4 ${className}`} />
-          <div className="text-sm text-gray-400">{description}</div>
-          <div className="text-xs font-mono text-gray-400">{className}</div>
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Full spacing scale reference. Bar widths are proportional to each other — the visual difference between two steps is the actual difference in space.",
+      },
+    },
+  },
+  render: () => {
+    const maxPx = Math.max(...spacingScale.map((s) => s.px));
+
+    return (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-2xl font-semibold tracking-tight mb-1">
+            Spacing Scale
+          </h3>
+          <p className="text-sm text-(--color-text-secondary)">
+            4px base unit. Bars are proportional — the visual gap between two
+            steps is the real difference in space.
+          </p>
         </div>
-      ))}
-    </div>
-  ),
+
+        <div className="space-y-2">
+          {spacingScale.map(({ name, px, rem, class: cls }) => (
+            <div key={name} className="flex items-center gap-4">
+              <code className="w-8 text-sm font-mono font-semibold text-(--color-text-primary) shrink-0">
+                {name}
+              </code>
+              <span className="w-14 text-xs text-(--color-text-secondary) shrink-0">
+                {px}px
+              </span>
+              <div className="flex-1 flex items-center h-5">
+                {px === 0 ? (
+                  <span className="text-xs italic text-(--color-text-tertiary)">
+                    —
+                  </span>
+                ) : (
+                  <div
+                    className="h-4 rounded-sm bg-(--color-interactive-primary)/60"
+                    style={{ width: `${(px / maxPx) * 100}%` }}
+                  />
+                )}
+              </div>
+              <code className="w-14 text-xs font-mono text-(--color-text-tertiary) shrink-0 text-right">
+                {cls}
+              </code>
+              <span className="w-20 text-xs text-(--color-text-tertiary) shrink-0 text-right hidden sm:block">
+                {rem}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  },
 };
+
+// ============================================================================
+// STORY 2: ShadowScale
+// ============================================================================
 
 export const ShadowScale: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Elevation levels for depth and hierarchy. **Dark mode note:** CSS box-shadows use dark RGBA values that vanish on dark surfaces. The side-by-side comparison below makes this visible. The recommended mitigation is to pair shadows with `--color-border-primary` on elevated surfaces in dark mode.",
+      },
+    },
+  },
   render: () => (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold">Shadow Scale</h3>
-      <p className="text-sm text-gray-500">
-        Elevation levels for depth and hierarchy in the interface.
-      </p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {shadowScale.map(({ name, class: className, description }) => (
-          <div key={name} className="text-center space-y-2">
-            <div
-              className={`w-16 h-16 bg-white mx-auto rounded ${className}`}
-            />
-            <p className="text-sm font-mono">{name}</p>
-            <p className="text-xs text-gray-400">{description}</p>
-            <p className="text-xs font-mono text-gray-400">{className}</p>
+    <div className="space-y-8">
+      <div>
+        <h3 className="text-2xl font-semibold tracking-tight mb-1">
+          Shadow Scale
+        </h3>
+        <p className="text-sm text-(--color-text-secondary)">
+          Four elevation levels, from subtle lift to prominent overlay.
+        </p>
+      </div>
+
+      {/* Light vs dark comparison */}
+      <div className="grid md:grid-cols-2 gap-4">
+        {/* Light surface */}
+        <div className="rounded-xl border border-(--color-border-primary) overflow-hidden">
+          <div className="px-4 py-2 bg-(--color-background-secondary) border-b border-(--color-border-primary)">
+            <p className="text-xs font-semibold text-(--color-text-secondary) uppercase tracking-wide">
+              Light surface
+            </p>
           </div>
-        ))}
+          <div className="p-6 bg-white flex flex-wrap gap-6 justify-around">
+            {shadowScale.map(({ name, class: cls }) => (
+              <div key={name} className="text-center space-y-3">
+                <div
+                  className={`w-16 h-16 bg-white rounded-lg mx-auto ${cls}`}
+                />
+                <code className="block text-xs font-mono text-(--color-text-secondary)">
+                  {cls}
+                </code>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dark surface */}
+        <div className="rounded-xl border border-(--color-border-primary) overflow-hidden">
+          <div className="px-4 py-2 bg-(--color-background-secondary) border-b border-(--color-border-primary)">
+            <p className="text-xs font-semibold text-(--color-text-secondary) uppercase tracking-wide">
+              Dark surface — shadows disappear
+            </p>
+          </div>
+          <div className="p-6 bg-gray-900 flex flex-wrap gap-6 justify-around">
+            {shadowScale.map(({ name, class: cls }) => (
+              <div key={name} className="text-center space-y-3">
+                <div
+                  className={`w-16 h-16 bg-gray-800 rounded-lg mx-auto ${cls}`}
+                />
+                <code className="block text-xs font-mono text-gray-400">
+                  {cls}
+                </code>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Dark mode guidance */}
+      <div className="rounded-lg border border-(--color-border-primary) divide-y divide-(--color-border-primary) overflow-hidden">
+        <div className="px-4 py-3 bg-(--color-background-secondary)">
+          <p className="text-sm font-semibold">Dark mode strategy</p>
+          <p className="text-xs text-(--color-text-secondary) mt-0.5">
+            Standard CSS shadows use opaque dark RGBA values. On dark surfaces
+            they lose contrast and become invisible.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-(--color-border-primary)">
+          {[
+            {
+              label: "Avoid",
+              color: "text-(--color-status-danger)",
+              code: "shadow-md",
+              note: "Invisible on dark backgrounds",
+            },
+            {
+              label: "Better",
+              color: "text-(--color-status-warning)",
+              code: "shadow-md + border",
+              note: "Add border-(--color-border-primary) to elevated surfaces",
+            },
+            {
+              label: "Best",
+              color: "text-(--color-status-success)",
+              code: "shadow token (planned)",
+              note: "Theme-aware shadow tokens that swap to a glow in dark mode",
+            },
+          ].map(({ label, color, code, note }) => (
+            <div key={label} className="p-4 space-y-1">
+              <p className={`text-xs font-semibold ${color}`}>{label}</p>
+              <code className="block text-xs font-mono bg-(--color-background-secondary) px-1.5 py-1 rounded">
+                {code}
+              </code>
+              <p className="text-xs text-(--color-text-tertiary)">{note}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Full scale reference */}
+      <div className="space-y-3">
+        <p className="text-sm font-semibold">Scale reference</p>
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          {shadowScale.map(({ name, class: cls, description }) => (
+            <div key={name} className="space-y-3">
+              <div
+                className={`w-full aspect-square max-w-[9rem] mx-auto bg-(--color-background-primary) rounded-xl border border-(--color-border-primary) ${cls}`}
+              />
+              <div className="text-center space-y-0.5">
+                <code className="text-sm font-mono font-semibold">
+                  shadow-{name}
+                </code>
+                <p className="text-xs text-(--color-text-secondary)">
+                  {description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   ),
 };
 
-export const ComponentSpacingExamples: Story = {
-  render: () => (
-    <div className="space-y-8">
-      <h3 className="text-lg font-semibold">Component Spacing Examples</h3>
+// ============================================================================
+// STORY 3: ComponentSpacingExamples
+// ============================================================================
 
-      <div className="space-y-4">
-        <h4 className="font-medium">Button Sizes</h4>
-        <div className="flex gap-4 items-center">
-          <Button size="sm">Small (px-3 py-1.5)</Button>
-          <Button size="md">Medium (px-4 py-2)</Button>
-          <Button size="lg">Large (px-6 py-3)</Button>
+export const ComponentSpacingExamples: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "How spacing tokens are applied in real components — buttons, cards, and list layouts.",
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-10">
+      <div>
+        <h3 className="text-2xl font-semibold tracking-tight mb-1">
+          Component Spacing
+        </h3>
+        <p className="text-sm text-(--color-text-secondary)">
+          Consistent spacing creates visual rhythm. These examples show how the
+          scale applies in context.
+        </p>
+      </div>
+
+      {/* Button sizes */}
+      <div className="space-y-3">
+        <div>
+          <h4 className="text-base font-semibold mb-0.5">Button Sizes</h4>
+          <p className="text-sm text-(--color-text-secondary)">
+            Padding scales with button importance.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-4 items-center">
+          <div className="space-y-1 text-center">
+            <Button size="sm">Small</Button>
+            <p className="text-xs font-mono text-(--color-text-tertiary)">
+              px-3 py-1.5
+            </p>
+          </div>
+          <div className="space-y-1 text-center">
+            <Button size="md">Medium</Button>
+            <p className="text-xs font-mono text-(--color-text-tertiary)">
+              px-4 py-2
+            </p>
+          </div>
+          <div className="space-y-1 text-center">
+            <Button size="lg">Large</Button>
+            <p className="text-xs font-mono text-(--color-text-tertiary)">
+              px-6 py-3
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="space-y-4">
-        <h4 className="font-medium">Card Spacing</h4>
-        <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-md max-w-md">
-          <h5 className="font-semibold mb-4">Card Title (mb-4)</h5>
-          <p className="text-gray-500 mb-6">
-            Card content with proper spacing between elements using our spacing
-            scale (mb-6).
+      {/* Card spacing */}
+      <div className="space-y-3">
+        <div>
+          <h4 className="text-base font-semibold mb-0.5">Card Spacing</h4>
+          <p className="text-sm text-(--color-text-secondary)">
+            Internal rhythm for card content.
+          </p>
+        </div>
+        <div className="bg-(--color-background-primary) border border-(--color-border-primary) rounded-lg p-6 shadow-md max-w-md">
+          <h5 className="font-semibold mb-2">Card Title</h5>
+          <p className="text-sm text-(--color-text-secondary) mb-6">
+            Body content with a generous bottom margin before the action area.
           </p>
           <div className="flex gap-3">
             <Button>Primary</Button>
             <Button variant="outline">Secondary</Button>
           </div>
         </div>
+        <code className="text-xs font-mono text-(--color-text-secondary)">
+          p-6 · mb-2 · mb-6 · gap-3
+        </code>
       </div>
 
-      <div className="space-y-4">
-        <h4 className="font-medium">List Spacing</h4>
-        <div className="space-y-3 max-w-md">
-          <div className="flex items-center p-3 bg-gray-100 rounded">
-            <div className="w-10 h-10 bg-blue-200 rounded mr-3"></div>
-            <div>
-              <p className="font-medium">List Item 1</p>
-              <p className="text-sm text-gray-500">With consistent spacing</p>
-            </div>
-          </div>
-          <div className="flex items-center p-3 bg-gray-100 rounded">
-            <div className="w-10 h-10 bg-blue-200 rounded mr-3"></div>
-            <div>
-              <p className="font-medium">List Item 2</p>
-              <p className="text-sm text-gray-500">Using space-y-3</p>
-            </div>
-          </div>
-          <div className="flex items-center p-3 bg-gray-100 rounded">
-            <div className="w-10 h-10 bg-blue-200 rounded mr-3"></div>
-            <div>
-              <p className="font-medium">List Item 3</p>
-              <p className="text-sm text-gray-500">For visual rhythm</p>
-            </div>
-          </div>
+      {/* List spacing */}
+      <div className="space-y-3">
+        <div>
+          <h4 className="text-base font-semibold mb-0.5">List Items</h4>
+          <p className="text-sm text-(--color-text-secondary)">
+            Consistent row height and internal padding.
+          </p>
+        </div>
+        <div className="space-y-2 max-w-md">
+          {["Design Tokens", "Component Library", "Documentation"].map(
+            (label, i) => (
+              <div
+                key={label}
+                className="flex items-center gap-3 p-3 bg-(--color-background-secondary) rounded-lg"
+              >
+                <div className="w-8 h-8 rounded bg-(--color-interactive-primary)/20 border border-(--color-interactive-primary)/30 shrink-0 flex items-center justify-center text-xs font-semibold text-(--color-interactive-primary)">
+                  {i + 1}
+                </div>
+                <div>
+                  <p className="text-sm font-medium">{label}</p>
+                  <p className="text-xs text-(--color-text-tertiary)">
+                    space-y-2 · p-3 · gap-3
+                  </p>
+                </div>
+              </div>
+            )
+          )}
         </div>
       </div>
     </div>
   ),
 };
 
-export const SpacingPlayground: Story = {
-  render: () => {
-    const [padding, setPadding] = useState("p-4");
-    const [margin, setMargin] = useState("m-4");
-    const [gap, setGap] = useState("gap-4");
+// ============================================================================
+// STORY 4: SpacingPlayground
+// ============================================================================
 
-    const spacingValues = [
-      { value: "0", label: "0 (0px)" },
-      { value: "0.5", label: "0.5 (2px)" },
-      { value: "1", label: "1 (4px)" },
-      { value: "2", label: "2 (8px)" },
-      { value: "3", label: "3 (12px)" },
-      { value: "4", label: "4 (16px)" },
-      { value: "6", label: "6 (24px)" },
-      { value: "8", label: "8 (32px)" },
-      { value: "12", label: "12 (48px)" },
-      { value: "16", label: "16 (64px)" },
-    ];
+export const SpacingPlayground: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Interactive explorer for padding, margin, and gap. Select a value for each property to see how it renders in context.",
+      },
+    },
+  },
+  render: () => {
+    const [padding, setPadding] = useState("4");
+    const [margin, setMargin] = useState("4");
+    const [gap, setGap] = useState("4");
+
+    const pClass = `p-${padding}`;
+    const mClass = `m-${margin}`;
+    const gClass = `gap-${gap}`;
+
+    function handleReset() {
+      setPadding("4");
+      setMargin("4");
+      setGap("4");
+    }
 
     return (
       <div className="space-y-6">
@@ -172,32 +397,38 @@ export const SpacingPlayground: Story = {
           <h3 className="text-2xl font-semibold tracking-tight mb-2">
             Spacing Playground
           </h3>
-          <p className="text-sm text-gray-500">
-            Interactive explorer for spacing tokens. Visualize how padding,
-            margin, and gap values work together.
+          <p className="text-sm text-(--color-text-secondary)">
+            Select a value for padding, margin, or gap to visualize it in
+            context.
           </p>
         </div>
 
         {/* Controls */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Spacing Controls</CardTitle>
+            <CardTitle className="text-base">Controls</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Padding */}
             <div className="space-y-2">
-              <Label className="text-sm font-medium">Padding</Label>
-              <div className="grid grid-cols-5 gap-2">
-                {spacingValues.map((item) => (
+              <Label className="text-sm font-semibold">
+                Padding —{" "}
+                <code className="font-mono text-xs text-(--color-text-secondary)">
+                  p-{padding}
+                </code>{" "}
+                <span className="text-(--color-text-tertiary) font-normal">
+                  ({playgroundSteps.find((s) => s.name === padding)?.px ?? 0}px)
+                </span>
+              </Label>
+              <div className="flex flex-wrap gap-2">
+                {playgroundSteps.map((step) => (
                   <Button
-                    key={`p-${item.value}`}
+                    key={step.name}
                     size="sm"
-                    variant={
-                      padding === `p-${item.value}` ? "default" : "outline"
-                    }
-                    onClick={() => setPadding(`p-${item.value}`)}
+                    variant={padding === step.name ? "default" : "outline"}
+                    onClick={() => setPadding(step.name)}
                   >
-                    {item.label}
+                    {step.name}
                   </Button>
                 ))}
               </div>
@@ -205,18 +436,24 @@ export const SpacingPlayground: Story = {
 
             {/* Margin */}
             <div className="space-y-2">
-              <Label className="text-sm font-medium">Margin</Label>
-              <div className="grid grid-cols-5 gap-2">
-                {spacingValues.map((item) => (
+              <Label className="text-sm font-semibold">
+                Margin —{" "}
+                <code className="font-mono text-xs text-(--color-text-secondary)">
+                  m-{margin}
+                </code>{" "}
+                <span className="text-(--color-text-tertiary) font-normal">
+                  ({playgroundSteps.find((s) => s.name === margin)?.px ?? 0}px)
+                </span>
+              </Label>
+              <div className="flex flex-wrap gap-2">
+                {playgroundSteps.map((step) => (
                   <Button
-                    key={`m-${item.value}`}
+                    key={step.name}
                     size="sm"
-                    variant={
-                      margin === `m-${item.value}` ? "default" : "outline"
-                    }
-                    onClick={() => setMargin(`m-${item.value}`)}
+                    variant={margin === step.name ? "default" : "outline"}
+                    onClick={() => setMargin(step.name)}
                   >
-                    {item.label}
+                    {step.name}
                   </Button>
                 ))}
               </div>
@@ -224,18 +461,24 @@ export const SpacingPlayground: Story = {
 
             {/* Gap */}
             <div className="space-y-2">
-              <Label className="text-sm font-medium">Gap (for flex/grid)</Label>
-              <div className="grid grid-cols-5 gap-2">
-                {spacingValues.map((item) => (
+              <Label className="text-sm font-semibold">
+                Gap —{" "}
+                <code className="font-mono text-xs text-(--color-text-secondary)">
+                  gap-{gap}
+                </code>{" "}
+                <span className="text-(--color-text-tertiary) font-normal">
+                  ({playgroundSteps.find((s) => s.name === gap)?.px ?? 0}px)
+                </span>
+              </Label>
+              <div className="flex flex-wrap gap-2">
+                {playgroundSteps.map((step) => (
                   <Button
-                    key={`gap-${item.value}`}
+                    key={step.name}
                     size="sm"
-                    variant={
-                      gap === `gap-${item.value}` ? "default" : "outline"
-                    }
-                    onClick={() => setGap(`gap-${item.value}`)}
+                    variant={gap === step.name ? "default" : "outline"}
+                    onClick={() => setGap(step.name)}
                   >
-                    {item.label}
+                    {step.name}
                   </Button>
                 ))}
               </div>
@@ -243,164 +486,84 @@ export const SpacingPlayground: Story = {
           </CardContent>
         </Card>
 
-        {/* Live Preview - Padding */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Padding Preview</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="relative border-2 border-dashed border-blue-600/50 bg-blue-600/10">
-              <div className={`${padding} bg-white border-2 border-blue-600`}>
-                <div className="text-sm text-center py-4">
-                  Content with {padding}
+        {/* Live Previews */}
+        <div className="grid md:grid-cols-2 gap-4">
+          {/* Padding Preview */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Padding Preview</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="relative border-2 border-dashed border-(--color-interactive-primary)/40 bg-(--color-interactive-primary)/5 rounded">
+                <span className="absolute top-1.5 left-2 text-[10px] font-mono text-(--color-interactive-primary)/70">
+                  padding area
+                </span>
+                <div
+                  className={`${pClass} bg-(--color-background-primary) border-2 border-(--color-interactive-primary) rounded m-4`}
+                >
+                  <div className="text-sm text-center text-(--color-text-secondary) py-2">
+                    Content
+                  </div>
                 </div>
               </div>
-              <div className="absolute top-2 left-2 text-xs font-mono text-blue-600">
-                padding area
+              <div className="mt-3 p-3 rounded-md bg-(--color-background-secondary)/50 text-xs font-mono">
+                className="{pClass}"
               </div>
-            </div>
-            <div className="mt-3 p-3 rounded-md bg-gray-100/50">
-              <code className="text-xs font-mono">className="{padding}"</code>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
 
-        {/* Live Preview - Margin */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Margin Preview</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="border-2 border-dashed border-yellow-600/50 bg-yellow-600/10 p-4">
-              <div
-                className={`${margin} bg-white border-2 border-yellow-600 p-4`}
-              >
-                <div className="text-sm text-center">Element with {margin}</div>
+          {/* Margin Preview */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Margin Preview</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="border-2 border-dashed border-(--color-status-warning)/40 bg-(--color-status-warning)/5 rounded p-1">
+                <span className="block text-[10px] font-mono text-(--color-status-warning)/70 px-1 pb-1">
+                  margin area
+                </span>
+                <div
+                  className={`${mClass} bg-(--color-background-primary) border-2 border-(--color-status-warning) rounded p-4`}
+                >
+                  <div className="text-sm text-center text-(--color-text-secondary)">
+                    Content
+                  </div>
+                </div>
               </div>
-              <div className="mt-2 text-xs font-mono text-yellow-600 text-center">
-                margin area (orange)
+              <div className="mt-3 p-3 rounded-md bg-(--color-background-secondary)/50 text-xs font-mono">
+                className="{mClass}"
               </div>
-            </div>
-            <div className="mt-3 p-3 rounded-md bg-gray-100/50">
-              <code className="text-xs font-mono">className="{margin}"</code>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
 
-        {/* Live Preview - Gap */}
+        {/* Gap Preview */}
         <Card>
           <CardHeader>
             <CardTitle className="text-base">Gap Preview (Flex)</CardTitle>
           </CardHeader>
           <CardContent>
             <div
-              className={`flex ${gap} p-4 border border-gray-200 rounded-lg bg-gray-100/30`}
+              className={`flex ${gClass} p-4 border border-(--color-border-primary) rounded-lg bg-(--color-background-secondary)/30`}
             >
-              {[1, 2, 3].map((i) => (
+              {["Item 1", "Item 2", "Item 3"].map((label) => (
                 <div
-                  key={i}
-                  className="flex-1 p-4 bg-blue-600/20 border border-blue-500 rounded text-center text-sm"
+                  key={label}
+                  className="flex-1 p-4 bg-(--color-interactive-primary)/10 border border-(--color-interactive-primary)/30 rounded text-center text-sm"
                 >
-                  Item {i}
+                  {label}
                 </div>
               ))}
             </div>
-            <div className="mt-3 p-3 rounded-md bg-gray-100/50">
-              <code className="text-xs font-mono">className="flex {gap}"</code>
+            <div className="mt-3 p-3 rounded-md bg-(--color-background-secondary)/50 text-xs font-mono">
+              className="flex {gClass}"
             </div>
           </CardContent>
         </Card>
 
-        {/* Visual Scale Comparison */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Visual Scale Comparison</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {spacingValues.map((item) => (
-                <div key={item.value} className="flex items-center gap-4">
-                  <div className="w-20 text-xs font-mono text-gray-500">
-                    {item.label}
-                  </div>
-                  <div
-                    className="bg-blue-600 h-6"
-                    style={{
-                      width:
-                        item.value === "0"
-                          ? "0"
-                          : item.value === "0.5"
-                            ? "2px"
-                            : item.value === "1"
-                              ? "4px"
-                              : item.value === "2"
-                                ? "8px"
-                                : item.value === "3"
-                                  ? "12px"
-                                  : item.value === "4"
-                                    ? "16px"
-                                    : item.value === "6"
-                                      ? "24px"
-                                      : item.value === "8"
-                                        ? "32px"
-                                        : item.value === "12"
-                                          ? "48px"
-                                          : "64px",
-                    }}
-                  />
-                  <div className="text-xs font-mono text-gray-500">
-                    p-{item.value}, m-{item.value}, gap-{item.value}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Usage Examples */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Common Usage Patterns</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <p className="text-sm font-medium mb-2">Card Component</p>
-              <code className="text-xs font-mono bg-gray-100 p-2 rounded block">
-                className="p-6" {/* Padding: 24px */}
-              </code>
-            </div>
-            <div>
-              <p className="text-sm font-medium mb-2">Button Component</p>
-              <code className="text-xs font-mono bg-gray-100 p-2 rounded block">
-                className="px-4 py-2" {/* Horizontal: 16px, Vertical: 8px */}
-              </code>
-            </div>
-            <div>
-              <p className="text-sm font-medium mb-2">Stack Layout</p>
-              <code className="text-xs font-mono bg-gray-100 p-2 rounded block">
-                className="space-y-4" {/* Vertical gap: 16px */}
-              </code>
-            </div>
-            <div>
-              <p className="text-sm font-medium mb-2">Grid Layout</p>
-              <code className="text-xs font-mono bg-gray-100 p-2 rounded block">
-                className="grid gap-6" {/* Grid gap: 24px */}
-              </code>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Reset Button */}
+        {/* Reset */}
         <div className="flex justify-end">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => {
-              setPadding("p-4");
-              setMargin("m-4");
-              setGap("gap-4");
-            }}
-          >
+          <Button variant="outline" size="sm" onClick={handleReset}>
             Reset to Defaults
           </Button>
         </div>

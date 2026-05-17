@@ -4639,10 +4639,10 @@
         },
         "scroll-area.scrollbar-padding": {
           "$type": "spacing",
-          "$value": "1px",
+          "$value": "{space.025}",
           "valuesByMode": {
-            "Light": "1px",
-            "Dark": "1px"
+            "Light": "{space.025}",
+            "Dark": "{space.025}"
           }
         },
         "context-menu.checkbox-padding": {
@@ -5151,10 +5151,10 @@
         },
         "card.title.letter-spacing": {
           "$type": "dimension",
-          "$value": "-0.025em",
+          "$value": "{typography.tracking.tight}",
           "valuesByMode": {
-            "Light": "-0.025em",
-            "Dark": "-0.025em"
+            "Light": "{typography.tracking.tight}",
+            "Dark": "{typography.tracking.tight}"
           }
         },
         "card.content.font-size": {

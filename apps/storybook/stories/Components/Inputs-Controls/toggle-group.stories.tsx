@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
 import { ToggleGroup, ToggleGroupItem } from "@wyliedog/ui/toggle-group";
 import { Textarea } from "@wyliedog/ui/textarea";
+import { Label } from "@wyliedog/ui/label";
+import { Separator } from "@wyliedog/ui/separator";
 import {
   BoldIcon,
   ItalicIcon,
@@ -391,7 +393,7 @@ export const EditorToolbar: Story = {
           </ToggleGroupItem>
         </ToggleGroup>
 
-        <div className="w-px h-6 bg-gray-50" />
+        <Separator orientation="vertical" className="h-6" />
 
         <ToggleGroup type="single" defaultValue="left">
           <ToggleGroupItem value="left" aria-label="Align left">
@@ -405,7 +407,7 @@ export const EditorToolbar: Story = {
           </ToggleGroupItem>
         </ToggleGroup>
 
-        <div className="w-px h-6 bg-gray-50" />
+        <Separator orientation="vertical" className="h-6" />
 
         <ToggleGroup type="multiple">
           <ToggleGroupItem value="list" aria-label="Bullet list">
@@ -449,9 +451,9 @@ export const Accessibility: Story = {
 
       <div className="space-y-4">
         <div>
-          <label className="text-sm font-medium mb-2 block">
+          <Label className="mb-2 block">
             Text Formatting (Multiple Selection)
-          </label>
+          </Label>
           <ToggleGroup
             type="multiple"
             aria-label="Text formatting options"
@@ -493,9 +495,7 @@ export const Accessibility: Story = {
         </div>
 
         <div>
-          <label className="text-sm font-medium mb-2 block">
-            View Mode (Single Selection)
-          </label>
+          <Label className="mb-2 block">View Mode (Single Selection)</Label>
           <ToggleGroup
             type="single"
             defaultValue="list"

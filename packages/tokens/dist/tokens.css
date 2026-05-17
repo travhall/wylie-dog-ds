@@ -151,6 +151,7 @@
   --color-yellow-900: oklch(0.435 0.089 87.05);
   --color-yellow-950: oklch(0.312 0.064 86.31);
   --space-0: 0px;
+  --space-025: 1px;
   --space-050: 4px;
   --space-100: 8px;
   --space-150: 12px;

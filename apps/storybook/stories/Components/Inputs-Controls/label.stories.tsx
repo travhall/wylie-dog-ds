@@ -4,6 +4,29 @@ import { Label } from "@wyliedog/ui/label";
 import { Input } from "@wyliedog/ui/input";
 import { Checkbox } from "@wyliedog/ui/checkbox";
 import { Switch } from "@wyliedog/ui/switch";
+import { Button } from "@wyliedog/ui/button";
+import {
+  Form,
+  FormField,
+  FormLabel,
+  FormMessage,
+  useFormField,
+} from "@wyliedog/ui/form";
+
+function FieldInput(props: React.ComponentProps<typeof Input>) {
+  const { id, isInvalid, errorId, descriptionId } = useFormField();
+  return (
+    <Input
+      id={id}
+      error={isInvalid}
+      aria-invalid={isInvalid || undefined}
+      aria-describedby={
+        [errorId, descriptionId].filter(Boolean).join(" ") || undefined
+      }
+      {...props}
+    />
+  );
+}
 
 const meta: Meta<typeof Label> = {
   title: "Components/Inputs & Controls/Label",
@@ -79,7 +102,7 @@ export const Default: Story = {
     },
   },
   render: (args) => (
-    <div className="w-64 space-y-2">
+    <div className="w-full max-w-xs space-y-2">
       <Label {...args} />
       <Input
         id="email-default"
@@ -104,7 +127,7 @@ export const Required: Story = {
     },
   },
   render: (args) => (
-    <div className="w-64 space-y-2">
+    <div className="w-full max-w-xs space-y-2">
       <Label {...args} />
       <Input
         id="password-required"
@@ -131,11 +154,13 @@ export const WithError: Story = {
     },
   },
   render: (args) => (
-    <div className="w-64 space-y-2">
-      <Label {...args} />
-      <Input id="username-error" error placeholder="Username is required" />
-      <p className="text-xs text-red-600">This field is required</p>
-    </div>
+    <Form className="w-full max-w-xs">
+      <FormField error={args.error} required={args.required}>
+        <FormLabel size={args.size}>{args.children}</FormLabel>
+        <FieldInput placeholder="Username is required" />
+        <FormMessage>This field is required</FormMessage>
+      </FormField>
+    </Form>
   ),
 };
 
@@ -149,19 +174,19 @@ export const AllSizes: Story = {
   },
   render: () => (
     <div className="space-y-6">
-      <div className="w-64 space-y-2">
+      <div className="w-full max-w-xs space-y-2">
         <Label size="sm" htmlFor="small-input">
           Small Label
         </Label>
         <Input id="small-input" size="sm" placeholder="Small input" />
       </div>
-      <div className="w-64 space-y-2">
+      <div className="w-full max-w-xs space-y-2">
         <Label size="md" htmlFor="medium-input">
           Medium Label (Default)
         </Label>
         <Input id="medium-input" size="md" placeholder="Medium input" />
       </div>
-      <div className="w-64 space-y-2">
+      <div className="w-full max-w-xs space-y-2">
         <Label size="lg" htmlFor="large-input">
           Large Label
         </Label>
@@ -235,7 +260,7 @@ export const WithSwitches: Story = {
     },
   },
   render: () => (
-    <div className="space-y-4 w-64">
+    <div className="space-y-4 w-full max-w-xs">
       <div className="flex items-center justify-between">
         <Label htmlFor="notifications">Email notifications</Label>
         <Switch id="notifications" />
@@ -264,44 +289,28 @@ export const FormExamples: Story = {
     },
   },
   render: () => (
-    <div className="max-w-md space-y-6">
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Contact Form</h3>
+    <Form className="w-full max-w-md">
+      <FormField required>
+        <FormLabel>Full Name</FormLabel>
+        <FieldInput placeholder="John Doe" />
+      </FormField>
 
-        <div className="space-y-2">
-          <Label htmlFor="contact-name" required>
-            Full Name
-          </Label>
-          <Input id="contact-name" placeholder="John Doe" />
-        </div>
+      <FormField required>
+        <FormLabel>Email Address</FormLabel>
+        <FieldInput type="email" placeholder="john@example.com" />
+      </FormField>
 
-        <div className="space-y-2">
-          <Label htmlFor="contact-email" required>
-            Email Address
-          </Label>
-          <Input
-            id="contact-email"
-            type="email"
-            placeholder="john@example.com"
-          />
-        </div>
+      <FormField>
+        <FormLabel>Phone Number</FormLabel>
+        <FieldInput type="tel" placeholder="+1 (555) 123-4567" />
+      </FormField>
 
-        <div className="space-y-2">
-          <Label htmlFor="contact-phone">Phone Number</Label>
-          <Input
-            id="contact-phone"
-            type="tel"
-            placeholder="+1 (555) 123-4567"
-          />
-        </div>
-
-        <div className="flex items-center space-x-2">
-          <Checkbox id="contact-consent" />
-          <Label htmlFor="contact-consent" required>
-            I agree to be contacted via email
-          </Label>
-        </div>
+      <div className="flex items-center space-x-2">
+        <Checkbox id="contact-consent" />
+        <Label htmlFor="contact-consent" required>
+          I agree to be contacted via email
+        </Label>
       </div>
-    </div>
+    </Form>
   ),
 };

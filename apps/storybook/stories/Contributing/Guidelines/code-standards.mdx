@@ -15,7 +15,7 @@ All components must be fully typed with no `any` types except where absolutely n
 ```tsx
 // ✅ Good
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'primary' | 'outline';
+  variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'link' | 'destructive';
   size?: 'sm' | 'md' | 'lg';
 }
 
@@ -66,12 +66,14 @@ export function Select<T extends string | number>({
 ### File Organization
 
 ```
-components/
-├── button/
-│   ├── button.tsx           # Main component
-│   ├── button.test.tsx      # Tests
-│   ├── button.stories.tsx   # Storybook stories
-│   └── index.ts             # Public exports
+packages/ui/src/
+├── button.tsx                        # Component implementation
+├── __tests__/
+│   └── button.test.tsx               # Vitest unit tests
+
+apps/storybook/stories/Components/
+└── Inputs-Controls/
+    └── button.stories.tsx            # Storybook stories
 ```
 
 ### Component Template
@@ -85,7 +87,7 @@ import { cn } from '@/lib/utils';
 // 1. Type definitions
 export interface ComponentProps
   extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'primary';
+  variant?: 'default' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
 }
 
@@ -110,15 +112,18 @@ export const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 Component.displayName = 'Component';
 
 // 3. Style variants (if complex)
+// Variant styles reference component tokens exclusively
 const variantStyles = {
-  default: 'bg-(--color-background-primary) text-(--color-text-primary)',
-  primary: 'bg-(--color-interactive-primary) text-white',
+  default: 'bg-(--color-component-background) text-(--color-component-text)',
+  secondary: 'bg-(--color-component-background-secondary) text-(--color-component-text-secondary)',
+  outline: 'border border-(--color-component-border) text-(--color-component-text)',
 };
 
+// Size styles reference component tokens — never hardcoded Tailwind scale values
 const sizeStyles = {
-  sm: 'text-sm px-2 py-1',
-  md: 'text-base px-3 py-2',
-  lg: 'text-lg px-4 py-3',
+  sm: 'text-(length:--font-size-component-sm) px-(--space-component-padding-x-sm) py-(--space-component-padding-y-sm)',
+  md: 'text-(length:--font-size-component-md) px-(--space-component-padding-x-md) py-(--space-component-padding-y-md)',
+  lg: 'text-(length:--font-size-component-lg) px-(--space-component-padding-x-lg) py-(--space-component-padding-y-lg)',
 };
 ```
 
@@ -146,7 +151,7 @@ describe('Button', () => {
   });
 
   it('calls onClick when clicked', async () => {
-    const handleClick = jest.fn();
+    const handleClick = vi.fn();
     render(<Button onClick={handleClick}>Click</Button>);
 
     await userEvent.click(screen.getByRole('button'));
@@ -154,7 +159,7 @@ describe('Button', () => {
   });
 
   it('is keyboard accessible', async () => {
-    const handleClick = jest.fn();
+    const handleClick = vi.fn();
     render(<Button onClick={handleClick}>Click</Button>);
 
     const button = screen.getByRole('button');
@@ -287,7 +292,7 @@ import { Icon } from '../icon';
  *
  * @example
  * ```tsx
- * <Button variant="primary" size="lg">
+ * <Button variant="default" size="lg">
  *   Click me
  * </Button>
  * ```

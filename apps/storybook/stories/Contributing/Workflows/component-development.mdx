@@ -145,11 +145,14 @@ git branch
 Follow the [file structure](/docs/contributing-guidelines-code-standards--docs#file-organization):
 
 ```bash
-packages/ui/src/components/component-name/
-├── component-name.tsx       # Main component
-├── component-name.test.tsx  # Unit tests
-├── component-name.stories.tsx # Storybook stories
-└── index.ts                 # Public exports
+# Component implementation (flat structure)
+packages/ui/src/component-name.tsx
+
+# Unit tests
+packages/ui/src/__tests__/component-name.test.tsx
+
+# Storybook stories (under the appropriate category folder)
+apps/storybook/stories/Components/<Category>/component-name.stories.tsx
 ```
 
 ### 3. Implement the Component
@@ -163,7 +166,7 @@ import { cn } from '@/lib/utils';
 // 1. Type definitions
 export interface ComponentNameProps
   extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'primary';
+  variant?: 'default' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
 }
 
@@ -189,15 +192,18 @@ export const ComponentName = React.forwardRef<
 ComponentName.displayName = 'ComponentName';
 
 // 3. Style variants
+// Variant styles reference component tokens exclusively
 const variantStyles = {
-  default: 'bg-(--color-background-primary) text-(--color-text-primary)',
-  primary: 'bg-(--color-interactive-primary) text-white',
+  default: 'bg-(--color-component-background) text-(--color-component-text)',
+  secondary: 'bg-(--color-component-background-secondary) text-(--color-component-text-secondary)',
+  outline: 'border border-(--color-component-border) text-(--color-component-text)',
 };
 
+// Size styles reference component tokens — never hardcoded Tailwind scale values
 const sizeStyles = {
-  sm: 'text-sm px-2 py-1',
-  md: 'text-base px-3 py-2',
-  lg: 'text-lg px-4 py-3',
+  sm: 'text-(length:--font-size-component-sm) px-(--space-component-padding-x-sm) py-(--space-component-padding-y-sm)',
+  md: 'text-(length:--font-size-component-md) px-(--space-component-padding-x-md) py-(--space-component-padding-y-md)',
+  lg: 'text-(length:--font-size-component-lg) px-(--space-component-padding-x-lg) py-(--space-component-padding-y-lg)',
 };
 ```
 
@@ -217,7 +223,7 @@ describe('ComponentName', () => {
   });
 
   it('applies variant styles', () => {
-    render(<ComponentName variant="primary">Content</ComponentName>);
+    render(<ComponentName variant="secondary">Content</ComponentName>);
     const element = screen.getByText('Content');
     expect(element).toHaveClass('bg-(--color-interactive-primary)');
   });
@@ -229,7 +235,7 @@ describe('ComponentName', () => {
   });
 
   it('is keyboard accessible', async () => {
-    const handleClick = jest.fn();
+    const handleClick = vi.fn();
     render(<ComponentName onClick={handleClick}>Content</ComponentName>);
 
     const element = screen.getByText('Content');
@@ -276,7 +282,7 @@ const meta: Meta<typeof ComponentName> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'primary'],
+      options: ['default', 'secondary', 'outline'],
       description: 'Visual style variant',
     },
     size: {
@@ -298,10 +304,10 @@ export const Default: Story = {
 };
 
 // Variant stories
-export const Primary: Story = {
+export const Secondary: Story = {
   args: {
-    variant: 'primary',
-    children: 'Primary variant',
+    variant: 'secondary',
+    children: 'Secondary variant',
   },
 };
 
@@ -320,7 +326,7 @@ export const Sizes: Story = {
 export const Example: Story = {
   render: () => (
     <div className="space-y-4">
-      <ComponentName variant="primary">
+      <ComponentName>
         Real-world usage example
       </ComponentName>
     </div>
@@ -343,7 +349,7 @@ Create comprehensive docs in the story file:
  *
  * export function Example() {
  *   return (
- *     <ComponentName variant="primary" size="md">
+ *     <ComponentName variant="default" size="md">
  *       Content
  *     </ComponentName>
  *   );
@@ -525,7 +531,7 @@ Announce the new component:
 <Button variant="primary-large-with-icon-left-rounded-elevated" />
 
 // ✅ Good - Compose simple props
-<Button variant="primary" size="lg" icon={<Icon />}>
+<Button variant="default" size="lg" icon={<Icon />}>
   Click me
 </Button>
 ```

@@ -3,6 +3,29 @@ import { within, userEvent, expect } from "storybook/test";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 import { Button } from "@wyliedog/ui/button";
+import {
+  Form,
+  FormField,
+  FormLabel,
+  FormMessage,
+  FormDescription,
+  useFormField,
+} from "@wyliedog/ui/form";
+
+function FieldInput(props: React.ComponentProps<typeof Input>) {
+  const { id, isInvalid, errorId, descriptionId } = useFormField();
+  return (
+    <Input
+      id={id}
+      error={isInvalid}
+      aria-invalid={isInvalid || undefined}
+      aria-describedby={
+        [errorId, descriptionId].filter(Boolean).join(" ") || undefined
+      }
+      {...props}
+    />
+  );
+}
 
 const meta: Meta<typeof Input> = {
   title: "Components/Inputs & Controls/Input",
@@ -102,7 +125,7 @@ export const Default: Story = {
     },
   },
   render: (args) => (
-    <div className="w-64 space-y-2">
+    <div className="w-full max-w-xs space-y-2">
       <Label htmlFor="default-input" size={args.size}>
         Default Input
       </Label>
@@ -125,20 +148,13 @@ export const WithError: Story = {
     },
   },
   render: (args) => (
-    <div className="w-64 space-y-2">
-      <Label htmlFor="error-input" error required>
-        Username
-      </Label>
-      <Input
-        id="error-input"
-        aria-describedby="error-message"
-        aria-invalid
-        {...args}
-      />
-      <p id="error-message" className="text-xs text-red-600" role="alert">
-        Username must be at least 3 characters long
-      </p>
-    </div>
+    <Form className="w-full max-w-xs">
+      <FormField error={args.error} required>
+        <FormLabel>Username</FormLabel>
+        <FieldInput placeholder={args.placeholder} />
+        <FormMessage>Username must be at least 3 characters long</FormMessage>
+      </FormField>
+    </Form>
   ),
 };
 
@@ -153,15 +169,15 @@ export const AllSizes: Story = {
   },
   render: () => (
     <div className="space-y-6">
-      <div className="w-64 space-y-2">
+      <div className="w-full max-w-xs space-y-2">
         <Label size="sm">Small Input</Label>
         <Input size="sm" placeholder="Small input" />
       </div>
-      <div className="w-64 space-y-2">
+      <div className="w-full max-w-xs space-y-2">
         <Label size="md">Medium Input (Default)</Label>
         <Input size="md" placeholder="Medium input" />
       </div>
-      <div className="w-64 space-y-2">
+      <div className="w-full max-w-xs space-y-2">
         <Label size="lg">Large Input</Label>
         <Input size="lg" placeholder="Large input" />
       </div>
@@ -266,7 +282,7 @@ export const States: Story = {
     <div className="grid grid-cols-2 gap-6">
       <div className="space-y-2">
         <Label htmlFor="normal-input">Normal State</Label>
-        <Input id="normal-input" placeholder="Normal input" className="w-64" />
+        <Input id="normal-input" placeholder="Normal input" />
       </div>
       <div className="space-y-2">
         <Label htmlFor="disabled-input">Disabled State</Label>
@@ -274,7 +290,6 @@ export const States: Story = {
           id="disabled-input"
           disabled
           placeholder="Disabled input"
-          className="w-64"
           defaultValue="Cannot be edited"
         />
       </div>
@@ -282,20 +297,11 @@ export const States: Story = {
         <Label htmlFor="error-state-input" error>
           Error State
         </Label>
-        <Input
-          id="error-state-input"
-          error
-          placeholder="Input with error"
-          className="w-64"
-        />
+        <Input id="error-state-input" error placeholder="Input with error" />
       </div>
       <div className="space-y-2">
         <Label htmlFor="filled-input">With Content</Label>
-        <Input
-          id="filled-input"
-          className="w-64"
-          defaultValue="This input has content"
-        />
+        <Input id="filled-input" defaultValue="This input has content" />
       </div>
     </div>
   ),
@@ -311,66 +317,48 @@ export const FormExample: Story = {
     },
   },
   render: () => (
-    <div className="w-96 space-y-6">
-      <h3 className="text-lg font-semibold">Registration Form</h3>
-
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label htmlFor="form-first-name" required>
-              First Name
-            </Label>
-            <Input id="form-first-name" placeholder="John" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="form-last-name" required>
-              Last Name
-            </Label>
-            <Input id="form-last-name" placeholder="Doe" />
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="form-email" required>
-            Email Address
-          </Label>
-          <Input id="form-email" type="email" placeholder="john@example.com" />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="form-phone">Phone Number</Label>
-          <Input id="form-phone" type="tel" placeholder="+1 (555) 123-4567" />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="form-company">Company</Label>
-          <Input id="form-company" placeholder="Acme Corp" />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="form-password" required>
-            Password
-          </Label>
-          <Input id="form-password" type="password" placeholder="••••••••" />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="form-confirm-password" required>
-            Confirm Password
-          </Label>
-          <Input
-            id="form-confirm-password"
-            type="password"
-            placeholder="••••••••"
-          />
-        </div>
-
-        <div className="flex gap-3 pt-4">
-          <Button className="flex-1">Create Account</Button>
-          <Button variant="ghost">Cancel</Button>
-        </div>
+    <Form className="w-full max-w-md">
+      <div className="grid grid-cols-2 gap-4">
+        <FormField required>
+          <FormLabel>First Name</FormLabel>
+          <FieldInput placeholder="John" />
+        </FormField>
+        <FormField required>
+          <FormLabel>Last Name</FormLabel>
+          <FieldInput placeholder="Doe" />
+        </FormField>
       </div>
-    </div>
+
+      <FormField required>
+        <FormLabel>Email Address</FormLabel>
+        <FieldInput type="email" placeholder="john@example.com" />
+      </FormField>
+
+      <FormField>
+        <FormLabel>Phone Number</FormLabel>
+        <FieldInput type="tel" placeholder="+1 (555) 123-4567" />
+      </FormField>
+
+      <FormField>
+        <FormLabel>Company</FormLabel>
+        <FieldInput placeholder="Acme Corp" />
+      </FormField>
+
+      <FormField required>
+        <FormLabel>Password</FormLabel>
+        <FieldInput type="password" placeholder="••••••••" />
+      </FormField>
+
+      <FormField required>
+        <FormLabel>Confirm Password</FormLabel>
+        <FieldInput type="password" placeholder="••••••••" />
+      </FormField>
+
+      <div className="flex gap-3 pt-4">
+        <Button className="flex-1">Create Account</Button>
+        <Button variant="ghost">Cancel</Button>
+      </div>
+    </Form>
   ),
 };
 
@@ -384,7 +372,7 @@ export const WithInteractions: Story = {
     },
   },
   render: () => (
-    <div className="w-96 space-y-6">
+    <div className="w-full max-w-md space-y-6">
       <div className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="username-input" required>

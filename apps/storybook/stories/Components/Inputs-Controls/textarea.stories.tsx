@@ -4,6 +4,28 @@ import { within, userEvent, expect } from "storybook/test";
 import { Textarea } from "@wyliedog/ui/textarea";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
+import {
+  Form,
+  FormField,
+  FormLabel,
+  FormMessage,
+  useFormField,
+} from "@wyliedog/ui/form";
+
+function FieldTextarea(props: React.ComponentProps<typeof Textarea>) {
+  const { id, isInvalid, errorId, descriptionId } = useFormField();
+  return (
+    <Textarea
+      id={id}
+      error={isInvalid}
+      aria-invalid={isInvalid || undefined}
+      aria-describedby={
+        [errorId, descriptionId].filter(Boolean).join(" ") || undefined
+      }
+      {...props}
+    />
+  );
+}
 
 const meta: Meta<typeof Textarea> = {
   title: "Components/Inputs & Controls/Textarea",
@@ -90,7 +112,7 @@ export const Default: Story = {
     },
   },
   render: (args) => (
-    <div className="w-96 space-y-2">
+    <div className="w-full max-w-sm space-y-2">
       <Label htmlFor="default-textarea" size={args.size}>
         Message
       </Label>
@@ -113,15 +135,15 @@ export const WithError: Story = {
     },
   },
   render: (args) => (
-    <div className="w-96 space-y-2">
-      <Label htmlFor="error-textarea" error required>
-        Description
-      </Label>
-      <Textarea id="error-textarea" {...args} />
-      <p className="text-xs text-red-600">
-        This field is required and must be at least 10 characters
-      </p>
-    </div>
+    <Form className="w-full max-w-sm">
+      <FormField error={args.error} required>
+        <FormLabel>Description</FormLabel>
+        <FieldTextarea placeholder={args.placeholder} />
+        <FormMessage>
+          This field is required and must be at least 10 characters
+        </FormMessage>
+      </FormField>
+    </Form>
   ),
 };
 
@@ -136,21 +158,21 @@ export const AllSizes: Story = {
   },
   render: () => (
     <div className="space-y-6">
-      <div className="w-96 space-y-2">
+      <div className="w-full max-w-sm space-y-2">
         <Label size="sm">Small Textarea</Label>
         <Textarea
           size="sm"
           placeholder="Small textarea for brief comments..."
         />
       </div>
-      <div className="w-96 space-y-2">
+      <div className="w-full max-w-sm space-y-2">
         <Label size="md">Medium Textarea (Default)</Label>
         <Textarea
           size="md"
           placeholder="Medium textarea for standard input..."
         />
       </div>
-      <div className="w-96 space-y-2">
+      <div className="w-full max-w-sm space-y-2">
         <Label size="lg">Large Textarea</Label>
         <Textarea
           size="lg"
@@ -174,18 +196,13 @@ export const ResizeOptions: Story = {
     <div className="grid grid-cols-2 gap-6">
       <div className="space-y-2">
         <Label>No Resize</Label>
-        <Textarea
-          resize="none"
-          placeholder="This textarea cannot be resized"
-          className="w-64"
-        />
+        <Textarea resize="none" placeholder="This textarea cannot be resized" />
       </div>
       <div className="space-y-2">
         <Label>Vertical Resize (Default)</Label>
         <Textarea
           resize="vertical"
           placeholder="This textarea can be resized vertically"
-          className="w-64"
         />
       </div>
       <div className="space-y-2">
@@ -193,7 +210,6 @@ export const ResizeOptions: Story = {
         <Textarea
           resize="horizontal"
           placeholder="This textarea can be resized horizontally"
-          className="w-64"
         />
       </div>
       <div className="space-y-2">
@@ -201,7 +217,6 @@ export const ResizeOptions: Story = {
         <Textarea
           resize="both"
           placeholder="This textarea can be resized in both directions"
-          className="w-64"
         />
       </div>
     </div>
@@ -221,27 +236,23 @@ export const States: Story = {
     <div className="grid grid-cols-2 gap-6">
       <div className="space-y-2">
         <Label>Normal State</Label>
-        <Textarea placeholder="Normal textarea" className="w-64" />
+        <Textarea placeholder="Normal textarea" />
       </div>
       <div className="space-y-2">
         <Label>Disabled State</Label>
         <Textarea
           disabled
           placeholder="Disabled textarea"
-          className="w-64"
           defaultValue="This content cannot be edited"
         />
       </div>
       <div className="space-y-2">
         <Label error>Error State</Label>
-        <Textarea error placeholder="Textarea with error" className="w-64" />
+        <Textarea error placeholder="Textarea with error" />
       </div>
       <div className="space-y-2">
         <Label>With Content</Label>
-        <Textarea
-          className="w-64"
-          defaultValue="This textarea has some existing content that demonstrates how text flows within the component."
-        />
+        <Textarea defaultValue="This textarea has some existing content that demonstrates how text flows within the component." />
       </div>
     </div>
   ),

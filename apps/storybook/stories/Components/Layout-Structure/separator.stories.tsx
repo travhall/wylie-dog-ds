@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Separator } from "@wyliedog/ui/separator";
+import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta<typeof Separator> = {
   title: "Components/Layout & Structure/Separator",
   component: Separator,
   parameters: {
-    layout: "centered",
+    layout: "padded",
     docs: {
       description: {
         component:
@@ -54,7 +55,7 @@ export const Horizontal: Story = {
     },
   },
   render: (args) => (
-    <div className="w-64">
+    <div className="w-full max-w-xs">
       <div className="space-y-1">
         <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
         <p className="text-sm text-gray-500">
@@ -144,16 +145,24 @@ export const InLists: Story = {
     },
   },
   render: () => (
-    <div className="w-64 space-y-1">
-      <div className="px-3 py-2 text-sm hover:bg-gray-100 rounded">Profile</div>
-      <div className="px-3 py-2 text-sm hover:bg-gray-100 rounded">
+    <div className="w-full max-w-xs flex flex-col gap-1">
+      <Button variant="ghost" className="justify-start">
+        Profile
+      </Button>
+      <Button variant="ghost" className="justify-start">
         Settings
-      </div>
-      <Separator className="my-1" />
-      <div className="px-3 py-2 text-sm hover:bg-gray-100 rounded">Team</div>
-      <div className="px-3 py-2 text-sm hover:bg-gray-100 rounded">Billing</div>
-      <Separator className="my-1" />
-      <div className="px-3 py-2 text-sm hover:bg-gray-100 rounded">Logout</div>
+      </Button>
+      <Separator />
+      <Button variant="ghost" className="justify-start">
+        Team
+      </Button>
+      <Button variant="ghost" className="justify-start">
+        Billing
+      </Button>
+      <Separator />
+      <Button variant="ghost" className="justify-start">
+        Log out
+      </Button>
     </div>
   ),
 };

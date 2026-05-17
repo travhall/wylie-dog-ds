@@ -311,7 +311,7 @@ export const ImageGallery: Story = {
               <Card>
                 <CardContent className="p-0">
                   <div
-                    className={`aspect-video rounded bg-linear-to-br from-gray-200 to-gray-300 flex items-center justify-center`}
+                    className={`aspect-video rounded bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center`}
                   >
                     <span className="text-lg text-gray-500">
                       Image {index + 1}

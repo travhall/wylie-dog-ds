@@ -117,9 +117,9 @@ export const SimpleLogin: Story = {
             </Button>
             <p className="text-sm text-center text-gray-500">
               Don't have an account?{" "}
-              <a href="#" className="text-blue-600 hover:underline">
+              <Button variant="link" className="h-auto p-0 text-sm font-normal">
                 Sign up
-              </a>
+              </Button>
             </p>
           </CardFooter>
         </form>
@@ -251,9 +251,9 @@ export const LoginWithSocialAuth: Story = {
         <CardFooter>
           <p className="text-sm text-center text-gray-500 w-full">
             Don't have an account?{" "}
-            <a href="#" className="text-blue-600 hover:underline">
+            <Button variant="link" className="h-auto p-0 text-sm font-normal">
               Sign up
-            </a>
+            </Button>
           </p>
         </CardFooter>
       </Card>
@@ -469,13 +469,19 @@ export const RegistrationForm: Story = {
                   className="text-sm font-normal leading-none cursor-pointer"
                 >
                   I agree to the{" "}
-                  <a href="#" className="text-blue-600 hover:underline">
+                  <Button
+                    variant="link"
+                    className="h-auto p-0 text-sm font-normal"
+                  >
                     Terms of Service
-                  </a>{" "}
+                  </Button>{" "}
                   and{" "}
-                  <a href="#" className="text-blue-600 hover:underline">
+                  <Button
+                    variant="link"
+                    className="h-auto p-0 text-sm font-normal"
+                  >
                     Privacy Policy
-                  </a>
+                  </Button>
                 </Label>
               </div>
               {errors.terms && (
@@ -491,9 +497,9 @@ export const RegistrationForm: Story = {
             </Button>
             <p className="text-sm text-center text-gray-500">
               Already have an account?{" "}
-              <a href="#" className="text-blue-600 hover:underline">
+              <Button variant="link" className="h-auto p-0 text-sm font-normal">
                 Sign in
-              </a>
+              </Button>
             </p>
           </CardFooter>
         </form>

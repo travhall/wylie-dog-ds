@@ -177,7 +177,7 @@ function ComponentWithAsyncError({ shouldError }: { shouldError?: boolean }) {
       </CardHeader>
       <CardContent className="space-y-4">
         {data ? (
-          <p className="text-green-600">{data}</p>
+          <p className="text-(--color-text-success)">{data}</p>
         ) : (
           <p className="text-gray-500">No data loaded</p>
         )}

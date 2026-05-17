@@ -2318,7 +2318,7 @@
   },
   "scroll-area.scrollbar-padding": {
     "$type": "spacing",
-    "$value": "1px"
+    "$value": "{space.025}"
   },
   "context-menu.checkbox-padding": {
     "$type": "spacing",
@@ -2574,7 +2574,7 @@
   },
   "card.title.letter-spacing": {
     "$type": "dimension",
-    "$value": "-0.025em"
+    "$value": "{typography.tracking.tight}"
   },
   "card.content.font-size": {
     "$type": "number",

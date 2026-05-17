@@ -3,8 +3,6 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
 import { Label } from "@wyliedog/ui/label";
 import { Button } from "@wyliedog/ui/button";
-import { Badge } from "@wyliedog/ui/badge";
-import { Switch } from "@wyliedog/ui/switch";
 import { Textarea } from "@wyliedog/ui/textarea";
 import manifest from "@wyliedog/tokens/manifest.json";
 
@@ -197,7 +195,7 @@ export const AllVariants: Story = {
         <div className="space-y-4 max-w-2xl">
           <div>
             <p className="text-sm font-semibold mb-1">Tight</p>
-            <p className="leading-tight text-gray-500">
+            <p className="leading-tight text-(--color-text-secondary)">
               The crisis consists precisely in the fact that the old is dying
               and the new cannot be born: in this interregnum, morbid phenomena
               of the most varied kind come to pass.
@@ -205,7 +203,7 @@ export const AllVariants: Story = {
           </div>
           <div>
             <p className="text-sm font-semibold mb-1">Normal</p>
-            <p className="leading-normal text-gray-500">
+            <p className="leading-normal text-(--color-text-secondary)">
               The crisis consists precisely in the fact that the old is dying
               and the new cannot be born: in this interregnum, morbid phenomena
               of the most varied kind come to pass.
@@ -213,7 +211,7 @@ export const AllVariants: Story = {
           </div>
           <div>
             <p className="text-sm font-semibold mb-1">Relaxed</p>
-            <p className="leading-relaxed text-gray-500">
+            <p className="leading-relaxed text-(--color-text-secondary)">
               The crisis consists precisely in the fact that the old is dying
               and the new cannot be born: in this interregnum, morbid phenomena
               of the most varied kind come to pass.
@@ -238,57 +236,65 @@ export const TypeScale: Story = {
     <div className="space-y-8">
       <div>
         <h1 className="text-5xl font-bold mb-2">Heading 1</h1>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-size-5xl / 48px
         </p>
       </div>
 
       <div>
         <h2 className="text-4xl font-bold mb-2">Heading 2</h2>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-size-4xl / 36px
         </p>
       </div>
 
       <div>
         <h3 className="text-3xl font-bold mb-2">Heading 3</h3>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-size-3xl / 30px
         </p>
       </div>
 
       <div>
         <h4 className="text-2xl font-bold mb-2">Heading 4</h4>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-size-2xl / 24px
         </p>
       </div>
 
       <div>
         <h5 className="text-xl font-bold mb-2">Heading 5</h5>
-        <p className="text-sm text-gray-500 font-mono">--font-size-xl / 20px</p>
+        <p className="text-sm text-(--color-text-secondary) font-mono">
+          --font-size-xl / 20px
+        </p>
       </div>
 
       <div>
         <h6 className="text-lg font-bold mb-2">Heading 6</h6>
-        <p className="text-sm text-gray-500 font-mono">--font-size-lg / 18px</p>
+        <p className="text-sm text-(--color-text-secondary) font-mono">
+          --font-size-lg / 18px
+        </p>
       </div>
 
       <div>
         <p className="text-base mb-2">Body Large (Base)</p>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-size-base / 16px
         </p>
       </div>
 
       <div>
         <p className="text-sm mb-2">Body Small</p>
-        <p className="text-sm text-gray-500 font-mono">--font-size-sm / 14px</p>
+        <p className="text-sm text-(--color-text-secondary) font-mono">
+          --font-size-sm / 14px
+        </p>
       </div>
 
       <div>
         <p className="text-xs mb-2">Caption</p>
-        <p className="text-sm text-gray-500 font-mono">--font-size-xs / 12px</p>
+        <p className="text-sm text-(--color-text-secondary) font-mono">
+          --font-size-xs / 12px
+        </p>
       </div>
     </div>
   ),
@@ -299,35 +305,35 @@ export const FontWeights: Story = {
     <div className="space-y-4">
       <div>
         <p className="text-xl font-light mb-1">Light Weight</p>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-weight-light / 300
         </p>
       </div>
 
       <div>
         <p className="text-xl font-normal mb-1">Normal Weight</p>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-weight-normal / 400
         </p>
       </div>
 
       <div>
         <p className="text-xl font-medium mb-1">Medium Weight</p>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-weight-medium / 500
         </p>
       </div>
 
       <div>
         <p className="text-xl font-semibold mb-1">Semibold Weight</p>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-weight-semibold / 600
         </p>
       </div>
 
       <div>
         <p className="text-xl font-bold mb-1">Bold Weight</p>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-weight-bold / 700
         </p>
       </div>
@@ -342,7 +348,7 @@ export const LineHeights: Story = {
         <h4 className="text-lg font-semibold mb-2">
           Tight (--line-height-tight)
         </h4>
-        <p className="leading-tight text-gray-500">
+        <p className="leading-tight text-(--color-text-secondary)">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -353,7 +359,7 @@ export const LineHeights: Story = {
         <h4 className="text-lg font-semibold mb-2">
           Normal (--line-height-normal)
         </h4>
-        <p className="leading-normal text-gray-500">
+        <p className="leading-normal text-(--color-text-secondary)">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -364,7 +370,7 @@ export const LineHeights: Story = {
         <h4 className="text-lg font-semibold mb-2">
           Relaxed (--line-height-relaxed)
         </h4>
-        <p className="leading-relaxed text-gray-500">
+        <p className="leading-relaxed text-(--color-text-secondary)">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -375,7 +381,7 @@ export const LineHeights: Story = {
         <h4 className="text-lg font-semibold mb-2">
           Loose (--line-height-loose)
         </h4>
-        <p className="leading-loose text-gray-500">
+        <p className="leading-loose text-(--color-text-secondary)">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -389,35 +395,49 @@ export const TextColors: Story = {
   render: () => (
     <div className="space-y-4">
       <div>
-        <p className="text-gray-900 text-lg mb-1">Primary Text</p>
-        <p className="text-sm text-gray-500 font-mono">--color-text-primary</p>
+        <p className="text-(--color-text-primary) text-lg mb-1">Primary Text</p>
+        <p className="text-sm text-(--color-text-secondary) font-mono">
+          --color-text-primary
+        </p>
       </div>
 
       <div>
-        <p className="text-gray-500 text-lg mb-1">Secondary Text</p>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-(--color-text-secondary) text-lg mb-1">
+          Secondary Text
+        </p>
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --color-text-secondary
         </p>
       </div>
 
       <div>
-        <p className="text-gray-400 text-lg mb-1">Muted Text</p>
-        <p className="text-sm text-gray-500 font-mono">--color-text-tertiary</p>
+        <p className="text-(--color-text-tertiary) text-lg mb-1">Muted Text</p>
+        <p className="text-sm text-(--color-text-secondary) font-mono">
+          --color-text-tertiary
+        </p>
       </div>
 
       <div>
-        <p className="text-blue-600 text-lg mb-1">Link Text</p>
-        <p className="text-sm text-gray-500 font-mono">--color-status-info</p>
+        <p className="text-(--color-interactive-primary) text-lg mb-1">
+          Link Text
+        </p>
+        <p className="text-sm text-(--color-text-secondary) font-mono">
+          --color-interactive-primary
+        </p>
       </div>
 
       <div>
-        <p className="text-red-600 text-lg mb-1">Error Text</p>
-        <p className="text-sm text-gray-500 font-mono">--color-status-error</p>
+        <p className="text-(--color-status-danger) text-lg mb-1">Error Text</p>
+        <p className="text-sm text-(--color-text-secondary) font-mono">
+          --color-status-danger
+        </p>
       </div>
 
       <div>
-        <p className="text-green-600 text-lg mb-1">Success Text</p>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-(--color-status-success) text-lg mb-1">
+          Success Text
+        </p>
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --color-status-success
         </p>
       </div>
@@ -426,68 +446,234 @@ export const TextColors: Story = {
 };
 
 export const TypographyHierarchy: Story = {
-  render: () => (
-    <div className="max-w-4xl space-y-6">
-      <article className="prose prose-gray max-w-none">
-        <h1>The Future of Design Systems</h1>
-        <p className="lead text-xl text-gray-500">
-          How OKLCH color science and modern web technologies are
-          revolutionizing the way we build consistent user interfaces.
-        </p>
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Nine levels from display to caption. The visual weight of each level should match the importance of the content — not be chosen for aesthetics alone.",
+      },
+    },
+  },
+  render: () => {
+    const levels = [
+      {
+        tag: "h1",
+        sample: "Page Title",
+        className: "text-5xl font-bold",
+        token: "text-5xl · --font-size-5xl",
+        usage: "Hero headlines, page titles. Once per page.",
+      },
+      {
+        tag: "h2",
+        sample: "Section Heading",
+        className: "text-4xl font-bold",
+        token: "text-4xl · --font-size-4xl",
+        usage: "Major content sections.",
+      },
+      {
+        tag: "h3",
+        sample: "Sub-section",
+        className: "text-3xl font-semibold",
+        token: "text-3xl · --font-size-3xl",
+        usage: "Sub-sections within a major section.",
+      },
+      {
+        tag: "h4",
+        sample: "Card Title",
+        className: "text-2xl font-semibold",
+        token: "text-2xl · --font-size-2xl",
+        usage: "Card and panel headers.",
+      },
+      {
+        tag: "h5",
+        sample: "Group Label",
+        className: "text-xl font-semibold",
+        token: "text-xl · --font-size-xl",
+        usage: "Form sections, sidebar titles.",
+      },
+      {
+        tag: "h6",
+        sample: "Minor Heading",
+        className: "text-lg font-semibold",
+        token: "text-lg · --font-size-lg",
+        usage: "List group headers, tight contexts.",
+      },
+      {
+        tag: "p",
+        sample: "Body — default reading size for all content",
+        className: "text-base",
+        token: "text-base · --font-size-base",
+        usage: "Body copy, descriptions.",
+      },
+      {
+        tag: "p",
+        sample: "Small — labels, captions, secondary text",
+        className: "text-sm",
+        token: "text-sm · --font-size-sm",
+        usage: "Input labels, helper text.",
+      },
+      {
+        tag: "p",
+        sample: "Caption — metadata and footnotes",
+        className: "text-xs",
+        token: "text-xs · --font-size-xs",
+        usage: "Timestamps, fine print.",
+      },
+    ];
 
-        <h2>Introduction</h2>
-        <p>
-          Design systems have evolved significantly over the past decade. What
-          started as simple style guides have transformed into sophisticated,
-          token-driven architectures that enable teams to build cohesive
-          experiences at scale.
-        </p>
+    return (
+      <div className="max-w-4xl space-y-12">
+        {/* Hierarchy ladder */}
+        <div className="space-y-4">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight mb-1">
+              Type Hierarchy
+            </h2>
+            <p className="text-sm text-(--color-text-secondary)">
+              Use the level that matches the importance of the content in
+              context — not the one that looks closest to what you want
+              visually.
+            </p>
+          </div>
 
-        <h3>Color Revolution</h3>
-        <p>
-          Traditional design systems relied on RGB and HSL color spaces, which
-          don't account for human perception. OKLCH (Oklch) provides
-          perceptually uniform colors, ensuring that color relationships remain
-          consistent across different contexts and devices.
-        </p>
+          <div className="rounded-lg border border-(--color-border-primary) overflow-hidden divide-y divide-(--color-border-primary)">
+            {levels.map(({ tag, sample, className, token, usage }) => (
+              <div
+                key={token}
+                className="grid grid-cols-[3.5rem_1fr] md:grid-cols-[3.5rem_1fr_15rem] items-center gap-x-4 px-4 py-3 bg-(--color-background-primary)"
+              >
+                <code className="text-xs font-mono text-(--color-text-tertiary) self-center">
+                  {tag}
+                </code>
+                <p className={`${className} truncate`}>{sample}</p>
+                <div className="hidden md:block">
+                  <code className="block text-xs font-mono text-(--color-text-secondary) mb-0.5">
+                    {token}
+                  </code>
+                  <span className="text-xs text-(--color-text-tertiary)">
+                    {usage}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-        <blockquote>
-          "OKLCH enables mathematical color generation that maintains perceptual
-          uniformity—something impossible with traditional color spaces."
-        </blockquote>
+        {/* Real-world compositions */}
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-lg font-semibold mb-1">In practice</h3>
+            <p className="text-sm text-(--color-text-secondary)">
+              How hierarchy levels work together in common UI patterns.
+            </p>
+          </div>
 
-        <h4>Key Benefits</h4>
-        <ul>
-          <li>
-            <strong>Perceptual uniformity:</strong> Colors appear equally bright
-            to human eyes
-          </li>
-          <li>
-            <strong>Extended gamut:</strong> 30% more colors than sRGB
-          </li>
-          <li>
-            <strong>Mathematical precision:</strong> Algorithmic color
-            generation
-          </li>
-          <li>
-            <strong>Future-ready:</strong> Aligns with emerging web standards
-          </li>
-        </ul>
+          <div className="grid md:grid-cols-2 gap-4">
+            {/* Article */}
+            <Card>
+              <CardContent className="pt-6 space-y-3">
+                <p className="text-xs font-medium tracking-wider text-(--color-text-tertiary) uppercase">
+                  Article
+                </p>
+                <h2 className="text-3xl font-bold leading-tight">
+                  Design Tokens at Scale
+                </h2>
+                <p className="text-base text-(--color-text-secondary) leading-relaxed">
+                  How large teams maintain visual consistency across hundreds of
+                  components and multiple product lines.
+                </p>
+                <div className="flex items-center gap-3 pt-1">
+                  <div className="w-7 h-7 rounded-full bg-(--color-interactive-primary)/20 border border-(--color-border-primary)" />
+                  <div>
+                    <p className="text-sm font-medium">Alex Kim</p>
+                    <p className="text-xs text-(--color-text-tertiary)">
+                      May 17, 2026 · 8 min read
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-        <h5>Implementation Details</h5>
-        <p>
-          Implementing OKLCH in production requires careful consideration of
-          browser support, fallback strategies, and design tool integration.
-        </p>
+            {/* Dashboard stat */}
+            <Card>
+              <CardContent className="pt-6 space-y-4">
+                <p className="text-xs font-medium tracking-wider text-(--color-text-tertiary) uppercase">
+                  Dashboard
+                </p>
+                <div className="space-y-1">
+                  <p className="text-sm text-(--color-text-secondary)">
+                    Monthly Revenue
+                  </p>
+                  <p className="text-4xl font-bold">$48,295</p>
+                  <p className="text-sm text-(--color-status-success)">
+                    ↑ 12.5% from last month
+                  </p>
+                </div>
+                <div className="border-t border-(--color-border-primary) pt-3 space-y-2">
+                  <p className="text-sm font-semibold">Breakdown</p>
+                  {[
+                    ["New customers", "$12,100"],
+                    ["Renewals", "$28,450"],
+                    ["Upgrades", "$7,745"],
+                  ].map(([label, amount]) => (
+                    <div key={label} className="flex justify-between text-sm">
+                      <span className="text-(--color-text-secondary)">
+                        {label}
+                      </span>
+                      <span className="font-medium">{amount}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
-        <h6>Browser Support</h6>
-        <p>
-          Modern browsers now support OKLCH natively, with 93% coverage as of
-          2024. This makes OKLCH a viable choice for production applications.
-        </p>
-      </article>
-    </div>
-  ),
+          {/* Settings page */}
+          <Card>
+            <CardContent className="pt-6 space-y-5">
+              <div>
+                <h2 className="text-2xl font-bold mb-1">Account Settings</h2>
+                <p className="text-sm text-(--color-text-secondary)">
+                  Manage your preferences and notifications.
+                </p>
+              </div>
+              <div className="divide-y divide-(--color-border-primary)">
+                {[
+                  {
+                    title: "Personal Information",
+                    desc: "Update your name, email, and profile photo.",
+                    meta: null as string | null,
+                  },
+                  {
+                    title: "Notifications",
+                    desc: "Choose how and when you receive notifications.",
+                    meta: null as string | null,
+                  },
+                  {
+                    title: "Security",
+                    desc: "Manage passwords, two-factor authentication, and active sessions.",
+                    meta: "Last login: May 17, 2026 at 9:42 AM · Chrome on macOS",
+                  },
+                ].map(({ title, desc, meta }) => (
+                  <div key={title} className="py-3">
+                    <h3 className="text-base font-semibold mb-0.5">{title}</h3>
+                    <p className="text-sm text-(--color-text-secondary)">
+                      {desc}
+                    </p>
+                    {meta && (
+                      <p className="text-xs text-(--color-text-tertiary) mt-1">
+                        {meta}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  },
 };
 
 export const CodeTypography: Story = {
@@ -497,7 +683,7 @@ export const CodeTypography: Story = {
         <h4 className="text-lg font-semibold mb-3">Inline Code</h4>
         <p>
           Use the{" "}
-          <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono">
+          <code className="bg-(--color-background-secondary) px-1.5 py-0.5 rounded text-sm font-mono">
             useState
           </code>{" "}
           hook to manage state in React components.
@@ -539,7 +725,7 @@ export const ResponsiveTypography: Story = {
         <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2">
           Responsive Heading
         </h1>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-size-2xl → md:--font-size-4xl → lg:--font-size-5xl
         </p>
       </div>
@@ -550,7 +736,7 @@ export const ResponsiveTypography: Story = {
           smaller, on tablet it's medium, and on desktop it's larger for better
           readability.
         </p>
-        <p className="text-sm text-gray-500 font-mono">
+        <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-size-sm → md:--font-size-base → lg:--font-size-lg
         </p>
       </div>
@@ -560,7 +746,7 @@ export const ResponsiveTypography: Story = {
           <h3 className="text-lg md:text-xl font-semibold mb-2">
             Mobile First
           </h3>
-          <p className="text-sm md:text-base text-gray-500">
+          <p className="text-sm md:text-base text-(--color-text-secondary)">
             Typography scales up from mobile to larger screens, ensuring
             readability across all devices.
           </p>
@@ -569,7 +755,7 @@ export const ResponsiveTypography: Story = {
           <h3 className="text-lg md:text-xl font-semibold mb-2">
             Flexible Layout
           </h3>
-          <p className="text-sm md:text-base text-gray-500">
+          <p className="text-sm md:text-base text-(--color-text-secondary)">
             Text size and layout adjust automatically to provide optimal reading
             experience on any device.
           </p>
@@ -584,7 +770,6 @@ export const ResponsiveTypography: Story = {
 // =============================================================================
 
 function TypographyPlaygroundComponent() {
-  // Get default selections - prefer common defaults if they exist
   const defaultFontSize = findTokenOrFirst(fontSizes, "base");
   const defaultFontWeight = findTokenOrFirst(fontWeights, "regular");
   const defaultLineHeight = findTokenOrFirst(lineHeights, "normal");
@@ -609,9 +794,8 @@ function TypographyPlaygroundComponent() {
   const [previewText, setPreviewText] = useState(
     "The crisis consists precisely in the fact that the old is dying and the new cannot be born: in this interregnum, morbid phenomena of the most varied kind come to pass."
   );
-  const [showTokenDetails, setShowTokenDetails] = useState(false);
+  const [copiedType, setCopiedType] = useState<"css" | "tailwind" | null>(null);
 
-  // Find current selections
   const currentFontSize = fontSizes.find((t) => t.key === selectedFontSize);
   const currentFontWeight = fontWeights.find(
     (t) => t.key === selectedFontWeight
@@ -626,7 +810,6 @@ function TypographyPlaygroundComponent() {
     ? letterSpacings.find((t) => t.key === selectedLetterSpacing)
     : null;
 
-  // Ensure we have valid selections
   if (
     !currentFontSize ||
     !currentFontWeight ||
@@ -634,9 +817,47 @@ function TypographyPlaygroundComponent() {
     !currentFontFamily
   ) {
     return (
-      <div className="p-4 text-center text-gray-500">
+      <div className="p-4 text-center text-(--color-text-secondary)">
         No typography tokens found in manifest.
       </div>
+    );
+  }
+
+  const cssLines = [
+    `font-size: ${currentFontSize.value}px;`,
+    `font-weight: ${currentFontWeight.value};`,
+    `line-height: ${(currentLineHeight.value as number) / 100};`,
+    `font-family: ${currentFontFamily.value};`,
+    ...(currentLetterSpacing
+      ? [`letter-spacing: ${currentLetterSpacing.value}em;`]
+      : []),
+  ];
+
+  const tailwindClasses = [
+    currentFontSize.tailwind,
+    currentFontWeight.tailwind,
+    currentLineHeight.tailwind,
+    currentFontFamily.tailwind,
+    ...(currentLetterSpacing ? [currentLetterSpacing.tailwind] : []),
+  ].join(" ");
+
+  function handleCopy(type: "css" | "tailwind") {
+    const text = type === "css" ? cssLines.join("\n") : tailwindClasses;
+    navigator.clipboard.writeText(text);
+    setCopiedType(type);
+    setTimeout(() => setCopiedType(null), 2000);
+  }
+
+  function handleReset() {
+    setSelectedFontSize(defaultFontSize?.key || "");
+    setSelectedFontWeight(defaultFontWeight?.key || "");
+    setSelectedLineHeight(defaultLineHeight?.key || "");
+    setSelectedFontFamily(defaultFontFamily?.key || "");
+    if (hasLetterSpacingTokens) {
+      setSelectedLetterSpacing(defaultLetterSpacing?.key || "");
+    }
+    setPreviewText(
+      "The crisis consists precisely in the fact that the old is dying and the new cannot be born: in this interregnum, morbid phenomena of the most varied kind come to pass."
     );
   }
 
@@ -646,31 +867,28 @@ function TypographyPlaygroundComponent() {
         <h3 className="text-2xl font-semibold tracking-tight mb-2">
           Typography Playground
         </h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-secondary)">
           Interactive explorer for typography tokens. All options are
-          dynamically generated from the design token manifest - when tokens
-          change in Figma, this playground automatically updates.
+          dynamically generated from the design token manifest — when tokens
+          change, this playground updates automatically.
         </p>
       </div>
 
       {/* Live Preview */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base flex items-center justify-between">
-            <span>Live Preview</span>
-            <Badge variant="outline">Interactive</Badge>
-          </CardTitle>
+          <CardTitle className="text-base">Live Preview</CardTitle>
         </CardHeader>
         <CardContent>
           <div
-            className="p-6 rounded-lg border bg-white"
+            className="p-6 rounded-lg border border-(--color-border-primary) bg-(--color-background-primary) min-h-[80px]"
             style={{
-              fontSize: String(currentFontSize.value),
-              fontWeight: String(currentFontWeight.value),
-              lineHeight: String(currentLineHeight.value),
+              fontSize: `${currentFontSize.value}px`,
+              fontWeight: currentFontWeight.value,
+              lineHeight: (currentLineHeight.value as number) / 100,
               fontFamily: String(currentFontFamily.value),
               ...(currentLetterSpacing && {
-                letterSpacing: String(currentLetterSpacing.value),
+                letterSpacing: `${currentLetterSpacing.value}em`,
               }),
             }}
           >
@@ -682,15 +900,15 @@ function TypographyPlaygroundComponent() {
       {/* Controls */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base mb-2">Typography Controls</CardTitle>
+          <CardTitle className="text-base">Typography Controls</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Font Family */}
-          <div className="space-y-3">
+          <div className="space-y-2">
             <Label className="text-sm font-semibold">
               Font Family ({fontFamilies.length} tokens)
             </Label>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <div className="flex flex-wrap gap-2">
               {fontFamilies.map((token) => (
                 <Button
                   key={token.key}
@@ -704,20 +922,14 @@ function TypographyPlaygroundComponent() {
                 </Button>
               ))}
             </div>
-            {showTokenDetails && (
-              <div className="text-xs text-gray-500 font-mono truncate">
-                <div>Value: {currentFontFamily.value}</div>
-                <div>Token: {currentFontFamily.token}</div>
-              </div>
-            )}
           </div>
 
           {/* Font Size */}
-          <div className="space-y-3">
+          <div className="space-y-2">
             <Label className="text-sm font-semibold">
               Font Size ({fontSizes.length} tokens)
             </Label>
-            <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
+            <div className="flex flex-wrap gap-2">
               {fontSizes.map((token) => (
                 <Button
                   key={token.key}
@@ -731,20 +943,14 @@ function TypographyPlaygroundComponent() {
                 </Button>
               ))}
             </div>
-            {showTokenDetails && (
-              <div className="text-xs text-gray-500 font-mono space-y-1">
-                <div>Value: {currentFontSize.value}</div>
-                <div>Token: {currentFontSize.token}</div>
-              </div>
-            )}
           </div>
 
           {/* Font Weight */}
-          <div className="space-y-3">
+          <div className="space-y-2">
             <Label className="text-sm font-semibold">
               Font Weight ({fontWeights.length} tokens)
             </Label>
-            <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
+            <div className="flex flex-wrap gap-2">
               {fontWeights.map((token) => (
                 <Button
                   key={token.key}
@@ -758,20 +964,14 @@ function TypographyPlaygroundComponent() {
                 </Button>
               ))}
             </div>
-            {showTokenDetails && (
-              <div className="text-xs text-gray-500 font-mono space-y-1">
-                <div>Value: {currentFontWeight.value}</div>
-                <div>Token: {currentFontWeight.token}</div>
-              </div>
-            )}
           </div>
 
           {/* Line Height */}
-          <div className="space-y-3">
+          <div className="space-y-2">
             <Label className="text-sm font-semibold">
               Line Height ({lineHeights.length} tokens)
             </Label>
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+            <div className="flex flex-wrap gap-2">
               {lineHeights.map((token) => (
                 <Button
                   key={token.key}
@@ -785,21 +985,15 @@ function TypographyPlaygroundComponent() {
                 </Button>
               ))}
             </div>
-            {showTokenDetails && (
-              <div className="text-xs text-gray-500 font-mono space-y-1">
-                <div>Value: {currentLineHeight.value}</div>
-                <div>Token: {currentLineHeight.token}</div>
-              </div>
-            )}
           </div>
 
           {/* Letter Spacing - only shown if tokens exist */}
           {hasLetterSpacingTokens && (
-            <div className="space-y-3">
+            <div className="space-y-2">
               <Label className="text-sm font-semibold">
                 Letter Spacing ({letterSpacings.length} tokens)
               </Label>
-              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+              <div className="flex flex-wrap gap-2">
                 {letterSpacings.map((token) => (
                   <Button
                     key={token.key}
@@ -815,29 +1009,11 @@ function TypographyPlaygroundComponent() {
                   </Button>
                 ))}
               </div>
-              {showTokenDetails && currentLetterSpacing && (
-                <div className="text-xs text-gray-500 font-mono space-y-1">
-                  <div>Value: {currentLetterSpacing.value}</div>
-                  <div>Token: {currentLetterSpacing.token}</div>
-                </div>
-              )}
             </div>
           )}
 
-          {/* Toggle Token Details */}
-          <div className="flex items-center gap-2 pt-2">
-            <Switch
-              id="token-details"
-              checked={showTokenDetails}
-              onCheckedChange={setShowTokenDetails}
-            />
-            <Label htmlFor="token-details" className="text-sm">
-              Show token details inline
-            </Label>
-          </div>
-
-          {/* Custom Text Input */}
-          <div className="space-y-3">
+          {/* Preview Text */}
+          <div className="space-y-2">
             <Label htmlFor="preview-text" className="text-sm font-semibold">
               Preview Text
             </Label>
@@ -845,167 +1021,70 @@ function TypographyPlaygroundComponent() {
               id="preview-text"
               value={previewText}
               onChange={(e) => setPreviewText(e.target.value)}
-              className="min-h-[100px] resize-y"
+              className="min-h-[80px] resize-y"
               placeholder="Enter your text here..."
             />
           </div>
         </CardContent>
       </Card>
 
-      {/* Token Details */}
+      {/* Token Output */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Current Token Values</CardTitle>
+          <CardTitle className="text-base flex items-center justify-between">
+            <span>Token Output</span>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => handleCopy("css")}
+              >
+                {copiedType === "css" ? (
+                  <span className="text-(--color-status-success)">Copied!</span>
+                ) : (
+                  "Copy CSS"
+                )}
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => handleCopy("tailwind")}
+              >
+                {copiedType === "tailwind" ? (
+                  <span className="text-(--color-status-success)">Copied!</span>
+                ) : (
+                  "Copy Tailwind"
+                )}
+              </Button>
+            </div>
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent>
           <div className="grid md:grid-cols-2 gap-4">
-            {/* CSS */}
+            {/* CSS Properties */}
             <div className="space-y-2">
               <div className="text-sm font-semibold">CSS Properties</div>
-              <div className="p-3 rounded-md bg-gray-100/50 text-xs font-mono space-y-1">
-                <div>font-size: {currentFontSize.value};</div>
-                <div>font-weight: {currentFontWeight.value};</div>
-                <div>line-height: {currentLineHeight.value};</div>
-                <div>font-family: {currentFontFamily.value};</div>
-                {currentLetterSpacing && (
-                  <div>letter-spacing: {currentLetterSpacing.value};</div>
-                )}
+              <div className="p-3 rounded-md bg-(--color-background-secondary)/50 text-xs font-mono space-y-1">
+                {cssLines.map((line) => (
+                  <div key={line}>{line}</div>
+                ))}
               </div>
             </div>
 
-            {/* Token Names */}
+            {/* Tailwind Classes */}
             <div className="space-y-2">
-              <div className="text-sm font-semibold">Design Token Names</div>
-              <div className="p-3 rounded-md bg-gray-100/50 text-xs font-mono space-y-1">
-                <div>{currentFontSize.token}</div>
-                <div>{currentFontWeight.token}</div>
-                <div>{currentLineHeight.token}</div>
-                <div>{currentFontFamily.token}</div>
-                {currentLetterSpacing && (
-                  <div>{currentLetterSpacing.token}</div>
-                )}
+              <div className="text-sm font-semibold">Tailwind Classes</div>
+              <div className="p-3 rounded-md bg-(--color-background-secondary)/50 text-xs font-mono">
+                <code>className="{tailwindClasses}"</code>
               </div>
             </div>
-          </div>
-
-          {/* JavaScript Import Example */}
-          <div className="space-y-2">
-            <div className="text-sm font-semibold">JavaScript Import</div>
-            <div className="p-3 rounded-md bg-gray-100/50 text-xs font-mono">
-              <code className="text-gray-500">
-                {`import {
-  ${currentFontSize.jsName},
-  ${currentFontWeight.jsName},
-  ${currentLineHeight.jsName},
-  ${currentFontFamily.jsName}${currentLetterSpacing ? `,\n  ${currentLetterSpacing.jsName}` : ""}
-} from '@wyliedog/tokens';`}
-              </code>
-            </div>
-          </div>
-
-          {/* CSS Variables */}
-          <div className="space-y-2">
-            <div className="text-sm font-semibold">CSS Variables</div>
-            <div className="p-3 rounded-md bg-gray-100/50 text-xs font-mono space-y-1">
-              <div>{currentFontSize.cssVar}</div>
-              <div>{currentFontWeight.cssVar}</div>
-              <div>{currentLineHeight.cssVar}</div>
-              <div>{currentFontFamily.cssVar}</div>
-              {currentLetterSpacing && <div>{currentLetterSpacing.cssVar}</div>}
-            </div>
-          </div>
-
-          {/* Tailwind Classes */}
-          <div className="space-y-2">
-            <div className="text-sm font-semibold">Tailwind CSS Classes</div>
-            <div className="p-3 rounded-md bg-gray-100/50 text-xs font-mono">
-              <code>
-                className="{currentFontSize.tailwind}{" "}
-                {currentFontWeight.tailwind} {currentLineHeight.tailwind}{" "}
-                {currentFontFamily.tailwind}
-                {currentLetterSpacing && ` ${currentLetterSpacing.tailwind}`}"
-              </code>
-            </div>
-          </div>
-
-          {/* Copy Actions */}
-          <div className="flex flex-wrap gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                const lines = [
-                  `font-size: ${currentFontSize.value};`,
-                  `font-weight: ${currentFontWeight.value};`,
-                  `line-height: ${currentLineHeight.value};`,
-                  `font-family: ${currentFontFamily.value};`,
-                ];
-                if (currentLetterSpacing) {
-                  lines.push(`letter-spacing: ${currentLetterSpacing.value};`);
-                }
-                navigator.clipboard.writeText(lines.join("\n"));
-              }}
-            >
-              Copy CSS
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                const tokens = [
-                  currentFontSize.token,
-                  currentFontWeight.token,
-                  currentLineHeight.token,
-                  currentFontFamily.token,
-                ];
-                if (currentLetterSpacing) {
-                  tokens.push(currentLetterSpacing.token);
-                }
-                navigator.clipboard.writeText(tokens.join("\n"));
-              }}
-            >
-              Copy Token Names
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                const classes = [
-                  currentFontSize.tailwind,
-                  currentFontWeight.tailwind,
-                  currentLineHeight.tailwind,
-                  currentFontFamily.tailwind,
-                ];
-                if (currentLetterSpacing) {
-                  classes.push(currentLetterSpacing.tailwind);
-                }
-                navigator.clipboard.writeText(classes.join(" "));
-              }}
-            >
-              Copy Tailwind Classes
-            </Button>
           </div>
         </CardContent>
       </Card>
 
       {/* Reset Button */}
       <div className="flex justify-end">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => {
-            setSelectedFontSize(defaultFontSize?.key || "");
-            setSelectedFontWeight(defaultFontWeight?.key || "");
-            setSelectedLineHeight(defaultLineHeight?.key || "");
-            setSelectedFontFamily(defaultFontFamily?.key || "");
-            if (hasLetterSpacingTokens) {
-              setSelectedLetterSpacing(defaultLetterSpacing?.key || "");
-            }
-            setPreviewText(
-              "The crisis consists precisely in the fact that the old is dying and the new cannot be born: in this interregnum, morbid phenomena of the most varied kind come to pass."
-            );
-          }}
-        >
+        <Button variant="outline" size="sm" onClick={handleReset}>
           Reset to Defaults
         </Button>
       </div>

@@ -6,7 +6,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 Learn how to customize the Wylie Dog Design System with your own colors, tokens, and theme preferences using OKLCH color science.
 
-## 🎨 Why OKLCH?
+## Why OKLCH?
 
 OKLCH (Oklch: Lightness, Chroma, Hue) is a perceptually uniform color space that provides:
 
@@ -28,7 +28,7 @@ color: oklch(0.6 0.2 240);  /* Blue at 60% lightness - same brightness! */
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Install the Package
 
@@ -63,7 +63,7 @@ export default function App() {
 
 ---
 
-## 🎯 Color System Architecture
+## Color System Architecture
 
 ### Token Layers
 
@@ -99,40 +99,31 @@ Purpose-driven tokens:
 --color-background-brand: oklch(0.546 0.215 262.88);
 --color-text-primary: oklch(0.208 0.040 265.75);
 --color-text-brand: oklch(0.546 0.215 262.88);
---color-border-default: oklch(0.929 0.013 255.51);
+--color-border-primary: oklch(0.929 0.013 255.51);
 ```
 
 #### Layer 3: Component Tokens
 
-Component-specific values (defined in Tailwind classes):
-
-```tsx
-<Button className="bg-blue-600 hover:bg-blue-700">
-  Click me
-</Button>
-```
+Component-specific tokens that reference semantic tokens. These live in `packages/tokens/io/sync/components.json` and are resolved to CSS variables like `--color-button-default-background`, `--space-button-padding-md`, etc. Components consume them exclusively — no semantic or primitive tokens are used directly in component Tailwind classes.
 
 ---
 
-## 🛠️ Customization Methods
+## Customization Methods
 
 ### Method 1: Override CSS Variables (Recommended)
 
-Override design tokens by redefining CSS variables in your app:
+Override semantic tokens by redefining CSS variables in your app. Always target semantic tokens — never primitive color tokens — so your overrides propagate correctly through the full token hierarchy:
 
 ```css
 /* app/globals.css */
 @import '@wyliedog/ui/styles';
 
 :root {
-  /* Change brand color from blue to purple */
-  --color-background-brand: oklch(0.558 0.252 302.32);
-  --color-text-brand: oklch(0.558 0.252 302.32);
-  --color-border-brand: oklch(0.558 0.252 302.32);
-
-  /* Adjust button primary variant */
-  --color-blue-600: oklch(0.558 0.252 302.32);
-  --color-blue-700: oklch(0.541 0.247 293.01);
+  /* Change brand color from blue to purple at the semantic layer */
+  --color-interactive-primary: oklch(0.558 0.252 302.32);
+  --color-interactive-primary-hover: oklch(0.541 0.247 293.01);
+  --color-interactive-primary-active: oklch(0.438 0.198 304);
+  --color-text-on-interactive-primary: oklch(1.000 0.000 0);
 }
 ```
 
@@ -177,7 +168,7 @@ Override styles directly on components:
 
 ---
 
-## 🌗 Dark Mode
+## Dark Mode
 
 The design system includes built-in dark mode support via CSS variables.
 
@@ -206,7 +197,7 @@ Dark mode is achieved by overriding tokens in a `.dark` class:
   --color-background-primary: oklch(0.208 0.040 265.75);
   --color-background-secondary: oklch(0.279 0.037 260.03);
   --color-text-primary: oklch(0.984 0.003 247.86);
-  --color-border-default: oklch(0.446 0.037 257.28);
+  --color-border-primary: oklch(0.446 0.037 257.28);
   /* ... all semantic tokens inverted */
 }
 ```
@@ -247,7 +238,7 @@ export function ThemeProvider({ children }) {
 
 ---
 
-## 🎨 Creating a Custom Theme
+## Creating a Custom Theme
 
 ### Step-by-Step: Brand Color Theme
 
@@ -316,64 +307,33 @@ Map your brand scale to semantic tokens:
 }
 ```
 
-#### 4. Update Component Variants
+#### 4. Point Component Tokens at Your Brand
 
-Override button primary variant to use your brand:
+Once your brand primitives and semantic tokens are defined, component tokens automatically resolve through the chain. The `default` button variant already references `--color-interactive-primary`, so overriding that semantic token in Step 3 is enough — no per-component CSS needed.
 
-```css
-/* Override the primary button to use brand colors */
-.btn-primary {
-  background-color: var(--color-brand-600);
-  color: var(--color-text-on-brand);
-}
-
-.btn-primary:hover {
-  background-color: var(--color-brand-700);
-}
-```
-
-Or use Tailwind classes:
-
-```tsx
-<Button className="bg-brand-600 hover:bg-brand-700">
-  Brand Button
-</Button>
-```
-
----
-
-## 📐 Spacing & Layout Tokens
-
-Customize spacing and layout tokens:
+For a new semantic layer token you've introduced, reference it from a component token override in your own CSS:
 
 ```css
 :root {
-  /* Adjust base spacing unit */
-  --spacing-unit: 0.25rem; /* Default: 4px */
-
-  /* Custom spacing scale */
-  --spacing-xs: calc(var(--spacing-unit) * 2);  /* 8px */
-  --spacing-sm: calc(var(--spacing-unit) * 3);  /* 12px */
-  --spacing-md: calc(var(--spacing-unit) * 4);  /* 16px */
-  --spacing-lg: calc(var(--spacing-unit) * 6);  /* 24px */
-  --spacing-xl: calc(var(--spacing-unit) * 8);  /* 32px */
-
-  /* Border radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-full: 9999px;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --color-button-default-background: var(--color-brand-600);
+  --color-button-default-background-hover: var(--color-brand-700);
+  --color-button-default-text: var(--color-text-on-brand);
 }
 ```
 
 ---
 
-## 🔍 Accessibility Considerations
+## Spacing & Layout Tokens
+
+The spacing scale follows a numeric naming convention (`--space-025`, `--space-050`, `--space-100`, `--space-200`, etc.) where each step doubles the previous. Component spacing tokens (padding, gap, radius) reference these primitives via named component tokens — for example `--space-button-padding-md` or `--space-card-radius`.
+
+To explore the full spacing and radius token catalog, see [Foundations/Spacing & Layout](?path=/docs/foundations-spacing-layout--docs).
+
+Shadows are available as `--shadow-sm`, `--shadow-md`, `--shadow-lg`, and `--shadow-xl`, and are applied automatically by components that use elevation.
+
+---
+
+## Accessibility Considerations
 
 ### Contrast Requirements
 
@@ -412,7 +372,7 @@ OKLCH makes it easier to maintain contrast by controlling lightness:
 
 ---
 
-## 💡 Best Practices
+## Best Practices
 
 ### DO:
 
@@ -465,7 +425,7 @@ color: oklch(0.75 0.12 240);
 
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
 - **OKLCH Color Picker**: [oklch.com](https://oklch.com)
 - **Contrast Checker**: [Contrast Ratio Tool](https://contrast-ratio.com/)
@@ -474,7 +434,7 @@ color: oklch(0.75 0.12 240);
 
 ---
 
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Colors Not Updating
 
@@ -496,4 +456,4 @@ color: oklch(0.75 0.12 240);
 
 ---
 
-Need help? Check the [Accessibility Guide](/story/5-guides-accessibility--docs) or explore our [component examples](/story/4-patterns-compositions--docs).
+Need help? Check the [Accessibility Guidelines](?path=/docs/foundations-accessibility-guidelines--docs) or explore [Patterns](?path=/docs/patterns-overview--docs) for multi-component composition examples.

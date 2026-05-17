@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
 import { CardGrid } from "@wyliedog/ui/card-grid";
 import { Badge } from "@wyliedog/ui/badge";
 import { Button } from "@wyliedog/ui/button";
+import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta = {
   title: "Patterns/Responsive",
@@ -175,9 +176,7 @@ export const ResponsiveForm: Story = {
               { label: "Phone", placeholder: "+1 555 000 0000" },
             ].map((field) => (
               <div key={field.label} className="space-y-1">
-                <label className="text-sm font-medium text-gray-900">
-                  {field.label}
-                </label>
+                <Label>{field.label}</Label>
                 <div className="h-9 rounded border border-gray-200 bg-white px-3 flex items-center">
                   <span className="text-sm text-gray-400">
                     {field.placeholder}

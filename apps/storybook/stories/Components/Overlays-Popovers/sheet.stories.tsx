@@ -12,7 +12,22 @@ import {
 } from "@wyliedog/ui/sheet";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
-import { Label } from "@wyliedog/ui/label";
+import { Form, FormField, FormLabel, useFormField } from "@wyliedog/ui/form";
+import { Separator } from "@wyliedog/ui/separator";
+
+// Connects Input to the nearest FormField context
+function FieldInput(props: React.ComponentProps<typeof Input>) {
+  const { id, errorId, descriptionId, isInvalid } = useFormField();
+  return (
+    <Input
+      id={id}
+      error={isInvalid}
+      errorId={errorId}
+      descriptionId={descriptionId}
+      {...props}
+    />
+  );
+}
 
 // Use bare Meta to document props from sub-components (e.g. SheetContent.side)
 // that don't exist on the root Sheet (DialogPrimitive.Root) element.
@@ -20,7 +35,7 @@ const meta: Meta = {
   title: "Components/Overlays & Popovers/Sheet",
   component: Sheet,
   parameters: {
-    layout: "centered",
+    layout: "padded",
     docs: {
       description: {
         component:
@@ -70,29 +85,17 @@ export const Default: Story = {
             Make changes to your profile here. Click save when you're done.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input
-              id="name"
-              defaultValue="Pedro Duarte"
-              className="col-span-3"
-            />
-            {/* cSpell:ignore Duarte peduarte */}
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input
-              id="username"
-              defaultValue="@peduarte"
-              className="col-span-3"
-            />
-          </div>
-        </div>
+        {/* cSpell:ignore Duarte peduarte */}
+        <Form className="py-4">
+          <FormField>
+            <FormLabel>Name</FormLabel>
+            <FieldInput defaultValue="Pedro Duarte" />
+          </FormField>
+          <FormField>
+            <FormLabel>Username</FormLabel>
+            <FieldInput defaultValue="@peduarte" />
+          </FormField>
+        </Form>
         <SheetFooter>
           <SheetClose asChild>
             <Button type="submit">Save changes</Button>
@@ -123,22 +126,21 @@ export const FromLeft: Story = {
             This sheet slides in from the left side.
           </SheetDescription>
         </SheetHeader>
-        <div className="py-4">
-          <nav className="space-y-2">
-            <a href="#" className="block px-2 py-1 hover:bg-gray-100 rounded">
-              Dashboard
-            </a>
-            <a href="#" className="block px-2 py-1 hover:bg-gray-100 rounded">
-              Projects
-            </a>
-            <a href="#" className="block px-2 py-1 hover:bg-gray-100 rounded">
-              Team
-            </a>
-            <a href="#" className="block px-2 py-1 hover:bg-gray-100 rounded">
-              Settings
-            </a>
-          </nav>
-        </div>
+        <Separator />
+        <nav className="flex flex-col gap-1 py-4">
+          <Button variant="ghost" className="justify-start">
+            Dashboard
+          </Button>
+          <Button variant="ghost" className="justify-start">
+            Projects
+          </Button>
+          <Button variant="ghost" className="justify-start">
+            Team
+          </Button>
+          <Button variant="ghost" className="justify-start">
+            Settings
+          </Button>
+        </nav>
       </SheetContent>
     </Sheet>
   ),
@@ -237,18 +239,12 @@ export const WithInteractions: Story = {
             Make changes to your profile here. Click save when you're done.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="sheet-name" className="text-right">
-              Name
-            </Label>
-            <Input
-              id="sheet-name"
-              defaultValue="Pedro Duarte"
-              className="col-span-3"
-            />
-          </div>
-        </div>
+        <Form className="py-4">
+          <FormField>
+            <FormLabel>Name</FormLabel>
+            <FieldInput id="sheet-name" defaultValue="Pedro Duarte" />
+          </FormField>
+        </Form>
         <SheetFooter>
           <SheetClose asChild>
             <Button type="submit">Save changes</Button>

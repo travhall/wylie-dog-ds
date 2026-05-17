@@ -3,6 +3,7 @@ import { PageLayout } from "@wyliedog/ui/compositions/page-layout";
 import { SiteHeader } from "@wyliedog/ui/compositions/site-header";
 import { SiteFooter } from "@wyliedog/ui/compositions/site-footer";
 import { Heart } from "lucide-react";
+import { Button } from "@wyliedog/ui/button";
 
 const meta: Meta<typeof PageLayout> = {
   title: "Patterns/Page Compositions/Page Layout",
@@ -102,17 +103,18 @@ const sampleFooter = (
 );
 
 const sampleSidebar = (
-  <nav className="space-y-2 p-4">
+  <nav className="space-y-1 p-4">
     <h3 className="mb-3 text-sm font-semibold text-gray-500">Navigation</h3>
     {["Dashboard", "Settings", "Profile", "Notifications", "Help"].map(
       (item) => (
-        <a
+        <Button
           key={item}
-          href="#"
-          className="block rounded-md px-3 py-2 text-sm hover:bg-gray-100"
+          variant="ghost"
+          className="w-full justify-start"
+          onClick={(e) => e.preventDefault()}
         >
           {item}
-        </a>
+        </Button>
       )
     )}
   </nav>

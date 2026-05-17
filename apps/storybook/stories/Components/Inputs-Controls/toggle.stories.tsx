@@ -210,13 +210,13 @@ export const MediaControls: Story = {
 
     return (
       <div className="space-y-4">
-        <div className="flex items-center gap-2 p-4 bg-gray-900 text-white rounded-lg">
+        <div className="flex items-center gap-2 p-4 bg-(--color-background-inverse) text-(--color-text-inverse) rounded-lg">
           <span className="text-sm">Audio Controls:</span>
           <Toggle
             pressed={muted}
             onPressedChange={setMuted}
             aria-label="Toggle speaker mute"
-            className="text-white hover:bg-gray-50 data-[state=on]:bg-red-600"
+            className="text-(--color-text-inverse) data-[state=on]:bg-red-600"
           >
             {muted ? (
               <VolumeXIcon className="h-4 w-4" />
@@ -228,7 +228,7 @@ export const MediaControls: Story = {
             pressed={micMuted}
             onPressedChange={setMicMuted}
             aria-label="Toggle microphone mute"
-            className="text-white hover:bg-gray-50 data-[state=on]:bg-red-600"
+            className="text-(--color-text-inverse) data-[state=on]:bg-red-600"
           >
             {micMuted ? (
               <MicOffIcon className="h-4 w-4" />

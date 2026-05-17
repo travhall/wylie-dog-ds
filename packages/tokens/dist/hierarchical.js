@@ -291,6 +291,7 @@ export const spacing = {
   "1600": "320px",
   "1700": "448px",
   "1800": "576px",
+  "025": "1px",
   "050": "4px",
   "offset-none": "0px",
   "offset-sm": "2px",

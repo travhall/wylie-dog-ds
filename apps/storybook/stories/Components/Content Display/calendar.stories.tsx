@@ -1,13 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
 import { Calendar } from "@wyliedog/ui/calendar";
+import { Label } from "@wyliedog/ui/label";
+import { Form, FormField, FormLabel } from "@wyliedog/ui/form";
 import { useState } from "react";
 
 const meta: Meta<typeof Calendar> = {
   title: "Components/Content Display/Calendar",
   component: Calendar,
   parameters: {
-    layout: "centered",
+    layout: "padded",
     docs: {
       description: {
         component:
@@ -205,9 +207,9 @@ export const InForm: Story = {
     const [date, setDate] = useState<Date | undefined>();
 
     return (
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Select Date</label>
+      <Form className="w-full max-w-xs">
+        <FormField>
+          <FormLabel>Appointment date</FormLabel>
           <Calendar
             mode="single"
             selected={date}
@@ -220,11 +222,11 @@ export const InForm: Story = {
             }}
             className="rounded-md border"
           />
-        </div>
+        </FormField>
         <p className="text-sm text-gray-500">
           Selected: {date ? date.toLocaleDateString() : "None"}
         </p>
-      </div>
+      </Form>
     );
   },
 };
