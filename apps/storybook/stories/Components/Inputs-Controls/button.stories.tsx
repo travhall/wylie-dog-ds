@@ -93,36 +93,6 @@ export const Default: Story = {
   },
 };
 
-export const Secondary: Story = {
-  args: {
-    variant: "secondary",
-    children: "Secondary Button",
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "Secondary action for less prominent actions alongside a primary button.",
-      },
-    },
-  },
-};
-
-export const Outline: Story = {
-  args: {
-    variant: "outline",
-    children: "Outline Button",
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "Outline variant for tertiary actions or when a lighter visual weight is needed.",
-      },
-    },
-  },
-};
-
 export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">

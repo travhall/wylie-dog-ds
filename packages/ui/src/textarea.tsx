@@ -24,16 +24,16 @@ export const textareaVariants = cva(
         horizontal: "resize-x",
         vertical: "resize-y",
       },
-      error: {
-        true: "border-(--color-input-border-error) bg-(--color-input-default-background)",
-        false:
-          "border-(--color-input-border) bg-(--color-input-default-background) hover:bg-(--color-input-background-hover)",
+      textareaState: {
+        default: "border-(--color-input-border) bg-(--color-input-default-background) hover:bg-(--color-input-background-hover)",
+        error:   "border-(--color-input-border-error) bg-(--color-input-default-background)",
+        success: "border-(--color-border-success) bg-(--color-input-default-background)",
       },
     },
     defaultVariants: {
       size: "md",
       resize: "vertical",
-      error: false,
+      textareaState: "default",
     },
   }
 );
@@ -43,9 +43,11 @@ type TextareaVariantProps = VariantProps<typeof textareaVariants>;
 export interface TextareaProps
   extends
     Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "size">,
-    Omit<TextareaVariantProps, "error"> {
+    Omit<TextareaVariantProps, "textareaState"> {
   /** Whether the textarea has an error */
   error?: boolean;
+  /** Whether the textarea has a success/valid state */
+  success?: boolean;
   /** ID of error message element for aria-describedby */
   errorId?: string;
   /** ID of description element for aria-describedby */
@@ -57,6 +59,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     {
       className,
       error = false,
+      success = false,
       size,
       resize,
       errorId,
@@ -65,12 +68,14 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     },
     ref
   ) => {
+    const textareaState = error ? "error" : success ? "success" : "default";
+
     // Build aria-describedby from provided IDs
     const describedBy = [descriptionId, errorId].filter(Boolean).join(" ");
 
     return (
       <textarea
-        className={cn(textareaVariants({ size, resize, error }), className)}
+        className={cn(textareaVariants({ size, resize, textareaState }), className)}
         ref={ref}
         aria-invalid={error}
         aria-describedby={describedBy || undefined}

@@ -19,7 +19,25 @@ import { RadioGroup, RadioGroupItem } from "@wyliedog/ui/radio-group";
 import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@wyliedog/ui/tabs";
 import { Alert, AlertDescription } from "@wyliedog/ui/alert";
+import {
+  Form,
+  FormField,
+  FormLabel,
+  FormDescription,
+  FormMessage,
+  useFormField,
+} from "@wyliedog/ui/form";
 import { useState, useCallback } from "react";
+
+function FormInput(props: Omit<React.ComponentProps<typeof Input>, "id">) {
+  const { id } = useFormField();
+  return <Input id={id} {...props} />;
+}
+
+function FormTextarea(props: Omit<React.ComponentProps<typeof Textarea>, "id">) {
+  const { id } = useFormField();
+  return <Textarea id={id} {...props} />;
+}
 
 const meta: Meta = {
   title: "Patterns/Form Patterns/Form Compositions",
@@ -388,57 +406,40 @@ export const FormWithValidation: Story = {
           <CardTitle>Sign Up</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="email" required>
-                Email
-              </Label>
-              <Input
-                id="email"
+          <Form onSubmit={handleSubmit}>
+            <FormField error={!!errors.email} required>
+              <FormLabel>Email</FormLabel>
+              <FormInput
                 name="email"
                 type="email"
                 placeholder="Enter your email"
-                className={errors.email ? "border-(--color-border-danger)" : ""}
+                error={!!errors.email}
               />
-              {errors.email && (
-                <p className="text-sm text-(--color-text-danger)">{errors.email}</p>
-              )}
-            </div>
+              <FormMessage>{errors.email}</FormMessage>
+            </FormField>
 
-            <div className="space-y-2">
-              <Label htmlFor="password" required>
-                Password
-              </Label>
-              <Input
-                id="password"
+            <FormField error={!!errors.password} required>
+              <FormLabel>Password</FormLabel>
+              <FormInput
                 name="password"
                 type="password"
                 placeholder="Create a password"
-                className={errors.password ? "border-(--color-border-danger)" : ""}
+                error={!!errors.password}
               />
-              {errors.password && (
-                <p className="text-sm text-(--color-text-danger)">{errors.password}</p>
-              )}
-              <p className="text-xs text-gray-400">
-                Must be at least 8 characters long
-              </p>
-            </div>
+              <FormMessage>{errors.password}</FormMessage>
+              <FormDescription>Must be at least 8 characters long</FormDescription>
+            </FormField>
 
-            <div className="space-y-2">
-              <Label htmlFor="confirm-password" required>
-                Confirm Password
-              </Label>
-              <Input
-                id="confirm-password"
+            <FormField error={!!errors.confirmPassword} required>
+              <FormLabel>Confirm Password</FormLabel>
+              <FormInput
                 name="confirm-password"
                 type="password"
                 placeholder="Confirm your password"
-                className={errors.confirmPassword ? "border-(--color-border-danger)" : ""}
+                error={!!errors.confirmPassword}
               />
-              {errors.confirmPassword && (
-                <p className="text-sm text-(--color-text-danger)">{errors.confirmPassword}</p>
-              )}
-            </div>
+              <FormMessage>{errors.confirmPassword}</FormMessage>
+            </FormField>
 
             <div className="space-y-2">
               <Label htmlFor="role">Role</Label>
@@ -475,7 +476,7 @@ export const FormWithValidation: Story = {
             <Button type="submit" className="w-full">
               Create Account
             </Button>
-          </form>
+          </Form>
         </CardContent>
       </Card>
     );
@@ -1430,141 +1431,64 @@ export const RealTimeValidation: Story = {
       [validateAll]
     );
 
-    const getFieldStatus = (field: keyof typeof formValues) => {
-      if (!touched[field]) return "default";
-      return errors[field] ? "error" : "success";
-    };
-
     return (
       <Card className="w-125">
         <CardHeader>
           <CardTitle>Advanced Form Validation</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-            <div className="space-y-2">
-              <Label htmlFor="email-realtime" required>
-                Email Address
-              </Label>
-              <Input
-                id="email-realtime"
+          <Form onSubmit={handleSubmit} noValidate>
+            <FormField error={touched.email && !!errors.email} required>
+              <FormLabel>Email Address</FormLabel>
+              <FormInput
                 name="email"
                 type="email"
                 value={formValues.email}
                 onChange={(e) => handleChange("email", e.target.value)}
                 onBlur={() => handleBlur("email")}
                 placeholder="john@example.com"
-                className={
-                  touched.email
-                    ? errors.email
-                      ? "border-(--color-border-danger) focus-visible:ring-(--color-interactive-danger)"
-                      : "border-(--color-border-success) focus-visible:ring-(--color-border-success)"
-                    : ""
-                }
-                aria-invalid={touched.email && !!errors.email}
-                aria-describedby={
-                  errors.email ? "email-error" : "email-success"
-                }
+                error={touched.email && !!errors.email}
+                success={touched.email && !errors.email && !!formValues.email}
               />
-              {touched.email && errors.email && (
-                <p
-                  id="email-error"
-                  className="text-sm text-(--color-text-danger)"
-                  role="alert"
-                >
-                  ✕ {errors.email}
-                </p>
-              )}
-              {touched.email && !errors.email && formValues.email && (
-                <p id="email-success" className="text-sm text-(--color-text-success)">
-                  ✓ Valid email address
-                </p>
-              )}
-            </div>
+              <FormMessage>{errors.email && `✕ ${errors.email}`}</FormMessage>
+            </FormField>
 
-            <div className="space-y-2">
-              <Label htmlFor="username-realtime" required>
-                Username
-              </Label>
-              <Input
-                id="username-realtime"
+            <FormField error={touched.username && !!errors.username} required>
+              <FormLabel>Username</FormLabel>
+              <FormInput
                 name="username"
                 value={formValues.username}
                 onChange={(e) => handleChange("username", e.target.value)}
                 onBlur={() => handleBlur("username")}
                 placeholder="johndoe123"
-                className={
-                  touched.username
-                    ? errors.username
-                      ? "border-(--color-border-danger) focus-visible:ring-(--color-interactive-danger)"
-                      : "border-(--color-border-success) focus-visible:ring-(--color-border-success)"
-                    : ""
-                }
-                aria-invalid={touched.username && !!errors.username}
-                aria-describedby={
-                  errors.username ? "username-error" : "username-help"
-                }
+                error={touched.username && !!errors.username}
+                success={touched.username && !errors.username && !!formValues.username}
               />
-              {touched.username && errors.username && (
-                <p
-                  id="username-error"
-                  className="text-sm text-(--color-text-danger)"
-                  role="alert"
-                >
-                  ✕ {errors.username}
-                </p>
-              )}
-              {touched.username && !errors.username && formValues.username && (
-                <p className="text-sm text-(--color-text-success)">
-                  ✓ Username is available
-                </p>
-              )}
-              <p id="username-help" className="text-xs text-gray-400">
+              <FormMessage>{errors.username && `✕ ${errors.username}`}</FormMessage>
+              <p className="text-xs text-gray-400">
                 3-20 characters, letters, numbers, and underscores only
               </p>
-            </div>
+            </FormField>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="password-realtime" required>
-                  Password
-                </Label>
-                <Input
-                  id="password-realtime"
+              <FormField error={touched.password && !!errors.password} required>
+                <FormLabel>Password</FormLabel>
+                <FormInput
                   name="password"
                   type="password"
                   value={formValues.password}
                   onChange={(e) => handleChange("password", e.target.value)}
                   onBlur={() => handleBlur("password")}
                   placeholder="••••••••"
-                  className={
-                    touched.password
-                      ? errors.password
-                        ? "border-(--color-border-danger) focus-visible:ring-(--color-interactive-danger)"
-                        : "border-(--color-border-success) focus-visible:ring-(--color-border-success)"
-                      : ""
-                  }
-                  aria-invalid={touched.password && !!errors.password}
-                  aria-describedby="password-requirements"
+                  error={touched.password && !!errors.password}
+                  success={touched.password && !errors.password && !!formValues.password}
                 />
-                {touched.password && errors.password && (
-                  <p className="text-sm text-(--color-text-danger)" role="alert">
-                    ✕ {errors.password}
-                  </p>
-                )}
-                {touched.password &&
-                  !errors.password &&
-                  formValues.password && (
-                    <p className="text-sm text-(--color-text-success)">✓ Strong password</p>
-                  )}
-              </div>
+                <FormMessage>{errors.password && `✕ ${errors.password}`}</FormMessage>
+              </FormField>
 
-              <div className="space-y-2">
-                <Label htmlFor="confirm-password-realtime" required>
-                  Confirm Password
-                </Label>
-                <Input
-                  id="confirm-password-realtime"
+              <FormField error={touched.confirmPassword && !!errors.confirmPassword} required>
+                <FormLabel>Confirm Password</FormLabel>
+                <FormInput
                   name="confirmPassword"
                   type="password"
                   value={formValues.confirmPassword}
@@ -1573,28 +1497,11 @@ export const RealTimeValidation: Story = {
                   }
                   onBlur={() => handleBlur("confirmPassword")}
                   placeholder="••••••••"
-                  className={
-                    touched.confirmPassword
-                      ? errors.confirmPassword
-                        ? "border-(--color-border-danger) focus-visible:ring-(--color-interactive-danger)"
-                        : "border-(--color-border-success) focus-visible:ring-(--color-border-success)"
-                      : ""
-                  }
-                  aria-invalid={
-                    touched.confirmPassword && !!errors.confirmPassword
-                  }
+                  error={touched.confirmPassword && !!errors.confirmPassword}
+                  success={touched.confirmPassword && !errors.confirmPassword && !!formValues.confirmPassword}
                 />
-                {touched.confirmPassword && errors.confirmPassword && (
-                  <p className="text-sm text-(--color-text-danger)" role="alert">
-                    ✕ {errors.confirmPassword}
-                  </p>
-                )}
-                {touched.confirmPassword &&
-                  !errors.confirmPassword &&
-                  formValues.confirmPassword && (
-                    <p className="text-sm text-(--color-text-success)">✓ Passwords match</p>
-                  )}
-              </div>
+                <FormMessage>{errors.confirmPassword && `✕ ${errors.confirmPassword}`}</FormMessage>
+              </FormField>
             </div>
 
             <div id="password-requirements" className="space-y-2">
@@ -1655,47 +1562,24 @@ export const RealTimeValidation: Story = {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="phone-realtime">Phone Number (Optional)</Label>
-                <Input
-                  id="phone-realtime"
+              <FormField error={touched.phoneNumber && !!errors.phoneNumber}>
+                <FormLabel>Phone Number (Optional)</FormLabel>
+                <FormInput
                   name="phoneNumber"
                   type="tel"
                   value={formValues.phoneNumber}
                   onChange={(e) => handleChange("phoneNumber", e.target.value)}
                   onBlur={() => handleBlur("phoneNumber")}
                   placeholder="555-123-4567"
-                  className={
-                    touched.phoneNumber
-                      ? errors.phoneNumber
-                        ? "border-(--color-border-danger) focus-visible:ring-(--color-interactive-danger)"
-                        : formValues.phoneNumber
-                          ? "border-(--color-border-success) focus-visible:ring-(--color-border-success)"
-                          : ""
-                      : ""
-                  }
-                  aria-invalid={touched.phoneNumber && !!errors.phoneNumber}
+                  error={touched.phoneNumber && !!errors.phoneNumber}
+                  success={touched.phoneNumber && !errors.phoneNumber && !!formValues.phoneNumber}
                 />
-                {touched.phoneNumber && errors.phoneNumber && (
-                  <p className="text-sm text-(--color-text-danger)" role="alert">
-                    ✕ {errors.phoneNumber}
-                  </p>
-                )}
-                {touched.phoneNumber &&
-                  !errors.phoneNumber &&
-                  formValues.phoneNumber && (
-                    <p className="text-sm text-(--color-text-success)">
-                      ✓ Valid phone number
-                    </p>
-                  )}
-              </div>
+                <FormMessage>{errors.phoneNumber && `✕ ${errors.phoneNumber}`}</FormMessage>
+              </FormField>
 
-              <div className="space-y-2">
-                <Label htmlFor="age-realtime" required>
-                  Age
-                </Label>
-                <Input
-                  id="age-realtime"
+              <FormField error={touched.age && !!errors.age} required>
+                <FormLabel>Age</FormLabel>
+                <FormInput
                   name="age"
                   type="number"
                   min="13"
@@ -1704,24 +1588,11 @@ export const RealTimeValidation: Story = {
                   onChange={(e) => handleChange("age", e.target.value)}
                   onBlur={() => handleBlur("age")}
                   placeholder="18"
-                  className={
-                    touched.age
-                      ? errors.age
-                        ? "border-(--color-border-danger) focus-visible:ring-(--color-interactive-danger)"
-                        : "border-(--color-border-success) focus-visible:ring-(--color-border-success)"
-                      : ""
-                  }
-                  aria-invalid={touched.age && !!errors.age}
+                  error={touched.age && !!errors.age}
+                  success={touched.age && !errors.age && !!formValues.age}
                 />
-                {touched.age && errors.age && (
-                  <p className="text-sm text-(--color-text-danger)" role="alert">
-                    ✕ {errors.age}
-                  </p>
-                )}
-                {touched.age && !errors.age && formValues.age && (
-                  <p className="text-sm text-(--color-text-success)">✓ Valid age</p>
-                )}
-              </div>
+                <FormMessage>{errors.age && `✕ ${errors.age}`}</FormMessage>
+              </FormField>
             </div>
 
             {submitSuccess && (
@@ -1761,7 +1632,7 @@ export const RealTimeValidation: Story = {
                 Reset
               </Button>
             </div>
-          </form>
+          </Form>
         </CardContent>
       </Card>
     );

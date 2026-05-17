@@ -60,6 +60,14 @@ const meta: Meta<typeof Textarea> = {
         category: "State",
       },
     },
+    success: {
+      control: "boolean",
+      description: "Whether the textarea has a valid/success state",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+    },
     resize: {
       control: "select",
       options: ["none", "both", "horizontal", "vertical"],

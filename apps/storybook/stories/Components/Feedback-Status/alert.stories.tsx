@@ -66,60 +66,6 @@ export const Default: Story = {
   ),
 };
 
-export const Destructive: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: "Destructive alert variant for error messages.",
-      },
-    },
-  },
-  render: () => (
-    <Alert variant="destructive">
-      <AlertTitle>Error</AlertTitle>
-      <AlertDescription>
-        Something went wrong! Please check your input and try again.
-      </AlertDescription>
-    </Alert>
-  ),
-};
-
-export const Warning: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: "Warning alert variant for cautionary messages.",
-      },
-    },
-  },
-  render: () => (
-    <Alert variant="warning">
-      <AlertTitle>Warning</AlertTitle>
-      <AlertDescription>
-        This action cannot be undone. Please proceed with caution.
-      </AlertDescription>
-    </Alert>
-  ),
-};
-
-export const Success: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: "Success alert variant for positive confirmation messages.",
-      },
-    },
-  },
-  render: () => (
-    <Alert variant="success">
-      <AlertTitle>Success</AlertTitle>
-      <AlertDescription>
-        Your changes have been saved successfully!
-      </AlertDescription>
-    </Alert>
-  ),
-};
-
 export const AllVariants: Story = {
   parameters: {
     docs: {

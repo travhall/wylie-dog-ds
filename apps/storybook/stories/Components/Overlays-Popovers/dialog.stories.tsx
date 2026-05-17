@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect, screen } from "storybook/test";
 import {
@@ -16,7 +17,23 @@ import { Label } from "@wyliedog/ui/label";
 import { Textarea } from "@wyliedog/ui/textarea";
 import { Checkbox } from "@wyliedog/ui/checkbox";
 import { Separator } from "@wyliedog/ui/separator";
+import {
+  Form,
+  FormField,
+  FormLabel,
+  FormMessage,
+  useFormField,
+} from "@wyliedog/ui/form";
 import { useState } from "react";
+
+function FormInput(props: Omit<React.ComponentProps<typeof Input>, "id">) {
+  const { id } = useFormField();
+  return <Input id={id} {...props} />;
+}
+function FormTextarea(props: Omit<React.ComponentProps<typeof Textarea>, "id">) {
+  const { id } = useFormField();
+  return <Textarea id={id} {...props} />;
+}
 
 const meta: Meta<typeof Dialog> = {
   title: "Components/Overlays & Popovers/Dialog",
@@ -325,7 +342,7 @@ export const WithForm: Story = {
           <Button>Create Issue</Button>
         </DialogTrigger>
         <DialogContent>
-          <form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit}>
             <DialogHeader>
               <DialogTitle>Create new issue</DialogTitle>
               <DialogDescription>
@@ -333,39 +350,25 @@ export const WithForm: Story = {
                 before submitting.
               </DialogDescription>
             </DialogHeader>
-            <div className="space-y-4 py-4">
-              <div className="space-y-2">
-                <Label htmlFor="dialog-title" required>
-                  Title
-                </Label>
-                <Input
-                  id="dialog-title"
+            <div className="py-4">
+              <FormField error={!!errors.title} required>
+                <FormLabel>Title</FormLabel>
+                <FormInput
                   name="dialog-title"
                   placeholder="Short, descriptive title"
-                  className={errors.title ? "border-(--color-border-danger)" : ""}
+                  error={!!errors.title}
                 />
-                {errors.title && (
-                  <p role="alert" className="text-sm text-(--color-text-danger)">
-                    {errors.title}
-                  </p>
-                )}
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="dialog-desc" required>
-                  Description
-                </Label>
-                <Textarea
-                  id="dialog-desc"
+                <FormMessage>{errors.title}</FormMessage>
+              </FormField>
+              <FormField error={!!errors.desc} required>
+                <FormLabel>Description</FormLabel>
+                <FormTextarea
                   name="dialog-desc"
                   placeholder="Describe the issue in detail"
-                  className={errors.desc ? "border-(--color-border-danger)" : ""}
+                  error={!!errors.desc}
                 />
-                {errors.desc && (
-                  <p role="alert" className="text-sm text-(--color-text-danger)">
-                    {errors.desc}
-                  </p>
-                )}
-              </div>
+                <FormMessage>{errors.desc}</FormMessage>
+              </FormField>
               <div className="flex items-center space-x-2">
                 <Checkbox id="dialog-urgent" name="dialog-urgent" />
                 <Label htmlFor="dialog-urgent">Mark as urgent</Label>
@@ -379,7 +382,7 @@ export const WithForm: Story = {
               </DialogClose>
               <Button type="submit">Create issue</Button>
             </DialogFooter>
-          </form>
+          </Form>
         </DialogContent>
       </Dialog>
     );

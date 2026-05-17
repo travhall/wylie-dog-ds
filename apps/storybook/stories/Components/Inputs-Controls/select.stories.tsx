@@ -54,6 +54,14 @@ const meta: Meta = {
         category: "State",
       },
     },
+    error: {
+      control: "boolean",
+      description: "Whether the select trigger has an error state",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+    },
   },
   args: {
     size: "md",

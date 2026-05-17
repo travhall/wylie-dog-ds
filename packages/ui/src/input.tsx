@@ -18,15 +18,15 @@ export const inputVariants = cva(
         md: "h-(--space-input-height-md) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-md)",
         lg: "h-(--space-input-height-lg) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-lg)",
       },
-      error: {
-        true: "border-(--color-input-border-error) bg-(--color-input-default-background)",
-        false:
-          "border-(--color-input-border) bg-(--color-input-default-background) hover:bg-(--color-input-background-hover)",
+      inputState: {
+        default: "border-(--color-input-border) bg-(--color-input-default-background) hover:bg-(--color-input-background-hover)",
+        error:   "border-(--color-input-border-error) bg-(--color-input-default-background)",
+        success: "border-(--color-border-success) bg-(--color-input-default-background)",
       },
     },
     defaultVariants: {
       size: "md",
-      error: false,
+      inputState: "default",
     },
   }
 );
@@ -36,9 +36,11 @@ type InputVariantProps = VariantProps<typeof inputVariants>;
 export interface InputProps
   extends
     Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
-    Omit<InputVariantProps, "error"> {
+    Omit<InputVariantProps, "inputState"> {
   /** Whether the input has an error */
   error?: boolean;
+  /** Whether the input has a success/valid state */
+  success?: boolean;
   /** ID of error message element for aria-describedby */
   errorId?: string;
   /** ID of description element for aria-describedby */
@@ -50,6 +52,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     {
       className,
       error = false,
+      success = false,
       size,
       type = "text",
       errorId,
@@ -58,7 +61,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    // Type-aware styling for native browser chrome
+    const inputState = error ? "error" : success ? "success" : "default";
+
     const typeStyles: Partial<Record<string, string>> = {
       number: [
         "[&::-webkit-inner-spin-button]:appearance-auto",
@@ -79,7 +83,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         aria-invalid={error}
         aria-describedby={describedBy || undefined}
         className={cn(
-          inputVariants({ size, error }),
+          inputVariants({ size, inputState }),
           typeStyles[type],
           className
         )}

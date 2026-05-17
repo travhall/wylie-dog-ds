@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
 import { Input } from "@wyliedog/ui/input";
@@ -11,6 +12,11 @@ import {
   FormDescription,
   useFormField,
 } from "@wyliedog/ui/form";
+
+function FormInput(props: Omit<React.ComponentProps<typeof Input>, "id">) {
+  const { id } = useFormField();
+  return <Input id={id} {...props} />;
+}
 
 function FieldInput(props: React.ComponentProps<typeof Input>) {
   const { id, isInvalid, errorId, descriptionId } = useFormField();
@@ -58,6 +64,14 @@ const meta: Meta<typeof Input> = {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
         category: "State",
+      },
+    },
+    success: {
+      control: "boolean",
+      description: "Whether the input has a valid/success state",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
       },
     },
     disabled: {
@@ -396,11 +410,7 @@ export const WithInteractions: Story = {
             id="email-input"
             type="email"
             placeholder="Enter email"
-            aria-describedby="email-error"
           />
-          <p id="email-error" className="text-xs text-(--color-text-danger) hidden">
-            Invalid email format
-          </p>
         </div>
 
         <div className="space-y-2">
@@ -521,22 +531,11 @@ export const DosDonts: Story = {
             <p className="text-sm font-medium mb-2">
               Connect error messages properly
             </p>
-            <Label htmlFor="good-username" error>
-              Username
-            </Label>
-            <Input
-              id="good-username"
-              error
-              aria-describedby="username-error"
-              aria-invalid
-            />
-            <p
-              id="username-error"
-              className="text-xs text-(--color-text-danger)"
-              role="alert"
-            >
-              Username is required
-            </p>
+            <FormField error required>
+              <FormLabel>Username</FormLabel>
+              <FormInput error />
+              <FormMessage>Username is required</FormMessage>
+            </FormField>
           </div>
 
           <div className="space-y-2">
