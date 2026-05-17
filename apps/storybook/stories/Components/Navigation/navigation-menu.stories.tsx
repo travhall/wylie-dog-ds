@@ -322,7 +322,7 @@ export const WithCallToAction: Story = {
                   White-label tools and client management.
                 </ListItem>
               </div>
-              <div className="flex flex-col justify-between rounded-md bg-gray-100 p-4">
+              <div className="flex flex-col justify-between rounded-md bg-(--color-background-secondary) p-4">
                 <div>
                   <p className="text-sm font-medium mb-1">
                     New: Design System Kit

@@ -80,13 +80,13 @@ export const SimpleLogin: Story = {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="password">Password</Label>
-                <a
-                  href="#"
-                  className="text-sm text-blue-600 hover:underline"
+                <Button
+                  variant="link"
+                  className="h-auto p-0 text-sm font-normal"
                   onClick={(e) => e.preventDefault()}
                 >
                   Forgot password?
-                </a>
+                </Button>
               </div>
               <Input
                 id="password"
@@ -414,7 +414,7 @@ export const RegistrationForm: Story = {
                                 : passwordStrength.strength === 2
                                   ? "bg-yellow-600"
                                   : passwordStrength.strength === 3
-                                    ? "bg-blue-600"
+                                    ? "bg-(--color-interactive-primary)"
                                     : "bg-green-600"
                               : "bg-gray-100"
                           }`}
@@ -576,13 +576,9 @@ export const LoginRegistrationTabs: Story = {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="login-password">Password</Label>
-                    <a
-                      href="#"
-                      className="text-sm text-blue-600 hover:underline"
-                      onClick={(e) => e.preventDefault()}
-                    >
+                    <Button variant="link" className="h-auto p-0 text-sm font-normal">
                       Forgot?
-                    </a>
+                    </Button>
                   </div>
                   <Input
                     id="login-password"

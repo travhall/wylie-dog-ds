@@ -385,7 +385,7 @@ export const DataTable: Story = {
                 <ContextMenuItem>Reset Password</ContextMenuItem>
                 <ContextMenuSeparator />
                 <ContextMenuItem>Deactivate User</ContextMenuItem>
-                <ContextMenuItem className="text-red-600">
+                <ContextMenuItem className="text-(--color-text-danger)">
                   Delete User
                 </ContextMenuItem>
               </ContextMenuContent>
@@ -406,7 +406,7 @@ export const DataTable: Story = {
                 <ContextMenuItem>Send Message</ContextMenuItem>
                 <ContextMenuItem>Activate User</ContextMenuItem>
                 <ContextMenuSeparator />
-                <ContextMenuItem className="text-red-600">
+                <ContextMenuItem className="text-(--color-text-danger)">
                   Delete User
                 </ContextMenuItem>
               </ContextMenuContent>
@@ -462,7 +462,7 @@ export const ImageGallery: Story = {
               <ContextMenuItem>Set as Wallpaper</ContextMenuItem>
               <ContextMenuItem>Edit Image</ContextMenuItem>
               <ContextMenuSeparator />
-              <ContextMenuItem className="text-red-600">Delete</ContextMenuItem>
+              <ContextMenuItem className="text-(--color-text-danger)">Delete</ContextMenuItem>
             </ContextMenuContent>
           </ContextMenu>
         ))}

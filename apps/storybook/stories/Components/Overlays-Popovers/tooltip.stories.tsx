@@ -244,7 +244,7 @@ export const InFormContext: Story = {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-5 w-5 text-gray-400 hover:text-gray-500"
+                  className="h-5 w-5 text-(--color-text-secondary) hover:text-(--color-text-primary)"
                 >
                   <svg
                     className="w-4 h-4"
@@ -275,7 +275,7 @@ export const InFormContext: Story = {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-5 w-5 text-gray-400 hover:text-gray-500"
+                  className="h-5 w-5 text-(--color-text-secondary) hover:text-(--color-text-primary)"
                 >
                   <svg
                     className="w-4 h-4"

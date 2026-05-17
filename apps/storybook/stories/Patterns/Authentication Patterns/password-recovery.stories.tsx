@@ -107,12 +107,12 @@ export const ForgotPasswordEmail: Story = {
             >
               Try another email
             </Button>
-            <a
-              href="#"
-              className="text-sm text-center text-gray-500 hover:text-gray-900"
+            <Button
+              variant="ghost"
+              className="w-full text-sm text-(--color-text-secondary) hover:text-(--color-text-primary)"
             >
               Back to login
-            </a>
+            </Button>
           </CardFooter>
         </Card>
       );
@@ -159,12 +159,12 @@ export const ForgotPasswordEmail: Story = {
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Sending..." : "Send reset link"}
             </Button>
-            <a
-              href="#"
-              className="text-sm text-center text-gray-500 hover:text-gray-900"
+            <Button
+              variant="ghost"
+              className="w-full text-sm text-(--color-text-secondary) hover:text-(--color-text-primary)"
             >
               Back to login
-            </a>
+            </Button>
           </CardFooter>
         </form>
       </Card>
@@ -202,7 +202,7 @@ export const ResetPasswordForm: Story = {
         return {
           strength: 3,
           label: "Good",
-          color: "bg-blue-600",
+          color: "bg-(--color-interactive-primary)",
         };
       return {
         strength: 4,
@@ -316,7 +316,7 @@ export const ResetPasswordForm: Story = {
                             className={`h-1 flex-1 rounded-full ${
                               level <= passwordStrength.strength
                                 ? passwordStrength.color
-                                : "bg-gray-100"
+                                : "bg-(--color-background-secondary)"
                             }`}
                           />
                         ))}
@@ -334,7 +334,7 @@ export const ResetPasswordForm: Story = {
                     <ul className="list-disc list-inside space-y-1">
                       <li
                         className={
-                          formData.password.length >= 8 ? "text-green-600" : ""
+                          formData.password.length >= 8 ? "text-(--color-text-success)" : ""
                         }
                       >
                         At least 8 characters
@@ -342,7 +342,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[A-Z]/.test(formData.password)
-                            ? "text-green-600"
+                            ? "text-(--color-text-success)"
                             : ""
                         }
                       >
@@ -351,7 +351,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[a-z]/.test(formData.password)
-                            ? "text-green-600"
+                            ? "text-(--color-text-success)"
                             : ""
                         }
                       >
@@ -360,7 +360,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[0-9]/.test(formData.password)
-                            ? "text-green-600"
+                            ? "text-(--color-text-success)"
                             : ""
                         }
                       >
@@ -447,12 +447,12 @@ export const InvalidResetLink: Story = {
             </Alert>
           </CardContent>
           <CardFooter>
-            <a
-              href="#"
-              className="text-sm text-center text-gray-500 hover:text-gray-900 w-full"
+            <Button
+              variant="ghost"
+              className="w-full text-sm text-(--color-text-secondary) hover:text-(--color-text-primary)"
             >
               Back to login
-            </a>
+            </Button>
           </CardFooter>
         </Card>
       );
@@ -504,12 +504,12 @@ export const InvalidResetLink: Story = {
           </form>
         </CardContent>
         <CardFooter>
-          <a
-            href="#"
-            className="text-sm text-center text-gray-500 hover:text-gray-900 w-full"
+          <Button
+            variant="ghost"
+            className="w-full text-sm text-(--color-text-secondary) hover:text-(--color-text-primary)"
           >
             Back to login
-          </a>
+          </Button>
         </CardFooter>
       </Card>
     );
@@ -580,7 +580,7 @@ export const MultiStepPasswordRecovery: Story = {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                       index <= currentStepIndex
-                        ? "bg-blue-600 text-primary-foreground"
+                        ? "bg-(--color-interactive-primary) text-(--color-text-inverse)"
                         : "bg-gray-100 text-gray-500"
                     }`}
                   >
@@ -591,7 +591,7 @@ export const MultiStepPasswordRecovery: Story = {
                 {index < steps.length - 1 && (
                   <div
                     className={`flex-1 h-0.5 ${
-                      index < currentStepIndex ? "bg-blue-600" : "bg-gray-100"
+                      index < currentStepIndex ? "bg-(--color-interactive-primary)" : "bg-(--color-background-secondary)"
                     }`}
                   />
                 )}
@@ -731,12 +731,12 @@ export const MultiStepPasswordRecovery: Story = {
 
         {step !== "success" && (
           <CardFooter>
-            <a
-              href="#"
-              className="text-sm text-center text-gray-500 hover:text-gray-900 w-full"
+            <Button
+              variant="ghost"
+              className="w-full text-sm text-(--color-text-secondary) hover:text-(--color-text-primary)"
             >
               Back to login
-            </a>
+            </Button>
           </CardFooter>
         )}
       </Card>

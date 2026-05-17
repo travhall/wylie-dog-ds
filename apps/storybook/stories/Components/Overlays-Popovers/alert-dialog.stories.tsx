@@ -409,19 +409,19 @@ export const BulkOperations: Story = {
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Selected Items (3)</h3>
         <div className="space-y-2">
-          <div className="flex items-center space-x-2 p-2 bg-blue-600/10 rounded">
+          <div className="flex items-center space-x-2 p-2 bg-(--color-interactive-primary)/10 rounded">
             <Checkbox id="file-1" checked disabled />
             <Label htmlFor="file-1" className="font-normal">
               Project Alpha - Draft.docx
             </Label>
           </div>
-          <div className="flex items-center space-x-2 p-2 bg-blue-600/10 rounded">
+          <div className="flex items-center space-x-2 p-2 bg-(--color-interactive-primary)/10 rounded">
             <Checkbox id="file-2" checked disabled />
             <Label htmlFor="file-2" className="font-normal">
               Meeting Notes - Q4.pdf
             </Label>
           </div>
-          <div className="flex items-center space-x-2 p-2 bg-blue-600/10 rounded">
+          <div className="flex items-center space-x-2 p-2 bg-(--color-interactive-primary)/10 rounded">
             <Checkbox id="file-3" checked disabled />
             <Label htmlFor="file-3" className="font-normal">
               Budget Spreadsheet.xlsx

@@ -278,15 +278,15 @@ function getStrength(password: string): Strength | null {
 }
 
 const strengthBarColor: Record<Strength, string> = {
-  Weak: "bg-red-600",
+  Weak: "bg-(--color-interactive-danger)",
   Fair: "bg-yellow-600",
   Strong: "bg-green-600",
 };
 
 const strengthTextColor: Record<Strength, string> = {
-  Weak: "text-red-600",
+  Weak: "text-(--color-text-danger)",
   Fair: "text-yellow-600",
-  Strong: "text-green-600",
+  Strong: "text-(--color-text-success)",
 };
 
 const strengthBarWidth: Record<Strength, string> = {
@@ -465,7 +465,7 @@ function MultiStepValidationComponent() {
   if (done) {
     return (
       <div role="status" className="w-100 space-y-2 text-center p-6">
-        <p className="font-semibold text-green-600">Account created!</p>
+        <p className="font-semibold text-(--color-text-success)">Account created!</p>
         <p className="text-sm text-gray-500">
           Welcome, {step2.firstName || step1.username}.
         </p>
@@ -482,9 +482,9 @@ function MultiStepValidationComponent() {
             <span
               className={`flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold ${
                 step === n
-                  ? "bg-blue-600 text-white"
+                  ? "bg-(--color-interactive-primary) text-(--color-text-inverse)"
                   : step > n
-                    ? "bg-green-50 text-green-600"
+                    ? "bg-(--color-surface-success) text-(--color-text-success)"
                     : "bg-gray-100 text-gray-500"
               }`}
               aria-current={step === n ? "step" : undefined}
@@ -682,7 +682,7 @@ function AsyncValidationComponent() {
         </div>
 
         {status === "available" && (
-          <p className="text-sm font-medium text-green-600" role="status">
+          <p className="text-sm font-medium text-(--color-text-success)" role="status">
             ✓ Available
           </p>
         )}

@@ -52,7 +52,7 @@ export const Default: Story = {
   args: {
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Heart className="h-6 w-6 text-blue-600" />
+        <Heart className="h-6 w-6 text-(--color-interactive-primary)" />
         <span className="text-xl font-bold">Wylie Dog</span>
       </a>
     ),
@@ -76,7 +76,7 @@ export const Transparent: Story = {
     variant: "transparent",
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Heart className="h-6 w-6 text-blue-600" />
+        <Heart className="h-6 w-6 text-(--color-interactive-primary)" />
         <span className="text-xl font-bold">Wylie Dog</span>
       </a>
     ),
@@ -109,7 +109,7 @@ export const WithCustomActions: Story = {
   args: {
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Menu className="h-6 w-6 text-blue-600" />
+        <Menu className="h-6 w-6 text-(--color-interactive-primary)" />
         <span className="text-xl font-bold">Custom Logo</span>
       </a>
     ),
@@ -152,7 +152,7 @@ export const MinimalNavigation: Story = {
   args: {
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Heart className="h-6 w-6 text-blue-600" />
+        <Heart className="h-6 w-6 text-(--color-interactive-primary)" />
         <span className="text-xl font-bold">Minimal</span>
       </a>
     ),

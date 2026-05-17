@@ -298,7 +298,7 @@ export const WithModal: Story = {
         <div className="text-center space-y-2">
           <p className="text-sm text-gray-500">
             Press{" "}
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-gray-50 px-1.5 font-mono text-[10px] font-medium text-gray-500">
+            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-(--color-background-secondary) px-1.5 font-mono text-[10px] font-medium text-gray-500">
               <span className="text-xs">⌘</span>K
             </kbd>{" "}
             to open command palette
@@ -308,7 +308,7 @@ export const WithModal: Story = {
 
         {open && (
           <div className="fixed inset-0 bg-black/50 flex items-start justify-center pt-[20vh] z-50">
-            <Command className="rounded-lg border shadow-md w-125 bg-white">
+            <Command className="rounded-lg border shadow-md w-125 bg-(--color-background-primary)">
               <CommandInput
                 placeholder="Type a command or search..."
                 onKeyDown={(e) => {
@@ -425,7 +425,7 @@ export const CodeEditor: Story = {
       <div className="bg-gray-900 text-white p-4 rounded-lg font-mono text-sm">
         <div className="flex items-center justify-between mb-4">
           <span>editor.tsx</span>
-          <kbd className="text-xs bg-gray-50 px-2 py-1 rounded">⌘K</kbd>
+          <kbd className="text-xs bg-(--color-background-secondary) px-2 py-1 rounded">⌘K</kbd>
         </div>
         <div className="space-y-1 text-gray-400">
           <div>import React from 'react';</div>

@@ -279,7 +279,7 @@ export const LandingPage: Story = {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <span className="text-xl font-bold text-blue-600">WylieDog</span>
+              <span className="text-xl font-bold text-(--color-interactive-primary)">WylieDog</span>
             </div>
             <nav className="hidden md:flex space-x-2">
               {["Features", "Pricing", "About", "Contact"].map((item) => (
@@ -297,11 +297,11 @@ export const LandingPage: Story = {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gray-100">
+      <section className="py-20 bg-(--color-background-secondary)">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
             Build Better
-            <span className="text-blue-600"> Design Systems</span>
+            <span className="text-(--color-interactive-primary)"> Design Systems</span>
           </h1>
           <p className="text-xl text-gray-500 mb-8 max-w-3xl mx-auto">
             Create consistent, accessible, and beautiful user interfaces with
@@ -365,7 +365,7 @@ export const LandingPage: Story = {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-100">
+      <section className="py-20 bg-(--color-background-secondary)">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             Ready to get started?

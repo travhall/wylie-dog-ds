@@ -342,10 +342,10 @@ export const WithForm: Story = {
                   id="dialog-title"
                   name="dialog-title"
                   placeholder="Short, descriptive title"
-                  className={errors.title ? "border-red-500" : ""}
+                  className={errors.title ? "border-(--color-border-danger)" : ""}
                 />
                 {errors.title && (
-                  <p role="alert" className="text-sm text-red-600">
+                  <p role="alert" className="text-sm text-(--color-text-danger)">
                     {errors.title}
                   </p>
                 )}
@@ -358,10 +358,10 @@ export const WithForm: Story = {
                   id="dialog-desc"
                   name="dialog-desc"
                   placeholder="Describe the issue in detail"
-                  className={errors.desc ? "border-red-500" : ""}
+                  className={errors.desc ? "border-(--color-border-danger)" : ""}
                 />
                 {errors.desc && (
-                  <p role="alert" className="text-sm text-red-600">
+                  <p role="alert" className="text-sm text-(--color-text-danger)">
                     {errors.desc}
                   </p>
                 )}

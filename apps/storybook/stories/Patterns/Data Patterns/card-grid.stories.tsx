@@ -201,8 +201,8 @@ export const AllVariants: Story = {
             <Card key={label} className="hover:shadow-sm transition-shadow">
               <CardContent className="p-4">
                 <div className="text-center">
-                  <div className="w-8 h-8 bg-blue-600/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                    <Zap className="h-4 w-4 text-blue-600" />
+                  <div className="w-8 h-8 bg-(--color-interactive-primary)/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <Zap className="h-4 w-4 text-(--color-interactive-primary)" />
                   </div>
                   <h4 className="font-medium text-sm">{label} Card</h4>
                 </div>
@@ -355,7 +355,7 @@ export const Interactive: Story = {
             >
               <CardHeader>
                 <div className="flex items-start justify-between">
-                  <CardTitle className="text-base group-hover:text-blue-600 transition-colors">
+                  <CardTitle className="text-base group-hover:text-(--color-interactive-primary) transition-colors">
                     {item.title}
                   </CardTitle>
                   <div className="flex items-center gap-2">
@@ -385,7 +385,7 @@ export const Interactive: Story = {
                       <Heart className="h-3 w-3" /> {item.stats.likes}
                     </span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-(--color-interactive-primary) group-hover:translate-x-1 transition-all" />
                 </div>
               </CardContent>
             </Card>
@@ -405,7 +405,7 @@ export const Interactive: Story = {
         >
           <Card className="bg-linear-to-r from-blue-600/5 to-blue-200/5 border-blue-600/20">
             <CardContent className="p-8 text-center">
-              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-(--color-interactive-primary) rounded-full flex items-center justify-center mx-auto mb-4">
                 <Star className="h-6 w-6 text-white" />
               </div>
               <CardTitle className="text-xl mb-2">Featured Content</CardTitle>

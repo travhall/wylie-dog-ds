@@ -398,7 +398,7 @@ export const WithInteractions: Story = {
             placeholder="Enter email"
             aria-describedby="email-error"
           />
-          <p id="email-error" className="text-xs text-red-600 hidden">
+          <p id="email-error" className="text-xs text-(--color-text-danger) hidden">
             Invalid email format
           </p>
         </div>
@@ -532,7 +532,7 @@ export const DosDonts: Story = {
             />
             <p
               id="username-error"
-              className="text-xs text-red-600"
+              className="text-xs text-(--color-text-danger)"
               role="alert"
             >
               Username is required
@@ -581,7 +581,7 @@ export const DosDonts: Story = {
               Username
             </Label>
             <Input id="bad-username" error />
-            <p className="text-xs text-red-600">Username is required</p>
+            <p className="text-xs text-(--color-text-danger)">Username is required</p>
             <p className="text-xs text-gray-500">Missing aria-describedby</p>
           </div>
 
