@@ -23,7 +23,7 @@ const meta: Meta<typeof Collapsible> = {
   title: "Components/Layout & Structure/Collapsible",
   component: Collapsible,
   parameters: {
-    layout: "centered",
+    layout: "padded",
     docs: {
       description: {
         component:
@@ -74,7 +74,7 @@ export const Default: Story = {
     <Collapsible
       defaultOpen={args.defaultOpen}
       disabled={args.disabled}
-      className="w-full max-w-md space-y-2"
+      className="mx-auto w-full max-w-md space-y-2"
     >
       <div className="flex items-center justify-between space-x-4 px-4">
         <h4 className="text-sm font-semibold">
@@ -112,7 +112,7 @@ export const WithCustomTrigger: Story = {
       <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
-        className="w-full max-w-md space-y-2"
+        className="mx-auto w-full max-w-md space-y-2"
       >
         <div className="flex items-center justify-between space-x-4 px-4">
           <h4 className="text-sm font-semibold">Advanced Settings</h4>
@@ -163,7 +163,7 @@ export const WithCustomTrigger: Story = {
 
 export const FAQ: Story = {
   render: () => (
-    <div className="w-full max-w-2xl space-y-4">
+    <div className="mx-auto w-full max-w-2xl space-y-4">
       <h3 className="text-lg font-semibold">Frequently Asked Questions</h3>
 
       <div className="space-y-2">
@@ -228,7 +228,7 @@ export const FAQ: Story = {
 
 export const NestedContent: Story = {
   render: () => (
-    <div className="w-full max-w-lg space-y-4">
+    <div className="mx-auto w-full max-w-lg space-y-4">
       <h3 className="text-lg font-semibold">Project Structure</h3>
 
       <Collapsible className="rounded-lg border">
@@ -282,7 +282,7 @@ export const NestedContent: Story = {
 
 export const FormSections: Story = {
   render: () => (
-    <div className="w-full max-w-lg space-y-4">
+    <div className="mx-auto w-full max-w-lg space-y-4">
       <h3 className="text-lg font-semibold">Account Settings</h3>
 
       <div className="space-y-3">
@@ -377,7 +377,7 @@ export const FormSections: Story = {
 
 export const ProductFeatures: Story = {
   render: () => (
-    <div className="w-full max-w-2xl space-y-4">
+    <div className="mx-auto w-full max-w-2xl space-y-4">
       <h3 className="text-xl font-bold">Premium Plan Features</h3>
 
       <div className="grid gap-3">
@@ -509,7 +509,7 @@ export const Accessibility: Story = {
 
 export const WithInteractions: Story = {
   render: () => (
-    <Collapsible className="w-full max-w-md space-y-2">
+    <Collapsible className="mx-auto w-full max-w-md space-y-2">
       <div className="flex items-center justify-between space-x-4 px-4">
         <h4 className="text-sm font-semibold">Project Files</h4>
         <CollapsibleTrigger asChild>

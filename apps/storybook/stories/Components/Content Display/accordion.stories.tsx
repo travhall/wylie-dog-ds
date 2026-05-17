@@ -15,7 +15,7 @@ const meta: Meta<typeof Accordion> = {
   title: "Components/Content Display/Accordion",
   component: Accordion,
   parameters: {
-    layout: "centered",
+    layout: "padded",
     docs: {
       description: {
         component:
@@ -63,7 +63,7 @@ export const Default: Story = {
     },
   },
   render: (args) => (
-    <div className="w-full max-w-sm">
+    <div className="mx-auto w-full max-w-sm">
       <Accordion className="w-full" {...args}>
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -95,7 +95,8 @@ export const Default: Story = {
 export const SingleCollapsible: Story = {
   args: {},
   render: () => (
-    <Accordion type="single" collapsible className="w-full max-w-md">
+    <div className="mx-auto w-full max-w-md">
+    <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1">
         <AccordionTrigger>Getting Started</AccordionTrigger>
         <AccordionContent>
@@ -119,6 +120,7 @@ export const SingleCollapsible: Story = {
         </AccordionContent>
       </AccordionItem>
     </Accordion>
+    </div>
   ),
   parameters: {
     docs: {
@@ -133,7 +135,8 @@ export const SingleCollapsible: Story = {
 export const Multiple: Story = {
   args: {},
   render: () => (
-    <Accordion type="multiple" className="w-full max-w-md">
+    <div className="mx-auto w-full max-w-md">
+    <Accordion type="multiple" className="w-full">
       <AccordionItem value="features">
         <AccordionTrigger>Key Features</AccordionTrigger>
         <AccordionContent>
@@ -167,6 +170,7 @@ export const Multiple: Story = {
         </AccordionContent>
       </AccordionItem>
     </Accordion>
+    </div>
   ),
   parameters: {
     docs: {
@@ -180,7 +184,7 @@ export const Multiple: Story = {
 export const FAQ: Story = {
   args: {},
   render: () => (
-    <div className="w-full max-w-2xl space-y-6">
+    <div className="mx-auto w-full max-w-2xl space-y-6">
       <div className="space-y-2">
         <h3 className="text-xl font-semibold">Frequently Asked Questions</h3>
         <p className="text-gray-500">
@@ -251,7 +255,7 @@ export const FAQ: Story = {
 export const SettingsPanel: Story = {
   args: {},
   render: () => (
-    <div className="w-full max-w-lg space-y-4">
+    <div className="mx-auto w-full max-w-lg space-y-4">
       <h3 className="text-lg font-semibold">Account Settings</h3>
 
       <Accordion type="multiple" className="w-full">
@@ -339,7 +343,7 @@ export const SettingsPanel: Story = {
 export const ProductFeatures: Story = {
   args: {},
   render: () => (
-    <div className="w-full max-w-2xl space-y-6">
+    <div className="mx-auto w-full max-w-2xl space-y-6">
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Product Features</h2>
         <p className="text-gray-500">Explore what makes our platform special</p>
@@ -440,7 +444,7 @@ export const ProductFeatures: Story = {
 export const Accessibility: Story = {
   args: {},
   render: () => (
-    <div className="w-full max-w-md space-y-4">
+    <div className="mx-auto w-full max-w-md space-y-4">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
         <p className="text-sm text-gray-500">
@@ -486,7 +490,8 @@ export const Accessibility: Story = {
 
 export const WithInteractions: Story = {
   render: () => (
-    <Accordion type="single" collapsible className="w-full max-w-md">
+    <div className="mx-auto w-full max-w-md">
+    <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1">
         <AccordionTrigger>What is React?</AccordionTrigger>
         <AccordionContent>
@@ -510,6 +515,7 @@ export const WithInteractions: Story = {
         </AccordionContent>
       </AccordionItem>
     </Accordion>
+    </div>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

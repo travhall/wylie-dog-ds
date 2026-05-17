@@ -12,6 +12,18 @@ import {
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 import { Alert, AlertDescription } from "@wyliedog/ui/alert";
+import {
+  Form,
+  FormField,
+  FormLabel,
+  FormMessage,
+  useFormField,
+} from "@wyliedog/ui/form";
+
+function FormInput(props: Omit<React.ComponentProps<typeof Input>, "id">) {
+  const { id } = useFormField();
+  return <Input id={id} {...props} />;
+}
 
 const meta: Meta = {
   title: "Patterns/Authentication Patterns/Password Recovery",
@@ -37,6 +49,14 @@ type Story = StoryObj;
  * Includes validation and success/error feedback.
  */
 export const ForgotPasswordEmail: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Email input step to initiate a password reset. Simulates an API call and transitions to a confirmation screen on success, or shows an error alert if the email is invalid.",
+      },
+    },
+  },
   render: () => {
     const [email, setEmail] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -127,7 +147,7 @@ export const ForgotPasswordEmail: Story = {
             password
           </CardDescription>
         </CardHeader>
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
             {error && (
               <Alert variant="destructive">
@@ -135,10 +155,9 @@ export const ForgotPasswordEmail: Story = {
               </Alert>
             )}
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Email address</Label>
-              <Input
-                id="email"
+            <FormField required>
+              <FormLabel>Email address</FormLabel>
+              <FormInput
                 type="email"
                 placeholder="you@example.com"
                 value={email}
@@ -146,14 +165,11 @@ export const ForgotPasswordEmail: Story = {
                   setEmail(e.target.value);
                   setError("");
                 }}
-                required
-                aria-invalid={!!error}
-                aria-describedby={error ? "email-error" : undefined}
               />
               <p className="text-sm text-gray-500">
                 We'll send a password reset link to this email
               </p>
-            </div>
+            </FormField>
           </CardContent>
           <CardFooter className="flex flex-col space-y-2">
             <Button type="submit" className="w-full" disabled={isLoading}>
@@ -166,7 +182,7 @@ export const ForgotPasswordEmail: Story = {
               Back to login
             </Button>
           </CardFooter>
-        </form>
+        </Form>
       </Card>
     );
   },
@@ -179,6 +195,14 @@ export const ForgotPasswordEmail: Story = {
  * Includes password strength indicator and confirmation matching.
  */
 export const ResetPasswordForm: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "New-password entry form shown after clicking a reset link. Includes a live strength bar, per-requirement checklist, and a confirm-password field that validates on submit.",
+      },
+    },
+  },
   render: () => {
     const [formData, setFormData] = useState({
       password: "",
@@ -287,25 +311,17 @@ export const ResetPasswordForm: Story = {
             Your new password must be different from previously used passwords
           </CardDescription>
         </CardHeader>
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="password">New password</Label>
-              <Input
-                id="password"
+            <FormField error={!!errors.password} required>
+              <FormLabel>New password</FormLabel>
+              <FormInput
                 type="password"
                 value={formData.password}
                 onChange={(e) => handleChange("password", e.target.value)}
-                aria-invalid={!!errors.password}
-                aria-describedby={
-                  errors.password ? "password-error" : "password-requirements"
-                }
               />
-              {errors.password ? (
-                <p id="password-error" className="text-sm text-destructive">
-                  {errors.password}
-                </p>
-              ) : (
+              <FormMessage>{errors.password}</FormMessage>
+              {!errors.password && (
                 <>
                   {formData.password && (
                     <div className="space-y-2">
@@ -370,38 +386,26 @@ export const ResetPasswordForm: Story = {
                   </div>
                 </>
               )}
-            </div>
+            </FormField>
 
-            <div className="space-y-2">
-              <Label htmlFor="confirm-password">Confirm new password</Label>
-              <Input
-                id="confirm-password"
+            <FormField error={!!errors.confirmPassword} required>
+              <FormLabel>Confirm new password</FormLabel>
+              <FormInput
                 type="password"
                 value={formData.confirmPassword}
                 onChange={(e) =>
                   handleChange("confirmPassword", e.target.value)
                 }
-                aria-invalid={!!errors.confirmPassword}
-                aria-describedby={
-                  errors.confirmPassword ? "confirm-password-error" : undefined
-                }
               />
-              {errors.confirmPassword && (
-                <p
-                  id="confirm-password-error"
-                  className="text-sm text-destructive"
-                >
-                  {errors.confirmPassword}
-                </p>
-              )}
-            </div>
+              <FormMessage>{errors.confirmPassword}</FormMessage>
+            </FormField>
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Resetting password..." : "Reset password"}
             </Button>
           </CardFooter>
-        </form>
+        </Form>
       </Card>
     );
   },
@@ -482,26 +486,24 @@ export const InvalidResetLink: Story = {
             </ul>
           </div>
 
-          <form onSubmit={handleResend} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="resend-email">Email address</Label>
-              <Input
-                id="resend-email"
+          <Form onSubmit={handleResend} className="space-y-4">
+            <FormField required>
+              <FormLabel>Email address</FormLabel>
+              <FormInput
                 type="email"
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
               />
               <p className="text-sm text-gray-500">
                 We'll send you a new reset link
               </p>
-            </div>
+            </FormField>
 
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Sending..." : "Send new reset link"}
             </Button>
-          </form>
+          </Form>
         </CardContent>
         <CardFooter>
           <Button
@@ -523,6 +525,14 @@ export const InvalidResetLink: Story = {
  * Demonstrates progressive disclosure and clear navigation between steps.
  */
 export const MultiStepPasswordRecovery: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Four-step password recovery flow (email → verify → new password → complete) with a step indicator. Each step validates before advancing and the progress bar reflects the current stage.",
+      },
+    },
+  },
   render: () => {
     const [step, setStep] = useState<"email" | "verify" | "reset" | "success">(
       "email"
@@ -635,36 +645,32 @@ export const MultiStepPasswordRecovery: Story = {
 
         <CardContent>
           {step === "email" && (
-            <form onSubmit={handleEmailSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email-step">Email address</Label>
-                <Input
-                  id="email-step"
+            <Form onSubmit={handleEmailSubmit} className="space-y-4">
+              <FormField required>
+                <FormLabel>Email address</FormLabel>
+                <FormInput
                   type="email"
                   placeholder="you@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  required
                 />
-              </div>
+              </FormField>
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? "Sending code..." : "Send verification code"}
               </Button>
-            </form>
+            </Form>
           )}
 
           {step === "verify" && (
-            <form onSubmit={handleVerifySubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="code">Verification code</Label>
-                <Input
-                  id="code"
+            <Form onSubmit={handleVerifySubmit} className="space-y-4">
+              <FormField required>
+                <FormLabel>Verification code</FormLabel>
+                <FormInput
                   type="text"
                   placeholder="000000"
                   value={verificationCode}
                   onChange={(e) => setVerificationCode(e.target.value)}
                   maxLength={6}
-                  required
                 />
                 <p className="text-sm text-gray-500">
                   Didn't receive the code?{" "}
@@ -677,39 +683,35 @@ export const MultiStepPasswordRecovery: Story = {
                     Resend
                   </Button>
                 </p>
-              </div>
+              </FormField>
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? "Verifying..." : "Verify code"}
               </Button>
-            </form>
+            </Form>
           )}
 
           {step === "reset" && (
-            <form onSubmit={handleResetSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="new-password">New password</Label>
-                <Input
-                  id="new-password"
+            <Form onSubmit={handleResetSubmit} className="space-y-4">
+              <FormField required>
+                <FormLabel>New password</FormLabel>
+                <FormInput
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
                 />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="confirm-new-password">Confirm password</Label>
-                <Input
-                  id="confirm-new-password"
+              </FormField>
+              <FormField required>
+                <FormLabel>Confirm password</FormLabel>
+                <FormInput
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
                 />
-              </div>
+              </FormField>
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? "Updating password..." : "Update password"}
               </Button>
-            </form>
+            </Form>
           )}
 
           {step === "success" && (

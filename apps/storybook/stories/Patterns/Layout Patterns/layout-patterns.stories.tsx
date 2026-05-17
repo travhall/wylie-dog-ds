@@ -448,7 +448,7 @@ export const UserProfile: Story = {
                     status: "Planning",
                   },
                 ].map((project, index) => (
-                  <div key={index} className="border-l-4 border-blue-600 pl-4">
+                  <div key={index} className="border-l-4 border-(--color-interactive-primary) pl-4">
                     <h4 className="font-semibold">{project.name}</h4>
                     <p className="text-sm text-gray-500 mb-1">
                       {project.description}

@@ -357,7 +357,7 @@ export const InContext: Story = {
 
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-green-600/20 flex items-center justify-center text-sm font-medium">
+            <div className="h-10 w-10 rounded-full bg-(--color-surface-success) flex items-center justify-center text-sm font-medium">
               AS
             </div>
             <div>
@@ -370,7 +370,7 @@ export const InContext: Story = {
 
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-purple-500/20 flex items-center justify-center text-sm font-medium">
+            <div className="h-10 w-10 rounded-full bg-(--color-background-secondary) flex items-center justify-center text-sm font-medium">
               BJ
             </div>
             <div>

@@ -14,6 +14,18 @@ import { Label } from "@wyliedog/ui/label";
 import { Separator } from "@wyliedog/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@wyliedog/ui/tabs";
 import { Checkbox } from "@wyliedog/ui/checkbox";
+import {
+  Form,
+  FormField,
+  FormLabel,
+  FormMessage,
+  useFormField,
+} from "@wyliedog/ui/form";
+
+function FormInput(props: Omit<React.ComponentProps<typeof Input>, "id">) {
+  const { id } = useFormField();
+  return <Input id={id} {...props} />;
+}
 
 const meta: Meta = {
   title: "Patterns/Authentication Patterns/Login & Registration",
@@ -39,6 +51,14 @@ type Story = StoryObj;
  * Includes "Remember me" option and "Forgot password" link.
  */
 export const SimpleLogin: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Basic email/password login form with a 'Remember me' checkbox and 'Forgot password' link. Simulates an async sign-in with a loading state.",
+      },
+    },
+  },
   render: () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -63,23 +83,21 @@ export const SimpleLogin: Story = {
             Enter your credentials to access your account
           </CardDescription>
         </CardHeader>
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
+            <FormField required>
+              <FormLabel>Email</FormLabel>
+              <FormInput
                 type="email"
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
               />
-            </div>
+            </FormField>
 
-            <div className="space-y-2">
+            <FormField required>
               <div className="flex items-center justify-between">
-                <Label htmlFor="password">Password</Label>
+                <FormLabel>Password</FormLabel>
                 <Button
                   variant="link"
                   className="h-auto p-0 text-sm font-normal"
@@ -88,14 +106,12 @@ export const SimpleLogin: Story = {
                   Forgot password?
                 </Button>
               </div>
-              <Input
-                id="password"
+              <FormInput
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
               />
-            </div>
+            </FormField>
 
             <div className="flex items-center space-x-2">
               <Checkbox
@@ -122,7 +138,7 @@ export const SimpleLogin: Story = {
               </Button>
             </p>
           </CardFooter>
-        </form>
+        </Form>
       </Card>
     );
   },
@@ -135,6 +151,14 @@ export const SimpleLogin: Story = {
  * Demonstrates the "Continue with..." pattern and proper separator usage.
  */
 export const LoginWithSocialAuth: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Login form with Google and GitHub OAuth buttons above an email/password fallback. Uses a separator to clearly divide social and credential-based sign-in paths.",
+      },
+    },
+  },
   render: () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -219,34 +243,30 @@ export const LoginWithSocialAuth: Story = {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email-social">Email</Label>
-              <Input
-                id="email-social"
+          <Form onSubmit={handleSubmit} className="space-y-4">
+            <FormField required>
+              <FormLabel>Email</FormLabel>
+              <FormInput
                 type="email"
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
               />
-            </div>
+            </FormField>
 
-            <div className="space-y-2">
-              <Label htmlFor="password-social">Password</Label>
-              <Input
-                id="password-social"
+            <FormField required>
+              <FormLabel>Password</FormLabel>
+              <FormInput
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
               />
-            </div>
+            </FormField>
 
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Signing in..." : "Sign in"}
             </Button>
-          </form>
+          </Form>
         </CardContent>
         <CardFooter>
           <p className="text-sm text-center text-gray-500 w-full">
@@ -268,6 +288,14 @@ export const LoginWithSocialAuth: Story = {
  * Includes password strength indicator and validation feedback.
  */
 export const RegistrationForm: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Full registration form with name, email, password, confirm password, and terms acceptance. Shows per-field validation errors on submit and a live password strength bar.",
+      },
+    },
+  },
   render: () => {
     const [formData, setFormData] = useState({
       name: "",
@@ -347,111 +375,75 @@ export const RegistrationForm: Story = {
             Enter your information to get started
           </CardDescription>
         </CardHeader>
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="name">Full name</Label>
-              <Input
-                id="name"
+            <FormField error={!!errors.name} required>
+              <FormLabel>Full name</FormLabel>
+              <FormInput
                 placeholder="John Doe"
                 value={formData.name}
                 onChange={(e) => handleChange("name", e.target.value)}
-                aria-invalid={!!errors.name}
-                aria-describedby={errors.name ? "name-error" : undefined}
               />
-              {errors.name && (
-                <p id="name-error" className="text-sm text-destructive">
-                  {errors.name}
-                </p>
-              )}
-            </div>
+              <FormMessage>{errors.name}</FormMessage>
+            </FormField>
 
-            <div className="space-y-2">
-              <Label htmlFor="email-reg">Email</Label>
-              <Input
-                id="email-reg"
+            <FormField error={!!errors.email} required>
+              <FormLabel>Email</FormLabel>
+              <FormInput
                 type="email"
                 placeholder="you@example.com"
                 value={formData.email}
                 onChange={(e) => handleChange("email", e.target.value)}
-                aria-invalid={!!errors.email}
-                aria-describedby={errors.email ? "email-error" : undefined}
               />
-              {errors.email && (
-                <p id="email-error" className="text-sm text-destructive">
-                  {errors.email}
-                </p>
-              )}
-            </div>
+              <FormMessage>{errors.email}</FormMessage>
+            </FormField>
 
-            <div className="space-y-2">
-              <Label htmlFor="password-reg">Password</Label>
-              <Input
-                id="password-reg"
+            <FormField error={!!errors.password} required>
+              <FormLabel>Password</FormLabel>
+              <FormInput
                 type="password"
                 value={formData.password}
                 onChange={(e) => handleChange("password", e.target.value)}
-                aria-invalid={!!errors.password}
-                aria-describedby={
-                  errors.password ? "password-error" : "password-strength"
-                }
               />
-              {errors.password ? (
-                <p id="password-error" className="text-sm text-destructive">
-                  {errors.password}
-                </p>
-              ) : (
-                formData.password && (
-                  <div id="password-strength" className="space-y-1">
-                    <div className="flex gap-1">
-                      {[1, 2, 3, 4].map((level) => (
-                        <div
-                          key={level}
-                          className={`h-1 flex-1 rounded-full ${
-                            level <= passwordStrength.strength
-                              ? passwordStrength.strength === 1
-                                ? "bg-destructive"
-                                : passwordStrength.strength === 2
-                                  ? "bg-yellow-600"
-                                  : passwordStrength.strength === 3
-                                    ? "bg-(--color-interactive-primary)"
-                                    : "bg-green-600"
-                              : "bg-gray-100"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                    <p className="text-xs text-gray-500">
-                      Password strength: {passwordStrength.label}
-                    </p>
+              <FormMessage>{errors.password}</FormMessage>
+              {!errors.password && formData.password && (
+                <div id="password-strength" className="space-y-1">
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4].map((level) => (
+                      <div
+                        key={level}
+                        className={`h-1 flex-1 rounded-full ${
+                          level <= passwordStrength.strength
+                            ? passwordStrength.strength === 1
+                              ? "bg-destructive"
+                              : passwordStrength.strength === 2
+                                ? "bg-(--color-interactive-warning)"
+                                : passwordStrength.strength === 3
+                                  ? "bg-(--color-interactive-primary)"
+                                  : "bg-(--color-border-success)"
+                            : "bg-gray-100"
+                        }`}
+                      />
+                    ))}
                   </div>
-                )
+                  <p className="text-xs text-gray-500">
+                    Password strength: {passwordStrength.label}
+                  </p>
+                </div>
               )}
-            </div>
+            </FormField>
 
-            <div className="space-y-2">
-              <Label htmlFor="confirm-password">Confirm password</Label>
-              <Input
-                id="confirm-password"
+            <FormField error={!!errors.confirmPassword} required>
+              <FormLabel>Confirm password</FormLabel>
+              <FormInput
                 type="password"
                 value={formData.confirmPassword}
                 onChange={(e) =>
                   handleChange("confirmPassword", e.target.value)
                 }
-                aria-invalid={!!errors.confirmPassword}
-                aria-describedby={
-                  errors.confirmPassword ? "confirm-password-error" : undefined
-                }
               />
-              {errors.confirmPassword && (
-                <p
-                  id="confirm-password-error"
-                  className="text-sm text-destructive"
-                >
-                  {errors.confirmPassword}
-                </p>
-              )}
-            </div>
+              <FormMessage>{errors.confirmPassword}</FormMessage>
+            </FormField>
 
             <div className="space-y-2">
               <div className="flex items-start space-x-2">
@@ -502,7 +494,7 @@ export const RegistrationForm: Story = {
               </Button>
             </p>
           </CardFooter>
-        </form>
+        </Form>
       </Card>
     );
   },
@@ -515,6 +507,14 @@ export const RegistrationForm: Story = {
  * Provides a seamless experience for users to switch between signing in and signing up.
  */
 export const LoginRegistrationTabs: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Login and registration forms presented side-by-side in a tabbed layout. Users can switch between sign-in and sign-up without navigating away.",
+      },
+    },
+  },
   render: () => {
     const [loginData, setLoginData] = useState({ email: "", password: "" });
     const [registerData, setRegisterData] = useState({
@@ -558,64 +558,57 @@ export const LoginRegistrationTabs: Story = {
             </TabsList>
 
             <TabsContent value="login">
-              <form onSubmit={handleLogin} className="space-y-4 pt-4">
-                <div className="space-y-2">
-                  <Label htmlFor="login-email">Email</Label>
-                  <Input
-                    id="login-email"
+              <Form onSubmit={handleLogin} className="space-y-4 pt-4">
+                <FormField required>
+                  <FormLabel>Email</FormLabel>
+                  <FormInput
                     type="email"
                     placeholder="you@example.com"
                     value={loginData.email}
                     onChange={(e) =>
                       setLoginData({ ...loginData, email: e.target.value })
                     }
-                    required
                   />
-                </div>
+                </FormField>
 
-                <div className="space-y-2">
+                <FormField required>
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="login-password">Password</Label>
+                    <FormLabel>Password</FormLabel>
                     <Button variant="link" className="h-auto p-0 text-sm font-normal">
                       Forgot?
                     </Button>
                   </div>
-                  <Input
-                    id="login-password"
+                  <FormInput
                     type="password"
                     value={loginData.password}
                     onChange={(e) =>
                       setLoginData({ ...loginData, password: e.target.value })
                     }
-                    required
                   />
-                </div>
+                </FormField>
 
                 <Button type="submit" className="w-full" disabled={isLoading}>
                   {isLoading ? "Signing in..." : "Sign in"}
                 </Button>
-              </form>
+              </Form>
             </TabsContent>
 
             <TabsContent value="register">
-              <form onSubmit={handleRegister} className="space-y-4 pt-4">
-                <div className="space-y-2">
-                  <Label htmlFor="register-name">Full name</Label>
-                  <Input
-                    id="register-name"
+              <Form onSubmit={handleRegister} className="space-y-4 pt-4">
+                <FormField required>
+                  <FormLabel>Full name</FormLabel>
+                  <FormInput
                     placeholder="John Doe"
                     value={registerData.name}
                     onChange={(e) =>
                       setRegisterData({ ...registerData, name: e.target.value })
                     }
-                    required
                   />
-                </div>
+                </FormField>
 
-                <div className="space-y-2">
-                  <Label htmlFor="register-email">Email</Label>
-                  <Input
-                    id="register-email"
+                <FormField required>
+                  <FormLabel>Email</FormLabel>
+                  <FormInput
                     type="email"
                     placeholder="you@example.com"
                     value={registerData.email}
@@ -625,14 +618,12 @@ export const LoginRegistrationTabs: Story = {
                         email: e.target.value,
                       })
                     }
-                    required
                   />
-                </div>
+                </FormField>
 
-                <div className="space-y-2">
-                  <Label htmlFor="register-password">Password</Label>
-                  <Input
-                    id="register-password"
+                <FormField required>
+                  <FormLabel>Password</FormLabel>
+                  <FormInput
                     type="password"
                     value={registerData.password}
                     onChange={(e) =>
@@ -641,17 +632,16 @@ export const LoginRegistrationTabs: Story = {
                         password: e.target.value,
                       })
                     }
-                    required
                   />
                   <p className="text-xs text-gray-500">
                     Must be at least 8 characters
                   </p>
-                </div>
+                </FormField>
 
                 <Button type="submit" className="w-full" disabled={isLoading}>
                   {isLoading ? "Creating account..." : "Create account"}
                 </Button>
-              </form>
+              </Form>
             </TabsContent>
           </Tabs>
         </CardContent>

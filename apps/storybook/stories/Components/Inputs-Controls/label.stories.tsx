@@ -32,7 +32,7 @@ const meta: Meta<typeof Label> = {
   title: "Components/Inputs & Controls/Label",
   component: Label,
   parameters: {
-    layout: "centered",
+    layout: "padded",
     docs: {
       description: {
         component:
@@ -102,7 +102,7 @@ export const Default: Story = {
     },
   },
   render: (args) => (
-    <div className="w-full max-w-xs space-y-2">
+    <div className="mx-auto w-full max-w-xs space-y-2">
       <Label {...args} />
       <Input
         id="email-default"
@@ -127,7 +127,7 @@ export const Required: Story = {
     },
   },
   render: (args) => (
-    <div className="w-full max-w-xs space-y-2">
+    <div className="mx-auto w-full max-w-xs space-y-2">
       <Label {...args} />
       <Input
         id="password-required"
@@ -154,7 +154,7 @@ export const WithError: Story = {
     },
   },
   render: (args) => (
-    <Form className="w-full max-w-xs">
+    <Form className="mx-auto w-full max-w-xs">
       <FormField error={args.error} required={args.required}>
         <FormLabel size={args.size}>{args.children}</FormLabel>
         <FieldInput placeholder="Username is required" />
@@ -174,19 +174,19 @@ export const AllSizes: Story = {
   },
   render: () => (
     <div className="space-y-6">
-      <div className="w-full max-w-xs space-y-2">
+      <div className="mx-auto w-full max-w-xs space-y-2">
         <Label size="sm" htmlFor="small-input">
           Small Label
         </Label>
         <Input id="small-input" size="sm" placeholder="Small input" />
       </div>
-      <div className="w-full max-w-xs space-y-2">
+      <div className="mx-auto w-full max-w-xs space-y-2">
         <Label size="md" htmlFor="medium-input">
           Medium Label (Default)
         </Label>
         <Input id="medium-input" size="md" placeholder="Medium input" />
       </div>
-      <div className="w-full max-w-xs space-y-2">
+      <div className="mx-auto w-full max-w-xs space-y-2">
         <Label size="lg" htmlFor="large-input">
           Large Label
         </Label>
@@ -198,7 +198,7 @@ export const AllSizes: Story = {
 
 export const ClickFocusesInput: Story = {
   render: () => (
-    <div className="flex flex-col gap-2">
+    <div className="mx-auto w-full max-w-xs flex flex-col gap-2">
       <Label htmlFor="test-field">Email address</Label>
       <Input id="test-field" type="email" placeholder="you@example.com" />
     </div>
@@ -260,7 +260,7 @@ export const WithSwitches: Story = {
     },
   },
   render: () => (
-    <div className="space-y-4 w-full max-w-xs">
+    <div className="mx-auto space-y-4 w-full max-w-xs">
       <div className="flex items-center justify-between">
         <Label htmlFor="notifications">Email notifications</Label>
         <Switch id="notifications" />
@@ -289,7 +289,7 @@ export const FormExamples: Story = {
     },
   },
   render: () => (
-    <Form className="w-full max-w-md">
+    <Form className="mx-auto w-full max-w-md">
       <FormField required>
         <FormLabel>Full Name</FormLabel>
         <FieldInput placeholder="John Doe" />

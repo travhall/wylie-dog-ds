@@ -31,7 +31,7 @@ const meta: Meta<typeof Textarea> = {
   title: "Components/Inputs & Controls/Textarea",
   component: Textarea,
   parameters: {
-    layout: "centered",
+    layout: "padded",
     docs: {
       description: {
         component:
@@ -120,7 +120,7 @@ export const Default: Story = {
     },
   },
   render: (args) => (
-    <div className="w-full max-w-sm space-y-2">
+    <div className="mx-auto w-full max-w-sm space-y-2">
       <Label htmlFor="default-textarea" size={args.size}>
         Message
       </Label>
@@ -143,7 +143,7 @@ export const WithError: Story = {
     },
   },
   render: (args) => (
-    <Form className="w-full max-w-sm">
+    <Form className="mx-auto w-full max-w-sm">
       <FormField error={args.error} required>
         <FormLabel>Description</FormLabel>
         <FieldTextarea placeholder={args.placeholder} />
@@ -166,21 +166,21 @@ export const AllSizes: Story = {
   },
   render: () => (
     <div className="space-y-6">
-      <div className="w-full max-w-sm space-y-2">
+      <div className="mx-auto w-full max-w-sm space-y-2">
         <Label size="sm">Small Textarea</Label>
         <Textarea
           size="sm"
           placeholder="Small textarea for brief comments..."
         />
       </div>
-      <div className="w-full max-w-sm space-y-2">
+      <div className="mx-auto w-full max-w-sm space-y-2">
         <Label size="md">Medium Textarea (Default)</Label>
         <Textarea
           size="md"
           placeholder="Medium textarea for standard input..."
         />
       </div>
-      <div className="w-full max-w-sm space-y-2">
+      <div className="mx-auto w-full max-w-sm space-y-2">
         <Label size="lg">Large Textarea</Label>
         <Textarea
           size="lg"
@@ -276,7 +276,7 @@ export const FormExamples: Story = {
     },
   },
   render: () => (
-    <div className="max-w-2xl space-y-8">
+    <div className="mx-auto w-full max-w-2xl space-y-8">
       {/* Feedback Form */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Feedback Form</h3>

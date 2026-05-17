@@ -351,7 +351,7 @@ export const Interactive: Story = {
           ].map((item, index) => (
             <Card
               key={index}
-              className="group cursor-pointer border-gray-200/20 hover:border-blue-600/30 hover:shadow-lg transition-all duration-300"
+              className="group cursor-pointer border-gray-200/20 hover:border-(--color-interactive-primary)/30 hover:shadow-lg transition-all duration-300"
             >
               <CardHeader>
                 <div className="flex items-start justify-between">

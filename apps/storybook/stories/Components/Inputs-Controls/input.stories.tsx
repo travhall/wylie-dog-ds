@@ -37,7 +37,7 @@ const meta: Meta<typeof Input> = {
   title: "Components/Inputs & Controls/Input",
   component: Input,
   parameters: {
-    layout: "centered",
+    layout: "padded",
     docs: {
       description: {
         component:
@@ -139,7 +139,7 @@ export const Default: Story = {
     },
   },
   render: (args) => (
-    <div className="w-full max-w-xs space-y-2">
+    <div className="mx-auto w-full max-w-xs space-y-2">
       <Label htmlFor="default-input" size={args.size}>
         Default Input
       </Label>
@@ -162,7 +162,7 @@ export const WithError: Story = {
     },
   },
   render: (args) => (
-    <Form className="w-full max-w-xs">
+    <Form className="mx-auto w-full max-w-xs">
       <FormField error={args.error} required>
         <FormLabel>Username</FormLabel>
         <FieldInput placeholder={args.placeholder} />
@@ -183,15 +183,15 @@ export const AllSizes: Story = {
   },
   render: () => (
     <div className="space-y-6">
-      <div className="w-full max-w-xs space-y-2">
+      <div className="mx-auto w-full max-w-xs space-y-2">
         <Label size="sm">Small Input</Label>
         <Input size="sm" placeholder="Small input" />
       </div>
-      <div className="w-full max-w-xs space-y-2">
+      <div className="mx-auto w-full max-w-xs space-y-2">
         <Label size="md">Medium Input (Default)</Label>
         <Input size="md" placeholder="Medium input" />
       </div>
-      <div className="w-full max-w-xs space-y-2">
+      <div className="mx-auto w-full max-w-xs space-y-2">
         <Label size="lg">Large Input</Label>
         <Input size="lg" placeholder="Large input" />
       </div>
@@ -209,7 +209,7 @@ export const InputTypes: Story = {
     },
   },
   render: () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+    <div className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-6 md:grid-cols-2">
       <div className="space-y-2">
         <Label htmlFor="text-input">Text</Label>
         <Input id="text-input" type="text" placeholder="Enter text" />
@@ -256,7 +256,7 @@ export const TypeAwareStyling: Story = {
     },
   },
   render: () => (
-    <div className="grid grid-cols-1 gap-8 max-w-sm">
+    <div className="mx-auto w-full max-w-sm space-y-8">
       <div className="space-y-2">
         <Label htmlFor="number-styled">Number — spin buttons visible</Label>
         <Input
@@ -293,7 +293,7 @@ export const States: Story = {
     },
   },
   render: () => (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="mx-auto grid w-full max-w-2xl grid-cols-2 gap-6">
       <div className="space-y-2">
         <Label htmlFor="normal-input">Normal State</Label>
         <Input id="normal-input" placeholder="Normal input" />
@@ -331,7 +331,7 @@ export const FormExample: Story = {
     },
   },
   render: () => (
-    <Form className="w-full max-w-md">
+    <Form className="mx-auto w-full max-w-md">
       <div className="grid grid-cols-2 gap-4">
         <FormField required>
           <FormLabel>First Name</FormLabel>
@@ -386,7 +386,7 @@ export const WithInteractions: Story = {
     },
   },
   render: () => (
-    <div className="w-full max-w-md space-y-6">
+    <div className="mx-auto w-full max-w-md space-y-6">
       <div className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="username-input" required>

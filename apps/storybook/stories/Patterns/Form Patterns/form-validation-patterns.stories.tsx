@@ -279,13 +279,13 @@ function getStrength(password: string): Strength | null {
 
 const strengthBarColor: Record<Strength, string> = {
   Weak: "bg-(--color-interactive-danger)",
-  Fair: "bg-yellow-600",
-  Strong: "bg-green-600",
+  Fair: "bg-(--color-interactive-warning)",
+  Strong: "bg-(--color-border-success)",
 };
 
 const strengthTextColor: Record<Strength, string> = {
   Weak: "text-(--color-text-danger)",
-  Fair: "text-yellow-600",
+  Fair: "text-(--color-text-warning)",
   Strong: "text-(--color-text-success)",
 };
 
@@ -674,7 +674,7 @@ function AsyncValidationComponent() {
               aria-label="Checking availability"
             >
               <span
-                className="block h-4 w-4 animate-spin rounded-full border-2 border-blue-500 border-t-transparent"
+                className="block h-4 w-4 animate-spin rounded-full border-2 border-(--color-interactive-primary) border-t-transparent"
                 aria-hidden="true"
               />
             </span>

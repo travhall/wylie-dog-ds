@@ -902,7 +902,7 @@ export const WithInteractions: Story = {
           <CardTitle>Complete Registration Form</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <Form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -1021,7 +1021,7 @@ export const WithInteractions: Story = {
                 Reset
               </Button>
             </div>
-          </form>
+          </Form>
         </CardContent>
       </Card>
     );
