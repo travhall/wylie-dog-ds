@@ -26,6 +26,10 @@ import path from "path";
 const MONOREPO_ROOT = path.resolve(process.cwd(), "../..");
 const TOKENS_SYNC_DIR = path.join(MONOREPO_ROOT, "packages/tokens/io/sync");
 const UI_SRC_DIR = path.join(MONOREPO_ROOT, "packages/ui/src");
+const STORIES_COMPONENTS_DIR = path.join(
+  MONOREPO_ROOT,
+  "apps/storybook/stories/Components"
+);
 const PATTERNS_DIR = path.join(
   MONOREPO_ROOT,
   "apps/storybook/stories/Patterns"
@@ -59,6 +63,16 @@ function countTokensInFile(filename: string): number {
   return Object.keys(collection.variables).length;
 }
 
+/** Count variables whose key starts with the given prefix (before first dot). */
+function countByPrefix(
+  collection: SyncCollection,
+  prefix: string
+): number {
+  return Object.keys(collection.variables).filter(
+    (k) => k.split(".")[0] === prefix
+  ).length;
+}
+
 export interface TokenMeta {
   /** Tokens in primitive.json (color scales, spacing steps, …) */
   primitive: number;
@@ -83,6 +97,48 @@ export function getTokenMeta(): TokenMeta {
 }
 
 // ---------------------------------------------------------------------------
+// Token subcategory metadata
+// ---------------------------------------------------------------------------
+
+export interface TokenSubcategoryMeta {
+  /** color.* vars across primitive + semantic */
+  colors: number;
+  /** space.* vars in primitive */
+  spacing: number;
+  /** typography.* vars in primitive */
+  typography: number;
+  /** shadow.* vars across primitive + semantic */
+  shadows: number;
+  /** border-radius.* vars in primitive */
+  radii: number;
+  /** duration.* vars in primitive */
+  motion: number;
+  /** border-width.* vars in primitive */
+  borders: number;
+  /** opacity.* vars across primitive + semantic */
+  opacity: number;
+}
+
+export function getTokenSubcategoryMeta(): TokenSubcategoryMeta {
+  const primitive = loadSync("primitive.json");
+  const semantic = loadSync("semantic.json");
+
+  return {
+    colors:
+      countByPrefix(primitive, "color") + countByPrefix(semantic, "color"),
+    spacing: countByPrefix(primitive, "space"),
+    typography: countByPrefix(primitive, "typography"),
+    shadows:
+      countByPrefix(primitive, "shadow") + countByPrefix(semantic, "shadow"),
+    radii: countByPrefix(primitive, "border-radius"),
+    motion: countByPrefix(primitive, "duration"),
+    borders: countByPrefix(primitive, "border-width"),
+    opacity:
+      countByPrefix(primitive, "opacity") + countByPrefix(semantic, "opacity"),
+  };
+}
+
+// ---------------------------------------------------------------------------
 // Component metadata
 // ---------------------------------------------------------------------------
 
@@ -95,13 +151,72 @@ export interface ComponentMeta {
 
 /**
  * Counts tsx files in packages/ui/src, excluding pattern-level compositions.
- * Category count is fixed at 6 (matches Storybook's stories/components/ dirs).
+ * Category count is derived from the number of subdirectories in
+ * apps/storybook/stories/Components/.
  */
 export function getComponentMeta(): ComponentMeta {
   const files = fs
     .readdirSync(UI_SRC_DIR)
     .filter((f) => f.endsWith(".tsx") && !PATTERN_LEVEL_COMPONENTS.has(f));
-  return { count: files.length, categories: 6 };
+
+  let categories = 6; // fallback
+  try {
+    const entries = fs.readdirSync(STORIES_COMPONENTS_DIR, {
+      withFileTypes: true,
+    });
+    categories = entries.filter((e) => e.isDirectory()).length;
+  } catch {
+    // if dir doesn't exist, keep default
+  }
+
+  return { count: files.length, categories };
+}
+
+// ---------------------------------------------------------------------------
+// Component category counts
+// ---------------------------------------------------------------------------
+
+const COMPONENT_CATEGORY_LABELS: Record<string, string> = {
+  "Content Display": "Content Display",
+  "Feedback-Status": "Feedback & Status",
+  "Inputs-Controls": "Inputs & Controls",
+  "Layout-Structure": "Layout & Structure",
+  Navigation: "Navigation",
+  "Overlays-Popovers": "Overlays & Popovers",
+};
+
+export interface ComponentCategoryCount {
+  dirName: string;
+  label: string;
+  count: number;
+}
+
+export function getComponentCategoryCounts(): ComponentCategoryCount[] {
+  let entries: fs.Dirent[];
+  try {
+    entries = fs.readdirSync(STORIES_COMPONENTS_DIR, { withFileTypes: true });
+  } catch {
+    return [];
+  }
+
+  return entries
+    .filter((e) => e.isDirectory())
+    .map((e) => {
+      const dirPath = path.join(STORIES_COMPONENTS_DIR, e.name);
+      let count = 0;
+      try {
+        count = fs
+          .readdirSync(dirPath)
+          .filter((f) => f.endsWith(".stories.tsx")).length;
+      } catch {
+        // empty
+      }
+      return {
+        dirName: e.name,
+        label: COMPONENT_CATEGORY_LABELS[e.name] ?? e.name,
+        count,
+      };
+    });
 }
 
 // ---------------------------------------------------------------------------
@@ -140,19 +255,127 @@ export function getPatternMeta(): PatternMeta {
 }
 
 // ---------------------------------------------------------------------------
+// Pattern category counts
+// ---------------------------------------------------------------------------
+
+export interface PatternCategoryCount {
+  dirName: string;
+  label: string;
+  count: number;
+}
+
+export function getPatternCategoryCounts(): PatternCategoryCount[] {
+  const EXCLUDED_DIRS = new Set(["Overview"]);
+  let entries: fs.Dirent[];
+  try {
+    entries = fs.readdirSync(PATTERNS_DIR, { withFileTypes: true });
+  } catch {
+    return [];
+  }
+
+  return entries
+    .filter((e) => e.isDirectory() && !EXCLUDED_DIRS.has(e.name))
+    .map((e) => {
+      const dirPath = path.join(PATTERNS_DIR, e.name);
+      let count = 0;
+      try {
+        count = fs
+          .readdirSync(dirPath)
+          .filter((f) => f.endsWith(".stories.tsx")).length;
+      } catch {
+        // empty
+      }
+      return {
+        dirName: e.name,
+        label: e.name,
+        count,
+      };
+    });
+}
+
+// ---------------------------------------------------------------------------
+// Package versions
+// ---------------------------------------------------------------------------
+
+export interface PackageVersions {
+  ui: string;
+  tokens: string;
+  storybook: string;
+  plugin: string;
+}
+
+function readPackageVersion(pkgPath: string): string {
+  try {
+    const raw = fs.readFileSync(pkgPath, "utf-8");
+    const pkg = JSON.parse(raw) as {
+      version?: string;
+      devDependencies?: Record<string, string>;
+      dependencies?: Record<string, string>;
+    };
+    return pkg.version ?? "unknown";
+  } catch {
+    return "unknown";
+  }
+}
+
+function readStorybookVersion(pkgPath: string): string {
+  try {
+    const raw = fs.readFileSync(pkgPath, "utf-8");
+    const pkg = JSON.parse(raw) as {
+      devDependencies?: Record<string, string>;
+      dependencies?: Record<string, string>;
+    };
+    const deps = { ...pkg.devDependencies, ...pkg.dependencies };
+    const sbKey = Object.keys(deps).find((k) => k === "@storybook/react-vite");
+    if (sbKey) {
+      // Strip leading ^ or ~ from semver range
+      return deps[sbKey].replace(/^[\^~]/, "");
+    }
+    return "unknown";
+  } catch {
+    return "unknown";
+  }
+}
+
+export function getPackageVersions(): PackageVersions {
+  return {
+    ui: readPackageVersion(
+      path.join(MONOREPO_ROOT, "packages/ui/package.json")
+    ),
+    tokens: readPackageVersion(
+      path.join(MONOREPO_ROOT, "packages/tokens/package.json")
+    ),
+    storybook: readStorybookVersion(
+      path.join(MONOREPO_ROOT, "apps/storybook/package.json")
+    ),
+    plugin: readPackageVersion(
+      path.join(MONOREPO_ROOT, "apps/figma-plugin/package.json")
+    ),
+  };
+}
+
+// ---------------------------------------------------------------------------
 // Convenience: all metadata in one call
 // ---------------------------------------------------------------------------
 
 export interface ShowcaseMeta {
   tokens: TokenMeta;
+  tokenSubcategories: TokenSubcategoryMeta;
   components: ComponentMeta;
+  componentCategories: ComponentCategoryCount[];
   patterns: PatternMeta;
+  patternCategories: PatternCategoryCount[];
+  versions: PackageVersions;
 }
 
 export function getShowcaseMeta(): ShowcaseMeta {
   return {
     tokens: getTokenMeta(),
+    tokenSubcategories: getTokenSubcategoryMeta(),
     components: getComponentMeta(),
+    componentCategories: getComponentCategoryCounts(),
     patterns: getPatternMeta(),
+    patternCategories: getPatternCategoryCounts(),
+    versions: getPackageVersions(),
   };
 }

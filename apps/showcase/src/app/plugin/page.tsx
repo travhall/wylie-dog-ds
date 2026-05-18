@@ -1,9 +1,12 @@
+import { getShowcaseMeta } from "@/lib/showcase-metadata";
+
 export default function PluginPage() {
+  const meta = getShowcaseMeta();
   const steps = [
     {
       num: "01",
       label: "JSON source",
-      desc: "All 340 design tokens live in a single source-of-truth JSON file inside the monorepo — color, type, spacing, radius, elevation, and motion. Every token is OKLCH, every value is intentional.",
+      desc: `All ${meta.tokens.total} design tokens live in a single source-of-truth JSON file inside the monorepo — color, type, spacing, radius, elevation, and motion. Every token is OKLCH, every value is intentional.`,
       right: (
         <div className="rounded-lg border border-(--color-border-primary) bg-(--color-background-primary) p-4 font-mono text-xs leading-relaxed text-(--color-text-secondary) overflow-hidden">
           <div className="text-(--color-text-tertiary) mb-2">
@@ -31,7 +34,7 @@ export default function PluginPage() {
           </div>
           <div className="pl-4">{"}"}</div>
           <div className="pl-4 text-(--color-text-tertiary)">
-            … 184 more color tokens
+            … {meta.tokenSubcategories.colors - 1} more color tokens
           </div>
           <div>{"}"}</div>
         </div>
@@ -70,19 +73,19 @@ export default function PluginPage() {
               </span>
             </div>
             <div className="text-(--color-text-tertiary)">
-              ✓ Loaded 340 tokens from tokens.json
+              ✓ Loaded {meta.tokens.total} tokens from tokens.json
             </div>
             <div className="text-(--color-text-tertiary)">
               ✓ Connected to Figma Variables API
             </div>
             <div className="text-(--color-text-tertiary)">
-              ✓ Mapped 186 color tokens
+              ✓ Mapped {meta.tokenSubcategories.colors} color tokens
             </div>
             <div className="text-(--color-text-tertiary)">
               ✓ Syncing Light + Dark modes…
             </div>
             <div style={{ color: "var(--color-interactive-primary)" }}>
-              ✓ Done in 2.1s · 340/340 synced
+              ✓ Done in 2.1s · {meta.tokens.total}/{meta.tokens.total} synced
             </div>
           </div>
         </div>
@@ -98,21 +101,21 @@ export default function PluginPage() {
             {
               tier: "P",
               label: "Primitives",
-              count: "186",
+              count: String(meta.tokens.primitive),
               desc: "Raw OKLCH values",
               color: "oklch(0.72 0.15 75)",
             },
             {
               tier: "S",
               label: "Semantic",
-              count: "124",
+              count: String(meta.tokens.semantic),
               desc: "Role-based aliases",
               color: "var(--color-interactive-primary)",
             },
             {
               tier: "C",
               label: "Components",
-              count: "30",
+              count: String(meta.tokens.component),
               desc: "Component-scoped",
               color: "oklch(0.60 0.14 155)",
             },
@@ -227,7 +230,7 @@ export default function PluginPage() {
               Token updated from{" "}
               <code className="text-(--color-text-secondary)">0.58</code> →{" "}
               <code className="text-(--color-text-secondary)">0.54</code>{" "}
-              lightness. Propagated to all 30 component-scoped references.
+              lightness. Propagated to all {meta.tokens.component} component-scoped references.
             </div>
           </div>
         </div>
@@ -236,22 +239,22 @@ export default function PluginPage() {
   ];
 
   const syncs = [
-    { category: "Color", count: 186, modes: 2, note: "OKLCH · P3 wide gamut" },
+    { category: "Color", count: meta.tokenSubcategories.colors, modes: 2, note: "OKLCH · P3 wide gamut" },
     {
       category: "Typography",
-      count: 42,
+      count: meta.tokenSubcategories.typography,
       modes: 1,
       note: "Family, size, weight, line-height",
     },
-    { category: "Spacing", count: 28, modes: 1, note: "4px base grid" },
-    { category: "Radius", count: 12, modes: 1, note: "None → full" },
+    { category: "Spacing", count: meta.tokenSubcategories.spacing, modes: 1, note: "4px base grid" },
+    { category: "Radius", count: meta.tokenSubcategories.radii, modes: 1, note: "None → full" },
     {
       category: "Elevation",
-      count: 9,
+      count: meta.tokenSubcategories.shadows,
       modes: 2,
       note: "Shadow scale · light + dark",
     },
-    { category: "Motion", count: 8, modes: 1, note: "Duration + easing" },
+    { category: "Motion", count: meta.tokenSubcategories.motion, modes: 1, note: "Duration + easing" },
   ];
 
   return (
@@ -272,7 +275,7 @@ export default function PluginPage() {
                 </span>
                 <span className="text-(--color-text-tertiary)">·</span>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-                  v0.9.2 · beta
+                  v{meta.versions.plugin} · beta
                 </span>
               </div>
 
@@ -326,7 +329,7 @@ export default function PluginPage() {
                 </span>
                 <span className="text-(--color-text-tertiary)">·</span>
                 <span className="font-mono text-[10px] text-(--color-text-tertiary)">
-                  2.1s · 340 variables
+                  2.1s · {meta.tokens.total} variables
                 </span>
                 <span
                   className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[10px]"
@@ -451,7 +454,7 @@ export default function PluginPage() {
                           />
                         </div>
                         <p className="font-mono text-[9px] text-(--color-text-secondary)">
-                          Mapping … 312/340
+                          Mapping … {Math.round(meta.tokens.total * 0.92)}/{meta.tokens.total}
                         </p>
                         <div className="grid grid-cols-3 gap-0.5">
                           <span
@@ -508,9 +511,9 @@ export default function PluginPage() {
                       </p>
                       <div className="mt-2.5 space-y-1">
                         {[
-                          { label: "Primitives", count: "186" },
-                          { label: "Semantic", count: "124" },
-                          { label: "Components", count: "30" },
+                          { label: "Primitives", count: String(meta.tokens.primitive) },
+                          { label: "Semantic", count: String(meta.tokens.semantic) },
+                          { label: "Components", count: String(meta.tokens.component) },
                         ].map(({ label, count }) => (
                           <div
                             key={label}
@@ -572,7 +575,7 @@ export default function PluginPage() {
                           {label}
                         </span>
                         <span className="ml-auto font-mono text-[10px] text-(--color-text-tertiary)">
-                          340 vars
+                          {meta.tokens.total} vars
                         </span>
                         <span
                           className="h-1.5 w-1.5 rounded-full shrink-0"
@@ -593,7 +596,7 @@ export default function PluginPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
           <dl className="grid grid-cols-2 md:grid-cols-4 divide-x divide-(--color-border-primary)">
             {[
-              { value: "340", label: "Variables synced" },
+              { value: String(meta.tokens.total), label: "Variables synced" },
               { value: "2.1s", label: "Avg sync time" },
               { value: "0", label: "Manual handoffs" },
               { value: "none", label: "Drift" },
@@ -819,7 +822,7 @@ export default function PluginPage() {
                   >
                     {"  "}Primitives{"          "}
                     <span style={{ color: "oklch(0.72 0.18 145)" }}>✓</span>
-                    {"  "}186 vars{"  "}
+                    {"  "}{meta.tokens.primitive} vars{"  "}
                     <span style={{ color: "oklch(0.80 0.17 85)" }}>+2</span>
                     {"  ~0  -0"}
                   </div>
@@ -839,19 +842,19 @@ export default function PluginPage() {
                   >
                     {"  "}Semantic{"            "}
                     <span style={{ color: "oklch(0.72 0.18 145)" }}>✓</span>
-                    {"  "}124 vars{"  "}
+                    {"  "}{meta.tokens.semantic} vars{"  "}
                     <span style={{ color: "oklch(0.80 0.17 85)" }}>+1</span>
                     {"  ~0  -0"}
                   </div>
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
                     {"    └─ Light mode     "}
                     <span style={{ color: "oklch(0.72 0.18 145)" }}>✓</span>
-                    {"  124"}
+                    {"  "}{meta.tokens.semantic}
                   </div>
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
                     {"    └─ Dark mode      "}
                     <span style={{ color: "oklch(0.72 0.18 145)" }}>✓</span>
-                    {"  124"}
+                    {"  "}{meta.tokens.semantic}
                   </div>
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
                     {"    └─ surface/elevated "}
@@ -864,7 +867,7 @@ export default function PluginPage() {
                   >
                     {"  "}Components{"          "}
                     <span style={{ color: "oklch(0.72 0.18 145)" }}>✓</span>
-                    {"  "}30 vars{"   ~0  ~0  -0"}
+                    {"  "}{meta.tokens.component} vars{"   ~0  ~0  -0"}
                   </div>
                   <div
                     className="mt-3"
@@ -878,7 +881,7 @@ export default function PluginPage() {
                   >
                     ✓{"  "}
                     <span style={{ color: "oklch(0.90 0.005 274)" }}>
-                      340 variables synced
+                      {meta.tokens.total} variables synced
                     </span>{" "}
                     in 2.14s
                   </div>
@@ -1027,7 +1030,7 @@ export default function PluginPage() {
                 fully populated.
               </h2>
               <p className="text-sm text-(--color-text-secondary) leading-relaxed mb-6">
-                After one sync, the Figma Variables panel shows all 340 tokens
+                After one sync, the Figma Variables panel shows all {meta.tokens.total} tokens
                 organized into three collections with Light and Dark modes
                 populated. Designers use real token names — not hex codes, not
                 guesses.
@@ -1081,9 +1084,9 @@ export default function PluginPage() {
                     Collections
                   </div>
                   {[
-                    { label: "Primitives", count: 186 },
-                    { label: "Semantic", count: 124, active: true },
-                    { label: "Components", count: 30 },
+                    { label: "Primitives", count: meta.tokens.primitive },
+                    { label: "Semantic", count: meta.tokens.semantic, active: true },
+                    { label: "Components", count: meta.tokens.component },
                   ].map(({ label, count, active }) => (
                     <div
                       key={label}

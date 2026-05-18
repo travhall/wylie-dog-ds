@@ -267,7 +267,7 @@ export default function ShowcasePage() {
                 {
                   label: "Accessibility",
                   value: "WCAG 2.2",
-                  sub: "AA verified",
+                  sub: "AA targeted",
                 },
                 {
                   label: "Patterns",
@@ -530,7 +530,7 @@ export default function ShowcasePage() {
               <p className="mt-3 text-(--color-text-secondary)">
                 Headless primitives, fully composable, accessible by default.
                 Every component ships with TypeScript types, Storybook stories,
-                and a Figma counterpart.
+                with TypeScript types and full Storybook documentation.
               </p>
             </div>
             <Link href="/components">
@@ -1172,7 +1172,7 @@ export default function ShowcasePage() {
                   },
                   {
                     bold: "Mode-aware.",
-                    rest: "Light, dark, and high-contrast collections map to a single token contract.",
+                    rest: "Light and dark collections map to a single token contract.",
                   },
                   {
                     bold: "Opens a PR.",
@@ -1244,7 +1244,7 @@ export default function ShowcasePage() {
                 </Link>
               </div>
               <p className="mt-5 font-mono text-[11px] text-(--color-text-tertiary)">
-                Free · v0.9 beta · 12,400 installs in Figma Community
+                Free · v0.9 beta · in development
               </p>
             </div>
 
@@ -1547,7 +1547,7 @@ export default function ShowcasePage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-2 shrink-0">
-              <Link href="https://storybook.wyliedog.dev">
+              <Link href="https://wyliedogstorybook.com">
                 <Button
                   size="sm"
                   className="h-10 rounded-md px-4 font-semibold gap-1.5"

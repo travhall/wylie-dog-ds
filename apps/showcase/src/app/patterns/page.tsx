@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { getShowcaseMeta } from "@/lib/showcase-metadata";
 
 /* ─── Pattern card ───────────────────────────────────────────── */
 function PatCard({
@@ -45,7 +46,7 @@ function PatCard({
             {title}
           </h3>
           <a
-            href="https://storybook.wyliedog.dev"
+            href="https://wyliedogstorybook.com"
             className="font-mono text-[10px] text-(--color-text-tertiary) hover:text-(--color-interactive-primary) transition-colors"
           >
             View ↗
@@ -105,6 +106,7 @@ function CatHeader({
 }
 
 export default function PatternsPage() {
+  const meta = getShowcaseMeta();
   return (
     <div className="min-h-screen bg-(--color-background-primary)">
       {/* ── HERO ───────────────────────────────────────────────── */}
@@ -234,7 +236,7 @@ export default function PatternsPage() {
                 Patterns
               </p>
               <p className="text-xs text-(--color-text-secondary) mt-1">
-                15 reference compositions across 9 categories.
+                {meta.patterns.count} reference compositions across {meta.patterns.categories} categories.
               </p>
               <div className="mt-3 grid grid-cols-3 gap-1">
                 {[22, 18, 14].map((opacity, i) => (
@@ -288,12 +290,12 @@ export default function PatternsPage() {
               {[
                 {
                   label: "Patterns",
-                  value: "15",
+                  value: String(meta.patterns.count),
                   sub: "reference compositions",
                 },
                 {
                   label: "Categories",
-                  value: "9",
+                  value: String(meta.patterns.categories),
                   sub: "auth, data, layout, a11y…",
                 },
                 {
@@ -304,7 +306,7 @@ export default function PatternsPage() {
                 {
                   label: "Accessible",
                   value: "WCAG 2.2",
-                  sub: "AA verified",
+                  sub: "AA targeted",
                 },
               ].map(({ label, value, sub }, i) => (
                 <div
@@ -2149,7 +2151,7 @@ export default function PatternsPage() {
             </div>
             <div className="flex flex-wrap gap-3 shrink-0">
               <a
-                href="https://storybook.wyliedog.dev"
+                href="https://wyliedogstorybook.com"
                 className="inline-flex h-10 items-center gap-1.5 rounded-md px-4 text-sm font-semibold"
                 style={{
                   background: "var(--color-interactive-primary)",

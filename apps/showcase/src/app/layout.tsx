@@ -51,7 +51,7 @@ const footerColumns = [
     heading: "Tools",
     links: [
       { label: "Token Bridge for Figma", href: "/plugin" },
-      { label: "Storybook ↗", href: "https://storybook.wyliedog.dev" },
+      { label: "Storybook ↗", href: "https://wyliedogstorybook.com" },
     ],
   },
   {
@@ -121,7 +121,7 @@ export default function RootLayout({
               <ThemeToggle />
 
               <Link
-                href="https://storybook.wyliedog.dev"
+                href="https://wyliedogstorybook.com"
                 className="hidden md:flex h-8 items-center gap-1.5 rounded-md border border-(--color-border-primary) px-3 text-sm font-medium text-(--color-text-primary) hover:bg-(--color-background-secondary) transition-colors"
               >
                 Storybook

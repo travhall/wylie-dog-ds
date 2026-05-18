@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@wyliedog/ui/button";
+import { getShowcaseMeta } from "@/lib/showcase-metadata";
 
 export default function ArchitecturePage() {
+  const meta = getShowcaseMeta();
   return (
     <>
       {/* ── HERO ── */}
@@ -286,7 +288,7 @@ export default function ArchitecturePage() {
                             packages/tokens
                           </p>
                           <p className="font-mono text-[10px] text-(--color-text-secondary) mt-0.5">
-                            340 OKLCH design tokens
+                            {meta.tokens.total} OKLCH design tokens
                           </p>
                         </div>
                       </div>
@@ -524,7 +526,7 @@ export default function ArchitecturePage() {
                     ["Outputs", "tokens.css · tokens.js · tokens.d.ts"],
                     ["Depended on by", "@wyliedog/ui"],
                   ],
-                  footer: "340 tokens · 6 categories",
+                  footer: `${meta.tokens.total} tokens · ${meta.components.categories} categories`,
                 },
                 {
                   pkg: "@wyliedog/ui",
@@ -575,7 +577,7 @@ export default function ArchitecturePage() {
                   meta: [
                     ["Stack", "Storybook 10.2 · Vite 7"],
                     ["Consumes", "@wyliedog/ui"],
-                    ["Deploy", "storybook.wyliedog.dev · Vercel"],
+                    ["Deploy", "wyliedogstorybook.com · Vercel"],
                   ],
                   footer: "184 stories · 0 a11y warnings",
                   footerDot: true,
@@ -789,7 +791,7 @@ export default function ArchitecturePage() {
                     </li>
                   </ul>
                 ),
-                footer: "340 vars emitted",
+                footer: `${meta.tokens.total} vars emitted`,
               },
               {
                 stage: "03 · output",
@@ -1053,7 +1055,7 @@ export default function ArchitecturePage() {
                   >
                     → dist/tokens.css{" "}
                     <span style={{ color: "oklch(72% 0.14 155)" }}>
-                      340 vars
+                      {meta.tokens.total} vars
                     </span>
                   </div>
                   <div
@@ -1175,13 +1177,13 @@ export default function ArchitecturePage() {
                       n: "1",
                       title: "Tokens build",
                       meta: "2.4s · style-dictionary",
-                      desc: "Reads JSON source files, resolves aliases, emits tokens.css with all 340 custom properties plus JS and TypeScript types.",
+                      desc: `Reads JSON source files, resolves aliases, emits tokens.css with all ${meta.tokens.total} custom properties plus JS and TypeScript types.`,
                     },
                     {
                       n: "2",
                       title: "UI build",
                       meta: "8.6s · vite build",
-                      desc: "Picks up the fresh tokens.css via workspace symlink. Vite bundles all 42 components into a tree-shakeable ESM output.",
+                      desc: `Picks up the fresh tokens.css via workspace symlink. Vite bundles all ${meta.components.count} components into a tree-shakeable ESM output.`,
                     },
                     {
                       n: "3",
@@ -1527,7 +1529,7 @@ export default function ArchitecturePage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-2 shrink-0">
-              <Link href="https://storybook.wyliedog.dev">
+              <Link href="https://wyliedogstorybook.com">
                 <Button
                   size="sm"
                   className="h-10 rounded-md px-4 font-semibold gap-1.5"

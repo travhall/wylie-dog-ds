@@ -40,7 +40,7 @@ function CompCard({
           {desc}
         </p>
         <a
-          href={`https://storybook.wyliedog.dev/?path=/docs/${href}`}
+          href={`https://wyliedogstorybook.com/?path=/docs/${href}`}
           className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary) hover:text-(--color-interactive-primary) transition-colors"
         >
           Storybook
@@ -159,7 +159,7 @@ export default function ComponentsPage() {
               </div>
 
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.25rem] font-semibold tracking-tight leading-[0.98] text-(--color-text-primary)">
-                43 components.
+                {meta.components.count} components.
                 <br />
                 All tokens.{" "}
                 <span style={{ color: "var(--color-interactive-primary)" }}>
@@ -176,8 +176,8 @@ export default function ComponentsPage() {
 
               <dl className="mt-10 flex flex-wrap gap-6 max-w-xl">
                 {[
-                  { label: "Components", value: "43" },
-                  { label: "Categories", value: "6" },
+                  { label: "Components", value: String(meta.components.count) },
+                  { label: "Categories", value: String(meta.components.categories) },
                   { label: "Built on", value: "Radix" },
                   { label: "Audited", value: "WCAG 2.2" },
                 ].map(({ label, value }) => (
@@ -2150,13 +2150,13 @@ export default function ComponentsPage() {
                       >
                         Tokens
                       </p>
-                      <p className="text-(--color-text-tertiary)">340 vars</p>
+                      <p className="text-(--color-text-tertiary)">{meta.tokens.total} vars</p>
                     </div>
                     <div className="rounded p-1.5">
                       <p className="font-semibold text-(--color-text-primary)">
                         Components
                       </p>
-                      <p className="text-(--color-text-tertiary)">43 React</p>
+                      <p className="text-(--color-text-tertiary)">{meta.components.count} React</p>
                     </div>
                   </div>
                 </div>
@@ -2718,7 +2718,7 @@ export default function ComponentsPage() {
               {
                 label: "Primitive layer",
                 value: "Radix UI",
-                desc: "All 43 components are built on Radix primitives — headless, a11y-compliant, and unstyled.",
+                desc: `All ${meta.components.count} components are built on Radix primitives — headless, a11y-compliant, and unstyled.`,
               },
               {
                 label: "Type safety",
@@ -2733,7 +2733,7 @@ export default function ComponentsPage() {
               {
                 label: "Token contract",
                 value: "OKLCH Tokens",
-                desc: "340 design tokens across 3 tiers. Every color in every component resolves through the token graph.",
+                desc: `${meta.tokens.total} design tokens across 3 tiers. Every color in every component resolves through the token graph.`,
               },
             ].map(({ label, value, desc }) => (
               <div key={label}>
