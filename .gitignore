@@ -32,3 +32,4 @@ apps/figma-plugin/coverage
 apps/storybook/coverage
 packages/ui/coverage
 apps/storybook/tests/visual.spec.ts-snapshots/**
+apps/figma-plugin/wylie-dog-figma-builder
