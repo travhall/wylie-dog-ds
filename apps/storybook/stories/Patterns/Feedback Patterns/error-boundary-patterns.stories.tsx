@@ -101,7 +101,9 @@ class RecoverableErrorBoundary extends Component<
       return (
         <Card className="w-125 border-(--color-border-danger)">
           <CardHeader>
-            <CardTitle className="text-(--color-text-danger)">Error Occurred</CardTitle>
+            <CardTitle className="text-(--color-text-danger)">
+              Error Occurred
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <Alert variant="destructive">
@@ -464,7 +466,9 @@ export const ErrorLogging: Story = {
                     <span className="font-mono text-(--color-text-danger)">
                       [{entry.timestamp}]
                     </span>{" "}
-                    <span className="text-(--color-text-danger)">{entry.message}</span>
+                    <span className="text-(--color-text-danger)">
+                      {entry.message}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -526,7 +530,9 @@ export const GranularErrorBoundaries: Story = {
           <ErrorBoundary
             fallback={
               <div className="p-4 bg-(--color-surface-danger) border-b border-(--color-border-danger)">
-                <p className="text-sm text-(--color-text-danger)">Header failed to load</p>
+                <p className="text-sm text-(--color-text-danger)">
+                  Header failed to load
+                </p>
               </div>
             }
           >
@@ -541,7 +547,9 @@ export const GranularErrorBoundaries: Story = {
             <ErrorBoundary
               fallback={
                 <div className="w-48 p-4 bg-(--color-surface-danger) border-r border-(--color-border-danger)">
-                  <p className="text-xs text-(--color-text-danger)">Sidebar unavailable</p>
+                  <p className="text-xs text-(--color-text-danger)">
+                    Sidebar unavailable
+                  </p>
                 </div>
               }
             >

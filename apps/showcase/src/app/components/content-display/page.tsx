@@ -111,13 +111,21 @@ export default function ContentDisplayPage() {
       status: "stable" as const,
       preview: (
         <div className="flex items-center gap-2 w-full">
-          <Button variant="outline" size="icon" className="h-8 w-8 rounded-full">
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8 rounded-full"
+          >
             ‹
           </Button>
           <div className="flex-1 h-16 bg-(--color-interactive-primary)/10 border border-(--color-border-primary)/20 rounded-lg flex items-center justify-center text-xs text-(--color-text-secondary)">
             Slide 1 of 3
           </div>
-          <Button variant="outline" size="icon" className="h-8 w-8 rounded-full">
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8 rounded-full"
+          >
             ›
           </Button>
         </div>

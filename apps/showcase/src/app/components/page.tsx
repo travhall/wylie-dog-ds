@@ -178,7 +178,10 @@ export default function ComponentsPage() {
               <dl className="mt-10 flex flex-wrap gap-6 max-w-xl">
                 {[
                   { label: "Components", value: String(meta.components.count) },
-                  { label: "Categories", value: String(meta.components.categories) },
+                  {
+                    label: "Categories",
+                    value: String(meta.components.categories),
+                  },
                   { label: "Built on", value: "Radix" },
                   { label: "Audited", value: "WCAG 2.2" },
                 ].map(({ label, value }) => (
@@ -357,10 +360,17 @@ export default function ComponentsPage() {
 
                     {/* Buttons */}
                     <div className="mt-5 flex items-center justify-end gap-2">
-                      <Button variant="ghost" size="sm" className="h-8 px-3 text-xs font-semibold">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 px-3 text-xs font-semibold"
+                      >
                         Cancel
                       </Button>
-                      <Button size="sm" className="h-8 gap-1 text-xs font-semibold">
+                      <Button
+                        size="sm"
+                        className="h-8 gap-1 text-xs font-semibold"
+                      >
                         Run audit
                         <svg
                           viewBox="0 0 24 24"
@@ -730,7 +740,11 @@ export default function ComponentsPage() {
               href="carousel"
               preview={
                 <div className="w-full max-w-57.5 flex items-center gap-2">
-                  <Button variant="outline" size="icon" className="h-7 w-7 rounded-full shrink-0">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-7 w-7 rounded-full shrink-0"
+                  >
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3"
@@ -1066,7 +1080,10 @@ export default function ComponentsPage() {
                         v1.4.0 is live in production
                       </p>
                     </div>
-                    <Button variant="ghost" className="h-3.5 w-3.5 p-0 text-(--color-text-tertiary)">
+                    <Button
+                      variant="ghost"
+                      className="h-3.5 w-3.5 p-0 text-(--color-text-tertiary)"
+                    >
                       <svg
                         viewBox="0 0 24 24"
                         className="h-2.5 w-2.5"
@@ -1677,10 +1694,18 @@ export default function ComponentsPage() {
                     >
                       Day
                     </Button>
-                    <Button variant="ghost" size="sm" className="px-3 py-1.5 text-[11px] font-medium text-(--color-text-secondary)">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="px-3 py-1.5 text-[11px] font-medium text-(--color-text-secondary)"
+                    >
                       Week
                     </Button>
-                    <Button variant="ghost" size="sm" className="px-3 py-1.5 text-[11px] font-medium text-(--color-text-secondary)">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="px-3 py-1.5 text-[11px] font-medium text-(--color-text-secondary)"
+                    >
                       Month
                     </Button>
                   </div>
@@ -1705,7 +1730,11 @@ export default function ComponentsPage() {
                         <path d="M21 10H3M21 6H3M21 14H3M21 18H3" />
                       </svg>
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-7 w-8 text-(--color-text-secondary)">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-8 text-(--color-text-secondary)"
+                    >
                       <svg
                         viewBox="0 0 24 24"
                         className="h-3 w-3"
@@ -1716,7 +1745,11 @@ export default function ComponentsPage() {
                         <path d="M21 10H7M21 6H3M21 14H3M21 18H7" />
                       </svg>
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-7 w-8 text-(--color-text-secondary)">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-8 text-(--color-text-secondary)"
+                    >
                       <svg
                         viewBox="0 0 24 24"
                         className="h-3 w-3"
@@ -2153,13 +2186,17 @@ export default function ComponentsPage() {
                       >
                         Tokens
                       </p>
-                      <p className="text-(--color-text-tertiary)">{meta.tokens.total} vars</p>
+                      <p className="text-(--color-text-tertiary)">
+                        {meta.tokens.total} vars
+                      </p>
                     </div>
                     <div className="rounded p-1.5">
                       <p className="font-semibold text-(--color-text-primary)">
                         Components
                       </p>
-                      <p className="text-(--color-text-tertiary)">{meta.components.count} React</p>
+                      <p className="text-(--color-text-tertiary)">
+                        {meta.components.count} React
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -2172,7 +2209,11 @@ export default function ComponentsPage() {
               href="pagination"
               preview={
                 <div className="flex items-center gap-1 text-[11px]">
-                  <Button variant="outline" size="icon" className="h-7 w-7 opacity-50">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-7 w-7 opacity-50"
+                  >
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3"
@@ -2425,7 +2466,11 @@ export default function ComponentsPage() {
               href="dropdown-menu"
               preview={
                 <div className="flex flex-col gap-1.5 items-start">
-                  <Button variant="outline" size="sm" className="h-7 gap-1 text-[11px] font-semibold">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-7 gap-1 text-[11px] font-semibold"
+                  >
                     Options
                     <svg
                       viewBox="0 0 24 24"
@@ -2549,7 +2594,11 @@ export default function ComponentsPage() {
               href="popover"
               preview={
                 <div className="flex flex-col gap-1.5 items-start">
-                  <Button variant="outline" size="sm" className="h-7 gap-1 text-[11px] font-semibold">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-7 gap-1 text-[11px] font-semibold"
+                  >
                     Filters
                     <svg
                       viewBox="0 0 24 24"
@@ -2668,7 +2717,11 @@ export default function ComponentsPage() {
               preview={
                 <div className="flex flex-col items-center gap-2">
                   <div className="relative">
-                    <Button variant="outline" size="sm" className="h-8 gap-1 text-[11px] font-semibold">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="h-8 gap-1 text-[11px] font-semibold"
+                    >
                       <svg
                         viewBox="0 0 24 24"
                         className="h-3.5 w-3.5"

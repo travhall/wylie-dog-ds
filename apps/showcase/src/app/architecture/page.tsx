@@ -59,7 +59,10 @@ export default function ArchitecturePage() {
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </a>
-                <a href="#build-flow" className={buttonVariants({ variant: "outline" })}>
+                <a
+                  href="#build-flow"
+                  className={buttonVariants({ variant: "outline" })}
+                >
                   See the build flow
                 </a>
               </div>

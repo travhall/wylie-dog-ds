@@ -465,7 +465,9 @@ function MultiStepValidationComponent() {
   if (done) {
     return (
       <div role="status" className="w-100 space-y-2 text-center p-6">
-        <p className="font-semibold text-(--color-text-success)">Account created!</p>
+        <p className="font-semibold text-(--color-text-success)">
+          Account created!
+        </p>
         <p className="text-sm text-gray-500">
           Welcome, {step2.firstName || step1.username}.
         </p>
@@ -682,7 +684,10 @@ function AsyncValidationComponent() {
         </div>
 
         {status === "available" && (
-          <p className="text-sm font-medium text-(--color-text-success)" role="status">
+          <p
+            className="text-sm font-medium text-(--color-text-success)"
+            role="status"
+          >
             ✓ Available
           </p>
         )}

@@ -232,7 +232,8 @@ export default function PluginPage() {
               Token updated from{" "}
               <code className="text-(--color-text-secondary)">0.58</code> →{" "}
               <code className="text-(--color-text-secondary)">0.54</code>{" "}
-              lightness. Propagated to all {meta.tokens.component} component-scoped references.
+              lightness. Propagated to all {meta.tokens.component}{" "}
+              component-scoped references.
             </div>
           </div>
         </div>
@@ -241,22 +242,42 @@ export default function PluginPage() {
   ];
 
   const syncs = [
-    { category: "Color", count: meta.tokenSubcategories.colors, modes: 2, note: "OKLCH · P3 wide gamut" },
+    {
+      category: "Color",
+      count: meta.tokenSubcategories.colors,
+      modes: 2,
+      note: "OKLCH · P3 wide gamut",
+    },
     {
       category: "Typography",
       count: meta.tokenSubcategories.typography,
       modes: 1,
       note: "Family, size, weight, line-height",
     },
-    { category: "Spacing", count: meta.tokenSubcategories.spacing, modes: 1, note: "4px base grid" },
-    { category: "Radius", count: meta.tokenSubcategories.radii, modes: 1, note: "None → full" },
+    {
+      category: "Spacing",
+      count: meta.tokenSubcategories.spacing,
+      modes: 1,
+      note: "4px base grid",
+    },
+    {
+      category: "Radius",
+      count: meta.tokenSubcategories.radii,
+      modes: 1,
+      note: "None → full",
+    },
     {
       category: "Elevation",
       count: meta.tokenSubcategories.shadows,
       modes: 2,
       note: "Shadow scale · light + dark",
     },
-    { category: "Motion", count: meta.tokenSubcategories.motion, modes: 1, note: "Duration + easing" },
+    {
+      category: "Motion",
+      count: meta.tokenSubcategories.motion,
+      modes: 1,
+      note: "Duration + easing",
+    },
   ];
 
   return (
@@ -309,7 +330,10 @@ export default function PluginPage() {
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </a>
-                <Link href="/tokens" className={buttonVariants({ variant: "outline", size: "lg" })}>
+                <Link
+                  href="/tokens"
+                  className={buttonVariants({ variant: "outline", size: "lg" })}
+                >
                   View token reference
                 </Link>
               </div>
@@ -449,7 +473,8 @@ export default function PluginPage() {
                           />
                         </div>
                         <p className="font-mono text-[9px] text-(--color-text-secondary)">
-                          Mapping … {Math.round(meta.tokens.total * 0.92)}/{meta.tokens.total}
+                          Mapping … {Math.round(meta.tokens.total * 0.92)}/
+                          {meta.tokens.total}
                         </p>
                         <div className="grid grid-cols-3 gap-0.5">
                           <span
@@ -506,9 +531,18 @@ export default function PluginPage() {
                       </p>
                       <div className="mt-2.5 space-y-1">
                         {[
-                          { label: "Primitives", count: String(meta.tokens.primitive) },
-                          { label: "Semantic", count: String(meta.tokens.semantic) },
-                          { label: "Components", count: String(meta.tokens.component) },
+                          {
+                            label: "Primitives",
+                            count: String(meta.tokens.primitive),
+                          },
+                          {
+                            label: "Semantic",
+                            count: String(meta.tokens.semantic),
+                          },
+                          {
+                            label: "Components",
+                            count: String(meta.tokens.component),
+                          },
                         ].map(({ label, count }) => (
                           <div
                             key={label}
@@ -817,7 +851,8 @@ export default function PluginPage() {
                   >
                     {"  "}Primitives{"          "}
                     <span style={{ color: "oklch(0.72 0.18 145)" }}>✓</span>
-                    {"  "}{meta.tokens.primitive} vars{"  "}
+                    {"  "}
+                    {meta.tokens.primitive} vars{"  "}
                     <span style={{ color: "oklch(0.80 0.17 85)" }}>+2</span>
                     {"  ~0  -0"}
                   </div>
@@ -837,19 +872,22 @@ export default function PluginPage() {
                   >
                     {"  "}Semantic{"            "}
                     <span style={{ color: "oklch(0.72 0.18 145)" }}>✓</span>
-                    {"  "}{meta.tokens.semantic} vars{"  "}
+                    {"  "}
+                    {meta.tokens.semantic} vars{"  "}
                     <span style={{ color: "oklch(0.80 0.17 85)" }}>+1</span>
                     {"  ~0  -0"}
                   </div>
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
                     {"    └─ Light mode     "}
                     <span style={{ color: "oklch(0.72 0.18 145)" }}>✓</span>
-                    {"  "}{meta.tokens.semantic}
+                    {"  "}
+                    {meta.tokens.semantic}
                   </div>
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
                     {"    └─ Dark mode      "}
                     <span style={{ color: "oklch(0.72 0.18 145)" }}>✓</span>
-                    {"  "}{meta.tokens.semantic}
+                    {"  "}
+                    {meta.tokens.semantic}
                   </div>
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
                     {"    └─ surface/elevated "}
@@ -862,7 +900,8 @@ export default function PluginPage() {
                   >
                     {"  "}Components{"          "}
                     <span style={{ color: "oklch(0.72 0.18 145)" }}>✓</span>
-                    {"  "}{meta.tokens.component} vars{"   ~0  ~0  -0"}
+                    {"  "}
+                    {meta.tokens.component} vars{"   ~0  ~0  -0"}
                   </div>
                   <div
                     className="mt-3"
@@ -1025,10 +1064,10 @@ export default function PluginPage() {
                 fully populated.
               </h2>
               <p className="text-sm text-(--color-text-secondary) leading-relaxed mb-6">
-                After one sync, the Figma Variables panel shows all {meta.tokens.total} tokens
-                organized into three collections with Light and Dark modes
-                populated. Designers use real token names — not hex codes, not
-                guesses.
+                After one sync, the Figma Variables panel shows all{" "}
+                {meta.tokens.total} tokens organized into three collections with
+                Light and Dark modes populated. Designers use real token names —
+                not hex codes, not guesses.
               </p>
               <div className="space-y-3 text-sm text-(--color-text-secondary)">
                 {[
@@ -1080,7 +1119,11 @@ export default function PluginPage() {
                   </div>
                   {[
                     { label: "Primitives", count: meta.tokens.primitive },
-                    { label: "Semantic", count: meta.tokens.semantic, active: true },
+                    {
+                      label: "Semantic",
+                      count: meta.tokens.semantic,
+                      active: true,
+                    },
                     { label: "Components", count: meta.tokens.component },
                   ].map(({ label, count, active }) => (
                     <div
@@ -1253,7 +1296,10 @@ export default function PluginPage() {
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </a>
-              <Link href="/tokens" className={buttonVariants({ variant: "outline" })}>
+              <Link
+                href="/tokens"
+                className={buttonVariants({ variant: "outline" })}
+              >
                 View token reference
                 <svg
                   viewBox="0 0 24 24"

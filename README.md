@@ -40,19 +40,19 @@ Managed with pnpm workspaces and Turborepo. Package manager: `pnpm@10.28.2`.
 
 ## Tech Stack
 
-| Tool | Version |
-|---|---|
-| React | 19.2 |
-| TypeScript | 6.0 |
-| Tailwind CSS | 4.2 |
-| Storybook | 10.3 |
-| Vite | 8.0 |
-| Next.js (showcase) | 16.2 |
-| Vitest | 4.1 |
-| Turborepo | 2.9 |
-| Style Dictionary | 5.4 |
-| Radix UI | various |
-| pnpm | 10.28.2 |
+| Tool               | Version |
+| ------------------ | ------- |
+| React              | 19.2    |
+| TypeScript         | 6.0     |
+| Tailwind CSS       | 4.2     |
+| Storybook          | 10.3    |
+| Vite               | 8.0     |
+| Next.js (showcase) | 16.2    |
+| Vitest             | 4.1     |
+| Turborepo          | 2.9     |
+| Style Dictionary   | 5.4     |
+| Radix UI           | various |
+| pnpm               | 10.28.2 |
 
 ## Getting Started
 
@@ -209,6 +209,7 @@ Visual regression tests run with Playwright: `pnpm --filter storybook test:visua
 Located at `apps/figma-plugin` (version 0.2.0, beta). Enables design token sync between Figma and the codebase.
 
 **Features:**
+
 - Multi-format import: Style Dictionary, Tokens Studio, W3C DTCG
 - Smart conflict detection and resolution
 - GitHub integration — push tokens directly or open a PR
@@ -268,17 +269,17 @@ pnpm release                    # Build + publish to npm
 
 GitHub Actions workflows run on PRs and pushes to `main`:
 
-| Workflow | Trigger | Purpose |
-|---|---|---|
-| `build.yml` | PR / push | Build all packages |
-| `test.yml` | PR / push | Full test suite |
-| `lint.yml` | PR / push | Lint all packages |
-| `size.yml` | PR / push | Bundle size enforcement |
-| `lighthouse.yml` | PR / push | Lighthouse performance audit |
-| `visual-regression.yml` | PR / push | Playwright visual regression |
-| `release.yml` | push to `main` | Changesets versioning and publish |
-| `rebuild-tokens.yml` | scheduled | Token rebuild |
-| `figma-plugin-test.yml` | PR / push | Plugin test suite |
+| Workflow                | Trigger        | Purpose                           |
+| ----------------------- | -------------- | --------------------------------- |
+| `build.yml`             | PR / push      | Build all packages                |
+| `test.yml`              | PR / push      | Full test suite                   |
+| `lint.yml`              | PR / push      | Lint all packages                 |
+| `size.yml`              | PR / push      | Bundle size enforcement           |
+| `lighthouse.yml`        | PR / push      | Lighthouse performance audit      |
+| `visual-regression.yml` | PR / push      | Playwright visual regression      |
+| `release.yml`           | push to `main` | Changesets versioning and publish |
+| `rebuild-tokens.yml`    | scheduled      | Token rebuild                     |
+| `figma-plugin-test.yml` | PR / push      | Plugin test suite                 |
 
 Storybook is deployed to Netlify on every push. Config: `netlify.toml`.
 
@@ -288,10 +289,10 @@ Use the `-(--token-name)` arbitrary Tailwind syntax for any token-backed value. 
 
 ```tsx
 // Correct — token-backed
-className="bg-(--color-interactive-primary) text-(--color-text-inverse)"
+className = "bg-(--color-interactive-primary) text-(--color-text-inverse)";
 
 // Incorrect — hardcoded scale
-className="bg-blue-500 text-white"
+className = "bg-blue-500 text-white";
 ```
 
 ## License

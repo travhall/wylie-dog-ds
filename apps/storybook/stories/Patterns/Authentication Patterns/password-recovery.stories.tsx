@@ -350,7 +350,9 @@ export const ResetPasswordForm: Story = {
                     <ul className="list-disc list-inside space-y-1">
                       <li
                         className={
-                          formData.password.length >= 8 ? "text-(--color-text-success)" : ""
+                          formData.password.length >= 8
+                            ? "text-(--color-text-success)"
+                            : ""
                         }
                       >
                         At least 8 characters
@@ -601,7 +603,9 @@ export const MultiStepPasswordRecovery: Story = {
                 {index < steps.length - 1 && (
                   <div
                     className={`flex-1 h-0.5 ${
-                      index < currentStepIndex ? "bg-(--color-interactive-primary)" : "bg-(--color-background-secondary)"
+                      index < currentStepIndex
+                        ? "bg-(--color-interactive-primary)"
+                        : "bg-(--color-background-secondary)"
                     }`}
                   />
                 )}

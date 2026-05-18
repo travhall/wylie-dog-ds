@@ -25,9 +25,12 @@ export const textareaVariants = cva(
         vertical: "resize-y",
       },
       textareaState: {
-        default: "border-(--color-input-border) bg-(--color-input-default-background) hover:bg-(--color-input-background-hover)",
-        error:   "border-(--color-input-border-error) bg-(--color-input-default-background)",
-        success: "border-(--color-border-success) bg-(--color-input-default-background)",
+        default:
+          "border-(--color-input-border) bg-(--color-input-default-background) hover:bg-(--color-input-background-hover)",
+        error:
+          "border-(--color-input-border-error) bg-(--color-input-default-background)",
+        success:
+          "border-(--color-border-success) bg-(--color-input-default-background)",
       },
     },
     defaultVariants: {
@@ -75,7 +78,10 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     return (
       <textarea
-        className={cn(textareaVariants({ size, resize, textareaState }), className)}
+        className={cn(
+          textareaVariants({ size, resize, textareaState }),
+          className
+        )}
         ref={ref}
         aria-invalid={error}
         aria-describedby={describedBy || undefined}

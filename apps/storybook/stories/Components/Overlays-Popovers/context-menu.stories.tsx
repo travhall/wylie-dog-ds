@@ -462,7 +462,9 @@ export const ImageGallery: Story = {
               <ContextMenuItem>Set as Wallpaper</ContextMenuItem>
               <ContextMenuItem>Edit Image</ContextMenuItem>
               <ContextMenuSeparator />
-              <ContextMenuItem className="text-(--color-text-danger)">Delete</ContextMenuItem>
+              <ContextMenuItem className="text-(--color-text-danger)">
+                Delete
+              </ContextMenuItem>
             </ContextMenuContent>
           </ContextMenu>
         ))}

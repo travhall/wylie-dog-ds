@@ -574,7 +574,10 @@ export const LoginRegistrationTabs: Story = {
                 <FormField required>
                   <div className="flex items-center justify-between">
                     <FormLabel>Password</FormLabel>
-                    <Button variant="link" className="h-auto p-0 text-sm font-normal">
+                    <Button
+                      variant="link"
+                      className="h-auto p-0 text-sm font-normal"
+                    >
                       Forgot?
                     </Button>
                   </div>

@@ -226,12 +226,7 @@ function InputsContent() {
       preview: (
         <div className="flex gap-1">
           {["Bold", "Italic", "Underline"].map((item) => (
-            <Button
-              key={item}
-              variant="outline"
-              size="sm"
-              className="text-xs"
-            >
+            <Button key={item} variant="outline" size="sm" className="text-xs">
               {item}
             </Button>
           ))}

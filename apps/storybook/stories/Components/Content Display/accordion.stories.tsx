@@ -96,30 +96,30 @@ export const SingleCollapsible: Story = {
   args: {},
   render: () => (
     <div className="mx-auto w-full max-w-md">
-    <Accordion type="single" collapsible className="w-full">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Getting Started</AccordionTrigger>
-        <AccordionContent>
-          Install the package using npm, yarn, or pnpm. Then import the
-          components and start building your accordion interface.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Customization</AccordionTrigger>
-        <AccordionContent>
-          The accordion can be customized using CSS variables, Tailwind classes,
-          or by overriding the default design tokens in your theme.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Best Practices</AccordionTrigger>
-        <AccordionContent>
-          Use clear, descriptive trigger text. Keep content concise but
-          informative. Consider the information hierarchy when organizing
-          accordion items.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Getting Started</AccordionTrigger>
+          <AccordionContent>
+            Install the package using npm, yarn, or pnpm. Then import the
+            components and start building your accordion interface.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Customization</AccordionTrigger>
+          <AccordionContent>
+            The accordion can be customized using CSS variables, Tailwind
+            classes, or by overriding the default design tokens in your theme.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Best Practices</AccordionTrigger>
+          <AccordionContent>
+            Use clear, descriptive trigger text. Keep content concise but
+            informative. Consider the information hierarchy when organizing
+            accordion items.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   ),
   parameters: {
@@ -136,40 +136,40 @@ export const Multiple: Story = {
   args: {},
   render: () => (
     <div className="mx-auto w-full max-w-md">
-    <Accordion type="multiple" className="w-full">
-      <AccordionItem value="features">
-        <AccordionTrigger>Key Features</AccordionTrigger>
-        <AccordionContent>
-          <ul className="space-y-1 list-disc list-inside">
-            <li>Fully accessible with ARIA support</li>
-            <li>Keyboard navigation</li>
-            <li>Smooth animations</li>
-            <li>Customizable styling</li>
-            <li>Single or multiple expand modes</li>
-          </ul>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="usage">
-        <AccordionTrigger>Usage Examples</AccordionTrigger>
-        <AccordionContent>
-          <ul className="space-y-1 list-disc list-inside">
-            <li>FAQ sections</li>
-            <li>Product feature lists</li>
-            <li>Settings panels</li>
-            <li>Documentation navigation</li>
-            <li>Form field groups</li>
-          </ul>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="technical">
-        <AccordionTrigger>Technical Details</AccordionTrigger>
-        <AccordionContent>
-          Built on Radix UI Accordion primitive with TypeScript support,
-          customizable animations, and design token integration for consistent
-          theming.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+      <Accordion type="multiple" className="w-full">
+        <AccordionItem value="features">
+          <AccordionTrigger>Key Features</AccordionTrigger>
+          <AccordionContent>
+            <ul className="space-y-1 list-disc list-inside">
+              <li>Fully accessible with ARIA support</li>
+              <li>Keyboard navigation</li>
+              <li>Smooth animations</li>
+              <li>Customizable styling</li>
+              <li>Single or multiple expand modes</li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="usage">
+          <AccordionTrigger>Usage Examples</AccordionTrigger>
+          <AccordionContent>
+            <ul className="space-y-1 list-disc list-inside">
+              <li>FAQ sections</li>
+              <li>Product feature lists</li>
+              <li>Settings panels</li>
+              <li>Documentation navigation</li>
+              <li>Form field groups</li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="technical">
+          <AccordionTrigger>Technical Details</AccordionTrigger>
+          <AccordionContent>
+            Built on Radix UI Accordion primitive with TypeScript support,
+            customizable animations, and design token integration for consistent
+            theming.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   ),
   parameters: {
@@ -491,30 +491,31 @@ export const Accessibility: Story = {
 export const WithInteractions: Story = {
   render: () => (
     <div className="mx-auto w-full max-w-md">
-    <Accordion type="single" collapsible className="w-full">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>What is React?</AccordionTrigger>
-        <AccordionContent>
-          React is a JavaScript library for building user interfaces. It allows
-          developers to create reusable UI components and manage application
-          state efficiently.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>What is TypeScript?</AccordionTrigger>
-        <AccordionContent>
-          TypeScript is a superset of JavaScript that adds static typing. It
-          helps catch errors during development and improves code quality.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>What is Tailwind CSS?</AccordionTrigger>
-        <AccordionContent>
-          Tailwind CSS is a utility-first CSS framework that provides low-level
-          utility classes for building custom designs directly in your markup.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>What is React?</AccordionTrigger>
+          <AccordionContent>
+            React is a JavaScript library for building user interfaces. It
+            allows developers to create reusable UI components and manage
+            application state efficiently.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>What is TypeScript?</AccordionTrigger>
+          <AccordionContent>
+            TypeScript is a superset of JavaScript that adds static typing. It
+            helps catch errors during development and improves code quality.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>What is Tailwind CSS?</AccordionTrigger>
+          <AccordionContent>
+            Tailwind CSS is a utility-first CSS framework that provides
+            low-level utility classes for building custom designs directly in
+            your markup.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   ),
   play: async ({ canvasElement }) => {

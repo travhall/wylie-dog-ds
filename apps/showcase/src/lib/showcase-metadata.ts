@@ -64,10 +64,7 @@ function countTokensInFile(filename: string): number {
 }
 
 /** Count variables whose key starts with the given prefix (before first dot). */
-function countByPrefix(
-  collection: SyncCollection,
-  prefix: string
-): number {
+function countByPrefix(collection: SyncCollection, prefix: string): number {
   return Object.keys(collection.variables).filter(
     (k) => k.split(".")[0] === prefix
   ).length;

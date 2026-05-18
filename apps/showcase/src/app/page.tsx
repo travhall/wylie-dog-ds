@@ -175,7 +175,11 @@ export default function ShowcasePage() {
                           +4
                         </span>
                       </div>
-                      <Button variant="ghost" size="sm" className="h-7 gap-1 px-2 text-xs font-medium text-(--color-text-secondary)">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-7 gap-1 px-2 text-xs font-medium text-(--color-text-secondary)"
+                      >
                         View team
                         <svg
                           viewBox="0 0 24 24"

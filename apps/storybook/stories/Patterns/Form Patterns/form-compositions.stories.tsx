@@ -34,7 +34,9 @@ function FormInput(props: Omit<React.ComponentProps<typeof Input>, "id">) {
   return <Input id={id} {...props} />;
 }
 
-function FormTextarea(props: Omit<React.ComponentProps<typeof Textarea>, "id">) {
+function FormTextarea(
+  props: Omit<React.ComponentProps<typeof Textarea>, "id">
+) {
   const { id } = useFormField();
   return <Textarea id={id} {...props} />;
 }
@@ -427,7 +429,9 @@ export const FormWithValidation: Story = {
                 error={!!errors.password}
               />
               <FormMessage>{errors.password}</FormMessage>
-              <FormDescription>Must be at least 8 characters long</FormDescription>
+              <FormDescription>
+                Must be at least 8 characters long
+              </FormDescription>
             </FormField>
 
             <FormField error={!!errors.confirmPassword} required>
@@ -1462,9 +1466,13 @@ export const RealTimeValidation: Story = {
                 onBlur={() => handleBlur("username")}
                 placeholder="johndoe123"
                 error={touched.username && !!errors.username}
-                success={touched.username && !errors.username && !!formValues.username}
+                success={
+                  touched.username && !errors.username && !!formValues.username
+                }
               />
-              <FormMessage>{errors.username && `✕ ${errors.username}`}</FormMessage>
+              <FormMessage>
+                {errors.username && `✕ ${errors.username}`}
+              </FormMessage>
               <p className="text-xs text-gray-400">
                 3-20 characters, letters, numbers, and underscores only
               </p>
@@ -1481,12 +1489,21 @@ export const RealTimeValidation: Story = {
                   onBlur={() => handleBlur("password")}
                   placeholder="••••••••"
                   error={touched.password && !!errors.password}
-                  success={touched.password && !errors.password && !!formValues.password}
+                  success={
+                    touched.password &&
+                    !errors.password &&
+                    !!formValues.password
+                  }
                 />
-                <FormMessage>{errors.password && `✕ ${errors.password}`}</FormMessage>
+                <FormMessage>
+                  {errors.password && `✕ ${errors.password}`}
+                </FormMessage>
               </FormField>
 
-              <FormField error={touched.confirmPassword && !!errors.confirmPassword} required>
+              <FormField
+                error={touched.confirmPassword && !!errors.confirmPassword}
+                required
+              >
                 <FormLabel>Confirm Password</FormLabel>
                 <FormInput
                   name="confirmPassword"
@@ -1498,9 +1515,15 @@ export const RealTimeValidation: Story = {
                   onBlur={() => handleBlur("confirmPassword")}
                   placeholder="••••••••"
                   error={touched.confirmPassword && !!errors.confirmPassword}
-                  success={touched.confirmPassword && !errors.confirmPassword && !!formValues.confirmPassword}
+                  success={
+                    touched.confirmPassword &&
+                    !errors.confirmPassword &&
+                    !!formValues.confirmPassword
+                  }
                 />
-                <FormMessage>{errors.confirmPassword && `✕ ${errors.confirmPassword}`}</FormMessage>
+                <FormMessage>
+                  {errors.confirmPassword && `✕ ${errors.confirmPassword}`}
+                </FormMessage>
               </FormField>
             </div>
 
@@ -1572,9 +1595,15 @@ export const RealTimeValidation: Story = {
                   onBlur={() => handleBlur("phoneNumber")}
                   placeholder="555-123-4567"
                   error={touched.phoneNumber && !!errors.phoneNumber}
-                  success={touched.phoneNumber && !errors.phoneNumber && !!formValues.phoneNumber}
+                  success={
+                    touched.phoneNumber &&
+                    !errors.phoneNumber &&
+                    !!formValues.phoneNumber
+                  }
                 />
-                <FormMessage>{errors.phoneNumber && `✕ ${errors.phoneNumber}`}</FormMessage>
+                <FormMessage>
+                  {errors.phoneNumber && `✕ ${errors.phoneNumber}`}
+                </FormMessage>
               </FormField>
 
               <FormField error={touched.age && !!errors.age} required>

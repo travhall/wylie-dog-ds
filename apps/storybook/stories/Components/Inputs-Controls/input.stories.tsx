@@ -406,11 +406,7 @@ export const WithInteractions: Story = {
           <Label htmlFor="email-input" required>
             Email
           </Label>
-          <Input
-            id="email-input"
-            type="email"
-            placeholder="Enter email"
-          />
+          <Input id="email-input" type="email" placeholder="Enter email" />
         </div>
 
         <div className="space-y-2">
@@ -580,7 +576,9 @@ export const DosDonts: Story = {
               Username
             </Label>
             <Input id="bad-username" error />
-            <p className="text-xs text-(--color-text-danger)">Username is required</p>
+            <p className="text-xs text-(--color-text-danger)">
+              Username is required
+            </p>
             <p className="text-xs text-gray-500">Missing aria-describedby</p>
           </div>
 

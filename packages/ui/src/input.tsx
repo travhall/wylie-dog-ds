@@ -19,9 +19,12 @@ export const inputVariants = cva(
         lg: "h-(--space-input-height-lg) px-(--space-input-padding-x) text-(length:--font-size-input-font-size-lg)",
       },
       inputState: {
-        default: "border-(--color-input-border) bg-(--color-input-default-background) hover:bg-(--color-input-background-hover)",
-        error:   "border-(--color-input-border-error) bg-(--color-input-default-background)",
-        success: "border-(--color-border-success) bg-(--color-input-default-background)",
+        default:
+          "border-(--color-input-border) bg-(--color-input-default-background) hover:bg-(--color-input-background-hover)",
+        error:
+          "border-(--color-input-border-error) bg-(--color-input-default-background)",
+        success:
+          "border-(--color-border-success) bg-(--color-input-default-background)",
       },
     },
     defaultVariants: {

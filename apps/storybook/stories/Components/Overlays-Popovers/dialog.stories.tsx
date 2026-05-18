@@ -30,7 +30,9 @@ function FormInput(props: Omit<React.ComponentProps<typeof Input>, "id">) {
   const { id } = useFormField();
   return <Input id={id} {...props} />;
 }
-function FormTextarea(props: Omit<React.ComponentProps<typeof Textarea>, "id">) {
+function FormTextarea(
+  props: Omit<React.ComponentProps<typeof Textarea>, "id">
+) {
   const { id } = useFormField();
   return <Textarea id={id} {...props} />;
 }

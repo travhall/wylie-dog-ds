@@ -425,7 +425,9 @@ export const CodeEditor: Story = {
       <div className="bg-gray-900 text-white p-4 rounded-lg font-mono text-sm">
         <div className="flex items-center justify-between mb-4">
           <span>editor.tsx</span>
-          <kbd className="text-xs bg-(--color-background-secondary) px-2 py-1 rounded">⌘K</kbd>
+          <kbd className="text-xs bg-(--color-background-secondary) px-2 py-1 rounded">
+            ⌘K
+          </kbd>
         </div>
         <div className="space-y-1 text-gray-400">
           <div>import React from 'react';</div>
