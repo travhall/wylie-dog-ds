@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Button } from "@wyliedog/ui/button";
 
 const densities = [
   { label: "Compact", rowY: "10px", gap: "8px", avatar: "24px" },
@@ -71,11 +72,12 @@ export function SpacingDemo() {
         </div>
         <div className="flex items-center gap-1 rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) p-0.5">
           {densities.map((opt, i) => (
-            <button
+            <Button
               key={opt.label}
-              type="button"
+              variant="ghost"
+              size="sm"
               onClick={() => setIdx(i)}
-              className="rounded px-2.5 py-1 text-xs font-medium transition-colors"
+              className="rounded px-2.5 py-1 text-xs font-medium"
               style={
                 idx === i
                   ? {
@@ -86,7 +88,7 @@ export function SpacingDemo() {
               }
             >
               {opt.label}
-            </button>
+            </Button>
           ))}
         </div>
       </div>

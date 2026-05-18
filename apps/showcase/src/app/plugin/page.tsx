@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Button, buttonVariants } from "@wyliedog/ui/button";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 
 export default function PluginPage() {
@@ -208,7 +210,7 @@ export default function PluginPage() {
                 Before
               </div>
               <button
-                className="rounded-md px-4 py-2 text-xs font-semibold text-white"
+                className="rounded-md px-4 py-2 text-xs font-semibold text-(--color-text-inverse)"
                 style={{ background: "oklch(0.58 0.18 274)" }}
               >
                 Get started
@@ -220,7 +222,7 @@ export default function PluginPage() {
                 After
               </div>
               <button
-                className="rounded-md px-4 py-2 text-xs font-semibold text-white"
+                className="rounded-md px-4 py-2 text-xs font-semibold text-(--color-text-inverse)"
                 style={{ background: "oklch(0.54 0.18 274)" }}
               >
                 Get started
@@ -295,11 +297,7 @@ export default function PluginPage() {
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <a
-                  href="#install"
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-md px-5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-                  style={{ background: "var(--color-interactive-primary)" }}
-                >
+                <a href="#install" className={buttonVariants({ size: "lg" })}>
                   Get started
                   <svg
                     viewBox="0 0 24 24"
@@ -311,12 +309,9 @@ export default function PluginPage() {
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </a>
-                <a
-                  href="/tokens"
-                  className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-(--color-border-primary) px-5 text-sm font-semibold text-(--color-text-primary) hover:bg-(--color-background-secondary) transition-colors"
-                >
+                <Link href="/tokens" className={buttonVariants({ variant: "outline", size: "lg" })}>
                   View token reference
-                </a>
+                </Link>
               </div>
 
               {/* Command hint */}
@@ -1043,7 +1038,7 @@ export default function PluginPage() {
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <span
-                      className="mt-1 h-4 w-4 rounded-full flex items-center justify-center shrink-0 text-[10px] font-bold text-white"
+                      className="mt-1 h-4 w-4 rounded-full flex items-center justify-center shrink-0 text-[10px] font-bold text-(--color-text-inverse)"
                       style={{ background: "var(--color-interactive-primary)" }}
                     >
                       ✓
@@ -1246,11 +1241,7 @@ export default function PluginPage() {
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2 shrink-0">
-              <a
-                href="#install"
-                className="inline-flex h-10 items-center gap-1.5 rounded-md px-4 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-                style={{ background: "var(--color-interactive-primary)" }}
-              >
+              <a href="#install" className={buttonVariants()}>
                 Get started
                 <svg
                   viewBox="0 0 24 24"
@@ -1262,10 +1253,7 @@ export default function PluginPage() {
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </a>
-              <a
-                href="/tokens"
-                className="inline-flex h-10 items-center gap-1.5 rounded-md border border-(--color-border-primary) px-4 text-sm font-medium text-(--color-text-primary) hover:bg-(--color-background-secondary) transition-colors"
-              >
+              <Link href="/tokens" className={buttonVariants({ variant: "outline" })}>
                 View token reference
                 <svg
                   viewBox="0 0 24 24"
@@ -1276,7 +1264,7 @@ export default function PluginPage() {
                 >
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

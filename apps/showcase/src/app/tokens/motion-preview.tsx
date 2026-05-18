@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Button } from "@wyliedog/ui/button";
 
 const curves = [
   {
@@ -44,11 +45,11 @@ export function MotionPreview() {
       {/* Curve cards */}
       <div className="lg:col-span-7 grid grid-cols-2 gap-3">
         {curves.map((curve, i) => (
-          <button
+          <Button
             key={curve.label}
-            type="button"
             onClick={() => setCurveIdx(i)}
-            className="rounded-xl border p-4 text-left transition-all"
+            variant="ghost"
+            className="h-auto w-full rounded-xl border p-4 text-left transition-all"
             style={
               curveIdx === i
                 ? {
@@ -121,7 +122,7 @@ export function MotionPreview() {
                 {curve.desc}
               </p>
             </div>
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -133,11 +134,11 @@ export function MotionPreview() {
           </span>
           <div className="flex items-center gap-1 rounded-full border border-(--color-border-primary) bg-(--color-background-secondary) p-0.5">
             {durations.map((ms) => (
-              <button
+              <Button
                 key={ms}
-                type="button"
                 onClick={() => setDur(ms)}
-                className="rounded-full px-2 py-0.5 font-mono text-[10px] font-medium transition-colors"
+                variant="ghost"
+                className="h-auto rounded-full px-2 py-0.5 font-mono text-[10px] font-medium transition-colors"
                 style={
                   dur === ms
                     ? {
@@ -148,7 +149,7 @@ export function MotionPreview() {
                 }
               >
                 {ms}ms
-              </button>
+              </Button>
             ))}
           </div>
         </div>
@@ -176,7 +177,7 @@ export function MotionPreview() {
               >
                 <svg
                   viewBox="0 0 24 24"
-                  className="h-4 w-4 text-white"
+                  className="h-4 w-4 text-(--color-text-inverse)"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"

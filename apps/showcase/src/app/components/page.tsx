@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@wyliedog/ui/button";
 import { SectionSubnav } from "@/components/section-subnav";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 
@@ -356,16 +357,10 @@ export default function ComponentsPage() {
 
                     {/* Buttons */}
                     <div className="mt-5 flex items-center justify-end gap-2">
-                      <button className="inline-flex h-8 items-center rounded-md px-3 text-xs font-semibold text-(--color-text-secondary) hover:bg-(--color-background-secondary)">
+                      <Button variant="ghost" size="sm" className="h-8 px-3 text-xs font-semibold">
                         Cancel
-                      </button>
-                      <button
-                        className="inline-flex h-8 items-center gap-1 rounded-md px-3 text-xs font-semibold"
-                        style={{
-                          background: "var(--color-interactive-primary)",
-                          color: "var(--color-text-inverse)",
-                        }}
-                      >
+                      </Button>
+                      <Button size="sm" className="h-8 gap-1 text-xs font-semibold">
                         Run audit
                         <svg
                           viewBox="0 0 24 24"
@@ -376,7 +371,7 @@ export default function ComponentsPage() {
                         >
                           <path d="M5 12h14M13 6l6 6-6 6" />
                         </svg>
-                      </button>
+                      </Button>
                     </div>
                   </div>
 
@@ -735,7 +730,7 @@ export default function ComponentsPage() {
               href="carousel"
               preview={
                 <div className="w-full max-w-57.5 flex items-center gap-2">
-                  <button className="grid h-7 w-7 place-items-center rounded-full border border-(--color-border-primary) bg-(--color-surface-primary) text-(--color-text-secondary) shrink-0">
+                  <Button variant="outline" size="icon" className="h-7 w-7 rounded-full shrink-0">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3"
@@ -745,7 +740,7 @@ export default function ComponentsPage() {
                     >
                       <path d="m15 18-6-6 6-6" />
                     </svg>
-                  </button>
+                  </Button>
                   <div className="flex-1 grid grid-cols-3 gap-1.5">
                     <div
                       className="aspect-3/4 rounded"
@@ -760,8 +755,10 @@ export default function ComponentsPage() {
                       style={{ background: "oklch(78% 0.10 155)" }}
                     />
                   </div>
-                  <button
-                    className="grid h-7 w-7 place-items-center rounded-full border border-(--color-border-primary) bg-(--color-surface-primary) shrink-0"
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-7 w-7 rounded-full shrink-0"
                     style={{ boxShadow: "var(--shadow-xs)" }}
                   >
                     <svg
@@ -773,7 +770,7 @@ export default function ComponentsPage() {
                     >
                       <path d="m9 18 6-6-6-6" />
                     </svg>
-                  </button>
+                  </Button>
                 </div>
               }
             />
@@ -1069,7 +1066,7 @@ export default function ComponentsPage() {
                         v1.4.0 is live in production
                       </p>
                     </div>
-                    <button className="grid h-3.5 w-3.5 place-items-center rounded text-(--color-text-tertiary)">
+                    <Button variant="ghost" className="h-3.5 w-3.5 p-0 text-(--color-text-tertiary)">
                       <svg
                         viewBox="0 0 24 24"
                         className="h-2.5 w-2.5"
@@ -1079,7 +1076,7 @@ export default function ComponentsPage() {
                       >
                         <path d="M18 6 6 18M6 6l12 12" />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                   <div
                     className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-2 flex items-start gap-2 w-[90%]"
@@ -1613,8 +1610,10 @@ export default function ComponentsPage() {
               href="toggle"
               preview={
                 <div className="flex gap-1.5">
-                  <button
-                    className="grid h-8 w-8 place-items-center rounded-md"
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8"
                     style={{
                       background:
                         "color-mix(in oklch, var(--color-interactive-primary) 18%, transparent)",
@@ -1630,8 +1629,8 @@ export default function ComponentsPage() {
                     >
                       <path d="M6 4v16M14 6h2a4 4 0 0 1 0 8h-2zM14 14h3a4 4 0 0 1 0 8h-3z" />
                     </svg>
-                  </button>
-                  <button className="grid h-8 w-8 place-items-center rounded-md text-(--color-text-secondary) hover:bg-(--color-background-secondary)">
+                  </Button>
+                  <Button variant="ghost" size="icon" className="h-8 w-8">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-4 w-4"
@@ -1641,8 +1640,8 @@ export default function ComponentsPage() {
                     >
                       <path d="M19 4h-9M14 20H5M15 4 9 20" />
                     </svg>
-                  </button>
-                  <button className="grid h-8 w-8 place-items-center rounded-md text-(--color-text-secondary) hover:bg-(--color-background-secondary)">
+                  </Button>
+                  <Button variant="ghost" size="icon" className="h-8 w-8">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-4 w-4"
@@ -1652,7 +1651,7 @@ export default function ComponentsPage() {
                     >
                       <path d="M4 7V4h16M9 20h6M12 4v16" />
                     </svg>
-                  </button>
+                  </Button>
                 </div>
               }
             />
@@ -1667,25 +1666,29 @@ export default function ComponentsPage() {
                     className="inline-flex rounded-md border border-(--color-border-primary) overflow-hidden"
                     style={{ background: "var(--color-background-secondary)" }}
                   >
-                    <button
-                      className="px-3 py-1.5 text-[11px] font-medium text-(--color-text-primary)"
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="px-3 py-1.5 text-[11px] font-medium"
                       style={{
                         background: "var(--color-surface-primary)",
                         boxShadow: "var(--shadow-xs)",
                       }}
                     >
                       Day
-                    </button>
-                    <button className="px-3 py-1.5 text-[11px] font-medium text-(--color-text-secondary)">
+                    </Button>
+                    <Button variant="ghost" size="sm" className="px-3 py-1.5 text-[11px] font-medium text-(--color-text-secondary)">
                       Week
-                    </button>
-                    <button className="px-3 py-1.5 text-[11px] font-medium text-(--color-text-secondary)">
+                    </Button>
+                    <Button variant="ghost" size="sm" className="px-3 py-1.5 text-[11px] font-medium text-(--color-text-secondary)">
                       Month
-                    </button>
+                    </Button>
                   </div>
                   <div className="inline-flex rounded-md border border-(--color-border-primary) overflow-hidden">
-                    <button
-                      className="grid h-7 w-8 place-items-center"
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-8"
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-interactive-primary) 14%, transparent)",
@@ -1701,8 +1704,8 @@ export default function ComponentsPage() {
                       >
                         <path d="M21 10H3M21 6H3M21 14H3M21 18H3" />
                       </svg>
-                    </button>
-                    <button className="grid h-7 w-8 place-items-center text-(--color-text-secondary)">
+                    </Button>
+                    <Button variant="ghost" size="icon" className="h-7 w-8 text-(--color-text-secondary)">
                       <svg
                         viewBox="0 0 24 24"
                         className="h-3 w-3"
@@ -1712,8 +1715,8 @@ export default function ComponentsPage() {
                       >
                         <path d="M21 10H7M21 6H3M21 14H3M21 18H7" />
                       </svg>
-                    </button>
-                    <button className="grid h-7 w-8 place-items-center text-(--color-text-secondary)">
+                    </Button>
+                    <Button variant="ghost" size="icon" className="h-7 w-8 text-(--color-text-secondary)">
                       <svg
                         viewBox="0 0 24 24"
                         className="h-3 w-3"
@@ -1723,7 +1726,7 @@ export default function ComponentsPage() {
                       >
                         <path d="M21 10H10M21 6H3M21 14H3M21 18H10" />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
               }
@@ -2169,7 +2172,7 @@ export default function ComponentsPage() {
               href="pagination"
               preview={
                 <div className="flex items-center gap-1 text-[11px]">
-                  <button className="grid h-7 w-7 place-items-center rounded-md border border-(--color-border-primary) text-(--color-text-secondary) opacity-50">
+                  <Button variant="outline" size="icon" className="h-7 w-7 opacity-50">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3"
@@ -2179,27 +2182,21 @@ export default function ComponentsPage() {
                     >
                       <path d="m15 18-6-6 6-6" />
                     </svg>
-                  </button>
-                  <button className="grid h-7 w-7 place-items-center rounded-md border border-(--color-border-primary) text-(--color-text-primary)">
+                  </Button>
+                  <Button variant="outline" size="icon" className="h-7 w-7">
                     1
-                  </button>
-                  <button
-                    className="grid h-7 w-7 place-items-center rounded-md font-semibold"
-                    style={{
-                      background: "var(--color-interactive-primary)",
-                      color: "var(--color-text-inverse)",
-                    }}
-                  >
+                  </Button>
+                  <Button size="icon" className="h-7 w-7 font-semibold">
                     2
-                  </button>
-                  <button className="grid h-7 w-7 place-items-center rounded-md border border-(--color-border-primary) text-(--color-text-primary)">
+                  </Button>
+                  <Button variant="outline" size="icon" className="h-7 w-7">
                     3
-                  </button>
+                  </Button>
                   <span className="px-1 text-(--color-text-tertiary)">…</span>
-                  <button className="grid h-7 w-7 place-items-center rounded-md border border-(--color-border-primary) text-(--color-text-primary)">
+                  <Button variant="outline" size="icon" className="h-7 w-7">
                     12
-                  </button>
-                  <button className="grid h-7 w-7 place-items-center rounded-md border border-(--color-border-primary) text-(--color-text-primary)">
+                  </Button>
+                  <Button variant="outline" size="icon" className="h-7 w-7">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3"
@@ -2209,7 +2206,7 @@ export default function ComponentsPage() {
                     >
                       <path d="m9 18 6-6-6-6" />
                     </svg>
-                  </button>
+                  </Button>
                 </div>
               }
             />
@@ -2428,7 +2425,7 @@ export default function ComponentsPage() {
               href="dropdown-menu"
               preview={
                 <div className="flex flex-col gap-1.5 items-start">
-                  <button className="inline-flex h-7 items-center gap-1 rounded-md border border-(--color-border-strong) px-2.5 text-[11px] font-semibold text-(--color-text-primary)">
+                  <Button variant="outline" size="sm" className="h-7 gap-1 text-[11px] font-semibold">
                     Options
                     <svg
                       viewBox="0 0 24 24"
@@ -2439,7 +2436,7 @@ export default function ComponentsPage() {
                     >
                       <path d="m6 9 6 6 6-6" />
                     </svg>
-                  </button>
+                  </Button>
                   <div
                     className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-1 text-[11px]"
                     style={{ boxShadow: "var(--shadow-md)", width: 150 }}
@@ -2552,7 +2549,7 @@ export default function ComponentsPage() {
               href="popover"
               preview={
                 <div className="flex flex-col gap-1.5 items-start">
-                  <button className="inline-flex h-7 items-center gap-1 rounded-md border border-(--color-border-strong) px-2.5 text-[11px] font-semibold text-(--color-text-primary)">
+                  <Button variant="outline" size="sm" className="h-7 gap-1 text-[11px] font-semibold">
                     Filters
                     <svg
                       viewBox="0 0 24 24"
@@ -2563,7 +2560,7 @@ export default function ComponentsPage() {
                     >
                       <path d="M4 6h16M7 12h10M10 18h4" />
                     </svg>
-                  </button>
+                  </Button>
                   <div
                     className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-3 space-y-2"
                     style={{ boxShadow: "var(--shadow-md)", width: 180 }}
@@ -2671,7 +2668,7 @@ export default function ComponentsPage() {
               preview={
                 <div className="flex flex-col items-center gap-2">
                   <div className="relative">
-                    <button className="inline-flex h-8 items-center gap-1 rounded-md border border-(--color-border-strong) px-3 text-[11px] font-semibold text-(--color-text-primary)">
+                    <Button variant="outline" size="sm" className="h-8 gap-1 text-[11px] font-semibold">
                       <svg
                         viewBox="0 0 24 24"
                         className="h-3.5 w-3.5"
@@ -2683,7 +2680,7 @@ export default function ComponentsPage() {
                         <path d="M12 8v4M12 16h.01" />
                       </svg>
                       Info
-                    </button>
+                    </Button>
                     <div
                       className="absolute -top-8 left-1/2 -translate-x-1/2 rounded px-2 py-1 text-[10px] font-medium whitespace-nowrap"
                       style={{

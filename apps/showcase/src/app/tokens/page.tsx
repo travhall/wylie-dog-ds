@@ -165,13 +165,7 @@ export default function TokensPage() {
               <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary) shrink-0">
                 Renders →
               </span>
-              <button
-                className="inline-flex h-9 items-center gap-2 rounded-md px-4 text-sm font-semibold"
-                style={{
-                  background: "var(--color-interactive-primary)",
-                  color: "var(--color-text-inverse)",
-                }}
-              >
+              <Button>
                 Save changes
                 <svg
                   viewBox="0 0 24 24"
@@ -182,7 +176,7 @@ export default function TokensPage() {
                 >
                   <path d="m5 12 5 5L20 7" />
                 </svg>
-              </button>
+              </Button>
               <span className="text-xs text-(--color-text-tertiary) hidden sm:inline">
                 Toggle theme — every reference resolves through the same chain.
               </span>
@@ -278,20 +272,18 @@ export default function TokensPage() {
                 </div>
                 <div className="hidden sm:flex items-center gap-1 rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) p-0.5">
                   {["Week", "Month", "Quarter"].map((t, i) => (
-                    <button
+                    <Button
                       key={t}
-                      className="rounded px-2.5 py-1 text-xs font-medium"
-                      style={
+                      variant="ghost"
+                      size="sm"
+                      className={`h-auto rounded px-2.5 py-1 text-xs font-medium ${
                         i === 0
-                          ? {
-                              background: "var(--color-background-primary)",
-                              color: "var(--color-text-primary)",
-                            }
-                          : { color: "var(--color-text-tertiary)" }
-                      }
+                          ? "bg-(--color-background-primary) text-(--color-text-primary)"
+                          : "text-(--color-text-tertiary)"
+                      }`}
                     >
                       {t}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>
@@ -920,16 +912,9 @@ export default function TokensPage() {
                 surface: "Buttons & inputs",
                 token: "--radius-sm",
                 preview: (
-                  <button
-                    className="inline-flex h-8 items-center px-4 text-sm font-semibold"
-                    style={{
-                      borderRadius: "6px",
-                      background: "var(--color-interactive-primary)",
-                      color: "var(--color-text-inverse)",
-                    }}
-                  >
+                  <Button size="sm" style={{ borderRadius: "6px" }}>
                     Continue
-                  </button>
+                  </Button>
                 ),
               },
               {
@@ -1007,22 +992,21 @@ export default function TokensPage() {
                       name@company.com
                     </div>
                     <div className="flex gap-1.5">
-                      <button
-                        className="flex-1 rounded-md border border-(--color-border-primary) py-1 text-xs text-(--color-text-secondary)"
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1"
                         style={{ borderRadius: "8px" }}
                       >
                         Cancel
-                      </button>
-                      <button
-                        className="flex-1 rounded-md py-1 text-xs font-semibold"
-                        style={{
-                          borderRadius: "8px",
-                          background: "var(--color-interactive-primary)",
-                          color: "var(--color-text-inverse)",
-                        }}
+                      </Button>
+                      <Button
+                        size="sm"
+                        className="flex-1"
+                        style={{ borderRadius: "8px" }}
                       >
                         Send
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 ),
@@ -1147,7 +1131,7 @@ export default function TokensPage() {
                   >
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-3.5 w-3.5 text-white"
+                      className="h-3.5 w-3.5 text-(--color-text-inverse)"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="3"
@@ -1174,15 +1158,12 @@ export default function TokensPage() {
                     name@company.com
                   </div>
                   <div className="flex gap-1.5">
-                    <button className="flex-1 rounded-md border border-(--color-border-primary) py-1.5 text-xs text-(--color-text-secondary)">
+                    <Button variant="outline" size="sm" className="flex-1">
                       Cancel
-                    </button>
-                    <button
-                      className="flex-1 rounded-md py-1.5 text-xs font-semibold text-white"
-                      style={{ background: "var(--color-interactive-primary)" }}
-                    >
+                    </Button>
+                    <Button size="sm" className="flex-1">
                       Send invite
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { Button } from "@wyliedog/ui/button";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 
 /* ─── Pattern card ───────────────────────────────────────────── */
@@ -419,15 +420,9 @@ export default function PatternsPage() {
                         </svg>
                       </div>
                     </div>
-                    <button
-                      className="w-full h-7.5 flex items-center justify-center rounded-md text-[11px] font-semibold"
-                      style={{
-                        background: "var(--color-interactive-primary)",
-                        color: "var(--color-text-inverse)",
-                      }}
-                    >
+                    <Button className="w-full h-7.5 text-[11px] font-semibold">
                       Sign in
-                    </button>
+                    </Button>
                   </div>
                   <div className="mt-3 flex items-center gap-2">
                     <span
@@ -444,9 +439,10 @@ export default function PatternsPage() {
                   </div>
                   <div className="mt-3 grid grid-cols-3 gap-1.5">
                     {["G", "GH", ""].map((label, i) => (
-                      <button
+                      <Button
                         key={i}
-                        className="flex items-center justify-center h-7 border border-(--color-border-strong) rounded-md text-[11px] font-semibold text-(--color-text-primary)"
+                        variant="outline"
+                        className="h-7 text-[11px] font-semibold"
                       >
                         {i === 0 ? (
                           "G"
@@ -467,7 +463,7 @@ export default function PatternsPage() {
                             <path d="M16.36 1.43c0 1.14-.42 2.21-1.27 2.97-.84.77-1.86 1.21-2.95 1.13-.02-1.14.45-2.25 1.26-3 .82-.76 1.94-1.21 2.96-1.1zM20.5 17.26c-.3.7-.65 1.34-1.07 1.93-.56.79-1.02 1.34-1.38 1.65-.55.5-1.15.76-1.79.78-.46 0-1.02-.13-1.66-.4-.65-.27-1.24-.4-1.79-.4-.57 0-1.18.13-1.84.4-.66.27-1.19.41-1.59.43-.62.03-1.23-.24-1.83-.79-.39-.34-.86-.91-1.42-1.7-.59-.85-1.08-1.83-1.46-2.96-.41-1.22-.62-2.4-.62-3.54 0-1.31.28-2.44.85-3.39.45-.76 1.04-1.36 1.79-1.8.74-.44 1.55-.66 2.42-.68.49 0 1.13.15 1.94.45.8.3 1.32.45 1.55.45.17 0 .75-.18 1.74-.53.94-.32 1.73-.46 2.38-.41 1.77.14 3.1.84 3.98 2.1-1.58.96-2.36 2.3-2.35 4.04.01 1.35.51 2.48 1.49 3.37.44.42.94.74 1.49.97-.12.34-.25.67-.39.99z" />
                           </svg>
                         )}
-                      </button>
+                      </Button>
                     ))}
                   </div>
                   <p className="mt-3 text-center text-[10px] text-(--color-text-tertiary)">
@@ -509,15 +505,9 @@ export default function PatternsPage() {
                       <div className="flex items-center h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
                         elena@…
                       </div>
-                      <button
-                        className="w-full h-7 flex items-center justify-center rounded-md text-[11px] font-semibold"
-                        style={{
-                          background: "var(--color-interactive-primary)",
-                          color: "var(--color-text-inverse)",
-                        }}
-                      >
+                      <Button className="w-full h-7 text-[11px] font-semibold">
                         Send reset link
-                      </button>
+                      </Button>
                     </div>
                   </div>
                   <div
@@ -563,7 +553,7 @@ export default function PatternsPage() {
                         e****@wyliedog.dev
                       </span>
                     </div>
-                    <button className="mt-2 inline-flex h-6 items-center gap-1 text-[11px] text-(--color-text-secondary)">
+                    <Button variant="ghost" size="sm" className="mt-2 h-6 gap-1 text-[11px] text-(--color-text-secondary)">
                       <svg
                         viewBox="0 0 24 24"
                         className="h-3 w-3"
@@ -574,7 +564,7 @@ export default function PatternsPage() {
                         <path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" />
                       </svg>
                       Resend in 0:42
-                    </button>
+                    </Button>
                   </div>
                 </div>
               }
@@ -817,13 +807,7 @@ export default function PatternsPage() {
                       </span>
                     </div>
                     <div className="mt-3 flex gap-1.5">
-                      <button
-                        className="inline-flex h-7 items-center gap-1 rounded-md px-2.5 text-[11px] font-semibold"
-                        style={{
-                          background: "var(--color-interactive-primary)",
-                          color: "var(--color-text-inverse)",
-                        }}
-                      >
+                      <Button size="sm" className="h-7 gap-1 text-[11px] font-semibold">
                         <svg
                           viewBox="0 0 24 24"
                           className="h-3 w-3"
@@ -834,10 +818,10 @@ export default function PatternsPage() {
                           <path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" />
                         </svg>
                         Try again
-                      </button>
-                      <button className="inline-flex h-7 items-center rounded-md border border-(--color-border-primary) px-2.5 text-[11px] font-semibold text-(--color-text-primary)">
+                      </Button>
+                      <Button variant="outline" size="sm" className="h-7 text-[11px] font-semibold">
                         Go to dashboard
-                      </button>
+                      </Button>
                     </div>
                   </div>
                   <div className="rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4">
@@ -874,8 +858,10 @@ export default function PatternsPage() {
                           <p className="text-[10px] text-(--color-text-tertiary) mt-0.5">
                             RangeError: data points exceed buffer.
                           </p>
-                          <button
-                            className="mt-2 inline-flex h-5 items-center rounded px-1.5 font-mono text-[9px]"
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="mt-2 h-5 px-1.5 font-mono text-[9px]"
                             style={{
                               background:
                                 "color-mix(in oklch, var(--color-destructive) 14%, transparent)",
@@ -883,7 +869,7 @@ export default function PatternsPage() {
                             }}
                           >
                             Retry isolated
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -988,16 +974,10 @@ export default function PatternsPage() {
                     </div>
                   </div>
                   <div className="mt-3 flex justify-between">
-                    <button className="inline-flex h-7 items-center px-2.5 text-[11px] font-semibold text-(--color-text-secondary)">
+                    <Button variant="ghost" size="sm" className="h-7 px-2.5 text-[11px] font-semibold">
                       Back
-                    </button>
-                    <button
-                      className="inline-flex h-7 items-center gap-1 rounded-md px-2.5 text-[11px] font-semibold"
-                      style={{
-                        background: "var(--color-interactive-primary)",
-                        color: "var(--color-text-inverse)",
-                      }}
-                    >
+                    </Button>
+                    <Button size="sm" className="h-7 gap-1 text-[11px] font-semibold">
                       Continue
                       <svg
                         viewBox="0 0 24 24"
@@ -1008,7 +988,7 @@ export default function PatternsPage() {
                       >
                         <path d="M5 12h14M13 6l6 6-6 6" />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
               }
@@ -1212,15 +1192,9 @@ export default function PatternsPage() {
                       <p className="text-[11px] font-serif font-semibold text-(--color-text-primary)">
                         Projects
                       </p>
-                      <button
-                        className="inline-flex h-5.5 items-center rounded-md px-2 text-[10px] font-semibold"
-                        style={{
-                          background: "var(--color-interactive-primary)",
-                          color: "var(--color-text-inverse)",
-                        }}
-                      >
+                      <Button size="sm" className="h-5.5 px-2 text-[10px] font-semibold">
                         + New
-                      </button>
+                      </Button>
                     </div>
                     <div className="mt-2 grid grid-cols-3 gap-1.5">
                       {[60, 30, 85].map((w, i) => (
@@ -1520,7 +1494,7 @@ export default function PatternsPage() {
                     </p>
                     <div className="mt-2 flex gap-1">
                       <span
-                        className="inline-flex h-5 items-center rounded-md px-2 text-[9px] font-semibold text-white"
+                        className="inline-flex h-5 items-center rounded-md px-2 text-[9px] font-semibold text-(--color-text-inverse)"
                         style={{
                           background: "var(--color-interactive-primary)",
                         }}
@@ -1888,17 +1862,15 @@ export default function PatternsPage() {
                       Focus management
                     </p>
                     <div className="mt-3 flex flex-col gap-2">
-                      <button
-                        className="w-full h-7 flex items-center justify-center rounded-md text-[11px] font-semibold"
+                      <Button
+                        className="w-full h-7 text-[11px] font-semibold"
                         style={{
-                          background: "var(--color-interactive-primary)",
-                          color: "var(--color-text-inverse)",
                           boxShadow:
                             "0 0 0 3px color-mix(in oklch, var(--color-interactive-primary) 30%, transparent)",
                         }}
                       >
                         Focused button
-                      </button>
+                      </Button>
                       <div
                         className="flex items-center h-7 border rounded-md px-2 text-[11px] text-(--color-text-tertiary)"
                         style={{

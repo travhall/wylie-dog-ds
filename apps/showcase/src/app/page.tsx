@@ -175,7 +175,7 @@ export default function ShowcasePage() {
                           +4
                         </span>
                       </div>
-                      <button className="inline-flex h-7 items-center gap-1 rounded-md px-2 text-xs font-medium text-(--color-text-secondary) hover:text-(--color-text-primary) hover:bg-(--color-background-secondary) transition-colors">
+                      <Button variant="ghost" size="sm" className="h-7 gap-1 px-2 text-xs font-medium text-(--color-text-secondary)">
                         View team
                         <svg
                           viewBox="0 0 24 24"
@@ -186,7 +186,7 @@ export default function ShowcasePage() {
                         >
                           <path d="m9 18 6-6-6-6" />
                         </svg>
-                      </button>
+                      </Button>
                     </div>
                   </div>
 

@@ -226,12 +226,14 @@ function InputsContent() {
       preview: (
         <div className="flex gap-1">
           {["Bold", "Italic", "Underline"].map((item) => (
-            <button
+            <Button
               key={item}
-              className="px-3 py-1.5 text-xs rounded border border-(--color-border-primary)/20 hover:bg-(--color-interactive-primary)/10 transition-colors"
+              variant="outline"
+              size="sm"
+              className="text-xs"
             >
               {item}
-            </button>
+            </Button>
           ))}
         </div>
       ),

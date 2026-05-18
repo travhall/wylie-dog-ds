@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Button } from "@wyliedog/ui/button";
+import { Button, buttonVariants } from "@wyliedog/ui/button";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 
 export default function ArchitecturePage() {
@@ -47,14 +47,7 @@ export default function ArchitecturePage() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href="#packages"
-                  className="inline-flex h-10 items-center gap-2 rounded-md px-4 text-sm font-semibold"
-                  style={{
-                    background: "var(--color-interactive-primary)",
-                    color: "var(--color-text-inverse)",
-                  }}
-                >
+                <a href="#packages" className={buttonVariants()}>
                   Tour the packages
                   <svg
                     viewBox="0 0 24 24"
@@ -66,10 +59,7 @@ export default function ArchitecturePage() {
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </a>
-                <a
-                  href="#build-flow"
-                  className="inline-flex h-10 items-center gap-2 rounded-md px-4 text-sm font-medium border border-(--color-border-primary) text-(--color-text-primary) hover:bg-(--color-background-secondary)"
-                >
+                <a href="#build-flow" className={buttonVariants({ variant: "outline" })}>
                   See the build flow
                 </a>
               </div>
@@ -886,15 +876,7 @@ export default function ArchitecturePage() {
                       <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary) mb-2">
                         render
                       </p>
-                      <button
-                        className="inline-flex h-9 items-center rounded-md px-3.5 text-xs font-semibold"
-                        style={{
-                          background: "var(--color-interactive-primary)",
-                          color: "var(--color-text-inverse)",
-                        }}
-                      >
-                        Save changes
-                      </button>
+                      <Button size="sm">Save changes</Button>
                     </div>
                   </div>
                 ),

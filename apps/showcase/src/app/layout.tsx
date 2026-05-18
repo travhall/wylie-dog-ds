@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button, buttonVariants } from "@wyliedog/ui/button";
 import { fontVariables } from "@/lib/fonts";
 import { WylieDogLogo } from "./wyliedoglogo";
 import { NavLink } from "./nav-link";
@@ -101,10 +102,11 @@ export default function RootLayout({
 
             {/* Actions */}
             <div className="ml-auto flex items-center gap-2">
-              <button
-                type="button"
+              <Button
+                variant="outline"
+                size="icon"
                 aria-label="Search"
-                className="grid h-8 w-8 place-items-center rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) text-(--color-text-tertiary) hover:text-(--color-text-secondary) transition-colors"
+                className="h-8 w-8"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -116,13 +118,13 @@ export default function RootLayout({
                   <circle cx="11" cy="11" r="7" />
                   <path d="m21 21-4.3-4.3" />
                 </svg>
-              </button>
+              </Button>
 
               <ThemeToggle />
 
               <Link
                 href="https://wyliedogstorybook.com"
-                className="hidden md:flex h-8 items-center gap-1.5 rounded-md border border-(--color-border-primary) px-3 text-sm font-medium text-(--color-text-primary) hover:bg-(--color-background-secondary) transition-colors"
+                className={`hidden md:flex h-8 gap-1.5 ${buttonVariants({ variant: "outline", size: "sm" })}`}
               >
                 Storybook
                 <svg
