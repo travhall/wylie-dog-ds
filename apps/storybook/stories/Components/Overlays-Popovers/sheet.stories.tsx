@@ -242,7 +242,7 @@ export const WithInteractions: Story = {
         <Form className="py-4">
           <FormField>
             <FormLabel>Name</FormLabel>
-            <FieldInput id="sheet-name" defaultValue="Pedro Duarte" />
+            <FieldInput defaultValue="Pedro Duarte" />
           </FormField>
         </Form>
         <SheetFooter>
