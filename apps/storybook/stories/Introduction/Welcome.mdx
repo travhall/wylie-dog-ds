@@ -15,8 +15,8 @@ The Wylie Dog Design System provides a comprehensive set of reusable components,
 - **OKLCH Color Science** — Perceptually uniform color space with P3 wide gamut support. Colors look consistent across lightness levels and render beautifully on modern displays.
 - **Three-Tier Token Architecture** — Primitives, semantic aliases, and component-level tokens. Synced bidirectionally with Figma via Token Bridge in W3C DTCG format.
 - **Accessibility First** — Built on Radix UI primitives with ARIA patterns, keyboard navigation, and focus management baked into every component.
-- **44 Components + 5 Compositions** — Production-ready building blocks from inputs and dialogs to full page layouts, all sharing the same token foundation.
-- **Modern Stack** — React 19, TypeScript 5.9, Tailwind CSS v4, Vite 7, and Storybook 10.
+- **42 Components** — Production-ready building blocks from inputs and dialogs to full page layouts, all sharing the same token foundation.
+- **Modern Stack** — React 19, TypeScript 6, Tailwind CSS v4, Vite 8, and Storybook 10.
 
 ## Quick Links
 
@@ -44,8 +44,8 @@ The system is powered by over 1,000 tokens organized in three tiers:
 ```css
 --color-blue-500: oklch(0.623 0.188 259.82);
 --color-gray-900: oklch(0.279 0.037 260.04);
---spacing-4: 1rem;
---font-size-lg: 1.125rem;
+--space-200: 16px;
+--font-size-lg: 18px;
 ```
 
 **Semantic tokens** map primitives to intent, with automatic light/dark mode switching:
@@ -118,7 +118,7 @@ This Storybook is organized into the following sections:
     </tr>
     <tr>
       <td><strong>Components</strong></td>
-      <td>All 44 UI components with interactive examples and controls</td>
+      <td>All 42 UI components with interactive examples and controls</td>
     </tr>
     <tr>
       <td><strong>Patterns</strong></td>
@@ -150,7 +150,7 @@ This Storybook is organized into the following sections:
       <td>UI framework</td>
     </tr>
     <tr>
-      <td><strong>TypeScript 5.9</strong></td>
+      <td><strong>TypeScript 6</strong></td>
       <td>Type-safe component development</td>
     </tr>
     <tr>
@@ -174,7 +174,7 @@ This Storybook is organized into the following sections:
       <td>Design-to-code token sync</td>
     </tr>
     <tr>
-      <td><strong>Vite 7</strong></td>
+      <td><strong>Vite 8</strong></td>
       <td>Build tooling</td>
     </tr>
     <tr>
