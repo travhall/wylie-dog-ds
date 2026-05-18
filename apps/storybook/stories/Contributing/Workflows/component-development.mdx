@@ -161,7 +161,7 @@ Use the [component template](/docs/contributing-guidelines-code-standards--docs#
 
 ```tsx
 import * as React from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from './lib/utils';
 
 // 1. Type definitions
 export interface ComponentNameProps
@@ -271,7 +271,7 @@ const meta: Meta<typeof ComponentName> = {
   title: 'Components/Category/ComponentName',
   component: ComponentName,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
     docs: {
       description: {
         component: 'Brief description of the component and its purpose.',
@@ -467,9 +467,23 @@ Ensure stories cover:
 
 Add the component to package exports:
 
+Each component is exported from its own file. Add a named export to `packages/ui/package.json` under the `"exports"` field:
+
+```json
+{
+  "exports": {
+    "./component-name": {
+      "types": "./dist/component-name.d.ts",
+      "default": "./dist/component-name.js"
+    }
+  }
+}
+```
+
+Then consumers import it as:
+
 ```tsx
-// packages/ui/src/components/index.ts
-export * from './component-name';
+import { ComponentName } from '@wyliedog/ui/component-name';
 ```
 
 ### 3. Add Usage Examples
@@ -487,7 +501,6 @@ Before merging:
 pnpm build
 pnpm test
 pnpm lint
-pnpm type-check
 ```
 
 ### 2. Merge to Main

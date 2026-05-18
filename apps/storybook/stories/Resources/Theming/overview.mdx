@@ -133,7 +133,7 @@ Add custom colors while preserving design system tokens:
 
 ```js
 // tailwind.config.js
-import baseConfig from "@repo/tailwind-config";
+import baseConfig from "@wyliedog/tailwind-config";
 
 export default {
   ...baseConfig,
@@ -156,15 +156,17 @@ export default {
 
 ### Method 3: Component-Level Overrides
 
-Override styles directly on components:
+Override styles directly on components using token-backed arbitrary values. Never use hardcoded Tailwind scale values like `bg-purple-600` — those don't adapt to dark mode and break the token hierarchy.
 
 ```tsx
 <Button
-  className="bg-purple-600 hover:bg-purple-700 text-white"
+  className="bg-(--color-interactive-brand) hover:bg-(--color-interactive-brand-hover) text-(--color-text-on-brand)"
 >
   Custom Styled Button
 </Button>
 ```
+
+For one-off brand colors, define them as CSS variables in your app's globals first, then reference them as tokens here.
 
 ---
 
@@ -337,7 +339,7 @@ Shadows are available as `--shadow-sm`, `--shadow-md`, `--shadow-lg`, and `--sha
 
 ### Contrast Requirements
 
-When creating custom themes, maintain WCAG 2.1 AA contrast ratios:
+When creating custom themes, maintain WCAG 2.2 AA contrast ratios:
 
 - **Normal text**: 4.5:1 minimum
 - **Large text** (18pt+): 3:1 minimum
@@ -430,7 +432,7 @@ color: oklch(0.75 0.12 240);
 - **OKLCH Color Picker**: [oklch.com](https://oklch.com)
 - **Contrast Checker**: [Contrast Ratio Tool](https://contrast-ratio.com/)
 - **Tailwind v4 Docs**: [tailwindcss.com](https://tailwindcss.com)
-- **WCAG Guidelines**: [WCAG 2.1](https://www.w3.org/WAI/WCAG21/quickref/)
+- **WCAG Guidelines**: [WCAG 2.2](https://www.w3.org/WAI/WCAG22/quickref/)
 
 ---
 

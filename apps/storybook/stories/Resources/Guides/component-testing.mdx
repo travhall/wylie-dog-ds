@@ -928,7 +928,7 @@ To check a11y compliance in CI, use Storybook's test runner with `@storybook/add
 
 ```bash
 # Run all story play functions and a11y checks
-pnpm test:storybook
+pnpm --filter storybook test
 ```
 
 Individual components also run axe in their Vitest unit tests via `@axe-core/react` — see existing `__tests__/` files for examples.

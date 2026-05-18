@@ -86,60 +86,35 @@ For testing major changes before release:
 
 ### Step 1: Prepare the Release
 
-#### 1. Update CHANGELOG.md
+#### 1. Create a Changeset
 
-Follow [Keep a Changelog](https://keepachangelog.com/) format:
-
-```markdown
-# Changelog
-
-## [1.6.0] - 2025-02-15
-
-### Added
-- New Tooltip component with positioning options
-- Button: Added `loading` prop for async actions
-- Toast: Added `duration` prop for custom timing
-
-### Changed
-- Card: Improved shadow tokens for better elevation
-- Input: Enhanced focus ring visibility in dark mode
-
-### Deprecated
-- Button: `isLoading` prop (use `loading` instead)
-
-### Fixed
-- Dialog: Fixed escape key not closing modal
-- Select: Fixed dropdown positioning on scroll
-- Tabs: Fixed keyboard navigation skipping disabled tabs
-
-### Security
-- Updated dependencies to address CVE-2025-1234
-```
-
-#### 2. Update Package Versions
-
-Use pnpm to bump versions across the monorepo:
+The monorepo uses [Changesets](https://github.com/changesets/changesets) to manage versioning and changelogs. Run this from the repo root:
 
 ```bash
-# For a minor release (new features)
-pnpm -r version minor
-
-# For a patch release (bug fixes)
-pnpm -r version patch
-
-# For a major release (breaking changes)
-pnpm -r version major
-
-# For a specific version
-pnpm -r version 2.0.0
+pnpm changeset
 ```
 
-This updates `package.json` in all packages:
+The CLI will prompt you to:
+1. Select which packages have changed (`@wyliedog/ui`, `@wyliedog/tokens`, etc.)
+2. Choose the bump type (`major` / `minor` / `patch`)
+3. Write a summary of the changes
+
+This creates a new file in `.changeset/` — commit it with your PR.
+
+#### 3. Version Packages
+
+Once changesets are merged to `main`, apply all pending changesets to bump versions and update `CHANGELOG.md`:
+
+```bash
+pnpm version-packages
+```
+
+This runs `changeset version` under the hood, updating:
 - `packages/ui/package.json`
 - `packages/tokens/package.json`
-- `packages/eslint-config/package.json`
+- Auto-generating `CHANGELOG.md` entries from your changeset descriptions
 
-#### 3. Review Dependency Updates
+#### 4. Review Dependency Updates
 
 Check for outdated dependencies:
 
@@ -154,7 +129,7 @@ pnpm update
 pnpm update --latest
 ```
 
-#### 4. Run Pre-Release Checks
+#### 5. Run Pre-Release Checks
 
 Ensure everything works before releasing:
 
@@ -169,75 +144,23 @@ pnpm build
 # Run all tests
 pnpm test
 
-# Type checking
-pnpm type-check
-
 # Linting
 pnpm lint
-
-# Verify Storybook builds
-cd apps/storybook
-pnpm build
 ```
 
-### Step 2: Create Release Commit and Tag
+### Step 2: Publish
 
-#### 1. Commit Changes
+#### 1. Publish Packages
+
+With pending changesets versioned and committed, publish from the repo root:
 
 ```bash
-# Stage all changes
-git add .
-
-# Create release commit
-git commit -m "chore: release v1.6.0"
+pnpm release
 ```
 
-#### 2. Create Git Tag
+This command builds all packages and runs `changeset publish --provenance`, which publishes each changed package to npm with version provenance.
 
-```bash
-# Create annotated tag
-git tag -a v1.6.0 -m "Release v1.6.0
-
-### Added
-- New Tooltip component
-- Button loading prop
-
-### Changed
-- Improved Card shadows
-
-### Fixed
-- Dialog escape key behavior
-"
-
-# Push commit and tag
-git push origin main
-git push origin v1.6.0
-```
-
-### Step 3: Publish to npm
-
-#### 1. Verify npm Authentication
-
-```bash
-# Login to npm (if not already logged in)
-npm login
-
-# Verify you're logged in
-npm whoami
-```
-
-#### 2. Publish Packages
-
-```bash
-# Publish all packages
-pnpm -r publish --access public
-
-# Or publish specific package
-cd packages/ui
-pnpm publish --access public
-```
-
-#### 3. Verify Publication
+#### 2. Verify Publication
 
 ```bash
 # Check that package is available
@@ -246,7 +169,7 @@ npm view @wyliedog/ui version
 # Expected: 1.6.0
 ```
 
-### Step 4: Create GitHub Release
+### Step 3: Create GitHub Release
 
 #### 1. Create Release on GitHub
 
@@ -323,7 +246,7 @@ The old `isLoading` prop will be removed in v2.0.0.
 ## 📚 Documentation
 
 Updated documentation is available in Storybook:
-https://storybook.wyliedog.com
+https://wyliedogstorybook.com
 
 ## 🙏 Contributors
 
@@ -349,7 +272,7 @@ New in this release:
 📚 Documentation: [link to Storybook]
 🚀 Migration guide: [link if needed]
 
-Questions? Reach out in #design-system
+Questions? Open an issue or discussion on GitHub
 ```
 
 #### 2. Update Documentation Sites
@@ -386,7 +309,7 @@ This is a major version with breaking changes. Please review the migration guide
 - Migration guide: [link]
 - Documentation: [link]
 
-Need help? Join our office hours or reach out in #design-system.
+Need help? Open an issue or discussion on GitHub.
 ```
 
 ## Hotfix Process
@@ -421,17 +344,17 @@ git commit -m "fix: critical bug in Dialog component"
 ### 3. Expedited Release
 
 ```bash
-# Bump patch version
-pnpm -r version patch
+# Create a patch changeset on the hotfix branch
+pnpm changeset
+# (select affected package, choose "patch", describe the fix)
 
-# Update CHANGELOG
-# ... add hotfix entry ...
+# Version packages
+pnpm version-packages
 
 # Commit, tag, and push
+git add .
 git commit -m "chore: release v1.5.4 (hotfix)"
-git tag -a v1.5.4 -m "Hotfix: Dialog bug"
 git push origin hotfix/v1.5.4
-git push origin v1.5.4
 
 # Merge to main
 git checkout main
@@ -439,7 +362,7 @@ git merge hotfix/v1.5.4
 git push origin main
 
 # Publish
-pnpm -r publish --access public
+pnpm release
 
 # Create GitHub release
 gh release create v1.5.4 --title "v1.5.4 (Hotfix)"
@@ -632,14 +555,9 @@ Minimum versions required:
    pnpm add @wyliedog/ui@2.0.0
    ```
 
-2. **Run codemods**
-   ```bash
-   npx @wyliedog/codemod v2-migration
-   ```
-
-3. **Fix remaining issues**
-   - Review codemod report
-   - Manually fix flagged issues
+2. **Fix breaking changes**
+   - Review the migration guide in the release notes
+   - Update imports, renamed props, and removed APIs
 
 4. **Test thoroughly**
    - Run automated tests
@@ -650,9 +568,8 @@ Minimum versions required:
 
 ## Need Help?
 
-- Review [breaking changes in detail](#)
-- Join office hours: Fridays 2-3pm PT
-- Ask in #design-system channel
+- Review the release's [GitHub Release notes](https://github.com/your-org/wylie-dog-ds/releases)
+- Open an issue for questions or problems
 ```
 
 ## Version Support Policy
