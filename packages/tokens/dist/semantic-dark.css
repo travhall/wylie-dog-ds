@@ -453,9 +453,9 @@
   --color-label-disabled-color: oklch(0.52 0.007 264.5);
   --color-sheet-overlay-background: oklch(0.991 0.003 264.51);
   --space-sheet-content-width-sm: 320px;
-  --space-sheet-content-width-md: 320px;
-  --space-sheet-content-width-lg: 448px;
-  --space-sheet-content-width-default: 75%;
+  --space-sheet-content-width-md: 448px;
+  --space-sheet-content-width-lg: 576px;
+  --space-sheet-content-width-default: 320px;
   --space-sheet-content-padding: 32px;
   --space-sheet-header-gap: 8px;
   --space-sheet-header-padding-bottom: 24px;

@@ -11424,7 +11424,7 @@
           "width",
           "md"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--sheet-content-width-md)",
         "description": ""
@@ -11437,7 +11437,7 @@
           "width",
           "lg"
         ],
-        "value": "448px",
+        "value": "576px",
         "type": "spacing",
         "variable": "var(--sheet-content-width-lg)",
         "description": ""
@@ -11450,7 +11450,7 @@
           "width",
           "default"
         ],
-        "value": "75%",
+        "value": "320px",
         "type": "dimension",
         "variable": "var(--sheet-content-width-default)",
         "description": "Default width for left/right sheet panels before size modifier is applied"

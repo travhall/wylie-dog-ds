@@ -1317,15 +1317,15 @@
   },
   "sheet.content.width.md": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1700}"
   },
   "sheet.content.width.lg": {
     "$type": "spacing",
-    "$value": "{space.1700}"
+    "$value": "{space.1800}"
   },
   "sheet.content.width.default": {
     "$type": "dimension",
-    "$value": "75%",
+    "$value": "{space.1600}",
     "$description": "Default width for left/right sheet panels before size modifier is applied"
   },
   "sheet.content.padding": {

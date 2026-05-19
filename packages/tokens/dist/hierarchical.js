@@ -398,7 +398,7 @@ export const spacing = {
   "content-width-sm": "256px",
   "content-width-md": "320px",
   "content-width-lg": "320px",
-  "content-width-default": "75%",
+  "content-width-default": "320px",
   "header-padding-bottom": "24px",
   "footer-padding-top": "0px",
   "list-height-sm": "32px",
