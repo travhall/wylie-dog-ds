@@ -6,253 +6,253 @@
   },
   {
     "name": "UI - Button",
-    "path": "packages/ui/dist/button.mjs",
+    "path": "packages/ui/dist/button.js",
     "limit": "5 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Badge",
-    "path": "packages/ui/dist/badge.mjs",
+    "path": "packages/ui/dist/badge.js",
     "limit": "3 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Card",
-    "path": "packages/ui/dist/card.mjs",
+    "path": "packages/ui/dist/card.js",
     "limit": "3 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Input",
-    "path": "packages/ui/dist/input.mjs",
+    "path": "packages/ui/dist/input.js",
     "limit": "2 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Label",
-    "path": "packages/ui/dist/label.mjs",
+    "path": "packages/ui/dist/label.js",
     "limit": "2 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Textarea",
-    "path": "packages/ui/dist/textarea.mjs",
+    "path": "packages/ui/dist/textarea.js",
     "limit": "3 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Checkbox",
-    "path": "packages/ui/dist/checkbox.mjs",
+    "path": "packages/ui/dist/checkbox.js",
     "limit": "5 KB",
     "ignore": ["react", "@radix-ui/react-checkbox"]
   },
   {
     "name": "UI - Switch",
-    "path": "packages/ui/dist/switch.mjs",
+    "path": "packages/ui/dist/switch.js",
     "limit": "5 KB",
     "ignore": ["react", "@radix-ui/react-switch"]
   },
   {
     "name": "UI - Select",
-    "path": "packages/ui/dist/select.mjs",
+    "path": "packages/ui/dist/select.js",
     "limit": "15 KB",
     "ignore": ["react", "@radix-ui/react-select"]
   },
   {
     "name": "UI - Dialog",
-    "path": "packages/ui/dist/dialog.mjs",
+    "path": "packages/ui/dist/dialog.js",
     "limit": "15 KB",
     "ignore": ["react", "@radix-ui/react-dialog"]
   },
   {
     "name": "UI - Sheet",
-    "path": "packages/ui/dist/sheet.mjs",
+    "path": "packages/ui/dist/sheet.js",
     "limit": "15 KB",
     "ignore": ["react", "@radix-ui/react-dialog"]
   },
   {
     "name": "UI - Toast",
-    "path": "packages/ui/dist/toast.mjs",
+    "path": "packages/ui/dist/toast.js",
     "limit": "8 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Alert",
-    "path": "packages/ui/dist/alert.mjs",
+    "path": "packages/ui/dist/alert.js",
     "limit": "4 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - AlertDialog",
-    "path": "packages/ui/dist/alert-dialog.mjs",
+    "path": "packages/ui/dist/alert-dialog.js",
     "limit": "12 KB",
     "ignore": ["react", "@radix-ui/react-alert-dialog"]
   },
   {
     "name": "UI - Avatar",
-    "path": "packages/ui/dist/avatar.mjs",
+    "path": "packages/ui/dist/avatar.js",
     "limit": "5 KB",
     "ignore": ["react", "@radix-ui/react-avatar"]
   },
   {
     "name": "UI - Tooltip",
-    "path": "packages/ui/dist/tooltip.mjs",
+    "path": "packages/ui/dist/tooltip.js",
     "limit": "10 KB",
     "ignore": ["react", "@radix-ui/react-tooltip"]
   },
   {
     "name": "UI - HoverCard",
-    "path": "packages/ui/dist/hover-card.mjs",
+    "path": "packages/ui/dist/hover-card.js",
     "limit": "10 KB",
     "ignore": ["react", "@radix-ui/react-hover-card"]
   },
   {
     "name": "UI - Popover",
-    "path": "packages/ui/dist/popover.mjs",
+    "path": "packages/ui/dist/popover.js",
     "limit": "10 KB",
     "ignore": ["react", "@radix-ui/react-popover"]
   },
   {
     "name": "UI - Progress",
-    "path": "packages/ui/dist/progress.mjs",
+    "path": "packages/ui/dist/progress.js",
     "limit": "5 KB",
     "ignore": ["react", "@radix-ui/react-progress"]
   },
   {
     "name": "UI - Skeleton",
-    "path": "packages/ui/dist/skeleton.mjs",
+    "path": "packages/ui/dist/skeleton.js",
     "limit": "2 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Accordion",
-    "path": "packages/ui/dist/accordion.mjs",
+    "path": "packages/ui/dist/accordion.js",
     "limit": "10 KB",
     "ignore": ["react", "@radix-ui/react-accordion"]
   },
   {
     "name": "UI - Tabs",
-    "path": "packages/ui/dist/tabs.mjs",
+    "path": "packages/ui/dist/tabs.js",
     "limit": "8 KB",
     "ignore": ["react", "@radix-ui/react-tabs"]
   },
   {
     "name": "UI - RadioGroup",
-    "path": "packages/ui/dist/radio-group.mjs",
+    "path": "packages/ui/dist/radio-group.js",
     "limit": "6 KB",
     "ignore": ["react", "@radix-ui/react-radio-group"]
   },
   {
     "name": "UI - Slider",
-    "path": "packages/ui/dist/slider.mjs",
+    "path": "packages/ui/dist/slider.js",
     "limit": "6 KB",
     "ignore": ["react", "@radix-ui/react-slider"]
   },
   {
     "name": "UI - Toggle",
-    "path": "packages/ui/dist/toggle.mjs",
+    "path": "packages/ui/dist/toggle.js",
     "limit": "5 KB",
     "ignore": ["react", "@radix-ui/react-toggle"]
   },
   {
     "name": "UI - ToggleGroup",
-    "path": "packages/ui/dist/toggle-group.mjs",
+    "path": "packages/ui/dist/toggle-group.js",
     "limit": "6 KB",
     "ignore": ["react", "@radix-ui/react-toggle-group"]
   },
   {
     "name": "UI - DropdownMenu",
-    "path": "packages/ui/dist/dropdown-menu.mjs",
+    "path": "packages/ui/dist/dropdown-menu.js",
     "limit": "18 KB",
     "ignore": ["react", "@radix-ui/react-dropdown-menu"]
   },
   {
     "name": "UI - ContextMenu",
-    "path": "packages/ui/dist/context-menu.mjs",
+    "path": "packages/ui/dist/context-menu.js",
     "limit": "18 KB",
     "ignore": ["react", "@radix-ui/react-context-menu"]
   },
   {
     "name": "UI - Menubar",
-    "path": "packages/ui/dist/menubar.mjs",
+    "path": "packages/ui/dist/menubar.js",
     "limit": "20 KB",
     "ignore": ["react", "@radix-ui/react-menubar"]
   },
   {
     "name": "UI - NavigationMenu",
-    "path": "packages/ui/dist/navigation-menu.mjs",
+    "path": "packages/ui/dist/navigation-menu.js",
     "limit": "15 KB",
     "ignore": ["react", "@radix-ui/react-navigation-menu"]
   },
   {
     "name": "UI - Command",
-    "path": "packages/ui/dist/command.mjs",
+    "path": "packages/ui/dist/command.js",
     "limit": "15 KB",
     "ignore": ["react", "cmdk"]
   },
   {
     "name": "UI - Form",
-    "path": "packages/ui/dist/form.mjs",
+    "path": "packages/ui/dist/form.js",
     "limit": "10 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Table",
-    "path": "packages/ui/dist/table.mjs",
+    "path": "packages/ui/dist/table.js",
     "limit": "5 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Breadcrumb",
-    "path": "packages/ui/dist/breadcrumb.mjs",
+    "path": "packages/ui/dist/breadcrumb.js",
     "limit": "6 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Pagination",
-    "path": "packages/ui/dist/pagination.mjs",
+    "path": "packages/ui/dist/pagination.js",
     "limit": "8 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Separator",
-    "path": "packages/ui/dist/separator.mjs",
+    "path": "packages/ui/dist/separator.js",
     "limit": "2 KB",
     "ignore": ["react", "@radix-ui/react-separator"]
   },
   {
     "name": "UI - AspectRatio",
-    "path": "packages/ui/dist/aspect-ratio.mjs",
+    "path": "packages/ui/dist/aspect-ratio.js",
     "limit": "2 KB",
     "ignore": ["react", "@radix-ui/react-aspect-ratio"]
   },
   {
     "name": "UI - ScrollArea",
-    "path": "packages/ui/dist/scroll-area.mjs",
+    "path": "packages/ui/dist/scroll-area.js",
     "limit": "6 KB",
     "ignore": ["react", "@radix-ui/react-scroll-area"]
   },
   {
     "name": "UI - Collapsible",
-    "path": "packages/ui/dist/collapsible.mjs",
+    "path": "packages/ui/dist/collapsible.js",
     "limit": "5 KB",
     "ignore": ["react", "@radix-ui/react-collapsible"]
   },
   {
     "name": "UI - Resizable",
-    "path": "packages/ui/dist/resizable.mjs",
+    "path": "packages/ui/dist/resizable.js",
     "limit": "8 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Calendar",
-    "path": "packages/ui/dist/calendar.mjs",
+    "path": "packages/ui/dist/calendar.js",
     "limit": "10 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Carousel",
-    "path": "packages/ui/dist/carousel.mjs",
+    "path": "packages/ui/dist/carousel.js",
     "limit": "10 KB",
     "ignore": ["react"]
   }

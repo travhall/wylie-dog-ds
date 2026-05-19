@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - "packages/tokens/io/sync/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
