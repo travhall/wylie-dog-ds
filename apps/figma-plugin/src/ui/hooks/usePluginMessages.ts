@@ -498,6 +498,12 @@ export function usePluginMessages(
           // Don't show onboarding here - wait for collections and config to load
           break;
 
+        case "variables-changed":
+          // Variables were added, deleted, or modified directly in Figma —
+          // reload so the plugin UI stays in sync with Figma's variable state.
+          loadCollections();
+          break;
+
         default:
           // Ignore messages sent FROM the UI (like import-tokens, mark-file-engaged, etc)
           // Only warn about unexpected messages FROM the plugin

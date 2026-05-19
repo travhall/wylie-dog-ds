@@ -14,7 +14,7 @@ import type {
   ConflictResolution,
 } from "../../../plugin/sync/types";
 import type { PluginMessageActions } from "../usePluginMessages";
-import { ResultHandler, Result } from "../../../shared/result";
+import { Result } from "../../../shared/result";
 import { PUSH_STEPS, PULL_STEPS } from "../../components/ProgressFeedback";
 
 /**
@@ -41,80 +41,35 @@ export function useGitHubSync(
   const pullHandlerRef = useRef<() => Promise<void>>();
 
   /**
-   * Test GitHub configuration - sends request to plugin thread
+   * Save GitHub configuration after wizard completes.
+   *
+   * The wizard steps (AccessTokenStep, RepositoryStep) already validated the
+   * token and repo directly against the GitHub API, so no plugin round-trip is
+   * needed here — just persist and auto-pull.
    */
   const handleGitHubConfigTest = useCallback(
     async (config: GitHubConfig): Promise<Result<boolean>> => {
-      return new Promise((resolve) => {
-        actions.setLoading(true);
-        actions.setError(null);
+      actions.setLoading(true);
+      actions.setError(null);
 
-        // Create one-time message handler for the test result
-        const handler = (event: MessageEvent) => {
-          const msg = event.data.pluginMessage;
-          if (msg?.type === "github-config-test-result") {
-            window.removeEventListener("message", handler);
-            actions.setLoading(false);
+      // Persist config to Figma file storage
+      parent.postMessage(
+        { pluginMessage: { type: "save-github-config", config } },
+        "*"
+      );
 
-            if (msg.success) {
-              // Save the configuration
-              parent.postMessage(
-                {
-                  pluginMessage: {
-                    type: "save-github-config",
-                    config: config,
-                  },
-                },
-                "*"
-              );
+      actions.setGithubConfig(config);
+      actions.setGithubConfigured(true);
+      actions.setLoading(false);
+      actions.setSuccessMessage("GitHub connected! Pulling your tokens now…");
+      setTimeout(() => actions.setSuccessMessage(null), 5000);
 
-              actions.setGithubConfig(config);
-              actions.setGithubConfigured(true);
-              actions.setSuccessMessage(
-                "GitHub connected! Pulling your tokens now…"
-              );
-              setTimeout(() => actions.setSuccessMessage(null), 5000);
+      // Auto-pull after a short delay so UI can update first
+      setTimeout(() => {
+        pullHandlerRef.current?.();
+      }, 400);
 
-              // Auto-pull after a short delay so UI can update first
-              setTimeout(() => {
-                pullHandlerRef.current?.();
-              }, 400);
-
-              resolve({ success: true, data: true });
-            } else {
-              actions.setError(msg.error || "GitHub configuration test failed");
-              resolve({
-                success: false,
-                error: msg.error || "GitHub configuration test failed",
-              });
-            }
-          }
-        };
-
-        window.addEventListener("message", handler);
-
-        // Send test request to plugin thread
-        parent.postMessage(
-          {
-            pluginMessage: {
-              type: "test-github-config",
-              config: config,
-            },
-          },
-          "*"
-        );
-
-        // Timeout after 30 seconds
-        setTimeout(() => {
-          window.removeEventListener("message", handler);
-          actions.setLoading(false);
-          actions.setError("GitHub configuration test timed out");
-          resolve({
-            success: false,
-            error: "Test timed out after 30 seconds",
-          });
-        }, 30000);
-      });
+      return { success: true, data: true };
     },
     [actions]
   );

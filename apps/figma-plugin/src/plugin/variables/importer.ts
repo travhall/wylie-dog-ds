@@ -80,12 +80,12 @@ const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
   lineHeight: ["LINE_HEIGHT"],
   letterSpacing: ["LETTER_SPACING"],
   spacing: ["GAP"],
-  sizing: ["WIDTH", "HEIGHT"],
+  sizing: ["WIDTH_HEIGHT"],
   borderRadius: ["CORNER_RADIUS"],
-  borderWidth: ["STROKE_WIDTH"],
+  borderWidth: ["STROKE_FLOAT"],
   // dimension type requires name-based scope inference (see inferScopesForDimension)
   dimension: ["ALL_SCOPES"],
-  shadow: ["EFFECT"],
+  shadow: ["ALL_SCOPES"],
   boolean: ["ALL_SCOPES"],
   // Add fallbacks for common token types
   number: ["ALL_SCOPES"],
@@ -113,7 +113,7 @@ function inferScopesForDimension(tokenName: string): string[] {
     lowerName.includes("borderwidth") ||
     (lowerName.includes("border") && lowerName.includes("width"))
   ) {
-    return ["STROKE_WIDTH"];
+    return ["STROKE_FLOAT"];
   }
 
   // Sizing tokens (width/height)
@@ -123,7 +123,7 @@ function inferScopesForDimension(tokenName: string): string[] {
     lowerName.includes("size") ||
     lowerName.includes("sizing")
   ) {
-    return ["WIDTH", "HEIGHT"];
+    return ["WIDTH_HEIGHT"];
   }
 
   // Spacing/gap tokens (default for dimension)
