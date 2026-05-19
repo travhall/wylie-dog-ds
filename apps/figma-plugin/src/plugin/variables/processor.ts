@@ -556,9 +556,18 @@ export async function processCollection(
     }
   }
 
+  // Generate a deterministic semantic modeId from the collection + mode names
+  // rather than storing Figma's internal numeric node IDs, which change every
+  // time a collection is deleted and recreated (e.g. after a replace-mode pull).
+  // The importer only uses mode *names* to match modes, so the stored modeId is
+  // metadata-only — making it stable eliminates spurious diffs on every push.
+  const toSlug = (s: string) =>
+    s.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+  const collectionSlug = toSlug(collection.name);
+
   const result: ProcessedCollection = {
     modes: collection.modes.map((mode: any) => ({
-      modeId: mode.modeId,
+      modeId: `mode:${collectionSlug}:${toSlug(mode.name)}`,
       name: mode.name,
     })),
     variables,
