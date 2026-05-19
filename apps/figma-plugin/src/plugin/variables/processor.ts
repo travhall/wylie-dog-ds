@@ -562,7 +562,10 @@ export async function processCollection(
   // The importer only uses mode *names* to match modes, so the stored modeId is
   // metadata-only — making it stable eliminates spurious diffs on every push.
   const toSlug = (s: string) =>
-    s.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+    s
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-]/g, "");
   const collectionSlug = toSlug(collection.name);
 
   const result: ProcessedCollection = {
