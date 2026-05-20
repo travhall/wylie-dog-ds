@@ -214,7 +214,7 @@ describe("Input", () => {
       const { rerender } = render(<Input aria-label="Test" size="sm" />);
       let input = screen.getByLabelText("Test");
       expect(input).toHaveClass(
-        "h-(--space-input-height-sm)",
+        "py-(--space-input-padding-y-sm)",
         "px-(--space-input-padding-x)",
         "text-(length:--font-size-input-font-size-sm)"
       );
@@ -222,7 +222,7 @@ describe("Input", () => {
       rerender(<Input aria-label="Test" size="md" />);
       input = screen.getByLabelText("Test");
       expect(input).toHaveClass(
-        "h-(--space-input-height-md)",
+        "py-(--space-input-padding-y-md)",
         "px-(--space-input-padding-x)",
         "text-(length:--font-size-input-font-size-md)"
       );
@@ -230,7 +230,7 @@ describe("Input", () => {
       rerender(<Input aria-label="Test" size="lg" />);
       input = screen.getByLabelText("Test");
       expect(input).toHaveClass(
-        "h-(--space-input-height-lg)",
+        "py-(--space-input-padding-y-lg)",
         "px-(--space-input-padding-x)",
         "text-(length:--font-size-input-font-size-lg)"
       );
@@ -303,8 +303,8 @@ describe("Input", () => {
     it("should combine type styles with size variants", () => {
       render(<Input aria-label="Quantity" type="number" size="lg" />);
       const input = screen.getByLabelText("Quantity");
-      // Size classes
-      expect(input).toHaveClass("h-(--space-input-height-lg)");
+      // Size classes — padding-y drives height, no fixed height class
+      expect(input).toHaveClass("py-(--space-input-padding-y-lg)");
       // Type classes
       expect(input).toHaveClass(
         "[&::-webkit-inner-spin-button]:appearance-auto"

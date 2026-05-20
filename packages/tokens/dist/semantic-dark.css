@@ -212,9 +212,9 @@
   --color-input-placeholder: oklch(0.786 0.004 271.24);
   --color-input-disabled-background: oklch(0.321 0.009 268.36);
   --color-input-disabled-text: oklch(0.52 0.007 264.5);
-  --space-input-height-sm: 32px;
-  --space-input-height-md: 40px;
-  --space-input-height-lg: 48px;
+  --space-input-padding-y-sm: 8px;
+  --space-input-padding-y-md: 12px;
+  --space-input-padding-y-lg: 16px;
   --space-input-padding-x: 16px;
   --font-size-input-font-size-sm: 14px;
   --space-input-radius: 4px;

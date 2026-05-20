@@ -4780,41 +4780,41 @@
         "variable": "var(--color-input-disabled-text)",
         "description": ""
       },
-      "input-height-sm": {
-        "name": "inputHeightSm",
+      "input-padding-y-sm": {
+        "name": "inputPaddingYSm",
         "path": [
           "input",
-          "height",
+          "padding-y",
           "sm"
         ],
-        "value": "32px",
+        "value": "8px",
         "type": "spacing",
-        "variable": "var(--input-height-sm)",
-        "description": ""
+        "variable": "var(--input-padding-y-sm)",
+        "description": "Vertical padding for sm input — space.100 (8px) + font-size.sm (14px) = 30px total height"
       },
-      "input-height-md": {
-        "name": "inputHeightMd",
+      "input-padding-y-md": {
+        "name": "inputPaddingYMd",
         "path": [
           "input",
-          "height",
+          "padding-y",
           "md"
         ],
-        "value": "40px",
+        "value": "12px",
         "type": "spacing",
-        "variable": "var(--input-height-md)",
-        "description": ""
+        "variable": "var(--input-padding-y-md)",
+        "description": "Vertical padding for md input — space.150 (12px) + font-size.base (16px) = 40px total height"
       },
-      "input-height-lg": {
-        "name": "inputHeightLg",
+      "input-padding-y-lg": {
+        "name": "inputPaddingYLg",
         "path": [
           "input",
-          "height",
+          "padding-y",
           "lg"
         ],
-        "value": "48px",
+        "value": "16px",
         "type": "spacing",
-        "variable": "var(--input-height-lg)",
-        "description": ""
+        "variable": "var(--input-padding-y-lg)",
+        "description": "Vertical padding for lg input — space.200 (16px) + font-size.lg (18px) = 50px total height"
       },
       "input-padding-x": {
         "name": "inputPaddingX",

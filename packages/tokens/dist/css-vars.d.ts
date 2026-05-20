@@ -916,10 +916,10 @@ export type CssVarName =
   | "--space-icon-size-sm"
   | "--space-icon-size-xl"
   | "--space-icon-size-xs"
-  | "--space-input-height-lg"
-  | "--space-input-height-md"
-  | "--space-input-height-sm"
   | "--space-input-padding-x"
+  | "--space-input-padding-y-lg"
+  | "--space-input-padding-y-md"
+  | "--space-input-padding-y-sm"
   | "--space-input-radius"
   | "--space-label-margin-bottom"
   | "--space-label-required-margin-left"
@@ -2103,10 +2103,10 @@ export declare const cssVars: Readonly<{
   "spaceIconSizeSm": "--space-icon-size-sm";
   "spaceIconSizeXl": "--space-icon-size-xl";
   "spaceIconSizeXs": "--space-icon-size-xs";
-  "spaceInputHeightLg": "--space-input-height-lg";
-  "spaceInputHeightMd": "--space-input-height-md";
-  "spaceInputHeightSm": "--space-input-height-sm";
   "spaceInputPaddingX": "--space-input-padding-x";
+  "spaceInputPaddingYLg": "--space-input-padding-y-lg";
+  "spaceInputPaddingYMd": "--space-input-padding-y-md";
+  "spaceInputPaddingYSm": "--space-input-padding-y-sm";
   "spaceInputRadius": "--space-input-radius";
   "spaceLabelMarginBottom": "--space-label-margin-bottom";
   "spaceLabelRequiredMarginLeft": "--space-label-required-margin-left";

@@ -482,9 +482,9 @@ export const inputBorderError = "oklch(0.577 0.215 27.32)";
 export const inputPlaceholder = "oklch(0.423 0.007 264.49)";
 export const inputDisabledBackground = "oklch(0.87 0.003 264.51)";
 export const inputDisabledText = "oklch(0.699 0.005 271.16)";
-export const inputHeightSm = "32px";
-export const inputHeightMd = "40px";
-export const inputHeightLg = "48px";
+export const inputPaddingYSm = "8px"; // Vertical padding for sm input — space.100 (8px) + font-size.sm (14px) = 30px total height
+export const inputPaddingYMd = "12px"; // Vertical padding for md input — space.150 (12px) + font-size.base (16px) = 40px total height
+export const inputPaddingYLg = "16px"; // Vertical padding for lg input — space.200 (16px) + font-size.lg (18px) = 50px total height
 export const inputPaddingX = "16px";
 export const inputFontSizeSm = 14;
 export const inputRadius = "4px";
