@@ -207,20 +207,20 @@
         "badge.font-weight": {
           "$type": "number",
           "$value": "{typography.font-weight.semibold}",
+          "$description": "Font weight for badge labels",
           "valuesByMode": {
             "Light": "{typography.font-weight.semibold}",
             "Dark": "{typography.font-weight.semibold}"
-          },
-          "$description": "Font weight for badge labels"
+          }
         },
         "badge.line-height": {
           "$type": "number",
           "$value": "{typography.line-height.none}",
+          "$description": "Line height for badge labels — tight (1) prevents extra vertical space from browser default",
           "valuesByMode": {
             "Light": "{typography.line-height.none}",
             "Dark": "{typography.line-height.none}"
-          },
-          "$description": "Line height for badge labels — tight (1) prevents extra vertical space from browser default"
+          }
         },
         "badge.radius": {
           "$type": "dimension",
@@ -228,6 +228,14 @@
           "valuesByMode": {
             "Light": "{border-radius.full}",
             "Dark": "{border-radius.full}"
+          }
+        },
+        "badge.border-width": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
           }
         },
         "badge.font-size.sm": {
@@ -521,20 +529,29 @@
         "button.font-weight": {
           "$type": "number",
           "$value": "{typography.font-weight.medium}",
+          "$description": "Font weight for button labels",
           "valuesByMode": {
             "Light": "{typography.font-weight.medium}",
             "Dark": "{typography.font-weight.medium}"
-          },
-          "$description": "Font weight for button labels"
+          }
         },
         "button.line-height": {
           "$type": "number",
           "$value": "{typography.line-height.none}",
+          "$description": "Line height for button labels — tight (1) prevents extra vertical space from browser default",
           "valuesByMode": {
             "Light": "{typography.line-height.none}",
             "Dark": "{typography.line-height.none}"
-          },
-          "$description": "Line height for button labels — tight (1) prevents extra vertical space from browser default"
+          }
+        },
+        "button.border-width": {
+          "$type": "number",
+          "$value": "{border-width.1}",
+          "$description": "Line height for button labels — tight (1) prevents extra vertical space from browser default",
+          "valuesByMode": {
+            "Light": "{border-width.1}",
+            "Dark": "{border-width.1}"
+          }
         },
         "button.link.text": {
           "$type": "color",
@@ -2659,11 +2676,11 @@
         "sheet.content.width.default": {
           "$type": "dimension",
           "$value": "{space.1600}",
+          "$description": "Default width for left/right sheet panels before size modifier is applied",
           "valuesByMode": {
             "Light": "{space.1600}",
             "Dark": "{space.1600}"
-          },
-          "$description": "Default width for left/right sheet panels before size modifier is applied"
+          }
         },
         "sheet.content.padding": {
           "$type": "spacing",
@@ -4052,29 +4069,29 @@
         "toast.destructive.text": {
           "$type": "color",
           "$value": "{color.text.inverse}",
+          "$description": "Text color on destructive toast (saturated red background)",
           "valuesByMode": {
             "Light": "{color.text.inverse}",
             "Dark": "{color.text.inverse}"
-          },
-          "$description": "Text color on destructive toast (saturated red background)"
+          }
         },
         "toast.success.text": {
           "$type": "color",
           "$value": "{color.text.inverse}",
+          "$description": "Text color on success toast (saturated green background)",
           "valuesByMode": {
             "Light": "{color.text.inverse}",
             "Dark": "{color.text.inverse}"
-          },
-          "$description": "Text color on success toast (saturated green background)"
+          }
         },
         "toast.warning.text": {
           "$type": "color",
           "$value": "{color.text.primary}",
+          "$description": "Text color on warning toast (yellow highlight background)",
           "valuesByMode": {
             "Light": "{color.text.primary}",
             "Dark": "{color.text.primary}"
-          },
-          "$description": "Text color on warning toast (yellow highlight background)"
+          }
         },
         "toast.border-radius": {
           "$type": "dimension",
@@ -4559,11 +4576,11 @@
         "toggle-group.item-height": {
           "$type": "spacing",
           "$value": "{space.500}",
+          "$description": "Height of toggle group items (40px, matches default toggle height)",
           "valuesByMode": {
             "Light": "{space.500}",
             "Dark": "{space.500}"
-          },
-          "$description": "Height of toggle group items (40px, matches default toggle height)"
+          }
         },
         "calendar.container-gap": {
           "$type": "spacing",
@@ -5936,11 +5953,11 @@
         "resizable.grip-icon-size": {
           "$type": "spacing",
           "$value": "{icon.size.xs}",
+          "$description": "Size of the grip icon inside the resizable handle (xs icon, 12px)",
           "valuesByMode": {
             "Light": "{icon.size.xs}",
             "Dark": "{icon.size.xs}"
-          },
-          "$description": "Size of the grip icon inside the resizable handle (xs icon, 12px)"
+          }
         },
         "feature-grid.icon-container-size": {
           "$type": "spacing",
