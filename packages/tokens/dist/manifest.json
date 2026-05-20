@@ -679,7 +679,7 @@
             "gray",
             "50"
           ],
-          "value": "oklch(0.991 0.003 264.51)",
+          "value": "oklch(0.991 0.003 264.48)",
           "type": "color",
           "variable": "var(--color-gray-50)",
           "description": ""
@@ -727,7 +727,7 @@
             "gray",
             "400"
           ],
-          "value": "oklch(0.699 0.005 271.25)",
+          "value": "oklch(0.699 0.005 271.16)",
           "type": "color",
           "variable": "var(--color-gray-400)",
           "description": ""
@@ -775,7 +775,7 @@
             "gray",
             "800"
           ],
-          "value": "oklch(0.321 0.009 268.37)",
+          "value": "oklch(0.321 0.009 268.36)",
           "type": "color",
           "variable": "var(--color-gray-800)",
           "description": ""
@@ -799,7 +799,7 @@
             "gray",
             "950"
           ],
-          "value": "oklch(0.149 0.012 259.7)",
+          "value": "oklch(0.149 0.012 259.71)",
           "type": "color",
           "variable": "var(--color-gray-950)",
           "description": ""
@@ -2468,7 +2468,7 @@
           "background",
           "primary"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-background-primary)",
         "description": "Main page background color"
@@ -2504,7 +2504,7 @@
           "background",
           "inverse"
         ],
-        "value": "oklch(0.149 0.012 259.7)",
+        "value": "oklch(0.149 0.012 259.71)",
         "type": "color",
         "variable": "var(--color-background-inverse)",
         "description": "Inverted background for high contrast areas"
@@ -2542,7 +2542,7 @@
           "surface",
           "primary"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-surface-primary)",
         "description": "Primary surface for cards and panels"
@@ -2566,7 +2566,7 @@
           "surface",
           "raised"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-surface-raised)",
         "description": "Raised surface for elevated components"
@@ -2688,7 +2688,7 @@
           "text",
           "disabled"
         ],
-        "value": "oklch(0.699 0.005 271.25)",
+        "value": "oklch(0.699 0.005 271.16)",
         "type": "color",
         "variable": "var(--color-text-disabled)",
         "description": "Disabled text color"
@@ -2700,7 +2700,7 @@
           "text",
           "inverse"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-text-inverse)",
         "description": "Inverted text for dark backgrounds"
@@ -3164,7 +3164,7 @@
           "primary",
           "text"
         ],
-        "value": "oklch(0.149 0.012 259.7)",
+        "value": "oklch(0.149 0.012 259.71)",
         "type": "color",
         "variable": "var(--color-primary-text)",
         "description": "Text color on brand primary backgrounds"
@@ -3200,7 +3200,7 @@
           "secondary",
           "active"
         ],
-        "value": "oklch(0.699 0.005 271.25)",
+        "value": "oklch(0.699 0.005 271.16)",
         "type": "color",
         "variable": "var(--color-secondary-active)",
         "description": "Secondary variant - active/pressed state"
@@ -3308,7 +3308,7 @@
           "neutral",
           "muted"
         ],
-        "value": "oklch(0.699 0.005 271.25)",
+        "value": "oklch(0.699 0.005 271.16)",
         "type": "color",
         "variable": "var(--color-neutral-muted)",
         "description": "Muted neutral for de-emphasized elements"
@@ -3360,7 +3360,7 @@
           "default",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-badge-default-text)",
         "description": ""
@@ -3432,7 +3432,7 @@
           "success",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-badge-success-text)",
         "description": ""
@@ -3468,7 +3468,7 @@
           "warning",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-badge-warning-text)",
         "description": ""
@@ -3528,7 +3528,7 @@
           "outline",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-badge-outline-background)",
         "description": ""
@@ -3982,7 +3982,7 @@
           "primary",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-button-primary-text)",
         "description": ""
@@ -4066,7 +4066,7 @@
           "outline",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-button-outline-background)",
         "description": ""
@@ -4078,7 +4078,7 @@
           "ghost",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-button-ghost-background)",
         "description": ""
@@ -4186,7 +4186,7 @@
           "destructive",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-button-destructive-text)",
         "description": ""
@@ -4399,7 +4399,7 @@
           "card",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-card-background)",
         "description": ""
@@ -4775,7 +4775,7 @@
           "disabled",
           "text"
         ],
-        "value": "oklch(0.699 0.005 271.25)",
+        "value": "oklch(0.699 0.005 271.16)",
         "type": "color",
         "variable": "var(--color-input-disabled-text)",
         "description": ""
@@ -4881,7 +4881,7 @@
           "default",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-input-default-background)",
         "description": ""
@@ -5201,7 +5201,7 @@
           "menubar",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-menubar-background)",
         "description": ""
@@ -5267,7 +5267,7 @@
           "menubar",
           "content-background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-menubar-content-background)",
         "description": ""
@@ -5676,7 +5676,7 @@
           "navigation",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-navigation-background)",
         "description": ""
@@ -5753,7 +5753,7 @@
           "navigation",
           "content-background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-navigation-content-background)",
         "description": ""
@@ -5799,7 +5799,7 @@
           "command",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-command-background)",
         "description": ""
@@ -6182,7 +6182,7 @@
           "trigger",
           "background-active"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-background-active)",
         "description": ""
@@ -6550,7 +6550,7 @@
           "trigger",
           "ring-offset"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-tabs-trigger-ring-offset)",
         "description": ""
@@ -6562,7 +6562,7 @@
           "content",
           "ring-offset"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-tabs-content-ring-offset)",
         "description": ""
@@ -6575,7 +6575,7 @@
           "collapsible",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-collapsible-background)",
         "description": ""
@@ -6687,7 +6687,7 @@
           "calendar",
           "day-text-selected"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-calendar-day-text-selected)",
         "description": ""
@@ -6956,7 +6956,7 @@
           "nav-button",
           "ring-offset"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-calendar-nav-button-ring-offset)",
         "description": ""
@@ -7079,7 +7079,7 @@
           "accordion",
           "trigger-text-disabled"
         ],
-        "value": "oklch(0.699 0.005 271.25)",
+        "value": "oklch(0.699 0.005 271.16)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-text-disabled)",
         "description": ""
@@ -7112,7 +7112,7 @@
           "accordion",
           "icon-disabled"
         ],
-        "value": "oklch(0.699 0.005 271.25)",
+        "value": "oklch(0.699 0.005 271.16)",
         "type": "color",
         "variable": "var(--color-accordion-icon-disabled)",
         "description": ""
@@ -7552,7 +7552,7 @@
           "breadcrumb",
           "link-disabled"
         ],
-        "value": "oklch(0.699 0.005 271.25)",
+        "value": "oklch(0.699 0.005 271.16)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link-disabled)",
         "description": ""
@@ -7565,7 +7565,7 @@
           "carousel",
           "nav-background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-carousel-nav-background)",
         "description": ""
@@ -7694,7 +7694,7 @@
           "contextmenu",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-contextmenu-background)",
         "description": ""
@@ -7773,7 +7773,7 @@
           "dialog",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-dialog-background)",
         "description": ""
@@ -7806,7 +7806,7 @@
           "dialog",
           "overlay"
         ],
-        "value": "oklch(0.149 0.012 259.7)",
+        "value": "oklch(0.149 0.012 259.71)",
         "type": "color",
         "variable": "var(--color-dialog-overlay)",
         "description": ""
@@ -8320,7 +8320,7 @@
           "hover-card",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-hover-card-background)",
         "description": ""
@@ -8439,7 +8439,7 @@
           "pagination",
           "text-active"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-pagination-text-active)",
         "description": ""
@@ -8604,7 +8604,7 @@
           "popover",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-popover-background)",
         "description": ""
@@ -8824,7 +8824,7 @@
           "radio",
           "indicator"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-radio-indicator)",
         "description": ""
@@ -9219,7 +9219,7 @@
           "slider",
           "thumb"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-slider-thumb)",
         "description": ""
@@ -9353,7 +9353,7 @@
           "thumb",
           "ring-offset"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-slider-thumb-ring-offset)",
         "description": ""
@@ -9845,7 +9845,7 @@
           "destructive",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-toast-destructive-text)",
         "description": "Text color on destructive toast (saturated red background)"
@@ -9857,7 +9857,7 @@
           "success",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-toast-success-text)",
         "description": "Text color on success toast (saturated green background)"
@@ -9937,7 +9937,7 @@
           "default",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-toast-default-background)",
         "description": ""
@@ -10009,7 +10009,7 @@
           "action",
           "ring-offset"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-toast-action-ring-offset)",
         "description": ""
@@ -10103,7 +10103,7 @@
           "toggle",
           "text-pressed"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-toggle-text-pressed)",
         "description": ""
@@ -10250,7 +10250,7 @@
           "tooltip",
           "background"
         ],
-        "value": "oklch(0.149 0.012 259.7)",
+        "value": "oklch(0.149 0.012 259.71)",
         "type": "color",
         "variable": "var(--color-tooltip-background)",
         "description": ""
@@ -10272,7 +10272,7 @@
           "tooltip",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-tooltip-text)",
         "description": ""
@@ -10686,7 +10686,7 @@
           "content",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-select-content-background)",
         "description": ""
@@ -10886,7 +10886,7 @@
           "checked",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-checkbox-checked-text)",
         "description": ""
@@ -11181,7 +11181,7 @@
           "thumb",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-switch-thumb-background)",
         "description": ""
@@ -11348,7 +11348,7 @@
           "disabled",
           "color"
         ],
-        "value": "oklch(0.699 0.005 271.25)",
+        "value": "oklch(0.699 0.005 271.16)",
         "type": "color",
         "variable": "var(--color-label-disabled-color)",
         "description": ""
@@ -11420,7 +11420,7 @@
           "overlay",
           "background"
         ],
-        "value": "oklch(0.149 0.012 259.7)",
+        "value": "oklch(0.149 0.012 259.71)",
         "type": "color",
         "variable": "var(--color-sheet-overlay-background)",
         "description": ""
@@ -11614,7 +11614,7 @@
           "content",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-sheet-content-background)",
         "description": ""
@@ -12120,7 +12120,7 @@
           "content",
           "background"
         ],
-        "value": "oklch(0.991 0.003 264.51)",
+        "value": "oklch(0.991 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-dropdown-menu-content-background)",
         "description": ""
