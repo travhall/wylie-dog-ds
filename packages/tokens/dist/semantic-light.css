@@ -429,6 +429,7 @@
   --font-weight-badge-font-weight: 600;
   --line-height-badge-line-height: 1;
   --space-badge-radius: 9999px;
+  --space-badge-border-width: 1px;
   --font-size-badge-font-size-sm: 12px;
   --font-size-badge-font-size-md: 14px;
   --font-size-badge-font-size-lg: 16px;
@@ -467,6 +468,7 @@
   --font-size-button-font-size-lg: 18px;
   --font-weight-button-font-weight: 500;
   --line-height-button-line-height: 1;
+  --button-border-width: 1px;
   --color-button-link-text: oklch(0.546 0.215 262.89);
   --color-card-background: oklch(0.991 0.003 264.51);
   --color-card-border: oklch(0.786 0.004 271.24);

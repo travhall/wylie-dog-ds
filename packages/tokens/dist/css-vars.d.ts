@@ -17,6 +17,7 @@ export type CssVarName =
   | "--border-width-2"
   | "--border-width-4"
   | "--border-width-8"
+  | "--button-border-width"
   | "--button-disabled-opacity"
   | "--calendar-nav-button-disabled-opacity"
   | "--calendar-nav-button-opacity"
@@ -775,6 +776,7 @@ export type CssVarName =
   | "--space-avatar-size-md"
   | "--space-avatar-size-sm"
   | "--space-avatar-size-xl"
+  | "--space-badge-border-width"
   | "--space-badge-padding-x-lg"
   | "--space-badge-padding-x-md"
   | "--space-badge-padding-x-sm"
@@ -1202,6 +1204,7 @@ export declare const cssVars: Readonly<{
   "borderWidth2": "--border-width-2";
   "borderWidth4": "--border-width-4";
   "borderWidth8": "--border-width-8";
+  "buttonBorderWidth": "--button-border-width";
   "buttonDisabledOpacity": "--button-disabled-opacity";
   "calendarNavButtonDisabledOpacity": "--calendar-nav-button-disabled-opacity";
   "calendarNavButtonOpacity": "--calendar-nav-button-opacity";
@@ -1960,6 +1963,7 @@ export declare const cssVars: Readonly<{
   "spaceAvatarSizeMd": "--space-avatar-size-md";
   "spaceAvatarSizeSm": "--space-avatar-size-sm";
   "spaceAvatarSizeXl": "--space-avatar-size-xl";
+  "spaceBadgeBorderWidth": "--space-badge-border-width";
   "spaceBadgePaddingXLg": "--space-badge-padding-x-lg";
   "spaceBadgePaddingXMd": "--space-badge-padding-x-md";
   "spaceBadgePaddingXSm": "--space-badge-padding-x-sm";

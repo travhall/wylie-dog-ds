@@ -292,6 +292,7 @@ export declare const badgePaddingYSm: "4px";
 export declare const badgePaddingYMd: "4px";
 export declare const badgePaddingYLg: "8px";
 export declare const badgeRadius: "9999px";
+export declare const badgeBorderWidth: "1px";
 export declare const badgeFontSizeSm: number;
 export declare const badgeFontSizeMd: number;
 export declare const badgeFontSizeLg: number;

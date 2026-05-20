@@ -109,6 +109,10 @@
     "$type": "dimension",
     "$value": "{border-radius.full}"
   },
+  "badge.border-width": {
+    "$type": "dimension",
+    "$value": "{border-width.1}"
+  },
   "badge.font-size.sm": {
     "$type": "number",
     "$value": "{typography.font-size.xs}"
@@ -261,6 +265,11 @@
   "button.line-height": {
     "$type": "number",
     "$value": "{typography.line-height.none}",
+    "$description": "Line height for button labels — tight (1) prevents extra vertical space from browser default"
+  },
+  "button.border-width": {
+    "$type": "number",
+    "$value": "{border-width.1}",
     "$description": "Line height for button labels — tight (1) prevents extra vertical space from browser default"
   },
   "button.link.text": {

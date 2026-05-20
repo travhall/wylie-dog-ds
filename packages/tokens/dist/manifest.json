@@ -3662,6 +3662,17 @@
         "variable": "var(--badge-radius)",
         "description": ""
       },
+      "badge-border-width": {
+        "name": "badgeBorderWidth",
+        "path": [
+          "badge",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "dimension",
+        "variable": "var(--badge-border-width)",
+        "description": ""
+      },
       "badge-font-size-sm": {
         "name": "badgeFontSizeSm",
         "path": [
@@ -4343,6 +4354,17 @@
         "value": 100,
         "type": "number",
         "variable": "var(--button-line-height)",
+        "description": "Line height for button labels — tight (1) prevents extra vertical space from browser default"
+      },
+      "button-border-width": {
+        "name": "buttonBorderWidth",
+        "path": [
+          "button",
+          "border-width"
+        ],
+        "value": "1px",
+        "type": "number",
+        "variable": "var(--button-border-width)",
         "description": "Line height for button labels — tight (1) prevents extra vertical space from browser default"
       },
       "button-link-text": {
