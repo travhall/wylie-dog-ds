@@ -502,16 +502,15 @@ function processVariable(variable: any, modes: any[]): ProcessedToken {
   // Use first mode as primary value for Style Dictionary compatibility
   primaryValue = valuesByMode[modes[0].name];
 
+  // Build token with a stable key order: $type → $value → $description → valuesByMode.
+  // Construct in one shot (no post-assignment mutation) so JSON.stringify always
+  // serialises the same ordering regardless of whether optional fields are present.
   const token: ProcessedToken = {
     $type: tokenType,
     $value: primaryValue,
-    $description: variable.description || undefined,
+    ...(variable.description ? { $description: variable.description } : {}),
+    ...(modes.length > 1 ? { valuesByMode } : {}),
   };
-
-  // Add valuesByMode for Figma compatibility (if multiple modes exist)
-  if (modes.length > 1) {
-    token.valuesByMode = valuesByMode;
-  }
 
   return token;
 }
