@@ -171,7 +171,7 @@
   --space-1500: 320px;
   --space-1600: 448px;
   --space-1700: 576px;
-  --space-1800: 704px;
+  --space-1800: 576px;
   --typography-font-family-sans: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
   --typography-font-family-serif: var(--font-serif, ui-serif, serif);
   --typography-font-family-mono: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
@@ -730,7 +730,7 @@
   --color-sheet-overlay-background: oklch(0.149 0.012 259.71);
   --space-sheet-content-width-sm: 448px;
   --space-sheet-content-width-md: 576px;
-  --space-sheet-content-width-lg: 704px;
+  --space-sheet-content-width-lg: 576px;
   --space-sheet-content-width-default: 448px;
   --space-sheet-content-padding: 32px;
   --space-sheet-header-gap: 8px;

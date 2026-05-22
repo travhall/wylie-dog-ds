@@ -453,7 +453,7 @@
   --color-sheet-overlay-background: oklch(0.991 0.003 264.48);
   --space-sheet-content-width-sm: 448px;
   --space-sheet-content-width-md: 576px;
-  --space-sheet-content-width-lg: 704px;
+  --space-sheet-content-width-lg: 576px;
   --space-sheet-content-width-default: 448px;
   --space-sheet-content-padding: 32px;
   --space-sheet-header-gap: 8px;
