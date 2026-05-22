@@ -79,7 +79,7 @@ const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
   fontFamily: ["FONT_FAMILY"],
   lineHeight: ["LINE_HEIGHT"],
   letterSpacing: ["LETTER_SPACING"],
-  spacing: ["GAP"],
+  spacing: ["GAP", "WIDTH_HEIGHT"],
   sizing: ["WIDTH_HEIGHT"],
   borderRadius: ["CORNER_RADIUS"],
   borderWidth: ["STROKE_FLOAT"],
@@ -353,8 +353,11 @@ async function createVariableWithReferences(
         collection,
         figmaType as VariableResolvedDataType
       );
-      variable.scopes = scopes as VariableScope[];
     }
+
+    // Always sync scopes — this corrects variables that were created before
+    // a scope fix landed and ensures re-imports stay accurate.
+    variable.scopes = scopes as VariableScope[];
 
     // Update description for both new and existing variables
     if (token.$description) {
