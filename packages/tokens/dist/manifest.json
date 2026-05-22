@@ -1861,7 +1861,7 @@
           "space",
           "700"
         ],
-        "value": "60px",
+        "value": "64px",
         "type": "spacing",
         "variable": "var(--space-700)",
         "description": ""
@@ -1872,7 +1872,7 @@
           "space",
           "800"
         ],
-        "value": "72px",
+        "value": "80px",
         "type": "spacing",
         "variable": "var(--space-800)",
         "description": ""
@@ -1883,7 +1883,7 @@
           "space",
           "900"
         ],
-        "value": "84px",
+        "value": "96px",
         "type": "spacing",
         "variable": "var(--space-900)",
         "description": ""
@@ -1894,7 +1894,7 @@
           "space",
           "1000"
         ],
-        "value": "96px",
+        "value": "112px",
         "type": "spacing",
         "variable": "var(--space-1000)",
         "description": ""
@@ -1905,7 +1905,7 @@
           "space",
           "1100"
         ],
-        "value": "112px",
+        "value": "128px",
         "type": "spacing",
         "variable": "var(--space-1100)",
         "description": ""
@@ -1916,7 +1916,7 @@
           "space",
           "1200"
         ],
-        "value": "128px",
+        "value": "160px",
         "type": "spacing",
         "variable": "var(--space-1200)",
         "description": ""
@@ -1927,7 +1927,7 @@
           "space",
           "1300"
         ],
-        "value": "160px",
+        "value": "192px",
         "type": "spacing",
         "variable": "var(--space-1300)",
         "description": ""
@@ -1938,7 +1938,7 @@
           "space",
           "1400"
         ],
-        "value": "192px",
+        "value": "256px",
         "type": "spacing",
         "variable": "var(--space-1400)",
         "description": ""
@@ -1949,7 +1949,7 @@
           "space",
           "1500"
         ],
-        "value": "256px",
+        "value": "320px",
         "type": "spacing",
         "variable": "var(--space-1500)",
         "description": ""
@@ -1960,7 +1960,7 @@
           "space",
           "1600"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--space-1600)",
         "description": ""
@@ -1971,7 +1971,7 @@
           "space",
           "1700"
         ],
-        "value": "448px",
+        "value": "576px",
         "type": "spacing",
         "variable": "var(--space-1700)",
         "description": ""
@@ -1982,7 +1982,7 @@
           "space",
           "1800"
         ],
-        "value": "576px",
+        "value": "704px",
         "type": "spacing",
         "variable": "var(--space-1800)",
         "description": ""
@@ -4780,42 +4780,6 @@
         "variable": "var(--color-input-disabled-text)",
         "description": ""
       },
-      "input-padding-y-sm": {
-        "name": "inputPaddingYSm",
-        "path": [
-          "input",
-          "padding-y",
-          "sm"
-        ],
-        "value": "8px",
-        "type": "spacing",
-        "variable": "var(--input-padding-y-sm)",
-        "description": "Vertical padding for sm input — space.100 (8px) + font-size.sm (14px) = 30px total height"
-      },
-      "input-padding-y-md": {
-        "name": "inputPaddingYMd",
-        "path": [
-          "input",
-          "padding-y",
-          "md"
-        ],
-        "value": "12px",
-        "type": "spacing",
-        "variable": "var(--input-padding-y-md)",
-        "description": "Vertical padding for md input — space.150 (12px) + font-size.base (16px) = 40px total height"
-      },
-      "input-padding-y-lg": {
-        "name": "inputPaddingYLg",
-        "path": [
-          "input",
-          "padding-y",
-          "lg"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--input-padding-y-lg)",
-        "description": "Vertical padding for lg input — space.200 (16px) + font-size.lg (18px) = 50px total height"
-      },
       "input-padding-x": {
         "name": "inputPaddingX",
         "path": [
@@ -4897,6 +4861,42 @@
         "type": "color",
         "variable": "var(--color-input-default-text)",
         "description": ""
+      },
+      "input-padding-y-sm": {
+        "name": "inputPaddingYSm",
+        "path": [
+          "input",
+          "padding-y",
+          "sm"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--input-padding-y-sm)",
+        "description": "Vertical padding for sm input — space.100 (8px) + font-size.sm (14px) = 30px total height"
+      },
+      "input-padding-y-md": {
+        "name": "inputPaddingYMd",
+        "path": [
+          "input",
+          "padding-y",
+          "md"
+        ],
+        "value": "12px",
+        "type": "spacing",
+        "variable": "var(--input-padding-y-md)",
+        "description": "Vertical padding for md input — space.150 (12px) + font-size.base (16px) = 40px total height"
+      },
+      "input-padding-y-lg": {
+        "name": "inputPaddingYLg",
+        "path": [
+          "input",
+          "padding-y",
+          "lg"
+        ],
+        "value": "16px",
+        "type": "spacing",
+        "variable": "var(--input-padding-y-lg)",
+        "description": "Vertical padding for lg input — space.200 (16px) + font-size.lg (18px) = 50px total height"
       }
     },
     "alert": {
@@ -5393,7 +5393,7 @@
           "content",
           "min-width"
         ],
-        "value": "192px",
+        "value": "256px",
         "type": "spacing",
         "variable": "var(--menubar-content-min-width)",
         "description": ""
@@ -5405,7 +5405,7 @@
           "sub-content",
           "min-width"
         ],
-        "value": "128px",
+        "value": "160px",
         "type": "spacing",
         "variable": "var(--menubar-sub-content-min-width)",
         "description": ""
@@ -5947,7 +5947,7 @@
           "list",
           "max-height"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--command-list-max-height)",
         "description": ""
@@ -7316,7 +7316,7 @@
           "size",
           "xl"
         ],
-        "value": "72px",
+        "value": "80px",
         "type": "spacing",
         "variable": "var(--avatar-size-xl)",
         "description": ""
@@ -7830,7 +7830,7 @@
           "width",
           "sm"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--dialog-content-width-sm)",
         "description": ""
@@ -7843,7 +7843,7 @@
           "width",
           "md"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--dialog-content-width-md)",
         "description": ""
@@ -7856,7 +7856,7 @@
           "width",
           "lg"
         ],
-        "value": "448px",
+        "value": "576px",
         "type": "spacing",
         "variable": "var(--dialog-content-width-lg)",
         "description": ""
@@ -7868,7 +7868,7 @@
           "content",
           "max-width"
         ],
-        "value": "448px",
+        "value": "576px",
         "type": "spacing",
         "variable": "var(--dialog-content-max-width)",
         "description": ""
@@ -8355,7 +8355,7 @@
           "width",
           "sm"
         ],
-        "value": "256px",
+        "value": "320px",
         "type": "spacing",
         "variable": "var(--hover-card-content-width-sm)",
         "description": ""
@@ -8368,7 +8368,7 @@
           "width",
           "md"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--hover-card-content-width-md)",
         "description": ""
@@ -8381,7 +8381,7 @@
           "width",
           "lg"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--hover-card-content-width-lg)",
         "description": ""
@@ -8639,7 +8639,7 @@
           "width",
           "sm"
         ],
-        "value": "256px",
+        "value": "320px",
         "type": "spacing",
         "variable": "var(--popover-content-width-sm)",
         "description": ""
@@ -8652,7 +8652,7 @@
           "width",
           "md"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--popover-content-width-md)",
         "description": ""
@@ -8665,7 +8665,7 @@
           "width",
           "lg"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--popover-content-width-lg)",
         "description": ""
@@ -9620,7 +9620,7 @@
           "toast",
           "width"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--toast-width)",
         "description": ""
@@ -10327,7 +10327,7 @@
           "tooltip",
           "max-width"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--tooltip-max-width)",
         "description": ""
@@ -10494,7 +10494,7 @@
           "content",
           "max-height"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--select-content-max-height)",
         "description": ""
@@ -10506,7 +10506,7 @@
           "content",
           "min-width"
         ],
-        "value": "128px",
+        "value": "160px",
         "type": "spacing",
         "variable": "var(--select-content-min-width)",
         "description": ""
@@ -11002,7 +11002,7 @@
           "width",
           "lg"
         ],
-        "value": "60px",
+        "value": "64px",
         "type": "spacing",
         "variable": "var(--switch-track-width-lg)",
         "description": ""
@@ -11207,7 +11207,7 @@
           "min-height",
           "sm"
         ],
-        "value": "84px",
+        "value": "96px",
         "type": "spacing",
         "variable": "var(--textarea-min-height-sm)",
         "description": ""
@@ -11219,7 +11219,7 @@
           "min-height",
           "md"
         ],
-        "value": "96px",
+        "value": "112px",
         "type": "spacing",
         "variable": "var(--textarea-min-height-md)",
         "description": ""
@@ -11231,7 +11231,7 @@
           "min-height",
           "lg"
         ],
-        "value": "128px",
+        "value": "160px",
         "type": "spacing",
         "variable": "var(--textarea-min-height-lg)",
         "description": ""
@@ -11433,7 +11433,7 @@
           "width",
           "sm"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "spacing",
         "variable": "var(--sheet-content-width-sm)",
         "description": ""
@@ -11446,7 +11446,7 @@
           "width",
           "md"
         ],
-        "value": "448px",
+        "value": "576px",
         "type": "spacing",
         "variable": "var(--sheet-content-width-md)",
         "description": ""
@@ -11459,7 +11459,7 @@
           "width",
           "lg"
         ],
-        "value": "576px",
+        "value": "704px",
         "type": "spacing",
         "variable": "var(--sheet-content-width-lg)",
         "description": ""
@@ -11472,7 +11472,7 @@
           "width",
           "default"
         ],
-        "value": "320px",
+        "value": "448px",
         "type": "dimension",
         "variable": "var(--sheet-content-width-default)",
         "description": "Default width for left/right sheet panels before size modifier is applied"
@@ -11725,7 +11725,7 @@
           "content",
           "min-width"
         ],
-        "value": "128px",
+        "value": "160px",
         "type": "spacing",
         "variable": "var(--context-menu-content-min-width)",
         "description": ""
@@ -11938,7 +11938,7 @@
           "sub-content",
           "min-width"
         ],
-        "value": "96px",
+        "value": "112px",
         "type": "spacing",
         "variable": "var(--context-menu-sub-content-min-width)",
         "description": ""
@@ -11952,7 +11952,7 @@
           "content",
           "min-width"
         ],
-        "value": "128px",
+        "value": "160px",
         "type": "spacing",
         "variable": "var(--dropdown-menu-content-min-width)",
         "description": ""

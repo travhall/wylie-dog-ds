@@ -613,51 +613,51 @@
   },
   "space.700": {
     "$type": "spacing",
-    "$value": "60px"
+    "$value": "64px"
   },
   "space.800": {
     "$type": "spacing",
-    "$value": "72px"
+    "$value": "80px"
   },
   "space.900": {
     "$type": "spacing",
-    "$value": "84px"
+    "$value": "96px"
   },
   "space.1000": {
     "$type": "spacing",
-    "$value": "96px"
+    "$value": "112px"
   },
   "space.1100": {
     "$type": "spacing",
-    "$value": "112px"
+    "$value": "128px"
   },
   "space.1200": {
     "$type": "spacing",
-    "$value": "128px"
+    "$value": "160px"
   },
   "space.1300": {
     "$type": "spacing",
-    "$value": "160px"
+    "$value": "192px"
   },
   "space.1400": {
     "$type": "spacing",
-    "$value": "192px"
+    "$value": "256px"
   },
   "space.1500": {
     "$type": "spacing",
-    "$value": "256px"
+    "$value": "320px"
   },
   "space.1600": {
     "$type": "spacing",
-    "$value": "320px"
+    "$value": "448px"
   },
   "space.1700": {
     "$type": "spacing",
-    "$value": "448px"
+    "$value": "576px"
   },
   "space.1800": {
     "$type": "spacing",
-    "$value": "576px"
+    "$value": "704px"
   },
   "typography.font-family.sans": {
     "$type": "fontFamily",

@@ -352,21 +352,6 @@
     "$type": "color",
     "$value": "{color.text.disabled}"
   },
-  "input.padding-y.sm": {
-    "$type": "spacing",
-    "$value": "{space.100}",
-    "$description": "Vertical padding for sm input — space.100 (8px) + font-size.sm (14px) = 30px total height"
-  },
-  "input.padding-y.md": {
-    "$type": "spacing",
-    "$value": "{space.150}",
-    "$description": "Vertical padding for md input — space.150 (12px) + font-size.base (16px) = 40px total height"
-  },
-  "input.padding-y.lg": {
-    "$type": "spacing",
-    "$value": "{space.200}",
-    "$description": "Vertical padding for lg input — space.200 (16px) + font-size.lg (18px) = 50px total height"
-  },
   "input.padding-x": {
     "$type": "spacing",
     "$value": "{space.200}"
@@ -3188,5 +3173,20 @@
   "feature-grid.item.border-color-hover": {
     "$type": "color",
     "$value": "{color.interactive.primary}"
+  },
+  "input.padding-y.sm": {
+    "$type": "spacing",
+    "$value": "{space.100}",
+    "$description": "Vertical padding for sm input — space.100 (8px) + font-size.sm (14px) = 30px total height"
+  },
+  "input.padding-y.md": {
+    "$type": "spacing",
+    "$value": "{space.150}",
+    "$description": "Vertical padding for md input — space.150 (12px) + font-size.base (16px) = 40px total height"
+  },
+  "input.padding-y.lg": {
+    "$type": "spacing",
+    "$value": "{space.200}",
+    "$description": "Vertical padding for lg input — space.200 (16px) + font-size.lg (18px) = 50px total height"
   }
 }
