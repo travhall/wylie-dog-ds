@@ -475,34 +475,101 @@ export class GitHubClient implements StorageAdapter {
         parents: [currentCommitSha],
       });
 
-      // Update branch reference with retry logic for race conditions
+      // Update branch reference — with one automatic rebase retry.
+      //
+      // Why this is needed: the rebuild-tokens workflow (or any other CI job)
+      // may commit back to `main` in the time between when we captured
+      // `currentCommitSha` and when we call updateRef. GitHub rejects the
+      // PATCH with a 422 "not a fast forward" in that case.
+      //
+      // On 422 we:
+      //   1. Re-fetch the actual latest HEAD SHA.
+      //   2. Build a new tree from that HEAD's base tree + our already-uploaded
+      //      blobs (blobs are content-addressed; they're safe to reuse).
+      //   3. Create a new commit parented on the real latest SHA.
+      //   4. Retry updateRef once. If it fails again we surface a clear error.
+      let commitShaForRef = newCommit.sha;
+
+      const tryUpdateRef = async (): Promise<void> => {
+        await this.octokit!.git.updateRef({
+          owner: this.config!.owner,
+          repo: this.config!.repo,
+          ref: `heads/${this.config!.branch}`,
+          sha: commitShaForRef,
+          force: false, // Explicit: never force push
+        });
+      };
+
       try {
-        await this.octokit.git.updateRef({
+        await tryUpdateRef();
+      } catch (updateError: any) {
+        const isNonFastForward =
+          updateError.status === 422 ||
+          updateError.message?.includes("not a fast forward") ||
+          updateError.message?.includes("Update is not a fast forward");
+
+        if (!isNonFastForward) {
+          throw updateError;
+        }
+
+        console.log(
+          "⚠️ GITHUB SYNC: Non-fast-forward detected — rebasing onto latest HEAD and retrying…"
+        );
+
+        // Re-fetch the branch HEAD that raced ahead of us.
+        const { data: latestRef } = await this.octokit.git.getRef({
           owner: this.config.owner,
           repo: this.config.repo,
           ref: `heads/${this.config.branch}`,
-          sha: newCommit.sha,
-          force: false, // Explicit: never force push
         });
-      } catch (updateError: any) {
-        // If update fails due to non-fast-forward, throw helpful error
-        if (updateError.message?.includes("not a fast forward")) {
+        const latestSha = latestRef.object.sha;
+
+        const { data: latestCommit } = await this.octokit.git.getCommit({
+          owner: this.config.owner,
+          repo: this.config.repo,
+          commit_sha: latestSha,
+        });
+
+        // Reuse the same blobs — create a new tree on top of the real latest.
+        const { data: rebasedTree } = await this.octokit.git.createTree({
+          owner: this.config.owner,
+          repo: this.config.repo,
+          base_tree: latestCommit.tree.sha,
+          tree,
+        });
+
+        const { data: rebasedCommit } = await this.octokit.git.createCommit({
+          owner: this.config.owner,
+          repo: this.config.repo,
+          message: commitMessage,
+          tree: rebasedTree.sha,
+          parents: [latestSha],
+        });
+
+        commitShaForRef = rebasedCommit.sha;
+
+        try {
+          await tryUpdateRef();
+          console.log(
+            `✅ GITHUB SYNC: Rebase-retry succeeded — ${rebasedCommit.sha}`
+          );
+        } catch (retryError: any) {
+          // Two concurrent writes in a row — surface a clear message.
           throw new Error(
-            "Branch has new commits since sync started. Please try again - the plugin will automatically sync with the latest changes."
+            "Branch has new commits since sync started. Please try again – the plugin will automatically sync with the latest changes."
           );
         }
-        throw updateError;
       }
 
       console.log(
-        `✅ Created single commit for ${filesUpdated.length} file(s): ${newCommit.sha}`
+        `✅ Created single commit for ${filesUpdated.length} file(s): ${commitShaForRef}`
       );
 
       return {
         success: true,
         filesUpdated,
         message: `Successfully synced ${filesUpdated.length} file(s) to ${this.config.branch}`,
-        commitSha: newCommit.sha,
+        commitSha: commitShaForRef,
       };
     } catch (error: any) {
       console.error("Error in direct sync:", error);
