@@ -385,11 +385,8 @@ export class GitHubClient implements StorageAdapter {
           ? `${this.config.tokenPath}${fileName}`
           : `${this.config.tokenPath}/${fileName}`;
 
-        const newContent = JSON.stringify(
-          [{ [collectionName]: tokens }],
-          null,
-          2
-        );
+        const newContent =
+          JSON.stringify([{ [collectionName]: tokens }], null, 2) + "\n";
 
         // DEBUG: Log token count in new content
         const tokenCount = Object.keys(tokens.variables || {}).length;
@@ -540,11 +537,8 @@ export class GitHubClient implements StorageAdapter {
         ? `${this.config.tokenPath}${fileName}`
         : `${this.config.tokenPath}/${fileName}`;
 
-      const fileContent = JSON.stringify(
-        [{ [collectionName]: tokens }],
-        null,
-        2
-      );
+      const fileContent =
+        JSON.stringify([{ [collectionName]: tokens }], null, 2) + "\n";
 
       await this.updateFile(filePath, fileContent, branchName);
       filesUpdated.push(filePath);
