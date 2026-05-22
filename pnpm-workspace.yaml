@@ -3,12 +3,12 @@ packages:
   - packages/*
 
 catalog:
-  eslint: ^10.3.0
-  react: ^19.2.5
-  react-dom: ^19.2.5
-  tailwindcss: ^4.2.4
+  eslint: ^10.4.0
+  react: ^19.2.6
+  react-dom: ^19.2.6
+  tailwindcss: ^4.3.0
   typescript: 6.0.3
-  vitest: ^4.1.5
+  vitest: ^4.1.7
 
 onlyBuiltDependencies:
   - '@parcel/watcher'
