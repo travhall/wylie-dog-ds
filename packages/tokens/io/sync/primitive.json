@@ -666,7 +666,7 @@
         },
         "space.1800": {
           "$type": "spacing",
-          "$value": "704px"
+          "$value": "576px"
         },
         "typography.font-family.sans": {
           "$type": "fontFamily",
