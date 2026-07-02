@@ -152,11 +152,24 @@ export class ConflictDetector {
       (localToken.valuesByMode || remoteToken.valuesByMode) &&
       this.hasModeValueConflicts(localToken, remoteToken);
 
-    // CRITICAL FIX: If type changed BUT values are semantically identical,
-    // this is just metadata normalization (e.g., spacing→dimension)
-    // Don't flag as a conflict
-    if (hasTypeChange && !hasPrimaryValueChange && !hasModeValueChange) {
-      return null; // Not a real conflict
+    // Description changes are meaningful too — e.g. the @fontSource() directive
+    // on fontFamily tokens. The change hash already includes $description, so
+    // without this check a description-only edit was detected as "changed" yet
+    // surfaced no conflict, silently never syncing. See DESCRIPTION_SYNC_BUG.md.
+    const hasDescriptionChange = this.hasDescriptionChanged(
+      localToken,
+      remoteToken
+    );
+
+    // If the type changed but nothing else did, this is just metadata
+    // normalization (e.g. spacing→dimension) — not a real conflict.
+    if (
+      hasTypeChange &&
+      !hasPrimaryValueChange &&
+      !hasModeValueChange &&
+      !hasDescriptionChange
+    ) {
+      return null;
     }
 
     // Detect specific type of conflict
@@ -164,8 +177,8 @@ export class ConflictDetector {
       return this.createTypeChangeConflict(tokenPath, localEntry, remoteEntry);
     }
 
-    // If either primary value or mode values differ, create conflict
-    if (hasPrimaryValueChange || hasModeValueChange) {
+    // If value, mode values, or description differ, create a conflict
+    if (hasPrimaryValueChange || hasModeValueChange || hasDescriptionChange) {
       return this.createValueChangeConflict(tokenPath, localEntry, remoteEntry);
     }
 
@@ -183,6 +196,13 @@ export class ConflictDetector {
     const localValue = this.getDisplayValue(localEntry.token);
     const remoteValue = this.getDisplayValue(remoteEntry.token);
 
+    // When the displayed values match, the meaningful change is the
+    // description (e.g. a @fontSource() directive), so word it accordingly.
+    const description =
+      localValue === remoteValue
+        ? `Description changed for "${tokenPath}"`
+        : `Value changed: "${localValue}" → "${remoteValue}"`;
+
     return {
       type: "value-change",
       severity: this.assessSeverity(localEntry.token, remoteEntry.token),
@@ -190,7 +210,7 @@ export class ConflictDetector {
       collectionName: localEntry.collection,
       localToken: localEntry.token,
       remoteToken: remoteEntry.token,
-      description: `Value changed: "${localValue}" → "${remoteValue}"`,
+      description,
       autoResolvable: this.isAutoResolvable(
         localEntry.token,
         remoteEntry.token
@@ -377,6 +397,19 @@ export class ConflictDetector {
       // Fallback to string comparison on error
       return String(localValue).trim() !== String(remoteValue).trim();
     }
+  }
+
+  /**
+   * Detect a change in a token's $description, ignoring any embedded sync
+   * metadata marker and treating empty/undefined as equivalent.
+   */
+  private hasDescriptionChanged(
+    localToken: ProcessedTokenWithSync,
+    remoteToken: ProcessedTokenWithSync
+  ): boolean {
+    const clean = (d?: string) =>
+      (d ?? "").replace(/\s*<!-- SYNC_METADATA:[\s\S]*?-->/, "").trim();
+    return clean(localToken.$description) !== clean(remoteToken.$description);
   }
 
   /**

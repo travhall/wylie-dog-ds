@@ -235,6 +235,46 @@ describe("ConflictDetector", () => {
     });
   });
 
+  describe("description changes (font-source sync)", () => {
+    // Regression: a token whose ONLY difference is $description was detected as
+    // "changed" (the hash includes $description) but produced no conflict,
+    // because compareTokens ignored $description. Result: font @fontSource()
+    // descriptions never synced GitHub→Figma. See docs/DESCRIPTION_SYNC_BUG.md.
+    it("flags a description-only change as a conflict", () => {
+      const local = [
+        collection("primitive", { "font.sans": token("fontFamily", "Inter") }),
+      ];
+      const remote = [
+        collection("primitive", {
+          "font.sans": token("fontFamily", "Inter", {
+            $description:
+              "@fontSource(provider:google,weights:400,subsets:latin)",
+          }),
+        }),
+      ];
+
+      const { conflicts } = detect(local, remote);
+      expect(conflicts).toHaveLength(1);
+      expect(conflicts[0].type).toBe("value-change");
+    });
+
+    it("does not flag identical descriptions", () => {
+      const desc = "@fontSource(provider:google)";
+      const local = [
+        collection("primitive", {
+          "font.sans": token("fontFamily", "Inter", { $description: desc }),
+        }),
+      ];
+      const remote = [
+        collection("primitive", {
+          "font.sans": token("fontFamily", "Inter", { $description: desc }),
+        }),
+      ];
+
+      expect(detect(local, remote).conflicts).toHaveLength(0);
+    });
+  });
+
   describe("collection scoping", () => {
     it("ignores remote collections that were not selected locally", () => {
       // Pushing only "colors" should not surface additions from an unrelated
