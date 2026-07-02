@@ -37,44 +37,32 @@ export function SyncStatus({
     setStatus((prev) => ({ ...prev, checking: true, error: undefined }));
 
     try {
-      console.log("Requesting local tokens for sync status check...");
-
-      // Request local tokens from plugin thread
-      const localTokensPromise = new Promise<ExportData[]>((resolve) => {
+      // Request local tokens from the plugin thread, then diff against remote.
+      const localTokens = await new Promise<ExportData[]>((resolve) => {
         const handler = (event: MessageEvent) => {
-          if (event.data.pluginMessage?.type === "local-tokens-exported") {
+          const type = event.data.pluginMessage?.type;
+          if (type === "local-tokens-exported") {
             window.removeEventListener("message", handler);
-            console.log("Local tokens received for sync status");
             resolve(event.data.pluginMessage.localTokens || []);
-          } else if (event.data.pluginMessage?.type === "local-tokens-error") {
+          } else if (type === "local-tokens-error") {
             window.removeEventListener("message", handler);
-            console.warn(" Failed to get local tokens for sync status");
             resolve([]);
           }
         };
         window.addEventListener("message", handler);
 
-        // Request local tokens from plugin thread
         parent.postMessage(
-          {
-            pluginMessage: {
-              type: "get-local-tokens",
-            },
-          },
+          { pluginMessage: { type: "get-local-tokens" } },
           "*"
         );
 
         // Timeout after 10 seconds
         setTimeout(() => {
           window.removeEventListener("message", handler);
-          console.warn(" Timeout getting local tokens for sync status");
           resolve([]);
         }, 10000);
       });
 
-      const localTokens = await localTokensPromise;
-
-      // Get sync status with local tokens
       const syncStatus = await githubClient.getSyncStatus(localTokens);
       setStatus({
         upToDate: syncStatus.upToDate,
@@ -107,16 +95,16 @@ export function SyncStatus({
       <div
         style={{
           padding: "8px 12px",
-          backgroundColor: "#f9fafb",
-          borderRadius: "6px",
-          border: "1px solid #e5e7eb",
-          fontSize: "11px",
-          color: "#6b7280",
+          background: "var(--surface-secondary)",
+          borderRadius: "var(--radius-md)",
+          border: "1px solid var(--border-default)",
+          fontSize: "var(--font-size-xs)",
+          color: "var(--text-tertiary)",
         }}
       >
         <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          <Icon name="github" size={12} color="#6b7280" /> Configure GitHub to
-          see sync status
+          <Icon name="github" size={12} color="var(--text-tertiary)" /> Connect
+          a repository to see sync status
         </span>
       </div>
     );
@@ -145,10 +133,10 @@ export function SyncStatus({
   };
 
   const getStatusColor = () => {
-    if (status.error) return "#ef4444";
-    if (status.checking) return "#f59e0b";
-    if (!status.upToDate) return "#f59e0b";
-    return "#10b981";
+    if (status.error) return "var(--error)";
+    if (status.checking) return "var(--warning)";
+    if (!status.upToDate) return "var(--warning)";
+    return "var(--success)";
   };
 
   const getStatusIconName = () => {
@@ -160,7 +148,7 @@ export function SyncStatus({
 
   const getStatusText = () => {
     if (status.error) return "Error checking status";
-    if (status.checking) return "Checking sync status...";
+    if (status.checking) return "Checking sync status…";
     if (!status.upToDate) return "Changes detected";
     return "Up to date";
   };
@@ -169,10 +157,10 @@ export function SyncStatus({
     <div
       style={{
         padding: "10px 12px",
-        backgroundColor: "#f8fafc",
-        borderRadius: "6px",
-        border: "1px solid #e2e8f0",
-        fontSize: "11px",
+        background: "var(--surface-secondary)",
+        borderRadius: "var(--radius-md)",
+        border: "1px solid var(--border-default)",
+        fontSize: "var(--font-size-xs)",
       }}
     >
       <div
@@ -188,7 +176,7 @@ export function SyncStatus({
             display: "flex",
             alignItems: "center",
             gap: "6px",
-            fontWeight: "bold",
+            fontWeight: "var(--font-weight-semibold)",
             color: getStatusColor(),
           }}
         >
@@ -202,39 +190,52 @@ export function SyncStatus({
             onRefresh?.();
           }}
           disabled={status.checking}
+          aria-label="Refresh sync status"
           style={{
-            padding: "2px 6px",
-            backgroundColor: "#f3f4f6",
-            border: "1px solid #d1d5db",
-            borderRadius: "3px",
+            padding: "2px 8px",
+            background: "var(--surface-tertiary)",
+            border: "1px solid var(--border-default)",
+            borderRadius: "var(--radius-sm)",
             cursor: status.checking ? "not-allowed" : "pointer",
-            fontSize: "9px",
-            color: "#374151",
+            fontSize: "var(--font-size-xs)",
+            color: "var(--text-primary)",
           }}
         >
-          {status.checking ? "..." : "Refresh"}
+          {status.checking ? "…" : "Refresh"}
         </button>
       </div>
 
       {status.error ? (
-        <div style={{ color: "#ef4444", fontSize: "10px" }}>{status.error}</div>
+        <div style={{ color: "var(--error)", fontSize: "var(--font-size-xs)" }}>
+          {status.error}
+        </div>
       ) : (
-        <div style={{ color: "#6b7280" }}>
+        <div style={{ color: "var(--text-secondary)" }}>
           <div>Last sync: {formatLastSync(status.lastSync)}</div>
           {!status.upToDate &&
             (status.localChanges > 0 || status.remoteChanges > 0) && (
-              <div style={{ marginTop: "4px", fontSize: "10px" }}>
+              <div
+                style={{
+                  marginTop: "4px",
+                  fontSize: "var(--font-size-xs)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                }}
+              >
                 {status.localChanges > 0 && (
-                  <span style={{ color: "#f59e0b" }}>
-                    <Icon name="check" size={10} color="#f59e0b" />{" "}
-                    {status.localChanges} local changes
+                  <span style={{ color: "var(--warning)" }}>
+                    <Icon name="check" size={10} color="var(--warning)" />{" "}
+                    {status.localChanges} local
                   </span>
                 )}
-                {status.localChanges > 0 && status.remoteChanges > 0 && " • "}
+                {status.localChanges > 0 && status.remoteChanges > 0 && (
+                  <span style={{ color: "var(--text-tertiary)" }}>•</span>
+                )}
                 {status.remoteChanges > 0 && (
-                  <span style={{ color: "#3b82f6" }}>
-                    <Icon name="download" size={10} color="#3b82f6" />{" "}
-                    {status.remoteChanges} remote changes
+                  <span style={{ color: "var(--info)" }}>
+                    <Icon name="download" size={10} color="var(--info)" />{" "}
+                    {status.remoteChanges} remote
                   </span>
                 )}
               </div>

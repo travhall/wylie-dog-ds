@@ -2,12 +2,15 @@ import { h } from "preact";
 import { useState } from "preact/hooks";
 import { SetupWizard } from "../SetupWizard";
 import { ImportPreview } from "../ImportPreview";
+import { SyncStatus } from "../SyncStatus";
 import { Icon } from "../common/Icon";
 import { useUIContext } from "../../state";
 import type { GitHubConfig } from "../../../shared/types";
 import type { Collection } from "../../hooks/usePluginMessages";
+import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aware-github-client";
 
 interface SyncTabProps {
+  githubClient: ConflictAwareGitHubClient;
   githubConfig: GitHubConfig | null;
   githubConfigured: boolean;
   collections: Collection[];
@@ -29,6 +32,7 @@ interface SyncTabProps {
  * Sub-view C: Edit config → inline SetupWizard with cancel
  */
 export function SyncTab({
+  githubClient,
   githubConfig,
   githubConfigured,
   collections,
@@ -287,6 +291,14 @@ export function SyncTab({
         >
           Edit
         </button>
+      </div>
+
+      {/* Sync status — in-sync / drift / last-synced at a glance */}
+      <div style={{ padding: "12px 12px 0" }}>
+        <SyncStatus
+          githubClient={githubClient}
+          githubConfigured={githubConfigured}
+        />
       </div>
 
       {/* Collection selector */}

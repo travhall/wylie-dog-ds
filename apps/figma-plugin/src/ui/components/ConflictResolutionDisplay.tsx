@@ -14,6 +14,74 @@ interface ConflictResolutionDisplayProps {
   loading?: boolean;
 }
 
+/** Whether a value string is a CSS-renderable color (hex/oklch/rgb/hsl). */
+function isColorValue(value: unknown): value is string {
+  if (typeof value !== "string") return false;
+  const s = value.trim();
+  return (
+    s.startsWith("#") ||
+    s.startsWith("oklch(") ||
+    s.startsWith("rgb(") ||
+    s.startsWith("hsl(")
+  );
+}
+
+/** Small color preview swatch — modern Chromium (Figma's iframe) renders oklch. */
+function ColorSwatch({ value }: { value: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      title={value}
+      style={{
+        display: "inline-block",
+        width: 10,
+        height: 10,
+        borderRadius: "2px",
+        background: value,
+        border: "1px solid var(--border-default)",
+        marginRight: "4px",
+        verticalAlign: "middle",
+        flexShrink: 0,
+      }}
+    />
+  );
+}
+
+/** Renders a token's value(s) as code, with a color swatch for color values. */
+function TokenValuePreview({ token }: { token: TokenConflict["localToken"] }) {
+  const codeStyle = {
+    fontSize: "var(--font-size-xs)",
+    color: "var(--text-secondary)",
+    whiteSpace: "pre-wrap" as const,
+    wordBreak: "break-word" as const,
+    display: "flex",
+    alignItems: "center",
+  };
+
+  const modes = token?.valuesByMode;
+  if (modes && Object.keys(modes).length > 0) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+        {Object.entries(modes).map(([mode, value]) => (
+          <code key={mode} style={codeStyle}>
+            {isColorValue(value) && <ColorSwatch value={value} />}
+            <span style={{ color: "var(--text-tertiary)" }}>{mode}:</span>
+            &nbsp;{String(value)}
+          </code>
+        ))}
+      </div>
+    );
+  }
+
+  const value = token?.$value;
+  return (
+    <code style={codeStyle}>
+      {isColorValue(value) && <ColorSwatch value={value} />}
+      {value ?? "undefined"}
+    </code>
+  );
+}
+
 export function ConflictResolutionDisplay({
   conflicts,
   onResolve,
@@ -670,20 +738,7 @@ function ConflictItem({
               <Icon name="check" size={12} color="var(--text-primary)" /> Local
               Value
             </div>
-            <code
-              style={{
-                fontSize: "var(--font-size-xs)",
-                color: "var(--text-secondary)",
-                whiteSpace: "pre-wrap",
-                wordBreak: "break-word",
-              }}
-            >
-              {conflict.localToken?.valuesByMode
-                ? Object.entries(conflict.localToken.valuesByMode)
-                    .map(([mode, value]) => `${mode}: ${value}`)
-                    .join(", ")
-                : conflict.localToken?.$value || "undefined"}
-            </code>
+            <TokenValuePreview token={conflict.localToken} />
           </div>
           <div
             style={{
@@ -703,20 +758,7 @@ function ConflictItem({
               <Icon name="download" size={12} color="var(--text-primary)" />{" "}
               Remote Value
             </div>
-            <code
-              style={{
-                fontSize: "var(--font-size-xs)",
-                color: "var(--text-secondary)",
-                whiteSpace: "pre-wrap",
-                wordBreak: "break-word",
-              }}
-            >
-              {conflict.remoteToken?.valuesByMode
-                ? Object.entries(conflict.remoteToken.valuesByMode)
-                    .map(([mode, value]) => `${mode}: ${value}`)
-                    .join(", ")
-                : conflict.remoteToken?.$value || "undefined"}
-            </code>
+            <TokenValuePreview token={conflict.remoteToken} />
           </div>
         </div>
       )}

@@ -573,6 +573,7 @@ function AppInner() {
             {/* SYNC TAB */}
             {uiState.activeTab === "sync" && (
               <SyncTab
+                githubClient={githubClient}
                 githubConfig={pluginState.githubConfig}
                 githubConfigured={pluginState.githubConfigured}
                 collections={pluginState.collections}
