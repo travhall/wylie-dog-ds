@@ -3,7 +3,7 @@ packages:
   - packages/*
 
 catalog:
-  eslint: ^10.4.0
+  eslint: ^10.6.0
   react: ^19.2.6
   react-dom: ^19.2.6
   tailwindcss: ^4.3.0
