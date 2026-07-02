@@ -11,6 +11,13 @@ import { SyncMetadataManager } from "./metadata-manager";
 import { parse, formatHex, formatCss, differenceEuclidean } from "culori";
 
 export class ConflictDetector {
+  /**
+   * Perceptual color-difference tolerance (Euclidean distance in OKLCH).
+   * Colors closer than this are treated as identical — absorbs hex↔OKLCH
+   * rounding so format-only changes don't register as conflicts.
+   */
+  static readonly COLOR_TOLERANCE = 0.002;
+
   private metadataManager = new SyncMetadataManager();
 
   /**
@@ -20,59 +27,6 @@ export class ConflictDetector {
     localTokens: ExportData[],
     remoteTokens: ExportData[]
   ): ConflictDetectionResult {
-    // DEBUG: Check descriptions at entry point
-    console.log("🔍 CONFLICT DETECTOR ENTRY:");
-    remoteTokens.forEach((coll: any) => {
-      Object.entries(coll).forEach(([name, data]: [string, any]) => {
-        if (data?.variables) {
-          const sans = data.variables["typography.font-family.sans"];
-          const mono = data.variables["typography.font-family.mono"];
-          if (sans || mono) {
-            console.log(`  Collection ${name}:`);
-            if (sans)
-              console.log(`    sans $description:`, !!sans.$description);
-            if (mono)
-              console.log(`    mono $description:`, !!mono.$description);
-          }
-        }
-      });
-    });
-
-    if (localTokens.length > 0) {
-      const firstLocal = localTokens[0];
-      const collectionName = Object.keys(firstLocal)[0];
-      // console.log("First local collection:", collectionName);
-      if (firstLocal[collectionName]) {
-        const varNames = Object.keys(firstLocal[collectionName].variables);
-        // console.log("Local variable count:", varNames.length);
-        // console.log("First 3 variables:", varNames.slice(0, 3));
-
-        // Log first variable details
-        if (varNames.length > 0) {
-          const firstVar = firstLocal[collectionName].variables[varNames[0]];
-          // console.log("First variable value:", JSON.stringify(firstVar.$value));
-        }
-      }
-    }
-
-    if (remoteTokens.length > 0) {
-      const firstRemote = remoteTokens[0];
-      const collectionName = Object.keys(firstRemote)[0];
-      // console.log("First remote collection:", collectionName);
-      if (firstRemote[collectionName]) {
-        const varNames = Object.keys(firstRemote[collectionName].variables);
-        // console.log("Remote variable count:", varNames.length);
-        // console.log("First 3 variables:", varNames.slice(0, 3));
-
-        // Log first variable details
-        if (varNames.length > 0) {
-          const firstVar = firstRemote[collectionName].variables[varNames[0]];
-          // console.log("First variable value:", JSON.stringify(firstVar.$value));
-        }
-      }
-    }
-    // console.log("=== END DEBUG ===");
-
     // Convert to sync-aware format
     const localWithSync = this.metadataManager.addSyncMetadataToExportData(
       localTokens,
@@ -163,11 +117,6 @@ export class ConflictDetector {
       }
     }
 
-    // Debug logging
-    // console.log(`🗺️ Token map created with ${tokenMap.size} tokens`);
-    const firstThree = Array.from(tokenMap.keys()).slice(0, 3);
-    // console.log("First 3 token paths:", firstThree);
-
     return tokenMap;
   }
 
@@ -182,38 +131,11 @@ export class ConflictDetector {
     const { token: localToken } = localEntry;
     const { token: remoteToken } = remoteEntry;
 
-    // Check if token has changed
+    // Quick hash comparison first — identical tokens are not conflicts
     const hasChanged = this.metadataManager.hasTokenChanged(
       localToken,
       remoteToken
     );
-
-    // Debug logging for specific tokens
-    if (
-      tokenPath.includes("color") ||
-      tokenPath.includes("blue") ||
-      tokenPath.includes("primary")
-    ) {
-      // console.log(`\n📊 Comparing: ${tokenPath}`);
-      // console.log("  Local value:", JSON.stringify(localToken.$value));
-      // console.log("  Remote value:", JSON.stringify(remoteToken.$value));
-      // Log valuesByMode if it exists
-      // if (localToken.valuesByMode || remoteToken.valuesByMode) {
-      //   console.log(
-      //     "  Local valuesByMode:",
-      //     JSON.stringify(localToken.valuesByMode)
-      //   );
-      //   console.log(
-      //     "  Remote valuesByMode:",
-      //     JSON.stringify(remoteToken.valuesByMode)
-      //   );
-      // }
-      // console.log("  Has changed:", hasChanged);
-      // console.log("  Local hash:", localToken.$syncMetadata?.hash || "none");
-      // console.log("  Remote hash:", remoteToken.$syncMetadata?.hash || "none");
-    }
-
-    // Quick hash comparison first
     if (!hasChanged) {
       return null; // No conflict
     }
@@ -234,11 +156,6 @@ export class ConflictDetector {
     // this is just metadata normalization (e.g., spacing→dimension)
     // Don't flag as a conflict
     if (hasTypeChange && !hasPrimaryValueChange && !hasModeValueChange) {
-      console.log(
-        `✅ Type change but values identical - skipping conflict for: ${tokenPath}`
-      );
-      console.log(`   ${localToken.$type} → ${remoteToken.$type}`);
-      console.log(`   Value:`, JSON.stringify(localToken.$value));
       return null; // Not a real conflict
     }
 
@@ -361,12 +278,7 @@ export class ConflictDetector {
     if (typeof localValue !== "object" && typeof remoteValue !== "object") {
       // Special case: Color comparison (hex vs oklch)
       if (this.looksLikeColor(localValue) || this.looksLikeColor(remoteValue)) {
-        console.log(`🎨 COLOR COMPARISON TRIGGERED`);
-        console.log(`   Local:  ${localValue} (type: ${typeof localValue})`);
-        console.log(`   Remote: ${remoteValue} (type: ${typeof remoteValue})`);
-        const result = this.areColorsDifferent(localValue, remoteValue);
-        console.log(`   Result: ${result ? "DIFFERENT" : "SAME"}`);
-        return result;
+        return this.areColorsDifferent(localValue, remoteValue);
       }
 
       // Try loose equality first (handles "100" === 100)
@@ -441,17 +353,10 @@ export class ConflictDetector {
    * Returns true if colors are different, false if they're the same
    */
   private areColorsDifferent(localValue: any, remoteValue: any): boolean {
-    console.log(`🎨 COLOR COMPARISON:`);
-    console.log(`   Local:  "${localValue}" (${typeof localValue})`);
-    console.log(`   Remote: "${remoteValue}" (${typeof remoteValue})`);
-
     try {
       // Parse both colors using culori
       const localColor = parse(String(localValue));
       const remoteColor = parse(String(remoteValue));
-
-      console.log(`   Parsed local:`, localColor ? "✓" : "✗");
-      console.log(`   Parsed remote:`, remoteColor ? "✓" : "✗");
 
       // If either failed to parse, fall back to string comparison
       if (!localColor || !remoteColor) {
@@ -462,29 +367,11 @@ export class ConflictDetector {
       }
 
       // Calculate perceptual difference (0 = identical, 1 = maximally different)
-      // Using Euclidean distance in OKLCH space
+      // using Euclidean distance in OKLCH space. Tolerance of 0.002 accounts for
+      // hex→OKLCH conversion rounding — imperceptible to humans, so colors within
+      // it are treated as identical to avoid false conflicts on format changes.
       const diff = differenceEuclidean()(localColor, remoteColor);
-
-      console.log(`   Perceptual diff: ${diff.toFixed(6)}`);
-
-      // Tolerance: 0.002 accounts for hex→OKLCH conversion rounding
-      // This is imperceptible to humans - colors must be visually identical
-      const tolerance = 0.002;
-      const areDifferent = diff > tolerance;
-
-      if (!areDifferent && localValue !== remoteValue) {
-        console.log(
-          `✅ Color format mismatch but same color (diff: ${diff.toFixed(6)})`
-        );
-        console.log(`   Local:  ${localValue}`);
-        console.log(`   Remote: ${remoteValue}`);
-      } else if (areDifferent) {
-        console.log(
-          `❌ Colors are different (diff: ${diff.toFixed(6)} > ${tolerance})`
-        );
-      }
-
-      return areDifferent;
+      return diff > ConflictDetector.COLOR_TOLERANCE;
     } catch (error) {
       console.error("Color comparison error:", error);
       // Fallback to string comparison on error
