@@ -37,6 +37,20 @@ describe("Popover", () => {
       expect(results).toHaveNoViolations();
     });
 
+    it("should pass accessibility audit when open", async () => {
+      const user = userEvent.setup();
+      render(<TestPopover />);
+
+      await user.click(screen.getByText("Open Popover"));
+
+      // Radix portals the content to document.body; audit the open content
+      // subtree directly rather than the (empty) render container.
+      const heading = await screen.findByText("Popover Heading");
+      const content = heading.closest("div") as HTMLElement;
+      const results = await axe(content);
+      expect(results).toHaveNoViolations();
+    });
+
     it("should have proper aria-expanded state", async () => {
       const user = userEvent.setup();
       render(<TestPopover />);

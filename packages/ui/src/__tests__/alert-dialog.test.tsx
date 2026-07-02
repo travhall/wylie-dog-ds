@@ -52,6 +52,19 @@ describe("AlertDialog", () => {
       expect(results.violations).toHaveLength(0);
     });
 
+    it("should pass accessibility audit when open", async () => {
+      const user = userEvent.setup();
+      render(<TestAlertDialog />);
+
+      await user.click(screen.getByText("Delete Account"));
+
+      // Radix portals the alert dialog to document.body; audit the dialog
+      // node itself so the open-state ARIA is actually exercised.
+      const dialog = await screen.findByRole("alertdialog");
+      const results = await axe(dialog);
+      expect(results.violations).toHaveLength(0);
+    });
+
     it("should have proper role for alert dialog", async () => {
       const user = userEvent.setup();
       render(<TestAlertDialog />);

@@ -88,4 +88,26 @@ export default [
       },
     },
   },
+
+  // Scoped false-positive suppressions.
+  //
+  // These primitives render a semantic heading/anchor element and forward the
+  // consumer's content through the spread `children` prop (e.g. `<h3 {...props} />`).
+  // The linter can't see runtime children, so `heading-has-content` /
+  // `anchor-has-content` fire even though real usage always supplies content.
+  //
+  // We disable ONLY the affected rule for ONLY these files — every other a11y
+  // rule still applies — rather than excluding the whole file from a11y linting.
+  {
+    files: ['src/alert.tsx', 'src/card.tsx'],
+    rules: {
+      'jsx-a11y/heading-has-content': 'off',
+    },
+  },
+  {
+    files: ['src/breadcrumb.tsx', 'src/pagination.tsx'],
+    rules: {
+      'jsx-a11y/anchor-has-content': 'off',
+    },
+  },
 ];

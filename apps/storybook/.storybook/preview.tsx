@@ -11,6 +11,17 @@ const preview: Preview = {
     viewport: {
       options: INITIAL_VIEWPORTS,
     },
+    // Runs browser-based axe (incl. color-contrast) on every story via the
+    // Vitest addon. Must live in the DEFAULT export — the test runner ignores
+    // the named `parameters` export below.
+    //   'todo'  - run + report violations, do NOT fail the run (current)
+    //   'error' - fail the run/CI on any violation
+    //   'off'   - skip a11y checks
+    // Currently 'todo': ~179 stories have real violations (mostly color-contrast
+    // on the muted-gray text token). Flip to 'error' once those are resolved.
+    a11y: {
+      test: "todo",
+    },
   },
   initialGlobals: {},
 };
@@ -239,12 +250,8 @@ export const parameters: Preview["parameters"] = {
     },
   },
 
-  // A11y configuration - manual mode to prevent flickering during theme changes
-  a11y: {
-    manual: true,
-    // 'todo' - show a11y violations in the test UI only
-    // 'error' - fail CI on a11y violations
-    // 'off' - skip a11y checks entirely
-    test: "todo",
-  },
+  // NOTE: a11y config lives in the DEFAULT export (`preview.parameters.a11y`),
+  // not here. The @storybook/addon-vitest test runner only reads the default
+  // export, so a11y config placed in this named `parameters` export is silently
+  // ignored during tests (it never ran in CI). Keep a11y in the default export.
 };

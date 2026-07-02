@@ -41,6 +41,19 @@ describe("DropdownMenu", () => {
       expect(results).toHaveNoViolations();
     });
 
+    it("should pass accessibility audit when open", async () => {
+      const user = userEvent.setup();
+      render(<TestDropdownMenu />);
+
+      await user.click(screen.getByText("Open Menu"));
+
+      // Radix portals the menu to document.body, so audit the menu node
+      // itself — auditing the render container would vacuously pass.
+      const menu = await screen.findByRole("menu");
+      const results = await axe(menu);
+      expect(results).toHaveNoViolations();
+    });
+
     it("should have proper aria-expanded state", async () => {
       const user = userEvent.setup();
       render(<TestDropdownMenu />);

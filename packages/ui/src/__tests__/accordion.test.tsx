@@ -74,6 +74,24 @@ describe("Accordion", () => {
       expect(results).toHaveNoViolations();
     });
 
+    it("should pass accessibility audit when expanded", async () => {
+      const user = userEvent.setup();
+      const { container } = render(<TestAccordion type="single" collapsible />);
+
+      // Accordion renders its panel inline (no portal), so the expanded
+      // content is captured by auditing the render container.
+      await user.click(screen.getByText("Section 1"));
+      await waitFor(() => {
+        expect(screen.getByText("Section 1")).toHaveAttribute(
+          "aria-expanded",
+          "true"
+        );
+      });
+
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+
     it("should have proper aria-expanded state", async () => {
       const user = userEvent.setup();
       render(<TestAccordion type="single" collapsible />);
