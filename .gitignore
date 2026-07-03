@@ -34,3 +34,4 @@ packages/ui/coverage
 apps/storybook/tests/visual.spec.ts-snapshots/**
 apps/figma-plugin/wylie-dog-figma-builder
 plans
+documentation/case-studies
