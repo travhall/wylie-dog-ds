@@ -3,7 +3,7 @@
 import fetch from "cross-fetch";
 import { Octokit } from "@octokit/rest";
 import type { GitHubConfig, SyncMode } from "../../shared/types";
-import type { StorageAdapter } from "../storage/storage-adapter";
+import type { SourceControlProvider } from "../providers/source-control-provider";
 
 // Make fetch available globally for Octokit
 (globalThis as any).fetch = fetch;
@@ -41,7 +41,8 @@ export interface PullResult {
   lastModified?: string;
 }
 
-export class GitHubClient implements StorageAdapter {
+export class GitHubClient implements SourceControlProvider {
+  readonly id = "github" as const;
   private octokit: Octokit | null = null;
   private config: GitHubConfig | null = null;
 

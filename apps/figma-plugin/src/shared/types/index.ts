@@ -30,6 +30,11 @@ export interface ExportOptions {
 export type SyncMode = "direct" | "pull-request";
 
 export interface GitHubConfig {
+  /**
+   * Which source-control host this config targets. Absent = "github" (the only
+   * provider today). The provider registry (plugin/providers) switches on this.
+   */
+  provider?: "github" | "gitlab" | "bitbucket";
   owner: string;
   repo: string;
   branch: string;
@@ -46,6 +51,13 @@ export interface GitHubConfig {
   syncMode: SyncMode;
   isWylieDogProject?: boolean;
 }
+
+/**
+ * Provider-neutral alias for GitHubConfig. New multi-provider code should use
+ * this name; the shape is identical (for GitLab, `owner` = namespace/group,
+ * `repo` = project). Kept as an alias so existing GitHub code keeps compiling.
+ */
+export type RepoConfig = GitHubConfig;
 
 // Re-export ConflictResolution from sync types for convenience
 export type { ConflictResolution } from "../../plugin/sync/types";
