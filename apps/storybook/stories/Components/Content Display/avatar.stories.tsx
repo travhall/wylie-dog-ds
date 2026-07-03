@@ -174,7 +174,9 @@ export const UserProfiles: Story = {
             </Avatar>
             <div>
               <p className="text-sm font-medium">John Doe</p>
-              <p className="text-xs text-gray-400">Product Manager</p>
+              <p className="text-xs text-(--color-text-tertiary)">
+                Product Manager
+              </p>
             </div>
           </div>
 
@@ -184,7 +186,9 @@ export const UserProfiles: Story = {
             </Avatar>
             <div>
               <p className="text-sm font-medium">Sarah Anderson</p>
-              <p className="text-xs text-gray-400">UI/UX Designer</p>
+              <p className="text-xs text-(--color-text-tertiary)">
+                UI/UX Designer
+              </p>
             </div>
           </div>
 
@@ -194,7 +198,9 @@ export const UserProfiles: Story = {
             </Avatar>
             <div>
               <p className="text-sm font-medium">Michael Kim</p>
-              <p className="text-xs text-gray-400">Frontend Developer</p>
+              <p className="text-xs text-(--color-text-tertiary)">
+                Frontend Developer
+              </p>
             </div>
           </div>
         </div>
@@ -279,13 +285,13 @@ export const Loading: Story = {
       <h4 className="text-sm font-medium">Loading States</h4>
       <div className="flex gap-4">
         <Avatar>
-          <div className="w-full h-full bg-gray-50 animate-pulse rounded-full" />
+          <div className="w-full h-full bg-(--color-background-secondary) animate-pulse rounded-full" />
         </Avatar>
         <Avatar>
-          <div className="w-full h-full bg-gray-50 animate-pulse rounded-full" />
+          <div className="w-full h-full bg-(--color-background-secondary) animate-pulse rounded-full" />
         </Avatar>
         <Avatar>
-          <div className="w-full h-full bg-gray-50 animate-pulse rounded-full" />
+          <div className="w-full h-full bg-(--color-background-secondary) animate-pulse rounded-full" />
         </Avatar>
       </div>
     </div>

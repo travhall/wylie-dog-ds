@@ -216,7 +216,7 @@ export const MediaControls: Story = {
             pressed={muted}
             onPressedChange={setMuted}
             aria-label="Toggle speaker mute"
-            className="text-(--color-text-inverse) data-[state=on]:bg-red-600"
+            className="text-(--color-text-inverse) data-[state=on]:bg-(--color-interactive-danger)"
           >
             {muted ? (
               <VolumeXIcon className="h-4 w-4" />
@@ -228,7 +228,7 @@ export const MediaControls: Story = {
             pressed={micMuted}
             onPressedChange={setMicMuted}
             aria-label="Toggle microphone mute"
-            className="text-(--color-text-inverse) data-[state=on]:bg-red-600"
+            className="text-(--color-text-inverse) data-[state=on]:bg-(--color-interactive-danger)"
           >
             {micMuted ? (
               <MicOffIcon className="h-4 w-4" />
@@ -238,7 +238,7 @@ export const MediaControls: Story = {
           </Toggle>
         </div>
 
-        <div className="text-sm text-gray-500">
+        <div className="text-sm text-(--color-text-tertiary)">
           Speaker: {muted ? "Muted" : "Active"} | Microphone:{" "}
           {micMuted ? "Muted" : "Active"}
         </div>
@@ -283,7 +283,7 @@ export const Settings: Story = {
               <span className="text-xl">🔔</span>
               <div>
                 <div className="font-medium">Notifications</div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-(--color-text-tertiary)">
                   Push notifications and alerts
                 </div>
               </div>
@@ -299,7 +299,9 @@ export const Settings: Story = {
               <span className="text-xl">📍</span>
               <div>
                 <div className="font-medium">Location Services</div>
-                <div className="text-sm text-gray-500">Share location data</div>
+                <div className="text-sm text-(--color-text-tertiary)">
+                  Share location data
+                </div>
               </div>
             </div>
             <Toggle pressed={location} onPressedChange={setLocation} />
@@ -310,7 +312,7 @@ export const Settings: Story = {
               <span className="text-xl">📊</span>
               <div>
                 <div className="font-medium">Analytics</div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-(--color-text-tertiary)">
                   Usage data collection
                 </div>
               </div>
@@ -361,7 +363,7 @@ export const ViewToggle: Story = {
           </div>
         </div>
 
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-(--color-text-tertiary)">
           Click the eye icon to {showPassword ? "hide" : "show"} password
         </p>
       </div>
@@ -425,7 +427,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Toggle buttons support keyboard navigation, screen readers, and proper
           ARIA states.
         </p>
@@ -439,7 +441,10 @@ export const Accessibility: Story = {
           >
             🌙 Dark Mode
           </Toggle>
-          <p id="dark-mode-description" className="text-sm text-gray-500">
+          <p
+            id="dark-mode-description"
+            className="text-sm text-(--color-text-tertiary)"
+          >
             Switch to dark theme
           </p>
         </div>
@@ -451,7 +456,10 @@ export const Accessibility: Story = {
           >
             ⚡ High Contrast
           </Toggle>
-          <p id="contrast-description" className="text-sm text-gray-500">
+          <p
+            id="contrast-description"
+            className="text-sm text-(--color-text-tertiary)"
+          >
             Increase visual contrast
           </p>
         </div>
@@ -463,13 +471,16 @@ export const Accessibility: Story = {
           >
             🔍 Large Text
           </Toggle>
-          <p id="text-description" className="text-sm text-gray-500">
+          <p
+            id="text-description"
+            className="text-sm text-(--color-text-tertiary)"
+          >
             Increase font sizes
           </p>
         </div>
       </div>
 
-      <p className="text-xs text-gray-500">
+      <p className="text-xs text-(--color-text-tertiary)">
         Use Tab to navigate, Space or Enter to toggle
       </p>
     </div>

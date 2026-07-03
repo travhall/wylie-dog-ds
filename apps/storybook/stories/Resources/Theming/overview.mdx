@@ -123,7 +123,7 @@ Override semantic tokens by redefining CSS variables in your app. Always target 
   --color-interactive-primary: oklch(0.558 0.252 302.32);
   --color-interactive-primary-hover: oklch(0.541 0.247 293.01);
   --color-interactive-primary-active: oklch(0.438 0.198 304);
-  --color-text-on-interactive-primary: oklch(1.000 0.000 0);
+  --color-text-inverse: oklch(1.000 0.000 0);
 }
 ```
 
@@ -133,7 +133,7 @@ Add custom colors while preserving design system tokens:
 
 ```js
 // tailwind.config.js
-import baseConfig from "@wyliedog/tailwind-config";
+import baseConfig from "@repo/tailwind-config";
 
 export default {
   ...baseConfig,
@@ -160,7 +160,7 @@ Override styles directly on components using token-backed arbitrary values. Neve
 
 ```tsx
 <Button
-  className="bg-(--color-interactive-brand) hover:bg-(--color-interactive-brand-hover) text-(--color-text-on-brand)"
+  className="bg-(--color-interactive-primary) hover:bg-(--color-interactive-primary-hover) text-(--color-text-inverse)"
 >
   Custom Styled Button
 </Button>

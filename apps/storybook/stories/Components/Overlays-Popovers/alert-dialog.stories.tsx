@@ -493,7 +493,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Alert dialogs trap focus, support Escape key, and provide clear
           actions. Tab to navigate, Enter/Space to activate, Escape to cancel.
         </p>
@@ -536,7 +536,7 @@ export const Accessibility: Story = {
         </AlertDialogContent>
       </AlertDialog>
 
-      <p id="delete-help" className="text-xs text-gray-500">
+      <p id="delete-help" className="text-xs text-(--color-text-tertiary)">
         This action will permanently remove your account and cannot be undone.
       </p>
     </div>

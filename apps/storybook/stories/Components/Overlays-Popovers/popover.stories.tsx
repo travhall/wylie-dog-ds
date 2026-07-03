@@ -86,7 +86,7 @@ export const Default: Story = {
         <div className="grid gap-4">
           <div className="space-y-2">
             <h4 className="font-medium leading-none">Dimensions</h4>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-(--color-text-tertiary)">
               Set the dimensions for the layer.
             </p>
           </div>
@@ -132,7 +132,7 @@ export const WithForm: Story = {
         <div className="grid gap-4">
           <div className="space-y-2">
             <h4 className="font-medium leading-none">Add New User</h4>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-(--color-text-tertiary)">
               Enter the user details below.
             </p>
           </div>
@@ -251,7 +251,9 @@ export const Settings: Story = {
 export const FilterMenu: Story = {
   render: () => (
     <div className="space-y-4">
-      <p className="text-sm text-gray-500">Filter your search results:</p>
+      <p className="text-sm text-(--color-text-tertiary)">
+        Filter your search results:
+      </p>
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline">
@@ -263,7 +265,7 @@ export const FilterMenu: Story = {
           <div className="grid gap-4">
             <div className="space-y-2">
               <h4 className="font-medium leading-none">Filter Options</h4>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-(--color-text-tertiary)">
                 Refine your search results
               </p>
             </div>
@@ -440,13 +442,27 @@ export const DatePicker: Story = {
             </div>
 
             <div className="grid grid-cols-7 gap-1 text-center text-sm">
-              <div className="p-2 font-medium text-gray-500">S</div>
-              <div className="p-2 font-medium text-gray-500">M</div>
-              <div className="p-2 font-medium text-gray-500">T</div>
-              <div className="p-2 font-medium text-gray-500">W</div>
-              <div className="p-2 font-medium text-gray-500">T</div>
-              <div className="p-2 font-medium text-gray-500">F</div>
-              <div className="p-2 font-medium text-gray-500">S</div>
+              <div className="p-2 font-medium text-(--color-text-tertiary)">
+                S
+              </div>
+              <div className="p-2 font-medium text-(--color-text-tertiary)">
+                M
+              </div>
+              <div className="p-2 font-medium text-(--color-text-tertiary)">
+                T
+              </div>
+              <div className="p-2 font-medium text-(--color-text-tertiary)">
+                W
+              </div>
+              <div className="p-2 font-medium text-(--color-text-tertiary)">
+                T
+              </div>
+              <div className="p-2 font-medium text-(--color-text-tertiary)">
+                F
+              </div>
+              <div className="p-2 font-medium text-(--color-text-tertiary)">
+                S
+              </div>
 
               {Array.from({ length: 35 }, (_, i) => {
                 const day = i - 6;
@@ -458,7 +474,7 @@ export const DatePicker: Story = {
                     variant={isSelected ? "default" : "ghost"}
                     size="sm"
                     className={`p-2 h-8 w-8 ${
-                      !isCurrentMonth ? "text-gray-400" : ""
+                      !isCurrentMonth ? "text-(--color-text-tertiary)" : ""
                     }`}
                     disabled={!isCurrentMonth}
                   >
@@ -496,7 +512,9 @@ export const ActionMenu: Story = {
       <div className="flex items-center justify-between p-4 border rounded-lg">
         <div>
           <h4 className="font-medium">Project Alpha</h4>
-          <p className="text-sm text-gray-500">Last updated 2 hours ago</p>
+          <p className="text-sm text-(--color-text-tertiary)">
+            Last updated 2 hours ago
+          </p>
         </div>
         <Popover>
           <PopoverTrigger asChild>
@@ -566,14 +584,14 @@ export const Help: Story = {
           <PopoverContent className="w-80">
             <div className="space-y-2">
               <h4 className="font-medium">Password Requirements</h4>
-              <ul className="text-sm space-y-1 text-gray-500">
+              <ul className="text-sm space-y-1 text-(--color-text-tertiary)">
                 <li>• At least 8 characters long</li>
                 <li>• Contains at least one uppercase letter</li>
                 <li>• Contains at least one lowercase letter</li>
                 <li>• Contains at least one number</li>
                 <li>• Contains at least one special character (!@#$%^&*)</li>
               </ul>
-              <p className="text-xs text-gray-400 pt-2">
+              <p className="text-xs text-(--color-text-tertiary) pt-2">
                 A strong password helps protect your account from unauthorized
                 access.
               </p>
@@ -603,7 +621,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Popovers support keyboard navigation. Use Tab to focus triggers,
           Enter/Space to open, Escape to close, and Tab to navigate within.
         </p>
@@ -633,7 +651,10 @@ export const Accessibility: Story = {
                   defaultValue="John Doe"
                   aria-describedby="name-help"
                 />
-                <p id="name-help" className="text-xs text-gray-500">
+                <p
+                  id="name-help"
+                  className="text-xs text-(--color-text-tertiary)"
+                >
                   This name will be visible to other users
                 </p>
               </div>
@@ -660,7 +681,10 @@ export const Accessibility: Story = {
                   aria-describedby="notification-help"
                 />
               </div>
-              <p id="notification-help" className="text-xs text-gray-500">
+              <p
+                id="notification-help"
+                className="text-xs text-(--color-text-tertiary)"
+              >
                 Receive updates about your account activity
               </p>
             </div>
@@ -675,7 +699,10 @@ export const Accessibility: Story = {
         </PopoverContent>
       </Popover>
 
-      <p id="accessible-description" className="text-xs text-gray-500">
+      <p
+        id="accessible-description"
+        className="text-xs text-(--color-text-tertiary)"
+      >
         Click to open account settings panel
       </p>
     </div>
@@ -701,7 +728,7 @@ export const WithInteractions: Story = {
           <div className="grid gap-4">
             <div className="space-y-2">
               <h4 className="font-medium leading-none">User Information</h4>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-(--color-text-tertiary)">
                 Update your profile details below.
               </p>
             </div>

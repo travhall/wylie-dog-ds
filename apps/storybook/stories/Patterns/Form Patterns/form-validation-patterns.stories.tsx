@@ -342,7 +342,7 @@ function PasswordStrengthComponent() {
         />
         {strength && (
           <div className="space-y-1" aria-live="polite">
-            <div className="h-1.5 w-full rounded-full bg-gray-200">
+            <div className="h-1.5 w-full rounded-full bg-(--color-background-tertiary)">
               <div
                 className={`h-full rounded-full transition-all duration-300 ${strengthBarWidth[strength]} ${strengthBarColor[strength]}`}
               />
@@ -468,7 +468,7 @@ function MultiStepValidationComponent() {
         <p className="font-semibold text-(--color-text-success)">
           Account created!
         </p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Welcome, {step2.firstName || step1.username}.
         </p>
       </div>
@@ -487,16 +487,18 @@ function MultiStepValidationComponent() {
                   ? "bg-(--color-interactive-primary) text-(--color-text-inverse)"
                   : step > n
                     ? "bg-(--color-surface-success) text-(--color-text-success)"
-                    : "bg-gray-100 text-gray-500"
+                    : "bg-(--color-background-secondary) text-(--color-text-tertiary)"
               }`}
               aria-current={step === n ? "step" : undefined}
             >
               {n}
             </span>
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-(--color-text-tertiary)">
               {n === 1 ? "Account" : "Profile"}
             </span>
-            {n < 2 && <span className="text-gray-200 mx-1">—</span>}
+            {n < 2 && (
+              <span className="text-(--color-text-disabled) mx-1">—</span>
+            )}
           </div>
         ))}
       </div>

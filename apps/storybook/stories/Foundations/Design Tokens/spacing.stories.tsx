@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
+import { spacing } from "@wyliedog/tokens/hierarchical";
 import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
 import { Label } from "@wyliedog/ui/label";
 import { Button } from "@wyliedog/ui/button";
@@ -21,27 +22,54 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-// Unified spacing data — pixel values drive both the scale table and visual bar widths
-const spacingScale = [
-  { name: "0", px: 0, rem: "0", class: "w-0" },
-  { name: "px", px: 1, rem: "1px", class: "w-px" },
-  { name: "0.5", px: 2, rem: "0.125rem", class: "w-0.5" },
-  { name: "1", px: 4, rem: "0.25rem", class: "w-1" },
-  { name: "2", px: 8, rem: "0.5rem", class: "w-2" },
-  { name: "3", px: 12, rem: "0.75rem", class: "w-3" },
-  { name: "4", px: 16, rem: "1rem", class: "w-4" },
-  { name: "6", px: 24, rem: "1.5rem", class: "w-6" },
-  { name: "8", px: 32, rem: "2rem", class: "w-8" },
-  { name: "12", px: 48, rem: "3rem", class: "w-12" },
-  { name: "16", px: 64, rem: "4rem", class: "w-16" },
-  { name: "20", px: 80, rem: "5rem", class: "w-20" },
-  { name: "24", px: 96, rem: "6rem", class: "w-24" },
+// Spacing scale data is derived from the design-token package (@wyliedog/tokens)
+// rather than hardcoded — name = token key, px = the token's pixel value.
+// Only the numeric spacing-scale keys are shown (the token export also carries
+// offset-*, blur-*, tracking-* etc. entries that are not part of the linear scale).
+const SPACING_SCALE_KEYS = [
+  "025",
+  "050",
+  "100",
+  "150",
+  "200",
+  "300",
+  "400",
+  "500",
+  "600",
+  "700",
+  "800",
+  "900",
+  "1000",
+  "1100",
+  "1200",
 ];
 
-// Subset used in the playground controls
-const playgroundSteps = spacingScale.filter((s) =>
-  ["0", "0.5", "1", "2", "3", "4", "6", "8", "12", "16"].includes(s.name)
-);
+const spacingScale = SPACING_SCALE_KEYS.map((name) => {
+  const value = (spacing as Record<string, string>)[name] ?? "0px";
+  const px = parseFloat(value);
+  return {
+    name,
+    px,
+    rem: `${px / 16}rem`,
+    value,
+  };
+});
+
+// Subset used in the playground controls. The playground renders live Tailwind
+// utility classes (p-N, m-N, gap-N), so it must use Tailwind-compatible scale
+// names rather than the design-token keys.
+const playgroundSteps = [
+  { name: "0", px: 0 },
+  { name: "0.5", px: 2 },
+  { name: "1", px: 4 },
+  { name: "2", px: 8 },
+  { name: "3", px: 12 },
+  { name: "4", px: 16 },
+  { name: "6", px: 24 },
+  { name: "8", px: 32 },
+  { name: "12", px: 48 },
+  { name: "16", px: 64 },
+];
 
 const shadowScale = [
   {
@@ -83,9 +111,9 @@ export const SpacingScale: Story = {
         </div>
 
         <div className="space-y-2">
-          {spacingScale.map(({ name, px, rem, class: cls }) => (
+          {spacingScale.map(({ name, px, rem }) => (
             <div key={name} className="flex items-center gap-4">
-              <code className="w-8 text-sm font-mono font-semibold text-(--color-text-primary) shrink-0">
+              <code className="w-12 text-sm font-mono font-semibold text-(--color-text-primary) shrink-0">
                 {name}
               </code>
               <span className="w-14 text-xs text-(--color-text-secondary) shrink-0">
@@ -103,9 +131,6 @@ export const SpacingScale: Story = {
                   />
                 )}
               </div>
-              <code className="w-14 text-xs font-mono text-(--color-text-tertiary) shrink-0 text-right">
-                {cls}
-              </code>
               <span className="w-20 text-xs text-(--color-text-tertiary) shrink-0 text-right hidden sm:block">
                 {rem}
               </span>
@@ -171,13 +196,16 @@ export const ShadowScale: Story = {
               Dark surface — shadows disappear
             </p>
           </div>
-          <div className="p-6 bg-gray-900 flex flex-wrap gap-6 justify-around">
+          {/* Fixed dark values (not theme tokens) — this demo intentionally
+              stays dark in both light and dark mode to show that CSS box-shadows
+              lose contrast on dark surfaces. */}
+          <div className="p-6 bg-[#111827] flex flex-wrap gap-6 justify-around">
             {shadowScale.map(({ name, class: cls }) => (
               <div key={name} className="text-center space-y-3">
                 <div
-                  className={`w-16 h-16 bg-gray-800 rounded-lg mx-auto ${cls}`}
+                  className={`w-16 h-16 bg-[#1f2937] rounded-lg mx-auto ${cls}`}
                 />
-                <code className="block text-xs font-mono text-gray-400">
+                <code className="block text-xs font-mono text-(--color-text-tertiary)">
                   {cls}
                 </code>
               </div>

@@ -280,7 +280,7 @@ export const FormProgress: Story = {
         <CardHeader>
           <CardTitle>User Registration</CardTitle>
           <div className="space-y-2">
-            <div className="flex justify-between text-sm text-gray-500">
+            <div className="flex justify-between text-sm text-(--color-text-tertiary)">
               <span>
                 Step {currentStep} of {totalSteps}
               </span>
@@ -341,7 +341,7 @@ export const FormProgress: Story = {
             {currentStep === 4 && (
               <div className="space-y-3">
                 <h3 className="font-medium">Review & Confirm</h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-(--color-text-tertiary)">
                   Please review your information and click confirm to create
                   your account.
                 </p>
@@ -389,7 +389,9 @@ export const ProgressWithLabels: Story = {
           <span>7.5 GB / 10 GB</span>
         </div>
         <Progress value={75} variant="warning" />
-        <div className="text-xs text-gray-400 mt-1">75% of storage used</div>
+        <div className="text-xs text-(--color-text-tertiary) mt-1">
+          75% of storage used
+        </div>
       </div>
 
       <div>
@@ -398,7 +400,9 @@ export const ProgressWithLabels: Story = {
           <span>4.2 GB / 8 GB</span>
         </div>
         <Progress value={52.5} variant="default" />
-        <div className="text-xs text-gray-400 mt-1">Memory usage is normal</div>
+        <div className="text-xs text-(--color-text-tertiary) mt-1">
+          Memory usage is normal
+        </div>
       </div>
 
       <div>
@@ -407,7 +411,7 @@ export const ProgressWithLabels: Story = {
           <span>18 / 20 tasks</span>
         </div>
         <Progress value={90} variant="success" />
-        <div className="text-xs text-gray-400 mt-1">
+        <div className="text-xs text-(--color-text-tertiary) mt-1">
           Almost done! 2 tasks remaining
         </div>
       </div>

@@ -107,9 +107,9 @@ export const ForgotPasswordEmail: Story = {
               </AlertDescription>
             </Alert>
 
-            <div className="rounded-lg border border-gray-200 p-4 space-y-2">
+            <div className="rounded-lg border border-(--color-border-primary) p-4 space-y-2">
               <p className="text-sm font-medium">Didn't receive the email?</p>
-              <ul className="text-sm text-gray-500 space-y-1 list-disc list-inside">
+              <ul className="text-sm text-(--color-text-tertiary) space-y-1 list-disc list-inside">
                 <li>Check your spam or junk folder</li>
                 <li>Make sure you entered the correct email</li>
                 <li>Wait a few minutes for the email to arrive</li>
@@ -166,7 +166,7 @@ export const ForgotPasswordEmail: Story = {
                   setError("");
                 }}
               />
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-(--color-text-tertiary)">
                 We'll send a password reset link to this email
               </p>
             </FormField>
@@ -220,7 +220,7 @@ export const ResetPasswordForm: Story = {
         return {
           strength: 2,
           label: "Weak",
-          color: "bg-yellow-600",
+          color: "bg-(--color-status-warning)",
         };
       if (password.length < 14)
         return {
@@ -231,7 +231,7 @@ export const ResetPasswordForm: Story = {
       return {
         strength: 4,
         label: "Strong",
-        color: "bg-green-600",
+        color: "bg-(--color-status-success)",
       };
     };
 
@@ -337,14 +337,14 @@ export const ResetPasswordForm: Story = {
                           />
                         ))}
                       </div>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-(--color-text-tertiary)">
                         Password strength: {passwordStrength.label}
                       </p>
                     </div>
                   )}
                   <div
                     id="password-requirements"
-                    className="text-sm text-gray-500 space-y-1"
+                    className="text-sm text-(--color-text-tertiary) space-y-1"
                   >
                     <p className="font-medium">Password must contain:</p>
                     <ul className="list-disc list-inside space-y-1">
@@ -479,9 +479,9 @@ export const InvalidResetLink: Story = {
             </AlertDescription>
           </Alert>
 
-          <div className="rounded-lg border border-gray-200 p-4 space-y-2">
+          <div className="rounded-lg border border-(--color-border-primary) p-4 space-y-2">
             <p className="text-sm font-medium">Why did this happen?</p>
-            <ul className="text-sm text-gray-500 space-y-1 list-disc list-inside">
+            <ul className="text-sm text-(--color-text-tertiary) space-y-1 list-disc list-inside">
               <li>The link has expired (older than 1 hour)</li>
               <li>The link has already been used</li>
               <li>You requested a new reset link</li>
@@ -497,7 +497,7 @@ export const InvalidResetLink: Story = {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-(--color-text-tertiary)">
                 We'll send you a new reset link
               </p>
             </FormField>
@@ -593,12 +593,14 @@ export const MultiStepPasswordRecovery: Story = {
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                       index <= currentStepIndex
                         ? "bg-(--color-interactive-primary) text-(--color-text-inverse)"
-                        : "bg-gray-100 text-gray-500"
+                        : "bg-(--color-background-secondary) text-(--color-text-tertiary)"
                     }`}
                   >
                     {index + 1}
                   </div>
-                  <span className="text-xs mt-1 text-gray-500">{s.label}</span>
+                  <span className="text-xs mt-1 text-(--color-text-tertiary)">
+                    {s.label}
+                  </span>
                 </div>
                 {index < steps.length - 1 && (
                   <div
@@ -676,7 +678,7 @@ export const MultiStepPasswordRecovery: Story = {
                   onChange={(e) => setVerificationCode(e.target.value)}
                   maxLength={6}
                 />
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-(--color-text-tertiary)">
                   Didn't receive the code?{" "}
                   <Button
                     type="button"

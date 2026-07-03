@@ -412,10 +412,10 @@ export const WithScrollableContent: Story = {
             Please read the full terms before accepting.
           </DialogDescription>
         </DialogHeader>
-        <div className="overflow-y-auto flex-1 py-4 space-y-4 text-sm text-gray-500">
+        <div className="overflow-y-auto flex-1 py-4 space-y-4 text-sm text-(--color-text-tertiary)">
           {Array.from({ length: 8 }, (_, i) => (
             <div key={i}>
-              <p className="font-medium text-gray-900 mb-1">
+              <p className="font-medium text-(--color-text-primary) mb-1">
                 {i + 1}.{" "}
                 {
                   [
@@ -510,9 +510,9 @@ export const SizeVariants: Story = {
                 <DialogDescription>{description}</DialogDescription>
               </DialogHeader>
               <div className="py-4">
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-(--color-text-tertiary)">
                   This dialog uses{" "}
-                  <code className="font-mono bg-gray-100 px-1 rounded">
+                  <code className="font-mono bg-(--color-background-secondary) px-1 rounded">
                     size="{size}"
                   </code>
                   . The content area adjusts to the maximum width defined by

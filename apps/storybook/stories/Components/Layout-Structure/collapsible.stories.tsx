@@ -174,7 +174,7 @@ export const FAQ: Story = {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-(--color-text-tertiary)">
                 We offer a 30-day money-back guarantee for all our products. If
                 you're not satisfied with your purchase, you can request a full
                 refund within 30 days of your order date.
@@ -190,7 +190,7 @@ export const FAQ: Story = {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-(--color-text-tertiary)">
                 Once your order ships, you'll receive a tracking number via
                 email. You can use this number on our tracking page or the
                 carrier's website to monitor your package's progress.
@@ -206,7 +206,7 @@ export const FAQ: Story = {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-(--color-text-tertiary)">
                 Yes, we ship to over 50 countries worldwide. Shipping costs and
                 delivery times vary by location. International orders may be
                 subject to customs duties and taxes.
@@ -238,7 +238,9 @@ export const NestedContent: Story = {
         </CollapsibleTrigger>
         <CollapsibleContent>
           <div className="px-4 pb-4 space-y-2">
-            <div className="text-sm text-gray-500">📄 index.ts</div>
+            <div className="text-sm text-(--color-text-tertiary)">
+              📄 index.ts
+            </div>
 
             <Collapsible className="ml-4 rounded border">
               <CollapsibleTrigger className="flex w-full items-center justify-between p-3 text-left hover:bg-(--color-interactive-hover)">
@@ -247,9 +249,15 @@ export const NestedContent: Story = {
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <div className="px-3 pb-3 space-y-1">
-                  <div className="text-xs text-gray-500">📄 Button.tsx</div>
-                  <div className="text-xs text-gray-500">📄 Input.tsx</div>
-                  <div className="text-xs text-gray-500">📄 Modal.tsx</div>
+                  <div className="text-xs text-(--color-text-tertiary)">
+                    📄 Button.tsx
+                  </div>
+                  <div className="text-xs text-(--color-text-tertiary)">
+                    📄 Input.tsx
+                  </div>
+                  <div className="text-xs text-(--color-text-tertiary)">
+                    📄 Modal.tsx
+                  </div>
                 </div>
               </CollapsibleContent>
             </Collapsible>
@@ -261,8 +269,12 @@ export const NestedContent: Story = {
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <div className="px-3 pb-3 space-y-1">
-                  <div className="text-xs text-gray-500">📄 helpers.ts</div>
-                  <div className="text-xs text-gray-500">📄 constants.ts</div>
+                  <div className="text-xs text-(--color-text-tertiary)">
+                    📄 helpers.ts
+                  </div>
+                  <div className="text-xs text-(--color-text-tertiary)">
+                    📄 constants.ts
+                  </div>
                 </div>
               </CollapsibleContent>
             </Collapsible>
@@ -391,11 +403,11 @@ export const ProductFeatures: Story = {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-gray-500 mb-3">
+              <p className="text-sm text-(--color-text-tertiary) mb-3">
                 Get deep insights into your data with comprehensive analytics
                 tools.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1">
+              <ul className="text-sm text-(--color-text-tertiary) space-y-1">
                 <li>• Real-time dashboard with custom widgets</li>
                 <li>• Historical data analysis and trends</li>
                 <li>• Automated reports and scheduling</li>
@@ -415,10 +427,10 @@ export const ProductFeatures: Story = {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-gray-500 mb-3">
+              <p className="text-sm text-(--color-text-tertiary) mb-3">
                 Work together seamlessly with powerful collaboration features.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1">
+              <ul className="text-sm text-(--color-text-tertiary) space-y-1">
                 <li>• Real-time editing and comments</li>
                 <li>• Role-based permissions and access control</li>
                 <li>• Team workspaces and project organization</li>
@@ -438,10 +450,10 @@ export const ProductFeatures: Story = {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-gray-500 mb-3">
+              <p className="text-sm text-(--color-text-tertiary) mb-3">
                 Bank-level security to protect your sensitive information.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1">
+              <ul className="text-sm text-(--color-text-tertiary) space-y-1">
                 <li>• End-to-end encryption for all data</li>
                 <li>• SOC 2 Type II compliance</li>
                 <li>• Single sign-on (SSO) integration</li>
@@ -468,7 +480,7 @@ export const Accessibility: Story = {
     <div className="w-full max-w-md space-y-4">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Use Tab to navigate, Enter/Space to toggle, proper ARIA attributes.
         </p>
       </div>
@@ -483,7 +495,7 @@ export const Accessibility: Story = {
         </CollapsibleTrigger>
         <CollapsibleContent>
           <div className="px-4 pb-4">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-(--color-text-tertiary)">
               Full keyboard support with Tab navigation, Enter/Space activation,
               and proper focus management for screen readers and assistive
               technologies.
@@ -492,7 +504,7 @@ export const Accessibility: Story = {
         </CollapsibleContent>
       </Collapsible>
 
-      <p id="keyboard-help" className="text-xs text-gray-500">
+      <p id="keyboard-help" className="text-xs text-(--color-text-tertiary)">
         Press Tab to focus the trigger, then Enter or Space to toggle
       </p>
     </div>

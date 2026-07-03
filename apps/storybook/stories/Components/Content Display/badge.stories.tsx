@@ -98,7 +98,9 @@ export const SizeVariants: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="flex items-center gap-4">
-        <div className="w-8 text-xs font-mono text-gray-400">sm</div>
+        <div className="w-8 text-xs font-mono text-(--color-text-tertiary)">
+          sm
+        </div>
         <div className="flex gap-2 items-center">
           <Badge size="sm">Default</Badge>
           <Badge size="sm" variant="secondary">
@@ -119,7 +121,9 @@ export const SizeVariants: Story = {
         </div>
       </div>
       <div className="flex items-center gap-4">
-        <div className="w-8 text-xs font-mono text-gray-400">md</div>
+        <div className="w-8 text-xs font-mono text-(--color-text-tertiary)">
+          md
+        </div>
         <div className="flex gap-2 items-center">
           <Badge size="md">Default</Badge>
           <Badge size="md" variant="secondary">
@@ -140,7 +144,9 @@ export const SizeVariants: Story = {
         </div>
       </div>
       <div className="flex items-center gap-4">
-        <div className="w-8 text-xs font-mono text-gray-400">lg</div>
+        <div className="w-8 text-xs font-mono text-(--color-text-tertiary)">
+          lg
+        </div>
         <div className="flex gap-2 items-center">
           <Badge size="lg">Default</Badge>
           <Badge size="lg" variant="secondary">
@@ -305,7 +311,7 @@ export const Categories: Story = {
     <div className="space-y-4 max-w-md">
       <div className="p-4 border rounded-lg">
         <h4 className="font-medium mb-2">Building a Design System</h4>
-        <p className="text-sm text-gray-500 mb-3">
+        <p className="text-sm text-(--color-text-tertiary) mb-3">
           Learn how to create and maintain a scalable design system.
         </p>
         <div className="flex flex-wrap gap-2">
@@ -317,7 +323,7 @@ export const Categories: Story = {
 
       <div className="p-4 border rounded-lg">
         <h4 className="font-medium mb-2">Accessibility Testing Guide</h4>
-        <p className="text-sm text-gray-500 mb-3">
+        <p className="text-sm text-(--color-text-tertiary) mb-3">
           Essential practices for testing web accessibility.
         </p>
         <div className="flex flex-wrap gap-2">
@@ -344,12 +350,14 @@ export const InContext: Story = {
       <div className="border rounded-lg divide-y">
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-blue-600/20 flex items-center justify-center text-sm font-medium">
+            <div className="h-10 w-10 rounded-full bg-(--color-surface-info) flex items-center justify-center text-sm font-medium">
               JD
             </div>
             <div>
               <p className="font-medium text-sm">John Doe</p>
-              <p className="text-xs text-gray-500">john@example.com</p>
+              <p className="text-xs text-(--color-text-tertiary)">
+                john@example.com
+              </p>
             </div>
           </div>
           <Badge>Admin</Badge>
@@ -362,7 +370,9 @@ export const InContext: Story = {
             </div>
             <div>
               <p className="font-medium text-sm">Alice Smith</p>
-              <p className="text-xs text-gray-500">alice@example.com</p>
+              <p className="text-xs text-(--color-text-tertiary)">
+                alice@example.com
+              </p>
             </div>
           </div>
           <Badge variant="secondary">Member</Badge>
@@ -375,7 +385,9 @@ export const InContext: Story = {
             </div>
             <div>
               <p className="font-medium text-sm">Bob Johnson</p>
-              <p className="text-xs text-gray-500">bob@example.com</p>
+              <p className="text-xs text-(--color-text-tertiary)">
+                bob@example.com
+              </p>
             </div>
           </div>
           <Badge variant="outline">Guest</Badge>
@@ -388,7 +400,7 @@ export const InContext: Story = {
           <h4 className="font-medium text-sm">System Updates</h4>
           <Badge variant="destructive">3 New</Badge>
         </div>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Important updates are available for your system.
         </p>
       </div>
@@ -410,7 +422,9 @@ export const DosDonts: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-8 max-w-4xl">
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-green-600">✅ Do</h4>
+        <h4 className="text-lg font-semibold mb-4 text-(--color-text-success)">
+          ✅ Do
+        </h4>
 
         <div className="space-y-6">
           <div className="space-y-2">
@@ -419,7 +433,9 @@ export const DosDonts: Story = {
               <Badge>Active</Badge>
               <Badge variant="destructive">Error</Badge>
             </div>
-            <p className="text-xs text-gray-500">Match variant to meaning</p>
+            <p className="text-xs text-(--color-text-tertiary)">
+              Match variant to meaning
+            </p>
           </div>
 
           <div className="space-y-2">
@@ -428,7 +444,9 @@ export const DosDonts: Story = {
               <Badge>New</Badge>
               <Badge variant="secondary">Beta</Badge>
             </div>
-            <p className="text-xs text-gray-500">1-2 words is ideal</p>
+            <p className="text-xs text-(--color-text-tertiary)">
+              1-2 words is ideal
+            </p>
           </div>
 
           <div className="space-y-2">
@@ -438,7 +456,7 @@ export const DosDonts: Story = {
                 <span className="font-medium text-sm">Premium Plan</span>
                 <Badge>Popular</Badge>
               </div>
-              <p className="text-xs text-gray-500">$99/month</p>
+              <p className="text-xs text-(--color-text-tertiary)">$99/month</p>
             </div>
           </div>
 
@@ -453,7 +471,9 @@ export const DosDonts: Story = {
       </div>
 
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-red-600">❌ Don't</h4>
+        <h4 className="text-lg font-semibold mb-4 text-(--color-text-danger)">
+          ❌ Don't
+        </h4>
 
         <div className="space-y-6">
           <div className="space-y-2">
@@ -462,7 +482,7 @@ export const DosDonts: Story = {
               <Badge variant="destructive">Success</Badge>
               <Badge>Error Message</Badge>
             </div>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-(--color-text-tertiary)">
               Variant doesn't match meaning
             </p>
           </div>
@@ -470,13 +490,15 @@ export const DosDonts: Story = {
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Use long text</p>
             <Badge>This is a very long badge with too much text</Badge>
-            <p className="text-xs text-gray-500">Badges should be brief</p>
+            <p className="text-xs text-(--color-text-tertiary)">
+              Badges should be brief
+            </p>
           </div>
 
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Hand-craft interactivity</p>
             <Badge className="cursor-pointer">Click me</Badge>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-(--color-text-tertiary)">
               Use the <code>interactive</code> prop or <code>asChild</code>{" "}
               instead
             </p>
@@ -494,7 +516,9 @@ export const DosDonts: Story = {
               <Badge>Tag</Badge>
               <Badge>Tag</Badge>
             </div>
-            <p className="text-xs text-gray-500">Too many reduces impact</p>
+            <p className="text-xs text-(--color-text-tertiary)">
+              Too many reduces impact
+            </p>
           </div>
         </div>
       </div>
@@ -554,7 +578,7 @@ export const InteractiveBadges: Story = {
             Destructive
           </Badge>
         </div>
-        <p className="text-xs text-gray-500 mt-2">
+        <p className="text-xs text-(--color-text-tertiary) mt-2">
           Badges are not form elements so use <code>aria-disabled</code> +{" "}
           <code>pointer-events-none</code> rather than the HTML{" "}
           <code>disabled</code> attribute.
@@ -610,7 +634,7 @@ export const InteractiveAsChild: Story = {
             </button>
           </Badge>
         </div>
-        <p className="text-xs text-gray-500 mt-2">
+        <p className="text-xs text-(--color-text-tertiary) mt-2">
           Use <code>asChild</code> + <code>&lt;button&gt;</code> when the badge
           triggers an action. This avoids nesting interactive elements.
         </p>

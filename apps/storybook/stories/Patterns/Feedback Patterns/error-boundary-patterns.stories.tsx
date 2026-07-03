@@ -138,7 +138,7 @@ function BuggyCounter({ throwError }: { throwError?: boolean }) {
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-lg">Count: {count}</p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           {throwError ? "Will error at count 3" : "Stable counter"}
         </p>
         <Button onClick={() => setCount(count + 1)} className="w-full">
@@ -181,7 +181,7 @@ function ComponentWithAsyncError({ shouldError }: { shouldError?: boolean }) {
         {data ? (
           <p className="text-(--color-text-success)">{data}</p>
         ) : (
-          <p className="text-gray-500">No data loaded</p>
+          <p className="text-(--color-text-tertiary)">No data loaded</p>
         )}
         <Button onClick={fetchData} disabled={loading} className="w-full">
           {loading ? "Loading..." : "Fetch Data"}
@@ -232,7 +232,7 @@ export const RecoverableErrors: Story = {
     return (
       <div className="space-y-4 w-125">
         <div className="space-y-2">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-(--color-text-tertiary)">
             This error boundary allows recovery by resetting the component
             state.
           </p>
@@ -271,7 +271,7 @@ export const MultipleErrorBoundaries: Story = {
             <CardTitle>Isolated Error Boundaries</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-(--color-text-tertiary)">
               Each component has its own error boundary, so errors are isolated
               and don't affect other parts of the UI.
             </p>
@@ -361,10 +361,10 @@ export const CustomFallbackUI: Story = {
           </Alert>
 
           <div className="space-y-2">
-            <p className="text-sm font-medium text-gray-500">
+            <p className="text-sm font-medium text-(--color-text-tertiary)">
               What you can do:
             </p>
-            <ul className="text-sm text-gray-500 space-y-1 list-disc pl-5">
+            <ul className="text-sm text-(--color-text-tertiary) space-y-1 list-disc pl-5">
               <li>Refresh the page to try again</li>
               <li>Check back later</li>
               <li>Contact support if the issue persists</li>
@@ -433,7 +433,7 @@ export const ErrorLogging: Story = {
             <CardTitle>Error Logging Example</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-(--color-text-tertiary)">
               Errors are logged and can be sent to monitoring services like
               Sentry, LogRocket, or Datadog.
             </p>
@@ -494,7 +494,7 @@ export const GranularErrorBoundaries: Story = {
             <CardTitle>Granular Error Boundaries</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-(--color-text-tertiary)">
               Wrap individual sections with error boundaries to prevent one
               section's error from breaking the entire page.
             </p>
@@ -536,7 +536,7 @@ export const GranularErrorBoundaries: Story = {
               </div>
             }
           >
-            <div className="p-4 bg-gray-100 border-b">
+            <div className="p-4 bg-(--color-background-secondary) border-b">
               <h2 className="font-semibold">Page Header</h2>
               {headerError && <BuggyCounter throwError />}
             </div>
@@ -553,7 +553,7 @@ export const GranularErrorBoundaries: Story = {
                 </div>
               }
             >
-              <div className="w-48 p-4 bg-gray-100 border-r">
+              <div className="w-48 p-4 bg-(--color-background-secondary) border-r">
                 <p className="text-sm font-medium mb-2">Sidebar</p>
                 <ul className="text-xs space-y-1">
                   <li>Menu Item 1</li>
@@ -578,7 +578,7 @@ export const GranularErrorBoundaries: Story = {
             >
               <div className="flex-1 p-4">
                 <p className="text-sm mb-2">Main Content Area</p>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-(--color-text-tertiary)">
                   This is where your main content would appear.
                 </p>
                 {contentError && <BuggyCounter throwError />}
@@ -600,44 +600,44 @@ export const BestPractices: Story = {
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-2">
-          <h3 className="text-sm font-semibold text-gray-900">
+          <h3 className="text-sm font-semibold text-(--color-text-primary)">
             1. Place Boundaries Strategically
           </h3>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-(--color-text-tertiary)">
             Wrap error boundaries around independent sections of your UI to
             prevent one section's error from affecting others.
           </p>
         </div>
 
         <div className="space-y-2">
-          <h3 className="text-sm font-semibold text-gray-900">
+          <h3 className="text-sm font-semibold text-(--color-text-primary)">
             2. Provide Helpful Fallbacks
           </h3>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-(--color-text-tertiary)">
             Show users what went wrong and give them options to recover (retry,
             refresh, contact support).
           </p>
         </div>
 
         <div className="space-y-2">
-          <h3 className="text-sm font-semibold text-gray-900">
+          <h3 className="text-sm font-semibold text-(--color-text-primary)">
             3. Log Errors for Monitoring
           </h3>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-(--color-text-tertiary)">
             Send errors to a monitoring service to track issues in production
             (Sentry, LogRocket, Datadog).
           </p>
         </div>
 
         <div className="space-y-2">
-          <h3 className="text-sm font-semibold text-gray-900">
+          <h3 className="text-sm font-semibold text-(--color-text-primary)">
             4. Handle Async Errors Separately
           </h3>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-(--color-text-tertiary)">
             Error boundaries only catch errors during rendering. Use try/catch
             for async operations.
           </p>
-          <pre className="text-xs bg-gray-100 p-2 rounded mt-2 overflow-x-auto">
+          <pre className="text-xs bg-(--color-background-secondary) p-2 rounded mt-2 overflow-x-auto">
             {`try {
   await fetchData();
 } catch (error) {
@@ -647,20 +647,20 @@ export const BestPractices: Story = {
         </div>
 
         <div className="space-y-2">
-          <h3 className="text-sm font-semibold text-gray-900">
+          <h3 className="text-sm font-semibold text-(--color-text-primary)">
             5. Don't Overuse Error Boundaries
           </h3>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-(--color-text-tertiary)">
             Too many boundaries can make error handling complex. Find the right
             balance between granularity and simplicity.
           </p>
         </div>
 
         <div className="space-y-2">
-          <h3 className="text-sm font-semibold text-gray-900">
+          <h3 className="text-sm font-semibold text-(--color-text-primary)">
             6. Test Error Scenarios
           </h3>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-(--color-text-tertiary)">
             Regularly test your error boundaries to ensure they work as expected
             and provide a good user experience.
           </p>

@@ -177,7 +177,7 @@ export const MultiStepForm: Story = {
                   </Label>
                   <Input id="username" placeholder="johndoe" />{" "}
                   {/* cSpell:ignore johndoe */}
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-(--color-text-tertiary)">
                     This will be your unique identifier
                   </p>
                 </div>
@@ -545,7 +545,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="email-notifications">Email notifications</Label>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-(--color-text-tertiary)">
                   Get notified about important updates
                 </p>
               </div>
@@ -555,7 +555,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="push-notifications">Push notifications</Label>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-(--color-text-tertiary)">
                   Receive browser notifications
                 </p>
               </div>
@@ -565,7 +565,7 @@ export const UserPreferences: Story = {
             <div className="flex items-center justify-between">
               <div>
                 <Label htmlFor="marketing-emails">Marketing emails</Label>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-(--color-text-tertiary)">
                   Product updates and promotions
                 </p>
               </div>
@@ -753,7 +753,7 @@ export const ProjectCreation: Story = {
           <div className="flex items-center justify-between">
             <div>
               <Label htmlFor="auto-deploy">Auto-deploy to staging</Label>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-(--color-text-tertiary)">
                 Automatically deploy commits to staging environment
               </p>
             </div>
@@ -763,7 +763,7 @@ export const ProjectCreation: Story = {
           <div className="flex items-center justify-between">
             <div>
               <Label htmlFor="notifications">Build notifications</Label>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-(--color-text-tertiary)">
                 Get notified about build status
               </p>
             </div>
@@ -789,10 +789,12 @@ export const PaymentForm: Story = {
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-4 bg-gray-100 rounded-lg">
+          <div className="flex items-center justify-between p-4 bg-(--color-background-secondary) rounded-lg">
             <div>
               <p className="font-medium">Pro Plan</p>
-              <p className="text-sm text-gray-500">Monthly subscription</p>
+              <p className="text-sm text-(--color-text-tertiary)">
+                Monthly subscription
+              </p>
             </div>
             <div className="text-right">
               <p className="font-bold text-lg">$29.99</p>
@@ -1003,7 +1005,9 @@ export const WithInteractions: Story = {
                 <div className="flex items-center justify-between">
                   <div>
                     <Label htmlFor="marketing-int">Marketing emails</Label>
-                    <p className="text-xs text-gray-500">Promotional content</p>
+                    <p className="text-xs text-(--color-text-tertiary)">
+                      Promotional content
+                    </p>
                   </div>
                   <Switch id="marketing-int" name="marketing" />
                 </div>
@@ -1473,7 +1477,7 @@ export const RealTimeValidation: Story = {
               <FormMessage>
                 {errors.username && `✕ ${errors.username}`}
               </FormMessage>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-(--color-text-tertiary)">
                 3-20 characters, letters, numbers, and underscores only
               </p>
             </FormField>
@@ -1528,15 +1532,15 @@ export const RealTimeValidation: Story = {
             </div>
 
             <div id="password-requirements" className="space-y-2">
-              <p className="text-xs font-medium text-gray-500">
+              <p className="text-xs font-medium text-(--color-text-tertiary)">
                 Password requirements:
               </p>
-              <ul className="text-xs text-gray-500 space-y-1 pl-4">
+              <ul className="text-xs text-(--color-text-tertiary) space-y-1 pl-4">
                 <li
                   className={
                     formValues.password.length >= 8
                       ? "text-(--color-text-success)"
-                      : "text-gray-500"
+                      : "text-(--color-text-tertiary)"
                   }
                 >
                   {formValues.password.length >= 8 ? "✓" : "○"} At least 8
@@ -1546,7 +1550,7 @@ export const RealTimeValidation: Story = {
                   className={
                     /(?=.*[a-z])/.test(formValues.password)
                       ? "text-(--color-text-success)"
-                      : "text-gray-500"
+                      : "text-(--color-text-tertiary)"
                   }
                 >
                   {/(?=.*[a-z])/.test(formValues.password) ? "✓" : "○"} One
@@ -1556,7 +1560,7 @@ export const RealTimeValidation: Story = {
                   className={
                     /(?=.*[A-Z])/.test(formValues.password)
                       ? "text-(--color-text-success)"
-                      : "text-gray-500"
+                      : "text-(--color-text-tertiary)"
                   }
                 >
                   {/(?=.*[A-Z])/.test(formValues.password) ? "✓" : "○"} One
@@ -1566,7 +1570,7 @@ export const RealTimeValidation: Story = {
                   className={
                     /(?=.*\d)/.test(formValues.password)
                       ? "text-(--color-text-success)"
-                      : "text-gray-500"
+                      : "text-(--color-text-tertiary)"
                   }
                 >
                   {/(?=.*\d)/.test(formValues.password) ? "✓" : "○"} One number
@@ -1575,7 +1579,7 @@ export const RealTimeValidation: Story = {
                   className={
                     /(?=.*[@$!%*?&])/.test(formValues.password)
                       ? "text-(--color-text-success)"
-                      : "text-gray-500"
+                      : "text-(--color-text-tertiary)"
                   }
                 >
                   {/(?=.*[@$!%*?&])/.test(formValues.password) ? "✓" : "○"} One
@@ -1730,7 +1734,7 @@ export const SettingsForm: Story = {
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label>Email notifications</Label>
-                  <div className="text-sm text-gray-400">
+                  <div className="text-sm text-(--color-text-tertiary)">
                     Receive notifications via email
                   </div>
                 </div>
@@ -1740,7 +1744,7 @@ export const SettingsForm: Story = {
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label>Marketing emails</Label>
-                  <div className="text-sm text-gray-400">
+                  <div className="text-sm text-(--color-text-tertiary)">
                     Receive promotional content
                   </div>
                 </div>
@@ -1790,7 +1794,7 @@ export const SettingsForm: Story = {
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
                 <Label>Two-factor authentication</Label>
-                <div className="text-sm text-gray-400">
+                <div className="text-sm text-(--color-text-tertiary)">
                   Add an extra layer of security
                 </div>
               </div>

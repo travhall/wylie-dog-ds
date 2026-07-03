@@ -131,7 +131,7 @@ export const SimpleLogin: Story = {
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Signing in..." : "Sign in"}
             </Button>
-            <p className="text-sm text-center text-gray-500">
+            <p className="text-sm text-center text-(--color-text-tertiary)">
               Don't have an account?{" "}
               <Button variant="link" className="h-auto p-0 text-sm font-normal">
                 Sign up
@@ -237,7 +237,7 @@ export const LoginWithSocialAuth: Story = {
               <Separator />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-gray-500">
+              <span className="bg-white px-2 text-(--color-text-tertiary)">
                 Or continue with email
               </span>
             </div>
@@ -269,7 +269,7 @@ export const LoginWithSocialAuth: Story = {
           </Form>
         </CardContent>
         <CardFooter>
-          <p className="text-sm text-center text-gray-500 w-full">
+          <p className="text-sm text-center text-(--color-text-tertiary) w-full">
             Don't have an account?{" "}
             <Button variant="link" className="h-auto p-0 text-sm font-normal">
               Sign up
@@ -421,12 +421,12 @@ export const RegistrationForm: Story = {
                                 : passwordStrength.strength === 3
                                   ? "bg-(--color-interactive-primary)"
                                   : "bg-(--color-border-success)"
-                            : "bg-gray-100"
+                            : "bg-(--color-background-secondary)"
                         }`}
                       />
                     ))}
                   </div>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-(--color-text-tertiary)">
                     Password strength: {passwordStrength.label}
                   </p>
                 </div>
@@ -487,7 +487,7 @@ export const RegistrationForm: Story = {
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? "Creating account..." : "Create account"}
             </Button>
-            <p className="text-sm text-center text-gray-500">
+            <p className="text-sm text-center text-(--color-text-tertiary)">
               Already have an account?{" "}
               <Button variant="link" className="h-auto p-0 text-sm font-normal">
                 Sign in
@@ -636,7 +636,7 @@ export const LoginRegistrationTabs: Story = {
                       })
                     }
                   />
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-(--color-text-tertiary)">
                     Must be at least 8 characters
                   </p>
                 </FormField>
