@@ -400,15 +400,24 @@ export class ConflictDetector {
   }
 
   /**
-   * Detect a change in a token's $description, ignoring any embedded sync
-   * metadata marker and treating empty/undefined as equivalent.
+   * Detect a change in a token's $description. Normalizes away things that are
+   * NOT stored on Figma variables and would otherwise produce perpetual false
+   * "changes" on every status check:
+   *   - the embedded sync-metadata marker
+   *   - code-only `@directive(...)` annotations (e.g. `@fontSource(...)`), which
+   *     live in the repo for build tooling only — like line-height tokens, they
+   *     don't round-trip to Figma, so their presence in the repo isn't a change.
+   * Empty/undefined are treated as equivalent.
    */
   private hasDescriptionChanged(
     localToken: ProcessedTokenWithSync,
     remoteToken: ProcessedTokenWithSync
   ): boolean {
     const clean = (d?: string) =>
-      (d ?? "").replace(/\s*<!-- SYNC_METADATA:[\s\S]*?-->/, "").trim();
+      (d ?? "")
+        .replace(/\s*<!-- SYNC_METADATA:[\s\S]*?-->/, "")
+        .replace(/@\w+\([^)]*\)/g, "")
+        .trim();
     return clean(localToken.$description) !== clean(remoteToken.$description);
   }
 

@@ -392,8 +392,16 @@ function formatNumericValue(
  * Process a single variable across all modes into W3C DTCG token format
  */
 function processVariable(variable: any, modes: any[]): ProcessedToken {
-  // Check for stored original type first
-  const storedType = variable.originalType;
+  // Check for the stored original type first. The importer persists it via
+  // `setPluginData("originalType", …)`, so it must be READ via getPluginData —
+  // reading `variable.originalType` (a non-existent property) always returned
+  // undefined, so the export fell back to inferred types (fontSize/lineHeight/
+  // letterSpacing) and produced a perpetual type+value mismatch against the
+  // repo's `$type: "number"` convention (false "changes detected" on every sync).
+  const storedType =
+    typeof variable.getPluginData === "function"
+      ? variable.getPluginData("originalType") || undefined
+      : variable.originalType;
   const inferredType = getW3CTokenType(
     variable.resolvedType,
     variable.scopes,

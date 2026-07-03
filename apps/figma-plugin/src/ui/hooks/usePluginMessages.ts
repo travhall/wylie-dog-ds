@@ -80,8 +80,7 @@ export interface PluginMessageState {
   showConflictResolution: boolean;
   conflictOperationType: "push" | "pull" | null;
   pendingTokensForConflictResolution:
-    | ExportData[]
-    | { local: ExportData[]; remote: ExportData[] };
+    ExportData[] | { local: ExportData[]; remote: ExportData[] };
 
   // Progress
   progressStep: number;
@@ -303,7 +302,12 @@ export function usePluginMessages(
 
           if (msg.result && msg.result.success) {
             const tokenCount = msg.result.totalVariablesCreated || 0;
-            const collectionCount = msg.result.totalCollectionsCreated || 0;
+            // The import result exposes this as `collectionsProcessed`; the old
+            // `totalCollectionsCreated` never existed, so it always showed 0.
+            const collectionCount =
+              msg.result.collectionsProcessed ||
+              msg.result.collectionsCreated ||
+              0;
 
             console.log(
               `Import success: ${tokenCount} tokens in ${collectionCount} collections`
@@ -319,6 +323,12 @@ export function usePluginMessages(
             console.log("📝 Marking file as engaged...");
             parent.postMessage(
               { pluginMessage: { type: "mark-file-engaged" } },
+              "*"
+            );
+
+            // Record the sync timestamp (a pull applies via import)
+            parent.postMessage(
+              { pluginMessage: { type: "record-last-sync" } },
               "*"
             );
 
@@ -420,6 +430,12 @@ export function usePluginMessages(
               : "✅ Saved to GitHub successfully!";
             setSuccessMessage(message);
             setTimeout(() => setSuccessMessage(null), 6000);
+
+            // Record the sync timestamp on a successful push
+            parent.postMessage(
+              { pluginMessage: { type: "record-last-sync" } },
+              "*"
+            );
           } else {
             setError(msg.result?.error || "GitHub sync failed");
           }

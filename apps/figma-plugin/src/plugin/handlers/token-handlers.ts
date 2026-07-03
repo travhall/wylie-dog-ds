@@ -356,6 +356,11 @@ export async function handleExportTokens(msg: any): Promise<void> {
                 valuesByMode: variable.valuesByMode,
                 remote: variable.remote,
                 key: variable.key,
+                // Preserve the source $type (stored on import) so the export
+                // round-trips it instead of re-inferring fontSize/lineHeight/etc.
+                // — otherwise these read back as a perpetual type mismatch.
+                originalType:
+                  variable.getPluginData("originalType") || undefined,
               };
             }
             return null;
@@ -462,6 +467,11 @@ export async function handleGetLocalTokens(msg: any): Promise<void> {
                 valuesByMode: variable.valuesByMode,
                 remote: variable.remote,
                 key: variable.key,
+                // Preserve the source $type (stored on import) so the export
+                // round-trips it instead of re-inferring fontSize/lineHeight/etc.
+                // — otherwise these read back as a perpetual type mismatch.
+                originalType:
+                  variable.getPluginData("originalType") || undefined,
               };
             }
             return null;

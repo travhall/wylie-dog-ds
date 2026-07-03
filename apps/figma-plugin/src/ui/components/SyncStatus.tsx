@@ -16,6 +16,7 @@ interface SyncStatusData {
   remoteChanges: number;
   lastSync?: string;
   checking?: boolean;
+  checked?: boolean;
   error?: string;
 }
 
@@ -29,6 +30,7 @@ export function SyncStatus({
     localChanges: 0,
     remoteChanges: 0,
     checking: false,
+    checked: false,
   });
 
   const checkSyncStatus = async () => {
@@ -64,13 +66,17 @@ export function SyncStatus({
       });
 
       const syncStatus = await githubClient.getSyncStatus(localTokens);
-      setStatus({
+      // Preserve lastSync — it's sourced from the `last-sync-loaded` message
+      // (plugin-thread storage), not from getSyncStatus (which runs UI-side and
+      // can't read figma.clientStorage).
+      setStatus((prev) => ({
         upToDate: syncStatus.upToDate,
         localChanges: syncStatus.localChanges,
         remoteChanges: syncStatus.remoteChanges,
-        lastSync: syncStatus.lastSync,
+        lastSync: prev.lastSync,
         checking: false,
-      });
+        checked: true,
+      }));
     } catch (error) {
       console.error("Failed to check sync status:", error);
       setStatus((prev) => ({
@@ -84,9 +90,26 @@ export function SyncStatus({
     }
   };
 
+  // Last-sync time lives in plugin-thread storage; the UI receives it via the
+  // `last-sync-loaded` message (on request, and pushed after each sync).
+  useEffect(() => {
+    const handler = (event: MessageEvent) => {
+      if (event.data.pluginMessage?.type === "last-sync-loaded") {
+        const ts = event.data.pluginMessage.timestamp;
+        setStatus((prev) => ({ ...prev, lastSync: ts ?? undefined }));
+      }
+    };
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
+  }, []);
+
   useEffect(() => {
     if (githubConfigured) {
-      checkSyncStatus();
+      // Only fetch the cached last-sync time here (cheap, no network). The
+      // status diff runs on demand (Refresh) so opening the Sync tab never
+      // fires a GitHub pull on the shared client — which could race an
+      // in-flight push/pull the user just started.
+      parent.postMessage({ pluginMessage: { type: "get-last-sync" } }, "*");
     }
   }, [githubConfigured]);
 

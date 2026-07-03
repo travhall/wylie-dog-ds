@@ -40,6 +40,8 @@ import {
   handleSaveOnboardingState,
   handleCheckFileEngagement,
   handleMarkFileEngaged,
+  handleGetLastSync,
+  handleRecordLastSync,
 } from "./storage-handlers";
 
 // Utility handlers
@@ -103,6 +105,8 @@ export function createHandlerRegistry(): HandlerRegistry {
     "save-onboarding-state": handleSaveOnboardingState,
     "check-file-engagement": handleCheckFileEngagement,
     "mark-file-engaged": handleMarkFileEngaged,
+    "get-last-sync": handleGetLastSync,
+    "record-last-sync": handleRecordLastSync,
 
     // Utility handlers
     "generate-demo-tokens": handleGenerateDemoTokens,

@@ -323,7 +323,8 @@ async function createVariableWithReferences(
   collection: VariableCollection,
   tokenName: string,
   token: ProcessedToken,
-  registry: VariableRegistry
+  registry: VariableRegistry,
+  existingByName: Map<string, Variable>
 ): Promise<Variable | null> {
   try {
     const figmaType = W3C_TO_FIGMA_TYPE_MAP[token.$type] || "STRING";
@@ -338,14 +339,11 @@ async function createVariableWithReferences(
 
     const figmaName = tokenName.replace(/\./g, "/");
 
-    // Check if variable already exists
-    const existingVariables = [];
-    for (const id of collection.variableIds) {
-      const variable = await figma.variables.getVariableByIdAsync(id);
-      if (variable) existingVariables.push(variable);
-    }
-
-    let variable = existingVariables.find((v) => v?.name === figmaName);
+    // Look up an existing variable by name (O(1)). The caller reads the
+    // collection's variables ONCE and passes the map — this function used to
+    // re-scan every variable in the collection per token (O(N²)), which made
+    // large imports (~1,200 vars) take minutes.
+    let variable = existingByName.get(figmaName);
 
     if (!variable) {
       variable = figma.variables.createVariable(
@@ -353,6 +351,7 @@ async function createVariableWithReferences(
         collection,
         figmaType as VariableResolvedDataType
       );
+      existingByName.set(figmaName, variable);
     }
 
     // Always sync scopes — this corrects variables that were created before
@@ -646,16 +645,18 @@ export async function importMultipleCollections(
           collectionInfo.data.modes || [{ modeId: "default", name: "Default" }]
         );
 
-        // For "replace" strategy: capture existing variables BEFORE import
-        const existingVariablesInCollection: Variable[] = [];
-        if (options.mergeStrategy === "replace") {
-          for (const id of collection.variableIds) {
-            const variable = await figma.variables.getVariableByIdAsync(id);
-            if (variable) {
-              existingVariablesInCollection.push(variable);
-            }
-          }
+        // Read this collection's existing variables ONCE into a name→Variable
+        // map. createVariableWithReferences reuses it for O(1) lookups (instead
+        // of re-reading every variable per token), and the "replace" strategy
+        // reuses it to find orphans — avoiding a second full read.
+        const existingByName = new Map<string, Variable>();
+        for (const id of collection.variableIds) {
+          const variable = await figma.variables.getVariableByIdAsync(id);
+          if (variable) existingByName.set(variable.name, variable);
         }
+        const existingVariablesInCollection: Variable[] = Array.from(
+          existingByName.values()
+        );
 
         // Create all variables in this collection with proper ordering
         const tokenEntries = Object.entries(collectionInfo.data.variables);
@@ -671,7 +672,8 @@ export async function importMultipleCollections(
             collection,
             tokenName,
             token,
-            globalRegistry
+            globalRegistry,
+            existingByName
           );
           if (variable) {
             collectionCreated++;

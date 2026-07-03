@@ -398,6 +398,18 @@ export class ConflictAwareGitHubClient extends GitHubClient {
         pullResult.tokens
       );
 
+      // Diagnostic: name exactly what's flagged so false positives are legible.
+      // (console.warn survives the production build; console.log is stripped.)
+      if (conflictResult.conflicts.length > 0) {
+        console.warn(
+          `[TokenBridge] sync-status flagged ${conflictResult.conflicts.length} change(s):`,
+          conflictResult.conflicts
+            .slice(0, 30)
+            .map((c) => `${c.type}:${c.tokenName}`)
+            .join(", ")
+        );
+      }
+
       // Calculate change counts
       const localChanges = conflictResult.conflicts.filter(
         (c) => c.type === "value-change" && c.localToken
@@ -438,6 +450,10 @@ export class ConflictAwareGitHubClient extends GitHubClient {
    * Get last sync timestamp from storage
    */
   private async getLastSyncTime(): Promise<string | undefined> {
+    // `figma` only exists in the plugin thread. getSyncStatus() runs in the UI
+    // thread (network + diff), so guard against touching figma there — the UI
+    // reads last-sync via the `get-last-sync` message instead.
+    if (typeof figma === "undefined") return undefined;
     try {
       const syncData = await figma.clientStorage.getAsync("github-last-sync");
       return syncData?.timestamp;

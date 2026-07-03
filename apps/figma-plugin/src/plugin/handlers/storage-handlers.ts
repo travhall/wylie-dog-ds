@@ -7,6 +7,39 @@
 import { fileConfigStorage } from "../storage/file-storage";
 import { userPreferencesStorage } from "../storage/user-storage";
 
+const LAST_SYNC_KEY = "github-last-sync";
+
+/**
+ * Return the last successful sync timestamp (from plugin-thread storage) to the
+ * UI. The UI can't read figma.clientStorage directly, so it asks via message.
+ */
+export async function handleGetLastSync(): Promise<void> {
+  try {
+    const data = await figma.clientStorage.getAsync(LAST_SYNC_KEY);
+    figma.ui.postMessage({
+      type: "last-sync-loaded",
+      timestamp: data?.timestamp ?? null,
+    });
+  } catch (error) {
+    console.error("Error loading last sync time:", error);
+    figma.ui.postMessage({ type: "last-sync-loaded", timestamp: null });
+  }
+}
+
+/**
+ * Record "now" as the last successful sync and echo it back so any listening
+ * status view updates immediately. Sent by the UI after a successful push/pull.
+ */
+export async function handleRecordLastSync(): Promise<void> {
+  try {
+    const timestamp = new Date().toISOString();
+    await figma.clientStorage.setAsync(LAST_SYNC_KEY, { timestamp });
+    figma.ui.postMessage({ type: "last-sync-loaded", timestamp });
+  } catch (error) {
+    console.error("Error recording last sync time:", error);
+  }
+}
+
 /**
  * Get GitHub configuration
  */

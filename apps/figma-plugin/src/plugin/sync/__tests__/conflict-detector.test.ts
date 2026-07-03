@@ -235,20 +235,22 @@ describe("ConflictDetector", () => {
     });
   });
 
-  describe("description changes (font-source sync)", () => {
-    // Regression: a token whose ONLY difference is $description was detected as
-    // "changed" (the hash includes $description) but produced no conflict,
-    // because compareTokens ignored $description. Result: font @fontSource()
-    // descriptions never synced GitHub→Figma. See docs/DESCRIPTION_SYNC_BUG.md.
-    it("flags a description-only change as a conflict", () => {
+  describe("description changes", () => {
+    // A real (human-readable) description change is a genuine conflict:
+    // compareTokens now considers $description (it previously ignored it, so
+    // description edits silently never synced — see docs/DESCRIPTION_SYNC_BUG.md).
+    it("flags a real description-only change as a conflict", () => {
       const local = [
-        collection("primitive", { "font.sans": token("fontFamily", "Inter") }),
+        collection("semantic", {
+          "text.primary": token("color", "#111111", {
+            $description: "Primary body text",
+          }),
+        }),
       ];
       const remote = [
-        collection("primitive", {
-          "font.sans": token("fontFamily", "Inter", {
-            $description:
-              "@fontSource(provider:google,weights:400,subsets:latin)",
+        collection("semantic", {
+          "text.primary": token("color", "#111111", {
+            $description: "Primary text for headings and body",
           }),
         }),
       ];
@@ -259,15 +261,34 @@ describe("ConflictDetector", () => {
     });
 
     it("does not flag identical descriptions", () => {
-      const desc = "@fontSource(provider:google)";
+      const desc = "Primary body text";
       const local = [
-        collection("primitive", {
-          "font.sans": token("fontFamily", "Inter", { $description: desc }),
+        collection("semantic", {
+          t: token("color", "#111111", { $description: desc }),
         }),
       ];
       const remote = [
+        collection("semantic", {
+          t: token("color", "#111111", { $description: desc }),
+        }),
+      ];
+
+      expect(detect(local, remote).conflicts).toHaveLength(0);
+    });
+
+    // @fontSource(...) etc. are code-only directives consumed by build tooling;
+    // they don't live on Figma variables, so their presence in the repo must NOT
+    // register as a perpetual "change" on every sync-status check.
+    it("ignores code-only @directive descriptions (no false positive)", () => {
+      const local = [
+        collection("primitive", { "font.sans": token("fontFamily", "Inter") }),
+      ];
+      const remote = [
         collection("primitive", {
-          "font.sans": token("fontFamily", "Inter", { $description: desc }),
+          "font.sans": token("fontFamily", "Inter", {
+            $description:
+              "@fontSource(provider:google,weights:400,subsets:latin)",
+          }),
         }),
       ];
 
