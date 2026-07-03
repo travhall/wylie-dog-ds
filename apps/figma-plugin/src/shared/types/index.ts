@@ -41,7 +41,7 @@ export interface GitHubConfig {
    * Leave blank to auto-discover all .json files at tokenPath.
    */
   tokenFiles?: string;
-  authMethod?: "oauth" | "pat";
+  authMethod?: "pat";
   accessToken?: string;
   syncMode: SyncMode;
   isWylieDogProject?: boolean;

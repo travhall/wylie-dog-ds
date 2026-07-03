@@ -1,11 +1,13 @@
 # Source-Control Provider Architecture (design)
 
 **Status:** Design / not yet implemented. Captures the seam for adding GitLab,
-Bitbucket, etc. alongside the current GitHub integration while keeping **both**
-PAT and OAuth auth. Deliberately not built yet (YAGNI) — extract the interface
-when the second provider becomes real; this doc makes that a small, safe step.
+Bitbucket, etc. alongside the current GitHub integration. Auth is **PAT-only**
+— a Figma plugin can't hold a client secret without a hosted backend, which is
+disproportionate for this project. Deliberately not built yet (YAGNI) — extract
+the interface when the second provider becomes real; this doc makes that a
+small, safe step.
 
-## Current coupling (as of 2026-07-02)
+## Current coupling (as of 2026-07-03)
 
 GitHub is reasonably contained, which is why this is cheap to generalize later:
 
@@ -14,9 +16,8 @@ GitHub is reasonably contained, which is why this is cheap to generalize later:
   `configure` / `validateConfiguration` / `validateRepository` / `listFiles` /
   `fetchFile` / `pushFiles` / `pullTokens` / `syncTokens`.
 - `plugin/github/project-detector.ts` — repo auto-detection.
-- `plugin/oauth/*` — GitHub **device-flow** OAuth (GitHub client id, `oauth-server`).
 - `shared/types` → `GitHubConfig` (`owner`/`repo`/`branch`/`tokenPath`/
-  `authMethod: "oauth" | "pat"`/`accessToken`).
+  `authMethod: "pat"`/`accessToken`).
 - Message types are `github-*` (`github-sync-tokens`, `github-pull-tokens`, …).
 
 Only ~6 hardcoded `github.com` URLs. The token **format adapters**
@@ -56,29 +57,17 @@ interface RepoConfig {
   branch: string;
   tokenPath: string;
   tokenFiles?: string;
-  authMethod: "oauth" | "pat";
+  authMethod: "pat";
   syncMode: SyncMode;
 }
 ```
 
-### 3. Auth stays per-provider (keep PAT **and** OAuth)
+Auth is PAT-only, entered per provider — the user pastes a personal access
+token scoped to that provider (e.g. a GitHub PAT for GitHub, a GitLab PAT for
+GitLab). A Figma plugin runs client-side and can't hold a client secret, and
+standing up a hosted auth backend isn't justified for a solo public plugin.
 
-Auth is NOT consolidated — each provider ships both:
-
-```ts
-interface AuthStrategy {
-  readonly provider: string;
-  readonly methods: ("pat" | "oauth")[];
-  initiateOAuth(): Promise<AuthCredential>; // device/PKCE flow per provider
-  fromToken(token: string): AuthCredential; // PAT
-}
-```
-
-OAuth details differ per host (GitHub device flow ≠ GitLab). The existing
-`oauth/` module becomes `GitHubAuthStrategy`. The `oauth-server` stays and gains
-per-provider routes as needed.
-
-### 4. Registry + factory
+### 3. Registry + factory
 
 Mirror the token-adapter registry: `getProvider(config.provider)` returns the
 right `SourceControlProvider`; handlers and UI talk to the interface, not
@@ -92,14 +81,11 @@ right `SourceControlProvider`; handlers and UI talk to the interface, not
    defaulting to `"github"`.
 3. **Registry:** route handlers through `getProvider()`; keep `github-*` message
    types as aliases.
-4. **Auth:** wrap `oauth/` as `GitHubAuthStrategy` behind `AuthStrategy`.
-5. **Provider #2:** implement `GitLabClient` + `GitLabAuthStrategy`; add the UI
-   provider selector.
+4. **Provider #2:** implement `GitLabClient`; add the UI provider selector,
+   using the existing PAT-entry pattern from `SetupWizard.tsx`.
 
 ## Recommendation
 
 Do **not** build the framework now. Steps 1–2 are cheap and safe but still
-speculative with a single provider. Implement 1–4 as the first slice of the work
-that adds provider #2, using this doc as the blueprint. Related: OAuth UI is
-currently orphaned (see onboarding cleanup) — re-mounting it (`QuickGitHubSetup`
-does PAT+OAuth) is a prerequisite for exercising the OAuth path at all.
+speculative with a single provider. Implement 1–3 as the first slice of the work
+that adds provider #2, using this doc as the blueprint.

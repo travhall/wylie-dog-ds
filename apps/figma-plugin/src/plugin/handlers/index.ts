@@ -52,14 +52,6 @@ import {
   handleCancelOperation,
 } from "./utility-handlers";
 
-// OAuth handlers
-import {
-  handleOAuthInitiate,
-  handleOAuthSignOut,
-  handleOAuthStatus,
-  handleGetAccessToken,
-} from "../oauth/message-handler";
-
 /**
  * Message handler function type
  */
@@ -113,13 +105,6 @@ export function createHandlerRegistry(): HandlerRegistry {
     "detect-figma-variables": handleDetectFigmaVariables,
     "convert-figma-variables": handleConvertFigmaVariables,
     "cancel-operation": handleCancelOperation,
-
-    // OAuth handlers
-    "oauth-initiate": (msg: any) =>
-      handleOAuthInitiate(msg.provider, msg.repoUrl),
-    "oauth-signout": handleOAuthSignOut,
-    "oauth-status": handleOAuthStatus,
-    "get-access-token": handleGetAccessToken,
   };
 }
 
