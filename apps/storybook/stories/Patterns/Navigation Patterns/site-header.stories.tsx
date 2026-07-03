@@ -59,11 +59,11 @@ export const Default: Story = {
     navigation: navigation,
   },
   render: (args) => (
-    <div className="h-100 bg-gray-100/30">
+    <div className="h-100 bg-(--color-background-secondary)/30">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">Page Content Below Header</h1>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-(--color-text-tertiary)">
           The header is sticky and will stay at the top when scrolling.
         </p>
       </div>
@@ -83,13 +83,13 @@ export const Transparent: Story = {
     navigation: navigation,
   },
   render: (args) => (
-    <div className="h-100 bg-linear-to-br from-blue-600/20 to-blue-200/20">
+    <div className="h-100 bg-linear-to-br from-(--color-interactive-primary)/20 to-(--color-interactive-primary)/10">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">
           Transparent Header Over Background
         </h1>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-(--color-text-tertiary)">
           Perfect for hero sections and landing pages.
         </p>
       </div>
@@ -128,11 +128,11 @@ export const WithCustomActions: Story = {
     ),
   },
   render: (args) => (
-    <div className="h-100 bg-gray-100/30">
+    <div className="h-100 bg-(--color-background-secondary)/30">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">Custom Actions Example</h1>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-(--color-text-tertiary)">
           Customize the action buttons to match your brand and use case.
         </p>
       </div>
@@ -166,7 +166,7 @@ export const MinimalNavigation: Story = {
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">Minimal Navigation</h1>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-(--color-text-tertiary)">
           Clean header with fewer navigation items.
         </p>
       </div>

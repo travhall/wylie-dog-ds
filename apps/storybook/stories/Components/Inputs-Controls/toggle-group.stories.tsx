@@ -443,7 +443,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Use Tab to navigate between groups, Arrow keys within groups, Space to
           toggle.
         </p>
@@ -457,7 +457,7 @@ export const Accessibility: Story = {
           <ToggleGroup
             type="multiple"
             aria-label="Text formatting options"
-            className="border border-gray-300 rounded-md p-1"
+            className="border border-(--color-border-primary) rounded-md p-1"
           >
             <ToggleGroupItem
               value="bold"
@@ -482,13 +482,19 @@ export const Accessibility: Story = {
             </ToggleGroupItem>
           </ToggleGroup>
           <div className="mt-2 space-y-1">
-            <p id="bold-desc" className="text-xs text-gray-500">
+            <p id="bold-desc" className="text-xs text-(--color-text-tertiary)">
               Bold: Ctrl+B
             </p>
-            <p id="italic-desc" className="text-xs text-gray-500">
+            <p
+              id="italic-desc"
+              className="text-xs text-(--color-text-tertiary)"
+            >
               Italic: Ctrl+I
             </p>
-            <p id="underline-desc" className="text-xs text-gray-500">
+            <p
+              id="underline-desc"
+              className="text-xs text-(--color-text-tertiary)"
+            >
               Underline: Ctrl+U
             </p>
           </div>
@@ -500,7 +506,7 @@ export const Accessibility: Story = {
             type="single"
             defaultValue="list"
             aria-label="Choose view mode"
-            className="border border-gray-300 rounded-md p-1"
+            className="border border-(--color-border-primary) rounded-md p-1"
           >
             <ToggleGroupItem value="list" aria-label="List view mode">
               List

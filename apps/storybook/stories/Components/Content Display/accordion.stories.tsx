@@ -187,7 +187,7 @@ export const FAQ: Story = {
     <div className="mx-auto w-full max-w-2xl space-y-6">
       <div className="space-y-2">
         <h3 className="text-xl font-semibold">Frequently Asked Questions</h3>
-        <p className="text-gray-500">
+        <p className="text-(--color-text-tertiary)">
           Find answers to common questions about our service.
         </p>
       </div>
@@ -346,7 +346,9 @@ export const ProductFeatures: Story = {
     <div className="mx-auto w-full max-w-2xl space-y-6">
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">Product Features</h2>
-        <p className="text-gray-500">Explore what makes our platform special</p>
+        <p className="text-(--color-text-tertiary)">
+          Explore what makes our platform special
+        </p>
       </div>
 
       <Accordion type="single" collapsible className="w-full">
@@ -362,7 +364,7 @@ export const ProductFeatures: Story = {
                 Get deep insights into your data with our comprehensive
                 analytics suite.
               </p>
-              <ul className="space-y-1 list-disc list-inside text-sm text-gray-500">
+              <ul className="space-y-1 list-disc list-inside text-sm text-(--color-text-tertiary)">
                 <li>Real-time dashboards</li>
                 <li>Custom report builder</li>
                 <li>Data export in multiple formats</li>
@@ -381,7 +383,7 @@ export const ProductFeatures: Story = {
           <AccordionContent>
             <div className="space-y-3">
               <p>Work together seamlessly with powerful collaboration tools.</p>
-              <ul className="space-y-1 list-disc list-inside text-sm text-gray-500">
+              <ul className="space-y-1 list-disc list-inside text-sm text-(--color-text-tertiary)">
                 <li>Real-time commenting and feedback</li>
                 <li>Version control and history</li>
                 <li>Team workspace management</li>
@@ -400,7 +402,7 @@ export const ProductFeatures: Story = {
           <AccordionContent>
             <div className="space-y-3">
               <p>Automate repetitive tasks and streamline your workflows.</p>
-              <ul className="space-y-1 list-disc list-inside text-sm text-gray-500">
+              <ul className="space-y-1 list-disc list-inside text-sm text-(--color-text-tertiary)">
                 <li>Drag-and-drop workflow builder</li>
                 <li>Trigger-based automation</li>
                 <li>Integration with popular tools</li>
@@ -419,7 +421,7 @@ export const ProductFeatures: Story = {
           <AccordionContent>
             <div className="space-y-3">
               <p>Bank-level security to protect your sensitive data.</p>
-              <ul className="space-y-1 list-disc list-inside text-sm text-gray-500">
+              <ul className="space-y-1 list-disc list-inside text-sm text-(--color-text-tertiary)">
                 <li>End-to-end encryption</li>
                 <li>SOC 2 Type II compliance</li>
                 <li>GDPR and CCPA compliance</li> {/* cSpell:ignore CCPA */}
@@ -447,7 +449,7 @@ export const Accessibility: Story = {
     <div className="mx-auto w-full max-w-md space-y-4">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Use Tab to navigate, Enter/Space to toggle, Arrow keys to move between
           items.
         </p>

@@ -358,7 +358,9 @@ export const TextEditor: Story = {
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
-            <p className="text-gray-400">Right-click anywhere to see options</p>
+            <p className="text-(--color-text-tertiary)">
+              Right-click anywhere to see options
+            </p>
           </div>
         </ContextMenuTrigger>
         <ContextMenuContent className="w-64">
@@ -468,7 +470,7 @@ export const DataTable: Story = {
           </TableBody>
         </Table>
       </div>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-(--color-text-tertiary)">
         Right-click on any row to see user actions
       </p>
     </div>
@@ -539,14 +541,14 @@ export const Accessibility: Story = {
     <div className="space-y-6 w-full max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Context menus support keyboard navigation. Right-click to open, use
           arrows to navigate, Enter to select, Escape to close.
         </p>
       </div>
 
       <ContextMenu>
-        <ContextMenuTrigger className="flex h-25 w-full items-center justify-center rounded-md border border-dashed text-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
+        <ContextMenuTrigger className="flex h-25 w-full items-center justify-center rounded-md border border-dashed text-sm focus:outline-none focus:ring-2 focus:ring-(--color-border-focus)">
           Accessible Context Menu
         </ContextMenuTrigger>
         <ContextMenuContent className="w-64">
@@ -576,7 +578,7 @@ export const Accessibility: Story = {
         </ContextMenuContent>
       </ContextMenu>
 
-      <p className="text-xs text-gray-500">
+      <p className="text-xs text-(--color-text-tertiary)">
         Focus the trigger with Tab, then right-click or use the context menu key
       </p>
     </div>

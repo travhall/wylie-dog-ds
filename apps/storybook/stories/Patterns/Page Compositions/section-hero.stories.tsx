@@ -96,7 +96,7 @@ export const WithImage: Story = {
       href: "#docs",
     },
     image: (
-      <div className="aspect-square rounded-lg bg-linear-to-br from-blue-600 via-blue-200 to-purple-100 p-8 flex items-center justify-center">
+      <div className="aspect-square rounded-lg bg-linear-to-br from-(--color-interactive-primary) via-(--color-interactive-primary)/50 to-(--color-surface-info) p-8 flex items-center justify-center">
         <div className="text-white text-center">
           <Code2 className="h-24 w-24 mx-auto mb-4" />
           <p className="text-2xl font-bold">42 Components</p>
@@ -124,7 +124,7 @@ export const ImageLeft: Story = {
       href: "#docs",
     },
     image: (
-      <div className="aspect-square rounded-lg bg-linear-to-br from-purple-100 via-blue-600 to-blue-200 p-8 flex items-center justify-center">
+      <div className="aspect-square rounded-lg bg-linear-to-br from-(--color-surface-info) via-(--color-interactive-primary) to-(--color-interactive-primary)/50 p-8 flex items-center justify-center">
         <div className="text-white text-center">
           <Sparkles className="h-24 w-24 mx-auto mb-4" />
           <p className="text-2xl font-bold">Developer DX</p>
@@ -203,8 +203,8 @@ export const CenteredWithImage: Story = {
       href: "#start",
     },
     image: (
-      <div className="w-full h-64 rounded-lg bg-linear-to-r from-blue-600/20 via-blue-200/20 to-purple-100/20 flex items-center justify-center border border-gray-200">
-        <p className="text-xl font-semibold text-gray-500">
+      <div className="w-full h-64 rounded-lg bg-linear-to-r from-(--color-interactive-primary)/20 via-(--color-interactive-primary)/10 to-(--color-surface-info)/20 flex items-center justify-center border border-(--color-border-primary)">
+        <p className="text-xl font-semibold text-(--color-text-tertiary)">
           Product Screenshot
         </p>
       </div>

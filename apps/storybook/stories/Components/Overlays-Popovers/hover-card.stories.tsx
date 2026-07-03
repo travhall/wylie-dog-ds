@@ -81,7 +81,7 @@ export const Default: Story = {
               </p>
               <div className="flex items-center pt-2">
                 <CalendarIcon className="mr-2 h-4 w-4 opacity-70" />
-                <span className="text-xs text-gray-500">
+                <span className="text-xs text-(--color-text-tertiary)">
                   Joined December 2021
                 </span>
               </div>
@@ -96,7 +96,7 @@ export const Default: Story = {
 export const UserProfile: Story = {
   render: () => (
     <div className="space-y-4">
-      <p className="text-sm text-gray-500 mb-4">
+      <p className="text-sm text-(--color-text-tertiary) mb-4">
         Hover over team member names:
       </p>
 
@@ -112,13 +112,13 @@ export const UserProfile: Story = {
             <HoverCardContent className="w-80">
               <div className="flex space-x-4">
                 <Avatar>
-                  <div className="bg-purple-500 text-white flex items-center justify-center w-full h-full text-sm font-bold">
+                  <div className="bg-(--color-interactive-primary) text-(--color-text-inverse) flex items-center justify-center w-full h-full text-sm font-bold">
                     SC
                   </div>
                 </Avatar>
                 <div className="space-y-1">
                   <h4 className="text-sm font-semibold">Sarah Chen</h4>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-(--color-text-tertiary)">
                     Senior Product Designer
                   </p>
                   <p className="text-sm">
@@ -128,13 +128,15 @@ export const UserProfile: Story = {
                   <div className="flex items-center pt-2 space-x-4">
                     <div className="flex items-center">
                       <MapPinIcon className="mr-1 h-3 w-3 opacity-70" />
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-(--color-text-tertiary)">
                         San Francisco
                       </span>
                     </div>
                     <div className="flex items-center">
                       <LinkIcon className="mr-1 h-3 w-3 opacity-70" />
-                      <span className="text-xs text-gray-400">@sarahchen</span>
+                      <span className="text-xs text-(--color-text-tertiary)">
+                        @sarahchen
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -154,13 +156,15 @@ export const UserProfile: Story = {
             <HoverCardContent className="w-80">
               <div className="flex space-x-4">
                 <Avatar>
-                  <div className="bg-blue-600 text-white flex items-center justify-center w-full h-full text-sm font-bold">
+                  <div className="bg-(--color-interactive-primary) text-(--color-text-inverse) flex items-center justify-center w-full h-full text-sm font-bold">
                     AR
                   </div>
                 </Avatar>
                 <div className="space-y-1">
                   <h4 className="text-sm font-semibold">Alex Rivera</h4>
-                  <p className="text-sm text-gray-500">Full Stack Engineer</p>
+                  <p className="text-sm text-(--color-text-tertiary)">
+                    Full Stack Engineer
+                  </p>
                   <p className="text-sm">
                     Frontend and backend development. React, Node.js, and
                     TypeScript expert.
@@ -168,11 +172,15 @@ export const UserProfile: Story = {
                   <div className="flex items-center pt-2 space-x-4">
                     <div className="flex items-center">
                       <MapPinIcon className="mr-1 h-3 w-3 opacity-70" />
-                      <span className="text-xs text-gray-400">Remote</span>
+                      <span className="text-xs text-(--color-text-tertiary)">
+                        Remote
+                      </span>
                     </div>
                     <div className="flex items-center">
                       <LinkIcon className="mr-1 h-3 w-3 opacity-70" />
-                      <span className="text-xs text-gray-400">@alexdev</span>
+                      <span className="text-xs text-(--color-text-tertiary)">
+                        @alexdev
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -269,7 +277,9 @@ export const ProductInfo: Story = {
       <div className="grid grid-cols-2 gap-4">
         <div className="p-4 border rounded-lg">
           <h4 className="font-medium">MacBook Pro</h4>
-          <p className="text-sm text-gray-500">Starting at $1,999</p>
+          <p className="text-sm text-(--color-text-tertiary)">
+            Starting at $1,999
+          </p>
           <HoverCard>
             <HoverCardTrigger asChild>
               <Button variant="link" className="p-0 mt-2 h-auto">
@@ -306,7 +316,9 @@ export const ProductInfo: Story = {
 
         <div className="p-4 border rounded-lg">
           <h4 className="font-medium">iPad Pro</h4>
-          <p className="text-sm text-gray-500">Starting at $1,099</p>
+          <p className="text-sm text-(--color-text-tertiary)">
+            Starting at $1,099
+          </p>
           <HoverCard>
             <HoverCardTrigger asChild>
               <Button variant="link" className="p-0 mt-2 h-auto">
@@ -363,7 +375,7 @@ export const Documentation: Story = {
           The{" "}
           <HoverCard>
             <HoverCardTrigger asChild>
-              <code className="px-1 py-0.5 bg-gray-50 rounded text-sm cursor-help">
+              <code className="px-1 py-0.5 bg-(--color-background-secondary) rounded text-sm cursor-help">
                 useState
               </code>
             </HoverCardTrigger>
@@ -373,10 +385,10 @@ export const Documentation: Story = {
                 <p className="text-sm">
                   A Hook that lets you add state to functional components.
                 </p>
-                <div className="text-xs bg-gray-100 p-2 rounded">
+                <div className="text-xs bg-(--color-background-secondary) p-2 rounded">
                   <code>const [state, setState] = useState(initialState)</code>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-(--color-text-tertiary)">
                   Returns a stateful value and a function to update it.
                 </p>
               </div>
@@ -389,7 +401,7 @@ export const Documentation: Story = {
           You can also use{" "}
           <HoverCard>
             <HoverCardTrigger asChild>
-              <code className="px-1 py-0.5 bg-gray-50 rounded text-sm cursor-help">
+              <code className="px-1 py-0.5 bg-(--color-background-secondary) rounded text-sm cursor-help">
                 useEffect
               </code>
             </HoverCardTrigger>
@@ -400,10 +412,10 @@ export const Documentation: Story = {
                   A Hook that lets you perform side effects in functional
                   components.
                 </p>
-                <div className="text-xs bg-gray-100 p-2 rounded">
+                <div className="text-xs bg-(--color-background-secondary) p-2 rounded">
                   <code>useEffect(effect, dependencies?)</code>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-(--color-text-tertiary)">
                   Runs after every completed render, but can be optimized with
                   dependencies.
                 </p>
@@ -417,7 +429,7 @@ export const Documentation: Story = {
           For complex state logic, consider{" "}
           <HoverCard>
             <HoverCardTrigger asChild>
-              <code className="px-1 py-0.5 bg-gray-50 rounded text-sm cursor-help">
+              <code className="px-1 py-0.5 bg-(--color-background-secondary) rounded text-sm cursor-help">
                 useReducer
               </code>
             </HoverCardTrigger>
@@ -428,12 +440,12 @@ export const Documentation: Story = {
                   A Hook that is usually preferable to useState when you have
                   complex state logic.
                 </p>
-                <div className="text-xs bg-gray-100 p-2 rounded">
+                <div className="text-xs bg-(--color-background-secondary) p-2 rounded">
                   <code>
                     const [state, dispatch] = useReducer(reducer, initialState)
                   </code>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-(--color-text-tertiary)">
                   Accepts a reducer function and returns the current state
                   paired with a dispatch method.
                 </p>
@@ -459,7 +471,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Hover cards support keyboard navigation. Use Tab to focus triggers,
           then hover or use keyboard shortcuts to reveal content.
         </p>
@@ -481,7 +493,9 @@ export const Accessibility: Story = {
               <h4 id="profile-title" className="font-semibold">
                 John Doe
               </h4>
-              <p className="text-sm text-gray-500">Software Engineer</p>
+              <p className="text-sm text-(--color-text-tertiary)">
+                Software Engineer
+              </p>
               <p className="text-sm">
                 Full-stack developer with 8 years of experience in React and
                 Node.js. Currently working on design systems and developer
@@ -489,13 +503,18 @@ export const Accessibility: Story = {
               </p>
               <div className="flex items-center pt-2">
                 <MapPinIcon className="mr-2 h-4 w-4 opacity-70" />
-                <span className="text-xs text-gray-400">Seattle, WA</span>
+                <span className="text-xs text-(--color-text-tertiary)">
+                  Seattle, WA
+                </span>
               </div>
             </div>
           </HoverCardContent>
         </HoverCard>
 
-        <p id="accessible-description" className="text-xs text-gray-500">
+        <p
+          id="accessible-description"
+          className="text-xs text-(--color-text-tertiary)"
+        >
           Hover or focus to reveal additional profile information
         </p>
       </div>
@@ -557,7 +576,7 @@ export const WithInteractions: Story = {
         <HoverCardContent className="w-80">
           <div className="flex justify-between space-x-4">
             <Avatar>
-              <div className="bg-blue-600 text-white flex items-center justify-center w-full h-full text-sm font-bold">
+              <div className="bg-(--color-interactive-primary) text-(--color-text-inverse) flex items-center justify-center w-full h-full text-sm font-bold">
                 TC
               </div>
             </Avatar>
@@ -568,7 +587,7 @@ export const WithInteractions: Story = {
               </p>
               <div className="flex items-center pt-2">
                 <CalendarIcon className="mr-2 h-4 w-4 opacity-70" />
-                <span className="text-xs text-gray-500">
+                <span className="text-xs text-(--color-text-tertiary)">
                   Created January 2026
                 </span>
               </div>

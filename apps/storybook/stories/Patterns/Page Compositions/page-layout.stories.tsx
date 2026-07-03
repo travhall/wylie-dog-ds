@@ -104,7 +104,9 @@ const sampleFooter = (
 
 const sampleSidebar = (
   <nav className="space-y-1 p-4">
-    <h3 className="mb-3 text-sm font-semibold text-gray-500">Navigation</h3>
+    <h3 className="mb-3 text-sm font-semibold text-(--color-text-tertiary)">
+      Navigation
+    </h3>
     {["Dashboard", "Settings", "Profile", "Notifications", "Help"].map(
       (item) => (
         <Button
@@ -124,7 +126,7 @@ const sampleContent = (
   <div className="space-y-6 py-8">
     <div>
       <h1 className="text-3xl font-bold">Page Title</h1>
-      <p className="mt-2 text-gray-500">
+      <p className="mt-2 text-(--color-text-tertiary)">
         This demonstrates a complete page layout with header, content, and
         footer.
       </p>
@@ -133,7 +135,7 @@ const sampleContent = (
       {[1, 2, 3].map((i) => (
         <div key={i} className="rounded-lg border p-6">
           <h3 className="font-semibold">Card {i}</h3>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-(--color-text-tertiary)">
             Sample content card for layout demonstration.
           </p>
         </div>

@@ -58,7 +58,7 @@ export const Horizontal: Story = {
     <div className="w-full max-w-xs">
       <div className="space-y-1">
         <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           An open-source UI component library.
         </p>
       </div>
@@ -109,7 +109,7 @@ export const InContent: Story = {
     <div className="max-w-md space-y-4">
       <div>
         <h3 className="text-lg font-semibold">Navigation</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Primary navigation items for the application.
         </p>
       </div>
@@ -118,7 +118,7 @@ export const InContent: Story = {
 
       <div>
         <h3 className="text-lg font-semibold">Settings</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Configuration options and preferences.
         </p>
       </div>
@@ -127,7 +127,7 @@ export const InContent: Story = {
 
       <div>
         <h3 className="text-lg font-semibold">Account</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           User account management and profile settings.
         </p>
       </div>

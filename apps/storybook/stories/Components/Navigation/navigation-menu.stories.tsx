@@ -113,13 +113,13 @@ export const Default: Story = {
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-neutral-50 to-neutral-100 p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-(--color-background-secondary) to-(--color-background-tertiary) p-6 no-underline outline-none focus:shadow-md"
                     href="#"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
                       Featured Product
                     </div>
-                    <p className="text-sm leading-tight text-gray-500">
+                    <p className="text-sm leading-tight text-(--color-text-tertiary)">
                       Discover our most popular item with advanced features and
                       modern design.
                     </p>
@@ -189,7 +189,7 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-gray-500">
+          <p className="line-clamp-2 text-sm leading-snug text-(--color-text-tertiary)">
             {children}
           </p>
         </a>
@@ -327,7 +327,7 @@ export const WithCallToAction: Story = {
                   <p className="text-sm font-medium mb-1">
                     New: Design System Kit
                   </p>
-                  <p className="text-xs text-gray-500 leading-relaxed">
+                  <p className="text-xs text-(--color-text-tertiary) leading-relaxed">
                     Everything you need to build consistent, accessible UIs —
                     tokens, components, and docs.
                   </p>

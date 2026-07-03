@@ -93,8 +93,7 @@ function extractTypographyTokens(
   category: "size" | "weight" | "lineHeight" | "family" | "letterSpacing"
 ): TypographyTokenData[] {
   const typography = manifest.primitives?.typography as
-    | Record<string, Record<string, TokenEntry>>
-    | undefined;
+    Record<string, Record<string, TokenEntry>> | undefined;
   if (!typography || !typography[category]) {
     return [];
   }
@@ -692,7 +691,7 @@ export const CodeTypography: Story = {
 
       <div>
         <h4 className="text-lg font-semibold mb-3">Code Block</h4>
-        <pre className="bg-gray-900 text-white p-4 rounded-lg overflow-x-auto">
+        <pre className="bg-(--color-background-inverse) text-white p-4 rounded-lg overflow-x-auto">
           <code className="font-mono text-sm">
             {`function Button({ children, variant = "default" }) {
   return (
@@ -707,7 +706,7 @@ export const CodeTypography: Story = {
 
       <div>
         <h4 className="text-lg font-semibold mb-3">Terminal Output</h4>
-        <pre className="bg-gray-900 text-green-600 p-4 rounded-lg font-mono text-sm">
+        <pre className="bg-(--color-background-inverse) text-(--color-text-success) p-4 rounded-lg font-mono text-sm">
           {`$ npm install @wyliedog/ui
 + @wyliedog/ui@1.0.0
 added 1 package from 1 contributor

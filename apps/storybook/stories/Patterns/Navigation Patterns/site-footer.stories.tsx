@@ -158,7 +158,7 @@ export const AllVariants: Story = {
   render: () => (
     <div className="space-y-12">
       <div>
-        <h3 className="px-4 py-2 text-sm font-medium text-gray-500">
+        <h3 className="px-4 py-2 text-sm font-medium text-(--color-text-tertiary)">
           Default Variant
         </h3>
         <SiteFooter
@@ -169,7 +169,7 @@ export const AllVariants: Story = {
         />
       </div>
       <div>
-        <h3 className="px-4 py-2 text-sm font-medium text-gray-500">
+        <h3 className="px-4 py-2 text-sm font-medium text-(--color-text-tertiary)">
           Minimal Variant
         </h3>
         <SiteFooter

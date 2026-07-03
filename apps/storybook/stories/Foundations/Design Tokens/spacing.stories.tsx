@@ -196,13 +196,16 @@ export const ShadowScale: Story = {
               Dark surface — shadows disappear
             </p>
           </div>
-          <div className="p-6 bg-gray-900 flex flex-wrap gap-6 justify-around">
+          {/* Fixed dark values (not theme tokens) — this demo intentionally
+              stays dark in both light and dark mode to show that CSS box-shadows
+              lose contrast on dark surfaces. */}
+          <div className="p-6 bg-[#111827] flex flex-wrap gap-6 justify-around">
             {shadowScale.map(({ name, class: cls }) => (
               <div key={name} className="text-center space-y-3">
                 <div
-                  className={`w-16 h-16 bg-gray-800 rounded-lg mx-auto ${cls}`}
+                  className={`w-16 h-16 bg-[#1f2937] rounded-lg mx-auto ${cls}`}
                 />
-                <code className="block text-xs font-mono text-gray-400">
+                <code className="block text-xs font-mono text-(--color-text-tertiary)">
                   {cls}
                 </code>
               </div>

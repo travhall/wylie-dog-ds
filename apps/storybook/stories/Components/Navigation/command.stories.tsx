@@ -296,9 +296,9 @@ export const WithModal: Story = {
     return (
       <div className="space-y-4">
         <div className="text-center space-y-2">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-(--color-text-tertiary)">
             Press{" "}
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-(--color-background-secondary) px-1.5 font-mono text-[10px] font-medium text-gray-500">
+            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-(--color-background-secondary) px-1.5 font-mono text-[10px] font-medium text-(--color-text-tertiary)">
               <span className="text-xs">⌘</span>K
             </kbd>{" "}
             to open command palette
@@ -422,14 +422,14 @@ export const TeamDirectory: Story = {
 export const CodeEditor: Story = {
   render: () => (
     <div className="space-y-4 w-full max-w-2xl">
-      <div className="bg-gray-900 text-white p-4 rounded-lg font-mono text-sm">
+      <div className="bg-(--color-background-inverse) text-white p-4 rounded-lg font-mono text-sm">
         <div className="flex items-center justify-between mb-4">
           <span>editor.tsx</span>
           <kbd className="text-xs bg-(--color-background-secondary) px-2 py-1 rounded">
             ⌘K
           </kbd>
         </div>
-        <div className="space-y-1 text-gray-400">
+        <div className="space-y-1 text-(--color-text-tertiary)">
           <div>import React from 'react';</div>
           <div>import {"{ useState }"} from 'react';</div>
           <div></div>
@@ -535,7 +535,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 w-full max-w-md">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Command palette supports full keyboard navigation. Use arrows to
           navigate, Enter to select, Escape to close.
         </p>
@@ -576,7 +576,7 @@ export const Accessibility: Story = {
         </CommandList>
       </Command>
 
-      <p className="text-xs text-gray-500">
+      <p className="text-xs text-(--color-text-tertiary)">
         Screen readers announce group headings and selected items
       </p>
     </div>

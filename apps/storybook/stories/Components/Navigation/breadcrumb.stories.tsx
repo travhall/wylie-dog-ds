@@ -124,7 +124,9 @@ export const CustomSeparator: Story = {
   render: () => (
     <div className="space-y-4">
       <div>
-        <p className="text-sm text-gray-500 mb-2">Slash separator</p>
+        <p className="text-sm text-(--color-text-tertiary) mb-2">
+          Slash separator
+        </p>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -147,20 +149,22 @@ export const CustomSeparator: Story = {
       </div>
 
       <div>
-        <p className="text-sm text-gray-500 mb-2">Text separator</p>
+        <p className="text-sm text-(--color-text-tertiary) mb-2">
+          Text separator
+        </p>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <span className="text-gray-400">→</span>
+              <span className="text-(--color-text-tertiary)">→</span>
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
-              <span className="text-gray-400">→</span>
+              <span className="text-(--color-text-tertiary)">→</span>
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbPage>Components</BreadcrumbPage>
@@ -360,7 +364,9 @@ export const ApplicationExamples: Story = {
   render: () => (
     <div className="space-y-8 w-full max-w-3xl">
       <div className="space-y-3">
-        <h4 className="font-medium text-gray-900">E-commerce Product Page</h4>
+        <h4 className="font-medium text-(--color-text-primary)">
+          E-commerce Product Page
+        </h4>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -391,7 +397,9 @@ export const ApplicationExamples: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="font-medium text-gray-900">Documentation Site</h4>
+        <h4 className="font-medium text-(--color-text-primary)">
+          Documentation Site
+        </h4>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -421,7 +429,9 @@ export const ApplicationExamples: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="font-medium text-gray-900">Admin Dashboard</h4>
+        <h4 className="font-medium text-(--color-text-primary)">
+          Admin Dashboard
+        </h4>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -448,7 +458,9 @@ export const ApplicationExamples: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="font-medium text-gray-900">File Manager</h4>
+        <h4 className="font-medium text-(--color-text-primary)">
+          File Manager
+        </h4>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -494,7 +506,7 @@ export const Accessibility: Story = {
     <div className="space-y-6 w-full max-w-2xl">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-(--color-text-tertiary)">
           Breadcrumbs use semantic HTML with proper ARIA attributes for screen
           readers. Use Tab to navigate links and Enter to activate.
         </p>
@@ -502,7 +514,7 @@ export const Accessibility: Story = {
 
       <div className="space-y-4">
         <div>
-          <p className="text-sm font-medium text-gray-500 mb-2">
+          <p className="text-sm font-medium text-(--color-text-tertiary) mb-2">
             With aria-label navigation
           </p>
           <Breadcrumb>
@@ -532,7 +544,7 @@ export const Accessibility: Story = {
         </div>
 
         <div>
-          <p className="text-sm font-medium text-gray-500 mb-2">
+          <p className="text-sm font-medium text-(--color-text-tertiary) mb-2">
             Screen reader friendly
           </p>
           <Breadcrumb aria-label="Page navigation">
