@@ -1,3 +1,5 @@
+import { Spinner } from "./common/Spinner";
+
 interface ProgressStepProps {
   steps: ProgressStep[];
   currentStep: number;
@@ -76,52 +78,9 @@ export function ProgressFeedback({
           animation: "slideInUp 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
-        {/* Arc spinner */}
-        <div
-          style={{
-            position: "relative",
-            width: "48px",
-            height: "48px",
-            margin: "0 auto var(--space-4)",
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              border: "3px solid var(--surface-tertiary)",
-              borderTop: "3px solid var(--accent-primary)",
-              borderRadius: "50%",
-              animation: "spin 1s linear infinite",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              width: "70%",
-              height: "70%",
-              top: "15%",
-              left: "15%",
-              border: "3px solid transparent",
-              borderTop: "3px solid var(--accent-secondary)",
-              borderRadius: "50%",
-              animation: "spin 0.7s linear infinite reverse",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              width: "12px",
-              height: "12px",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              backgroundColor: "var(--accent-primary)",
-              borderRadius: "50%",
-              animation: "pulse 2s ease-in-out infinite",
-            }}
-          />
+        {/* Arc spinner (shared component) */}
+        <div style={{ margin: "0 auto var(--space-4)", width: "48px" }}>
+          <Spinner size={48} />
         </div>
 
         {/* Message */}
@@ -168,14 +127,6 @@ export function ProgressFeedback({
 
       <style>
         {`
-          @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          @keyframes pulse {
-            0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.8); }
-          }
           @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }

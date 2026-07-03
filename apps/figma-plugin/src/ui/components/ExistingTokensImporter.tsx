@@ -1,6 +1,7 @@
 import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import { Icon } from "./common/Icon";
+import { Spinner } from "./common/Spinner";
 
 interface ExistingTokensImporterProps {
   onImport: () => void;
@@ -126,17 +127,9 @@ export const ExistingTokensImporter = ({
         >
           Scanning for Figma Variables...
         </div>
-        <div
-          style={{
-            display: "inline-block",
-            width: "24px",
-            height: "24px",
-            border: "3px solid var(--border-default)",
-            borderTopColor: "var(--accent-secondary)",
-            borderRadius: "50%",
-            animation: "spin 1s linear infinite",
-          }}
-        />
+        <div style={{ display: "inline-block" }}>
+          <Spinner size={28} />
+        </div>
       </div>
     );
   }
@@ -572,14 +565,6 @@ export const ExistingTokensImporter = ({
           Cancel
         </button>
       </div>
-
-      <style>{`
-        @keyframes spin {
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
     </div>
   );
 };
