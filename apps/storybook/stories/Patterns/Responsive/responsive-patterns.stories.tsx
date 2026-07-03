@@ -7,6 +7,7 @@ import { Label } from "@wyliedog/ui/label";
 
 const meta: Meta = {
   title: "Patterns/Responsive",
+  tags: ["autodocs"],
   parameters: {
     layout: "padded",
     docs: {
@@ -27,7 +28,7 @@ type Story = StoryObj;
 
 export const ResponsiveCardGrid: Story = {
   parameters: {
-    viewport: { defaultViewport: "mobile1" },
+    viewport: { value: "iphone14" },
     docs: {
       description: {
         story:
@@ -70,7 +71,6 @@ export const ResponsiveCardGrid: Story = {
 
 export const ResponsiveCardGridDesktop: Story = {
   parameters: {
-    viewport: { defaultViewport: "desktop" },
     docs: {
       description: {
         story:
@@ -113,7 +113,7 @@ export const ResponsiveCardGridDesktop: Story = {
 
 export const ResponsiveNavigation: Story = {
   parameters: {
-    viewport: { defaultViewport: "mobile1" },
+    viewport: { value: "iphone14" },
     docs: {
       description: {
         story:
@@ -150,7 +150,7 @@ export const ResponsiveNavigation: Story = {
 
 export const ResponsiveForm: Story = {
   parameters: {
-    viewport: { defaultViewport: "tablet" },
+    viewport: { value: "ipad" },
     docs: {
       description: {
         story:

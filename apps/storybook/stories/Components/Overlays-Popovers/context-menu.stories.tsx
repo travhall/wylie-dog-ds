@@ -1,4 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { within, userEvent, expect, screen } from "storybook/test";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "@wyliedog/ui/table";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -109,6 +118,53 @@ export const Default: Story = {
       </ContextMenu>
     </div>
   ),
+};
+
+export const WithInteractions: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Interaction test — right-clicks the trigger, asserts the menu opens and its items are present.",
+      },
+    },
+  },
+  render: () => (
+    <div className="flex h-37.5 w-75 items-center justify-center rounded-md border border-dashed text-sm">
+      <ContextMenu>
+        <ContextMenuTrigger className="flex h-full w-full items-center justify-center">
+          Right-click to open menu
+        </ContextMenuTrigger>
+        <ContextMenuContent className="w-64">
+          <ContextMenuItem>Back</ContextMenuItem>
+          <ContextMenuItem>Reload</ContextMenuItem>
+          <ContextMenuSeparator />
+          <ContextMenuItem>Print...</ContextMenuItem>
+        </ContextMenuContent>
+      </ContextMenu>
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test 1: Menu is initially closed
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+
+    // Test 2: Right-click the trigger to open the context menu
+    const trigger = canvas.getByText(/right-click to open menu/i);
+    await userEvent.pointer({ keys: "[MouseRight]", target: trigger });
+
+    // Wait for the menu to open
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    // Test 3: Menu is now visible
+    const menu = await screen.findByRole("menu");
+    expect(menu).toBeInTheDocument();
+
+    // Test 4: At least one menu item is present
+    const reloadItem = screen.getByRole("menuitem", { name: /reload/i });
+    expect(reloadItem).toBeInTheDocument();
+  },
 };
 
 export const WithSubmenus: Story = {
@@ -358,24 +414,22 @@ export const DataTable: Story = {
     <div className="space-y-4 w-full max-w-2xl">
       <h3 className="text-lg font-semibold">Data Table</h3>
       <div className="rounded-md border">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b bg-gray-100">
-              <th className="px-4 py-2 text-left text-sm font-medium">Name</th>
-              <th className="px-4 py-2 text-left text-sm font-medium">Email</th>
-              <th className="px-4 py-2 text-left text-sm font-medium">
-                Status
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Name</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Status</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             <ContextMenu>
               <ContextMenuTrigger asChild>
-                <tr className="border-b hover:bg-(--color-interactive-hover)">
-                  <td className="px-4 py-2 text-sm">John Doe</td>
-                  <td className="px-4 py-2 text-sm">john@example.com</td>
-                  <td className="px-4 py-2 text-sm">Active</td>
-                </tr>
+                <TableRow>
+                  <TableCell>John Doe</TableCell>
+                  <TableCell>john@example.com</TableCell>
+                  <TableCell>Active</TableCell>
+                </TableRow>
               </ContextMenuTrigger>
               <ContextMenuContent>
                 <ContextMenuItem>View Profile</ContextMenuItem>
@@ -393,11 +447,11 @@ export const DataTable: Story = {
 
             <ContextMenu>
               <ContextMenuTrigger asChild>
-                <tr className="border-b hover:bg-(--color-interactive-hover)">
-                  <td className="px-4 py-2 text-sm">Jane Smith</td>
-                  <td className="px-4 py-2 text-sm">jane@example.com</td>
-                  <td className="px-4 py-2 text-sm">Inactive</td>
-                </tr>
+                <TableRow>
+                  <TableCell>Jane Smith</TableCell>
+                  <TableCell>jane@example.com</TableCell>
+                  <TableCell>Inactive</TableCell>
+                </TableRow>
               </ContextMenuTrigger>
               <ContextMenuContent>
                 <ContextMenuItem>View Profile</ContextMenuItem>
@@ -411,8 +465,8 @@ export const DataTable: Story = {
                 </ContextMenuItem>
               </ContextMenuContent>
             </ContextMenu>
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
       <p className="text-sm text-gray-500">
         Right-click on any row to see user actions

@@ -184,10 +184,30 @@ export const Triggered: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+
+    // Test 1: Trigger the toast
     const button = canvas.getByRole("button", { name: /default toast/i });
     await userEvent.click(button);
     await new Promise((r) => setTimeout(r, 300));
-    expect(document.querySelector('[role="status"]')).toBeInTheDocument();
+
+    // Test 2: The toast is rendered
+    const toastEl = document.querySelector('[role="status"]');
+    expect(toastEl).toBeInTheDocument();
+
+    // Test 3: The toast renders the text set by the trigger (title + description)
+    const toastScope = within(toastEl as HTMLElement);
+    expect(toastScope.getByText("Saved")).toBeInTheDocument();
+    expect(
+      toastScope.getByText("Your changes have been saved.")
+    ).toBeInTheDocument();
+
+    // Test 4: The toast can be dismissed via its close control
+    const closeButton = toastScope.getByRole("button", {
+      name: /close notification/i,
+    });
+    await userEvent.click(closeButton);
+    await new Promise((r) => setTimeout(r, 300));
+    expect(document.querySelector('[role="status"]')).not.toBeInTheDocument();
   },
   parameters: {
     docs: {
