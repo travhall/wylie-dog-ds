@@ -24,6 +24,7 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
   const [validationResult, setValidationResult] = useState<{
     valid: boolean;
     error?: string;
+    login?: string;
   } | null>(null);
 
   const validateToken = async (token: string) => {
@@ -39,17 +40,35 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
       });
 
       if (response.ok) {
-        setValidationResult({ valid: true });
+        const data = await response.json();
+        setValidationResult({ valid: true, login: data.login });
         return true;
+      } else if (response.status === 401) {
+        setValidationResult({
+          valid: false,
+          error:
+            "That token is invalid or expired. Create a new one and paste it here.",
+        });
+        return false;
+      } else if (response.status === 403) {
+        setValidationResult({
+          valid: false,
+          error:
+            'Token accepted, but it\'s missing repo access. Give it the "repo" scope (classic) or Contents: Read and write (fine-grained).',
+        });
+        return false;
       } else {
         setValidationResult({
           valid: false,
-          error: "Invalid token or insufficient permissions",
+          error: `HTTP ${response.status}: ${response.statusText}`,
         });
         return false;
       }
     } catch (error) {
-      setValidationResult({ valid: false, error: "Failed to validate token" });
+      setValidationResult({
+        valid: false,
+        error: "Couldn't reach GitHub. Check your connection and try again.",
+      });
       return false;
     } finally {
       setIsValidating(false);
@@ -82,17 +101,19 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
             lineHeight: "var(--line-height-relaxed)",
           }}
         >
-          Create a Personal Access Token at{" "}
           <a
-            href="https://github.com/settings/tokens"
+            href="https://github.com/settings/tokens/new?scopes=repo&description=Token%20Bridge"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "var(--accent-primary)", textDecoration: "none" }}
-            aria-label="GitHub Settings (opens in new tab)"
+            aria-label="Create a token (opens in new tab)"
           >
-            GitHub Settings
+            Create a token →
           </a>{" "}
-          with "repo" permissions.
+          — pre-scoped to "repo" access.
+          <br />
+          Using a fine-grained token instead? Grant "Contents: Read and write"
+          on the target repository.
         </p>
       </div>
 
@@ -156,7 +177,9 @@ function AccessTokenStep({ onNext, data, isFirst }: StepProps) {
                 }
               />
               {validationResult.valid
-                ? "Token is valid"
+                ? validationResult.login
+                  ? `Connected as ${validationResult.login}`
+                  : "Token is valid"
                 : validationResult.error}
             </span>
           </div>
