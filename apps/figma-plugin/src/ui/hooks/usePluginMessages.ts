@@ -538,7 +538,17 @@ export function usePluginMessages(
             "get-onboarding-state",
             "check-file-engagement",
           ];
-          if (!outgoingMessageTypes.includes(msg.type)) {
+          // Messages the plugin sends that are handled by component-local
+          // listeners (e.g. SyncStatus), not this central router.
+          const componentHandledTypes = [
+            "local-tokens-exported",
+            "local-tokens-error",
+            "last-sync-loaded",
+          ];
+          if (
+            !outgoingMessageTypes.includes(msg.type) &&
+            !componentHandledTypes.includes(msg.type)
+          ) {
             console.warn("Unknown message type from plugin:", msg.type);
           }
       }

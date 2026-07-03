@@ -398,18 +398,6 @@ export class ConflictAwareGitHubClient extends GitHubClient {
         pullResult.tokens
       );
 
-      // Diagnostic: name exactly what's flagged so false positives are legible.
-      // (console.warn survives the production build; console.log is stripped.)
-      if (conflictResult.conflicts.length > 0) {
-        console.warn(
-          `[TokenBridge] sync-status flagged ${conflictResult.conflicts.length} change(s):`,
-          conflictResult.conflicts
-            .slice(0, 30)
-            .map((c) => `${c.type}:${c.tokenName}`)
-            .join(", ")
-        );
-      }
-
       // Calculate change counts
       const localChanges = conflictResult.conflicts.filter(
         (c) => c.type === "value-change" && c.localToken
