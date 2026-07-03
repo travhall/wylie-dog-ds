@@ -287,6 +287,7 @@
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui",
     "test:watch": "vitest --watch",
+    "typecheck": "tsc --noEmit",
     "validate:tokens": "node scripts/validate-token-usage.js"
   },
   "dependencies": {

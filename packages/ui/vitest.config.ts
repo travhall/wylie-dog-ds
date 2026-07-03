@@ -19,8 +19,6 @@ export default defineConfig({
         "dist/",
         "src/tokens/**", // Generated files
         "src/styles/**", // CSS files
-        "src/accessibility-example.tsx", // Example/documentation code
-        "src/lib/accessibility.tsx", // Accessibility utilities documentation
       ],
       thresholds: {
         statements: 80,

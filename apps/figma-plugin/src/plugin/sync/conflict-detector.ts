@@ -562,6 +562,6 @@ export class ConflictDetector {
    * Generate unique conflict ID
    */
   private generateConflictId(tokenPath: string, type: string): string {
-    return `conflict_${type}_${tokenPath}_${Date.now()}`;
+    return `conflict_${type}_${tokenPath}`;
   }
 }

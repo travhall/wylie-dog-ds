@@ -110,7 +110,7 @@ export class ConflictResolver {
 
     const { tokenPath, collectionName, tokenName } = pathInfo;
 
-    // Extract conflict type from conflictId (format: conflict_{type}_{path}_{timestamp})
+    // Extract conflict type from conflictId (format: conflict_{type}_{path})
     const conflictType = conflictId.split("_")[1]; // "addition", "deletion", etc.
 
     console.log(`🔧 RESOLVER: Applying resolution for ${tokenPath}`);
@@ -355,9 +355,9 @@ export class ConflictResolver {
     collectionName: string;
     tokenName: string;
   } | null {
-    // Expected format: conflict_{type}_{collectionName}.{tokenName}_{timestamp}
-    // Example: conflict_value_primitive.color.gray.500_1234567890
-    const match = conflictId.match(/^conflict_[^_]+_(.+)_\d+$/);
+    // Expected format: conflict_{type}_{collectionName}.{tokenName}
+    // Example: conflict_value_primitive.color.gray.500
+    const match = conflictId.match(/^conflict_[^_]+_(.+)$/);
     if (!match) return null;
 
     const tokenPath = match[1]; // e.g., "primitive.color.gray.500"

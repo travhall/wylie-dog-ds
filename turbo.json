@@ -18,11 +18,6 @@
       "dependsOn": ["build:styles"],
       "cache": true
     },
-    "build-tokens": {
-      "inputs": ["../tokens/src/*.json", "style-dictionary.config.js"],
-      "outputs": ["src/styles/tokens.css", "src/tokens/*.ts"],
-      "cache": true
-    },
     "test": {
       "inputs": [
         "src/**/*.tsx",
@@ -35,6 +30,10 @@
     "test:watch": {
       "cache": false,
       "persistent": true
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "cache": true
     },
     "test:a11y": {
       "inputs": ["src/**/*.tsx", "src/**/*.ts", "vitest.config.ts"],

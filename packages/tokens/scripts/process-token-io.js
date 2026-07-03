@@ -121,6 +121,13 @@ class TokenIOProcessor {
 
       if (!collection || !collection.variables) continue;
 
+      if (!["primitive", "semantic", "components"].includes(collectionName)) {
+        console.warn(
+          `⚠️  Skipping unknown collection "${collectionName}" in token input — only primitive/semantic/components are routed.`
+        );
+        continue;
+      }
+
       // Extract modes
       const modes = collection.modes || [];
       const lightMode =
@@ -189,6 +196,13 @@ class TokenIOProcessor {
       const collection = collectionWrapper[collectionName];
 
       if (!collection || !collection.modes) continue;
+
+      if (!["primitive", "semantic", "components"].includes(collectionName)) {
+        console.warn(
+          `⚠️  Skipping unknown collection "${collectionName}" in token input — only primitive/semantic/components are routed.`
+        );
+        continue;
+      }
 
       // Process each mode (Light, Dark)
       for (const [modeName, modeData] of Object.entries(collection.modes)) {
@@ -443,6 +457,12 @@ class TokenIOProcessor {
       const lightToken = lightMap[key];
       const darkToken = darkMap[key];
       const baseToken = lightToken || darkToken;
+
+      if (!lightToken || !darkToken) {
+        console.warn(
+          `⚠️  Token "${key}" is missing its ${!lightToken ? "light" : "dark"} mode — inheriting the ${!lightToken ? "dark" : "light"} mode value as a fallback.`
+        );
+      }
 
       variables[key] = {
         $type: baseToken.$type,

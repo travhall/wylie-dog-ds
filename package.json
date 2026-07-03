@@ -22,6 +22,7 @@
     "test:a11y": "turbo run test:a11y",
     "test:coverage": "turbo run test:coverage",
     "test:watch": "turbo run test:watch",
+    "typecheck": "turbo run typecheck",
     "version-packages": "changeset version"
   },
   "devDependencies": {
