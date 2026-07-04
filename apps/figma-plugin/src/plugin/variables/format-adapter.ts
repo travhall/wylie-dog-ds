@@ -18,9 +18,9 @@ export interface NormalizationResult {
 
 export interface FormatAdapter {
   name: string;
-  detect(data: any): FormatDetectionResult;
-  normalize(data: any): NormalizationResult;
-  validate(data: any): boolean;
+  detect(data: unknown): FormatDetectionResult;
+  normalize(data: unknown): NormalizationResult;
+  validate(data: unknown): boolean;
 }
 
 export enum TokenFormatType {
@@ -45,11 +45,7 @@ export interface StructureInfo {
   referenceCount: number;
   propertyFormat: "$type/$value" | "type/value" | "mixed" | "other";
   namingConvention:
-    | "dot-notation"
-    | "kebab-case"
-    | "camelCase"
-    | "snake_case"
-    | "mixed";
+    "dot-notation" | "kebab-case" | "camelCase" | "snake_case" | "mixed";
   referenceFormat: "curly-brace" | "css-var" | "sass" | "other" | "none";
 }
 

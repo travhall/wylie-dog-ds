@@ -7,26 +7,39 @@ import type {
   TransformationLog,
 } from "../format-adapter";
 import { TokenFormatType } from "../format-adapter";
-import type { ProcessedToken } from "../processor";
+import type { ExportData, ProcessedToken } from "../processor";
+
+/** Loosely-typed nested Style Dictionary node (a token leaf or a group). */
+type LooseSDNode = {
+  $value?: unknown;
+  value?: unknown;
+  $type?: unknown;
+  type?: unknown;
+  $description?: unknown;
+  description?: unknown;
+  comment?: unknown;
+  attributes?: { category?: unknown; type?: unknown; item?: unknown };
+};
 
 export class StyleDictionaryNestedAdapter implements FormatAdapter {
   name = "Style Dictionary Nested Format";
 
-  detect(data: any): FormatDetectionResult {
+  detect(data: unknown): FormatDetectionResult {
     let confidence = 0;
     const warnings: string[] = [];
 
     // Check for nested object structure (not flat, not array)
     if (typeof data === "object" && !Array.isArray(data) && data !== null) {
       confidence += 0.2;
+      const record = data as Record<string, unknown>;
 
       // Look for nested structure with categories
-      const topLevelKeys = Object.keys(data);
+      const topLevelKeys = Object.keys(record);
       let nestedStructureCount = 0;
       let tokenCount = 0;
 
       for (const key of topLevelKeys) {
-        const category = data[key];
+        const category = record[key];
         if (
           category &&
           typeof category === "object" &&
@@ -68,7 +81,7 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
     };
   }
 
-  normalize(data: any): NormalizationResult {
+  normalize(data: unknown): NormalizationResult {
     const transformations: TransformationLog[] = [];
     const warnings: string[] = [];
     const errors: string[] = [];
@@ -108,7 +121,7 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
       );
 
       // Transform each collection
-      const normalizedCollections: any[] = [];
+      const normalizedCollections: ExportData[] = [];
 
       for (const [collectionName, tokens] of Object.entries(collections)) {
         console.log(
@@ -146,21 +159,19 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
     }
   }
 
-  validate(data: any): boolean {
+  validate(data: unknown): boolean {
     return this.detect(data).confidence > 0.5;
   }
 
-  private hasNestedTokenStructure(obj: any): boolean {
+  private hasNestedTokenStructure(obj: unknown): boolean {
     if (!obj || typeof obj !== "object") return false;
 
     // Recursively check for token structures
     for (const value of Object.values(obj)) {
       if (value && typeof value === "object") {
         // Check if this is a token (has value property)
-        if (
-          (value as any).value !== undefined ||
-          (value as any).$value !== undefined
-        ) {
+        const t = value as LooseSDNode;
+        if (t.value !== undefined || t.$value !== undefined) {
           return true;
         }
         // Recursively check nested objects
@@ -173,19 +184,17 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
     return false;
   }
 
-  private countTokensInCategory(obj: any): number {
+  private countTokensInCategory(obj: unknown): number {
     let count = 0;
 
-    const traverse = (current: any) => {
+    const traverse = (current: unknown) => {
       if (!current || typeof current !== "object") return;
 
       for (const value of Object.values(current)) {
         if (value && typeof value === "object") {
           // Check if this is a token
-          if (
-            (value as any).value !== undefined ||
-            (value as any).$value !== undefined
-          ) {
+          const t = value as LooseSDNode;
+          if (t.value !== undefined || t.$value !== undefined) {
             count++;
           } else {
             // Recursively count in nested objects
@@ -200,21 +209,20 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
   }
 
   private flattenNestedStructure(
-    data: any,
+    data: unknown,
     transformations: TransformationLog[]
-  ): Record<string, any> {
-    const flattened: Record<string, any> = {};
+  ): Record<string, unknown> {
+    const flattened: Record<string, unknown> = {};
 
-    const flatten = (obj: any, path: string[] = []) => {
+    const flatten = (obj: unknown, path: string[] = []) => {
+      if (!obj || typeof obj !== "object") return;
       for (const [key, value] of Object.entries(obj)) {
         const currentPath = path.concat([key]);
 
         if (value && typeof value === "object") {
           // Check if this is a token (leaf node with value)
-          if (
-            (value as any).value !== undefined ||
-            (value as any).$value !== undefined
-          ) {
+          const t = value as LooseSDNode;
+          if (t.value !== undefined || t.$value !== undefined) {
             const tokenPath = currentPath.join(".");
             flattened[tokenPath] = value;
           } else {
@@ -238,10 +246,10 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
   }
 
   private groupTokensByCategory(
-    tokens: Record<string, any>,
+    tokens: Record<string, unknown>,
     transformations: TransformationLog[]
-  ): Record<string, any> {
-    const collections: Record<string, any> = {};
+  ): Record<string, Record<string, unknown>> {
+    const collections: Record<string, Record<string, unknown>> = {};
 
     for (const [tokenPath, tokenData] of Object.entries(tokens)) {
       // Extract top-level category as collection name
@@ -267,9 +275,9 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
 
   private transformCollection(
     name: string,
-    tokens: any,
+    tokens: Record<string, unknown>,
     transformations: TransformationLog[]
-  ): any {
+  ): ExportData {
     const variables: Record<string, ProcessedToken> = {};
 
     for (const [tokenPath, tokenData] of Object.entries(tokens)) {
@@ -295,16 +303,19 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
 
   private transformToken(
     tokenPath: string,
-    tokenData: any,
+    tokenData: unknown,
     transformations: TransformationLog[]
   ): ProcessedToken {
-    const token = tokenData as any;
+    const token = (
+      typeof tokenData === "object" && tokenData !== null ? tokenData : {}
+    ) as LooseSDNode;
 
     // Extract value and type
-    let value = token.$value ?? token.value ?? token;
-    let type = token.$type ?? token.type;
-    const description =
-      token.$description ?? token.description ?? token.comment;
+    let value: unknown = token.$value ?? token.value ?? tokenData;
+    let type = (token.$type ?? token.type ?? "") as string;
+    const description = (token.$description ??
+      token.description ??
+      token.comment) as string | undefined;
 
     // Infer type if not provided
     if (!type) {
@@ -347,7 +358,7 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
     };
   }
 
-  private inferTypeFromPath(tokenPath: string, value: any): string {
+  private inferTypeFromPath(tokenPath: string, value: unknown): string {
     const pathLower = tokenPath.toLowerCase();
 
     // Type inference based on token path
@@ -424,7 +435,7 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
     return `Style Dictionary token: ${tokenPath}`;
   }
 
-  private analyzeStructure(data: any): StructureInfo {
+  private analyzeStructure(data: unknown): StructureInfo {
     let tokenCount = 0;
     let referenceCount = 0;
     let hasCollections = false;
@@ -433,16 +444,15 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
       hasCollections = Object.keys(data).length > 0;
 
       // Count tokens and references recursively
-      const countTokens = (obj: any) => {
+      const countTokens = (obj: unknown) => {
+        if (!obj || typeof obj !== "object") return;
         for (const value of Object.values(obj)) {
           if (value && typeof value === "object") {
-            if (
-              (value as any).value !== undefined ||
-              (value as any).$value !== undefined
-            ) {
+            const t = value as LooseSDNode;
+            if (t.value !== undefined || t.$value !== undefined) {
               tokenCount++;
 
-              const tokenValue = (value as any).$value ?? (value as any).value;
+              const tokenValue = t.$value ?? t.value;
               if (
                 typeof tokenValue === "string" &&
                 (tokenValue.includes("{") || tokenValue.includes("var("))
@@ -472,14 +482,16 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
   }
 
   private detectReferenceFormat(
-    data: any
+    data: unknown
   ): "curly-brace" | "css-var" | "sass" | "other" | "none" {
     if (typeof data !== "object" || !data) return "none";
 
-    const checkReferences = (obj: any): string | null => {
+    const checkReferences = (obj: unknown): string | null => {
+      if (!obj || typeof obj !== "object") return null;
       for (const value of Object.values(obj)) {
         if (value && typeof value === "object") {
-          const tokenValue = (value as any).$value ?? (value as any).value;
+          const t = value as LooseSDNode;
+          const tokenValue = t.$value ?? t.value;
           if (typeof tokenValue === "string") {
             if (tokenValue.includes("{") && tokenValue.includes("}"))
               return "curly-brace";
@@ -497,6 +509,8 @@ export class StyleDictionaryNestedAdapter implements FormatAdapter {
     };
 
     const format = checkReferences(data);
-    return (format as any) || "none";
+    return (
+      (format as "curly-brace" | "css-var" | "sass" | "other" | null) || "none"
+    );
   }
 }
