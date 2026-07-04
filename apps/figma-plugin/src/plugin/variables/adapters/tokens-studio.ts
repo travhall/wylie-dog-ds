@@ -7,37 +7,48 @@ import type {
   TransformationLog,
 } from "../format-adapter";
 import { TokenFormatType } from "../format-adapter";
-import type { ProcessedToken } from "../processor";
+import type { ExportData, ProcessedToken } from "../processor";
+
+/** Loosely-typed Tokens Studio token (value/$value/rawValue conventions). */
+type LooseTSToken = {
+  $value?: unknown;
+  value?: unknown;
+  rawValue?: unknown;
+  $type?: unknown;
+  type?: unknown;
+  $description?: unknown;
+  description?: unknown;
+  comment?: unknown;
+};
 
 export class TokensStudioAdapter implements FormatAdapter {
   name = "Tokens Studio Format";
 
-  detect(data: any): FormatDetectionResult {
+  detect(data: unknown): FormatDetectionResult {
     let confidence = 0;
     const warnings: string[] = [];
 
     if (typeof data === "object" && !Array.isArray(data) && data !== null) {
       confidence += 0.2;
+      const record = data as Record<string, unknown>;
 
       // Look for Tokens Studio specific metadata
-      if (data.$themes || data.$metadata || data["$themes"]) {
+      if (record.$themes || record.$metadata) {
         confidence += 0.4;
       }
 
       // Check for token sets (common in Tokens Studio)
-      const keys = Object.keys(data);
-      const hasTokenSets = keys.some(
-        (key) =>
-          data[key] &&
-          typeof data[key] === "object" &&
-          !key.startsWith("$") &&
-          Object.values(data[key]).some(
-            (token: any) =>
-              token &&
-              typeof token === "object" &&
-              (token.value !== undefined || token.$value !== undefined)
-          )
-      );
+      const keys = Object.keys(record);
+      const hasTokenSets = keys.some((key) => {
+        const set = record[key];
+        if (!set || typeof set !== "object" || key.startsWith("$"))
+          return false;
+        return Object.values(set as Record<string, unknown>).some((token) => {
+          if (!token || typeof token !== "object") return false;
+          const t = token as LooseTSToken;
+          return t.value !== undefined || t.$value !== undefined;
+        });
+      });
 
       if (hasTokenSets) {
         confidence += 0.3;
@@ -49,16 +60,17 @@ export class TokensStudioAdapter implements FormatAdapter {
 
       for (const token of sampleTokens) {
         if (token && typeof token === "object") {
+          const t = token as LooseTSToken;
           // Tokens Studio often has both value and resolved value
-          if (token.value !== undefined && token.rawValue !== undefined) {
+          if (t.value !== undefined && t.rawValue !== undefined) {
             tokensStudioPatterns++;
           }
           // Or uses specific reference patterns
-          if (typeof token.value === "string" && token.value.startsWith("{")) {
+          if (typeof t.value === "string" && t.value.startsWith("{")) {
             tokensStudioPatterns++;
           }
           // Check for type property (common in Tokens Studio)
-          if (token.type !== undefined) {
+          if (t.type !== undefined) {
             tokensStudioPatterns++;
           }
         }
@@ -78,7 +90,7 @@ export class TokensStudioAdapter implements FormatAdapter {
     };
   }
 
-  normalize(data: any): NormalizationResult {
+  normalize(data: unknown): NormalizationResult {
     const transformations: TransformationLog[] = [];
     const warnings: string[] = [];
     const errors: string[] = [];
@@ -107,7 +119,7 @@ export class TokensStudioAdapter implements FormatAdapter {
       console.log(`🗺️  Built reference map with ${referenceMap.size} mappings`);
 
       // Transform each token set with enhanced reference resolution
-      const normalizedCollections: any[] = [];
+      const normalizedCollections: ExportData[] = [];
 
       for (const [setName, tokens] of Object.entries(tokenSets)) {
         console.log(
@@ -146,15 +158,17 @@ export class TokensStudioAdapter implements FormatAdapter {
     }
   }
 
-  validate(data: any): boolean {
+  validate(data: unknown): boolean {
     return this.detect(data).confidence > 0.4;
   }
 
   private extractTokenSets(
-    data: any,
+    data: unknown,
     transformations: TransformationLog[]
-  ): Record<string, any> {
-    const tokenSets: Record<string, any> = {};
+  ): Record<string, Record<string, unknown>> {
+    const tokenSets: Record<string, Record<string, unknown>> = {};
+
+    if (typeof data !== "object" || data === null) return tokenSets;
 
     // Skip metadata and theme objects
     for (const [key, value] of Object.entries(data)) {
@@ -164,7 +178,7 @@ export class TokensStudioAdapter implements FormatAdapter {
 
       // Check if this looks like a token set
       if (this.isTokenSet(value)) {
-        tokenSets[key] = value;
+        tokenSets[key] = value as Record<string, unknown>;
       }
     }
 
@@ -180,24 +194,22 @@ export class TokensStudioAdapter implements FormatAdapter {
     return tokenSets;
   }
 
-  private isTokenSet(data: any): boolean {
+  private isTokenSet(data: unknown): boolean {
     if (!data || typeof data !== "object") return false;
 
     // Check if object contains token-like properties
     const values = Object.values(data);
-    const tokenLikeCount = values.filter(
-      (value) =>
-        value &&
-        typeof value === "object" &&
-        ((value as any).value !== undefined ||
-          (value as any).$value !== undefined)
-    ).length;
+    const tokenLikeCount = values.filter((value) => {
+      if (!value || typeof value !== "object") return false;
+      const t = value as LooseTSToken;
+      return t.value !== undefined || t.$value !== undefined;
+    }).length;
 
     return tokenLikeCount > 0;
   }
 
   private buildEnhancedReferenceMap(
-    tokenSets: Record<string, any>
+    tokenSets: Record<string, Record<string, unknown>>
   ): Map<string, string> {
     const referenceMap = new Map<string, string>();
 
@@ -295,10 +307,10 @@ export class TokensStudioAdapter implements FormatAdapter {
 
   private transformTokenSet(
     setName: string,
-    tokens: any,
+    tokens: Record<string, unknown>,
     transformations: TransformationLog[],
     referenceMap: Map<string, string>
-  ): any {
+  ): ExportData {
     const variables: Record<string, ProcessedToken> = {};
 
     for (const [tokenName, tokenData] of Object.entries(tokens)) {
@@ -322,18 +334,22 @@ export class TokensStudioAdapter implements FormatAdapter {
 
   private transformToken(
     tokenName: string,
-    tokenData: any,
+    tokenData: unknown,
     transformations: TransformationLog[],
     referenceMap: Map<string, string>,
     currentSet: string
   ): ProcessedToken {
-    const token = tokenData as any;
+    const token = (
+      typeof tokenData === "object" && tokenData !== null ? tokenData : {}
+    ) as LooseTSToken;
 
     // Extract value (Tokens Studio can have multiple value properties)
-    let value = token.$value ?? token.value ?? token.rawValue ?? token;
-    let type = token.$type ?? token.type;
-    const description =
-      token.$description ?? token.description ?? token.comment;
+    let value: unknown =
+      token.$value ?? token.value ?? token.rawValue ?? tokenData;
+    let type = (token.$type ?? token.type ?? "") as string;
+    const description = (token.$description ??
+      token.description ??
+      token.comment) as string | undefined;
 
     // Handle Tokens Studio specific value resolution
     if (token.value !== undefined && token.rawValue !== undefined) {
@@ -347,8 +363,8 @@ export class TokensStudioAdapter implements FormatAdapter {
       transformations.push({
         type: "value-resolution",
         description: `Resolved Tokens Studio value for ${currentSet}.${tokenName}`,
-        before: `rawValue: ${token.rawValue}`,
-        after: `value: ${value}`,
+        before: `rawValue: ${String(token.rawValue)}`,
+        after: `value: ${String(value)}`,
       });
     }
 
@@ -465,7 +481,7 @@ export class TokensStudioAdapter implements FormatAdapter {
     return parts[parts.length - 1];
   }
 
-  private inferType(value: any): string {
+  private inferType(value: unknown): string {
     if (typeof value === "string") {
       // Colors (hex, rgb, hsl)
       if (value.match(/^#[0-9a-fA-F]{3,6}$/)) return "color";
@@ -504,8 +520,10 @@ export class TokensStudioAdapter implements FormatAdapter {
     return "string";
   }
 
-  private getSampleTokens(data: any): any[] {
-    const tokens: any[] = [];
+  private getSampleTokens(data: unknown): unknown[] {
+    const tokens: unknown[] = [];
+
+    if (typeof data !== "object" || data === null) return tokens;
 
     for (const [key, value] of Object.entries(data)) {
       if (key.startsWith("$")) continue;
@@ -521,7 +539,7 @@ export class TokensStudioAdapter implements FormatAdapter {
     return tokens.slice(0, 5);
   }
 
-  private analyzeStructure(data: any): StructureInfo {
+  private analyzeStructure(data: unknown): StructureInfo {
     let tokenCount = 0;
     let referenceCount = 0;
     let hasCollections = false;
@@ -536,7 +554,8 @@ export class TokensStudioAdapter implements FormatAdapter {
           // Count references
           for (const token of setTokens) {
             if (token && typeof token === "object") {
-              const tokenValue = (token as any).value ?? (token as any).$value;
+              const t = token as LooseTSToken;
+              const tokenValue = t.value ?? t.$value;
               if (typeof tokenValue === "string" && tokenValue.includes("{")) {
                 referenceCount++;
               }

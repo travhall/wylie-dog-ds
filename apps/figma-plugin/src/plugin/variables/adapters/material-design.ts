@@ -7,12 +7,24 @@ import type {
   TransformationLog,
 } from "../format-adapter";
 import { TokenFormatType } from "../format-adapter";
-import type { ProcessedToken } from "../processor";
+import type { ExportData, ProcessedToken } from "../processor";
+
+/** Loosely-typed Material Design token (value/$value + composite objects). */
+type LooseMDToken = {
+  $value?: unknown;
+  value?: unknown;
+  $type?: unknown;
+  type?: unknown;
+  $description?: unknown;
+  description?: unknown;
+  comment?: unknown;
+  default?: unknown;
+};
 
 export class MaterialDesignAdapter implements FormatAdapter {
   name = "Material Design Format";
 
-  detect(data: any): FormatDetectionResult {
+  detect(data: unknown): FormatDetectionResult {
     let confidence = 0;
     const warnings: string[] = [];
 
@@ -77,7 +89,7 @@ export class MaterialDesignAdapter implements FormatAdapter {
     };
   }
 
-  normalize(data: any): NormalizationResult {
+  normalize(data: unknown): NormalizationResult {
     const transformations: TransformationLog[] = [];
     const warnings: string[] = [];
     const errors: string[] = [];
@@ -104,7 +116,7 @@ export class MaterialDesignAdapter implements FormatAdapter {
       );
 
       // Transform each collection
-      const normalizedCollections: any[] = [];
+      const normalizedCollections: ExportData[] = [];
 
       for (const [collectionName, tokens] of Object.entries(collections)) {
         console.log(
@@ -142,21 +154,26 @@ export class MaterialDesignAdapter implements FormatAdapter {
     }
   }
 
-  validate(data: any): boolean {
+  validate(data: unknown): boolean {
     return this.detect(data).confidence > 0.5;
   }
 
   private groupMaterialTokens(
-    data: any,
+    data: unknown,
     transformations: TransformationLog[]
-  ): Record<string, any> {
-    const collections: Record<string, any> = {
+  ): Record<string, Record<string, unknown>> {
+    const collections: Record<string, Record<string, unknown>> = {
       "Material Reference": {},
       "Material System": {},
       "Material Components": {},
     };
 
-    for (const [tokenPath, tokenData] of Object.entries(data)) {
+    const record =
+      typeof data === "object" && data !== null
+        ? (data as Record<string, unknown>)
+        : {};
+
+    for (const [tokenPath, tokenData] of Object.entries(record)) {
       // Determine which collection this token belongs to
       let collectionName = "Material System"; // Default
 
@@ -196,9 +213,9 @@ export class MaterialDesignAdapter implements FormatAdapter {
 
   private transformCollection(
     name: string,
-    tokens: any,
+    tokens: Record<string, unknown>,
     transformations: TransformationLog[]
-  ): any {
+  ): ExportData {
     const variables: Record<string, ProcessedToken> = {};
 
     for (const [tokenPath, tokenData] of Object.entries(tokens)) {
@@ -224,16 +241,19 @@ export class MaterialDesignAdapter implements FormatAdapter {
 
   private transformToken(
     tokenPath: string,
-    tokenData: any,
+    tokenData: unknown,
     transformations: TransformationLog[]
   ): ProcessedToken {
-    const token = tokenData as any;
+    const token = (
+      typeof tokenData === "object" && tokenData !== null ? tokenData : {}
+    ) as LooseMDToken;
 
     // Extract value and type
-    let value = token.$value ?? token.value ?? token;
-    let type = token.$type ?? token.type;
-    const description =
-      token.$description ?? token.description ?? token.comment;
+    let value: unknown = token.$value ?? token.value ?? tokenData;
+    let type = (token.$type ?? token.type ?? "") as string;
+    const description = (token.$description ??
+      token.description ??
+      token.comment) as string | undefined;
 
     // Material Design specific type inference
     if (!type) {
@@ -254,8 +274,8 @@ export class MaterialDesignAdapter implements FormatAdapter {
       transformations.push({
         type: "value-transformation",
         description: `Transformed Material Design value for ${tokenPath}`,
-        before: originalValue,
-        after: value,
+        before: String(originalValue),
+        after: String(value),
       });
     }
 
@@ -276,7 +296,7 @@ export class MaterialDesignAdapter implements FormatAdapter {
     };
   }
 
-  private inferMaterialType(tokenPath: string, value: any): string {
+  private inferMaterialType(tokenPath: string, value: unknown): string {
     // Material Design specific type inference based on token path
     if (tokenPath.includes(".color.")) {
       return "color";
@@ -336,7 +356,7 @@ export class MaterialDesignAdapter implements FormatAdapter {
     return "string";
   }
 
-  private needsValueTransformation(tokenPath: string, value: any): boolean {
+  private needsValueTransformation(tokenPath: string, value: unknown): boolean {
     // Check if Material Design specific transformations are needed
     if (typeof value === "object" && value !== null) {
       // Material Design sometimes uses objects for complex values
@@ -351,7 +371,7 @@ export class MaterialDesignAdapter implements FormatAdapter {
     return false;
   }
 
-  private transformMaterialValue(tokenPath: string, value: any): any {
+  private transformMaterialValue(tokenPath: string, value: unknown): unknown {
     // Handle Material Design elevation
     if (tokenPath.includes(".elevation.") && typeof value === "number") {
       // Convert elevation number to shadow string
@@ -361,9 +381,10 @@ export class MaterialDesignAdapter implements FormatAdapter {
     // Handle Material Design composite objects
     if (typeof value === "object" && value !== null) {
       // Extract primary value from object
-      if (value.value !== undefined) return value.value;
-      if (value.$value !== undefined) return value.$value;
-      if (value.default !== undefined) return value.default;
+      const obj = value as LooseMDToken;
+      if (obj.value !== undefined) return obj.value;
+      if (obj.$value !== undefined) return obj.$value;
+      if (obj.default !== undefined) return obj.default;
 
       // Convert object to string representation
       return JSON.stringify(value);
@@ -415,7 +436,7 @@ export class MaterialDesignAdapter implements FormatAdapter {
     return "Material Design token";
   }
 
-  private analyzeStructure(data: any): StructureInfo {
+  private analyzeStructure(data: unknown): StructureInfo {
     let tokenCount = 0;
     let referenceCount = 0;
 
@@ -426,7 +447,8 @@ export class MaterialDesignAdapter implements FormatAdapter {
       // Count references in Material Design tokens
       for (const [, tokenData] of Object.entries(data)) {
         if (tokenData && typeof tokenData === "object") {
-          const value = (tokenData as any).$value ?? (tokenData as any).value;
+          const t = tokenData as LooseMDToken;
+          const value = t.$value ?? t.value;
           if (
             typeof value === "string" &&
             (value.includes("{") || value.includes("var("))
@@ -450,13 +472,14 @@ export class MaterialDesignAdapter implements FormatAdapter {
   }
 
   private detectReferenceFormat(
-    data: any
+    data: unknown
   ): "curly-brace" | "css-var" | "sass" | "other" | "none" {
     if (typeof data !== "object" || !data) return "none";
 
     for (const token of Object.values(data).slice(0, 10)) {
       if (token && typeof token === "object") {
-        const value = (token as any).$value ?? (token as any).value;
+        const t = token as LooseMDToken;
+        const value = t.$value ?? t.value;
         if (typeof value === "string") {
           if (value.includes("{") && value.includes("}")) return "curly-brace";
           if (value.includes("var(--")) return "css-var";
