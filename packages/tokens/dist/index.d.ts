@@ -449,7 +449,7 @@ export declare const contextmenuItemHover: "oklch(0.952 0.003 264.51)";
 export declare const contextmenuItemTextHover: "oklch(0.209 0.01 268.18)";
 export declare const contextmenuLabel: "oklch(0.423 0.007 264.49)";
 export declare const contextmenuSeparator: "oklch(0.786 0.004 271.24)";
-export declare const contextmenuShortcut: "oklch(0.613 0.005 258.39)";
+export declare const contextmenuShortcut: "oklch(0.52 0.007 264.5)";
 export declare const contextmenuText: "oklch(0.209 0.01 268.18)";
 export declare const dialogBackground: "oklch(0.991 0.003 264.48)";
 export declare const dialogBorder: "oklch(0.786 0.004 271.24)";

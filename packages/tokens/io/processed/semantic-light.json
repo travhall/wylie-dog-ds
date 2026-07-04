@@ -86,7 +86,7 @@
   },
   "color.text.tertiary": {
     "$type": "color",
-    "$value": "{color.gray.500}",
+    "$value": "{color.gray.600}",
     "$description": "Tertiary text for captions and hints"
   },
   "color.text.disabled": {

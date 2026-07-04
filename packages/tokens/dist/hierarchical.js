@@ -194,7 +194,7 @@ export const color = {
   "text": {
     "primary": "oklch(0.209 0.01 268.18)",
     "secondary": "oklch(0.423 0.007 264.49)",
-    "tertiary": "oklch(0.613 0.005 258.39)",
+    "tertiary": "oklch(0.52 0.007 264.5)",
     "disabled": "oklch(0.699 0.005 271.16)",
     "inverse": "oklch(0.991 0.003 264.48)",
     "brand": "oklch(0.646 0.194 40.95)",

@@ -2676,7 +2676,7 @@
           "text",
           "tertiary"
         ],
-        "value": "oklch(0.613 0.005 258.39)",
+        "value": "oklch(0.52 0.007 264.5)",
         "type": "color",
         "variable": "var(--color-text-tertiary)",
         "description": "Tertiary text for captions and hints"
@@ -7749,7 +7749,7 @@
           "contextmenu",
           "shortcut"
         ],
-        "value": "oklch(0.613 0.005 258.39)",
+        "value": "oklch(0.52 0.007 264.5)",
         "type": "color",
         "variable": "var(--color-contextmenu-shortcut)",
         "description": ""

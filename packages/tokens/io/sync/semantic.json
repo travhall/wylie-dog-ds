@@ -167,9 +167,9 @@
         },
         "color.text.tertiary": {
           "$type": "color",
-          "$value": "{color.gray.500}",
+          "$value": "{color.gray.600}",
           "valuesByMode": {
-            "Light": "{color.gray.500}",
+            "Light": "{color.gray.600}",
             "Dark": "{color.gray.500}"
           },
           "$description": "Tertiary text for captions and hints"

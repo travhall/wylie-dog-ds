@@ -295,7 +295,7 @@
   --color-surface-info: oklch(0.97 0.014 254.72);
   --color-text-primary: oklch(0.209 0.01 268.18);
   --color-text-secondary: oklch(0.423 0.007 264.49);
-  --color-text-tertiary: oklch(0.613 0.005 258.39);
+  --color-text-tertiary: oklch(0.52 0.007 264.5);
   --color-text-disabled: oklch(0.699 0.005 271.16);
   --color-text-inverse: oklch(0.991 0.003 264.48);
   --color-text-brand: oklch(0.646 0.194 40.95);
@@ -589,7 +589,7 @@
   --color-contextmenu-item-text-hover: oklch(0.209 0.01 268.18);
   --color-contextmenu-label: oklch(0.423 0.007 264.49);
   --color-contextmenu-separator: oklch(0.786 0.004 271.24);
-  --color-contextmenu-shortcut: oklch(0.613 0.005 258.39);
+  --color-contextmenu-shortcut: oklch(0.52 0.007 264.5);
   --color-contextmenu-text: oklch(0.209 0.01 268.18);
   --color-dialog-background: oklch(0.991 0.003 264.48);
   --color-dialog-border: oklch(0.786 0.004 271.24);
