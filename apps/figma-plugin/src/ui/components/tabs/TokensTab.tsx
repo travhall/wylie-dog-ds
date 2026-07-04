@@ -18,6 +18,7 @@ interface TokensTabProps {
   onDeselectAll: () => void;
   loading: boolean;
   selectedCollection?: CollectionDetails | null;
+  onCloseDetails?: () => void;
   onImportFile?: () => void;
   onGenerateDemoTokens?: () => void;
   onSetupGitHub?: () => void;
@@ -47,6 +48,7 @@ export function TokensTab({
   onDeselectAll,
   loading,
   selectedCollection,
+  onCloseDetails,
   onImportFile,
   onGenerateDemoTokens,
   onSetupGitHub,
@@ -460,7 +462,13 @@ export function TokensTab({
           collectionName={browserCollection.name}
           tokens={browserCollection.tokens}
           modes={browserCollection.modes}
-          onClose={() => setBrowserCollection(null)}
+          onClose={() => {
+            setBrowserCollection(null);
+            // Clear the parent's selectedCollection too — it's otherwise still
+            // set on the next remount (e.g. the tab-switch after a pull
+            // completes) and this effect would reopen the modal unprompted.
+            onCloseDetails?.();
+          }}
         />
       )}
     </div>

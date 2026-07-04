@@ -519,6 +519,9 @@ function AppInner() {
                 onViewDetails={(id: string) => {
                   pluginActions.loadCollectionDetails(id);
                 }}
+                onCloseDetails={() => {
+                  pluginActions.setSelectedCollection(null);
+                }}
                 onSelectAll={() => {
                   dispatch({
                     type: "SELECT_ALL_COLLECTIONS",
