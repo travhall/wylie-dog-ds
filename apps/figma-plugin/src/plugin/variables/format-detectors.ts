@@ -12,7 +12,7 @@ export class FormatDetectorRegistry {
     this.detectors.push(adapter);
   }
 
-  detectFormat(data: any): FormatDetectionResult {
+  detectFormat(data: unknown): FormatDetectionResult {
     console.log(
       `🔍 Running format detection with ${this.detectors.length} detectors`
     );

@@ -17,8 +17,8 @@ export class ReferenceNormalizer {
     { pattern: /\[([^\]]+)\]/, format: "bracket-reference" },
   ];
 
-  static normalizeReferences(value: any): {
-    value: any;
+  static normalizeReferences(value: unknown): {
+    value: unknown;
     transformations: ReferenceTransformation[];
   } {
     if (typeof value !== "string") return { value, transformations: [] };

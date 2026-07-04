@@ -229,7 +229,7 @@ export class FigmaVariableImporter {
         // Retrieve original $type from plugin data (preserves spacing/dimension/fontSize etc.)
         const originalType = variable.getPluginData("originalType");
         return {
-          $type: (originalType || "number") as any,
+          $type: (originalType || "number") as DTCGToken["$type"],
           $value: value as number,
           $description: variable.description || undefined,
         };
@@ -303,14 +303,14 @@ export class FigmaVariableImporter {
   ): void {
     // Split by / or . to create nested structure
     const parts = path.split(/[/.]/);
-    let current: any = obj;
+    let current: DTCGTokenGroup = obj;
 
     for (let i = 0; i < parts.length - 1; i++) {
       const part = parts[i];
       if (!current[part]) {
         current[part] = {};
       }
-      current = current[part];
+      current = current[part] as DTCGTokenGroup;
     }
 
     current[parts[parts.length - 1]] = token;

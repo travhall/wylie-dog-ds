@@ -225,7 +225,7 @@ export function validateTokensForImport(
  */
 function findSimilarToken(
   target: string,
-  allTokens: Map<string, any>
+  allTokens: Map<string, unknown>
 ): string | undefined {
   const tokenNames = Array.from(allTokens.keys());
 
@@ -403,7 +403,7 @@ export function validateTokenValue(token: ProcessedToken): ValidationError[] {
   return errors;
 }
 
-function isValidColorValue(value: any): boolean {
+function isValidColorValue(value: unknown): boolean {
   if (typeof value === "string") {
     // Check hex, rgb, oklch formats
     const hexPattern = /^#[0-9a-fA-F]{6}$/;
@@ -419,17 +419,18 @@ function isValidColorValue(value: any): boolean {
 
   if (typeof value === "object" && value !== null) {
     // Check RGB object format
+    const rgb = value as { r?: unknown; g?: unknown; b?: unknown };
     return (
-      typeof value.r === "number" &&
-      typeof value.g === "number" &&
-      typeof value.b === "number"
+      typeof rgb.r === "number" &&
+      typeof rgb.g === "number" &&
+      typeof rgb.b === "number"
     );
   }
 
   return false;
 }
 
-function isValidDimensionValue(value: any): boolean {
+function isValidDimensionValue(value: unknown): boolean {
   if (typeof value === "number") return true;
   if (typeof value === "string") {
     // Check for pixel values or numeric strings
@@ -440,7 +441,7 @@ function isValidDimensionValue(value: any): boolean {
   return false;
 }
 
-function isValidShadowValue(value: any): boolean {
+function isValidShadowValue(value: unknown): boolean {
   if (typeof value === "string") {
     // Basic shadow string validation
     return value.length > 0 && !value.startsWith("{");
@@ -448,10 +449,15 @@ function isValidShadowValue(value: any): boolean {
 
   if (typeof value === "object" && value !== null) {
     // Shadow object validation
+    const shadow = value as {
+      offsetX?: unknown;
+      offsetY?: unknown;
+      blur?: unknown;
+    };
     return (
-      typeof value.offsetX !== "undefined" ||
-      typeof value.offsetY !== "undefined" ||
-      typeof value.blur !== "undefined"
+      typeof shadow.offsetX !== "undefined" ||
+      typeof shadow.offsetY !== "undefined" ||
+      typeof shadow.blur !== "undefined"
     );
   }
 

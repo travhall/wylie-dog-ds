@@ -6,6 +6,21 @@ export interface TokenReference {
   figmaVariableName: string; // "color/gray/50"
 }
 
+/**
+ * Minimal DTCG-token shape this module reads. Kept local and permissive
+ * (`unknown` value positions) so callers passing loosely-typed token objects
+ * still assign; only the fields actually accessed here are declared.
+ */
+interface DtcgToken {
+  $value?: unknown;
+  valuesByMode?: Record<string, unknown>;
+}
+
+/** A single-collection map (collectionName → its token bag). */
+interface TokenCollection {
+  variables: Record<string, DtcgToken>;
+}
+
 export interface VariableWithReferences {
   variable: Variable;
   tokenName: string;
@@ -121,13 +136,15 @@ export function parseTokenReference(value: string): TokenReference | null {
   };
 }
 
-export function isTokenReference(value: any): boolean {
+export function isTokenReference(value: unknown): value is string {
   return (
     typeof value === "string" && value.startsWith("{") && value.endsWith("}")
   );
 }
 
-export function extractReferences(token: any): Map<string, TokenReference> {
+export function extractReferences(
+  token: DtcgToken
+): Map<string, TokenReference> {
   const references = new Map<string, TokenReference>();
 
   // Check primary $value
@@ -153,7 +170,9 @@ export function extractReferences(token: any): Map<string, TokenReference> {
   return references;
 }
 
-export function createImportOrder(collections: any[]): string[] {
+export function createImportOrder(
+  collections: Array<Record<string, TokenCollection>>
+): string[] {
   // Analyze dependencies and return import order
   const collectionDeps = new Map<string, Set<string>>();
   const collectionNames = collections.map((c) => Object.keys(c)[0]);

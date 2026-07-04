@@ -26,7 +26,9 @@ export class PerformanceMonitor {
 
     const metrics: PerformanceMetrics = {
       operationTime: duration,
-      memoryUsage: (performance as any).memory?.usedJSHeapSize || 0,
+      memoryUsage:
+        (performance as { memory?: { usedJSHeapSize?: number } }).memory
+          ?.usedJSHeapSize || 0,
       chunkSize: details?.chunkSize || 50,
       adaptiveLoading: details?.adaptiveLoading || false,
     };
