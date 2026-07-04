@@ -7,12 +7,23 @@ import type {
   TransformationLog,
 } from "../format-adapter";
 import { TokenFormatType } from "../format-adapter";
-import type { ProcessedToken } from "../processor";
+import type { ExportData, ProcessedToken } from "../processor";
+
+/** Loosely-typed object-wrapped token used while normalizing flat input. */
+type LooseObjectToken = {
+  $value?: unknown;
+  value?: unknown;
+  $type?: unknown;
+  type?: unknown;
+  $description?: unknown;
+  description?: unknown;
+  comment?: unknown;
+};
 
 export class GenericAdapter implements FormatAdapter {
   name = "Generic Fallback";
 
-  detect(data: any): FormatDetectionResult {
+  detect(data: unknown): FormatDetectionResult {
     let confidence = 0;
     const warnings: string[] = [];
 
@@ -93,7 +104,7 @@ export class GenericAdapter implements FormatAdapter {
     };
   }
 
-  normalize(data: any): NormalizationResult {
+  normalize(data: unknown): NormalizationResult {
     const transformations: TransformationLog[] = [];
     const warnings: string[] = [];
     const errors: string[] = [];
@@ -152,12 +163,14 @@ export class GenericAdapter implements FormatAdapter {
     }
   }
 
-  validate(data: any): boolean {
+  validate(data: unknown): boolean {
     return typeof data === "object" && data !== null && !Array.isArray(data);
   }
 
-  private extractFlatTokens(data: any): Record<string, any> {
-    const tokens: Record<string, any> = {};
+  private extractFlatTokens(data: unknown): Record<string, unknown> {
+    const tokens: Record<string, unknown> = {};
+
+    if (typeof data !== "object" || data === null) return tokens;
 
     for (const [key, value] of Object.entries(data)) {
       // Skip metadata properties
@@ -170,7 +183,7 @@ export class GenericAdapter implements FormatAdapter {
     return tokens;
   }
 
-  private looksLikeToken(value: any): boolean {
+  private looksLikeToken(value: unknown): boolean {
     if (typeof value === "string") {
       // Color values
       if (value.match(/^#[0-9a-fA-F]{3,6}$/)) return true;
@@ -193,16 +206,17 @@ export class GenericAdapter implements FormatAdapter {
 
     // Object with value property
     if (typeof value === "object" && value !== null) {
-      return value.value !== undefined || value.$value !== undefined;
+      const v = value as { value?: unknown; $value?: unknown };
+      return v.value !== undefined || v.$value !== undefined;
     }
 
     return false;
   }
 
   private createTokenCollection(
-    tokens: Record<string, any>,
+    tokens: Record<string, unknown>,
     transformations: TransformationLog[]
-  ): any {
+  ): ExportData {
     const variables: Record<string, ProcessedToken> = {};
 
     for (const [tokenName, tokenData] of Object.entries(tokens)) {
@@ -224,21 +238,22 @@ export class GenericAdapter implements FormatAdapter {
 
   private processToken(
     tokenName: string,
-    tokenData: any,
+    tokenData: unknown,
     transformations: TransformationLog[]
   ): ProcessedToken {
-    let value = tokenData;
-    let type = "string";
-    let description = undefined;
+    let value: unknown = tokenData;
+    let type: string = "string";
+    let description: string | undefined = undefined;
 
     // Handle object-wrapped tokens
     if (typeof tokenData === "object" && tokenData !== null) {
-      value = tokenData.$value ?? tokenData.value ?? tokenData;
-      type = tokenData.$type ?? tokenData.type ?? this.inferType(value);
-      description =
-        tokenData.$description ?? tokenData.description ?? tokenData.comment;
+      const obj = tokenData as LooseObjectToken;
+      value = obj.$value ?? obj.value ?? tokenData;
+      type = (obj.$type ?? obj.type ?? this.inferType(value)) as string;
+      description = (obj.$description ?? obj.description ?? obj.comment) as
+        string | undefined;
 
-      if (tokenData.value !== undefined && tokenData.$value === undefined) {
+      if (obj.value !== undefined && obj.$value === undefined) {
         transformations.push({
           type: "property-normalization",
           description: `Converted "value" to "$value" for ${tokenName}`,
@@ -250,13 +265,14 @@ export class GenericAdapter implements FormatAdapter {
       // Direct value - handle @ references BEFORE type inference
       if (typeof tokenData === "string" && tokenData.startsWith("@")) {
         const referencedToken = tokenData.substring(1); // Remove @
-        value = `{${referencedToken}}`;
+        const normalized = `{${referencedToken}}`;
+        value = normalized;
 
         transformations.push({
           type: "reference-normalization",
           description: `Normalized @ reference in ${tokenName}`,
           before: tokenData,
-          after: value,
+          after: normalized,
         });
       } else {
         value = tokenData;
@@ -268,7 +284,7 @@ export class GenericAdapter implements FormatAdapter {
       transformations.push({
         type: "token-structure-creation",
         description: `Created token structure for ${tokenName}`,
-        before: `Raw value: ${tokenData}`,
+        before: `Raw value: ${String(tokenData)}`,
         after: `Structured token with type: ${type}`,
       });
     }
@@ -281,7 +297,7 @@ export class GenericAdapter implements FormatAdapter {
     };
   }
 
-  private inferType(value: any): string {
+  private inferType(value: unknown): string {
     if (typeof value === "string") {
       // Handle references first (before color detection)
       if (
@@ -337,7 +353,7 @@ export class GenericAdapter implements FormatAdapter {
     return "string";
   }
 
-  private analyzeStructure(data: any): StructureInfo {
+  private analyzeStructure(data: unknown): StructureInfo {
     let tokenCount = 0;
     let referenceCount = 0;
     let hasReferences = false;
