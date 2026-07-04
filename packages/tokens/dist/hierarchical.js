@@ -219,10 +219,10 @@ export const color = {
     "secondary": "oklch(0.952 0.003 264.51)",
     "secondary-hover": "oklch(0.87 0.003 264.51)",
     "secondary-active": "oklch(0.786 0.004 271.24)",
-    "success": "oklch(0.627 0.17 149.27)",
-    "success-hover": "oklch(0.527 0.137 150.09)",
-    "warning": "oklch(0.646 0.194 40.95)",
-    "warning-hover": "oklch(0.553 0.174 38.48)",
+    "success": "oklch(0.527 0.137 150.09)",
+    "success-hover": "oklch(0.448 0.108 151.35)",
+    "warning": "oklch(0.553 0.174 38.48)",
+    "warning-hover": "oklch(0.47 0.143 37.29)",
     "danger": "oklch(0.577 0.215 27.32)",
     "danger-hover": "oklch(0.505 0.19 27.5)",
     "hover": "oklch(0.952 0.003 264.51)",
@@ -258,8 +258,8 @@ export const color = {
     "on": "oklch(0.209 0.01 268.18)"
   },
   "status": {
-    "success": "oklch(0.627 0.17 149.27)",
-    "warning": "oklch(0.646 0.194 40.95)",
+    "success": "oklch(0.527 0.137 150.09)",
+    "warning": "oklch(0.553 0.174 38.48)",
     "danger": "oklch(0.577 0.215 27.32)",
     "info": "oklch(0.546 0.215 262.89)",
     "highlight": "oklch(0.881 0.117 100.39)"

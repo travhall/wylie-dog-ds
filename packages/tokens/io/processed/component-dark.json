@@ -2003,11 +2003,11 @@
   },
   "toast.success.border": {
     "$type": "color",
-    "$value": "{color.status.success}"
+    "$value": "{color.interactive.success}"
   },
   "toast.success.background": {
     "$type": "color",
-    "$value": "{color.status.success}"
+    "$value": "{color.interactive.success}"
   },
   "toast.warning.border": {
     "$type": "color",
@@ -2170,7 +2170,7 @@
   },
   "alert.description.opacity": {
     "$type": "number",
-    "$value": "{opacity.90}"
+    "$value": "{opacity.100}"
   },
   "alert.border-left-width": {
     "$type": "dimension",
@@ -3124,7 +3124,7 @@
   },
   "toast.description.opacity": {
     "$type": "number",
-    "$value": "{opacity.90}"
+    "$value": "{opacity.100}"
   },
   "toggle.disabled.opacity": {
     "$type": "number",

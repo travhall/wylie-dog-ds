@@ -191,7 +191,7 @@
   },
   "color.interactive.success": {
     "$type": "color",
-    "$value": "{color.green.600}",
+    "$value": "{color.green.700}",
     "$description": "Success interactive element background"
   },
   "color.interactive.success-hover": {
@@ -201,7 +201,7 @@
   },
   "color.interactive.warning": {
     "$type": "color",
-    "$value": "{color.orange.600}",
+    "$value": "{color.orange.700}",
     "$description": "Warning interactive element background"
   },
   "color.interactive.warning-hover": {
@@ -316,12 +316,12 @@
   },
   "color.status.success": {
     "$type": "color",
-    "$value": "{color.green.500}",
+    "$value": "{color.green.400}",
     "$description": "Success status indicator color"
   },
   "color.status.warning": {
     "$type": "color",
-    "$value": "{color.orange.500}",
+    "$value": "{color.orange.400}",
     "$description": "Warning status indicator color"
   },
   "color.status.danger": {

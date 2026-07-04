@@ -4012,18 +4012,18 @@
         },
         "toast.success.border": {
           "$type": "color",
-          "$value": "{color.status.success}",
+          "$value": "{color.interactive.success}",
           "valuesByMode": {
-            "Light": "{color.status.success}",
-            "Dark": "{color.status.success}"
+            "Light": "{color.interactive.success}",
+            "Dark": "{color.interactive.success}"
           }
         },
         "toast.success.background": {
           "$type": "color",
-          "$value": "{color.status.success}",
+          "$value": "{color.interactive.success}",
           "valuesByMode": {
-            "Light": "{color.status.success}",
-            "Dark": "{color.status.success}"
+            "Light": "{color.interactive.success}",
+            "Dark": "{color.interactive.success}"
           }
         },
         "toast.warning.border": {
@@ -4343,10 +4343,10 @@
         },
         "alert.description.opacity": {
           "$type": "number",
-          "$value": "{opacity.90}",
+          "$value": "{opacity.100}",
           "valuesByMode": {
-            "Light": "{opacity.90}",
-            "Dark": "{opacity.90}"
+            "Light": "{opacity.100}",
+            "Dark": "{opacity.100}"
           }
         },
         "alert.border-left-width": {
@@ -6249,10 +6249,10 @@
         },
         "toast.description.opacity": {
           "$type": "number",
-          "$value": "{opacity.90}",
+          "$value": "{opacity.100}",
           "valuesByMode": {
-            "Light": "{opacity.90}",
-            "Dark": "{opacity.90}"
+            "Light": "{opacity.100}",
+            "Dark": "{opacity.100}"
           }
         },
         "toggle.disabled.opacity": {

@@ -222,7 +222,7 @@ export const IDELayout: Story = {
               <div className="flex items-center justify-center p-3 border-b">
                 <span className="font-semibold text-sm">Terminal</span>
               </div>
-              <div className="flex-1 p-3 bg-(--color-background-inverse) text-(--color-text-success) font-mono text-sm">
+              <div className="flex-1 p-3 bg-(--color-background-inverse) text-(--color-text-inverse) font-mono text-sm">
                 $ npm run dev
                 <br />
                 Starting development server...

@@ -205,7 +205,7 @@ export const ShadowScale: Story = {
                 <div
                   className={`w-16 h-16 bg-[#1f2937] rounded-lg mx-auto ${cls}`}
                 />
-                <code className="block text-xs font-mono text-(--color-text-tertiary)">
+                <code className="block text-xs font-mono text-(--color-gray-400)">
                   {cls}
                 </code>
               </div>
@@ -523,7 +523,7 @@ export const SpacingPlayground: Story = {
             </CardHeader>
             <CardContent>
               <div className="relative border-2 border-dashed border-(--color-interactive-primary)/40 bg-(--color-interactive-primary)/5 rounded">
-                <span className="absolute top-1.5 left-2 text-[10px] font-mono text-(--color-interactive-primary)/70">
+                <span className="absolute top-1.5 left-2 text-[10px] font-mono text-(--color-interactive-primary)">
                   padding area
                 </span>
                 <div
@@ -547,7 +547,7 @@ export const SpacingPlayground: Story = {
             </CardHeader>
             <CardContent>
               <div className="border-2 border-dashed border-(--color-status-warning)/40 bg-(--color-status-warning)/5 rounded p-1">
-                <span className="block text-[10px] font-mono text-(--color-status-warning)/70 px-1 pb-1">
+                <span className="block text-[10px] font-mono text-(--color-status-warning) px-1 pb-1">
                   margin area
                 </span>
                 <div

@@ -417,6 +417,10 @@ interface ContrastSample {
   usage: string;
   isLargeText?: boolean;
   compliant: boolean;
+  /** Caption text token — defaults to --color-text-tertiary. Override when
+   * bgToken doesn't share the page's light/dark polarity (e.g. the inverse
+   * background), since --color-text-tertiary assumes a page-background context. */
+  captionToken?: string;
 }
 
 const contrastSamples: ContrastSample[] = [
@@ -451,6 +455,7 @@ const contrastSamples: ContrastSample[] = [
     sampleText: "Inverted surface text",
     usage: "Tooltips, dark banners",
     compliant: true,
+    captionToken: "--color-text-inverse",
   },
   {
     label: "Danger status on primary background",
@@ -501,9 +506,15 @@ export const ColorContrastCheck: Story = {
             style={{ backgroundColor: `var(${sample.bgToken})` }}
           >
             <div className="min-w-0 flex-1 space-y-1">
-              <p className="font-mono text-xs text-(--color-text-secondary) truncate">
+              <p
+                className="font-mono text-xs truncate"
+                style={{
+                  color: `var(${sample.captionToken ?? "--color-text-secondary"})`,
+                  opacity: sample.captionToken ? 0.7 : 1,
+                }}
+              >
                 {sample.textToken}
-                <span className="mx-1 opacity-50">on</span>
+                <span className="mx-1">on</span>
                 {sample.bgToken}
               </p>
               <p
@@ -519,7 +530,13 @@ export const ColorContrastCheck: Story = {
                   </span>
                 )}
               </p>
-              <p className="text-xs text-(--color-text-tertiary)">
+              <p
+                className="text-xs"
+                style={{
+                  color: `var(${sample.captionToken ?? "--color-text-tertiary"})`,
+                  opacity: sample.captionToken ? 0.7 : 1,
+                }}
+              >
                 {sample.usage}
               </p>
             </div>
