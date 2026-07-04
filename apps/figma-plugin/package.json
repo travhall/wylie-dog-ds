@@ -13,7 +13,7 @@
     "clean": "rm -rf dist node_modules .turbo",
     "clean:dist": "rm -rf dist",
     "dev": "pnpm run clean:dist && pnpm run build && pnpm run build:watch",
-    "lint": "eslint src --max-warnings 287",
+    "lint": "eslint src --max-warnings 270",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:run": "vitest run",
