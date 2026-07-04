@@ -19,6 +19,51 @@ export interface ExportData {
   [collectionName: string]: ProcessedCollection;
 }
 
+/**
+ * A raw value read from a Figma variable's `valuesByMode`. Object values are
+ * either a VARIABLE_ALIAS reference or an RGB(A) color; every object prop is
+ * optional so the exporter's duck-typing checks (`value.type`, `value.r`, …)
+ * narrow cleanly without `any`.
+ */
+interface FigmaObjectValue {
+  type?: string;
+  id?: string;
+  r?: number;
+  g?: number;
+  b?: number;
+  a?: number;
+}
+type FigmaVariableValue = string | number | boolean | FigmaObjectValue;
+
+/**
+ * Minimal shape of a Figma Variable as consumed by the exporter. These are
+ * sometimes PLAIN extracted objects (from token-handlers) rather than live
+ * Variable instances, so `getPluginData` is optional and `originalType` is a
+ * non-standard fallback preserved during extraction.
+ */
+interface FigmaVariableLike {
+  id: string;
+  name: string;
+  resolvedType: string;
+  scopes: string[];
+  description?: string;
+  valuesByMode: Record<string, FigmaVariableValue>;
+  getPluginData?: (key: string) => string;
+  originalType?: string;
+}
+
+interface FigmaModeLike {
+  modeId: string;
+  name: string;
+}
+
+interface FigmaCollectionLike {
+  id: string;
+  name: string;
+  modes: FigmaModeLike[];
+  variables: FigmaVariableLike[];
+}
+
 // Global variable reference map for resolving aliases
 let variableReferenceMap: Map<string, string> = new Map();
 
@@ -153,7 +198,9 @@ function roundToPrecision(value: number, precision: number = 4): number {
 /**
  * Build reference map from all collections to resolve aliases
  */
-function buildVariableReferenceMap(allCollections: any[]): void {
+function buildVariableReferenceMap(
+  allCollections: FigmaCollectionLike[]
+): void {
   variableReferenceMap.clear();
 
   for (const collection of allCollections) {
@@ -391,7 +438,10 @@ function formatNumericValue(
 /**
  * Process a single variable across all modes into W3C DTCG token format
  */
-function processVariable(variable: any, modes: any[]): ProcessedToken {
+function processVariable(
+  variable: FigmaVariableLike,
+  modes: FigmaModeLike[]
+): ProcessedToken {
   // Check for the stored original type first. The importer persists it via
   // `setPluginData("originalType", …)`, so it must be READ via getPluginData —
   // reading `variable.originalType` (a non-existent property) always returned
@@ -446,8 +496,8 @@ function processVariable(variable: any, modes: any[]): ProcessedToken {
     console.log(`🔄 Converting fontFamily → duration for ${variable.name}`);
   }
 
-  const valuesByMode: Record<string, any> = {};
-  let primaryValue: any;
+  const valuesByMode: Record<string, unknown> = {};
+  let primaryValue: unknown;
 
   // Process all modes
   for (const mode of modes) {
@@ -463,14 +513,14 @@ function processVariable(variable: any, modes: any[]): ProcessedToken {
 
     if (typeof value === "object" && value.type === "VARIABLE_ALIAS") {
       // Handle references - use clean reference format
-      const referencedTokenName = variableReferenceMap.get(value.id);
+      const referencedTokenName = variableReferenceMap.get(value.id ?? "");
       const cleanReference = referencedTokenName
         ? `{${referencedTokenName}}`
         : `{unknown-reference-${value.id}}`;
       valuesByMode[mode.name] = cleanReference;
     } else {
       // Handle actual values
-      let processedValue: any;
+      let processedValue: unknown;
 
       switch (variable.resolvedType) {
         case "COLOR":
@@ -489,12 +539,18 @@ function processVariable(variable: any, modes: any[]): ProcessedToken {
             processedValue = undefined;
           } else {
             // Export colors in OKLCH format to match token file format
-            processedValue = rgbToOklch(value);
+            processedValue = rgbToOklch(
+              value as { r: number; g: number; b: number }
+            );
           }
           break;
         case "FLOAT":
           // Pass variable name for context-aware formatting (e.g., tracking → em)
-          processedValue = formatNumericValue(value, tokenType, variable.name);
+          processedValue = formatNumericValue(
+            value as number,
+            tokenType,
+            variable.name
+          );
           break;
         case "STRING":
         case "BOOLEAN":
@@ -539,7 +595,7 @@ function createTokenName(variableName: string): string {
  * Process a variable collection into W3C DTCG format with Figma mode support
  */
 export async function processCollection(
-  collection: any
+  collection: FigmaCollectionLike
 ): Promise<ProcessedCollection> {
   const variables: { [tokenName: string]: ProcessedToken } = {};
 
@@ -576,7 +632,7 @@ export async function processCollection(
   const collectionSlug = toSlug(collection.name);
 
   const result: ProcessedCollection = {
-    modes: collection.modes.map((mode: any) => ({
+    modes: collection.modes.map((mode) => ({
       modeId: `mode:${collectionSlug}:${toSlug(mode.name)}`,
       name: mode.name,
     })),
@@ -593,7 +649,7 @@ export async function processCollection(
  * Process multiple collections for export
  */
 export async function processCollectionsForExport(
-  allCollections: any[],
+  allCollections: FigmaCollectionLike[],
   selectedCollectionIds: string[]
 ): Promise<ExportData[]> {
   const exportData: ExportData[] = [];
