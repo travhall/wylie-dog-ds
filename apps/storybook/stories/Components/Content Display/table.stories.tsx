@@ -144,7 +144,7 @@ export const WithSelection: Story = {
       <TableHeader>
         <TableRow>
           <TableHead className="w-12.5">
-            <Checkbox />
+            <Checkbox aria-label="Select all rows" />
           </TableHead>
           <TableHead>Invoice</TableHead>
           <TableHead>Status</TableHead>
@@ -156,7 +156,7 @@ export const WithSelection: Story = {
         {invoices.slice(0, 5).map((invoice) => (
           <TableRow key={invoice.invoice}>
             <TableCell>
-              <Checkbox />
+              <Checkbox aria-label={`Select row ${invoice.invoice}`} />
             </TableCell>
             <TableCell className="font-medium">{invoice.invoice}</TableCell>
             <TableCell>

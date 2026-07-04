@@ -243,24 +243,30 @@ export const States: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-6">
       <div className="space-y-2">
-        <Label>Normal State</Label>
-        <Textarea placeholder="Normal textarea" />
+        <Label htmlFor="states-normal">Normal State</Label>
+        <Textarea id="states-normal" placeholder="Normal textarea" />
       </div>
       <div className="space-y-2">
-        <Label>Disabled State</Label>
+        <Label htmlFor="states-disabled">Disabled State</Label>
         <Textarea
+          id="states-disabled"
           disabled
           placeholder="Disabled textarea"
           defaultValue="This content cannot be edited"
         />
       </div>
       <div className="space-y-2">
-        <Label error>Error State</Label>
-        <Textarea error placeholder="Textarea with error" />
+        <Label htmlFor="states-error" error>
+          Error State
+        </Label>
+        <Textarea id="states-error" error placeholder="Textarea with error" />
       </div>
       <div className="space-y-2">
-        <Label>With Content</Label>
-        <Textarea defaultValue="This textarea has some existing content that demonstrates how text flows within the component." />
+        <Label htmlFor="states-content">With Content</Label>
+        <Textarea
+          id="states-content"
+          defaultValue="This textarea has some existing content that demonstrates how text flows within the component."
+        />
       </div>
     </div>
   ),

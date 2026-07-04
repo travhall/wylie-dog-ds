@@ -92,6 +92,7 @@ export const AllVariants: Story = {
       <div>
         <h3 className="text-lg font-semibold mb-4">Default Variant</h3>
         <FeatureGrid
+          aria-label="Default variant"
           features={[
             {
               icon: "🌟",
@@ -110,6 +111,7 @@ export const AllVariants: Story = {
       <div>
         <h3 className="text-lg font-semibold mb-4">Compact Variant</h3>
         <FeatureGrid
+          aria-label="Compact variant"
           variant="compact"
           features={[
             {
@@ -129,6 +131,7 @@ export const AllVariants: Story = {
       <div>
         <h3 className="text-lg font-semibold mb-4">Spacious Variant</h3>
         <FeatureGrid
+          aria-label="Spacious variant"
           variant="spacious"
           features={[
             {

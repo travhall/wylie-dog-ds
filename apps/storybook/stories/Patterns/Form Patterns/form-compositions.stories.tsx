@@ -104,7 +104,7 @@ export const ContactForm: Story = {
         <div className="space-y-2">
           <Label htmlFor="inquiry-type">Type of Inquiry</Label>
           <Select>
-            <SelectTrigger>
+            <SelectTrigger id="inquiry-type">
               <SelectValue placeholder="Select inquiry type" />
             </SelectTrigger>
             <SelectContent>
@@ -253,7 +253,7 @@ export const MultiStepForm: Story = {
                   <div className="space-y-2">
                     <Label htmlFor="country">Country</Label>
                     <Select>
-                      <SelectTrigger>
+                      <SelectTrigger id="country">
                         <SelectValue placeholder="Select country" />
                       </SelectTrigger>
                       <SelectContent>
@@ -267,7 +267,7 @@ export const MultiStepForm: Story = {
                   <div className="space-y-2">
                     <Label htmlFor="timezone">Timezone</Label>
                     <Select>
-                      <SelectTrigger>
+                      <SelectTrigger id="timezone">
                         <SelectValue placeholder="Select timezone" />
                       </SelectTrigger>
                       <SelectContent>
@@ -448,7 +448,7 @@ export const FormWithValidation: Story = {
             <div className="space-y-2">
               <Label htmlFor="role">Role</Label>
               <Select name="role">
-                <SelectTrigger>
+                <SelectTrigger id="role">
                   <SelectValue placeholder="Select your role" />
                 </SelectTrigger>
                 <SelectContent>
@@ -506,7 +506,7 @@ export const UserPreferences: Story = {
             <div className="space-y-2">
               <Label htmlFor="timezone">Timezone</Label>
               <Select defaultValue="pst">
-                <SelectTrigger>
+                <SelectTrigger id="timezone">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -521,7 +521,7 @@ export const UserPreferences: Story = {
             <div className="space-y-2">
               <Label htmlFor="language">Language</Label>
               <Select defaultValue="en">
-                <SelectTrigger>
+                <SelectTrigger id="language">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -635,7 +635,7 @@ export const ProjectCreation: Story = {
               Project Type
             </Label>
             <Select>
-              <SelectTrigger>
+              <SelectTrigger id="project-type">
                 <SelectValue placeholder="Select type" />
               </SelectTrigger>
               <SelectContent>
@@ -651,7 +651,7 @@ export const ProjectCreation: Story = {
           <div className="space-y-2">
             <Label htmlFor="framework">Framework</Label>
             <Select>
-              <SelectTrigger>
+              <SelectTrigger id="framework">
                 <SelectValue placeholder="Choose framework" />
               </SelectTrigger>
               <SelectContent>
@@ -670,7 +670,7 @@ export const ProjectCreation: Story = {
           <div className="space-y-2">
             <Label htmlFor="visibility">Visibility</Label>
             <Select defaultValue="private">
-              <SelectTrigger>
+              <SelectTrigger id="visibility">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -684,7 +684,7 @@ export const ProjectCreation: Story = {
           <div className="space-y-2">
             <Label htmlFor="license">License</Label>
             <Select>
-              <SelectTrigger>
+              <SelectTrigger id="license">
                 <SelectValue placeholder="Select license" />
               </SelectTrigger>
               <SelectContent>
@@ -700,7 +700,7 @@ export const ProjectCreation: Story = {
           <div className="space-y-2">
             <Label htmlFor="team-size">Team Size</Label>
             <Select>
-              <SelectTrigger>
+              <SelectTrigger id="team-size">
                 <SelectValue placeholder="Select size" />
               </SelectTrigger>
               <SelectContent>
@@ -846,7 +846,7 @@ export const PaymentForm: Story = {
               Country
             </Label>
             <Select>
-              <SelectTrigger>
+              <SelectTrigger id="billing-country">
                 <SelectValue placeholder="Select country" />
               </SelectTrigger>
               <SelectContent>

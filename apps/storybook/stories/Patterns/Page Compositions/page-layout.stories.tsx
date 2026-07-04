@@ -134,7 +134,7 @@ const sampleContent = (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {[1, 2, 3].map((i) => (
         <div key={i} className="rounded-lg border p-6">
-          <h3 className="font-semibold">Card {i}</h3>
+          <h2 className="font-semibold">Card {i}</h2>
           <p className="mt-1 text-sm text-(--color-text-tertiary)">
             Sample content card for layout demonstration.
           </p>

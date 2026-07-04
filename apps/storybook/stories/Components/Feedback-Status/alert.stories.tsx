@@ -168,7 +168,7 @@ export const InFormContext: Story = {
   },
   render: () => (
     <div className="w-125 space-y-4">
-      <h3 className="text-lg font-semibold">User Registration</h3>
+      <h4 className="text-lg font-semibold">User Registration</h4>
 
       <Alert variant="destructive">
         <AlertTitle>Form Validation Error</AlertTitle>

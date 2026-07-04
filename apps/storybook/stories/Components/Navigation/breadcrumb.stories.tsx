@@ -127,7 +127,7 @@ export const CustomSeparator: Story = {
         <p className="text-sm text-(--color-text-tertiary) mb-2">
           Slash separator
         </p>
-        <Breadcrumb>
+        <Breadcrumb aria-label="Slash separator breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -152,7 +152,7 @@ export const CustomSeparator: Story = {
         <p className="text-sm text-(--color-text-tertiary) mb-2">
           Text separator
         </p>
-        <Breadcrumb>
+        <Breadcrumb aria-label="Text separator breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -229,7 +229,7 @@ export const LongPath: Story = {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">
+            <BreadcrumbLink href="/" aria-label="Home">
               <HomeIcon className="h-4 w-4" />
             </BreadcrumbLink>
           </BreadcrumbItem>
@@ -285,7 +285,7 @@ export const TruncatedPath: Story = {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">
+            <BreadcrumbLink href="/" aria-label="Home">
               <HomeIcon className="h-4 w-4" />
             </BreadcrumbLink>
           </BreadcrumbItem>
@@ -367,7 +367,7 @@ export const ApplicationExamples: Story = {
         <h4 className="font-medium text-(--color-text-primary)">
           E-commerce Product Page
         </h4>
-        <Breadcrumb>
+        <Breadcrumb aria-label="E-commerce product page breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -400,7 +400,7 @@ export const ApplicationExamples: Story = {
         <h4 className="font-medium text-(--color-text-primary)">
           Documentation Site
         </h4>
-        <Breadcrumb>
+        <Breadcrumb aria-label="Documentation site breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/docs" className="flex items-center gap-2">
@@ -432,7 +432,7 @@ export const ApplicationExamples: Story = {
         <h4 className="font-medium text-(--color-text-primary)">
           Admin Dashboard
         </h4>
-        <Breadcrumb>
+        <Breadcrumb aria-label="Admin dashboard breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/admin">Dashboard</BreadcrumbLink>
@@ -461,7 +461,7 @@ export const ApplicationExamples: Story = {
         <h4 className="font-medium text-(--color-text-primary)">
           File Manager
         </h4>
-        <Breadcrumb>
+        <Breadcrumb aria-label="File manager breadcrumb">
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/files">My Files</BreadcrumbLink>

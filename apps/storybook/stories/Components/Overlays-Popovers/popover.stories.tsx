@@ -518,7 +518,7 @@ export const ActionMenu: Story = {
         </div>
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" aria-label="More actions">
               <MoreHorizontalIcon className="h-4 w-4" />
             </Button>
           </PopoverTrigger>
@@ -577,7 +577,12 @@ export const Help: Story = {
         <Label htmlFor="password">Password</Label>
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="ghost" size="sm" className="p-1">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="p-1"
+              aria-label="Password requirements"
+            >
               <HelpCircleIcon className="h-4 w-4" />
             </Button>
           </PopoverTrigger>

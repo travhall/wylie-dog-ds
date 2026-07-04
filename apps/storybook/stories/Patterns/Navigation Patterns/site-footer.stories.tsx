@@ -177,6 +177,8 @@ export const AllVariants: Story = {
           logo={defaultLogo}
           copyright={`\u00A9 ${new Date().getFullYear()} Wylie Dog.`}
           socialLinks={defaultSocialLinks}
+          role="group"
+          aria-label="Minimal variant footer example"
         />
       </div>
     </div>

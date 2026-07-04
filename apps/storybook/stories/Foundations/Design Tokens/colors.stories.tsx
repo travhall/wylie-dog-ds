@@ -170,9 +170,9 @@ export const SystemOverview: Story = {
                     <div className="w-8 h-8 rounded bg-(--color-interactive-primary) flex items-center justify-center text-(--color-background-primary) text-xs font-bold shrink-0">
                       {tier}
                     </div>
-                    <h4 className="font-semibold text-(--color-text-primary)">
+                    <h3 className="font-semibold text-(--color-text-primary)">
                       {label}
-                    </h4>
+                    </h3>
                   </div>
                   <p className="text-sm text-(--color-text-secondary)">
                     {desc}
@@ -186,6 +186,7 @@ export const SystemOverview: Story = {
               ))}
             </div>
 
+            <h4 className="sr-only">Best practice</h4>
             <Alert>
               <AlertTitle>Always use semantic or component tokens</AlertTitle>
               <AlertDescription>
@@ -292,9 +293,9 @@ export const SystemOverview: Story = {
 
             {/* Perceptual uniformity demo */}
             <div className="space-y-4">
-              <h5 className="font-semibold text-sm text-(--color-text-primary)">
+              <h4 className="font-semibold text-sm text-(--color-text-primary)">
                 Perceptual uniformity — all colors at L=0.65
-              </h5>
+              </h4>
               <div className="space-y-3">
                 <div className="space-y-2">
                   <p className="text-xs text-(--color-text-secondary)">
@@ -974,7 +975,7 @@ export const TokenBrowser: Story = {
               value={selectedCategory}
               onValueChange={setSelectedCategory}
             >
-              <SelectTrigger>
+              <SelectTrigger aria-label="Filter by color category">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

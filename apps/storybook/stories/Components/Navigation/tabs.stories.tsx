@@ -304,6 +304,9 @@ export const Sizes: Story = {
               Tab 3
             </TabsTrigger>
           </TabsList>
+          <TabsContent value="tab1">Content for Tab 1</TabsContent>
+          <TabsContent value="tab2">Content for Tab 2</TabsContent>
+          <TabsContent value="tab3">Content for Tab 3</TabsContent>
         </Tabs>
       </div>
 
@@ -323,6 +326,9 @@ export const Sizes: Story = {
               Tab 3
             </TabsTrigger>
           </TabsList>
+          <TabsContent value="tab1">Content for Tab 1</TabsContent>
+          <TabsContent value="tab2">Content for Tab 2</TabsContent>
+          <TabsContent value="tab3">Content for Tab 3</TabsContent>
         </Tabs>
       </div>
 
@@ -342,6 +348,9 @@ export const Sizes: Story = {
               Tab 3
             </TabsTrigger>
           </TabsList>
+          <TabsContent value="tab1">Content for Tab 1</TabsContent>
+          <TabsContent value="tab2">Content for Tab 2</TabsContent>
+          <TabsContent value="tab3">Content for Tab 3</TabsContent>
         </Tabs>
       </div>
     </div>

@@ -56,6 +56,7 @@ export const Dashboard: Story = {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <h2 className="sr-only">Overview</h2>
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <Card>
@@ -225,6 +226,7 @@ export const SettingsPage: Story = {
 
           {/* Main Content */}
           <div className="lg:col-span-3">
+            <h2 className="sr-only">Settings sections</h2>
             <Card>
               <CardHeader>
                 <CardTitle>General Settings</CardTitle>
@@ -428,6 +430,7 @@ export const UserProfile: Story = {
           </CardContent>
         </Card>
 
+        <h2 className="sr-only">Profile details</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">

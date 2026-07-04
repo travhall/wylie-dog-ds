@@ -1,42 +1,46 @@
 "use client";
 
-import React from "react";
+import React, { createContext, useContext, useId } from "react";
 import { SearchIcon } from "lucide-react";
 import { cn } from "./lib/utils";
+
+// Coordinates the listbox id between CommandInput (aria-controls) and
+// CommandList (id) without requiring every consumer to generate and pass a
+// matching id manually — mirrors the FormField id-context pattern.
+const CommandListboxContext = createContext<string | null>(null);
 
 interface CommandProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Accessible label for the command palette */
   label?: string;
-  /** ID for the command listbox (for aria-controls) */
+  /** ID for the command listbox (for aria-controls). Auto-generated if omitted. */
   listboxId?: string;
 }
 
 const Command = React.forwardRef<HTMLDivElement, CommandProps>(
-  (
-    {
-      className,
-      label = "Command palette",
-      listboxId = "command-listbox",
-      ...props
-    },
-    ref
-  ) => (
-    <div
-      ref={ref}
-      className={cn(
-        "flex h-full w-full flex-col overflow-hidden rounded-(--space-command-content-radius) bg-(--color-command-background) text-(--color-command-text)",
-        className
-      )}
-      {...props}
-    />
-  )
+  ({ className, label = "Command palette", listboxId, ...props }, ref) => {
+    const generatedId = useId();
+    const resolvedId = listboxId ?? `command-listbox-${generatedId}`;
+
+    return (
+      <CommandListboxContext.Provider value={resolvedId}>
+        <div
+          ref={ref}
+          className={cn(
+            "flex h-full w-full flex-col overflow-hidden rounded-(--space-command-content-radius) bg-(--color-command-background) text-(--color-command-text)",
+            className
+          )}
+          {...props}
+        />
+      </CommandListboxContext.Provider>
+    );
+  }
 );
 Command.displayName = "Command";
 
 interface CommandInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /** Label for the search input */
   "aria-label"?: string;
-  /** ID for the command listbox (for aria-controls) */
+  /** ID for the command listbox (for aria-controls). Defaults to the id from the nearest <Command>. */
   listboxId?: string;
 }
 
@@ -45,56 +49,83 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
     {
       className,
       "aria-label": ariaLabel = "Search commands",
-      listboxId = "command-listbox",
+      listboxId,
       ...props
     },
     ref
-  ) => (
-    <div
-      className="flex items-center border-b border-(--color-command-border) px-(--space-command-item-padding-x)"
-      cmdk-input-wrapper=""
-    >
-      <SearchIcon
-        className="mr-(--space-command-item-indicator-margin-right) h-(--space-command-input-icon-size) w-(--space-command-input-icon-size) shrink-0 opacity-(--command-input-icon-opacity)"
-        aria-hidden="true"
-      />
-      <input
-        ref={ref}
-        className={cn(
-          "flex h-(--space-command-input-height) w-full rounded-(--space-command-content-radius) bg-transparent py-(--space-command-input-padding-y) text-(length:--font-size-command-item-font-size) outline-none placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:opacity-(--command-input-disabled-opacity)",
-          className
-        )}
-        role="combobox"
-        aria-autocomplete="list"
-        aria-label={ariaLabel}
-        aria-expanded="true"
-        aria-controls={listboxId}
-        {...props}
-      />
-    </div>
-  )
+  ) => {
+    const contextId = useContext(CommandListboxContext);
+    const resolvedListboxId = listboxId ?? contextId ?? undefined;
+
+    return (
+      <div
+        className="flex items-center border-b border-(--color-command-border) px-(--space-command-item-padding-x)"
+        cmdk-input-wrapper=""
+      >
+        <SearchIcon
+          className="mr-(--space-command-item-indicator-margin-right) h-(--space-command-input-icon-size) w-(--space-command-input-icon-size) shrink-0 opacity-(--command-input-icon-opacity)"
+          aria-hidden="true"
+        />
+        <input
+          ref={ref}
+          className={cn(
+            "flex h-(--space-command-input-height) w-full rounded-(--space-command-content-radius) bg-transparent py-(--space-command-input-padding-y) text-(length:--font-size-command-item-font-size) outline-none placeholder:text-(--color-command-placeholder) disabled:cursor-not-allowed disabled:opacity-(--command-input-disabled-opacity)",
+            className
+          )}
+          role="combobox"
+          aria-autocomplete="list"
+          aria-label={ariaLabel}
+          aria-expanded="true"
+          aria-controls={resolvedListboxId}
+          {...props}
+        />
+      </div>
+    );
+  }
 );
 CommandInput.displayName = "CommandInput";
 
 interface CommandListProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** ID for the command listbox */
+  /** ID for the command listbox. Defaults to the id from the nearest <Command>. */
   id?: string;
+  /** ARIA role for the inner listbox wrapper — defaults to "listbox". */
+  role?: string;
 }
 
 const CommandList = React.forwardRef<HTMLDivElement, CommandListProps>(
-  ({ className, id = "command-listbox", ...props }, ref) => (
-    <div
-      ref={ref}
-      id={id}
-      className={cn(
-        "max-h-(--space-command-list-max-height) overflow-y-auto overflow-x-hidden",
-        className
-      )}
-      role="listbox"
-      aria-label="Command options"
-      {...props}
-    />
-  )
+  ({ className, id, role = "listbox", children, ...props }, ref) => {
+    const contextId = useContext(CommandListboxContext);
+    const resolvedId = id ?? contextId ?? undefined;
+
+    // role="listbox" may only directly contain role="option"/"group"
+    // elements per ARIA, so CommandEmpty (role-less status text) is pulled
+    // out and rendered as a sibling instead of a child of the listbox.
+    const childArray = React.Children.toArray(children);
+    const isCommandEmpty = (child: React.ReactNode) =>
+      React.isValidElement(child) &&
+      (child.type as { displayName?: string }).displayName === "CommandEmpty";
+    const emptyChildren = childArray.filter(isCommandEmpty);
+    const listboxChildren = childArray.filter(
+      (child) => !isCommandEmpty(child)
+    );
+
+    return (
+      <div
+        ref={ref}
+        tabIndex={0}
+        className={cn(
+          "max-h-(--space-command-list-max-height) overflow-y-auto overflow-x-hidden",
+          className
+        )}
+        {...props}
+      >
+        {emptyChildren}
+        <div id={resolvedId} role={role} aria-label="Command options">
+          {listboxChildren}
+        </div>
+      </div>
+    );
+  }
 );
 CommandList.displayName = "CommandList";
 
@@ -108,7 +139,6 @@ const CommandEmpty = React.forwardRef<HTMLDivElement, CommandEmptyProps>(
         "py-(--space-command-empty-padding-y) text-center text-(length:--font-size-command-item-font-size) text-(--color-command-empty)",
         className
       )}
-      role="status"
       aria-live="polite"
       {...props}
     />

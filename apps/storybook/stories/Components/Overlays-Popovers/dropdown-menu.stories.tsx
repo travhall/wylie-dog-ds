@@ -366,6 +366,12 @@ export const WithSubMenuNavigation: Story = {
     await userEvent.hover(subTrigger);
     await new Promise((r) => setTimeout(r, 300));
     expect(document.querySelector('[role="menu"]')).toBeInTheDocument();
+
+    // Close the (sub)menu so the story settles back to its resting state —
+    // Radix aria-hides background content while open, and leaving it open
+    // at test end trips aria-hidden-focus on the still-tabbable trigger.
+    await userEvent.keyboard("{Escape}");
+    await userEvent.keyboard("{Escape}");
   },
   parameters: {
     docs: {

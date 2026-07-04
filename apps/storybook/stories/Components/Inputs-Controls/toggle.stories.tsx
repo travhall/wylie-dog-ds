@@ -275,7 +275,11 @@ export const Settings: Story = {
               )}
               <span className="font-medium">Wi-Fi</span>
             </div>
-            <Toggle pressed={wifi} onPressedChange={setWifi} />
+            <Toggle
+              pressed={wifi}
+              onPressedChange={setWifi}
+              aria-label="Wi-Fi"
+            />
           </div>
 
           <div className="flex items-center justify-between p-3 border rounded-lg">
@@ -291,6 +295,7 @@ export const Settings: Story = {
             <Toggle
               pressed={notifications}
               onPressedChange={setNotifications}
+              aria-label="Notifications"
             />
           </div>
 
@@ -304,7 +309,11 @@ export const Settings: Story = {
                 </div>
               </div>
             </div>
-            <Toggle pressed={location} onPressedChange={setLocation} />
+            <Toggle
+              pressed={location}
+              onPressedChange={setLocation}
+              aria-label="Location Services"
+            />
           </div>
 
           <div className="flex items-center justify-between p-3 border rounded-lg">
@@ -317,7 +326,11 @@ export const Settings: Story = {
                 </div>
               </div>
             </div>
-            <Toggle pressed={analytics} onPressedChange={setAnalytics} />
+            <Toggle
+              pressed={analytics}
+              onPressedChange={setAnalytics}
+              aria-label="Analytics"
+            />
           </div>
         </div>
       </div>

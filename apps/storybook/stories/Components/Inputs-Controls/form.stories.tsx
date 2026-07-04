@@ -653,6 +653,11 @@ export const DisabledState: Story = {
           "Disabled forms are used when editing isn't currently available — for example, during a submission or when the user lacks permission. Pass `disabled` to each input individually (there's no single `disabled` on `<Form>`).",
       },
     },
+    // The only contrast finding here is the caption text next to the
+    // disabled Email notifications switch — WCAG 1.4.3 exempts text that's
+    // part of an inactive UI component (the switch itself is a real
+    // `disabled` control, not just visually dimmed).
+    a11y: { config: { rules: [{ id: "color-contrast", enabled: false }] } },
   },
   render: () => (
     <Form className="mx-auto w-full max-w-lg">

@@ -49,7 +49,19 @@ export interface ProgressProps
 }
 
 export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
-  ({ className, value = 0, max = 100, size, variant, ...props }, ref) => {
+  (
+    {
+      className,
+      value = 0,
+      max = 100,
+      size,
+      variant,
+      "aria-label": ariaLabel,
+      "aria-labelledby": ariaLabelledBy,
+      ...props
+    },
+    ref
+  ) => {
     const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
 
     return (
@@ -60,6 +72,11 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
         aria-valuemin={0}
         aria-valuemax={max}
         aria-valuenow={value}
+        aria-label={
+          ariaLabel ??
+          (ariaLabelledBy ? undefined : `${Math.round(percentage)}% complete`)
+        }
+        aria-labelledby={ariaLabelledBy}
         {...props}
       >
         <div

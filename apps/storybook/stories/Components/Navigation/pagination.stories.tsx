@@ -134,6 +134,8 @@ export const FirstPage: Story = {
         <PaginationItem>
           <PaginationPrevious
             href="#"
+            aria-disabled="true"
+            tabIndex={-1}
             className="opacity-50 pointer-events-none"
           />
         </PaginationItem>
@@ -194,7 +196,12 @@ export const LastPage: Story = {
           </PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext href="#" className="opacity-50 pointer-events-none" />
+          <PaginationNext
+            href="#"
+            aria-disabled="true"
+            tabIndex={-1}
+            className="opacity-50 pointer-events-none"
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

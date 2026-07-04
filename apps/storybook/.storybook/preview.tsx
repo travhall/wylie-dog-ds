@@ -14,16 +14,17 @@ const preview: Preview = {
     // Runs browser-based axe (incl. color-contrast) on every story via the
     // Vitest addon. Must live in the DEFAULT export — the test runner ignores
     // the named `parameters` export below.
-    //   'todo'  - run + report violations, do NOT fail the run (current)
-    //   'error' - fail the run/CI on any violation
+    //   'todo'  - run + report violations, do NOT fail the run
+    //   'error' - fail the run/CI on any violation (current)
     //   'off'   - skip a11y checks
-    // Currently 'todo': ~179 stories have real violations (mostly color-contrast
-    // on the muted-gray text token). Flip to 'error' once those are resolved.
+    // All 411 story tests pass at 'error' as of the SB-1/SB-6 a11y cleanup.
+    // The one accepted exception (disabled-field caption contrast) has a
+    // scoped rule override in its own story — see form.stories.tsx.
     a11y: {
       // 'todo' - show a11y violations in the test UI only
       // 'error' - fail CI on a11y violations
       // 'off' - skip a11y checks entirely
-      test: "todo",
+      test: "error",
     },
   },
   initialGlobals: {},

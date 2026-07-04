@@ -742,18 +742,18 @@ export const ResponsiveTypography: Story = {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <h3 className="text-lg md:text-xl font-semibold mb-2">
+          <h2 className="text-lg md:text-xl font-semibold mb-2">
             Mobile First
-          </h3>
+          </h2>
           <p className="text-sm md:text-base text-(--color-text-secondary)">
             Typography scales up from mobile to larger screens, ensuring
             readability across all devices.
           </p>
         </div>
         <div>
-          <h3 className="text-lg md:text-xl font-semibold mb-2">
+          <h2 className="text-lg md:text-xl font-semibold mb-2">
             Flexible Layout
-          </h3>
+          </h2>
           <p className="text-sm md:text-base text-(--color-text-secondary)">
             Text size and layout adjust automatically to provide optimal reading
             experience on any device.

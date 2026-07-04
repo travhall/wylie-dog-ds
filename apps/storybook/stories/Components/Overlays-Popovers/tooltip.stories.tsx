@@ -245,6 +245,7 @@ export const InFormContext: Story = {
                   variant="ghost"
                   size="icon"
                   className="h-5 w-5 text-(--color-text-secondary) hover:text-(--color-text-primary)"
+                  aria-label="Username requirements"
                 >
                   <svg
                     className="w-4 h-4"
@@ -276,6 +277,7 @@ export const InFormContext: Story = {
                   variant="ghost"
                   size="icon"
                   className="h-5 w-5 text-(--color-text-secondary) hover:text-(--color-text-primary)"
+                  aria-label="Email notifications info"
                 >
                   <svg
                     className="w-4 h-4"

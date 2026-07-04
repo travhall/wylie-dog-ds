@@ -167,7 +167,7 @@ export const AllVariants: Story = {
         <h3 className="text-lg font-semibold mb-4 text-(--color-text-primary)">
           Default Variant
         </h3>
-        <CardGrid columns={{ sm: 1, md: 2 }}>
+        <CardGrid aria-label="Default variant" columns={{ sm: 1, md: 2 }}>
           <Card className="hover:shadow-md transition-shadow">
             <CardHeader>
               <CardTitle className="text-base">Standard Card</CardTitle>
@@ -196,7 +196,11 @@ export const AllVariants: Story = {
         <h3 className="text-lg font-semibold mb-4 text-(--color-text-primary)">
           Compact Variant
         </h3>
-        <CardGrid variant="compact" columns={{ sm: 1, md: 3, lg: 4 }}>
+        <CardGrid
+          aria-label="Compact variant"
+          variant="compact"
+          columns={{ sm: 1, md: 3, lg: 4 }}
+        >
           {["Quick", "Fast", "Small", "Tiny"].map((label) => (
             <Card key={label} className="hover:shadow-sm transition-shadow">
               <CardContent className="p-4">
@@ -217,7 +221,11 @@ export const AllVariants: Story = {
         <h3 className="text-lg font-semibold mb-4 text-(--color-text-primary)">
           Spacious Variant
         </h3>
-        <CardGrid variant="spacious" columns={{ sm: 1, md: 2 }}>
+        <CardGrid
+          aria-label="Spacious variant"
+          variant="spacious"
+          columns={{ sm: 1, md: 2 }}
+        >
           <Card className="hover:shadow-lg transition-all duration-300">
             <CardHeader>
               <CardTitle>Room to Breathe</CardTitle>
@@ -256,7 +264,11 @@ export const AllVariants: Story = {
         <h3 className="text-lg font-semibold mb-4 text-(--color-text-primary)">
           Elevated Variant
         </h3>
-        <CardGrid variant="elevated" columns={{ sm: 1, md: 2, lg: 3 }}>
+        <CardGrid
+          aria-label="Elevated variant"
+          variant="elevated"
+          columns={{ sm: 1, md: 2, lg: 3 }}
+        >
           {["Premium", "Featured", "Spotlight"].map((label, index) => (
             <Card
               key={label}
@@ -303,6 +315,7 @@ export const Interactive: Story = {
           Interactive Grid
         </h3>
         <CardGrid
+          aria-label="Interactive grid"
           interactive={true}
           columns={{ sm: 1, md: 2, lg: 3 }}
           className="max-w-4xl"
@@ -368,6 +381,7 @@ export const Interactive: Story = {
                       variant="ghost"
                       size="icon"
                       className="opacity-0 group-hover:opacity-100 transition-opacity h-6 w-6"
+                      aria-label={`More actions for ${item.title}`}
                     >
                       <MoreHorizontal className="h-4 w-4 text-(--color-text-tertiary)" />
                     </Button>
@@ -400,6 +414,7 @@ export const Interactive: Story = {
           Centered Layout
         </h3>
         <CardGrid
+          aria-label="Centered layout"
           interactive={true}
           centered={true}
           columns={{ sm: 1, md: 2, lg: 2 }}

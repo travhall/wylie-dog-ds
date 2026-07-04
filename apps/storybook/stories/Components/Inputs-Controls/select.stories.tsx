@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import {
   Select,
   SelectContent,
@@ -77,6 +77,16 @@ type SelectStoryArgs = {
   disabled?: boolean;
 };
 
+// Reads the generated id/isInvalid from the nearest <FormField> and forwards
+// them to SelectTrigger, mirroring the FieldInput/FieldTextarea pattern in
+// form.stories.tsx — without this, FormLabel's htmlFor points at an id no
+// element has, leaving the combobox (which doesn't support name-from-content
+// per the ARIA spec) with no accessible name.
+function FieldSelectTrigger(props: React.ComponentProps<typeof SelectTrigger>) {
+  const { id, isInvalid } = useFormField();
+  return <SelectTrigger id={id} error={isInvalid} {...props} />;
+}
+
 export const Default: Story = {
   parameters: {
     docs: {
@@ -94,7 +104,7 @@ export const Default: Story = {
           Choose a country
         </Label>
         <Select disabled={disabled} size={size}>
-          <SelectTrigger>
+          <SelectTrigger id="default-select">
             <SelectValue placeholder="Select a country" />
           </SelectTrigger>
           <SelectContent>
@@ -106,6 +116,14 @@ export const Default: Story = {
           </SelectContent>
         </Select>
       </div>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await waitFor(() =>
+      expect(canvas.getByRole("combobox")).toHaveTextContent(
+        /select a country/i
+      )
     );
   },
 };
@@ -124,9 +142,9 @@ export const WithError: Story = {
       <FormField error required>
         <FormLabel>Category</FormLabel>
         <Select>
-          <SelectTrigger error>
+          <FieldSelectTrigger>
             <SelectValue placeholder="This field is required" />
-          </SelectTrigger>
+          </FieldSelectTrigger>
           <SelectContent>
             <SelectItem value="tech">Technology</SelectItem>
             <SelectItem value="design">Design</SelectItem>
@@ -137,6 +155,14 @@ export const WithError: Story = {
       </FormField>
     </Form>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await waitFor(() =>
+      expect(canvas.getByRole("combobox")).toHaveTextContent(
+        /this field is required/i
+      )
+    );
+  },
 };
 
 export const AllSizes: Story = {
@@ -151,9 +177,11 @@ export const AllSizes: Story = {
   render: () => (
     <div className="mx-auto w-full max-w-xs space-y-6">
       <div className="space-y-2">
-        <Label size="sm">Small Select</Label>
+        <Label htmlFor="size-select-sm" size="sm">
+          Small Select
+        </Label>
         <Select size="sm">
-          <SelectTrigger>
+          <SelectTrigger id="size-select-sm">
             <SelectValue placeholder="Small select" />
           </SelectTrigger>
           <SelectContent>
@@ -165,9 +193,11 @@ export const AllSizes: Story = {
       </div>
 
       <div className="space-y-2">
-        <Label size="md">Medium Select (Default)</Label>
+        <Label htmlFor="size-select-md" size="md">
+          Medium Select (Default)
+        </Label>
         <Select size="md">
-          <SelectTrigger>
+          <SelectTrigger id="size-select-md">
             <SelectValue placeholder="Medium select" />
           </SelectTrigger>
           <SelectContent>
@@ -179,9 +209,11 @@ export const AllSizes: Story = {
       </div>
 
       <div className="space-y-2">
-        <Label size="lg">Large Select</Label>
+        <Label htmlFor="size-select-lg" size="lg">
+          Large Select
+        </Label>
         <Select size="lg">
-          <SelectTrigger>
+          <SelectTrigger id="size-select-lg">
             <SelectValue placeholder="Large select" />
           </SelectTrigger>
           <SelectContent>
@@ -193,6 +225,15 @@ export const AllSizes: Story = {
       </div>
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await waitFor(() => {
+      const triggers = canvas.getAllByRole("combobox");
+      expect(triggers[0]).toHaveTextContent(/small select/i);
+      expect(triggers[1]).toHaveTextContent(/medium select/i);
+      expect(triggers[2]).toHaveTextContent(/large select/i);
+    });
+  },
 };
 
 export const WithSeparators: Story = {
@@ -206,9 +247,9 @@ export const WithSeparators: Story = {
   },
   render: () => (
     <div className="mx-auto w-full max-w-xs space-y-2">
-      <Label>Choose your timezone</Label>
+      <Label htmlFor="timezone-select">Choose your timezone</Label>
       <Select>
-        <SelectTrigger>
+        <SelectTrigger id="timezone-select">
           <SelectValue placeholder="Select timezone" />
         </SelectTrigger>
         <SelectContent>
@@ -224,6 +265,12 @@ export const WithSeparators: Story = {
       </Select>
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await waitFor(() =>
+      expect(canvas.getByRole("combobox")).toHaveTextContent(/select timezone/i)
+    );
+  },
 };
 
 export const LongLists: Story = {
@@ -238,9 +285,9 @@ export const LongLists: Story = {
   render: () => (
     <div className="mx-auto grid w-full max-w-2xl grid-cols-2 gap-6">
       <div className="space-y-2">
-        <Label>Choose a language</Label>
+        <Label htmlFor="lang-select">Choose a language</Label>
         <Select>
-          <SelectTrigger>
+          <SelectTrigger id="lang-select">
             <SelectValue placeholder="Select language" />
           </SelectTrigger>
           <SelectContent>
@@ -261,9 +308,9 @@ export const LongLists: Story = {
       </div>
 
       <div className="space-y-2">
-        <Label>Programming language</Label>
+        <Label htmlFor="prog-lang-select">Programming language</Label>
         <Select>
-          <SelectTrigger>
+          <SelectTrigger id="prog-lang-select">
             <SelectValue placeholder="Select language" />
           </SelectTrigger>
           <SelectContent>
@@ -284,6 +331,14 @@ export const LongLists: Story = {
       </div>
     </div>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await waitFor(() => {
+      const triggers = canvas.getAllByRole("combobox");
+      expect(triggers[0]).toHaveTextContent(/select language/i);
+      expect(triggers[1]).toHaveTextContent(/select language/i);
+    });
+  },
 };
 
 export const FormExamples: Story = {
