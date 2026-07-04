@@ -7,21 +7,33 @@ import type {
   TransformationLog,
 } from "../format-adapter";
 import { TokenFormatType } from "../format-adapter";
-import type { ProcessedToken } from "../processor";
+import type { ExportData, ProcessedToken } from "../processor";
+
+/** Loosely-typed Style Dictionary token (both `value`/`$value` conventions). */
+type LooseSDToken = {
+  $value?: unknown;
+  value?: unknown;
+  $type?: unknown;
+  type?: unknown;
+  $description?: unknown;
+  description?: unknown;
+  comment?: unknown;
+};
 
 export class StyleDictionaryFlatAdapter implements FormatAdapter {
   name = "Style Dictionary Flat Format";
 
-  detect(data: any): FormatDetectionResult {
+  detect(data: unknown): FormatDetectionResult {
     let confidence = 0;
     const warnings: string[] = [];
 
     // Check for flat object structure (not array)
     if (typeof data === "object" && !Array.isArray(data) && data !== null) {
       confidence += 0.2;
+      const record = data as Record<string, unknown>;
 
       // Look for hierarchical keys like 'color.primary.500'
-      const keys = Object.keys(data);
+      const keys = Object.keys(record);
       const hierarchicalKeys = keys.filter((key) => key.includes("."));
       if (hierarchicalKeys.length > 0) {
         confidence += 0.3;
@@ -32,7 +44,7 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
       let validTokenCount = 0;
 
       for (const key of sampleTokens) {
-        const token = data[key];
+        const token = record[key] as LooseSDToken | null;
         if (token && typeof token === "object") {
           // Check for value property (Style Dictionary format)
           if (token.value !== undefined || token.$value !== undefined) {
@@ -59,7 +71,7 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
     };
   }
 
-  normalize(data: any): NormalizationResult {
+  normalize(data: unknown): NormalizationResult {
     const transformations: TransformationLog[] = [];
     const warnings: string[] = [];
     const errors: string[] = [];
@@ -81,7 +93,7 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
       );
 
       // Transform each collection
-      const normalizedCollections: any[] = [];
+      const normalizedCollections: ExportData[] = [];
 
       for (const [collectionName, tokens] of Object.entries(collections)) {
         console.log(
@@ -118,16 +130,20 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
       };
     }
   }
-  validate(data: any): boolean {
+  validate(data: unknown): boolean {
     return this.detect(data).confidence > 0.5;
   }
 
-  private groupByCollection(data: any): Record<string, any> {
-    const collections: Record<string, any> = {};
+  private groupByCollection(
+    data: unknown
+  ): Record<string, Record<string, unknown>> {
+    const collections: Record<string, Record<string, unknown>> = {};
+
+    if (typeof data !== "object" || data === null) return collections;
 
     for (const [tokenPath, tokenData] of Object.entries(data)) {
       // Extract collection name from token path (e.g., 'color.primary.500' → 'color')
-      const parts = (tokenPath as string).split(".");
+      const parts = tokenPath.split(".");
       const collectionName = parts[0] || "default";
 
       if (!collections[collectionName]) {
@@ -142,9 +158,9 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
 
   private transformCollection(
     name: string,
-    tokens: any,
+    tokens: Record<string, unknown>,
     transformations: TransformationLog[]
-  ): any {
+  ): ExportData {
     const variables: Record<string, ProcessedToken> = {};
 
     for (const [tokenPath, tokenData] of Object.entries(tokens)) {
@@ -165,14 +181,17 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
   }
 
   private transformToken(
-    tokenData: any,
+    tokenData: unknown,
     transformations: TransformationLog[]
   ): ProcessedToken {
     // Handle different property naming conventions
-    const value = tokenData.$value ?? tokenData.value ?? tokenData;
-    let type = tokenData.$type ?? tokenData.type;
-    const description =
-      tokenData.$description ?? tokenData.description ?? tokenData.comment;
+    const obj = (
+      typeof tokenData === "object" && tokenData !== null ? tokenData : {}
+    ) as LooseSDToken;
+    const value = obj.$value ?? obj.value ?? tokenData;
+    let type = (obj.$type ?? obj.type ?? "") as string;
+    const description = (obj.$description ?? obj.description ?? obj.comment) as
+      string | undefined;
 
     // If no type provided, infer it
     if (!type) {
@@ -186,7 +205,7 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
     }
 
     // Normalize property names if needed
-    if (tokenData.value !== undefined && tokenData.$value === undefined) {
+    if (obj.value !== undefined && obj.$value === undefined) {
       transformations.push({
         type: "property-normalization",
         description: 'Converted "value" to "$value"',
@@ -195,7 +214,7 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
       });
     }
 
-    if (tokenData.type !== undefined && tokenData.$type === undefined) {
+    if (obj.type !== undefined && obj.$type === undefined) {
       transformations.push({
         type: "property-normalization",
         description: 'Converted "type" to "$type"',
@@ -211,7 +230,7 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
     };
   }
 
-  private inferType(value: any): string {
+  private inferType(value: unknown): string {
     if (typeof value === "string") {
       // Hex colors
       if (value.match(/^#[0-9a-fA-F]{6}$/)) return "color";
@@ -232,14 +251,15 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
     return "string";
   }
 
-  private analyzeStructure(data: any): StructureInfo {
+  private analyzeStructure(data: unknown): StructureInfo {
     let tokenCount = 0;
     let referenceCount = 0;
     let propertyFormat: "type/value" | "$type/$value" | "mixed" | "other" =
       "other";
 
     if (typeof data === "object" && data !== null && !Array.isArray(data)) {
-      const keys = Object.keys(data);
+      const record = data as Record<string, unknown>;
+      const keys = Object.keys(record);
       tokenCount = keys.length;
 
       // Analyze property format
@@ -248,7 +268,7 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
 
       for (const key of keys.slice(0, 5)) {
         // Sample first 5 tokens
-        const token = data[key];
+        const token = record[key] as LooseSDToken | null;
         if (token && typeof token === "object") {
           if (token.type !== undefined && token.value !== undefined)
             hasTypeValue++;
@@ -288,13 +308,14 @@ export class StyleDictionaryFlatAdapter implements FormatAdapter {
   }
 
   private detectReferenceFormat(
-    data: any
+    data: unknown
   ): "curly-brace" | "css-var" | "sass" | "other" | "none" {
     if (typeof data !== "object" || !data) return "none";
 
     for (const token of Object.values(data).slice(0, 10)) {
       if (token && typeof token === "object") {
-        const value = (token as any).$value ?? (token as any).value;
+        const t = token as LooseSDToken;
+        const value = t.$value ?? t.value;
         if (typeof value === "string") {
           if (value.includes("{") && value.includes("}")) return "curly-brace";
           if (value.includes("var(--")) return "css-var";

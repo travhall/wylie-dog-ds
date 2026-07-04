@@ -7,28 +7,29 @@ import type {
   TransformationLog,
 } from "../format-adapter";
 import { TokenFormatType } from "../format-adapter";
-import type { ProcessedToken } from "../processor";
+import type { ExportData, ProcessedToken } from "../processor";
 
 export class CSSVariablesAdapter implements FormatAdapter {
   name = "CSS Variables Format";
 
-  detect(data: any): FormatDetectionResult {
+  detect(data: unknown): FormatDetectionResult {
     let confidence = 0;
     const warnings: string[] = [];
 
     if (typeof data === "object" && !Array.isArray(data) && data !== null) {
+      const record = data as Record<string, unknown>;
       // Only add base confidence if we find actual CSS variable patterns
       let totalVarCount = 0;
       let totalProps = 0;
       let hasRootSection = false;
 
       // Check for :root section (strong indicator)
-      if (data[":root"]) {
+      if (record[":root"]) {
         hasRootSection = true;
         confidence += 0.2; // Lower initial confidence
 
         // Check if :root contains CSS variables
-        const rootVars = data[":root"];
+        const rootVars = record[":root"];
         if (typeof rootVars === "object") {
           const varCount = Object.keys(rootVars).filter((key) =>
             key.startsWith("--")
@@ -41,7 +42,7 @@ export class CSSVariablesAdapter implements FormatAdapter {
       }
 
       // Check for CSS variable patterns in any section
-      const checkForCSSVars = (obj: any): void => {
+      const checkForCSSVars = (obj: unknown): void => {
         if (typeof obj === "object" && obj !== null) {
           for (const [key, value] of Object.entries(obj)) {
             totalProps++;
@@ -79,7 +80,7 @@ export class CSSVariablesAdapter implements FormatAdapter {
 
         // Check for var() references
         let refCount = 0;
-        const checkForVarRefs = (obj: any): void => {
+        const checkForVarRefs = (obj: unknown): void => {
           if (typeof obj === "object" && obj !== null) {
             for (const value of Object.values(obj)) {
               if (typeof value === "string" && value.includes("var(--")) {
@@ -106,7 +107,7 @@ export class CSSVariablesAdapter implements FormatAdapter {
     };
   }
 
-  normalize(data: any): NormalizationResult {
+  normalize(data: unknown): NormalizationResult {
     const transformations: TransformationLog[] = [];
     const warnings: string[] = [];
     const errors: string[] = [];
@@ -141,7 +142,7 @@ export class CSSVariablesAdapter implements FormatAdapter {
       );
 
       // Transform each section into a collection
-      const normalizedCollections: any[] = [];
+      const normalizedCollections: ExportData[] = [];
 
       for (const [sectionName, variables] of Object.entries(sections)) {
         console.log(
@@ -179,30 +180,18 @@ export class CSSVariablesAdapter implements FormatAdapter {
     }
   }
 
-  validate(data: any): boolean {
+  validate(data: unknown): boolean {
     return this.detect(data).confidence > 0.6;
   }
 
-  private hasVarReferences(data: any): boolean {
-    const checkForVarRefs = (value: any): boolean => {
-      if (typeof value === "string") {
-        return value.includes("var(--");
-      }
-      if (typeof value === "object" && value !== null) {
-        return Object.values(value).some((v) => checkForVarRefs(v));
-      }
-      return false;
-    };
-
-    return checkForVarRefs(data);
-  }
-
   private extractSections(
-    data: any,
+    data: unknown,
     transformations: TransformationLog[],
     referenceMap?: Map<string, string>
   ): Record<string, Record<string, string>> {
     const sections: Record<string, Record<string, string>> = {};
+
+    if (typeof data !== "object" || data === null) return sections;
 
     for (const [sectionName, sectionData] of Object.entries(data)) {
       if (typeof sectionData === "object" && sectionData !== null) {
@@ -237,7 +226,7 @@ export class CSSVariablesAdapter implements FormatAdapter {
     sectionName: string,
     variables: Record<string, string>,
     transformations: TransformationLog[]
-  ): any {
+  ): ExportData {
     const processedVariables: Record<string, ProcessedToken> = {};
 
     for (const [varName, varValue] of Object.entries(variables)) {
@@ -316,7 +305,7 @@ export class CSSVariablesAdapter implements FormatAdapter {
     return "string";
   }
 
-  private analyzeStructure(data: any): StructureInfo {
+  private analyzeStructure(data: unknown): StructureInfo {
     let tokenCount = 0;
     let referenceCount = 0;
     let hasCollections = false;
@@ -351,10 +340,11 @@ export class CSSVariablesAdapter implements FormatAdapter {
     };
   }
 
-  private extractAllVariables(data: any): Record<string, string> {
+  private extractAllVariables(data: unknown): Record<string, string> {
     const allVariables: Record<string, string> = {};
 
-    const extractRecursive = (obj: any): void => {
+    const extractRecursive = (obj: unknown): void => {
+      if (typeof obj !== "object" || obj === null) return;
       for (const [key, value] of Object.entries(obj)) {
         if (key.startsWith("--")) {
           // Store the CSS variable name (without --) and its value
@@ -391,12 +381,13 @@ export class CSSVariablesAdapter implements FormatAdapter {
   }
 
   private extractVariablesFromSection(
-    section: any,
+    section: unknown,
     referenceMap?: Map<string, string>
   ): Record<string, string> {
     const variables: Record<string, string> = {};
 
-    const extractRecursive = (obj: any, prefix: string = ""): void => {
+    const extractRecursive = (obj: unknown, prefix: string = ""): void => {
+      if (typeof obj !== "object" || obj === null) return;
       for (const [key, value] of Object.entries(obj)) {
         if (key.startsWith("--")) {
           // This is a CSS variable
