@@ -100,10 +100,14 @@ export async function handleValidateImport(msg: PluginMessage): Promise<void> {
     }
 
     // Build transformation summary
-    const transformations: any[] = [];
+    const transformations: Array<{
+      type: string;
+      count: number;
+      examples: string[];
+    }> = [];
     adapterResults.forEach((result) => {
-      if (result.normalization?.transformations) {
-        result.normalization.transformations.forEach((t: any) => {
+      if (result.transformations) {
+        result.transformations.forEach((t) => {
           const existing = transformations.find((x) => x.type === t.type);
           if (existing) {
             existing.count++;
@@ -170,7 +174,7 @@ export async function handleValidateImport(msg: PluginMessage): Promise<void> {
 /**
  * Import tokens from JSON files
  */
-export async function handleImportTokens(msg: any): Promise<void> {
+export async function handleImportTokens(msg: PluginMessage): Promise<void> {
   console.log("Importing tokens from files:", msg.files?.length || 0);
 
   try {
@@ -181,8 +185,8 @@ export async function handleImportTokens(msg: any): Promise<void> {
     }
 
     // Parse all files with format adaptation
-    const allTokenData = [];
-    const adapterResults: any[] = [];
+    const allTokenData: ExportData[] = [];
+    const adapterResults: AdapterResultWithFilename[] = [];
 
     for (const file of msg.files) {
       console.log(`Parsing file: ${file.filename}`);
@@ -309,7 +313,7 @@ export async function handleImportTokens(msg: any): Promise<void> {
 /**
  * Export tokens to JSON files
  */
-export async function handleExportTokens(msg: any): Promise<void> {
+export async function handleExportTokens(msg: PluginMessage): Promise<void> {
   console.log("Exporting tokens for collections:", msg.collectionIds);
 
   try {
@@ -435,7 +439,7 @@ export async function handleExportTokens(msg: any): Promise<void> {
 /**
  * Get local tokens for conflict detection
  */
-export async function handleGetLocalTokens(msg: any): Promise<void> {
+export async function handleGetLocalTokens(msg: PluginMessage): Promise<void> {
   try {
     console.log("📍 Exporting local tokens for conflict detection...");
     setLoading(true, "Reading local variables...");

@@ -11,11 +11,14 @@ import {
   validateTokenReferences,
 } from "../variables/importer";
 import { setLoading } from "./utils";
+import type { PluginMessage } from "../../shared/types";
 
 /**
  * Generate and import demo tokens
  */
-export async function handleGenerateDemoTokens(msg: any): Promise<void> {
+export async function handleGenerateDemoTokens(
+  msg: PluginMessage
+): Promise<void> {
   console.log("🎨 Generating demo tokens...");
 
   try {
@@ -100,7 +103,9 @@ export async function handleGenerateDemoTokens(msg: any): Promise<void> {
 /**
  * Detect existing Figma Variables
  */
-export async function handleDetectFigmaVariables(msg: any): Promise<void> {
+export async function handleDetectFigmaVariables(
+  msg: PluginMessage
+): Promise<void> {
   console.log("Detecting existing Figma Variables...");
 
   try {
@@ -124,7 +129,9 @@ export async function handleDetectFigmaVariables(msg: any): Promise<void> {
 /**
  * Convert Figma Variables to W3C DTCG format
  */
-export async function handleConvertFigmaVariables(msg: any): Promise<void> {
+export async function handleConvertFigmaVariables(
+  msg: PluginMessage
+): Promise<void> {
   console.log("Converting Figma Variables to W3C DTCG format...");
 
   try {
@@ -183,7 +190,7 @@ export async function handleConvertFigmaVariables(msg: any): Promise<void> {
 /**
  * Cancel ongoing operation
  */
-export async function handleCancelOperation(msg: any): Promise<void> {
+export async function handleCancelOperation(msg: PluginMessage): Promise<void> {
   console.log("Cancelling operation:", msg.operation);
   setLoading(false);
   figma.ui.postMessage({
