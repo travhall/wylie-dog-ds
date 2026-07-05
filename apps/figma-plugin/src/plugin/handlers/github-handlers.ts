@@ -6,11 +6,14 @@
 
 import { processCollectionsForExport } from "../variables/processor";
 import { setLoading, processInChunks } from "./utils";
+import type { PluginMessage } from "../../shared/types";
 
 /**
  * Sync tokens to GitHub (prepare data and forward to UI)
  */
-export async function handleGitHubSyncTokens(msg: any): Promise<void> {
+export async function handleGitHubSyncTokens(
+  msg: PluginMessage
+): Promise<void> {
   try {
     setLoading(true, "Exporting tokens for GitHub sync...");
 
@@ -97,7 +100,9 @@ export async function handleGitHubSyncTokens(msg: any): Promise<void> {
 /**
  * Pull tokens from GitHub (forward to UI thread)
  */
-export async function handleGitHubPullTokens(msg: any): Promise<void> {
+export async function handleGitHubPullTokens(
+  msg: PluginMessage
+): Promise<void> {
   console.log("Forwarding GitHub pull to UI thread...");
   // Forward to UI thread where fetch is available
   figma.ui.postMessage({
@@ -108,7 +113,9 @@ export async function handleGitHubPullTokens(msg: any): Promise<void> {
 /**
  * Pull tokens with conflict detection (forward to UI thread)
  */
-export async function handleGitHubPullWithConflicts(msg: any): Promise<void> {
+export async function handleGitHubPullWithConflicts(
+  msg: PluginMessage
+): Promise<void> {
   console.log("Forwarding GitHub pull with conflict detection to UI thread...");
   figma.ui.postMessage({
     type: "github-pull-with-conflicts",
@@ -118,7 +125,9 @@ export async function handleGitHubPullWithConflicts(msg: any): Promise<void> {
 /**
  * Resolve conflicts (forward to UI thread)
  */
-export async function handleResolveConflicts(msg: any): Promise<void> {
+export async function handleResolveConflicts(
+  msg: PluginMessage
+): Promise<void> {
   console.log("Forwarding conflict resolution to UI thread...");
   figma.ui.postMessage({
     type: "resolve-conflicts",
@@ -131,14 +140,18 @@ export async function handleResolveConflicts(msg: any): Promise<void> {
  * Test GitHub configuration - No longer used (UI handles this directly)
  * Kept for backwards compatibility
  */
-export async function handleTestGitHubConfig(msg: any): Promise<void> {
+export async function handleTestGitHubConfig(
+  msg: PluginMessage
+): Promise<void> {
   console.log("GitHub config test - handled in UI thread");
 }
 
 /**
  * Handle GitHub sync completion notification from UI
  */
-export async function handleGitHubSyncComplete(msg: any): Promise<void> {
+export async function handleGitHubSyncComplete(
+  msg: PluginMessage
+): Promise<void> {
   console.log("GitHub sync completed:", msg.result);
   setLoading(false);
 

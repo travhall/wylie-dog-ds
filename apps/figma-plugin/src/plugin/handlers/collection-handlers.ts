@@ -5,11 +5,12 @@
  */
 
 import { setLoading, processInChunks, sendError, sendSuccess } from "./utils";
+import type { PluginMessage } from "../../shared/types";
 
 /**
  * Get all variable collections
  */
-export async function handleGetCollections(msg: any): Promise<void> {
+export async function handleGetCollections(msg: PluginMessage): Promise<void> {
   console.log("Getting variable collections...");
 
   const collections = await figma.variables.getLocalVariableCollectionsAsync();
@@ -29,7 +30,9 @@ export async function handleGetCollections(msg: any): Promise<void> {
 /**
  * Get detailed information about a specific collection
  */
-export async function handleGetCollectionDetails(msg: any): Promise<void> {
+export async function handleGetCollectionDetails(
+  msg: PluginMessage
+): Promise<void> {
   console.log("Getting collection details for:", msg.collectionId);
 
   try {

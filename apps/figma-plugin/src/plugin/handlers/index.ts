@@ -51,11 +51,12 @@ import {
   handleConvertFigmaVariables,
   handleCancelOperation,
 } from "./utility-handlers";
+import type { PluginMessage } from "../../shared/types";
 
 /**
  * Message handler function type
  */
-export type MessageHandler = (msg: any) => Promise<void> | void;
+export type MessageHandler = (msg: PluginMessage) => Promise<void> | void;
 
 /**
  * Handler registry mapping message types to handler functions
@@ -113,7 +114,7 @@ export function createHandlerRegistry(): HandlerRegistry {
  *
  * @param msg - The message to route
  */
-export async function routeMessage(msg: any): Promise<void> {
+export async function routeMessage(msg: PluginMessage): Promise<void> {
   const registry = createHandlerRegistry();
   const handler = registry[msg.type];
 

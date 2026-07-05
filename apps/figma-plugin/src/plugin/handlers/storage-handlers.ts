@@ -6,6 +6,7 @@
 
 import { fileConfigStorage } from "../storage/file-storage";
 import { userPreferencesStorage } from "../storage/user-storage";
+import type { PluginMessage } from "../../shared/types";
 
 const LAST_SYNC_KEY = "github-last-sync";
 
@@ -43,7 +44,7 @@ export async function handleRecordLastSync(): Promise<void> {
 /**
  * Get GitHub configuration
  */
-export async function handleGetGitHubConfig(msg: any): Promise<void> {
+export async function handleGetGitHubConfig(msg: PluginMessage): Promise<void> {
   try {
     const config = await fileConfigStorage.getGitHubConfig();
 
@@ -64,7 +65,9 @@ export async function handleGetGitHubConfig(msg: any): Promise<void> {
 /**
  * Save GitHub configuration
  */
-export async function handleSaveGitHubConfig(msg: any): Promise<void> {
+export async function handleSaveGitHubConfig(
+  msg: PluginMessage
+): Promise<void> {
   try {
     await fileConfigStorage.setGitHubConfig(msg.config);
 
@@ -86,7 +89,9 @@ export async function handleSaveGitHubConfig(msg: any): Promise<void> {
 /**
  * Clear GitHub configuration
  */
-export async function handleClearGitHubConfig(msg: any): Promise<void> {
+export async function handleClearGitHubConfig(
+  msg: PluginMessage
+): Promise<void> {
   try {
     await fileConfigStorage.clearGitHubConfig();
 
@@ -110,7 +115,7 @@ export async function handleClearGitHubConfig(msg: any): Promise<void> {
 /**
  * Get advanced mode preference
  */
-export async function handleGetAdvancedMode(msg: any): Promise<void> {
+export async function handleGetAdvancedMode(msg: PluginMessage): Promise<void> {
   try {
     const advancedMode = await userPreferencesStorage.getAdvancedMode();
 
@@ -130,7 +135,9 @@ export async function handleGetAdvancedMode(msg: any): Promise<void> {
 /**
  * Save advanced mode preference
  */
-export async function handleSaveAdvancedMode(msg: any): Promise<void> {
+export async function handleSaveAdvancedMode(
+  msg: PluginMessage
+): Promise<void> {
   try {
     await userPreferencesStorage.setAdvancedMode(msg.advancedMode);
     console.log("Advanced mode preference saved:", msg.advancedMode);
@@ -142,7 +149,9 @@ export async function handleSaveAdvancedMode(msg: any): Promise<void> {
 /**
  * Get onboarding state
  */
-export async function handleGetOnboardingState(msg: any): Promise<void> {
+export async function handleGetOnboardingState(
+  msg: PluginMessage
+): Promise<void> {
   try {
     const hasSeenOnboarding =
       await userPreferencesStorage.getHasSeenOnboarding();
@@ -163,7 +172,9 @@ export async function handleGetOnboardingState(msg: any): Promise<void> {
 /**
  * Save onboarding state
  */
-export async function handleSaveOnboardingState(msg: any): Promise<void> {
+export async function handleSaveOnboardingState(
+  msg: PluginMessage
+): Promise<void> {
   try {
     await userPreferencesStorage.setHasSeenOnboarding(msg.hasSeenOnboarding);
     console.log("Onboarding state saved:", msg.hasSeenOnboarding);
@@ -175,7 +186,9 @@ export async function handleSaveOnboardingState(msg: any): Promise<void> {
 /**
  * Check file engagement status
  */
-export async function handleCheckFileEngagement(msg: any): Promise<void> {
+export async function handleCheckFileEngagement(
+  msg: PluginMessage
+): Promise<void> {
   try {
     const hasEngaged = await fileConfigStorage.hasEngagedWithFile();
     figma.ui.postMessage({
@@ -190,7 +203,7 @@ export async function handleCheckFileEngagement(msg: any): Promise<void> {
 /**
  * Mark file as engaged
  */
-export async function handleMarkFileEngaged(msg: any): Promise<void> {
+export async function handleMarkFileEngaged(msg: PluginMessage): Promise<void> {
   try {
     await fileConfigStorage.markFileEngaged();
     console.log("File marked as engaged");

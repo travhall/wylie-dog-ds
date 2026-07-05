@@ -4,6 +4,7 @@
  * Handles token import, export, and validation operations.
  */
 
+import type { ExportData } from "../variables/processor";
 import { processCollectionsForExport } from "../variables/processor";
 import {
   importMultipleCollections,
@@ -11,12 +12,16 @@ import {
   validateTokenStructure,
   validateTokenReferences,
 } from "../variables/importer";
+import type { AdapterProcessResult } from "../variables/format-adapter";
 import { setLoading, processInChunks, sendError } from "./utils";
+import type { PluginMessage } from "../../shared/types";
+
+type AdapterResultWithFilename = AdapterProcessResult & { filename: string };
 
 /**
  * Validate import without actually importing - returns preview data
  */
-export async function handleValidateImport(msg: any): Promise<void> {
+export async function handleValidateImport(msg: PluginMessage): Promise<void> {
   console.log("Validating import for files:", msg.files?.length || 0);
 
   try {
@@ -25,8 +30,8 @@ export async function handleValidateImport(msg: any): Promise<void> {
     }
 
     // Parse all files with format adaptation (same as import)
-    const allTokenData = [];
-    const adapterResults: any[] = [];
+    const allTokenData: ExportData[] = [];
+    const adapterResults: AdapterResultWithFilename[] = [];
     const warnings: string[] = [];
     const errors: string[] = [];
     let totalTokens = 0;
@@ -59,14 +64,14 @@ export async function handleValidateImport(msg: any): Promise<void> {
         // Count tokens
         if (Array.isArray(tokenData)) {
           tokenData.forEach((collection) => {
-            const collectionObj = Object.values(collection)[0] as any;
+            const collectionObj = Object.values(collection)[0];
             if (collectionObj?.variables) {
               totalTokens += Object.keys(collectionObj.variables).length;
             }
           });
           allTokenData.push(...tokenData);
         } else {
-          const collectionObj = Object.values(tokenData)[0] as any;
+          const collectionObj = Object.values(tokenData)[0];
           if (collectionObj?.variables) {
             totalTokens += Object.keys(collectionObj.variables).length;
           }
