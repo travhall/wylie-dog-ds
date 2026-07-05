@@ -266,7 +266,7 @@ function convertTokenValueToFigma(
     case "STRING":
     case "BOOLEAN":
     default:
-      return value;
+      return value as string | boolean;
   }
 }
 

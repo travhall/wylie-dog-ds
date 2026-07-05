@@ -2,10 +2,10 @@
 
 export interface ProcessedToken {
   $type: string;
-  $value: any;
+  $value: unknown;
   $description?: string;
   name?: string; // Token name for validation purposes
-  valuesByMode?: Record<string, any>; // For Figma import compatibility
+  valuesByMode?: Record<string, unknown>; // For Figma import compatibility
 }
 
 export interface ProcessedCollection {

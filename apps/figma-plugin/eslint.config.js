@@ -2,10 +2,9 @@
 //
 // Intentionally standalone: it does NOT touch the monorepo root
 // eslint.config.mjs (a no-op pass-through other workspaces rely on) or the
-// shared @repo/eslint-config. Its sole job today is the type-safety ratchet —
-// surfacing `any` usage via @typescript-eslint/no-explicit-any at "warn" and
-// driving the count to zero one batch at a time. The `lint` script pins
-// --max-warnings to the current baseline so the number can only go down.
+// shared @repo/eslint-config. The type-safety ratchet drove
+// @typescript-eslint/no-explicit-any from a baseline of 358 to 0 — the rule
+// is now "error" so the codebase stays any-free.
 //
 // See memory: project_figma_plugin_typesafety_ratchet.
 import tseslint from "typescript-eslint";
@@ -28,7 +27,7 @@ export default tseslint.config(
       "@typescript-eslint": tseslint.plugin,
     },
     rules: {
-      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-explicit-any": "error",
     },
   }
 );
