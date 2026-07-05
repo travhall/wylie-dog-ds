@@ -8,7 +8,7 @@ afterEach(() => {
 });
 
 // Mock Figma API
-(global as any).figma = {
+const mockFigma = {
   clientStorage: {
     getAsync: vi.fn(),
     setAsync: vi.fn(),
@@ -27,9 +27,11 @@ afterEach(() => {
     getLocalVariablesAsync: vi.fn().mockResolvedValue([]),
     getLocalVariableCollections: vi.fn().mockReturnValue([]),
   },
-} as any;
+};
+
+(global as unknown as { figma: typeof mockFigma }).figma = mockFigma;
 
 // Mock parent.postMessage for UI tests
 global.parent = {
   postMessage: vi.fn(),
-} as any;
+} as unknown as Window;

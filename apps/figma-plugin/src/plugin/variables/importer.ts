@@ -203,9 +203,9 @@ function convertColorToFigmaRgb(
     const rgb = convertToRgb(culoriColor);
     if (rgb) {
       return {
-        r: clamp01(rgb.r),
-        g: clamp01(rgb.g),
-        b: clamp01(rgb.b),
+        r: clamp01(rgb.r as number),
+        g: clamp01(rgb.g as number),
+        b: clamp01(rgb.b as number),
       };
     }
   }

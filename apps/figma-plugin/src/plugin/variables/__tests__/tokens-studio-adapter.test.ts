@@ -7,6 +7,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { TokensStudioAdapter } from "../adapters/tokens-studio";
 import { TokenFormatType } from "../format-adapter";
+import type { ProcessedToken } from "../processor";
 import { tokensStudioTokens } from "@tests/fixtures/tokens";
 
 describe("TokensStudioAdapter", () => {
@@ -86,7 +87,7 @@ describe("TokensStudioAdapter", () => {
       expect(result.success).toBe(true);
 
       // Should have Core and Semantic collections
-      const collectionNames = result.data.flatMap((c: any) => Object.keys(c));
+      const collectionNames = result.data.flatMap((c) => Object.keys(c));
       expect(collectionNames).toContain("Core");
       expect(collectionNames).toContain("Semantic");
     });
@@ -96,9 +97,10 @@ describe("TokensStudioAdapter", () => {
 
       expect(result.success).toBe(true);
 
-      const coreCollection = result.data.find((c: any) => c.Core)!;
+      const coreCollection = result.data.find((c) => c.Core)!;
       const variables = coreCollection.Core.variables;
-      const firstToken = Object.values(variables)[0] as any;
+      const firstToken = Object.values(variables)[0] as ProcessedToken &
+        Record<string, unknown>;
 
       expect(firstToken.$type).toBeDefined();
       expect(firstToken.$value).toBeDefined();
@@ -111,9 +113,9 @@ describe("TokensStudioAdapter", () => {
 
       expect(result.success).toBe(true);
 
-      const semanticCollection = result.data.find((c: any) => c.Semantic)!;
+      const semanticCollection = result.data.find((c) => c.Semantic)!;
       const variables = semanticCollection.Semantic.variables;
-      const accentToken = variables["color.accent"] as any;
+      const accentToken = variables["color.accent"];
 
       expect(accentToken.$value).toContain("{");
       expect(accentToken.$value).toContain("Core.color.primary.500");
@@ -124,9 +126,9 @@ describe("TokensStudioAdapter", () => {
 
       expect(result.success).toBe(true);
 
-      const coreCollection = result.data.find((c: any) => c.Core)!;
+      const coreCollection = result.data.find((c) => c.Core)!;
       const variables = coreCollection.Core.variables;
-      const primaryToken = variables["color.primary.500"] as any;
+      const primaryToken = variables["color.primary.500"];
 
       expect(primaryToken.$description).toBe("Primary brand color");
     });

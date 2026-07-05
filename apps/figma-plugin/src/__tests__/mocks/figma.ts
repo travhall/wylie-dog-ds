@@ -20,13 +20,13 @@ export interface MockVariable {
   id: string;
   name: string;
   resolvedType: "COLOR" | "FLOAT" | "STRING" | "BOOLEAN";
-  valuesByMode: Record<string, any>;
+  valuesByMode: Record<string, unknown>;
   description?: string;
   scopes?: string[];
 }
 
 // Mock storage
-const mockStorage = new Map<string, any>();
+const mockStorage = new Map<string, unknown>();
 
 // Mock collections
 const mockCollections = new Map<string, MockVariableCollection>();
@@ -37,7 +37,7 @@ const mockVariables = new Map<string, MockVariable>();
 /**
  * Create a mock Figma global object
  */
-export function createMockFigma(): any {
+export function createMockFigma(): Record<string, unknown> {
   const figma = {
     // Variables API
     variables: {
@@ -88,7 +88,7 @@ export function createMockFigma(): any {
       getAsync: vi.fn((key: string) =>
         Promise.resolve(mockStorage.get(key) || null)
       ),
-      setAsync: vi.fn((key: string, value: any) => {
+      setAsync: vi.fn((key: string, value: unknown) => {
         mockStorage.set(key, value);
         return Promise.resolve();
       }),
@@ -197,7 +197,7 @@ export function getMockVariables(): MockVariable[] {
 export function createMockParentPostMessage() {
   const listeners: Array<(event: MessageEvent) => void> = [];
 
-  const postMessage = vi.fn((message: any) => {
+  const postMessage = vi.fn((message: unknown) => {
     // Simulate async message delivery
     setTimeout(() => {
       listeners.forEach((listener) => {
@@ -206,20 +206,24 @@ export function createMockParentPostMessage() {
     }, 0);
   });
 
-  const addEventListener = vi.fn((type: string, listener: any) => {
-    if (type === "message") {
-      listeners.push(listener);
-    }
-  });
-
-  const removeEventListener = vi.fn((type: string, listener: any) => {
-    if (type === "message") {
-      const index = listeners.indexOf(listener);
-      if (index > -1) {
-        listeners.splice(index, 1);
+  const addEventListener = vi.fn(
+    (type: string, listener: (event: MessageEvent) => void) => {
+      if (type === "message") {
+        listeners.push(listener);
       }
     }
-  });
+  );
+
+  const removeEventListener = vi.fn(
+    (type: string, listener: (event: MessageEvent) => void) => {
+      if (type === "message") {
+        const index = listeners.indexOf(listener);
+        if (index > -1) {
+          listeners.splice(index, 1);
+        }
+      }
+    }
+  );
 
   return {
     postMessage,

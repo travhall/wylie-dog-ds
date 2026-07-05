@@ -192,7 +192,7 @@ export const tokensWithInvalidTypes = {
  * Generate large token dataset for performance testing
  */
 export function generateLargeTokenDataset(count: number = 1000) {
-  const tokens: any = {
+  const tokens: Record<string, Record<string, unknown>> = {
     color: {},
     spacing: {},
     fontSize: {},
@@ -234,7 +234,7 @@ export function generateLargeTokenDataset(count: number = 1000) {
 export interface NormalizedToken {
   name: string;
   type: "color" | "dimension" | "string" | "number" | "boolean";
-  value: any;
+  value: unknown;
   description?: string;
   collection?: string;
   path: string[];

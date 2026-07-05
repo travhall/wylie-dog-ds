@@ -1,5 +1,6 @@
 import { describe, bench, it, expect } from "vitest";
 import { ConflictDetector } from "../plugin/sync/conflict-detector";
+import type { ExportData } from "../plugin/variables/processor";
 
 // Import benchmark data (we need to read these files or import them if allowSyntheticDefaultImports is on,
 // strictly speaking in a test env we can use fs or import)
@@ -33,12 +34,18 @@ describe("Performance Benchmarks", () => {
   // Actually, let's write a proper test that prepares the data *outside* the bench function
   // so we measure the operation itself.
 
-  const prepareTokens = (json: any) => {
-    const tokens = new Map<string, any>();
-    const collectionName = Object.keys(json[0])[0];
-    const variables = json[0][collectionName].variables;
+  const prepareTokens = (json: unknown) => {
+    const tokens = new Map<string, unknown>();
+    const collections = json as Array<
+      Record<
+        string,
+        { variables: Record<string, { $value: unknown; $type: string }> }
+      >
+    >;
+    const collectionName = Object.keys(collections[0])[0];
+    const variables = collections[0][collectionName].variables;
 
-    Object.entries(variables).forEach(([key, val]: [string, any]) => {
+    Object.entries(variables).forEach(([key, val]) => {
       tokens.set(key, {
         id: key,
         name: key,
@@ -54,10 +61,16 @@ describe("Performance Benchmarks", () => {
   const tokens5k = prepareTokens(benchmark5000);
 
   bench("Conflict Resolution: 1k vs 1k (Full Overlap)", () => {
-    detector.detectConflicts([tokens1k] as any, [tokens1k] as any);
+    detector.detectConflicts(
+      [tokens1k] as unknown as ExportData[],
+      [tokens1k] as unknown as ExportData[]
+    );
   });
 
   bench("Conflict Resolution: 5k vs 5k (Full Overlap)", () => {
-    detector.detectConflicts([tokens5k] as any, [tokens5k] as any);
+    detector.detectConflicts(
+      [tokens5k] as unknown as ExportData[],
+      [tokens5k] as unknown as ExportData[]
+    );
   });
 });

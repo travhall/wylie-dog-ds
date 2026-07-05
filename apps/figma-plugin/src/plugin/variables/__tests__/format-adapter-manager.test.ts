@@ -178,7 +178,7 @@ describe("FormatAdapterManager", () => {
 
       // Reference transformations may or may not be present
       const refTransforms = result.transformations.filter(
-        (t: any) => t.type === "reference-format"
+        (t) => t.type === "reference-format"
       );
       // Just verify transformations exist
       expect(result.transformations.length).toBeGreaterThanOrEqual(0);

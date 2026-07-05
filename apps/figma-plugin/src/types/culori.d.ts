@@ -1,7 +1,7 @@
 declare module "culori" {
   export interface CuloriColor {
     mode?: string;
-    [channel: string]: any;
+    [channel: string]: number | string | undefined;
   }
 
   export type ColorConverter<T = CuloriColor | string | null> = (

@@ -127,7 +127,7 @@ describe("W3CDTCGAdapter", () => {
       expect(result.success).toBe(true);
 
       // Find the color collection
-      const colorCollection = result.data.find((c: any) => c.color)!;
+      const colorCollection = result.data.find((c) => c.color)!;
       expect(colorCollection).toBeDefined();
 
       const variables = colorCollection.color.variables;
@@ -142,7 +142,7 @@ describe("W3CDTCGAdapter", () => {
       expect(result.success).toBe(true);
 
       // Should have separate collections for color, spacing, fontSize
-      const collectionNames = result.data.flatMap((c: any) => Object.keys(c));
+      const collectionNames = result.data.flatMap((c) => Object.keys(c));
       expect(collectionNames).toContain("color");
       expect(collectionNames).toContain("spacing");
       expect(collectionNames).toContain("fontSize");
@@ -162,7 +162,7 @@ describe("W3CDTCGAdapter", () => {
 
       expect(result.success).toBe(true);
 
-      const colorCollection = result.data.find((c: any) => c.color)!;
+      const colorCollection = result.data.find((c) => c.color)!;
       const variables = colorCollection.color.variables;
 
       expect(variables["color.gray.50"]).toBeDefined();
@@ -183,10 +183,8 @@ describe("W3CDTCGAdapter", () => {
       expect(result.success).toBe(true);
 
       // Should not create collections for $ metadata fields
-      const hasSchemaCollection = result.data.some((c: any) => c.$schema);
-      const hasDescriptionCollection = result.data.some(
-        (c: any) => c.$description
-      );
+      const hasSchemaCollection = result.data.some((c) => c.$schema);
+      const hasDescriptionCollection = result.data.some((c) => c.$description);
 
       expect(hasSchemaCollection).toBe(false);
       expect(hasDescriptionCollection).toBe(false);
@@ -267,11 +265,11 @@ describe("W3CDTCGAdapter", () => {
 
     it("should handle circular references with depth limit", () => {
       // Create a deeply nested structure (not truly circular)
-      const deep: any = { level1: {} };
-      let current = deep.level1;
+      const deep: Record<string, unknown> = { level1: {} };
+      let current = deep.level1 as Record<string, unknown>;
       for (let i = 0; i < 15; i++) {
         current[`level${i + 2}`] = {};
-        current = current[`level${i + 2}`];
+        current = current[`level${i + 2}`] as Record<string, unknown>;
       }
       current.token = { $type: "color", $value: "#000" };
 
