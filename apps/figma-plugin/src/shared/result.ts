@@ -46,7 +46,7 @@ export class ResultHandler {
 
   static isFailure<T>(
     result: Result<T>
-  ): result is { success: false; error: any; suggestions?: string[] } {
+  ): result is { success: false; error: string; suggestions?: string[] } {
     return !result.success;
   }
 
@@ -78,7 +78,7 @@ export class ResultHandler {
 
 // Specialized result types for common operations
 export type ValidationResult = Result<
-  { valid: true; data: any },
+  { valid: true; data: unknown },
   {
     valid: false;
     errors: string[];
@@ -106,6 +106,6 @@ export type TokenProcessingResult<T> = Result<
   {
     type: "parsing" | "validation" | "format" | "reference" | "conflict";
     message: string;
-    context?: any;
+    context?: unknown;
   }
 >;

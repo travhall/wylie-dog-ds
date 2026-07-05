@@ -14,6 +14,6 @@ export interface NetworkResponse {
   ok: boolean;
   status: number;
   statusText: string;
-  data: any;
+  data: unknown;
   error?: string;
 }

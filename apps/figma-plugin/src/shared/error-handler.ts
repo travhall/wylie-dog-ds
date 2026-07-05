@@ -2,7 +2,7 @@
 export interface PluginError {
   type: ErrorType;
   message: string;
-  details?: any;
+  details?: unknown;
   suggestions?: string[];
   recoverable: boolean;
 }
@@ -22,7 +22,7 @@ export class ErrorHandler {
   static createError(
     type: ErrorType,
     message: string,
-    details?: any,
+    details?: unknown,
     suggestions?: string[]
   ): PluginError {
     return {
@@ -34,8 +34,10 @@ export class ErrorHandler {
     };
   }
 
-  static fromException(error: any): PluginError {
-    if (error instanceof TypeError && error.message.includes("fetch")) {
+  static fromException(error: unknown): PluginError {
+    const message = error instanceof Error ? error.message : String(error);
+
+    if (error instanceof TypeError && message.includes("fetch")) {
       return this.createError(
         ErrorType.NETWORK_ERROR,
         "Network connection failed",
@@ -48,10 +50,7 @@ export class ErrorHandler {
       );
     }
 
-    if (
-      error.message?.includes("401") ||
-      error.message?.includes("Unauthorized")
-    ) {
+    if (message.includes("401") || message.includes("Unauthorized")) {
       return this.createError(
         ErrorType.AUTHENTICATION_ERROR,
         "GitHub authentication failed",
@@ -64,10 +63,7 @@ export class ErrorHandler {
       );
     }
 
-    if (
-      error.message?.includes("404") ||
-      error.message?.includes("Not Found")
-    ) {
+    if (message.includes("404") || message.includes("Not Found")) {
       return this.createError(
         ErrorType.REPOSITORY_ERROR,
         "Repository or file not found",
@@ -80,7 +76,7 @@ export class ErrorHandler {
       );
     }
 
-    if (error.message?.includes("JSON") || error.message?.includes("parse")) {
+    if (message.includes("JSON") || message.includes("parse")) {
       return this.createError(
         ErrorType.TOKEN_FORMAT_ERROR,
         "Invalid token file format",
@@ -93,7 +89,7 @@ export class ErrorHandler {
       );
     }
 
-    if (error.message?.includes("conflict")) {
+    if (message.includes("conflict")) {
       return this.createError(
         ErrorType.CONFLICT_ERROR,
         "Token conflicts detected",
@@ -108,7 +104,7 @@ export class ErrorHandler {
 
     return this.createError(
       ErrorType.UNKNOWN_ERROR,
-      error.message || "An unexpected error occurred",
+      message || "An unexpected error occurred",
       error
     );
   }

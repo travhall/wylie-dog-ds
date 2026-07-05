@@ -24,7 +24,7 @@ export async function proxyFetch(
     }
 
     xhr.onload = () => {
-      let data: any;
+      let data: unknown;
       try {
         data = JSON.parse(xhr.responseText);
       } catch {

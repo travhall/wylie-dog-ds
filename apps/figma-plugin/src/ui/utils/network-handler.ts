@@ -21,7 +21,7 @@ export async function handleNetworkRequest(
 
     console.log(`[NetworkProxy] Response status: ${response.status}`);
 
-    let data: any;
+    let data: unknown;
     const contentType = response.headers.get("content-type");
 
     if (contentType?.includes("application/json")) {
@@ -44,7 +44,7 @@ export async function handleNetworkRequest(
       },
       "*"
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("[NetworkProxy] Fetch error:", error);
 
     const networkResponse: NetworkResponse = {
@@ -53,7 +53,7 @@ export async function handleNetworkRequest(
       status: 0,
       statusText: "Error",
       data: null,
-      error: error.message || "Network request failed",
+      error: error instanceof Error ? error.message : "Network request failed",
     };
 
     parent.postMessage(

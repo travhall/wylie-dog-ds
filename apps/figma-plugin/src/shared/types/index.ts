@@ -10,7 +10,7 @@ export interface DesignToken {
   id: string;
   name: string;
   type: "COLOR" | "FLOAT" | "STRING" | "BOOLEAN";
-  value: any;
+  value: unknown;
   description?: string;
 }
 
