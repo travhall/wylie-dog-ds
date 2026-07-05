@@ -21,3 +21,14 @@
     --color-background-primary
   ); /* DO NOT TOUCH: Must align with Wyliedog UI and Tokens */
 }
+
+/* Fallback for the addon-vitest test harness, which renders stories without the
+   .sb-show-main/.sb-main-centered/.docs-story wrapper classes above — without this,
+   automated a11y tests see no themed background at all (works by coincidence in light
+   mode, produces false contrast failures in the dark-mode project). The interactive
+   Storybook UI is unaffected since the more specific class selectors above still win. */
+html,
+body {
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+}

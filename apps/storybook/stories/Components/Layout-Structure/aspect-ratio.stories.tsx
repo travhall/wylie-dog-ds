@@ -173,7 +173,7 @@ export const VideoFrame: Story = {
             <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-2">
               <div className="w-0 h-0 border-l-4 border-l-white border-t-2 border-t-transparent border-b-2 border-b-transparent ml-1"></div>
             </div>
-            <p className="text-sm">Video Player</p>
+            <p className="text-sm text-(--color-text-tertiary)">Video Player</p>
           </div>
         </div>
       </AspectRatio>

@@ -238,7 +238,7 @@ export const ChatMessages: Story = {
               <div
                 className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
                   i % 3 === 0
-                    ? "bg-(--color-interactive-primary) text-(--color-text-inverse)"
+                    ? "bg-(--color-interactive-primary) text-(--color-text-on-solid)"
                     : "bg-(--color-background-secondary) text-(--color-text-primary)"
                 }`}
               >
