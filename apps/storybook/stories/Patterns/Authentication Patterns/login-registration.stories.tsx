@@ -237,7 +237,7 @@ export const LoginWithSocialAuth: Story = {
               <Separator />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-(--color-text-tertiary)">
+              <span className="bg-(--color-card-background) px-2 text-(--color-text-tertiary)">
                 Or continue with email
               </span>
             </div>

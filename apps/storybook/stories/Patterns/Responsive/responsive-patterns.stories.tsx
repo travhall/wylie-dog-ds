@@ -123,7 +123,7 @@ export const ResponsiveNavigation: Story = {
   },
   render: () => (
     <div className="space-y-4">
-      <div className="flex items-center justify-between p-4 border rounded-lg bg-white">
+      <div className="flex items-center justify-between p-4 border rounded-lg bg-(--color-surface-primary)">
         <span className="font-semibold text-(--color-text-primary)">
           Wylie Dog DS
         </span>
@@ -179,7 +179,7 @@ export const ResponsiveForm: Story = {
             ].map((field) => (
               <div key={field.label} className="space-y-1">
                 <Label>{field.label}</Label>
-                <div className="h-9 rounded border border-(--color-border-primary) bg-white px-3 flex items-center">
+                <div className="h-9 rounded border border-(--color-border-primary) bg-(--color-surface-primary) px-3 flex items-center">
                   <span className="text-sm text-(--color-text-tertiary)">
                     {field.placeholder}
                   </span>

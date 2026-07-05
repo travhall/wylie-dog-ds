@@ -162,7 +162,7 @@ export const MinimalNavigation: Story = {
     ],
   },
   render: (args) => (
-    <div className="h-75 bg-white">
+    <div className="h-75 bg-(--color-background-secondary)/30">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">Minimal Navigation</h1>

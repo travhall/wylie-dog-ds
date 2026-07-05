@@ -175,7 +175,7 @@ export const CardVariations: Story = {
 
       <Card className="border-(--color-interactive-primary)">
         <CardHeader>
-          <CardTitle className="text-(--color-interactive-primary)">
+          <CardTitle className="text-(--color-text-info)">
             Highlighted Card
           </CardTitle>
         </CardHeader>

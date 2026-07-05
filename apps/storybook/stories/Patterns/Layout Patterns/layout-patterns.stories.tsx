@@ -281,7 +281,7 @@ export const SettingsPage: Story = {
 
 export const LandingPage: Story = {
   render: () => (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-(--color-background-primary)">
       {/* Header */}
       <header className="border-b border-(--color-border-primary)">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

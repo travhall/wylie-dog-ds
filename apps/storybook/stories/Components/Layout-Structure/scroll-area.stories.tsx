@@ -186,7 +186,7 @@ export const InCard: Story = {
     },
   },
   render: () => (
-    <div className="rounded-lg border bg-white text-(--color-text-primary) shadow-sm w-87.5">
+    <div className="rounded-lg border bg-(--color-background-secondary) text-(--color-text-primary) shadow-sm w-87.5">
       <div className="flex flex-col space-y-1.5 p-6 pb-3">
         <h3 className="text-2xl font-semibold leading-none tracking-tight">
           Recent Activity
