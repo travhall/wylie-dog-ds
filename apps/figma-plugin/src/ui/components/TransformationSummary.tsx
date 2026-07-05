@@ -1,18 +1,20 @@
 import { h } from "preact";
 import { Icon } from "./common/Icon";
 
+export interface TransformationSummaryData {
+  format: string;
+  collectionsImported: number;
+  tokensImported: number;
+  transformations: {
+    type: string;
+    count: number;
+    examples?: string[];
+  }[];
+  warnings?: string[];
+}
+
 interface TransformationSummaryProps {
-  summary: {
-    format: string;
-    collectionsImported: number;
-    tokensImported: number;
-    transformations: {
-      type: string;
-      count: number;
-      examples?: string[];
-    }[];
-    warnings?: string[];
-  };
+  summary: TransformationSummaryData;
   onClose: () => void;
   onViewCollections?: () => void;
 }

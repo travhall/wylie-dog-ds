@@ -11,7 +11,7 @@ export * from "./GenericTokenPreview";
 
 interface TokenPreviewProps {
   type: string;
-  value: any;
+  value: unknown;
 }
 
 /**
@@ -21,12 +21,12 @@ interface TokenPreviewProps {
 export function TokenPreview({ type, value }: TokenPreviewProps) {
   switch (type) {
     case "color":
-      return <ColorTokenPreview value={value} />;
+      return <ColorTokenPreview value={value as string} />;
 
     case "spacing":
     case "dimension":
     case "sizing":
-      return <SpacingTokenPreview value={value} />;
+      return <SpacingTokenPreview value={value as string | number} />;
 
     case "fontSize":
     case "fontFamily":

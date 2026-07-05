@@ -8,6 +8,7 @@ import { useUIContext } from "../../state";
 import type { GitHubConfig } from "../../../shared/types";
 import type { Collection } from "../../hooks/usePluginMessages";
 import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aware-github-client";
+import type { ImportPreviewSummary } from "../ImportPreview";
 
 interface SyncTabProps {
   githubClient: ConflictAwareGitHubClient;
@@ -19,7 +20,7 @@ interface SyncTabProps {
   onPullFromGitHub: () => void;
   onImportFile: () => void;
   onGitHubConfigComplete: (config: GitHubConfig) => void;
-  importPreview?: any;
+  importPreview?: ImportPreviewSummary;
   onConfirmImport?: () => void;
   onCancelImport?: () => void;
 }

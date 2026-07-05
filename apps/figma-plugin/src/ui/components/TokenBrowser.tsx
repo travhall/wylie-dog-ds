@@ -3,11 +3,11 @@ import { useState, useMemo } from "preact/hooks";
 import { Icon, type IconName } from "./common/Icon";
 import { TokenPreview } from "./token-previews";
 
-interface ProcessedToken {
+export interface ProcessedToken {
   $type: string;
-  $value: any;
+  $value: unknown;
   $description?: string;
-  $valuesByMode?: Record<string, any>; // Values for each mode
+  $valuesByMode?: Record<string, unknown>; // Values for each mode
 }
 
 interface TokenBrowserProps {
@@ -79,7 +79,7 @@ export function TokenBrowser({
   const hasMultipleModes = modes.length > 1;
 
   // Helper to check if value is a reference
-  const isReference = (value: any): boolean => {
+  const isReference = (value: unknown): boolean => {
     return (
       typeof value === "string" &&
       (value.includes("{") || value.startsWith("$"))

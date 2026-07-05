@@ -2,23 +2,25 @@ import { h } from "preact";
 import { useState } from "preact/hooks";
 import { Icon } from "./common/Icon";
 
-interface TransformationLog {
+export interface ImportPreviewTransformationLog {
   type: string;
   description: string;
   before?: string;
   after?: string;
 }
 
+export interface ImportPreviewSummary {
+  format: string;
+  confidence: number;
+  collectionsFound: number;
+  tokensToImport: number;
+  transformations: ImportPreviewTransformationLog[];
+  warnings: string[];
+  errors: string[];
+}
+
 interface ImportPreviewProps {
-  summary: {
-    format: string;
-    confidence: number;
-    collectionsFound: number;
-    tokensToImport: number;
-    transformations: TransformationLog[];
-    warnings: string[];
-    errors: string[];
-  };
+  summary: ImportPreviewSummary;
   onConfirm: () => void;
   onCancel: () => void;
 }
@@ -53,7 +55,7 @@ export function ImportPreview({
       acc[t.type].push(t);
       return acc;
     },
-    {} as Record<string, TransformationLog[]>
+    {} as Record<string, ImportPreviewTransformationLog[]>
   );
 
   return (

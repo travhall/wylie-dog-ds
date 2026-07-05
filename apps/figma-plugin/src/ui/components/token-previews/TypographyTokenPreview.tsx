@@ -2,7 +2,7 @@ import { h } from "preact";
 import { Icon } from "../common/Icon";
 
 interface TypographyTokenPreviewProps {
-  value: any;
+  value: unknown;
   tokenType: string;
 }
 
@@ -34,7 +34,12 @@ export function TypographyTokenPreview({
 
   // Handle composite typography token
   if (typeof value === "object" && value !== null) {
-    const { fontFamily, fontSize, fontWeight, lineHeight } = value;
+    const { fontFamily, fontSize, fontWeight, lineHeight } = value as {
+      fontFamily?: string;
+      fontSize?: string | number;
+      fontWeight?: string | number;
+      lineHeight?: string | number;
+    };
     return (
       <div
         style={{
@@ -76,7 +81,7 @@ export function TypographyTokenPreview({
             gap: "8px",
           }}
         >
-          <span style={{ fontSize: value }}>Aa</span>
+          <span style={{ fontSize: value as string | number }}>Aa</span>
           <span
             style={{
               fontSize: "var(--font-size-xs)",
@@ -84,7 +89,7 @@ export function TypographyTokenPreview({
               fontFamily: "var(--font-mono)",
             }}
           >
-            {value}
+            {value as string | number}
           </span>
         </div>
       );
@@ -98,14 +103,16 @@ export function TypographyTokenPreview({
             gap: "8px",
           }}
         >
-          <span style={{ fontFamily: value, fontSize: "16px" }}>Aa</span>
+          <span style={{ fontFamily: value as string, fontSize: "16px" }}>
+            Aa
+          </span>
           <span
             style={{
               fontSize: "var(--font-size-xs)",
               color: "var(--text-secondary)",
             }}
           >
-            {typeof value === "string" ? value : value[0]}
+            {typeof value === "string" ? value : (value as string[])[0]}
           </span>
         </div>
       );
@@ -119,7 +126,11 @@ export function TypographyTokenPreview({
             gap: "8px",
           }}
         >
-          <span style={{ fontWeight: value, fontSize: "16px" }}>Aa</span>
+          <span
+            style={{ fontWeight: value as string | number, fontSize: "16px" }}
+          >
+            Aa
+          </span>
           <span
             style={{
               fontSize: "var(--font-size-xs)",
@@ -127,7 +138,7 @@ export function TypographyTokenPreview({
               fontFamily: "var(--font-mono)",
             }}
           >
-            {value}
+            {value as string | number}
           </span>
         </div>
       );
@@ -142,7 +153,7 @@ export function TypographyTokenPreview({
             fontFamily: "var(--font-mono)",
           }}
         >
-          {value}
+          {value as string | number}
         </span>
       );
 

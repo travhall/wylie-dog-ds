@@ -2,7 +2,7 @@ import { h } from "preact";
 import { Icon } from "../common/Icon";
 
 interface GenericTokenPreviewProps {
-  value: any;
+  value: unknown;
   type: string;
 }
 
@@ -55,7 +55,7 @@ export function GenericTokenPreview({ value, type }: GenericTokenPreviewProps) {
             height: "32px",
             backgroundColor: "var(--surface-tertiary)",
             border: "2px solid var(--accent-primary)",
-            borderRadius: value,
+            borderRadius: value as string | number,
           }}
         />
         <span

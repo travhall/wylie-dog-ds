@@ -5,7 +5,7 @@
  * Handles multiple collections, multiple modes, and all variable types
  */
 
-interface VariableDetectionResult {
+export interface VariableDetectionResult {
   hasVariables: boolean;
   totalVariables: number;
   collections: {

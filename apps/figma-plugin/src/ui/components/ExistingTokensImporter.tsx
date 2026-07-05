@@ -2,6 +2,7 @@ import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import { Icon } from "./common/Icon";
 import { Spinner } from "./common/Spinner";
+import type { VariableDetectionResult } from "../../plugin/variables/figma-variable-importer";
 
 interface ExistingTokensImporterProps {
   onImport: () => void;
@@ -12,7 +13,9 @@ export const ExistingTokensImporter = ({
   onImport,
   onCancel,
 }: ExistingTokensImporterProps) => {
-  const [detection, setDetection] = useState<any>(null);
+  const [detection, setDetection] = useState<VariableDetectionResult | null>(
+    null
+  );
   const [loading, setLoading] = useState(true);
   const [converting, setConverting] = useState(false);
   const [selectedCollections, setSelectedCollections] = useState<Set<string>>(
@@ -40,11 +43,13 @@ export const ExistingTokensImporter = ({
     const handleMessage = (event: MessageEvent) => {
       const msg = event.data.pluginMessage;
       if (msg && msg.type === "figma-variables-detected") {
-        setDetection(msg.detection);
+        const detectionResult = msg.detection as
+          VariableDetectionResult | undefined;
+        setDetection(detectionResult ?? null);
         setLoading(false);
         // Select all collections by default
-        if (msg.detection && msg.detection.collections) {
-          const allIds = msg.detection.collections.map((col: any) => col.id);
+        if (detectionResult && detectionResult.collections) {
+          const allIds = detectionResult.collections.map((col) => col.id);
           setSelectedCollections(new Set(allIds));
         }
       } else if (msg && msg.type === "conversion-progress") {
@@ -75,7 +80,7 @@ export const ExistingTokensImporter = ({
 
   const selectAll = () => {
     if (detection && detection.collections) {
-      const allIds = detection.collections.map((col: any) => col.id);
+      const allIds = detection.collections.map((col) => col.id);
       setSelectedCollections(new Set(allIds));
     }
   };
@@ -310,7 +315,7 @@ export const ExistingTokensImporter = ({
             gap: "var(--space-2)",
           }}
         >
-          {detection.collections.map((col: any) => {
+          {detection.collections.map((col) => {
             const isSelected = selectedCollections.has(col.id);
             return (
               <div
@@ -474,13 +479,13 @@ export const ExistingTokensImporter = ({
           collection{selectedCollections.size !== 1 ? "s" : ""} selected •{" "}
           <strong style={{ color: "var(--text-primary)" }}>
             {detection.collections
-              .filter((col: any) => selectedCollections.has(col.id))
-              .reduce((sum: number, col: any) => sum + col.variableCount, 0)}
+              .filter((col) => selectedCollections.has(col.id))
+              .reduce((sum, col) => sum + col.variableCount, 0)}
           </strong>{" "}
           variable
           {detection.collections
-            .filter((col: any) => selectedCollections.has(col.id))
-            .reduce((sum: number, col: any) => sum + col.variableCount, 0) !== 1
+            .filter((col) => selectedCollections.has(col.id))
+            .reduce((sum, col) => sum + col.variableCount, 0) !== 1
             ? "s"
             : ""}{" "}
           will be converted

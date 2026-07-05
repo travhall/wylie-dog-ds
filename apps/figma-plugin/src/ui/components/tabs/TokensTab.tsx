@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, type ComponentChildren } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import type {
   Collection,
@@ -6,7 +6,7 @@ import type {
 } from "../../hooks/usePluginMessages";
 import { EmptyTokensState } from "../EmptyTokensState";
 import { CollectionSkeleton } from "../common/Skeleton";
-import { TokenBrowser } from "../TokenBrowser";
+import { TokenBrowser, type ProcessedToken } from "../TokenBrowser";
 import { Icon } from "../common/Icon";
 import { useUIContext } from "../../state";
 
@@ -63,7 +63,7 @@ export function TokensTab({
 
   const [browserCollection, setBrowserCollection] = useState<{
     name: string;
-    tokens: Record<string, any>;
+    tokens: Record<string, ProcessedToken>;
     modes: Array<{ modeId: string; name: string }>;
   } | null>(null);
 
@@ -75,7 +75,7 @@ export function TokensTab({
   };
 
   const prepareTokensForBrowser = (collectionDetails: CollectionDetails) => {
-    const tokens: Record<string, any> = {};
+    const tokens: Record<string, ProcessedToken> = {};
     collectionDetails.variables.forEach((variable) => {
       let $type = "string";
       switch (variable.resolvedType) {
@@ -114,7 +114,7 @@ export function TokensTab({
           break;
       }
 
-      const $valuesByMode: Record<string, any> = {};
+      const $valuesByMode: Record<string, unknown> = {};
       collectionDetails.modes.forEach((mode) => {
         let modeValue = variable.valuesByMode[mode.modeId];
         if (
@@ -485,7 +485,7 @@ function GhostButton({
 }: {
   onClick: () => void;
   disabled?: boolean;
-  children: any;
+  children: ComponentChildren;
 }) {
   return (
     <button

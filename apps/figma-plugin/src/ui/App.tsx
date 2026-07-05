@@ -21,6 +21,10 @@ import type { GitHubConfig } from "../shared/types";
 import type { ConflictResolution } from "../plugin/sync/types";
 import { handleNetworkRequest } from "./utils/network-handler";
 import type { NetworkRequest } from "../shared/network-types";
+import type { DownloadableFile } from "./hooks/usePluginMessages";
+import type { ImportPreviewSummary } from "./components/ImportPreview";
+import type { TransformationSummaryData } from "./components/TransformationSummary";
+import type { TransformationLog } from "../plugin/variables/format-adapter";
 
 // Components
 import { TabBar } from "./components/layout/TabBar";
@@ -66,11 +70,15 @@ function AppInner() {
   const [showFormatGuidelines, setShowFormatGuidelines] = useState(false);
 
   // Import preview state
-  const [importPreviewData, setImportPreviewData] = useState<any>(null);
-  const [pendingImportFiles, setPendingImportFiles] = useState<any[]>([]);
+  const [importPreviewData, setImportPreviewData] =
+    useState<ImportPreviewSummary | null>(null);
+  const [pendingImportFiles, setPendingImportFiles] = useState<
+    DownloadableFile[]
+  >([]);
 
   // Transformation summary state
-  const [transformationSummary, setTransformationSummary] = useState<any>(null);
+  const [transformationSummary, setTransformationSummary] =
+    useState<TransformationSummaryData | null>(null);
 
   // Plugin Messages Hook - no longer needs GitHub handlers as parameters
   const [pluginState, pluginActions] = usePluginMessages(githubClient);
@@ -125,8 +133,11 @@ function AppInner() {
           collectionsImported: msg.result.collectionsImported || 0,
           tokensImported: msg.result.tokensImported || 0,
           transformations:
-            msg.adapterResults?.[0]?.normalization?.transformations?.reduce(
-              (acc: any[], t: any) => {
+            msg.adapterResults?.[0]?.transformations?.reduce(
+              (
+                acc: Array<{ type: string; count: number }>,
+                t: TransformationLog
+              ) => {
                 const existing = acc.find((x) => x.type === t.type);
                 if (existing) {
                   existing.count++;
@@ -596,7 +607,7 @@ function AppInner() {
                 onPullFromGitHub={handleGitHubPull}
                 onImportFile={handleTokenImport}
                 onGitHubConfigComplete={handleGitHubConfigTest}
-                importPreview={importPreviewData}
+                importPreview={importPreviewData ?? undefined}
                 onConfirmImport={handleConfirmImport}
                 onCancelImport={handleCancelImport}
               />
