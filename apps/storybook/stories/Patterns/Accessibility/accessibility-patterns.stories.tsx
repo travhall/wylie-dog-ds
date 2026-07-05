@@ -593,21 +593,21 @@ function SkipNavigationComponent() {
       >
         <a
           href="#"
-          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-interactive-primary) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-text-info) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Home
         </a>
         <a
           href="#"
-          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-interactive-primary) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-text-info) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           About
         </a>
         <a
           href="#"
-          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-interactive-primary) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-text-info) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Contact
@@ -626,7 +626,7 @@ function SkipNavigationComponent() {
               <li key={item}>
                 <a
                   href="#"
-                  className="text-sm text-(--color-text-primary) hover:text-(--color-interactive-primary) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+                  className="text-sm text-(--color-text-primary) hover:text-(--color-text-info) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
                   onClick={(e) => e.preventDefault()}
                 >
                   {item}

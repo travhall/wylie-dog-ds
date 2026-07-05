@@ -417,9 +417,7 @@ export const TextColors: Story = {
       </div>
 
       <div>
-        <p className="text-(--color-interactive-primary) text-lg mb-1">
-          Link Text
-        </p>
+        <p className="text-(--color-text-info) text-lg mb-1">Link Text</p>
         <p className="text-sm text-(--color-text-secondary) font-mono">
           --color-interactive-primary
         </p>
