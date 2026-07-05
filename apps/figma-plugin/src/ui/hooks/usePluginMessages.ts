@@ -1,9 +1,13 @@
 import { useState, useEffect, useCallback, useRef } from "preact/hooks";
-import type { GitHubConfig } from "../../shared/types";
+import type { GitHubConfig, PluginMessage } from "../../shared/types";
 import type { PluginError } from "../../shared/error-handler";
 import type { ConflictAwareGitHubClient } from "../../plugin/sync/conflict-aware-github-client";
 import type { TokenConflict } from "../../plugin/sync/types";
 import type { ExportData } from "../../plugin/variables/processor";
+import type { ValidationReport } from "../../plugin/variables/validation";
+import type { AdapterResultWithFilename } from "../../plugin/handlers/token-handlers";
+import type { ProgressStep } from "../components/ProgressFeedback";
+import type { Result } from "../../shared/result";
 
 /**
  * Downloadable file format
@@ -32,7 +36,7 @@ export interface Variable {
   description: string;
   resolvedType: string;
   scopes: string[];
-  valuesByMode: Record<string, any>;
+  valuesByMode: Record<string, unknown>;
   remote: boolean;
   key: string;
 }
@@ -71,9 +75,9 @@ export interface PluginMessageState {
 
   // Export/Import data
   downloadQueue: DownloadableFile[];
-  validationReport: any;
+  validationReport: ValidationReport | null;
   showValidation: boolean;
-  adapterResults: any[];
+  adapterResults: AdapterResultWithFilename[];
 
   // Conflicts
   conflicts: TokenConflict[];
@@ -84,7 +88,7 @@ export interface PluginMessageState {
 
   // Progress
   progressStep: number;
-  progressSteps: any[];
+  progressSteps: ProgressStep[];
 
   // Onboarding
   showOnboarding: boolean;
@@ -102,7 +106,7 @@ export interface PluginMessageActions {
   loadCollectionDetails: (collectionId: string) => void;
   loadGitHubConfig: () => void;
   loadOnboardingState: () => void;
-  sendMessage: (message: any) => void;
+  sendMessage: (message: PluginMessage) => void;
   setLoading: (loading: boolean) => void;
   setError: (error: PluginError | string | null) => void;
   setSuccessMessage: (message: string | null) => void;
@@ -115,7 +119,7 @@ export interface PluginMessageActions {
     tokens: ExportData[] | { local: ExportData[]; remote: ExportData[] }
   ) => void;
   setProgressStep: (step: number) => void;
-  setProgressSteps: (steps: any[]) => void;
+  setProgressSteps: (steps: ProgressStep[]) => void;
   setLoadingMessage: (message: string) => void;
   setCurrentOperation: (operation: string | null) => void;
   setSelectedCollection: (collection: CollectionDetails | null) => void;
@@ -123,7 +127,7 @@ export interface PluginMessageActions {
   setShowValidation: (show: boolean) => void;
   // Callback registration methods
   registerGitHubConfigTestHandler: (
-    handler: (config: GitHubConfig) => Promise<any>
+    handler: (config: GitHubConfig) => Promise<Result<boolean>>
   ) => void;
   registerGitHubSyncHandler: (
     handler: (exportData: ExportData[]) => Promise<void>
@@ -146,7 +150,7 @@ export function usePluginMessages(
 ): [PluginMessageState, PluginMessageActions] {
   // Callback refs for GitHub operations
   const githubConfigTestHandlerRef = useRef<
-    ((config: GitHubConfig) => Promise<any>) | null
+    ((config: GitHubConfig) => Promise<Result<boolean>>) | null
   >(null);
   const githubSyncHandlerRef = useRef<
     ((exportData: ExportData[]) => Promise<void>) | null
@@ -174,9 +178,12 @@ export function usePluginMessages(
 
   // Export/Import data
   const [downloadQueue, setDownloadQueue] = useState<DownloadableFile[]>([]);
-  const [validationReport, setValidationReport] = useState<any>(null);
+  const [validationReport, setValidationReport] =
+    useState<ValidationReport | null>(null);
   const [showValidation, setShowValidation] = useState(false);
-  const [adapterResults, setAdapterResults] = useState<any[]>([]);
+  const [adapterResults, setAdapterResults] = useState<
+    AdapterResultWithFilename[]
+  >([]);
 
   // Conflicts
   const [conflicts, setConflicts] = useState<TokenConflict[]>([]);
@@ -193,7 +200,7 @@ export function usePluginMessages(
 
   // Progress
   const [progressStep, setProgressStep] = useState(0);
-  const [progressSteps, setProgressSteps] = useState<any[]>([]);
+  const [progressSteps, setProgressSteps] = useState<ProgressStep[]>([]);
 
   // Onboarding
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -205,7 +212,7 @@ export function usePluginMessages(
 
   // Callback registration functions
   const registerGitHubConfigTestHandler = useCallback(
-    (handler: (config: GitHubConfig) => Promise<any>) => {
+    (handler: (config: GitHubConfig) => Promise<Result<boolean>>) => {
       githubConfigTestHandlerRef.current = handler;
     },
     []
@@ -248,7 +255,7 @@ export function usePluginMessages(
     );
   }, []);
 
-  const sendMessage = useCallback((message: any) => {
+  const sendMessage = useCallback((message: PluginMessage) => {
     parent.postMessage({ pluginMessage: message }, "*");
   }, []);
 

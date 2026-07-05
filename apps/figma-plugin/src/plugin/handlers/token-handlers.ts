@@ -16,7 +16,9 @@ import type { AdapterProcessResult } from "../variables/format-adapter";
 import { setLoading, processInChunks, sendError } from "./utils";
 import type { PluginMessage } from "../../shared/types";
 
-type AdapterResultWithFilename = AdapterProcessResult & { filename: string };
+export type AdapterResultWithFilename = AdapterProcessResult & {
+  filename: string;
+};
 
 /**
  * Validate import without actually importing - returns preview data

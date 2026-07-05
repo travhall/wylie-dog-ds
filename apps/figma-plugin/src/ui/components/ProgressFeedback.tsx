@@ -11,7 +11,7 @@ interface ProgressStepProps {
   loadingMessage?: string; // Simple message for non-stepped loading
 }
 
-interface ProgressStep {
+export interface ProgressStep {
   id: string;
   label: string;
   icon: string;

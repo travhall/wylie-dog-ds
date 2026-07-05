@@ -1,37 +1,7 @@
 import { h } from "preact";
 import { useEffect, useRef } from "preact/hooks";
 import { Icon } from "./common/Icon";
-
-interface ValidationError {
-  type:
-    | "missing_reference"
-    | "circular_dependency"
-    | "type_mismatch"
-    | "invalid_format";
-  token: string;
-  reference?: string;
-  message: string;
-  suggestion?: string;
-}
-
-interface ValidationWarning {
-  type: "empty_value" | "naming_convention" | "unused_token";
-  token: string;
-  message: string;
-  suggestion?: string;
-}
-
-interface ValidationReport {
-  valid: boolean;
-  errors: ValidationError[];
-  warnings: ValidationWarning[];
-  stats: {
-    totalTokens: number;
-    totalReferences: number;
-    collectionsProcessed: number;
-    referenceChainDepth: number;
-  };
-}
+import type { ValidationReport } from "../../plugin/variables/validation";
 
 interface ValidationDisplayProps {
   validationReport: ValidationReport;

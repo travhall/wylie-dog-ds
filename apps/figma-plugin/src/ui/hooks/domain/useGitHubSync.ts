@@ -31,8 +31,7 @@ export function useGitHubSync(
   githubClient: ConflictAwareGitHubClient,
   actions: PluginMessageActions,
   pendingExportData?:
-    | ExportData[]
-    | { local: ExportData[]; remote: ExportData[] },
+    ExportData[] | { local: ExportData[]; remote: ExportData[] },
   conflictOperationType?: "push" | "pull" | null,
   onSyncSuccess?: () => void // Callback for successful sync (e.g., clear selection)
 ) {
@@ -152,15 +151,17 @@ export function useGitHubSync(
         } else {
           actions.setError(syncResult.error || "GitHub sync failed");
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error("GitHub sync error:", error);
+        const message =
+          error instanceof Error ? error.message : "GitHub sync failed";
         parent.postMessage(
           {
             pluginMessage: {
               type: "github-sync-complete",
               result: {
                 success: false,
-                error: error.message || "GitHub sync failed",
+                error: message,
               },
             },
           },
@@ -170,7 +171,7 @@ export function useGitHubSync(
         // Clear loading state and show error in UI
         actions.setLoading(false);
         actions.setLoadingMessage("");
-        actions.setError(error.message || "GitHub sync failed");
+        actions.setError(message);
       }
     },
     [githubClient, actions]
@@ -241,12 +242,14 @@ export function useGitHubSync(
         actions.setLoadingMessage("");
         actions.setError(pullResult.error || "GitHub pull failed");
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("GitHub pull error:", error);
       // Handle error directly
       actions.setLoading(false);
       actions.setLoadingMessage("");
-      actions.setError(error.message || "GitHub pull failed");
+      actions.setError(
+        error instanceof Error ? error.message : "GitHub pull failed"
+      );
     }
   }, [githubClient, actions]);
 
@@ -351,9 +354,10 @@ export function useGitHubSync(
           // Don't show success toast - validation modal will provide feedback
           // Loading state will be cleared when import completes
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error("Conflict resolution error:", error);
-        actions.setError(`Failed to resolve conflicts: ${error.message}`);
+        const message = error instanceof Error ? error.message : String(error);
+        actions.setError(`Failed to resolve conflicts: ${message}`);
       } finally {
         actions.setLoading(false);
         actions.setConflicts([]);

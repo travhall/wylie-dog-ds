@@ -123,7 +123,9 @@ export function TokensTab({
           typeof modeValue === "object" &&
           "r" in modeValue
         ) {
-          modeValue = rgbToHex(modeValue);
+          modeValue = rgbToHex(
+            modeValue as { r: number; g: number; b: number }
+          );
         }
         if (
           ($type === "spacing" ||
