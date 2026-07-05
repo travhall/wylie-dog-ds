@@ -1,4 +1,6 @@
 // Shared types for plugin communication
+import type { MergeStrategy } from "../../plugin/variables/importer";
+
 export interface VariableCollection {
   id: string;
   name: string;
@@ -16,7 +18,23 @@ export interface DesignToken {
 
 export interface PluginMessage {
   type: string;
-  [key: string]: any;
+  files?: Array<{ filename: string; content: string }>;
+  collectionIds?: string[];
+  selectedCollectionIds?: string[];
+  collectionId?: string;
+  operation?: string;
+  hasSeenOnboarding?: boolean;
+  advancedMode?: boolean;
+  resolutions?: unknown;
+  originalTokens?: unknown;
+  mergeStrategy?: MergeStrategy;
+  config?: GitHubConfig;
+  result?: {
+    success?: boolean;
+    error?: string;
+    commitUrl?: string;
+    noChanges?: boolean;
+  };
 }
 
 export interface ExportOptions {

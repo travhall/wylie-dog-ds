@@ -319,7 +319,8 @@ export async function handleExportTokens(msg: PluginMessage): Promise<void> {
   console.log("Exporting tokens for collections:", msg.collectionIds);
 
   try {
-    if (!msg.collectionIds || msg.collectionIds.length === 0) {
+    const collectionIds = msg.collectionIds;
+    if (!collectionIds || collectionIds.length === 0) {
       throw new Error("No collections selected for export");
     }
 
@@ -329,7 +330,7 @@ export async function handleExportTokens(msg: PluginMessage): Promise<void> {
     const collections =
       await figma.variables.getLocalVariableCollectionsAsync();
     const selectedCollections = collections.filter((c) =>
-      msg.collectionIds.includes(c.id)
+      collectionIds.includes(c.id)
     );
 
     if (selectedCollections.length === 0) {
@@ -408,7 +409,7 @@ export async function handleExportTokens(msg: PluginMessage): Promise<void> {
     // Process collections into token format
     const exportData = await processCollectionsForExport(
       collectionsWithVariables,
-      msg.collectionIds
+      collectionIds
     );
 
     // Transform to downloadable files format

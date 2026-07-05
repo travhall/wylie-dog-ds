@@ -69,6 +69,9 @@ export async function handleSaveGitHubConfig(
   msg: PluginMessage
 ): Promise<void> {
   try {
+    if (!msg.config) {
+      throw new Error("No GitHub configuration provided");
+    }
     await fileConfigStorage.setGitHubConfig(msg.config);
 
     figma.ui.postMessage({
@@ -139,7 +142,7 @@ export async function handleSaveAdvancedMode(
   msg: PluginMessage
 ): Promise<void> {
   try {
-    await userPreferencesStorage.setAdvancedMode(msg.advancedMode);
+    await userPreferencesStorage.setAdvancedMode(msg.advancedMode ?? false);
     console.log("Advanced mode preference saved:", msg.advancedMode);
   } catch (error) {
     console.error("Error saving advanced mode:", error);
@@ -176,7 +179,9 @@ export async function handleSaveOnboardingState(
   msg: PluginMessage
 ): Promise<void> {
   try {
-    await userPreferencesStorage.setHasSeenOnboarding(msg.hasSeenOnboarding);
+    await userPreferencesStorage.setHasSeenOnboarding(
+      msg.hasSeenOnboarding ?? false
+    );
     console.log("Onboarding state saved:", msg.hasSeenOnboarding);
   } catch (error) {
     console.error("Error saving onboarding state:", error);

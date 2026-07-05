@@ -32,8 +32,10 @@ export interface ImportResult {
   unresolvedReferences: string[];
 }
 
+export type MergeStrategy = "replace" | "merge" | "preserve";
+
 export interface ImportOptions {
-  mergeStrategy: "replace" | "merge" | "preserve";
+  mergeStrategy: MergeStrategy;
   createMissingModes: boolean;
   preserveExistingVariables: boolean;
 }
