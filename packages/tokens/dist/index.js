@@ -290,6 +290,7 @@ export const colorTextSecondary = "oklch(0.423 0.007 264.49)"; // Secondary text
 export const colorTextTertiary = "oklch(0.52 0.007 264.5)"; // Tertiary text for captions and hints
 export const colorTextDisabled = "oklch(0.699 0.005 271.07)"; // Disabled text color
 export const colorTextInverse = "oklch(0.991 0.003 264.45)"; // Inverted text for dark backgrounds
+export const colorTextOnSolid = "oklch(0.991 0.003 264.45)"; // Mode-invariant light text for solid, saturated backgrounds (buttons, badges, toasts) that don't change between modes — do not use with color.background.inverse, which is what color.text.inverse is for
 export const colorTextBrand = "oklch(0.646 0.194 40.94)"; // Brand-colored text for emphasis
 export const colorTextSuccess = "oklch(0.527 0.137 150.11)"; // Success state text color
 export const colorTextWarning = "oklch(0.553 0.174 38.47)"; // Warning state text color

@@ -99,6 +99,11 @@
     "$value": "{color.gray.50}",
     "$description": "Inverted text for dark backgrounds"
   },
+  "color.text.on-solid": {
+    "$type": "color",
+    "$value": "{color.gray.50}",
+    "$description": "Mode-invariant light text for solid, saturated backgrounds (buttons, badges, toasts) that don't change between modes — do not use with color.background.inverse, which is what color.text.inverse is for"
+  },
   "color.text.brand": {
     "$type": "color",
     "$value": "{color.orange.600}",

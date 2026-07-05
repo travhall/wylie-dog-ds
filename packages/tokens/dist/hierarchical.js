@@ -197,6 +197,7 @@ export const color = {
     "tertiary": "oklch(0.52 0.007 264.5)",
     "disabled": "oklch(0.699 0.005 271.07)",
     "inverse": "oklch(0.991 0.003 264.45)",
+    "on-solid": "oklch(0.991 0.003 264.45)",
     "brand": "oklch(0.646 0.194 40.94)",
     "success": "oklch(0.527 0.137 150.11)",
     "warning": "oklch(0.553 0.174 38.47)",

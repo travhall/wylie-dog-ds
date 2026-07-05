@@ -491,6 +491,7 @@ export type CssVarName =
   | "--color-text-disabled"
   | "--color-text-info"
   | "--color-text-inverse"
+  | "--color-text-on-solid"
   | "--color-text-primary"
   | "--color-text-secondary"
   | "--color-text-success"
@@ -1678,6 +1679,7 @@ export declare const cssVars: Readonly<{
   "colorTextDisabled": "--color-text-disabled";
   "colorTextInfo": "--color-text-info";
   "colorTextInverse": "--color-text-inverse";
+  "colorTextOnSolid": "--color-text-on-solid";
   "colorTextPrimary": "--color-text-primary";
   "colorTextSecondary": "--color-text-secondary";
   "colorTextSuccess": "--color-text-success";

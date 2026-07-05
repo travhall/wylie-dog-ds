@@ -2705,6 +2705,18 @@
         "variable": "var(--color-text-inverse)",
         "description": "Inverted text for dark backgrounds"
       },
+      "color-text-on-solid": {
+        "name": "colorTextOnSolid",
+        "path": [
+          "color",
+          "text",
+          "on-solid"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-text-on-solid)",
+        "description": "Mode-invariant light text for solid, saturated backgrounds (buttons, badges, toasts) that don't change between modes — do not use with color.background.inverse, which is what color.text.inverse is for"
+      },
       "color-text-brand": {
         "name": "colorTextBrand",
         "path": [

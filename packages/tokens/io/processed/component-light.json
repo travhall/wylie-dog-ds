@@ -5,7 +5,7 @@
   },
   "badge.default.text": {
     "$type": "color",
-    "$value": "{color.text.inverse}"
+    "$value": "{color.text.on-solid}"
   },
   "badge.default.border": {
     "$type": "color",
@@ -29,7 +29,7 @@
   },
   "badge.success.text": {
     "$type": "color",
-    "$value": "{color.text.inverse}"
+    "$value": "{color.text.on-solid}"
   },
   "badge.success.border": {
     "$type": "color",
@@ -41,7 +41,7 @@
   },
   "badge.warning.text": {
     "$type": "color",
-    "$value": "{color.text.inverse}"
+    "$value": "{color.text.on-solid}"
   },
   "badge.warning.border": {
     "$type": "color",
@@ -139,7 +139,7 @@
   },
   "button.primary.text": {
     "$type": "color",
-    "$value": "{color.text.inverse}"
+    "$value": "{color.text.on-solid}"
   },
   "button.primary.border": {
     "$type": "color",
@@ -207,7 +207,7 @@
   },
   "button.destructive.text": {
     "$type": "color",
-    "$value": "{color.text.inverse}"
+    "$value": "{color.text.on-solid}"
   },
   "button.destructive.border": {
     "$type": "color",
@@ -622,7 +622,7 @@
   },
   "calendar.day-text-selected": {
     "$type": "color",
-    "$value": "{color.text.inverse}"
+    "$value": "{color.text.on-solid}"
   },
   "accordion.border": {
     "$type": "color",
@@ -814,7 +814,7 @@
   },
   "pagination.text-active": {
     "$type": "color",
-    "$value": "{color.text.inverse}"
+    "$value": "{color.text.on-solid}"
   },
   "pagination.text-hover": {
     "$type": "color",
@@ -866,7 +866,7 @@
   },
   "radio.indicator": {
     "$type": "color",
-    "$value": "{color.text.inverse}"
+    "$value": "{color.text.on-solid}"
   },
   "resizable.handle": {
     "$type": "color",
@@ -962,7 +962,7 @@
   },
   "toggle.text-pressed": {
     "$type": "color",
-    "$value": "{color.text.inverse}"
+    "$value": "{color.text.on-solid}"
   },
   "tooltip.background": {
     "$type": "color",
@@ -2019,12 +2019,12 @@
   },
   "toast.destructive.text": {
     "$type": "color",
-    "$value": "{color.text.inverse}",
+    "$value": "{color.text.on-solid}",
     "$description": "Text color on destructive toast (saturated red background)"
   },
   "toast.success.text": {
     "$type": "color",
-    "$value": "{color.text.inverse}",
+    "$value": "{color.text.on-solid}",
     "$description": "Text color on success toast (saturated green background)"
   },
   "toast.warning.text": {
@@ -2595,7 +2595,7 @@
   },
   "checkbox.checked.text": {
     "$type": "color",
-    "$value": "{color.text.inverse}"
+    "$value": "{color.text.on-solid}"
   },
   "checkbox.checked.border": {
     "$type": "color",

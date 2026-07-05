@@ -298,6 +298,7 @@
   --color-text-tertiary: oklch(0.52 0.007 264.5);
   --color-text-disabled: oklch(0.699 0.005 271.07);
   --color-text-inverse: oklch(0.991 0.003 264.45);
+  --color-text-on-solid: oklch(0.991 0.003 264.45);
   --color-text-brand: oklch(0.646 0.194 40.94);
   --color-text-success: oklch(0.527 0.137 150.11);
   --color-text-warning: oklch(0.553 0.174 38.47);
