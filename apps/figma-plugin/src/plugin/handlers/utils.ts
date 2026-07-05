@@ -67,7 +67,7 @@ export function sendError(message: string): void {
 /**
  * Send success message to UI
  */
-export function sendSuccess(type: string, data: any): void {
+export function sendSuccess(type: string, data: Record<string, unknown>): void {
   figma.ui.postMessage({
     type,
     ...data,
