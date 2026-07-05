@@ -10,6 +10,7 @@
 import type { StorageAdapter } from "../storage/storage-adapter";
 import type { PullResult, SyncResult } from "../github/client";
 import type { GitHubConfig } from "../../shared/types";
+import type { ExportData } from "../variables/processor";
 
 export interface SourceControlProvider extends StorageAdapter {
   /** Which host this provider talks to. */
@@ -28,5 +29,8 @@ export interface SourceControlProvider extends StorageAdapter {
   pullTokens(): Promise<PullResult>;
 
   /** Write token files back to the repo (commit / PR-or-MR as the host supports). */
-  syncTokens(exportData: any[], commitMessage?: string): Promise<SyncResult>;
+  syncTokens(
+    exportData: ExportData[],
+    commitMessage?: string
+  ): Promise<SyncResult>;
 }

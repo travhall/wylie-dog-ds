@@ -28,7 +28,7 @@ export class ConflictResolver {
     const countTokens = (data: ExportData[]) => {
       let total = 0;
       data.forEach((coll) => {
-        Object.values(coll).forEach((collData: any) => {
+        Object.values(coll).forEach((collData) => {
           if (collData?.variables) {
             total += Object.keys(collData.variables).length;
           }
@@ -259,7 +259,7 @@ export class ConflictResolver {
     resolvedTokens: ExportDataWithSync[],
     collectionName: string,
     tokenName: string,
-    manualValue: any
+    manualValue: unknown
   ): void {
     const collection = this.findOrCreateCollection(
       resolvedTokens,

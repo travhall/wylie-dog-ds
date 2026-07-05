@@ -26,7 +26,7 @@ export class SyncMetadataManager {
 
     // Stringify with sorted keys for consistent hashing
     const sortedKeys = Object.keys(tokenForHash).sort();
-    const sortedObj: any = {};
+    const sortedObj: Record<string, unknown> = {};
     for (const key of sortedKeys) {
       sortedObj[key] = tokenForHash[key as keyof typeof tokenForHash];
     }

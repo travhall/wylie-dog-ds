@@ -2,7 +2,7 @@
 import { GitHubClient } from "../github/client";
 import type { SyncResult, PullResult } from "../github/client";
 import type { GitHubConfig } from "../../shared/types";
-import type { ExportData } from "../variables/processor";
+import type { ExportData, ProcessedToken } from "../variables/processor";
 import { ConflictDetector } from "./conflict-detector";
 import { ConflictResolver } from "./conflict-resolver";
 import { SyncMetadataManager } from "./metadata-manager";
@@ -197,7 +197,7 @@ export class ConflictAwareGitHubClient extends GitHubClient {
       const exportData: ExportData[] = [];
 
       for (const collection of collections) {
-        const variables: Record<string, any> = {};
+        const variables: Record<string, ProcessedToken> = {};
 
         // Process each variable in the collection
         for (const variableId of collection.variableIds) {
@@ -240,7 +240,7 @@ export class ConflictAwareGitHubClient extends GitHubClient {
   private convertFigmaVariableToToken(
     variable: Variable,
     collection: VariableCollection
-  ): any {
+  ): ProcessedToken {
     // Determine token type based on Figma variable type
     const tokenType = this.mapFigmaTypeToTokenType(variable.resolvedType);
 
@@ -251,7 +251,7 @@ export class ConflictAwareGitHubClient extends GitHubClient {
       variable.resolvedType
     );
 
-    const token: any = {
+    const token: ProcessedToken = {
       $type: tokenType,
       $value: value,
       $description: variable.description || undefined,
@@ -296,12 +296,12 @@ export class ConflictAwareGitHubClient extends GitHubClient {
    * Convert Figma value to token value
    */
   private convertFigmaValueToTokenValue(
-    value: any,
+    value: VariableValue,
     type: VariableResolvedDataType
-  ): any {
+  ): VariableValue {
     switch (type) {
       case "COLOR":
-        if (typeof value === "object" && value.r !== undefined) {
+        if (typeof value === "object" && value !== null && "r" in value) {
           // Convert RGB (0-1) to hex
           const r = Math.round(value.r * 255);
           const g = Math.round(value.g * 255);

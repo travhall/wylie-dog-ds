@@ -11,7 +11,7 @@ function collection(
   return { [name]: { variables } };
 }
 
-const token = ($type: string, $value: any): ProcessedToken => ({
+const token = ($type: string, $value: unknown): ProcessedToken => ({
   $type,
   $value,
 });

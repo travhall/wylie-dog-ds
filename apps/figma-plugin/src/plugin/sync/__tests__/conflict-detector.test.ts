@@ -18,7 +18,7 @@ const detect = (local: ExportData[], remote: ExportData[]) =>
 
 const token = (
   $type: string,
-  $value: any,
+  $value: unknown,
   extra: Partial<ProcessedToken> = {}
 ): ProcessedToken => ({ $type, $value, ...extra });
 

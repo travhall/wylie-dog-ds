@@ -32,11 +32,7 @@ export interface ExportDataWithSync {
 
 export interface TokenConflict {
   type:
-    | "value-change"
-    | "name-conflict"
-    | "deletion"
-    | "addition"
-    | "type-change";
+    "value-change" | "name-conflict" | "deletion" | "addition" | "type-change";
   severity: "low" | "medium" | "high";
   tokenName: string;
   collectionName: string;
@@ -52,7 +48,7 @@ export interface ConflictResolution {
   conflictId: string;
   resolution: "take-local" | "take-remote" | "manual";
   token?: ProcessedTokenWithSync;
-  manualValue?: any; // For manual resolutions
+  manualValue?: unknown; // For manual resolutions
 }
 
 export interface ConflictDetectionResult {
@@ -93,7 +89,4 @@ export interface TokenEntry {
 }
 
 export type ConflictResolutionStrategy =
-  | "take-local"
-  | "take-remote"
-  | "smart-merge"
-  | "manual";
+  "take-local" | "take-remote" | "smart-merge" | "manual";

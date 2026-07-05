@@ -289,7 +289,7 @@ export class ConflictDetector {
    * Check if two values are different
    * Handles type coercion and normalization
    */
-  private isValueDifferent(localValue: any, remoteValue: any): boolean {
+  private isValueDifferent(localValue: unknown, remoteValue: unknown): boolean {
     // Null/undefined handling
     if (localValue == null && remoteValue == null) return false;
     if (localValue == null || remoteValue == null) return true;
@@ -329,7 +329,7 @@ export class ConflictDetector {
   /**
    * Normalize a value for comparison (sort object keys, trim strings)
    */
-  private normalizeValue(value: any): any {
+  private normalizeValue(value: unknown): unknown {
     if (value == null) return value;
 
     if (typeof value === "string") {
@@ -342,11 +342,12 @@ export class ConflictDetector {
       }
 
       // Sort object keys for consistent comparison
-      const sorted: any = {};
-      Object.keys(value)
+      const sorted: Record<string, unknown> = {};
+      const record = value as Record<string, unknown>;
+      Object.keys(record)
         .sort()
         .forEach((key) => {
-          sorted[key] = this.normalizeValue(value[key]);
+          sorted[key] = this.normalizeValue(record[key]);
         });
       return sorted;
     }
@@ -357,7 +358,7 @@ export class ConflictDetector {
   /**
    * Check if a value looks like a color (hex or oklch format)
    */
-  private looksLikeColor(value: any): boolean {
+  private looksLikeColor(value: unknown): boolean {
     if (typeof value !== "string") return false;
     const str = value.trim();
     return (
@@ -372,7 +373,10 @@ export class ConflictDetector {
    * Compare two color values with format normalization
    * Returns true if colors are different, false if they're the same
    */
-  private areColorsDifferent(localValue: any, remoteValue: any): boolean {
+  private areColorsDifferent(
+    localValue: unknown,
+    remoteValue: unknown
+  ): boolean {
     try {
       // Parse both colors using culori
       const localColor = parse(String(localValue));
