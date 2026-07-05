@@ -4,6 +4,8 @@
  * and provides smart defaults for token sync path
  */
 
+import type { Octokit } from "@octokit/rest";
+
 export const WYLIE_DOG_TOKEN_PATH = "packages/tokens/io/sync/";
 export const DEFAULT_TOKEN_PATH = "tokens/";
 
@@ -18,7 +20,7 @@ export interface ProjectDetectionResult {
  * Detect if a GitHub repository is a Wylie Dog Design System project
  */
 export async function detectWylieDogProject(
-  github: any,
+  github: Octokit,
   owner: string,
   repo: string,
   branch: string

@@ -4,9 +4,16 @@ import fetch from "cross-fetch";
 import { Octokit } from "@octokit/rest";
 import type { GitHubConfig, SyncMode } from "../../shared/types";
 import type { SourceControlProvider } from "../providers/source-control-provider";
+import type { ExportData } from "../variables/processor";
+
+/** Duck-typed shape of the errors Octokit throws (RequestError extends Error, adds `status`). */
+interface GitHubApiError {
+  status?: number;
+  message?: string;
+}
 
 // Make fetch available globally for Octokit
-(globalThis as any).fetch = fetch;
+(globalThis as typeof globalThis & { fetch: typeof fetch }).fetch = fetch;
 
 // btoa/atob only handle Latin-1 (U+0000–U+00FF). Token content can contain
 // arbitrary Unicode (descriptions with curly quotes, arrows, em dashes, etc.).
@@ -36,7 +43,7 @@ export interface SyncResult {
 
 export interface PullResult {
   success: boolean;
-  tokens?: any[];
+  tokens?: ExportData[];
   error?: string;
   lastModified?: string;
 }
@@ -122,11 +129,12 @@ export class GitHubClient implements SourceControlProvider {
       }
 
       return { valid: true };
-    } catch (error: any) {
-      if (error.status === 404) {
+    } catch (error: unknown) {
+      const err = error as GitHubApiError;
+      if (err.status === 404) {
         return { valid: false, error: "Repository not found or no access" };
       }
-      return { valid: false, error: error.message };
+      return { valid: false, error: err.message };
     }
   }
 
@@ -260,7 +268,7 @@ export class GitHubClient implements SourceControlProvider {
 
           filesFound++;
           console.log(`✅ Loaded tokens from: ${fileName}`);
-        } catch (fileError: any) {
+        } catch (fileError: unknown) {
           console.error(`Error loading file ${fileName}:`, fileError);
           // Continue — one bad file shouldn't block the rest
         }
@@ -280,17 +288,18 @@ export class GitHubClient implements SourceControlProvider {
         tokens,
         lastModified: new Date().toISOString(),
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error pulling tokens:", error);
       return {
         success: false,
-        error: error.message || "Unknown error occurred",
+        error:
+          error instanceof Error ? error.message : "Unknown error occurred",
       };
     }
   }
 
   async syncTokens(
-    exportData: any[],
+    exportData: ExportData[],
     commitMessage?: string
   ): Promise<SyncResult> {
     if (!this.octokit || !this.config) {
@@ -321,17 +330,18 @@ export class GitHubClient implements SourceControlProvider {
       } else {
         return await this.pullRequestSync(exportData, commitMessage);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error syncing tokens:", error);
       return {
         success: false,
-        error: error.message || "Unknown error occurred",
+        error:
+          error instanceof Error ? error.message : "Unknown error occurred",
       };
     }
   }
 
   private async directSync(
-    exportData: any[],
+    exportData: ExportData[],
     commitMessage: string
   ): Promise<SyncResult> {
     if (!this.octokit || !this.config) {
@@ -417,7 +427,7 @@ export class GitHubClient implements SourceControlProvider {
               existingFile.content.replace(/\n/g, "")
             );
           }
-        } catch (error: any) {
+        } catch (error: unknown) {
           // File doesn't exist yet, will be created
           console.log(`File ${filePath} doesn't exist, will create it`);
         }
@@ -503,11 +513,12 @@ export class GitHubClient implements SourceControlProvider {
 
       try {
         await tryUpdateRef();
-      } catch (updateError: any) {
+      } catch (updateError: unknown) {
+        const err = updateError as GitHubApiError;
         const isNonFastForward =
-          updateError.status === 422 ||
-          updateError.message?.includes("not a fast forward") ||
-          updateError.message?.includes("Update is not a fast forward");
+          err.status === 422 ||
+          err.message?.includes("not a fast forward") ||
+          err.message?.includes("Update is not a fast forward");
 
         if (!isNonFastForward) {
           throw updateError;
@@ -554,7 +565,7 @@ export class GitHubClient implements SourceControlProvider {
           console.log(
             `✅ GITHUB SYNC: Rebase-retry succeeded — ${rebasedCommit.sha}`
           );
-        } catch (retryError: any) {
+        } catch (retryError: unknown) {
           // Two concurrent writes in a row — surface a clear message.
           throw new Error(
             "Branch has new commits since sync started. Please try again – the plugin will automatically sync with the latest changes."
@@ -572,14 +583,14 @@ export class GitHubClient implements SourceControlProvider {
         message: `Successfully synced ${filesUpdated.length} file(s) to ${this.config.branch}`,
         commitSha: commitShaForRef,
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error in direct sync:", error);
       throw error;
     }
   }
 
   private async pullRequestSync(
-    exportData: any[],
+    exportData: ExportData[],
     commitMessage: string
   ): Promise<SyncResult> {
     if (!this.octokit || !this.config) {
@@ -657,8 +668,8 @@ export class GitHubClient implements SourceControlProvider {
         branch: this.config.branch,
         sha: Array.isArray(existingFile) ? undefined : existingFile.sha,
       });
-    } catch (error: any) {
-      if (error.status === 404) {
+    } catch (error: unknown) {
+      if ((error as GitHubApiError).status === 404) {
         // File doesn't exist, create it
         await this.octokit.repos.createOrUpdateFileContents({
           owner: this.config.owner,
@@ -725,8 +736,8 @@ export class GitHubClient implements SourceControlProvider {
         branch: branch,
         sha: Array.isArray(existingFile) ? undefined : existingFile.sha,
       });
-    } catch (error: any) {
-      if (error.status === 404) {
+    } catch (error: unknown) {
+      if ((error as GitHubApiError).status === 404) {
         // File doesn't exist, create it
         await this.octokit.repos.createOrUpdateFileContents({
           owner: this.config.owner,
@@ -745,9 +756,9 @@ export class GitHubClient implements SourceControlProvider {
   private async createPullRequest(
     branchName: string,
     commitMessage: string,
-    exportData: any[],
+    exportData: ExportData[],
     filesUpdated: string[]
-  ): Promise<any> {
+  ) {
     if (!this.octokit || !this.config) {
       throw new Error("GitHub client not initialized");
     }
@@ -768,7 +779,7 @@ export class GitHubClient implements SourceControlProvider {
   }
 
   private generatePullRequestBody(
-    exportData: any[],
+    exportData: ExportData[],
     filesUpdated: string[]
   ): string {
     const totalTokens = exportData.reduce((sum, collectionData) => {
@@ -810,7 +821,7 @@ ${filesUpdated.map((path) => `- \`${path}\``).join("\n")}
    * Get current local tokens from Figma for conflict detection
    * This method interfaces with Figma's API to get current variable collections
    */
-  async getCurrentLocalTokens(): Promise<any[]> {
+  async getCurrentLocalTokens(): Promise<ExportData[]> {
     try {
       console.log("📍 Getting current local tokens from Figma...");
 
