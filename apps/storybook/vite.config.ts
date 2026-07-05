@@ -80,6 +80,33 @@ export default defineConfig({
           // exceeding the Storybook addon WebSocket timeout.
         },
       },
+      {
+        extends: true,
+        plugins: [
+          // The plugin will run tests for the stories defined in your Storybook config
+          // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
+          storybookTest({
+            configDir: path.join(dirname, ".storybook"),
+          }),
+        ],
+        test: {
+          name: "storybook-dark",
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: playwright({ contextOptions: { colorScheme: "dark" } }),
+            instances: [
+              {
+                browser: "chromium",
+              },
+            ],
+          },
+          // Same rationale as the "storybook" project above re: no setupFiles.
+          // Coverage is intentionally omitted here (inherited coverage config
+          // would double-count against the light-mode project); coverage is
+          // already collected by the "storybook" project.
+        },
+      },
     ],
   },
 });
