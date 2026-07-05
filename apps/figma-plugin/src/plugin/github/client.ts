@@ -784,7 +784,7 @@ export class GitHubClient implements SourceControlProvider {
   ): string {
     const totalTokens = exportData.reduce((sum, collectionData) => {
       const collectionName = Object.keys(collectionData)[0];
-      return sum + Object.keys(collectionData[collectionName]).length;
+      return sum + Object.keys(collectionData[collectionName].variables).length;
     }, 0);
 
     const collections = exportData.map(
