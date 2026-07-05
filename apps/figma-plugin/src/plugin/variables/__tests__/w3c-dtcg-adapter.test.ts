@@ -127,7 +127,7 @@ describe("W3CDTCGAdapter", () => {
       expect(result.success).toBe(true);
 
       // Find the color collection
-      const colorCollection = result.data.find((c: any) => c.color);
+      const colorCollection = result.data.find((c: any) => c.color)!;
       expect(colorCollection).toBeDefined();
 
       const variables = colorCollection.color.variables;
@@ -162,7 +162,7 @@ describe("W3CDTCGAdapter", () => {
 
       expect(result.success).toBe(true);
 
-      const colorCollection = result.data.find((c: any) => c.color);
+      const colorCollection = result.data.find((c: any) => c.color)!;
       const variables = colorCollection.color.variables;
 
       expect(variables["color.gray.50"]).toBeDefined();

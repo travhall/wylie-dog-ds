@@ -12,6 +12,7 @@ import {
   isTokenReference,
   createImportOrder,
   extractReferences,
+  type TokenReference,
 } from "./reference-resolver";
 import {
   validateTokensForImport,
@@ -247,7 +248,7 @@ function parseNumericValue(value: unknown): number {
 function convertTokenValueToFigma(
   token: ProcessedToken,
   figmaType: string
-): any {
+): VariableValue {
   const value = token.$value;
 
   switch (figmaType) {
@@ -378,7 +379,7 @@ async function createVariableWithReferences(
     // Set non-reference values immediately, queue references for later
     if (token.valuesByMode) {
       // Multi-mode token
-      const modeReferences = new Map<string, any>();
+      const modeReferences = new Map<string, TokenReference>();
 
       // Mode-name lookup is normalized (trim + lowercase) so
       // {"Light": ...} matches a Figma mode named "light" or " Light ".
@@ -847,7 +848,7 @@ export async function parseTokenFile(content: string): Promise<{
 /**
  * Validate token structure before import
  */
-export function validateTokenStructure(tokenData: any): {
+export function validateTokenStructure(tokenData: unknown): {
   valid: boolean;
   errors: string[];
 } {
@@ -861,24 +862,27 @@ export function validateTokenStructure(tokenData: any): {
   const collections = Array.isArray(tokenData) ? tokenData : [tokenData];
 
   for (const collection of collections) {
-    if (typeof collection !== "object") {
+    if (typeof collection !== "object" || collection === null) {
       errors.push("Collection data must be an object");
       continue;
     }
 
     for (const [collectionName, data] of Object.entries(collection)) {
-      if (typeof data !== "object" || !(data as any)?.variables) {
+      const looseData = data as { variables?: Record<string, unknown> } | null;
+      if (typeof data !== "object" || !looseData?.variables) {
         errors.push(`Collection "${collectionName}" missing variables object`);
         continue;
       }
 
-      for (const [tokenName, token] of Object.entries(
-        (data as any).variables
-      )) {
+      for (const [tokenName, token] of Object.entries(looseData.variables)) {
+        const looseToken = token as {
+          $type?: unknown;
+          $value?: unknown;
+        } | null;
         if (
           typeof token !== "object" ||
-          !(token as any)?.$type ||
-          (token as any)?.$value === undefined
+          !looseToken?.$type ||
+          looseToken?.$value === undefined
         ) {
           errors.push(`Token "${tokenName}" missing required $type or $value`);
         }

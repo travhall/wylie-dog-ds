@@ -96,7 +96,7 @@ describe("TokensStudioAdapter", () => {
 
       expect(result.success).toBe(true);
 
-      const coreCollection = result.data.find((c: any) => c.Core);
+      const coreCollection = result.data.find((c: any) => c.Core)!;
       const variables = coreCollection.Core.variables;
       const firstToken = Object.values(variables)[0] as any;
 
@@ -111,7 +111,7 @@ describe("TokensStudioAdapter", () => {
 
       expect(result.success).toBe(true);
 
-      const semanticCollection = result.data.find((c: any) => c.Semantic);
+      const semanticCollection = result.data.find((c: any) => c.Semantic)!;
       const variables = semanticCollection.Semantic.variables;
       const accentToken = variables["color.accent"] as any;
 
@@ -124,7 +124,7 @@ describe("TokensStudioAdapter", () => {
 
       expect(result.success).toBe(true);
 
-      const coreCollection = result.data.find((c: any) => c.Core);
+      const coreCollection = result.data.find((c: any) => c.Core)!;
       const variables = coreCollection.Core.variables;
       const primaryToken = variables["color.primary.500"] as any;
 

@@ -4,16 +4,20 @@ import type {
   AdapterProcessResult,
   ProcessingStats,
   FormatDetectionResult,
+  StructureInfo,
   TransformationLog,
   FormatAdapter,
 } from "./format-adapter";
 import { FormatDetectorRegistry } from "./format-detectors";
 import { ReferenceNormalizer } from "./reference-normalizer";
+import type { ExportData, ProcessedToken } from "./processor";
 
 // Only import essential adapters - others loaded dynamically
 import { GenericAdapter } from "./adapters/generic";
 import { W3CDTCGAdapter } from "./adapters/w3c-dtcg";
 import { WylieDogNativeAdapter } from "./adapters/wylie-dog-native";
+
+type FormatAdapterConstructor = new () => FormatAdapter;
 
 export class FormatAdapterManager {
   private registry = new FormatDetectorRegistry();
@@ -48,7 +52,7 @@ export class FormatAdapterManager {
     }
 
     try {
-      let AdapterClass: any;
+      let AdapterClass: FormatAdapterConstructor;
 
       switch (format) {
         case TokenFormatType.W3C_DTCG_FLAT:
@@ -170,7 +174,7 @@ export class FormatAdapterManager {
 
   private async processWithDetection(
     detection: FormatDetectionResult,
-    rawData: any,
+    rawData: unknown,
     startTime: number
   ): Promise<AdapterProcessResult> {
     if (detection.confidence < 0.3) {
@@ -239,8 +243,8 @@ export class FormatAdapterManager {
     };
   }
 
-  private normalizeAllReferences(data: any[]): {
-    data: any[];
+  private normalizeAllReferences(data: ExportData[]): {
+    data: ExportData[];
     referenceTransformations: TransformationLog[];
     warnings: string[];
   } {
@@ -252,17 +256,17 @@ export class FormatAdapterManager {
     );
 
     const processedData = data.map((collection) => {
-      const processedCollection: any = {};
+      const processedCollection: ExportData = {};
 
       for (const [collectionName, collectionData] of Object.entries(
         collection
       )) {
-        const processedVariables: Record<string, any> = {};
+        const processedVariables: Record<string, ProcessedToken> = {};
 
         for (const [tokenName, token] of Object.entries(
-          (collectionData as any).variables
+          collectionData.variables
         )) {
-          const processedToken = Object.assign({}, token as any);
+          const processedToken = Object.assign({}, token);
 
           // Normalize main value
           if (processedToken.$value) {
@@ -283,7 +287,7 @@ export class FormatAdapterManager {
           if (processedToken.valuesByMode) {
             processedToken.valuesByMode = {};
             for (const [mode, value] of Object.entries(
-              (token as any).valuesByMode
+              token.valuesByMode ?? {}
             )) {
               const result = ReferenceNormalizer.normalizeReferences(value);
               processedToken.valuesByMode[mode] = result.value;
@@ -302,13 +306,10 @@ export class FormatAdapterManager {
           processedVariables[tokenName] = processedToken;
         }
 
-        processedCollection[collectionName] = Object.assign(
-          {},
-          collectionData as any,
-          {
-            variables: processedVariables,
-          }
-        );
+        processedCollection[collectionName] = {
+          ...collectionData,
+          variables: processedVariables,
+        };
       }
 
       return processedCollection;
@@ -338,7 +339,7 @@ export class FormatAdapterManager {
       success: false,
       data: [],
       detection: detection || {
-        format: "unknown" as any,
+        format: TokenFormatType.UNKNOWN,
         confidence: 0,
         structure: this.createEmptyStructure(),
         warnings: [],
@@ -352,7 +353,7 @@ export class FormatAdapterManager {
     };
   }
 
-  private generateStats(data: any[]): ProcessingStats {
+  private generateStats(data: ExportData[]): ProcessingStats {
     let totalTokens = 0;
     let totalReferences = 0;
     let totalCollections = 0;
@@ -360,19 +361,15 @@ export class FormatAdapterManager {
     for (const collection of data) {
       for (const [, collectionData] of Object.entries(collection)) {
         totalCollections++;
-        totalTokens += Object.keys((collectionData as any).variables).length;
+        totalTokens += Object.keys(collectionData.variables).length;
 
         // Count references
-        for (const token of Object.values((collectionData as any).variables)) {
-          const tokenObj = token as any;
-          if (
-            typeof tokenObj.$value === "string" &&
-            tokenObj.$value.includes("{")
-          ) {
+        for (const token of Object.values(collectionData.variables)) {
+          if (typeof token.$value === "string" && token.$value.includes("{")) {
             totalReferences++;
           }
-          if (tokenObj.valuesByMode) {
-            for (const value of Object.values(tokenObj.valuesByMode)) {
+          if (token.valuesByMode) {
+            for (const value of Object.values(token.valuesByMode)) {
               if (typeof value === "string" && value.includes("{")) {
                 totalReferences++;
               }
@@ -391,7 +388,7 @@ export class FormatAdapterManager {
     };
   }
 
-  private createEmptyStructure(): any {
+  private createEmptyStructure(): StructureInfo {
     return {
       hasCollections: false,
       hasModes: false,

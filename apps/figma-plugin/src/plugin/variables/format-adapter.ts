@@ -1,6 +1,8 @@
 // Format Adapter Layer - Core interfaces and types
 // Transforms diverse design token formats into the expected Wylie Dog structure
 
+import type { ExportData } from "./processor";
+
 export interface FormatDetectionResult {
   format: TokenFormatType;
   confidence: number;
@@ -9,7 +11,7 @@ export interface FormatDetectionResult {
 }
 
 export interface NormalizationResult {
-  data: any; // Will be ExportData[] after normalization
+  data: ExportData[];
   transformations: TransformationLog[];
   warnings: string[];
   errors: string[];
@@ -58,7 +60,7 @@ export interface TransformationLog {
 
 export interface AdapterProcessResult {
   success: boolean;
-  data: any[]; // ExportData[] after successful processing
+  data: ExportData[];
   detection: FormatDetectionResult;
   transformations: TransformationLog[];
   warnings: string[];
