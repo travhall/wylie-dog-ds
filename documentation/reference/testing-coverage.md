@@ -1,22 +1,23 @@
 # Testing and Coverage Status
 
-**Last Updated:** December 17, 2025
-**Overall Coverage:** 95.41% (exceeds 80% threshold)
-**Tests Passing:** 1,428 | **Tests Skipped:** 67
+**Last Updated:** July 5, 2026
+**Overall Coverage:** 95.06% lines / 94.4% statements (exceeds 80% threshold)
+**Tests Passing:** 1,541 | **Tests Skipped:** 67
 
 ## Coverage Breakdown
 
-| Metric           | Current | Target | Status            |
-| ---------------- | ------- | ------ | ----------------- |
-| Lines/Statements | 95.41%  | 80%    | ✅ Pass (+15.41%) |
-| Functions        | 89.47%  | 80%    | ✅ Pass (+9.47%)  |
-| Branches         | 97%     | 70%    | ✅ Pass (+27%)    |
+| Metric     | Current | Target | Status            |
+| ---------- | ------- | ------ | ----------------- |
+| Statements | 94.4%   | 80%    | ✅ Pass (+14.4%)  |
+| Lines      | 95.06%  | 80%    | ✅ Pass (+15.06%) |
+| Functions  | 87.03%  | 80%    | ✅ Pass (+7.03%)  |
+| Branches   | 78.81%  | 70%    | ✅ Pass (+8.81%)  |
 
 ### Component Coverage
 
-- **Component tests:** 95.35% (all components fully tested except portal-based skips)
-- **Utility tests:** 100% (utils.ts and test-utils.ts)
-- **Test files:** 48 passing test files
+- **Component tests:** 95.06% lines (all components fully tested except portal-based skips)
+- **Utility tests:** 100% lines (utils.ts), 98.78% lines (test-utils.ts)
+- **Test files:** 54 passing test files
 
 ## Skipped Tests Summary
 
@@ -368,12 +369,13 @@ TEST_PATTERN="Accessibility" pnpm test
 
 ## Coverage History
 
-| Date         | Coverage | Change   | Notes                                          |
-| ------------ | -------- | -------- | ---------------------------------------------- |
-| Dec 16, 2025 | 75.75%   | Baseline | 70 tests skipped, initial state                |
-| Dec 17, 2025 | 78.04%   | +2.29%   | Fixed separator tests (context-menu, menubar)  |
-| Dec 17, 2025 | 79.63%   | +1.59%   | Added utils.ts and test-utils.ts tests         |
-| Dec 17, 2025 | 95.41%   | +15.78%  | Added resizable.test.tsx + excluded docs files |
+| Date         | Coverage | Change   | Notes                                                                                                            |
+| ------------ | -------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
+| Dec 16, 2025 | 75.75%   | Baseline | 70 tests skipped, initial state                                                                                  |
+| Dec 17, 2025 | 78.04%   | +2.29%   | Fixed separator tests (context-menu, menubar)                                                                    |
+| Dec 17, 2025 | 79.63%   | +1.59%   | Added utils.ts and test-utils.ts tests                                                                           |
+| Dec 17, 2025 | 95.41%   | +15.78%  | Added resizable.test.tsx + excluded docs files                                                                   |
+| Jul 5, 2026  | 95.06%   | -0.35%   | Fixed CommandEmpty role=status regression, enabling test:coverage to complete; refreshed stale Dec 2025 snapshot |
 
 ---
 
