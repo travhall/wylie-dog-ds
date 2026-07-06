@@ -131,6 +131,30 @@ describe("Carousel", () => {
       const content = container.querySelector(".overflow-hidden");
       expect(content).toBeInTheDocument();
     });
+
+    it("applies extra props to a single element, not both wrapper divs", () => {
+      const { container } = render(
+        <Carousel>
+          <CarouselContent
+            id="my-carousel-content"
+            data-testid="content-root"
+          />
+        </Carousel>
+      );
+      const matches = container.querySelectorAll("#my-carousel-content");
+      expect(matches).toHaveLength(1);
+    });
+
+    it("does not double-fire onClick", () => {
+      const handleClick = vi.fn();
+      render(
+        <Carousel>
+          <CarouselContent onClick={handleClick}>Content</CarouselContent>
+        </Carousel>
+      );
+      screen.getByText("Content").click();
+      expect(handleClick).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe("CarouselItem Component", () => {
