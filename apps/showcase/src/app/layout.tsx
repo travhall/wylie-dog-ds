@@ -122,8 +122,10 @@ export default function RootLayout({
 
               <ThemeToggle />
 
-              <Link
+              <a
                 href="https://wyliedogstorybook.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`hidden md:flex h-8 gap-1.5 ${buttonVariants({ variant: "outline", size: "sm" })}`}
               >
                 Storybook
@@ -136,7 +138,7 @@ export default function RootLayout({
                 >
                   <path d="M7 17 17 7M9 7h8v8" />
                 </svg>
-              </Link>
+              </a>
             </div>
           </div>
         </header>
@@ -173,16 +175,30 @@ export default function RootLayout({
                     {col.heading}
                   </p>
                   <ul className="mt-3 space-y-2 text-sm">
-                    {col.links.map((link) => (
-                      <li key={link.href}>
-                        <Link
-                          href={link.href}
-                          className="text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
+                    {col.links.map((link) => {
+                      const isExternal = link.href.startsWith("http");
+                      return (
+                        <li key={link.href}>
+                          {isExternal ? (
+                            <a
+                              href={link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
+                            >
+                              {link.label}
+                            </a>
+                          ) : (
+                            <Link
+                              href={link.href}
+                              className="text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
+                            >
+                              {link.label}
+                            </Link>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ))}
