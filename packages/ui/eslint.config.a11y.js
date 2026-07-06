@@ -110,4 +110,15 @@ export default [
       'jsx-a11y/anchor-has-content': 'off',
     },
   },
+  // CommandList's scrollable wrapper needs tabIndex=0 so keyboard users can
+  // reach and scroll it (the same pattern scroll-area.tsx uses on its Radix
+  // Viewport, which the rule doesn't flag only because it isn't a raw <div>).
+  // `no-noninteractive-tabindex` has no exception for scrollable regions, so
+  // it's disabled just for this file.
+  {
+    files: ['src/command.tsx'],
+    rules: {
+      'jsx-a11y/no-noninteractive-tabindex': 'off',
+    },
+  },
 ];
