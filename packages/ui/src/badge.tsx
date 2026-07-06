@@ -2,7 +2,7 @@
 import React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "./lib/utils";
+import { cn, focusRingClasses } from "./lib/utils";
 
 export const badgeVariants = cva(
   cn(
@@ -33,7 +33,7 @@ export const badgeVariants = cva(
       interactive: {
         true: cn(
           "cursor-pointer",
-          "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
+          focusRingClasses,
           "disabled:opacity-(--badge-disabled-opacity) disabled:cursor-not-allowed"
         ),
         false: "",

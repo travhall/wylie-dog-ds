@@ -2,7 +2,7 @@
 import React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "./lib/utils";
+import { cn, focusRingClasses } from "./lib/utils";
 
 export const cardVariants = cva(
   cn(
@@ -23,7 +23,7 @@ export const cardVariants = cva(
           "hover:bg-(--color-card-background-hover)",
           "hover:border-(--color-card-border-hover)",
           "focus:bg-(--color-card-background-focus)",
-          "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
+          focusRingClasses,
           "active:bg-(--color-card-background-active)",
           "disabled:bg-(--color-card-background-disabled)",
           "disabled:cursor-not-allowed disabled:opacity-(--card-disabled-opacity)"

@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "./lib/utils";
+import { cn, focusRingClasses } from "./lib/utils";
 
 export const dialogContentVariants = cva(
   cn(
@@ -104,7 +104,7 @@ export const DialogContent = React.forwardRef<
         {children}
         <DialogPrimitive.Close
           ref={closeButtonRef}
-          className="absolute right-(--space-dialog-close-button-offset) top-(--space-dialog-close-button-offset) rounded-(--space-dialog-close-button-radius) opacity-(--dialog-close-button-opacity) ring-offset-(--color-dialog-background) transition-opacity hover:opacity-(--dialog-close-button-opacity-hover) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none"
+          className={`absolute right-(--space-dialog-close-button-offset) top-(--space-dialog-close-button-offset) rounded-(--space-dialog-close-button-radius) opacity-(--dialog-close-button-opacity) ring-offset-(--color-dialog-background) transition-opacity hover:opacity-(--dialog-close-button-opacity-hover) ${focusRingClasses} disabled:pointer-events-none`}
         >
           <svg
             className="h-(--space-icon-size-md) w-(--space-icon-size-md)"

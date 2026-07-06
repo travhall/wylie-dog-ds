@@ -1,7 +1,7 @@
 import React from "react";
 import { XIcon } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "./lib/utils";
+import { cn, focusRingClasses } from "./lib/utils";
 
 export const toastVariants = cva(
   cn(
@@ -56,7 +56,9 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
     <button
       ref={ref}
       className={cn(
-        "inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border bg-transparent ring-offset-(--color-toast-action-ring-offset) transition-colors hover:bg-(--color-toast-action-hover) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none disabled:opacity-(--toast-action-disabled-opacity)",
+        "inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border bg-transparent ring-offset-(--color-toast-action-ring-offset) transition-colors hover:bg-(--color-toast-action-hover)",
+        focusRingClasses,
+        "disabled:pointer-events-none disabled:opacity-(--toast-action-disabled-opacity)",
         "h-(--space-toast-action-height)",
         "px-(--space-toast-action-padding-x)",
         "text-(length:--font-size-toast-action-font-size)",
@@ -78,7 +80,9 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
     <button
       ref={ref}
       className={cn(
-        "absolute right-(--space-toast-close-button-position) top-(--space-toast-close-button-position) p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-(--toast-close-button-opacity) transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-(--toast-close-button-opacity-hover) focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) group-hover:opacity-(--toast-close-button-opacity-hover)",
+        "absolute right-(--space-toast-close-button-position) top-(--space-toast-close-button-position) p-(--space-toast-close-button-padding) text-(--color-toast-close) opacity-(--toast-close-button-opacity) transition-opacity hover:text-(--color-toast-close-hover) focus:opacity-(--toast-close-button-opacity-hover)",
+        focusRingClasses,
+        "group-hover:opacity-(--toast-close-button-opacity-hover)",
         "rounded-(--space-toast-close-button-radius)",
         "h-(--space-toast-close-size) w-(--space-toast-close-size)",
         className

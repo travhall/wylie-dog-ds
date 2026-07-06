@@ -1,6 +1,6 @@
 import React from "react";
 import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react";
-import { cn } from "./lib/utils";
+import { cn, focusRingClasses } from "./lib/utils";
 
 export interface BreadcrumbProps extends React.ComponentPropsWithoutRef<"nav"> {
   separator?: React.ReactNode;
@@ -54,7 +54,8 @@ const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
         ref={ref}
         className={cn(
           "transition-colors text-(--color-breadcrumb-link) hover:text-(--color-breadcrumb-link-hover)",
-          "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset) rounded-(--space-breadcrumb-link-radius)",
+          focusRingClasses,
+          "rounded-(--space-breadcrumb-link-radius)",
           className
         )}
         {...props}

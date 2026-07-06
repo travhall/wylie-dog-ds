@@ -1,6 +1,6 @@
 import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { cn } from "./lib/utils";
+import { cn, focusRingClasses } from "./lib/utils";
 
 interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -52,7 +52,7 @@ const CarouselPrevious = React.forwardRef<
     className={cn(
       "absolute h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -left-(--space-carousel-button-offset) top-1/2 -translate-y-1/2",
       "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
-      "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
+      focusRingClasses,
       "disabled:pointer-events-none disabled:opacity-(--carousel-nav-button-disabled-opacity)",
       className
     )}
@@ -73,7 +73,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
       className={cn(
         "absolute h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -right-(--space-carousel-button-offset) top-1/2 -translate-y-1/2",
         "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
-        "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
+        focusRingClasses,
         "disabled:pointer-events-none disabled:opacity-(--carousel-nav-button-disabled-opacity)",
         className
       )}
