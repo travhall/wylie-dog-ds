@@ -212,24 +212,24 @@ export default function PluginPage() {
               <div className="text-[10px] text-(--color-text-tertiary) mb-2">
                 Before
               </div>
-              <button
-                className="rounded-md px-4 py-2 text-xs font-semibold text-(--color-text-inverse)"
+              <Button
+                className="text-xs"
                 style={{ background: "oklch(0.58 0.18 274)" }}
               >
                 Get started
-              </button>
+              </Button>
             </div>
             <div className="text-(--color-text-tertiary)">→</div>
             <div className="text-center">
               <div className="text-[10px] text-(--color-text-tertiary) mb-2">
                 After
               </div>
-              <button
-                className="rounded-md px-4 py-2 text-xs font-semibold text-(--color-text-inverse)"
+              <Button
+                className="text-xs"
                 style={{ background: "oklch(0.54 0.18 274)" }}
               >
                 Get started
-              </button>
+              </Button>
             </div>
             <div className="flex-1 text-[10px] text-(--color-text-tertiary) leading-relaxed">
               Token updated from{" "}
