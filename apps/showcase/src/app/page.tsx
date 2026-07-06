@@ -539,7 +539,7 @@ export default function ShowcasePage() {
                       className="inline-flex h-6 items-center rounded px-2 text-[10px] font-semibold"
                       style={{
                         background: "oklch(58% 0.2 25)",
-                        color: "white",
+                        color: "var(--color-text-on-solid)",
                       }}
                     >
                       Delete
@@ -631,7 +631,7 @@ export default function ShowcasePage() {
                     className="grid h-4 w-4 mt-px place-items-center rounded-full shrink-0"
                     style={{
                       background: "oklch(60% 0.14 155)",
-                      color: "white",
+                      color: "var(--color-text-on-solid)",
                     }}
                   >
                     <svg

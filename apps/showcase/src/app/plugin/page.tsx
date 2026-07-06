@@ -125,7 +125,10 @@ export default function PluginPage() {
             <div key={t.tier} className="flex items-center gap-3">
               <span
                 className="h-7 w-7 rounded-md font-mono text-[11px] font-bold flex items-center justify-center shrink-0"
-                style={{ background: t.color, color: "white" }}
+                style={{
+                  background: t.color,
+                  color: "var(--color-text-on-solid)",
+                }}
               >
                 {t.tier}
               </span>
@@ -503,7 +506,7 @@ export default function PluginPage() {
                         className="absolute -right-4.5 top-1/2 -translate-y-1/2 z-10 grid h-4 w-4 place-items-center rounded-full"
                         style={{
                           background: "var(--color-interactive-primary)",
-                          color: "white",
+                          color: "var(--color-text-on-solid)",
                         }}
                       >
                         <svg
