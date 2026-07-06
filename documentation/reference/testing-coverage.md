@@ -160,7 +160,7 @@ Clicking second trigger closes first content but doesn't reliably show second co
 **Status:** All tests passing
 
 **Fixed on:** December 17, 2025
-**Solution:** Test without CommandEmpty component (which has conflicting `role="status"` for listbox children)
+**Solution:** `CommandEmpty` renders as a sibling of the `role="listbox"` element (not a child), so `role="status"` on it does not violate ARIA listbox-children constraints.
 
 ---
 

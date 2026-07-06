@@ -36,8 +36,8 @@ const TestCommand = () => (
 describe("Command", () => {
   describe("Accessibility", () => {
     it("should pass accessibility audit", async () => {
-      // Note: CommandEmpty has role="status" which conflicts with listbox children requirements
-      // Testing without CommandEmpty to validate core structure
+      // CommandEmpty is intentionally omitted here; this test targets the
+      // core listbox/group/item structure only.
       const { container } = render(
         <Command>
           <CommandInput placeholder="Search..." aria-label="Search commands" />

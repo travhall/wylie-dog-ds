@@ -139,6 +139,7 @@ const CommandEmpty = React.forwardRef<HTMLDivElement, CommandEmptyProps>(
         "py-(--space-command-empty-padding-y) text-center text-(length:--font-size-command-item-font-size) text-(--color-command-empty)",
         className
       )}
+      role="status"
       aria-live="polite"
       {...props}
     />
