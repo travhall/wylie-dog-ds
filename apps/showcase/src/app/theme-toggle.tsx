@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Button } from "@wyliedog/ui/button";
 
 export function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
@@ -25,11 +26,13 @@ export function ThemeToggle() {
   }
 
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
+      size="icon"
       aria-label="Toggle theme"
       onClick={toggle}
-      className="grid h-8 w-8 place-items-center rounded-md text-(--color-text-secondary) hover:text-(--color-text-primary) hover:bg-(--color-background-secondary) transition-colors"
+      className="h-8 w-8"
     >
       {/* Sun — shown in dark mode */}
       <svg
@@ -52,6 +55,6 @@ export function ThemeToggle() {
       >
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
       </svg>
-    </button>
+    </Button>
   );
 }
