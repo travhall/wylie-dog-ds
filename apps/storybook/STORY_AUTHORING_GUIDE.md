@@ -21,9 +21,7 @@ const meta: Meta<typeof ComponentName> = {
     },
   },
   tags: ["autodocs"],
-  argTypes: {
-    /* ... */
-  },
+  argTypes: {/* ... */},
 };
 
 export default meta;
@@ -103,9 +101,7 @@ const meta: Meta<typeof ComponentName> = {
   tags: ["autodocs"],
 
   // Required: ArgTypes for all controllable props
-  argTypes: {
-    /* ... */
-  },
+  argTypes: {/* ... */},
 };
 ```
 
@@ -169,9 +165,7 @@ Every story should have a description:
 
 ```typescript
 export const Default: Story = {
-  args: {
-    /* ... */
-  },
+  args: {/* ... */},
   parameters: {
     docs: {
       description: {

@@ -153,9 +153,7 @@ import baseConfig from "@repo/tailwind-config";
 
 export default {
   ...baseConfig,
-  content: [
-    /* app-specific paths */
-  ],
+  content: [/* app-specific paths */],
 };
 ```
 

@@ -41,12 +41,8 @@ Every sync file is a **JSON array containing exactly one element**. The element 
 [
   {
     "<collectionName>": {
-      "modes": [
-        /* Mode[] */
-      ],
-      "variables": {
-        /* TokenName → Token */
-      },
+      "modes": [/* Mode[] */],
+      "variables": {/* TokenName → Token */},
     },
   },
 ]

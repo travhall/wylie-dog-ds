@@ -293,8 +293,7 @@ Type-safe error handling without exceptions:
 
 ```typescript
 type Result<T, E = Error> =
-  | { success: true; value: T }
-  | { success: false; error: E };
+  { success: true; value: T } | { success: false; error: E };
 
 // Usage
 const result = await importTokens(file);
