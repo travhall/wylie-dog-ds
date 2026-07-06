@@ -4386,7 +4386,7 @@
           "link",
           "text"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.488 0.217 264.4)",
         "type": "color",
         "variable": "var(--color-button-link-text)",
         "description": ""
@@ -7427,7 +7427,7 @@
           "breadcrumb",
           "link"
         ],
-        "value": "oklch(0.546 0.215 262.9)",
+        "value": "oklch(0.488 0.217 264.4)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link)",
         "description": ""
@@ -9833,7 +9833,7 @@
           "warning",
           "border"
         ],
-        "value": "oklch(0.881 0.117 100.4)",
+        "value": "oklch(0.553 0.174 38.47)",
         "type": "color",
         "variable": "var(--color-toast-warning-border)",
         "description": ""
@@ -9845,7 +9845,7 @@
           "warning",
           "background"
         ],
-        "value": "oklch(0.881 0.117 100.4)",
+        "value": "oklch(0.553 0.174 38.47)",
         "type": "color",
         "variable": "var(--color-toast-warning-background)",
         "description": ""
@@ -9881,10 +9881,10 @@
           "warning",
           "text"
         ],
-        "value": "oklch(0.209 0.01 268.18)",
+        "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-toast-warning-text)",
-        "description": "Text color on warning toast (yellow highlight background)"
+        "description": "Text color on warning toast (saturated orange background)"
       },
       "toast-border-radius": {
         "name": "toastBorderRadius",

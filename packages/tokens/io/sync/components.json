@@ -555,10 +555,10 @@
         },
         "button.link.text": {
           "$type": "color",
-          "$value": "{color.interactive.primary}",
+          "$value": "{color.text.info}",
           "valuesByMode": {
-            "Light": "{color.interactive.primary}",
-            "Dark": "{color.interactive.primary}"
+            "Light": "{color.text.info}",
+            "Dark": "{color.text.info}"
           }
         },
         "card.background": {
@@ -1411,10 +1411,10 @@
         },
         "breadcrumb.link": {
           "$type": "color",
-          "$value": "{color.interactive.primary}",
+          "$value": "{color.text.info}",
           "valuesByMode": {
-            "Light": "{color.interactive.primary}",
-            "Dark": "{color.interactive.primary}"
+            "Light": "{color.text.info}",
+            "Dark": "{color.text.info}"
           }
         },
         "breadcrumb.link-hover": {
@@ -3996,18 +3996,18 @@
         },
         "toast.destructive.border": {
           "$type": "color",
-          "$value": "{color.status.danger}",
+          "$value": "{color.interactive.danger}",
           "valuesByMode": {
-            "Light": "{color.status.danger}",
-            "Dark": "{color.status.danger}"
+            "Light": "{color.interactive.danger}",
+            "Dark": "{color.interactive.danger}"
           }
         },
         "toast.destructive.background": {
           "$type": "color",
-          "$value": "{color.status.danger}",
+          "$value": "{color.interactive.danger}",
           "valuesByMode": {
-            "Light": "{color.status.danger}",
-            "Dark": "{color.status.danger}"
+            "Light": "{color.interactive.danger}",
+            "Dark": "{color.interactive.danger}"
           }
         },
         "toast.success.border": {
@@ -4028,18 +4028,18 @@
         },
         "toast.warning.border": {
           "$type": "color",
-          "$value": "{color.status.highlight}",
+          "$value": "{color.interactive.warning}",
           "valuesByMode": {
-            "Light": "{color.status.highlight}",
-            "Dark": "{color.status.highlight}"
+            "Light": "{color.interactive.warning}",
+            "Dark": "{color.interactive.warning}"
           }
         },
         "toast.warning.background": {
           "$type": "color",
-          "$value": "{color.status.highlight}",
+          "$value": "{color.interactive.warning}",
           "valuesByMode": {
-            "Light": "{color.status.highlight}",
-            "Dark": "{color.status.highlight}"
+            "Light": "{color.interactive.warning}",
+            "Dark": "{color.interactive.warning}"
           }
         },
         "toast.destructive.text": {
@@ -4062,12 +4062,12 @@
         },
         "toast.warning.text": {
           "$type": "color",
-          "$value": "{color.text.primary}",
+          "$value": "{color.text.on-solid}",
           "valuesByMode": {
-            "Light": "{color.text.primary}",
-            "Dark": "{color.text.primary}"
+            "Light": "{color.text.on-solid}",
+            "Dark": "{color.text.on-solid}"
           },
-          "$description": "Text color on warning toast (yellow highlight background)"
+          "$description": "Text color on warning toast (saturated orange background)"
         },
         "toast.border-radius": {
           "$type": "dimension",

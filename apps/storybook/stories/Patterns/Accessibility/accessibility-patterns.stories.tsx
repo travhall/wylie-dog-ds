@@ -466,8 +466,8 @@ const contrastSamples: ContrastSample[] = [
     compliant: true,
   },
   {
-    label: "Interactive primary on primary background",
-    textToken: "--color-interactive-primary",
+    label: "Info/link text on primary background",
+    textToken: "--color-text-info",
     bgToken: "--color-background-primary",
     sampleText: "Link and action text",
     usage: "Links, focus labels, interactive affordances",

@@ -274,7 +274,7 @@
   },
   "button.link.text": {
     "$type": "color",
-    "$value": "{color.interactive.primary}"
+    "$value": "{color.text.info}"
   },
   "card.background": {
     "$type": "color",
@@ -702,7 +702,7 @@
   },
   "breadcrumb.link": {
     "$type": "color",
-    "$value": "{color.interactive.primary}"
+    "$value": "{color.text.info}"
   },
   "breadcrumb.link-hover": {
     "$type": "color",
@@ -1995,11 +1995,11 @@
   },
   "toast.destructive.border": {
     "$type": "color",
-    "$value": "{color.status.danger}"
+    "$value": "{color.interactive.danger}"
   },
   "toast.destructive.background": {
     "$type": "color",
-    "$value": "{color.status.danger}"
+    "$value": "{color.interactive.danger}"
   },
   "toast.success.border": {
     "$type": "color",
@@ -2011,11 +2011,11 @@
   },
   "toast.warning.border": {
     "$type": "color",
-    "$value": "{color.status.highlight}"
+    "$value": "{color.interactive.warning}"
   },
   "toast.warning.background": {
     "$type": "color",
-    "$value": "{color.status.highlight}"
+    "$value": "{color.interactive.warning}"
   },
   "toast.destructive.text": {
     "$type": "color",
@@ -2029,8 +2029,8 @@
   },
   "toast.warning.text": {
     "$type": "color",
-    "$value": "{color.text.primary}",
-    "$description": "Text color on warning toast (yellow highlight background)"
+    "$value": "{color.text.on-solid}",
+    "$description": "Text color on warning toast (saturated orange background)"
   },
   "toast.border-radius": {
     "$type": "dimension",

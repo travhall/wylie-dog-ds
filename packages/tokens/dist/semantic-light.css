@@ -470,7 +470,7 @@
   --font-weight-button-font-weight: 500;
   --line-height-button-line-height: 1;
   --button-border-width: 1px;
-  --color-button-link-text: oklch(0.546 0.215 262.9);
+  --color-button-link-text: oklch(0.488 0.217 264.4);
   --color-card-background: oklch(0.991 0.003 264.45);
   --color-card-border: oklch(0.786 0.004 271.11);
   --space-card-padding: 32px;
@@ -577,7 +577,7 @@
   --color-avatar-fallback-background: oklch(0.87 0.003 264.48);
   --color-avatar-fallback-text: oklch(0.423 0.007 264.49);
   --color-breadcrumb-current: oklch(0.209 0.01 268.18);
-  --color-breadcrumb-link: oklch(0.546 0.215 262.9);
+  --color-breadcrumb-link: oklch(0.488 0.217 264.4);
   --color-breadcrumb-link-hover: oklch(0.488 0.217 264.4);
   --color-breadcrumb-text: oklch(0.423 0.007 264.49);
   --color-carousel-nav-background: oklch(0.991 0.003 264.45);
@@ -904,11 +904,11 @@
   --color-toast-destructive-background: oklch(0.577 0.215 27.31);
   --color-toast-success-border: oklch(0.527 0.137 150.11);
   --color-toast-success-background: oklch(0.527 0.137 150.11);
-  --color-toast-warning-border: oklch(0.881 0.117 100.4);
-  --color-toast-warning-background: oklch(0.881 0.117 100.4);
+  --color-toast-warning-border: oklch(0.553 0.174 38.47);
+  --color-toast-warning-background: oklch(0.553 0.174 38.47);
   --color-toast-destructive-text: oklch(0.991 0.003 264.45);
   --color-toast-success-text: oklch(0.991 0.003 264.45);
-  --color-toast-warning-text: oklch(0.209 0.01 268.18);
+  --color-toast-warning-text: oklch(0.991 0.003 264.45);
   --space-toast-border-radius: 8px;
   --space-toast-close-padding: 4px;
   --space-card-grid-gap-horizontal: 24px;

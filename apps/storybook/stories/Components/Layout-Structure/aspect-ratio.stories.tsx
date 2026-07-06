@@ -61,7 +61,7 @@ export const Square: Story = {
   render: () => (
     <div className="w-50">
       <AspectRatio ratio={1}>
-        <div className="bg-(--color-surface-info) w-full h-full flex items-center justify-center text-(--color-interactive-primary)">
+        <div className="bg-(--color-surface-info) w-full h-full flex items-center justify-center text-(--color-text-info)">
           1:1 Square
         </div>
       </AspectRatio>
@@ -124,7 +124,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">1:1 Square</h4>
         <div className="w-50">
           <AspectRatio ratio={1}>
-            <div className="bg-(--color-surface-info) w-full h-full flex items-center justify-center text-(--color-interactive-primary)">
+            <div className="bg-(--color-surface-info) w-full h-full flex items-center justify-center text-(--color-text-info)">
               Instagram
             </div>
           </AspectRatio>

@@ -154,6 +154,15 @@ export const ShadowScale: Story = {
           "Elevation levels for depth and hierarchy. **Dark mode note:** CSS box-shadows use dark RGBA values that vanish on dark surfaces. The side-by-side comparison below makes this visible. The recommended mitigation is to pair shadows with `--color-border-primary` on elevated surfaces in dark mode.",
       },
     },
+    // The "Light surface" panel below is intentionally a static white
+    // background (paired with the "Dark surface" panel's intentionally
+    // static dark background) so a reader can compare how a shadow looks on
+    // light vs. dark surfaces side by side, independent of the page's active
+    // theme. In dark mode, --color-text-secondary flips to a light gray
+    // (correct for the dark page background) which then fails contrast
+    // against this deliberately-static white demo panel — the element is
+    // demonstrating a fixed appearance, not communicating themed content.
+    a11y: { config: { rules: [{ id: "color-contrast", enabled: false }] } },
   },
   render: () => (
     <div className="space-y-8">
@@ -523,7 +532,7 @@ export const SpacingPlayground: Story = {
             </CardHeader>
             <CardContent>
               <div className="relative border-2 border-dashed border-(--color-interactive-primary)/40 bg-(--color-interactive-primary)/5 rounded">
-                <span className="absolute top-1.5 left-2 text-[10px] font-mono text-(--color-interactive-primary)">
+                <span className="absolute top-1.5 left-2 text-[10px] font-mono text-(--color-text-info)">
                   padding area
                 </span>
                 <div
