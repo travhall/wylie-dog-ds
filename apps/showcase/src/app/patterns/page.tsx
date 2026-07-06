@@ -9,12 +9,14 @@ function PatCard({
   desc,
   tags,
   preview,
+  href,
   full = false,
 }: {
   title: string;
   desc: string;
   tags: string[];
   preview: React.ReactNode;
+  href: string;
   full?: boolean;
 }) {
   return (
@@ -46,12 +48,12 @@ function PatCard({
           <h3 className="font-serif text-lg font-semibold text-(--color-text-primary)">
             {title}
           </h3>
-          <a
-            href="https://wyliedogstorybook.com"
+          <Link
+            href={href}
             className="font-mono text-[10px] text-(--color-text-tertiary) hover:text-(--color-interactive-primary) transition-colors"
           >
             View ↗
-          </a>
+          </Link>
         </div>
         <p className="text-sm text-(--color-text-secondary) mt-1 leading-relaxed">
           {desc}
@@ -349,6 +351,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
+              href="/patterns/auth"
               title="Login & Registration"
               desc="Sign-in form, registration flow, social auth options. Same schema, three layouts — page, modal, and drawer."
               tags={["Form", "Input", "Button", "Separator", "Link"]}
@@ -481,6 +484,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
+              href="/patterns/auth"
               title="Password Recovery"
               desc="Forgot-password entry, throttled resend, magic-link return state. Handles all five edge cases auth audits flag: expired token, used token, mismatched email, rate-limit, and SSO-only accounts."
               tags={["Form", "Input", "Alert", "Button"]}
@@ -594,6 +598,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
+              href="/patterns/data"
               title="Card Grid"
               desc="Responsive grid of data cards with pagination, filtering, and empty states. Reflows 4 → 3 → 2 → 1 columns across our breakpoints."
               tags={["Card", "Badge", "Pagination", "Avatar"]}
@@ -689,6 +694,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
+              href="/patterns/data"
               title="Feature Grid"
               desc="Marketing-grade feature showcase: 2×2, 3×2, or 4×1 layouts with iconography, titles, and one-line benefit copy. Designed to be skimmed."
               tags={["Card", "Icon", "Heading", "Text"]}
@@ -772,6 +778,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
+              href="/patterns/feedback"
               full
               title="Error Boundary Patterns"
               desc="Page-level and component-scoped error states with recovery UI. Captures the error, auto-saves the user's in-flight work, and offers a non-destructive path back to a working state — without unmounting the whole tree."
@@ -913,6 +920,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
+              href="/patterns/forms"
               title="Form Compositions"
               desc="Multi-field forms, field groupings, and step indicators. Standard layout primitives so a 30-field settings page reads like a 5-field one."
               tags={["Form", "Input", "Switch", "Stepper", "Fieldset"]}
@@ -1014,6 +1022,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
+              href="/patterns/forms"
               title="Form Validation Patterns"
               desc="Error, async, and success states with consistent messaging. Validation fires on blur, runs async checks against the server, and recovers when the user corrects."
               tags={["Input", "Form", "Icon", "Progress", "Text"]}
@@ -1138,6 +1147,7 @@ export default function PatternsPage() {
             desc="The page shell — what holds every product surface together. One layout primitive wired for sidebar, content, and overlay regions, with responsive collapse built in."
           />
           <PatCard
+            href="/patterns/layout"
             full
             title="Layout Patterns"
             desc="Page shell, sidebar, content area, and responsive breakpoints. The sidebar collapses to a sheet below lg; the content area never exceeds a 1280px reading measure."
@@ -1318,6 +1328,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
+              href="/patterns/navigation"
               title="Site Header"
               desc="Sticky header with logo, primary nav, search trigger, and theme toggle. Blurs the content beneath on scroll. Used as the header on this very page."
               tags={["NavigationMenu", "Button", "Command", "ToggleGroup"]}
@@ -1397,6 +1408,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
+              href="/patterns/navigation"
               title="Site Footer"
               desc="Multi-column footer with brand block, sitemap columns, legal links, and a live status indicator. Collapses to two columns on mobile, brand stacked above."
               tags={["Separator", "Link", "Badge", "Heading"]}
@@ -1483,6 +1495,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-3 gap-4">
             <PatCard
+              href="/patterns/compositions"
               title="Section: Hero"
               desc="Headline, lead, CTAs, optional eyebrow badge. Three layout variants: centered, split, and asymmetric."
               tags={["Heading", "Button", "Badge"]}
@@ -1533,6 +1546,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
+              href="/patterns/compositions"
               title="Section: Features"
               desc="Features / benefits with optional icons and supporting copy. Two-column, three-up row, or alternating screenshot+text variants."
               tags={["Heading", "Icon", "Card", "Text"]}
@@ -1601,6 +1615,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
+              href="/patterns/compositions"
               title="Page Layout"
               desc="Full page assembly — header, hero, features, CTA, footer — wired together with consistent rhythm and section spacing."
               tags={["Header", "Hero", "Features", "CTA", "Footer"]}
@@ -1697,6 +1712,7 @@ export default function PatternsPage() {
             desc={`Breakpoint-aware layout decisions. Not just "shrink the desktop" — structural reflows that pick the right pattern for each surface size.`}
           />
           <PatCard
+            href="/patterns/responsive"
             full
             title="Responsive Patterns"
             desc="Structural reflows for sidebar, table, and filter UIs across breakpoints — not pure shrink-to-fit. Each pattern declares which alternate component it morphs into at each step."
@@ -1872,6 +1888,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
+              href="/patterns/accessibility"
               full
               title="Accessibility Patterns"
               desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. Built with the token system — --color-interactive-primary drives every focus indicator so a single token change updates the entire a11y surface.`}

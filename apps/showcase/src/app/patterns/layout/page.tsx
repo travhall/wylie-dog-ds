@@ -4,7 +4,7 @@ import { Button } from "@wyliedog/ui/button";
 import { Layout, ExternalLink, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-const STORYBOOK_BASE = "http://localhost:6006";
+const STORYBOOK_BASE = "https://wyliedogstorybook.com";
 
 interface PatternCardProps {
   name: string;
