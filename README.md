@@ -1,6 +1,6 @@
 # Wylie Dog Design System
 
-A monorepo design system with 43 components, OKLCH-based design tokens, and full Storybook documentation.
+A monorepo design system with 44 components, OKLCH-based design tokens, and full Storybook documentation.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue?style=flat-square)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.2-blue?style=flat-square)](https://tailwindcss.com/)
@@ -93,7 +93,7 @@ import { Button, Card, Badge } from "@wyliedog/ui";
 
 ## Components
 
-43 components across six categories. Each has a named export, TypeScript types, and a Storybook story.
+44 components across six categories. Each has a named export, TypeScript types, and a Storybook story.
 
 ### Form Controls
 
@@ -196,7 +196,7 @@ Storybook is deployed to Netlify from `apps/storybook/storybook-static`.
 Stories are organized into:
 
 - **Foundations** — Design Tokens, Design Principles, Accessibility Guidelines
-- **Components** — all 43 components, grouped by category
+- **Components** — all 44 components, grouped by category
 - **Patterns** — Form Patterns, Navigation Patterns, Layout Patterns, Data Patterns, Feedback Patterns, Authentication Patterns, Page Compositions, Responsive, Overview
 - **Showcase** — real-world usage examples
 

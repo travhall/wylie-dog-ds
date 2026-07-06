@@ -85,13 +85,19 @@ The plugin automatically:
 
 **Test file provided:** `w3c-dtcg-test.json` contains a small subset for testing the import flow.
 
-### Alternative: Using Tokens Studio Plugin
+### Secondary path: Using Tokens Studio Plugin (community, unverified)
+
+Token Bridge (this repo's own plugin, `apps/figma-plugin`) is the primary,
+actively-maintained import path — it is explicitly built and tested against
+the standard nested W3C DTCG format described above (see
+`documentation/guides/W3C-DTCG-ADAPTER-REFACTORING.md`). The steps below for
+Tokens Studio are provided for readers who already use that plugin, but this
+path is **not** verified by this repo's own test suite or CI, and is not
+actively maintained here.
 
 1. **Install:** [Tokens Studio for Figma](https://www.figma.com/community/plugin/843461159747178978)
 2. **Open Plugin:** Plugins → Tokens Studio
 3. **Import:**
-   - Note: Tokens Studio may require the proprietary wrapper format
-   - Use the files with Token Bridge wrapper if needed
    - Import `figma-tokens-primitive.json` → Set as "Primitives" collection
    - Import `figma-tokens-semantic.json` → Set as "Semantic" collection
    - Import `figma-tokens-component.json` → Set as "Components" collection

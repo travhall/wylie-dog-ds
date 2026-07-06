@@ -2,7 +2,7 @@
 
 ## Current State
 
-**Status**: Industry-leading accessibility (98% WCAG 2.1 AA compliance)
+**Status**: WCAG 2.2 AA is the current target — actively audited and maintained. See `plans/storybook-a11y-backlog.md` in the repo root for the most recent remediation pass.
 
 ### Completed Improvements (Dec 2025)
 
@@ -193,7 +193,7 @@ All PRs must pass:
 
 ## Standards Compliance
 
-**Target**: WCAG 2.1 AA (achieved 98%)
+**Target**: WCAG 2.2 AA
 
 **Key Requirements**:
 
@@ -205,11 +205,11 @@ All PRs must pass:
 - Time limits adjustable/removable
 - No keyboard traps
 
-**Future**: WCAG 2.2 and 3.0 monitoring
+**Future**: WCAG 3.0 monitoring (WCAG 2.2 is the current target, not future)
 
 ## Resources
 
-- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [WCAG 2.2 Guidelines](https://www.w3.org/WAI/WCAG22/quickref/)
 - [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
 - [Radix UI Accessibility](https://www.radix-ui.com/primitives/docs/overview/accessibility)
 - [jest-axe Testing](https://github.com/nickcolley/jest-axe)
