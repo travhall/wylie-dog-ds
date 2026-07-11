@@ -73,3 +73,32 @@ export function sendSuccess(type: string, data: Record<string, unknown>): void {
     ...data,
   });
 }
+
+/**
+ * Fetch a Figma Variable by id and map it to the plain object shape used
+ * throughout export/import/conflict-detection. Returns null on missing
+ * variable or lookup error (logged, not thrown) so callers can filter it out.
+ */
+export async function mapFigmaVariable(variableId: string) {
+  try {
+    const variable = await figma.variables.getVariableByIdAsync(variableId);
+    if (!variable) return null;
+    return {
+      id: variable.id,
+      name: variable.name,
+      description: variable.description || "",
+      resolvedType: variable.resolvedType,
+      scopes: variable.scopes,
+      valuesByMode: variable.valuesByMode,
+      remote: variable.remote,
+      key: variable.key,
+      // Preserve the source $type (stored on import) so the export
+      // round-trips it instead of re-inferring fontSize/lineHeight/etc.
+      // — otherwise these read back as a perpetual type mismatch.
+      originalType: variable.getPluginData("originalType") || undefined,
+    };
+  } catch (err) {
+    console.error("Error processing variable:", variableId, err);
+    return null;
+  }
+}

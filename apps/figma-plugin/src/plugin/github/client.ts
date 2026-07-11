@@ -3,7 +3,6 @@
 import fetch from "cross-fetch";
 import { Octokit } from "@octokit/rest";
 import type { GitHubConfig, SyncMode } from "../../shared/types";
-import type { SourceControlProvider } from "../providers/source-control-provider";
 import type { ExportData } from "../variables/processor";
 
 /** Duck-typed shape of the errors Octokit throws (RequestError extends Error, adds `status`). */
@@ -48,8 +47,7 @@ export interface PullResult {
   lastModified?: string;
 }
 
-export class GitHubClient implements SourceControlProvider {
-  readonly id = "github" as const;
+export class GitHubClient {
   private octokit: Octokit | null = null;
   private config: GitHubConfig | null = null;
 

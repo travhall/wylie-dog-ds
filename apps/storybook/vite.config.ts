@@ -66,9 +66,27 @@ export default defineConfig({
             enabled: true,
             headless: true,
             provider: playwright({}),
+            // Light and dark are two INSTANCES of a single project, not two
+            // separate projects. @storybook/addon-vitest 10.4+ forces every
+            // project's name to `storybook:<configDir>`, so two projects that
+            // share this configDir collapse to the same name and Vitest 4
+            // aborts with a duplicate-project-name error (which also crashes
+            // `storybook dev`, since the Vitest addon runs in-process). Browser
+            // instances, by contrast, are always uniquely suffixed by their
+            // `name`, and each may override the provider — here the dark
+            // instance sets Playwright's colorScheme to drive
+            // prefers-color-scheme the same way theme-sync.ts listens to it.
             instances: [
               {
                 browser: "chromium",
+                name: "light",
+              },
+              {
+                browser: "chromium",
+                name: "dark",
+                provider: playwright({
+                  contextOptions: { colorScheme: "dark" },
+                }),
               },
             ],
           },
@@ -78,33 +96,6 @@ export default defineConfig({
           // axe-core to run as a blocking in-process hook on every story, which
           // combined with 409 interaction tests and coverage collection was
           // exceeding the Storybook addon WebSocket timeout.
-        },
-      },
-      {
-        extends: true,
-        plugins: [
-          // The plugin will run tests for the stories defined in your Storybook config
-          // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-          storybookTest({
-            configDir: path.join(dirname, ".storybook"),
-          }),
-        ],
-        test: {
-          name: "storybook-dark",
-          browser: {
-            enabled: true,
-            headless: true,
-            provider: playwright({ contextOptions: { colorScheme: "dark" } }),
-            instances: [
-              {
-                browser: "chromium",
-              },
-            ],
-          },
-          // Same rationale as the "storybook" project above re: no setupFiles.
-          // Coverage is intentionally omitted here (inherited coverage config
-          // would double-count against the light-mode project); coverage is
-          // already collected by the "storybook" project.
         },
       },
     ],

@@ -7,7 +7,6 @@ import type { GitHubConfig } from "../../shared/types";
 
 const PLUGIN_DATA_KEYS = {
   GITHUB_CONFIG: "github-config",
-  FILE_VERSION: "storage-version", // For future migrations
   FILE_ENGAGED: "has-engaged-with-file", // Track if user has interacted with this file
 } as const;
 
@@ -73,20 +72,6 @@ export class FileConfigStorage {
       console.error("Failed to clear GitHub config from file:", error);
       throw new Error("Failed to clear configuration from file");
     }
-  }
-
-  /**
-   * Get storage version for future migrations
-   */
-  async getStorageVersion(): Promise<string> {
-    return figma.root.getPluginData(PLUGIN_DATA_KEYS.FILE_VERSION) || "1.0";
-  }
-
-  /**
-   * Set storage version
-   */
-  async setStorageVersion(version: string): Promise<void> {
-    figma.root.setPluginData(PLUGIN_DATA_KEYS.FILE_VERSION, version);
   }
 
   /**

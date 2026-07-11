@@ -32,9 +32,7 @@ export enum TokenFormatType {
   STYLE_DICTIONARY_NESTED = "style-dictionary-nested",
   TOKENS_STUDIO_FLAT = "tokens-studio-flat",
   TOKENS_STUDIO_GROUPED = "tokens-studio-grouped",
-  MATERIAL_DESIGN = "material-design",
   FIGMA_DESIGN_TOKENS = "figma-design-tokens",
-  CSS_VARIABLES = "css-variables",
   CUSTOM_FLAT = "custom-flat",
   UNKNOWN = "unknown",
 }

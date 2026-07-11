@@ -4,7 +4,13 @@
  * Handles CRUD operations for Figma variable collections.
  */
 
-import { setLoading, processInChunks, sendError, sendSuccess } from "./utils";
+import {
+  setLoading,
+  processInChunks,
+  sendError,
+  sendSuccess,
+  mapFigmaVariable,
+} from "./utils";
 import type { PluginMessage } from "../../shared/types";
 
 /**
@@ -61,27 +67,7 @@ export async function handleGetCollectionDetails(
     // Process variables in chunks
     const variables = await processInChunks(
       collection.variableIds,
-      async (id: string, index: number) => {
-        try {
-          const variable = await figma.variables.getVariableByIdAsync(id);
-          if (variable) {
-            return {
-              id: variable.id,
-              name: variable.name,
-              description: variable.description || "",
-              resolvedType: variable.resolvedType,
-              scopes: variable.scopes,
-              valuesByMode: variable.valuesByMode,
-              remote: variable.remote,
-              key: variable.key,
-            };
-          }
-          return null;
-        } catch (err) {
-          console.error("Error processing variable:", id, err);
-          return null;
-        }
-      },
+      (id: string) => mapFigmaVariable(id),
       100, // Process 100 variables at a time
       (current, total, message) => {
         setLoading(true, message);

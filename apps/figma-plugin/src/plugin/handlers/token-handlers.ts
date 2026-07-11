@@ -13,7 +13,12 @@ import {
   validateTokenReferences,
 } from "../variables/importer";
 import type { AdapterProcessResult } from "../variables/format-adapter";
-import { setLoading, processInChunks, sendError } from "./utils";
+import {
+  setLoading,
+  processInChunks,
+  sendError,
+  mapFigmaVariable,
+} from "./utils";
 import type { PluginMessage } from "../../shared/types";
 
 export type AdapterResultWithFilename = AdapterProcessResult & {
@@ -354,33 +359,7 @@ export async function handleExportTokens(msg: PluginMessage): Promise<void> {
       // Process variables in chunks for this collection
       const variables = await processInChunks(
         collection.variableIds,
-        async (variableId: string) => {
-          try {
-            const variable =
-              await figma.variables.getVariableByIdAsync(variableId);
-            if (variable) {
-              return {
-                id: variable.id,
-                name: variable.name,
-                description: variable.description || "",
-                resolvedType: variable.resolvedType,
-                scopes: variable.scopes,
-                valuesByMode: variable.valuesByMode,
-                remote: variable.remote,
-                key: variable.key,
-                // Preserve the source $type (stored on import) so the export
-                // round-trips it instead of re-inferring fontSize/lineHeight/etc.
-                // — otherwise these read back as a perpetual type mismatch.
-                originalType:
-                  variable.getPluginData("originalType") || undefined,
-              };
-            }
-            return null;
-          } catch (err) {
-            console.error("Error processing variable:", variableId, err);
-            return null;
-          }
-        },
+        (variableId: string) => mapFigmaVariable(variableId),
         75, // Smaller chunks for export to provide more progress updates
         (current, total) => {
           setLoading(
@@ -465,33 +444,7 @@ export async function handleGetLocalTokens(msg: PluginMessage): Promise<void> {
       // Process variables in chunks
       const variables = await processInChunks(
         collection.variableIds,
-        async (variableId: string) => {
-          try {
-            const variable =
-              await figma.variables.getVariableByIdAsync(variableId);
-            if (variable) {
-              return {
-                id: variable.id,
-                name: variable.name,
-                description: variable.description || "",
-                resolvedType: variable.resolvedType,
-                scopes: variable.scopes,
-                valuesByMode: variable.valuesByMode,
-                remote: variable.remote,
-                key: variable.key,
-                // Preserve the source $type (stored on import) so the export
-                // round-trips it instead of re-inferring fontSize/lineHeight/etc.
-                // — otherwise these read back as a perpetual type mismatch.
-                originalType:
-                  variable.getPluginData("originalType") || undefined,
-              };
-            }
-            return null;
-          } catch (err) {
-            console.error("Error processing variable:", variableId, err);
-            return null;
-          }
-        },
+        (variableId: string) => mapFigmaVariable(variableId),
         100
       );
 

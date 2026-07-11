@@ -71,14 +71,6 @@ export class FormatAdapterManager {
           AdapterClass = (await import("./adapters/style-dictionary-nested"))
             .StyleDictionaryNestedAdapter;
           break;
-        case TokenFormatType.MATERIAL_DESIGN:
-          AdapterClass = (await import("./adapters/material-design"))
-            .MaterialDesignAdapter;
-          break;
-        case TokenFormatType.CSS_VARIABLES:
-          AdapterClass = (await import("./adapters/css-variables"))
-            .CSSVariablesAdapter;
-          break;
         default:
           console.warn(`Unknown format type: ${format}`);
           return undefined;
