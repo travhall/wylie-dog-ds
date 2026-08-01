@@ -572,7 +572,7 @@ export default function ArchitecturePage() {
                     ["Consumes", "@wyliedog/ui"],
                     ["Deploy", "wyliedogstorybook.com · Vercel"],
                   ],
-                  footer: "184 stories · 0 a11y warnings",
+                  footer: "63 stories · 0 a11y warnings",
                   footerDot: true,
                 },
                 {
@@ -740,11 +740,11 @@ export default function ArchitecturePage() {
                     <div className="text-(--color-text-secondary)">{"}"}</div>
                   </div>
                 ),
-                footer: "184 primitive entries",
+                footer: `${meta.tokens.primitive} primitive entries`,
               },
               {
                 stage: "02 · transform",
-                path: "style-dictionary.config.ts",
+                path: "style-dictionary.config.js",
                 title: "build pipeline",
                 content: (
                   <ul className="mt-3 space-y-2 text-[11px] font-mono">
@@ -835,7 +835,7 @@ export default function ArchitecturePage() {
                     </div>
                   </div>
                 ),
-                footer: "184 primitive · 112 semantic · 44 component",
+                footer: `${meta.tokens.primitive} primitive · ${meta.tokens.semantic} semantic · ${meta.tokens.component} component`,
               },
               {
                 stage: "04 · consume",
