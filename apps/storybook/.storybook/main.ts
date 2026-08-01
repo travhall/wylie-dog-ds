@@ -36,7 +36,13 @@ const config: StorybookConfig = {
     reactDocgen: "react-docgen-typescript",
   },
 
-  core: {},
+  core: {
+    // Without this, a machine with no cached telemetry choice
+    // (~/.config/storybook/config.json) blocks on an interactive prompt —
+    // fine in a dev terminal, but it hangs forever in build/CI since there's
+    // no stdin to answer it.
+    disableTelemetry: true,
+  },
 
   build: {
     test: {
