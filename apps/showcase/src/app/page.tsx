@@ -1122,7 +1122,7 @@ export default function ShowcasePage() {
                       Token Bridge · wyliedog/ui · main
                     </div>
                     <span className="font-mono text-[10px] text-(--color-text-tertiary)">
-                      v0.9.2
+                      v{meta.versions.plugin}
                     </span>
                   </div>
 

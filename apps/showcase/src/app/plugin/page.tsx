@@ -399,7 +399,7 @@ export default function PluginPage() {
                         tokens
                       </p>
                       <p className="font-mono text-[9px] text-(--color-text-tertiary) mt-0.5">
-                        v1.4.0
+                        v{meta.versions.tokens}
                       </p>
                       <div className="mt-2.5 space-y-1">
                         {[
@@ -809,7 +809,7 @@ export default function PluginPage() {
                       @wyliedog/tokens
                     </span>{" "}
                     <span style={{ color: "var(--color-interactive-primary)" }}>
-                      v1.4.0
+                      v{meta.versions.tokens}
                     </span>
                   </div>
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
