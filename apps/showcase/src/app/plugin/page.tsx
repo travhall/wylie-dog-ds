@@ -457,7 +457,7 @@ export default function PluginPage() {
                         Token Bridge
                       </p>
                       <p className="font-mono text-[9px] text-(--color-text-tertiary) mt-0.5">
-                        v0.9.2
+                        v{meta.versions.plugin}
                       </p>
                       <div className="mt-2.5 space-y-1.5">
                         <div
@@ -801,7 +801,7 @@ export default function PluginPage() {
                     <span style={{ color: "oklch(0.90 0.005 274)" }}>
                       @wyliedog/token-bridge
                     </span>{" "}
-                    v0.9.2
+                    v{meta.versions.plugin}
                   </div>
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
                     {"  "}↳ Reading{" "}

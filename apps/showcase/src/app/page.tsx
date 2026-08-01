@@ -31,7 +31,7 @@ export default function ShowcasePage() {
                   }}
                 />
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">
-                  v1.4.0 · stable
+                  v{meta.versions.ui} · stable
                 </span>
                 <span className="text-(--color-text-tertiary)">·</span>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">

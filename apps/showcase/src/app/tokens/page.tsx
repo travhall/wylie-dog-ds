@@ -195,7 +195,7 @@ export default function TokensPage() {
           { n: "06", label: "Motion", id: "motion" },
         ]}
         label="Token categories"
-        meta={`${meta.tokens.total.toLocaleString()} tokens · v1.4.0`}
+        meta={`${meta.tokens.total.toLocaleString()} tokens · v${meta.versions.ui}`}
       />
 
       {/* ── 01 · COLOR ── */}

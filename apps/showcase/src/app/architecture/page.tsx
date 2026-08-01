@@ -179,7 +179,7 @@ export default function ArchitecturePage() {
                               App
                             </span>
                             <span className="font-mono text-[10px] text-(--color-text-tertiary)">
-                              10.2.1
+                              {meta.versions.storybook}
                             </span>
                           </div>
                           <p className="mt-1.5 text-sm font-semibold text-(--color-text-primary)">
@@ -247,7 +247,7 @@ export default function ArchitecturePage() {
                               Package · components
                             </span>
                             <span className="font-mono text-[10px] text-(--color-text-tertiary)">
-                              v1.4.0
+                              v{meta.versions.ui}
                             </span>
                           </div>
                           <p className="mt-1.5 text-sm font-semibold text-(--color-text-primary)">
@@ -274,7 +274,7 @@ export default function ArchitecturePage() {
                               Package · tokens
                             </span>
                             <span className="font-mono text-[10px] text-(--color-text-tertiary)">
-                              v1.4.0
+                              v{meta.versions.tokens}
                             </span>
                           </div>
                           <p className="mt-1.5 text-sm font-semibold text-(--color-text-primary)">
@@ -396,7 +396,7 @@ export default function ArchitecturePage() {
                       indent: 2,
                       icon: "folder",
                       name: "storybook/",
-                      badge: "10.2",
+                      badge: meta.versions.storybook,
                     },
                     {
                       indent: 2,
@@ -500,7 +500,7 @@ export default function ArchitecturePage() {
                 {
                   pkg: "@wyliedog/tokens",
                   name: "packages/tokens",
-                  version: "v1.4.0",
+                  version: `v${meta.versions.tokens}`,
                   icon: (
                     <svg
                       viewBox="0 0 24 24"
@@ -524,7 +524,7 @@ export default function ArchitecturePage() {
                 {
                   pkg: "@wyliedog/ui",
                   name: "packages/ui",
-                  version: "v1.4.0",
+                  version: `v${meta.versions.ui}`,
                   icon: (
                     <svg
                       viewBox="0 0 24 24"
@@ -550,7 +550,7 @@ export default function ArchitecturePage() {
                 {
                   pkg: "@wyliedog/storybook",
                   name: "apps/storybook",
-                  version: "v10.2.1",
+                  version: `v${meta.versions.storybook}`,
                   icon: (
                     <svg
                       viewBox="0 0 24 24"
@@ -568,7 +568,7 @@ export default function ArchitecturePage() {
                     "color-mix(in oklch, oklch(72% 0.15 35) 22%, transparent)",
                   desc: "Component documentation and the pattern playground. Every export from @wyliedog/ui has a story; every story is its own a11y harness, prop matrix, and visual diff target.",
                   meta: [
-                    ["Stack", "Storybook 10.2 · Vite 7"],
+                    ["Stack", `Storybook ${meta.versions.storybook} · Vite 7`],
                     ["Consumes", "@wyliedog/ui"],
                     ["Deploy", "wyliedogstorybook.com · Vercel"],
                   ],
