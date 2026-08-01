@@ -81,12 +81,12 @@ export default function AccessibilityPatternsPage() {
               Accessibility Patterns
             </h1>
             <p className="text-(--color-text-secondary) mt-1">
-              1 pattern — WCAG 2.1 AA reference implementation
+              1 pattern — WCAG 2.2 AA reference implementation
             </p>
           </div>
         </div>
         <p className="text-lg text-(--color-text-secondary) leading-relaxed max-w-2xl pt-2">
-          Reference implementations demonstrating WCAG 2.1 AA compliance,
+          Reference implementations demonstrating WCAG 2.2 AA compliance,
           correct ARIA usage, focus management, and screen reader compatibility.
         </p>
       </div>
@@ -107,7 +107,7 @@ export default function AccessibilityPatternsPage() {
         <div className="grid gap-4 md:grid-cols-3">
           {[
             {
-              label: "WCAG 2.1 AA",
+              label: "WCAG 2.2 AA",
               description:
                 "All patterns meet or exceed minimum accessibility guidelines.",
             },
