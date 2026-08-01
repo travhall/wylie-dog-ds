@@ -5,6 +5,8 @@ import { HeroPreview } from "./hero-preview";
 
 export default function ShowcasePage() {
   const meta = getShowcaseMeta();
+  const categoryCount = (dirName: string) =>
+    meta.componentCategories.find((c) => c.dirName === dirName)?.count ?? 0;
 
   return (
     <>
@@ -395,7 +397,7 @@ export default function ShowcasePage() {
                   Foundations
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
-                  12
+                  {categoryCount("Content Display")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Button</h3>
@@ -432,7 +434,7 @@ export default function ShowcasePage() {
                   Forms
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
-                  14
+                  {categoryCount("Inputs-Controls")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Input</h3>
@@ -472,7 +474,7 @@ export default function ShowcasePage() {
                   Navigation
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
-                  9
+                  {categoryCount("Navigation")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Tabs</h3>
@@ -511,7 +513,7 @@ export default function ShowcasePage() {
                   Overlays
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
-                  8
+                  {categoryCount("Overlays-Popovers")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Dialog</h3>
@@ -560,7 +562,7 @@ export default function ShowcasePage() {
                   Data Display
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
-                  11
+                  {categoryCount("Content Display")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Table</h3>
@@ -610,7 +612,7 @@ export default function ShowcasePage() {
                   Feedback
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
-                  8
+                  {categoryCount("Feedback-Status")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Alert</h3>
