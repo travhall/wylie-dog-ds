@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
+import { useCopyToClipboard } from "./use-copy-to-clipboard";
 import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
 import { Label } from "@wyliedog/ui/label";
 import { Button } from "@wyliedog/ui/button";
@@ -791,7 +792,7 @@ function TypographyPlaygroundComponent() {
   const [previewText, setPreviewText] = useState(
     "The crisis consists precisely in the fact that the old is dying and the new cannot be born: in this interregnum, morbid phenomena of the most varied kind come to pass."
   );
-  const [copiedType, setCopiedType] = useState<"css" | "tailwind" | null>(null);
+  const { copiedKey: copiedType, copy } = useCopyToClipboard(2000); // preserve this site's existing 2000ms delay
 
   const currentFontSize = fontSizes.find((t) => t.key === selectedFontSize);
   const currentFontWeight = fontWeights.find(
@@ -840,9 +841,7 @@ function TypographyPlaygroundComponent() {
 
   function handleCopy(type: "css" | "tailwind") {
     const text = type === "css" ? cssLines.join("\n") : tailwindClasses;
-    navigator.clipboard.writeText(text);
-    setCopiedType(type);
-    setTimeout(() => setCopiedType(null), 2000);
+    copy(type, text);
   }
 
   function handleReset() {

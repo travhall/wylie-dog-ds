@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { color } from "@wyliedog/tokens/hierarchical";
+import { useCopyToClipboard } from "./use-copy-to-clipboard";
 import { Button } from "@wyliedog/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@wyliedog/ui/alert";
 import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
@@ -49,13 +50,11 @@ const ColorSwatch = ({
   shade: string;
   value: string;
 }) => {
-  const [copied, setCopied] = useState(false);
+  const { copiedKey, copy } = useCopyToClipboard();
+  const swatchKey = `${colorName}-${shade}`;
+  const copied = copiedKey === swatchKey;
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(value);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
-  };
+  const handleCopy = () => copy(swatchKey, value);
 
   return (
     <button
@@ -611,13 +610,9 @@ export const SemanticTokens: Story = {
       },
     ];
 
-    const [copiedToken, setCopiedToken] = useState<string | null>(null);
-
-    const handleCopy = (tokenName: string) => {
-      navigator.clipboard.writeText(`var(${tokenName})`);
-      setCopiedToken(tokenName);
-      setTimeout(() => setCopiedToken(null), 1800);
-    };
+    const { copiedKey, copy } = useCopyToClipboard();
+    const handleCopy = (tokenName: string) =>
+      copy(tokenName, `var(${tokenName})`);
 
     return (
       <div className="space-y-10">
@@ -652,7 +647,7 @@ export const SemanticTokens: Story = {
                       {token.usage}
                     </div>
                   </div>
-                  {copiedToken === token.name ? (
+                  {copiedKey === token.name ? (
                     <span className="text-xs font-medium text-(--color-status-success) shrink-0">
                       Copied!
                     </span>
@@ -916,7 +911,7 @@ export const TokenBrowser: Story = {
   render: () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState<string>("all");
-    const [copiedToken, setCopiedToken] = useState<string | null>(null);
+    const { copiedKey, copy } = useCopyToClipboard();
 
     const allTokens = Object.entries(color).flatMap(([colorName, shades]) =>
       Object.entries(shades as Record<string, string>).map(
@@ -942,9 +937,7 @@ export const TokenBrowser: Story = {
     const handleCopy = (token: { name: string; value: string }) => {
       // Copy the OKLCH value — primitive tokens live in @theme inline,
       // not on :root, so var(--color-name) won't resolve from external CSS.
-      navigator.clipboard.writeText(token.value);
-      setCopiedToken(token.name);
-      setTimeout(() => setCopiedToken(null), 1800);
+      copy(token.name, token.value);
     };
 
     return (
@@ -1014,7 +1007,7 @@ export const TokenBrowser: Story = {
                   {token.value}
                 </div>
               </div>
-              {copiedToken === token.name && (
+              {copiedKey === token.name && (
                 <div className="absolute inset-0 flex items-center justify-center bg-(--color-background-primary) rounded-lg">
                   <span className="text-xs font-medium text-(--color-text-primary)">
                     Copied!
