@@ -3,8 +3,9 @@ import { defineConfig, devices } from "@playwright/test";
 /**
  * Visual regression config.
  *
- * Runs against a locally-served storybook-static build. CI builds Storybook
- * first, serves it on :4173, then executes this suite.
+ * Runs against a locally-served storybook-static build. Local use only — no
+ * CI workflow currently runs this suite (macOS-only baselines, see
+ * `apps/storybook/.gitignore`).
  *
  * Baselines live next to the spec (tests/visual.spec.ts-snapshots/).
  * To seed or update them locally: `pnpm test:visual:update`.
