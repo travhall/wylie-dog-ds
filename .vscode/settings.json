@@ -4,6 +4,16 @@
       "mode": "auto"
     }
   ],
+  "files.watcherExclude": {
+    "**/.claude/worktrees/**": true,
+    "**/node_modules/**": true
+  },
+  "files.exclude": {
+    "**/.claude/worktrees": true
+  },
+  "search.exclude": {
+    "**/.claude/worktrees": true
+  },
   "cSpell.words": [
     "argstable",
     "Besley",

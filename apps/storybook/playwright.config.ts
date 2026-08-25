@@ -47,7 +47,8 @@ export default defineConfig({
   webServer: process.env.CI
     ? undefined
     : {
-        command: "pnpm serve storybook-static -l 4173 --no-clipboard",
+        command:
+          "pnpm exec serve storybook-static -l 4173 --no-clipboard --config serve.json",
         url: "http://localhost:4173",
         reuseExistingServer: true,
         timeout: 60_000,
