@@ -41,6 +41,62 @@ const preview: Preview = {
       // 'off' - skip a11y checks entirely
       test: "todo",
     },
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
+    },
+    options: {
+      storySort: {
+        order: [
+          "Introduction",
+          ["Welcome", "Getting Started", "Using This System"],
+          "Foundations",
+          [
+            "Design Principles",
+            "Colors",
+            "Typography",
+            "Spacing & Layout",
+            "Accessibility Guidelines",
+          ],
+          "Components",
+          [
+            "Inputs & Controls",
+            "Navigation",
+            "Layout & Structure",
+            "Content Display",
+            "Feedback & Status",
+            "Overlays & Popovers",
+          ],
+          "Patterns",
+          [
+            "Overview",
+            "Form Patterns",
+            "Authentication Patterns",
+            "Data Patterns",
+            "Navigation Patterns",
+            "Layout Patterns",
+            "Feedback Patterns",
+            "Page Compositions",
+            "Accessibility",
+            "Responsive",
+          ],
+          "Showcase",
+          "Resources",
+          [
+            "Getting Started",
+            ["Quickstart Tutorial", "Installation"],
+            "Theming",
+            ["Overview"],
+            "Guides",
+            ["Composition Patterns", "Component Testing", "Performance"],
+          ],
+          "Contributing",
+          ["Guidelines", "Workflows"],
+        ],
+      },
+    },
   },
   initialGlobals: {},
 };
@@ -209,68 +265,3 @@ export const decorators: Preview["decorators"] = [
     return <Story />;
   },
 ];
-
-export const parameters: Preview["parameters"] = {
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-
-  options: {
-    storySort: {
-      order: [
-        "Introduction",
-        ["Welcome", "Getting Started", "Using This System"],
-        "Foundations",
-        [
-          "Design Principles",
-          "Colors",
-          "Typography",
-          "Spacing & Layout",
-          "Accessibility Guidelines",
-        ],
-        "Components",
-        [
-          "Inputs & Controls",
-          "Navigation",
-          "Layout & Structure",
-          "Content Display",
-          "Feedback & Status",
-          "Overlays & Popovers",
-        ],
-        "Patterns",
-        [
-          "Overview",
-          "Form Patterns",
-          "Authentication Patterns",
-          "Data Patterns",
-          "Navigation Patterns",
-          "Layout Patterns",
-          "Feedback Patterns",
-          "Page Compositions",
-          "Accessibility",
-          "Responsive",
-        ],
-        "Showcase",
-        "Resources",
-        [
-          "Getting Started",
-          ["Quickstart Tutorial", "Installation"],
-          "Theming",
-          ["Overview"],
-          "Guides",
-          ["Composition Patterns", "Component Testing", "Performance"],
-        ],
-        "Contributing",
-        ["Guidelines", "Workflows"],
-      ],
-    },
-  },
-
-  // NOTE: a11y config lives in the DEFAULT export (`preview.parameters.a11y`),
-  // not here. The @storybook/addon-vitest test runner only reads the default
-  // export, so a11y config placed in this named `parameters` export is silently
-  // ignored during tests (it never ran in CI). Keep a11y in the default export.
-};
