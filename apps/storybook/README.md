@@ -37,7 +37,7 @@ apps/storybook/
 │   └── manager.ts       # Sidebar configuration
 ├── stories/
 │   ├── Components/      # UI component stories
-│   │   ├── Content Display/
+│   │   ├── Content-Display/
 │   │   ├── Feedback & Status/
 │   │   ├── Inputs & Controls/
 │   │   ├── Layout & Structure/
