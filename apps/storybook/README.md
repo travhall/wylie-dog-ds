@@ -6,8 +6,8 @@ Interactive documentation and component explorer for the Wylie Dog Design System
 
 This Storybook application serves as the primary documentation and development environment for the design system. It provides:
 
-- **58 component stories** demonstrating UI components and their variants
-- **19 MDX documentation pages** covering design principles, tokens, and usage guidelines
+- **44 component stories** demonstrating UI components and their variants
+- **17 MDX documentation pages** covering design principles, tokens, and usage guidelines
 - **Interactive playgrounds** for exploring typography, spacing, and color tokens
 - **Automated interaction tests** using Storybook's play functions
 - **Accessibility testing** with the axe-core addon
@@ -33,26 +33,32 @@ The Storybook will be available at [http://localhost:6006](http://localhost:6006
 apps/storybook/
 ├── .storybook/
 │   ├── main.ts          # Storybook configuration
-│   ├── preview.tsx      # Theme and decorators
-│   └── manager.ts       # Sidebar configuration
+│   └── preview.tsx      # Theme and decorators
 ├── stories/
 │   ├── Components/      # UI component stories
 │   │   ├── Content-Display/
-│   │   ├── Feedback & Status/
-│   │   ├── Inputs & Controls/
-│   │   ├── Layout & Structure/
+│   │   ├── Feedback-Status/
+│   │   ├── Inputs-Controls/
+│   │   ├── Layout-Structure/
 │   │   ├── Navigation/
-│   │   └── Overlays & Popovers/
+│   │   └── Overlays-Popovers/
 │   ├── Patterns/        # Composition patterns
+│   │   ├── Accessibility/
 │   │   ├── Authentication Patterns/
 │   │   ├── Data Patterns/
+│   │   ├── Feedback Patterns/
 │   │   ├── Form Patterns/
-│   │   └── Navigation Patterns/
+│   │   ├── Layout Patterns/
+│   │   ├── Navigation Patterns/
+│   │   ├── Overview/
+│   │   ├── Page Compositions/
+│   │   └── Responsive/
 │   ├── Foundations/     # Design tokens documentation
+│   │   ├── Accessibility Guidelines/
 │   │   ├── Design Principles/
 │   │   └── Design Tokens/
 │   ├── Introduction/    # Getting started guides
-│   ├── Examples/        # Full-page examples
+│   ├── Showcase/        # Full-page marketing-site example
 │   ├── Contributing/    # Contribution guidelines
 │   └── Resources/       # Additional resources
 ├── src/
@@ -64,7 +70,7 @@ apps/storybook/
 
 ## Technology Stack
 
-- **Storybook 10.2.1** with React Vite adapter
+- **Storybook 10.5.5** with React Vite adapter
 - **React 19** with TypeScript
 - **Tailwind CSS 4** for styling
 - **Radix UI** primitives for accessible components
@@ -74,13 +80,20 @@ apps/storybook/
 
 ## Available Scripts
 
-| Script                   | Description                           |
-| ------------------------ | ------------------------------------- |
-| `pnpm dev`               | Start development server on port 6006 |
-| `pnpm build`             | Build static Storybook for production |
-| `pnpm build:analyze`     | Build with bundle size visualization  |
-| `pnpm lint`              | Lint story files                      |
-| `pnpm preview-storybook` | Serve the built Storybook             |
+| Script                    | Description                                   |
+| ------------------------- | --------------------------------------------- |
+| `pnpm dev`                | Start development server on port 6006         |
+| `pnpm build`              | Build static Storybook for production         |
+| `pnpm build:analyze`      | Build with bundle size visualization          |
+| `pnpm build:css`          | Compile Tailwind CSS entry point              |
+| `pnpm clean`              | Remove build artifacts and node_modules       |
+| `pnpm dev:css:watch`      | Watch and rebuild Tailwind CSS on change      |
+| `pnpm lint`               | Lint story files                              |
+| `pnpm preview-storybook`  | Serve the built Storybook                     |
+| `pnpm test`               | Run Vitest tests                              |
+| `pnpm test:visual`        | Run Playwright visual regression tests        |
+| `pnpm test:visual:update` | Update Playwright visual regression snapshots |
+| `pnpm typecheck`          | Type-check with `tsc --noEmit`                |
 
 ## Writing Stories
 
@@ -151,14 +164,12 @@ Each component should include:
 
 The following addons are configured:
 
-| Addon                      | Purpose                             |
-| -------------------------- | ----------------------------------- |
-| `@storybook/addon-docs`    | Automatic documentation generation  |
-| `@storybook/addon-a11y`    | Accessibility testing with axe-core |
-| `@storybook/addon-vitest`  | Interaction testing (dev only)      |
-| `@storybook/addon-links`   | Story linking                       |
-| `@chromatic-com/storybook` | Visual regression testing           |
-| `storybook-design-token`   | Design token visualization          |
+| Addon                     | Purpose                             |
+| ------------------------- | ----------------------------------- |
+| `@storybook/addon-docs`   | Automatic documentation generation  |
+| `@storybook/addon-a11y`   | Accessibility testing with axe-core |
+| `@storybook/addon-vitest` | Interaction testing (dev only)      |
+| `@storybook/addon-links`  | Story linking                       |
 
 ## Build Optimization
 
