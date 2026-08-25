@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
+import { within, userEvent, expect } from "storybook/test";
 import { Button } from "@wyliedog/ui/button";
 import {
   Card,
@@ -185,6 +186,20 @@ export const ForgotPasswordEmail: Story = {
         </Form>
       </Card>
     );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const emailInput = canvas.getByLabelText(/email/i);
+    await userEvent.type(emailInput, "user@example.com");
+
+    const submitBtn = canvas.getByRole("button", { name: /send reset link/i });
+    await userEvent.click(submitBtn);
+
+    // Success screen appears after the component's simulated 1500ms API call
+    expect(
+      await canvas.findByText(/check your email/i, undefined, { timeout: 2500 })
+    ).toBeInTheDocument();
   },
 };
 

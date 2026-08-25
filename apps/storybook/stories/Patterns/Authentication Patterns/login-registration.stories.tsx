@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
+import { within, userEvent, expect } from "storybook/test";
 import { Button } from "@wyliedog/ui/button";
 import {
   Card,
@@ -141,6 +142,22 @@ export const SimpleLogin: Story = {
         </Form>
       </Card>
     );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const emailInput = canvas.getByLabelText(/email/i);
+    // Anchored but not end-anchored: the label includes a required-marker
+    // asterisk ("Password *"), so an exact /^password$/ match fails.
+    const passwordInput = canvas.getByLabelText(/^password/i);
+    await userEvent.type(emailInput, "user@example.com");
+    await userEvent.type(passwordInput, "correct-horse-battery-staple");
+
+    const submitBtn = canvas.getByRole("button", { name: /sign in/i });
+    await userEvent.click(submitBtn);
+
+    // Loading state should appear immediately after submit
+    expect(await canvas.findByText(/signing in/i)).toBeInTheDocument();
   },
 };
 
