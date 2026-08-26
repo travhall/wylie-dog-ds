@@ -7,14 +7,7 @@ export function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const root = document.documentElement;
-    const stored = localStorage.getItem("wd-theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    const dark = stored === "dark" || (!stored && prefersDark);
-    setIsDark(dark);
-    if (dark) root.classList.add("dark");
+    setIsDark(document.documentElement.classList.contains("dark"));
   }, []);
 
   function toggle() {
