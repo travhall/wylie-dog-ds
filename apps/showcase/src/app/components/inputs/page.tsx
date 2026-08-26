@@ -1,16 +1,11 @@
-"use client";
-
 import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import { Badge } from "@wyliedog/ui/badge";
 import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
-import { Checkbox } from "@wyliedog/ui/checkbox";
-import { Switch } from "@wyliedog/ui/switch";
-import { Slider } from "@wyliedog/ui/slider";
 import { Textarea } from "@wyliedog/ui/textarea";
 import { CheckCircle2 } from "lucide-react";
-import { useState } from "react";
+import { CheckboxDemo, SliderDemo, SwitchDemo } from "./demo-widgets";
 
 const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
   const map = {
@@ -29,10 +24,6 @@ const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
 };
 
 function InputsContent() {
-  const [sliderValue, setSliderValue] = useState([50]);
-  const [switchOn, setSwitchOn] = useState(false);
-  const [checked, setChecked] = useState<boolean>(false);
-
   const components = [
     {
       name: "Button",
@@ -70,26 +61,7 @@ function InputsContent() {
       description:
         "A control that allows the user to toggle between checked and unchecked states.",
       status: "stable" as const,
-      preview: (
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2">
-            <Checkbox
-              id="check1"
-              checked={checked}
-              onCheckedChange={(val) => setChecked(val === true)}
-            />
-            <Label htmlFor="check1" className="text-sm">
-              Accept terms
-            </Label>
-          </div>
-          <div className="flex items-center gap-2">
-            <Checkbox id="check2" defaultChecked />
-            <Label htmlFor="check2" className="text-sm">
-              Subscribe to updates
-            </Label>
-          </div>
-        </div>
-      ),
+      preview: <CheckboxDemo />,
     },
     {
       name: "Form",
@@ -173,38 +145,14 @@ function InputsContent() {
       description:
         "Range input for selecting a numeric value within a defined range.",
       status: "stable" as const,
-      preview: (
-        <div className="w-full px-2">
-          <Slider
-            value={sliderValue}
-            onValueChange={setSliderValue}
-            min={0}
-            max={100}
-            step={1}
-          />
-          <div className="text-center text-xs text-(--color-text-secondary) mt-2">
-            {sliderValue[0]}
-          </div>
-        </div>
-      ),
+      preview: <SliderDemo />,
     },
     {
       name: "Switch",
       description:
         "Toggle control for binary on/off states with accessible labeling.",
       status: "stable" as const,
-      preview: (
-        <div className="flex items-center gap-3">
-          <Switch
-            checked={switchOn}
-            onCheckedChange={setSwitchOn}
-            id="switch-demo"
-          />
-          <Label htmlFor="switch-demo" className="text-sm">
-            {switchOn ? "Enabled" : "Disabled"}
-          </Label>
-        </div>
-      ),
+      preview: <SwitchDemo />,
     },
     {
       name: "Textarea",
