@@ -30,34 +30,6 @@ const meta: Meta<typeof CardGrid> = {
       },
     },
   },
-  tags: ["autodocs"],
-  argTypes: {
-    variant: {
-      control: "select",
-      options: ["default", "compact", "spacious", "masonry", "elevated"],
-      description: "The visual style variant",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "default" },
-      },
-    },
-    columns: {
-      control: "object",
-      description: "Responsive column configuration",
-    },
-    gap: {
-      control: "text",
-      description: "Gap between grid items",
-    },
-    centered: {
-      control: "boolean",
-      description: "Whether to center grid items",
-    },
-    interactive: {
-      control: "boolean",
-      description: "Enable hover animations and transitions",
-    },
-  },
 };
 
 export default meta;

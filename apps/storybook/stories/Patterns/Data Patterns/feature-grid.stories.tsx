@@ -13,34 +13,6 @@ const meta: Meta<typeof FeatureGrid> = {
       },
     },
   },
-  tags: ["autodocs"],
-  argTypes: {
-    variant: {
-      control: "select",
-      options: ["default", "compact", "spacious"],
-      description: "The visual style variant",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "default" },
-      },
-    },
-    features: {
-      control: "object",
-      description: "Array of feature items to display",
-    },
-    columns: {
-      control: "object",
-      description: "Responsive column configuration",
-    },
-    gap: {
-      control: "text",
-      description: "Gap between grid items",
-    },
-    centered: {
-      control: "boolean",
-      description: "Whether to center grid items",
-    },
-  },
 };
 
 export default meta;
