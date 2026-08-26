@@ -26,20 +26,20 @@
     "version-packages": "changeset version"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.31.0",
-    "@size-limit/preset-small-lib": "^12.1.0",
-    "@types/node": "^26.1.0",
-    "@types/react": "^19.2.17",
-    "@typescript-eslint/parser": "^8.63.0",
+    "@changesets/cli": "^3.0.1",
+    "@size-limit/preset-small-lib": "^13.0.3",
+    "@types/node": "^26.3.0",
+    "@types/react": "^19.2.18",
+    "@typescript-eslint/parser": "^8.68.0",
     "eslint": "catalog:",
     "husky": "^9.1.7",
-    "lint-staged": "^17.0.8",
-    "prettier": "^3.9.4",
+    "lint-staged": "^17.3.0",
+    "prettier": "^3.9.6",
     "prettier-plugin-packagejson": "^3.0.2",
-    "size-limit": "^12.1.0",
-    "turbo": "^2.10.8",
+    "size-limit": "^13.0.3",
+    "turbo": "^2.10.11",
     "typescript": "catalog:",
-    "typescript-eslint": "^8.63.0"
+    "typescript-eslint": "^8.68.0"
   },
   "packageManager": "pnpm@10.28.2"
 }

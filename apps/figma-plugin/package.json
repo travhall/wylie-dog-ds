@@ -26,26 +26,26 @@
     "cross-fetch": "^4.1.0",
     "culori": "^4.0.2",
     "jszip": "^3.10.1",
-    "preact": "^10.28.4"
+    "preact": "^10.29.8"
   },
   "devDependencies": {
-    "@figma/plugin-typings": "^1.123.0",
+    "@figma/plugin-typings": "^1.135.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/preact": "^3.2.4",
-    "@types/node": "^25.3.3",
-    "@vitejs/plugin-react": "^6.0.3",
-    "@vitest/coverage-v8": "^4.1.5",
-    "@vitest/ui": "^4.1.5",
-    "concurrently": "^9.2.1",
+    "@types/node": "^26.3.0",
+    "@vitejs/plugin-react": "^6.1.0",
+    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/ui": "^4.1.11",
+    "concurrently": "^10.0.5",
     "eslint": "catalog:",
-    "jsdom": "^28.1.0",
-    "terser": "^5.46.0",
+    "jsdom": "^30.0.1",
+    "terser": "^5.50.0",
     "typescript": "catalog:",
-    "typescript-eslint": "^8.62.1",
+    "typescript-eslint": "^8.68.0",
     "vite": "catalog:",
-    "vite-plugin-singlefile": "^2.3.1",
+    "vite-plugin-singlefile": "^2.3.3",
     "vitest": "catalog:"
   }
 }
