@@ -248,7 +248,9 @@ Wrap related elements in container components for consistent spacing and layout:
     </AlertDialogHeader>
     <AlertDialogFooter>
       <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction variant="destructive">Continue</AlertDialogAction>
+      <AlertDialogAction asChild>
+        <Button variant="destructive">Continue</Button>
+      </AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>
