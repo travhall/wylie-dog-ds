@@ -37,7 +37,9 @@ export default defineConfig({
     globals: true,
     css: true,
     coverage: {
-      provider: 'v8',
+      // This repo uses istanbul rather than v8 — v8 was found to cause
+      // dev-server timeouts (see apps/storybook/vite.config.ts).
+      provider: 'istanbul',
       thresholds: {
         statements: 80,
         branches: 70,
@@ -922,7 +924,7 @@ describe('Select Interactions', () => {
 
 ### Accessibility Testing in Stories
 
-Accessibility audits run automatically in Storybook via the `@storybook/addon-a11y` addon (powered by axe-core). The design system configures it in `manual` mode, meaning you trigger the audit from the **Accessibility** panel rather than it running on every render. This avoids false positives during theme transitions.
+Accessibility audits run automatically in Storybook via the `@storybook/addon-a11y` addon (powered by axe-core). The design system configures it in `error` mode (`a11y: { test: "error" }` in `.storybook/preview.tsx`), meaning the Vitest addon runs the audit on every story and fails the test run/CI on any violation.
 
 To check a11y compliance in CI, use Storybook's test runner with `@storybook/addon-vitest`:
 
