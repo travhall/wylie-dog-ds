@@ -1,0 +1,19 @@
+{
+  "$schema": "https://v2-10-8.turborepo.dev/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "test": {
+      "inputs": ["stories/**/*.stories.tsx", ".storybook/**", "vite.config.ts"],
+      "cache": true
+    },
+    "test:a11y": {
+      "inputs": ["stories/**/*.stories.tsx", ".storybook/**", "vite.config.ts"],
+      "cache": true
+    },
+    "test:coverage": {
+      "inputs": ["stories/**/*.stories.tsx", ".storybook/**", "vite.config.ts"],
+      "outputs": ["coverage/**"],
+      "cache": true
+    }
+  }
+}
