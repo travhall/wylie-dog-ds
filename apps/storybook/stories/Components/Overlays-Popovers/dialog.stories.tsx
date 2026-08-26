@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect, screen } from "storybook/test";
+import { within, userEvent, expect, screen, waitFor } from "storybook/test";
 import {
   Dialog,
   DialogClose,
@@ -231,11 +231,8 @@ export const WithInteractions: Story = {
     expect(triggerButton).toBeInTheDocument();
     await userEvent.click(triggerButton);
 
-    // Wait a moment for dialog animation to complete
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Test 3: Dialog content is visible with correct title
-    const openDialog = screen.getByRole("dialog");
+    const openDialog = await screen.findByRole("dialog");
     expect(openDialog).toBeInTheDocument();
 
     const dialogTitle = screen.getByRole("heading", { name: /dialog test/i });
@@ -278,32 +275,25 @@ export const WithInteractions: Story = {
     // Test 6: Escape key closes the dialog
     await userEvent.keyboard("{Escape}");
 
-    // Wait for dialog animation to complete
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Dialog should be closed
-    const closedDialog = screen.queryByRole("dialog");
-    expect(closedDialog).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+    );
 
     // Test 7: Open dialog again and test close button
     await userEvent.click(triggerButton);
 
-    // Wait for dialog animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
-    const reopenedDialog = screen.getByRole("dialog");
+    const reopenedDialog = await screen.findByRole("dialog");
     expect(reopenedDialog).toBeInTheDocument();
 
     // Click the close button
     const closeBtn = screen.getByRole("button", { name: /close/i });
     await userEvent.click(closeBtn);
 
-    // Wait for dialog animation
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // Verify dialog is closed
-    const finalClosedDialog = screen.queryByRole("dialog");
-    expect(finalClosedDialog).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+    );
   },
   parameters: {
     docs: {

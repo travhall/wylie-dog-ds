@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { within, userEvent, expect } from "storybook/test";
+import { within, userEvent, expect, waitFor } from "storybook/test";
 import {
   Toast,
   ToastAction,
@@ -188,11 +188,13 @@ export const Triggered: Story = {
     // Test 1: Trigger the toast
     const button = canvas.getByRole("button", { name: /default toast/i });
     await userEvent.click(button);
-    await new Promise((r) => setTimeout(r, 300));
 
     // Test 2: The toast is rendered
-    const toastEl = document.querySelector('[role="status"]');
-    expect(toastEl).toBeInTheDocument();
+    const toastEl = await waitFor(() => {
+      const el = document.querySelector('[role="status"]');
+      expect(el).toBeInTheDocument();
+      return el;
+    });
 
     // Test 3: The toast renders the text set by the trigger (title + description)
     const toastScope = within(toastEl as HTMLElement);
@@ -206,8 +208,9 @@ export const Triggered: Story = {
       name: /close notification/i,
     });
     await userEvent.click(closeButton);
-    await new Promise((r) => setTimeout(r, 300));
-    expect(document.querySelector('[role="status"]')).not.toBeInTheDocument();
+    await waitFor(() =>
+      expect(document.querySelector('[role="status"]')).not.toBeInTheDocument()
+    );
   },
   parameters: {
     docs: {
