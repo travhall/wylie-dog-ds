@@ -159,7 +159,7 @@ export function MotionPreview() {
         >
           <div
             key={`${curveIdx}-${dur}`}
-            className="w-full max-w-xs rounded-xl border border-(--color-border-primary) bg-(--color-background-secondary) p-4 shadow-md"
+            className="motion-preview-demo-card w-full max-w-xs rounded-xl border border-(--color-border-primary) bg-(--color-background-secondary) p-4 shadow-md"
             style={{
               animation: `slideIn ${dur}ms cubic-bezier(${c.bezier}) both`,
             }}
@@ -168,6 +168,13 @@ export function MotionPreview() {
               @keyframes slideIn {
                 from { opacity: 0; transform: translateY(16px); }
                 to   { opacity: 1; transform: translateY(0); }
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .motion-preview-demo-card {
+                  animation: none !important;
+                  opacity: 1 !important;
+                  transform: none !important;
+                }
               }
             `}</style>
             <div className="flex items-center gap-3">
