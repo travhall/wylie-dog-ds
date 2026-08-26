@@ -48,7 +48,7 @@ export default defineConfig({
     ? undefined
     : {
         command:
-          "pnpm exec serve storybook-static -l 4173 --no-clipboard --config serve.json",
+          "pnpm exec serve storybook-static -l 4173 --no-clipboard --config ../serve.json",
         url: "http://localhost:4173",
         reuseExistingServer: true,
         timeout: 60_000,
