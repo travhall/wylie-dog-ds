@@ -3,7 +3,7 @@ import { FeatureGrid } from "@wyliedog/ui/feature-grid";
 import { Rocket, Palette, ShieldCheck, Settings } from "lucide-react";
 
 const meta: Meta<typeof FeatureGrid> = {
-  title: "Components/Layout & Structure/Feature Grid",
+  title: "Components/Layout & Structure/FeatureGrid",
   component: FeatureGrid,
   parameters: {
     layout: "padded",
