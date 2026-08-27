@@ -576,6 +576,24 @@ async function updatePackageJson(name, composition = false) {
   success(`Updated packages/ui/package.json exports`);
 }
 
+// Update index.ts barrel exports
+async function updateIndexFile(name, composition = false) {
+  if (composition) {
+    const indexPath = path.join(rootDir, "packages/ui/src/compositions/index.ts");
+    const pascalName = toPascalCase(name);
+    const content = await fs.readFile(indexPath, "utf-8");
+    const addition = `\nexport { ${pascalName} } from "./${name}";\nexport type { ${pascalName}Props } from "./${name}";\n`;
+    await fs.writeFile(indexPath, content.trimEnd() + "\n" + addition.trimStart(), "utf-8");
+    success(`Updated packages/ui/src/compositions/index.ts exports`);
+  } else {
+    const indexPath = path.join(rootDir, "packages/ui/src/index.ts");
+    const content = await fs.readFile(indexPath, "utf-8");
+    const addition = `export * from "./${name}";\n`;
+    await fs.writeFile(indexPath, content.trimEnd() + "\n" + addition, "utf-8");
+    success(`Updated packages/ui/src/index.ts exports`);
+  }
+}
+
 // Create a changeset for the release workflow
 async function createChangeset(name, composition = false) {
   const pascalName = toPascalCase(name);
@@ -602,10 +620,13 @@ async function formatFiles(name, composition = false) {
 
   const componentDir = composition ? "compositions/" : "";
   const storyDir = composition ? "compositions/" : "";
+  const indexPath = composition
+    ? "packages/ui/src/compositions/index.ts"
+    : "packages/ui/src/index.ts";
 
   try {
     execSync(
-      `pnpm prettier --write "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx" "packages/ui/tsup.config.ts" "packages/ui/package.json"`,
+      `pnpm prettier --write "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx" "packages/ui/tsup.config.ts" "packages/ui/package.json" "${indexPath}"`,
       { cwd: rootDir, stdio: "inherit" }
     );
     success("Formatted all generated files");
@@ -620,10 +641,13 @@ async function lintFiles(name, composition = false) {
 
   const componentDir = composition ? "compositions/" : "";
   const storyDir = composition ? "compositions/" : "";
+  const indexPath = composition
+    ? "packages/ui/src/compositions/index.ts"
+    : "packages/ui/src/index.ts";
 
   try {
     execSync(
-      `pnpm eslint --fix "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx"`,
+      `pnpm eslint --fix "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx" "${indexPath}"`,
       { cwd: rootDir, stdio: "inherit" }
     );
     success("Linted all generated files");
@@ -663,6 +687,7 @@ async function main() {
     // Update configs
     await updateTsupConfig(componentName, composition);
     await updatePackageJson(componentName, composition);
+    await updateIndexFile(componentName, composition);
     await createChangeset(componentName, composition);
 
     // Format and lint
