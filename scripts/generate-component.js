@@ -626,18 +626,20 @@ Add ${pascalName} ${kind}.
 }
 
 // Format generated files
-async function formatFiles(name, composition = false) {
+async function formatFiles(name, composition = false, category) {
   info("Running Prettier...");
 
   const componentDir = composition ? "compositions/" : "";
-  const storyDir = composition ? "compositions/" : "";
+  const storyPath = composition
+    ? `apps/storybook/stories/Patterns/${category}/${name}.stories.tsx`
+    : `apps/storybook/stories/Components/${category.dir}/${name}.stories.tsx`;
   const indexPath = composition
     ? "packages/ui/src/compositions/index.ts"
     : "packages/ui/src/index.ts";
 
   try {
     execSync(
-      `pnpm prettier --write "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx" "packages/ui/tsup.config.ts" "packages/ui/package.json" "${indexPath}"`,
+      `pnpm prettier --write "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "${storyPath}" "packages/ui/tsup.config.ts" "packages/ui/package.json" "${indexPath}"`,
       { cwd: rootDir, stdio: "inherit" }
     );
     success("Formatted all generated files");
@@ -647,18 +649,20 @@ async function formatFiles(name, composition = false) {
 }
 
 // Run linting
-async function lintFiles(name, composition = false) {
+async function lintFiles(name, composition = false, category) {
   info("Running ESLint...");
 
   const componentDir = composition ? "compositions/" : "";
-  const storyDir = composition ? "compositions/" : "";
+  const storyPath = composition
+    ? `apps/storybook/stories/Patterns/${category}/${name}.stories.tsx`
+    : `apps/storybook/stories/Components/${category.dir}/${name}.stories.tsx`;
   const indexPath = composition
     ? "packages/ui/src/compositions/index.ts"
     : "packages/ui/src/index.ts";
 
   try {
     execSync(
-      `pnpm eslint --fix "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx" "${indexPath}"`,
+      `pnpm eslint --fix "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "${storyPath}" "${indexPath}"`,
       { cwd: rootDir, stdio: "inherit" }
     );
     success("Linted all generated files");
@@ -702,8 +706,8 @@ async function main() {
     await createChangeset(componentName, composition);
 
     // Format and lint
-    await formatFiles(componentName, composition);
-    await lintFiles(componentName, composition);
+    await formatFiles(componentName, composition, category);
+    await lintFiles(componentName, composition, category);
 
     // Success summary
     console.log();
