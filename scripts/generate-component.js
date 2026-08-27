@@ -661,6 +661,7 @@ async function main() {
     // Update configs
     await updateTsupConfig(componentName, composition);
     await updatePackageJson(componentName, composition);
+    await updateIndexFile(componentName, composition);
 
     // Format and lint
     await formatFiles(componentName, composition);
