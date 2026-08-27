@@ -138,18 +138,21 @@ function generateComponentTemplate(name, composition = false) {
   return `import React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "${utilsPath}";
+import { cn, focusRingClasses } from "${utilsPath}";
 ${primitiveImportComment}
 const ${pascalName.charAt(0).toLowerCase() + pascalName.slice(1)}Variants = cva(
   cn(
     "relative",
-    // Focus ring ensures keyboard navigability (WCAG 2.4.7)
-    "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)"
+    focusRingClasses
   ),
   {
+    // TODO: These are placeholder token names — define them in
+    // packages/tokens/io/sync/components.json, or replace with real
+    // existing semantic tokens if this component doesn't need its own.
     variants: {
       variant: {
-        default: "bg-background text-foreground",
+        default:
+          "bg-(--color-${name}-default-background) text-(--color-${name}-default-text)",
       },
     },
     defaultVariants: {
