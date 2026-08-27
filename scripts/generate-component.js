@@ -195,46 +195,50 @@ function generateTestTemplate(name, composition = false) {
   const pascalName = toPascalCase(name);
   const importPath = composition ? `../compositions/${name}` : `../${name}`;
 
-  return `import { render, screen } from "@testing-library/react";
+  return `import React from "react";
+import { render, screen } from "@testing-library/react";
+import { axe, toHaveNoViolations } from "jest-axe";
 import { describe, it, expect } from "vitest";
-import {
-  describeA11y,
-  commonA11yTests,
-  expectToPassA11yAudit,
-} from "../lib/test-utils";
 import { ${pascalName} } from "${importPath}";
 
+expect.extend(toHaveNoViolations);
+
 describe("${pascalName}", () => {
-  it("renders without crashing", () => {
-    render(<${pascalName} aria-label="Test ${name}" />);
-    expect(screen.getByLabelText("Test ${name}")).toBeInTheDocument();
+  describe("Accessibility", () => {
+    it("should pass accessibility audit", async () => {
+      const { container } = render(<${pascalName} aria-label="Test ${name}" />);
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+    // TODO: Add component-specific a11y tests — keyboard navigation, ARIA
+    // attributes, and state-change announcements appropriate for this
+    // component's WAI-ARIA pattern.
   });
 
-  it("applies custom className", () => {
-    render(<${pascalName} className="custom-class" aria-label="Test ${name}" />);
-    expect(screen.getByLabelText("Test ${name}")).toHaveClass("custom-class");
+  describe("Functionality", () => {
+    it("renders without crashing", () => {
+      render(<${pascalName} aria-label="Test ${name}" />);
+      expect(screen.getByLabelText("Test ${name}")).toBeInTheDocument();
+    });
+
+    it("applies custom className", () => {
+      render(<${pascalName} className="custom-class" aria-label="Test ${name}" />);
+      expect(screen.getByLabelText("Test ${name}")).toHaveClass("custom-class");
+    });
+
+    it("forwards ref correctly", () => {
+      const ref = { current: null };
+      render(<${pascalName} ref={ref} aria-label="Test ${name}" />);
+      expect(ref.current).toBeInstanceOf(HTMLDivElement);
+    });
   });
 
-  it("forwards ref correctly", () => {
-    const ref = { current: null };
-    render(<${pascalName} ref={ref} aria-label="Test ${name}" />);
-    expect(ref.current).toBeInstanceOf(HTMLDivElement);
+  describe("Variants & Styling", () => {
+    it("renders with default variant", () => {
+      render(<${pascalName} aria-label="Test ${name}" />);
+      expect(screen.getByLabelText("Test ${name}")).toBeInTheDocument();
+    });
   });
-
-  it("renders with default variant", () => {
-    render(<${pascalName} aria-label="Test ${name}" />);
-    expect(screen.getByLabelText("Test ${name}")).toBeInTheDocument();
-  });
-});
-
-describeA11y("${pascalName}", () => {
-  commonA11yTests.passesAudit(() => (
-    <${pascalName} aria-label="Test ${name}" />
-  ));
-  // TODO: Add component-specific a11y tests using helpers from test-utils, e.g.:
-  // commonA11yTests.hasCorrectRole(() => <${pascalName} />, "region");
-  // commonA11yTests.supportsFocus(() => <${pascalName} tabIndex={0} />, "generic");
-  // commonA11yTests.handlesDisabledState((disabled) => <${pascalName} disabled={disabled} />);
 });
 `;
 }
