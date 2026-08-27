@@ -538,16 +538,16 @@ async function updatePackageJson(name, composition = false) {
   if (composition) {
     // Export from compositions directory
     packageJson.exports[`./compositions/${name}`] = {
-      types: `./src/compositions/${name}.tsx`,
-      import: `./dist/compositions/${name}.mjs`,
-      require: `./dist/compositions/${name}.js`,
+      types: `./dist/compositions/${name}.d.ts`,
+      import: `./dist/compositions/${name}.js`,
+      require: `./dist/compositions/${name}.cjs`,
     };
   } else {
     // Export from root directory
     packageJson.exports[`./${name}`] = {
-      types: `./src/${name}.tsx`,
-      import: `./dist/${name}.mjs`,
-      require: `./dist/${name}.js`,
+      types: `./dist/${name}.d.ts`,
+      import: `./dist/${name}.js`,
+      require: `./dist/${name}.cjs`,
     };
   }
 
