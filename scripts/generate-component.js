@@ -11,12 +11,12 @@
  * - Auto-updates package.json exports
  *
  * Usage:
- *   node scripts/generate-component.js <component-name>              # Tier 1 primitive
- *   node scripts/generate-component.js <component-name> --composition # Tier 2 composition
+ *   node scripts/generate-component.js <name> --category=<key>
+ *   node scripts/generate-component.js <name> --composition --category="<Patterns Folder Name>"
  *
  * Examples:
- *   node scripts/generate-component.js tooltip-2
- *   node scripts/generate-component.js site-header --composition
+ *   node scripts/generate-component.js tooltip-2 --category=overlays-popovers
+ *   node scripts/generate-component.js site-header --composition --category="Navigation Patterns"
  */
 
 import fs from "fs/promises";
@@ -74,6 +74,41 @@ function validateComponentName(name) {
 // Check if --composition flag is present
 function isComposition() {
   return process.argv.includes("--composition");
+}
+
+const PRIMITIVE_CATEGORIES = {
+  "content-display": { dir: "Content-Display", title: "Content Display" },
+  "feedback-status": { dir: "Feedback-Status", title: "Feedback & Status" },
+  "inputs-controls": { dir: "Inputs-Controls", title: "Inputs & Controls" },
+  "layout-structure": { dir: "Layout-Structure", title: "Layout & Structure" },
+  navigation: { dir: "Navigation", title: "Navigation" },
+  "overlays-popovers": { dir: "Overlays-Popovers", title: "Overlays & Popovers" },
+};
+
+function getCategoryFlag() {
+  const arg = process.argv.find((a) => a.startsWith("--category="));
+  return arg ? arg.split("=")[1] : null;
+}
+
+async function resolvePrimitiveCategory(key) {
+  if (!key || !PRIMITIVE_CATEGORIES[key]) {
+    error(
+      `--category is required for a primitive component. One of: ${Object.keys(PRIMITIVE_CATEGORIES).join(", ")}`
+    );
+  }
+  return PRIMITIVE_CATEGORIES[key];
+}
+
+async function resolveCompositionCategory(key) {
+  const patternsDir = path.join(rootDir, "apps/storybook/stories/Patterns");
+  const entries = await fs.readdir(patternsDir, { withFileTypes: true });
+  const valid = entries.filter((e) => e.isDirectory()).map((e) => e.name);
+  if (!key || !valid.includes(key)) {
+    error(
+      `--category is required for a composition. One of: ${valid.join(", ")}`
+    );
+  }
+  return key;
 }
 
 // Convert kebab-case to PascalCase
