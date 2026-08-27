@@ -600,10 +600,13 @@ async function formatFiles(name, composition = false) {
 
   const componentDir = composition ? "compositions/" : "";
   const storyDir = composition ? "compositions/" : "";
+  const indexPath = composition
+    ? "packages/ui/src/compositions/index.ts"
+    : "packages/ui/src/index.ts";
 
   try {
     execSync(
-      `pnpm prettier --write "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx" "packages/ui/tsup.config.ts" "packages/ui/package.json"`,
+      `pnpm prettier --write "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx" "packages/ui/tsup.config.ts" "packages/ui/package.json" "${indexPath}"`,
       { cwd: rootDir, stdio: "inherit" }
     );
     success("Formatted all generated files");
@@ -618,10 +621,13 @@ async function lintFiles(name, composition = false) {
 
   const componentDir = composition ? "compositions/" : "";
   const storyDir = composition ? "compositions/" : "";
+  const indexPath = composition
+    ? "packages/ui/src/compositions/index.ts"
+    : "packages/ui/src/index.ts";
 
   try {
     execSync(
-      `pnpm eslint --fix "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx"`,
+      `pnpm eslint --fix "packages/ui/src/${componentDir}${name}.tsx" "packages/ui/src/__tests__/${name}.test.tsx" "apps/storybook/stories/${storyDir}${name}.stories.tsx" "${indexPath}"`,
       { cwd: rootDir, stdio: "inherit" }
     );
     success("Linted all generated files");
