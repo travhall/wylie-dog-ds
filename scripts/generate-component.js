@@ -234,13 +234,14 @@ describeA11y("${pascalName}", () => {
 
 // Generate Storybook story template
 // See: apps/storybook/STORY_AUTHORING_GUIDE.md for standards
-function generateStoryTemplate(name, composition = false) {
+function generateStoryTemplate(name, composition = false, category) {
   const pascalName = toPascalCase(name);
   const titleName = toTitleCase(name);
   // Story categories match the sidebar hierarchy in preview.tsx storySort
   const storyCategory = composition
-    ? "Patterns/Data Patterns"
-    : "Components/Content Display";
+    ? `Patterns/${category}`
+    : `Components/${category.title}`;
+  const componentNameInTitle = composition ? titleName : pascalName;
   const importPath = composition
     ? `@wyliedog/ui/compositions/${name}`
     : `@wyliedog/ui/${name}`;
@@ -268,7 +269,7 @@ import { ${pascalName} } from "${importPath}";
  * - Follows WAI-ARIA patterns
  */
 const meta: Meta<typeof ${pascalName}> = {
-  title: "${storyCategory}/${pascalName}",
+  title: "${storyCategory}/${componentNameInTitle}",
   component: ${pascalName},
   parameters: {
     layout: "centered",
@@ -432,7 +433,7 @@ export const UsageExample: Story = {
 }
 
 // Check if component already exists
-async function checkExistence(name, composition = false) {
+async function checkExistence(name, composition = false, category) {
   const componentDir = composition ? "compositions" : "";
   const componentPath = path.join(
     rootDir,
@@ -440,13 +441,9 @@ async function checkExistence(name, composition = false) {
     componentDir,
     `${name}.tsx`
   );
-  const storyDir = composition ? "compositions" : "";
-  const storyPath = path.join(
-    rootDir,
-    "apps/storybook/stories",
-    storyDir,
-    `${name}.stories.tsx`
-  );
+  const storyPath = composition
+    ? path.join(rootDir, "apps/storybook/stories/Patterns", category, `${name}.stories.tsx`)
+    : path.join(rootDir, "apps/storybook/stories/Components", category.dir, `${name}.stories.tsx`);
 
   try {
     await fs.access(componentPath);
@@ -461,8 +458,8 @@ async function checkExistence(name, composition = false) {
   try {
     await fs.access(storyPath);
     const location = composition
-      ? `apps/storybook/stories/compositions/${name}.stories.tsx`
-      : `apps/storybook/stories/${name}.stories.tsx`;
+      ? `apps/storybook/stories/Patterns/${category}/${name}.stories.tsx`
+      : `apps/storybook/stories/Components/${category.dir}/${name}.stories.tsx`;
     error(`Story for '${name}' already exists at ${location}`);
   } catch {
     // File doesn't exist, which is what we want
@@ -501,31 +498,16 @@ async function createTestFile(name, composition = false) {
 }
 
 // Create story file
-async function createStoryFile(name, composition = false) {
-  const storyDir = composition ? "compositions" : "";
-
-  // Ensure directory exists
-  if (composition) {
-    const compositionsDir = path.join(
-      rootDir,
-      "apps/storybook/stories",
-      "compositions"
-    );
-    await fs.mkdir(compositionsDir, { recursive: true });
-  }
-
-  const storyPath = path.join(
-    rootDir,
-    "apps/storybook/stories",
-    storyDir,
-    `${name}.stories.tsx`
-  );
-  const content = generateStoryTemplate(name, composition);
+async function createStoryFile(name, composition = false, category) {
+  const storyPath = composition
+    ? path.join(rootDir, "apps/storybook/stories/Patterns", category, `${name}.stories.tsx`)
+    : path.join(rootDir, "apps/storybook/stories/Components", category.dir, `${name}.stories.tsx`);
+  const content = generateStoryTemplate(name, composition, category);
 
   await fs.writeFile(storyPath, content, "utf-8");
   const location = composition
-    ? `apps/storybook/stories/compositions/${name}.stories.tsx`
-    : `apps/storybook/stories/${name}.stories.tsx`;
+    ? `apps/storybook/stories/Patterns/${category}/${name}.stories.tsx`
+    : `apps/storybook/stories/Components/${category.dir}/${name}.stories.tsx`;
   success(`Created story: ${location}`);
 }
 
@@ -640,7 +622,12 @@ async function main() {
 
   // Validate
   validateComponentName(componentName);
-  await checkExistence(componentName, composition);
+  const categoryKey = getCategoryFlag();
+  const category = composition
+    ? await resolveCompositionCategory(categoryKey)
+    : await resolvePrimitiveCategory(categoryKey);
+
+  await checkExistence(componentName, composition, category);
 
   const pascalName = toPascalCase(componentName);
   const tier = composition ? "Tier 2 (Composition)" : "Tier 1 (Primitive)";
@@ -651,7 +638,7 @@ async function main() {
     // Create files
     await createComponentFile(componentName, composition);
     await createTestFile(componentName, composition);
-    await createStoryFile(componentName, composition);
+    await createStoryFile(componentName, composition, category);
 
     // Update configs
     await updateTsupConfig(componentName, composition);
@@ -670,8 +657,8 @@ async function main() {
       ? `packages/ui/src/compositions/${componentName}.tsx`
       : `packages/ui/src/${componentName}.tsx`;
     const storyPath = composition
-      ? `apps/storybook/stories/compositions/${componentName}.stories.tsx`
-      : `apps/storybook/stories/${componentName}.stories.tsx`;
+      ? `apps/storybook/stories/Patterns/${category}/${componentName}.stories.tsx`
+      : `apps/storybook/stories/Components/${category.dir}/${componentName}.stories.tsx`;
 
     console.log(`  1. Customize the component in ${componentPath}`);
     console.log(`  2. Add variants and props as needed`);
