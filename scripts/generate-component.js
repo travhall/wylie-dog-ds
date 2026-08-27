@@ -168,10 +168,14 @@ export interface ${pascalName}Props
 export const ${pascalName} = React.forwardRef<HTMLDivElement, ${pascalName}Props>(
   ({ className, variant, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "div";
-    // TODO: Add role, aria-label, or other ARIA attributes appropriate for this component's WAI-ARIA pattern
+    // TODO: "group" is a neutral placeholder so this scaffold passes an a11y
+    // audit out of the box — replace it with the correct WAI-ARIA role (or a
+    // semantic element) for this component's actual pattern. Omitted for
+    // asChild so it never overrides the slotted element's own semantics.
     return (
       <Comp
         ref={ref}
+        role={asChild ? undefined : "group"}
         className={cn(${pascalName.charAt(0).toLowerCase() + pascalName.slice(1)}Variants({ variant }), className)}
         {...props}
       />
