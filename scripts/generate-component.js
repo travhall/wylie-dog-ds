@@ -576,6 +576,24 @@ async function updatePackageJson(name, composition = false) {
   success(`Updated packages/ui/package.json exports`);
 }
 
+// Update index.ts barrel exports
+async function updateIndexFile(name, composition = false) {
+  if (composition) {
+    const indexPath = path.join(rootDir, "packages/ui/src/compositions/index.ts");
+    const pascalName = toPascalCase(name);
+    const content = await fs.readFile(indexPath, "utf-8");
+    const addition = `\nexport { ${pascalName} } from "./${name}";\nexport type { ${pascalName}Props } from "./${name}";\n`;
+    await fs.writeFile(indexPath, content.trimEnd() + "\n" + addition.trimStart(), "utf-8");
+    success(`Updated packages/ui/src/compositions/index.ts exports`);
+  } else {
+    const indexPath = path.join(rootDir, "packages/ui/src/index.ts");
+    const content = await fs.readFile(indexPath, "utf-8");
+    const addition = `export * from "./${name}";\n`;
+    await fs.writeFile(indexPath, content.trimEnd() + "\n" + addition, "utf-8");
+    success(`Updated packages/ui/src/index.ts exports`);
+  }
+}
+
 // Format generated files
 async function formatFiles(name, composition = false) {
   info("Running Prettier...");
