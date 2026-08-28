@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { vi } from "vitest";
 import {
@@ -8,6 +8,8 @@ import {
   ToastClose,
   ToastTitle,
   ToastDescription,
+  toast,
+  useToast,
 } from "../toast";
 
 expect.extend(toHaveNoViolations);
@@ -494,6 +496,72 @@ describe("Toast", () => {
 
       const title = screen.getByText("Bold");
       expect(title.tagName).toBe("STRONG");
+    });
+  });
+
+  describe("Imperative toast store", () => {
+    function ToastListener() {
+      const { toasts, dismiss } = useToast();
+      return (
+        <div>
+          {toasts.map((t) => (
+            <div key={t.id} data-testid="toast-item">
+              {t.title}
+              <button onClick={() => dismiss(t.id)}>{`dismiss-${t.id}`}</button>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    beforeEach(() => {
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it("does not auto-dismiss when duration is 0", () => {
+      render(<ToastListener />);
+
+      act(() => {
+        toast({ title: "Persistent toast", duration: 0 });
+      });
+      expect(screen.getByText("Persistent toast")).toBeInTheDocument();
+
+      act(() => {
+        vi.advanceTimersByTime(10000);
+      });
+      expect(screen.getByText("Persistent toast")).toBeInTheDocument();
+
+      // Dismiss manually so this toast doesn't leak into other tests -
+      // module-level `memoryState` persists across renders/tests.
+      act(() => {
+        screen.getByRole("button").click();
+      });
+      expect(screen.queryByText("Persistent toast")).not.toBeInTheDocument();
+    });
+
+    it("auto-dismisses at the default 5000ms duration when none is given", () => {
+      render(<ToastListener />);
+
+      act(() => {
+        toast({ title: "Default duration toast" });
+      });
+      expect(screen.getByText("Default duration toast")).toBeInTheDocument();
+
+      act(() => {
+        vi.advanceTimersByTime(4999);
+      });
+      expect(screen.getByText("Default duration toast")).toBeInTheDocument();
+
+      act(() => {
+        vi.advanceTimersByTime(1);
+      });
+      expect(
+        screen.queryByText("Default duration toast")
+      ).not.toBeInTheDocument();
     });
   });
 });
