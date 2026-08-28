@@ -1380,7 +1380,11 @@ export default function ShowcasePage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-2 shrink-0">
-              <Link href="https://wyliedogstorybook.com">
+              <a
+                href="https://wyliedogstorybook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button
                   size="sm"
                   className="h-10 rounded-md px-4 font-semibold gap-1.5"
@@ -1396,7 +1400,7 @@ export default function ShowcasePage() {
                     <path d="M7 17 17 7M9 7h8v8" />
                   </svg>
                 </Button>
-              </Link>
+              </a>
               <Link href="/components">
                 <Button
                   variant="outline"
