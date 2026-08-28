@@ -93,7 +93,7 @@ let lastSyncedChoice: string | null = null;
 const hasBootstrappedThemeKey = "__WYLIE_STORYBOOK_THEME_BOOTSTRAPPED__";
 
 const THEME_PARAM = "theme";
-const isThemeChoice = (value: any): value is ThemeChoice =>
+const isThemeChoice = (value: unknown): value is ThemeChoice =>
   value === "light" || value === "dark" || value === "system";
 
 const getThemeFromQueryParam = () => {
@@ -142,7 +142,7 @@ const bootstrapThemeSync = () => {
     return;
   }
 
-  if ((window as any)[hasBootstrappedThemeKey]) {
+  if ((window as unknown as Record<string, boolean>)[hasBootstrappedThemeKey]) {
     return;
   }
 
@@ -156,7 +156,7 @@ const bootstrapThemeSync = () => {
   const handleGlobalsUpdated = ({
     globals,
   }: {
-    globals?: Record<string, any>;
+    globals?: Record<string, unknown>;
   }) => {
     const nextChoice = globals?.[THEME_PARAM];
 
@@ -170,13 +170,18 @@ const bootstrapThemeSync = () => {
 
   channel.on(GLOBALS_UPDATED, handleGlobalsUpdated);
 
-  (window as any)[hasBootstrappedThemeKey] = true;
+  (window as unknown as Record<string, boolean>)[hasBootstrappedThemeKey] =
+    true;
 };
 
 bootstrapThemeSync();
 
+type DecoratorContext = Parameters<
+  Extract<NonNullable<Preview["decorators"]>, unknown[]>[number]
+>[1];
+
 const syncGlobalsWithPreferredChoice = (
-  context: any,
+  context: DecoratorContext,
   currentChoice: string
 ) => {
   if (
@@ -215,6 +220,11 @@ export const globalTypes: Preview["globalTypes"] = {
       ],
       showName: true,
       dynamicTitle: true,
+      // `showName` isn't part of Storybook's ToolbarConfig type (verified
+      // during plans/064-fix-post-migration-lint-violation-backlog.md) but
+      // is a real, working runtime option -- the cast stays until Storybook
+      // ships an updated type.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any,
   },
 };

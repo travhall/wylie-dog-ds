@@ -4,7 +4,6 @@ import { Label } from "@wyliedog/ui/label";
 import { Input } from "@wyliedog/ui/input";
 import { Checkbox } from "@wyliedog/ui/checkbox";
 import { Switch } from "@wyliedog/ui/switch";
-import { Button } from "@wyliedog/ui/button";
 import {
   Form,
   FormField,

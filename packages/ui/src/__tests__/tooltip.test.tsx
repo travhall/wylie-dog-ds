@@ -84,8 +84,6 @@ describe("Tooltip", () => {
     });
 
     it("should support custom aria-label", async () => {
-      const user = userEvent.setup();
-
       render(
         <TooltipProvider delayDuration={0}>
           <Tooltip>
@@ -146,7 +144,6 @@ describe("Tooltip", () => {
 
     // TODO: Tooltip portal rendering needs async test infrastructure
     it.skip("should show tooltip on focus", async () => {
-      const user = userEvent.setup();
       render(<TestTooltip content="Focus help" />);
 
       const trigger = screen.getByText("Hover me");
@@ -160,7 +157,6 @@ describe("Tooltip", () => {
 
     // TODO: Tooltip portal rendering needs async test infrastructure
     it.skip("should hide tooltip on blur", async () => {
-      const user = userEvent.setup();
       render(<TestTooltip />);
 
       const trigger = screen.getByText("Hover me");

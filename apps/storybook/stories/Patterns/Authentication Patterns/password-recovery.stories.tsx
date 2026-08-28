@@ -11,7 +11,6 @@ import {
   CardTitle,
 } from "@wyliedog/ui/card";
 import { Input } from "@wyliedog/ui/input";
-import { Label } from "@wyliedog/ui/label";
 import { Alert, AlertDescription } from "@wyliedog/ui/alert";
 import {
   Form,
@@ -87,13 +86,13 @@ export const ForgotPasswordEmail: Story = {
           <CardHeader>
             <CardTitle>Check your email</CardTitle>
             <CardDescription>
-              We've sent password reset instructions to {email}
+              We&apos;ve sent password reset instructions to {email}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Alert>
               <AlertDescription>
-                If you don't see the email, check your spam folder or{" "}
+                If you don&apos;t see the email, check your spam folder or{" "}
                 <Button
                   variant="link"
                   className="h-auto p-0 font-medium"
@@ -109,7 +108,9 @@ export const ForgotPasswordEmail: Story = {
             </Alert>
 
             <div className="rounded-lg border border-(--color-border-primary) p-4 space-y-2">
-              <p className="text-sm font-medium">Didn't receive the email?</p>
+              <p className="text-sm font-medium">
+                Didn&apos;t receive the email?
+              </p>
               <ul className="text-sm text-(--color-text-tertiary) space-y-1 list-disc list-inside">
                 <li>Check your spam or junk folder</li>
                 <li>Make sure you entered the correct email</li>
@@ -144,7 +145,7 @@ export const ForgotPasswordEmail: Story = {
         <CardHeader>
           <CardTitle>Forgot password?</CardTitle>
           <CardDescription>
-            Enter your email and we'll send you instructions to reset your
+            Enter your email and we&apos;ll send you instructions to reset your
             password
           </CardDescription>
         </CardHeader>
@@ -168,7 +169,7 @@ export const ForgotPasswordEmail: Story = {
                 }}
               />
               <p className="text-sm text-(--color-text-tertiary)">
-                We'll send a password reset link to this email
+                We&apos;ll send a password reset link to this email
               </p>
             </FormField>
           </CardContent>
@@ -456,7 +457,7 @@ export const InvalidResetLink: Story = {
           <CardHeader>
             <CardTitle>Check your email</CardTitle>
             <CardDescription>
-              We've sent a new password reset link to {email}
+              We&apos;ve sent a new password reset link to {email}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -513,7 +514,7 @@ export const InvalidResetLink: Story = {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <p className="text-sm text-(--color-text-tertiary)">
-                We'll send you a new reset link
+                We&apos;ll send you a new reset link
               </p>
             </FormField>
 
@@ -694,7 +695,7 @@ export const MultiStepPasswordRecovery: Story = {
                   maxLength={6}
                 />
                 <p className="text-sm text-(--color-text-tertiary)">
-                  Didn't receive the code?{" "}
+                  Didn&apos;t receive the code?{" "}
                   <Button
                     type="button"
                     variant="link"

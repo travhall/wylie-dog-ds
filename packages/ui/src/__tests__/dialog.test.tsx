@@ -238,7 +238,6 @@ describe("Dialog", () => {
     });
 
     it("should work as controlled component", async () => {
-      const user = userEvent.setup();
       const handleOpenChange = vi.fn();
       const { rerender } = render(
         <TestDialog open={false} onOpenChange={handleOpenChange} />

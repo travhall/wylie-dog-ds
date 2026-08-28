@@ -180,7 +180,6 @@ describe("Tabs", () => {
     });
 
     it("should work as controlled component", async () => {
-      const user = userEvent.setup();
       const handleChange = vi.fn();
       const { rerender } = render(
         <TestTabs value="tab1" onValueChange={handleChange} />

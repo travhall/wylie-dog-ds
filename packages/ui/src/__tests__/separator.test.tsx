@@ -56,7 +56,7 @@ describe("Separator", () => {
     });
 
     it("should have proper aria-orientation for vertical", () => {
-      const { container } = render(
+      render(
         <Separator
           orientation="vertical"
           decorative={false}

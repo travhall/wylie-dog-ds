@@ -171,7 +171,6 @@ describe("RadioGroup", () => {
     });
 
     it("should work as controlled component", async () => {
-      const user = userEvent.setup();
       const handleChange = vi.fn();
       const { rerender } = render(
         <TestRadioGroup value="option1" onValueChange={handleChange} />
@@ -603,7 +602,6 @@ describe("RadioGroup", () => {
     });
 
     it("should maintain selection state when other items are added", async () => {
-      const user = userEvent.setup();
       const { rerender } = render(
         <RadioGroup defaultValue="option2" aria-label="Test">
           <div>

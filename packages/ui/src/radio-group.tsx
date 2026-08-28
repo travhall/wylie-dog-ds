@@ -3,9 +3,9 @@ import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
-export interface RadioGroupProps extends React.ComponentPropsWithoutRef<
+export type RadioGroupProps = React.ComponentPropsWithoutRef<
   typeof RadioGroupPrimitive.Root
-> {}
+>;
 
 const RadioGroup = React.forwardRef<
   React.ComponentRef<typeof RadioGroupPrimitive.Root>,

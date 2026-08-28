@@ -82,7 +82,7 @@ export const Default: Story = {
         <SheetHeader>
           <SheetTitle>Edit profile</SheetTitle>
           <SheetDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you&apos;re done.
           </SheetDescription>
         </SheetHeader>
         {/* cSpell:ignore Duarte peduarte */}
@@ -189,7 +189,7 @@ export const FromBottom: Story = {
         <SheetHeader>
           <SheetTitle>Share post</SheetTitle>
           <SheetDescription>
-            Choose how you'd like to share this post.
+            Choose how you&apos;d like to share this post.
           </SheetDescription>
         </SheetHeader>
         <div className="grid grid-cols-3 gap-4 py-4">
@@ -236,7 +236,7 @@ export const WithInteractions: Story = {
         <SheetHeader>
           <SheetTitle>Edit profile</SheetTitle>
           <SheetDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you&apos;re done.
           </SheetDescription>
         </SheetHeader>
         <Form className="py-4">

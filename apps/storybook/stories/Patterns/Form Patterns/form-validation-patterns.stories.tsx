@@ -92,7 +92,8 @@ function RequiredFieldValidationComponent() {
       <div className="w-100 space-y-4">
         <Alert variant="success">
           <AlertDescription>
-            Message sent successfully! We'll get back to you at {values.email}.
+            Message sent successfully! We&apos;ll get back to you at{" "}
+            {values.email}.
           </AlertDescription>
         </Alert>
         <Button

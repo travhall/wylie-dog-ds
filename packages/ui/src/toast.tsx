@@ -49,7 +49,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
 );
 Toast.displayName = "Toast";
 
-interface ToastActionProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+type ToastActionProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
   ({ className, ...props }, ref) => (
@@ -97,7 +97,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(
 );
 ToastClose.displayName = "ToastClose";
 
-interface ToastTitleProps extends React.HTMLAttributes<HTMLDivElement> {}
+type ToastTitleProps = React.HTMLAttributes<HTMLDivElement>;
 
 const ToastTitle = React.forwardRef<HTMLDivElement, ToastTitleProps>(
   ({ className, ...props }, ref) => (
@@ -114,7 +114,7 @@ const ToastTitle = React.forwardRef<HTMLDivElement, ToastTitleProps>(
 );
 ToastTitle.displayName = "ToastTitle";
 
-interface ToastDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {}
+type ToastDescriptionProps = React.HTMLAttributes<HTMLDivElement>;
 
 const ToastDescription = React.forwardRef<
   HTMLDivElement,

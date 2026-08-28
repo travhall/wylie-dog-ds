@@ -149,48 +149,6 @@ function BuggyCounter({ throwError }: { throwError?: boolean }) {
   );
 }
 
-function ComponentWithAsyncError({ shouldError }: { shouldError?: boolean }) {
-  const [data, setData] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      if (shouldError) {
-        throw new Error("API request failed");
-      }
-
-      setData("Data loaded successfully");
-    } catch (error) {
-      // Note: Error boundaries don't catch async errors
-      // This demonstrates that limitation
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <Card className="w-100">
-      <CardHeader>
-        <CardTitle>Async Operation</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {data ? (
-          <p className="text-(--color-text-success)">{data}</p>
-        ) : (
-          <p className="text-(--color-text-tertiary)">No data loaded</p>
-        )}
-        <Button onClick={fetchData} disabled={loading} className="w-full">
-          {loading ? "Loading..." : "Fetch Data"}
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
-
 // Story: Basic Error Boundary
 export const BasicErrorBoundary: Story = {
   render: () => {
@@ -273,7 +231,7 @@ export const MultipleErrorBoundaries: Story = {
           <CardContent className="space-y-4">
             <p className="text-sm text-(--color-text-tertiary)">
               Each component has its own error boundary, so errors are isolated
-              and don't affect other parts of the UI.
+              and don&apos;t affect other parts of the UI.
             </p>
 
             <div className="flex gap-3">
@@ -496,7 +454,7 @@ export const GranularErrorBoundaries: Story = {
           <CardContent className="space-y-3">
             <p className="text-sm text-(--color-text-tertiary)">
               Wrap individual sections with error boundaries to prevent one
-              section's error from breaking the entire page.
+              section&apos;s error from breaking the entire page.
             </p>
 
             <div className="flex flex-wrap gap-2">
@@ -605,7 +563,7 @@ export const BestPractices: Story = {
           </h3>
           <p className="text-sm text-(--color-text-tertiary)">
             Wrap error boundaries around independent sections of your UI to
-            prevent one section's error from affecting others.
+            prevent one section&apos;s error from affecting others.
           </p>
         </div>
 
@@ -648,7 +606,7 @@ export const BestPractices: Story = {
 
         <div className="space-y-2">
           <h3 className="text-sm font-semibold text-(--color-text-primary)">
-            5. Don't Overuse Error Boundaries
+            5. Don&apos;t Overuse Error Boundaries
           </h3>
           <p className="text-sm text-(--color-text-tertiary)">
             Too many boundaries can make error handling complex. Find the right

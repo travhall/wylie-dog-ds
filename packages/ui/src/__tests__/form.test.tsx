@@ -432,7 +432,7 @@ describe("Form", () => {
             <FormControl>
               <Input type="email" aria-label="Email Address" />
             </FormControl>
-            <FormDescription>We'll never share your email</FormDescription>
+            <FormDescription>We&apos;ll never share your email</FormDescription>
           </FormField>
         </Form>
       );

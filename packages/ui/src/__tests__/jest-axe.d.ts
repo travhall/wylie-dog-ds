@@ -2,6 +2,16 @@
 /// <reference types="@testing-library/jest-dom" />
 
 declare module "jest-axe" {
-  export const axe: any;
-  export const toHaveNoViolations: any;
+  import type { RunOptions, AxeResults } from "axe-core";
+
+  export function axe(
+    html: Element | Document | string,
+    options?: RunOptions
+  ): Promise<AxeResults>;
+  export const toHaveNoViolations: {
+    toHaveNoViolations(results: AxeResults): {
+      pass: boolean;
+      message(): string;
+    };
+  };
 }

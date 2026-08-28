@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { color } from "@wyliedog/tokens/hierarchical";
 import { useCopyToClipboard } from "./use-copy-to-clipboard";
-import { Button } from "@wyliedog/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@wyliedog/ui/alert";
 import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
 import { Badge } from "@wyliedog/ui/badge";
@@ -948,7 +947,7 @@ export const TokenBrowser: Story = {
           </h2>
           <p className="text-sm text-(--color-text-secondary) mb-2">
             Search and copy OKLCH values for any primitive token. Use these when
-            defining or overriding semantic tokens in your app's CSS — not
+            defining or overriding semantic tokens in your app&apos;s CSS — not
             directly in component classes.
           </p>
         </div>
@@ -1020,7 +1019,7 @@ export const TokenBrowser: Story = {
 
         {filteredTokens.length === 0 && (
           <div className="text-center py-12 text-(--color-text-secondary)">
-            No tokens found matching "{searchQuery}"
+            No tokens found matching &quot;{searchQuery}&quot;
           </div>
         )}
       </div>

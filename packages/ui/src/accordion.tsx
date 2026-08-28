@@ -15,9 +15,9 @@ const Accordion = React.forwardRef<
 ));
 Accordion.displayName = AccordionPrimitive.Root.displayName;
 
-export interface AccordionItemProps extends React.ComponentPropsWithoutRef<
+export type AccordionItemProps = React.ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Item
-> {}
+>;
 
 const AccordionItem = React.forwardRef<
   React.ComponentRef<typeof AccordionPrimitive.Item>,
@@ -34,9 +34,9 @@ const AccordionItem = React.forwardRef<
 ));
 AccordionItem.displayName = "AccordionItem";
 
-export interface AccordionTriggerProps extends React.ComponentPropsWithoutRef<
+export type AccordionTriggerProps = React.ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Trigger
-> {}
+>;
 
 const AccordionTrigger = React.forwardRef<
   React.ComponentRef<typeof AccordionPrimitive.Trigger>,
@@ -65,9 +65,9 @@ const AccordionTrigger = React.forwardRef<
 ));
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 
-export interface AccordionContentProps extends React.ComponentPropsWithoutRef<
+export type AccordionContentProps = React.ComponentPropsWithoutRef<
   typeof AccordionPrimitive.Content
-> {}
+>;
 
 const AccordionContent = React.forwardRef<
   React.ComponentRef<typeof AccordionPrimitive.Content>,

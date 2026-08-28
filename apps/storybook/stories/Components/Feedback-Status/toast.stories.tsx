@@ -6,7 +6,6 @@ import {
   ToastDescription,
   ToastTitle,
   toast,
-  useToast,
   Toaster,
 } from "@wyliedog/ui/toast";
 import { Button } from "@wyliedog/ui/button";
@@ -235,8 +234,8 @@ export const LongMessage: Story = {
       <ToastTitle>Upload Complete</ToastTitle>
       <ToastDescription>
         Your document has been successfully uploaded to the server. It will be
-        processed within the next few minutes and you'll receive an email
-        confirmation once it's ready.
+        processed within the next few minutes and you&apos;ll receive an email
+        confirmation once it&apos;s ready.
       </ToastDescription>
       <ToastAction>View</ToastAction>
     </Toast>

@@ -207,7 +207,7 @@ export const Testimonials: Story = {
               <Card>
                 <CardContent className="p-6">
                   <blockquote className="text-lg italic mb-4">
-                    "{testimonial.quote}"
+                    &quot;{testimonial.quote}&quot;
                   </blockquote>
                   <div className="text-right">
                     <p className="font-semibold">{testimonial.author}</p>

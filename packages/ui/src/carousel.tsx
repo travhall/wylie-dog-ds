@@ -2,7 +2,7 @@ import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { cn, focusRingClasses } from "./lib/utils";
 
-interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {}
+type CarouselProps = React.HTMLAttributes<HTMLDivElement>;
 
 const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
   ({ className, ...props }, ref) => (
@@ -11,7 +11,7 @@ const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
 );
 Carousel.displayName = "Carousel";
 
-interface CarouselContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+type CarouselContentProps = React.HTMLAttributes<HTMLDivElement>;
 
 const CarouselContent = React.forwardRef<HTMLDivElement, CarouselContentProps>(
   ({ className, children, ...props }, ref) => (
@@ -24,7 +24,7 @@ const CarouselContent = React.forwardRef<HTMLDivElement, CarouselContentProps>(
 );
 CarouselContent.displayName = "CarouselContent";
 
-interface CarouselItemProps extends React.HTMLAttributes<HTMLDivElement> {}
+type CarouselItemProps = React.HTMLAttributes<HTMLDivElement>;
 
 const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>(
   ({ className, ...props }, ref) => (
@@ -40,7 +40,7 @@ const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>(
 );
 CarouselItem.displayName = "CarouselItem";
 
-interface CarouselPreviousProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+type CarouselPreviousProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
@@ -63,7 +63,7 @@ const CarouselPrevious = React.forwardRef<
 ));
 CarouselPrevious.displayName = "CarouselPrevious";
 
-interface CarouselNextProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+type CarouselNextProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
   ({ className, ...props }, ref) => (

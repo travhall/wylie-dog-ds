@@ -36,6 +36,12 @@ export default [
     rules: {
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
+      // react/prop-types is a legacy runtime-PropTypes rule; this repo is
+      // TypeScript-only and has no PropTypes usage anywhere (confirmed via
+      // repo-wide grep) -- prop validation already happens at compile time
+      // via typescript-eslint. See
+      // plans/064-fix-post-migration-lint-violation-backlog.md Step 6.
+      "react/prop-types": "off",
     },
   },
   {

@@ -29,6 +29,7 @@ interface ResizablePanelProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const ResizablePanel = React.forwardRef<HTMLDivElement, ResizablePanelProps>(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- reserved for the not-yet-implemented resize behavior
   ({ className, defaultSize, minSize, maxSize, ...props }, ref) => (
     <div ref={ref} className={cn("flex-1", className)} {...props} />
   )

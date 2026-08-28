@@ -206,8 +206,8 @@ export const FAQ: Story = {
           <AccordionTrigger>Do you offer a free trial?</AccordionTrigger>
           <AccordionContent>
             Yes! We offer a 14-day free trial for all new accounts. No credit
-            card required. You'll have access to all Pro features during the
-            trial period.
+            card required. You&apos;ll have access to all Pro features during
+            the trial period.
           </AccordionContent>
         </AccordionItem>
 

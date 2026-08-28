@@ -9,7 +9,6 @@ import {
   FormField,
   FormLabel,
   FormMessage,
-  FormDescription,
   useFormField,
 } from "@wyliedog/ui/form";
 
@@ -563,7 +562,7 @@ export const DosDonts: Story = {
 
       <div>
         <h4 className="text-lg font-semibold mb-4 text-(--color-text-danger)">
-          ❌ Don't
+          ❌ Don&apos;t
         </h4>
 
         <div className="space-y-6">
@@ -571,7 +570,7 @@ export const DosDonts: Story = {
             <p className="text-sm font-medium mb-2">No label (inaccessible)</p>
             <Input type="email" placeholder="Email Address" />
             <p className="text-xs text-(--color-text-tertiary)">
-              Screen readers can't identify this field
+              Screen readers can&apos;t identify this field
             </p>
           </div>
 
@@ -596,7 +595,7 @@ export const DosDonts: Story = {
             <Label htmlFor="bad-phone">Phone Number</Label>
             <Input id="bad-phone" type="text" placeholder="+1 (555) 123-4567" />
             <p className="text-xs text-(--color-text-tertiary)">
-              Use type="tel" for phone numbers
+              Use type=&quot;tel&quot; for phone numbers
             </p>
           </div>
 

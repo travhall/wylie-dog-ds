@@ -143,13 +143,13 @@ export const Default: Story = {
       <FormField>
         <FormLabel>Name</FormLabel>
         <FieldInput placeholder="Jane Doe" />
-        <FormDescription>How you'd like to be addressed.</FormDescription>
+        <FormDescription>How you&apos;d like to be addressed.</FormDescription>
       </FormField>
 
       <FormField>
         <FormLabel>Email</FormLabel>
         <FieldInput type="email" placeholder="jane@example.com" />
-        <FormDescription>We'll never share your email.</FormDescription>
+        <FormDescription>We&apos;ll never share your email.</FormDescription>
       </FormField>
 
       <FormField>
@@ -203,7 +203,7 @@ export const WithValidation: Story = {
         {submitted && (
           <Alert variant="success" role="status">
             <AlertDescription>
-              Message sent! We'll be in touch soon.
+              Message sent! We&apos;ll be in touch soon.
             </AlertDescription>
           </Alert>
         )}
@@ -495,7 +495,7 @@ export const MultiSection: Story = {
       <div className="space-y-1">
         <h2 className="text-base font-semibold">Notifications</h2>
         <p className="text-sm text-(--color-text-tertiary)">
-          Choose how you'd like to hear from us.
+          Choose how you&apos;d like to hear from us.
         </p>
       </div>
 
@@ -578,7 +578,7 @@ export const ConditionalFields: Story = {
             onCheckedChange={(v) => setIncludeCompany(!!v)}
           />
           <Label htmlFor="cf-company-toggle" className="text-sm">
-            I'm signing up for an organization
+            I&apos;m signing up for an organization
           </Label>
         </div>
 
@@ -607,7 +607,7 @@ export const ConditionalFields: Story = {
             </div>
             <div className="flex items-center gap-2">
               <RadioGroupItem value="none" id="cf-none" />
-              <Label htmlFor="cf-none">Don't contact me</Label>
+              <Label htmlFor="cf-none">Don&apos;t contact me</Label>
             </div>
           </RadioGroup>
         </div>
@@ -629,7 +629,7 @@ export const ConditionalFields: Story = {
 
         {contactMethod === "none" && (
           <p className="text-sm text-(--color-text-tertiary)">
-            You won't receive any outbound communications.
+            You won&apos;t receive any outbound communications.
           </p>
         )}
 

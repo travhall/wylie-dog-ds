@@ -13,7 +13,7 @@ const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
 );
 Breadcrumb.displayName = "Breadcrumb";
 
-export interface BreadcrumbListProps extends React.ComponentPropsWithoutRef<"ol"> {}
+export type BreadcrumbListProps = React.ComponentPropsWithoutRef<"ol">;
 
 const BreadcrumbList = React.forwardRef<HTMLOListElement, BreadcrumbListProps>(
   ({ className, ...props }, ref) => (
@@ -29,7 +29,7 @@ const BreadcrumbList = React.forwardRef<HTMLOListElement, BreadcrumbListProps>(
 );
 BreadcrumbList.displayName = "BreadcrumbList";
 
-export interface BreadcrumbItemProps extends React.ComponentPropsWithoutRef<"li"> {}
+export type BreadcrumbItemProps = React.ComponentPropsWithoutRef<"li">;
 
 const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>(
   ({ className, ...props }, ref) => (
@@ -45,7 +45,7 @@ const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>(
 );
 BreadcrumbItem.displayName = "BreadcrumbItem";
 
-export interface BreadcrumbLinkProps extends React.ComponentPropsWithoutRef<"a"> {}
+export type BreadcrumbLinkProps = React.ComponentPropsWithoutRef<"a">;
 
 const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
   ({ className, ...props }, ref) => {
@@ -65,7 +65,7 @@ const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
 );
 BreadcrumbLink.displayName = "BreadcrumbLink";
 
-export interface BreadcrumbPageProps extends React.ComponentPropsWithoutRef<"span"> {}
+export type BreadcrumbPageProps = React.ComponentPropsWithoutRef<"span">;
 
 const BreadcrumbPage = React.forwardRef<HTMLSpanElement, BreadcrumbPageProps>(
   ({ className, ...props }, ref) => (
@@ -107,7 +107,7 @@ const BreadcrumbSeparator = React.forwardRef<
 ));
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
-export interface BreadcrumbEllipsisProps extends React.ComponentPropsWithoutRef<"span"> {}
+export type BreadcrumbEllipsisProps = React.ComponentPropsWithoutRef<"span">;
 
 const BreadcrumbEllipsis = React.forwardRef<
   HTMLSpanElement,

@@ -5,9 +5,9 @@ import { cn } from "./lib/utils";
 const Collapsible = CollapsiblePrimitive.Root;
 const CollapsibleTrigger = CollapsiblePrimitive.Trigger;
 
-export interface CollapsibleContentProps extends React.ComponentPropsWithoutRef<
+export type CollapsibleContentProps = React.ComponentPropsWithoutRef<
   typeof CollapsiblePrimitive.Content
-> {}
+>;
 
 const CollapsibleContent = React.forwardRef<
   React.ComponentRef<typeof CollapsiblePrimitive.Content>,

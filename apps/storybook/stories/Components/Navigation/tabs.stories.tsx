@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@wyliedog/ui/tabs";
-import { Button } from "@wyliedog/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";

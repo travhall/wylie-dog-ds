@@ -176,8 +176,8 @@ export const FAQ: Story = {
             <div className="px-4 pb-4">
               <p className="text-sm text-(--color-text-tertiary)">
                 We offer a 30-day money-back guarantee for all our products. If
-                you're not satisfied with your purchase, you can request a full
-                refund within 30 days of your order date.
+                you&apos;re not satisfied with your purchase, you can request a
+                full refund within 30 days of your order date.
               </p>
             </div>
           </CollapsibleContent>
@@ -191,9 +191,9 @@ export const FAQ: Story = {
           <CollapsibleContent>
             <div className="px-4 pb-4">
               <p className="text-sm text-(--color-text-tertiary)">
-                Once your order ships, you'll receive a tracking number via
+                Once your order ships, you&apos;ll receive a tracking number via
                 email. You can use this number on our tracking page or the
-                carrier's website to monitor your package's progress.
+                carrier&apos;s website to monitor your package&apos;s progress.
               </p>
             </div>
           </CollapsibleContent>

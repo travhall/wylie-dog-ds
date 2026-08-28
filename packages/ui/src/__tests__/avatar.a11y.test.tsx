@@ -9,7 +9,6 @@ import {
   expectToPassA11yAudit,
   testScreenReaderAnnouncements,
   describeA11y,
-  commonA11yTests,
 } from "../lib/test-utils";
 
 describeA11y("Avatar", () => {
