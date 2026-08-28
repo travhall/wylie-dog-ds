@@ -53,6 +53,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const isDisabled = disabled || loading;
+    const isIconLoading = loading && size === "icon";
+    const ariaLabel =
+      props["aria-label"] ?? (isIconLoading ? "Loading" : undefined);
 
     return (
       <button
@@ -60,6 +63,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={isDisabled}
         aria-disabled={isDisabled}
+        aria-label={ariaLabel}
         {...props}
       >
         {loading && (

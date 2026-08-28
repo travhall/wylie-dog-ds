@@ -200,21 +200,20 @@ describe("Button", () => {
       expect(screen.getByRole("button", { name: "Save" })).toBeInTheDocument();
     });
 
-    // Known issue (found while writing this test, not fixed here — see plan
-    // 057 STOP conditions): `{!(loading && size === "icon") && children}`
-    // hides children, and the loading spinner is `aria-hidden`, so a caller
-    // that relies on an icon child for the accessible name (instead of
-    // passing `aria-label`) ends up with a blank, unlabeled button in this
-    // state. This test documents that current behavior; it is not asserting
-    // it is correct.
-    it("should have no accessible name when loading+icon hides the only child and no aria-label is given", () => {
+    // Fixed by plan 061: `{!(loading && size === "icon") && children}` hides
+    // children, and the loading spinner is `aria-hidden`, so a caller that
+    // relies on an icon child for the accessible name (instead of passing
+    // `aria-label`) would otherwise end up with a blank, unlabeled button.
+    // Button now falls back to a default `aria-label` in this state.
+    it("should fall back to a default accessible name when loading+icon hides the only child and no aria-label is given", () => {
       render(
         <Button loading size="icon">
           <span data-testid="icon-child">Icon</span>
         </Button>
       );
-      const button = screen.getByRole("button");
-      expect(button).not.toHaveAccessibleName();
+      expect(
+        screen.getByRole("button", { name: "Loading" })
+      ).toBeInTheDocument();
     });
   });
 
