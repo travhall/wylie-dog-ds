@@ -95,9 +95,9 @@ import { Button, Card, Badge } from "@wyliedog/ui";
 
 44 components across six categories. Each has a named export, TypeScript types, and a Storybook story.
 
-### Form Controls
+### Inputs & Controls
 
-`Accordion` `Button` `Checkbox` `Form` `Input` `Label` `RadioGroup` `Select` `Slider` `Switch` `Textarea` `Toggle` `ToggleGroup`
+`Button` `Checkbox` `Form` `Input` `Label` `RadioGroup` `Select` `Slider` `Switch` `Textarea` `Toggle` `ToggleGroup`
 
 ### Layout & Structure
 
@@ -109,7 +109,7 @@ import { Button, Card, Badge } from "@wyliedog/ui";
 
 ### Content Display
 
-`Avatar` `Badge` `Calendar` `Carousel` `Table`
+`Accordion` `Avatar` `Badge` `Calendar` `Carousel` `Table`
 
 ### Overlays & Popovers
 
