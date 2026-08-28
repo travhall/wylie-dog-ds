@@ -46,7 +46,11 @@ export class FileConfigStorage {
     try {
       const configJson = JSON.stringify(config);
       figma.root.setPluginData(PLUGIN_DATA_KEYS.GITHUB_CONFIG, configJson);
-      console.log("GitHub config saved to file:", config);
+      console.log("GitHub config saved to file:", {
+        owner: config.owner,
+        repo: config.repo,
+        branch: config.branch,
+      });
     } catch (error) {
       console.error("Failed to save GitHub config to file:", error);
       throw new Error("Failed to save configuration to file");
