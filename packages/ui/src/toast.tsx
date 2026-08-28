@@ -158,9 +158,11 @@ export function toast(data: Omit<ToastData, "id">) {
   const id = Math.random().toString(36).slice(2);
   const newToast = { ...data, id, duration: data.duration ?? 5000 };
   dispatch([...memoryState.toasts, newToast]);
-  setTimeout(() => {
-    dispatch(memoryState.toasts.filter((t) => t.id !== id));
-  }, newToast.duration);
+  if (newToast.duration !== 0) {
+    setTimeout(() => {
+      dispatch(memoryState.toasts.filter((t) => t.id !== id));
+    }, newToast.duration);
+  }
   return id;
 }
 
