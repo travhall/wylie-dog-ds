@@ -1,45 +1,26 @@
-const { resolve } = require("node:path");
-
-const project = resolve(process.cwd(), "tsconfig.json");
+import storybook from "eslint-plugin-storybook";
+import * as mdx from "eslint-plugin-mdx";
+import reactConfig from "./react.js";
 
 /*
- * This is a custom ESLint configuration for use with
- * typescript packages.
+ * ESLint flat config for the Storybook app.
  *
- * This config extends the Vercel Engineering Style Guide.
- * For more information, see https://github.com/vercel/style-guide
- *
+ * Hand-composed replacement for the old @vercel/style-guide-based config:
+ * @vercel/style-guide is incompatible with ESLint 10 (its @rushstack/eslint-patch
+ * dependency hard-throws above ESLint 9). See
+ * plans/062-migrate-eslint-config-off-vercel-style-guide.md for the full
+ * investigation.
  */
-
-module.exports = {
-  extends: [
-    "plugin:storybook/recommended",
-    "plugin:mdx/recommended",
-    ...[
-      "@vercel/style-guide/eslint/node",
-      "@vercel/style-guide/eslint/typescript",
-      "@vercel/style-guide/eslint/browser",
-      "@vercel/style-guide/eslint/react",
-    ].map(require.resolve),
-  ],
-  parserOptions: {
-    project,
+export default [
+  ...reactConfig,
+  ...storybook.configs["flat/recommended"],
+  {
+    ...mdx.flat,
+    processor: mdx.createRemarkProcessor({
+      lintCodeBlocks: false,
+    }),
   },
-  plugins: ["only-warn"],
-  globals: {
-    React: true,
-    JSX: true,
+  {
+    ignores: ["node_modules/**", "dist/**"],
   },
-  settings: {
-    "import/resolver": {
-      typescript: {
-        project,
-      },
-    },
-  },
-  ignorePatterns: ["node_modules/", "dist/"],
-  // add rules configurations here
-  rules: {
-    "import/no-default-export": "off",
-  },
-};
+];

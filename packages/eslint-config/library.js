@@ -1,35 +1,26 @@
-const { resolve } = require("node:path");
-
-const project = resolve(process.cwd(), "tsconfig.json");
+import tseslint from "typescript-eslint";
+import globals from "globals";
+import "eslint-plugin-only-warn";
 
 /*
- * This is a custom ESLint configuration for use with
- * typescript packages.
+ * ESLint flat config for Node/TypeScript library packages.
  *
- * This config extends the Vercel Engineering Style Guide.
- * For more information, see https://github.com/vercel/style-guide
- *
+ * Hand-composed replacement for the old @vercel/style-guide-based config:
+ * @vercel/style-guide is incompatible with ESLint 10 (its @rushstack/eslint-patch
+ * dependency hard-throws above ESLint 9). See
+ * plans/062-migrate-eslint-config-off-vercel-style-guide.md for the full
+ * investigation.
  */
-
-module.exports = {
-  extends: [
-    "@vercel/style-guide/eslint/node",
-    "@vercel/style-guide/eslint/typescript",
-  ].map(require.resolve),
-  parserOptions: {
-    project,
-  },
-  plugins: ["only-warn"],
-  globals: {
-    React: true,
-    JSX: true,
-  },
-  settings: {
-    "import/resolver": {
-      typescript: {
-        project,
+export default [
+  ...tseslint.configs.recommended,
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node,
       },
     },
   },
-  ignorePatterns: ["node_modules/", "dist/"],
-};
+  {
+    ignores: ["node_modules/**", "dist/**"],
+  },
+];
