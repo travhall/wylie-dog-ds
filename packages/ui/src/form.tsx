@@ -47,7 +47,7 @@ export const useFormField = () => {
 };
 
 // Form Root
-interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {}
+type FormProps = React.FormHTMLAttributes<HTMLFormElement>;
 
 const Form = React.forwardRef<HTMLFormElement, FormProps>(
   ({ className, ...props }, ref) => (
@@ -94,7 +94,7 @@ const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>(
 FormField.displayName = "FormField";
 
 // Maintained for backwards compatibility
-interface FormItemProps extends React.HTMLAttributes<HTMLDivElement> {}
+type FormItemProps = React.HTMLAttributes<HTMLDivElement>;
 
 const FormItem = React.forwardRef<HTMLDivElement, FormItemProps>(
   ({ className, ...props }, ref) => (
@@ -143,7 +143,7 @@ const FormLabel = React.forwardRef<HTMLLabelElement, FormLabelProps>(
 FormLabel.displayName = "FormLabel";
 
 // Maintained for backwards compatibility
-interface FormControlProps extends React.HTMLAttributes<HTMLDivElement> {}
+type FormControlProps = React.HTMLAttributes<HTMLDivElement>;
 
 const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
   ({ className, ...props }, ref) => (
@@ -153,7 +153,7 @@ const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
 FormControl.displayName = "FormControl";
 
 // Enhanced FormDescription with automatic ID assignment
-interface FormDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+type FormDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>;
 
 const FormDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -176,7 +176,7 @@ const FormDescription = React.forwardRef<
 FormDescription.displayName = "FormDescription";
 
 // Enhanced FormMessage with accessibility attributes
-interface FormMessageProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+type FormMessageProps = React.HTMLAttributes<HTMLParagraphElement>;
 
 const FormMessage = React.forwardRef<HTMLParagraphElement, FormMessageProps>(
   ({ className, ...props }, ref) => {

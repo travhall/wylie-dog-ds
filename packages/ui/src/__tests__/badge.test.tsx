@@ -608,7 +608,7 @@ describe("Badge", () => {
     });
 
     it("should work with mouse events", () => {
-      const { container } = render(<Badge>Badge</Badge>);
+      render(<Badge>Badge</Badge>);
 
       const badge = screen.getByText("Badge");
       const handleMouseEnter = vi.fn();

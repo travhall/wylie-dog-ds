@@ -195,7 +195,7 @@ describe("Carousel", () => {
     });
 
     it("should have proper flex properties", () => {
-      const { container } = render(
+      render(
         <Carousel>
           <CarouselContent>
             <CarouselItem>Item</CarouselItem>

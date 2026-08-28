@@ -34,13 +34,6 @@ function FormInput(props: Omit<React.ComponentProps<typeof Input>, "id">) {
   return <Input id={id} {...props} />;
 }
 
-function FormTextarea(
-  props: Omit<React.ComponentProps<typeof Textarea>, "id">
-) {
-  const { id } = useFormField();
-  return <Textarea id={id} {...props} />;
-}
-
 const meta: Meta = {
   title: "Patterns/Form Patterns/Form Compositions",
   parameters: {
@@ -1103,7 +1096,6 @@ export const WithInteractions: Story = {
     // Test 7: Navigate to radio group and select option
     const emailRadio = canvas.getByRole("radio", { name: /email only/i });
     const smsRadio = canvas.getByRole("radio", { name: /sms only/i });
-    const bothRadio = canvas.getByRole("radio", { name: /^both$/i });
 
     // Email is selected by default
     expect(emailRadio).toBeChecked();

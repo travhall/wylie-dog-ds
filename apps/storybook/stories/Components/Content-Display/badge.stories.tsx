@@ -472,7 +472,7 @@ export const DosDonts: Story = {
 
       <div>
         <h4 className="text-lg font-semibold mb-4 text-(--color-text-danger)">
-          ❌ Don't
+          ❌ Don&apos;t
         </h4>
 
         <div className="space-y-6">
@@ -483,7 +483,7 @@ export const DosDonts: Story = {
               <Badge>Error Message</Badge>
             </div>
             <p className="text-xs text-(--color-text-tertiary)">
-              Variant doesn't match meaning
+              Variant doesn&apos;t match meaning
             </p>
           </div>
 

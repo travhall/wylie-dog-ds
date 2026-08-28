@@ -730,9 +730,9 @@ export const ResponsiveTypography: Story = {
 
       <div>
         <p className="text-sm md:text-base lg:text-lg mb-2">
-          This paragraph adapts its size based on screen size. On mobile it's
-          smaller, on tablet it's medium, and on desktop it's larger for better
-          readability.
+          This paragraph adapts its size based on screen size. On mobile
+          it&apos;s smaller, on tablet it&apos;s medium, and on desktop
+          it&apos;s larger for better readability.
         </p>
         <p className="text-sm text-(--color-text-secondary) font-mono">
           --font-size-sm → md:--font-size-base → lg:--font-size-lg
@@ -1071,7 +1071,7 @@ function TypographyPlaygroundComponent() {
             <div className="space-y-2">
               <div className="text-sm font-semibold">Tailwind Classes</div>
               <div className="p-3 rounded-md bg-(--color-background-secondary)/50 text-xs font-mono">
-                <code>className="{tailwindClasses}"</code>
+                <code>className=&quot;{tailwindClasses}&quot;</code>
               </div>
             </div>
           </div>

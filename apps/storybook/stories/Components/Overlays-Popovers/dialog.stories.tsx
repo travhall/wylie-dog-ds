@@ -92,7 +92,7 @@ export const Default: Story = {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you&apos;re done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
@@ -503,7 +503,7 @@ export const SizeVariants: Story = {
                 <p className="text-sm text-(--color-text-tertiary)">
                   This dialog uses{" "}
                   <code className="font-mono bg-(--color-background-secondary) px-1 rounded">
-                    size="{size}"
+                    size=&quot;{size}&quot;
                   </code>
                   . The content area adjusts to the maximum width defined by
                   that size token.
@@ -546,7 +546,7 @@ export const NonClosable: Story = {
           className="[&>button:last-of-type]:hidden"
         >
           <DialogHeader>
-            <DialogTitle>Welcome! Let's get you set up</DialogTitle>
+            <DialogTitle>Welcome! Let&apos;s get you set up</DialogTitle>
             <DialogDescription>
               Complete these steps to finish setting up your account. You must
               choose an option to continue.

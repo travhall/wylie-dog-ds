@@ -544,7 +544,7 @@ export const SpacingPlayground: Story = {
                 </div>
               </div>
               <div className="mt-3 p-3 rounded-md bg-(--color-background-secondary)/50 text-xs font-mono">
-                className="{pClass}"
+                className=&quot;{pClass}&quot;
               </div>
             </CardContent>
           </Card>
@@ -568,7 +568,7 @@ export const SpacingPlayground: Story = {
                 </div>
               </div>
               <div className="mt-3 p-3 rounded-md bg-(--color-background-secondary)/50 text-xs font-mono">
-                className="{mClass}"
+                className=&quot;{mClass}&quot;
               </div>
             </CardContent>
           </Card>
@@ -593,7 +593,7 @@ export const SpacingPlayground: Story = {
               ))}
             </div>
             <div className="mt-3 p-3 rounded-md bg-(--color-background-secondary)/50 text-xs font-mono">
-              className="flex {gClass}"
+              className=&quot;flex {gClass}&quot;
             </div>
           </CardContent>
         </Card>

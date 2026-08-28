@@ -22,7 +22,7 @@ afterEach(() => {
 beforeAll(() => {
   // Let React know this environment expects act() support so user-event
   // interactions don't warn about missing act wrappers.
-  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
   // Mock ResizeObserver (used by some Radix components)
   globalThis.ResizeObserver = class ResizeObserver {
@@ -32,12 +32,12 @@ beforeAll(() => {
   };
 
   // Mock IntersectionObserver
-  (globalThis as any).IntersectionObserver = class IntersectionObserver {
+  globalThis.IntersectionObserver = class IntersectionObserver {
     constructor() {}
     observe() {}
     unobserve() {}
     disconnect() {}
-  };
+  } as unknown as typeof IntersectionObserver;
 
   // Mock matchMedia
   Object.defineProperty(window, "matchMedia", {
@@ -91,9 +91,12 @@ beforeAll(() => {
 
 // Global test utilities
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace -- augmenting Vitest's ambient Vi namespace requires a namespace declaration
   namespace Vi {
-    interface JestAssertion<T = any> {
+    interface JestAssertion<T = void> {
       toHaveNoViolations(): T;
     }
   }
+
+  var IS_REACT_ACT_ENVIRONMENT: boolean;
 }

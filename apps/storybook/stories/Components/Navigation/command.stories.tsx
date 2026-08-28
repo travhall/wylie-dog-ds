@@ -430,12 +430,14 @@ export const CodeEditor: Story = {
           </kbd>
         </div>
         <div className="space-y-1 text-(--color-text-inverse)/70">
-          <div>import React from 'react';</div>
-          <div>import {"{ useState }"} from 'react';</div>
+          <div>import React from &apos;react&apos;;</div>
+          <div>import {"{ useState }"} from &apos;react&apos;;</div>
           <div></div>
           <div>function Editor() {"{"}</div>
-          <div className="ml-4">const [value, setValue] = useState('');</div>
-          <div className="ml-4">// Your cursor is here |</div>
+          <div className="ml-4">
+            const [value, setValue] = useState(&apos;&apos;);
+          </div>
+          <div className="ml-4">{"// Your cursor is here |"}</div>
           <div>{"}"}</div>
         </div>
       </div>

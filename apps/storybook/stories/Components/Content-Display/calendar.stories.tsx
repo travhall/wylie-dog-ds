@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within, userEvent, expect } from "storybook/test";
 import { Calendar } from "@wyliedog/ui/calendar";
-import { Label } from "@wyliedog/ui/label";
 import { Form, FormField, FormLabel } from "@wyliedog/ui/form";
 import { useState } from "react";
 

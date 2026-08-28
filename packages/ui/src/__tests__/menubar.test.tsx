@@ -100,7 +100,6 @@ describe("Menubar", () => {
     });
 
     it("should forward ref correctly", async () => {
-      const user = userEvent.setup();
       const ref = React.createRef<HTMLButtonElement>();
 
       render(

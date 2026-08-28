@@ -3,13 +3,9 @@ import { CardGrid } from "@wyliedog/ui/card-grid";
 import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import { Badge } from "@wyliedog/ui/badge";
 import { Button } from "@wyliedog/ui/button";
-import { cn } from "@wyliedog/ui/lib/utils";
 import {
   Star,
   Heart,
-  MessageSquare,
-  Share2,
-  Calendar,
   User,
   TrendingUp,
   Zap,

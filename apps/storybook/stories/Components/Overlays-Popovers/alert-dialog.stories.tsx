@@ -158,7 +158,7 @@ export const SaveChanges: Story = {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel asChild>
-            <Button variant="outline">Don't Save</Button>
+            <Button variant="outline">Don&apos;t Save</Button>
           </AlertDialogCancel>
           <AlertDialogAction asChild>
             <Button>Save Changes</Button>
@@ -219,7 +219,7 @@ export const SubscriptionCancel: Story = {
         <AlertDialogHeader>
           <AlertDialogTitle>Cancel Subscription</AlertDialogTitle>
           <AlertDialogDescription>
-            Your subscription will be cancelled immediately and you'll lose
+            Your subscription will be cancelled immediately and you&apos;ll lose
             access to premium features. You can resubscribe at any time, but any
             remaining time on your current plan will not be refunded.
           </AlertDialogDescription>
@@ -256,8 +256,8 @@ export const DataExport: Story = {
           <AlertDialogDescription>
             This will create a complete backup of all your data including
             documents, settings, and user information. The export may take
-            several minutes to complete. You'll receive an email when it's ready
-            for download.
+            several minutes to complete. You&apos;ll receive an email when
+            it&apos;s ready for download.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -372,8 +372,8 @@ export const UnsavedChanges: Story = {
             <AlertDialogHeader>
               <AlertDialogTitle>Unsaved Changes</AlertDialogTitle>
               <AlertDialogDescription>
-                You have unsaved changes to "My Important Document". Do you want
-                to save your changes before closing?
+                You have unsaved changes to &quot;My Important Document&quot;.
+                Do you want to save your changes before closing?
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

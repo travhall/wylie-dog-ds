@@ -17,7 +17,7 @@ interface CommandProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Command = React.forwardRef<HTMLDivElement, CommandProps>(
-  ({ className, label = "Command palette", listboxId, ...props }, ref) => {
+  ({ className, listboxId, ...props }, ref) => {
     const generatedId = useId();
     const resolvedId = listboxId ?? `command-listbox-${generatedId}`;
 
@@ -60,6 +60,7 @@ const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps>(
     return (
       <div
         className="flex items-center border-b border-(--color-command-border) px-(--space-command-item-padding-x)"
+        // eslint-disable-next-line react/no-unknown-property -- cmdk's own DOM attribute selector, not a typo
         cmdk-input-wrapper=""
       >
         <SearchIcon
@@ -129,7 +130,7 @@ const CommandList = React.forwardRef<HTMLDivElement, CommandListProps>(
 );
 CommandList.displayName = "CommandList";
 
-interface CommandEmptyProps extends React.HTMLAttributes<HTMLDivElement> {}
+type CommandEmptyProps = React.HTMLAttributes<HTMLDivElement>;
 
 const CommandEmpty = React.forwardRef<HTMLDivElement, CommandEmptyProps>(
   ({ className, ...props }, ref) => (
@@ -166,6 +167,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
     >
       {heading && (
         <div
+          // eslint-disable-next-line react/no-unknown-property -- cmdk's own DOM attribute selector, not a typo
           cmdk-group-heading=""
           className="px-(--space-command-group-heading-padding-x) py-(--space-command-group-heading-padding-y) text-(length:--font-size-command-group-heading-font-size) font-(--font-weight-command-group-heading-font-weight) text-(--color-command-group-heading)"
         >
@@ -178,7 +180,7 @@ const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
 );
 CommandGroup.displayName = "CommandGroup";
 
-interface CommandSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {}
+type CommandSeparatorProps = React.HTMLAttributes<HTMLDivElement>;
 
 const CommandSeparator = React.forwardRef<
   HTMLDivElement,
@@ -223,7 +225,7 @@ const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
 );
 CommandItem.displayName = "CommandItem";
 
-interface CommandShortcutProps extends React.HTMLAttributes<HTMLSpanElement> {}
+type CommandShortcutProps = React.HTMLAttributes<HTMLSpanElement>;
 
 const CommandShortcut = React.forwardRef<HTMLSpanElement, CommandShortcutProps>(
   ({ className, ...props }, ref) => {

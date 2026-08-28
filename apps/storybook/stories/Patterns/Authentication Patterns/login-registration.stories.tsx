@@ -133,7 +133,7 @@ export const SimpleLogin: Story = {
               {isLoading ? "Signing in..." : "Sign in"}
             </Button>
             <p className="text-sm text-center text-(--color-text-tertiary)">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <Button variant="link" className="h-auto p-0 text-sm font-normal">
                 Sign up
               </Button>
@@ -287,7 +287,7 @@ export const LoginWithSocialAuth: Story = {
         </CardContent>
         <CardFooter>
           <p className="text-sm text-center text-(--color-text-tertiary) w-full">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Button variant="link" className="h-auto p-0 text-sm font-normal">
               Sign up
             </Button>

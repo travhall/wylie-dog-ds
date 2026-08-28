@@ -128,7 +128,7 @@ const config: StorybookConfig = {
       // explicitly causes "Failed to resolve dependency" warnings in pnpm
       // workspaces because the packages aren't in Storybook's own node_modules.
       optimizeDeps: {
-        include: ["react", "react-dom"],
+        include: ["react", "react-dom", "aria-query"],
         exclude: ["axe-core"], // Lazy load a11y testing
       },
       plugins: [
@@ -149,6 +149,6 @@ const config: StorybookConfig = {
 
 export default config;
 
-function getAbsolutePath(value: string): any {
+function getAbsolutePath(value: string): string {
   return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
 }

@@ -16,7 +16,7 @@ interface CalendarProps extends Omit<
 }
 
 const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
-  ({ className, mode, selected, onSelect, ...props }, ref) => (
+  ({ className, onSelect, ...props }, ref) => (
     <div
       ref={ref}
       className={cn("p-(--space-calendar-container-padding)", className)}

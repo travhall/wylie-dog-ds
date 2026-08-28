@@ -649,7 +649,7 @@ export const Accessibility: Story = {
               id="email-description"
               className="text-xs text-(--color-text-tertiary) ml-6"
             >
-              We'll send updates to your email address
+              We&apos;ll send updates to your email address
             </p>
 
             <div className="flex items-center space-x-2">
@@ -664,7 +664,7 @@ export const Accessibility: Story = {
               id="phone-description"
               className="text-xs text-(--color-text-tertiary) ml-6"
             >
-              We'll call you during business hours
+              We&apos;ll call you during business hours
             </p>
 
             <div className="flex items-center space-x-2">
@@ -679,7 +679,7 @@ export const Accessibility: Story = {
               id="mail-description"
               className="text-xs text-(--color-text-tertiary) ml-6"
             >
-              We'll send physical letters to your address
+              We&apos;ll send physical letters to your address
             </p>
           </RadioGroup>
         </div>
