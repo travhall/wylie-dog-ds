@@ -126,6 +126,8 @@ function Av({
 
 export default function ComponentsPage() {
   const meta = getShowcaseMeta();
+  const categoryCount = (dirName: string) =>
+    meta.componentCategories.find((c) => c.dirName === dirName)?.count ?? 0;
   return (
     <div className="min-h-screen bg-(--color-background-primary)">
       {/* ── HERO ───────────────────────────────────────────────── */}
@@ -422,13 +424,38 @@ export default function ComponentsPage() {
             n: "01",
             label: "Content Display",
             id: "content-display",
-            count: 7,
+            count: categoryCount("Content-Display"),
           },
-          { n: "02", label: "Feedback & Status", id: "feedback", count: 4 },
-          { n: "03", label: "Inputs & Controls", id: "inputs", count: 13 },
-          { n: "04", label: "Layout & Structure", id: "layout", count: 5 },
-          { n: "05", label: "Navigation", id: "navigation", count: 6 },
-          { n: "06", label: "Overlays & Popovers", id: "overlays", count: 8 },
+          {
+            n: "02",
+            label: "Feedback & Status",
+            id: "feedback",
+            count: categoryCount("Feedback-Status"),
+          },
+          {
+            n: "03",
+            label: "Inputs & Controls",
+            id: "inputs",
+            count: categoryCount("Inputs-Controls"),
+          },
+          {
+            n: "04",
+            label: "Layout & Structure",
+            id: "layout",
+            count: categoryCount("Layout-Structure"),
+          },
+          {
+            n: "05",
+            label: "Navigation",
+            id: "navigation",
+            count: categoryCount("Navigation"),
+          },
+          {
+            n: "06",
+            label: "Overlays & Popovers",
+            id: "overlays",
+            count: categoryCount("Overlays-Popovers"),
+          },
         ]}
         label="Component categories"
         meta={`${meta.components.count} total`}
