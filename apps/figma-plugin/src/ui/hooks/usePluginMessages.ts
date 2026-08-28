@@ -264,7 +264,10 @@ export function usePluginMessages(
     console.log("usePluginMessages: Setting up message listener");
 
     const handleMessage = (event: MessageEvent) => {
-      console.log("usePluginMessages: Received message:", event.data);
+      console.log(
+        "usePluginMessages: Received message:",
+        event.data?.pluginMessage?.type
+      );
       const msg = event.data.pluginMessage;
 
       if (!msg) {
@@ -382,7 +385,11 @@ export function usePluginMessages(
           break;
 
         case "github-config-loaded":
-          console.log("GitHub config loaded:", msg.config);
+          console.log("GitHub config loaded:", {
+            owner: msg.config?.owner,
+            repo: msg.config?.repo,
+            branch: msg.config?.branch,
+          });
           if (msg.config) {
             setGithubConfig(msg.config);
             setGithubConfigured(true);
