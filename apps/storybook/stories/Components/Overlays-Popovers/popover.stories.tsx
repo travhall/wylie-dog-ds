@@ -23,7 +23,7 @@ import {
   MoreHorizontalIcon,
 } from "lucide-react";
 
-const meta: Meta<any> = {
+const meta: Meta<typeof Popover> = {
   title: "Components/Overlays & Popovers/Popover",
   component: Popover,
   parameters: {
@@ -36,53 +36,31 @@ const meta: Meta<any> = {
     },
   },
   tags: ["autodocs"],
-  argTypes: {
-    side: {
-      control: "select",
-      options: ["top", "right", "bottom", "left"],
-      description: "The preferred side of the trigger to render the popover",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "bottom" },
-        category: "Appearance",
-      },
-    },
-    align: {
-      control: "select",
-      options: ["start", "center", "end"],
-      description:
-        "The preferred alignment of the popover relative to the trigger",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "center" },
-        category: "Appearance",
-      },
-    },
-  },
+  // `side`/`align` are PopoverContent props, not Popover's own (Popover only
+  // takes open/onOpenChange/defaultOpen/modal) -- they can't be typed
+  // top-level argTypes against `Meta<typeof Popover>`. Matches
+  // HoverCard's story convention: set them directly on <PopoverContent> in
+  // each story's render body instead (see Default below).
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    side: "bottom",
-    align: "center",
-  },
   parameters: {
     docs: {
       description: {
         story:
-          "Basic popover with dimension input fields for layer configuration. Use the controls panel to change positioning and alignment.",
+          "Basic popover with dimension input fields for layer configuration.",
       },
     },
   },
-  render: (args) => (
+  render: () => (
     <Popover>
       <PopoverTrigger asChild>
         <Button variant="outline">Open popover</Button>
       </PopoverTrigger>
-      <PopoverContent className="w-80" side={args.side} align={args.align}>
+      <PopoverContent className="w-80" side="bottom" align="center">
         <div className="grid gap-4">
           <div className="space-y-2">
             <h4 className="font-medium leading-none">Dimensions</h4>
