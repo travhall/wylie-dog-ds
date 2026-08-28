@@ -264,7 +264,10 @@ export function usePluginMessages(
     console.log("usePluginMessages: Setting up message listener");
 
     const handleMessage = (event: MessageEvent) => {
-      console.log("usePluginMessages: Received message:", event.data);
+      console.log(
+        "usePluginMessages: Received message:",
+        event.data?.pluginMessage?.type
+      );
       const msg = event.data.pluginMessage;
 
       if (!msg) {
