@@ -397,7 +397,7 @@ export default function ShowcasePage() {
                   Foundations
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
-                  {categoryCount("Content Display")}
+                  {categoryCount("Content-Display")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Button</h3>
@@ -562,7 +562,7 @@ export default function ShowcasePage() {
                   Data Display
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
-                  {categoryCount("Content Display")}
+                  {categoryCount("Content-Display")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Table</h3>
