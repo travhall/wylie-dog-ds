@@ -445,9 +445,30 @@ describe("Checkbox", () => {
       expect(checkbox).toHaveAttribute("aria-checked", "mixed");
       expect(checkbox).toHaveAttribute("data-state", "indeterminate");
 
+      // Indeterminate state should render a dash, not the checked checkmark
+      expect(checkbox.querySelector("line")).toBeInTheDocument();
+      expect(checkbox.querySelector("polyline")).not.toBeInTheDocument();
+
       // Click should select all
       fireEvent.click(checkbox);
       expect(checkbox).toHaveAttribute("aria-checked", "true");
+    });
+
+    it("should render a distinct indicator glyph for indeterminate vs checked state", () => {
+      const { rerender } = render(
+        <Checkbox aria-label="Test" checked="indeterminate" />
+      );
+      const checkbox = screen.getByRole("checkbox");
+
+      expect(checkbox).toHaveAttribute("data-state", "indeterminate");
+      expect(checkbox.querySelector("line")).toBeInTheDocument();
+      expect(checkbox.querySelector("polyline")).not.toBeInTheDocument();
+
+      rerender(<Checkbox aria-label="Test" checked />);
+
+      expect(checkbox).toHaveAttribute("data-state", "checked");
+      expect(checkbox.querySelector("polyline")).toBeInTheDocument();
+      expect(checkbox.querySelector("line")).not.toBeInTheDocument();
     });
   });
 });

@@ -14,7 +14,9 @@ export const checkboxVariants = cva(
     "focus:ring-offset-(--space-checkbox-focus-ring-offset)",
     "disabled:cursor-not-allowed disabled:opacity-(--checkbox-disabled-opacity)",
     "data-[state=checked]:bg-(--color-checkbox-checked-background) data-[state=checked]:text-(--color-checkbox-checked-text)",
-    "data-[state=checked]:border-(--color-checkbox-checked-border)"
+    "data-[state=checked]:border-(--color-checkbox-checked-border)",
+    "data-[state=indeterminate]:bg-(--color-checkbox-checked-background) data-[state=indeterminate]:text-(--color-checkbox-checked-text)",
+    "data-[state=indeterminate]:border-(--color-checkbox-checked-border)"
   ),
   {
     variants: {
@@ -54,24 +56,39 @@ export interface CheckboxProps
 export const Checkbox = React.forwardRef<
   React.ComponentRef<typeof CheckboxPrimitive.Root>,
   CheckboxProps
->(({ className, size = "md", error = false, ...props }, ref) => (
+>(({ className, size = "md", error = false, checked, ...props }, ref) => (
   <CheckboxPrimitive.Root
     ref={ref}
+    checked={checked}
     className={cn(checkboxVariants({ size, error }), className)}
     {...props}
   >
     <CheckboxPrimitive.Indicator className={cn("flex items-start")}>
-      <svg
-        className={iconSizes[size ?? "md"]}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <polyline points="20,2 9,15 4,10" />
-      </svg>
+      {checked === "indeterminate" ? (
+        <svg
+          className={iconSizes[size ?? "md"]}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <line x1="4" y1="12" x2="20" y2="12" />
+        </svg>
+      ) : (
+        <svg
+          className={iconSizes[size ?? "md"]}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="20,2 9,15 4,10" />
+        </svg>
+      )}
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ));
