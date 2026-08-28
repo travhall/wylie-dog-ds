@@ -52,6 +52,12 @@ jobs:
       - name: Rebuild Tokens
         run: pnpm --filter @wyliedog/tokens build
 
+      - name: Validate Rebuilt Tokens
+        run: pnpm --filter @wyliedog/tokens test:tokens
+
+      - name: Typecheck Downstream Consumers
+        run: pnpm --filter @wyliedog/ui typecheck
+
       - name: Check for Changes
         id: check_changes
         run: |
