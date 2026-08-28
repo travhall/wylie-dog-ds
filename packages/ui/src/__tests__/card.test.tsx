@@ -667,17 +667,7 @@ describe("Card", () => {
     it("should support interactive cards", async () => {
       const handleClick = vi.fn();
       const { container } = render(
-        <Card
-          role="button"
-          tabIndex={0}
-          onClick={handleClick}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              handleClick();
-            }
-          }}
-          aria-label="Clickable card"
-        >
+        <Card interactive onClick={handleClick} aria-label="Clickable card">
           <CardHeader>
             <CardTitle>Interactive Card</CardTitle>
           </CardHeader>
@@ -694,6 +684,9 @@ describe("Card", () => {
       // Test keyboard activation
       fireEvent.keyDown(card, { key: "Enter" });
       expect(handleClick).toHaveBeenCalledTimes(2);
+
+      fireEvent.keyDown(card, { key: " " });
+      expect(handleClick).toHaveBeenCalledTimes(3);
 
       const results = await axe(container);
       expect(results).toHaveNoViolations();

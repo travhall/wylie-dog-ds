@@ -48,12 +48,21 @@ export interface CardProps
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ className, interactive, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "div";
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      props.onKeyDown?.(event);
+      if (event.defaultPrevented) return;
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        event.currentTarget.click();
+      }
+    };
     return (
       <Comp
         ref={ref}
         className={cn(cardVariants({ interactive }), className)}
         {...(interactive && !asChild ? { role: "button", tabIndex: 0 } : {})}
         {...props}
+        {...(interactive && !asChild ? { onKeyDown: handleKeyDown } : {})}
       />
     );
   }

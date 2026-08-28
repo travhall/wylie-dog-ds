@@ -357,6 +357,22 @@ describe("Badge", () => {
       expect(handleKeyDown).toHaveBeenCalledTimes(1);
     });
 
+    it("should trigger onClick when Enter or Space is pressed while interactive", () => {
+      const handleClick = vi.fn();
+      render(
+        <Badge interactive onClick={handleClick}>
+          Badge
+        </Badge>
+      );
+      const badge = screen.getByRole("button");
+
+      fireEvent.keyDown(badge, { key: "Enter" });
+      expect(handleClick).toHaveBeenCalledTimes(1);
+
+      fireEvent.keyDown(badge, { key: " " });
+      expect(handleClick).toHaveBeenCalledTimes(2);
+    });
+
     it("should pass accessibility audit when interactive with aria-label", async () => {
       const { container } = render(
         <Badge interactive aria-label="Filter: active">
