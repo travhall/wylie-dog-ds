@@ -55,27 +55,78 @@ const spacingScale = SPACING_SCALE_KEYS.map((name) => {
   };
 });
 
-// Subset used in the playground controls. The playground renders live Tailwind
-// utility classes (p-N, m-N, gap-N), so it must use Tailwind-compatible scale
-// names rather than the design-token keys. px values follow Tailwind's own
-// built-in spacing scale (n * 4px) — this is intentionally independent of
-// @wyliedog/tokens, since this project doesn't alias Tailwind's --spacing
-// scale to the design tokens (see packages/ui/src/styles/index.css). Each
-// step's class names are spelled out literally (not built with template
-// strings) so Tailwind's source scanner can find and generate them — a
-// dynamically-interpolated `p-${n}` is invisible to the scanner and silently
-// produces no CSS for any value it can't already see written out elsewhere.
+// Subset used in the playground controls, keyed by the same design-token
+// names as spacingScale above (not Tailwind's numeric scale) — the design
+// tokens are the source of truth here, Tailwind is only the mechanism for
+// applying them. Each class uses Tailwind v4's CSS-variable shorthand
+// (`p-(--space-200)` → `padding: var(--space-200)`), the same pattern this
+// file already uses for color tokens (e.g. `text-(--color-text-secondary)`),
+// so the applied value always tracks whatever @wyliedog/tokens exports —
+// change a primitive in Figma, push it through Token Bridge, rebuild tokens,
+// and this playground reflects it with no edits here. Class strings are
+// spelled out literally (not built with template strings) so Tailwind's
+// source scanner can find and generate them — a dynamically-interpolated
+// `p-(--space-${n})` is invisible to the scanner and silently produces no
+// CSS for any value it can't already see written out elsewhere.
+// Note: Tailwind's default scale has a "0.5" (2px) step with no equivalent
+// design token — the scale jumps 025 (1px) straight to 050 (4px) — so 025 is
+// used here instead of reproducing a step the token system doesn't have.
 const playgroundSteps = [
-  { name: "0", px: 0, p: "p-0", m: "m-0", gap: "gap-0" },
-  { name: "0.5", px: 2, p: "p-0.5", m: "m-0.5", gap: "gap-0.5" },
-  { name: "1", px: 4, p: "p-1", m: "m-1", gap: "gap-1" },
-  { name: "2", px: 8, p: "p-2", m: "m-2", gap: "gap-2" },
-  { name: "3", px: 12, p: "p-3", m: "m-3", gap: "gap-3" },
-  { name: "4", px: 16, p: "p-4", m: "m-4", gap: "gap-4" },
-  { name: "6", px: 24, p: "p-6", m: "m-6", gap: "gap-6" },
-  { name: "8", px: 32, p: "p-8", m: "m-8", gap: "gap-8" },
-  { name: "12", px: 48, p: "p-12", m: "m-12", gap: "gap-12" },
-  { name: "16", px: 64, p: "p-16", m: "m-16", gap: "gap-16" },
+  { name: "0", p: "p-(--space-0)", m: "m-(--space-0)", gap: "gap-(--space-0)" },
+  {
+    name: "025",
+    p: "p-(--space-025)",
+    m: "m-(--space-025)",
+    gap: "gap-(--space-025)",
+  },
+  {
+    name: "050",
+    p: "p-(--space-050)",
+    m: "m-(--space-050)",
+    gap: "gap-(--space-050)",
+  },
+  {
+    name: "100",
+    p: "p-(--space-100)",
+    m: "m-(--space-100)",
+    gap: "gap-(--space-100)",
+  },
+  {
+    name: "150",
+    p: "p-(--space-150)",
+    m: "m-(--space-150)",
+    gap: "gap-(--space-150)",
+  },
+  {
+    name: "200",
+    p: "p-(--space-200)",
+    m: "m-(--space-200)",
+    gap: "gap-(--space-200)",
+  },
+  {
+    name: "300",
+    p: "p-(--space-300)",
+    m: "m-(--space-300)",
+    gap: "gap-(--space-300)",
+  },
+  {
+    name: "400",
+    p: "p-(--space-400)",
+    m: "m-(--space-400)",
+    gap: "gap-(--space-400)",
+  },
+  {
+    name: "600",
+    p: "p-(--space-600)",
+    m: "m-(--space-600)",
+    gap: "gap-(--space-600)",
+  },
+  {
+    name: "700",
+    p: "p-(--space-700)",
+    m: "m-(--space-700)",
+    gap: "gap-(--space-700)",
+  },
 ];
 
 const shadowScale = [
@@ -421,18 +472,21 @@ export const SpacingPlayground: Story = {
     },
   },
   render: () => {
-    const [padding, setPadding] = useState("4");
-    const [margin, setMargin] = useState("4");
-    const [gap, setGap] = useState("4");
+    const [padding, setPadding] = useState("200");
+    const [margin, setMargin] = useState("200");
+    const [gap, setGap] = useState("200");
 
-    const pClass = playgroundSteps.find((s) => s.name === padding)?.p ?? "p-4";
-    const mClass = playgroundSteps.find((s) => s.name === margin)?.m ?? "m-4";
-    const gClass = playgroundSteps.find((s) => s.name === gap)?.gap ?? "gap-4";
+    const pClass =
+      playgroundSteps.find((s) => s.name === padding)?.p ?? "p-(--space-200)";
+    const mClass =
+      playgroundSteps.find((s) => s.name === margin)?.m ?? "m-(--space-200)";
+    const gClass =
+      playgroundSteps.find((s) => s.name === gap)?.gap ?? "gap-(--space-200)";
 
     function handleReset() {
-      setPadding("4");
-      setMargin("4");
-      setGap("4");
+      setPadding("200");
+      setMargin("200");
+      setGap("200");
     }
 
     return (
@@ -456,12 +510,12 @@ export const SpacingPlayground: Story = {
             {/* Padding */}
             <div className="space-y-2">
               <Label className="text-sm font-semibold">
-                Padding —{" "}
+                Padding — space-{padding}{" "}
                 <code className="font-mono text-xs text-(--color-text-secondary)">
-                  p-{padding}
+                  {pClass}
                 </code>{" "}
                 <span className="text-(--color-text-tertiary) font-normal">
-                  ({playgroundSteps.find((s) => s.name === padding)?.px ?? 0}px)
+                  ({(spacing as Record<string, string>)[padding] ?? "0px"})
                 </span>
               </Label>
               <div className="flex flex-wrap gap-2">
@@ -481,12 +535,12 @@ export const SpacingPlayground: Story = {
             {/* Margin */}
             <div className="space-y-2">
               <Label className="text-sm font-semibold">
-                Margin —{" "}
+                Margin — space-{margin}{" "}
                 <code className="font-mono text-xs text-(--color-text-secondary)">
-                  m-{margin}
+                  {mClass}
                 </code>{" "}
                 <span className="text-(--color-text-tertiary) font-normal">
-                  ({playgroundSteps.find((s) => s.name === margin)?.px ?? 0}px)
+                  ({(spacing as Record<string, string>)[margin] ?? "0px"})
                 </span>
               </Label>
               <div className="flex flex-wrap gap-2">
@@ -506,12 +560,12 @@ export const SpacingPlayground: Story = {
             {/* Gap */}
             <div className="space-y-2">
               <Label className="text-sm font-semibold">
-                Gap —{" "}
+                Gap — space-{gap}{" "}
                 <code className="font-mono text-xs text-(--color-text-secondary)">
-                  gap-{gap}
+                  {gClass}
                 </code>{" "}
                 <span className="text-(--color-text-tertiary) font-normal">
-                  ({playgroundSteps.find((s) => s.name === gap)?.px ?? 0}px)
+                  ({(spacing as Record<string, string>)[gap] ?? "0px"})
                 </span>
               </Label>
               <div className="flex flex-wrap gap-2">
@@ -570,7 +624,7 @@ export const SpacingPlayground: Story = {
                 </p>
                 <div className="border-2 border-dashed border-(--color-status-warning)/40 bg-(--color-status-warning)/5 rounded">
                   <div
-                    className={`${mClass} bg-(--color-background-primary) border-2 border-(--color-status-warning) rounded p-4`}
+                    className={`${mClass} bg-(--color-background-primary) border-2 border-(--color-status-warning) rounded p-(--space-200)`}
                   >
                     <div className="text-sm text-center text-(--color-text-secondary)">
                       Content
@@ -592,12 +646,12 @@ export const SpacingPlayground: Story = {
           </CardHeader>
           <CardContent>
             <div
-              className={`flex ${gClass} p-4 border border-(--color-border-primary) rounded-lg bg-(--color-background-secondary)/30`}
+              className={`flex ${gClass} p-(--space-200) border border-(--color-border-primary) rounded-lg bg-(--color-background-secondary)/30`}
             >
               {["Item 1", "Item 2", "Item 3"].map((label) => (
                 <div
                   key={label}
-                  className="flex-1 p-4 bg-(--color-interactive-primary)/10 border border-(--color-interactive-primary)/30 rounded text-center text-sm"
+                  className="flex-1 p-(--space-200) bg-(--color-interactive-primary)/10 border border-(--color-interactive-primary)/30 rounded text-center text-sm"
                 >
                   {label}
                 </div>

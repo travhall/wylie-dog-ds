@@ -8,6 +8,7 @@ Central documentation hub for the Wylie Dog Design System.
 - [Accessibility Guide](guides/accessibility-guide.md) - Accessibility standards and testing
 - [Performance Monitoring](guides/performance.md) - Performance budgets and CI/CD integration
 - [Testing Coverage Report](reference/testing-coverage.md) - Current test coverage status
+- [Case Studies](case-studies/TEMPLATE.md) - Problem/process/solution write-ups of real design-system issues
 
 ## Documentation Structure
 
@@ -15,6 +16,7 @@ Central documentation hub for the Wylie Dog Design System.
 documentation/
 ├── guides/          # Development guides and best practices
 ├── reference/       # Technical reference documentation
+├── case-studies/    # Problem/process/solution write-ups, one folder per case
 └── archive/         # Historical implementation reports
 ```
 
@@ -58,6 +60,21 @@ Comprehensive testing status report:
 - Component-by-component breakdown
 - Skipped portal tests explanation
 - Testing infrastructure details
+
+## Case Studies
+
+Real problems found and solved in this design system, written up as
+problem/process/solution narratives for an outside reader (portfolio-facing,
+not internal-only). Each case study is its own folder under `case-studies/`
+with a `README.md` (start from [`TEMPLATE.md`](case-studies/TEMPLATE.md)) plus
+`before/` and `after/` subfolders for screenshots and other artifacts.
+
+Case studies can originate from either direction — a bug or gap found while
+auditing code (e.g. a token that wasn't actually wired to what it claimed to
+represent), or a change that started in Figma and worked its way into code.
+
+- `a11y-tertiary/` - Before/after screenshots from a dark-mode contrast fix (write-up pending)
+- [`spacing-scale-gap/`](case-studies/spacing-scale-gap/README.md) - Missing 2px spacing token, traced through Figma → code → Figma via Token Bridge (write-up complete, implementation pending)
 
 ## Archive
 
