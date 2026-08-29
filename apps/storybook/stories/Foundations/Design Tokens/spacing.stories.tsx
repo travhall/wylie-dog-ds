@@ -57,18 +57,25 @@ const spacingScale = SPACING_SCALE_KEYS.map((name) => {
 
 // Subset used in the playground controls. The playground renders live Tailwind
 // utility classes (p-N, m-N, gap-N), so it must use Tailwind-compatible scale
-// names rather than the design-token keys.
+// names rather than the design-token keys. px values follow Tailwind's own
+// built-in spacing scale (n * 4px) — this is intentionally independent of
+// @wyliedog/tokens, since this project doesn't alias Tailwind's --spacing
+// scale to the design tokens (see packages/ui/src/styles/index.css). Each
+// step's class names are spelled out literally (not built with template
+// strings) so Tailwind's source scanner can find and generate them — a
+// dynamically-interpolated `p-${n}` is invisible to the scanner and silently
+// produces no CSS for any value it can't already see written out elsewhere.
 const playgroundSteps = [
-  { name: "0", px: 0 },
-  { name: "0.5", px: 2 },
-  { name: "1", px: 4 },
-  { name: "2", px: 8 },
-  { name: "3", px: 12 },
-  { name: "4", px: 16 },
-  { name: "6", px: 24 },
-  { name: "8", px: 32 },
-  { name: "12", px: 48 },
-  { name: "16", px: 64 },
+  { name: "0", px: 0, p: "p-0", m: "m-0", gap: "gap-0" },
+  { name: "0.5", px: 2, p: "p-0.5", m: "m-0.5", gap: "gap-0.5" },
+  { name: "1", px: 4, p: "p-1", m: "m-1", gap: "gap-1" },
+  { name: "2", px: 8, p: "p-2", m: "m-2", gap: "gap-2" },
+  { name: "3", px: 12, p: "p-3", m: "m-3", gap: "gap-3" },
+  { name: "4", px: 16, p: "p-4", m: "m-4", gap: "gap-4" },
+  { name: "6", px: 24, p: "p-6", m: "m-6", gap: "gap-6" },
+  { name: "8", px: 32, p: "p-8", m: "m-8", gap: "gap-8" },
+  { name: "12", px: 48, p: "p-12", m: "m-12", gap: "gap-12" },
+  { name: "16", px: 64, p: "p-16", m: "m-16", gap: "gap-16" },
 ];
 
 const shadowScale = [
@@ -418,9 +425,9 @@ export const SpacingPlayground: Story = {
     const [margin, setMargin] = useState("4");
     const [gap, setGap] = useState("4");
 
-    const pClass = `p-${padding}`;
-    const mClass = `m-${margin}`;
-    const gClass = `gap-${gap}`;
+    const pClass = playgroundSteps.find((s) => s.name === padding)?.p ?? "p-4";
+    const mClass = playgroundSteps.find((s) => s.name === margin)?.m ?? "m-4";
+    const gClass = playgroundSteps.find((s) => s.name === gap)?.gap ?? "gap-4";
 
     function handleReset() {
       setPadding("4");
@@ -531,15 +538,17 @@ export const SpacingPlayground: Story = {
               <CardTitle className="text-base">Padding Preview</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="relative border-2 border-dashed border-(--color-interactive-primary)/40 bg-(--color-interactive-primary)/5 rounded">
-                <span className="absolute top-1.5 left-2 text-[10px] font-mono text-(--color-text-info)">
+              <div className="space-y-1">
+                <p className="text-[10px] font-mono text-(--color-text-info)">
                   padding area
-                </span>
+                </p>
                 <div
-                  className={`${pClass} bg-(--color-background-primary) border-2 border-(--color-interactive-primary) rounded m-4`}
+                  className={`${pClass} border-2 border-dashed border-(--color-interactive-primary)/40 bg-(--color-interactive-primary)/5 rounded`}
                 >
-                  <div className="text-sm text-center text-(--color-text-secondary) py-2">
-                    Content
+                  <div className="bg-(--color-background-primary) border-2 border-(--color-interactive-primary) rounded">
+                    <div className="text-sm text-center text-(--color-text-secondary) py-2">
+                      Content
+                    </div>
                   </div>
                 </div>
               </div>
@@ -555,15 +564,17 @@ export const SpacingPlayground: Story = {
               <CardTitle className="text-base">Margin Preview</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="border-2 border-dashed border-(--color-status-warning)/40 bg-(--color-status-warning)/5 rounded p-1">
-                <span className="block text-[10px] font-mono text-(--color-status-warning) px-1 pb-1">
+              <div className="space-y-1">
+                <p className="text-[10px] font-mono text-(--color-status-warning)">
                   margin area
-                </span>
-                <div
-                  className={`${mClass} bg-(--color-background-primary) border-2 border-(--color-status-warning) rounded p-4`}
-                >
-                  <div className="text-sm text-center text-(--color-text-secondary)">
-                    Content
+                </p>
+                <div className="border-2 border-dashed border-(--color-status-warning)/40 bg-(--color-status-warning)/5 rounded">
+                  <div
+                    className={`${mClass} bg-(--color-background-primary) border-2 border-(--color-status-warning) rounded p-4`}
+                  >
+                    <div className="text-sm text-center text-(--color-text-secondary)">
+                      Content
+                    </div>
                   </div>
                 </div>
               </div>
