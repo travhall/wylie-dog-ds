@@ -51,13 +51,16 @@ jobs:
       - name: Install Playwright Chromium
         run: pnpm --filter storybook exec playwright install chromium --with-deps
 
-      - name: Run Tests
-        run: pnpm test
-
-      - name: Run Accessibility Tests
-        run: pnpm test:a11y
-
-      - name: Generate Coverage Report
+      # Consolidated per plans/078-deduplicate-test-workflow-runs.md: `test`,
+      # `test:a11y`, and `test:coverage` all ran the same Vitest file set
+      # sequentially (test:a11y's a11y specs are already matched by the
+      # default `include` globs, and test:coverage is `test` + `--coverage`).
+      # `test:coverage` alone produces every prior output: full suite pass,
+      # a11y assertions, and the coverage report. Tradeoff: a failure here no
+      # longer tells you from the step name alone whether it was a plain
+      # test, an a11y assertion, or a coverage-generation failure — check the
+      # Vitest output in this step's log instead.
+      - name: Run Tests with Coverage
         run: pnpm test:coverage
 
       - name: Upload Coverage to Codecov
