@@ -7,6 +7,10 @@
 // Cache for detecting changes
 let cachedCollectionIds: Set<string> = new Set();
 let cachedVariableCount = 0;
+// Per-variable value fingerprint (variable ID -> JSON.stringify(valuesByMode)).
+// Rebuilt from scratch every poll so removed variables fall out of the cache
+// on their own rather than needing explicit cleanup (see Step 3).
+let cachedVariableValues: Map<string, string> = new Map();
 let syncInterval: ReturnType<typeof setInterval> | null = null;
 
 /**
@@ -22,14 +26,38 @@ async function checkForVariableChanges(): Promise<void> {
       0
     );
 
-    // Check if collections or variables changed
+    // Fetch all local variables' current values in a single bulk call.
+    // Figma's Variable object has no cheap version/timestamp field to diff
+    // against, so an in-place value edit (e.g. tweaking a color) can only be
+    // detected by comparing actual values. getLocalVariablesAsync() returns
+    // every local Variable (including valuesByMode) in one round trip, which
+    // is far cheaper than fetching each variable individually via
+    // getVariableByIdAsync in a loop.
+    const variables = await figma.variables.getLocalVariablesAsync();
+    const currentVariableValues = new Map<string, string>();
+    for (const variable of variables) {
+      // Compare stringified values directly rather than a custom hash, so a
+      // fingerprint collision can never mask a real value change.
+      currentVariableValues.set(
+        variable.id,
+        JSON.stringify(variable.valuesByMode)
+      );
+    }
+
+    // Check if collections, variable count, or any variable's value changed
     const collectionsChanged =
       cachedCollectionIds.size !== currentCollectionIds.size ||
       ![...cachedCollectionIds].every((id) => currentCollectionIds.has(id));
 
     const variablesChanged = cachedVariableCount !== currentVariableCount;
 
-    if (collectionsChanged || variablesChanged) {
+    const valuesChanged = [...cachedVariableValues].some(
+      ([id, fingerprint]) =>
+        currentVariableValues.has(id) &&
+        currentVariableValues.get(id) !== fingerprint
+    );
+
+    if (collectionsChanged || variablesChanged || valuesChanged) {
       console.log(
         `🔄 Variables changed: ${cachedVariableCount} → ${currentVariableCount} variables, ${cachedCollectionIds.size} → ${currentCollectionIds.size} collections`
       );
@@ -37,6 +65,7 @@ async function checkForVariableChanges(): Promise<void> {
       // Update cache
       cachedCollectionIds = currentCollectionIds;
       cachedVariableCount = currentVariableCount;
+      cachedVariableValues = currentVariableValues;
 
       // Notify UI to refresh
       figma.ui.postMessage({
