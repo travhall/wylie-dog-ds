@@ -32,5 +32,25 @@ describe("utils", () => {
     it("should handle single class", () => {
       expect(cn("single")).toBe("single");
     });
+
+    it("should resolve conflicting plain Tailwind utilities so the last wins", () => {
+      expect(cn("p-2", "p-4")).toBe("p-4");
+    });
+
+    it("should resolve conflicting arbitrary-property token classes (this repo's -(--token-name) convention) so the last wins", () => {
+      expect(cn("bg-(--color-avatar-background)", "bg-(--color-x)")).toBe(
+        "bg-(--color-x)"
+      );
+    });
+
+    it("should still filter falsy values before merging", () => {
+      expect(cn("a", undefined, false, null, "b")).toBe("a b");
+    });
+
+    it("should preserve non-conflicting classes", () => {
+      const result = cn("flex", "items-center");
+      expect(result).toContain("flex");
+      expect(result).toContain("items-center");
+    });
   });
 });

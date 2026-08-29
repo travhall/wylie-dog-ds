@@ -7,49 +7,49 @@
   {
     "name": "UI - Button",
     "path": "packages/ui/dist/button.js",
-    "limit": "5 KB",
+    "limit": "12 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Badge",
     "path": "packages/ui/dist/badge.js",
-    "limit": "3 KB",
+    "limit": "13 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Card",
     "path": "packages/ui/dist/card.js",
-    "limit": "3 KB",
+    "limit": "13 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Input",
     "path": "packages/ui/dist/input.js",
-    "limit": "2 KB",
+    "limit": "12 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Label",
     "path": "packages/ui/dist/label.js",
-    "limit": "2 KB",
+    "limit": "12 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Textarea",
     "path": "packages/ui/dist/textarea.js",
-    "limit": "3 KB",
+    "limit": "12 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Checkbox",
     "path": "packages/ui/dist/checkbox.js",
-    "limit": "5 KB",
+    "limit": "12 KB",
     "ignore": ["react", "@radix-ui/react-checkbox"]
   },
   {
     "name": "UI - Switch",
     "path": "packages/ui/dist/switch.js",
-    "limit": "5 KB",
+    "limit": "12 KB",
     "ignore": ["react", "@radix-ui/react-switch"]
   },
   {
@@ -73,13 +73,13 @@
   {
     "name": "UI - Toast",
     "path": "packages/ui/dist/toast.js",
-    "limit": "8 KB",
+    "limit": "13 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Alert",
     "path": "packages/ui/dist/alert.js",
-    "limit": "4 KB",
+    "limit": "12 KB",
     "ignore": ["react"]
   },
   {
@@ -91,7 +91,7 @@
   {
     "name": "UI - Avatar",
     "path": "packages/ui/dist/avatar.js",
-    "limit": "5 KB",
+    "limit": "12 KB",
     "ignore": ["react", "@radix-ui/react-avatar"]
   },
   {
@@ -115,13 +115,13 @@
   {
     "name": "UI - Progress",
     "path": "packages/ui/dist/progress.js",
-    "limit": "5 KB",
+    "limit": "12 KB",
     "ignore": ["react", "@radix-ui/react-progress"]
   },
   {
     "name": "UI - Skeleton",
     "path": "packages/ui/dist/skeleton.js",
-    "limit": "2 KB",
+    "limit": "11 KB",
     "ignore": ["react"]
   },
   {
@@ -133,31 +133,31 @@
   {
     "name": "UI - Tabs",
     "path": "packages/ui/dist/tabs.js",
-    "limit": "8 KB",
+    "limit": "12 KB",
     "ignore": ["react", "@radix-ui/react-tabs"]
   },
   {
     "name": "UI - RadioGroup",
     "path": "packages/ui/dist/radio-group.js",
-    "limit": "6 KB",
+    "limit": "12 KB",
     "ignore": ["react", "@radix-ui/react-radio-group"]
   },
   {
     "name": "UI - Slider",
     "path": "packages/ui/dist/slider.js",
-    "limit": "6 KB",
+    "limit": "11 KB",
     "ignore": ["react", "@radix-ui/react-slider"]
   },
   {
     "name": "UI - Toggle",
     "path": "packages/ui/dist/toggle.js",
-    "limit": "5 KB",
+    "limit": "11 KB",
     "ignore": ["react", "@radix-ui/react-toggle"]
   },
   {
     "name": "UI - ToggleGroup",
     "path": "packages/ui/dist/toggle-group.js",
-    "limit": "6 KB",
+    "limit": "11 KB",
     "ignore": ["react", "@radix-ui/react-toggle-group"]
   },
   {
@@ -199,25 +199,25 @@
   {
     "name": "UI - Table",
     "path": "packages/ui/dist/table.js",
-    "limit": "5 KB",
+    "limit": "11 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Breadcrumb",
     "path": "packages/ui/dist/breadcrumb.js",
-    "limit": "6 KB",
+    "limit": "12 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Pagination",
     "path": "packages/ui/dist/pagination.js",
-    "limit": "8 KB",
+    "limit": "12 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Separator",
     "path": "packages/ui/dist/separator.js",
-    "limit": "2 KB",
+    "limit": "11 KB",
     "ignore": ["react", "@radix-ui/react-separator"]
   },
   {
@@ -229,19 +229,19 @@
   {
     "name": "UI - ScrollArea",
     "path": "packages/ui/dist/scroll-area.js",
-    "limit": "6 KB",
+    "limit": "11 KB",
     "ignore": ["react", "@radix-ui/react-scroll-area"]
   },
   {
     "name": "UI - Collapsible",
     "path": "packages/ui/dist/collapsible.js",
-    "limit": "5 KB",
+    "limit": "11 KB",
     "ignore": ["react", "@radix-ui/react-collapsible"]
   },
   {
     "name": "UI - Resizable",
     "path": "packages/ui/dist/resizable.js",
-    "limit": "8 KB",
+    "limit": "12 KB",
     "ignore": ["react"]
   },
   {

@@ -297,8 +297,20 @@ describe("Accordion", () => {
     it("should have border styling", () => {
       render(<TestAccordion type="single" collapsible />);
 
-      const item = screen.getByText("Section 1").closest('[class*="border-b"]');
-      expect(item).toHaveClass("border-b");
+      // AccordionItem's default border classes are
+      // `border-b border-(length:--space-accordion-item-border-width) border-(--color-accordion-border)`.
+      // `cn()` (backed by tailwind-merge as of plan 073) correctly collapses
+      // the literal `border-b` shorthand into the token-based all-sides
+      // width that follows it in the same class list — same computed
+      // border-bottom-width (the token resolves to 1px, matching Tailwind's
+      // `border-b` default), just expressed via the token class instead.
+      const item = screen
+        .getByText("Section 1")
+        .closest('[class*="border-(--color-accordion-border)"]');
+      expect(item).toHaveClass(
+        "border-(length:--space-accordion-item-border-width)"
+      );
+      expect(item).toHaveClass("border-(--color-accordion-border)");
     });
   });
 
