@@ -325,7 +325,17 @@ export class ConflictAwareGitHubClient extends GitHubClient {
     exportData: ExportData[],
     resolutions: ConflictResolution[]
   ): ExportData[] {
-    const resolutionMap = new Map(resolutions.map((r) => [r.conflictId, r]));
+    // Keyed by tokenPath (e.g. "colors.primary"), not the raw conflictId.
+    // This mirrors ConflictResolver.parseConflictId(), which strips the
+    // "conflict_{type}_" prefix off conflictId to recover the same
+    // tokenPath used below — conflictId itself is never a valid lookup key
+    // since it also embeds the conflict type.
+    const resolutionMap = new Map(
+      resolutions.map((r) => [
+        this.extractTokenPathFromConflictId(r.conflictId),
+        r,
+      ])
+    );
 
     return exportData.map((collection) => {
       const updatedCollection: ExportData = {};
@@ -339,6 +349,11 @@ export class ConflictAwareGitHubClient extends GitHubClient {
           collectionData.variables
         )) {
           const tokenPath = `${collectionName}.${tokenName}`;
+          // Trace: generateConflictId("colors.primary", "value-change") ->
+          // "conflict_value-change_colors.primary" -> extractTokenPathFromConflictId
+          // strips the "conflict_value-change_" prefix -> "colors.primary",
+          // which is identical to the tokenPath built above. Map key and
+          // lookup key now match.
           const resolution = resolutionMap.get(tokenPath);
 
           if (resolution && resolution.token) {
@@ -356,6 +371,17 @@ export class ConflictAwareGitHubClient extends GitHubClient {
 
       return updatedCollection;
     });
+  }
+
+  /**
+   * Recover the tokenPath a conflictId was generated from.
+   * Mirrors ConflictDetector.generateConflictId()'s format
+   * (`conflict_${type}_${tokenPath}`) and ConflictResolver.parseConflictId()'s
+   * parsing of it, so resolutions can be matched against tokens by tokenPath.
+   */
+  private extractTokenPathFromConflictId(conflictId: string): string {
+    const match = conflictId.match(/^conflict_[^_]+_(.+)$/);
+    return match ? match[1] : conflictId;
   }
 
   /**
