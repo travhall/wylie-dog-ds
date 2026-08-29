@@ -210,10 +210,166 @@ export class GitHubClient {
     files: Array<{ filename: string; content: string }>,
     commitMessage: string
   ): Promise<{ changed: boolean; ref?: string }> {
-    // Delegated to directSync internals — see directSync() below.
-    // This method exists to satisfy StorageAdapter; call syncTokens() for
-    // the full push flow with PR support.
-    throw new Error("Use syncTokens() to push files via the GitHub adapter");
+    if (!this.octokit || !this.config) {
+      throw new Error("GitHub client not initialized");
+    }
+
+    // Get the current commit SHA
+    const { data: refData } = await this.octokit.git.getRef({
+      owner: this.config.owner,
+      repo: this.config.repo,
+      ref: `heads/${this.config.branch}`,
+    });
+    const currentCommitSha = refData.object.sha;
+
+    // Get the current tree
+    const { data: currentCommit } = await this.octokit.git.getCommit({
+      owner: this.config.owner,
+      repo: this.config.repo,
+      commit_sha: currentCommitSha,
+    });
+    const baseTreeSha = currentCommit.tree.sha;
+
+    // Create blobs for all files, but only if content actually changed.
+    // Mirrors directSync()'s skip-unchanged logic: fetch existing content
+    // pinned to the captured commit SHA (not the moving branch ref) and
+    // compare byte-exact.
+    const tree: Array<{
+      path: string;
+      mode: "100644";
+      type: "blob";
+      sha: string;
+    }> = [];
+
+    for (const { filename, content } of files) {
+      const filePath = `${this.basePath()}/${filename}`;
+
+      let existingContent = "";
+      try {
+        const { data: existingFile } = await this.octokit.repos.getContent({
+          owner: this.config.owner,
+          repo: this.config.repo,
+          path: filePath,
+          ref: currentCommitSha,
+        });
+
+        if ("content" in existingFile && existingFile.content) {
+          existingContent = fromBase64(existingFile.content.replace(/\n/g, ""));
+        }
+      } catch (error: unknown) {
+        // File doesn't exist yet, will be created
+      }
+
+      if (content !== existingContent) {
+        const { data: blob } = await this.octokit.git.createBlob({
+          owner: this.config.owner,
+          repo: this.config.repo,
+          content: toBase64(content),
+          encoding: "base64",
+        });
+
+        tree.push({
+          path: filePath,
+          mode: "100644",
+          type: "blob",
+          sha: blob.sha,
+        });
+      }
+    }
+
+    // If nothing changed, return early without creating a commit
+    if (tree.length === 0) {
+      return { changed: false };
+    }
+
+    // Create new tree
+    const { data: newTree } = await this.octokit.git.createTree({
+      owner: this.config.owner,
+      repo: this.config.repo,
+      base_tree: baseTreeSha,
+      tree,
+    });
+
+    // Create new commit
+    const { data: newCommit } = await this.octokit.git.createCommit({
+      owner: this.config.owner,
+      repo: this.config.repo,
+      message: commitMessage,
+      tree: newTree.sha,
+      parents: [currentCommitSha],
+    });
+
+    // Update branch reference — with one automatic rebase retry, mirroring
+    // directSync()'s handling of a concurrent commit landing mid-push (see
+    // that method's rebase-retry comment for the full rationale).
+    let commitShaForRef = newCommit.sha;
+
+    const tryUpdateRef = async (): Promise<void> => {
+      await this.octokit!.git.updateRef({
+        owner: this.config!.owner,
+        repo: this.config!.repo,
+        ref: `heads/${this.config!.branch}`,
+        sha: commitShaForRef,
+        force: false, // Explicit: never force push
+      });
+    };
+
+    try {
+      await tryUpdateRef();
+    } catch (updateError: unknown) {
+      const err = updateError as GitHubApiError;
+      const isNonFastForward =
+        err.status === 422 ||
+        err.message?.includes("not a fast forward") ||
+        err.message?.includes("Update is not a fast forward");
+
+      if (!isNonFastForward) {
+        throw updateError;
+      }
+
+      // Re-fetch the branch HEAD that raced ahead of us.
+      const { data: latestRef } = await this.octokit.git.getRef({
+        owner: this.config.owner,
+        repo: this.config.repo,
+        ref: `heads/${this.config.branch}`,
+      });
+      const latestSha = latestRef.object.sha;
+
+      const { data: latestCommit } = await this.octokit.git.getCommit({
+        owner: this.config.owner,
+        repo: this.config.repo,
+        commit_sha: latestSha,
+      });
+
+      // Reuse the same blobs — create a new tree on top of the real latest.
+      const { data: rebasedTree } = await this.octokit.git.createTree({
+        owner: this.config.owner,
+        repo: this.config.repo,
+        base_tree: latestCommit.tree.sha,
+        tree,
+      });
+
+      const { data: rebasedCommit } = await this.octokit.git.createCommit({
+        owner: this.config.owner,
+        repo: this.config.repo,
+        message: commitMessage,
+        tree: rebasedTree.sha,
+        parents: [latestSha],
+      });
+
+      commitShaForRef = rebasedCommit.sha;
+
+      try {
+        await tryUpdateRef();
+      } catch (retryError: unknown) {
+        // Two concurrent writes in a row — surface a clear message.
+        throw new Error(
+          "Branch has new commits since push started. Please try again – the plugin will automatically sync with the latest changes."
+        );
+      }
+    }
+
+    return { changed: true, ref: commitShaForRef };
   }
 
   // ─── Pull ──────────────────────────────────────────────────────────────────
