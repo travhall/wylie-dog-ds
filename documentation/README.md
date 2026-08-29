@@ -12,7 +12,7 @@ Central documentation hub for the Wylie Dog Design System.
 
 ## Documentation Structure
 
-```
+```text
 documentation/
 ├── guides/          # Development guides and best practices
 ├── reference/       # Technical reference documentation
@@ -67,7 +67,7 @@ Real problems found and solved in this design system, written up as
 problem/process/solution narratives for an outside reader (portfolio-facing,
 not internal-only). Each case study is its own folder under `case-studies/`
 with a `README.md` (start from [`TEMPLATE.md`](case-studies/TEMPLATE.md)) plus
-`before/` and `after/` subfolders for screenshots and other artifacts.
+`before/` and `after/` sub-folders for screenshots and other artifacts.
 
 Case studies can originate from either direction — a bug or gap found while
 auditing code (e.g. a token that wasn't actually wired to what it claimed to
