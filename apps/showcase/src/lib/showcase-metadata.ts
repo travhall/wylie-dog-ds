@@ -12,6 +12,7 @@
  * Pattern counts → walk apps/storybook/stories/patterns/**\/*.stories.tsx
  */
 
+import { cache } from "react";
 import fs from "fs";
 import path from "path";
 
@@ -365,7 +366,16 @@ export interface ShowcaseMeta {
   versions: PackageVersions;
 }
 
-export function getShowcaseMeta(): ShowcaseMeta {
+// Memoized with React's cache() so the ~10 synchronous fs reads/JSON parses
+// this pulls together run once per render pass instead of once per call site
+// (6 page components call this independently). Memoization is real under
+// Next.js's build/server runtime, where the `react-server` module condition
+// resolves to React's request-scoped cache implementation — but NOT under
+// this package's vitest config (`environment: "node"`, no `react-server`
+// condition), where `cache()` resolves to a plain pass-through stub. That
+// mismatch means no unit test in this repo can assert memoization directly;
+// see Plan 079 in plans/README.md for the investigation.
+export const getShowcaseMeta = cache((): ShowcaseMeta => {
   return {
     tokens: getTokenMeta(),
     tokenSubcategories: getTokenSubcategoryMeta(),
@@ -375,4 +385,4 @@ export function getShowcaseMeta(): ShowcaseMeta {
     patternCategories: getPatternCategoryCounts(),
     versions: getPackageVersions(),
   };
-}
+});
