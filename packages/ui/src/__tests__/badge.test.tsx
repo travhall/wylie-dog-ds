@@ -568,11 +568,17 @@ describe("Badge", () => {
       render(<Badge className="text-lg">Badge</Badge>);
       const badge = screen.getByText("Badge");
 
-      // Should have base styles
+      // Should have non-conflicting base styles
       expect(badge).toHaveClass("inline-flex");
-      expect(badge).toHaveClass("text-(length:--font-size-badge-font-size-md)");
-      // And custom styles
+      // `text-lg` is passed as `className`, appended after the base
+      // `text-(length:--font-size-badge-font-size-md)` — both are font-size
+      // classes, so `cn()` (backed by tailwind-merge as of plan 073)
+      // correctly lets the last one win, matching the documented
+      // "className appended last, last wins" contract.
       expect(badge).toHaveClass("text-lg");
+      expect(badge).not.toHaveClass(
+        "text-(length:--font-size-badge-font-size-md)"
+      );
     });
 
     it("should maintain inline-flex layout", () => {
@@ -809,9 +815,14 @@ describe("Badge", () => {
       );
 
       const badge = screen.getByText("Badge");
-      // Will have both variant and custom class
+      // `bg-custom-color` is passed as `className`, appended after the
+      // variant's default `bg-(--color-badge-default-background)` — both
+      // are background-color classes, so `cn()` (backed by tailwind-merge
+      // as of plan 073) correctly lets the custom className win and drops
+      // the conflicting default, matching the documented "className
+      // appended last, last wins" contract.
       expect(badge).toHaveClass("bg-custom-color");
-      expect(badge).toHaveClass("bg-(--color-badge-default-background)");
+      expect(badge).not.toHaveClass("bg-(--color-badge-default-background)");
     });
   });
 
