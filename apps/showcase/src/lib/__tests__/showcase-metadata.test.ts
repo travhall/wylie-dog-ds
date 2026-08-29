@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import fs from "fs";
 import path from "path";
 import {
@@ -57,5 +57,33 @@ describe("getPackageVersions", () => {
     expect(versions.tokens).not.toBe("unknown");
     expect(versions.storybook).not.toBe("unknown");
     expect(versions.plugin).not.toBe("unknown");
+  });
+});
+
+describe("getTokenMeta error guarding (loadSync)", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("throws a clear, filename-specific error instead of a raw fs error when the sync file is missing", () => {
+    vi.spyOn(fs, "readFileSync").mockImplementation(() => {
+      const err = new Error(
+        "ENOENT: no such file or directory"
+      ) as NodeJS.ErrnoException;
+      err.code = "ENOENT";
+      throw err;
+    });
+
+    expect(() => getTokenMeta()).toThrow(
+      /Failed to load token sync file "primitive\.json"/
+    );
+  });
+
+  it("throws a clear, filename-specific error instead of a raw parse error when the sync file contains malformed JSON", () => {
+    vi.spyOn(fs, "readFileSync").mockReturnValue("not json");
+
+    expect(() => getTokenMeta()).toThrow(
+      /Failed to load token sync file "primitive\.json"/
+    );
   });
 });

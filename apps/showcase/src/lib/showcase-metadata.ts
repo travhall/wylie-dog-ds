@@ -51,11 +51,16 @@ interface SyncCollection {
 }
 
 function loadSync(filename: string): SyncCollection {
-  const raw = fs.readFileSync(path.join(TOKENS_SYNC_DIR, filename), "utf-8");
-  const parsed = JSON.parse(raw) as Array<Record<string, SyncCollection>>;
-  // Each file is an array with one object whose only key is the collection name
-  const collection = Object.values(parsed[0])[0];
-  return collection;
+  try {
+    const raw = fs.readFileSync(path.join(TOKENS_SYNC_DIR, filename), "utf-8");
+    const parsed = JSON.parse(raw) as Array<Record<string, SyncCollection>>;
+    // Each file is an array with one object whose only key is the collection name
+    const collection = Object.values(parsed[0])[0];
+    return collection;
+  } catch (cause) {
+    const message = cause instanceof Error ? cause.message : String(cause);
+    throw new Error(`Failed to load token sync file "${filename}": ${message}`);
+  }
 }
 
 function countTokensInFile(filename: string): number {
