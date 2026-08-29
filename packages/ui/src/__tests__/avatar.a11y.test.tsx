@@ -3,13 +3,67 @@
  * Tests for semantic roles, automatic alt text generation, and initials
  */
 
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import { vi, beforeEach, afterEach } from "vitest";
 import { Avatar, AvatarImage, AvatarFallback } from "../avatar";
 import {
   expectToPassA11yAudit,
   testScreenReaderAnnouncements,
   describeA11y,
 } from "../lib/test-utils";
+
+/**
+ * Radix's `Avatar.Image` loads through an off-screen `new window.Image()`
+ * and only mounts the rendered `<img>` once loading status resolves to
+ * "loaded" — jsdom never actually fetches image URLs, so tests must stub
+ * `window.Image` to resolve synchronously. See avatar.test.tsx for the
+ * fuller explanation.
+ */
+class MockImage {
+  onload: ((event: { currentTarget: MockImage }) => void) | null = null;
+  onerror: (() => void) | null = null;
+  crossOrigin: string | null = null;
+  referrerPolicy = "";
+  naturalWidth = 0;
+  complete = false;
+  private _src = "";
+
+  addEventListener(type: "load" | "error", listener: () => void) {
+    if (type === "load") {
+      this.onload = listener as (event: { currentTarget: MockImage }) => void;
+    }
+    if (type === "error") this.onerror = listener;
+  }
+
+  removeEventListener(type: "load" | "error") {
+    if (type === "load") this.onload = null;
+    if (type === "error") this.onerror = null;
+  }
+
+  get src() {
+    return this._src;
+  }
+
+  set src(value: string) {
+    this._src = value;
+    this.complete = true;
+    if (!value || value.includes("broken")) {
+      this.naturalWidth = 0;
+      this.onerror?.();
+    } else {
+      this.naturalWidth = 100;
+      this.onload?.({ currentTarget: this });
+    }
+  }
+}
+
+beforeEach(() => {
+  vi.stubGlobal("Image", MockImage);
+});
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
 
 describeA11y("Avatar", () => {
   describe("Semantic Role Handling", () => {
@@ -64,53 +118,57 @@ describeA11y("Avatar", () => {
   });
 
   describe("AvatarImage Accessibility", () => {
-    it("generates alt text from name", () => {
+    it("generates alt text from name", async () => {
       render(
         <Avatar name="John Doe">
           <AvatarImage src="/john.jpg" name="John Doe" />
         </Avatar>
       );
 
-      // Query the actual img element specifically
-      const image = screen.getByAltText("Profile picture of John Doe");
+      // Query the actual img element specifically, once it has loaded
+      const image = await screen.findByAltText("Profile picture of John Doe");
       expect(image).toHaveAttribute("alt", "Profile picture of John Doe");
       expect(image).toHaveAttribute("loading", "lazy");
     });
 
-    it("supports custom alt text", () => {
+    it("supports custom alt text", async () => {
       render(
         <Avatar>
           <AvatarImage src="/custom.jpg" alt="Custom description" />
         </Avatar>
       );
 
-      // Query by alt text
-      const image = screen.getByAltText("Custom description");
+      // Query by alt text, once it has loaded
+      const image = await screen.findByAltText("Custom description");
       expect(image).toHaveAttribute("alt", "Custom description");
     });
 
-    it("supports empty alt text for decorative images", () => {
+    it("supports empty alt text for decorative images", async () => {
       const { container } = render(
         <Avatar>
           <AvatarImage src="/decorative.jpg" alt="" />
         </Avatar>
       );
 
-      // Find the actual img element by src attribute
+      // Find the actual img element by src attribute, once it has loaded
+      await waitFor(() => {
+        expect(
+          container.querySelector('img[src="/decorative.jpg"]')
+        ).toBeInTheDocument();
+      });
       const image = container.querySelector('img[src="/decorative.jpg"]');
-      expect(image).toBeInTheDocument();
       expect(image?.getAttribute("alt")).toBe("");
     });
 
-    it("provides fallback alt text without name", () => {
+    it("provides fallback alt text without name", async () => {
       render(
         <Avatar>
           <AvatarImage src="/unknown.jpg" />
         </Avatar>
       );
 
-      // Query by alt text
-      const image = screen.getByAltText("Profile picture");
+      // Query by alt text, once it has loaded
+      const image = await screen.findByAltText("Profile picture");
       expect(image).toHaveAttribute("alt", "Profile picture");
     });
   });
@@ -203,8 +261,8 @@ describeA11y("Avatar", () => {
       const avatar = screen.getByLabelText("John Doe's profile picture");
       expect(avatar).toBeInTheDocument();
 
-      // Image should have proper alt text
-      const image = screen.getByAltText("Profile picture of John Doe");
+      // Image should have proper alt text, once it has loaded
+      const image = await screen.findByAltText("Profile picture of John Doe");
       expect(image).toHaveAttribute("alt", "Profile picture of John Doe");
     });
 
