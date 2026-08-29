@@ -41,5 +41,8 @@
     "typescript": "catalog:",
     "typescript-eslint": "^8.68.0"
   },
-  "packageManager": "pnpm@10.28.2"
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": ">=22"
+  }
 }
