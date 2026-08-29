@@ -1,9 +1,65 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { axe } from "jest-axe";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import "@testing-library/jest-dom";
 import { Avatar, AvatarImage, AvatarFallback } from "../avatar";
+
+/**
+ * Radix's `Avatar.Image` loads through an off-screen `new window.Image()`
+ * (see @radix-ui/react-avatar's `useImageLoadingStatus`), not through the
+ * rendered `<img>` element itself — the `<img>` only mounts once loading
+ * status resolves to "loaded". jsdom never actually fetches image URLs, so
+ * without stubbing `window.Image` the loading status would stay stuck at
+ * "loading" forever. This stub resolves synchronously so tests don't need
+ * to wait on a real network round trip: any `src` containing "broken"
+ * resolves as a load failure, everything else resolves as a successful load.
+ */
+class MockImage {
+  onload: ((event: { currentTarget: MockImage }) => void) | null = null;
+  onerror: (() => void) | null = null;
+  crossOrigin: string | null = null;
+  referrerPolicy = "";
+  naturalWidth = 0;
+  complete = false;
+  private _src = "";
+
+  addEventListener(type: "load" | "error", listener: () => void) {
+    if (type === "load") {
+      this.onload = listener as (event: { currentTarget: MockImage }) => void;
+    }
+    if (type === "error") this.onerror = listener;
+  }
+
+  removeEventListener(type: "load" | "error") {
+    if (type === "load") this.onload = null;
+    if (type === "error") this.onerror = null;
+  }
+
+  get src() {
+    return this._src;
+  }
+
+  set src(value: string) {
+    this._src = value;
+    this.complete = true;
+    if (!value || value.includes("broken")) {
+      this.naturalWidth = 0;
+      this.onerror?.();
+    } else {
+      this.naturalWidth = 100;
+      this.onload?.({ currentTarget: this });
+    }
+  }
+}
+
+beforeEach(() => {
+  vi.stubGlobal("Image", MockImage);
+});
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
 
 describe("Avatar", () => {
   describe("Accessibility", () => {
@@ -14,6 +70,11 @@ describe("Avatar", () => {
           <AvatarFallback name="John Doe" />
         </Avatar>
       );
+      await waitFor(() => {
+        expect(
+          screen.getByAltText("Profile picture of John Doe")
+        ).toBeInTheDocument();
+      });
       const results = await axe(container);
       expect(results.violations).toHaveLength(0);
     });
@@ -78,27 +139,27 @@ describe("Avatar", () => {
   });
 
   describe("AvatarImage", () => {
-    it("should render image with src", () => {
+    it("should render image with src once loaded", async () => {
       render(
         <Avatar>
           <AvatarImage src="https://example.com/avatar.jpg" alt="Profile" />
         </Avatar>
       );
-      const img = screen.getByRole("img", { name: "Profile" });
+      const img = await screen.findByRole("img", { name: "Profile" });
       expect(img).toHaveAttribute("src", "https://example.com/avatar.jpg");
     });
 
-    it("should generate accessible alt text from name", () => {
+    it("should generate accessible alt text from name", async () => {
       render(
         <Avatar>
           <AvatarImage src="/avatar.jpg" name="John Doe" />
         </Avatar>
       );
-      const img = screen.getByAltText("Profile picture of John Doe");
+      const img = await screen.findByAltText("Profile picture of John Doe");
       expect(img).toBeInTheDocument();
     });
 
-    it("should use explicit alt text when provided", () => {
+    it("should use explicit alt text when provided", async () => {
       render(
         <Avatar>
           <AvatarImage
@@ -108,36 +169,45 @@ describe("Avatar", () => {
           />
         </Avatar>
       );
-      const img = screen.getByAltText("Custom alt text");
+      const img = await screen.findByAltText("Custom alt text");
       expect(img).toBeInTheDocument();
     });
 
-    it("should support empty alt for decorative images", () => {
+    it("should support empty alt for decorative images", async () => {
       const { container } = render(
         <Avatar>
           <AvatarImage src="/avatar.jpg" alt="" />
         </Avatar>
       );
+      await waitFor(() => {
+        expect(container.querySelector("img")).toBeInTheDocument();
+      });
       const img = container.querySelector("img");
       expect(img).toHaveAttribute("alt", "");
     });
 
-    it("should have lazy loading", () => {
+    it("should have lazy loading", async () => {
       const { container } = render(
         <Avatar>
           <AvatarImage src="/avatar.jpg" alt="Profile" />
         </Avatar>
       );
+      await waitFor(() => {
+        expect(container.querySelector("img")).toBeInTheDocument();
+      });
       const img = container.querySelector("img");
       expect(img).toHaveAttribute("loading", "lazy");
     });
 
-    it("should have proper aspect ratio classes", () => {
+    it("should have proper aspect ratio classes", async () => {
       const { container } = render(
         <Avatar>
           <AvatarImage src="/avatar.jpg" alt="Profile" />
         </Avatar>
       );
+      await waitFor(() => {
+        expect(container.querySelector("img")).toBeInTheDocument();
+      });
       const img = container.querySelector("img");
       expect(img).toHaveClass(
         "aspect-square",
@@ -220,6 +290,59 @@ describe("Avatar", () => {
         "justify-center",
         "rounded-(--space-avatar-rounded)"
       );
+    });
+  });
+
+  describe("Fallback conditional rendering", () => {
+    it("renders only the image, not the fallback, once the image loads successfully", async () => {
+      render(
+        <Avatar name="John Doe">
+          <AvatarImage src="/avatar.jpg" name="John Doe" />
+          <AvatarFallback name="John Doe" />
+        </Avatar>
+      );
+
+      await waitFor(() => {
+        expect(
+          screen.getByAltText("Profile picture of John Doe")
+        ).toBeInTheDocument();
+      });
+      expect(screen.queryByText("JD")).not.toBeInTheDocument();
+    });
+
+    it("renders only the fallback, not the image, once the image fails to load", async () => {
+      render(
+        <Avatar name="John Doe">
+          <AvatarImage src="/broken-avatar.jpg" name="John Doe" />
+          <AvatarFallback name="John Doe" />
+        </Avatar>
+      );
+
+      await waitFor(() => {
+        expect(screen.getByText("JD")).toBeInTheDocument();
+      });
+      expect(
+        screen.queryByAltText("Profile picture of John Doe")
+      ).not.toBeInTheDocument();
+    });
+
+    it("renders the fallback immediately when no AvatarImage is present", () => {
+      render(
+        <Avatar name="John Doe">
+          <AvatarFallback name="John Doe" />
+        </Avatar>
+      );
+      expect(screen.getByText("JD")).toBeInTheDocument();
+    });
+
+    it("keeps generating the same aria-label and initials as before this fix (regression guard)", () => {
+      render(
+        <Avatar name="Jane Smith" semanticRole="user">
+          <AvatarFallback name="Jane Smith" />
+        </Avatar>
+      );
+      expect(screen.getByLabelText("Jane Smith's avatar")).toBeInTheDocument();
+      expect(screen.getByText("JS")).toBeInTheDocument();
     });
   });
 
@@ -316,17 +439,23 @@ describe("Avatar", () => {
     it("should forward ref to avatar element", () => {
       const ref = React.createRef<HTMLDivElement>();
       render(<Avatar ref={ref} />);
-      expect(ref.current).toBeInstanceOf(HTMLDivElement);
+      // Radix's Avatar.Root renders a <span> under the hood; HTMLSpanElement
+      // and HTMLDivElement are structurally identical in the DOM typings
+      // (both plain HTMLElement subtypes), so the declared ref type is
+      // unaffected even though the concrete tag changed from div to span.
+      expect(ref.current).toBeInstanceOf(HTMLSpanElement);
     });
 
-    it("should forward ref to AvatarImage", () => {
+    it("should forward ref to AvatarImage once loaded", async () => {
       const ref = React.createRef<HTMLImageElement>();
       render(
         <Avatar>
           <AvatarImage ref={ref} src="/avatar.jpg" alt="Profile" />
         </Avatar>
       );
-      expect(ref.current).toBeInstanceOf(HTMLImageElement);
+      await waitFor(() => {
+        expect(ref.current).toBeInstanceOf(HTMLImageElement);
+      });
     });
 
     it("should forward ref to AvatarFallback", () => {
@@ -336,20 +465,24 @@ describe("Avatar", () => {
           <AvatarFallback ref={ref} name="John Doe" />
         </Avatar>
       );
-      expect(ref.current).toBeInstanceOf(HTMLDivElement);
+      // Radix's Avatar.Fallback renders a <span> under the hood — see note
+      // on the "should forward ref to avatar element" test above.
+      expect(ref.current).toBeInstanceOf(HTMLSpanElement);
     });
 
-    it("should work with both image and fallback", () => {
+    it("should show only the fallback until the image resolves, then only the image", async () => {
       render(
         <Avatar name="John Doe">
           <AvatarImage src="/avatar.jpg" name="John Doe" />
           <AvatarFallback name="John Doe" />
         </Avatar>
       );
-      expect(
-        screen.getByAltText("Profile picture of John Doe")
-      ).toBeInTheDocument();
-      expect(screen.getByText("JD")).toBeInTheDocument();
+      await waitFor(() => {
+        expect(
+          screen.getByAltText("Profile picture of John Doe")
+        ).toBeInTheDocument();
+      });
+      expect(screen.queryByText("JD")).not.toBeInTheDocument();
     });
 
     it("should support data attributes", () => {

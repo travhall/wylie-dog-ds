@@ -1,5 +1,6 @@
 // avatar.tsx
 import React from "react";
+import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "./lib/utils";
 
@@ -43,7 +44,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
     };
 
     return (
-      <div
+      <AvatarPrimitive.Root
         ref={ref}
         className={cn(avatarVariants({ size }), className)}
         role={semanticRole === "decorative" ? "presentation" : "img"}
@@ -72,7 +73,7 @@ export const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>(
     };
 
     return (
-      <img
+      <AvatarPrimitive.Image
         ref={ref}
         className={cn("aspect-square h-full w-full object-cover", className)}
         alt={getAltText()}
@@ -121,7 +122,7 @@ export const AvatarFallback = React.forwardRef<
   const displayContent = children || getInitials();
 
   return (
-    <div
+    <AvatarPrimitive.Fallback
       ref={ref}
       className={cn(
         "flex h-full w-full items-center justify-center rounded-(--space-avatar-rounded) bg-(--color-avatar-fallback-background) text-(--color-avatar-fallback-text) font-(--font-weight-avatar-fallback-font-weight)",
@@ -132,7 +133,7 @@ export const AvatarFallback = React.forwardRef<
       {...props}
     >
       {displayContent}
-    </div>
+    </AvatarPrimitive.Fallback>
   );
 });
 AvatarFallback.displayName = "AvatarFallback";
