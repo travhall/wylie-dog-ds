@@ -604,23 +604,46 @@ export class GitHubClient {
     const filesUpdated: string[] = [];
 
     // Update each token file on the new branch
-    for (const collectionData of exportData) {
-      const collectionName = Object.keys(collectionData)[0];
-      const tokens = collectionData[collectionName];
+    try {
+      for (const collectionData of exportData) {
+        const collectionName = Object.keys(collectionData)[0];
+        const tokens = collectionData[collectionName];
 
-      // Create file path (e.g., tokens/primitive.json)
-      const fileName = `${collectionName.toLowerCase().replace(/\s+/g, "-")}.json`;
-      const filePath = this.config.tokenPath.endsWith("/")
-        ? `${this.config.tokenPath}${fileName}`
-        : `${this.config.tokenPath}/${fileName}`;
+        // Create file path (e.g., tokens/primitive.json)
+        const fileName = `${collectionName.toLowerCase().replace(/\s+/g, "-")}.json`;
+        const filePath = this.config.tokenPath.endsWith("/")
+          ? `${this.config.tokenPath}${fileName}`
+          : `${this.config.tokenPath}/${fileName}`;
 
-      const fileContent =
-        JSON.stringify([{ [collectionName]: tokens }], null, 2) + "\n";
+        const fileContent =
+          JSON.stringify([{ [collectionName]: tokens }], null, 2) + "\n";
 
-      await this.updateFile(filePath, fileContent, branchName);
-      filesUpdated.push(filePath);
+        await this.updateFile(filePath, fileContent, branchName);
+        filesUpdated.push(filePath);
 
-      console.log(`Updated file: ${filePath}`);
+        console.log(`Updated file: ${filePath}`);
+      }
+    } catch (error) {
+      // The branch was already created above; if a file update fails
+      // partway through the loop, don't leave it orphaned in the repo.
+      try {
+        await this.octokit.git.deleteRef({
+          owner: this.config.owner,
+          repo: this.config.repo,
+          ref: `heads/${branchName}`,
+        });
+        console.log(
+          `⚠️ Sync failed partway through, deleted orphaned branch: ${branchName}`
+        );
+      } catch (cleanupError) {
+        // A failed cleanup must not mask the real failure the user needs to
+        // see — log it and still re-throw the original update error below.
+        console.error(
+          `Failed to clean up orphaned branch ${branchName}:`,
+          cleanupError
+        );
+      }
+      throw error;
     }
 
     // Create pull request
