@@ -20,6 +20,8 @@ jobs:
   lint:
     name: Lint & Format Check
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
