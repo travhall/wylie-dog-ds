@@ -4,40 +4,40 @@ import { Button } from "@wyliedog/ui/button";
 
 const curves = [
   {
-    label: "Standard",
-    token: "--ease-standard",
-    bezier: "0.2, 0, 0, 1",
+    label: "Default",
+    token: "--transition-easing-default",
+    bezier: "0.4, 0, 0.2, 1",
     path: "M0,60 C12,60 0,0 60,0",
     desc: "Persistent elements",
   },
   {
-    label: "Emphasized",
-    token: "--ease-emphasized",
-    bezier: "0.2, 0, 0, 1.4",
+    label: "In",
+    token: "--transition-easing-in",
+    bezier: "0.4, 0, 1, 1",
     path: "M0,60 C12,60 0,-8 60,0",
     desc: "Key moments",
   },
   {
-    label: "Decelerate",
-    token: "--ease-decelerate",
+    label: "Out",
+    token: "--transition-easing-out",
     bezier: "0, 0, 0.2, 1",
     path: "M0,60 C0,60 36,0 60,0",
     desc: "Elements entering",
   },
   {
-    label: "Accelerate",
-    token: "--ease-accelerate",
-    bezier: "0.4, 0, 1, 1",
+    label: "In-Out",
+    token: "--transition-easing-in-out",
+    bezier: "0.4, 0, 0.2, 1",
     path: "M0,60 C24,60 60,60 60,0",
     desc: "Elements leaving",
   },
 ];
 
-const durations = [120, 200, 320, 600];
+const durations = [150, 200, 300, 500];
 
 export function MotionPreview() {
   const [curveIdx, setCurveIdx] = useState(0);
-  const [dur, setDur] = useState(320);
+  const [dur, setDur] = useState(300);
   const c = curves[curveIdx];
 
   return (
