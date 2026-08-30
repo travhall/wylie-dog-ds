@@ -47,7 +47,7 @@ Managed with pnpm workspaces and Turborepo. Package manager: `pnpm@10.28.2`.
 | Tailwind CSS       | 4.2     |
 | Storybook          | 10.3    |
 | Vite               | 8.0     |
-| Next.js (showcase) | 16.2    |
+| Next.js (showcase) | 16.3    |
 | Vitest             | 4.1     |
 | Turborepo          | 2.9     |
 | Style Dictionary   | 5.4     |
