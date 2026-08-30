@@ -25,28 +25,64 @@ export const siteHeaderVariants = cva(
   }
 );
 
+const siteHeaderInnerVariants = cva("flex items-center justify-between", {
+  variants: {
+    size: {
+      default: "h-16",
+      sm: "h-14",
+    },
+  },
+  defaultVariants: {
+    size: "default",
+  },
+});
+
 export interface SiteHeaderProps
   extends
     React.HTMLAttributes<HTMLElement>,
-    VariantProps<typeof siteHeaderVariants> {
+    VariantProps<typeof siteHeaderVariants>,
+    VariantProps<typeof siteHeaderInnerVariants> {
   logo?: React.ReactNode;
   navigation?: Array<{
     label: string;
     href: string;
   }>;
   actions?: React.ReactNode;
+  containerClassName?: string;
+  renderNavItem?: (
+    item: { label: string; href: string },
+    index: number
+  ) => React.ReactNode;
 }
 
 export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
-  ({ className, variant, logo, navigation = [], actions, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      logo,
+      navigation = [],
+      actions,
+      containerClassName,
+      renderNavItem,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <header
         className={cn(siteHeaderVariants({ variant }), className)}
         ref={ref}
         {...props}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+        <div
+          className={cn(
+            "container mx-auto px-4 sm:px-6 lg:px-8",
+            containerClassName
+          )}
+        >
+          <div className={siteHeaderInnerVariants({ size })}>
             {/* Logo Section */}
             <div className="flex items-center">
               {logo || (
@@ -65,16 +101,20 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
                 aria-label="Main navigation"
               >
                 <NavigationMenuList>
-                  {navigation.map((item, index) => (
-                    <NavigationMenuItem key={index}>
-                      <NavigationMenuLink
-                        href={item.href}
-                        className="group inline-flex h-9 w-max items-center justify-center rounded-(--border-radius-md) bg-(--color-background-primary) px-4 py-2 text-(length:--font-size-sm) font-(--font-weight-medium) transition-colors hover:bg-(--color-interactive-secondary) hover:text-(--color-text-primary) focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary) focus:outline-none disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)"
-                      >
-                        {item.label}
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  ))}
+                  {navigation.map((item, index) =>
+                    renderNavItem ? (
+                      renderNavItem(item, index)
+                    ) : (
+                      <NavigationMenuItem key={index}>
+                        <NavigationMenuLink
+                          href={item.href}
+                          className="group inline-flex h-9 w-max items-center justify-center rounded-(--border-radius-md) bg-(--color-background-primary) px-4 py-2 text-(length:--font-size-sm) font-(--font-weight-medium) transition-colors hover:bg-(--color-interactive-secondary) hover:text-(--color-text-primary) focus:bg-(--color-interactive-secondary) focus:text-(--color-text-primary) focus:outline-none disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)"
+                        >
+                          {item.label}
+                        </NavigationMenuLink>
+                      </NavigationMenuItem>
+                    )
+                  )}
                 </NavigationMenuList>
               </NavigationMenu>
             )}

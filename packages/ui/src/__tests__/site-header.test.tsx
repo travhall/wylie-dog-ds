@@ -48,6 +48,25 @@ describe("SiteHeader", () => {
     ).toBeInTheDocument();
   });
 
+  it("renders custom nav items via renderNavItem", () => {
+    render(
+      <SiteHeader
+        navigation={defaultNavigation}
+        renderNavItem={(item) => (
+          <a key={item.href} href={item.href} data-testid="custom-nav-item">
+            {item.label.toUpperCase()}
+          </a>
+        )}
+      />
+    );
+    expect(
+      screen.getByRole("link", { name: "COMPONENTS" })
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("link", { name: "Docs" })
+    ).not.toBeInTheDocument();
+  });
+
   it("forwards ref correctly", () => {
     const ref = { current: null };
     render(<SiteHeader ref={ref} />);
