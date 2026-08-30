@@ -193,10 +193,17 @@ function generateCSSVariable(token, name) {
 //   (bg-polar-night-500, text-blue-700, etc.); `inline` is safe because these
 //   values never change between themes.
 //
-// Tier 2 — Semantic (`@theme` non-inline):
+// Tier 2 — Semantic (`@theme static`):
 //   Themeable tokens (--color-background-primary, --color-text-primary).
 //   Emitted as @theme (no `inline`) so generated utilities reference the var
 //   via var(--...), allowing .dark overrides to flow through at runtime.
+//   Must use `static` — a plain `@theme` block only survives Tailwind v4's
+//   usage-based tree-shaking if a utility class referencing the var is found
+//   in that specific build's own scanned source. Consumers like `packages/ui`
+//   build in isolation and may not reference every semantic utility, so
+//   without `static` unused vars silently vanish from that build's light
+//   mode output (dark mode is unaffected — it's emitted as literal resolved
+//   CSS, not a real @theme directive).
 //
 // Tier 3 — Component (`:root`):
 //   Internal component plumbing (--color-button-primary-background,
@@ -262,7 +269,7 @@ ${darkVars.join("\n")}
 ${primitiveVars.join("\n")}
 }
 
-@theme {
+@theme static {
 ${semanticVars.join("\n")}
 }
 
