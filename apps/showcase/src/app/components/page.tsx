@@ -473,7 +473,7 @@ export default function ComponentsPage() {
             num="01"
             title="Content Display"
             desc="Surfaces that present information — cards, tables, calendars, carousels. Compose them; don't customize them."
-            count={7}
+            count={categoryCount("Content-Display")}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
@@ -905,7 +905,7 @@ export default function ComponentsPage() {
             num="02"
             title="Feedback & Status"
             desc="Tell the user what's happening — is it loading, did it work, did something go wrong? All four states map to the same role tokens."
-            count={4}
+            count={categoryCount("Feedback-Status")}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
@@ -1153,8 +1153,8 @@ export default function ComponentsPage() {
           <SectionHeader
             num="03"
             title="Inputs & Controls"
-            desc="The shape of every form. All thirteen wire to the same Form schema and share keyboard, focus, and validation behavior."
-            count={13}
+            desc="The shape of every form. All twelve wire to the same Form schema and share keyboard, focus, and validation behavior."
+            count={categoryCount("Inputs-Controls")}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
@@ -1871,7 +1871,7 @@ export default function ComponentsPage() {
             num="04"
             title="Layout & Structure"
             desc="The shape of the page itself — aspect, scroll, split, collapse. Headless utilities you compose around your content."
-            count={5}
+            count={categoryCount("Layout-Structure")}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
@@ -2038,7 +2038,7 @@ export default function ComponentsPage() {
             num="05"
             title="Navigation"
             desc="Way finding — from a single breadcrumb to a global command palette. All six share keyboard semantics and the same focus-ring token."
-            count={6}
+            count={categoryCount("Navigation")}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <CompCard
@@ -2326,7 +2326,7 @@ export default function ComponentsPage() {
             num="06"
             title="Overlays & Popovers"
             desc="Anything that floats above the page — modal, sheet, popover, tooltip. All eight go through Radix's portal and share focus-trap and dismiss behavior."
-            count={8}
+            count={categoryCount("Overlays-Popovers")}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
