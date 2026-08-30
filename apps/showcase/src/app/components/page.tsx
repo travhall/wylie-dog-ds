@@ -157,7 +157,7 @@ export default function ComponentsPage() {
                 </span>
                 <span className="text-(--color-text-tertiary)">·</span>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-                  @wyliedog/ui v1.4
+                  @wyliedog/ui v{meta.versions.ui}
                 </span>
               </div>
 
