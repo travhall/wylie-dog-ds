@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Button, buttonVariants } from "@wyliedog/ui/button";
 import { SiteHeader } from "@wyliedog/ui/compositions/site-header";
+import { SiteFooter } from "@wyliedog/ui/compositions/site-footer";
 import { fontVariables } from "@/lib/fonts";
 import { WylieDogLogo } from "./wyliedoglogo";
 import { NavLink } from "./nav-link";
@@ -157,81 +158,61 @@ export default function RootLayout({
         {/* ── Page content — full width; each page manages its own containers ── */}
         <main className="min-h-screen">{children}</main>
 
-        {/* ── Site Footer - NEEDS TO BE REPLACED WITH packages/ui/src/compositions/site-footer.tsx component / site-footer.tsx needs to evolve to support this design first ── */}
-        <footer className="border-t border-(--color-border-primary) bg-(--color-background-primary) border-default">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
-              {/* Brand */}
-              <div className="col-span-2 md:col-span-1">
-                <div className="flex items-center gap-2">
-                  <span
-                    className="grid h-7 w-7 place-items-center rounded-md shrink-0"
-                    style={{ background: "var(--color-interactive-primary)" }}
-                  >
-                    <WylieDogLogo />
-                  </span>
-                  <span className="font-serif text-base font-semibold tracking-tight">
-                    Wylie Dog
-                  </span>
-                </div>
-                <p className="mt-3 text-sm text-(--color-text-secondary)">
-                  The shared design system for everything we ship.
-                </p>
-              </div>
-
-              {/* Link columns */}
-              {footerColumns.map((col) => (
-                <div key={col.heading}>
-                  <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
-                    {col.heading}
-                  </p>
-                  <ul className="mt-3 space-y-2 text-sm">
-                    {col.links.map((link) => {
-                      const isExternal = link.href.startsWith("http");
-                      return (
-                        <li key={link.href}>
-                          {isExternal ? (
-                            <a
-                              href={link.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
-                            >
-                              {link.label}
-                            </a>
-                          ) : (
-                            <Link
-                              href={link.href}
-                              className="text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
-                            >
-                              {link.label}
-                            </Link>
-                          )}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
+        <SiteFooter
+          className="bg-(--color-background-primary) border-default"
+          containerClassName="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          columnsClassName="grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10"
+          logo={
+            <div className="flex items-center gap-2">
+              <span
+                className="grid h-7 w-7 place-items-center rounded-md shrink-0"
+                style={{ background: "var(--color-interactive-primary)" }}
+              >
+                <WylieDogLogo />
+              </span>
+              <span className="font-serif text-base font-semibold tracking-tight">
+                Wylie Dog
+              </span>
             </div>
-
-            {/* Copyright */}
-            <div className="mt-10 border-t border-(--color-border-primary) pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <p className="font-mono text-[11px] text-(--color-text-tertiary)">
-                © 2026 Wylie Dog
-              </p>
-              <div className="inline-flex items-center gap-2">
-                <span
-                  className="h-1.5 w-1.5 rounded-full"
-                  style={{ background: "var(--color-status-success)" }}
-                />
-                <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
-                  All systems operational
-                </span>
-              </div>
+          }
+          description="The shared design system for everything we ship."
+          columns={footerColumns.map((col) => ({
+            title: col.heading,
+            links: col.links,
+          }))}
+          renderLink={(link) => {
+            const isExternal = link.href.startsWith("http");
+            return isExternal ? (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                href={link.href}
+                className="text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
+              >
+                {link.label}
+              </Link>
+            );
+          }}
+          copyright="© 2026 Wylie Dog"
+          extra={
+            <div className="inline-flex items-center gap-2">
+              <span
+                className="h-1.5 w-1.5 rounded-full"
+                style={{ background: "var(--color-status-success)" }}
+              />
+              <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+                All systems operational
+              </span>
             </div>
-          </div>
-        </footer>
+          }
+        />
       </body>
     </html>
   );
