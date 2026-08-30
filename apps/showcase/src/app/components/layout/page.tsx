@@ -2,8 +2,9 @@ import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import { Badge } from "@wyliedog/ui/badge";
 import { Separator } from "@wyliedog/ui/separator";
 import { ScrollArea } from "@wyliedog/ui/scroll-area";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@wyliedog/ui/tabs";
+import { AspectRatio } from "@wyliedog/ui/aspect-ratio";
 import { CheckCircle2 } from "lucide-react";
+import { getComponentCategoryCounts } from "@/lib/showcase-metadata";
 
 const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
   const map = {
@@ -93,38 +94,25 @@ export default function LayoutPage() {
       ),
     },
     {
-      name: "Tabs",
+      name: "Aspect Ratio",
       description:
-        "Tabbed interface for switching between related views within a shared container.",
+        "Maintains a consistent width-to-height ratio for content such as images and videos.",
       status: "stable" as const,
       preview: (
-        <div className="w-full">
-          <Tabs defaultValue="one">
-            <TabsList className="h-8">
-              <TabsTrigger value="one" className="text-xs h-7">
-                Tab One
-              </TabsTrigger>
-              <TabsTrigger value="two" className="text-xs h-7">
-                Tab Two
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent
-              value="one"
-              className="mt-2 text-xs text-(--color-text-secondary)"
-            >
-              Content for tab one.
-            </TabsContent>
-            <TabsContent
-              value="two"
-              className="mt-2 text-xs text-(--color-text-secondary)"
-            >
-              Content for tab two.
-            </TabsContent>
-          </Tabs>
+        <div className="w-full max-w-40">
+          <AspectRatio ratio={16 / 9}>
+            <div className="bg-(--color-background-secondary) w-full h-full flex items-center justify-center text-xs text-(--color-text-tertiary) rounded">
+              16:9
+            </div>
+          </AspectRatio>
         </div>
       ),
     },
   ];
+
+  const count =
+    getComponentCategoryCounts().find((c) => c.dirName === "Layout-Structure")
+      ?.count ?? components.length;
 
   return (
     <div className="relative mx-auto max-w-7xl space-y-12 p-4 lg:p-8 xl:p-12">
@@ -137,12 +125,13 @@ export default function LayoutPage() {
             variant="outline"
             className="glass rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-(--color-interactive-primary) border-(--color-interactive-primary)/20"
           >
-            5 components
+            {count} components
           </Badge>
         </div>
         <p className="text-lg text-(--color-text-secondary) leading-relaxed max-w-2xl">
           Structural components for organizing and arranging page content:
-          Collapsible, Resizable panels, Scroll Area, Separator, and Tabs.
+          Aspect Ratio, Collapsible, Resizable panels, Scroll Area, and
+          Separator.
         </p>
       </section>
 
