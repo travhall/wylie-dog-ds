@@ -58,6 +58,18 @@ describe("SiteFooter", () => {
     expect(screen.getByRole("link", { name: "GitHub" })).toBeInTheDocument();
   });
 
+  it("does not render the placeholder paragraph when a real logo is supplied without description", () => {
+    render(
+      <SiteFooter logo={<span>Real Logo</span>} columns={defaultColumns} />
+    );
+    expect(screen.getByText("Real Logo")).toBeInTheDocument();
+    expect(
+      screen.queryByText(
+        "Building amazing experiences with modern design systems."
+      )
+    ).not.toBeInTheDocument();
+  });
+
   it("forwards ref correctly", () => {
     const ref = { current: null };
     render(<SiteFooter ref={ref} />);

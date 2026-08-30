@@ -30,6 +30,7 @@ export interface SiteFooterProps
     React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof siteFooterVariants> {
   logo?: React.ReactNode;
+  description?: React.ReactNode;
   columns?: FooterColumn[];
   copyright?: string;
   socialLinks?: Array<{
@@ -45,6 +46,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
       className,
       variant,
       logo,
+      description,
       columns = [],
       copyright,
       socialLinks = [],
@@ -72,11 +74,16 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                       <span className="text-(length:--font-size-lg) font-(--font-weight-bold)">
                         Logo
                       </span>
+                      <p className="text-(length:--font-size-sm) text-(--color-text-secondary)">
+                        Building amazing experiences with modern design systems.
+                      </p>
                     </div>
                   )}
-                  <p className="text-(length:--font-size-sm) text-(--color-text-secondary)">
-                    Building amazing experiences with modern design systems.
-                  </p>
+                  {description && (
+                    <p className="text-(length:--font-size-sm) text-(--color-text-secondary)">
+                      {description}
+                    </p>
+                  )}
                 </div>
 
                 {/* Footer Columns — each is a named nav landmark for screen reader navigation */}
