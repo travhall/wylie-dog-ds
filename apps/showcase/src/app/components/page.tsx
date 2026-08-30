@@ -1,5 +1,13 @@
 import Link from "next/link";
 import { Button } from "@wyliedog/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@wyliedog/ui/breadcrumb";
 import { SectionSubnav } from "@/components/section-subnav";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 
@@ -2046,33 +2054,21 @@ export default function ComponentsPage() {
               desc="Truncating trail with overflow menu and customizable separator."
               href="breadcrumb"
               preview={
-                <div className="flex items-center gap-1.5 text-xs text-(--color-text-primary)">
-                  <a className="text-(--color-text-secondary) hover:text-(--color-text-primary)">
-                    Components
-                  </a>
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-3 w-3 text-(--color-text-tertiary)"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path d="m9 18 6-6-6-6" />
-                  </svg>
-                  <a className="text-(--color-text-secondary) hover:text-(--color-text-primary)">
-                    Inputs
-                  </a>
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-3 w-3 text-(--color-text-tertiary)"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path d="m9 18 6-6-6-6" />
-                  </svg>
-                  <span className="font-medium">Combobox</span>
-                </div>
+                <Breadcrumb className="text-xs">
+                  <BreadcrumbList>
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="#">Components</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="#">Inputs</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbPage>Combobox</BreadcrumbPage>
+                    </BreadcrumbItem>
+                  </BreadcrumbList>
+                </Breadcrumb>
               }
             />
 
