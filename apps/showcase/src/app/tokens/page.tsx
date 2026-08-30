@@ -888,17 +888,17 @@ export default function TokensPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
             {[
               {
-                step: "xs",
+                step: "sm",
                 px: "2px",
                 surface: "Tags & chips",
-                token: "--radius-xs",
+                token: "--border-radius-sm",
                 preview: (
                   <div className="flex flex-wrap gap-1.5 justify-center">
                     {["Design", "Systems", "OKLCH"].map((t) => (
                       <span
                         key={t}
                         className="px-2 py-0.5 text-[11px] font-mono border border-(--color-border-primary) text-(--color-text-secondary)"
-                        style={{ borderRadius: "2px" }}
+                        style={{ borderRadius: "var(--border-radius-sm)" }}
                       >
                         {t}
                       </span>
@@ -907,25 +907,31 @@ export default function TokensPage() {
                 ),
               },
               {
-                step: "sm",
-                px: "6px",
+                step: "md",
+                px: "4px",
                 surface: "Buttons & inputs",
-                token: "--radius-sm",
+                token: "--border-radius-md",
                 preview: (
-                  <Button size="sm" style={{ borderRadius: "6px" }}>
+                  <Button
+                    size="sm"
+                    style={{ borderRadius: "var(--border-radius-md)" }}
+                  >
                     Continue
                   </Button>
                 ),
               },
               {
-                step: "md",
-                px: "10px",
+                step: "lg",
+                px: "8px",
                 surface: "Menus & popovers",
-                token: "--radius-md",
+                token: "--border-radius-lg",
                 preview: (
                   <div
                     className="border border-(--color-border-primary) bg-(--color-background-primary) w-full shadow-sm text-sm"
-                    style={{ borderRadius: "10px", overflow: "hidden" }}
+                    style={{
+                      borderRadius: "var(--border-radius-lg)",
+                      overflow: "hidden",
+                    }}
                   >
                     {["Edit", "Duplicate", "Archive"].map((item, i) => (
                       <div
@@ -939,14 +945,14 @@ export default function TokensPage() {
                 ),
               },
               {
-                step: "lg",
-                px: "14px",
+                step: "xl",
+                px: "12px",
                 surface: "Cards & tiles",
-                token: "--radius-lg",
+                token: "--border-radius-xl",
                 preview: (
                   <div
                     className="border border-(--color-border-primary) bg-(--color-background-primary) p-3 w-full"
-                    style={{ borderRadius: "14px" }}
+                    style={{ borderRadius: "var(--border-radius-xl)" }}
                   >
                     <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
                       Pro plan
@@ -973,21 +979,21 @@ export default function TokensPage() {
                 ),
               },
               {
-                step: "xl",
-                px: "20px",
+                step: "2xl",
+                px: "16px",
                 surface: "Modals & sheets",
-                token: "--radius-xl",
+                token: "--border-radius-2xl",
                 preview: (
                   <div
                     className="border border-(--color-border-primary) bg-(--color-background-primary) p-3 w-full shadow-md"
-                    style={{ borderRadius: "20px" }}
+                    style={{ borderRadius: "var(--border-radius-2xl)" }}
                   >
                     <p className="text-sm font-semibold text-(--color-text-primary) mb-2">
                       Invite teammate
                     </p>
                     <div
                       className="rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) px-2.5 py-1.5 text-xs text-(--color-text-tertiary) mb-2"
-                      style={{ borderRadius: "8px" }}
+                      style={{ borderRadius: "var(--border-radius-lg)" }}
                     >
                       name@company.com
                     </div>
@@ -996,14 +1002,14 @@ export default function TokensPage() {
                         variant="outline"
                         size="sm"
                         className="flex-1"
-                        style={{ borderRadius: "8px" }}
+                        style={{ borderRadius: "var(--border-radius-lg)" }}
                       >
                         Cancel
                       </Button>
                       <Button
                         size="sm"
                         className="flex-1"
-                        style={{ borderRadius: "8px" }}
+                        style={{ borderRadius: "var(--border-radius-lg)" }}
                       >
                         Send
                       </Button>
