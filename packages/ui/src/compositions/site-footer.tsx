@@ -38,6 +38,13 @@ export interface SiteFooterProps
     href: string;
     icon?: React.ReactNode;
   }>;
+  renderLink?: (
+    link: { label: string; href: string },
+    index: number
+  ) => React.ReactNode;
+  extra?: React.ReactNode;
+  containerClassName?: string;
+  columnsClassName?: string;
 }
 
 export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
@@ -50,6 +57,10 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
       columns = [],
       copyright,
       socialLinks = [],
+      renderLink,
+      extra,
+      containerClassName,
+      columnsClassName,
       ...props
     },
     ref
@@ -63,10 +74,20 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
         ref={ref}
         {...props}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div
+          className={cn(
+            "container mx-auto px-4 sm:px-6 lg:px-8 py-12",
+            containerClassName
+          )}
+        >
           {(variant ?? "default") === "default" && columns.length > 0 && (
             <>
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8">
+              <div
+                className={cn(
+                  "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8",
+                  columnsClassName
+                )}
+              >
                 {/* Logo/Brand Column */}
                 <div className="col-span-2 md:col-span-1">
                   {logo || (
@@ -95,12 +116,16 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                     <ul className="space-y-2">
                       {column.links.map((link, linkIndex) => (
                         <li key={linkIndex}>
-                          <a
-                            href={link.href}
-                            className="text-sm text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
-                          >
-                            {link.label}
-                          </a>
+                          {renderLink ? (
+                            renderLink(link, linkIndex)
+                          ) : (
+                            <a
+                              href={link.href}
+                              className="text-sm text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
+                            >
+                              {link.label}
+                            </a>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -133,6 +158,8 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                 ))}
               </div>
             )}
+
+            {extra}
           </div>
         </div>
       </footer>

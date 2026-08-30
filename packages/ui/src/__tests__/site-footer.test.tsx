@@ -70,6 +70,30 @@ describe("SiteFooter", () => {
     ).not.toBeInTheDocument();
   });
 
+  it("renders custom link markup via renderLink", () => {
+    render(
+      <SiteFooter
+        columns={defaultColumns}
+        renderLink={(link) => (
+          <a key={link.href} href={link.href} data-testid="custom-link">
+            {link.label.toUpperCase()}
+          </a>
+        )}
+      />
+    );
+    expect(
+      screen.getByRole("link", { name: "COMPONENTS" })
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("link", { name: "Components" })
+    ).not.toBeInTheDocument();
+  });
+
+  it("renders the extra slot in the bottom bar", () => {
+    render(<SiteFooter extra={<span>All systems operational</span>} />);
+    expect(screen.getByText("All systems operational")).toBeInTheDocument();
+  });
+
   it("forwards ref correctly", () => {
     const ref = { current: null };
     render(<SiteFooter ref={ref} />);
