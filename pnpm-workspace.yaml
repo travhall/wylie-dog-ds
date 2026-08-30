@@ -7,6 +7,9 @@ catalog:
   react: ^19.2.8
   react-dom: ^19.2.8
   tailwindcss: ^4.3.3
+  # Pinned exact (not ^) -- TypeScript 7.x has caused real compatibility
+  # issues when upgrading this and other projects. Confirm what actually
+  # broke before attempting a 7.x bump.
   typescript: 6.0.3
   vite: ^8.2.2
   vitest: ^4.1.11

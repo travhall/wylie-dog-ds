@@ -34,3 +34,5 @@ packages/ui/coverage
 apps/figma-plugin/wylie-dog-figma-builder
 plans
 documentation/case-studies
+apps/showcase/CLAUDE.md
+apps/showcase/AGENTS.md
