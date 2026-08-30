@@ -27,6 +27,7 @@ type Story = StoryObj;
 // Only the numeric spacing-scale keys are shown (the token export also carries
 // offset-*, blur-*, tracking-* etc. entries that are not part of the linear scale).
 const SPACING_SCALE_KEYS = [
+  "010",
   "025",
   "050",
   "100",
@@ -68,11 +69,18 @@ const spacingScale = SPACING_SCALE_KEYS.map((name) => {
 // source scanner can find and generate them — a dynamically-interpolated
 // `p-(--space-${n})` is invisible to the scanner and silently produces no
 // CSS for any value it can't already see written out elsewhere.
-// Note: Tailwind's default scale has a "0.5" (2px) step with no equivalent
-// design token — the scale jumps 025 (1px) straight to 050 (4px) — so 025 is
-// used here instead of reproducing a step the token system doesn't have.
+// Note: 010 (1px) and 025 (2px) were previously a single token — the scale
+// had a 1px hairline living at the "025" name with no true 2px step. Fixed
+// upstream in the primitive scale: 010 now holds the 1px hairline value,
+// freeing 025 to mean its formula-correct 2px.
 const playgroundSteps = [
   { name: "0", p: "p-(--space-0)", m: "m-(--space-0)", gap: "gap-(--space-0)" },
+  {
+    name: "010",
+    p: "p-(--space-010)",
+    m: "m-(--space-010)",
+    gap: "gap-(--space-010)",
+  },
   {
     name: "025",
     p: "p-(--space-025)",

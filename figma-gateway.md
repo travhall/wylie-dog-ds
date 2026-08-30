@@ -40,6 +40,8 @@ Setting line-height to "Auto" in Figma produces inaccurate component dimensions 
 | Compute absolute px values at build time         | **Yes**  | Option A — see below                                                                           |
 | "Unitless Line Height & Tokens" community plugin | Unknown  | [Figma Community](https://www.figma.com/community/plugin/1577516978004090936/) — not evaluated |
 
+<!-- cSpell:ignore Unitless -->
+
 ---
 
 ## Current State (Option C)
@@ -56,7 +58,7 @@ This is intentional and acceptable for now. The CSS is correct. The Figma diverg
 
 Add a dedicated build step that produces a **separate Figma-specific export file** with computed absolute values — distinct from the semantic source tokens. Figma imports from this computed file instead of the raw sync source.
 
-```
+```text
 io/sync/*.json          ← source of truth (semantic, unchanged)
       ↓
 pnpm build              ← existing CSS pipeline (unchanged)
@@ -108,7 +110,7 @@ This is a workflow change for anyone managing the Figma connection — the plugi
 6. **Retroactive component correction** — run the gateway and update all previously built Figma components whose line-heights are wrong in one pass. (~0.5 day)
 7. **Documentation** — explain source/export split for future token authors. (~0.5 day)
 
-**Total estimate: 3–4 days**
+### Total estimate: 3–4 days
 
 ### Pros
 

@@ -736,6 +736,7 @@ export type CssVarName =
   | "--sheet-close-button-opacity-hover"
   | "--slider-thumb-disabled-opacity"
   | "--space-0"
+  | "--space-010"
   | "--space-025"
   | "--space-050"
   | "--space-100"
@@ -1924,6 +1925,7 @@ export declare const cssVars: Readonly<{
   "sheetCloseButtonOpacityHover": "--sheet-close-button-opacity-hover";
   "sliderThumbDisabledOpacity": "--slider-thumb-disabled-opacity";
   "space0": "--space-0";
+  "space010": "--space-010";
   "space025": "--space-025";
   "space050": "--space-050";
   "space100": "--space-100";

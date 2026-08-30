@@ -4632,10 +4632,10 @@
         },
         "scroll-area.scrollbar-padding": {
           "$type": "spacing",
-          "$value": "{space.025}",
+          "$value": "{space.010}",
           "valuesByMode": {
-            "Light": "{space.025}",
-            "Dark": "{space.025}"
+            "Light": "{space.010}",
+            "Dark": "{space.010}"
           }
         },
         "context-menu.checkbox-padding": {

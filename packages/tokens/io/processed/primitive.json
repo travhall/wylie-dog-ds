@@ -575,9 +575,13 @@
     "$type": "spacing",
     "$value": "0px"
   },
-  "space.025": {
+  "space.010": {
     "$type": "spacing",
     "$value": "1px"
+  },
+  "space.025": {
+    "$type": "spacing",
+    "$value": "2px"
   },
   "space.050": {
     "$type": "spacing",

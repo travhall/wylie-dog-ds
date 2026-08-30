@@ -2315,7 +2315,7 @@
   },
   "scroll-area.scrollbar-padding": {
     "$type": "spacing",
-    "$value": "{space.025}"
+    "$value": "{space.010}"
   },
   "context-menu.checkbox-padding": {
     "$type": "spacing",

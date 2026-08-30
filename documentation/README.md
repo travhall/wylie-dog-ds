@@ -74,7 +74,7 @@ auditing code (e.g. a token that wasn't actually wired to what it claimed to
 represent), or a change that started in Figma and worked its way into code.
 
 - `a11y-tertiary/` - Before/after screenshots from a dark-mode contrast fix (write-up pending)
-- [`spacing-scale-gap/`](case-studies/spacing-scale-gap/README.md) - Missing 2px spacing token, traced through Figma → code → Figma via Token Bridge (write-up complete, implementation pending)
+- [`spacing-scale-gap/`](case-studies/spacing-scale-gap/README.md) - Missing 2px spacing token, traced through Figma → code → Figma via Token Bridge (in progress)
 
 ## Archive
 
