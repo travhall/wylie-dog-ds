@@ -214,7 +214,7 @@ export default function ComponentsPage() {
                 >
                   <span
                     className="h-1.5 w-1.5 rounded-full"
-                    style={{ background: "var(--color-success)" }}
+                    style={{ background: "var(--color-status-success)" }}
                   />
                   7 components rendered
                 </div>
@@ -262,13 +262,13 @@ export default function ComponentsPage() {
                         className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
                         style={{
                           background:
-                            "color-mix(in oklch, var(--color-success) 18%, transparent)",
-                          color: "var(--color-success)",
+                            "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
+                          color: "var(--color-status-success)",
                         }}
                       >
                         <span
                           className="h-1.5 w-1.5 rounded-full"
-                          style={{ background: "var(--color-success)" }}
+                          style={{ background: "var(--color-status-success)" }}
                         />
                         Online
                       </span>
@@ -598,13 +598,13 @@ export default function ComponentsPage() {
                       className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-success) 18%, transparent)",
-                        color: "var(--color-success)",
+                          "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
+                        color: "var(--color-status-success)",
                       }}
                     >
                       <span
                         className="h-1.5 w-1.5 rounded-full"
-                        style={{ background: "var(--color-success)" }}
+                        style={{ background: "var(--color-status-success)" }}
                       />
                       Active
                     </span>
@@ -746,13 +746,13 @@ export default function ComponentsPage() {
                       className="ml-auto inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[9px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-success) 18%, transparent)",
-                        color: "var(--color-success)",
+                          "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
+                        color: "var(--color-status-success)",
                       }}
                     >
                       <span
                         className="h-1 w-1 rounded-full"
-                        style={{ background: "var(--color-success)" }}
+                        style={{ background: "var(--color-status-success)" }}
                       />
                       Active
                     </span>
@@ -838,7 +838,7 @@ export default function ComponentsPage() {
                       name: "Elena Mori",
                       role: "Lead",
                       status: "Active",
-                      color: "var(--color-success)",
+                      color: "var(--color-status-success)",
                     },
                     {
                       name: "Jude Reyes",
@@ -916,7 +916,7 @@ export default function ComponentsPage() {
                 <div className="w-full max-w-57.5 flex flex-col gap-1.5">
                   {[
                     {
-                      color: "var(--color-success)",
+                      color: "var(--color-status-success)",
                       msg: "Build passed · 3,402 tests",
                       icon: "m5 12 5 5L20 7",
                     },
@@ -1085,7 +1085,7 @@ export default function ComponentsPage() {
                     <span
                       className="grid h-5 w-5 place-items-center rounded-full shrink-0"
                       style={{
-                        background: "var(--color-success)",
+                        background: "var(--color-status-success)",
                         color: "var(--color-text-inverse)",
                       }}
                     >

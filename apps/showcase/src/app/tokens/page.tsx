@@ -512,7 +512,7 @@ export default function TokensPage() {
                     {
                       color: "oklch(60% 0.14 155)",
                       label: "Deployment succeeded",
-                      token: "--color-success · 60% L · 155h",
+                      token: "--color-status-success · 60% L · 155h",
                       icon: <path d="m5 12 5 5L20 7" />,
                     },
                     {
