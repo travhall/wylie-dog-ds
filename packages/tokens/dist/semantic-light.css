@@ -278,7 +278,7 @@
   --z-index-100: 100;
 }
 
-@theme {
+@theme static {
   --color-background-primary: oklch(0.991 0.003 264.45);
   --color-background-secondary: oklch(0.952 0.003 264.48);
   --color-background-tertiary: oklch(0.87 0.003 264.48);
