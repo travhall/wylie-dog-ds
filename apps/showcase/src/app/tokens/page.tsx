@@ -1107,7 +1107,7 @@ export default function TokensPage() {
                 {/* Popover */}
                 <div
                   className="absolute top-8 left-52 w-48 rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-3"
-                  style={{ boxShadow: "0 4px 12px -2px rgba(0,0,0,0.15)" }}
+                  style={{ boxShadow: "var(--shadow-md)" }}
                 >
                   <div className="absolute -top-2.5 left-3 glass-dark rounded-full px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-(--color-text-secondary)">
                     md · popover
@@ -1126,7 +1126,7 @@ export default function TokensPage() {
                 {/* Toast */}
                 <div
                   className="absolute bottom-24 left-1/2 -translate-x-1/2 w-64 rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-3 flex items-center gap-3"
-                  style={{ boxShadow: "0 8px 24px -4px rgba(0,0,0,0.2)" }}
+                  style={{ boxShadow: "var(--shadow-lg)" }}
                 >
                   <div className="absolute -top-2.5 left-3 glass-dark rounded-full px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-(--color-text-secondary)">
                     lg · toast
@@ -1152,7 +1152,7 @@ export default function TokensPage() {
                 {/* Modal */}
                 <div
                   className="absolute bottom-8 right-8 w-56 rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-4"
-                  style={{ boxShadow: "0 16px 48px -8px rgba(0,0,0,0.28)" }}
+                  style={{ boxShadow: "var(--shadow-xl)" }}
                 >
                   <div className="absolute -top-2.5 left-3 glass-dark rounded-full px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-(--color-text-secondary)">
                     xl · modal
