@@ -2,10 +2,38 @@
 import { useState } from "react";
 import { Button } from "@wyliedog/ui/button";
 
+// rowY has no exact token at any density (original values were 10px/14px/20px);
+// each is rounded down to the nearest real --space-* step so it lines up with
+// that density's (already-exact) gap token, preserving the ascending
+// Compact < Comfortable < Spacious progression.
 const densities = [
-  { label: "Compact", rowY: "10px", gap: "8px", avatar: "24px" },
-  { label: "Comfortable", rowY: "14px", gap: "12px", avatar: "32px" },
-  { label: "Spacious", rowY: "20px", gap: "16px", avatar: "40px" },
+  {
+    label: "Compact",
+    rowY: "8px",
+    rowYToken: "--space-100",
+    gap: "8px",
+    gapToken: "--space-100",
+    avatar: "24px",
+    avatarToken: "--space-300",
+  },
+  {
+    label: "Comfortable",
+    rowY: "12px",
+    rowYToken: "--space-150",
+    gap: "12px",
+    gapToken: "--space-150",
+    avatar: "32px",
+    avatarToken: "--space-400",
+  },
+  {
+    label: "Spacious",
+    rowY: "16px",
+    rowYToken: "--space-200",
+    gap: "16px",
+    gapToken: "--space-200",
+    avatar: "40px",
+    avatarToken: "--space-500",
+  },
 ];
 
 const members = [
@@ -151,15 +179,17 @@ export function SpacingDemo() {
       {/* Token readout footer */}
       <div className="border-t border-(--color-border-primary) bg-(--color-background-secondary) px-6 py-3 flex flex-wrap items-center gap-5 font-mono text-[10px] text-(--color-text-tertiary)">
         <span>
-          <span className="text-(--color-text-secondary)">--space-row-y:</span>{" "}
+          <span className="text-(--color-text-secondary)">{d.rowYToken}:</span>{" "}
           {d.rowY}
         </span>
         <span>
-          <span className="text-(--color-text-secondary)">--space-gap:</span>{" "}
+          <span className="text-(--color-text-secondary)">{d.gapToken}:</span>{" "}
           {d.gap}
         </span>
         <span>
-          <span className="text-(--color-text-secondary)">--space-avatar:</span>{" "}
+          <span className="text-(--color-text-secondary)">
+            {d.avatarToken}:
+          </span>{" "}
           {d.avatar}
         </span>
       </div>
