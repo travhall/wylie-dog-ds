@@ -210,7 +210,13 @@ export function getComponentCategoryCounts(): ComponentCategoryCount[] {
       try {
         count = fs
           .readdirSync(dirPath)
-          .filter((f) => f.endsWith(".stories.tsx")).length;
+          .filter(
+            (f) =>
+              f.endsWith(".stories.tsx") &&
+              !PATTERN_LEVEL_COMPONENTS.has(
+                f.replace(/\.stories\.tsx$/, ".tsx")
+              )
+          ).length;
       } catch {
         // empty
       }

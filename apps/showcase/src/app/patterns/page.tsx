@@ -1,7 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@wyliedog/ui/button";
-import { getShowcaseMeta } from "@/lib/showcase-metadata";
+import {
+  getShowcaseMeta,
+  getPatternCategoryCounts,
+} from "@/lib/showcase-metadata";
 
 /* ─── Pattern card ───────────────────────────────────────────── */
 function PatCard({
@@ -110,6 +113,8 @@ function CatHeader({
 
 export default function PatternsPage() {
   const meta = getShowcaseMeta();
+  const patternCategoryCount = (dirName: string) =>
+    getPatternCategoryCounts().find((c) => c.dirName === dirName)?.count ?? 0;
   return (
     <div className="min-h-screen bg-(--color-background-primary)">
       {/* ── HERO ───────────────────────────────────────────────── */}
@@ -345,7 +350,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
             num="01"
-            count={2}
+            count={patternCategoryCount("Authentication Patterns")}
             title="Authentication"
             desc="Sign-in, sign-up, and account recovery. The hard parts — validation states, async submission, error recovery, social SSO — are wired up so product teams don't re-invent the flow on every new surface."
           />
@@ -592,7 +597,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
             num="02"
-            count={2}
+            count={patternCategoryCount("Data Patterns")}
             title="Data display"
             desc="Browseable grids and showcase grids. Both share the same card primitive but differ in density and what they ask the user to do next."
           />
@@ -772,7 +777,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
             num="03"
-            count={1}
+            count={patternCategoryCount("Feedback Patterns")}
             title="Feedback"
             desc="When something fails, the pattern catches it. Error states aren't an afterthought — they're designed as carefully as the happy path."
           />
@@ -916,7 +921,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
             num="04"
-            count={2}
+            count={patternCategoryCount("Form Patterns")}
             title="Forms"
             desc="Form composition and validation are the largest source of bespoke UI in any product. These patterns close the gap so teams stop reinventing field groupings, error display, and async submit states."
           />
@@ -1144,7 +1149,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
             num="05"
-            count={1}
+            count={patternCategoryCount("Layout Patterns")}
             title="Layout"
             desc="The page shell — what holds every product surface together. One layout primitive wired for sidebar, content, and overlay regions, with responsive collapse built in."
           />
@@ -1324,7 +1329,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
             num="06"
-            count={2}
+            count={patternCategoryCount("Navigation Patterns")}
             title="Navigation"
             desc="Header and footer for marketing surfaces — the bookends of every public page. Used on this site too, so they're self-eating dog food."
           />
@@ -1491,7 +1496,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
             num="07"
-            count={3}
+            count={patternCategoryCount("Page Compositions")}
             title="Page compositions"
             desc="Pre-assembled marketing surfaces — the big building blocks of a public page. Each section composes lower-order patterns; the page composition wires them together end-to-end."
           />
@@ -1709,7 +1714,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
             num="08"
-            count={1}
+            count={patternCategoryCount("Responsive")}
             title="Responsive"
             desc={`Breakpoint-aware layout decisions. Not just "shrink the desktop" — structural reflows that pick the right pattern for each surface size.`}
           />
@@ -1884,7 +1889,7 @@ export default function PatternsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
             num="09"
-            count={1}
+            count={patternCategoryCount("Accessibility")}
             title="Accessibility"
             desc="Every component ships WCAG 2.2 AA–verified. These patterns demonstrate the practices behind that claim — focus management, error announcement, keyboard navigation, and visible focus rings backed by the token system."
           />

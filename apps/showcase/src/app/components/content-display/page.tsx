@@ -12,6 +12,7 @@ import {
   TableRow,
 } from "@wyliedog/ui/table";
 import { CheckCircle2 } from "lucide-react";
+import { getComponentCategoryCounts } from "@/lib/showcase-metadata";
 
 const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
   const map = {
@@ -171,6 +172,10 @@ export default function ContentDisplayPage() {
     },
   ];
 
+  const count =
+    getComponentCategoryCounts().find((c) => c.dirName === "Content-Display")
+      ?.count ?? components.length;
+
   return (
     <div className="relative mx-auto max-w-7xl space-y-12 p-4 lg:p-8 xl:p-12">
       <section className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -182,7 +187,7 @@ export default function ContentDisplayPage() {
             variant="outline"
             className="glass rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-(--color-interactive-primary) border-(--color-interactive-primary)/20"
           >
-            7 components
+            {count} components
           </Badge>
         </div>
         <p className="text-lg text-(--color-text-secondary) leading-relaxed max-w-2xl">
