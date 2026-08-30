@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button, buttonVariants } from "@wyliedog/ui/button";
+import { SiteHeader } from "@wyliedog/ui/compositions/site-header";
 import { fontVariables } from "@/lib/fonts";
 import { WylieDogLogo } from "./wyliedoglogo";
 import { NavLink } from "./nav-link";
@@ -89,10 +90,11 @@ export default function RootLayout({
       <body
         className={`${fontVariables} font-sans min-h-screen antialiased bg-(--color-background-primary) text-(--color-text-primary)`}
       >
-        {/* ── Site Header - NEEDS TO BE REPLACED WITH packages/ui/src/compositions/site-header.tsx component / site-header.tsx needs to evolve to support this design first ── */}
-        <header className="sticky top-0 z-40 border-b border-(--color-border-primary) bg-(--color-background-primary)/80 backdrop-blur-md">
-          <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
-            {/* Wordmark */}
+        <SiteHeader
+          size="sm"
+          containerClassName="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          className="z-40 backdrop-blur-md bg-(--color-background-primary)/80"
+          logo={
             <Link href="/" className="flex items-center gap-2 shrink-0">
               <span
                 className="grid h-7 w-7 place-items-center rounded-md"
@@ -104,16 +106,13 @@ export default function RootLayout({
                 Wylie Dog
               </span>
             </Link>
-
-            {/* Primary navigation */}
-            <nav className="hidden md:flex items-center gap-1">
-              {navLinks.map((item) => (
-                <NavLink key={item.href} href={item.href} label={item.label} />
-              ))}
-            </nav>
-
-            {/* Actions */}
-            <div className="ml-auto flex items-center gap-2">
+          }
+          navigation={navLinks}
+          renderNavItem={(item) => (
+            <NavLink key={item.href} href={item.href} label={item.label} />
+          )}
+          actions={
+            <>
               <Button
                 variant="outline"
                 size="icon"
@@ -151,9 +150,9 @@ export default function RootLayout({
                   <path d="M7 17 17 7M9 7h8v8" />
                 </svg>
               </a>
-            </div>
-          </div>
-        </header>
+            </>
+          }
+        />
 
         {/* ── Page content — full width; each page manages its own containers ── */}
         <main className="min-h-screen">{children}</main>
