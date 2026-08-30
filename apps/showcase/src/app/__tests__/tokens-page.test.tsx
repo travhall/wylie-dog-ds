@@ -14,4 +14,26 @@ describe("TokensPage", () => {
       "The contract everything renders against."
     );
   });
+
+  it("never renders fabricated token names that don't exist in @wyliedog/tokens", () => {
+    const { container } = render(<TokensPage />);
+    const text = container.textContent ?? "";
+    const fabricatedTokenNames = [
+      "--radius-xs",
+      "--radius-sm",
+      "--radius-md",
+      "--radius-lg",
+      "--radius-xl",
+      "--ease-standard",
+      "--ease-emphasized",
+      "--ease-decelerate",
+      "--ease-accelerate",
+      "--space-row-y",
+      "--space-gap",
+      "--space-avatar",
+    ];
+    for (const name of fabricatedTokenNames) {
+      expect(text).not.toContain(name);
+    }
+  });
 });
