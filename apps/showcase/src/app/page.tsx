@@ -29,7 +29,7 @@ export default function ShowcasePage() {
                 <span
                   className="h-1.5 w-1.5 rounded-full"
                   style={{
-                    background: "var(--color-success, oklch(60% 0.14 155))",
+                    background: "var(--color-status-success)",
                   }}
                 />
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">

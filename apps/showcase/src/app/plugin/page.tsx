@@ -357,8 +357,8 @@ export default function PluginPage() {
                   className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 font-mono text-[10px]"
                   style={{
                     background:
-                      "color-mix(in oklch, var(--color-success) 18%, transparent)",
-                    color: "var(--color-success)",
+                      "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
+                    color: "var(--color-status-success)",
                   }}
                 >
                   <span className="h-1 w-1 rounded-full bg-current" />
@@ -375,11 +375,11 @@ export default function PluginPage() {
                   <span className="relative flex h-1.5 w-1.5">
                     <span
                       className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60"
-                      style={{ background: "var(--color-success)" }}
+                      style={{ background: "var(--color-status-success)" }}
                     />
                     <span
                       className="relative h-1.5 w-1.5 rounded-full"
-                      style={{ background: "var(--color-success)" }}
+                      style={{ background: "var(--color-status-success)" }}
                     />
                   </span>
                   Live pipeline
@@ -408,8 +408,8 @@ export default function PluginPage() {
                             label: "--color-interactive",
                           },
                           {
-                            swatch: "var(--color-success)",
-                            label: "--color-success",
+                            swatch: "var(--color-status-success)",
+                            label: "--color-status-success",
                           },
                           {
                             swatch: "var(--color-warning)",
@@ -560,7 +560,9 @@ export default function PluginPage() {
                           </div>
                         ))}
                         <div className="mt-1 pt-1 border-t border-(--color-border-primary) flex items-center justify-between font-mono text-[9px]">
-                          <span style={{ color: "var(--color-success)" }}>
+                          <span
+                            style={{ color: "var(--color-status-success)" }}
+                          >
                             ● synced
                           </span>
                           <span className="text-(--color-text-tertiary)">
@@ -611,7 +613,7 @@ export default function PluginPage() {
                         </span>
                         <span
                           className="h-1.5 w-1.5 rounded-full shrink-0"
-                          style={{ background: "var(--color-success)" }}
+                          style={{ background: "var(--color-status-success)" }}
                         />
                       </div>
                     ))}
@@ -1224,7 +1226,7 @@ export default function PluginPage() {
                       },
                     },
                     {
-                      name: "--color-success",
+                      name: "--color-status-success",
                       light: {
                         oklch: "oklch(0.60 0.14 155)",
                         swatch: "oklch(0.60 0.14 155)",

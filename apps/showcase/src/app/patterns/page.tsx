@@ -518,13 +518,13 @@ export default function PatternsPage() {
                   <div
                     className="rounded-lg bg-(--color-surface-primary) border-2 p-4"
                     style={{
-                      borderColor: "var(--color-success)",
+                      borderColor: "var(--color-status-success)",
                       boxShadow: "var(--shadow-md)",
                     }}
                   >
                     <span
                       className="font-mono text-[9px] uppercase tracking-wider"
-                      style={{ color: "var(--color-success)" }}
+                      style={{ color: "var(--color-status-success)" }}
                     >
                       step 2 · sent
                     </span>
@@ -532,8 +532,8 @@ export default function PatternsPage() {
                       className="mt-2 grid h-9 w-9 place-items-center rounded-full"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-success) 18%, transparent)",
-                        color: "var(--color-success)",
+                          "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
+                        color: "var(--color-status-success)",
                       }}
                     >
                       <svg
@@ -618,7 +618,7 @@ export default function PatternsPage() {
                         name: "Helios Workspace",
                         members: 12,
                         status: "active",
-                        statusColor: "var(--color-success)",
+                        statusColor: "var(--color-status-success)",
                         price: "$42/mo",
                         bg: "linear-gradient(135deg, oklch(78% 0.13 35), oklch(70% 0.16 25))",
                       },
@@ -626,7 +626,7 @@ export default function PatternsPage() {
                         name: "Atlas Studio",
                         members: 5,
                         status: "active",
-                        statusColor: "var(--color-success)",
+                        statusColor: "var(--color-status-success)",
                         price: "$24/mo",
                         bg: "linear-gradient(135deg, oklch(78% 0.13 274), oklch(68% 0.17 250))",
                       },
@@ -708,7 +708,7 @@ export default function PatternsPage() {
                       sub: "Edge-rendered. 38ms p95.",
                     },
                     {
-                      color: "var(--color-success)",
+                      color: "var(--color-status-success)",
                       icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
                       title: "SOC 2 Type II",
                       sub: "Audited yearly.",
@@ -893,7 +893,9 @@ export default function PatternsPage() {
                       </div>
                     </div>
                     <p className="font-mono text-[9px] mt-3 text-(--color-text-tertiary)">
-                      <span style={{ color: "var(--color-success)" }}>●</span>{" "}
+                      <span style={{ color: "var(--color-status-success)" }}>
+                        ●
+                      </span>{" "}
                       rest of the page still works
                     </p>
                   </div>
@@ -1093,7 +1095,7 @@ export default function PatternsPage() {
                     </label>
                     <div
                       className="flex items-center justify-between h-7 border rounded-md px-2 text-[11px] bg-(--color-surface-primary)"
-                      style={{ borderColor: "var(--color-success)" }}
+                      style={{ borderColor: "var(--color-status-success)" }}
                     >
                       <span className="tracking-[0.3em] text-(--color-text-tertiary)">
                         ••••••••••••
@@ -1104,7 +1106,7 @@ export default function PatternsPage() {
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2.4}
-                        style={{ color: "var(--color-success)" }}
+                        style={{ color: "var(--color-status-success)" }}
                       >
                         <path d="m5 12 5 5L20 7" />
                       </svg>
@@ -1114,12 +1116,12 @@ export default function PatternsPage() {
                         <span
                           key={i}
                           className="h-1 w-6 rounded-full"
-                          style={{ background: "var(--color-success)" }}
+                          style={{ background: "var(--color-status-success)" }}
                         />
                       ))}
                       <span
                         className="ml-1 text-[10px]"
-                        style={{ color: "var(--color-success)" }}
+                        style={{ color: "var(--color-status-success)" }}
                       >
                         Strong
                       </span>
@@ -1248,7 +1250,7 @@ export default function PatternsPage() {
                                 width: `${w}%`,
                                 background:
                                   i === 2
-                                    ? "var(--color-success)"
+                                    ? "var(--color-status-success)"
                                     : "var(--color-interactive-primary)",
                               }}
                             />
@@ -1269,7 +1271,7 @@ export default function PatternsPage() {
                           owner: "EM",
                           due: "Jun 12",
                           status: "on track",
-                          color: "var(--color-success)",
+                          color: "var(--color-status-success)",
                         },
                         {
                           name: "Token bridge",
@@ -1466,7 +1468,7 @@ export default function PatternsPage() {
                       <span className="inline-flex items-center gap-1 font-mono text-[8px] text-(--color-text-tertiary)">
                         <span
                           className="h-1 w-1 rounded-full"
-                          style={{ background: "var(--color-success)" }}
+                          style={{ background: "var(--color-status-success)" }}
                         />
                         All systems operational
                       </span>
@@ -1514,7 +1516,7 @@ export default function PatternsPage() {
                     <span className="inline-flex items-center gap-1 rounded-full border border-(--color-border-primary) bg-(--color-background-primary) px-1.5 py-0.5 font-mono text-[8px] text-(--color-text-secondary)">
                       <span
                         className="h-1 w-1 rounded-full"
-                        style={{ background: "var(--color-success)" }}
+                        style={{ background: "var(--color-status-success)" }}
                       />
                       v1.4 just shipped
                     </span>
