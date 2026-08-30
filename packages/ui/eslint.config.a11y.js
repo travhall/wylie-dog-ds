@@ -1,10 +1,21 @@
 // ESLint flat configuration for accessibility rules
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import tsParser from '@typescript-eslint/parser';
+import tseslint from 'typescript-eslint';
+import react from 'eslint-plugin-react';
 
 export default [
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
+    // react/no-unknown-property and @typescript-eslint/no-namespace are
+    // registered above for rule-name resolution only, not enabled -- so
+    // ESLint would otherwise flag their disable-comments (meant for the
+    // main eslint.config.js pass) as "unused" in this narrower a11y-only
+    // run. Turned off here rather than in the main config, since the
+    // directives ARE meaningfully used there.
+    linterOptions: {
+      reportUnusedDisableDirectives: 'off',
+    },
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -17,6 +28,17 @@ export default [
     },
     plugins: {
       'jsx-a11y': jsxA11y,
+      // Registered for rule-name resolution only -- not enabled here. Some
+      // shared source files carry `eslint-disable-next-line react/...` /
+      // `@typescript-eslint/...` comments meant for the main eslint.config.js
+      // pass. Since this a11y config runs as its own separate ESLint
+      // invocation over the same files, those rule IDs are otherwise
+      // unresolvable here and ESLint errors with "Definition for rule
+      // '...' was not found" -- registering the plugins (without adding
+      // their rules below) fixes resolution without changing what this
+      // a11y-only pass actually enforces.
+      react,
+      '@typescript-eslint': tseslint.plugin,
     },
     rules: {
       // Start with recommended rules but override problematic ones
