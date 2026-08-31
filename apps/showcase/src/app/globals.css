@@ -20,6 +20,19 @@
 }
 
 @layer utilities {
+  /*
+   * `.glass` usage rule (showcase-local, not a packages/ui variant — see
+   * plans/092-findings.md and plans/093-standardize-showcase-glass-usage.md):
+   * 1. Page-level wrapper/container elements (demo-preview cards, hero
+   *    panels, component-showcase preview slots) get `.glass`.
+   * 2. Nested component instances demonstrated inside such a wrapper do
+   *    NOT get `.glass` (avoids double-glass nesting) — a plain
+   *    opacity-border is fine there if it's doing useful separation.
+   * 3. Small meta elements (count badges, category labels, status pills)
+   *    get a flat `border-(--color-*)/20` only, never `.glass`.
+   * 4. Anything not covered by 1-3 is a per-file judgment call against
+   *    these three categories.
+   */
   .glass {
     background-color: color-mix(
       in oklch,

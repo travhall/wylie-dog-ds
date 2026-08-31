@@ -35,7 +35,7 @@ export default function SpacingPage() {
                 {s.value}
               </div>
             </div>
-            <div className="flex-1 h-4 glass rounded-full overflow-hidden border border-(--color-border-primary)/5">
+            <div className="flex-1 h-4 rounded-full overflow-hidden border border-(--color-border-primary)/5">
               <div
                 className="h-full bg-(--color-interactive-primary) transition-all group-hover:opacity-80"
                 style={{ width: s.value }}

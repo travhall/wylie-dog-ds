@@ -13,7 +13,7 @@ const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
     alpha: "text-(--color-text-danger)",
   } as const;
   return (
-    <div className="flex items-center gap-1.5 glass border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
+    <div className="flex items-center gap-1.5 border border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
       <CheckCircle2 className={`h-3.5 w-3.5 ${map[status]}`} />
       <span className="text-[9px] uppercase font-black tracking-widest text-(--color-text-secondary)">
         {status}
@@ -123,7 +123,7 @@ export default function LayoutPage() {
           </h1>
           <Badge
             variant="outline"
-            className="glass rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-(--color-interactive-primary) border-(--color-interactive-primary)/20"
+            className="rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-(--color-interactive-primary) border-(--color-interactive-primary)/20"
           >
             {count} components
           </Badge>

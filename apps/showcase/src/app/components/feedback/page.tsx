@@ -24,7 +24,7 @@ export default function FeedbackPage() {
       description: "Displays a callout for user attention.",
       status: "stable",
       preview: (
-        <Alert className="glass py-2 scale-90 origin-center bg-(--color-interactive-primary)/3 border-(--color-interactive-primary)/10">
+        <Alert className="py-2 scale-90 origin-center bg-(--color-interactive-primary)/3 border-(--color-interactive-primary)/10">
           <Info className="h-4 w-4 text-(--color-interactive-primary)" />
           <AlertTitle className="text-xs font-bold">Heads up!</AlertTitle>
           <AlertDescription className="text-[10px] opacity-70">
@@ -84,7 +84,7 @@ export default function FeedbackPage() {
                 <CardTitle className="text-xl font-bold group-hover:text-(--color-interactive-primary) transition-colors text-(--color-text-primary)">
                   {comp.name}
                 </CardTitle>
-                <div className="flex items-center gap-1.5 glass border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
+                <div className="flex items-center gap-1.5 border border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
                   {getStatusIcon(comp.status)}
                   <span className="text-[9px] uppercase font-black tracking-widest text-(--color-text-secondary)">
                     {comp.status}
