@@ -94,7 +94,6 @@ export default function RootLayout({
         <SiteHeader
           size="sm"
           containerClassName="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-          className="z-40 backdrop-blur-md bg-(--color-background-primary)/80"
           logo={
             <Link href="/" className="flex items-center gap-2 shrink-0">
               <span
@@ -159,7 +158,6 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
 
         <SiteFooter
-          className="bg-(--color-background-primary) border-default"
           containerClassName="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
           columnsClassName="grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10"
           logo={

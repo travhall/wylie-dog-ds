@@ -63,9 +63,9 @@ export const FeatureGrid = React.forwardRef<HTMLDivElement, FeatureGridProps>(
       <div className={gridClasses} ref={ref} role="region" {...props}>
         {features.map((feature, index) => (
           <div key={index} className="group relative">
-            <div className="glass border border-(--color-feature-grid-item-border-color)/10 rounded-(--space-feature-grid-item-radius) p-(--space-feature-grid-item-padding) transition-all duration-(--duration-500) hover:border-(--color-feature-grid-item-border-color-hover)/20 hover:scale-105">
+            <div className="bg-(--color-card-background) border border-(--color-feature-grid-item-border-color)/10 rounded-(--space-feature-grid-item-radius) p-(--space-feature-grid-item-padding) transition-all duration-(--duration-500) hover:border-(--color-feature-grid-item-border-color-hover)/20 hover:scale-105">
               {/* Icon */}
-              <div className="mb-(--space-feature-grid-item-gap) flex items-center justify-center w-(--space-feature-grid-icon-container-size) h-(--space-feature-grid-icon-container-size) rounded-(--space-feature-grid-icon-radius) glass border-(--color-feature-grid-item-border-color)/5 shadow-(--shadow-sm) group-hover:scale-110 group-hover:rotate-3 transition-transform duration-(--duration-500)">
+              <div className="mb-(--space-feature-grid-item-gap) flex items-center justify-center w-(--space-feature-grid-icon-container-size) h-(--space-feature-grid-icon-container-size) rounded-(--space-feature-grid-icon-radius) bg-(--color-card-background) border-(--color-feature-grid-item-border-color)/5 shadow-(--shadow-sm) group-hover:scale-110 group-hover:rotate-3 transition-transform duration-(--duration-500)">
                 {feature.icon}
               </div>
 
