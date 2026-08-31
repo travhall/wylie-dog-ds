@@ -89,7 +89,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                 )}
               >
                 {/* Logo/Brand Column */}
-                <div className="col-span-2 md:col-span-1">
+                <div className="max-md:col-span-2">
                   {logo || (
                     <div className="mb-4">
                       <span className="text-(length:--font-size-lg) font-(--font-weight-bold)">
