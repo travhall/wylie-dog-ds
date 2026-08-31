@@ -114,7 +114,7 @@ export default function NavigationPage() {
                 <CardTitle className="text-xl font-bold group-hover:text-(--color-interactive-primary) transition-colors text-(--color-text-primary)">
                   {comp.name}
                 </CardTitle>
-                <div className="flex items-center gap-1.5 glass border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
+                <div className="flex items-center gap-1.5 border border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
                   {getStatusIcon(comp.status)}
                   <span className="text-[9px] uppercase font-black tracking-widest text-(--color-text-secondary)">
                     {comp.status}

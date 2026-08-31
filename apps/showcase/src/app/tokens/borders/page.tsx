@@ -43,7 +43,7 @@ export default function BordersPage() {
                 className="space-y-3 flex flex-col items-center"
               >
                 <div
-                  className="w-full aspect-square glass bg-(--color-interactive-primary)/10 border border-(--color-interactive-primary)/20"
+                  className="w-full aspect-square bg-(--color-interactive-primary)/10 border border-(--color-interactive-primary)/20"
                   style={{ borderRadius: r.value }}
                 />
                 <div className="text-center">
