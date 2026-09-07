@@ -3,7 +3,8 @@ import { Badge } from "@wyliedog/ui/badge";
 import { Separator } from "@wyliedog/ui/separator";
 import { ScrollArea } from "@wyliedog/ui/scroll-area";
 import { AspectRatio } from "@wyliedog/ui/aspect-ratio";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 import { getComponentCategoryCounts } from "@/lib/showcase-metadata";
 
 const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
@@ -116,6 +117,13 @@ export default function LayoutPage() {
 
   return (
     <div className="relative mx-auto max-w-7xl space-y-12 p-4 lg:p-8 xl:p-12">
+      <Link
+        href="/components"
+        className="inline-flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-interactive-primary) transition-colors mb-4"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        All Components
+      </Link>
       <section className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div className="flex items-center gap-3">
           <h1 className="text-4xl font-bold tracking-tight text-(--color-text-primary)">
