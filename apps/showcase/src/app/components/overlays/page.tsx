@@ -14,7 +14,8 @@ import {
   TooltipTrigger,
 } from "@wyliedog/ui/tooltip";
 import { Popover, PopoverContent, PopoverTrigger } from "@wyliedog/ui/popover";
-import { CheckCircle2, Clock } from "lucide-react";
+import { CheckCircle2, Clock, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 const getStatusIcon = (status: string) => {
   switch (status) {
@@ -93,6 +94,13 @@ export default function OverlaysPage() {
 
   return (
     <div className="relative mx-auto max-w-7xl space-y-12 p-4 lg:p-8 xl:p-12">
+      <Link
+        href="/components"
+        className="inline-flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-interactive-primary) transition-colors mb-4"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        All Components
+      </Link>
       <section className="space-y-4">
         <h1 className="text-4xl font-bold tracking-tight text-(--color-text-primary)">
           Overlays

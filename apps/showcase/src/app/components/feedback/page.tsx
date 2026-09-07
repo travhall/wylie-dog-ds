@@ -2,7 +2,14 @@ import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import { Alert, AlertTitle, AlertDescription } from "@wyliedog/ui/alert";
 import { Progress } from "@wyliedog/ui/progress";
 import { Skeleton } from "@wyliedog/ui/skeleton";
-import { CheckCircle2, Clock, AlertCircle, Info } from "lucide-react";
+import {
+  CheckCircle2,
+  Clock,
+  AlertCircle,
+  Info,
+  ArrowLeft,
+} from "lucide-react";
+import Link from "next/link";
 
 const getStatusIcon = (status: string) => {
   switch (status) {
@@ -63,6 +70,13 @@ export default function FeedbackPage() {
 
   return (
     <div className="relative mx-auto max-w-7xl space-y-12 p-4 lg:p-8 xl:p-12">
+      <Link
+        href="/components"
+        className="inline-flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-interactive-primary) transition-colors mb-4"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        All Components
+      </Link>
       <section className="space-y-4">
         <h1 className="text-4xl font-bold tracking-tight text-(--color-text-primary)">
           Feedback
