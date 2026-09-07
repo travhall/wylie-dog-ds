@@ -159,13 +159,13 @@ export function SpacingDemo() {
             style={{
               background:
                 m.status === "active"
-                  ? "color-mix(in oklch, oklch(60% 0.14 155) 18%, transparent)"
+                  ? "color-mix(in oklch, var(--color-status-success) 18%, transparent)"
                   : m.status === "invited"
                     ? "color-mix(in oklch, var(--color-interactive-primary) 12%, transparent)"
                     : "color-mix(in oklch, var(--color-border-primary) 70%, transparent)",
               color:
                 m.status === "active"
-                  ? "oklch(45% 0.14 155)"
+                  ? "var(--color-text-success)"
                   : m.status === "invited"
                     ? "var(--color-interactive-primary)"
                     : "var(--color-text-tertiary)",
