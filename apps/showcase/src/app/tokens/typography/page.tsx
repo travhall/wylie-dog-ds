@@ -77,7 +77,7 @@ export default function TypographyPage() {
                         <div className="flex items-baseline justify-between">
                           <span
                             className={`${fontFamilyClass} text-(--color-text-primary)`}
-                            style={{ fontSize: s.var }}
+                            style={{ fontSize: `${s.value}px` }}
                           >
                             Sample ({s.name})
                           </span>
