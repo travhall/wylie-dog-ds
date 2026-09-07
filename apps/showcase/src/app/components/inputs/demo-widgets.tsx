@@ -1,10 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { Calendar } from "@wyliedog/ui/calendar";
 import { Checkbox } from "@wyliedog/ui/checkbox";
 import { Label } from "@wyliedog/ui/label";
 import { Slider } from "@wyliedog/ui/slider";
 import { Switch } from "@wyliedog/ui/switch";
+
+export function CalendarDemo() {
+  return <Calendar mode="single" className="scale-90 origin-top" />;
+}
 
 export function CheckboxDemo() {
   const [checked, setChecked] = useState(false);
