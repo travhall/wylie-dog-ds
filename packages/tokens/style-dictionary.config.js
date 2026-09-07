@@ -187,11 +187,18 @@ function generateCSSVariable(token, name) {
 
 // Register format for tiered token emission
 //
-// Tier 1 — Primitives (`@theme inline`):
+// Tier 1 — Primitives (`@theme inline static`):
 //   Static scales (color palettes, spacing, radii, etc.) that sit on top of
 //   Tailwind's defaults. Emitted as @theme so they generate utility classes
-//   (bg-polar-night-500, text-blue-700, etc.); `inline` is safe because these
-//   values never change between themes.
+//   (bg-polar-night-500, text-blue-700, etc.); `inline` bakes the literal
+//   value into generated utilities since these values never change between
+//   themes. Must also use `static` — a plain `@theme` block only survives
+//   Tailwind v4's usage-based tree-shaking if a utility class referencing the
+//   var is found in that specific build's own scanned source. Consumers like
+//   `packages/ui` build in isolation and don't necessarily reference every
+//   primitive utility class in their own source, so without `static` the
+//   block is tree-shaken exactly like the semantic tier was before it got
+//   `static` too.
 //
 // Tier 2 — Semantic (`@theme static`):
 //   Themeable tokens (--color-background-primary, --color-text-primary).
@@ -260,12 +267,12 @@ ${darkVars.join("\n")}
     return `/**
  * Light mode tokens — tiered emission.
  *
- * - Primitives: @theme inline (static scales, generate utilities).
+ * - Primitives: @theme inline static (static scales, generate utilities).
  * - Semantic:   @theme (themeable, utilities use var() for .dark support).
  * - Component:  :root (internal, not exposed as utilities).
  */
 
-@theme inline {
+@theme inline static {
 ${primitiveVars.join("\n")}
 }
 
