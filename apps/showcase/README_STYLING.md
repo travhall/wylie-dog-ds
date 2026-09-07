@@ -10,8 +10,8 @@ This document explains the Showcase app's CSS architecture and Tailwind configur
 
 ```css
 /* apps/showcase/src/app/globals.css */
-@import "tailwindcss"; /* Next.js compiles app-specific utilities */
 @import "@wyliedog/ui/styles"; /* Pre-compiled component styles */
+@import "tailwindcss"; /* Next.js compiles app-specific utilities */
 ```
 
 ## Why This Approach
@@ -35,7 +35,7 @@ The `@wyliedog/ui/styles` import provides:
 
 - Source: `@import "tailwindcss"`
 - Processed by: Next.js `@tailwindcss/postcss` plugin
-- Scans: `src/**/*.{js,ts,jsx,tsx}` (configured in `tailwind.config.js`)
+- Scans: `src/**/*.{js,ts,jsx,tsx}` (auto-detected by `@import "tailwindcss"`, no config file)
 - Generates: Utilities for Showcase pages and layouts
 
 **Layer 2: UI Package (Pre-compiled)**
@@ -52,28 +52,7 @@ The `@wyliedog/ui/styles` import provides:
 
 ## Tailwind Configuration
 
-**`tailwind.config.js`:**
-
-```javascript
-import baseConfig from "@repo/tailwind-config";
-
-export default {
-  ...baseConfig,
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@wyliedog/ui/dist/**/*.{js,mjs}",
-  ],
-};
-```
-
-**Extends**: `@repo/tailwind-config` for semantic color mappings and shared theme
-
-**Content Paths**:
-
-- `./src/**/*` - Showcase app source files
-- `./app/**/*` - Next.js app directory (if used)
-- UI package dist - Ensures utilities referenced in components are available
+There is no `tailwind.config.js` (or `.ts`/`.mjs`/`.cjs`) in this app — Tailwind 4 is configured CSS-first, with no JS config file. `globals.css`'s `@import "@wyliedog/ui/styles"` pulls in the pre-compiled design-system theme (colors, spacing, etc. — see `packages/ui/src/styles/index.css`, which itself imports `@wyliedog/tokens/tokens.css`), and `@import "tailwindcss"` triggers Tailwind's own PostCSS plugin, which auto-detects scan roots and compiles utility classes used directly in `apps/showcase/src/**` without a `content` array.
 
 ## PostCSS Configuration
 
