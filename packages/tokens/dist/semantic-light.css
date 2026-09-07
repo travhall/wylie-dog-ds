@@ -1,12 +1,12 @@
 /**
  * Light mode tokens — tiered emission.
  *
- * - Primitives: @theme inline (static scales, generate utilities).
+ * - Primitives: @theme inline static (static scales, generate utilities).
  * - Semantic:   @theme (themeable, utilities use var() for .dark support).
  * - Component:  :root (internal, not exposed as utilities).
  */
 
-@theme inline {
+@theme inline static {
   --color-polar-night-50: oklch(0.94 0.006 224.44);
   --color-fiery-coral-50: oklch(0.962 0.017 40.23);
   --color-fiery-coral-100: oklch(0.882 0.053 38.67);
