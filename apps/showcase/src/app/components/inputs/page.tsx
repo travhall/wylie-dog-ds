@@ -6,7 +6,12 @@ import { Label } from "@wyliedog/ui/label";
 import { Textarea } from "@wyliedog/ui/textarea";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { CheckboxDemo, SliderDemo, SwitchDemo } from "./demo-widgets";
+import {
+  CalendarDemo,
+  CheckboxDemo,
+  SliderDemo,
+  SwitchDemo,
+} from "./demo-widgets";
 import { getComponentCategoryCounts } from "@/lib/showcase-metadata";
 
 const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
@@ -52,11 +57,7 @@ function InputsContent() {
       description:
         "Date picker with month navigation, range selection, and disabled date support.",
       status: "stable" as const,
-      preview: (
-        <div className="w-full h-20 border border-(--color-border-primary)/20 rounded-lg flex items-center justify-center text-xs text-(--color-text-secondary)">
-          Calendar component — open in Storybook
-        </div>
-      ),
+      preview: <CalendarDemo />,
     },
     {
       name: "Checkbox",
