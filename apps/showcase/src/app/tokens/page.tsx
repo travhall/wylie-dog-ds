@@ -1065,7 +1065,7 @@ export default function TokensPage() {
                 05 · Elevation
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-text-primary)">
-                Five shadow steps —{" "}
+                {Object.keys(manifest.semantics.shadow).length} shadow steps —{" "}
                 <span style={{ color: "var(--color-interactive-primary)" }}>
                   one
                 </span>{" "}
@@ -1265,7 +1265,8 @@ export default function TokensPage() {
                 06 · Motion
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-text-primary)">
-                Four curves and three durations{" "}
+                {Object.keys(manifest.semantics.easing).length} curves and{" "}
+                {Object.keys(manifest.semantics.duration).length} durations{" "}
                 <span style={{ color: "var(--color-interactive-primary)" }}>
                   cover everything.
                 </span>
