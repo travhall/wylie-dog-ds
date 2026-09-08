@@ -1,4 +1,7 @@
 import manifest from "@wyliedog/tokens/manifest.json";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import { SpacingDemo } from "../spacing-demo";
 
 export default function SpacingPage() {
   const { primitives } = manifest;
@@ -14,15 +17,30 @@ export default function SpacingPage() {
 
   return (
     <div className="relative mx-auto max-w-7xl space-y-16 p-4 lg:p-8 xl:p-12">
+      <Link
+        href="/tokens"
+        className="inline-flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-interactive-primary) transition-colors mb-4"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        All Tokens
+      </Link>
       <section className="space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight text-(--color-text-primary)">
-          Spacing Scale
+        <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+          03 · Spacing
+        </span>
+        <h1 className="mt-3 font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-(--color-text-primary)">
+          One scale. Three densities.{" "}
+          <span style={{ color: "var(--color-interactive-primary)" }}>
+            Same data.
+          </span>
         </h1>
-        <p className="text-lg text-(--color-text-secondary) leading-relaxed">
-          Consistent spacing values that drive the layout and rhythm of the
-          entire interface.
+        <p className="mt-3 text-lg text-(--color-text-secondary) leading-relaxed">
+          The 4-pixel base scale powers every gap, padding, and inset in the
+          system. Every spacing token, in full, below.
         </p>
       </section>
+
+      <SpacingDemo />
 
       <div className="glass p-8 rounded-[40px] border-(--color-border-primary)/5 space-y-8">
         {spacingPrimitives.map((s) => (
