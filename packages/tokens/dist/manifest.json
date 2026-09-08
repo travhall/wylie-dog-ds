@@ -2468,6 +2468,107 @@
           "description": ""
         }
       }
+    },
+    "duration": {
+      "duration-0": {
+        "name": "duration0",
+        "path": [
+          "duration",
+          "0"
+        ],
+        "value": "0ms",
+        "type": "duration",
+        "variable": "var(--duration-0)",
+        "description": ""
+      },
+      "duration-75": {
+        "name": "duration75",
+        "path": [
+          "duration",
+          "75"
+        ],
+        "value": "75ms",
+        "type": "duration",
+        "variable": "var(--duration-75)",
+        "description": ""
+      },
+      "duration-100": {
+        "name": "duration100",
+        "path": [
+          "duration",
+          "100"
+        ],
+        "value": "100ms",
+        "type": "duration",
+        "variable": "var(--duration-100)",
+        "description": ""
+      },
+      "duration-150": {
+        "name": "duration150",
+        "path": [
+          "duration",
+          "150"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--duration-150)",
+        "description": ""
+      },
+      "duration-200": {
+        "name": "duration200",
+        "path": [
+          "duration",
+          "200"
+        ],
+        "value": "200ms",
+        "type": "duration",
+        "variable": "var(--duration-200)",
+        "description": ""
+      },
+      "duration-300": {
+        "name": "duration300",
+        "path": [
+          "duration",
+          "300"
+        ],
+        "value": "300ms",
+        "type": "duration",
+        "variable": "var(--duration-300)",
+        "description": ""
+      },
+      "duration-500": {
+        "name": "duration500",
+        "path": [
+          "duration",
+          "500"
+        ],
+        "value": "500ms",
+        "type": "duration",
+        "variable": "var(--duration-500)",
+        "description": ""
+      },
+      "duration-700": {
+        "name": "duration700",
+        "path": [
+          "duration",
+          "700"
+        ],
+        "value": "700ms",
+        "type": "duration",
+        "variable": "var(--duration-700)",
+        "description": ""
+      },
+      "duration-1000": {
+        "name": "duration1000",
+        "path": [
+          "duration",
+          "1000"
+        ],
+        "value": "1000ms",
+        "type": "duration",
+        "variable": "var(--duration-1000)",
+        "description": ""
+      }
     }
   },
   "semantics": {
@@ -3359,6 +3460,185 @@
         "type": "color",
         "variable": "var(--color-neutral-on)",
         "description": "Text color on neutral backgrounds"
+      }
+    },
+    "shadow": {
+      "shadow-none": {
+        "name": "shadowNone",
+        "path": [
+          "shadow",
+          "none"
+        ],
+        "value": "none",
+        "type": "shadow",
+        "variable": "var(--shadow-none)",
+        "description": "No shadow"
+      },
+      "shadow-sm": {
+        "name": "shadowSm",
+        "path": [
+          "shadow",
+          "sm"
+        ],
+        "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "type": "shadow",
+        "variable": "var(--shadow-sm)",
+        "description": "Subtle shadow for slight elevation"
+      },
+      "shadow-base": {
+        "name": "shadowBase",
+        "path": [
+          "shadow",
+          "base"
+        ],
+        "value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--shadow-base)",
+        "description": "Default shadow for cards and raised elements"
+      },
+      "shadow-md": {
+        "name": "shadowMd",
+        "path": [
+          "shadow",
+          "md"
+        ],
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--shadow-md)",
+        "description": "Medium shadow for dropdowns and popovers"
+      },
+      "shadow-lg": {
+        "name": "shadowLg",
+        "path": [
+          "shadow",
+          "lg"
+        ],
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--shadow-lg)",
+        "description": "Large shadow for modals and overlays"
+      },
+      "shadow-xl": {
+        "name": "shadowXl",
+        "path": [
+          "shadow",
+          "xl"
+        ],
+        "value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+        "type": "shadow",
+        "variable": "var(--shadow-xl)",
+        "description": "Extra large shadow for maximum elevation"
+      },
+      "shadow-inner": {
+        "name": "shadowInner",
+        "path": [
+          "shadow",
+          "inner"
+        ],
+        "value": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
+        "type": "shadow",
+        "variable": "var(--shadow-inner)",
+        "description": "Inner shadow for recessed elements"
+      }
+    },
+    "duration": {
+      "transition-duration-instant": {
+        "name": "transitionDurationInstant",
+        "path": [
+          "transition",
+          "duration",
+          "instant"
+        ],
+        "value": "0ms",
+        "type": "duration",
+        "variable": "var(--transition-duration-instant)",
+        "description": "Instant transition (no animation)"
+      },
+      "transition-duration-fast": {
+        "name": "transitionDurationFast",
+        "path": [
+          "transition",
+          "duration",
+          "fast"
+        ],
+        "value": "150ms",
+        "type": "duration",
+        "variable": "var(--transition-duration-fast)",
+        "description": "Fast transition for micro-interactions"
+      },
+      "transition-duration-normal": {
+        "name": "transitionDurationNormal",
+        "path": [
+          "transition",
+          "duration",
+          "normal"
+        ],
+        "value": "250ms",
+        "type": "duration",
+        "variable": "var(--transition-duration-normal)",
+        "description": "Normal transition duration"
+      },
+      "transition-duration-slow": {
+        "name": "transitionDurationSlow",
+        "path": [
+          "transition",
+          "duration",
+          "slow"
+        ],
+        "value": "400ms",
+        "type": "duration",
+        "variable": "var(--transition-duration-slow)",
+        "description": "Slow transition for emphasized changes"
+      }
+    },
+    "easing": {
+      "transition-easing-default": {
+        "name": "transitionEasingDefault",
+        "path": [
+          "transition",
+          "easing",
+          "default"
+        ],
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--transition-easing-default)",
+        "description": "Default easing for most transitions"
+      },
+      "transition-easing-in": {
+        "name": "transitionEasingIn",
+        "path": [
+          "transition",
+          "easing",
+          "in"
+        ],
+        "value": "cubic-bezier(0.4, 0, 1, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--transition-easing-in)",
+        "description": "Ease-in for elements entering"
+      },
+      "transition-easing-out": {
+        "name": "transitionEasingOut",
+        "path": [
+          "transition",
+          "easing",
+          "out"
+        ],
+        "value": "cubic-bezier(0, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--transition-easing-out)",
+        "description": "Ease-out for elements exiting"
+      },
+      "transition-easing-in-out": {
+        "name": "transitionEasingInOut",
+        "path": [
+          "transition",
+          "easing",
+          "in-out"
+        ],
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "type": "cubicBezier",
+        "variable": "var(--transition-easing-in-out)",
+        "description": "Ease-in-out for symmetric transitions"
       }
     }
   },
