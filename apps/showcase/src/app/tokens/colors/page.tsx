@@ -22,19 +22,21 @@ export default function ColorsPage() {
   );
 
   const semanticGroups = Object.entries(semantics)
-    .filter(([_, tokens]) => Object.keys(tokens).length > 0)
     .map(([group, tokens]) => ({
       group: formatGroupName(group),
-      tokens: Object.entries(tokens).map(([name, token]) => ({
-        name: name
-          .replace(/^color-/, "")
-          .split("-")
-          .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
-          .join(" "),
-        var: token.variable,
-        description: token.description,
-      })),
-    }));
+      tokens: Object.entries(tokens)
+        .filter(([, token]) => token.type === "color")
+        .map(([name, token]) => ({
+          name: name
+            .replace(/^color-/, "")
+            .split("-")
+            .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+            .join(" "),
+          var: token.variable,
+          description: token.description,
+        })),
+    }))
+    .filter((g) => g.tokens.length > 0);
 
   return (
     <TokensSubpageShell
