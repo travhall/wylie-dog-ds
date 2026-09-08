@@ -1198,7 +1198,7 @@ export default function TokensPage() {
                     level: "xs · base",
                     shadow: "0 1px 3px rgba(0,0,0,.08)",
                     role: "Cards, panels",
-                    token: "--shadow-xs",
+                    token: "--shadow-base",
                   },
                   {
                     level: "sm · raised",
