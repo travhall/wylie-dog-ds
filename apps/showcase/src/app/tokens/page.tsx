@@ -1070,9 +1070,15 @@ export default function TokensPage() {
                 role. The scene below reflects honest stacking order.
               </p>
             </div>
-            <Button variant="outline" size="sm" className="rounded-md shrink-0">
-              All 9 shadow tokens →
-            </Button>
+            <Link href="/tokens/elevation">
+              <Button
+                variant="outline"
+                size="sm"
+                className="rounded-md shrink-0"
+              >
+                All 9 shadow tokens →
+              </Button>
+            </Link>
           </div>
 
           <div className="grid lg:grid-cols-12 gap-3">
@@ -1264,9 +1270,15 @@ export default function TokensPage() {
                 from the scale — the curve does the rest.
               </p>
             </div>
-            <Button variant="outline" size="sm" className="rounded-md shrink-0">
-              All 11 motion tokens →
-            </Button>
+            <Link href="/tokens/motion">
+              <Button
+                variant="outline"
+                size="sm"
+                className="rounded-md shrink-0"
+              >
+                All 11 motion tokens →
+              </Button>
+            </Link>
           </div>
 
           <MotionPreview />
