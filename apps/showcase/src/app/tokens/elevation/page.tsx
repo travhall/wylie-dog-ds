@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import manifest from "@wyliedog/tokens/manifest.json";
+import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 
 const SHADOW_ORDER = [
   "shadow-none",
@@ -33,31 +32,18 @@ export default function ElevationPage() {
   });
 
   return (
-    <div className="relative mx-auto max-w-7xl space-y-12 p-4 lg:p-8 xl:p-12">
-      <Link
-        href="/tokens"
-        className="inline-flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-interactive-primary) transition-colors mb-4"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        All Tokens
-      </Link>
-
-      <div className="max-w-2xl">
-        <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-          Elevation
-        </span>
-        <h1 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-text-primary)">
+    <TokensSubpageShell
+      categoryNumber="05"
+      categoryLabel="Elevation"
+      headline={
+        <>
           {shadows.length} shadow steps —{" "}
           <span style={{ color: "var(--color-interactive-primary)" }}>one</span>{" "}
           stacking story.
-        </h1>
-        <p className="mt-3 text-(--color-text-secondary) leading-relaxed">
-          Every shadow token, in full — the complete reference behind the hub's
-          layered scene, with each step's raw box-shadow value and its CSS
-          variable.
-        </p>
-      </div>
-
+        </>
+      }
+      description="Every shadow token, in full — the complete reference behind the hub's layered scene, with each step's raw box-shadow value and its CSS variable."
+    >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {shadows.map((s) => (
           <div
@@ -92,6 +78,6 @@ export default function ElevationPage() {
           tokens, different rendering.
         </p>
       </div>
-    </div>
+    </TokensSubpageShell>
   );
 }

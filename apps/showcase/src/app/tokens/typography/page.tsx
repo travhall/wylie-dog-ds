@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import manifest from "@wyliedog/tokens/manifest.json";
-import { Maximize2, LineChart, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { Maximize2, LineChart } from "lucide-react";
+import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 
 export default function TypographyPage() {
   const { primitives } = manifest;
@@ -39,31 +39,20 @@ export default function TypographyPage() {
   };
 
   return (
-    <div className="relative mx-auto max-w-7xl space-y-16 p-4 lg:p-8 xl:p-12">
-      <Link
-        href="/tokens"
-        className="inline-flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-interactive-primary) transition-colors mb-4"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        All Tokens
-      </Link>
-      <section className="space-y-4">
-        <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-          02 · Typography
-        </span>
-        <h1 className="mt-3 font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-(--color-text-primary)">
+    <TokensSubpageShell
+      categoryNumber="02"
+      categoryLabel="Typography"
+      headline={
+        <>
           A pairing that ships{" "}
           <span style={{ color: "var(--color-interactive-primary)" }}>
             long-form
           </span>
           , dashboards, and code.
-        </h1>
-        <p className="mt-3 text-lg text-(--color-text-secondary) leading-relaxed">
-          Every family, size, weight, and line height, in full — the complete
-          reference behind the hub's editorial sample.
-        </p>
-      </section>
-
+        </>
+      }
+      description="Every family, size, weight, and line height, in full — the complete reference behind the hub's editorial sample."
+    >
       <div className="grid gap-8 lg:grid-cols-2">
         <Card className="glass border-(--color-border-primary)/10">
           <CardHeader>
@@ -187,6 +176,6 @@ export default function TypographyPage() {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </TokensSubpageShell>
   );
 }

@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import manifest from "@wyliedog/tokens/manifest.json";
+import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import { MotionPreview } from "../motion-preview";
 
 export default function MotionPage() {
@@ -34,31 +33,19 @@ export default function MotionPage() {
     .sort((a, b) => Number(a.name) - Number(b.name));
 
   return (
-    <div className="relative mx-auto max-w-7xl space-y-12 p-4 lg:p-8 xl:p-12">
-      <Link
-        href="/tokens"
-        className="inline-flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-interactive-primary) transition-colors mb-4"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        All Tokens
-      </Link>
-
-      <div className="max-w-2xl">
-        <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-          Motion
-        </span>
-        <h1 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-text-primary)">
+    <TokensSubpageShell
+      categoryNumber="06"
+      categoryLabel="Motion"
+      headline={
+        <>
           {easing.length} curves and {semanticDuration.length} durations{" "}
           <span style={{ color: "var(--color-interactive-primary)" }}>
             cover everything.
           </span>
-        </h1>
-        <p className="mt-3 text-(--color-text-secondary) leading-relaxed">
-          Every easing curve and duration token, in full — plus the raw{" "}
-          {primitiveDuration.length}-step duration scale they're built from.
-        </p>
-      </div>
-
+        </>
+      }
+      description={`Every easing curve and duration token, in full — plus the raw ${primitiveDuration.length}-step duration scale they're built from.`}
+    >
       <section className="space-y-4">
         <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
           Easing
@@ -162,6 +149,6 @@ export default function MotionPage() {
         </h2>
         <MotionPreview />
       </section>
-    </div>
+    </TokensSubpageShell>
   );
 }

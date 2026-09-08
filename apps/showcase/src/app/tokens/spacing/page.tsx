@@ -1,6 +1,5 @@
 import manifest from "@wyliedog/tokens/manifest.json";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import { SpacingDemo } from "../spacing-demo";
 
 export default function SpacingPage() {
@@ -21,30 +20,19 @@ export default function SpacingPage() {
     .sort((a, b) => a.size - b.size);
 
   return (
-    <div className="relative mx-auto max-w-7xl space-y-16 p-4 lg:p-8 xl:p-12">
-      <Link
-        href="/tokens"
-        className="inline-flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-interactive-primary) transition-colors mb-4"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        All Tokens
-      </Link>
-      <section className="space-y-4">
-        <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-          03 · Spacing
-        </span>
-        <h1 className="mt-3 font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-(--color-text-primary)">
+    <TokensSubpageShell
+      categoryNumber="03"
+      categoryLabel="Spacing"
+      headline={
+        <>
           One scale. Three densities.{" "}
           <span style={{ color: "var(--color-interactive-primary)" }}>
             Same data.
           </span>
-        </h1>
-        <p className="mt-3 text-lg text-(--color-text-secondary) leading-relaxed">
-          The 4-pixel base scale powers every gap, padding, and inset in the
-          system. Every spacing token, in full, below.
-        </p>
-      </section>
-
+        </>
+      }
+      description="The 4-pixel base scale powers every gap, padding, and inset in the system. Every spacing token, in full, below."
+    >
       <SpacingDemo />
 
       <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5 max-w-sm">
@@ -81,6 +69,6 @@ export default function SpacingPage() {
           </div>
         ))}
       </div>
-    </div>
+    </TokensSubpageShell>
   );
 }
