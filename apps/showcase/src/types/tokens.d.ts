@@ -5,6 +5,7 @@ declare module "@wyliedog/tokens/manifest.json" {
       spacing: Record<string, any>;
       borderRadius: Record<string, any>;
       borderWidth: Record<string, any>;
+      duration: Record<string, any>;
       typography: {
         family: Record<string, any>;
         size: Record<string, any>;
