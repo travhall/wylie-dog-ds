@@ -42,6 +42,21 @@ export default function SpacingPage() {
 
       <SpacingDemo />
 
+      <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5 max-w-sm">
+        <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary) mb-2">
+          Composed tokens
+        </p>
+        <div className="space-y-1 font-mono text-[10px] text-(--color-text-tertiary)">
+          {[
+            "--space-card-padding: 24px",
+            "--space-input-x: 12px",
+            "--space-stack-sm: 8px",
+          ].map((t) => (
+            <p key={t}>{t}</p>
+          ))}
+        </div>
+      </div>
+
       <div className="glass p-8 rounded-[40px] border-(--color-border-primary)/5 space-y-8">
         {spacingPrimitives.map((s) => (
           <div key={s.name} className="flex items-center gap-6 group">
