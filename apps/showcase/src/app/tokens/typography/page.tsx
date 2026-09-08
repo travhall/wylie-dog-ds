@@ -71,52 +71,73 @@ export default function TypographyPage() {
               <Maximize2 className="h-4 w-4" /> Families & Sizes
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-8">
-            {typographyPrimitives.families.map((f) => {
-              // Extract the font family type (sans, mono, serif)
-              const familyType = f.name.split("-").pop();
-              // Use standard Tailwind font utilities (mapped to tokens via config)
-              const fontFamilyClass = `font-${familyType}`;
-
-              return (
-                <div key={f.name} className="space-y-4">
-                  <div className="text-xs font-black uppercase text-(--color-text-tertiary)">
-                    {f.name} · {f.value}
-                  </div>
-                  {typographyPrimitives.sizes.map((s) => {
-                    return (
-                      <div
-                        key={s.name}
-                        className="flex flex-col gap-1 border-b border-(--color-border-primary)/5 pb-3"
+          <CardContent className="space-y-4">
+            <h3 className="text-sm font-bold text-(--color-text-primary)">
+              Size scale
+            </h3>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse text-left">
+                <thead>
+                  <tr className="border-b border-(--color-border-primary)/10">
+                    <th
+                      scope="col"
+                      className="pb-3 pr-4 text-[10px] font-mono uppercase tracking-wider text-(--color-text-tertiary)"
+                    >
+                      Size
+                    </th>
+                    {typographyPrimitives.families.map((f) => (
+                      <th
+                        key={f.name}
+                        scope="col"
+                        className="pb-3 px-4 text-[10px] font-mono uppercase tracking-wider text-(--color-text-tertiary)"
                       >
-                        <div className="flex items-baseline justify-between">
-                          <span
-                            className={`${fontFamilyClass} text-(--color-text-primary)`}
-                            style={{ fontSize: `${s.value}px` }}
-                          >
-                            Sample ({s.name})
-                          </span>
-                          <span className="text-[10px] font-mono text-(--color-text-tertiary) opacity-60">
-                            {s.value}
-                          </span>
+                        {f.name} · {f.value}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {typographyPrimitives.sizes.map((s) => (
+                    <tr
+                      key={s.name}
+                      className="border-b border-(--color-border-primary)/5"
+                    >
+                      <th
+                        scope="row"
+                        className="py-3 pr-6 align-top text-left font-normal"
+                      >
+                        <div className="text-sm text-(--color-text-primary)">
+                          {s.name}
                         </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-[9px] font-mono text-(--color-text-tertiary)/50">
-                            {fontFamilyClass}
-                          </span>
-                          <span className="text-(--color-text-tertiary)/30">
-                            ·
-                          </span>
-                          <span className="text-[9px] font-mono text-(--color-text-tertiary)/50">
-                            fontSize: {s.var}
-                          </span>
+                        <div className="text-[10px] font-mono text-(--color-text-tertiary) opacity-60">
+                          {s.value}
                         </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              );
-            })}
+                        <div className="text-[9px] font-mono text-(--color-text-tertiary)/50">
+                          fontSize: {s.var}
+                        </div>
+                      </th>
+                      {typographyPrimitives.families.map((f) => {
+                        // Extract the font family type (sans, mono, serif)
+                        const familyType = f.name.split("-").pop();
+                        // Use standard Tailwind font utilities (mapped to tokens via config)
+                        const fontFamilyClass = `font-${familyType}`;
+
+                        return (
+                          <td key={f.name} className="py-3 px-4 align-top">
+                            <span
+                              className={`${fontFamilyClass} text-(--color-text-primary)`}
+                              style={{ fontSize: `${s.value}px` }}
+                            >
+                              Sample
+                            </span>
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </CardContent>
         </Card>
 
