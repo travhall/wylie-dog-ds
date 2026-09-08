@@ -457,6 +457,7 @@ StyleDictionary.registerFormat({
           weight: {},
           lineHeight: {},
         },
+        duration: {},
       },
       semantics: {
         background: {},
@@ -466,6 +467,9 @@ StyleDictionary.registerFormat({
         interactive: {},
         status: {},
         other: {},
+        shadow: {},
+        duration: {},
+        easing: {},
       },
       components: {},
     };
@@ -519,6 +523,8 @@ StyleDictionary.registerFormat({
             manifest.primitives.typography.weight[name] = tokenEntry;
           else if (name.includes("line-height"))
             manifest.primitives.typography.lineHeight[name] = tokenEntry;
+        } else if (token.$type === "duration") {
+          manifest.primitives.duration[name] = tokenEntry;
         }
       } else if (isSemantic) {
         if (token.$type === "color") {
@@ -528,6 +534,12 @@ StyleDictionary.registerFormat({
           } else {
             manifest.semantics.other[name] = tokenEntry;
           }
+        } else if (token.$type === "shadow") {
+          manifest.semantics.shadow[name] = tokenEntry;
+        } else if (token.$type === "duration") {
+          manifest.semantics.duration[name] = tokenEntry;
+        } else if (token.$type === "cubicBezier") {
+          manifest.semantics.easing[name] = tokenEntry;
         }
       } else if (isComponent) {
         const component = cleanPath[0].toLowerCase();
