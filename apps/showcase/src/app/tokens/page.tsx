@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@wyliedog/ui/button";
+import manifest from "@wyliedog/tokens/manifest.json";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
 import { SpacingDemo } from "./spacing-demo";
 import { MotionPreview } from "./motion-preview";
@@ -7,6 +8,11 @@ import { SectionSubnav } from "@/components/section-subnav";
 
 export default function TokensPage() {
   const meta = getShowcaseMeta();
+
+  const composedSpacingTokens = [
+    manifest.components.card["card-padding"],
+    manifest.components.input["input-padding-x"],
+  ].map((token) => `--space-${token.path.join("-")}: ${token.value}`);
 
   const cohortBars = [
     [24, 18, 8, 4],
@@ -841,11 +847,7 @@ export default function TokensPage() {
                 <p className="text-(--color-text-secondary) mb-2">
                   Composed tokens
                 </p>
-                {[
-                  "--space-card-padding: 24px",
-                  "--space-input-x: 12px",
-                  "--space-stack-sm: 8px",
-                ].map((t) => (
+                {composedSpacingTokens.map((t) => (
                   <p key={t}>{t}</p>
                 ))}
               </div>

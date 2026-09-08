@@ -6,6 +6,11 @@ import { SpacingDemo } from "../spacing-demo";
 export default function SpacingPage() {
   const { primitives } = manifest;
 
+  const composedSpacingTokens = [
+    manifest.components.card["card-padding"],
+    manifest.components.input["input-padding-x"],
+  ].map((token) => `--space-${token.path.join("-")}: ${token.value}`);
+
   const spacingPrimitives = Object.entries(primitives.spacing || {})
     .map(([name, token]: [string, any]) => ({
       name,
@@ -47,11 +52,7 @@ export default function SpacingPage() {
           Composed tokens
         </p>
         <div className="space-y-1 font-mono text-[10px] text-(--color-text-tertiary)">
-          {[
-            "--space-card-padding: 24px",
-            "--space-input-x: 12px",
-            "--space-stack-sm: 8px",
-          ].map((t) => (
+          {composedSpacingTokens.map((t) => (
             <p key={t}>{t}</p>
           ))}
         </div>
