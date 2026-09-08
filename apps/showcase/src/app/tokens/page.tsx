@@ -810,16 +810,20 @@ export default function TokensPage() {
                       {s.step}
                     </span>
                     <div
-                      className="rounded-sm"
-                      style={{
-                        height: "8px",
-                        width: `${Math.min(s.px * 2.5, 120)}px`,
-                        background: s.inUse
-                          ? "var(--color-interactive-primary)"
-                          : "var(--color-border-primary)",
-                        transition: "width 0.2s",
-                      }}
-                    />
+                      className="relative"
+                      style={{ height: "8px", width: "120px" }}
+                    >
+                      <div
+                        className="absolute inset-y-0 left-0 origin-left rounded-sm w-full"
+                        style={{
+                          background: s.inUse
+                            ? "var(--color-interactive-primary)"
+                            : "var(--color-border-primary)",
+                          transform: `scaleX(${Math.min(s.px * 2.5, 120) / 120})`,
+                          transition: "transform 0.2s",
+                        }}
+                      />
+                    </div>
                     <span
                       className="font-mono text-[10px] ml-auto shrink-0"
                       style={{
