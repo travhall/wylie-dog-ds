@@ -5,7 +5,10 @@
  */
 
 import type { ExportData } from "../variables/processor";
-import { processCollectionsForExport } from "../variables/processor";
+import {
+  findUnsupportedVariables,
+  processCollectionsForExport,
+} from "../variables/processor";
 import {
   importMultipleCollections,
   parseTokenFile,
@@ -18,6 +21,7 @@ import {
   processInChunks,
   sendError,
   mapFigmaVariable,
+  notifyUnsupportedVariables,
 } from "./utils";
 import type { PluginMessage } from "../../shared/types";
 
@@ -390,6 +394,11 @@ export async function handleExportTokens(msg: PluginMessage): Promise<void> {
       collectionsWithVariables,
       collectionIds
     );
+    const skipped = findUnsupportedVariables(
+      collectionsWithVariables,
+      collectionIds
+    );
+    notifyUnsupportedVariables(skipped);
 
     // Transform to downloadable files format
     const downloadableFiles = exportData.map((data) => {
@@ -406,6 +415,7 @@ export async function handleExportTokens(msg: PluginMessage): Promise<void> {
     figma.ui.postMessage({
       type: "tokens-exported",
       exportData: downloadableFiles,
+      skipped,
     });
 
     console.log("Export completed successfully");

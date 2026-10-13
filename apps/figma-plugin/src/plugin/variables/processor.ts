@@ -75,6 +75,126 @@ interface FigmaCollectionLike {
 let variableReferenceMap: Map<string, string> = new Map();
 
 /**
+ * A variable the exporter cannot represent as a W3C DTCG token. Exporting it
+ * would push a token with no value or a raw Figma object as its value, so it is
+ * skipped and reported instead.
+ */
+export interface UnsupportedVariable {
+  id: string;
+  name: string;
+  collection: string;
+  resolvedType: string;
+  reason: string;
+}
+
+const SUPPORTED_RESOLVED_TYPES = new Set([
+  "COLOR",
+  "FLOAT",
+  "STRING",
+  "BOOLEAN",
+]);
+
+function isAliasValue(
+  value: FigmaVariableValue | undefined
+): value is FigmaObjectValue {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    value.type === "VARIABLE_ALIAS"
+  );
+}
+
+/** Figma composed color: { color, opacity } where one side is an alias. */
+function isComposedColor(value: FigmaVariableValue | undefined): boolean {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    value.type !== "VARIABLE_ALIAS" &&
+    value.r === undefined &&
+    (value.color !== undefined || value.opacity !== undefined)
+  );
+}
+
+function unsupportedReason(variable: FigmaVariableLike): string | null {
+  if (!SUPPORTED_RESOLVED_TYPES.has(variable.resolvedType)) {
+    return variable.resolvedType === "EASING" ||
+      variable.resolvedType === "TIMING"
+      ? `native ${variable.resolvedType} variables are not exported yet`
+      : `variables of type ${variable.resolvedType} are not exported`;
+  }
+  if (
+    variable.resolvedType === "COLOR" &&
+    Object.values(variable.valuesByMode ?? {}).some(isComposedColor)
+  ) {
+    return "composed colors (color plus separate opacity) are not exported yet";
+  }
+  return null;
+}
+
+/**
+ * Find variables the exporter cannot represent. A variable that aliases an
+ * unsupported one is also reported, because exporting it would leave a
+ * reference to a token that is not in the output.
+ *
+ * Detection looks at every collection (aliases can cross collections);
+ * `selectedCollectionIds` only limits what is returned.
+ */
+export function findUnsupportedVariables(
+  allCollections: FigmaCollectionLike[],
+  selectedCollectionIds?: string[]
+): UnsupportedVariable[] {
+  const found = new Map<string, UnsupportedVariable>();
+  const ownerId = new Map<string, string>(); // variable id -> collection id
+
+  for (const collection of allCollections) {
+    for (const variable of collection.variables ?? []) {
+      const reason = unsupportedReason(variable);
+      if (reason) {
+        ownerId.set(variable.id, collection.id);
+        found.set(variable.id, {
+          id: variable.id,
+          name: variable.name,
+          collection: collection.name,
+          resolvedType: variable.resolvedType,
+          reason,
+        });
+      }
+    }
+  }
+
+  // Cascade through aliases until nothing new is added
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const collection of allCollections) {
+      for (const variable of collection.variables ?? []) {
+        if (found.has(variable.id)) continue;
+        for (const value of Object.values(variable.valuesByMode ?? {})) {
+          if (isAliasValue(value) && value.id && found.has(value.id)) {
+            ownerId.set(variable.id, collection.id);
+            found.set(variable.id, {
+              id: variable.id,
+              name: variable.name,
+              collection: collection.name,
+              resolvedType: variable.resolvedType,
+              reason: `aliases "${found.get(value.id)?.name}", which is not exported`,
+            });
+            changed = true;
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  return [...found.values()].filter(
+    (v) =>
+      !selectedCollectionIds ||
+      selectedCollectionIds.includes(ownerId.get(v.id) ?? "")
+  );
+}
+
+/**
  * Convert Figma RGB color (0-1 range) to hex format
  * @deprecated Use rgbToOklch for export - kept for reference/debugging
  */
@@ -602,7 +722,8 @@ function createTokenName(variableName: string): string {
  * Process a variable collection into W3C DTCG format with Figma mode support
  */
 export async function processCollection(
-  collection: FigmaCollectionLike
+  collection: FigmaCollectionLike,
+  skipVariableIds?: ReadonlySet<string>
 ): Promise<ProcessedCollection> {
   const variables: { [tokenName: string]: ProcessedToken } = {};
 
@@ -611,6 +732,7 @@ export async function processCollection(
   );
 
   for (const variable of collection.variables) {
+    if (skipVariableIds?.has(variable.id)) continue;
     try {
       const tokenName = createTokenName(variable.name);
       const processedToken = processVariable(variable, collection.modes);
@@ -673,6 +795,15 @@ export async function processCollectionsForExport(
   // Build reference map first to resolve aliases
   buildVariableReferenceMap(allCollections);
 
+  // Variables we cannot represent are skipped, never exported half-formed
+  const unsupported = findUnsupportedVariables(allCollections);
+  const skipVariableIds = new Set(unsupported.map((v) => v.id));
+  for (const v of unsupported) {
+    console.warn(
+      `Skipping variable "${v.name}" in "${v.collection}": ${v.reason}`
+    );
+  }
+
   for (const collectionId of selectedCollectionIds) {
     const collection = allCollections.find((c) => c.id === collectionId);
 
@@ -692,7 +823,10 @@ export async function processCollectionsForExport(
     }
 
     try {
-      const processedTokens = await processCollection(collection);
+      const processedTokens = await processCollection(
+        collection,
+        skipVariableIds
+      );
 
       // Only add collections that actually have processed tokens
       if (Object.keys(processedTokens.variables).length > 0) {

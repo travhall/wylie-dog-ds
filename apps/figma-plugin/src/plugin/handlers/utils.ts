@@ -4,6 +4,8 @@
  * Shared helper functions used across all message handlers.
  */
 
+import type { UnsupportedVariable } from "../variables/processor";
+
 /**
  * Communicate loading state to UI
  */
@@ -62,6 +64,27 @@ export function sendError(message: string): void {
     type: "error",
     message,
   });
+}
+
+/**
+ * Tell the user which variables were left out of an export because the
+ * exporter cannot represent them. Uses Figma's native toast so it shows
+ * regardless of which tab is open.
+ */
+export function notifyUnsupportedVariables(
+  skipped: UnsupportedVariable[]
+): void {
+  if (skipped.length === 0) return;
+
+  const shown = skipped
+    .slice(0, 3)
+    .map((v) => v.name)
+    .join(", ");
+  const more = skipped.length > 3 ? ` and ${skipped.length - 3} more` : "";
+  figma.notify(
+    `Skipped ${skipped.length} variable${skipped.length === 1 ? "" : "s"} Token Bridge can't export yet: ${shown}${more}. See the console for details.`,
+    { timeout: 10000 }
+  );
 }
 
 /**

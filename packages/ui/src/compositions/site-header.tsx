@@ -10,7 +10,7 @@ import {
 } from "../navigation-menu";
 
 export const siteHeaderVariants = cva(
-  "w-full transition-colors duration-(--duration-duration-200)",
+  "w-full transition-colors duration-(--duration-200)",
   {
     variants: {
       variant: {

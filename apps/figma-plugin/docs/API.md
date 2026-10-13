@@ -20,8 +20,12 @@ Communications are asynchronous. The UI sends a request, and the Plugin responds
 
 - **Request**: `{ type: 'export-tokens', collectionIds: string[] }`
 - **Response**:
-  - `{ type: 'tokens-exported', exportData: [{ filename: string, content: string }] }`
+  - `{ type: 'tokens-exported', exportData: [{ filename: string, content: string }], skipped: UnsupportedVariable[] }`
   - `{ type: 'error', message: string }`
+
+#### Variables that cannot be exported
+
+The exporter skips variables it cannot represent as DTCG tokens, so it never writes a token with no value or a raw Figma object. `skipped` lists them (`id`, `name`, `collection`, `resolvedType`, `reason`), and the plugin shows a Figma toast naming the first three. Skipped today: native `EASING` and `TIMING` variables, composed colors (`{ color, opacity }`), any other unlisted variable type, and any variable that aliases one of these. Detection lives in `findUnsupportedVariables` (`variables/processor.ts`). The silent `get-local-tokens` path skips them too, without a toast.
 
 #### Get Local Tokens (for Conflict Detection)
 
@@ -51,7 +55,7 @@ _Note: The Plugin thread handles data preparation, but actual network requests h
 
 - **Request**: `{ type: 'github-sync-tokens', collectionIds: string[] }`
 - **Response**:
-  - `{ type: 'github-sync-tokens', exportData: any }` (Data prepared, UI proceeds to push)
+  - `{ type: 'github-sync-tokens', exportData: any, skipped: UnsupportedVariable[] }` (Data prepared, UI proceeds to push)
 
 #### Pull Tokens
 
