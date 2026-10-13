@@ -6,6 +6,7 @@ import { SyncStatus } from "../SyncStatus";
 import { Icon } from "../common/Icon";
 import { useUIContext } from "../../state";
 import type { GitHubConfig } from "../../../shared/types";
+import { needsGitHubToken } from "../../../shared/github-config";
 import type { Collection } from "../../hooks/usePluginMessages";
 import type { ConflictAwareGitHubClient } from "../../../plugin/sync/conflict-aware-github-client";
 import type { ImportPreviewSummary } from "../ImportPreview";
@@ -52,6 +53,8 @@ export function SyncTab({
 
   const [showEditConfig, setShowEditConfig] = useState(false);
   const [confirmingPull, setConfirmingPull] = useState(false);
+  // File has repo settings (shared) but this user has no token (per user)
+  const needsToken = needsGitHubToken(githubConfig);
 
   // Import preview active
   if (importPreview && onConfirmImport && onCancelImport) {
@@ -94,7 +97,7 @@ export function SyncTab({
               marginBottom: 4,
             }}
           >
-            Connect GitHub
+            {needsToken ? "Add your GitHub token" : "Connect GitHub"}
           </div>
           <div
             style={{
@@ -103,11 +106,17 @@ export function SyncTab({
               lineHeight: "var(--line-height-relaxed)",
             }}
           >
-            Set up bi-directional token sync with your repository.
+            {needsToken
+              ? `This file syncs with ${githubConfig.owner}/${githubConfig.repo}. Tokens are stored per Figma user and are not saved in the file, so enter your own to continue.`
+              : "Set up bi-directional token sync with your repository."}
           </div>
         </div>
 
-        <SetupWizard onComplete={onGitHubConfigComplete} onClose={() => {}} />
+        <SetupWizard
+          initialConfig={needsToken ? githubConfig : undefined}
+          onComplete={onGitHubConfigComplete}
+          onClose={() => {}}
+        />
 
         <div
           style={{

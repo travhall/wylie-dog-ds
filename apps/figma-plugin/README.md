@@ -411,7 +411,7 @@ const syncResult = await githubClient.syncWithConflictResolution({
 ### Authentication Security
 
 - **Personal Access Tokens**: Industry-standard authentication method
-- **Token Storage**: The personal access token is saved with the GitHub configuration in the Figma file's plugin data (`figma.root.setPluginData`), not in per-user `figma.clientStorage`, so it is stored in the file. Use a token limited to the token repository and revoke it from GitHub settings if a file is shared or duplicated
+- **Token Storage**: The personal access token is stored per Figma user in `figma.clientStorage` (key `github-access-token`) and is never written to the file. The file's plugin data holds only repo settings (owner, repo, branch, token path, sync mode). Collaborators therefore enter their own token once per Figma account: when someone opens a file that already has repo settings but they have no token, the Sync tab shows "Add your GitHub token" with the repository prefilled. Files saved by older versions that still hold a token in plugin data are migrated automatically the first time they are opened (token moved to your `clientStorage` if you have none, then removed from the file). Disconnecting GitHub also deletes your stored token. Revoke a token from GitHub settings if you believe it was exposed by an older file
 - **Scope Limitation**: Minimum required permissions only
 - **HTTPS Only**: All communications over secure channels
 - **User Control**: Tokens revocable anytime from GitHub settings
