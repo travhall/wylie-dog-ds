@@ -1,6 +1,10 @@
 @import "@wyliedog/ui/styles";
 @import "tailwindcss";
 
+/* prototype/ holds reference HTML whose class names are code samples. Without
+   this, Tailwind generates CSS rules for them that no page uses. */
+@source not "../../prototype";
+
 @layer base {
   html {
     scroll-behavior: smooth;
