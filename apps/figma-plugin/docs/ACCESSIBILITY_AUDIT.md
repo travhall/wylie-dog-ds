@@ -2,7 +2,7 @@
 
 **Date:** 2025-12-26
 **Auditor:** Phase 4 Implementation
-**Standard:** WCAG 2.1 Level AA
+**Standard:** WCAG 2.1 Level AA (audited December 2025; the repo-wide target is now WCAG 2.2 Level AA and this audit has not been re-run against 2.2)
 
 ---
 

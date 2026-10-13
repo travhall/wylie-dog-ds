@@ -8,7 +8,7 @@ Thank you for your interest in contributing to Token Bridge! This guide will hel
 
 ### Prerequisites
 
-- **Node.js** 20+ with pnpm 10.26.0
+- **Node.js** 22+ with pnpm 10.28.2
 - **Figma Desktop App** (for plugin development)
 - **Git** for version control
 
@@ -90,10 +90,10 @@ figma.ui.postMessage({ type: "sync-complete", data: {...} });
 
 ### Key Technologies
 
-- **Preact 10.27.0** (not React) - Lightweight UI framework
-- **TypeScript 5.8** - Type safety
-- **Vite 7** - Build tool with single-file output
-- **Vitest 3** - Testing framework
+- **Preact 10** (not React) - Lightweight UI framework
+- **TypeScript 6.0** (pinned in the workspace catalog) - Type safety
+- **Vite 8** - Build tool with single-file output
+- **Vitest 4** - Testing framework
 - **@octokit/rest** - GitHub API client
 
 ---

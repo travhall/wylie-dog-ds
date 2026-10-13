@@ -9,7 +9,7 @@
 
 ## Overview
 
-Token Bridge is a sophisticated Figma plugin that enables seamless synchronization of design tokens between Figma Variables and code repositories. With support for 8+ token formats, secure GitHub authentication, intelligent conflict detection, and a modern UI, it's a comprehensive token synchronization solution.
+Token Bridge is a sophisticated Figma plugin that enables seamless synchronization of design tokens between Figma Variables and code repositories. With support for 8+ token formats, GitHub authentication via personal access tokens, intelligent conflict detection, and a modern UI, it's a comprehensive token synchronization solution.
 
 ### Key Features
 
@@ -224,7 +224,7 @@ pnpm type-check         # TypeScript validation
 
 **Framework Stack:**
 
-- **Vitest v4.0** - Fast unit testing with native ESM
+- **Vitest v4.1** - Fast unit testing with native ESM
 - **@testing-library/preact** - Component testing utilities
 - **jsdom** - DOM environment simulation
 - **Coverage thresholds** - Enforced 60%+ minimum coverage
@@ -411,7 +411,7 @@ const syncResult = await githubClient.syncWithConflictResolution({
 ### Authentication Security
 
 - **Personal Access Tokens**: Industry-standard authentication method
-- **Token Storage**: Encrypted storage via `figma.clientStorage`
+- **Token Storage**: The personal access token is saved with the GitHub configuration in the Figma file's plugin data (`figma.root.setPluginData`), not in per-user `figma.clientStorage`, so it is stored in the file. Use a token limited to the token repository and revoke it from GitHub settings if a file is shared or duplicated
 - **Scope Limitation**: Minimum required permissions only
 - **HTTPS Only**: All communications over secure channels
 - **User Control**: Tokens revocable anytime from GitHub settings

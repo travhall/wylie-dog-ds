@@ -67,6 +67,8 @@ _Note: The Plugin thread handles data preparation, but actual network requests h
 
 #### Get/Save GitHub Config
 
+_The saved config includes the personal access token and is stored in the Figma file's plugin data; see `ARCHITECTURE.md`._
+
 - **Request**: `{ type: 'get-github-config' }` / `{ type: 'save-github-config', config: GitHubConfig }`
 - **Response**:
   - `{ type: 'github-config-loaded', config: GitHubConfig }`
@@ -77,7 +79,28 @@ _Note: The Plugin thread handles data preparation, but actual network requests h
 - **Request**: `{ type: 'get-advanced-mode' }`
 - **Response**: `{ type: 'advanced-mode-loaded', advancedMode: boolean }`
 
-### 5. Utility
+### 5. Other messages
+
+Registered in `src/plugin/handlers/index.ts`; responses are the `type`s the handlers post back.
+
+| Request `type`                                | Response `type`                                       | Purpose                                     |
+| --------------------------------------------- | ----------------------------------------------------- | ------------------------------------------- |
+| `validate-import`                             | `import-validated` / `import-validation-error`        | Validate files before importing             |
+| `github-pull-with-conflicts`                  | `github-pull-with-conflicts`                          | Pull with conflict detection                |
+| `test-github-config`                          | none (the handler only logs; the test runs in the UI) | Test a GitHub configuration                 |
+| `github-sync-complete`                        | none (logs the result and clears loading)             | UI reports a finished sync                  |
+| `clear-github-config`                         | `github-config-cleared`                               | Remove the saved GitHub config              |
+| `save-advanced-mode`                          | none                                                  | Save the advanced-mode preference           |
+| `get-onboarding-state`                        | `onboarding-state-loaded`                             | Read the onboarding flag                    |
+| `save-onboarding-state`                       | none                                                  | Save the onboarding flag                    |
+| `check-file-engagement` / `mark-file-engaged` | `file-engagement-status`                              | Whether the user has engaged with this file |
+| `get-last-sync` / `record-last-sync`          | `last-sync-loaded`                                    | Last sync time                              |
+| `detect-figma-variables`                      | `figma-variables-detected`                            | Find existing Figma variables               |
+| `convert-figma-variables`                     | `figma-variables-converted`                           | Convert existing variables to tokens        |
+
+Errors are posted as `{ type: 'error', message }` or the operation-specific error types shown above. A `loading-state` message reports progress.
+
+### 6. Utility
 
 #### Generate Demo Tokens
 

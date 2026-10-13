@@ -14,14 +14,14 @@ Automated testing infrastructure has been successfully set up for the Token Brid
 
 ### Testing Framework
 
-- **Vitest v3.0.0** - Fast unit test framework with native ESM support
-- **@vitest/ui v3.0.0** - Interactive UI for running tests
-- **jsdom v26.0.0** - DOM environment for testing UI components
+- **Vitest v4** - Fast unit test framework with native ESM support
+- **@vitest/ui v4** - Interactive UI for running tests
+- **jsdom v30** - DOM environment for testing UI components
 
 ### Testing Utilities
 
 - **@testing-library/preact v3.2.4** - Testing utilities for Preact components
-- **@testing-library/jest-dom v6.6.3** - Custom matchers for DOM assertions
+- **@testing-library/jest-dom v7** - Custom matchers for DOM assertions
 
 ---
 
@@ -263,7 +263,7 @@ For testing full user workflows in Figma environment:
 
 - Set up Codecov account for coverage tracking
 - Add coverage badges to README
-- Set coverage thresholds in `vitest.config.ts`:
+- Raise the coverage thresholds in `vitest.config.ts` (currently 60% for lines, functions, branches and statements). Example of a stricter setting:
 
 ```typescript
 coverage: {
