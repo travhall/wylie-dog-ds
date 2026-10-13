@@ -7,6 +7,14 @@ disproportionate for this project. Deliberately not built yet (YAGNI) — extrac
 the interface when the second provider becomes real; this doc makes that a
 small, safe step.
 
+## What exists today
+
+A narrower seam is already in the code: `plugin/storage/storage-adapter.ts`
+defines `StorageAdapter` (`listFiles`, `fetchFile`, `pushFiles`).
+`plugin/github/client.ts` has a "StorageAdapter implementation" section but
+the class does not declare `implements StorageAdapter`. The fuller
+`SourceControlProvider` below is still a design only.
+
 ## Current coupling (as of 2026-07-03)
 
 GitHub is reasonably contained, which is why this is cheap to generalize later:

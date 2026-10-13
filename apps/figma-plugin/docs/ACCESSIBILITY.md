@@ -1,6 +1,6 @@
 # Accessibility Guide
 
-Token Bridge is designed to be accessible to all users, adhering to **WCAG 2.1 Level AA** standards. This guide outlines our accessibility features and guidelines for developers.
+Token Bridge is designed to be accessible to all users, targeting **WCAG 2.2 Level AA**, the repo-wide target. The audit in `ACCESSIBILITY_AUDIT.md` was performed against WCAG 2.1 and has not been re-run against 2.2. This guide outlines our accessibility features and guidelines for developers.
 
 ## Key Features
 
