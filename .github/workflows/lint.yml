@@ -67,6 +67,9 @@ jobs:
       - name: Run Typecheck
         run: pnpm typecheck
 
+      - name: Check docs drift
+        run: pnpm check:docs
+
       - name: Run Accessibility Linting
         run: pnpm lint:a11y
 
