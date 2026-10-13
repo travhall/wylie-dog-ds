@@ -3,10 +3,10 @@
 A monorepo design system with 44 components, OKLCH-based design tokens, and full Storybook documentation.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue?style=flat-square)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.2-blue?style=flat-square)](https://tailwindcss.com/)
-[![React](https://img.shields.io/badge/React-19.2-blue?style=flat-square)](https://react.dev/)
-[![Storybook](https://img.shields.io/badge/Storybook-10.3-ff4785?style=flat-square)](https://storybook.js.org/)
-[![Storybook Docs](https://img.shields.io/badge/Docs-Netlify-00C7B7?style=flat-square)](https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.3-blue?style=flat-square)](https://tailwindcss.com/)
+[![React](https://img.shields.io/badge/React-19.3-blue?style=flat-square)](https://react.dev/)
+[![Storybook](https://img.shields.io/badge/Storybook-10.6-ff4785?style=flat-square)](https://storybook.js.org/)
+[![Storybook Docs](https://img.shields.io/badge/Docs-Chromatic-FC521F?style=flat-square)](https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/)
 
 ## Overview
 
@@ -14,7 +14,7 @@ Wylie Dog is a component library and design token system built with React 19, Ta
 
 The repo includes:
 
-- **`@wyliedog/ui`** — 43 React components with TypeScript, tree-shakeable individual exports
+- **`@wyliedog/ui`** — 44 React components with TypeScript, tree-shakeable individual exports
 - **`@wyliedog/tokens`** — OKLCH design tokens built with Style Dictionary, output as CSS variables and TypeScript
 - **Storybook** — interactive documentation for all components and foundations, deployed to Netlify
 - **Showcase** — Next.js app demonstrating real-world usage patterns
@@ -31,7 +31,7 @@ wylie-dog-ds/
 │   ├── tailwind-config/  # Shared Tailwind CSS configuration
 │   └── typescript-config/ # Shared TypeScript configuration
 └── apps/
-    ├── storybook/        # Component documentation (Storybook 10.3)
+    ├── storybook/        # Component documentation (Storybook 10.6)
     ├── showcase/         # Next.js demo application
     └── figma-plugin/     # Figma token sync plugin (beta)
 ```
@@ -42,24 +42,24 @@ Managed with pnpm workspaces and Turborepo. Package manager: `pnpm@10.28.2`.
 
 | Tool               | Version |
 | ------------------ | ------- |
-| React              | 19.2    |
+| React              | 19.3    |
 | TypeScript         | 6.0     |
-| Tailwind CSS       | 4.2     |
-| Storybook          | 10.3    |
-| Vite               | 8.0     |
+| Tailwind CSS       | 4.3     |
+| Storybook          | 10.6    |
+| Vite               | 8.3     |
 | Next.js (showcase) | 16.3    |
 | Vitest             | 4.1     |
-| Turborepo          | 2.9     |
-| Style Dictionary   | 5.4     |
+| Turborepo          | 2.11    |
+| Style Dictionary   | 5.6     |
 | Radix UI           | various |
 | pnpm               | 10.28.2 |
 
 ## Getting Started
 
-**Prerequisites:** Node.js 20+, pnpm 10+
+**Prerequisites:** Node.js 22+, pnpm 10+
 
 ```bash
-git clone https://github.com/travhall/wyliedog.git
+git clone https://github.com/travhall/wylie-dog-ds.git
 cd wylie-dog-ds
 pnpm install
 
@@ -74,8 +74,10 @@ pnpm dev:figma        # Figma plugin dev build
 
 ### Using in a Project
 
-```bash
-pnpm add @wyliedog/ui
+`@wyliedog/ui` and `@wyliedog/tokens` are not published to npm. To use them, work inside this monorepo as workspace packages (see `apps/showcase` and `apps/storybook`), for example:
+
+```json
+{ "dependencies": { "@wyliedog/ui": "workspace:*" } }
 ```
 
 ```tsx
@@ -133,7 +135,7 @@ This scaffolds the component file, test file, and Storybook story, and updates t
 
 ## Token System
 
-Tokens live in `packages/tokens` and are published as `@wyliedog/tokens`.
+Tokens live in `packages/tokens` as the workspace package `@wyliedog/tokens`. It is not published to npm.
 
 ### Architecture
 
