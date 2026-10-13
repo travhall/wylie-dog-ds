@@ -24,6 +24,11 @@ export interface ExportData {
  * either a VARIABLE_ALIAS reference or an RGB(A) color; every object prop is
  * optional so the exporter's duck-typing checks (`value.type`, `value.r`, …)
  * narrow cleanly without `any`.
+ *
+ * `color` and `opacity` exist only so Figma's composed-color variable values
+ * (`{ color, opacity }`, added in @figma/plugin-typings 1.141) satisfy this
+ * type. The exporter does not support them: they fail the `r/g/b` check and
+ * are logged as invalid color values.
  */
 interface FigmaObjectValue {
   type?: string;
@@ -32,6 +37,8 @@ interface FigmaObjectValue {
   g?: number;
   b?: number;
   a?: number;
+  color?: unknown;
+  opacity?: unknown;
 }
 type FigmaVariableValue = string | number | boolean | FigmaObjectValue;
 

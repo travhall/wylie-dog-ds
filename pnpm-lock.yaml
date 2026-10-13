@@ -97,8 +97,8 @@ importers:
         version: 10.29.8
     devDependencies:
       '@figma/plugin-typings':
-        specifier: 1.135.0
-        version: 1.135.0
+        specifier: ^1.141.0
+        version: 1.141.0
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -1187,8 +1187,8 @@ packages:
       '@noble/hashes':
         optional: true
 
-  '@figma/plugin-typings@1.135.0':
-    resolution: {integrity: sha512-vP9ftEPH2uKaDAiFr8e6ZHYe2yaK+sYuZgVS8okOT51cdQjg/LK7w7rLPSge0vN/zcKsQX6kel4LQi1z14nM0A==}
+  '@figma/plugin-typings@1.141.0':
+    resolution: {integrity: sha512-i+6AsBmiwGNpH4I6sgIvj5RX1dMWExzS7h33HGrU++//wPKotlIzJuGhG15woCQY1V1ctG/k5uW9HgfkTyTaWg==}
 
   '@floating-ui/core@1.8.0':
     resolution: {integrity: sha512-0CIZ5itps/8x7BG8dEIhs53BvCUH2PCoogtakwRTut+Arm58sJooJ0AuZhLw2HJYIR5cMLNPBSS728sPho2khQ==}
@@ -7657,7 +7657,7 @@ snapshots:
 
   '@exodus/bytes@1.16.0': {}
 
-  '@figma/plugin-typings@1.135.0': {}
+  '@figma/plugin-typings@1.141.0': {}
 
   '@floating-ui/core@1.8.0':
     dependencies:
