@@ -1,0 +1,24 @@
+{
+  "tokenAllow": {
+    "apps/figma-plugin/CONTRIBUTING.md": [
+      "^--(space-3|text-primary|radius-md)$"
+    ],
+    "apps/figma-plugin/README.md": ["^--text-primary$"],
+    "apps/storybook/stories/Contributing/Guidelines/code-standards.mdx": [
+      "-component-"
+    ],
+    "apps/storybook/stories/Contributing/Workflows/component-development.mdx": [
+      "-component-"
+    ],
+    "apps/storybook/stories/Contributing/Workflows/release-process.mdx": [
+      "^--color-(primary-default|background-subtle)$"
+    ],
+    "apps/storybook/stories/Resources/Theming/overview.mdx": [
+      "^--color-brand",
+      "^--color-text-on-brand$",
+      "^--color-(border-brand-strong|interactive-brand-(hover|active))$",
+      "^--text-on-light$"
+    ],
+    "documentation/STYLING_ARCHITECTURE.md": ["^--color-new-token$"]
+  }
+}
