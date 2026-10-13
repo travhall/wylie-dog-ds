@@ -35,13 +35,13 @@ Counts are not strictly comparable: April counted each utility separately by han
 
 Scanning every `var(--…)` and `-(--…)` reference in `packages/ui/src` and `apps/showcase/src` against the built CSS found names that do not exist.
 
-| Reference                                         | Where                                                                                                                 | Effect                                                                      |
-| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `--duration-duration-200`                         | `packages/ui/src/compositions/site-header.tsx:13`                                                                     | Typo for `--duration-200`; the transition gets no duration                  |
-| `--color-border-strong`                           | showcase `page.tsx` (14 uses), `components/page.tsx` (11)                                                             | Undefined; `border-color` falls back to `currentcolor`                      |
-| `--color-destructive`, `--color-warning`          | showcase `components/`, `patterns/` and `plugin/` pages (about 33 references; a few are label text, not `var()` uses) | Undefined; text and fills render without the intended color                 |
-| `--shadow-xs`                                     | showcase `components/page.tsx` (4 uses)                                                                               | Undefined; no shadow. The same name was fixed on the tokens hub in Plan 115 |
-| `--color-violet-500`, `--color-button-primary-bg` | showcase `architecture/page.tsx`                                                                                      | Shown as example token names in prose and code; not defined                 |
+| Reference                                         | Where                                                                                                                 | Effect                                                                           |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `--duration-duration-200`                         | `packages/ui/src/compositions/site-header.tsx:13`                                                                     | Typo for `--duration-200`; the transition got no duration. **Fixed in Plan 129** |
+| `--color-border-strong`                           | showcase `page.tsx` (14 uses), `components/page.tsx` (11)                                                             | Undefined; `border-color` falls back to `currentcolor`                           |
+| `--color-destructive`, `--color-warning`          | showcase `components/`, `patterns/` and `plugin/` pages (about 33 references; a few are label text, not `var()` uses) | Undefined; text and fills render without the intended color                      |
+| `--shadow-xs`                                     | showcase `components/page.tsx` (4 uses)                                                                               | Undefined; no shadow. The same name was fixed on the tokens hub in Plan 115      |
+| `--color-violet-500`, `--color-button-primary-bg` | showcase `architecture/page.tsx`                                                                                      | Shown as example token names in prose and code; not defined                      |
 
 These names come from the HTML prototypes in `apps/showcase/prototype/`, where they are defined, and were copied into the React pages. Real equivalents: `--color-border-secondary`, `--color-status-danger` / `--color-interactive-danger`, `--color-status-warning`, `--shadow-sm`. Which replacement is right is a design decision.
 
