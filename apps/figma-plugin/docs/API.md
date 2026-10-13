@@ -25,7 +25,7 @@ Communications are asynchronous. The UI sends a request, and the Plugin responds
 
 #### Variables that cannot be exported
 
-The exporter skips variables it cannot represent as DTCG tokens, so it never writes a token with no value or a raw Figma object. `skipped` lists them (`id`, `name`, `collection`, `resolvedType`, `reason`), and the plugin shows a Figma toast naming the first three. Skipped today: native `EASING` and `TIMING` variables, composed colors (`{ color, opacity }`), any other unlisted variable type, and any variable that aliases one of these. Detection lives in `findUnsupportedVariables` (`variables/processor.ts`). The silent `get-local-tokens` path skips them too, without a toast.
+The exporter skips variables it cannot represent as DTCG tokens, so it never writes a token with no value or a raw Figma object. `skipped` lists them (`id`, `name`, `collection`, `resolvedType`, `reason`), and the plugin shows a short Figma toast with the count. The UI lists them in a dismissible notice (grouped by collection, with reasons) on the Tokens tab and on the Sync tab after a sync. Skipped today: native `EASING` and `TIMING` variables, composed colors (`{ color, opacity }`), any other unlisted variable type, and any variable that aliases one of these. Detection lives in `findUnsupportedVariables` (`variables/processor.ts`). The silent `get-local-tokens` path skips them too, without a toast.
 
 #### Get Local Tokens (for Conflict Detection)
 
