@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@wyliedog/ui/button";
+import manifest from "@wyliedog/tokens/manifest.json";
 import {
   getShowcaseMeta,
   getPatternCategoryCounts,
@@ -193,14 +194,18 @@ export default function PatternsPage() {
                     Tokens
                   </p>
                   <p className="font-mono text-[10px] text-(--color-text-tertiary) mt-1">
-                    340 OKLCH values
+                    {Object.values(manifest.primitives.colors).reduce(
+                      (n, g) => n + Object.keys(g).length,
+                      0
+                    )}{" "}
+                    OKLCH colors
                   </p>
                   <div className="mt-3 flex gap-1">
                     {[
-                      "oklch(0.54 0.18 274)",
-                      "oklch(0.60 0.14 155)",
-                      "oklch(0.75 0.17 85)",
-                      "oklch(0.62 0.18 29)",
+                      "var(--color-interactive-primary)",
+                      "var(--color-status-success)",
+                      "var(--color-status-warning)",
+                      "var(--color-status-danger)",
                     ].map((c) => (
                       <span
                         key={c}

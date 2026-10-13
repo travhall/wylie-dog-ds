@@ -8,33 +8,31 @@ export default function PluginPage() {
     {
       num: "01",
       label: "JSON source",
-      desc: `All ${meta.tokens.total} design tokens live in a single source-of-truth JSON file inside the monorepo — color, type, spacing, radius, elevation, and motion. Every token is OKLCH, every value is intentional.`,
+      desc: `All ${meta.tokens.total} design tokens live in three source-of-truth JSON files inside the monorepo (primitive, semantic, component) — color, type, spacing, radius, elevation, and motion. Every color is OKLCH.`,
       right: (
         <div className="rounded-lg border border-(--color-border-primary) bg-(--color-background-primary) p-4 font-mono text-xs leading-relaxed text-(--color-text-secondary) overflow-hidden">
           <div className="text-(--color-text-tertiary) mb-2">
-            packages/tokens/tokens.json
+            packages/tokens/io/sync/semantic.json (values only)
           </div>
-          <div>
-            <span className="text-(--color-text-primary)">"color"</span>: {"{"}
-          </div>
+          <div>{"{"}</div>
           <div className="pl-4">
-            <span className="text-(--color-text-primary)">"interactive"</span>:{" "}
-            {"{"}
-          </div>
-          <div className="pl-8">
-            <span className="text-(--color-text-primary)">"primary"</span>:{" "}
-            <span style={{ color: "var(--color-interactive-primary)" }}>
-              "oklch(0.54 0.18 274)"
+            <span className="text-(--color-text-primary)">
+              "color.interactive.primary"
             </span>
-          </div>
-          <div className="pl-8">
-            <span className="text-(--color-text-primary)">"primary-hover"</span>
             :{" "}
             <span style={{ color: "var(--color-interactive-primary)" }}>
-              "oklch(0.50 0.18 274)"
+              "{"{"}color.blue.600{"}"}"
             </span>
           </div>
-          <div className="pl-4">{"}"}</div>
+          <div className="pl-4">
+            <span className="text-(--color-text-primary)">
+              "color.interactive.primary-hover"
+            </span>
+            :{" "}
+            <span style={{ color: "var(--color-interactive-primary)" }}>
+              "{"{"}color.blue.700{"}"}"
+            </span>
+          </div>
           <div className="pl-4 text-(--color-text-tertiary)">
             … {meta.tokenSubcategories.colors - 1} more color tokens
           </div>
@@ -75,7 +73,7 @@ export default function PluginPage() {
               </span>
             </div>
             <div className="text-(--color-text-tertiary)">
-              ✓ Loaded {meta.tokens.total} tokens from tokens.json
+              ✓ Loaded {meta.tokens.total} tokens from semantic.json
             </div>
             <div className="text-(--color-text-tertiary)">
               ✓ Connected to Figma Variables API
@@ -165,19 +163,19 @@ export default function PluginPage() {
           </div>
           {[
             {
-              token: "--color-bg-primary",
-              light: "oklch(1 0 0)",
-              dark: "oklch(0.13 0.01 274)",
+              token: "--color-background-primary",
+              light: "oklch(0.991 0.003 264.45)",
+              dark: "oklch(0.149 0.012 259.72)",
             },
             {
               token: "--color-text-primary",
-              light: "oklch(0.15 0.01 274)",
-              dark: "oklch(0.97 0.004 274)",
+              light: "oklch(0.209 0.01 268.18)",
+              dark: "oklch(0.952 0.003 264.48)",
             },
             {
-              token: "--color-border",
-              light: "oklch(0.88 0.008 274)",
-              dark: "oklch(0.26 0.01 274)",
+              token: "--color-border-primary",
+              light: "oklch(0.786 0.004 271.11)",
+              dark: "oklch(0.423 0.007 264.49)",
             },
           ].map((row) => (
             <div
@@ -214,7 +212,7 @@ export default function PluginPage() {
               </div>
               <Button
                 className="text-xs"
-                style={{ background: "oklch(0.58 0.18 274)" }}
+                style={{ background: "var(--color-blue-500)" }}
               >
                 Get started
               </Button>
@@ -226,7 +224,7 @@ export default function PluginPage() {
               </div>
               <Button
                 className="text-xs"
-                style={{ background: "oklch(0.54 0.18 274)" }}
+                style={{ background: "var(--color-blue-600)" }}
               >
                 Get started
               </Button>
@@ -404,8 +402,8 @@ export default function PluginPage() {
                       <div className="mt-2.5 space-y-1">
                         {[
                           {
-                            swatch: "oklch(0.54 0.18 274)",
-                            label: "--color-interactive",
+                            swatch: "var(--color-interactive-primary)",
+                            label: "--color-interactive-primary",
                           },
                           {
                             swatch: "var(--color-status-success)",
@@ -864,7 +862,9 @@ export default function PluginPage() {
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
                     {"    └─ palette/blue   "}
                     <span style={{ color: "oklch(0.80 0.17 85)" }}>~1</span>
-                    {"  oklch(58 .16 274) → oklch(54 .18 274)</div>"}
+                    {
+                      "  oklch(0.623 0.188 259.83) → oklch(0.546 0.215 262.9)</div>"
+                    }
                   </div>
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
                     {"    └─ palette/slate  "}
@@ -1185,55 +1185,58 @@ export default function PluginPage() {
                   </div>
                   {[
                     {
-                      name: "--color-bg-primary",
-                      light: { oklch: "oklch(1 0 0)", swatch: "oklch(1 0 0)" },
+                      name: "--color-background-primary",
+                      light: {
+                        oklch: "oklch(0.991 0.003 264.45)",
+                        swatch: "oklch(0.991 0.003 264.45)",
+                      },
                       dark: {
-                        oklch: "oklch(0.13 0.01 274)",
-                        swatch: "oklch(0.13 0.01 274)",
+                        oklch: "oklch(0.149 0.012 259.72)",
+                        swatch: "oklch(0.149 0.012 259.72)",
                       },
                     },
                     {
                       name: "--color-text-primary",
                       light: {
-                        oklch: "oklch(0.15 0.01 274)",
-                        swatch: "oklch(0.15 0.01 274)",
+                        oklch: "oklch(0.209 0.01 268.18)",
+                        swatch: "oklch(0.209 0.01 268.18)",
                       },
                       dark: {
-                        oklch: "oklch(0.97 0.004 274)",
-                        swatch: "oklch(0.97 0.004 274)",
+                        oklch: "oklch(0.952 0.003 264.48)",
+                        swatch: "oklch(0.952 0.003 264.48)",
                       },
                     },
                     {
-                      name: "--color-interactive",
+                      name: "--color-interactive-primary",
                       light: {
-                        oklch: "oklch(0.54 0.18 274)",
-                        swatch: "oklch(0.54 0.18 274)",
+                        oklch: "oklch(0.546 0.215 262.9)",
+                        swatch: "oklch(0.546 0.215 262.9)",
                       },
                       dark: {
-                        oklch: "oklch(0.62 0.18 274)",
-                        swatch: "oklch(0.62 0.18 274)",
+                        oklch: "oklch(0.546 0.215 262.9)",
+                        swatch: "oklch(0.546 0.215 262.9)",
                       },
                     },
                     {
-                      name: "--color-border",
+                      name: "--color-border-primary",
                       light: {
-                        oklch: "oklch(0.88 0.008 274)",
-                        swatch: "oklch(0.88 0.008 274)",
+                        oklch: "oklch(0.786 0.004 271.11)",
+                        swatch: "oklch(0.786 0.004 271.11)",
                       },
                       dark: {
-                        oklch: "oklch(0.26 0.01 274)",
-                        swatch: "oklch(0.26 0.01 274)",
+                        oklch: "oklch(0.423 0.007 264.49)",
+                        swatch: "oklch(0.423 0.007 264.49)",
                       },
                     },
                     {
                       name: "--color-status-success",
                       light: {
-                        oklch: "oklch(0.60 0.14 155)",
-                        swatch: "oklch(0.60 0.14 155)",
+                        oklch: "oklch(0.527 0.137 150.11)",
+                        swatch: "oklch(0.527 0.137 150.11)",
                       },
                       dark: {
-                        oklch: "oklch(0.68 0.14 155)",
-                        swatch: "oklch(0.68 0.14 155)",
+                        oklch: "oklch(0.8 0.182 151.75)",
+                        swatch: "oklch(0.8 0.182 151.75)",
                       },
                     },
                   ].map((row) => (

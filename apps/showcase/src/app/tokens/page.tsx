@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@wyliedog/ui/button";
 import manifest from "@wyliedog/tokens/manifest.json";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
+import { contrastRatio, parseOklch, wcagLevel } from "@/lib/contrast";
 import { SpacingDemo } from "./spacing-demo";
 import { MotionPreview } from "./motion-preview";
 import { SectionSubnav } from "@/components/section-subnav";
@@ -29,14 +30,26 @@ export default function TokensPage() {
     [54, 41, 27, 20],
   ];
 
-  const brandRamp = [
-    { step: "50", l: 98, c: 0.02, contrast: "1.04 : 1" },
-    { step: "100", l: 94, c: 0.05, contrast: "1.18 : 1" },
-    { step: "300", l: 80, c: 0.13, contrast: "2.10 : 1" },
-    { step: "500", l: 54, c: 0.18, contrast: null, brand: true },
-    { step: "700", l: 38, c: 0.16, contrastBadge: "AAA · 8.4" },
-    { step: "900", l: 22, c: 0.09, contrast: "14.2 : 1" },
-  ];
+  // Real blue ramp from the manifest; contrast is computed against white.
+  // --color-interactive-primary resolves to blue-600 in both modes.
+  const blue = manifest.primitives.colors.blue as Record<
+    string,
+    { value: string; variable: string }
+  >;
+  const brandRamp = ["50", "100", "300", "500", "600", "700", "900"].map(
+    (step) => {
+      const token = blue[step];
+      const ratio = contrastRatio(token.value, "oklch(1 0 0)");
+      return {
+        step,
+        variable: token.variable,
+        lightness: parseOklch(token.value)[0],
+        ratio,
+        level: wcagLevel(ratio),
+        brand: step === "600",
+      };
+    }
+  );
 
   return (
     <>
@@ -320,7 +333,7 @@ export default function TokensPage() {
                       {cohortBars.map((bar, wi) => (
                         <div
                           key={wi}
-                          className="flex-1 flex flex-col-reverse gap-px relative"
+                          className="flex-1 h-full flex flex-col-reverse gap-px relative"
                         >
                           {bar.map((h, ci) => (
                             <div
@@ -329,10 +342,10 @@ export default function TokensPage() {
                               style={{
                                 height: `${h}%`,
                                 background: [
-                                  "oklch(38% 0.16 274)",
-                                  "oklch(54% 0.18 274)",
-                                  "oklch(70% 0.16 274)",
-                                  "oklch(88% 0.09 274)",
+                                  "var(--color-blue-900)",
+                                  "var(--color-blue-600)",
+                                  "var(--color-blue-400)",
+                                  "var(--color-blue-200)",
                                 ][ci],
                               }}
                             />
@@ -379,26 +392,26 @@ export default function TokensPage() {
               <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-(--color-border-primary)">
                 {[
                   {
-                    color: "oklch(38% 0.16 274)",
-                    label: "violet · 700",
+                    color: "var(--color-blue-900)",
+                    label: "blue · 900",
                     name: "Direct",
                     pct: "42% of new users",
                   },
                   {
-                    color: "oklch(54% 0.18 274)",
-                    label: "violet · 500",
+                    color: "var(--color-blue-600)",
+                    label: "blue · 600",
                     name: "Referral",
                     pct: "28% of new users",
                   },
                   {
-                    color: "oklch(70% 0.16 274)",
-                    label: "violet · 300",
+                    color: "var(--color-blue-400)",
+                    label: "blue · 400",
                     name: "Search",
                     pct: "21% of new users",
                   },
                   {
-                    color: "oklch(88% 0.09 274)",
-                    label: "violet · 100",
+                    color: "var(--color-blue-200)",
+                    label: "blue · 200",
                     name: "Social",
                     pct: "9% of new users",
                   },
@@ -432,10 +445,10 @@ export default function TokensPage() {
               <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5">
                 <div className="flex items-center justify-between">
                   <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-                    brand ramp · violet
+                    brand ramp · blue
                   </p>
                   <span className="font-mono text-[10px] text-(--color-text-tertiary)">
-                    L · 0.18C · 274h
+                    contrast vs white
                   </span>
                 </div>
                 <div className="mt-4 space-y-1">
@@ -455,7 +468,7 @@ export default function TokensPage() {
                       <div
                         className="h-7 w-7 rounded-md shrink-0"
                         style={{
-                          background: `oklch(${r.l}% ${r.c} 274)`,
+                          background: r.variable,
                           ...(r.brand
                             ? {
                                 outline:
@@ -473,34 +486,24 @@ export default function TokensPage() {
                       <span
                         className={`font-mono text-[10px] ${r.brand ? "text-(--color-text-primary)" : "text-(--color-text-tertiary)"}`}
                       >
-                        {r.l}% L{r.brand ? " · brand" : ""}
+                        {(r.lightness * 100).toFixed(1)}% L
+                        {r.brand ? " · brand" : ""}
                       </span>
                       <span className="ml-auto font-mono text-[10px]">
-                        {r.brand ? (
+                        {r.level ? (
                           <span
                             className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, oklch(60% 0.14 155) 18%, transparent)",
-                              color: "oklch(60% 0.14 155)",
+                                "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
+                              color: "var(--color-text-success)",
                             }}
                           >
-                            AA · 4.91
-                          </span>
-                        ) : r.contrastBadge ? (
-                          <span
-                            className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5"
-                            style={{
-                              background:
-                                "color-mix(in oklch, oklch(60% 0.14 155) 18%, transparent)",
-                              color: "oklch(60% 0.14 155)",
-                            }}
-                          >
-                            {r.contrastBadge}
+                            {r.level} · {r.ratio.toFixed(2)}
                           </span>
                         ) : (
                           <span className="text-(--color-text-tertiary)">
-                            {r.contrast}
+                            {r.ratio.toFixed(2)} : 1
                           </span>
                         )}
                       </span>
@@ -670,11 +673,11 @@ export default function TokensPage() {
                   OKLCH fixes this because perceptual lightness is a first-class
                   axis. When you step from{" "}
                   <code className="font-mono text-sm px-1 py-0.5 rounded bg-(--color-background-secondary) text-(--color-text-primary)">
-                    oklch(54% 0.18 274)
+                    oklch(0.546 0.215 262.9)
                   </code>{" "}
                   to{" "}
                   <code className="font-mono text-sm px-1 py-0.5 rounded bg-(--color-background-secondary) text-(--color-text-primary)">
-                    oklch(38% 0.16 274)
+                    oklch(0.379 0.138 265.54)
                   </code>
                   , the difference is predictable — not a guess.
                 </p>
