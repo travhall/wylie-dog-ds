@@ -33,37 +33,37 @@
     },
     {
       "description": "Group React ecosystem updates",
-      "matchPackagePatterns": ["^react", "^@types/react"],
+      "matchPackageNames": ["/^react/", "/^@types/react/"],
       "groupName": "React ecosystem",
       "groupSlug": "react"
     },
     {
       "description": "Group Radix UI updates",
-      "matchPackagePatterns": ["^@radix-ui"],
+      "matchPackageNames": ["/^@radix-ui/"],
       "groupName": "Radix UI",
       "groupSlug": "radix-ui"
     },
     {
       "description": "Group testing libraries",
-      "matchPackagePatterns": ["^@testing-library", "^vitest", "^@vitest"],
+      "matchPackageNames": ["/^@testing-library/", "/^vitest/", "/^@vitest/"],
       "groupName": "Testing libraries",
       "groupSlug": "testing"
     },
     {
       "description": "Group ESLint and Prettier",
-      "matchPackagePatterns": ["^eslint", "^prettier", "^@eslint"],
+      "matchPackageNames": ["/^eslint/", "/^prettier/", "/^@eslint/"],
       "groupName": "Linting and formatting",
       "groupSlug": "linting"
     },
     {
       "description": "Group Storybook updates",
-      "matchPackagePatterns": ["^@storybook", "^storybook"],
+      "matchPackageNames": ["/^@storybook/", "/^storybook/"],
       "groupName": "Storybook",
       "groupSlug": "storybook"
     },
     {
       "description": "Group TypeScript updates",
-      "matchPackagePatterns": ["^typescript", "^@typescript"],
+      "matchPackageNames": ["/^typescript/", "/^@typescript/"],
       "groupName": "TypeScript",
       "groupSlug": "typescript"
     },
