@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "preact/hooks";
 import type { GitHubConfig, PluginMessage } from "../../shared/types";
+import { needsGitHubToken } from "../../shared/github-config";
 import type { PluginError } from "../../shared/error-handler";
 import type { ConflictAwareGitHubClient } from "../../plugin/sync/conflict-aware-github-client";
 import type { TokenConflict } from "../../plugin/sync/types";
@@ -392,7 +393,10 @@ export function usePluginMessages(
           });
           if (msg.config) {
             setGithubConfig(msg.config);
-            setGithubConfigured(true);
+            // Repo settings come from the file; the token is per user. A
+            // config without this user's token is not usable for sync yet, so
+            // keep it unconfigured and let SyncTab ask for the token.
+            setGithubConfigured(!needsGitHubToken(msg.config));
             // Initialize GitHub client with config
             try {
               githubClient.configure(msg.config);
