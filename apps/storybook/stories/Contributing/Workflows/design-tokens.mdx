@@ -176,7 +176,7 @@ In the Token Bridge plugin settings, point the plugin at the repository's token 
 
 3. **Use in Components:**
    ```tsx
-   <div className="gap-(--space-layout-xl)">
+   <div className="gap-(--space-400)">
      {/* Content */}
    </div>
    ```
@@ -376,7 +376,7 @@ pnpm --filter @wyliedog/tokens audit:verbose
 <div style={{ color: '#3B82F6', padding: '16px' }}>
 
 // ✅ Good — Design tokens via Tailwind v4 CSS variable syntax
-<div className="text-(--color-text-primary) p-(--space-component-padding-md)">
+<div className="text-(--color-text-primary) p-(--space-200)">
 ```
 
 ### 2. Respect the Hierarchy
@@ -388,7 +388,7 @@ Components consume component tokens. Component tokens reference semantic tokens.
 <div className="bg-(--color-blue-600)">
 
 // ✅ Good — Component using a component token
-<div className="bg-(--color-button-default-background)">
+<div className="bg-(--color-button-primary-background)">
 ```
 
 ### 3. Document Token Decisions

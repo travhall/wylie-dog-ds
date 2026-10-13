@@ -112,7 +112,8 @@ export const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 Component.displayName = 'Component';
 
 // 3. Style variants (if complex)
-// Variant styles reference component tokens exclusively
+// Variant styles reference component tokens exclusively.
+// `component` in these token names is a placeholder for your component's name (for example `button`).
 const variantStyles = {
   default: 'bg-(--color-component-background) text-(--color-component-text)',
   secondary: 'bg-(--color-component-background-secondary) text-(--color-component-text-secondary)',
