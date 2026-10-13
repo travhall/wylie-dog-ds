@@ -34,6 +34,7 @@
     "export-demo-tokens": "node scripts/export-demo-tokens.mjs",
     "generate:token-map": "node scripts/generate-token-map.js --markdown",
     "process-io": "node scripts/process-token-io.js",
+    "report:coverage": "node scripts/coverage-matrix.mjs",
     "report:tokens": "node scripts/report-token-usage.mjs",
     "report:usage": "node scripts/analyze-component-usage.js",
     "test:tokens": "node scripts/validate-tokens.js"
