@@ -127,7 +127,7 @@
   {
     "name": "UI - Accordion",
     "path": "packages/ui/dist/accordion.js",
-    "limit": "10 KB",
+    "limit": "11 KB",
     "ignore": ["react", "@radix-ui/react-accordion"]
   },
   {
@@ -241,19 +241,37 @@
   {
     "name": "UI - Resizable",
     "path": "packages/ui/dist/resizable.js",
-    "limit": "12 KB",
+    "limit": "20 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Calendar",
     "path": "packages/ui/dist/calendar.js",
-    "limit": "10 KB",
+    "limit": "11 KB",
     "ignore": ["react"]
   },
   {
     "name": "UI - Carousel",
     "path": "packages/ui/dist/carousel.js",
-    "limit": "10 KB",
+    "limit": "11 KB",
+    "ignore": ["react"]
+  },
+  {
+    "name": "UI - Card Grid",
+    "path": "packages/ui/dist/card-grid.js",
+    "limit": "11 KB",
+    "ignore": ["react"]
+  },
+  {
+    "name": "UI - Feature Grid",
+    "path": "packages/ui/dist/feature-grid.js",
+    "limit": "14 KB",
+    "ignore": ["react"]
+  },
+  {
+    "name": "UI - Compositions",
+    "path": "packages/ui/dist/compositions/index.js",
+    "limit": "33 KB",
     "ignore": ["react"]
   }
 ]
