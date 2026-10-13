@@ -4,8 +4,15 @@
  * Handles GitHub sync operations (forwarded to UI thread where fetch is available).
  */
 
-import { processCollectionsForExport } from "../variables/processor";
-import { setLoading, processInChunks } from "./utils";
+import {
+  findUnsupportedVariables,
+  processCollectionsForExport,
+} from "../variables/processor";
+import {
+  setLoading,
+  processInChunks,
+  notifyUnsupportedVariables,
+} from "./utils";
 import type { PluginMessage } from "../../shared/types";
 
 /**
@@ -74,12 +81,18 @@ export async function handleGitHubSyncTokens(
       allCollectionsWithVariables,
       collectionIds
     );
+    const skipped = findUnsupportedVariables(
+      allCollectionsWithVariables,
+      collectionIds
+    );
+    notifyUnsupportedVariables(skipped);
 
     // Forward to UI thread for GitHub operations
     figma.ui.postMessage({
       type: "github-sync-tokens",
       selectedCollectionIds: collectionIds,
       exportData: exportData,
+      skipped,
     });
   } catch (error: unknown) {
     console.error("Error preparing GitHub sync:", error);
