@@ -1,182 +1,78 @@
-# Token System Cheatsheet
+# Token Cheatsheet
 
-## Quick Reference
+Names and values below were read from the built CSS in `packages/tokens/dist/`. For the full list, see `dist/manifest.json`, or run `pnpm --filter @wyliedog/tokens build` and open `dist/tokens.css`.
 
-### Color Tokens
+## Tiers
 
-#### Primitive Colors
+| Tier      | Purpose                                | Example                             |
+| --------- | -------------------------------------- | ----------------------------------- |
+| Primitive | Raw scale values                       | `--color-blue-500`, `--space-200`   |
+| Semantic  | Meaning, with light and dark values    | `--color-text-primary`              |
+| Component | Per-component values aliasing semantic | `--color-button-primary-background` |
 
-```css
-/* Usage in CSS */
-.primary-bg {
-  background-color: var(--color-primary-500);
-}
+In components, use the `-(--token-name)` Tailwind syntax, for example `bg-(--color-background-primary)`.
 
-/* In JavaScript */
-import { color } from '@wyliedog/tokens/hierarchical';
-const primaryColor = color.primary[500];
+## Color
+
+Primitive palettes: `blue`, `gray`, `green`, `orange`, `pink`, `purple`, `red`, `sandcastle`, `yellow`, with steps such as `--color-blue-500`.
+
+Semantic groups:
+
+| Group       | Tokens                                                                                                  |
+| ----------- | ------------------------------------------------------------------------------------------------------- |
+| Background  | `--color-background-{primary,secondary,tertiary,inverse,brand,danger}`                                  |
+| Text        | `--color-text-{primary,secondary,tertiary,inverse,on-solid,brand,danger,success,warning,info,disabled}` |
+| Border      | `--color-border-{primary,secondary,brand,danger,success,warning,focus}`                                 |
+| Interactive | `--color-interactive-{primary,secondary,danger,success,warning}` plus `-hover`, `-active`, `-pressed`   |
+
+`--color-text-inverse` flips with the theme, so pair it only with `--color-background-inverse`. On a static solid background, use `--color-text-on-solid`.
+
+## Spacing
+
+Primitive scale `--space-*`. Values are pixels, not rem.
+
+| Token         | Value  |
+| ------------- | ------ |
+| `--space-100` | `8px`  |
+| `--space-200` | `16px` |
+| `--space-300` | `24px` |
+| `--space-400` | `32px` |
+
+Component spacing tokens follow `--space-<component>-*`.
+
+## Radius
+
+`--border-radius-{none,sm,md,lg,xl,2xl,full}` (`sm` is `2px`, `md` is `4px`, `lg` is `8px`, `full` is `9999px`).
+
+## Shadow
+
+`--shadow-{none,sm,base,md,lg,xl,inner}`.
+
+## Typography, motion, layering
+
+| Family      | Pattern               | Example                                 |
+| ----------- | --------------------- | --------------------------------------- |
+| Font size   | `--font-size-*`       | `--font-size-2xl`                       |
+| Font weight | `--font-weight-*`     | component tokens, per element           |
+| Line height | `--line-height-*`     | CSS only; not synced to Figma Variables |
+| Duration    | `--duration-<ms>`     | `--duration-200`                        |
+| Opacity     | `--opacity-<percent>` | `--opacity-50`                          |
+| Z-index     | `--z-index-*`         | `--z-index-100`                         |
+
+## Dark mode
+
+Dark values live in `semantic-dark.css` under the `.dark` class. Put the class on `<html>`; the showcase sets it before first paint from `localStorage` key `wd-theme`, falling back to `prefers-color-scheme`. A `prefers-color-scheme` media query alone does not switch these tokens.
+
+## Using tokens from JavaScript
+
+```ts
+import { color, spacing, borderRadius } from "@wyliedog/tokens/hierarchical";
+
+color.blue[500]; // "oklch(0.623 0.188 259.83)"
+spacing[200]; // "16px"
+borderRadius.md; // "4px"
 ```
 
-#### Semantic Colors
+Exports in `hierarchical`: `borderRadius`, `color`, `duration`, `fontSize`, `fontWeight`, `lineHeight`, `shadow`, `spacing`.
 
-```css
-/* Light mode (default) */
-:root {
-  --color-text: var(--color-gray-900);
-  --color-background: var(--color-white);
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: var(--color-gray-100);
-    --color-background: var(--color-gray-900);
-  }
-}
-```
-
-### Spacing
-
-```css
-/* Using spacing scale */
-.container {
-  padding: var(--spacing-4); /* 1rem / 16px */
-  margin-top: var(--spacing-8); /* 2rem / 32px */
-  gap: var(--spacing-2); /* 0.5rem / 8px */
-}
-```
-
-### Typography
-
-```css
-/* Text styles */
-.heading-1 {
-  font-size: var(--font-size-4xl); /* 2.25rem / 36px */
-  line-height: var(--line-height-tight);
-  font-weight: var(--font-weight-bold);
-}
-
-.body {
-  font-size: var(--font-size-base); /* 1rem / 16px */
-  line-height: var(--line-height-normal);
-}
-```
-
-### Border Radius
-
-```css
-.rounded-sm {
-  border-radius: var(--radius-sm);
-} /* 0.25rem / 4px */
-.rounded-md {
-  border-radius: var(--radius-md);
-} /* 0.375rem / 6px */
-.rounded-lg {
-  border-radius: var(--radius-lg);
-} /* 0.5rem / 8px */
-.rounded-full {
-  border-radius: var(--radius-full);
-} /* 9999px */
-```
-
-### Shadows
-
-```css
-.shadow-sm {
-  box-shadow: var(--shadow-sm);
-}
-.shadow-md {
-  box-shadow: var(--shadow-md);
-}
-.shadow-lg {
-  box-shadow: var(--shadow-lg);
-}
-```
-
-## Common Tasks
-
-### Add a New Color
-
-1. Add to `io/sync/primitive.json`:
-
-```json
-{
-  "color": {
-    "teal": {
-      "50": "#f0fdfa",
-      "100": "#ccfbf1",
-      "200": "#99f6e4",
-      "300": "#5eead4",
-      "400": "#2dd4bf",
-      "500": "#14b8a6",
-      "600": "#0d9488",
-      "700": "#0f766e",
-      "800": "#115e59",
-      "900": "#134e4a"
-    }
-  }
-}
-```
-
-2. Run `pnpm build`
-
-3. Use in your CSS: `var(--color-teal-500)`
-
-### Create a Semantic Token
-
-1. Add to `io/sync/semantic.json`:
-
-```json
-{
-  "color": {
-    "accent": {
-      "base": { "$value": "{color.teal.500}" },
-      "hover": { "$value": "{color.teal.600}" },
-      "pressed": { "$value": "{color.teal.700}" }
-    }
-  }
-}
-```
-
-2. Run `pnpm build`
-
-3. Use in your CSS: `var(--color-accent-base)`
-
-### Add a New Component Token
-
-1. Add to `io/sync/components.json`:
-
-```json
-{
-  "button": {
-    "primary": {
-      "background": { "$value": "{color.primary.500}" },
-      "text": { "$value": "{color.white}" },
-      "hover": {
-        "background": { "$value": "{color.primary.600}" }
-      }
-    }
-  }
-}
-```
-
-         "hover": {
-           "background": { "$value": "{color.primary.600}" }
-         }
-       }
-     }
-
-}
-
-```
-2. Run `pnpm build`
-3. Use in your CSS: `var(--button-primary-background)`
-
-## Best Practices
-
-1. **Always use tokens** - Never hardcode values in components
-2. **Reference primitives** - Build semantic tokens on top of primitives
-3. **Use semantic names** - Name tokens based on usage, not appearance
-4. **Leverage the cascade** - Use CSS custom properties for theming
-5. **Document new tokens** - Add examples to this cheatsheet when adding new tokens
-```
+`@wyliedog/tokens` is a workspace package; it is not published to npm.
