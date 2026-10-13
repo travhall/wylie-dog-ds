@@ -8,6 +8,8 @@ Central documentation hub for the Wylie Dog Design System.
 - [Accessibility Guide](guides/accessibility-guide.md) - Accessibility standards and testing
 - [Performance Monitoring](guides/performance.md) - Performance budgets and CI/CD integration
 - [Testing Coverage Report](reference/testing-coverage.md) - Current test coverage status
+- [Token Cheatsheet](tokens/token-cheatsheet.md) - Real token names, values and dark mode
+- [Styling Architecture](STYLING_ARCHITECTURE.md) - How components are styled with tokens
 - [Case Studies](case-studies/TEMPLATE.md) - Problem/process/solution write-ups of real design-system issues
 
 ## Documentation Structure
@@ -16,6 +18,7 @@ Central documentation hub for the Wylie Dog Design System.
 documentation/
 ├── guides/          # Development guides and best practices
 ├── reference/       # Technical reference documentation
+├── tokens/          # Token naming, cheatsheet and pipeline docs
 ├── case-studies/    # Problem/process/solution write-ups, one folder per case
 └── archive/         # Historical implementation reports
 ```
@@ -36,7 +39,7 @@ Complete guide for component development including:
 
 Accessibility standards and implementation:
 
-- Current compliance status (98% WCAG 2.1 AA)
+- WCAG 2.2 AA target
 - Component-specific guidelines
 - Testing procedures (automated and manual)
 - CI/CD integration
@@ -56,7 +59,7 @@ Performance monitoring and optimization:
 
 Comprehensive testing status report:
 
-- Current coverage: 95.41% overall
+- Coverage numbers and the command that produces them
 - Component-by-component breakdown
 - Skipped portal tests explanation
 - Testing infrastructure details
@@ -84,6 +87,7 @@ Historical implementation reports documenting completed milestones:
 - `2025-12-17-testing-setup.md` - Testing infrastructure establishment
 - `2025-12-17-testing-fixes.md` - ESLint and component test fixes
 - `2025-12-17-accessibility-improvements.md` - Accessibility enhancements
+- `2025-12-17-accessibility-excellence-plan.md` - Accessibility plan
 
 ## Contributing
 
@@ -98,9 +102,5 @@ Follow the existing format and maintain consistency with project standards.
 ## Project Links
 
 - **Main README**: [../README.md](../README.md)
-- **Storybook**: [Live Demo](https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/)
+- **Storybook**: see the live-docs link in the main README
 - **Repository**: [GitHub](https://github.com/travhall/wylie-dog-ds)
-
----
-
-**Last Updated**: December 2025

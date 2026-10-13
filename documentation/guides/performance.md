@@ -82,7 +82,7 @@ pnpm size
 
 **What it checks**:
 
-- Individual component bundle sizes (43 components tracked)
+- Individual component bundle sizes (every component, plus `card-grid`, `feature-grid` and the compositions index)
 - Tokens package size
 - Dependencies are properly excluded from size calculations
 
