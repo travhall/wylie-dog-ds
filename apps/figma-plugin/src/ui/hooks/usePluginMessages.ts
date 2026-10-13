@@ -4,7 +4,10 @@ import { needsGitHubToken } from "../../shared/github-config";
 import type { PluginError } from "../../shared/error-handler";
 import type { ConflictAwareGitHubClient } from "../../plugin/sync/conflict-aware-github-client";
 import type { TokenConflict } from "../../plugin/sync/types";
-import type { ExportData } from "../../plugin/variables/processor";
+import type {
+  ExportData,
+  UnsupportedVariable,
+} from "../../plugin/variables/processor";
 import type { ValidationReport } from "../../plugin/variables/validation";
 import type { AdapterResultWithFilename } from "../../plugin/handlers/token-handlers";
 import type { ProgressStep } from "../components/ProgressFeedback";
@@ -79,6 +82,7 @@ export interface PluginMessageState {
   validationReport: ValidationReport | null;
   showValidation: boolean;
   adapterResults: AdapterResultWithFilename[];
+  skippedVariables: UnsupportedVariable[];
 
   // Conflicts
   conflicts: TokenConflict[];
@@ -126,6 +130,7 @@ export interface PluginMessageActions {
   setSelectedCollection: (collection: CollectionDetails | null) => void;
   setDownloadQueue: (queue: DownloadableFile[]) => void;
   setShowValidation: (show: boolean) => void;
+  setSkippedVariables: (skipped: UnsupportedVariable[]) => void;
   // Callback registration methods
   registerGitHubConfigTestHandler: (
     handler: (config: GitHubConfig) => Promise<Result<boolean>>
@@ -184,6 +189,9 @@ export function usePluginMessages(
   const [showValidation, setShowValidation] = useState(false);
   const [adapterResults, setAdapterResults] = useState<
     AdapterResultWithFilename[]
+  >([]);
+  const [skippedVariables, setSkippedVariables] = useState<
+    UnsupportedVariable[]
   >([]);
 
   // Conflicts
@@ -257,6 +265,13 @@ export function usePluginMessages(
   }, []);
 
   const sendMessage = useCallback((message: PluginMessage) => {
+    // A new export or sync replaces any earlier skipped-variables result.
+    if (
+      message.type === "export-tokens" ||
+      message.type === "github-sync-tokens"
+    ) {
+      setSkippedVariables([]);
+    }
     parent.postMessage({ pluginMessage: message }, "*");
   }, []);
 
@@ -298,6 +313,7 @@ export function usePluginMessages(
           console.log("Tokens exported:", msg.exportData);
           setLoading(false);
           setCurrentOperation(null);
+          setSkippedVariables(msg.skipped ?? []);
 
           if (msg.exportData) {
             setDownloadQueue(msg.exportData);
@@ -429,6 +445,7 @@ export function usePluginMessages(
 
         case "github-sync-tokens":
           console.log("GitHub sync initiated:", msg.exportData);
+          setSkippedVariables(msg.skipped ?? []);
           if (githubSyncHandlerRef.current) {
             githubSyncHandlerRef.current(msg.exportData);
           } else {
@@ -648,6 +665,7 @@ export function usePluginMessages(
     validationReport,
     showValidation,
     adapterResults,
+    skippedVariables,
     conflicts,
     showConflictResolution,
     conflictOperationType,
@@ -689,6 +707,7 @@ export function usePluginMessages(
     setSelectedCollection,
     setDownloadQueue,
     setShowValidation,
+    setSkippedVariables,
     registerGitHubConfigTestHandler,
     registerGitHubSyncHandler,
     registerGitHubPullHandler,

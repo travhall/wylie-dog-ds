@@ -69,20 +69,15 @@ export function sendError(message: string): void {
 /**
  * Tell the user which variables were left out of an export because the
  * exporter cannot represent them. Uses Figma's native toast so it shows
- * regardless of which tab is open.
+ * regardless of which tab is open; the UI lists the variables.
  */
 export function notifyUnsupportedVariables(
   skipped: UnsupportedVariable[]
 ): void {
   if (skipped.length === 0) return;
 
-  const shown = skipped
-    .slice(0, 3)
-    .map((v) => v.name)
-    .join(", ");
-  const more = skipped.length > 3 ? ` and ${skipped.length - 3} more` : "";
   figma.notify(
-    `Skipped ${skipped.length} variable${skipped.length === 1 ? "" : "s"} Token Bridge can't export yet: ${shown}${more}. See the console for details.`,
+    `${skipped.length} variable${skipped.length === 1 ? "" : "s"} skipped. See the list in the plugin.`,
     { timeout: 10000 }
   );
 }

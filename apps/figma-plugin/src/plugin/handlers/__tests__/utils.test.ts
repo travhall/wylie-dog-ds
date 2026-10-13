@@ -23,17 +23,17 @@ describe("notifyUnsupportedVariables", () => {
     expect(notify).not.toHaveBeenCalled();
   });
 
-  it("names a single skipped variable", () => {
+  it("counts a single skipped variable", () => {
     notifyUnsupportedVariables([skip("easing/default")]);
-    const message = notify.mock.calls[0][0] as string;
-    expect(message).toContain("Skipped 1 variable ");
-    expect(message).toContain("easing/default");
+    expect(notify.mock.calls[0][0]).toBe(
+      "1 variable skipped. See the list in the plugin."
+    );
   });
 
-  it("summarizes many skipped variables", () => {
+  it("counts many skipped variables", () => {
     notifyUnsupportedVariables(["a", "b", "c", "d", "e"].map(skip));
-    const message = notify.mock.calls[0][0] as string;
-    expect(message).toContain("Skipped 5 variables");
-    expect(message).toContain("a, b, c and 2 more");
+    expect(notify.mock.calls[0][0]).toBe(
+      "5 variables skipped. See the list in the plugin."
+    );
   });
 });

@@ -18,6 +18,7 @@ import { usePluginMessages } from "./hooks/usePluginMessages";
 import { useGitHubSync } from "./hooks/domain/useGitHubSync";
 import { ConflictAwareGitHubClient } from "../plugin/sync/conflict-aware-github-client";
 import type { GitHubConfig } from "../shared/types";
+import { needsGitHubToken } from "../shared/github-config";
 import type { ConflictResolution } from "../plugin/sync/types";
 import { handleNetworkRequest } from "./utils/network-handler";
 import type { NetworkRequest } from "../shared/network-types";
@@ -34,6 +35,7 @@ import { EnhancedErrorDisplay } from "./components/EnhancedErrorDisplay";
 import { SuccessToast } from "./components/Toast";
 import { ConflictResolutionDisplay } from "./components/ConflictResolutionDisplay";
 import { ValidationDisplay } from "./components/ValidationDisplay";
+import { SkippedVariablesNotice } from "./components/SkippedVariablesNotice";
 import { ProgressFeedback } from "./components/ProgressFeedback";
 import { OnboardingScreen } from "./components/OnboardingScreen";
 import { ExistingTokensImporter } from "./components/ExistingTokensImporter";
@@ -519,6 +521,18 @@ function AppInner() {
               minHeight: 0,
             }}
           >
+            {/* Skipped variables from the last export or sync. Hidden on the
+                Sync tab's connect / add-token views, where nothing was exported. */}
+            {pluginState.skippedVariables.length > 0 &&
+              (uiState.activeTab === "tokens" ||
+                (pluginState.githubConfigured &&
+                  !needsGitHubToken(pluginState.githubConfig))) && (
+                <SkippedVariablesNotice
+                  skipped={pluginState.skippedVariables}
+                  onDismiss={() => pluginActions.setSkippedVariables([])}
+                />
+              )}
+
             {/* TOKENS TAB */}
             {uiState.activeTab === "tokens" && (
               <TokensTab
