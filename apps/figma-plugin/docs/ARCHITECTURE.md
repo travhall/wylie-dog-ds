@@ -80,7 +80,7 @@ Bi-directional sync requires robust conflict handling:
 ### GitHub Integration
 
 - **Authentication**: Personal Access Token only (`authMethod: "pat"`). OAuth was removed; see `SOURCE_CONTROL_PROVIDERS.md`.
-- **Token storage**: The whole `GitHubConfig`, including `accessToken`, is posted to the plugin thread and written with `figma.root.setPluginData("github-config", ...)` (`plugin/storage/file-storage.ts`). It is saved in the Figma file, not in per-user `figma.clientStorage`. Read from the code; not confirmed in a live Figma session.
+- **Token storage**: `FileConfigStorage` (`plugin/storage/file-storage.ts`) splits `GitHubConfig` on save. Repo settings go to the file via `figma.root.setPluginData("github-config", ...)`; `accessToken` goes to per-user `figma.clientStorage` (key `github-access-token`) and is merged back in on read, so the UI still receives the full config. Legacy files with a token in plugin data are migrated on first read (token moved to `clientStorage` if the user has none, then stripped from the file). `clear-github-config` removes both. Covered by `plugin/storage/__tests__/file-storage.test.ts`; not yet confirmed in a live Figma session.
 - **Sync**: `GitHubClient` (`plugin/github/client.ts`, the only `@octokit/rest` consumer) is constructed and used from the UI. `ConflictAwareGitHubClient` (`plugin/sync/`) extends it with conflict detection, resolution and sync metadata.
 - **Storage seam**: `plugin/storage/storage-adapter.ts` defines `StorageAdapter` (`listFiles`, `fetchFile`, `pushFiles`). `GitHubClient` has a "StorageAdapter implementation" section but does not declare `implements`.
 - **Conflict Awareness**: The client fetches the latest state before pushing to detect race conditions.
