@@ -5,6 +5,7 @@
     "build": "turbo run build",
     "changeset": "changeset",
     "check:docs": "node scripts/check-docs.mjs",
+    "check:tokens": "node scripts/check-token-refs.mjs",
     "clean": "turbo run clean && rm -rf node_modules",
     "dev": "turbo run dev",
     "dev:figma": "turbo run dev --filter=figma-plugin",

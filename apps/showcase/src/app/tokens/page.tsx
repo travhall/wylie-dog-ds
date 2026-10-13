@@ -113,23 +113,23 @@ export default function TokensPage() {
                   tier: "Tier 01 · Primitive",
                   count: meta.tokens.primitive,
                   desc: "Raw values. Never referenced directly by components.",
-                  tokenName: "--color-violet-500",
-                  tokenVal: "oklch(54% 0.18 274)",
-                  swatch: "oklch(54% 0.18 274)",
+                  tokenName: "--color-blue-600",
+                  tokenVal: "oklch(0.546 0.215 262.9)",
+                  swatch: "var(--color-blue-600)",
                 },
                 {
                   tier: "Tier 02 · Semantic",
                   count: meta.tokens.semantic,
                   desc: "Roles. The contract every theme must satisfy.",
                   tokenName: "--color-interactive-primary",
-                  tokenVal: "→ violet-500 (light) · violet-400 (dark)",
+                  tokenVal: "→ blue-600 (light and dark)",
                   swatch: "var(--color-interactive-primary)",
                 },
                 {
                   tier: "Tier 03 · Component",
                   count: meta.tokens.component,
                   desc: "Surfaces. The shape components consume.",
-                  tokenName: "--color-button-primary-bg",
+                  tokenName: "--color-button-primary-background",
                   tokenVal: "→ interactive-primary",
                   swatch: "var(--color-interactive-primary)",
                 },
@@ -516,22 +516,21 @@ export default function TokensPage() {
                 <div className="mt-3 space-y-1.5">
                   {[
                     {
-                      color: "oklch(60% 0.14 155)",
+                      color: "var(--color-status-success)",
                       label: "Deployment succeeded",
-                      token: "--color-status-success · 60% L · 155h",
+                      token: "--color-status-success",
                       icon: <path d="m5 12 5 5L20 7" />,
                     },
                     {
-                      color: "oklch(72% 0.15 75)",
+                      color: "var(--color-status-warning)",
                       label: "Quota approaching limit",
-                      token: "--color-warning · 72% L · 75h",
-                      textColor: "oklch(20% 0.05 75)",
+                      token: "--color-status-warning",
                       icon: <path d="M12 8v5M12 16v.01" />,
                     },
                     {
-                      color: "oklch(58% 0.2 25)",
+                      color: "var(--color-status-danger)",
                       label: "Build failed · 2 errors",
-                      token: "--color-destructive · 58% L · 25h",
+                      token: "--color-status-danger",
                       icon: <path d="M18 6 6 18M6 6l12 12" />,
                     },
                   ].map((s) => (
@@ -543,7 +542,7 @@ export default function TokensPage() {
                         className="grid h-5 w-5 place-items-center rounded-full shrink-0"
                         style={{
                           background: s.color,
-                          color: s.textColor ?? "var(--color-text-inverse)",
+                          color: "var(--color-text-inverse)",
                         }}
                       >
                         <svg

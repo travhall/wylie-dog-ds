@@ -639,7 +639,7 @@ export default function PatternsPage() {
                         name: "Northwind Co.", //cSpell:ignore Northwind
                         members: 28,
                         status: "trial",
-                        statusColor: "var(--color-warning)",
+                        statusColor: "var(--color-status-warning)",
                         price: "14d left",
                         bg: "linear-gradient(135deg, oklch(78% 0.13 155), oklch(70% 0.14 130))",
                       },
@@ -719,13 +719,13 @@ export default function PatternsPage() {
                       sub: "Audited yearly.",
                     },
                     {
-                      color: "var(--color-warning)",
+                      color: "var(--color-text-warning)",
                       icon: "M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 7v5l3 2",
                       title: "24/7 monitoring",
                       sub: "Status & alerts built in.",
                     },
                     {
-                      color: "var(--color-destructive)",
+                      color: "var(--color-text-danger)",
                       icon: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
                       title: "Human support",
                       sub: "Median reply 4 min.",
@@ -795,8 +795,8 @@ export default function PatternsPage() {
                       className="grid h-9 w-9 place-items-center rounded-full"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-destructive) 14%, transparent)",
-                        color: "var(--color-destructive)",
+                          "color-mix(in oklch, var(--color-status-danger) 14%, transparent)",
+                        color: "var(--color-text-danger)",
                       }}
                     >
                       <svg
@@ -856,13 +856,13 @@ export default function PatternsPage() {
                       className="mt-2 rounded-md border bg-(--color-background-primary) p-3"
                       style={{
                         borderColor:
-                          "color-mix(in oklch, var(--color-destructive) 40%, transparent)",
+                          "color-mix(in oklch, var(--color-status-danger) 40%, transparent)",
                       }}
                     >
                       <div className="flex items-start gap-2">
                         <span
                           className="grid h-4 w-4 mt-px place-items-center rounded"
-                          style={{ color: "var(--color-destructive)" }}
+                          style={{ color: "var(--color-text-danger)" }}
                         >
                           <svg
                             viewBox="0 0 24 24"
@@ -888,8 +888,8 @@ export default function PatternsPage() {
                             className="mt-2 h-5 px-1.5 font-mono text-[9px]"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-destructive) 14%, transparent)",
-                              color: "var(--color-destructive)",
+                                "color-mix(in oklch, var(--color-status-danger) 14%, transparent)",
+                              color: "var(--color-text-danger)",
                             }}
                           >
                             Retry isolated
@@ -1045,9 +1045,9 @@ export default function PatternsPage() {
                     <div
                       className="flex items-center justify-between h-7 border rounded-md px-2 text-[11px]"
                       style={{
-                        borderColor: "var(--color-destructive)",
+                        borderColor: "var(--color-border-danger)",
                         background:
-                          "color-mix(in oklch, var(--color-destructive) 6%, var(--color-surface-primary))",
+                          "color-mix(in oklch, var(--color-status-danger) 6%, var(--color-surface-primary))",
                       }}
                     >
                       <span className="text-(--color-text-primary)">
@@ -1059,7 +1059,7 @@ export default function PatternsPage() {
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2.4}
-                        style={{ color: "var(--color-destructive)" }}
+                        style={{ color: "var(--color-text-danger)" }}
                       >
                         <circle cx="12" cy="12" r="9" />
                         <path d="M12 8v5M12 16h.01" />
@@ -1067,7 +1067,7 @@ export default function PatternsPage() {
                     </div>
                     <p
                       className="mt-1 text-[10px]"
-                      style={{ color: "var(--color-destructive)" }}
+                      style={{ color: "var(--color-text-danger)" }}
                     >
                       Invalid email format. Expected name@domain.com.
                     </p>
@@ -1283,7 +1283,7 @@ export default function PatternsPage() {
                           owner: "JR",
                           due: "Jun 18",
                           status: "at risk",
-                          color: "var(--color-warning)",
+                          color: "var(--color-text-warning)",
                         },
                       ].map(({ name, owner, due, status, color }) => (
                         <div

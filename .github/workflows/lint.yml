@@ -70,6 +70,9 @@ jobs:
       - name: Check docs drift
         run: pnpm check:docs
 
+      - name: Check token references
+        run: pnpm check:tokens
+
       - name: Run Accessibility Linting
         run: pnpm lint:a11y
 
