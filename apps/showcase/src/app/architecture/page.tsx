@@ -269,7 +269,10 @@ export default function ArchitecturePage() {
                             <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
                               <span
                                 className="h-1.5 w-1.5 rounded-full"
-                                style={{ background: "oklch(72% 0.15 274)" }}
+                                style={{
+                                  background:
+                                    "var(--color-interactive-primary)",
+                                }}
                               />
                               Package · tokens
                             </span>
@@ -698,46 +701,43 @@ export default function ArchitecturePage() {
             {[
               {
                 stage: "01 · source",
-                path: "packages/tokens/src/",
-                title: "color.primitive.json",
+                path: "packages/tokens/io/sync/",
+                title: "primitive.json (excerpt)",
                 content: (
                   <div className="mt-3 rounded-md border border-(--color-border-primary) bg-(--color-background-primary) p-3 font-mono text-[11px] leading-relaxed">
-                    <div className="text-(--color-text-secondary)">{"{"}</div>
-                    <div className="pl-3 text-(--color-text-secondary)">
-                      <span
-                        style={{ color: "var(--color-interactive-primary)" }}
+                    {[
+                      { indent: 0, rest: "{" },
+                      { indent: 1, key: "primitive", rest: ": {" },
+                      { indent: 2, key: "variables", rest: ": {" },
+                      { indent: 3, key: "color.blue.600", rest: ": {" },
+                      { indent: 4, key: "$type", rest: ': "color",' },
+                      {
+                        indent: 4,
+                        key: "$value",
+                        rest: ': "oklch(0.546 0.215 262.9)"',
+                      },
+                      { indent: 3, rest: "}" },
+                      { indent: 2, rest: "}" },
+                      { indent: 1, rest: "}" },
+                      { indent: 0, rest: "}" },
+                    ].map((line, i) => (
+                      <div
+                        key={i}
+                        className="text-(--color-text-secondary)"
+                        style={{ paddingLeft: `${line.indent * 0.75}rem` }}
                       >
-                        &quot;color&quot;
-                      </span>
-                      : {"{"}
-                    </div>
-                    <div className="pl-6 text-(--color-text-secondary)">
-                      <span
-                        style={{ color: "var(--color-interactive-primary)" }}
-                      >
-                        &quot;violet&quot;
-                      </span>
-                      : {"{"}
-                    </div>
-                    <div className="pl-9 text-(--color-text-secondary)">
-                      <span
-                        style={{ color: "var(--color-interactive-primary)" }}
-                      >
-                        &quot;500&quot;
-                      </span>
-                      : {"{"}{" "}
-                      <span style={{ color: "oklch(50% 0.14 155)" }}>
-                        &quot;oklch(54% .18 274)&quot;
-                      </span>{" "}
-                      {"}"}
-                    </div>
-                    <div className="pl-6 text-(--color-text-secondary)">
-                      {"}"}
-                    </div>
-                    <div className="pl-3 text-(--color-text-secondary)">
-                      {"}"}
-                    </div>
-                    <div className="text-(--color-text-secondary)">{"}"}</div>
+                        {line.key && (
+                          <span
+                            style={{
+                              color: "var(--color-interactive-primary)",
+                            }}
+                          >
+                            &quot;{line.key}&quot;
+                          </span>
+                        )}
+                        {line.rest}
+                      </div>
+                    ))}
                   </div>
                 ),
                 footer: `${meta.tokens.primitive} primitive entries`,
@@ -751,8 +751,8 @@ export default function ArchitecturePage() {
                     {[
                       "parse JSON refs",
                       "resolve alias chains",
-                      "attribute/cti naming",
-                      "format → css/variables",
+                      "tokens-studio transforms",
+                      "custom CSS formats",
                     ].map((step, i) => (
                       <li key={step} className="flex items-center gap-2">
                         <span
@@ -773,13 +773,10 @@ export default function ArchitecturePage() {
                     <li className="mt-3 flex items-center gap-2 rounded-md border border-(--color-border-primary) px-2 py-1.5">
                       <span
                         className="h-1.5 w-1.5 rounded-full"
-                        style={{ background: "oklch(60% 0.14 155)" }}
+                        style={{ background: "var(--color-status-success)" }}
                       />
                       <span className="text-(--color-text-secondary)">
                         style-dictionary build
-                      </span>
-                      <span className="ml-auto text-(--color-text-tertiary)">
-                        2.4s
                       </span>
                     </li>
                   </ul>
@@ -1059,7 +1056,7 @@ export default function ArchitecturePage() {
                     className="pl-4"
                     style={{ color: "oklch(72% 0.14 155)" }}
                   >
-                    ✓ done in 2.4s
+                    ✓ done
                   </div>
                   <div className="mt-1">
                     <span style={{ color: "oklch(72% 0.14 155)" }}>▸</span>{" "}
@@ -1161,7 +1158,7 @@ export default function ArchitecturePage() {
                     {
                       n: "1",
                       title: "Tokens build",
-                      meta: "2.4s · style-dictionary",
+                      meta: "style-dictionary",
                       desc: `Reads JSON source files, resolves aliases, emits tokens.css with all ${meta.tokens.total} custom properties plus JS and TypeScript types.`,
                     },
                     {

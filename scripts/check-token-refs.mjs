@@ -57,6 +57,11 @@ for (const src of sources.values()) {
 }
 
 const allow = config.allow.map((r) => new RegExp(r));
+const definedList = [...defined];
+// A reference built from a template literal (var(--color-blue-${step})) shows up
+// as a prefix ending in '-'. It is fine if real tokens start with that prefix.
+const isDynamicPrefix = (name) =>
+  name.endsWith("-") && definedList.some((d) => d.startsWith(name));
 const refRe = /(?:var\(\s*|-\(\s*(?:[a-z]+:)?)(--[a-z0-9][a-z0-9-]*)/gi;
 
 const bad = new Map();
@@ -66,6 +71,7 @@ for (const [file, src] of sources) {
     if (
       defined.has(name) ||
       declared.has(name) ||
+      isDynamicPrefix(name) ||
       allow.some((re) => re.test(name)) ||
       (config.allowByFile?.[file] ?? []).some((r) => new RegExp(r).test(name))
     )

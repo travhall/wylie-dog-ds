@@ -199,39 +199,41 @@ export default function ShowcasePage() {
                     interactive · primary
                   </p>
                   <p className="font-mono text-[11px] text-(--color-text-tertiary)">
-                    oklch(L C 274)
+                    --color-blue-*
                   </p>
                 </div>
                 <div className="grid grid-cols-11 gap-1">
                   {[
-                    { stop: "50", l: "98%", c: "0.02" },
-                    { stop: "100", l: "94%", c: "0.05" },
-                    { stop: "200", l: "88%", c: "0.09" },
-                    { stop: "300", l: "80%", c: "0.13" },
-                    { stop: "400", l: "70%", c: "0.16" },
-                    { stop: "500", l: "54%", c: "0.18", active: true },
-                    { stop: "600", l: "46%", c: "0.18" },
-                    { stop: "700", l: "38%", c: "0.16" },
-                    { stop: "800", l: "30%", c: "0.13" },
-                    { stop: "900", l: "22%", c: "0.09" },
-                    { stop: "950", l: "15%", c: "0.05" },
-                  ].map((s) => (
-                    <div
-                      key={s.stop}
-                      className={`aspect-3/4 rounded${s.active ? " ring-2 ring-offset-2" : ""}`}
-                      style={{
-                        background: `oklch(${s.l} ${s.c} 274)`,
-                        ...(s.active
-                          ? ({
-                              "--tw-ring-color":
-                                "var(--color-interactive-primary)",
-                              "--tw-ring-offset-color":
-                                "var(--color-background-primary)",
-                            } as React.CSSProperties)
-                          : {}),
-                      }}
-                    />
-                  ))}
+                    "50",
+                    "100",
+                    "200",
+                    "300",
+                    "400",
+                    "500",
+                    "600",
+                    "700",
+                    "800",
+                    "900",
+                    "950",
+                  ]
+                    .map((stop) => ({ stop, active: stop === "600" }))
+                    .map((s) => (
+                      <div
+                        key={s.stop}
+                        className={`aspect-3/4 rounded${s.active ? " ring-2 ring-offset-2" : ""}`}
+                        style={{
+                          background: `var(--color-blue-${s.stop})`,
+                          ...(s.active
+                            ? ({
+                                "--tw-ring-color":
+                                  "var(--color-interactive-primary)",
+                                "--tw-ring-offset-color":
+                                  "var(--color-background-primary)",
+                              } as React.CSSProperties)
+                            : {}),
+                        }}
+                      />
+                    ))}
                 </div>
                 <div className="mt-2 grid grid-cols-11 gap-1 font-mono text-[9px] text-(--color-text-tertiary) text-center">
                   {[
@@ -1230,10 +1232,10 @@ export default function ShowcasePage() {
                           <div className="flex items-center gap-2 rounded border border-(--color-border-primary) px-2 py-1.5">
                             <span
                               className="h-4 w-4 rounded shrink-0"
-                              style={{ background: "oklch(58% 0.16 274)" }}
+                              style={{ background: "var(--color-blue-500)" }}
                             />
                             <span className="font-mono text-(--color-text-tertiary) line-through">
-                              oklch(58% .16 274)
+                              oklch(0.623 0.188 259.83)
                             </span>
                           </div>
                           <div
@@ -1247,10 +1249,10 @@ export default function ShowcasePage() {
                           >
                             <span
                               className="h-4 w-4 rounded shrink-0"
-                              style={{ background: "oklch(54% 0.18 274)" }}
+                              style={{ background: "var(--color-blue-600)" }}
                             />
                             <span className="font-mono text-(--color-text-primary)">
-                              oklch(54% .18 274)
+                              oklch(0.546 0.215 262.9)
                             </span>
                           </div>
                         </div>
