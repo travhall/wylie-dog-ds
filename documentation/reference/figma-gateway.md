@@ -152,7 +152,7 @@ Not worth it yet when:
 1. **Letter-spacing:** Does it have the same Figma Variable limitation? (Likely yes — also a relative unit in some tokens.) Should the gateway handle both in the same pass?
 2. **Convention enforcement:** Should `pnpm build` warn when a component has `*.line-height` but no matching `*.font-size.*` tokens?
 3. **Figma import automation:** Is there a Figma REST API call we can add to the build to push the export automatically, eliminating the manual import step?
-4. **Token count impact:** With 43 components, if each has 3 sizes, the gateway adds ~129 additional Figma Variables. Is that acceptable in the panel?
+4. **Token count impact:** With 44 components, if each has 3 sizes, the gateway adds ~129 additional Figma Variables. Is that acceptable in the panel?
 
 ---
 

@@ -1,23 +1,25 @@
 # Testing and Coverage Status
 
-**Last Updated:** July 5, 2026
-**Overall Coverage:** 95.06% lines / 94.4% statements (exceeds 80% threshold)
-**Tests Passing:** 1,541 | **Tests Skipped:** 67
+**Last Updated:** October 13, 2026
+**Overall Coverage:** 97.15% lines / 96.7% statements (exceeds 80% threshold)
+**Tests Passing:** 1,569 | **Tests Skipped:** 67
+
+Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather than trusting this snapshot.
 
 ## Coverage Breakdown
 
 | Metric     | Current | Target | Status            |
 | ---------- | ------- | ------ | ----------------- |
-| Statements | 94.4%   | 80%    | ✅ Pass (+14.4%)  |
-| Lines      | 95.06%  | 80%    | ✅ Pass (+15.06%) |
-| Functions  | 87.03%  | 80%    | ✅ Pass (+7.03%)  |
-| Branches   | 78.81%  | 70%    | ✅ Pass (+8.81%)  |
+| Statements | 96.7%   | 80%    | ✅ Pass (+16.7%)  |
+| Lines      | 97.15%  | 80%    | ✅ Pass (+17.15%) |
+| Functions  | 91.78%  | 80%    | ✅ Pass (+11.78%) |
+| Branches   | 79.62%  | 70%    | ✅ Pass (+9.62%)  |
 
 ### Component Coverage
 
-- **Component tests:** 95.06% lines (all components fully tested except portal-based skips)
+- **Component tests:** 97.15% lines overall (all components fully tested except portal-based skips)
 - **Utility tests:** 100% lines (utils.ts), 98.78% lines (test-utils.ts)
-- **Test files:** 54 passing test files
+- **Test files:** 55 passing test files
 
 ## Skipped Tests Summary
 
@@ -52,7 +54,7 @@ Portal content renders asynchronously in document.body, requiring special timing
 
 ---
 
-#### 2. Select (13 skipped)
+#### 2. Select (15 skipped)
 
 **File:** `src/__tests__/select.test.tsx`
 **Coverage Impact:** Component works in production
@@ -74,7 +76,7 @@ Dropdown menu renders in portal, making it difficult to test option selection an
 
 ---
 
-#### 3. Sheet (4 skipped)
+#### 3. Sheet (9 skipped)
 
 **File:** `src/__tests__/sheet.test.tsx`
 **Coverage Impact:** Component works in production
@@ -96,7 +98,7 @@ Dialog renders in portal with animations, causing timing issues in tests.
 
 ---
 
-#### 4. Popover (2 skipped)
+#### 4. Popover (6 skipped)
 
 **File:** `src/__tests__/popover.test.tsx`
 **Coverage Impact:** Component works in production
