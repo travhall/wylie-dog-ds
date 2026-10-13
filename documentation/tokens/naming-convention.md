@@ -35,9 +35,9 @@ After research and evaluation, the `color-` prefix is the correct choice because
 Your token system has multiple categories:
 
 - `--color-*` (colors)
-- `--spacing-*` (spacing)
-- `--font-*` (typography)
-- `--radius-*` (border radius)
+- `--space-*` (spacing)
+- `--font-size-*`, `--font-weight-*`, `--line-height-*` (typography)
+- `--border-radius-*` (border radius)
 
 The prefix maintains clear boundaries between categories.
 
@@ -294,7 +294,6 @@ className="
 
 ```tsx
 className="
-  bg-(--color-background-success)
   text-(--color-text-success)
   border-(--color-border-success)
 "
@@ -304,7 +303,6 @@ className="
 
 ```tsx
 className="
-  bg-(--color-background-warning)
   text-(--color-text-warning)
   border-(--color-border-warning)
 "

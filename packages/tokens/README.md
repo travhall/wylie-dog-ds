@@ -7,7 +7,7 @@ Design tokens for the Wylie Dog Design System. This package provides a bi-direct
 - **Bi-directional Figma sync** via Token Bridge plugin
 - **W3C DTCG compliant** token format
 - **OKLCH color space** for perceptually uniform colors
-- **Light/Dark mode** support with automatic separation
+- **Light/Dark mode** support via the `.dark` class on `<html>`
 - **Tailwind CSS 4** integration via `@theme`
 - **Hierarchical JS exports** for programmatic access
 
@@ -34,9 +34,7 @@ packages/tokens/
 
 ## Installation
 
-```bash
-pnpm add @wyliedog/tokens
-```
+`@wyliedog/tokens` is a workspace package in this monorepo and is not published to npm. Consume it with `"@wyliedog/tokens": "workspace:*"`.
 
 ## Usage
 
@@ -57,8 +55,8 @@ pnpm add @wyliedog/tokens
 // Hierarchical (recommended)
 import { color, spacing, shadow } from "@wyliedog/tokens/hierarchical";
 
-const primaryBlue = color.blue[500]; // "oklch(0.623 0.188 259.82)"
-const gap = spacing["4"]; // "1rem"
+const primaryBlue = color.blue[500]; // "oklch(0.623 0.188 259.83)"
+const gap = spacing[200]; // "16px"
 
 // Flat exports
 import tokens from "@wyliedog/tokens";
@@ -91,8 +89,8 @@ pnpm dev
 pnpm test:tokens
 
 # Audit token usage across components
-pnpm audit
-pnpm audit:verbose
+pnpm run audit
+pnpm run audit:verbose
 ```
 
 ## Scripts Reference
@@ -126,16 +124,18 @@ Figma Token Bridge → io/sync/ → process-token-io.js → io/processed/ → St
 
 ## Token Types
 
-| Type         | CSS Prefix                        | Example                |
-| ------------ | --------------------------------- | ---------------------- |
-| `color`      | `--color-`                        | `--color-blue-500`     |
-| `spacing`    | `--spacing-`                      | `--spacing-4`          |
-| `shadow`     | `--shadow-`                       | `--shadow-md`          |
-| `fontSize`   | `--font-size-`                    | `--font-size-lg`       |
-| `fontWeight` | `--font-weight-`                  | `--font-weight-bold`   |
-| `lineHeight` | `--line-height-`                  | `--line-height-normal` |
-| `duration`   | `--duration-`                     | `--duration-200`       |
-| `dimension`  | `--border-radius-` / `--spacing-` | `--border-radius-md`   |
+| Type         | CSS Prefix         | Example                            |
+| ------------ | ------------------ | ---------------------------------- |
+| `color`      | `--color-`         | `--color-blue-500`                 |
+| `spacing`    | `--space-`         | `--space-200` (`16px`)             |
+| `shadow`     | `--shadow-`        | `--shadow-md`                      |
+| `fontSize`   | `--font-size-`     | `--font-size-2xl`                  |
+| `fontWeight` | `--font-weight-`   | component tokens, e.g. per element |
+| `lineHeight` | `--line-height-`   | component tokens, e.g. per element |
+| `duration`   | `--duration-`      | `--duration-200`                   |
+| `radius`     | `--border-radius-` | `--border-radius-md` (`4px`)       |
+
+See `documentation/tokens/token-cheatsheet.md` for semantic names and dark mode.
 
 ## Figma Integration
 
