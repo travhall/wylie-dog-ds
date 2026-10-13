@@ -19,6 +19,9 @@
       "^--color-(border-brand-strong|interactive-brand-(hover|active))$",
       "^--text-on-light$"
     ],
-    "documentation/STYLING_ARCHITECTURE.md": ["^--color-new-token$"]
+    "documentation/STYLING_ARCHITECTURE.md": ["^--color-new-token$"],
+    "packages/tokens/COVERAGE.md": [
+      "^--(duration-duration-200|color-border-strong|color-destructive|color-warning|shadow-xs|color-violet-500|color-button-primary-bg)$"
+    ]
   }
 }

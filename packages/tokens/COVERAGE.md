@@ -1,254 +1,158 @@
-# Token Coverage Audit — Wylie Dog Design System
+# Token Coverage Audit
 
-## Overview
+How far the UI components consume the design tokens, and what is still hardcoded. Re-audited **October 13, 2026**; the previous audit (April 2026) predates the token categories it proposed.
 
-This document is the canonical token coverage audit for the Wylie Dog Design System, establishing the baseline for **Phase 1.2 (3-tier enforcement)** and **Phase 1.3 (new token categories)**. Phase 1.2 will enforce strict layering — primitive tokens consumed only by semantic/component layers, never directly by components. Phase 1.3 will introduce missing token categories (z-index, opacity, motion, elevation) and formalize hardcoded utility patterns as reusable tokens.
+## Regenerate
 
-## Methodology
-
-**Scope:** All 44 top-level components in `packages/ui/src/*.tsx` (excluding `__tests__/` and `compositions/`), audited against actual token consumption in each component's className expressions and the token definitions in `packages/tokens/io/sync/components.json`.
-
-**Audit process:**
-
-1. Scanned every `.tsx` component for `cn()` calls and className patterns
-2. Identified token references (e.g. `bg-(--color-button-primary-background)`, `space-button-radius`)
-3. Cross-referenced hardcoded utility classes (e.g. `transition-colors`, `z-50`, `opacity-50`)
-4. Mapped component structure to token namespace entries in `components.json`
-5. Flagged missing namespaces, direct primitive usage, and 3-tier violations
-
-**State legend:**
-
-- ✅ component-layer tokens exist AND are actively consumed
-- 🟡 uses semantic/primitive tokens directly (no component-layer token wrapper)
-- ❌ hardcoded value or utility class where a token should exist
-- — not relevant for this component
-- n/a category not yet defined in the token system
-
----
-
-## Coverage Matrix
-
-| Component      | Color | Space | Radius | Type | Shadow | Motion | Z-Index | Opacity | Border | Notes                                                                                                                              |
-| -------------- | ----- | ----- | ------ | ---- | ------ | ------ | ------- | ------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Accordion      | ✅    | ✅    | ✅     | ✅   | —      | ✅     | —       | 🟡      | ✅     | Uses `animate-in/animate-out`; opacity hardcoded in disabled state                                                                 |
-| Alert          | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Complete; well-tokenized                                                                                                           |
-| AlertDialog    | ✅    | ✅    | ✅     | ✅   | —      | 🟡     | ❌      | —       | ✅     | Backdrop uses `z-50` hardcoded; `fade-in-0`/`fade-out-0` animations in `cn()`                                                      |
-| AspectRatio    | —     | —     | —      | —    | —      | —      | —       | —       | —      | Primitive wrap; no tokens defined (intentional)                                                                                    |
-| Avatar         | ✅    | —     | ✅     | ✅   | —      | —      | —       | —       | —      | Image uses aspect-square; no space tokens                                                                                          |
-| Badge          | ✅    | ✅    | ✅     | ✅   | —      | ❌     | —       | —       | ✅     | `transition-colors` hardcoded; should reference motion token                                                                       |
-| Breadcrumb     | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Well-tokenized structure                                                                                                           |
-| Button         | ✅    | ✅    | ✅     | ✅   | —      | ❌     | —       | ✅      | ✅     | Primary gap: `transition-colors` hardcoded; opacity-disabled tokenized ✅                                                          |
-| Calendar       | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Well-structured with space tokens for grid cells                                                                                   |
-| Card           | ✅    | ✅    | ✅     | ✅   | ✅     | —      | —       | —       | ✅     | Excellent coverage; all major properties tokenized (`shadow.card-shadow`)                                                          |
-| CardGrid       | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Uses card tokens; gap/padding via space tokens                                                                                     |
-| Carousel       | ✅    | ✅    | ✅     | —    | —      | —      | —       | —       | —      | `-ml-(--space-carousel-item-spacing)` demonstrates negative spacing token usage                                                    |
-| Checkbox       | ✅    | ✅    | ✅     | —    | —      | —      | —       | —       | ✅     | Well-structured; minimal but complete                                                                                              |
-| Collapsible    | —     | ✅    | —      | —    | —      | ❌     | —       | —       | —      | Uses `animate-collapsible-down/up` hardcoded; should be motion token                                                               |
-| Command        | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | 🟡      | ✅     | `opacity-disabled` muted state via shorthand utility; no motion tokens                                                             |
-| ContextMenu    | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Good coverage; uses component-layer tokens                                                                                         |
-| Dialog         | ✅    | ✅    | ✅     | ✅   | —      | ❌     | ❌      | —       | ✅     | **Critical:** `z-50` hardcoded ([dialog.tsx:21](packages/ui/src/dialog.tsx)); `animate-in/animate-out` missing motion tokens       |
-| DropdownMenu   | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Complete component-layer coverage                                                                                                  |
-| FeatureGrid    | ✅    | ✅    | ✅     | ✅   | ❌     | ❌     | —       | —       | ✅     | `shadow-sm` hardcoded ([feature-grid.tsx:26](packages/ui/src/feature-grid.tsx)); `transition-transform duration-500` not tokenized |
-| Form           | ✅    | ✅    | —      | ✅   | —      | —      | —       | —       | ✅     | Error message margin uses space token; good structure                                                                              |
-| HoverCard      | 🟡    | 🟡    | —      | —    | —      | ❌     | ❌      | —       | —      | Minimal tokens; `z-50` and `animate-in/zoom-in-95` hardcoded                                                                       |
-| Input          | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | ✅      | ✅     | Complete; focus ring and disabled states well-tokenized                                                                            |
-| Label          | ✅    | —     | —      | ✅   | —      | —      | —       | —       | —      | Minimal; typography only                                                                                                           |
-| MenuBar        | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Comprehensive coverage                                                                                                             |
-| NavigationMenu | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Well-structured; uses component-layer tokens throughout                                                                            |
-| Pagination     | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Good coverage across all properties                                                                                                |
-| Popover        | 🟡    | 🟡    | —      | —    | —      | ❌     | ❌      | —       | —      | Minimal tokens; `z-50` hardcoded, animations not tokenized                                                                         |
-| Progress       | ✅    | ✅    | —      | —    | —      | —      | —       | —       | ✅     | Complete for used properties                                                                                                       |
-| RadioGroup     | ✅    | ✅    | ✅     | —    | —      | —      | —       | —       | ✅     | Focused scope; well-executed                                                                                                       |
-| Resizable      | —     | —     | —      | —    | —      | —      | —       | —       | —      | Primitive wrapper; minimal token definitions (intentional)                                                                         |
-| ScrollArea     | 🟡    | 🟡    | —      | —    | —      | —      | —       | —       | 🟡     | Uses `scrollbar-*` tokens; very limited coverage                                                                                   |
-| Select         | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Comprehensive; good structure                                                                                                      |
-| Separator      | ✅    | ✅    | —      | —    | —      | —      | —       | —       | —      | Minimal scope; complete for what it does                                                                                           |
-| Sheet          | ✅    | ✅    | ✅     | ✅   | —      | 🟡     | ❌      | —       | ✅     | `z-50` hardcoded; animation states use hardcoded `animate-in/animate-out`                                                          |
-| Skeleton       | —     | 🟡    | —      | —    | —      | —      | —       | ❌      | —      | Uses opacity-based pulse; motion token missing                                                                                     |
-| Slider         | ✅    | ✅    | ✅     | —    | —      | —      | —       | —       | ✅     | Functional; complete for slider semantics                                                                                          |
-| Switch         | ✅    | ✅    | ✅     | —    | —      | —      | —       | —       | ✅     | Complete coverage for toggle component                                                                                             |
-| Table          | ✅    | ✅    | —      | ✅   | —      | —      | —       | —       | ✅     | Complete row/cell structure                                                                                                        |
-| Tabs           | ✅    | ✅    | ✅     | ✅   | 🟡     | ❌     | —       | ✅      | ✅     | Tab trigger shadow via `shadow-sm`; `transition-all` hardcoded ([tabs.tsx:63](packages/ui/src/tabs.tsx))                           |
-| TextArea       | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | ✅      | ✅     | Excellent; mirrors Input with proper tokenization                                                                                  |
-| Toast          | ✅    | ✅    | ✅     | ✅   | ✅     | ❌     | —       | ❌      | ✅     | Animations (`animate-in/animate-out`) hardcoded; opacity-disabled missing                                                          |
-| Toggle         | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Complete; focused scope                                                                                                            |
-| ToggleGroup    | ✅    | ✅    | ✅     | ✅   | —      | —      | —       | —       | ✅     | Good structure for group variant                                                                                                   |
-| Tooltip        | 🟡    | ✅    | ✅     | ✅   | ❌     | ❌     | ❌      | —       | ✅     | `z-50` hardcoded ([tooltip.tsx:31](packages/ui/src/tooltip.tsx)); `shadow-` should be shadow-md token; animations hardcoded        |
-
----
-
-## Hardcoded Utility Hot List
-
-The following Tailwind utilities appear hardcoded across components and represent the biggest opportunities for Phase 1.3 token expansion:
-
-| Utility                    | Count | Used in                                                                                     | Suggested token                                                                     |
-| -------------------------- | ----- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `transition-colors`        | 21    | Button, Badge, Breadcrumb, DropdownMenu, Input, Tabs, Checkbox, Switch, Toggle, ToggleGroup | `motion.transition.color` (= `motion.duration.standard` + `motion.easing.standard`) |
-| `animate-in`               | 19    | Dialog, Sheet, Tooltip, Toast, Popover, HoverCard, Alert                                    | `motion.animation.enter`                                                            |
-| `animate-out`              | 19    | Dialog, Sheet, Tooltip, Toast, Popover, HoverCard, Alert                                    | `motion.animation.exit`                                                             |
-| `z-50`                     | 14    | Dialog, AlertDialog, Sheet, Popover, HoverCard, Tooltip, DropdownMenu, ContextMenu          | `z-index.modal` (or `z-index.popover` / `.tooltip` per role)                        |
-| `opacity-50`               | 9     | Various disabled/muted states                                                               | `opacity.interactive.disabled`                                                      |
-| `shadow-md`                | 8     | Card, Tabs, Tooltip, FeatureGrid                                                            | `elevation.medium`                                                                  |
-| `shadow-lg`                | 8     | Toast, Sheet, DropdownMenu, ContextMenu                                                     | `elevation.large`                                                                   |
-| `fade-in-0`                | 8+    | Tooltip, Dialog, Popover                                                                    | `motion.animation.fadeIn`                                                           |
-| `transition-all`           | 7     | Card, FeatureGrid, Toast, NavigationMenu, MenuBar                                           | `motion.transition.all`                                                             |
-| `slide-in-from-*`          | 6+    | Tooltip (sides), Sheet, Popover                                                             | `motion.animation.slideIn` (+ direction)                                            |
-| `zoom-in-95`               | 3+    | Tooltip, Popover, HoverCard                                                                 | `motion.animation.zoomIn`                                                           |
-| `shadow-sm`                | 2     | Tabs, FeatureGrid                                                                           | `elevation.small`                                                                   |
-| `animate-collapsible-down` | 1     | Collapsible                                                                                 | `motion.animation.expandDown`                                                       |
-| `animate-collapsible-up`   | 1     | Collapsible                                                                                 | `motion.animation.expandUp`                                                         |
-| `opacity-disabled`         | 24    | Button, Input, Tabs, Badge, Command, Toast, etc.                                            | Already tokenized ✅ — keep                                                         |
-
----
-
-## Components Missing a Complete Token Namespace
-
-| Component       | Reason                                     | Priority                                 |
-| --------------- | ------------------------------------------ | ---------------------------------------- |
-| **AspectRatio** | Pure primitive wrapper; no UI chrome       | Low (intentional)                        |
-| **Resizable**   | Primitive wrapper for drag handles         | Low (intentional)                        |
-| **ScrollArea**  | Only scrollbar tokens exist                | Medium — add scroll-track / thumb tokens |
-| **HoverCard**   | `z-50` hardcoded, minimal animation tokens | High — popover-adjacent visibility       |
-| **Popover**     | `z-50` hardcoded, no motion tokens         | High — ubiquitous in UI                  |
-| **Skeleton**    | No color/shape tokens; opacity-pulse only  | Low                                      |
-| **Collapsible** | Animation names hardcoded                  | Medium — used in Accordion               |
-
----
-
-## 3-Tier Violations (Direct Primitive / Semantic-Skipping)
-
-Components that reference primitives directly when Phase 1.2 would mandate a component-layer intermediary:
-
-1. **HoverCard + Popover** — both use `z-50` instead of `z-index.popover` semantic → component token
-   - [hover-card.tsx:21](apps/figma-plugin/) · [popover.tsx:21](packages/ui/src/popover.tsx)
-2. **Dialog + Sheet + AlertDialog** — all hardcode `z-50` in overlay
-   - [dialog.tsx:21](packages/ui/src/dialog.tsx) · [sheet.tsx:~20](packages/ui/src/sheet.tsx) · [alert-dialog.tsx:~18](packages/ui/src/alert-dialog.tsx)
-3. **Tabs** — uses `shadow-sm` instead of `tabs.trigger.shadow-active` → `elevation.small`
-   - [tabs.tsx:68](packages/ui/src/tabs.tsx) (`data-[state=active]:shadow-sm`)
-4. **FeatureGrid** — uses `shadow-sm` and raw `transition-transform duration-500`
-   - [feature-grid.tsx:26](packages/ui/src/feature-grid.tsx)
-
----
-
-## Proposed New Token Categories (Phase 1.3)
-
-### 1. `z-index.*`
-
-**Hardcoded today:** 14 instances of `z-50` across overlays.
-
-```json
-{
-  "z-index": {
-    "base": { "$type": "number", "$value": 0 },
-    "dropdown": { "$type": "number", "$value": 10 },
-    "sticky": { "$type": "number", "$value": 20 },
-    "fixed": { "$type": "number", "$value": 30 },
-    "modal-backdrop": { "$type": "number", "$value": 40 },
-    "modal": { "$type": "number", "$value": 50 },
-    "popover": { "$type": "number", "$value": 60 },
-    "tooltip": { "$type": "number", "$value": 70 },
-    "toast": { "$type": "number", "$value": 80 }
-  }
-}
+```bash
+pnpm --filter @wyliedog/tokens build
+pnpm --filter @wyliedog/tokens report:coverage
 ```
 
-**Components affected:** Dialog, Sheet, AlertDialog, Popover, HoverCard, Tooltip, DropdownMenu, ContextMenu, Toast.
+`scripts/coverage-matrix.mjs` reads the built CSS in `dist/` and every top-level `packages/ui/src/*.tsx`, then prints the tables in the Snapshot section. Copy the output over that section when it changes. It counts only token names that actually exist in the built CSS.
 
-### 2. `opacity.*`
+## What changed since April 2026
 
-**Hardcoded today:** 9 instances of `opacity-50` plus inconsistent muted/subtle usage.
+The April audit proposed four new token categories and counted the hardcoded utilities they would replace. All four categories now exist, and two of the four migrations are done.
 
-```json
-{
-  "opacity": {
-    "full": { "$type": "number", "$value": 1 },
-    "interactive": {
-      "hover": { "$type": "number", "$value": 0.8 },
-      "active": { "$type": "number", "$value": 0.9 },
-      "disabled": { "$type": "number", "$value": 0.5 }
-    },
-    "semantic": {
-      "muted": { "$type": "number", "$value": 0.7 },
-      "subtle": { "$type": "number", "$value": 0.6 },
-      "overlay": { "$type": "number", "$value": 0.4 },
-      "scrim": { "$type": "number", "$value": 0.8 }
-    }
-  }
-}
-```
+| Area    | April 2026                                      | October 2026                                                                                                                                                                                                                                |
+| ------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Z-index | 14 × hardcoded `z-50`                           | **Migrated.** Tokens `--z-index-{base,dropdown,sticky,fixed,modal-backdrop,modal,popover,tooltip,toast}` exist; overlays use them (`z-(--z-index-modal)`). One `z-1` remains in `navigation-menu`, a local stacking order for its indicator |
+| Shadow  | 18 × `shadow-sm/md/lg`                          | **Migrated.** No hardcoded `shadow-sm/md/lg/xl`; components use `shadow-(--shadow-*)`. The tokens are named `--shadow-*`, not the proposed `elevation.*`                                                                                    |
+| Opacity | 9 × `opacity-50`                                | **Migrated.** `--opacity-interactive-{hover,active,disabled}`, `--opacity-{muted,subtle,overlay,scrim}` exist. One `opacity-100` remains in `input`, a webkit spin-button reset                                                             |
+| Motion  | 21 × `transition-colors`, 19 × `animate-in/out` | **Tokens exist, migration open.** `--duration-{instant,fast,normal,slow}` and `--transition-easing-{default,in,out,in-out}` exist. See below                                                                                                |
 
-The existing `state.opacity.disabled` token stays — `opacity.interactive.disabled` should reference it.
+Counts are not strictly comparable: April counted each utility separately by hand; the script counts regex matches per file.
 
-### 3. `motion.duration.*` and `motion.easing.*`
+## Open: motion
 
-**Hardcoded today:** 21 × `transition-colors`, 19 × `animate-in`/`animate-out`, plus `transition-all`, `transition-transform`, custom `duration-500`.
+- `transition*` utilities (`transition-colors`, `transition-all`, …) appear **38 times in 26 components**. They run on Tailwind's default duration and easing unless paired with a duration token.
+- `animate-in` / `animate-out` appear **40 times in 12 components** (alert-dialog, context-menu, dialog, dropdown-menu, hover-card, menubar, navigation-menu, popover, select, sheet, toast, tooltip).
+- Only 9 files use a duration token at all (`duration-(--duration-*)`): accordion, alert-dialog, card-grid, dialog, feature-grid, navigation-menu, progress, sheet and the `site-header` composition.
+- **No component uses a `--transition-easing-*` token.**
 
-```json
-{
-  "motion": {
-    "duration": {
-      "instant": { "$type": "duration", "$value": "0ms" },
-      "fast": { "$type": "duration", "$value": "100ms" },
-      "standard": { "$type": "duration", "$value": "200ms" },
-      "normal": { "$type": "duration", "$value": "300ms" },
-      "slow": { "$type": "duration", "$value": "500ms" }
-    },
-    "easing": {
-      "linear": { "$type": "cubicBezier", "$value": [0, 0, 1, 1] },
-      "standard": { "$type": "cubicBezier", "$value": [0.4, 0, 0.2, 1] },
-      "decelerate": { "$type": "cubicBezier", "$value": [0, 0, 0.2, 1] },
-      "accelerate": { "$type": "cubicBezier", "$value": [0.4, 0, 1, 1] },
-      "sharp": { "$type": "cubicBezier", "$value": [0.4, 0, 0.6, 1] }
-    }
-  }
-}
-```
+## Bugs found while auditing
 
-Compound transition tokens (`motion.transition.color`, `motion.transition.all`, etc.) and animation tokens (`motion.animation.enter`, `motion.animation.fadeIn`, etc.) are derived in component layer or via Tailwind plugin — exact shape decided during 1.3 implementation.
+Scanning every `var(--…)` and `-(--…)` reference in `packages/ui/src` and `apps/showcase/src` against the built CSS found names that do not exist.
 
-### 4. `elevation.*`
+| Reference                                         | Where                                                                                                                 | Effect                                                                      |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `--duration-duration-200`                         | `packages/ui/src/compositions/site-header.tsx:13`                                                                     | Typo for `--duration-200`; the transition gets no duration                  |
+| `--color-border-strong`                           | showcase `page.tsx` (14 uses), `components/page.tsx` (11)                                                             | Undefined; `border-color` falls back to `currentcolor`                      |
+| `--color-destructive`, `--color-warning`          | showcase `components/`, `patterns/` and `plugin/` pages (about 33 references; a few are label text, not `var()` uses) | Undefined; text and fills render without the intended color                 |
+| `--shadow-xs`                                     | showcase `components/page.tsx` (4 uses)                                                                               | Undefined; no shadow. The same name was fixed on the tokens hub in Plan 115 |
+| `--color-violet-500`, `--color-button-primary-bg` | showcase `architecture/page.tsx`                                                                                      | Shown as example token names in prose and code; not defined                 |
 
-**Hardcoded today:** 18 instances of `shadow-{sm,md,lg}`.
+These names come from the HTML prototypes in `apps/showcase/prototype/`, where they are defined, and were copied into the React pages. Real equivalents: `--color-border-secondary`, `--color-status-danger` / `--color-interactive-danger`, `--color-status-warning`, `--shadow-sm`. Which replacement is right is a design decision.
 
-```json
-{
-  "elevation": {
-    "0": { "$type": "shadow", "$value": "none" },
-    "1": { "$type": "shadow", "$value": "0 1px 2px 0 oklch(0 0 0 / 0.05)" },
-    "2": { "$type": "shadow", "$value": "0 4px 6px -1px oklch(0 0 0 / 0.1)" },
-    "3": { "$type": "shadow", "$value": "0 10px 15px -3px oklch(0 0 0 / 0.1)" },
-    "4": { "$type": "shadow", "$value": "0 20px 25px -5px oklch(0 0 0 / 0.1)" }
-  }
-}
-```
+Ignored as non-bugs: Radix runtime variables (`--radix-*`) and example names in doc comments in `lib/utils.ts`.
 
-Existing `shadow.card-shadow` and similar component tokens become references to elevation tiers.
+## Not covered by this audit
 
----
+- Border width and border color tokens are not tracked as a separate column.
+- Per-component quality ("is the right token used") is not checked, only that a token of the category is referenced.
+- Whether tokens are layered correctly (component → semantic → primitive). `validate-tokens.js` does not appear to enforce layer order; not verified.
+- `AspectRatio` and `Resizable` reference no tokens; this is intentional (thin primitive wrappers).
 
-## Prioritized Work List
+## Snapshot (October 13, 2026)
 
-### Phase 1.3 (Token additions — additive, low risk, do first)
+Components scanned: 44. Defined CSS variables: 1185.
 
-1. **Add `z-index.*` primitives** (1.5h) — JSON + Style Dictionary output + Tailwind plugin reference. Zero component changes; just makes the tokens available.
-2. **Add `opacity.*` primitives** (1.5h) — same scope, additive only.
-3. **Add `motion.duration.*` and `motion.easing.*` primitives** (2h).
-4. **Add `elevation.*` primitives** (1.5h).
-5. **Add component-layer tokens that reference the new primitives** (3h) — e.g. `dialog.overlay.z-index → {z-index.modal}`, `popover.shadow → {elevation.2}`, `button.transition.duration → {motion.duration.standard}`. No component .tsx changes yet.
+### Distinct token references per component
 
-### Phase 1.2 (Component migration — depends on 1.3)
+| Component       | Color | Space | Radius | Type | Shadow | Motion |   Z | Opacity |
+| --------------- | ----: | ----: | -----: | ---: | -----: | -----: | --: | ------: |
+| accordion       |    15 |     6 |      · |    5 |      · |      1 |   · |       · |
+| alert-dialog    |     5 |     4 |      1 |    3 |      1 |      1 |   2 |       · |
+| alert           |    12 |     5 |      1 |    5 |      · |      · |   · |       · |
+| aspect-ratio    |     · |     · |      · |    · |      · |      · |   · |       · |
+| avatar          |     4 |     5 |      · |    5 |      · |      · |   · |       · |
+| badge           |    36 |     6 |      1 |    5 |      · |      · |   · |       · |
+| breadcrumb      |     4 |     4 |      1 |    2 |      · |      · |   · |       · |
+| button          |    23 |     8 |      2 |    5 |      · |      · |   · |       · |
+| calendar        |    10 |    10 |      1 |    6 |      · |      · |   · |       · |
+| card-grid       |     · |     3 |      · |    · |      · |      1 |   · |       · |
+| card            |    10 |     6 |      1 |    7 |      1 |      · |   · |       · |
+| carousel        |     4 |     6 |      · |    · |      · |      · |   · |       · |
+| checkbox        |     6 |     9 |      1 |    · |      · |      · |   · |       · |
+| collapsible     |     1 |     · |      1 |    · |      · |      · |   · |       · |
+| command         |    10 |    13 |      2 |    3 |      · |      · |   · |       · |
+| context-menu    |     7 |    14 |      2 |    3 |      2 |      · |   1 |       · |
+| dialog          |     5 |    12 |      2 |    4 |      1 |      1 |   2 |       · |
+| dropdown-menu   |     6 |    14 |      3 |    3 |      1 |      · |   1 |       · |
+| feature-grid    |     5 |     4 |      2 |    5 |      1 |      1 |   · |       · |
+| form            |     5 |     3 |      · |    7 |      · |      · |   · |       · |
+| hover-card      |     3 |     4 |      1 |    · |      1 |      · |   1 |       · |
+| input           |     9 |     4 |      1 |    3 |      · |      · |   · |       · |
+| label           |     4 |     1 |      · |    5 |      · |      · |   · |       · |
+| menubar         |    14 |    21 |      2 |    4 |      2 |      · |   1 |       · |
+| navigation-menu |    11 |     9 |      2 |    2 |      2 |      1 |   1 |       · |
+| pagination      |     7 |     9 |      1 |    2 |      · |      · |   · |       · |
+| popover         |     3 |     4 |      1 |    · |      1 |      · |   1 |       · |
+| progress        |     5 |     1 |      1 |    · |      · |      1 |   · |       · |
+| radio-group     |     5 |     9 |      1 |    · |      · |      · |   · |       · |
+| resizable       |     4 |     5 |      1 |    · |      · |      · |   1 |       · |
+| scroll-area     |     1 |     3 |      2 |    · |      · |      · |   · |       · |
+| select          |    11 |    18 |      3 |    3 |      1 |      · |   · |       · |
+| separator       |     1 |     4 |      · |    · |      · |      · |   · |       · |
+| sheet           |     4 |    11 |      1 |    3 |      1 |      2 |   2 |       · |
+| skeleton        |     1 |     6 |      1 |    · |      · |      · |   · |       · |
+| slider          |     5 |     5 |      2 |    · |      · |      · |   · |       · |
+| switch          |     4 |    15 |      2 |    · |      1 |      · |   · |       · |
+| table           |     6 |     5 |      · |    5 |      · |      · |   · |       · |
+| tabs            |    11 |    19 |      · |    4 |      1 |      · |   · |       · |
+| textarea        |     7 |     4 |      1 |    2 |      · |      · |   · |       · |
+| toast           |    15 |    12 |      3 |    5 |      1 |      · |   1 |       · |
+| toggle-group    |     6 |     5 |      1 |    2 |      · |      · |   · |       · |
+| toggle          |     7 |     8 |      1 |    2 |      · |      · |   · |       · |
+| tooltip         |     3 |     3 |      1 |    1 |      1 |      · |   1 |       · |
 
-6. **Unify overlay z-index across Dialog/Sheet/AlertDialog/Popover/HoverCard/Tooltip/DropdownMenu/ContextMenu/Toast** (2h) — replace hardcoded `z-50` with `z-(--z-index-{modal,popover,tooltip,toast})`.
-7. **Migrate `transition-colors` (21 instances) to motion tokens** (3h) — sweep across Button, Badge, Breadcrumb, DropdownMenu, Input, Tabs, Checkbox, Switch, Toggle, ToggleGroup.
-8. **Migrate `animate-in`/`animate-out` (19 each) to motion animation tokens** (3h) — Dialog, Sheet, Tooltip, Toast, Popover, HoverCard, Alert.
-9. **Migrate `shadow-{sm,md,lg}` (18 instances) to elevation tokens** (1.5h) — Tabs, FeatureGrid, Card variants.
-10. **Migrate `opacity-50` and other ad-hoc opacity (9 instances) to opacity tokens** (1h).
-11. **Audit `opacity-disabled` consistency** across the 24 callsites (1h) — already tokenized, just verify.
+### Hardcoded utilities per component (occurrences)
 
-### Cross-cutting
+| Component       | transition | duration-N | animate-in/out | z-N | opacity-N | shadow-size |
+| --------------- | ---------: | ---------: | -------------: | --: | --------: | ----------: |
+| accordion       |          2 |          · |              · |   · |         · |           · |
+| alert-dialog    |          · |          · |              4 |   · |         · |           · |
+| badge           |          1 |          · |              · |   · |         · |           · |
+| breadcrumb      |          1 |          · |              · |   · |         · |           · |
+| button          |          1 |          · |              · |   · |         · |           · |
+| calendar        |          3 |          · |              · |   · |         · |           · |
+| card-grid       |          1 |          · |              · |   · |         · |           · |
+| card            |          1 |          · |              · |   · |         · |           · |
+| checkbox        |          1 |          · |              · |   · |         · |           · |
+| context-menu    |          · |          · |              4 |   · |         · |           · |
+| dialog          |          1 |          · |              4 |   · |         · |           · |
+| dropdown-menu   |          4 |          · |              4 |   · |         · |           · |
+| feature-grid    |          2 |          · |              · |   · |         · |           · |
+| hover-card      |          · |          · |              2 |   · |         · |           · |
+| input           |          1 |          · |              · |   · |         1 |           · |
+| menubar         |          · |          · |              3 |   · |         · |           · |
+| navigation-menu |          2 |          · |              6 |   1 |         · |           · |
+| pagination      |          1 |          · |              · |   · |         · |           · |
+| popover         |          · |          · |              2 |   · |         · |           · |
+| progress        |          1 |          · |              · |   · |         · |           · |
+| scroll-area     |          1 |          · |              · |   · |         · |           · |
+| select          |          1 |          · |              2 |   · |         · |           · |
+| sheet           |          2 |          · |              4 |   · |         · |           · |
+| slider          |          1 |          · |              · |   · |         · |           · |
+| switch          |          2 |          · |              · |   · |         · |           · |
+| table           |          1 |          · |              · |   · |         · |           · |
+| tabs            |          1 |          · |              · |   · |         · |           · |
+| textarea        |          1 |          · |              · |   · |         · |           · |
+| toast           |          3 |          · |              3 |   · |         · |           · |
+| toggle-group    |          1 |          · |              · |   · |         · |           · |
+| toggle          |          1 |          · |              · |   · |         · |           · |
+| tooltip         |          · |          · |              2 |   · |         · |           · |
 
-12. **ESLint rule (or tailwindcss-no-restricted-classes plugin) blocking `z-50`, `transition-colors`, `transition-all`, `shadow-sm`, `shadow-md`, `shadow-lg`, `opacity-50`, `animate-in`, `animate-out` in `packages/ui/src/*.tsx`** (2h) — prevents regression after Phase 1.2 migration. Allow-list for Storybook stories.
-13. **Update `validate-tokens.js` to enforce the 3-tier layer order** (2h) — primitives reference nothing; semantic references only primitives; components references semantic + primitives.
-14. **Coverage matrix regeneration script** (1h) — turn this audit into a script that reads `components.json` + greps `packages/ui/src/` and regenerates the matrix above. Keeps the doc honest.
+### Hardcoded utility totals
 
-**Total effort estimate: ~26 hours** spread across Phases 1.2 and 1.3.
+| Utility          | Occurrences | Components                                                                                                                                                                                                                                                   |
+| ---------------- | ----------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `transition`     |          38 | accordion, badge, breadcrumb, button, calendar, card-grid, card, checkbox, dialog, dropdown-menu, feature-grid, input, navigation-menu, pagination, progress, scroll-area, select, sheet, slider, switch, table, tabs, textarea, toast, toggle-group, toggle |
+| `duration-N`     |           0 | none                                                                                                                                                                                                                                                         |
+| `animate-in/out` |          40 | alert-dialog, context-menu, dialog, dropdown-menu, hover-card, menubar, navigation-menu, popover, select, sheet, toast, tooltip                                                                                                                              |
+| `z-N`            |           1 | navigation-menu                                                                                                                                                                                                                                              |
+| `opacity-N`      |           1 | input                                                                                                                                                                                                                                                        |
+| `shadow-size`    |           0 | none                                                                                                                                                                                                                                                         |
+
+Notes: a dot means none. Component radius tokens are named `--space-<component>-radius`, so the Radius column counts those as well as `--border-radius-*`. "Z", "Shadow", "Motion" and "Opacity" are the categories added after April 2026.
