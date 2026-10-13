@@ -29,7 +29,7 @@
     "preact": "^10.29.8"
   },
   "devDependencies": {
-    "@figma/plugin-typings": "1.135.0",
+    "@figma/plugin-typings": "^1.141.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@testing-library/jest-dom": "^7.0.1",
