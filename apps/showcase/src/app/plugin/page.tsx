@@ -412,8 +412,8 @@ export default function PluginPage() {
                             label: "--color-status-success",
                           },
                           {
-                            swatch: "var(--color-warning)",
-                            label: "--color-warning",
+                            swatch: "var(--color-status-warning)",
+                            label: "--color-status-warning",
                           },
                         ].map(({ swatch, label }) => (
                           <div

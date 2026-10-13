@@ -799,10 +799,10 @@ export default function ArchitecturePage() {
                       <span
                         style={{ color: "var(--color-interactive-primary)" }}
                       >
-                        --color-violet-500
+                        --color-blue-600
                       </span>
                       <span className="text-(--color-text-secondary)">
-                        : oklch(54% .18 274);
+                        : oklch(0.546 0.215 262.9);
                       </span>
                     </div>
                     <div className="mt-1 text-(--color-text-tertiary) italic">
@@ -817,7 +817,7 @@ export default function ArchitecturePage() {
                       <span className="text-(--color-text-secondary)">:</span>
                     </div>
                     <div className="pl-4 text-(--color-text-secondary)">
-                      var(--color-violet-500);
+                      var(--color-blue-600);
                     </div>
                     <div className="mt-1 text-(--color-text-tertiary) italic">
                       {"/* component */"}
@@ -826,7 +826,7 @@ export default function ArchitecturePage() {
                       <span
                         style={{ color: "var(--color-interactive-primary)" }}
                       >
-                        --color-button-primary-bg
+                        --color-button-primary-background
                       </span>
                       <span className="text-(--color-text-secondary)">:</span>
                     </div>
@@ -854,7 +854,7 @@ export default function ArchitecturePage() {
                         className="pl-6"
                         style={{ color: "var(--color-interactive-primary)" }}
                       >
-                        bg-(--color-button-primary-bg)
+                        bg-(--color-button-primary-background)
                       </div>
                       <div
                         className="pl-6"
@@ -922,15 +922,15 @@ export default function ArchitecturePage() {
             {[
               [
                 "Tier 1 · primitive",
-                "Raw OKLCH ramps. --color-violet-500 doesn't know what it'll be used for — it just is.",
+                "Raw OKLCH ramps. --color-blue-600 doesn't know what it'll be used for — it just is.",
               ],
               [
                 "Tier 2 · semantic",
-                "Role aliases. --color-interactive-primary maps to violet-500 in light, violet-400 in dark, and re-resolves under any future theme.",
+                "Role aliases. --color-interactive-primary maps to --color-blue-600 in both light and dark, and re-resolves under any future theme.",
               ],
               [
                 "Tier 3 · component",
-                "Surface-specific. --color-button-primary-bg points at the semantic role — never at the primitive directly.",
+                "Surface-specific. --color-button-primary-background points at the semantic role — never at the primitive directly.",
               ],
             ].map(([label, desc]) => (
               <div key={label}>

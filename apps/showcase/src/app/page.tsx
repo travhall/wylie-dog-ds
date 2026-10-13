@@ -389,7 +389,7 @@ export default function ShowcasePage() {
             {/* Foundations/Button */}
             <Link
               href="/components/content-display"
-              className="group rounded-lg border border-(--color-border-primary) p-5 flex flex-col hover:border-(--color-border-strong) hover:bg-(--color-background-primary) transition-all"
+              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
               <div className="flex items-center justify-between">
@@ -414,7 +414,7 @@ export default function ShowcasePage() {
                 >
                   Save changes
                 </span>
-                <span className="inline-flex h-8 items-center rounded-md border border-(--color-border-strong) px-3 text-xs font-semibold text-(--color-text-primary)">
+                <span className="inline-flex h-8 items-center rounded-md border border-(--color-border-primary) px-3 text-xs font-semibold text-(--color-text-primary)">
                   Cancel
                 </span>
                 <span className="inline-flex h-8 items-center rounded-md px-3 text-xs font-semibold text-(--color-text-secondary) hover:bg-(--color-background-secondary) transition-colors">
@@ -426,7 +426,7 @@ export default function ShowcasePage() {
             {/* Forms/Input */}
             <Link
               href="/components/inputs"
-              className="group rounded-lg border border-(--color-border-primary) p-5 flex flex-col hover:border-(--color-border-strong) hover:bg-(--color-background-primary) transition-all"
+              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
               <div className="flex items-center justify-between">
@@ -466,7 +466,7 @@ export default function ShowcasePage() {
             {/* Navigation/Tabs */}
             <Link
               href="/components/navigation"
-              className="group rounded-lg border border-(--color-border-primary) p-5 flex flex-col hover:border-(--color-border-strong) hover:bg-(--color-background-primary) transition-all"
+              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
               <div className="flex items-center justify-between">
@@ -505,7 +505,7 @@ export default function ShowcasePage() {
             {/* Overlays/Dialog */}
             <Link
               href="/components/overlays"
-              className="group rounded-lg border border-(--color-border-primary) p-5 flex flex-col hover:border-(--color-border-strong) hover:bg-(--color-background-primary) transition-all"
+              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
               <div className="flex items-center justify-between">
@@ -526,7 +526,7 @@ export default function ShowcasePage() {
                   <div className="mt-2 h-2 w-32 rounded-full bg-(--color-background-secondary)" />
                 </div>
                 <div
-                  className="absolute inset-x-0 top-6 rounded-md border border-(--color-border-strong) p-3 shadow-lg"
+                  className="absolute inset-x-0 top-6 rounded-md border border-(--color-border-primary) p-3 shadow-lg"
                   style={{ background: "var(--color-background-primary)" }}
                 >
                   <p className="text-xs font-semibold">Delete project?</p>
@@ -534,7 +534,7 @@ export default function ShowcasePage() {
                     This cannot be undone.
                   </p>
                   <div className="mt-2 flex justify-end gap-1.5">
-                    <span className="inline-flex h-6 items-center rounded border border-(--color-border-strong) px-2 text-[10px] font-medium">
+                    <span className="inline-flex h-6 items-center rounded border border-(--color-border-primary) px-2 text-[10px] font-medium">
                       Cancel
                     </span>
                     <span
@@ -554,7 +554,7 @@ export default function ShowcasePage() {
             {/* Data Display/Table */}
             <Link
               href="/components/content-display"
-              className="group rounded-lg border border-(--color-border-primary) p-5 flex flex-col hover:border-(--color-border-strong) hover:bg-(--color-background-primary) transition-all"
+              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
               <div className="flex items-center justify-between">
@@ -604,7 +604,7 @@ export default function ShowcasePage() {
             {/* Feedback/Alert */}
             <Link
               href="/components/feedback"
-              className="group rounded-lg border border-(--color-border-primary) p-5 flex flex-col hover:border-(--color-border-strong) hover:bg-(--color-background-primary) transition-all"
+              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
               <div className="flex items-center justify-between">
@@ -701,7 +701,7 @@ export default function ShowcasePage() {
             {/* Layout */}
             <Link
               href="/patterns/layout"
-              className="group rounded-xl border border-(--color-border-primary) overflow-hidden flex flex-col hover:border-(--color-border-strong) transition-all"
+              className="group rounded-xl border border-(--color-border-secondary) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
               <div className="relative aspect-16/10 grid-bg overflow-hidden">
@@ -776,7 +776,7 @@ export default function ShowcasePage() {
             {/* Auth */}
             <Link
               href="/patterns/auth"
-              className="group rounded-xl border border-(--color-border-primary) overflow-hidden flex flex-col hover:border-(--color-border-strong) transition-all"
+              className="group rounded-xl border border-(--color-border-secondary) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
               <div className="relative aspect-16/10 grid-bg overflow-hidden">
@@ -835,7 +835,7 @@ export default function ShowcasePage() {
             {/* Navigation */}
             <Link
               href="/patterns/navigation"
-              className="group rounded-xl border border-(--color-border-primary) overflow-hidden flex flex-col hover:border-(--color-border-strong) transition-all"
+              className="group rounded-xl border border-(--color-border-secondary) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
               <div className="relative aspect-16/10 grid-bg overflow-hidden">
@@ -959,7 +959,7 @@ export default function ShowcasePage() {
               <Link
                 key={p.label}
                 href={p.href}
-                className="rounded-lg border border-(--color-border-primary) p-4 hover:border-(--color-border-strong) transition-all"
+                className="rounded-lg border border-(--color-border-secondary) p-4 hover:border-(--color-border-primary) transition-all"
                 style={{ background: "var(--color-background-primary)" }}
               >
                 <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
@@ -1317,7 +1317,7 @@ export default function ShowcasePage() {
                           last synced 4m ago
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-strong) px-2.5 text-[11px] font-medium cursor-pointer hover:bg-(--color-background-secondary) transition-colors">
+                          <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-primary) px-2.5 text-[11px] font-medium cursor-pointer hover:bg-(--color-background-secondary) transition-colors">
                             Discard
                           </span>
                           <span

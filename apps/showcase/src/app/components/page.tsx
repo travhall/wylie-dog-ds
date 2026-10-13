@@ -30,7 +30,7 @@ function CompCard({
   };
   return (
     <article
-      className="rounded-xl border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden flex flex-col hover:border-(--color-border-strong) transition-all"
+      className="rounded-xl border border-(--color-border-secondary) bg-(--color-surface-primary) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all"
       style={{ boxShadow: "var(--shadow-sm)" }}
     >
       <div
@@ -622,8 +622,8 @@ export default function ComponentsPage() {
                       className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-warning) 18%, transparent)",
-                        color: "var(--color-warning)",
+                          "color-mix(in oklch, var(--color-status-warning) 18%, transparent)",
+                        color: "var(--color-text-warning)",
                       }}
                     >
                       Beta
@@ -632,8 +632,8 @@ export default function ComponentsPage() {
                       className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-destructive) 18%, transparent)",
-                        color: "var(--color-destructive)",
+                          "color-mix(in oklch, var(--color-status-danger) 18%, transparent)",
+                        color: "var(--color-text-danger)",
                       }}
                     >
                       Deprecated
@@ -808,7 +808,7 @@ export default function ComponentsPage() {
                     variant="outline"
                     size="icon"
                     className="h-7 w-7 rounded-full shrink-0"
-                    style={{ boxShadow: "var(--shadow-xs)" }}
+                    style={{ boxShadow: "var(--shadow-sm)" }}
                   >
                     <svg
                       viewBox="0 0 24 24"
@@ -858,7 +858,7 @@ export default function ComponentsPage() {
                       name: "Ari Klein",
                       role: "Design",
                       status: "Away",
-                      color: "var(--color-warning)",
+                      color: "var(--color-text-warning)",
                     },
                   ].map(({ name, role, status, color }) => (
                     <div
@@ -929,12 +929,12 @@ export default function ComponentsPage() {
                       icon: "m5 12 5 5L20 7",
                     },
                     {
-                      color: "var(--color-warning)",
+                      color: "var(--color-text-warning)",
                       msg: "2 deprecation warnings",
                       icon: "M12 9v4M12 17h.01",
                     },
                     {
-                      color: "var(--color-destructive)",
+                      color: "var(--color-text-danger)",
                       msg: "Connection lost · retrying",
                       icon: "M18 6 6 18M6 6l12 12",
                     },
@@ -1181,7 +1181,7 @@ export default function ComponentsPage() {
                     >
                       Primary
                     </span>
-                    <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-strong) px-2.5 text-[11px] font-semibold text-(--color-text-primary)">
+                    <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-primary) px-2.5 text-[11px] font-semibold text-(--color-text-primary)">
                       Outline
                     </span>
                   </div>
@@ -1192,8 +1192,9 @@ export default function ComponentsPage() {
                     <span
                       className="inline-flex h-7 items-center rounded-md px-2.5 text-[11px] font-semibold"
                       style={{
-                        background: "var(--color-destructive)",
-                        color: "var(--color-text-inverse)",
+                        background:
+                          "var(--color-button-destructive-background)",
+                        color: "var(--color-button-destructive-text)",
                       }}
                     >
                       Destructive
@@ -1272,7 +1273,7 @@ export default function ComponentsPage() {
                       className="grid h-4 w-4 rounded-sm border"
                       style={{
                         background: "var(--color-surface-primary)",
-                        borderColor: "var(--color-border-strong)",
+                        borderColor: "var(--color-border-primary)",
                       }}
                     />
                     Show breaking changes only
@@ -1297,7 +1298,7 @@ export default function ComponentsPage() {
                   </div>
                   <p
                     className="text-[9px]"
-                    style={{ color: "var(--color-destructive)" }}
+                    style={{ color: "var(--color-text-danger)" }}
                   >
                     Must be a work email address.
                   </p>
@@ -1306,7 +1307,7 @@ export default function ComponentsPage() {
                   </label>
                   <div
                     className="flex items-center h-7.5 border rounded-md px-2 text-[11px] bg-(--color-surface-primary)"
-                    style={{ borderColor: "var(--color-destructive)" }}
+                    style={{ borderColor: "var(--color-border-danger)" }}
                   >
                     <span className="text-(--color-text-tertiary)">
                       ••••••••
@@ -1378,7 +1379,7 @@ export default function ComponentsPage() {
                     <label className="text-xs font-semibold text-(--color-text-primary)">
                       Display name
                     </label>
-                    <span style={{ color: "var(--color-destructive)" }}>*</span>
+                    <span style={{ color: "var(--color-text-danger)" }}>*</span>
                   </div>
                   <div className="flex items-center h-7.5 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
                     e.g. Elena Mori
@@ -1423,14 +1424,14 @@ export default function ComponentsPage() {
                   <label className="flex items-center gap-2 text-(--color-text-secondary)">
                     <span
                       className="h-4 w-4 rounded-full border"
-                      style={{ borderColor: "var(--color-border-strong)" }}
+                      style={{ borderColor: "var(--color-border-primary)" }}
                     />
                     Dark theme
                   </label>
                   <label className="flex items-center gap-2 text-(--color-text-secondary)">
                     <span
                       className="h-4 w-4 rounded-full border"
-                      style={{ borderColor: "var(--color-border-strong)" }}
+                      style={{ borderColor: "var(--color-border-primary)" }}
                     />
                     System default
                   </label>
@@ -1589,7 +1590,7 @@ export default function ComponentsPage() {
                         className="inline-block h-4 w-4 translate-x-4 rounded-full"
                         style={{
                           background: "var(--color-text-inverse)",
-                          boxShadow: "var(--shadow-xs)",
+                          boxShadow: "var(--shadow-sm)",
                         }}
                       />
                     </span>
@@ -1604,7 +1605,7 @@ export default function ComponentsPage() {
                         className="inline-block h-4 w-4 translate-x-0.5 rounded-full"
                         style={{
                           background: "var(--color-surface-primary)",
-                          boxShadow: "var(--shadow-xs)",
+                          boxShadow: "var(--shadow-sm)",
                         }}
                       />
                     </span>
@@ -1724,7 +1725,7 @@ export default function ComponentsPage() {
                       className="px-3 py-1.5 text-[11px] font-medium"
                       style={{
                         background: "var(--color-surface-primary)",
-                        boxShadow: "var(--shadow-xs)",
+                        boxShadow: "var(--shadow-sm)",
                       }}
                     >
                       Day
@@ -1991,7 +1992,7 @@ export default function ComponentsPage() {
                   >
                     <div
                       className="absolute top-0 left-0 right-0 h-1/3 rounded-full"
-                      style={{ background: "var(--color-border-strong)" }}
+                      style={{ background: "var(--color-border-primary)" }}
                     />
                   </div>
                 </div>
@@ -2333,7 +2334,7 @@ export default function ComponentsPage() {
                 <div
                   className="w-full max-w-57.5 rounded-md border bg-(--color-surface-primary) p-3"
                   style={{
-                    borderColor: "var(--color-border-strong)",
+                    borderColor: "var(--color-border-primary)",
                     boxShadow: "var(--shadow-lg)",
                   }}
                 >
@@ -2342,8 +2343,8 @@ export default function ComponentsPage() {
                       className="grid h-6 w-6 place-items-center rounded-full"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-destructive) 18%, transparent)",
-                        color: "var(--color-destructive)",
+                          "color-mix(in oklch, var(--color-status-danger) 18%, transparent)",
+                        color: "var(--color-text-danger)",
                       }}
                     >
                       <svg
@@ -2368,14 +2369,15 @@ export default function ComponentsPage() {
                     </div>
                   </div>
                   <div className="mt-3 flex justify-end gap-1.5">
-                    <span className="inline-flex h-6 items-center rounded border border-(--color-border-strong) px-2 text-[10px] font-medium text-(--color-text-primary)">
+                    <span className="inline-flex h-6 items-center rounded border border-(--color-border-primary) px-2 text-[10px] font-medium text-(--color-text-primary)">
                       Cancel
                     </span>
                     <span
                       className="inline-flex h-6 items-center rounded px-2 text-[10px] font-semibold"
                       style={{
-                        background: "var(--color-destructive)",
-                        color: "var(--color-text-inverse)",
+                        background:
+                          "var(--color-button-destructive-background)",
+                        color: "var(--color-button-destructive-text)",
                       }}
                     >
                       Delete
@@ -2421,7 +2423,7 @@ export default function ComponentsPage() {
                     />
                     <div
                       className="px-2 py-1"
-                      style={{ color: "var(--color-destructive)" }}
+                      style={{ color: "var(--color-text-danger)" }}
                     >
                       Delete
                     </div>
@@ -2446,7 +2448,7 @@ export default function ComponentsPage() {
                   <div
                     className="absolute inset-x-2 top-3 rounded-md border bg-(--color-surface-primary) p-3"
                     style={{
-                      borderColor: "var(--color-border-strong)",
+                      borderColor: "var(--color-border-primary)",
                       boxShadow: "var(--shadow-xl)",
                     }}
                   >
@@ -2540,7 +2542,7 @@ export default function ComponentsPage() {
                     />
                     <div
                       className="flex items-center gap-2 px-2 py-1"
-                      style={{ color: "var(--color-destructive)" }}
+                      style={{ color: "var(--color-text-danger)" }}
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -2655,7 +2657,7 @@ export default function ComponentsPage() {
                             border:
                               s === "Active"
                                 ? "none"
-                                : "1px solid var(--color-border-strong)",
+                                : "1px solid var(--color-border-primary)",
                             color: "var(--color-text-inverse)",
                           }}
                         >
@@ -2698,7 +2700,7 @@ export default function ComponentsPage() {
                   <div
                     className="absolute top-0 right-0 bottom-0 w-2/3 border-l bg-(--color-surface-primary) p-3"
                     style={{
-                      borderColor: "var(--color-border-strong)",
+                      borderColor: "var(--color-border-primary)",
                       boxShadow: "var(--shadow-xl)",
                     }}
                   >
