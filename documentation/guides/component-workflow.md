@@ -1,752 +1,117 @@
 # Component Development Workflow
 
-This guide explains the automated component generation workflow and best practices for developing new components in the Wylie Dog Design System.
+How to add a component to `@wyliedog/ui` with the generator, what it creates, what you still have to do by hand, and how to check the result.
 
-## Table of Contents
+For the wider process (proposal, design review, pull request, release) see the Storybook page "Contributing / Workflows / Component Development Process" (`apps/storybook/stories/Contributing/Workflows/component-development.mdx`). For story conventions see `apps/storybook/STORY_AUTHORING_GUIDE.md`.
 
-- [Quick Start](#quick-start)
-- [Component Generator](#component-generator)
-- [Component Development](#component-development)
-- [Story Development](#story-development)
-- [Testing](#testing)
-- [Build & Export](#build--export)
-- [Best Practices](#best-practices)
-
----
-
-## Quick Start
-
-### Generating a New Component
+## 1. Generate the scaffold
 
 ```bash
-# Generate a complete component scaffold
-pnpm generate:component my-component
+# A primitive (Tier 1) component: --category is required
+pnpm generate:component my-component --category=content-display
 
-# Example: Creating a rating component
-pnpm generate:component rating
+# A composition (Tier 2): --category is the name of a folder in apps/storybook/stories/Patterns
+pnpm generate:component my-header --composition --category="Navigation Patterns"
 ```
 
-This single command creates:
+The name must be lowercase kebab-case. The command stops with a message if you leave out `--category`, if the name or story already exists, or if the category is not valid.
 
-- ✅ Component file with TypeScript types
-- ✅ Test file with accessibility checks
-- ✅ Storybook story with multiple examples
-- ✅ Updated build configuration
-- ✅ Updated package exports
-- ✅ Formatted and linted code
+Primitive categories (the key, and the Storybook folder it maps to):
 
----
+| `--category=`       | Storybook folder    | Sidebar group       |
+| ------------------- | ------------------- | ------------------- |
+| `inputs-controls`   | `Inputs-Controls`   | Inputs & Controls   |
+| `navigation`        | `Navigation`        | Navigation          |
+| `layout-structure`  | `Layout-Structure`  | Layout & Structure  |
+| `content-display`   | `Content-Display`   | Content Display     |
+| `feedback-status`   | `Feedback-Status`   | Feedback & Status   |
+| `overlays-popovers` | `Overlays-Popovers` | Overlays & Popovers |
 
-## Component Generator
+Composition categories are the folders under `apps/storybook/stories/Patterns/` (for example `Navigation Patterns`, `Form Patterns`, `Page Compositions`). The script lists the valid ones in its error message.
 
-### What Gets Generated
+### What it creates and changes
 
-The component generator creates a complete, production-ready scaffold:
+For a primitive named `my-component` (compositions use `src/compositions/` and `stories/Patterns/<category>/` instead):
 
-#### 1. Component File (`packages/ui/src/<name>.tsx`)
+| Path                                                                   | What                                                                                              |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `packages/ui/src/my-component.tsx`                                     | Component: `cva` variants, `cn`, `focusRingClasses`, `asChild` via Radix `Slot`, `forwardRef`     |
+| `packages/ui/src/__tests__/my-component.test.tsx`                      | Vitest + Testing Library + `jest-axe` tests (a11y audit, render, className, ref, default variant) |
+| `apps/storybook/stories/Components/<Folder>/my-component.stories.tsx`  | Story with Default, AllVariants, States, WithInteractions, UsageExample                           |
+| `packages/ui/tsup.config.ts`                                           | New entry in `entryPoints`                                                                        |
+| `packages/ui/package.json`                                             | New `exports["./my-component"]`                                                                   |
+| `packages/ui/src/index.ts` (compositions: `src/compositions/index.ts`) | New export line                                                                                   |
+| `.changeset/my-component-<timestamp>.md`                               | A `minor` changeset for `@wyliedog/ui`                                                            |
 
-```tsx
-import React from "react";
-import { cn } from "./lib/utils";
+Then it runs Prettier and ESLint on the generated files.
 
-export interface RatingProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default";
-}
-
-export const Rating = React.forwardRef<HTMLDivElement, RatingProps>(
-  ({ className, variant = "default", ...props }, ref) => {
-    const variants = {
-      default: "bg-background text-foreground",
-    };
-
-    return (
-      <div
-        className={cn("relative", variants[variant], className)}
-        ref={ref}
-        {...props}
-      />
-    );
-  }
-);
-
-Rating.displayName = "Rating";
-```
-
-**Key Features:**
-
-- React.forwardRef for ref forwarding
-- TypeScript interface extending HTML attributes
-- Variant system with cn() utility
-- displayName for debugging
-
-#### 2. Test File (`packages/ui/src/__tests__/<name>.test.tsx`)
-
-```tsx
-import { render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
-import { axe, toHaveNoViolations } from "jest-axe";
-import { Rating } from "../rating";
-
-expect.extend(toHaveNoViolations);
-
-describe("Rating", () => {
-  it("renders without crashing", () => {
-    render(<Rating aria-label="Test rating" />);
-    const element = screen.getByLabelText("Test rating");
-    expect(element).toBeInTheDocument();
-  });
-
-  it("passes accessibility audit", async () => {
-    const { container } = render(<Rating aria-label="Test rating" />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
-  });
-});
-```
-
-**Includes:**
-
-- Basic rendering tests
-- Accessibility audits with jest-axe
-- Ref forwarding tests
-- Custom className tests
-
-#### 3. Storybook Story (`apps/storybook/stories/<name>.stories.tsx`)
-
-```tsx
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Rating } from "@wyliedog/ui/rating";
-
-const meta: Meta<typeof Rating> = {
-  title: "3. Components/Rating",
-  component: Rating,
-  parameters: {
-    layout: "centered",
-    docs: {
-      description: {
-        component: "Rating component description.",
-      },
-    },
-  },
-  tags: ["autodocs"],
-  argTypes: {
-    variant: {
-      control: "select",
-      options: ["default"],
-      description: "The visual style variant",
-    },
-  },
-};
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
-  args: {
-    children: "Rating content",
-  },
-};
-```
-
-**Features:**
-
-- Storybook 10.x patterns
-- Autodocs enabled
-- Centered layout
-- ArgTypes with controls
-
-#### 4. Build Configuration Updates
-
-**tsup.config.ts:**
-
-```typescript
-entry: {
-  // ... existing entries
-  "rating": "src/rating.tsx",
-}
-```
-
-**package.json exports:**
+The export map entry looks like this (the build emits ESM `.js`, CommonJS `.cjs`, and `.d.ts`/`.d.cts` types, not `.mjs`):
 
 ```json
-{
-  "./rating": {
-    "types": "./src/rating.tsx",
-    "import": "./dist/rating.mjs",
-    "require": "./dist/rating.js"
-  }
+"./my-component": {
+  "types": "./dist/my-component.d.ts",
+  "import": "./dist/my-component.js",
+  "require": "./dist/my-component.cjs"
 }
 ```
 
----
+## 2. Finish what the generator leaves open
 
-## Component Development
+The scaffold is a starting point, not a finished component. It marks the gaps with `TODO` comments.
 
-### Architecture Requirements
+- **Tokens.** The generated classes use placeholder names like `bg-(--color-my-component-default-background)`. Those tokens do not exist. Either add real component tokens to `packages/tokens/io/sync/components.json` and rebuild (`pnpm --filter @wyliedog/tokens build`), or use existing semantic tokens. Always write token-backed values as `-(--token-name)` (font sizes as `text-(length:--font-size-...)`) and never hardcode colors or spacing. See `documentation/tokens/naming-convention.md`.
+- **Role and semantics.** The scaffold renders a `div` with `role="group"` only so it passes the axe audit. Replace it with the right element or WAI-ARIA role, and add keyboard and state tests for that pattern. See `documentation/guides/accessibility-guide.md` (WCAG 2.2).
+- **Variants and sizes.** Replace the single `default` variant. Look at `packages/ui/src/badge.tsx` and `button.tsx` for the house style: `cva` variants, token-backed classes, `compoundVariants` for interactive states, `Slot` for `asChild`. Sizes are per component (for example `sm`/`md`/`lg`); there is no shared pixel-height scale.
+- **Sub-components** are separate named exports (`Card`, `CardHeader`, `CardTitle`, ...), not dot notation.
+- **Story.** Fill in the description text, real variants and states, and a meaningful `play` function.
+- **Size budget.** Add an entry for the new file to `.size-limit.json` (one entry per component, with `"ignore": ["react"]`).
+- **README count.** The component count in `README.md` is checked against the story files by `pnpm check:docs`; update it when you add a component.
 
-All components in the Wylie Dog Design System follow these patterns:
-
-#### 1. **Single Source of Truth**
-
-```
-packages/ui/src/           ← SSOT for all components
-├── button.tsx
-├── rating.tsx
-└── tooltip.tsx
-```
-
-**Never:**
-
-- ❌ Create components in `apps/storybook`
-- ❌ Create components in `apps/showcase`
-- ❌ Duplicate component logic
-
-**Always:**
-
-- ✅ Define components in `packages/ui/src/`
-- ✅ Import from `@wyliedog/ui/<component>`
-
-#### 2. **TypeScript Patterns**
-
-```tsx
-// ✅ Extend HTML attributes for proper typing
-export interface ComponentProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "primary";
-  size?: "sm" | "md" | "lg";
-}
-
-// ✅ Use forwardRef for ref handling
-export const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
-  ({ variant = "default", ...props }, ref) => {
-    return <div ref={ref} {...props} />;
-  }
-);
-
-// ✅ Set displayName for debugging
-Component.displayName = "Component";
-```
-
-#### 3. **Variant System**
-
-```tsx
-const variants = {
-  default: "bg-background text-foreground",
-  primary: "bg-primary text-primary-foreground",
-  destructive: "bg-destructive text-destructive-foreground",
-};
-
-const sizes = {
-  sm: "h-8 px-3 text-xs",
-  md: "h-10 px-4 text-sm",
-  lg: "h-12 px-6 text-base",
-};
-
-// Apply with cn() utility
-className={cn(
-  "base-classes",
-  variants[variant],
-  sizes[size],
-  className
-)}
-```
-
-#### 4. **Design Tokens**
-
-Use CSS custom properties from the token system:
-
-```tsx
-// ✅ Use design tokens (Tailwind 4 modern syntax)
-"bg-(--color-button-primary-background)";
-"hover:bg-(--color-button-primary-background-hover)";
-"text-(--color-button-primary-text)";
-
-// ❌ Avoid hardcoded colors
-"bg-blue-500";
-"hover:bg-blue-600";
-```
-
-#### 5. **Accessibility**
-
-```tsx
-// Required:
-- Semantic HTML
-- ARIA attributes
-- Keyboard navigation
-- Focus management
-
-// Example:
-<button
-  aria-label="Close dialog"
-  aria-disabled={disabled}
-  disabled={disabled}
-  onClick={handleClick}
-  onKeyDown={handleKeyDown}
->
-  Close
-</button>
-```
-
----
-
-## Story Development
-
-### Storybook 10.x Best Practices
-
-#### 1. **Meta Configuration**
-
-```tsx
-const meta: Meta<typeof Component> = {
-  // Organization
-  title: "3. Components/Category/Component",
-  component: Component,
-
-  // Layout & Docs
-  parameters: {
-    layout: "centered", // or "padded", "fullscreen"
-    docs: {
-      description: {
-        component: "Clear, concise component description.",
-      },
-    },
-  },
-
-  // Auto-generate documentation
-  tags: ["autodocs"],
-
-  // Interactive controls
-  argTypes: {
-    variant: {
-      control: "select",
-      options: ["default", "primary"],
-      description: "Visual style variant",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "default" },
-      },
-    },
-  },
-};
-```
-
-#### 2. **Story Types**
-
-**Basic Story (with args):**
-
-```tsx
-export const Default: Story = {
-  args: {
-    variant: "default",
-    children: "Button text",
-  },
-};
-```
-
-**Render Story (custom rendering):**
-
-```tsx
-export const AllVariants: Story = {
-  render: () => (
-    <div className="flex gap-4">
-      <Component variant="default">Default</Component>
-      <Component variant="primary">Primary</Component>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: "Demonstrates all available variants.",
-      },
-    },
-  },
-};
-```
-
-#### 3. **Story Categories**
-
-Every component should have these basic stories:
-
-1. **Default** - Basic usage
-2. **AllVariants** - Visual showcase of all variants
-3. **Interactive** - Real-world usage example
-4. **States** - Different states (hover, disabled, active)
-5. **Composition** - Usage with other components (if applicable)
-
-#### 4. **Story Organization**
-
-```
-3. Components/
-  ├── Inputs/
-  │   ├── Button
-  │   ├── Input
-  │   └── Select
-  ├── Layout/
-  │   ├── Card
-  │   └── Container
-  └── Feedback/
-      ├── Alert
-      └── Toast
-```
-
-Use the `title` field to organize:
-
-```tsx
-title: "3. Components/Inputs/Button";
-```
-
----
-
-## Testing
-
-### Test Requirements
-
-Every component must have:
-
-1. ✅ Basic rendering test
-2. ✅ Accessibility audit (jest-axe)
-3. ✅ Ref forwarding test
-4. ✅ Custom className test
-5. ✅ Variant tests (if applicable)
-
-### Running Tests
+## 3. Develop with it running
 
 ```bash
-# Run all tests
-pnpm test
-
-# Run tests in watch mode
-pnpm test:watch
-
-# Run with coverage
-pnpm test:coverage
-
-# Run accessibility tests only
-pnpm test:a11y
+pnpm --filter @wyliedog/ui dev          # tsup --watch and Tailwind CLI --watch for the package
+pnpm --filter storybook dev             # Storybook at http://localhost:6006
 ```
 
-### Writing Additional Tests
+Stories import from `@wyliedog/ui/<name>`, which resolves to the package's `dist`. If Storybook or its type check cannot find the new component, build the UI package first: `pnpm --filter @wyliedog/ui build`.
 
-```tsx
-describe("Component", () => {
-  // User interactions
-  it("handles click events", async () => {
-    const handleClick = vi.fn();
-    render(<Component onClick={handleClick} />);
+Import rules:
 
-    const element = screen.getByRole("button");
-    await userEvent.click(element);
+- Apps import per component: `import { Button } from "@wyliedog/ui/button"`, and the styles once: `import "@wyliedog/ui/styles"`.
+- Inside `packages/ui`, import relatively (`./lib/utils`, `./button`), never `@wyliedog/ui/...`.
+- Components live only in `packages/ui/src`; do not create components in the Storybook or showcase apps.
 
-    expect(handleClick).toHaveBeenCalledTimes(1);
-  });
-
-  // Keyboard navigation
-  it("supports keyboard navigation", async () => {
-    render(<Component />);
-    const element = screen.getByRole("button");
-
-    element.focus();
-    expect(element).toHaveFocus();
-
-    await userEvent.keyboard("{Enter}");
-    // Assert behavior
-  });
-
-  // Conditional rendering
-  it("renders loading state", () => {
-    render(<Component loading />);
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
-  });
-});
-```
-
----
-
-## Build & Export
-
-### Build Process
-
-The build process is automated through Turborepo:
+## 4. Test
 
 ```bash
-# Build everything
+pnpm --filter @wyliedog/ui test            # all UI tests (run with NODE_ENV unset)
+pnpm --filter @wyliedog/ui test:watch
+pnpm --filter @wyliedog/ui test:coverage   # thresholds: 80% statements, lines and functions; 70% branches
+pnpm --filter @wyliedog/ui test:a11y       # only the *.a11y.test.tsx files
+pnpm test                                  # every package, via Turborepo
+```
+
+Radix portal components (menus, popovers, tooltips) are awkward in jsdom; `documentation/reference/testing-coverage.md` explains the skipped tests and how Storybook covers them. Story-level accessibility checks run in Storybook's test setup (Vitest, light and dark).
+
+## 5. Check before you open the pull request
+
+```bash
+pnpm typecheck
+pnpm lint            # includes eslint --max-warnings 0 for the UI package
+pnpm --filter @wyliedog/ui lint:a11y
 pnpm build
-
-# Build UI package only
-pnpm --filter @wyliedog/ui build
-
-# Build with watch mode (development)
-pnpm --filter @wyliedog/ui dev
+pnpm size            # needs a build; compares against .size-limit.json
+pnpm check:docs      # README counts, doc links and token names
+pnpm check:tokens    # showcase token references
 ```
 
-### Build Pipeline
-
-```
-1. build-tokens (Style Dictionary)
-   ↓
-2. build:styles (Tailwind CSS)
-   ↓
-3. build:components (tsup)
-   ↓
-4. Generated outputs:
-   - dist/*.js (CJS)
-   - dist/*.mjs (ESM)
-   - dist/*.d.ts (Types)
-   - dist/index.css (Styles)
-```
-
-### Import Patterns
-
-**In apps (Storybook, Showcase):**
-
-```tsx
-// ✅ Per-component imports (tree-shakeable)
-import { Button } from "@wyliedog/ui/button";
-import { Card } from "@wyliedog/ui/card";
-
-// ✅ Import styles once in root
-import "@wyliedog/ui/styles";
-```
-
-**In packages/ui (internal):**
-
-```tsx
-// ✅ Relative imports within package
-import { cn } from "./lib/utils";
-
-// ❌ Never import from @wyliedog/ui within ui package
-import { Button } from "@wyliedog/ui/button"; // Circular dependency!
-```
-
----
-
-## Best Practices
-
-### Component Design
-
-#### 1. **Composition Over Configuration**
-
-```tsx
-// ✅ Good: Composable sub-components
-<Card>
-  <Card.Header>
-    <Card.Title>Title</Card.Title>
-  </Card.Header>
-  <Card.Content>Content</Card.Content>
-</Card>
-
-// ❌ Avoid: Too many props
-<Card
-  title="Title"
-  content="Content"
-  showHeader
-  showFooter
-/>
-```
-
-#### 2. **Controlled vs Uncontrolled**
-
-```tsx
-// Support both patterns
-export const Component = ({
-  value, // Controlled
-  defaultValue, // Uncontrolled
-  onChange,
-}) => {
-  const [internalValue, setInternalValue] = useState(defaultValue);
-  const isControlled = value !== undefined;
-
-  const currentValue = isControlled ? value : internalValue;
-
-  const handleChange = (newValue) => {
-    if (!isControlled) {
-      setInternalValue(newValue);
-    }
-    onChange?.(newValue);
-  };
-
-  return <input value={currentValue} onChange={handleChange} />;
-};
-```
-
-#### 3. **Variant Naming**
-
-Use semantic names:
-
-```tsx
-// ✅ Semantic
-variant: "primary" | "secondary" | "destructive";
-
-// ❌ Visual
-variant: "blue" | "red" | "green";
-```
-
-#### 4. **Size Consistency**
-
-```tsx
-// Standard sizes across all components
-size: "sm" | "md" | "lg"
-
-// Heights
-sm: h-8   (32px)
-md: h-10  (40px)
-lg: h-12  (48px)
-```
-
-### Performance
-
-#### 1. **Memoization**
-
-```tsx
-// Only when necessary
-const MemoizedComponent = React.memo(Component, (prev, next) => {
-  return prev.value === next.value;
-});
-```
-
-#### 2. **Code Splitting**
-
-Per-component exports enable automatic code splitting:
-
-```tsx
-// Only loads Button code
-const Button = lazy(() => import("@wyliedog/ui/button"));
-```
-
-### Documentation
-
-#### 1. **Component Description**
-
-```tsx
-/**
- * Button component for user actions.
- *
- * Supports multiple variants, sizes, and states including
- * loading and disabled. Fully accessible with keyboard support.
- *
- * @example
- * <Button variant="primary" size="lg">
- *   Click me
- * </Button>
- */
-export const Button = ...
-```
-
-#### 2. **Prop Documentation**
-
-```tsx
-export interface ButtonProps {
-  /**
-   * Visual style variant
-   * @default "default"
-   */
-  variant?: "default" | "primary" | "destructive";
-
-  /**
-   * Size variant
-   * @default "md"
-   */
-  size?: "sm" | "md" | "lg";
-
-  /**
-   * Loading state - disables button and shows loading indicator
-   */
-  loading?: boolean;
-}
-```
-
----
-
-## Workflow Checklist
-
-When creating a new component:
-
-### 1. Generation
-
-- [ ] Run `pnpm generate:component <name>`
-- [ ] Verify all files created successfully
-- [ ] Check that build configs updated
-
-### 2. Component Development
-
-- [ ] Customize component logic
-- [ ] Add variants as needed
-- [ ] Implement accessibility features
-- [ ] Use design tokens
-- [ ] Add prop documentation
-
-### 3. Story Development
-
-- [ ] Update component description
-- [ ] Create variant showcase
-- [ ] Add interactive examples
-- [ ] Add usage patterns
-- [ ] Document props in argTypes
-
-### 4. Testing
-
-- [ ] Add component-specific tests
-- [ ] Test user interactions
-- [ ] Test keyboard navigation
-- [ ] Verify accessibility
-- [ ] Run full test suite
-
-### 5. Quality Assurance
-
-- [ ] Run `pnpm build` successfully
-- [ ] View in Storybook (`pnpm --filter storybook dev`)
-- [ ] Test in Showcase app
-- [ ] Check bundle size (`pnpm size`)
-- [ ] Run linting (`pnpm lint`)
-
-### 6. Documentation
-
-- [ ] Update component JSDoc
-- [ ] Add usage examples
-- [ ] Document edge cases
-- [ ] Update README if needed
-
----
+`pnpm --filter @wyliedog/ui validate:tokens` lists token references in `packages/ui/src` that no token file defines. It also reports a few fragments inside comments in `src/lib/utils.ts`, so treat only new entries from your own files as real problems.
 
 ## Troubleshooting
 
-### Component not appearing in Storybook
-
-1. Check story file is in `apps/storybook/stories/`
-2. Verify import path: `@wyliedog/ui/<name>`
-3. Restart Storybook dev server
-4. Check browser console for errors
-
-### Build errors
-
-1. Verify tsup.config.ts has entry
-2. Check package.json has export
-3. Run `pnpm build` to see specific error
-4. Clear dist and rebuild: `rm -rf packages/ui/dist && pnpm build`
-
-### Type errors
-
-1. Ensure component exports interface
-2. Check TypeScript extends correct HTML element
-3. Verify ref type matches element type
-4. Run `pnpm --filter @wyliedog/ui build` to check types
-
-### Import errors in apps
-
-1. Rebuild ui package: `pnpm --filter @wyliedog/ui build`
-2. Check package.json export exists
-3. Verify import path uses workspace protocol
-4. Restart dev server
-
----
-
-## Resources
-
-- [Storybook 10 Documentation](https://storybook.js.org/docs)
-- [React forwardRef](https://react.dev/reference/react/forwardRef)
-- [Vitest Testing](https://vitest.dev/)
-- [jest-axe Accessibility Testing](https://github.com/nickcolley/jest-axe)
-- [Radix UI Primitives](https://www.radix-ui.com/primitives)
-
----
-
-**Last Updated:** December 2025
-**Maintained by:** Wylie Dog Design System Team
+- **Component not in Storybook.** The story must be under `apps/storybook/stories/` and its `title` must start with `Components/<Sidebar group>/` or `Patterns/<category>/`. Restart the dev server after adding a file.
+- **Cannot resolve `@wyliedog/ui/<name>`.** Build the UI package, and check that `packages/ui/package.json` has the export and `tsup.config.ts` has the entry.
+- **Type errors in a story.** Usually the UI package has not been built since you added the component; build it, then re-run `pnpm --filter storybook typecheck`.
+- **Stale output.** Delete `packages/ui/dist` and run `pnpm --filter @wyliedog/ui build`. Do not use `pnpm --filter @wyliedog/ui clean`: it also removes `node_modules`.
+- **`pnpm check:docs` fails after adding a component.** Update the component count in `README.md`.
