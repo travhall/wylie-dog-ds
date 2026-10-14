@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Introduction/Getting Started" />
 
@@ -31,7 +31,7 @@ Import the design system's stylesheet in your app's entry point. This brings in 
 
 ```tsx
 // app/layout.tsx (Next.js) or main.tsx (Vite)
-import '@wyliedog/ui/styles';
+import "@wyliedog/ui/styles";
 ```
 
 That single import gives you every token and component style. No Tailwind configuration required on your end unless you want to use Tailwind utilities in your own code.
@@ -55,14 +55,10 @@ For full type safety, make sure your `tsconfig.json` includes:
 Components are imported individually from their subpaths:
 
 ```tsx
-import { Button } from '@wyliedog/ui/button';
+import { Button } from "@wyliedog/ui/button";
 
 export function MyComponent() {
-  return (
-    <Button onClick={() => alert('Hello!')}>
-      Click Me
-    </Button>
-  );
+  return <Button onClick={() => alert("Hello!")}>Click Me</Button>;
 }
 ```
 
@@ -73,22 +69,17 @@ The default variant is used when no `variant` prop is specified. Available varia
 Here's a complete login form using multiple components:
 
 ```tsx
-import { Button } from '@wyliedog/ui/button';
-import { Input } from '@wyliedog/ui/input';
-import { Label } from '@wyliedog/ui/label';
-import { Checkbox } from '@wyliedog/ui/checkbox';
+import { Button } from "@wyliedog/ui/button";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
+import { Checkbox } from "@wyliedog/ui/checkbox";
 
 export function LoginForm() {
   return (
     <form className="space-y-4 w-full max-w-sm">
       <div className="space-y-2">
         <Label htmlFor="email">Email Address</Label>
-        <Input
-          id="email"
-          type="email"
-          placeholder="you@example.com"
-          required
-        />
+        <Input id="email" type="email" placeholder="you@example.com" required />
       </div>
 
       <div className="space-y-2">
@@ -122,7 +113,7 @@ Components use design tokens automatically — you get theming and dark mode sup
 
 ```tsx
 // Reference semantic tokens via CSS variables
-<div style={{ backgroundColor: 'var(--color-background-secondary)' }}>
+<div style={{ backgroundColor: "var(--color-background-secondary)" }}>
   Styled with a semantic background token
 </div>
 ```
@@ -143,9 +134,9 @@ See the [Colors](?path=/docs/foundations-colors--docs) page for the full token b
 Components are designed to work together:
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardContent } from '@wyliedog/ui/card';
-import { Button } from '@wyliedog/ui/button';
-import { Badge } from '@wyliedog/ui/badge';
+import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
+import { Button } from "@wyliedog/ui/button";
+import { Badge } from "@wyliedog/ui/badge";
 
 export function UserCard() {
   return (
@@ -162,7 +153,9 @@ export function UserCard() {
         </p>
         <div className="flex gap-2">
           <Button size="sm">Message</Button>
-          <Button variant="outline" size="sm">View Profile</Button>
+          <Button variant="outline" size="sm">
+            View Profile
+          </Button>
         </div>
       </CardContent>
     </Card>
@@ -175,7 +168,7 @@ export function UserCard() {
 Components support contextual variants for feedback:
 
 ```tsx
-import { Alert, AlertTitle, AlertDescription } from '@wyliedog/ui/alert';
+import { Alert, AlertTitle, AlertDescription } from "@wyliedog/ui/alert";
 
 export function Notifications() {
   return (
@@ -192,7 +185,9 @@ export function Notifications() {
 
       <Alert variant="destructive">
         <AlertTitle>Error</AlertTitle>
-        <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+        <AlertDescription>
+          Something went wrong. Please try again.
+        </AlertDescription>
       </Alert>
     </div>
   );
@@ -204,20 +199,16 @@ export function Notifications() {
 All components are built on [Radix UI](https://www.radix-ui.com/) primitives with full keyboard navigation, focus management, and ARIA attributes. Follow these patterns for best results:
 
 ```tsx
-import { Button } from '@wyliedog/ui/button';
-import { Input } from '@wyliedog/ui/input';
-import { Label } from '@wyliedog/ui/label';
+import { Button } from "@wyliedog/ui/button";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
 
 export function AccessibleForm() {
   return (
     <form>
       {/* Always pair inputs with labels */}
       <Label htmlFor="username">Username</Label>
-      <Input
-        id="username"
-        aria-describedby="username-help"
-        required
-      />
+      <Input id="username" aria-describedby="username-help" required />
       <p id="username-help" className="text-sm text-(--color-text-tertiary)">
         Choose a unique username
       </p>

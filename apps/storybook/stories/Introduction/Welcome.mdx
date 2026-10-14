@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Introduction/Welcome" />
 
@@ -21,16 +21,19 @@ The Wylie Dog Design System provides a comprehensive set of reusable components,
 ## Quick Links
 
 ### Getting Started
+
 - [Getting Started Guide](?path=/docs/introduction-getting-started--docs) — Installation and setup
 - [Using This System](?path=/docs/introduction-using-this-system--docs) — How to navigate this Storybook
 - [Design Principles](?path=/docs/foundations-design-principles--docs) — Our design philosophy
 
 ### Foundations
+
 - [Colors](?path=/docs/foundations-colors--docs) — OKLCH color palette with 10 scales and semantic aliases
 - [Typography](?path=/docs/foundations-typography--docs) — Type scales, weights, and font tokens
 - [Spacing & Layout](?path=/docs/foundations-spacing-layout--docs) — Spacing system and layout tokens
 
 ### Components
+
 - [Button](?path=/docs/components-inputs-controls-button--docs) — Start here for a feel of the component API
 - [Patterns Overview](?path=/docs/patterns-overview--docs) — Real-world compositions and usage examples
 - [Form Patterns](?path=/docs/patterns-form-patterns-form-compositions--docs) — Common form layouts
@@ -52,12 +55,12 @@ The system is powered by over 1,000 tokens organized in three tiers:
 
 ```css
 /* Light mode */
---color-background-primary: oklch(1 0 0);         /* gray-50 */
---color-text-primary: oklch(0.279 0.037 260.04);   /* gray-900 */
+--color-background-primary: oklch(1 0 0); /* gray-50 */
+--color-text-primary: oklch(0.279 0.037 260.04); /* gray-900 */
 
 /* Dark mode */
---color-background-primary: oklch(0.208 0.04 265.75);  /* gray-950 */
---color-text-primary: oklch(0.984 0.003 248.29);        /* gray-100 */
+--color-background-primary: oklch(0.208 0.04 265.75); /* gray-950 */
+--color-text-primary: oklch(0.984 0.003 248.29); /* gray-100 */
 ```
 
 **Component tokens** tie everything together at the component level:
@@ -79,9 +82,9 @@ Components reference these tokens through Tailwind's CSS variable syntax:
 As a consumer, you don't need to think about token wiring — just use the components:
 
 ```jsx
-import { Button } from '@wyliedog/ui/button';
-import { Input } from '@wyliedog/ui/input';
-import { Label } from '@wyliedog/ui/label';
+import { Button } from "@wyliedog/ui/button";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
 
 export function LoginForm() {
   return (
@@ -109,28 +112,43 @@ This Storybook is organized into the following sections:
   </thead>
   <tbody>
     <tr>
-      <td><strong>Introduction</strong></td>
+      <td>
+        <strong>Introduction</strong>
+      </td>
       <td>Setup guides and system overview (you are here)</td>
     </tr>
     <tr>
-      <td><strong>Foundations</strong></td>
+      <td>
+        <strong>Foundations</strong>
+      </td>
       <td>Colors, typography, spacing — the design token layer</td>
     </tr>
     <tr>
-      <td><strong>Components</strong></td>
+      <td>
+        <strong>Components</strong>
+      </td>
       <td>All 44 UI components with interactive examples and controls</td>
     </tr>
     <tr>
-      <td><strong>Patterns</strong></td>
-      <td>Multi-component compositions: forms, auth flows, navigation, layouts, and full-page compositions</td>
+      <td>
+        <strong>Patterns</strong>
+      </td>
+      <td>
+        Multi-component compositions: forms, auth flows, navigation, layouts,
+        and full-page compositions
+      </td>
     </tr>
     <tr>
-      <td><strong>Resources</strong></td>
+      <td>
+        <strong>Resources</strong>
+      </td>
       <td>In-depth guides for theming, installation, and performance</td>
     </tr>
     <tr>
-      <td><strong>Contributing</strong></td>
-      <td>Code standards, design workflows, and release process</td>
+      <td>
+        <strong>Contributing</strong>
+      </td>
+      <td>Code standards and design workflows</td>
     </tr>
   </tbody>
 </table>
@@ -146,39 +164,57 @@ This Storybook is organized into the following sections:
   </thead>
   <tbody>
     <tr>
-      <td><strong>React 19</strong></td>
+      <td>
+        <strong>React 19</strong>
+      </td>
       <td>UI framework</td>
     </tr>
     <tr>
-      <td><strong>TypeScript 6</strong></td>
+      <td>
+        <strong>TypeScript 6</strong>
+      </td>
       <td>Type-safe component development</td>
     </tr>
     <tr>
-      <td><strong>Radix UI</strong></td>
+      <td>
+        <strong>Radix UI</strong>
+      </td>
       <td>Accessible component primitives (24 packages)</td>
     </tr>
     <tr>
-      <td><strong>Tailwind CSS v4</strong></td>
+      <td>
+        <strong>Tailwind CSS v4</strong>
+      </td>
       <td>Utility-first styling consuming token CSS variables</td>
     </tr>
     <tr>
-      <td><strong>OKLCH + P3</strong></td>
+      <td>
+        <strong>OKLCH + P3</strong>
+      </td>
       <td>Perceptually uniform color space with wide gamut support</td>
     </tr>
     <tr>
-      <td><strong>Style Dictionary</strong></td>
+      <td>
+        <strong>Style Dictionary</strong>
+      </td>
       <td>Token build pipeline (W3C DTCG format)</td>
     </tr>
     <tr>
-      <td><strong>Figma + Token Bridge</strong></td>
+      <td>
+        <strong>Figma + Token Bridge</strong>
+      </td>
       <td>Design-to-code token sync</td>
     </tr>
     <tr>
-      <td><strong>Vite 8</strong></td>
+      <td>
+        <strong>Vite 8</strong>
+      </td>
       <td>Build tooling</td>
     </tr>
     <tr>
-      <td><strong>Storybook 10</strong></td>
+      <td>
+        <strong>Storybook 10</strong>
+      </td>
       <td>Component documentation and testing</td>
     </tr>
   </tbody>
@@ -187,11 +223,13 @@ This Storybook is organized into the following sections:
 ## Learning Path
 
 ### For Designers
+
 1. Start with [Design Principles](?path=/docs/foundations-design-principles--docs)
 2. Explore [Colors](?path=/docs/foundations-colors--docs) and [Typography](?path=/docs/foundations-typography--docs)
 3. Review component stories to see interactive examples of every variant
 
 ### For Developers
+
 1. Follow the [Getting Started Guide](?path=/docs/introduction-getting-started--docs)
 2. Browse components — start with [Button](?path=/docs/components-inputs-controls-button--docs) to see the API patterns
 3. Check out [Patterns](?path=/docs/patterns-overview--docs) for real-world implementations

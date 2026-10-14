@@ -604,26 +604,6 @@ async function updateIndexFile(name, composition = false) {
   }
 }
 
-// Create a changeset for the release workflow
-async function createChangeset(name, composition = false) {
-  const pascalName = toPascalCase(name);
-  const kind = composition ? "composition" : "component";
-  // A short random suffix keeps the filename unique across multiple
-  // generations in the same session — @changesets/cli itself uses a
-  // human-readable-slug generator; a timestamp-based id is a simpler
-  // dependency-free equivalent that still avoids collisions.
-  const id = `${name}-${Date.now()}`;
-  const changesetPath = path.join(rootDir, ".changeset", `${id}.md`);
-  const content = `---
-"@wyliedog/ui": minor
----
-
-Add ${pascalName} ${kind}.
-`;
-  await fs.writeFile(changesetPath, content, "utf-8");
-  success(`Created changeset: .changeset/${id}.md`);
-}
-
 // Format generated files
 async function formatFiles(name, composition = false, category) {
   info("Running Prettier...");
@@ -702,7 +682,6 @@ async function main() {
     await updateTsupConfig(componentName, composition);
     await updatePackageJson(componentName, composition);
     await updateIndexFile(componentName, composition);
-    await createChangeset(componentName, composition);
 
     // Format and lint
     await formatFiles(componentName, composition, category);

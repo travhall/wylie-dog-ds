@@ -10,9 +10,6 @@
     "apps/storybook/stories/Contributing/Workflows/component-development.mdx": [
       "-component-"
     ],
-    "apps/storybook/stories/Contributing/Workflows/release-process.mdx": [
-      "^--color-(primary-default|background-subtle)$"
-    ],
     "apps/storybook/stories/Resources/Theming/overview.mdx": [
       "^--color-brand",
       "^--color-text-on-brand$",

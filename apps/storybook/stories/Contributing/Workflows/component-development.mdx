@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Contributing/Workflows/Component Development Process" />
 
@@ -15,7 +15,7 @@ Component development follows a structured workflow from initial proposal throug
 3. **Development** - Build the component with tests and documentation
 4. **Review** - Peer review for quality and consistency
 5. **Documentation** - Complete Storybook stories and usage guides
-6. **Release** - Publish and communicate the new component
+6. **Merge** - Merge and communicate the new component
 
 ## Phase 1: Proposal & Discovery
 
@@ -25,11 +25,13 @@ Before creating a new component, verify it's necessary:
 
 ```markdown
 ✅ Create a new component when:
+
 - Pattern appears in 3+ different contexts
 - Existing components can't be composed to solve the need
 - Component represents a distinct, reusable interaction
 
 ❌ Don't create a new component when:
+
 - It's a one-off variation (use composition instead)
 - Existing component can be extended with new props
 - It's application-specific (not system-level)
@@ -48,35 +50,43 @@ Check if the component already exists:
 
 Document your proposal in a GitHub issue:
 
-```markdown
+````markdown
 ## Component Proposal: [Component Name]
 
 ### Problem Statement
+
 What user need does this solve?
 
 ### Use Cases
+
 1. [Primary use case]
 2. [Secondary use case]
 3. [Edge cases to consider]
 
 ### API Proposal
+
 ```tsx
 interface ComponentProps {
   // Proposed props
 }
 ```
+````
 
 ### Design Considerations
+
 - Accessibility requirements
 - Responsive behavior
 - Theme support
 - Animation/interaction needs
 
 ### Examples from Other Systems
+
 - [Links to similar components in other design systems]
 
 ### Open Questions
+
 - [Questions for discussion]
+
 ```
 
 ### 4. Get Approval
@@ -95,6 +105,7 @@ Discuss with the design system team:
 Follow the [Design Standards](/docs/contributing-guidelines-design-standards--docs):
 
 ```
+
 Component Checklist:
 □ Base component created
 □ All variants defined (sizes, states, styles)
@@ -103,7 +114,8 @@ Component Checklist:
 □ Accessibility verified (contrast, focus indicators)
 □ Responsive behavior defined
 □ Documentation annotations added
-```
+
+````
 
 ### 2. Design Review
 
@@ -138,7 +150,7 @@ git checkout -b feat/component-name
 
 # Verify branch
 git branch
-```
+````
 
 ### 2. Create Component Files
 
@@ -160,26 +172,25 @@ apps/storybook/stories/Components/<Category>/component-name.stories.tsx
 Use the [component template](/docs/contributing-guidelines-code-standards--docs#component-template):
 
 ```tsx
-import * as React from 'react';
-import { cn } from './lib/utils';
+import * as React from "react";
+import { cn } from "./lib/utils";
 
 // 1. Type definitions
-export interface ComponentNameProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
+export interface ComponentNameProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: "default" | "secondary" | "outline";
+  size?: "sm" | "md" | "lg";
 }
 
 // 2. Component implementation
 export const ComponentName = React.forwardRef<
   HTMLDivElement,
   ComponentNameProps
->(({ className, variant = 'default', size = 'md', ...props }, ref) => {
+>(({ className, variant = "default", size = "md", ...props }, ref) => {
   return (
     <div
       ref={ref}
       className={cn(
-        'base-styles',
+        "base-styles",
         variantStyles[variant],
         sizeStyles[size],
         className
@@ -189,22 +200,24 @@ export const ComponentName = React.forwardRef<
   );
 });
 
-ComponentName.displayName = 'ComponentName';
+ComponentName.displayName = "ComponentName";
 
 // 3. Style variants
 // Variant styles reference component tokens exclusively.
 // `component` in these token names is a placeholder for your component's name (for example `button`).
 const variantStyles = {
-  default: 'bg-(--color-component-background) text-(--color-component-text)',
-  secondary: 'bg-(--color-component-background-secondary) text-(--color-component-text-secondary)',
-  outline: 'border border-(--color-component-border) text-(--color-component-text)',
+  default: "bg-(--color-component-background) text-(--color-component-text)",
+  secondary:
+    "bg-(--color-component-background-secondary) text-(--color-component-text-secondary)",
+  outline:
+    "border border-(--color-component-border) text-(--color-component-text)",
 };
 
 // Size styles reference component tokens — never hardcoded Tailwind scale values
 const sizeStyles = {
-  sm: 'text-(length:--font-size-component-sm) px-(--space-component-padding-x-sm) py-(--space-component-padding-y-sm)',
-  md: 'text-(length:--font-size-component-md) px-(--space-component-padding-x-md) py-(--space-component-padding-y-md)',
-  lg: 'text-(length:--font-size-component-lg) px-(--space-component-padding-x-lg) py-(--space-component-padding-y-lg)',
+  sm: "text-(length:--font-size-component-sm) px-(--space-component-padding-x-sm) py-(--space-component-padding-y-sm)",
+  md: "text-(length:--font-size-component-md) px-(--space-component-padding-x-md) py-(--space-component-padding-y-md)",
+  lg: "text-(length:--font-size-component-lg) px-(--space-component-padding-x-lg) py-(--space-component-padding-y-lg)",
 };
 ```
 
@@ -213,35 +226,35 @@ const sizeStyles = {
 Ensure [minimum 80% coverage](/docs/contributing-guidelines-code-standards--docs#coverage-requirements):
 
 ```tsx
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { ComponentName } from './component-name';
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { ComponentName } from "./component-name";
 
-describe('ComponentName', () => {
-  it('renders with children', () => {
+describe("ComponentName", () => {
+  it("renders with children", () => {
     render(<ComponentName>Content</ComponentName>);
-    expect(screen.getByText('Content')).toBeInTheDocument();
+    expect(screen.getByText("Content")).toBeInTheDocument();
   });
 
-  it('applies variant styles', () => {
+  it("applies variant styles", () => {
     render(<ComponentName variant="secondary">Content</ComponentName>);
-    const element = screen.getByText('Content');
-    expect(element).toHaveClass('bg-(--color-interactive-primary)');
+    const element = screen.getByText("Content");
+    expect(element).toHaveClass("bg-(--color-interactive-primary)");
   });
 
-  it('forwards ref correctly', () => {
+  it("forwards ref correctly", () => {
     const ref = React.createRef<HTMLDivElement>();
     render(<ComponentName ref={ref}>Content</ComponentName>);
     expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
 
-  it('is keyboard accessible', async () => {
+  it("is keyboard accessible", async () => {
     const handleClick = vi.fn();
     render(<ComponentName onClick={handleClick}>Content</ComponentName>);
 
-    const element = screen.getByText('Content');
+    const element = screen.getByText("Content");
     element.focus();
-    await userEvent.keyboard('{Enter}');
+    await userEvent.keyboard("{Enter}");
     expect(handleClick).toHaveBeenCalled();
   });
 });
@@ -265,31 +278,31 @@ pnpm test:watch
 Document all variants and use cases:
 
 ```tsx
-import type { Meta, StoryObj } from '@storybook/react';
-import { ComponentName } from './component-name';
+import type { Meta, StoryObj } from "@storybook/react";
+import { ComponentName } from "./component-name";
 
 const meta: Meta<typeof ComponentName> = {
-  title: 'Components/Category/ComponentName',
+  title: "Components/Category/ComponentName",
   component: ComponentName,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
-        component: 'Brief description of the component and its purpose.',
+        component: "Brief description of the component and its purpose.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'secondary', 'outline'],
-      description: 'Visual style variant',
+      control: "select",
+      options: ["default", "secondary", "outline"],
+      description: "Visual style variant",
     },
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-      description: 'Size of the component',
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Size of the component",
     },
   },
 };
@@ -300,15 +313,15 @@ type Story = StoryObj<typeof ComponentName>;
 // Default story
 export const Default: Story = {
   args: {
-    children: 'Default component',
+    children: "Default component",
   },
 };
 
 // Variant stories
 export const Secondary: Story = {
   args: {
-    variant: 'secondary',
-    children: 'Secondary variant',
+    variant: "secondary",
+    children: "Secondary variant",
   },
 };
 
@@ -327,9 +340,7 @@ export const Sizes: Story = {
 export const Example: Story = {
   render: () => (
     <div className="space-y-4">
-      <ComponentName>
-        Real-world usage example
-      </ComponentName>
+      <ComponentName>Real-world usage example</ComponentName>
     </div>
   ),
 };
@@ -339,7 +350,7 @@ export const Example: Story = {
 
 Create comprehensive docs in the story file:
 
-```tsx
+````tsx
 /**
  * ComponentName provides [description of functionality].
  *
@@ -369,7 +380,7 @@ Create comprehensive docs in the story file:
  * - Provide meaningful labels
  * - Consider responsive behavior
  */
-```
+````
 
 ## Phase 4: Review
 
@@ -484,14 +495,14 @@ Each component is exported from its own file. Add a named export to `packages/ui
 Then consumers import it as:
 
 ```tsx
-import { ComponentName } from '@wyliedog/ui/component-name';
+import { ComponentName } from "@wyliedog/ui/component-name";
 ```
 
 ### 3. Add Usage Examples
 
 Create example compositions in [Patterns](/docs/patterns-overview--docs) if applicable.
 
-## Phase 6: Release
+## Phase 6: Merge
 
 ### 1. Final Verification
 
@@ -518,23 +529,16 @@ git commit -m "feat(component-name): add new component"
 git push origin main
 ```
 
-### 3. Version and Publish
+### 3. Releases
 
-Follow the [Release Process](/docs/contributing-workflows-release-process--docs):
+The packages are workspace-only and are not published to npm, so there is no version bump, changelog entry, release tag or publish step.
 
-- Update CHANGELOG.md
-- Bump package version
-- Create release tag
-- Publish to npm
+### 4. Communicate the Change
 
-### 4. Communicate Release
-
-Announce the new component:
+Let people know about the new component:
 
 - Update design system documentation
-- Post in team channels
-- Add to release notes
-- Update component status in tracker
+- Update component status in your tracker
 
 ## Common Pitfalls
 

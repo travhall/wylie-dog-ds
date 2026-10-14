@@ -259,28 +259,21 @@ pnpm generate:component <name>  # Scaffold a new component
 # Performance
 pnpm perf                       # Lighthouse + bundle checks
 pnpm size                       # Bundle size report (size-limit)
-
-# Releases
-pnpm changeset                  # Create a changeset
-pnpm version-packages           # Bump versions from changesets
-pnpm release                    # Build + publish to npm
 ```
 
 ### CI/CD
 
 GitHub Actions workflows run on PRs and pushes to `main`:
 
-| Workflow                | Trigger        | Purpose                           |
-| ----------------------- | -------------- | --------------------------------- |
-| `build.yml`             | PR / push      | Build all packages                |
-| `test.yml`              | PR / push      | Full test suite                   |
-| `lint.yml`              | PR / push      | Lint all packages                 |
-| `size.yml`              | PR / push      | Bundle size enforcement           |
-| `lighthouse.yml`        | PR / push      | Lighthouse performance audit      |
-| `visual-regression.yml` | PR / push      | Playwright visual regression      |
-| `release.yml`           | push to `main` | Changesets versioning and publish |
-| `rebuild-tokens.yml`    | scheduled      | Token rebuild                     |
-| `figma-plugin-test.yml` | PR / push      | Plugin test suite                 |
+| Workflow                | Trigger                           | Purpose                      |
+| ----------------------- | --------------------------------- | ---------------------------- |
+| `build.yml`             | PR / push                         | Build all packages           |
+| `test.yml`              | PR / push                         | Full test suite              |
+| `lint.yml`              | PR / push                         | Lint all packages            |
+| `size.yml`              | PR / push                         | Bundle size enforcement      |
+| `lighthouse.yml`        | PR / push                         | Lighthouse performance audit |
+| `rebuild-tokens.yml`    | push to `main` (token sync files) | Token rebuild                |
+| `figma-plugin-test.yml` | PR / push                         | Plugin test suite            |
 
 Storybook is deployed to Netlify on every push. Config: `netlify.toml`.
 

@@ -62,7 +62,7 @@ pnpm generate:component my-component --category=content-display              # T
 pnpm generate:component my-header --composition --category="Navigation Patterns"  # Tier 2
 ```
 
-It creates the component, a test, a story, the `tsup` entry, the package export, the barrel export and a changeset. The full workflow, including what you must finish by hand, is in [component-workflow.md](component-workflow.md).
+It creates the component, a test, a story, the `tsup` entry, the package export, and the barrel export. The full workflow, including what you must finish by hand, is in [component-workflow.md](component-workflow.md).
 
 ## Exports and build
 

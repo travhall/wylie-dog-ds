@@ -2,7 +2,7 @@
 
 How to add a component to `@wyliedog/ui` with the generator, what it creates, what you still have to do by hand, and how to check the result.
 
-For the wider process (proposal, design review, pull request, release) see the Storybook page "Contributing / Workflows / Component Development Process" (`apps/storybook/stories/Contributing/Workflows/component-development.mdx`). For story conventions see `apps/storybook/STORY_AUTHORING_GUIDE.md`.
+For the wider process (proposal, design review, pull request) see the Storybook page "Contributing / Workflows / Component Development Process" (`apps/storybook/stories/Contributing/Workflows/component-development.mdx`). For story conventions see `apps/storybook/STORY_AUTHORING_GUIDE.md`.
 
 ## 1. Generate the scaffold
 
@@ -41,7 +41,6 @@ For a primitive named `my-component` (compositions use `src/compositions/` and `
 | `packages/ui/tsup.config.ts`                                           | New entry in `entryPoints`                                                                        |
 | `packages/ui/package.json`                                             | New `exports["./my-component"]`                                                                   |
 | `packages/ui/src/index.ts` (compositions: `src/compositions/index.ts`) | New export line                                                                                   |
-| `.changeset/my-component-<timestamp>.md`                               | A `minor` changeset for `@wyliedog/ui`                                                            |
 
 Then it runs Prettier and ESLint on the generated files.
 
