@@ -391,7 +391,7 @@ export default function ShowcasePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {/* Foundations/Button */}
             <Link
-              href="/components/inputs"
+              href="/components#inputs"
               className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
@@ -428,7 +428,7 @@ export default function ShowcasePage() {
 
             {/* Forms/Input */}
             <Link
-              href="/components/inputs"
+              href="/components#inputs"
               className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
@@ -468,7 +468,7 @@ export default function ShowcasePage() {
 
             {/* Navigation/Tabs */}
             <Link
-              href="/components/navigation"
+              href="/components#navigation"
               className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
@@ -507,7 +507,7 @@ export default function ShowcasePage() {
 
             {/* Overlays/Dialog */}
             <Link
-              href="/components/overlays"
+              href="/components#overlays"
               className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
@@ -556,7 +556,7 @@ export default function ShowcasePage() {
 
             {/* Data Display/Table */}
             <Link
-              href="/components/content-display"
+              href="/components#content-display"
               className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
@@ -606,7 +606,7 @@ export default function ShowcasePage() {
 
             {/* Feedback/Alert */}
             <Link
-              href="/components/feedback"
+              href="/components#feedback"
               className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >

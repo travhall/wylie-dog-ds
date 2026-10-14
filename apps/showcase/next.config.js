@@ -28,6 +28,22 @@ const nextConfig = {
     }
     return config;
   },
+  // The per-category component pages were partial duplicates of the sections on
+  // /components, so their old URLs now land on the matching section.
+  async redirects() {
+    return [
+      "content-display",
+      "feedback",
+      "inputs",
+      "layout",
+      "navigation",
+      "overlays",
+    ].map((id) => ({
+      source: `/components/${id}`,
+      destination: `/components#${id}`,
+      permanent: true,
+    }));
+  },
   async headers() {
     return [
       {
