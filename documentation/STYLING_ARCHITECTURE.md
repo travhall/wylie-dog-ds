@@ -86,10 +86,6 @@ Both apps import the UI stylesheet, which already contains Tailwind's base, so s
 - **New app:** import `@wyliedog/ui/styles` in the CSS entry. In a Next.js app also `@import "tailwindcss"` and add `@tailwindcss/postcss` to `postcss.config.js`. In a Vite app, follow the Storybook approach: compile the app's own utilities with the Tailwind CLI and import the output after the UI styles.
 - **Theme overrides:** override semantic tokens as CSS variables after importing the UI styles (see Storybook, Resources / Theming).
 
-## The `@repo/tailwind-config` package
-
-`packages/tailwind-config` (a `tailwind.config`-style object with breakpoints and shadcn-style color aliases such as `bg-muted`) is listed as a dependency of `@wyliedog/ui`, Storybook and the showcase, but nothing imports it: no CSS uses `@config`, no app has a Tailwind config file, and none of its aliases are used in the code. Treat it as legacy. Do not document or rely on it for new work.
-
 ## Troubleshooting
 
 - **Component styles missing in an app:** the CSS entry must import `@wyliedog/ui/styles`, and the UI package must be built (`ls packages/ui/dist/index.css`).
