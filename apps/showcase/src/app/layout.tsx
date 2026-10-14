@@ -42,12 +42,12 @@ const footerColumns = [
   {
     heading: "Components",
     links: [
-      { label: "Content Display", href: "/components/content-display" },
-      { label: "Inputs & Controls", href: "/components/inputs" },
-      { label: "Navigation", href: "/components/navigation" },
-      { label: "Overlays & Popovers", href: "/components/overlays" },
-      { label: "Layout & Structure", href: "/components/layout" },
-      { label: "Feedback & Status", href: "/components/feedback" },
+      { label: "Content Display", href: "/components#content-display" },
+      { label: "Inputs & Controls", href: "/components#inputs" },
+      { label: "Navigation", href: "/components#navigation" },
+      { label: "Overlays & Popovers", href: "/components#overlays" },
+      { label: "Layout & Structure", href: "/components#layout" },
+      { label: "Feedback & Status", href: "/components#feedback" },
     ],
   },
   {
