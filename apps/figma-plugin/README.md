@@ -216,7 +216,7 @@ pnpm test:ui            # Interactive test interface
 
 # Quality Assurance
 pnpm lint               # ESLint with strict rules
-pnpm type-check         # TypeScript validation
+pnpm typecheck          # TypeScript validation
 ```
 
 ### Testing Infrastructure
@@ -451,7 +451,7 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
 ### Quick Contribution Checklist
 
-- [ ] Run `pnpm type-check` (no TypeScript errors)
+- [ ] Run `pnpm typecheck` (no TypeScript errors)
 - [ ] Run `pnpm lint` (no ESLint warnings)
 - [ ] Run `pnpm test:run` (all tests passing)
 - [ ] Run `pnpm test:coverage` (maintain 60%+ coverage)

@@ -1,222 +1,61 @@
 # Figma Token Import Guide
 
-## Overview
+How to get the design tokens into a Figma file as Figma Variables, using the Token Bridge plugin (`apps/figma-plugin`).
 
-Three JSON files have been generated for import into Figma, following the W3C DTCG (Design Tokens Community Group) format:
+## Source files
 
-1. **figma-tokens-primitive.json** - Foundation color scales
-2. **figma-tokens-semantic.json** - Context-based semantic tokens
-3. **figma-tokens-component.json** - Component-specific tokens
+The tokens live in `packages/tokens/io/sync/`. Each file is one Figma variable collection:
 
-## Enhanced Color Scheme
+| File              | Collection   | Modes           | Contents                                         |
+| ----------------- | ------------ | --------------- | ------------------------------------------------ |
+| `primitive.json`  | `primitive`  | `Value`         | Raw values (colors in OKLCH, spacing, type, ...) |
+| `semantic.json`   | `semantic`   | `Light`, `Dark` | Meaning-based tokens that alias primitives       |
+| `components.json` | `components` | `Light`, `Dark` | Component tokens that alias semantic tokens      |
 
-The new color palette features **increased vibrancy and saturation** compared to the original:
+For the current token counts see `packages/tokens/dist/manifest.json` or run `pnpm check:docs`.
 
-### Key Improvements:
+## Import order
 
-- ✅ **20-30% more chroma** across all hues for richer, more vibrant colors
-- ✅ **Added Cyan & Yellow** scales for better info and accent coverage
-- ✅ **Enhanced Purple** for more striking accent colors
-- ✅ **Optimized contrast ratios** maintaining WCAG AA compliance
-- ✅ **OKLCH color space** for perceptually uniform brightness
+Import the files in this order so aliases resolve: `primitive`, then `semantic`, then `components`. References look like `{color.gray.50}`: a semantic token points at a primitive, and a component token points at a semantic token.
 
-### Color Scales Included:
+## Importing
 
-- **Gray** (11 shades) - Neutral foundation
-- **Blue** (11 shades) - Primary brand, enhanced vibrancy
-- **Green** (11 shades) - Success states, fresh and vibrant
-- **Orange** (11 shades) - Warning states, warm and noticeable
-- **Red** (11 shades) - Danger/error states, clear alerts
-- **Purple** (11 shades) - Accent colors, rich and saturated
-- **Cyan** (11 shades) - Info states, fresh and modern
-- **Yellow** (11 shades) - Highlights, bright and attention-grabbing
+1. Open the Token Bridge plugin in the Figma file.
+2. Go to the **Sync** tab and choose **Import from file**, then select a file from `packages/tokens/io/sync/`.
+3. Review the transformation summary and confirm the import. The plugin detects the file format automatically.
+4. Repeat for the next file in the order above.
 
-## Import Order
+If the file's repository is already connected, you can instead use **Pull** on the Sync tab to bring the files in from GitHub. See [apps/figma-plugin/README.md](../../apps/figma-plugin/README.md) for authentication and sync details.
 
-Import in this sequence to ensure proper token references:
+## File format
 
-### 1. Primitive Tokens (Foundation)
-
-**File:** `figma-tokens-primitive.json`
-
-These are your raw color values in OKLCH format. All other tokens reference these.
-
-**Import as:** `Primitives` or `Foundation` collection
-
-### 2. Semantic Tokens (Meaning)
-
-**File:** `figma-tokens-semantic.json`
-
-These reference primitive tokens and assign semantic meaning (e.g., "success", "danger").
-
-**Import as:** `Semantic` or `Light Mode` collection
-
-**Note:** References like `{Color.Gray.50}` will resolve to the primitive tokens.
-
-### 3. Component Tokens (Application)
-
-**File:** `figma-tokens-component.json`
-
-These reference semantic tokens and define component-specific usage.
-
-**Import as:** `Components` collection
-
-**Note:** References like `{Color.Interactive.primary}` will resolve to semantic tokens, which then resolve to primitives.
-
-## Figma Variables Setup
-
-### RECOMMENDED: Using Wylie Dog Token Bridge Plugin (Native W3C DTCG Support)
-
-The **Wylie Dog Token Bridge** plugin natively supports standard W3C DTCG format - no proprietary wrappers required!
-
-1. **Open the plugin** in your Figma file
-2. **Import tokens:**
-   - Select `figma-tokens-primitive.json` → imports as "Color" collection
-   - Select `figma-tokens-semantic.json` → imports semantic tokens
-   - Select `figma-tokens-component.json` → imports component tokens
-
-The plugin automatically:
-
-- ✅ Detects nested W3C DTCG structure
-- ✅ Creates Figma variable collections
-- ✅ Resolves token references (`{Color.Blue.500}`)
-- ✅ Converts OKLCH to Figma RGB format
-- ✅ Validates token integrity
-
-**Test file provided:** `w3c-dtcg-test.json` contains a small subset for testing the import flow.
-
-### Secondary path: Using Tokens Studio Plugin (community, unverified)
-
-Token Bridge (this repo's own plugin, `apps/figma-plugin`) is the primary,
-actively-maintained import path — it is explicitly built and tested against
-the standard nested W3C DTCG format described above (see
-`documentation/guides/W3C-DTCG-ADAPTER-REFACTORING.md`). The steps below for
-Tokens Studio are provided for readers who already use that plugin, but this
-path is **not** verified by this repo's own test suite or CI, and is not
-actively maintained here.
-
-1. **Install:** [Tokens Studio for Figma](https://www.figma.com/community/plugin/843461159747178978)
-2. **Open Plugin:** Plugins → Tokens Studio
-3. **Import:**
-   - Import `figma-tokens-primitive.json` → Set as "Primitives" collection
-   - Import `figma-tokens-semantic.json` → Set as "Semantic" collection
-   - Import `figma-tokens-component.json` → Set as "Components" collection
-
-4. **Sync:** Push to Figma Variables
-
-## Token Structure
-
-### Primitive Format:
+The `io/sync` files use the plugin's native format: an array with one object per collection, holding its `modes` and a flat `variables` map keyed by dot-separated token name. Each variable has `$type` and `$value`; aliases are written as `{token.name}`:
 
 ```json
 {
-  "Color": {
-    "Blue": {
-      "600": {
+  "semantic": {
+    "modes": [{ "name": "Light" }, { "name": "Dark" }],
+    "variables": {
+      "color.background.primary": {
         "$type": "color",
-        "$value": "oklch(0.570 0.240 262.88)",
-        "$description": "Brand blue - Rich and saturated"
+        "$value": "{color.gray.50}"
       }
     }
   }
 }
 ```
 
-### Semantic Format (References Primitives):
+The plugin also accepts standard nested W3C DTCG files and other formats it can detect; see [W3C-DTCG-ADAPTER-REFACTORING.md](W3C-DTCG-ADAPTER-REFACTORING.md) and the plugin README.
 
-```json
-{
-  "Color": {
-    "Interactive": {
-      "primary": {
-        "$type": "color",
-        "$value": "{Color.Blue.600}",
-        "$description": "Primary interactive element"
-      }
-    }
-  }
-}
-```
+## Colors and browser support
 
-### Component Format (References Semantic):
+Color tokens use OKLCH. Minimum browser versions are listed in [packages/tokens/BROWSER_SUPPORT.md](../../packages/tokens/BROWSER_SUPPORT.md).
 
-```json
-{
-  "Button": {
-    "primary": {
-      "background": {
-        "$type": "color",
-        "$value": "{Color.Interactive.primary}",
-        "$description": "Primary button background"
-      }
-    }
-  }
-}
-```
+## Going the other way
 
-## Token Coverage
+To send changes made in Figma back to code, use the **Tokens** tab to export (download JSON or push to GitHub). Variables the exporter cannot represent are listed in a notice after the export; see the plugin's `docs/API.md`.
 
-### Complete Coverage Includes:
+## References
 
-**Semantic Tokens:**
-
-- ✅ Background (9 variants)
-- ✅ Surface (9 variants)
-- ✅ Text (10 variants)
-- ✅ Border (8 variants)
-- ✅ Interactive (14 variants with hover states)
-
-**Component Tokens:**
-
-- ✅ Badge (6 variants)
-- ✅ Button (5 variants with states)
-- ✅ Input (all states)
-- ✅ Alert (4 variants)
-- ✅ Card
-- ✅ Dialog
-- ✅ Navigation
-- ✅ Table
-- ✅ Tooltip
-
-**Total: 88 color scales × 11 shades = 968 primitive tokens**
-**Plus: 50 semantic tokens**
-**Plus: 45+ component tokens**
-
-## Validation
-
-After import, verify:
-
-1. **Token References Resolve:** Check that semantic tokens properly reference primitives
-2. **OKLCH Values Display:** Ensure Figma correctly interprets OKLCH color space
-3. **Dark Mode Ready:** Structure supports adding dark mode collections later
-4. **Component Coverage:** All components from Color Story are represented
-
-## Next Steps
-
-1. **Import all three files** into Figma
-2. **Create mode variants** for light/dark themes
-3. **Apply to designs** using the component tokens
-4. **Sync back to code** using the Figma plugin when tokens are updated
-
-## OKLCH Browser Support
-
-These tokens use OKLCH for:
-
-- ✅ Perceptually uniform lightness
-- ✅ P3 wide color gamut support
-- ✅ Better color manipulation
-- ✅ Future-proof color science
-
-Supported in:
-
-- Chrome 111+
-- Safari 16.4+
-- Firefox 113+
-
-## Questions?
-
-Refer to:
-
-- [W3C DTCG Spec](https://tr.designtokens.org/format/)
+- [W3C DTCG Specification](https://tr.designtokens.org/format/)
 - [OKLCH Color Picker](https://oklch.com/)
-- [Tokens Studio Docs](https://docs.tokens.studio/)

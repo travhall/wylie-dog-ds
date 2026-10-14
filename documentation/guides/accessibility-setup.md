@@ -54,8 +54,10 @@ test: {
 
 ### ESLint
 
-`eslint-plugin-jsx-a11y` is already wired into the lint config — no separate
-`.eslintrc.a11y.js` needed.
+`eslint-plugin-jsx-a11y` is configured in its own flat config,
+`packages/ui/eslint.config.a11y.js`, which is not part of the regular `lint`
+script. Run it with `pnpm --filter @wyliedog/ui lint:a11y`; the Lint workflow
+runs it in CI.
 
 ### npm scripts
 
@@ -65,7 +67,7 @@ test: {
 {
   "scripts": {
     "test": "vitest run",
-    "test:a11y": "vitest --run --reporter=verbose src/__tests__/*.a11y.test.tsx src/accessibility-validation.test.tsx",
+    "test:a11y": "vitest --run --reporter=verbose src/__tests__/*.a11y.test.tsx",
     "test:coverage": "vitest --coverage",
     "test:watch": "vitest --watch"
   }

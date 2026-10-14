@@ -234,7 +234,7 @@ style={{
 
 ### Before Submitting
 
-- [ ] Run `pnpm type-check` (no errors)
+- [ ] Run `pnpm typecheck` (no errors)
 - [ ] Run `pnpm lint` (no warnings)
 - [ ] Run `pnpm test:run` (all passing)
 - [ ] Test plugin in Figma (load and verify)
@@ -272,7 +272,7 @@ Fixes #123
 
 ### Review Process
 
-1. CI checks must pass (type-check, lint, tests)
+1. CI checks must pass (typecheck, lint, tests)
 2. At least one maintainer approval
 3. No merge conflicts
 4. Documentation updated if needed
