@@ -545,8 +545,8 @@ export default function ComponentsPage() {
                 <div className="flex items-center gap-3">
                   {[
                     {
-                      bg: "oklch(78% 0.13 35)",
-                      color: "oklch(20% 0.05 35)",
+                      bg: "var(--color-fiery-coral-300)",
+                      color: "var(--color-fiery-coral-950)",
                       init: "EM",
                     },
                     {
@@ -733,7 +733,11 @@ export default function ComponentsPage() {
                   <div className="mt-2 flex items-center gap-2">
                     <div className="flex -space-x-1.5">
                       {[
-                        ["oklch(78% 0.13 35)", "oklch(20% 0.05 35)", "EM"],
+                        [
+                          "var(--color-fiery-coral-300)",
+                          "var(--color-fiery-coral-950)",
+                          "EM",
+                        ],
                         ["oklch(78% 0.13 274)", "oklch(20% 0.05 274)", "JR"],
                       ].map(([bg, c, i]) => (
                         <span

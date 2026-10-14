@@ -15,7 +15,11 @@ import {
 } from "@wyliedog/ui/select";
 
 const TEAM = [
-  { initials: "EM", bg: "oklch(78% 0.13 35)", fg: "oklch(20% 0.05 35)" },
+  {
+    initials: "EM",
+    bg: "var(--color-fiery-coral-300)",
+    fg: "var(--color-fiery-coral-950)",
+  },
   { initials: "JR", bg: "oklch(78% 0.13 155)", fg: "oklch(20% 0.05 155)" },
   { initials: "AK", bg: "oklch(78% 0.13 274)", fg: "oklch(20% 0.05 274)" },
 ];
