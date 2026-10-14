@@ -196,7 +196,6 @@ This app depends on workspace packages:
 
 - `@wyliedog/ui` - UI component library
 - `@wyliedog/tokens` - Design tokens
-- `@repo/tailwind-config` - Shared Tailwind configuration
 - `@repo/typescript-config` - Shared TypeScript configuration
 - `@repo/eslint-config` - Shared ESLint configuration
 

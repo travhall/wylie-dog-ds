@@ -1,62 +1,10 @@
-# Showcase App Styling Documentation
+# Showcase App Styling
 
-This document explains the Showcase app's CSS architecture and Tailwind configuration.
+How the showcase app (Next.js) gets its CSS. For the whole monorepo see [documentation/STYLING_ARCHITECTURE.md](../../documentation/STYLING_ARCHITECTURE.md).
 
-## Current Configuration
+## Configuration
 
-**Build Tool**: Next.js with `@tailwindcss/postcss` plugin
-
-**CSS Import Strategy**:
-
-```css
-/* apps/showcase/src/app/globals.css */
-@import "@wyliedog/ui/styles"; /* Pre-compiled component styles */
-@import "tailwindcss"; /* Next.js compiles app-specific utilities */
-```
-
-## Why This Approach
-
-Unlike Storybook (which uses `@tailwindcss/cli` for pre-compilation), Showcase uses Next.js's built-in PostCSS integration. This requires the `@import "tailwindcss"` directive for Next.js to:
-
-1. Detect Tailwind CSS needs to be processed
-2. Run the `@tailwindcss/postcss` plugin at build/dev time
-3. Scan `src/**/*.tsx` files for utility classes
-4. Generate app-specific utilities (grids, spacing, responsive classes, etc.)
-
-The `@wyliedog/ui/styles` import provides:
-
-- All UI component styles (buttons, cards, forms, etc.)
-- Design tokens
-- Component-specific utilities using arbitrary values
-
-## CSS Layers
-
-**Layer 1: Tailwind (Build-time compilation)**
-
-- Source: `@import "tailwindcss"`
-- Processed by: Next.js `@tailwindcss/postcss` plugin
-- Scans: `src/**/*.{js,ts,jsx,tsx}` (auto-detected by `@import "tailwindcss"`, no config file)
-- Generates: Utilities for Showcase pages and layouts
-
-**Layer 2: UI Package (Pre-compiled)**
-
-- Source: `@import "@wyliedog/ui/styles"`
-- Provides: Component utilities, tokens, Tailwind base
-- Size: ~126KB (pre-compiled)
-
-**CSS Duplication**: Some Tailwind base styles appear in both layers. This is acceptable because:
-
-- Next.js production builds deduplicate and minify CSS
-- Development experience remains fast with HMR
-- Total CSS size is still reasonable (~200KB dev, much smaller in production)
-
-## Tailwind Configuration
-
-There is no `tailwind.config.js` (or `.ts`/`.mjs`/`.cjs`) in this app — Tailwind 4 is configured CSS-first, with no JS config file. `globals.css`'s `@import "@wyliedog/ui/styles"` pulls in the pre-compiled design-system theme (colors, spacing, etc. — see `packages/ui/src/styles/index.css`, which itself imports `@wyliedog/tokens/tokens.css`), and `@import "tailwindcss"` triggers Tailwind's own PostCSS plugin, which auto-detects scan roots and compiles utility classes used directly in `apps/showcase/src/**` without a `content` array.
-
-## PostCSS Configuration
-
-**`postcss.config.js`:**
+- **Tool:** Tailwind CSS 4 through `@tailwindcss/postcss`, enabled in `postcss.config.js`:
 
 ```javascript
 module.exports = {
@@ -66,106 +14,56 @@ module.exports = {
 };
 ```
 
-This tells Next.js to process CSS files with the Tailwind PostCSS plugin.
+- **CSS entry:** `src/app/globals.css`, which begins with:
 
-## Development Workflow
+```css
+@import "@wyliedog/ui/styles";
+@import "tailwindcss";
 
-### Normal Development
+@source not "../../prototype";
+```
+
+There is no `tailwind.config.js` (or `.ts`/`.mjs`/`.cjs`); Tailwind 4 is configured in CSS.
+
+## What each part does
+
+- `@import "@wyliedog/ui/styles"` brings in the UI package's pre-compiled stylesheet (`packages/ui/dist/index.css`): Tailwind base, the design tokens (from `@wyliedog/tokens/tokens.css`) and the utilities the components use. The UI package must be built first.
+- `@import "tailwindcss"` makes the PostCSS plugin compile Tailwind for the showcase's own sources. Tailwind finds `src/**` on its own; there is no `content` array.
+- `@source not "../../prototype"` keeps `apps/showcase/prototype/` out of the scan. That folder holds reference HTML whose class names are code samples; without this, Tailwind generated rules no page uses.
+
+Some of Tailwind's base appears in both the UI stylesheet and the app's own output. Next.js minifies in production; the measured production CSS (2026-10-14) is one chunk of about 298 KB and one of about 18 KB (about 43 KB and 1.5 KB gzipped).
+
+## Development
 
 ```bash
 pnpm --filter showcase dev
 ```
 
-Next.js automatically:
+Next.js processes `globals.css` through PostCSS and serves it with hot reloading. To use a utility, write the class in a component; no registration step is needed.
 
-1. Processes `globals.css` with PostCSS
-2. Compiles Tailwind utilities for classes used in `src/**/*.tsx`
-3. Bundles CSS and serves with HMR
+## Writing styles
 
-### Adding New Utilities
-
-No special steps needed! Just use Tailwind classes in your components:
+Use token-backed classes, not Tailwind scale colors and not hardcoded values:
 
 ```tsx
-<div className="grid grid-cols-3 gap-4 p-8">
-  {/* Next.js auto-compiles these utilities */}
+<div className="bg-(--color-background-secondary) text-(--color-text-secondary) border border-(--color-border-primary)">
+  ...
 </div>
 ```
 
-### Using Semantic Colors
+`text-white` is not allowed; use `text-(--color-text-inverse)` so it adapts to dark mode. Use `<Button>` and `buttonVariants({ variant, size })` from `@wyliedog/ui/button` instead of raw `<button>` and `<a>` styling. Token names are listed in [documentation/tokens/token-cheatsheet.md](../../documentation/tokens/token-cheatsheet.md), and `pnpm check:tokens` fails if the showcase references a token that does not exist.
 
-Semantic colors from `@repo/tailwind-config` are available:
+## Troubleshooting
 
-```tsx
-<div className="bg-muted text-muted-foreground border-border">
-  {/* These map to design tokens */}
-</div>
-```
+- **Utilities not applying:** confirm `@import "tailwindcss"` is in `globals.css`, `postcss.config.js` lists `@tailwindcss/postcss`, and the class appears literally (not built from string fragments) in a file under `src/`. Restart the dev server.
+- **Component styles missing:** confirm `@import "@wyliedog/ui/styles"` is in `globals.css`, rebuild the UI package (`pnpm --filter @wyliedog/ui build:styles`) and check that `packages/ui/dist/index.css` exists.
+- **Specificity or order problems:** the import order is `@wyliedog/ui/styles` first, then `tailwindcss`. Keep it unless you have a reason and test both light and dark mode.
 
 ## Comparison with Storybook
 
 | Aspect      | Showcase                              | Storybook                                    |
 | ----------- | ------------------------------------- | -------------------------------------------- |
-| Build Tool  | `@tailwindcss/postcss`                | `@tailwindcss/cli`                           |
+| Tool        | `@tailwindcss/postcss`                | `@tailwindcss/cli`                           |
 | Framework   | Next.js                               | Vite                                         |
-| Compilation | Build-time (Next.js)                  | Pre-compile before dev                       |
-| Watch Mode  | Built-in HMR                          | No watch (prevents HMR loops)                |
-| CSS Import  | `tailwindcss` + `@wyliedog/ui/styles` | `@wyliedog/ui/styles` + `dist/storybook.css` |
-
-Both approaches:
-
-- Import `@wyliedog/ui/styles` for component utilities
-- Use `@repo/tailwind-config` for consistency
-- Support full Tailwind v4 functionality
-- Maintain design token architecture
-
-## Troubleshooting
-
-### Utilities Not Compiling
-
-**Problem**: Tailwind classes not applying styles
-
-**Solution**:
-
-1. Verify `@import "tailwindcss"` exists in `globals.css`
-2. Check `postcss.config.js` has `@tailwindcss/postcss` plugin
-3. Ensure class is in a file matching content glob (`src/**/*.tsx`)
-4. Restart dev server
-
-### Component Styles Missing
-
-**Problem**: UI components not styled (buttons, cards, etc.)
-
-**Solution**:
-
-1. Verify `@import "@wyliedog/ui/styles"` in `globals.css`
-2. Rebuild UI package: `pnpm --filter @wyliedog/ui build:styles`
-3. Check CSS exists: `ls -lh packages/ui/dist/index.css` (should be ~126KB)
-
-### CSS Order Issues
-
-**Problem**: Styles not applying due to specificity
-
-**Solution**: Import order matters!
-
-```css
-@import "tailwindcss"; /* First: Tailwind base/utilities */
-@import "@wyliedog/ui/styles"; /* Second: Component overrides */
-```
-
-## Architecture Benefits
-
-1. **Zero Configuration**: Next.js handles Tailwind automatically
-2. **Fast HMR**: Changes reflect instantly in browser
-3. **Production Optimized**: Automatic deduplication and minification
-4. **Component Consistency**: UI package ensures consistent component styling
-5. **Design Token Integration**: Shared config maintains token mappings
-
-## Related Documentation
-
-- **[../../packages/tailwind-config/index.js](../../packages/tailwind-config/index.js)** - Shared Tailwind config
-
----
-
-**Last Updated**: 2026-01-01
-**Status**: ✅ Working Solution
+| Compilation | During the Next.js build or dev       | `build:css` before dev, plus a watch script  |
+| CSS import  | `@wyliedog/ui/styles` + `tailwindcss` | `@wyliedog/ui/styles` + `dist/storybook.css` |

@@ -28,7 +28,7 @@ wylie-dog-ds/
 │   ├── tokens/           # @wyliedog/tokens — OKLCH design tokens
 │   ├── ui/               # @wyliedog/ui — React component library
 │   ├── eslint-config/    # Shared ESLint configuration
-│   ├── tailwind-config/  # Shared Tailwind CSS configuration
+│   ├── tailwind-config/  # Legacy Tailwind config (not imported anywhere)
 │   └── typescript-config/ # Shared TypeScript configuration
 └── apps/
     ├── storybook/        # Component documentation (Storybook 10.6)

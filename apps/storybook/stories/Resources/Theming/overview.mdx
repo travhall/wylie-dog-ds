@@ -128,32 +128,25 @@ Override semantic tokens by redefining CSS variables in your app. Always target 
 }
 ```
 
-### Method 2: Extend Tailwind Config
+### Method 2: Extend the Tailwind Theme
 
-Add custom colors while preserving design system tokens:
+Tailwind 4 is configured in CSS, so add custom colors with `@theme` in your app's stylesheet, after the design system import:
 
-```js
-// tailwind.config.js
-import baseConfig from "@repo/tailwind-config";
+```css
+@import "@wyliedog/ui/styles";
+@import "tailwindcss";
 
-export default {
-  ...baseConfig,
-  theme: {
-    extend: {
-      colors: {
-        // Add custom brand colors
-        brand: {
-          50: "oklch(0.977 0.014 308.30)",
-          100: "oklch(0.946 0.033 307.17)",
-          // ... full scale
-          600: "oklch(0.558 0.252 302.32)",
-          700: "oklch(0.541 0.247 293.01)",
-        },
-      },
-    },
-  },
-};
+@theme {
+  /* Add custom brand colors */
+  --color-brand-50: oklch(0.977 0.014 308.3);
+  --color-brand-100: oklch(0.946 0.033 307.17);
+  /* ... full scale */
+  --color-brand-600: oklch(0.558 0.252 302.32);
+  --color-brand-700: oklch(0.541 0.247 293.01);
+}
 ```
+
+This makes utilities such as `bg-brand-600` available alongside the design system tokens.
 
 ### Method 3: Component-Level Overrides
 
