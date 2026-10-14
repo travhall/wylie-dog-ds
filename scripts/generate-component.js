@@ -195,8 +195,7 @@ function generateTestTemplate(name, composition = false) {
   const pascalName = toPascalCase(name);
   const importPath = composition ? `../compositions/${name}` : `../${name}`;
 
-  return `import React from "react";
-import { render, screen } from "@testing-library/react";
+  return `import { render, screen } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { describe, it, expect } from "vitest";
 import { ${pascalName} } from "${importPath}";
