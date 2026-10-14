@@ -638,7 +638,7 @@ export default function PatternsPage() {
                         status: "active",
                         statusColor: "var(--color-status-success)",
                         price: "$24/mo",
-                        bg: "linear-gradient(135deg, oklch(78% 0.13 274), oklch(68% 0.17 250))",
+                        bg: "linear-gradient(135deg, var(--color-blue-300), var(--color-blue-500))",
                       },
                       {
                         name: "Northwind Co.", //cSpell:ignore Northwind
@@ -646,7 +646,7 @@ export default function PatternsPage() {
                         status: "trial",
                         statusColor: "var(--color-status-warning)",
                         price: "14d left",
-                        bg: "linear-gradient(135deg, oklch(78% 0.13 155), oklch(70% 0.14 130))",
+                        bg: "linear-gradient(135deg, var(--color-green-300), var(--color-green-400))",
                       },
                     ].map(
                       ({ name, members, status, statusColor, price, bg }) => (
@@ -1172,9 +1172,9 @@ export default function PatternsPage() {
                 <div className="flex items-center gap-2 px-3 py-2 border-b border-(--color-border-primary) bg-(--color-background-secondary)">
                   <div className="flex gap-1">
                     {[
-                      "oklch(70% 0.18 25)",
-                      "oklch(80% 0.15 85)",
-                      "oklch(70% 0.16 145)",
+                      "var(--color-red-400)",
+                      "var(--color-yellow-400)",
+                      "var(--color-green-500)",
                     ].map((c, i) => (
                       <span
                         key={i}
@@ -1583,7 +1583,7 @@ export default function PatternsPage() {
                         sub: "Change one variable, every surface updates.",
                       },
                       {
-                        color: "oklch(0.60 0.14 155)",
+                        color: "var(--color-text-success)",
                         label: "Accessible by default",
                         sub: "WCAG 2.2 AA across every state.",
                       },
@@ -1665,8 +1665,8 @@ export default function PatternsPage() {
                   <div className="grid grid-cols-3 gap-1 p-2 border-b border-(--color-border-primary)">
                     {[
                       "var(--color-interactive-primary)",
-                      "oklch(0.60 0.14 155)",
-                      "oklch(0.75 0.17 85)",
+                      "var(--color-status-success)",
+                      "var(--color-status-warning)",
                     ].map((color, i) => (
                       <div
                         key={i}
@@ -1947,7 +1947,7 @@ export default function PatternsPage() {
                         <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
                           Email{" "}
                           <span
-                            style={{ color: "oklch(0.62 0.18 29)" }}
+                            style={{ color: "var(--color-text-danger)" }}
                             aria-hidden
                           >
                             *
@@ -1956,9 +1956,9 @@ export default function PatternsPage() {
                         <div
                           className="flex items-center h-7 border rounded-md px-2 text-[11px]"
                           style={{
-                            borderColor: "oklch(0.62 0.18 29)",
+                            borderColor: "var(--color-border-danger)",
                             background:
-                              "color-mix(in oklch, oklch(0.62 0.18 29) 6%, var(--color-background-primary))",
+                              "color-mix(in oklch, var(--color-status-danger) 6%, var(--color-background-primary))",
                           }}
                         >
                           <span className="text-(--color-text-primary)">
@@ -1967,7 +1967,7 @@ export default function PatternsPage() {
                         </div>
                         <p
                           className="mt-1 flex items-center gap-1 text-[10px]"
-                          style={{ color: "oklch(0.62 0.18 29)" }}
+                          style={{ color: "var(--color-text-danger)" }}
                           role="alert"
                         >
                           <svg
@@ -2058,7 +2058,7 @@ export default function PatternsPage() {
                 },
                 {
                   num: "02",
-                  color: "oklch(0.60 0.14 155)",
+                  color: "var(--color-text-success)",
                   title:
                     "Build from scratch when the problem is genuinely new.",
                   body: "If no pattern fits, compose from components instead of bending a near-miss pattern out of shape. Then nominate the result for inclusion — that's how the catalog grows.",
