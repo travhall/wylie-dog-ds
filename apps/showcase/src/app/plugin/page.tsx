@@ -17,20 +17,20 @@ export default function PluginPage() {
           <div>{"{"}</div>
           <div className="pl-4">
             <span className="text-(--color-text-primary)">
-              "color.interactive.primary"
+              &quot;color.interactive.primary&quot;
             </span>
             :{" "}
             <span style={{ color: "var(--color-interactive-primary)" }}>
-              "{"{"}color.blue.600{"}"}"
+              &quot;{"{"}color.blue.600{"}"}&quot;
             </span>
           </div>
           <div className="pl-4">
             <span className="text-(--color-text-primary)">
-              "color.interactive.primary-hover"
+              &quot;color.interactive.primary-hover&quot;
             </span>
             :{" "}
             <span style={{ color: "var(--color-interactive-primary)" }}>
-              "{"{"}color.blue.700{"}"}"
+              &quot;{"{"}color.blue.700{"}"}&quot;
             </span>
           </div>
           <div className="pl-4 text-(--color-text-tertiary)">
@@ -1043,7 +1043,8 @@ export default function PluginPage() {
 
               <p className="mt-6 text-xs text-(--color-text-tertiary)">
                 Requires Node 20+ and a Figma file with editor access. The
-                bridge talks to Figma's REST Variables API — no plugin install.
+                bridge talks to Figma&apos;s REST Variables API — no plugin
+                install.
               </p>
             </div>
           </div>
@@ -1288,7 +1289,7 @@ export default function PluginPage() {
               <p className="mt-2 text-sm text-(--color-text-secondary) leading-relaxed max-w-xl">
                 Set it up once, forget it forever. Your designers stop asking
                 which value is current, your engineers stop chasing drift, and
-                your tokens become the single thing that's actually true.
+                your tokens become the single thing that&apos;s actually true.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2 shrink-0">

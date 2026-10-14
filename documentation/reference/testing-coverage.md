@@ -1,8 +1,8 @@
 # Testing and Coverage Status
 
-**Last Updated:** October 13, 2026
-**Overall Coverage:** 97.15% lines / 96.7% statements (exceeds 80% threshold)
-**Tests Passing:** 1,569 | **Tests Skipped:** 67
+**Last Updated:** October 14, 2026
+**Overall Coverage:** 98.51% lines / 98.02% statements (exceeds 80% threshold)
+**Tests Passing:** 1,574 | **Tests Skipped:** 67
 
 Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather than trusting this snapshot.
 
@@ -10,16 +10,16 @@ Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather t
 
 | Metric     | Current | Target | Status            |
 | ---------- | ------- | ------ | ----------------- |
-| Statements | 96.7%   | 80%    | ✅ Pass (+16.7%)  |
-| Lines      | 97.15%  | 80%    | ✅ Pass (+17.15%) |
-| Functions  | 91.78%  | 80%    | ✅ Pass (+11.78%) |
-| Branches   | 79.62%  | 70%    | ✅ Pass (+9.62%)  |
+| Statements | 98.02%  | 80%    | ✅ Pass (+18.02%) |
+| Lines      | 98.51%  | 80%    | ✅ Pass (+18.51%) |
+| Functions  | 96.61%  | 80%    | ✅ Pass (+16.61%) |
+| Branches   | 82.93%  | 70%    | ✅ Pass (+12.93%) |
 
 ### Component Coverage
 
-- **Component tests:** 97.15% lines overall (all components fully tested except portal-based skips)
+- **Component tests:** 98.51% lines overall (all components fully tested except portal-based skips)
 - **Utility tests:** 100% lines (utils.ts), 98.78% lines (test-utils.ts)
-- **Test files:** 55 passing test files
+- **Test files:** 58 passing test files
 
 ## Skipped Tests Summary
 
@@ -167,33 +167,21 @@ Clicking second trigger closes first content but doesn't reliably show second co
 
 ---
 
-## Uncovered Component Code
+## Lowest Branch Coverage
 
-Despite 97% overall line coverage, these components have uncovered helper component lines:
+Branch coverage (82.93%) trails line coverage because most gaps are untaken conditional branches in otherwise-tested files. The lowest files in the 2026-10-14 run:
 
-### context-menu.tsx - 69.71% coverage
+| File               | Branches | Uncovered                                 |
+| ------------------ | -------- | ----------------------------------------- |
+| `toast.tsx`        | 46.15%   | lines 187-203                             |
+| `feature-grid.tsx` | 52%      | line 65                                   |
+| `slider.tsx`       | 53.84%   | line 23                                   |
+| `card-grid.tsx`    | 57.14%   | lines 34-73                               |
+| `switch.tsx`       | 66.66%   | line 58                                   |
+| `section-hero.tsx` | 67.39%   | several branches (lines 86, 113, 150-186) |
+| `checkbox.tsx`     | 75%      | lines 69-81                               |
 
-**Uncovered lines:** 137-146, 165-177
-
-Components not tested:
-
-- `ContextMenuLabel` (lines 136-147)
-- `ContextMenuShortcut` (lines 164-178)
-
-**Reason:** These are helper components rarely used. Main functionality is fully tested.
-
----
-
-### menubar.tsx - 74.31% coverage
-
-**Uncovered lines:** 186-195, 214-226
-
-Components not tested:
-
-- `MenubarLabel` (lines 185-196)
-- `MenubarShortcut` (lines 213-227)
-
-**Reason:** These are helper components rarely used. Main functionality is fully tested.
+`context-menu`, `dropdown-menu` and `menubar` were the lowest before `*.helpers.test.tsx` added tests for their `inset` variants, labels, shortcuts and sub-menus.
 
 ---
 
@@ -371,13 +359,14 @@ TEST_PATTERN="Accessibility" pnpm test
 
 ## Coverage History
 
-| Date         | Coverage | Change   | Notes                                                                                                            |
-| ------------ | -------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
-| Dec 16, 2025 | 75.75%   | Baseline | 70 tests skipped, initial state                                                                                  |
-| Dec 17, 2025 | 78.04%   | +2.29%   | Fixed separator tests (context-menu, menubar)                                                                    |
-| Dec 17, 2025 | 79.63%   | +1.59%   | Added utils.ts and test-utils.ts tests                                                                           |
-| Dec 17, 2025 | 95.41%   | +15.78%  | Added resizable.test.tsx + excluded docs files                                                                   |
-| Jul 5, 2026  | 95.06%   | -0.35%   | Fixed CommandEmpty role=status regression, enabling test:coverage to complete; refreshed stale Dec 2025 snapshot |
+| Date         | Coverage                           | Change      | Notes                                                                                                            |
+| ------------ | ---------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------- |
+| Dec 16, 2025 | 75.75%                             | Baseline    | 70 tests skipped, initial state                                                                                  |
+| Dec 17, 2025 | 78.04%                             | +2.29%      | Fixed separator tests (context-menu, menubar)                                                                    |
+| Dec 17, 2025 | 79.63%                             | +1.59%      | Added utils.ts and test-utils.ts tests                                                                           |
+| Dec 17, 2025 | 95.41%                             | +15.78%     | Added resizable.test.tsx + excluded docs files                                                                   |
+| Jul 5, 2026  | 95.06%                             | -0.35%      | Fixed CommandEmpty role=status regression, enabling test:coverage to complete; refreshed stale Dec 2025 snapshot |
+| Oct 14, 2026 | 98.02% statements, 82.93% branches | +1.3 / +3.3 | Added helper-component tests for context-menu, dropdown-menu and menubar (branches were 79.62%)                  |
 
 ---
 

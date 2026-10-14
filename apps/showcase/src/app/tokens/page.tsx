@@ -877,9 +877,9 @@ export default function TokensPage() {
                 already knows which.
               </h2>
               <p className="mt-3 text-(--color-text-secondary) leading-relaxed">
-                Radius isn't a design decision at use-time — it's encoded in the
-                token. Every component surface resolves to its semantic radius
-                automatically.
+                Radius isn&apos;t a design decision at use-time — it&apos;s
+                encoded in the token. Every component surface resolves to its
+                semantic radius automatically.
               </p>
             </div>
             <Link href="/tokens/borders">
