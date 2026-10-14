@@ -23,5 +23,9 @@
     "packages/tokens/COVERAGE.md": [
       "^--(duration-duration-200|color-border-strong|color-destructive|color-warning|shadow-xs|color-violet-500|color-button-primary-bg)$"
     ]
+  },
+  "linkAllow": {
+    "README.md": ["LICENSE"],
+    "apps/figma-plugin/README.md": ["../../LICENSE"]
   }
 }

@@ -173,7 +173,6 @@ Clean mental model with progressive disclosure:
 - **[Architecture](docs/ARCHITECTURE.md)** - Technical deep-dive into plugin architecture
 - **[Testing](docs/TESTING.md)** - Test setup, writing tests, CI/CD configuration
 - **[Changelog](CHANGELOG.md)** - Version history and release notes
-- **[GitHub Config](docs/GITHUB_CONFIG.md)** - GitHub configuration and sync details
 
 ---
 

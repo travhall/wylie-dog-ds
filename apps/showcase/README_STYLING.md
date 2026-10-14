@@ -163,8 +163,6 @@ Both approaches:
 
 ## Related Documentation
 
-- **[../storybook/README_STYLING.md](../storybook/README_STYLING.md)** - Storybook styling approach
-- **[../storybook/SOLUTION_SUMMARY.md](../storybook/SOLUTION_SUMMARY.md)** - Detailed Storybook architecture
 - **[../../packages/tailwind-config/index.js](../../packages/tailwind-config/index.js)** - Shared Tailwind config
 
 ---

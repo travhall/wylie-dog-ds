@@ -104,8 +104,6 @@ pnpm build:css
 
 **Key Point**: Dual static import prevents HMR infinite loops while maintaining full utility coverage
 
-**Documentation**: See [apps/storybook/README_STYLING.md](apps/storybook/README_STYLING.md)
-
 ---
 
 ### Showcase App
@@ -131,7 +129,7 @@ pnpm build:css
 
 **Key Point**: Next.js handles Tailwind compilation differently than Vite, so `@import "tailwindcss"` is necessary
 
-**Documentation**: See [apps/showcase/README_STYLING.md](apps/showcase/README_STYLING.md)
+**Documentation**: See [apps/showcase/README_STYLING.md](../apps/showcase/README_STYLING.md)
 
 ---
 
@@ -302,10 +300,8 @@ Plus build script to compile app utilities separately.
 
 ## Related Documentation
 
-- **[apps/storybook/README_STYLING.md](apps/storybook/README_STYLING.md)** - Storybook CSS architecture
-- **[apps/storybook/SOLUTION_SUMMARY.md](apps/storybook/SOLUTION_SUMMARY.md)** - Detailed Storybook implementation
-- **[apps/showcase/README_STYLING.md](apps/showcase/README_STYLING.md)** - Showcase CSS architecture
-- **[packages/tailwind-config/index.js](packages/tailwind-config/index.js)** - Shared configuration
+- **[apps/showcase/README_STYLING.md](../apps/showcase/README_STYLING.md)** - Showcase CSS architecture
+- **[packages/tailwind-config/index.js](../packages/tailwind-config/index.js)** - Shared configuration
 
 ---
 

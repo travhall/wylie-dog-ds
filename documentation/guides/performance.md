@@ -12,9 +12,14 @@ The design system uses multiple free, open-source tools to ensure optimal perfor
 
 ## Performance Budgets
 
-Our performance budgets are defined in `documentation/performance-budgets.json` and enforced through CI/CD:
+What CI actually enforces:
 
-### Web Vitals
+- **Bundle size** (`.size-limit.json`, checked by `pnpm size` and the Size workflow): one limit per entry. The tokens package is limited to 5 KB. Single components are limited to between 2 KB and 20 KB (most are 10–15 KB; Resizable, Menubar, DropdownMenu and ContextMenu are 18–20 KB), and the compositions entry to 33 KB.
+- **Lighthouse CI** (`lighthouserc.json`, run against the built Storybook, desktop preset, 3 runs): accessibility score must be at least 0.9 (an error); performance score below 0.5 only warns. Only the performance and accessibility categories are audited.
+
+### Web Vitals targets (reference only)
+
+`documentation/performance-budgets.json` lists the targets below. Nothing in CI reads that file, and Lighthouse CI does not assert on individual metrics, so treat them as goals.
 
 | Metric  | Target | Limit | Description              |
 | ------- | ------ | ----- | ------------------------ |
@@ -24,19 +29,6 @@ Our performance budgets are defined in `documentation/performance-budgets.json` 
 | **TBT** | 200ms  | 300ms | Total Blocking Time      |
 | **SI**  | 2.5s   | 3.0s  | Speed Index              |
 | **TTI** | 3.0s   | 3.5s  | Time to Interactive      |
-
-### Bundle Size
-
-- **Individual Components**: Maximum 15KB gzipped
-- **Tokens Package**: Maximum 5KB
-
-All bundle sizes are tracked in `.size-limit.json` and enforced on every pull request.
-
-### Quality Scores
-
-- **Accessibility**: Minimum 95/100
-- **Best Practices**: Minimum 90/100
-- **Performance**: Minimum 90/100
 
 ## Monitoring Tools
 
@@ -48,10 +40,8 @@ Lighthouse CI runs automated audits on every pull request and push to main.
 
 **What it checks**:
 
-- Performance metrics (FCP, LCP, CLS, TBT, SI, TTI)
-- Accessibility compliance
-- Best practices adherence
-- Core Web Vitals
+- Performance score (warns below 0.5)
+- Accessibility score (fails below 0.9)
 
 **Running locally**:
 
@@ -84,7 +74,7 @@ pnpm size
 
 - Individual component bundle sizes (every component, plus `card-grid`, `feature-grid` and the compositions index)
 - Tokens package size
-- Dependencies are properly excluded from size calculations
+- Dependencies listed in `ignore` (React) are excluded from size calculations
 
 **Results**: Posted as a comment on pull requests showing size changes.
 
@@ -117,15 +107,12 @@ All performance monitoring runs automatically in GitHub Actions:
 
 ### Pull Requests
 
-- ✅ Lighthouse CI audit
+- ✅ Lighthouse CI audit (performance and accessibility scores)
 - ✅ Bundle size check
-- ✅ Performance budget enforcement
-- ✅ Accessibility validation
 
 ### Main Branch
 
-- ✅ Performance baseline updates
-- ✅ Historical performance tracking
+- ✅ Lighthouse CI runs on push to main
 
 ## Performance Best Practices
 
