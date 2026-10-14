@@ -1,3 +1,4 @@
+import { getPatternDocsPath } from "@/lib/showcase-metadata";
 import { Layers, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { PatternCard } from "@/components/pattern-card";
@@ -35,21 +36,21 @@ export default function CompositionsPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <PatternCard
           name="Page Layout"
-          description="A full-page scaffold combining a site header, main content area with sidebar, card content blocks, and a site footer."
-          components={["PageLayout", "SiteHeader", "SiteFooter", "Card"]}
-          storybookPath="/story/patterns-page-compositions-page-layout--default"
+          description="Full-page layout with header, footer, sidebar and main content, with width variants and a left or right sidebar."
+          components={["PageLayout", "SiteHeader", "SiteFooter", "Button"]}
+          storybookPath={getPatternDocsPath("page-layout") ?? "/"}
         />
         <PatternCard
           name="Section: Features"
-          description="Marketing feature section with an icon-driven grid, badge labels, and a call-to-action button row. Suitable for landing pages."
-          components={["FeatureGrid", "Badge", "Button"]}
-          storybookPath="/story/patterns-page-compositions-section-features--default"
+          description="Features section built on FeatureGrid, with optional badges, several column configurations and style variants."
+          components={["SectionFeatures"]}
+          storybookPath={getPatternDocsPath("section-features") ?? "/"}
         />
         <PatternCard
           name="Section: Hero"
-          description="Full-width hero section with headline, subhead, badge tag, and primary/secondary CTA buttons. Includes decorative gradient background."
-          components={["Button", "Badge"]}
-          storybookPath="/story/patterns-page-compositions-section-hero--default"
+          description="Hero section with title, description, action buttons and an optional badge or image, in default, gradient and centered layouts."
+          components={["SectionHero"]}
+          storybookPath={getPatternDocsPath("section-hero") ?? "/"}
         />
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { getPatternDocsPath } from "@/lib/showcase-metadata";
 import { Bell, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { PatternCard } from "@/components/pattern-card";
@@ -35,9 +36,9 @@ export default function FeedbackPatternsPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <PatternCard
           name="Error Boundary Patterns"
-          description="Complete error boundary composition with an informative alert, contextual card, and retry action button. Handles 404, 500, and network error states."
-          components={["Alert", "Button", "Card"]}
-          storybookPath="/story/patterns-feedback-patterns-error-boundary-patterns--default"
+          description="Basic and recoverable error boundaries, multiple and granular boundaries, custom fallback UI, and error logging."
+          components={["Alert", "Badge", "Button", "Card"]}
+          storybookPath={getPatternDocsPath("error-boundary-patterns") ?? "/"}
         />
       </div>
     </div>

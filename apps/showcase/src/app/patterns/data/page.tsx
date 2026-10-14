@@ -1,3 +1,4 @@
+import { getPatternDocsPath } from "@/lib/showcase-metadata";
 import { Database, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { PatternCard } from "@/components/pattern-card";
@@ -35,15 +36,15 @@ export default function DataPatternsPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <PatternCard
           name="Card Grid"
-          description="Responsive masonry or uniform grid of content cards with badges, actions, and hover states. Ideal for product listings, blog posts, or team members."
-          components={["Card", "Badge", "Button"]}
-          storybookPath="/story/patterns-data-patterns-card-grid--default"
+          description="Responsive grid of cards with default, all-variants and interactive examples. CardGrid takes a column count per breakpoint."
+          components={["CardGrid", "Card", "Badge", "Button"]}
+          storybookPath={getPatternDocsPath("card-grid") ?? "/"}
         />
         <PatternCard
           name="Feature Grid"
-          description="Icon-driven feature grid for marketing and documentation pages. Each cell highlights a capability with a badge label and concise description."
-          components={["Card", "Badge"]}
-          storybookPath="/story/patterns-data-patterns-feature-grid--default"
+          description="A grid of features with icons, titles and short descriptions, with several column configurations."
+          components={["FeatureGrid"]}
+          storybookPath={getPatternDocsPath("feature-grid") ?? "/"}
         />
       </div>
     </div>

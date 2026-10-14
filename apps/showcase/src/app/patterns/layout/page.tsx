@@ -1,3 +1,4 @@
+import { getPatternDocsPath } from "@/lib/showcase-metadata";
 import { Layout, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { PatternCard } from "@/components/pattern-card";
@@ -35,9 +36,16 @@ export default function LayoutPatternsPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <PatternCard
           name="Layout Patterns"
-          description="Complete page layout composition including header, main content area, footer, and sidebar variants. Demonstrates responsive behavior across breakpoints."
-          components={["PageLayout", "SiteHeader", "SiteFooter", "Separator"]}
-          storybookPath="/story/patterns-layout-patterns--default"
+          description="Dashboard, settings page, landing page and user profile layouts, each composed from cards, inputs and separators."
+          components={[
+            "Card",
+            "Avatar",
+            "Badge",
+            "Button",
+            "Input",
+            "Separator",
+          ]}
+          storybookPath={getPatternDocsPath("layout-patterns") ?? "/"}
         />
       </div>
     </div>

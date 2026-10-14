@@ -15,25 +15,9 @@ import {
 } from "@wyliedog/ui/tooltip";
 import { Popover, PopoverContent, PopoverTrigger } from "@wyliedog/ui/popover";
 import { Badge } from "@wyliedog/ui/badge";
-import { CheckCircle2, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { getComponentCategoryCounts } from "@/lib/showcase-metadata";
-
-const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
-  const map = {
-    stable: "text-(--color-text-success)",
-    beta: "text-(--color-text-warning)",
-    alpha: "text-(--color-text-danger)",
-  } as const;
-  return (
-    <div className="flex items-center gap-1.5 border border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
-      <CheckCircle2 className={`h-3.5 w-3.5 ${map[status]}`} />
-      <span className="text-[9px] uppercase font-black tracking-widest text-(--color-text-secondary)">
-        {status}
-      </span>
-    </div>
-  );
-};
 
 export default function OverlaysPage() {
   const components = [
@@ -41,7 +25,6 @@ export default function OverlaysPage() {
       name: "Dialog",
       description:
         "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
-      status: "stable" as const,
       preview: (
         <Dialog>
           <DialogTrigger asChild>
@@ -62,7 +45,6 @@ export default function OverlaysPage() {
       name: "Tooltip",
       description:
         "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-      status: "stable" as const,
       preview: (
         <TooltipProvider>
           <Tooltip>
@@ -81,7 +63,6 @@ export default function OverlaysPage() {
     {
       name: "Popover",
       description: "Displays rich content in a portal, triggered by a button.",
-      status: "beta" as const,
       preview: (
         <Popover>
           <PopoverTrigger asChild>
@@ -124,7 +105,8 @@ export default function OverlaysPage() {
         </div>
         <p className="text-lg text-(--color-text-secondary) leading-relaxed">
           Floating panels and context-aware elements that appear above the main
-          content.
+          content. This page previews a selection; the Components page has all{" "}
+          {count}.
         </p>
       </section>
 
@@ -139,7 +121,6 @@ export default function OverlaysPage() {
                 <CardTitle className="text-xl font-bold group-hover:text-(--color-interactive-primary) transition-colors text-(--color-text-primary)">
                   {comp.name}
                 </CardTitle>
-                <StatusBadge status={comp.status} />
               </div>
               <p className="text-sm text-(--color-text-secondary) leading-relaxed">
                 {comp.description}

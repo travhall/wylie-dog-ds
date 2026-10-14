@@ -16,25 +16,9 @@ import {
   PaginationPrevious,
 } from "@wyliedog/ui/pagination";
 import { Badge } from "@wyliedog/ui/badge";
-import { CheckCircle2, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { getComponentCategoryCounts } from "@/lib/showcase-metadata";
-
-const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
-  const map = {
-    stable: "text-(--color-text-success)",
-    beta: "text-(--color-text-warning)",
-    alpha: "text-(--color-text-danger)",
-  } as const;
-  return (
-    <div className="flex items-center gap-1.5 border border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
-      <CheckCircle2 className={`h-3.5 w-3.5 ${map[status]}`} />
-      <span className="text-[9px] uppercase font-black tracking-widest text-(--color-text-secondary)">
-        {status}
-      </span>
-    </div>
-  );
-};
 
 export default function NavigationPage() {
   const components = [
@@ -42,7 +26,6 @@ export default function NavigationPage() {
       name: "Tabs",
       description:
         "A set of layered sections of content, known as tab panels, that are displayed one at a time.",
-      status: "stable" as const,
       preview: (
         <Tabs defaultValue="one" className="w-45">
           <TabsList className="grid w-full grid-cols-2 h-8">
@@ -60,7 +43,6 @@ export default function NavigationPage() {
       name: "Breadcrumb",
       description:
         "Displays the path to the current resource using a hierarchy of links.",
-      status: "stable" as const,
       preview: (
         <Breadcrumb className="scale-75 origin-center">
           <BreadcrumbList>
@@ -79,7 +61,6 @@ export default function NavigationPage() {
       name: "Pagination",
       description:
         "Navigation for splitting large content into discrete pages.",
-      status: "stable" as const,
       preview: (
         <Pagination className="scale-75 origin-center">
           <PaginationContent>
@@ -124,7 +105,8 @@ export default function NavigationPage() {
           </Badge>
         </div>
         <p className="text-lg text-(--color-text-secondary) leading-relaxed">
-          Components that help users find their way through the application.
+          Components that help users find their way through the application.{" "}
+          This page previews a selection; the Components page has all {count}.
         </p>
       </section>
 
@@ -139,7 +121,6 @@ export default function NavigationPage() {
                 <CardTitle className="text-xl font-bold group-hover:text-(--color-interactive-primary) transition-colors text-(--color-text-primary)">
                   {comp.name}
                 </CardTitle>
-                <StatusBadge status={comp.status} />
               </div>
               <p className="text-sm text-(--color-text-secondary) leading-relaxed">
                 {comp.description}

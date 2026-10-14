@@ -34,7 +34,7 @@ export default function ShowcasePage() {
                   }}
                 />
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">
-                  v{meta.versions.ui} · stable
+                  v{meta.versions.ui} · workspace-only
                 </span>
                 <span className="text-(--color-text-tertiary)">·</span>
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
@@ -323,10 +323,10 @@ export default function ShowcasePage() {
                   </p>
                   <div className="mt-3 space-y-2">
                     {[
-                      { step: "0.5", px: "4px", w: 4 },
-                      { step: "2", px: "16px", w: 16 },
-                      { step: "4", px: "32px", w: 32 },
-                      { step: "8", px: "64px", w: 64 },
+                      { step: "050", px: "4px", w: 4 },
+                      { step: "200", px: "16px", w: 16 },
+                      { step: "400", px: "32px", w: 32 },
+                      { step: "700", px: "64px", w: 64 },
                     ].map((row) => (
                       <div key={row.step} className="flex items-center gap-3">
                         <span className="font-mono text-[10px] text-(--color-text-tertiary) w-10">
@@ -365,8 +365,8 @@ export default function ShowcasePage() {
               </h2>
               <p className="mt-3 text-(--color-text-secondary)">
                 Headless primitives, fully composable, accessible by default.
-                Every component ships with TypeScript types, Storybook stories,
-                with TypeScript types and full Storybook documentation.
+                Every component ships with TypeScript types, a test file and a
+                Storybook story.
               </p>
             </div>
             <Link href="/components">
@@ -391,21 +391,21 @@ export default function ShowcasePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {/* Foundations/Button */}
             <Link
-              href="/components/content-display"
+              href="/components/inputs"
               className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
               <div className="flex items-center justify-between">
                 <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-                  Foundations
+                  Inputs &amp; Controls
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
-                  {categoryCount("Content-Display")}
+                  {categoryCount("Inputs-Controls")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Button</h3>
               <p className="text-sm text-(--color-text-secondary) mt-0.5">
-                Primary, secondary, outline, ghost, destructive.
+                Default, secondary, outline, ghost, link, destructive.
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 <span
@@ -434,7 +434,7 @@ export default function ShowcasePage() {
             >
               <div className="flex items-center justify-between">
                 <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-                  Forms
+                  Inputs &amp; Controls
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
                   {categoryCount("Inputs-Controls")}
@@ -442,7 +442,7 @@ export default function ShowcasePage() {
               </div>
               <h3 className="mt-2 font-semibold">Input</h3>
               <p className="text-sm text-(--color-text-secondary) mt-0.5">
-                Text, email, password, search, file.
+                Any native input type, with error and success states.
               </p>
               <div className="mt-5 space-y-2">
                 <label className="block text-[11px] font-medium text-(--color-text-secondary)">
@@ -482,7 +482,7 @@ export default function ShowcasePage() {
               </div>
               <h3 className="mt-2 font-semibold">Tabs</h3>
               <p className="text-sm text-(--color-text-secondary) mt-0.5">
-                Underline, contained, vertical orientations.
+                Tabbed panels in three sizes.
               </p>
               <div className="mt-5">
                 <div className="flex border-b border-(--color-border-primary) text-xs">
@@ -513,7 +513,7 @@ export default function ShowcasePage() {
             >
               <div className="flex items-center justify-between">
                 <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-                  Overlays
+                  Overlays &amp; Popovers
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
                   {categoryCount("Overlays-Popovers")}
@@ -521,7 +521,7 @@ export default function ShowcasePage() {
               </div>
               <h3 className="mt-2 font-semibold">Dialog</h3>
               <p className="text-sm text-(--color-text-secondary) mt-0.5">
-                Modal, sheet, popover, tooltip, hover card.
+                Modal dialog with header, footer and overlay.
               </p>
               <div className="mt-5 relative h-27.5">
                 <div className="absolute inset-x-2 top-2 rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) p-3 opacity-60">
@@ -562,7 +562,7 @@ export default function ShowcasePage() {
             >
               <div className="flex items-center justify-between">
                 <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-                  Data Display
+                  Content Display
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
                   {categoryCount("Content-Display")}
@@ -570,7 +570,7 @@ export default function ShowcasePage() {
               </div>
               <h3 className="mt-2 font-semibold">Table</h3>
               <p className="text-sm text-(--color-text-secondary) mt-0.5">
-                Sortable, sticky headers, dense or comfortable.
+                Header, body and footer parts in a scrollable wrapper.
               </p>
               <div className="mt-5 rounded-md border border-(--color-border-primary) overflow-hidden text-xs">
                 <div className="grid grid-cols-3 bg-(--color-background-secondary) px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
@@ -612,7 +612,7 @@ export default function ShowcasePage() {
             >
               <div className="flex items-center justify-between">
                 <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
-                  Feedback
+                  Feedback &amp; Status
                 </p>
                 <span className="font-mono text-[11px] text-(--color-text-tertiary)">
                   {categoryCount("Feedback-Status")}
@@ -652,7 +652,7 @@ export default function ShowcasePage() {
                   <div>
                     <p className="text-[11px] font-semibold">Build passed</p>
                     <p className="text-[10px] text-(--color-text-secondary)">
-                      3,402 tests · 1m 14s
+                      Typecheck, lint and tests
                     </p>
                   </div>
                 </div>
@@ -1004,15 +1004,15 @@ export default function ShowcasePage() {
                 {[
                   {
                     bold: "Two-way sync.",
-                    rest: "Figma variables ↔ CSS custom properties ↔ Tailwind theme.",
+                    rest: "Pull token files from GitHub into Figma variables, and push Figma edits back to the repository.",
                   },
                   {
                     bold: "Mode-aware.",
-                    rest: "Light and dark collections map to a single token contract.",
+                    rest: "The semantic and component collections carry Light and Dark modes, matching the token files.",
                   },
                   {
                     bold: "Opens a PR.",
-                    rest: "Designer-side edits land in GitHub with a diff and a reviewer assigned.",
+                    rest: "In pull-request mode, Figma edits land in GitHub as a branch and a pull request you can review.",
                   },
                 ].map((item) => (
                   <li key={item.bold} className="flex items-start gap-3">
@@ -1047,26 +1047,13 @@ export default function ShowcasePage() {
               </ul>
 
               <div className="mt-8 flex flex-wrap gap-2">
-                <Button
-                  size="sm"
-                  className="h-10 rounded-md px-4 font-semibold gap-2"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-4 w-4"
-                    fill="currentColor"
-                  >
-                    <path d="M8 24a4 4 0 0 0 4-4v-4H8a4 4 0 1 0 0 8zm-4-12a4 4 0 0 1 4-4h4v8H8a4 4 0 0 1-4-4zm0-8a4 4 0 0 1 4-4h4v8H8a4 4 0 0 1-4-4zm8-4h4a4 4 0 1 1 0 8h-4V0zm8 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" />
-                  </svg>
-                  Open in Figma
-                </Button>
                 <Link href="/plugin">
                   <Button
                     variant="outline"
                     size="sm"
                     className="h-10 rounded-md px-4 gap-1.5"
                   >
-                    Read the docs
+                    How it works
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3.5 w-3.5"
@@ -1080,7 +1067,7 @@ export default function ShowcasePage() {
                 </Link>
               </div>
               <p className="mt-5 font-mono text-[11px] text-(--color-text-tertiary)">
-                Free · v0.9 beta · in development
+                v{meta.versions.plugin} · development build
               </p>
             </div>
 
@@ -1139,14 +1126,20 @@ export default function ShowcasePage() {
                       {[
                         {
                           icon: "circle",
-                          label: "Color",
-                          count: 186,
+                          label: "Primitives",
+                          count: meta.tokens.primitive,
                           active: true,
                         },
-                        { icon: "lines", label: "Spacing", count: 28 },
-                        { icon: "type", label: "Typography", count: 42 },
-                        { icon: "rect", label: "Radius", count: 12 },
-                        { icon: "plus", label: "Shadow", count: 9 },
+                        {
+                          icon: "lines",
+                          label: "Semantic",
+                          count: meta.tokens.semantic,
+                        },
+                        {
+                          icon: "rect",
+                          label: "Components",
+                          count: meta.tokens.component,
+                        },
                       ].map((item) => (
                         <div
                           key={item.label}

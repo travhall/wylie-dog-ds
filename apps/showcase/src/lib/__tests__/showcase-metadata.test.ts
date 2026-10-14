@@ -87,3 +87,63 @@ describe("getTokenMeta error guarding (loadSync)", () => {
     );
   });
 });
+
+describe("getStackMeta", () => {
+  it("counts Radix-backed components and reads installed toolchain versions", async () => {
+    const { getStackMeta, getComponentMeta } =
+      await import("../showcase-metadata");
+    const stack = getStackMeta();
+    expect(stack.radixBackedComponents).toBeGreaterThan(10);
+    expect(stack.radixBackedComponents).toBeLessThanOrEqual(
+      getComponentMeta().count
+    );
+    for (const v of [
+      stack.react,
+      stack.typescript,
+      stack.vite,
+      stack.tailwind,
+      stack.next,
+    ]) {
+      expect(v).toMatch(/^\d+\.\d+$/);
+    }
+  });
+});
+
+describe("Storybook links", () => {
+  it("builds Storybook ids the way Storybook sanitizes titles", async () => {
+    const { storybookId } = await import("../showcase-metadata");
+    expect(storybookId("Components/Feedback & Status/Alert")).toBe(
+      "components-feedback-status-alert"
+    );
+  });
+
+  it("resolves a component to a docs id that exists in its story file", async () => {
+    const { getStoryDocsId, getStoryDocsUrl } =
+      await import("../showcase-metadata");
+    expect(getStoryDocsId("alert")).toBe(
+      "components-feedback-status-alert--docs"
+    );
+    expect(getStoryDocsId("not-a-component")).toBeNull();
+    expect(getStoryDocsUrl("alert")).toBe(
+      "https://wyliedogstorybook.com/?path=/docs/components-feedback-status-alert--docs"
+    );
+    expect(getStoryDocsUrl("not-a-component")).toBe(
+      "https://wyliedogstorybook.com"
+    );
+  });
+});
+
+describe("Storybook coverage of UI components", () => {
+  it("resolves a Storybook target for every UI component file", async () => {
+    const { getStoryDocsId } = await import("../showcase-metadata");
+    const dir = path.resolve(process.cwd(), "../../packages/ui/src");
+    const names = fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith(".tsx"))
+      .map((f) => f.replace(/\.tsx$/, ""));
+    // The component cards on /components link by file name, so a missing story
+    // would produce a dead link.
+    const missing = names.filter((n) => getStoryDocsId(n) === null);
+    expect(missing).toEqual([]);
+  });
+});

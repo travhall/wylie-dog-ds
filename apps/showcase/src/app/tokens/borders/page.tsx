@@ -27,14 +27,14 @@ export default function BordersPage() {
       categoryLabel="Radius"
       headline={
         <>
-          Five corners.{" "}
+          Every corner.{" "}
           <span style={{ color: "var(--color-interactive-primary)" }}>
-            Every surface
+            Every border
           </span>{" "}
-          already knows which.
+          has a token.
         </>
       }
-      description="Every radius and border-width token, in full — the complete reference behind the hub's five-corner sample."
+      description="Every radius and border-width token, in full — the complete reference behind the hub's sample."
     >
       <div className="grid gap-12 lg:grid-cols-2">
         <div className="glass p-8 rounded-[40px] border-(--color-border-primary)/5">
