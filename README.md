@@ -6,7 +6,7 @@ A monorepo design system with 44 components, OKLCH-based design tokens, and full
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.3-blue?style=flat-square)](https://tailwindcss.com/)
 [![React](https://img.shields.io/badge/React-19.3-blue?style=flat-square)](https://react.dev/)
 [![Storybook](https://img.shields.io/badge/Storybook-10.6-ff4785?style=flat-square)](https://storybook.js.org/)
-[![Storybook Docs](https://img.shields.io/badge/Docs-Chromatic-FC521F?style=flat-square)](https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/)
+[![Storybook Docs](https://img.shields.io/badge/Docs-Storybook-FF4785?style=flat-square)](https://wyliedogstorybook.com)
 
 ## Overview
 
@@ -193,7 +193,7 @@ pnpm --filter @wyliedog/tokens test:tokens  # Validate token structure
 
 Storybook is deployed to Netlify from `apps/storybook/storybook-static`.
 
-**Live docs:** [https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/](https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/)
+**Live docs:** [https://wyliedogstorybook.com](https://wyliedogstorybook.com)
 
 Stories are organized into:
 
