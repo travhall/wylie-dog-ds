@@ -33,8 +33,8 @@ Output: `packages/ui/dist/index.css` (about 250 KB, unminified, measured 2026-10
 
 Storybook compiles an extra stylesheet for classes used in stories and docs, then imports it after the UI styles.
 
-- Entry for the extra stylesheet: `apps/storybook/src/styles/index.css` (imports `tailwindcss` and the tokens, and adds `@source` entries for `stories/**/*.tsx` and `stories/**/*.mdx`).
-- Build: `pnpm --filter storybook build:css` runs `tailwindcss -i ./src/styles/index.css -o ./dist/storybook.css --minify` (about 148 KB, measured 2026-10-14).
+- Entry for the extra stylesheet: `apps/storybook/src/styles/index.css` (imports `tailwindcss` and the tokens, and adds `@source` entries for `stories/**/*.tsx`, `stories/**/*.mdx` and the UI package sources `packages/ui/src/**/*.tsx`).
+- Build: `pnpm --filter storybook build:css` runs `tailwindcss -i ./src/styles/index.css -o ./dist/storybook.css --minify` (about 254 KB, measured 2026-10-14).
 - `pnpm --filter storybook dev` runs `build:css` once, then starts `dev:css:watch` (Tailwind in watch mode) together with Storybook.
 - `apps/storybook/stories/globals.css` imports the two stylesheets in this order:
 
@@ -44,6 +44,8 @@ Storybook compiles an extra stylesheet for classes used in stories and docs, the
 ```
 
 In Turborepo, `storybook#build:css` depends on the tokens build and the UI `build:styles` task (see `turbo.json`).
+
+The UI sources are scanned here on purpose. The UI stylesheet is imported first and this one second, and when two responsive utilities conflict (for example `md:grid-cols-4` from a story and `lg:grid-cols-5` from `SiteFooter`) the later sheet wins at equal specificity. If only the UI sheet generated the `lg:` rule, the story's `md:` rule would override it at desktop widths. Generating the UI utilities in both sheets lets Tailwind sort the breakpoints together. This was found by the visual regression suite (`pnpm --filter storybook test:visual`): the old baselines had captured the broken footer and hero spacing.
 
 If a brand-new Tailwind class does not appear in the dev server although it is present in `dist/storybook.css`, restart the dev server.
 
