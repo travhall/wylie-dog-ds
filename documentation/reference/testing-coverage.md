@@ -169,7 +169,7 @@ Clicking second trigger closes first content but doesn't reliably show second co
 
 ## Uncovered Component Code
 
-Despite 95% overall coverage, these components have uncovered helper component lines:
+Despite 97% overall line coverage, these components have uncovered helper component lines:
 
 ### context-menu.tsx - 69.71% coverage
 

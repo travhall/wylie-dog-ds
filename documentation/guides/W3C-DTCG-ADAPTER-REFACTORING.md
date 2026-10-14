@@ -1,5 +1,7 @@
 # W3C DTCG Adapter Refactoring Summary
 
+> Historical summary of the refactor (December 2025). The code excerpts below are simplified; the current implementation is `apps/figma-plugin/src/plugin/variables/adapters/w3c-dtcg.ts`, with tests in `variables/__tests__/w3c-dtcg-adapter.test.ts`.
+
 ## Overview
 
 The Figma Token Bridge plugin's W3C DTCG adapter has been refactored to natively support **standard nested W3C DTCG format** without requiring proprietary wrapper structures.
@@ -51,7 +53,7 @@ The W3C DTCG adapter (`apps/figma-plugin/src/plugin/variables/adapters/w3c-dtcg.
 
 ### 1. Added Recursive Token Detection (`countW3CTokens()`)
 
-**Location:** `w3c-dtcg.ts:43-63`
+**Location:** `w3c-dtcg.ts`
 
 ```typescript
 private countW3CTokens(obj: any, depth = 0): number {
@@ -81,7 +83,7 @@ private countW3CTokens(obj: any, depth = 0): number {
 
 ### 2. Added Token Flattening (`flattenTokens()`)
 
-**Location:** `w3c-dtcg.ts:143-164`
+**Location:** `w3c-dtcg.ts`
 
 ```typescript
 private flattenTokens(obj: any, prefix = ''): Record<string, any> {
@@ -115,7 +117,7 @@ private flattenTokens(obj: any, prefix = ''): Record<string, any> {
 
 ### 3. Enhanced Detection (`detect()`)
 
-**Location:** `w3c-dtcg.ts:15-41`
+**Location:** `w3c-dtcg.ts`
 
 **Changes:**
 
@@ -125,7 +127,7 @@ private flattenTokens(obj: any, prefix = ''): Record<string, any> {
 
 ### 4. Updated Collection Organization (`organizeIntoCollections()`)
 
-**Location:** `w3c-dtcg.ts:119-141`
+**Location:** `w3c-dtcg.ts`
 
 **Changes:**
 
@@ -135,7 +137,7 @@ private flattenTokens(obj: any, prefix = ''): Record<string, any> {
 
 ### 5. Improved Structure Analysis (`analyzeStructure()`)
 
-**Location:** `w3c-dtcg.ts:191-218`
+**Location:** `w3c-dtcg.ts`
 
 **Changes:**
 
@@ -146,7 +148,7 @@ private flattenTokens(obj: any, prefix = ''): Record<string, any> {
 
 ### 6. Enhanced Token Transformation (`transformCollection()`)
 
-**Location:** `w3c-dtcg.ts:166-197`
+**Location:** `w3c-dtcg.ts`
 
 **Changes:**
 
@@ -188,11 +190,7 @@ Importer.importMultipleCollections()
 
 ## Testing
 
-A test file has been provided for validation:
-
-**File:** `packages/tokens/figma-exports/token test/w3c-dtcg-test.json`
-
-This file contains a subset of primitive color tokens in standard W3C DTCG format for testing the import flow.
+Adapter behavior is covered by `apps/figma-plugin/src/plugin/variables/__tests__/w3c-dtcg-adapter.test.ts`. The sample import file this summary originally mentioned (`packages/tokens/figma-exports/token test/w3c-dtcg-test.json`) no longer exists in the repo.
 
 ## Migration Notes
 
@@ -212,7 +210,6 @@ This file contains a subset of primitive color tokens in standard W3C DTCG forma
 
 1. `apps/figma-plugin/src/plugin/variables/adapters/w3c-dtcg.ts` - Core adapter refactoring
 2. `documentation/guides/FIGMA-IMPORT-GUIDE.md` - Updated documentation
-3. `packages/tokens/figma-exports/token test/w3c-dtcg-test.json` - New test file
 
 ## Future Enhancements
 

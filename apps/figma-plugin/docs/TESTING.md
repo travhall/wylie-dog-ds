@@ -226,9 +226,10 @@ Tests run automatically on:
 
 - ✅ `parseGitHubUrl` utility (completed)
 - ✅ `TabBar` component (completed)
-- ⏳ `TokensTab`, `ImportTab`, `ExportTab`, `SyncTab` components
-- ⏳ Sync engine (`src/plugin/sync/`)
-- ⏳ Token processor (`src/plugin/processor/`)
+- ✅ `SyncTab` (token prompt tests) and `SkippedVariablesNotice`
+- ⏳ `TokensTab` and `ExportTab` components (no tests yet)
+- ✅ Sync engine (`src/plugin/sync/__tests__/`: conflict detector, resolver, metadata manager, variable sync, conflict-aware client)
+- ✅ Token processor (`src/plugin/variables/__tests__/processor.test.ts`)
 
 **Medium Priority:**
 
