@@ -424,7 +424,7 @@ className = "bg-(--color-button-primary-background)";
 1. **Find:** Search for `bg-[var(--color-` patterns
 2. **Replace:** Convert to `bg-(--color-` syntax
 3. **Test:** Verify colors apply correctly
-4. **Validate:** Run `pnpm report:usage` to track progress
+4. **Validate:** Run `pnpm --filter @wyliedog/tokens report:usage` to track progress
 
 ## Token Selection Decision Tree
 
@@ -609,13 +609,13 @@ After updating components, validate your changes:
 
 ```bash
 # Check token usage patterns
-pnpm report:usage
+pnpm --filter @wyliedog/tokens report:usage
 
 # Validate token structure
-pnpm test:tokens
+pnpm --filter @wyliedog/tokens test:tokens
 
 # Build and verify
-pnpm build
+pnpm --filter @wyliedog/tokens build
 ```
 
 **Success Criteria:**
@@ -687,7 +687,7 @@ className = "bg-(--color-background-primary)";
 **Can't find the right token?**
 
 1. Check available tokens: `packages/tokens/dist/tokens.css`
-2. Run usage analysis: `pnpm report:usage`
+2. Run usage analysis: `pnpm --filter @wyliedog/tokens report:usage`
 3. Review Token Playground in Storybook: Foundations → Colors → Token Playground
 4. Search semantic tokens first, then component tokens
 
@@ -696,14 +696,14 @@ className = "bg-(--color-background-primary)";
 1. Verify a semantic token can't work
 2. Document why you need it
 3. Create in Figma using Token Bridge plugin
-4. Export and process: `pnpm process-io && pnpm build`
+4. Export and process: `pnpm --filter @wyliedog/tokens build` (it runs `process-io` first)
 5. Use in components
 
 **Migration questions?**
 
 1. Review anchor components as reference
 2. Follow the decision tree above
-3. Validate with `pnpm report:usage`
+3. Validate with `pnpm --filter @wyliedog/tokens report:usage`
 
 ## References
 

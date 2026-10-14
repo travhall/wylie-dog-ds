@@ -1,309 +1,97 @@
-# Design System Styling Architecture
+# Styling Architecture
 
-This document provides an overview of the Tailwind CSS architecture across the Wylie Dog Design System monorepo.
+How Tailwind CSS 4 and the design tokens reach the UI package, Storybook, and the showcase app. Tailwind is configured CSS-first: there is no `tailwind.config.js` in any app or package that builds styles.
 
 ## Overview
 
-The Design System uses a **layered CSS architecture** where:
+1. **Tokens** (`@wyliedog/tokens`) build to CSS custom properties (`packages/tokens/dist/tokens.css`, `semantic-light.css`, `semantic-dark.css`).
+2. **The UI package** compiles Tailwind plus the tokens into one stylesheet, `@wyliedog/ui/styles`, that apps import.
+3. **Each app** imports that stylesheet and, where it needs its own utilities, compiles Tailwind for its own sources.
 
-1. **UI Package** ships pre-compiled component styles
-2. **Apps** import UI styles and compile their own app-specific utilities
-3. **Shared Config** ensures consistency across all packages
+Components use token-backed classes written as `bg-(--color-button-primary-background)`; the tokens are plain CSS variables, so no Tailwind theme mapping is involved.
 
-## Architecture Diagram
+## UI package (`@wyliedog/ui`)
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    @repo/tailwind-config                     │
-│                  (Shared Configuration)                      │
-│  - Semantic color mappings (muted, border, primary, etc.)   │
-│  - Design token integration                                  │
-│  - Base theme configuration                                  │
-└────────────────┬────────────────────────────────────────────┘
-                 │ Extended by
-         ┌───────┴──────┬──────────────────┐
-         │              │                  │
-┌────────▼────────┐ ┌───▼──────────┐ ┌────▼─────────┐
-│  UI Package     │ │  Storybook   │ │  Showcase    │
-│                 │ │              │ │              │
-│ Build:          │ │ Build:       │ │ Build:       │
-│ @tailwindcss/   │ │ @tailwindcss/│ │ @tailwindcss/│
-│ cli             │ │ cli          │ │ postcss      │
-│                 │ │              │ │              │
-│ Compiles:       │ │ Compiles:    │ │ Compiles:    │
-│ - Tailwind base │ │ - Story utils│ │ - App utils  │
-│ - Component     │ │ - Semantic   │ │ - Tailwind   │
-│   utilities     │ │   utilities  │ │   utilities  │
-│ - Tokens        │ │              │ │              │
-│                 │ │ Imports:     │ │ Imports:     │
-│ Output:         │ │ - UI styles  │ │ - Tailwind   │
-│ dist/index.css  │ │ - Compiled   │ │ - UI styles  │
-│ (126KB)         │ │   story CSS  │ │              │
-└─────────────────┘ └──────────────┘ └──────────────┘
-```
-
-## Package Details
-
-### UI Package (@wyliedog/ui)
-
-**Purpose**: Component library with pre-compiled styles
-
-**Build Process**:
-
-```bash
-pnpm build:styles
-# Runs: tailwindcss -i ./src/styles/index.css -o ./dist/index.css
-```
-
-**What it compiles**:
-
-- Full Tailwind CSS base, components, utilities
-- Design tokens from `@wyliedog/tokens`
-- Component-specific utilities (e.g., `bg-(--color-button-primary-background)`)
-
-**Exports**:
-
-- `@wyliedog/ui/styles` → `dist/index.css` (126KB pre-compiled)
-- Individual components → `dist/button.mjs`, `dist/card.mjs`, etc.
-
-**Key Point**: Ships **complete CSS** so apps can use components without additional setup
-
----
-
-### Storybook App
-
-**Purpose**: Component documentation and testing
-
-**Build Strategy**: Pre-compile CSS before starting dev server
-
-**Build Process**:
-
-```bash
-pnpm build:css
-# Runs: tailwindcss -i ./src/styles/storybook.css -o ./dist/storybook.css --minify
-```
-
-**CSS Imports** (`stories/globals.css`):
+Entry: `packages/ui/src/styles/index.css`.
 
 ```css
-@import "@wyliedog/ui/styles"; /* Component utilities (126KB) */
-@import "../dist/storybook.css"; /* Story utilities (75KB) */
-```
-
-**Why This Works**:
-
-- Both imports are **pre-compiled static files**
-- No runtime JIT compilation = no HMR loops
-- Vite only watches files, doesn't trigger Tailwind recompilation
-
-**Story Utilities** (`src/styles/storybook.css`):
-
-- Explicit `@utility` definitions for semantic classes
-- Scans both UI component sources and story files
-- Generates utilities missing from UI package
-
-**Key Point**: Dual static import prevents HMR infinite loops while maintaining full utility coverage
-
----
-
-### Showcase App
-
-**Purpose**: Marketing site and example app
-
-**Build Strategy**: Next.js PostCSS integration (build-time compilation)
-
-**Build Process**: Automatic via Next.js development server
-
-**CSS Imports** (`src/app/globals.css`):
-
-```css
-@import "tailwindcss"; /* Next.js compiles app utilities */
-@import "@wyliedog/ui/styles"; /* Component utilities */
-```
-
-**Why This Works**:
-
-- `@import "tailwindcss"` required for Next.js PostCSS plugin
-- Next.js automatically compiles utilities at build/dev time
-- HMR works correctly without infinite loops (different from Storybook/Vite)
-
-**Key Point**: Next.js handles Tailwind compilation differently than Vite, so `@import "tailwindcss"` is necessary
-
-**Documentation**: See [apps/showcase/README_STYLING.md](../apps/showcase/README_STYLING.md)
-
----
-
-## Shared Configuration (@repo/tailwind-config)
-
-**Purpose**: Consistent theme and semantic mappings across all apps
-
-**Exports**:
-
-- Base Tailwind configuration
-- Semantic color mappings (`muted`, `border`, `primary`, etc.)
-- Design token integration
-- Content path defaults
-
-**Usage**:
-
-```javascript
-import baseConfig from "@repo/tailwind-config";
-
-export default {
-  ...baseConfig,
-  content: [/* app-specific paths */],
-};
-```
-
-**Key Colors Defined**:
-
-```javascript
-colors: {
-  'background': 'var(--color-background-primary)',
-  'muted': {
-    DEFAULT: 'var(--color-background-secondary)',
-    foreground: 'var(--color-text-secondary)',
-  },
-  'border': 'var(--color-border-primary)',
-  // ... semantic mappings
-}
-```
-
----
-
-## Comparison Matrix
-
-| Aspect                      | UI Package         | Storybook              | Showcase                |
-| --------------------------- | ------------------ | ---------------------- | ----------------------- |
-| **Build Tool**              | `@tailwindcss/cli` | `@tailwindcss/cli`     | `@tailwindcss/postcss`  |
-| **Framework**               | None (library)     | Vite                   | Next.js                 |
-| **Compilation**             | Pre-build script   | Pre-dev script         | Build-time (automatic)  |
-| **CSS Output**              | `dist/index.css`   | `dist/storybook.css`   | Bundled by Next.js      |
-| **Import Tailwind Source?** | Yes (compiles it)  | No (uses pre-compiled) | Yes (Next.js needs it)  |
-| **Import UI Styles?**       | N/A (is UI)        | Yes                    | Yes                     |
-| **Watch Mode**              | Manual             | Separate script        | Built-in HMR            |
-| **HMR Concerns**            | N/A                | Yes (avoid loops)      | No (Next.js handles it) |
-
----
-
-## Design Decisions
-
-### Why Different Build Strategies?
-
-**UI Package** uses `@tailwindcss/cli`:
-
-- Library doesn't run dev server
-- Pre-compiled CSS ready for any consumer
-- Explicit build step ensures consistent output
-
-**Storybook** uses `@tailwindcss/cli` (pre-compile):
-
-- Vite + Tailwind JIT creates HMR loops with dual imports
-- Pre-compilation avoids runtime JIT
-- Separate build step runs once before dev server
-
-**Showcase** uses `@tailwindcss/postcss`:
-
-- Next.js standard integration
-- PostCSS plugin designed for Next.js build pipeline
-- No HMR loop issues (Next.js handles it differently than Vite)
-
-### Why CSS Duplication is Acceptable
-
-Both Storybook and Showcase import:
-
-1. Tailwind base/utilities (via compilation or import)
-2. UI package CSS (which also contains Tailwind base)
-
-This creates duplication (~200KB dev), but:
-
-- **Development**: Minor impact on dev server speed
-- **Production**: Build tools deduplicate and minify CSS
-- **Benefit**: Clear separation of concerns (components vs app utilities)
-- **Alternative**: Complex build orchestration (not worth it)
-
-### Why Explicit @utility Definitions?
-
-Tailwind v4 JIT only generates utilities for classes found during file scanning. Semantic utilities like `bg-muted` or `text-muted-foreground`:
-
-- Are defined in `@repo/tailwind-config` theme
-- Used in stories but NOT in UI component source
-- Would be missing without explicit definitions
-
-Solution: `@utility` directive in `src/styles/storybook.css` forces generation
-
----
-
-## Best Practices
-
-### For UI Package Consumers
-
-1. **Always import `@wyliedog/ui/styles`** for component styles
-2. **Extend `@repo/tailwind-config`** for consistency
-3. **Choose build strategy** based on framework:
-   - Next.js → Use `@tailwindcss/postcss`
-   - Vite → Use `@tailwindcss/cli` (pre-compile if importing UI styles)
-   - Other → Use `@tailwindcss/cli`
-
-### For New Apps in Monorepo
-
-**Next.js App**:
-
-```css
-/* globals.css */
 @import "tailwindcss";
-@import "@wyliedog/ui/styles";
+@import "@wyliedog/tokens/tokens.css";
+/* plus a few element-level rules, such as token-colored search and date input icons */
 ```
 
-**Vite App**:
+Build (part of `pnpm --filter @wyliedog/ui build`):
+
+```bash
+pnpm --filter @wyliedog/ui build:styles
+# tailwindcss -i ./src/styles/index.css -o ./dist/index.css
+```
+
+Output: `packages/ui/dist/index.css` (about 250 KB, unminified, measured 2026-10-14), exported as `@wyliedog/ui/styles`. Components themselves ship as separate JS entries (`dist/button.js`, `dist/button.cjs`, ...); see [component-workflow.md](guides/component-workflow.md).
+
+## Storybook (`apps/storybook`)
+
+Storybook compiles an extra stylesheet for classes used in stories and docs, then imports it after the UI styles.
+
+- Entry for the extra stylesheet: `apps/storybook/src/styles/index.css` (imports `tailwindcss` and the tokens, and adds `@source` entries for `stories/**/*.tsx` and `stories/**/*.mdx`).
+- Build: `pnpm --filter storybook build:css` runs `tailwindcss -i ./src/styles/index.css -o ./dist/storybook.css --minify` (about 148 KB, measured 2026-10-14).
+- `pnpm --filter storybook dev` runs `build:css` once, then starts `dev:css:watch` (Tailwind in watch mode) together with Storybook.
+- `apps/storybook/stories/globals.css` imports the two stylesheets in this order:
 
 ```css
-/* globals.css */
 @import "@wyliedog/ui/styles";
-@import "./compiled-app-utilities.css";
+@import "../dist/storybook.css";
 ```
 
-Plus build script to compile app utilities separately.
+In Turborepo, `storybook#build:css` depends on the tokens build and the UI `build:styles` task (see `turbo.json`).
 
-### For Adding Semantic Utilities
+If a brand-new Tailwind class does not appear in the dev server although it is present in `dist/storybook.css`, restart the dev server.
 
-1. Add to `@repo/tailwind-config` theme if shared
-2. Add `@utility` definition if used in stories:
-   ```css
-   @utility bg-new-semantic {
-     background-color: var(--color-new-token);
-   }
-   ```
-3. Rebuild CSS (`pnpm build:css` in Storybook)
+## Showcase (`apps/showcase`)
 
----
+Next.js compiles Tailwind itself through PostCSS.
+
+- `apps/showcase/postcss.config.js` enables `@tailwindcss/postcss`.
+- `apps/showcase/src/app/globals.css` starts with:
+
+```css
+@import "@wyliedog/ui/styles";
+@import "tailwindcss";
+
+@source not "../../prototype";
+```
+
+- `@source not` keeps `apps/showcase/prototype/` (reference HTML whose class names are code samples) out of Tailwind's source scan.
+- Tailwind scans the app's own files automatically; there is no `content` array.
+- Production CSS from `next build` (measured 2026-10-14): one chunk of about 298 KB and one of about 18 KB, minified (about 43 KB and 1.5 KB gzipped).
+
+More detail is in [apps/showcase/README_STYLING.md](../apps/showcase/README_STYLING.md).
+
+## Comparison
+
+| Aspect            | UI package                                       | Storybook                      | Showcase               |
+| ----------------- | ------------------------------------------------ | ------------------------------ | ---------------------- |
+| Tool              | `@tailwindcss/cli`                               | `@tailwindcss/cli`             | `@tailwindcss/postcss` |
+| Framework         | None (library)                                   | Vite                           | Next.js                |
+| Entry CSS         | `src/styles/index.css`                           | `src/styles/index.css`         | `src/app/globals.css`  |
+| Output            | `dist/index.css`                                 | `dist/storybook.css`           | Bundled by Next.js     |
+| Imports UI styles | n/a (is the UI)                                  | Yes, via `stories/globals.css` | Yes, via `globals.css` |
+| Watch             | `build:styles` is one-shot; `dev` runs a watcher | `dev:css:watch`                | Next.js dev server     |
+
+Both apps import the UI stylesheet, which already contains Tailwind's base, so some CSS appears twice in development. The showcase production output above is minified.
+
+## Adding styles
+
+- **New token-backed class in a component:** write `bg-(--color-...)` using a token that exists (see [naming-convention.md](tokens/naming-convention.md)). Rebuild the UI package so `dist/index.css` includes it.
+- **New app:** import `@wyliedog/ui/styles` in the CSS entry. In a Next.js app also `@import "tailwindcss"` and add `@tailwindcss/postcss` to `postcss.config.js`. In a Vite app, follow the Storybook approach: compile the app's own utilities with the Tailwind CLI and import the output after the UI styles.
+- **Theme overrides:** override semantic tokens as CSS variables after importing the UI styles (see Storybook, Resources / Theming).
+
+## The `@repo/tailwind-config` package
+
+`packages/tailwind-config` (a `tailwind.config`-style object with breakpoints and shadcn-style color aliases such as `bg-muted`) is listed as a dependency of `@wyliedog/ui`, Storybook and the showcase, but nothing imports it: no CSS uses `@config`, no app has a Tailwind config file, and none of its aliases are used in the code. Treat it as legacy. Do not document or rely on it for new work.
 
 ## Troubleshooting
 
-### Issue: Component styles missing in new app
-
-**Solution**: Import `@wyliedog/ui/styles` in CSS entry point
-
-### Issue: HMR infinite loop in Vite app
-
-**Solution**: Don't import raw Tailwind alongside pre-compiled UI styles. Use pre-compilation approach like Storybook.
-
-### Issue: Tailwind utilities not working in Next.js
-
-**Solution**: Ensure `@import "tailwindcss"` in `globals.css` and `@tailwindcss/postcss` in `postcss.config.js`
-
-### Issue: Semantic colors not available
-
-**Solution**: Verify app's `tailwind.config.js` extends `@repo/tailwind-config`
-
----
-
-## Related Documentation
-
-- **[apps/showcase/README_STYLING.md](../apps/showcase/README_STYLING.md)** - Showcase CSS architecture
-- **[packages/tailwind-config/index.js](../packages/tailwind-config/index.js)** - Shared configuration
-
----
-
-**Last Updated**: 2026-01-01
-**Architecture Version**: 2.0 (Tailwind v4 + Turborepo)
+- **Component styles missing in an app:** the CSS entry must import `@wyliedog/ui/styles`, and the UI package must be built (`ls packages/ui/dist/index.css`).
+- **A Tailwind class has no effect in the showcase:** check that the class appears literally in a scanned source file, and that `globals.css` still has `@import "tailwindcss"`.
+- **Stale styles in Storybook:** rerun `pnpm --filter storybook build:css`, then restart the dev server.

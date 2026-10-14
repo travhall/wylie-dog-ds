@@ -1,676 +1,185 @@
-# Design Token Pipeline Architecture
+# Design Token Pipeline
 
-## Overview
+How design tokens get from Figma (via the Token Bridge plugin and GitHub) to the CSS and JavaScript the apps use. All commands run in `packages/tokens` or with `pnpm --filter @wyliedog/tokens <script>`.
 
-The Wylie Dog design token system features a sophisticated **bi-directional I/O pipeline** that enables round-trip synchronization between Figma and code. The Token Bridge Figma plugin syncs directly with GitHub, and the build process transforms tokens into production-ready CSS and JavaScript assets.
+## Pipeline
 
-## Pipeline Architecture
-
+```text
+Figma Variables
+      │  Token Bridge plugin (GitHub API)
+      ▼
+io/sync/            primitive.json, semantic.json, components.json   (committed)
+      │  scripts/process-token-io.js   (pnpm process-io)
+      ▼
+io/processed/       primitive.json, semantic-light/dark.json,
+      │             component-light/dark.json                         (committed)
+      │  style-dictionary.config.js
+      ▼
+dist/               CSS, JS, manifest, types                          (committed)
+      │
+      ▼
+@wyliedog/ui and the apps
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                  BI-DIRECTIONAL TOKEN FLOW                       │
-└─────────────────────────────────────────────────────────────────┘
 
-    FIGMA DESIGN TOOL
-          │
-          │ Token Bridge Plugin (syncs via GitHub API)
-          │
-          ▼
-    ┌──────────────┐
-    │   io/sync/   │  ← Bi-directional: Figma writes, build reads & writes back
-    └──────┬───────┘    (W3C DTCG format, version controlled)
-           │
-           │ process-token-io.js
-           │ • Format detection (W3C DTCG / Legacy / Raw)
-           │ • Hex → OKLCH conversion (Culori)
-           │ • Mode separation (Light / Dark)
-           │ • Reference normalization
-           │ • Write-back to io/sync/ (preserves Figma-compatible format)
-           │
-           ▼
-    ┌──────────────┐
-    │io/processed/ │  ← Normalized tokens with mode separation
-    └──────┬───────┘
-           │
-           │ style-dictionary.config.js
-           │ • CSS generation (@theme + :root + .dark)
-           │ • JS hierarchical export
-           │ • Manifest generation
-           │
-           ▼
-    ┌──────────────┐
-    │    dist/     │  ← Built assets for distribution
-    └──────┬───────┘
-           │
-           │ Import in UI package
-           │
-           ▼
-    ┌──────────────┐
-    │  @wyliedog/  │  ← Consumed by applications
-    │     ui       │
-    └──────────────┘
-```
+`pnpm build` runs the whole chain: `process-io`, Style Dictionary, `generate-font-loaders.js`, `generate-token-types.js`. It takes about a second.
+
+`io/sync/`, `io/processed/` and `dist/` are all tracked in git, so a token change shows up as changes in all three.
 
 ## Stage 1: Sync (`io/sync/`)
 
-**Purpose:** Bi-directional hub for Figma ↔ Code synchronization. This directory is both the source of truth from Figma AND the export target for the build process.
+The files the Token Bridge plugin reads and writes through GitHub (`packages/tokens/io/sync/`):
 
-**Write Path (Figma → Code):**
+| File              | Collection   | Modes           |
+| ----------------- | ------------ | --------------- |
+| `primitive.json`  | `primitive`  | `Value`         |
+| `semantic.json`   | `semantic`   | `Light`, `Dark` |
+| `components.json` | `components` | `Light`, `Dark` |
 
-1. Designer exports tokens via Token Bridge Figma plugin
-2. Plugin commits directly to GitHub at `packages/tokens/io/sync/`
-3. Build process reads and transforms tokens
+Each file is an array with one object per collection, holding its `modes` and a flat `variables` map keyed by dot-separated token name:
 
-**Read Path (Code → Figma):**
-
-1. Build process writes normalized W3C DTCG format back to `io/sync/`
-2. Token Bridge plugin can pull updated tokens from GitHub
-3. Designer imports into Figma Variables
-
-**Files:**
-
+```json
+[
+  {
+    "semantic": {
+      "modes": [
+        { "modeId": "mode:semantic:light", "name": "Light" },
+        { "modeId": "mode:semantic:dark", "name": "Dark" }
+      ],
+      "variables": {
+        "color.background.primary": {
+          "$type": "color",
+          "$value": "{color.gray.50}",
+          "valuesByMode": {
+            "Light": "{color.gray.50}",
+            "Dark": "{color.gray.950}"
+          },
+          "$description": "Main page background color"
+        }
+      }
+    }
+  }
+]
 ```
-io/sync/
-├── primitive.json    # Foundation color scales, spacing, typography
-├── semantic.json     # Contextual tokens (light + dark modes with valuesByMode)
-└── components.json   # Component-specific tokens
-```
 
-**Format Support:**
-The pipeline automatically detects and processes multiple formats:
+Mode ids follow `mode:<collection>:<lowercased-mode-name>`; the exact contract is in [packages/tokens/SYNC_CONTRACT.md](../../packages/tokens/SYNC_CONTRACT.md).
 
-1. **W3C DTCG Format** (Recommended)
-
-   ```json
-   [
-     {
-       "primitive": {
-         "modes": [{ "modeId": "583:1", "name": "Value" }],
-         "variables": {
-           "color.gray.50": {
-             "$type": "color",
-             "$value": "#ffffff"
-           }
-         }
-       }
-     }
-   ]
-   ```
-
-2. **Legacy Adapter Format**
-
-   ```json
-   [{
-     "semantic": {
-       "modes": {
-         "Light": { "color.background.primary": {...} },
-         "Dark": { "color.background.primary": {...} }
-       }
-     }
-   }]
-   ```
-
-3. **Flat Token Object**
-   ```json
-   {
-     "color.gray.50": {
-       "$type": "color",
-       "$value": "#ffffff"
-     }
-   }
-   ```
-
-**Why version control input files?**
-
-- Provides audit trail of design changes
-- Enables rollback to previous token versions
-- Documents the source of truth from Figma
+The sync files are also an output: `process-io` regenerates all three from the processed data (`generateExports`), so a build can rewrite them. Run `git diff packages/tokens/io/sync` after a build before committing.
 
 ## Stage 2: Processing (`io/processed/`)
 
-**Purpose:** Normalize tokens into a consistent W3C DTCG format with mode separation and OKLCH conversion.
+`pnpm process-io` (`scripts/process-token-io.js`) reads `io/sync/*.json` and writes normalized files:
 
-**Process:** `pnpm process-io` runs `scripts/process-token-io.js`
-
-**Transformations:**
-
-### 1. Format Detection
-
-```javascript
-detectFormat(data, filename)
-  → "w3c-dtcg" | "legacy-adapter" | "w3c-dtcg-single" | "unknown"
-```
-
-The processor examines the structure of each input file and routes it to the appropriate handler.
-
-### 2. Hex → OKLCH Conversion
-
-```javascript
-// Input: "#3b82f6"
-convertHexToOklch("#3b82f6");
-// Output: "oklch(0.623 0.188 259.81)"
-```
-
-**Precision Rules:**
-
-- **Lightness (L):** 3 decimal places (0.000 - 1.000)
-- **Chroma (C):** 3 decimal places (0.000 - 0.400 typical)
-- **Hue (H):** 2 decimal places (0.00 - 360.00)
-
-**Why OKLCH?**
-
-- Perceptually uniform lightness across all hues
-- Mathematical color relationships enable programmatic generation
-- P3 wide gamut support (30% more colors than sRGB)
-- Future-proof for CSS relative color syntax
-
-### 3. Mode Separation
-
-```javascript
-// Input: semantic.json (mixed Light/Dark)
-splitModes(data);
-// Output: semantic-light.json + semantic-dark.json
-```
-
-Semantic and component tokens are split into separate light/dark mode files for clean separation.
-
-### 4. Reference Normalization
-
-```javascript
-// Ensure consistent reference format
-"{color.gray.50}" ✅  // Correct
-"{Color.Gray.50}" ❌  // Gets normalized to above
-```
-
-**Output Files:**
-
-```
+```text
 io/processed/
-├── primitive.json           # Foundation tokens (OKLCH converted)
-├── semantic-light.json      # Light mode semantic tokens
-├── semantic-dark.json       # Dark mode semantic tokens
-├── component-light.json     # Light mode component tokens
-└── component-dark.json      # Dark mode component tokens
+├── primitive.json
+├── semantic-light.json
+├── semantic-dark.json
+├── component-light.json
+└── component-dark.json
 ```
 
-**File Format (Normalized W3C DTCG):**
+What it does:
 
-```json
-{
-  "color.background.primary": {
-    "$type": "color",
-    "$value": "{color.gray.50}"
-  },
-  "color.blue.500": {
-    "$type": "color",
-    "$value": "oklch(0.623 0.188 259.81)"
-  }
-}
-```
+- **Format detection** per file: `w3c-dtcg` (the array format above), `legacy-adapter` (`modes` as an object of mode name to tokens), `w3c-dtcg-single` (one collection object, not in an array), or `unknown` (treated as a flat token object).
+- **Hex to OKLCH:** color values that are hex are converted with `convertHexToOklch` (`scripts/color-utils.js`, Culori). Values already written as `oklch(...)`, which is what the committed sync files contain, are left as they are.
+- **Mode separation:** `semantic` and `components` are split into light and dark files.
+- **Write-back** to `io/sync/` (see above).
 
 ## Stage 3: Build (`dist/`)
 
-**Purpose:** Generate production-ready CSS and JavaScript from processed tokens.
+`style-dictionary.config.js` produces:
 
-**Process:** `pnpm build` runs Style Dictionary configuration
+| File                           | Contents                                                                                                                   |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| `tokens.css`                   | Everything: light tokens followed by the `.dark` overrides. This is what `@wyliedog/ui` imports                            |
+| `semantic-light.css`           | The light-mode part of `tokens.css`                                                                                        |
+| `semantic-dark.css`            | Only the `.dark { ... }` overrides for semantic and component tokens                                                       |
+| `index.js`, `index.d.ts`       | One named export per token, e.g. `colorPolarNight50`                                                                       |
+| `hierarchical.js`              | Nested objects such as `color["polar-night"]["50"]`, plus shadow, spacing, font size and other groups                      |
+| `manifest.json`                | Token metadata (name, path, value, type, CSS variable, description) grouped as `primitives`, `semantics`, `components`     |
+| `css-vars.js`, `css-vars.d.ts` | `CssVarName` type of every CSS variable (from `generate-token-types.js`)                                                   |
+| `font-loaders.next.ts`         | Next.js font loader config generated from `@fontSource(...)` descriptions (see [FONTS.md](../../packages/tokens/FONTS.md)) |
 
-**Build Configuration:** `style-dictionary.config.js`
-
-### CSS Generation
-
-**1. Primitives CSS** (`dist/primitives.css`)
-
-```css
-/* Foundation tokens only */
-@layer theme {
-  :root,
-  :host {
-    --color-gray-50: oklch(1 0 0);
-    --color-blue-500: oklch(0.623 0.188 259.81);
-  }
-}
-```
-
-**2. Semantic Light CSS** (`dist/semantic-light.css`)
+The CSS is emitted in tiers:
 
 ```css
-/**
- * Light mode semantic and component tokens
- * These are in @theme for Tailwind utility generation
- */
-@theme inline {
-  --color-background-primary: oklch(1 0 0);
-  --color-text-primary: oklch(0.279 0.037 260.03);
+@theme inline static {
+  /* primitives: static scales that generate Tailwind utilities */
+  --color-gray-50: oklch(0.991 0.003 264.45);
 }
-
-@layer base {
-  :root {
-    --color-background-primary: oklch(1 0 0);
-    --color-text-primary: oklch(0.279 0.037 260.03);
-  }
+@theme static {
+  /* semantic tokens: themeable, utilities use var() so .dark works */
 }
-```
-
-**3. Semantic Dark CSS** (`dist/semantic-dark.css`)
-
-```css
-/**
- * Dark mode semantic and component tokens
- * Applied via .dark class
- */
+:root {
+  /* component tokens: internal, not exposed as utilities */
+}
 .dark {
-  --color-background-primary: oklch(0.208 0.04 265.75);
-  --color-text-primary: oklch(0.984 0.003 247.86);
+  --color-background-primary: oklch(0.149 0.012 259.72);
 }
 ```
 
-**4. Combined CSS** (`dist/tokens.css`)
+Dark mode is applied by adding the `dark` class to an ancestor (`<html class="dark">`).
 
-```css
-/* All tokens: primitives + light + dark */
-```
-
-**Why `@theme inline`?**
-Tailwind CSS 4's `@theme` directive makes all tokens available as utilities:
-
-```css
-/* Token defined in @theme */
---color-background-primary: oklch(1.000 0.000 0.00);
-
-/* Automatically becomes Tailwind utility */
-<div class="bg-(--color-background-primary)">
-```
-
-### JavaScript Generation
-
-**1. Hierarchical Export** (`dist/hierarchical.js`)
+Package exports (`packages/tokens/package.json`): `.` (named exports), `./tokens.css`, `./semantic-light.css`, `./semantic-dark.css`, `./hierarchical`, `./css-vars`, `./manifest.json`.
 
 ```javascript
-export const color = {
-  gray: {
-    50: "oklch(1.000 0.000 0.00)",
-    500: "oklch(0.711 0.035 256.79)",
-  },
-  blue: {
-    500: "oklch(0.623 0.188 259.81)",
-  },
-};
-
-export const background = {
-  primary: "oklch(1.000 0.000 0.00)",
-  secondary: "oklch(0.984 0.003 247.86)",
-};
-```
-
-**2. Flat Export** (`dist/index.js`)
-
-```javascript
-export default {
-  "color.gray.50": "oklch(1.000 0.000 0.00)",
-  "color.background.primary": "oklch(1.000 0.000 0.00)",
-};
-```
-
-**Usage:**
-
-```javascript
-// Hierarchical (recommended)
-import { color, background } from "@wyliedog/tokens/hierarchical";
-const primary = color.blue[500];
-const bg = background.primary;
-
-// Flat (backwards compatible)
-import tokens from "@wyliedog/tokens";
-const primary = tokens["color.blue.500"];
-```
-
-## Round-Trip Capability
-
-The bi-directional sync is enabled by the write-back in `process-token-io.js`:
-
-1. **Figma → Code**: Token Bridge plugin exports to `io/sync/`
-2. **Processing**: Build transforms and normalizes tokens
-3. **Code → Figma**: Build writes W3C DTCG format back to `io/sync/`
-4. **Figma Import**: Token Bridge can pull updated tokens from GitHub
-
-This enables the complete **round-trip workflow**: Figma → Code → Figma
-
-**Note:** The `io/sync/` directory serves as both input AND output, eliminating the need for a separate export directory. The Token Bridge plugin auto-detects Wylie Dog projects and uses `packages/tokens/io/sync/` as the default path.
-
-## Complete Workflow Examples
-
-### Example 1: Adding a New Primitive Color
-
-**Step 1:** Export from Figma Token Bridge plugin
-
-- Plugin syncs directly to GitHub at `io/sync/primitive.json` with hex values
-
-**Step 2:** Process tokens
-
-```bash
-pnpm process-io
-```
-
-- Converts `"#3b82f6"` → `"oklch(0.623 0.188 259.81)"`
-- Outputs to `io/processed/primitive.json`
-
-**Step 3:** Build assets
-
-```bash
-pnpm build
-```
-
-- Generates CSS with `--color-blue-500: oklch(0.623 0.188 259.81)`
-- Creates JS export: `color.blue[500] = "oklch(0.623 0.188 259.81)"`
-
-**Step 4:** Use in components
-
-```tsx
 import { color } from "@wyliedog/tokens/hierarchical";
-
-const primaryBlue = color.blue[500];
-// "oklch(0.623 0.188 259.81)"
+import { colorGray50 } from "@wyliedog/tokens";
 ```
 
-### Example 2: Adding a Semantic Token
+Apps normally do not import the JS; they import the stylesheet through `@wyliedog/ui/styles` and use the variables as `bg-(--color-background-primary)`. See [STYLING_ARCHITECTURE.md](../STYLING_ARCHITECTURE.md).
 
-**Step 1:** Export from Figma
+## Resolution chain
 
-- Add `color.background.brand` referencing `{color.blue.600}`
-- Token Bridge syncs to `io/sync/semantic.json`
+Component tokens alias semantic tokens, which alias primitives, which hold the value:
 
-**Step 2:** Process tokens
+```text
+component token  →  {color.interactive.primary}  →  {color.<scale>.<step>}  →  oklch(...)
+```
+
+Style Dictionary resolves the aliases during the build; the CSS contains resolved values.
+
+## Workflows
+
+**Change or add a token from Figma:** edit the variable in Figma, push with Token Bridge (a commit or pull request that touches `io/sync/`), pull the change, then:
 
 ```bash
-pnpm process-io
+pnpm --filter @wyliedog/tokens build
+git diff packages/tokens   # io/sync, io/processed and dist change together
 ```
 
-- Separates light/dark modes
-- Normalizes reference format
-- Outputs to `io/processed/semantic-light.json` and `semantic-dark.json`
+**Change a token in code:** edit `io/sync/*.json` (keep the structure above), run the same build, and bring the change into Figma with the plugin's import or pull.
 
-**Step 3:** Build assets
+**Dark mode:** put the dark value in `valuesByMode.Dark` of the semantic or component token; the build writes it into `.dark` in `tokens.css` and `semantic-dark.css`.
+
+After any token change also run `pnpm check:docs` and `pnpm check:tokens` from the repo root; they fail if docs or the showcase reference a token that no longer exists.
+
+## Commands
 
 ```bash
-pnpm build
+pnpm --filter @wyliedog/tokens build            # full pipeline
+pnpm --filter @wyliedog/tokens process-io       # io/sync -> io/processed (and rewrites io/sync)
+pnpm --filter @wyliedog/tokens dev              # watch io/sync and rebuild
+pnpm --filter @wyliedog/tokens clean            # removes dist and io/processed
+pnpm --filter @wyliedog/tokens test:tokens      # validate-tokens.js: structure, references, OKLCH ranges (also run by the rebuild-tokens workflow)
+pnpm --filter @wyliedog/tokens run audit        # audit-tokens.js: unused, missing and misnamed tokens
+pnpm --filter @wyliedog/tokens report:coverage  # token coverage in UI components
+pnpm --filter @wyliedog/tokens report:usage     # component usage analysis
 ```
 
-- Resolves reference chain: `{color.blue.600}` → `oklch(0.546 0.215 262.88)`
-- Generates CSS: `--color-background-brand: oklch(0.546 0.215 262.88)`
-
-**Step 4:** Use in Tailwind
-
-```tsx
-<div className="bg-(--color-background-brand)">Brand background</div>
-```
-
-### Example 3: Updating Dark Mode Tokens
-
-**Step 1:** Update in Figma
-
-- Change dark mode `background.primary` to lighter gray
-- Token Bridge syncs changes to `io/sync/semantic.json`
-
-**Step 2:** Process and build
-
-```bash
-pnpm build  # Runs process-io + style-dictionary
-```
-
-**Step 3:** Verify output
-
-```bash
-# Check dark mode file
-cat io/processed/semantic-dark.json
-cat dist/semantic-dark.css
-```
-
-**Step 4:** Test in browser
-
-```html
-<html class="dark">
-  <!-- Dark mode tokens automatically applied -->
-</html>
-```
-
-## Build Commands Reference
-
-```bash
-# Full pipeline (process + build + font loaders)
-pnpm build
-
-# Process tokens only (sync → processed)
-pnpm process-io
-
-# Build outputs only (processed → dist)
-node style-dictionary.config.js
-
-# Clean build artifacts (preserves io/sync source files)
-pnpm clean
-
-# Run token validation
-pnpm test:tokens
-
-# Audit token usage
-pnpm audit
-```
-
-## File Watching & Development
-
-For active development, use the monorepo dev command:
-
-```bash
-# Start entire monorepo in watch mode
-pnpm dev
-
-# Rebuild tokens when input files change
-pnpm --filter @wyliedog/tokens build --watch
-```
-
-## Token Resolution Chain
-
-Understanding how token references resolve:
-
-```
-Component Token
-    ↓ references
-Semantic Token
-    ↓ references
-Primitive Token
-    ↓ actual value
-OKLCH Color Value
-```
-
-**Example:**
-
-```json
-// Component token
-"button.primary.background": {
-  "$value": "{color.interactive.primary}"
-}
-
-// Semantic token
-"color.interactive.primary": {
-  "$value": "{color.blue.600}"
-}
-
-// Primitive token
-"color.blue.600": {
-  "$value": "oklch(0.546 0.215 262.88)"
-}
-```
-
-**Resolution:**
-
-1. Start: `button.primary.background`
-2. Resolves to: `color.interactive.primary`
-3. Resolves to: `color.blue.600`
-4. Final value: `oklch(0.546 0.215 262.88)`
-
-Style Dictionary handles this resolution automatically during build.
+Use `run audit` because `pnpm audit` is pnpm's own vulnerability audit. `test:tokens` prints many warnings (for example tokens defined in more than one file); read the errors, not the warning count.
 
 ## Troubleshooting
 
-### Issue: Tokens not updating in UI
-
-**Solution:**
-
-```bash
-# Full rebuild
-pnpm clean
-pnpm build
-
-# Rebuild UI package
-pnpm --filter @wyliedog/ui build
-```
-
-### Issue: OKLCH conversion failed
-
-**Check:**
-
-1. Input is valid hex color: `#3b82f6` (not `3b82f6`)
-2. Culori is installed: `pnpm install`
-3. Review warnings in console during `process-io`
-
-**Manual verification:**
-
-```javascript
-import { convertHexToOklch } from "./scripts/color-utils.js";
-console.log(convertHexToOklch("#3b82f6"));
-// Should output: "oklch(0.623 0.188 259.81)"
-```
-
-### Issue: Token references broken
-
-**Check:**
-
-1. Reference syntax: `{color.blue.500}` not `{{color.blue.500}}`
-2. Referenced token exists in primitive.json
-3. No circular references
-
-**Validation:**
-
-```bash
-pnpm test:tokens  # Validates references (if implemented)
-```
-
-### Issue: Mode separation incorrect
-
-**Check:**
-
-1. Input file has mode data: `modes: { Light: {...}, Dark: {...} }`
-2. Tokens are in correct mode object
-3. Check console output during `process-io` for warnings
-
-## Performance Considerations
-
-**Build Times:**
-
-- Token processing: ~200ms
-- Style Dictionary build: ~800ms
-- **Total: ~1 second** ✅
-
-**File Sizes:**
-
-- `tokens.css`: ~38KB (uncompressed)
-- `semantic-light.css`: ~30KB
-- `semantic-dark.css`: ~8KB
-- All files gzip to ~30% of original size
-
-**Optimization:**
-
-- Only import what you need: `@import "@wyliedog/tokens/semantic-light.css"`
-- Tailwind CSS purges unused utilities automatically
-- Token count has minimal impact on runtime performance (CSS custom properties are efficient)
-
-## Best Practices
-
-### 1. Version Control
-
-✅ **Commit:** `io/sync/` files (source of truth for bi-directional sync)
-❌ **Don't commit:** `io/processed/` and `dist/` (build artifacts)
-
-### 2. Token Naming
-
-✅ **Use semantic names:** `color.background.primary`
-❌ **Avoid appearance names:** `color.light-gray`
-
-✅ **Be consistent with scales:** 50, 100, 200, ..., 900, 950
-❌ **Avoid arbitrary scales:** 25, 150, 275
-
-### 3. Mode Handling
-
-✅ **Separate modes in Figma:** Use proper Light/Dark mode collections
-❌ **Don't mix modes:** Creates confusion in processing
-
-### 4. Reference Chains
-
-✅ **Keep chains short:** Component → Semantic → Primitive
-❌ **Avoid deep nesting:** Component → Semantic → Semantic → Semantic → Primitive
-
-### 5. Color Format
-
-✅ **Export hex from Figma:** Let pipeline convert to OKLCH
-❌ **Don't manually write OKLCH:** Use conversion for consistency
-
-## Advanced Topics
-
-### Custom Token Types
-
-Add support for new token types in `style-dictionary.config.js`:
-
-```javascript
-if (token.$type === "dimension") {
-  const dimensionName = `--dimension-${name}`;
-  themeVariables.push(`  ${dimensionName}: ${token.$value};`);
-}
-```
-
-### Platform-Specific Outputs
-
-Generate tokens for iOS/Android:
-
-```javascript
-// Add to style-dictionary.config.js
-platforms: {
-  ios: {
-    transformGroup: 'ios',
-    buildPath: 'dist/ios/',
-    files: [{
-      destination: 'tokens.swift',
-      format: 'ios-swift/class.swift'
-    }]
-  }
-}
-```
-
-### Token Validation
-
-Implement validation hooks in `process-token-io.js`:
-
-```javascript
-validateTokenValue(token) {
-  if (token.$type === 'color' && token.$value.startsWith('oklch')) {
-    const [l, c, h] = parseOklch(token.$value);
-    if (l < 0 || l > 1) throw new Error(`Invalid lightness: ${l}`);
-    if (c < 0 || c > 0.4) console.warn(`Unusual chroma: ${c}`);
-  }
-}
-```
-
-## Future Enhancements
-
-- [ ] Automated token usage reporting
-- [ ] Visual regression testing for token changes
-- [ ] Token documentation generator
-- [ ] Multi-brand theming support
-- [ ] Token validation in CI/CD
-- [ ] iOS/Android platform outputs
+- **Tokens not updating in the UI or apps:** rebuild tokens, then the UI package (`pnpm --filter @wyliedog/ui build`).
+- **A token is missing from the CSS:** confirm it is in `io/sync/*.json`, rebuild, and search `dist/tokens.css`.
+- **Broken references:** an alias like `{color.gray.50}` must match an existing token name exactly; run `test:tokens`.
+- **Build changed `io/sync`:** expected (write-back); review the diff and commit it with the token change.
 
 ## References
 
 - [W3C DTCG Specification](https://tr.designtokens.org/format/)
-- [Style Dictionary Documentation](https://amzn.github.io/style-dictionary/)
-- [OKLCH Color Space](https://oklch.com/)
-- [Tailwind CSS 4 @theme](https://tailwindcss.com/docs/theme)
-- [Culori Color Library](https://culorijs.org/)
+- [Style Dictionary](https://styledictionary.com/)
+- [OKLCH color picker](https://oklch.com/)
+- [Tailwind CSS 4 theme variables](https://tailwindcss.com/docs/theme)
+- [Culori](https://culorijs.org/)
