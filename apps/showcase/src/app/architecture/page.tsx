@@ -1,3 +1,4 @@
+import manifest from "@wyliedog/tokens/manifest.json";
 import React from "react";
 import Link from "next/link";
 import { Button, buttonVariants } from "@wyliedog/ui/button";
@@ -203,7 +204,7 @@ export default function ArchitecturePage() {
                             <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
                               <span
                                 className="h-1.5 w-1.5 rounded-full"
-                                style={{ background: "oklch(72% 0.15 200)" }}
+                                style={{ background: "var(--color-blue-400)" }}
                               />
                               App
                             </span>
@@ -332,7 +333,7 @@ export default function ArchitecturePage() {
                     <span className="ml-auto inline-flex items-center gap-1.5 normal-case">
                       <span
                         className="h-1.5 w-1.5 rounded-full"
-                        style={{ background: "oklch(60% 0.14 155)" }}
+                        style={{ background: "var(--color-status-success)" }}
                       />
                       <span className="text-(--color-text-secondary)">
                         graph in sync · 4m ago
@@ -596,9 +597,9 @@ export default function ArchitecturePage() {
                       <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
                     </svg>
                   ),
-                  iconColor: "oklch(48% 0.16 200)",
+                  iconColor: "var(--color-blue-700)",
                   iconBg:
-                    "color-mix(in oklch, oklch(72% 0.15 200) 22%, transparent)",
+                    "color-mix(in oklch, var(--color-blue-400) 22%, transparent)",
                   desc: "The page you're reading. A Next.js 16 App Router site that consumes @wyliedog/ui as its only component dependency — the marketing site eats its own design system.",
                   meta: [
                     ["Stack", "Next.js 16 · App Router"],
@@ -660,7 +661,7 @@ export default function ArchitecturePage() {
                     {card.footerDot && (
                       <span
                         className="h-1.5 w-1.5 rounded-full"
-                        style={{ background: "oklch(60% 0.14 155)" }}
+                        style={{ background: "var(--color-status-success)" }}
                       />
                     )}
                     {card.footer}
@@ -716,7 +717,7 @@ export default function ArchitecturePage() {
                       {
                         indent: 4,
                         key: "$value",
-                        rest: ': "oklch(0.546 0.215 262.9)"',
+                        rest: `: "${manifest.primitives.colors.blue["600"].value}"`,
                       },
                       { indent: 3, rest: "}" },
                       { indent: 2, rest: "}" },
@@ -801,7 +802,7 @@ export default function ArchitecturePage() {
                         --color-blue-600
                       </span>
                       <span className="text-(--color-text-secondary)">
-                        : oklch(0.546 0.215 262.9);
+                        : {manifest.primitives.colors.blue["600"].value};
                       </span>
                     </div>
                     <div className="mt-1 text-(--color-text-tertiary) italic">
@@ -996,11 +997,11 @@ export default function ArchitecturePage() {
                     />
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "oklch(80% 0.15 85)" }}
+                      style={{ background: "var(--color-yellow-400)" }}
                     />
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "oklch(70% 0.16 145)" }}
+                      style={{ background: "var(--color-green-500)" }}
                     />
                   </div>
                   <span
@@ -1018,15 +1019,18 @@ export default function ArchitecturePage() {
                 </div>
                 <div className="px-4 py-4 font-mono text-[12px] leading-[1.65] space-y-0.5">
                   <div>
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>$</span> pnpm{" "}
-                    <span style={{ color: "oklch(74% 0.14 274)" }}>build</span>
+                    <span style={{ color: "var(--color-green-500)" }}>$</span>{" "}
+                    pnpm{" "}
+                    <span style={{ color: "var(--color-blue-400)" }}>
+                      build
+                    </span>
                   </div>
                   <div style={{ color: "var(--color-gray-500)" }}>
                     turbo run build --filter=...^...
                   </div>
                   <div className="mt-2">
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>▸</span>{" "}
-                    <span style={{ color: "oklch(80% 0.12 35)" }}>
+                    <span style={{ color: "var(--color-green-500)" }}>▸</span>{" "}
+                    <span style={{ color: "var(--color-fiery-coral-200)" }}>
                       @wyliedog/tokens#build
                     </span>{" "}
                     <span style={{ color: "var(--color-gray-500)" }}>
@@ -1038,7 +1042,7 @@ export default function ArchitecturePage() {
                     style={{ color: "var(--color-gray-500)" }}
                   >
                     → dist/tokens.css{" "}
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>
+                    <span style={{ color: "var(--color-green-500)" }}>
                       {meta.tokens.total} vars
                     </span>
                   </div>
@@ -1056,13 +1060,13 @@ export default function ArchitecturePage() {
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "oklch(72% 0.14 155)" }}
+                    style={{ color: "var(--color-green-500)" }}
                   >
                     ✓ done
                   </div>
                   <div className="mt-1">
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>▸</span>{" "}
-                    <span style={{ color: "oklch(80% 0.12 35)" }}>
+                    <span style={{ color: "var(--color-green-500)" }}>▸</span>{" "}
+                    <span style={{ color: "var(--color-fiery-coral-200)" }}>
                       @wyliedog/ui#build
                     </span>{" "}
                     <span style={{ color: "var(--color-gray-500)" }}>
@@ -1074,7 +1078,9 @@ export default function ArchitecturePage() {
                     style={{ color: "var(--color-gray-500)" }}
                   >
                     → dist/index.js{" "}
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>194 KB</span>
+                    <span style={{ color: "var(--color-green-500)" }}>
+                      194 KB
+                    </span>
                   </div>
                   <div
                     className="pl-4"
@@ -1084,19 +1090,19 @@ export default function ArchitecturePage() {
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "oklch(72% 0.14 155)" }}
+                    style={{ color: "var(--color-green-500)" }}
                   >
                     ✓ done in 8.6s
                   </div>
                   <div className="mt-1">
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>▸</span>{" "}
-                    <span style={{ color: "oklch(80% 0.12 35)" }}>
+                    <span style={{ color: "var(--color-green-500)" }}>▸</span>{" "}
+                    <span style={{ color: "var(--color-fiery-coral-200)" }}>
                       @wyliedog/storybook#build
                     </span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "oklch(72% 0.14 155)" }}
+                    style={{ color: "var(--color-green-500)" }}
                   >
                     ✓ cached{" "}
                     <span style={{ color: "var(--color-gray-500)" }}>
@@ -1104,14 +1110,14 @@ export default function ArchitecturePage() {
                     </span>
                   </div>
                   <div className="mt-1">
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>▸</span>{" "}
-                    <span style={{ color: "oklch(80% 0.12 35)" }}>
+                    <span style={{ color: "var(--color-green-500)" }}>▸</span>{" "}
+                    <span style={{ color: "var(--color-fiery-coral-200)" }}>
                       @wyliedog/showcase#build
                     </span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "oklch(72% 0.14 155)" }}
+                    style={{ color: "var(--color-green-500)" }}
                   >
                     ✓ cached{" "}
                     <span style={{ color: "var(--color-gray-500)" }}>
@@ -1120,19 +1126,19 @@ export default function ArchitecturePage() {
                   </div>
                   <div
                     className="mt-2"
-                    style={{ color: "oklch(72% 0.14 155)" }}
+                    style={{ color: "var(--color-green-500)" }}
                   >
                     Tasks: 4 successful, 4 total
                   </div>
                   <div style={{ color: "var(--color-gray-500)" }}>
                     Time: 11.0s{" "}
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>
+                    <span style={{ color: "var(--color-green-500)" }}>
                       &gt;&gt;&gt;
                     </span>{" "}
                     FULL TURBO
                   </div>
                   <div className="mt-1">
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>$</span>{" "}
+                    <span style={{ color: "var(--color-green-500)" }}>$</span>{" "}
                     <span
                       className="inline-block w-1.5 h-3 align-middle"
                       style={{ background: "var(--color-polar-night-50)" }}
@@ -1258,11 +1264,11 @@ export default function ArchitecturePage() {
                     />
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "oklch(80% 0.15 85)" }}
+                      style={{ background: "var(--color-yellow-400)" }}
                     />
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "oklch(70% 0.16 145)" }}
+                      style={{ background: "var(--color-green-500)" }}
                     />
                   </div>
                   <span
@@ -1274,60 +1280,70 @@ export default function ArchitecturePage() {
                 </div>
                 <div className="px-4 py-4 font-mono text-[11px] leading-[1.8] overflow-x-auto">
                   <div>
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>import</span>{" "}
+                    <span style={{ color: "var(--color-blue-400)" }}>
+                      import
+                    </span>{" "}
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       {"{ forwardRef }"}
                     </span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>from</span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>
+                    <span style={{ color: "var(--color-blue-400)" }}>from</span>{" "}
+                    <span style={{ color: "var(--color-green-500)" }}>
                       &quot;react&quot;
                     </span>
                   </div>
                   <div>
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>import</span>{" "}
+                    <span style={{ color: "var(--color-blue-400)" }}>
+                      import
+                    </span>{" "}
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       {"{ Slot }"}
                     </span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>from</span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>
+                    <span style={{ color: "var(--color-blue-400)" }}>from</span>{" "}
+                    <span style={{ color: "var(--color-green-500)" }}>
                       &quot;@radix-ui/react-slot&quot;
                     </span>
                   </div>
                   <div>
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>import</span>{" "}
+                    <span style={{ color: "var(--color-blue-400)" }}>
+                      import
+                    </span>{" "}
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       {"{ cva, type VariantProps }"}
                     </span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>from</span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>
+                    <span style={{ color: "var(--color-blue-400)" }}>from</span>{" "}
+                    <span style={{ color: "var(--color-green-500)" }}>
                       &quot;class-variance-authority&quot;
                     </span>
                   </div>
                   <div>
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>import</span>{" "}
+                    <span style={{ color: "var(--color-blue-400)" }}>
+                      import
+                    </span>{" "}
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       {"{ cn }"}
                     </span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>from</span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>
+                    <span style={{ color: "var(--color-blue-400)" }}>from</span>{" "}
+                    <span style={{ color: "var(--color-green-500)" }}>
                       &quot;./lib/utils&quot;
                     </span>
                   </div>
                   <div className="mt-3">
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>const</span>{" "}
-                    <span style={{ color: "oklch(82% 0.14 85)" }}>
+                    <span style={{ color: "var(--color-blue-400)" }}>
+                      const
+                    </span>{" "}
+                    <span style={{ color: "var(--color-yellow-400)" }}>
                       buttonVariants
                     </span>{" "}
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       =
                     </span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>cva</span>
+                    <span style={{ color: "var(--color-blue-400)" }}>cva</span>
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       (
                     </span>
                   </div>
                   <div className="pl-4">
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>
+                    <span style={{ color: "var(--color-green-500)" }}>
                       &quot;inline-flex items-center justify-center rounded-md
                       font-medium&quot;
                     </span>
@@ -1341,7 +1357,7 @@ export default function ArchitecturePage() {
                     </span>
                   </div>
                   <div className="pl-8">
-                    <span style={{ color: "oklch(82% 0.14 85)" }}>
+                    <span style={{ color: "var(--color-yellow-400)" }}>
                       variants
                     </span>
                     <span style={{ color: "var(--color-polar-night-50)" }}>
@@ -1349,17 +1365,21 @@ export default function ArchitecturePage() {
                     </span>
                   </div>
                   <div className="pl-12">
-                    <span style={{ color: "oklch(82% 0.14 85)" }}>variant</span>
+                    <span style={{ color: "var(--color-yellow-400)" }}>
+                      variant
+                    </span>
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       : {"{"}
                     </span>
                   </div>
                   <div className="pl-16">
-                    <span style={{ color: "oklch(82% 0.14 85)" }}>default</span>
+                    <span style={{ color: "var(--color-yellow-400)" }}>
+                      default
+                    </span>
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       :
                     </span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>
+                    <span style={{ color: "var(--color-green-500)" }}>
                       &quot;bg-(--color-interactive-primary)
                       text-(--color-text-inverse)&quot;
                     </span>
@@ -1368,11 +1388,13 @@ export default function ArchitecturePage() {
                     </span>
                   </div>
                   <div className="pl-16">
-                    <span style={{ color: "oklch(82% 0.14 85)" }}>outline</span>
+                    <span style={{ color: "var(--color-yellow-400)" }}>
+                      outline
+                    </span>
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       :
                     </span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>
+                    <span style={{ color: "var(--color-green-500)" }}>
                       &quot;border border-(--color-border-primary)
                       bg-transparent&quot;
                     </span>
@@ -1401,10 +1423,12 @@ export default function ArchitecturePage() {
                     </span>
                   </div>
                   <div className="mt-3">
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>
+                    <span style={{ color: "var(--color-blue-400)" }}>
                       export const
                     </span>{" "}
-                    <span style={{ color: "oklch(82% 0.14 85)" }}>Button</span>{" "}
+                    <span style={{ color: "var(--color-yellow-400)" }}>
+                      Button
+                    </span>{" "}
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       = forwardRef&lt;
                     </span>
@@ -1425,7 +1449,7 @@ export default function ArchitecturePage() {
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       ({"{"}
                     </span>{" "}
-                    <span style={{ color: "oklch(82% 0.14 85)" }}>
+                    <span style={{ color: "var(--color-yellow-400)" }}>
                       className, variant, size, asChild, ...props
                     </span>{" "}
                     <span style={{ color: "var(--color-polar-night-50)" }}>
@@ -1433,12 +1457,18 @@ export default function ArchitecturePage() {
                     </span>
                   </div>
                   <div className="pl-8">
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>const</span>{" "}
-                    <span style={{ color: "oklch(82% 0.14 85)" }}>Comp</span>{" "}
+                    <span style={{ color: "var(--color-blue-400)" }}>
+                      const
+                    </span>{" "}
+                    <span style={{ color: "var(--color-yellow-400)" }}>
+                      Comp
+                    </span>{" "}
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       =
                     </span>{" "}
-                    <span style={{ color: "oklch(82% 0.14 85)" }}>asChild</span>{" "}
+                    <span style={{ color: "var(--color-yellow-400)" }}>
+                      asChild
+                    </span>{" "}
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       ?
                     </span>{" "}
@@ -1448,23 +1478,27 @@ export default function ArchitecturePage() {
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       :
                     </span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 155)" }}>
+                    <span style={{ color: "var(--color-green-500)" }}>
                       &quot;button&quot;
                     </span>
                   </div>
                   <div className="pl-8">
-                    <span style={{ color: "oklch(72% 0.14 274)" }}>return</span>{" "}
+                    <span style={{ color: "var(--color-blue-400)" }}>
+                      return
+                    </span>{" "}
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       &lt;
                     </span>
                     <span style={{ color: "var(--color-fiery-coral-400)" }}>
                       Comp
                     </span>{" "}
-                    <span style={{ color: "oklch(82% 0.14 85)" }}>ref</span>
+                    <span style={{ color: "var(--color-yellow-400)" }}>
+                      ref
+                    </span>
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       ={"{"}ref{"}"}
                     </span>{" "}
-                    <span style={{ color: "oklch(82% 0.14 85)" }}>
+                    <span style={{ color: "var(--color-yellow-400)" }}>
                       className
                     </span>
                     <span style={{ color: "var(--color-polar-night-50)" }}>

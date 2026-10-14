@@ -20,8 +20,12 @@ const TEAM = [
     bg: "var(--color-fiery-coral-300)",
     fg: "var(--color-fiery-coral-950)",
   },
-  { initials: "JR", bg: "oklch(78% 0.13 155)", fg: "oklch(20% 0.05 155)" },
-  { initials: "AK", bg: "oklch(78% 0.13 274)", fg: "oklch(20% 0.05 274)" },
+  {
+    initials: "JR",
+    bg: "var(--color-green-300)",
+    fg: "var(--color-green-950)",
+  },
+  { initials: "AK", bg: "var(--color-blue-300)", fg: "var(--color-blue-950)" },
 ];
 
 export function HeroPreview() {

@@ -248,8 +248,8 @@ export default function ComponentsPage() {
                         <span
                           className="inline-grid place-items-center rounded-full font-semibold text-xs"
                           style={{
-                            background: "oklch(78% 0.13 274)",
-                            color: "oklch(20% 0.05 274)",
+                            background: "var(--color-blue-300)",
+                            color: "var(--color-blue-950)",
                             height: 38,
                             width: 38,
                           }}
@@ -550,13 +550,13 @@ export default function ComponentsPage() {
                       init: "EM",
                     },
                     {
-                      bg: "oklch(78% 0.13 274)",
-                      color: "oklch(20% 0.05 274)",
+                      bg: "var(--color-blue-300)",
+                      color: "var(--color-blue-950)",
                       init: "JR",
                     },
                     {
-                      bg: "oklch(78% 0.13 155)",
-                      color: "oklch(20% 0.05 155)",
+                      bg: "var(--color-green-300)",
+                      color: "var(--color-green-950)",
                       init: "AK",
                     },
                   ].map(({ bg, color, init }) => (
@@ -738,7 +738,11 @@ export default function ComponentsPage() {
                           "var(--color-fiery-coral-950)",
                           "EM",
                         ],
-                        ["oklch(78% 0.13 274)", "oklch(20% 0.05 274)", "JR"],
+                        [
+                          "var(--color-blue-300)",
+                          "var(--color-blue-950)",
+                          "JR",
+                        ],
                       ].map(([bg, c, i]) => (
                         <span
                           key={i}
@@ -797,15 +801,15 @@ export default function ComponentsPage() {
                   <div className="flex-1 grid grid-cols-3 gap-1.5">
                     <div
                       className="aspect-3/4 rounded"
-                      style={{ background: "oklch(78% 0.10 35)" }}
+                      style={{ background: "var(--color-fiery-coral-300)" }}
                     />
                     <div
                       className="aspect-3/4 rounded ring-2 ring-(--color-interactive-primary)"
-                      style={{ background: "oklch(72% 0.14 274)" }}
+                      style={{ background: "var(--color-blue-400)" }}
                     />
                     <div
                       className="aspect-3/4 rounded"
-                      style={{ background: "oklch(78% 0.10 155)" }}
+                      style={{ background: "var(--color-green-300)" }}
                     />
                   </div>
                   <Button
@@ -2588,8 +2592,8 @@ export default function ComponentsPage() {
                       <span
                         className="inline-grid place-items-center rounded-full text-xs font-semibold"
                         style={{
-                          background: "oklch(78% 0.13 274)",
-                          color: "oklch(20% 0.05 274)",
+                          background: "var(--color-blue-300)",
+                          color: "var(--color-blue-950)",
                           height: 32,
                           width: 32,
                         }}

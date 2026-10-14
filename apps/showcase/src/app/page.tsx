@@ -1,3 +1,4 @@
+import manifest from "@wyliedog/tokens/manifest.json";
 import Link from "next/link";
 import { Button } from "@wyliedog/ui/button";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
@@ -585,8 +586,8 @@ export default function ShowcasePage() {
                       className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[9px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, oklch(60% 0.14 155) 18%, transparent)",
-                        color: "oklch(60% 0.14 155)",
+                          "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
+                        color: "var(--color-text-success)",
                       }}
                     >
                       Active
@@ -626,15 +627,15 @@ export default function ShowcasePage() {
                   className="flex items-start gap-2 rounded-md border px-3 py-2"
                   style={{
                     borderColor:
-                      "color-mix(in oklch, oklch(60% 0.14 155) 35%, transparent)",
+                      "color-mix(in oklch, var(--color-status-success) 35%, transparent)",
                     background:
-                      "color-mix(in oklch, oklch(60% 0.14 155) 10%, transparent)",
+                      "color-mix(in oklch, var(--color-status-success) 10%, transparent)",
                   }}
                 >
                   <span
                     className="grid h-4 w-4 mt-px place-items-center rounded-full shrink-0"
                     style={{
-                      background: "oklch(60% 0.14 155)",
+                      background: "var(--color-status-success)",
                       color: "var(--color-text-on-solid)",
                     }}
                   >
@@ -1090,11 +1091,11 @@ export default function ShowcasePage() {
                   <span className="relative flex h-1.5 w-1.5">
                     <span
                       className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60"
-                      style={{ background: "oklch(60% 0.14 155)" }}
+                      style={{ background: "var(--color-status-success)" }}
                     />
                     <span
                       className="relative inline-flex h-1.5 w-1.5 rounded-full"
-                      style={{ background: "oklch(60% 0.14 155)" }}
+                      style={{ background: "var(--color-status-success)" }}
                     />
                   </span>
                   Connected to main
@@ -1113,11 +1114,11 @@ export default function ShowcasePage() {
                       />
                       <span
                         className="h-2.5 w-2.5 rounded-full"
-                        style={{ background: "oklch(80% 0.15 85)" }}
+                        style={{ background: "var(--color-yellow-400)" }}
                       />
                       <span
                         className="h-2.5 w-2.5 rounded-full"
-                        style={{ background: "oklch(70% 0.16 145)" }}
+                        style={{ background: "var(--color-green-500)" }}
                       />
                     </div>
                     <div className="flex-1 text-center font-mono text-[11px] text-(--color-text-tertiary)">
@@ -1182,7 +1183,9 @@ export default function ShowcasePage() {
                             </span>
                             <span
                               className="h-1.5 w-1.5 rounded-full"
-                              style={{ background: "oklch(60% 0.14 155)" }}
+                              style={{
+                                background: "var(--color-status-success)",
+                              }}
                             />
                           </div>
                         ))}
@@ -1199,13 +1202,15 @@ export default function ShowcasePage() {
                           className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[10px]"
                           style={{
                             background:
-                              "color-mix(in oklch, oklch(72% 0.15 75) 18%, transparent)",
-                            color: "oklch(72% 0.15 75)",
+                              "color-mix(in oklch, var(--color-status-warning) 18%, transparent)",
+                            color: "var(--color-text-warning)",
                           }}
                         >
                           <span
                             className="h-1.5 w-1.5 rounded-full"
-                            style={{ background: "oklch(72% 0.15 75)" }}
+                            style={{
+                              background: "var(--color-status-warning)",
+                            }}
                           />
                           ahead by 3
                         </span>
@@ -1218,8 +1223,8 @@ export default function ShowcasePage() {
                             className="font-mono text-[10px] rounded px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, oklch(72% 0.15 75) 18%, transparent)",
-                              color: "oklch(72% 0.15 75)",
+                                "color-mix(in oklch, var(--color-status-warning) 18%, transparent)",
+                              color: "var(--color-text-warning)",
                             }}
                           >
                             M
@@ -1235,7 +1240,7 @@ export default function ShowcasePage() {
                               style={{ background: "var(--color-blue-500)" }}
                             />
                             <span className="font-mono text-(--color-text-tertiary) line-through">
-                              oklch(0.623 0.188 259.83)
+                              {manifest.primitives.colors.blue["500"].value}
                             </span>
                           </div>
                           <div
@@ -1252,7 +1257,7 @@ export default function ShowcasePage() {
                               style={{ background: "var(--color-blue-600)" }}
                             />
                             <span className="font-mono text-(--color-text-primary)">
-                              oklch(0.546 0.215 262.9)
+                              {manifest.primitives.colors.blue["600"].value}
                             </span>
                           </div>
                         </div>
@@ -1265,8 +1270,8 @@ export default function ShowcasePage() {
                             className="font-mono text-[10px] rounded px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, oklch(60% 0.14 155) 18%, transparent)",
-                              color: "oklch(60% 0.14 155)",
+                                "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
+                              color: "var(--color-text-success)",
                             }}
                           >
                             +
@@ -1287,8 +1292,8 @@ export default function ShowcasePage() {
                             className="font-mono text-[10px] rounded px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, oklch(72% 0.15 75) 18%, transparent)",
-                              color: "oklch(72% 0.15 75)",
+                                "color-mix(in oklch, var(--color-status-warning) 18%, transparent)",
+                              color: "var(--color-text-warning)",
                             }}
                           >
                             M

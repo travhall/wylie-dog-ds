@@ -39,6 +39,8 @@ export default function TokensPage() {
   const brandRamp = ["50", "100", "300", "500", "600", "700", "900"].map(
     (step) => {
       const token = blue[step];
+      // Contrast is computed against pure white on purpose; white is not a token.
+      // eslint-disable-next-line no-restricted-syntax
       const ratio = contrastRatio(token.value, "oklch(1 0 0)");
       return {
         step,
@@ -127,7 +129,7 @@ export default function TokensPage() {
                   count: meta.tokens.primitive,
                   desc: "Raw values. Never referenced directly by components.",
                   tokenName: "--color-blue-600",
-                  tokenVal: "oklch(0.546 0.215 262.9)",
+                  tokenVal: manifest.primitives.colors.blue["600"].value,
                   swatch: "var(--color-blue-600)",
                 },
                 {
@@ -244,7 +246,7 @@ export default function TokensPage() {
               <span className="inline-flex items-center gap-1.5 rounded-full border border-(--color-border-primary) bg-(--color-background-primary) px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-text-secondary)">
                 <span
                   className="h-1.5 w-1.5 rounded-full"
-                  style={{ background: "oklch(60% 0.14 155)" }}
+                  style={{ background: "var(--color-status-success)" }}
                 />
                 WCAG 2.2 AA · verified
               </span>
@@ -269,8 +271,8 @@ export default function TokensPage() {
                       className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[10px]"
                       style={{
                         background:
-                          "color-mix(in oklch, oklch(60% 0.14 155) 18%, transparent)",
-                        color: "oklch(60% 0.14 155)",
+                          "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
+                        color: "var(--color-text-success)",
                       }}
                     >
                       <svg
@@ -638,8 +640,8 @@ export default function TokensPage() {
                   <div
                     className="h-8 w-8 rounded-full grid place-items-center font-semibold text-xs"
                     style={{
-                      background: "oklch(78% 0.13 274)",
-                      color: "oklch(20% 0.05 274)",
+                      background: "var(--color-blue-300)",
+                      color: "var(--color-blue-950)",
                     }}
                   >
                     EM
@@ -673,11 +675,11 @@ export default function TokensPage() {
                   OKLCH fixes this because perceptual lightness is a first-class
                   axis. When you step from{" "}
                   <code className="font-mono text-sm px-1 py-0.5 rounded bg-(--color-background-secondary) text-(--color-text-primary)">
-                    oklch(0.546 0.215 262.9)
+                    {manifest.primitives.colors.blue["600"].value}
                   </code>{" "}
                   to{" "}
                   <code className="font-mono text-sm px-1 py-0.5 rounded bg-(--color-background-secondary) text-(--color-text-primary)">
-                    oklch(0.379 0.138 265.54)
+                    {manifest.primitives.colors.blue["900"].value}
                   </code>
                   , the difference is predictable — not a guess.
                 </p>
@@ -1147,7 +1149,7 @@ export default function TokensPage() {
                   </div>
                   <span
                     className="h-6 w-6 rounded-full grid place-items-center shrink-0"
-                    style={{ background: "oklch(60% 0.14 155)" }}
+                    style={{ background: "var(--color-status-success)" }}
                   >
                     <svg
                       viewBox="0 0 24 24"

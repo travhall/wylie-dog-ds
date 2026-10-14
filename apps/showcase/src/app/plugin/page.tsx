@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Button, buttonVariants } from "@wyliedog/ui/button";
+import manifest from "@wyliedog/tokens/manifest.json";
 import { getShowcaseMeta } from "@/lib/showcase-metadata";
+import { getColorModes } from "@/lib/token-values";
 
 export default function PluginPage() {
   const meta = getShowcaseMeta();
@@ -162,37 +164,27 @@ export default function PluginPage() {
             </div>
           </div>
           {[
-            {
-              token: "--color-background-primary",
-              light: "oklch(0.991 0.003 264.45)",
-              dark: "oklch(0.149 0.012 259.72)",
-            },
-            {
-              token: "--color-text-primary",
-              light: "oklch(0.209 0.01 268.18)",
-              dark: "oklch(0.952 0.003 264.48)",
-            },
-            {
-              token: "--color-border-primary",
-              light: "oklch(0.786 0.004 271.11)",
-              dark: "oklch(0.423 0.007 264.49)",
-            },
-          ].map((row) => (
-            <div
-              key={row.token}
-              className="grid grid-cols-3 border-b border-(--color-border-primary) last:border-0 text-[10px]"
-            >
-              <div className="px-3 py-2 text-(--color-text-primary) truncate">
-                {row.token}
+            "--color-background-primary",
+            "--color-text-primary",
+            "--color-border-primary",
+          ]
+            .map((token) => ({ token, ...getColorModes(token) }))
+            .map((row) => (
+              <div
+                key={row.token}
+                className="grid grid-cols-3 border-b border-(--color-border-primary) last:border-0 text-[10px]"
+              >
+                <div className="px-3 py-2 text-(--color-text-primary) truncate">
+                  {row.token}
+                </div>
+                <div className="px-3 py-2 border-l border-(--color-border-primary) text-(--color-text-secondary)">
+                  {row.light}
+                </div>
+                <div className="px-3 py-2 border-l border-(--color-border-primary) text-(--color-text-secondary)">
+                  {row.dark}
+                </div>
               </div>
-              <div className="px-3 py-2 border-l border-(--color-border-primary) text-(--color-text-secondary)">
-                {row.light}
-              </div>
-              <div className="px-3 py-2 border-l border-(--color-border-primary) text-(--color-text-secondary)">
-                {row.dark}
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       ),
     },
@@ -862,9 +854,7 @@ export default function PluginPage() {
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
                     {"    └─ palette/blue   "}
                     <span style={{ color: "oklch(0.80 0.17 85)" }}>~1</span>
-                    {
-                      "  oklch(0.623 0.188 259.83) → oklch(0.546 0.215 262.9)</div>"
-                    }
+                    {`  ${manifest.primitives.colors.blue["500"].value} → ${manifest.primitives.colors.blue["600"].value}</div>`}
                   </div>
                   <div style={{ color: "oklch(0.50 0.01 274)" }}>
                     {"    └─ palette/slate  "}
@@ -1185,89 +1175,48 @@ export default function PluginPage() {
                     </div>
                   </div>
                   {[
-                    {
-                      name: "--color-background-primary",
-                      light: {
-                        oklch: "oklch(0.991 0.003 264.45)",
-                        swatch: "oklch(0.991 0.003 264.45)",
-                      },
-                      dark: {
-                        oklch: "oklch(0.149 0.012 259.72)",
-                        swatch: "oklch(0.149 0.012 259.72)",
-                      },
-                    },
-                    {
-                      name: "--color-text-primary",
-                      light: {
-                        oklch: "oklch(0.209 0.01 268.18)",
-                        swatch: "oklch(0.209 0.01 268.18)",
-                      },
-                      dark: {
-                        oklch: "oklch(0.952 0.003 264.48)",
-                        swatch: "oklch(0.952 0.003 264.48)",
-                      },
-                    },
-                    {
-                      name: "--color-interactive-primary",
-                      light: {
-                        oklch: "oklch(0.546 0.215 262.9)",
-                        swatch: "oklch(0.546 0.215 262.9)",
-                      },
-                      dark: {
-                        oklch: "oklch(0.546 0.215 262.9)",
-                        swatch: "oklch(0.546 0.215 262.9)",
-                      },
-                    },
-                    {
-                      name: "--color-border-primary",
-                      light: {
-                        oklch: "oklch(0.786 0.004 271.11)",
-                        swatch: "oklch(0.786 0.004 271.11)",
-                      },
-                      dark: {
-                        oklch: "oklch(0.423 0.007 264.49)",
-                        swatch: "oklch(0.423 0.007 264.49)",
-                      },
-                    },
-                    {
-                      name: "--color-status-success",
-                      light: {
-                        oklch: "oklch(0.527 0.137 150.11)",
-                        swatch: "oklch(0.527 0.137 150.11)",
-                      },
-                      dark: {
-                        oklch: "oklch(0.8 0.182 151.75)",
-                        swatch: "oklch(0.8 0.182 151.75)",
-                      },
-                    },
-                  ].map((row) => (
-                    <div
-                      key={row.name}
-                      className="grid grid-cols-3 border-b border-(--color-border-primary) last:border-0 hover:bg-(--color-background-secondary) transition-colors"
-                    >
-                      <div className="px-3 py-2.5 font-mono text-[10px] text-(--color-text-primary) truncate">
-                        {row.name}
+                    "--color-background-primary",
+                    "--color-text-primary",
+                    "--color-interactive-primary",
+                    "--color-border-primary",
+                    "--color-status-success",
+                  ]
+                    .map((name) => {
+                      const { light, dark } = getColorModes(name);
+                      return {
+                        name,
+                        light: { oklch: light, swatch: light },
+                        dark: { oklch: dark, swatch: dark },
+                      };
+                    })
+                    .map((row) => (
+                      <div
+                        key={row.name}
+                        className="grid grid-cols-3 border-b border-(--color-border-primary) last:border-0 hover:bg-(--color-background-secondary) transition-colors"
+                      >
+                        <div className="px-3 py-2.5 font-mono text-[10px] text-(--color-text-primary) truncate">
+                          {row.name}
+                        </div>
+                        <div className="px-3 py-2.5 border-l border-(--color-border-primary) flex items-center gap-1.5">
+                          <span
+                            className="h-3.5 w-3.5 rounded-sm shrink-0 border border-(--color-border-primary)"
+                            style={{ background: row.light.swatch }}
+                          />
+                          <span className="font-mono text-[9px] text-(--color-text-tertiary) truncate">
+                            {row.light.oklch}
+                          </span>
+                        </div>
+                        <div className="px-3 py-2.5 border-l border-(--color-border-primary) flex items-center gap-1.5">
+                          <span
+                            className="h-3.5 w-3.5 rounded-sm shrink-0 border border-(--color-border-primary)"
+                            style={{ background: row.dark.swatch }}
+                          />
+                          <span className="font-mono text-[9px] text-(--color-text-tertiary) truncate">
+                            {row.dark.oklch}
+                          </span>
+                        </div>
                       </div>
-                      <div className="px-3 py-2.5 border-l border-(--color-border-primary) flex items-center gap-1.5">
-                        <span
-                          className="h-3.5 w-3.5 rounded-sm shrink-0 border border-(--color-border-primary)"
-                          style={{ background: row.light.swatch }}
-                        />
-                        <span className="font-mono text-[9px] text-(--color-text-tertiary) truncate">
-                          {row.light.oklch}
-                        </span>
-                      </div>
-                      <div className="px-3 py-2.5 border-l border-(--color-border-primary) flex items-center gap-1.5">
-                        <span
-                          className="h-3.5 w-3.5 rounded-sm shrink-0 border border-(--color-border-primary)"
-                          style={{ background: row.dark.swatch }}
-                        />
-                        <span className="font-mono text-[9px] text-(--color-text-tertiary) truncate">
-                          {row.dark.oklch}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
                   <div className="px-3 py-3 text-[10px] text-(--color-text-tertiary) font-mono">
                     + 119 more semantic tokens
                   </div>
