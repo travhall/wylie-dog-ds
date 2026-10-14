@@ -4,6 +4,8 @@
 **Auditor:** Phase 4 Implementation
 **Standard:** WCAG 2.1 Level AA (audited December 2025; the repo-wide target is now WCAG 2.2 Level AA and this audit has not been re-run against 2.2)
 
+> **Point-in-time snapshot.** The `ContextualHelp` and `GettingStartedGuide` components described below were deleted from the repo on 2026-07-02, and the UI has since changed (two tabs, a help menu, an onboarding screen). Treat the findings as history and re-audit before relying on them.
+
 ---
 
 ## Executive Summary
