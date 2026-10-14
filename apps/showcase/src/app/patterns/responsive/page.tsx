@@ -1,3 +1,4 @@
+import { getPatternDocsPath } from "@/lib/showcase-metadata";
 import { Smartphone, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { PatternCard } from "@/components/pattern-card";
@@ -36,9 +37,9 @@ export default function ResponsivePatternsPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <PatternCard
           name="Responsive Patterns"
-          description="Adaptive layout demonstrating mobile-first design: stacked cards on small screens become a responsive grid on larger viewports, navigation collapses to a Sheet on mobile."
-          components={["Card", "Sheet", "NavigationMenu"]}
-          storybookPath="/story/patterns-responsive-responsive-patterns--default"
+          description="A responsive card grid, navigation and form. Use Storybook's viewport toolbar to compare mobile, tablet and desktop."
+          components={["Card", "CardGrid", "Badge", "Button", "Label"]}
+          storybookPath={getPatternDocsPath("responsive-patterns") ?? "/"}
         />
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { getPatternDocsPath } from "@/lib/showcase-metadata";
 import { Navigation as NavigationIcon, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { PatternCard } from "@/components/pattern-card";
@@ -35,15 +36,15 @@ export default function NavigationPatternsPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <PatternCard
           name="Site Header"
-          description="Full-featured site header with logo, navigation menu, command search, and responsive mobile sheet. Adapts from desktop to mobile with a hamburger trigger."
-          components={["NavigationMenu", "Button", "Command", "Sheet"]}
-          storybookPath="/story/patterns-navigation-patterns-site-header--default"
+          description="Header with logo, navigation links and actions, sticky with a backdrop blur; default and transparent variants."
+          components={["SiteHeader", "Button"]}
+          storybookPath={getPatternDocsPath("site-header") ?? "/"}
         />
         <PatternCard
           name="Site Footer"
-          description="Multi-column site footer with link groups, dividers, and copyright. Collapses gracefully to a single column on small screens."
-          components={["Separator", "NavigationMenu"]}
-          storybookPath="/story/patterns-navigation-patterns-site-footer--default"
+          description="Footer with logo, navigation columns, social links and copyright; default and minimal variants with a responsive grid."
+          components={["SiteFooter"]}
+          storybookPath={getPatternDocsPath("site-footer") ?? "/"}
         />
       </div>
     </div>

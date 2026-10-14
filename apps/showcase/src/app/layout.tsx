@@ -201,12 +201,8 @@ export default function RootLayout({
           copyright="© 2026 Wylie Dog"
           extra={
             <div className="inline-flex items-center gap-2">
-              <span
-                className="h-1.5 w-1.5 rounded-full"
-                style={{ background: "var(--color-status-success)" }}
-              />
               <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
-                All systems operational
+                MIT licensed
               </span>
             </div>
           }

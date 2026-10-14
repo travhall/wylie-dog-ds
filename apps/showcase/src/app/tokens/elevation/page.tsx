@@ -74,8 +74,8 @@ export default function ElevationPage() {
 
       <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-secondary) p-5">
         <p className="text-[11px] text-(--color-text-tertiary) leading-relaxed">
-          Dark mode: shadows are replaced with border + background-lift. Same
-          tokens, different rendering.
+          Dark mode redefines the same shadow tokens with higher opacity (0.3 to
+          0.4 instead of 0.05 to 0.1).
         </p>
       </div>
     </TokensSubpageShell>

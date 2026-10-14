@@ -3614,7 +3614,7 @@
         "value": "cubic-bezier(0.4, 0, 1, 1)",
         "type": "cubicBezier",
         "variable": "var(--transition-easing-in)",
-        "description": "Ease-in for elements entering"
+        "description": "Ease-in (accelerating) curve, for elements leaving"
       },
       "transition-easing-out": {
         "name": "transitionEasingOut",
@@ -3626,7 +3626,7 @@
         "value": "cubic-bezier(0, 0, 0.2, 1)",
         "type": "cubicBezier",
         "variable": "var(--transition-easing-out)",
-        "description": "Ease-out for elements exiting"
+        "description": "Ease-out (decelerating) curve, for elements entering"
       },
       "transition-easing-in-out": {
         "name": "transitionEasingInOut",

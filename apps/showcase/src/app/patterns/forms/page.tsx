@@ -1,3 +1,4 @@
+import { getPatternDocsPath } from "@/lib/showcase-metadata";
 import { FormInput, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { PatternCard } from "@/components/pattern-card";
@@ -35,22 +36,15 @@ export default function FormPatternsPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <PatternCard
           name="Form Compositions"
-          description="Multi-section form with field groups, select menus, checkboxes, and contextual help text. Shows how to structure complex data entry UIs."
-          components={[
-            "Form",
-            "Input",
-            "Select",
-            "Checkbox",
-            "Button",
-            "Label",
-          ]}
-          storybookPath="/story/patterns-form-patterns-form-compositions--default"
+          description="Contact, multi-step, preferences, project-creation, payment and settings forms built from the system's form components."
+          components={["Form", "Input", "Select", "Checkbox", "Switch", "Tabs"]}
+          storybookPath={getPatternDocsPath("form-compositions") ?? "/"}
         />
         <PatternCard
           name="Form Validation"
-          description="Real-time and on-submit validation with inline error messages, success badges, and accessible alert announcements."
-          components={["Form", "Input", "Button", "Alert", "Badge"]}
-          storybookPath="/story/patterns-form-patterns-form-validation--default"
+          description="Required-field, inline, password-strength, multi-step and async validation using the Form components and controlled state, with no external validation library."
+          components={["Form", "Input", "Textarea", "Alert", "Button"]}
+          storybookPath={getPatternDocsPath("form-validation-patterns") ?? "/"}
         />
       </div>
     </div>

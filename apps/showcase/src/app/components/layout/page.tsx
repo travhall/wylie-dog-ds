@@ -3,25 +3,9 @@ import { Badge } from "@wyliedog/ui/badge";
 import { Separator } from "@wyliedog/ui/separator";
 import { ScrollArea } from "@wyliedog/ui/scroll-area";
 import { AspectRatio } from "@wyliedog/ui/aspect-ratio";
-import { CheckCircle2, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { getComponentCategoryCounts } from "@/lib/showcase-metadata";
-
-const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
-  const map = {
-    stable: "text-(--color-text-success)",
-    beta: "text-(--color-text-warning)",
-    alpha: "text-(--color-text-danger)",
-  } as const;
-  return (
-    <div className="flex items-center gap-1.5 border border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
-      <CheckCircle2 className={`h-3.5 w-3.5 ${map[status]}`} />
-      <span className="text-[9px] uppercase font-black tracking-widest text-(--color-text-secondary)">
-        {status}
-      </span>
-    </div>
-  );
-};
 
 export default function LayoutPage() {
   const components = [
@@ -29,7 +13,6 @@ export default function LayoutPage() {
       name: "Collapsible",
       description:
         "An interactive component that expands or collapses a section of content.",
-      status: "stable" as const,
       preview: (
         <div className="w-full space-y-1">
           <div className="flex items-center justify-between px-3 py-2 border border-(--color-border-primary)/20 rounded-lg text-xs">
@@ -46,7 +29,6 @@ export default function LayoutPage() {
       name: "Resizable",
       description:
         "Resizable panels with drag handles for flexible layout control.",
-      status: "stable" as const,
       preview: (
         <div className="flex w-full h-16 border border-(--color-border-primary)/20 rounded-lg overflow-hidden text-xs text-(--color-text-secondary)">
           <div className="flex-1 flex items-center justify-center bg-(--color-interactive-primary)/5">
@@ -63,7 +45,6 @@ export default function LayoutPage() {
       name: "Scroll Area",
       description:
         "Custom scrollable container with a styled scrollbar that overlays content.",
-      status: "stable" as const,
       preview: (
         <ScrollArea className="h-20 w-full rounded border border-(--color-border-primary)/20 p-3">
           <div className="space-y-1">
@@ -80,7 +61,6 @@ export default function LayoutPage() {
       name: "Separator",
       description:
         "Visually or semantically separates content, available in horizontal and vertical orientations.",
-      status: "stable" as const,
       preview: (
         <div className="w-full space-y-2">
           <div className="text-xs text-(--color-text-secondary)">Above</div>
@@ -98,7 +78,6 @@ export default function LayoutPage() {
       name: "Aspect Ratio",
       description:
         "Maintains a consistent width-to-height ratio for content such as images and videos.",
-      status: "stable" as const,
       preview: (
         <div className="w-full max-w-40">
           <AspectRatio ratio={16 / 9}>
@@ -139,7 +118,8 @@ export default function LayoutPage() {
         <p className="text-lg text-(--color-text-secondary) leading-relaxed max-w-2xl">
           Structural components for organizing and arranging page content:
           Aspect Ratio, Collapsible, Resizable panels, Scroll Area, and
-          Separator.
+          Separator. This page previews a selection; the Components page has all{" "}
+          {count}.
         </p>
       </section>
 
@@ -155,7 +135,6 @@ export default function LayoutPage() {
                 <CardTitle className="text-xl font-bold group-hover:text-(--color-interactive-primary) transition-colors text-(--color-text-primary)">
                   {comp.name}
                 </CardTitle>
-                <StatusBadge status={comp.status} />
               </div>
               <p className="text-sm text-(--color-text-secondary) leading-relaxed">
                 {comp.description}

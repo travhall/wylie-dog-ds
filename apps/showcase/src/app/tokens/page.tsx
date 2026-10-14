@@ -216,7 +216,7 @@ export default function TokensPage() {
           { n: "06", label: "Motion", id: "motion" },
         ]}
         label="Token categories"
-        meta={`${meta.tokens.total.toLocaleString()} tokens · v${meta.versions.ui}`}
+        meta={`${meta.tokens.total.toLocaleString()} tokens · v${meta.versions.tokens}`}
       />
 
       {/* ── 01 · COLOR ── */}
@@ -238,8 +238,9 @@ export default function TokensPage() {
                 the math.
               </h2>
               <p className="mt-3 text-(--color-text-secondary) leading-relaxed">
-                Every brand step is one perceptual lightness apart. Mix safely,
-                lighten without muddying, and stay AA-compliant by default.
+                Lightness is a first-class axis, so steps move predictably. Mix
+                safely, lighten without muddying, and pick a step by its
+                measured contrast, shown below for the brand ramp.
               </p>
             </div>
             <div className="flex items-center gap-2 shrink-0">
@@ -248,7 +249,7 @@ export default function TokensPage() {
                   className="h-1.5 w-1.5 rounded-full"
                   style={{ background: "var(--color-status-success)" }}
                 />
-                WCAG 2.2 AA · verified
+                Contrast measured against white
               </span>
               <Link href="/tokens/colors">
                 <Button variant="outline" size="sm" className="rounded-md">
@@ -597,8 +598,12 @@ export default function TokensPage() {
               </h2>
               <p className="mt-3 text-(--color-text-secondary) leading-relaxed">
                 Besley for editorial moments. Manrope for everything else.
-                JetBrains Mono for code and labels. Eight sizes, four weights,
-                three families.
+                JetBrains Mono for code and labels.{" "}
+                {Object.keys(manifest.primitives.typography.size).length} sizes,{" "}
+                {Object.keys(manifest.primitives.typography.weight).length}{" "}
+                weights,{" "}
+                {Object.keys(manifest.primitives.typography.family).length}{" "}
+                families.
               </p>
             </div>
             <Link href="/tokens/typography">
@@ -777,7 +782,8 @@ export default function TokensPage() {
                 size="sm"
                 className="rounded-md shrink-0"
               >
-                All 28 spacing tokens →
+                All {Object.keys(manifest.primitives.spacing).length} spacing
+                tokens →
               </Button>
             </Link>
           </div>
@@ -790,19 +796,19 @@ export default function TokensPage() {
             {/* Spacing scale panel */}
             <div className="lg:col-span-4 rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5">
               <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary) mb-4">
-                Scale · 4px base
+                Scale · --space-*
               </p>
               <div className="space-y-2">
                 {[
-                  { step: "1", px: 4 },
-                  { step: "2", px: 8 },
-                  { step: "3", px: 12 },
-                  { step: "4", px: 16, inUse: true },
-                  { step: "5", px: 20 },
-                  { step: "6", px: 24 },
-                  { step: "8", px: 32 },
-                  { step: "10", px: 40 },
-                  { step: "12", px: 48 },
+                  { step: "050", px: 4 },
+                  { step: "100", px: 8 },
+                  { step: "150", px: 12 },
+                  { step: "200", px: 16, inUse: true },
+                  { step: "300", px: 24 },
+                  { step: "400", px: 32 },
+                  { step: "500", px: 40 },
+                  { step: "600", px: 48 },
+                  { step: "700", px: 64 },
                 ].map((s) => (
                   <div
                     key={s.step}
@@ -890,7 +896,10 @@ export default function TokensPage() {
                 size="sm"
                 className="rounded-md shrink-0"
               >
-                All 12 radius tokens →
+                All{" "}
+                {Object.keys(manifest.primitives.borderRadius).length +
+                  Object.keys(manifest.primitives.borderWidth).length}{" "}
+                radius and border tokens →
               </Button>
             </Link>
           </div>
@@ -1086,7 +1095,8 @@ export default function TokensPage() {
                 size="sm"
                 className="rounded-md shrink-0"
               >
-                All 9 shadow tokens →
+                All {Object.keys(manifest.semantics.shadow).length} shadow
+                tokens →
               </Button>
             </Link>
           </div>
@@ -1249,8 +1259,8 @@ export default function TokensPage() {
                 ))}
               </div>
               <p className="mt-4 pt-4 border-t border-(--color-border-primary) text-[11px] text-(--color-text-tertiary) leading-relaxed">
-                Dark mode: shadows are replaced with border + background-lift.
-                Same tokens, different rendering.
+                Dark mode redefines the same shadow tokens with higher opacity
+                (0.3 to 0.4 instead of 0.05 to 0.1).
               </p>
             </div>
           </div>
@@ -1276,9 +1286,10 @@ export default function TokensPage() {
                 </span>
               </h2>
               <p className="mt-3 text-(--color-text-secondary) leading-relaxed">
-                Standard for persistent UI, emphasized for key moments,
-                decelerate for entrances, accelerate for exits. Pick a duration
-                from the scale — the curve does the rest.
+                A default curve for most transitions, ease-out (decelerate) for
+                entrances, ease-in (accelerate) for exits, and ease-in-out for
+                symmetric moves. Pick a duration from the scale — the curve does
+                the rest.
               </p>
             </div>
             <Link href="/tokens/motion">
@@ -1287,7 +1298,11 @@ export default function TokensPage() {
                 size="sm"
                 className="rounded-md shrink-0"
               >
-                All 11 motion tokens →
+                All{" "}
+                {Object.keys(manifest.semantics.easing).length +
+                  Object.keys(manifest.semantics.duration).length +
+                  Object.keys(manifest.primitives.duration).length}{" "}
+                motion tokens →
               </Button>
             </Link>
           </div>

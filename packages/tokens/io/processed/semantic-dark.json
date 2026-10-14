@@ -512,12 +512,12 @@
   "transition.easing.in": {
     "$type": "cubicBezier",
     "$value": "cubic-bezier(0.4, 0, 1, 1)",
-    "$description": "Ease-in for elements entering"
+    "$description": "Ease-in (accelerating) curve, for elements leaving"
   },
   "transition.easing.out": {
     "$type": "cubicBezier",
     "$value": "cubic-bezier(0, 0, 0.2, 1)",
-    "$description": "Ease-out for elements exiting"
+    "$description": "Ease-out (decelerating) curve, for elements entering"
   },
   "transition.easing.in-out": {
     "$type": "cubicBezier",

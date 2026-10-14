@@ -70,13 +70,17 @@ export default function ArchitecturePage() {
 
               <dl className="mt-10 grid grid-cols-3 gap-6 max-w-md">
                 {[
-                  { label: "Packages", value: "2", sub: "+ 2 apps" },
+                  { label: "Packages", value: "2", sub: "+ 2 apps, 2 configs" },
                   {
                     label: "Token tiers",
                     value: "3",
                     sub: "primitive → comp.",
                   },
-                  { label: "Cold build", value: "11s", sub: "tokens + ui" },
+                  {
+                    label: "Components",
+                    value: String(meta.components.count),
+                    sub: "in @wyliedog/ui",
+                  },
                 ].map((s) => (
                   <div key={s.label}>
                     <dt className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
@@ -336,7 +340,7 @@ export default function ArchitecturePage() {
                         style={{ background: "var(--color-status-success)" }}
                       />
                       <span className="text-(--color-text-secondary)">
-                        graph in sync · 4m ago
+                        workspace dependencies
                       </span>
                     </span>
                   </div>
@@ -425,7 +429,7 @@ export default function ArchitecturePage() {
                     },
                     { indent: 1, icon: "file", name: "pnpm-workspace.yaml" },
                     { indent: 1, icon: "file", name: "turbo.json" },
-                    { indent: 1, icon: "file", name: "tsconfig.base.json" },
+                    { indent: 1, icon: "file", name: "package.json" },
                   ].map((row, i) => (
                     <div
                       key={i}
@@ -522,10 +526,10 @@ export default function ArchitecturePage() {
                   desc: "The single source of truth. Source JSON files plus a Style Dictionary config that emits tokens.css with primitive, semantic, and component tiers as CSS custom properties.",
                   meta: [
                     ["Stack", "Style Dictionary · TypeScript"],
-                    ["Outputs", "tokens.css · tokens.js · tokens.d.ts"],
+                    ["Outputs", "tokens.css · index.js · manifest.json"],
                     ["Depended on by", "@wyliedog/ui"],
                   ],
-                  footer: `${meta.tokens.total} tokens · ${meta.components.categories} categories`,
+                  footer: `${meta.tokens.total} tokens · 3 tiers`,
                 },
                 {
                   pkg: "@wyliedog/ui",
@@ -545,9 +549,12 @@ export default function ArchitecturePage() {
                       <rect x="14" y="14" width="7" height="7" rx="1.5" />
                     </svg>
                   ),
-                  desc: "42 typed React components, each a forwardRef wrapper around a Radix primitive with CVA variants. Imports tokens.css and re-exports it as @wyliedog/ui/styles.",
+                  desc: `${meta.components.count} typed React components with CVA variants: ${meta.stack.radixBackedComponents} are built on Radix primitives and the rest are plain forwardRef components. Compiles Tailwind and tokens.css into @wyliedog/ui/styles.`,
                   meta: [
-                    ["Stack", "React 19 · TS 5.9 · Vite 7"],
+                    [
+                      "Stack",
+                      `React ${meta.stack.react} · TypeScript ${meta.stack.typescript} · tsup`,
+                    ],
                     ["Foundation", "Radix UI · CVA · Slot"],
                     ["Depended on by", "storybook · showcase"],
                   ],
@@ -572,13 +579,16 @@ export default function ArchitecturePage() {
                   iconColor: "var(--color-fiery-coral-600)",
                   iconBg:
                     "color-mix(in oklch, var(--color-fiery-coral-400) 22%, transparent)",
-                  desc: "Component documentation and the pattern playground. Every export from @wyliedog/ui has a story; every story is its own a11y harness, prop matrix, and visual diff target.",
+                  desc: "Component documentation and the pattern playground. Every component in @wyliedog/ui has a story file. Stories run as accessibility tests in the test suite, and a curated set has visual regression baselines.",
                   meta: [
-                    ["Stack", `Storybook ${meta.versions.storybook} · Vite 7`],
+                    [
+                      "Stack",
+                      `Storybook ${meta.versions.storybook} · Vite ${meta.stack.vite}`,
+                    ],
                     ["Consumes", "@wyliedog/ui"],
-                    ["Deploy", "wyliedogstorybook.com · Vercel"],
+                    ["Deploy", "wyliedogstorybook.com · Netlify"],
                   ],
-                  footer: "63 stories · 0 a11y warnings",
+                  footer: "Accessibility checks enforced in tests",
                   footerDot: true,
                 },
                 {
@@ -600,13 +610,13 @@ export default function ArchitecturePage() {
                   iconColor: "var(--color-blue-700)",
                   iconBg:
                     "color-mix(in oklch, var(--color-blue-400) 22%, transparent)",
-                  desc: "The page you're reading. A Next.js 16 App Router site that consumes @wyliedog/ui as its only component dependency — the marketing site eats its own design system.",
+                  desc: "The page you're reading. A Next.js App Router site that consumes @wyliedog/ui as its only component dependency — the marketing site eats its own design system.",
                   meta: [
-                    ["Stack", "Next.js 16 · App Router"],
+                    ["Stack", `Next.js ${meta.stack.next} · App Router`],
                     ["Consumes", "@wyliedog/ui"],
-                    ["Deploy", "wyliedog.dev · Vercel edge"],
+                    ["Deploy", "wyliedog.com"],
                   ],
-                  footer: "Lighthouse 100 · LCP 0.8s",
+                  footer: "Counts and token values are read from the repo",
                 },
               ].map((card) => (
                 <article
@@ -814,10 +824,15 @@ export default function ArchitecturePage() {
                       >
                         --color-interactive-primary
                       </span>
-                      <span className="text-(--color-text-secondary)">:</span>
-                    </div>
-                    <div className="pl-4 text-(--color-text-secondary)">
-                      var(--color-blue-600);
+                      <span className="text-(--color-text-secondary)">
+                        :{" "}
+                        {
+                          manifest.semantics.interactive[
+                            "color-interactive-primary"
+                          ].value
+                        }
+                        ;
+                      </span>
                     </div>
                     <div className="mt-1 text-(--color-text-tertiary) italic">
                       {"/* component */"}
@@ -828,10 +843,15 @@ export default function ArchitecturePage() {
                       >
                         --color-button-primary-background
                       </span>
-                      <span className="text-(--color-text-secondary)">:</span>
-                    </div>
-                    <div className="pl-4 text-(--color-text-secondary)">
-                      var(--color-interactive-primary);
+                      <span className="text-(--color-text-secondary)">
+                        :{" "}
+                        {
+                          manifest.components.button[
+                            "button-primary-background"
+                          ].value
+                        }
+                        ;
+                      </span>
                     </div>
                   </div>
                 ),
@@ -1026,7 +1046,7 @@ export default function ArchitecturePage() {
                     </span>
                   </div>
                   <div style={{ color: "var(--color-gray-500)" }}>
-                    turbo run build --filter=...^...
+                    turbo run build
                   </div>
                   <div className="mt-2">
                     <span style={{ color: "var(--color-green-500)" }}>▸</span>{" "}
@@ -1050,13 +1070,13 @@ export default function ArchitecturePage() {
                     className="pl-4"
                     style={{ color: "var(--color-gray-500)" }}
                   >
-                    → dist/tokens.js
+                    → dist/index.js
                   </div>
                   <div
                     className="pl-4"
                     style={{ color: "var(--color-gray-500)" }}
                   >
-                    → dist/tokens.d.ts
+                    → dist/manifest.json
                   </div>
                   <div
                     className="pl-4"
@@ -1070,29 +1090,20 @@ export default function ArchitecturePage() {
                       @wyliedog/ui#build
                     </span>{" "}
                     <span style={{ color: "var(--color-gray-500)" }}>
-                      vite build
+                      tailwind + tsup
                     </span>
                   </div>
                   <div
                     className="pl-4"
                     style={{ color: "var(--color-gray-500)" }}
                   >
-                    → dist/index.js{" "}
-                    <span style={{ color: "var(--color-green-500)" }}>
-                      194 KB
-                    </span>
-                  </div>
-                  <div
-                    className="pl-4"
-                    style={{ color: "var(--color-gray-500)" }}
-                  >
-                    → dist/index.d.ts
+                    → dist/index.css
                   </div>
                   <div
                     className="pl-4"
                     style={{ color: "var(--color-green-500)" }}
                   >
-                    ✓ done in 8.6s
+                    ✓ done · one entry per component (.js · .cjs · .d.ts)
                   </div>
                   <div className="mt-1">
                     <span style={{ color: "var(--color-green-500)" }}>▸</span>{" "}
@@ -1104,10 +1115,7 @@ export default function ArchitecturePage() {
                     className="pl-4"
                     style={{ color: "var(--color-green-500)" }}
                   >
-                    ✓ cached{" "}
-                    <span style={{ color: "var(--color-gray-500)" }}>
-                      (no input change)
-                    </span>
+                    ✓ build:css, then storybook build
                   </div>
                   <div className="mt-1">
                     <span style={{ color: "var(--color-green-500)" }}>▸</span>{" "}
@@ -1119,23 +1127,7 @@ export default function ArchitecturePage() {
                     className="pl-4"
                     style={{ color: "var(--color-green-500)" }}
                   >
-                    ✓ cached{" "}
-                    <span style={{ color: "var(--color-gray-500)" }}>
-                      (no input change)
-                    </span>
-                  </div>
-                  <div
-                    className="mt-2"
-                    style={{ color: "var(--color-green-500)" }}
-                  >
-                    Tasks: 4 successful, 4 total
-                  </div>
-                  <div style={{ color: "var(--color-gray-500)" }}>
-                    Time: 11.0s{" "}
-                    <span style={{ color: "var(--color-green-500)" }}>
-                      &gt;&gt;&gt;
-                    </span>{" "}
-                    FULL TURBO
+                    ✓ next build
                   </div>
                   <div className="mt-1">
                     <span style={{ color: "var(--color-green-500)" }}>$</span>{" "}
@@ -1167,25 +1159,25 @@ export default function ArchitecturePage() {
                       n: "1",
                       title: "Tokens build",
                       meta: "style-dictionary",
-                      desc: `Reads JSON source files, resolves aliases, emits tokens.css with all ${meta.tokens.total} custom properties plus JS and TypeScript types.`,
+                      desc: `Reads JSON source files, resolves aliases, emits tokens.css with all ${meta.tokens.total} custom properties plus JS exports, types and a manifest.`,
                     },
                     {
                       n: "2",
                       title: "UI build",
-                      meta: "8.6s · vite build",
-                      desc: `Picks up the fresh tokens.css via workspace symlink. Vite bundles all ${meta.components.count} components into a tree-shakeable ESM output.`,
+                      meta: "tailwind + tsup",
+                      desc: `Picks up the fresh tokens.css via workspace symlink. tsup builds each of the ${meta.components.count} components as its own ESM and CommonJS entry, so imports are tree-shakeable.`,
                     },
                     {
                       n: "3",
                       title: "Storybook",
-                      meta: "cached · no change",
-                      desc: "Turborepo cache hit — no input files changed, no rebuild needed. Stories stay live against the new token values.",
+                      meta: "build:css + storybook build",
+                      desc: "Compiles its own Tailwind sheet and builds the docs, so the stories render against the new token values.",
                     },
                     {
                       n: "4",
                       title: "Showcase",
-                      meta: "cached · no change",
-                      desc: "Next.js build also cached. The public site reflects the new token values without a full rebuild.",
+                      meta: "next build",
+                      desc: "Reads token values and counts from the repo, so the public site reflects the new tokens on its next build.",
                     },
                   ].map((step) => (
                     <li key={step.n} className="relative pl-12">
@@ -1232,13 +1224,14 @@ export default function ArchitecturePage() {
             </div>
             <div className="lg:col-span-7">
               <p className="text-(--color-text-secondary) text-lg leading-relaxed">
-                No bespoke component shapes. Every export from{" "}
-                <span className="font-mono text-sm">@wyliedog/ui</span> is a{" "}
-                <span className="font-mono text-sm">forwardRef</span> wrapper
-                around a Radix primitive, with CVA drives variants, Tailwind
-                drives the prose, and an{" "}
-                <span className="font-mono text-sm">asChild</span> escape hatch
-                through Slot.
+                No bespoke component shapes. Components in{" "}
+                <span className="font-mono text-sm">@wyliedog/ui</span> are{" "}
+                <span className="font-mono text-sm">forwardRef</span> wrappers,
+                {` ${meta.stack.radixBackedComponents} of them around a Radix primitive`}
+                , with CVA driving variants, Tailwind classes backed by tokens,
+                and an <span className="font-mono text-sm">asChild</span> escape
+                hatch through Slot where it applies. The excerpt below is
+                simplified.
               </p>
             </div>
           </div>

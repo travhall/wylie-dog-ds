@@ -3,32 +3,15 @@ import { Alert, AlertTitle, AlertDescription } from "@wyliedog/ui/alert";
 import { Badge } from "@wyliedog/ui/badge";
 import { Progress } from "@wyliedog/ui/progress";
 import { Skeleton } from "@wyliedog/ui/skeleton";
-import { CheckCircle2, Info, ArrowLeft } from "lucide-react";
+import { Info, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { getComponentCategoryCounts } from "@/lib/showcase-metadata";
-
-const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
-  const map = {
-    stable: "text-(--color-text-success)",
-    beta: "text-(--color-text-warning)",
-    alpha: "text-(--color-text-danger)",
-  } as const;
-  return (
-    <div className="flex items-center gap-1.5 border border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
-      <CheckCircle2 className={`h-3.5 w-3.5 ${map[status]}`} />
-      <span className="text-[9px] uppercase font-black tracking-widest text-(--color-text-secondary)">
-        {status}
-      </span>
-    </div>
-  );
-};
 
 export default function FeedbackPage() {
   const components = [
     {
       name: "Alert",
       description: "Displays a callout for user attention.",
-      status: "stable" as const,
       preview: (
         <Alert className="py-2 scale-90 origin-center bg-(--color-interactive-primary)/3 border-(--color-interactive-primary)/10">
           <Info className="h-4 w-4 text-(--color-interactive-primary)" />
@@ -43,7 +26,6 @@ export default function FeedbackPage() {
       name: "Progress",
       description:
         "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-      status: "beta" as const,
       preview: (
         <Progress
           value={66}
@@ -54,7 +36,6 @@ export default function FeedbackPage() {
     {
       name: "Skeleton",
       description: "Used to show a placeholder while content is loading.",
-      status: "stable" as const,
       preview: (
         <div className="flex items-center space-x-4">
           <Skeleton className="h-10 w-10 rounded-full bg-(--color-border-primary)/10" />
@@ -94,7 +75,8 @@ export default function FeedbackPage() {
         </div>
         <p className="text-lg text-(--color-text-secondary) leading-relaxed">
           Status indicators and messaging components that communicate states to
-          the user.
+          the user. This page previews a selection; the Components page has all{" "}
+          {count}.
         </p>
       </section>
 
@@ -109,7 +91,6 @@ export default function FeedbackPage() {
                 <CardTitle className="text-xl font-bold group-hover:text-(--color-interactive-primary) transition-colors text-(--color-text-primary)">
                   {comp.name}
                 </CardTitle>
-                <StatusBadge status={comp.status} />
               </div>
               <p className="text-sm text-(--color-text-secondary) leading-relaxed">
                 {comp.description}

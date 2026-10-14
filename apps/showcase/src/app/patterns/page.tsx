@@ -313,9 +313,9 @@ export default function PatternsPage() {
                   sub: "auth, data, layout, a11y…",
                 },
                 {
-                  label: "Composable",
-                  value: "100%",
-                  sub: "built from primitives",
+                  label: "Built from",
+                  value: "Primitives",
+                  sub: "and the compositions",
                 },
                 {
                   label: "Accessible",
@@ -357,14 +357,14 @@ export default function PatternsPage() {
             num="01"
             count={patternCategoryCount("Authentication Patterns")}
             title="Authentication"
-            desc="Sign-in, sign-up, and account recovery. The hard parts — validation states, async submission, error recovery, social SSO — are wired up so product teams don't re-invent the flow on every new surface."
+            desc="Sign-in, registration and account recovery examples, with validation states, error messages and social-auth placeholders."
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
               href="/patterns/auth"
               title="Login & Registration"
-              desc="Sign-in form, registration flow, social auth options. Same schema, three layouts — page, modal, and drawer."
-              tags={["Form", "Input", "Button", "Separator", "Link"]}
+              desc="Simple login, login with social auth, a registration form, and a tabbed login and registration form."
+              tags={["Card", "Form", "Input", "Button", "Tabs", "Checkbox"]}
               preview={
                 <div
                   className="mx-auto max-w-[320px] rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-5"
@@ -496,8 +496,8 @@ export default function PatternsPage() {
             <PatCard
               href="/patterns/auth"
               title="Password Recovery"
-              desc="Forgot-password entry, throttled resend, magic-link return state. Handles all five edge cases auth audits flag: expired token, used token, mismatched email, rate-limit, and SSO-only accounts."
-              tags={["Form", "Input", "Alert", "Button"]}
+              desc="Forgot-password email step, reset-password form, an invalid-link state, and a multi-step recovery flow."
+              tags={["Card", "Form", "Input", "Alert", "Button"]}
               preview={
                 <div className="grid grid-cols-2 gap-3 max-w-115 mx-auto">
                   <div
@@ -610,8 +610,8 @@ export default function PatternsPage() {
             <PatCard
               href="/patterns/data"
               title="Card Grid"
-              desc="Responsive grid of data cards with pagination, filtering, and empty states. Reflows 4 → 3 → 2 → 1 columns across our breakpoints."
-              tags={["Card", "Badge", "Pagination", "Avatar"]}
+              desc="Responsive grid of cards with default, all-variants and interactive examples. CardGrid takes a column count per breakpoint."
+              tags={["CardGrid", "Card", "Badge", "Button"]}
               preview={
                 <div className="space-y-2 max-w-105 mx-auto">
                   <div className="flex items-center justify-between text-[10px]">
@@ -706,8 +706,8 @@ export default function PatternsPage() {
             <PatCard
               href="/patterns/data"
               title="Feature Grid"
-              desc="Marketing-grade feature showcase: 2×2, 3×2, or 4×1 layouts with iconography, titles, and one-line benefit copy. Designed to be skimmed."
-              tags={["Card", "Icon", "Heading", "Text"]}
+              desc="A grid of features with icons, titles and short descriptions, with several column configurations."
+              tags={["FeatureGrid"]}
               preview={
                 <div className="grid grid-cols-2 gap-2 max-w-105 mx-auto">
                   {[
@@ -791,8 +791,8 @@ export default function PatternsPage() {
               href="/patterns/feedback"
               full
               title="Error Boundary Patterns"
-              desc="Page-level and component-scoped error states with recovery UI. Captures the error, auto-saves the user's in-flight work, and offers a non-destructive path back to a working state — without unmounting the whole tree."
-              tags={["Alert", "Button", "Card", "Icon", "Code"]}
+              desc="Basic and recoverable error boundaries, multiple and granular boundaries, custom fallback UI, and error logging."
+              tags={["Alert", "Badge", "Button", "Card"]}
               preview={
                 <div className="grid lg:grid-cols-2 gap-3 max-w-160 mx-auto">
                   <div className="rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4">
@@ -934,8 +934,8 @@ export default function PatternsPage() {
             <PatCard
               href="/patterns/forms"
               title="Form Compositions"
-              desc="Multi-field forms, field groupings, and step indicators. Standard layout primitives so a 30-field settings page reads like a 5-field one."
-              tags={["Form", "Input", "Switch", "Stepper", "Fieldset"]}
+              desc="Contact, multi-step, preferences, project-creation, payment and settings forms built from the system's form components."
+              tags={["Form", "Input", "Select", "Checkbox", "Switch", "Tabs"]}
               preview={
                 <div
                   className="mx-auto max-w-90 rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4"
@@ -1036,8 +1036,8 @@ export default function PatternsPage() {
             <PatCard
               href="/patterns/forms"
               title="Form Validation Patterns"
-              desc="Error, async, and success states with consistent messaging. Validation fires on blur, runs async checks against the server, and recovers when the user corrects."
-              tags={["Input", "Form", "Icon", "Progress", "Text"]}
+              desc="Required-field, inline, password-strength, multi-step and async validation using the Form components and controlled state, with no external validation library."
+              tags={["Form", "Input", "Textarea", "Alert", "Button"]}
               preview={
                 <div
                   className="mx-auto max-w-90 rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4 space-y-3"
@@ -1156,14 +1156,14 @@ export default function PatternsPage() {
             num="05"
             count={patternCategoryCount("Layout Patterns")}
             title="Layout"
-            desc="The page shell — what holds every product surface together. One layout primitive wired for sidebar, content, and overlay regions, with responsive collapse built in."
+            desc="Page-level layouts built from the system's components: a dashboard, a settings page, a landing page and a user profile."
           />
           <PatCard
             href="/patterns/layout"
             full
             title="Layout Patterns"
-            desc="Page shell, sidebar, content area, and responsive breakpoints. The sidebar collapses to a sheet below lg; the content area never exceeds a 1280px reading measure."
-            tags={["Sidebar", "NavigationMenu", "Container", "Sheet", "Card"]}
+            desc="Dashboard, settings page, landing page and user profile layouts, each composed from cards, inputs and separators."
+            tags={["Card", "Avatar", "Badge", "Button", "Input", "Separator"]}
             preview={
               <div
                 className="mx-auto max-w-180 rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
@@ -1342,8 +1342,8 @@ export default function PatternsPage() {
             <PatCard
               href="/patterns/navigation"
               title="Site Header"
-              desc="Sticky header with logo, primary nav, search trigger, and theme toggle. Blurs the content beneath on scroll. Used as the header on this very page."
-              tags={["NavigationMenu", "Button", "Command", "ToggleGroup"]}
+              desc="Header with logo, navigation links and actions, sticky with a backdrop blur; default and transparent variants. Used as the header on this site."
+              tags={["SiteHeader", "Button"]}
               preview={
                 <div
                   className="mx-auto max-w-105 rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
@@ -1422,8 +1422,8 @@ export default function PatternsPage() {
             <PatCard
               href="/patterns/navigation"
               title="Site Footer"
-              desc="Multi-column footer with brand block, sitemap columns, legal links, and a live status indicator. Collapses to two columns on mobile, brand stacked above."
-              tags={["Separator", "Link", "Badge", "Heading"]}
+              desc="Footer with logo, navigation columns, social links and copyright; default and minimal variants with a responsive grid."
+              tags={["SiteFooter"]}
               preview={
                 <div
                   className="mx-auto max-w-105 rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
@@ -1509,8 +1509,8 @@ export default function PatternsPage() {
             <PatCard
               href="/patterns/compositions"
               title="Section: Hero"
-              desc="Headline, lead, CTAs, optional eyebrow badge. Three layout variants: centered, split, and asymmetric."
-              tags={["Heading", "Button", "Badge"]}
+              desc="Headline, description, action buttons and an optional badge or image, in default, gradient and centered layouts."
+              tags={["SectionHero"]}
               preview={
                 <div
                   className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary)"
@@ -1560,8 +1560,8 @@ export default function PatternsPage() {
             <PatCard
               href="/patterns/compositions"
               title="Section: Features"
-              desc="Features / benefits with optional icons and supporting copy. Two-column, three-up row, or alternating screenshot+text variants."
-              tags={["Heading", "Icon", "Card", "Text"]}
+              desc="Features section built on FeatureGrid, with optional badges, several column configurations and style variants."
+              tags={["SectionFeatures"]}
               preview={
                 <div
                   className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary) p-3"
@@ -1629,8 +1629,8 @@ export default function PatternsPage() {
             <PatCard
               href="/patterns/compositions"
               title="Page Layout"
-              desc="Full page assembly — header, hero, features, CTA, footer — wired together with consistent rhythm and section spacing."
-              tags={["Header", "Hero", "Features", "CTA", "Footer"]}
+              desc="Full-page layout with header, footer, sidebar and main content, in several width variants with a left or right sidebar."
+              tags={["PageLayout", "SiteHeader", "SiteFooter", "Button"]}
               preview={
                 <div
                   className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary)"
@@ -1727,8 +1727,8 @@ export default function PatternsPage() {
             href="/patterns/responsive"
             full
             title="Responsive Patterns"
-            desc="Structural reflows for sidebar, table, and filter UIs across breakpoints — not pure shrink-to-fit. Each pattern declares which alternate component it morphs into at each step."
-            tags={["Sidebar", "Sheet", "Table", "Card", "Tabs"]}
+            desc="A responsive card grid, navigation and form. Use Storybook's viewport toolbar to compare mobile, tablet and desktop."
+            tags={["Card", "CardGrid", "Badge", "Button", "Label"]}
             preview={
               <div>
                 <div className="grid grid-cols-12 gap-3 max-w-205 mx-auto">
@@ -1896,15 +1896,23 @@ export default function PatternsPage() {
             num="09"
             count={patternCategoryCount("Accessibility")}
             title="Accessibility"
-            desc="Every component ships WCAG 2.2 AA–verified. These patterns demonstrate the practices behind that claim — focus management, error announcement, keyboard navigation, and visible focus rings backed by the token system."
+            desc="Components are tested against WCAG 2.2 AA. These patterns show focus management, live-region announcements, a keyboard-only form, color-contrast checks and skip navigation."
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
               href="/patterns/accessibility"
               full
               title="Accessibility Patterns"
-              desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. Built with the token system — --color-interactive-primary drives every focus indicator so a single token change updates the entire a11y surface.`}
-              tags={["Form", "Alert", "Input", "Button", "Dialog"]}
+              desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. The shared focus ring is driven by --color-border-focus (form controls use --color-input-border-focus), so a token change updates it everywhere.`}
+              tags={[
+                "Alert",
+                "Badge",
+                "Button",
+                "Dialog",
+                "Input",
+                "Label",
+                "Select",
+              ]}
               preview={
                 <div className="grid md:grid-cols-3 gap-3 max-w-205 mx-auto">
                   {/* Focus ring demo */}

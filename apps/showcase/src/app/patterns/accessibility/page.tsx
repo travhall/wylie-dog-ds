@@ -1,3 +1,4 @@
+import { getPatternDocsPath } from "@/lib/showcase-metadata";
 import { Badge } from "@wyliedog/ui/badge";
 import { Accessibility, ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -36,9 +37,17 @@ export default function AccessibilityPatternsPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <PatternCard
           name="Accessibility Patterns"
-          description="Comprehensive accessibility reference: properly labeled form fields, live regions for dynamic content, focus trap in modals, and keyboard-navigable interactive components."
-          components={["Form", "Alert", "Input", "Button", "Dialog"]}
-          storybookPath="/story/patterns-accessibility-accessibility-patterns--default"
+          description="Focus management, live-region announcements, a keyboard-only form, color-contrast checks and skip navigation."
+          components={[
+            "Alert",
+            "Badge",
+            "Button",
+            "Dialog",
+            "Input",
+            "Label",
+            "Select",
+          ]}
+          storybookPath={getPatternDocsPath("accessibility-patterns") ?? "/"}
         />
       </div>
 

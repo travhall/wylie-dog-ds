@@ -11,25 +11,9 @@ import {
   TableHeader,
   TableRow,
 } from "@wyliedog/ui/table";
-import { CheckCircle2, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { getComponentCategoryCounts } from "@/lib/showcase-metadata";
-
-const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
-  const map = {
-    stable: "text-(--color-text-success)",
-    beta: "text-(--color-text-warning)",
-    alpha: "text-(--color-text-danger)",
-  } as const;
-  return (
-    <div className="flex items-center gap-1.5 border border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
-      <CheckCircle2 className={`h-3.5 w-3.5 ${map[status]}`} />
-      <span className="text-[9px] uppercase font-black tracking-widest text-(--color-text-secondary)">
-        {status}
-      </span>
-    </div>
-  );
-};
 
 export default function ContentDisplayPage() {
   const components = [
@@ -37,7 +21,6 @@ export default function ContentDisplayPage() {
       name: "Accordion",
       description:
         "Vertically stacked sections that expand and collapse to reveal content.",
-      status: "stable" as const,
       preview: (
         <div className="w-full space-y-1 text-sm">
           <div className="border border-(--color-border-primary)/20 rounded-lg px-4 py-3 font-medium text-(--color-text-primary) flex justify-between items-center">
@@ -55,26 +38,9 @@ export default function ContentDisplayPage() {
       ),
     },
     {
-      name: "Aspect Ratio",
-      description:
-        "Maintains a consistent width-to-height ratio for media content.",
-      status: "stable" as const,
-      preview: (
-        <div className="w-full">
-          <div
-            className="relative w-full rounded-lg bg-(--color-interactive-primary)/10 border border-(--color-border-primary)/20 flex items-center justify-center text-xs text-(--color-text-secondary)"
-            style={{ aspectRatio: "16/9" }}
-          >
-            16 / 9
-          </div>
-        </div>
-      ),
-    },
-    {
       name: "Avatar",
       description:
         "An image element with a fallback for representing a user or entity.",
-      status: "stable" as const,
       preview: (
         <div className="flex items-center gap-3">
           <Avatar>
@@ -94,7 +60,6 @@ export default function ContentDisplayPage() {
       name: "Card",
       description:
         "A flexible container with optional header, content, and footer sections.",
-      status: "stable" as const,
       preview: (
         <Card className="w-full border-(--color-border-primary)/20 shadow-none bg-(--color-background-secondary)/10">
           <CardHeader className="p-4 pb-2">
@@ -110,7 +75,6 @@ export default function ContentDisplayPage() {
       name: "Carousel",
       description:
         "A slideshow component for cycling through a series of items.",
-      status: "stable" as const,
       preview: (
         <div className="flex items-center gap-2 w-full">
           <Button
@@ -134,22 +98,9 @@ export default function ContentDisplayPage() {
       ),
     },
     {
-      name: "Skeleton",
-      description: "Placeholder preview displayed while content is loading.",
-      status: "stable" as const,
-      preview: (
-        <div className="space-y-2 w-full">
-          <Skeleton className="h-4 w-3/4" />
-          <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-1/2" />
-        </div>
-      ),
-    },
-    {
       name: "Table",
       description:
         "Responsive data table with header, body, and footer sections.",
-      status: "stable" as const,
       preview: (
         <Table>
           <TableHeader>
@@ -200,7 +151,8 @@ export default function ContentDisplayPage() {
         </div>
         <p className="text-lg text-(--color-text-secondary) leading-relaxed max-w-2xl">
           Components for presenting and organizing information: accordions,
-          media containers, avatars, cards, carousels, skeletons, and tables.
+          avatars, badges, calendars, cards, carousels, and tables. This page
+          previews a selection; the Components page has all {count}.
         </p>
       </section>
 
@@ -216,7 +168,6 @@ export default function ContentDisplayPage() {
                 <CardTitle className="text-xl font-bold group-hover:text-(--color-interactive-primary) transition-colors text-(--color-text-primary)">
                   {comp.name}
                 </CardTitle>
-                <StatusBadge status={comp.status} />
               </div>
               <p className="text-sm text-(--color-text-secondary) leading-relaxed">
                 {comp.description}

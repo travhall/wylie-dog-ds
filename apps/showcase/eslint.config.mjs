@@ -7,8 +7,7 @@
 // no-hardcoded-oklch: pages must use tokens (var(--color-…)) or read values
 // from the manifest or the built token CSS (src/lib/token-values.ts) instead of
 // typing OKLCH colors. It is a warning and `lint` runs with --max-warnings 0, so
-// a new literal fails lint. The only exceptions are documented at the bottom of
-// this file or with an inline eslint-disable and a reason.
+// a new literal fails lint. Exceptions need an inline eslint-disable and a reason.
 
 import tsParser from "@typescript-eslint/parser";
 import coreWebVitals from "eslint-config-next/core-web-vitals";
@@ -33,14 +32,5 @@ export default [
         { selector: "TemplateElement[value.raw=/oklch\\(/]", message },
       ],
     },
-  },
-  {
-    // src/app/plugin/page.tsx draws mock Figma plugin screens. Their colors
-    // imitate the plugin's own interface palette, which is not the design
-    // system's, so they are intentionally literal. The token values this page
-    // displays (light/dark tables, the blue 500 to 600 diff) come from the
-    // token build via src/lib/token-values.ts and the manifest.
-    files: ["src/app/plugin/page.tsx"],
-    rules: { "no-restricted-syntax": "off" },
   },
 ];

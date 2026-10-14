@@ -9,7 +9,7 @@ import {
   BreadcrumbSeparator,
 } from "@wyliedog/ui/breadcrumb";
 import { SectionSubnav } from "@/components/section-subnav";
-import { getShowcaseMeta } from "@/lib/showcase-metadata";
+import { getShowcaseMeta, getStoryDocsUrl } from "@/lib/showcase-metadata";
 
 /* ─── Reusable comp card ─────────────────────────────────────── */
 function CompCard({
@@ -49,7 +49,7 @@ function CompCard({
           {desc}
         </p>
         <a
-          href={`https://wyliedogstorybook.com/?path=/docs/${href}`}
+          href={getStoryDocsUrl(href)}
           className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary) hover:text-(--color-interactive-primary) transition-colors"
         >
           Storybook
@@ -180,8 +180,8 @@ export default function ComponentsPage() {
 
               <p className="mt-6 max-w-lg text-lg text-(--color-text-secondary) text-balance">
                 The full Wylie Dog catalog — every component is a typed React
-                export, built on Radix UI primitives, wired to the OKLCH token
-                system, and audited against{" "}
+                export, wired to the OKLCH token system, with Radix UI
+                primitives underneath where they exist, and tested for{" "}
                 <span className="font-mono text-sm">WCAG 2.2 AA</span>.
               </p>
 
@@ -192,8 +192,11 @@ export default function ComponentsPage() {
                     label: "Categories",
                     value: String(meta.components.categories),
                   },
-                  { label: "Built on", value: "Radix" },
-                  { label: "Audited", value: "WCAG 2.2" },
+                  {
+                    label: "On Radix",
+                    value: `${meta.stack.radixBackedComponents}/${meta.components.count}`,
+                  },
+                  { label: "Tested for", value: "WCAG 2.2" },
                 ].map(({ label, value }) => (
                   <div key={label} className="self-stretch">
                     <dt className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
@@ -539,7 +542,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Avatar"
-              desc="Image, initials, or icon — with stacked group, status dot, and fallback."
+              desc="Image with a fallback for initials or an icon, in four sizes (sm to xl)."
               href="avatar"
               preview={
                 <div className="flex items-center gap-3">
@@ -585,7 +588,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Badge"
-              desc="Small status pill — default, outline, success, warning, destructive."
+              desc="Small status pill — default, secondary, outline, success, warning, destructive, in three sizes."
               href="badge"
               preview={
                 <div className="flex flex-col gap-2 items-center">
@@ -645,7 +648,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Calendar"
-              desc="Single date, range, or multi-select — locale-aware via Intl."
+              desc="Single date, multiple dates, or a date range, with month navigation."
               href="calendar"
               preview={
                 <div className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-2 w-full max-w-55">
@@ -714,7 +717,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Card"
-              desc="The catch-all surface — header, content, footer slots, and a hover state."
+              desc="A surface with header, title, description, content and footer slots, plus an optional interactive (hover) state."
               href="card"
               preview={
                 <div
@@ -779,7 +782,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Carousel"
-              desc="Embla-powered slider with keyboard, swipe, autoplay, and snap controls."
+              desc="Slider with previous and next controls for cycling through items."
               href="carousel"
               preview={
                 <div className="w-full max-w-57.5 flex items-center gap-2">
@@ -834,7 +837,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Table"
-              desc="Sortable headers, sticky rows, dense or comfortable density."
+              desc="Semantic table parts — header, body, footer, row, head, cell, caption — in a horizontally scrollable wrapper."
               href="table"
               preview={
                 <div className="w-full max-w-57.5 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden text-[10px]">
@@ -983,7 +986,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Progress"
-              desc="Linear, circular, determinate, indeterminate — for any wait state."
+              desc="Linear progress bar with default, success, warning and destructive variants."
               href="progress"
               preview={
                 <div className="w-full max-w-55 flex flex-col gap-3">
@@ -1062,7 +1065,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Skeleton"
-              desc="Shimmering placeholder shapes for content that's loading."
+              desc="Placeholder shapes — default, text, circular, rectangular — with a pulse animation."
               href="skeleton"
               preview={
                 <div className="w-full max-w-55 flex items-center gap-3">
@@ -1090,7 +1093,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Toast"
-              desc="Transient stack of notifications with auto-dismiss and swipe-to-clear."
+              desc="Transient notifications with default, success, warning and destructive variants and auto-dismiss."
               href="toast"
               preview={
                 <div className="w-full max-w-57.5 flex flex-col gap-1.5 items-end">
@@ -1169,13 +1172,13 @@ export default function ComponentsPage() {
           <SectionHeader
             num="03"
             title="Inputs & Controls"
-            desc="The shape of every form. All twelve wire to the same Form schema and share keyboard, focus, and validation behavior."
+            desc="The shape of every form. They share sizes, the focus ring and error styling, and the Form wrappers connect labels and messages to them."
             count={categoryCount("Inputs-Controls")}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <CompCard
               name="Button"
-              desc="5 variants × 3 sizes, with loading, disabled, and icon-only modes."
+              desc="Six variants (default, secondary, outline, ghost, link, destructive), sm to lg sizes plus an icon size, and a loading state."
               href="button"
               preview={
                 <div className="flex flex-col gap-2 items-center">
@@ -1232,7 +1235,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Checkbox"
-              desc="Three states: checked, indeterminate, unchecked — with label slot."
+              desc="Checked, unchecked and indeterminate states in three sizes."
               href="checkbox"
               preview={
                 <div className="flex flex-col gap-2.5 text-[11px] text-(--color-text-primary)">
@@ -1292,7 +1295,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Form"
-              desc="react-hook-form + zod schema; field-level error and aria-* wiring built-in."
+              desc="Field wrappers that tie labels, descriptions and error messages to inputs with matching ids and aria attributes."
               href="form"
               preview={
                 <div className="w-full max-w-57.5 flex flex-col gap-1.5">
@@ -1327,7 +1330,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Input"
-              desc="Text, email, password, search, file — with leading/trailing slots."
+              desc="Text-style input for any native type, with sm to lg sizes and error and success states."
               href="input"
               preview={
                 <div className="w-full max-w-57.5 flex flex-col gap-1.5">
@@ -1379,7 +1382,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Label"
-              desc="Required marker, optional hint, and click-to-focus association."
+              desc="Accessible label with a required marker, an error state and three sizes."
               href="label"
               preview={
                 <div className="w-full max-w-55 flex flex-col gap-1.5">
@@ -1449,7 +1452,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Select"
-              desc="Native-feeling dropdown with search, sections, and keyboard nav."
+              desc="Dropdown with groups, separators and keyboard navigation, in three sizes."
               href="select"
               preview={
                 <div className="w-full max-w-55 relative">
@@ -1501,7 +1504,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Slider"
-              desc="Single value, range, or stepped — vertical or horizontal."
+              desc="Single-value or range slider, horizontal or vertical, with optional thumb labels."
               href="slider"
               preview={
                 <div className="w-full max-w-57.5 flex flex-col gap-3">
@@ -1584,7 +1587,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Switch"
-              desc="Boolean toggle with label slot, on/off icons, and disabled state."
+              desc="Boolean toggle in three sizes with accessible labeling."
               href="switch"
               preview={
                 <div className="flex flex-col gap-2.5 text-[11px] text-(--color-text-primary)">
@@ -1641,7 +1644,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Textarea"
-              desc="Auto-resizing multi-line input with character counter and rich states."
+              desc="Multi-line input with three sizes, a resize option, and error and success states."
               href="textarea"
               preview={
                 <div
@@ -1719,7 +1722,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Toggle Group"
-              desc="Single or multi-select cluster of toggles — segmented control or icon strip."
+              desc="Single or multi-select group of toggles."
               href="toggle-group"
               preview={
                 <div className="flex flex-col gap-2 items-center">
@@ -1804,70 +1807,6 @@ export default function ComponentsPage() {
                         <path d="M21 10H10M21 6H3M21 14H3M21 18H10" />
                       </svg>
                     </Button>
-                  </div>
-                </div>
-              }
-            />
-
-            <CompCard
-              name="Combobox"
-              desc="Searchable select with async loading, multi-select, and custom option rendering."
-              href="combobox"
-              preview={
-                <div className="w-full max-w-55">
-                  <div className="flex items-center h-8.5 border border-(--color-border-primary) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-surface-primary)">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-text-tertiary)"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <circle cx="11" cy="11" r="7" />
-                      <path d="m21 21-4.3-4.3" />
-                    </svg>
-                    <span className="text-(--color-text-primary)">
-                      Design Systems
-                    </span>
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-3 w-3 ml-auto text-(--color-text-tertiary)"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </div>
-                  <div
-                    className="mt-1 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-1"
-                    style={{ boxShadow: "var(--shadow-md)" }}
-                  >
-                    <div
-                      className="flex items-center gap-2 rounded px-2 py-1 text-[11px]"
-                      style={{
-                        background:
-                          "color-mix(in oklch, var(--color-interactive-primary) 12%, transparent)",
-                        color: "var(--color-interactive-primary)",
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={3}
-                      >
-                        <path d="m5 12 5 5L20 7" />
-                      </svg>
-                      Design Systems
-                    </div>
-                    <div className="px-2 py-1 text-[11px] text-(--color-text-secondary)">
-                      Engineering
-                    </div>
-                    <div className="px-2 py-1 text-[11px] text-(--color-text-secondary)">
-                      Operations
-                    </div>
                   </div>
                 </div>
               }
@@ -1977,7 +1916,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Scroll Area"
-              desc="Custom-styled scrollbars that show on hover and stay accessible."
+              desc="Custom-styled scrollbars (Radix Scroll Area)."
               href="scroll-area"
               preview={
                 <div className="w-full max-w-50 h-27.5 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden flex">
@@ -2009,7 +1948,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Separator"
-              desc="Horizontal or vertical divider with optional inline label."
+              desc="Horizontal or vertical divider, optionally purely decorative."
               href="separator"
               preview={
                 <div className="w-full max-w-55 flex flex-col gap-2 items-center">
@@ -2054,13 +1993,13 @@ export default function ComponentsPage() {
           <SectionHeader
             num="05"
             title="Navigation"
-            desc="Way finding — from a single breadcrumb to a global command palette. All six share keyboard semantics and the same focus-ring token."
+            desc="Way finding — from a single breadcrumb to a global command palette. They share the same focus-ring token."
             count={categoryCount("Navigation")}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <CompCard
               name="Breadcrumb"
-              desc="Truncating trail with overflow menu and customizable separator."
+              desc="Navigation trail with a customizable separator and an ellipsis item for long paths."
               href="breadcrumb"
               preview={
                 <Breadcrumb className="text-xs">
@@ -2074,7 +2013,7 @@ export default function ComponentsPage() {
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                      <BreadcrumbPage>Combobox</BreadcrumbPage>
+                      <BreadcrumbPage>Select</BreadcrumbPage>
                     </BreadcrumbItem>
                   </BreadcrumbList>
                 </Breadcrumb>
@@ -2083,7 +2022,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Command"
-              desc="Searchable command list — the primitive behind every ⌘K palette."
+              desc="Searchable command list — input, groups, items, shortcuts and an empty state."
               href="command"
               preview={
                 <div
@@ -2237,7 +2176,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Pagination"
-              desc="Numbered or prev/next, with truncation and URL-syncing helpers."
+              desc="Page links with previous and next controls, an ellipsis and an active state."
               href="pagination"
               preview={
                 <div className="flex items-center gap-1 text-[11px]">
@@ -2286,7 +2225,7 @@ export default function ComponentsPage() {
 
             <CompCard
               name="Tabs"
-              desc="Underline, contained, or vertical — with lazy-mounted panels."
+              desc="Tabbed content panels in three sizes (Radix Tabs)."
               href="tabs"
               preview={
                 <div className="w-full max-w-57.5">
@@ -2801,7 +2740,7 @@ export default function ComponentsPage() {
               {
                 label: "Primitive layer",
                 value: "Radix UI",
-                desc: `All ${meta.components.count} components are built on Radix primitives — headless, a11y-compliant, and unstyled.`,
+                desc: `${meta.stack.radixBackedComponents} of the ${meta.components.count} components wrap a Radix primitive (headless and accessible); the rest are plain forwardRef components.`,
               },
               {
                 label: "Type safety",
@@ -2811,7 +2750,7 @@ export default function ComponentsPage() {
               {
                 label: "Styling",
                 value: "Tailwind 4",
-                desc: "OKLCH CSS vars through Tailwind's CSS custom property syntax. Zero runtime, full tree-shaking.",
+                desc: "OKLCH CSS vars through Tailwind's CSS custom property syntax. Classes are compiled ahead of time, and every component is its own import.",
               },
               {
                 label: "Token contract",

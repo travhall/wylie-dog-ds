@@ -1,3 +1,4 @@
+import { getPatternDocsPath } from "@/lib/showcase-metadata";
 import { Lock, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { PatternCard } from "@/components/pattern-card";
@@ -35,15 +36,15 @@ export default function AuthPatternsPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <PatternCard
           name="Login & Registration"
-          description="Combined login and sign-up form with email/password fields, social auth placeholders, validation, and inline error messages."
-          components={["Card", "Form", "Input", "Button", "Label"]}
-          storybookPath="/story/patterns-authentication-login-registration--default"
+          description="Simple login, login with social auth, a registration form, and a tabbed login and registration form."
+          components={["Card", "Form", "Input", "Button", "Tabs", "Checkbox"]}
+          storybookPath={getPatternDocsPath("login-registration") ?? "/"}
         />
         <PatternCard
           name="Password Recovery"
-          description="Forgot password flow with email input, submission confirmation, and accessible alert feedback for errors and success states."
-          components={["Card", "Form", "Input", "Button", "Alert"]}
-          storybookPath="/story/patterns-authentication-password-recovery--default"
+          description="Forgot-password email step, reset-password form, an invalid-link state, and a multi-step recovery flow."
+          components={["Card", "Form", "Input", "Alert", "Button"]}
+          storybookPath={getPatternDocsPath("password-recovery") ?? "/"}
         />
       </div>
     </div>

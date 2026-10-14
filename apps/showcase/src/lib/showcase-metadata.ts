@@ -364,6 +364,142 @@ export function getPackageVersions(): PackageVersions {
 }
 
 // ---------------------------------------------------------------------------
+// Storybook links
+// ---------------------------------------------------------------------------
+
+/** Storybook's id sanitizer: lowercase, non-alphanumerics to "-", trimmed. */
+export function storybookId(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/**
+ * Where a story file lives in Storybook: its docs page when the file has
+ * `autodocs`, otherwise its first story. Built from the file's `title` and
+ * exported story names, so it needs no running Storybook.
+ */
+function storyTarget(
+  source: string
+): { kind: "docs" | "story"; id: string } | null {
+  const title = /title:\s*"([^"]+)"/.exec(source);
+  if (!title) return null;
+  const base = storybookId(title[1]);
+  if (/autodocs/.test(source)) return { kind: "docs", id: `${base}--docs` };
+  const first = /export const (\w+)\s*:\s*Story/.exec(source);
+  if (!first) return null;
+  const name = storybookId(first[1].replace(/([a-z0-9])([A-Z])/g, "$1-$2"));
+  return { kind: "story", id: `${base}--${name}` };
+}
+
+/**
+ * Storybook id for a component: its docs page (`components-feedback-status-alert--docs`)
+ * when the story file has `autodocs`, otherwise its first story; null if it has no story file.
+ */
+export function getStoryDocsId(component: string): string | null {
+  try {
+    for (const dir of fs.readdirSync(STORIES_COMPONENTS_DIR, {
+      withFileTypes: true,
+    })) {
+      if (!dir.isDirectory()) continue;
+      const file = path.join(
+        STORIES_COMPONENTS_DIR,
+        dir.name,
+        `${component}.stories.tsx`
+      );
+      if (!fs.existsSync(file)) continue;
+      const target = storyTarget(fs.readFileSync(file, "utf-8"));
+      return target ? target.id : null;
+    }
+  } catch {
+    // fall through
+  }
+  return null;
+}
+
+/**
+ * Storybook path (`/docs/<id>--docs`) for a pattern, found by story file name
+ * anywhere under apps/storybook/stories/Patterns, or null if it has no story.
+ */
+export function getPatternDocsPath(file: string): string | null {
+  try {
+    for (const dir of fs.readdirSync(PATTERNS_DIR, { withFileTypes: true })) {
+      if (!dir.isDirectory()) continue;
+      const full = path.join(PATTERNS_DIR, dir.name, `${file}.stories.tsx`);
+      if (!fs.existsSync(full)) continue;
+      const target = storyTarget(fs.readFileSync(full, "utf-8"));
+      return target ? `/${target.kind}/${target.id}` : null;
+    }
+  } catch {
+    // fall through
+  }
+  return null;
+}
+
+/** Full Storybook URL for a component's docs page; the site root if unknown. */
+export function getStoryDocsUrl(component: string): string {
+  const id = getStoryDocsId(component);
+  if (!id) return "https://wyliedogstorybook.com";
+  const kind = id.endsWith("--docs") ? "docs" : "story";
+  return `https://wyliedogstorybook.com/?path=/${kind}/${id}`;
+}
+
+// ---------------------------------------------------------------------------
+// Stack facts (versions and how components are built)
+// ---------------------------------------------------------------------------
+
+export interface StackMeta {
+  /** UI components that import a Radix primitive (react-slot alone does not count) */
+  radixBackedComponents: number;
+  /** Major.minor of the installed toolchain, e.g. "6.0" */
+  react: string;
+  typescript: string;
+  vite: string;
+  tailwind: string;
+  next: string;
+}
+
+function installedMajorMinor(relativePaths: string[]): string {
+  for (const rel of relativePaths) {
+    try {
+      const raw = fs.readFileSync(path.join(MONOREPO_ROOT, rel), "utf-8");
+      const v = (JSON.parse(raw) as { version?: string }).version;
+      if (v) return v.split(".").slice(0, 2).join(".");
+    } catch {
+      // try the next candidate
+    }
+  }
+  return "unknown";
+}
+
+export function getStackMeta(): StackMeta {
+  let radixBacked = 0;
+  try {
+    for (const f of fs.readdirSync(UI_SRC_DIR)) {
+      if (!f.endsWith(".tsx") || PATTERN_LEVEL_COMPONENTS.has(f)) continue;
+      const src = fs.readFileSync(path.join(UI_SRC_DIR, f), "utf-8");
+      const radix = [...src.matchAll(/from "@radix-ui\/react-([a-z-]+)"/g)];
+      if (radix.some((m) => m[1] !== "slot")) radixBacked += 1;
+    }
+  } catch {
+    radixBacked = 0;
+  }
+  return {
+    radixBackedComponents: radixBacked,
+    react: installedMajorMinor(["packages/ui/node_modules/react/package.json"]),
+    typescript: installedMajorMinor(["node_modules/typescript/package.json"]),
+    vite: installedMajorMinor([
+      "apps/storybook/node_modules/vite/package.json",
+    ]),
+    tailwind: installedMajorMinor([
+      "packages/ui/node_modules/tailwindcss/package.json",
+    ]),
+    next: installedMajorMinor(["apps/showcase/node_modules/next/package.json"]),
+  };
+}
+
+// ---------------------------------------------------------------------------
 // Convenience: all metadata in one call
 // ---------------------------------------------------------------------------
 
@@ -375,6 +511,7 @@ export interface ShowcaseMeta {
   patterns: PatternMeta;
   patternCategories: PatternCategoryCount[];
   versions: PackageVersions;
+  stack: StackMeta;
 }
 
 // Memoized with React's cache() so the ~10 synchronous fs reads/JSON parses
@@ -395,5 +532,6 @@ export const getShowcaseMeta = cache((): ShowcaseMeta => {
     patterns: getPatternMeta(),
     patternCategories: getPatternCategoryCounts(),
     versions: getPackageVersions(),
+    stack: getStackMeta(),
   };
 });

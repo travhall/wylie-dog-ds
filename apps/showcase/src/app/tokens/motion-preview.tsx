@@ -8,36 +8,37 @@ const curves = [
     token: "--transition-easing-default",
     bezier: "0.4, 0, 0.2, 1",
     path: "M0,60 C12,60 0,0 60,0",
-    desc: "Persistent elements",
+    desc: "Most transitions",
   },
   {
     label: "In",
     token: "--transition-easing-in",
     bezier: "0.4, 0, 1, 1",
     path: "M0,60 C12,60 0,-8 60,0",
-    desc: "Key moments",
+    desc: "Exits (accelerate)",
   },
   {
     label: "Out",
     token: "--transition-easing-out",
     bezier: "0, 0, 0.2, 1",
     path: "M0,60 C0,60 36,0 60,0",
-    desc: "Elements entering",
+    desc: "Entrances (decelerate)",
   },
   {
     label: "In-Out",
     token: "--transition-easing-in-out",
     bezier: "0.4, 0, 0.2, 1",
     path: "M0,60 C24,60 60,60 60,0",
-    desc: "Elements leaving",
+    desc: "Symmetric moves",
   },
 ];
 
-const durations = [150, 200, 300, 500];
+// The semantic duration tokens: fast, normal and slow (instant is 0ms).
+const durations = [150, 250, 400];
 
 export function MotionPreview() {
   const [curveIdx, setCurveIdx] = useState(0);
-  const [dur, setDur] = useState(300);
+  const [dur, setDur] = useState(250);
   const c = curves[curveIdx];
 
   return (

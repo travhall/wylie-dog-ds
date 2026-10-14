@@ -4,7 +4,7 @@ import { Button } from "@wyliedog/ui/button";
 import { Input } from "@wyliedog/ui/input";
 import { Label } from "@wyliedog/ui/label";
 import { Textarea } from "@wyliedog/ui/textarea";
-import { CheckCircle2, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import {
   CalendarDemo,
@@ -14,29 +14,12 @@ import {
 } from "./demo-widgets";
 import { getComponentCategoryCounts } from "@/lib/showcase-metadata";
 
-const StatusBadge = ({ status }: { status: "stable" | "beta" | "alpha" }) => {
-  const map = {
-    stable: "text-(--color-text-success)",
-    beta: "text-(--color-text-warning)",
-    alpha: "text-(--color-text-danger)",
-  } as const;
-  return (
-    <div className="flex items-center gap-1.5 border border-(--color-border-primary)/5 px-2 py-0.5 rounded-full scale-90">
-      <CheckCircle2 className={`h-3.5 w-3.5 ${map[status]}`} />
-      <span className="text-[9px] uppercase font-black tracking-widest text-(--color-text-secondary)">
-        {status}
-      </span>
-    </div>
-  );
-};
-
 function InputsContent() {
   const components = [
     {
       name: "Button",
       description:
         "Interactive trigger with primary, secondary, outline, ghost, and destructive variants.",
-      status: "stable" as const,
       preview: (
         <div className="flex flex-wrap gap-2">
           <Button size="sm">Primary</Button>
@@ -53,24 +36,15 @@ function InputsContent() {
       ),
     },
     {
-      name: "Calendar",
-      description:
-        "Date picker with month navigation, range selection, and disabled date support.",
-      status: "stable" as const,
-      preview: <CalendarDemo />,
-    },
-    {
       name: "Checkbox",
       description:
         "A control that allows the user to toggle between checked and unchecked states.",
-      status: "stable" as const,
       preview: <CheckboxDemo />,
     },
     {
       name: "Form",
       description:
         "Accessible form wrapper with built-in validation, error messages, and field descriptions.",
-      status: "stable" as const,
       preview: (
         <div className="w-full space-y-2">
           <div className="space-y-1">
@@ -91,7 +65,6 @@ function InputsContent() {
       name: "Input",
       description:
         "Text field with support for types, placeholders, disabled state, and icons.",
-      status: "stable" as const,
       preview: (
         <div className="w-full space-y-2">
           <Input placeholder="Default input" className="h-8 text-xs" />
@@ -103,7 +76,6 @@ function InputsContent() {
       name: "Label",
       description:
         "Accessible label for form controls with proper htmlFor association.",
-      status: "stable" as const,
       preview: (
         <div className="flex flex-col gap-2 w-full">
           <Label>First name</Label>
@@ -117,7 +89,6 @@ function InputsContent() {
       name: "Radio Group",
       description:
         "A set of radio buttons where only one option can be selected at a time.",
-      status: "stable" as const,
       preview: (
         <div className="space-y-2 text-sm">
           {["Option A", "Option B", "Option C"].map((opt) => (
@@ -135,7 +106,6 @@ function InputsContent() {
       name: "Select",
       description:
         "Dropdown selection with search, groups, and keyboard navigation.",
-      status: "stable" as const,
       preview: (
         <div className="w-full h-8 border border-(--color-border-primary)/20 rounded-md flex items-center justify-between px-3 text-xs text-(--color-text-secondary) bg-(--color-background-secondary)/20">
           <span>Select an option…</span>
@@ -147,21 +117,18 @@ function InputsContent() {
       name: "Slider",
       description:
         "Range input for selecting a numeric value within a defined range.",
-      status: "stable" as const,
       preview: <SliderDemo />,
     },
     {
       name: "Switch",
       description:
         "Toggle control for binary on/off states with accessible labeling.",
-      status: "stable" as const,
       preview: <SwitchDemo />,
     },
     {
       name: "Textarea",
       description:
         "Multi-line text input for longer form content with resize handling.",
-      status: "stable" as const,
       preview: (
         <Textarea
           placeholder="Enter your message…"
@@ -173,7 +140,6 @@ function InputsContent() {
       name: "Toggle Group",
       description:
         "A set of two-state toggle buttons where one or more can be active.",
-      status: "stable" as const,
       preview: (
         <div className="flex gap-1">
           {["Bold", "Italic", "Underline"].map((item) => (
@@ -212,9 +178,10 @@ function InputsContent() {
           </Badge>
         </div>
         <p className="text-lg text-(--color-text-secondary) leading-relaxed max-w-2xl">
-          Form controls for user data entry: buttons, calendars, checkboxes,
-          form wrappers, inputs, labels, radio groups, selects, sliders,
-          switches, textareas, and toggle groups.
+          Form controls for user data entry: buttons, checkboxes, form wrappers,
+          inputs, labels, radio groups, selects, sliders, switches, textareas,
+          toggles, and toggle groups. This page previews a selection; the
+          Components page has all {count}.
         </p>
       </section>
 
@@ -230,7 +197,6 @@ function InputsContent() {
                 <CardTitle className="text-xl font-bold group-hover:text-(--color-interactive-primary) transition-colors text-(--color-text-primary)">
                   {comp.name}
                 </CardTitle>
-                <StatusBadge status={comp.status} />
               </div>
               <p className="text-sm text-(--color-text-secondary) leading-relaxed">
                 {comp.description}
