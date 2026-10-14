@@ -542,7 +542,7 @@ export default function ShowcasePage() {
                     <span
                       className="inline-flex h-6 items-center rounded px-2 text-[10px] font-semibold"
                       style={{
-                        background: "oklch(58% 0.2 25)",
+                        background: "var(--color-red-600)",
                         color: "var(--color-text-on-solid)",
                       }}
                     >
@@ -1109,7 +1109,7 @@ export default function ShowcasePage() {
                     <div className="flex gap-1.5">
                       <span
                         className="h-2.5 w-2.5 rounded-full"
-                        style={{ background: "oklch(70% 0.18 25)" }}
+                        style={{ background: "var(--color-red-400)" }}
                       />
                       <span
                         className="h-2.5 w-2.5 rounded-full"

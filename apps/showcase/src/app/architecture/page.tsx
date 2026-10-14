@@ -174,7 +174,9 @@ export default function ArchitecturePage() {
                             <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
                               <span
                                 className="h-1.5 w-1.5 rounded-full"
-                                style={{ background: "oklch(72% 0.15 35)" }}
+                                style={{
+                                  background: "var(--color-fiery-coral-400)",
+                                }}
                               />
                               App
                             </span>
@@ -482,13 +484,13 @@ export default function ArchitecturePage() {
                     </div>
                     <div className="pl-4 text-(--color-text-secondary)">
                       -{" "}
-                      <span style={{ color: "oklch(50% 0.14 155)" }}>
+                      <span style={{ color: "var(--color-green-700)" }}>
                         &quot;packages/*&quot;
                       </span>
                     </div>
                     <div className="pl-4 text-(--color-text-secondary)">
                       -{" "}
-                      <span style={{ color: "oklch(50% 0.14 155)" }}>
+                      <span style={{ color: "var(--color-green-700)" }}>
                         &quot;apps/*&quot;
                       </span>
                     </div>
@@ -566,9 +568,9 @@ export default function ArchitecturePage() {
                       <path d="M8 9h8M8 13h6" />
                     </svg>
                   ),
-                  iconColor: "oklch(58% 0.18 35)",
+                  iconColor: "var(--color-fiery-coral-600)",
                   iconBg:
-                    "color-mix(in oklch, oklch(72% 0.15 35) 22%, transparent)",
+                    "color-mix(in oklch, var(--color-fiery-coral-400) 22%, transparent)",
                   desc: "Component documentation and the pattern playground. Every export from @wyliedog/ui has a story; every story is its own a11y harness, prop matrix, and visual diff target.",
                   meta: [
                     ["Stack", `Storybook ${meta.versions.storybook} · Vite 7`],
@@ -974,8 +976,8 @@ export default function ArchitecturePage() {
               <div
                 className="rounded-xl overflow-hidden shadow-lg"
                 style={{
-                  background: "oklch(18% 0.014 260)",
-                  color: "oklch(92% 0.01 260)",
+                  background: "var(--color-polar-night-950)",
+                  color: "var(--color-polar-night-50)",
                   border:
                     "1px solid color-mix(in oklch, var(--color-border-primary) 60%, transparent)",
                 }}
@@ -983,14 +985,14 @@ export default function ArchitecturePage() {
                 <div
                   className="flex items-center gap-2 px-3 py-2"
                   style={{
-                    background: "oklch(22% 0.014 260)",
-                    borderBottom: "1px solid oklch(28% 0.014 260)",
+                    background: "var(--color-gray-900)",
+                    borderBottom: "1px solid var(--color-black-bear-700)",
                   }}
                 >
                   <div className="flex gap-1.5">
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "oklch(70% 0.18 25)" }}
+                      style={{ background: "var(--color-red-400)" }}
                     />
                     <span
                       className="h-2.5 w-2.5 rounded-full"
@@ -1003,13 +1005,13 @@ export default function ArchitecturePage() {
                   </div>
                   <span
                     className="ml-2 font-mono text-[11px]"
-                    style={{ color: "oklch(60% 0.012 260)" }}
+                    style={{ color: "var(--color-gray-500)" }}
                   >
                     ~/wyliedog · main
                   </span>
                   <span
                     className="ml-auto font-mono text-[10px]"
-                    style={{ color: "oklch(60% 0.012 260)" }}
+                    style={{ color: "var(--color-gray-500)" }}
                   >
                     zsh
                   </span>
@@ -1019,7 +1021,7 @@ export default function ArchitecturePage() {
                     <span style={{ color: "oklch(72% 0.14 155)" }}>$</span> pnpm{" "}
                     <span style={{ color: "oklch(74% 0.14 274)" }}>build</span>
                   </div>
-                  <div style={{ color: "oklch(60% 0.012 260)" }}>
+                  <div style={{ color: "var(--color-gray-500)" }}>
                     turbo run build --filter=...^...
                   </div>
                   <div className="mt-2">
@@ -1027,13 +1029,13 @@ export default function ArchitecturePage() {
                     <span style={{ color: "oklch(80% 0.12 35)" }}>
                       @wyliedog/tokens#build
                     </span>{" "}
-                    <span style={{ color: "oklch(60% 0.012 260)" }}>
+                    <span style={{ color: "var(--color-gray-500)" }}>
                       style-dictionary
                     </span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "oklch(60% 0.012 260)" }}
+                    style={{ color: "var(--color-gray-500)" }}
                   >
                     → dist/tokens.css{" "}
                     <span style={{ color: "oklch(72% 0.14 155)" }}>
@@ -1042,13 +1044,13 @@ export default function ArchitecturePage() {
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "oklch(60% 0.012 260)" }}
+                    style={{ color: "var(--color-gray-500)" }}
                   >
                     → dist/tokens.js
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "oklch(60% 0.012 260)" }}
+                    style={{ color: "var(--color-gray-500)" }}
                   >
                     → dist/tokens.d.ts
                   </div>
@@ -1063,20 +1065,20 @@ export default function ArchitecturePage() {
                     <span style={{ color: "oklch(80% 0.12 35)" }}>
                       @wyliedog/ui#build
                     </span>{" "}
-                    <span style={{ color: "oklch(60% 0.012 260)" }}>
+                    <span style={{ color: "var(--color-gray-500)" }}>
                       vite build
                     </span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "oklch(60% 0.012 260)" }}
+                    style={{ color: "var(--color-gray-500)" }}
                   >
                     → dist/index.js{" "}
                     <span style={{ color: "oklch(72% 0.14 155)" }}>194 KB</span>
                   </div>
                   <div
                     className="pl-4"
-                    style={{ color: "oklch(60% 0.012 260)" }}
+                    style={{ color: "var(--color-gray-500)" }}
                   >
                     → dist/index.d.ts
                   </div>
@@ -1097,7 +1099,7 @@ export default function ArchitecturePage() {
                     style={{ color: "oklch(72% 0.14 155)" }}
                   >
                     ✓ cached{" "}
-                    <span style={{ color: "oklch(60% 0.012 260)" }}>
+                    <span style={{ color: "var(--color-gray-500)" }}>
                       (no input change)
                     </span>
                   </div>
@@ -1112,7 +1114,7 @@ export default function ArchitecturePage() {
                     style={{ color: "oklch(72% 0.14 155)" }}
                   >
                     ✓ cached{" "}
-                    <span style={{ color: "oklch(60% 0.012 260)" }}>
+                    <span style={{ color: "var(--color-gray-500)" }}>
                       (no input change)
                     </span>
                   </div>
@@ -1122,7 +1124,7 @@ export default function ArchitecturePage() {
                   >
                     Tasks: 4 successful, 4 total
                   </div>
-                  <div style={{ color: "oklch(60% 0.012 260)" }}>
+                  <div style={{ color: "var(--color-gray-500)" }}>
                     Time: 11.0s{" "}
                     <span style={{ color: "oklch(72% 0.14 155)" }}>
                       &gt;&gt;&gt;
@@ -1133,7 +1135,7 @@ export default function ArchitecturePage() {
                     <span style={{ color: "oklch(72% 0.14 155)" }}>$</span>{" "}
                     <span
                       className="inline-block w-1.5 h-3 align-middle"
-                      style={{ background: "oklch(92% 0.01 260)" }}
+                      style={{ background: "var(--color-polar-night-50)" }}
                     />
                   </div>
                 </div>
@@ -1240,19 +1242,19 @@ export default function ArchitecturePage() {
             <div className="lg:col-span-7">
               <div
                 className="rounded-xl overflow-hidden border border-(--color-border-primary) shadow-sm"
-                style={{ background: "oklch(18% 0.014 260)" }}
+                style={{ background: "var(--color-polar-night-950)" }}
               >
                 <div
                   className="flex items-center gap-2 px-4 py-2.5 border-b"
                   style={{
-                    background: "oklch(22% 0.014 260)",
-                    borderColor: "oklch(28% 0.014 260)",
+                    background: "var(--color-gray-900)",
+                    borderColor: "var(--color-black-bear-700)",
                   }}
                 >
                   <div className="flex gap-1.5">
                     <span
                       className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "oklch(70% 0.18 25)" }}
+                      style={{ background: "var(--color-red-400)" }}
                     />
                     <span
                       className="h-2.5 w-2.5 rounded-full"
@@ -1265,7 +1267,7 @@ export default function ArchitecturePage() {
                   </div>
                   <span
                     className="ml-2 font-mono text-[11px]"
-                    style={{ color: "oklch(60% 0.012 260)" }}
+                    style={{ color: "var(--color-gray-500)" }}
                   >
                     Button.tsx
                   </span>
@@ -1273,7 +1275,7 @@ export default function ArchitecturePage() {
                 <div className="px-4 py-4 font-mono text-[11px] leading-[1.8] overflow-x-auto">
                   <div>
                     <span style={{ color: "oklch(72% 0.14 274)" }}>import</span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
                       {"{ forwardRef }"}
                     </span>{" "}
                     <span style={{ color: "oklch(72% 0.14 274)" }}>from</span>{" "}
@@ -1283,7 +1285,7 @@ export default function ArchitecturePage() {
                   </div>
                   <div>
                     <span style={{ color: "oklch(72% 0.14 274)" }}>import</span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
                       {"{ Slot }"}
                     </span>{" "}
                     <span style={{ color: "oklch(72% 0.14 274)" }}>from</span>{" "}
@@ -1293,7 +1295,7 @@ export default function ArchitecturePage() {
                   </div>
                   <div>
                     <span style={{ color: "oklch(72% 0.14 274)" }}>import</span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
                       {"{ cva, type VariantProps }"}
                     </span>{" "}
                     <span style={{ color: "oklch(72% 0.14 274)" }}>from</span>{" "}
@@ -1303,7 +1305,7 @@ export default function ArchitecturePage() {
                   </div>
                   <div>
                     <span style={{ color: "oklch(72% 0.14 274)" }}>import</span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
                       {"{ cn }"}
                     </span>{" "}
                     <span style={{ color: "oklch(72% 0.14 274)" }}>from</span>{" "}
@@ -1316,128 +1318,172 @@ export default function ArchitecturePage() {
                     <span style={{ color: "oklch(82% 0.14 85)" }}>
                       buttonVariants
                     </span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>=</span>{" "}
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      =
+                    </span>{" "}
                     <span style={{ color: "oklch(72% 0.14 274)" }}>cva</span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>(</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      (
+                    </span>
                   </div>
                   <div className="pl-4">
                     <span style={{ color: "oklch(72% 0.14 155)" }}>
                       &quot;inline-flex items-center justify-center rounded-md
                       font-medium&quot;
                     </span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>,</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      ,
+                    </span>
                   </div>
                   <div className="pl-4">
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>{"{"}</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      {"{"}
+                    </span>
                   </div>
                   <div className="pl-8">
                     <span style={{ color: "oklch(82% 0.14 85)" }}>
                       variants
                     </span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
                       : {"{"}
                     </span>
                   </div>
                   <div className="pl-12">
                     <span style={{ color: "oklch(82% 0.14 85)" }}>variant</span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
                       : {"{"}
                     </span>
                   </div>
                   <div className="pl-16">
                     <span style={{ color: "oklch(82% 0.14 85)" }}>default</span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>:</span>{" "}
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      :
+                    </span>{" "}
                     <span style={{ color: "oklch(72% 0.14 155)" }}>
                       &quot;bg-(--color-interactive-primary)
                       text-(--color-text-inverse)&quot;
                     </span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>,</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      ,
+                    </span>
                   </div>
                   <div className="pl-16">
                     <span style={{ color: "oklch(82% 0.14 85)" }}>outline</span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>:</span>{" "}
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      :
+                    </span>{" "}
                     <span style={{ color: "oklch(72% 0.14 155)" }}>
                       &quot;border border-(--color-border-primary)
                       bg-transparent&quot;
                     </span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>,</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      ,
+                    </span>
                   </div>
                   <div className="pl-12">
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>{"},"}</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      {"},"}
+                    </span>
                   </div>
                   <div className="pl-8">
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>{"}"}</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      {"}"}
+                    </span>
                   </div>
                   <div className="pl-4">
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>{"}"}</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      {"}"}
+                    </span>
                   </div>
                   <div>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>)</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      )
+                    </span>
                   </div>
                   <div className="mt-3">
                     <span style={{ color: "oklch(72% 0.14 274)" }}>
                       export const
                     </span>{" "}
                     <span style={{ color: "oklch(82% 0.14 85)" }}>Button</span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
                       = forwardRef&lt;
                     </span>
-                    <span style={{ color: "oklch(72% 0.14 35)" }}>
+                    <span style={{ color: "var(--color-fiery-coral-400)" }}>
                       HTMLButtonElement
                     </span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>,</span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 35)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      ,
+                    </span>{" "}
+                    <span style={{ color: "var(--color-fiery-coral-400)" }}>
                       ButtonProps
                     </span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>&gt;(</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      &gt;(
+                    </span>
                   </div>
                   <div className="pl-4">
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>({"{"}</span>{" "}
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      ({"{"}
+                    </span>{" "}
                     <span style={{ color: "oklch(82% 0.14 85)" }}>
                       className, variant, size, asChild, ...props
                     </span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
                       {"}"}, ref) =&gt; {"{"}
                     </span>
                   </div>
                   <div className="pl-8">
                     <span style={{ color: "oklch(72% 0.14 274)" }}>const</span>{" "}
                     <span style={{ color: "oklch(82% 0.14 85)" }}>Comp</span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>=</span>{" "}
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      =
+                    </span>{" "}
                     <span style={{ color: "oklch(82% 0.14 85)" }}>asChild</span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>?</span>{" "}
-                    <span style={{ color: "oklch(72% 0.14 35)" }}>Slot</span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>:</span>{" "}
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      ?
+                    </span>{" "}
+                    <span style={{ color: "var(--color-fiery-coral-400)" }}>
+                      Slot
+                    </span>{" "}
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      :
+                    </span>{" "}
                     <span style={{ color: "oklch(72% 0.14 155)" }}>
                       &quot;button&quot;
                     </span>
                   </div>
                   <div className="pl-8">
                     <span style={{ color: "oklch(72% 0.14 274)" }}>return</span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>&lt;</span>
-                    <span style={{ color: "oklch(72% 0.14 35)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      &lt;
+                    </span>
+                    <span style={{ color: "var(--color-fiery-coral-400)" }}>
                       Comp
                     </span>{" "}
                     <span style={{ color: "oklch(82% 0.14 85)" }}>ref</span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
                       ={"{"}ref{"}"}
                     </span>{" "}
                     <span style={{ color: "oklch(82% 0.14 85)" }}>
                       className
                     </span>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
                       ={"{"}cn(buttonVariants({"{"} variant, size {"}"}),
                       className){"}"}
                     </span>{" "}
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
                       {"{"} ...props {"}"} /&gt;
                     </span>
                   </div>
                   <div className="pl-4">
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>{"}"}</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      {"}"}
+                    </span>
                   </div>
                   <div>
-                    <span style={{ color: "oklch(92% 0.01 260)" }}>)</span>
+                    <span style={{ color: "var(--color-polar-night-50)" }}>
+                      )
+                    </span>
                   </div>
                 </div>
               </div>

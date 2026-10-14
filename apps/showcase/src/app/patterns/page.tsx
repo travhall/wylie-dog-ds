@@ -630,7 +630,7 @@ export default function PatternsPage() {
                         status: "active",
                         statusColor: "var(--color-status-success)",
                         price: "$42/mo",
-                        bg: "linear-gradient(135deg, oklch(78% 0.13 35), oklch(70% 0.16 25))",
+                        bg: "linear-gradient(135deg, var(--color-fiery-coral-300), var(--color-red-400))",
                       },
                       {
                         name: "Atlas Studio",
@@ -1588,7 +1588,7 @@ export default function PatternsPage() {
                         sub: "WCAG 2.2 AA across every state.",
                       },
                       {
-                        color: "oklch(0.75 0.17 85)",
+                        color: "var(--color-yellow-500)",
                         label: "Typed end-to-end",
                         sub: "No prop guesswork in your IDE.",
                       },
@@ -2066,7 +2066,7 @@ export default function PatternsPage() {
                 },
                 {
                   num: "03",
-                  color: "oklch(0.75 0.17 85)",
+                  color: "var(--color-yellow-500)",
                   title: "Patterns stay in sync via the token layer.",
                   body: null,
                   tokenFlow: true,
