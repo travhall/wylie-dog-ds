@@ -996,7 +996,7 @@ export default function ShowcasePage() {
               <p className="mt-4 text-(--color-text-secondary)">
                 Pull the latest tokens into Figma as variables, or push your
                 edits back to a pull request. No more drift between the file
-                you're designing in and the code that ships.
+                you&apos;re designing in and the code that ships.
               </p>
 
               <ul className="mt-6 space-y-3 text-sm">
