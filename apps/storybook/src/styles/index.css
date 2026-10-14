@@ -17,3 +17,13 @@
  */
 @source "../../stories/**/*.tsx";
 @source "../../stories/**/*.mdx";
+
+/*
+ * Also scan the UI package sources. stories/globals.css imports the UI stylesheet
+ * first and this compiled sheet second. A responsive utility that only the UI
+ * sheet generates (e.g. lg:grid-cols-5 in SiteFooter) loses to a lower-breakpoint
+ * rule from this sheet (md:grid-cols-4 from a story) because later CSS wins at
+ * equal specificity. Generating the UI's utilities here as well lets Tailwind
+ * sort all breakpoints together.
+ */
+@source "../../../../packages/ui/src/**/*.tsx";
