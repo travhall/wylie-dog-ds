@@ -3,7 +3,6 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "changeset": "changeset",
     "check:docs": "node scripts/check-docs.mjs",
     "check:tokens": "node scripts/check-token-refs.mjs",
     "clean": "turbo run clean && rm -rf node_modules",
@@ -18,17 +17,14 @@
     "perf": "./scripts/performance-check.sh",
     "prepare": "husky",
     "preview-storybook": "turbo run preview-storybook",
-    "release": "turbo run build --filter=storybook^... && changeset publish --provenance",
     "size": "size-limit",
     "test": "turbo run test",
     "test:a11y": "turbo run test:a11y",
     "test:coverage": "turbo run test:coverage",
     "test:watch": "turbo run test:watch",
-    "typecheck": "turbo run typecheck",
-    "version-packages": "changeset version"
+    "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
-    "@changesets/cli": "^3.0.3",
     "@size-limit/preset-small-lib": "^13.1.1",
     "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",

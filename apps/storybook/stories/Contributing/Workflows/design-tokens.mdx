@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Contributing/Workflows/Design Token Workflow" />
 
@@ -136,6 +136,7 @@ In the Token Bridge plugin settings, point the plugin at the repository's token 
    - This writes the updated value to `packages/tokens/io/sync/semantic.json`
 
 3. **Build CSS:**
+
    ```bash
    pnpm --filter @wyliedog/tokens build
    ```
@@ -146,6 +147,7 @@ In the Token Bridge plugin settings, point the plugin at the repository's token 
    - Generates CSS variables in `dist/`
 
 4. **Verify in Storybook:**
+
    ```bash
    pnpm dev:storybook
    ```
@@ -169,16 +171,16 @@ In the Token Bridge plugin settings, point the plugin at the repository's token 
    - Set the value
 
 2. **Export and Build:**
+
    ```bash
    # After exporting via Token Bridge
    pnpm --filter @wyliedog/tokens build
    ```
 
 3. **Use in Components:**
+
    ```tsx
-   <div className="gap-(--space-400)">
-     {/* Content */}
-   </div>
+   <div className="gap-(--space-400)">{/* Content */}</div>
    ```
 
 4. **Update Documentation:**
@@ -194,13 +196,13 @@ The generated output looks like:
 ```css
 /* dist/semantic-light.css */
 :root {
-  --color-background-primary: oklch(1.000 0.000 0.00);
-  --color-text-primary: oklch(0.208 0.040 265.75);
+  --color-background-primary: oklch(1 0 0);
+  --color-text-primary: oklch(0.208 0.04 265.75);
 }
 
 /* dist/semantic-dark.css */
 .dark {
-  --color-background-primary: oklch(0.208 0.040 265.75);
+  --color-background-primary: oklch(0.208 0.04 265.75);
   --color-text-primary: oklch(0.984 0.003 247.86);
 }
 ```
@@ -218,6 +220,7 @@ To add or update dark mode values, update the Variable mode in Figma, export via
 ### Examples
 
 **Colors:**
+
 ```
 color.background.primary
 color.background.primary.hover
@@ -227,6 +230,7 @@ color.interactive.primary
 ```
 
 **Typography:**
+
 ```
 typography.heading.xl.fontFamily
 typography.heading.xl.fontSize
@@ -235,6 +239,7 @@ typography.body.md.fontWeight
 ```
 
 **Spacing:**
+
 ```
 space.component.padding.sm
 space.component.gap.md
@@ -244,12 +249,14 @@ space.layout.section.lg
 ### Naming Best Practices
 
 ✅ **Do:**
+
 - Use semantic names: `color.background.primary` (not `color.blue.500`)
 - Be specific: `space.button.padding.x` (not `spacing.4`)
 - Follow hierarchy: primitive → semantic → component
 - Match Figma Variable names exactly for consistent export/import
 
 ❌ **Don't:**
+
 - Use implementation details: `shadow-drop-15px` (use `shadow.card.default`)
 - Skip semantic layer: component tokens must reference semantic, not primitive tokens
 - Use vague names: `spacing.big` (use `space.layout.section.lg`)
@@ -272,6 +279,7 @@ pnpm build
 ```
 
 The build script runs in sequence:
+
 1. `process-io` — pre-processes the sync JSON files
 2. `style-dictionary` — generates CSS variables and manifest
 3. `generate-font-loaders` — creates `@font-face` loader files
@@ -324,6 +332,7 @@ pnpm --filter @wyliedog/tokens audit:verbose
 **Problem:** Changed a token in Figma but the component still shows the old value.
 
 **Solution:**
+
 1. Verify the change was exported from Token Bridge to `packages/tokens/io/sync/`
 2. Run `pnpm --filter @wyliedog/tokens build` to regenerate CSS
 3. Hard refresh the browser (Cmd/Ctrl + Shift + R)
@@ -334,7 +343,9 @@ pnpm --filter @wyliedog/tokens audit:verbose
 **Problem:** Token shows `undefined` in rendered output.
 
 **Solution:**
+
 1. Check that the referenced token exists in the JSON source:
+
    ```json
    // ❌ Typo in reference
    "$value": "{color.interactve.primary}"
@@ -342,6 +353,7 @@ pnpm --filter @wyliedog/tokens audit:verbose
    // ✅ Correct
    "$value": "{color.interactive.primary}"
    ```
+
 2. Ensure token hierarchy is correct (component → semantic → primitive)
 3. Re-run `pnpm --filter @wyliedog/tokens build`
 4. Run `pnpm --filter @wyliedog/tokens test:tokens` to surface reference errors
@@ -351,6 +363,7 @@ pnpm --filter @wyliedog/tokens audit:verbose
 **Problem:** Dark mode tokens not applying.
 
 **Solution:**
+
 1. Verify the `.dark` class is applied to `<html>`, not `<body>`
 2. Confirm `@wyliedog/ui/styles` is imported — it bundles both light and dark CSS
 3. Use browser DevTools to inspect computed values for `--color-background-primary`
@@ -360,6 +373,7 @@ pnpm --filter @wyliedog/tokens audit:verbose
 **Problem:** `pnpm --filter @wyliedog/tokens build` throws an error.
 
 **Solution:**
+
 1. Check the JSON syntax in the modified sync file
 2. Run the audit to find structural issues:
    ```bash
@@ -404,6 +418,7 @@ per A/B test results (2024-01-15). References primitive color/purple/600."
 ### 4. Test Across Themes
 
 Always test token changes in:
+
 - Light mode
 - Dark mode
 - Reduced motion (check animation tokens)

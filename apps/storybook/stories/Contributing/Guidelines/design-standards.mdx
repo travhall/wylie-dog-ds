@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Contributing/Guidelines/Design Standards" />
 
@@ -12,13 +12,13 @@ Standards for contributing design work to the Wylie Dog Design System. These app
 
 Every component must include a clearly defined anatomy:
 
-| Part | Requirement |
-|---|---|
-| Base component | Default state, no interaction |
-| Variants | All visual styles (e.g. Primary, Secondary, Outline, Ghost) |
-| Sizes | Small, Medium, Large where applicable |
-| States | Default, Hover, Focus, Active, Disabled |
-| Optional parts | Clearly marked as optional (e.g. icon slots) |
+| Part           | Requirement                                                 |
+| -------------- | ----------------------------------------------------------- |
+| Base component | Default state, no interaction                               |
+| Variants       | All visual styles (e.g. Primary, Secondary, Outline, Ghost) |
+| Sizes          | Small, Medium, Large where applicable                       |
+| States         | Default, Hover, Focus, Active, Disabled                     |
+| Optional parts | Clearly marked as optional (e.g. icon slots)                |
 
 **Example — Button anatomy:**
 
@@ -44,11 +44,11 @@ Button
 
 Match the code API exactly. The design system uses these standard values:
 
-| Property | Values |
-|---|---|
+| Property  | Values                                                            |
+| --------- | ----------------------------------------------------------------- |
 | `variant` | `default`, `secondary`, `outline`, `ghost`, `destructive`, `link` |
-| `size` | `sm`, `md`, `lg` |
-| `state` | `default`, `hover`, `focus`, `active`, `disabled` |
+| `size`    | `sm`, `md`, `lg`                                                  |
+| `state`   | `default`, `hover`, `focus`, `active`, `disabled`                 |
 
 If a new component needs variant names not listed here, align with engineering before finalizing.
 
@@ -73,11 +73,11 @@ Refer to the [Theming Overview](/docs/resources-theming-overview--docs) for the 
 
 ### Color Contrast (WCAG 2.2 AA)
 
-| Text type | Minimum ratio |
-|---|---|
-| Normal text (< 18px) | 4.5:1 |
-| Large text (≥ 18px or 14px bold) | 3:1 |
-| UI components and boundaries | 3:1 |
+| Text type                        | Minimum ratio |
+| -------------------------------- | ------------- |
+| Normal text (< 18px)             | 4.5:1         |
+| Large text (≥ 18px or 14px bold) | 3:1           |
+| UI components and boundaries     | 3:1           |
 
 ### Focus States
 
@@ -99,12 +99,12 @@ All interactive elements must have a visible focus indicator:
 
 Design mobile-first at these breakpoints:
 
-| Name | Width |
-|---|---|
-| Mobile | 375px–767px |
-| Tablet | 768px–1023px |
+| Name    | Width         |
+| ------- | ------------- |
+| Mobile  | 375px–767px   |
+| Tablet  | 768px–1023px  |
 | Desktop | 1024px–1439px |
-| Large | 1440px+ |
+| Large   | 1440px+       |
 
 Use the 4px base spacing scale. Prefer Tailwind spacing tokens (`space-4` = 16px, `space-6` = 24px, etc.) when annotating specs for engineering.
 

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Contributing/Guidelines/Code Standards" />
 
@@ -15,8 +15,9 @@ All components must be fully typed with no `any` types except where absolutely n
 ```tsx
 // ✅ Good
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'link' | 'destructive';
-  size?: 'sm' | 'md' | 'lg';
+  variant?:
+    "default" | "secondary" | "outline" | "ghost" | "link" | "destructive";
+  size?: "sm" | "md" | "lg";
 }
 
 // ❌ Bad
@@ -33,11 +34,11 @@ Use TypeScript interfaces for component props:
 ```tsx
 // ✅ Prefer interface for extensibility
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  elevation?: 'sm' | 'md' | 'lg';
+  elevation?: "sm" | "md" | "lg";
 }
 
 // Use type for unions or complex types
-export type CardVariant = 'default' | 'outlined' | 'elevated';
+export type CardVariant = "default" | "outlined" | "elevated";
 ```
 
 ### Generic Components
@@ -81,24 +82,23 @@ apps/storybook/stories/Components/
 Follow this structure for new components:
 
 ```tsx
-import * as React from 'react';
-import { cn } from './lib/utils';
+import * as React from "react";
+import { cn } from "./lib/utils";
 
 // 1. Type definitions
-export interface ComponentProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
+export interface ComponentProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: "default" | "secondary" | "outline";
+  size?: "sm" | "md" | "lg";
 }
 
 // 2. Component implementation
 export const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
-  ({ className, variant = 'default', size = 'md', ...props }, ref) => {
+  ({ className, variant = "default", size = "md", ...props }, ref) => {
     return (
       <div
         ref={ref}
         className={cn(
-          'base-styles',
+          "base-styles",
           variantStyles[variant],
           sizeStyles[size],
           className
@@ -109,22 +109,24 @@ export const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
   }
 );
 
-Component.displayName = 'Component';
+Component.displayName = "Component";
 
 // 3. Style variants (if complex)
 // Variant styles reference component tokens exclusively.
 // `component` in these token names is a placeholder for your component's name (for example `button`).
 const variantStyles = {
-  default: 'bg-(--color-component-background) text-(--color-component-text)',
-  secondary: 'bg-(--color-component-background-secondary) text-(--color-component-text-secondary)',
-  outline: 'border border-(--color-component-border) text-(--color-component-text)',
+  default: "bg-(--color-component-background) text-(--color-component-text)",
+  secondary:
+    "bg-(--color-component-background-secondary) text-(--color-component-text-secondary)",
+  outline:
+    "border border-(--color-component-border) text-(--color-component-text)",
 };
 
 // Size styles reference component tokens — never hardcoded Tailwind scale values
 const sizeStyles = {
-  sm: 'text-(length:--font-size-component-sm) px-(--space-component-padding-x-sm) py-(--space-component-padding-y-sm)',
-  md: 'text-(length:--font-size-component-md) px-(--space-component-padding-x-md) py-(--space-component-padding-y-md)',
-  lg: 'text-(length:--font-size-component-lg) px-(--space-component-padding-x-lg) py-(--space-component-padding-y-lg)',
+  sm: "text-(length:--font-size-component-sm) px-(--space-component-padding-x-sm) py-(--space-component-padding-y-sm)",
+  md: "text-(length:--font-size-component-md) px-(--space-component-padding-x-md) py-(--space-component-padding-y-md)",
+  lg: "text-(length:--font-size-component-lg) px-(--space-component-padding-x-lg) py-(--space-component-padding-y-lg)",
 };
 ```
 
@@ -141,31 +143,31 @@ All components must have unit tests covering:
 
 ```tsx
 // button.test.tsx
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Button } from './button';
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { Button } from "./button";
 
-describe('Button', () => {
-  it('renders with children', () => {
+describe("Button", () => {
+  it("renders with children", () => {
     render(<Button>Click me</Button>);
-    expect(screen.getByRole('button')).toHaveTextContent('Click me');
+    expect(screen.getByRole("button")).toHaveTextContent("Click me");
   });
 
-  it('calls onClick when clicked', async () => {
+  it("calls onClick when clicked", async () => {
     const handleClick = vi.fn();
     render(<Button onClick={handleClick}>Click</Button>);
 
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole("button"));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it('is keyboard accessible', async () => {
+  it("is keyboard accessible", async () => {
     const handleClick = vi.fn();
     render(<Button onClick={handleClick}>Click</Button>);
 
-    const button = screen.getByRole('button');
+    const button = screen.getByRole("button");
     button.focus();
-    await userEvent.keyboard('{Enter}');
+    await userEvent.keyboard("{Enter}");
     expect(handleClick).toHaveBeenCalled();
   });
 });
@@ -191,10 +193,7 @@ describe('Button', () => {
 
 ```tsx
 // ✅ Good - Memoize expensive computations
-const sortedItems = useMemo(
-  () => items.sort((a, b) => a.id - b.id),
-  [items]
-);
+const sortedItems = useMemo(() => items.sort((a, b) => a.id - b.id), [items]);
 
 // ✅ Good - Memoize callbacks passed to children
 const handleChange = useCallback(
@@ -205,7 +204,7 @@ const handleChange = useCallback(
 );
 
 // ❌ Bad - Creating new objects in render
-<Component style={{ margin: 10 }} /> // Creates new object every render
+<Component style={{ margin: 10 }} />; // Creates new object every render
 ```
 
 ### Accessibility Requirements
@@ -218,7 +217,7 @@ All components must meet WCAG 2.2 Level AA standards:
 // Ensure focusable elements are keyboard accessible
 <button
   onKeyDown={(e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       handleClick();
     }
@@ -232,10 +231,7 @@ All components must meet WCAG 2.2 Level AA standards:
 
 ```tsx
 // Provide meaningful labels and descriptions
-<button
-  aria-label="Close dialog"
-  aria-pressed={isActive}
->
+<button aria-label="Close dialog" aria-pressed={isActive}>
   <Icon name="close" aria-hidden="true" />
 </button>
 ```
@@ -271,22 +267,22 @@ const MAX_ITEMS = 10;
 
 ```tsx
 // 1. React and external libraries
-import * as React from 'react';
-import { cva } from 'class-variance-authority';
+import * as React from "react";
+import { cva } from "class-variance-authority";
 
 // 2. Internal utilities
-import { cn } from './lib/utils';
+import { cn } from "./lib/utils";
 
 // 3. Types
-import type { ButtonProps } from './types';
+import type { ButtonProps } from "./types";
 
 // 4. Relative imports
-import { Icon } from '../icon';
+import { Icon } from "../icon";
 ```
 
 ### Comments
 
-```tsx
+````tsx
 // Use JSDoc for public APIs
 /**
  * A flexible button component with multiple variants and sizes.
@@ -303,7 +299,7 @@ export const Button = () => {};
 // Use inline comments sparingly, only for complex logic
 // Complex regex explanation
 const pattern = /^[a-z0-9]+$/i; // Alphanumeric only
-```
+````
 
 ## Git Commit Messages
 
@@ -362,4 +358,4 @@ Before submitting a PR, ensure:
 
 - Review existing components for examples
 - Ask in PR comments for clarification
-- Check the [Release Process](/docs/contributing-workflows-release-process--docs) guide for process details
+- Check the [Component Development Process](/docs/contributing-workflows-component-development-process--docs) guide for process details
