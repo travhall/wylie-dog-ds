@@ -345,7 +345,7 @@ export function ShowcaseHeader() {
             <a href="https://github.com/travhall/wylie-dog-ds">GitHub</a>
           </Button>
           <Button asChild>
-            <a href="https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/">
+            <a href="https://wyliedogstorybook.com">
               Storybook
             </a>
           </Button>
@@ -424,7 +424,7 @@ export const ShowcaseExample: Story = {
           <a href="https://github.com/travhall/wylie-dog-ds">GitHub</a>
         </Button>
         <Button asChild>
-          <a href="https://67881b308753304daabf16af-qkzxrbnawn.chromatic.com/">
+          <a href="https://wyliedogstorybook.com">
             Storybook
           </a>
         </Button>
