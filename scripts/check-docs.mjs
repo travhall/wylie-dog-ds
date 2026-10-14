@@ -8,11 +8,16 @@
 //   B. README.md counts and versions must match source files: component count
 //      (story files), Node version (engines, .nvmrc, netlify.toml) and the
 //      tool versions in the badges and tech-stack table (pnpm-lock.yaml).
+//   C. Relative links in tracked .md files must point at files that exist
+//      (code fences are ignored; intentional exceptions go in linkAllow).
+//   D. documentation/reference/testing-coverage.md's test file count must
+//      match the *.test.ts(x) files in packages/ui/src.
 //
 // Requires tokens to be built: pnpm --filter @wyliedog/tokens build
 // Usage: node scripts/check-docs.mjs
 
 import fs from "node:fs";
+import path from "node:path";
 import { execSync } from "node:child_process";
 
 const read = (p) => fs.readFileSync(p, "utf8");
@@ -137,6 +142,44 @@ for (const [label, pkg, claimed, where] of claims) {
     fail(
       "README.md",
       `${where} says ${label} ${claimed} but lockfile has ${actual}`
+    );
+  }
+}
+
+// ---------- C. relative links ----------
+
+const mdFiles = docs.filter((f) => f.endsWith(".md"));
+for (const file of mdFiles) {
+  const allow = config.linkAllow?.[file] ?? [];
+  const text = read(file).replace(/```[\s\S]*?```/g, "");
+  for (const m of text.matchAll(/\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g)) {
+    if (/^(https?:|mailto:|#|data:)/.test(m[1])) continue;
+    let target;
+    try {
+      target = decodeURIComponent(m[1].split("#")[0].split("?")[0]);
+    } catch {
+      continue;
+    }
+    if (!target || allow.includes(m[1])) continue;
+    const resolved = target.startsWith("/")
+      ? target.slice(1)
+      : path.join(path.dirname(file), target);
+    if (!fs.existsSync(resolved)) fail(file, `link ${m[1]} does not exist`);
+  }
+}
+
+// ---------- D. testing-coverage test file count ----------
+
+const coverageDoc = read("documentation/reference/testing-coverage.md");
+const fileClaim = /(\d+) passing test files/.exec(coverageDoc);
+if (fileClaim) {
+  const testFiles = fs
+    .readdirSync("packages/ui/src", { recursive: true })
+    .filter((f) => /\.test\.tsx?$/.test(f)).length;
+  if (Number(fileClaim[1]) !== testFiles) {
+    fail(
+      "documentation/reference/testing-coverage.md",
+      `says ${fileClaim[1]} passing test files but packages/ui/src has ${testFiles}`
     );
   }
 }

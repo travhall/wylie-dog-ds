@@ -14,6 +14,11 @@ catalog:
   vite: ^8.3.4
   vitest: ^4.1.11
 
+# serve@14.2.6 (latest) pins compression 1.8.1, which has a DoS advisory
+# (GHSA-vc2v-76pw-4v95, fixed in 1.8.2). Remove once serve ships a fix.
+overrides:
+  compression: '>=1.8.2'
+
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
