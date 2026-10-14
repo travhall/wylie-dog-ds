@@ -12,7 +12,7 @@ catalog:
   # broke before attempting a 7.x bump.
   typescript: 6.0.3
   vite: ^8.3.4
-  vitest: ^4.1.11
+  vitest: ^5.0.4
 
 # serve@14.2.6 (latest) pins compression 1.8.1, which has a DoS advisory
 # (GHSA-vc2v-76pw-4v95, fixed in 1.8.2). Remove once serve ships a fix.

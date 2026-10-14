@@ -47,7 +47,7 @@ Managed with pnpm workspaces and Turborepo. Package manager: `pnpm@10.28.2`.
 | Storybook          | 10.6    |
 | Vite               | 8.3     |
 | Next.js (showcase) | 16.3    |
-| Vitest             | 4.1     |
+| Vitest             | 5.0     |
 | Turborepo          | 2.11    |
 | Style Dictionary   | 5.6     |
 | Radix UI           | various |
