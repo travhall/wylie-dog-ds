@@ -18,9 +18,9 @@ export default defineConfig({
       // which points at build output.
       {
         find: /^@wyliedog\/ui\/(.+)$/,
-        replacement: `${path.resolve(__dirname, "../../packages/ui/src")}/$1`,
+        replacement: `${path.resolve(import.meta.dirname, "../../packages/ui/src")}/$1`,
       },
-      { find: "@", replacement: path.resolve(__dirname, "./src") },
+      { find: "@", replacement: path.resolve(import.meta.dirname, "./src") },
     ],
   },
 });

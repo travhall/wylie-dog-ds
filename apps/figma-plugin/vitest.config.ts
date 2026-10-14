@@ -35,11 +35,11 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": resolve(__dirname, "./src"),
-      "@plugin": resolve(__dirname, "./src/plugin"),
-      "@ui": resolve(__dirname, "./src/ui"),
-      "@shared": resolve(__dirname, "./src/shared"),
-      "@tests": resolve(__dirname, "./src/__tests__"),
+      "@": resolve(import.meta.dirname, "./src"),
+      "@plugin": resolve(import.meta.dirname, "./src/plugin"),
+      "@ui": resolve(import.meta.dirname, "./src/ui"),
+      "@shared": resolve(import.meta.dirname, "./src/shared"),
+      "@tests": resolve(import.meta.dirname, "./src/__tests__"),
       // Preact compatibility
       react: "preact/compat",
       "react-dom": "preact/compat",

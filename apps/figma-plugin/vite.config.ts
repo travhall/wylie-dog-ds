@@ -66,6 +66,10 @@ export default defineConfig(({ mode }) => {
           entryFileNames: "plugin.js",
           format: "iife",
         },
+        // Vite's preload helper reads import.meta, which Rolldown rewrites to
+        // {} in an IIFE bundle (and warns). The helper's import.meta code is
+        // dead in plugin.js, so state the replacement explicitly.
+        transform: { define: { "import.meta": "{}" } },
       },
       minify: true,
       sourcemap: false,
