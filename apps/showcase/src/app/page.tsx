@@ -703,7 +703,7 @@ export default function ShowcasePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {/* Layout */}
             <Link
-              href="/patterns/layout"
+              href="/patterns#cat-layout"
               className="group rounded-xl border border-(--color-border-secondary) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
@@ -778,7 +778,7 @@ export default function ShowcasePage() {
 
             {/* Auth */}
             <Link
-              href="/patterns/auth"
+              href="/patterns#cat-auth"
               className="group rounded-xl border border-(--color-border-secondary) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
@@ -837,7 +837,7 @@ export default function ShowcasePage() {
 
             {/* Navigation */}
             <Link
-              href="/patterns/navigation"
+              href="/patterns#cat-nav"
               className="group rounded-xl border border-(--color-border-secondary) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all"
               style={{ background: "var(--color-background-primary)" }}
             >
@@ -926,37 +926,37 @@ export default function ShowcasePage() {
                 cat: "Data",
                 label: "Card Grid",
                 sub: "Paginated · filterable",
-                href: "/patterns/data",
+                href: "/patterns#cat-data",
               },
               {
                 cat: "Data",
                 label: "Feature Grid",
                 sub: "2×2 · 3×2 · 4×1",
-                href: "/patterns/data",
+                href: "/patterns#cat-data",
               },
               {
                 cat: "Form",
                 label: "Form Compositions",
                 sub: "Multi-field · stepped",
-                href: "/patterns/forms",
+                href: "/patterns#cat-forms",
               },
               {
                 cat: "Form",
                 label: "Form Validation",
                 sub: "Error · async · success",
-                href: "/patterns/forms",
+                href: "/patterns#cat-forms",
               },
               {
                 cat: "Feedback",
                 label: "Error Boundary",
                 sub: "Page · component scope",
-                href: "/patterns/feedback",
+                href: "/patterns#cat-feedback",
               },
               {
                 cat: "Responsive",
                 label: "Responsive Patterns",
                 sub: "Mobile · tablet · desktop",
-                href: "/patterns/responsive",
+                href: "/patterns#cat-responsive",
               },
             ].map((p) => (
               <Link

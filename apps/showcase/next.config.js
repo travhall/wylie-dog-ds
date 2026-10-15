@@ -28,10 +28,11 @@ const nextConfig = {
     }
     return config;
   },
-  // The per-category component pages were partial duplicates of the sections on
-  // /components, so their old URLs now land on the matching section.
+  // The per-category component and pattern pages were partial duplicates of the
+  // sections on /components and /patterns, so their old URLs now land on the
+  // matching section.
   async redirects() {
-    return [
+    const components = [
       "content-display",
       "feedback",
       "inputs",
@@ -43,6 +44,23 @@ const nextConfig = {
       destination: `/components#${id}`,
       permanent: true,
     }));
+    const patternSections = {
+      accessibility: "cat-accessibility",
+      auth: "cat-auth",
+      compositions: "cat-page",
+      data: "cat-data",
+      feedback: "cat-feedback",
+      forms: "cat-forms",
+      layout: "cat-layout",
+      navigation: "cat-nav",
+      responsive: "cat-responsive",
+    };
+    const patterns = Object.entries(patternSections).map(([id, section]) => ({
+      source: `/patterns/${id}`,
+      destination: `/patterns#${section}`,
+      permanent: true,
+    }));
+    return [...components, ...patterns];
   },
   async headers() {
     return [

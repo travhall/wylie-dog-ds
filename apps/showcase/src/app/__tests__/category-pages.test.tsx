@@ -1,7 +1,6 @@
 import { readFileSync } from "fs";
 import { resolve } from "path";
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
 import type { ComponentType } from "react";
 import { getComponentCategoryCounts } from "@/lib/showcase-metadata";
 
@@ -66,17 +65,42 @@ describe("component category URLs", () => {
   });
 });
 
-describe("pattern category pages share the hub-breadcrumb template", () => {
-  const entries = Object.entries(patternCategoryModules);
+describe("pattern category URLs", () => {
+  const sections: Record<string, string> = {
+    accessibility: "cat-accessibility",
+    auth: "cat-auth",
+    compositions: "cat-page",
+    data: "cat-data",
+    feedback: "cat-feedback",
+    forms: "cat-forms",
+    layout: "cat-layout",
+    navigation: "cat-nav",
+    responsive: "cat-responsive",
+  };
 
-  it("discovers all 9 pattern category pages", () => {
-    expect(entries.length).toBe(9);
+  it("no longer has per-category pages", () => {
+    expect(Object.keys(patternCategoryModules)).toEqual([]);
   });
 
-  it.each(entries)("%s has a link back to /patterns", (path, mod) => {
-    render(<mod.default />);
-    expect(
-      screen.getByRole("link", { name: /all patterns/i })
-    ).toBeInTheDocument();
+  it("redirects each old pattern URL to its section on /patterns", async () => {
+    const config = require("../../../next.config.js");
+    const redirects = await config.redirects();
+    for (const [id, section] of Object.entries(sections)) {
+      expect(redirects).toContainEqual({
+        source: `/patterns/${id}`,
+        destination: `/patterns#${section}`,
+        permanent: true,
+      });
+    }
+  });
+
+  it("has a section on /patterns for every redirect target", () => {
+    const hub = readFileSync(
+      resolve(__dirname, "../patterns/page.tsx"),
+      "utf-8"
+    );
+    for (const section of Object.values(sections)) {
+      expect(hub).toContain(`id="${section}"`);
+    }
   });
 });
