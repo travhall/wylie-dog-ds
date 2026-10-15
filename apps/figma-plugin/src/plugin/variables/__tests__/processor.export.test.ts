@@ -218,6 +218,26 @@ describe("stored original type", () => {
     expect(token).toEqual({ $type: "number", $value: 0.5 });
   });
 
+  it.each([
+    ["typography/line-height/none", 100],
+    ["typography/line-height/snug", 137.5],
+    ["typography/line-height/normal", 150],
+  ])(
+    "round-trips the repo's line-height token %s as a plain number",
+    async (name, value) => {
+      // packages/tokens stores line heights as `$type: "number"` percent values
+      // (100 to 200). The importer records that type, so the hyphenated name
+      // must not be re-inferred as lineHeight (which would append "%").
+      const token = await single(
+        name,
+        "FLOAT",
+        value,
+        withPluginData("number")
+      );
+      expect(token).toEqual({ $type: "number", $value: value });
+    }
+  );
+
   it("falls back to inference when the plugin data is empty", async () => {
     const token = await single(
       "layout/spacing",
