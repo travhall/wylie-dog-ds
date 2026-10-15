@@ -5,9 +5,7 @@ export default function ColorsPage() {
   const { primitives, semantics } = manifest;
 
   const formatGroupName = (name: string) =>
-    name.charAt(0).toUpperCase() +
-    name.slice(1) +
-    (name.endsWith("s") ? "" : "s");
+    name.charAt(0).toUpperCase() + name.slice(1);
 
   const colorPrimitives = Object.entries(primitives.colors).map(
     ([name, shades]) => ({
