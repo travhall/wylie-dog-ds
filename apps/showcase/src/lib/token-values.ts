@@ -36,6 +36,14 @@ export function findCssVar(css: string, name: string): string | null {
   return match ? match[1].trim() : null;
 }
 
+/** Shape of a token entry in `@wyliedog/tokens/manifest.json`. */
+export interface ManifestToken {
+  value: string;
+  variable: string;
+  path: string[];
+  description?: string;
+}
+
 export interface ColorModes {
   light: string;
   dark: string;

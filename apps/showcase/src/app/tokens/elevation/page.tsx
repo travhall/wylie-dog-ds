@@ -1,5 +1,6 @@
 import manifest from "@wyliedog/tokens/manifest.json";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
+import type { ManifestToken } from "@/lib/token-values";
 
 const SHADOW_ORDER = [
   "shadow-none",
@@ -12,15 +13,15 @@ const SHADOW_ORDER = [
 ];
 
 export default function ElevationPage() {
-  const shadowEntries = Object.entries(manifest.semantics.shadow || {}).map(
-    ([key, token]: [string, any]) => ({
-      key,
-      name: token.path[token.path.length - 1],
-      value: token.value,
-      variable: token.variable,
-      description: token.description,
-    })
-  );
+  const shadowEntries = Object.entries(
+    (manifest.semantics.shadow || {}) as Record<string, ManifestToken>
+  ).map(([key, token]) => ({
+    key,
+    name: token.path[token.path.length - 1],
+    value: token.value,
+    variable: token.variable,
+    description: token.description,
+  }));
 
   const shadows = shadowEntries.sort((a, b) => {
     const ai = SHADOW_ORDER.indexOf(a.key);
@@ -38,7 +39,7 @@ export default function ElevationPage() {
       headline={
         <>
           {shadows.length} shadow steps —{" "}
-          <span style={{ color: "var(--color-interactive-primary)" }}>one</span>{" "}
+          <span className="text-(--color-interactive-primary)">one</span>{" "}
           stacking story.
         </>
       }
