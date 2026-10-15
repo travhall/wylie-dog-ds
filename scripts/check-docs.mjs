@@ -12,6 +12,13 @@
 //      (code fences are ignored; intentional exceptions go in linkAllow).
 //   D. documentation/reference/testing-coverage.md's test file count must
 //      match the *.test.ts(x) files in packages/ui/src.
+//   E. The same doc's Statements/Lines/Functions/Branches percentages must
+//      match packages/ui/coverage/coverage-summary.json (from
+//      `pnpm --filter @wyliedog/ui test:coverage`). Skipped, with a note, when
+//      that file is missing or older than the sources; `--require-coverage`
+//      turns a skip into a failure (see `pnpm check:docs:coverage`). Passing
+//      and skipped test counts are not checked: coverage output has no test
+//      results.
 //
 // Requires tokens to be built: pnpm --filter @wyliedog/tokens build
 // Usage: node scripts/check-docs.mjs
@@ -184,6 +191,49 @@ if (fileClaim) {
   }
 }
 
+// ---------- E. testing-coverage percentages ----------
+
+const requireCoverage = process.argv.includes("--require-coverage");
+const summaryPath = "packages/ui/coverage/coverage-summary.json";
+const newestSource = (dir) =>
+  Math.max(
+    ...fs
+      .readdirSync(dir, { recursive: true })
+      .filter((f) => /\.(tsx?|css)$/.test(f))
+      .map((f) => fs.statSync(path.join(dir, f)).mtimeMs)
+  );
+let coverageNote = "";
+if (!fs.existsSync(summaryPath)) {
+  coverageNote = "coverage percentages not checked (no coverage-summary.json)";
+} else if (fs.statSync(summaryPath).mtimeMs < newestSource("packages/ui/src")) {
+  coverageNote =
+    "coverage percentages not checked (coverage-summary.json is older than packages/ui/src)";
+} else {
+  const total = JSON.parse(read(summaryPath)).total;
+  for (const [label, key] of [
+    ["Statements", "statements"],
+    ["Lines", "lines"],
+    ["Functions", "functions"],
+    ["Branches", "branches"],
+  ]) {
+    const claim = new RegExp(`\\|\\s*${label}\\s*\\|\\s*([\\d.]+)%`).exec(
+      coverageDoc
+    );
+    if (!claim) continue;
+    const actual = total[key].pct;
+    if (Math.abs(Number(claim[1]) - actual) > 0.005) {
+      fail(
+        "documentation/reference/testing-coverage.md",
+        `says ${label} ${claim[1]}% but the last coverage run reports ${actual}%`
+      );
+    }
+  }
+}
+if (coverageNote && requireCoverage) {
+  fail("documentation/reference/testing-coverage.md", coverageNote);
+  coverageNote = "";
+}
+
 // ---------- report ----------
 
 if (problems.length) {
@@ -197,3 +247,4 @@ if (problems.length) {
 console.log(
   `Docs OK: ${docs.length} files, ${defined.size} tokens, ${claims.length} version claims.`
 );
+if (coverageNote) console.log(`Note: ${coverageNote}.`);

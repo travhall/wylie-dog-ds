@@ -4,7 +4,7 @@
 **Overall Coverage:** 98.51% lines / 98.02% statements (exceeds 80% threshold)
 **Tests Passing:** 1,574 | **Tests Skipped:** 67
 
-Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather than trusting this snapshot.
+Numbers come from `pnpm --filter @wyliedog/ui test:coverage`; re-run it rather than trusting this snapshot. `pnpm check:docs:coverage` runs it and fails if the four percentages in the table below no longer match; plain `pnpm check:docs` does the same comparison whenever a fresh coverage run is on disk. Passing and skipped test counts are not checked.
 
 ## Coverage Breakdown
 

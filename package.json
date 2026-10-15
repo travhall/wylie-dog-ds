@@ -4,6 +4,7 @@
   "scripts": {
     "build": "turbo run build",
     "check:docs": "node scripts/check-docs.mjs",
+    "check:docs:coverage": "pnpm --filter @wyliedog/ui exec vitest run --coverage && node scripts/check-docs.mjs --require-coverage",
     "check:tokens": "node scripts/check-token-refs.mjs",
     "clean": "turbo run clean && rm -rf node_modules",
     "dev": "turbo run dev",
