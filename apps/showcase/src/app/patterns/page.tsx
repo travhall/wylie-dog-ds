@@ -5,6 +5,7 @@ import manifest from "@wyliedog/tokens/manifest.json";
 import {
   getShowcaseMeta,
   getPatternCategoryCounts,
+  getPatternDocsPath,
 } from "@/lib/showcase-metadata";
 
 /* ─── Pattern card ───────────────────────────────────────────── */
@@ -13,14 +14,14 @@ function PatCard({
   desc,
   tags,
   preview,
-  href,
+  story,
   full = false,
 }: {
   title: string;
   desc: string;
   tags: string[];
   preview: React.ReactNode;
-  href: string;
+  story: string;
   full?: boolean;
 }) {
   return (
@@ -52,12 +53,14 @@ function PatCard({
           <h3 className="font-serif text-lg font-semibold text-(--color-text-primary)">
             {title}
           </h3>
-          <Link
-            href={href}
+          <a
+            href={`https://wyliedogstorybook.com/?path=${getPatternDocsPath(story) ?? "/"}`}
+            target="_blank"
+            rel="noreferrer"
             className="font-mono text-[10px] text-(--color-text-tertiary) hover:text-(--color-interactive-primary) transition-colors"
           >
-            View ↗
-          </Link>
+            Storybook ↗
+          </a>
         </div>
         <p className="text-sm text-(--color-text-secondary) mt-1 leading-relaxed">
           {desc}
@@ -361,7 +364,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
-              href="/patterns/auth"
+              story="login-registration"
               title="Login & Registration"
               desc="Simple login, login with social auth, a registration form, and a tabbed login and registration form."
               tags={["Card", "Form", "Input", "Button", "Tabs", "Checkbox"]}
@@ -494,7 +497,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
-              href="/patterns/auth"
+              story="password-recovery"
               title="Password Recovery"
               desc="Forgot-password email step, reset-password form, an invalid-link state, and a multi-step recovery flow."
               tags={["Card", "Form", "Input", "Alert", "Button"]}
@@ -608,7 +611,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
-              href="/patterns/data"
+              story="card-grid"
               title="Card Grid"
               desc="Responsive grid of cards with default, all-variants and interactive examples. CardGrid takes a column count per breakpoint."
               tags={["CardGrid", "Card", "Badge", "Button"]}
@@ -704,7 +707,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
-              href="/patterns/data"
+              story="feature-grid"
               title="Feature Grid"
               desc="A grid of features with icons, titles and short descriptions, with several column configurations."
               tags={["FeatureGrid"]}
@@ -788,7 +791,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
-              href="/patterns/feedback"
+              story="error-boundary-patterns"
               full
               title="Error Boundary Patterns"
               desc="Basic and recoverable error boundaries, multiple and granular boundaries, custom fallback UI, and error logging."
@@ -932,7 +935,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
-              href="/patterns/forms"
+              story="form-compositions"
               title="Form Compositions"
               desc="Contact, multi-step, preferences, project-creation, payment and settings forms built from the system's form components."
               tags={["Form", "Input", "Select", "Checkbox", "Switch", "Tabs"]}
@@ -1034,7 +1037,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
-              href="/patterns/forms"
+              story="form-validation-patterns"
               title="Form Validation Patterns"
               desc="Required-field, inline, password-strength, multi-step and async validation using the Form components and controlled state, with no external validation library."
               tags={["Form", "Input", "Textarea", "Alert", "Button"]}
@@ -1159,7 +1162,7 @@ export default function PatternsPage() {
             desc="Page-level layouts built from the system's components: a dashboard, a settings page, a landing page and a user profile."
           />
           <PatCard
-            href="/patterns/layout"
+            story="layout-patterns"
             full
             title="Layout Patterns"
             desc="Dashboard, settings page, landing page and user profile layouts, each composed from cards, inputs and separators."
@@ -1340,7 +1343,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
-              href="/patterns/navigation"
+              story="site-header"
               title="Site Header"
               desc="Header with logo, navigation links and actions, sticky with a backdrop blur; default and transparent variants. Used as the header on this site."
               tags={["SiteHeader", "Button"]}
@@ -1420,7 +1423,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
-              href="/patterns/navigation"
+              story="site-footer"
               title="Site Footer"
               desc="Footer with logo, navigation columns, social links and copyright; default and minimal variants with a responsive grid."
               tags={["SiteFooter"]}
@@ -1507,7 +1510,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-3 gap-4">
             <PatCard
-              href="/patterns/compositions"
+              story="section-hero"
               title="Section: Hero"
               desc="Headline, description, action buttons and an optional badge or image, in default, gradient and centered layouts."
               tags={["SectionHero"]}
@@ -1558,7 +1561,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
-              href="/patterns/compositions"
+              story="section-features"
               title="Section: Features"
               desc="Features section built on FeatureGrid, with optional badges, several column configurations and style variants."
               tags={["SectionFeatures"]}
@@ -1627,7 +1630,7 @@ export default function PatternsPage() {
             />
 
             <PatCard
-              href="/patterns/compositions"
+              story="page-layout"
               title="Page Layout"
               desc="Full-page layout with header, footer, sidebar and main content, in several width variants with a left or right sidebar."
               tags={["PageLayout", "SiteHeader", "SiteFooter", "Button"]}
@@ -1724,7 +1727,7 @@ export default function PatternsPage() {
             desc={`Breakpoint-aware layout decisions. Not just "shrink the desktop" — structural reflows that pick the right pattern for each surface size.`}
           />
           <PatCard
-            href="/patterns/responsive"
+            story="responsive-patterns"
             full
             title="Responsive Patterns"
             desc="A responsive card grid, navigation and form. Use Storybook's viewport toolbar to compare mobile, tablet and desktop."
@@ -1900,7 +1903,7 @@ export default function PatternsPage() {
           />
           <div className="grid md:grid-cols-2 gap-4">
             <PatCard
-              href="/patterns/accessibility"
+              story="accessibility-patterns"
               full
               title="Accessibility Patterns"
               desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. The shared focus ring is driven by --color-border-focus (form controls use --color-input-border-focus), so a token change updates it everywhere.`}
