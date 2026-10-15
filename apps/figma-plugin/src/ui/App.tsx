@@ -15,6 +15,7 @@ import { render } from "preact";
 import { useState, useCallback, useEffect } from "preact/hooks";
 import { UIProvider, useUIContext } from "./state";
 import { usePluginMessages } from "./hooks/usePluginMessages";
+import { useSyncChangesSummary } from "./hooks/useSyncChangesSummary";
 import { useGitHubSync } from "./hooks/domain/useGitHubSync";
 import { ConflictAwareGitHubClient } from "../plugin/sync/conflict-aware-github-client";
 import type { GitHubConfig } from "../shared/types";
@@ -26,6 +27,7 @@ import type { DownloadableFile } from "./hooks/usePluginMessages";
 import type { ImportPreviewSummary } from "./components/ImportPreview";
 import type { TransformationSummaryData } from "./components/TransformationSummary";
 import type { TransformationLog } from "../plugin/variables/format-adapter";
+import { buildPullChangeSummary } from "../plugin/sync/change-summary";
 
 // Components
 import { TabBar } from "./components/layout/TabBar";
@@ -42,6 +44,7 @@ import { ExistingTokensImporter } from "./components/ExistingTokensImporter";
 import { FormatGuidelinesDialog } from "./components/FormatGuidelinesDialog";
 import { HelpMenu } from "./components/HelpMenu";
 import { TransformationSummary } from "./components/TransformationSummary";
+import { SyncChangesSummary } from "./components/SyncChangesSummary";
 import { Icon } from "./components/common/Icon";
 
 console.log("App.tsx loaded");
@@ -81,6 +84,9 @@ function AppInner() {
   // Transformation summary state
   const [transformationSummary, setTransformationSummary] =
     useState<TransformationSummaryData | null>(null);
+  // What a pull changed in Figma: remembered when conflicts are resolved and
+  // shown once the import succeeds.
+  const syncChanges = useSyncChangesSummary();
 
   // Plugin Messages Hook - no longer needs GitHub handlers as parameters
   const [pluginState, pluginActions] = usePluginMessages(githubClient);
@@ -128,12 +134,17 @@ function AppInner() {
         pluginActions.setLoadingMessage("");
         pluginActions.setError(msg.error);
       } else if (msg.type === "tokens-imported" && msg.result?.success) {
-        // Show transformation summary after successful import
+        // A pull the user resolved conflicts for gets the change list; any
+        // other import gets the generic import summary.
+        if (syncChanges.handleMessage(msg)) return;
         console.log("Tokens imported successfully, showing summary");
         setTransformationSummary({
           format: msg.adapterResults?.[0]?.detection?.format || "Unknown",
-          collectionsImported: msg.result.collectionsImported || 0,
-          tokensImported: msg.result.tokensImported || 0,
+          // The import result reports these as collectionsProcessed and
+          // totalVariablesCreated (the old names never existed, so both
+          // counts always showed 0).
+          collectionsImported: msg.result.collectionsProcessed || 0,
+          tokensImported: msg.result.totalVariablesCreated || 0,
           transformations:
             msg.adapterResults?.[0]?.transformations?.reduce(
               (
@@ -152,6 +163,9 @@ function AppInner() {
             ) || [],
           warnings: msg.result.warnings || [],
         });
+      } else {
+        // Failed imports and errors discard the remembered changes.
+        syncChanges.handleMessage(msg);
       }
     };
 
@@ -633,7 +647,17 @@ function AppInner() {
                 <div style={{ padding: "0 12px 12px" }}>
                   <ConflictResolutionDisplay
                     conflicts={pluginState.conflicts}
-                    onResolve={handleConflictResolution}
+                    onResolve={(resolutions: ConflictResolution[]) => {
+                      syncChanges.remember(
+                        pluginState.conflictOperationType === "pull"
+                          ? buildPullChangeSummary(
+                              pluginState.conflicts,
+                              resolutions
+                            )
+                          : null
+                      );
+                      return handleConflictResolution(resolutions);
+                    }}
                     onCancel={() => {
                       pluginActions.setShowConflictResolution(false);
                       pluginActions.setConflicts([]);
@@ -675,6 +699,13 @@ function AppInner() {
             onCancel={() => setShowExistingTokensImporter(false)}
           />
         </div>
+      )}
+
+      {syncChanges.summary && (
+        <SyncChangesSummary
+          summary={syncChanges.summary}
+          onClose={syncChanges.dismiss}
+        />
       )}
 
       {transformationSummary && (
