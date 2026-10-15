@@ -56,8 +56,10 @@ async function* walk(dir) {
 }
 
 // Matches either `(--name)` or `var(--name)` or `var(--name, fallback)`.
-// Name pattern: start with a letter, then letters/digits/hyphens.
-const CSS_VAR_RE = /(?:var\(|\()(--[a-z][a-z0-9-]*)/gi;
+// Name pattern: start with a letter, then letters/digits/hyphens, and end at
+// `)`, `,` or whitespace so partial names inside regex literals or template
+// strings (`(--space-[\w-]+)`, `var(--space-${n})`) are not read as tokens.
+const CSS_VAR_RE = /(?:var\(|\()(--[a-z][a-z0-9-]*)(?=[),\s])/gi;
 
 // Allowlists for names referenced in shipped code that intentionally don't
 // come from @wyliedog/tokens (e.g. Radix-provided vars, browser built-ins).
@@ -71,10 +73,18 @@ const ALLOWLIST_PREFIXES = [
 const isAllowed = (name) =>
   ALLOWLIST.has(name) || ALLOWLIST_PREFIXES.some((p) => name.startsWith(p));
 
+// Comments often mention placeholder names (`--token-name`, `--x`) when
+// documenting how to use a token. Blank them out so only code is checked,
+// keeping line breaks so reported line numbers stay accurate.
+const stripComments = (src) =>
+  src
+    .replace(/\/\*[\s\S]*?\*\//g, (block) => block.replace(/[^\n]/g, " "))
+    .replace(/(^|\s)\/\/.*$/gm, "$1");
+
 const unknowns = []; // { file, line, varName, context }
 
 for await (const file of walk(uiSrc)) {
-  const content = readFileSync(file, "utf8");
+  const content = stripComments(readFileSync(file, "utf8"));
   const lines = content.split("\n");
 
   for (let i = 0; i < lines.length; i++) {

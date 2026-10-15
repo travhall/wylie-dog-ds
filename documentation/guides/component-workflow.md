@@ -105,7 +105,7 @@ pnpm check:docs      # README counts, doc links and token names
 pnpm check:tokens    # showcase token references
 ```
 
-`pnpm --filter @wyliedog/ui validate:tokens` lists token references in `packages/ui/src` that no token file defines. It also reports a few fragments inside comments in `src/lib/utils.ts`, so treat only new entries from your own files as real problems.
+`pnpm --filter @wyliedog/ui validate:tokens` lists token references in `packages/ui/src` that no token file defines. It ignores comments, and it exits non-zero when it finds an unknown reference.
 
 ## Troubleshooting
 
