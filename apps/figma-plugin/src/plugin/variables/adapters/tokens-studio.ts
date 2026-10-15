@@ -278,33 +278,6 @@ export class TokensStudioAdapter implements FormatAdapter {
     return referenceMap;
   }
 
-  private areTokensSimilar(token1: string, token2: string): boolean {
-    // Check if tokens are conceptually similar (same category/purpose)
-    const parts1 = token1.toLowerCase().split(".");
-    const parts2 = token2.toLowerCase().split(".");
-
-    // If they share the same last part (e.g., "accent")
-    if (parts1[parts1.length - 1] === parts2[parts2.length - 1]) {
-      return true;
-    }
-
-    // If they share similar category terms
-    const categories = [
-      "color",
-      "background",
-      "text",
-      "primary",
-      "secondary",
-      "accent",
-    ];
-    const shared = categories.filter(
-      (cat) =>
-        token1.toLowerCase().includes(cat) && token2.toLowerCase().includes(cat)
-    );
-
-    return shared.length > 0;
-  }
-
   private transformTokenSet(
     setName: string,
     tokens: Record<string, unknown>,
@@ -465,17 +438,6 @@ export class TokensStudioAdapter implements FormatAdapter {
     });
   }
 
-  private getTokenSimilarityScore(token1: string, token2: string): number {
-    // Simple similarity scoring based on shared terms
-    const parts1 = token1.toLowerCase().split(".");
-    const parts2 = token2.toLowerCase().split(".");
-
-    const sharedParts = parts1.filter((part) => parts2.includes(part));
-    const totalParts = Math.max(parts1.length, parts2.length);
-
-    return sharedParts.length / totalParts;
-  }
-
   private getSimpleTokenName(tokenPath: string): string {
     const parts = tokenPath.split(".");
     return parts[parts.length - 1];
@@ -490,15 +452,6 @@ export class TokensStudioAdapter implements FormatAdapter {
 
       // Dimensions
       if (value.match(/^\d+(\.\d+)?(px|rem|em|%)$/)) return "dimension";
-
-      // Font sizes
-      if (
-        value.match(/^\d+(\.\d+)?px$/) &&
-        parseFloat(value) >= 8 &&
-        parseFloat(value) <= 200
-      ) {
-        return "fontSize";
-      }
 
       // Numbers as strings
       if (value.match(/^\d+(\.\d+)?$/)) return "number";
