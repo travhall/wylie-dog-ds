@@ -401,8 +401,11 @@ function getW3CTokenType(
       if (scopes.includes("FONT_SIZE") || isFontSizeName(variableName)) {
         return "fontSize";
       }
+      // Line heights are percent-valued plain numbers (100 to 200), the same
+      // `number` convention packages/tokens uses. Emitting "lineHeight" would
+      // append "%" and show every hand-made variable as a change on sync.
       if (scopes.includes("LINE_HEIGHT") || isLineHeightName(variableName)) {
-        return "lineHeight";
+        return "number";
       }
       if (
         scopes.includes("LETTER_SPACING") ||

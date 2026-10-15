@@ -129,11 +129,11 @@ describe("number type inference", () => {
     ["type/font-size-md", [], "fontSize", "4.5px"],
     ["type/Font_Size_MD", [], "fontSize", "4.5px"],
     ["type/font size md", [], "fontSize", "4.5px"],
-    ["type/leading", ["LINE_HEIGHT"], "lineHeight", "4.5%"],
-    ["type/lineheight/md", [], "lineHeight", "4.5%"],
-    ["type/line-height-tight", [], "lineHeight", "4.5%"],
-    ["type/Line_Height_Tight", [], "lineHeight", "4.5%"],
-    ["type/line height tight", [], "lineHeight", "4.5%"],
+    ["type/leading", ["LINE_HEIGHT"], "number", 4.5],
+    ["type/lineheight/md", [], "number", 4.5],
+    ["type/line-height-tight", [], "number", 4.5],
+    ["type/Line_Height_Tight", [], "number", 4.5],
+    ["type/line height tight", [], "number", 4.5],
     ["type/tracking-scope", ["LETTER_SPACING"], "letterSpacing", "4.5em"],
     ["type/letterspacing/wide", [], "letterSpacing", "4.5em"],
     ["type/letter-spacing-wide", [], "letterSpacing", "4.5em"],
@@ -237,6 +237,12 @@ describe("stored original type", () => {
       expect(token).toEqual({ $type: "number", $value: value });
     }
   );
+
+  it("exports a hand-made line height exactly as the repo's token would be", async () => {
+    // No stored type: inferred from the name, and still a plain number.
+    const token = await single("typography/line-height/normal", "FLOAT", 150);
+    expect(token).toEqual({ $type: "number", $value: 150 });
+  });
 
   it("falls back to inference when the plugin data is empty", async () => {
     const token = await single(
