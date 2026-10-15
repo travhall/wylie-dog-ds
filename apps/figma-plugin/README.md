@@ -88,6 +88,8 @@ When you pull, the plugin compares your Figma variables with the remote token fi
 
 For each conflict you can **Keep Local** (the Figma value) or **Take Remote** (the GitHub value). Batch buttons apply one choice to every conflict, and the list is virtualized so large conflict sets stay responsive. The detection logic is in `src/plugin/sync/`.
 
+When the import finishes, a **changes summary** lists what the pull did: every token that was changed, added or removed in Figma (with its old and new value, per mode when there are several), plus a collapsed list of the differences you kept as your Figma version. It is built from the conflicts you resolved, so it covers pulls that had conflicts; a pull with no conflicts shows the generic import summary instead.
+
 ### Sync Modes
 
 The repository configuration includes a sync mode:
