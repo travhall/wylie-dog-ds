@@ -73,6 +73,15 @@ jobs:
       - name: Run Tests with Coverage
         run: pnpm test:coverage
 
+      # Runs the UI coverage on its own (about 25s) instead of reusing the
+      # step above: turbo stops that step when any package fails its coverage
+      # threshold, which would leave no packages/ui/coverage/coverage-summary.json to
+      # check. Fails if the percentages in
+      # documentation/reference/testing-coverage.md no longer match the run.
+      - name: Check coverage docs
+        if: ${{ !cancelled() }}
+        run: pnpm check:docs:coverage
+
       - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
