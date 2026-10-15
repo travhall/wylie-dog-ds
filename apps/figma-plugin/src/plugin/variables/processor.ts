@@ -345,6 +345,13 @@ function buildVariableReferenceMap(
 }
 
 /**
+ * True for "letterspacing", "letter-spacing", "letter_spacing" and
+ * "letter spacing" (Figma names often use separators).
+ */
+const isLetterSpacingName = (variableName: string): boolean =>
+  /letter[-_ ]?spacing/.test(variableName.toLowerCase());
+
+/**
  * Get correct W3C DTCG token type based on Figma type and scopes
  */
 function getW3CTokenType(
@@ -400,7 +407,7 @@ function getW3CTokenType(
       }
       if (
         scopes.includes("LETTER_SPACING") ||
-        variableName.toLowerCase().includes("letterspacing")
+        isLetterSpacingName(variableName)
       ) {
         return "letterSpacing";
       }
@@ -478,7 +485,7 @@ function getW3CTokenType(
       if (variableName.toLowerCase().includes("lineheight")) {
         return "lineHeight";
       }
-      if (variableName.toLowerCase().includes("letterspacing")) {
+      if (isLetterSpacingName(variableName)) {
         return "letterSpacing";
       }
       if (
@@ -536,8 +543,7 @@ function formatNumericValue(
       if (
         variableName &&
         (variableName.toLowerCase().includes("tracking") ||
-          variableName.toLowerCase().includes("letterspacing") ||
-          variableName.toLowerCase().includes("letter-spacing"))
+          isLetterSpacingName(variableName))
       ) {
         return `${roundedValue}em`;
       }
