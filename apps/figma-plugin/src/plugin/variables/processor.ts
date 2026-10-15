@@ -345,11 +345,16 @@ function buildVariableReferenceMap(
 }
 
 /**
- * True for "letterspacing", "letter-spacing", "letter_spacing" and
- * "letter spacing" (Figma names often use separators).
+ * Name checks for typography tokens. Figma names often use separators, so each
+ * matches "fontsize", "font-size", "font_size" and "font size" alike.
  */
-const isLetterSpacingName = (variableName: string): boolean =>
-  /letter[-_ ]?spacing/.test(variableName.toLowerCase());
+const nameMatches = (variableName: string, pattern: RegExp): boolean =>
+  pattern.test(variableName.toLowerCase());
+const isFontSizeName = (name: string) => nameMatches(name, /font[-_ ]?size/);
+const isLineHeightName = (name: string) =>
+  nameMatches(name, /line[-_ ]?height/);
+const isLetterSpacingName = (name: string) =>
+  nameMatches(name, /letter[-_ ]?spacing/);
 
 /**
  * Get correct W3C DTCG token type based on Figma type and scopes
@@ -393,16 +398,10 @@ function getW3CTokenType(
       }
 
       // Infer semantic type from scopes and name
-      if (
-        scopes.includes("FONT_SIZE") ||
-        variableName.toLowerCase().includes("fontsize")
-      ) {
+      if (scopes.includes("FONT_SIZE") || isFontSizeName(variableName)) {
         return "fontSize";
       }
-      if (
-        scopes.includes("LINE_HEIGHT") ||
-        variableName.toLowerCase().includes("lineheight")
-      ) {
+      if (scopes.includes("LINE_HEIGHT") || isLineHeightName(variableName)) {
         return "lineHeight";
       }
       if (
@@ -473,7 +472,7 @@ function getW3CTokenType(
       }
 
       // Check for font size first (stored as string like "12px")
-      if (variableName.toLowerCase().includes("fontsize")) {
+      if (isFontSizeName(variableName)) {
         return "fontSize";
       }
       if (
@@ -482,7 +481,7 @@ function getW3CTokenType(
       ) {
         return "fontWeight";
       }
-      if (variableName.toLowerCase().includes("lineheight")) {
+      if (isLineHeightName(variableName)) {
         return "lineHeight";
       }
       if (isLetterSpacingName(variableName)) {
