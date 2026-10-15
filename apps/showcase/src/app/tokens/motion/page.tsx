@@ -1,21 +1,12 @@
 import manifest from "@wyliedog/tokens/manifest.json";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
+import type { ManifestToken } from "@/lib/token-values";
 import { MotionPreview } from "../motion-preview";
 
 export default function MotionPage() {
-  const easing = Object.entries(manifest.semantics.easing || {}).map(
-    ([key, token]: [string, any]) => ({
-      key,
-      name: token.path[token.path.length - 1],
-      value: token.value,
-      variable: token.variable,
-      description: token.description,
-    })
-  );
-
-  const semanticDuration = Object.entries(
-    manifest.semantics.duration || {}
-  ).map(([key, token]: [string, any]) => ({
+  const easing = Object.entries(
+    (manifest.semantics.easing || {}) as Record<string, ManifestToken>
+  ).map(([key, token]) => ({
     key,
     name: token.path[token.path.length - 1],
     value: token.value,
@@ -23,8 +14,20 @@ export default function MotionPage() {
     description: token.description,
   }));
 
-  const primitiveDuration = Object.entries(manifest.primitives.duration || {})
-    .map(([key, token]: [string, any]) => ({
+  const semanticDuration = Object.entries(
+    (manifest.semantics.duration || {}) as Record<string, ManifestToken>
+  ).map(([key, token]) => ({
+    key,
+    name: token.path[token.path.length - 1],
+    value: token.value,
+    variable: token.variable,
+    description: token.description,
+  }));
+
+  const primitiveDuration = Object.entries(
+    (manifest.primitives.duration || {}) as Record<string, ManifestToken>
+  )
+    .map(([key, token]) => ({
       key,
       name: token.path[token.path.length - 1],
       value: token.value,
@@ -39,7 +42,7 @@ export default function MotionPage() {
       headline={
         <>
           {easing.length} curves and {semanticDuration.length} durations{" "}
-          <span style={{ color: "var(--color-interactive-primary)" }}>
+          <span className="text-(--color-interactive-primary)">
             cover everything.
           </span>
         </>

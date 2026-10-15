@@ -27,30 +27,30 @@ export function TokensSubpageShell({
   children,
 }: TokensSubpageShellProps) {
   return (
-    <div className="relative mx-auto max-w-7xl space-y-16 p-4 lg:p-8 xl:p-12">
+    <div className="mx-auto max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
       <Link
         href="/tokens"
-        className="inline-flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-interactive-primary) transition-colors mb-4"
+        className="inline-flex items-center gap-2 text-sm text-(--color-text-secondary) hover:text-(--color-interactive-primary) transition-colors"
       >
         <ArrowLeft className="h-4 w-4" />
         All Tokens
       </Link>
 
-      <section className="space-y-4">
+      <section className="max-w-2xl">
         <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
           {categoryNumber} · {categoryLabel}
         </span>
-        <h1 className="mt-3 font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-(--color-text-primary)">
+        <h1 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-text-primary)">
           {headline}
         </h1>
-        <p className="mt-3 text-lg text-(--color-text-secondary) leading-relaxed">
+        <p className="mt-3 text-(--color-text-secondary) leading-relaxed">
           {description}
         </p>
       </section>
 
       <nav
         aria-label="Token categories"
-        className="flex items-center gap-1 overflow-x-auto rounded-lg border border-(--color-border-primary) bg-(--color-background-secondary)/30 p-1 text-sm"
+        className="flex items-center gap-1 overflow-x-auto rounded-lg border border-(--color-border-primary) bg-(--color-background-secondary) p-1 text-sm"
       >
         {CATEGORIES.map((c) => (
           <Link

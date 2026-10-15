@@ -1,6 +1,7 @@
 import manifest from "@wyliedog/tokens/manifest.json";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
 import { SpacingDemo } from "../spacing-demo";
+import type { ManifestToken } from "@/lib/token-values";
 
 export default function SpacingPage() {
   const { primitives } = manifest;
@@ -10,8 +11,10 @@ export default function SpacingPage() {
     manifest.components.input["input-padding-x"],
   ].map((token) => `--space-${token.path.join("-")}: ${token.value}`);
 
-  const spacingPrimitives = Object.entries(primitives.spacing || {})
-    .map(([name, token]: [string, any]) => ({
+  const spacingPrimitives = Object.entries(
+    (primitives.spacing || {}) as Record<string, ManifestToken>
+  )
+    .map(([name, token]) => ({
       name,
       value: token.value,
       var: token.variable,
@@ -26,9 +29,7 @@ export default function SpacingPage() {
       headline={
         <>
           One scale. Three densities.{" "}
-          <span style={{ color: "var(--color-interactive-primary)" }}>
-            Same data.
-          </span>
+          <span className="text-(--color-interactive-primary)">Same data.</span>
         </>
       }
       description="The 4-pixel base scale powers every gap, padding, and inset in the system. Every spacing token, in full, below."
@@ -46,24 +47,24 @@ export default function SpacingPage() {
         </div>
       </div>
 
-      <div className="glass p-8 rounded-[40px] border-(--color-border-primary)/5 space-y-8">
+      <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-6 space-y-6">
         {spacingPrimitives.map((s) => (
-          <div key={s.name} className="flex items-center gap-6 group">
-            <div className="w-24 text-right">
+          <div key={s.name} className="flex items-center gap-6">
+            <div className="w-24 shrink-0 text-right">
               <div className="text-sm font-bold text-(--color-text-primary)">
                 {s.name}
               </div>
-              <div className="text-[10px] font-mono text-(--color-text-tertiary) opacity-60">
+              <div className="text-[10px] font-mono text-(--color-text-tertiary)">
                 {s.value}
               </div>
             </div>
-            <div className="flex-1 h-4 rounded-full overflow-hidden border border-(--color-border-primary)/5">
+            <div className="flex-1 h-3 rounded-sm overflow-hidden bg-(--color-background-secondary)">
               <div
-                className="h-full bg-(--color-interactive-primary) transition-all group-hover:opacity-80"
+                className="h-full bg-(--color-interactive-primary)"
                 style={{ width: s.value }}
               />
             </div>
-            <div className="w-40 text-xs font-mono text-(--color-text-tertiary) text-right">
+            <div className="w-40 shrink-0 text-xs font-mono text-(--color-text-tertiary) text-right">
               {s.var}
             </div>
           </div>

@@ -1,41 +1,42 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 import manifest from "@wyliedog/tokens/manifest.json";
-import { Maximize2, LineChart } from "lucide-react";
 import { TokensSubpageShell } from "@/components/tokens-subpage-shell";
+import type { ManifestToken } from "@/lib/token-values";
 
 export default function TypographyPage() {
   const { primitives } = manifest;
 
   const typographyPrimitives = {
-    families: Object.entries(primitives.typography?.family || {}).map(
-      ([name, token]: [string, any]) => ({
-        name,
-        value: token.value,
-        var: token.variable,
-      })
-    ),
-    sizes: Object.entries(primitives.typography?.size || {})
-      .map(([name, token]: [string, any]) => ({
+    families: Object.entries(
+      (primitives.typography?.family || {}) as Record<string, ManifestToken>
+    ).map(([name, token]) => ({
+      name,
+      value: token.value,
+      var: token.variable,
+    })),
+    sizes: Object.entries(
+      (primitives.typography?.size || {}) as Record<string, ManifestToken>
+    )
+      .map(([name, token]) => ({
         name: name.split("-").slice(-1)[0],
         value: token.value,
         var: token.variable,
         px: parseInt(token.value) || 0,
       }))
       .sort((a, b) => a.px - b.px),
-    weights: Object.entries(primitives.typography?.weight || {}).map(
-      ([name, token]: [string, any]) => ({
-        name: name.split("-").slice(-1)[0],
-        value: token.value,
-        var: token.variable,
-      })
-    ),
-    lineHeights: Object.entries(primitives.typography?.lineHeight || {}).map(
-      ([name, token]: [string, any]) => ({
-        name: name.split("-").slice(-1)[0],
-        value: token.value,
-        var: token.variable,
-      })
-    ),
+    weights: Object.entries(
+      (primitives.typography?.weight || {}) as Record<string, ManifestToken>
+    ).map(([name, token]) => ({
+      name: name.split("-").slice(-1)[0],
+      value: token.value,
+      var: token.variable,
+    })),
+    lineHeights: Object.entries(
+      (primitives.typography?.lineHeight || {}) as Record<string, ManifestToken>
+    ).map(([name, token]) => ({
+      name: name.split("-").slice(-1)[0],
+      value: token.value,
+      var: token.variable,
+    })),
   };
 
   return (
@@ -45,29 +46,24 @@ export default function TypographyPage() {
       headline={
         <>
           A pairing that ships{" "}
-          <span style={{ color: "var(--color-interactive-primary)" }}>
-            long-form
-          </span>
-          , dashboards, and code.
+          <span className="text-(--color-interactive-primary)">long-form</span>,
+          dashboards, and code.
         </>
       }
       description="Every family, size, weight, and line height, in full — the complete reference behind the hub's editorial sample."
     >
-      <div className="grid gap-8 lg:grid-cols-2">
-        <Card className="glass border-(--color-border-primary)/10">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Maximize2 className="h-4 w-4" /> Families & Sizes
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <h3 className="text-sm font-bold text-(--color-text-primary)">
-              Size scale
-            </h3>
+      <div className="space-y-4">
+        <section className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-6 space-y-4">
+          <div>
+            <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+              Families and sizes
+            </h2>
+          </div>
+          <div className="space-y-4">
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-left">
                 <thead>
-                  <tr className="border-b border-(--color-border-primary)/10">
+                  <tr className="border-b border-(--color-border-primary)">
                     <th
                       scope="col"
                       className="pb-3 pr-4 text-[10px] font-mono uppercase tracking-wider text-(--color-text-tertiary)"
@@ -89,7 +85,7 @@ export default function TypographyPage() {
                   {typographyPrimitives.sizes.map((s) => (
                     <tr
                       key={s.name}
-                      className="border-b border-(--color-border-primary)/5"
+                      className="border-b border-(--color-border-primary) last:border-0"
                     >
                       <th
                         scope="row"
@@ -98,10 +94,10 @@ export default function TypographyPage() {
                         <div className="text-sm text-(--color-text-primary)">
                           {s.name}
                         </div>
-                        <div className="text-[10px] font-mono text-(--color-text-tertiary) opacity-60">
+                        <div className="text-[10px] font-mono text-(--color-text-tertiary)">
                           {s.value}
                         </div>
-                        <div className="text-[9px] font-mono text-(--color-text-tertiary)/50">
+                        <div className="text-[10px] font-mono text-(--color-text-tertiary)">
                           fontSize: {s.var}
                         </div>
                       </th>
@@ -127,18 +123,18 @@ export default function TypographyPage() {
                 </tbody>
               </table>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
 
-        <Card className="glass border-(--color-border-primary)/10">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <LineChart className="h-4 w-4" /> Attributes
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-8">
+        <section className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-6 space-y-8">
+          <div>
+            <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+              Attributes
+            </h2>
+          </div>
+          <div className="grid gap-8 sm:grid-cols-2">
             <div className="space-y-4">
-              <h3 className="text-sm font-bold text-(--color-text-primary)">
+              <h3 className="text-sm font-semibold text-(--color-text-primary)">
                 Weights
               </h3>
               {typographyPrimitives.weights.map((w) => (
@@ -149,15 +145,15 @@ export default function TypographyPage() {
                   >
                     {w.name}
                   </span>
-                  <span className="text-[10px] font-mono text-(--color-text-tertiary) opacity-60">
+                  <span className="text-[10px] font-mono text-(--color-text-tertiary)">
                     {w.value}
                   </span>
                 </div>
               ))}
             </div>
             <div className="space-y-4">
-              <h3 className="text-sm font-bold text-(--color-text-primary)">
-                Line Heights
+              <h3 className="text-sm font-semibold text-(--color-text-primary)">
+                Line heights
               </h3>
               {typographyPrimitives.lineHeights.map((lh) => (
                 <div
@@ -167,14 +163,14 @@ export default function TypographyPage() {
                   <span className="text-sm text-(--color-text-primary)">
                     {lh.name}
                   </span>
-                  <span className="text-[10px] font-mono text-(--color-text-tertiary) opacity-60">
+                  <span className="text-[10px] font-mono text-(--color-text-tertiary)">
                     {lh.value}
                   </span>
                 </div>
               ))}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
       </div>
     </TokensSubpageShell>
   );
