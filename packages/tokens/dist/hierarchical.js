@@ -207,6 +207,7 @@ export const color = {
   "border": {
     "primary": "oklch(0.786 0.004 271.11)",
     "secondary": "oklch(0.87 0.003 264.48)",
+    "strong": "oklch(0.613 0.005 258.45)",
     "focus": "oklch(0.623 0.188 259.83)",
     "brand": "oklch(0.646 0.194 40.94)",
     "success": "oklch(0.627 0.17 149.29)",

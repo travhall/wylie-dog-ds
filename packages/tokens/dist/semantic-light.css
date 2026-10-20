@@ -307,6 +307,7 @@
   --color-text-info: oklch(0.488 0.217 264.4);
   --color-border-primary: oklch(0.786 0.004 271.11);
   --color-border-secondary: oklch(0.87 0.003 264.48);
+  --color-border-strong: oklch(0.613 0.005 258.45);
   --color-border-focus: oklch(0.623 0.188 259.83);
   --color-border-brand: oklch(0.646 0.194 40.94);
   --color-border-success: oklch(0.627 0.17 149.29);
@@ -485,7 +486,7 @@
   --line-height-card-header-description-line-height: 1.5;
   --space-card-footer-gap: 8px;
   --color-input-background-hover: oklch(0.952 0.003 264.48);
-  --color-input-border: oklch(0.786 0.004 271.11);
+  --color-input-border: oklch(0.613 0.005 258.45);
   --color-input-border-focus: oklch(0.623 0.188 259.83);
   --color-input-border-error: oklch(0.577 0.215 27.31);
   --color-input-placeholder: oklch(0.423 0.007 264.49);
@@ -531,7 +532,7 @@
   --color-navigation-content-border: oklch(0.786 0.004 271.11);
   --color-navigation-content-background: oklch(0.991 0.003 264.45);
   --color-navigation-content-text: oklch(0.209 0.01 268.18);
-  --color-navigation-indicator: oklch(0.786 0.004 271.11);
+  --color-navigation-indicator: oklch(0.613 0.005 258.45);
   --color-command-background: oklch(0.991 0.003 264.45);
   --color-command-text: oklch(0.209 0.01 268.18);
   --color-command-border: oklch(0.786 0.004 271.11);
@@ -579,7 +580,7 @@
   --color-avatar-fallback-text: oklch(0.423 0.007 264.49);
   --color-breadcrumb-current: oklch(0.209 0.01 268.18);
   --color-breadcrumb-link: oklch(0.488 0.217 264.4);
-  --color-breadcrumb-link-hover: oklch(0.488 0.217 264.4);
+  --color-breadcrumb-link-hover: oklch(0.209 0.01 268.18);
   --color-breadcrumb-text: oklch(0.423 0.007 264.49);
   --color-carousel-nav-background: oklch(0.991 0.003 264.45);
   --color-carousel-nav-border: oklch(0.786 0.004 271.11);
@@ -1066,7 +1067,7 @@
   --color-badge-secondary-background-hover: oklch(0.87 0.003 264.48);
   --color-badge-success-background-hover: oklch(0.448 0.108 151.37);
   --color-badge-warning-background-hover: oklch(0.47 0.143 37.28);
-  --color-badge-destructive-background-hover: oklch(0.505 0.19 27.49);
+  --color-badge-destructive-background-hover: oklch(0.971 0.013 16.7);
   --color-badge-outline-background-hover: oklch(0.952 0.003 264.48);
   --color-card-background-hover: oklch(0.952 0.003 264.48);
   --color-card-border-hover: oklch(0.623 0.188 259.83);
@@ -1085,13 +1086,13 @@
   --space-form-fieldset-gap: 24px;
   --font-size-form-fieldset-legend-font-size: 16px;
   --font-weight-form-fieldset-legend-font-weight: 600;
-  --color-badge-default-background-focus: oklch(0.97 0.014 254.77);
+  --color-badge-default-background-focus: oklch(0.488 0.217 264.4);
   --color-badge-default-background-disabled: oklch(0.952 0.003 264.48);
   --color-badge-secondary-background-focus: oklch(0.97 0.014 254.77);
   --color-badge-secondary-background-disabled: oklch(0.952 0.003 264.48);
-  --color-badge-success-background-focus: oklch(0.97 0.014 254.77);
+  --color-badge-success-background-focus: oklch(0.448 0.108 151.37);
   --color-badge-success-background-disabled: oklch(0.952 0.003 264.48);
-  --color-badge-warning-background-focus: oklch(0.97 0.014 254.77);
+  --color-badge-warning-background-focus: oklch(0.47 0.143 37.28);
   --color-badge-warning-background-disabled: oklch(0.952 0.003 264.48);
   --color-badge-destructive-background-focus: oklch(0.97 0.014 254.77);
   --color-badge-destructive-background-disabled: oklch(0.952 0.003 264.48);

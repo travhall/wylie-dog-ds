@@ -129,6 +129,7 @@ export type CssVarName =
   | "--color-border-focus"
   | "--color-border-primary"
   | "--color-border-secondary"
+  | "--color-border-strong"
   | "--color-border-success"
   | "--color-border-warning"
   | "--color-breadcrumb-current"
@@ -1318,6 +1319,7 @@ export declare const cssVars: Readonly<{
   "colorBorderFocus": "--color-border-focus";
   "colorBorderPrimary": "--color-border-primary";
   "colorBorderSecondary": "--color-border-secondary";
+  "colorBorderStrong": "--color-border-strong";
   "colorBorderSuccess": "--color-border-success";
   "colorBorderWarning": "--color-border-warning";
   "colorBreadcrumbCurrent": "--color-breadcrumb-current";
