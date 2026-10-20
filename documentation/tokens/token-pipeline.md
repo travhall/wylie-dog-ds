@@ -154,6 +154,8 @@ git diff packages/tokens   # io/sync, io/processed and dist change together
 
 After any token change also run `pnpm check:docs` and `pnpm check:tokens` from the repo root; they fail if docs or the showcase reference a token that no longer exists.
 
+**Contrast:** also run `pnpm check:contrast`. It reads `scripts/contrast-pairs.json`, a list of foreground tokens with the backgrounds each must be readable on, resolves every pair to its final colour in Light and Dark, and requires WCAG 2.2 AA (4.5:1 for text, 3:1 for icons, indicators and boundaries). It reads `io/sync` directly, so it needs no build. Pairs that fail today are listed under `knownFailures` with a reason (`pnpm check:contrast --list` prints them); a new failure fails the check, and so does a known failure that starts passing, so remove it from the list when you fix it. Disabled states are exempt under WCAG and are not declared. When you add a component foreground token, declare its pair in the same change.
+
 ## Commands
 
 ```bash
@@ -178,6 +180,7 @@ Use `run audit` because `pnpm audit` is pnpm's own vulnerability audit. `test:to
 
 ## References
 
+- [Semantic colour pairing model](semantic-pairing-model.md) (proposed direction for pairing foregrounds and backgrounds)
 - [W3C DTCG Specification](https://tr.designtokens.org/format/)
 - [Style Dictionary](https://styledictionary.com/)
 - [OKLCH color picker](https://oklch.com/)

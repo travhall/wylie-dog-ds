@@ -1,0 +1,669 @@
+{
+  "_comment": [
+    "Declared foreground/background pairs that must meet WCAG 2.2 AA in Light and Dark.",
+    "Tokens are named as in packages/tokens/io/sync (collection prefix omitted); a bare name resolves in components, then semantic, then primitive.",
+    "kind 'text' needs 4.5:1, 'non-text' (icons, indicators, boundaries) needs 3:1. Disabled states are exempt under WCAG and are not declared.",
+    "knownFailures is a ratchet: each entry is an accepted failure with a reason. A new failure fails the check; a known failure that starts passing must be removed."
+  ],
+  "thresholds": {
+    "text": 4.5,
+    "non-text": 3
+  },
+  "pairs": [
+    {
+      "foreground": "badge.default.text",
+      "backgrounds": [
+        "badge.default.background",
+        "badge.default.background-hover",
+        "badge.default.background-focus"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "badge.secondary.text",
+      "backgrounds": [
+        "badge.secondary.background",
+        "badge.secondary.background-hover",
+        "badge.secondary.background-focus"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "badge.success.text",
+      "backgrounds": [
+        "badge.success.background",
+        "badge.success.background-hover",
+        "badge.success.background-focus"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "badge.warning.text",
+      "backgrounds": [
+        "badge.warning.background",
+        "badge.warning.background-hover",
+        "badge.warning.background-focus"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "badge.destructive.text",
+      "backgrounds": [
+        "badge.destructive.background",
+        "badge.destructive.background-hover",
+        "badge.destructive.background-focus"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "badge.outline.text",
+      "backgrounds": [
+        "badge.outline.background",
+        "badge.outline.background-hover",
+        "badge.outline.background-focus"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "button.primary.text",
+      "backgrounds": [
+        "button.primary.background",
+        "button.primary.background-hover",
+        "button.primary.background-active"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "button.secondary.text",
+      "backgrounds": [
+        "button.secondary.background",
+        "button.secondary.background-hover",
+        "button.secondary.background-active"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "button.outline.text",
+      "backgrounds": [
+        "button.outline.background",
+        "button.outline.background-hover"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "button.ghost.text",
+      "backgrounds": [
+        "button.ghost.background",
+        "button.ghost.background-hover",
+        "button.ghost.background-active"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "button.destructive.text",
+      "backgrounds": [
+        "button.destructive.background",
+        "button.destructive.background-hover"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "button.link.text",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "card.header.title.color",
+      "backgrounds": [
+        "card.background",
+        "card.background-hover",
+        "card.background-focus",
+        "card.background-active"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "card.header.description.color",
+      "backgrounds": [
+        "card.background",
+        "card.background-hover",
+        "card.background-focus",
+        "card.background-active"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "card.content.color",
+      "backgrounds": [
+        "card.background",
+        "card.background-hover",
+        "card.background-focus",
+        "card.background-active"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "input.default.text",
+      "backgrounds": ["input.default.background", "input.background-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "input.placeholder",
+      "backgrounds": ["input.default.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "alert.default.text",
+      "backgrounds": ["alert.default.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "alert.destructive.text",
+      "backgrounds": ["alert.destructive.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "alert.warning.text",
+      "backgrounds": ["alert.warning.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "alert.success.text",
+      "backgrounds": ["alert.success.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "toast.destructive.text",
+      "backgrounds": ["toast.destructive.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "toast.success.text",
+      "backgrounds": ["toast.success.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "toast.warning.text",
+      "backgrounds": ["toast.warning.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "toast.text",
+      "backgrounds": ["toast.default.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "toast.close",
+      "backgrounds": ["toast.default.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "toast.close-hover",
+      "backgrounds": ["toast.default.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "menubar.trigger-text-focus",
+      "backgrounds": ["menubar.trigger-focus"],
+      "kind": "text"
+    },
+    {
+      "foreground": "menubar.trigger-text-open",
+      "backgrounds": ["menubar.trigger-open"],
+      "kind": "text"
+    },
+    {
+      "foreground": "menubar.item-text-focus",
+      "backgrounds": ["menubar.item-focus"],
+      "kind": "text"
+    },
+    {
+      "foreground": "menubar.content-text",
+      "backgrounds": ["menubar.content-background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "menubar.label",
+      "backgrounds": ["menubar.content-background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "menubar.shortcut",
+      "backgrounds": ["menubar.content-background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "navigation.text-hover",
+      "backgrounds": ["navigation.background-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "navigation.text-focus",
+      "backgrounds": ["navigation.focus"],
+      "kind": "text"
+    },
+    {
+      "foreground": "navigation.content-text",
+      "backgrounds": ["navigation.content-background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "command.text",
+      "backgrounds": ["command.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "command.item-text-selected",
+      "backgrounds": ["command.item-selected"],
+      "kind": "text"
+    },
+    {
+      "foreground": "command.placeholder",
+      "backgrounds": ["command.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "command.empty",
+      "backgrounds": ["command.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "command.group-heading",
+      "backgrounds": ["command.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "command.shortcut",
+      "backgrounds": ["command.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "contextmenu.text",
+      "backgrounds": ["contextmenu.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "contextmenu.item-text-hover",
+      "backgrounds": ["contextmenu.item-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "contextmenu.label",
+      "backgrounds": ["contextmenu.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "contextmenu.shortcut",
+      "backgrounds": ["contextmenu.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "dropdown-menu.content.text",
+      "backgrounds": ["dropdown-menu.content.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "dropdown-menu.item.text-hover",
+      "backgrounds": ["dropdown-menu.item.background-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "select.content.text",
+      "backgrounds": ["select.content.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "select.item.text-focus",
+      "backgrounds": ["select.item.background-focus"],
+      "kind": "text"
+    },
+    {
+      "foreground": "tabs.list.text",
+      "backgrounds": ["tabs.list.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "tabs.trigger.text-active",
+      "backgrounds": ["tabs.trigger.background-active"],
+      "kind": "text"
+    },
+    {
+      "foreground": "tabs.trigger.text-hover",
+      "backgrounds": ["tabs.trigger.background-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "pagination.text-active",
+      "backgrounds": ["pagination.active"],
+      "kind": "text"
+    },
+    {
+      "foreground": "pagination.text-hover",
+      "backgrounds": ["pagination.background-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "pagination.text",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "toggle.text-hover",
+      "backgrounds": ["toggle.background-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "toggle.text-pressed",
+      "backgrounds": ["toggle.pressed"],
+      "kind": "text"
+    },
+    {
+      "foreground": "toggle.text",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "calendar.nav-text-hover",
+      "backgrounds": ["calendar.nav-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "calendar.day-text-hover",
+      "backgrounds": ["calendar.day-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "calendar.day-text-selected",
+      "backgrounds": ["calendar.day-selected"],
+      "kind": "text"
+    },
+    {
+      "foreground": "calendar.day-text-focus",
+      "backgrounds": ["calendar.day-focus"],
+      "kind": "text"
+    },
+    {
+      "foreground": "calendar.nav-text-focus",
+      "backgrounds": ["calendar.nav-focus"],
+      "kind": "text"
+    },
+    {
+      "foreground": "accordion.trigger-text-hover",
+      "backgrounds": ["accordion.trigger-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "accordion.trigger-text",
+      "backgrounds": ["accordion.trigger-focus", "color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "accordion.content-text",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "accordion.icon",
+      "backgrounds": ["color.background.primary"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "popover.text",
+      "backgrounds": ["popover.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "hover-card.text",
+      "backgrounds": ["hover-card.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "tooltip.text",
+      "backgrounds": ["tooltip.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "dialog.title",
+      "backgrounds": ["dialog.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "dialog.description",
+      "backgrounds": ["dialog.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "sheet.title.text",
+      "backgrounds": ["sheet.content.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "sheet.description.text",
+      "backgrounds": ["sheet.content.background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "avatar.fallback-text",
+      "backgrounds": ["avatar.fallback-background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "breadcrumb.link",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "breadcrumb.current",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "breadcrumb.text",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "breadcrumb.link-hover",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "carousel.nav-text-hover",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "form.description",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "form.error",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "form.label",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "table.caption",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "table.header-text",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "label.default.color",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "label.error.text",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "label.required.text",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "feature-grid.title.text",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "feature-grid.description.text",
+      "backgrounds": ["color.background.primary"],
+      "kind": "text"
+    },
+    {
+      "foreground": "carousel.nav-text-hover",
+      "backgrounds": ["carousel.nav-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "table.header-text",
+      "backgrounds": ["table.footer-background"],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.text.primary",
+      "backgrounds": [
+        "table.row-hover",
+        "table.row-selected",
+        "table.row-focus"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "radio.indicator",
+      "backgrounds": ["radio.background-checked"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "checkbox.checked.text",
+      "backgrounds": ["checkbox.checked.background"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "tabs.trigger.indicator.color",
+      "backgrounds": ["color.background.primary"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "navigation.indicator",
+      "backgrounds": ["navigation.background"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "input.border",
+      "backgrounds": ["color.background.primary"],
+      "kind": "non-text",
+      "note": "Component boundary"
+    }
+  ],
+  "knownFailures": [
+    {
+      "foreground": "badge.default.text",
+      "background": "badge.default.background-hover",
+      "mode": "Dark",
+      "reason": "Solid fills lighten on hover or press in Dark mode, but the paired on-solid text stays light"
+    },
+    {
+      "foreground": "badge.default.text",
+      "background": "badge.default.background-focus",
+      "mode": "Light",
+      "reason": "Focus fill is a pale tint in Light mode but the badge text is the light on-solid colour"
+    },
+    {
+      "foreground": "badge.success.text",
+      "background": "badge.success.background-hover",
+      "mode": "Dark",
+      "reason": "Solid fills lighten on hover or press in Dark mode, but the paired on-solid text stays light"
+    },
+    {
+      "foreground": "badge.success.text",
+      "background": "badge.success.background-focus",
+      "mode": "Light",
+      "reason": "Focus fill is a pale tint in Light mode but the badge text is the light on-solid colour"
+    },
+    {
+      "foreground": "badge.warning.text",
+      "background": "badge.warning.background-hover",
+      "mode": "Dark",
+      "reason": "Solid fills lighten on hover or press in Dark mode, but the paired on-solid text stays light"
+    },
+    {
+      "foreground": "badge.warning.text",
+      "background": "badge.warning.background-focus",
+      "mode": "Light",
+      "reason": "Focus fill is a pale tint in Light mode but the badge text is the light on-solid colour"
+    },
+    {
+      "foreground": "badge.destructive.text",
+      "background": "badge.destructive.background-hover",
+      "mode": "Light",
+      "reason": "Tinted badge hover switches to the solid danger hover fill while the text stays danger-coloured (red on red)"
+    },
+    {
+      "foreground": "badge.destructive.text",
+      "background": "badge.destructive.background-hover",
+      "mode": "Dark",
+      "reason": "Tinted badge hover switches to the solid danger hover fill while the text stays danger-coloured (red on red)"
+    },
+    {
+      "foreground": "button.primary.text",
+      "background": "button.primary.background-hover",
+      "mode": "Dark",
+      "reason": "Solid fills lighten on hover or press in Dark mode, but the paired on-solid text stays light"
+    },
+    {
+      "foreground": "button.primary.text",
+      "background": "button.primary.background-active",
+      "mode": "Dark",
+      "reason": "Solid fills lighten on hover or press in Dark mode, but the paired on-solid text stays light"
+    },
+    {
+      "foreground": "button.destructive.text",
+      "background": "button.destructive.background-hover",
+      "mode": "Dark",
+      "reason": "Solid fills lighten on hover or press in Dark mode, but the paired on-solid text stays light"
+    },
+    {
+      "foreground": "card.header.description.color",
+      "background": "card.background-active",
+      "mode": "Dark",
+      "reason": "text.secondary on the pressed fill in Dark is just under 4.5:1"
+    },
+    {
+      "foreground": "navigation.indicator",
+      "background": "navigation.background",
+      "mode": "Light",
+      "reason": "Border against the page is under the 3:1 non-text minimum; needs a design decision"
+    },
+    {
+      "foreground": "navigation.indicator",
+      "background": "navigation.background",
+      "mode": "Dark",
+      "reason": "Border against the page is under the 3:1 non-text minimum; needs a design decision"
+    },
+    {
+      "foreground": "input.border",
+      "background": "color.background.primary",
+      "mode": "Light",
+      "reason": "Border against the page is under the 3:1 non-text minimum; needs a design decision"
+    },
+    {
+      "foreground": "input.border",
+      "background": "color.background.primary",
+      "mode": "Dark",
+      "reason": "Border against the page is under the 3:1 non-text minimum; needs a design decision"
+    }
+  ]
+}

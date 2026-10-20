@@ -73,6 +73,9 @@ jobs:
       - name: Check token references
         run: pnpm check:tokens
 
+      - name: Check token contrast pairs
+        run: pnpm check:contrast
+
       - name: Run Accessibility Linting
         run: pnpm lint:a11y
 
