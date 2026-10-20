@@ -62,9 +62,18 @@ export type CssVarName =
   | "--color-avatar-fallback-text"
   | "--color-background-brand"
   | "--color-background-danger"
+  | "--color-background-default"
+  | "--color-background-default-active"
+  | "--color-background-default-disabled"
+  | "--color-background-default-hover"
   | "--color-background-inverse"
+  | "--color-background-overlay"
   | "--color-background-primary"
+  | "--color-background-raised"
   | "--color-background-secondary"
+  | "--color-background-strong"
+  | "--color-background-subtle"
+  | "--color-background-subtle-active"
   | "--color-background-tertiary"
   | "--color-badge-default-background"
   | "--color-badge-default-background-disabled"
@@ -126,10 +135,12 @@ export type CssVarName =
   | "--color-blue-950"
   | "--color-border-brand"
   | "--color-border-danger"
+  | "--color-border-default"
   | "--color-border-focus"
   | "--color-border-primary"
   | "--color-border-secondary"
   | "--color-border-strong"
+  | "--color-border-subtle"
   | "--color-border-success"
   | "--color-border-warning"
   | "--color-breadcrumb-current"
@@ -211,6 +222,12 @@ export type CssVarName =
   | "--color-contextmenu-separator"
   | "--color-contextmenu-shortcut"
   | "--color-contextmenu-text"
+  | "--color-danger-background-default"
+  | "--color-danger-background-default-hover"
+  | "--color-danger-background-subtle"
+  | "--color-danger-border-default"
+  | "--color-danger-foreground-default"
+  | "--color-danger-foreground-subtle"
   | "--color-dialog-background"
   | "--color-dialog-border"
   | "--color-dialog-description"
@@ -237,6 +254,11 @@ export type CssVarName =
   | "--color-fiery-coral-800"
   | "--color-fiery-coral-900"
   | "--color-fiery-coral-950"
+  | "--color-focus-ring"
+  | "--color-foreground-default"
+  | "--color-foreground-default-disabled"
+  | "--color-foreground-faint"
+  | "--color-foreground-muted"
   | "--color-form-description"
   | "--color-form-error"
   | "--color-form-error-text"
@@ -270,6 +292,8 @@ export type CssVarName =
   | "--color-hover-card-background"
   | "--color-hover-card-border"
   | "--color-hover-card-text"
+  | "--color-info-background-subtle"
+  | "--color-info-foreground-subtle"
   | "--color-input-background-hover"
   | "--color-input-border"
   | "--color-input-border-error"
@@ -295,6 +319,8 @@ export type CssVarName =
   | "--color-interactive-success-hover"
   | "--color-interactive-warning"
   | "--color-interactive-warning-hover"
+  | "--color-inverse-background-default"
+  | "--color-inverse-foreground-default"
   | "--color-label-default-color"
   | "--color-label-disabled-color"
   | "--color-label-error-text"
@@ -382,7 +408,13 @@ export type CssVarName =
   | "--color-popover-border-focus"
   | "--color-popover-text"
   | "--color-primary-active"
+  | "--color-primary-background-default"
+  | "--color-primary-background-default-active"
+  | "--color-primary-background-default-hover"
+  | "--color-primary-background-subtle"
   | "--color-primary-base"
+  | "--color-primary-foreground-default"
+  | "--color-primary-foreground-subtle"
   | "--color-primary-hover"
   | "--color-primary-surface"
   | "--color-primary-text"
@@ -458,6 +490,12 @@ export type CssVarName =
   | "--color-status-info"
   | "--color-status-success"
   | "--color-status-warning"
+  | "--color-success-background-default"
+  | "--color-success-background-default-hover"
+  | "--color-success-background-subtle"
+  | "--color-success-border-default"
+  | "--color-success-foreground-default"
+  | "--color-success-foreground-subtle"
   | "--color-surface-brand"
   | "--color-surface-danger"
   | "--color-surface-info"
@@ -522,6 +560,12 @@ export type CssVarName =
   | "--color-tooltip-background"
   | "--color-tooltip-border"
   | "--color-tooltip-text"
+  | "--color-warning-background-default"
+  | "--color-warning-background-default-hover"
+  | "--color-warning-background-subtle"
+  | "--color-warning-border-default"
+  | "--color-warning-foreground-default"
+  | "--color-warning-foreground-subtle"
   | "--color-yellow-100"
   | "--color-yellow-200"
   | "--color-yellow-300"
@@ -1252,9 +1296,18 @@ export declare const cssVars: Readonly<{
   "colorAvatarFallbackText": "--color-avatar-fallback-text";
   "colorBackgroundBrand": "--color-background-brand";
   "colorBackgroundDanger": "--color-background-danger";
+  "colorBackgroundDefault": "--color-background-default";
+  "colorBackgroundDefaultActive": "--color-background-default-active";
+  "colorBackgroundDefaultDisabled": "--color-background-default-disabled";
+  "colorBackgroundDefaultHover": "--color-background-default-hover";
   "colorBackgroundInverse": "--color-background-inverse";
+  "colorBackgroundOverlay": "--color-background-overlay";
   "colorBackgroundPrimary": "--color-background-primary";
+  "colorBackgroundRaised": "--color-background-raised";
   "colorBackgroundSecondary": "--color-background-secondary";
+  "colorBackgroundStrong": "--color-background-strong";
+  "colorBackgroundSubtle": "--color-background-subtle";
+  "colorBackgroundSubtleActive": "--color-background-subtle-active";
   "colorBackgroundTertiary": "--color-background-tertiary";
   "colorBadgeDefaultBackground": "--color-badge-default-background";
   "colorBadgeDefaultBackgroundDisabled": "--color-badge-default-background-disabled";
@@ -1316,10 +1369,12 @@ export declare const cssVars: Readonly<{
   "colorBlue950": "--color-blue-950";
   "colorBorderBrand": "--color-border-brand";
   "colorBorderDanger": "--color-border-danger";
+  "colorBorderDefault": "--color-border-default";
   "colorBorderFocus": "--color-border-focus";
   "colorBorderPrimary": "--color-border-primary";
   "colorBorderSecondary": "--color-border-secondary";
   "colorBorderStrong": "--color-border-strong";
+  "colorBorderSubtle": "--color-border-subtle";
   "colorBorderSuccess": "--color-border-success";
   "colorBorderWarning": "--color-border-warning";
   "colorBreadcrumbCurrent": "--color-breadcrumb-current";
@@ -1401,6 +1456,12 @@ export declare const cssVars: Readonly<{
   "colorContextmenuSeparator": "--color-contextmenu-separator";
   "colorContextmenuShortcut": "--color-contextmenu-shortcut";
   "colorContextmenuText": "--color-contextmenu-text";
+  "colorDangerBackgroundDefault": "--color-danger-background-default";
+  "colorDangerBackgroundDefaultHover": "--color-danger-background-default-hover";
+  "colorDangerBackgroundSubtle": "--color-danger-background-subtle";
+  "colorDangerBorderDefault": "--color-danger-border-default";
+  "colorDangerForegroundDefault": "--color-danger-foreground-default";
+  "colorDangerForegroundSubtle": "--color-danger-foreground-subtle";
   "colorDialogBackground": "--color-dialog-background";
   "colorDialogBorder": "--color-dialog-border";
   "colorDialogDescription": "--color-dialog-description";
@@ -1427,6 +1488,11 @@ export declare const cssVars: Readonly<{
   "colorFieryCoral800": "--color-fiery-coral-800";
   "colorFieryCoral900": "--color-fiery-coral-900";
   "colorFieryCoral950": "--color-fiery-coral-950";
+  "colorFocusRing": "--color-focus-ring";
+  "colorForegroundDefault": "--color-foreground-default";
+  "colorForegroundDefaultDisabled": "--color-foreground-default-disabled";
+  "colorForegroundFaint": "--color-foreground-faint";
+  "colorForegroundMuted": "--color-foreground-muted";
   "colorFormDescription": "--color-form-description";
   "colorFormError": "--color-form-error";
   "colorFormErrorText": "--color-form-error-text";
@@ -1460,6 +1526,8 @@ export declare const cssVars: Readonly<{
   "colorHoverCardBackground": "--color-hover-card-background";
   "colorHoverCardBorder": "--color-hover-card-border";
   "colorHoverCardText": "--color-hover-card-text";
+  "colorInfoBackgroundSubtle": "--color-info-background-subtle";
+  "colorInfoForegroundSubtle": "--color-info-foreground-subtle";
   "colorInputBackgroundHover": "--color-input-background-hover";
   "colorInputBorder": "--color-input-border";
   "colorInputBorderError": "--color-input-border-error";
@@ -1485,6 +1553,8 @@ export declare const cssVars: Readonly<{
   "colorInteractiveSuccessHover": "--color-interactive-success-hover";
   "colorInteractiveWarning": "--color-interactive-warning";
   "colorInteractiveWarningHover": "--color-interactive-warning-hover";
+  "colorInverseBackgroundDefault": "--color-inverse-background-default";
+  "colorInverseForegroundDefault": "--color-inverse-foreground-default";
   "colorLabelDefaultColor": "--color-label-default-color";
   "colorLabelDisabledColor": "--color-label-disabled-color";
   "colorLabelErrorText": "--color-label-error-text";
@@ -1572,7 +1642,13 @@ export declare const cssVars: Readonly<{
   "colorPopoverBorderFocus": "--color-popover-border-focus";
   "colorPopoverText": "--color-popover-text";
   "colorPrimaryActive": "--color-primary-active";
+  "colorPrimaryBackgroundDefault": "--color-primary-background-default";
+  "colorPrimaryBackgroundDefaultActive": "--color-primary-background-default-active";
+  "colorPrimaryBackgroundDefaultHover": "--color-primary-background-default-hover";
+  "colorPrimaryBackgroundSubtle": "--color-primary-background-subtle";
   "colorPrimaryBase": "--color-primary-base";
+  "colorPrimaryForegroundDefault": "--color-primary-foreground-default";
+  "colorPrimaryForegroundSubtle": "--color-primary-foreground-subtle";
   "colorPrimaryHover": "--color-primary-hover";
   "colorPrimarySurface": "--color-primary-surface";
   "colorPrimaryText": "--color-primary-text";
@@ -1648,6 +1724,12 @@ export declare const cssVars: Readonly<{
   "colorStatusInfo": "--color-status-info";
   "colorStatusSuccess": "--color-status-success";
   "colorStatusWarning": "--color-status-warning";
+  "colorSuccessBackgroundDefault": "--color-success-background-default";
+  "colorSuccessBackgroundDefaultHover": "--color-success-background-default-hover";
+  "colorSuccessBackgroundSubtle": "--color-success-background-subtle";
+  "colorSuccessBorderDefault": "--color-success-border-default";
+  "colorSuccessForegroundDefault": "--color-success-foreground-default";
+  "colorSuccessForegroundSubtle": "--color-success-foreground-subtle";
   "colorSurfaceBrand": "--color-surface-brand";
   "colorSurfaceDanger": "--color-surface-danger";
   "colorSurfaceInfo": "--color-surface-info";
@@ -1712,6 +1794,12 @@ export declare const cssVars: Readonly<{
   "colorTooltipBackground": "--color-tooltip-background";
   "colorTooltipBorder": "--color-tooltip-border";
   "colorTooltipText": "--color-tooltip-text";
+  "colorWarningBackgroundDefault": "--color-warning-background-default";
+  "colorWarningBackgroundDefaultHover": "--color-warning-background-default-hover";
+  "colorWarningBackgroundSubtle": "--color-warning-background-subtle";
+  "colorWarningBorderDefault": "--color-warning-border-default";
+  "colorWarningForegroundDefault": "--color-warning-foreground-default";
+  "colorWarningForegroundSubtle": "--color-warning-foreground-subtle";
   "colorYellow100": "--color-yellow-100";
   "colorYellow200": "--color-yellow-200";
   "colorYellow300": "--color-yellow-300";
