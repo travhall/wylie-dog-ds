@@ -28,7 +28,8 @@ Measured on 2026-10-20:
 5. **Keep the Secondary button.** It stays as a variant; its naming is cleaned up as part of the `interactive` and `primary` clean-up.
 6. **Do not change the primary colour yet.** Primary stays blue. It will be changed later, through Figma and pushed to code, as a deliberate end-to-end test (the case study below). The orange brand tokens stay as they are until then.
 7. **No alpha inside colour tokens.** Opacity is a separate `number` token (0 to 1). Tints and surfaces are opaque colours resolved per mode. Reasons: contrast can only be verified for opaque colours; the Figma exporter reads only the red, green and blue channels of a variable (read from `processor.ts`, not tested end to end), so alpha would not round-trip; and Figma cannot alias a colour with an alpha change.
-8. **The neutral ground is not a role.** It has a text hierarchy (default, muted, faint, disabled) and an elevation ladder (default, subtle, raised, overlay, inverse) that do not pair one to one, so its contract is a matrix rather than a key. See "Open questions" for how it is named.
+8. **The neutral ground is not a role.** It has a text hierarchy (default, muted, faint, disabled) and an elevation ladder (default, subtle, raised, overlay, inverse) that do not pair one to one, so its contract is a matrix rather than a key.
+9. **Ground tokens are unprefixed; roles are prefixed.** The ground is written `color.background.<level>`, `color.foreground.<level>` and `color.border.<level>`; roles are `color.<role>.<part>.<level>`. Reasons: about 88 percent of the roughly 2,740 semantic token references in the UI package, the showcase and Storybook are ground tokens (text, border, background, surface), and these names appear in class strings, so the most used tokens should be the shortest; and the ground has structure roles do not. A checker enumerates the ground and the roles separately.
 
 ## Proposed grammar
 
