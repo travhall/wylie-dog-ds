@@ -2585,6 +2585,18 @@
         "variable": "var(--color-background-primary)",
         "description": "Main page background color"
       },
+      "color-background-default": {
+        "name": "colorBackgroundDefault",
+        "path": [
+          "color",
+          "background",
+          "default"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-background-default)",
+        "description": "Main page background color"
+      },
       "color-background-secondary": {
         "name": "colorBackgroundSecondary",
         "path": [
@@ -2597,6 +2609,18 @@
         "variable": "var(--color-background-secondary)",
         "description": "Secondary background for sections and containers"
       },
+      "color-background-subtle": {
+        "name": "colorBackgroundSubtle",
+        "path": [
+          "color",
+          "background",
+          "subtle"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-background-subtle)",
+        "description": "Secondary background for sections and containers"
+      },
       "color-background-tertiary": {
         "name": "colorBackgroundTertiary",
         "path": [
@@ -2607,6 +2631,18 @@
         "value": "oklch(0.87 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-background-tertiary)",
+        "description": "Tertiary background for nested elements"
+      },
+      "color-background-strong": {
+        "name": "colorBackgroundStrong",
+        "path": [
+          "color",
+          "background",
+          "strong"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-background-strong)",
         "description": "Tertiary background for nested elements"
       },
       "color-background-inverse": {
@@ -2644,6 +2680,82 @@
         "type": "color",
         "variable": "var(--color-background-danger)",
         "description": "Danger/error background for critical states"
+      },
+      "color-background-raised": {
+        "name": "colorBackgroundRaised",
+        "path": [
+          "color",
+          "background",
+          "raised"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-background-raised)",
+        "description": "Raised surface for elevated components"
+      },
+      "color-background-overlay": {
+        "name": "colorBackgroundOverlay",
+        "path": [
+          "color",
+          "background",
+          "overlay"
+        ],
+        "value": "oklch(0.786 0.004 271.11)",
+        "type": "color",
+        "variable": "var(--color-background-overlay)",
+        "description": "Overlay surface for modals and popovers"
+      },
+      "color-background-subtle-active": {
+        "name": "colorBackgroundSubtleActive",
+        "path": [
+          "color",
+          "background",
+          "subtle",
+          "active"
+        ],
+        "value": "oklch(0.786 0.004 271.11)",
+        "type": "color",
+        "variable": "var(--color-background-subtle-active)",
+        "description": "Secondary interactive pressed/active state"
+      },
+      "color-background-default-hover": {
+        "name": "colorBackgroundDefaultHover",
+        "path": [
+          "color",
+          "background",
+          "default",
+          "hover"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-background-default-hover)",
+        "description": "Generic hover background for interactive elements"
+      },
+      "color-background-default-active": {
+        "name": "colorBackgroundDefaultActive",
+        "path": [
+          "color",
+          "background",
+          "default",
+          "active"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-background-default-active)",
+        "description": "Pressed/active state background"
+      },
+      "color-background-default-disabled": {
+        "name": "colorBackgroundDefaultDisabled",
+        "path": [
+          "color",
+          "background",
+          "default",
+          "disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-background-default-disabled)",
+        "description": "Disabled state background"
       }
     },
     "surface": {
@@ -2903,6 +3015,18 @@
         "variable": "var(--color-border-primary)",
         "description": "Primary border for cards and containers"
       },
+      "color-border-default": {
+        "name": "colorBorderDefault",
+        "path": [
+          "color",
+          "border",
+          "default"
+        ],
+        "value": "oklch(0.786 0.004 271.11)",
+        "type": "color",
+        "variable": "var(--color-border-default)",
+        "description": "Primary border for cards and containers"
+      },
       "color-border-secondary": {
         "name": "colorBorderSecondary",
         "path": [
@@ -2913,6 +3037,18 @@
         "value": "oklch(0.87 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-border-secondary)",
+        "description": "Secondary border for subtle dividers"
+      },
+      "color-border-subtle": {
+        "name": "colorBorderSubtle",
+        "path": [
+          "color",
+          "border",
+          "subtle"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-border-subtle)",
         "description": "Secondary border for subtle dividers"
       },
       "color-border-strong": {
@@ -3245,6 +3381,423 @@
       }
     },
     "other": {
+      "color-inverse-background-default": {
+        "name": "colorInverseBackgroundDefault",
+        "path": [
+          "color",
+          "inverse",
+          "background",
+          "default"
+        ],
+        "value": "oklch(0.149 0.012 259.72)",
+        "type": "color",
+        "variable": "var(--color-inverse-background-default)",
+        "description": "Inverted background for high contrast areas"
+      },
+      "color-success-background-subtle": {
+        "name": "colorSuccessBackgroundSubtle",
+        "path": [
+          "color",
+          "success",
+          "background",
+          "subtle"
+        ],
+        "value": "oklch(0.982 0.018 156.61)",
+        "type": "color",
+        "variable": "var(--color-success-background-subtle)",
+        "description": "Success state surface background"
+      },
+      "color-warning-background-subtle": {
+        "name": "colorWarningBackgroundSubtle",
+        "path": [
+          "color",
+          "warning",
+          "background",
+          "subtle"
+        ],
+        "value": "oklch(0.98 0.016 74.73)",
+        "type": "color",
+        "variable": "var(--color-warning-background-subtle)",
+        "description": "Warning state surface background"
+      },
+      "color-danger-background-subtle": {
+        "name": "colorDangerBackgroundSubtle",
+        "path": [
+          "color",
+          "danger",
+          "background",
+          "subtle"
+        ],
+        "value": "oklch(0.971 0.013 16.7)",
+        "type": "color",
+        "variable": "var(--color-danger-background-subtle)",
+        "description": "Danger/error state surface background"
+      },
+      "color-info-background-subtle": {
+        "name": "colorInfoBackgroundSubtle",
+        "path": [
+          "color",
+          "info",
+          "background",
+          "subtle"
+        ],
+        "value": "oklch(0.97 0.014 254.77)",
+        "type": "color",
+        "variable": "var(--color-info-background-subtle)",
+        "description": "Informational state surface background"
+      },
+      "color-foreground-default": {
+        "name": "colorForegroundDefault",
+        "path": [
+          "color",
+          "foreground",
+          "default"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-foreground-default)",
+        "description": "Primary text for headings and body content"
+      },
+      "color-foreground-muted": {
+        "name": "colorForegroundMuted",
+        "path": [
+          "color",
+          "foreground",
+          "muted"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-foreground-muted)",
+        "description": "Secondary text for supporting content"
+      },
+      "color-foreground-faint": {
+        "name": "colorForegroundFaint",
+        "path": [
+          "color",
+          "foreground",
+          "faint"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-foreground-faint)",
+        "description": "Tertiary text for captions and hints"
+      },
+      "color-foreground-default-disabled": {
+        "name": "colorForegroundDefaultDisabled",
+        "path": [
+          "color",
+          "foreground",
+          "default",
+          "disabled"
+        ],
+        "value": "oklch(0.699 0.005 271.07)",
+        "type": "color",
+        "variable": "var(--color-foreground-default-disabled)",
+        "description": "Disabled text color"
+      },
+      "color-inverse-foreground-default": {
+        "name": "colorInverseForegroundDefault",
+        "path": [
+          "color",
+          "inverse",
+          "foreground",
+          "default"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-inverse-foreground-default)",
+        "description": "Inverted text for dark backgrounds"
+      },
+      "color-primary-foreground-default": {
+        "name": "colorPrimaryForegroundDefault",
+        "path": [
+          "color",
+          "primary",
+          "foreground",
+          "default"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-primary-foreground-default)",
+        "description": "Foreground on the solid primary fill; pairs with color.primary.background.default"
+      },
+      "color-danger-foreground-default": {
+        "name": "colorDangerForegroundDefault",
+        "path": [
+          "color",
+          "danger",
+          "foreground",
+          "default"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-danger-foreground-default)",
+        "description": "Foreground on the solid danger fill; pairs with color.danger.background.default"
+      },
+      "color-success-foreground-default": {
+        "name": "colorSuccessForegroundDefault",
+        "path": [
+          "color",
+          "success",
+          "foreground",
+          "default"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-success-foreground-default)",
+        "description": "Foreground on the solid success fill; pairs with color.success.background.default"
+      },
+      "color-warning-foreground-default": {
+        "name": "colorWarningForegroundDefault",
+        "path": [
+          "color",
+          "warning",
+          "foreground",
+          "default"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-warning-foreground-default)",
+        "description": "Foreground on the solid warning fill; pairs with color.warning.background.default"
+      },
+      "color-success-foreground-subtle": {
+        "name": "colorSuccessForegroundSubtle",
+        "path": [
+          "color",
+          "success",
+          "foreground",
+          "subtle"
+        ],
+        "value": "oklch(0.527 0.137 150.11)",
+        "type": "color",
+        "variable": "var(--color-success-foreground-subtle)",
+        "description": "Success state text color"
+      },
+      "color-warning-foreground-subtle": {
+        "name": "colorWarningForegroundSubtle",
+        "path": [
+          "color",
+          "warning",
+          "foreground",
+          "subtle"
+        ],
+        "value": "oklch(0.553 0.174 38.47)",
+        "type": "color",
+        "variable": "var(--color-warning-foreground-subtle)",
+        "description": "Warning state text color"
+      },
+      "color-danger-foreground-subtle": {
+        "name": "colorDangerForegroundSubtle",
+        "path": [
+          "color",
+          "danger",
+          "foreground",
+          "subtle"
+        ],
+        "value": "oklch(0.505 0.19 27.49)",
+        "type": "color",
+        "variable": "var(--color-danger-foreground-subtle)",
+        "description": "Danger/error state text color"
+      },
+      "color-info-foreground-subtle": {
+        "name": "colorInfoForegroundSubtle",
+        "path": [
+          "color",
+          "info",
+          "foreground",
+          "subtle"
+        ],
+        "value": "oklch(0.488 0.217 264.4)",
+        "type": "color",
+        "variable": "var(--color-info-foreground-subtle)",
+        "description": "Informational text color"
+      },
+      "color-primary-foreground-subtle": {
+        "name": "colorPrimaryForegroundSubtle",
+        "path": [
+          "color",
+          "primary",
+          "foreground",
+          "subtle"
+        ],
+        "value": "oklch(0.488 0.217 264.4)",
+        "type": "color",
+        "variable": "var(--color-primary-foreground-subtle)",
+        "description": "Primary-coloured text on the subtle primary tint and on the page (links); pairs with color.primary.background.subtle"
+      },
+      "color-focus-ring": {
+        "name": "colorFocusRing",
+        "path": [
+          "color",
+          "focus",
+          "ring"
+        ],
+        "value": "oklch(0.623 0.188 259.83)",
+        "type": "color",
+        "variable": "var(--color-focus-ring)",
+        "description": "Focus ring border color"
+      },
+      "color-success-border-default": {
+        "name": "colorSuccessBorderDefault",
+        "path": [
+          "color",
+          "success",
+          "border",
+          "default"
+        ],
+        "value": "oklch(0.627 0.17 149.29)",
+        "type": "color",
+        "variable": "var(--color-success-border-default)",
+        "description": "Success state border color"
+      },
+      "color-warning-border-default": {
+        "name": "colorWarningBorderDefault",
+        "path": [
+          "color",
+          "warning",
+          "border",
+          "default"
+        ],
+        "value": "oklch(0.646 0.194 40.94)",
+        "type": "color",
+        "variable": "var(--color-warning-border-default)",
+        "description": "Warning state border color"
+      },
+      "color-danger-border-default": {
+        "name": "colorDangerBorderDefault",
+        "path": [
+          "color",
+          "danger",
+          "border",
+          "default"
+        ],
+        "value": "oklch(0.577 0.215 27.31)",
+        "type": "color",
+        "variable": "var(--color-danger-border-default)",
+        "description": "Danger/error state border color"
+      },
+      "color-primary-background-default": {
+        "name": "colorPrimaryBackgroundDefault",
+        "path": [
+          "color",
+          "primary",
+          "background",
+          "default"
+        ],
+        "value": "oklch(0.546 0.215 262.9)",
+        "type": "color",
+        "variable": "var(--color-primary-background-default)",
+        "description": "Primary interactive element background (buttons, links)"
+      },
+      "color-primary-background-default-hover": {
+        "name": "colorPrimaryBackgroundDefaultHover",
+        "path": [
+          "color",
+          "primary",
+          "background",
+          "default",
+          "hover"
+        ],
+        "value": "oklch(0.488 0.217 264.4)",
+        "type": "color",
+        "variable": "var(--color-primary-background-default-hover)",
+        "description": "Primary interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
+      },
+      "color-primary-background-default-active": {
+        "name": "colorPrimaryBackgroundDefaultActive",
+        "path": [
+          "color",
+          "primary",
+          "background",
+          "default",
+          "active"
+        ],
+        "value": "oklch(0.424 0.181 265.66)",
+        "type": "color",
+        "variable": "var(--color-primary-background-default-active)",
+        "description": "Primary interactive pressed/active state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
+      },
+      "color-success-background-default": {
+        "name": "colorSuccessBackgroundDefault",
+        "path": [
+          "color",
+          "success",
+          "background",
+          "default"
+        ],
+        "value": "oklch(0.527 0.137 150.11)",
+        "type": "color",
+        "variable": "var(--color-success-background-default)",
+        "description": "Success interactive element background"
+      },
+      "color-success-background-default-hover": {
+        "name": "colorSuccessBackgroundDefaultHover",
+        "path": [
+          "color",
+          "success",
+          "background",
+          "default",
+          "hover"
+        ],
+        "value": "oklch(0.448 0.108 151.37)",
+        "type": "color",
+        "variable": "var(--color-success-background-default-hover)",
+        "description": "Success interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
+      },
+      "color-warning-background-default": {
+        "name": "colorWarningBackgroundDefault",
+        "path": [
+          "color",
+          "warning",
+          "background",
+          "default"
+        ],
+        "value": "oklch(0.553 0.174 38.47)",
+        "type": "color",
+        "variable": "var(--color-warning-background-default)",
+        "description": "Warning interactive element background"
+      },
+      "color-warning-background-default-hover": {
+        "name": "colorWarningBackgroundDefaultHover",
+        "path": [
+          "color",
+          "warning",
+          "background",
+          "default",
+          "hover"
+        ],
+        "value": "oklch(0.47 0.143 37.28)",
+        "type": "color",
+        "variable": "var(--color-warning-background-default-hover)",
+        "description": "Warning interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
+      },
+      "color-danger-background-default": {
+        "name": "colorDangerBackgroundDefault",
+        "path": [
+          "color",
+          "danger",
+          "background",
+          "default"
+        ],
+        "value": "oklch(0.577 0.215 27.31)",
+        "type": "color",
+        "variable": "var(--color-danger-background-default)",
+        "description": "Danger interactive element background"
+      },
+      "color-danger-background-default-hover": {
+        "name": "colorDangerBackgroundDefaultHover",
+        "path": [
+          "color",
+          "danger",
+          "background",
+          "default",
+          "hover"
+        ],
+        "value": "oklch(0.505 0.19 27.49)",
+        "type": "color",
+        "variable": "var(--color-danger-background-default-hover)",
+        "description": "Danger interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
+      },
       "color-primary-base": {
         "name": "colorPrimaryBase",
         "path": [
@@ -3472,6 +4025,19 @@
         "type": "color",
         "variable": "var(--color-neutral-on)",
         "description": "Text color on neutral backgrounds"
+      },
+      "color-primary-background-subtle": {
+        "name": "colorPrimaryBackgroundSubtle",
+        "path": [
+          "color",
+          "primary",
+          "background",
+          "subtle"
+        ],
+        "value": "oklch(0.97 0.014 254.77)",
+        "type": "color",
+        "variable": "var(--color-primary-background-subtle)",
+        "description": "Subtle primary tint (focus and selection fills); pairs with color.primary.foreground.subtle"
       }
     },
     "shadow": {
