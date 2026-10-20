@@ -1125,7 +1125,7 @@
   --font-size-form-hint-font-size: 12px;
   --color-form-error-text: oklch(0.505 0.19 27.49);
   --font-size-form-error-font-size: 12px;
-  --color-form-required-color: oklch(0.577 0.215 27.31);
+  --color-form-required-color: oklch(0.505 0.19 27.49);
   --space-form-gap: 16px;
   --space-form-fieldset-gap: 24px;
   --font-size-form-fieldset-legend-font-size: 16px;
@@ -2094,7 +2094,7 @@
   --font-size-form-hint-font-size: 12px;
   --color-form-error-text: oklch(0.711 0.166 22.2);
   --font-size-form-error-font-size: 12px;
-  --color-form-required-color: oklch(0.637 0.208 25.31);
+  --color-form-required-color: oklch(0.711 0.166 22.2);
   --space-form-gap: 16px;
   --space-form-fieldset-gap: 24px;
   --font-size-form-fieldset-legend-font-size: 16px;

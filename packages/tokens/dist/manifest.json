@@ -9126,7 +9126,7 @@
           "required",
           "color"
         ],
-        "value": "oklch(0.577 0.215 27.31)",
+        "value": "oklch(0.505 0.19 27.49)",
         "type": "color",
         "variable": "var(--color-form-required-color)",
         "description": ""
