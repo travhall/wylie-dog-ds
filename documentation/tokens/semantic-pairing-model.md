@@ -1,7 +1,7 @@
 # Semantic colour pairing model
 
 **Status:** Proposed. Nothing here is implemented except the contrast check (see "What exists today").
-**Decided with the owner:** 2026-10-20. **Facts measured on:** 2026-10-20.
+**Decided with the owner:** 2026-10-20 (level vocabulary settled the same day). **Facts measured on:** 2026-10-20.
 
 This records the direction for how semantic colour tokens pair a foreground with a background, why the current structure needs it, what was decided, and what is still open. It is the reference for a planned case study (see the end).
 
@@ -30,6 +30,10 @@ Measured on 2026-10-20:
 7. **No alpha inside colour tokens.** Opacity is a separate `number` token (0 to 1). Tints and surfaces are opaque colours resolved per mode. Reasons: contrast can only be verified for opaque colours; the Figma exporter reads only the red, green and blue channels of a variable (read from `processor.ts`, not tested end to end), so alpha would not round-trip; and Figma cannot alias a colour with an alpha change.
 8. **The neutral ground is not a role.** It has a text hierarchy (default, muted, faint, disabled) and an elevation ladder (default, subtle, raised, overlay, inverse) that do not pair one to one, so its contract is a matrix rather than a key.
 9. **Ground tokens are unprefixed; roles are prefixed.** The ground is written `color.background.<level>`, `color.foreground.<level>` and `color.border.<level>`; roles are `color.<role>.<part>.<level>`. Reasons: about 88 percent of the roughly 2,740 semantic token references in the UI package, the showcase and Storybook are ground tokens (text, border, background, surface), and these names appear in class strings, so the most used tokens should be the shortest; and the ground has structure roles do not. A checker enumerates the ground and the roles separately.
+10. **Level vocabulary.** `default` is the canonical value of a part. `subtle` and `strong` describe how a value looks (gentle or bold), not a position on one scale. Ground backgrounds are `default` (the page), `subtle` and `strong`, plus the placement levels `raised` and `overlay`; the ground text hierarchy is `default`, `muted`, `faint`; ground borders are `default`, `subtle`, `strong`. Roles have `default` (the solid fill) and `subtle` (the tint). Ground levels step away from the page and role levels step toward it; that asymmetry is deliberate and documented rather than hidden.
+11. **The ground text hierarchy uses different words from the surface levels** (`muted`, `faint`), so `subtle` never means two things: on a role, `foreground.subtle` is the text on the subtle tint.
+12. **Inverse is a role of its own** (`color.inverse.background.default` and `color.inverse.foreground.default`), because it is a true one-to-one pair.
+13. **States are a suffix after the level** (`.hover`, `.active`, `.focus`, `.disabled`) on any background, including the ground, since hover and active are relative to the surface they sit on. The focus ring is its own group (`color.focus.ring`), and disabled is a state, not a level.
 
 ## Proposed grammar
 
@@ -49,22 +53,20 @@ color.foreground.<level>     # default, muted, faint, disabled, inverse
 color.border.<level>
 ```
 
-Role fills and states are the same grammar, for example `color.danger.background.default.hover`. Levels run in one direction per role; the exact vocabulary is open.
+Role fills and states are the same grammar, for example `color.danger.background.default.hover`. The complete old-to-new table for every current semantic colour token is in [semantic-token-mapping.md](semantic-token-mapping.md).
 
 ## Open questions
 
-- **Level vocabulary and direction.** For a coloured role, `default` is the strongest fill and a quieter level is a tint. For the neutral ground `default` is the page and the next level is raised. The same words move in opposite directions, so each needs defining.
-- **Text hierarchy words.** If `subtle` means a quieter surface, the text hierarchy needs different words (`muted`, `faint`) so the two meanings do not collide.
 - **Role names.** Whether the main action colour and the brand colour are one role, and whether it is called `primary` or `brand`. This follows from the case study.
-- **Number of levels and where states live** (a segment after the level, or a suffix).
-- **Migration.** Token names appear outside the token files: about 2,740 references across the UI package, the showcase and Storybook (text 1,454, border 447, background 370, interactive 285, surface 97, status 89), plus roughly 290 component-token aliases. `pnpm check:tokens` verifies every reference resolves after a rename, so a scripted migration is checkable. It also touches the Figma sync, the showcase and the docs, so it needs its own plan.
+- **Link colour, focus fill, accent, raised and overlay values, and merging `status.danger`.** Each is listed with its context at the end of the mapping document.
+- **Migration.** Token names appear outside the token files: about 2,740 references across the UI package, the showcase and Storybook, plus roughly 290 component-token aliases. `pnpm check:tokens` verifies every reference resolves after a rename, so a scripted migration is checkable. It also touches the Figma sync, the showcase and the docs, so it needs its own plan.
 
 ## Intended sequence
 
 1. Declare pairs and check them in CI (done, see below).
 2. Fix the failures the check lists (done, see "Contrast fixes").
 3. Align the colour ramps by lightness so that "fill step, foreground step" holds across hues (the ramps are not aligned today: step 600 has an OKLCH lightness of 0.52 for gray, 0.55 for blue, 0.65 for orange and 0.69 for yellow).
-4. Rename to the grammar above once the ramps settle.
+4. Rename to the grammar above once the ramps settle, using the mapping table.
 
 ## Contrast fixes (2026-10-20)
 
