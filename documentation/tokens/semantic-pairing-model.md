@@ -34,6 +34,8 @@ Measured on 2026-10-20:
 11. **The ground text hierarchy uses different words from the surface levels** (`muted`, `faint`), so `subtle` never means two things: on a role, `foreground.subtle` is the text on the subtle tint.
 12. **Inverse is a role of its own** (`color.inverse.background.default` and `color.inverse.foreground.default`), because it is a true one-to-one pair.
 13. **States are a suffix after the level** (`.hover`, `.active`, `.focus`, `.disabled`) on any background, including the ground, since hover and active are relative to the surface they sit on. The focus ring is its own group (`color.focus.ring`), and disabled is a state, not a level.
+14. **Primary is the main role.** Links and the focus fill follow it (color.primary.foreground.subtle and color.primary.background.subtle). The brand and accent tokens are retired. The primary colour stays blue until the owner changes it through Figma.
+15. **Placeholder values.** The values of raised and overlay, like every other value, are provisional; a design pass follows the migration.
 
 ## Proposed grammar
 
@@ -57,8 +59,6 @@ Role fills and states are the same grammar, for example `color.danger.background
 
 ## Open questions
 
-- **Role names.** Whether the main action colour and the brand colour are one role, and whether it is called `primary` or `brand`. This follows from the case study.
-- **Link colour, focus fill, accent, raised and overlay values, and merging `status.danger`.** Each is listed with its context at the end of the mapping document.
 - **Migration.** Token names appear outside the token files: about 2,740 references across the UI package, the showcase and Storybook, plus roughly 290 component-token aliases. `pnpm check:tokens` verifies every reference resolves after a rename, so a scripted migration is checkable. It also touches the Figma sync, the showcase and the docs, so it needs its own plan.
 
 ## Intended sequence
