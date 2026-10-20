@@ -858,7 +858,7 @@
   },
   "radio.border": {
     "$type": "color",
-    "$value": "{color.border.primary}"
+    "$value": "{color.border.strong}"
   },
   "radio.border-checked": {
     "$type": "color",
@@ -1190,7 +1190,7 @@
   },
   "switch.track.background.unchecked": {
     "$type": "color",
-    "$value": "{color.interactive.secondary}"
+    "$value": "{color.border.strong}"
   },
   "switch.thumb.background": {
     "$type": "color",
@@ -2587,7 +2587,7 @@
   },
   "checkbox.border.color": {
     "$type": "color",
-    "$value": "{color.border.primary}"
+    "$value": "{color.border.strong}"
   },
   "checkbox.checked.background": {
     "$type": "color",

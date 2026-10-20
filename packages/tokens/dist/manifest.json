@@ -9117,7 +9117,7 @@
           "radio",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.613 0.005 258.45)",
         "type": "color",
         "variable": "var(--color-radio-border)",
         "description": ""
@@ -11177,7 +11177,7 @@
           "border",
           "color"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.613 0.005 258.45)",
         "type": "color",
         "variable": "var(--color-checkbox-border-color)",
         "description": ""
@@ -11484,7 +11484,7 @@
           "background",
           "unchecked"
         ],
-        "value": "oklch(0.952 0.003 264.48)",
+        "value": "oklch(0.613 0.005 258.45)",
         "type": "color",
         "variable": "var(--color-switch-track-background-unchecked)",
         "description": ""

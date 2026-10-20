@@ -3,7 +3,8 @@
     "Declared foreground/background pairs that must meet WCAG 2.2 AA in Light and Dark.",
     "Tokens are named as in packages/tokens/io/sync (collection prefix omitted); a bare name resolves in components, then semantic, then primitive.",
     "kind 'text' needs 4.5:1, 'non-text' (icons, indicators, boundaries) needs 3:1. Disabled states are exempt under WCAG and are not declared.",
-    "knownFailures is a ratchet: each entry is an accepted failure with a reason. A new failure fails the check; a known failure that starts passing must be removed."
+    "knownFailures is a ratchet: each entry is an accepted failure with a reason. A new failure fails the check; a known failure that starts passing must be removed.",
+    "Borders and fills are declared when they are the only visual boundary of a control that has no text label (input, checkbox, radio, switch, slider) and for focus indicators. Controls with a text label (outline button, toggle) are not, because the label identifies them."
   ],
   "thresholds": {
     "text": 4.5,
@@ -566,6 +567,85 @@
       "backgrounds": ["color.background.primary"],
       "kind": "non-text",
       "note": "Component boundary"
+    },
+    {
+      "foreground": "checkbox.border.color",
+      "backgrounds": ["color.background.primary"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "checkbox.error.border",
+      "backgrounds": ["color.background.primary"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "radio.border",
+      "backgrounds": ["color.background.primary"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "radio.border-checked",
+      "backgrounds": ["color.background.primary"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "input.border-error",
+      "backgrounds": ["input.default.background"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "input.border-focus",
+      "backgrounds": ["input.default.background"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "input.border",
+      "backgrounds": ["input.background-hover"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "switch.track.background.unchecked",
+      "backgrounds": ["color.background.primary"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "switch.track.background.checked",
+      "backgrounds": ["color.background.primary"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "switch.thumb.background",
+      "backgrounds": [
+        "switch.track.background.unchecked",
+        "switch.track.background.checked"
+      ],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "slider.range",
+      "backgrounds": ["slider.track"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "slider.thumb-border",
+      "backgrounds": ["color.background.primary"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "color.border.focus",
+      "backgrounds": ["color.background.primary", "color.background.secondary"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "popover.border-focus",
+      "backgrounds": ["popover.background"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "slider.range",
+      "backgrounds": ["color.background.primary"],
+      "kind": "non-text",
+      "note": "The value is carried by the thumb and the filled range; the unfilled track is supplementary and is not required to reach 3:1."
     }
   ],
   "knownFailures": []

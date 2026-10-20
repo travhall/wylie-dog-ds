@@ -1723,10 +1723,10 @@
         },
         "radio.border": {
           "$type": "color",
-          "$value": "{color.border.primary}",
+          "$value": "{color.border.strong}",
           "valuesByMode": {
-            "Light": "{color.border.primary}",
-            "Dark": "{color.border.primary}"
+            "Light": "{color.border.strong}",
+            "Dark": "{color.border.strong}"
           }
         },
         "radio.border-checked": {
@@ -2387,10 +2387,10 @@
         },
         "switch.track.background.unchecked": {
           "$type": "color",
-          "$value": "{color.interactive.secondary}",
+          "$value": "{color.border.strong}",
           "valuesByMode": {
-            "Light": "{color.interactive.secondary}",
-            "Dark": "{color.interactive.secondary}"
+            "Light": "{color.border.strong}",
+            "Dark": "{color.border.strong}"
           }
         },
         "switch.thumb.background": {
@@ -5176,10 +5176,10 @@
         },
         "checkbox.border.color": {
           "$type": "color",
-          "$value": "{color.border.primary}",
+          "$value": "{color.border.strong}",
           "valuesByMode": {
-            "Light": "{color.border.primary}",
-            "Dark": "{color.border.primary}"
+            "Light": "{color.border.strong}",
+            "Dark": "{color.border.strong}"
           }
         },
         "checkbox.checked.background": {
