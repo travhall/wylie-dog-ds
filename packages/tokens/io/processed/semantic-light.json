@@ -139,6 +139,11 @@
     "$value": "{color.gray.200}",
     "$description": "Secondary border for subtle dividers"
   },
+  "color.border.strong": {
+    "$type": "color",
+    "$value": "{color.gray.500}",
+    "$description": "Stronger border for form controls and indicators that must reach 3:1 against the page"
+  },
   "color.border.focus": {
     "$type": "color",
     "$value": "{color.blue.500}",
@@ -172,12 +177,12 @@
   "color.interactive.primary-hover": {
     "$type": "color",
     "$value": "{color.blue.700}",
-    "$description": "Primary interactive hover state"
+    "$description": "Primary interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
   },
   "color.interactive.primary-active": {
     "$type": "color",
     "$value": "{color.blue.800}",
-    "$description": "Primary interactive pressed/active state"
+    "$description": "Primary interactive pressed/active state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
   },
   "color.interactive.secondary": {
     "$type": "color",
@@ -202,7 +207,7 @@
   "color.interactive.success-hover": {
     "$type": "color",
     "$value": "{color.green.800}",
-    "$description": "Success interactive hover state"
+    "$description": "Success interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
   },
   "color.interactive.warning": {
     "$type": "color",
@@ -212,7 +217,7 @@
   "color.interactive.warning-hover": {
     "$type": "color",
     "$value": "{color.orange.800}",
-    "$description": "Warning interactive hover state"
+    "$description": "Warning interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
   },
   "color.interactive.danger": {
     "$type": "color",
@@ -222,7 +227,7 @@
   "color.interactive.danger-hover": {
     "$type": "color",
     "$value": "{color.red.700}",
-    "$description": "Danger interactive hover state"
+    "$description": "Danger interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
   },
   "color.primary.base": {
     "$type": "color",

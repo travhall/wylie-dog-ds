@@ -330,7 +330,7 @@
   },
   "input.border": {
     "$type": "color",
-    "$value": "{color.border.primary}"
+    "$value": "{color.border.strong}"
   },
   "input.border-focus": {
     "$type": "color",
@@ -514,7 +514,7 @@
   },
   "navigation.indicator": {
     "$type": "color",
-    "$value": "{color.border.primary}"
+    "$value": "{color.border.strong}"
   },
   "command.background": {
     "$type": "color",
@@ -706,7 +706,7 @@
   },
   "breadcrumb.link-hover": {
     "$type": "color",
-    "$value": "{color.interactive.primary-hover}"
+    "$value": "{color.text.primary}"
   },
   "breadcrumb.text": {
     "$type": "color",
@@ -2659,7 +2659,7 @@
   },
   "badge.destructive.background-hover": {
     "$type": "color",
-    "$value": "{color.interactive.danger-hover}"
+    "$value": "{color.surface.danger}"
   },
   "badge.outline.background-hover": {
     "$type": "color",
@@ -2735,7 +2735,7 @@
   },
   "badge.default.background-focus": {
     "$type": "color",
-    "$value": "{color.interactive.focus}"
+    "$value": "{color.interactive.primary-hover}"
   },
   "badge.default.background-disabled": {
     "$type": "color",
@@ -2751,7 +2751,7 @@
   },
   "badge.success.background-focus": {
     "$type": "color",
-    "$value": "{color.interactive.focus}"
+    "$value": "{color.interactive.success-hover}"
   },
   "badge.success.background-disabled": {
     "$type": "color",
@@ -2759,7 +2759,7 @@
   },
   "badge.warning.background-focus": {
     "$type": "color",
-    "$value": "{color.interactive.focus}"
+    "$value": "{color.interactive.warning-hover}"
   },
   "badge.warning.background-disabled": {
     "$type": "color",

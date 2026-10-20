@@ -2915,6 +2915,18 @@
         "variable": "var(--color-border-secondary)",
         "description": "Secondary border for subtle dividers"
       },
+      "color-border-strong": {
+        "name": "colorBorderStrong",
+        "path": [
+          "color",
+          "border",
+          "strong"
+        ],
+        "value": "oklch(0.613 0.005 258.45)",
+        "type": "color",
+        "variable": "var(--color-border-strong)",
+        "description": "Stronger border for form controls and indicators that must reach 3:1 against the page"
+      },
       "color-border-focus": {
         "name": "colorBorderFocus",
         "path": [
@@ -2999,7 +3011,7 @@
         "value": "oklch(0.488 0.217 264.4)",
         "type": "color",
         "variable": "var(--color-interactive-primary-hover)",
-        "description": "Primary interactive hover state"
+        "description": "Primary interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
       },
       "color-interactive-primary-active": {
         "name": "colorInteractivePrimaryActive",
@@ -3011,7 +3023,7 @@
         "value": "oklch(0.424 0.181 265.66)",
         "type": "color",
         "variable": "var(--color-interactive-primary-active)",
-        "description": "Primary interactive pressed/active state"
+        "description": "Primary interactive pressed/active state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
       },
       "color-interactive-secondary": {
         "name": "colorInteractiveSecondary",
@@ -3071,7 +3083,7 @@
         "value": "oklch(0.448 0.108 151.37)",
         "type": "color",
         "variable": "var(--color-interactive-success-hover)",
-        "description": "Success interactive hover state"
+        "description": "Success interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
       },
       "color-interactive-warning": {
         "name": "colorInteractiveWarning",
@@ -3095,7 +3107,7 @@
         "value": "oklch(0.47 0.143 37.28)",
         "type": "color",
         "variable": "var(--color-interactive-warning-hover)",
-        "description": "Warning interactive hover state"
+        "description": "Warning interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
       },
       "color-interactive-danger": {
         "name": "colorInteractiveDanger",
@@ -3119,7 +3131,7 @@
         "value": "oklch(0.505 0.19 27.49)",
         "type": "color",
         "variable": "var(--color-interactive-danger-hover)",
-        "description": "Danger interactive hover state"
+        "description": "Danger interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
       },
       "color-interactive-hover": {
         "name": "colorInteractiveHover",
@@ -4067,7 +4079,7 @@
           "destructive",
           "background-hover"
         ],
-        "value": "oklch(0.505 0.19 27.49)",
+        "value": "oklch(0.971 0.013 16.7)",
         "type": "color",
         "variable": "var(--color-badge-destructive-background-hover)",
         "description": ""
@@ -4091,7 +4103,7 @@
           "default",
           "background-focus"
         ],
-        "value": "oklch(0.97 0.014 254.77)",
+        "value": "oklch(0.488 0.217 264.4)",
         "type": "color",
         "variable": "var(--color-badge-default-background-focus)",
         "description": ""
@@ -4139,7 +4151,7 @@
           "success",
           "background-focus"
         ],
-        "value": "oklch(0.97 0.014 254.77)",
+        "value": "oklch(0.448 0.108 151.37)",
         "type": "color",
         "variable": "var(--color-badge-success-background-focus)",
         "description": ""
@@ -4163,7 +4175,7 @@
           "warning",
           "background-focus"
         ],
-        "value": "oklch(0.97 0.014 254.77)",
+        "value": "oklch(0.47 0.143 37.28)",
         "type": "color",
         "variable": "var(--color-badge-warning-background-focus)",
         "description": ""
@@ -5021,7 +5033,7 @@
           "input",
           "border"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.613 0.005 258.45)",
         "type": "color",
         "variable": "var(--color-input-border)",
         "description": ""
@@ -6078,7 +6090,7 @@
           "navigation",
           "indicator"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.613 0.005 258.45)",
         "type": "color",
         "variable": "var(--color-navigation-indicator)",
         "description": ""
@@ -7729,7 +7741,7 @@
           "breadcrumb",
           "link-hover"
         ],
-        "value": "oklch(0.488 0.217 264.4)",
+        "value": "oklch(0.209 0.01 268.18)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link-hover)",
         "description": ""

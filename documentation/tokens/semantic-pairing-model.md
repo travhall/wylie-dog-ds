@@ -14,10 +14,10 @@ Measured on 2026-10-20:
 - **One role appears at several strengths.** Danger is a strong fill with light text in `button` and `toast`, and a tinted fill with coloured text in `badge` (destructive only) and `alert`. `badge` mixes both: default, success and warning are strong fills, destructive is tinted.
 - **Three names for one thing.** The button variant `default` uses component tokens named `primary`, which point at `interactive.primary`. "Primary" also means text emphasis (`text.primary`) and an unused `primary` family.
 - **Unused tokens.** 31 of the 73 semantic colours are not referenced by any component token, including all of the `primary`, `secondary`, `accent` and `neutral` families. Their own "text on base" pairs fail contrast (for example `secondary.text` on `secondary.base` is 1.00:1 in Dark).
-- **Static text on lightening fills.** `text.on-solid` (the same in both modes) sits on solid fills whose hover and active states lighten in Dark mode, so those states fail 4.5:1. Interactive badges also use a pale focus fill with that light text (1.06:1 in Light).
+- **Static text on lightening fills.** `text.on-solid` (the same in both modes) sits on solid fills whose hover and active states lighten in Dark mode, so those states fail 4.5:1. Interactive badges also use a pale focus fill with that light text (1.06:1 in Light). Fixed on 2026-10-20: see "Contrast fixes" below.
 - **The primary colour is split.** The unused `primary` family and the `brand` tokens are orange; every shipped primary action is blue (`interactive.primary`).
 
-`pnpm check:contrast --list` prints the current failures.
+`pnpm check:contrast` guards the pairs; it found 16 failures on 2026-10-20, all fixed the same day.
 
 ## Decisions
 
@@ -62,13 +62,26 @@ Role fills and states are the same grammar, for example `color.danger.background
 ## Intended sequence
 
 1. Declare pairs and check them in CI (done, see below).
-2. Fix the failures the check lists.
+2. Fix the failures the check lists (done, see "Contrast fixes").
 3. Align the colour ramps by lightness so that "fill step, foreground step" holds across hues (the ramps are not aligned today: step 600 has an OKLCH lightness of 0.52 for gray, 0.55 for blue, 0.65 for orange and 0.69 for yellow).
 4. Rename to the grammar above once the ramps settle.
 
+## Contrast fixes (2026-10-20)
+
+The 16 failures the check found were fixed with the least invasive change that keeps the paired text, and no token was renamed:
+
+- **Solid hover and active fills now darken in both modes.** `interactive` primary hover and active, and success, warning and danger hover, use the same step in Dark as in Light, so the light text on them stays above 4.5:1 (it was 2.2 to 3.7:1 in Dark).
+- **Solid badge focus** (default, success, warning) uses the hover fill instead of the pale focus tint (it was 1.06:1 in Light).
+- **Tinted destructive badge hover** keeps its tint instead of switching to the solid danger fill (red text on red was 1.00:1). There is no darker tint token yet; a hover level for tinted fills belongs to the level vocabulary in the open questions.
+- **Card pressed fill in Dark** uses the hover fill (the pressed fill left the secondary text at 4.26:1).
+- **Breadcrumb link hover** uses the primary text colour instead of an interactive fill colour that was never a text colour.
+- **New token `color.border.strong`** (gray 500 in Light, gray 600 in Dark) for the input border and the navigation indicator, which need 3:1 against the page. The shared `color.border.primary` (32 component tokens) is unchanged because decorative dividers do not need it.
+
+Not yet declared, probably the same problem: other control boundaries that use `color.border.primary` as their only edge (for example the checkbox and radio borders). They are not in `scripts/contrast-pairs.json` yet.
+
 ## What exists today
 
-`pnpm check:contrast` reads `scripts/contrast-pairs.json` (99 declared foregrounds, 264 checks across Light and Dark) and fails on any new failure. Known failures are listed with reasons and must be removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
+`pnpm check:contrast` reads `scripts/contrast-pairs.json` (99 declared foregrounds, 264 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
 
 ## Case study
 
