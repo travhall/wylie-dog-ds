@@ -77,11 +77,11 @@ The 16 failures the check found were fixed with the least invasive change that k
 - **Breadcrumb link hover** uses the primary text colour instead of an interactive fill colour that was never a text colour.
 - **New token `color.border.strong`** (gray 500 in Light, gray 600 in Dark) for the input border and the navigation indicator, which need 3:1 against the page. The shared `color.border.primary` (32 component tokens) is unchanged because decorative dividers do not need it.
 
-Not yet declared, probably the same problem: other control boundaries that use `color.border.primary` as their only edge (for example the checkbox and radio borders). They are not in `scripts/contrast-pairs.json` yet.
+Control boundaries were added to the contract the same day, and the same new border token fixed the checkbox border, the radio border and the unchecked switch track (it was 1.12:1 against the page in Light). Declared boundaries are those that are the only visual edge of a control with no text label (input, checkbox, radio, switch, slider) plus focus indicators; controls with a text label (outline button, toggle) are not declared because the label identifies them. The slider's unfilled track is not required to reach 3:1 because the value is carried by the thumb and the filled range, which are declared.
 
 ## What exists today
 
-`pnpm check:contrast` reads `scripts/contrast-pairs.json` (99 declared foregrounds, 264 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
+`pnpm check:contrast` reads `scripts/contrast-pairs.json` (114 declared foregrounds, 298 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
 
 ## Case study
 

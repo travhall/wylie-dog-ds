@@ -618,7 +618,7 @@
   --color-progress-success-fill: oklch(0.527 0.137 150.11);
   --color-progress-warning-fill: oklch(0.553 0.174 38.47);
   --color-radio-background-checked: oklch(0.546 0.215 262.9);
-  --color-radio-border: oklch(0.786 0.004 271.11);
+  --color-radio-border: oklch(0.613 0.005 258.45);
   --color-radio-border-checked: oklch(0.546 0.215 262.9);
   --color-radio-indicator: oklch(0.991 0.003 264.45);
   --color-resizable-handle: oklch(0.786 0.004 271.11);
@@ -701,7 +701,7 @@
   --space-switch-focus-ring-width: 2px;
   --space-switch-focus-ring-offset: 2px;
   --color-switch-track-background-checked: oklch(0.546 0.215 262.9);
-  --color-switch-track-background-unchecked: oklch(0.952 0.003 264.48);
+  --color-switch-track-background-unchecked: oklch(0.613 0.005 258.45);
   --color-switch-thumb-background: oklch(0.991 0.003 264.45);
   --space-radio-size-sm: 16px;
   --space-radio-size-md: 24px;
@@ -1049,7 +1049,7 @@
   --font-size-card-content-font-size: 14px;
   --color-card-content-color: oklch(0.209 0.01 268.18);
   --line-height-card-content-line-height: 1.5;
-  --color-checkbox-border-color: oklch(0.786 0.004 271.11);
+  --color-checkbox-border-color: oklch(0.613 0.005 258.45);
   --color-checkbox-checked-background: oklch(0.546 0.215 262.9);
   --color-checkbox-checked-text: oklch(0.991 0.003 264.45);
   --color-checkbox-checked-border: oklch(0.546 0.215 262.9);
