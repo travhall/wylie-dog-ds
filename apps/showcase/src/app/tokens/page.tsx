@@ -82,7 +82,7 @@ export default function TokensPage() {
               <h1 className="font-serif text-5xl sm:text-6xl lg:text-[5rem] font-semibold tracking-tight leading-[0.96] text-(--color-foreground-default)">
                 The contract <br />
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   everything
                 </span>{" "}
@@ -235,7 +235,7 @@ export default function TokensPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 OKLCH means the ramp{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   is
                 </span>{" "}
@@ -598,7 +598,7 @@ export default function TokensPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 A pairing that ships{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   long-form
                 </span>
@@ -672,7 +672,7 @@ export default function TokensPage() {
                     style={{
                       background:
                         "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
-                      color: "var(--color-primary-background-default)",
+                      color: "var(--color-primary-foreground-subtle)",
                     }}
                   >
                     Engineering
@@ -774,7 +774,7 @@ export default function TokensPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 One scale. Three densities.{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   Same data.
                 </span>
@@ -890,7 +890,7 @@ export default function TokensPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 Five corners.{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   Every surface
                 </span>{" "}
@@ -1092,7 +1092,7 @@ export default function TokensPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 {Object.keys(manifest.semantics.shadow).length} shadow steps —{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   one
                 </span>{" "}
@@ -1298,7 +1298,7 @@ export default function TokensPage() {
                 {Object.keys(manifest.semantics.easing).length} curves and{" "}
                 {Object.keys(manifest.semantics.duration).length} durations{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   cover everything.
                 </span>

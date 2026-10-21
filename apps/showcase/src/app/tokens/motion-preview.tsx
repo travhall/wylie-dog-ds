@@ -54,7 +54,7 @@ export function MotionPreview() {
             style={
               curveIdx === i
                 ? {
-                    borderColor: "var(--color-primary-background-default)",
+                    borderColor: "var(--color-primary-border-default)",
                     background:
                       "color-mix(in oklch, var(--color-primary-background-default) 6%, var(--color-background-default))",
                   }
@@ -105,7 +105,7 @@ export function MotionPreview() {
               <path
                 d={curve.path}
                 fill="none"
-                stroke="var(--color-primary-background-default)"
+                stroke="var(--color-primary-border-default)"
                 strokeWidth="1.5"
               />
             </svg>
@@ -115,7 +115,7 @@ export function MotionPreview() {
               </p>
               <p
                 className="font-mono text-[10px]"
-                style={{ color: "var(--color-primary-background-default)" }}
+                style={{ color: "var(--color-primary-foreground-subtle)" }}
               >
                 cubic-bezier({curve.bezier})
               </p>

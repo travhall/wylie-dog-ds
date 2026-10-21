@@ -216,7 +216,7 @@ export const MediaControls: Story = {
             pressed={muted}
             onPressedChange={setMuted}
             aria-label="Toggle speaker mute"
-            className="text-(--color-inverse-foreground-default) data-[state=on]:bg-(--color-danger-background-default)"
+            className="text-(--color-inverse-foreground-default) data-[state=on]:bg-(--color-danger-background-default) data-[state=on]:text-(--color-danger-foreground-default)"
           >
             {muted ? (
               <VolumeXIcon className="h-4 w-4" />
@@ -228,7 +228,7 @@ export const MediaControls: Story = {
             pressed={micMuted}
             onPressedChange={setMicMuted}
             aria-label="Toggle microphone mute"
-            className="text-(--color-inverse-foreground-default) data-[state=on]:bg-(--color-danger-background-default)"
+            className="text-(--color-inverse-foreground-default) data-[state=on]:bg-(--color-danger-background-default) data-[state=on]:text-(--color-danger-foreground-default)"
           >
             {micMuted ? (
               <MicOffIcon className="h-4 w-4" />

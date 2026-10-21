@@ -287,7 +287,7 @@ export const LandingPage: Story = {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <span className="text-xl font-bold text-(--color-primary-background-default)">
+              <span className="text-xl font-bold text-(--color-primary-foreground-subtle)">
                 WylieDog
               </span>
             </div>
@@ -311,7 +311,7 @@ export const LandingPage: Story = {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-(--color-foreground-default) mb-6">
             Build Better
-            <span className="text-(--color-primary-background-default)">
+            <span className="text-(--color-primary-foreground-subtle)">
               {" "}
               Design Systems
             </span>
@@ -472,7 +472,7 @@ export const UserProfile: Story = {
                 ].map((project, index) => (
                   <div
                     key={index}
-                    className="border-l-4 border-(--color-primary-background-default) pl-4"
+                    className="border-l-4 border-(--color-primary-border-default) pl-4"
                   >
                     <h4 className="font-semibold">{project.name}</h4>
                     <p className="text-sm text-(--color-foreground-faint) mb-1">

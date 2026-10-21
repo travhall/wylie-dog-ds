@@ -426,6 +426,15 @@
           },
           "$description": "Subtle primary tint (focus and selection fills); pairs with color.primary.foreground.subtle"
         },
+        "color.primary.border.default": {
+          "$type": "color",
+          "$value": "{color.blue.600}",
+          "valuesByMode": {
+            "Light": "{color.blue.600}",
+            "Dark": "{color.blue.600}"
+          },
+          "$description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page"
+        },
         "color.background.default.disabled": {
           "$type": "color",
           "$value": "{color.gray.100}",

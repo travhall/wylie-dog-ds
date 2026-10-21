@@ -42,7 +42,7 @@ export default function ColorsPage() {
       headline={
         <>
           OKLCH means the ramp{" "}
-          <span className="text-(--color-primary-background-default)">is</span>{" "}
+          <span className="text-(--color-primary-foreground-subtle)">is</span>{" "}
           the math.
         </>
       }

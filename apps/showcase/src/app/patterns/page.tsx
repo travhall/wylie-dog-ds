@@ -26,7 +26,7 @@ function PatCard({
 }) {
   return (
     <article
-      className={`rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden flex flex-col hover:border-(--color-primary-background-default) transition-all${full ? " md:col-span-2" : ""}`}
+      className={`rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden flex flex-col hover:border-(--color-primary-border-default) transition-all${full ? " md:col-span-2" : ""}`}
       style={{ boxShadow: "var(--shadow-sm)" }}
     >
       <div
@@ -57,7 +57,7 @@ function PatCard({
             href={`https://wyliedogstorybook.com/?path=${getPatternDocsPath(story) ?? "/"}`}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-[10px] text-(--color-foreground-faint) hover:text-(--color-primary-background-default) transition-colors"
+            className="font-mono text-[10px] text-(--color-foreground-faint) hover:text-(--color-primary-foreground-subtle) transition-colors"
           >
             Storybook ↗
           </a>
@@ -153,9 +153,7 @@ export default function PatternsPage() {
 
             <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98] text-(--color-foreground-default)">
               Complete UI solutions,{" "}
-              <span
-                style={{ color: "var(--color-primary-background-default)" }}
-              >
+              <span style={{ color: "var(--color-primary-foreground-subtle)" }}>
                 not just components.
               </span>
             </h1>
@@ -239,14 +237,14 @@ export default function PatternsPage() {
             <div
               className="rounded-xl border-2 p-5 grow"
               style={{
-                borderColor: "var(--color-primary-background-default)",
+                borderColor: "var(--color-primary-border-default)",
                 background:
                   "color-mix(in oklch, var(--color-primary-background-default) 6%, var(--color-background-default))",
               }}
             >
               <p
                 className="font-mono text-[10px] uppercase tracking-wider"
-                style={{ color: "var(--color-primary-background-default)" }}
+                style={{ color: "var(--color-primary-foreground-subtle)" }}
               >
                 composed into
               </p>
@@ -423,7 +421,7 @@ export default function PatternsPage() {
                         <a
                           className="font-mono text-[9px]"
                           style={{
-                            color: "var(--color-primary-background-default)",
+                            color: "var(--color-primary-foreground-subtle)",
                           }}
                         >
                           Forgot?
@@ -496,7 +494,7 @@ export default function PatternsPage() {
                     <span
                       className="font-medium"
                       style={{
-                        color: "var(--color-primary-background-default)",
+                        color: "var(--color-primary-foreground-subtle)",
                       }}
                     >
                       Create one
@@ -727,7 +725,7 @@ export default function PatternsPage() {
                 <div className="grid grid-cols-2 gap-2 max-w-105 mx-auto">
                   {[
                     {
-                      color: "var(--color-primary-background-default)",
+                      color: "var(--color-primary-foreground-subtle)",
                       icon: "M13 2 3 14h9l-1 8 10-12h-9z",
                       title: "Lightning fast",
                       sub: "Edge-rendered. 38ms p95.",
@@ -1245,7 +1243,7 @@ export default function PatternsPage() {
                         style={{
                           background:
                             "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
-                          color: "var(--color-primary-background-default)",
+                          color: "var(--color-primary-foreground-subtle)",
                         }}
                       >
                         <span
@@ -1624,7 +1622,7 @@ export default function PatternsPage() {
                   <div className="mt-3 space-y-2">
                     {[
                       {
-                        color: "var(--color-primary-background-default)",
+                        color: "var(--color-primary-foreground-subtle)",
                         label: "Token-driven",
                         sub: "Change one variable, every surface updates.",
                       },
@@ -1980,8 +1978,7 @@ export default function PatternsPage() {
                       <div
                         className="flex items-center h-7 border rounded-md px-2 text-[11px] text-(--color-foreground-faint)"
                         style={{
-                          borderColor:
-                            "var(--color-primary-background-default)",
+                          borderColor: "var(--color-primary-border-default)",
                           boxShadow:
                             "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
                         }}
@@ -2059,7 +2056,7 @@ export default function PatternsPage() {
                         style={{
                           background:
                             "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
-                          color: "var(--color-primary-background-default)",
+                          color: "var(--color-primary-foreground-subtle)",
                         }}
                       >
                         <span>Option one</span>
@@ -2096,7 +2093,7 @@ export default function PatternsPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight leading-[1.05] text-(--color-foreground-default)">
                 A component is a primitive.{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   A pattern is a decision.
                 </span>
@@ -2113,7 +2110,7 @@ export default function PatternsPage() {
               {[
                 {
                   num: "01",
-                  color: "var(--color-primary-background-default)",
+                  color: "var(--color-primary-foreground-subtle)",
                   title: "Use a pattern when the answer is already known.",
                   body: "Sign-in flows, error boundaries, responsive sidebars — these have all been designed before. Reach for the pattern; spend your novelty budget on the product, not the plumbing.",
                   tokenFlow: false,
@@ -2188,8 +2185,7 @@ export default function PatternsPage() {
                             <span
                               className="font-mono text-[10px]"
                               style={{
-                                color:
-                                  "var(--color-primary-background-default)",
+                                color: "var(--color-primary-foreground-subtle)",
                               }}
                             >
                               patterns

@@ -42,7 +42,7 @@ export default function MotionPage() {
       headline={
         <>
           {easing.length} curves and {semanticDuration.length} durations{" "}
-          <span className="text-(--color-primary-background-default)">
+          <span className="text-(--color-primary-foreground-subtle)">
             cover everything.
           </span>
         </>

@@ -112,7 +112,7 @@ export const UserProfile: Story = {
             <HoverCardContent className="w-80">
               <div className="flex space-x-4">
                 <Avatar>
-                  <div className="bg-(--color-primary-background-default) text-(--color-inverse-foreground-default) flex items-center justify-center w-full h-full text-sm font-bold">
+                  <div className="bg-(--color-primary-background-default) text-(--color-primary-foreground-default) flex items-center justify-center w-full h-full text-sm font-bold">
                     SC
                   </div>
                 </Avatar>
@@ -156,7 +156,7 @@ export const UserProfile: Story = {
             <HoverCardContent className="w-80">
               <div className="flex space-x-4">
                 <Avatar>
-                  <div className="bg-(--color-primary-background-default) text-(--color-inverse-foreground-default) flex items-center justify-center w-full h-full text-sm font-bold">
+                  <div className="bg-(--color-primary-background-default) text-(--color-primary-foreground-default) flex items-center justify-center w-full h-full text-sm font-bold">
                     AR
                   </div>
                 </Avatar>
@@ -576,7 +576,7 @@ export const WithInteractions: Story = {
         <HoverCardContent className="w-80">
           <div className="flex justify-between space-x-4">
             <Avatar>
-              <div className="bg-(--color-primary-background-default) text-(--color-inverse-foreground-default) flex items-center justify-center w-full h-full text-sm font-bold">
+              <div className="bg-(--color-primary-background-default) text-(--color-primary-foreground-default) flex items-center justify-center w-full h-full text-sm font-bold">
                 TC
               </div>
             </Avatar>

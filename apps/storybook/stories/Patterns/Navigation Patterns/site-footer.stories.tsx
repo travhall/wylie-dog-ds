@@ -115,7 +115,7 @@ const defaultSocialLinks = [
 
 const defaultLogo = (
   <div className="flex items-center space-x-2">
-    <Heart className="h-6 w-6 text-(--color-primary-background-default)" />
+    <Heart className="h-6 w-6 text-(--color-primary-foreground-subtle)" />
     <span className="text-xl font-bold">Wylie Dog</span>
   </div>
 );

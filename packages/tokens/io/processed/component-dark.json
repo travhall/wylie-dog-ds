@@ -3172,7 +3172,7 @@
   },
   "feature-grid.item.border-color-hover": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.primary.border.default}"
   },
   "input.padding-y.sm": {
     "$type": "spacing",

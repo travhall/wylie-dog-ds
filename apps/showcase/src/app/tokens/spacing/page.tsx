@@ -29,7 +29,7 @@ export default function SpacingPage() {
       headline={
         <>
           One scale. Three densities.{" "}
-          <span className="text-(--color-primary-background-default)">
+          <span className="text-(--color-primary-foreground-subtle)">
             Same data.
           </span>
         </>

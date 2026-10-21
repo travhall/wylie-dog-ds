@@ -39,7 +39,7 @@ export default function ElevationPage() {
       headline={
         <>
           {shadows.length} shadow steps —{" "}
-          <span className="text-(--color-primary-background-default)">one</span>{" "}
+          <span className="text-(--color-primary-foreground-subtle)">one</span>{" "}
           stacking story.
         </>
       }
