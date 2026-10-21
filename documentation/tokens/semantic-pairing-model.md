@@ -61,7 +61,7 @@ Role fills and states are the same grammar, for example `color.danger.background
 
 1. Declare pairs and check them in CI (done, see below).
 2. Fix the failures the check lists (done, see "Contrast fixes").
-3. Align the colour ramps by lightness so that "fill step, foreground step" holds across hues (the ramps are not aligned today: step 600 has an OKLCH lightness of 0.52 for gray, 0.55 for blue, 0.65 for orange and 0.69 for yellow).
+3. Align the colour ramps by lightness so that "fill step, foreground step" holds across hues (done on 2026-10-21, see "Ramp alignment" below).
 4. Rename to the grammar above, using the mapping table (done on 2026-10-20, before step 3; the ramps are still unaligned).
 
 ## Contrast fixes (2026-10-20)
@@ -77,9 +77,20 @@ The 16 failures the check found were fixed with the least invasive change that k
 
 Control boundaries were added to the contract the same day, and the same new border token fixed the checkbox border, the radio border and the unchecked switch track (it was 1.12:1 against the page in Light). Declared boundaries are those that are the only visual edge of a control with no text label (input, checkbox, radio, switch, slider) plus focus indicators; controls with a text label (outline button, toggle) are not declared because the label identifies them. The slider's unfilled track is not required to reach 3:1 because the value is carried by the thumb and the filled range, which are declared.
 
+## Ramp alignment (2026-10-21)
+
+Before: the step that first reached 4.5:1 with the light foreground (gray 50) was 600 for blue, red, purple and gray, 700 for green, orange and pink, and 800 for yellow. At step 600 the OKLCH lightness ran from 0.52 (gray) to 0.69 (yellow). A role could not change hue and keep its step.
+
+Now: the seven chromatic palettes (blue, green, orange, red, purple, pink, yellow) share blue's lightness at every step, with each palette's own hue and chroma (chroma clamped to the sRGB gamut where the lightness left no room). Gray stays the neutral scale and the five named palettes (polar-night, fiery-coral, sandcastle, petrified-wood, black-bear) are unchanged; no semantic token uses them.
+
+- **Chroma kept:** 100 percent for blue, red and purple; about 90 percent at the middle steps for green and orange; about 85 to 90 percent for pink at 700 to 950; 80 to 90 percent for yellow at 400 to 950.
+- **Exception:** green 600 is 0.003 lighter than the curve asks (0.543 against 0.546) because at exactly 0.546 it measured 4.49:1 on gray 50. OKLCH lightness is not WCAG luminance, so equal lightness gives slightly different contrast per hue.
+- **Guard:** `pnpm check:contrast` fails if any aligned palette drifts more than 0.005 from blue's lightness at any step (the `alignedRamps` block in `scripts/contrast-pairs.json`), and it declares gray 50 on the 600 step of every chromatic hue as a text pair.
+- **What did not change:** which step each semantic token uses. Primary and danger fills are step 600, success and warning fills are step 700. With aligned ramps all four could use 600; that is a separate design decision.
+
 ## What exists today
 
-`pnpm check:contrast` reads `scripts/contrast-pairs.json` (128 declared foregrounds, 352 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
+`pnpm check:contrast` reads `scripts/contrast-pairs.json` (129 declared foregrounds, 366 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
 
 ## Case study
 

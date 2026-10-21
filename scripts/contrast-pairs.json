@@ -747,7 +747,27 @@
       "foreground": "form.required.color",
       "backgrounds": ["color.background.default"],
       "kind": "text"
+    },
+    {
+      "foreground": "color.gray.50",
+      "backgrounds": [
+        "color.blue.600",
+        "color.green.600",
+        "color.orange.600",
+        "color.red.600",
+        "color.purple.600",
+        "color.pink.600",
+        "color.yellow.600"
+      ],
+      "kind": "text",
+      "note": "Aligned ramps: the 600 step of every chromatic hue takes light text, so a role can change hue without changing its step."
     }
   ],
-  "knownFailures": []
+  "knownFailures": [],
+  "alignedRamps": {
+    "reference": "blue",
+    "palettes": ["green", "orange", "red", "purple", "pink", "yellow"],
+    "tolerance": 0.005,
+    "note": "Each palette keeps its hue and chroma but shares the reference palette lightness at every step (see semantic-pairing-model.md, ramp alignment)."
+  }
 }

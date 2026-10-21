@@ -139,6 +139,33 @@ for (const entry of config.pairs) {
   }
 }
 
+// Aligned ramps: every listed palette shares the reference palette's OKLCH
+// lightness at each step (hue and chroma differ), so the same step means the
+// same contrast in every hue.
+if (config.alignedRamps) {
+  const { reference, palettes, tolerance } = config.alignedRamps;
+  const lightness = (css) => {
+    const m = /^oklch\(\s*([\d.]+)(%?)/i.exec(css);
+    return m[2] ? parseFloat(m[1]) / 100 : parseFloat(m[1]);
+  };
+  const referencePattern = new RegExp(`^color\\.${reference}\\.(\\d+)$`);
+  const steps = Object.keys(tokens)
+    .map((name) => referencePattern.exec(name)?.[1])
+    .filter(Boolean);
+  for (const step of steps) {
+    const target = lightness(resolve(`color.${reference}.${step}`, MODES[0]));
+    for (const palette of palettes) {
+      const name = `color.${palette}.${step}`;
+      const actual = lightness(resolve(name, MODES[0]));
+      if (Math.abs(actual - target) > tolerance) {
+        problems.push(
+          `${name} has lightness ${actual.toFixed(3)}; aligned ramps need ${target.toFixed(3)} (like color.${reference}.${step})`
+        );
+      }
+    }
+  }
+}
+
 const isKnown = (r) =>
   config.knownFailures.find(
     (k) =>
