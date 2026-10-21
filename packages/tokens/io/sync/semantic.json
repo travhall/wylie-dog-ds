@@ -73,7 +73,7 @@
             "Light": "{color.gray.950}",
             "Dark": "{color.gray.950}"
           },
-          "$description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque"
+          "$description": "Scrim colour behind a modal or sheet; applied at opacity.scrim (0.9), never fully opaque"
         },
         "color.success.background.subtle": {
           "$type": "color",
@@ -824,10 +824,10 @@
         },
         "opacity.scrim": {
           "$type": "number",
-          "$value": "{opacity.80}",
+          "$value": "{opacity.90}",
           "valuesByMode": {
-            "Light": "{opacity.80}",
-            "Dark": "{opacity.80}"
+            "Light": "{opacity.90}",
+            "Dark": "{opacity.90}"
           },
           "$description": "Heavy scrim opacity for modal backdrops"
         },

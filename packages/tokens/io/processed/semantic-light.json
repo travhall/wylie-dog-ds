@@ -32,7 +32,7 @@
   "color.background.overlay": {
     "$type": "color",
     "$value": "{color.gray.950}",
-    "$description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque"
+    "$description": "Scrim colour behind a modal or sheet; applied at opacity.scrim (0.9), never fully opaque"
   },
   "color.success.background.subtle": {
     "$type": "color",
@@ -451,7 +451,7 @@
   },
   "opacity.scrim": {
     "$type": "number",
-    "$value": "{opacity.80}",
+    "$value": "{opacity.90}",
     "$description": "Heavy scrim opacity for modal backdrops"
   },
   "typography.font-size.display.lg": {

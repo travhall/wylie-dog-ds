@@ -2644,7 +2644,7 @@
         "value": "oklch(0.149 0.012 259.72)",
         "type": "color",
         "variable": "var(--color-background-overlay)",
-        "description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque"
+        "description": "Scrim colour behind a modal or sheet; applied at opacity.scrim (0.9), never fully opaque"
       },
       "color-background-subtle-active": {
         "name": "colorBackgroundSubtleActive",
