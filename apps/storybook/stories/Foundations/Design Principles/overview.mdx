@@ -108,8 +108,8 @@ Users build mental models of your interface. Consistency helps them predict how 
 ```tsx
 // Clear prop names and TypeScript autocomplete
 <Button
-  variant="default"  // default | secondary | outline | ghost | link | destructive
-  size="lg"          // default | sm | md | lg | icon
+  variant="default" // default | secondary | outline | ghost | link | destructive
+  size="lg" // default | sm | md | lg | icon
   disabled={false}
 >
   Submit
@@ -184,12 +184,14 @@ Handle errors and edge cases elegantly.
 <Input
   aria-invalid={hasError}
   aria-describedby={hasError ? "error-message" : undefined}
-/>
-{hasError && (
-  <p id="error-message" className="text-(--color-text-danger)">
-    Please enter a valid email
-  </p>
-)}
+/>;
+{
+  hasError && (
+    <p id="error-message" className="text-(--color-danger-foreground-subtle)">
+      Please enter a valid email
+    </p>
+  );
+}
 ```
 
 ---

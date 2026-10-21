@@ -111,7 +111,7 @@ export const WithCards: Story = {
             <CardTitle>Overview</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-text-tertiary)">
+            <p className="text-sm text-(--color-foreground-faint)">
               This is the overview tab content. Here you can see a summary of
               your account.
             </p>
@@ -125,7 +125,7 @@ export const WithCards: Story = {
             <CardTitle>Analytics</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-text-tertiary)">
+            <p className="text-sm text-(--color-foreground-faint)">
               View your analytics and performance metrics here.
             </p>
           </CardContent>
@@ -138,7 +138,7 @@ export const WithCards: Story = {
             <CardTitle>Reports</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-text-tertiary)">
+            <p className="text-sm text-(--color-foreground-faint)">
               Generate and download reports from this section.
             </p>
           </CardContent>
@@ -151,7 +151,7 @@ export const WithCards: Story = {
             <CardTitle>Notifications</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-(--color-text-tertiary)">
+            <p className="text-sm text-(--color-foreground-faint)">
               Manage your notification preferences here.
             </p>
           </CardContent>
@@ -288,7 +288,7 @@ export const Sizes: Story = {
   render: () => (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-(--color-text-tertiary)">
+        <h3 className="text-sm font-medium text-(--color-foreground-faint)">
           Small (sm)
         </h3>
         <Tabs defaultValue="tab1" className="w-[425px]">
@@ -310,7 +310,7 @@ export const Sizes: Story = {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-(--color-text-tertiary)">
+        <h3 className="text-sm font-medium text-(--color-foreground-faint)">
           Medium (md) - Default
         </h3>
         <Tabs defaultValue="tab1" className="w-[425px]">
@@ -332,7 +332,7 @@ export const Sizes: Story = {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="text-sm font-medium text-(--color-text-tertiary)">
+        <h3 className="text-sm font-medium text-(--color-foreground-faint)">
           Large (lg)
         </h3>
         <Tabs defaultValue="tab1" className="w-[425px]">

@@ -68,7 +68,7 @@ const value = tokens["color.blue.500"];
 Tokens are automatically available as utilities via `@theme`:
 
 ```html
-<div class="bg-(--color-background-primary) text-(--color-text-primary)">
+<div class="bg-(--color-background-default) text-(--color-foreground-default)">
   Content
 </div>
 ```

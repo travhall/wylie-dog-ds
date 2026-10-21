@@ -331,9 +331,9 @@ Always use semantic color tokens, never hardcoded colors:
 
 ```typescript
 // ✅ Correct - Semantic tokens
-<p className="text-(--color-text-secondary)">Description</p>
-<div className="border-(--color-border-primary)">Content</div>
-<span className="text-(--color-text-success)">Success</span>
+<p className="text-(--color-foreground-muted)">Description</p>
+<div className="border-(--color-border-default)">Content</div>
+<span className="text-(--color-success-foreground-subtle)">Success</span>
 
 // ✅ Also acceptable - Tailwind semantic classes
 <p className="text-muted-foreground">Description</p>
@@ -345,18 +345,18 @@ Always use semantic color tokens, never hardcoded colors:
 
 ### Common Token Mappings
 
-| Purpose              | Token                               | Tailwind Alternative    |
-| -------------------- | ----------------------------------- | ----------------------- |
-| Primary text         | `text-(--color-text-primary)`       | `text-foreground`       |
-| Secondary text       | `text-(--color-text-secondary)`     | `text-muted-foreground` |
-| Tertiary text        | `text-(--color-text-tertiary)`      | -                       |
-| Primary border       | `border-(--color-border-primary)`   | `border-border`         |
-| Secondary border     | `border-(--color-border-secondary)` | -                       |
-| Primary background   | `bg-(--color-background-primary)`   | `bg-background`         |
-| Secondary background | `bg-(--color-background-secondary)` | `bg-muted`              |
-| Success              | `text-(--color-text-success)`       | -                       |
-| Warning              | `text-(--color-text-warning)`       | -                       |
-| Error/Danger         | `text-(--color-text-danger)`        | `text-destructive`      |
+| Purpose              | Token                                      | Tailwind Alternative    |
+| -------------------- | ------------------------------------------ | ----------------------- |
+| Primary text         | `text-(--color-foreground-default)`        | `text-foreground`       |
+| Secondary text       | `text-(--color-foreground-muted)`          | `text-muted-foreground` |
+| Tertiary text        | `text-(--color-foreground-faint)`          | -                       |
+| Primary border       | `border-(--color-border-default)`          | `border-border`         |
+| Secondary border     | `border-(--color-border-subtle)`           | -                       |
+| Primary background   | `bg-(--color-background-default)`          | `bg-background`         |
+| Secondary background | `bg-(--color-background-subtle)`           | `bg-muted`              |
+| Success              | `text-(--color-success-foreground-subtle)` | -                       |
+| Warning              | `text-(--color-warning-foreground-subtle)` | -                       |
+| Error/Danger         | `text-(--color-danger-foreground-subtle)`  | `text-destructive`      |
 
 ---
 

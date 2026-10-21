@@ -83,7 +83,7 @@ Location: `packages/tokens/io/sync/components.json`
       "default": {
         "background": {
           "$type": "color",
-          "$value": "{color.interactive.primary}"
+          "$value": "{color.primary.background.default}"
         }
       }
     }
@@ -196,14 +196,14 @@ The generated output looks like:
 ```css
 /* dist/semantic-light.css */
 :root {
-  --color-background-primary: oklch(1 0 0);
-  --color-text-primary: oklch(0.208 0.04 265.75);
+  --color-background-default: oklch(1 0 0);
+  --color-foreground-default: oklch(0.208 0.04 265.75);
 }
 
 /* dist/semantic-dark.css */
 .dark {
-  --color-background-primary: oklch(0.208 0.04 265.75);
-  --color-text-primary: oklch(0.984 0.003 247.86);
+  --color-background-default: oklch(0.208 0.04 265.75);
+  --color-foreground-default: oklch(0.984 0.003 247.86);
 }
 ```
 
@@ -222,11 +222,11 @@ To add or update dark mode values, update the Variable mode in Figma, export via
 **Colors:**
 
 ```
-color.background.primary
+color.background.default
 color.background.primary.hover
-color.text.secondary
+color.foreground.muted
 color.border.input.focus
-color.interactive.primary
+color.primary.background.default
 ```
 
 **Typography:**
@@ -250,7 +250,7 @@ space.layout.section.lg
 
 ✅ **Do:**
 
-- Use semantic names: `color.background.primary` (not `color.blue.500`)
+- Use semantic names: `color.background.default` (not `color.blue.500`)
 - Be specific: `space.button.padding.x` (not `spacing.4`)
 - Follow hierarchy: primitive → semantic → component
 - Match Figma Variable names exactly for consistent export/import
@@ -351,7 +351,7 @@ pnpm --filter @wyliedog/tokens audit:verbose
    "$value": "{color.interactve.primary}"
 
    // ✅ Correct
-   "$value": "{color.interactive.primary}"
+   "$value": "{color.primary.background.default}"
    ```
 
 2. Ensure token hierarchy is correct (component → semantic → primitive)
@@ -366,7 +366,7 @@ pnpm --filter @wyliedog/tokens audit:verbose
 
 1. Verify the `.dark` class is applied to `<html>`, not `<body>`
 2. Confirm `@wyliedog/ui/styles` is imported — it bundles both light and dark CSS
-3. Use browser DevTools to inspect computed values for `--color-background-primary`
+3. Use browser DevTools to inspect computed values for `--color-background-default`
 
 ### Issue: Build Fails After Token Changes
 
@@ -390,7 +390,7 @@ pnpm --filter @wyliedog/tokens audit:verbose
 <div style={{ color: '#3B82F6', padding: '16px' }}>
 
 // ✅ Good — Design tokens via Tailwind v4 CSS variable syntax
-<div className="text-(--color-text-primary) p-(--space-200)">
+<div className="text-(--color-foreground-default) p-(--space-200)">
 ```
 
 ### 2. Respect the Hierarchy

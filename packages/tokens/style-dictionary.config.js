@@ -201,7 +201,7 @@ function generateCSSVariable(token, name) {
 //   `static` too.
 //
 // Tier 2 — Semantic (`@theme static`):
-//   Themeable tokens (--color-background-primary, --color-text-primary).
+//   Themeable tokens (--color-background-default, --color-foreground-default).
 //   Emitted as @theme (no `inline`) so generated utilities reference the var
 //   via var(--...), allowing .dark overrides to flow through at runtime.
 //   Must use `static` — a plain `@theme` block only survives Tailwind v4's

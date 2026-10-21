@@ -42,7 +42,7 @@ export default function MotionPage() {
       headline={
         <>
           {easing.length} curves and {semanticDuration.length} durations{" "}
-          <span className="text-(--color-interactive-primary)">
+          <span className="text-(--color-primary-background-default)">
             cover everything.
           </span>
         </>
@@ -50,27 +50,27 @@ export default function MotionPage() {
       description={`Every easing curve and duration token, in full — plus the raw ${primitiveDuration.length}-step duration scale they're built from.`}
     >
       <section className="space-y-4">
-        <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+        <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
           Easing
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {easing.map((e) => (
             <div
               key={e.key}
-              className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5"
+              className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5"
             >
-              <p className="font-semibold text-sm text-(--color-text-primary) capitalize">
+              <p className="font-semibold text-sm text-(--color-foreground-default) capitalize">
                 {e.name}
               </p>
               {e.description ? (
-                <p className="mt-1 text-[11px] text-(--color-text-tertiary) leading-relaxed">
+                <p className="mt-1 text-[11px] text-(--color-foreground-faint) leading-relaxed">
                   {e.description}
                 </p>
               ) : null}
-              <p className="mt-3 font-mono text-[10px] text-(--color-text-secondary) break-all">
+              <p className="mt-3 font-mono text-[10px] text-(--color-foreground-muted) break-all">
                 {e.value}
               </p>
-              <p className="mt-1 font-mono text-[10px] text-(--color-text-tertiary)">
+              <p className="mt-1 font-mono text-[10px] text-(--color-foreground-faint)">
                 {e.variable}
               </p>
             </div>
@@ -79,23 +79,23 @@ export default function MotionPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+        <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
           Semantic durations
         </h2>
-        <div className="overflow-x-auto rounded-xl border border-(--color-border-primary)">
+        <div className="overflow-x-auto rounded-xl border border-(--color-border-default)">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-(--color-border-primary) bg-(--color-background-secondary)">
-                <th className="px-4 py-2 text-left font-semibold text-(--color-text-primary)">
+              <tr className="border-b border-(--color-border-default) bg-(--color-background-subtle)">
+                <th className="px-4 py-2 text-left font-semibold text-(--color-foreground-default)">
                   Name
                 </th>
-                <th className="px-4 py-2 text-left font-semibold text-(--color-text-primary)">
+                <th className="px-4 py-2 text-left font-semibold text-(--color-foreground-default)">
                   Value
                 </th>
-                <th className="px-4 py-2 text-left font-semibold text-(--color-text-primary)">
+                <th className="px-4 py-2 text-left font-semibold text-(--color-foreground-default)">
                   Variable
                 </th>
-                <th className="px-4 py-2 text-left font-semibold text-(--color-text-primary)">
+                <th className="px-4 py-2 text-left font-semibold text-(--color-foreground-default)">
                   Description
                 </th>
               </tr>
@@ -104,18 +104,18 @@ export default function MotionPage() {
               {semanticDuration.map((d) => (
                 <tr
                   key={d.key}
-                  className="border-b border-(--color-border-primary) last:border-0"
+                  className="border-b border-(--color-border-default) last:border-0"
                 >
-                  <td className="px-4 py-2 font-medium text-(--color-text-primary) capitalize">
+                  <td className="px-4 py-2 font-medium text-(--color-foreground-default) capitalize">
                     {d.name}
                   </td>
-                  <td className="px-4 py-2 font-mono text-xs text-(--color-text-secondary)">
+                  <td className="px-4 py-2 font-mono text-xs text-(--color-foreground-muted)">
                     {d.value}
                   </td>
-                  <td className="px-4 py-2 font-mono text-xs text-(--color-text-tertiary)">
+                  <td className="px-4 py-2 font-mono text-xs text-(--color-foreground-faint)">
                     {d.variable}
                   </td>
-                  <td className="px-4 py-2 text-xs text-(--color-text-tertiary)">
+                  <td className="px-4 py-2 text-xs text-(--color-foreground-faint)">
                     {d.description}
                   </td>
                 </tr>
@@ -126,19 +126,19 @@ export default function MotionPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+        <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
           Raw duration scale
         </h2>
         <div className="flex flex-wrap gap-3">
           {primitiveDuration.map((d) => (
             <div
               key={d.key}
-              className="rounded-lg border border-(--color-border-primary) bg-(--color-background-primary) px-3 py-2"
+              className="rounded-lg border border-(--color-border-default) bg-(--color-background-default) px-3 py-2"
             >
-              <p className="font-mono text-xs text-(--color-text-primary)">
+              <p className="font-mono text-xs text-(--color-foreground-default)">
                 {d.value}
               </p>
-              <p className="font-mono text-[10px] text-(--color-text-tertiary)">
+              <p className="font-mono text-[10px] text-(--color-foreground-faint)">
                 {d.variable}
               </p>
             </div>
@@ -147,7 +147,7 @@ export default function MotionPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+        <h2 className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
           Try it
         </h2>
         <MotionPreview />

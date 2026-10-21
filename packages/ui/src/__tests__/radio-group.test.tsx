@@ -396,7 +396,7 @@ describe("RadioGroup", () => {
       expect(radios[0]).toHaveClass(
         "focus:outline-none",
         "focus:ring-(length:--space-radio-focus-ring-width)",
-        "focus:ring-(--color-border-focus)",
+        "focus:ring-(--color-focus-ring)",
         "focus:ring-offset-(length:--space-radio-focus-ring-offset)"
       );
     });

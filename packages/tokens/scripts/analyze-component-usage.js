@@ -71,9 +71,9 @@ class ComponentAnalyzer {
     const patterns = [
       // Legacy pattern: bg-[var(--color-button-secondary-background)]
       /\[var\(--([a-zA-Z0-9-]+)\)\]/g,
-      // Modern pattern: bg-(--color-background-primary)
+      // Modern pattern: bg-(--color-background-default)
       /\(--([a-zA-Z0-9-]+)\)/g,
-      // Direct CSS: style={{ color: 'var(--color-text-primary)' }}
+      // Direct CSS: style={{ color: 'var(--color-foreground-default)' }}
       /var\(--([a-zA-Z0-9-]+)\)/g,
     ];
 

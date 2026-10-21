@@ -57,7 +57,7 @@ const PaginationLink = ({
       "rounded-(--space-pagination-item-radius)",
       "text-(length:--font-size-pagination-item-font-size)",
       "hover:bg-(--color-pagination-background-hover) hover:text-(--color-pagination-text-hover)",
-      "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(--space-focus-ring-offset)",
+      "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-focus-ring) focus-visible:ring-offset-(--space-focus-ring-offset)",
       "disabled:pointer-events-none disabled:opacity-(--pagination-link-disabled-opacity)",
       isActive
         ? "bg-(--color-pagination-active) text-(--color-pagination-text-active)"
@@ -112,7 +112,7 @@ const PaginationEllipsis = ({
   <span
     aria-hidden
     className={cn(
-      "flex h-(--space-pagination-item-size) w-(--space-pagination-item-size) items-center justify-center text-(--color-text-secondary)",
+      "flex h-(--space-pagination-item-size) w-(--space-pagination-item-size) items-center justify-center text-(--color-foreground-muted)",
       className
     )}
     {...props}

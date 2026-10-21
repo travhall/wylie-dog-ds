@@ -7,11 +7,11 @@ const PLUGIN_SOURCE_URL =
   "https://github.com/travhall/wylie-dog-ds/tree/main/apps/figma-plugin";
 
 const SAMPLE_TOKENS = [
-  "--color-background-primary",
-  "--color-text-primary",
-  "--color-interactive-primary",
-  "--color-border-primary",
-  "--color-status-success",
+  "--color-background-default",
+  "--color-foreground-default",
+  "--color-primary-background-default",
+  "--color-border-default",
+  "--color-success-foreground-subtle",
 ];
 
 export default function PluginPage() {
@@ -93,31 +93,33 @@ export default function PluginPage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden border-b border-(--color-border-primary)">
+      <section className="relative overflow-hidden border-b border-(--color-border-default)">
         <div className="absolute inset-0 grid-bg opacity-60" />
         <div className="absolute inset-0 hero-gradient" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="grid md:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="md:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-primary) bg-(--color-background-primary)/60 px-3 py-1">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">
+              <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-muted)">
                   05 · Token Bridge
                 </span>
-                <span className="text-(--color-text-tertiary)">·</span>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <span className="text-(--color-foreground-faint)">·</span>
+                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                   v{meta.versions.plugin} · development build
                 </span>
               </div>
 
-              <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.5rem] font-semibold text-(--color-text-primary) tracking-tight leading-[0.98]">
+              <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.5rem] font-semibold text-(--color-foreground-default) tracking-tight leading-[0.98]">
                 Figma variables and{" "}
-                <span style={{ color: "var(--color-interactive-primary)" }}>
+                <span
+                  style={{ color: "var(--color-primary-background-default)" }}
+                >
                   the token files, in sync.
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg text-(--color-text-secondary)">
+              <p className="mt-6 max-w-xl text-lg text-(--color-foreground-muted)">
                 Token Bridge is a Figma plugin that pulls the token files in{" "}
                 <code className="font-mono text-base">@wyliedog/tokens</code>{" "}
                 into Figma Variables and pushes your edits back to GitHub,
@@ -139,25 +141,25 @@ export default function PluginPage() {
 
             <div className="md:col-span-5">
               <div className="glass rounded-2xl p-5 sm:p-6">
-                <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                   Collections it syncs
                 </p>
                 <ul className="mt-3 space-y-2">
                   {collections.map((c) => (
                     <li
                       key={c.name}
-                      className="flex items-center justify-between rounded-lg border border-(--color-border-primary) bg-(--color-background-primary) px-3 py-2"
+                      className="flex items-center justify-between rounded-lg border border-(--color-border-default) bg-(--color-background-default) px-3 py-2"
                     >
-                      <span className="font-mono text-xs text-(--color-text-primary)">
+                      <span className="font-mono text-xs text-(--color-foreground-default)">
                         {c.name}
                       </span>
-                      <span className="font-mono text-[11px] text-(--color-text-tertiary)">
+                      <span className="font-mono text-[11px] text-(--color-foreground-faint)">
                         {c.count} tokens · {c.modes}
                       </span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-3 font-mono text-[11px] text-(--color-text-tertiary)">
+                <p className="mt-3 font-mono text-[11px] text-(--color-foreground-faint)">
                   {meta.tokens.total.toLocaleString()} tokens total
                 </p>
               </div>
@@ -169,13 +171,13 @@ export default function PluginPage() {
       {/* ── How it works ── */}
       <section
         id="how"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary)"
+        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
             How it works
           </p>
-          <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-text-primary) tracking-tight">
+          <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-foreground-default) tracking-tight">
             Five steps from the repository to Figma and back
           </h2>
 
@@ -183,15 +185,15 @@ export default function PluginPage() {
             {steps.map((step) => (
               <li
                 key={step.num}
-                className="rounded-xl border border-(--color-border-primary) bg-(--color-surface-primary) p-5"
+                className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5"
               >
-                <span className="font-mono text-xs text-(--color-text-tertiary)">
+                <span className="font-mono text-xs text-(--color-foreground-faint)">
                   {step.num}
                 </span>
-                <h3 className="mt-1 font-semibold text-(--color-text-primary)">
+                <h3 className="mt-1 font-semibold text-(--color-foreground-default)">
                   {step.label}
                 </h3>
-                <p className="mt-2 text-sm text-(--color-text-secondary) leading-relaxed">
+                <p className="mt-2 text-sm text-(--color-foreground-muted) leading-relaxed">
                   {step.desc}
                 </p>
               </li>
@@ -201,32 +203,32 @@ export default function PluginPage() {
       </section>
 
       {/* ── What syncs ── */}
-      <section className="border-b border-(--color-border-primary)">
+      <section className="border-b border-(--color-border-default)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
             What syncs
           </p>
-          <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-text-primary) tracking-tight">
+          <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-foreground-default) tracking-tight">
             Three files, three collections
           </h2>
 
-          <div className="mt-8 overflow-x-auto rounded-xl border border-(--color-border-primary)">
+          <div className="mt-8 overflow-x-auto rounded-xl border border-(--color-border-default)">
             <table className="w-full text-sm">
-              <thead className="bg-(--color-background-secondary) text-left">
+              <thead className="bg-(--color-background-subtle) text-left">
                 <tr>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     File in packages/tokens/io/sync
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     Collection
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     Tokens
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     Modes
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     Holds
                   </th>
                 </tr>
@@ -235,21 +237,21 @@ export default function PluginPage() {
                 {collections.map((c) => (
                   <tr
                     key={c.name}
-                    className="border-t border-(--color-border-primary)"
+                    className="border-t border-(--color-border-default)"
                   >
-                    <td className="px-4 py-3 font-mono text-xs text-(--color-text-primary)">
+                    <td className="px-4 py-3 font-mono text-xs text-(--color-foreground-default)">
                       {c.file}
                     </td>
-                    <td className="px-4 py-3 font-mono text-xs text-(--color-text-primary)">
+                    <td className="px-4 py-3 font-mono text-xs text-(--color-foreground-default)">
                       {c.name}
                     </td>
-                    <td className="px-4 py-3 text-(--color-text-secondary)">
+                    <td className="px-4 py-3 text-(--color-foreground-muted)">
                       {c.count}
                     </td>
-                    <td className="px-4 py-3 text-(--color-text-secondary)">
+                    <td className="px-4 py-3 text-(--color-foreground-muted)">
                       {c.modes}
                     </td>
-                    <td className="px-4 py-3 text-(--color-text-secondary)">
+                    <td className="px-4 py-3 text-(--color-foreground-muted)">
                       {c.holds}
                     </td>
                   </tr>
@@ -261,30 +263,30 @@ export default function PluginPage() {
       </section>
 
       {/* ── Light and dark values ── */}
-      <section className="border-b border-(--color-border-primary) bg-(--color-background-secondary)">
+      <section className="border-b border-(--color-border-default) bg-(--color-background-subtle)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
             Light and dark
           </p>
-          <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-text-primary) tracking-tight">
+          <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-foreground-default) tracking-tight">
             Both modes live in the semantic collection
           </h2>
-          <p className="mt-3 max-w-2xl text-(--color-text-secondary)">
+          <p className="mt-3 max-w-2xl text-(--color-foreground-muted)">
             These values are read from the built token CSS, so this table
             changes when the tokens do.
           </p>
 
-          <div className="mt-8 overflow-x-auto rounded-xl border border-(--color-border-primary) bg-(--color-surface-primary)">
+          <div className="mt-8 overflow-x-auto rounded-xl border border-(--color-border-default) bg-(--color-background-default)">
             <table className="w-full text-sm">
               <thead className="text-left">
                 <tr>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     Token
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     Light
                   </th>
-                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     Dark
                   </th>
                 </tr>
@@ -295,19 +297,19 @@ export default function PluginPage() {
                   return (
                     <tr
                       key={token}
-                      className="border-t border-(--color-border-primary)"
+                      className="border-t border-(--color-border-default)"
                     >
-                      <td className="px-4 py-3 font-mono text-xs text-(--color-text-primary)">
+                      <td className="px-4 py-3 font-mono text-xs text-(--color-foreground-default)">
                         {token}
                       </td>
                       {[light, dark].map((value, i) => (
                         <td key={i} className="px-4 py-3">
                           <span className="inline-flex items-center gap-2">
                             <span
-                              className="h-4 w-4 rounded border border-(--color-border-primary)"
+                              className="h-4 w-4 rounded border border-(--color-border-default)"
                               style={{ background: value }}
                             />
-                            <span className="font-mono text-[11px] text-(--color-text-secondary)">
+                            <span className="font-mono text-[11px] text-(--color-foreground-muted)">
                               {value}
                             </span>
                           </span>
@@ -323,12 +325,12 @@ export default function PluginPage() {
       </section>
 
       {/* ── Guardrails ── */}
-      <section className="border-b border-(--color-border-primary)">
+      <section className="border-b border-(--color-border-default)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+          <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
             Worth knowing
           </p>
-          <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-text-primary) tracking-tight">
+          <h2 className="mt-2 font-serif text-3xl lg:text-4xl font-semibold text-(--color-foreground-default) tracking-tight">
             What it does and does not do
           </h2>
 
@@ -336,19 +338,19 @@ export default function PluginPage() {
             {guards.map((g) => (
               <div
                 key={g.title}
-                className="rounded-xl border border-(--color-border-primary) bg-(--color-surface-primary) p-5"
+                className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5"
               >
-                <dt className="font-semibold text-(--color-text-primary)">
+                <dt className="font-semibold text-(--color-foreground-default)">
                   {g.title}
                 </dt>
-                <dd className="mt-2 text-sm text-(--color-text-secondary) leading-relaxed">
+                <dd className="mt-2 text-sm text-(--color-foreground-muted) leading-relaxed">
                   {g.desc}
                 </dd>
               </div>
             ))}
           </dl>
 
-          <p className="mt-8 max-w-2xl text-sm text-(--color-text-secondary)">
+          <p className="mt-8 max-w-2xl text-sm text-(--color-foreground-muted)">
             GitHub is the only supported provider, and a personal access token
             is the only sign-in method.
           </p>
@@ -358,7 +360,7 @@ export default function PluginPage() {
       {/* ── CTA ── */}
       <section>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-center">
-          <h2 className="font-serif text-3xl lg:text-4xl font-semibold text-(--color-text-primary) tracking-tight">
+          <h2 className="font-serif text-3xl lg:text-4xl font-semibold text-(--color-foreground-default) tracking-tight">
             Keep design and code on the same tokens.
           </h2>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">

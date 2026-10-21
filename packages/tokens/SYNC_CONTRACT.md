@@ -100,7 +100,7 @@ type Token = {
 **Multi-mode tokens (semantic, components)** use both `$value` and `valuesByMode`. The top-level `$value` is set to the **Light** mode value (or the first available mode) for backwards compatibility with single-mode consumers; the authoritative source is `valuesByMode`:
 
 ```json
-"color.background.primary": {
+"color.background.default": {
   "$type": "color",
   "$value": "{color.gray.50}",
   "valuesByMode": {
@@ -117,7 +117,7 @@ type Token = {
 
 ## Token names
 
-- Lowercase, dot-separated path: `color.background.primary`, `space.button.height.md`
+- Lowercase, dot-separated path: `color.background.default`, `space.button.height.md`
 - Path components: lowercase, alphanumeric, hyphen-separated within a component (`fiery-coral`, `polar-night`)
 - No leading/trailing dots, no consecutive dots, no whitespace
 - Names are **stable identifiers** — renames are breaking changes (see [§ Versioning](#versioning))

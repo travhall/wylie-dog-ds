@@ -46,7 +46,7 @@ export function SectionSubnav({
   }, [sections]);
 
   return (
-    <div className="sticky top-14 z-30 border-b border-(--color-border-primary) bg-(--color-background-primary)/95 backdrop-blur-md">
+    <div className="sticky top-14 z-30 border-b border-(--color-border-default) bg-(--color-background-default)/95 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav
           aria-label={label}
@@ -56,29 +56,29 @@ export function SectionSubnav({
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 whitespace-nowrap text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 whitespace-nowrap text-(--color-foreground-muted) hover:text-(--color-foreground-default) transition-colors"
               style={
                 active === item.id
                   ? {
-                      background: "var(--color-background-secondary)",
-                      color: "var(--color-text-primary)",
+                      background: "var(--color-background-subtle)",
+                      color: "var(--color-foreground-default)",
                     }
                   : undefined
               }
             >
-              <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary) mr-0.5">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) mr-0.5">
                 {item.n}
               </span>
               {item.label}
               {item.count !== undefined && (
-                <span className="font-mono text-[10px] text-(--color-text-tertiary)">
+                <span className="font-mono text-[10px] text-(--color-foreground-faint)">
                   {item.count}
                 </span>
               )}
             </a>
           ))}
           {meta && (
-            <span className="ml-auto hidden md:flex font-mono text-[11px] text-(--color-text-tertiary) shrink-0 pl-4">
+            <span className="ml-auto hidden md:flex font-mono text-[11px] text-(--color-foreground-faint) shrink-0 pl-4">
               {meta}
             </span>
           )}

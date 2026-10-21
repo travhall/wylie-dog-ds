@@ -110,7 +110,7 @@
     },
     {
       "foreground": "button.link.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
@@ -345,7 +345,7 @@
     },
     {
       "foreground": "pagination.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
@@ -360,7 +360,7 @@
     },
     {
       "foreground": "toggle.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
@@ -395,17 +395,17 @@
     },
     {
       "foreground": "accordion.trigger-text",
-      "backgrounds": ["accordion.trigger-focus", "color.background.primary"],
+      "backgrounds": ["accordion.trigger-focus", "color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "accordion.content-text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "accordion.icon",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
@@ -450,77 +450,77 @@
     },
     {
       "foreground": "breadcrumb.link",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "breadcrumb.current",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "breadcrumb.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "breadcrumb.link-hover",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "carousel.nav-text-hover",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "form.description",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "form.error",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "form.label",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "table.caption",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "table.header-text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "label.default.color",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "label.error.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "label.required.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "feature-grid.title.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "feature-grid.description.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
@@ -534,7 +534,7 @@
       "kind": "text"
     },
     {
-      "foreground": "color.text.primary",
+      "foreground": "color.foreground.default",
       "backgrounds": [
         "table.row-hover",
         "table.row-selected",
@@ -554,7 +554,7 @@
     },
     {
       "foreground": "tabs.trigger.indicator.color",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
@@ -564,28 +564,28 @@
     },
     {
       "foreground": "input.border",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text",
       "note": "Component boundary"
     },
     {
       "foreground": "checkbox.border.color",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
       "foreground": "checkbox.error.border",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
       "foreground": "radio.border",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
       "foreground": "radio.border-checked",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
@@ -605,12 +605,12 @@
     },
     {
       "foreground": "switch.track.background.unchecked",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
       "foreground": "switch.track.background.checked",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
@@ -628,12 +628,12 @@
     },
     {
       "foreground": "slider.thumb-border",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
-      "foreground": "color.border.focus",
-      "backgrounds": ["color.background.primary", "color.background.secondary"],
+      "foreground": "color.focus.ring",
+      "backgrounds": ["color.background.default", "color.background.subtle"],
       "kind": "non-text"
     },
     {
@@ -643,9 +643,110 @@
     },
     {
       "foreground": "slider.range",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text",
       "note": "The value is carried by the thumb and the filled range; the unfilled track is supplementary and is not required to reach 3:1."
+    },
+    {
+      "foreground": "color.foreground.default",
+      "backgrounds": [
+        "color.background.default",
+        "color.background.subtle",
+        "color.background.strong"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.foreground.muted",
+      "backgrounds": [
+        "color.background.default",
+        "color.background.subtle",
+        "color.background.strong"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.foreground.faint",
+      "backgrounds": ["color.background.default", "color.background.subtle"],
+      "kind": "text",
+      "note": "Not declared on the strong background: faint text is 3.72:1 (Light) and 3.38:1 (Dark) there, so it is not a guaranteed pair."
+    },
+    {
+      "foreground": "color.inverse.foreground.default",
+      "backgrounds": ["color.inverse.background.default"],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.primary.foreground.default",
+      "backgrounds": [
+        "color.primary.background.default",
+        "color.primary.background.default.hover",
+        "color.primary.background.default.active"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.danger.foreground.default",
+      "backgrounds": [
+        "color.danger.background.default",
+        "color.danger.background.default.hover"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.success.foreground.default",
+      "backgrounds": [
+        "color.success.background.default",
+        "color.success.background.default.hover"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.warning.foreground.default",
+      "backgrounds": [
+        "color.warning.background.default",
+        "color.warning.background.default.hover"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.primary.foreground.subtle",
+      "backgrounds": [
+        "color.primary.background.subtle",
+        "color.background.default"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.info.foreground.subtle",
+      "backgrounds": [
+        "color.info.background.subtle",
+        "color.background.default"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.success.foreground.subtle",
+      "backgrounds": ["color.success.background.subtle"],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.warning.foreground.subtle",
+      "backgrounds": ["color.warning.background.subtle"],
+      "kind": "text"
+    },
+    {
+      "foreground": "color.danger.foreground.subtle",
+      "backgrounds": [
+        "color.danger.background.subtle",
+        "color.background.default"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "form.required.color",
+      "backgrounds": ["color.background.default"],
+      "kind": "text"
     }
   ],
   "knownFailures": []

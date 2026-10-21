@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Foundations/Accessibility Guidelines" />
 
@@ -24,23 +24,23 @@ All components in this design system are built with accessibility as a priority:
 
 All interactive components support keyboard navigation:
 
-| Key | Action |
-| --- | --- |
-| Tab | Move focus forward |
-| Shift + Tab | Move focus backward |
-| Enter | Activate buttons links and submit forms |
-| Space | Toggle checkboxes switches and buttons |
-| Arrow Keys | Navigate menus tabs radio groups and sliders |
-| Escape | Close dialogs popovers and menus |
-| Home/End | Navigate to first/last item in lists |
+| Key         | Action                                       |
+| ----------- | -------------------------------------------- |
+| Tab         | Move focus forward                           |
+| Shift + Tab | Move focus backward                          |
+| Enter       | Activate buttons links and submit forms      |
+| Space       | Toggle checkboxes switches and buttons       |
+| Arrow Keys  | Navigate menus tabs radio groups and sliders |
+| Escape      | Close dialogs popovers and menus             |
+| Home/End    | Navigate to first/last item in lists         |
 
 ### Example: Keyboard-Accessible Form
 
 ```tsx
-import { Button } from '@wyliedog/ui/button';
-import { Input } from '@wyliedog/ui/input';
-import { Label } from '@wyliedog/ui/label';
-import { Checkbox } from '@wyliedog/ui/checkbox';
+import { Button } from "@wyliedog/ui/button";
+import { Input } from "@wyliedog/ui/input";
+import { Label } from "@wyliedog/ui/label";
+import { Checkbox } from "@wyliedog/ui/checkbox";
 
 export function AccessibleForm() {
   return (
@@ -53,21 +53,17 @@ export function AccessibleForm() {
           aria-describedby="email-help"
           aria-required="true"
         />
-        <p id="email-help" className="text-sm text-(--color-text-secondary)">
+        <p id="email-help" className="text-sm text-(--color-foreground-muted)">
           We'll never share your email
         </p>
       </div>
 
       <div className="flex items-center gap-2">
         <Checkbox id="terms" required />
-        <Label htmlFor="terms">
-          I agree to the terms and conditions
-        </Label>
+        <Label htmlFor="terms">I agree to the terms and conditions</Label>
       </div>
 
-      <Button type="submit">
-        Create Account
-      </Button>
+      <Button type="submit">Create Account</Button>
     </form>
   );
 }
@@ -80,6 +76,7 @@ export function AccessibleForm() {
 ### When to Use ARIA
 
 **Use `aria-label`** when there's no visible text:
+
 ```tsx
 <Button aria-label="Close dialog">
   <XIcon className="h-4 w-4" />
@@ -87,6 +84,7 @@ export function AccessibleForm() {
 ```
 
 **Use `aria-labelledby`** to reference existing text:
+
 ```tsx
 <div role="region" aria-labelledby="section-title">
   <h2 id="section-title">Account Settings</h2>
@@ -95,13 +93,14 @@ export function AccessibleForm() {
 ```
 
 **Use `aria-describedby`** for additional context:
+
 ```tsx
 <Input
   id="password"
   type="password"
   aria-describedby="password-requirements"
 />
-<p id="password-requirements" className="text-sm text-(--color-text-secondary)">
+<p id="password-requirements" className="text-sm text-(--color-foreground-muted)">
   Must be at least 8 characters with a number
 </p>
 ```
@@ -154,8 +153,8 @@ All semantic tokens are designed to meet WCAG AA standards. Use semantic tokens 
 
 ```tsx
 // Semantic tokens have tested contrast ratios
-<p className="text-(--color-text-primary)">High contrast body text</p>
-<p className="text-(--color-text-secondary)">Secondary descriptions</p>
+<p className="text-(--color-foreground-default)">High contrast body text</p>
+<p className="text-(--color-foreground-muted)">Secondary descriptions</p>
 
 // Status colors pair with their background tokens
 <Alert variant="destructive">
@@ -176,7 +175,7 @@ Always use multiple indicators:
 </Alert>
 
 // Bad - Color only, no supporting context
-<p className="text-(--color-text-danger)">Error</p>
+<p className="text-(--color-danger-foreground-subtle)">Error</p>
 ```
 
 ---
@@ -185,14 +184,14 @@ Always use multiple indicators:
 
 ### Visible Focus Indicators
 
-All components have built-in focus ring styles using the `--color-border-focus` token. These are applied automatically — no extra configuration needed.
+All components have built-in focus ring styles using the `--color-focus-ring` token. These are applied automatically — no extra configuration needed.
 
 ### Focus Trapping
 
 Dialogs automatically trap focus using Radix UI primitives:
 
 ```tsx
-import { Dialog, DialogContent, DialogTitle } from '@wyliedog/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from "@wyliedog/ui/dialog";
 
 <Dialog open={isOpen} onOpenChange={setIsOpen}>
   <DialogContent>
@@ -201,7 +200,7 @@ import { Dialog, DialogContent, DialogTitle } from '@wyliedog/ui/dialog';
     <Button onClick={() => setIsOpen(false)}>Cancel</Button>
     <Button onClick={handleConfirm}>Confirm</Button>
   </DialogContent>
-</Dialog>
+</Dialog>;
 ```
 
 ### Skip Links
@@ -277,12 +276,12 @@ Maintain proper heading levels:
 Use axe-core in your tests:
 
 ```tsx
-import { render } from '@testing-library/react';
-import { axe, toHaveNoViolations } from 'jest-axe';
+import { render } from "@testing-library/react";
+import { axe, toHaveNoViolations } from "jest-axe";
 
 expect.extend(toHaveNoViolations);
 
-test('button is accessible', async () => {
+test("button is accessible", async () => {
   const { container } = render(<Button>Click me</Button>);
   const results = await axe(container);
   expect(results).toHaveNoViolations();
@@ -320,7 +319,7 @@ test('button is accessible', async () => {
     aria-describedby={hasError ? "username-error" : undefined}
   />
   {hasError && (
-    <p id="username-error" className="text-(--color-text-danger)">
+    <p id="username-error" className="text-(--color-danger-foreground-subtle)">
       Username is required
     </p>
   )}

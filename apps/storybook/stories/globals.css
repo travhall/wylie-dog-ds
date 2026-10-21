@@ -18,7 +18,7 @@
 .sb-main-centered,
 .docs-story {
   background-color: var(
-    --color-background-primary
+    --color-background-default
   ); /* DO NOT TOUCH: Must align with Wyliedog UI and Tokens */
 }
 
@@ -29,6 +29,6 @@
    Storybook UI is unaffected since the more specific class selectors above still win. cSpell:ignore vitest */
 html,
 body {
-  background-color: var(--color-background-primary);
-  color: var(--color-text-primary);
+  background-color: var(--color-background-default);
+  color: var(--color-foreground-default);
 }

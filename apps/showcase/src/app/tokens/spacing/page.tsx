@@ -29,42 +29,44 @@ export default function SpacingPage() {
       headline={
         <>
           One scale. Three densities.{" "}
-          <span className="text-(--color-interactive-primary)">Same data.</span>
+          <span className="text-(--color-primary-background-default)">
+            Same data.
+          </span>
         </>
       }
       description="The 4-pixel base scale powers every gap, padding, and inset in the system. Every spacing token, in full, below."
     >
       <SpacingDemo />
 
-      <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5 max-w-sm">
-        <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary) mb-2">
+      <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 max-w-sm">
+        <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint) mb-2">
           Composed tokens
         </p>
-        <div className="space-y-1 font-mono text-[10px] text-(--color-text-tertiary)">
+        <div className="space-y-1 font-mono text-[10px] text-(--color-foreground-faint)">
           {composedSpacingTokens.map((t) => (
             <p key={t}>{t}</p>
           ))}
         </div>
       </div>
 
-      <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-6 space-y-6">
+      <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6 space-y-6">
         {spacingPrimitives.map((s) => (
           <div key={s.name} className="flex items-center gap-6">
             <div className="w-24 shrink-0 text-right">
-              <div className="text-sm font-bold text-(--color-text-primary)">
+              <div className="text-sm font-bold text-(--color-foreground-default)">
                 {s.name}
               </div>
-              <div className="text-[10px] font-mono text-(--color-text-tertiary)">
+              <div className="text-[10px] font-mono text-(--color-foreground-faint)">
                 {s.value}
               </div>
             </div>
-            <div className="flex-1 h-3 rounded-sm overflow-hidden bg-(--color-background-secondary)">
+            <div className="flex-1 h-3 rounded-sm overflow-hidden bg-(--color-background-subtle)">
               <div
-                className="h-full bg-(--color-interactive-primary)"
+                className="h-full bg-(--color-primary-background-default)"
                 style={{ width: s.value }}
               />
             </div>
-            <div className="w-40 shrink-0 text-xs font-mono text-(--color-text-tertiary) text-right">
+            <div className="w-40 shrink-0 text-xs font-mono text-(--color-foreground-faint) text-right">
               {s.var}
             </div>
           </div>

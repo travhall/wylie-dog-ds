@@ -255,7 +255,7 @@ describe("Badge", () => {
       const badge = screen.getByText("Badge");
       expect(badge).toHaveClass("focus:outline-none");
       expect(badge).toHaveClass("focus:ring-(length:--space-focus-ring-width)");
-      expect(badge).toHaveClass("focus:ring-(--color-border-focus)");
+      expect(badge).toHaveClass("focus:ring-(--color-focus-ring)");
       expect(badge).toHaveClass(
         "focus:ring-offset-(--space-focus-ring-offset)"
       );

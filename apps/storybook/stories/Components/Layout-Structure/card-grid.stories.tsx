@@ -99,7 +99,7 @@ export const Default: Story = {
           <CardTitle>Design System</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-text-tertiary)">
+          <p className="text-(--color-foreground-faint)">
             Shared tokens and components used across every product surface.
           </p>
         </CardContent>
@@ -109,7 +109,7 @@ export const Default: Story = {
           <CardTitle>Mobile App</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-text-tertiary)">
+          <p className="text-(--color-foreground-faint)">
             Cross-platform release currently in active development.
           </p>
         </CardContent>
@@ -119,7 +119,7 @@ export const Default: Story = {
           <CardTitle>Marketing Site</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-(--color-text-tertiary)">
+          <p className="text-(--color-foreground-faint)">
             Public-facing site rebuilt on the latest component library.
           </p>
         </CardContent>
@@ -151,7 +151,7 @@ export const CompactTwoColumn: Story = {
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-(--color-text-tertiary)">
+          <p className="text-sm text-(--color-foreground-faint)">
             Nightly reconciliation job awaiting the next scheduled run.
           </p>
         </CardContent>
@@ -164,7 +164,7 @@ export const CompactTwoColumn: Story = {
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-(--color-text-tertiary)">
+          <p className="text-sm text-(--color-foreground-faint)">
             Weekly summary delivered to all subscribed team members.
           </p>
         </CardContent>

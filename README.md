@@ -141,7 +141,7 @@ Tokens live in `packages/tokens` as the workspace package `@wyliedog/tokens`. It
 Tokens follow a three-tier hierarchy:
 
 1. **Primitive** — raw OKLCH color values, spacing scale, type scale, etc.
-2. **Semantic** — role-based aliases (e.g. `color.interactive.primary`, `color.text.inverse`) with light and dark mode values
+2. **Semantic** — role-based aliases (e.g. `color.primary.background.default`, `color.inverse.foreground.default`) with light and dark mode values
 3. **Component** — component-specific tokens referencing semantic tokens (e.g. `badge.default.background`)
 
 ### Color System
@@ -283,7 +283,8 @@ Use the `-(--token-name)` arbitrary Tailwind syntax for any token-backed value. 
 
 ```tsx
 // Correct — token-backed
-className = "bg-(--color-interactive-primary) text-(--color-text-inverse)";
+className =
+  "bg-(--color-primary-background-default) text-(--color-inverse-foreground-default)";
 
 // Incorrect — hardcoded scale
 className = "bg-blue-500 text-white";

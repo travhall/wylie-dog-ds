@@ -96,7 +96,7 @@ export const WithImage: Story = {
       href: "#docs",
     },
     image: (
-      <div className="aspect-square rounded-lg bg-linear-to-br from-(--color-interactive-primary) via-(--color-interactive-primary)/50 to-(--color-surface-info) p-8 flex items-center justify-center">
+      <div className="aspect-square rounded-lg bg-linear-to-br from-(--color-primary-background-default) via-(--color-primary-background-default)/50 to-(--color-info-background-subtle) p-8 flex items-center justify-center">
         <div className="text-white text-center">
           <Code2 className="h-24 w-24 mx-auto mb-4" />
           <p className="text-2xl font-bold">42 Components</p>
@@ -124,7 +124,7 @@ export const ImageLeft: Story = {
       href: "#docs",
     },
     image: (
-      <div className="aspect-square rounded-lg bg-linear-to-br from-(--color-surface-info) via-(--color-interactive-primary) to-(--color-interactive-primary)/50 p-8 flex items-center justify-center">
+      <div className="aspect-square rounded-lg bg-linear-to-br from-(--color-info-background-subtle) via-(--color-primary-background-default) to-(--color-primary-background-default)/50 p-8 flex items-center justify-center">
         <div className="text-white text-center">
           <Sparkles className="h-24 w-24 mx-auto mb-4" />
           <p className="text-2xl font-bold">Developer DX</p>
@@ -203,8 +203,8 @@ export const CenteredWithImage: Story = {
       href: "#start",
     },
     image: (
-      <div className="w-full h-64 rounded-lg bg-linear-to-r from-(--color-interactive-primary)/20 via-(--color-interactive-primary)/10 to-(--color-surface-info)/20 flex items-center justify-center border border-(--color-border-primary)">
-        <p className="text-xl font-semibold text-(--color-text-tertiary)">
+      <div className="w-full h-64 rounded-lg bg-linear-to-r from-(--color-primary-background-default)/20 via-(--color-primary-background-default)/10 to-(--color-info-background-subtle)/20 flex items-center justify-center border border-(--color-border-default)">
+        <p className="text-xl font-semibold text-(--color-foreground-faint)">
           Product Screenshot
         </p>
       </div>

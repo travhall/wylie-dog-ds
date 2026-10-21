@@ -62,14 +62,14 @@ const ColorSwatch = ({
       className="group relative flex flex-col items-center gap-1 cursor-pointer focus:outline-none"
     >
       <div
-        className="w-12 h-12 rounded border border-(--color-border-secondary) group-hover:ring-2 group-hover:ring-(--color-border-focus) group-focus-visible:ring-2 group-focus-visible:ring-(--color-border-focus) transition-all"
+        className="w-12 h-12 rounded border border-(--color-border-subtle) group-hover:ring-2 group-hover:ring-(--color-focus-ring) group-focus-visible:ring-2 group-focus-visible:ring-(--color-focus-ring) transition-all"
         style={{ backgroundColor: value }}
       />
-      <span className="text-xs font-mono text-(--color-text-tertiary)">
+      <span className="text-xs font-mono text-(--color-foreground-faint)">
         {shade}
       </span>
       {copied && (
-        <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-(--color-text-primary) text-(--color-background-primary) text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none">
+        <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-(--color-foreground-default) text-(--color-background-default) text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none">
           Copied!
         </div>
       )}
@@ -104,7 +104,7 @@ export const SystemOverview: Story = {
           <h2 className="text-2xl font-semibold tracking-tight mb-2">
             Color System
           </h2>
-          <p className="text-sm text-(--color-text-secondary) mb-6">
+          <p className="text-sm text-(--color-foreground-muted) mb-6">
             Built on OKLCH for perceptually uniform brightness across all hues.
             Supports Display P3 wide gamut on modern devices with automatic sRGB
             fallback.
@@ -121,10 +121,12 @@ export const SystemOverview: Story = {
           ].map(({ value, label }) => (
             <Card key={label}>
               <CardContent className="pt-6">
-                <div className="text-3xl font-bold text-(--color-text-primary)">
+                <div className="text-3xl font-bold text-(--color-foreground-default)">
                   {value}
                 </div>
-                <p className="text-sm text-(--color-text-secondary)">{label}</p>
+                <p className="text-sm text-(--color-foreground-muted)">
+                  {label}
+                </p>
               </CardContent>
             </Card>
           ))}
@@ -149,8 +151,8 @@ export const SystemOverview: Story = {
                   label: "Semantic",
                   desc: "Purpose-driven tokens that map to primitives. Adapt between light and dark mode.",
                   examples: [
-                    "--color-text-primary",
-                    "--color-background-primary",
+                    "--color-foreground-default",
+                    "--color-background-default",
                   ],
                 },
                 {
@@ -165,17 +167,17 @@ export const SystemOverview: Story = {
               ].map(({ tier, label, desc, examples }) => (
                 <div key={tier} className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded bg-(--color-interactive-primary) flex items-center justify-center text-(--color-background-primary) text-xs font-bold shrink-0">
+                    <div className="w-8 h-8 rounded bg-(--color-primary-background-default) flex items-center justify-center text-(--color-background-default) text-xs font-bold shrink-0">
                       {tier}
                     </div>
-                    <h3 className="font-semibold text-(--color-text-primary)">
+                    <h3 className="font-semibold text-(--color-foreground-default)">
                       {label}
                     </h3>
                   </div>
-                  <p className="text-sm text-(--color-text-secondary)">
+                  <p className="text-sm text-(--color-foreground-muted)">
                     {desc}
                   </p>
-                  <div className="text-xs font-mono bg-(--color-background-secondary) text-(--color-text-secondary) p-2 rounded space-y-1">
+                  <div className="text-xs font-mono bg-(--color-background-subtle) text-(--color-foreground-muted) p-2 rounded space-y-1">
                     {examples.map((ex) => (
                       <div key={ex}>{ex}</div>
                     ))}
@@ -203,35 +205,37 @@ export const SystemOverview: Story = {
             <CardTitle>Using tokens in practice</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-sm text-(--color-text-secondary)">
+            <p className="text-sm text-(--color-foreground-muted)">
               Semantic tokens carry intent and adapt automatically to the active
               theme. Primitive tokens are the raw values that power them — not
               something your components should reference directly.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <p className="text-xs font-semibold text-(--color-status-danger)">
+                <p className="text-xs font-semibold text-(--color-danger-foreground-subtle)">
                   Avoid — primitive token
                 </p>
-                <div className="p-3 rounded-md bg-(--color-background-secondary) text-xs font-mono text-(--color-text-secondary) space-y-1">
+                <div className="p-3 rounded-md bg-(--color-background-subtle) text-xs font-mono text-(--color-foreground-muted) space-y-1">
                   <div>color: var(--color-gray-900);</div>
                   <div>background: var(--color-blue-600);</div>
                   <div>border: 1px solid var(--color-gray-200);</div>
                 </div>
-                <p className="text-xs text-(--color-text-tertiary)">
+                <p className="text-xs text-(--color-foreground-faint)">
                   Hard-coded to one theme — breaks in dark mode.
                 </p>
               </div>
               <div className="space-y-2">
-                <p className="text-xs font-semibold text-(--color-status-success)">
+                <p className="text-xs font-semibold text-(--color-success-foreground-subtle)">
                   Prefer — semantic token
                 </p>
-                <div className="p-3 rounded-md bg-(--color-background-secondary) text-xs font-mono text-(--color-text-secondary) space-y-1">
-                  <div>color: var(--color-text-primary);</div>
-                  <div>background: var(--color-interactive-primary);</div>
-                  <div>border: 1px solid var(--color-border-primary);</div>
+                <div className="p-3 rounded-md bg-(--color-background-subtle) text-xs font-mono text-(--color-foreground-muted) space-y-1">
+                  <div>color: var(--color-foreground-default);</div>
+                  <div>
+                    background: var(--color-primary-background-default);
+                  </div>
+                  <div>border: 1px solid var(--color-border-default);</div>
                 </div>
-                <p className="text-xs text-(--color-text-tertiary)">
+                <p className="text-xs text-(--color-foreground-faint)">
                   Carries intent. Adapts to light and dark automatically.
                 </p>
               </div>
@@ -245,7 +249,7 @@ export const SystemOverview: Story = {
             <CardTitle>Why OKLCH?</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            <p className="text-sm text-(--color-text-secondary)">
+            <p className="text-sm text-(--color-foreground-muted)">
               OKLCH (Lightness, Chroma, Hue) is a perceptually uniform color
               space. Equal numerical changes produce equal visual changes —
               unlike HSL, where yellow at 50% lightness looks far brighter than
@@ -275,14 +279,14 @@ export const SystemOverview: Story = {
                 },
               ].map(({ axis, desc, progress, mono }) => (
                 <div key={axis} className="space-y-2">
-                  <div className="font-semibold text-sm text-(--color-text-primary)">
+                  <div className="font-semibold text-sm text-(--color-foreground-default)">
                     {axis}
                   </div>
-                  <div className="text-xs text-(--color-text-secondary)">
+                  <div className="text-xs text-(--color-foreground-muted)">
                     {desc}
                   </div>
                   <Progress value={progress} className="h-2" />
-                  <div className="text-xs font-mono text-(--color-text-tertiary)">
+                  <div className="text-xs font-mono text-(--color-foreground-faint)">
                     {mono}
                   </div>
                 </div>
@@ -291,12 +295,12 @@ export const SystemOverview: Story = {
 
             {/* Perceptual uniformity demo */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-sm text-(--color-text-primary)">
+              <h4 className="font-semibold text-sm text-(--color-foreground-default)">
                 Perceptual uniformity — all colors at L=0.65
               </h4>
               <div className="space-y-3">
                 <div className="space-y-2">
-                  <p className="text-xs text-(--color-text-secondary)">
+                  <p className="text-xs text-(--color-foreground-muted)">
                     OKLCH — consistent perceived brightness across hues
                   </p>
                   <div className="grid grid-cols-6 gap-2 h-14">
@@ -318,7 +322,7 @@ export const SystemOverview: Story = {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <p className="text-xs text-(--color-text-secondary)">
+                  <p className="text-xs text-(--color-foreground-muted)">
                     HSL at 50% lightness — yellow/green appear significantly
                     brighter than blue
                   </p>
@@ -346,10 +350,10 @@ export const SystemOverview: Story = {
             {/* P3 */}
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <div className="font-semibold text-sm text-(--color-text-primary)">
+                <div className="font-semibold text-sm text-(--color-foreground-default)">
                   P3 Wide Gamut
                 </div>
-                <ul className="text-xs space-y-1 text-(--color-text-secondary)">
+                <ul className="text-xs space-y-1 text-(--color-foreground-muted)">
                   <li>30% more vibrant colors than sRGB</li>
                   <li>Supported on iPhone X+, iPad Pro, MacBook Pro 2016+</li>
                   <li>
@@ -358,10 +362,10 @@ export const SystemOverview: Story = {
                 </ul>
               </div>
               <div className="space-y-2">
-                <div className="font-semibold text-sm text-(--color-text-primary)">
+                <div className="font-semibold text-sm text-(--color-foreground-default)">
                   Browser Support
                 </div>
-                <ul className="text-xs space-y-1 text-(--color-text-secondary)">
+                <ul className="text-xs space-y-1 text-(--color-foreground-muted)">
                   <li>Chrome 111+, Safari 15.4+, Firefox 113+</li>
                   <li>
                     Specified as <code className="font-mono">oklch(…)</code> in
@@ -398,11 +402,9 @@ export const AllColors: Story = {
         <AlertDescription>
           These values power the semantic layer. In your components, always
           reach for{" "}
-          <code className="font-mono text-xs">--color-text-primary</code>,{" "}
-          <code className="font-mono text-xs">
-            --color-background-secondary
-          </code>
-          , etc. — not raw primitive names like{" "}
+          <code className="font-mono text-xs">--color-foreground-default</code>,{" "}
+          <code className="font-mono text-xs">--color-background-subtle</code>,
+          etc. — not raw primitive names like{" "}
           <code className="font-mono text-xs">--color-gray-500</code>.
         </AlertDescription>
       </Alert>
@@ -421,7 +423,7 @@ export const AllColors: Story = {
 
         return (
           <div key={colorName} className="space-y-3">
-            <h3 className="text-sm font-semibold capitalize text-(--color-text-primary)">
+            <h3 className="text-sm font-semibold capitalize text-(--color-foreground-default)">
               {colorName}
             </h3>
             <div className="flex flex-wrap gap-3">
@@ -465,19 +467,19 @@ export const SemanticTokens: Story = {
         description: "Page surfaces and container fills",
         tokens: [
           {
-            name: "--color-background-primary",
+            name: "--color-background-default",
             usage: "Main page / modal background",
           },
           {
-            name: "--color-background-secondary",
+            name: "--color-background-subtle",
             usage: "Sidebar, panel, subtle surface",
           },
           {
-            name: "--color-background-tertiary",
+            name: "--color-background-strong",
             usage: "Deeply nested or muted surface",
           },
           {
-            name: "--color-background-inverse",
+            name: "--color-inverse-background-default",
             usage: "Inverted surface (light on dark, dark on light)",
           },
         ],
@@ -488,22 +490,25 @@ export const SemanticTokens: Story = {
           "Status-tinted fills for feedback components — what Alert, Badge, and Toast use internally",
         tokens: [
           {
-            name: "--color-surface-raised",
+            name: "--color-background-raised",
             usage: "Floating elements — popovers, dropdowns",
           },
           {
-            name: "--color-surface-success",
+            name: "--color-success-background-subtle",
             usage: "Success alert / badge fill",
           },
           {
-            name: "--color-surface-warning",
+            name: "--color-warning-background-subtle",
             usage: "Warning alert / badge fill",
           },
           {
-            name: "--color-surface-danger",
+            name: "--color-danger-background-subtle",
             usage: "Danger / error alert fill",
           },
-          { name: "--color-surface-info", usage: "Informational alert fill" },
+          {
+            name: "--color-info-background-subtle",
+            usage: "Informational alert fill",
+          },
         ],
       },
       {
@@ -511,29 +516,34 @@ export const SemanticTokens: Story = {
         description: "Content hierarchy and status messaging",
         tokens: [
           {
-            name: "--color-text-primary",
+            name: "--color-foreground-default",
             usage: "Headings, body copy, default labels",
           },
-          { name: "--color-text-secondary", usage: "Descriptions, captions" },
+          { name: "--color-foreground-muted", usage: "Descriptions, captions" },
           {
-            name: "--color-text-tertiary",
+            name: "--color-foreground-faint",
             usage: "Timestamps, metadata, faint labels",
           },
           {
-            name: "--color-text-disabled",
+            name: "--color-foreground-default-disabled",
             usage: "Disabled / placeholder text",
           },
-          { name: "--color-text-brand", usage: "Brand-colored text" },
           {
-            name: "--color-text-danger",
+            name: "--color-danger-foreground-subtle",
             usage: "Error messages, destructive labels",
           },
           {
-            name: "--color-text-success",
+            name: "--color-success-foreground-subtle",
             usage: "Confirmation, success messages",
           },
-          { name: "--color-text-warning", usage: "Warning messages" },
-          { name: "--color-text-info", usage: "Informational messages, links" },
+          {
+            name: "--color-warning-foreground-subtle",
+            usage: "Warning messages",
+          },
+          {
+            name: "--color-info-foreground-subtle",
+            usage: "Informational messages, links",
+          },
         ],
       },
       {
@@ -541,15 +551,21 @@ export const SemanticTokens: Story = {
         description: "Dividers, outlines, and focus rings",
         tokens: [
           {
-            name: "--color-border-primary",
+            name: "--color-border-default",
             usage: "Default card, input, separator border",
           },
-          { name: "--color-border-secondary", usage: "Subtle dividers" },
-          { name: "--color-border-focus", usage: "Keyboard focus ring" },
-          { name: "--color-border-success", usage: "Success state border" },
-          { name: "--color-border-warning", usage: "Warning state border" },
+          { name: "--color-border-subtle", usage: "Subtle dividers" },
+          { name: "--color-focus-ring", usage: "Keyboard focus ring" },
           {
-            name: "--color-border-danger",
+            name: "--color-success-border-default",
+            usage: "Success state border",
+          },
+          {
+            name: "--color-warning-border-default",
+            usage: "Warning state border",
+          },
+          {
+            name: "--color-danger-border-default",
             usage: "Error / destructive border",
           },
         ],
@@ -559,27 +575,27 @@ export const SemanticTokens: Story = {
         description: "Buttons, links, and active controls",
         tokens: [
           {
-            name: "--color-interactive-primary",
+            name: "--color-primary-background-default",
             usage: "Primary action background",
           },
           {
-            name: "--color-interactive-primary-hover",
+            name: "--color-primary-background-default-hover",
             usage: "Primary action — hover",
           },
           {
-            name: "--color-interactive-primary-active",
+            name: "--color-primary-background-default-active",
             usage: "Primary action — active / pressed",
           },
           {
-            name: "--color-interactive-secondary",
+            name: "--color-background-default-hover",
             usage: "Secondary action background",
           },
           {
-            name: "--color-interactive-secondary-hover",
+            name: "--color-background-default-active",
             usage: "Secondary action — hover",
           },
           {
-            name: "--color-interactive-disabled",
+            name: "--color-background-default-disabled",
             usage: "Disabled interactive element",
           },
         ],
@@ -590,19 +606,19 @@ export const SemanticTokens: Story = {
           "Saturated indicator colors for icons, badge dots, and status markers — pair with Surface tokens for filled backgrounds",
         tokens: [
           {
-            name: "--color-status-success",
+            name: "--color-success-foreground-subtle",
             usage: "Success indicator icon / dot",
           },
           {
-            name: "--color-status-warning",
+            name: "--color-warning-foreground-subtle",
             usage: "Warning indicator icon / dot",
           },
           {
-            name: "--color-status-danger",
+            name: "--color-danger-foreground-subtle",
             usage: "Error / destructive indicator icon / dot",
           },
           {
-            name: "--color-status-info",
+            name: "--color-info-foreground-subtle",
             usage: "Informational indicator icon / dot",
           },
         ],
@@ -618,10 +634,10 @@ export const SemanticTokens: Story = {
         {groups.map((group) => (
           <div key={group.category} className="space-y-3">
             <div>
-              <h3 className="text-lg font-semibold text-(--color-text-primary)">
+              <h3 className="text-lg font-semibold text-(--color-foreground-default)">
                 {group.category}
               </h3>
-              <p className="text-sm text-(--color-text-secondary)">
+              <p className="text-sm text-(--color-foreground-muted)">
                 {group.description}
               </p>
             </div>
@@ -631,27 +647,27 @@ export const SemanticTokens: Story = {
                 <button
                   key={token.name}
                   onClick={() => handleCopy(token.name)}
-                  className="relative flex items-center gap-3 p-2.5 rounded-lg border border-(--color-border-primary) bg-(--color-background-primary) hover:bg-(--color-background-secondary) transition-colors text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) group"
+                  className="relative flex items-center gap-3 p-2.5 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:bg-(--color-background-subtle) transition-colors text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) group"
                 >
                   {/* Swatch — var() resolves correctly since semantic tokens are on :root */}
                   <div
-                    className="w-10 h-10 rounded border border-(--color-border-secondary) shrink-0"
+                    className="w-10 h-10 rounded border border-(--color-border-subtle) shrink-0"
                     style={{ backgroundColor: `var(${token.name})` }}
                   />
                   <div className="flex-1 min-w-0">
-                    <div className="font-mono text-xs font-medium text-(--color-text-primary) truncate">
+                    <div className="font-mono text-xs font-medium text-(--color-foreground-default) truncate">
                       {token.name}
                     </div>
-                    <div className="text-xs text-(--color-text-tertiary) mt-0.5 truncate">
+                    <div className="text-xs text-(--color-foreground-faint) mt-0.5 truncate">
                       {token.usage}
                     </div>
                   </div>
                   {copiedKey === token.name ? (
-                    <span className="text-xs font-medium text-(--color-status-success) shrink-0">
+                    <span className="text-xs font-medium text-(--color-success-foreground-subtle) shrink-0">
                       Copied!
                     </span>
                   ) : (
-                    <span className="text-xs text-(--color-text-tertiary) opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+                    <span className="text-xs text-(--color-foreground-faint) opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
                       Copy
                     </span>
                   )}
@@ -667,21 +683,21 @@ export const SemanticTokens: Story = {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <h4 className="font-medium text-sm text-(--color-text-primary)">
+              <h4 className="font-medium text-sm text-(--color-foreground-default)">
                 Tailwind v4 arbitrary syntax
               </h4>
-              <div className="font-mono text-xs bg-(--color-background-secondary) p-3 rounded">
-                <span className="text-(--color-text-tertiary)">{`// CSS variable inline — Tailwind v4`}</span>
+              <div className="font-mono text-xs bg-(--color-background-subtle) p-3 rounded">
+                <span className="text-(--color-foreground-faint)">{`// CSS variable inline — Tailwind v4`}</span>
                 <br />
-                {`<p className="text-(--color-text-secondary) bg-(--color-background-primary)">`}
+                {`<p className="text-(--color-foreground-muted) bg-(--color-background-default)">`}
               </div>
             </div>
             <div className="space-y-2">
-              <h4 className="font-medium text-sm text-(--color-text-primary)">
+              <h4 className="font-medium text-sm text-(--color-foreground-default)">
                 Inline style
               </h4>
-              <div className="font-mono text-xs bg-(--color-background-secondary) p-3 rounded">
-                {`style={{ color: 'var(--color-text-secondary)' }}`}
+              <div className="font-mono text-xs bg-(--color-background-subtle) p-3 rounded">
+                {`style={{ color: 'var(--color-foreground-muted)' }}`}
               </div>
             </div>
             <Alert>
@@ -717,24 +733,24 @@ export const Accessibility: Story = {
     const contrastExamples = [
       {
         name: "Primary Text",
-        foreground: "var(--color-text-primary)",
-        background: "var(--color-background-primary)",
+        foreground: "var(--color-foreground-default)",
+        background: "var(--color-background-default)",
         ratio: "~21:1",
         level: "AAA",
         usage: "Body text, headings",
       },
       {
         name: "Secondary Text",
-        foreground: "var(--color-text-secondary)",
-        background: "var(--color-background-primary)",
+        foreground: "var(--color-foreground-muted)",
+        background: "var(--color-background-default)",
         ratio: "~8.5:1",
         level: "AAA",
         usage: "Descriptions, captions",
       },
       {
         name: "Tertiary Text",
-        foreground: "var(--color-text-tertiary)",
-        background: "var(--color-background-primary)",
+        foreground: "var(--color-foreground-faint)",
+        background: "var(--color-background-default)",
         ratio: "~4.8:1",
         level: "AA",
         usage: "Metadata, labels (large text only)",
@@ -744,10 +760,10 @@ export const Accessibility: Story = {
     return (
       <div className="space-y-8">
         <div>
-          <h2 className="text-2xl font-semibold tracking-tight mb-2 text-(--color-text-primary)">
+          <h2 className="text-2xl font-semibold tracking-tight mb-2 text-(--color-foreground-default)">
             Color Accessibility
           </h2>
-          <p className="text-sm text-(--color-text-secondary) mb-6">
+          <p className="text-sm text-(--color-foreground-muted) mb-6">
             All semantic tokens meet WCAG 2.1 Level AA for their intended use
             cases. Ratios below are approximate — use browser DevTools to verify
             exact values or when creating custom pairings.
@@ -781,9 +797,9 @@ export const Accessibility: Story = {
               ].map(({ level, rows }) => (
                 <div
                   key={level}
-                  className="p-4 rounded-lg border border-(--color-border-primary) bg-(--color-background-secondary)"
+                  className="p-4 rounded-lg border border-(--color-border-default) bg-(--color-background-subtle)"
                 >
-                  <div className="font-semibold text-sm text-(--color-text-primary) mb-3">
+                  <div className="font-semibold text-sm text-(--color-foreground-default) mb-3">
                     {level}
                   </div>
                   <div className="space-y-2">
@@ -792,7 +808,7 @@ export const Accessibility: Story = {
                         key={label}
                         className="flex items-center justify-between text-sm"
                       >
-                        <span className="text-(--color-text-secondary)">
+                        <span className="text-(--color-foreground-muted)">
                           {label}
                         </span>
                         <Badge variant="outline">{ratio}</Badge>
@@ -815,15 +831,15 @@ export const Accessibility: Story = {
               <div key={example.name} className="space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="font-medium text-sm text-(--color-text-primary)">
+                    <div className="font-medium text-sm text-(--color-foreground-default)">
                       {example.name}
                     </div>
-                    <div className="text-xs text-(--color-text-tertiary)">
+                    <div className="text-xs text-(--color-foreground-faint)">
                       {example.usage}
                     </div>
                   </div>
                   <div className="text-right flex items-center gap-2">
-                    <span className="font-mono text-sm font-semibold text-(--color-text-primary)">
+                    <span className="font-mono text-sm font-semibold text-(--color-foreground-default)">
                       {example.ratio}
                     </span>
                     <Badge
@@ -836,7 +852,7 @@ export const Accessibility: Story = {
                   </div>
                 </div>
                 <div
-                  className="p-6 rounded-lg border border-(--color-border-primary)"
+                  className="p-6 rounded-lg border border-(--color-border-default)"
                   style={{
                     backgroundColor: example.background,
                     color: example.foreground,
@@ -878,10 +894,10 @@ export const Accessibility: Story = {
               <div key={title} className="flex gap-3">
                 <div className="text-lg shrink-0">{icon}</div>
                 <div>
-                  <div className="font-medium text-sm text-(--color-text-primary) mb-1">
+                  <div className="font-medium text-sm text-(--color-foreground-default) mb-1">
                     {title}
                   </div>
-                  <p className="text-xs text-(--color-text-secondary)">
+                  <p className="text-xs text-(--color-foreground-muted)">
                     {body}
                   </p>
                 </div>
@@ -942,10 +958,10 @@ export const TokenBrowser: Story = {
     return (
       <div className="space-y-6">
         <div>
-          <h2 className="text-2xl font-semibold tracking-tight mb-2 text-(--color-text-primary)">
+          <h2 className="text-2xl font-semibold tracking-tight mb-2 text-(--color-foreground-default)">
             Primitive Token Browser
           </h2>
-          <p className="text-sm text-(--color-text-secondary) mb-2">
+          <p className="text-sm text-(--color-foreground-muted) mb-2">
             Search and copy OKLCH values for any primitive token. Use these when
             defining or overriding semantic tokens in your app&apos;s CSS — not
             directly in component classes.
@@ -981,7 +997,7 @@ export const TokenBrowser: Story = {
           </div>
         </div>
 
-        <p className="text-xs text-(--color-text-tertiary)">
+        <p className="text-xs text-(--color-foreground-faint)">
           Showing {filteredTokens.length} of {allTokens.length} tokens — click
           to copy OKLCH value
         </p>
@@ -992,23 +1008,23 @@ export const TokenBrowser: Story = {
             <button
               key={token.name}
               onClick={() => handleCopy(token)}
-              className="relative flex items-center gap-3 p-3 rounded-lg border border-(--color-border-primary) bg-(--color-background-primary) hover:border-(--color-border-focus) hover:bg-(--color-background-secondary) transition-colors text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus)"
+              className="relative flex items-center gap-3 p-3 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:border-(--color-focus-ring) hover:bg-(--color-background-subtle) transition-colors text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)"
             >
               <div
-                className="w-10 h-10 rounded border border-(--color-border-secondary) shrink-0"
+                className="w-10 h-10 rounded border border-(--color-border-subtle) shrink-0"
                 style={{ backgroundColor: token.value }}
               />
               <div className="flex-1 min-w-0">
-                <div className="font-mono text-xs font-medium text-(--color-text-primary) truncate">
+                <div className="font-mono text-xs font-medium text-(--color-foreground-default) truncate">
                   {token.name}
                 </div>
-                <div className="font-mono text-xs text-(--color-text-tertiary) truncate">
+                <div className="font-mono text-xs text-(--color-foreground-faint) truncate">
                   {token.value}
                 </div>
               </div>
               {copiedKey === token.name && (
-                <div className="absolute inset-0 flex items-center justify-center bg-(--color-background-primary) rounded-lg">
-                  <span className="text-xs font-medium text-(--color-text-primary)">
+                <div className="absolute inset-0 flex items-center justify-center bg-(--color-background-default) rounded-lg">
+                  <span className="text-xs font-medium text-(--color-foreground-default)">
                     Copied!
                   </span>
                 </div>
@@ -1018,7 +1034,7 @@ export const TokenBrowser: Story = {
         </div>
 
         {filteredTokens.length === 0 && (
-          <div className="text-center py-12 text-(--color-text-secondary)">
+          <div className="text-center py-12 text-(--color-foreground-muted)">
             No tokens found matching &quot;{searchQuery}&quot;
           </div>
         )}

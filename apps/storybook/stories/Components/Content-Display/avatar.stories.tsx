@@ -174,7 +174,7 @@ export const UserProfiles: Story = {
             </Avatar>
             <div>
               <p className="text-sm font-medium">John Doe</p>
-              <p className="text-xs text-(--color-text-tertiary)">
+              <p className="text-xs text-(--color-foreground-faint)">
                 Product Manager
               </p>
             </div>
@@ -186,7 +186,7 @@ export const UserProfiles: Story = {
             </Avatar>
             <div>
               <p className="text-sm font-medium">Sarah Anderson</p>
-              <p className="text-xs text-(--color-text-tertiary)">
+              <p className="text-xs text-(--color-foreground-faint)">
                 UI/UX Designer
               </p>
             </div>
@@ -198,7 +198,7 @@ export const UserProfiles: Story = {
             </Avatar>
             <div>
               <p className="text-sm font-medium">Michael Kim</p>
-              <p className="text-xs text-(--color-text-tertiary)">
+              <p className="text-xs text-(--color-foreground-faint)">
                 Frontend Developer
               </p>
             </div>
@@ -285,13 +285,13 @@ export const Loading: Story = {
       <h4 className="text-sm font-medium">Loading States</h4>
       <div className="flex gap-4">
         <Avatar>
-          <div className="w-full h-full bg-(--color-background-secondary) animate-pulse rounded-full" />
+          <div className="w-full h-full bg-(--color-background-subtle) animate-pulse rounded-full" />
         </Avatar>
         <Avatar>
-          <div className="w-full h-full bg-(--color-background-secondary) animate-pulse rounded-full" />
+          <div className="w-full h-full bg-(--color-background-subtle) animate-pulse rounded-full" />
         </Avatar>
         <Avatar>
-          <div className="w-full h-full bg-(--color-background-secondary) animate-pulse rounded-full" />
+          <div className="w-full h-full bg-(--color-background-subtle) animate-pulse rounded-full" />
         </Avatar>
       </div>
     </div>

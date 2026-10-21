@@ -338,7 +338,7 @@ export const FormExamples: Story = {
           />
         </div>
 
-        <div className="flex justify-between items-center text-xs text-(--color-text-tertiary)">
+        <div className="flex justify-between items-center text-xs text-(--color-foreground-faint)">
           <span>0 / 500 characters</span>
           <span>Markdown supported</span>
         </div>
@@ -377,7 +377,7 @@ export const CharacterCount: Story = {
           maxLength={max}
           placeholder="Write a short bio..."
         />
-        <p className="text-xs text-(--color-text-tertiary) text-right">
+        <p className="text-xs text-(--color-foreground-faint) text-right">
           {value.length} / {max}
         </p>
       </div>
@@ -414,7 +414,7 @@ export const WithInteractions: Story = {
             placeholder="Enter a brief description..."
             className="min-h-20"
           />
-          <p className="text-xs text-(--color-text-tertiary)">
+          <p className="text-xs text-(--color-foreground-faint)">
             At least 10 characters
           </p>
         </div>

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Resources/Guides/Composition Patterns" />
 
@@ -34,6 +34,7 @@ Prefer composing small, focused components over large, configurable ones:
 ```
 
 **Benefits:**
+
 - More flexible and extensible
 - Easier to understand and maintain
 - Better tree-shaking (unused components aren't bundled)
@@ -65,6 +66,7 @@ Use compound components for related UI elements that work together:
 ```
 
 **Benefits:**
+
 - Semantic HTML structure
 - Full control over rendering
 - Better accessibility (ARIA attributes managed internally)
@@ -81,9 +83,7 @@ Wrap related elements in container components for consistent spacing and layout:
     <CardTitle>Project Details</CardTitle>
     <CardDescription>View and edit project information</CardDescription>
   </CardHeader>
-  <CardContent>
-    {/* Main content */}
-  </CardContent>
+  <CardContent>{/* Main content */}</CardContent>
   <CardFooter>
     <Button>Save Changes</Button>
   </CardFooter>
@@ -109,7 +109,10 @@ Wrap related elements in container components for consistent spacing and layout:
     aria-invalid={hasError}
   />
   {hasError && (
-    <p id="email-error" className="text-sm text-(--color-text-danger)">
+    <p
+      id="email-error"
+      className="text-sm text-(--color-danger-foreground-subtle)"
+    >
       Please enter a valid email address
     </p>
   )}
@@ -117,6 +120,7 @@ Wrap related elements in container components for consistent spacing and layout:
 ```
 
 **Key Points:**
+
 - Use `htmlFor` to associate label with input
 - Use `aria-describedby` for error messages
 - Set `aria-invalid` when field has error
@@ -145,12 +149,15 @@ Wrap related elements in container components for consistent spacing and layout:
 
   <div className="flex gap-3">
     <Button type="submit">Submit</Button>
-    <Button type="button" variant="outline">Cancel</Button>
+    <Button type="button" variant="outline">
+      Cancel
+    </Button>
   </div>
 </form>
 ```
 
 **Key Points:**
+
 - Consistent field spacing (`space-y-2` for field internals, `space-y-4` for fields, `space-y-6` for sections)
 - Proper button grouping with `flex gap-3`
 - Always specify button `type` attributes
@@ -164,7 +171,7 @@ Wrap related elements in container components for consistent spacing and layout:
   {users.map((user, index) => (
     <Avatar
       key={user.id}
-      className="ring-2 ring-(--color-background-primary)"
+      className="ring-2 ring-(--color-background-default)"
       style={{ zIndex: users.length - index }}
     >
       <AvatarImage src={user.avatar} alt={user.name} />
@@ -175,6 +182,7 @@ Wrap related elements in container components for consistent spacing and layout:
 ```
 
 **Key Points:**
+
 - Negative margin (`-space-x-2`) for overlapping effect
 - Ring for separation from background
 - Z-index for proper stacking order
@@ -196,7 +204,7 @@ Wrap related elements in container components for consistent spacing and layout:
       <TableRow key={item.id}>
         <TableCell className="font-medium">{item.name}</TableCell>
         <TableCell>
-          <Badge variant={item.status === 'active' ? 'default' : 'secondary'}>
+          <Badge variant={item.status === "active" ? "default" : "secondary"}>
             {item.status}
           </Badge>
         </TableCell>
@@ -212,7 +220,9 @@ Wrap related elements in container components for consistent spacing and layout:
               <DropdownMenuItem>Edit</DropdownMenuItem>
               <DropdownMenuItem>Duplicate</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-(--color-text-danger)">Delete</DropdownMenuItem>
+              <DropdownMenuItem className="text-(--color-danger-foreground-subtle)">
+                Delete
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </TableCell>
@@ -223,6 +233,7 @@ Wrap related elements in container components for consistent spacing and layout:
 ```
 
 **Key Points:**
+
 - Use Badge for status indicators
 - DropdownMenu for row actions
 - Screen reader text for icon-only buttons
@@ -242,8 +253,8 @@ Wrap related elements in container components for consistent spacing and layout:
     <AlertDialogHeader>
       <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
       <AlertDialogDescription>
-        This action cannot be undone. This will permanently delete your
-        account and remove your data from our servers.
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
       </AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
@@ -257,6 +268,7 @@ Wrap related elements in container components for consistent spacing and layout:
 ```
 
 **Key Points:**
+
 - Use AlertDialog for destructive actions
 - Clear title and description
 - Cancel button on the left (low-emphasis)
@@ -295,6 +307,7 @@ Wrap related elements in container components for consistent spacing and layout:
 ```
 
 **Key Points:**
+
 - Responsive width with `sm:max-w-[425px]`
 - Form inside DialogContent
 - Actions in DialogFooter
@@ -318,9 +331,7 @@ Wrap related elements in container components for consistent spacing and layout:
         <CardTitle>Overview</CardTitle>
         <CardDescription>Project overview and statistics</CardDescription>
       </CardHeader>
-      <CardContent>
-        {/* Overview content */}
-      </CardContent>
+      <CardContent>{/* Overview content */}</CardContent>
     </Card>
   </TabsContent>
 
@@ -335,6 +346,7 @@ Wrap related elements in container components for consistent spacing and layout:
 ```
 
 **Key Points:**
+
 - Use `grid` for equal-width tabs
 - Each TabsContent has consistent spacing
 - Wrap content in Cards for visual hierarchy
@@ -361,6 +373,7 @@ Wrap related elements in container components for consistent spacing and layout:
 ```
 
 **Key Points:**
+
 - Use BreadcrumbPage for current page (not a link)
 - BreadcrumbSeparator between items
 - Links for navigable ancestors
@@ -385,6 +398,7 @@ Wrap related elements in container components for consistent spacing and layout:
 ```
 
 **Key Points:**
+
 - Match skeleton sizes to expected content
 - Maintain layout structure while loading
 - Use varied widths for natural appearance
@@ -399,12 +413,13 @@ Wrap related elements in container components for consistent spacing and layout:
       Loading...
     </>
   ) : (
-    'Submit'
+    "Submit"
   )}
 </Button>
 ```
 
 **Key Points:**
+
 - Disable button during loading
 - Show loading spinner with text
 - Use `animate-spin` for spinner animation
@@ -420,7 +435,9 @@ Ensure keyboard navigation works correctly in compositions:
 
 ```tsx
 <div role="group" aria-labelledby="filter-heading">
-  <h3 id="filter-heading" className="sr-only">Filter Options</h3>
+  <h3 id="filter-heading" className="sr-only">
+    Filter Options
+  </h3>
 
   <div className="flex gap-2">
     <Button variant="outline" size="sm">
@@ -440,6 +457,7 @@ Ensure keyboard navigation works correctly in compositions:
 ```
 
 **Key Points:**
+
 - Group related controls with `role="group"`
 - Provide descriptive labels
 - Add screen reader context where needed
@@ -468,6 +486,7 @@ useEffect(() => {
 ```
 
 **Key Points:**
+
 - Store focus before opening dialogs
 - Restore focus when closing
 - Trap focus inside modals
@@ -502,16 +521,12 @@ useEffect(() => {
 ```tsx
 <div className="flex min-h-screen">
   {/* Sidebar */}
-  <aside className="w-64 border-r bg-(--color-background-secondary)">
-    <nav className="space-y-2 p-4">
-      {/* Navigation items */}
-    </nav>
+  <aside className="w-64 border-r bg-(--color-background-subtle)">
+    <nav className="space-y-2 p-4">{/* Navigation items */}</nav>
   </aside>
 
   {/* Main Content */}
-  <main className="flex-1 p-6">
-    {/* Page content */}
-  </main>
+  <main className="flex-1 p-6">{/* Page content */}</main>
 </div>
 ```
 
@@ -523,11 +538,13 @@ useEffect(() => {
   <Card>
     <CardHeader className="flex flex-row items-center justify-between pb-2">
       <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-      <DollarSign className="h-4 w-4 text-(--color-text-secondary)" />
+      <DollarSign className="h-4 w-4 text-(--color-foreground-muted)" />
     </CardHeader>
     <CardContent>
       <div className="text-2xl font-bold">$45,231.89</div>
-      <p className="text-xs text-(--color-text-secondary)">+20.1% from last month</p>
+      <p className="text-xs text-(--color-foreground-muted)">
+        +20.1% from last month
+      </p>
     </CardContent>
   </Card>
   {/* More stat cards */}
@@ -541,21 +558,26 @@ useEffect(() => {
 ### DO:
 
 ✅ **Keep components focused and single-purpose**
+
 ```tsx
 <Button onClick={handleClick}>Submit</Button>
 <Badge variant="success">Active</Badge>
 ```
 
 ✅ **Use semantic HTML**
+
 ```tsx
 <nav>
   <ul>
-    <li><a href="/about">About</a></li>
+    <li>
+      <a href="/about">About</a>
+    </li>
   </ul>
 </nav>
 ```
 
 ✅ **Provide proper ARIA labels**
+
 ```tsx
 <Button aria-label="Close dialog">
   <X className="h-4 w-4" />
@@ -563,9 +585,14 @@ useEffect(() => {
 ```
 
 ✅ **Use consistent spacing scales**
+
 ```tsx
-<div className="space-y-4"> {/* 16px */}
-  <div className="space-y-2"> {/* 8px */}
+<div className="space-y-4">
+  {" "}
+  {/* 16px */}
+  <div className="space-y-2">
+    {" "}
+    {/* 8px */}
     {/* Nested content */}
   </div>
 </div>
@@ -574,15 +601,19 @@ useEffect(() => {
 ### DON'T:
 
 ❌ **Don't nest interactive elements**
+
 ```tsx
-{/* BAD: Button inside button */}
+{
+  /* BAD: Button inside button */
+}
 <Button>
   Click me
   <Button size="sm">No!</Button>
-</Button>
+</Button>;
 ```
 
 ❌ **Don't skip semantic structure**
+
 ```tsx
 {/* BAD: No heading hierarchy */}
 <h1>Title</h1>
@@ -590,6 +621,7 @@ useEffect(() => {
 ```
 
 ❌ **Don't hardcode sizes**
+
 ```tsx
 {/* BAD: Magic numbers */}
 <div style={{ width: '237px', height: '142px' }}>
@@ -618,11 +650,13 @@ useEffect(() => {
 **Solution:** Use flexbox or grid with consistent gaps
 
 ```tsx
-{/* ✅ Good alignment */}
+{
+  /* ✅ Good alignment */
+}
 <div className="flex items-center gap-2">
   <Avatar />
   <span>John Doe</span>
-</div>
+</div>;
 ```
 
 ### Issue: Inconsistent Spacing
@@ -631,13 +665,19 @@ useEffect(() => {
 **Solution:** Use Tailwind's spacing scale consistently
 
 ```tsx
-{/* ✅ Consistent spacing */}
-<div className="space-y-4">  {/* Section spacing */}
-  <div className="space-y-2"> {/* Field spacing */}
+{
+  /* ✅ Consistent spacing */
+}
+<div className="space-y-4">
+  {" "}
+  {/* Section spacing */}
+  <div className="space-y-2">
+    {" "}
+    {/* Field spacing */}
     <Label />
     <Input />
   </div>
-</div>
+</div>;
 ```
 
 ### Issue: Poor Mobile Experience
@@ -646,10 +686,12 @@ useEffect(() => {
 **Solution:** Use responsive classes and test on mobile
 
 ```tsx
-{/* ✅ Responsive grid */}
+{
+  /* ✅ Responsive grid */
+}
 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
   {/* Cards */}
-</div>
+</div>;
 ```
 
 ---

@@ -12,11 +12,13 @@
 //   verify              check each new token resolves to its old token's value
 //   repoint             repoint component aliases from old names to new names
 //   contract            delete the old semantic colour tokens
-//   rewrite, sweep      added in plan 176
+//   rewrite [--check]   rewrite old names in consumer files (dry run with --check)
+//   sweep               list any old name left in consumer files
 //
 // Reads scripts/semantic-token-map.json. Run from the repo root.
 
 import fs from "node:fs";
+import { execSync } from "node:child_process";
 
 const MODES = ["Light", "Dark"];
 const MAP_PATH = "scripts/semantic-token-map.json";
@@ -238,12 +240,141 @@ function contract() {
   console.log(`Removed ${doomed.length} tokens`);
 }
 
-const commands = { snapshot, expand, verify, repoint, contract };
-const command = process.argv[2];
-if (command === "rewrite" || command === "sweep") {
-  console.error(`"${command}" is added in plan 176`);
-  process.exit(1);
+// ---------- consumer rewrite and sweep ----------
+
+const INCLUDE = [
+  "packages/ui/src/",
+  "apps/showcase/src/",
+  "apps/showcase/README_STYLING.md",
+  "apps/storybook/",
+  "documentation/",
+  "README.md",
+  "packages/tokens/README.md",
+  "packages/tokens/COVERAGE.md",
+  "packages/tokens/SYNC_CONTRACT.md",
+  "packages/tokens/scripts/",
+  "packages/tokens/style-dictionary.config.js",
+  "scripts/generate-component.js",
+  "scripts/contrast-pairs.json",
+];
+const EXTENSIONS = /\.(ts|tsx|js|mjs|css|md|mdx|json)$/;
+const EXCLUDE = [
+  "node_modules/",
+  ".next/",
+  "storybook-static/",
+  "/dist/",
+  "/coverage/",
+  "apps/showcase/prototype/",
+  "apps/figma-plugin/",
+  "documentation/tokens/semantic-token-mapping.md",
+  "documentation/tokens/semantic-pairing-model.md",
+];
+
+function consumerFiles() {
+  return execSync("git ls-files", { encoding: "utf8", maxBuffer: 1 << 28 })
+    .split("\n")
+    .filter(
+      (p) =>
+        p &&
+        EXTENSIONS.test(p) &&
+        INCLUDE.some((i) => p.startsWith(i)) &&
+        !EXCLUDE.some((e) => p.includes(e)) &&
+        fs.existsSync(p)
+    );
 }
+
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** Regex matching the dotted and CSS variable forms of the given old names. */
+function nameRegex(names) {
+  const sorted = [...names].sort((a, b) => b.length - a.length);
+  const dotted = sorted.map(escapeRe).join("|");
+  const css = sorted
+    .map((n) => escapeRe("--" + n.replaceAll(".", "-")))
+    .join("|");
+  return new RegExp(
+    `(?<![A-Za-z0-9_-])(?<css>${css})(?![A-Za-z0-9_-])|(?<![A-Za-z0-9_.-])(?<dot>${dotted})(?![A-Za-z0-9_-]|\\.[A-Za-z0-9])`,
+    "g"
+  );
+}
+
+const cssForm = (n) => "--" + n.replaceAll(".", "-");
+
+function rewrite() {
+  const check = process.argv.includes("--check");
+  const names = Object.entries(map.mapping)
+    .filter(
+      ([n, m]) =>
+        m.action !== "retire" &&
+        m.action !== "split" &&
+        n !== "color.border.strong"
+    )
+    .map(([n]) => n);
+  const lookup = new Map();
+  for (const n of names) {
+    const to = map.mapping[n].to[0];
+    lookup.set(n, to);
+    lookup.set(cssForm(n), cssForm(to));
+  }
+  const re = nameRegex(names);
+  let total = 0;
+  let files = 0;
+  for (const p of consumerFiles()) {
+    const text = fs.readFileSync(p, "utf8");
+    let count = 0;
+    const next = text.replace(re, (m) => {
+      count++;
+      return lookup.get(m);
+    });
+    if (!count) continue;
+    total += count;
+    files++;
+    console.log(`${p}: ${count}`);
+    if (!check) fs.writeFileSync(p, next);
+  }
+  console.log(
+    `${check ? "Would replace" : "Replaced"} ${total} in ${files} files`
+  );
+}
+
+function sweep() {
+  const names = Object.keys(map.mapping).filter(
+    (n) => n !== "color.border.strong"
+  );
+  const re = nameRegex(names);
+  const keyRe = new RegExp(
+    `["'](?:${names.map((n) => escapeRe(n.replaceAll(".", "-"))).join("|")})["']`
+  );
+  let hits = 0;
+  for (const p of consumerFiles()) {
+    fs.readFileSync(p, "utf8")
+      .split("\n")
+      .forEach((line, i) => {
+        for (const m of line.matchAll(re)) {
+          console.log(`${p}:${i + 1}: ${m[0]}`);
+          hits++;
+        }
+        const k = keyRe.exec(line);
+        if (k) {
+          console.log(`${p}:${i + 1}: ${k[0]}`);
+          hits++;
+        }
+      });
+  }
+  if (hits) process.exit(1);
+  console.log("No old token names found");
+}
+
+const commands = {
+  snapshot,
+  expand,
+  verify,
+  repoint,
+  contract,
+  rewrite,
+  sweep,
+};
+const command = process.argv[2];
 if (!commands[command]) {
   console.error(`Usage: ${Object.keys(commands).join(" | ")}`);
   process.exit(1);

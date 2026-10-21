@@ -131,8 +131,8 @@ import { Select } from "@wyliedog/ui/select";
 
 ```typescript
 // ✅ Correct - CSS variable tokens
-<p className="text-(--color-text-secondary)">Text</p>
-<div className="border-(--color-border-primary)">Content</div>
+<p className="text-(--color-foreground-muted)">Text</p>
+<div className="border-(--color-border-default)">Content</div>
 
 // ❌ Wrong - hardcoded colors
 <p className="text-gray-600">Text</p>

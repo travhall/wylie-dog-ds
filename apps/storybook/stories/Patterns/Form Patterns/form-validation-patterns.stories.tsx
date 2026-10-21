@@ -279,15 +279,15 @@ function getStrength(password: string): Strength | null {
 }
 
 const strengthBarColor: Record<Strength, string> = {
-  Weak: "bg-(--color-interactive-danger)",
-  Fair: "bg-(--color-interactive-warning)",
-  Strong: "bg-(--color-border-success)",
+  Weak: "bg-(--color-danger-background-default)",
+  Fair: "bg-(--color-warning-background-default)",
+  Strong: "bg-(--color-success-border-default)",
 };
 
 const strengthTextColor: Record<Strength, string> = {
-  Weak: "text-(--color-text-danger)",
-  Fair: "text-(--color-text-warning)",
-  Strong: "text-(--color-text-success)",
+  Weak: "text-(--color-danger-foreground-subtle)",
+  Fair: "text-(--color-warning-foreground-subtle)",
+  Strong: "text-(--color-success-foreground-subtle)",
 };
 
 const strengthBarWidth: Record<Strength, string> = {
@@ -343,7 +343,7 @@ function PasswordStrengthComponent() {
         />
         {strength && (
           <div className="space-y-1" aria-live="polite">
-            <div className="h-1.5 w-full rounded-full bg-(--color-background-tertiary)">
+            <div className="h-1.5 w-full rounded-full bg-(--color-background-strong)">
               <div
                 className={`h-full rounded-full transition-all duration-300 ${strengthBarWidth[strength]} ${strengthBarColor[strength]}`}
               />
@@ -466,10 +466,10 @@ function MultiStepValidationComponent() {
   if (done) {
     return (
       <div role="status" className="w-100 space-y-2 text-center p-6">
-        <p className="font-semibold text-(--color-text-success)">
+        <p className="font-semibold text-(--color-success-foreground-subtle)">
           Account created!
         </p>
-        <p className="text-sm text-(--color-text-tertiary)">
+        <p className="text-sm text-(--color-foreground-faint)">
           Welcome, {step2.firstName || step1.username}.
         </p>
       </div>
@@ -485,20 +485,22 @@ function MultiStepValidationComponent() {
             <span
               className={`flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold ${
                 step === n
-                  ? "bg-(--color-interactive-primary) text-(--color-text-inverse)"
+                  ? "bg-(--color-primary-background-default) text-(--color-inverse-foreground-default)"
                   : step > n
-                    ? "bg-(--color-surface-success) text-(--color-text-success)"
-                    : "bg-(--color-background-secondary) text-(--color-text-tertiary)"
+                    ? "bg-(--color-success-background-subtle) text-(--color-success-foreground-subtle)"
+                    : "bg-(--color-background-subtle) text-(--color-foreground-faint)"
               }`}
               aria-current={step === n ? "step" : undefined}
             >
               {n}
             </span>
-            <span className="text-sm text-(--color-text-tertiary)">
+            <span className="text-sm text-(--color-foreground-faint)">
               {n === 1 ? "Account" : "Profile"}
             </span>
             {n < 2 && (
-              <span className="text-(--color-text-disabled) mx-1">—</span>
+              <span className="text-(--color-foreground-default-disabled) mx-1">
+                —
+              </span>
             )}
           </div>
         ))}
@@ -679,7 +681,7 @@ function AsyncValidationComponent() {
               aria-label="Checking availability"
             >
               <span
-                className="block h-4 w-4 animate-spin rounded-full border-2 border-(--color-interactive-primary) border-t-transparent"
+                className="block h-4 w-4 animate-spin rounded-full border-2 border-(--color-primary-background-default) border-t-transparent"
                 aria-hidden="true"
               />
             </span>
@@ -688,7 +690,7 @@ function AsyncValidationComponent() {
 
         {status === "available" && (
           <p
-            className="text-sm font-medium text-(--color-text-success)"
+            className="text-sm font-medium text-(--color-success-foreground-subtle)"
             role="status"
           >
             ✓ Available

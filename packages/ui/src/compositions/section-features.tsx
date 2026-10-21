@@ -7,9 +7,9 @@ import { Badge } from "../badge";
 export const sectionFeaturesVariants = cva("relative w-full py-20 md:py-32", {
   variants: {
     variant: {
-      default: "bg-(--color-background-primary)",
-      cards: "bg-(--color-background-secondary)",
-      grid: "bg-(--color-background-primary)",
+      default: "bg-(--color-background-default)",
+      cards: "bg-(--color-background-subtle)",
+      grid: "bg-(--color-background-default)",
     },
   },
   defaultVariants: {
@@ -70,7 +70,7 @@ export const SectionFeatures = React.forwardRef<
                 </h2>
               )}
               {description && (
-                <p className="text-(length:--font-size-lg) text-(--color-text-secondary)">
+                <p className="text-(length:--font-size-lg) text-(--color-foreground-muted)">
                   {description}
                 </p>
               )}
@@ -88,7 +88,7 @@ export const SectionFeatures = React.forwardRef<
                         {feature.icon && (
                           <div
                             aria-hidden="true"
-                            className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-interactive-primary)/10 text-(--color-interactive-primary) mb-4"
+                            className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-primary-background-default)/10 text-(--color-primary-background-default) mb-4"
                           >
                             {feature.icon}
                           </div>
@@ -102,7 +102,7 @@ export const SectionFeatures = React.forwardRef<
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-(--color-text-secondary)">
+                      <p className="text-(--color-foreground-muted)">
                         {feature.description}
                       </p>
                     </CardContent>
@@ -118,7 +118,7 @@ export const SectionFeatures = React.forwardRef<
                       {feature.icon && (
                         <div
                           aria-hidden="true"
-                          className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-interactive-primary)/10 text-(--color-interactive-primary)"
+                          className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-primary-background-default)/10 text-(--color-primary-background-default)"
                         >
                           {feature.icon}
                         </div>
@@ -134,7 +134,7 @@ export const SectionFeatures = React.forwardRef<
                     </h3>
 
                     {/* Description */}
-                    <p className="text-(--color-text-secondary)">
+                    <p className="text-(--color-foreground-muted)">
                       {feature.description}
                     </p>
                   </div>

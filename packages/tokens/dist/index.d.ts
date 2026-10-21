@@ -934,7 +934,7 @@ export declare const formHintText: "oklch(0.423 0.007 264.49)";
 export declare const formHintFontSize: number;
 export declare const formErrorText: "oklch(0.505 0.19 27.49)";
 export declare const formErrorFontSize: number;
-export declare const formRequiredColor: "oklch(0.577 0.215 27.31)";
+export declare const formRequiredColor: "oklch(0.505 0.19 27.49)";
 export declare const formGap: "16px";
 export declare const formFieldsetGap: "24px";
 export declare const formFieldsetLegendFontSize: number;

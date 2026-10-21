@@ -113,13 +113,13 @@ export const Default: Story = {
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-(--color-background-secondary) to-(--color-background-tertiary) p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-(--color-background-subtle) to-(--color-background-strong) p-6 no-underline outline-none focus:shadow-md"
                     href="#"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
                       Featured Product
                     </div>
-                    <p className="text-sm leading-tight text-(--color-text-tertiary)">
+                    <p className="text-sm leading-tight text-(--color-foreground-faint)">
                       Discover our most popular item with advanced features and
                       modern design.
                     </p>
@@ -183,13 +183,13 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-(--color-interactive-hover) hover:text-(--color-text-primary) focus:bg-(--color-interactive-hover) focus:text-(--color-text-primary)",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-(--color-background-default-hover) hover:text-(--color-foreground-default) focus:bg-(--color-background-default-hover) focus:text-(--color-foreground-default)",
             className
           )}
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-(--color-text-tertiary)">
+          <p className="line-clamp-2 text-sm leading-snug text-(--color-foreground-faint)">
             {children}
           </p>
         </a>
@@ -322,12 +322,12 @@ export const WithCallToAction: Story = {
                   White-label tools and client management.
                 </ListItem>
               </div>
-              <div className="flex flex-col justify-between rounded-md bg-(--color-background-secondary) p-4">
+              <div className="flex flex-col justify-between rounded-md bg-(--color-background-subtle) p-4">
                 <div>
                   <p className="text-sm font-medium mb-1">
                     New: Design System Kit
                   </p>
-                  <p className="text-xs text-(--color-text-tertiary) leading-relaxed">
+                  <p className="text-xs text-(--color-foreground-faint) leading-relaxed">
                     Everything you need to build consistent, accessible UIs —
                     tokens, components, and docs.
                   </p>

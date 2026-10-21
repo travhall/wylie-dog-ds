@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Resources/Getting Started/Installation & Setup" />
 
@@ -8,11 +8,11 @@ Detailed setup reference for all supported environments. For a quick introductio
 
 ## Prerequisites
 
-| Requirement | Version |
-|---|---|
-| **Node.js** | 20.16+, 22.19+, or 24+ |
-| **React** | 19.2+ or 18.3+ |
-| **Package manager** | npm, yarn, or pnpm |
+| Requirement         | Version                |
+| ------------------- | ---------------------- |
+| **Node.js**         | 20.16+, 22.19+, or 24+ |
+| **React**           | 19.2+ or 18.3+         |
+| **Package manager** | npm, yarn, or pnpm     |
 
 ## Install Packages
 
@@ -54,7 +54,7 @@ Configure PostCSS:
 // postcss.config.js
 export default {
   plugins: {
-    '@tailwindcss/postcss': {},
+    "@tailwindcss/postcss": {},
   },
 };
 ```
@@ -80,9 +80,13 @@ Import styles in your root layout:
 
 ```tsx
 // app/layout.tsx
-import '@wyliedog/ui/styles';
+import "@wyliedog/ui/styles";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>{children}</body>
@@ -101,13 +105,13 @@ For dark mode, add the class to `<html>`. The design system only requires the `d
 
 ```typescript
 // vite.config.ts
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    include: ['react', 'react-dom'],
+    include: ["react", "react-dom"],
   },
 });
 ```
@@ -116,12 +120,12 @@ Import styles in your entry point:
 
 ```tsx
 // src/main.tsx
-import '@wyliedog/ui/styles';
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App';
+import "@wyliedog/ui/styles";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
   </StrictMode>
@@ -132,16 +136,16 @@ createRoot(document.getElementById('root')!).render(
 
 ```tsx
 // app/root.tsx
-import stylesheet from '@wyliedog/ui/styles?url';
+import stylesheet from "@wyliedog/ui/styles?url";
 
-export const links = () => [{ rel: 'stylesheet', href: stylesheet }];
+export const links = () => [{ rel: "stylesheet", href: stylesheet }];
 ```
 
 ## Verify Installation
 
 ```tsx
-import { Button } from '@wyliedog/ui/button';
-import { Card, CardHeader, CardTitle, CardContent } from '@wyliedog/ui/card';
+import { Button } from "@wyliedog/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@wyliedog/ui/card";
 
 export default function TestPage() {
   return (
@@ -151,7 +155,7 @@ export default function TestPage() {
           <CardTitle>Installation successful</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-(--color-text-secondary)">
+          <p className="text-(--color-foreground-muted)">
             If this card is styled correctly, the design system is working.
           </p>
           <Button>Get started</Button>
@@ -165,23 +169,27 @@ export default function TestPage() {
 ## Troubleshooting
 
 ### Styles not loading
+
 1. Confirm `@import "@wyliedog/ui/styles"` is in your root CSS file and that file is imported in your entry point
 2. Check that `@tailwindcss/postcss` is listed in your PostCSS config
 3. Clear your bundler cache and restart the dev server
 
 ### TypeScript errors on imports
+
 1. Set `moduleResolution: "bundler"` in `tsconfig.json`
 2. Restart the TypeScript language server (`Cmd/Ctrl+Shift+P` → "TypeScript: Restart TS Server")
 3. If errors persist, clear `node_modules` and reinstall: `pnpm install --frozen-lockfile`
 
 ### Dark mode not applying
+
 The system applies dark tokens via a `.dark` class on `<html>` — no separate CSS import is needed:
 
 ```html
-<html class="dark">
+<html class="dark"></html>
 ```
 
 ### Build errors
+
 1. Confirm Node.js version: `node --version` (need 20.16+, 22.19+, or 24+)
 2. Verify peer dependencies: `pnpm list react react-dom lucide-react`
 3. Clear the pnpm store: `pnpm store prune`
