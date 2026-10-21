@@ -283,11 +283,7 @@ function consumerFiles() {
     );
 }
 
-const escapeRe = (s) =>
-  s.replace(
-    /[.*+?^${}()|[\]\\]/g,
-    "\\const commands = { snapshot, expand, verify, repoint, contract };"
-  );
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /** Regex matching the dotted and CSS variable forms of the given old names. */
 function nameRegex(names) {
