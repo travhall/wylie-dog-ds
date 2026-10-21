@@ -312,10 +312,10 @@
         },
         "button.secondary.background-hover": {
           "$type": "color",
-          "$value": "{color.background.strong}",
+          "$value": "{color.background.subtle.hover}",
           "valuesByMode": {
-            "Light": "{color.background.strong}",
-            "Dark": "{color.background.strong}"
+            "Light": "{color.background.subtle.hover}",
+            "Dark": "{color.background.subtle.hover}"
           }
         },
         "button.secondary.background-active": {
@@ -1155,10 +1155,10 @@
         },
         "tabs.trigger.background-hover": {
           "$type": "color",
-          "$value": "{color.background.strong}",
+          "$value": "{color.background.subtle.hover}",
           "valuesByMode": {
-            "Light": "{color.background.strong}",
-            "Dark": "{color.background.strong}"
+            "Light": "{color.background.subtle.hover}",
+            "Dark": "{color.background.subtle.hover}"
           }
         },
         "tabs.trigger.text-hover": {
@@ -5320,10 +5320,10 @@
         },
         "badge.destructive.background-hover": {
           "$type": "color",
-          "$value": "{color.danger.background.subtle}",
+          "$value": "{color.danger.background.subtle.hover}",
           "valuesByMode": {
-            "Light": "{color.danger.background.subtle}",
-            "Dark": "{color.danger.background.subtle}"
+            "Light": "{color.danger.background.subtle.hover}",
+            "Dark": "{color.danger.background.subtle.hover}"
           }
         },
         "badge.outline.background-hover": {

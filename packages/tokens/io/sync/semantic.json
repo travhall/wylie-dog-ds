@@ -30,6 +30,15 @@
           },
           "$description": "Secondary background for sections and containers"
         },
+        "color.background.subtle.hover": {
+          "$type": "color",
+          "$value": "{color.gray.200}",
+          "valuesByMode": {
+            "Light": "{color.gray.200}",
+            "Dark": "{color.gray.800}"
+          },
+          "$description": "Hover fill for a subtle background (the secondary button, tab triggers); between subtle and subtle.active"
+        },
         "color.background.strong": {
           "$type": "color",
           "$value": "{color.gray.200}",
@@ -92,6 +101,15 @@
             "Dark": "{color.red.950}"
           },
           "$description": "Danger/error state surface background"
+        },
+        "color.danger.background.subtle.hover": {
+          "$type": "color",
+          "$value": "{color.red.100}",
+          "valuesByMode": {
+            "Light": "{color.red.100}",
+            "Dark": "{color.red.900}"
+          },
+          "$description": "Hover fill for the tinted danger background; color.danger.foreground.subtle stays readable on it"
         },
         "color.info.background.subtle": {
           "$type": "color",
@@ -206,7 +224,7 @@
           "$value": "{color.red.700}",
           "valuesByMode": {
             "Light": "{color.red.700}",
-            "Dark": "{color.red.400}"
+            "Dark": "{color.red.300}"
           },
           "$description": "Danger/error state text color"
         },

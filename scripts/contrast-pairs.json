@@ -538,7 +538,8 @@
       "backgrounds": [
         "table.row-hover",
         "table.row-selected",
-        "table.row-focus"
+        "table.row-focus",
+        "color.background.subtle.hover"
       ],
       "kind": "text"
     },
@@ -661,7 +662,8 @@
       "backgrounds": [
         "color.background.default",
         "color.background.subtle",
-        "color.background.strong"
+        "color.background.strong",
+        "color.background.subtle.hover"
       ],
       "kind": "text"
     },
@@ -739,7 +741,8 @@
       "foreground": "color.danger.foreground.subtle",
       "backgrounds": [
         "color.danger.background.subtle",
-        "color.background.default"
+        "color.background.default",
+        "color.danger.background.subtle.hover"
       ],
       "kind": "text"
     },

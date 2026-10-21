@@ -281,6 +281,7 @@
 @theme static {
   --color-background-default: oklch(0.991 0.003 264.45);
   --color-background-subtle: oklch(0.952 0.003 264.48);
+  --color-background-subtle-hover: oklch(0.87 0.003 264.48);
   --color-background-strong: oklch(0.87 0.003 264.48);
   --color-inverse-background-default: oklch(0.149 0.012 259.72);
   --color-background-raised: oklch(0.991 0.003 264.45);
@@ -288,6 +289,7 @@
   --color-success-background-subtle: oklch(0.97 0.018 156.61);
   --color-warning-background-subtle: oklch(0.97 0.04 96);
   --color-danger-background-subtle: oklch(0.97 0.013 16.7);
+  --color-danger-background-subtle-hover: oklch(0.932 0.031 17.2);
   --color-info-background-subtle: oklch(0.97 0.014 254.77);
   --color-foreground-default: oklch(0.209 0.01 268.18);
   --color-foreground-muted: oklch(0.423 0.007 264.49);
@@ -1038,7 +1040,7 @@
   --color-badge-secondary-background-hover: oklch(0.87 0.003 264.48);
   --color-badge-success-background-hover: oklch(0.488 0.134 150.11);
   --color-badge-warning-background-hover: oklch(0.714 0.143 81);
-  --color-badge-destructive-background-hover: oklch(0.97 0.013 16.7);
+  --color-badge-destructive-background-hover: oklch(0.932 0.031 17.2);
   --color-badge-outline-background-hover: oklch(0.952 0.003 264.48);
   --color-card-background-hover: oklch(0.952 0.003 264.48);
   --color-card-border-hover: oklch(0.623 0.188 259.83);

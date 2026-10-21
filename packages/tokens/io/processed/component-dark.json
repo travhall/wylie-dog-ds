@@ -151,7 +151,7 @@
   },
   "button.secondary.background-hover": {
     "$type": "color",
-    "$value": "{color.background.strong}"
+    "$value": "{color.background.subtle.hover}"
   },
   "button.secondary.background-active": {
     "$type": "color",
@@ -574,7 +574,7 @@
   },
   "tabs.trigger.background-hover": {
     "$type": "color",
-    "$value": "{color.background.strong}"
+    "$value": "{color.background.subtle.hover}"
   },
   "tabs.trigger.text-hover": {
     "$type": "color",
@@ -2659,7 +2659,7 @@
   },
   "badge.destructive.background-hover": {
     "$type": "color",
-    "$value": "{color.danger.background.subtle}"
+    "$value": "{color.danger.background.subtle.hover}"
   },
   "badge.outline.background-hover": {
     "$type": "color",

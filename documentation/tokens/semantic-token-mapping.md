@@ -142,7 +142,7 @@
 ## Tokens that are new
 
 - `color.primary.foreground.subtle`: blue 700 / blue 400. The primary-coloured text on the primary tint and on the page; used by links.
-- Still only when a component needs them: `color.background.subtle.hover` and `color.danger.background.subtle.hover`.
+- Added 2026-10-21: `color.background.subtle.hover` (gray 200 / gray 800; the secondary button and tab trigger hover) and `color.danger.background.subtle.hover` (red 100 / red 900; the tinted destructive badge hover). To keep red text readable on that Dark hover, `color.danger.foreground.subtle` in Dark moved from red 400 to red 300.
 
 ## Decisions made (2026-10-20)
 

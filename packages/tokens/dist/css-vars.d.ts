@@ -64,6 +64,7 @@ export type CssVarName =
   | "--color-background-strong"
   | "--color-background-subtle"
   | "--color-background-subtle-active"
+  | "--color-background-subtle-hover"
   | "--color-badge-default-background"
   | "--color-badge-default-background-disabled"
   | "--color-badge-default-background-focus"
@@ -207,6 +208,7 @@ export type CssVarName =
   | "--color-danger-background-default"
   | "--color-danger-background-default-hover"
   | "--color-danger-background-subtle"
+  | "--color-danger-background-subtle-hover"
   | "--color-danger-border-default"
   | "--color-danger-foreground-default"
   | "--color-danger-foreground-subtle"
@@ -1225,6 +1227,7 @@ export declare const cssVars: Readonly<{
   "colorBackgroundStrong": "--color-background-strong";
   "colorBackgroundSubtle": "--color-background-subtle";
   "colorBackgroundSubtleActive": "--color-background-subtle-active";
+  "colorBackgroundSubtleHover": "--color-background-subtle-hover";
   "colorBadgeDefaultBackground": "--color-badge-default-background";
   "colorBadgeDefaultBackgroundDisabled": "--color-badge-default-background-disabled";
   "colorBadgeDefaultBackgroundFocus": "--color-badge-default-background-focus";
@@ -1368,6 +1371,7 @@ export declare const cssVars: Readonly<{
   "colorDangerBackgroundDefault": "--color-danger-background-default";
   "colorDangerBackgroundDefaultHover": "--color-danger-background-default-hover";
   "colorDangerBackgroundSubtle": "--color-danger-background-subtle";
+  "colorDangerBackgroundSubtleHover": "--color-danger-background-subtle-hover";
   "colorDangerBorderDefault": "--color-danger-border-default";
   "colorDangerForegroundDefault": "--color-danger-foreground-default";
   "colorDangerForegroundSubtle": "--color-danger-foreground-subtle";

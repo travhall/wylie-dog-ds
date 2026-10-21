@@ -2597,6 +2597,19 @@
         "variable": "var(--color-background-subtle)",
         "description": "Secondary background for sections and containers"
       },
+      "color-background-subtle-hover": {
+        "name": "colorBackgroundSubtleHover",
+        "path": [
+          "color",
+          "background",
+          "subtle",
+          "hover"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-background-subtle-hover)",
+        "description": "Hover fill for a subtle background (the secondary button, tab triggers); between subtle and subtle.active"
+      },
       "color-background-strong": {
         "name": "colorBackgroundStrong",
         "path": [
@@ -2884,6 +2897,20 @@
         "type": "color",
         "variable": "var(--color-danger-background-subtle)",
         "description": "Danger/error state surface background"
+      },
+      "color-danger-background-subtle-hover": {
+        "name": "colorDangerBackgroundSubtleHover",
+        "path": [
+          "color",
+          "danger",
+          "background",
+          "subtle",
+          "hover"
+        ],
+        "value": "oklch(0.932 0.031 17.2)",
+        "type": "color",
+        "variable": "var(--color-danger-background-subtle-hover)",
+        "description": "Hover fill for the tinted danger background; color.danger.foreground.subtle stays readable on it"
       },
       "color-danger-foreground-default": {
         "name": "colorDangerForegroundDefault",
@@ -3776,7 +3803,7 @@
           "destructive",
           "background-hover"
         ],
-        "value": "oklch(0.97 0.013 16.7)",
+        "value": "oklch(0.932 0.031 17.2)",
         "type": "color",
         "variable": "var(--color-badge-destructive-background-hover)",
         "description": ""

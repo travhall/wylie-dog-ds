@@ -920,7 +920,7 @@ export declare const badgeDefaultBackgroundHover: "oklch(0.488 0.217 264.4)";
 export declare const badgeSecondaryBackgroundHover: "oklch(0.87 0.003 264.48)";
 export declare const badgeSuccessBackgroundHover: "oklch(0.488 0.134 150.11)";
 export declare const badgeWarningBackgroundHover: "oklch(0.714 0.143 81)";
-export declare const badgeDestructiveBackgroundHover: "oklch(0.97 0.013 16.7)";
+export declare const badgeDestructiveBackgroundHover: "oklch(0.932 0.031 17.2)";
 export declare const badgeOutlineBackgroundHover: "oklch(0.952 0.003 264.48)";
 export declare const cardBackgroundHover: "oklch(0.952 0.003 264.48)";
 export declare const cardBorderHover: "oklch(0.623 0.188 259.83)";
