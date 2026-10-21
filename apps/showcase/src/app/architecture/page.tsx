@@ -847,7 +847,7 @@ export default function ArchitecturePage() {
                       <span className="text-(--color-foreground-muted)">
                         :{" "}
                         {
-                          manifest.semantics.other[
+                          manifest.semantics.primary[
                             "color-primary-background-default"
                           ].value
                         }

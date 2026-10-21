@@ -316,23 +316,20 @@ StyleDictionary.registerFormat({
       // Route by token type
       switch (token.$type) {
         case "color":
-          // Handle nested color tokens: color.gray.50 -> { gray: { 50: value } }
-          if (firstSegment === "color" && cleanPath[1] && cleanPath[2]) {
+          // Only primitive palettes (color.<palette>.<step>, numeric step) belong
+          // in the hierarchical output. Semantic colours are exposed through the
+          // CSS variables and manifest.json; nesting them here collapsed their
+          // levels.
+          if (
+            firstSegment === "color" &&
+            cleanPath[1] &&
+            /^\d+$/.test(cleanPath[2] ?? "")
+          ) {
             const colorName = cleanPath[1].toLowerCase();
-            const shade = cleanPath[2];
             if (!hierarchical.color[colorName]) {
               hierarchical.color[colorName] = {};
             }
-            hierarchical.color[colorName][shade] = token.$value;
-          }
-          // Handle semantic colors: color.primary -> { primary: { base: value } }
-          else if (firstSegment === "color" && cleanPath[1]) {
-            const colorName = cleanPath[1].toLowerCase();
-            const shade = cleanPath[2] || "base";
-            if (!hierarchical.color[colorName]) {
-              hierarchical.color[colorName] = {};
-            }
-            hierarchical.color[colorName][shade] = token.$value;
+            hierarchical.color[colorName][cleanPath[2]] = token.$value;
           }
           break;
 
@@ -460,12 +457,17 @@ StyleDictionary.registerFormat({
         duration: {},
       },
       semantics: {
+        // Colour groups: the ground parts, then one group per role.
         background: {},
-        surface: {},
-        text: {},
+        foreground: {},
         border: {},
-        interactive: {},
-        status: {},
+        focus: {},
+        primary: {},
+        danger: {},
+        success: {},
+        warning: {},
+        info: {},
+        inverse: {},
         other: {},
         shadow: {},
         duration: {},

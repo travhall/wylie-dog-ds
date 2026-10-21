@@ -12,15 +12,6 @@
         }
       ],
       "variables": {
-        "color.background.primary": {
-          "$type": "color",
-          "$value": "{color.gray.50}",
-          "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.gray.950}"
-          },
-          "$description": "Main page background color"
-        },
         "color.background.default": {
           "$type": "color",
           "$value": "{color.gray.50}",
@@ -29,15 +20,6 @@
             "Dark": "{color.gray.950}"
           },
           "$description": "Main page background color"
-        },
-        "color.background.secondary": {
-          "$type": "color",
-          "$value": "{color.gray.100}",
-          "valuesByMode": {
-            "Light": "{color.gray.100}",
-            "Dark": "{color.gray.900}"
-          },
-          "$description": "Secondary background for sections and containers"
         },
         "color.background.subtle": {
           "$type": "color",
@@ -48,15 +30,6 @@
           },
           "$description": "Secondary background for sections and containers"
         },
-        "color.background.tertiary": {
-          "$type": "color",
-          "$value": "{color.gray.200}",
-          "valuesByMode": {
-            "Light": "{color.gray.200}",
-            "Dark": "{color.gray.800}"
-          },
-          "$description": "Tertiary background for nested elements"
-        },
         "color.background.strong": {
           "$type": "color",
           "$value": "{color.gray.200}",
@@ -65,15 +38,6 @@
             "Dark": "{color.gray.800}"
           },
           "$description": "Tertiary background for nested elements"
-        },
-        "color.background.inverse": {
-          "$type": "color",
-          "$value": "{color.gray.950}",
-          "valuesByMode": {
-            "Light": "{color.gray.950}",
-            "Dark": "{color.gray.50}"
-          },
-          "$description": "Inverted background for high contrast areas"
         },
         "color.inverse.background.default": {
           "$type": "color",
@@ -84,51 +48,6 @@
           },
           "$description": "Inverted background for high contrast areas"
         },
-        "color.background.brand": {
-          "$type": "color",
-          "$value": "{color.orange.600}",
-          "valuesByMode": {
-            "Light": "{color.orange.600}",
-            "Dark": "{color.orange.500}"
-          },
-          "$description": "Brand-colored background for emphasis"
-        },
-        "color.background.danger": {
-          "$type": "color",
-          "$value": "{color.red.600}",
-          "valuesByMode": {
-            "Light": "{color.red.600}",
-            "Dark": "{color.red.600}"
-          },
-          "$description": "Danger/error background for critical states"
-        },
-        "color.surface.primary": {
-          "$type": "color",
-          "$value": "{color.gray.50}",
-          "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.gray.950}"
-          },
-          "$description": "Primary surface for cards and panels"
-        },
-        "color.surface.secondary": {
-          "$type": "color",
-          "$value": "{color.gray.100}",
-          "valuesByMode": {
-            "Light": "{color.gray.100}",
-            "Dark": "{color.gray.900}"
-          },
-          "$description": "Secondary surface for nested containers"
-        },
-        "color.surface.raised": {
-          "$type": "color",
-          "$value": "{color.gray.50}",
-          "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.gray.950}"
-          },
-          "$description": "Raised surface for elevated components"
-        },
         "color.background.raised": {
           "$type": "color",
           "$value": "{color.gray.50}",
@@ -137,15 +56,6 @@
             "Dark": "{color.gray.950}"
           },
           "$description": "Raised surface for elevated components"
-        },
-        "color.surface.overlay": {
-          "$type": "color",
-          "$value": "{color.gray.300}",
-          "valuesByMode": {
-            "Light": "{color.gray.300}",
-            "Dark": "{color.gray.700}"
-          },
-          "$description": "Overlay surface for modals and popovers"
         },
         "color.background.overlay": {
           "$type": "color",
@@ -156,24 +66,6 @@
           },
           "$description": "Overlay surface for modals and popovers"
         },
-        "color.surface.brand": {
-          "$type": "color",
-          "$value": "{color.blue.50}",
-          "valuesByMode": {
-            "Light": "{color.blue.50}",
-            "Dark": "{color.blue.950}"
-          },
-          "$description": "Interactive brand surface (blue theme)"
-        },
-        "color.surface.success": {
-          "$type": "color",
-          "$value": "{color.green.50}",
-          "valuesByMode": {
-            "Light": "{color.green.50}",
-            "Dark": "{color.green.950}"
-          },
-          "$description": "Success state surface background"
-        },
         "color.success.background.subtle": {
           "$type": "color",
           "$value": "{color.green.50}",
@@ -182,15 +74,6 @@
             "Dark": "{color.green.950}"
           },
           "$description": "Success state surface background"
-        },
-        "color.surface.warning": {
-          "$type": "color",
-          "$value": "{color.orange.50}",
-          "valuesByMode": {
-            "Light": "{color.orange.50}",
-            "Dark": "{color.orange.950}"
-          },
-          "$description": "Warning state surface background"
         },
         "color.warning.background.subtle": {
           "$type": "color",
@@ -201,15 +84,6 @@
           },
           "$description": "Warning state surface background"
         },
-        "color.surface.danger": {
-          "$type": "color",
-          "$value": "{color.red.50}",
-          "valuesByMode": {
-            "Light": "{color.red.50}",
-            "Dark": "{color.red.950}"
-          },
-          "$description": "Danger/error state surface background"
-        },
         "color.danger.background.subtle": {
           "$type": "color",
           "$value": "{color.red.50}",
@@ -218,15 +92,6 @@
             "Dark": "{color.red.950}"
           },
           "$description": "Danger/error state surface background"
-        },
-        "color.surface.info": {
-          "$type": "color",
-          "$value": "{color.blue.50}",
-          "valuesByMode": {
-            "Light": "{color.blue.50}",
-            "Dark": "{color.blue.950}"
-          },
-          "$description": "Informational state surface background"
         },
         "color.info.background.subtle": {
           "$type": "color",
@@ -237,15 +102,6 @@
           },
           "$description": "Informational state surface background"
         },
-        "color.text.primary": {
-          "$type": "color",
-          "$value": "{color.gray.900}",
-          "valuesByMode": {
-            "Light": "{color.gray.900}",
-            "Dark": "{color.gray.100}"
-          },
-          "$description": "Primary text for headings and body content"
-        },
         "color.foreground.default": {
           "$type": "color",
           "$value": "{color.gray.900}",
@@ -254,15 +110,6 @@
             "Dark": "{color.gray.100}"
           },
           "$description": "Primary text for headings and body content"
-        },
-        "color.text.secondary": {
-          "$type": "color",
-          "$value": "{color.gray.700}",
-          "valuesByMode": {
-            "Light": "{color.gray.700}",
-            "Dark": "{color.gray.300}"
-          },
-          "$description": "Secondary text for supporting content"
         },
         "color.foreground.muted": {
           "$type": "color",
@@ -273,15 +120,6 @@
           },
           "$description": "Secondary text for supporting content"
         },
-        "color.text.tertiary": {
-          "$type": "color",
-          "$value": "{color.gray.600}",
-          "valuesByMode": {
-            "Light": "{color.gray.600}",
-            "Dark": "{color.gray.500}"
-          },
-          "$description": "Tertiary text for captions and hints"
-        },
         "color.foreground.faint": {
           "$type": "color",
           "$value": "{color.gray.600}",
@@ -290,15 +128,6 @@
             "Dark": "{color.gray.500}"
           },
           "$description": "Tertiary text for captions and hints"
-        },
-        "color.text.disabled": {
-          "$type": "color",
-          "$value": "{color.gray.400}",
-          "valuesByMode": {
-            "Light": "{color.gray.400}",
-            "Dark": "{color.gray.600}"
-          },
-          "$description": "Disabled text color"
         },
         "color.foreground.default.disabled": {
           "$type": "color",
@@ -309,15 +138,6 @@
           },
           "$description": "Disabled text color"
         },
-        "color.text.inverse": {
-          "$type": "color",
-          "$value": "{color.gray.50}",
-          "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.gray.900}"
-          },
-          "$description": "Inverted text for dark backgrounds"
-        },
         "color.inverse.foreground.default": {
           "$type": "color",
           "$value": "{color.gray.50}",
@@ -326,15 +146,6 @@
             "Dark": "{color.gray.900}"
           },
           "$description": "Inverted text for dark backgrounds"
-        },
-        "color.text.on-solid": {
-          "$type": "color",
-          "$value": "{color.gray.50}",
-          "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.gray.50}"
-          },
-          "$description": "Mode-invariant light text for solid, saturated backgrounds (buttons, badges, toasts) that don't change between modes — do not use with color.background.inverse, which is what color.text.inverse is for"
         },
         "color.primary.foreground.default": {
           "$type": "color",
@@ -372,24 +183,6 @@
           },
           "$description": "Foreground on the solid warning fill; pairs with color.warning.background.default"
         },
-        "color.text.brand": {
-          "$type": "color",
-          "$value": "{color.orange.600}",
-          "valuesByMode": {
-            "Light": "{color.orange.600}",
-            "Dark": "{color.orange.500}"
-          },
-          "$description": "Brand-colored text for emphasis"
-        },
-        "color.text.success": {
-          "$type": "color",
-          "$value": "{color.green.700}",
-          "valuesByMode": {
-            "Light": "{color.green.700}",
-            "Dark": "{color.green.400}"
-          },
-          "$description": "Success state text color"
-        },
         "color.success.foreground.subtle": {
           "$type": "color",
           "$value": "{color.green.700}",
@@ -398,15 +191,6 @@
             "Dark": "{color.green.400}"
           },
           "$description": "Success state text color"
-        },
-        "color.text.warning": {
-          "$type": "color",
-          "$value": "{color.orange.700}",
-          "valuesByMode": {
-            "Light": "{color.orange.700}",
-            "Dark": "{color.orange.400}"
-          },
-          "$description": "Warning state text color"
         },
         "color.warning.foreground.subtle": {
           "$type": "color",
@@ -417,15 +201,6 @@
           },
           "$description": "Warning state text color"
         },
-        "color.text.danger": {
-          "$type": "color",
-          "$value": "{color.red.700}",
-          "valuesByMode": {
-            "Light": "{color.red.700}",
-            "Dark": "{color.red.400}"
-          },
-          "$description": "Danger/error state text color"
-        },
         "color.danger.foreground.subtle": {
           "$type": "color",
           "$value": "{color.red.700}",
@@ -434,15 +209,6 @@
             "Dark": "{color.red.400}"
           },
           "$description": "Danger/error state text color"
-        },
-        "color.text.info": {
-          "$type": "color",
-          "$value": "{color.blue.700}",
-          "valuesByMode": {
-            "Light": "{color.blue.700}",
-            "Dark": "{color.blue.400}"
-          },
-          "$description": "Informational text color"
         },
         "color.info.foreground.subtle": {
           "$type": "color",
@@ -462,15 +228,6 @@
           },
           "$description": "Primary-coloured text on the subtle primary tint and on the page (links); pairs with color.primary.background.subtle"
         },
-        "color.border.primary": {
-          "$type": "color",
-          "$value": "{color.gray.300}",
-          "valuesByMode": {
-            "Light": "{color.gray.300}",
-            "Dark": "{color.gray.700}"
-          },
-          "$description": "Primary border for cards and containers"
-        },
         "color.border.default": {
           "$type": "color",
           "$value": "{color.gray.300}",
@@ -479,15 +236,6 @@
             "Dark": "{color.gray.700}"
           },
           "$description": "Primary border for cards and containers"
-        },
-        "color.border.secondary": {
-          "$type": "color",
-          "$value": "{color.gray.200}",
-          "valuesByMode": {
-            "Light": "{color.gray.200}",
-            "Dark": "{color.gray.800}"
-          },
-          "$description": "Secondary border for subtle dividers"
         },
         "color.border.subtle": {
           "$type": "color",
@@ -507,15 +255,6 @@
           },
           "$description": "Stronger border for form controls and indicators that must reach 3:1 against the page"
         },
-        "color.border.focus": {
-          "$type": "color",
-          "$value": "{color.blue.500}",
-          "valuesByMode": {
-            "Light": "{color.blue.500}",
-            "Dark": "{color.blue.500}"
-          },
-          "$description": "Focus ring border color"
-        },
         "color.focus.ring": {
           "$type": "color",
           "$value": "{color.blue.500}",
@@ -524,24 +263,6 @@
             "Dark": "{color.blue.500}"
           },
           "$description": "Focus ring border color"
-        },
-        "color.border.brand": {
-          "$type": "color",
-          "$value": "{color.orange.600}",
-          "valuesByMode": {
-            "Light": "{color.orange.600}",
-            "Dark": "{color.orange.500}"
-          },
-          "$description": "Brand-colored border for emphasis"
-        },
-        "color.border.success": {
-          "$type": "color",
-          "$value": "{color.green.600}",
-          "valuesByMode": {
-            "Light": "{color.green.600}",
-            "Dark": "{color.green.600}"
-          },
-          "$description": "Success state border color"
         },
         "color.success.border.default": {
           "$type": "color",
@@ -552,15 +273,6 @@
           },
           "$description": "Success state border color"
         },
-        "color.border.warning": {
-          "$type": "color",
-          "$value": "{color.orange.600}",
-          "valuesByMode": {
-            "Light": "{color.orange.600}",
-            "Dark": "{color.orange.600}"
-          },
-          "$description": "Warning state border color"
-        },
         "color.warning.border.default": {
           "$type": "color",
           "$value": "{color.orange.600}",
@@ -569,15 +281,6 @@
             "Dark": "{color.orange.600}"
           },
           "$description": "Warning state border color"
-        },
-        "color.border.danger": {
-          "$type": "color",
-          "$value": "{color.red.600}",
-          "valuesByMode": {
-            "Light": "{color.red.600}",
-            "Dark": "{color.red.600}"
-          },
-          "$description": "Danger/error state border color"
         },
         "color.danger.border.default": {
           "$type": "color",
@@ -588,15 +291,6 @@
           },
           "$description": "Danger/error state border color"
         },
-        "color.interactive.primary": {
-          "$type": "color",
-          "$value": "{color.blue.600}",
-          "valuesByMode": {
-            "Light": "{color.blue.600}",
-            "Dark": "{color.blue.600}"
-          },
-          "$description": "Primary interactive element background (buttons, links)"
-        },
         "color.primary.background.default": {
           "$type": "color",
           "$value": "{color.blue.600}",
@@ -605,15 +299,6 @@
             "Dark": "{color.blue.600}"
           },
           "$description": "Primary interactive element background (buttons, links)"
-        },
-        "color.interactive.primary-hover": {
-          "$type": "color",
-          "$value": "{color.blue.700}",
-          "valuesByMode": {
-            "Light": "{color.blue.700}",
-            "Dark": "{color.blue.700}"
-          },
-          "$description": "Primary interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
         },
         "color.primary.background.default.hover": {
           "$type": "color",
@@ -624,15 +309,6 @@
           },
           "$description": "Primary interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
         },
-        "color.interactive.primary-active": {
-          "$type": "color",
-          "$value": "{color.blue.800}",
-          "valuesByMode": {
-            "Light": "{color.blue.800}",
-            "Dark": "{color.blue.800}"
-          },
-          "$description": "Primary interactive pressed/active state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
-        },
         "color.primary.background.default.active": {
           "$type": "color",
           "$value": "{color.blue.800}",
@@ -641,33 +317,6 @@
             "Dark": "{color.blue.800}"
           },
           "$description": "Primary interactive pressed/active state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
-        },
-        "color.interactive.secondary": {
-          "$type": "color",
-          "$value": "{color.gray.100}",
-          "valuesByMode": {
-            "Light": "{color.gray.100}",
-            "Dark": "{color.gray.800}"
-          },
-          "$description": "Secondary interactive element background"
-        },
-        "color.interactive.secondary-hover": {
-          "$type": "color",
-          "$value": "{color.gray.200}",
-          "valuesByMode": {
-            "Light": "{color.gray.200}",
-            "Dark": "{color.gray.700}"
-          },
-          "$description": "Secondary interactive hover state"
-        },
-        "color.interactive.secondary-active": {
-          "$type": "color",
-          "$value": "{color.gray.300}",
-          "valuesByMode": {
-            "Light": "{color.gray.300}",
-            "Dark": "{color.gray.600}"
-          },
-          "$description": "Secondary interactive pressed/active state"
         },
         "color.background.subtle.active": {
           "$type": "color",
@@ -678,15 +327,6 @@
           },
           "$description": "Secondary interactive pressed/active state"
         },
-        "color.interactive.success": {
-          "$type": "color",
-          "$value": "{color.green.700}",
-          "valuesByMode": {
-            "Light": "{color.green.700}",
-            "Dark": "{color.green.700}"
-          },
-          "$description": "Success interactive element background"
-        },
         "color.success.background.default": {
           "$type": "color",
           "$value": "{color.green.700}",
@@ -695,15 +335,6 @@
             "Dark": "{color.green.700}"
           },
           "$description": "Success interactive element background"
-        },
-        "color.interactive.success-hover": {
-          "$type": "color",
-          "$value": "{color.green.800}",
-          "valuesByMode": {
-            "Light": "{color.green.800}",
-            "Dark": "{color.green.800}"
-          },
-          "$description": "Success interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
         },
         "color.success.background.default.hover": {
           "$type": "color",
@@ -714,15 +345,6 @@
           },
           "$description": "Success interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
         },
-        "color.interactive.warning": {
-          "$type": "color",
-          "$value": "{color.orange.700}",
-          "valuesByMode": {
-            "Light": "{color.orange.700}",
-            "Dark": "{color.orange.700}"
-          },
-          "$description": "Warning interactive element background"
-        },
         "color.warning.background.default": {
           "$type": "color",
           "$value": "{color.orange.700}",
@@ -731,15 +353,6 @@
             "Dark": "{color.orange.700}"
           },
           "$description": "Warning interactive element background"
-        },
-        "color.interactive.warning-hover": {
-          "$type": "color",
-          "$value": "{color.orange.800}",
-          "valuesByMode": {
-            "Light": "{color.orange.800}",
-            "Dark": "{color.orange.800}"
-          },
-          "$description": "Warning interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
         },
         "color.warning.background.default.hover": {
           "$type": "color",
@@ -750,15 +363,6 @@
           },
           "$description": "Warning interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
         },
-        "color.interactive.danger": {
-          "$type": "color",
-          "$value": "{color.red.600}",
-          "valuesByMode": {
-            "Light": "{color.red.600}",
-            "Dark": "{color.red.600}"
-          },
-          "$description": "Danger interactive element background"
-        },
         "color.danger.background.default": {
           "$type": "color",
           "$value": "{color.red.600}",
@@ -767,15 +371,6 @@
             "Dark": "{color.red.600}"
           },
           "$description": "Danger interactive element background"
-        },
-        "color.interactive.danger-hover": {
-          "$type": "color",
-          "$value": "{color.red.700}",
-          "valuesByMode": {
-            "Light": "{color.red.700}",
-            "Dark": "{color.red.700}"
-          },
-          "$description": "Danger interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
         },
         "color.danger.background.default.hover": {
           "$type": "color",
@@ -786,231 +381,6 @@
           },
           "$description": "Danger interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
         },
-        "color.primary.base": {
-          "$type": "color",
-          "$value": "{color.orange.700}",
-          "valuesByMode": {
-            "Light": "{color.orange.700}",
-            "Dark": "{color.orange.400}"
-          },
-          "$description": "Brand primary color (orange) - base state"
-        },
-        "color.primary.hover": {
-          "$type": "color",
-          "$value": "{color.orange.800}",
-          "valuesByMode": {
-            "Light": "{color.orange.800}",
-            "Dark": "{color.orange.500}"
-          },
-          "$description": "Brand primary color - hover state"
-        },
-        "color.primary.active": {
-          "$type": "color",
-          "$value": "{color.orange.900}",
-          "valuesByMode": {
-            "Light": "{color.orange.900}",
-            "Dark": "{color.orange.600}"
-          },
-          "$description": "Brand primary color - active/pressed state"
-        },
-        "color.primary.surface": {
-          "$type": "color",
-          "$value": "{color.orange.50}",
-          "valuesByMode": {
-            "Light": "{color.orange.50}",
-            "Dark": "{color.orange.950}"
-          },
-          "$description": "Surface background for brand primary themed containers"
-        },
-        "color.primary.text": {
-          "$type": "color",
-          "$value": "{color.gray.950}",
-          "valuesByMode": {
-            "Light": "{color.gray.950}",
-            "Dark": "{color.gray.50}"
-          },
-          "$description": "Text color on brand primary backgrounds"
-        },
-        "color.secondary.base": {
-          "$type": "color",
-          "$value": "{color.gray.200}",
-          "valuesByMode": {
-            "Light": "{color.gray.200}",
-            "Dark": "{color.gray.100}"
-          },
-          "$description": "Secondary variant - base state"
-        },
-        "color.secondary.hover": {
-          "$type": "color",
-          "$value": "{color.gray.300}",
-          "valuesByMode": {
-            "Light": "{color.gray.300}",
-            "Dark": "{color.gray.200}"
-          },
-          "$description": "Secondary variant - hover state"
-        },
-        "color.secondary.active": {
-          "$type": "color",
-          "$value": "{color.gray.400}",
-          "valuesByMode": {
-            "Light": "{color.gray.400}",
-            "Dark": "{color.gray.300}"
-          },
-          "$description": "Secondary variant - active/pressed state"
-        },
-        "color.secondary.surface": {
-          "$type": "color",
-          "$value": "{color.gray.100}",
-          "valuesByMode": {
-            "Light": "{color.gray.100}",
-            "Dark": "{color.gray.900}"
-          },
-          "$description": "Secondary surface background"
-        },
-        "color.secondary.text": {
-          "$type": "color",
-          "$value": "{color.gray.900}",
-          "valuesByMode": {
-            "Light": "{color.gray.900}",
-            "Dark": "{color.gray.100}"
-          },
-          "$description": "Text color on secondary backgrounds"
-        },
-        "color.accent.hover": {
-          "$type": "color",
-          "$value": "{color.purple.700}",
-          "valuesByMode": {
-            "Light": "{color.purple.700}",
-            "Dark": "{color.purple.500}"
-          },
-          "$description": "Accent color (purple) - hover state"
-        },
-        "color.accent.active": {
-          "$type": "color",
-          "$value": "{color.purple.800}",
-          "valuesByMode": {
-            "Light": "{color.purple.800}",
-            "Dark": "{color.purple.400}"
-          },
-          "$description": "Accent color (purple) - active/pressed state"
-        },
-        "color.accent.surface": {
-          "$type": "color",
-          "$value": "{color.purple.50}",
-          "valuesByMode": {
-            "Light": "{color.purple.50}",
-            "Dark": "{color.purple.950}"
-          },
-          "$description": "Accent surface background"
-        },
-        "color.accent.text": {
-          "$type": "color",
-          "$value": "{color.purple.900}",
-          "valuesByMode": {
-            "Light": "{color.purple.900}",
-            "Dark": "{color.purple.50}"
-          },
-          "$description": "Text color on accent backgrounds"
-        },
-        "color.accent.highlight": {
-          "$type": "color",
-          "$value": "{color.pink.300}",
-          "valuesByMode": {
-            "Light": "{color.pink.300}",
-            "Dark": "{color.pink.700}"
-          },
-          "$description": "Highlight accent for special emphasis"
-        },
-        "color.neutral.base": {
-          "$type": "color",
-          "$value": "{color.gray.600}",
-          "valuesByMode": {
-            "Light": "{color.gray.600}",
-            "Dark": "{color.gray.100}"
-          },
-          "$description": "Neutral base color for icons and borders"
-        },
-        "color.neutral.muted": {
-          "$type": "color",
-          "$value": "{color.gray.400}",
-          "valuesByMode": {
-            "Light": "{color.gray.400}",
-            "Dark": "{color.gray.300}"
-          },
-          "$description": "Muted neutral for de-emphasized elements"
-        },
-        "color.neutral.subtle": {
-          "$type": "color",
-          "$value": "{color.gray.200}",
-          "valuesByMode": {
-            "Light": "{color.gray.200}",
-            "Dark": "{color.gray.500}"
-          },
-          "$description": "Subtle neutral for backgrounds and borders"
-        },
-        "color.neutral.on": {
-          "$type": "color",
-          "$value": "{color.gray.900}",
-          "valuesByMode": {
-            "Light": "{color.gray.900}",
-            "Dark": "{color.gray.50}"
-          },
-          "$description": "Text color on neutral backgrounds"
-        },
-        "color.status.success": {
-          "$type": "color",
-          "$value": "{color.green.700}",
-          "valuesByMode": {
-            "Light": "{color.green.700}",
-            "Dark": "{color.green.400}"
-          },
-          "$description": "Success status indicator color"
-        },
-        "color.status.warning": {
-          "$type": "color",
-          "$value": "{color.orange.700}",
-          "valuesByMode": {
-            "Light": "{color.orange.700}",
-            "Dark": "{color.orange.400}"
-          },
-          "$description": "Warning status indicator color"
-        },
-        "color.status.danger": {
-          "$type": "color",
-          "$value": "{color.red.600}",
-          "valuesByMode": {
-            "Light": "{color.red.600}",
-            "Dark": "{color.red.500}"
-          },
-          "$description": "Danger/error status indicator color"
-        },
-        "color.status.info": {
-          "$type": "color",
-          "$value": "{color.blue.600}",
-          "valuesByMode": {
-            "Light": "{color.blue.600}",
-            "Dark": "{color.blue.500}"
-          },
-          "$description": "Informational status indicator color"
-        },
-        "color.status.highlight": {
-          "$type": "color",
-          "$value": "{color.yellow.300}",
-          "valuesByMode": {
-            "Light": "{color.yellow.300}",
-            "Dark": "{color.yellow.400}"
-          },
-          "$description": "Highlight status for emphasis"
-        },
-        "color.interactive.hover": {
-          "$type": "color",
-          "$value": "{color.gray.100}",
-          "valuesByMode": {
-            "Light": "{color.gray.100}",
-            "Dark": "{color.gray.800}"
-          },
-          "$description": "Generic hover background for interactive elements"
-        },
         "color.background.default.hover": {
           "$type": "color",
           "$value": "{color.gray.100}",
@@ -1019,15 +389,6 @@
             "Dark": "{color.gray.800}"
           },
           "$description": "Generic hover background for interactive elements"
-        },
-        "color.interactive.pressed": {
-          "$type": "color",
-          "$value": "{color.gray.200}",
-          "valuesByMode": {
-            "Light": "{color.gray.200}",
-            "Dark": "{color.gray.700}"
-          },
-          "$description": "Pressed/active state background"
         },
         "color.background.default.active": {
           "$type": "color",
@@ -1038,15 +399,6 @@
           },
           "$description": "Pressed/active state background"
         },
-        "color.interactive.focus": {
-          "$type": "color",
-          "$value": "{color.blue.50}",
-          "valuesByMode": {
-            "Light": "{color.blue.50}",
-            "Dark": "{color.blue.950}"
-          },
-          "$description": "Focus state background"
-        },
         "color.primary.background.subtle": {
           "$type": "color",
           "$value": "{color.blue.50}",
@@ -1055,15 +407,6 @@
             "Dark": "{color.blue.950}"
           },
           "$description": "Subtle primary tint (focus and selection fills); pairs with color.primary.foreground.subtle"
-        },
-        "color.interactive.disabled": {
-          "$type": "color",
-          "$value": "{color.gray.100}",
-          "valuesByMode": {
-            "Light": "{color.gray.100}",
-            "Dark": "{color.gray.800}"
-          },
-          "$description": "Disabled state background"
         },
         "color.background.default.disabled": {
           "$type": "color",

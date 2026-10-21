@@ -1,6 +1,6 @@
-# Semantic colour token mapping (proposed)
+# Semantic colour token mapping
 
-**Status:** Proposed. Nothing has been renamed. This is the old-to-new table for the model in [semantic-pairing-model.md](semantic-pairing-model.md), generated from the token files on 2026-10-20 so counts are measured, not estimated.
+**Status:** Executed on 2026-10-20. This is the record of the rename (old name, new name, action); the old names no longer exist. It is the old-to-new table for the model in [semantic-pairing-model.md](semantic-pairing-model.md), generated from the token files on 2026-10-20 so counts are measured, not estimated.
 
 ## How to read it
 
