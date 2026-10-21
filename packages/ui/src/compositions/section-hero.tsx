@@ -9,10 +9,10 @@ export const sectionHeroVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-(--color-background-primary)",
+        default: "bg-(--color-background-default)",
         gradient:
-          "bg-gradient-to-br from-(--color-interactive-primary)/10 via-(--color-background-primary) to-(--color-accent-surface)/10",
-        centered: "bg-(--color-background-primary) text-center",
+          "bg-gradient-to-br from-(--color-primary-background-default)/10 via-(--color-background-default) to-(--color-primary-background-subtle)/10",
+        centered: "bg-(--color-background-default) text-center",
       },
     },
     defaultVariants: {
@@ -109,7 +109,7 @@ export const SectionHero = React.forwardRef<HTMLElement, SectionHeroProps>(
               {description && (
                 <p
                   className={cn(
-                    "text-(length:--font-size-lg) md:text-(length:--font-size-xl) text-(--color-text-secondary) max-w-2xl",
+                    "text-(length:--font-size-lg) md:text-(length:--font-size-xl) text-(--color-foreground-muted) max-w-2xl",
                     isCentered && "text-center"
                   )}
                 >

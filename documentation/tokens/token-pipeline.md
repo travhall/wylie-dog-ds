@@ -46,7 +46,7 @@ Each file is an array with one object per collection, holding its `modes` and a 
         { "modeId": "mode:semantic:dark", "name": "Dark" }
       ],
       "variables": {
-        "color.background.primary": {
+        "color.background.default": {
           "$type": "color",
           "$value": "{color.gray.50}",
           "valuesByMode": {
@@ -114,7 +114,7 @@ The CSS is emitted in tiers:
   /* component tokens: internal, not exposed as utilities */
 }
 .dark {
-  --color-background-primary: oklch(0.149 0.012 259.72);
+  --color-background-default: oklch(0.149 0.012 259.72);
 }
 ```
 
@@ -127,14 +127,14 @@ import { color } from "@wyliedog/tokens/hierarchical";
 import { colorGray50 } from "@wyliedog/tokens";
 ```
 
-Apps normally do not import the JS; they import the stylesheet through `@wyliedog/ui/styles` and use the variables as `bg-(--color-background-primary)`. See [STYLING_ARCHITECTURE.md](../STYLING_ARCHITECTURE.md).
+Apps normally do not import the JS; they import the stylesheet through `@wyliedog/ui/styles` and use the variables as `bg-(--color-background-default)`. See [STYLING_ARCHITECTURE.md](../STYLING_ARCHITECTURE.md).
 
 ## Resolution chain
 
 Component tokens alias semantic tokens, which alias primitives, which hold the value:
 
 ```text
-component token  →  {color.interactive.primary}  →  {color.<scale>.<step>}  →  oklch(...)
+component token  →  {color.primary.background.default}  →  {color.<scale>.<step>}  →  oklch(...)
 ```
 
 Style Dictionary resolves the aliases during the build; the CSS contains resolved values.

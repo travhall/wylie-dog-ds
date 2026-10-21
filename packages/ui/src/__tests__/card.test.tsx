@@ -406,7 +406,7 @@ describe("Card", () => {
       expect(card).toHaveClass("focus:bg-(--color-card-background-focus)");
       expect(card).toHaveClass("focus:outline-none");
       expect(card).toHaveClass("focus:ring-(length:--space-focus-ring-width)");
-      expect(card).toHaveClass("focus:ring-(--color-border-focus)");
+      expect(card).toHaveClass("focus:ring-(--color-focus-ring)");
     });
 
     it("should apply active and disabled state token classes when interactive", () => {

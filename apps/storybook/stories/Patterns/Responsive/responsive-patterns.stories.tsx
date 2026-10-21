@@ -40,7 +40,7 @@ export const ResponsiveCardGrid: Story = {
     <div className="space-y-4">
       <div>
         <h2 className="text-xl font-semibold mb-1">Product Catalog</h2>
-        <p className="text-sm text-(--color-text-tertiary)">
+        <p className="text-sm text-(--color-foreground-faint)">
           Viewing on mobile — cards stack in a single column.
         </p>
       </div>
@@ -51,7 +51,7 @@ export const ResponsiveCardGrid: Story = {
               <CardTitle className="text-base">{name}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-(--color-text-tertiary) mb-3">
+              <p className="text-sm text-(--color-foreground-faint) mb-3">
                 Everything you need to get started with {name.toLowerCase()}.
               </p>
               <Button size="sm" className="w-full">
@@ -82,7 +82,7 @@ export const ResponsiveCardGridDesktop: Story = {
     <div className="space-y-4">
       <div>
         <h2 className="text-xl font-semibold mb-1">Product Catalog</h2>
-        <p className="text-sm text-(--color-text-tertiary)">
+        <p className="text-sm text-(--color-foreground-faint)">
           Viewing on desktop — cards display in three columns.
         </p>
       </div>
@@ -93,7 +93,7 @@ export const ResponsiveCardGridDesktop: Story = {
               <CardTitle className="text-base">{name}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-(--color-text-tertiary) mb-3">
+              <p className="text-sm text-(--color-foreground-faint) mb-3">
                 Everything you need to get started with {name.toLowerCase()}.
               </p>
               <Button size="sm" className="w-full">
@@ -123,8 +123,8 @@ export const ResponsiveNavigation: Story = {
   },
   render: () => (
     <div className="space-y-4">
-      <div className="flex items-center justify-between p-4 border rounded-lg bg-(--color-surface-primary)">
-        <span className="font-semibold text-(--color-text-primary)">
+      <div className="flex items-center justify-between p-4 border rounded-lg bg-(--color-background-default)">
+        <span className="font-semibold text-(--color-foreground-default)">
           Wylie Dog DS
         </span>
         <div className="flex items-center gap-2">
@@ -136,7 +136,7 @@ export const ResponsiveNavigation: Story = {
       </div>
       <Card>
         <CardContent className="pt-6">
-          <p className="text-sm text-(--color-text-tertiary)">
+          <p className="text-sm text-(--color-foreground-faint)">
             On mobile, navigation items collapse into a hamburger-style menu.
             The logo and key badges remain visible.
           </p>
@@ -164,7 +164,7 @@ export const ResponsiveForm: Story = {
     <div className="space-y-6 max-w-2xl">
       <div>
         <h2 className="text-xl font-semibold mb-1">Contact Form</h2>
-        <p className="text-sm text-(--color-text-tertiary)">
+        <p className="text-sm text-(--color-foreground-faint)">
           At tablet width, form fields can use a two-column layout.
         </p>
       </div>
@@ -179,8 +179,8 @@ export const ResponsiveForm: Story = {
             ].map((field) => (
               <div key={field.label} className="space-y-1">
                 <Label>{field.label}</Label>
-                <div className="h-9 rounded border border-(--color-border-primary) bg-(--color-surface-primary) px-3 flex items-center">
-                  <span className="text-sm text-(--color-text-tertiary)">
+                <div className="h-9 rounded border border-(--color-border-default) bg-(--color-background-default) px-3 flex items-center">
+                  <span className="text-sm text-(--color-foreground-faint)">
                     {field.placeholder}
                   </span>
                 </div>

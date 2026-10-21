@@ -10,7 +10,10 @@ describe("findCssVar", () => {
 
   it("does not match a longer name that merely starts with the same text", () => {
     expect(
-      findCssVar("  --color-text-primary-hover: red;", "--color-text-primary")
+      findCssVar(
+        "  --color-text-primary-hover: red;",
+        "--color-foreground-default"
+      )
     ).toBeNull();
   });
 
@@ -21,7 +24,7 @@ describe("findCssVar", () => {
 
 describe("getColorModes", () => {
   it("reads light and dark values from the built token CSS", () => {
-    const { light, dark } = getColorModes("--color-background-primary");
+    const { light, dark } = getColorModes("--color-background-default");
     expect(light).toMatch(/^oklch\(/);
     expect(dark).toMatch(/^oklch\(/);
     expect(light).not.toBe(dark);

@@ -25,16 +25,16 @@ function CompCard({
 }) {
   const dotGrid = {
     backgroundImage:
-      "radial-gradient(color-mix(in oklch, var(--color-text-primary) 8%, transparent) 1px, transparent 1px)",
+      "radial-gradient(color-mix(in oklch, var(--color-foreground-default) 8%, transparent) 1px, transparent 1px)",
     backgroundSize: "16px 16px",
   };
   return (
     <article
-      className="rounded-xl border border-(--color-border-secondary) bg-(--color-surface-primary) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all"
+      className="rounded-xl border border-(--color-border-subtle) bg-(--color-background-default) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
       style={{ boxShadow: "var(--shadow-sm)" }}
     >
       <div
-        className="relative bg-(--color-background-secondary) border-b border-(--color-border-primary) h-42 flex items-center justify-center overflow-hidden p-4"
+        className="relative bg-(--color-background-subtle) border-b border-(--color-border-default) h-42 flex items-center justify-center overflow-hidden p-4"
         style={dotGrid}
       >
         <div className="relative z-10 flex items-center justify-center w-full h-full">
@@ -42,15 +42,15 @@ function CompCard({
         </div>
       </div>
       <div className="p-4 flex flex-col gap-1 flex-1">
-        <p className="font-semibold text-sm text-(--color-text-primary)">
+        <p className="font-semibold text-sm text-(--color-foreground-default)">
           {name}
         </p>
-        <p className="text-xs text-(--color-text-secondary) leading-relaxed">
+        <p className="text-xs text-(--color-foreground-muted) leading-relaxed">
           {desc}
         </p>
         <a
           href={getStoryDocsUrl(href)}
-          className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary) hover:text-(--color-interactive-primary) transition-colors"
+          className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) hover:text-(--color-primary-background-default) transition-colors"
         >
           Storybook
           <svg
@@ -83,17 +83,17 @@ function SectionHeader({
   return (
     <header className="grid lg:grid-cols-12 gap-6 mb-10">
       <div className="lg:col-span-5">
-        <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+        <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
           {num} · Category
         </span>
-        <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-text-primary)">
+        <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
           {title}
         </h2>
       </div>
       <div className="lg:col-span-7 flex lg:items-end">
-        <p className="text-(--color-text-secondary)">
+        <p className="text-(--color-foreground-muted)">
           {desc}{" "}
-          <span className="font-mono text-xs text-(--color-text-tertiary) ml-2">
+          <span className="font-mono text-xs text-(--color-foreground-faint) ml-2">
             {count} components
           </span>
         </p>
@@ -118,7 +118,7 @@ function Av({
 }) {
   return (
     <span
-      className="inline-grid place-items-center rounded-full font-semibold border-2 border-(--color-surface-primary)"
+      className="inline-grid place-items-center rounded-full font-semibold border-2 border-(--color-background-default)"
       style={{
         background: bg,
         color: text,
@@ -137,14 +137,14 @@ export default function ComponentsPage() {
   const categoryCount = (dirName: string) =>
     meta.componentCategories.find((c) => c.dirName === dirName)?.count ?? 0;
   return (
-    <div className="min-h-screen bg-(--color-background-primary)">
+    <div className="min-h-screen bg-(--color-background-default)">
       {/* ── HERO ───────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-(--color-border-primary)">
+      <section className="relative overflow-hidden border-b border-(--color-border-default)">
         <div
           className="absolute inset-0 opacity-60"
           style={{
             backgroundImage:
-              "radial-gradient(color-mix(in oklch, var(--color-text-primary) 14%, transparent) 1px, transparent 1px)",
+              "radial-gradient(color-mix(in oklch, var(--color-foreground-default) 14%, transparent) 1px, transparent 1px)",
             backgroundSize: "24px 24px",
           }}
         />
@@ -152,33 +152,35 @@ export default function ComponentsPage() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-interactive-primary) 22%, transparent) 0%, transparent 60%)",
+              "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-primary-background-default) 22%, transparent) 0%, transparent 60%)",
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* left */}
             <div className="lg:col-span-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-primary) bg-(--color-surface-primary)/60 px-3 py-1">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">
+              <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-muted)">
                   03 · Components
                 </span>
-                <span className="text-(--color-text-tertiary)">·</span>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <span className="text-(--color-foreground-faint)">·</span>
+                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                   @wyliedog/ui v{meta.versions.ui}
                 </span>
               </div>
 
-              <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.25rem] font-semibold tracking-tight leading-[0.98] text-(--color-text-primary)">
+              <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.25rem] font-semibold tracking-tight leading-[0.98] text-(--color-foreground-default)">
                 {meta.components.count} components.
                 <br />
                 All tokens.{" "}
-                <span style={{ color: "var(--color-interactive-primary)" }}>
+                <span
+                  style={{ color: "var(--color-primary-background-default)" }}
+                >
                   All accessible.
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-lg text-lg text-(--color-text-secondary) text-balance">
+              <p className="mt-6 max-w-lg text-lg text-(--color-foreground-muted) text-balance">
                 The full Wylie Dog catalog — every component is a typed React
                 export, wired to the OKLCH token system, with Radix UI
                 primitives underneath where they exist, and tested for{" "}
@@ -199,10 +201,10 @@ export default function ComponentsPage() {
                   { label: "Tested for", value: "WCAG 2.2" },
                 ].map(({ label, value }) => (
                   <div key={label} className="self-stretch">
-                    <dt className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+                    <dt className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                       {label}
                     </dt>
-                    <dd className="mt-1 font-serif text-2xl font-semibold text-(--color-text-primary)">
+                    <dd className="mt-1 font-serif text-2xl font-semibold text-(--color-foreground-default)">
                       {value}
                     </dd>
                   </div>
@@ -214,18 +216,20 @@ export default function ComponentsPage() {
             <div className="lg:col-span-6">
               <div className="relative">
                 <div
-                  className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-text-secondary)"
+                  className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-muted)"
                   style={{
                     background:
-                      "color-mix(in oklch, var(--color-background-tertiary) 80%, transparent)",
+                      "color-mix(in oklch, var(--color-background-strong) 80%, transparent)",
                     backdropFilter: "blur(12px)",
                     border:
-                      "1px solid color-mix(in oklch, var(--color-border-primary) 70%, transparent)",
+                      "1px solid color-mix(in oklch, var(--color-border-default) 70%, transparent)",
                   }}
                 >
                   <span
                     className="h-1.5 w-1.5 rounded-full"
-                    style={{ background: "var(--color-status-success)" }}
+                    style={{
+                      background: "var(--color-success-foreground-subtle)",
+                    }}
                   />
                   7 components rendered
                 </div>
@@ -234,16 +238,16 @@ export default function ComponentsPage() {
                   className="rounded-2xl p-5 sm:p-6"
                   style={{
                     background:
-                      "color-mix(in oklch, var(--color-surface-primary) 70%, transparent)",
+                      "color-mix(in oklch, var(--color-background-default) 70%, transparent)",
                     backdropFilter: "blur(12px)",
                     border:
-                      "1px solid color-mix(in oklch, var(--color-border-primary) 80%, transparent)",
+                      "1px solid color-mix(in oklch, var(--color-border-default) 80%, transparent)",
                     boxShadow: "var(--shadow-lg)",
                   }}
                 >
                   <div
-                    className="rounded-lg border border-(--color-border-primary) p-5"
-                    style={{ background: "var(--color-surface-primary)" }}
+                    className="rounded-lg border border-(--color-border-default) p-5"
+                    style={{ background: "var(--color-background-default)" }}
                   >
                     {/* Avatar + badge */}
                     <div className="flex items-start justify-between">
@@ -260,11 +264,11 @@ export default function ComponentsPage() {
                           EM
                         </span>
                         <div>
-                          <p className="text-sm font-semibold text-(--color-text-primary)">
+                          <p className="text-sm font-semibold text-(--color-foreground-default)">
                             Elena Mori
                           </p>
                           {/* cSpell:ignore Mori */}
-                          <p className="text-[11px] text-(--color-text-tertiary)">
+                          <p className="text-[11px] text-(--color-foreground-faint)">
                             Lead, Design Systems
                           </p>
                         </div>
@@ -273,13 +277,16 @@ export default function ComponentsPage() {
                         className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
                         style={{
                           background:
-                            "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
-                          color: "var(--color-status-success)",
+                            "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
+                          color: "var(--color-success-foreground-subtle)",
                         }}
                       >
                         <span
                           className="h-1.5 w-1.5 rounded-full"
-                          style={{ background: "var(--color-status-success)" }}
+                          style={{
+                            background:
+                              "var(--color-success-foreground-subtle)",
+                          }}
                         />
                         Online
                       </span>
@@ -288,51 +295,52 @@ export default function ComponentsPage() {
                     {/* Separator */}
                     <div
                       className="my-4 h-px"
-                      style={{ background: "var(--color-border-primary)" }}
+                      style={{ background: "var(--color-border-default)" }}
                     />
 
                     {/* Progress */}
                     <div>
                       <div className="flex items-center justify-between text-xs mb-2">
-                        <span className="text-(--color-text-secondary)">
+                        <span className="text-(--color-foreground-muted)">
                           v1.4 release readiness
                         </span>
-                        <span className="font-mono text-(--color-text-tertiary)">
+                        <span className="font-mono text-(--color-foreground-faint)">
                           82%
                         </span>
                       </div>
                       <div
                         className="h-1.5 w-full overflow-hidden rounded-full"
                         style={{
-                          background: "var(--color-background-tertiary)",
+                          background: "var(--color-background-strong)",
                         }}
                       >
                         <div
                           className="h-full rounded-full"
                           style={{
                             width: "82%",
-                            background: "var(--color-interactive-primary)",
+                            background:
+                              "var(--color-primary-background-default)",
                           }}
                         />
                       </div>
                     </div>
 
                     {/* Input */}
-                    <label className="mt-5 block text-[11px] font-medium text-(--color-text-secondary)">
+                    <label className="mt-5 block text-[11px] font-medium text-(--color-foreground-muted)">
                       Search components
                     </label>
                     <div
                       className="mt-1 flex items-center gap-2 h-8.5 rounded-[10px] border px-2.5 text-sm"
                       style={{
-                        borderColor: "var(--color-interactive-primary)",
+                        borderColor: "var(--color-primary-background-default)",
                         boxShadow:
-                          "0 0 0 3px color-mix(in oklch, var(--color-interactive-primary) 22%, transparent)",
-                        background: "var(--color-surface-primary)",
+                          "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
+                        background: "var(--color-background-default)",
                       }}
                     >
                       <svg
                         viewBox="0 0 24 24"
-                        className="h-3.5 w-3.5 text-(--color-text-tertiary)"
+                        className="h-3.5 w-3.5 text-(--color-foreground-faint)"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2}
@@ -340,10 +348,10 @@ export default function ComponentsPage() {
                         <circle cx="11" cy="11" r="7" />
                         <path d="m21 21-4.3-4.3" />
                       </svg>
-                      <span className="text-(--color-text-primary)">
+                      <span className="text-(--color-foreground-default)">
                         Dialog
                       </span>
-                      <span className="ml-auto font-mono text-xs px-1.5 py-0.5 rounded border border-(--color-border-primary) text-(--color-text-secondary)">
+                      <span className="ml-auto font-mono text-xs px-1.5 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
                         ⌘K
                       </span>
                     </div>
@@ -351,22 +359,25 @@ export default function ComponentsPage() {
                     {/* Switch row */}
                     <div className="mt-4 flex items-center justify-between">
                       <div>
-                        <p className="text-xs font-semibold text-(--color-text-primary)">
+                        <p className="text-xs font-semibold text-(--color-foreground-default)">
                           Dark mode preview
                         </p>
-                        <p className="text-[11px] text-(--color-text-tertiary)">
+                        <p className="text-[11px] text-(--color-foreground-faint)">
                           render every story in both themes
                         </p>
                       </div>
                       <span
                         className="relative inline-flex h-5 w-9 cursor-pointer items-center rounded-full"
                         style={{
-                          background: "var(--color-interactive-primary)",
+                          background: "var(--color-primary-background-default)",
                         }}
                       >
                         <span
                           className="inline-block h-4 w-4 translate-x-4 rounded-full"
-                          style={{ background: "var(--color-text-inverse)" }}
+                          style={{
+                            background:
+                              "var(--color-inverse-foreground-default)",
+                          }}
                         />
                       </span>
                     </div>
@@ -400,7 +411,7 @@ export default function ComponentsPage() {
 
                   {/* component tag strip */}
                   <div className="mt-3 flex flex-wrap items-center gap-1.5">
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary) mr-1">
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) mr-1">
                       uses
                     </span>
                     {[
@@ -415,7 +426,7 @@ export default function ComponentsPage() {
                     ].map((c) => (
                       <span
                         key={c}
-                        className="inline-flex items-center rounded-full border border-(--color-border-primary) bg-(--color-surface-primary) px-2 py-0.5 font-mono text-[10px] text-(--color-text-secondary)"
+                        className="inline-flex items-center rounded-full border border-(--color-border-default) bg-(--color-background-default) px-2 py-0.5 font-mono text-[10px] text-(--color-foreground-muted)"
                       >
                         {c}
                       </span>
@@ -477,7 +488,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="content-display"
-        className="border-b border-(--color-border-primary) scroll-mt-16"
+        className="border-b border-(--color-border-default) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -492,8 +503,8 @@ export default function ComponentsPage() {
               desc="Vertically stacked sections that expand one at a time or independently."
               href="accordion"
               preview={
-                <div className="w-full max-w-55 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden">
-                  <div className="flex items-center justify-between px-3 py-2 text-xs font-semibold border-b border-(--color-border-primary) bg-(--color-background-secondary)">
+                <div className="w-full max-w-55 rounded-md border border-(--color-border-default) bg-(--color-background-default) overflow-hidden">
+                  <div className="flex items-center justify-between px-3 py-2 text-xs font-semibold border-b border-(--color-border-default) bg-(--color-background-subtle)">
                     <span>Shipping</span>
                     <svg
                       viewBox="0 0 24 24"
@@ -502,21 +513,21 @@ export default function ComponentsPage() {
                       stroke="currentColor"
                       strokeWidth={2}
                       style={{
-                        color: "var(--color-interactive-primary)",
+                        color: "var(--color-primary-background-default)",
                         transform: "rotate(180deg)",
                       }}
                     >
                       <path d="m6 9 6 6 6-6" />
                     </svg>
                   </div>
-                  <div className="px-3 py-2 text-[11px] text-(--color-text-secondary)">
+                  <div className="px-3 py-2 text-[11px] text-(--color-foreground-muted)">
                     Free over $50, 2-day delivery on stock items.
                   </div>
-                  <div className="flex items-center justify-between px-3 py-2 text-xs border-t border-(--color-border-primary)">
+                  <div className="flex items-center justify-between px-3 py-2 text-xs border-t border-(--color-border-default)">
                     <span>Returns</span>
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-text-tertiary)"
+                      className="h-3 w-3 text-(--color-foreground-faint)"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
@@ -524,11 +535,11 @@ export default function ComponentsPage() {
                       <path d="m6 9 6 6 6-6" />
                     </svg>
                   </div>
-                  <div className="flex items-center justify-between px-3 py-2 text-xs border-t border-(--color-border-primary)">
+                  <div className="flex items-center justify-between px-3 py-2 text-xs border-t border-(--color-border-default)">
                     <span>Warranty</span>
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-text-tertiary)"
+                      className="h-3 w-3 text-(--color-foreground-faint)"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
@@ -574,8 +585,8 @@ export default function ComponentsPage() {
                   <span
                     className="inline-grid place-items-center rounded-full text-[11px] font-medium"
                     style={{
-                      background: "var(--color-background-tertiary)",
-                      color: "var(--color-text-secondary)",
+                      background: "var(--color-background-strong)",
+                      color: "var(--color-foreground-muted)",
                       height: 40,
                       width: 40,
                     }}
@@ -596,26 +607,28 @@ export default function ComponentsPage() {
                     <span
                       className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold"
                       style={{
-                        background: "var(--color-interactive-primary)",
-                        color: "var(--color-text-inverse)",
+                        background: "var(--color-primary-background-default)",
+                        color: "var(--color-inverse-foreground-default)",
                       }}
                     >
                       Default
                     </span>
-                    <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium border border-(--color-border-primary) text-(--color-text-primary)">
+                    <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium border border-(--color-border-default) text-(--color-foreground-default)">
                       Outline
                     </span>
                     <span
                       className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
-                        color: "var(--color-status-success)",
+                          "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
+                        color: "var(--color-success-foreground-subtle)",
                       }}
                     >
                       <span
                         className="h-1.5 w-1.5 rounded-full"
-                        style={{ background: "var(--color-status-success)" }}
+                        style={{
+                          background: "var(--color-success-foreground-subtle)",
+                        }}
                       />
                       Active
                     </span>
@@ -625,8 +638,8 @@ export default function ComponentsPage() {
                       className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-status-warning) 18%, transparent)",
-                        color: "var(--color-text-warning)",
+                          "color-mix(in oklch, var(--color-warning-foreground-subtle) 18%, transparent)",
+                        color: "var(--color-warning-foreground-subtle)",
                       }}
                     >
                       Beta
@@ -635,8 +648,8 @@ export default function ComponentsPage() {
                       className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-status-danger) 18%, transparent)",
-                        color: "var(--color-text-danger)",
+                          "color-mix(in oklch, var(--color-danger-foreground-subtle) 18%, transparent)",
+                        color: "var(--color-danger-foreground-subtle)",
                       }}
                     >
                       Deprecated
@@ -651,11 +664,11 @@ export default function ComponentsPage() {
               desc="Single date, multiple dates, or a date range, with month navigation."
               href="calendar"
               preview={
-                <div className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-2 w-full max-w-55">
-                  <div className="flex items-center justify-between text-[11px] font-semibold pb-1.5 text-(--color-text-primary)">
+                <div className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2 w-full max-w-55">
+                  <div className="flex items-center justify-between text-[11px] font-semibold pb-1.5 text-(--color-foreground-default)">
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-text-tertiary)"
+                      className="h-3 w-3 text-(--color-foreground-faint)"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
@@ -665,7 +678,7 @@ export default function ComponentsPage() {
                     <span>May 2026</span>
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-text-tertiary)"
+                      className="h-3 w-3 text-(--color-foreground-faint)"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
@@ -673,18 +686,18 @@ export default function ComponentsPage() {
                       <path d="m9 18 6-6-6-6" />
                     </svg>
                   </div>
-                  <div className="grid grid-cols-7 gap-0.5 font-mono text-[8px] text-(--color-text-tertiary) text-center">
+                  <div className="grid grid-cols-7 gap-0.5 font-mono text-[8px] text-(--color-foreground-faint) text-center">
                     {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
                       <span key={i}>{d}</span>
                     ))}
                   </div>
-                  <div className="grid grid-cols-7 gap-0.5 mt-1 text-[10px] text-center text-(--color-text-primary)">
+                  <div className="grid grid-cols-7 gap-0.5 mt-1 text-[10px] text-center text-(--color-foreground-default)">
                     {["26", "27", "28", "29", "30", "1", "2"].map((d, i) => (
                       <span
                         key={i}
                         className={
                           i < 4
-                            ? "text-(--color-text-tertiary) py-0.5"
+                            ? "text-(--color-foreground-faint) py-0.5"
                             : "py-0.5"
                         }
                       >
@@ -699,8 +712,8 @@ export default function ComponentsPage() {
                     <span
                       className="py-0.5 rounded font-semibold"
                       style={{
-                        background: "var(--color-interactive-primary)",
-                        color: "var(--color-text-inverse)",
+                        background: "var(--color-primary-background-default)",
+                        color: "var(--color-inverse-foreground-default)",
                       }}
                     >
                       10
@@ -721,16 +734,16 @@ export default function ComponentsPage() {
               href="card"
               preview={
                 <div
-                  className="w-full max-w-55 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-3"
+                  className="w-full max-w-55 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
-                  <p className="text-[10px] font-mono uppercase tracking-wider text-(--color-text-tertiary)">
+                  <p className="text-[10px] font-mono uppercase tracking-wider text-(--color-foreground-faint)">
                     Project
                   </p>
-                  <p className="mt-0.5 text-xs font-semibold text-(--color-text-primary)">
+                  <p className="mt-0.5 text-xs font-semibold text-(--color-foreground-default)">
                     Migration to v1.4
                   </p>
-                  <p className="mt-1 text-[10px] text-(--color-text-tertiary) leading-snug">
+                  <p className="mt-1 text-[10px] text-(--color-foreground-faint) leading-snug">
                     68 components migrated · 6 outstanding tickets
                   </p>
                   <div className="mt-2 flex items-center gap-2">
@@ -749,7 +762,7 @@ export default function ComponentsPage() {
                       ].map(([bg, c, i]) => (
                         <span
                           key={i}
-                          className="inline-grid place-items-center rounded-full font-semibold border-[1.5px] border-(--color-surface-primary) text-[8px]"
+                          className="inline-grid place-items-center rounded-full font-semibold border-[1.5px] border-(--color-background-default) text-[8px]"
                           style={{
                             background: bg,
                             color: c,
@@ -765,13 +778,15 @@ export default function ComponentsPage() {
                       className="ml-auto inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[9px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
-                        color: "var(--color-status-success)",
+                          "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
+                        color: "var(--color-success-foreground-subtle)",
                       }}
                     >
                       <span
                         className="h-1 w-1 rounded-full"
-                        style={{ background: "var(--color-status-success)" }}
+                        style={{
+                          background: "var(--color-success-foreground-subtle)",
+                        }}
                       />
                       Active
                     </span>
@@ -807,7 +822,7 @@ export default function ComponentsPage() {
                       style={{ background: "var(--color-fiery-coral-300)" }}
                     />
                     <div
-                      className="aspect-3/4 rounded ring-2 ring-(--color-interactive-primary)"
+                      className="aspect-3/4 rounded ring-2 ring-(--color-primary-background-default)"
                       style={{ background: "var(--color-blue-400)" }}
                     />
                     <div
@@ -840,9 +855,9 @@ export default function ComponentsPage() {
               desc="Semantic table parts — header, body, footer, row, head, cell, caption — in a horizontally scrollable wrapper."
               href="table"
               preview={
-                <div className="w-full max-w-57.5 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden text-[10px]">
+                <div className="w-full max-w-57.5 rounded-md border border-(--color-border-default) bg-(--color-background-default) overflow-hidden text-[10px]">
                   <div
-                    className="grid px-2.5 py-1.5 font-mono uppercase tracking-wider text-(--color-text-tertiary) text-[8px] bg-(--color-background-secondary)"
+                    className="grid px-2.5 py-1.5 font-mono uppercase tracking-wider text-(--color-foreground-faint) text-[8px] bg-(--color-background-subtle)"
                     style={{
                       gridTemplateColumns: "1.4fr 1fr 0.8fr",
                       gap: "8px",
@@ -857,7 +872,7 @@ export default function ComponentsPage() {
                       name: "Elena Mori",
                       role: "Lead",
                       status: "Active",
-                      color: "var(--color-status-success)",
+                      color: "var(--color-success-foreground-subtle)",
                     },
                     {
                       name: "Jude Reyes",
@@ -869,21 +884,21 @@ export default function ComponentsPage() {
                       name: "Ari Klein",
                       role: "Design",
                       status: "Away",
-                      color: "var(--color-text-warning)",
+                      color: "var(--color-warning-foreground-subtle)",
                     },
                   ].map(({ name, role, status, color }) => (
                     <div
                       key={name}
-                      className="grid px-2.5 py-1.5 border-t border-(--color-border-primary) items-center"
+                      className="grid px-2.5 py-1.5 border-t border-(--color-border-default) items-center"
                       style={{
                         gridTemplateColumns: "1.4fr 1fr 0.8fr",
                         gap: "8px",
                       }}
                     >
-                      <span className="text-(--color-text-primary)">
+                      <span className="text-(--color-foreground-default)">
                         {name}
                       </span>
-                      <span className="text-(--color-text-secondary)">
+                      <span className="text-(--color-foreground-muted)">
                         {role}
                       </span>
                       <span className="text-right">
@@ -898,7 +913,7 @@ export default function ComponentsPage() {
                             {status}
                           </span>
                         ) : (
-                          <span className="text-(--color-text-tertiary)">
+                          <span className="text-(--color-foreground-faint)">
                             —
                           </span>
                         )}
@@ -917,7 +932,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="feedback"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-16"
+        className="border-b border-(--color-border-default) bg-(--color-background-subtle) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -935,17 +950,17 @@ export default function ComponentsPage() {
                 <div className="w-full max-w-57.5 flex flex-col gap-1.5">
                   {[
                     {
-                      color: "var(--color-status-success)",
+                      color: "var(--color-success-foreground-subtle)",
                       msg: "Build passed · 3,402 tests",
                       icon: "m5 12 5 5L20 7",
                     },
                     {
-                      color: "var(--color-text-warning)",
+                      color: "var(--color-warning-foreground-subtle)",
                       msg: "2 deprecation warnings",
                       icon: "M12 9v4M12 17h.01",
                     },
                     {
-                      color: "var(--color-text-danger)",
+                      color: "var(--color-danger-foreground-subtle)",
                       msg: "Connection lost · retrying",
                       icon: "M18 6 6 18M6 6l12 12",
                     },
@@ -962,7 +977,7 @@ export default function ComponentsPage() {
                         className="grid h-3.5 w-3.5 mt-px place-items-center rounded-full shrink-0"
                         style={{
                           background: color,
-                          color: "var(--color-text-inverse)",
+                          color: "var(--color-inverse-foreground-default)",
                         }}
                       >
                         <svg
@@ -975,7 +990,7 @@ export default function ComponentsPage() {
                           <path d={icon} />
                         </svg>
                       </span>
-                      <p className="text-[10px] font-semibold leading-tight text-(--color-text-primary)">
+                      <p className="text-[10px] font-semibold leading-tight text-(--color-foreground-default)">
                         {msg}
                       </p>
                     </div>
@@ -992,43 +1007,43 @@ export default function ComponentsPage() {
                 <div className="w-full max-w-55 flex flex-col gap-3">
                   <div>
                     <div className="flex items-center justify-between text-[10px] mb-1">
-                      <span className="text-(--color-text-secondary)">
+                      <span className="text-(--color-foreground-muted)">
                         Uploading
                       </span>
-                      <span className="font-mono text-(--color-text-tertiary)">
+                      <span className="font-mono text-(--color-foreground-faint)">
                         68%
                       </span>
                     </div>
                     <div
                       className="h-1.5 w-full overflow-hidden rounded-full"
-                      style={{ background: "var(--color-background-tertiary)" }}
+                      style={{ background: "var(--color-background-strong)" }}
                     >
                       <div
                         className="h-full rounded-full"
                         style={{
                           width: "68%",
-                          background: "var(--color-interactive-primary)",
+                          background: "var(--color-primary-background-default)",
                         }}
                       />
                     </div>
                   </div>
                   <div>
                     <div className="flex items-center justify-between text-[10px] mb-1">
-                      <span className="text-(--color-text-secondary)">
+                      <span className="text-(--color-foreground-muted)">
                         Indexing
                       </span>
-                      <span className="font-mono text-(--color-text-tertiary)">
+                      <span className="font-mono text-(--color-foreground-faint)">
                         indeterminate
                       </span>
                     </div>
                     <div
                       className="relative h-1.5 w-full overflow-hidden rounded-full"
-                      style={{ background: "var(--color-background-tertiary)" }}
+                      style={{ background: "var(--color-background-strong)" }}
                     >
                       <div
                         className="absolute h-full w-1/3 rounded-full animate-pulse"
                         style={{
-                          background: "var(--color-interactive-primary)",
+                          background: "var(--color-primary-background-default)",
                         }}
                       />
                     </div>
@@ -1040,7 +1055,7 @@ export default function ComponentsPage() {
                         cy="18"
                         r="14"
                         fill="none"
-                        stroke="var(--color-background-tertiary)"
+                        stroke="var(--color-background-strong)"
                         strokeWidth="3"
                       />
                       <circle
@@ -1048,14 +1063,14 @@ export default function ComponentsPage() {
                         cy="18"
                         r="14"
                         fill="none"
-                        stroke="var(--color-interactive-primary)"
+                        stroke="var(--color-primary-background-default)"
                         strokeWidth="3"
                         strokeLinecap="round"
                         strokeDasharray="88"
                         strokeDashoffset="26"
                       />
                     </svg>
-                    <span className="font-mono text-[10px] text-(--color-text-tertiary)">
+                    <span className="font-mono text-[10px] text-(--color-foreground-faint)">
                       circular · 70%
                     </span>
                   </div>
@@ -1071,20 +1086,20 @@ export default function ComponentsPage() {
                 <div className="w-full max-w-55 flex items-center gap-3">
                   <div
                     className="h-9 w-9 rounded-full animate-pulse"
-                    style={{ background: "var(--color-background-tertiary)" }}
+                    style={{ background: "var(--color-background-strong)" }}
                   />
                   <div className="flex-1 flex flex-col gap-1.5">
                     <div
                       className="h-2 w-3/4 rounded-full animate-pulse"
-                      style={{ background: "var(--color-background-tertiary)" }}
+                      style={{ background: "var(--color-background-strong)" }}
                     />
                     <div
                       className="h-2 w-1/2 rounded-full animate-pulse"
-                      style={{ background: "var(--color-background-tertiary)" }}
+                      style={{ background: "var(--color-background-strong)" }}
                     />
                     <div
                       className="h-2 w-2/3 rounded-full animate-pulse"
-                      style={{ background: "var(--color-background-tertiary)" }}
+                      style={{ background: "var(--color-background-strong)" }}
                     />
                   </div>
                 </div>
@@ -1098,14 +1113,14 @@ export default function ComponentsPage() {
               preview={
                 <div className="w-full max-w-57.5 flex flex-col gap-1.5 items-end">
                   <div
-                    className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-2 flex items-start gap-2 w-full"
+                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2 flex items-start gap-2 w-full"
                     style={{ boxShadow: "var(--shadow-md)" }}
                   >
                     <span
                       className="grid h-5 w-5 place-items-center rounded-full shrink-0"
                       style={{
-                        background: "var(--color-status-success)",
-                        color: "var(--color-text-inverse)",
+                        background: "var(--color-success-foreground-subtle)",
+                        color: "var(--color-inverse-foreground-default)",
                       }}
                     >
                       <svg
@@ -1119,16 +1134,16 @@ export default function ComponentsPage() {
                       </svg>
                     </span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-[10px] font-semibold text-(--color-text-primary)">
+                      <p className="text-[10px] font-semibold text-(--color-foreground-default)">
                         Theme published
                       </p>
-                      <p className="text-[9px] text-(--color-text-tertiary)">
+                      <p className="text-[9px] text-(--color-foreground-faint)">
                         v1.4.0 is live in production
                       </p>
                     </div>
                     <Button
                       variant="ghost"
-                      className="h-3.5 w-3.5 p-0 text-(--color-text-tertiary)"
+                      className="h-3.5 w-3.5 p-0 text-(--color-foreground-faint)"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -1142,16 +1157,16 @@ export default function ComponentsPage() {
                     </Button>
                   </div>
                   <div
-                    className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-2 flex items-start gap-2 w-[90%]"
+                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2 flex items-start gap-2 w-[90%]"
                     style={{ boxShadow: "var(--shadow-sm)", opacity: 0.7 }}
                   >
                     <span
                       className="h-5 w-5 rounded-full shrink-0"
-                      style={{ background: "var(--color-background-tertiary)" }}
+                      style={{ background: "var(--color-background-strong)" }}
                     />
                     <div
                       className="flex-1 h-3 rounded-full"
-                      style={{ background: "var(--color-background-tertiary)" }}
+                      style={{ background: "var(--color-background-strong)" }}
                     />
                   </div>
                 </div>
@@ -1166,7 +1181,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="inputs"
-        className="border-b border-(--color-border-primary) scroll-mt-16"
+        className="border-b border-(--color-border-default) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -1186,18 +1201,18 @@ export default function ComponentsPage() {
                     <span
                       className="inline-flex h-7 items-center rounded-md px-2.5 text-[11px] font-semibold"
                       style={{
-                        background: "var(--color-interactive-primary)",
-                        color: "var(--color-text-inverse)",
+                        background: "var(--color-primary-background-default)",
+                        color: "var(--color-inverse-foreground-default)",
                       }}
                     >
                       Primary
                     </span>
-                    <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-primary) px-2.5 text-[11px] font-semibold text-(--color-text-primary)">
+                    <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-default) px-2.5 text-[11px] font-semibold text-(--color-foreground-default)">
                       Outline
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-1.5 justify-center">
-                    <span className="inline-flex h-7 items-center rounded-md px-2.5 text-[11px] font-semibold text-(--color-text-secondary)">
+                    <span className="inline-flex h-7 items-center rounded-md px-2.5 text-[11px] font-semibold text-(--color-foreground-muted)">
                       Ghost
                     </span>
                     <span
@@ -1214,17 +1229,18 @@ export default function ComponentsPage() {
                   <span
                     className="inline-flex h-7 items-center gap-1 rounded-md px-2.5 text-[11px] font-semibold"
                     style={{
-                      background: "var(--color-interactive-primary-hover)",
-                      color: "var(--color-text-inverse)",
+                      background:
+                        "var(--color-primary-background-default-hover)",
+                      color: "var(--color-inverse-foreground-default)",
                       boxShadow:
-                        "0 0 0 3px color-mix(in oklch, var(--color-interactive-primary) 25%, transparent)",
+                        "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 25%, transparent)",
                     }}
                   >
                     <span
                       className="h-2 w-2 rounded-full border-2 border-t-transparent animate-spin"
                       style={{
                         borderColor:
-                          "var(--color-text-inverse) transparent var(--color-text-inverse) var(--color-text-inverse)",
+                          "var(--color-inverse-foreground-default) transparent var(--color-inverse-foreground-default) var(--color-inverse-foreground-default)",
                       }}
                     />
                     Loading
@@ -1238,13 +1254,13 @@ export default function ComponentsPage() {
               desc="Checked, unchecked and indeterminate states in three sizes."
               href="checkbox"
               preview={
-                <div className="flex flex-col gap-2.5 text-[11px] text-(--color-text-primary)">
+                <div className="flex flex-col gap-2.5 text-[11px] text-(--color-foreground-default)">
                   <label className="flex items-center gap-2">
                     <span
                       className="grid h-4 w-4 place-items-center rounded-sm"
                       style={{
-                        background: "var(--color-interactive-primary)",
-                        color: "var(--color-text-inverse)",
+                        background: "var(--color-primary-background-default)",
+                        color: "var(--color-inverse-foreground-default)",
                       }}
                     >
                       <svg
@@ -1263,8 +1279,8 @@ export default function ComponentsPage() {
                     <span
                       className="grid h-4 w-4 place-items-center rounded-sm"
                       style={{
-                        background: "var(--color-interactive-primary)",
-                        color: "var(--color-text-inverse)",
+                        background: "var(--color-primary-background-default)",
+                        color: "var(--color-inverse-foreground-default)",
                       }}
                     >
                       <svg
@@ -1279,12 +1295,12 @@ export default function ComponentsPage() {
                     </span>
                     Notify on every release
                   </label>
-                  <label className="flex items-center gap-2 text-(--color-text-secondary)">
+                  <label className="flex items-center gap-2 text-(--color-foreground-muted)">
                     <span
                       className="grid h-4 w-4 rounded-sm border"
                       style={{
-                        background: "var(--color-surface-primary)",
-                        borderColor: "var(--color-border-primary)",
+                        background: "var(--color-background-default)",
+                        borderColor: "var(--color-border-default)",
                       }}
                     />
                     Show breaking changes only
@@ -1299,28 +1315,30 @@ export default function ComponentsPage() {
               href="form"
               preview={
                 <div className="w-full max-w-57.5 flex flex-col gap-1.5">
-                  <label className="text-[10px] font-medium text-(--color-text-primary)">
+                  <label className="text-[10px] font-medium text-(--color-foreground-default)">
                     Email
                   </label>
-                  <div className="flex items-center h-7.5 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
-                    <span className="text-(--color-text-primary)">
+                  <div className="flex items-center h-7.5 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default)">
+                    <span className="text-(--color-foreground-default)">
                       elena@wyliedog.dev
                     </span>
                   </div>
                   <p
                     className="text-[9px]"
-                    style={{ color: "var(--color-text-danger)" }}
+                    style={{ color: "var(--color-danger-foreground-subtle)" }}
                   >
                     Must be a work email address.
                   </p>
-                  <label className="text-[10px] font-medium text-(--color-text-primary) mt-1">
+                  <label className="text-[10px] font-medium text-(--color-foreground-default) mt-1">
                     Password
                   </label>
                   <div
-                    className="flex items-center h-7.5 border rounded-md px-2 text-[11px] bg-(--color-surface-primary)"
-                    style={{ borderColor: "var(--color-border-danger)" }}
+                    className="flex items-center h-7.5 border rounded-md px-2 text-[11px] bg-(--color-background-default)"
+                    style={{
+                      borderColor: "var(--color-danger-border-default)",
+                    }}
                   >
-                    <span className="text-(--color-text-tertiary)">
+                    <span className="text-(--color-foreground-faint)">
                       ••••••••
                     </span>
                   </div>
@@ -1334,10 +1352,10 @@ export default function ComponentsPage() {
               href="input"
               preview={
                 <div className="w-full max-w-57.5 flex flex-col gap-1.5">
-                  <div className="flex items-center h-8.5 border border-(--color-border-primary) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-surface-primary)">
+                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-background-default)">
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-text-tertiary)"
+                      className="h-3 w-3 text-(--color-foreground-faint)"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
@@ -1345,29 +1363,29 @@ export default function ComponentsPage() {
                       <circle cx="11" cy="11" r="7" />
                       <path d="m21 21-4.3-4.3" />
                     </svg>
-                    <span className="text-(--color-text-tertiary)">
+                    <span className="text-(--color-foreground-faint)">
                       Search components…
                     </span>
                   </div>
                   <div
-                    className="flex items-center h-8.5 border rounded-[10px] px-2.5 text-[12px] bg-(--color-surface-primary)"
+                    className="flex items-center h-8.5 border rounded-[10px] px-2.5 text-[12px] bg-(--color-background-default)"
                     style={{
-                      borderColor: "var(--color-interactive-primary)",
+                      borderColor: "var(--color-primary-background-default)",
                       boxShadow:
-                        "0 0 0 3px color-mix(in oklch, var(--color-interactive-primary) 22%, transparent)",
+                        "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
                     }}
                   >
-                    <span className="text-(--color-text-primary)">
+                    <span className="text-(--color-foreground-default)">
                       elena@wyliedog.dev
                     </span>
                   </div>
-                  <div className="flex items-center h-8.5 border border-(--color-border-primary) rounded-[10px] px-2.5 text-[12px] bg-(--color-surface-primary) opacity-55">
-                    <span className="text-(--color-text-tertiary)">
+                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[10px] px-2.5 text-[12px] bg-(--color-background-default) opacity-55">
+                    <span className="text-(--color-foreground-faint)">
                       Disabled
                     </span>
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-3 w-3 ml-auto text-(--color-text-tertiary)"
+                      className="h-3 w-3 ml-auto text-(--color-foreground-faint)"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
@@ -1387,23 +1405,27 @@ export default function ComponentsPage() {
               preview={
                 <div className="w-full max-w-55 flex flex-col gap-1.5">
                   <div className="flex items-center gap-1">
-                    <label className="text-xs font-semibold text-(--color-text-primary)">
+                    <label className="text-xs font-semibold text-(--color-foreground-default)">
                       Display name
                     </label>
-                    <span style={{ color: "var(--color-text-danger)" }}>*</span>
+                    <span
+                      style={{ color: "var(--color-danger-foreground-subtle)" }}
+                    >
+                      *
+                    </span>
                   </div>
-                  <div className="flex items-center h-7.5 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
+                  <div className="flex items-center h-7.5 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default) text-(--color-foreground-faint)">
                     e.g. Elena Mori
                   </div>
                   <div className="flex items-center gap-1 mt-1">
-                    <label className="text-xs font-semibold text-(--color-text-primary)">
+                    <label className="text-xs font-semibold text-(--color-foreground-default)">
                       Bio
                     </label>
-                    <span className="font-mono text-[9px] text-(--color-text-tertiary)">
+                    <span className="font-mono text-[9px] text-(--color-foreground-faint)">
                       optional
                     </span>
                   </div>
-                  <div className="flex items-start min-h-9.5 border border-(--color-border-primary) rounded-md px-2 pt-1.5 text-[11px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
+                  <div className="flex items-start min-h-9.5 border border-(--color-border-default) rounded-md px-2 pt-1.5 text-[11px] bg-(--color-background-default) text-(--color-foreground-faint)">
                     Tell people who you are.
                   </div>
                 </div>
@@ -1415,34 +1437,34 @@ export default function ComponentsPage() {
               desc="Single-select cluster with horizontal or vertical orientation."
               href="radio-group"
               preview={
-                <div className="flex flex-col gap-2 text-[11px] text-(--color-text-primary)">
+                <div className="flex flex-col gap-2 text-[11px] text-(--color-foreground-default)">
                   <label className="flex items-center gap-2">
                     <span
                       className="grid h-4 w-4 place-items-center rounded-full border-2"
                       style={{
-                        borderColor: "var(--color-interactive-primary)",
+                        borderColor: "var(--color-primary-background-default)",
                       }}
                     >
                       <span
                         className="h-1.5 w-1.5 rounded-full"
                         style={{
-                          background: "var(--color-interactive-primary)",
+                          background: "var(--color-primary-background-default)",
                         }}
                       />
                     </span>
                     Light theme
                   </label>
-                  <label className="flex items-center gap-2 text-(--color-text-secondary)">
+                  <label className="flex items-center gap-2 text-(--color-foreground-muted)">
                     <span
                       className="h-4 w-4 rounded-full border"
-                      style={{ borderColor: "var(--color-border-primary)" }}
+                      style={{ borderColor: "var(--color-border-default)" }}
                     />
                     Dark theme
                   </label>
-                  <label className="flex items-center gap-2 text-(--color-text-secondary)">
+                  <label className="flex items-center gap-2 text-(--color-foreground-muted)">
                     <span
                       className="h-4 w-4 rounded-full border"
-                      style={{ borderColor: "var(--color-border-primary)" }}
+                      style={{ borderColor: "var(--color-border-default)" }}
                     />
                     System default
                   </label>
@@ -1456,11 +1478,11 @@ export default function ComponentsPage() {
               href="select"
               preview={
                 <div className="w-full max-w-55 relative">
-                  <div className="flex items-center h-8.5 border border-(--color-border-primary) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-surface-primary) text-(--color-text-primary)">
+                  <div className="flex items-center h-8.5 border border-(--color-border-default) rounded-[10px] px-2.5 gap-2 text-[12px] bg-(--color-background-default) text-(--color-foreground-default)">
                     <span className="flex-1">Engineering</span>
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-text-tertiary)"
+                      className="h-3 w-3 text-(--color-foreground-faint)"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
@@ -1469,15 +1491,15 @@ export default function ComponentsPage() {
                     </svg>
                   </div>
                   <div
-                    className="absolute top-full mt-1 left-0 right-0 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-1 z-10"
+                    className="absolute top-full mt-1 left-0 right-0 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 z-10"
                     style={{ boxShadow: "var(--shadow-md)" }}
                   >
                     <div
                       className="flex items-center gap-2 rounded px-2 py-1 text-[11px]"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-interactive-primary) 12%, transparent)",
-                        color: "var(--color-interactive-primary)",
+                          "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
+                        color: "var(--color-primary-background-default)",
                       }}
                     >
                       <svg
@@ -1491,10 +1513,10 @@ export default function ComponentsPage() {
                       </svg>
                       Engineering
                     </div>
-                    <div className="px-2 py-1 text-[11px] text-(--color-text-secondary)">
+                    <div className="px-2 py-1 text-[11px] text-(--color-foreground-muted)">
                       Design
                     </div>
-                    <div className="px-2 py-1 text-[11px] text-(--color-text-secondary)">
+                    <div className="px-2 py-1 text-[11px] text-(--color-foreground-muted)">
                       Operations
                     </div>
                   </div>
@@ -1510,22 +1532,22 @@ export default function ComponentsPage() {
                 <div className="w-full max-w-57.5 flex flex-col gap-3">
                   <div>
                     <div className="flex justify-between text-[10px] mb-1.5">
-                      <span className="text-(--color-text-secondary)">
+                      <span className="text-(--color-foreground-muted)">
                         Volume
                       </span>
-                      <span className="font-mono text-(--color-text-tertiary)">
+                      <span className="font-mono text-(--color-foreground-faint)">
                         62
                       </span>
                     </div>
                     <div
                       className="relative h-1 rounded-full"
-                      style={{ background: "var(--color-background-tertiary)" }}
+                      style={{ background: "var(--color-background-strong)" }}
                     >
                       <div
                         className="absolute h-1 rounded-full"
                         style={{
                           width: "62%",
-                          background: "var(--color-interactive-primary)",
+                          background: "var(--color-primary-background-default)",
                         }}
                       />
                       <div
@@ -1533,8 +1555,9 @@ export default function ComponentsPage() {
                         style={{
                           left: "62%",
                           transform: "translateX(-50%)",
-                          background: "var(--color-surface-primary)",
-                          border: "2px solid var(--color-interactive-primary)",
+                          background: "var(--color-background-default)",
+                          border:
+                            "2px solid var(--color-primary-background-default)",
                           boxShadow: "var(--shadow-sm)",
                         }}
                       />
@@ -1542,23 +1565,23 @@ export default function ComponentsPage() {
                   </div>
                   <div>
                     <div className="flex justify-between text-[10px] mb-1.5">
-                      <span className="text-(--color-text-secondary)">
+                      <span className="text-(--color-foreground-muted)">
                         Range
                       </span>
-                      <span className="font-mono text-(--color-text-tertiary)">
+                      <span className="font-mono text-(--color-foreground-faint)">
                         24 – 78
                       </span>
                     </div>
                     <div
                       className="relative h-1 rounded-full"
-                      style={{ background: "var(--color-background-tertiary)" }}
+                      style={{ background: "var(--color-background-strong)" }}
                     >
                       <div
                         className="absolute h-1 rounded-full"
                         style={{
                           left: "24%",
                           width: "54%",
-                          background: "var(--color-interactive-primary)",
+                          background: "var(--color-primary-background-default)",
                         }}
                       />
                       <div
@@ -1566,8 +1589,9 @@ export default function ComponentsPage() {
                         style={{
                           left: "24%",
                           transform: "translateX(-50%)",
-                          background: "var(--color-surface-primary)",
-                          border: "2px solid var(--color-interactive-primary)",
+                          background: "var(--color-background-default)",
+                          border:
+                            "2px solid var(--color-primary-background-default)",
                         }}
                       />
                       <div
@@ -1575,8 +1599,9 @@ export default function ComponentsPage() {
                         style={{
                           left: "78%",
                           transform: "translateX(-50%)",
-                          background: "var(--color-surface-primary)",
-                          border: "2px solid var(--color-interactive-primary)",
+                          background: "var(--color-background-default)",
+                          border:
+                            "2px solid var(--color-primary-background-default)",
                         }}
                       />
                     </div>
@@ -1590,17 +1615,19 @@ export default function ComponentsPage() {
               desc="Boolean toggle in three sizes with accessible labeling."
               href="switch"
               preview={
-                <div className="flex flex-col gap-2.5 text-[11px] text-(--color-text-primary)">
+                <div className="flex flex-col gap-2.5 text-[11px] text-(--color-foreground-default)">
                   <div className="flex items-center justify-between gap-3">
                     <span>Auto-deploy</span>
                     <span
                       className="relative inline-flex h-5 w-9 items-center rounded-full"
-                      style={{ background: "var(--color-interactive-primary)" }}
+                      style={{
+                        background: "var(--color-primary-background-default)",
+                      }}
                     >
                       <span
                         className="inline-block h-4 w-4 translate-x-4 rounded-full"
                         style={{
-                          background: "var(--color-text-inverse)",
+                          background: "var(--color-inverse-foreground-default)",
                           boxShadow: "var(--shadow-sm)",
                         }}
                       />
@@ -1610,12 +1637,12 @@ export default function ComponentsPage() {
                     <span>Beta channel</span>
                     <span
                       className="relative inline-flex h-5 w-9 items-center rounded-full"
-                      style={{ background: "var(--color-background-tertiary)" }}
+                      style={{ background: "var(--color-background-strong)" }}
                     >
                       <span
                         className="inline-block h-4 w-4 translate-x-0.5 rounded-full"
                         style={{
-                          background: "var(--color-surface-primary)",
+                          background: "var(--color-background-default)",
                           boxShadow: "var(--shadow-sm)",
                         }}
                       />
@@ -1624,17 +1651,19 @@ export default function ComponentsPage() {
                   <div className="flex items-center justify-between gap-3 opacity-55">
                     <span>
                       Telemetry{" "}
-                      <span className="font-mono text-[9px] text-(--color-text-tertiary)">
+                      <span className="font-mono text-[9px] text-(--color-foreground-faint)">
                         disabled
                       </span>
                     </span>
                     <span
                       className="relative inline-flex h-5 w-9 items-center rounded-full"
-                      style={{ background: "var(--color-background-tertiary)" }}
+                      style={{ background: "var(--color-background-strong)" }}
                     >
                       <span
                         className="inline-block h-4 w-4 translate-x-0.5 rounded-full"
-                        style={{ background: "var(--color-surface-primary)" }}
+                        style={{
+                          background: "var(--color-background-default)",
+                        }}
                       />
                     </span>
                   </div>
@@ -1648,11 +1677,11 @@ export default function ComponentsPage() {
               href="textarea"
               preview={
                 <div
-                  className="w-full max-w-57.5 rounded-md border bg-(--color-surface-primary) px-2.5 py-2 text-[11px] text-(--color-text-primary)"
+                  className="w-full max-w-57.5 rounded-md border bg-(--color-background-default) px-2.5 py-2 text-[11px] text-(--color-foreground-default)"
                   style={{
-                    borderColor: "var(--color-interactive-primary)",
+                    borderColor: "var(--color-primary-background-default)",
                     boxShadow:
-                      "0 0 0 3px color-mix(in oklch, var(--color-interactive-primary) 22%, transparent)",
+                      "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
                     height: 100,
                   }}
                 >
@@ -1660,7 +1689,7 @@ export default function ComponentsPage() {
                     Designers can edit tokens directly in Figma; the bridge
                     opens a pull request with the diff.
                   </p>
-                  <p className="text-(--color-text-tertiary) mt-1 font-mono text-[9px]">
+                  <p className="text-(--color-foreground-faint) mt-1 font-mono text-[9px]">
                     142 / 280
                   </p>
                 </div>
@@ -1680,8 +1709,8 @@ export default function ComponentsPage() {
                     className="h-8 w-8"
                     style={{
                       background:
-                        "color-mix(in oklch, var(--color-interactive-primary) 18%, transparent)",
-                      color: "var(--color-interactive-primary)",
+                        "color-mix(in oklch, var(--color-primary-background-default) 18%, transparent)",
+                      color: "var(--color-primary-background-default)",
                     }}
                   >
                     <svg
@@ -1727,15 +1756,15 @@ export default function ComponentsPage() {
               preview={
                 <div className="flex flex-col gap-2 items-center">
                   <div
-                    className="inline-flex rounded-md border border-(--color-border-primary) overflow-hidden"
-                    style={{ background: "var(--color-background-secondary)" }}
+                    className="inline-flex rounded-md border border-(--color-border-default) overflow-hidden"
+                    style={{ background: "var(--color-background-subtle)" }}
                   >
                     <Button
                       variant="ghost"
                       size="sm"
                       className="px-3 py-1.5 text-[11px] font-medium"
                       style={{
-                        background: "var(--color-surface-primary)",
+                        background: "var(--color-background-default)",
                         boxShadow: "var(--shadow-sm)",
                       }}
                     >
@@ -1744,27 +1773,27 @@ export default function ComponentsPage() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="px-3 py-1.5 text-[11px] font-medium text-(--color-text-secondary)"
+                      className="px-3 py-1.5 text-[11px] font-medium text-(--color-foreground-muted)"
                     >
                       Week
                     </Button>
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="px-3 py-1.5 text-[11px] font-medium text-(--color-text-secondary)"
+                      className="px-3 py-1.5 text-[11px] font-medium text-(--color-foreground-muted)"
                     >
                       Month
                     </Button>
                   </div>
-                  <div className="inline-flex rounded-md border border-(--color-border-primary) overflow-hidden">
+                  <div className="inline-flex rounded-md border border-(--color-border-default) overflow-hidden">
                     <Button
                       variant="ghost"
                       size="icon"
                       className="h-7 w-8"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-interactive-primary) 14%, transparent)",
-                        color: "var(--color-interactive-primary)",
+                          "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
+                        color: "var(--color-primary-background-default)",
                       }}
                     >
                       <svg
@@ -1780,7 +1809,7 @@ export default function ComponentsPage() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-7 w-8 text-(--color-text-secondary)"
+                      className="h-7 w-8 text-(--color-foreground-muted)"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -1795,7 +1824,7 @@ export default function ComponentsPage() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-7 w-8 text-(--color-text-secondary)"
+                      className="h-7 w-8 text-(--color-foreground-muted)"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -1820,7 +1849,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="layout"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-16"
+        className="border-b border-(--color-border-default) bg-(--color-background-subtle) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -1837,8 +1866,8 @@ export default function ComponentsPage() {
               preview={
                 <div className="w-full max-w-50 flex gap-1.5">
                   <div
-                    className="aspect-video flex-1 rounded border border-(--color-border-primary) flex items-center justify-center font-mono text-[9px] text-(--color-text-tertiary)"
-                    style={{ background: "var(--color-background-tertiary)" }}
+                    className="aspect-video flex-1 rounded border border-(--color-border-default) flex items-center justify-center font-mono text-[9px] text-(--color-foreground-faint)"
+                    style={{ background: "var(--color-background-strong)" }}
                   >
                     16 : 9
                   </div>
@@ -1852,7 +1881,7 @@ export default function ComponentsPage() {
               href="collapsible"
               preview={
                 <div className="w-full max-w-55">
-                  <div className="flex items-center justify-between text-xs font-semibold py-1 text-(--color-text-primary)">
+                  <div className="flex items-center justify-between text-xs font-semibold py-1 text-(--color-foreground-default)">
                     <span>Advanced settings</span>
                     <svg
                       viewBox="0 0 24 24"
@@ -1861,7 +1890,7 @@ export default function ComponentsPage() {
                       stroke="currentColor"
                       strokeWidth={2}
                       style={{
-                        color: "var(--color-interactive-primary)",
+                        color: "var(--color-primary-background-default)",
                         transform: "rotate(180deg)",
                       }}
                     >
@@ -1870,15 +1899,17 @@ export default function ComponentsPage() {
                   </div>
                   <div
                     className="mt-1 space-y-1.5 pl-2 border-l-2"
-                    style={{ borderColor: "var(--color-interactive-primary)" }}
+                    style={{
+                      borderColor: "var(--color-primary-background-default)",
+                    }}
                   >
-                    <div className="text-[10px] text-(--color-text-secondary)">
+                    <div className="text-[10px] text-(--color-foreground-muted)">
                       → Network timeout
                     </div>
-                    <div className="text-[10px] text-(--color-text-secondary)">
+                    <div className="text-[10px] text-(--color-foreground-muted)">
                       → Retry strategy
                     </div>
-                    <div className="text-[10px] text-(--color-text-secondary)">
+                    <div className="text-[10px] text-(--color-foreground-muted)">
                       → Cache invalidation
                     </div>
                   </div>
@@ -1891,22 +1922,24 @@ export default function ComponentsPage() {
               desc="Split panes with drag handles — horizontal, vertical, nested."
               href="resizable"
               preview={
-                <div className="w-full max-w-55 flex h-25 rounded-md border border-(--color-border-primary) overflow-hidden bg-(--color-surface-primary)">
-                  <div className="flex-[0_0_38%] grid place-items-center font-mono text-[10px] text-(--color-text-tertiary)">
+                <div className="w-full max-w-55 flex h-25 rounded-md border border-(--color-border-default) overflow-hidden bg-(--color-background-default)">
+                  <div className="flex-[0_0_38%] grid place-items-center font-mono text-[10px] text-(--color-foreground-faint)">
                     Sidebar
                   </div>
                   <div
                     className="w-1 grid place-items-center cursor-col-resize"
-                    style={{ background: "var(--color-border-primary)" }}
+                    style={{ background: "var(--color-border-default)" }}
                   >
                     <div
                       className="h-6 w-1 rounded-full"
-                      style={{ background: "var(--color-interactive-primary)" }}
+                      style={{
+                        background: "var(--color-primary-background-default)",
+                      }}
                     />
                   </div>
                   <div
-                    className="flex-1 grid place-items-center font-mono text-[10px] text-(--color-text-tertiary)"
-                    style={{ background: "var(--color-background-secondary)" }}
+                    className="flex-1 grid place-items-center font-mono text-[10px] text-(--color-foreground-faint)"
+                    style={{ background: "var(--color-background-subtle)" }}
                   >
                     Main
                   </div>
@@ -1919,9 +1952,9 @@ export default function ComponentsPage() {
               desc="Custom-styled scrollbars (Radix Scroll Area)."
               href="scroll-area"
               preview={
-                <div className="w-full max-w-50 h-27.5 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) overflow-hidden flex">
-                  <div className="flex-1 p-2 text-[10px] leading-relaxed text-(--color-text-secondary) overflow-hidden">
-                    <p className="font-semibold text-(--color-text-primary)">
+                <div className="w-full max-w-50 h-27.5 rounded-md border border-(--color-border-default) bg-(--color-background-default) overflow-hidden flex">
+                  <div className="flex-1 p-2 text-[10px] leading-relaxed text-(--color-foreground-muted) overflow-hidden">
+                    <p className="font-semibold text-(--color-foreground-default)">
                       Changelog
                     </p>
                     <p>v1.4.0 — OKLCH ramps</p>
@@ -1934,12 +1967,12 @@ export default function ComponentsPage() {
                     className="w-1.5 my-1 mr-1 rounded-full relative"
                     style={{
                       background:
-                        "color-mix(in oklch, var(--color-border-primary) 50%, transparent)",
+                        "color-mix(in oklch, var(--color-border-default) 50%, transparent)",
                     }}
                   >
                     <div
                       className="absolute top-0 left-0 right-0 h-1/3 rounded-full"
-                      style={{ background: "var(--color-border-primary)" }}
+                      style={{ background: "var(--color-border-default)" }}
                     />
                   </div>
                 </div>
@@ -1952,27 +1985,27 @@ export default function ComponentsPage() {
               href="separator"
               preview={
                 <div className="w-full max-w-55 flex flex-col gap-2 items-center">
-                  <p className="text-[11px] font-semibold text-(--color-text-primary)">
+                  <p className="text-[11px] font-semibold text-(--color-foreground-default)">
                     Workspace
                   </p>
                   <div
                     className="h-px w-full"
-                    style={{ background: "var(--color-border-primary)" }}
+                    style={{ background: "var(--color-border-default)" }}
                   />
-                  <p className="text-[10px] text-(--color-text-secondary)">
+                  <p className="text-[10px] text-(--color-foreground-muted)">
                     Settings · Members · Billing
                   </p>
                   <div className="flex items-center gap-2 w-full">
                     <span
                       className="flex-1 h-px"
-                      style={{ background: "var(--color-border-primary)" }}
+                      style={{ background: "var(--color-border-default)" }}
                     />
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
+                    <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
                       or
                     </span>
                     <span
                       className="flex-1 h-px"
-                      style={{ background: "var(--color-border-primary)" }}
+                      style={{ background: "var(--color-border-default)" }}
                     />
                   </div>
                 </div>
@@ -1987,7 +2020,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="navigation"
-        className="border-b border-(--color-border-primary) scroll-mt-16"
+        className="border-b border-(--color-border-default) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -2026,13 +2059,13 @@ export default function ComponentsPage() {
               href="command"
               preview={
                 <div
-                  className="w-full max-w-65 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary)"
+                  className="w-full max-w-65 rounded-md border border-(--color-border-default) bg-(--color-background-default)"
                   style={{ boxShadow: "var(--shadow-md)" }}
                 >
-                  <div className="flex items-center gap-2 px-2.5 py-1.5 border-b border-(--color-border-primary)">
+                  <div className="flex items-center gap-2 px-2.5 py-1.5 border-b border-(--color-border-default)">
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-3 w-3 text-(--color-text-tertiary)"
+                      className="h-3 w-3 text-(--color-foreground-faint)"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2}
@@ -2040,10 +2073,10 @@ export default function ComponentsPage() {
                       <circle cx="11" cy="11" r="7" />
                       <path d="m21 21-4.3-4.3" />
                     </svg>
-                    <span className="text-[11px] text-(--color-text-tertiary)">
+                    <span className="text-[11px] text-(--color-foreground-faint)">
                       Type a command…
                     </span>
-                    <span className="ml-auto font-mono text-[10px] px-1 py-0.5 rounded border border-(--color-border-primary) text-(--color-text-secondary)">
+                    <span className="ml-auto font-mono text-[10px] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
                       esc
                     </span>
                   </div>
@@ -2052,16 +2085,16 @@ export default function ComponentsPage() {
                       className="rounded px-2 py-1 text-[11px] flex items-center gap-2"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-interactive-primary) 14%, transparent)",
-                        color: "var(--color-interactive-primary)",
+                          "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
+                        color: "var(--color-primary-background-default)",
                       }}
                     >
                       Open documentation
                     </div>
-                    <div className="px-2 py-1 text-[11px] text-(--color-text-secondary)">
+                    <div className="px-2 py-1 text-[11px] text-(--color-foreground-muted)">
                       New token…
                     </div>
-                    <div className="px-2 py-1 text-[11px] text-(--color-text-secondary)">
+                    <div className="px-2 py-1 text-[11px] text-(--color-foreground-muted)">
                       Toggle theme
                     </div>
                   </div>
@@ -2075,38 +2108,38 @@ export default function ComponentsPage() {
               href="menubar"
               preview={
                 <div className="w-full max-w-65 flex flex-col gap-1">
-                  <div className="flex items-center gap-1 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) px-1 py-1 text-[11px]">
+                  <div className="flex items-center gap-1 rounded-md border border-(--color-border-default) bg-(--color-background-default) px-1 py-1 text-[11px]">
                     <span
-                      className="px-2 py-0.5 rounded font-medium text-(--color-text-primary)"
+                      className="px-2 py-0.5 rounded font-medium text-(--color-foreground-default)"
                       style={{
-                        background: "var(--color-background-secondary)",
+                        background: "var(--color-background-subtle)",
                       }}
                     >
                       File
                     </span>
-                    <span className="px-2 py-0.5 text-(--color-text-secondary)">
+                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
                       Edit
                     </span>
-                    <span className="px-2 py-0.5 text-(--color-text-secondary)">
+                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
                       View
                     </span>
-                    <span className="px-2 py-0.5 text-(--color-text-secondary)">
+                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
                       Help
                     </span>
                   </div>
                   <div
-                    className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-1 self-start"
+                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 self-start"
                     style={{ boxShadow: "var(--shadow-md)" }}
                   >
-                    <div className="flex items-center justify-between gap-4 px-2 py-1 text-[11px] text-(--color-text-primary)">
+                    <div className="flex items-center justify-between gap-4 px-2 py-1 text-[11px] text-(--color-foreground-default)">
                       <span>New project</span>
-                      <span className="font-mono text-[10px] px-1 py-0.5 rounded border border-(--color-border-primary) text-(--color-text-secondary)">
+                      <span className="font-mono text-[10px] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
                         ⌘N
                       </span>
                     </div>
-                    <div className="flex items-center justify-between gap-4 px-2 py-1 text-[11px] text-(--color-text-primary)">
+                    <div className="flex items-center justify-between gap-4 px-2 py-1 text-[11px] text-(--color-foreground-default)">
                       <span>Open</span>
-                      <span className="font-mono text-[10px] px-1 py-0.5 rounded border border-(--color-border-primary) text-(--color-text-secondary)">
+                      <span className="font-mono text-[10px] px-1 py-0.5 rounded border border-(--color-border-default) text-(--color-foreground-muted)">
                         ⌘O
                       </span>
                     </div>
@@ -2121,51 +2154,53 @@ export default function ComponentsPage() {
               href="navigation-menu"
               preview={
                 <div className="w-full max-w-65">
-                  <div className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) flex items-center px-2 py-1 text-[11px] gap-1">
+                  <div className="rounded-md border border-(--color-border-default) bg-(--color-background-default) flex items-center px-2 py-1 text-[11px] gap-1">
                     <span
-                      className="px-2 py-0.5 rounded font-medium text-(--color-text-primary)"
+                      className="px-2 py-0.5 rounded font-medium text-(--color-foreground-default)"
                       style={{
-                        background: "var(--color-background-secondary)",
+                        background: "var(--color-background-subtle)",
                       }}
                     >
                       Products
                     </span>
-                    <span className="px-2 py-0.5 text-(--color-text-secondary)">
+                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
                       Solutions
                     </span>
-                    <span className="px-2 py-0.5 text-(--color-text-secondary)">
+                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
                       Pricing
                     </span>
-                    <span className="px-2 py-0.5 text-(--color-text-secondary)">
+                    <span className="px-2 py-0.5 text-(--color-foreground-muted)">
                       Docs
                     </span>
                   </div>
                   <div
-                    className="mt-1 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-2 grid grid-cols-2 gap-1.5 text-[10px]"
+                    className="mt-1 rounded-md border border-(--color-border-default) bg-(--color-background-default) p-2 grid grid-cols-2 gap-1.5 text-[10px]"
                     style={{ boxShadow: "var(--shadow-md)", width: "86%" }}
                   >
                     <div
                       className="rounded p-1.5"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-interactive-primary) 12%, transparent)",
+                          "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
                       }}
                     >
                       <p
                         className="font-semibold"
-                        style={{ color: "var(--color-interactive-primary)" }}
+                        style={{
+                          color: "var(--color-primary-background-default)",
+                        }}
                       >
                         Tokens
                       </p>
-                      <p className="text-(--color-text-tertiary)">
+                      <p className="text-(--color-foreground-faint)">
                         {meta.tokens.total} vars
                       </p>
                     </div>
                     <div className="rounded p-1.5">
-                      <p className="font-semibold text-(--color-text-primary)">
+                      <p className="font-semibold text-(--color-foreground-default)">
                         Components
                       </p>
-                      <p className="text-(--color-text-tertiary)">
+                      <p className="text-(--color-foreground-faint)">
                         {meta.components.count} React
                       </p>
                     </div>
@@ -2204,7 +2239,9 @@ export default function ComponentsPage() {
                   <Button variant="outline" size="icon" className="h-7 w-7">
                     3
                   </Button>
-                  <span className="px-1 text-(--color-text-tertiary)">…</span>
+                  <span className="px-1 text-(--color-foreground-faint)">
+                    …
+                  </span>
                   <Button variant="outline" size="icon" className="h-7 w-7">
                     12
                   </Button>
@@ -2229,25 +2266,25 @@ export default function ComponentsPage() {
               href="tabs"
               preview={
                 <div className="w-full max-w-57.5">
-                  <div className="flex border-b border-(--color-border-primary) text-xs text-(--color-text-primary)">
+                  <div className="flex border-b border-(--color-border-default) text-xs text-(--color-foreground-default)">
                     <span
                       className="-mb-px border-b-2 px-3 py-1.5 font-medium"
                       style={{
-                        borderColor: "var(--color-interactive-primary)",
+                        borderColor: "var(--color-primary-background-default)",
                       }}
                     >
                       Overview
                     </span>
-                    <span className="px-3 py-1.5 text-(--color-text-tertiary)">
+                    <span className="px-3 py-1.5 text-(--color-foreground-faint)">
                       Activity
                     </span>
-                    <span className="px-3 py-1.5 text-(--color-text-tertiary)">
+                    <span className="px-3 py-1.5 text-(--color-foreground-faint)">
                       Members
                     </span>
                   </div>
                   <div
-                    className="mt-2 rounded-md p-2 text-[10px] text-(--color-text-secondary)"
-                    style={{ background: "var(--color-background-secondary)" }}
+                    className="mt-2 rounded-md p-2 text-[10px] text-(--color-foreground-muted)"
+                    style={{ background: "var(--color-background-subtle)" }}
                   >
                     Migration plan, owners, and current status for v1.4.
                   </div>
@@ -2263,7 +2300,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="overlays"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary) scroll-mt-16"
+        className="border-b border-(--color-border-default) bg-(--color-background-subtle) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -2279,9 +2316,9 @@ export default function ComponentsPage() {
               href="alert-dialog"
               preview={
                 <div
-                  className="w-full max-w-57.5 rounded-md border bg-(--color-surface-primary) p-3"
+                  className="w-full max-w-57.5 rounded-md border bg-(--color-background-default) p-3"
                   style={{
-                    borderColor: "var(--color-border-primary)",
+                    borderColor: "var(--color-border-default)",
                     boxShadow: "var(--shadow-lg)",
                   }}
                 >
@@ -2290,8 +2327,8 @@ export default function ComponentsPage() {
                       className="grid h-6 w-6 place-items-center rounded-full"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-status-danger) 18%, transparent)",
-                        color: "var(--color-text-danger)",
+                          "color-mix(in oklch, var(--color-danger-foreground-subtle) 18%, transparent)",
+                        color: "var(--color-danger-foreground-subtle)",
                       }}
                     >
                       <svg
@@ -2306,17 +2343,17 @@ export default function ComponentsPage() {
                       </svg>
                     </span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-semibold text-(--color-text-primary)">
+                      <p className="text-xs font-semibold text-(--color-foreground-default)">
                         Delete project?
                       </p>
-                      <p className="text-[10px] text-(--color-text-tertiary) mt-0.5 leading-snug">
+                      <p className="text-[10px] text-(--color-foreground-faint) mt-0.5 leading-snug">
                         All migrations, tickets, and tokens will be permanently
                         removed.
                       </p>
                     </div>
                   </div>
                   <div className="mt-3 flex justify-end gap-1.5">
-                    <span className="inline-flex h-6 items-center rounded border border-(--color-border-primary) px-2 text-[10px] font-medium text-(--color-text-primary)">
+                    <span className="inline-flex h-6 items-center rounded border border-(--color-border-default) px-2 text-[10px] font-medium text-(--color-foreground-default)">
                       Cancel
                     </span>
                     <span
@@ -2339,9 +2376,9 @@ export default function ComponentsPage() {
               desc="Right-click menu with sub-items, checkboxes, and shortcut hints."
               href="context-menu"
               preview={
-                <div className="w-full max-w-57.5 relative h-30 rounded-md border border-(--color-border-primary) bg-(--color-surface-primary)">
+                <div className="w-full max-w-57.5 relative h-30 rounded-md border border-(--color-border-default) bg-(--color-background-default)">
                   <div
-                    className="absolute rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-1 text-[11px]"
+                    className="absolute rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 text-[11px]"
                     style={{
                       top: 20,
                       left: 20,
@@ -2353,24 +2390,24 @@ export default function ComponentsPage() {
                       className="flex items-center justify-between px-2 py-1 rounded"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-interactive-primary) 12%, transparent)",
-                        color: "var(--color-interactive-primary)",
+                          "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
+                        color: "var(--color-primary-background-default)",
                       }}
                     >
                       <span>Copy</span>
                       <span className="font-mono text-[9px]">⌘C</span>
                     </div>
-                    <div className="flex items-center justify-between px-2 py-1 text-(--color-text-secondary)">
+                    <div className="flex items-center justify-between px-2 py-1 text-(--color-foreground-muted)">
                       <span>Paste</span>
                       <span className="font-mono text-[9px]">⌘V</span>
                     </div>
                     <div
                       className="h-px my-1"
-                      style={{ background: "var(--color-border-primary)" }}
+                      style={{ background: "var(--color-border-default)" }}
                     />
                     <div
                       className="px-2 py-1"
-                      style={{ color: "var(--color-text-danger)" }}
+                      style={{ color: "var(--color-danger-foreground-subtle)" }}
                     >
                       Delete
                     </div>
@@ -2389,23 +2426,23 @@ export default function ComponentsPage() {
                     className="absolute inset-0 rounded-md"
                     style={{
                       background:
-                        "color-mix(in oklch, var(--color-text-primary) 35%, transparent)",
+                        "color-mix(in oklch, var(--color-foreground-default) 35%, transparent)",
                     }}
                   />
                   <div
-                    className="absolute inset-x-2 top-3 rounded-md border bg-(--color-surface-primary) p-3"
+                    className="absolute inset-x-2 top-3 rounded-md border bg-(--color-background-default) p-3"
                     style={{
-                      borderColor: "var(--color-border-primary)",
+                      borderColor: "var(--color-border-default)",
                       boxShadow: "var(--shadow-xl)",
                     }}
                   >
                     <div className="flex items-center justify-between">
-                      <p className="text-xs font-semibold text-(--color-text-primary)">
+                      <p className="text-xs font-semibold text-(--color-foreground-default)">
                         Invite teammates
                       </p>
                       <svg
                         viewBox="0 0 24 24"
-                        className="h-3 w-3 text-(--color-text-tertiary)"
+                        className="h-3 w-3 text-(--color-foreground-faint)"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2}
@@ -2413,15 +2450,15 @@ export default function ComponentsPage() {
                         <path d="M18 6 6 18M6 6l12 12" />
                       </svg>
                     </div>
-                    <div className="mt-2 flex items-center h-6.5 border border-(--color-border-primary) rounded-md px-2 text-[10px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
+                    <div className="mt-2 flex items-center h-6.5 border border-(--color-border-default) rounded-md px-2 text-[10px] bg-(--color-background-default) text-(--color-foreground-faint)">
                       name@example.com
                     </div>
                     <div className="mt-2 flex justify-end">
                       <span
                         className="inline-flex h-6 items-center rounded px-2 text-[10px] font-semibold"
                         style={{
-                          background: "var(--color-interactive-primary)",
-                          color: "var(--color-text-inverse)",
+                          background: "var(--color-primary-background-default)",
+                          color: "var(--color-inverse-foreground-default)",
                         }}
                       >
                         Send invite
@@ -2455,13 +2492,13 @@ export default function ComponentsPage() {
                     </svg>
                   </Button>
                   <div
-                    className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-1 text-[11px]"
+                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-1 text-[11px]"
                     style={{ boxShadow: "var(--shadow-md)", width: 150 }}
                   >
-                    <div className="flex items-center gap-2 px-2 py-1 text-(--color-text-primary)">
+                    <div className="flex items-center gap-2 px-2 py-1 text-(--color-foreground-default)">
                       <svg
                         viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5 text-(--color-text-tertiary)"
+                        className="h-2.5 w-2.5 text-(--color-foreground-faint)"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2}
@@ -2470,10 +2507,10 @@ export default function ComponentsPage() {
                       </svg>
                       Edit
                     </div>
-                    <div className="flex items-center gap-2 px-2 py-1 text-(--color-text-primary)">
+                    <div className="flex items-center gap-2 px-2 py-1 text-(--color-foreground-default)">
                       <svg
                         viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5 text-(--color-text-tertiary)"
+                        className="h-2.5 w-2.5 text-(--color-foreground-faint)"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2}
@@ -2485,11 +2522,11 @@ export default function ComponentsPage() {
                     </div>
                     <div
                       className="h-px my-0.5"
-                      style={{ background: "var(--color-border-primary)" }}
+                      style={{ background: "var(--color-border-default)" }}
                     />
                     <div
                       className="flex items-center gap-2 px-2 py-1"
-                      style={{ color: "var(--color-text-danger)" }}
+                      style={{ color: "var(--color-danger-foreground-subtle)" }}
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -2516,15 +2553,15 @@ export default function ComponentsPage() {
                   <span
                     className="text-[11px] font-medium underline"
                     style={{
-                      color: "var(--color-interactive-primary)",
+                      color: "var(--color-primary-background-default)",
                       textDecorationColor:
-                        "color-mix(in oklch, var(--color-interactive-primary) 50%, transparent)",
+                        "color-mix(in oklch, var(--color-primary-background-default) 50%, transparent)",
                     }}
                   >
                     @elena_mori
                   </span>
                   <div
-                    className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-3"
+                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3"
                     style={{ boxShadow: "var(--shadow-md)", width: 190 }}
                   >
                     <div className="flex items-center gap-2">
@@ -2540,18 +2577,18 @@ export default function ComponentsPage() {
                         EM
                       </span>
                       <div>
-                        <p className="text-[11px] font-semibold text-(--color-text-primary)">
+                        <p className="text-[11px] font-semibold text-(--color-foreground-default)">
                           Elena Mori
                         </p>
-                        <p className="text-[10px] text-(--color-text-tertiary)">
+                        <p className="text-[10px] text-(--color-foreground-faint)">
                           Lead, Design Systems
                         </p>
                       </div>
                     </div>
-                    <p className="mt-2 text-[10px] text-(--color-text-secondary)">
+                    <p className="mt-2 text-[10px] text-(--color-foreground-muted)">
                       Building design systems that scale.
                     </p>
-                    <div className="mt-2 flex items-center gap-3 font-mono text-[9px] text-(--color-text-tertiary)">
+                    <div className="mt-2 flex items-center gap-3 font-mono text-[9px] text-(--color-foreground-faint)">
                       <span>42 following</span>
                       <span>1.2k followers</span>
                     </div>
@@ -2583,29 +2620,29 @@ export default function ComponentsPage() {
                     </svg>
                   </Button>
                   <div
-                    className="rounded-md border border-(--color-border-primary) bg-(--color-surface-primary) p-3 space-y-2"
+                    className="rounded-md border border-(--color-border-default) bg-(--color-background-default) p-3 space-y-2"
                     style={{ boxShadow: "var(--shadow-md)", width: 180 }}
                   >
-                    <p className="text-[10px] font-semibold text-(--color-text-primary)">
+                    <p className="text-[10px] font-semibold text-(--color-foreground-default)">
                       Filter by status
                     </p>
                     {["Active", "Beta", "Deprecated"].map((s) => (
                       <label
                         key={s}
-                        className="flex items-center gap-2 text-[11px] text-(--color-text-secondary)"
+                        className="flex items-center gap-2 text-[11px] text-(--color-foreground-muted)"
                       >
                         <span
                           className="grid h-3.5 w-3.5 place-items-center rounded-sm"
                           style={{
                             background:
                               s === "Active"
-                                ? "var(--color-interactive-primary)"
+                                ? "var(--color-primary-background-default)"
                                 : "transparent",
                             border:
                               s === "Active"
                                 ? "none"
-                                : "1px solid var(--color-border-primary)",
-                            color: "var(--color-text-inverse)",
+                                : "1px solid var(--color-border-default)",
+                            color: "var(--color-inverse-foreground-default)",
                           }}
                         >
                           {s === "Active" && (
@@ -2634,30 +2671,30 @@ export default function ComponentsPage() {
               href="sheet"
               preview={
                 <div
-                  className="relative w-full max-w-57.5 h-30 rounded-md overflow-hidden border border-(--color-border-primary)"
-                  style={{ background: "var(--color-background-secondary)" }}
+                  className="relative w-full max-w-57.5 h-30 rounded-md overflow-hidden border border-(--color-border-default)"
+                  style={{ background: "var(--color-background-subtle)" }}
                 >
                   <div
                     className="absolute inset-0"
                     style={{
                       background:
-                        "color-mix(in oklch, var(--color-text-primary) 20%, transparent)",
+                        "color-mix(in oklch, var(--color-foreground-default) 20%, transparent)",
                     }}
                   />
                   <div
-                    className="absolute top-0 right-0 bottom-0 w-2/3 border-l bg-(--color-surface-primary) p-3"
+                    className="absolute top-0 right-0 bottom-0 w-2/3 border-l bg-(--color-background-default) p-3"
                     style={{
-                      borderColor: "var(--color-border-primary)",
+                      borderColor: "var(--color-border-default)",
                       boxShadow: "var(--shadow-xl)",
                     }}
                   >
                     <div className="flex items-center justify-between mb-3">
-                      <p className="text-[11px] font-semibold text-(--color-text-primary)">
+                      <p className="text-[11px] font-semibold text-(--color-foreground-default)">
                         Settings
                       </p>
                       <svg
                         viewBox="0 0 24 24"
-                        className="h-3 w-3 text-(--color-text-tertiary)"
+                        className="h-3 w-3 text-(--color-foreground-faint)"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2}
@@ -2672,7 +2709,7 @@ export default function ComponentsPage() {
                           className="h-1.5 rounded-full"
                           style={{
                             width: `${w}%`,
-                            background: "var(--color-background-tertiary)",
+                            background: "var(--color-background-strong)",
                           }}
                         />
                       ))}
@@ -2709,18 +2746,20 @@ export default function ComponentsPage() {
                     <div
                       className="absolute -top-8 left-1/2 -translate-x-1/2 rounded px-2 py-1 text-[10px] font-medium whitespace-nowrap"
                       style={{
-                        background: "var(--color-text-primary)",
-                        color: "var(--color-text-inverse)",
+                        background: "var(--color-foreground-default)",
+                        color: "var(--color-inverse-foreground-default)",
                       }}
                     >
                       WCAG 2.2 AA compliant
                       <div
                         className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent"
-                        style={{ borderTopColor: "var(--color-text-primary)" }}
+                        style={{
+                          borderTopColor: "var(--color-foreground-default)",
+                        }}
                       />
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 text-[10px] text-(--color-text-tertiary)">
+                  <div className="flex items-center gap-2 text-[10px] text-(--color-foreground-faint)">
                     <span className="font-mono">hover</span>·
                     <span className="font-mono">focus</span>·
                     <span className="font-mono">touch</span>
@@ -2733,7 +2772,7 @@ export default function ComponentsPage() {
       </section>
 
       {/* ── STACK NOTE FOOTER ───────────────────────────────────── */}
-      <section className="border-b border-(--color-border-primary) bg-(--color-background-primary)">
+      <section className="border-b border-(--color-border-default) bg-(--color-background-default)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
           <div className="grid lg:grid-cols-4 gap-8">
             {[
@@ -2759,13 +2798,13 @@ export default function ComponentsPage() {
               },
             ].map(({ label, value, desc }) => (
               <div key={label}>
-                <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                   {label}
                 </p>
-                <p className="mt-1 font-serif text-xl font-semibold text-(--color-text-primary)">
+                <p className="mt-1 font-serif text-xl font-semibold text-(--color-foreground-default)">
                   {value}
                 </p>
-                <p className="mt-2 text-sm text-(--color-text-secondary) leading-relaxed">
+                <p className="mt-2 text-sm text-(--color-foreground-muted) leading-relaxed">
                   {desc}
                 </p>
               </div>

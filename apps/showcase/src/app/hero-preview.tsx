@@ -32,7 +32,7 @@ export function HeroPreview() {
   return (
     <div className="relative">
       {/* floating tag */}
-      <div className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-text-secondary)">
+      <div className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-muted)">
         <svg
           viewBox="0 0 24 24"
           className="h-3 w-3"
@@ -50,12 +50,12 @@ export function HeroPreview() {
         {/* Project card */}
         <Card
           className="p-5 gap-0"
-          style={{ background: "var(--color-background-primary)" }}
+          style={{ background: "var(--color-background-default)" }}
         >
           <CardContent className="p-0">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-xs font-medium text-(--color-text-tertiary)">
+                <p className="text-xs font-medium text-(--color-foreground-faint)">
                   Project
                 </p>
                 <h3 className="mt-1 text-base font-semibold">
@@ -70,10 +70,10 @@ export function HeroPreview() {
 
             <div className="mt-4">
               <div className="flex items-center justify-between text-xs mb-2">
-                <span className="text-(--color-text-secondary)">
+                <span className="text-(--color-foreground-muted)">
                   68 of 100 components migrated
                 </span>
-                <span className="font-mono text-(--color-text-tertiary)">
+                <span className="font-mono text-(--color-foreground-faint)">
                   68%
                 </span>
               </div>
@@ -87,7 +87,7 @@ export function HeroPreview() {
                     key={a.initials}
                     size="sm"
                     className="border-2"
-                    style={{ borderColor: "var(--color-background-primary)" }}
+                    style={{ borderColor: "var(--color-background-default)" }}
                   >
                     <AvatarFallback
                       initials={a.initials}
@@ -100,7 +100,7 @@ export function HeroPreview() {
                   size="sm"
                   semanticRole="decorative"
                   className="border-2"
-                  style={{ borderColor: "var(--color-background-primary)" }}
+                  style={{ borderColor: "var(--color-background-default)" }}
                 >
                   <AvatarFallback initials="+4" size="sm" />
                 </Avatar>
@@ -108,7 +108,7 @@ export function HeroPreview() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-7 gap-1 px-2 text-xs font-medium text-(--color-text-secondary)"
+                className="h-7 gap-1 px-2 text-xs font-medium text-(--color-foreground-muted)"
               >
                 View team
                 <svg
@@ -129,12 +129,12 @@ export function HeroPreview() {
         <div className="mt-3 grid grid-cols-2 gap-3">
           <Card
             className="p-3 gap-0"
-            style={{ background: "var(--color-background-primary)" }}
+            style={{ background: "var(--color-background-default)" }}
           >
             <CardContent className="p-0 flex items-center justify-between">
               <div>
                 <p className="text-xs font-semibold">Auto-deploy</p>
-                <p className="text-[11px] text-(--color-text-tertiary)">
+                <p className="text-[11px] text-(--color-foreground-faint)">
                   on merge to main
                 </p>
               </div>
@@ -147,7 +147,7 @@ export function HeroPreview() {
           </Card>
           <Card
             className="p-3 gap-0"
-            style={{ background: "var(--color-background-primary)" }}
+            style={{ background: "var(--color-background-default)" }}
           >
             <CardContent className="p-0">
               <p className="text-xs font-semibold mb-1.5">Theme</p>
@@ -167,7 +167,7 @@ export function HeroPreview() {
       </div>
 
       {/* Corner annotation */}
-      <div className="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-text-secondary)">
+      <div className="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-muted)">
         7 components rendered
       </div>
     </div>

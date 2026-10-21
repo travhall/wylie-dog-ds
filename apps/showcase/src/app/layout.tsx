@@ -89,7 +89,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${fontVariables} font-sans min-h-screen antialiased bg-(--color-background-primary) text-(--color-text-primary)`}
+        className={`${fontVariables} font-sans min-h-screen antialiased bg-(--color-background-default) text-(--color-foreground-default)`}
       >
         <SiteHeader
           size="sm"
@@ -98,7 +98,9 @@ export default function RootLayout({
             <Link href="/" className="flex items-center gap-2 shrink-0">
               <span
                 className="grid h-7 w-7 place-items-center rounded-md"
-                style={{ background: "var(--color-interactive-primary)" }}
+                style={{
+                  background: "var(--color-primary-background-default)",
+                }}
               >
                 <WylieDogLogo />
               </span>
@@ -164,7 +166,9 @@ export default function RootLayout({
             <div className="flex items-center gap-2">
               <span
                 className="grid h-7 w-7 place-items-center rounded-md shrink-0"
-                style={{ background: "var(--color-interactive-primary)" }}
+                style={{
+                  background: "var(--color-primary-background-default)",
+                }}
               >
                 <WylieDogLogo />
               </span>
@@ -185,14 +189,14 @@ export default function RootLayout({
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
+                className="text-(--color-foreground-muted) hover:text-(--color-foreground-default) transition-colors"
               >
                 {link.label}
               </a>
             ) : (
               <Link
                 href={link.href}
-                className="text-(--color-text-secondary) hover:text-(--color-text-primary) transition-colors"
+                className="text-(--color-foreground-muted) hover:text-(--color-foreground-default) transition-colors"
               >
                 {link.label}
               </Link>
@@ -201,7 +205,7 @@ export default function RootLayout({
           copyright="© 2026 Wylie Dog"
           extra={
             <div className="inline-flex items-center gap-2">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+              <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                 MIT licensed
               </span>
             </div>

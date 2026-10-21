@@ -24,7 +24,7 @@ export const inputVariants = cva(
         error:
           "border-(--color-input-border-error) bg-(--color-input-default-background)",
         success:
-          "border-(--color-border-success) bg-(--color-input-default-background)",
+          "border-(--color-success-border-default) bg-(--color-input-default-background)",
       },
     },
     defaultVariants: {

@@ -96,11 +96,11 @@ Raw OKLCH color scales (50-950):
 Purpose-driven tokens:
 
 ```css
---color-background-primary: oklch(1 0 0);
---color-background-brand: oklch(0.546 0.215 262.88);
---color-text-primary: oklch(0.208 0.04 265.75);
---color-text-brand: oklch(0.546 0.215 262.88);
---color-border-primary: oklch(0.929 0.013 255.51);
+--color-background-default: oklch(1 0 0);
+--color-primary-background-default: oklch(0.546 0.215 262.88);
+--color-foreground-default: oklch(0.208 0.04 265.75);
+--color-primary-foreground-subtle: oklch(0.546 0.215 262.88);
+--color-border-default: oklch(0.929 0.013 255.51);
 ```
 
 #### Layer 3: Component Tokens
@@ -121,10 +121,10 @@ Override semantic tokens by redefining CSS variables in your app. Always target 
 
 :root {
   /* Change brand color from blue to purple at the semantic layer */
-  --color-interactive-primary: oklch(0.558 0.252 302.32);
-  --color-interactive-primary-hover: oklch(0.541 0.247 293.01);
-  --color-interactive-primary-active: oklch(0.438 0.198 304);
-  --color-text-inverse: oklch(1 0 0);
+  --color-primary-background-default: oklch(0.558 0.252 302.32);
+  --color-primary-background-default-hover: oklch(0.541 0.247 293.01);
+  --color-primary-background-default-active: oklch(0.438 0.198 304);
+  --color-inverse-foreground-default: oklch(1 0 0);
 }
 ```
 
@@ -153,7 +153,7 @@ This makes utilities such as `bg-brand-600` available alongside the design syste
 Override styles directly on components using token-backed arbitrary values. Never use hardcoded Tailwind scale values like `bg-purple-600` — those don't adapt to dark mode and break the token hierarchy.
 
 ```tsx
-<Button className="bg-(--color-interactive-primary) hover:bg-(--color-interactive-primary-hover) text-(--color-text-inverse)">
+<Button className="bg-(--color-primary-background-default) hover:bg-(--color-primary-background-default-hover) text-(--color-inverse-foreground-default)">
   Custom Styled Button
 </Button>
 ```
@@ -188,10 +188,10 @@ Dark mode is achieved by overriding tokens in a `.dark` class:
 ```css
 /* Dark mode tokens — included automatically via @wyliedog/ui/styles */
 .dark {
-  --color-background-primary: oklch(0.208 0.04 265.75);
-  --color-background-secondary: oklch(0.279 0.037 260.03);
-  --color-text-primary: oklch(0.984 0.003 247.86);
-  --color-border-primary: oklch(0.446 0.037 257.28);
+  --color-background-default: oklch(0.208 0.04 265.75);
+  --color-background-subtle: oklch(0.279 0.037 260.03);
+  --color-foreground-default: oklch(0.984 0.003 247.86);
+  --color-border-default: oklch(0.446 0.037 257.28);
   /* ... all semantic tokens inverted */
 }
 ```
@@ -285,27 +285,23 @@ Map your brand scale to semantic tokens:
 
 ```css
 :root {
-  /* Backgrounds */
-  --color-background-brand: var(--color-brand-600);
-  --color-surface-brand: var(--color-brand-50);
+  /* Solid fill and its states */
+  --color-primary-background-default: var(--color-brand-600);
+  --color-primary-background-default-hover: var(--color-brand-700);
+  --color-primary-background-default-active: var(--color-brand-800);
+
+  /* Tint */
+  --color-primary-background-subtle: var(--color-brand-50);
 
   /* Text */
-  --color-text-brand: var(--color-brand-600);
-  --color-text-on-brand: oklch(1 0 0);
-
-  /* Borders */
-  --color-border-brand: var(--color-brand-300);
-  --color-border-brand-strong: var(--color-brand-600);
-
-  /* Interactive states */
-  --color-interactive-brand-hover: var(--color-brand-700);
-  --color-interactive-brand-active: var(--color-brand-800);
+  --color-primary-foreground-default: oklch(1 0 0);
+  --color-primary-foreground-subtle: var(--color-brand-600);
 }
 ```
 
 #### 4. Point Component Tokens at Your Brand
 
-Once your brand primitives and semantic tokens are defined, component tokens automatically resolve through the chain. The `default` button variant (its tokens are named `primary`) already references `--color-interactive-primary`, so overriding that semantic token in Step 3 is enough — no per-component CSS needed.
+Once your brand primitives and semantic tokens are defined, component tokens automatically resolve through the chain. The `default` button variant (its tokens are named `primary`) already references `--color-primary-background-default`, so overriding that semantic token in Step 3 is enough — no per-component CSS needed.
 
 For a new semantic layer token you've introduced, reference it from a component token override in your own CSS:
 
@@ -313,7 +309,7 @@ For a new semantic layer token you've introduced, reference it from a component 
 :root {
   --color-button-primary-background: var(--color-brand-600);
   --color-button-primary-background-hover: var(--color-brand-700);
-  --color-button-primary-text: var(--color-text-on-brand);
+  --color-button-primary-text: var(--color-primary-foreground-default);
 }
 ```
 
@@ -375,7 +371,7 @@ OKLCH makes it easier to maintain contrast by controlling lightness:
 ✅ **Use semantic tokens** for component styling
 
 ```tsx
-<div className="bg-(--color-background-primary) text-(--color-text-primary)">
+<div className="bg-(--color-background-default) text-(--color-foreground-default)">
 ```
 
 ✅ **Maintain consistent lightness** across color families
@@ -400,7 +396,7 @@ OKLCH makes it easier to maintain contrast by controlling lightness:
 
 ```css
 :root {
-  --color-background-brand: oklch(0.558 0.252 302);
+  --color-primary-background-default: oklch(0.558 0.252 302);
 }
 ```
 

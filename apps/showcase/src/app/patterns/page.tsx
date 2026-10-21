@@ -26,11 +26,11 @@ function PatCard({
 }) {
   return (
     <article
-      className={`rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) overflow-hidden flex flex-col hover:border-(--color-interactive-primary) transition-all${full ? " md:col-span-2" : ""}`}
+      className={`rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden flex flex-col hover:border-(--color-primary-background-default) transition-all${full ? " md:col-span-2" : ""}`}
       style={{ boxShadow: "var(--shadow-sm)" }}
     >
       <div
-        className="relative bg-(--color-background-secondary) border-b border-(--color-border-primary) overflow-hidden flex place-content-center grow"
+        className="relative bg-(--color-background-subtle) border-b border-(--color-border-default) overflow-hidden flex place-content-center grow"
         style={{
           minHeight: 280,
           padding: 20,
@@ -40,7 +40,7 @@ function PatCard({
           className="absolute inset-0 opacity-50 pointer-events-none"
           style={{
             backgroundImage:
-              "radial-gradient(color-mix(in oklch, var(--color-text-primary) 8%, transparent) 1px, transparent 1px)",
+              "radial-gradient(color-mix(in oklch, var(--color-foreground-default) 8%, transparent) 1px, transparent 1px)",
             backgroundSize: "16px 16px",
           }}
         />
@@ -50,26 +50,26 @@ function PatCard({
       </div>
       <div className="p-5 flex-1 flex flex-col">
         <div className="flex items-center justify-between">
-          <h3 className="font-serif text-lg font-semibold text-(--color-text-primary)">
+          <h3 className="font-serif text-lg font-semibold text-(--color-foreground-default)">
             {title}
           </h3>
           <a
             href={`https://wyliedogstorybook.com/?path=${getPatternDocsPath(story) ?? "/"}`}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-[10px] text-(--color-text-tertiary) hover:text-(--color-interactive-primary) transition-colors"
+            className="font-mono text-[10px] text-(--color-foreground-faint) hover:text-(--color-primary-background-default) transition-colors"
           >
             Storybook ↗
           </a>
         </div>
-        <p className="text-sm text-(--color-text-secondary) mt-1 leading-relaxed">
+        <p className="text-sm text-(--color-foreground-muted) mt-1 leading-relaxed">
           {desc}
         </p>
         <div className="mt-4 flex flex-wrap gap-1.5">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center px-2 py-0.5 rounded-full border border-(--color-border-primary) bg-(--color-background-primary) font-mono text-[10px] text-(--color-text-secondary)"
+              className="inline-flex items-center px-2 py-0.5 rounded-full border border-(--color-border-default) bg-(--color-background-default) font-mono text-[10px] text-(--color-foreground-muted)"
             >
               {tag}
             </span>
@@ -96,20 +96,20 @@ function CatHeader({
     <header className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
       <div>
         <div className="flex items-center gap-3">
-          <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+          <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
             Category {num}
           </span>
-          <span className="font-mono text-[11px] text-(--color-text-tertiary)">
+          <span className="font-mono text-[11px] text-(--color-foreground-faint)">
             ·
           </span>
-          <span className="font-mono text-[11px] text-(--color-text-tertiary)">
+          <span className="font-mono text-[11px] text-(--color-foreground-faint)">
             {count} pattern{count !== 1 ? "s" : ""}
           </span>
         </div>
-        <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-text-primary)">
+        <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
           {title}
         </h2>
-        <p className="mt-2 max-w-2xl text-(--color-text-secondary)">{desc}</p>
+        <p className="mt-2 max-w-2xl text-(--color-foreground-muted)">{desc}</p>
       </div>
     </header>
   );
@@ -120,14 +120,14 @@ export default function PatternsPage() {
   const patternCategoryCount = (dirName: string) =>
     getPatternCategoryCounts().find((c) => c.dirName === dirName)?.count ?? 0;
   return (
-    <div className="min-h-screen bg-(--color-background-primary)">
+    <div className="min-h-screen bg-(--color-background-default)">
       {/* ── HERO ───────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-(--color-border-primary)">
+      <section className="relative overflow-hidden border-b border-(--color-border-default)">
         <div
           className="absolute inset-0 opacity-60"
           style={{
             backgroundImage:
-              "radial-gradient(color-mix(in oklch, var(--color-text-primary) 14%, transparent) 1px, transparent 1px)",
+              "radial-gradient(color-mix(in oklch, var(--color-foreground-default) 14%, transparent) 1px, transparent 1px)",
             backgroundSize: "24px 24px",
           }}
         />
@@ -135,30 +135,32 @@ export default function PatternsPage() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-interactive-primary) 22%, transparent) 0%, transparent 60%)",
+              "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-primary-background-default) 22%, transparent) 0%, transparent 60%)",
           }}
         />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-primary) bg-(--color-surface-primary)/60 px-3 py-1">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">
+            <div className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) bg-(--color-background-default)/60 px-3 py-1">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-muted)">
                 04 · Patterns
               </span>
-              <span className="text-(--color-text-tertiary)">·</span>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+              <span className="text-(--color-foreground-faint)">·</span>
+              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                 @wyliedog/ui v{meta.versions.ui}
               </span>
             </div>
 
-            <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98] text-(--color-text-primary)">
+            <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98] text-(--color-foreground-default)">
               Complete UI solutions,{" "}
-              <span style={{ color: "var(--color-interactive-primary)" }}>
+              <span
+                style={{ color: "var(--color-primary-background-default)" }}
+              >
                 not just components.
               </span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg text-(--color-text-secondary) text-balance">
+            <p className="mt-6 max-w-2xl text-lg text-(--color-foreground-muted) text-balance">
               Patterns are higher-order compositions — assembled from
               primitives, wired to the same token system, and tested against the
               same accessibility checklist. When the tokens move, every pattern
@@ -169,34 +171,34 @@ export default function PatternsPage() {
           {/* relationship diagram */}
           <div className="mt-12 flex flex-col lg:flex-row gap-3">
             {/* INPUTS — takes 2/4 cols */}
-            <div className="md:col-span-2 rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5 grow">
-              <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+            <div className="md:col-span-2 rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 grow">
+              <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                 inputs
               </p>
               <div className="mt-3 grid grid-cols-2 gap-2">
-                <div className="rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) p-3">
-                  <p className="text-xs font-semibold text-(--color-text-primary)">
+                <div className="rounded-md border border-(--color-border-default) bg-(--color-background-subtle) p-3">
+                  <p className="text-xs font-semibold text-(--color-foreground-default)">
                     Components
                   </p>
-                  <p className="font-mono text-[10px] text-(--color-text-tertiary) mt-1">
+                  <p className="font-mono text-[10px] text-(--color-foreground-faint) mt-1">
                     42 typed primitives
                   </p>
                   <div className="mt-3 flex flex-wrap gap-1">
                     {["Button", "Input", "Card"].map((c) => (
                       <span
                         key={c}
-                        className="inline-flex items-center px-1.5 py-px rounded-full border border-(--color-border-primary) font-mono text-[9px] text-(--color-text-secondary) bg-(--color-background-primary)"
+                        className="inline-flex items-center px-1.5 py-px rounded-full border border-(--color-border-default) font-mono text-[9px] text-(--color-foreground-muted) bg-(--color-background-default)"
                       >
                         {c}
                       </span>
                     ))}
                   </div>
                 </div>
-                <div className="rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) p-3">
-                  <p className="text-xs font-semibold text-(--color-text-primary)">
+                <div className="rounded-md border border-(--color-border-default) bg-(--color-background-subtle) p-3">
+                  <p className="text-xs font-semibold text-(--color-foreground-default)">
                     Tokens
                   </p>
-                  <p className="font-mono text-[10px] text-(--color-text-tertiary) mt-1">
+                  <p className="font-mono text-[10px] text-(--color-foreground-faint) mt-1">
                     {Object.values(manifest.primitives.colors).reduce(
                       (n, g) => n + Object.keys(g).length,
                       0
@@ -205,10 +207,10 @@ export default function PatternsPage() {
                   </p>
                   <div className="mt-3 flex gap-1">
                     {[
-                      "var(--color-interactive-primary)",
-                      "var(--color-status-success)",
-                      "var(--color-status-warning)",
-                      "var(--color-status-danger)",
+                      "var(--color-primary-background-default)",
+                      "var(--color-success-foreground-subtle)",
+                      "var(--color-warning-foreground-subtle)",
+                      "var(--color-danger-foreground-subtle)",
                     ].map((c) => (
                       <span
                         key={c}
@@ -237,21 +239,21 @@ export default function PatternsPage() {
             <div
               className="rounded-xl border-2 p-5 grow"
               style={{
-                borderColor: "var(--color-interactive-primary)",
+                borderColor: "var(--color-primary-background-default)",
                 background:
-                  "color-mix(in oklch, var(--color-interactive-primary) 6%, var(--color-background-primary))",
+                  "color-mix(in oklch, var(--color-primary-background-default) 6%, var(--color-background-default))",
               }}
             >
               <p
                 className="font-mono text-[10px] uppercase tracking-wider"
-                style={{ color: "var(--color-interactive-primary)" }}
+                style={{ color: "var(--color-primary-background-default)" }}
               >
                 composed into
               </p>
-              <p className="mt-3 font-serif text-2xl font-semibold text-(--color-text-primary)">
+              <p className="mt-3 font-serif text-2xl font-semibold text-(--color-foreground-default)">
                 Patterns
               </p>
-              <p className="text-xs text-(--color-text-secondary) mt-1">
+              <p className="text-xs text-(--color-foreground-muted) mt-1">
                 {meta.patterns.count} reference compositions across{" "}
                 {meta.patterns.categories} categories.
               </p>
@@ -261,7 +263,7 @@ export default function PatternsPage() {
                     key={i}
                     className="h-6 rounded"
                     style={{
-                      background: `color-mix(in oklch, var(--color-interactive-primary) ${opacity}%, transparent)`,
+                      background: `color-mix(in oklch, var(--color-primary-background-default) ${opacity}%, transparent)`,
                     }}
                   />
                 ))}
@@ -281,27 +283,27 @@ export default function PatternsPage() {
             </div>
 
             {/* SHIPPED AS — Pages */}
-            <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5 grow">
-              <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+            <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 grow">
+              <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                 shipped as
               </p>
-              <p className="mt-3 font-serif text-2xl font-semibold text-(--color-text-primary)">
+              <p className="mt-3 font-serif text-2xl font-semibold text-(--color-foreground-default)">
                 Pages
               </p>
-              <p className="text-xs text-(--color-text-secondary) mt-1">
+              <p className="text-xs text-(--color-foreground-muted) mt-1">
                 Real product surfaces, end-to-end.
               </p>
               <div className="mt-3 space-y-1">
-                <div className="h-1.5 w-3/4 rounded-full bg-(--color-background-secondary)" />
-                <div className="h-1.5 w-full rounded-full bg-(--color-background-secondary)" />
-                <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-secondary)" />
+                <div className="h-1.5 w-3/4 rounded-full bg-(--color-background-subtle)" />
+                <div className="h-1.5 w-full rounded-full bg-(--color-background-subtle)" />
+                <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-subtle)" />
               </div>
             </div>
           </div>
         </div>
 
         {/* stats strip */}
-        <div className="relative border-t border-(--color-border-primary) bg-(--color-background-primary)/60 backdrop-blur-sm">
+        <div className="relative border-t border-(--color-border-default) bg-(--color-background-default)/60 backdrop-blur-sm">
           <div className="mx-auto max-w-330 px-4 sm:px-6 lg:px-8">
             <dl className="grid grid-cols-2 lg:grid-cols-4">
               {[
@@ -328,16 +330,16 @@ export default function PatternsPage() {
               ].map(({ label, value, sub }, i) => (
                 <div
                   key={label}
-                  className={`px-2 py-6 lg:py-7 ${i < 3 ? "lg:border-r border-(--color-border-primary)" : ""} ${i >= 2 ? "border-t lg:border-t-0" : ""} ${i > 0 ? "lg:pl-8" : ""}`}
+                  className={`px-2 py-6 lg:py-7 ${i < 3 ? "lg:border-r border-(--color-border-default)" : ""} ${i >= 2 ? "border-t lg:border-t-0" : ""} ${i > 0 ? "lg:pl-8" : ""}`}
                 >
-                  <dt className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <dt className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     {label}
                   </dt>
                   <dd className="mt-1 flex items-baseline gap-2">
-                    <span className="font-serif text-3xl sm:text-4xl font-semibold text-(--color-text-primary)">
+                    <span className="font-serif text-3xl sm:text-4xl font-semibold text-(--color-foreground-default)">
                       {value}
                     </span>
-                    <span className="text-xs text-(--color-text-tertiary)">
+                    <span className="text-xs text-(--color-foreground-faint)">
                       {sub}
                     </span>
                   </dd>
@@ -353,7 +355,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-auth"
-        className="border-b border-(--color-border-primary)"
+        className="border-b border-(--color-border-default)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -370,13 +372,15 @@ export default function PatternsPage() {
               tags={["Card", "Form", "Input", "Button", "Tabs", "Checkbox"]}
               preview={
                 <div
-                  className="mx-auto max-w-[320px] rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-5"
+                  className="mx-auto max-w-[320px] rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-5"
                   style={{ boxShadow: "var(--shadow-md)" }}
                 >
                   <div className="flex items-center gap-2">
                     <span
                       className="grid h-6 w-6 place-items-center rounded"
-                      style={{ background: "var(--color-interactive-primary)" }}
+                      style={{
+                        background: "var(--color-primary-background-default)",
+                      }}
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -384,50 +388,54 @@ export default function PatternsPage() {
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2.2}
-                        style={{ color: "var(--color-text-inverse)" }}
+                        style={{
+                          color: "var(--color-inverse-foreground-default)",
+                        }}
                       >
                         <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
                         <circle cx="12" cy="11" r="1.5" fill="currentColor" />
                       </svg>
                     </span>
-                    <span className="font-serif text-sm font-semibold text-(--color-text-primary)">
+                    <span className="font-serif text-sm font-semibold text-(--color-foreground-default)">
                       Wylie Dog
                     </span>
                   </div>
-                  <h3 className="mt-3 font-serif text-lg font-semibold leading-tight text-(--color-text-primary)">
+                  <h3 className="mt-3 font-serif text-lg font-semibold leading-tight text-(--color-foreground-default)">
                     Welcome back
                   </h3>
-                  <p className="text-[11px] text-(--color-text-tertiary)">
+                  <p className="text-[11px] text-(--color-foreground-faint)">
                     Sign in to continue to your workspace.
                   </p>
                   <div className="mt-4 space-y-2.5">
                     <div>
-                      <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
+                      <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
                         Email
                       </label>
-                      <div className="flex items-center h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-primary)">
+                      <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default) text-(--color-foreground-default)">
                         elena@wyliedog.dev
                       </div>
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-1">
-                        <label className="text-[10px] font-medium text-(--color-text-secondary)">
+                        <label className="text-[10px] font-medium text-(--color-foreground-muted)">
                           Password
                         </label>
                         <a
                           className="font-mono text-[9px]"
-                          style={{ color: "var(--color-interactive-primary)" }}
+                          style={{
+                            color: "var(--color-primary-background-default)",
+                          }}
                         >
                           Forgot?
                         </a>
                       </div>
-                      <div className="flex items-center justify-between h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
-                        <span className="tracking-[0.3em] text-(--color-text-tertiary)">
+                      <div className="flex items-center justify-between h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default)">
+                        <span className="tracking-[0.3em] text-(--color-foreground-faint)">
                           ••••••••
                         </span>
                         <svg
                           viewBox="0 0 24 24"
-                          className="h-3 w-3 text-(--color-text-tertiary)"
+                          className="h-3 w-3 text-(--color-foreground-faint)"
                           fill="none"
                           stroke="currentColor"
                           strokeWidth={2}
@@ -444,14 +452,14 @@ export default function PatternsPage() {
                   <div className="mt-3 flex items-center gap-2">
                     <span
                       className="h-px flex-1"
-                      style={{ background: "var(--color-border-primary)" }}
+                      style={{ background: "var(--color-border-default)" }}
                     />
-                    <span className="font-mono text-[9px] uppercase text-(--color-text-tertiary)">
+                    <span className="font-mono text-[9px] uppercase text-(--color-foreground-faint)">
                       or continue with
                     </span>
                     <span
                       className="h-px flex-1"
-                      style={{ background: "var(--color-border-primary)" }}
+                      style={{ background: "var(--color-border-default)" }}
                     />
                   </div>
                   <div className="mt-3 grid grid-cols-3 gap-1.5">
@@ -483,11 +491,13 @@ export default function PatternsPage() {
                       </Button>
                     ))}
                   </div>
-                  <p className="mt-3 text-center text-[10px] text-(--color-text-tertiary)">
+                  <p className="mt-3 text-center text-[10px] text-(--color-foreground-faint)">
                     No account?{" "}
                     <span
                       className="font-medium"
-                      style={{ color: "var(--color-interactive-primary)" }}
+                      style={{
+                        color: "var(--color-primary-background-default)",
+                      }}
                     >
                       Create one
                     </span>
@@ -504,23 +514,23 @@ export default function PatternsPage() {
               preview={
                 <div className="grid grid-cols-2 gap-3 max-w-115 mx-auto">
                   <div
-                    className="rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4"
+                    className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4"
                     style={{ boxShadow: "var(--shadow-sm)" }}
                   >
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
+                    <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
                       step 1
                     </span>
-                    <h4 className="mt-1 font-serif text-sm font-semibold leading-tight text-(--color-text-primary)">
+                    <h4 className="mt-1 font-serif text-sm font-semibold leading-tight text-(--color-foreground-default)">
                       Reset password
                     </h4>
-                    <p className="text-[10px] text-(--color-text-tertiary) mt-0.5">
+                    <p className="text-[10px] text-(--color-foreground-faint) mt-0.5">
                       We&apos;ll send a link.
                     </p>
                     <div className="mt-3 space-y-2">
-                      <label className="block text-[10px] font-medium text-(--color-text-secondary)">
+                      <label className="block text-[10px] font-medium text-(--color-foreground-muted)">
                         Email
                       </label>
-                      <div className="flex items-center h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-tertiary)">
+                      <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default) text-(--color-foreground-faint)">
                         elena@…
                       </div>
                       <Button className="w-full h-7 text-[11px] font-semibold">
@@ -529,15 +539,17 @@ export default function PatternsPage() {
                     </div>
                   </div>
                   <div
-                    className="rounded-lg bg-(--color-surface-primary) border-2 p-4"
+                    className="rounded-lg bg-(--color-background-default) border-2 p-4"
                     style={{
-                      borderColor: "var(--color-status-success)",
+                      borderColor: "var(--color-success-foreground-subtle)",
                       boxShadow: "var(--shadow-md)",
                     }}
                   >
                     <span
                       className="font-mono text-[9px] uppercase tracking-wider"
-                      style={{ color: "var(--color-status-success)" }}
+                      style={{
+                        color: "var(--color-success-foreground-subtle)",
+                      }}
                     >
                       step 2 · sent
                     </span>
@@ -545,8 +557,8 @@ export default function PatternsPage() {
                       className="mt-2 grid h-9 w-9 place-items-center rounded-full"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
-                        color: "var(--color-status-success)",
+                          "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
+                        color: "var(--color-success-foreground-subtle)",
                       }}
                     >
                       <svg
@@ -560,21 +572,21 @@ export default function PatternsPage() {
                         <path d="m3 7 9 6 9-6" />
                       </svg>
                     </div>
-                    <h4 className="mt-2 font-serif text-sm font-semibold leading-tight text-(--color-text-primary)">
+                    <h4 className="mt-2 font-serif text-sm font-semibold leading-tight text-(--color-foreground-default)">
                       Check your inbox
                     </h4>
-                    <p className="text-[10px] text-(--color-text-tertiary) mt-0.5">
+                    <p className="text-[10px] text-(--color-foreground-faint) mt-0.5">
                       Link valid for 15 min.
                     </p>
                     <div className="mt-3 flex items-center gap-1">
-                      <span className="font-mono text-[10px] text-(--color-text-secondary) truncate">
+                      <span className="font-mono text-[10px] text-(--color-foreground-muted) truncate">
                         e****@wyliedog.dev
                       </span>
                     </div>
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="mt-2 h-6 gap-1 text-[11px] text-(--color-text-secondary)"
+                      className="mt-2 h-6 gap-1 text-[11px] text-(--color-foreground-muted)"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -600,7 +612,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-data"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary)"
+        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -618,10 +630,10 @@ export default function PatternsPage() {
               preview={
                 <div className="space-y-2 max-w-105 mx-auto">
                   <div className="flex items-center justify-between text-[10px]">
-                    <span className="font-mono text-(--color-text-tertiary)">
+                    <span className="font-mono text-(--color-foreground-faint)">
                       Showing 3 of 248
                     </span>
-                    <span className="inline-flex h-5 items-center rounded border border-(--color-border-primary) bg-(--color-surface-primary) px-1.5 font-mono text-[9px] text-(--color-text-secondary)">
+                    <span className="inline-flex h-5 items-center rounded border border-(--color-border-default) bg-(--color-background-default) px-1.5 font-mono text-[9px] text-(--color-foreground-muted)">
                       grid · 3 cols
                     </span>
                   </div>
@@ -631,7 +643,7 @@ export default function PatternsPage() {
                         name: "Helios Workspace",
                         members: 12,
                         status: "active",
-                        statusColor: "var(--color-status-success)",
+                        statusColor: "var(--color-success-foreground-subtle)",
                         price: "$42/mo",
                         bg: "linear-gradient(135deg, var(--color-fiery-coral-300), var(--color-red-400))",
                       },
@@ -639,7 +651,7 @@ export default function PatternsPage() {
                         name: "Atlas Studio",
                         members: 5,
                         status: "active",
-                        statusColor: "var(--color-status-success)",
+                        statusColor: "var(--color-success-foreground-subtle)",
                         price: "$24/mo",
                         bg: "linear-gradient(135deg, var(--color-blue-300), var(--color-blue-500))",
                       },
@@ -647,7 +659,7 @@ export default function PatternsPage() {
                         name: "Northwind Co.", //cSpell:ignore Northwind
                         members: 28,
                         status: "trial",
-                        statusColor: "var(--color-status-warning)",
+                        statusColor: "var(--color-warning-foreground-subtle)",
                         price: "14d left",
                         bg: "linear-gradient(135deg, var(--color-green-300), var(--color-green-400))",
                       },
@@ -655,16 +667,16 @@ export default function PatternsPage() {
                       ({ name, members, status, statusColor, price, bg }) => (
                         <div
                           key={name}
-                          className="rounded-md bg-(--color-surface-primary) border border-(--color-border-primary) p-2.5"
+                          className="rounded-md bg-(--color-background-default) border border-(--color-border-default) p-2.5"
                         >
                           <div
                             className="aspect-4/3 rounded mb-2"
                             style={{ background: bg }}
                           />
-                          <p className="text-[10px] font-semibold leading-tight text-(--color-text-primary)">
+                          <p className="text-[10px] font-semibold leading-tight text-(--color-foreground-default)">
                             {name}
                           </p>
-                          <p className="font-mono text-[9px] text-(--color-text-tertiary) mt-0.5">
+                          <p className="font-mono text-[9px] text-(--color-foreground-faint) mt-0.5">
                             {members} members
                           </p>
                           <div className="mt-1.5 flex items-center justify-between">
@@ -677,7 +689,7 @@ export default function PatternsPage() {
                             >
                               ● {status}
                             </span>
-                            <span className="font-mono text-[8px] text-(--color-text-tertiary)">
+                            <span className="font-mono text-[8px] text-(--color-foreground-faint)">
                               {price}
                             </span>
                           </div>
@@ -686,19 +698,19 @@ export default function PatternsPage() {
                     )}
                   </div>
                   <div className="flex items-center justify-center gap-1 pt-1">
-                    <span className="font-mono text-[9px] text-(--color-text-tertiary)">
+                    <span className="font-mono text-[9px] text-(--color-foreground-faint)">
                       1
                     </span>
                     <span
                       className="grid h-4 w-4 place-items-center rounded font-mono text-[9px]"
                       style={{
-                        background: "var(--color-interactive-primary)",
-                        color: "var(--color-text-inverse)",
+                        background: "var(--color-primary-background-default)",
+                        color: "var(--color-inverse-foreground-default)",
                       }}
                     >
                       2
                     </span>
-                    <span className="font-mono text-[9px] text-(--color-text-tertiary)">
+                    <span className="font-mono text-[9px] text-(--color-foreground-faint)">
                       3 … 83
                     </span>
                   </div>
@@ -715,25 +727,25 @@ export default function PatternsPage() {
                 <div className="grid grid-cols-2 gap-2 max-w-105 mx-auto">
                   {[
                     {
-                      color: "var(--color-interactive-primary)",
+                      color: "var(--color-primary-background-default)",
                       icon: "M13 2 3 14h9l-1 8 10-12h-9z",
                       title: "Lightning fast",
                       sub: "Edge-rendered. 38ms p95.",
                     },
                     {
-                      color: "var(--color-status-success)",
+                      color: "var(--color-success-foreground-subtle)",
                       icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
                       title: "SOC 2 Type II",
                       sub: "Audited yearly.",
                     },
                     {
-                      color: "var(--color-text-warning)",
+                      color: "var(--color-warning-foreground-subtle)",
                       icon: "M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 7v5l3 2",
                       title: "24/7 monitoring",
                       sub: "Status & alerts built in.",
                     },
                     {
-                      color: "var(--color-text-danger)",
+                      color: "var(--color-danger-foreground-subtle)",
                       icon: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
                       title: "Human support",
                       sub: "Median reply 4 min.",
@@ -741,7 +753,7 @@ export default function PatternsPage() {
                   ].map(({ color, icon, title, sub }) => (
                     <div
                       key={title}
-                      className="rounded-md bg-(--color-surface-primary) border border-(--color-border-primary) p-3"
+                      className="rounded-md bg-(--color-background-default) border border-(--color-border-default) p-3"
                     >
                       <span
                         className="grid h-7 w-7 place-items-center rounded"
@@ -760,10 +772,10 @@ export default function PatternsPage() {
                           <path d={icon} />
                         </svg>
                       </span>
-                      <p className="mt-2 text-[11px] font-semibold leading-tight text-(--color-text-primary)">
+                      <p className="mt-2 text-[11px] font-semibold leading-tight text-(--color-foreground-default)">
                         {title}
                       </p>
-                      <p className="text-[10px] text-(--color-text-tertiary) mt-0.5">
+                      <p className="text-[10px] text-(--color-foreground-faint) mt-0.5">
                         {sub}
                       </p>
                     </div>
@@ -780,7 +792,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-feedback"
-        className="border-b border-(--color-border-primary)"
+        className="border-b border-(--color-border-default)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -798,13 +810,13 @@ export default function PatternsPage() {
               tags={["Alert", "Badge", "Button", "Card"]}
               preview={
                 <div className="grid lg:grid-cols-2 gap-3 max-w-160 mx-auto">
-                  <div className="rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4">
+                  <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
                     <span
                       className="grid h-9 w-9 place-items-center rounded-full"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-status-danger) 14%, transparent)",
-                        color: "var(--color-text-danger)",
+                          "color-mix(in oklch, var(--color-danger-foreground-subtle) 14%, transparent)",
+                        color: "var(--color-danger-foreground-subtle)",
                       }}
                     >
                       <svg
@@ -818,16 +830,16 @@ export default function PatternsPage() {
                         <path d="M12 8v5M12 16h.01" />
                       </svg>
                     </span>
-                    <h4 className="mt-3 font-serif text-base font-semibold leading-tight text-(--color-text-primary)">
+                    <h4 className="mt-3 font-serif text-base font-semibold leading-tight text-(--color-foreground-default)">
                       Something broke on our end
                     </h4>
-                    <p className="text-[11px] text-(--color-text-secondary) mt-1">
+                    <p className="text-[11px] text-(--color-foreground-muted) mt-1">
                       The team has been pinged. Your work was auto-saved 12s
                       ago.
                     </p>
-                    <div className="mt-3 rounded border border-(--color-border-primary) bg-(--color-background-secondary) p-2 font-mono text-[9px] text-(--color-text-tertiary)">
+                    <div className="mt-3 rounded border border-(--color-border-default) bg-(--color-background-subtle) p-2 font-mono text-[9px] text-(--color-foreground-faint)">
                       error.id&nbsp;&nbsp;
-                      <span className="text-(--color-text-secondary)">
+                      <span className="text-(--color-foreground-muted)">
                         err_8f3a2b1c
                       </span>
                     </div>
@@ -856,21 +868,23 @@ export default function PatternsPage() {
                       </Button>
                     </div>
                   </div>
-                  <div className="rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
+                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
                       component-scoped
                     </p>
                     <div
-                      className="mt-2 rounded-md border bg-(--color-background-primary) p-3"
+                      className="mt-2 rounded-md border bg-(--color-background-default) p-3"
                       style={{
                         borderColor:
-                          "color-mix(in oklch, var(--color-status-danger) 40%, transparent)",
+                          "color-mix(in oklch, var(--color-danger-foreground-subtle) 40%, transparent)",
                       }}
                     >
                       <div className="flex items-start gap-2">
                         <span
                           className="grid h-4 w-4 mt-px place-items-center rounded"
-                          style={{ color: "var(--color-text-danger)" }}
+                          style={{
+                            color: "var(--color-danger-foreground-subtle)",
+                          }}
                         >
                           <svg
                             viewBox="0 0 24 24"
@@ -884,10 +898,10 @@ export default function PatternsPage() {
                           </svg>
                         </span>
                         <div className="flex-1">
-                          <p className="text-[11px] font-semibold text-(--color-text-primary)">
+                          <p className="text-[11px] font-semibold text-(--color-foreground-default)">
                             Chart failed to render
                           </p>
-                          <p className="text-[10px] text-(--color-text-tertiary) mt-0.5">
+                          <p className="text-[10px] text-(--color-foreground-faint) mt-0.5">
                             RangeError: data points exceed buffer.
                           </p>
                           <Button
@@ -896,8 +910,8 @@ export default function PatternsPage() {
                             className="mt-2 h-5 px-1.5 font-mono text-[9px]"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-status-danger) 14%, transparent)",
-                              color: "var(--color-text-danger)",
+                                "color-mix(in oklch, var(--color-danger-foreground-subtle) 14%, transparent)",
+                              color: "var(--color-danger-foreground-subtle)",
                             }}
                           >
                             Retry isolated
@@ -905,8 +919,12 @@ export default function PatternsPage() {
                         </div>
                       </div>
                     </div>
-                    <p className="font-mono text-[9px] mt-3 text-(--color-text-tertiary)">
-                      <span style={{ color: "var(--color-status-success)" }}>
+                    <p className="font-mono text-[9px] mt-3 text-(--color-foreground-faint)">
+                      <span
+                        style={{
+                          color: "var(--color-success-foreground-subtle)",
+                        }}
+                      >
                         ●
                       </span>{" "}
                       rest of the page still works
@@ -924,7 +942,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-forms"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary)"
+        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -941,39 +959,39 @@ export default function PatternsPage() {
               tags={["Form", "Input", "Select", "Checkbox", "Switch", "Tabs"]}
               preview={
                 <div
-                  className="mx-auto max-w-90 rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4"
+                  className="mx-auto max-w-90 rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   <div className="flex items-center gap-2">
-                    <p className="font-serif text-sm font-semibold text-(--color-text-primary)">
+                    <p className="font-serif text-sm font-semibold text-(--color-foreground-default)">
                       Workspace settings
                     </p>
-                    <span className="ml-auto font-mono text-[9px] text-(--color-text-tertiary)">
+                    <span className="ml-auto font-mono text-[9px] text-(--color-foreground-faint)">
                       Step 2 of 3
                     </span>
                   </div>
                   <div className="mt-3">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
+                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
                       General
                     </p>
-                    <div className="mt-1.5 space-y-2 rounded-md border border-(--color-border-primary) p-2.5">
+                    <div className="mt-1.5 space-y-2 rounded-md border border-(--color-border-default) p-2.5">
                       <div>
-                        <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
+                        <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
                           Name
                         </label>
-                        <div className="flex items-center h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary) text-(--color-text-primary)">
+                        <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default) text-(--color-foreground-default)">
                           Helios Workspace
                         </div>
                       </div>
                       <div>
-                        <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
+                        <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
                           URL
                         </label>
-                        <div className="flex items-center h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
-                          <span className="font-mono text-(--color-text-tertiary)">
+                        <div className="flex items-center h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default)">
+                          <span className="font-mono text-(--color-foreground-faint)">
                             wyliedog.dev/
                           </span>
-                          <span className="font-mono text-(--color-text-primary)">
+                          <span className="font-mono text-(--color-foreground-default)">
                             helios
                           </span>
                         </div>
@@ -981,28 +999,32 @@ export default function PatternsPage() {
                     </div>
                   </div>
                   <div className="mt-3">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
+                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
                       Billing
                     </p>
-                    <div className="mt-1.5 space-y-2 rounded-md border border-(--color-border-primary) p-2.5">
+                    <div className="mt-1.5 space-y-2 rounded-md border border-(--color-border-default) p-2.5">
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="text-[11px] font-semibold text-(--color-text-primary)">
+                          <p className="text-[11px] font-semibold text-(--color-foreground-default)">
                             Annual billing
                           </p>
-                          <p className="text-[9px] text-(--color-text-tertiary)">
+                          <p className="text-[9px] text-(--color-foreground-faint)">
                             Save 20%
                           </p>
                         </div>
                         <span
                           className="relative inline-flex h-4 w-7 items-center rounded-full"
                           style={{
-                            background: "var(--color-interactive-primary)",
+                            background:
+                              "var(--color-primary-background-default)",
                           }}
                         >
                           <span
                             className="inline-block h-3 w-3 translate-x-3 rounded-full"
-                            style={{ background: "var(--color-text-inverse)" }}
+                            style={{
+                              background:
+                                "var(--color-inverse-foreground-default)",
+                            }}
                           />
                         </span>
                       </div>
@@ -1043,22 +1065,22 @@ export default function PatternsPage() {
               tags={["Form", "Input", "Textarea", "Alert", "Button"]}
               preview={
                 <div
-                  className="mx-auto max-w-90 rounded-lg bg-(--color-surface-primary) border border-(--color-border-primary) p-4 space-y-3"
+                  className="mx-auto max-w-90 rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4 space-y-3"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   <div>
-                    <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
+                    <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
                       Email
                     </label>
                     <div
                       className="flex items-center justify-between h-7 border rounded-md px-2 text-[11px]"
                       style={{
-                        borderColor: "var(--color-border-danger)",
+                        borderColor: "var(--color-danger-border-default)",
                         background:
-                          "color-mix(in oklch, var(--color-status-danger) 6%, var(--color-surface-primary))",
+                          "color-mix(in oklch, var(--color-danger-foreground-subtle) 6%, var(--color-background-default))",
                       }}
                     >
-                      <span className="text-(--color-text-primary)">
+                      <span className="text-(--color-foreground-default)">
                         elena@wyl
                       </span>
                       <svg
@@ -1067,7 +1089,9 @@ export default function PatternsPage() {
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2.4}
-                        style={{ color: "var(--color-text-danger)" }}
+                        style={{
+                          color: "var(--color-danger-foreground-subtle)",
+                        }}
                       >
                         <circle cx="12" cy="12" r="9" />
                         <path d="M12 8v5M12 16h.01" />
@@ -1075,20 +1099,20 @@ export default function PatternsPage() {
                     </div>
                     <p
                       className="mt-1 text-[10px]"
-                      style={{ color: "var(--color-text-danger)" }}
+                      style={{ color: "var(--color-danger-foreground-subtle)" }}
                     >
                       Invalid email format. Expected name@domain.com.
                     </p>
                   </div>
                   <div>
-                    <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
+                    <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
                       Workspace URL
                     </label>
-                    <div className="flex items-center justify-between h-7 border border-(--color-border-primary) rounded-md px-2 text-[11px] bg-(--color-surface-primary)">
-                      <span className="text-(--color-text-primary)">
+                    <div className="flex items-center justify-between h-7 border border-(--color-border-default) rounded-md px-2 text-[11px] bg-(--color-background-default)">
+                      <span className="text-(--color-foreground-default)">
                         acme-co
                       </span>
-                      <span className="inline-flex items-center gap-1 font-mono text-[9px] text-(--color-text-tertiary)">
+                      <span className="inline-flex items-center gap-1 font-mono text-[9px] text-(--color-foreground-faint)">
                         <svg
                           viewBox="0 0 24 24"
                           className="h-3 w-3 animate-spin"
@@ -1103,14 +1127,16 @@ export default function PatternsPage() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
+                    <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
                       Password
                     </label>
                     <div
-                      className="flex items-center justify-between h-7 border rounded-md px-2 text-[11px] bg-(--color-surface-primary)"
-                      style={{ borderColor: "var(--color-status-success)" }}
+                      className="flex items-center justify-between h-7 border rounded-md px-2 text-[11px] bg-(--color-background-default)"
+                      style={{
+                        borderColor: "var(--color-success-foreground-subtle)",
+                      }}
                     >
-                      <span className="tracking-[0.3em] text-(--color-text-tertiary)">
+                      <span className="tracking-[0.3em] text-(--color-foreground-faint)">
                         ••••••••••••
                       </span>
                       <svg
@@ -1119,7 +1145,9 @@ export default function PatternsPage() {
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2.4}
-                        style={{ color: "var(--color-status-success)" }}
+                        style={{
+                          color: "var(--color-success-foreground-subtle)",
+                        }}
                       >
                         <path d="m5 12 5 5L20 7" />
                       </svg>
@@ -1129,12 +1157,17 @@ export default function PatternsPage() {
                         <span
                           key={i}
                           className="h-1 w-6 rounded-full"
-                          style={{ background: "var(--color-status-success)" }}
+                          style={{
+                            background:
+                              "var(--color-success-foreground-subtle)",
+                          }}
                         />
                       ))}
                       <span
                         className="ml-1 text-[10px]"
-                        style={{ color: "var(--color-status-success)" }}
+                        style={{
+                          color: "var(--color-success-foreground-subtle)",
+                        }}
                       >
                         Strong
                       </span>
@@ -1152,7 +1185,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-layout"
-        className="border-b border-(--color-border-primary)"
+        className="border-b border-(--color-border-default)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -1169,10 +1202,10 @@ export default function PatternsPage() {
             tags={["Card", "Avatar", "Badge", "Button", "Input", "Separator"]}
             preview={
               <div
-                className="mx-auto max-w-180 rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
+                className="mx-auto max-w-180 rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default)"
                 style={{ boxShadow: "var(--shadow-md)" }}
               >
-                <div className="flex items-center gap-2 px-3 py-2 border-b border-(--color-border-primary) bg-(--color-background-secondary)">
+                <div className="flex items-center gap-2 px-3 py-2 border-b border-(--color-border-default) bg-(--color-background-subtle)">
                   <div className="flex gap-1">
                     {[
                       "var(--color-red-400)",
@@ -1186,23 +1219,23 @@ export default function PatternsPage() {
                       />
                     ))}
                   </div>
-                  <span className="font-mono text-[9px] text-(--color-text-tertiary) ml-2">
+                  <span className="font-mono text-[9px] text-(--color-foreground-faint) ml-2">
                     helios.wyliedog.dev/projects
                   </span>
-                  <span className="ml-auto inline-flex h-4 items-center rounded border border-(--color-border-primary) bg-(--color-surface-primary) px-1 font-mono text-[8px] text-(--color-text-secondary)">
+                  <span className="ml-auto inline-flex h-4 items-center rounded border border-(--color-border-default) bg-(--color-background-default) px-1 font-mono text-[8px] text-(--color-foreground-muted)">
                     ⌘K
                   </span>
                 </div>
                 <div className="grid grid-cols-12 h-55">
-                  <aside className="col-span-3 border-r border-(--color-border-primary) p-3 bg-(--color-background-primary)">
+                  <aside className="col-span-3 border-r border-(--color-border-default) p-3 bg-(--color-background-default)">
                     <div className="flex items-center gap-1.5">
                       <span
                         className="grid h-4 w-4 place-items-center rounded"
                         style={{
-                          background: "var(--color-interactive-primary)",
+                          background: "var(--color-primary-background-default)",
                         }}
                       />
-                      <span className="text-[10px] font-serif font-semibold text-(--color-text-primary)">
+                      <span className="text-[10px] font-serif font-semibold text-(--color-foreground-default)">
                         Helios
                       </span>
                     </div>
@@ -1211,8 +1244,8 @@ export default function PatternsPage() {
                         className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] font-medium"
                         style={{
                           background:
-                            "color-mix(in oklch, var(--color-interactive-primary) 14%, transparent)",
-                          color: "var(--color-interactive-primary)",
+                            "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
+                          color: "var(--color-primary-background-default)",
                         }}
                       >
                         <span
@@ -1224,7 +1257,7 @@ export default function PatternsPage() {
                       {["Tasks", "Members", "Reports"].map((s) => (
                         <div
                           key={s}
-                          className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] text-(--color-text-secondary)"
+                          className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] text-(--color-foreground-muted)"
                         >
                           {s}
                         </div>
@@ -1233,7 +1266,7 @@ export default function PatternsPage() {
                   </aside>
                   <main className="col-span-9 p-3">
                     <div className="flex items-center justify-between">
-                      <p className="text-[11px] font-serif font-semibold text-(--color-text-primary)">
+                      <p className="text-[11px] font-serif font-semibold text-(--color-foreground-default)">
                         Projects
                       </p>
                       <Button
@@ -1247,14 +1280,14 @@ export default function PatternsPage() {
                       {[60, 30, 85].map((w, i) => (
                         <div
                           key={i}
-                          className="rounded border border-(--color-border-primary) p-2"
+                          className="rounded border border-(--color-border-default) p-2"
                         >
-                          <div className="h-1.5 w-3/4 rounded-full bg-(--color-background-tertiary)" />
-                          <div className="mt-1.5 h-1.5 w-1/2 rounded-full bg-(--color-background-tertiary)" />
+                          <div className="h-1.5 w-3/4 rounded-full bg-(--color-background-strong)" />
+                          <div className="mt-1.5 h-1.5 w-1/2 rounded-full bg-(--color-background-strong)" />
                           <div
                             className="mt-2 h-1 w-full rounded-full"
                             style={{
-                              background: "var(--color-background-tertiary)",
+                              background: "var(--color-background-strong)",
                             }}
                           >
                             <div
@@ -1263,16 +1296,16 @@ export default function PatternsPage() {
                                 width: `${w}%`,
                                 background:
                                   i === 2
-                                    ? "var(--color-status-success)"
-                                    : "var(--color-interactive-primary)",
+                                    ? "var(--color-success-foreground-subtle)"
+                                    : "var(--color-primary-background-default)",
                               }}
                             />
                           </div>
                         </div>
                       ))}
                     </div>
-                    <div className="mt-3 rounded border border-(--color-border-primary)">
-                      <div className="grid grid-cols-4 px-2 py-1 bg-(--color-background-secondary) font-mono text-[8px] uppercase tracking-wider text-(--color-text-tertiary)">
+                    <div className="mt-3 rounded border border-(--color-border-default)">
+                      <div className="grid grid-cols-4 px-2 py-1 bg-(--color-background-subtle) font-mono text-[8px] uppercase tracking-wider text-(--color-foreground-faint)">
                         <span>Name</span>
                         <span>Owner</span>
                         <span>Due</span>
@@ -1284,25 +1317,25 @@ export default function PatternsPage() {
                           owner: "EM",
                           due: "Jun 12",
                           status: "on track",
-                          color: "var(--color-status-success)",
+                          color: "var(--color-success-foreground-subtle)",
                         },
                         {
                           name: "Token bridge",
                           owner: "JR",
                           due: "Jun 18",
                           status: "at risk",
-                          color: "var(--color-text-warning)",
+                          color: "var(--color-warning-foreground-subtle)",
                         },
                       ].map(({ name, owner, due, status, color }) => (
                         <div
                           key={name}
-                          className="grid grid-cols-4 px-2 py-1 border-t border-(--color-border-primary) text-[9px] text-(--color-text-primary)"
+                          className="grid grid-cols-4 px-2 py-1 border-t border-(--color-border-default) text-[9px] text-(--color-foreground-default)"
                         >
                           <span>{name}</span>
-                          <span className="text-(--color-text-secondary)">
+                          <span className="text-(--color-foreground-muted)">
                             {owner}
                           </span>
-                          <span className="text-(--color-text-secondary)">
+                          <span className="text-(--color-foreground-muted)">
                             {due}
                           </span>
                           <span className="text-right">
@@ -1332,7 +1365,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-nav"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary)"
+        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -1349,19 +1382,21 @@ export default function PatternsPage() {
               tags={["SiteHeader", "Button"]}
               preview={
                 <div
-                  className="mx-auto max-w-105 rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
+                  className="mx-auto max-w-105 rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default)"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   <div
-                    className="flex items-center gap-2 px-3 py-2 border-b border-(--color-border-primary)"
+                    className="flex items-center gap-2 px-3 py-2 border-b border-(--color-border-default)"
                     style={{
                       background:
-                        "color-mix(in oklch, var(--color-surface-primary) 80%, transparent)",
+                        "color-mix(in oklch, var(--color-background-default) 80%, transparent)",
                     }}
                   >
                     <span
                       className="grid h-4 w-4 place-items-center rounded"
-                      style={{ background: "var(--color-interactive-primary)" }}
+                      style={{
+                        background: "var(--color-primary-background-default)",
+                      }}
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -1369,43 +1404,45 @@ export default function PatternsPage() {
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2.4}
-                        style={{ color: "var(--color-text-inverse)" }}
+                        style={{
+                          color: "var(--color-inverse-foreground-default)",
+                        }}
                       >
                         <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
                       </svg>
                     </span>
-                    <span className="font-serif text-[11px] font-semibold text-(--color-text-primary)">
+                    <span className="font-serif text-[11px] font-semibold text-(--color-foreground-default)">
                       Wylie Dog
                     </span>
                     <nav className="ml-3 flex items-center gap-0.5 text-[9px]">
                       <span
-                        className="rounded px-1.5 py-0.5 font-medium text-(--color-text-primary)"
+                        className="rounded px-1.5 py-0.5 font-medium text-(--color-foreground-default)"
                         style={{
-                          background: "var(--color-background-secondary)",
+                          background: "var(--color-background-subtle)",
                         }}
                       >
                         Home
                       </span>
-                      <span className="rounded px-1.5 py-0.5 text-(--color-text-secondary)">
+                      <span className="rounded px-1.5 py-0.5 text-(--color-foreground-muted)">
                         Docs
                       </span>
-                      <span className="rounded px-1.5 py-0.5 text-(--color-text-secondary)">
+                      <span className="rounded px-1.5 py-0.5 text-(--color-foreground-muted)">
                         Pricing
                       </span>
                     </nav>
                     <div className="ml-auto flex items-center gap-1">
-                      <span className="inline-flex h-4 items-center gap-1 rounded border border-(--color-border-primary) px-1 font-mono text-[8px] text-(--color-text-tertiary)">
+                      <span className="inline-flex h-4 items-center gap-1 rounded border border-(--color-border-default) px-1 font-mono text-[8px] text-(--color-foreground-faint)">
                         ⌘K
                       </span>
                     </div>
                   </div>
-                  <div className="px-3 py-4 bg-(--color-background-secondary)">
+                  <div className="px-3 py-4 bg-(--color-background-subtle)">
                     <div className="space-y-1.5">
-                      <div className="h-2 w-3/4 rounded-full bg-(--color-background-tertiary)" />
-                      <div className="h-2 w-full rounded-full bg-(--color-background-tertiary)" />
-                      <div className="h-2 w-2/3 rounded-full bg-(--color-background-tertiary)" />
+                      <div className="h-2 w-3/4 rounded-full bg-(--color-background-strong)" />
+                      <div className="h-2 w-full rounded-full bg-(--color-background-strong)" />
+                      <div className="h-2 w-2/3 rounded-full bg-(--color-background-strong)" />
                     </div>
-                    <div className="mt-2 font-mono text-[9px] text-(--color-text-tertiary) flex items-center gap-1">
+                    <div className="mt-2 font-mono text-[9px] text-(--color-foreground-faint) flex items-center gap-1">
                       <svg
                         viewBox="0 0 24 24"
                         className="h-2.5 w-2.5"
@@ -1429,7 +1466,7 @@ export default function PatternsPage() {
               tags={["SiteFooter"]}
               preview={
                 <div
-                  className="mx-auto max-w-105 rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-surface-primary)"
+                  className="mx-auto max-w-105 rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default)"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   <div className="p-3">
@@ -1438,13 +1475,14 @@ export default function PatternsPage() {
                         <span
                           className="grid h-4 w-4 place-items-center rounded"
                           style={{
-                            background: "var(--color-interactive-primary)",
+                            background:
+                              "var(--color-primary-background-default)",
                           }}
                         />
-                        <p className="mt-1.5 font-serif text-[10px] font-semibold text-(--color-text-primary)">
+                        <p className="mt-1.5 font-serif text-[10px] font-semibold text-(--color-foreground-default)">
                           Wylie Dog
                         </p>
-                        <p className="text-[8px] text-(--color-text-tertiary) mt-0.5 leading-tight">
+                        <p className="text-[8px] text-(--color-foreground-faint) mt-0.5 leading-tight">
                           The shared system for everything we ship.
                         </p>
                       </div>
@@ -1463,10 +1501,10 @@ export default function PatternsPage() {
                         },
                       ].map(({ heading, items }) => (
                         <div key={heading}>
-                          <p className="font-mono text-[7px] uppercase tracking-wider text-(--color-text-tertiary)">
+                          <p className="font-mono text-[7px] uppercase tracking-wider text-(--color-foreground-faint)">
                             {heading}
                           </p>
-                          <ul className="mt-1 space-y-0.5 text-[9px] text-(--color-text-secondary)">
+                          <ul className="mt-1 space-y-0.5 text-[9px] text-(--color-foreground-muted)">
                             {items.map((i) => (
                               <li key={i}>{i}</li>
                             ))}
@@ -1474,14 +1512,17 @@ export default function PatternsPage() {
                         </div>
                       ))}
                     </div>
-                    <div className="mt-3 pt-2 border-t border-(--color-border-primary) flex items-center justify-between">
-                      <span className="font-mono text-[8px] text-(--color-text-tertiary)">
+                    <div className="mt-3 pt-2 border-t border-(--color-border-default) flex items-center justify-between">
+                      <span className="font-mono text-[8px] text-(--color-foreground-faint)">
                         © 2026 Wylie Dog
                       </span>
-                      <span className="inline-flex items-center gap-1 font-mono text-[8px] text-(--color-text-tertiary)">
+                      <span className="inline-flex items-center gap-1 font-mono text-[8px] text-(--color-foreground-faint)">
                         <span
                           className="h-1 w-1 rounded-full"
-                          style={{ background: "var(--color-status-success)" }}
+                          style={{
+                            background:
+                              "var(--color-success-foreground-subtle)",
+                          }}
                         />
                         All systems operational
                       </span>
@@ -1499,7 +1540,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-page"
-        className="border-b border-(--color-border-primary)"
+        className="border-b border-(--color-border-default)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -1516,42 +1557,44 @@ export default function PatternsPage() {
               tags={["SectionHero"]}
               preview={
                 <div
-                  className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary)"
+                  className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default)"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   <div
                     className="relative p-4"
                     style={{
                       background:
-                        "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-interactive-primary) 22%, transparent) 0%, transparent 60%)",
+                        "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-primary-background-default) 22%, transparent) 0%, transparent 60%)",
                     }}
                   >
-                    <span className="inline-flex items-center gap-1 rounded-full border border-(--color-border-primary) bg-(--color-background-primary) px-1.5 py-0.5 font-mono text-[8px] text-(--color-text-secondary)">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-(--color-border-default) bg-(--color-background-default) px-1.5 py-0.5 font-mono text-[8px] text-(--color-foreground-muted)">
                       <span
                         className="h-1 w-1 rounded-full"
-                        style={{ background: "var(--color-status-success)" }}
+                        style={{
+                          background: "var(--color-success-foreground-subtle)",
+                        }}
                       />
                       v1.4 just shipped
                     </span>
-                    <p className="mt-2 font-serif text-base font-semibold leading-[1.1] text-(--color-text-primary)">
+                    <p className="mt-2 font-serif text-base font-semibold leading-[1.1] text-(--color-foreground-default)">
                       Build faster.
                       <br />
                       Ship calmer.
                     </p>
-                    <p className="text-[9px] text-(--color-text-secondary) mt-1.5 leading-tight">
+                    <p className="text-[9px] text-(--color-foreground-muted) mt-1.5 leading-tight">
                       The shared system that finally keeps brand and product in
                       sync.
                     </p>
                     <div className="mt-2 flex gap-1">
                       <span
-                        className="inline-flex h-5 items-center rounded-md px-2 text-[9px] font-semibold text-(--color-text-inverse)"
+                        className="inline-flex h-5 items-center rounded-md px-2 text-[9px] font-semibold text-(--color-inverse-foreground-default)"
                         style={{
-                          background: "var(--color-interactive-primary)",
+                          background: "var(--color-primary-background-default)",
                         }}
                       >
                         Start free
                       </span>
-                      <span className="inline-flex h-5 items-center rounded-md border border-(--color-border-primary) px-2 text-[9px] font-semibold text-(--color-text-primary)">
+                      <span className="inline-flex h-5 items-center rounded-md border border-(--color-border-default) px-2 text-[9px] font-semibold text-(--color-foreground-default)">
                         Docs
                       </span>
                     </div>
@@ -1567,13 +1610,13 @@ export default function PatternsPage() {
               tags={["SectionFeatures"]}
               preview={
                 <div
-                  className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary) p-3"
+                  className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) p-3"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
-                  <p className="font-mono text-[8px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <p className="font-mono text-[8px] uppercase tracking-wider text-(--color-foreground-faint)">
                     Why teams choose us
                   </p>
-                  <p className="mt-1 font-serif text-sm font-semibold leading-tight text-(--color-text-primary)">
+                  <p className="mt-1 font-serif text-sm font-semibold leading-tight text-(--color-foreground-default)">
                     Three pillars,
                     <br />
                     one promise.
@@ -1581,12 +1624,12 @@ export default function PatternsPage() {
                   <div className="mt-3 space-y-2">
                     {[
                       {
-                        color: "var(--color-interactive-primary)",
+                        color: "var(--color-primary-background-default)",
                         label: "Token-driven",
                         sub: "Change one variable, every surface updates.",
                       },
                       {
-                        color: "var(--color-text-success)",
+                        color: "var(--color-success-foreground-subtle)",
                         label: "Accessible by default",
                         sub: "WCAG 2.2 AA across every state.",
                       },
@@ -1615,10 +1658,10 @@ export default function PatternsPage() {
                           </svg>
                         </span>
                         <div>
-                          <p className="text-[10px] font-semibold leading-tight text-(--color-text-primary)">
+                          <p className="text-[10px] font-semibold leading-tight text-(--color-foreground-default)">
                             {label}
                           </p>
-                          <p className="text-[9px] text-(--color-text-tertiary) leading-tight">
+                          <p className="text-[9px] text-(--color-foreground-faint) leading-tight">
                             {sub}
                           </p>
                         </div>
@@ -1636,62 +1679,62 @@ export default function PatternsPage() {
               tags={["PageLayout", "SiteHeader", "SiteFooter", "Button"]}
               preview={
                 <div
-                  className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary)"
+                  className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default)"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   {/* header strip */}
-                  <div className="h-3 border-b border-(--color-border-primary) flex items-center px-2 gap-1 bg-(--color-background-secondary)">
-                    <span className="h-1 w-6 rounded-full bg-(--color-background-tertiary)" />
-                    <span className="ml-auto h-1 w-3 rounded-full bg-(--color-background-tertiary)" />
+                  <div className="h-3 border-b border-(--color-border-default) flex items-center px-2 gap-1 bg-(--color-background-subtle)">
+                    <span className="h-1 w-6 rounded-full bg-(--color-background-strong)" />
+                    <span className="ml-auto h-1 w-3 rounded-full bg-(--color-background-strong)" />
                   </div>
                   {/* hero */}
                   <div
-                    className="p-2 border-b border-(--color-border-primary)"
+                    className="p-2 border-b border-(--color-border-default)"
                     style={{
                       background:
-                        "radial-gradient(ellipse at top, color-mix(in oklch, var(--color-interactive-primary) 18%, transparent), transparent)",
+                        "radial-gradient(ellipse at top, color-mix(in oklch, var(--color-primary-background-default) 18%, transparent), transparent)",
                     }}
                   >
-                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-tertiary)" />
-                    <div className="mt-1 h-1.5 w-1/2 rounded-full bg-(--color-background-tertiary)" />
+                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-strong)" />
+                    <div className="mt-1 h-1.5 w-1/2 rounded-full bg-(--color-background-strong)" />
                     <div className="mt-1.5 flex gap-1">
                       <span
                         className="h-2 w-8 rounded-sm"
                         style={{
-                          background: "var(--color-interactive-primary)",
+                          background: "var(--color-primary-background-default)",
                         }}
                       />
-                      <span className="h-2 w-6 rounded-sm bg-(--color-background-tertiary)" />
+                      <span className="h-2 w-6 rounded-sm bg-(--color-background-strong)" />
                     </div>
                   </div>
                   {/* features */}
-                  <div className="grid grid-cols-3 gap-1 p-2 border-b border-(--color-border-primary)">
+                  <div className="grid grid-cols-3 gap-1 p-2 border-b border-(--color-border-default)">
                     {[
-                      "var(--color-interactive-primary)",
-                      "var(--color-status-success)",
-                      "var(--color-status-warning)",
+                      "var(--color-primary-background-default)",
+                      "var(--color-success-foreground-subtle)",
+                      "var(--color-warning-foreground-subtle)",
                     ].map((color, i) => (
                       <div
                         key={i}
-                        className="rounded border border-(--color-border-primary) p-1.5 space-y-1"
+                        className="rounded border border-(--color-border-default) p-1.5 space-y-1"
                       >
                         <span
                           className="block h-2 w-2 rounded"
                           style={{ background: color }}
                         />
-                        <div className="h-1 w-3/4 rounded-full bg-(--color-background-tertiary)" />
-                        <div className="h-1 w-full rounded-full bg-(--color-background-tertiary)" />
+                        <div className="h-1 w-3/4 rounded-full bg-(--color-background-strong)" />
+                        <div className="h-1 w-full rounded-full bg-(--color-background-strong)" />
                       </div>
                     ))}
                   </div>
                   {/* cta */}
-                  <div className="p-2 border-b border-(--color-border-primary) bg-(--color-background-secondary)">
-                    <div className="rounded border border-(--color-border-primary) bg-(--color-background-primary) p-1.5 flex items-center justify-between">
-                      <div className="h-1.5 w-16 rounded-full bg-(--color-background-tertiary)" />
+                  <div className="p-2 border-b border-(--color-border-default) bg-(--color-background-subtle)">
+                    <div className="rounded border border-(--color-border-default) bg-(--color-background-default) p-1.5 flex items-center justify-between">
+                      <div className="h-1.5 w-16 rounded-full bg-(--color-background-strong)" />
                       <span
                         className="h-2.5 w-8 rounded-sm"
                         style={{
-                          background: "var(--color-interactive-primary)",
+                          background: "var(--color-primary-background-default)",
                         }}
                       />
                     </div>
@@ -1701,7 +1744,7 @@ export default function PatternsPage() {
                     {[0, 1, 2, 3].map((i) => (
                       <div
                         key={i}
-                        className="h-1 rounded-full bg-(--color-background-tertiary)"
+                        className="h-1 rounded-full bg-(--color-background-strong)"
                       />
                     ))}
                   </div>
@@ -1717,7 +1760,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-responsive"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary)"
+        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -1738,30 +1781,30 @@ export default function PatternsPage() {
                   {/* mobile */}
                   <div className="col-span-3">
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
                         sm · 375
                       </span>
-                      <span className="font-mono text-[9px] text-(--color-text-tertiary)">
+                      <span className="font-mono text-[9px] text-(--color-foreground-faint)">
                         1 col
                       </span>
                     </div>
-                    <div className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary) aspect-3/5 p-1.5 space-y-1">
-                      <div className="h-3 rounded bg-(--color-background-tertiary)" />
+                    <div className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) aspect-3/5 p-1.5 space-y-1">
+                      <div className="h-3 rounded bg-(--color-background-strong)" />
                       <div
                         className="rounded p-1.5"
                         style={{
                           background:
-                            "color-mix(in oklch, var(--color-interactive-primary) 10%, transparent)",
+                            "color-mix(in oklch, var(--color-primary-background-default) 10%, transparent)",
                         }}
                       >
-                        <div className="h-1 w-3/4 rounded-full bg-(--color-background-tertiary)" />
-                        <div className="mt-1 h-1 w-1/2 rounded-full bg-(--color-background-tertiary)" />
+                        <div className="h-1 w-3/4 rounded-full bg-(--color-background-strong)" />
+                        <div className="mt-1 h-1 w-1/2 rounded-full bg-(--color-background-strong)" />
                       </div>
                       <div className="grid grid-cols-1 gap-1">
                         {[0, 1, 2].map((i) => (
                           <div
                             key={i}
-                            className="rounded border border-(--color-border-primary) h-5"
+                            className="rounded border border-(--color-border-default) h-5"
                           />
                         ))}
                       </div>
@@ -1770,30 +1813,30 @@ export default function PatternsPage() {
                   {/* tablet */}
                   <div className="col-span-4">
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
                         md · 768
                       </span>
-                      <span className="font-mono text-[9px] text-(--color-text-tertiary)">
+                      <span className="font-mono text-[9px] text-(--color-foreground-faint)">
                         2 col
                       </span>
                     </div>
-                    <div className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary) aspect-4/5 p-2 space-y-1.5">
-                      <div className="h-3 rounded bg-(--color-background-tertiary)" />
+                    <div className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) aspect-4/5 p-2 space-y-1.5">
+                      <div className="h-3 rounded bg-(--color-background-strong)" />
                       <div
                         className="rounded p-2"
                         style={{
                           background:
-                            "color-mix(in oklch, var(--color-interactive-primary) 10%, transparent)",
+                            "color-mix(in oklch, var(--color-primary-background-default) 10%, transparent)",
                         }}
                       >
-                        <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-tertiary)" />
-                        <div className="mt-1 h-1.5 w-1/2 rounded-full bg-(--color-background-tertiary)" />
+                        <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-strong)" />
+                        <div className="mt-1 h-1.5 w-1/2 rounded-full bg-(--color-background-strong)" />
                       </div>
                       <div className="grid grid-cols-2 gap-1">
                         {[0, 1, 2, 3].map((i) => (
                           <div
                             key={i}
-                            className="rounded border border-(--color-border-primary) h-6"
+                            className="rounded border border-(--color-border-default) h-6"
                           />
                         ))}
                       </div>
@@ -1805,30 +1848,31 @@ export default function PatternsPage() {
                       <span
                         className="rounded px-1.5 py-0.5 font-mono text-[9px]"
                         style={{
-                          background: "var(--color-interactive-primary)",
-                          color: "var(--color-text-inverse)",
+                          background: "var(--color-primary-background-default)",
+                          color: "var(--color-inverse-foreground-default)",
                         }}
                       >
                         lg · 1280
                       </span>
-                      <span className="font-mono text-[9px] text-(--color-text-tertiary)">
+                      <span className="font-mono text-[9px] text-(--color-foreground-faint)">
                         sidebar + 3 col
                       </span>
                     </div>
-                    <div className="rounded-lg overflow-hidden border border-(--color-border-primary) bg-(--color-background-primary) aspect-5/4 p-2">
-                      <div className="h-3 rounded bg-(--color-background-tertiary) mb-1.5" />
+                    <div className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) aspect-5/4 p-2">
+                      <div className="h-3 rounded bg-(--color-background-strong) mb-1.5" />
                       <div className="grid grid-cols-4 gap-1.5">
                         <div className="col-span-1 space-y-1">
                           {[0, 1, 2].map((i) => (
                             <div
                               key={i}
-                              className="rounded h-1.5 bg-(--color-background-tertiary)"
+                              className="rounded h-1.5 bg-(--color-background-strong)"
                             />
                           ))}
                           <div
                             className="rounded h-1.5"
                             style={{
-                              background: "var(--color-interactive-primary)",
+                              background:
+                                "var(--color-primary-background-default)",
                             }}
                           />
                         </div>
@@ -1837,16 +1881,16 @@ export default function PatternsPage() {
                             className="rounded p-1.5"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-interactive-primary) 10%, transparent)",
+                                "color-mix(in oklch, var(--color-primary-background-default) 10%, transparent)",
                             }}
                           >
-                            <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-tertiary)" />
+                            <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-strong)" />
                           </div>
                           <div className="grid grid-cols-3 gap-1">
                             {[0, 1, 2].map((i) => (
                               <div
                                 key={i}
-                                className="rounded border border-(--color-border-primary) h-6"
+                                className="rounded border border-(--color-border-default) h-6"
                               />
                             ))}
                           </div>
@@ -1856,7 +1900,7 @@ export default function PatternsPage() {
                   </div>
                 </div>
                 {/* decision strip */}
-                <div className="mt-4 mx-auto max-w-205 rounded-md border border-(--color-border-primary) bg-(--color-background-primary) px-3 py-2 grid grid-cols-3 gap-3 text-[10px]">
+                <div className="mt-4 mx-auto max-w-205 rounded-md border border-(--color-border-default) bg-(--color-background-default) px-3 py-2 grid grid-cols-3 gap-3 text-[10px]">
                   {[
                     {
                       label: "Below md",
@@ -1872,10 +1916,10 @@ export default function PatternsPage() {
                     },
                   ].map(({ label, desc }) => (
                     <div key={label}>
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
                         {label}
                       </span>
-                      <p className="mt-0.5 text-[10px] text-(--color-text-secondary)">
+                      <p className="mt-0.5 text-[10px] text-(--color-foreground-muted)">
                         {desc}
                       </p>
                     </div>
@@ -1892,7 +1936,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-accessibility"
-        className="border-b border-(--color-border-primary) bg-(--color-background-secondary)"
+        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -1906,7 +1950,7 @@ export default function PatternsPage() {
               story="accessibility-patterns"
               full
               title="Accessibility Patterns"
-              desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. The shared focus ring is driven by --color-border-focus (form controls use --color-input-border-focus), so a token change updates it everywhere.`}
+              desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. The shared focus ring is driven by --color-focus-ring (form controls use --color-input-border-focus), so a token change updates it everywhere.`}
               tags={[
                 "Alert",
                 "Badge",
@@ -1919,8 +1963,8 @@ export default function PatternsPage() {
               preview={
                 <div className="grid md:grid-cols-3 gap-3 max-w-205 mx-auto">
                   {/* Focus ring demo */}
-                  <div className="rounded-lg bg-(--color-background-primary) border border-(--color-border-primary) p-4">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
+                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
                       Focus management
                     </p>
                     <div className="mt-3 flex flex-col gap-2">
@@ -1928,37 +1972,40 @@ export default function PatternsPage() {
                         className="w-full h-7 text-[11px] font-semibold"
                         style={{
                           boxShadow:
-                            "0 0 0 3px color-mix(in oklch, var(--color-interactive-primary) 30%, transparent)",
+                            "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 30%, transparent)",
                         }}
                       >
                         Focused button
                       </Button>
                       <div
-                        className="flex items-center h-7 border rounded-md px-2 text-[11px] text-(--color-text-tertiary)"
+                        className="flex items-center h-7 border rounded-md px-2 text-[11px] text-(--color-foreground-faint)"
                         style={{
-                          borderColor: "var(--color-interactive-primary)",
+                          borderColor:
+                            "var(--color-primary-background-default)",
                           boxShadow:
-                            "0 0 0 3px color-mix(in oklch, var(--color-interactive-primary) 22%, transparent)",
+                            "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
                         }}
                       >
                         Focused input
                       </div>
-                      <p className="text-[10px] text-(--color-text-tertiary)">
+                      <p className="text-[10px] text-(--color-foreground-faint)">
                         3px offset ring · OKLCH token
                       </p>
                     </div>
                   </div>
                   {/* Error announcement */}
-                  <div className="rounded-lg bg-(--color-background-primary) border border-(--color-border-primary) p-4">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
+                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
                       Error announcement
                     </p>
                     <div className="mt-3 space-y-2">
                       <div>
-                        <label className="block text-[10px] font-medium text-(--color-text-secondary) mb-1">
+                        <label className="block text-[10px] font-medium text-(--color-foreground-muted) mb-1">
                           Email{" "}
                           <span
-                            style={{ color: "var(--color-text-danger)" }}
+                            style={{
+                              color: "var(--color-danger-foreground-subtle)",
+                            }}
                             aria-hidden
                           >
                             *
@@ -1967,18 +2014,20 @@ export default function PatternsPage() {
                         <div
                           className="flex items-center h-7 border rounded-md px-2 text-[11px]"
                           style={{
-                            borderColor: "var(--color-border-danger)",
+                            borderColor: "var(--color-danger-border-default)",
                             background:
-                              "color-mix(in oklch, var(--color-status-danger) 6%, var(--color-background-primary))",
+                              "color-mix(in oklch, var(--color-danger-foreground-subtle) 6%, var(--color-background-default))",
                           }}
                         >
-                          <span className="text-(--color-text-primary)">
+                          <span className="text-(--color-foreground-default)">
                             elena@wyl
                           </span>
                         </div>
                         <p
                           className="mt-1 flex items-center gap-1 text-[10px]"
-                          style={{ color: "var(--color-text-danger)" }}
+                          style={{
+                            color: "var(--color-danger-foreground-subtle)",
+                          }}
                           role="alert"
                         >
                           <svg
@@ -1994,14 +2043,14 @@ export default function PatternsPage() {
                           Invalid email format
                         </p>
                       </div>
-                      <p className="font-mono text-[9px] text-(--color-text-tertiary)">
+                      <p className="font-mono text-[9px] text-(--color-foreground-faint)">
                         role=&quot;alert&quot; · aria-describedby
                       </p>
                     </div>
                   </div>
                   {/* Keyboard nav */}
-                  <div className="rounded-lg bg-(--color-background-primary) border border-(--color-border-primary) p-4">
-                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <div className="rounded-lg bg-(--color-background-default) border border-(--color-border-default) p-4">
+                    <p className="font-mono text-[9px] uppercase tracking-wider text-(--color-foreground-faint)">
                       Keyboard navigation
                     </p>
                     <div className="mt-3 space-y-1.5">
@@ -2009,8 +2058,8 @@ export default function PatternsPage() {
                         className="flex items-center justify-between rounded px-2 py-1.5 text-[11px]"
                         style={{
                           background:
-                            "color-mix(in oklch, var(--color-interactive-primary) 12%, transparent)",
-                          color: "var(--color-interactive-primary)",
+                            "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
+                          color: "var(--color-primary-background-default)",
                         }}
                       >
                         <span>Option one</span>
@@ -2019,12 +2068,12 @@ export default function PatternsPage() {
                       {["Option two", "Option three"].map((opt) => (
                         <div
                           key={opt}
-                          className="flex items-center justify-between rounded px-2 py-1.5 text-[11px] text-(--color-text-secondary)"
+                          className="flex items-center justify-between rounded px-2 py-1.5 text-[11px] text-(--color-foreground-muted)"
                         >
                           {opt}
                         </div>
                       ))}
-                      <p className="font-mono text-[9px] text-(--color-text-tertiary) mt-2">
+                      <p className="font-mono text-[9px] text-(--color-foreground-faint) mt-2">
                         roving tabIndex · Arrow keys
                       </p>
                     </div>
@@ -2037,20 +2086,22 @@ export default function PatternsPage() {
       </section>
 
       {/* ── PHILOSOPHY ──────────────────────────────────────────── */}
-      <section className="border-b border-(--color-border-primary)">
+      <section className="border-b border-(--color-border-default)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid md:grid-cols-12 gap-10 items-start">
             <div className="md:col-span-5">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                 Philosophy
               </span>
-              <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight leading-[1.05] text-(--color-text-primary)">
+              <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight leading-[1.05] text-(--color-foreground-default)">
                 A component is a primitive.{" "}
-                <span style={{ color: "var(--color-interactive-primary)" }}>
+                <span
+                  style={{ color: "var(--color-primary-background-default)" }}
+                >
                   A pattern is a decision.
                 </span>
               </h2>
-              <p className="mt-5 text-(--color-text-secondary)">
+              <p className="mt-5 text-(--color-foreground-muted)">
                 Components answer &quot;what&quot;. Patterns answer &quot;when,
                 how, and in what order&quot;. Two teams shipping the same Input
                 on the same Card with the same Button can still produce two
@@ -2062,14 +2113,14 @@ export default function PatternsPage() {
               {[
                 {
                   num: "01",
-                  color: "var(--color-interactive-primary)",
+                  color: "var(--color-primary-background-default)",
                   title: "Use a pattern when the answer is already known.",
                   body: "Sign-in flows, error boundaries, responsive sidebars — these have all been designed before. Reach for the pattern; spend your novelty budget on the product, not the plumbing.",
                   tokenFlow: false,
                 },
                 {
                   num: "02",
-                  color: "var(--color-text-success)",
+                  color: "var(--color-success-foreground-subtle)",
                   title:
                     "Build from scratch when the problem is genuinely new.",
                   body: "If no pattern fits, compose from components instead of bending a near-miss pattern out of shape. Then nominate the result for inclusion — that's how the catalog grows.",
@@ -2085,7 +2136,7 @@ export default function PatternsPage() {
               ].map(({ num, color, title, body, tokenFlow }) => (
                 <div
                   key={num}
-                  className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-6"
+                  className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-6"
                 >
                   <div className="flex items-start gap-3">
                     <span
@@ -2098,34 +2149,34 @@ export default function PatternsPage() {
                       {num}
                     </span>
                     <div>
-                      <h3 className="font-serif text-lg font-semibold text-(--color-text-primary)">
+                      <h3 className="font-serif text-lg font-semibold text-(--color-foreground-default)">
                         {title}
                       </h3>
                       {body && (
-                        <p className="text-sm text-(--color-text-secondary) mt-1">
+                        <p className="text-sm text-(--color-foreground-muted) mt-1">
                           {body}
                         </p>
                       )}
                       {tokenFlow && (
                         <>
-                          <p className="text-sm text-(--color-text-secondary) mt-1">
+                          <p className="text-sm text-(--color-foreground-muted) mt-1">
                             When{" "}
                             <code className="font-mono text-xs">
-                              --color-interactive-primary
+                              --color-primary-background-default
                             </code>{" "}
                             moves, every button, badge, and focus ring across
                             every pattern moves with it — no pattern-by-pattern
                             refactor required.
                           </p>
-                          <div className="mt-4 flex items-center gap-2 rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) px-3 py-2.5">
+                          <div className="mt-4 flex items-center gap-2 rounded-md border border-(--color-border-default) bg-(--color-background-subtle) px-3 py-2.5">
                             {["tokens", "components"].map((label) => (
                               <React.Fragment key={label}>
-                                <span className="font-mono text-[10px] text-(--color-text-secondary)">
+                                <span className="font-mono text-[10px] text-(--color-foreground-muted)">
                                   {label}
                                 </span>
                                 <svg
                                   viewBox="0 0 24 24"
-                                  className="h-3 w-3 text-(--color-text-tertiary)"
+                                  className="h-3 w-3 text-(--color-foreground-faint)"
                                   fill="none"
                                   stroke="currentColor"
                                   strokeWidth={2}
@@ -2137,21 +2188,22 @@ export default function PatternsPage() {
                             <span
                               className="font-mono text-[10px]"
                               style={{
-                                color: "var(--color-interactive-primary)",
+                                color:
+                                  "var(--color-primary-background-default)",
                               }}
                             >
                               patterns
                             </span>
                             <svg
                               viewBox="0 0 24 24"
-                              className="h-3 w-3 text-(--color-text-tertiary)"
+                              className="h-3 w-3 text-(--color-foreground-faint)"
                               fill="none"
                               stroke="currentColor"
                               strokeWidth={2}
                             >
                               <path d="M5 12h14M13 6l6 6-6 6" />
                             </svg>
-                            <span className="font-mono text-[10px] text-(--color-text-secondary)">
+                            <span className="font-mono text-[10px] text-(--color-foreground-muted)">
                               your pages
                             </span>
                           </div>
@@ -2167,17 +2219,17 @@ export default function PatternsPage() {
       </section>
 
       {/* ── CTA FOOTER ──────────────────────────────────────────── */}
-      <section className="border-b border-(--color-border-primary)">
+      <section className="border-b border-(--color-border-default)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="glass rounded-2xl p-8 lg:p-10 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
             <div className="flex-1">
-              <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+              <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                 Ready to build?
               </p>
-              <h2 className="mt-2 font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-(--color-text-primary)">
+              <h2 className="mt-2 font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-(--color-foreground-default)">
                 See every pattern live in Storybook.
               </h2>
-              <p className="mt-2 text-(--color-text-secondary) max-w-lg">
+              <p className="mt-2 text-(--color-foreground-muted) max-w-lg">
                 Each pattern ships with full states, controls, and copy-paste
                 source. The Storybook mirrors what you see on this page — minus
                 the pixel gap.
@@ -2188,8 +2240,8 @@ export default function PatternsPage() {
                 href="https://wyliedogstorybook.com"
                 className="inline-flex h-10 items-center gap-1.5 rounded-md px-4 text-sm font-semibold"
                 style={{
-                  background: "var(--color-interactive-primary)",
-                  color: "var(--color-text-inverse)",
+                  background: "var(--color-primary-background-default)",
+                  color: "var(--color-inverse-foreground-default)",
                 }}
               >
                 View in Storybook
@@ -2205,7 +2257,7 @@ export default function PatternsPage() {
               </a>
               <Link
                 href="/components"
-                className="inline-flex h-10 items-center rounded-md border border-(--color-border-primary) px-4 text-sm font-semibold text-(--color-text-primary) hover:bg-(--color-background-secondary) transition-colors"
+                className="inline-flex h-10 items-center rounded-md border border-(--color-border-default) px-4 text-sm font-semibold text-(--color-foreground-default) hover:bg-(--color-background-subtle) transition-colors"
               >
                 Browse components →
               </Link>

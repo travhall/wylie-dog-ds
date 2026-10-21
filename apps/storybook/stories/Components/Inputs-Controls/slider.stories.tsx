@@ -162,7 +162,7 @@ export const WithLabels: Story = {
         <div className="space-y-3">
           <div className="flex justify-between">
             <Label className="text-sm font-medium">Volume</Label>
-            <span className="text-sm text-(--color-text-tertiary)">
+            <span className="text-sm text-(--color-foreground-faint)">
               {value[0]}%
             </span>
           </div>
@@ -190,7 +190,7 @@ export const PriceRange: Story = {
         <div className="space-y-3">
           <div className="flex justify-between">
             <Label className="text-sm font-medium">Price Range</Label>
-            <span className="text-sm text-(--color-text-tertiary)">
+            <span className="text-sm text-(--color-foreground-faint)">
               ${priceRange[0]} - ${priceRange[1]}
             </span>
           </div>
@@ -201,7 +201,7 @@ export const PriceRange: Story = {
             min={0}
             step={10}
           />
-          <div className="flex justify-between text-xs text-(--color-text-tertiary)">
+          <div className="flex justify-between text-xs text-(--color-foreground-faint)">
             <span>$0</span>
             <span>$1,000</span>
           </div>

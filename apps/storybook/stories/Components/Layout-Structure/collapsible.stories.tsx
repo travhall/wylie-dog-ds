@@ -168,13 +168,13 @@ export const FAQ: Story = {
 
       <div className="space-y-2">
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-background-default-hover)">
             <span className="font-medium">What is your refund policy?</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-(--color-text-tertiary)">
+              <p className="text-sm text-(--color-foreground-faint)">
                 We offer a 30-day money-back guarantee for all our products. If
                 you&apos;re not satisfied with your purchase, you can request a
                 full refund within 30 days of your order date.
@@ -184,13 +184,13 @@ export const FAQ: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-background-default-hover)">
             <span className="font-medium">How do I track my order?</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-(--color-text-tertiary)">
+              <p className="text-sm text-(--color-foreground-faint)">
                 Once your order ships, you&apos;ll receive a tracking number via
                 email. You can use this number on our tracking page or the
                 carrier&apos;s website to monitor your package&apos;s progress.
@@ -200,13 +200,13 @@ export const FAQ: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-background-default-hover)">
             <span className="font-medium">Do you ship internationally?</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-(--color-text-tertiary)">
+              <p className="text-sm text-(--color-foreground-faint)">
                 Yes, we ship to over 50 countries worldwide. Shipping costs and
                 delivery times vary by location. International orders may be
                 subject to customs duties and taxes.
@@ -232,30 +232,30 @@ export const NestedContent: Story = {
       <h3 className="text-lg font-semibold">Project Structure</h3>
 
       <Collapsible className="rounded-lg border">
-        <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
+        <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-background-default-hover)">
           <span className="font-medium">📁 src</span>
           <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
         </CollapsibleTrigger>
         <CollapsibleContent>
           <div className="px-4 pb-4 space-y-2">
-            <div className="text-sm text-(--color-text-tertiary)">
+            <div className="text-sm text-(--color-foreground-faint)">
               📄 index.ts
             </div>
 
             <Collapsible className="ml-4 rounded border">
-              <CollapsibleTrigger className="flex w-full items-center justify-between p-3 text-left hover:bg-(--color-interactive-hover)">
+              <CollapsibleTrigger className="flex w-full items-center justify-between p-3 text-left hover:bg-(--color-background-default-hover)">
                 <span className="text-sm font-medium">📁 components</span>
                 <ChevronDownIcon className="h-3 w-3 transition-transform data-[state=open]:rotate-180" />
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <div className="px-3 pb-3 space-y-1">
-                  <div className="text-xs text-(--color-text-tertiary)">
+                  <div className="text-xs text-(--color-foreground-faint)">
                     📄 Button.tsx
                   </div>
-                  <div className="text-xs text-(--color-text-tertiary)">
+                  <div className="text-xs text-(--color-foreground-faint)">
                     📄 Input.tsx
                   </div>
-                  <div className="text-xs text-(--color-text-tertiary)">
+                  <div className="text-xs text-(--color-foreground-faint)">
                     📄 Modal.tsx
                   </div>
                 </div>
@@ -263,16 +263,16 @@ export const NestedContent: Story = {
             </Collapsible>
 
             <Collapsible className="ml-4 rounded border">
-              <CollapsibleTrigger className="flex w-full items-center justify-between p-3 text-left hover:bg-(--color-interactive-hover)">
+              <CollapsibleTrigger className="flex w-full items-center justify-between p-3 text-left hover:bg-(--color-background-default-hover)">
                 <span className="text-sm font-medium">📁 utils</span>
                 <ChevronDownIcon className="h-3 w-3 transition-transform data-[state=open]:rotate-180" />
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <div className="px-3 pb-3 space-y-1">
-                  <div className="text-xs text-(--color-text-tertiary)">
+                  <div className="text-xs text-(--color-foreground-faint)">
                     📄 helpers.ts
                   </div>
-                  <div className="text-xs text-(--color-text-tertiary)">
+                  <div className="text-xs text-(--color-foreground-faint)">
                     📄 constants.ts
                   </div>
                 </div>
@@ -299,7 +299,7 @@ export const FormSections: Story = {
 
       <div className="space-y-3">
         <Collapsible defaultOpen className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-background-default-hover)">
             <span className="font-medium">Personal Information</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
@@ -326,7 +326,7 @@ export const FormSections: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-background-default-hover)">
             <span className="font-medium">Notification Preferences</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
@@ -349,7 +349,7 @@ export const FormSections: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-background-default-hover)">
             <span className="font-medium">Privacy Settings</span>
             <ChevronDownIcon className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
           </CollapsibleTrigger>
@@ -394,7 +394,7 @@ export const ProductFeatures: Story = {
 
       <div className="grid gap-3">
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-background-default-hover)">
             <div className="flex items-center space-x-3">
               <span className="text-2xl">📊</span>
               <span className="font-medium">Advanced Analytics</span>
@@ -403,11 +403,11 @@ export const ProductFeatures: Story = {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-(--color-text-tertiary) mb-3">
+              <p className="text-sm text-(--color-foreground-faint) mb-3">
                 Get deep insights into your data with comprehensive analytics
                 tools.
               </p>
-              <ul className="text-sm text-(--color-text-tertiary) space-y-1">
+              <ul className="text-sm text-(--color-foreground-faint) space-y-1">
                 <li>• Real-time dashboard with custom widgets</li>
                 <li>• Historical data analysis and trends</li>
                 <li>• Automated reports and scheduling</li>
@@ -418,7 +418,7 @@ export const ProductFeatures: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-background-default-hover)">
             <div className="flex items-center space-x-3">
               <span className="text-2xl">🤝</span>
               <span className="font-medium">Team Collaboration</span>
@@ -427,10 +427,10 @@ export const ProductFeatures: Story = {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-(--color-text-tertiary) mb-3">
+              <p className="text-sm text-(--color-foreground-faint) mb-3">
                 Work together seamlessly with powerful collaboration features.
               </p>
-              <ul className="text-sm text-(--color-text-tertiary) space-y-1">
+              <ul className="text-sm text-(--color-foreground-faint) space-y-1">
                 <li>• Real-time editing and comments</li>
                 <li>• Role-based permissions and access control</li>
                 <li>• Team workspaces and project organization</li>
@@ -441,7 +441,7 @@ export const ProductFeatures: Story = {
         </Collapsible>
 
         <Collapsible className="rounded-lg border">
-          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)">
+          <CollapsibleTrigger className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-background-default-hover)">
             <div className="flex items-center space-x-3">
               <span className="text-2xl">🔒</span>
               <span className="font-medium">Enterprise Security</span>
@@ -450,10 +450,10 @@ export const ProductFeatures: Story = {
           </CollapsibleTrigger>
           <CollapsibleContent>
             <div className="px-4 pb-4">
-              <p className="text-sm text-(--color-text-tertiary) mb-3">
+              <p className="text-sm text-(--color-foreground-faint) mb-3">
                 Bank-level security to protect your sensitive information.
               </p>
-              <ul className="text-sm text-(--color-text-tertiary) space-y-1">
+              <ul className="text-sm text-(--color-foreground-faint) space-y-1">
                 <li>• End-to-end encryption for all data</li>
                 <li>• SOC 2 Type II compliance</li>
                 <li>• Single sign-on (SSO) integration</li>
@@ -480,14 +480,14 @@ export const Accessibility: Story = {
     <div className="w-full max-w-md space-y-4">
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Accessibility Features</h3>
-        <p className="text-sm text-(--color-text-tertiary)">
+        <p className="text-sm text-(--color-foreground-faint)">
           Use Tab to navigate, Enter/Space to toggle, proper ARIA attributes.
         </p>
       </div>
 
       <Collapsible className="rounded-lg border">
         <CollapsibleTrigger
-          className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-interactive-hover)"
+          className="flex w-full items-center justify-between p-4 text-left hover:bg-(--color-background-default-hover)"
           aria-describedby="keyboard-help"
         >
           <span className="font-medium">Keyboard Navigation</span>
@@ -495,7 +495,7 @@ export const Accessibility: Story = {
         </CollapsibleTrigger>
         <CollapsibleContent>
           <div className="px-4 pb-4">
-            <p className="text-sm text-(--color-text-tertiary)">
+            <p className="text-sm text-(--color-foreground-faint)">
               Full keyboard support with Tab navigation, Enter/Space activation,
               and proper focus management for screen readers and assistive
               technologies.
@@ -504,7 +504,7 @@ export const Accessibility: Story = {
         </CollapsibleContent>
       </Collapsible>
 
-      <p id="keyboard-help" className="text-xs text-(--color-text-tertiary)">
+      <p id="keyboard-help" className="text-xs text-(--color-foreground-faint)">
         Press Tab to focus the trigger, then Enter or Space to toggle
       </p>
     </div>

@@ -41,7 +41,7 @@ export const Default: Story = {
   render: () => (
     <div className="w-75">
       <AspectRatio ratio={16 / 9}>
-        <div className="bg-(--color-background-secondary) w-full h-full flex items-center justify-center text-(--color-text-tertiary)">
+        <div className="bg-(--color-background-subtle) w-full h-full flex items-center justify-center text-(--color-foreground-faint)">
           16:9 Aspect Ratio
         </div>
       </AspectRatio>
@@ -61,7 +61,7 @@ export const Square: Story = {
   render: () => (
     <div className="w-50">
       <AspectRatio ratio={1}>
-        <div className="bg-(--color-surface-info) w-full h-full flex items-center justify-center text-(--color-text-info)">
+        <div className="bg-(--color-info-background-subtle) w-full h-full flex items-center justify-center text-(--color-info-foreground-subtle)">
           1:1 Square
         </div>
       </AspectRatio>
@@ -80,7 +80,7 @@ export const Portrait: Story = {
   render: () => (
     <div className="w-50">
       <AspectRatio ratio={3 / 4}>
-        <div className="bg-(--color-surface-success) w-full h-full flex items-center justify-center text-(--color-text-success)">
+        <div className="bg-(--color-success-background-subtle) w-full h-full flex items-center justify-center text-(--color-success-foreground-subtle)">
           3:4 Portrait
         </div>
       </AspectRatio>
@@ -102,7 +102,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">16:9 Widescreen</h4>
         <div className="w-75">
           <AspectRatio ratio={16 / 9}>
-            <div className="bg-(--color-surface-danger) w-full h-full flex items-center justify-center text-(--color-text-danger)">
+            <div className="bg-(--color-danger-background-subtle) w-full h-full flex items-center justify-center text-(--color-danger-foreground-subtle)">
               Video/Monitor
             </div>
           </AspectRatio>
@@ -113,7 +113,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">4:3 Traditional</h4>
         <div className="w-75">
           <AspectRatio ratio={4 / 3}>
-            <div className="bg-(--color-surface-warning) w-full h-full flex items-center justify-center text-(--color-text-warning)">
+            <div className="bg-(--color-warning-background-subtle) w-full h-full flex items-center justify-center text-(--color-warning-foreground-subtle)">
               Old TV/Photo
             </div>
           </AspectRatio>
@@ -124,7 +124,7 @@ export const CommonRatios: Story = {
         <h4 className="text-sm font-medium">1:1 Square</h4>
         <div className="w-50">
           <AspectRatio ratio={1}>
-            <div className="bg-(--color-surface-info) w-full h-full flex items-center justify-center text-(--color-text-info)">
+            <div className="bg-(--color-info-background-subtle) w-full h-full flex items-center justify-center text-(--color-info-foreground-subtle)">
               Instagram
             </div>
           </AspectRatio>
@@ -168,12 +168,14 @@ export const VideoFrame: Story = {
   render: () => (
     <div className="w-125">
       <AspectRatio ratio={16 / 9}>
-        <div className="bg-(--color-background-inverse) w-full h-full flex items-center justify-center text-(--color-text-inverse) rounded-md">
+        <div className="bg-(--color-inverse-background-default) w-full h-full flex items-center justify-center text-(--color-inverse-foreground-default) rounded-md">
           <div className="text-center">
             <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-2">
               <div className="w-0 h-0 border-l-4 border-l-white border-t-2 border-t-transparent border-b-2 border-b-transparent ml-1"></div>
             </div>
-            <p className="text-sm text-(--color-text-inverse)">Video Player</p>
+            <p className="text-sm text-(--color-inverse-foreground-default)">
+              Video Player
+            </p>
           </div>
         </div>
       </AspectRatio>
@@ -196,9 +198,9 @@ export const ResponsiveGallery: Story = {
         <AspectRatio
           key={i}
           ratio={1}
-          className="bg-(--color-background-secondary) rounded-lg"
+          className="bg-(--color-background-subtle) rounded-lg"
         >
-          <div className="w-full h-full flex items-center justify-center text-(--color-text-tertiary)">
+          <div className="w-full h-full flex items-center justify-center text-(--color-foreground-faint)">
             Item {i + 1}
           </div>
         </AspectRatio>

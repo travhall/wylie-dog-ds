@@ -110,7 +110,7 @@
     },
     {
       "foreground": "button.link.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
@@ -345,7 +345,7 @@
     },
     {
       "foreground": "pagination.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
@@ -360,7 +360,7 @@
     },
     {
       "foreground": "toggle.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
@@ -395,17 +395,17 @@
     },
     {
       "foreground": "accordion.trigger-text",
-      "backgrounds": ["accordion.trigger-focus", "color.background.primary"],
+      "backgrounds": ["accordion.trigger-focus", "color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "accordion.content-text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "accordion.icon",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
@@ -450,77 +450,77 @@
     },
     {
       "foreground": "breadcrumb.link",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "breadcrumb.current",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "breadcrumb.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "breadcrumb.link-hover",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "carousel.nav-text-hover",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "form.description",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "form.error",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "form.label",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "table.caption",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "table.header-text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "label.default.color",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "label.error.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "label.required.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "feature-grid.title.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
       "foreground": "feature-grid.description.text",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
@@ -534,7 +534,7 @@
       "kind": "text"
     },
     {
-      "foreground": "color.text.primary",
+      "foreground": "color.foreground.default",
       "backgrounds": [
         "table.row-hover",
         "table.row-selected",
@@ -554,7 +554,7 @@
     },
     {
       "foreground": "tabs.trigger.indicator.color",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
@@ -564,28 +564,28 @@
     },
     {
       "foreground": "input.border",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text",
       "note": "Component boundary"
     },
     {
       "foreground": "checkbox.border.color",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
       "foreground": "checkbox.error.border",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
       "foreground": "radio.border",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
       "foreground": "radio.border-checked",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
@@ -605,12 +605,12 @@
     },
     {
       "foreground": "switch.track.background.unchecked",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
       "foreground": "switch.track.background.checked",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
@@ -628,12 +628,12 @@
     },
     {
       "foreground": "slider.thumb-border",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
-      "foreground": "color.border.focus",
-      "backgrounds": ["color.background.primary", "color.background.secondary"],
+      "foreground": "color.focus.ring",
+      "backgrounds": ["color.background.default", "color.background.subtle"],
       "kind": "non-text"
     },
     {
@@ -643,7 +643,7 @@
     },
     {
       "foreground": "slider.range",
-      "backgrounds": ["color.background.primary"],
+      "backgrounds": ["color.background.default"],
       "kind": "non-text",
       "note": "The value is carried by the thumb and the filled range; the unfilled track is supplementary and is not required to reach 3:1."
     }

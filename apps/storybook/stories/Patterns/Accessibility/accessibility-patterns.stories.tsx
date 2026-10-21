@@ -50,7 +50,7 @@ function FocusManagementComponent() {
 
   return (
     <div className="space-y-4">
-      <p className="text-sm text-(--color-text-secondary) max-w-sm">
+      <p className="text-sm text-(--color-foreground-muted) max-w-sm">
         Open the dialog and press Tab — focus cycles within the dialog. Press
         Escape to close; focus returns to the trigger button.
       </p>
@@ -160,14 +160,14 @@ function LiveRegionAnnouncementsComponent() {
 
   const statusColor =
     status === "saved"
-      ? "text-(--color-status-success)"
+      ? "text-(--color-success-foreground-subtle)"
       : status === "error"
-        ? "text-(--color-status-danger)"
-        : "text-(--color-text-secondary)";
+        ? "text-(--color-danger-foreground-subtle)"
+        : "text-(--color-foreground-muted)";
 
   return (
     <div className="w-full max-w-sm space-y-6">
-      <p className="text-sm text-(--color-text-secondary)">
+      <p className="text-sm text-(--color-foreground-muted)">
         Click Save to trigger a status update. Screen readers announce the
         message via the <code>aria-live</code> region even though the visible
         badge updates simultaneously.
@@ -204,11 +204,11 @@ function LiveRegionAnnouncementsComponent() {
       </div>
 
       {/* Implementation callout */}
-      <div className="rounded-lg border border-(--color-border-primary) bg-(--color-background-secondary) p-4 text-sm space-y-1">
-        <p className="font-semibold text-(--color-text-primary)">
+      <div className="rounded-lg border border-(--color-border-default) bg-(--color-background-subtle) p-4 text-sm space-y-1">
+        <p className="font-semibold text-(--color-foreground-default)">
           Pattern: aria-live region
         </p>
-        <pre className="text-xs text-(--color-text-secondary) overflow-x-auto whitespace-pre-wrap">
+        <pre className="text-xs text-(--color-foreground-muted) overflow-x-auto whitespace-pre-wrap">
           {`<div
   aria-live="polite"
   aria-atomic="true"
@@ -293,8 +293,10 @@ function KeyboardOnlyFormComponent() {
       noValidate
       aria-label="Keyboard-only form demo"
     >
-      <div className="rounded-lg border border-(--color-border-primary) bg-(--color-background-secondary) p-3 text-sm text-(--color-text-secondary) space-y-1">
-        <p className="font-semibold text-(--color-text-primary)">Key map</p>
+      <div className="rounded-lg border border-(--color-border-default) bg-(--color-background-subtle) p-3 text-sm text-(--color-foreground-muted) space-y-1">
+        <p className="font-semibold text-(--color-foreground-default)">
+          Key map
+        </p>
         <ul className="list-none space-y-0.5">
           <li>
             <kbd className="font-mono text-xs">Tab</kbd> — next field
@@ -417,58 +419,58 @@ interface ContrastSample {
   usage: string;
   isLargeText?: boolean;
   compliant: boolean;
-  /** Caption text token — defaults to --color-text-tertiary. Override when
+  /** Caption text token — defaults to --color-foreground-faint. Override when
    * bgToken doesn't share the page's light/dark polarity (e.g. the inverse
-   * background), since --color-text-tertiary assumes a page-background context. */
+   * background), since --color-foreground-faint assumes a page-background context. */
   captionToken?: string;
 }
 
 const contrastSamples: ContrastSample[] = [
   {
     label: "Primary text on primary background",
-    textToken: "--color-text-primary",
-    bgToken: "--color-background-primary",
+    textToken: "--color-foreground-default",
+    bgToken: "--color-background-default",
     sampleText: "The quick brown fox jumps over the lazy dog",
     usage: "Body copy, headings",
     compliant: true,
   },
   {
     label: "Secondary text on primary background",
-    textToken: "--color-text-secondary",
-    bgToken: "--color-background-primary",
+    textToken: "--color-foreground-muted",
+    bgToken: "--color-background-default",
     sampleText: "Supporting description and metadata",
     usage: "Captions, helper text, placeholders",
     compliant: true,
   },
   {
     label: "Primary text on secondary background",
-    textToken: "--color-text-primary",
-    bgToken: "--color-background-secondary",
+    textToken: "--color-foreground-default",
+    bgToken: "--color-background-subtle",
     sampleText: "Content on card or panel surface",
     usage: "Cards, sidebars, secondary surfaces",
     compliant: true,
   },
   {
     label: "Inverse text on inverse background",
-    textToken: "--color-text-inverse",
-    bgToken: "--color-background-inverse",
+    textToken: "--color-inverse-foreground-default",
+    bgToken: "--color-inverse-background-default",
     sampleText: "Inverted surface text",
     usage: "Tooltips, dark banners",
     compliant: true,
-    captionToken: "--color-text-inverse",
+    captionToken: "--color-inverse-foreground-default",
   },
   {
     label: "Danger status on primary background",
-    textToken: "--color-status-danger",
-    bgToken: "--color-background-primary",
+    textToken: "--color-danger-foreground-subtle",
+    bgToken: "--color-background-default",
     sampleText: "Error message text",
     usage: "Validation errors, destructive alert text",
     compliant: true,
   },
   {
     label: "Info/link text on primary background",
-    textToken: "--color-text-info",
-    bgToken: "--color-background-primary",
+    textToken: "--color-info-foreground-subtle",
+    bgToken: "--color-background-default",
     sampleText: "Link and action text",
     usage: "Links, focus labels, interactive affordances",
     compliant: true,
@@ -488,10 +490,10 @@ export const ColorContrastCheck: Story = {
   render: () => (
     <div className="space-y-6 max-w-2xl">
       <div className="space-y-1">
-        <h2 className="text-lg font-semibold text-(--color-text-primary)">
+        <h2 className="text-lg font-semibold text-(--color-foreground-default)">
           Color contrast — semantic token pairs
         </h2>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-(--color-foreground-muted)">
           WCAG 2.2 AA: 4.5:1 for normal text · 3:1 for large text (18px+ or
           14px+ bold). Each swatch renders using the actual CSS variable —
           toggle the Theme toolbar to verify dark-mode contrast too.
@@ -502,14 +504,14 @@ export const ColorContrastCheck: Story = {
         {contrastSamples.map((sample) => (
           <div
             key={sample.label}
-            className="flex items-center justify-between gap-4 rounded-lg border border-(--color-border-primary) p-4"
+            className="flex items-center justify-between gap-4 rounded-lg border border-(--color-border-default) p-4"
             style={{ backgroundColor: `var(${sample.bgToken})` }}
           >
             <div className="min-w-0 flex-1 space-y-1">
               <p
                 className="font-mono text-xs truncate"
                 style={{
-                  color: `var(${sample.captionToken ?? "--color-text-secondary"})`,
+                  color: `var(${sample.captionToken ?? "--color-foreground-muted"})`,
                   opacity: sample.captionToken ? 0.7 : 1,
                 }}
               >
@@ -533,7 +535,7 @@ export const ColorContrastCheck: Story = {
               <p
                 className="text-xs"
                 style={{
-                  color: `var(${sample.captionToken ?? "--color-text-tertiary"})`,
+                  color: `var(${sample.captionToken ?? "--color-foreground-faint"})`,
                   opacity: sample.captionToken ? 0.7 : 1,
                 }}
               >
@@ -550,7 +552,7 @@ export const ColorContrastCheck: Story = {
         ))}
       </div>
 
-      <p className="text-xs text-(--color-text-tertiary)">
+      <p className="text-xs text-(--color-foreground-faint)">
         Compliance labels reflect design intent. Open the Accessibility panel in
         Storybook to measure computed contrast ratios against live rendered
         colors.
@@ -567,7 +569,7 @@ function SkipNavigationComponent() {
   const mainRef = useRef<HTMLElement>(null);
 
   return (
-    <div className="relative w-full min-h-[400px] border border-(--color-border-primary) rounded-lg overflow-hidden bg-(--color-background-primary)">
+    <div className="relative w-full min-h-[400px] border border-(--color-border-default) rounded-lg overflow-hidden bg-(--color-background-default)">
       {/*
        * PATTERN: Skip-to-content link
        * - Visually hidden until focused (sr-only + focus:not-sr-only)
@@ -576,7 +578,7 @@ function SkipNavigationComponent() {
        */}
       <a
         href="#skip-nav-main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-(--color-background-primary) focus:text-(--color-text-primary) focus:rounded focus:shadow-lg focus:border focus:border-(--color-border-focus) focus:outline-none"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-(--color-background-default) focus:text-(--color-foreground-default) focus:rounded focus:shadow-lg focus:border focus:border-(--color-focus-ring) focus:outline-none"
         onClick={(e) => {
           e.preventDefault();
           mainRef.current?.focus();
@@ -588,26 +590,26 @@ function SkipNavigationComponent() {
 
       {/* Simulated navigation bar */}
       <nav
-        className="border-b border-(--color-border-primary) px-4 py-3 flex gap-4 bg-(--color-background-secondary)"
+        className="border-b border-(--color-border-default) px-4 py-3 flex gap-4 bg-(--color-background-subtle)"
         aria-label="Site navigation"
       >
         <a
           href="#"
-          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-text-info) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-info-foreground-subtle) focus:outline-none focus:ring-2 focus:ring-(--color-focus-ring) rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Home
         </a>
         <a
           href="#"
-          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-text-info) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-info-foreground-subtle) focus:outline-none focus:ring-2 focus:ring-(--color-focus-ring) rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           About
         </a>
         <a
           href="#"
-          className="text-sm font-medium text-(--color-text-primary) hover:text-(--color-text-info) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-info-foreground-subtle) focus:outline-none focus:ring-2 focus:ring-(--color-focus-ring) rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Contact
@@ -617,8 +619,8 @@ function SkipNavigationComponent() {
       {/* Simulated page layout */}
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-40 border-r border-(--color-border-primary) p-4 bg-(--color-background-secondary)">
-          <p className="text-xs font-semibold uppercase tracking-wider text-(--color-text-secondary) mb-3">
+        <aside className="w-40 border-r border-(--color-border-default) p-4 bg-(--color-background-subtle)">
+          <p className="text-xs font-semibold uppercase tracking-wider text-(--color-foreground-muted) mb-3">
             Sidebar
           </p>
           <ul className="space-y-2">
@@ -626,7 +628,7 @@ function SkipNavigationComponent() {
               <li key={item}>
                 <a
                   href="#"
-                  className="text-sm text-(--color-text-primary) hover:text-(--color-text-info) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
+                  className="text-sm text-(--color-foreground-default) hover:text-(--color-info-foreground-subtle) focus:outline-none focus:ring-2 focus:ring-(--color-focus-ring) rounded px-1"
                   onClick={(e) => e.preventDefault()}
                 >
                   {item}
@@ -641,22 +643,22 @@ function SkipNavigationComponent() {
           id="skip-nav-main"
           ref={mainRef}
           tabIndex={-1}
-          className="flex-1 p-6 focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-inset"
+          className="flex-1 p-6 focus:outline-none focus:ring-2 focus:ring-(--color-focus-ring) focus:ring-inset"
           aria-label="Main content"
         >
-          <h1 className="text-lg font-semibold text-(--color-text-primary) mb-2">
+          <h1 className="text-lg font-semibold text-(--color-foreground-default) mb-2">
             Main content
           </h1>
-          <p className="text-sm text-(--color-text-secondary) mb-4">
+          <p className="text-sm text-(--color-foreground-muted) mb-4">
             Press Tab from the browser address bar (or the start of the page) to
             reveal the skip link. Press Enter to jump directly here, bypassing
             the nav and sidebar.
           </p>
-          <div className="rounded-lg border border-(--color-border-primary) bg-(--color-background-secondary) p-3 text-sm space-y-1">
-            <p className="font-semibold text-(--color-text-primary)">
+          <div className="rounded-lg border border-(--color-border-default) bg-(--color-background-subtle) p-3 text-sm space-y-1">
+            <p className="font-semibold text-(--color-foreground-default)">
               Pattern: skip-to-content link
             </p>
-            <pre className="text-xs text-(--color-text-secondary) overflow-x-auto whitespace-pre-wrap">
+            <pre className="text-xs text-(--color-foreground-muted) overflow-x-auto whitespace-pre-wrap">
               {`<a
   href="#main-content"
   className="sr-only focus:not-sr-only

@@ -7,10 +7,10 @@ Names and values below were read from the built CSS in `packages/tokens/dist/`. 
 | Tier      | Purpose                                | Example                             |
 | --------- | -------------------------------------- | ----------------------------------- |
 | Primitive | Raw scale values                       | `--color-blue-500`, `--space-200`   |
-| Semantic  | Meaning, with light and dark values    | `--color-text-primary`              |
+| Semantic  | Meaning, with light and dark values    | `--color-foreground-default`        |
 | Component | Per-component values aliasing semantic | `--color-button-primary-background` |
 
-In components, use the `-(--token-name)` Tailwind syntax, for example `bg-(--color-background-primary)`.
+In components, use the `-(--token-name)` Tailwind syntax, for example `bg-(--color-background-default)`.
 
 ## Color
 
@@ -18,14 +18,17 @@ Primitive palettes: `blue`, `gray`, `green`, `orange`, `pink`, `purple`, `red`, 
 
 Semantic groups:
 
-| Group       | Tokens                                                                                                  |
-| ----------- | ------------------------------------------------------------------------------------------------------- |
-| Background  | `--color-background-{primary,secondary,tertiary,inverse,brand,danger}`                                  |
-| Text        | `--color-text-{primary,secondary,tertiary,inverse,on-solid,brand,danger,success,warning,info,disabled}` |
-| Border      | `--color-border-{primary,secondary,brand,danger,success,warning,focus}`                                 |
-| Interactive | `--color-interactive-{primary,secondary,danger,success,warning}` plus `-hover`, `-active`, `-pressed`   |
+| Group                    | Tokens                                                                                                                                                          |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ground background        | `--color-background-{default,subtle,strong,raised,overlay}`; states `--color-background-default-{hover,active,disabled}` and `--color-background-subtle-active` |
+| Ground foreground        | `--color-foreground-{default,muted,faint}` and `--color-foreground-default-disabled`                                                                            |
+| Ground border            | `--color-border-{default,subtle,strong}`; the focus ring is `--color-focus-ring`                                                                                |
+| Primary                  | `--color-primary-background-{default,subtle}` (default has `-hover` and `-active`), `--color-primary-foreground-{default,subtle}`                               |
+| Danger, success, warning | `--color-{role}-background-{default,subtle}` (default has `-hover`), `--color-{role}-foreground-{default,subtle}`, `--color-{role}-border-default`              |
+| Info                     | `--color-info-background-subtle`, `--color-info-foreground-subtle`                                                                                              |
+| Inverse                  | `--color-inverse-background-default`, `--color-inverse-foreground-default`                                                                                      |
 
-`--color-text-inverse` flips with the theme, so pair it only with `--color-background-inverse`. On a static solid background, use `--color-text-on-solid`.
+`--color-inverse-foreground-default` flips with the theme, so pair it only with `--color-inverse-background-default`. Text on a solid role fill uses that role's foreground, for example `--color-danger-foreground-default` on `--color-danger-background-default`.
 
 ## Spacing
 

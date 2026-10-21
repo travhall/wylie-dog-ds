@@ -84,21 +84,21 @@ export function SpacingDemo() {
   const d = densities[idx];
 
   return (
-    <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) overflow-hidden">
+    <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden">
       {/* Header */}
       <div
-        className="flex items-center justify-between gap-4 border-b border-(--color-border-primary)"
+        className="flex items-center justify-between gap-4 border-b border-(--color-border-default)"
         style={{ padding: `${d.rowY} 24px` }}
       >
         <div>
-          <h3 className="font-semibold text-(--color-text-primary)">
+          <h3 className="font-semibold text-(--color-foreground-default)">
             Team members
           </h3>
-          <p className="font-mono text-[10px] text-(--color-text-tertiary) mt-0.5">
+          <p className="font-mono text-[10px] text-(--color-foreground-faint) mt-0.5">
             14 active · 3 invited
           </p>
         </div>
-        <div className="flex items-center gap-1 rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) p-0.5">
+        <div className="flex items-center gap-1 rounded-md border border-(--color-border-default) bg-(--color-background-subtle) p-0.5">
           {densities.map((opt, i) => (
             <Button
               key={opt.label}
@@ -109,10 +109,10 @@ export function SpacingDemo() {
               style={
                 idx === i
                   ? {
-                      background: "var(--color-background-primary)",
-                      color: "var(--color-text-primary)",
+                      background: "var(--color-background-default)",
+                      color: "var(--color-foreground-default)",
                     }
-                  : { color: "var(--color-text-tertiary)" }
+                  : { color: "var(--color-foreground-faint)" }
               }
             >
               {opt.label}
@@ -125,7 +125,7 @@ export function SpacingDemo() {
       {members.map((m, i) => (
         <div
           key={m.initials}
-          className={`flex items-center ${i < members.length - 1 ? "border-b border-(--color-border-primary)" : ""}`}
+          className={`flex items-center ${i < members.length - 1 ? "border-b border-(--color-border-default)" : ""}`}
           style={{ gap: d.gap, padding: `${d.rowY} 24px` }}
         >
           <div
@@ -134,24 +134,24 @@ export function SpacingDemo() {
               width: d.avatar,
               height: d.avatar,
               background:
-                "color-mix(in oklch, var(--color-interactive-primary) 15%, transparent)",
-              color: "var(--color-interactive-primary)",
+                "color-mix(in oklch, var(--color-primary-background-default) 15%, transparent)",
+              color: "var(--color-primary-background-default)",
             }}
           >
             {m.initials}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-(--color-text-primary) truncate">
+            <p className="text-sm font-medium text-(--color-foreground-default) truncate">
               {m.name}
             </p>
-            <p className="font-mono text-[10px] text-(--color-text-tertiary) truncate">
+            <p className="font-mono text-[10px] text-(--color-foreground-faint) truncate">
               {m.email}
             </p>
           </div>
-          <span className="hidden sm:block text-xs text-(--color-text-secondary) w-16 shrink-0">
+          <span className="hidden sm:block text-xs text-(--color-foreground-muted) w-16 shrink-0">
             {m.role}
           </span>
-          <span className="hidden sm:block font-mono text-[10px] text-(--color-text-tertiary) w-16 shrink-0 text-right">
+          <span className="hidden sm:block font-mono text-[10px] text-(--color-foreground-faint) w-16 shrink-0 text-right">
             {m.last}
           </span>
           <span
@@ -159,16 +159,16 @@ export function SpacingDemo() {
             style={{
               background:
                 m.status === "active"
-                  ? "color-mix(in oklch, var(--color-status-success) 18%, transparent)"
+                  ? "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)"
                   : m.status === "invited"
-                    ? "color-mix(in oklch, var(--color-interactive-primary) 12%, transparent)"
-                    : "color-mix(in oklch, var(--color-border-primary) 70%, transparent)",
+                    ? "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)"
+                    : "color-mix(in oklch, var(--color-border-default) 70%, transparent)",
               color:
                 m.status === "active"
-                  ? "var(--color-text-success)"
+                  ? "var(--color-success-foreground-subtle)"
                   : m.status === "invited"
-                    ? "var(--color-interactive-primary)"
-                    : "var(--color-text-tertiary)",
+                    ? "var(--color-primary-background-default)"
+                    : "var(--color-foreground-faint)",
             }}
           >
             {m.status}
@@ -177,17 +177,19 @@ export function SpacingDemo() {
       ))}
 
       {/* Token readout footer */}
-      <div className="border-t border-(--color-border-primary) bg-(--color-background-secondary) px-6 py-3 flex flex-wrap items-center gap-5 font-mono text-[10px] text-(--color-text-tertiary)">
+      <div className="border-t border-(--color-border-default) bg-(--color-background-subtle) px-6 py-3 flex flex-wrap items-center gap-5 font-mono text-[10px] text-(--color-foreground-faint)">
         <span>
-          <span className="text-(--color-text-secondary)">{d.rowYToken}:</span>{" "}
+          <span className="text-(--color-foreground-muted)">
+            {d.rowYToken}:
+          </span>{" "}
           {d.rowY}
         </span>
         <span>
-          <span className="text-(--color-text-secondary)">{d.gapToken}:</span>{" "}
+          <span className="text-(--color-foreground-muted)">{d.gapToken}:</span>{" "}
           {d.gap}
         </span>
         <span>
-          <span className="text-(--color-text-secondary)">
+          <span className="text-(--color-foreground-muted)">
             {d.avatarToken}:
           </span>{" "}
           {d.avatar}

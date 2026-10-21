@@ -36,7 +36,7 @@ The `io/sync` files use the plugin's native format: an array with one object per
   "semantic": {
     "modes": [{ "name": "Light" }, { "name": "Dark" }],
     "variables": {
-      "color.background.primary": {
+      "color.background.default": {
         "$type": "color",
         "$value": "{color.gray.50}"
       }

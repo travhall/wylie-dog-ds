@@ -19,18 +19,18 @@ export function PatternCard({
   storybookPath,
 }: PatternCardProps) {
   return (
-    <Card className="glass border border-(--color-border-primary)/10 hover:border-(--color-interactive-primary)/30 transition-all duration-500">
+    <Card className="glass border border-(--color-border-default)/10 hover:border-(--color-primary-background-default)/30 transition-all duration-500">
       <CardHeader className="p-6">
-        <CardTitle className="text-xl font-bold text-(--color-text-primary) mb-2">
+        <CardTitle className="text-xl font-bold text-(--color-foreground-default) mb-2">
           {name}
         </CardTitle>
-        <p className="text-sm text-(--color-text-secondary) leading-relaxed">
+        <p className="text-sm text-(--color-foreground-muted) leading-relaxed">
           {description}
         </p>
       </CardHeader>
       <CardContent className="p-6 pt-0 space-y-4">
         <div>
-          <p className="text-[10px] font-black uppercase tracking-widest text-(--color-text-secondary) mb-2">
+          <p className="text-[10px] font-black uppercase tracking-widest text-(--color-foreground-muted) mb-2">
             Components used
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -38,7 +38,7 @@ export function PatternCard({
               <Badge
                 key={comp}
                 variant="outline"
-                className="text-[10px] border-(--color-border-primary)/20"
+                className="text-[10px] border-(--color-border-default)/20"
               >
                 {comp}
               </Badge>

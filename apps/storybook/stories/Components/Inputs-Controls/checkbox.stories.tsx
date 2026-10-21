@@ -179,7 +179,7 @@ export const States: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="space-y-3">
-        <h4 className="text-sm font-medium text-(--color-text-tertiary)">
+        <h4 className="text-sm font-medium text-(--color-foreground-faint)">
           Normal States
         </h4>
         <div className="flex items-center space-x-2">
@@ -193,7 +193,7 @@ export const States: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="text-sm font-medium text-(--color-text-tertiary)">
+        <h4 className="text-sm font-medium text-(--color-foreground-faint)">
           Disabled States
         </h4>
         <div className="flex items-center space-x-2">
@@ -207,7 +207,7 @@ export const States: Story = {
       </div>
 
       <div className="space-y-3">
-        <h4 className="text-sm font-medium text-(--color-text-tertiary)">
+        <h4 className="text-sm font-medium text-(--color-foreground-faint)">
           Error States
         </h4>
         <div className="flex items-center space-x-2">
@@ -351,7 +351,7 @@ export const FormExamples: Story = {
       {/* Survey Form */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Quick Survey</h3>
-        <p className="text-sm text-(--color-text-tertiary)">
+        <p className="text-sm text-(--color-foreground-faint)">
           What topics interest you? (Select all that apply)
         </p>
 

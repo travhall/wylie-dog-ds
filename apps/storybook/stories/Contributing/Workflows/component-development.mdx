@@ -239,7 +239,7 @@ describe("ComponentName", () => {
   it("applies variant styles", () => {
     render(<ComponentName variant="secondary">Content</ComponentName>);
     const element = screen.getByText("Content");
-    expect(element).toHaveClass("bg-(--color-interactive-primary)");
+    expect(element).toHaveClass("bg-(--color-primary-background-default)");
   });
 
   it("forwards ref correctly", () => {

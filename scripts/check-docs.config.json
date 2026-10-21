@@ -12,8 +12,6 @@
     ],
     "apps/storybook/stories/Resources/Theming/overview.mdx": [
       "^--color-brand",
-      "^--color-text-on-brand$",
-      "^--color-(border-brand-strong|interactive-brand-(hover|active))$",
       "^--text-on-light$"
     ],
     "documentation/STYLING_ARCHITECTURE.md": ["^--color-new-token$"],

@@ -398,7 +398,7 @@ export const WithInteractions: Story = {
           />
           <p
             id="username-help"
-            className="text-xs text-(--color-text-tertiary)"
+            className="text-xs text-(--color-foreground-faint)"
           >
             At least 3 characters
           </p>
@@ -512,7 +512,7 @@ export const DosDonts: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-8 max-w-4xl">
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-(--color-text-success)">
+        <h4 className="text-lg font-semibold mb-4 text-(--color-success-foreground-subtle)">
           ✅ Do
         </h4>
 
@@ -561,7 +561,7 @@ export const DosDonts: Story = {
       </div>
 
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-(--color-text-danger)">
+        <h4 className="text-lg font-semibold mb-4 text-(--color-danger-foreground-subtle)">
           ❌ Don&apos;t
         </h4>
 
@@ -569,7 +569,7 @@ export const DosDonts: Story = {
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">No label (inaccessible)</p>
             <Input type="email" placeholder="Email Address" />
-            <p className="text-xs text-(--color-text-tertiary)">
+            <p className="text-xs text-(--color-foreground-faint)">
               Screen readers can&apos;t identify this field
             </p>
           </div>
@@ -582,10 +582,10 @@ export const DosDonts: Story = {
               Username
             </Label>
             <Input id="bad-username" error />
-            <p className="text-xs text-(--color-text-danger)">
+            <p className="text-xs text-(--color-danger-foreground-subtle)">
               Username is required
             </p>
-            <p className="text-xs text-(--color-text-tertiary)">
+            <p className="text-xs text-(--color-foreground-faint)">
               Missing aria-describedby
             </p>
           </div>
@@ -594,7 +594,7 @@ export const DosDonts: Story = {
             <p className="text-sm font-medium mb-2">Wrong input type</p>
             <Label htmlFor="bad-phone">Phone Number</Label>
             <Input id="bad-phone" type="text" placeholder="+1 (555) 123-4567" />
-            <p className="text-xs text-(--color-text-tertiary)">
+            <p className="text-xs text-(--color-foreground-faint)">
               Use type=&quot;tel&quot; for phone numbers
             </p>
           </div>
@@ -602,7 +602,7 @@ export const DosDonts: Story = {
           <div className="space-y-2">
             <p className="text-sm font-medium mb-2">Placeholder as label</p>
             <Input placeholder="Search products..." />
-            <p className="text-xs text-(--color-text-tertiary)">
+            <p className="text-xs text-(--color-foreground-faint)">
               Placeholders disappear when typing
             </p>
           </div>

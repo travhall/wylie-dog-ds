@@ -195,7 +195,7 @@ export const AllVariants: Story = {
         <div className="space-y-4 max-w-2xl">
           <div>
             <p className="text-sm font-semibold mb-1">Tight</p>
-            <p className="leading-tight text-(--color-text-secondary)">
+            <p className="leading-tight text-(--color-foreground-muted)">
               The crisis consists precisely in the fact that the old is dying
               and the new cannot be born: in this interregnum, morbid phenomena
               of the most varied kind come to pass.
@@ -203,7 +203,7 @@ export const AllVariants: Story = {
           </div>
           <div>
             <p className="text-sm font-semibold mb-1">Normal</p>
-            <p className="leading-normal text-(--color-text-secondary)">
+            <p className="leading-normal text-(--color-foreground-muted)">
               The crisis consists precisely in the fact that the old is dying
               and the new cannot be born: in this interregnum, morbid phenomena
               of the most varied kind come to pass.
@@ -211,7 +211,7 @@ export const AllVariants: Story = {
           </div>
           <div>
             <p className="text-sm font-semibold mb-1">Relaxed</p>
-            <p className="leading-relaxed text-(--color-text-secondary)">
+            <p className="leading-relaxed text-(--color-foreground-muted)">
               The crisis consists precisely in the fact that the old is dying
               and the new cannot be born: in this interregnum, morbid phenomena
               of the most varied kind come to pass.
@@ -236,63 +236,63 @@ export const TypeScale: Story = {
     <div className="space-y-8">
       <div>
         <h1 className="text-5xl font-bold mb-2">Heading 1</h1>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-size-5xl / 48px
         </p>
       </div>
 
       <div>
         <h2 className="text-4xl font-bold mb-2">Heading 2</h2>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-size-4xl / 36px
         </p>
       </div>
 
       <div>
         <h3 className="text-3xl font-bold mb-2">Heading 3</h3>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-size-3xl / 30px
         </p>
       </div>
 
       <div>
         <h4 className="text-2xl font-bold mb-2">Heading 4</h4>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-size-2xl / 24px
         </p>
       </div>
 
       <div>
         <h5 className="text-xl font-bold mb-2">Heading 5</h5>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-size-xl / 20px
         </p>
       </div>
 
       <div>
         <h6 className="text-lg font-bold mb-2">Heading 6</h6>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-size-lg / 18px
         </p>
       </div>
 
       <div>
         <p className="text-base mb-2">Body Large (Base)</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-size-base / 16px
         </p>
       </div>
 
       <div>
         <p className="text-sm mb-2">Body Small</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-size-sm / 14px
         </p>
       </div>
 
       <div>
         <p className="text-xs mb-2">Caption</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-size-xs / 12px
         </p>
       </div>
@@ -305,35 +305,35 @@ export const FontWeights: Story = {
     <div className="space-y-4">
       <div>
         <p className="text-xl font-light mb-1">Light Weight</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-weight-light / 300
         </p>
       </div>
 
       <div>
         <p className="text-xl font-normal mb-1">Normal Weight</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-weight-normal / 400
         </p>
       </div>
 
       <div>
         <p className="text-xl font-medium mb-1">Medium Weight</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-weight-medium / 500
         </p>
       </div>
 
       <div>
         <p className="text-xl font-semibold mb-1">Semibold Weight</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-weight-semibold / 600
         </p>
       </div>
 
       <div>
         <p className="text-xl font-bold mb-1">Bold Weight</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-weight-bold / 700
         </p>
       </div>
@@ -348,7 +348,7 @@ export const LineHeights: Story = {
         <h4 className="text-lg font-semibold mb-2">
           Tight (--line-height-tight)
         </h4>
-        <p className="leading-tight text-(--color-text-secondary)">
+        <p className="leading-tight text-(--color-foreground-muted)">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -359,7 +359,7 @@ export const LineHeights: Story = {
         <h4 className="text-lg font-semibold mb-2">
           Normal (--line-height-normal)
         </h4>
-        <p className="leading-normal text-(--color-text-secondary)">
+        <p className="leading-normal text-(--color-foreground-muted)">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -370,7 +370,7 @@ export const LineHeights: Story = {
         <h4 className="text-lg font-semibold mb-2">
           Relaxed (--line-height-relaxed)
         </h4>
-        <p className="leading-relaxed text-(--color-text-secondary)">
+        <p className="leading-relaxed text-(--color-foreground-muted)">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -381,7 +381,7 @@ export const LineHeights: Story = {
         <h4 className="text-lg font-semibold mb-2">
           Loose (--line-height-loose)
         </h4>
-        <p className="leading-loose text-(--color-text-secondary)">
+        <p className="leading-loose text-(--color-foreground-muted)">
           The crisis consists precisely in the fact that the old is dying and
           the new cannot be born: in this interregnum, morbid phenomena of the
           most varied kind come to pass.
@@ -395,48 +395,56 @@ export const TextColors: Story = {
   render: () => (
     <div className="space-y-4">
       <div>
-        <p className="text-(--color-text-primary) text-lg mb-1">Primary Text</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
-          --color-text-primary
+        <p className="text-(--color-foreground-default) text-lg mb-1">
+          Primary Text
+        </p>
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
+          --color-foreground-default
         </p>
       </div>
 
       <div>
-        <p className="text-(--color-text-secondary) text-lg mb-1">
+        <p className="text-(--color-foreground-muted) text-lg mb-1">
           Secondary Text
         </p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
-          --color-text-secondary
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
+          --color-foreground-muted
         </p>
       </div>
 
       <div>
-        <p className="text-(--color-text-tertiary) text-lg mb-1">Muted Text</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
-          --color-text-tertiary
+        <p className="text-(--color-foreground-faint) text-lg mb-1">
+          Muted Text
+        </p>
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
+          --color-foreground-faint
         </p>
       </div>
 
       <div>
-        <p className="text-(--color-text-info) text-lg mb-1">Link Text</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
-          --color-interactive-primary
+        <p className="text-(--color-info-foreground-subtle) text-lg mb-1">
+          Link Text
+        </p>
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
+          --color-primary-background-default
         </p>
       </div>
 
       <div>
-        <p className="text-(--color-status-danger) text-lg mb-1">Error Text</p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
-          --color-status-danger
+        <p className="text-(--color-danger-foreground-subtle) text-lg mb-1">
+          Error Text
+        </p>
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
+          --color-danger-foreground-subtle
         </p>
       </div>
 
       <div>
-        <p className="text-(--color-status-success) text-lg mb-1">
+        <p className="text-(--color-success-foreground-subtle) text-lg mb-1">
           Success Text
         </p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
-          --color-status-success
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
+          --color-success-foreground-subtle
         </p>
       </div>
     </div>
@@ -527,28 +535,28 @@ export const TypographyHierarchy: Story = {
             <h2 className="text-2xl font-semibold tracking-tight mb-1">
               Type Hierarchy
             </h2>
-            <p className="text-sm text-(--color-text-secondary)">
+            <p className="text-sm text-(--color-foreground-muted)">
               Use the level that matches the importance of the content in
               context — not the one that looks closest to what you want
               visually.
             </p>
           </div>
 
-          <div className="rounded-lg border border-(--color-border-primary) overflow-hidden divide-y divide-(--color-border-primary)">
+          <div className="rounded-lg border border-(--color-border-default) overflow-hidden divide-y divide-(--color-border-default)">
             {levels.map(({ tag, sample, className, token, usage }) => (
               <div
                 key={token}
-                className="grid grid-cols-[3.5rem_1fr] md:grid-cols-[3.5rem_1fr_15rem] items-center gap-x-4 px-4 py-3 bg-(--color-background-primary)"
+                className="grid grid-cols-[3.5rem_1fr] md:grid-cols-[3.5rem_1fr_15rem] items-center gap-x-4 px-4 py-3 bg-(--color-background-default)"
               >
-                <code className="text-xs font-mono text-(--color-text-tertiary) self-center">
+                <code className="text-xs font-mono text-(--color-foreground-faint) self-center">
                   {tag}
                 </code>
                 <p className={`${className} truncate`}>{sample}</p>
                 <div className="hidden md:block">
-                  <code className="block text-xs font-mono text-(--color-text-secondary) mb-0.5">
+                  <code className="block text-xs font-mono text-(--color-foreground-muted) mb-0.5">
                     {token}
                   </code>
-                  <span className="text-xs text-(--color-text-tertiary)">
+                  <span className="text-xs text-(--color-foreground-faint)">
                     {usage}
                   </span>
                 </div>
@@ -561,7 +569,7 @@ export const TypographyHierarchy: Story = {
         <div className="space-y-4">
           <div>
             <h3 className="text-lg font-semibold mb-1">In practice</h3>
-            <p className="text-sm text-(--color-text-secondary)">
+            <p className="text-sm text-(--color-foreground-muted)">
               How hierarchy levels work together in common UI patterns.
             </p>
           </div>
@@ -570,21 +578,21 @@ export const TypographyHierarchy: Story = {
             {/* Article */}
             <Card>
               <CardContent className="pt-6 space-y-3">
-                <p className="text-xs font-medium tracking-wider text-(--color-text-tertiary) uppercase">
+                <p className="text-xs font-medium tracking-wider text-(--color-foreground-faint) uppercase">
                   Article
                 </p>
                 <h2 className="text-3xl font-bold leading-tight">
                   Design Tokens at Scale
                 </h2>
-                <p className="text-base text-(--color-text-secondary) leading-relaxed">
+                <p className="text-base text-(--color-foreground-muted) leading-relaxed">
                   How large teams maintain visual consistency across hundreds of
                   components and multiple product lines.
                 </p>
                 <div className="flex items-center gap-3 pt-1">
-                  <div className="w-7 h-7 rounded-full bg-(--color-interactive-primary)/20 border border-(--color-border-primary)" />
+                  <div className="w-7 h-7 rounded-full bg-(--color-primary-background-default)/20 border border-(--color-border-default)" />
                   <div>
                     <p className="text-sm font-medium">Alex Kim</p>
-                    <p className="text-xs text-(--color-text-tertiary)">
+                    <p className="text-xs text-(--color-foreground-faint)">
                       May 17, 2026 · 8 min read
                     </p>
                   </div>
@@ -595,19 +603,19 @@ export const TypographyHierarchy: Story = {
             {/* Dashboard stat */}
             <Card>
               <CardContent className="pt-6 space-y-4">
-                <p className="text-xs font-medium tracking-wider text-(--color-text-tertiary) uppercase">
+                <p className="text-xs font-medium tracking-wider text-(--color-foreground-faint) uppercase">
                   Dashboard
                 </p>
                 <div className="space-y-1">
-                  <p className="text-sm text-(--color-text-secondary)">
+                  <p className="text-sm text-(--color-foreground-muted)">
                     Monthly Revenue
                   </p>
                   <p className="text-4xl font-bold">$48,295</p>
-                  <p className="text-sm text-(--color-status-success)">
+                  <p className="text-sm text-(--color-success-foreground-subtle)">
                     ↑ 12.5% from last month
                   </p>
                 </div>
-                <div className="border-t border-(--color-border-primary) pt-3 space-y-2">
+                <div className="border-t border-(--color-border-default) pt-3 space-y-2">
                   <p className="text-sm font-semibold">Breakdown</p>
                   {[
                     ["New customers", "$12,100"],
@@ -615,7 +623,7 @@ export const TypographyHierarchy: Story = {
                     ["Upgrades", "$7,745"],
                   ].map(([label, amount]) => (
                     <div key={label} className="flex justify-between text-sm">
-                      <span className="text-(--color-text-secondary)">
+                      <span className="text-(--color-foreground-muted)">
                         {label}
                       </span>
                       <span className="font-medium">{amount}</span>
@@ -631,11 +639,11 @@ export const TypographyHierarchy: Story = {
             <CardContent className="pt-6 space-y-5">
               <div>
                 <h2 className="text-2xl font-bold mb-1">Account Settings</h2>
-                <p className="text-sm text-(--color-text-secondary)">
+                <p className="text-sm text-(--color-foreground-muted)">
                   Manage your preferences and notifications.
                 </p>
               </div>
-              <div className="divide-y divide-(--color-border-primary)">
+              <div className="divide-y divide-(--color-border-default)">
                 {[
                   {
                     title: "Personal Information",
@@ -655,11 +663,11 @@ export const TypographyHierarchy: Story = {
                 ].map(({ title, desc, meta }) => (
                   <div key={title} className="py-3">
                     <h3 className="text-base font-semibold mb-0.5">{title}</h3>
-                    <p className="text-sm text-(--color-text-secondary)">
+                    <p className="text-sm text-(--color-foreground-muted)">
                       {desc}
                     </p>
                     {meta && (
-                      <p className="text-xs text-(--color-text-tertiary) mt-1">
+                      <p className="text-xs text-(--color-foreground-faint) mt-1">
                         {meta}
                       </p>
                     )}
@@ -681,7 +689,7 @@ export const CodeTypography: Story = {
         <h4 className="text-lg font-semibold mb-3">Inline Code</h4>
         <p>
           Use the{" "}
-          <code className="bg-(--color-background-secondary) px-1.5 py-0.5 rounded text-sm font-mono">
+          <code className="bg-(--color-background-subtle) px-1.5 py-0.5 rounded text-sm font-mono">
             useState
           </code>{" "}
           hook to manage state in React components.
@@ -690,7 +698,7 @@ export const CodeTypography: Story = {
 
       <div>
         <h4 className="text-lg font-semibold mb-3">Code Block</h4>
-        <pre className="bg-(--color-background-inverse) text-(--color-text-inverse) p-4 rounded-lg overflow-x-auto">
+        <pre className="bg-(--color-inverse-background-default) text-(--color-inverse-foreground-default) p-4 rounded-lg overflow-x-auto">
           <code className="font-mono text-sm">
             {`function Button({ children, variant = "default" }) {
   return (
@@ -705,7 +713,7 @@ export const CodeTypography: Story = {
 
       <div>
         <h4 className="text-lg font-semibold mb-3">Terminal Output</h4>
-        <pre className="bg-(--color-background-inverse) text-(--color-text-inverse) p-4 rounded-lg font-mono text-sm">
+        <pre className="bg-(--color-inverse-background-default) text-(--color-inverse-foreground-default) p-4 rounded-lg font-mono text-sm">
           {`$ npm install @wyliedog/ui
 + @wyliedog/ui@1.0.0
 added 1 package from 1 contributor
@@ -723,7 +731,7 @@ export const ResponsiveTypography: Story = {
         <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2">
           Responsive Heading
         </h1>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-size-2xl → md:--font-size-4xl → lg:--font-size-5xl
         </p>
       </div>
@@ -734,7 +742,7 @@ export const ResponsiveTypography: Story = {
           it&apos;s smaller, on tablet it&apos;s medium, and on desktop
           it&apos;s larger for better readability.
         </p>
-        <p className="text-sm text-(--color-text-secondary) font-mono">
+        <p className="text-sm text-(--color-foreground-muted) font-mono">
           --font-size-sm → md:--font-size-base → lg:--font-size-lg
         </p>
       </div>
@@ -744,7 +752,7 @@ export const ResponsiveTypography: Story = {
           <h2 className="text-lg md:text-xl font-semibold mb-2">
             Mobile First
           </h2>
-          <p className="text-sm md:text-base text-(--color-text-secondary)">
+          <p className="text-sm md:text-base text-(--color-foreground-muted)">
             Typography scales up from mobile to larger screens, ensuring
             readability across all devices.
           </p>
@@ -753,7 +761,7 @@ export const ResponsiveTypography: Story = {
           <h2 className="text-lg md:text-xl font-semibold mb-2">
             Flexible Layout
           </h2>
-          <p className="text-sm md:text-base text-(--color-text-secondary)">
+          <p className="text-sm md:text-base text-(--color-foreground-muted)">
             Text size and layout adjust automatically to provide optimal reading
             experience on any device.
           </p>
@@ -815,7 +823,7 @@ function TypographyPlaygroundComponent() {
     !currentFontFamily
   ) {
     return (
-      <div className="p-4 text-center text-(--color-text-secondary)">
+      <div className="p-4 text-center text-(--color-foreground-muted)">
         No typography tokens found in manifest.
       </div>
     );
@@ -863,7 +871,7 @@ function TypographyPlaygroundComponent() {
         <h3 className="text-2xl font-semibold tracking-tight mb-2">
           Typography Playground
         </h3>
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-(--color-foreground-muted)">
           Interactive explorer for typography tokens. All options are
           dynamically generated from the design token manifest — when tokens
           change, this playground updates automatically.
@@ -877,7 +885,7 @@ function TypographyPlaygroundComponent() {
         </CardHeader>
         <CardContent>
           <div
-            className="p-6 rounded-lg border border-(--color-border-primary) bg-(--color-background-primary) min-h-[80px]"
+            className="p-6 rounded-lg border border-(--color-border-default) bg-(--color-background-default) min-h-[80px]"
             style={{
               fontSize: `${currentFontSize.value}px`,
               fontWeight: currentFontWeight.value,
@@ -1036,7 +1044,9 @@ function TypographyPlaygroundComponent() {
                 onClick={() => handleCopy("css")}
               >
                 {copiedType === "css" ? (
-                  <span className="text-(--color-status-success)">Copied!</span>
+                  <span className="text-(--color-success-foreground-subtle)">
+                    Copied!
+                  </span>
                 ) : (
                   "Copy CSS"
                 )}
@@ -1047,7 +1057,9 @@ function TypographyPlaygroundComponent() {
                 onClick={() => handleCopy("tailwind")}
               >
                 {copiedType === "tailwind" ? (
-                  <span className="text-(--color-status-success)">Copied!</span>
+                  <span className="text-(--color-success-foreground-subtle)">
+                    Copied!
+                  </span>
                 ) : (
                   "Copy Tailwind"
                 )}
@@ -1060,7 +1072,7 @@ function TypographyPlaygroundComponent() {
             {/* CSS Properties */}
             <div className="space-y-2">
               <div className="text-sm font-semibold">CSS Properties</div>
-              <div className="p-3 rounded-md bg-(--color-background-secondary)/50 text-xs font-mono space-y-1">
+              <div className="p-3 rounded-md bg-(--color-background-subtle)/50 text-xs font-mono space-y-1">
                 {cssLines.map((line) => (
                   <div key={line}>{line}</div>
                 ))}
@@ -1070,7 +1082,7 @@ function TypographyPlaygroundComponent() {
             {/* Tailwind Classes */}
             <div className="space-y-2">
               <div className="text-sm font-semibold">Tailwind Classes</div>
-              <div className="p-3 rounded-md bg-(--color-background-secondary)/50 text-xs font-mono">
+              <div className="p-3 rounded-md bg-(--color-background-subtle)/50 text-xs font-mono">
                 <code>className=&quot;{tailwindClasses}&quot;</code>
               </div>
             </div>

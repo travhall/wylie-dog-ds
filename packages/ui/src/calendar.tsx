@@ -35,7 +35,7 @@ const CalendarHeader = () => (
   <div className="flex items-center justify-between">
     <button
       aria-label="Previous month"
-      className="inline-flex items-center justify-center rounded-(--space-calendar-nav-button-radius) text-(length:--font-size-calendar-header-font-size) font-(--font-weight-calendar-nav-button-font-weight) ring-offset-(--color-calendar-nav-button-ring-offset) transition-colors focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none disabled:opacity-(--calendar-nav-button-disabled-opacity) border border-(--color-calendar-nav-border) bg-transparent hover:bg-(--color-calendar-nav-hover) hover:text-(--color-calendar-nav-text-hover) h-(--space-calendar-nav-button-size) w-(--space-calendar-nav-button-size) p-(--space-calendar-nav-button-padding) opacity-(--calendar-nav-button-opacity) hover:opacity-(--calendar-nav-button-opacity-hover)"
+      className="inline-flex items-center justify-center rounded-(--space-calendar-nav-button-radius) text-(length:--font-size-calendar-header-font-size) font-(--font-weight-calendar-nav-button-font-weight) ring-offset-(--color-calendar-nav-button-ring-offset) transition-colors focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-focus-ring) focus-visible:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none disabled:opacity-(--calendar-nav-button-disabled-opacity) border border-(--color-calendar-nav-border) bg-transparent hover:bg-(--color-calendar-nav-hover) hover:text-(--color-calendar-nav-text-hover) h-(--space-calendar-nav-button-size) w-(--space-calendar-nav-button-size) p-(--space-calendar-nav-button-padding) opacity-(--calendar-nav-button-opacity) hover:opacity-(--calendar-nav-button-opacity-hover)"
     >
       <ChevronLeftIcon className="h-(--space-calendar-nav-icon-size) w-(--space-calendar-nav-icon-size)" />
     </button>
@@ -44,7 +44,7 @@ const CalendarHeader = () => (
     </div>
     <button
       aria-label="Next month"
-      className="inline-flex items-center justify-center rounded-(--space-calendar-nav-button-radius) text-(length:--font-size-calendar-header-font-size) font-(--font-weight-calendar-nav-button-font-weight) ring-offset-(--color-calendar-nav-button-ring-offset) transition-colors focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus) focus-visible:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none disabled:opacity-(--calendar-nav-button-disabled-opacity) border border-(--color-calendar-nav-border) bg-transparent hover:bg-(--color-calendar-nav-hover) hover:text-(--color-calendar-nav-text-hover) h-(--space-calendar-nav-button-size) w-(--space-calendar-nav-button-size) p-(--space-calendar-nav-button-padding) opacity-(--calendar-nav-button-opacity) hover:opacity-(--calendar-nav-button-opacity-hover)"
+      className="inline-flex items-center justify-center rounded-(--space-calendar-nav-button-radius) text-(length:--font-size-calendar-header-font-size) font-(--font-weight-calendar-nav-button-font-weight) ring-offset-(--color-calendar-nav-button-ring-offset) transition-colors focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-focus-ring) focus-visible:ring-offset-(--space-focus-ring-offset) disabled:pointer-events-none disabled:opacity-(--calendar-nav-button-disabled-opacity) border border-(--color-calendar-nav-border) bg-transparent hover:bg-(--color-calendar-nav-hover) hover:text-(--color-calendar-nav-text-hover) h-(--space-calendar-nav-button-size) w-(--space-calendar-nav-button-size) p-(--space-calendar-nav-button-padding) opacity-(--calendar-nav-button-opacity) hover:opacity-(--calendar-nav-button-opacity-hover)"
     >
       <ChevronRightIcon className="h-(--space-calendar-nav-icon-size) w-(--space-calendar-nav-icon-size)" />
     </button>
@@ -87,7 +87,7 @@ const CalendarGrid = ({
         className={cn(
           "h-(--space-calendar-day-size) w-(--space-calendar-day-size) p-(--space-calendar-nav-button-padding) font-(--font-weight-calendar-day-font-weight) rounded-(--space-calendar-nav-button-radius) text-(length:--font-size-calendar-header-font-size) transition-colors",
           "hover:bg-(--color-calendar-day-hover) hover:text-(--color-calendar-day-text-hover)",
-          "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-border-focus)",
+          "focus-visible:outline-none focus-visible:ring-(length:--space-focus-ring-width) focus-visible:ring-(--color-focus-ring)",
           i + 1 === 15 &&
             "bg-(--color-calendar-day-selected) text-(--color-calendar-day-text-selected)"
         )}

@@ -113,7 +113,7 @@ Components use design tokens automatically — you get theming and dark mode sup
 
 ```tsx
 // Reference semantic tokens via CSS variables
-<div style={{ backgroundColor: "var(--color-background-secondary)" }}>
+<div style={{ backgroundColor: "var(--color-background-subtle)" }}>
   Styled with a semantic background token
 </div>
 ```
@@ -122,7 +122,7 @@ If your project uses Tailwind CSS v4, you can use the parenthesized variable syn
 
 ```tsx
 // Tailwind v4 CSS variable syntax
-<div className="bg-(--color-background-secondary) text-(--color-text-primary)">
+<div className="bg-(--color-background-subtle) text-(--color-foreground-default)">
   Styled with tokens through Tailwind
 </div>
 ```
@@ -148,7 +148,7 @@ export function UserCard() {
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-sm text-(--color-text-secondary)">
+        <p className="text-sm text-(--color-foreground-muted)">
           Senior Frontend Developer
         </p>
         <div className="flex gap-2">
@@ -209,7 +209,7 @@ export function AccessibleForm() {
       {/* Always pair inputs with labels */}
       <Label htmlFor="username">Username</Label>
       <Input id="username" aria-describedby="username-help" required />
-      <p id="username-help" className="text-sm text-(--color-text-tertiary)">
+      <p id="username-help" className="text-sm text-(--color-foreground-faint)">
         Choose a unique username
       </p>
 

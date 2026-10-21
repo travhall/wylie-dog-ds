@@ -12,7 +12,7 @@ export default function ShowcasePage() {
   return (
     <>
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-(--color-border-primary)">
+      <section className="relative overflow-hidden border-b border-(--color-border-default)">
         <div className="absolute inset-0 grid-bg opacity-60" />
         <div className="absolute inset-0 hero-gradient" />
 
@@ -21,36 +21,38 @@ export default function ShowcasePage() {
             {/* Left: messaging */}
             <div className="lg:col-span-7">
               <div
-                className="inline-flex items-center gap-2 rounded-full border border-(--color-border-primary) px-3 py-1"
+                className="inline-flex items-center gap-2 rounded-full border border-(--color-border-default) px-3 py-1"
                 style={{
                   background:
-                    "color-mix(in oklch, var(--color-background-primary) 60%, transparent)",
+                    "color-mix(in oklch, var(--color-background-default) 60%, transparent)",
                 }}
               >
                 <span
                   className="h-1.5 w-1.5 rounded-full"
                   style={{
-                    background: "var(--color-status-success)",
+                    background: "var(--color-success-foreground-subtle)",
                   }}
                 />
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-secondary)">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-muted)">
                   v{meta.versions.ui} · workspace-only
                 </span>
-                <span className="text-(--color-text-tertiary)">·</span>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <span className="text-(--color-foreground-faint)">·</span>
+                <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                   react 19 · tailwind 4
                 </span>
               </div>
 
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98]">
                 The design system{" "}
-                <span style={{ color: "var(--color-interactive-primary)" }}>
+                <span
+                  style={{ color: "var(--color-primary-background-default)" }}
+                >
                   that closes the gap
                 </span>{" "}
                 between design and code.
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg text-(--color-text-secondary)">
+              <p className="mt-6 max-w-xl text-lg text-(--color-foreground-muted)">
                 A typed React component library, an OKLCH token system, and a
                 pattern catalog — shared across every surface we ship.
               </p>
@@ -84,7 +86,7 @@ export default function ShowcasePage() {
         </div>
 
         {/* Stats strip */}
-        <div className="relative border-t border-(--color-border-primary)">
+        <div className="relative border-t border-(--color-border-default)">
           <div className="mx-auto max-w-330 px-4 sm:px-6 lg:px-8">
             <dl className="grid grid-cols-2 lg:grid-cols-4">
               {[
@@ -111,16 +113,16 @@ export default function ShowcasePage() {
               ].map((stat, i) => (
                 <div
                   key={stat.label}
-                  className={`px-3 py-6 lg:py-7 ${i < 3 ? "lg:border-r border-(--color-border-primary)" : ""} ${i >= 2 ? "border-t border-(--color-border-primary) lg:border-t-0" : ""}`}
+                  className={`px-3 py-6 lg:py-7 ${i < 3 ? "lg:border-r border-(--color-border-default)" : ""} ${i >= 2 ? "border-t border-(--color-border-default) lg:border-t-0" : ""}`}
                 >
-                  <dt className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <dt className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     {stat.label}
                   </dt>
                   <dd className="mt-1 flex flex-wrap items-baseline gap-2">
                     <span className="font-serif text-3xl sm:text-4xl font-semibold">
                       {stat.value}
                     </span>
-                    <span className="text-xs text-(--color-text-tertiary)">
+                    <span className="text-xs text-(--color-foreground-faint)">
                       {stat.sub}
                     </span>
                   </dd>
@@ -132,18 +134,18 @@ export default function ShowcasePage() {
       </section>
 
       {/* ── 01 · TOKENS ───────────────────────────────────────────────────── */}
-      <section className="border-b border-(--color-border-primary)">
+      <section className="border-b border-(--color-border-default)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-10">
             {/* Left */}
             <div className="lg:col-span-4">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                 01 · Tokens
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
                 An OKLCH-native token system.
               </h2>
-              <p className="mt-4 text-(--color-text-secondary)">
+              <p className="mt-4 text-(--color-foreground-muted)">
                 Three tiers — primitives, semantic, and component — so a single
                 source of truth flows from{" "}
                 <span className="font-mono text-xs">--color-blue-500</span> to{" "}
@@ -173,7 +175,7 @@ export default function ShowcasePage() {
               <Link
                 href="/tokens"
                 className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold"
-                style={{ color: "var(--color-interactive-primary)" }}
+                style={{ color: "var(--color-primary-background-default)" }}
               >
                 Open the token explorer
                 <svg
@@ -192,14 +194,14 @@ export default function ShowcasePage() {
             <div className="lg:col-span-8 space-y-3">
               {/* Color ramp */}
               <div
-                className="rounded-lg border border-(--color-border-primary) p-5"
-                style={{ background: "var(--color-background-primary)" }}
+                className="rounded-lg border border-(--color-border-default) p-5"
+                style={{ background: "var(--color-background-default)" }}
               >
                 <div className="flex items-center justify-between mb-3">
-                  <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     interactive · primary
                   </p>
-                  <p className="font-mono text-[11px] text-(--color-text-tertiary)">
+                  <p className="font-mono text-[11px] text-(--color-foreground-faint)">
                     --color-blue-*
                   </p>
                 </div>
@@ -227,16 +229,16 @@ export default function ShowcasePage() {
                           ...(s.active
                             ? ({
                                 "--tw-ring-color":
-                                  "var(--color-interactive-primary)",
+                                  "var(--color-primary-background-default)",
                                 "--tw-ring-offset-color":
-                                  "var(--color-background-primary)",
+                                  "var(--color-background-default)",
                               } as React.CSSProperties)
                             : {}),
                         }}
                       />
                     ))}
                 </div>
-                <div className="mt-2 grid grid-cols-11 gap-1 font-mono text-[9px] text-(--color-text-tertiary) text-center">
+                <div className="mt-2 grid grid-cols-11 gap-1 font-mono text-[9px] text-(--color-foreground-faint) text-center">
                   {[
                     "50",
                     "100",
@@ -253,7 +255,7 @@ export default function ShowcasePage() {
                     <span
                       key={s}
                       className={
-                        s === "500" ? "text-(--color-text-primary)" : ""
+                        s === "500" ? "text-(--color-foreground-default)" : ""
                       }
                     >
                       {s}
@@ -265,10 +267,10 @@ export default function ShowcasePage() {
               <div className="grid sm:grid-cols-2 gap-3">
                 {/* Type scale */}
                 <div
-                  className="rounded-lg border border-(--color-border-primary) p-5"
-                  style={{ background: "var(--color-background-primary)" }}
+                  className="rounded-lg border border-(--color-border-default) p-5"
+                  style={{ background: "var(--color-background-default)" }}
                 >
-                  <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     type scale
                   </p>
                   <div className="mt-3 space-y-2">
@@ -305,7 +307,7 @@ export default function ShowcasePage() {
                         >
                           {row.label}
                         </span>
-                        <span className="font-mono text-[10px] text-(--color-text-tertiary) shrink-0">
+                        <span className="font-mono text-[10px] text-(--color-foreground-faint) shrink-0">
                           {row.tag}
                         </span>
                       </div>
@@ -315,10 +317,10 @@ export default function ShowcasePage() {
 
                 {/* Spacing */}
                 <div
-                  className="rounded-lg border border-(--color-border-primary) p-5"
-                  style={{ background: "var(--color-background-primary)" }}
+                  className="rounded-lg border border-(--color-border-default) p-5"
+                  style={{ background: "var(--color-background-default)" }}
                 >
-                  <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     spacing
                   </p>
                   <div className="mt-3 space-y-2">
@@ -329,17 +331,18 @@ export default function ShowcasePage() {
                       { step: "700", px: "64px", w: 64 },
                     ].map((row) => (
                       <div key={row.step} className="flex items-center gap-3">
-                        <span className="font-mono text-[10px] text-(--color-text-tertiary) w-10">
+                        <span className="font-mono text-[10px] text-(--color-foreground-faint) w-10">
                           {row.step}
                         </span>
                         <div
                           className="h-2 rounded-sm"
                           style={{
                             width: row.w,
-                            background: "var(--color-interactive-primary)",
+                            background:
+                              "var(--color-primary-background-default)",
                           }}
                         />
-                        <span className="font-mono text-[10px] text-(--color-text-tertiary)">
+                        <span className="font-mono text-[10px] text-(--color-foreground-faint)">
                           {row.px}
                         </span>
                       </div>
@@ -353,17 +356,17 @@ export default function ShowcasePage() {
       </section>
 
       {/* ── 02 · COMPONENTS ───────────────────────────────────────────────── */}
-      <section className="border-b border-(--color-border-primary) bg-(--color-background-secondary)">
+      <section className="border-b border-(--color-border-default) bg-(--color-background-subtle)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-xl">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                 02 · Components
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
                 {meta.components.count} typed React components.
               </h2>
-              <p className="mt-3 text-(--color-text-secondary)">
+              <p className="mt-3 text-(--color-foreground-muted)">
                 Headless primitives, fully composable, accessible by default.
                 Every component ships with TypeScript types, a test file and a
                 Storybook story.
@@ -392,35 +395,35 @@ export default function ShowcasePage() {
             {/* Foundations/Button */}
             <Link
               href="/components#inputs"
-              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
-              style={{ background: "var(--color-background-primary)" }}
+              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
-                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                   Inputs &amp; Controls
                 </p>
-                <span className="font-mono text-[11px] text-(--color-text-tertiary)">
+                <span className="font-mono text-[11px] text-(--color-foreground-faint)">
                   {categoryCount("Inputs-Controls")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Button</h3>
-              <p className="text-sm text-(--color-text-secondary) mt-0.5">
+              <p className="text-sm text-(--color-foreground-muted) mt-0.5">
                 Default, secondary, outline, ghost, link, destructive.
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 <span
                   className="inline-flex h-8 items-center rounded-md px-3 text-xs font-semibold"
                   style={{
-                    background: "var(--color-interactive-primary)",
-                    color: "var(--color-text-inverse, white)",
+                    background: "var(--color-primary-background-default)",
+                    color: "var(--color-inverse-foreground-default, white)",
                   }}
                 >
                   Save changes
                 </span>
-                <span className="inline-flex h-8 items-center rounded-md border border-(--color-border-primary) px-3 text-xs font-semibold text-(--color-text-primary)">
+                <span className="inline-flex h-8 items-center rounded-md border border-(--color-border-default) px-3 text-xs font-semibold text-(--color-foreground-default)">
                   Cancel
                 </span>
-                <span className="inline-flex h-8 items-center rounded-md px-3 text-xs font-semibold text-(--color-text-secondary) hover:bg-(--color-background-secondary) transition-colors">
+                <span className="inline-flex h-8 items-center rounded-md px-3 text-xs font-semibold text-(--color-foreground-muted) hover:bg-(--color-background-subtle) transition-colors">
                   Skip
                 </span>
               </div>
@@ -429,29 +432,29 @@ export default function ShowcasePage() {
             {/* Forms/Input */}
             <Link
               href="/components#inputs"
-              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
-              style={{ background: "var(--color-background-primary)" }}
+              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
-                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                   Inputs &amp; Controls
                 </p>
-                <span className="font-mono text-[11px] text-(--color-text-tertiary)">
+                <span className="font-mono text-[11px] text-(--color-foreground-faint)">
                   {categoryCount("Inputs-Controls")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Input</h3>
-              <p className="text-sm text-(--color-text-secondary) mt-0.5">
+              <p className="text-sm text-(--color-foreground-muted) mt-0.5">
                 Any native input type, with error and success states.
               </p>
               <div className="mt-5 space-y-2">
-                <label className="block text-[11px] font-medium text-(--color-text-secondary)">
+                <label className="block text-[11px] font-medium text-(--color-foreground-muted)">
                   Email
                 </label>
-                <div className="flex h-9 items-center gap-2 rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) px-3">
+                <div className="flex h-9 items-center gap-2 rounded-md border border-(--color-border-default) bg-(--color-background-subtle) px-3">
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-3.5 w-3.5 text-(--color-text-tertiary)"
+                    className="h-3.5 w-3.5 text-(--color-foreground-faint)"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -459,7 +462,7 @@ export default function ShowcasePage() {
                     <rect x="3" y="5" width="18" height="14" rx="2" />
                     <path d="m3 7 9 6 9-6" />
                   </svg>
-                  <span className="text-xs text-(--color-text-primary)">
+                  <span className="text-xs text-(--color-foreground-default)">
                     travis@wyliedog.dev
                   </span>
                 </div>
@@ -469,36 +472,36 @@ export default function ShowcasePage() {
             {/* Navigation/Tabs */}
             <Link
               href="/components#navigation"
-              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
-              style={{ background: "var(--color-background-primary)" }}
+              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
-                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                   Navigation
                 </p>
-                <span className="font-mono text-[11px] text-(--color-text-tertiary)">
+                <span className="font-mono text-[11px] text-(--color-foreground-faint)">
                   {categoryCount("Navigation")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Tabs</h3>
-              <p className="text-sm text-(--color-text-secondary) mt-0.5">
+              <p className="text-sm text-(--color-foreground-muted) mt-0.5">
                 Tabbed panels in three sizes.
               </p>
               <div className="mt-5">
-                <div className="flex border-b border-(--color-border-primary) text-xs">
+                <div className="flex border-b border-(--color-border-default) text-xs">
                   <span
                     className="-mb-px border-b-2 px-3 py-2 font-medium"
                     style={{
-                      borderColor: "var(--color-interactive-primary)",
-                      color: "var(--color-text-primary)",
+                      borderColor: "var(--color-primary-background-default)",
+                      color: "var(--color-foreground-default)",
                     }}
                   >
                     Overview
                   </span>
-                  <span className="px-3 py-2 text-(--color-text-tertiary)">
+                  <span className="px-3 py-2 text-(--color-foreground-faint)">
                     Activity
                   </span>
-                  <span className="px-3 py-2 text-(--color-text-tertiary)">
+                  <span className="px-3 py-2 text-(--color-foreground-faint)">
                     Members
                   </span>
                 </div>
@@ -508,43 +511,43 @@ export default function ShowcasePage() {
             {/* Overlays/Dialog */}
             <Link
               href="/components#overlays"
-              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
-              style={{ background: "var(--color-background-primary)" }}
+              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
-                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                   Overlays &amp; Popovers
                 </p>
-                <span className="font-mono text-[11px] text-(--color-text-tertiary)">
+                <span className="font-mono text-[11px] text-(--color-foreground-faint)">
                   {categoryCount("Overlays-Popovers")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Dialog</h3>
-              <p className="text-sm text-(--color-text-secondary) mt-0.5">
+              <p className="text-sm text-(--color-foreground-muted) mt-0.5">
                 Modal dialog with header, footer and overlay.
               </p>
               <div className="mt-5 relative h-27.5">
-                <div className="absolute inset-x-2 top-2 rounded-md border border-(--color-border-primary) bg-(--color-background-secondary) p-3 opacity-60">
-                  <div className="h-2 w-20 rounded-full bg-(--color-background-secondary)" />
-                  <div className="mt-2 h-2 w-32 rounded-full bg-(--color-background-secondary)" />
+                <div className="absolute inset-x-2 top-2 rounded-md border border-(--color-border-default) bg-(--color-background-subtle) p-3 opacity-60">
+                  <div className="h-2 w-20 rounded-full bg-(--color-background-subtle)" />
+                  <div className="mt-2 h-2 w-32 rounded-full bg-(--color-background-subtle)" />
                 </div>
                 <div
-                  className="absolute inset-x-0 top-6 rounded-md border border-(--color-border-primary) p-3 shadow-lg"
-                  style={{ background: "var(--color-background-primary)" }}
+                  className="absolute inset-x-0 top-6 rounded-md border border-(--color-border-default) p-3 shadow-lg"
+                  style={{ background: "var(--color-background-default)" }}
                 >
                   <p className="text-xs font-semibold">Delete project?</p>
-                  <p className="text-[11px] text-(--color-text-tertiary) mt-0.5">
+                  <p className="text-[11px] text-(--color-foreground-faint) mt-0.5">
                     This cannot be undone.
                   </p>
                   <div className="mt-2 flex justify-end gap-1.5">
-                    <span className="inline-flex h-6 items-center rounded border border-(--color-border-primary) px-2 text-[10px] font-medium">
+                    <span className="inline-flex h-6 items-center rounded border border-(--color-border-default) px-2 text-[10px] font-medium">
                       Cancel
                     </span>
                     <span
                       className="inline-flex h-6 items-center rounded px-2 text-[10px] font-semibold"
                       style={{
                         background: "var(--color-red-600)",
-                        color: "var(--color-text-on-solid)",
+                        color: "var(--color-danger-foreground-default)",
                       }}
                     >
                       Delete
@@ -557,47 +560,47 @@ export default function ShowcasePage() {
             {/* Data Display/Table */}
             <Link
               href="/components#content-display"
-              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
-              style={{ background: "var(--color-background-primary)" }}
+              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
-                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                   Content Display
                 </p>
-                <span className="font-mono text-[11px] text-(--color-text-tertiary)">
+                <span className="font-mono text-[11px] text-(--color-foreground-faint)">
                   {categoryCount("Content-Display")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Table</h3>
-              <p className="text-sm text-(--color-text-secondary) mt-0.5">
+              <p className="text-sm text-(--color-foreground-muted) mt-0.5">
                 Header, body and footer parts in a scrollable wrapper.
               </p>
-              <div className="mt-5 rounded-md border border-(--color-border-primary) overflow-hidden text-xs">
-                <div className="grid grid-cols-3 bg-(--color-background-secondary) px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+              <div className="mt-5 rounded-md border border-(--color-border-default) overflow-hidden text-xs">
+                <div className="grid grid-cols-3 bg-(--color-background-subtle) px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                   <span>Name</span>
                   <span>Role</span>
                   <span className="text-right">Status</span>
                 </div>
-                <div className="grid grid-cols-3 px-3 py-2 border-t border-(--color-border-primary)">
+                <div className="grid grid-cols-3 px-3 py-2 border-t border-(--color-border-default)">
                   <span>Elena Mori</span>
-                  <span className="text-(--color-text-secondary)">Lead</span>
+                  <span className="text-(--color-foreground-muted)">Lead</span>
                   <span className="text-right">
                     <span
                       className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[9px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
-                        color: "var(--color-text-success)",
+                          "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
+                        color: "var(--color-success-foreground-subtle)",
                       }}
                     >
                       Active
                     </span>
                   </span>
                 </div>
-                <div className="grid grid-cols-3 px-3 py-2 border-t border-(--color-border-primary)">
+                <div className="grid grid-cols-3 px-3 py-2 border-t border-(--color-border-default)">
                   <span>Jude Reyes</span>
-                  <span className="text-(--color-text-secondary)">Eng</span>
-                  <span className="text-right text-(--color-text-tertiary)">
+                  <span className="text-(--color-foreground-muted)">Eng</span>
+                  <span className="text-right text-(--color-foreground-faint)">
                     —
                   </span>
                 </div>
@@ -607,19 +610,19 @@ export default function ShowcasePage() {
             {/* Feedback/Alert */}
             <Link
               href="/components#feedback"
-              className="group rounded-lg border border-(--color-border-secondary) p-5 flex flex-col hover:border-(--color-border-primary) hover:bg-(--color-background-primary) transition-all"
-              style={{ background: "var(--color-background-primary)" }}
+              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
-                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                   Feedback &amp; Status
                 </p>
-                <span className="font-mono text-[11px] text-(--color-text-tertiary)">
+                <span className="font-mono text-[11px] text-(--color-foreground-faint)">
                   {categoryCount("Feedback-Status")}
                 </span>
               </div>
               <h3 className="mt-2 font-semibold">Alert</h3>
-              <p className="text-sm text-(--color-text-secondary) mt-0.5">
+              <p className="text-sm text-(--color-foreground-muted) mt-0.5">
                 Default, success, warning, destructive.
               </p>
               <div className="mt-5 space-y-1.5">
@@ -627,16 +630,16 @@ export default function ShowcasePage() {
                   className="flex items-start gap-2 rounded-md border px-3 py-2"
                   style={{
                     borderColor:
-                      "color-mix(in oklch, var(--color-status-success) 35%, transparent)",
+                      "color-mix(in oklch, var(--color-success-foreground-subtle) 35%, transparent)",
                     background:
-                      "color-mix(in oklch, var(--color-status-success) 10%, transparent)",
+                      "color-mix(in oklch, var(--color-success-foreground-subtle) 10%, transparent)",
                   }}
                 >
                   <span
                     className="grid h-4 w-4 mt-px place-items-center rounded-full shrink-0"
                     style={{
-                      background: "var(--color-status-success)",
-                      color: "var(--color-text-on-solid)",
+                      background: "var(--color-success-foreground-subtle)",
+                      color: "var(--color-success-foreground-default)",
                     }}
                   >
                     <svg
@@ -651,7 +654,7 @@ export default function ShowcasePage() {
                   </span>
                   <div>
                     <p className="text-[11px] font-semibold">Build passed</p>
-                    <p className="text-[10px] text-(--color-text-secondary)">
+                    <p className="text-[10px] text-(--color-foreground-muted)">
                       Typecheck, lint and tests
                     </p>
                   </div>
@@ -663,17 +666,17 @@ export default function ShowcasePage() {
       </section>
 
       {/* ── 03 · PATTERNS ─────────────────────────────────────────────────── */}
-      <section className="border-b border-(--color-border-primary)">
+      <section className="border-b border-(--color-border-default)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-xl">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                 03 · Patterns
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
                 From components to compositions.
               </h2>
-              <p className="mt-3 text-(--color-text-secondary)">
+              <p className="mt-3 text-(--color-foreground-muted)">
                 {meta.patterns.count} reference patterns that show how the
                 primitives compose into the screens you actually ship — auth
                 flows, form compositions, layout shells, page compositions, and
@@ -704,26 +707,28 @@ export default function ShowcasePage() {
             {/* Layout */}
             <Link
               href="/patterns#cat-layout"
-              className="group rounded-xl border border-(--color-border-secondary) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all"
-              style={{ background: "var(--color-background-primary)" }}
+              className="group rounded-xl border border-(--color-border-subtle) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
+              style={{ background: "var(--color-background-default)" }}
             >
               <div className="relative aspect-16/10 grid-bg overflow-hidden">
                 <div
                   className="absolute inset-0"
                   style={{
                     background:
-                      "color-mix(in oklch, var(--color-interactive-primary) 8%, transparent)",
+                      "color-mix(in oklch, var(--color-primary-background-default) 8%, transparent)",
                   }}
                 />
                 <div className="absolute inset-3 flex gap-2">
                   <div className="w-1/4 rounded-md glass-dark p-2 space-y-1">
-                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-secondary)" />
-                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-secondary)" />
+                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-subtle)" />
+                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-subtle)" />
                     <div
                       className="h-1.5 w-3/4 rounded-full"
-                      style={{ background: "var(--color-interactive-primary)" }}
+                      style={{
+                        background: "var(--color-primary-background-default)",
+                      }}
                     />
-                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-secondary)" />
+                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-subtle)" />
                   </div>
                   <div className="flex-1 grid grid-cols-2 grid-rows-3 gap-1.5">
                     <div className="rounded-md glass-dark" />
@@ -735,7 +740,8 @@ export default function ShowcasePage() {
                           className="w-2 rounded-sm"
                           style={{
                             height: `${h}%`,
-                            background: "var(--color-interactive-primary)",
+                            background:
+                              "var(--color-primary-background-default)",
                           }}
                         />
                       ))}
@@ -745,12 +751,12 @@ export default function ShowcasePage() {
               </div>
               <div className="p-5">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                     Layout
                   </span>
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-(--color-text-tertiary) group-hover:text-(--color-interactive-primary) transition-colors"
+                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-background-default) transition-colors"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -759,7 +765,7 @@ export default function ShowcasePage() {
                   </svg>
                 </div>
                 <h3 className="mt-2 font-semibold">Layout Patterns</h3>
-                <p className="text-sm text-(--color-text-secondary) mt-0.5">
+                <p className="text-sm text-(--color-foreground-muted) mt-0.5">
                   Page shell, sidebar, content area — collapses to a sheet below
                   lg.
                 </p>
@@ -767,7 +773,7 @@ export default function ShowcasePage() {
                   {["Card", "NavigationMenu", "Sheet"].map((c) => (
                     <span
                       key={c}
-                      className="inline-flex items-center rounded-full border border-(--color-border-primary) px-2 py-0.5 font-mono text-[10px] text-(--color-text-secondary)"
+                      className="inline-flex items-center rounded-full border border-(--color-border-default) px-2 py-0.5 font-mono text-[10px] text-(--color-foreground-muted)"
                     >
                       {c}
                     </span>
@@ -779,37 +785,39 @@ export default function ShowcasePage() {
             {/* Auth */}
             <Link
               href="/patterns#cat-auth"
-              className="group rounded-xl border border-(--color-border-secondary) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all"
-              style={{ background: "var(--color-background-primary)" }}
+              className="group rounded-xl border border-(--color-border-subtle) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
+              style={{ background: "var(--color-background-default)" }}
             >
               <div className="relative aspect-16/10 grid-bg overflow-hidden">
                 <div
                   className="absolute inset-0"
                   style={{
                     background:
-                      "color-mix(in oklch, var(--color-interactive-primary) 8%, transparent)",
+                      "color-mix(in oklch, var(--color-primary-background-default) 8%, transparent)",
                   }}
                 />
                 <div className="absolute inset-0 grid place-items-center">
                   <div className="w-3/4 rounded-md glass-dark p-3 space-y-2">
-                    <div className="h-2 w-1/3 rounded-full bg-(--color-background-secondary)" />
-                    <div className="h-5 rounded border border-(--color-border-primary) bg-(--color-background-primary)" />
-                    <div className="h-5 rounded border border-(--color-border-primary) bg-(--color-background-primary)" />
+                    <div className="h-2 w-1/3 rounded-full bg-(--color-background-subtle)" />
+                    <div className="h-5 rounded border border-(--color-border-default) bg-(--color-background-default)" />
+                    <div className="h-5 rounded border border-(--color-border-default) bg-(--color-background-default)" />
                     <div
                       className="h-5 rounded"
-                      style={{ background: "var(--color-interactive-primary)" }}
+                      style={{
+                        background: "var(--color-primary-background-default)",
+                      }}
                     />
                   </div>
                 </div>
               </div>
               <div className="p-5">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                     Form
                   </span>
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-(--color-text-tertiary) group-hover:text-(--color-interactive-primary) transition-colors"
+                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-background-default) transition-colors"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -818,7 +826,7 @@ export default function ShowcasePage() {
                   </svg>
                 </div>
                 <h3 className="mt-2 font-semibold">Login &amp; Registration</h3>
-                <p className="text-sm text-(--color-text-secondary) mt-0.5">
+                <p className="text-sm text-(--color-foreground-muted) mt-0.5">
                   Sign-in, registration, social auth. Same schema, three
                   layouts.
                 </p>
@@ -826,7 +834,7 @@ export default function ShowcasePage() {
                   {["Form", "Input", "+3"].map((c) => (
                     <span
                       key={c}
-                      className="inline-flex items-center rounded-full border border-(--color-border-primary) px-2 py-0.5 font-mono text-[10px] text-(--color-text-secondary)"
+                      className="inline-flex items-center rounded-full border border-(--color-border-default) px-2 py-0.5 font-mono text-[10px] text-(--color-foreground-muted)"
                     >
                       {c}
                     </span>
@@ -838,15 +846,15 @@ export default function ShowcasePage() {
             {/* Navigation */}
             <Link
               href="/patterns#cat-nav"
-              className="group rounded-xl border border-(--color-border-secondary) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all"
-              style={{ background: "var(--color-background-primary)" }}
+              className="group rounded-xl border border-(--color-border-subtle) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
+              style={{ background: "var(--color-background-default)" }}
             >
               <div className="relative aspect-16/10 grid-bg overflow-hidden">
                 <div
                   className="absolute inset-0"
                   style={{
                     background:
-                      "color-mix(in oklch, var(--color-interactive-primary) 8%, transparent)",
+                      "color-mix(in oklch, var(--color-primary-background-default) 8%, transparent)",
                   }}
                 />
                 <div className="absolute inset-0 grid place-items-center px-4">
@@ -854,7 +862,7 @@ export default function ShowcasePage() {
                     <div className="flex items-center gap-2">
                       <svg
                         viewBox="0 0 24 24"
-                        className="h-3 w-3 text-(--color-text-tertiary)"
+                        className="h-3 w-3 text-(--color-foreground-faint)"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
@@ -862,37 +870,37 @@ export default function ShowcasePage() {
                         <circle cx="11" cy="11" r="7" />
                         <path d="m21 21-4.3-4.3" />
                       </svg>
-                      <div className="h-2 w-1/3 rounded-full bg-(--color-background-secondary)" />
+                      <div className="h-2 w-1/3 rounded-full bg-(--color-background-subtle)" />
                       <span className="ml-auto kbd kbd-sm">esc</span>
                     </div>
-                    <div className="h-px w-full bg-(--color-border-primary)" />
+                    <div className="h-px w-full bg-(--color-border-default)" />
                     <div
                       className="rounded p-1"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-interactive-primary) 18%, transparent)",
+                          "color-mix(in oklch, var(--color-primary-background-default) 18%, transparent)",
                       }}
                     >
                       <div
                         className="h-1.5 w-1/2 rounded-full"
                         style={{
-                          background: "var(--color-interactive-primary)",
+                          background: "var(--color-primary-background-default)",
                         }}
                       />
                     </div>
-                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-secondary) ml-1" />
-                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-secondary) ml-1" />
+                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-subtle) ml-1" />
+                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-subtle) ml-1" />
                   </div>
                 </div>
               </div>
               <div className="p-5">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                     Navigation
                   </span>
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-(--color-text-tertiary) group-hover:text-(--color-interactive-primary) transition-colors"
+                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-background-default) transition-colors"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -901,7 +909,7 @@ export default function ShowcasePage() {
                   </svg>
                 </div>
                 <h3 className="mt-2 font-semibold">Site Header</h3>
-                <p className="text-sm text-(--color-text-secondary) mt-0.5">
+                <p className="text-sm text-(--color-foreground-muted) mt-0.5">
                   Sticky nav, search trigger, theme toggle — used on this very
                   page.
                 </p>
@@ -909,7 +917,7 @@ export default function ShowcasePage() {
                   {["NavigationMenu", "Command", "+2"].map((c) => (
                     <span
                       key={c}
-                      className="inline-flex items-center rounded-full border border-(--color-border-primary) px-2 py-0.5 font-mono text-[10px] text-(--color-text-secondary)"
+                      className="inline-flex items-center rounded-full border border-(--color-border-default) px-2 py-0.5 font-mono text-[10px] text-(--color-foreground-muted)"
                     >
                       {c}
                     </span>
@@ -962,14 +970,14 @@ export default function ShowcasePage() {
               <Link
                 key={p.label}
                 href={p.href}
-                className="rounded-lg border border-(--color-border-secondary) p-4 hover:border-(--color-border-primary) transition-all"
-                style={{ background: "var(--color-background-primary)" }}
+                className="rounded-lg border border-(--color-border-subtle) p-4 hover:border-(--color-border-default) transition-all"
+                style={{ background: "var(--color-background-default)" }}
               >
-                <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary)">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                   {p.cat}
                 </span>
                 <p className="mt-2 text-sm font-semibold">{p.label}</p>
-                <p className="text-xs text-(--color-text-tertiary) mt-0.5">
+                <p className="text-xs text-(--color-foreground-faint) mt-0.5">
                   {p.sub}
                 </p>
               </Link>
@@ -979,22 +987,24 @@ export default function ShowcasePage() {
       </section>
 
       {/* ── 04 · TOKEN BRIDGE ─────────────────────────────────────────────── */}
-      <section className="border-b border-(--color-border-primary) bg-(--color-background-secondary)">
+      <section className="border-b border-(--color-border-default) bg-(--color-background-subtle)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Messaging */}
             <div className="lg:col-span-5">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                 04 · Figma plugin
               </span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
                 Token Bridge keeps Figma and code{" "}
-                <span style={{ color: "var(--color-interactive-primary)" }}>
+                <span
+                  style={{ color: "var(--color-primary-background-default)" }}
+                >
                   in sync
                 </span>
                 .
               </h2>
-              <p className="mt-4 text-(--color-text-secondary)">
+              <p className="mt-4 text-(--color-foreground-muted)">
                 Pull the latest tokens into Figma as variables, or push your
                 edits back to a pull request. No more drift between the file
                 you&apos;re designing in and the code that ships.
@@ -1020,8 +1030,8 @@ export default function ShowcasePage() {
                       className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-interactive-primary) 18%, transparent)",
-                        color: "var(--color-interactive-primary)",
+                          "color-mix(in oklch, var(--color-primary-background-default) 18%, transparent)",
+                        color: "var(--color-primary-background-default)",
                       }}
                     >
                       <svg
@@ -1035,10 +1045,10 @@ export default function ShowcasePage() {
                       </svg>
                     </span>
                     <span>
-                      <span className="font-medium text-(--color-text-primary)">
+                      <span className="font-medium text-(--color-foreground-default)">
                         {item.bold}
                       </span>{" "}
-                      <span className="text-(--color-text-secondary)">
+                      <span className="text-(--color-foreground-muted)">
                         {item.rest}
                       </span>
                     </span>
@@ -1066,7 +1076,7 @@ export default function ShowcasePage() {
                   </Button>
                 </Link>
               </div>
-              <p className="mt-5 font-mono text-[11px] text-(--color-text-tertiary)">
+              <p className="mt-5 font-mono text-[11px] text-(--color-foreground-faint)">
                 v{meta.versions.plugin} · development build
               </p>
             </div>
@@ -1074,26 +1084,30 @@ export default function ShowcasePage() {
             {/* Plugin window */}
             <div className="lg:col-span-7">
               <div className="relative">
-                <div className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-text-secondary)">
+                <div className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-muted)">
                   <span className="relative flex h-1.5 w-1.5">
                     <span
                       className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60"
-                      style={{ background: "var(--color-status-success)" }}
+                      style={{
+                        background: "var(--color-success-foreground-subtle)",
+                      }}
                     />
                     <span
                       className="relative inline-flex h-1.5 w-1.5 rounded-full"
-                      style={{ background: "var(--color-status-success)" }}
+                      style={{
+                        background: "var(--color-success-foreground-subtle)",
+                      }}
                     />
                   </span>
                   Connected to main
                 </div>
 
                 <div
-                  className="rounded-xl border border-(--color-border-primary) overflow-hidden shadow-[0_8px_40px_-12px_rgba(0,0,0,0.18)]"
-                  style={{ background: "var(--color-background-primary)" }}
+                  className="rounded-xl border border-(--color-border-default) overflow-hidden shadow-[0_8px_40px_-12px_rgba(0,0,0,0.18)]"
+                  style={{ background: "var(--color-background-default)" }}
                 >
                   {/* Title bar */}
-                  <div className="flex items-center gap-2 border-b border-(--color-border-primary) bg-(--color-background-secondary) px-3 py-2">
+                  <div className="flex items-center gap-2 border-b border-(--color-border-default) bg-(--color-background-subtle) px-3 py-2">
                     <div className="flex gap-1.5">
                       <span
                         className="h-2.5 w-2.5 rounded-full"
@@ -1108,10 +1122,10 @@ export default function ShowcasePage() {
                         style={{ background: "var(--color-green-500)" }}
                       />
                     </div>
-                    <div className="flex-1 text-center font-mono text-[11px] text-(--color-text-tertiary)">
+                    <div className="flex-1 text-center font-mono text-[11px] text-(--color-foreground-faint)">
                       Token Bridge · wyliedog/ui · main
                     </div>
-                    <span className="font-mono text-[10px] text-(--color-text-tertiary)">
+                    <span className="font-mono text-[10px] text-(--color-foreground-faint)">
                       v{meta.versions.plugin}
                     </span>
                   </div>
@@ -1119,8 +1133,8 @@ export default function ShowcasePage() {
                   {/* Two-pane body */}
                   <div className="grid grid-cols-12">
                     {/* Sidebar */}
-                    <div className="col-span-4 border-r border-(--color-border-primary) p-3 space-y-1 bg-(--color-background-primary)">
-                      <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary) px-2 py-1">
+                    <div className="col-span-4 border-r border-(--color-border-default) p-3 space-y-1 bg-(--color-background-default)">
+                      <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) px-2 py-1">
                         Collections
                       </p>
                       {[
@@ -1143,13 +1157,14 @@ export default function ShowcasePage() {
                       ].map((item) => (
                         <div
                           key={item.label}
-                          className={`flex items-center gap-2 rounded-md px-2 py-1.5 text-xs ${item.active ? "font-medium" : "text-(--color-text-secondary) hover:text-(--color-text-primary)"}`}
+                          className={`flex items-center gap-2 rounded-md px-2 py-1.5 text-xs ${item.active ? "font-medium" : "text-(--color-foreground-muted) hover:text-(--color-foreground-default)"}`}
                           style={
                             item.active
                               ? {
                                   background:
-                                    "color-mix(in oklch, var(--color-interactive-primary) 14%, transparent)",
-                                  color: "var(--color-interactive-primary)",
+                                    "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
+                                  color:
+                                    "var(--color-primary-background-default)",
                                 }
                               : {}
                           }
@@ -1162,8 +1177,8 @@ export default function ShowcasePage() {
                           </span>
                         </div>
                       ))}
-                      <div className="mt-4 pt-3 border-t border-(--color-border-primary)">
-                        <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-text-tertiary) px-2 py-1">
+                      <div className="mt-4 pt-3 border-t border-(--color-border-default)">
+                        <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) px-2 py-1">
                           Modes
                         </p>
                         {["Light", "Dark"].map((mode) => (
@@ -1171,13 +1186,14 @@ export default function ShowcasePage() {
                             key={mode}
                             className="px-2 py-1 text-xs flex items-center justify-between"
                           >
-                            <span className="text-(--color-text-secondary)">
+                            <span className="text-(--color-foreground-muted)">
                               {mode}
                             </span>
                             <span
                               className="h-1.5 w-1.5 rounded-full"
                               style={{
-                                background: "var(--color-status-success)",
+                                background:
+                                  "var(--color-success-foreground-subtle)",
                               }}
                             />
                           </div>
@@ -1195,14 +1211,15 @@ export default function ShowcasePage() {
                           className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[10px]"
                           style={{
                             background:
-                              "color-mix(in oklch, var(--color-status-warning) 18%, transparent)",
-                            color: "var(--color-text-warning)",
+                              "color-mix(in oklch, var(--color-warning-foreground-subtle) 18%, transparent)",
+                            color: "var(--color-warning-foreground-subtle)",
                           }}
                         >
                           <span
                             className="h-1.5 w-1.5 rounded-full"
                             style={{
-                              background: "var(--color-status-warning)",
+                              background:
+                                "var(--color-warning-foreground-subtle)",
                             }}
                           />
                           ahead by 3
@@ -1210,14 +1227,14 @@ export default function ShowcasePage() {
                       </div>
 
                       {/* Modified */}
-                      <div className="rounded-md border border-(--color-border-primary) p-3">
+                      <div className="rounded-md border border-(--color-border-default) p-3">
                         <div className="flex items-center gap-2">
                           <span
                             className="font-mono text-[10px] rounded px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-status-warning) 18%, transparent)",
-                              color: "var(--color-text-warning)",
+                                "color-mix(in oklch, var(--color-warning-foreground-subtle) 18%, transparent)",
+                              color: "var(--color-warning-foreground-subtle)",
                             }}
                           >
                             M
@@ -1227,12 +1244,12 @@ export default function ShowcasePage() {
                           </span>
                         </div>
                         <div className="mt-2 grid grid-cols-2 gap-2 text-[11px]">
-                          <div className="flex items-center gap-2 rounded border border-(--color-border-primary) px-2 py-1.5">
+                          <div className="flex items-center gap-2 rounded border border-(--color-border-default) px-2 py-1.5">
                             <span
                               className="h-4 w-4 rounded shrink-0"
                               style={{ background: "var(--color-blue-500)" }}
                             />
-                            <span className="font-mono text-(--color-text-tertiary) line-through">
+                            <span className="font-mono text-(--color-foreground-faint) line-through">
                               {manifest.primitives.colors.blue["500"].value}
                             </span>
                           </div>
@@ -1240,16 +1257,16 @@ export default function ShowcasePage() {
                             className="flex items-center gap-2 rounded border px-2 py-1.5"
                             style={{
                               borderColor:
-                                "color-mix(in oklch, var(--color-interactive-primary) 50%, transparent)",
+                                "color-mix(in oklch, var(--color-primary-background-default) 50%, transparent)",
                               background:
-                                "color-mix(in oklch, var(--color-interactive-primary) 8%, transparent)",
+                                "color-mix(in oklch, var(--color-primary-background-default) 8%, transparent)",
                             }}
                           >
                             <span
                               className="h-4 w-4 rounded shrink-0"
                               style={{ background: "var(--color-blue-600)" }}
                             />
-                            <span className="font-mono text-(--color-text-primary)">
+                            <span className="font-mono text-(--color-foreground-default)">
                               {manifest.primitives.colors.blue["600"].value}
                             </span>
                           </div>
@@ -1257,14 +1274,14 @@ export default function ShowcasePage() {
                       </div>
 
                       {/* Added */}
-                      <div className="rounded-md border border-(--color-border-primary) p-3">
+                      <div className="rounded-md border border-(--color-border-default) p-3">
                         <div className="flex items-center gap-2">
                           <span
                             className="font-mono text-[10px] rounded px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-status-success) 18%, transparent)",
-                              color: "var(--color-text-success)",
+                                "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
+                              color: "var(--color-success-foreground-subtle)",
                             }}
                           >
                             +
@@ -1272,21 +1289,21 @@ export default function ShowcasePage() {
                           <span className="font-mono text-xs">
                             color/surface/elevated
                           </span>
-                          <span className="ml-auto font-mono text-[10px] text-(--color-text-tertiary)">
+                          <span className="ml-auto font-mono text-[10px] text-(--color-foreground-faint)">
                             new in v1.4
                           </span>
                         </div>
                       </div>
 
                       {/* Modified radius */}
-                      <div className="rounded-md border border-(--color-border-primary) p-3">
+                      <div className="rounded-md border border-(--color-border-default) p-3">
                         <div className="flex items-center gap-2">
                           <span
                             className="font-mono text-[10px] rounded px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-status-warning) 18%, transparent)",
-                              color: "var(--color-text-warning)",
+                                "color-mix(in oklch, var(--color-warning-foreground-subtle) 18%, transparent)",
+                              color: "var(--color-warning-foreground-subtle)",
                             }}
                           >
                             M
@@ -1294,37 +1311,39 @@ export default function ShowcasePage() {
                           <span className="font-mono text-xs">radius/lg</span>
                         </div>
                         <div className="mt-2 flex items-center gap-3 text-[11px]">
-                          <span className="font-mono text-(--color-text-tertiary) line-through">
+                          <span className="font-mono text-(--color-foreground-faint) line-through">
                             12px
                           </span>
                           <svg
                             viewBox="0 0 24 24"
-                            className="h-3 w-3 text-(--color-text-tertiary)"
+                            className="h-3 w-3 text-(--color-foreground-faint)"
                             fill="none"
                             stroke="currentColor"
                             strokeWidth="2"
                           >
                             <path d="M5 12h14M13 6l6 6-6 6" />
                           </svg>
-                          <span className="font-mono text-(--color-text-primary)">
+                          <span className="font-mono text-(--color-foreground-default)">
                             14px
                           </span>
                         </div>
                       </div>
 
-                      <div className="flex items-center justify-between border-t border-(--color-border-primary) pt-3 mt-3">
-                        <div className="flex items-center gap-2 text-[11px] text-(--color-text-tertiary) font-mono">
+                      <div className="flex items-center justify-between border-t border-(--color-border-default) pt-3 mt-3">
+                        <div className="flex items-center gap-2 text-[11px] text-(--color-foreground-faint) font-mono">
                           last synced 4m ago
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-primary) px-2.5 text-[11px] font-medium cursor-pointer hover:bg-(--color-background-secondary) transition-colors">
+                          <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-default) px-2.5 text-[11px] font-medium cursor-pointer hover:bg-(--color-background-subtle) transition-colors">
                             Discard
                           </span>
                           <span
                             className="inline-flex h-7 items-center gap-1.5 rounded-md px-2.5 text-[11px] font-semibold"
                             style={{
-                              background: "var(--color-interactive-primary)",
-                              color: "var(--color-text-inverse, white)",
+                              background:
+                                "var(--color-primary-background-default)",
+                              color:
+                                "var(--color-inverse-foreground-default, white)",
                             }}
                           >
                             Open PR
@@ -1346,7 +1365,7 @@ export default function ShowcasePage() {
                   </div>
                 </div>
 
-                <div className="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-text-secondary)">
+                <div className="absolute -bottom-3 right-6 inline-flex items-center gap-1.5 rounded-full glass-dark px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-muted)">
                   <svg
                     viewBox="0 0 24 24"
                     className="h-3 w-3"
@@ -1366,14 +1385,14 @@ export default function ShowcasePage() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────────────── */}
-      <section className="border-b border-(--color-border-primary)">
+      <section className="border-b border-(--color-border-default)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="glass rounded-2xl p-8 lg:p-10 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
             <div className="flex-1">
               <h2 className="font-serif text-2xl sm:text-3xl font-semibold tracking-tight">
                 See it in action.
               </h2>
-              <p className="mt-2 text-(--color-text-secondary) max-w-xl">
+              <p className="mt-2 text-(--color-foreground-muted) max-w-xl">
                 Every component on this page is rendered with the live library —
                 explore the full set of states, props, and accessibility
                 behaviors in Storybook.

@@ -11,15 +11,15 @@
   }
 
   body {
-    background-color: var(--color-background-primary);
-    color: var(--color-text-primary);
+    background-color: var(--color-background-default);
+    color: var(--color-foreground-default);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background-color: var(--color-text-primary);
-    color: var(--color-background-primary);
+    background-color: var(--color-foreground-default);
+    color: var(--color-background-default);
   }
 }
 
@@ -40,12 +40,12 @@
   .glass {
     background-color: color-mix(
       in oklch,
-      var(--color-background-primary),
+      var(--color-background-default),
       transparent 30%
     );
     backdrop-filter: blur(12px);
     border: 1px solid
-      color-mix(in oklch, var(--color-text-primary), transparent 90%);
+      color-mix(in oklch, var(--color-foreground-default), transparent 90%);
     box-shadow:
       0 1px 3px 0 rgb(0 0 0 / 0.1),
       0 1px 2px -1px rgb(0 0 0 / 0.1);
@@ -57,11 +57,11 @@
   .dark .glass {
     background-color: color-mix(
       in oklch,
-      var(--color-background-inverse),
+      var(--color-inverse-background-default),
       transparent 90%
     );
     border: 1px solid
-      color-mix(in oklch, var(--color-background-primary), transparent 90%);
+      color-mix(in oklch, var(--color-background-default), transparent 90%);
     box-shadow:
       0 10px 15px -3px rgb(0 0 0 / 0.1),
       0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -70,12 +70,12 @@
   .glass-dark {
     background-color: color-mix(
       in oklch,
-      var(--color-background-inverse),
+      var(--color-inverse-background-default),
       transparent 82%
     );
     backdrop-filter: blur(12px);
     border: 1px solid
-      color-mix(in oklch, var(--color-text-primary), transparent 85%);
+      color-mix(in oklch, var(--color-foreground-default), transparent 85%);
     box-shadow:
       0 4px 6px -1px rgb(0 0 0 / 0.15),
       0 2px 4px -2px rgb(0 0 0 / 0.15);
@@ -87,11 +87,11 @@
   .dark .glass-dark {
     background-color: color-mix(
       in oklch,
-      var(--color-background-inverse),
+      var(--color-inverse-background-default),
       transparent 90%
     );
     border: 1px solid
-      color-mix(in oklch, var(--color-background-primary), transparent 85%);
+      color-mix(in oklch, var(--color-background-default), transparent 85%);
     box-shadow:
       0 10px 15px -3px rgb(0 0 0 / 0.25),
       0 4px 6px -4px rgb(0 0 0 / 0.2);
@@ -110,14 +110,14 @@
     border-radius: 0.25rem;
     background-color: color-mix(
       in oklch,
-      var(--color-background-secondary),
+      var(--color-background-subtle),
       transparent 20%
     );
-    color: var(--color-text-primary);
+    color: var(--color-foreground-default);
     border: 1px solid
-      color-mix(in oklch, var(--color-text-primary), transparent 75%);
+      color-mix(in oklch, var(--color-foreground-default), transparent 75%);
     box-shadow: 0 1px 0 0
-      color-mix(in oklch, var(--color-text-primary), transparent 70%);
+      color-mix(in oklch, var(--color-foreground-default), transparent 70%);
   }
 
   .kbd-sm {
@@ -128,7 +128,7 @@
 
   .grid-bg {
     background-image: radial-gradient(
-      var(--color-border-primary) 1px,
+      var(--color-border-default) 1px,
       transparent 1px
     );
     background-size: 20px 20px;
@@ -137,9 +137,9 @@
   .hero-gradient {
     background-image: radial-gradient(
       at 50% 0%,
-      color-mix(in oklch, var(--color-interactive-primary), transparent 80%),
-      var(--color-background-primary),
-      var(--color-background-primary)
+      color-mix(in oklch, var(--color-primary-background-default), transparent 80%),
+      var(--color-background-default),
+      var(--color-background-default)
     );
   }
 

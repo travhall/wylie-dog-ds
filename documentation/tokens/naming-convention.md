@@ -1,6 +1,6 @@
 # Token Naming Convention Guide
 
-**Standard Pattern:** `bg-(--color-background-primary)` - Keep `color-` prefix for clarity and standards compliance
+**Standard Pattern:** `bg-(--color-background-default)` - Keep `color-` prefix for clarity and standards compliance
 
 This guide establishes the naming convention for using design tokens in Wylie Dog components, based on industry best practices and Tailwind CSS 4 patterns.
 
@@ -8,8 +8,18 @@ This guide establishes the naming convention for using design tokens in Wylie Do
 
 1. **Category Clarity:** The `color-` prefix distinguishes color tokens from spacing, typography, and other categories
 2. **Modern Syntax:** Use Tailwind CSS 4 arbitrary values: `bg-(--custom-property)`
-3. **Semantic Naming:** Prefer semantic tokens (`--color-background-primary`) over primitives (`--color-gray-50`)
+3. **Semantic Naming:** Prefer semantic tokens (`--color-background-default`) over primitives (`--color-gray-50`)
 4. **Standards Compliance:** Align with [Tailwind CSS 4](https://tailwindcss.com/docs/theme), [design token best practices](https://www.smashingmagazine.com/2024/05/naming-best-practices/), and [industry standards](https://primer.style/foundations/primitives/token-names/)
+
+## Semantic colour grammar
+
+- **Ground tokens** are `color.background.<level>`, `color.foreground.<level>` and `color.border.<level>`. Backgrounds and borders use the levels `default`, `subtle` and `strong` (backgrounds also have the placement levels `raised` and `overlay`); foregrounds use `default`, `muted` and `faint`.
+- **Roles** are `color.<role>.<part>.<level>` with the roles `primary`, `danger`, `success`, `warning`, `info` and `inverse`, the parts `background`, `foreground` and `border`, and the levels `default` (the solid fill) and `subtle` (the tint).
+- **Pairs.** Within a role, `foreground.X` is readable on `background.X`. `pnpm check:contrast` checks the declared pairs.
+- **States** are a suffix after the level: `.hover`, `.active`, `.focus`, `.disabled` (`--color-primary-background-default-hover` in CSS).
+- **The focus ring** is its own group: `color.focus.ring`.
+
+The reasoning and the old-to-new history are in [semantic-pairing-model.md](semantic-pairing-model.md).
 
 ## Why Keep the `color-` Prefix?
 
@@ -28,7 +38,7 @@ After research and evaluation, the `color-` prefix is the correct choice because
 --background-primary: ...; /* Is this a color? A gradient? A pattern? */
 
 /* With prefix - explicit */
---color-background-primary: oklch(...); /* Clearly a color value */
+--color-background-default: oklch(...); /* Clearly a color value */
 ```
 
 **3. Category Organization**
@@ -62,7 +72,7 @@ className = "bg-[var(--color-button-primary-background)]";
 ### ✅ Modern Standard (Current Target)
 
 ```tsx
-className = "bg-(--color-background-primary)";
+className = "bg-(--color-background-default)";
 ```
 
 **Benefits:**
@@ -85,9 +95,9 @@ Your system follows **property-based organization** (not role-based):
                    ▼
 ┌─────────────────────────────────────────────────┐
 │  SEMANTIC TOKENS (Context & Purpose)            │
-│  --color-background-primary                     │
-│  --color-text-secondary                         │
-│  --color-border-focus                           │
+│  --color-background-default                     │
+│  --color-foreground-muted                         │
+│  --color-focus-ring                           │
 └──────────────────┬──────────────────────────────┘
                    │
                    ▼
@@ -108,71 +118,71 @@ Use semantic tokens for most component styling. They provide meaning and adapt t
 **Background:**
 
 ```tsx
-// Primary background (white in light mode, dark in dark mode)
-className = "bg-(--color-background-primary)";
+// Default background (the page: white in light mode, dark in dark mode)
+className = "bg-(--color-background-default)";
 
-// Secondary background (subtle contrast)
-className = "bg-(--color-background-secondary)";
+// Subtle background (subtle contrast)
+className = "bg-(--color-background-subtle)";
 
-// Tertiary background (even more subtle)
-className = "bg-(--color-background-tertiary)";
+// Strong background (stronger contrast with the page)
+className = "bg-(--color-background-strong)";
 
 // Inverse background (dark in light mode, light in dark mode)
-className = "bg-(--color-background-inverse)";
+className = "bg-(--color-inverse-background-default)";
 ```
 
 **Text:**
 
 ```tsx
-// Primary text (highest contrast, body text)
-className = "text-(--color-text-primary)";
+// Default text (highest contrast, body text)
+className = "text-(--color-foreground-default)";
 
-// Secondary text (medium contrast, labels, captions)
-className = "text-(--color-text-secondary)";
+// Muted text (medium contrast, labels, captions)
+className = "text-(--color-foreground-muted)";
 
-// Tertiary text (lowest contrast, placeholders)
-className = "text-(--color-text-tertiary)";
+// Faint text (lowest contrast, placeholders)
+className = "text-(--color-foreground-faint)";
 
 // Danger/error text
-className = "text-(--color-text-danger)";
+className = "text-(--color-danger-foreground-subtle)";
 
 // Success text
-className = "text-(--color-text-success)";
+className = "text-(--color-success-foreground-subtle)";
 
 // Inverse text (for dark backgrounds)
-className = "text-(--color-text-inverse)";
+className = "text-(--color-inverse-foreground-default)";
 ```
 
 **Border:**
 
 ```tsx
-// Primary border (default border color)
-className = "border-(--color-border-primary)";
+// Default border (default border color)
+className = "border-(--color-border-default)";
 
-// Secondary border (more subtle)
-className = "border-(--color-border-secondary)";
+// Subtle border (more subtle)
+className = "border-(--color-border-subtle)";
 
 // Focus border (for focus states)
-className = "border-(--color-border-focus)";
+className = "border-(--color-focus-ring)";
 
 // Danger border (for error states)
-className = "border-(--color-border-danger)";
+className = "border-(--color-danger-border-default)";
 ```
 
 **Interactive:**
 
 ```tsx
-// Primary interactive (buttons, links, primary actions)
-className = "bg-(--color-interactive-primary)";
+// Primary fill (buttons and primary actions)
+className = "bg-(--color-primary-background-default)";
 
 // Hover state
-className = "hover:bg-(--color-interactive-primary-hover)";
+className = "hover:bg-(--color-primary-background-default-hover)";
 
 // Active state
-className = "active:bg-(--color-interactive-primary-active)";
+className = "active:bg-(--color-primary-background-default-active)";
 
-// Secondary interactive
-className = "bg-(--color-interactive-secondary)";
+// Hover fill on the page background (also used for the secondary button)
+className = "bg-(--color-background-default-hover)";
 ```
 
 ### Component Tokens (When Available)
@@ -228,8 +238,8 @@ className = "bg-(--color-gray-50)";
 
 ```tsx
 className="
-  bg-(--color-background-primary)
-  hover:bg-(--color-background-secondary)
+  bg-(--color-background-default)
+  hover:bg-(--color-background-subtle)
 "
 ```
 
@@ -237,9 +247,9 @@ className="
 
 ```tsx
 className="
-  border-(--color-border-primary)
-  focus:border-(--color-border-focus)
-  focus:ring-(--color-border-focus)
+  border-(--color-border-default)
+  focus:border-(--color-focus-ring)
+  focus:ring-(--color-focus-ring)
 "
 ```
 
@@ -247,8 +257,8 @@ className="
 
 ```tsx
 className="
-  bg-(--color-interactive-primary)
-  active:bg-(--color-interactive-primary-active)
+  bg-(--color-primary-background-default)
+  active:bg-(--color-primary-background-default-active)
 "
 ```
 
@@ -256,8 +266,8 @@ className="
 
 ```tsx
 className="
-  data-[state=checked]:bg-(--color-interactive-primary)
-  data-[state=active]:text-(--color-text-primary)
+  data-[state=checked]:bg-(--color-primary-background-default)
+  data-[state=active]:text-(--color-foreground-default)
 "
 ```
 
@@ -265,7 +275,7 @@ className="
 
 ```tsx
 className="
-  text-(--color-text-disabled)
+  text-(--color-foreground-default-disabled)
   opacity-50
   cursor-not-allowed
 "
@@ -278,9 +288,9 @@ className="
 ```tsx
 // Using semantic tokens
 className="
-  bg-(--color-background-danger)
-  text-(--color-text-danger)
-  border-(--color-border-danger)
+  bg-(--color-danger-background-default)
+  text-(--color-danger-foreground-subtle)
+  border-(--color-danger-border-default)
 "
 
 // Future: Using component tokens
@@ -294,8 +304,8 @@ className="
 
 ```tsx
 className="
-  text-(--color-text-success)
-  border-(--color-border-success)
+  text-(--color-success-foreground-subtle)
+  border-(--color-success-border-default)
 "
 ```
 
@@ -303,8 +313,8 @@ className="
 
 ```tsx
 className="
-  text-(--color-text-warning)
-  border-(--color-border-warning)
+  text-(--color-warning-foreground-subtle)
+  border-(--color-warning-border-default)
 "
 ```
 
@@ -315,14 +325,14 @@ className="
 ```tsx
 <div
   className="
-  bg-(--color-background-primary)
-  border-(--color-border-primary)
+  bg-(--color-background-default)
+  border-(--color-border-default)
   rounded-lg
   p-4
 "
 >
-  <h3 className="text-(--color-text-primary) font-semibold">Title</h3>
-  <p className="text-(--color-text-secondary) text-sm">Description text</p>
+  <h3 className="text-(--color-foreground-default) font-semibold">Title</h3>
+  <p className="text-(--color-foreground-muted) text-sm">Description text</p>
 </div>
 ```
 
@@ -331,12 +341,12 @@ className="
 ```tsx
 <li
   className="
-  bg-(--color-background-primary)
-  hover:bg-(--color-background-secondary)
-  focus:bg-(--color-background-secondary)
-  border-(--color-border-primary)
-  focus:border-(--color-border-focus)
-  text-(--color-text-primary)
+  bg-(--color-background-default)
+  hover:bg-(--color-background-subtle)
+  focus:bg-(--color-background-subtle)
+  border-(--color-border-default)
+  focus:border-(--color-focus-ring)
+  text-(--color-foreground-default)
   transition-colors
 "
 >
@@ -353,9 +363,9 @@ When you need to use tokens outside of Tailwind utilities:
 ```tsx
 <div
   style={{
-    backgroundColor: "var(--color-background-primary)",
-    color: "var(--color-text-primary)",
-    borderColor: "var(--color-border-primary)",
+    backgroundColor: "var(--color-background-default)",
+    color: "var(--color-foreground-default)",
+    borderColor: "var(--color-border-default)",
   }}
 >
   Content
@@ -366,42 +376,33 @@ When you need to use tokens outside of Tailwind utilities:
 
 ```css
 .custom-component {
-  background-color: var(--color-background-primary);
-  color: var(--color-text-primary);
-  border-color: var(--color-border-primary);
+  background-color: var(--color-background-default);
+  color: var(--color-foreground-default);
+  border-color: var(--color-border-default);
 }
 
 .custom-component:hover {
-  background-color: var(--color-background-secondary);
+  background-color: var(--color-background-subtle);
 }
 
 .custom-component:focus {
-  border-color: var(--color-border-focus);
-  outline: 2px solid var(--color-border-focus);
+  border-color: var(--color-focus-ring);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 ```
 
 ## JavaScript Access
 
-When you need to access token values in JavaScript:
+When you need to access token values in JavaScript, use the hierarchical module for primitive colour scales:
 
 ```tsx
 import { color } from "@wyliedog/tokens/hierarchical";
 
-// Access hierarchical structure
-const primaryBg = color.background.primary; // "oklch(...)"
-const secondaryText = color.text.secondary; // "oklch(...)"
-
-// Use in conditional logic
-const textColor = isError ? color.text.danger : color.text.primary;
-
-// Use in dynamic styles
-const buttonStyle = {
-  backgroundColor: color.interactive.primary,
-  color: color.text.inverse,
-};
+const blue = color.blue[600]; // "oklch(...)"
 ```
+
+Semantic colours are CSS variables only. Use `var(--color-foreground-default)` (or the Tailwind class) rather than reading a semantic value in JavaScript; the variable follows the active mode, a JavaScript constant does not.
 
 ## Migration Strategy
 
@@ -442,7 +443,7 @@ className = "bg-(--color-button-primary-background)";
        ▼               ▼
     ┌─────┐    ┌──────────────────────┐
     │ USE │    │ Semantic token       │ ◄─── SECOND CHOICE
-    └─────┘    │ exists?              │      (e.g., --color-background-primary)
+    └─────┘    │ exists?              │      (e.g., --color-background-default)
                └──┬───────────────┬───┘
                   │ Yes           │ No
                   ▼               ▼
@@ -460,12 +461,12 @@ className = "bg-(--color-button-primary-background)";
 ```tsx
 <Checkbox
   className="
-  border-(--color-border-primary)
-  hover:border-(--color-border-secondary)
-  focus:ring-(--color-border-focus)
-  data-[state=checked]:bg-(--color-interactive-primary)
-  data-[state=checked]:border-(--color-interactive-primary)
-  data-[state=checked]:text-(--color-text-inverse)
+  border-(--color-border-default)
+  hover:border-(--color-border-subtle)
+  focus:ring-(--color-focus-ring)
+  data-[state=checked]:bg-(--color-primary-background-default)
+  data-[state=checked]:border-(--color-primary-background-default)
+  data-[state=checked]:text-(--color-inverse-foreground-default)
 "
 />
 ```
@@ -481,18 +482,18 @@ className = "bg-(--color-button-primary-background)";
 ```tsx
 <TabsList
   className="
-  bg-(--color-background-secondary)
-  text-(--color-text-secondary)
+  bg-(--color-background-subtle)
+  text-(--color-foreground-muted)
 "
 >
   <TabsTrigger
     className="
-    text-(--color-text-secondary)
-    hover:bg-(--color-background-tertiary)
-    hover:text-(--color-text-primary)
-    focus-visible:ring-(--color-border-focus)
-    data-[state=active]:bg-(--color-background-primary)
-    data-[state=active]:text-(--color-text-primary)
+    text-(--color-foreground-muted)
+    hover:bg-(--color-background-strong)
+    hover:text-(--color-foreground-default)
+    focus-visible:ring-(--color-focus-ring)
+    data-[state=active]:bg-(--color-background-default)
+    data-[state=active]:text-(--color-foreground-default)
   "
   >
     Tab
@@ -502,8 +503,8 @@ className = "bg-(--color-button-primary-background)";
 
 **Why this works:**
 
-- Background hierarchy: secondary → tertiary → primary
-- Text hierarchy: secondary → primary
+- Background levels: subtle, strong and default
+- Text levels: muted and default
 - Semantic tokens handle all state variations
 
 ### Dialog (Reference Implementation)
@@ -514,19 +515,19 @@ className = "bg-(--color-button-primary-background)";
 " />
 
 <DialogContent className="
-  bg-(--color-background-primary)
-  border-(--color-border-primary)
+  bg-(--color-background-default)
+  border-(--color-border-default)
 ">
   <DialogClose className="
-    focus:ring-(--color-border-focus)
+    focus:ring-(--color-focus-ring)
   " />
 
   <DialogTitle className="
-    text-(--color-text-primary)
+    text-(--color-foreground-default)
   " />
 
   <DialogDescription className="
-    text-(--color-text-secondary)
+    text-(--color-foreground-muted)
   " />
 </DialogContent>
 ```
@@ -542,27 +543,27 @@ className = "bg-(--color-button-primary-background)";
 ```tsx
 <DropdownMenuContent
   className="
-  bg-(--color-background-primary)
-  border-(--color-border-primary)
-  text-(--color-text-primary)
+  bg-(--color-background-default)
+  border-(--color-border-default)
+  text-(--color-foreground-default)
 "
 >
   <DropdownMenuItem
     className="
-    focus:bg-(--color-interactive-secondary)
-    focus:text-(--color-text-primary)
+    focus:bg-(--color-background-default-hover)
+    focus:text-(--color-foreground-default)
   "
   />
 
   <DropdownMenuLabel
     className="
-    text-(--color-text-secondary)
+    text-(--color-foreground-muted)
   "
   />
 
   <DropdownMenuSeparator
     className="
-    bg-(--color-border-primary)
+    bg-(--color-border-default)
   "
   />
 </DropdownMenuContent>
@@ -571,7 +572,7 @@ className = "bg-(--color-button-primary-background)";
 **Why this works:**
 
 - Consistent use of semantic tokens
-- Interactive secondary for subtle focus states
+- Hover and active fills on the page background for subtle focus states
 - Text hierarchy for labels vs items
 
 ### Site Footer (Reference Implementation)
@@ -579,17 +580,17 @@ className = "bg-(--color-button-primary-background)";
 ```tsx
 <footer
   className="
-  bg-(--color-background-secondary)
+  bg-(--color-background-subtle)
   border-t
-  border-(--color-border-primary)
+  border-(--color-border-default)
 "
 >
-  <p className="text-(--color-text-secondary)">Description</p>
+  <p className="text-(--color-foreground-muted)">Description</p>
 
   <a
     className="
-    text-(--color-text-secondary)
-    hover:text-(--color-text-primary)
+    text-(--color-foreground-muted)
+    hover:text-(--color-foreground-default)
   "
   >
     Link
@@ -599,7 +600,7 @@ className = "bg-(--color-button-primary-background)";
 
 **Why this works:**
 
-- Secondary background for footer differentiation
+- Subtle background for footer differentiation
 - Text hierarchy with hover interactions
 - Simple, consistent token usage
 
@@ -627,16 +628,16 @@ pnpm --filter @wyliedog/tokens build
 
 ## Quick Reference Card
 
-| Use Case               | Pattern                                         | Example                                                 |
-| ---------------------- | ----------------------------------------------- | ------------------------------------------------------- |
-| **Background**         | `bg-(--color-background-{level})`               | `bg-(--color-background-primary)`                       |
-| **Text**               | `text-(--color-text-{level})`                   | `text-(--color-text-secondary)`                         |
-| **Border**             | `border-(--color-border-{purpose})`             | `border-(--color-border-focus)`                         |
-| **Interactive**        | `bg-(--color-interactive-{level})`              | `bg-(--color-interactive-primary)`                      |
-| **Component Specific** | `bg-(--color-{component}-{variant}-{property})` | `bg-(--color-dialog-overlay)`                           |
-| **Hover State**        | `hover:bg-(--color-{token})`                    | `hover:bg-(--color-background-secondary)`               |
-| **Focus State**        | `focus:border-(--color-border-focus)`           | `focus:ring-(--color-border-focus)`                     |
-| **Data State**         | `data-[state={value}]:bg-(--color-{token})`     | `data-[state=checked]:bg-(--color-interactive-primary)` |
+| Use Case               | Pattern                                         | Example                                                        |
+| ---------------------- | ----------------------------------------------- | -------------------------------------------------------------- |
+| **Background**         | `bg-(--color-background-{level})`               | `bg-(--color-background-default)`                              |
+| **Text**               | `text-(--color-foreground-{level})`             | `text-(--color-foreground-muted)`                              |
+| **Border**             | `border-(--color-border-{purpose})`             | `border-(--color-focus-ring)`                                  |
+| **Role fill**          | `bg-(--color-{role}-background-{level})`        | `bg-(--color-primary-background-default)`                      |
+| **Component Specific** | `bg-(--color-{component}-{variant}-{property})` | `bg-(--color-dialog-overlay)`                                  |
+| **Hover State**        | `hover:bg-(--color-{token})`                    | `hover:bg-(--color-background-subtle)`                         |
+| **Focus State**        | `focus:border-(--color-focus-ring)`             | `focus:ring-(--color-focus-ring)`                              |
+| **Data State**         | `data-[state={value}]:bg-(--color-{token})`     | `data-[state=checked]:bg-(--color-primary-background-default)` |
 
 ## Common Mistakes to Avoid
 
@@ -651,21 +652,21 @@ className = "bg-(--background-primary)";
 
 ```tsx
 // CORRECT - Token exists
-className = "bg-(--color-background-primary)";
+className = "bg-(--color-background-default)";
 ```
 
 ### ❌ DON'T: Use legacy syntax
 
 ```tsx
 // WRONG - Old Tailwind 3 pattern
-className = "bg-[var(--color-background-primary)]";
+className = "bg-[var(--color-background-default)]";
 ```
 
 ### ✅ DO: Use modern Tailwind 4 syntax
 
 ```tsx
 // CORRECT - Tailwind 4 arbitrary values
-className = "bg-(--color-background-primary)";
+className = "bg-(--color-background-default)";
 ```
 
 ### ❌ DON'T: Use primitives directly
@@ -679,7 +680,7 @@ className = "bg-(--color-gray-50)";
 
 ```tsx
 // CORRECT - Uses semantic abstraction
-className = "bg-(--color-background-primary)";
+className = "bg-(--color-background-default)";
 ```
 
 ## Getting Help

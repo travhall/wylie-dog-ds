@@ -17,13 +17,13 @@ export default function Error({
 
   return (
     <div className="mx-auto flex min-h-[60vh] max-w-2xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
-      <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+      <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
         Error
       </span>
       <h1 className="mt-3 font-serif text-4xl sm:text-5xl font-semibold tracking-tight">
         Something went wrong.
       </h1>
-      <p className="mt-4 max-w-md text-(--color-text-secondary)">
+      <p className="mt-4 max-w-md text-(--color-foreground-muted)">
         An unexpected error occurred while rendering this page. You can try
         again or head back to the homepage.
       </p>

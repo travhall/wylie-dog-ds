@@ -39,7 +39,7 @@ export default function ElevationPage() {
       headline={
         <>
           {shadows.length} shadow steps —{" "}
-          <span className="text-(--color-interactive-primary)">one</span>{" "}
+          <span className="text-(--color-primary-background-default)">one</span>{" "}
           stacking story.
         </>
       }
@@ -49,32 +49,32 @@ export default function ElevationPage() {
         {shadows.map((s) => (
           <div
             key={s.key}
-            className="rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) p-5"
+            className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5"
           >
             <div
-              className="h-16 w-16 rounded-lg border border-(--color-border-primary) bg-(--color-background-primary)"
+              className="h-16 w-16 rounded-lg border border-(--color-border-default) bg-(--color-background-default)"
               style={{ boxShadow: s.variable }}
             />
-            <p className="mt-4 font-semibold text-sm text-(--color-text-primary)">
+            <p className="mt-4 font-semibold text-sm text-(--color-foreground-default)">
               {s.name}
             </p>
             {s.description ? (
-              <p className="mt-1 text-[11px] text-(--color-text-tertiary) leading-relaxed">
+              <p className="mt-1 text-[11px] text-(--color-foreground-faint) leading-relaxed">
                 {s.description}
               </p>
             ) : null}
-            <p className="mt-3 font-mono text-[10px] text-(--color-text-secondary) break-all">
+            <p className="mt-3 font-mono text-[10px] text-(--color-foreground-muted) break-all">
               {s.value}
             </p>
-            <p className="mt-1 font-mono text-[10px] text-(--color-text-tertiary)">
+            <p className="mt-1 font-mono text-[10px] text-(--color-foreground-faint)">
               {s.variable}
             </p>
           </div>
         ))}
       </div>
 
-      <div className="rounded-xl border border-(--color-border-primary) bg-(--color-background-secondary) p-5">
-        <p className="text-[11px] text-(--color-text-tertiary) leading-relaxed">
+      <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-subtle) p-5">
+        <p className="text-[11px] text-(--color-foreground-faint) leading-relaxed">
           Dark mode redefines the same shadow tokens with higher opacity (0.3 to
           0.4 instead of 0.05 to 0.1).
         </p>

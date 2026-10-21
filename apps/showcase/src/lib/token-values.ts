@@ -51,7 +51,7 @@ export interface ColorModes {
 
 /**
  * Resolved light and dark values for a semantic color token, e.g.
- * `getColorModes("--color-background-primary")`. Throws if the token is not in
+ * `getColorModes("--color-background-default")`. Throws if the token is not in
  * the built CSS, so a renamed or removed token fails the build instead of
  * showing a wrong value.
  */

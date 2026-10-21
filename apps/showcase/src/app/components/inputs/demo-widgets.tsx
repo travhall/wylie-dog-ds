@@ -46,7 +46,7 @@ export function SliderDemo() {
         max={100}
         step={1}
       />
-      <div className="text-center text-xs text-(--color-text-secondary) mt-2">
+      <div className="text-center text-xs text-(--color-foreground-muted) mt-2">
         {sliderValue[0]}
       </div>
     </div>

@@ -367,7 +367,7 @@ export const States: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="flex gap-4 items-center">
-        <span className="text-sm text-(--color-text-secondary) w-20">Normal</span>
+        <span className="text-sm text-(--color-foreground-muted) w-20">Normal</span>
         <${pascalName}>Normal state</${pascalName}>
       </div>
       {/* Add more states: disabled, loading, error, etc. */}
@@ -419,14 +419,14 @@ export const WithInteractions: Story = {
  */
 export const UsageExample: Story = {
   render: () => (
-    <div className="w-96 space-y-4 p-4 border border-(--color-border-secondary) rounded-lg">
-      <h3 className="text-lg font-semibold text-(--color-text-primary)">
+    <div className="w-96 space-y-4 p-4 border border-(--color-border-subtle) rounded-lg">
+      <h3 className="text-lg font-semibold text-(--color-foreground-default)">
         Example Context
       </h3>
       <${pascalName}>
         This shows the component in a realistic context with surrounding elements.
       </${pascalName}>
-      <p className="text-sm text-(--color-text-secondary)">
+      <p className="text-sm text-(--color-foreground-muted)">
         Additional context or instructions would go here.
       </p>
     </div>

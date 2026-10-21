@@ -54,18 +54,18 @@ export function MotionPreview() {
             style={
               curveIdx === i
                 ? {
-                    borderColor: "var(--color-interactive-primary)",
+                    borderColor: "var(--color-primary-background-default)",
                     background:
-                      "color-mix(in oklch, var(--color-interactive-primary) 6%, var(--color-background-primary))",
+                      "color-mix(in oklch, var(--color-primary-background-default) 6%, var(--color-background-default))",
                   }
                 : {
-                    borderColor: "var(--color-border-primary)",
-                    background: "var(--color-background-primary)",
+                    borderColor: "var(--color-border-default)",
+                    background: "var(--color-background-default)",
                   }
             }
           >
             <div className="flex items-center justify-between mb-3">
-              <span className="font-semibold text-sm text-(--color-text-primary)">
+              <span className="font-semibold text-sm text-(--color-foreground-default)">
                 {curve.label}
               </span>
               <span
@@ -73,8 +73,8 @@ export function MotionPreview() {
                 style={{
                   background:
                     curveIdx === i
-                      ? "var(--color-interactive-primary)"
-                      : "var(--color-border-primary)",
+                      ? "var(--color-primary-background-default)"
+                      : "var(--color-border-default)",
                 }}
               />
             </div>
@@ -91,7 +91,7 @@ export function MotionPreview() {
                 y2="60"
                 stroke="currentColor"
                 strokeWidth="0.5"
-                className="text-(--color-border-primary)"
+                className="text-(--color-border-default)"
               />
               <line
                 x1="0"
@@ -100,26 +100,26 @@ export function MotionPreview() {
                 y2="60"
                 stroke="currentColor"
                 strokeWidth="0.5"
-                className="text-(--color-border-primary)"
+                className="text-(--color-border-default)"
               />
               <path
                 d={curve.path}
                 fill="none"
-                stroke="var(--color-interactive-primary)"
+                stroke="var(--color-primary-background-default)"
                 strokeWidth="1.5"
               />
             </svg>
             <div className="mt-3 space-y-0.5">
-              <p className="font-mono text-[10px] text-(--color-text-tertiary)">
+              <p className="font-mono text-[10px] text-(--color-foreground-faint)">
                 {curve.token}
               </p>
               <p
                 className="font-mono text-[10px]"
-                style={{ color: "var(--color-interactive-primary)" }}
+                style={{ color: "var(--color-primary-background-default)" }}
               >
                 cubic-bezier({curve.bezier})
               </p>
-              <p className="text-[11px] text-(--color-text-tertiary)">
+              <p className="text-[11px] text-(--color-foreground-faint)">
                 {curve.desc}
               </p>
             </div>
@@ -128,12 +128,12 @@ export function MotionPreview() {
       </div>
 
       {/* Live preview */}
-      <div className="lg:col-span-5 rounded-xl border border-(--color-border-primary) bg-(--color-background-primary) overflow-hidden flex flex-col">
-        <div className="flex items-center justify-between px-4 py-3 border-b border-(--color-border-primary)">
-          <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-text-tertiary)">
+      <div className="lg:col-span-5 rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden flex flex-col">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-(--color-border-default)">
+          <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
             Live preview
           </span>
-          <div className="flex items-center gap-1 rounded-full border border-(--color-border-primary) bg-(--color-background-secondary) p-0.5">
+          <div className="flex items-center gap-1 rounded-full border border-(--color-border-default) bg-(--color-background-subtle) p-0.5">
             {durations.map((ms) => (
               <Button
                 key={ms}
@@ -143,10 +143,10 @@ export function MotionPreview() {
                 style={
                   dur === ms
                     ? {
-                        background: "var(--color-interactive-primary)",
-                        color: "var(--color-text-inverse)",
+                        background: "var(--color-primary-background-default)",
+                        color: "var(--color-inverse-foreground-default)",
                       }
-                    : { color: "var(--color-text-tertiary)" }
+                    : { color: "var(--color-foreground-faint)" }
                 }
               >
                 {ms}ms
@@ -160,7 +160,7 @@ export function MotionPreview() {
         >
           <div
             key={`${curveIdx}-${dur}`}
-            className="motion-preview-demo-card w-full max-w-xs rounded-xl border border-(--color-border-primary) bg-(--color-background-secondary) p-4 shadow-md"
+            className="motion-preview-demo-card w-full max-w-xs rounded-xl border border-(--color-border-default) bg-(--color-background-subtle) p-4 shadow-md"
             style={{
               animation: `slideIn ${dur}ms cubic-bezier(${c.bezier}) both`,
             }}
@@ -181,11 +181,13 @@ export function MotionPreview() {
             <div className="flex items-center gap-3">
               <span
                 className="h-8 w-8 rounded-md grid place-items-center shrink-0"
-                style={{ background: "var(--color-interactive-primary)" }}
+                style={{
+                  background: "var(--color-primary-background-default)",
+                }}
               >
                 <svg
                   viewBox="0 0 24 24"
-                  className="h-4 w-4 text-(--color-text-inverse)"
+                  className="h-4 w-4 text-(--color-inverse-foreground-default)"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -194,21 +196,21 @@ export function MotionPreview() {
                 </svg>
               </span>
               <div>
-                <p className="text-sm font-semibold text-(--color-text-primary)">
+                <p className="text-sm font-semibold text-(--color-foreground-default)">
                   New PR ready to review
                 </p>
-                <p className="text-xs text-(--color-text-tertiary)">
+                <p className="text-xs text-(--color-foreground-faint)">
                   feat/token-refresh · 3 files changed
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div className="border-t border-(--color-border-primary) bg-(--color-background-secondary) px-4 py-2.5 font-mono text-[10px] text-(--color-text-tertiary)">
+        <div className="border-t border-(--color-border-default) bg-(--color-background-subtle) px-4 py-2.5 font-mono text-[10px] text-(--color-foreground-faint)">
           animation: tile-rise{" "}
-          <span className="text-(--color-text-secondary)">{dur}ms</span>{" "}
+          <span className="text-(--color-foreground-muted)">{dur}ms</span>{" "}
           cubic-bezier(
-          <span className="text-(--color-text-secondary)">{c.bezier}</span>)
+          <span className="text-(--color-foreground-muted)">{c.bezier}</span>)
         </div>
       </div>
     </div>
