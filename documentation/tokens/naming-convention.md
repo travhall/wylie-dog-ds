@@ -29,7 +29,7 @@ After research and evaluation, the `color-` prefix is the correct choice because
 
 - [Tailwind CSS 4 @theme directive](https://medium.com/@sureshdotariya/tailwind-css-4-theme-the-future-of-design-tokens-at-2025-guide-48305a26af06) uses category prefixes
 - [GitHub's Primer](https://primer.style/foundations/primitives/token-names/) uses namespace-category-concept pattern
-- [Nord Design System](https://nordhealth.design/naming/) uses role-based prefixes like `--color-accent`
+- [Nord Design System](https://nordhealth.design/naming/) uses role-based prefixes such as "accent"
 
 **2. Prevents Naming Collisions**
 

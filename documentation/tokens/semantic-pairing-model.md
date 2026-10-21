@@ -1,6 +1,6 @@
 # Semantic colour pairing model
 
-**Status:** Proposed. Nothing here is implemented except the contrast check (see "What exists today").
+**Status:** Implemented on 2026-10-20. The semantic colour tokens use this grammar and the contrast check guards the declared pairs. See [semantic-token-mapping.md](semantic-token-mapping.md) for the old-to-new table.
 **Decided with the owner:** 2026-10-20 (level vocabulary settled the same day). **Facts measured on:** 2026-10-20.
 
 This records the direction for how semantic colour tokens pair a foreground with a background, why the current structure needs it, what was decided, and what is still open. It is the reference for a planned case study (see the end).
@@ -57,16 +57,12 @@ color.border.<level>
 
 Role fills and states are the same grammar, for example `color.danger.background.default.hover`. The complete old-to-new table for every current semantic colour token is in [semantic-token-mapping.md](semantic-token-mapping.md).
 
-## Open questions
-
-- **Migration.** Token names appear outside the token files: about 2,740 references across the UI package, the showcase and Storybook, plus roughly 290 component-token aliases. `pnpm check:tokens` verifies every reference resolves after a rename, so a scripted migration is checkable. It also touches the Figma sync, the showcase and the docs, so it needs its own plan.
-
 ## Intended sequence
 
 1. Declare pairs and check them in CI (done, see below).
 2. Fix the failures the check lists (done, see "Contrast fixes").
 3. Align the colour ramps by lightness so that "fill step, foreground step" holds across hues (the ramps are not aligned today: step 600 has an OKLCH lightness of 0.52 for gray, 0.55 for blue, 0.65 for orange and 0.69 for yellow).
-4. Rename to the grammar above once the ramps settle, using the mapping table.
+4. Rename to the grammar above, using the mapping table (done on 2026-10-20, before step 3; the ramps are still unaligned).
 
 ## Contrast fixes (2026-10-20)
 
@@ -83,7 +79,7 @@ Control boundaries were added to the contract the same day, and the same new bor
 
 ## What exists today
 
-`pnpm check:contrast` reads `scripts/contrast-pairs.json` (114 declared foregrounds, 298 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
+`pnpm check:contrast` reads `scripts/contrast-pairs.json` (128 declared foregrounds, 352 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
 
 ## Case study
 
