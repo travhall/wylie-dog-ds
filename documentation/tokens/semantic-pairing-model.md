@@ -98,9 +98,18 @@ A subtle fill now has a named hover, like the solid fills: `color.background.sub
 
 About 60 places used `color.primary.background.default` as text on the page (blue 600: 5.04:1 in Light, 3.81:1 in Dark, under 4.5:1) and about 20 as a border or ring. Text now uses `color.primary.foreground.subtle` (6.54:1 in Light, 7.75:1 in Dark, the shade also moves for the approved homepage headline emphasis). Borders and rings use the new `color.primary.border.default`, which keeps blue 600 and is declared as a non-text pair on the page. Indicator dots that used `success` and `warning` `foreground.subtle` as a fill now use the role fill. Five stories paired text with the wrong token on a blue fill (`inverse.foreground.default` is gray 900 in Dark) and now use `color.primary.foreground.default`; two toggle stories do the same for danger. Left as they are: solid components whose border matches their fill, and ring offsets that match the page background.
 
+## Raised and overlay (2026-10-20)
+
+`raised` and `overlay` are the top of the neutral ground's elevation ladder (default, subtle, raised, overlay, inverse). Neither was used: every floating surface aliased `background.default`, and `overlay` was a gray 300 / 700 "surface for modals and popovers" that mixed a surface with a scrim, while the dialog and sheet scrims used the inverse role with no opacity. In Dark that scrim was opaque near-white, so an open dialog turned the whole page white; in Light it was opaque near-black.
+
+- **`color.background.raised`** is the surface of anything that floats above the page: gray 50 in Light (the same as the page, so the shadow does the lifting) and gray 900 in Dark (one step lighter, the usual dark-mode elevation cue). Card, popover, hover card, dropdown menu, context menu, select, command, dialog, sheet and toast use it.
+- **`color.background.overlay`** is the scrim colour behind a modal or sheet: gray 950 in both modes. The dialog, alert dialog and sheet apply it at `opacity.scrim` (0.8) with `opacity-(--opacity-scrim)`, so it is never opaque. Tooltip keeps the inverse role.
+- **Pairs:** default, muted and faint foreground, and the primary and danger subtle text, are declared on `raised`.
+- **Still open:** the scrim opacity (0.8) and whether Light needs a visibly different raised surface are design decisions for later.
+
 ## What exists today
 
-`pnpm check:contrast` reads `scripts/contrast-pairs.json` (130 declared foregrounds, 374 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
+`pnpm check:contrast` reads `scripts/contrast-pairs.json` (130 declared foregrounds, 384 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
 
 ## Case study
 

@@ -80,7 +80,7 @@ export const SheetOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     className={cn(
       "fixed inset-0 z-(--z-index-modal-backdrop) backdrop-blur-sm",
-      "bg-(--color-sheet-overlay-background)",
+      "bg-(--color-sheet-overlay-background) opacity-(--opacity-scrim)",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
