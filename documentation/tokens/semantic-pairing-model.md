@@ -86,7 +86,7 @@ Now: the seven chromatic palettes (blue, green, orange, red, purple, pink, yello
 - **Chroma kept:** 100 percent for blue, red and purple; about 90 percent at the middle steps for green and orange; about 85 to 90 percent for pink at 700 to 950; 80 to 90 percent for yellow at 400 to 950.
 - **Exception:** green 600 is 0.003 lighter than the curve asks (0.543 against 0.546) because at exactly 0.546 it measured 4.49:1 on gray 50. OKLCH lightness is not WCAG luminance, so equal lightness gives slightly different contrast per hue.
 - **Guard:** `pnpm check:contrast` fails if any aligned palette drifts more than 0.005 from blue's lightness at any step (the `alignedRamps` block in `scripts/contrast-pairs.json`), and it declares gray 50 on the 600 step of every chromatic hue as a text pair.
-- **What did not change:** which step each semantic token uses. Primary and danger fills are step 600, success and warning fills are step 700. With aligned ramps all four could use 600; that is a separate design decision.
+- **Role fill steps (2026-10-21):** with aligned ramps every solid role fill is step 600, its hover is 700 and (primary only) its active is 800. Success and warning moved from 700 and 800 to 600 and 700, so their fills are lighter and brighter than before. The tinted levels and the text on them are unchanged.
 
 ## What exists today
 

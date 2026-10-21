@@ -3013,7 +3013,7 @@
           "background",
           "default"
         ],
-        "value": "oklch(0.488 0.134 150.11)",
+        "value": "oklch(0.543 0.152 149.29)",
         "type": "color",
         "variable": "var(--color-success-background-default)",
         "description": "Success interactive element background"
@@ -3027,7 +3027,7 @@
           "default",
           "hover"
         ],
-        "value": "oklch(0.424 0.108 151.37)",
+        "value": "oklch(0.488 0.134 150.11)",
         "type": "color",
         "variable": "var(--color-success-background-default-hover)",
         "description": "Success interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
@@ -3094,7 +3094,7 @@
           "background",
           "default"
         ],
-        "value": "oklch(0.488 0.158 38.47)",
+        "value": "oklch(0.546 0.168 40.94)",
         "type": "color",
         "variable": "var(--color-warning-background-default)",
         "description": "Warning interactive element background"
@@ -3108,7 +3108,7 @@
           "default",
           "hover"
         ],
-        "value": "oklch(0.424 0.141 37.28)",
+        "value": "oklch(0.488 0.158 38.47)",
         "type": "color",
         "variable": "var(--color-warning-background-default-hover)",
         "description": "Warning interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
@@ -3432,7 +3432,7 @@
           "success",
           "background"
         ],
-        "value": "oklch(0.488 0.134 150.11)",
+        "value": "oklch(0.543 0.152 149.29)",
         "type": "color",
         "variable": "var(--color-badge-success-background)",
         "description": ""
@@ -3456,7 +3456,7 @@
           "success",
           "border"
         ],
-        "value": "oklch(0.488 0.134 150.11)",
+        "value": "oklch(0.543 0.152 149.29)",
         "type": "color",
         "variable": "var(--color-badge-success-border)",
         "description": ""
@@ -3468,7 +3468,7 @@
           "warning",
           "background"
         ],
-        "value": "oklch(0.488 0.158 38.47)",
+        "value": "oklch(0.546 0.168 40.94)",
         "type": "color",
         "variable": "var(--color-badge-warning-background)",
         "description": ""
@@ -3492,7 +3492,7 @@
           "warning",
           "border"
         ],
-        "value": "oklch(0.488 0.158 38.47)",
+        "value": "oklch(0.546 0.168 40.94)",
         "type": "color",
         "variable": "var(--color-badge-warning-border)",
         "description": ""
@@ -3752,7 +3752,7 @@
           "success",
           "background-hover"
         ],
-        "value": "oklch(0.424 0.108 151.37)",
+        "value": "oklch(0.488 0.134 150.11)",
         "type": "color",
         "variable": "var(--color-badge-success-background-hover)",
         "description": ""
@@ -3764,7 +3764,7 @@
           "warning",
           "background-hover"
         ],
-        "value": "oklch(0.424 0.141 37.28)",
+        "value": "oklch(0.488 0.158 38.47)",
         "type": "color",
         "variable": "var(--color-badge-warning-background-hover)",
         "description": ""
@@ -3848,7 +3848,7 @@
           "success",
           "background-focus"
         ],
-        "value": "oklch(0.424 0.108 151.37)",
+        "value": "oklch(0.488 0.134 150.11)",
         "type": "color",
         "variable": "var(--color-badge-success-background-focus)",
         "description": ""
@@ -3872,7 +3872,7 @@
           "warning",
           "background-focus"
         ],
-        "value": "oklch(0.424 0.141 37.28)",
+        "value": "oklch(0.488 0.158 38.47)",
         "type": "color",
         "variable": "var(--color-badge-warning-background-focus)",
         "description": ""
@@ -8757,7 +8757,7 @@
           "progress",
           "success-fill"
         ],
-        "value": "oklch(0.488 0.134 150.11)",
+        "value": "oklch(0.543 0.152 149.29)",
         "type": "color",
         "variable": "var(--color-progress-success-fill)",
         "description": ""
@@ -8768,7 +8768,7 @@
           "progress",
           "warning-fill"
         ],
-        "value": "oklch(0.488 0.158 38.47)",
+        "value": "oklch(0.546 0.168 40.94)",
         "type": "color",
         "variable": "var(--color-progress-warning-fill)",
         "description": ""
@@ -9809,7 +9809,7 @@
           "success",
           "border"
         ],
-        "value": "oklch(0.488 0.134 150.11)",
+        "value": "oklch(0.543 0.152 149.29)",
         "type": "color",
         "variable": "var(--color-toast-success-border)",
         "description": ""
@@ -9821,7 +9821,7 @@
           "success",
           "background"
         ],
-        "value": "oklch(0.488 0.134 150.11)",
+        "value": "oklch(0.543 0.152 149.29)",
         "type": "color",
         "variable": "var(--color-toast-success-background)",
         "description": ""
@@ -9833,7 +9833,7 @@
           "warning",
           "border"
         ],
-        "value": "oklch(0.488 0.158 38.47)",
+        "value": "oklch(0.546 0.168 40.94)",
         "type": "color",
         "variable": "var(--color-toast-warning-border)",
         "description": ""
@@ -9845,7 +9845,7 @@
           "warning",
           "background"
         ],
-        "value": "oklch(0.488 0.158 38.47)",
+        "value": "oklch(0.546 0.168 40.94)",
         "type": "color",
         "variable": "var(--color-toast-warning-background)",
         "description": ""
