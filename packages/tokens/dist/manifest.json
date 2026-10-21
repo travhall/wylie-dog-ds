@@ -1081,7 +1081,7 @@
             "orange",
             "50"
           ],
-          "value": "oklch(0.97 0.016 74.73)",
+          "value": "oklch(0.97 0.018 72)",
           "type": "color",
           "variable": "var(--color-orange-50)",
           "description": ""
@@ -1093,7 +1093,7 @@
             "orange",
             "100"
           ],
-          "value": "oklch(0.932 0.037 75.14)",
+          "value": "oklch(0.932 0.04 70)",
           "type": "color",
           "variable": "var(--color-orange-100)",
           "description": ""
@@ -1105,7 +1105,7 @@
             "orange",
             "200"
           ],
-          "value": "oklch(0.882 0.073 70.68)",
+          "value": "oklch(0.882 0.071 66)",
           "type": "color",
           "variable": "var(--color-orange-200)",
           "description": ""
@@ -1117,7 +1117,7 @@
             "orange",
             "300"
           ],
-          "value": "oklch(0.809 0.117 66.27)",
+          "value": "oklch(0.809 0.125 62)",
           "type": "color",
           "variable": "var(--color-orange-300)",
           "description": ""
@@ -1129,7 +1129,7 @@
             "orange",
             "400"
           ],
-          "value": "oklch(0.714 0.159 55.91)",
+          "value": "oklch(0.714 0.169 56)",
           "type": "color",
           "variable": "var(--color-orange-400)",
           "description": ""
@@ -1141,7 +1141,7 @@
             "orange",
             "500"
           ],
-          "value": "oklch(0.623 0.17 47.67)",
+          "value": "oklch(0.623 0.167 48)",
           "type": "color",
           "variable": "var(--color-orange-500)",
           "description": ""
@@ -1153,7 +1153,7 @@
             "orange",
             "600"
           ],
-          "value": "oklch(0.546 0.168 40.94)",
+          "value": "oklch(0.546 0.162 42)",
           "type": "color",
           "variable": "var(--color-orange-600)",
           "description": ""
@@ -1165,7 +1165,7 @@
             "orange",
             "700"
           ],
-          "value": "oklch(0.488 0.158 38.47)",
+          "value": "oklch(0.488 0.149 41)",
           "type": "color",
           "variable": "var(--color-orange-700)",
           "description": ""
@@ -1177,7 +1177,7 @@
             "orange",
             "800"
           ],
-          "value": "oklch(0.424 0.141 37.28)",
+          "value": "oklch(0.424 0.129 41)",
           "type": "color",
           "variable": "var(--color-orange-800)",
           "description": ""
@@ -1189,7 +1189,7 @@
             "orange",
             "900"
           ],
-          "value": "oklch(0.379 0.116 38.15)",
+          "value": "oklch(0.379 0.115 41)",
           "type": "color",
           "variable": "var(--color-orange-900)",
           "description": ""
@@ -1201,7 +1201,7 @@
             "orange",
             "950"
           ],
-          "value": "oklch(0.282 0.076 36.24)",
+          "value": "oklch(0.282 0.086 41)",
           "type": "color",
           "variable": "var(--color-orange-950)",
           "description": ""
@@ -1617,7 +1617,7 @@
             "yellow",
             "50"
           ],
-          "value": "oklch(0.97 0.014 102.69)",
+          "value": "oklch(0.97 0.04 96)",
           "type": "color",
           "variable": "var(--color-yellow-50)",
           "description": ""
@@ -1629,7 +1629,7 @@
             "yellow",
             "100"
           ],
-          "value": "oklch(0.932 0.035 103.67)",
+          "value": "oklch(0.932 0.086 95)",
           "type": "color",
           "variable": "var(--color-yellow-100)",
           "description": ""
@@ -1641,7 +1641,7 @@
             "yellow",
             "200"
           ],
-          "value": "oklch(0.882 0.07 101.5)",
+          "value": "oklch(0.882 0.139 92)",
           "type": "color",
           "variable": "var(--color-yellow-200)",
           "description": ""
@@ -1653,7 +1653,7 @@
             "yellow",
             "300"
           ],
-          "value": "oklch(0.809 0.117 100.4)",
+          "value": "oklch(0.809 0.152 86)",
           "type": "color",
           "variable": "var(--color-yellow-300)",
           "description": ""
@@ -1665,7 +1665,7 @@
             "yellow",
             "400"
           ],
-          "value": "oklch(0.714 0.147 97.75)",
+          "value": "oklch(0.714 0.143 81)",
           "type": "color",
           "variable": "var(--color-yellow-400)",
           "description": ""
@@ -1677,7 +1677,7 @@
             "yellow",
             "500"
           ],
-          "value": "oklch(0.623 0.128 95.32)",
+          "value": "oklch(0.623 0.125 78)",
           "type": "color",
           "variable": "var(--color-yellow-500)",
           "description": ""
@@ -1689,7 +1689,7 @@
             "yellow",
             "600"
           ],
-          "value": "oklch(0.546 0.111 90.42)",
+          "value": "oklch(0.546 0.111 76)",
           "type": "color",
           "variable": "var(--color-yellow-600)",
           "description": ""
@@ -1701,7 +1701,7 @@
             "yellow",
             "700"
           ],
-          "value": "oklch(0.488 0.1 85.94)",
+          "value": "oklch(0.488 0.1 74)",
           "type": "color",
           "variable": "var(--color-yellow-700)",
           "description": ""
@@ -1713,7 +1713,7 @@
             "yellow",
             "800"
           ],
-          "value": "oklch(0.424 0.087 83.47)",
+          "value": "oklch(0.424 0.087 72)",
           "type": "color",
           "variable": "var(--color-yellow-800)",
           "description": ""
@@ -1725,7 +1725,7 @@
             "yellow",
             "900"
           ],
-          "value": "oklch(0.379 0.077 87.04)",
+          "value": "oklch(0.379 0.079 71)",
           "type": "color",
           "variable": "var(--color-yellow-900)",
           "description": ""
@@ -1737,7 +1737,7 @@
             "yellow",
             "950"
           ],
-          "value": "oklch(0.282 0.058 86.25)",
+          "value": "oklch(0.282 0.059 71)",
           "type": "color",
           "variable": "var(--color-yellow-950)",
           "description": ""
@@ -3042,7 +3042,7 @@
           "background",
           "subtle"
         ],
-        "value": "oklch(0.97 0.016 74.73)",
+        "value": "oklch(0.97 0.04 96)",
         "type": "color",
         "variable": "var(--color-warning-background-subtle)",
         "description": "Warning state surface background"
@@ -3055,10 +3055,10 @@
           "foreground",
           "default"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.149 0.012 259.72)",
         "type": "color",
         "variable": "var(--color-warning-foreground-default)",
-        "description": "Foreground on the solid warning fill; pairs with color.warning.background.default"
+        "description": "Foreground on the solid warning fill; pairs with color.warning.background.default. Dark text, because an amber fill cannot hold light text."
       },
       "color-warning-foreground-subtle": {
         "name": "colorWarningForegroundSubtle",
@@ -3068,7 +3068,7 @@
           "foreground",
           "subtle"
         ],
-        "value": "oklch(0.488 0.158 38.47)",
+        "value": "oklch(0.488 0.1 74)",
         "type": "color",
         "variable": "var(--color-warning-foreground-subtle)",
         "description": "Warning state text color"
@@ -3081,7 +3081,7 @@
           "border",
           "default"
         ],
-        "value": "oklch(0.546 0.168 40.94)",
+        "value": "oklch(0.546 0.111 76)",
         "type": "color",
         "variable": "var(--color-warning-border-default)",
         "description": "Warning state border color"
@@ -3094,7 +3094,7 @@
           "background",
           "default"
         ],
-        "value": "oklch(0.546 0.168 40.94)",
+        "value": "oklch(0.809 0.152 86)",
         "type": "color",
         "variable": "var(--color-warning-background-default)",
         "description": "Warning interactive element background"
@@ -3108,7 +3108,7 @@
           "default",
           "hover"
         ],
-        "value": "oklch(0.488 0.158 38.47)",
+        "value": "oklch(0.714 0.143 81)",
         "type": "color",
         "variable": "var(--color-warning-background-default-hover)",
         "description": "Warning interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
@@ -3468,7 +3468,7 @@
           "warning",
           "background"
         ],
-        "value": "oklch(0.546 0.168 40.94)",
+        "value": "oklch(0.809 0.152 86)",
         "type": "color",
         "variable": "var(--color-badge-warning-background)",
         "description": ""
@@ -3480,7 +3480,7 @@
           "warning",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.149 0.012 259.72)",
         "type": "color",
         "variable": "var(--color-badge-warning-text)",
         "description": ""
@@ -3492,7 +3492,7 @@
           "warning",
           "border"
         ],
-        "value": "oklch(0.546 0.168 40.94)",
+        "value": "oklch(0.809 0.152 86)",
         "type": "color",
         "variable": "var(--color-badge-warning-border)",
         "description": ""
@@ -3764,7 +3764,7 @@
           "warning",
           "background-hover"
         ],
-        "value": "oklch(0.488 0.158 38.47)",
+        "value": "oklch(0.714 0.143 81)",
         "type": "color",
         "variable": "var(--color-badge-warning-background-hover)",
         "description": ""
@@ -3872,7 +3872,7 @@
           "warning",
           "background-focus"
         ],
-        "value": "oklch(0.488 0.158 38.47)",
+        "value": "oklch(0.714 0.143 81)",
         "type": "color",
         "variable": "var(--color-badge-warning-background-focus)",
         "description": ""
@@ -4991,7 +4991,7 @@
           "warning",
           "background"
         ],
-        "value": "oklch(0.97 0.016 74.73)",
+        "value": "oklch(0.97 0.04 96)",
         "type": "color",
         "variable": "var(--color-alert-warning-background)",
         "description": ""
@@ -5003,7 +5003,7 @@
           "warning",
           "border"
         ],
-        "value": "oklch(0.546 0.168 40.94)",
+        "value": "oklch(0.546 0.111 76)",
         "type": "color",
         "variable": "var(--color-alert-warning-border)",
         "description": ""
@@ -5015,7 +5015,7 @@
           "warning",
           "text"
         ],
-        "value": "oklch(0.488 0.158 38.47)",
+        "value": "oklch(0.488 0.1 74)",
         "type": "color",
         "variable": "var(--color-alert-warning-text)",
         "description": ""
@@ -8768,7 +8768,7 @@
           "progress",
           "warning-fill"
         ],
-        "value": "oklch(0.546 0.168 40.94)",
+        "value": "oklch(0.809 0.152 86)",
         "type": "color",
         "variable": "var(--color-progress-warning-fill)",
         "description": ""
@@ -9833,7 +9833,7 @@
           "warning",
           "border"
         ],
-        "value": "oklch(0.546 0.168 40.94)",
+        "value": "oklch(0.809 0.152 86)",
         "type": "color",
         "variable": "var(--color-toast-warning-border)",
         "description": ""
@@ -9845,7 +9845,7 @@
           "warning",
           "background"
         ],
-        "value": "oklch(0.546 0.168 40.94)",
+        "value": "oklch(0.809 0.152 86)",
         "type": "color",
         "variable": "var(--color-toast-warning-background)",
         "description": ""
@@ -9881,7 +9881,7 @@
           "warning",
           "text"
         ],
-        "value": "oklch(0.991 0.003 264.45)",
+        "value": "oklch(0.149 0.012 259.72)",
         "type": "color",
         "variable": "var(--color-toast-warning-text)",
         "description": "Text color on warning toast (saturated orange background)"

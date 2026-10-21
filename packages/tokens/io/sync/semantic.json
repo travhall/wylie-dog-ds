@@ -77,10 +77,10 @@
         },
         "color.warning.background.subtle": {
           "$type": "color",
-          "$value": "{color.orange.50}",
+          "$value": "{color.yellow.50}",
           "valuesByMode": {
-            "Light": "{color.orange.50}",
-            "Dark": "{color.orange.950}"
+            "Light": "{color.yellow.50}",
+            "Dark": "{color.yellow.950}"
           },
           "$description": "Warning state surface background"
         },
@@ -176,12 +176,12 @@
         },
         "color.warning.foreground.default": {
           "$type": "color",
-          "$value": "{color.gray.50}",
+          "$value": "{color.gray.950}",
           "valuesByMode": {
-            "Light": "{color.gray.50}",
-            "Dark": "{color.gray.50}"
+            "Light": "{color.gray.950}",
+            "Dark": "{color.gray.950}"
           },
-          "$description": "Foreground on the solid warning fill; pairs with color.warning.background.default"
+          "$description": "Foreground on the solid warning fill; pairs with color.warning.background.default. Dark text, because an amber fill cannot hold light text."
         },
         "color.success.foreground.subtle": {
           "$type": "color",
@@ -194,10 +194,10 @@
         },
         "color.warning.foreground.subtle": {
           "$type": "color",
-          "$value": "{color.orange.700}",
+          "$value": "{color.yellow.700}",
           "valuesByMode": {
-            "Light": "{color.orange.700}",
-            "Dark": "{color.orange.400}"
+            "Light": "{color.yellow.700}",
+            "Dark": "{color.yellow.400}"
           },
           "$description": "Warning state text color"
         },
@@ -275,10 +275,10 @@
         },
         "color.warning.border.default": {
           "$type": "color",
-          "$value": "{color.orange.600}",
+          "$value": "{color.yellow.600}",
           "valuesByMode": {
-            "Light": "{color.orange.600}",
-            "Dark": "{color.orange.600}"
+            "Light": "{color.yellow.600}",
+            "Dark": "{color.yellow.600}"
           },
           "$description": "Warning state border color"
         },
@@ -347,19 +347,19 @@
         },
         "color.warning.background.default": {
           "$type": "color",
-          "$value": "{color.orange.600}",
+          "$value": "{color.yellow.300}",
           "valuesByMode": {
-            "Light": "{color.orange.600}",
-            "Dark": "{color.orange.600}"
+            "Light": "{color.yellow.300}",
+            "Dark": "{color.yellow.300}"
           },
           "$description": "Warning interactive element background"
         },
         "color.warning.background.default.hover": {
           "$type": "color",
-          "$value": "{color.orange.700}",
+          "$value": "{color.yellow.400}",
           "valuesByMode": {
-            "Light": "{color.orange.700}",
-            "Dark": "{color.orange.700}"
+            "Light": "{color.yellow.400}",
+            "Dark": "{color.yellow.400}"
           },
           "$description": "Warning interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
         },

@@ -11,7 +11,7 @@
   --color-background-raised: oklch(0.149 0.012 259.72);
   --color-background-overlay: oklch(0.423 0.007 264.49);
   --color-success-background-subtle: oklch(0.282 0.063 152.97);
-  --color-warning-background-subtle: oklch(0.282 0.076 36.24);
+  --color-warning-background-subtle: oklch(0.282 0.059 71);
   --color-danger-background-subtle: oklch(0.282 0.089 26.02);
   --color-info-background-subtle: oklch(0.282 0.087 267.94);
   --color-foreground-default: oklch(0.952 0.003 264.48);
@@ -22,9 +22,9 @@
   --color-primary-foreground-default: oklch(0.991 0.003 264.45);
   --color-danger-foreground-default: oklch(0.991 0.003 264.45);
   --color-success-foreground-default: oklch(0.991 0.003 264.45);
-  --color-warning-foreground-default: oklch(0.991 0.003 264.45);
+  --color-warning-foreground-default: oklch(0.149 0.012 259.72);
   --color-success-foreground-subtle: oklch(0.714 0.182 151.75);
-  --color-warning-foreground-subtle: oklch(0.714 0.159 55.91);
+  --color-warning-foreground-subtle: oklch(0.714 0.143 81);
   --color-danger-foreground-subtle: oklch(0.714 0.166 22.2);
   --color-info-foreground-subtle: oklch(0.714 0.143 254.64);
   --color-primary-foreground-subtle: oklch(0.714 0.143 254.64);
@@ -33,7 +33,7 @@
   --color-border-strong: oklch(0.52 0.007 264.5);
   --color-focus-ring: oklch(0.623 0.188 259.83);
   --color-success-border-default: oklch(0.543 0.152 149.29);
-  --color-warning-border-default: oklch(0.546 0.168 40.94);
+  --color-warning-border-default: oklch(0.546 0.111 76);
   --color-danger-border-default: oklch(0.546 0.215 27.31);
   --color-primary-background-default: oklch(0.546 0.215 262.9);
   --color-primary-background-default-hover: oklch(0.488 0.217 264.4);
@@ -41,8 +41,8 @@
   --color-background-subtle-active: oklch(0.52 0.007 264.5);
   --color-success-background-default: oklch(0.543 0.152 149.29);
   --color-success-background-default-hover: oklch(0.488 0.134 150.11);
-  --color-warning-background-default: oklch(0.546 0.168 40.94);
-  --color-warning-background-default-hover: oklch(0.488 0.158 38.47);
+  --color-warning-background-default: oklch(0.809 0.152 86);
+  --color-warning-background-default-hover: oklch(0.714 0.143 81);
   --color-danger-background-default: oklch(0.546 0.215 27.31);
   --color-danger-background-default-hover: oklch(0.488 0.19 27.49);
   --color-background-default-hover: oklch(0.321 0.009 268.35);
@@ -107,9 +107,9 @@
   --color-badge-success-background: oklch(0.543 0.152 149.29);
   --color-badge-success-text: oklch(0.991 0.003 264.45);
   --color-badge-success-border: oklch(0.543 0.152 149.29);
-  --color-badge-warning-background: oklch(0.546 0.168 40.94);
-  --color-badge-warning-text: oklch(0.991 0.003 264.45);
-  --color-badge-warning-border: oklch(0.546 0.168 40.94);
+  --color-badge-warning-background: oklch(0.809 0.152 86);
+  --color-badge-warning-text: oklch(0.149 0.012 259.72);
+  --color-badge-warning-border: oklch(0.809 0.152 86);
   --color-badge-destructive-background: oklch(0.282 0.089 26.02);
   --color-badge-destructive-text: oklch(0.714 0.166 22.2);
   --color-badge-destructive-border: oklch(0.546 0.215 27.31);
@@ -196,9 +196,9 @@
   --color-alert-destructive-background: oklch(0.282 0.089 26.02);
   --color-alert-destructive-border: oklch(0.546 0.215 27.31);
   --color-alert-destructive-text: oklch(0.714 0.166 22.2);
-  --color-alert-warning-background: oklch(0.282 0.076 36.24);
-  --color-alert-warning-border: oklch(0.546 0.168 40.94);
-  --color-alert-warning-text: oklch(0.714 0.159 55.91);
+  --color-alert-warning-background: oklch(0.282 0.059 71);
+  --color-alert-warning-border: oklch(0.546 0.111 76);
+  --color-alert-warning-text: oklch(0.714 0.143 81);
   --color-alert-success-background: oklch(0.282 0.063 152.97);
   --color-alert-success-border: oklch(0.543 0.152 149.29);
   --color-alert-success-text: oklch(0.714 0.182 151.75);
@@ -309,7 +309,7 @@
   --color-progress-default-fill: oklch(0.546 0.215 262.9);
   --color-progress-destructive-fill: oklch(0.546 0.215 27.31);
   --color-progress-success-fill: oklch(0.543 0.152 149.29);
-  --color-progress-warning-fill: oklch(0.546 0.168 40.94);
+  --color-progress-warning-fill: oklch(0.809 0.152 86);
   --color-radio-background-checked: oklch(0.546 0.215 262.9);
   --color-radio-border: oklch(0.52 0.007 264.5);
   --color-radio-border-checked: oklch(0.546 0.215 262.9);
@@ -599,11 +599,11 @@
   --color-toast-destructive-background: oklch(0.546 0.215 27.31);
   --color-toast-success-border: oklch(0.543 0.152 149.29);
   --color-toast-success-background: oklch(0.543 0.152 149.29);
-  --color-toast-warning-border: oklch(0.546 0.168 40.94);
-  --color-toast-warning-background: oklch(0.546 0.168 40.94);
+  --color-toast-warning-border: oklch(0.809 0.152 86);
+  --color-toast-warning-background: oklch(0.809 0.152 86);
   --color-toast-destructive-text: oklch(0.991 0.003 264.45);
   --color-toast-success-text: oklch(0.991 0.003 264.45);
-  --color-toast-warning-text: oklch(0.991 0.003 264.45);
+  --color-toast-warning-text: oklch(0.149 0.012 259.72);
   --space-toast-border-radius: 8px;
   --space-toast-close-padding: 4px;
   --space-card-grid-gap-horizontal: 24px;
@@ -759,7 +759,7 @@
   --color-badge-default-background-hover: oklch(0.488 0.217 264.4);
   --color-badge-secondary-background-hover: oklch(0.423 0.007 264.49);
   --color-badge-success-background-hover: oklch(0.488 0.134 150.11);
-  --color-badge-warning-background-hover: oklch(0.488 0.158 38.47);
+  --color-badge-warning-background-hover: oklch(0.714 0.143 81);
   --color-badge-destructive-background-hover: oklch(0.282 0.089 26.02);
   --color-badge-outline-background-hover: oklch(0.321 0.009 268.35);
   --color-card-background-hover: oklch(0.321 0.009 268.35);
@@ -785,7 +785,7 @@
   --color-badge-secondary-background-disabled: oklch(0.321 0.009 268.35);
   --color-badge-success-background-focus: oklch(0.488 0.134 150.11);
   --color-badge-success-background-disabled: oklch(0.321 0.009 268.35);
-  --color-badge-warning-background-focus: oklch(0.488 0.158 38.47);
+  --color-badge-warning-background-focus: oklch(0.714 0.143 81);
   --color-badge-warning-background-disabled: oklch(0.321 0.009 268.35);
   --color-badge-destructive-background-focus: oklch(0.282 0.087 267.94);
   --color-badge-destructive-background-disabled: oklch(0.321 0.009 268.35);

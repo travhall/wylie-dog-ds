@@ -36,7 +36,7 @@
   },
   "color.warning.background.subtle": {
     "$type": "color",
-    "$value": "{color.orange.950}",
+    "$value": "{color.yellow.950}",
     "$description": "Warning state surface background"
   },
   "color.danger.background.subtle": {
@@ -91,8 +91,8 @@
   },
   "color.warning.foreground.default": {
     "$type": "color",
-    "$value": "{color.gray.50}",
-    "$description": "Foreground on the solid warning fill; pairs with color.warning.background.default"
+    "$value": "{color.gray.950}",
+    "$description": "Foreground on the solid warning fill; pairs with color.warning.background.default. Dark text, because an amber fill cannot hold light text."
   },
   "color.success.foreground.subtle": {
     "$type": "color",
@@ -101,7 +101,7 @@
   },
   "color.warning.foreground.subtle": {
     "$type": "color",
-    "$value": "{color.orange.400}",
+    "$value": "{color.yellow.400}",
     "$description": "Warning state text color"
   },
   "color.danger.foreground.subtle": {
@@ -146,7 +146,7 @@
   },
   "color.warning.border.default": {
     "$type": "color",
-    "$value": "{color.orange.600}",
+    "$value": "{color.yellow.600}",
     "$description": "Warning state border color"
   },
   "color.danger.border.default": {
@@ -186,12 +186,12 @@
   },
   "color.warning.background.default": {
     "$type": "color",
-    "$value": "{color.orange.600}",
+    "$value": "{color.yellow.300}",
     "$description": "Warning interactive element background"
   },
   "color.warning.background.default.hover": {
     "$type": "color",
-    "$value": "{color.orange.700}",
+    "$value": "{color.yellow.400}",
     "$description": "Warning interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
   },
   "color.danger.background.default": {
