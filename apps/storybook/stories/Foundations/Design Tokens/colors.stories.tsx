@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { color } from "@wyliedog/tokens/hierarchical";
+import manifest from "@wyliedog/tokens/manifest.json";
 import { useCopyToClipboard } from "./use-copy-to-clipboard";
 import { Alert, AlertDescription, AlertTitle } from "@wyliedog/ui/alert";
 import { Card, CardContent, CardHeader, CardTitle } from "@wyliedog/ui/card";
@@ -457,174 +458,69 @@ export const SemanticTokens: Story = {
     },
   },
   render: () => {
-    const groups: {
-      category: string;
-      description: string;
-      tokens: { name: string; usage: string }[];
-    }[] = [
-      {
-        category: "Background",
-        description: "Page surfaces and container fills",
-        tokens: [
-          {
-            name: "--color-background-default",
-            usage: "Main page / modal background",
-          },
-          {
-            name: "--color-background-subtle",
-            usage: "Sidebar, panel, subtle surface",
-          },
-          {
-            name: "--color-background-strong",
-            usage: "Deeply nested or muted surface",
-          },
-          {
-            name: "--color-inverse-background-default",
-            usage: "Inverted surface (light on dark, dark on light)",
-          },
-        ],
-      },
-      {
-        category: "Surface",
+    // Derived from the token manifest, so the story cannot drift from the tokens.
+    const groupInfo: Record<string, { title: string; description: string }> = {
+      background: {
+        title: "Background",
         description:
-          "Status-tinted fills for feedback components — what Alert, Badge, and Toast use internally",
-        tokens: [
-          {
-            name: "--color-background-raised",
-            usage: "Floating elements — popovers, dropdowns",
-          },
-          {
-            name: "--color-success-background-subtle",
-            usage: "Success alert / badge fill",
-          },
-          {
-            name: "--color-warning-background-subtle",
-            usage: "Warning alert / badge fill",
-          },
-          {
-            name: "--color-danger-background-subtle",
-            usage: "Danger / error alert fill",
-          },
-          {
-            name: "--color-info-background-subtle",
-            usage: "Informational alert fill",
-          },
-        ],
+          "Page and container surfaces: default, subtle, strong, raised and overlay, with their states",
       },
-      {
-        category: "Text",
-        description: "Content hierarchy and status messaging",
-        tokens: [
-          {
-            name: "--color-foreground-default",
-            usage: "Headings, body copy, default labels",
-          },
-          { name: "--color-foreground-muted", usage: "Descriptions, captions" },
-          {
-            name: "--color-foreground-faint",
-            usage: "Timestamps, metadata, faint labels",
-          },
-          {
-            name: "--color-foreground-default-disabled",
-            usage: "Disabled / placeholder text",
-          },
-          {
-            name: "--color-danger-foreground-subtle",
-            usage: "Error messages, destructive labels",
-          },
-          {
-            name: "--color-success-foreground-subtle",
-            usage: "Confirmation, success messages",
-          },
-          {
-            name: "--color-warning-foreground-subtle",
-            usage: "Warning messages",
-          },
-          {
-            name: "--color-info-foreground-subtle",
-            usage: "Informational messages, links",
-          },
-        ],
+      foreground: {
+        title: "Foreground",
+        description: "Text on the ground backgrounds: default, muted, faint",
       },
-      {
-        category: "Border",
-        description: "Dividers, outlines, and focus rings",
-        tokens: [
-          {
-            name: "--color-border-default",
-            usage: "Default card, input, separator border",
-          },
-          { name: "--color-border-subtle", usage: "Subtle dividers" },
-          { name: "--color-focus-ring", usage: "Keyboard focus ring" },
-          {
-            name: "--color-success-border-default",
-            usage: "Success state border",
-          },
-          {
-            name: "--color-warning-border-default",
-            usage: "Warning state border",
-          },
-          {
-            name: "--color-danger-border-default",
-            usage: "Error / destructive border",
-          },
-        ],
+      border: {
+        title: "Border",
+        description: "Dividers and control boundaries",
       },
-      {
-        category: "Interactive",
-        description: "Buttons, links, and active controls",
-        tokens: [
-          {
-            name: "--color-primary-background-default",
-            usage: "Primary action background",
-          },
-          {
-            name: "--color-primary-background-default-hover",
-            usage: "Primary action — hover",
-          },
-          {
-            name: "--color-primary-background-default-active",
-            usage: "Primary action — active / pressed",
-          },
-          {
-            name: "--color-background-default-hover",
-            usage: "Secondary action background",
-          },
-          {
-            name: "--color-background-default-active",
-            usage: "Secondary action — hover",
-          },
-          {
-            name: "--color-background-default-disabled",
-            usage: "Disabled interactive element",
-          },
-        ],
-      },
-      {
-        category: "Status",
+      focus: { title: "Focus", description: "The keyboard focus ring" },
+      primary: {
+        title: "Primary",
         description:
-          "Saturated indicator colors for icons, badge dots, and status markers — pair with Surface tokens for filled backgrounds",
-        tokens: [
-          {
-            name: "--color-success-foreground-subtle",
-            usage: "Success indicator icon / dot",
-          },
-          {
-            name: "--color-warning-foreground-subtle",
-            usage: "Warning indicator icon / dot",
-          },
-          {
-            name: "--color-danger-foreground-subtle",
-            usage: "Error / destructive indicator icon / dot",
-          },
-          {
-            name: "--color-info-foreground-subtle",
-            usage: "Informational indicator icon / dot",
-          },
-        ],
+          "The main action colour: fill, states, tint, text and border",
       },
-    ];
+      danger: {
+        title: "Danger",
+        description: "Errors and destructive actions",
+      },
+      success: {
+        title: "Success",
+        description: "Confirmation and positive status",
+      },
+      warning: {
+        title: "Warning",
+        description: "Caution (amber fill with dark text)",
+      },
+      info: { title: "Info", description: "Informational status" },
+      inverse: {
+        title: "Inverse",
+        description:
+          "A surface that is dark in Light mode and light in Dark mode",
+      },
+    };
 
+    type ManifestToken = {
+      type: string;
+      variable: string;
+      description?: string;
+    };
+    const semantics = manifest.semantics as Record<
+      string,
+      Record<string, ManifestToken>
+    >;
+    const groups = Object.entries(semantics)
+      .map(([key, tokens]) => ({
+        category:
+          groupInfo[key]?.title ?? key.charAt(0).toUpperCase() + key.slice(1),
+        description: groupInfo[key]?.description ?? "",
+        tokens: Object.values(tokens)
+          .filter((token) => token.type === "color")
+          .map((token) => ({
+            name: token.variable.replace(/^var\((.*)\)$/, "$1"),
+            usage: token.description ?? "",
+          })),
+      }))
+      .filter((group) => group.tokens.length > 0);
     const { copiedKey, copy } = useCopyToClipboard();
     const handleCopy = (tokenName: string) =>
       copy(tokenName, `var(${tokenName})`);
