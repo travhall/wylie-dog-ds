@@ -3,24 +3,29 @@ packages:
   - packages/*
 
 catalog:
-  eslint: ^10.12.0
-  react: ^19.3.0
-  react-dom: ^19.3.0
+  eslint: ^10.13.0
+  react: ^19.3.1
+  react-dom: ^19.3.1
   tailwindcss: ^4.3.3
   # Pinned exact (not ^) -- TypeScript 7.x has caused real compatibility
   # issues when upgrading this and other projects. Confirm what actually
   # broke before attempting a 7.x bump.
   typescript: 6.0.3
   vite: ^8.3.4
-  vitest: ^5.0.4
-
-# serve@14.2.6 (latest) pins compression 1.8.1, which has a DoS advisory
-# (GHSA-vc2v-76pw-4v95, fixed in 1.8.2). Remove once serve ships a fix.
-overrides:
-  compression: '>=1.8.2'
+  vitest: ^5.0.5
 
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
   - sharp
   - unrs-resolver
+
+# serve@14.2.6 (latest) pins compression 1.8.1, which has a DoS advisory
+# (GHSA-vc2v-76pw-4v95, fixed in 1.8.2). Remove once serve ships a fix.
+overrides:
+  compression: '>=1.8.2'
+  # undici 8.12+ needs zlib zstd (Node 22.15+/23.8+) and crashes the test workers
+  # without it; the repo supports node >=22. Hold jsdom and undici until the
+  # Node floor moves.
+  jsdom: 30.1.2
+  undici: 8.11.2

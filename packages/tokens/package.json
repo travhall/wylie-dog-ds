@@ -46,7 +46,7 @@
     "@repo/typescript-config": "workspace:*",
     "@tokens-studio/sd-transforms": "^2.0.3",
     "chokidar": "^5.0.0",
-    "style-dictionary": "^5.6.1",
+    "style-dictionary": "5.6.1",
     "tsup": "^8.5.1"
   }
 }
