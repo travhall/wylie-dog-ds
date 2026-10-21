@@ -103,9 +103,9 @@ About 60 places used `color.primary.background.default` as text on the page (blu
 `raised` and `overlay` are the top of the neutral ground's elevation ladder (default, subtle, raised, overlay, inverse). Neither was used: every floating surface aliased `background.default`, and `overlay` was a gray 300 / 700 "surface for modals and popovers" that mixed a surface with a scrim, while the dialog and sheet scrims used the inverse role with no opacity. In Dark that scrim was opaque near-white, so an open dialog turned the whole page white; in Light it was opaque near-black.
 
 - **`color.background.raised`** is the surface of anything that floats above the page: gray 50 in Light (the same as the page, so the shadow does the lifting) and gray 900 in Dark (one step lighter, the usual dark-mode elevation cue). Card, popover, hover card, dropdown menu, context menu, select, command, dialog, sheet and toast use it.
-- **`color.background.overlay`** is the scrim colour behind a modal or sheet: gray 950 in both modes. The dialog, alert dialog and sheet apply it at `opacity.scrim` (0.8) with `opacity-(--opacity-scrim)`, so it is never opaque. Tooltip keeps the inverse role.
+- **`color.background.overlay`** is the scrim colour behind a modal or sheet: gray 950 in both modes. The dialog, alert dialog and sheet apply it at `opacity.scrim` (0.9) with `opacity-(--opacity-scrim)`, so it is never opaque. Tooltip keeps the inverse role.
 - **Pairs:** default, muted and faint foreground, and the primary and danger subtle text, are declared on `raised`.
-- **Still open:** the scrim opacity (0.8) and whether Light needs a visibly different raised surface are design decisions for later.
+- **Still open:** the scrim opacity (0.9, raised from 0.8 on 2026-10-21) and whether Light needs a visibly different raised surface are design decisions for later.
 
 ## What exists today
 
