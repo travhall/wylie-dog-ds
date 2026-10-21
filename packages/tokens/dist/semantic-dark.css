@@ -6,6 +6,7 @@
 .dark {
   --color-background-default: oklch(0.149 0.012 259.72);
   --color-background-subtle: oklch(0.209 0.01 268.18);
+  --color-background-subtle-hover: oklch(0.321 0.009 268.35);
   --color-background-strong: oklch(0.321 0.009 268.35);
   --color-inverse-background-default: oklch(0.991 0.003 264.45);
   --color-background-raised: oklch(0.149 0.012 259.72);
@@ -13,6 +14,7 @@
   --color-success-background-subtle: oklch(0.282 0.063 152.97);
   --color-warning-background-subtle: oklch(0.282 0.059 71);
   --color-danger-background-subtle: oklch(0.282 0.089 26.02);
+  --color-danger-background-subtle-hover: oklch(0.379 0.133 25.69);
   --color-info-background-subtle: oklch(0.282 0.087 267.94);
   --color-foreground-default: oklch(0.952 0.003 264.48);
   --color-foreground-muted: oklch(0.786 0.004 271.11);
@@ -25,7 +27,7 @@
   --color-warning-foreground-default: oklch(0.149 0.012 259.72);
   --color-success-foreground-subtle: oklch(0.714 0.182 151.75);
   --color-warning-foreground-subtle: oklch(0.714 0.143 81);
-  --color-danger-foreground-subtle: oklch(0.714 0.166 22.2);
+  --color-danger-foreground-subtle: oklch(0.809 0.103 19.48);
   --color-info-foreground-subtle: oklch(0.714 0.143 254.64);
   --color-primary-foreground-subtle: oklch(0.714 0.143 254.64);
   --color-border-default: oklch(0.423 0.007 264.49);
@@ -111,7 +113,7 @@
   --color-badge-warning-text: oklch(0.149 0.012 259.72);
   --color-badge-warning-border: oklch(0.809 0.152 86);
   --color-badge-destructive-background: oklch(0.282 0.089 26.02);
-  --color-badge-destructive-text: oklch(0.714 0.166 22.2);
+  --color-badge-destructive-text: oklch(0.809 0.103 19.48);
   --color-badge-destructive-border: oklch(0.546 0.215 27.31);
   --color-badge-outline-background: oklch(0.149 0.012 259.72);
   --color-badge-outline-text: oklch(0.952 0.003 264.48);
@@ -195,7 +197,7 @@
   --color-alert-default-text: oklch(0.952 0.003 264.48);
   --color-alert-destructive-background: oklch(0.282 0.089 26.02);
   --color-alert-destructive-border: oklch(0.546 0.215 27.31);
-  --color-alert-destructive-text: oklch(0.714 0.166 22.2);
+  --color-alert-destructive-text: oklch(0.809 0.103 19.48);
   --color-alert-warning-background: oklch(0.282 0.059 71);
   --color-alert-warning-border: oklch(0.546 0.111 76);
   --color-alert-warning-text: oklch(0.714 0.143 81);
@@ -293,7 +295,7 @@
   --color-dialog-overlay: oklch(0.991 0.003 264.45);
   --color-dialog-title: oklch(0.952 0.003 264.48);
   --color-form-description: oklch(0.786 0.004 271.11);
-  --color-form-error: oklch(0.714 0.166 22.2);
+  --color-form-error: oklch(0.809 0.103 19.48);
   --color-form-label: oklch(0.952 0.003 264.48);
   --color-hover-card-background: oklch(0.149 0.012 259.72);
   --color-hover-card-border: oklch(0.423 0.007 264.49);
@@ -760,7 +762,7 @@
   --color-badge-secondary-background-hover: oklch(0.423 0.007 264.49);
   --color-badge-success-background-hover: oklch(0.488 0.134 150.11);
   --color-badge-warning-background-hover: oklch(0.714 0.143 81);
-  --color-badge-destructive-background-hover: oklch(0.282 0.089 26.02);
+  --color-badge-destructive-background-hover: oklch(0.379 0.133 25.69);
   --color-badge-outline-background-hover: oklch(0.321 0.009 268.35);
   --color-card-background-hover: oklch(0.321 0.009 268.35);
   --color-card-border-hover: oklch(0.623 0.188 259.83);
@@ -772,9 +774,9 @@
   --font-weight-form-message-font-weight: 500;
   --color-form-hint-text: oklch(0.786 0.004 271.11);
   --font-size-form-hint-font-size: 12px;
-  --color-form-error-text: oklch(0.714 0.166 22.2);
+  --color-form-error-text: oklch(0.809 0.103 19.48);
   --font-size-form-error-font-size: 12px;
-  --color-form-required-color: oklch(0.714 0.166 22.2);
+  --color-form-required-color: oklch(0.809 0.103 19.48);
   --space-form-gap: 16px;
   --space-form-fieldset-gap: 24px;
   --font-size-form-fieldset-legend-font-size: 16px;
@@ -864,8 +866,8 @@
   --font-weight-textarea-font-weight: 400;
   --textarea-disabled-opacity: 0.5;
   --font-weight-label-font-weight: 500;
-  --color-label-error-text: oklch(0.714 0.166 22.2);
-  --color-label-required-text: oklch(0.714 0.166 22.2);
+  --color-label-error-text: oklch(0.809 0.103 19.48);
+  --color-label-required-text: oklch(0.809 0.103 19.48);
   --color-separator-color: oklch(0.423 0.007 264.49);
   --space-resizable-handle-focus-ring-width: 2px;
   --space-resizable-handle-focus-ring-offset: 2px;
@@ -886,7 +888,7 @@
   --button-disabled-opacity: 0.5;
   --calendar-nav-button-disabled-opacity: 0.5;
   --color-calendar-nav-button-ring-offset: oklch(0.149 0.012 259.72);
-  --color-form-label-error-text: oklch(0.714 0.166 22.2);
+  --color-form-label-error-text: oklch(0.809 0.103 19.48);
   --color-feature-grid-item-border-color: oklch(0.423 0.007 264.49);
   --color-feature-grid-item-border-color-hover: oklch(0.546 0.215 262.9);
   --space-input-padding-y-sm: 8px;

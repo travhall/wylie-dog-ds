@@ -90,9 +90,13 @@ Now: the seven chromatic palettes (blue, green, orange, red, purple, pink, yello
 - **Warning is the exception (2026-10-21):** amber cannot hold light text at step 600 without turning brown, so the warning role uses the yellow ramp with dark text: fill `yellow.300`, hover `yellow.400`, `color.warning.foreground.default` is `gray.950` (10.8:1 on the fill, 7.6:1 on hover), tint `yellow.50` and `yellow.950`, text on the tint `yellow.700` and `yellow.400`, border `yellow.600`. The pair rule still holds (`foreground.default` is readable on `background.default`); the foreground is per role, which is why `on-solid` was split.
 - **Yellow and orange retuned (2026-10-21):** only hue and chroma changed, never lightness, so the alignment holds. Yellow now runs from cream and lemon at the pale end through amber at 300 and 400 to bronze at the dark end (hue 96 down to 71); before, its pale steps were khaki. Orange keeps its mid steps and loses the drift toward red at the dark end (hue 41 instead of 36 to 38).
 
+## Subtle hover states (2026-10-21)
+
+A subtle fill now has a named hover, like the solid fills: `color.background.subtle.hover` (gray 200 in Light, gray 800 in Dark) sits between `subtle` and `subtle.active`, and `color.danger.background.subtle.hover` (red 100, red 900) gives the tinted destructive badge a visible hover. Red 400 text on red 900 measured 3.93:1, so `color.danger.foreground.subtle` in Dark moved to red 300 (about 5.5:1 on the hover); this lightens error text, the required-field marker and tinted badge and alert text slightly in Dark. The other roles have no hover on their tint because no component needs one yet.
+
 ## What exists today
 
-`pnpm check:contrast` reads `scripts/contrast-pairs.json` (129 declared foregrounds, 366 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
+`pnpm check:contrast` reads `scripts/contrast-pairs.json` (129 declared foregrounds, 372 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
 
 ## Case study
 
