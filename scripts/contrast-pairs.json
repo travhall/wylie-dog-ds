@@ -539,7 +539,8 @@
         "table.row-hover",
         "table.row-selected",
         "table.row-focus",
-        "color.background.subtle.hover"
+        "color.background.subtle.hover",
+        "color.background.raised"
       ],
       "kind": "text"
     },
@@ -663,13 +664,18 @@
         "color.background.default",
         "color.background.subtle",
         "color.background.strong",
-        "color.background.subtle.hover"
+        "color.background.subtle.hover",
+        "color.background.raised"
       ],
       "kind": "text"
     },
     {
       "foreground": "color.foreground.faint",
-      "backgrounds": ["color.background.default", "color.background.subtle"],
+      "backgrounds": [
+        "color.background.default",
+        "color.background.subtle",
+        "color.background.raised"
+      ],
       "kind": "text",
       "note": "Not declared on the strong background: faint text is 3.72:1 (Light) and 3.38:1 (Dark) there, so it is not a guaranteed pair."
     },
@@ -715,7 +721,8 @@
       "foreground": "color.primary.foreground.subtle",
       "backgrounds": [
         "color.primary.background.subtle",
-        "color.background.default"
+        "color.background.default",
+        "color.background.raised"
       ],
       "kind": "text"
     },
@@ -742,7 +749,8 @@
       "backgrounds": [
         "color.danger.background.subtle",
         "color.background.default",
-        "color.danger.background.subtle.hover"
+        "color.danger.background.subtle.hover",
+        "color.background.raised"
       ],
       "kind": "text"
     },

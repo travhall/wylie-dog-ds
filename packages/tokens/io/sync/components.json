@@ -563,10 +563,10 @@
         },
         "card.background": {
           "$type": "color",
-          "$value": "{color.background.default}",
+          "$value": "{color.background.raised}",
           "valuesByMode": {
-            "Light": "{color.background.default}",
-            "Dark": "{color.background.default}"
+            "Light": "{color.background.raised}",
+            "Dark": "{color.background.raised}"
           }
         },
         "card.border": {
@@ -1043,10 +1043,10 @@
         },
         "command.background": {
           "$type": "color",
-          "$value": "{color.background.default}",
+          "$value": "{color.background.raised}",
           "valuesByMode": {
-            "Light": "{color.background.default}",
-            "Dark": "{color.background.default}"
+            "Light": "{color.background.raised}",
+            "Dark": "{color.background.raised}"
           }
         },
         "command.text": {
@@ -1475,10 +1475,10 @@
         },
         "contextmenu.background": {
           "$type": "color",
-          "$value": "{color.background.default}",
+          "$value": "{color.background.raised}",
           "valuesByMode": {
-            "Light": "{color.background.default}",
-            "Dark": "{color.background.default}"
+            "Light": "{color.background.raised}",
+            "Dark": "{color.background.raised}"
           }
         },
         "contextmenu.item-hover": {
@@ -1531,10 +1531,10 @@
         },
         "dialog.background": {
           "$type": "color",
-          "$value": "{color.background.default}",
+          "$value": "{color.background.raised}",
           "valuesByMode": {
-            "Light": "{color.background.default}",
-            "Dark": "{color.background.default}"
+            "Light": "{color.background.raised}",
+            "Dark": "{color.background.raised}"
           }
         },
         "dialog.border": {
@@ -1555,10 +1555,10 @@
         },
         "dialog.overlay": {
           "$type": "color",
-          "$value": "{color.inverse.background.default}",
+          "$value": "{color.background.overlay}",
           "valuesByMode": {
-            "Light": "{color.inverse.background.default}",
-            "Dark": "{color.inverse.background.default}"
+            "Light": "{color.background.overlay}",
+            "Dark": "{color.background.overlay}"
           }
         },
         "dialog.title": {
@@ -1595,10 +1595,10 @@
         },
         "hover-card.background": {
           "$type": "color",
-          "$value": "{color.background.default}",
+          "$value": "{color.background.raised}",
           "valuesByMode": {
-            "Light": "{color.background.default}",
-            "Dark": "{color.background.default}"
+            "Light": "{color.background.raised}",
+            "Dark": "{color.background.raised}"
           }
         },
         "hover-card.border": {
@@ -1651,10 +1651,10 @@
         },
         "popover.background": {
           "$type": "color",
-          "$value": "{color.background.default}",
+          "$value": "{color.background.raised}",
           "valuesByMode": {
-            "Light": "{color.background.default}",
-            "Dark": "{color.background.default}"
+            "Light": "{color.background.raised}",
+            "Dark": "{color.background.raised}"
           }
         },
         "popover.border": {
@@ -2619,10 +2619,10 @@
         },
         "sheet.overlay.background": {
           "$type": "color",
-          "$value": "{color.inverse.background.default}",
+          "$value": "{color.background.overlay}",
           "valuesByMode": {
-            "Light": "{color.inverse.background.default}",
-            "Dark": "{color.inverse.background.default}"
+            "Light": "{color.background.overlay}",
+            "Dark": "{color.background.overlay}"
           }
         },
         "sheet.content.width.sm": {
@@ -4808,10 +4808,10 @@
         },
         "dropdown-menu.content.background": {
           "$type": "color",
-          "$value": "{color.background.default}",
+          "$value": "{color.background.raised}",
           "valuesByMode": {
-            "Light": "{color.background.default}",
-            "Dark": "{color.background.default}"
+            "Light": "{color.background.raised}",
+            "Dark": "{color.background.raised}"
           }
         },
         "dropdown-menu.content.text": {
@@ -5800,10 +5800,10 @@
         },
         "toast.default.background": {
           "$type": "color",
-          "$value": "{color.background.default}",
+          "$value": "{color.background.raised}",
           "valuesByMode": {
-            "Light": "{color.background.default}",
-            "Dark": "{color.background.default}"
+            "Light": "{color.background.raised}",
+            "Dark": "{color.background.raised}"
           }
         },
         "label.default.color": {
@@ -6073,10 +6073,10 @@
         },
         "select.content.background": {
           "$type": "color",
-          "$value": "{color.background.default}",
+          "$value": "{color.background.raised}",
           "valuesByMode": {
-            "Light": "{color.background.default}",
-            "Dark": "{color.background.default}"
+            "Light": "{color.background.raised}",
+            "Dark": "{color.background.raised}"
           }
         },
         "select.content.text": {
@@ -6193,10 +6193,10 @@
         },
         "sheet.content.background": {
           "$type": "color",
-          "$value": "{color.background.default}",
+          "$value": "{color.background.raised}",
           "valuesByMode": {
-            "Light": "{color.background.default}",
-            "Dark": "{color.background.default}"
+            "Light": "{color.background.raised}",
+            "Dark": "{color.background.raised}"
           }
         },
         "sheet.close-button.opacity": {

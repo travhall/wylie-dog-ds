@@ -26,13 +26,13 @@
   },
   "color.background.raised": {
     "$type": "color",
-    "$value": "{color.gray.950}",
-    "$description": "Raised surface for elevated components"
+    "$value": "{color.gray.900}",
+    "$description": "Surface of a component that floats above the page (card, popover, dropdown, dialog, sheet, toast). Same as the page in Light, where the shadow lifts it; one step lighter than the page in Dark"
   },
   "color.background.overlay": {
     "$type": "color",
-    "$value": "{color.gray.700}",
-    "$description": "Overlay surface for modals and popovers"
+    "$value": "{color.gray.950}",
+    "$description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque"
   },
   "color.success.background.subtle": {
     "$type": "color",

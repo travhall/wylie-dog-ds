@@ -278,7 +278,7 @@
   },
   "card.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.raised}"
   },
   "card.border": {
     "$type": "color",
@@ -518,7 +518,7 @@
   },
   "command.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.raised}"
   },
   "command.text": {
     "$type": "color",
@@ -734,7 +734,7 @@
   },
   "contextmenu.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.raised}"
   },
   "contextmenu.item-hover": {
     "$type": "color",
@@ -762,7 +762,7 @@
   },
   "dialog.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.raised}"
   },
   "dialog.border": {
     "$type": "color",
@@ -774,7 +774,7 @@
   },
   "dialog.overlay": {
     "$type": "color",
-    "$value": "{color.inverse.background.default}"
+    "$value": "{color.background.overlay}"
   },
   "dialog.title": {
     "$type": "color",
@@ -794,7 +794,7 @@
   },
   "hover-card.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.raised}"
   },
   "hover-card.border": {
     "$type": "color",
@@ -822,7 +822,7 @@
   },
   "popover.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.raised}"
   },
   "popover.border": {
     "$type": "color",
@@ -1306,7 +1306,7 @@
   },
   "sheet.overlay.background": {
     "$type": "color",
-    "$value": "{color.inverse.background.default}"
+    "$value": "{color.background.overlay}"
   },
   "sheet.content.width.sm": {
     "$type": "spacing",
@@ -2403,7 +2403,7 @@
   },
   "dropdown-menu.content.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.raised}"
   },
   "dropdown-menu.content.text": {
     "$type": "color",
@@ -2899,7 +2899,7 @@
   },
   "toast.default.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.raised}"
   },
   "label.default.color": {
     "$type": "color",
@@ -3036,7 +3036,7 @@
   },
   "select.content.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.raised}"
   },
   "select.content.text": {
     "$type": "color",
@@ -3096,7 +3096,7 @@
   },
   "sheet.content.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.raised}"
   },
   "sheet.close-button.opacity": {
     "$type": "number",

@@ -2632,7 +2632,7 @@
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-background-raised)",
-        "description": "Raised surface for elevated components"
+        "description": "Surface of a component that floats above the page (card, popover, dropdown, dialog, sheet, toast). Same as the page in Light, where the shadow lifts it; one step lighter than the page in Dark"
       },
       "color-background-overlay": {
         "name": "colorBackgroundOverlay",
@@ -2641,10 +2641,10 @@
           "background",
           "overlay"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.149 0.012 259.72)",
         "type": "color",
         "variable": "var(--color-background-overlay)",
-        "description": "Overlay surface for modals and popovers"
+        "description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque"
       },
       "color-background-subtle-active": {
         "name": "colorBackgroundSubtleActive",

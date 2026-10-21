@@ -285,7 +285,7 @@
   --color-background-strong: oklch(0.87 0.003 264.48);
   --color-inverse-background-default: oklch(0.149 0.012 259.72);
   --color-background-raised: oklch(0.991 0.003 264.45);
-  --color-background-overlay: oklch(0.786 0.004 271.11);
+  --color-background-overlay: oklch(0.149 0.012 259.72);
   --color-success-background-subtle: oklch(0.97 0.018 156.61);
   --color-warning-background-subtle: oklch(0.97 0.04 96);
   --color-danger-background-subtle: oklch(0.97 0.013 16.7);
