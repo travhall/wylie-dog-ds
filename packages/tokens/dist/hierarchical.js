@@ -171,53 +171,6 @@ export const color = {
     "800": "oklch(0.5 0.103 83.47)",
     "900": "oklch(0.435 0.089 87.04)",
     "950": "oklch(0.312 0.064 86.25)"
-  },
-  "background": {
-    "default": "oklch(0.952 0.003 264.48)",
-    "subtle": "oklch(0.786 0.004 271.11)",
-    "strong": "oklch(0.87 0.003 264.48)",
-    "raised": "oklch(0.991 0.003 264.45)",
-    "overlay": "oklch(0.786 0.004 271.11)"
-  },
-  "inverse": {
-    "background": "oklch(0.149 0.012 259.72)",
-    "foreground": "oklch(0.991 0.003 264.45)"
-  },
-  "success": {
-    "background": "oklch(0.448 0.108 151.37)",
-    "foreground": "oklch(0.527 0.137 150.11)",
-    "border": "oklch(0.627 0.17 149.29)"
-  },
-  "warning": {
-    "background": "oklch(0.47 0.143 37.28)",
-    "foreground": "oklch(0.553 0.174 38.47)",
-    "border": "oklch(0.646 0.194 40.94)"
-  },
-  "danger": {
-    "background": "oklch(0.505 0.19 27.49)",
-    "foreground": "oklch(0.505 0.19 27.49)",
-    "border": "oklch(0.577 0.215 27.31)"
-  },
-  "info": {
-    "background": "oklch(0.97 0.014 254.77)",
-    "foreground": "oklch(0.488 0.217 264.4)"
-  },
-  "foreground": {
-    "default": "oklch(0.699 0.005 271.07)",
-    "muted": "oklch(0.423 0.007 264.49)",
-    "faint": "oklch(0.52 0.007 264.5)"
-  },
-  "primary": {
-    "foreground": "oklch(0.488 0.217 264.4)",
-    "background": "oklch(0.97 0.014 254.77)"
-  },
-  "border": {
-    "default": "oklch(0.786 0.004 271.11)",
-    "subtle": "oklch(0.87 0.003 264.48)",
-    "strong": "oklch(0.613 0.005 258.45)"
-  },
-  "focus": {
-    "ring": "oklch(0.623 0.188 259.83)"
   }
 };
 
