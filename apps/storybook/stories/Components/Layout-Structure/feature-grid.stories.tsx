@@ -101,7 +101,7 @@ export const Default: Story = {
       features={[
         {
           icon: (
-            <Rocket className="h-5 w-5 text-(--color-primary-background-default)" />
+            <Rocket className="h-5 w-5 text-(--color-primary-foreground-subtle)" />
           ),
           title: "Fast Performance",
           description:
@@ -111,7 +111,7 @@ export const Default: Story = {
         },
         {
           icon: (
-            <Palette className="h-5 w-5 text-(--color-primary-background-default)" />
+            <Palette className="h-5 w-5 text-(--color-primary-foreground-subtle)" />
           ),
           title: "Beautiful Design",
           description:
@@ -121,7 +121,7 @@ export const Default: Story = {
         },
         {
           icon: (
-            <ShieldCheck className="h-5 w-5 text-(--color-primary-background-default)" />
+            <ShieldCheck className="h-5 w-5 text-(--color-primary-foreground-subtle)" />
           ),
           title: "Secure & Reliable",
           description:
@@ -129,7 +129,7 @@ export const Default: Story = {
         },
         {
           icon: (
-            <Settings className="h-5 w-5 text-(--color-primary-background-default)" />
+            <Settings className="h-5 w-5 text-(--color-primary-foreground-subtle)" />
           ),
           title: "Easy to Customize",
           description:
@@ -159,14 +159,14 @@ export const CompactTwoColumn: Story = {
       features={[
         {
           icon: (
-            <Rocket className="h-5 w-5 text-(--color-primary-background-default)" />
+            <Rocket className="h-5 w-5 text-(--color-primary-foreground-subtle)" />
           ),
           title: "Quick Setup",
           description: "Get started in minutes with sensible defaults.",
         },
         {
           icon: (
-            <ShieldCheck className="h-5 w-5 text-(--color-primary-background-default)" />
+            <ShieldCheck className="h-5 w-5 text-(--color-primary-foreground-subtle)" />
           ),
           title: "Built-in Safety",
           description: "Validation and error handling included out of the box.",

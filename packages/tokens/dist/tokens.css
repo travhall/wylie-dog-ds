@@ -325,6 +325,7 @@
   --color-background-default-hover: oklch(0.952 0.003 264.48);
   --color-background-default-active: oklch(0.87 0.003 264.48);
   --color-primary-background-subtle: oklch(0.97 0.014 254.77);
+  --color-primary-border-default: oklch(0.546 0.215 262.9);
   --color-background-default-disabled: oklch(0.952 0.003 264.48);
   --shadow-none: none;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -1226,6 +1227,7 @@
   --color-background-default-hover: oklch(0.321 0.009 268.35);
   --color-background-default-active: oklch(0.423 0.007 264.49);
   --color-primary-background-subtle: oklch(0.282 0.087 267.94);
+  --color-primary-border-default: oklch(0.546 0.215 262.9);
   --color-background-default-disabled: oklch(0.321 0.009 268.35);
   --shadow-none: none;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);

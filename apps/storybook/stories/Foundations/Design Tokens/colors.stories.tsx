@@ -69,7 +69,7 @@ const ColorSwatch = ({
         {shade}
       </span>
       {copied && (
-        <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-(--color-foreground-default) text-(--color-background-default) text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none">
+        <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-(--color-inverse-background-default) text-(--color-inverse-foreground-default) text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none">
           Copied!
         </div>
       )}
@@ -167,7 +167,7 @@ export const SystemOverview: Story = {
               ].map(({ tier, label, desc, examples }) => (
                 <div key={tier} className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded bg-(--color-primary-background-default) flex items-center justify-center text-(--color-background-default) text-xs font-bold shrink-0">
+                    <div className="w-8 h-8 rounded bg-(--color-primary-background-default) flex items-center justify-center text-(--color-primary-foreground-default) text-xs font-bold shrink-0">
                       {tier}
                     </div>
                     <h3 className="font-semibold text-(--color-foreground-default)">

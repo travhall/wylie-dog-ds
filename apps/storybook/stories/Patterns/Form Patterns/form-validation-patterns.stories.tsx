@@ -485,7 +485,7 @@ function MultiStepValidationComponent() {
             <span
               className={`flex h-7 w-7 items-center justify-center rounded-full text-sm font-semibold ${
                 step === n
-                  ? "bg-(--color-primary-background-default) text-(--color-inverse-foreground-default)"
+                  ? "bg-(--color-primary-background-default) text-(--color-primary-foreground-default)"
                   : step > n
                     ? "bg-(--color-success-background-subtle) text-(--color-success-foreground-subtle)"
                     : "bg-(--color-background-subtle) text-(--color-foreground-faint)"
@@ -681,7 +681,7 @@ function AsyncValidationComponent() {
               aria-label="Checking availability"
             >
               <span
-                className="block h-4 w-4 animate-spin rounded-full border-2 border-(--color-primary-background-default) border-t-transparent"
+                className="block h-4 w-4 animate-spin rounded-full border-2 border-(--color-primary-border-default) border-t-transparent"
                 aria-hidden="true"
               />
             </span>

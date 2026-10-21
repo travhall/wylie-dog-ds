@@ -375,6 +375,7 @@ export type CssVarName =
   | "--color-primary-background-default-active"
   | "--color-primary-background-default-hover"
   | "--color-primary-background-subtle"
+  | "--color-primary-border-default"
   | "--color-primary-foreground-default"
   | "--color-primary-foreground-subtle"
   | "--color-progress-background"
@@ -1538,6 +1539,7 @@ export declare const cssVars: Readonly<{
   "colorPrimaryBackgroundDefaultActive": "--color-primary-background-default-active";
   "colorPrimaryBackgroundDefaultHover": "--color-primary-background-default-hover";
   "colorPrimaryBackgroundSubtle": "--color-primary-background-subtle";
+  "colorPrimaryBorderDefault": "--color-primary-border-default";
   "colorPrimaryForegroundDefault": "--color-primary-foreground-default";
   "colorPrimaryForegroundSubtle": "--color-primary-foreground-subtle";
   "colorProgressBackground": "--color-progress-background";

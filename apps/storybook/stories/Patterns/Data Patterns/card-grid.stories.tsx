@@ -174,7 +174,7 @@ export const AllVariants: Story = {
               <CardContent className="p-4">
                 <div className="text-center">
                   <div className="w-8 h-8 bg-(--color-primary-background-default)/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                    <Zap className="h-4 w-4 text-(--color-primary-background-default)" />
+                    <Zap className="h-4 w-4 text-(--color-primary-foreground-subtle)" />
                   </div>
                   <h4 className="font-medium text-sm">{label} Card</h4>
                 </div>
@@ -332,11 +332,11 @@ export const Interactive: Story = {
           ].map((item, index) => (
             <Card
               key={index}
-              className="group cursor-pointer border-(--color-border-default)/20 hover:border-(--color-primary-background-default)/30 hover:shadow-lg transition-all duration-300"
+              className="group cursor-pointer border-(--color-border-default)/20 hover:border-(--color-primary-border-default)/30 hover:shadow-lg transition-all duration-300"
             >
               <CardHeader>
                 <div className="flex items-start justify-between">
-                  <CardTitle className="text-base group-hover:text-(--color-primary-background-default) transition-colors">
+                  <CardTitle className="text-base group-hover:text-(--color-primary-foreground-subtle) transition-colors">
                     {item.title}
                   </CardTitle>
                   <div className="flex items-center gap-2">
@@ -369,7 +369,7 @@ export const Interactive: Story = {
                       <Heart className="h-3 w-3" /> {item.stats.likes}
                     </span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-background-default) group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-foreground-subtle) group-hover:translate-x-1 transition-all" />
                 </div>
               </CardContent>
             </Card>
@@ -388,7 +388,7 @@ export const Interactive: Story = {
           columns={{ sm: 1, md: 2, lg: 2 }}
           className="max-w-2xl"
         >
-          <Card className="bg-linear-to-r from-(--color-primary-background-default)/5 to-(--color-primary-background-default)/5 border-(--color-primary-background-default)/20">
+          <Card className="bg-linear-to-r from-(--color-primary-background-default)/5 to-(--color-primary-background-default)/5 border-(--color-primary-border-default)/20">
             <CardContent className="p-8 text-center">
               <div className="w-12 h-12 bg-(--color-primary-background-default) rounded-full flex items-center justify-center mx-auto mb-4">
                 <Star className="h-6 w-6 text-(--color-inverse-foreground-default)" />
@@ -401,7 +401,7 @@ export const Interactive: Story = {
               <Button size="sm">Get Started</Button>
             </CardContent>
           </Card>
-          <Card className="bg-linear-to-r from-(--color-success-foreground-subtle)/5 to-(--color-warning-foreground-subtle)/5 border-(--color-success-foreground-subtle)/20">
+          <Card className="bg-linear-to-r from-(--color-success-background-default)/5 to-(--color-warning-background-default)/5 border-(--color-success-foreground-subtle)/20">
             <CardContent className="p-8 text-center">
               <div className="w-12 h-12 bg-(--color-success-background-default) rounded-full flex items-center justify-center mx-auto mb-4">
                 <Zap className="h-6 w-6 text-(--color-inverse-foreground-default)" />

@@ -50,7 +50,7 @@ function CompCard({
         </p>
         <a
           href={getStoryDocsUrl(href)}
-          className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) hover:text-(--color-primary-background-default) transition-colors"
+          className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) hover:text-(--color-primary-foreground-subtle) transition-colors"
         >
           Storybook
           <svg
@@ -174,7 +174,7 @@ export default function ComponentsPage() {
                 <br />
                 All tokens.{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   All accessible.
                 </span>
@@ -332,7 +332,7 @@ export default function ComponentsPage() {
                     <div
                       className="mt-1 flex items-center gap-2 h-8.5 rounded-[10px] border px-2.5 text-sm"
                       style={{
-                        borderColor: "var(--color-primary-background-default)",
+                        borderColor: "var(--color-primary-border-default)",
                         boxShadow:
                           "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
                         background: "var(--color-background-default)",
@@ -513,7 +513,7 @@ export default function ComponentsPage() {
                       stroke="currentColor"
                       strokeWidth={2}
                       style={{
-                        color: "var(--color-primary-background-default)",
+                        color: "var(--color-primary-foreground-subtle)",
                         transform: "rotate(180deg)",
                       }}
                     >
@@ -822,7 +822,7 @@ export default function ComponentsPage() {
                       style={{ background: "var(--color-fiery-coral-300)" }}
                     />
                     <div
-                      className="aspect-3/4 rounded ring-2 ring-(--color-primary-background-default)"
+                      className="aspect-3/4 rounded ring-2 ring-(--color-primary-border-default)"
                       style={{ background: "var(--color-blue-400)" }}
                     />
                     <div
@@ -1063,7 +1063,7 @@ export default function ComponentsPage() {
                         cy="18"
                         r="14"
                         fill="none"
-                        stroke="var(--color-primary-background-default)"
+                        stroke="var(--color-primary-border-default)"
                         strokeWidth="3"
                         strokeLinecap="round"
                         strokeDasharray="88"
@@ -1370,7 +1370,7 @@ export default function ComponentsPage() {
                   <div
                     className="flex items-center h-8.5 border rounded-[10px] px-2.5 text-[12px] bg-(--color-background-default)"
                     style={{
-                      borderColor: "var(--color-primary-background-default)",
+                      borderColor: "var(--color-primary-border-default)",
                       boxShadow:
                         "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
                     }}
@@ -1442,7 +1442,7 @@ export default function ComponentsPage() {
                     <span
                       className="grid h-4 w-4 place-items-center rounded-full border-2"
                       style={{
-                        borderColor: "var(--color-primary-background-default)",
+                        borderColor: "var(--color-primary-border-default)",
                       }}
                     >
                       <span
@@ -1499,7 +1499,7 @@ export default function ComponentsPage() {
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
-                        color: "var(--color-primary-background-default)",
+                        color: "var(--color-primary-foreground-subtle)",
                       }}
                     >
                       <svg
@@ -1679,7 +1679,7 @@ export default function ComponentsPage() {
                 <div
                   className="w-full max-w-57.5 rounded-md border bg-(--color-background-default) px-2.5 py-2 text-[11px] text-(--color-foreground-default)"
                   style={{
-                    borderColor: "var(--color-primary-background-default)",
+                    borderColor: "var(--color-primary-border-default)",
                     boxShadow:
                       "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
                     height: 100,
@@ -1710,7 +1710,7 @@ export default function ComponentsPage() {
                     style={{
                       background:
                         "color-mix(in oklch, var(--color-primary-background-default) 18%, transparent)",
-                      color: "var(--color-primary-background-default)",
+                      color: "var(--color-primary-foreground-subtle)",
                     }}
                   >
                     <svg
@@ -1793,7 +1793,7 @@ export default function ComponentsPage() {
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
-                        color: "var(--color-primary-background-default)",
+                        color: "var(--color-primary-foreground-subtle)",
                       }}
                     >
                       <svg
@@ -1890,7 +1890,7 @@ export default function ComponentsPage() {
                       stroke="currentColor"
                       strokeWidth={2}
                       style={{
-                        color: "var(--color-primary-background-default)",
+                        color: "var(--color-primary-foreground-subtle)",
                         transform: "rotate(180deg)",
                       }}
                     >
@@ -1900,7 +1900,7 @@ export default function ComponentsPage() {
                   <div
                     className="mt-1 space-y-1.5 pl-2 border-l-2"
                     style={{
-                      borderColor: "var(--color-primary-background-default)",
+                      borderColor: "var(--color-primary-border-default)",
                     }}
                   >
                     <div className="text-[10px] text-(--color-foreground-muted)">
@@ -2086,7 +2086,7 @@ export default function ComponentsPage() {
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
-                        color: "var(--color-primary-background-default)",
+                        color: "var(--color-primary-foreground-subtle)",
                       }}
                     >
                       Open documentation
@@ -2187,7 +2187,7 @@ export default function ComponentsPage() {
                       <p
                         className="font-semibold"
                         style={{
-                          color: "var(--color-primary-background-default)",
+                          color: "var(--color-primary-foreground-subtle)",
                         }}
                       >
                         Tokens
@@ -2270,7 +2270,7 @@ export default function ComponentsPage() {
                     <span
                       className="-mb-px border-b-2 px-3 py-1.5 font-medium"
                       style={{
-                        borderColor: "var(--color-primary-background-default)",
+                        borderColor: "var(--color-primary-border-default)",
                       }}
                     >
                       Overview
@@ -2391,7 +2391,7 @@ export default function ComponentsPage() {
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
-                        color: "var(--color-primary-background-default)",
+                        color: "var(--color-primary-foreground-subtle)",
                       }}
                     >
                       <span>Copy</span>
@@ -2553,7 +2553,7 @@ export default function ComponentsPage() {
                   <span
                     className="text-[11px] font-medium underline"
                     style={{
-                      color: "var(--color-primary-background-default)",
+                      color: "var(--color-primary-foreground-subtle)",
                       textDecorationColor:
                         "color-mix(in oklch, var(--color-primary-background-default) 50%, transparent)",
                     }}

@@ -29,7 +29,7 @@ export default function BordersPage() {
       headline={
         <>
           Every corner.{" "}
-          <span className="text-(--color-primary-background-default)">
+          <span className="text-(--color-primary-foreground-subtle)">
             Every border
           </span>{" "}
           has a token.

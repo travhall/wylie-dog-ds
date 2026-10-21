@@ -94,9 +94,13 @@ Now: the seven chromatic palettes (blue, green, orange, red, purple, pink, yello
 
 A subtle fill now has a named hover, like the solid fills: `color.background.subtle.hover` (gray 200 in Light, gray 800 in Dark) sits between `subtle` and `subtle.active`, and `color.danger.background.subtle.hover` (red 100, red 900) gives the tinted destructive badge a visible hover. Red 400 text on red 900 measured 3.93:1, so `color.danger.foreground.subtle` in Dark moved to red 300 (about 5.5:1 on the hover); this lightens error text, the required-field marker and tinted badge and alert text slightly in Dark. The other roles have no hover on their tint because no component needs one yet.
 
+## Fill tokens used as text or border (2026-10-21)
+
+About 60 places used `color.primary.background.default` as text on the page (blue 600: 5.04:1 in Light, 3.81:1 in Dark, under 4.5:1) and about 20 as a border or ring. Text now uses `color.primary.foreground.subtle` (6.54:1 in Light, 7.75:1 in Dark, the shade also moves for the approved homepage headline emphasis). Borders and rings use the new `color.primary.border.default`, which keeps blue 600 and is declared as a non-text pair on the page. Indicator dots that used `success` and `warning` `foreground.subtle` as a fill now use the role fill. Five stories paired text with the wrong token on a blue fill (`inverse.foreground.default` is gray 900 in Dark) and now use `color.primary.foreground.default`; two toggle stories do the same for danger. Left as they are: solid components whose border matches their fill, and ring offsets that match the page background.
+
 ## What exists today
 
-`pnpm check:contrast` reads `scripts/contrast-pairs.json` (129 declared foregrounds, 372 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
+`pnpm check:contrast` reads `scripts/contrast-pairs.json` (130 declared foregrounds, 374 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
 
 ## Case study
 

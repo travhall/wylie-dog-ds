@@ -317,6 +317,7 @@ export const colorDangerBackgroundDefaultHover = "oklch(0.488 0.19 27.49)"; // D
 export const colorBackgroundDefaultHover = "oklch(0.952 0.003 264.48)"; // Generic hover background for interactive elements
 export const colorBackgroundDefaultActive = "oklch(0.87 0.003 264.48)"; // Pressed/active state background
 export const colorPrimaryBackgroundSubtle = "oklch(0.97 0.014 254.77)"; // Subtle primary tint (focus and selection fills); pairs with color.primary.foreground.subtle
+export const colorPrimaryBorderDefault = "oklch(0.546 0.215 262.9)"; // Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page
 export const colorBackgroundDefaultDisabled = "oklch(0.952 0.003 264.48)"; // Disabled state background
 export const shadowNone = "none"; // No shadow
 export const shadowSm = "0 1px 2px 0 rgb(0 0 0 / 0.05)"; // Subtle shadow for slight elevation

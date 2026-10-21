@@ -448,7 +448,7 @@ export const ComponentSpacingExamples: Story = {
                 key={label}
                 className="flex items-center gap-3 p-3 bg-(--color-background-subtle) rounded-lg"
               >
-                <div className="w-8 h-8 rounded bg-(--color-primary-background-default)/20 border border-(--color-primary-background-default)/30 shrink-0 flex items-center justify-center text-xs font-semibold text-(--color-primary-background-default)">
+                <div className="w-8 h-8 rounded bg-(--color-primary-background-default)/20 border border-(--color-primary-border-default)/30 shrink-0 flex items-center justify-center text-xs font-semibold text-(--color-primary-foreground-subtle)">
                   {i + 1}
                 </div>
                 <div>
@@ -605,9 +605,9 @@ export const SpacingPlayground: Story = {
                   padding area
                 </p>
                 <div
-                  className={`${pClass} border-2 border-dashed border-(--color-primary-background-default)/40 bg-(--color-primary-background-default)/5 rounded`}
+                  className={`${pClass} border-2 border-dashed border-(--color-primary-border-default)/40 bg-(--color-primary-background-default)/5 rounded`}
                 >
-                  <div className="bg-(--color-background-default) border-2 border-(--color-primary-background-default) rounded">
+                  <div className="bg-(--color-background-default) border-2 border-(--color-primary-border-default) rounded">
                     <div className="text-sm text-center text-(--color-foreground-muted) py-2">
                       Content
                     </div>
@@ -630,7 +630,7 @@ export const SpacingPlayground: Story = {
                 <p className="text-[10px] font-mono text-(--color-warning-foreground-subtle)">
                   margin area
                 </p>
-                <div className="border-2 border-dashed border-(--color-warning-foreground-subtle)/40 bg-(--color-warning-foreground-subtle)/5 rounded">
+                <div className="border-2 border-dashed border-(--color-warning-foreground-subtle)/40 bg-(--color-warning-background-default)/5 rounded">
                   <div
                     className={`${mClass} bg-(--color-background-default) border-2 border-(--color-warning-foreground-subtle) rounded p-(--space-200)`}
                   >
@@ -659,7 +659,7 @@ export const SpacingPlayground: Story = {
               {["Item 1", "Item 2", "Item 3"].map((label) => (
                 <div
                   key={label}
-                  className="flex-1 p-(--space-200) bg-(--color-primary-background-default)/10 border border-(--color-primary-background-default)/30 rounded text-center text-sm"
+                  className="flex-1 p-(--space-200) bg-(--color-primary-background-default)/10 border border-(--color-primary-border-default)/30 rounded text-center text-sm"
                 >
                   {label}
                 </div>

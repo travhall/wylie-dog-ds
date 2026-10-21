@@ -6345,10 +6345,10 @@
         },
         "feature-grid.item.border-color-hover": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.primary.border.default}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.primary.border.default}",
+            "Dark": "{color.primary.border.default}"
           }
         },
         "input.padding-y.sm": {

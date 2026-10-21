@@ -36,7 +36,7 @@ export default function ArchitecturePage() {
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.25rem] font-semibold tracking-tight leading-[0.98]">
                 The monorepo that{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   ships everything
                 </span>
@@ -235,8 +235,7 @@ export default function ArchitecturePage() {
                         <div
                           className="rounded-xl border-2 p-3.5 shadow-sm"
                           style={{
-                            borderColor:
-                              "var(--color-primary-background-default)",
+                            borderColor: "var(--color-primary-border-default)",
                             background: "var(--color-background-default)",
                           }}
                         >
@@ -244,8 +243,7 @@ export default function ArchitecturePage() {
                             <span
                               className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider"
                               style={{
-                                color:
-                                  "var(--color-primary-background-default)",
+                                color: "var(--color-primary-foreground-subtle)",
                               }}
                             >
                               <span
@@ -490,7 +488,7 @@ export default function ArchitecturePage() {
                     <div className="text-(--color-foreground-muted)">
                       <span
                         style={{
-                          color: "var(--color-primary-background-default)",
+                          color: "var(--color-primary-foreground-subtle)",
                         }}
                       >
                         packages
@@ -706,7 +704,7 @@ export default function ArchitecturePage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 From JSON to{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   CSS variables
                 </span>
@@ -756,7 +754,7 @@ export default function ArchitecturePage() {
                         {line.key && (
                           <span
                             style={{
-                              color: "var(--color-primary-background-default)",
+                              color: "var(--color-primary-foreground-subtle)",
                             }}
                           >
                             &quot;{line.key}&quot;
@@ -787,7 +785,7 @@ export default function ArchitecturePage() {
                           style={{
                             background:
                               "color-mix(in oklch, var(--color-primary-background-default) 18%, transparent)",
-                            color: "var(--color-primary-background-default)",
+                            color: "var(--color-primary-foreground-subtle)",
                           }}
                         >
                           {i + 1}
@@ -824,7 +822,7 @@ export default function ArchitecturePage() {
                     <div>
                       <span
                         style={{
-                          color: "var(--color-primary-background-default)",
+                          color: "var(--color-primary-foreground-subtle)",
                         }}
                       >
                         --color-blue-600
@@ -839,7 +837,7 @@ export default function ArchitecturePage() {
                     <div>
                       <span
                         style={{
-                          color: "var(--color-primary-background-default)",
+                          color: "var(--color-primary-foreground-subtle)",
                         }}
                       >
                         --color-primary-background-default
@@ -860,7 +858,7 @@ export default function ArchitecturePage() {
                     <div>
                       <span
                         style={{
-                          color: "var(--color-primary-background-default)",
+                          color: "var(--color-primary-foreground-subtle)",
                         }}
                       >
                         --color-button-primary-background
@@ -895,7 +893,7 @@ export default function ArchitecturePage() {
                       <div
                         className="pl-6"
                         style={{
-                          color: "var(--color-primary-background-default)",
+                          color: "var(--color-primary-foreground-subtle)",
                         }}
                       >
                         bg-(--color-button-primary-background)
@@ -903,7 +901,7 @@ export default function ArchitecturePage() {
                       <div
                         className="pl-6"
                         style={{
-                          color: "var(--color-primary-background-default)",
+                          color: "var(--color-primary-foreground-subtle)",
                         }}
                       >
                         text-(--color-inverse-foreground-default)
@@ -1577,7 +1575,7 @@ export default function ArchitecturePage() {
                 >
                   <span
                     className="shrink-0 font-mono text-sm font-semibold"
-                    style={{ color: "var(--color-primary-background-default)" }}
+                    style={{ color: "var(--color-primary-foreground-subtle)" }}
                   >
                     {layer.n}
                   </span>

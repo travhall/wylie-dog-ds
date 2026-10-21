@@ -236,7 +236,7 @@ export const ResetPasswordForm: Story = {
         return {
           strength: 2,
           label: "Weak",
-          color: "bg-(--color-warning-foreground-subtle)",
+          color: "bg-(--color-warning-background-default)",
         };
       if (password.length < 14)
         return {
@@ -247,7 +247,7 @@ export const ResetPasswordForm: Story = {
       return {
         strength: 4,
         label: "Strong",
-        color: "bg-(--color-success-foreground-subtle)",
+        color: "bg-(--color-success-background-default)",
       };
     };
 
@@ -608,7 +608,7 @@ export const MultiStepPasswordRecovery: Story = {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                       index <= currentStepIndex
-                        ? "bg-(--color-primary-background-default) text-(--color-inverse-foreground-default)"
+                        ? "bg-(--color-primary-background-default) text-(--color-primary-foreground-default)"
                         : "bg-(--color-background-subtle) text-(--color-foreground-faint)"
                     }`}
                   >

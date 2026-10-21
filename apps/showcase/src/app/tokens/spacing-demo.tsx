@@ -135,7 +135,7 @@ export function SpacingDemo() {
               height: d.avatar,
               background:
                 "color-mix(in oklch, var(--color-primary-background-default) 15%, transparent)",
-              color: "var(--color-primary-background-default)",
+              color: "var(--color-primary-foreground-subtle)",
             }}
           >
             {m.initials}

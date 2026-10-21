@@ -45,7 +45,7 @@ export default function ShowcasePage() {
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98]">
                 The design system{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   that closes the gap
                 </span>{" "}
@@ -175,7 +175,7 @@ export default function ShowcasePage() {
               <Link
                 href="/tokens"
                 className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold"
-                style={{ color: "var(--color-primary-background-default)" }}
+                style={{ color: "var(--color-primary-foreground-subtle)" }}
               >
                 Open the token explorer
                 <svg
@@ -229,7 +229,7 @@ export default function ShowcasePage() {
                           ...(s.active
                             ? ({
                                 "--tw-ring-color":
-                                  "var(--color-primary-background-default)",
+                                  "var(--color-primary-border-default)",
                                 "--tw-ring-offset-color":
                                   "var(--color-background-default)",
                               } as React.CSSProperties)
@@ -492,7 +492,7 @@ export default function ShowcasePage() {
                   <span
                     className="-mb-px border-b-2 px-3 py-2 font-medium"
                     style={{
-                      borderColor: "var(--color-primary-background-default)",
+                      borderColor: "var(--color-primary-border-default)",
                       color: "var(--color-foreground-default)",
                     }}
                   >
@@ -756,7 +756,7 @@ export default function ShowcasePage() {
                   </span>
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-background-default) transition-colors"
+                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-foreground-subtle) transition-colors"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -817,7 +817,7 @@ export default function ShowcasePage() {
                   </span>
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-background-default) transition-colors"
+                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-foreground-subtle) transition-colors"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -900,7 +900,7 @@ export default function ShowcasePage() {
                   </span>
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-background-default) transition-colors"
+                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-foreground-subtle) transition-colors"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -998,7 +998,7 @@ export default function ShowcasePage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
                 Token Bridge keeps Figma and code{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   in sync
                 </span>
@@ -1031,7 +1031,7 @@ export default function ShowcasePage() {
                       style={{
                         background:
                           "color-mix(in oklch, var(--color-primary-background-default) 18%, transparent)",
-                        color: "var(--color-primary-background-default)",
+                        color: "var(--color-primary-foreground-subtle)",
                       }}
                     >
                       <svg
@@ -1164,7 +1164,7 @@ export default function ShowcasePage() {
                                   background:
                                     "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
                                   color:
-                                    "var(--color-primary-background-default)",
+                                    "var(--color-primary-foreground-subtle)",
                                 }
                               : {}
                           }

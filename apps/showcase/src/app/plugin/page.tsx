@@ -113,7 +113,7 @@ export default function PluginPage() {
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.5rem] font-semibold text-(--color-foreground-default) tracking-tight leading-[0.98]">
                 Figma variables and{" "}
                 <span
-                  style={{ color: "var(--color-primary-background-default)" }}
+                  style={{ color: "var(--color-primary-foreground-subtle)" }}
                 >
                   the token files, in sync.
                 </span>

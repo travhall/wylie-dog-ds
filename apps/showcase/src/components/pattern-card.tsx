@@ -19,7 +19,7 @@ export function PatternCard({
   storybookPath,
 }: PatternCardProps) {
   return (
-    <Card className="glass border border-(--color-border-default)/10 hover:border-(--color-primary-background-default)/30 transition-all duration-500">
+    <Card className="glass border border-(--color-border-default)/10 hover:border-(--color-primary-border-default)/30 transition-all duration-500">
       <CardHeader className="p-6">
         <CardTitle className="text-xl font-bold text-(--color-foreground-default) mb-2">
           {name}

@@ -764,6 +764,11 @@
       ],
       "kind": "text",
       "note": "Aligned ramps: the 600 step of every chromatic hue takes light text, so a role can change hue without changing its step."
+    },
+    {
+      "foreground": "color.primary.border.default",
+      "backgrounds": ["color.background.default"],
+      "kind": "non-text"
     }
   ],
   "knownFailures": [],
