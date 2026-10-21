@@ -25,11 +25,6 @@ export type CssVarName =
   | "--card-disabled-opacity"
   | "--carousel-nav-button-disabled-opacity"
   | "--checkbox-disabled-opacity"
-  | "--color-accent-active"
-  | "--color-accent-highlight"
-  | "--color-accent-hover"
-  | "--color-accent-surface"
-  | "--color-accent-text"
   | "--color-accordion-border"
   | "--color-accordion-content-text"
   | "--color-accordion-icon"
@@ -60,21 +55,15 @@ export type CssVarName =
   | "--color-avatar-border"
   | "--color-avatar-fallback-background"
   | "--color-avatar-fallback-text"
-  | "--color-background-brand"
-  | "--color-background-danger"
   | "--color-background-default"
   | "--color-background-default-active"
   | "--color-background-default-disabled"
   | "--color-background-default-hover"
-  | "--color-background-inverse"
   | "--color-background-overlay"
-  | "--color-background-primary"
   | "--color-background-raised"
-  | "--color-background-secondary"
   | "--color-background-strong"
   | "--color-background-subtle"
   | "--color-background-subtle-active"
-  | "--color-background-tertiary"
   | "--color-badge-default-background"
   | "--color-badge-default-background-disabled"
   | "--color-badge-default-background-focus"
@@ -133,16 +122,9 @@ export type CssVarName =
   | "--color-blue-800"
   | "--color-blue-900"
   | "--color-blue-950"
-  | "--color-border-brand"
-  | "--color-border-danger"
   | "--color-border-default"
-  | "--color-border-focus"
-  | "--color-border-primary"
-  | "--color-border-secondary"
   | "--color-border-strong"
   | "--color-border-subtle"
-  | "--color-border-success"
-  | "--color-border-warning"
   | "--color-breadcrumb-current"
   | "--color-breadcrumb-link"
   | "--color-breadcrumb-link-disabled"
@@ -303,22 +285,6 @@ export type CssVarName =
   | "--color-input-disabled-background"
   | "--color-input-disabled-text"
   | "--color-input-placeholder"
-  | "--color-interactive-danger"
-  | "--color-interactive-danger-hover"
-  | "--color-interactive-disabled"
-  | "--color-interactive-focus"
-  | "--color-interactive-hover"
-  | "--color-interactive-pressed"
-  | "--color-interactive-primary"
-  | "--color-interactive-primary-active"
-  | "--color-interactive-primary-hover"
-  | "--color-interactive-secondary"
-  | "--color-interactive-secondary-active"
-  | "--color-interactive-secondary-hover"
-  | "--color-interactive-success"
-  | "--color-interactive-success-hover"
-  | "--color-interactive-warning"
-  | "--color-interactive-warning-hover"
   | "--color-inverse-background-default"
   | "--color-inverse-foreground-default"
   | "--color-label-default-color"
@@ -350,10 +316,6 @@ export type CssVarName =
   | "--color-navigation-open"
   | "--color-navigation-text-focus"
   | "--color-navigation-text-hover"
-  | "--color-neutral-base"
-  | "--color-neutral-muted"
-  | "--color-neutral-on"
-  | "--color-neutral-subtle"
   | "--color-orange-100"
   | "--color-orange-200"
   | "--color-orange-300"
@@ -407,17 +369,12 @@ export type CssVarName =
   | "--color-popover-border"
   | "--color-popover-border-focus"
   | "--color-popover-text"
-  | "--color-primary-active"
   | "--color-primary-background-default"
   | "--color-primary-background-default-active"
   | "--color-primary-background-default-hover"
   | "--color-primary-background-subtle"
-  | "--color-primary-base"
   | "--color-primary-foreground-default"
   | "--color-primary-foreground-subtle"
-  | "--color-primary-hover"
-  | "--color-primary-surface"
-  | "--color-primary-text"
   | "--color-progress-background"
   | "--color-progress-default-fill"
   | "--color-progress-destructive-fill"
@@ -464,11 +421,6 @@ export type CssVarName =
   | "--color-sandcastle-900"
   | "--color-sandcastle-950"
   | "--color-scrollbar-thumb"
-  | "--color-secondary-active"
-  | "--color-secondary-base"
-  | "--color-secondary-hover"
-  | "--color-secondary-surface"
-  | "--color-secondary-text"
   | "--color-select-content-background"
   | "--color-select-content-text"
   | "--color-select-item-background-focus"
@@ -485,26 +437,12 @@ export type CssVarName =
   | "--color-slider-thumb-border"
   | "--color-slider-thumb-ring-offset"
   | "--color-slider-track"
-  | "--color-status-danger"
-  | "--color-status-highlight"
-  | "--color-status-info"
-  | "--color-status-success"
-  | "--color-status-warning"
   | "--color-success-background-default"
   | "--color-success-background-default-hover"
   | "--color-success-background-subtle"
   | "--color-success-border-default"
   | "--color-success-foreground-default"
   | "--color-success-foreground-subtle"
-  | "--color-surface-brand"
-  | "--color-surface-danger"
-  | "--color-surface-info"
-  | "--color-surface-overlay"
-  | "--color-surface-primary"
-  | "--color-surface-raised"
-  | "--color-surface-secondary"
-  | "--color-surface-success"
-  | "--color-surface-warning"
   | "--color-switch-thumb-background"
   | "--color-switch-track-background-checked"
   | "--color-switch-track-background-unchecked"
@@ -525,17 +463,6 @@ export type CssVarName =
   | "--color-tabs-trigger-ring-offset"
   | "--color-tabs-trigger-text-active"
   | "--color-tabs-trigger-text-hover"
-  | "--color-text-brand"
-  | "--color-text-danger"
-  | "--color-text-disabled"
-  | "--color-text-info"
-  | "--color-text-inverse"
-  | "--color-text-on-solid"
-  | "--color-text-primary"
-  | "--color-text-secondary"
-  | "--color-text-success"
-  | "--color-text-tertiary"
-  | "--color-text-warning"
   | "--color-toast-action-hover"
   | "--color-toast-action-ring-offset"
   | "--color-toast-close"
@@ -1259,11 +1186,6 @@ export declare const cssVars: Readonly<{
   "cardDisabledOpacity": "--card-disabled-opacity";
   "carouselNavButtonDisabledOpacity": "--carousel-nav-button-disabled-opacity";
   "checkboxDisabledOpacity": "--checkbox-disabled-opacity";
-  "colorAccentActive": "--color-accent-active";
-  "colorAccentHighlight": "--color-accent-highlight";
-  "colorAccentHover": "--color-accent-hover";
-  "colorAccentSurface": "--color-accent-surface";
-  "colorAccentText": "--color-accent-text";
   "colorAccordionBorder": "--color-accordion-border";
   "colorAccordionContentText": "--color-accordion-content-text";
   "colorAccordionIcon": "--color-accordion-icon";
@@ -1294,21 +1216,15 @@ export declare const cssVars: Readonly<{
   "colorAvatarBorder": "--color-avatar-border";
   "colorAvatarFallbackBackground": "--color-avatar-fallback-background";
   "colorAvatarFallbackText": "--color-avatar-fallback-text";
-  "colorBackgroundBrand": "--color-background-brand";
-  "colorBackgroundDanger": "--color-background-danger";
   "colorBackgroundDefault": "--color-background-default";
   "colorBackgroundDefaultActive": "--color-background-default-active";
   "colorBackgroundDefaultDisabled": "--color-background-default-disabled";
   "colorBackgroundDefaultHover": "--color-background-default-hover";
-  "colorBackgroundInverse": "--color-background-inverse";
   "colorBackgroundOverlay": "--color-background-overlay";
-  "colorBackgroundPrimary": "--color-background-primary";
   "colorBackgroundRaised": "--color-background-raised";
-  "colorBackgroundSecondary": "--color-background-secondary";
   "colorBackgroundStrong": "--color-background-strong";
   "colorBackgroundSubtle": "--color-background-subtle";
   "colorBackgroundSubtleActive": "--color-background-subtle-active";
-  "colorBackgroundTertiary": "--color-background-tertiary";
   "colorBadgeDefaultBackground": "--color-badge-default-background";
   "colorBadgeDefaultBackgroundDisabled": "--color-badge-default-background-disabled";
   "colorBadgeDefaultBackgroundFocus": "--color-badge-default-background-focus";
@@ -1367,16 +1283,9 @@ export declare const cssVars: Readonly<{
   "colorBlue800": "--color-blue-800";
   "colorBlue900": "--color-blue-900";
   "colorBlue950": "--color-blue-950";
-  "colorBorderBrand": "--color-border-brand";
-  "colorBorderDanger": "--color-border-danger";
   "colorBorderDefault": "--color-border-default";
-  "colorBorderFocus": "--color-border-focus";
-  "colorBorderPrimary": "--color-border-primary";
-  "colorBorderSecondary": "--color-border-secondary";
   "colorBorderStrong": "--color-border-strong";
   "colorBorderSubtle": "--color-border-subtle";
-  "colorBorderSuccess": "--color-border-success";
-  "colorBorderWarning": "--color-border-warning";
   "colorBreadcrumbCurrent": "--color-breadcrumb-current";
   "colorBreadcrumbLink": "--color-breadcrumb-link";
   "colorBreadcrumbLinkDisabled": "--color-breadcrumb-link-disabled";
@@ -1537,22 +1446,6 @@ export declare const cssVars: Readonly<{
   "colorInputDisabledBackground": "--color-input-disabled-background";
   "colorInputDisabledText": "--color-input-disabled-text";
   "colorInputPlaceholder": "--color-input-placeholder";
-  "colorInteractiveDanger": "--color-interactive-danger";
-  "colorInteractiveDangerHover": "--color-interactive-danger-hover";
-  "colorInteractiveDisabled": "--color-interactive-disabled";
-  "colorInteractiveFocus": "--color-interactive-focus";
-  "colorInteractiveHover": "--color-interactive-hover";
-  "colorInteractivePressed": "--color-interactive-pressed";
-  "colorInteractivePrimary": "--color-interactive-primary";
-  "colorInteractivePrimaryActive": "--color-interactive-primary-active";
-  "colorInteractivePrimaryHover": "--color-interactive-primary-hover";
-  "colorInteractiveSecondary": "--color-interactive-secondary";
-  "colorInteractiveSecondaryActive": "--color-interactive-secondary-active";
-  "colorInteractiveSecondaryHover": "--color-interactive-secondary-hover";
-  "colorInteractiveSuccess": "--color-interactive-success";
-  "colorInteractiveSuccessHover": "--color-interactive-success-hover";
-  "colorInteractiveWarning": "--color-interactive-warning";
-  "colorInteractiveWarningHover": "--color-interactive-warning-hover";
   "colorInverseBackgroundDefault": "--color-inverse-background-default";
   "colorInverseForegroundDefault": "--color-inverse-foreground-default";
   "colorLabelDefaultColor": "--color-label-default-color";
@@ -1584,10 +1477,6 @@ export declare const cssVars: Readonly<{
   "colorNavigationOpen": "--color-navigation-open";
   "colorNavigationTextFocus": "--color-navigation-text-focus";
   "colorNavigationTextHover": "--color-navigation-text-hover";
-  "colorNeutralBase": "--color-neutral-base";
-  "colorNeutralMuted": "--color-neutral-muted";
-  "colorNeutralOn": "--color-neutral-on";
-  "colorNeutralSubtle": "--color-neutral-subtle";
   "colorOrange100": "--color-orange-100";
   "colorOrange200": "--color-orange-200";
   "colorOrange300": "--color-orange-300";
@@ -1641,17 +1530,12 @@ export declare const cssVars: Readonly<{
   "colorPopoverBorder": "--color-popover-border";
   "colorPopoverBorderFocus": "--color-popover-border-focus";
   "colorPopoverText": "--color-popover-text";
-  "colorPrimaryActive": "--color-primary-active";
   "colorPrimaryBackgroundDefault": "--color-primary-background-default";
   "colorPrimaryBackgroundDefaultActive": "--color-primary-background-default-active";
   "colorPrimaryBackgroundDefaultHover": "--color-primary-background-default-hover";
   "colorPrimaryBackgroundSubtle": "--color-primary-background-subtle";
-  "colorPrimaryBase": "--color-primary-base";
   "colorPrimaryForegroundDefault": "--color-primary-foreground-default";
   "colorPrimaryForegroundSubtle": "--color-primary-foreground-subtle";
-  "colorPrimaryHover": "--color-primary-hover";
-  "colorPrimarySurface": "--color-primary-surface";
-  "colorPrimaryText": "--color-primary-text";
   "colorProgressBackground": "--color-progress-background";
   "colorProgressDefaultFill": "--color-progress-default-fill";
   "colorProgressDestructiveFill": "--color-progress-destructive-fill";
@@ -1698,11 +1582,6 @@ export declare const cssVars: Readonly<{
   "colorSandcastle900": "--color-sandcastle-900";
   "colorSandcastle950": "--color-sandcastle-950";
   "colorScrollbarThumb": "--color-scrollbar-thumb";
-  "colorSecondaryActive": "--color-secondary-active";
-  "colorSecondaryBase": "--color-secondary-base";
-  "colorSecondaryHover": "--color-secondary-hover";
-  "colorSecondarySurface": "--color-secondary-surface";
-  "colorSecondaryText": "--color-secondary-text";
   "colorSelectContentBackground": "--color-select-content-background";
   "colorSelectContentText": "--color-select-content-text";
   "colorSelectItemBackgroundFocus": "--color-select-item-background-focus";
@@ -1719,26 +1598,12 @@ export declare const cssVars: Readonly<{
   "colorSliderThumbBorder": "--color-slider-thumb-border";
   "colorSliderThumbRingOffset": "--color-slider-thumb-ring-offset";
   "colorSliderTrack": "--color-slider-track";
-  "colorStatusDanger": "--color-status-danger";
-  "colorStatusHighlight": "--color-status-highlight";
-  "colorStatusInfo": "--color-status-info";
-  "colorStatusSuccess": "--color-status-success";
-  "colorStatusWarning": "--color-status-warning";
   "colorSuccessBackgroundDefault": "--color-success-background-default";
   "colorSuccessBackgroundDefaultHover": "--color-success-background-default-hover";
   "colorSuccessBackgroundSubtle": "--color-success-background-subtle";
   "colorSuccessBorderDefault": "--color-success-border-default";
   "colorSuccessForegroundDefault": "--color-success-foreground-default";
   "colorSuccessForegroundSubtle": "--color-success-foreground-subtle";
-  "colorSurfaceBrand": "--color-surface-brand";
-  "colorSurfaceDanger": "--color-surface-danger";
-  "colorSurfaceInfo": "--color-surface-info";
-  "colorSurfaceOverlay": "--color-surface-overlay";
-  "colorSurfacePrimary": "--color-surface-primary";
-  "colorSurfaceRaised": "--color-surface-raised";
-  "colorSurfaceSecondary": "--color-surface-secondary";
-  "colorSurfaceSuccess": "--color-surface-success";
-  "colorSurfaceWarning": "--color-surface-warning";
   "colorSwitchThumbBackground": "--color-switch-thumb-background";
   "colorSwitchTrackBackgroundChecked": "--color-switch-track-background-checked";
   "colorSwitchTrackBackgroundUnchecked": "--color-switch-track-background-unchecked";
@@ -1759,17 +1624,6 @@ export declare const cssVars: Readonly<{
   "colorTabsTriggerRingOffset": "--color-tabs-trigger-ring-offset";
   "colorTabsTriggerTextActive": "--color-tabs-trigger-text-active";
   "colorTabsTriggerTextHover": "--color-tabs-trigger-text-hover";
-  "colorTextBrand": "--color-text-brand";
-  "colorTextDanger": "--color-text-danger";
-  "colorTextDisabled": "--color-text-disabled";
-  "colorTextInfo": "--color-text-info";
-  "colorTextInverse": "--color-text-inverse";
-  "colorTextOnSolid": "--color-text-on-solid";
-  "colorTextPrimary": "--color-text-primary";
-  "colorTextSecondary": "--color-text-secondary";
-  "colorTextSuccess": "--color-text-success";
-  "colorTextTertiary": "--color-text-tertiary";
-  "colorTextWarning": "--color-text-warning";
   "colorToastActionHover": "--color-toast-action-hover";
   "colorToastActionRingOffset": "--color-toast-action-ring-offset";
   "colorToastClose": "--color-toast-close";
