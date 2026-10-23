@@ -109,7 +109,7 @@ About 60 places used `color.primary.background.default` as text on the page (blu
 
 ## What exists today
 
-`pnpm check:contrast` reads `scripts/contrast-pairs.json` (130 declared foregrounds, 384 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
+`pnpm check:contrast` reads `scripts/contrast-pairs.json` (138 declared foregrounds, 412 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
 
 ## Case study
 
