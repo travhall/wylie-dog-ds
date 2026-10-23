@@ -1,9 +1,22 @@
 # Semantic colour pairing model
 
-**Status:** Implemented on 2026-10-20. The semantic colour tokens use this grammar and the contrast check guards the declared pairs. See [semantic-token-mapping.md](semantic-token-mapping.md) for the old-to-new table.
+**Status:** Implemented on 2026-10-20 and restructured on 2026-10-23 (see "Restructure" below). The semantic colour tokens use this grammar and the contrast check guards the declared pairs. See [semantic-token-mapping.md](semantic-token-mapping.md) for the old-to-new table.
 **Decided with the owner:** 2026-10-20 (level vocabulary settled the same day). **Facts measured on:** 2026-10-20.
 
 This records the direction for how semantic colour tokens pair a foreground with a background, why the current structure needs it, what was decided, and what is still open. It is the reference for a planned case study (see the end).
+
+## Restructure (2026-10-23)
+
+The grammar below was implemented on 2026-10-20 and **restructured on 2026-10-23** after the owner reviewed it in Figma. The nested level and state naming produced 35 Figma groups for 48 variables, 14 groups holding a single variable and 8 variables that were also group names. This section supersedes decisions 3, 10, 11, 12 and 13 and the grammar section below; everything else in this record is kept as history.
+
+- **Names** are `color.<part>.<token>` with the part `background`, `foreground` or `border` (property first, three segments, never more). Ground tokens: `background.{default, muted, emphasis, raised, overlay, inverse}`, `foreground.{default, muted, faint, inverse}`, `border.{default, muted, emphasis, focus}`. A role is a name inside the part: `color.background.success` (solid fill), `success-muted` (tint), `success-emphasis` (stronger fill); `color.foreground.success` (text over the fill), `success-muted` (text over the tint); `color.border.success`.
+- **Vocabulary:** `muted` is the quieter tone and `emphasis` the stronger one. They replace `subtle` and `strong`. `faint` exists only for ground text.
+- **Pairs:** `foreground.X` is the text over `background.X`.
+- **States are not semantic tokens.** Hover, active, focus and disabled belong to the component layer, where a component token references a semantic tone (per mode where the tones differ). 12 semantic state tokens were removed; 4 emphasis tones were added for the solid fills.
+- **Components bind only to component tokens.** The focus ring is a centralized exception (`color.border.focus`).
+- **Structure is enforced:** `pnpm check:tokens` runs `scripts/check-token-structure.mjs` (three segments, no state word, no single-variable group, no variable that is also a group name).
+- **Value changes accepted:** Dark danger text is red 400 (it was red 300); disabled text uses `foreground.faint`; pressed fills use the emphasis tone; the tinted destructive badge has no hover colour. 26 component colour values changed in all; every other component colour is identical to before.
+- **Counts:** 40 semantic colour tokens in 3 Figma groups, 89 semantic tokens in all. The old-to-new table is the second mapping in [semantic-token-mapping.md](semantic-token-mapping.md).
 
 ## The problem
 
@@ -109,7 +122,7 @@ About 60 places used `color.primary.background.default` as text on the page (blu
 
 ## What exists today
 
-`pnpm check:contrast` reads `scripts/contrast-pairs.json` (138 declared foregrounds, 412 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
+`pnpm check:contrast` reads `scripts/contrast-pairs.json` (138 declared foregrounds, 406 checks across Light and Dark) and fails on any new failure. It currently reports no known failures; any added later must be listed with a reason and removed when fixed. It is part of the Lint workflow. See [token-pipeline.md](token-pipeline.md).
 
 ## Case study
 

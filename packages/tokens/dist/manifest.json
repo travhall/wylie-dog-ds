@@ -2585,18 +2585,6 @@
         "variable": "var(--color-background-default)",
         "description": "Page background. The default, muted and faint foreground tokens are readable on it."
       },
-      "color-background-subtle": {
-        "name": "colorBackgroundSubtle",
-        "path": [
-          "color",
-          "background",
-          "subtle"
-        ],
-        "value": "oklch(0.952 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-background-subtle)",
-        "description": "Secondary background for sections and containers"
-      },
       "color-background-muted": {
         "name": "colorBackgroundMuted",
         "path": [
@@ -2608,31 +2596,6 @@
         "type": "color",
         "variable": "var(--color-background-muted)",
         "description": "Quiet surface for sections, panels and containers. The default, muted and faint foreground tokens are readable on it."
-      },
-      "color-background-subtle-hover": {
-        "name": "colorBackgroundSubtleHover",
-        "path": [
-          "color",
-          "background",
-          "subtle",
-          "hover"
-        ],
-        "value": "oklch(0.87 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-background-subtle-hover)",
-        "description": "Hover fill for a subtle background (the secondary button, tab triggers); between subtle and subtle.active"
-      },
-      "color-background-strong": {
-        "name": "colorBackgroundStrong",
-        "path": [
-          "color",
-          "background",
-          "strong"
-        ],
-        "value": "oklch(0.87 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-background-strong)",
-        "description": "Tertiary background for nested elements"
       },
       "color-background-emphasis": {
         "name": "colorBackgroundEmphasis",
@@ -2754,19 +2717,6 @@
         "variable": "var(--color-background-primary-emphasis)",
         "description": "Stronger tone of the solid primary fill. Components use it for hover and pressed states; foreground.primary is readable on it."
       },
-      "color-background-subtle-active": {
-        "name": "colorBackgroundSubtleActive",
-        "path": [
-          "color",
-          "background",
-          "subtle",
-          "active"
-        ],
-        "value": "oklch(0.786 0.004 271.11)",
-        "type": "color",
-        "variable": "var(--color-background-subtle-active)",
-        "description": "Secondary interactive pressed/active state"
-      },
       "color-background-success": {
         "name": "colorBackgroundSuccess",
         "path": [
@@ -2839,32 +2789,6 @@
         "variable": "var(--color-background-danger-emphasis)",
         "description": "Stronger tone of the solid danger fill. Components use it for hover and pressed states; foreground.danger is readable on it."
       },
-      "color-background-default-hover": {
-        "name": "colorBackgroundDefaultHover",
-        "path": [
-          "color",
-          "background",
-          "default",
-          "hover"
-        ],
-        "value": "oklch(0.952 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-background-default-hover)",
-        "description": "Generic hover background for interactive elements"
-      },
-      "color-background-default-active": {
-        "name": "colorBackgroundDefaultActive",
-        "path": [
-          "color",
-          "background",
-          "default",
-          "active"
-        ],
-        "value": "oklch(0.87 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-background-default-active)",
-        "description": "Pressed/active state background"
-      },
       "color-background-primary-muted": {
         "name": "colorBackgroundPrimaryMuted",
         "path": [
@@ -2876,19 +2800,6 @@
         "type": "color",
         "variable": "var(--color-background-primary-muted)",
         "description": "Quiet tint of the primary role for alerts, badges and highlights. Pairs with foreground.primary-muted."
-      },
-      "color-background-default-disabled": {
-        "name": "colorBackgroundDefaultDisabled",
-        "path": [
-          "color",
-          "background",
-          "default",
-          "disabled"
-        ],
-        "value": "oklch(0.952 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-background-default-disabled)",
-        "description": "Disabled state background"
       }
     },
     "foreground": {
@@ -2927,19 +2838,6 @@
         "type": "color",
         "variable": "var(--color-foreground-faint)",
         "description": "Faintest text for timestamps, metadata and hints. Readable on the page, muted and raised backgrounds."
-      },
-      "color-foreground-default-disabled": {
-        "name": "colorForegroundDefaultDisabled",
-        "path": [
-          "color",
-          "foreground",
-          "default",
-          "disabled"
-        ],
-        "value": "oklch(0.699 0.005 271.07)",
-        "type": "color",
-        "variable": "var(--color-foreground-default-disabled)",
-        "description": "Disabled text color"
       },
       "color-foreground-inverse": {
         "name": "colorForegroundInverse",
@@ -3075,18 +2973,6 @@
         "variable": "var(--color-border-default)",
         "description": "Default border for cards, inputs and containers."
       },
-      "color-border-subtle": {
-        "name": "colorBorderSubtle",
-        "path": [
-          "color",
-          "border",
-          "subtle"
-        ],
-        "value": "oklch(0.87 0.003 264.48)",
-        "type": "color",
-        "variable": "var(--color-border-subtle)",
-        "description": "Secondary border for subtle dividers"
-      },
       "color-border-muted": {
         "name": "colorBorderMuted",
         "path": [
@@ -3098,18 +2984,6 @@
         "type": "color",
         "variable": "var(--color-border-muted)",
         "description": "Quieter border for subtle dividers."
-      },
-      "color-border-strong": {
-        "name": "colorBorderStrong",
-        "path": [
-          "color",
-          "border",
-          "strong"
-        ],
-        "value": "oklch(0.613 0.005 258.45)",
-        "type": "color",
-        "variable": "var(--color-border-strong)",
-        "description": "Stronger border for form controls and indicators that must reach 3:1 against the page"
       },
       "color-border-emphasis": {
         "name": "colorBorderEmphasis",
@@ -3182,428 +3056,6 @@
         "type": "color",
         "variable": "var(--color-border-primary)",
         "description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page."
-      }
-    },
-    "focus": {
-      "color-focus-ring": {
-        "name": "colorFocusRing",
-        "path": [
-          "color",
-          "focus",
-          "ring"
-        ],
-        "value": "oklch(0.623 0.188 259.83)",
-        "type": "color",
-        "variable": "var(--color-focus-ring)",
-        "description": "Focus ring border color"
-      }
-    },
-    "primary": {
-      "color-primary-foreground-default": {
-        "name": "colorPrimaryForegroundDefault",
-        "path": [
-          "color",
-          "primary",
-          "foreground",
-          "default"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-primary-foreground-default)",
-        "description": "Foreground on the solid primary fill; pairs with color.primary.background.default"
-      },
-      "color-primary-foreground-subtle": {
-        "name": "colorPrimaryForegroundSubtle",
-        "path": [
-          "color",
-          "primary",
-          "foreground",
-          "subtle"
-        ],
-        "value": "oklch(0.488 0.217 264.4)",
-        "type": "color",
-        "variable": "var(--color-primary-foreground-subtle)",
-        "description": "Primary-coloured text on the subtle primary tint and on the page (links); pairs with color.primary.background.subtle"
-      },
-      "color-primary-background-default": {
-        "name": "colorPrimaryBackgroundDefault",
-        "path": [
-          "color",
-          "primary",
-          "background",
-          "default"
-        ],
-        "value": "oklch(0.546 0.215 262.9)",
-        "type": "color",
-        "variable": "var(--color-primary-background-default)",
-        "description": "Primary interactive element background (buttons, links)"
-      },
-      "color-primary-background-default-hover": {
-        "name": "colorPrimaryBackgroundDefaultHover",
-        "path": [
-          "color",
-          "primary",
-          "background",
-          "default",
-          "hover"
-        ],
-        "value": "oklch(0.488 0.217 264.4)",
-        "type": "color",
-        "variable": "var(--color-primary-background-default-hover)",
-        "description": "Primary interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
-      },
-      "color-primary-background-default-active": {
-        "name": "colorPrimaryBackgroundDefaultActive",
-        "path": [
-          "color",
-          "primary",
-          "background",
-          "default",
-          "active"
-        ],
-        "value": "oklch(0.424 0.181 265.66)",
-        "type": "color",
-        "variable": "var(--color-primary-background-default-active)",
-        "description": "Primary interactive pressed/active state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
-      },
-      "color-primary-background-subtle": {
-        "name": "colorPrimaryBackgroundSubtle",
-        "path": [
-          "color",
-          "primary",
-          "background",
-          "subtle"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-primary-background-subtle)",
-        "description": "Subtle primary tint (focus and selection fills); pairs with color.primary.foreground.subtle"
-      },
-      "color-primary-border-default": {
-        "name": "colorPrimaryBorderDefault",
-        "path": [
-          "color",
-          "primary",
-          "border",
-          "default"
-        ],
-        "value": "oklch(0.546 0.215 262.9)",
-        "type": "color",
-        "variable": "var(--color-primary-border-default)",
-        "description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page"
-      }
-    },
-    "danger": {
-      "color-danger-background-subtle": {
-        "name": "colorDangerBackgroundSubtle",
-        "path": [
-          "color",
-          "danger",
-          "background",
-          "subtle"
-        ],
-        "value": "oklch(0.97 0.013 16.7)",
-        "type": "color",
-        "variable": "var(--color-danger-background-subtle)",
-        "description": "Danger/error state surface background"
-      },
-      "color-danger-background-subtle-hover": {
-        "name": "colorDangerBackgroundSubtleHover",
-        "path": [
-          "color",
-          "danger",
-          "background",
-          "subtle",
-          "hover"
-        ],
-        "value": "oklch(0.932 0.031 17.2)",
-        "type": "color",
-        "variable": "var(--color-danger-background-subtle-hover)",
-        "description": "Hover fill for the tinted danger background; color.danger.foreground.subtle stays readable on it"
-      },
-      "color-danger-foreground-default": {
-        "name": "colorDangerForegroundDefault",
-        "path": [
-          "color",
-          "danger",
-          "foreground",
-          "default"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-danger-foreground-default)",
-        "description": "Foreground on the solid danger fill; pairs with color.danger.background.default"
-      },
-      "color-danger-foreground-subtle": {
-        "name": "colorDangerForegroundSubtle",
-        "path": [
-          "color",
-          "danger",
-          "foreground",
-          "subtle"
-        ],
-        "value": "oklch(0.488 0.19 27.49)",
-        "type": "color",
-        "variable": "var(--color-danger-foreground-subtle)",
-        "description": "Danger/error state text color"
-      },
-      "color-danger-border-default": {
-        "name": "colorDangerBorderDefault",
-        "path": [
-          "color",
-          "danger",
-          "border",
-          "default"
-        ],
-        "value": "oklch(0.546 0.215 27.31)",
-        "type": "color",
-        "variable": "var(--color-danger-border-default)",
-        "description": "Danger/error state border color"
-      },
-      "color-danger-background-default": {
-        "name": "colorDangerBackgroundDefault",
-        "path": [
-          "color",
-          "danger",
-          "background",
-          "default"
-        ],
-        "value": "oklch(0.546 0.215 27.31)",
-        "type": "color",
-        "variable": "var(--color-danger-background-default)",
-        "description": "Danger interactive element background"
-      },
-      "color-danger-background-default-hover": {
-        "name": "colorDangerBackgroundDefaultHover",
-        "path": [
-          "color",
-          "danger",
-          "background",
-          "default",
-          "hover"
-        ],
-        "value": "oklch(0.488 0.19 27.49)",
-        "type": "color",
-        "variable": "var(--color-danger-background-default-hover)",
-        "description": "Danger interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
-      }
-    },
-    "success": {
-      "color-success-background-subtle": {
-        "name": "colorSuccessBackgroundSubtle",
-        "path": [
-          "color",
-          "success",
-          "background",
-          "subtle"
-        ],
-        "value": "oklch(0.97 0.018 156.61)",
-        "type": "color",
-        "variable": "var(--color-success-background-subtle)",
-        "description": "Success state surface background"
-      },
-      "color-success-foreground-default": {
-        "name": "colorSuccessForegroundDefault",
-        "path": [
-          "color",
-          "success",
-          "foreground",
-          "default"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-success-foreground-default)",
-        "description": "Foreground on the solid success fill; pairs with color.success.background.default"
-      },
-      "color-success-foreground-subtle": {
-        "name": "colorSuccessForegroundSubtle",
-        "path": [
-          "color",
-          "success",
-          "foreground",
-          "subtle"
-        ],
-        "value": "oklch(0.488 0.134 150.11)",
-        "type": "color",
-        "variable": "var(--color-success-foreground-subtle)",
-        "description": "Success state text color"
-      },
-      "color-success-border-default": {
-        "name": "colorSuccessBorderDefault",
-        "path": [
-          "color",
-          "success",
-          "border",
-          "default"
-        ],
-        "value": "oklch(0.543 0.152 149.29)",
-        "type": "color",
-        "variable": "var(--color-success-border-default)",
-        "description": "Success state border color"
-      },
-      "color-success-background-default": {
-        "name": "colorSuccessBackgroundDefault",
-        "path": [
-          "color",
-          "success",
-          "background",
-          "default"
-        ],
-        "value": "oklch(0.543 0.152 149.29)",
-        "type": "color",
-        "variable": "var(--color-success-background-default)",
-        "description": "Success interactive element background"
-      },
-      "color-success-background-default-hover": {
-        "name": "colorSuccessBackgroundDefaultHover",
-        "path": [
-          "color",
-          "success",
-          "background",
-          "default",
-          "hover"
-        ],
-        "value": "oklch(0.488 0.134 150.11)",
-        "type": "color",
-        "variable": "var(--color-success-background-default-hover)",
-        "description": "Success interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
-      }
-    },
-    "warning": {
-      "color-warning-background-subtle": {
-        "name": "colorWarningBackgroundSubtle",
-        "path": [
-          "color",
-          "warning",
-          "background",
-          "subtle"
-        ],
-        "value": "oklch(0.97 0.04 96)",
-        "type": "color",
-        "variable": "var(--color-warning-background-subtle)",
-        "description": "Warning state surface background"
-      },
-      "color-warning-foreground-default": {
-        "name": "colorWarningForegroundDefault",
-        "path": [
-          "color",
-          "warning",
-          "foreground",
-          "default"
-        ],
-        "value": "oklch(0.149 0.012 259.72)",
-        "type": "color",
-        "variable": "var(--color-warning-foreground-default)",
-        "description": "Foreground on the solid warning fill; pairs with color.warning.background.default. Dark text, because an amber fill cannot hold light text."
-      },
-      "color-warning-foreground-subtle": {
-        "name": "colorWarningForegroundSubtle",
-        "path": [
-          "color",
-          "warning",
-          "foreground",
-          "subtle"
-        ],
-        "value": "oklch(0.488 0.1 74)",
-        "type": "color",
-        "variable": "var(--color-warning-foreground-subtle)",
-        "description": "Warning state text color"
-      },
-      "color-warning-border-default": {
-        "name": "colorWarningBorderDefault",
-        "path": [
-          "color",
-          "warning",
-          "border",
-          "default"
-        ],
-        "value": "oklch(0.546 0.111 76)",
-        "type": "color",
-        "variable": "var(--color-warning-border-default)",
-        "description": "Warning state border color"
-      },
-      "color-warning-background-default": {
-        "name": "colorWarningBackgroundDefault",
-        "path": [
-          "color",
-          "warning",
-          "background",
-          "default"
-        ],
-        "value": "oklch(0.809 0.152 86)",
-        "type": "color",
-        "variable": "var(--color-warning-background-default)",
-        "description": "Warning interactive element background"
-      },
-      "color-warning-background-default-hover": {
-        "name": "colorWarningBackgroundDefaultHover",
-        "path": [
-          "color",
-          "warning",
-          "background",
-          "default",
-          "hover"
-        ],
-        "value": "oklch(0.714 0.143 81)",
-        "type": "color",
-        "variable": "var(--color-warning-background-default-hover)",
-        "description": "Warning interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
-      }
-    },
-    "info": {
-      "color-info-background-subtle": {
-        "name": "colorInfoBackgroundSubtle",
-        "path": [
-          "color",
-          "info",
-          "background",
-          "subtle"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-info-background-subtle)",
-        "description": "Informational state surface background"
-      },
-      "color-info-foreground-subtle": {
-        "name": "colorInfoForegroundSubtle",
-        "path": [
-          "color",
-          "info",
-          "foreground",
-          "subtle"
-        ],
-        "value": "oklch(0.488 0.217 264.4)",
-        "type": "color",
-        "variable": "var(--color-info-foreground-subtle)",
-        "description": "Informational text color"
-      }
-    },
-    "inverse": {
-      "color-inverse-background-default": {
-        "name": "colorInverseBackgroundDefault",
-        "path": [
-          "color",
-          "inverse",
-          "background",
-          "default"
-        ],
-        "value": "oklch(0.149 0.012 259.72)",
-        "type": "color",
-        "variable": "var(--color-inverse-background-default)",
-        "description": "Inverted background for high contrast areas"
-      },
-      "color-inverse-foreground-default": {
-        "name": "colorInverseForegroundDefault",
-        "path": [
-          "color",
-          "inverse",
-          "foreground",
-          "default"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-inverse-foreground-default)",
-        "description": "Inverted text for dark backgrounds"
       }
     },
     "other": {},

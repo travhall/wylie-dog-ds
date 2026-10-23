@@ -152,3 +152,62 @@
 - The accent role is not kept; the hero gradient uses the primary tint.
 - `color.background.raised` and `color.background.overlay` keep their placeholder values and, like everything else, get a design pass later.
 - Merging `status.danger` is accepted (the required-field marker moves to red 700 / 400).
+
+## Second mapping: the restructure (2026-10-23)
+
+The first table above records the rename of 2026-10-20. On 2026-10-23 the semantic layer was restructured again (property-first names, `muted` and `emphasis`, inverse in the ground, states moved to the component layer; see [semantic-pairing-model.md](semantic-pairing-model.md)). This table maps the names that existed before the restructure to the names after it.
+
+| Before the restructure              | After                                                                                 |
+| ----------------------------------- | ------------------------------------------------------------------------------------- |
+| `background.default`                | unchanged                                                                             |
+| `background.subtle`                 | `background.muted`                                                                    |
+| `background.strong`                 | `background.emphasis`                                                                 |
+| `inverse.background.default`        | `background.inverse`                                                                  |
+| `background.raised`                 | unchanged                                                                             |
+| `background.overlay`                | unchanged                                                                             |
+| `success.background.subtle`         | `background.success-muted`                                                            |
+| `warning.background.subtle`         | `background.warning-muted`                                                            |
+| `danger.background.subtle`          | `background.danger-muted`                                                             |
+| `info.background.subtle`            | `background.info-muted`                                                               |
+| `foreground.default`                | unchanged                                                                             |
+| `foreground.muted`                  | unchanged                                                                             |
+| `foreground.faint`                  | unchanged                                                                             |
+| `inverse.foreground.default`        | `foreground.inverse`                                                                  |
+| `primary.foreground.default`        | `foreground.primary`                                                                  |
+| `danger.foreground.default`         | `foreground.danger`                                                                   |
+| `success.foreground.default`        | `foreground.success`                                                                  |
+| `warning.foreground.default`        | `foreground.warning`                                                                  |
+| `success.foreground.subtle`         | `foreground.success-muted`                                                            |
+| `warning.foreground.subtle`         | `foreground.warning-muted`                                                            |
+| `danger.foreground.subtle`          | `foreground.danger-muted`                                                             |
+| `info.foreground.subtle`            | `foreground.info-muted`                                                               |
+| `primary.foreground.subtle`         | `foreground.primary-muted`                                                            |
+| `border.default`                    | unchanged                                                                             |
+| `border.subtle`                     | `border.muted`                                                                        |
+| `border.strong`                     | `border.emphasis`                                                                     |
+| `focus.ring`                        | `border.focus`                                                                        |
+| `success.border.default`            | `border.success`                                                                      |
+| `warning.border.default`            | `border.warning`                                                                      |
+| `danger.border.default`             | `border.danger`                                                                       |
+| `primary.background.default`        | `background.primary`                                                                  |
+| `success.background.default`        | `background.success`                                                                  |
+| `warning.background.default`        | `background.warning`                                                                  |
+| `danger.background.default`         | `background.danger`                                                                   |
+| `primary.background.subtle`         | `background.primary-muted`                                                            |
+| `primary.border.default`            | `border.primary`                                                                      |
+| `background.default.hover`          | removed; components alias `background.muted` (Light) and `background.emphasis` (Dark) |
+| `background.default.active`         | removed; components alias `background.emphasis`                                       |
+| `background.subtle.hover`           | removed; components alias `background.emphasis`                                       |
+| `background.subtle.active`          | removed; components alias `background.emphasis`                                       |
+| `background.default.disabled`       | removed; components alias `background.muted` (Light) and `background.emphasis` (Dark) |
+| `foreground.default.disabled`       | removed; components alias `foreground.faint`                                          |
+| `primary.background.default.hover`  | removed; components alias `background.primary-emphasis`                               |
+| `primary.background.default.active` | removed; components alias `background.primary-emphasis`                               |
+| `success.background.default.hover`  | removed; components alias `background.success-emphasis`                               |
+| `warning.background.default.hover`  | removed; components alias `background.warning-emphasis`                               |
+| `danger.background.default.hover`   | removed; components alias `background.danger-emphasis`                                |
+| `danger.background.subtle.hover`    | removed; components alias `background.danger-muted`                                   |
+| (new)                               | `background.primary-emphasis` (the value of `primary.background.default.hover`)       |
+| (new)                               | `background.danger-emphasis` (the value of `danger.background.default.hover`)         |
+| (new)                               | `background.success-emphasis` (the value of `success.background.default.hover`)       |
+| (new)                               | `background.warning-emphasis` (the value of `warning.background.default.hover`)       |

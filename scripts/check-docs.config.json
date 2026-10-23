@@ -21,7 +21,7 @@
     "documentation/guides/component-workflow.md": ["^--color-my-component-"]
   },
   "vocabulary": {
-    "checkDescriptions": false,
+    "checkDescriptions": true,
     "allow": [
       "documentation/tokens/semantic-pairing-model.md",
       "documentation/tokens/semantic-token-mapping.md",
