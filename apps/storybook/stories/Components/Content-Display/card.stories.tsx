@@ -276,7 +276,7 @@ export const InteractiveAsLink: Story = {
           <CardContent>
             <p className="text-(--color-foreground-faint) text-sm">
               Right-click to confirm this is a real anchor. All card tokens
-              apply; hover/focus/active states use the interactive token set.
+              apply; hover, focus and active states use the card state tokens.
             </p>
           </CardContent>
           <CardFooter>
