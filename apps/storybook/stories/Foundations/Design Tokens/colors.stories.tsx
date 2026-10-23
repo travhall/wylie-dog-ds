@@ -161,7 +161,7 @@ export const SystemOverview: Story = {
                   label: "Component",
                   desc: "Component-specific tokens. Reference semantics — never primitives directly.",
                   examples: [
-                    "--color-button-default-background",
+                    "--color-button-primary-background",
                     "--color-card-border",
                   ],
                 },
@@ -192,9 +192,9 @@ export const SystemOverview: Story = {
               <AlertTitle>Always use semantic or component tokens</AlertTitle>
               <AlertDescription>
                 Primitive tokens give the color system its vocabulary. Semantic
-                tokens are what your code should reach for — they carry intent
-                (primary text, danger border) and automatically shift between
-                light and dark mode.
+                tokens are what your application code should reach for — they
+                carry intent (primary text, danger border) and automatically
+                shift between light and dark mode.
               </AlertDescription>
             </Alert>
           </CardContent>
@@ -209,7 +209,7 @@ export const SystemOverview: Story = {
             <p className="text-sm text-(--color-foreground-muted)">
               Semantic tokens carry intent and adapt automatically to the active
               theme. Primitive tokens are the raw values that power them — not
-              something your components should reference directly.
+              something your code should reference directly.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -399,8 +399,8 @@ export const AllColors: Story = {
       <Alert>
         <AlertTitle>Primitive tokens are building blocks, not API</AlertTitle>
         <AlertDescription>
-          These values power the semantic layer. In your components, always
-          reach for{" "}
+          These values power the semantic layer. In your own code, always reach
+          for{" "}
           <code className="font-mono text-xs">--color-foreground-default</code>,{" "}
           <code className="font-mono text-xs">--color-background-muted</code>,
           etc. — not raw primitive names like{" "}

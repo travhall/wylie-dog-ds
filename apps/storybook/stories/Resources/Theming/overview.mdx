@@ -105,7 +105,7 @@ Purpose-driven tokens:
 
 #### Layer 3: Component Tokens
 
-Component-specific tokens that reference semantic tokens. These live in `packages/tokens/io/sync/components.json` and are resolved to CSS variables like `--color-button-primary-background`, `--space-button-padding-x-md`, etc. Components consume them exclusively — no semantic or primitive tokens are used directly in component Tailwind classes.
+Component-specific tokens that reference semantic tokens. These live in `packages/tokens/io/sync/components.json` and are resolved to CSS variables like `--color-button-primary-background`, `--space-button-padding-x-md`, etc. Components consume them exclusively. Component Tailwind classes use no other colour tokens, except the shared focus ring colour (`--color-border-focus`), and font family may use the primitive family tokens.
 
 ---
 
@@ -366,7 +366,7 @@ OKLCH makes it easier to maintain contrast by controlling lightness:
 
 ### DO:
 
-✅ **Use semantic tokens** for component styling
+✅ **Use semantic tokens** in your own pages and styling
 
 ```tsx
 <div className="bg-(--color-background-default) text-(--color-foreground-default)">

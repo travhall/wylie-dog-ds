@@ -1558,7 +1558,7 @@ export default function ArchitecturePage() {
                 {
                   n: "④",
                   title: "Base classes: component + token",
-                  desc: "Base styles use semantic token variables — bg-(--color-background-primary) — so every component automatically respects the active theme.",
+                  desc: "Base styles use component token variables — bg-(--color-button-primary-background) — which alias semantic tones, so every component automatically respects the active theme.",
                 },
                 {
                   n: "⑤",

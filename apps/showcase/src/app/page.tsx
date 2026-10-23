@@ -199,7 +199,7 @@ export default function ShowcasePage() {
               >
                 <div className="flex items-center justify-between mb-3">
                   <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
-                    interactive · primary
+                    background · primary
                   </p>
                   <p className="font-mono text-[11px] text-(--color-foreground-faint)">
                     --color-blue-*
@@ -1238,7 +1238,7 @@ export default function ShowcasePage() {
                             M
                           </span>
                           <span className="font-mono text-xs">
-                            color/interactive/primary
+                            color/background/primary
                           </span>
                         </div>
                         <div className="mt-2 grid grid-cols-2 gap-2 text-[11px]">
