@@ -128,7 +128,7 @@ export const Dashboard: Story = {
                 </p>
               </CardHeader>
               <CardContent>
-                <div className="h-75 bg-(--color-background-subtle) rounded flex items-center justify-center">
+                <div className="h-75 bg-(--color-background-muted) rounded flex items-center justify-center">
                   <p className="text-(--color-foreground-faint)">
                     Chart Component Placeholder
                   </p>
@@ -287,7 +287,7 @@ export const LandingPage: Story = {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <span className="text-xl font-bold text-(--color-primary-foreground-subtle)">
+              <span className="text-xl font-bold text-(--color-foreground-primary-muted)">
                 WylieDog
               </span>
             </div>
@@ -307,11 +307,11 @@ export const LandingPage: Story = {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-(--color-background-subtle)">
+      <section className="py-20 bg-(--color-background-muted)">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-(--color-foreground-default) mb-6">
             Build Better
-            <span className="text-(--color-primary-foreground-subtle)">
+            <span className="text-(--color-foreground-primary-muted)">
               {" "}
               Design Systems
             </span>
@@ -380,7 +380,7 @@ export const LandingPage: Story = {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-(--color-background-subtle)">
+      <section className="py-20 bg-(--color-background-muted)">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-(--color-foreground-default) mb-4">
             Ready to get started?
@@ -398,7 +398,7 @@ export const LandingPage: Story = {
 
 export const UserProfile: Story = {
   render: () => (
-    <div className=" bg-(--color-background-subtle)">
+    <div className=" bg-(--color-background-muted)">
       <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         {/* Profile Header */}
         <Card className="mb-8">
@@ -472,7 +472,7 @@ export const UserProfile: Story = {
                 ].map((project, index) => (
                   <div
                     key={index}
-                    className="border-l-4 border-(--color-primary-border-default) pl-4"
+                    className="border-l-4 border-(--color-border-primary) pl-4"
                   >
                     <h4 className="font-semibold">{project.name}</h4>
                     <p className="text-sm text-(--color-foreground-faint) mb-1">

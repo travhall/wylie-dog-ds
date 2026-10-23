@@ -4212,7 +4212,7 @@
           "destructive",
           "background-hover"
         ],
-        "value": "oklch(0.932 0.031 17.2)",
+        "value": "oklch(0.97 0.013 16.7)",
         "type": "color",
         "variable": "var(--color-badge-destructive-background-hover)",
         "description": ""
@@ -4418,7 +4418,7 @@
           "primary",
           "background-active"
         ],
-        "value": "oklch(0.424 0.181 265.66)",
+        "value": "oklch(0.488 0.217 264.4)",
         "type": "color",
         "variable": "var(--color-button-primary-background-active)",
         "description": ""
@@ -4478,7 +4478,7 @@
           "secondary",
           "background-active"
         ],
-        "value": "oklch(0.786 0.004 271.11)",
+        "value": "oklch(0.87 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-button-secondary-background-active)",
         "description": ""
@@ -5223,7 +5223,7 @@
           "disabled",
           "text"
         ],
-        "value": "oklch(0.699 0.005 271.07)",
+        "value": "oklch(0.52 0.007 264.5)",
         "type": "color",
         "variable": "var(--color-input-disabled-text)",
         "description": ""
@@ -7527,7 +7527,7 @@
           "accordion",
           "trigger-text-disabled"
         ],
-        "value": "oklch(0.699 0.005 271.07)",
+        "value": "oklch(0.52 0.007 264.5)",
         "type": "color",
         "variable": "var(--color-accordion-trigger-text-disabled)",
         "description": ""
@@ -7560,7 +7560,7 @@
           "accordion",
           "icon-disabled"
         ],
-        "value": "oklch(0.699 0.005 271.07)",
+        "value": "oklch(0.52 0.007 264.5)",
         "type": "color",
         "variable": "var(--color-accordion-icon-disabled)",
         "description": ""
@@ -8000,7 +8000,7 @@
           "breadcrumb",
           "link-disabled"
         ],
-        "value": "oklch(0.699 0.005 271.07)",
+        "value": "oklch(0.52 0.007 264.5)",
         "type": "color",
         "variable": "var(--color-breadcrumb-link-disabled)",
         "description": ""
@@ -11796,7 +11796,7 @@
           "disabled",
           "color"
         ],
-        "value": "oklch(0.699 0.005 271.07)",
+        "value": "oklch(0.52 0.007 264.5)",
         "type": "color",
         "variable": "var(--color-label-disabled-color)",
         "description": ""

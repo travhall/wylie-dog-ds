@@ -50,7 +50,7 @@ const AccordionTrigger = React.forwardRef<
         "text-(--color-accordion-trigger-text)",
         "hover:bg-(--color-accordion-trigger-hover) hover:text-(--color-accordion-trigger-text-hover)",
         "active:bg-(--color-accordion-trigger-pressed)",
-        "focus:outline-none focus:bg-(--color-accordion-trigger-focus) focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-focus-ring) focus:ring-offset-(--space-focus-ring-offset)",
+        "focus:outline-none focus:bg-(--color-accordion-trigger-focus) focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)",
         "disabled:bg-(--color-accordion-trigger-disabled) disabled:text-(--color-accordion-trigger-text-disabled) disabled:cursor-not-allowed",
         "data-[state=open]:text-(--color-accordion-trigger-text-open)",
         "[&[data-state=open]>svg]:rotate-180",

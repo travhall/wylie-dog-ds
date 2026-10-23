@@ -175,7 +175,7 @@ Always use multiple indicators:
 </Alert>
 
 // Bad - Color only, no supporting context
-<p className="text-(--color-danger-foreground-subtle)">Error</p>
+<p className="text-(--color-foreground-danger-muted)">Error</p>
 ```
 
 ---
@@ -184,7 +184,7 @@ Always use multiple indicators:
 
 ### Visible Focus Indicators
 
-All components have built-in focus ring styles using the `--color-focus-ring` token. These are applied automatically — no extra configuration needed.
+All components have built-in focus ring styles using the `--color-border-focus` token. These are applied automatically — no extra configuration needed.
 
 ### Focus Trapping
 
@@ -319,7 +319,7 @@ test("button is accessible", async () => {
     aria-describedby={hasError ? "username-error" : undefined}
   />
   {hasError && (
-    <p id="username-error" className="text-(--color-danger-foreground-subtle)">
+    <p id="username-error" className="text-(--color-foreground-danger-muted)">
       Username is required
     </p>
   )}

@@ -30,7 +30,7 @@ export default function ShowcasePage() {
                 <span
                   className="h-1.5 w-1.5 rounded-full"
                   style={{
-                    background: "var(--color-success-foreground-subtle)",
+                    background: "var(--color-foreground-success-muted)",
                   }}
                 />
                 <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-muted)">
@@ -45,7 +45,7 @@ export default function ShowcasePage() {
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98]">
                 The design system{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   that closes the gap
                 </span>{" "}
@@ -175,7 +175,7 @@ export default function ShowcasePage() {
               <Link
                 href="/tokens"
                 className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold"
-                style={{ color: "var(--color-primary-foreground-subtle)" }}
+                style={{ color: "var(--color-foreground-primary-muted)" }}
               >
                 Open the token explorer
                 <svg
@@ -229,7 +229,7 @@ export default function ShowcasePage() {
                           ...(s.active
                             ? ({
                                 "--tw-ring-color":
-                                  "var(--color-primary-border-default)",
+                                  "var(--color-border-primary)",
                                 "--tw-ring-offset-color":
                                   "var(--color-background-default)",
                               } as React.CSSProperties)
@@ -338,8 +338,7 @@ export default function ShowcasePage() {
                           className="h-2 rounded-sm"
                           style={{
                             width: row.w,
-                            background:
-                              "var(--color-primary-background-default)",
+                            background: "var(--color-background-primary)",
                           }}
                         />
                         <span className="font-mono text-[10px] text-(--color-foreground-faint)">
@@ -356,7 +355,7 @@ export default function ShowcasePage() {
       </section>
 
       {/* ── 02 · COMPONENTS ───────────────────────────────────────────────── */}
-      <section className="border-b border-(--color-border-default) bg-(--color-background-subtle)">
+      <section className="border-b border-(--color-border-default) bg-(--color-background-muted)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
             <div className="max-w-xl">
@@ -395,7 +394,7 @@ export default function ShowcasePage() {
             {/* Foundations/Button */}
             <Link
               href="/components#inputs"
-              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              className="group rounded-lg border border-(--color-border-muted) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
               style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
@@ -414,8 +413,8 @@ export default function ShowcasePage() {
                 <span
                   className="inline-flex h-8 items-center rounded-md px-3 text-xs font-semibold"
                   style={{
-                    background: "var(--color-primary-background-default)",
-                    color: "var(--color-inverse-foreground-default, white)",
+                    background: "var(--color-background-primary)",
+                    color: "var(--color-foreground-inverse, white)",
                   }}
                 >
                   Save changes
@@ -423,7 +422,7 @@ export default function ShowcasePage() {
                 <span className="inline-flex h-8 items-center rounded-md border border-(--color-border-default) px-3 text-xs font-semibold text-(--color-foreground-default)">
                   Cancel
                 </span>
-                <span className="inline-flex h-8 items-center rounded-md px-3 text-xs font-semibold text-(--color-foreground-muted) hover:bg-(--color-background-subtle) transition-colors">
+                <span className="inline-flex h-8 items-center rounded-md px-3 text-xs font-semibold text-(--color-foreground-muted) hover:bg-(--color-background-muted) transition-colors">
                   Skip
                 </span>
               </div>
@@ -432,7 +431,7 @@ export default function ShowcasePage() {
             {/* Forms/Input */}
             <Link
               href="/components#inputs"
-              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              className="group rounded-lg border border-(--color-border-muted) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
               style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
@@ -451,7 +450,7 @@ export default function ShowcasePage() {
                 <label className="block text-[11px] font-medium text-(--color-foreground-muted)">
                   Email
                 </label>
-                <div className="flex h-9 items-center gap-2 rounded-md border border-(--color-border-default) bg-(--color-background-subtle) px-3">
+                <div className="flex h-9 items-center gap-2 rounded-md border border-(--color-border-default) bg-(--color-background-muted) px-3">
                   <svg
                     viewBox="0 0 24 24"
                     className="h-3.5 w-3.5 text-(--color-foreground-faint)"
@@ -472,7 +471,7 @@ export default function ShowcasePage() {
             {/* Navigation/Tabs */}
             <Link
               href="/components#navigation"
-              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              className="group rounded-lg border border-(--color-border-muted) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
               style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
@@ -492,7 +491,7 @@ export default function ShowcasePage() {
                   <span
                     className="-mb-px border-b-2 px-3 py-2 font-medium"
                     style={{
-                      borderColor: "var(--color-primary-border-default)",
+                      borderColor: "var(--color-border-primary)",
                       color: "var(--color-foreground-default)",
                     }}
                   >
@@ -511,7 +510,7 @@ export default function ShowcasePage() {
             {/* Overlays/Dialog */}
             <Link
               href="/components#overlays"
-              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              className="group rounded-lg border border-(--color-border-muted) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
               style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
@@ -527,9 +526,9 @@ export default function ShowcasePage() {
                 Modal dialog with header, footer and overlay.
               </p>
               <div className="mt-5 relative h-27.5">
-                <div className="absolute inset-x-2 top-2 rounded-md border border-(--color-border-default) bg-(--color-background-subtle) p-3 opacity-60">
-                  <div className="h-2 w-20 rounded-full bg-(--color-background-subtle)" />
-                  <div className="mt-2 h-2 w-32 rounded-full bg-(--color-background-subtle)" />
+                <div className="absolute inset-x-2 top-2 rounded-md border border-(--color-border-default) bg-(--color-background-muted) p-3 opacity-60">
+                  <div className="h-2 w-20 rounded-full bg-(--color-background-muted)" />
+                  <div className="mt-2 h-2 w-32 rounded-full bg-(--color-background-muted)" />
                 </div>
                 <div
                   className="absolute inset-x-0 top-6 rounded-md border border-(--color-border-default) p-3 shadow-lg"
@@ -547,7 +546,7 @@ export default function ShowcasePage() {
                       className="inline-flex h-6 items-center rounded px-2 text-[10px] font-semibold"
                       style={{
                         background: "var(--color-red-600)",
-                        color: "var(--color-danger-foreground-default)",
+                        color: "var(--color-foreground-danger)",
                       }}
                     >
                       Delete
@@ -560,7 +559,7 @@ export default function ShowcasePage() {
             {/* Data Display/Table */}
             <Link
               href="/components#content-display"
-              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              className="group rounded-lg border border-(--color-border-muted) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
               style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
@@ -576,7 +575,7 @@ export default function ShowcasePage() {
                 Header, body and footer parts in a scrollable wrapper.
               </p>
               <div className="mt-5 rounded-md border border-(--color-border-default) overflow-hidden text-xs">
-                <div className="grid grid-cols-3 bg-(--color-background-subtle) px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
+                <div className="grid grid-cols-3 bg-(--color-background-muted) px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                   <span>Name</span>
                   <span>Role</span>
                   <span className="text-right">Status</span>
@@ -589,8 +588,8 @@ export default function ShowcasePage() {
                       className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[9px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
-                        color: "var(--color-success-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                        color: "var(--color-foreground-success-muted)",
                       }}
                     >
                       Active
@@ -610,7 +609,7 @@ export default function ShowcasePage() {
             {/* Feedback/Alert */}
             <Link
               href="/components#feedback"
-              className="group rounded-lg border border-(--color-border-subtle) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
+              className="group rounded-lg border border-(--color-border-muted) p-5 flex flex-col hover:border-(--color-border-default) hover:bg-(--color-background-default) transition-all"
               style={{ background: "var(--color-background-default)" }}
             >
               <div className="flex items-center justify-between">
@@ -630,16 +629,16 @@ export default function ShowcasePage() {
                   className="flex items-start gap-2 rounded-md border px-3 py-2"
                   style={{
                     borderColor:
-                      "color-mix(in oklch, var(--color-success-foreground-subtle) 35%, transparent)",
+                      "color-mix(in oklch, var(--color-foreground-success-muted) 35%, transparent)",
                     background:
-                      "color-mix(in oklch, var(--color-success-foreground-subtle) 10%, transparent)",
+                      "color-mix(in oklch, var(--color-foreground-success-muted) 10%, transparent)",
                   }}
                 >
                   <span
                     className="grid h-4 w-4 mt-px place-items-center rounded-full shrink-0"
                     style={{
-                      background: "var(--color-success-foreground-subtle)",
-                      color: "var(--color-success-foreground-default)",
+                      background: "var(--color-foreground-success-muted)",
+                      color: "var(--color-foreground-success)",
                     }}
                   >
                     <svg
@@ -707,7 +706,7 @@ export default function ShowcasePage() {
             {/* Layout */}
             <Link
               href="/patterns#cat-layout"
-              className="group rounded-xl border border-(--color-border-subtle) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
+              className="group rounded-xl border border-(--color-border-muted) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
               style={{ background: "var(--color-background-default)" }}
             >
               <div className="relative aspect-16/10 grid-bg overflow-hidden">
@@ -715,20 +714,20 @@ export default function ShowcasePage() {
                   className="absolute inset-0"
                   style={{
                     background:
-                      "color-mix(in oklch, var(--color-primary-background-default) 8%, transparent)",
+                      "color-mix(in oklch, var(--color-background-primary) 8%, transparent)",
                   }}
                 />
                 <div className="absolute inset-3 flex gap-2">
                   <div className="w-1/4 rounded-md glass-dark p-2 space-y-1">
-                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-subtle)" />
-                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-subtle)" />
+                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-muted)" />
+                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-muted)" />
                     <div
                       className="h-1.5 w-3/4 rounded-full"
                       style={{
-                        background: "var(--color-primary-background-default)",
+                        background: "var(--color-background-primary)",
                       }}
                     />
-                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-subtle)" />
+                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-muted)" />
                   </div>
                   <div className="flex-1 grid grid-cols-2 grid-rows-3 gap-1.5">
                     <div className="rounded-md glass-dark" />
@@ -740,8 +739,7 @@ export default function ShowcasePage() {
                           className="w-2 rounded-sm"
                           style={{
                             height: `${h}%`,
-                            background:
-                              "var(--color-primary-background-default)",
+                            background: "var(--color-background-primary)",
                           }}
                         />
                       ))}
@@ -756,7 +754,7 @@ export default function ShowcasePage() {
                   </span>
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-foreground-subtle) transition-colors"
+                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-foreground-primary-muted) transition-colors"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -785,7 +783,7 @@ export default function ShowcasePage() {
             {/* Auth */}
             <Link
               href="/patterns#cat-auth"
-              className="group rounded-xl border border-(--color-border-subtle) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
+              className="group rounded-xl border border-(--color-border-muted) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
               style={{ background: "var(--color-background-default)" }}
             >
               <div className="relative aspect-16/10 grid-bg overflow-hidden">
@@ -793,18 +791,18 @@ export default function ShowcasePage() {
                   className="absolute inset-0"
                   style={{
                     background:
-                      "color-mix(in oklch, var(--color-primary-background-default) 8%, transparent)",
+                      "color-mix(in oklch, var(--color-background-primary) 8%, transparent)",
                   }}
                 />
                 <div className="absolute inset-0 grid place-items-center">
                   <div className="w-3/4 rounded-md glass-dark p-3 space-y-2">
-                    <div className="h-2 w-1/3 rounded-full bg-(--color-background-subtle)" />
+                    <div className="h-2 w-1/3 rounded-full bg-(--color-background-muted)" />
                     <div className="h-5 rounded border border-(--color-border-default) bg-(--color-background-default)" />
                     <div className="h-5 rounded border border-(--color-border-default) bg-(--color-background-default)" />
                     <div
                       className="h-5 rounded"
                       style={{
-                        background: "var(--color-primary-background-default)",
+                        background: "var(--color-background-primary)",
                       }}
                     />
                   </div>
@@ -817,7 +815,7 @@ export default function ShowcasePage() {
                   </span>
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-foreground-subtle) transition-colors"
+                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-foreground-primary-muted) transition-colors"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -846,7 +844,7 @@ export default function ShowcasePage() {
             {/* Navigation */}
             <Link
               href="/patterns#cat-nav"
-              className="group rounded-xl border border-(--color-border-subtle) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
+              className="group rounded-xl border border-(--color-border-muted) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
               style={{ background: "var(--color-background-default)" }}
             >
               <div className="relative aspect-16/10 grid-bg overflow-hidden">
@@ -854,7 +852,7 @@ export default function ShowcasePage() {
                   className="absolute inset-0"
                   style={{
                     background:
-                      "color-mix(in oklch, var(--color-primary-background-default) 8%, transparent)",
+                      "color-mix(in oklch, var(--color-background-primary) 8%, transparent)",
                   }}
                 />
                 <div className="absolute inset-0 grid place-items-center px-4">
@@ -870,7 +868,7 @@ export default function ShowcasePage() {
                         <circle cx="11" cy="11" r="7" />
                         <path d="m21 21-4.3-4.3" />
                       </svg>
-                      <div className="h-2 w-1/3 rounded-full bg-(--color-background-subtle)" />
+                      <div className="h-2 w-1/3 rounded-full bg-(--color-background-muted)" />
                       <span className="ml-auto kbd kbd-sm">esc</span>
                     </div>
                     <div className="h-px w-full bg-(--color-border-default)" />
@@ -878,18 +876,18 @@ export default function ShowcasePage() {
                       className="rounded p-1"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-primary-background-default) 18%, transparent)",
+                          "color-mix(in oklch, var(--color-background-primary) 18%, transparent)",
                       }}
                     >
                       <div
                         className="h-1.5 w-1/2 rounded-full"
                         style={{
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       />
                     </div>
-                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-subtle) ml-1" />
-                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-subtle) ml-1" />
+                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-muted) ml-1" />
+                    <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-muted) ml-1" />
                   </div>
                 </div>
               </div>
@@ -900,7 +898,7 @@ export default function ShowcasePage() {
                   </span>
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-primary-foreground-subtle) transition-colors"
+                    className="h-4 w-4 text-(--color-foreground-faint) group-hover:text-(--color-foreground-primary-muted) transition-colors"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -970,7 +968,7 @@ export default function ShowcasePage() {
               <Link
                 key={p.label}
                 href={p.href}
-                className="rounded-lg border border-(--color-border-subtle) p-4 hover:border-(--color-border-default) transition-all"
+                className="rounded-lg border border-(--color-border-muted) p-4 hover:border-(--color-border-default) transition-all"
                 style={{ background: "var(--color-background-default)" }}
               >
                 <span className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
@@ -987,7 +985,7 @@ export default function ShowcasePage() {
       </section>
 
       {/* ── 04 · TOKEN BRIDGE ─────────────────────────────────────────────── */}
-      <section className="border-b border-(--color-border-default) bg-(--color-background-subtle)">
+      <section className="border-b border-(--color-border-default) bg-(--color-background-muted)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Messaging */}
@@ -998,7 +996,7 @@ export default function ShowcasePage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight">
                 Token Bridge keeps Figma and code{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   in sync
                 </span>
@@ -1030,8 +1028,8 @@ export default function ShowcasePage() {
                       className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-primary-background-default) 18%, transparent)",
-                        color: "var(--color-primary-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-background-primary) 18%, transparent)",
+                        color: "var(--color-foreground-primary-muted)",
                       }}
                     >
                       <svg
@@ -1089,13 +1087,13 @@ export default function ShowcasePage() {
                     <span
                       className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60"
                       style={{
-                        background: "var(--color-success-foreground-subtle)",
+                        background: "var(--color-foreground-success-muted)",
                       }}
                     />
                     <span
                       className="relative inline-flex h-1.5 w-1.5 rounded-full"
                       style={{
-                        background: "var(--color-success-foreground-subtle)",
+                        background: "var(--color-foreground-success-muted)",
                       }}
                     />
                   </span>
@@ -1107,7 +1105,7 @@ export default function ShowcasePage() {
                   style={{ background: "var(--color-background-default)" }}
                 >
                   {/* Title bar */}
-                  <div className="flex items-center gap-2 border-b border-(--color-border-default) bg-(--color-background-subtle) px-3 py-2">
+                  <div className="flex items-center gap-2 border-b border-(--color-border-default) bg-(--color-background-muted) px-3 py-2">
                     <div className="flex gap-1.5">
                       <span
                         className="h-2.5 w-2.5 rounded-full"
@@ -1162,9 +1160,9 @@ export default function ShowcasePage() {
                             item.active
                               ? {
                                   background:
-                                    "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
+                                    "color-mix(in oklch, var(--color-background-primary) 14%, transparent)",
                                   color:
-                                    "var(--color-primary-foreground-subtle)",
+                                    "var(--color-foreground-primary-muted)",
                                 }
                               : {}
                           }
@@ -1193,7 +1191,7 @@ export default function ShowcasePage() {
                               className="h-1.5 w-1.5 rounded-full"
                               style={{
                                 background:
-                                  "var(--color-success-foreground-subtle)",
+                                  "var(--color-foreground-success-muted)",
                               }}
                             />
                           </div>
@@ -1211,15 +1209,15 @@ export default function ShowcasePage() {
                           className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[10px]"
                           style={{
                             background:
-                              "color-mix(in oklch, var(--color-warning-foreground-subtle) 18%, transparent)",
-                            color: "var(--color-warning-foreground-subtle)",
+                              "color-mix(in oklch, var(--color-foreground-warning-muted) 18%, transparent)",
+                            color: "var(--color-foreground-warning-muted)",
                           }}
                         >
                           <span
                             className="h-1.5 w-1.5 rounded-full"
                             style={{
                               background:
-                                "var(--color-warning-foreground-subtle)",
+                                "var(--color-foreground-warning-muted)",
                             }}
                           />
                           ahead by 3
@@ -1233,8 +1231,8 @@ export default function ShowcasePage() {
                             className="font-mono text-[10px] rounded px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-warning-foreground-subtle) 18%, transparent)",
-                              color: "var(--color-warning-foreground-subtle)",
+                                "color-mix(in oklch, var(--color-foreground-warning-muted) 18%, transparent)",
+                              color: "var(--color-foreground-warning-muted)",
                             }}
                           >
                             M
@@ -1257,9 +1255,9 @@ export default function ShowcasePage() {
                             className="flex items-center gap-2 rounded border px-2 py-1.5"
                             style={{
                               borderColor:
-                                "color-mix(in oklch, var(--color-primary-background-default) 50%, transparent)",
+                                "color-mix(in oklch, var(--color-background-primary) 50%, transparent)",
                               background:
-                                "color-mix(in oklch, var(--color-primary-background-default) 8%, transparent)",
+                                "color-mix(in oklch, var(--color-background-primary) 8%, transparent)",
                             }}
                           >
                             <span
@@ -1280,8 +1278,8 @@ export default function ShowcasePage() {
                             className="font-mono text-[10px] rounded px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
-                              color: "var(--color-success-foreground-subtle)",
+                                "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                              color: "var(--color-foreground-success-muted)",
                             }}
                           >
                             +
@@ -1302,8 +1300,8 @@ export default function ShowcasePage() {
                             className="font-mono text-[10px] rounded px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-warning-foreground-subtle) 18%, transparent)",
-                              color: "var(--color-warning-foreground-subtle)",
+                                "color-mix(in oklch, var(--color-foreground-warning-muted) 18%, transparent)",
+                              color: "var(--color-foreground-warning-muted)",
                             }}
                           >
                             M
@@ -1334,16 +1332,14 @@ export default function ShowcasePage() {
                           last synced 4m ago
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-default) px-2.5 text-[11px] font-medium cursor-pointer hover:bg-(--color-background-subtle) transition-colors">
+                          <span className="inline-flex h-7 items-center rounded-md border border-(--color-border-default) px-2.5 text-[11px] font-medium cursor-pointer hover:bg-(--color-background-muted) transition-colors">
                             Discard
                           </span>
                           <span
                             className="inline-flex h-7 items-center gap-1.5 rounded-md px-2.5 text-[11px] font-semibold"
                             style={{
-                              background:
-                                "var(--color-primary-background-default)",
-                              color:
-                                "var(--color-inverse-foreground-default, white)",
+                              background: "var(--color-background-primary)",
+                              color: "var(--color-foreground-inverse, white)",
                             }}
                           >
                             Open PR

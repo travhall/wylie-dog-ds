@@ -99,9 +99,9 @@ class RecoverableErrorBoundary extends Component<
   render() {
     if (this.state.hasError) {
       return (
-        <Card className="w-125 border-(--color-danger-border-default)">
+        <Card className="w-125 border-(--color-border-danger)">
           <CardHeader>
-            <CardTitle className="text-(--color-danger-foreground-subtle)">
+            <CardTitle className="text-(--color-foreground-danger-muted)">
               Error Occurred
             </CardTitle>
           </CardHeader>
@@ -256,7 +256,7 @@ export const MultipleErrorBoundaries: Story = {
         <div className="grid grid-cols-2 gap-4">
           <ErrorBoundary
             fallback={
-              <Card className="border-(--color-danger-border-default)">
+              <Card className="border-(--color-border-danger)">
                 <CardContent className="pt-6">
                   <Alert variant="destructive">
                     <AlertDescription>Component 1 failed</AlertDescription>
@@ -270,7 +270,7 @@ export const MultipleErrorBoundaries: Story = {
 
           <ErrorBoundary
             fallback={
-              <Card className="border-(--color-danger-border-default)">
+              <Card className="border-(--color-border-danger)">
                 <CardContent className="pt-6">
                   <Alert variant="destructive">
                     <AlertDescription>Component 2 failed</AlertDescription>
@@ -293,17 +293,17 @@ export const CustomFallbackUI: Story = {
     const [shouldError, setShouldError] = useState(true);
 
     const customFallback = (
-      <Card className="w-125 border-(--color-danger-border-default) bg-(--color-danger-background-subtle)">
+      <Card className="w-125 border-(--color-border-danger) bg-(--color-background-danger-muted)">
         <CardHeader>
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-(--color-danger-background-subtle) flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-(--color-background-danger-muted) flex items-center justify-center">
               <span className="text-2xl">⚠️</span>
             </div>
             <div>
-              <CardTitle className="text-(--color-danger-foreground-subtle)">
+              <CardTitle className="text-(--color-foreground-danger-muted)">
                 Component Unavailable
               </CardTitle>
-              <p className="text-sm text-(--color-danger-foreground-subtle)">
+              <p className="text-sm text-(--color-foreground-danger-muted)">
                 This feature is temporarily unavailable
               </p>
             </div>
@@ -419,12 +419,12 @@ export const ErrorLogging: Story = {
                 {errorLog.map((entry, index) => (
                   <div
                     key={index}
-                    className="text-xs p-2 bg-(--color-danger-background-subtle) border border-(--color-danger-border-default) rounded"
+                    className="text-xs p-2 bg-(--color-background-danger-muted) border border-(--color-border-danger) rounded"
                   >
-                    <span className="font-mono text-(--color-danger-foreground-subtle)">
+                    <span className="font-mono text-(--color-foreground-danger-muted)">
                       [{entry.timestamp}]
                     </span>{" "}
-                    <span className="text-(--color-danger-foreground-subtle)">
+                    <span className="text-(--color-foreground-danger-muted)">
                       {entry.message}
                     </span>
                   </div>
@@ -487,14 +487,14 @@ export const GranularErrorBoundaries: Story = {
           {/* Header Section */}
           <ErrorBoundary
             fallback={
-              <div className="p-4 bg-(--color-danger-background-subtle) border-b border-(--color-danger-border-default)">
-                <p className="text-sm text-(--color-danger-foreground-subtle)">
+              <div className="p-4 bg-(--color-background-danger-muted) border-b border-(--color-border-danger)">
+                <p className="text-sm text-(--color-foreground-danger-muted)">
                   Header failed to load
                 </p>
               </div>
             }
           >
-            <div className="p-4 bg-(--color-background-subtle) border-b">
+            <div className="p-4 bg-(--color-background-muted) border-b">
               <h2 className="font-semibold">Page Header</h2>
               {headerError && <BuggyCounter throwError />}
             </div>
@@ -504,14 +504,14 @@ export const GranularErrorBoundaries: Story = {
             {/* Sidebar Section */}
             <ErrorBoundary
               fallback={
-                <div className="w-48 p-4 bg-(--color-danger-background-subtle) border-r border-(--color-danger-border-default)">
-                  <p className="text-xs text-(--color-danger-foreground-subtle)">
+                <div className="w-48 p-4 bg-(--color-background-danger-muted) border-r border-(--color-border-danger)">
+                  <p className="text-xs text-(--color-foreground-danger-muted)">
                     Sidebar unavailable
                   </p>
                 </div>
               }
             >
-              <div className="w-48 p-4 bg-(--color-background-subtle) border-r">
+              <div className="w-48 p-4 bg-(--color-background-muted) border-r">
                 <p className="text-sm font-medium mb-2">Sidebar</p>
                 <ul className="text-xs space-y-1">
                   <li>Menu Item 1</li>
@@ -525,7 +525,7 @@ export const GranularErrorBoundaries: Story = {
             {/* Main Content Section */}
             <ErrorBoundary
               fallback={
-                <div className="flex-1 p-4 bg-(--color-danger-background-subtle)">
+                <div className="flex-1 p-4 bg-(--color-background-danger-muted)">
                   <Alert variant="destructive">
                     <AlertDescription>
                       Content failed to load. Please try refreshing the page.
@@ -595,7 +595,7 @@ export const BestPractices: Story = {
             Error boundaries only catch errors during rendering. Use try/catch
             for async operations.
           </p>
-          <pre className="text-xs bg-(--color-background-subtle) p-2 rounded mt-2 overflow-x-auto">
+          <pre className="text-xs bg-(--color-background-muted) p-2 rounded mt-2 overflow-x-auto">
             {`try {
   await fetchData();
 } catch (error) {

@@ -14,34 +14,34 @@
       "variables": {
         "badge.default.background": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "badge.default.text": {
           "$type": "color",
-          "$value": "{color.primary.foreground.default}",
+          "$value": "{color.foreground.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.foreground.default}",
-            "Dark": "{color.primary.foreground.default}"
+            "Light": "{color.foreground.primary}",
+            "Dark": "{color.foreground.primary}"
           }
         },
         "badge.default.border": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "badge.secondary.background": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "badge.secondary.text": {
@@ -54,82 +54,82 @@
         },
         "badge.secondary.border": {
           "$type": "color",
-          "$value": "{color.border.subtle}",
+          "$value": "{color.border.muted}",
           "valuesByMode": {
-            "Light": "{color.border.subtle}",
-            "Dark": "{color.border.subtle}"
+            "Light": "{color.border.muted}",
+            "Dark": "{color.border.muted}"
           }
         },
         "badge.success.background": {
           "$type": "color",
-          "$value": "{color.success.background.default}",
+          "$value": "{color.background.success}",
           "valuesByMode": {
-            "Light": "{color.success.background.default}",
-            "Dark": "{color.success.background.default}"
+            "Light": "{color.background.success}",
+            "Dark": "{color.background.success}"
           }
         },
         "badge.success.text": {
           "$type": "color",
-          "$value": "{color.success.foreground.default}",
+          "$value": "{color.foreground.success}",
           "valuesByMode": {
-            "Light": "{color.success.foreground.default}",
-            "Dark": "{color.success.foreground.default}"
+            "Light": "{color.foreground.success}",
+            "Dark": "{color.foreground.success}"
           }
         },
         "badge.success.border": {
           "$type": "color",
-          "$value": "{color.success.background.default}",
+          "$value": "{color.background.success}",
           "valuesByMode": {
-            "Light": "{color.success.background.default}",
-            "Dark": "{color.success.background.default}"
+            "Light": "{color.background.success}",
+            "Dark": "{color.background.success}"
           }
         },
         "badge.warning.background": {
           "$type": "color",
-          "$value": "{color.warning.background.default}",
+          "$value": "{color.background.warning}",
           "valuesByMode": {
-            "Light": "{color.warning.background.default}",
-            "Dark": "{color.warning.background.default}"
+            "Light": "{color.background.warning}",
+            "Dark": "{color.background.warning}"
           }
         },
         "badge.warning.text": {
           "$type": "color",
-          "$value": "{color.warning.foreground.default}",
+          "$value": "{color.foreground.warning}",
           "valuesByMode": {
-            "Light": "{color.warning.foreground.default}",
-            "Dark": "{color.warning.foreground.default}"
+            "Light": "{color.foreground.warning}",
+            "Dark": "{color.foreground.warning}"
           }
         },
         "badge.warning.border": {
           "$type": "color",
-          "$value": "{color.warning.background.default}",
+          "$value": "{color.background.warning}",
           "valuesByMode": {
-            "Light": "{color.warning.background.default}",
-            "Dark": "{color.warning.background.default}"
+            "Light": "{color.background.warning}",
+            "Dark": "{color.background.warning}"
           }
         },
         "badge.destructive.background": {
           "$type": "color",
-          "$value": "{color.danger.background.subtle}",
+          "$value": "{color.background.danger-muted}",
           "valuesByMode": {
-            "Light": "{color.danger.background.subtle}",
-            "Dark": "{color.danger.background.subtle}"
+            "Light": "{color.background.danger-muted}",
+            "Dark": "{color.background.danger-muted}"
           }
         },
         "badge.destructive.text": {
           "$type": "color",
-          "$value": "{color.danger.foreground.subtle}",
+          "$value": "{color.foreground.danger-muted}",
           "valuesByMode": {
-            "Light": "{color.danger.foreground.subtle}",
-            "Dark": "{color.danger.foreground.subtle}"
+            "Light": "{color.foreground.danger-muted}",
+            "Dark": "{color.foreground.danger-muted}"
           }
         },
         "badge.destructive.border": {
           "$type": "color",
-          "$value": "{color.danger.border.default}",
+          "$value": "{color.border.danger}",
           "valuesByMode": {
-            "Light": "{color.danger.border.default}",
-            "Dark": "{color.danger.border.default}"
+            "Light": "{color.border.danger}",
+            "Dark": "{color.border.danger}"
           }
         },
         "badge.outline.background": {
@@ -264,66 +264,66 @@
         },
         "button.primary.background": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "button.primary.background-hover": {
           "$type": "color",
-          "$value": "{color.primary.background.default.hover}",
+          "$value": "{color.background.primary-emphasis}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default.hover}",
-            "Dark": "{color.primary.background.default.hover}"
+            "Light": "{color.background.primary-emphasis}",
+            "Dark": "{color.background.primary-emphasis}"
           }
         },
         "button.primary.background-active": {
           "$type": "color",
-          "$value": "{color.primary.background.default.active}",
+          "$value": "{color.background.primary-emphasis}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default.active}",
-            "Dark": "{color.primary.background.default.active}"
+            "Light": "{color.background.primary-emphasis}",
+            "Dark": "{color.background.primary-emphasis}"
           }
         },
         "button.primary.text": {
           "$type": "color",
-          "$value": "{color.primary.foreground.default}",
+          "$value": "{color.foreground.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.foreground.default}",
-            "Dark": "{color.primary.foreground.default}"
+            "Light": "{color.foreground.primary}",
+            "Dark": "{color.foreground.primary}"
           }
         },
         "button.primary.border": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "button.secondary.background": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "button.secondary.background-hover": {
           "$type": "color",
-          "$value": "{color.background.subtle.hover}",
+          "$value": "{color.background.emphasis}",
           "valuesByMode": {
-            "Light": "{color.background.subtle.hover}",
-            "Dark": "{color.background.subtle.hover}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "button.secondary.background-active": {
           "$type": "color",
-          "$value": "{color.background.subtle.active}",
+          "$value": "{color.background.emphasis}",
           "valuesByMode": {
-            "Light": "{color.background.subtle.active}",
-            "Dark": "{color.background.subtle.active}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "button.secondary.text": {
@@ -360,18 +360,18 @@
         },
         "button.ghost.background-hover": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "button.ghost.background-active": {
           "$type": "color",
-          "$value": "{color.background.strong}",
+          "$value": "{color.background.emphasis}",
           "valuesByMode": {
-            "Light": "{color.background.strong}",
-            "Dark": "{color.background.strong}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "button.ghost.text": {
@@ -384,10 +384,10 @@
         },
         "button.outline.background-hover": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "button.outline.text": {
@@ -408,34 +408,34 @@
         },
         "button.destructive.background": {
           "$type": "color",
-          "$value": "{color.danger.background.default}",
+          "$value": "{color.background.danger}",
           "valuesByMode": {
-            "Light": "{color.danger.background.default}",
-            "Dark": "{color.danger.background.default}"
+            "Light": "{color.background.danger}",
+            "Dark": "{color.background.danger}"
           }
         },
         "button.destructive.background-hover": {
           "$type": "color",
-          "$value": "{color.danger.background.default.hover}",
+          "$value": "{color.background.danger-emphasis}",
           "valuesByMode": {
-            "Light": "{color.danger.background.default.hover}",
-            "Dark": "{color.danger.background.default.hover}"
+            "Light": "{color.background.danger-emphasis}",
+            "Dark": "{color.background.danger-emphasis}"
           }
         },
         "button.destructive.text": {
           "$type": "color",
-          "$value": "{color.danger.foreground.default}",
+          "$value": "{color.foreground.danger}",
           "valuesByMode": {
-            "Light": "{color.danger.foreground.default}",
-            "Dark": "{color.danger.foreground.default}"
+            "Light": "{color.foreground.danger}",
+            "Dark": "{color.foreground.danger}"
           }
         },
         "button.destructive.border": {
           "$type": "color",
-          "$value": "{color.danger.background.default}",
+          "$value": "{color.background.danger}",
           "valuesByMode": {
-            "Light": "{color.danger.background.default}",
-            "Dark": "{color.danger.background.default}"
+            "Light": "{color.background.danger}",
+            "Dark": "{color.background.danger}"
           }
         },
         "button.padding-y.sm": {
@@ -555,10 +555,10 @@
         },
         "button.link.text": {
           "$type": "color",
-          "$value": "{color.primary.foreground.subtle}",
+          "$value": "{color.foreground.primary-muted}",
           "valuesByMode": {
-            "Light": "{color.primary.foreground.subtle}",
-            "Dark": "{color.primary.foreground.subtle}"
+            "Light": "{color.foreground.primary-muted}",
+            "Dark": "{color.foreground.primary-muted}"
           }
         },
         "card.background": {
@@ -659,34 +659,34 @@
         },
         "input.background-hover": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "input.border": {
           "$type": "color",
-          "$value": "{color.border.strong}",
+          "$value": "{color.border.emphasis}",
           "valuesByMode": {
-            "Light": "{color.border.strong}",
-            "Dark": "{color.border.strong}"
+            "Light": "{color.border.emphasis}",
+            "Dark": "{color.border.emphasis}"
           }
         },
         "input.border-focus": {
           "$type": "color",
-          "$value": "{color.focus.ring}",
+          "$value": "{color.border.focus}",
           "valuesByMode": {
-            "Light": "{color.focus.ring}",
-            "Dark": "{color.focus.ring}"
+            "Light": "{color.border.focus}",
+            "Dark": "{color.border.focus}"
           }
         },
         "input.border-error": {
           "$type": "color",
-          "$value": "{color.danger.border.default}",
+          "$value": "{color.border.danger}",
           "valuesByMode": {
-            "Light": "{color.danger.border.default}",
-            "Dark": "{color.danger.border.default}"
+            "Light": "{color.border.danger}",
+            "Dark": "{color.border.danger}"
           }
         },
         "input.placeholder": {
@@ -699,18 +699,18 @@
         },
         "input.disabled.background": {
           "$type": "color",
-          "$value": "{color.background.strong}",
+          "$value": "{color.background.emphasis}",
           "valuesByMode": {
-            "Light": "{color.background.strong}",
-            "Dark": "{color.background.strong}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "input.disabled.text": {
           "$type": "color",
-          "$value": "{color.foreground.default.disabled}",
+          "$value": "{color.foreground.faint}",
           "valuesByMode": {
-            "Light": "{color.foreground.default.disabled}",
-            "Dark": "{color.foreground.default.disabled}"
+            "Light": "{color.foreground.faint}",
+            "Dark": "{color.foreground.faint}"
           }
         },
         "input.padding-x": {
@@ -755,10 +755,10 @@
         },
         "alert.default.background": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "alert.default.border": {
@@ -779,74 +779,74 @@
         },
         "alert.destructive.background": {
           "$type": "color",
-          "$value": "{color.danger.background.subtle}",
+          "$value": "{color.background.danger-muted}",
           "valuesByMode": {
-            "Light": "{color.danger.background.subtle}",
-            "Dark": "{color.danger.background.subtle}"
+            "Light": "{color.background.danger-muted}",
+            "Dark": "{color.background.danger-muted}"
           }
         },
         "alert.destructive.border": {
           "$type": "color",
-          "$value": "{color.danger.border.default}",
+          "$value": "{color.border.danger}",
           "valuesByMode": {
-            "Light": "{color.danger.border.default}",
-            "Dark": "{color.danger.border.default}"
+            "Light": "{color.border.danger}",
+            "Dark": "{color.border.danger}"
           }
         },
         "alert.destructive.text": {
           "$type": "color",
-          "$value": "{color.danger.foreground.subtle}",
+          "$value": "{color.foreground.danger-muted}",
           "valuesByMode": {
-            "Light": "{color.danger.foreground.subtle}",
-            "Dark": "{color.danger.foreground.subtle}"
+            "Light": "{color.foreground.danger-muted}",
+            "Dark": "{color.foreground.danger-muted}"
           }
         },
         "alert.warning.background": {
           "$type": "color",
-          "$value": "{color.warning.background.subtle}",
+          "$value": "{color.background.warning-muted}",
           "valuesByMode": {
-            "Light": "{color.warning.background.subtle}",
-            "Dark": "{color.warning.background.subtle}"
+            "Light": "{color.background.warning-muted}",
+            "Dark": "{color.background.warning-muted}"
           }
         },
         "alert.warning.border": {
           "$type": "color",
-          "$value": "{color.warning.border.default}",
+          "$value": "{color.border.warning}",
           "valuesByMode": {
-            "Light": "{color.warning.border.default}",
-            "Dark": "{color.warning.border.default}"
+            "Light": "{color.border.warning}",
+            "Dark": "{color.border.warning}"
           }
         },
         "alert.warning.text": {
           "$type": "color",
-          "$value": "{color.warning.foreground.subtle}",
+          "$value": "{color.foreground.warning-muted}",
           "valuesByMode": {
-            "Light": "{color.warning.foreground.subtle}",
-            "Dark": "{color.warning.foreground.subtle}"
+            "Light": "{color.foreground.warning-muted}",
+            "Dark": "{color.foreground.warning-muted}"
           }
         },
         "alert.success.background": {
           "$type": "color",
-          "$value": "{color.success.background.subtle}",
+          "$value": "{color.background.success-muted}",
           "valuesByMode": {
-            "Light": "{color.success.background.subtle}",
-            "Dark": "{color.success.background.subtle}"
+            "Light": "{color.background.success-muted}",
+            "Dark": "{color.background.success-muted}"
           }
         },
         "alert.success.border": {
           "$type": "color",
-          "$value": "{color.success.border.default}",
+          "$value": "{color.border.success}",
           "valuesByMode": {
-            "Light": "{color.success.border.default}",
-            "Dark": "{color.success.border.default}"
+            "Light": "{color.border.success}",
+            "Dark": "{color.border.success}"
           }
         },
         "alert.success.text": {
           "$type": "color",
-          "$value": "{color.success.foreground.subtle}",
+          "$value": "{color.foreground.success-muted}",
           "valuesByMode": {
-            "Light": "{color.success.foreground.subtle}",
-            "Dark": "{color.success.foreground.subtle}"
+            "Light": "{color.foreground.success-muted}",
+            "Dark": "{color.foreground.success-muted}"
           }
         },
         "menubar.border": {
@@ -867,10 +867,10 @@
         },
         "menubar.trigger-focus": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "menubar.trigger-text-focus": {
@@ -883,10 +883,10 @@
         },
         "menubar.trigger-open": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "menubar.trigger-text-open": {
@@ -923,10 +923,10 @@
         },
         "menubar.item-focus": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "menubar.item-text-focus": {
@@ -979,10 +979,10 @@
         },
         "navigation.focus": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "navigation.text-focus": {
@@ -995,18 +995,18 @@
         },
         "navigation.active": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "navigation.open": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "navigation.content-border": {
@@ -1035,10 +1035,10 @@
         },
         "navigation.indicator": {
           "$type": "color",
-          "$value": "{color.border.strong}",
+          "$value": "{color.border.emphasis}",
           "valuesByMode": {
-            "Light": "{color.border.strong}",
-            "Dark": "{color.border.strong}"
+            "Light": "{color.border.emphasis}",
+            "Dark": "{color.border.emphasis}"
           }
         },
         "command.background": {
@@ -1099,10 +1099,10 @@
         },
         "command.item-selected": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "command.item-text-selected": {
@@ -1123,10 +1123,10 @@
         },
         "tabs.list.background": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "tabs.list.text": {
@@ -1155,10 +1155,10 @@
         },
         "tabs.trigger.background-hover": {
           "$type": "color",
-          "$value": "{color.background.subtle.hover}",
+          "$value": "{color.background.emphasis}",
           "valuesByMode": {
-            "Light": "{color.background.subtle.hover}",
-            "Dark": "{color.background.subtle.hover}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "tabs.trigger.text-hover": {
@@ -1179,10 +1179,10 @@
         },
         "tabs.trigger.indicator.color": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "collapsible.background": {
@@ -1203,10 +1203,10 @@
         },
         "calendar.nav-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "calendar.nav-text-hover": {
@@ -1227,10 +1227,10 @@
         },
         "calendar.day-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "calendar.day-text-hover": {
@@ -1243,18 +1243,18 @@
         },
         "calendar.day-selected": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "calendar.day-text-selected": {
           "$type": "color",
-          "$value": "{color.primary.foreground.default}",
+          "$value": "{color.foreground.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.foreground.default}",
-            "Dark": "{color.primary.foreground.default}"
+            "Light": "{color.foreground.primary}",
+            "Dark": "{color.foreground.primary}"
           }
         },
         "accordion.border": {
@@ -1283,10 +1283,10 @@
         },
         "accordion.trigger-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "accordion.trigger-text": {
@@ -1315,34 +1315,34 @@
         },
         "accordion.trigger-pressed": {
           "$type": "color",
-          "$value": "{color.background.default.active}",
+          "$value": "{color.background.emphasis}",
           "valuesByMode": {
-            "Light": "{color.background.default.active}",
-            "Dark": "{color.background.default.active}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "accordion.trigger-focus": {
           "$type": "color",
-          "$value": "{color.primary.background.subtle}",
+          "$value": "{color.background.primary-muted}",
           "valuesByMode": {
-            "Light": "{color.primary.background.subtle}",
-            "Dark": "{color.primary.background.subtle}"
+            "Light": "{color.background.primary-muted}",
+            "Dark": "{color.background.primary-muted}"
           }
         },
         "accordion.trigger-disabled": {
           "$type": "color",
-          "$value": "{color.background.default.disabled}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.disabled}",
-            "Dark": "{color.background.default.disabled}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "accordion.trigger-text-disabled": {
           "$type": "color",
-          "$value": "{color.foreground.default.disabled}",
+          "$value": "{color.foreground.faint}",
           "valuesByMode": {
-            "Light": "{color.foreground.default.disabled}",
-            "Dark": "{color.foreground.default.disabled}"
+            "Light": "{color.foreground.faint}",
+            "Dark": "{color.foreground.faint}"
           }
         },
         "accordion.icon-hover": {
@@ -1363,18 +1363,18 @@
         },
         "accordion.icon-disabled": {
           "$type": "color",
-          "$value": "{color.foreground.default.disabled}",
+          "$value": "{color.foreground.faint}",
           "valuesByMode": {
-            "Light": "{color.foreground.default.disabled}",
-            "Dark": "{color.foreground.default.disabled}"
+            "Light": "{color.foreground.faint}",
+            "Dark": "{color.foreground.faint}"
           }
         },
         "avatar.background": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "avatar.border": {
@@ -1387,10 +1387,10 @@
         },
         "avatar.fallback-background": {
           "$type": "color",
-          "$value": "{color.background.strong}",
+          "$value": "{color.background.emphasis}",
           "valuesByMode": {
-            "Light": "{color.background.strong}",
-            "Dark": "{color.background.strong}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "avatar.fallback-text": {
@@ -1411,10 +1411,10 @@
         },
         "breadcrumb.link": {
           "$type": "color",
-          "$value": "{color.primary.foreground.subtle}",
+          "$value": "{color.foreground.primary-muted}",
           "valuesByMode": {
-            "Light": "{color.primary.foreground.subtle}",
-            "Dark": "{color.primary.foreground.subtle}"
+            "Light": "{color.foreground.primary-muted}",
+            "Dark": "{color.foreground.primary-muted}"
           }
         },
         "breadcrumb.link-hover": {
@@ -1451,10 +1451,10 @@
         },
         "carousel.nav-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "carousel.nav-text-hover": {
@@ -1483,10 +1483,10 @@
         },
         "contextmenu.item-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "contextmenu.item-text-hover": {
@@ -1579,10 +1579,10 @@
         },
         "form.error": {
           "$type": "color",
-          "$value": "{color.danger.foreground.subtle}",
+          "$value": "{color.foreground.danger-muted}",
           "valuesByMode": {
-            "Light": "{color.danger.foreground.subtle}",
-            "Dark": "{color.danger.foreground.subtle}"
+            "Light": "{color.foreground.danger-muted}",
+            "Dark": "{color.foreground.danger-muted}"
           }
         },
         "form.label": {
@@ -1619,10 +1619,10 @@
         },
         "pagination.active": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "pagination.text": {
@@ -1635,10 +1635,10 @@
         },
         "pagination.text-active": {
           "$type": "color",
-          "$value": "{color.primary.foreground.default}",
+          "$value": "{color.foreground.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.foreground.default}",
-            "Dark": "{color.primary.foreground.default}"
+            "Light": "{color.foreground.primary}",
+            "Dark": "{color.foreground.primary}"
           }
         },
         "pagination.text-hover": {
@@ -1675,74 +1675,74 @@
         },
         "progress.background": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "progress.default-fill": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "progress.destructive-fill": {
           "$type": "color",
-          "$value": "{color.danger.background.default}",
+          "$value": "{color.background.danger}",
           "valuesByMode": {
-            "Light": "{color.danger.background.default}",
-            "Dark": "{color.danger.background.default}"
+            "Light": "{color.background.danger}",
+            "Dark": "{color.background.danger}"
           }
         },
         "progress.success-fill": {
           "$type": "color",
-          "$value": "{color.success.background.default}",
+          "$value": "{color.background.success}",
           "valuesByMode": {
-            "Light": "{color.success.background.default}",
-            "Dark": "{color.success.background.default}"
+            "Light": "{color.background.success}",
+            "Dark": "{color.background.success}"
           }
         },
         "progress.warning-fill": {
           "$type": "color",
-          "$value": "{color.warning.background.default}",
+          "$value": "{color.background.warning}",
           "valuesByMode": {
-            "Light": "{color.warning.background.default}",
-            "Dark": "{color.warning.background.default}"
+            "Light": "{color.background.warning}",
+            "Dark": "{color.background.warning}"
           }
         },
         "radio.background-checked": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "radio.border": {
           "$type": "color",
-          "$value": "{color.border.strong}",
+          "$value": "{color.border.emphasis}",
           "valuesByMode": {
-            "Light": "{color.border.strong}",
-            "Dark": "{color.border.strong}"
+            "Light": "{color.border.emphasis}",
+            "Dark": "{color.border.emphasis}"
           }
         },
         "radio.border-checked": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "radio.indicator": {
           "$type": "color",
-          "$value": "{color.primary.foreground.default}",
+          "$value": "{color.foreground.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.foreground.default}",
-            "Dark": "{color.primary.foreground.default}"
+            "Light": "{color.foreground.primary}",
+            "Dark": "{color.foreground.primary}"
           }
         },
         "resizable.handle": {
@@ -1755,10 +1755,10 @@
         },
         "resizable.handle-background": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "resizable.handle-border": {
@@ -1771,26 +1771,26 @@
         },
         "scrollbar.thumb": {
           "$type": "color",
-          "$value": "{color.border.subtle}",
+          "$value": "{color.border.muted}",
           "valuesByMode": {
-            "Light": "{color.border.subtle}",
-            "Dark": "{color.border.subtle}"
+            "Light": "{color.border.muted}",
+            "Dark": "{color.border.muted}"
           }
         },
         "skeleton.background": {
           "$type": "color",
-          "$value": "{color.background.strong}",
+          "$value": "{color.background.emphasis}",
           "valuesByMode": {
-            "Light": "{color.background.strong}",
-            "Dark": "{color.background.strong}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "slider.range": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "slider.thumb": {
@@ -1803,18 +1803,18 @@
         },
         "slider.thumb-border": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "slider.track": {
           "$type": "color",
-          "$value": "{color.background.subtle}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.subtle}",
-            "Dark": "{color.background.subtle}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.muted}"
           }
         },
         "table.border": {
@@ -1835,10 +1835,10 @@
         },
         "table.footer-background": {
           "$type": "color",
-          "$value": "{color.background.strong}",
+          "$value": "{color.background.emphasis}",
           "valuesByMode": {
-            "Light": "{color.background.strong}",
-            "Dark": "{color.background.strong}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "table.header-text": {
@@ -1851,26 +1851,26 @@
         },
         "table.row-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "table.row-selected": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "toast.action-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "toast.close": {
@@ -1907,10 +1907,10 @@
         },
         "toggle.pressed": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "toggle.text": {
@@ -1931,34 +1931,34 @@
         },
         "toggle.text-pressed": {
           "$type": "color",
-          "$value": "{color.primary.foreground.default}",
+          "$value": "{color.foreground.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.foreground.default}",
-            "Dark": "{color.primary.foreground.default}"
+            "Light": "{color.foreground.primary}",
+            "Dark": "{color.foreground.primary}"
           }
         },
         "tooltip.background": {
           "$type": "color",
-          "$value": "{color.inverse.background.default}",
+          "$value": "{color.background.inverse}",
           "valuesByMode": {
-            "Light": "{color.inverse.background.default}",
-            "Dark": "{color.inverse.background.default}"
+            "Light": "{color.background.inverse}",
+            "Dark": "{color.background.inverse}"
           }
         },
         "tooltip.border": {
           "$type": "color",
-          "$value": "{color.border.subtle}",
+          "$value": "{color.border.muted}",
           "valuesByMode": {
-            "Light": "{color.border.subtle}",
-            "Dark": "{color.border.subtle}"
+            "Light": "{color.border.muted}",
+            "Dark": "{color.border.muted}"
           }
         },
         "tooltip.text": {
           "$type": "color",
-          "$value": "{color.inverse.foreground.default}",
+          "$value": "{color.foreground.inverse}",
           "valuesByMode": {
-            "Light": "{color.inverse.foreground.default}",
-            "Dark": "{color.inverse.foreground.default}"
+            "Light": "{color.foreground.inverse}",
+            "Dark": "{color.foreground.inverse}"
           }
         },
         "tooltip.padding-x": {
@@ -2379,18 +2379,18 @@
         },
         "switch.track.background.checked": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "switch.track.background.unchecked": {
           "$type": "color",
-          "$value": "{color.border.strong}",
+          "$value": "{color.border.emphasis}",
           "valuesByMode": {
-            "Light": "{color.border.strong}",
-            "Dark": "{color.border.strong}"
+            "Light": "{color.border.emphasis}",
+            "Dark": "{color.border.emphasis}"
           }
         },
         "switch.thumb.background": {
@@ -2611,10 +2611,10 @@
         },
         "label.disabled.color": {
           "$type": "color",
-          "$value": "{color.foreground.default.disabled}",
+          "$value": "{color.foreground.faint}",
           "valuesByMode": {
-            "Light": "{color.foreground.default.disabled}",
-            "Dark": "{color.foreground.default.disabled}"
+            "Light": "{color.foreground.faint}",
+            "Dark": "{color.foreground.faint}"
           }
         },
         "sheet.overlay.background": {
@@ -3996,76 +3996,76 @@
         },
         "toast.destructive.border": {
           "$type": "color",
-          "$value": "{color.danger.background.default}",
+          "$value": "{color.background.danger}",
           "valuesByMode": {
-            "Light": "{color.danger.background.default}",
-            "Dark": "{color.danger.background.default}"
+            "Light": "{color.background.danger}",
+            "Dark": "{color.background.danger}"
           }
         },
         "toast.destructive.background": {
           "$type": "color",
-          "$value": "{color.danger.background.default}",
+          "$value": "{color.background.danger}",
           "valuesByMode": {
-            "Light": "{color.danger.background.default}",
-            "Dark": "{color.danger.background.default}"
+            "Light": "{color.background.danger}",
+            "Dark": "{color.background.danger}"
           }
         },
         "toast.success.border": {
           "$type": "color",
-          "$value": "{color.success.background.default}",
+          "$value": "{color.background.success}",
           "valuesByMode": {
-            "Light": "{color.success.background.default}",
-            "Dark": "{color.success.background.default}"
+            "Light": "{color.background.success}",
+            "Dark": "{color.background.success}"
           }
         },
         "toast.success.background": {
           "$type": "color",
-          "$value": "{color.success.background.default}",
+          "$value": "{color.background.success}",
           "valuesByMode": {
-            "Light": "{color.success.background.default}",
-            "Dark": "{color.success.background.default}"
+            "Light": "{color.background.success}",
+            "Dark": "{color.background.success}"
           }
         },
         "toast.warning.border": {
           "$type": "color",
-          "$value": "{color.warning.background.default}",
+          "$value": "{color.background.warning}",
           "valuesByMode": {
-            "Light": "{color.warning.background.default}",
-            "Dark": "{color.warning.background.default}"
+            "Light": "{color.background.warning}",
+            "Dark": "{color.background.warning}"
           }
         },
         "toast.warning.background": {
           "$type": "color",
-          "$value": "{color.warning.background.default}",
+          "$value": "{color.background.warning}",
           "valuesByMode": {
-            "Light": "{color.warning.background.default}",
-            "Dark": "{color.warning.background.default}"
+            "Light": "{color.background.warning}",
+            "Dark": "{color.background.warning}"
           }
         },
         "toast.destructive.text": {
           "$type": "color",
-          "$value": "{color.danger.foreground.default}",
+          "$value": "{color.foreground.danger}",
           "valuesByMode": {
-            "Light": "{color.danger.foreground.default}",
-            "Dark": "{color.danger.foreground.default}"
+            "Light": "{color.foreground.danger}",
+            "Dark": "{color.foreground.danger}"
           },
           "$description": "Text color on destructive toast (saturated red background)"
         },
         "toast.success.text": {
           "$type": "color",
-          "$value": "{color.success.foreground.default}",
+          "$value": "{color.foreground.success}",
           "valuesByMode": {
-            "Light": "{color.success.foreground.default}",
-            "Dark": "{color.success.foreground.default}"
+            "Light": "{color.foreground.success}",
+            "Dark": "{color.foreground.success}"
           },
           "$description": "Text color on success toast (saturated green background)"
         },
         "toast.warning.text": {
           "$type": "color",
-          "$value": "{color.warning.foreground.default}",
+          "$value": "{color.foreground.warning}",
           "valuesByMode": {
-            "Light": "{color.warning.foreground.default}",
-            "Dark": "{color.warning.foreground.default}"
+            "Light": "{color.foreground.warning}",
+            "Dark": "{color.foreground.warning}"
           },
           "$description": "Text color on warning toast (saturated orange background)"
         },
@@ -4832,10 +4832,10 @@
         },
         "dropdown-menu.item.background-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "dropdown-menu.item.text-hover": {
@@ -5176,42 +5176,42 @@
         },
         "checkbox.border.color": {
           "$type": "color",
-          "$value": "{color.border.strong}",
+          "$value": "{color.border.emphasis}",
           "valuesByMode": {
-            "Light": "{color.border.strong}",
-            "Dark": "{color.border.strong}"
+            "Light": "{color.border.emphasis}",
+            "Dark": "{color.border.emphasis}"
           }
         },
         "checkbox.checked.background": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "checkbox.checked.text": {
           "$type": "color",
-          "$value": "{color.primary.foreground.default}",
+          "$value": "{color.foreground.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.foreground.default}",
-            "Dark": "{color.primary.foreground.default}"
+            "Light": "{color.foreground.primary}",
+            "Dark": "{color.foreground.primary}"
           }
         },
         "checkbox.checked.border": {
           "$type": "color",
-          "$value": "{color.primary.background.default}",
+          "$value": "{color.background.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default}",
-            "Dark": "{color.primary.background.default}"
+            "Light": "{color.background.primary}",
+            "Dark": "{color.background.primary}"
           }
         },
         "checkbox.error.border": {
           "$type": "color",
-          "$value": "{color.danger.border.default}",
+          "$value": "{color.border.danger}",
           "valuesByMode": {
-            "Light": "{color.danger.border.default}",
-            "Dark": "{color.danger.border.default}"
+            "Light": "{color.border.danger}",
+            "Dark": "{color.border.danger}"
           }
         },
         "checkbox.disabled.opacity": {
@@ -5288,74 +5288,74 @@
         },
         "badge.default.background-hover": {
           "$type": "color",
-          "$value": "{color.primary.background.default.hover}",
+          "$value": "{color.background.primary-emphasis}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default.hover}",
-            "Dark": "{color.primary.background.default.hover}"
+            "Light": "{color.background.primary-emphasis}",
+            "Dark": "{color.background.primary-emphasis}"
           }
         },
         "badge.secondary.background-hover": {
           "$type": "color",
-          "$value": "{color.background.default.active}",
+          "$value": "{color.background.emphasis}",
           "valuesByMode": {
-            "Light": "{color.background.default.active}",
-            "Dark": "{color.background.default.active}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "badge.success.background-hover": {
           "$type": "color",
-          "$value": "{color.success.background.default.hover}",
+          "$value": "{color.background.success-emphasis}",
           "valuesByMode": {
-            "Light": "{color.success.background.default.hover}",
-            "Dark": "{color.success.background.default.hover}"
+            "Light": "{color.background.success-emphasis}",
+            "Dark": "{color.background.success-emphasis}"
           }
         },
         "badge.warning.background-hover": {
           "$type": "color",
-          "$value": "{color.warning.background.default.hover}",
+          "$value": "{color.background.warning-emphasis}",
           "valuesByMode": {
-            "Light": "{color.warning.background.default.hover}",
-            "Dark": "{color.warning.background.default.hover}"
+            "Light": "{color.background.warning-emphasis}",
+            "Dark": "{color.background.warning-emphasis}"
           }
         },
         "badge.destructive.background-hover": {
           "$type": "color",
-          "$value": "{color.danger.background.subtle.hover}",
+          "$value": "{color.background.danger-muted}",
           "valuesByMode": {
-            "Light": "{color.danger.background.subtle.hover}",
-            "Dark": "{color.danger.background.subtle.hover}"
+            "Light": "{color.background.danger-muted}",
+            "Dark": "{color.background.danger-muted}"
           }
         },
         "badge.outline.background-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "card.background-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "card.border-hover": {
           "$type": "color",
-          "$value": "{color.focus.ring}",
+          "$value": "{color.border.focus}",
           "valuesByMode": {
-            "Light": "{color.focus.ring}",
-            "Dark": "{color.focus.ring}"
+            "Light": "{color.border.focus}",
+            "Dark": "{color.border.focus}"
           }
         },
         "popover.border-focus": {
           "$type": "color",
-          "$value": "{color.focus.ring}",
+          "$value": "{color.border.focus}",
           "valuesByMode": {
-            "Light": "{color.focus.ring}",
-            "Dark": "{color.focus.ring}"
+            "Light": "{color.border.focus}",
+            "Dark": "{color.border.focus}"
           }
         },
         "form.label.text": {
@@ -5416,10 +5416,10 @@
         },
         "form.error.text": {
           "$type": "color",
-          "$value": "{color.danger.foreground.subtle}",
+          "$value": "{color.foreground.danger-muted}",
           "valuesByMode": {
-            "Light": "{color.danger.foreground.subtle}",
-            "Dark": "{color.danger.foreground.subtle}"
+            "Light": "{color.foreground.danger-muted}",
+            "Dark": "{color.foreground.danger-muted}"
           }
         },
         "form.error.font-size": {
@@ -5432,10 +5432,10 @@
         },
         "form.required.color": {
           "$type": "color",
-          "$value": "{color.danger.foreground.subtle}",
+          "$value": "{color.foreground.danger-muted}",
           "valuesByMode": {
-            "Light": "{color.danger.foreground.subtle}",
-            "Dark": "{color.danger.foreground.subtle}"
+            "Light": "{color.foreground.danger-muted}",
+            "Dark": "{color.foreground.danger-muted}"
           }
         },
         "form.gap": {
@@ -5472,122 +5472,122 @@
         },
         "badge.default.background-focus": {
           "$type": "color",
-          "$value": "{color.primary.background.default.hover}",
+          "$value": "{color.background.primary-emphasis}",
           "valuesByMode": {
-            "Light": "{color.primary.background.default.hover}",
-            "Dark": "{color.primary.background.default.hover}"
+            "Light": "{color.background.primary-emphasis}",
+            "Dark": "{color.background.primary-emphasis}"
           }
         },
         "badge.default.background-disabled": {
           "$type": "color",
-          "$value": "{color.background.default.disabled}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.disabled}",
-            "Dark": "{color.background.default.disabled}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "badge.secondary.background-focus": {
           "$type": "color",
-          "$value": "{color.primary.background.subtle}",
+          "$value": "{color.background.primary-muted}",
           "valuesByMode": {
-            "Light": "{color.primary.background.subtle}",
-            "Dark": "{color.primary.background.subtle}"
+            "Light": "{color.background.primary-muted}",
+            "Dark": "{color.background.primary-muted}"
           }
         },
         "badge.secondary.background-disabled": {
           "$type": "color",
-          "$value": "{color.background.default.disabled}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.disabled}",
-            "Dark": "{color.background.default.disabled}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "badge.success.background-focus": {
           "$type": "color",
-          "$value": "{color.success.background.default.hover}",
+          "$value": "{color.background.success-emphasis}",
           "valuesByMode": {
-            "Light": "{color.success.background.default.hover}",
-            "Dark": "{color.success.background.default.hover}"
+            "Light": "{color.background.success-emphasis}",
+            "Dark": "{color.background.success-emphasis}"
           }
         },
         "badge.success.background-disabled": {
           "$type": "color",
-          "$value": "{color.background.default.disabled}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.disabled}",
-            "Dark": "{color.background.default.disabled}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "badge.warning.background-focus": {
           "$type": "color",
-          "$value": "{color.warning.background.default.hover}",
+          "$value": "{color.background.warning-emphasis}",
           "valuesByMode": {
-            "Light": "{color.warning.background.default.hover}",
-            "Dark": "{color.warning.background.default.hover}"
+            "Light": "{color.background.warning-emphasis}",
+            "Dark": "{color.background.warning-emphasis}"
           }
         },
         "badge.warning.background-disabled": {
           "$type": "color",
-          "$value": "{color.background.default.disabled}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.disabled}",
-            "Dark": "{color.background.default.disabled}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "badge.destructive.background-focus": {
           "$type": "color",
-          "$value": "{color.primary.background.subtle}",
+          "$value": "{color.background.primary-muted}",
           "valuesByMode": {
-            "Light": "{color.primary.background.subtle}",
-            "Dark": "{color.primary.background.subtle}"
+            "Light": "{color.background.primary-muted}",
+            "Dark": "{color.background.primary-muted}"
           }
         },
         "badge.destructive.background-disabled": {
           "$type": "color",
-          "$value": "{color.background.default.disabled}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.disabled}",
-            "Dark": "{color.background.default.disabled}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "badge.outline.background-focus": {
           "$type": "color",
-          "$value": "{color.primary.background.subtle}",
+          "$value": "{color.background.primary-muted}",
           "valuesByMode": {
-            "Light": "{color.primary.background.subtle}",
-            "Dark": "{color.primary.background.subtle}"
+            "Light": "{color.background.primary-muted}",
+            "Dark": "{color.background.primary-muted}"
           }
         },
         "badge.outline.background-disabled": {
           "$type": "color",
-          "$value": "{color.background.default.disabled}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.disabled}",
-            "Dark": "{color.background.default.disabled}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "card.background-focus": {
           "$type": "color",
-          "$value": "{color.primary.background.subtle}",
+          "$value": "{color.background.primary-muted}",
           "valuesByMode": {
-            "Light": "{color.primary.background.subtle}",
-            "Dark": "{color.primary.background.subtle}"
+            "Light": "{color.background.primary-muted}",
+            "Dark": "{color.background.primary-muted}"
           }
         },
         "card.background-active": {
           "$type": "color",
-          "$value": "{color.background.default.active}",
+          "$value": "{color.background.emphasis}",
           "valuesByMode": {
-            "Light": "{color.background.default.active}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.emphasis}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "card.background-disabled": {
           "$type": "color",
-          "$value": "{color.background.default.disabled}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.disabled}",
-            "Dark": "{color.background.default.disabled}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "card.disabled.opacity": {
@@ -5600,18 +5600,18 @@
         },
         "navigation.background-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "calendar.day-focus": {
           "$type": "color",
-          "$value": "{color.primary.background.subtle}",
+          "$value": "{color.background.primary-muted}",
           "valuesByMode": {
-            "Light": "{color.primary.background.subtle}",
-            "Dark": "{color.primary.background.subtle}"
+            "Light": "{color.background.primary-muted}",
+            "Dark": "{color.background.primary-muted}"
           }
         },
         "calendar.day-text-focus": {
@@ -5624,10 +5624,10 @@
         },
         "calendar.nav-focus": {
           "$type": "color",
-          "$value": "{color.primary.background.subtle}",
+          "$value": "{color.background.primary-muted}",
           "valuesByMode": {
-            "Light": "{color.primary.background.subtle}",
-            "Dark": "{color.primary.background.subtle}"
+            "Light": "{color.background.primary-muted}",
+            "Dark": "{color.background.primary-muted}"
           }
         },
         "calendar.nav-text-focus": {
@@ -5696,26 +5696,26 @@
         },
         "breadcrumb.link-focus": {
           "$type": "color",
-          "$value": "{color.primary.background.subtle}",
+          "$value": "{color.background.primary-muted}",
           "valuesByMode": {
-            "Light": "{color.primary.background.subtle}",
-            "Dark": "{color.primary.background.subtle}"
+            "Light": "{color.background.primary-muted}",
+            "Dark": "{color.background.primary-muted}"
           }
         },
         "breadcrumb.link-disabled": {
           "$type": "color",
-          "$value": "{color.foreground.default.disabled}",
+          "$value": "{color.foreground.faint}",
           "valuesByMode": {
-            "Light": "{color.foreground.default.disabled}",
-            "Dark": "{color.foreground.default.disabled}"
+            "Light": "{color.foreground.faint}",
+            "Dark": "{color.foreground.faint}"
           }
         },
         "pagination.background-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "pagination.item.font-weight": {
@@ -5736,18 +5736,18 @@
         },
         "table.row-focus": {
           "$type": "color",
-          "$value": "{color.primary.background.subtle}",
+          "$value": "{color.background.primary-muted}",
           "valuesByMode": {
-            "Light": "{color.primary.background.subtle}",
-            "Dark": "{color.primary.background.subtle}"
+            "Light": "{color.background.primary-muted}",
+            "Dark": "{color.background.primary-muted}"
           }
         },
         "toggle.background-hover": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "select.content.z-index": {
@@ -5760,10 +5760,10 @@
         },
         "select.item.background-focus": {
           "$type": "color",
-          "$value": "{color.background.default.hover}",
+          "$value": "{color.background.muted}",
           "valuesByMode": {
-            "Light": "{color.background.default.hover}",
-            "Dark": "{color.background.default.hover}"
+            "Light": "{color.background.muted}",
+            "Dark": "{color.background.emphasis}"
           }
         },
         "select.item.text-focus": {
@@ -6153,18 +6153,18 @@
         },
         "label.error.text": {
           "$type": "color",
-          "$value": "{color.danger.foreground.subtle}",
+          "$value": "{color.foreground.danger-muted}",
           "valuesByMode": {
-            "Light": "{color.danger.foreground.subtle}",
-            "Dark": "{color.danger.foreground.subtle}"
+            "Light": "{color.foreground.danger-muted}",
+            "Dark": "{color.foreground.danger-muted}"
           }
         },
         "label.required.text": {
           "$type": "color",
-          "$value": "{color.danger.foreground.subtle}",
+          "$value": "{color.foreground.danger-muted}",
           "valuesByMode": {
-            "Light": "{color.danger.foreground.subtle}",
-            "Dark": "{color.danger.foreground.subtle}"
+            "Light": "{color.foreground.danger-muted}",
+            "Dark": "{color.foreground.danger-muted}"
           }
         },
         "separator.color": {
@@ -6329,10 +6329,10 @@
         },
         "form.label.error.text": {
           "$type": "color",
-          "$value": "{color.danger.foreground.subtle}",
+          "$value": "{color.foreground.danger-muted}",
           "valuesByMode": {
-            "Light": "{color.danger.foreground.subtle}",
-            "Dark": "{color.danger.foreground.subtle}"
+            "Light": "{color.foreground.danger-muted}",
+            "Dark": "{color.foreground.danger-muted}"
           }
         },
         "feature-grid.item.border-color": {
@@ -6345,10 +6345,10 @@
         },
         "feature-grid.item.border-color-hover": {
           "$type": "color",
-          "$value": "{color.primary.border.default}",
+          "$value": "{color.border.primary}",
           "valuesByMode": {
-            "Light": "{color.primary.border.default}",
-            "Dark": "{color.primary.border.default}"
+            "Light": "{color.border.primary}",
+            "Dark": "{color.border.primary}"
           }
         },
         "input.padding-y.sm": {

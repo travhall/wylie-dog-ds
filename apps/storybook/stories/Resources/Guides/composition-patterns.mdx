@@ -111,7 +111,7 @@ Wrap related elements in container components for consistent spacing and layout:
   {hasError && (
     <p
       id="email-error"
-      className="text-sm text-(--color-danger-foreground-subtle)"
+      className="text-sm text-(--color-foreground-danger-muted)"
     >
       Please enter a valid email address
     </p>
@@ -220,7 +220,7 @@ Wrap related elements in container components for consistent spacing and layout:
               <DropdownMenuItem>Edit</DropdownMenuItem>
               <DropdownMenuItem>Duplicate</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-(--color-danger-foreground-subtle)">
+              <DropdownMenuItem className="text-(--color-foreground-danger-muted)">
                 Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -521,7 +521,7 @@ useEffect(() => {
 ```tsx
 <div className="flex min-h-screen">
   {/* Sidebar */}
-  <aside className="w-64 border-r bg-(--color-background-subtle)">
+  <aside className="w-64 border-r bg-(--color-background-muted)">
     <nav className="space-y-2 p-4">{/* Navigation items */}</nav>
   </aside>
 

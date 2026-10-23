@@ -18,17 +18,15 @@ Primitive palettes: `blue`, `gray`, `green`, `orange`, `pink`, `purple`, `red`, 
 
 Semantic groups:
 
-| Group                    | Tokens                                                                                                                                                          |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Ground background        | `--color-background-{default,subtle,strong,raised,overlay}`; states `--color-background-default-{hover,active,disabled}` and `--color-background-subtle-active` |
-| Ground foreground        | `--color-foreground-{default,muted,faint}` and `--color-foreground-default-disabled`                                                                            |
-| Ground border            | `--color-border-{default,subtle,strong}`; the focus ring is `--color-focus-ring`                                                                                |
-| Primary                  | `--color-primary-background-{default,subtle}` (default has `-hover` and `-active`), `--color-primary-foreground-{default,subtle}`                               |
-| Danger, success, warning | `--color-{role}-background-{default,subtle}` (default has `-hover`), `--color-{role}-foreground-{default,subtle}`, `--color-{role}-border-default`              |
-| Info                     | `--color-info-background-subtle`, `--color-info-foreground-subtle`                                                                                              |
-| Inverse                  | `--color-inverse-background-default`, `--color-inverse-foreground-default`                                                                                      |
+| Group                                     | Tokens                                                                                                                                                                                                                                                                   |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Background                                | `--color-background-{default,muted,emphasis,raised,overlay,inverse}`                                                                                                                                                                                                     |
+| Foreground                                | `--color-foreground-{default,muted,faint,inverse}`                                                                                                                                                                                                                       |
+| Border                                    | `--color-border-{default,muted,emphasis,focus}`                                                                                                                                                                                                                          |
+| Roles (primary, danger, success, warning) | `--color-background-{role}` (solid), `--color-background-{role}-muted` (tint), `--color-background-{role}-emphasis` (stronger solid), `--color-foreground-{role}` (text over the solid), `--color-foreground-{role}-muted` (text over the tint), `--color-border-{role}` |
+| Info                                      | `--color-background-info-muted`, `--color-foreground-info-muted`                                                                                                                                                                                                         |
 
-`--color-inverse-foreground-default` flips with the theme, so pair it only with `--color-inverse-background-default`. Text on a solid role fill uses that role's foreground, for example `--color-danger-foreground-default` on `--color-danger-background-default`.
+`--color-foreground-inverse` flips with the theme, so pair it only with `--color-background-inverse`. Text over a solid role fill uses that role foreground, for example `--color-foreground-danger` over `--color-background-danger`. There are no hover, active or disabled semantic tokens: a component token supplies the state and references a tone.
 
 ## Spacing
 

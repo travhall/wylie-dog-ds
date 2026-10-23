@@ -46,7 +46,7 @@ export default function TypographyPage() {
       headline={
         <>
           A pairing that ships{" "}
-          <span className="text-(--color-primary-foreground-subtle)">
+          <span className="text-(--color-foreground-primary-muted)">
             long-form
           </span>
           , dashboards, and code.

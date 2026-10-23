@@ -10,7 +10,7 @@ export const checkboxVariants = cva(
     "border-(length:--space-checkbox-border-width)",
     "focus:outline-none",
     "focus:ring-(length:--space-checkbox-focus-ring-width)",
-    "focus:ring-(--color-focus-ring)",
+    "focus:ring-(--color-border-focus)",
     "focus:ring-offset-(--space-checkbox-focus-ring-offset)",
     "disabled:cursor-not-allowed disabled:opacity-(--checkbox-disabled-opacity)",
     "data-[state=checked]:bg-(--color-checkbox-checked-background) data-[state=checked]:text-(--color-checkbox-checked-text)",

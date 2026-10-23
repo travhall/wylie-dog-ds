@@ -42,7 +42,7 @@ export default function MotionPage() {
       headline={
         <>
           {easing.length} curves and {semanticDuration.length} durations{" "}
-          <span className="text-(--color-primary-foreground-subtle)">
+          <span className="text-(--color-foreground-primary-muted)">
             cover everything.
           </span>
         </>
@@ -85,7 +85,7 @@ export default function MotionPage() {
         <div className="overflow-x-auto rounded-xl border border-(--color-border-default)">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-(--color-border-default) bg-(--color-background-subtle)">
+              <tr className="border-b border-(--color-border-default) bg-(--color-background-muted)">
                 <th className="px-4 py-2 text-left font-semibold text-(--color-foreground-default)">
                   Name
                 </th>

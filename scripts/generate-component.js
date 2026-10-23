@@ -419,7 +419,7 @@ export const WithInteractions: Story = {
  */
 export const UsageExample: Story = {
   render: () => (
-    <div className="w-96 space-y-4 p-4 border border-(--color-border-subtle) rounded-lg">
+    <div className="w-96 space-y-4 p-4 border border-(--color-border-muted) rounded-lg">
       <h3 className="text-lg font-semibold text-(--color-foreground-default)">
         Example Context
       </h3>

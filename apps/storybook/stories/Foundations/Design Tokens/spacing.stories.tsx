@@ -192,7 +192,7 @@ export const SpacingScale: Story = {
                   </span>
                 ) : (
                   <div
-                    className="h-4 rounded-sm bg-(--color-primary-background-default)/60"
+                    className="h-4 rounded-sm bg-(--color-background-primary)/60"
                     style={{ width: `${(px / maxPx) * 100}%` }}
                   />
                 )}
@@ -245,7 +245,7 @@ export const ShadowScale: Story = {
       <div className="grid md:grid-cols-2 gap-4">
         {/* Light surface */}
         <div className="rounded-xl border border-(--color-border-default) overflow-hidden">
-          <div className="px-4 py-2 bg-(--color-background-subtle) border-b border-(--color-border-default)">
+          <div className="px-4 py-2 bg-(--color-background-muted) border-b border-(--color-border-default)">
             <p className="text-xs font-semibold text-(--color-foreground-muted) uppercase tracking-wide">
               Light surface
             </p>
@@ -266,7 +266,7 @@ export const ShadowScale: Story = {
 
         {/* Dark surface */}
         <div className="rounded-xl border border-(--color-border-default) overflow-hidden">
-          <div className="px-4 py-2 bg-(--color-background-subtle) border-b border-(--color-border-default)">
+          <div className="px-4 py-2 bg-(--color-background-muted) border-b border-(--color-border-default)">
             <p className="text-xs font-semibold text-(--color-foreground-muted) uppercase tracking-wide">
               Dark surface — shadows disappear
             </p>
@@ -291,7 +291,7 @@ export const ShadowScale: Story = {
 
       {/* Dark mode guidance */}
       <div className="rounded-lg border border-(--color-border-default) divide-y divide-(--color-border-default) overflow-hidden">
-        <div className="px-4 py-3 bg-(--color-background-subtle)">
+        <div className="px-4 py-3 bg-(--color-background-muted)">
           <p className="text-sm font-semibold">Dark mode strategy</p>
           <p className="text-xs text-(--color-foreground-muted) mt-0.5">
             Standard CSS shadows use opaque dark RGBA values. On dark surfaces
@@ -302,26 +302,26 @@ export const ShadowScale: Story = {
           {[
             {
               label: "Avoid",
-              color: "text-(--color-danger-foreground-subtle)",
+              color: "text-(--color-foreground-danger-muted)",
               code: "shadow-md",
               note: "Invisible on dark backgrounds",
             },
             {
               label: "Better",
-              color: "text-(--color-warning-foreground-subtle)",
+              color: "text-(--color-foreground-warning-muted)",
               code: "shadow-md + border",
               note: "Add border-(--color-border-default) to elevated surfaces",
             },
             {
               label: "Best",
-              color: "text-(--color-success-foreground-subtle)",
+              color: "text-(--color-foreground-success-muted)",
               code: "shadow token (planned)",
               note: "Theme-aware shadow tokens that swap to a glow in dark mode",
             },
           ].map(({ label, color, code, note }) => (
             <div key={label} className="p-4 space-y-1">
               <p className={`text-xs font-semibold ${color}`}>{label}</p>
-              <code className="block text-xs font-mono bg-(--color-background-subtle) px-1.5 py-1 rounded">
+              <code className="block text-xs font-mono bg-(--color-background-muted) px-1.5 py-1 rounded">
                 {code}
               </code>
               <p className="text-xs text-(--color-foreground-faint)">{note}</p>
@@ -446,9 +446,9 @@ export const ComponentSpacingExamples: Story = {
             (label, i) => (
               <div
                 key={label}
-                className="flex items-center gap-3 p-3 bg-(--color-background-subtle) rounded-lg"
+                className="flex items-center gap-3 p-3 bg-(--color-background-muted) rounded-lg"
               >
-                <div className="w-8 h-8 rounded bg-(--color-primary-background-default)/20 border border-(--color-primary-border-default)/30 shrink-0 flex items-center justify-center text-xs font-semibold text-(--color-primary-foreground-subtle)">
+                <div className="w-8 h-8 rounded bg-(--color-background-primary)/20 border border-(--color-border-primary)/30 shrink-0 flex items-center justify-center text-xs font-semibold text-(--color-foreground-primary-muted)">
                   {i + 1}
                 </div>
                 <div>
@@ -601,20 +601,20 @@ export const SpacingPlayground: Story = {
             </CardHeader>
             <CardContent>
               <div className="space-y-1">
-                <p className="text-[10px] font-mono text-(--color-info-foreground-subtle)">
+                <p className="text-[10px] font-mono text-(--color-foreground-info-muted)">
                   padding area
                 </p>
                 <div
-                  className={`${pClass} border-2 border-dashed border-(--color-primary-border-default)/40 bg-(--color-primary-background-default)/5 rounded`}
+                  className={`${pClass} border-2 border-dashed border-(--color-border-primary)/40 bg-(--color-background-primary)/5 rounded`}
                 >
-                  <div className="bg-(--color-background-default) border-2 border-(--color-primary-border-default) rounded">
+                  <div className="bg-(--color-background-default) border-2 border-(--color-border-primary) rounded">
                     <div className="text-sm text-center text-(--color-foreground-muted) py-2">
                       Content
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="mt-3 p-3 rounded-md bg-(--color-background-subtle)/50 text-xs font-mono">
+              <div className="mt-3 p-3 rounded-md bg-(--color-background-muted)/50 text-xs font-mono">
                 className=&quot;{pClass}&quot;
               </div>
             </CardContent>
@@ -627,12 +627,12 @@ export const SpacingPlayground: Story = {
             </CardHeader>
             <CardContent>
               <div className="space-y-1">
-                <p className="text-[10px] font-mono text-(--color-warning-foreground-subtle)">
+                <p className="text-[10px] font-mono text-(--color-foreground-warning-muted)">
                   margin area
                 </p>
-                <div className="border-2 border-dashed border-(--color-warning-foreground-subtle)/40 bg-(--color-warning-background-default)/5 rounded">
+                <div className="border-2 border-dashed border-(--color-foreground-warning-muted)/40 bg-(--color-background-warning)/5 rounded">
                   <div
-                    className={`${mClass} bg-(--color-background-default) border-2 border-(--color-warning-foreground-subtle) rounded p-(--space-200)`}
+                    className={`${mClass} bg-(--color-background-default) border-2 border-(--color-foreground-warning-muted) rounded p-(--space-200)`}
                   >
                     <div className="text-sm text-center text-(--color-foreground-muted)">
                       Content
@@ -640,7 +640,7 @@ export const SpacingPlayground: Story = {
                   </div>
                 </div>
               </div>
-              <div className="mt-3 p-3 rounded-md bg-(--color-background-subtle)/50 text-xs font-mono">
+              <div className="mt-3 p-3 rounded-md bg-(--color-background-muted)/50 text-xs font-mono">
                 className=&quot;{mClass}&quot;
               </div>
             </CardContent>
@@ -654,18 +654,18 @@ export const SpacingPlayground: Story = {
           </CardHeader>
           <CardContent>
             <div
-              className={`flex ${gClass} p-(--space-200) border border-(--color-border-default) rounded-lg bg-(--color-background-subtle)/30`}
+              className={`flex ${gClass} p-(--space-200) border border-(--color-border-default) rounded-lg bg-(--color-background-muted)/30`}
             >
               {["Item 1", "Item 2", "Item 3"].map((label) => (
                 <div
                   key={label}
-                  className="flex-1 p-(--space-200) bg-(--color-primary-background-default)/10 border border-(--color-primary-border-default)/30 rounded text-center text-sm"
+                  className="flex-1 p-(--space-200) bg-(--color-background-primary)/10 border border-(--color-border-primary)/30 rounded text-center text-sm"
                 >
                   {label}
                 </div>
               ))}
             </div>
-            <div className="mt-3 p-3 rounded-md bg-(--color-background-subtle)/50 text-xs font-mono">
+            <div className="mt-3 p-3 rounded-md bg-(--color-background-muted)/50 text-xs font-mono">
               className=&quot;flex {gClass}&quot;
             </div>
           </CardContent>

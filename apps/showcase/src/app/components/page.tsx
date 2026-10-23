@@ -30,11 +30,11 @@ function CompCard({
   };
   return (
     <article
-      className="rounded-xl border border-(--color-border-subtle) bg-(--color-background-default) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
+      className="rounded-xl border border-(--color-border-muted) bg-(--color-background-default) overflow-hidden flex flex-col hover:border-(--color-border-default) transition-all"
       style={{ boxShadow: "var(--shadow-sm)" }}
     >
       <div
-        className="relative bg-(--color-background-subtle) border-b border-(--color-border-default) h-42 flex items-center justify-center overflow-hidden p-4"
+        className="relative bg-(--color-background-muted) border-b border-(--color-border-default) h-42 flex items-center justify-center overflow-hidden p-4"
         style={dotGrid}
       >
         <div className="relative z-10 flex items-center justify-center w-full h-full">
@@ -50,7 +50,7 @@ function CompCard({
         </p>
         <a
           href={getStoryDocsUrl(href)}
-          className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) hover:text-(--color-primary-foreground-subtle) transition-colors"
+          className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
         >
           Storybook
           <svg
@@ -152,7 +152,7 @@ export default function ComponentsPage() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-primary-background-default) 22%, transparent) 0%, transparent 60%)",
+              "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-background-primary) 22%, transparent) 0%, transparent 60%)",
           }}
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
@@ -174,7 +174,7 @@ export default function ComponentsPage() {
                 <br />
                 All tokens.{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   All accessible.
                 </span>
@@ -219,7 +219,7 @@ export default function ComponentsPage() {
                   className="absolute -top-3 left-6 z-10 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-muted)"
                   style={{
                     background:
-                      "color-mix(in oklch, var(--color-background-strong) 80%, transparent)",
+                      "color-mix(in oklch, var(--color-background-emphasis) 80%, transparent)",
                     backdropFilter: "blur(12px)",
                     border:
                       "1px solid color-mix(in oklch, var(--color-border-default) 70%, transparent)",
@@ -228,7 +228,7 @@ export default function ComponentsPage() {
                   <span
                     className="h-1.5 w-1.5 rounded-full"
                     style={{
-                      background: "var(--color-success-foreground-subtle)",
+                      background: "var(--color-foreground-success-muted)",
                     }}
                   />
                   7 components rendered
@@ -277,15 +277,14 @@ export default function ComponentsPage() {
                         className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
                         style={{
                           background:
-                            "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
-                          color: "var(--color-success-foreground-subtle)",
+                            "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                          color: "var(--color-foreground-success-muted)",
                         }}
                       >
                         <span
                           className="h-1.5 w-1.5 rounded-full"
                           style={{
-                            background:
-                              "var(--color-success-foreground-subtle)",
+                            background: "var(--color-foreground-success-muted)",
                           }}
                         />
                         Online
@@ -311,15 +310,14 @@ export default function ComponentsPage() {
                       <div
                         className="h-1.5 w-full overflow-hidden rounded-full"
                         style={{
-                          background: "var(--color-background-strong)",
+                          background: "var(--color-background-emphasis)",
                         }}
                       >
                         <div
                           className="h-full rounded-full"
                           style={{
                             width: "82%",
-                            background:
-                              "var(--color-primary-background-default)",
+                            background: "var(--color-background-primary)",
                           }}
                         />
                       </div>
@@ -332,9 +330,9 @@ export default function ComponentsPage() {
                     <div
                       className="mt-1 flex items-center gap-2 h-8.5 rounded-[10px] border px-2.5 text-sm"
                       style={{
-                        borderColor: "var(--color-primary-border-default)",
+                        borderColor: "var(--color-border-primary)",
                         boxShadow:
-                          "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
+                          "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 22%, transparent)",
                         background: "var(--color-background-default)",
                       }}
                     >
@@ -369,14 +367,13 @@ export default function ComponentsPage() {
                       <span
                         className="relative inline-flex h-5 w-9 cursor-pointer items-center rounded-full"
                         style={{
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       >
                         <span
                           className="inline-block h-4 w-4 translate-x-4 rounded-full"
                           style={{
-                            background:
-                              "var(--color-inverse-foreground-default)",
+                            background: "var(--color-foreground-inverse)",
                           }}
                         />
                       </span>
@@ -504,7 +501,7 @@ export default function ComponentsPage() {
               href="accordion"
               preview={
                 <div className="w-full max-w-55 rounded-md border border-(--color-border-default) bg-(--color-background-default) overflow-hidden">
-                  <div className="flex items-center justify-between px-3 py-2 text-xs font-semibold border-b border-(--color-border-default) bg-(--color-background-subtle)">
+                  <div className="flex items-center justify-between px-3 py-2 text-xs font-semibold border-b border-(--color-border-default) bg-(--color-background-muted)">
                     <span>Shipping</span>
                     <svg
                       viewBox="0 0 24 24"
@@ -513,7 +510,7 @@ export default function ComponentsPage() {
                       stroke="currentColor"
                       strokeWidth={2}
                       style={{
-                        color: "var(--color-primary-foreground-subtle)",
+                        color: "var(--color-foreground-primary-muted)",
                         transform: "rotate(180deg)",
                       }}
                     >
@@ -585,7 +582,7 @@ export default function ComponentsPage() {
                   <span
                     className="inline-grid place-items-center rounded-full text-[11px] font-medium"
                     style={{
-                      background: "var(--color-background-strong)",
+                      background: "var(--color-background-emphasis)",
                       color: "var(--color-foreground-muted)",
                       height: 40,
                       width: 40,
@@ -607,8 +604,8 @@ export default function ComponentsPage() {
                     <span
                       className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold"
                       style={{
-                        background: "var(--color-primary-background-default)",
-                        color: "var(--color-inverse-foreground-default)",
+                        background: "var(--color-background-primary)",
+                        color: "var(--color-foreground-inverse)",
                       }}
                     >
                       Default
@@ -620,14 +617,14 @@ export default function ComponentsPage() {
                       className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
-                        color: "var(--color-success-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                        color: "var(--color-foreground-success-muted)",
                       }}
                     >
                       <span
                         className="h-1.5 w-1.5 rounded-full"
                         style={{
-                          background: "var(--color-success-foreground-subtle)",
+                          background: "var(--color-foreground-success-muted)",
                         }}
                       />
                       Active
@@ -638,8 +635,8 @@ export default function ComponentsPage() {
                       className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-warning-foreground-subtle) 18%, transparent)",
-                        color: "var(--color-warning-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-foreground-warning-muted) 18%, transparent)",
+                        color: "var(--color-foreground-warning-muted)",
                       }}
                     >
                       Beta
@@ -648,8 +645,8 @@ export default function ComponentsPage() {
                       className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-danger-foreground-subtle) 18%, transparent)",
-                        color: "var(--color-danger-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-foreground-danger-muted) 18%, transparent)",
+                        color: "var(--color-foreground-danger-muted)",
                       }}
                     >
                       Deprecated
@@ -712,8 +709,8 @@ export default function ComponentsPage() {
                     <span
                       className="py-0.5 rounded font-semibold"
                       style={{
-                        background: "var(--color-primary-background-default)",
-                        color: "var(--color-inverse-foreground-default)",
+                        background: "var(--color-background-primary)",
+                        color: "var(--color-foreground-inverse)",
                       }}
                     >
                       10
@@ -778,14 +775,14 @@ export default function ComponentsPage() {
                       className="ml-auto inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[9px] font-medium"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
-                        color: "var(--color-success-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                        color: "var(--color-foreground-success-muted)",
                       }}
                     >
                       <span
                         className="h-1 w-1 rounded-full"
                         style={{
-                          background: "var(--color-success-foreground-subtle)",
+                          background: "var(--color-foreground-success-muted)",
                         }}
                       />
                       Active
@@ -822,7 +819,7 @@ export default function ComponentsPage() {
                       style={{ background: "var(--color-fiery-coral-300)" }}
                     />
                     <div
-                      className="aspect-3/4 rounded ring-2 ring-(--color-primary-border-default)"
+                      className="aspect-3/4 rounded ring-2 ring-(--color-border-primary)"
                       style={{ background: "var(--color-blue-400)" }}
                     />
                     <div
@@ -857,7 +854,7 @@ export default function ComponentsPage() {
               preview={
                 <div className="w-full max-w-57.5 rounded-md border border-(--color-border-default) bg-(--color-background-default) overflow-hidden text-[10px]">
                   <div
-                    className="grid px-2.5 py-1.5 font-mono uppercase tracking-wider text-(--color-foreground-faint) text-[8px] bg-(--color-background-subtle)"
+                    className="grid px-2.5 py-1.5 font-mono uppercase tracking-wider text-(--color-foreground-faint) text-[8px] bg-(--color-background-muted)"
                     style={{
                       gridTemplateColumns: "1.4fr 1fr 0.8fr",
                       gap: "8px",
@@ -872,7 +869,7 @@ export default function ComponentsPage() {
                       name: "Elena Mori",
                       role: "Lead",
                       status: "Active",
-                      color: "var(--color-success-foreground-subtle)",
+                      color: "var(--color-foreground-success-muted)",
                     },
                     {
                       name: "Jude Reyes",
@@ -884,7 +881,7 @@ export default function ComponentsPage() {
                       name: "Ari Klein",
                       role: "Design",
                       status: "Away",
-                      color: "var(--color-warning-foreground-subtle)",
+                      color: "var(--color-foreground-warning-muted)",
                     },
                   ].map(({ name, role, status, color }) => (
                     <div
@@ -932,7 +929,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="feedback"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle) scroll-mt-16"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -950,17 +947,17 @@ export default function ComponentsPage() {
                 <div className="w-full max-w-57.5 flex flex-col gap-1.5">
                   {[
                     {
-                      color: "var(--color-success-foreground-subtle)",
+                      color: "var(--color-foreground-success-muted)",
                       msg: "Build passed · 3,402 tests",
                       icon: "m5 12 5 5L20 7",
                     },
                     {
-                      color: "var(--color-warning-foreground-subtle)",
+                      color: "var(--color-foreground-warning-muted)",
                       msg: "2 deprecation warnings",
                       icon: "M12 9v4M12 17h.01",
                     },
                     {
-                      color: "var(--color-danger-foreground-subtle)",
+                      color: "var(--color-foreground-danger-muted)",
                       msg: "Connection lost · retrying",
                       icon: "M18 6 6 18M6 6l12 12",
                     },
@@ -977,7 +974,7 @@ export default function ComponentsPage() {
                         className="grid h-3.5 w-3.5 mt-px place-items-center rounded-full shrink-0"
                         style={{
                           background: color,
-                          color: "var(--color-inverse-foreground-default)",
+                          color: "var(--color-foreground-inverse)",
                         }}
                       >
                         <svg
@@ -1016,13 +1013,13 @@ export default function ComponentsPage() {
                     </div>
                     <div
                       className="h-1.5 w-full overflow-hidden rounded-full"
-                      style={{ background: "var(--color-background-strong)" }}
+                      style={{ background: "var(--color-background-emphasis)" }}
                     >
                       <div
                         className="h-full rounded-full"
                         style={{
                           width: "68%",
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       />
                     </div>
@@ -1038,12 +1035,12 @@ export default function ComponentsPage() {
                     </div>
                     <div
                       className="relative h-1.5 w-full overflow-hidden rounded-full"
-                      style={{ background: "var(--color-background-strong)" }}
+                      style={{ background: "var(--color-background-emphasis)" }}
                     >
                       <div
                         className="absolute h-full w-1/3 rounded-full animate-pulse"
                         style={{
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       />
                     </div>
@@ -1055,7 +1052,7 @@ export default function ComponentsPage() {
                         cy="18"
                         r="14"
                         fill="none"
-                        stroke="var(--color-background-strong)"
+                        stroke="var(--color-background-emphasis)"
                         strokeWidth="3"
                       />
                       <circle
@@ -1063,7 +1060,7 @@ export default function ComponentsPage() {
                         cy="18"
                         r="14"
                         fill="none"
-                        stroke="var(--color-primary-border-default)"
+                        stroke="var(--color-border-primary)"
                         strokeWidth="3"
                         strokeLinecap="round"
                         strokeDasharray="88"
@@ -1086,20 +1083,20 @@ export default function ComponentsPage() {
                 <div className="w-full max-w-55 flex items-center gap-3">
                   <div
                     className="h-9 w-9 rounded-full animate-pulse"
-                    style={{ background: "var(--color-background-strong)" }}
+                    style={{ background: "var(--color-background-emphasis)" }}
                   />
                   <div className="flex-1 flex flex-col gap-1.5">
                     <div
                       className="h-2 w-3/4 rounded-full animate-pulse"
-                      style={{ background: "var(--color-background-strong)" }}
+                      style={{ background: "var(--color-background-emphasis)" }}
                     />
                     <div
                       className="h-2 w-1/2 rounded-full animate-pulse"
-                      style={{ background: "var(--color-background-strong)" }}
+                      style={{ background: "var(--color-background-emphasis)" }}
                     />
                     <div
                       className="h-2 w-2/3 rounded-full animate-pulse"
-                      style={{ background: "var(--color-background-strong)" }}
+                      style={{ background: "var(--color-background-emphasis)" }}
                     />
                   </div>
                 </div>
@@ -1119,8 +1116,8 @@ export default function ComponentsPage() {
                     <span
                       className="grid h-5 w-5 place-items-center rounded-full shrink-0"
                       style={{
-                        background: "var(--color-success-foreground-subtle)",
-                        color: "var(--color-inverse-foreground-default)",
+                        background: "var(--color-foreground-success-muted)",
+                        color: "var(--color-foreground-inverse)",
                       }}
                     >
                       <svg
@@ -1162,11 +1159,11 @@ export default function ComponentsPage() {
                   >
                     <span
                       className="h-5 w-5 rounded-full shrink-0"
-                      style={{ background: "var(--color-background-strong)" }}
+                      style={{ background: "var(--color-background-emphasis)" }}
                     />
                     <div
                       className="flex-1 h-3 rounded-full"
-                      style={{ background: "var(--color-background-strong)" }}
+                      style={{ background: "var(--color-background-emphasis)" }}
                     />
                   </div>
                 </div>
@@ -1201,8 +1198,8 @@ export default function ComponentsPage() {
                     <span
                       className="inline-flex h-7 items-center rounded-md px-2.5 text-[11px] font-semibold"
                       style={{
-                        background: "var(--color-primary-background-default)",
-                        color: "var(--color-inverse-foreground-default)",
+                        background: "var(--color-background-primary)",
+                        color: "var(--color-foreground-inverse)",
                       }}
                     >
                       Primary
@@ -1229,18 +1226,17 @@ export default function ComponentsPage() {
                   <span
                     className="inline-flex h-7 items-center gap-1 rounded-md px-2.5 text-[11px] font-semibold"
                     style={{
-                      background:
-                        "var(--color-primary-background-default-hover)",
-                      color: "var(--color-inverse-foreground-default)",
+                      background: "var(--color-background-primary-emphasis)",
+                      color: "var(--color-foreground-inverse)",
                       boxShadow:
-                        "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 25%, transparent)",
+                        "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 25%, transparent)",
                     }}
                   >
                     <span
                       className="h-2 w-2 rounded-full border-2 border-t-transparent animate-spin"
                       style={{
                         borderColor:
-                          "var(--color-inverse-foreground-default) transparent var(--color-inverse-foreground-default) var(--color-inverse-foreground-default)",
+                          "var(--color-foreground-inverse) transparent var(--color-foreground-inverse) var(--color-foreground-inverse)",
                       }}
                     />
                     Loading
@@ -1259,8 +1255,8 @@ export default function ComponentsPage() {
                     <span
                       className="grid h-4 w-4 place-items-center rounded-sm"
                       style={{
-                        background: "var(--color-primary-background-default)",
-                        color: "var(--color-inverse-foreground-default)",
+                        background: "var(--color-background-primary)",
+                        color: "var(--color-foreground-inverse)",
                       }}
                     >
                       <svg
@@ -1279,8 +1275,8 @@ export default function ComponentsPage() {
                     <span
                       className="grid h-4 w-4 place-items-center rounded-sm"
                       style={{
-                        background: "var(--color-primary-background-default)",
-                        color: "var(--color-inverse-foreground-default)",
+                        background: "var(--color-background-primary)",
+                        color: "var(--color-foreground-inverse)",
                       }}
                     >
                       <svg
@@ -1325,7 +1321,7 @@ export default function ComponentsPage() {
                   </div>
                   <p
                     className="text-[9px]"
-                    style={{ color: "var(--color-danger-foreground-subtle)" }}
+                    style={{ color: "var(--color-foreground-danger-muted)" }}
                   >
                     Must be a work email address.
                   </p>
@@ -1335,7 +1331,7 @@ export default function ComponentsPage() {
                   <div
                     className="flex items-center h-7.5 border rounded-md px-2 text-[11px] bg-(--color-background-default)"
                     style={{
-                      borderColor: "var(--color-danger-border-default)",
+                      borderColor: "var(--color-border-danger)",
                     }}
                   >
                     <span className="text-(--color-foreground-faint)">
@@ -1370,9 +1366,9 @@ export default function ComponentsPage() {
                   <div
                     className="flex items-center h-8.5 border rounded-[10px] px-2.5 text-[12px] bg-(--color-background-default)"
                     style={{
-                      borderColor: "var(--color-primary-border-default)",
+                      borderColor: "var(--color-border-primary)",
                       boxShadow:
-                        "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
+                        "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 22%, transparent)",
                     }}
                   >
                     <span className="text-(--color-foreground-default)">
@@ -1409,7 +1405,7 @@ export default function ComponentsPage() {
                       Display name
                     </label>
                     <span
-                      style={{ color: "var(--color-danger-foreground-subtle)" }}
+                      style={{ color: "var(--color-foreground-danger-muted)" }}
                     >
                       *
                     </span>
@@ -1442,13 +1438,13 @@ export default function ComponentsPage() {
                     <span
                       className="grid h-4 w-4 place-items-center rounded-full border-2"
                       style={{
-                        borderColor: "var(--color-primary-border-default)",
+                        borderColor: "var(--color-border-primary)",
                       }}
                     >
                       <span
                         className="h-1.5 w-1.5 rounded-full"
                         style={{
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       />
                     </span>
@@ -1498,8 +1494,8 @@ export default function ComponentsPage() {
                       className="flex items-center gap-2 rounded px-2 py-1 text-[11px]"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
-                        color: "var(--color-primary-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
+                        color: "var(--color-foreground-primary-muted)",
                       }}
                     >
                       <svg
@@ -1541,13 +1537,13 @@ export default function ComponentsPage() {
                     </div>
                     <div
                       className="relative h-1 rounded-full"
-                      style={{ background: "var(--color-background-strong)" }}
+                      style={{ background: "var(--color-background-emphasis)" }}
                     >
                       <div
                         className="absolute h-1 rounded-full"
                         style={{
                           width: "62%",
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       />
                       <div
@@ -1556,8 +1552,7 @@ export default function ComponentsPage() {
                           left: "62%",
                           transform: "translateX(-50%)",
                           background: "var(--color-background-default)",
-                          border:
-                            "2px solid var(--color-primary-background-default)",
+                          border: "2px solid var(--color-background-primary)",
                           boxShadow: "var(--shadow-sm)",
                         }}
                       />
@@ -1574,14 +1569,14 @@ export default function ComponentsPage() {
                     </div>
                     <div
                       className="relative h-1 rounded-full"
-                      style={{ background: "var(--color-background-strong)" }}
+                      style={{ background: "var(--color-background-emphasis)" }}
                     >
                       <div
                         className="absolute h-1 rounded-full"
                         style={{
                           left: "24%",
                           width: "54%",
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       />
                       <div
@@ -1590,8 +1585,7 @@ export default function ComponentsPage() {
                           left: "24%",
                           transform: "translateX(-50%)",
                           background: "var(--color-background-default)",
-                          border:
-                            "2px solid var(--color-primary-background-default)",
+                          border: "2px solid var(--color-background-primary)",
                         }}
                       />
                       <div
@@ -1600,8 +1594,7 @@ export default function ComponentsPage() {
                           left: "78%",
                           transform: "translateX(-50%)",
                           background: "var(--color-background-default)",
-                          border:
-                            "2px solid var(--color-primary-background-default)",
+                          border: "2px solid var(--color-background-primary)",
                         }}
                       />
                     </div>
@@ -1621,13 +1614,13 @@ export default function ComponentsPage() {
                     <span
                       className="relative inline-flex h-5 w-9 items-center rounded-full"
                       style={{
-                        background: "var(--color-primary-background-default)",
+                        background: "var(--color-background-primary)",
                       }}
                     >
                       <span
                         className="inline-block h-4 w-4 translate-x-4 rounded-full"
                         style={{
-                          background: "var(--color-inverse-foreground-default)",
+                          background: "var(--color-foreground-inverse)",
                           boxShadow: "var(--shadow-sm)",
                         }}
                       />
@@ -1637,7 +1630,7 @@ export default function ComponentsPage() {
                     <span>Beta channel</span>
                     <span
                       className="relative inline-flex h-5 w-9 items-center rounded-full"
-                      style={{ background: "var(--color-background-strong)" }}
+                      style={{ background: "var(--color-background-emphasis)" }}
                     >
                       <span
                         className="inline-block h-4 w-4 translate-x-0.5 rounded-full"
@@ -1657,7 +1650,7 @@ export default function ComponentsPage() {
                     </span>
                     <span
                       className="relative inline-flex h-5 w-9 items-center rounded-full"
-                      style={{ background: "var(--color-background-strong)" }}
+                      style={{ background: "var(--color-background-emphasis)" }}
                     >
                       <span
                         className="inline-block h-4 w-4 translate-x-0.5 rounded-full"
@@ -1679,9 +1672,9 @@ export default function ComponentsPage() {
                 <div
                   className="w-full max-w-57.5 rounded-md border bg-(--color-background-default) px-2.5 py-2 text-[11px] text-(--color-foreground-default)"
                   style={{
-                    borderColor: "var(--color-primary-border-default)",
+                    borderColor: "var(--color-border-primary)",
                     boxShadow:
-                      "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
+                      "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 22%, transparent)",
                     height: 100,
                   }}
                 >
@@ -1709,8 +1702,8 @@ export default function ComponentsPage() {
                     className="h-8 w-8"
                     style={{
                       background:
-                        "color-mix(in oklch, var(--color-primary-background-default) 18%, transparent)",
-                      color: "var(--color-primary-foreground-subtle)",
+                        "color-mix(in oklch, var(--color-background-primary) 18%, transparent)",
+                      color: "var(--color-foreground-primary-muted)",
                     }}
                   >
                     <svg
@@ -1757,7 +1750,7 @@ export default function ComponentsPage() {
                 <div className="flex flex-col gap-2 items-center">
                   <div
                     className="inline-flex rounded-md border border-(--color-border-default) overflow-hidden"
-                    style={{ background: "var(--color-background-subtle)" }}
+                    style={{ background: "var(--color-background-muted)" }}
                   >
                     <Button
                       variant="ghost"
@@ -1792,8 +1785,8 @@ export default function ComponentsPage() {
                       className="h-7 w-8"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
-                        color: "var(--color-primary-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-background-primary) 14%, transparent)",
+                        color: "var(--color-foreground-primary-muted)",
                       }}
                     >
                       <svg
@@ -1849,7 +1842,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="layout"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle) scroll-mt-16"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -1867,7 +1860,7 @@ export default function ComponentsPage() {
                 <div className="w-full max-w-50 flex gap-1.5">
                   <div
                     className="aspect-video flex-1 rounded border border-(--color-border-default) flex items-center justify-center font-mono text-[9px] text-(--color-foreground-faint)"
-                    style={{ background: "var(--color-background-strong)" }}
+                    style={{ background: "var(--color-background-emphasis)" }}
                   >
                     16 : 9
                   </div>
@@ -1890,7 +1883,7 @@ export default function ComponentsPage() {
                       stroke="currentColor"
                       strokeWidth={2}
                       style={{
-                        color: "var(--color-primary-foreground-subtle)",
+                        color: "var(--color-foreground-primary-muted)",
                         transform: "rotate(180deg)",
                       }}
                     >
@@ -1900,7 +1893,7 @@ export default function ComponentsPage() {
                   <div
                     className="mt-1 space-y-1.5 pl-2 border-l-2"
                     style={{
-                      borderColor: "var(--color-primary-border-default)",
+                      borderColor: "var(--color-border-primary)",
                     }}
                   >
                     <div className="text-[10px] text-(--color-foreground-muted)">
@@ -1933,13 +1926,13 @@ export default function ComponentsPage() {
                     <div
                       className="h-6 w-1 rounded-full"
                       style={{
-                        background: "var(--color-primary-background-default)",
+                        background: "var(--color-background-primary)",
                       }}
                     />
                   </div>
                   <div
                     className="flex-1 grid place-items-center font-mono text-[10px] text-(--color-foreground-faint)"
-                    style={{ background: "var(--color-background-subtle)" }}
+                    style={{ background: "var(--color-background-muted)" }}
                   >
                     Main
                   </div>
@@ -2085,8 +2078,8 @@ export default function ComponentsPage() {
                       className="rounded px-2 py-1 text-[11px] flex items-center gap-2"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
-                        color: "var(--color-primary-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-background-primary) 14%, transparent)",
+                        color: "var(--color-foreground-primary-muted)",
                       }}
                     >
                       Open documentation
@@ -2112,7 +2105,7 @@ export default function ComponentsPage() {
                     <span
                       className="px-2 py-0.5 rounded font-medium text-(--color-foreground-default)"
                       style={{
-                        background: "var(--color-background-subtle)",
+                        background: "var(--color-background-muted)",
                       }}
                     >
                       File
@@ -2158,7 +2151,7 @@ export default function ComponentsPage() {
                     <span
                       className="px-2 py-0.5 rounded font-medium text-(--color-foreground-default)"
                       style={{
-                        background: "var(--color-background-subtle)",
+                        background: "var(--color-background-muted)",
                       }}
                     >
                       Products
@@ -2181,13 +2174,13 @@ export default function ComponentsPage() {
                       className="rounded p-1.5"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
+                          "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
                       }}
                     >
                       <p
                         className="font-semibold"
                         style={{
-                          color: "var(--color-primary-foreground-subtle)",
+                          color: "var(--color-foreground-primary-muted)",
                         }}
                       >
                         Tokens
@@ -2270,7 +2263,7 @@ export default function ComponentsPage() {
                     <span
                       className="-mb-px border-b-2 px-3 py-1.5 font-medium"
                       style={{
-                        borderColor: "var(--color-primary-border-default)",
+                        borderColor: "var(--color-border-primary)",
                       }}
                     >
                       Overview
@@ -2284,7 +2277,7 @@ export default function ComponentsPage() {
                   </div>
                   <div
                     className="mt-2 rounded-md p-2 text-[10px] text-(--color-foreground-muted)"
-                    style={{ background: "var(--color-background-subtle)" }}
+                    style={{ background: "var(--color-background-muted)" }}
                   >
                     Migration plan, owners, and current status for v1.4.
                   </div>
@@ -2300,7 +2293,7 @@ export default function ComponentsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="overlays"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle) scroll-mt-16"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <SectionHeader
@@ -2327,8 +2320,8 @@ export default function ComponentsPage() {
                       className="grid h-6 w-6 place-items-center rounded-full"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-danger-foreground-subtle) 18%, transparent)",
-                        color: "var(--color-danger-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-foreground-danger-muted) 18%, transparent)",
+                        color: "var(--color-foreground-danger-muted)",
                       }}
                     >
                       <svg
@@ -2390,8 +2383,8 @@ export default function ComponentsPage() {
                       className="flex items-center justify-between px-2 py-1 rounded"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
-                        color: "var(--color-primary-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
+                        color: "var(--color-foreground-primary-muted)",
                       }}
                     >
                       <span>Copy</span>
@@ -2407,7 +2400,7 @@ export default function ComponentsPage() {
                     />
                     <div
                       className="px-2 py-1"
-                      style={{ color: "var(--color-danger-foreground-subtle)" }}
+                      style={{ color: "var(--color-foreground-danger-muted)" }}
                     >
                       Delete
                     </div>
@@ -2457,8 +2450,8 @@ export default function ComponentsPage() {
                       <span
                         className="inline-flex h-6 items-center rounded px-2 text-[10px] font-semibold"
                         style={{
-                          background: "var(--color-primary-background-default)",
-                          color: "var(--color-inverse-foreground-default)",
+                          background: "var(--color-background-primary)",
+                          color: "var(--color-foreground-inverse)",
                         }}
                       >
                         Send invite
@@ -2526,7 +2519,7 @@ export default function ComponentsPage() {
                     />
                     <div
                       className="flex items-center gap-2 px-2 py-1"
-                      style={{ color: "var(--color-danger-foreground-subtle)" }}
+                      style={{ color: "var(--color-foreground-danger-muted)" }}
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -2553,9 +2546,9 @@ export default function ComponentsPage() {
                   <span
                     className="text-[11px] font-medium underline"
                     style={{
-                      color: "var(--color-primary-foreground-subtle)",
+                      color: "var(--color-foreground-primary-muted)",
                       textDecorationColor:
-                        "color-mix(in oklch, var(--color-primary-background-default) 50%, transparent)",
+                        "color-mix(in oklch, var(--color-background-primary) 50%, transparent)",
                     }}
                   >
                     @elena_mori
@@ -2636,13 +2629,13 @@ export default function ComponentsPage() {
                           style={{
                             background:
                               s === "Active"
-                                ? "var(--color-primary-background-default)"
+                                ? "var(--color-background-primary)"
                                 : "transparent",
                             border:
                               s === "Active"
                                 ? "none"
                                 : "1px solid var(--color-border-default)",
-                            color: "var(--color-inverse-foreground-default)",
+                            color: "var(--color-foreground-inverse)",
                           }}
                         >
                           {s === "Active" && (
@@ -2672,7 +2665,7 @@ export default function ComponentsPage() {
               preview={
                 <div
                   className="relative w-full max-w-57.5 h-30 rounded-md overflow-hidden border border-(--color-border-default)"
-                  style={{ background: "var(--color-background-subtle)" }}
+                  style={{ background: "var(--color-background-muted)" }}
                 >
                   <div
                     className="absolute inset-0"
@@ -2709,7 +2702,7 @@ export default function ComponentsPage() {
                           className="h-1.5 rounded-full"
                           style={{
                             width: `${w}%`,
-                            background: "var(--color-background-strong)",
+                            background: "var(--color-background-emphasis)",
                           }}
                         />
                       ))}
@@ -2747,7 +2740,7 @@ export default function ComponentsPage() {
                       className="absolute -top-8 left-1/2 -translate-x-1/2 rounded px-2 py-1 text-[10px] font-medium whitespace-nowrap"
                       style={{
                         background: "var(--color-foreground-default)",
-                        color: "var(--color-inverse-foreground-default)",
+                        color: "var(--color-foreground-inverse)",
                       }}
                     >
                       WCAG 2.2 AA compliant

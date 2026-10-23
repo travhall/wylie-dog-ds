@@ -88,7 +88,7 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
  * color token from every other interactive component.
  */
 export const focusRingClasses =
-  "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-focus-ring) focus:ring-offset-(--space-focus-ring-offset)";
+  "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-border-focus) focus:ring-offset-(--space-focus-ring-offset)";
 
 export const focusRingInputClasses =
   "focus:outline-none focus:ring-(length:--space-focus-ring-width) focus:ring-(--color-input-border-focus) focus:ring-offset-(--space-focus-ring-offset)";

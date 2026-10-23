@@ -13,11 +13,14 @@ This guide establishes the naming convention for using design tokens in Wylie Do
 
 ## Semantic colour grammar
 
-- **Ground tokens** are `color.background.<level>`, `color.foreground.<level>` and `color.border.<level>`. Backgrounds and borders use the levels `default`, `subtle` and `strong` (backgrounds also have the placement levels `raised` and `overlay`); foregrounds use `default`, `muted` and `faint`.
-- **Roles** are `color.<role>.<part>.<level>` with the roles `primary`, `danger`, `success`, `warning`, `info` and `inverse`, the parts `background`, `foreground` and `border`, and the levels `default` (the solid fill) and `subtle` (the tint).
-- **Pairs.** Within a role, `foreground.X` is readable on `background.X`. `pnpm check:contrast` checks the declared pairs.
-- **States** are a suffix after the level: `.hover`, `.active`, `.focus`, `.disabled` (`--color-primary-background-default-hover` in CSS).
-- **The focus ring** is its own group: `color.focus.ring`.
+Names are `color.<part>.<token>` with the part `background`, `foreground` or `border`; there are never more than three segments.
+
+- **Ground tokens:** `color.background.{default, muted, emphasis, raised, overlay, inverse}`, `color.foreground.{default, muted, faint, inverse}` and `color.border.{default, muted, emphasis, focus}`.
+- **Roles** (`primary`, `danger`, `success`, `warning`, `info`) put the role in the token name, with an optional modifier: `color.background.success` (the solid fill), `color.background.success-muted` (the tint), `color.background.success-emphasis` (the stronger tone of the fill), `color.foreground.success` (text over the fill), `color.foreground.success-muted` (text over the tint, and the role colour on the page) and `color.border.success`. `info` has only the muted tint and its text.
+- **Modifiers have one meaning each:** `muted` is the quieter tone, `emphasis` the stronger one. `faint` exists only for ground text.
+- **Pairs:** `foreground.X` is the text over `background.X`, for every X. `pnpm check:contrast` checks the declared pairs.
+- **No states in semantic names.** Hover, active, focus and disabled belong to the component layer: a component token references a semantic tone.
+- **The focus ring** is the centralized `color.border.focus`.
 
 The reasoning and the old-to-new history are in [semantic-pairing-model.md](semantic-pairing-model.md).
 
@@ -97,7 +100,7 @@ Your system follows **property-based organization** (not role-based):
 │  SEMANTIC TOKENS (Context & Purpose)            │
 │  --color-background-default                     │
 │  --color-foreground-muted                         │
-│  --color-focus-ring                           │
+│  --color-border-focus                           │
 └──────────────────┬──────────────────────────────┘
                    │
                    ▼
@@ -111,9 +114,9 @@ Your system follows **property-based organization** (not role-based):
 
 ## Token Categories
 
-### Semantic Tokens (Primary Choice)
+### Semantic Tokens (for application code)
 
-Use semantic tokens for most component styling. They provide meaning and adapt to light/dark modes automatically.
+Use semantic tokens in application code, pages and stories. They say what a colour means and adapt to light and dark mode automatically. Components in `packages/ui` do not use them directly: a component binds only to its own component tokens (see Component Tokens below).
 
 **Background:**
 
@@ -121,14 +124,14 @@ Use semantic tokens for most component styling. They provide meaning and adapt t
 // Default background (the page: white in light mode, dark in dark mode)
 className = "bg-(--color-background-default)";
 
-// Subtle background (subtle contrast)
-className = "bg-(--color-background-subtle)";
+// Muted background (a quiet surface)
+className = "bg-(--color-background-muted)";
 
-// Strong background (stronger contrast with the page)
-className = "bg-(--color-background-strong)";
+// Emphasis background (a stronger surface)
+className = "bg-(--color-background-emphasis)";
 
 // Inverse background (dark in light mode, light in dark mode)
-className = "bg-(--color-inverse-background-default)";
+className = "bg-(--color-background-inverse)";
 ```
 
 **Text:**
@@ -144,13 +147,13 @@ className = "text-(--color-foreground-muted)";
 className = "text-(--color-foreground-faint)";
 
 // Danger/error text
-className = "text-(--color-danger-foreground-subtle)";
+className = "text-(--color-foreground-danger-muted)";
 
 // Success text
-className = "text-(--color-success-foreground-subtle)";
+className = "text-(--color-foreground-success-muted)";
 
 // Inverse text (for dark backgrounds)
-className = "text-(--color-inverse-foreground-default)";
+className = "text-(--color-foreground-inverse)";
 ```
 
 **Border:**
@@ -159,35 +162,34 @@ className = "text-(--color-inverse-foreground-default)";
 // Default border (default border color)
 className = "border-(--color-border-default)";
 
-// Subtle border (more subtle)
-className = "border-(--color-border-subtle)";
+// Muted border (quieter)
+className = "border-(--color-border-muted)";
 
 // Focus border (for focus states)
-className = "border-(--color-focus-ring)";
+className = "border-(--color-border-focus)";
 
 // Danger border (for error states)
-className = "border-(--color-danger-border-default)";
+className = "border-(--color-border-danger)";
 ```
 
-**Interactive:**
+**Interactive (application code):**
 
 ```tsx
 // Primary fill (buttons and primary actions)
-className = "bg-(--color-primary-background-default)";
+className = "bg-(--color-background-primary)";
 
-// Hover state
-className = "hover:bg-(--color-primary-background-default-hover)";
+// Its stronger tone, for hover and pressed styling
+className = "hover:bg-(--color-background-primary-emphasis)";
 
-// Active state
-className = "active:bg-(--color-primary-background-default-active)";
-
-// Hover fill on the page background (also used for the secondary button)
-className = "bg-(--color-background-default-hover)";
+// A quiet surface under hover on the page background
+className = "hover:bg-(--color-background-muted)";
 ```
 
-### Component Tokens (When Available)
+Hover, active, focus and disabled are not semantic tokens. In a component they come from a component token; in application code you pick the tone.
 
-Use component-specific tokens when they exist. They encapsulate design decisions and typically reference semantic tokens.
+### Component Tokens (the only tokens a component uses)
+
+A component binds only to component tokens. Each one encapsulates a design decision (a colour, a spacing, a state) for one part of one component and references a semantic tone.
 
 **Dialog:**
 
@@ -239,7 +241,7 @@ className = "bg-(--color-gray-50)";
 ```tsx
 className="
   bg-(--color-background-default)
-  hover:bg-(--color-background-subtle)
+  hover:bg-(--color-background-muted)
 "
 ```
 
@@ -248,17 +250,18 @@ className="
 ```tsx
 className="
   border-(--color-border-default)
-  focus:border-(--color-focus-ring)
-  focus:ring-(--color-focus-ring)
+  focus:border-(--color-border-focus)
+  focus:ring-(--color-border-focus)
 "
 ```
 
-**Active States:**
+**Active (pressed) states:**
 
 ```tsx
+// Application code picks the stronger tone; a component uses its own pressed token
 className="
-  bg-(--color-primary-background-default)
-  active:bg-(--color-primary-background-default-active)
+  bg-(--color-background-primary)
+  active:bg-(--color-background-primary-emphasis)
 "
 ```
 
@@ -266,7 +269,7 @@ className="
 
 ```tsx
 className="
-  data-[state=checked]:bg-(--color-primary-background-default)
+  data-[state=checked]:bg-(--color-background-primary)
   data-[state=active]:text-(--color-foreground-default)
 "
 ```
@@ -275,8 +278,7 @@ className="
 
 ```tsx
 className="
-  text-(--color-foreground-default-disabled)
-  opacity-50
+  text-(--color-foreground-faint)
   cursor-not-allowed
 "
 ```
@@ -288,9 +290,9 @@ className="
 ```tsx
 // Using semantic tokens
 className="
-  bg-(--color-danger-background-default)
-  text-(--color-danger-foreground-subtle)
-  border-(--color-danger-border-default)
+  bg-(--color-background-danger)
+  text-(--color-foreground-danger-muted)
+  border-(--color-border-danger)
 "
 
 // Future: Using component tokens
@@ -304,8 +306,8 @@ className="
 
 ```tsx
 className="
-  text-(--color-success-foreground-subtle)
-  border-(--color-success-border-default)
+  text-(--color-foreground-success-muted)
+  border-(--color-border-success)
 "
 ```
 
@@ -313,8 +315,8 @@ className="
 
 ```tsx
 className="
-  text-(--color-warning-foreground-subtle)
-  border-(--color-warning-border-default)
+  text-(--color-foreground-warning-muted)
+  border-(--color-border-warning)
 "
 ```
 
@@ -342,10 +344,10 @@ className="
 <li
   className="
   bg-(--color-background-default)
-  hover:bg-(--color-background-subtle)
-  focus:bg-(--color-background-subtle)
+  hover:bg-(--color-background-muted)
+  focus:bg-(--color-background-muted)
   border-(--color-border-default)
-  focus:border-(--color-focus-ring)
+  focus:border-(--color-border-focus)
   text-(--color-foreground-default)
   transition-colors
 "
@@ -382,12 +384,12 @@ When you need to use tokens outside of Tailwind utilities:
 }
 
 .custom-component:hover {
-  background-color: var(--color-background-subtle);
+  background-color: var(--color-background-muted);
 }
 
 .custom-component:focus {
-  border-color: var(--color-focus-ring);
-  outline: 2px solid var(--color-focus-ring);
+  border-color: var(--color-border-focus);
+  outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
 }
 ```
@@ -454,155 +456,36 @@ className = "bg-(--color-button-primary-background)";
                           └──────────────────────┘
 ```
 
-## Examples from Anchor Components
+## Example from a Component
 
-### Checkbox (Reference Implementation)
+### Dropdown Menu
 
-```tsx
-<Checkbox
-  className="
-  border-(--color-border-default)
-  hover:border-(--color-border-subtle)
-  focus:ring-(--color-focus-ring)
-  data-[state=checked]:bg-(--color-primary-background-default)
-  data-[state=checked]:border-(--color-primary-background-default)
-  data-[state=checked]:text-(--color-inverse-foreground-default)
-"
-/>
-```
-
-**Why this works:**
-
-- Uses semantic tokens consistently
-- Clear state handling with Radix data attributes
-- Proper focus states with dedicated focus token
-
-### Tabs (Reference Implementation)
-
-```tsx
-<TabsList
-  className="
-  bg-(--color-background-subtle)
-  text-(--color-foreground-muted)
-"
->
-  <TabsTrigger
-    className="
-    text-(--color-foreground-muted)
-    hover:bg-(--color-background-strong)
-    hover:text-(--color-foreground-default)
-    focus-visible:ring-(--color-focus-ring)
-    data-[state=active]:bg-(--color-background-default)
-    data-[state=active]:text-(--color-foreground-default)
-  "
-  >
-    Tab
-  </TabsTrigger>
-</TabsList>
-```
-
-**Why this works:**
-
-- Background levels: subtle, strong and default
-- Text levels: muted and default
-- Semantic tokens handle all state variations
-
-### Dialog (Reference Implementation)
-
-```tsx
-<DialogOverlay className="
-  bg-(--color-dialog-overlay)
-" />
-
-<DialogContent className="
-  bg-(--color-background-default)
-  border-(--color-border-default)
-">
-  <DialogClose className="
-    focus:ring-(--color-focus-ring)
-  " />
-
-  <DialogTitle className="
-    text-(--color-foreground-default)
-  " />
-
-  <DialogDescription className="
-    text-(--color-foreground-muted)
-  " />
-</DialogContent>
-```
-
-**Why this works:**
-
-- Uses component token (`--color-dialog-overlay`) for dialog-specific styling
-- Falls back to semantic tokens for standard elements
-- Text hierarchy for title/description
-
-### Dropdown Menu (Reference Implementation)
+The real component binds only to its own component tokens (colour, spacing and state):
 
 ```tsx
 <DropdownMenuContent
   className="
-  bg-(--color-background-default)
-  border-(--color-border-default)
-  text-(--color-foreground-default)
+  bg-(--color-dropdown-menu-content-background)
+  border-(--color-dropdown-menu-content-border)
+  text-(--color-dropdown-menu-content-text)
 "
 >
   <DropdownMenuItem
     className="
-    focus:bg-(--color-background-default-hover)
-    focus:text-(--color-foreground-default)
+    focus:bg-(--color-dropdown-menu-item-background-hover)
+    focus:text-(--color-dropdown-menu-item-text-hover)
   "
   />
 
-  <DropdownMenuLabel
-    className="
-    text-(--color-foreground-muted)
-  "
-  />
-
-  <DropdownMenuSeparator
-    className="
-    bg-(--color-border-default)
-  "
-  />
+  <DropdownMenuSeparator className="bg-(--color-dropdown-menu-separator-background)" />
 </DropdownMenuContent>
 ```
 
 **Why this works:**
 
-- Consistent use of semantic tokens
-- Hover and active fills on the page background for subtle focus states
-- Text hierarchy for labels vs items
-
-### Site Footer (Reference Implementation)
-
-```tsx
-<footer
-  className="
-  bg-(--color-background-subtle)
-  border-t
-  border-(--color-border-default)
-"
->
-  <p className="text-(--color-foreground-muted)">Description</p>
-
-  <a
-    className="
-    text-(--color-foreground-muted)
-    hover:text-(--color-foreground-default)
-  "
-  >
-    Link
-  </a>
-</footer>
-```
-
-**Why this works:**
-
-- Subtle background for footer differentiation
-- Text hierarchy with hover interactions
-- Simple, consistent token usage
+- Every colour is a component token, so a theme or a Figma change reaches the component through one tier
+- The hover state is its own component token that references a semantic tone
+- Spacing and radius are component tokens too
 
 ## Validation
 
@@ -623,21 +506,21 @@ pnpm --filter @wyliedog/tokens build
 
 - All `bg-[var(--*)]` legacy patterns migrated
 - All tokens use `--color-` prefix where appropriate
-- Components use semantic tokens primarily
+- Components bind only to component tokens
 - Zero undefined CSS variables in browser
 
 ## Quick Reference Card
 
-| Use Case               | Pattern                                         | Example                                                        |
-| ---------------------- | ----------------------------------------------- | -------------------------------------------------------------- |
-| **Background**         | `bg-(--color-background-{level})`               | `bg-(--color-background-default)`                              |
-| **Text**               | `text-(--color-foreground-{level})`             | `text-(--color-foreground-muted)`                              |
-| **Border**             | `border-(--color-border-{purpose})`             | `border-(--color-focus-ring)`                                  |
-| **Role fill**          | `bg-(--color-{role}-background-{level})`        | `bg-(--color-primary-background-default)`                      |
-| **Component Specific** | `bg-(--color-{component}-{variant}-{property})` | `bg-(--color-dialog-overlay)`                                  |
-| **Hover State**        | `hover:bg-(--color-{token})`                    | `hover:bg-(--color-background-subtle)`                         |
-| **Focus State**        | `focus:border-(--color-focus-ring)`             | `focus:ring-(--color-focus-ring)`                              |
-| **Data State**         | `data-[state={value}]:bg-(--color-{token})`     | `data-[state=checked]:bg-(--color-primary-background-default)` |
+| Use Case               | Pattern                                             | Example                                                |
+| ---------------------- | --------------------------------------------------- | ------------------------------------------------------ |
+| **Background**         | `bg-(--color-background-{level})`                   | `bg-(--color-background-default)`                      |
+| **Text**               | `text-(--color-foreground-{level})`                 | `text-(--color-foreground-muted)`                      |
+| **Border**             | `border-(--color-border-{purpose})`                 | `border-(--color-border-focus)`                        |
+| **Role fill**          | `bg-(--color-background-{role}[-muted\|-emphasis])` | `bg-(--color-background-primary)`                      |
+| **Component Specific** | `bg-(--color-{component}-{variant}-{property})`     | `bg-(--color-dialog-overlay)`                          |
+| **Hover State**        | `hover:bg-(--color-{token})`                        | `hover:bg-(--color-background-muted)`                  |
+| **Focus State**        | `focus:border-(--color-border-focus)`               | `focus:ring-(--color-border-focus)`                    |
+| **Data State**         | `data-[state={value}]:bg-(--color-{token})`         | `data-[state=checked]:bg-(--color-background-primary)` |
 
 ## Common Mistakes to Avoid
 

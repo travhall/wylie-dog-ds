@@ -10,7 +10,7 @@ export const switchVariants = cva(
     "border-(--space-switch-track-border-width)",
     "transition-colors focus:outline-none",
     "focus:ring-(length:--space-switch-focus-ring-width)",
-    "focus:ring-(--color-focus-ring)",
+    "focus:ring-(--color-border-focus)",
     "focus:ring-offset-(--space-switch-focus-ring-offset)",
     "disabled:cursor-not-allowed disabled:opacity-(--switch-disabled-opacity)",
     "data-[state=checked]:bg-(--color-switch-track-background-checked)",

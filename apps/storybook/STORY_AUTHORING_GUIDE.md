@@ -333,7 +333,7 @@ Always use semantic color tokens, never hardcoded colors:
 // ✅ Correct - Semantic tokens
 <p className="text-(--color-foreground-muted)">Description</p>
 <div className="border-(--color-border-default)">Content</div>
-<span className="text-(--color-success-foreground-subtle)">Success</span>
+<span className="text-(--color-foreground-success-muted)">Success</span>
 
 // ❌ Wrong - Hardcoded colors
 <p className="text-gray-600">Description</p>
@@ -342,18 +342,18 @@ Always use semantic color tokens, never hardcoded colors:
 
 ### Common Token Mappings
 
-| Purpose           | Token                                      |
-| ----------------- | ------------------------------------------ |
-| Default text      | `text-(--color-foreground-default)`        |
-| Muted text        | `text-(--color-foreground-muted)`          |
-| Faint text        | `text-(--color-foreground-faint)`          |
-| Default border    | `border-(--color-border-default)`          |
-| Subtle border     | `border-(--color-border-subtle)`           |
-| Page background   | `bg-(--color-background-default)`          |
-| Subtle background | `bg-(--color-background-subtle)`           |
-| Success text      | `text-(--color-success-foreground-subtle)` |
-| Warning text      | `text-(--color-warning-foreground-subtle)` |
-| Error text        | `text-(--color-danger-foreground-subtle)`  |
+| Purpose           | Token                                     |
+| ----------------- | ----------------------------------------- |
+| Default text      | `text-(--color-foreground-default)`       |
+| Muted text        | `text-(--color-foreground-muted)`         |
+| Faint text        | `text-(--color-foreground-faint)`         |
+| Default border    | `border-(--color-border-default)`         |
+| Subtle border     | `border-(--color-border-muted)`           |
+| Page background   | `bg-(--color-background-default)`         |
+| Subtle background | `bg-(--color-background-muted)`           |
+| Success text      | `text-(--color-foreground-success-muted)` |
+| Warning text      | `text-(--color-foreground-warning-muted)` |
+| Error text        | `text-(--color-foreground-danger-muted)`  |
 
 There are no shadcn-style utility classes (`text-muted-foreground`, `bg-muted`, `text-destructive`) in this project; always use the `-(--token-name)` form.
 

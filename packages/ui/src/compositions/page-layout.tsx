@@ -49,7 +49,7 @@ export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
         {/* Skip navigation — lets keyboard users jump past repeated header content (WCAG 2.4.1) */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-(--border-radius-md) focus:bg-(--color-background-default) focus:px-4 focus:py-2 focus:text-(--color-foreground-default) focus:ring-2 focus:ring-(--color-focus-ring)"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-(--border-radius-md) focus:bg-(--color-background-default) focus:px-4 focus:py-2 focus:text-(--color-foreground-default) focus:ring-2 focus:ring-(--color-border-focus)"
         >
           Skip to main content
         </a>

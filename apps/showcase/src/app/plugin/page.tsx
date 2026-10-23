@@ -9,9 +9,9 @@ const PLUGIN_SOURCE_URL =
 const SAMPLE_TOKENS = [
   "--color-background-default",
   "--color-foreground-default",
-  "--color-primary-background-default",
+  "--color-background-primary",
   "--color-border-default",
-  "--color-success-foreground-subtle",
+  "--color-foreground-success-muted",
 ];
 
 export default function PluginPage() {
@@ -113,7 +113,7 @@ export default function PluginPage() {
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.5rem] font-semibold text-(--color-foreground-default) tracking-tight leading-[0.98]">
                 Figma variables and{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   the token files, in sync.
                 </span>
@@ -171,7 +171,7 @@ export default function PluginPage() {
       {/* ── How it works ── */}
       <section
         id="how"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
@@ -214,7 +214,7 @@ export default function PluginPage() {
 
           <div className="mt-8 overflow-x-auto rounded-xl border border-(--color-border-default)">
             <table className="w-full text-sm">
-              <thead className="bg-(--color-background-subtle) text-left">
+              <thead className="bg-(--color-background-muted) text-left">
                 <tr>
                   <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
                     File in packages/tokens/io/sync
@@ -263,7 +263,7 @@ export default function PluginPage() {
       </section>
 
       {/* ── Light and dark values ── */}
-      <section className="border-b border-(--color-border-default) bg-(--color-background-subtle)">
+      <section className="border-b border-(--color-border-default) bg-(--color-background-muted)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
             Light and dark

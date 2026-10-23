@@ -457,7 +457,7 @@ describe("Tabs", () => {
       expect(tab).toHaveClass(
         "focus-visible:outline-none",
         "focus-visible:ring-(length:--space-focus-ring-width)",
-        "focus-visible:ring-(--color-focus-ring)",
+        "focus-visible:ring-(--color-border-focus)",
         "focus-visible:ring-offset-(--space-focus-ring-offset)"
       );
     });

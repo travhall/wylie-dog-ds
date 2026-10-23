@@ -63,14 +63,14 @@ const ColorSwatch = ({
       className="group relative flex flex-col items-center gap-1 cursor-pointer focus:outline-none"
     >
       <div
-        className="w-12 h-12 rounded border border-(--color-border-subtle) group-hover:ring-2 group-hover:ring-(--color-focus-ring) group-focus-visible:ring-2 group-focus-visible:ring-(--color-focus-ring) transition-all"
+        className="w-12 h-12 rounded border border-(--color-border-muted) group-hover:ring-2 group-hover:ring-(--color-border-focus) group-focus-visible:ring-2 group-focus-visible:ring-(--color-border-focus) transition-all"
         style={{ backgroundColor: value }}
       />
       <span className="text-xs font-mono text-(--color-foreground-faint)">
         {shade}
       </span>
       {copied && (
-        <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-(--color-inverse-background-default) text-(--color-inverse-foreground-default) text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none">
+        <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-(--color-background-inverse) text-(--color-foreground-inverse) text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none">
           Copied!
         </div>
       )}
@@ -168,7 +168,7 @@ export const SystemOverview: Story = {
               ].map(({ tier, label, desc, examples }) => (
                 <div key={tier} className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded bg-(--color-primary-background-default) flex items-center justify-center text-(--color-primary-foreground-default) text-xs font-bold shrink-0">
+                    <div className="w-8 h-8 rounded bg-(--color-background-primary) flex items-center justify-center text-(--color-foreground-primary) text-xs font-bold shrink-0">
                       {tier}
                     </div>
                     <h3 className="font-semibold text-(--color-foreground-default)">
@@ -178,7 +178,7 @@ export const SystemOverview: Story = {
                   <p className="text-sm text-(--color-foreground-muted)">
                     {desc}
                   </p>
-                  <div className="text-xs font-mono bg-(--color-background-subtle) text-(--color-foreground-muted) p-2 rounded space-y-1">
+                  <div className="text-xs font-mono bg-(--color-background-muted) text-(--color-foreground-muted) p-2 rounded space-y-1">
                     {examples.map((ex) => (
                       <div key={ex}>{ex}</div>
                     ))}
@@ -213,10 +213,10 @@ export const SystemOverview: Story = {
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <p className="text-xs font-semibold text-(--color-danger-foreground-subtle)">
+                <p className="text-xs font-semibold text-(--color-foreground-danger-muted)">
                   Avoid — primitive token
                 </p>
-                <div className="p-3 rounded-md bg-(--color-background-subtle) text-xs font-mono text-(--color-foreground-muted) space-y-1">
+                <div className="p-3 rounded-md bg-(--color-background-muted) text-xs font-mono text-(--color-foreground-muted) space-y-1">
                   <div>color: var(--color-gray-900);</div>
                   <div>background: var(--color-blue-600);</div>
                   <div>border: 1px solid var(--color-gray-200);</div>
@@ -226,14 +226,12 @@ export const SystemOverview: Story = {
                 </p>
               </div>
               <div className="space-y-2">
-                <p className="text-xs font-semibold text-(--color-success-foreground-subtle)">
+                <p className="text-xs font-semibold text-(--color-foreground-success-muted)">
                   Prefer — semantic token
                 </p>
-                <div className="p-3 rounded-md bg-(--color-background-subtle) text-xs font-mono text-(--color-foreground-muted) space-y-1">
+                <div className="p-3 rounded-md bg-(--color-background-muted) text-xs font-mono text-(--color-foreground-muted) space-y-1">
                   <div>color: var(--color-foreground-default);</div>
-                  <div>
-                    background: var(--color-primary-background-default);
-                  </div>
+                  <div>background: var(--color-background-primary);</div>
                   <div>border: 1px solid var(--color-border-default);</div>
                 </div>
                 <p className="text-xs text-(--color-foreground-faint)">
@@ -404,7 +402,7 @@ export const AllColors: Story = {
           These values power the semantic layer. In your components, always
           reach for{" "}
           <code className="font-mono text-xs">--color-foreground-default</code>,{" "}
-          <code className="font-mono text-xs">--color-background-subtle</code>,
+          <code className="font-mono text-xs">--color-background-muted</code>,
           etc. — not raw primitive names like{" "}
           <code className="font-mono text-xs">--color-gray-500</code>.
         </AlertDescription>
@@ -543,11 +541,11 @@ export const SemanticTokens: Story = {
                 <button
                   key={token.name}
                   onClick={() => handleCopy(token.name)}
-                  className="relative flex items-center gap-3 p-2.5 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:bg-(--color-background-subtle) transition-colors text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring) group"
+                  className="relative flex items-center gap-3 p-2.5 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:bg-(--color-background-muted) transition-colors text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus) group"
                 >
                   {/* Swatch — var() resolves correctly since semantic tokens are on :root */}
                   <div
-                    className="w-10 h-10 rounded border border-(--color-border-subtle) shrink-0"
+                    className="w-10 h-10 rounded border border-(--color-border-muted) shrink-0"
                     style={{ backgroundColor: `var(${token.name})` }}
                   />
                   <div className="flex-1 min-w-0">
@@ -559,7 +557,7 @@ export const SemanticTokens: Story = {
                     </div>
                   </div>
                   {copiedKey === token.name ? (
-                    <span className="text-xs font-medium text-(--color-success-foreground-subtle) shrink-0">
+                    <span className="text-xs font-medium text-(--color-foreground-success-muted) shrink-0">
                       Copied!
                     </span>
                   ) : (
@@ -582,7 +580,7 @@ export const SemanticTokens: Story = {
               <h4 className="font-medium text-sm text-(--color-foreground-default)">
                 Tailwind v4 arbitrary syntax
               </h4>
-              <div className="font-mono text-xs bg-(--color-background-subtle) p-3 rounded">
+              <div className="font-mono text-xs bg-(--color-background-muted) p-3 rounded">
                 <span className="text-(--color-foreground-faint)">{`// CSS variable inline — Tailwind v4`}</span>
                 <br />
                 {`<p className="text-(--color-foreground-muted) bg-(--color-background-default)">`}
@@ -592,7 +590,7 @@ export const SemanticTokens: Story = {
               <h4 className="font-medium text-sm text-(--color-foreground-default)">
                 Inline style
               </h4>
-              <div className="font-mono text-xs bg-(--color-background-subtle) p-3 rounded">
+              <div className="font-mono text-xs bg-(--color-background-muted) p-3 rounded">
                 {`style={{ color: 'var(--color-foreground-muted)' }}`}
               </div>
             </div>
@@ -766,7 +764,7 @@ export const Accessibility: Story = {
               ].map(({ level, rows }) => (
                 <div
                   key={level}
-                  className="p-4 rounded-lg border border-(--color-border-default) bg-(--color-background-subtle)"
+                  className="p-4 rounded-lg border border-(--color-border-default) bg-(--color-background-muted)"
                 >
                   <div className="font-semibold text-sm text-(--color-foreground-default) mb-3">
                     {level}
@@ -971,10 +969,10 @@ export const TokenBrowser: Story = {
             <button
               key={token.name}
               onClick={() => handleCopy(token)}
-              className="relative flex items-center gap-3 p-3 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:border-(--color-focus-ring) hover:bg-(--color-background-subtle) transition-colors text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-focus-ring)"
+              className="relative flex items-center gap-3 p-3 rounded-lg border border-(--color-border-default) bg-(--color-background-default) hover:border-(--color-border-focus) hover:bg-(--color-background-muted) transition-colors text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-(--color-border-focus)"
             >
               <div
-                className="w-10 h-10 rounded border border-(--color-border-subtle) shrink-0"
+                className="w-10 h-10 rounded border border-(--color-border-muted) shrink-0"
                 style={{ backgroundColor: token.value }}
               />
               <div className="flex-1 min-w-0">

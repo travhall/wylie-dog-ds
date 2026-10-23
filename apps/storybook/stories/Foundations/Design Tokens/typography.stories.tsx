@@ -422,29 +422,29 @@ export const TextColors: Story = {
       </div>
 
       <div>
-        <p className="text-(--color-info-foreground-subtle) text-lg mb-1">
+        <p className="text-(--color-foreground-info-muted) text-lg mb-1">
           Link Text
         </p>
         <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --color-primary-background-default
+          --color-background-primary
         </p>
       </div>
 
       <div>
-        <p className="text-(--color-danger-foreground-subtle) text-lg mb-1">
+        <p className="text-(--color-foreground-danger-muted) text-lg mb-1">
           Error Text
         </p>
         <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --color-danger-foreground-subtle
+          --color-foreground-danger-muted
         </p>
       </div>
 
       <div>
-        <p className="text-(--color-success-foreground-subtle) text-lg mb-1">
+        <p className="text-(--color-foreground-success-muted) text-lg mb-1">
           Success Text
         </p>
         <p className="text-sm text-(--color-foreground-muted) font-mono">
-          --color-success-foreground-subtle
+          --color-foreground-success-muted
         </p>
       </div>
     </div>
@@ -589,7 +589,7 @@ export const TypographyHierarchy: Story = {
                   components and multiple product lines.
                 </p>
                 <div className="flex items-center gap-3 pt-1">
-                  <div className="w-7 h-7 rounded-full bg-(--color-primary-background-default)/20 border border-(--color-border-default)" />
+                  <div className="w-7 h-7 rounded-full bg-(--color-background-primary)/20 border border-(--color-border-default)" />
                   <div>
                     <p className="text-sm font-medium">Alex Kim</p>
                     <p className="text-xs text-(--color-foreground-faint)">
@@ -611,7 +611,7 @@ export const TypographyHierarchy: Story = {
                     Monthly Revenue
                   </p>
                   <p className="text-4xl font-bold">$48,295</p>
-                  <p className="text-sm text-(--color-success-foreground-subtle)">
+                  <p className="text-sm text-(--color-foreground-success-muted)">
                     ↑ 12.5% from last month
                   </p>
                 </div>
@@ -689,7 +689,7 @@ export const CodeTypography: Story = {
         <h4 className="text-lg font-semibold mb-3">Inline Code</h4>
         <p>
           Use the{" "}
-          <code className="bg-(--color-background-subtle) px-1.5 py-0.5 rounded text-sm font-mono">
+          <code className="bg-(--color-background-muted) px-1.5 py-0.5 rounded text-sm font-mono">
             useState
           </code>{" "}
           hook to manage state in React components.
@@ -698,7 +698,7 @@ export const CodeTypography: Story = {
 
       <div>
         <h4 className="text-lg font-semibold mb-3">Code Block</h4>
-        <pre className="bg-(--color-inverse-background-default) text-(--color-inverse-foreground-default) p-4 rounded-lg overflow-x-auto">
+        <pre className="bg-(--color-background-inverse) text-(--color-foreground-inverse) p-4 rounded-lg overflow-x-auto">
           <code className="font-mono text-sm">
             {`function Button({ children, variant = "default" }) {
   return (
@@ -713,7 +713,7 @@ export const CodeTypography: Story = {
 
       <div>
         <h4 className="text-lg font-semibold mb-3">Terminal Output</h4>
-        <pre className="bg-(--color-inverse-background-default) text-(--color-inverse-foreground-default) p-4 rounded-lg font-mono text-sm">
+        <pre className="bg-(--color-background-inverse) text-(--color-foreground-inverse) p-4 rounded-lg font-mono text-sm">
           {`$ npm install @wyliedog/ui
 + @wyliedog/ui@1.0.0
 added 1 package from 1 contributor
@@ -1044,7 +1044,7 @@ function TypographyPlaygroundComponent() {
                 onClick={() => handleCopy("css")}
               >
                 {copiedType === "css" ? (
-                  <span className="text-(--color-success-foreground-subtle)">
+                  <span className="text-(--color-foreground-success-muted)">
                     Copied!
                   </span>
                 ) : (
@@ -1057,7 +1057,7 @@ function TypographyPlaygroundComponent() {
                 onClick={() => handleCopy("tailwind")}
               >
                 {copiedType === "tailwind" ? (
-                  <span className="text-(--color-success-foreground-subtle)">
+                  <span className="text-(--color-foreground-success-muted)">
                     Copied!
                   </span>
                 ) : (
@@ -1072,7 +1072,7 @@ function TypographyPlaygroundComponent() {
             {/* CSS Properties */}
             <div className="space-y-2">
               <div className="text-sm font-semibold">CSS Properties</div>
-              <div className="p-3 rounded-md bg-(--color-background-subtle)/50 text-xs font-mono space-y-1">
+              <div className="p-3 rounded-md bg-(--color-background-muted)/50 text-xs font-mono space-y-1">
                 {cssLines.map((line) => (
                   <div key={line}>{line}</div>
                 ))}
@@ -1082,7 +1082,7 @@ function TypographyPlaygroundComponent() {
             {/* Tailwind Classes */}
             <div className="space-y-2">
               <div className="text-sm font-semibold">Tailwind Classes</div>
-              <div className="p-3 rounded-md bg-(--color-background-subtle)/50 text-xs font-mono">
+              <div className="p-3 rounded-md bg-(--color-background-muted)/50 text-xs font-mono">
                 <code>className=&quot;{tailwindClasses}&quot;</code>
               </div>
             </div>

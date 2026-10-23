@@ -29,7 +29,7 @@ export default function BordersPage() {
       headline={
         <>
           Every corner.{" "}
-          <span className="text-(--color-primary-foreground-subtle)">
+          <span className="text-(--color-foreground-primary-muted)">
             Every border
           </span>{" "}
           has a token.
@@ -49,7 +49,7 @@ export default function BordersPage() {
                 className="space-y-3 flex flex-col items-center"
               >
                 <div
-                  className="w-full aspect-square bg-(--color-background-subtle) border border-(--color-border-default)"
+                  className="w-full aspect-square bg-(--color-background-muted) border border-(--color-border-default)"
                   style={{ borderRadius: r.value }}
                 />
                 <div className="text-center">
@@ -76,9 +76,9 @@ export default function BordersPage() {
                   {w.name}
                 </div>
                 <div
-                  className="flex-1 h-10 bg-(--color-background-subtle) rounded-lg"
+                  className="flex-1 h-10 bg-(--color-background-muted) rounded-lg"
                   style={{
-                    border: `${w.value} solid var(--color-primary-background-default)`,
+                    border: `${w.value} solid var(--color-background-primary)`,
                   }}
                 />
                 <div className="text-[10px] font-mono text-(--color-foreground-faint)">

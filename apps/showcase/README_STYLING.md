@@ -46,12 +46,12 @@ Next.js processes `globals.css` through PostCSS and serves it with hot reloading
 Use token-backed classes, not Tailwind scale colors and not hardcoded values:
 
 ```tsx
-<div className="bg-(--color-background-subtle) text-(--color-foreground-muted) border border-(--color-border-default)">
+<div className="bg-(--color-background-muted) text-(--color-foreground-muted) border border-(--color-border-default)">
   ...
 </div>
 ```
 
-`text-white` is not allowed; use `text-(--color-inverse-foreground-default)` so it adapts to dark mode. Use `<Button>` and `buttonVariants({ variant, size })` from `@wyliedog/ui/button` instead of raw `<button>` and `<a>` styling. Token names are listed in [documentation/tokens/token-cheatsheet.md](../../documentation/tokens/token-cheatsheet.md), and `pnpm check:tokens` fails if the showcase references a token that does not exist.
+`text-white` is not allowed; use `text-(--color-foreground-inverse)` so it adapts to dark mode. Use `<Button>` and `buttonVariants({ variant, size })` from `@wyliedog/ui/button` instead of raw `<button>` and `<a>` styling. Token names are listed in [documentation/tokens/token-cheatsheet.md](../../documentation/tokens/token-cheatsheet.md), and `pnpm check:tokens` fails if the showcase references a token that does not exist.
 
 ## Troubleshooting
 

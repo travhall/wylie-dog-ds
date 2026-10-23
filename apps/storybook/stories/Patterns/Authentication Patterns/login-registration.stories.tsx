@@ -434,11 +434,11 @@ export const RegistrationForm: Story = {
                             ? passwordStrength.strength === 1
                               ? "bg-destructive"
                               : passwordStrength.strength === 2
-                                ? "bg-(--color-warning-background-default)"
+                                ? "bg-(--color-background-warning)"
                                 : passwordStrength.strength === 3
-                                  ? "bg-(--color-primary-background-default)"
-                                  : "bg-(--color-success-border-default)"
-                            : "bg-(--color-background-subtle)"
+                                  ? "bg-(--color-background-primary)"
+                                  : "bg-(--color-border-success)"
+                            : "bg-(--color-background-muted)"
                         }`}
                       />
                     ))}
@@ -496,7 +496,7 @@ export const RegistrationForm: Story = {
               {errors.terms && (
                 <p
                   id="terms-error"
-                  className="text-sm text-(--color-danger-foreground-subtle)"
+                  className="text-sm text-(--color-foreground-danger-muted)"
                 >
                   {errors.terms}
                 </p>

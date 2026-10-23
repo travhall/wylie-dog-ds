@@ -14,7 +14,7 @@
  * Consumers get autocomplete for token values and CSS var names:
  *
  *   import { cssVars, type CssVarName } from "@wyliedog/tokens/css-vars";
- *   const v: CssVarName = "--color-primary-background-default"; // ✓ autocompletes
+ *   const v: CssVarName = "--color-background-primary"; // ✓ autocompletes
  */
 
 import { readFileSync, writeFileSync } from "node:fs";

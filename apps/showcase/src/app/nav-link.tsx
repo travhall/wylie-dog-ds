@@ -20,8 +20,8 @@ export function NavLink({ href, label }: NavLinkProps) {
       href={href}
       className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
         isActive
-          ? "bg-(--color-background-subtle) text-(--color-foreground-default) font-medium"
-          : "text-(--color-foreground-muted) hover:text-(--color-foreground-default) hover:bg-(--color-background-subtle)"
+          ? "bg-(--color-background-muted) text-(--color-foreground-default) font-medium"
+          : "text-(--color-foreground-muted) hover:text-(--color-foreground-default) hover:bg-(--color-background-muted)"
       }`}
     >
       {label}

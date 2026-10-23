@@ -39,7 +39,7 @@ export default function ElevationPage() {
       headline={
         <>
           {shadows.length} shadow steps —{" "}
-          <span className="text-(--color-primary-foreground-subtle)">one</span>{" "}
+          <span className="text-(--color-foreground-primary-muted)">one</span>{" "}
           stacking story.
         </>
       }
@@ -73,7 +73,7 @@ export default function ElevationPage() {
         ))}
       </div>
 
-      <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-subtle) p-5">
+      <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-muted) p-5">
         <p className="text-[11px] text-(--color-foreground-faint) leading-relaxed">
           Dark mode redefines the same shadow tokens with higher opacity (0.3 to
           0.4 instead of 0.05 to 0.1).

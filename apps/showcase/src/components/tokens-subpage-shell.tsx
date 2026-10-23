@@ -30,7 +30,7 @@ export function TokensSubpageShell({
     <div className="mx-auto max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
       <Link
         href="/tokens"
-        className="inline-flex items-center gap-2 text-sm text-(--color-foreground-muted) hover:text-(--color-primary-foreground-subtle) transition-colors"
+        className="inline-flex items-center gap-2 text-sm text-(--color-foreground-muted) hover:text-(--color-foreground-primary-muted) transition-colors"
       >
         <ArrowLeft className="h-4 w-4" />
         All Tokens
@@ -50,7 +50,7 @@ export function TokensSubpageShell({
 
       <nav
         aria-label="Token categories"
-        className="flex items-center gap-1 overflow-x-auto rounded-lg border border-(--color-border-default) bg-(--color-background-subtle) p-1 text-sm"
+        className="flex items-center gap-1 overflow-x-auto rounded-lg border border-(--color-border-default) bg-(--color-background-muted) p-1 text-sm"
       >
         {CATEGORIES.map((c) => (
           <Link

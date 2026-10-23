@@ -8,7 +8,7 @@ export const sectionFeaturesVariants = cva("relative w-full py-20 md:py-32", {
   variants: {
     variant: {
       default: "bg-(--color-background-default)",
-      cards: "bg-(--color-background-subtle)",
+      cards: "bg-(--color-background-muted)",
       grid: "bg-(--color-background-default)",
     },
   },
@@ -88,7 +88,7 @@ export const SectionFeatures = React.forwardRef<
                         {feature.icon && (
                           <div
                             aria-hidden="true"
-                            className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-primary-background-default)/10 text-(--color-primary-foreground-subtle) mb-4"
+                            className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-background-primary)/10 text-(--color-foreground-primary-muted) mb-4"
                           >
                             {feature.icon}
                           </div>
@@ -118,7 +118,7 @@ export const SectionFeatures = React.forwardRef<
                       {feature.icon && (
                         <div
                           aria-hidden="true"
-                          className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-primary-background-default)/10 text-(--color-primary-foreground-subtle)"
+                          className="flex h-(--space-feature-grid-icon-container-size) w-(--space-feature-grid-icon-container-size) items-center justify-center rounded-(--border-radius-lg) bg-(--color-background-primary)/10 text-(--color-foreground-primary-muted)"
                         >
                           {feature.icon}
                         </div>

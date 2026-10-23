@@ -108,7 +108,7 @@ export const SiteHeader = React.forwardRef<HTMLElement, SiteHeaderProps>(
                       <NavigationMenuItem key={index}>
                         <NavigationMenuLink
                           href={item.href}
-                          className="group inline-flex h-9 w-max items-center justify-center rounded-(--border-radius-md) bg-(--color-background-default) px-4 py-2 text-(length:--font-size-sm) font-(--font-weight-medium) transition-colors hover:bg-(--color-background-default-hover) hover:text-(--color-foreground-default) focus:bg-(--color-background-default-hover) focus:text-(--color-foreground-default) focus:outline-none disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)"
+                          className="group inline-flex h-9 w-max items-center justify-center rounded-(--border-radius-md) bg-(--color-background-default) px-4 py-2 text-(length:--font-size-sm) font-(--font-weight-medium) transition-colors hover:bg-(--color-background-muted) hover:text-(--color-foreground-default) focus:bg-(--color-background-muted) focus:text-(--color-foreground-default) focus:outline-none disabled:pointer-events-none disabled:opacity-(--state-opacity-disabled)"
                         >
                           {item.label}
                         </NavigationMenuLink>

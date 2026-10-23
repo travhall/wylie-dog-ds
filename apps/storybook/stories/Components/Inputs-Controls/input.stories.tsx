@@ -512,7 +512,7 @@ export const DosDonts: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-8 max-w-4xl">
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-(--color-success-foreground-subtle)">
+        <h4 className="text-lg font-semibold mb-4 text-(--color-foreground-success-muted)">
           ✅ Do
         </h4>
 
@@ -561,7 +561,7 @@ export const DosDonts: Story = {
       </div>
 
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-(--color-danger-foreground-subtle)">
+        <h4 className="text-lg font-semibold mb-4 text-(--color-foreground-danger-muted)">
           ❌ Don&apos;t
         </h4>
 
@@ -582,7 +582,7 @@ export const DosDonts: Story = {
               Username
             </Label>
             <Input id="bad-username" error />
-            <p className="text-xs text-(--color-danger-foreground-subtle)">
+            <p className="text-xs text-(--color-foreground-danger-muted)">
               Username is required
             </p>
             <p className="text-xs text-(--color-foreground-faint)">
