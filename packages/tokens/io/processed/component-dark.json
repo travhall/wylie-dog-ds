@@ -1,3356 +1,4177 @@
 {
   "badge.default.background": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Fill of the default badge. Pairs with `badge.default.text`."
   },
   "badge.default.text": {
     "$type": "color",
-    "$value": "{color.foreground.primary}"
+    "$value": "{color.foreground.primary}",
+    "$description": "Text colour of the default badge. Pairs with `badge.default.background`."
   },
   "badge.default.border": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Border colour of the default badge."
   },
   "badge.secondary.background": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the secondary badge. Pairs with `badge.secondary.text`."
   },
   "badge.secondary.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the secondary badge. Pairs with `badge.secondary.background`."
   },
   "badge.secondary.border": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the secondary badge."
   },
   "badge.success.background": {
     "$type": "color",
-    "$value": "{color.background.success}"
+    "$value": "{color.background.success}",
+    "$description": "Fill of the success badge. Pairs with `badge.success.text`."
   },
   "badge.success.text": {
     "$type": "color",
-    "$value": "{color.foreground.success}"
+    "$value": "{color.foreground.success}",
+    "$description": "Label colour on the success badge. Pairs with `badge.success.background`."
   },
   "badge.success.border": {
     "$type": "color",
-    "$value": "{color.background.success}"
+    "$value": "{color.background.success}",
+    "$description": "Border colour of the success badge."
   },
   "badge.warning.background": {
     "$type": "color",
-    "$value": "{color.background.warning}"
+    "$value": "{color.background.warning}",
+    "$description": "Fill of the warning badge. Pairs with `badge.warning.text`."
   },
   "badge.warning.text": {
     "$type": "color",
-    "$value": "{color.foreground.warning}"
+    "$value": "{color.foreground.warning}",
+    "$description": "Text colour of the warning badge. Pairs with `badge.warning.background`."
   },
   "badge.warning.border": {
     "$type": "color",
-    "$value": "{color.background.warning}"
+    "$value": "{color.background.warning}",
+    "$description": "Border colour of the warning badge."
   },
   "badge.destructive.background": {
     "$type": "color",
-    "$value": "{color.background.danger-muted}"
+    "$value": "{color.background.danger-muted}",
+    "$description": "Fill of the destructive badge, a muted danger tint rather than a solid. Pairs with `badge.destructive.text`."
   },
   "badge.destructive.text": {
     "$type": "color",
-    "$value": "{color.foreground.danger-muted}"
+    "$value": "{color.foreground.danger-muted}",
+    "$description": "Text colour of the destructive badge. Pairs with `badge.destructive.background`."
   },
   "badge.destructive.border": {
     "$type": "color",
-    "$value": "{color.border.danger}"
+    "$value": "{color.border.danger}",
+    "$description": "Outline of the destructive badge, in the danger border tone."
   },
   "badge.outline.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the outline badge. Pairs with `badge.outline.text`."
   },
   "badge.outline.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the outline badge. Pairs with `badge.outline.background`."
   },
   "badge.outline.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the outline badge."
   },
   "badge.padding-x.sm": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Horizontal padding of the small badge."
   },
   "badge.padding-x.md": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Horizontal padding of the medium badge."
   },
   "badge.padding-x.lg": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the large badge."
   },
   "badge.padding-y.sm": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the small badge."
   },
   "badge.padding-y.md": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the medium badge."
   },
   "badge.padding-y.lg": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Vertical padding of the large badge."
   },
   "badge.font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.semibold}",
-    "$description": "Font weight for badge labels"
+    "$description": "Font weight of badge labels."
   },
   "badge.line-height": {
     "$type": "number",
     "$value": "{typography.line-height.none}",
-    "$description": "Line height for badge labels — tight (1) prevents extra vertical space from browser default"
+    "$description": "Line height of badge labels. None (1) prevents extra vertical space from the browser default."
   },
   "badge.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of every badge. Fully rounded (pill)."
   },
   "badge.border-width": {
     "$type": "dimension",
-    "$value": "{border-width.1}"
+    "$value": "{border-width.1}",
+    "$description": "Border width of the badge."
   },
   "badge.font-size.sm": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the small badge."
   },
   "badge.font-size.md": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the medium badge."
   },
   "badge.font-size.lg": {
     "$type": "number",
-    "$value": "{typography.font-size.base}"
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the large badge."
   },
   "button.primary.background": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Fill of the primary button. Pairs with `button.primary.text`."
   },
   "button.primary.background-hover": {
     "$type": "color",
-    "$value": "{color.background.primary-emphasis}"
+    "$value": "{color.background.primary-emphasis}",
+    "$description": "Primary button fill while hovered, one step stronger than the resting fill."
   },
   "button.primary.background-active": {
     "$type": "color",
-    "$value": "{color.background.primary-emphasis}"
+    "$value": "{color.background.primary-emphasis}",
+    "$description": "Fill of the primary button while pressed."
   },
   "button.primary.text": {
     "$type": "color",
-    "$value": "{color.foreground.primary}"
+    "$value": "{color.foreground.primary}",
+    "$description": "Label colour on the primary button. Pairs with `button.primary.background`."
   },
   "button.primary.border": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Border colour of the primary button."
   },
   "button.secondary.background": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the secondary button. Pairs with `button.secondary.text`."
   },
   "button.secondary.background-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the secondary button while hovered."
   },
   "button.secondary.background-active": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the secondary button while pressed."
   },
   "button.secondary.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the secondary button. Pairs with `button.secondary.background`."
   },
   "button.secondary.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Outline of the secondary button, in the default border tone."
   },
   "button.outline.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the outline button. Pairs with `button.outline.text`."
   },
   "button.ghost.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the ghost button. Pairs with `button.ghost.text`."
   },
   "button.ghost.background-hover": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the ghost button while hovered."
   },
   "button.ghost.background-active": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the ghost button while pressed."
   },
   "button.ghost.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the ghost button. Pairs with `button.ghost.background`."
   },
   "button.outline.background-hover": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the outline button while hovered."
   },
   "button.outline.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the outline button. Pairs with `button.outline.background`."
   },
   "button.outline.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the outline button."
   },
   "button.destructive.background": {
     "$type": "color",
-    "$value": "{color.background.danger}"
+    "$value": "{color.background.danger}",
+    "$description": "Fill of the destructive button. Pairs with `button.destructive.text`."
   },
   "button.destructive.background-hover": {
     "$type": "color",
-    "$value": "{color.background.danger-emphasis}"
+    "$value": "{color.background.danger-emphasis}",
+    "$description": "Fill of the destructive button while hovered."
   },
   "button.destructive.text": {
     "$type": "color",
-    "$value": "{color.foreground.danger}"
+    "$value": "{color.foreground.danger}",
+    "$description": "Text colour of the destructive button. Pairs with `button.destructive.background`."
   },
   "button.destructive.border": {
     "$type": "color",
-    "$value": "{color.background.danger}"
+    "$value": "{color.background.danger}",
+    "$description": "Border colour of the destructive button."
   },
   "button.padding-y.sm": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Vertical padding of the small button."
   },
   "button.padding-y.md": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Vertical padding of the medium (default) button."
   },
   "button.padding-y.lg": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Vertical padding of the large button."
   },
   "button.icon-size": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Width and height of the icon-only button."
   },
   "button.padding-x.sm": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the small button."
   },
   "button.padding-x.md": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Horizontal padding of the medium button."
   },
   "button.padding-x.lg": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Horizontal padding of the large button."
   },
   "button.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the button."
   },
   "button.font-size.sm": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the small button."
   },
   "button.font-size.md": {
     "$type": "number",
-    "$value": "{typography.font-size.base}"
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the medium button."
   },
   "button.font-size.lg": {
     "$type": "number",
-    "$value": "{typography.font-size.lg}"
+    "$value": "{typography.font-size.lg}",
+    "$description": "Font size of the large button."
   },
   "button.font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.medium}",
-    "$description": "Font weight for button labels"
+    "$description": "Font weight of button labels."
   },
   "button.line-height": {
     "$type": "number",
     "$value": "{typography.line-height.none}",
-    "$description": "Line height for button labels — tight (1) prevents extra vertical space from browser default"
+    "$description": "Line height of button labels. None (1) prevents extra vertical space from the browser default."
   },
   "button.border-width": {
     "$type": "number",
     "$value": "{border-width.1}",
-    "$description": "Line height for button labels — tight (1) prevents extra vertical space from browser default"
+    "$description": "Border thickness shared by every button variant."
   },
   "button.link-text": {
     "$type": "color",
-    "$value": "{color.foreground.primary-muted}"
+    "$value": "{color.foreground.primary-muted}",
+    "$description": "Label colour of the link-style button, which has no fill or border."
   },
   "card.background": {
     "$type": "color",
-    "$value": "{color.background.raised}"
+    "$value": "{color.background.raised}",
+    "$description": "Fill of the card."
   },
   "card.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the card."
   },
   "card.padding": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Padding inside the card."
   },
   "card.gap": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Gap between the card header, content and footer."
   },
   "card.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.lg}"
+    "$value": "{border-radius.lg}",
+    "$description": "Corner radius of the card."
   },
   "card.header-gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between the title and description in the card header."
   },
   "card.header.title.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xl}"
+    "$value": "{typography.font-size.xl}",
+    "$description": "Font size of the card header title."
   },
   "card.header.title.color": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the card header title."
   },
   "card.header.description.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the card header description."
   },
   "card.header.description.color": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the card header description."
   },
   "card.header.description.line-height": {
     "$type": "number",
-    "$value": "{typography.line-height.normal}"
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the card header description."
   },
   "card.footer.gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between the items inside the card footer."
   },
   "input.background-hover": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the input while hovered."
   },
   "input.border": {
     "$type": "color",
-    "$value": "{color.border.emphasis}"
+    "$value": "{color.border.emphasis}",
+    "$description": "Border colour of the input."
   },
   "input.border-focus": {
     "$type": "color",
-    "$value": "{color.border.focus}"
+    "$value": "{color.border.focus}",
+    "$description": "Border of the input while focused. Specification only: the code uses the focus ring (`color.border.focus`) and does not bind this token."
   },
   "input.border-error": {
     "$type": "color",
-    "$value": "{color.border.danger}"
+    "$value": "{color.border.danger}",
+    "$description": "Border colour of the input in the error state."
   },
   "input.placeholder": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Colour of placeholder text, muted so it reads as a hint rather than a value."
   },
   "input.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the input when disabled, a quiet neutral so it reads as unavailable. Pairs with `input.text-disabled`."
   },
   "input.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `input.background-disabled`."
   },
   "input.padding-x": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the input."
   },
   "input.font-size.sm": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the small input."
   },
   "input.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the input."
   },
   "input.font-size.md": {
     "$type": "number",
-    "$value": "{typography.font-size.base}"
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the medium input."
   },
   "input.font-size.lg": {
     "$type": "number",
-    "$value": "{typography.font-size.lg}"
+    "$value": "{typography.font-size.lg}",
+    "$description": "Font size of the large input."
   },
   "alert.default.background": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the default alert. Pairs with `alert.default.text`."
   },
   "alert.default.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the default alert."
   },
   "alert.default.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the default alert. Pairs with `alert.default.background`."
   },
   "alert.destructive.background": {
     "$type": "color",
-    "$value": "{color.background.danger-muted}"
+    "$value": "{color.background.danger-muted}",
+    "$description": "Fill of the destructive alert. Pairs with `alert.destructive.text`."
   },
   "alert.destructive.border": {
     "$type": "color",
-    "$value": "{color.border.danger}"
+    "$value": "{color.border.danger}",
+    "$description": "Border colour of the destructive alert."
   },
   "alert.destructive.text": {
     "$type": "color",
-    "$value": "{color.foreground.danger-muted}"
+    "$value": "{color.foreground.danger-muted}",
+    "$description": "Text colour of the destructive alert. Pairs with `alert.destructive.background`."
   },
   "alert.warning.background": {
     "$type": "color",
-    "$value": "{color.background.warning-muted}"
+    "$value": "{color.background.warning-muted}",
+    "$description": "Fill of the warning alert. Pairs with `alert.warning.text`."
   },
   "alert.warning.border": {
     "$type": "color",
-    "$value": "{color.border.warning}"
+    "$value": "{color.border.warning}",
+    "$description": "Border colour of the warning alert."
   },
   "alert.warning.text": {
     "$type": "color",
-    "$value": "{color.foreground.warning-muted}"
+    "$value": "{color.foreground.warning-muted}",
+    "$description": "Text colour of the warning alert. Pairs with `alert.warning.background`."
   },
   "alert.success.background": {
     "$type": "color",
-    "$value": "{color.background.success-muted}"
+    "$value": "{color.background.success-muted}",
+    "$description": "Fill of the success alert. Pairs with `alert.success.text`."
   },
   "alert.success.border": {
     "$type": "color",
-    "$value": "{color.border.success}"
+    "$value": "{color.border.success}",
+    "$description": "Border colour of the success alert."
   },
   "alert.success.text": {
     "$type": "color",
-    "$value": "{color.foreground.success-muted}"
+    "$value": "{color.foreground.success-muted}",
+    "$description": "Text colour of the success alert. Pairs with `alert.success.background`."
   },
   "menubar.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the menubar."
   },
   "menubar.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the menubar."
   },
   "menubar.trigger-focus": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the menubar trigger while focused. Pairs with `menubar.trigger-text-focus`."
   },
   "menubar.trigger-text-focus": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the menubar trigger while focused. Pairs with `menubar.trigger-focus`."
   },
   "menubar.trigger-open": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the menubar trigger when open. Pairs with `menubar.trigger-text-open`."
   },
   "menubar.trigger-text-open": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the menubar trigger when open. Pairs with `menubar.trigger-open`."
   },
   "menubar.content-border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the menubar content."
   },
   "menubar.content-background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the menubar content. Pairs with `menubar.content-text`."
   },
   "menubar.content-text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the menubar content. Pairs with `menubar.content-background`."
   },
   "menubar.item-focus": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the menubar item while focused. Pairs with `menubar.item-text-focus`."
   },
   "menubar.item-text-focus": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the menubar item while focused. Pairs with `menubar.item-focus`."
   },
   "menubar.label": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the menubar label."
   },
   "menubar.separator": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Fill of the menubar separator."
   },
   "menubar.shortcut": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the menubar shortcut."
   },
   "navigation.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of a navigation menu trigger at rest."
   },
   "navigation.text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the navigation menu while hovered. Pairs with `navigation.background-hover`."
   },
   "navigation.focus": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of a navigation menu trigger while focused. Pairs with `navigation.text-focus`."
   },
   "navigation.text-focus": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of a navigation menu trigger while focused. Pairs with `navigation.focus`."
   },
   "navigation.active": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the navigation menu trigger for the current link."
   },
   "navigation.open": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of a navigation menu trigger while its content is open."
   },
   "navigation.content-border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the navigation menu content."
   },
   "navigation.content-background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the navigation menu content. Pairs with `navigation.content-text`."
   },
   "navigation.content-text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the navigation menu content. Pairs with `navigation.content-background`."
   },
   "navigation.indicator": {
     "$type": "color",
-    "$value": "{color.border.emphasis}"
+    "$value": "{color.border.emphasis}",
+    "$description": "Fill of the small arrow that points from the open navigation menu content to its trigger."
   },
   "command.background": {
     "$type": "color",
-    "$value": "{color.background.raised}"
+    "$value": "{color.background.raised}",
+    "$description": "Fill of the command menu. Pairs with `command.text`."
   },
   "command.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the command menu. Pairs with `command.background`."
   },
   "command.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the command menu."
   },
   "command.placeholder": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Colour of placeholder text in the command menu, muted so it reads as a hint rather than a value."
   },
   "command.empty": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the empty-results message in the command menu."
   },
   "command.group-heading": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the command menu group heading."
   },
   "command.separator": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Fill of the command menu separator."
   },
   "command.item-selected": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the command menu item when selected. Pairs with `command.item-text-selected`."
   },
   "command.item-text-selected": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the command menu item when selected. Pairs with `command.item-selected`."
   },
   "command.shortcut": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the command menu shortcut."
   },
   "tabs.list.background": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the tabs list. Pairs with `tabs.list.text`."
   },
   "tabs.list.text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the tabs list. Pairs with `tabs.list.background`."
   },
   "tabs.trigger.background-active": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the selected tab trigger. Pairs with `tabs.trigger.text-active`."
   },
   "tabs.trigger.text-active": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the selected tab trigger. Pairs with `tabs.trigger.background-active`."
   },
   "tabs.trigger.background-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the tabs trigger while hovered. Pairs with `tabs.trigger.text-hover`."
   },
   "tabs.trigger.text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the tabs trigger while hovered. Pairs with `tabs.trigger.background-hover`."
   },
   "tabs.list.border.color": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the tabs list."
   },
   "tabs.trigger.indicator-color": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Colour of the underline that marks the selected tab."
   },
   "collapsible.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the collapsible."
   },
   "calendar.nav-border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the calendar nav."
   },
   "calendar.nav-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the calendar nav while hovered. Pairs with `calendar.nav-text-hover`."
   },
   "calendar.nav-text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the calendar nav while hovered. Pairs with `calendar.nav-hover`."
   },
   "calendar.header-text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the calendar header."
   },
   "calendar.day-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the calendar day while hovered. Pairs with `calendar.day-text-hover`."
   },
   "calendar.day-text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the calendar day while hovered. Pairs with `calendar.day-hover`."
   },
   "calendar.day-selected": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Fill of the calendar day when selected. Pairs with `calendar.day-text-selected`."
   },
   "calendar.day-text-selected": {
     "$type": "color",
-    "$value": "{color.foreground.primary}"
+    "$value": "{color.foreground.primary}",
+    "$description": "Text colour of the calendar day when selected. Pairs with `calendar.day-selected`."
   },
   "accordion.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the accordion."
   },
   "accordion.content-text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the accordion content."
   },
   "accordion.icon": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Colour of the accordion chevron icon."
   },
   "accordion.trigger-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the accordion trigger while hovered. Pairs with `accordion.trigger-text-hover`."
   },
   "accordion.trigger-text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the accordion trigger."
   },
   "accordion.trigger-text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the accordion trigger while hovered. Pairs with `accordion.trigger-hover`."
   },
   "accordion.trigger-text-open": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the accordion trigger when open."
   },
   "accordion.trigger-pressed": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the accordion trigger while pressed."
   },
   "accordion.trigger-focus": {
     "$type": "color",
-    "$value": "{color.background.primary-muted}"
+    "$value": "{color.background.primary-muted}",
+    "$description": "Fill of the accordion trigger while focused."
   },
   "accordion.trigger-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the accordion trigger when disabled, a quiet neutral so it reads as unavailable. Pairs with `accordion.trigger-text-disabled`."
   },
   "accordion.trigger-text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the accordion trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `accordion.trigger-disabled`."
   },
   "accordion.icon-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Colour of the accordion icon while hovered."
   },
   "accordion.icon-open": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Colour of the accordion icon when open."
   },
   "accordion.icon-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Colour of the accordion icon when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "avatar.background": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the avatar."
   },
   "avatar.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the avatar."
   },
   "avatar.fallback-background": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the avatar fallback. Pairs with `avatar.fallback-text`."
   },
   "avatar.fallback-text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the avatar fallback. Pairs with `avatar.fallback-background`."
   },
   "breadcrumb.current": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the current page item in the breadcrumb."
   },
   "breadcrumb.link": {
     "$type": "color",
-    "$value": "{color.foreground.primary-muted}"
+    "$value": "{color.foreground.primary-muted}",
+    "$description": "Text colour of the breadcrumb link."
   },
   "breadcrumb.link-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the breadcrumb link while hovered."
   },
   "breadcrumb.text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of breadcrumb text that is not a link."
   },
   "carousel.nav-background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the carousel nav."
   },
   "carousel.nav-border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the carousel nav."
   },
   "carousel.nav-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the carousel nav while hovered. Pairs with `carousel.nav-text-hover`."
   },
   "carousel.nav-text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the carousel nav while hovered. Pairs with `carousel.nav-hover`."
   },
   "contextmenu.background": {
     "$type": "color",
-    "$value": "{color.background.raised}"
+    "$value": "{color.background.raised}",
+    "$description": "Fill of the context menu. Pairs with `contextmenu.text`."
   },
   "contextmenu.item-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the context menu item while hovered. Pairs with `contextmenu.item-text-hover`."
   },
   "contextmenu.item-text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the context menu item while hovered. Pairs with `contextmenu.item-hover`."
   },
   "contextmenu.label": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the context menu label."
   },
   "contextmenu.separator": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Fill of the context menu separator."
   },
   "contextmenu.shortcut": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the context menu shortcut."
   },
   "contextmenu.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the context menu. Pairs with `contextmenu.background`."
   },
   "dialog.background": {
     "$type": "color",
-    "$value": "{color.background.raised}"
+    "$value": "{color.background.raised}",
+    "$description": "Fill of the dialog panel. Also the colour of the gap between the close button and its focus ring."
   },
   "dialog.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the dialog."
   },
   "dialog.description": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the dialog description."
   },
   "dialog.overlay": {
     "$type": "color",
-    "$value": "{color.background.overlay}"
+    "$value": "{color.background.overlay}",
+    "$description": "Fill of the dialog overlay."
   },
   "dialog.title": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the dialog title."
   },
   "form.description": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the help text under a form field."
   },
   "form.error": {
     "$type": "color",
-    "$value": "{color.foreground.danger-muted}"
+    "$value": "{color.foreground.danger-muted}",
+    "$description": "Text colour of form error messages."
   },
   "form.label": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of form labels."
   },
   "hover-card.background": {
     "$type": "color",
-    "$value": "{color.background.raised}"
+    "$value": "{color.background.raised}",
+    "$description": "Fill of the hover card. Pairs with `hover-card.text`."
   },
   "hover-card.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the hover card."
   },
   "hover-card.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the hover card. Pairs with `hover-card.background`."
   },
   "pagination.active": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Fill of the page link for the current page. Pairs with `pagination.text-active`."
   },
   "pagination.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of page links other than the current page."
   },
   "pagination.text-active": {
     "$type": "color",
-    "$value": "{color.foreground.primary}"
+    "$value": "{color.foreground.primary}",
+    "$description": "Text colour of the page link for the current page. Pairs with `pagination.active`."
   },
   "pagination.text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the pagination while hovered. Pairs with `pagination.background-hover`."
   },
   "popover.background": {
     "$type": "color",
-    "$value": "{color.background.raised}"
+    "$value": "{color.background.raised}",
+    "$description": "Fill of the popover. Pairs with `popover.text`."
   },
   "popover.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the popover."
   },
   "popover.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the popover. Pairs with `popover.background`."
   },
   "progress.background": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the progress track behind the bar."
   },
   "progress.default-fill": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Fill of the progress bar in its default variant."
   },
   "progress.destructive-fill": {
     "$type": "color",
-    "$value": "{color.background.danger}"
+    "$value": "{color.background.danger}",
+    "$description": "Fill of the progress bar in its destructive variant."
   },
   "progress.success-fill": {
     "$type": "color",
-    "$value": "{color.background.success}"
+    "$value": "{color.background.success}",
+    "$description": "Fill of the progress bar in its success variant."
   },
   "progress.warning-fill": {
     "$type": "color",
-    "$value": "{color.background.warning}"
+    "$value": "{color.background.warning}",
+    "$description": "Fill of the progress bar in its warning variant."
   },
   "radio.background-checked": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Fill of the radio when checked."
   },
   "radio.border": {
     "$type": "color",
-    "$value": "{color.border.emphasis}"
+    "$value": "{color.border.emphasis}",
+    "$description": "Border colour of the radio."
   },
   "radio.border-checked": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Border colour of the radio when checked."
   },
   "radio.indicator": {
     "$type": "color",
-    "$value": "{color.foreground.primary}"
+    "$value": "{color.foreground.primary}",
+    "$description": "Colour of the dot inside the selected radio."
   },
   "resizable.handle": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Fill of the thin divider line between resizable panels."
   },
   "resizable.handle-background": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the grip box on the resizable divider."
   },
   "resizable.handle-border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the resizable handle."
   },
   "scrollbar.thumb": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Fill of the scroll area scrollbar thumb."
   },
   "skeleton.background": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the skeleton."
   },
   "slider.range": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Fill of the filled part of the slider track, from the start to the thumb."
   },
   "slider.thumb": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the slider thumb."
   },
   "slider.thumb-border": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Border colour of the slider thumb."
   },
   "slider.track": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the slider track."
   },
   "table.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the table."
   },
   "table.caption": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the table caption."
   },
   "table.footer-background": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the table footer."
   },
   "table.header-text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the table header."
   },
   "table.row-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the table row while hovered."
   },
   "table.row-selected": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the table row when selected."
   },
   "toast.action-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the toast action button while hovered."
   },
   "toast.close": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Colour of the close icon on the toast."
   },
   "toast.close-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Colour of the close icon on the toast while hovered."
   },
   "toast.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the toast."
   },
   "toggle.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the toggle."
   },
   "toggle.pressed": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Fill of the toggle when pressed (on). Pairs with `toggle.text-pressed`."
   },
   "toggle.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the toggle."
   },
   "toggle.text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the toggle while hovered. Pairs with `toggle.background-hover`."
   },
   "toggle.text-pressed": {
     "$type": "color",
-    "$value": "{color.foreground.primary}"
+    "$value": "{color.foreground.primary}",
+    "$description": "Text colour of the toggle when pressed (on). Pairs with `toggle.pressed`."
   },
   "tooltip.background": {
     "$type": "color",
-    "$value": "{color.background.inverse}"
+    "$value": "{color.background.inverse}",
+    "$description": "Fill of the tooltip. Pairs with `tooltip.text`."
   },
   "tooltip.border": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the tooltip."
   },
   "tooltip.text": {
     "$type": "color",
-    "$value": "{color.foreground.inverse}"
+    "$value": "{color.foreground.inverse}",
+    "$description": "Text colour of the tooltip. Pairs with `tooltip.background`."
   },
   "tooltip.padding-x": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Horizontal padding of the tooltip."
   },
   "tooltip.padding-y": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Vertical padding of the tooltip."
   },
   "tooltip.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the tooltip."
   },
   "tooltip.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the tooltip."
   },
   "tooltip.max-width": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1600}",
+    "$description": "Maximum width of the tooltip."
   },
   "select.trigger.height.sm": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Height of the small select trigger."
   },
   "select.trigger.height.md": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Height of the medium select trigger."
   },
   "select.trigger.height.lg": {
     "$type": "spacing",
-    "$value": "{space.600}"
+    "$value": "{space.600}",
+    "$description": "Height of the large select trigger."
   },
   "select.trigger.padding-x.sm": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the small select trigger."
   },
   "select.trigger.padding-x.md": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the medium select trigger."
   },
   "select.trigger.padding-x.lg": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Horizontal padding of the large select trigger."
   },
   "select.trigger.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the select trigger."
   },
   "select.trigger.font-size.sm": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the small select trigger."
   },
   "select.trigger.font-size.md": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the medium select trigger."
   },
   "select.trigger.font-size.lg": {
     "$type": "number",
-    "$value": "{typography.font-size.base}"
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the large select trigger."
   },
   "select.content.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the select content."
   },
   "select.content.padding": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Padding inside the select content."
   },
   "select.content.max-height": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1600}",
+    "$description": "Maximum height of the select content."
   },
   "select.content.min-width": {
     "$type": "spacing",
-    "$value": "{space.1200}"
+    "$value": "{space.1200}",
+    "$description": "Minimum width of the select content."
   },
   "select.item.padding-y": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Vertical padding of the select item."
   },
   "select.item.padding-left": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Left padding of the select item."
   },
   "select.item.padding-right": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Right padding of the select item."
   },
   "select.item.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.sm}"
+    "$value": "{border-radius.sm}",
+    "$description": "Corner radius of the select item."
   },
   "select.separator.height": {
     "$type": "spacing",
-    "$value": "{border-width.1}"
+    "$value": "{border-width.1}",
+    "$description": "Height of the select separator."
   },
   "checkbox.size.sm": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Size of the small checkbox."
   },
   "checkbox.size.md": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Width and height of the medium checkbox."
   },
   "checkbox.size.lg": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Size of the large checkbox."
   },
   "checkbox.border.width": {
     "$type": "dimension",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Border width of the checkbox."
   },
   "checkbox.border.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.sm}"
+    "$value": "{border-radius.sm}",
+    "$description": "Corner radius of the checkbox."
   },
   "checkbox.icon.size.sm": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Size of the small checkbox icon."
   },
   "checkbox.icon.size.md": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the medium checkbox icon."
   },
   "checkbox.icon.size.lg": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Size of the large checkbox icon."
   },
   "checkbox.focus-ring.width": {
     "$type": "spacing",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Width of the checkbox focus ring."
   },
   "checkbox.focus-ring.offset": {
     "$type": "spacing",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Gap between the checkbox and its focus ring. The ring colour is `color.border.focus`, the documented exception."
   },
   "switch.track.height.sm": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Height of the small switch track."
   },
   "switch.track.height.md": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Height of the medium switch track."
   },
   "switch.track.height.lg": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Height of the large switch track."
   },
   "switch.track.width.sm": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Width of the small switch track."
   },
   "switch.track.width.md": {
     "$type": "spacing",
-    "$value": "{space.600}"
+    "$value": "{space.600}",
+    "$description": "Width of the medium switch track."
   },
   "switch.track.width.lg": {
     "$type": "spacing",
-    "$value": "{space.700}"
+    "$value": "{space.700}",
+    "$description": "Width of the large switch track."
   },
   "switch.track.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the switch track."
   },
   "switch.track.border-width": {
     "$type": "dimension",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Border width of the switch track."
   },
   "switch.thumb.size.sm": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the small switch thumb."
   },
   "switch.thumb.size.md": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Size of the medium switch thumb."
   },
   "switch.thumb.size.lg": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Size of the large switch thumb."
   },
   "switch.thumb.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the switch thumb."
   },
   "switch.thumb.translate.sm": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Travel distance of the small switch thumb."
   },
   "switch.thumb.translate.md": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Distance the medium thumb travels when the switch turns on."
   },
   "switch.thumb.translate.lg": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Travel distance of the large switch thumb."
   },
   "switch.focus-ring.width": {
     "$type": "spacing",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Width of the switch focus ring."
   },
   "switch.focus-ring.offset": {
     "$type": "spacing",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Gap between the switch and its focus ring."
   },
   "switch.track.background-checked": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Track fill when the switch is on."
   },
   "switch.track.background-unchecked": {
     "$type": "color",
-    "$value": "{color.border.emphasis}"
+    "$value": "{color.border.emphasis}",
+    "$description": "Track fill when the switch is off, in the emphasis border tone."
   },
   "switch.thumb.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the sliding thumb."
   },
   "radio.size.sm": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the small radio."
   },
   "radio.size.md": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Size of the medium radio."
   },
   "radio.size.lg": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Size of the large radio."
   },
   "radio.border-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the radio."
   },
   "radio.indicator-size-sm": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Size of the small radio indicator."
   },
   "radio.indicator-size-md": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Size of the medium radio indicator."
   },
   "radio.indicator-size-lg": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the large radio indicator."
   },
   "radio.focus-ring.width": {
     "$type": "spacing",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Width of the radio focus ring."
   },
   "radio.focus-ring.offset": {
     "$type": "spacing",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Gap between the radio and its focus ring."
   },
   "slider.track-height": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Height of the slider track."
   },
   "slider.track-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the slider track."
   },
   "slider.thumb-size": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Size of the slider thumb."
   },
   "slider.thumb-border-width": {
     "$type": "dimension",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Border width of the slider thumb."
   },
   "slider.thumb-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the slider thumb."
   },
   "slider.focus-ring.width": {
     "$type": "spacing",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Width of the slider focus ring."
   },
   "slider.focus-ring.offset": {
     "$type": "spacing",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Gap between the slider and its focus ring."
   },
   "textarea.min-height.sm": {
     "$type": "spacing",
-    "$value": "{space.900}"
+    "$value": "{space.900}",
+    "$description": "Minimum height of the small textarea."
   },
   "textarea.min-height.md": {
     "$type": "spacing",
-    "$value": "{space.1000}"
+    "$value": "{space.1000}",
+    "$description": "Minimum height of the medium textarea."
   },
   "textarea.min-height.lg": {
     "$type": "spacing",
-    "$value": "{space.1200}"
+    "$value": "{space.1200}",
+    "$description": "Minimum height of the large textarea."
   },
   "textarea.padding": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Padding inside the textarea."
   },
   "textarea.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the textarea."
   },
   "label.font-size.sm": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the small label."
   },
   "textarea.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the textarea."
   },
   "label.font-size.md": {
     "$type": "number",
-    "$value": "{typography.font-size.base}"
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the medium label."
   },
   "label.font-size.lg": {
     "$type": "number",
-    "$value": "{typography.font-size.lg}"
+    "$value": "{typography.font-size.lg}",
+    "$description": "Font size of the large label."
   },
   "label.disabled-color": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of a label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "sheet.overlay-background": {
     "$type": "color",
-    "$value": "{color.background.overlay}"
+    "$value": "{color.background.overlay}",
+    "$description": "Fill of the sheet overlay."
   },
   "sheet.content.width.sm": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1600}",
+    "$description": "Width of the small sheet content."
   },
   "sheet.content.width.md": {
     "$type": "spacing",
-    "$value": "{space.1700}"
+    "$value": "{space.1700}",
+    "$description": "Width of the medium sheet content."
   },
   "sheet.content.width.lg": {
     "$type": "spacing",
-    "$value": "{space.1800}"
+    "$value": "{space.1800}",
+    "$description": "Width of the large sheet content."
   },
   "sheet.content.width.default": {
     "$type": "dimension",
     "$value": "{space.1600}",
-    "$description": "Default width for left/right sheet panels before size modifier is applied"
+    "$description": "Default width for left and right sheet panels before a size modifier is applied."
   },
   "sheet.content.padding": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Padding inside the sheet content."
   },
   "sheet.header.gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between the items inside the sheet header."
   },
   "sheet.header.padding-bottom": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Bottom padding of the sheet header."
   },
   "sheet.title.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xl}"
+    "$value": "{typography.font-size.xl}",
+    "$description": "Font size of the sheet title."
   },
   "sheet.title.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.semibold}"
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the sheet title."
   },
   "sheet.description.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the sheet description."
   },
   "sheet.footer.padding-top": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Top padding of the sheet footer."
   },
   "sheet.footer.gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between the items inside the sheet footer."
   },
   "tabs.list.height.sm": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Height of the small tabs list."
   },
   "tabs.list.height.md": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Height of the medium tabs list."
   },
   "tabs.list.height.lg": {
     "$type": "spacing",
-    "$value": "{space.600}"
+    "$value": "{space.600}",
+    "$description": "Height of the large tabs list."
   },
   "tabs.list.padding.sm": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Padding inside the small tabs list."
   },
   "tabs.list.padding.md": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Padding inside the medium tabs list."
   },
   "tabs.list.padding.lg": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Padding inside the large tabs list."
   },
   "tabs.list.gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between the items inside the tabs list."
   },
   "tabs.list.border.width": {
     "$type": "dimension",
-    "$value": "{border-width.1}"
+    "$value": "{border-width.1}",
+    "$description": "Border width of the tabs list."
   },
   "tabs.trigger.padding-x.sm": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Horizontal padding of the small tabs trigger."
   },
   "tabs.trigger.padding-x.md": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the medium tabs trigger."
   },
   "tabs.trigger.padding-x.lg": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Horizontal padding of the large tabs trigger."
   },
   "tabs.trigger.padding-y.sm": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the small tabs trigger."
   },
   "tabs.trigger.padding-y.md": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the medium tabs trigger."
   },
   "tabs.trigger.padding-y.lg": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Vertical padding of the large tabs trigger."
   },
   "tabs.trigger.font-size.sm": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the small tabs trigger."
   },
   "tabs.trigger.font-size.md": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the medium tabs trigger."
   },
   "tabs.trigger.font-size.lg": {
     "$type": "number",
-    "$value": "{typography.font-size.base}"
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the large tabs trigger."
   },
   "tabs.trigger.indicator-width": {
     "$type": "spacing",
-    "$value": "{border-width.4}"
+    "$value": "{border-width.4}",
+    "$description": "Thickness of the underline that marks the selected tab."
   },
   "tabs.content.padding": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Padding inside the tabs content."
   },
   "tabs.content.margin-top": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Top margin of the tabs content."
   },
   "tabs.trigger.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the tabs trigger."
   },
   "collapsible.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the collapsible."
   },
   "separator.height-horizontal": {
     "$type": "spacing",
-    "$value": "{border-width.1}"
+    "$value": "{border-width.1}",
+    "$description": "Thickness of a horizontal separator."
   },
   "separator.width-vertical": {
     "$type": "spacing",
-    "$value": "{border-width.1}"
+    "$value": "{border-width.1}",
+    "$description": "Thickness of a vertical separator."
   },
   "separator.margin.horizontal": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Vertical margin above and below a horizontal separator."
   },
   "separator.margin.vertical": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Horizontal margin beside a vertical separator."
   },
   "pagination.item.size": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Size of the pagination item."
   },
   "pagination.item.padding-x": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the pagination item."
   },
   "pagination.item.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the pagination item."
   },
   "pagination.item.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the pagination item."
   },
   "pagination.item.gap": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the pagination item."
   },
   "pagination.icon-size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the pagination icon."
   },
   "dialog.content.width.sm": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1600}",
+    "$description": "Width of the small dialog content."
   },
   "dialog.content.width.md": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1600}",
+    "$description": "Width of the medium dialog content."
   },
   "dialog.content.width.lg": {
     "$type": "spacing",
-    "$value": "{space.1700}"
+    "$value": "{space.1700}",
+    "$description": "Width of the large dialog content."
   },
   "dialog.content.max-width": {
     "$type": "spacing",
-    "$value": "{space.1700}"
+    "$value": "{space.1700}",
+    "$description": "Maximum width of the dialog content."
   },
   "dialog.content.padding": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Padding inside the dialog content."
   },
   "dialog.content.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.lg}"
+    "$value": "{border-radius.lg}",
+    "$description": "Corner radius of the dialog content."
   },
   "dialog.header.gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between the items inside the dialog header."
   },
   "dialog.header.margin-bottom": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Bottom margin of the dialog header."
   },
   "dialog.title-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xl}"
+    "$value": "{typography.font-size.xl}",
+    "$description": "Font size of the dialog title."
   },
   "dialog.description-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the dialog description."
   },
   "dialog.footer.margin-top": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Top margin of the dialog footer."
   },
   "dialog.footer.gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between the items inside the dialog footer."
   },
   "popover.content.width.sm": {
     "$type": "spacing",
-    "$value": "{space.1500}"
+    "$value": "{space.1500}",
+    "$description": "Width of the small popover content."
   },
   "popover.content.width.md": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1600}",
+    "$description": "Width of the medium popover content."
   },
   "popover.content.width.lg": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1600}",
+    "$description": "Width of the large popover content."
   },
   "popover.content-padding": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Padding inside the popover content."
   },
   "hover-card.content.width.sm": {
     "$type": "spacing",
-    "$value": "{space.1500}"
+    "$value": "{space.1500}",
+    "$description": "Width of the small hover card content."
   },
   "hover-card.content.width.md": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1600}",
+    "$description": "Width of the medium hover card content."
   },
   "hover-card.content.width.lg": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1600}",
+    "$description": "Width of the large hover card content."
   },
   "hover-card.content-padding": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Padding inside the hover card content."
   },
   "toast.width": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1600}",
+    "$description": "Width of the toast."
   },
   "toast.padding": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Padding inside the toast."
   },
   "toast.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the toast."
   },
   "toast.gap": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Gap between the toast content and its action button."
   },
   "toast.title.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the toast title."
   },
   "toast.title.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.semibold}"
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the toast title."
   },
   "toast.description.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the toast description."
   },
   "toast.description.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the toast description."
   },
   "toast.action.height": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Height of the toast action."
   },
   "toast.action.padding-x": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Horizontal padding of the toast action."
   },
   "toast.action.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the toast action."
   },
   "toast.close-size": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Width and height of the toast close button."
   },
   "table.cell.padding-x": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Horizontal padding of the table cell."
   },
   "table.cell.padding-y": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Vertical padding of the table cell."
   },
   "table.header.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the table header."
   },
   "table.cell.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the table cell."
   },
   "table.caption-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the table caption."
   },
   "table.caption-margin-top": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Top margin of the table caption."
   },
   "table.border-width": {
     "$type": "dimension",
-    "$value": "{border-width.1}"
+    "$value": "{border-width.1}",
+    "$description": "Border width of the table row dividers."
   },
   "skeleton.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the skeleton."
   },
   "skeleton.height.text": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Height of a text-line skeleton."
   },
   "skeleton.height.title": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Height of a title skeleton."
   },
   "skeleton.height.button": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Height of a button skeleton."
   },
   "skeleton.height.avatar": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Height and width of an avatar skeleton."
   },
   "progress.height": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Height of the progress."
   },
   "progress.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the progress."
   },
   "scrollbar.width": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Width of the scroll area scrollbar."
   },
   "scrollbar.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the scroll area scrollbar."
   },
   "scrollbar.thumb-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the scroll area scrollbar thumb."
   },
   "scrollbar.thumb-min-height": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Minimum height of the scroll area scrollbar thumb."
   },
   "command.input.height": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Height of the command menu input."
   },
   "command.input.padding-y": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Vertical padding of the command menu input."
   },
   "command.input.icon.size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the search icon in the command menu input."
   },
   "command.list-max-height": {
     "$type": "spacing",
-    "$value": "{space.1600}"
+    "$value": "{space.1600}",
+    "$description": "Maximum height of the command menu list."
   },
   "command.group.padding": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Padding inside the command menu group."
   },
   "calendar.container-padding": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Padding inside the calendar container."
   },
   "calendar.nav.button-size": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Size of the calendar nav button."
   },
   "calendar.nav.icon-size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the calendar nav icon."
   },
   "calendar.cell-size": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Size of the calendar cell."
   },
   "calendar.day.size": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Size of the calendar day."
   },
   "avatar.size.sm": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Size of the small avatar."
   },
   "avatar.size.md": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Size of the medium avatar."
   },
   "avatar.size.lg": {
     "$type": "spacing",
-    "$value": "{space.600}"
+    "$value": "{space.600}",
+    "$description": "Size of the large avatar."
   },
   "avatar.size.xl": {
     "$type": "spacing",
-    "$value": "{space.800}"
+    "$value": "{space.800}",
+    "$description": "Size of the extra-large avatar."
   },
   "breadcrumb.list-gap": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the breadcrumb list."
   },
   "breadcrumb.item-gap": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the breadcrumb item."
   },
   "breadcrumb.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the breadcrumb."
   },
   "breadcrumb.separator-size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the breadcrumb separator."
   },
   "breadcrumb.ellipsis-size": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Size of the breadcrumb ellipsis."
   },
   "carousel.item-spacing": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Spacing between carousel slides."
   },
   "carousel.button.size": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Size of the carousel button."
   },
   "carousel.button.offset": {
     "$type": "spacing",
-    "$value": "{space.600}"
+    "$value": "{space.600}",
+    "$description": "Distance the previous and next buttons sit outside the carousel edges."
   },
   "carousel.button.icon-size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the carousel button icon."
   },
   "carousel.gap": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Gap between the items inside the carousel."
   },
   "context-menu.content.min-width": {
     "$type": "spacing",
-    "$value": "{space.1200}"
+    "$value": "{space.1200}",
+    "$description": "Minimum width of the context menu content."
   },
   "context-menu.content.padding": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Padding inside the context menu content."
   },
   "context-menu.item.padding-y": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the context menu item."
   },
   "context-menu.item.padding-x": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Horizontal padding of the context menu item."
   },
   "context-menu.item.inset": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Extra left padding for context menu items without an indicator, so their labels line up with indicator items."
   },
   "context-menu.item.indicator.size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the context menu item indicator."
   },
   "context-menu.item.icon-size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the context menu item icon."
   },
   "dropdown-menu.content.min-width": {
     "$type": "spacing",
-    "$value": "{space.1200}"
+    "$value": "{space.1200}",
+    "$description": "Minimum width of the dropdown menu content."
   },
   "dropdown-menu.content.padding": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Padding inside the dropdown menu content."
   },
   "dropdown-menu.item.padding-y": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the dropdown menu item."
   },
   "dropdown-menu.item.padding-x": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Horizontal padding of the dropdown menu item."
   },
   "dropdown-menu.item.inset": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Extra left padding for dropdown menu items without an indicator, so their labels line up with indicator items."
   },
   "dropdown-menu.item.icon-size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the dropdown menu item icon."
   },
   "dropdown-menu.item.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the dropdown menu item."
   },
   "dropdown-menu.shortcut.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the dropdown menu shortcut."
   },
   "dropdown-menu.separator.height": {
     "$type": "spacing",
-    "$value": "{border-width.1}"
+    "$value": "{border-width.1}",
+    "$description": "Height of the dropdown menu separator."
   },
   "dropdown-menu.separator.margin-y": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical margin of the dropdown menu separator."
   },
   "dropdown-menu.separator.margin-x": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Horizontal margin of the dropdown menu separator."
   },
   "dropdown-menu.item.indicator.size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the dropdown menu item indicator."
   },
   "accordion.item-border-width": {
     "$type": "dimension",
-    "$value": "{border-width.1}"
+    "$value": "{border-width.1}",
+    "$description": "Border width of the accordion item."
   },
   "accordion.trigger.padding": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Padding inside the accordion trigger."
   },
   "accordion.trigger.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.base}"
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the accordion trigger."
   },
   "accordion.trigger.icon-size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the accordion trigger icon."
   },
   "accordion.content.padding": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Padding inside the accordion content."
   },
   "accordion.content.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the accordion content."
   },
   "accordion.trigger.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the accordion trigger."
   },
   "accordion.trigger.line-height": {
     "$type": "number",
-    "$value": "{typography.line-height.none}"
+    "$value": "{typography.line-height.none}",
+    "$description": "Line height of the accordion trigger."
   },
   "accordion.content.line-height": {
     "$type": "number",
-    "$value": "{typography.line-height.normal}"
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the accordion content."
   },
   "table.header.height": {
     "$type": "spacing",
-    "$value": "{space.600}"
+    "$value": "{space.600}",
+    "$description": "Height of the table header."
   },
   "toggle.size.default.height": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Height of the default-size toggle."
   },
   "toggle.size.default.padding-x": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Horizontal padding of the default-size toggle."
   },
   "toggle.size.sm.height": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Height of the small toggle size."
   },
   "toggle.size.sm.padding-x": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Horizontal padding of the small toggle size."
   },
   "toggle.size.lg.height": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Height of the large toggle size."
   },
   "toggle.size.lg.padding-x": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Horizontal padding of the large toggle size."
   },
   "menubar.root.height": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Height of the menubar bar."
   },
   "menubar.root.padding": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Padding inside the menubar bar."
   },
   "menubar.trigger.padding-x": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Horizontal padding of the menubar trigger."
   },
   "menubar.trigger.padding-y": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the menubar trigger."
   },
   "menubar.content-min-width": {
     "$type": "spacing",
-    "$value": "{space.1400}"
+    "$value": "{space.1400}",
+    "$description": "Minimum width of the menubar content."
   },
   "menubar.sub-content-min-width": {
     "$type": "spacing",
-    "$value": "{space.1200}"
+    "$value": "{space.1200}",
+    "$description": "Minimum width of the menubar sub content."
   },
   "menubar.item.padding-x": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Horizontal padding of the menubar item."
   },
   "menubar.item.inset": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Extra left padding for menubar items without an indicator, so their labels line up with indicator items."
   },
   "menubar.item.indicator-size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the menubar item indicator."
   },
   "menubar.item.icon-size": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Size of the menubar item icon."
   },
   "menubar.shortcut-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the menubar shortcut."
   },
   "menubar.separator-height": {
     "$type": "spacing",
-    "$value": "{border-width.1}"
+    "$value": "{border-width.1}",
+    "$description": "Height of the menubar separator."
   },
   "menubar.separator-margin-y": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical margin of the menubar separator."
   },
   "menubar.separator-margin-x": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Horizontal margin of the menubar separator."
   },
   "toast.destructive.border": {
     "$type": "color",
-    "$value": "{color.background.danger}"
+    "$value": "{color.background.danger}",
+    "$description": "Border colour of the destructive toast."
   },
   "toast.destructive.background": {
     "$type": "color",
-    "$value": "{color.background.danger}"
+    "$value": "{color.background.danger}",
+    "$description": "Fill of the destructive toast. Pairs with `toast.destructive.text`."
   },
   "toast.success.border": {
     "$type": "color",
-    "$value": "{color.background.success}"
+    "$value": "{color.background.success}",
+    "$description": "Border colour of the success toast."
   },
   "toast.success.background": {
     "$type": "color",
-    "$value": "{color.background.success}"
+    "$value": "{color.background.success}",
+    "$description": "Fill of the success toast. Pairs with `toast.success.text`."
   },
   "toast.warning.border": {
     "$type": "color",
-    "$value": "{color.background.warning}"
+    "$value": "{color.background.warning}",
+    "$description": "Border colour of the warning toast."
   },
   "toast.warning.background": {
     "$type": "color",
-    "$value": "{color.background.warning}"
+    "$value": "{color.background.warning}",
+    "$description": "Fill of the warning toast. Pairs with `toast.warning.text`."
   },
   "toast.destructive.text": {
     "$type": "color",
     "$value": "{color.foreground.danger}",
-    "$description": "Text color on destructive toast (saturated red background)"
+    "$description": "Text colour on the destructive toast. Pairs with `toast.destructive.background`."
   },
   "toast.success.text": {
     "$type": "color",
     "$value": "{color.foreground.success}",
-    "$description": "Text color on success toast (saturated green background)"
+    "$description": "Text colour on the success toast. Pairs with `toast.success.background`."
   },
   "toast.warning.text": {
     "$type": "color",
     "$value": "{color.foreground.warning}",
-    "$description": "Text color on warning toast (saturated orange background)"
+    "$description": "Text colour on the warning toast. Pairs with `toast.warning.background`."
   },
   "card-grid.gap-horizontal": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Horizontal gap between items in the card grid."
   },
   "card-grid.gap-vertical": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Vertical gap between items in the card grid."
   },
   "card-grid.item-padding": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Padding inside each card grid item."
   },
   "feature-grid.container-gap": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Gap between feature items in the grid."
   },
   "feature-grid.item-gap": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Gap between the icon, title and description inside a feature item."
   },
   "feature-grid.item-padding": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Padding inside the feature grid item."
   },
   "feature-grid.item-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.2xl}"
+    "$value": "{border-radius.2xl}",
+    "$description": "Corner radius of the feature grid item."
   },
   "feature-grid.icon-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.xl}"
+    "$value": "{border-radius.xl}",
+    "$description": "Corner radius of the feature grid icon."
   },
   "feature-grid.title-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xl}"
+    "$value": "{typography.font-size.xl}",
+    "$description": "Font size of the feature grid title."
   },
   "feature-grid.description-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the feature grid description."
   },
   "form.item-gap": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Gap between the label, control and messages of one form field."
   },
   "form.label-gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between a form label and its control."
   },
   "form.error-margin": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Left margin of the form error message."
   },
   "form.description-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the form description."
   },
   "alert-dialog.content-gap": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Gap between the items inside the alert dialog content."
   },
   "alert-dialog.content-padding": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Padding inside the alert dialog content."
   },
   "alert-dialog.header-gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between the items inside the alert dialog header."
   },
   "alert-dialog.footer-gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between the items inside the alert dialog footer."
   },
   "alert-dialog.content-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.lg}"
+    "$value": "{border-radius.lg}",
+    "$description": "Corner radius of the alert dialog content."
   },
   "alert-dialog.title-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.lg}"
+    "$value": "{typography.font-size.lg}",
+    "$description": "Font size of the alert dialog title."
   },
   "alert-dialog.description-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the alert dialog description."
   },
   "alert-dialog.title-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.semibold}"
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the alert dialog title."
   },
   "alert.padding-x": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the alert."
   },
   "alert.padding-y": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Vertical padding of the alert."
   },
   "alert.title-margin-bottom": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Bottom margin of the alert title."
   },
   "alert.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.lg}"
+    "$value": "{border-radius.lg}",
+    "$description": "Corner radius of the alert."
   },
   "alert.title.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.base}"
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the alert title."
   },
   "alert.description-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the alert description."
   },
   "alert.title.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the alert title."
   },
   "alert.title.line-height": {
     "$type": "number",
-    "$value": "{typography.line-height.none}"
+    "$value": "{typography.line-height.none}",
+    "$description": "Line height of the alert title."
   },
   "alert.title.letter-spacing": {
     "$type": "dimension",
-    "$value": "{typography.tracking.tight}"
+    "$value": "{typography.tracking.tight}",
+    "$description": "Letter spacing of the alert title."
   },
   "alert.description.line-height": {
     "$type": "number",
-    "$value": "{typography.line-height.normal}"
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the alert description."
   },
   "alert.description.opacity": {
     "$type": "number",
-    "$value": "{opacity.100}"
+    "$value": "{opacity.100}",
+    "$description": "Opacity of the alert description."
   },
   "alert.border-left-width": {
     "$type": "dimension",
-    "$value": "{border-width.4}"
+    "$value": "{border-width.4}",
+    "$description": "Width of the accent border on the left edge of the alert."
   },
   "label.required-margin-left": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Space between a label and its required marker."
   },
   "radio.group-gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between radios in a radio group."
   },
   "command.item-padding-x": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Horizontal padding of the command menu item."
   },
   "command.item-indicator-margin-right": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Margin of the command menu item indicator right."
   },
   "command.empty-padding-y": {
     "$type": "spacing",
-    "$value": "{space.300}"
+    "$value": "{space.300}",
+    "$description": "Vertical padding of the command menu empty."
   },
   "command.group-heading-padding-x": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Horizontal padding of the command menu group heading."
   },
   "command.group-heading-padding-y": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the command menu group heading."
   },
   "command.separator-margin-x": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Horizontal margin of the command menu separator."
   },
   "command.content-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the command menu content."
   },
   "command.item-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the command menu item."
   },
   "command.item-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the command menu item."
   },
   "command.group-heading-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the command menu group heading."
   },
   "navigation-menu.list-gap": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the navigation menu list."
   },
   "navigation-menu.trigger-padding-x": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Horizontal padding of the navigation menu trigger."
   },
   "navigation-menu.trigger-padding-y": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Vertical padding of the navigation menu trigger."
   },
   "navigation-menu.indicator-margin-left": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Left margin of the navigation menu indicator."
   },
   "navigation-menu.indicator-margin-top": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Top margin of the navigation menu indicator."
   },
   "navigation-menu.trigger-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the navigation menu trigger."
   },
   "navigation-menu.trigger-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the navigation menu trigger."
   },
   "toggle-group.gap": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the toggle group."
   },
   "toggle-group.item-padding-x": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Horizontal padding of the toggle group item."
   },
   "toggle-group.item-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the toggle group item."
   },
   "toggle-group.item-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the toggle group item."
   },
   "toggle-group.item-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the toggle group item."
   },
   "toggle-group.item-height": {
     "$type": "spacing",
     "$value": "{space.500}",
-    "$description": "Height of toggle group items (40px, matches default toggle height)"
+    "$description": "Height of toggle group items (40px, matches default toggle height)."
   },
   "calendar.container-gap": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Gap between the items inside the calendar container."
   },
   "calendar.months-gap": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the calendar months."
   },
   "calendar.nav-button-padding": {
     "$type": "spacing",
-    "$value": "{space.0}"
+    "$value": "{space.0}",
+    "$description": "Padding inside the calendar nav button."
   },
   "calendar.nav-button-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the calendar nav button."
   },
   "calendar.header-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the calendar header."
   },
   "calendar.day-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the calendar day."
   },
   "pagination.list-gap": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the pagination list."
   },
   "pagination.ellipsis-padding-left": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Left padding of the pagination ellipsis."
   },
   "pagination.ellipsis-padding-right": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Right padding of the pagination ellipsis."
   },
   "scrollbar.padding": {
     "$type": "spacing",
-    "$value": "{space.010}"
+    "$value": "{space.010}",
+    "$description": "Padding inside the scroll area scrollbar."
   },
   "context-menu.checkbox-padding": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Padding of context menu checkbox items."
   },
   "context-menu.separator-margin-x": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Horizontal margin of the context menu separator."
   },
   "context-menu.separator-margin-y": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical margin of the context menu separator."
   },
   "context-menu.content-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the context menu content."
   },
   "context-menu.item-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the context menu item."
   },
   "context-menu.item-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the context menu item."
   },
   "context-menu.shortcut-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the context menu shortcut."
   },
   "context-menu.label-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.semibold}"
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the context menu label."
   },
   "context-menu.shortcut-letter-spacing": {
     "$type": "dimension",
-    "$value": "{typography.tracking.widest}"
+    "$value": "{typography.tracking.widest}",
+    "$description": "Letter spacing of the context menu shortcut."
   },
   "context-menu.item.indicator.left": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Left offset of the context menu item check indicator."
   },
   "menubar.list-gap": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the menubar list."
   },
   "menubar.checkbox-padding": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Padding of menubar checkbox items."
   },
   "menubar.item-padding-y": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the menubar item."
   },
   "menubar.subitem-padding-left": {
     "$type": "spacing",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Left padding of the menubar subitem."
   },
   "menubar.subitem-padding-right": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Right padding of the menubar subitem."
   },
   "menubar.trigger-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the menubar trigger."
   },
   "menubar.item-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the menubar item."
   },
   "menubar.item-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the menubar item."
   },
   "dropdown-menu.content-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the dropdown menu content."
   },
   "dropdown-menu.item-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the dropdown menu item."
   },
   "dropdown-menu.content.background": {
     "$type": "color",
-    "$value": "{color.background.raised}"
+    "$value": "{color.background.raised}",
+    "$description": "Fill of the dropdown menu content. Pairs with `dropdown-menu.content.text`."
   },
   "dropdown-menu.content.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the dropdown menu content. Pairs with `dropdown-menu.content.background`."
   },
   "dropdown-menu.content.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the dropdown menu content."
   },
   "dropdown-menu.item.background-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.text-hover`."
   },
   "dropdown-menu.item.text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the dropdown menu item while hovered. Pairs with `dropdown-menu.item.background-hover`."
   },
   "dropdown-menu.separator.background": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Fill of the dropdown menu separator."
   },
   "dropdown-menu.shortcut.opacity": {
     "$type": "number",
-    "$value": "{opacity.70}"
+    "$value": "{opacity.70}",
+    "$description": "Opacity of the dropdown menu shortcut."
   },
   "dropdown-menu.label-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.semibold}"
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the dropdown menu label."
   },
   "dropdown-menu.shortcut.letter-spacing": {
     "$type": "dimension",
-    "$value": "{typography.tracking.widest}"
+    "$value": "{typography.tracking.widest}",
+    "$description": "Letter spacing of the dropdown menu shortcut."
   },
   "dropdown-menu.item.indicator.left": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Left offset of the dropdown menu item check indicator."
   },
   "dropdown-menu.item.radio-indicator-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the dropdown menu item radio indicator."
   },
   "resizable.handle-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the resizable handle."
   },
   "sheet.close-button-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the sheet close button."
   },
   "avatar.rounded": {
     "$type": "spacing",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the avatar and its fallback. Fully rounded (circle)."
   },
   "avatar.fallback-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the avatar fallback."
   },
   "avatar.fallback.font-size.sm": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of the small avatar fallback."
   },
   "avatar.fallback.font-size.md": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the medium avatar fallback."
   },
   "avatar.fallback.font-size.lg": {
     "$type": "number",
-    "$value": "{typography.font-size.base}"
+    "$value": "{typography.font-size.base}",
+    "$description": "Font size of the large avatar fallback."
   },
   "avatar.fallback.font-size.xl": {
     "$type": "number",
-    "$value": "{typography.font-size.xl}"
+    "$value": "{typography.font-size.xl}",
+    "$description": "Font size of the extra-large avatar fallback."
   },
   "table.header-padding-right": {
     "$type": "spacing",
-    "$value": "{space.0}"
+    "$value": "{space.0}",
+    "$description": "Right padding of the table header."
   },
   "table.header.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the table header."
   },
   "table.footer-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the table footer."
   },
   "toast.close-button-padding": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Padding inside the toast close button."
   },
   "toast.close-button-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the toast close button."
   },
   "toggle.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the toggle."
   },
   "dialog.close-button-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the dialog close button."
   },
   "skeleton.rounded-full": {
     "$type": "spacing",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius for circular skeletons."
   },
   "skeleton.rounded-sm": {
     "$type": "spacing",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius for skeletons with slightly rounded corners."
   },
   "breadcrumb.link-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the breadcrumb link."
   },
   "hover-card.content-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the hover card content."
   },
   "popover.content-radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the popover content."
   },
   "carousel.button-rounded-full": {
     "$type": "spacing",
-    "$value": "{border-radius.full}"
+    "$value": "{border-radius.full}",
+    "$description": "Corner radius of the carousel previous and next buttons. Fully rounded (circle)."
   },
   "select.separator-margin-x": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Horizontal margin of the select separator."
   },
   "select.separator-margin-y": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical margin of the select separator."
   },
   "toggle.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the toggle."
   },
   "toggle.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the toggle."
   },
   "toast.action.radius": {
     "$type": "dimension",
-    "$value": "{border-radius.md}"
+    "$value": "{border-radius.md}",
+    "$description": "Corner radius of the toast action."
   },
   "card.footer.padding-top": {
     "$type": "spacing",
-    "$value": "{space.0}"
+    "$value": "{space.0}",
+    "$description": "Top padding of the card footer."
   },
   "card.shadow": {
     "$type": "shadow",
-    "$value": "{shadow.sm}"
+    "$value": "{shadow.sm}",
+    "$description": "Elevation shadow of the card."
   },
   "card.title.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.semibold}"
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the card title."
   },
   "card.title.line-height": {
     "$type": "number",
-    "$value": "{typography.line-height.none}"
+    "$value": "{typography.line-height.none}",
+    "$description": "Line height of the card title."
   },
   "card.title.letter-spacing": {
     "$type": "dimension",
-    "$value": "{typography.tracking.tight}"
+    "$value": "{typography.tracking.tight}",
+    "$description": "Letter spacing of the card title."
   },
   "card.content.font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.sm}"
+    "$value": "{typography.font-size.sm}",
+    "$description": "Font size of the card content."
   },
   "card.content.color": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the card content."
   },
   "card.content.line-height": {
     "$type": "number",
-    "$value": "{typography.line-height.normal}"
+    "$value": "{typography.line-height.normal}",
+    "$description": "Line height of the card content."
   },
   "checkbox.border.color": {
     "$type": "color",
-    "$value": "{color.border.emphasis}"
+    "$value": "{color.border.emphasis}",
+    "$description": "Border of an unchecked checkbox in its normal state."
   },
   "checkbox.background-checked": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Fill of a checked or indeterminate checkbox. Pairs with `checkbox.text-checked`."
   },
   "checkbox.text-checked": {
     "$type": "color",
-    "$value": "{color.foreground.primary}"
+    "$value": "{color.foreground.primary}",
+    "$description": "Colour of the check mark or indeterminate dash. Pairs with `checkbox.background-checked`."
   },
   "checkbox.border-checked": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Border colour of the checkbox when checked."
   },
   "checkbox.error-border": {
     "$type": "color",
-    "$value": "{color.border.danger}"
+    "$value": "{color.border.danger}",
+    "$description": "Border of a checkbox marked invalid."
   },
   "sheet.close-button-offset": {
     "$type": "dimension",
-    "$value": "{space.400}"
+    "$value": "{space.400}",
+    "$description": "Distance of the sheet close button from the top and right edges."
   },
   "sheet.close-button.opacity-hover": {
     "$type": "number",
-    "$value": "{opacity.100}"
+    "$value": "{opacity.100}",
+    "$description": "Opacity of the sheet close button while hovered."
   },
   "dialog.close-button-offset": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Distance of the dialog close button from the top and right edges."
   },
   "dialog.close-button.opacity": {
     "$type": "number",
-    "$value": "{opacity.70}"
+    "$value": "{opacity.70}",
+    "$description": "Opacity of the dialog close button."
   },
   "dialog.close-button.opacity-hover": {
     "$type": "number",
-    "$value": "{opacity.100}"
+    "$value": "{opacity.100}",
+    "$description": "Opacity of the dialog close button while hovered."
   },
   "dialog.title-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.semibold}"
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the dialog title."
   },
   "dialog.title-letter-spacing": {
     "$type": "dimension",
-    "$value": "{typography.tracking.tight}"
+    "$value": "{typography.tracking.tight}",
+    "$description": "Letter spacing of the dialog title."
   },
   "badge.default.background-hover": {
     "$type": "color",
-    "$value": "{color.background.primary-emphasis}"
+    "$value": "{color.background.primary-emphasis}",
+    "$description": "Fill of an interactive default badge while hovered. Applies only when the badge is interactive."
   },
   "badge.secondary.background-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the secondary badge while hovered."
   },
   "badge.success.background-hover": {
     "$type": "color",
-    "$value": "{color.background.success-emphasis}"
+    "$value": "{color.background.success-emphasis}",
+    "$description": "Fill of the success badge while hovered."
   },
   "badge.warning.background-hover": {
     "$type": "color",
-    "$value": "{color.background.warning-emphasis}"
+    "$value": "{color.background.warning-emphasis}",
+    "$description": "Fill of the warning badge while hovered."
   },
   "badge.destructive.background-hover": {
     "$type": "color",
-    "$value": "{color.background.danger-muted}"
+    "$value": "{color.background.danger-muted}",
+    "$description": "Fill of the destructive badge while hovered."
   },
   "badge.outline.background-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the outline badge while hovered."
   },
   "card.background-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of an interactive card while hovered."
   },
   "card.border-hover": {
     "$type": "color",
-    "$value": "{color.border.focus}"
+    "$value": "{color.border.focus}",
+    "$description": "Border colour of an interactive card while hovered."
   },
   "form.label-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the form label."
   },
   "form.message-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the form message."
   },
   "form.error-font-size": {
     "$type": "number",
-    "$value": "{typography.font-size.xs}"
+    "$value": "{typography.font-size.xs}",
+    "$description": "Font size of form error messages."
   },
   "form.required-color": {
     "$type": "color",
-    "$value": "{color.foreground.danger-muted}"
+    "$value": "{color.foreground.danger-muted}",
+    "$description": "Colour of the required-field marker on form labels."
   },
   "badge.default.background-focus": {
     "$type": "color",
-    "$value": "{color.background.primary-emphasis}"
+    "$value": "{color.background.primary-emphasis}",
+    "$description": "Fill of the default badge while focused."
   },
   "badge.default.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the default badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.default.text-disabled`."
   },
   "badge.secondary.background-focus": {
     "$type": "color",
-    "$value": "{color.background.primary-muted}"
+    "$value": "{color.background.primary-muted}",
+    "$description": "Fill of an interactive secondary badge while it has keyboard focus."
   },
   "badge.secondary.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the secondary badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.secondary.text-disabled`."
   },
   "badge.success.background-focus": {
     "$type": "color",
-    "$value": "{color.background.success-emphasis}"
+    "$value": "{color.background.success-emphasis}",
+    "$description": "Fill of the success badge while focused."
   },
   "badge.success.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the success badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.success.text-disabled`."
   },
   "badge.warning.background-focus": {
     "$type": "color",
-    "$value": "{color.background.warning-emphasis}"
+    "$value": "{color.background.warning-emphasis}",
+    "$description": "Fill of the warning badge while focused."
   },
   "badge.warning.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the warning badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.warning.text-disabled`."
   },
   "badge.destructive.background-focus": {
     "$type": "color",
-    "$value": "{color.background.primary-muted}"
+    "$value": "{color.background.primary-muted}",
+    "$description": "Fill of the destructive badge while focused."
   },
   "badge.destructive.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the destructive badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.destructive.text-disabled`."
   },
   "badge.outline.background-focus": {
     "$type": "color",
-    "$value": "{color.background.primary-muted}"
+    "$value": "{color.background.primary-muted}",
+    "$description": "Fill of the outline badge while focused."
   },
   "badge.outline.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the outline badge when disabled, a quiet neutral so it reads as unavailable. Pairs with `badge.outline.text-disabled`."
   },
   "card.background-focus": {
     "$type": "color",
-    "$value": "{color.background.primary-muted}"
+    "$value": "{color.background.primary-muted}",
+    "$description": "Fill of an interactive card while focused."
   },
   "card.background-active": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of an interactive card while pressed."
   },
   "card.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of a disabled card, a quiet neutral so it reads as unavailable."
   },
   "navigation.background-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the navigation menu while hovered. Pairs with `navigation.text-hover`."
   },
   "calendar.nav-button.opacity": {
     "$type": "number",
-    "$value": "{opacity.50}"
+    "$value": "{opacity.50}",
+    "$description": "Opacity of the calendar nav button."
   },
   "calendar.nav-button.opacity-hover": {
     "$type": "number",
-    "$value": "{opacity.100}"
+    "$value": "{opacity.100}",
+    "$description": "Opacity of the calendar nav button while hovered."
   },
   "calendar.header-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the calendar header."
   },
   "calendar.nav-button.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the calendar nav button."
   },
   "calendar.day-header-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.regular}"
+    "$value": "{typography.font-weight.regular}",
+    "$description": "Font weight of the calendar day header."
   },
   "calendar.day.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.regular}"
+    "$value": "{typography.font-weight.regular}",
+    "$description": "Font weight of the calendar day."
   },
   "breadcrumb.page-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.regular}"
+    "$value": "{typography.font-weight.regular}",
+    "$description": "Font weight of the current page item in the breadcrumb."
   },
   "breadcrumb.link-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the breadcrumb link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "pagination.background-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the pagination while hovered. Pairs with `pagination.text-hover`."
   },
   "pagination.item.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the pagination item."
   },
   "toggle.background-hover": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the toggle while hovered. Pairs with `toggle.text-hover`."
   },
   "select.content.z-index": {
     "$type": "number",
-    "$value": "{z-index.dropdown}"
+    "$value": "{z-index.dropdown}",
+    "$description": "Stacking order of the select content."
   },
   "select.item.background-focus": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the select item while focused. Pairs with `select.item.text-focus`."
   },
   "select.item.text-focus": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the select item while focused. Pairs with `select.item.background-focus`."
   },
   "select.item.indicator-left": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Left offset of the select item check indicator."
   },
   "input.default.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the default input. Pairs with `input.default.text`."
   },
   "input.default.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Colour of typed text. Pairs with `input.default.background`."
   },
   "toast.default-background": {
     "$type": "color",
-    "$value": "{color.background.raised}"
+    "$value": "{color.background.raised}",
+    "$description": "Fill of the default toast, a raised surface. Pairs with `toast.text`."
   },
   "label.default-color": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Default text colour of labels."
   },
   "context-menu.sub-content-min-width": {
     "$type": "spacing",
-    "$value": "{space.1000}"
+    "$value": "{space.1000}",
+    "$description": "Minimum width of the context menu sub content."
   },
   "command.item-padding-y": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Vertical padding of the command menu item."
   },
   "command.input.icon.opacity": {
     "$type": "number",
-    "$value": "{opacity.50}"
+    "$value": "{opacity.50}",
+    "$description": "Opacity of the search icon in the command menu input."
   },
   "command.group.heading-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the command menu group heading."
   },
   "command.shortcut-letter-spacing": {
     "$type": "dimension",
-    "$value": "{typography.tracking.widest}"
+    "$value": "{typography.tracking.widest}",
+    "$description": "Letter spacing of the command menu shortcut."
   },
   "toast.viewport.padding": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Padding inside the toast viewport."
   },
   "toast.viewport.gap": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Gap between the items inside the toast viewport."
   },
   "toast.content-gap": {
     "$type": "spacing",
-    "$value": "{space.050}"
+    "$value": "{space.050}",
+    "$description": "Gap between the items inside the toast content."
   },
   "toast.close-button.opacity": {
     "$type": "number",
-    "$value": "{opacity.0}"
+    "$value": "{opacity.0}",
+    "$description": "Resting opacity of the close button. It is hidden (0) until the toast is hovered."
   },
   "toast.close-button.opacity-hover": {
     "$type": "number",
-    "$value": "{opacity.100}"
+    "$value": "{opacity.100}",
+    "$description": "Opacity of the close button once the toast is hovered or the button has focus."
   },
   "resizable.handle-height": {
     "$type": "spacing",
-    "$value": "{space.200}"
+    "$value": "{space.200}",
+    "$description": "Height of the resizable handle."
   },
   "resizable.handle-width": {
     "$type": "spacing",
-    "$value": "{space.150}"
+    "$value": "{space.150}",
+    "$description": "Width of the resizable handle."
   },
   "resizable.grip-icon-size": {
     "$type": "spacing",
     "$value": "{icon.size.xs}",
-    "$description": "Size of the grip icon inside the resizable handle (xs icon, 12px)"
+    "$description": "Size of the grip icon inside the resizable handle (xs icon, 12px)."
   },
   "feature-grid.icon-container-size": {
     "$type": "spacing",
-    "$value": "{space.600}"
+    "$value": "{space.600}",
+    "$description": "Size of the feature grid icon container."
   },
   "feature-grid.title.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.bold}"
+    "$value": "{typography.font-weight.bold}",
+    "$description": "Font weight of the feature grid title."
   },
   "feature-grid.title.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the feature grid title."
   },
   "feature-grid.description-text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the feature grid description."
   },
   "menubar.radio-indicator-size": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Size of the menubar radio indicator."
   },
   "menubar.trigger.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the menubar trigger."
   },
   "menubar.label-font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.semibold}"
+    "$value": "{typography.font-weight.semibold}",
+    "$description": "Font weight of the menubar label."
   },
   "menubar.item.indicator-left": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Left offset of the menubar item check indicator."
   },
   "menubar.shortcut-letter-spacing": {
     "$type": "dimension",
-    "$value": "{typography.tracking.widest}"
+    "$value": "{typography.tracking.widest}",
+    "$description": "Letter spacing of the menubar shortcut."
   },
   "navigation-menu.indicator-height": {
     "$type": "dimension",
-    "$value": "0px"
+    "$value": "0px",
+    "$description": "Height of the navigation menu indicator."
   },
   "navigation-menu.trigger.height": {
     "$type": "spacing",
-    "$value": "{space.500}"
+    "$value": "{space.500}",
+    "$description": "Height of the navigation menu trigger."
   },
   "navigation-menu.trigger.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the navigation menu trigger."
   },
   "select.trigger.icon-opacity": {
     "$type": "number",
-    "$value": "{opacity.50}"
+    "$value": "{opacity.50}",
+    "$description": "Opacity of the select trigger icon."
   },
   "select.content.background": {
     "$type": "color",
-    "$value": "{color.background.raised}"
+    "$value": "{color.background.raised}",
+    "$description": "Fill of the select content. Pairs with `select.content.text`."
   },
   "select.content.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the select content. Pairs with `select.content.background`."
   },
   "select.separator.background": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Fill of the select separator."
   },
   "slider.thumb-ring-offset": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Colour of the gap between the slider thumb and its focus ring, matching the surface behind it."
   },
   "textarea.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.regular}"
+    "$value": "{typography.font-weight.regular}",
+    "$description": "Font weight of the textarea."
   },
   "label.font-weight": {
     "$type": "number",
-    "$value": "{typography.font-weight.medium}"
+    "$value": "{typography.font-weight.medium}",
+    "$description": "Font weight of the label."
   },
   "label.error-text": {
     "$type": "color",
-    "$value": "{color.foreground.danger-muted}"
+    "$value": "{color.foreground.danger-muted}",
+    "$description": "Text colour of a label when its field has an error."
   },
   "label.required-text": {
     "$type": "color",
-    "$value": "{color.foreground.danger-muted}"
+    "$value": "{color.foreground.danger-muted}",
+    "$description": "Colour of the required marker on labels."
   },
   "separator.color": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Colour of the separator line."
   },
   "resizable.handle-focus-ring-width": {
     "$type": "spacing",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Width of the resizable handle focus ring."
   },
   "resizable.handle-focus-ring-offset": {
     "$type": "spacing",
-    "$value": "{border-width.2}"
+    "$value": "{border-width.2}",
+    "$description": "Gap between the resizable handle and its focus ring."
   },
   "sheet.content.background": {
     "$type": "color",
-    "$value": "{color.background.raised}"
+    "$value": "{color.background.raised}",
+    "$description": "Fill of the sheet panel. Also the colour of the gap between the close button and its focus ring."
   },
   "sheet.close-button.opacity": {
     "$type": "number",
-    "$value": "{opacity.70}"
+    "$value": "{opacity.70}",
+    "$description": "Opacity of the sheet close button."
   },
   "sheet.title.text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the sheet title."
   },
   "sheet.description.text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the sheet description."
   },
   "toast.action.ring-offset": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Colour of the gap between the toast action and its focus ring, matching the surface behind it."
   },
   "toast.close-button.position": {
     "$type": "spacing",
-    "$value": "{space.100}"
+    "$value": "{space.100}",
+    "$description": "Offset from the corner of the toast close button."
   },
   "toast.description.opacity": {
     "$type": "number",
-    "$value": "{opacity.100}"
+    "$value": "{opacity.100}",
+    "$description": "Opacity of the toast description."
   },
   "tabs.trigger.ring-offset": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Colour of the gap between the tabs trigger and its focus ring, matching the surface behind it."
   },
   "tabs.content.ring-offset": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Colour of the gap between the tabs content and its focus ring, matching the surface behind it."
   },
   "calendar.nav-button.ring-offset": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Colour of the gap between the calendar nav button and its focus ring, matching the surface behind it."
   },
   "form.label-error-text": {
     "$type": "color",
-    "$value": "{color.foreground.danger-muted}"
+    "$value": "{color.foreground.danger-muted}",
+    "$description": "Text colour of a form label when its field has an error."
   },
   "feature-grid.item.border-color": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the feature grid item."
   },
   "feature-grid.item.border-color-hover": {
     "$type": "color",
-    "$value": "{color.border.primary}"
+    "$value": "{color.border.primary}",
+    "$description": "Border colour of the feature grid item while hovered."
   },
   "input.padding-y.sm": {
     "$type": "spacing",
     "$value": "{space.100}",
-    "$description": "Vertical padding for sm input — space.100 (8px) + font-size.sm (14px) = 30px total height"
+    "$description": "Vertical padding of the small input. `space.100` (8px) plus `font-size.sm` (14px) gives a 30px height."
   },
   "input.padding-y.md": {
     "$type": "spacing",
     "$value": "{space.150}",
-    "$description": "Vertical padding for md input — space.150 (12px) + font-size.base (16px) = 40px total height"
+    "$description": "Vertical padding of the medium input. `space.150` (12px) plus `font-size.base` (16px) gives a 40px height."
   },
   "input.padding-y.lg": {
     "$type": "spacing",
     "$value": "{space.200}",
-    "$description": "Vertical padding for lg input — space.200 (16px) + font-size.lg (18px) = 50px total height"
+    "$description": "Vertical padding of the large input. `space.200` (16px) plus `font-size.lg` (18px) gives a 50px height."
   },
   "site-header.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the site header."
   },
   "site-header.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the site header."
   },
   "site-header.nav-link.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the site header nav link."
   },
   "site-header.nav-link.background-hover": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the site header nav link while hovered. Pairs with `site-header.nav-link.text-hover`."
   },
   "site-header.nav-link.background-focus": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the site header nav link while focused. Pairs with `site-header.nav-link.text-focus`."
   },
   "site-header.nav-link.text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the site header nav link while hovered. Pairs with `site-header.nav-link.background-hover`."
   },
   "site-header.nav-link.text-focus": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the site header nav link while focused. Pairs with `site-header.nav-link.background-focus`."
   },
   "site-footer.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the site footer. Pairs with `site-footer.text`."
   },
   "site-footer.background-muted": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the muted variant of the site footer."
   },
   "site-footer.border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the site footer."
   },
   "site-footer.text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the site footer. Pairs with `site-footer.background`."
   },
   "site-footer.link.text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the site footer link."
   },
   "site-footer.link.text-hover": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the site footer link while hovered."
   },
   "section-hero.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the hero section."
   },
   "section-hero.gradient.from": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Colour stop (from) of the hero section background gradient."
   },
   "section-hero.gradient.via": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Colour stop (via) of the hero section background gradient."
   },
   "section-hero.gradient.to": {
     "$type": "color",
-    "$value": "{color.background.primary-muted}"
+    "$value": "{color.background.primary-muted}",
+    "$description": "Colour stop (to) of the hero section background gradient."
   },
   "section-hero.description-text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the hero section description."
   },
   "section-features.background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the features section."
   },
   "section-features.background-muted": {
     "$type": "color",
-    "$value": "{color.background.muted}"
+    "$value": "{color.background.muted}",
+    "$description": "Fill of the muted variant of the features section."
   },
   "section-features.description-text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the features section description."
   },
   "section-features.item-text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the features section item."
   },
   "section-features.icon-background": {
     "$type": "color",
-    "$value": "{color.background.primary}"
+    "$value": "{color.background.primary}",
+    "$description": "Fill of the features section icon. Pairs with `section-features.icon-text`."
   },
   "section-features.icon-text": {
     "$type": "color",
-    "$value": "{color.foreground.primary-muted}"
+    "$value": "{color.foreground.primary-muted}",
+    "$description": "Colour of the features section icon. Pairs with `section-features.icon-background`."
   },
   "page-layout.skip-link-background": {
     "$type": "color",
-    "$value": "{color.background.default}"
+    "$value": "{color.background.default}",
+    "$description": "Fill of the page layout skip link. Pairs with `page-layout.skip-link-text`."
   },
   "page-layout.skip-link-text": {
     "$type": "color",
-    "$value": "{color.foreground.default}"
+    "$value": "{color.foreground.default}",
+    "$description": "Text colour of the page layout skip link. Pairs with `page-layout.skip-link-background`."
   },
   "page-layout.sidebar-border": {
     "$type": "color",
-    "$value": "{color.border.default}"
+    "$value": "{color.border.default}",
+    "$description": "Border colour of the page layout sidebar."
   },
   "input.border-success": {
     "$type": "color",
-    "$value": "{color.border.success}"
+    "$value": "{color.border.success}",
+    "$description": "Border colour of the input in the success state."
   },
   "pagination.ellipsis-text": {
     "$type": "color",
-    "$value": "{color.foreground.muted}"
+    "$value": "{color.foreground.muted}",
+    "$description": "Text colour of the ellipsis that stands in for skipped pages."
   },
   "button.primary.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Primary button fill when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.primary.text-disabled`."
   },
   "button.primary.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the primary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.primary.background-disabled`."
   },
   "button.primary.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the primary button when disabled, in the muted border tone."
   },
   "button.secondary.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the secondary button when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.secondary.text-disabled`."
   },
   "button.secondary.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the secondary button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.secondary.background-disabled`."
   },
   "button.secondary.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the secondary button when disabled, in the muted border tone."
   },
   "button.destructive.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the destructive button when disabled, a quiet neutral so it reads as unavailable. Pairs with `button.destructive.text-disabled`."
   },
   "button.destructive.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the destructive button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `button.destructive.background-disabled`."
   },
   "button.destructive.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the destructive button when disabled, in the muted border tone."
   },
   "button.outline.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Label colour of a disabled outline button. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "button.outline.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the outline button when disabled, in the muted border tone."
   },
   "button.ghost.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the ghost button when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "button.link-text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the button link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "badge.default.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the default badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.default.background-disabled`."
   },
   "badge.default.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the default badge when disabled, in the muted border tone."
   },
   "badge.secondary.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the secondary badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.secondary.background-disabled`."
   },
   "badge.secondary.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the secondary badge when disabled, in the muted border tone."
   },
   "badge.success.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the success badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.success.background-disabled`."
   },
   "badge.success.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the success badge when disabled, in the muted border tone."
   },
   "badge.warning.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the warning badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.warning.background-disabled`."
   },
   "badge.warning.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the warning badge when disabled, in the muted border tone."
   },
   "badge.destructive.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the destructive badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.destructive.background-disabled`."
   },
   "badge.destructive.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the destructive badge when disabled, in the muted border tone."
   },
   "badge.outline.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the outline badge when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `badge.outline.background-disabled`."
   },
   "badge.outline.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the outline badge when disabled, in the muted border tone."
   },
   "card.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of a disabled card, in the muted border tone."
   },
   "textarea.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the textarea when disabled, a quiet neutral so it reads as unavailable. Pairs with `textarea.text-disabled`."
   },
   "textarea.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the textarea when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "select.trigger.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the select trigger when disabled, a quiet neutral so it reads as unavailable. Pairs with `select.trigger.text-disabled`."
   },
   "select.trigger.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the select trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `select.trigger.background-disabled`."
   },
   "select.trigger.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the select trigger when disabled, in the muted border tone."
   },
   "select.item.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the select item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "checkbox.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the checkbox when disabled, a quiet neutral so it reads as unavailable. Pairs with `checkbox.text-disabled`."
   },
   "checkbox.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the checkbox when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `checkbox.background-disabled`."
   },
   "checkbox.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the checkbox when disabled, in the muted border tone."
   },
   "radio.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the radio when disabled, a quiet neutral so it reads as unavailable."
   },
   "radio.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the radio when disabled, in the muted border tone."
   },
   "radio.indicator-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Colour of the dot inside a disabled selected radio. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "switch.track.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Track fill when disabled, in either state. A quiet neutral, not a fade."
   },
   "slider.thumb-background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the slider thumb when disabled, a quiet neutral so it reads as unavailable."
   },
   "slider.thumb-border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the slider thumb when disabled, in the muted border tone."
   },
   "toggle.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the toggle when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "toggle.border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the toggle when disabled, in the muted border tone."
   },
   "tabs.trigger.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the tabs trigger when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "pagination.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the pagination when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "navigation.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the navigation menu when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "dropdown-menu.item.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the dropdown menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "contextmenu.item-text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the context menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "menubar.item-text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the menubar item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "command.item-text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the command menu item when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "command.input-text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the command menu input when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "carousel.nav-text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the carousel nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3). Pairs with `carousel.nav-background-disabled`."
   },
   "carousel.nav-border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the carousel nav when disabled, in the muted border tone."
   },
   "carousel.nav-background-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of the carousel nav when disabled, a quiet neutral so it reads as unavailable. Pairs with `carousel.nav-text-disabled`."
   },
   "calendar.nav-text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the calendar nav when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "calendar.nav-border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the calendar nav when disabled, in the muted border tone."
   },
   "toast.action-text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the toast action when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "toast.action-border-disabled": {
     "$type": "color",
-    "$value": "{color.border.muted}"
+    "$value": "{color.border.muted}",
+    "$description": "Border colour of the toast action when disabled, in the muted border tone."
   },
   "site-header.nav-link.text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of the site header nav link when disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "form.label-text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.faint}"
+    "$value": "{color.foreground.faint}",
+    "$description": "Text colour of a form label when its control is disabled. Faint, and exempt from contrast under WCAG 2.2 (1.4.3)."
   },
   "toggle.pressed-disabled": {
     "$type": "color",
-    "$value": "{color.background.emphasis}"
+    "$value": "{color.background.emphasis}",
+    "$description": "Fill of a pressed (on) toggle when disabled, a quiet neutral so it reads as unavailable."
   }
 }

@@ -28,8 +28,9 @@ const distDir = join(__dirname, "..", "dist");
 const indexJs = readFileSync(join(distDir, "index.js"), "utf8");
 
 // Match `export const NAME = "VALUE";` — values are always quoted strings
-// (OKLCH colors, dimensions, numbers-as-strings, etc.)
-const exportRegex = /^export const (\w+)\s*=\s*("(?:[^"\\]|\\.)*"|\d+(?:\.\d+)?|'[^']*');?$/gm;
+// (OKLCH colors, dimensions, numbers-as-strings, etc.). A trailing `// description`
+// comment is allowed.
+const exportRegex = /^export const (\w+)\s*=\s*("(?:[^"\\]|\\.)*"|\d+(?:\.\d+)?|'[^']*');?(?:[ \t]*\/\/.*)?$/gm;
 
 const declarations = [];
 let match;
