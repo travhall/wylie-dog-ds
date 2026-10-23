@@ -285,13 +285,13 @@ export const Loading: Story = {
       <h4 className="text-sm font-medium">Loading States</h4>
       <div className="flex gap-4">
         <Avatar>
-          <div className="w-full h-full bg-(--color-background-subtle) animate-pulse rounded-full" />
+          <div className="w-full h-full bg-(--color-background-muted) animate-pulse rounded-full" />
         </Avatar>
         <Avatar>
-          <div className="w-full h-full bg-(--color-background-subtle) animate-pulse rounded-full" />
+          <div className="w-full h-full bg-(--color-background-muted) animate-pulse rounded-full" />
         </Avatar>
         <Avatar>
-          <div className="w-full h-full bg-(--color-background-subtle) animate-pulse rounded-full" />
+          <div className="w-full h-full bg-(--color-background-muted) animate-pulse rounded-full" />
         </Avatar>
       </div>
     </div>

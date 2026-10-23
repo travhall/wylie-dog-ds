@@ -134,7 +134,7 @@ Apps normally do not import the JS; they import the stylesheet through `@wyliedo
 Component tokens alias semantic tokens, which alias primitives, which hold the value:
 
 ```text
-component token  →  {color.primary.background.default}  →  {color.<scale>.<step>}  →  oklch(...)
+component token  →  {color.background.primary}  →  {color.<scale>.<step>}  →  oklch(...)
 ```
 
 Style Dictionary resolves the aliases during the build; the CSS contains resolved values.

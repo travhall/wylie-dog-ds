@@ -350,7 +350,7 @@ export const InContext: Story = {
       <div className="border rounded-lg divide-y">
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-(--color-info-background-subtle) flex items-center justify-center text-sm font-medium">
+            <div className="h-10 w-10 rounded-full bg-(--color-background-info-muted) flex items-center justify-center text-sm font-medium">
               JD
             </div>
             <div>
@@ -365,7 +365,7 @@ export const InContext: Story = {
 
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-(--color-success-background-subtle) flex items-center justify-center text-sm font-medium">
+            <div className="h-10 w-10 rounded-full bg-(--color-background-success-muted) flex items-center justify-center text-sm font-medium">
               AS
             </div>
             <div>
@@ -380,7 +380,7 @@ export const InContext: Story = {
 
         <div className="p-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-(--color-background-subtle) flex items-center justify-center text-sm font-medium">
+            <div className="h-10 w-10 rounded-full bg-(--color-background-muted) flex items-center justify-center text-sm font-medium">
               BJ
             </div>
             <div>
@@ -422,7 +422,7 @@ export const DosDonts: Story = {
   render: () => (
     <div className="grid grid-cols-2 gap-8 max-w-4xl">
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-(--color-success-foreground-subtle)">
+        <h4 className="text-lg font-semibold mb-4 text-(--color-foreground-success-muted)">
           ✅ Do
         </h4>
 
@@ -473,7 +473,7 @@ export const DosDonts: Story = {
       </div>
 
       <div>
-        <h4 className="text-lg font-semibold mb-4 text-(--color-danger-foreground-subtle)">
+        <h4 className="text-lg font-semibold mb-4 text-(--color-foreground-danger-muted)">
           ❌ Don&apos;t
         </h4>
 

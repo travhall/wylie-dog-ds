@@ -31,7 +31,7 @@ export default function TokensPage() {
   ];
 
   // Real blue ramp from the manifest; contrast is computed against white.
-  // --color-primary-background-default resolves to blue-600 in both modes.
+  // --color-background-primary resolves to blue-600 in both modes.
   const blue = manifest.primitives.colors.blue as Record<
     string,
     { value: string; variable: string }
@@ -82,7 +82,7 @@ export default function TokensPage() {
               <h1 className="font-serif text-5xl sm:text-6xl lg:text-[5rem] font-semibold tracking-tight leading-[0.96] text-(--color-foreground-default)">
                 The contract <br />
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   everything
                 </span>{" "}
@@ -138,9 +138,9 @@ export default function TokensPage() {
                   tier: "Tier 02 · Semantic",
                   count: meta.tokens.semantic,
                   desc: "Roles. The contract every theme must satisfy.",
-                  tokenName: "--color-primary-background-default",
+                  tokenName: "--color-background-primary",
                   tokenVal: "→ blue-600 (light and dark)",
-                  swatch: "var(--color-primary-background-default)",
+                  swatch: "var(--color-background-primary)",
                 },
                 {
                   tier: "Tier 03 · Component",
@@ -148,7 +148,7 @@ export default function TokensPage() {
                   desc: "Surfaces. The shape components consume.",
                   tokenName: "--color-button-primary-background",
                   tokenVal: "→ interactive-primary",
-                  swatch: "var(--color-primary-background-default)",
+                  swatch: "var(--color-background-primary)",
                 },
               ].map((tier, i) => (
                 <div
@@ -166,7 +166,7 @@ export default function TokensPage() {
                   <p className="mt-3 text-xs text-(--color-foreground-muted)">
                     {tier.desc}
                   </p>
-                  <div className="mt-4 rounded-lg border border-(--color-border-default) bg-(--color-background-subtle) p-3 font-mono text-[11px] leading-relaxed">
+                  <div className="mt-4 rounded-lg border border-(--color-border-default) bg-(--color-background-muted) p-3 font-mono text-[11px] leading-relaxed">
                     <div className="flex items-center gap-2">
                       <span
                         className="h-3 w-3 rounded-sm shrink-0"
@@ -235,7 +235,7 @@ export default function TokensPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 OKLCH means the ramp{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   is
                 </span>{" "}
@@ -252,7 +252,7 @@ export default function TokensPage() {
                 <span
                   className="h-1.5 w-1.5 rounded-full"
                   style={{
-                    background: "var(--color-success-foreground-subtle)",
+                    background: "var(--color-foreground-success-muted)",
                   }}
                 />
                 Contrast measured against white
@@ -278,8 +278,8 @@ export default function TokensPage() {
                       className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[10px]"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
-                        color: "var(--color-success-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                        color: "var(--color-foreground-success-muted)",
                       }}
                     >
                       <svg
@@ -298,7 +298,7 @@ export default function TokensPage() {
                     Cohort retention
                   </h3>
                 </div>
-                <div className="hidden sm:flex items-center gap-1 rounded-md border border-(--color-border-default) bg-(--color-background-subtle) p-0.5">
+                <div className="hidden sm:flex items-center gap-1 rounded-md border border-(--color-border-default) bg-(--color-background-muted) p-0.5">
                   {["Week", "Month", "Quarter"].map((t, i) => (
                     <Button
                       key={t}
@@ -469,7 +469,7 @@ export default function TokensPage() {
                         r.brand
                           ? {
                               background:
-                                "color-mix(in oklch, var(--color-primary-background-default) 8%, transparent)",
+                                "color-mix(in oklch, var(--color-background-primary) 8%, transparent)",
                             }
                           : undefined
                       }
@@ -481,7 +481,7 @@ export default function TokensPage() {
                           ...(r.brand
                             ? {
                                 outline:
-                                  "2px solid var(--color-primary-background-default)",
+                                  "2px solid var(--color-background-primary)",
                                 outlineOffset: "2px",
                               }
                             : {}),
@@ -504,8 +504,8 @@ export default function TokensPage() {
                             className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
-                              color: "var(--color-success-foreground-subtle)",
+                                "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                              color: "var(--color-foreground-success-muted)",
                             }}
                           >
                             {r.level} · {r.ratio.toFixed(2)}
@@ -528,21 +528,21 @@ export default function TokensPage() {
                 <div className="mt-3 space-y-1.5">
                   {[
                     {
-                      color: "var(--color-success-foreground-subtle)",
+                      color: "var(--color-foreground-success-muted)",
                       label: "Deployment succeeded",
-                      token: "--color-success-foreground-subtle",
+                      token: "--color-foreground-success-muted",
                       icon: <path d="m5 12 5 5L20 7" />,
                     },
                     {
-                      color: "var(--color-warning-foreground-subtle)",
+                      color: "var(--color-foreground-warning-muted)",
                       label: "Quota approaching limit",
-                      token: "--color-warning-foreground-subtle",
+                      token: "--color-foreground-warning-muted",
                       icon: <path d="M12 8v5M12 16v.01" />,
                     },
                     {
-                      color: "var(--color-danger-foreground-subtle)",
+                      color: "var(--color-foreground-danger-muted)",
                       label: "Build failed · 2 errors",
-                      token: "--color-danger-foreground-subtle",
+                      token: "--color-foreground-danger-muted",
                       icon: <path d="M18 6 6 18M6 6l12 12" />,
                     },
                   ].map((s) => (
@@ -554,7 +554,7 @@ export default function TokensPage() {
                         className="grid h-5 w-5 place-items-center rounded-full shrink-0"
                         style={{
                           background: s.color,
-                          color: "var(--color-inverse-foreground-default)",
+                          color: "var(--color-foreground-inverse)",
                         }}
                       >
                         <svg
@@ -587,7 +587,7 @@ export default function TokensPage() {
       {/* ── 02 · TYPOGRAPHY ── */}
       <section
         id="typography"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle) scroll-mt-16"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
@@ -598,7 +598,7 @@ export default function TokensPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 A pairing that ships{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   long-form
                 </span>
@@ -627,7 +627,7 @@ export default function TokensPage() {
 
           <div className="grid lg:grid-cols-12 gap-3">
             <article className="lg:col-span-8 rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden">
-              <div className="flex items-center justify-between px-8 py-3 border-b border-(--color-border-default) bg-(--color-background-subtle)">
+              <div className="flex items-center justify-between px-8 py-3 border-b border-(--color-border-default) bg-(--color-background-muted)">
                 <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint)">
                   <span>Wylie Dog Field Notes</span>
                   <span>·</span>
@@ -671,8 +671,8 @@ export default function TokensPage() {
                     className="ml-auto inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
                     style={{
                       background:
-                        "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
-                      color: "var(--color-primary-foreground-subtle)",
+                        "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
+                      color: "var(--color-foreground-primary-muted)",
                     }}
                   >
                     Engineering
@@ -687,11 +687,11 @@ export default function TokensPage() {
                 <p className="mt-4 text-base text-(--color-foreground-muted) leading-relaxed">
                   OKLCH fixes this because perceptual lightness is a first-class
                   axis. When you step from{" "}
-                  <code className="font-mono text-sm px-1 py-0.5 rounded bg-(--color-background-subtle) text-(--color-foreground-default)">
+                  <code className="font-mono text-sm px-1 py-0.5 rounded bg-(--color-background-muted) text-(--color-foreground-default)">
                     {manifest.primitives.colors.blue["600"].value}
                   </code>{" "}
                   to{" "}
-                  <code className="font-mono text-sm px-1 py-0.5 rounded bg-(--color-background-subtle) text-(--color-foreground-default)">
+                  <code className="font-mono text-sm px-1 py-0.5 rounded bg-(--color-background-muted) text-(--color-foreground-default)">
                     {manifest.primitives.colors.blue["900"].value}
                   </code>
                   , the difference is predictable — not a guess.
@@ -774,7 +774,7 @@ export default function TokensPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 One scale. Three densities.{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   Same data.
                 </span>
@@ -827,7 +827,7 @@ export default function TokensPage() {
                       s.inUse
                         ? {
                             background:
-                              "color-mix(in oklch, var(--color-primary-background-default) 8%, transparent)",
+                              "color-mix(in oklch, var(--color-background-primary) 8%, transparent)",
                           }
                         : undefined
                     }
@@ -843,7 +843,7 @@ export default function TokensPage() {
                         className="absolute inset-y-0 left-0 origin-left rounded-sm w-full"
                         style={{
                           background: s.inUse
-                            ? "var(--color-primary-background-default)"
+                            ? "var(--color-background-primary)"
                             : "var(--color-border-default)",
                           transform: `scaleX(${Math.min(s.px * 2.5, 120) / 120})`,
                           transition: "transform 0.2s",
@@ -854,7 +854,7 @@ export default function TokensPage() {
                       className="font-mono text-[10px] ml-auto shrink-0"
                       style={{
                         color: s.inUse
-                          ? "var(--color-primary-background-default)"
+                          ? "var(--color-background-primary)"
                           : "var(--color-foreground-faint)",
                       }}
                     >
@@ -879,7 +879,7 @@ export default function TokensPage() {
       {/* ── 04 · RADIUS ── */}
       <section
         id="radius"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle) scroll-mt-16"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
@@ -890,7 +890,7 @@ export default function TokensPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 Five corners.{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   Every surface
                 </span>{" "}
@@ -999,7 +999,7 @@ export default function TokensPage() {
                         className="h-full rounded-full"
                         style={{
                           width: "68%",
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       />
                     </div>
@@ -1023,7 +1023,7 @@ export default function TokensPage() {
                       Invite teammate
                     </p>
                     <div
-                      className="rounded-md border border-(--color-border-default) bg-(--color-background-subtle) px-2.5 py-1.5 text-xs text-(--color-foreground-faint) mb-2"
+                      className="rounded-md border border-(--color-border-default) bg-(--color-background-muted) px-2.5 py-1.5 text-xs text-(--color-foreground-faint) mb-2"
                       style={{ borderRadius: "var(--border-radius-lg)" }}
                     >
                       name@company.com
@@ -1092,7 +1092,7 @@ export default function TokensPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 {Object.keys(manifest.semantics.shadow).length} shadow steps —{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   one
                 </span>{" "}
@@ -1118,7 +1118,7 @@ export default function TokensPage() {
           <div className="grid lg:grid-cols-12 gap-3">
             {/* Layered scene */}
             <div
-              className="lg:col-span-8 rounded-xl border border-(--color-border-default) bg-(--color-background-subtle) overflow-hidden relative grid-bg"
+              className="lg:col-span-8 rounded-xl border border-(--color-border-default) bg-(--color-background-muted) overflow-hidden relative grid-bg"
               style={{ minHeight: "480px" }}
             >
               <div
@@ -1139,7 +1139,7 @@ export default function TokensPage() {
                   <div
                     className="mt-2 h-1 rounded-full"
                     style={{
-                      background: "var(--color-primary-background-default)",
+                      background: "var(--color-background-primary)",
                       width: "60%",
                     }}
                   />
@@ -1156,7 +1156,7 @@ export default function TokensPage() {
                     (item, i) => (
                       <div
                         key={item}
-                        className={`px-2 py-1.5 text-xs rounded-md text-(--color-foreground-muted) ${i === 0 ? "bg-(--color-background-subtle) text-(--color-foreground-default)" : ""}`}
+                        className={`px-2 py-1.5 text-xs rounded-md text-(--color-foreground-muted) ${i === 0 ? "bg-(--color-background-muted) text-(--color-foreground-default)" : ""}`}
                       >
                         {item}
                       </div>
@@ -1174,12 +1174,12 @@ export default function TokensPage() {
                   <span
                     className="h-6 w-6 rounded-full grid place-items-center shrink-0"
                     style={{
-                      background: "var(--color-success-foreground-subtle)",
+                      background: "var(--color-foreground-success-muted)",
                     }}
                   >
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-3.5 w-3.5 text-(--color-inverse-foreground-default)"
+                      className="h-3.5 w-3.5 text-(--color-foreground-inverse)"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="3"
@@ -1202,7 +1202,7 @@ export default function TokensPage() {
                   <p className="text-sm font-semibold text-(--color-foreground-default) mb-3">
                     Invite teammate
                   </p>
-                  <div className="rounded-md border border-(--color-border-default) bg-(--color-background-subtle) px-2.5 py-1.5 text-xs text-(--color-foreground-faint) mb-2">
+                  <div className="rounded-md border border-(--color-border-default) bg-(--color-background-muted) px-2.5 py-1.5 text-xs text-(--color-foreground-faint) mb-2">
                     name@company.com
                   </div>
                   <div className="flex gap-1.5">
@@ -1286,7 +1286,7 @@ export default function TokensPage() {
       {/* ── 06 · MOTION ── */}
       <section
         id="motion"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle) scroll-mt-16"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted) scroll-mt-16"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-6 mb-10">
@@ -1298,7 +1298,7 @@ export default function TokensPage() {
                 {Object.keys(manifest.semantics.easing).length} curves and{" "}
                 {Object.keys(manifest.semantics.duration).length} durations{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   cover everything.
                 </span>

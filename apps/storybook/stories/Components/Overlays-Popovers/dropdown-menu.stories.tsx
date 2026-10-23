@@ -323,7 +323,7 @@ export const WithDestructiveItem: Story = {
           Duplicate
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-(--color-danger-foreground-subtle) focus:text-(--color-danger-foreground-subtle)">
+        <DropdownMenuItem className="text-(--color-foreground-danger-muted) focus:text-(--color-foreground-danger-muted)">
           <TrashIcon className="mr-2 h-4 w-4" />
           Delete
         </DropdownMenuItem>
@@ -347,7 +347,7 @@ export const WithSubMenuNavigation: Story = {
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuItem>Billing</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-(--color-danger-foreground-subtle)">
+            <DropdownMenuItem className="text-(--color-foreground-danger-muted)">
               Delete account
             </DropdownMenuItem>
           </DropdownMenuSubContent>

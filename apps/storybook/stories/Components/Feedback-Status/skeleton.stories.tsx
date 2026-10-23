@@ -196,7 +196,7 @@ export const TableLoading: Story = {
 
       <div className="border rounded-lg overflow-hidden">
         {/* Table Header */}
-        <div className="bg-(--color-background-subtle) p-4 border-b">
+        <div className="bg-(--color-background-muted) p-4 border-b">
           <div className="grid grid-cols-4 gap-4">
             <Skeleton className="h-4 w-16" />
             <Skeleton className="h-4 w-20" />

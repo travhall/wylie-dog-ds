@@ -782,7 +782,7 @@ export const PaymentForm: Story = {
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-4 bg-(--color-background-subtle) rounded-lg">
+          <div className="flex items-center justify-between p-4 bg-(--color-background-muted) rounded-lg">
             <div>
               <p className="font-medium">Pro Plan</p>
               <p className="text-sm text-(--color-foreground-faint)">
@@ -1531,7 +1531,7 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     formValues.password.length >= 8
-                      ? "text-(--color-success-foreground-subtle)"
+                      ? "text-(--color-foreground-success-muted)"
                       : "text-(--color-foreground-faint)"
                   }
                 >
@@ -1541,7 +1541,7 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[a-z])/.test(formValues.password)
-                      ? "text-(--color-success-foreground-subtle)"
+                      ? "text-(--color-foreground-success-muted)"
                       : "text-(--color-foreground-faint)"
                   }
                 >
@@ -1551,7 +1551,7 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[A-Z])/.test(formValues.password)
-                      ? "text-(--color-success-foreground-subtle)"
+                      ? "text-(--color-foreground-success-muted)"
                       : "text-(--color-foreground-faint)"
                   }
                 >
@@ -1561,7 +1561,7 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*\d)/.test(formValues.password)
-                      ? "text-(--color-success-foreground-subtle)"
+                      ? "text-(--color-foreground-success-muted)"
                       : "text-(--color-foreground-faint)"
                   }
                 >
@@ -1570,7 +1570,7 @@ export const RealTimeValidation: Story = {
                 <li
                   className={
                     /(?=.*[@$!%*?&])/.test(formValues.password)
-                      ? "text-(--color-success-foreground-subtle)"
+                      ? "text-(--color-foreground-success-muted)"
                       : "text-(--color-foreground-faint)"
                   }
                 >

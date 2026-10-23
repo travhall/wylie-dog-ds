@@ -175,9 +175,9 @@ export const CardVariations: Story = {
         </CardContent>
       </Card>
 
-      <Card className="border-(--color-primary-border-default)">
+      <Card className="border-(--color-border-primary)">
         <CardHeader>
-          <CardTitle className="text-(--color-info-foreground-subtle)">
+          <CardTitle className="text-(--color-foreground-info-muted)">
             Highlighted Card
           </CardTitle>
         </CardHeader>
@@ -199,7 +199,7 @@ export const CardVariations: Story = {
         </CardContent>
       </Card>
 
-      <Card className="bg-(--color-background-subtle)">
+      <Card className="bg-(--color-background-muted)">
         <CardHeader>
           <CardTitle>Subtle Background</CardTitle>
         </CardHeader>

@@ -29,7 +29,7 @@ export default function SpacingPage() {
       headline={
         <>
           One scale. Three densities.{" "}
-          <span className="text-(--color-primary-foreground-subtle)">
+          <span className="text-(--color-foreground-primary-muted)">
             Same data.
           </span>
         </>
@@ -60,9 +60,9 @@ export default function SpacingPage() {
                 {s.value}
               </div>
             </div>
-            <div className="flex-1 h-3 rounded-sm overflow-hidden bg-(--color-background-subtle)">
+            <div className="flex-1 h-3 rounded-sm overflow-hidden bg-(--color-background-muted)">
               <div
-                className="h-full bg-(--color-primary-background-default)"
+                className="h-full bg-(--color-background-primary)"
                 style={{ width: s.value }}
               />
             </div>

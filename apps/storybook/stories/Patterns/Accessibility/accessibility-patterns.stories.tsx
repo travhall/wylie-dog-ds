@@ -160,9 +160,9 @@ function LiveRegionAnnouncementsComponent() {
 
   const statusColor =
     status === "saved"
-      ? "text-(--color-success-foreground-subtle)"
+      ? "text-(--color-foreground-success-muted)"
       : status === "error"
-        ? "text-(--color-danger-foreground-subtle)"
+        ? "text-(--color-foreground-danger-muted)"
         : "text-(--color-foreground-muted)";
 
   return (
@@ -204,7 +204,7 @@ function LiveRegionAnnouncementsComponent() {
       </div>
 
       {/* Implementation callout */}
-      <div className="rounded-lg border border-(--color-border-default) bg-(--color-background-subtle) p-4 text-sm space-y-1">
+      <div className="rounded-lg border border-(--color-border-default) bg-(--color-background-muted) p-4 text-sm space-y-1">
         <p className="font-semibold text-(--color-foreground-default)">
           Pattern: aria-live region
         </p>
@@ -293,7 +293,7 @@ function KeyboardOnlyFormComponent() {
       noValidate
       aria-label="Keyboard-only form demo"
     >
-      <div className="rounded-lg border border-(--color-border-default) bg-(--color-background-subtle) p-3 text-sm text-(--color-foreground-muted) space-y-1">
+      <div className="rounded-lg border border-(--color-border-default) bg-(--color-background-muted) p-3 text-sm text-(--color-foreground-muted) space-y-1">
         <p className="font-semibold text-(--color-foreground-default)">
           Key map
         </p>
@@ -445,23 +445,23 @@ const contrastSamples: ContrastSample[] = [
   {
     label: "Primary text on secondary background",
     textToken: "--color-foreground-default",
-    bgToken: "--color-background-subtle",
+    bgToken: "--color-background-muted",
     sampleText: "Content on card or panel surface",
     usage: "Cards, sidebars, secondary surfaces",
     compliant: true,
   },
   {
     label: "Inverse text on inverse background",
-    textToken: "--color-inverse-foreground-default",
-    bgToken: "--color-inverse-background-default",
+    textToken: "--color-foreground-inverse",
+    bgToken: "--color-background-inverse",
     sampleText: "Inverted surface text",
     usage: "Tooltips, dark banners",
     compliant: true,
-    captionToken: "--color-inverse-foreground-default",
+    captionToken: "--color-foreground-inverse",
   },
   {
     label: "Danger status on primary background",
-    textToken: "--color-danger-foreground-subtle",
+    textToken: "--color-foreground-danger-muted",
     bgToken: "--color-background-default",
     sampleText: "Error message text",
     usage: "Validation errors, destructive alert text",
@@ -469,7 +469,7 @@ const contrastSamples: ContrastSample[] = [
   },
   {
     label: "Info/link text on primary background",
-    textToken: "--color-info-foreground-subtle",
+    textToken: "--color-foreground-info-muted",
     bgToken: "--color-background-default",
     sampleText: "Link and action text",
     usage: "Links, focus labels, interactive affordances",
@@ -578,7 +578,7 @@ function SkipNavigationComponent() {
        */}
       <a
         href="#skip-nav-main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-(--color-background-default) focus:text-(--color-foreground-default) focus:rounded focus:shadow-lg focus:border focus:border-(--color-focus-ring) focus:outline-none"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-(--color-background-default) focus:text-(--color-foreground-default) focus:rounded focus:shadow-lg focus:border focus:border-(--color-border-focus) focus:outline-none"
         onClick={(e) => {
           e.preventDefault();
           mainRef.current?.focus();
@@ -590,26 +590,26 @@ function SkipNavigationComponent() {
 
       {/* Simulated navigation bar */}
       <nav
-        className="border-b border-(--color-border-default) px-4 py-3 flex gap-4 bg-(--color-background-subtle)"
+        className="border-b border-(--color-border-default) px-4 py-3 flex gap-4 bg-(--color-background-muted)"
         aria-label="Site navigation"
       >
         <a
           href="#"
-          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-info-foreground-subtle) focus:outline-none focus:ring-2 focus:ring-(--color-focus-ring) rounded px-1"
+          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Home
         </a>
         <a
           href="#"
-          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-info-foreground-subtle) focus:outline-none focus:ring-2 focus:ring-(--color-focus-ring) rounded px-1"
+          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           About
         </a>
         <a
           href="#"
-          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-info-foreground-subtle) focus:outline-none focus:ring-2 focus:ring-(--color-focus-ring) rounded px-1"
+          className="text-sm font-medium text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
           onClick={(e) => e.preventDefault()}
         >
           Contact
@@ -619,7 +619,7 @@ function SkipNavigationComponent() {
       {/* Simulated page layout */}
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-40 border-r border-(--color-border-default) p-4 bg-(--color-background-subtle)">
+        <aside className="w-40 border-r border-(--color-border-default) p-4 bg-(--color-background-muted)">
           <p className="text-xs font-semibold uppercase tracking-wider text-(--color-foreground-muted) mb-3">
             Sidebar
           </p>
@@ -628,7 +628,7 @@ function SkipNavigationComponent() {
               <li key={item}>
                 <a
                   href="#"
-                  className="text-sm text-(--color-foreground-default) hover:text-(--color-info-foreground-subtle) focus:outline-none focus:ring-2 focus:ring-(--color-focus-ring) rounded px-1"
+                  className="text-sm text-(--color-foreground-default) hover:text-(--color-foreground-info-muted) focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) rounded px-1"
                   onClick={(e) => e.preventDefault()}
                 >
                   {item}
@@ -643,7 +643,7 @@ function SkipNavigationComponent() {
           id="skip-nav-main"
           ref={mainRef}
           tabIndex={-1}
-          className="flex-1 p-6 focus:outline-none focus:ring-2 focus:ring-(--color-focus-ring) focus:ring-inset"
+          className="flex-1 p-6 focus:outline-none focus:ring-2 focus:ring-(--color-border-focus) focus:ring-inset"
           aria-label="Main content"
         >
           <h1 className="text-lg font-semibold text-(--color-foreground-default) mb-2">
@@ -654,7 +654,7 @@ function SkipNavigationComponent() {
             reveal the skip link. Press Enter to jump directly here, bypassing
             the nav and sidebar.
           </p>
-          <div className="rounded-lg border border-(--color-border-default) bg-(--color-background-subtle) p-3 text-sm space-y-1">
+          <div className="rounded-lg border border-(--color-border-default) bg-(--color-background-muted) p-3 text-sm space-y-1">
             <p className="font-semibold text-(--color-foreground-default)">
               Pattern: skip-to-content link
             </p>

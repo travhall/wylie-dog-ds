@@ -236,18 +236,18 @@ export const ResetPasswordForm: Story = {
         return {
           strength: 2,
           label: "Weak",
-          color: "bg-(--color-warning-background-default)",
+          color: "bg-(--color-background-warning)",
         };
       if (password.length < 14)
         return {
           strength: 3,
           label: "Good",
-          color: "bg-(--color-primary-background-default)",
+          color: "bg-(--color-background-primary)",
         };
       return {
         strength: 4,
         label: "Strong",
-        color: "bg-(--color-success-background-default)",
+        color: "bg-(--color-background-success)",
       };
     };
 
@@ -348,7 +348,7 @@ export const ResetPasswordForm: Story = {
                             className={`h-1 flex-1 rounded-full ${
                               level <= passwordStrength.strength
                                 ? passwordStrength.color
-                                : "bg-(--color-background-subtle)"
+                                : "bg-(--color-background-muted)"
                             }`}
                           />
                         ))}
@@ -367,7 +367,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           formData.password.length >= 8
-                            ? "text-(--color-success-foreground-subtle)"
+                            ? "text-(--color-foreground-success-muted)"
                             : ""
                         }
                       >
@@ -376,7 +376,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[A-Z]/.test(formData.password)
-                            ? "text-(--color-success-foreground-subtle)"
+                            ? "text-(--color-foreground-success-muted)"
                             : ""
                         }
                       >
@@ -385,7 +385,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[a-z]/.test(formData.password)
-                            ? "text-(--color-success-foreground-subtle)"
+                            ? "text-(--color-foreground-success-muted)"
                             : ""
                         }
                       >
@@ -394,7 +394,7 @@ export const ResetPasswordForm: Story = {
                       <li
                         className={
                           /[0-9]/.test(formData.password)
-                            ? "text-(--color-success-foreground-subtle)"
+                            ? "text-(--color-foreground-success-muted)"
                             : ""
                         }
                       >
@@ -608,8 +608,8 @@ export const MultiStepPasswordRecovery: Story = {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                       index <= currentStepIndex
-                        ? "bg-(--color-primary-background-default) text-(--color-primary-foreground-default)"
-                        : "bg-(--color-background-subtle) text-(--color-foreground-faint)"
+                        ? "bg-(--color-background-primary) text-(--color-foreground-primary)"
+                        : "bg-(--color-background-muted) text-(--color-foreground-faint)"
                     }`}
                   >
                     {index + 1}
@@ -622,8 +622,8 @@ export const MultiStepPasswordRecovery: Story = {
                   <div
                     className={`flex-1 h-0.5 ${
                       index < currentStepIndex
-                        ? "bg-(--color-primary-background-default)"
-                        : "bg-(--color-background-subtle)"
+                        ? "bg-(--color-background-primary)"
+                        : "bg-(--color-background-muted)"
                     }`}
                   />
                 )}

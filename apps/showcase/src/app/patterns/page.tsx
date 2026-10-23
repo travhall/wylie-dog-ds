@@ -26,11 +26,11 @@ function PatCard({
 }) {
   return (
     <article
-      className={`rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden flex flex-col hover:border-(--color-primary-border-default) transition-all${full ? " md:col-span-2" : ""}`}
+      className={`rounded-xl border border-(--color-border-default) bg-(--color-background-default) overflow-hidden flex flex-col hover:border-(--color-border-primary) transition-all${full ? " md:col-span-2" : ""}`}
       style={{ boxShadow: "var(--shadow-sm)" }}
     >
       <div
-        className="relative bg-(--color-background-subtle) border-b border-(--color-border-default) overflow-hidden flex place-content-center grow"
+        className="relative bg-(--color-background-muted) border-b border-(--color-border-default) overflow-hidden flex place-content-center grow"
         style={{
           minHeight: 280,
           padding: 20,
@@ -57,7 +57,7 @@ function PatCard({
             href={`https://wyliedogstorybook.com/?path=${getPatternDocsPath(story) ?? "/"}`}
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-[10px] text-(--color-foreground-faint) hover:text-(--color-primary-foreground-subtle) transition-colors"
+            className="font-mono text-[10px] text-(--color-foreground-faint) hover:text-(--color-foreground-primary-muted) transition-colors"
           >
             Storybook ↗
           </a>
@@ -135,7 +135,7 @@ export default function PatternsPage() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-primary-background-default) 22%, transparent) 0%, transparent 60%)",
+              "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-background-primary) 22%, transparent) 0%, transparent 60%)",
           }}
         />
 
@@ -153,7 +153,7 @@ export default function PatternsPage() {
 
             <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.98] text-(--color-foreground-default)">
               Complete UI solutions,{" "}
-              <span style={{ color: "var(--color-primary-foreground-subtle)" }}>
+              <span style={{ color: "var(--color-foreground-primary-muted)" }}>
                 not just components.
               </span>
             </h1>
@@ -174,7 +174,7 @@ export default function PatternsPage() {
                 inputs
               </p>
               <div className="mt-3 grid grid-cols-2 gap-2">
-                <div className="rounded-md border border-(--color-border-default) bg-(--color-background-subtle) p-3">
+                <div className="rounded-md border border-(--color-border-default) bg-(--color-background-muted) p-3">
                   <p className="text-xs font-semibold text-(--color-foreground-default)">
                     Components
                   </p>
@@ -192,7 +192,7 @@ export default function PatternsPage() {
                     ))}
                   </div>
                 </div>
-                <div className="rounded-md border border-(--color-border-default) bg-(--color-background-subtle) p-3">
+                <div className="rounded-md border border-(--color-border-default) bg-(--color-background-muted) p-3">
                   <p className="text-xs font-semibold text-(--color-foreground-default)">
                     Tokens
                   </p>
@@ -205,10 +205,10 @@ export default function PatternsPage() {
                   </p>
                   <div className="mt-3 flex gap-1">
                     {[
-                      "var(--color-primary-background-default)",
-                      "var(--color-success-foreground-subtle)",
-                      "var(--color-warning-foreground-subtle)",
-                      "var(--color-danger-foreground-subtle)",
+                      "var(--color-background-primary)",
+                      "var(--color-foreground-success-muted)",
+                      "var(--color-foreground-warning-muted)",
+                      "var(--color-foreground-danger-muted)",
                     ].map((c) => (
                       <span
                         key={c}
@@ -237,14 +237,14 @@ export default function PatternsPage() {
             <div
               className="rounded-xl border-2 p-5 grow"
               style={{
-                borderColor: "var(--color-primary-border-default)",
+                borderColor: "var(--color-border-primary)",
                 background:
-                  "color-mix(in oklch, var(--color-primary-background-default) 6%, var(--color-background-default))",
+                  "color-mix(in oklch, var(--color-background-primary) 6%, var(--color-background-default))",
               }}
             >
               <p
                 className="font-mono text-[10px] uppercase tracking-wider"
-                style={{ color: "var(--color-primary-foreground-subtle)" }}
+                style={{ color: "var(--color-foreground-primary-muted)" }}
               >
                 composed into
               </p>
@@ -261,7 +261,7 @@ export default function PatternsPage() {
                     key={i}
                     className="h-6 rounded"
                     style={{
-                      background: `color-mix(in oklch, var(--color-primary-background-default) ${opacity}%, transparent)`,
+                      background: `color-mix(in oklch, var(--color-background-primary) ${opacity}%, transparent)`,
                     }}
                   />
                 ))}
@@ -292,9 +292,9 @@ export default function PatternsPage() {
                 Real product surfaces, end-to-end.
               </p>
               <div className="mt-3 space-y-1">
-                <div className="h-1.5 w-3/4 rounded-full bg-(--color-background-subtle)" />
-                <div className="h-1.5 w-full rounded-full bg-(--color-background-subtle)" />
-                <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-subtle)" />
+                <div className="h-1.5 w-3/4 rounded-full bg-(--color-background-muted)" />
+                <div className="h-1.5 w-full rounded-full bg-(--color-background-muted)" />
+                <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-muted)" />
               </div>
             </div>
           </div>
@@ -377,7 +377,7 @@ export default function PatternsPage() {
                     <span
                       className="grid h-6 w-6 place-items-center rounded"
                       style={{
-                        background: "var(--color-primary-background-default)",
+                        background: "var(--color-background-primary)",
                       }}
                     >
                       <svg
@@ -387,7 +387,7 @@ export default function PatternsPage() {
                         stroke="currentColor"
                         strokeWidth={2.2}
                         style={{
-                          color: "var(--color-inverse-foreground-default)",
+                          color: "var(--color-foreground-inverse)",
                         }}
                       >
                         <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
@@ -421,7 +421,7 @@ export default function PatternsPage() {
                         <a
                           className="font-mono text-[9px]"
                           style={{
-                            color: "var(--color-primary-foreground-subtle)",
+                            color: "var(--color-foreground-primary-muted)",
                           }}
                         >
                           Forgot?
@@ -494,7 +494,7 @@ export default function PatternsPage() {
                     <span
                       className="font-medium"
                       style={{
-                        color: "var(--color-primary-foreground-subtle)",
+                        color: "var(--color-foreground-primary-muted)",
                       }}
                     >
                       Create one
@@ -539,14 +539,14 @@ export default function PatternsPage() {
                   <div
                     className="rounded-lg bg-(--color-background-default) border-2 p-4"
                     style={{
-                      borderColor: "var(--color-success-foreground-subtle)",
+                      borderColor: "var(--color-foreground-success-muted)",
                       boxShadow: "var(--shadow-md)",
                     }}
                   >
                     <span
                       className="font-mono text-[9px] uppercase tracking-wider"
                       style={{
-                        color: "var(--color-success-foreground-subtle)",
+                        color: "var(--color-foreground-success-muted)",
                       }}
                     >
                       step 2 · sent
@@ -555,8 +555,8 @@ export default function PatternsPage() {
                       className="mt-2 grid h-9 w-9 place-items-center rounded-full"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)",
-                        color: "var(--color-success-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)",
+                        color: "var(--color-foreground-success-muted)",
                       }}
                     >
                       <svg
@@ -610,7 +610,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-data"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -641,7 +641,7 @@ export default function PatternsPage() {
                         name: "Helios Workspace",
                         members: 12,
                         status: "active",
-                        statusColor: "var(--color-success-foreground-subtle)",
+                        statusColor: "var(--color-foreground-success-muted)",
                         price: "$42/mo",
                         bg: "linear-gradient(135deg, var(--color-fiery-coral-300), var(--color-red-400))",
                       },
@@ -649,7 +649,7 @@ export default function PatternsPage() {
                         name: "Atlas Studio",
                         members: 5,
                         status: "active",
-                        statusColor: "var(--color-success-foreground-subtle)",
+                        statusColor: "var(--color-foreground-success-muted)",
                         price: "$24/mo",
                         bg: "linear-gradient(135deg, var(--color-blue-300), var(--color-blue-500))",
                       },
@@ -657,7 +657,7 @@ export default function PatternsPage() {
                         name: "Northwind Co.", //cSpell:ignore Northwind
                         members: 28,
                         status: "trial",
-                        statusColor: "var(--color-warning-foreground-subtle)",
+                        statusColor: "var(--color-foreground-warning-muted)",
                         price: "14d left",
                         bg: "linear-gradient(135deg, var(--color-green-300), var(--color-green-400))",
                       },
@@ -702,8 +702,8 @@ export default function PatternsPage() {
                     <span
                       className="grid h-4 w-4 place-items-center rounded font-mono text-[9px]"
                       style={{
-                        background: "var(--color-primary-background-default)",
-                        color: "var(--color-inverse-foreground-default)",
+                        background: "var(--color-background-primary)",
+                        color: "var(--color-foreground-inverse)",
                       }}
                     >
                       2
@@ -725,25 +725,25 @@ export default function PatternsPage() {
                 <div className="grid grid-cols-2 gap-2 max-w-105 mx-auto">
                   {[
                     {
-                      color: "var(--color-primary-foreground-subtle)",
+                      color: "var(--color-foreground-primary-muted)",
                       icon: "M13 2 3 14h9l-1 8 10-12h-9z",
                       title: "Lightning fast",
                       sub: "Edge-rendered. 38ms p95.",
                     },
                     {
-                      color: "var(--color-success-foreground-subtle)",
+                      color: "var(--color-foreground-success-muted)",
                       icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
                       title: "SOC 2 Type II",
                       sub: "Audited yearly.",
                     },
                     {
-                      color: "var(--color-warning-foreground-subtle)",
+                      color: "var(--color-foreground-warning-muted)",
                       icon: "M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 7v5l3 2",
                       title: "24/7 monitoring",
                       sub: "Status & alerts built in.",
                     },
                     {
-                      color: "var(--color-danger-foreground-subtle)",
+                      color: "var(--color-foreground-danger-muted)",
                       icon: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
                       title: "Human support",
                       sub: "Median reply 4 min.",
@@ -813,8 +813,8 @@ export default function PatternsPage() {
                       className="grid h-9 w-9 place-items-center rounded-full"
                       style={{
                         background:
-                          "color-mix(in oklch, var(--color-danger-foreground-subtle) 14%, transparent)",
-                        color: "var(--color-danger-foreground-subtle)",
+                          "color-mix(in oklch, var(--color-foreground-danger-muted) 14%, transparent)",
+                        color: "var(--color-foreground-danger-muted)",
                       }}
                     >
                       <svg
@@ -835,7 +835,7 @@ export default function PatternsPage() {
                       The team has been pinged. Your work was auto-saved 12s
                       ago.
                     </p>
-                    <div className="mt-3 rounded border border-(--color-border-default) bg-(--color-background-subtle) p-2 font-mono text-[9px] text-(--color-foreground-faint)">
+                    <div className="mt-3 rounded border border-(--color-border-default) bg-(--color-background-muted) p-2 font-mono text-[9px] text-(--color-foreground-faint)">
                       error.id&nbsp;&nbsp;
                       <span className="text-(--color-foreground-muted)">
                         err_8f3a2b1c
@@ -874,14 +874,14 @@ export default function PatternsPage() {
                       className="mt-2 rounded-md border bg-(--color-background-default) p-3"
                       style={{
                         borderColor:
-                          "color-mix(in oklch, var(--color-danger-foreground-subtle) 40%, transparent)",
+                          "color-mix(in oklch, var(--color-foreground-danger-muted) 40%, transparent)",
                       }}
                     >
                       <div className="flex items-start gap-2">
                         <span
                           className="grid h-4 w-4 mt-px place-items-center rounded"
                           style={{
-                            color: "var(--color-danger-foreground-subtle)",
+                            color: "var(--color-foreground-danger-muted)",
                           }}
                         >
                           <svg
@@ -908,8 +908,8 @@ export default function PatternsPage() {
                             className="mt-2 h-5 px-1.5 font-mono text-[9px]"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-danger-foreground-subtle) 14%, transparent)",
-                              color: "var(--color-danger-foreground-subtle)",
+                                "color-mix(in oklch, var(--color-foreground-danger-muted) 14%, transparent)",
+                              color: "var(--color-foreground-danger-muted)",
                             }}
                           >
                             Retry isolated
@@ -920,7 +920,7 @@ export default function PatternsPage() {
                     <p className="font-mono text-[9px] mt-3 text-(--color-foreground-faint)">
                       <span
                         style={{
-                          color: "var(--color-success-foreground-subtle)",
+                          color: "var(--color-foreground-success-muted)",
                         }}
                       >
                         ●
@@ -940,7 +940,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-forms"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -1013,15 +1013,13 @@ export default function PatternsPage() {
                         <span
                           className="relative inline-flex h-4 w-7 items-center rounded-full"
                           style={{
-                            background:
-                              "var(--color-primary-background-default)",
+                            background: "var(--color-background-primary)",
                           }}
                         >
                           <span
                             className="inline-block h-3 w-3 translate-x-3 rounded-full"
                             style={{
-                              background:
-                                "var(--color-inverse-foreground-default)",
+                              background: "var(--color-foreground-inverse)",
                             }}
                           />
                         </span>
@@ -1073,9 +1071,9 @@ export default function PatternsPage() {
                     <div
                       className="flex items-center justify-between h-7 border rounded-md px-2 text-[11px]"
                       style={{
-                        borderColor: "var(--color-danger-border-default)",
+                        borderColor: "var(--color-border-danger)",
                         background:
-                          "color-mix(in oklch, var(--color-danger-foreground-subtle) 6%, var(--color-background-default))",
+                          "color-mix(in oklch, var(--color-foreground-danger-muted) 6%, var(--color-background-default))",
                       }}
                     >
                       <span className="text-(--color-foreground-default)">
@@ -1088,7 +1086,7 @@ export default function PatternsPage() {
                         stroke="currentColor"
                         strokeWidth={2.4}
                         style={{
-                          color: "var(--color-danger-foreground-subtle)",
+                          color: "var(--color-foreground-danger-muted)",
                         }}
                       >
                         <circle cx="12" cy="12" r="9" />
@@ -1097,7 +1095,7 @@ export default function PatternsPage() {
                     </div>
                     <p
                       className="mt-1 text-[10px]"
-                      style={{ color: "var(--color-danger-foreground-subtle)" }}
+                      style={{ color: "var(--color-foreground-danger-muted)" }}
                     >
                       Invalid email format. Expected name@domain.com.
                     </p>
@@ -1131,7 +1129,7 @@ export default function PatternsPage() {
                     <div
                       className="flex items-center justify-between h-7 border rounded-md px-2 text-[11px] bg-(--color-background-default)"
                       style={{
-                        borderColor: "var(--color-success-foreground-subtle)",
+                        borderColor: "var(--color-foreground-success-muted)",
                       }}
                     >
                       <span className="tracking-[0.3em] text-(--color-foreground-faint)">
@@ -1144,7 +1142,7 @@ export default function PatternsPage() {
                         stroke="currentColor"
                         strokeWidth={2.4}
                         style={{
-                          color: "var(--color-success-foreground-subtle)",
+                          color: "var(--color-foreground-success-muted)",
                         }}
                       >
                         <path d="m5 12 5 5L20 7" />
@@ -1156,15 +1154,14 @@ export default function PatternsPage() {
                           key={i}
                           className="h-1 w-6 rounded-full"
                           style={{
-                            background:
-                              "var(--color-success-foreground-subtle)",
+                            background: "var(--color-foreground-success-muted)",
                           }}
                         />
                       ))}
                       <span
                         className="ml-1 text-[10px]"
                         style={{
-                          color: "var(--color-success-foreground-subtle)",
+                          color: "var(--color-foreground-success-muted)",
                         }}
                       >
                         Strong
@@ -1203,7 +1200,7 @@ export default function PatternsPage() {
                 className="mx-auto max-w-180 rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default)"
                 style={{ boxShadow: "var(--shadow-md)" }}
               >
-                <div className="flex items-center gap-2 px-3 py-2 border-b border-(--color-border-default) bg-(--color-background-subtle)">
+                <div className="flex items-center gap-2 px-3 py-2 border-b border-(--color-border-default) bg-(--color-background-muted)">
                   <div className="flex gap-1">
                     {[
                       "var(--color-red-400)",
@@ -1230,7 +1227,7 @@ export default function PatternsPage() {
                       <span
                         className="grid h-4 w-4 place-items-center rounded"
                         style={{
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       />
                       <span className="text-[10px] font-serif font-semibold text-(--color-foreground-default)">
@@ -1242,8 +1239,8 @@ export default function PatternsPage() {
                         className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[10px] font-medium"
                         style={{
                           background:
-                            "color-mix(in oklch, var(--color-primary-background-default) 14%, transparent)",
-                          color: "var(--color-primary-foreground-subtle)",
+                            "color-mix(in oklch, var(--color-background-primary) 14%, transparent)",
+                          color: "var(--color-foreground-primary-muted)",
                         }}
                       >
                         <span
@@ -1280,12 +1277,12 @@ export default function PatternsPage() {
                           key={i}
                           className="rounded border border-(--color-border-default) p-2"
                         >
-                          <div className="h-1.5 w-3/4 rounded-full bg-(--color-background-strong)" />
-                          <div className="mt-1.5 h-1.5 w-1/2 rounded-full bg-(--color-background-strong)" />
+                          <div className="h-1.5 w-3/4 rounded-full bg-(--color-background-emphasis)" />
+                          <div className="mt-1.5 h-1.5 w-1/2 rounded-full bg-(--color-background-emphasis)" />
                           <div
                             className="mt-2 h-1 w-full rounded-full"
                             style={{
-                              background: "var(--color-background-strong)",
+                              background: "var(--color-background-emphasis)",
                             }}
                           >
                             <div
@@ -1294,8 +1291,8 @@ export default function PatternsPage() {
                                 width: `${w}%`,
                                 background:
                                   i === 2
-                                    ? "var(--color-success-foreground-subtle)"
-                                    : "var(--color-primary-background-default)",
+                                    ? "var(--color-foreground-success-muted)"
+                                    : "var(--color-background-primary)",
                               }}
                             />
                           </div>
@@ -1303,7 +1300,7 @@ export default function PatternsPage() {
                       ))}
                     </div>
                     <div className="mt-3 rounded border border-(--color-border-default)">
-                      <div className="grid grid-cols-4 px-2 py-1 bg-(--color-background-subtle) font-mono text-[8px] uppercase tracking-wider text-(--color-foreground-faint)">
+                      <div className="grid grid-cols-4 px-2 py-1 bg-(--color-background-muted) font-mono text-[8px] uppercase tracking-wider text-(--color-foreground-faint)">
                         <span>Name</span>
                         <span>Owner</span>
                         <span>Due</span>
@@ -1315,14 +1312,14 @@ export default function PatternsPage() {
                           owner: "EM",
                           due: "Jun 12",
                           status: "on track",
-                          color: "var(--color-success-foreground-subtle)",
+                          color: "var(--color-foreground-success-muted)",
                         },
                         {
                           name: "Token bridge",
                           owner: "JR",
                           due: "Jun 18",
                           status: "at risk",
-                          color: "var(--color-warning-foreground-subtle)",
+                          color: "var(--color-foreground-warning-muted)",
                         },
                       ].map(({ name, owner, due, status, color }) => (
                         <div
@@ -1363,7 +1360,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-nav"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -1393,7 +1390,7 @@ export default function PatternsPage() {
                     <span
                       className="grid h-4 w-4 place-items-center rounded"
                       style={{
-                        background: "var(--color-primary-background-default)",
+                        background: "var(--color-background-primary)",
                       }}
                     >
                       <svg
@@ -1403,7 +1400,7 @@ export default function PatternsPage() {
                         stroke="currentColor"
                         strokeWidth={2.4}
                         style={{
-                          color: "var(--color-inverse-foreground-default)",
+                          color: "var(--color-foreground-inverse)",
                         }}
                       >
                         <path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z" />
@@ -1416,7 +1413,7 @@ export default function PatternsPage() {
                       <span
                         className="rounded px-1.5 py-0.5 font-medium text-(--color-foreground-default)"
                         style={{
-                          background: "var(--color-background-subtle)",
+                          background: "var(--color-background-muted)",
                         }}
                       >
                         Home
@@ -1434,11 +1431,11 @@ export default function PatternsPage() {
                       </span>
                     </div>
                   </div>
-                  <div className="px-3 py-4 bg-(--color-background-subtle)">
+                  <div className="px-3 py-4 bg-(--color-background-muted)">
                     <div className="space-y-1.5">
-                      <div className="h-2 w-3/4 rounded-full bg-(--color-background-strong)" />
-                      <div className="h-2 w-full rounded-full bg-(--color-background-strong)" />
-                      <div className="h-2 w-2/3 rounded-full bg-(--color-background-strong)" />
+                      <div className="h-2 w-3/4 rounded-full bg-(--color-background-emphasis)" />
+                      <div className="h-2 w-full rounded-full bg-(--color-background-emphasis)" />
+                      <div className="h-2 w-2/3 rounded-full bg-(--color-background-emphasis)" />
                     </div>
                     <div className="mt-2 font-mono text-[9px] text-(--color-foreground-faint) flex items-center gap-1">
                       <svg
@@ -1473,8 +1470,7 @@ export default function PatternsPage() {
                         <span
                           className="grid h-4 w-4 place-items-center rounded"
                           style={{
-                            background:
-                              "var(--color-primary-background-default)",
+                            background: "var(--color-background-primary)",
                           }}
                         />
                         <p className="mt-1.5 font-serif text-[10px] font-semibold text-(--color-foreground-default)">
@@ -1518,8 +1514,7 @@ export default function PatternsPage() {
                         <span
                           className="h-1 w-1 rounded-full"
                           style={{
-                            background:
-                              "var(--color-success-foreground-subtle)",
+                            background: "var(--color-foreground-success-muted)",
                           }}
                         />
                         All systems operational
@@ -1562,14 +1557,14 @@ export default function PatternsPage() {
                     className="relative p-4"
                     style={{
                       background:
-                        "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-primary-background-default) 22%, transparent) 0%, transparent 60%)",
+                        "radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklch, var(--color-background-primary) 22%, transparent) 0%, transparent 60%)",
                     }}
                   >
                     <span className="inline-flex items-center gap-1 rounded-full border border-(--color-border-default) bg-(--color-background-default) px-1.5 py-0.5 font-mono text-[8px] text-(--color-foreground-muted)">
                       <span
                         className="h-1 w-1 rounded-full"
                         style={{
-                          background: "var(--color-success-foreground-subtle)",
+                          background: "var(--color-foreground-success-muted)",
                         }}
                       />
                       v1.4 just shipped
@@ -1585,9 +1580,9 @@ export default function PatternsPage() {
                     </p>
                     <div className="mt-2 flex gap-1">
                       <span
-                        className="inline-flex h-5 items-center rounded-md px-2 text-[9px] font-semibold text-(--color-inverse-foreground-default)"
+                        className="inline-flex h-5 items-center rounded-md px-2 text-[9px] font-semibold text-(--color-foreground-inverse)"
                         style={{
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       >
                         Start free
@@ -1622,12 +1617,12 @@ export default function PatternsPage() {
                   <div className="mt-3 space-y-2">
                     {[
                       {
-                        color: "var(--color-primary-foreground-subtle)",
+                        color: "var(--color-foreground-primary-muted)",
                         label: "Token-driven",
                         sub: "Change one variable, every surface updates.",
                       },
                       {
-                        color: "var(--color-success-foreground-subtle)",
+                        color: "var(--color-foreground-success-muted)",
                         label: "Accessible by default",
                         sub: "WCAG 2.2 AA across every state.",
                       },
@@ -1681,36 +1676,36 @@ export default function PatternsPage() {
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
                   {/* header strip */}
-                  <div className="h-3 border-b border-(--color-border-default) flex items-center px-2 gap-1 bg-(--color-background-subtle)">
-                    <span className="h-1 w-6 rounded-full bg-(--color-background-strong)" />
-                    <span className="ml-auto h-1 w-3 rounded-full bg-(--color-background-strong)" />
+                  <div className="h-3 border-b border-(--color-border-default) flex items-center px-2 gap-1 bg-(--color-background-muted)">
+                    <span className="h-1 w-6 rounded-full bg-(--color-background-emphasis)" />
+                    <span className="ml-auto h-1 w-3 rounded-full bg-(--color-background-emphasis)" />
                   </div>
                   {/* hero */}
                   <div
                     className="p-2 border-b border-(--color-border-default)"
                     style={{
                       background:
-                        "radial-gradient(ellipse at top, color-mix(in oklch, var(--color-primary-background-default) 18%, transparent), transparent)",
+                        "radial-gradient(ellipse at top, color-mix(in oklch, var(--color-background-primary) 18%, transparent), transparent)",
                     }}
                   >
-                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-strong)" />
-                    <div className="mt-1 h-1.5 w-1/2 rounded-full bg-(--color-background-strong)" />
+                    <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-emphasis)" />
+                    <div className="mt-1 h-1.5 w-1/2 rounded-full bg-(--color-background-emphasis)" />
                     <div className="mt-1.5 flex gap-1">
                       <span
                         className="h-2 w-8 rounded-sm"
                         style={{
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       />
-                      <span className="h-2 w-6 rounded-sm bg-(--color-background-strong)" />
+                      <span className="h-2 w-6 rounded-sm bg-(--color-background-emphasis)" />
                     </div>
                   </div>
                   {/* features */}
                   <div className="grid grid-cols-3 gap-1 p-2 border-b border-(--color-border-default)">
                     {[
-                      "var(--color-primary-background-default)",
-                      "var(--color-success-foreground-subtle)",
-                      "var(--color-warning-foreground-subtle)",
+                      "var(--color-background-primary)",
+                      "var(--color-foreground-success-muted)",
+                      "var(--color-foreground-warning-muted)",
                     ].map((color, i) => (
                       <div
                         key={i}
@@ -1720,19 +1715,19 @@ export default function PatternsPage() {
                           className="block h-2 w-2 rounded"
                           style={{ background: color }}
                         />
-                        <div className="h-1 w-3/4 rounded-full bg-(--color-background-strong)" />
-                        <div className="h-1 w-full rounded-full bg-(--color-background-strong)" />
+                        <div className="h-1 w-3/4 rounded-full bg-(--color-background-emphasis)" />
+                        <div className="h-1 w-full rounded-full bg-(--color-background-emphasis)" />
                       </div>
                     ))}
                   </div>
                   {/* cta */}
-                  <div className="p-2 border-b border-(--color-border-default) bg-(--color-background-subtle)">
+                  <div className="p-2 border-b border-(--color-border-default) bg-(--color-background-muted)">
                     <div className="rounded border border-(--color-border-default) bg-(--color-background-default) p-1.5 flex items-center justify-between">
-                      <div className="h-1.5 w-16 rounded-full bg-(--color-background-strong)" />
+                      <div className="h-1.5 w-16 rounded-full bg-(--color-background-emphasis)" />
                       <span
                         className="h-2.5 w-8 rounded-sm"
                         style={{
-                          background: "var(--color-primary-background-default)",
+                          background: "var(--color-background-primary)",
                         }}
                       />
                     </div>
@@ -1742,7 +1737,7 @@ export default function PatternsPage() {
                     {[0, 1, 2, 3].map((i) => (
                       <div
                         key={i}
-                        className="h-1 rounded-full bg-(--color-background-strong)"
+                        className="h-1 rounded-full bg-(--color-background-emphasis)"
                       />
                     ))}
                   </div>
@@ -1758,7 +1753,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-responsive"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -1787,16 +1782,16 @@ export default function PatternsPage() {
                       </span>
                     </div>
                     <div className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) aspect-3/5 p-1.5 space-y-1">
-                      <div className="h-3 rounded bg-(--color-background-strong)" />
+                      <div className="h-3 rounded bg-(--color-background-emphasis)" />
                       <div
                         className="rounded p-1.5"
                         style={{
                           background:
-                            "color-mix(in oklch, var(--color-primary-background-default) 10%, transparent)",
+                            "color-mix(in oklch, var(--color-background-primary) 10%, transparent)",
                         }}
                       >
-                        <div className="h-1 w-3/4 rounded-full bg-(--color-background-strong)" />
-                        <div className="mt-1 h-1 w-1/2 rounded-full bg-(--color-background-strong)" />
+                        <div className="h-1 w-3/4 rounded-full bg-(--color-background-emphasis)" />
+                        <div className="mt-1 h-1 w-1/2 rounded-full bg-(--color-background-emphasis)" />
                       </div>
                       <div className="grid grid-cols-1 gap-1">
                         {[0, 1, 2].map((i) => (
@@ -1819,16 +1814,16 @@ export default function PatternsPage() {
                       </span>
                     </div>
                     <div className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) aspect-4/5 p-2 space-y-1.5">
-                      <div className="h-3 rounded bg-(--color-background-strong)" />
+                      <div className="h-3 rounded bg-(--color-background-emphasis)" />
                       <div
                         className="rounded p-2"
                         style={{
                           background:
-                            "color-mix(in oklch, var(--color-primary-background-default) 10%, transparent)",
+                            "color-mix(in oklch, var(--color-background-primary) 10%, transparent)",
                         }}
                       >
-                        <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-strong)" />
-                        <div className="mt-1 h-1.5 w-1/2 rounded-full bg-(--color-background-strong)" />
+                        <div className="h-1.5 w-2/3 rounded-full bg-(--color-background-emphasis)" />
+                        <div className="mt-1 h-1.5 w-1/2 rounded-full bg-(--color-background-emphasis)" />
                       </div>
                       <div className="grid grid-cols-2 gap-1">
                         {[0, 1, 2, 3].map((i) => (
@@ -1846,8 +1841,8 @@ export default function PatternsPage() {
                       <span
                         className="rounded px-1.5 py-0.5 font-mono text-[9px]"
                         style={{
-                          background: "var(--color-primary-background-default)",
-                          color: "var(--color-inverse-foreground-default)",
+                          background: "var(--color-background-primary)",
+                          color: "var(--color-foreground-inverse)",
                         }}
                       >
                         lg · 1280
@@ -1857,20 +1852,19 @@ export default function PatternsPage() {
                       </span>
                     </div>
                     <div className="rounded-lg overflow-hidden border border-(--color-border-default) bg-(--color-background-default) aspect-5/4 p-2">
-                      <div className="h-3 rounded bg-(--color-background-strong) mb-1.5" />
+                      <div className="h-3 rounded bg-(--color-background-emphasis) mb-1.5" />
                       <div className="grid grid-cols-4 gap-1.5">
                         <div className="col-span-1 space-y-1">
                           {[0, 1, 2].map((i) => (
                             <div
                               key={i}
-                              className="rounded h-1.5 bg-(--color-background-strong)"
+                              className="rounded h-1.5 bg-(--color-background-emphasis)"
                             />
                           ))}
                           <div
                             className="rounded h-1.5"
                             style={{
-                              background:
-                                "var(--color-primary-background-default)",
+                              background: "var(--color-background-primary)",
                             }}
                           />
                         </div>
@@ -1879,10 +1873,10 @@ export default function PatternsPage() {
                             className="rounded p-1.5"
                             style={{
                               background:
-                                "color-mix(in oklch, var(--color-primary-background-default) 10%, transparent)",
+                                "color-mix(in oklch, var(--color-background-primary) 10%, transparent)",
                             }}
                           >
-                            <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-strong)" />
+                            <div className="h-1.5 w-1/2 rounded-full bg-(--color-background-emphasis)" />
                           </div>
                           <div className="grid grid-cols-3 gap-1">
                             {[0, 1, 2].map((i) => (
@@ -1934,7 +1928,7 @@ export default function PatternsPage() {
           ══════════════════════════════════════════════════════════ */}
       <section
         id="cat-accessibility"
-        className="border-b border-(--color-border-default) bg-(--color-background-subtle)"
+        className="border-b border-(--color-border-default) bg-(--color-background-muted)"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <CatHeader
@@ -1948,7 +1942,7 @@ export default function PatternsPage() {
               story="accessibility-patterns"
               full
               title="Accessibility Patterns"
-              desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. The shared focus ring is driven by --color-focus-ring (form controls use --color-input-border-focus), so a token change updates it everywhere.`}
+              desc={`Reference implementations for focus rings, live regions, error announcement, keyboard navigation, and skip links. The shared focus ring is driven by --color-border-focus (form controls use --color-input-border-focus), so a token change updates it everywhere.`}
               tags={[
                 "Alert",
                 "Badge",
@@ -1970,7 +1964,7 @@ export default function PatternsPage() {
                         className="w-full h-7 text-[11px] font-semibold"
                         style={{
                           boxShadow:
-                            "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 30%, transparent)",
+                            "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 30%, transparent)",
                         }}
                       >
                         Focused button
@@ -1978,9 +1972,9 @@ export default function PatternsPage() {
                       <div
                         className="flex items-center h-7 border rounded-md px-2 text-[11px] text-(--color-foreground-faint)"
                         style={{
-                          borderColor: "var(--color-primary-border-default)",
+                          borderColor: "var(--color-border-primary)",
                           boxShadow:
-                            "0 0 0 3px color-mix(in oklch, var(--color-primary-background-default) 22%, transparent)",
+                            "0 0 0 3px color-mix(in oklch, var(--color-background-primary) 22%, transparent)",
                         }}
                       >
                         Focused input
@@ -2001,7 +1995,7 @@ export default function PatternsPage() {
                           Email{" "}
                           <span
                             style={{
-                              color: "var(--color-danger-foreground-subtle)",
+                              color: "var(--color-foreground-danger-muted)",
                             }}
                             aria-hidden
                           >
@@ -2011,9 +2005,9 @@ export default function PatternsPage() {
                         <div
                           className="flex items-center h-7 border rounded-md px-2 text-[11px]"
                           style={{
-                            borderColor: "var(--color-danger-border-default)",
+                            borderColor: "var(--color-border-danger)",
                             background:
-                              "color-mix(in oklch, var(--color-danger-foreground-subtle) 6%, var(--color-background-default))",
+                              "color-mix(in oklch, var(--color-foreground-danger-muted) 6%, var(--color-background-default))",
                           }}
                         >
                           <span className="text-(--color-foreground-default)">
@@ -2023,7 +2017,7 @@ export default function PatternsPage() {
                         <p
                           className="mt-1 flex items-center gap-1 text-[10px]"
                           style={{
-                            color: "var(--color-danger-foreground-subtle)",
+                            color: "var(--color-foreground-danger-muted)",
                           }}
                           role="alert"
                         >
@@ -2055,8 +2049,8 @@ export default function PatternsPage() {
                         className="flex items-center justify-between rounded px-2 py-1.5 text-[11px]"
                         style={{
                           background:
-                            "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)",
-                          color: "var(--color-primary-foreground-subtle)",
+                            "color-mix(in oklch, var(--color-background-primary) 12%, transparent)",
+                          color: "var(--color-foreground-primary-muted)",
                         }}
                       >
                         <span>Option one</span>
@@ -2093,7 +2087,7 @@ export default function PatternsPage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight leading-[1.05] text-(--color-foreground-default)">
                 A component is a primitive.{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   A pattern is a decision.
                 </span>
@@ -2110,14 +2104,14 @@ export default function PatternsPage() {
               {[
                 {
                   num: "01",
-                  color: "var(--color-primary-foreground-subtle)",
+                  color: "var(--color-foreground-primary-muted)",
                   title: "Use a pattern when the answer is already known.",
                   body: "Sign-in flows, error boundaries, responsive sidebars — these have all been designed before. Reach for the pattern; spend your novelty budget on the product, not the plumbing.",
                   tokenFlow: false,
                 },
                 {
                   num: "02",
-                  color: "var(--color-success-foreground-subtle)",
+                  color: "var(--color-foreground-success-muted)",
                   title:
                     "Build from scratch when the problem is genuinely new.",
                   body: "If no pattern fits, compose from components instead of bending a near-miss pattern out of shape. Then nominate the result for inclusion — that's how the catalog grows.",
@@ -2159,13 +2153,13 @@ export default function PatternsPage() {
                           <p className="text-sm text-(--color-foreground-muted) mt-1">
                             When{" "}
                             <code className="font-mono text-xs">
-                              --color-primary-background-default
+                              --color-background-primary
                             </code>{" "}
                             moves, every button, badge, and focus ring across
                             every pattern moves with it — no pattern-by-pattern
                             refactor required.
                           </p>
-                          <div className="mt-4 flex items-center gap-2 rounded-md border border-(--color-border-default) bg-(--color-background-subtle) px-3 py-2.5">
+                          <div className="mt-4 flex items-center gap-2 rounded-md border border-(--color-border-default) bg-(--color-background-muted) px-3 py-2.5">
                             {["tokens", "components"].map((label) => (
                               <React.Fragment key={label}>
                                 <span className="font-mono text-[10px] text-(--color-foreground-muted)">
@@ -2185,7 +2179,7 @@ export default function PatternsPage() {
                             <span
                               className="font-mono text-[10px]"
                               style={{
-                                color: "var(--color-primary-foreground-subtle)",
+                                color: "var(--color-foreground-primary-muted)",
                               }}
                             >
                               patterns
@@ -2236,8 +2230,8 @@ export default function PatternsPage() {
                 href="https://wyliedogstorybook.com"
                 className="inline-flex h-10 items-center gap-1.5 rounded-md px-4 text-sm font-semibold"
                 style={{
-                  background: "var(--color-primary-background-default)",
-                  color: "var(--color-inverse-foreground-default)",
+                  background: "var(--color-background-primary)",
+                  color: "var(--color-foreground-inverse)",
                 }}
               >
                 View in Storybook
@@ -2253,7 +2247,7 @@ export default function PatternsPage() {
               </a>
               <Link
                 href="/components"
-                className="inline-flex h-10 items-center rounded-md border border-(--color-border-default) px-4 text-sm font-semibold text-(--color-foreground-default) hover:bg-(--color-background-subtle) transition-colors"
+                className="inline-flex h-10 items-center rounded-md border border-(--color-border-default) px-4 text-sm font-semibold text-(--color-foreground-default) hover:bg-(--color-background-muted) transition-colors"
               >
                 Browse components →
               </Link>

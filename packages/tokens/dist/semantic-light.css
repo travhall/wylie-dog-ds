@@ -445,12 +445,12 @@
   --font-size-badge-font-size-lg: 16px;
   --color-button-primary-background: oklch(0.546 0.215 262.9);
   --color-button-primary-background-hover: oklch(0.488 0.217 264.4);
-  --color-button-primary-background-active: oklch(0.424 0.181 265.66);
+  --color-button-primary-background-active: oklch(0.488 0.217 264.4);
   --color-button-primary-text: oklch(0.991 0.003 264.45);
   --color-button-primary-border: oklch(0.546 0.215 262.9);
   --color-button-secondary-background: oklch(0.952 0.003 264.48);
   --color-button-secondary-background-hover: oklch(0.87 0.003 264.48);
-  --color-button-secondary-background-active: oklch(0.786 0.004 271.11);
+  --color-button-secondary-background-active: oklch(0.87 0.003 264.48);
   --color-button-secondary-text: oklch(0.209 0.01 268.18);
   --color-button-secondary-border: oklch(0.786 0.004 271.11);
   --color-button-outline-background: oklch(0.991 0.003 264.45);
@@ -498,7 +498,7 @@
   --color-input-border-error: oklch(0.546 0.215 27.31);
   --color-input-placeholder: oklch(0.423 0.007 264.49);
   --color-input-disabled-background: oklch(0.87 0.003 264.48);
-  --color-input-disabled-text: oklch(0.699 0.005 271.07);
+  --color-input-disabled-text: oklch(0.52 0.007 264.5);
   --space-input-padding-x: 16px;
   --font-size-input-font-size-sm: 14px;
   --space-input-radius: 4px;
@@ -577,10 +577,10 @@
   --color-accordion-trigger-pressed: oklch(0.87 0.003 264.48);
   --color-accordion-trigger-focus: oklch(0.97 0.014 254.77);
   --color-accordion-trigger-disabled: oklch(0.952 0.003 264.48);
-  --color-accordion-trigger-text-disabled: oklch(0.699 0.005 271.07);
+  --color-accordion-trigger-text-disabled: oklch(0.52 0.007 264.5);
   --color-accordion-icon-hover: oklch(0.209 0.01 268.18);
   --color-accordion-icon-open: oklch(0.209 0.01 268.18);
-  --color-accordion-icon-disabled: oklch(0.699 0.005 271.07);
+  --color-accordion-icon-disabled: oklch(0.52 0.007 264.5);
   --color-avatar-background: oklch(0.952 0.003 264.48);
   --color-avatar-border: oklch(0.786 0.004 271.11);
   --color-avatar-fallback-background: oklch(0.87 0.003 264.48);
@@ -736,7 +736,7 @@
   --font-size-label-font-size-md: 16px;
   --font-size-label-font-size-lg: 18px;
   --space-label-margin-bottom: 4px;
-  --color-label-disabled-color: oklch(0.699 0.005 271.07);
+  --color-label-disabled-color: oklch(0.52 0.007 264.5);
   --color-sheet-overlay-background: oklch(0.149 0.012 259.72);
   --space-sheet-content-width-sm: 448px;
   --space-sheet-content-width-md: 576px;
@@ -1074,7 +1074,7 @@
   --color-badge-secondary-background-hover: oklch(0.87 0.003 264.48);
   --color-badge-success-background-hover: oklch(0.488 0.134 150.11);
   --color-badge-warning-background-hover: oklch(0.714 0.143 81);
-  --color-badge-destructive-background-hover: oklch(0.932 0.031 17.2);
+  --color-badge-destructive-background-hover: oklch(0.97 0.013 16.7);
   --color-badge-outline-background-hover: oklch(0.952 0.003 264.48);
   --color-card-background-hover: oklch(0.952 0.003 264.48);
   --color-card-border-hover: oklch(0.623 0.188 259.83);
@@ -1122,7 +1122,7 @@
   --font-weight-calendar-day-font-weight: 400;
   --font-weight-breadcrumb-page-font-weight: 400;
   --color-breadcrumb-link-focus: oklch(0.97 0.014 254.77);
-  --color-breadcrumb-link-disabled: oklch(0.699 0.005 271.07);
+  --color-breadcrumb-link-disabled: oklch(0.52 0.007 264.5);
   --color-pagination-background-hover: oklch(0.952 0.003 264.48);
   --font-weight-pagination-item-font-weight: 500;
   --pagination-link-disabled-opacity: 0.5;

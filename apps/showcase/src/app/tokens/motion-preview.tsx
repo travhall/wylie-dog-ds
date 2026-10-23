@@ -54,9 +54,9 @@ export function MotionPreview() {
             style={
               curveIdx === i
                 ? {
-                    borderColor: "var(--color-primary-border-default)",
+                    borderColor: "var(--color-border-primary)",
                     background:
-                      "color-mix(in oklch, var(--color-primary-background-default) 6%, var(--color-background-default))",
+                      "color-mix(in oklch, var(--color-background-primary) 6%, var(--color-background-default))",
                   }
                 : {
                     borderColor: "var(--color-border-default)",
@@ -73,7 +73,7 @@ export function MotionPreview() {
                 style={{
                   background:
                     curveIdx === i
-                      ? "var(--color-primary-background-default)"
+                      ? "var(--color-background-primary)"
                       : "var(--color-border-default)",
                 }}
               />
@@ -105,7 +105,7 @@ export function MotionPreview() {
               <path
                 d={curve.path}
                 fill="none"
-                stroke="var(--color-primary-border-default)"
+                stroke="var(--color-border-primary)"
                 strokeWidth="1.5"
               />
             </svg>
@@ -115,7 +115,7 @@ export function MotionPreview() {
               </p>
               <p
                 className="font-mono text-[10px]"
-                style={{ color: "var(--color-primary-foreground-subtle)" }}
+                style={{ color: "var(--color-foreground-primary-muted)" }}
               >
                 cubic-bezier({curve.bezier})
               </p>
@@ -133,7 +133,7 @@ export function MotionPreview() {
           <span className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
             Live preview
           </span>
-          <div className="flex items-center gap-1 rounded-full border border-(--color-border-default) bg-(--color-background-subtle) p-0.5">
+          <div className="flex items-center gap-1 rounded-full border border-(--color-border-default) bg-(--color-background-muted) p-0.5">
             {durations.map((ms) => (
               <Button
                 key={ms}
@@ -143,8 +143,8 @@ export function MotionPreview() {
                 style={
                   dur === ms
                     ? {
-                        background: "var(--color-primary-background-default)",
-                        color: "var(--color-inverse-foreground-default)",
+                        background: "var(--color-background-primary)",
+                        color: "var(--color-foreground-inverse)",
                       }
                     : { color: "var(--color-foreground-faint)" }
                 }
@@ -160,7 +160,7 @@ export function MotionPreview() {
         >
           <div
             key={`${curveIdx}-${dur}`}
-            className="motion-preview-demo-card w-full max-w-xs rounded-xl border border-(--color-border-default) bg-(--color-background-subtle) p-4 shadow-md"
+            className="motion-preview-demo-card w-full max-w-xs rounded-xl border border-(--color-border-default) bg-(--color-background-muted) p-4 shadow-md"
             style={{
               animation: `slideIn ${dur}ms cubic-bezier(${c.bezier}) both`,
             }}
@@ -182,12 +182,12 @@ export function MotionPreview() {
               <span
                 className="h-8 w-8 rounded-md grid place-items-center shrink-0"
                 style={{
-                  background: "var(--color-primary-background-default)",
+                  background: "var(--color-background-primary)",
                 }}
               >
                 <svg
                   viewBox="0 0 24 24"
-                  className="h-4 w-4 text-(--color-inverse-foreground-default)"
+                  className="h-4 w-4 text-(--color-foreground-inverse)"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -206,7 +206,7 @@ export function MotionPreview() {
             </div>
           </div>
         </div>
-        <div className="border-t border-(--color-border-default) bg-(--color-background-subtle) px-4 py-2.5 font-mono text-[10px] text-(--color-foreground-faint)">
+        <div className="border-t border-(--color-border-default) bg-(--color-background-muted) px-4 py-2.5 font-mono text-[10px] text-(--color-foreground-faint)">
           animation: tile-rise{" "}
           <span className="text-(--color-foreground-muted)">{dur}ms</span>{" "}
           cubic-bezier(

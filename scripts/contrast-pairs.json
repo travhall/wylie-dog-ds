@@ -539,7 +539,7 @@
         "table.row-hover",
         "table.row-selected",
         "table.row-focus",
-        "color.background.subtle.hover",
+        "color.background.emphasis",
         "color.background.raised"
       ],
       "kind": "text"
@@ -634,8 +634,8 @@
       "kind": "non-text"
     },
     {
-      "foreground": "color.focus.ring",
-      "backgrounds": ["color.background.default", "color.background.subtle"],
+      "foreground": "color.border.focus",
+      "backgrounds": ["color.background.default", "color.background.muted"],
       "kind": "non-text"
     },
     {
@@ -653,8 +653,8 @@
       "foreground": "color.foreground.default",
       "backgrounds": [
         "color.background.default",
-        "color.background.subtle",
-        "color.background.strong"
+        "color.background.muted",
+        "color.background.emphasis"
       ],
       "kind": "text"
     },
@@ -662,9 +662,8 @@
       "foreground": "color.foreground.muted",
       "backgrounds": [
         "color.background.default",
-        "color.background.subtle",
-        "color.background.strong",
-        "color.background.subtle.hover",
+        "color.background.muted",
+        "color.background.emphasis",
         "color.background.raised"
       ],
       "kind": "text"
@@ -673,83 +672,81 @@
       "foreground": "color.foreground.faint",
       "backgrounds": [
         "color.background.default",
-        "color.background.subtle",
+        "color.background.muted",
         "color.background.raised"
       ],
       "kind": "text",
       "note": "Not declared on the strong background: faint text is 3.72:1 (Light) and 3.38:1 (Dark) there, so it is not a guaranteed pair."
     },
     {
-      "foreground": "color.inverse.foreground.default",
-      "backgrounds": ["color.inverse.background.default"],
+      "foreground": "color.foreground.inverse",
+      "backgrounds": ["color.background.inverse"],
       "kind": "text"
     },
     {
-      "foreground": "color.primary.foreground.default",
+      "foreground": "color.foreground.primary",
       "backgrounds": [
-        "color.primary.background.default",
-        "color.primary.background.default.hover",
-        "color.primary.background.default.active"
+        "color.background.primary",
+        "color.background.primary-emphasis"
       ],
       "kind": "text"
     },
     {
-      "foreground": "color.danger.foreground.default",
+      "foreground": "color.foreground.danger",
       "backgrounds": [
-        "color.danger.background.default",
-        "color.danger.background.default.hover"
+        "color.background.danger",
+        "color.background.danger-emphasis"
       ],
       "kind": "text"
     },
     {
-      "foreground": "color.success.foreground.default",
+      "foreground": "color.foreground.success",
       "backgrounds": [
-        "color.success.background.default",
-        "color.success.background.default.hover"
+        "color.background.success",
+        "color.background.success-emphasis"
       ],
       "kind": "text"
     },
     {
-      "foreground": "color.warning.foreground.default",
+      "foreground": "color.foreground.warning",
       "backgrounds": [
-        "color.warning.background.default",
-        "color.warning.background.default.hover"
+        "color.background.warning",
+        "color.background.warning-emphasis"
       ],
       "kind": "text"
     },
     {
-      "foreground": "color.primary.foreground.subtle",
+      "foreground": "color.foreground.primary-muted",
       "backgrounds": [
-        "color.primary.background.subtle",
+        "color.background.primary-muted",
         "color.background.default",
         "color.background.raised"
       ],
       "kind": "text"
     },
     {
-      "foreground": "color.info.foreground.subtle",
+      "foreground": "color.foreground.info-muted",
       "backgrounds": [
-        "color.info.background.subtle",
+        "color.background.info-muted",
         "color.background.default"
       ],
       "kind": "text"
     },
     {
-      "foreground": "color.success.foreground.subtle",
-      "backgrounds": ["color.success.background.subtle"],
+      "foreground": "color.foreground.success-muted",
+      "backgrounds": ["color.background.success-muted"],
       "kind": "text"
     },
     {
-      "foreground": "color.warning.foreground.subtle",
-      "backgrounds": ["color.warning.background.subtle"],
+      "foreground": "color.foreground.warning-muted",
+      "backgrounds": ["color.background.warning-muted"],
       "kind": "text"
     },
     {
-      "foreground": "color.danger.foreground.subtle",
+      "foreground": "color.foreground.danger-muted",
       "backgrounds": [
-        "color.danger.background.subtle",
+        "color.background.danger-muted",
         "color.background.default",
-        "color.danger.background.subtle.hover",
         "color.background.raised"
       ],
       "kind": "text"
@@ -774,7 +771,7 @@
       "note": "Aligned ramps: the 600 step of every chromatic hue takes light text, so a role can change hue without changing its step."
     },
     {
-      "foreground": "color.primary.border.default",
+      "foreground": "color.border.primary",
       "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },

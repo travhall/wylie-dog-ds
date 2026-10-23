@@ -1,19 +1,19 @@
 {
   "badge.default.background": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "badge.default.text": {
     "$type": "color",
-    "$value": "{color.primary.foreground.default}"
+    "$value": "{color.foreground.primary}"
   },
   "badge.default.border": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "badge.secondary.background": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "badge.secondary.text": {
     "$type": "color",
@@ -21,43 +21,43 @@
   },
   "badge.secondary.border": {
     "$type": "color",
-    "$value": "{color.border.subtle}"
+    "$value": "{color.border.muted}"
   },
   "badge.success.background": {
     "$type": "color",
-    "$value": "{color.success.background.default}"
+    "$value": "{color.background.success}"
   },
   "badge.success.text": {
     "$type": "color",
-    "$value": "{color.success.foreground.default}"
+    "$value": "{color.foreground.success}"
   },
   "badge.success.border": {
     "$type": "color",
-    "$value": "{color.success.background.default}"
+    "$value": "{color.background.success}"
   },
   "badge.warning.background": {
     "$type": "color",
-    "$value": "{color.warning.background.default}"
+    "$value": "{color.background.warning}"
   },
   "badge.warning.text": {
     "$type": "color",
-    "$value": "{color.warning.foreground.default}"
+    "$value": "{color.foreground.warning}"
   },
   "badge.warning.border": {
     "$type": "color",
-    "$value": "{color.warning.background.default}"
+    "$value": "{color.background.warning}"
   },
   "badge.destructive.background": {
     "$type": "color",
-    "$value": "{color.danger.background.subtle}"
+    "$value": "{color.background.danger-muted}"
   },
   "badge.destructive.text": {
     "$type": "color",
-    "$value": "{color.danger.foreground.subtle}"
+    "$value": "{color.foreground.danger-muted}"
   },
   "badge.destructive.border": {
     "$type": "color",
-    "$value": "{color.danger.border.default}"
+    "$value": "{color.border.danger}"
   },
   "badge.outline.background": {
     "$type": "color",
@@ -127,35 +127,35 @@
   },
   "button.primary.background": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "button.primary.background-hover": {
     "$type": "color",
-    "$value": "{color.primary.background.default.hover}"
+    "$value": "{color.background.primary-emphasis}"
   },
   "button.primary.background-active": {
     "$type": "color",
-    "$value": "{color.primary.background.default.active}"
+    "$value": "{color.background.primary-emphasis}"
   },
   "button.primary.text": {
     "$type": "color",
-    "$value": "{color.primary.foreground.default}"
+    "$value": "{color.foreground.primary}"
   },
   "button.primary.border": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "button.secondary.background": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "button.secondary.background-hover": {
     "$type": "color",
-    "$value": "{color.background.subtle.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "button.secondary.background-active": {
     "$type": "color",
-    "$value": "{color.background.subtle.active}"
+    "$value": "{color.background.emphasis}"
   },
   "button.secondary.text": {
     "$type": "color",
@@ -175,11 +175,11 @@
   },
   "button.ghost.background-hover": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "button.ghost.background-active": {
     "$type": "color",
-    "$value": "{color.background.strong}"
+    "$value": "{color.background.emphasis}"
   },
   "button.ghost.text": {
     "$type": "color",
@@ -187,7 +187,7 @@
   },
   "button.outline.background-hover": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "button.outline.text": {
     "$type": "color",
@@ -199,19 +199,19 @@
   },
   "button.destructive.background": {
     "$type": "color",
-    "$value": "{color.danger.background.default}"
+    "$value": "{color.background.danger}"
   },
   "button.destructive.background-hover": {
     "$type": "color",
-    "$value": "{color.danger.background.default.hover}"
+    "$value": "{color.background.danger-emphasis}"
   },
   "button.destructive.text": {
     "$type": "color",
-    "$value": "{color.danger.foreground.default}"
+    "$value": "{color.foreground.danger}"
   },
   "button.destructive.border": {
     "$type": "color",
-    "$value": "{color.danger.background.default}"
+    "$value": "{color.background.danger}"
   },
   "button.padding-y.sm": {
     "$type": "spacing",
@@ -274,7 +274,7 @@
   },
   "button.link.text": {
     "$type": "color",
-    "$value": "{color.primary.foreground.subtle}"
+    "$value": "{color.foreground.primary-muted}"
   },
   "card.background": {
     "$type": "color",
@@ -326,19 +326,19 @@
   },
   "input.background-hover": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "input.border": {
     "$type": "color",
-    "$value": "{color.border.strong}"
+    "$value": "{color.border.emphasis}"
   },
   "input.border-focus": {
     "$type": "color",
-    "$value": "{color.focus.ring}"
+    "$value": "{color.border.focus}"
   },
   "input.border-error": {
     "$type": "color",
-    "$value": "{color.danger.border.default}"
+    "$value": "{color.border.danger}"
   },
   "input.placeholder": {
     "$type": "color",
@@ -346,11 +346,11 @@
   },
   "input.disabled.background": {
     "$type": "color",
-    "$value": "{color.background.strong}"
+    "$value": "{color.background.emphasis}"
   },
   "input.disabled.text": {
     "$type": "color",
-    "$value": "{color.foreground.default.disabled}"
+    "$value": "{color.foreground.faint}"
   },
   "input.padding-x": {
     "$type": "spacing",
@@ -374,7 +374,7 @@
   },
   "alert.default.background": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "alert.default.border": {
     "$type": "color",
@@ -386,39 +386,39 @@
   },
   "alert.destructive.background": {
     "$type": "color",
-    "$value": "{color.danger.background.subtle}"
+    "$value": "{color.background.danger-muted}"
   },
   "alert.destructive.border": {
     "$type": "color",
-    "$value": "{color.danger.border.default}"
+    "$value": "{color.border.danger}"
   },
   "alert.destructive.text": {
     "$type": "color",
-    "$value": "{color.danger.foreground.subtle}"
+    "$value": "{color.foreground.danger-muted}"
   },
   "alert.warning.background": {
     "$type": "color",
-    "$value": "{color.warning.background.subtle}"
+    "$value": "{color.background.warning-muted}"
   },
   "alert.warning.border": {
     "$type": "color",
-    "$value": "{color.warning.border.default}"
+    "$value": "{color.border.warning}"
   },
   "alert.warning.text": {
     "$type": "color",
-    "$value": "{color.warning.foreground.subtle}"
+    "$value": "{color.foreground.warning-muted}"
   },
   "alert.success.background": {
     "$type": "color",
-    "$value": "{color.success.background.subtle}"
+    "$value": "{color.background.success-muted}"
   },
   "alert.success.border": {
     "$type": "color",
-    "$value": "{color.success.border.default}"
+    "$value": "{color.border.success}"
   },
   "alert.success.text": {
     "$type": "color",
-    "$value": "{color.success.foreground.subtle}"
+    "$value": "{color.foreground.success-muted}"
   },
   "menubar.border": {
     "$type": "color",
@@ -430,7 +430,7 @@
   },
   "menubar.trigger-focus": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "menubar.trigger-text-focus": {
     "$type": "color",
@@ -438,7 +438,7 @@
   },
   "menubar.trigger-open": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "menubar.trigger-text-open": {
     "$type": "color",
@@ -458,7 +458,7 @@
   },
   "menubar.item-focus": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "menubar.item-text-focus": {
     "$type": "color",
@@ -486,7 +486,7 @@
   },
   "navigation.focus": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "navigation.text-focus": {
     "$type": "color",
@@ -494,11 +494,11 @@
   },
   "navigation.active": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "navigation.open": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "navigation.content-border": {
     "$type": "color",
@@ -514,7 +514,7 @@
   },
   "navigation.indicator": {
     "$type": "color",
-    "$value": "{color.border.strong}"
+    "$value": "{color.border.emphasis}"
   },
   "command.background": {
     "$type": "color",
@@ -546,7 +546,7 @@
   },
   "command.item-selected": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "command.item-text-selected": {
     "$type": "color",
@@ -558,7 +558,7 @@
   },
   "tabs.list.background": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "tabs.list.text": {
     "$type": "color",
@@ -574,7 +574,7 @@
   },
   "tabs.trigger.background-hover": {
     "$type": "color",
-    "$value": "{color.background.subtle.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "tabs.trigger.text-hover": {
     "$type": "color",
@@ -586,7 +586,7 @@
   },
   "tabs.trigger.indicator.color": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "collapsible.background": {
     "$type": "color",
@@ -598,7 +598,7 @@
   },
   "calendar.nav-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "calendar.nav-text-hover": {
     "$type": "color",
@@ -610,7 +610,7 @@
   },
   "calendar.day-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "calendar.day-text-hover": {
     "$type": "color",
@@ -618,11 +618,11 @@
   },
   "calendar.day-selected": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "calendar.day-text-selected": {
     "$type": "color",
-    "$value": "{color.primary.foreground.default}"
+    "$value": "{color.foreground.primary}"
   },
   "accordion.border": {
     "$type": "color",
@@ -638,7 +638,7 @@
   },
   "accordion.trigger-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "accordion.trigger-text": {
     "$type": "color",
@@ -654,19 +654,19 @@
   },
   "accordion.trigger-pressed": {
     "$type": "color",
-    "$value": "{color.background.default.active}"
+    "$value": "{color.background.emphasis}"
   },
   "accordion.trigger-focus": {
     "$type": "color",
-    "$value": "{color.primary.background.subtle}"
+    "$value": "{color.background.primary-muted}"
   },
   "accordion.trigger-disabled": {
     "$type": "color",
-    "$value": "{color.background.default.disabled}"
+    "$value": "{color.background.emphasis}"
   },
   "accordion.trigger-text-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.default.disabled}"
+    "$value": "{color.foreground.faint}"
   },
   "accordion.icon-hover": {
     "$type": "color",
@@ -678,11 +678,11 @@
   },
   "accordion.icon-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.default.disabled}"
+    "$value": "{color.foreground.faint}"
   },
   "avatar.background": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "avatar.border": {
     "$type": "color",
@@ -690,7 +690,7 @@
   },
   "avatar.fallback-background": {
     "$type": "color",
-    "$value": "{color.background.strong}"
+    "$value": "{color.background.emphasis}"
   },
   "avatar.fallback-text": {
     "$type": "color",
@@ -702,7 +702,7 @@
   },
   "breadcrumb.link": {
     "$type": "color",
-    "$value": "{color.primary.foreground.subtle}"
+    "$value": "{color.foreground.primary-muted}"
   },
   "breadcrumb.link-hover": {
     "$type": "color",
@@ -722,7 +722,7 @@
   },
   "carousel.nav-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "carousel.nav-text-hover": {
     "$type": "color",
@@ -738,7 +738,7 @@
   },
   "contextmenu.item-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "contextmenu.item-text-hover": {
     "$type": "color",
@@ -786,7 +786,7 @@
   },
   "form.error": {
     "$type": "color",
-    "$value": "{color.danger.foreground.subtle}"
+    "$value": "{color.foreground.danger-muted}"
   },
   "form.label": {
     "$type": "color",
@@ -806,7 +806,7 @@
   },
   "pagination.active": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "pagination.text": {
     "$type": "color",
@@ -814,7 +814,7 @@
   },
   "pagination.text-active": {
     "$type": "color",
-    "$value": "{color.primary.foreground.default}"
+    "$value": "{color.foreground.primary}"
   },
   "pagination.text-hover": {
     "$type": "color",
@@ -834,39 +834,39 @@
   },
   "progress.background": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "progress.default-fill": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "progress.destructive-fill": {
     "$type": "color",
-    "$value": "{color.danger.background.default}"
+    "$value": "{color.background.danger}"
   },
   "progress.success-fill": {
     "$type": "color",
-    "$value": "{color.success.background.default}"
+    "$value": "{color.background.success}"
   },
   "progress.warning-fill": {
     "$type": "color",
-    "$value": "{color.warning.background.default}"
+    "$value": "{color.background.warning}"
   },
   "radio.background-checked": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "radio.border": {
     "$type": "color",
-    "$value": "{color.border.strong}"
+    "$value": "{color.border.emphasis}"
   },
   "radio.border-checked": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "radio.indicator": {
     "$type": "color",
-    "$value": "{color.primary.foreground.default}"
+    "$value": "{color.foreground.primary}"
   },
   "resizable.handle": {
     "$type": "color",
@@ -874,7 +874,7 @@
   },
   "resizable.handle-background": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "resizable.handle-border": {
     "$type": "color",
@@ -882,15 +882,15 @@
   },
   "scrollbar.thumb": {
     "$type": "color",
-    "$value": "{color.border.subtle}"
+    "$value": "{color.border.muted}"
   },
   "skeleton.background": {
     "$type": "color",
-    "$value": "{color.background.strong}"
+    "$value": "{color.background.emphasis}"
   },
   "slider.range": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "slider.thumb": {
     "$type": "color",
@@ -898,11 +898,11 @@
   },
   "slider.thumb-border": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "slider.track": {
     "$type": "color",
-    "$value": "{color.background.subtle}"
+    "$value": "{color.background.muted}"
   },
   "table.border": {
     "$type": "color",
@@ -914,7 +914,7 @@
   },
   "table.footer-background": {
     "$type": "color",
-    "$value": "{color.background.strong}"
+    "$value": "{color.background.emphasis}"
   },
   "table.header-text": {
     "$type": "color",
@@ -922,15 +922,15 @@
   },
   "table.row-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "table.row-selected": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "toast.action-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "toast.close": {
     "$type": "color",
@@ -950,7 +950,7 @@
   },
   "toggle.pressed": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "toggle.text": {
     "$type": "color",
@@ -962,19 +962,19 @@
   },
   "toggle.text-pressed": {
     "$type": "color",
-    "$value": "{color.primary.foreground.default}"
+    "$value": "{color.foreground.primary}"
   },
   "tooltip.background": {
     "$type": "color",
-    "$value": "{color.inverse.background.default}"
+    "$value": "{color.background.inverse}"
   },
   "tooltip.border": {
     "$type": "color",
-    "$value": "{color.border.subtle}"
+    "$value": "{color.border.muted}"
   },
   "tooltip.text": {
     "$type": "color",
-    "$value": "{color.inverse.foreground.default}"
+    "$value": "{color.foreground.inverse}"
   },
   "tooltip.padding-x": {
     "$type": "spacing",
@@ -1186,11 +1186,11 @@
   },
   "switch.track.background.checked": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "switch.track.background.unchecked": {
     "$type": "color",
-    "$value": "{color.border.strong}"
+    "$value": "{color.border.emphasis}"
   },
   "switch.thumb.background": {
     "$type": "color",
@@ -1302,7 +1302,7 @@
   },
   "label.disabled.color": {
     "$type": "color",
-    "$value": "{color.foreground.default.disabled}"
+    "$value": "{color.foreground.faint}"
   },
   "sheet.overlay.background": {
     "$type": "color",
@@ -1995,41 +1995,41 @@
   },
   "toast.destructive.border": {
     "$type": "color",
-    "$value": "{color.danger.background.default}"
+    "$value": "{color.background.danger}"
   },
   "toast.destructive.background": {
     "$type": "color",
-    "$value": "{color.danger.background.default}"
+    "$value": "{color.background.danger}"
   },
   "toast.success.border": {
     "$type": "color",
-    "$value": "{color.success.background.default}"
+    "$value": "{color.background.success}"
   },
   "toast.success.background": {
     "$type": "color",
-    "$value": "{color.success.background.default}"
+    "$value": "{color.background.success}"
   },
   "toast.warning.border": {
     "$type": "color",
-    "$value": "{color.warning.background.default}"
+    "$value": "{color.background.warning}"
   },
   "toast.warning.background": {
     "$type": "color",
-    "$value": "{color.warning.background.default}"
+    "$value": "{color.background.warning}"
   },
   "toast.destructive.text": {
     "$type": "color",
-    "$value": "{color.danger.foreground.default}",
+    "$value": "{color.foreground.danger}",
     "$description": "Text color on destructive toast (saturated red background)"
   },
   "toast.success.text": {
     "$type": "color",
-    "$value": "{color.success.foreground.default}",
+    "$value": "{color.foreground.success}",
     "$description": "Text color on success toast (saturated green background)"
   },
   "toast.warning.text": {
     "$type": "color",
-    "$value": "{color.warning.foreground.default}",
+    "$value": "{color.foreground.warning}",
     "$description": "Text color on warning toast (saturated orange background)"
   },
   "toast.border-radius": {
@@ -2415,7 +2415,7 @@
   },
   "dropdown-menu.item.background-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "dropdown-menu.item.text-hover": {
     "$type": "color",
@@ -2587,23 +2587,23 @@
   },
   "checkbox.border.color": {
     "$type": "color",
-    "$value": "{color.border.strong}"
+    "$value": "{color.border.emphasis}"
   },
   "checkbox.checked.background": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "checkbox.checked.text": {
     "$type": "color",
-    "$value": "{color.primary.foreground.default}"
+    "$value": "{color.foreground.primary}"
   },
   "checkbox.checked.border": {
     "$type": "color",
-    "$value": "{color.primary.background.default}"
+    "$value": "{color.background.primary}"
   },
   "checkbox.error.border": {
     "$type": "color",
-    "$value": "{color.danger.border.default}"
+    "$value": "{color.border.danger}"
   },
   "checkbox.disabled.opacity": {
     "$type": "number",
@@ -2643,39 +2643,39 @@
   },
   "badge.default.background-hover": {
     "$type": "color",
-    "$value": "{color.primary.background.default.hover}"
+    "$value": "{color.background.primary-emphasis}"
   },
   "badge.secondary.background-hover": {
     "$type": "color",
-    "$value": "{color.background.default.active}"
+    "$value": "{color.background.emphasis}"
   },
   "badge.success.background-hover": {
     "$type": "color",
-    "$value": "{color.success.background.default.hover}"
+    "$value": "{color.background.success-emphasis}"
   },
   "badge.warning.background-hover": {
     "$type": "color",
-    "$value": "{color.warning.background.default.hover}"
+    "$value": "{color.background.warning-emphasis}"
   },
   "badge.destructive.background-hover": {
     "$type": "color",
-    "$value": "{color.danger.background.subtle.hover}"
+    "$value": "{color.background.danger-muted}"
   },
   "badge.outline.background-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "card.background-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "card.border-hover": {
     "$type": "color",
-    "$value": "{color.focus.ring}"
+    "$value": "{color.border.focus}"
   },
   "popover.border-focus": {
     "$type": "color",
-    "$value": "{color.focus.ring}"
+    "$value": "{color.border.focus}"
   },
   "form.label.text": {
     "$type": "color",
@@ -2707,7 +2707,7 @@
   },
   "form.error.text": {
     "$type": "color",
-    "$value": "{color.danger.foreground.subtle}"
+    "$value": "{color.foreground.danger-muted}"
   },
   "form.error.font-size": {
     "$type": "number",
@@ -2715,7 +2715,7 @@
   },
   "form.required.color": {
     "$type": "color",
-    "$value": "{color.danger.foreground.subtle}"
+    "$value": "{color.foreground.danger-muted}"
   },
   "form.gap": {
     "$type": "spacing",
@@ -2735,63 +2735,63 @@
   },
   "badge.default.background-focus": {
     "$type": "color",
-    "$value": "{color.primary.background.default.hover}"
+    "$value": "{color.background.primary-emphasis}"
   },
   "badge.default.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.default.disabled}"
+    "$value": "{color.background.emphasis}"
   },
   "badge.secondary.background-focus": {
     "$type": "color",
-    "$value": "{color.primary.background.subtle}"
+    "$value": "{color.background.primary-muted}"
   },
   "badge.secondary.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.default.disabled}"
+    "$value": "{color.background.emphasis}"
   },
   "badge.success.background-focus": {
     "$type": "color",
-    "$value": "{color.success.background.default.hover}"
+    "$value": "{color.background.success-emphasis}"
   },
   "badge.success.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.default.disabled}"
+    "$value": "{color.background.emphasis}"
   },
   "badge.warning.background-focus": {
     "$type": "color",
-    "$value": "{color.warning.background.default.hover}"
+    "$value": "{color.background.warning-emphasis}"
   },
   "badge.warning.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.default.disabled}"
+    "$value": "{color.background.emphasis}"
   },
   "badge.destructive.background-focus": {
     "$type": "color",
-    "$value": "{color.primary.background.subtle}"
+    "$value": "{color.background.primary-muted}"
   },
   "badge.destructive.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.default.disabled}"
+    "$value": "{color.background.emphasis}"
   },
   "badge.outline.background-focus": {
     "$type": "color",
-    "$value": "{color.primary.background.subtle}"
+    "$value": "{color.background.primary-muted}"
   },
   "badge.outline.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.default.disabled}"
+    "$value": "{color.background.emphasis}"
   },
   "card.background-focus": {
     "$type": "color",
-    "$value": "{color.primary.background.subtle}"
+    "$value": "{color.background.primary-muted}"
   },
   "card.background-active": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "card.background-disabled": {
     "$type": "color",
-    "$value": "{color.background.default.disabled}"
+    "$value": "{color.background.emphasis}"
   },
   "card.disabled.opacity": {
     "$type": "number",
@@ -2799,11 +2799,11 @@
   },
   "navigation.background-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "calendar.day-focus": {
     "$type": "color",
-    "$value": "{color.primary.background.subtle}"
+    "$value": "{color.background.primary-muted}"
   },
   "calendar.day-text-focus": {
     "$type": "color",
@@ -2811,7 +2811,7 @@
   },
   "calendar.nav-focus": {
     "$type": "color",
-    "$value": "{color.primary.background.subtle}"
+    "$value": "{color.background.primary-muted}"
   },
   "calendar.nav-text-focus": {
     "$type": "color",
@@ -2847,15 +2847,15 @@
   },
   "breadcrumb.link-focus": {
     "$type": "color",
-    "$value": "{color.primary.background.subtle}"
+    "$value": "{color.background.primary-muted}"
   },
   "breadcrumb.link-disabled": {
     "$type": "color",
-    "$value": "{color.foreground.default.disabled}"
+    "$value": "{color.foreground.faint}"
   },
   "pagination.background-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "pagination.item.font-weight": {
     "$type": "number",
@@ -2867,11 +2867,11 @@
   },
   "table.row-focus": {
     "$type": "color",
-    "$value": "{color.primary.background.subtle}"
+    "$value": "{color.background.primary-muted}"
   },
   "toggle.background-hover": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "select.content.z-index": {
     "$type": "number",
@@ -2879,7 +2879,7 @@
   },
   "select.item.background-focus": {
     "$type": "color",
-    "$value": "{color.background.default.hover}"
+    "$value": "{color.background.emphasis}"
   },
   "select.item.text-focus": {
     "$type": "color",
@@ -3076,11 +3076,11 @@
   },
   "label.error.text": {
     "$type": "color",
-    "$value": "{color.danger.foreground.subtle}"
+    "$value": "{color.foreground.danger-muted}"
   },
   "label.required.text": {
     "$type": "color",
-    "$value": "{color.danger.foreground.subtle}"
+    "$value": "{color.foreground.danger-muted}"
   },
   "separator.color": {
     "$type": "color",
@@ -3164,7 +3164,7 @@
   },
   "form.label.error.text": {
     "$type": "color",
-    "$value": "{color.danger.foreground.subtle}"
+    "$value": "{color.foreground.danger-muted}"
   },
   "feature-grid.item.border-color": {
     "$type": "color",
@@ -3172,7 +3172,7 @@
   },
   "feature-grid.item.border-color-hover": {
     "$type": "color",
-    "$value": "{color.primary.border.default}"
+    "$value": "{color.border.primary}"
   },
   "input.padding-y.sm": {
     "$type": "spacing",

@@ -42,7 +42,7 @@ export default function ColorsPage() {
       headline={
         <>
           OKLCH means the ramp{" "}
-          <span className="text-(--color-primary-foreground-subtle)">is</span>{" "}
+          <span className="text-(--color-foreground-primary-muted)">is</span>{" "}
           the math.
         </>
       }
@@ -89,7 +89,7 @@ export default function ColorsPage() {
               key={group.group}
               className="overflow-hidden rounded-xl border border-(--color-border-default) bg-(--color-background-default)"
             >
-              <h3 className="border-b border-(--color-border-default) bg-(--color-background-subtle) px-5 py-3 font-semibold text-(--color-foreground-default)">
+              <h3 className="border-b border-(--color-border-default) bg-(--color-background-muted) px-5 py-3 font-semibold text-(--color-foreground-default)">
                 {group.group}
               </h3>
               <div>

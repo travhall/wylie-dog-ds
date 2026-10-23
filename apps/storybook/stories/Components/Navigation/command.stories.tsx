@@ -298,7 +298,7 @@ export const WithModal: Story = {
         <div className="text-center space-y-2">
           <p className="text-sm text-(--color-foreground-faint)">
             Press{" "}
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-(--color-background-subtle) px-1.5 font-mono text-[10px] font-medium text-(--color-foreground-faint)">
+            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-(--color-background-muted) px-1.5 font-mono text-[10px] font-medium text-(--color-foreground-faint)">
               <span className="text-xs">⌘</span>K
             </kbd>{" "}
             to open command palette
@@ -422,14 +422,14 @@ export const TeamDirectory: Story = {
 export const CodeEditor: Story = {
   render: () => (
     <div className="space-y-4 w-full max-w-2xl">
-      <div className="bg-(--color-inverse-background-default) text-(--color-inverse-foreground-default) p-4 rounded-lg font-mono text-sm">
+      <div className="bg-(--color-background-inverse) text-(--color-foreground-inverse) p-4 rounded-lg font-mono text-sm">
         <div className="flex items-center justify-between mb-4">
           <span>editor.tsx</span>
-          <kbd className="text-xs bg-(--color-background-subtle) text-(--color-foreground-default) px-2 py-1 rounded">
+          <kbd className="text-xs bg-(--color-background-muted) text-(--color-foreground-default) px-2 py-1 rounded">
             ⌘K
           </kbd>
         </div>
-        <div className="space-y-1 text-(--color-inverse-foreground-default)/70">
+        <div className="space-y-1 text-(--color-foreground-inverse)/70">
           <div>import React from &apos;react&apos;;</div>
           <div>import {"{ useState }"} from &apos;react&apos;;</div>
           <div></div>

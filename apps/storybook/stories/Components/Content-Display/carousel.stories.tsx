@@ -95,22 +95,22 @@ export const ProductCarousel: Story = {
           {
             name: "Product 1",
             price: "$99",
-            color: "bg-(--color-background-subtle)",
+            color: "bg-(--color-background-muted)",
           },
           {
             name: "Product 2",
             price: "$149",
-            color: "bg-(--color-background-subtle)",
+            color: "bg-(--color-background-muted)",
           },
           {
             name: "Product 3",
             price: "$199",
-            color: "bg-(--color-background-subtle)",
+            color: "bg-(--color-background-muted)",
           },
           {
             name: "Product 4",
             price: "$79",
-            color: "bg-(--color-background-subtle)",
+            color: "bg-(--color-background-muted)",
           },
         ].map((product, index) => (
           <CarouselItem key={index}>
@@ -315,7 +315,7 @@ export const ImageGallery: Story = {
               <Card>
                 <CardContent className="p-0">
                   <div
-                    className={`aspect-video rounded bg-gradient-to-br from-(--color-background-strong) to-(--color-background-subtle) flex items-center justify-center`}
+                    className={`aspect-video rounded bg-gradient-to-br from-(--color-background-emphasis) to-(--color-background-muted) flex items-center justify-center`}
                   >
                     <span className="text-lg text-(--color-foreground-faint)">
                       Image {index + 1}

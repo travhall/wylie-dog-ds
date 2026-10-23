@@ -60,7 +60,7 @@ export function SectionSubnav({
               style={
                 active === item.id
                   ? {
-                      background: "var(--color-background-subtle)",
+                      background: "var(--color-background-muted)",
                       color: "var(--color-foreground-default)",
                     }
                   : undefined

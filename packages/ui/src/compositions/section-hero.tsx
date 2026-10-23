@@ -11,7 +11,7 @@ export const sectionHeroVariants = cva(
       variant: {
         default: "bg-(--color-background-default)",
         gradient:
-          "bg-gradient-to-br from-(--color-primary-background-default)/10 via-(--color-background-default) to-(--color-primary-background-subtle)/10",
+          "bg-gradient-to-br from-(--color-background-primary)/10 via-(--color-background-default) to-(--color-background-primary-muted)/10",
         centered: "bg-(--color-background-default) text-center",
       },
     },

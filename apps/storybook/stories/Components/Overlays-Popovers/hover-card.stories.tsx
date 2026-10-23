@@ -112,7 +112,7 @@ export const UserProfile: Story = {
             <HoverCardContent className="w-80">
               <div className="flex space-x-4">
                 <Avatar>
-                  <div className="bg-(--color-primary-background-default) text-(--color-primary-foreground-default) flex items-center justify-center w-full h-full text-sm font-bold">
+                  <div className="bg-(--color-background-primary) text-(--color-foreground-primary) flex items-center justify-center w-full h-full text-sm font-bold">
                     SC
                   </div>
                 </Avatar>
@@ -156,7 +156,7 @@ export const UserProfile: Story = {
             <HoverCardContent className="w-80">
               <div className="flex space-x-4">
                 <Avatar>
-                  <div className="bg-(--color-primary-background-default) text-(--color-primary-foreground-default) flex items-center justify-center w-full h-full text-sm font-bold">
+                  <div className="bg-(--color-background-primary) text-(--color-foreground-primary) flex items-center justify-center w-full h-full text-sm font-bold">
                     AR
                   </div>
                 </Avatar>
@@ -375,7 +375,7 @@ export const Documentation: Story = {
           The{" "}
           <HoverCard>
             <HoverCardTrigger asChild>
-              <code className="px-1 py-0.5 bg-(--color-background-subtle) rounded text-sm cursor-help">
+              <code className="px-1 py-0.5 bg-(--color-background-muted) rounded text-sm cursor-help">
                 useState
               </code>
             </HoverCardTrigger>
@@ -385,7 +385,7 @@ export const Documentation: Story = {
                 <p className="text-sm">
                   A Hook that lets you add state to functional components.
                 </p>
-                <div className="text-xs bg-(--color-background-subtle) p-2 rounded">
+                <div className="text-xs bg-(--color-background-muted) p-2 rounded">
                   <code>const [state, setState] = useState(initialState)</code>
                 </div>
                 <p className="text-xs text-(--color-foreground-faint)">
@@ -401,7 +401,7 @@ export const Documentation: Story = {
           You can also use{" "}
           <HoverCard>
             <HoverCardTrigger asChild>
-              <code className="px-1 py-0.5 bg-(--color-background-subtle) rounded text-sm cursor-help">
+              <code className="px-1 py-0.5 bg-(--color-background-muted) rounded text-sm cursor-help">
                 useEffect
               </code>
             </HoverCardTrigger>
@@ -412,7 +412,7 @@ export const Documentation: Story = {
                   A Hook that lets you perform side effects in functional
                   components.
                 </p>
-                <div className="text-xs bg-(--color-background-subtle) p-2 rounded">
+                <div className="text-xs bg-(--color-background-muted) p-2 rounded">
                   <code>useEffect(effect, dependencies?)</code>
                 </div>
                 <p className="text-xs text-(--color-foreground-faint)">
@@ -429,7 +429,7 @@ export const Documentation: Story = {
           For complex state logic, consider{" "}
           <HoverCard>
             <HoverCardTrigger asChild>
-              <code className="px-1 py-0.5 bg-(--color-background-subtle) rounded text-sm cursor-help">
+              <code className="px-1 py-0.5 bg-(--color-background-muted) rounded text-sm cursor-help">
                 useReducer
               </code>
             </HoverCardTrigger>
@@ -440,7 +440,7 @@ export const Documentation: Story = {
                   A Hook that is usually preferable to useState when you have
                   complex state logic.
                 </p>
-                <div className="text-xs bg-(--color-background-subtle) p-2 rounded">
+                <div className="text-xs bg-(--color-background-muted) p-2 rounded">
                   <code>
                     const [state, dispatch] = useReducer(reducer, initialState)
                   </code>
@@ -576,7 +576,7 @@ export const WithInteractions: Story = {
         <HoverCardContent className="w-80">
           <div className="flex justify-between space-x-4">
             <Avatar>
-              <div className="bg-(--color-primary-background-default) text-(--color-primary-foreground-default) flex items-center justify-center w-full h-full text-sm font-bold">
+              <div className="bg-(--color-background-primary) text-(--color-foreground-primary) flex items-center justify-center w-full h-full text-sm font-bold">
                 TC
               </div>
             </Avatar>

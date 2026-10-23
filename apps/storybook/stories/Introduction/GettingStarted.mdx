@@ -113,7 +113,7 @@ Components use design tokens automatically — you get theming and dark mode sup
 
 ```tsx
 // Reference semantic tokens via CSS variables
-<div style={{ backgroundColor: "var(--color-background-subtle)" }}>
+<div style={{ backgroundColor: "var(--color-background-muted)" }}>
   Styled with a semantic background token
 </div>
 ```
@@ -122,7 +122,7 @@ If your project uses Tailwind CSS v4, you can use the parenthesized variable syn
 
 ```tsx
 // Tailwind v4 CSS variable syntax
-<div className="bg-(--color-background-subtle) text-(--color-foreground-default)">
+<div className="bg-(--color-background-muted) text-(--color-foreground-default)">
   Styled with tokens through Tailwind
 </div>
 ```

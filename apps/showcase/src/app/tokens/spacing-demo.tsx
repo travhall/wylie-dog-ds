@@ -98,7 +98,7 @@ export function SpacingDemo() {
             14 active · 3 invited
           </p>
         </div>
-        <div className="flex items-center gap-1 rounded-md border border-(--color-border-default) bg-(--color-background-subtle) p-0.5">
+        <div className="flex items-center gap-1 rounded-md border border-(--color-border-default) bg-(--color-background-muted) p-0.5">
           {densities.map((opt, i) => (
             <Button
               key={opt.label}
@@ -134,8 +134,8 @@ export function SpacingDemo() {
               width: d.avatar,
               height: d.avatar,
               background:
-                "color-mix(in oklch, var(--color-primary-background-default) 15%, transparent)",
-              color: "var(--color-primary-foreground-subtle)",
+                "color-mix(in oklch, var(--color-background-primary) 15%, transparent)",
+              color: "var(--color-foreground-primary-muted)",
             }}
           >
             {m.initials}
@@ -159,15 +159,15 @@ export function SpacingDemo() {
             style={{
               background:
                 m.status === "active"
-                  ? "color-mix(in oklch, var(--color-success-foreground-subtle) 18%, transparent)"
+                  ? "color-mix(in oklch, var(--color-foreground-success-muted) 18%, transparent)"
                   : m.status === "invited"
-                    ? "color-mix(in oklch, var(--color-primary-background-default) 12%, transparent)"
+                    ? "color-mix(in oklch, var(--color-background-primary) 12%, transparent)"
                     : "color-mix(in oklch, var(--color-border-default) 70%, transparent)",
               color:
                 m.status === "active"
-                  ? "var(--color-success-foreground-subtle)"
+                  ? "var(--color-foreground-success-muted)"
                   : m.status === "invited"
-                    ? "var(--color-primary-background-default)"
+                    ? "var(--color-background-primary)"
                     : "var(--color-foreground-faint)",
             }}
           >
@@ -177,7 +177,7 @@ export function SpacingDemo() {
       ))}
 
       {/* Token readout footer */}
-      <div className="border-t border-(--color-border-default) bg-(--color-background-subtle) px-6 py-3 flex flex-wrap items-center gap-5 font-mono text-[10px] text-(--color-foreground-faint)">
+      <div className="border-t border-(--color-border-default) bg-(--color-background-muted) px-6 py-3 flex flex-wrap items-center gap-5 font-mono text-[10px] text-(--color-foreground-faint)">
         <span>
           <span className="text-(--color-foreground-muted)">
             {d.rowYToken}:

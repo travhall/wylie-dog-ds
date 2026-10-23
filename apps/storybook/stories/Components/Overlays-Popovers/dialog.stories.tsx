@@ -502,7 +502,7 @@ export const SizeVariants: Story = {
               <div className="py-4">
                 <p className="text-sm text-(--color-foreground-faint)">
                   This dialog uses{" "}
-                  <code className="font-mono bg-(--color-background-subtle) px-1 rounded">
+                  <code className="font-mono bg-(--color-background-muted) px-1 rounded">
                     size=&quot;{size}&quot;
                   </code>
                   . The content area adjusts to the maximum width defined by

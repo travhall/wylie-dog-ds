@@ -36,7 +36,7 @@ export default function ArchitecturePage() {
               <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-[4.25rem] font-semibold tracking-tight leading-[0.98]">
                 The monorepo that{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   ships everything
                 </span>
@@ -131,7 +131,7 @@ export default function ArchitecturePage() {
                     >
                       <style>{`
                         .edge-line {
-                          stroke: color-mix(in oklch, var(--color-primary-background-default) 55%, transparent);
+                          stroke: color-mix(in oklch, var(--color-background-primary) 55%, transparent);
                           stroke-width: 1.4; fill: none;
                           stroke-dasharray: 4 4;
                           animation: edge-flow 3s linear infinite;
@@ -157,15 +157,15 @@ export default function ArchitecturePage() {
                       />
                       <polygon
                         points="276,232 284,232 280,224"
-                        fill="var(--color-primary-background-default)"
+                        fill="var(--color-background-primary)"
                       />
                       <polygon
                         points="116,90 124,90 120,82"
-                        fill="var(--color-primary-background-default)"
+                        fill="var(--color-background-primary)"
                       />
                       <polygon
                         points="436,90 444,90 440,82"
-                        fill="var(--color-primary-background-default)"
+                        fill="var(--color-background-primary)"
                       />
                     </svg>
 
@@ -235,7 +235,7 @@ export default function ArchitecturePage() {
                         <div
                           className="rounded-xl border-2 p-3.5 shadow-sm"
                           style={{
-                            borderColor: "var(--color-primary-border-default)",
+                            borderColor: "var(--color-border-primary)",
                             background: "var(--color-background-default)",
                           }}
                         >
@@ -243,14 +243,13 @@ export default function ArchitecturePage() {
                             <span
                               className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider"
                               style={{
-                                color: "var(--color-primary-foreground-subtle)",
+                                color: "var(--color-foreground-primary-muted)",
                               }}
                             >
                               <span
                                 className="h-1.5 w-1.5 rounded-full"
                                 style={{
-                                  background:
-                                    "var(--color-primary-background-default)",
+                                  background: "var(--color-background-primary)",
                                 }}
                               />
                               Package · components
@@ -279,8 +278,7 @@ export default function ArchitecturePage() {
                               <span
                                 className="h-1.5 w-1.5 rounded-full"
                                 style={{
-                                  background:
-                                    "var(--color-primary-background-default)",
+                                  background: "var(--color-background-primary)",
                                 }}
                               />
                               Package · tokens
@@ -322,7 +320,7 @@ export default function ArchitecturePage() {
                         className="inline-block h-px w-6"
                         style={{
                           borderTop:
-                            "1.4px dashed var(--color-primary-background-default)",
+                            "1.4px dashed var(--color-background-primary)",
                         }}
                       />
                       workspace dep
@@ -340,7 +338,7 @@ export default function ArchitecturePage() {
                       <span
                         className="h-1.5 w-1.5 rounded-full"
                         style={{
-                          background: "var(--color-success-foreground-subtle)",
+                          background: "var(--color-foreground-success-muted)",
                         }}
                       />
                       <span className="text-(--color-foreground-muted)">
@@ -484,11 +482,11 @@ export default function ArchitecturePage() {
                   <p className="font-mono text-[10px] uppercase tracking-wider text-(--color-foreground-faint) mb-2">
                     pnpm-workspace.yaml
                   </p>
-                  <div className="rounded-md border border-(--color-border-default) bg-(--color-background-subtle) p-3 font-mono text-[11px] leading-relaxed">
+                  <div className="rounded-md border border-(--color-border-default) bg-(--color-background-muted) p-3 font-mono text-[11px] leading-relaxed">
                     <div className="text-(--color-foreground-muted)">
                       <span
                         style={{
-                          color: "var(--color-primary-foreground-subtle)",
+                          color: "var(--color-foreground-primary-muted)",
                         }}
                       >
                         packages
@@ -629,7 +627,7 @@ export default function ArchitecturePage() {
               ].map((card) => (
                 <article
                   key={card.name}
-                  className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 flex flex-col hover:border-(--color-border-default)/60 hover:bg-(--color-background-subtle) transition-all"
+                  className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5 flex flex-col hover:border-(--color-border-default)/60 hover:bg-(--color-background-muted) transition-all"
                 >
                   <header className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-2">
@@ -638,10 +636,9 @@ export default function ArchitecturePage() {
                         style={{
                           background:
                             card.iconBg ??
-                            "color-mix(in oklch, var(--color-primary-background-default) 18%, transparent)",
+                            "color-mix(in oklch, var(--color-background-primary) 18%, transparent)",
                           color:
-                            card.iconColor ??
-                            "var(--color-primary-background-default)",
+                            card.iconColor ?? "var(--color-background-primary)",
                         }}
                       >
                         {card.icon}
@@ -680,7 +677,7 @@ export default function ArchitecturePage() {
                       <span
                         className="h-1.5 w-1.5 rounded-full"
                         style={{
-                          background: "var(--color-success-foreground-subtle)",
+                          background: "var(--color-foreground-success-muted)",
                         }}
                       />
                     )}
@@ -694,7 +691,7 @@ export default function ArchitecturePage() {
       </section>
 
       {/* ── 02 · TOKEN PIPELINE ── */}
-      <section className="border-b border-(--color-border-default) bg-(--color-background-subtle)">
+      <section className="border-b border-(--color-border-default) bg-(--color-background-muted)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-10 mb-10">
             <div className="lg:col-span-5">
@@ -704,7 +701,7 @@ export default function ArchitecturePage() {
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-(--color-foreground-default)">
                 From JSON to{" "}
                 <span
-                  style={{ color: "var(--color-primary-foreground-subtle)" }}
+                  style={{ color: "var(--color-foreground-primary-muted)" }}
                 >
                   CSS variables
                 </span>
@@ -754,7 +751,7 @@ export default function ArchitecturePage() {
                         {line.key && (
                           <span
                             style={{
-                              color: "var(--color-primary-foreground-subtle)",
+                              color: "var(--color-foreground-primary-muted)",
                             }}
                           >
                             &quot;{line.key}&quot;
@@ -784,8 +781,8 @@ export default function ArchitecturePage() {
                           className="grid h-4 w-4 place-items-center rounded text-[10px]"
                           style={{
                             background:
-                              "color-mix(in oklch, var(--color-primary-background-default) 18%, transparent)",
-                            color: "var(--color-primary-foreground-subtle)",
+                              "color-mix(in oklch, var(--color-background-primary) 18%, transparent)",
+                            color: "var(--color-foreground-primary-muted)",
                           }}
                         >
                           {i + 1}
@@ -799,7 +796,7 @@ export default function ArchitecturePage() {
                       <span
                         className="h-1.5 w-1.5 rounded-full"
                         style={{
-                          background: "var(--color-success-foreground-subtle)",
+                          background: "var(--color-foreground-success-muted)",
                         }}
                       />
                       <span className="text-(--color-foreground-muted)">
@@ -822,7 +819,7 @@ export default function ArchitecturePage() {
                     <div>
                       <span
                         style={{
-                          color: "var(--color-primary-foreground-subtle)",
+                          color: "var(--color-foreground-primary-muted)",
                         }}
                       >
                         --color-blue-600
@@ -837,16 +834,16 @@ export default function ArchitecturePage() {
                     <div>
                       <span
                         style={{
-                          color: "var(--color-primary-foreground-subtle)",
+                          color: "var(--color-foreground-primary-muted)",
                         }}
                       >
-                        --color-primary-background-default
+                        --color-background-primary
                       </span>
                       <span className="text-(--color-foreground-muted)">
                         :{" "}
                         {
-                          manifest.semantics.primary[
-                            "color-primary-background-default"
+                          manifest.semantics.background[
+                            "color-background-primary"
                           ].value
                         }
                         ;
@@ -858,7 +855,7 @@ export default function ArchitecturePage() {
                     <div>
                       <span
                         style={{
-                          color: "var(--color-primary-foreground-subtle)",
+                          color: "var(--color-foreground-primary-muted)",
                         }}
                       >
                         --color-button-primary-background
@@ -893,7 +890,7 @@ export default function ArchitecturePage() {
                       <div
                         className="pl-6"
                         style={{
-                          color: "var(--color-primary-foreground-subtle)",
+                          color: "var(--color-foreground-primary-muted)",
                         }}
                       >
                         bg-(--color-button-primary-background)
@@ -901,10 +898,10 @@ export default function ArchitecturePage() {
                       <div
                         className="pl-6"
                         style={{
-                          color: "var(--color-primary-foreground-subtle)",
+                          color: "var(--color-foreground-primary-muted)",
                         }}
                       >
-                        text-(--color-inverse-foreground-default)
+                        text-(--color-foreground-inverse)
                       </div>
                       <div className="pl-6 text-(--color-foreground-muted)">
                         px-4 h-10
@@ -970,7 +967,7 @@ export default function ArchitecturePage() {
               ],
               [
                 "Tier 2 · semantic",
-                "Role aliases. --color-primary-background-default maps to --color-blue-600 in both light and dark, and re-resolves under any future theme.",
+                "Role aliases. --color-background-primary maps to --color-blue-600 in both light and dark, and re-resolves under any future theme.",
               ],
               [
                 "Tier 3 · component",
@@ -1175,7 +1172,7 @@ export default function ArchitecturePage() {
                     className="absolute left-3.75 top-3 bottom-3 w-px"
                     style={{
                       background:
-                        "linear-gradient(to bottom, color-mix(in oklch, var(--color-primary-background-default) 70%, transparent), color-mix(in oklch, var(--color-primary-background-default) 70%, transparent) 70%, var(--color-border-default))",
+                        "linear-gradient(to bottom, color-mix(in oklch, var(--color-background-primary) 70%, transparent), color-mix(in oklch, var(--color-background-primary) 70%, transparent) 70%, var(--color-border-default))",
                     }}
                   />
                   {[
@@ -1208,8 +1205,8 @@ export default function ArchitecturePage() {
                       <span
                         className="absolute left-0 top-0 grid h-8 w-8 place-items-center rounded-full font-mono text-xs font-semibold"
                         style={{
-                          background: "var(--color-primary-background-default)",
-                          color: "var(--color-inverse-foreground-default)",
+                          background: "var(--color-background-primary)",
+                          color: "var(--color-foreground-inverse)",
                         }}
                       >
                         {step.n}
@@ -1235,7 +1232,7 @@ export default function ArchitecturePage() {
       </section>
 
       {/* ── 04 · COMPONENT LAYER ── */}
-      <section className="border-b border-(--color-border-default) bg-(--color-background-subtle)">
+      <section className="border-b border-(--color-border-default) bg-(--color-background-muted)">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="grid lg:grid-cols-12 gap-10 mb-12">
             <div className="lg:col-span-5">
@@ -1397,8 +1394,8 @@ export default function ArchitecturePage() {
                       :
                     </span>{" "}
                     <span style={{ color: "var(--color-green-500)" }}>
-                      &quot;bg-(--color-primary-background-default)
-                      text-(--color-inverse-foreground-default)&quot;
+                      &quot;bg-(--color-background-primary)
+                      text-(--color-foreground-inverse)&quot;
                     </span>
                     <span style={{ color: "var(--color-polar-night-50)" }}>
                       ,
@@ -1561,7 +1558,7 @@ export default function ArchitecturePage() {
                 {
                   n: "④",
                   title: "Base classes: component + token",
-                  desc: "Base styles use semantic token variables — bg-(--color-primary-background-default) — so every component automatically respects the active theme.",
+                  desc: "Base styles use semantic token variables — bg-(--color-background-primary) — so every component automatically respects the active theme.",
                 },
                 {
                   n: "⑤",
@@ -1575,7 +1572,7 @@ export default function ArchitecturePage() {
                 >
                   <span
                     className="shrink-0 font-mono text-sm font-semibold"
-                    style={{ color: "var(--color-primary-foreground-subtle)" }}
+                    style={{ color: "var(--color-foreground-primary-muted)" }}
                   >
                     {layer.n}
                   </span>

@@ -529,7 +529,7 @@ export const ActionMenu: Story = {
               </Button>
               <Button
                 variant="ghost"
-                className="w-full justify-start px-3 py-2 h-auto text-sm text-(--color-danger-foreground-subtle) hover:text-(--color-danger-foreground-subtle) hover:bg-(--color-danger-background-subtle)"
+                className="w-full justify-start px-3 py-2 h-auto text-sm text-(--color-foreground-danger-muted) hover:text-(--color-foreground-danger-muted) hover:bg-(--color-background-danger-muted)"
               >
                 Delete
               </Button>

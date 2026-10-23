@@ -210,13 +210,13 @@ export const MediaControls: Story = {
 
     return (
       <div className="space-y-4">
-        <div className="flex items-center gap-2 p-4 bg-(--color-inverse-background-default) text-(--color-inverse-foreground-default) rounded-lg">
+        <div className="flex items-center gap-2 p-4 bg-(--color-background-inverse) text-(--color-foreground-inverse) rounded-lg">
           <span className="text-sm">Audio Controls:</span>
           <Toggle
             pressed={muted}
             onPressedChange={setMuted}
             aria-label="Toggle speaker mute"
-            className="text-(--color-inverse-foreground-default) data-[state=on]:bg-(--color-danger-background-default) data-[state=on]:text-(--color-danger-foreground-default)"
+            className="text-(--color-foreground-inverse) data-[state=on]:bg-(--color-background-danger) data-[state=on]:text-(--color-foreground-danger)"
           >
             {muted ? (
               <VolumeXIcon className="h-4 w-4" />
@@ -228,7 +228,7 @@ export const MediaControls: Story = {
             pressed={micMuted}
             onPressedChange={setMicMuted}
             aria-label="Toggle microphone mute"
-            className="text-(--color-inverse-foreground-default) data-[state=on]:bg-(--color-danger-background-default) data-[state=on]:text-(--color-danger-foreground-default)"
+            className="text-(--color-foreground-inverse) data-[state=on]:bg-(--color-background-danger) data-[state=on]:text-(--color-foreground-danger)"
           >
             {micMuted ? (
               <MicOffIcon className="h-4 w-4" />

@@ -52,14 +52,14 @@ export const Default: Story = {
   args: {
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Heart className="h-6 w-6 text-(--color-primary-foreground-subtle)" />
+        <Heart className="h-6 w-6 text-(--color-foreground-primary-muted)" />
         <span className="text-xl font-bold">Wylie Dog</span>
       </a>
     ),
     navigation: navigation,
   },
   render: (args) => (
-    <div className="h-100 bg-(--color-background-subtle)/30">
+    <div className="h-100 bg-(--color-background-muted)/30">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">Page Content Below Header</h1>
@@ -76,14 +76,14 @@ export const Transparent: Story = {
     variant: "transparent",
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Heart className="h-6 w-6 text-(--color-primary-foreground-subtle)" />
+        <Heart className="h-6 w-6 text-(--color-foreground-primary-muted)" />
         <span className="text-xl font-bold">Wylie Dog</span>
       </a>
     ),
     navigation: navigation,
   },
   render: (args) => (
-    <div className="h-100 bg-linear-to-br from-(--color-primary-background-default)/20 to-(--color-primary-background-default)/10">
+    <div className="h-100 bg-linear-to-br from-(--color-background-primary)/20 to-(--color-background-primary)/10">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">
@@ -109,7 +109,7 @@ export const WithCustomActions: Story = {
   args: {
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Menu className="h-6 w-6 text-(--color-primary-foreground-subtle)" />
+        <Menu className="h-6 w-6 text-(--color-foreground-primary-muted)" />
         <span className="text-xl font-bold">Custom Logo</span>
       </a>
     ),
@@ -128,7 +128,7 @@ export const WithCustomActions: Story = {
     ),
   },
   render: (args) => (
-    <div className="h-100 bg-(--color-background-subtle)/30">
+    <div className="h-100 bg-(--color-background-muted)/30">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">Custom Actions Example</h1>
@@ -152,7 +152,7 @@ export const MinimalNavigation: Story = {
   args: {
     logo: (
       <a href="/" className="flex items-center space-x-2">
-        <Heart className="h-6 w-6 text-(--color-primary-foreground-subtle)" />
+        <Heart className="h-6 w-6 text-(--color-foreground-primary-muted)" />
         <span className="text-xl font-bold">Minimal</span>
       </a>
     ),
@@ -162,7 +162,7 @@ export const MinimalNavigation: Story = {
     ],
   },
   render: (args) => (
-    <div className="h-75 bg-(--color-background-subtle)/30">
+    <div className="h-75 bg-(--color-background-muted)/30">
       <SiteHeader {...args} />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold">Minimal Navigation</h1>
