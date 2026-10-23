@@ -300,7 +300,7 @@ describe("Textarea", () => {
       const textarea = screen.getByRole("textbox", { name: "Test" });
       expect(textarea).toHaveClass("disabled:cursor-not-allowed");
       expect(textarea).toHaveClass(
-        "disabled:opacity-(--textarea-disabled-opacity)"
+        "disabled:bg-(--color-textarea-background-disabled)"
       );
     });
 

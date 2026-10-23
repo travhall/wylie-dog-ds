@@ -58,7 +58,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(
       className={cn(
         "inline-flex shrink-0 items-center justify-center rounded-(--space-toast-action-radius) border bg-transparent ring-offset-(--color-toast-action-ring-offset) transition-colors hover:bg-(--color-toast-action-hover)",
         focusRingClasses,
-        "disabled:pointer-events-none disabled:opacity-(--toast-action-disabled-opacity)",
+        "disabled:pointer-events-none disabled:text-(--color-toast-action-text-disabled) disabled:border-(--color-toast-action-border-disabled)",
         "h-(--space-toast-action-height)",
         "px-(--space-toast-action-padding-x)",
         "text-(length:--font-size-toast-action-font-size)",

@@ -48,7 +48,7 @@ export const DropdownMenuItem = React.forwardRef<
     className={cn(
       "relative flex cursor-default select-none items-center rounded-(--space-dropdown-menu-item-radius) px-(--space-dropdown-menu-item-padding-x) py-(--space-dropdown-menu-item-padding-y) text-(length:--font-size-dropdown-menu-item-font-size) outline-none transition-colors",
       "focus:bg-(--color-dropdown-menu-item-background-hover) focus:text-(--color-dropdown-menu-item-text-hover)",
-      "data-disabled:pointer-events-none data-disabled:opacity-(--dropdown-menu-item-disabled-opacity)",
+      "data-disabled:pointer-events-none data-disabled:text-(--color-dropdown-menu-item-text-disabled)",
       inset && "pl-(--space-dropdown-menu-item-inset)",
       className
     )}
@@ -67,7 +67,7 @@ export const DropdownMenuCheckboxItem = React.forwardRef<
     className={cn(
       "relative flex cursor-default select-none items-center rounded-(--space-dropdown-menu-item-radius) py-(--space-dropdown-menu-item-padding-y) pl-(--space-dropdown-menu-item-inset) pr-(--space-dropdown-menu-item-padding-x) text-(length:--font-size-dropdown-menu-item-font-size) outline-none transition-colors",
       "focus:bg-(--color-dropdown-menu-item-background-hover) focus:text-(--color-dropdown-menu-item-text-hover)",
-      "data-disabled:pointer-events-none data-disabled:opacity-(--dropdown-menu-item-disabled-opacity)",
+      "data-disabled:pointer-events-none data-disabled:text-(--color-dropdown-menu-item-text-disabled)",
       className
     )}
     checked={checked}
@@ -101,7 +101,7 @@ export const DropdownMenuRadioItem = React.forwardRef<
     className={cn(
       "relative flex cursor-default select-none items-center rounded-(--space-dropdown-menu-item-radius) py-(--space-dropdown-menu-item-padding-y) pl-(--space-dropdown-menu-item-inset) pr-(--space-dropdown-menu-item-padding-x) text-(length:--font-size-dropdown-menu-item-font-size) outline-none transition-colors",
       "focus:bg-(--color-dropdown-menu-item-background-hover) focus:text-(--color-dropdown-menu-item-text-hover)",
-      "data-disabled:pointer-events-none data-disabled:opacity-(--dropdown-menu-item-disabled-opacity)",
+      "data-disabled:pointer-events-none data-disabled:text-(--color-dropdown-menu-item-text-disabled)",
       className
     )}
     {...props}
@@ -164,7 +164,7 @@ export const DropdownMenuSubTrigger = React.forwardRef<
       "relative flex cursor-default select-none items-center rounded-(--space-dropdown-menu-item-radius) px-(--space-dropdown-menu-item-padding-x) py-(--space-dropdown-menu-item-padding-y) text-(length:--font-size-dropdown-menu-item-font-size) outline-none transition-colors",
       "focus:bg-(--color-dropdown-menu-item-background-hover) focus:text-(--color-dropdown-menu-item-text-hover)",
       "data-[state=open]:bg-(--color-dropdown-menu-item-background-hover)",
-      "data-disabled:pointer-events-none data-disabled:opacity-(--dropdown-menu-item-disabled-opacity)",
+      "data-disabled:pointer-events-none data-disabled:text-(--color-dropdown-menu-item-text-disabled)",
       inset && "pl-(--space-dropdown-menu-item-inset)",
       className
     )}

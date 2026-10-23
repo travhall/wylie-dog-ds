@@ -26,7 +26,7 @@ export const cardVariants = cva(
           focusRingClasses,
           "active:bg-(--color-card-background-active)",
           "disabled:bg-(--color-card-background-disabled)",
-          "disabled:cursor-not-allowed disabled:opacity-(--card-disabled-opacity)"
+          "disabled:cursor-not-allowed disabled:border-(--color-card-border-disabled)"
         ),
         false: "",
       },

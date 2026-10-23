@@ -264,7 +264,9 @@ describe("Badge", () => {
     it("should apply disabled state classes when interactive", () => {
       render(<Badge interactive>Badge</Badge>);
       const badge = screen.getByText("Badge");
-      expect(badge).toHaveClass("disabled:opacity-(--badge-disabled-opacity)");
+      expect(badge).toHaveClass(
+        "disabled:text-(--color-badge-default-text-disabled)"
+      );
       expect(badge).toHaveClass("disabled:cursor-not-allowed");
     });
 

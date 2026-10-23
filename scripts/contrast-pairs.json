@@ -914,6 +914,118 @@
     {
       "token": "pagination.ellipsis-text",
       "reason": "A decorative ellipsis (aria-hidden); the page links around it carry the meaning."
+    },
+    {
+      "token": "button.primary.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "button.secondary.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "button.destructive.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "button.ghost.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "button.link-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "badge.default.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "badge.secondary.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "badge.success.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "badge.warning.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "badge.destructive.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "textarea.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "select.trigger.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "select.item.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "checkbox.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "toggle.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "tabs.trigger.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "pagination.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "navigation.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "dropdown-menu.item.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "contextmenu.item-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "menubar.item-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "command.item-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "command.input-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "carousel.nav-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "calendar.nav-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "toast.action-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "site-header.nav-link.text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "form.label-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
     }
   ]
 }

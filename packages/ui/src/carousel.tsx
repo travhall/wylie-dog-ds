@@ -52,7 +52,7 @@ const CarouselPrevious = React.forwardRef<
       "absolute h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -left-(--space-carousel-button-offset) top-1/2 -translate-y-1/2",
       "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
       focusRingClasses,
-      "disabled:pointer-events-none disabled:opacity-(--carousel-nav-button-disabled-opacity)",
+      "disabled:pointer-events-none disabled:bg-(--color-carousel-nav-background-disabled) disabled:text-(--color-carousel-nav-text-disabled) disabled:border-(--color-carousel-nav-border-disabled)",
       className
     )}
     {...props}
@@ -73,7 +73,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
         "absolute h-(--space-carousel-button-size) w-(--space-carousel-button-size) rounded-(--space-carousel-button-rounded-full) border border-(--color-carousel-nav-border) bg-(--color-carousel-nav-background) -right-(--space-carousel-button-offset) top-1/2 -translate-y-1/2",
         "hover:bg-(--color-carousel-nav-hover) hover:text-(--color-carousel-nav-text-hover)",
         focusRingClasses,
-        "disabled:pointer-events-none disabled:opacity-(--carousel-nav-button-disabled-opacity)",
+        "disabled:pointer-events-none disabled:bg-(--color-carousel-nav-background-disabled) disabled:text-(--color-carousel-nav-text-disabled) disabled:border-(--color-carousel-nav-border-disabled)",
         className
       )}
       {...props}

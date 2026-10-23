@@ -3825,16 +3825,148 @@
         "variable": "var(--color-badge-outline-background-disabled)",
         "description": ""
       },
-      "badge-disabled-opacity": {
-        "name": "badgeDisabledOpacity",
+      "badge-default-text-disabled": {
+        "name": "badgeDefaultTextDisabled",
         "path": [
           "badge",
-          "disabled",
-          "opacity"
+          "default",
+          "text-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--badge-disabled-opacity)",
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-default-text-disabled)",
+        "description": ""
+      },
+      "badge-default-border-disabled": {
+        "name": "badgeDefaultBorderDisabled",
+        "path": [
+          "badge",
+          "default",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-default-border-disabled)",
+        "description": ""
+      },
+      "badge-secondary-text-disabled": {
+        "name": "badgeSecondaryTextDisabled",
+        "path": [
+          "badge",
+          "secondary",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-text-disabled)",
+        "description": ""
+      },
+      "badge-secondary-border-disabled": {
+        "name": "badgeSecondaryBorderDisabled",
+        "path": [
+          "badge",
+          "secondary",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-secondary-border-disabled)",
+        "description": ""
+      },
+      "badge-success-text-disabled": {
+        "name": "badgeSuccessTextDisabled",
+        "path": [
+          "badge",
+          "success",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-success-text-disabled)",
+        "description": ""
+      },
+      "badge-success-border-disabled": {
+        "name": "badgeSuccessBorderDisabled",
+        "path": [
+          "badge",
+          "success",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-success-border-disabled)",
+        "description": ""
+      },
+      "badge-warning-text-disabled": {
+        "name": "badgeWarningTextDisabled",
+        "path": [
+          "badge",
+          "warning",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-text-disabled)",
+        "description": ""
+      },
+      "badge-warning-border-disabled": {
+        "name": "badgeWarningBorderDisabled",
+        "path": [
+          "badge",
+          "warning",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-warning-border-disabled)",
+        "description": ""
+      },
+      "badge-destructive-text-disabled": {
+        "name": "badgeDestructiveTextDisabled",
+        "path": [
+          "badge",
+          "destructive",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-text-disabled)",
+        "description": ""
+      },
+      "badge-destructive-border-disabled": {
+        "name": "badgeDestructiveBorderDisabled",
+        "path": [
+          "badge",
+          "destructive",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-destructive-border-disabled)",
+        "description": ""
+      },
+      "badge-outline-text-disabled": {
+        "name": "badgeOutlineTextDisabled",
+        "path": [
+          "badge",
+          "outline",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-text-disabled)",
+        "description": ""
+      },
+      "badge-outline-border-disabled": {
+        "name": "badgeOutlineBorderDisabled",
+        "path": [
+          "badge",
+          "outline",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-badge-outline-border-disabled)",
         "description": ""
       }
     },
@@ -4277,16 +4409,159 @@
         "variable": "var(--color-button-link-text)",
         "description": ""
       },
-      "button-disabled-opacity": {
-        "name": "buttonDisabledOpacity",
+      "button-primary-background-disabled": {
+        "name": "buttonPrimaryBackgroundDisabled",
         "path": [
           "button",
-          "disabled",
-          "opacity"
+          "primary",
+          "background-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--button-disabled-opacity)",
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-primary-background-disabled)",
+        "description": ""
+      },
+      "button-primary-text-disabled": {
+        "name": "buttonPrimaryTextDisabled",
+        "path": [
+          "button",
+          "primary",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-primary-text-disabled)",
+        "description": ""
+      },
+      "button-primary-border-disabled": {
+        "name": "buttonPrimaryBorderDisabled",
+        "path": [
+          "button",
+          "primary",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-primary-border-disabled)",
+        "description": ""
+      },
+      "button-secondary-background-disabled": {
+        "name": "buttonSecondaryBackgroundDisabled",
+        "path": [
+          "button",
+          "secondary",
+          "background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-secondary-background-disabled)",
+        "description": ""
+      },
+      "button-secondary-text-disabled": {
+        "name": "buttonSecondaryTextDisabled",
+        "path": [
+          "button",
+          "secondary",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-secondary-text-disabled)",
+        "description": ""
+      },
+      "button-secondary-border-disabled": {
+        "name": "buttonSecondaryBorderDisabled",
+        "path": [
+          "button",
+          "secondary",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-secondary-border-disabled)",
+        "description": ""
+      },
+      "button-destructive-background-disabled": {
+        "name": "buttonDestructiveBackgroundDisabled",
+        "path": [
+          "button",
+          "destructive",
+          "background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-destructive-background-disabled)",
+        "description": ""
+      },
+      "button-destructive-text-disabled": {
+        "name": "buttonDestructiveTextDisabled",
+        "path": [
+          "button",
+          "destructive",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-destructive-text-disabled)",
+        "description": ""
+      },
+      "button-destructive-border-disabled": {
+        "name": "buttonDestructiveBorderDisabled",
+        "path": [
+          "button",
+          "destructive",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-destructive-border-disabled)",
+        "description": ""
+      },
+      "button-outline-text-disabled": {
+        "name": "buttonOutlineTextDisabled",
+        "path": [
+          "button",
+          "outline",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-outline-text-disabled)",
+        "description": ""
+      },
+      "button-outline-border-disabled": {
+        "name": "buttonOutlineBorderDisabled",
+        "path": [
+          "button",
+          "outline",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-button-outline-border-disabled)",
+        "description": ""
+      },
+      "button-ghost-text-disabled": {
+        "name": "buttonGhostTextDisabled",
+        "path": [
+          "button",
+          "ghost",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-ghost-text-disabled)",
+        "description": ""
+      },
+      "button-link-text-disabled": {
+        "name": "buttonLinkTextDisabled",
+        "path": [
+          "button",
+          "link-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-button-link-text-disabled)",
         "description": ""
       }
     },
@@ -4584,16 +4859,15 @@
         "variable": "var(--color-card-background-disabled)",
         "description": ""
       },
-      "card-disabled-opacity": {
-        "name": "cardDisabledOpacity",
+      "card-border-disabled": {
+        "name": "cardBorderDisabled",
         "path": [
           "card",
-          "disabled",
-          "opacity"
+          "border-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--card-disabled-opacity)",
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-card-border-disabled)",
         "description": ""
       }
     },
@@ -5530,19 +5804,6 @@
         "variable": "var(--menubar-label-font-weight)",
         "description": ""
       },
-      "menubar-item-disabled-opacity": {
-        "name": "menubarItemDisabledOpacity",
-        "path": [
-          "menubar",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--menubar-item-disabled-opacity)",
-        "description": ""
-      },
       "menubar-item-indicator-left": {
         "name": "menubarItemIndicatorLeft",
         "path": [
@@ -5564,6 +5825,17 @@
         "value": "0.1em",
         "type": "dimension",
         "variable": "var(--menubar-shortcut-letter-spacing)",
+        "description": ""
+      },
+      "menubar-item-text-disabled": {
+        "name": "menubarItemTextDisabled",
+        "path": [
+          "menubar",
+          "item-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-menubar-item-text-disabled)",
         "description": ""
       }
     },
@@ -5687,6 +5959,17 @@
         "value": "oklch(0.952 0.003 264.48)",
         "type": "color",
         "variable": "var(--color-navigation-background-hover)",
+        "description": ""
+      },
+      "navigation-text-disabled": {
+        "name": "navigationTextDisabled",
+        "path": [
+          "navigation",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-navigation-text-disabled)",
         "description": ""
       }
     },
@@ -5995,32 +6278,6 @@
         "variable": "var(--command-input-icon-opacity)",
         "description": ""
       },
-      "command-input-disabled-opacity": {
-        "name": "commandInputDisabledOpacity",
-        "path": [
-          "command",
-          "input",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--command-input-disabled-opacity)",
-        "description": ""
-      },
-      "command-item-disabled-opacity": {
-        "name": "commandItemDisabledOpacity",
-        "path": [
-          "command",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--command-item-disabled-opacity)",
-        "description": ""
-      },
       "command-group-heading-font-weight": {
         "name": "commandGroupHeadingFontWeight",
         "path": [
@@ -6042,6 +6299,28 @@
         "value": "0.1em",
         "type": "dimension",
         "variable": "var(--command-shortcut-letter-spacing)",
+        "description": ""
+      },
+      "command-item-text-disabled": {
+        "name": "commandItemTextDisabled",
+        "path": [
+          "command",
+          "item-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-command-item-text-disabled)",
+        "description": ""
+      },
+      "command-input-text-disabled": {
+        "name": "commandInputTextDisabled",
+        "path": [
+          "command",
+          "input-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-command-input-text-disabled)",
         "description": ""
       }
     },
@@ -6423,19 +6702,6 @@
         "variable": "var(--tabs-trigger-font-weight)",
         "description": ""
       },
-      "tabs-trigger-disabled-opacity": {
-        "name": "tabsTriggerDisabledOpacity",
-        "path": [
-          "tabs",
-          "trigger",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--tabs-trigger-disabled-opacity)",
-        "description": ""
-      },
       "tabs-trigger-ring-offset": {
         "name": "tabsTriggerRingOffset",
         "path": [
@@ -6458,6 +6724,18 @@
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-tabs-content-ring-offset)",
+        "description": ""
+      },
+      "tabs-trigger-text-disabled": {
+        "name": "tabsTriggerTextDisabled",
+        "path": [
+          "tabs",
+          "trigger",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-tabs-trigger-text-disabled)",
         "description": ""
       }
     },
@@ -6823,19 +7101,6 @@
         "variable": "var(--calendar-day-font-weight)",
         "description": ""
       },
-      "calendar-nav-button-disabled-opacity": {
-        "name": "calendarNavButtonDisabledOpacity",
-        "path": [
-          "calendar",
-          "nav-button",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--calendar-nav-button-disabled-opacity)",
-        "description": ""
-      },
       "calendar-nav-button-ring-offset": {
         "name": "calendarNavButtonRingOffset",
         "path": [
@@ -6846,6 +7111,28 @@
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-calendar-nav-button-ring-offset)",
+        "description": ""
+      },
+      "calendar-nav-text-disabled": {
+        "name": "calendarNavTextDisabled",
+        "path": [
+          "calendar",
+          "nav-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-calendar-nav-text-disabled)",
+        "description": ""
+      },
+      "calendar-nav-border-disabled": {
+        "name": "calendarNavBorderDisabled",
+        "path": [
+          "calendar",
+          "nav-border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-calendar-nav-border-disabled)",
         "description": ""
       }
     },
@@ -7481,19 +7768,6 @@
         "variable": "var(--color-carousel-nav-text-hover)",
         "description": ""
       },
-      "carousel-nav-button-disabled-opacity": {
-        "name": "carouselNavButtonDisabledOpacity",
-        "path": [
-          "carousel",
-          "nav-button",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--carousel-nav-button-disabled-opacity)",
-        "description": ""
-      },
       "carousel-item-spacing": {
         "name": "carouselItemSpacing",
         "path": [
@@ -7561,6 +7835,39 @@
         "value": "9999px",
         "type": "spacing",
         "variable": "var(--carousel-button-rounded-full)",
+        "description": ""
+      },
+      "carousel-nav-text-disabled": {
+        "name": "carouselNavTextDisabled",
+        "path": [
+          "carousel",
+          "nav-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-carousel-nav-text-disabled)",
+        "description": ""
+      },
+      "carousel-nav-border-disabled": {
+        "name": "carouselNavBorderDisabled",
+        "path": [
+          "carousel",
+          "nav-border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-carousel-nav-border-disabled)",
+        "description": ""
+      },
+      "carousel-nav-background-disabled": {
+        "name": "carouselNavBackgroundDisabled",
+        "path": [
+          "carousel",
+          "nav-background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-carousel-nav-background-disabled)",
         "description": ""
       }
     },
@@ -7640,6 +7947,17 @@
         "value": "oklch(0.209 0.01 268.18)",
         "type": "color",
         "variable": "var(--color-contextmenu-text)",
+        "description": ""
+      },
+      "contextmenu-item-text-disabled": {
+        "name": "contextmenuItemTextDisabled",
+        "path": [
+          "contextmenu",
+          "item-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-contextmenu-item-text-disabled)",
         "description": ""
       }
     },
@@ -8035,19 +8353,6 @@
         "variable": "var(--form-label-font-weight)",
         "description": ""
       },
-      "form-label-disabled-opacity": {
-        "name": "formLabelDisabledOpacity",
-        "path": [
-          "form",
-          "label",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.7,
-        "type": "number",
-        "variable": "var(--form-label-disabled-opacity)",
-        "description": ""
-      },
       "form-message-font-weight": {
         "name": "formMessageFontWeight",
         "path": [
@@ -8173,6 +8478,17 @@
         "value": "oklch(0.488 0.19 27.49)",
         "type": "color",
         "variable": "var(--color-form-label-error-text)",
+        "description": ""
+      },
+      "form-label-text-disabled": {
+        "name": "formLabelTextDisabled",
+        "path": [
+          "form",
+          "label-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-form-label-text-disabled)",
         "description": ""
       }
     },
@@ -8444,19 +8760,6 @@
         "variable": "var(--pagination-item-font-weight)",
         "description": ""
       },
-      "pagination-link-disabled-opacity": {
-        "name": "paginationLinkDisabledOpacity",
-        "path": [
-          "pagination",
-          "link",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--pagination-link-disabled-opacity)",
-        "description": ""
-      },
       "pagination-ellipsis-text": {
         "name": "paginationEllipsisText",
         "path": [
@@ -8466,6 +8769,17 @@
         "value": "oklch(0.423 0.007 264.49)",
         "type": "color",
         "variable": "var(--color-pagination-ellipsis-text)",
+        "description": ""
+      },
+      "pagination-text-disabled": {
+        "name": "paginationTextDisabled",
+        "path": [
+          "pagination",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-pagination-text-disabled)",
         "description": ""
       }
     },
@@ -8802,6 +9116,39 @@
         "value": "2px",
         "type": "spacing",
         "variable": "var(--radio-focus-ring-offset)",
+        "description": ""
+      },
+      "radio-background-disabled": {
+        "name": "radioBackgroundDisabled",
+        "path": [
+          "radio",
+          "background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-radio-background-disabled)",
+        "description": ""
+      },
+      "radio-border-disabled": {
+        "name": "radioBorderDisabled",
+        "path": [
+          "radio",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-radio-border-disabled)",
+        "description": ""
+      },
+      "radio-indicator-disabled": {
+        "name": "radioIndicatorDisabled",
+        "path": [
+          "radio",
+          "indicator-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-radio-indicator-disabled)",
         "description": ""
       }
     },
@@ -9181,19 +9528,6 @@
         "variable": "var(--slider-focus-ring-offset)",
         "description": ""
       },
-      "slider-thumb-disabled-opacity": {
-        "name": "sliderThumbDisabledOpacity",
-        "path": [
-          "slider",
-          "thumb",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--slider-thumb-disabled-opacity)",
-        "description": ""
-      },
       "slider-thumb-ring-offset": {
         "name": "sliderThumbRingOffset",
         "path": [
@@ -9203,6 +9537,28 @@
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
         "variable": "var(--color-slider-thumb-ring-offset)",
+        "description": ""
+      },
+      "slider-thumb-background-disabled": {
+        "name": "sliderThumbBackgroundDisabled",
+        "path": [
+          "slider",
+          "thumb-background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-slider-thumb-background-disabled)",
+        "description": ""
+      },
+      "slider-thumb-border-disabled": {
+        "name": "sliderThumbBorderDisabled",
+        "path": [
+          "slider",
+          "thumb-border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-slider-thumb-border-disabled)",
         "description": ""
       }
     },
@@ -9853,19 +10209,6 @@
         "variable": "var(--color-toast-action-ring-offset)",
         "description": ""
       },
-      "toast-action-disabled-opacity": {
-        "name": "toastActionDisabledOpacity",
-        "path": [
-          "toast",
-          "action",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--toast-action-disabled-opacity)",
-        "description": ""
-      },
       "toast-close-button-position": {
         "name": "toastCloseButtonPosition",
         "path": [
@@ -9888,6 +10231,28 @@
         "value": 1,
         "type": "number",
         "variable": "var(--toast-description-opacity)",
+        "description": ""
+      },
+      "toast-action-text-disabled": {
+        "name": "toastActionTextDisabled",
+        "path": [
+          "toast",
+          "action-text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-toast-action-text-disabled)",
+        "description": ""
+      },
+      "toast-action-border-disabled": {
+        "name": "toastActionBorderDisabled",
+        "path": [
+          "toast",
+          "action-border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-toast-action-border-disabled)",
         "description": ""
       }
     },
@@ -10069,16 +10434,37 @@
         "variable": "var(--color-toggle-background-hover)",
         "description": ""
       },
-      "toggle-disabled-opacity": {
-        "name": "toggleDisabledOpacity",
+      "toggle-text-disabled": {
+        "name": "toggleTextDisabled",
         "path": [
           "toggle",
-          "disabled",
-          "opacity"
+          "text-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--toggle-disabled-opacity)",
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-toggle-text-disabled)",
+        "description": ""
+      },
+      "toggle-border-disabled": {
+        "name": "toggleBorderDisabled",
+        "path": [
+          "toggle",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-toggle-border-disabled)",
+        "description": ""
+      },
+      "toggle-pressed-disabled": {
+        "name": "togglePressedDisabled",
+        "path": [
+          "toggle",
+          "pressed-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-toggle-pressed-disabled)",
         "description": ""
       }
     },
@@ -10492,19 +10878,6 @@
         "variable": "var(--select-item-indicator-left)",
         "description": ""
       },
-      "select-trigger-disabled-opacity": {
-        "name": "selectTriggerDisabledOpacity",
-        "path": [
-          "select",
-          "trigger",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--select-trigger-disabled-opacity)",
-        "description": ""
-      },
       "select-trigger-icon-opacity": {
         "name": "selectTriggerIconOpacity",
         "path": [
@@ -10541,19 +10914,6 @@
         "variable": "var(--color-select-content-text)",
         "description": ""
       },
-      "select-item-disabled-opacity": {
-        "name": "selectItemDisabledOpacity",
-        "path": [
-          "select",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--select-item-disabled-opacity)",
-        "description": ""
-      },
       "select-separator-background": {
         "name": "selectSeparatorBackground",
         "path": [
@@ -10564,6 +10924,54 @@
         "value": "oklch(0.786 0.004 271.11)",
         "type": "color",
         "variable": "var(--color-select-separator-background)",
+        "description": ""
+      },
+      "select-trigger-background-disabled": {
+        "name": "selectTriggerBackgroundDisabled",
+        "path": [
+          "select",
+          "trigger",
+          "background-disabled"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-select-trigger-background-disabled)",
+        "description": ""
+      },
+      "select-trigger-text-disabled": {
+        "name": "selectTriggerTextDisabled",
+        "path": [
+          "select",
+          "trigger",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-select-trigger-text-disabled)",
+        "description": ""
+      },
+      "select-trigger-border-disabled": {
+        "name": "selectTriggerBorderDisabled",
+        "path": [
+          "select",
+          "trigger",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-select-trigger-border-disabled)",
+        "description": ""
+      },
+      "select-item-text-disabled": {
+        "name": "selectItemTextDisabled",
+        "path": [
+          "select",
+          "item",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-select-item-text-disabled)",
         "description": ""
       }
     },
@@ -10750,16 +11158,37 @@
         "variable": "var(--color-checkbox-error-border)",
         "description": ""
       },
-      "checkbox-disabled-opacity": {
-        "name": "checkboxDisabledOpacity",
+      "checkbox-background-disabled": {
+        "name": "checkboxBackgroundDisabled",
         "path": [
           "checkbox",
-          "disabled",
-          "opacity"
+          "background-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--checkbox-disabled-opacity)",
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-checkbox-background-disabled)",
+        "description": ""
+      },
+      "checkbox-text-disabled": {
+        "name": "checkboxTextDisabled",
+        "path": [
+          "checkbox",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-checkbox-text-disabled)",
+        "description": ""
+      },
+      "checkbox-border-disabled": {
+        "name": "checkboxBorderDisabled",
+        "path": [
+          "checkbox",
+          "border-disabled"
+        ],
+        "value": "oklch(0.87 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-checkbox-border-disabled)",
         "description": ""
       }
     },
@@ -11016,16 +11445,16 @@
         "variable": "var(--color-switch-thumb-background)",
         "description": ""
       },
-      "switch-disabled-opacity": {
-        "name": "switchDisabledOpacity",
+      "switch-track-background-disabled": {
+        "name": "switchTrackBackgroundDisabled",
         "path": [
           "switch",
-          "disabled",
-          "opacity"
+          "track",
+          "background-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--switch-disabled-opacity)",
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-switch-track-background-disabled)",
         "description": ""
       }
     },
@@ -11110,16 +11539,26 @@
         "variable": "var(--textarea-font-weight)",
         "description": ""
       },
-      "textarea-disabled-opacity": {
-        "name": "textareaDisabledOpacity",
+      "textarea-background-disabled": {
+        "name": "textareaBackgroundDisabled",
         "path": [
           "textarea",
-          "disabled",
-          "opacity"
+          "background-disabled"
         ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--textarea-disabled-opacity)",
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-textarea-background-disabled)",
+        "description": ""
+      },
+      "textarea-text-disabled": {
+        "name": "textareaTextDisabled",
+        "path": [
+          "textarea",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-textarea-text-disabled)",
         "description": ""
       }
     },
@@ -11703,19 +12142,6 @@
         "variable": "var(--context-menu-shortcut-font-size)",
         "description": ""
       },
-      "context-menu-item-disabled-opacity": {
-        "name": "contextMenuItemDisabledOpacity",
-        "path": [
-          "context-menu",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--context-menu-item-disabled-opacity)",
-        "description": ""
-      },
       "context-menu-label-font-weight": {
         "name": "contextMenuLabelFontWeight",
         "path": [
@@ -12003,19 +12429,6 @@
         "variable": "var(--color-dropdown-menu-separator-background)",
         "description": ""
       },
-      "dropdown-menu-item-disabled-opacity": {
-        "name": "dropdownMenuItemDisabledOpacity",
-        "path": [
-          "dropdown-menu",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--dropdown-menu-item-disabled-opacity)",
-        "description": ""
-      },
       "dropdown-menu-shortcut-opacity": {
         "name": "dropdownMenuShortcutOpacity",
         "path": [
@@ -12074,6 +12487,18 @@
         "value": "9999px",
         "type": "dimension",
         "variable": "var(--dropdown-menu-item-radio-indicator-radius)",
+        "description": ""
+      },
+      "dropdown-menu-item-text-disabled": {
+        "name": "dropdownMenuItemTextDisabled",
+        "path": [
+          "dropdown-menu",
+          "item",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-dropdown-menu-item-text-disabled)",
         "description": ""
       }
     },
@@ -12362,19 +12787,6 @@
         "type": "spacing",
         "variable": "var(--radio-group-item-gap)",
         "description": ""
-      },
-      "radio-group-item-disabled-opacity": {
-        "name": "radioGroupItemDisabledOpacity",
-        "path": [
-          "radio-group",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--radio-group-item-disabled-opacity)",
-        "description": ""
       }
     },
     "navigation-menu": {
@@ -12489,19 +12901,6 @@
         "type": "number",
         "variable": "var(--navigation-menu-trigger-font-weight)",
         "description": ""
-      },
-      "navigation-menu-trigger-disabled-opacity": {
-        "name": "navigationMenuTriggerDisabledOpacity",
-        "path": [
-          "navigation-menu",
-          "trigger",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--navigation-menu-trigger-disabled-opacity)",
-        "description": ""
       }
     },
     "toggle-group": {
@@ -12570,19 +12969,6 @@
         "type": "spacing",
         "variable": "var(--toggle-group-item-height)",
         "description": "Height of toggle group items (40px, matches default toggle height)"
-      },
-      "toggle-group-item-disabled-opacity": {
-        "name": "toggleGroupItemDisabledOpacity",
-        "path": [
-          "toggle-group",
-          "item",
-          "disabled",
-          "opacity"
-        ],
-        "value": 0.5,
-        "type": "number",
-        "variable": "var(--toggle-group-item-disabled-opacity)",
-        "description": ""
       }
     },
     "scroll-area": {
@@ -12679,6 +13065,18 @@
         "value": "oklch(0.209 0.01 268.18)",
         "type": "color",
         "variable": "var(--color-site-header-nav-link-text-focus)",
+        "description": ""
+      },
+      "site-header-nav-link-text-disabled": {
+        "name": "siteHeaderNavLinkTextDisabled",
+        "path": [
+          "site-header",
+          "nav-link",
+          "text-disabled"
+        ],
+        "value": "oklch(0.52 0.007 264.5)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-text-disabled)",
         "description": ""
       }
     },
