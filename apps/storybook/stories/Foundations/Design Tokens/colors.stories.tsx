@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { color } from "@wyliedog/tokens/hierarchical";
 import manifest from "@wyliedog/tokens/manifest.json";
 import { useCopyToClipboard } from "./use-copy-to-clipboard";
@@ -616,40 +616,111 @@ export const SemanticTokens: Story = {
 // STORY 4: Accessibility — contrast ratios and WCAG compliance
 // ============================================================================
 
+// ----------------------------------------------------------------------------
+// Contrast helpers: the ratios on the Accessibility story are computed from the
+// colours the browser actually renders, never typed by hand.
+// ----------------------------------------------------------------------------
+
+/** Resolve any CSS colour (var(), oklch, ...) to 8-bit sRGB through a canvas. */
+function resolveSrgb(color: string): [number, number, number] | null {
+  const probe = document.createElement("span");
+  probe.style.color = color;
+  document.body.appendChild(probe);
+  const resolved = getComputedStyle(probe).color;
+  probe.remove();
+  const canvas = document.createElement("canvas");
+  canvas.width = 1;
+  canvas.height = 1;
+  const context = canvas.getContext("2d", { willReadFrequently: true });
+  if (!context) return null;
+  context.fillStyle = resolved;
+  context.fillRect(0, 0, 1, 1);
+  const [r, g, b] = context.getImageData(0, 0, 1, 1).data;
+  return [r, g, b];
+}
+
+const channel = (value: number) => {
+  const s = value / 255;
+  return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+};
+const luminance = ([r, g, b]: [number, number, number]) =>
+  0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);
+
+function contrastRatio(foreground: string, background: string): number | null {
+  const a = resolveSrgb(foreground);
+  const b = resolveSrgb(background);
+  if (!a || !b) return null;
+  const x = luminance(a);
+  const y = luminance(b);
+  return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
+}
+
+function contrastLevel(ratio: number) {
+  if (ratio >= 7) return "AAA";
+  if (ratio >= 4.5) return "AA";
+  if (ratio >= 3) return "AA (large text only)";
+  return "Fails AA";
+}
+
+/** The computed ratio for a pairing in the current mode; recomputes when the theme changes. */
+function ContrastRatio({
+  foreground,
+  background,
+}: {
+  foreground: string;
+  background: string;
+}) {
+  const [ratio, setRatio] = useState<number | null>(null);
+  useEffect(() => {
+    const update = () => setRatio(contrastRatio(foreground, background));
+    update();
+    const observer = new MutationObserver(update);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class", "data-theme"],
+    });
+    return () => observer.disconnect();
+  }, [foreground, background]);
+  if (ratio === null) return null;
+  const level = contrastLevel(ratio);
+  return (
+    <>
+      <span className="font-mono text-sm font-semibold text-(--color-foreground-default)">
+        {ratio.toFixed(1)}:1
+      </span>
+      <Badge variant={level === "AAA" ? "default" : "secondary"}>{level}</Badge>
+    </>
+  );
+}
+
 export const Accessibility: Story = {
   parameters: {
     docs: {
       description: {
         story:
-          "Semantic token pairings and their approximate WCAG 2.1 contrast ratios. Verify custom pairings with browser DevTools (Elements → Computed → contrast ratio).",
+          "Semantic token pairings and their WCAG 2.2 contrast ratios, computed from the colours rendered in the current mode. Verify custom pairings with browser DevTools (Elements → Computed → contrast ratio).",
       },
     },
   },
   render: () => {
     const contrastExamples = [
       {
-        name: "Primary Text",
+        name: "Default Text",
         foreground: "var(--color-foreground-default)",
         background: "var(--color-background-default)",
-        ratio: "~21:1",
-        level: "AAA",
         usage: "Body text, headings",
       },
       {
-        name: "Secondary Text",
+        name: "Muted Text",
         foreground: "var(--color-foreground-muted)",
         background: "var(--color-background-default)",
-        ratio: "~8.5:1",
-        level: "AAA",
         usage: "Descriptions, captions",
       },
       {
-        name: "Tertiary Text",
+        name: "Faint Text",
         foreground: "var(--color-foreground-faint)",
         background: "var(--color-background-default)",
-        ratio: "~4.8:1",
-        level: "AA",
-        usage: "Metadata, labels (large text only)",
+        usage: "Metadata, labels",
       },
     ];
 
@@ -660,16 +731,19 @@ export const Accessibility: Story = {
             Color Accessibility
           </h2>
           <p className="text-sm text-(--color-foreground-muted) mb-6">
-            All semantic tokens meet WCAG 2.1 Level AA for their intended use
-            cases. Ratios below are approximate — use browser DevTools to verify
-            exact values or when creating custom pairings.
+            All semantic tokens meet WCAG 2.2 Level AA for their intended use
+            cases. Ratios below are computed from the colours rendered in the
+            current mode (8-bit sRGB, within about 0.05 of the exact value).
+            Declared pairings are enforced by{" "}
+            <code className="font-mono text-xs">pnpm check:contrast</code>; use
+            browser DevTools to verify custom pairings.
           </p>
         </div>
 
         {/* WCAG requirements table */}
         <Card>
           <CardHeader>
-            <CardTitle>WCAG 2.1 Requirements</CardTitle>
+            <CardTitle>WCAG 2.2 Requirements</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-4">
@@ -687,7 +761,6 @@ export const Accessibility: Story = {
                   rows: [
                     ["Normal text", "7:1"],
                     ["Large text", "4.5:1"],
-                    ["UI components", "4.5:1"],
                   ],
                 },
               ].map(({ level, rows }) => (
@@ -735,16 +808,10 @@ export const Accessibility: Story = {
                     </div>
                   </div>
                   <div className="text-right flex items-center gap-2">
-                    <span className="font-mono text-sm font-semibold text-(--color-foreground-default)">
-                      {example.ratio}
-                    </span>
-                    <Badge
-                      variant={
-                        example.level === "AAA" ? "default" : "secondary"
-                      }
-                    >
-                      {example.level}
-                    </Badge>
+                    <ContrastRatio
+                      foreground={example.foreground}
+                      background={example.background}
+                    />
                   </div>
                 </div>
                 <div
