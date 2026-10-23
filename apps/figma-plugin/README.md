@@ -101,6 +101,23 @@ The repository configuration includes a sync mode:
 
 Native `EASING` and `TIMING` variables, composed colors and anything that aliases them cannot be exported yet. After an export or push, a notice lists what was skipped, grouped by collection with the reason. Details are in [docs/API.md](docs/API.md).
 
+### Variable Scopes
+
+Scopes decide which pickers (fill, text fill, stroke) list a colour variable. They are inferred from the token name by `src/plugin/variables/scopes.ts` and re-applied on every import, so importing or pulling updates scopes on variables that already exist.
+
+| Token                                                                                                                                        | Scopes                         |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `color.background.*`                                                                                                                         | `FRAME_FILL`, `SHAPE_FILL`     |
+| `color.foreground.*`                                                                                                                         | `TEXT_FILL`, `SHAPE_FILL`      |
+| `color.border.*`                                                                                                                             | `STROKE_COLOR`                 |
+| `color.border.focus`                                                                                                                         | `STROKE_COLOR`, `EFFECT_COLOR` |
+| Component, name contains `background`, `fill`, `track`, `thumb`, `indicator` or `overlay`                                                    | `FRAME_FILL`, `SHAPE_FILL`     |
+| Component, name contains `text`, `label`, `foreground`, `placeholder`, `link` or `icon`                                                      | `TEXT_FILL`, `SHAPE_FILL`      |
+| Component, name contains `border`, `ring`, `outline` or `stroke`                                                                             | `STROKE_COLOR`                 |
+| Primitive colours (`color.blue.600`), and any component name without a property word (`select.trigger-focus`, a bare `color`, `ring-offset`) | `ALL_SCOPES`                   |
+
+For component tokens the last name segment is read first (`background-hover`), then earlier ones. Non-colour types keep their type-based scopes (dimension tokens are still inferred from the name). Behaviour inside Figma is checked by hand: open a fill, a text fill and a stroke picker and confirm only the intended variables appear.
+
 ### Dark Mode
 
 The UI defines its colors as CSS variables in `src/ui/index.html` and switches them with `@media (prefers-color-scheme: dark)`, so it follows the operating system setting. There is no manual theme toggle.
