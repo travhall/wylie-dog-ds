@@ -19,6 +19,7 @@ import {
   type ValidationReport,
   validateTokenValue,
 } from "./validation";
+import { inferScopes } from "./scopes";
 import { FormatAdapterManager } from "./format-adapter-manager";
 import type { AdapterProcessResult } from "./format-adapter";
 import { converter as culoriConverter, parse as culoriParse } from "culori";
@@ -73,75 +74,6 @@ const W3C_TO_FIGMA_TYPE_MAP: Record<string, string> = {
   font: "STRING",
   size: "FLOAT",
 };
-
-// Map W3C DTCG types to Figma scopes with enhanced typography support
-const W3C_TO_FIGMA_SCOPES_MAP: Record<string, string[]> = {
-  color: ["ALL_SCOPES"],
-  fontSize: ["FONT_SIZE"],
-  fontWeight: ["FONT_WEIGHT"],
-  fontFamily: ["FONT_FAMILY"],
-  lineHeight: ["LINE_HEIGHT"],
-  letterSpacing: ["LETTER_SPACING"],
-  spacing: ["GAP", "WIDTH_HEIGHT"],
-  sizing: ["WIDTH_HEIGHT"],
-  borderRadius: ["CORNER_RADIUS"],
-  borderWidth: ["STROKE_FLOAT"],
-  // dimension type requires name-based scope inference (see inferScopesForDimension)
-  dimension: ["ALL_SCOPES"],
-  shadow: ["ALL_SCOPES"],
-  boolean: ["ALL_SCOPES"],
-  // Add fallbacks for common token types
-  number: ["ALL_SCOPES"],
-  string: ["ALL_SCOPES"],
-  text: ["ALL_SCOPES"],
-  font: ["FONT_FAMILY"],
-  size: ["FONT_SIZE"],
-};
-
-/**
- * Infer Figma scopes for dimension tokens based on token name
- * Per W3C DTCG spec, dimension type encompasses border-radius, border-width, sizing, spacing
- */
-function inferScopesForDimension(tokenName: string): string[] {
-  const lowerName = tokenName.toLowerCase();
-
-  // Border radius tokens
-  if (lowerName.includes("radius") || lowerName.includes("border-radius")) {
-    return ["CORNER_RADIUS"];
-  }
-
-  // Border width tokens
-  if (
-    lowerName.includes("border-width") ||
-    lowerName.includes("borderwidth") ||
-    (lowerName.includes("border") && lowerName.includes("width"))
-  ) {
-    return ["STROKE_FLOAT"];
-  }
-
-  // Sizing tokens (width/height)
-  if (
-    lowerName.includes("width") ||
-    lowerName.includes("height") ||
-    lowerName.includes("size") ||
-    lowerName.includes("sizing")
-  ) {
-    return ["WIDTH_HEIGHT"];
-  }
-
-  // Spacing/gap tokens (default for dimension)
-  if (
-    lowerName.includes("spacing") ||
-    lowerName.includes("space") ||
-    lowerName.includes("gap") ||
-    lowerName.includes("padding")
-  ) {
-    return ["GAP"];
-  }
-
-  // Default to GAP for unmatched dimension tokens
-  return ["GAP"];
-}
 
 const convertToRgb = culoriConverter("rgb");
 
@@ -332,13 +264,8 @@ async function createVariableWithReferences(
   try {
     const figmaType = W3C_TO_FIGMA_TYPE_MAP[token.$type] || "STRING";
 
-    // Infer scopes - use name-based inference for dimension tokens
-    let scopes: string[];
-    if (token.$type === "dimension") {
-      scopes = inferScopesForDimension(tokenName);
-    } else {
-      scopes = W3C_TO_FIGMA_SCOPES_MAP[token.$type] || ["ALL_SCOPES"];
-    }
+    // Colour and dimension scopes are inferred from the token name
+    const scopes = inferScopes(token.$type, tokenName);
 
     const figmaName = tokenName.replace(/\./g, "/");
 
