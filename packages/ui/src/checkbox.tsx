@@ -13,10 +13,10 @@ export const checkboxVariants = cva(
     "focus:ring-(--color-border-focus)",
     "focus:ring-offset-(--space-checkbox-focus-ring-offset)",
     "disabled:cursor-not-allowed disabled:bg-(--color-checkbox-background-disabled) disabled:border-(--color-checkbox-border-disabled) disabled:text-(--color-checkbox-text-disabled) data-[state=checked]:disabled:bg-(--color-checkbox-background-disabled) data-[state=checked]:disabled:border-(--color-checkbox-border-disabled) data-[state=checked]:disabled:text-(--color-checkbox-text-disabled) data-[state=indeterminate]:disabled:bg-(--color-checkbox-background-disabled) data-[state=indeterminate]:disabled:border-(--color-checkbox-border-disabled) data-[state=indeterminate]:disabled:text-(--color-checkbox-text-disabled)",
-    "data-[state=checked]:bg-(--color-checkbox-checked-background) data-[state=checked]:text-(--color-checkbox-checked-text)",
-    "data-[state=checked]:border-(--color-checkbox-checked-border)",
-    "data-[state=indeterminate]:bg-(--color-checkbox-checked-background) data-[state=indeterminate]:text-(--color-checkbox-checked-text)",
-    "data-[state=indeterminate]:border-(--color-checkbox-checked-border)"
+    "data-[state=checked]:bg-(--color-checkbox-background-checked) data-[state=checked]:text-(--color-checkbox-text-checked)",
+    "data-[state=checked]:border-(--color-checkbox-border-checked)",
+    "data-[state=indeterminate]:bg-(--color-checkbox-background-checked) data-[state=indeterminate]:text-(--color-checkbox-text-checked)",
+    "data-[state=indeterminate]:border-(--color-checkbox-border-checked)"
   ),
   {
     variants: {

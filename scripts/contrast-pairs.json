@@ -379,16 +379,6 @@
       "kind": "text"
     },
     {
-      "foreground": "calendar.day-text-focus",
-      "backgrounds": ["calendar.day-focus"],
-      "kind": "text"
-    },
-    {
-      "foreground": "calendar.nav-text-focus",
-      "backgrounds": ["calendar.nav-focus"],
-      "kind": "text"
-    },
-    {
       "foreground": "accordion.trigger-text-hover",
       "backgrounds": ["accordion.trigger-hover"],
       "kind": "text"
@@ -538,7 +528,6 @@
       "backgrounds": [
         "table.row-hover",
         "table.row-selected",
-        "table.row-focus",
         "color.background.emphasis",
         "color.background.raised"
       ],
@@ -550,8 +539,8 @@
       "kind": "non-text"
     },
     {
-      "foreground": "checkbox.checked.text",
-      "backgrounds": ["checkbox.checked.background"],
+      "foreground": "checkbox.text-checked",
+      "backgrounds": ["checkbox.background-checked"],
       "kind": "non-text"
     },
     {
@@ -636,11 +625,6 @@
     {
       "foreground": "color.border.focus",
       "backgrounds": ["color.background.default", "color.background.muted"],
-      "kind": "non-text"
-    },
-    {
-      "foreground": "popover.border-focus",
-      "backgrounds": ["popover.background"],
       "kind": "non-text"
     },
     {
@@ -796,21 +780,6 @@
       "kind": "non-text"
     },
     {
-      "foreground": "form.label-text",
-      "backgrounds": ["color.background.default", "color.background.raised"],
-      "kind": "text"
-    },
-    {
-      "foreground": "form.hint.text",
-      "backgrounds": ["color.background.default", "color.background.raised"],
-      "kind": "text"
-    },
-    {
-      "foreground": "form.error-text",
-      "backgrounds": ["color.background.default", "color.background.raised"],
-      "kind": "text"
-    },
-    {
       "foreground": "form.label-error-text",
       "backgrounds": ["color.background.default", "color.background.raised"],
       "kind": "text"
@@ -884,7 +853,7 @@
   },
   "exempt": [
     {
-      "token": "input.disabled.text",
+      "token": "input.text-disabled",
       "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
     },
     {
@@ -902,10 +871,6 @@
     {
       "token": "breadcrumb.link-disabled",
       "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
-    },
-    {
-      "token": "breadcrumb.link-focus",
-      "reason": "A focus fill (a background), not a foreground; the link text is breadcrumb.link."
     },
     {
       "token": "separator.color",

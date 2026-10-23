@@ -697,7 +697,7 @@
             "Dark": "{color.foreground.muted}"
           }
         },
-        "input.disabled.background": {
+        "input.background-disabled": {
           "$type": "color",
           "$value": "{color.background.emphasis}",
           "valuesByMode": {
@@ -705,7 +705,7 @@
             "Dark": "{color.background.emphasis}"
           }
         },
-        "input.disabled.text": {
+        "input.text-disabled": {
           "$type": "color",
           "$value": "{color.foreground.faint}",
           "valuesByMode": {
@@ -2137,14 +2137,6 @@
             "Dark": "{border-radius.sm}"
           }
         },
-        "select.item.font-size": {
-          "$type": "number",
-          "$value": "{typography.font-size.sm}",
-          "valuesByMode": {
-            "Light": "{typography.font-size.sm}",
-            "Dark": "{typography.font-size.sm}"
-          }
-        },
         "select.separator.height": {
           "$type": "spacing",
           "$value": "{border-width.1}",
@@ -2593,14 +2585,6 @@
             "Dark": "{typography.font-size.lg}"
           }
         },
-        "label.margin-bottom": {
-          "$type": "spacing",
-          "$value": "{space.050}",
-          "valuesByMode": {
-            "Light": "{space.050}",
-            "Dark": "{space.050}"
-          }
-        },
         "label.disabled-color": {
           "$type": "color",
           "$value": "{color.foreground.faint}",
@@ -2858,14 +2842,6 @@
             "Dark": "{border-width.4}"
           }
         },
-        "tabs.trigger.border-width": {
-          "$type": "dimension",
-          "$value": "{border-width.2}",
-          "valuesByMode": {
-            "Light": "{border-width.2}",
-            "Dark": "{border-width.2}"
-          }
-        },
         "tabs.content.padding": {
           "$type": "spacing",
           "$value": "{space.300}",
@@ -2896,14 +2872,6 @@
           "valuesByMode": {
             "Light": "{border-radius.md}",
             "Dark": "{border-radius.md}"
-          }
-        },
-        "collapsible.animation-duration": {
-          "$type": "duration",
-          "$value": "{transition.duration.normal}",
-          "valuesByMode": {
-            "Light": "{transition.duration.normal}",
-            "Dark": "{transition.duration.normal}"
           }
         },
         "separator.height-horizontal": {
@@ -3242,14 +3210,6 @@
             "Dark": "{space.300}"
           }
         },
-        "toast.close-radius": {
-          "$type": "dimension",
-          "$value": "{border-radius.sm}",
-          "valuesByMode": {
-            "Light": "{border-radius.sm}",
-            "Dark": "{border-radius.sm}"
-          }
-        },
         "table.cell.padding-x": {
           "$type": "spacing",
           "$value": "{space.300}",
@@ -3515,14 +3475,6 @@
           }
         },
         "breadcrumb.item-gap": {
-          "$type": "spacing",
-          "$value": "{space.050}",
-          "valuesByMode": {
-            "Light": "{space.050}",
-            "Dark": "{space.050}"
-          }
-        },
-        "breadcrumb.gap": {
           "$type": "spacing",
           "$value": "{space.050}",
           "valuesByMode": {
@@ -4061,22 +4013,6 @@
           },
           "$description": "Text color on warning toast (saturated orange background)"
         },
-        "toast.border-radius": {
-          "$type": "dimension",
-          "$value": "{border-radius.lg}",
-          "valuesByMode": {
-            "Light": "{border-radius.lg}",
-            "Dark": "{border-radius.lg}"
-          }
-        },
-        "toast.close-padding": {
-          "$type": "spacing",
-          "$value": "{space.050}",
-          "valuesByMode": {
-            "Light": "{space.050}",
-            "Dark": "{space.050}"
-          }
-        },
         "card-grid.gap-horizontal": {
           "$type": "spacing",
           "$value": "{space.300}",
@@ -4357,7 +4293,7 @@
             "Dark": "{space.050}"
           }
         },
-        "radio-group.item-gap": {
+        "radio.group-gap": {
           "$type": "spacing",
           "$value": "{space.100}",
           "valuesByMode": {
@@ -4622,7 +4558,7 @@
             "Dark": "{space.100}"
           }
         },
-        "scroll-area.scrollbar-padding": {
+        "scrollbar.padding": {
           "$type": "spacing",
           "$value": "{space.010}",
           "valuesByMode": {
@@ -5158,7 +5094,7 @@
             "Dark": "{color.border.emphasis}"
           }
         },
-        "checkbox.checked.background": {
+        "checkbox.background-checked": {
           "$type": "color",
           "$value": "{color.background.primary}",
           "valuesByMode": {
@@ -5166,7 +5102,7 @@
             "Dark": "{color.background.primary}"
           }
         },
-        "checkbox.checked.text": {
+        "checkbox.text-checked": {
           "$type": "color",
           "$value": "{color.foreground.primary}",
           "valuesByMode": {
@@ -5174,7 +5110,7 @@
             "Dark": "{color.foreground.primary}"
           }
         },
-        "checkbox.checked.border": {
+        "checkbox.border-checked": {
           "$type": "color",
           "$value": "{color.background.primary}",
           "valuesByMode": {
@@ -5207,14 +5143,6 @@
           }
         },
         "dialog.close-button-offset": {
-          "$type": "spacing",
-          "$value": "{space.200}",
-          "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
-          }
-        },
-        "dialog.close-button-icon-size": {
           "$type": "spacing",
           "$value": "{space.200}",
           "valuesByMode": {
@@ -5318,30 +5246,6 @@
             "Dark": "{color.border.focus}"
           }
         },
-        "popover.border-focus": {
-          "$type": "color",
-          "$value": "{color.border.focus}",
-          "valuesByMode": {
-            "Light": "{color.border.focus}",
-            "Dark": "{color.border.focus}"
-          }
-        },
-        "form.label-text": {
-          "$type": "color",
-          "$value": "{color.foreground.default}",
-          "valuesByMode": {
-            "Light": "{color.foreground.default}",
-            "Dark": "{color.foreground.default}"
-          }
-        },
-        "form.label-font-size": {
-          "$type": "number",
-          "$value": "{typography.font-size.sm}",
-          "valuesByMode": {
-            "Light": "{typography.font-size.sm}",
-            "Dark": "{typography.font-size.sm}"
-          }
-        },
         "form.label-font-weight": {
           "$type": "number",
           "$value": "{typography.font-weight.medium}",
@@ -5358,30 +5262,6 @@
             "Dark": "{typography.font-weight.medium}"
           }
         },
-        "form.hint.text": {
-          "$type": "color",
-          "$value": "{color.foreground.muted}",
-          "valuesByMode": {
-            "Light": "{color.foreground.muted}",
-            "Dark": "{color.foreground.muted}"
-          }
-        },
-        "form.hint.font-size": {
-          "$type": "number",
-          "$value": "{typography.font-size.xs}",
-          "valuesByMode": {
-            "Light": "{typography.font-size.xs}",
-            "Dark": "{typography.font-size.xs}"
-          }
-        },
-        "form.error-text": {
-          "$type": "color",
-          "$value": "{color.foreground.danger-muted}",
-          "valuesByMode": {
-            "Light": "{color.foreground.danger-muted}",
-            "Dark": "{color.foreground.danger-muted}"
-          }
-        },
         "form.error-font-size": {
           "$type": "number",
           "$value": "{typography.font-size.xs}",
@@ -5396,38 +5276,6 @@
           "valuesByMode": {
             "Light": "{color.foreground.danger-muted}",
             "Dark": "{color.foreground.danger-muted}"
-          }
-        },
-        "form.gap": {
-          "$type": "spacing",
-          "$value": "{space.200}",
-          "valuesByMode": {
-            "Light": "{space.200}",
-            "Dark": "{space.200}"
-          }
-        },
-        "form.fieldset-gap": {
-          "$type": "spacing",
-          "$value": "{space.300}",
-          "valuesByMode": {
-            "Light": "{space.300}",
-            "Dark": "{space.300}"
-          }
-        },
-        "form.fieldset.legend.font-size": {
-          "$type": "number",
-          "$value": "{typography.font-size.base}",
-          "valuesByMode": {
-            "Light": "{typography.font-size.base}",
-            "Dark": "{typography.font-size.base}"
-          }
-        },
-        "form.fieldset.legend.font-weight": {
-          "$type": "number",
-          "$value": "{typography.font-weight.semibold}",
-          "valuesByMode": {
-            "Light": "{typography.font-weight.semibold}",
-            "Dark": "{typography.font-weight.semibold}"
           }
         },
         "badge.default.background-focus": {
@@ -5558,38 +5406,6 @@
             "Dark": "{color.background.emphasis}"
           }
         },
-        "calendar.day-focus": {
-          "$type": "color",
-          "$value": "{color.background.primary-muted}",
-          "valuesByMode": {
-            "Light": "{color.background.primary-muted}",
-            "Dark": "{color.background.primary-muted}"
-          }
-        },
-        "calendar.day-text-focus": {
-          "$type": "color",
-          "$value": "{color.foreground.default}",
-          "valuesByMode": {
-            "Light": "{color.foreground.default}",
-            "Dark": "{color.foreground.default}"
-          }
-        },
-        "calendar.nav-focus": {
-          "$type": "color",
-          "$value": "{color.background.primary-muted}",
-          "valuesByMode": {
-            "Light": "{color.background.primary-muted}",
-            "Dark": "{color.background.primary-muted}"
-          }
-        },
-        "calendar.nav-text-focus": {
-          "$type": "color",
-          "$value": "{color.foreground.default}",
-          "valuesByMode": {
-            "Light": "{color.foreground.default}",
-            "Dark": "{color.foreground.default}"
-          }
-        },
         "calendar.nav-button.opacity": {
           "$type": "number",
           "$value": "{opacity.50}",
@@ -5646,14 +5462,6 @@
             "Dark": "{typography.font-weight.regular}"
           }
         },
-        "breadcrumb.link-focus": {
-          "$type": "color",
-          "$value": "{color.background.primary-muted}",
-          "valuesByMode": {
-            "Light": "{color.background.primary-muted}",
-            "Dark": "{color.background.primary-muted}"
-          }
-        },
         "breadcrumb.link-disabled": {
           "$type": "color",
           "$value": "{color.foreground.faint}",
@@ -5676,14 +5484,6 @@
           "valuesByMode": {
             "Light": "{typography.font-weight.medium}",
             "Dark": "{typography.font-weight.medium}"
-          }
-        },
-        "table.row-focus": {
-          "$type": "color",
-          "$value": "{color.background.primary-muted}",
-          "valuesByMode": {
-            "Light": "{color.background.primary-muted}",
-            "Dark": "{color.background.primary-muted}"
           }
         },
         "toggle.background-hover": {

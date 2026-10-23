@@ -344,11 +344,11 @@
     "$type": "color",
     "$value": "{color.foreground.muted}"
   },
-  "input.disabled.background": {
+  "input.background-disabled": {
     "$type": "color",
     "$value": "{color.background.emphasis}"
   },
-  "input.disabled.text": {
+  "input.text-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}"
   },
@@ -1064,10 +1064,6 @@
     "$type": "dimension",
     "$value": "{border-radius.sm}"
   },
-  "select.item.font-size": {
-    "$type": "number",
-    "$value": "{typography.font-size.sm}"
-  },
   "select.separator.height": {
     "$type": "spacing",
     "$value": "{border-width.1}"
@@ -1292,10 +1288,6 @@
     "$type": "number",
     "$value": "{typography.font-size.lg}"
   },
-  "label.margin-bottom": {
-    "$type": "spacing",
-    "$value": "{space.050}"
-  },
   "label.disabled-color": {
     "$type": "color",
     "$value": "{color.foreground.faint}"
@@ -1425,10 +1417,6 @@
     "$type": "spacing",
     "$value": "{border-width.4}"
   },
-  "tabs.trigger.border-width": {
-    "$type": "dimension",
-    "$value": "{border-width.2}"
-  },
   "tabs.content.padding": {
     "$type": "spacing",
     "$value": "{space.300}"
@@ -1444,10 +1432,6 @@
   "collapsible.radius": {
     "$type": "dimension",
     "$value": "{border-radius.md}"
-  },
-  "collapsible.animation-duration": {
-    "$type": "duration",
-    "$value": "{transition.duration.normal}"
   },
   "separator.height-horizontal": {
     "$type": "spacing",
@@ -1617,10 +1601,6 @@
     "$type": "spacing",
     "$value": "{space.300}"
   },
-  "toast.close-radius": {
-    "$type": "dimension",
-    "$value": "{border-radius.sm}"
-  },
   "table.cell.padding-x": {
     "$type": "spacing",
     "$value": "{space.300}"
@@ -1754,10 +1734,6 @@
     "$value": "{space.050}"
   },
   "breadcrumb.item-gap": {
-    "$type": "spacing",
-    "$value": "{space.050}"
-  },
-  "breadcrumb.gap": {
     "$type": "spacing",
     "$value": "{space.050}"
   },
@@ -2028,14 +2004,6 @@
     "$value": "{color.foreground.warning}",
     "$description": "Text color on warning toast (saturated orange background)"
   },
-  "toast.border-radius": {
-    "$type": "dimension",
-    "$value": "{border-radius.lg}"
-  },
-  "toast.close-padding": {
-    "$type": "spacing",
-    "$value": "{space.050}"
-  },
   "card-grid.gap-horizontal": {
     "$type": "spacing",
     "$value": "{space.300}"
@@ -2176,7 +2144,7 @@
     "$type": "spacing",
     "$value": "{space.050}"
   },
-  "radio-group.item-gap": {
+  "radio.group-gap": {
     "$type": "spacing",
     "$value": "{space.100}"
   },
@@ -2309,7 +2277,7 @@
     "$type": "spacing",
     "$value": "{space.100}"
   },
-  "scroll-area.scrollbar-padding": {
+  "scrollbar.padding": {
     "$type": "spacing",
     "$value": "{space.010}"
   },
@@ -2577,15 +2545,15 @@
     "$type": "color",
     "$value": "{color.border.emphasis}"
   },
-  "checkbox.checked.background": {
+  "checkbox.background-checked": {
     "$type": "color",
     "$value": "{color.background.primary}"
   },
-  "checkbox.checked.text": {
+  "checkbox.text-checked": {
     "$type": "color",
     "$value": "{color.foreground.primary}"
   },
-  "checkbox.checked.border": {
+  "checkbox.border-checked": {
     "$type": "color",
     "$value": "{color.background.primary}"
   },
@@ -2602,10 +2570,6 @@
     "$value": "{opacity.100}"
   },
   "dialog.close-button-offset": {
-    "$type": "spacing",
-    "$value": "{space.200}"
-  },
-  "dialog.close-button-icon-size": {
     "$type": "spacing",
     "$value": "{space.200}"
   },
@@ -2657,18 +2621,6 @@
     "$type": "color",
     "$value": "{color.border.focus}"
   },
-  "popover.border-focus": {
-    "$type": "color",
-    "$value": "{color.border.focus}"
-  },
-  "form.label-text": {
-    "$type": "color",
-    "$value": "{color.foreground.default}"
-  },
-  "form.label-font-size": {
-    "$type": "number",
-    "$value": "{typography.font-size.sm}"
-  },
   "form.label-font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.medium}"
@@ -2677,18 +2629,6 @@
     "$type": "number",
     "$value": "{typography.font-weight.medium}"
   },
-  "form.hint.text": {
-    "$type": "color",
-    "$value": "{color.foreground.muted}"
-  },
-  "form.hint.font-size": {
-    "$type": "number",
-    "$value": "{typography.font-size.xs}"
-  },
-  "form.error-text": {
-    "$type": "color",
-    "$value": "{color.foreground.danger-muted}"
-  },
   "form.error-font-size": {
     "$type": "number",
     "$value": "{typography.font-size.xs}"
@@ -2696,22 +2636,6 @@
   "form.required-color": {
     "$type": "color",
     "$value": "{color.foreground.danger-muted}"
-  },
-  "form.gap": {
-    "$type": "spacing",
-    "$value": "{space.200}"
-  },
-  "form.fieldset-gap": {
-    "$type": "spacing",
-    "$value": "{space.300}"
-  },
-  "form.fieldset.legend.font-size": {
-    "$type": "number",
-    "$value": "{typography.font-size.base}"
-  },
-  "form.fieldset.legend.font-weight": {
-    "$type": "number",
-    "$value": "{typography.font-weight.semibold}"
   },
   "badge.default.background-focus": {
     "$type": "color",
@@ -2777,22 +2701,6 @@
     "$type": "color",
     "$value": "{color.background.muted}"
   },
-  "calendar.day-focus": {
-    "$type": "color",
-    "$value": "{color.background.primary-muted}"
-  },
-  "calendar.day-text-focus": {
-    "$type": "color",
-    "$value": "{color.foreground.default}"
-  },
-  "calendar.nav-focus": {
-    "$type": "color",
-    "$value": "{color.background.primary-muted}"
-  },
-  "calendar.nav-text-focus": {
-    "$type": "color",
-    "$value": "{color.foreground.default}"
-  },
   "calendar.nav-button.opacity": {
     "$type": "number",
     "$value": "{opacity.50}"
@@ -2821,10 +2729,6 @@
     "$type": "number",
     "$value": "{typography.font-weight.regular}"
   },
-  "breadcrumb.link-focus": {
-    "$type": "color",
-    "$value": "{color.background.primary-muted}"
-  },
   "breadcrumb.link-disabled": {
     "$type": "color",
     "$value": "{color.foreground.faint}"
@@ -2836,10 +2740,6 @@
   "pagination.item.font-weight": {
     "$type": "number",
     "$value": "{typography.font-weight.medium}"
-  },
-  "table.row-focus": {
-    "$type": "color",
-    "$value": "{color.background.primary-muted}"
   },
   "toggle.background-hover": {
     "$type": "color",

@@ -149,7 +149,6 @@ export type CssVarName =
   | "--color-breadcrumb-current"
   | "--color-breadcrumb-link"
   | "--color-breadcrumb-link-disabled"
-  | "--color-breadcrumb-link-focus"
   | "--color-breadcrumb-link-hover"
   | "--color-breadcrumb-text"
   | "--color-button-destructive-background"
@@ -188,20 +187,16 @@ export type CssVarName =
   | "--color-button-secondary-border-disabled"
   | "--color-button-secondary-text"
   | "--color-button-secondary-text-disabled"
-  | "--color-calendar-day-focus"
   | "--color-calendar-day-hover"
   | "--color-calendar-day-selected"
-  | "--color-calendar-day-text-focus"
   | "--color-calendar-day-text-hover"
   | "--color-calendar-day-text-selected"
   | "--color-calendar-header-text"
   | "--color-calendar-nav-border"
   | "--color-calendar-nav-border-disabled"
   | "--color-calendar-nav-button-ring-offset"
-  | "--color-calendar-nav-focus"
   | "--color-calendar-nav-hover"
   | "--color-calendar-nav-text-disabled"
-  | "--color-calendar-nav-text-focus"
   | "--color-calendar-nav-text-hover"
   | "--color-card-background"
   | "--color-card-background-active"
@@ -221,13 +216,13 @@ export type CssVarName =
   | "--color-carousel-nav-hover"
   | "--color-carousel-nav-text-disabled"
   | "--color-carousel-nav-text-hover"
+  | "--color-checkbox-background-checked"
   | "--color-checkbox-background-disabled"
+  | "--color-checkbox-border-checked"
   | "--color-checkbox-border-color"
   | "--color-checkbox-border-disabled"
-  | "--color-checkbox-checked-background"
-  | "--color-checkbox-checked-border"
-  | "--color-checkbox-checked-text"
   | "--color-checkbox-error-border"
+  | "--color-checkbox-text-checked"
   | "--color-checkbox-text-disabled"
   | "--color-collapsible-background"
   | "--color-command-background"
@@ -292,11 +287,8 @@ export type CssVarName =
   | "--color-foreground-warning-muted"
   | "--color-form-description"
   | "--color-form-error"
-  | "--color-form-error-text"
-  | "--color-form-hint-text"
   | "--color-form-label"
   | "--color-form-label-error-text"
-  | "--color-form-label-text"
   | "--color-form-label-text-disabled"
   | "--color-form-required-color"
   | "--color-gray-100"
@@ -324,6 +316,7 @@ export type CssVarName =
   | "--color-hover-card-background"
   | "--color-hover-card-border"
   | "--color-hover-card-text"
+  | "--color-input-background-disabled"
   | "--color-input-background-hover"
   | "--color-input-border"
   | "--color-input-border-error"
@@ -331,9 +324,8 @@ export type CssVarName =
   | "--color-input-border-success"
   | "--color-input-default-background"
   | "--color-input-default-text"
-  | "--color-input-disabled-background"
-  | "--color-input-disabled-text"
   | "--color-input-placeholder"
+  | "--color-input-text-disabled"
   | "--color-label-default-color"
   | "--color-label-disabled-color"
   | "--color-label-error-text"
@@ -421,7 +413,6 @@ export type CssVarName =
   | "--color-polar-night-950"
   | "--color-popover-background"
   | "--color-popover-border"
-  | "--color-popover-border-focus"
   | "--color-popover-text"
   | "--color-progress-background"
   | "--color-progress-default-fill"
@@ -527,7 +518,6 @@ export type CssVarName =
   | "--color-table-caption"
   | "--color-table-footer-background"
   | "--color-table-header-text"
-  | "--color-table-row-focus"
   | "--color-table-row-hover"
   | "--color-table-row-selected"
   | "--color-tabs-content-ring-offset"
@@ -596,7 +586,6 @@ export type CssVarName =
   | "--duration-500"
   | "--duration-700"
   | "--duration-75"
-  | "--duration-collapsible-animation-duration"
   | "--duration-fast"
   | "--duration-instant"
   | "--duration-normal"
@@ -644,9 +633,6 @@ export type CssVarName =
   | "--font-size-feature-grid-title-font-size"
   | "--font-size-form-description-font-size"
   | "--font-size-form-error-font-size"
-  | "--font-size-form-fieldset-legend-font-size"
-  | "--font-size-form-hint-font-size"
-  | "--font-size-form-label-font-size"
   | "--font-size-heading-lg"
   | "--font-size-heading-md"
   | "--font-size-heading-sm"
@@ -661,7 +647,6 @@ export type CssVarName =
   | "--font-size-menubar-shortcut-font-size"
   | "--font-size-navigation-menu-trigger-font-size"
   | "--font-size-pagination-item-font-size"
-  | "--font-size-select-item-font-size"
   | "--font-size-select-trigger-font-size-lg"
   | "--font-size-select-trigger-font-size-md"
   | "--font-size-select-trigger-font-size-sm"
@@ -704,7 +689,6 @@ export type CssVarName =
   | "--font-weight-extrabold"
   | "--font-weight-extralight"
   | "--font-weight-feature-grid-title-font-weight"
-  | "--font-weight-form-fieldset-legend-font-weight"
   | "--font-weight-form-label-font-weight"
   | "--font-weight-form-message-font-weight"
   | "--font-weight-label-font-weight"
@@ -826,7 +810,6 @@ export type CssVarName =
   | "--space-badge-padding-y-sm"
   | "--space-badge-radius"
   | "--space-breadcrumb-ellipsis-size"
-  | "--space-breadcrumb-gap"
   | "--space-breadcrumb-item-gap"
   | "--space-breadcrumb-link-radius"
   | "--space-breadcrumb-list-gap"
@@ -905,7 +888,6 @@ export type CssVarName =
   | "--space-context-menu-separator-margin-y"
   | "--space-context-menu-shortcut-letter-spacing"
   | "--space-context-menu-sub-content-min-width"
-  | "--space-dialog-close-button-icon-size"
   | "--space-dialog-close-button-offset"
   | "--space-dialog-close-button-radius"
   | "--space-dialog-content-max-width"
@@ -943,8 +925,6 @@ export type CssVarName =
   | "--space-focus-ring-offset"
   | "--space-focus-ring-width"
   | "--space-form-error-margin"
-  | "--space-form-fieldset-gap"
-  | "--space-form-gap"
   | "--space-form-item-gap"
   | "--space-form-label-gap"
   | "--space-hover-card-content-padding"
@@ -962,7 +942,6 @@ export type CssVarName =
   | "--space-input-padding-y-md"
   | "--space-input-padding-y-sm"
   | "--space-input-radius"
-  | "--space-label-margin-bottom"
   | "--space-label-required-margin-left"
   | "--space-menubar-checkbox-padding"
   | "--space-menubar-content-min-width"
@@ -1013,7 +992,7 @@ export type CssVarName =
   | "--space-radio-border-radius"
   | "--space-radio-focus-ring-offset"
   | "--space-radio-focus-ring-width"
-  | "--space-radio-group-item-gap"
+  | "--space-radio-group-gap"
   | "--space-radio-indicator-size-lg"
   | "--space-radio-indicator-size-md"
   | "--space-radio-indicator-size-sm"
@@ -1026,7 +1005,7 @@ export type CssVarName =
   | "--space-resizable-handle-height"
   | "--space-resizable-handle-radius"
   | "--space-resizable-handle-width"
-  | "--space-scroll-area-scrollbar-padding"
+  | "--space-scrollbar-padding"
   | "--space-scrollbar-radius"
   | "--space-scrollbar-thumb-min-height"
   | "--space-scrollbar-thumb-radius"
@@ -1135,7 +1114,6 @@ export type CssVarName =
   | "--space-tabs-list-padding-lg"
   | "--space-tabs-list-padding-md"
   | "--space-tabs-list-padding-sm"
-  | "--space-tabs-trigger-border-width"
   | "--space-tabs-trigger-indicator-width"
   | "--space-tabs-trigger-padding-x-lg"
   | "--space-tabs-trigger-padding-x-md"
@@ -1151,12 +1129,9 @@ export type CssVarName =
   | "--space-toast-action-height"
   | "--space-toast-action-padding-x"
   | "--space-toast-action-radius"
-  | "--space-toast-border-radius"
   | "--space-toast-close-button-padding"
   | "--space-toast-close-button-position"
   | "--space-toast-close-button-radius"
-  | "--space-toast-close-padding"
-  | "--space-toast-close-radius"
   | "--space-toast-close-size"
   | "--space-toast-content-gap"
   | "--space-toast-gap"
@@ -1371,7 +1346,6 @@ export declare const cssVars: Readonly<{
   "colorBreadcrumbCurrent": "--color-breadcrumb-current";
   "colorBreadcrumbLink": "--color-breadcrumb-link";
   "colorBreadcrumbLinkDisabled": "--color-breadcrumb-link-disabled";
-  "colorBreadcrumbLinkFocus": "--color-breadcrumb-link-focus";
   "colorBreadcrumbLinkHover": "--color-breadcrumb-link-hover";
   "colorBreadcrumbText": "--color-breadcrumb-text";
   "colorButtonDestructiveBackground": "--color-button-destructive-background";
@@ -1410,20 +1384,16 @@ export declare const cssVars: Readonly<{
   "colorButtonSecondaryBorderDisabled": "--color-button-secondary-border-disabled";
   "colorButtonSecondaryText": "--color-button-secondary-text";
   "colorButtonSecondaryTextDisabled": "--color-button-secondary-text-disabled";
-  "colorCalendarDayFocus": "--color-calendar-day-focus";
   "colorCalendarDayHover": "--color-calendar-day-hover";
   "colorCalendarDaySelected": "--color-calendar-day-selected";
-  "colorCalendarDayTextFocus": "--color-calendar-day-text-focus";
   "colorCalendarDayTextHover": "--color-calendar-day-text-hover";
   "colorCalendarDayTextSelected": "--color-calendar-day-text-selected";
   "colorCalendarHeaderText": "--color-calendar-header-text";
   "colorCalendarNavBorder": "--color-calendar-nav-border";
   "colorCalendarNavBorderDisabled": "--color-calendar-nav-border-disabled";
   "colorCalendarNavButtonRingOffset": "--color-calendar-nav-button-ring-offset";
-  "colorCalendarNavFocus": "--color-calendar-nav-focus";
   "colorCalendarNavHover": "--color-calendar-nav-hover";
   "colorCalendarNavTextDisabled": "--color-calendar-nav-text-disabled";
-  "colorCalendarNavTextFocus": "--color-calendar-nav-text-focus";
   "colorCalendarNavTextHover": "--color-calendar-nav-text-hover";
   "colorCardBackground": "--color-card-background";
   "colorCardBackgroundActive": "--color-card-background-active";
@@ -1443,13 +1413,13 @@ export declare const cssVars: Readonly<{
   "colorCarouselNavHover": "--color-carousel-nav-hover";
   "colorCarouselNavTextDisabled": "--color-carousel-nav-text-disabled";
   "colorCarouselNavTextHover": "--color-carousel-nav-text-hover";
+  "colorCheckboxBackgroundChecked": "--color-checkbox-background-checked";
   "colorCheckboxBackgroundDisabled": "--color-checkbox-background-disabled";
+  "colorCheckboxBorderChecked": "--color-checkbox-border-checked";
   "colorCheckboxBorderColor": "--color-checkbox-border-color";
   "colorCheckboxBorderDisabled": "--color-checkbox-border-disabled";
-  "colorCheckboxCheckedBackground": "--color-checkbox-checked-background";
-  "colorCheckboxCheckedBorder": "--color-checkbox-checked-border";
-  "colorCheckboxCheckedText": "--color-checkbox-checked-text";
   "colorCheckboxErrorBorder": "--color-checkbox-error-border";
+  "colorCheckboxTextChecked": "--color-checkbox-text-checked";
   "colorCheckboxTextDisabled": "--color-checkbox-text-disabled";
   "colorCollapsibleBackground": "--color-collapsible-background";
   "colorCommandBackground": "--color-command-background";
@@ -1514,11 +1484,8 @@ export declare const cssVars: Readonly<{
   "colorForegroundWarningMuted": "--color-foreground-warning-muted";
   "colorFormDescription": "--color-form-description";
   "colorFormError": "--color-form-error";
-  "colorFormErrorText": "--color-form-error-text";
-  "colorFormHintText": "--color-form-hint-text";
   "colorFormLabel": "--color-form-label";
   "colorFormLabelErrorText": "--color-form-label-error-text";
-  "colorFormLabelText": "--color-form-label-text";
   "colorFormLabelTextDisabled": "--color-form-label-text-disabled";
   "colorFormRequiredColor": "--color-form-required-color";
   "colorGray100": "--color-gray-100";
@@ -1546,6 +1513,7 @@ export declare const cssVars: Readonly<{
   "colorHoverCardBackground": "--color-hover-card-background";
   "colorHoverCardBorder": "--color-hover-card-border";
   "colorHoverCardText": "--color-hover-card-text";
+  "colorInputBackgroundDisabled": "--color-input-background-disabled";
   "colorInputBackgroundHover": "--color-input-background-hover";
   "colorInputBorder": "--color-input-border";
   "colorInputBorderError": "--color-input-border-error";
@@ -1553,9 +1521,8 @@ export declare const cssVars: Readonly<{
   "colorInputBorderSuccess": "--color-input-border-success";
   "colorInputDefaultBackground": "--color-input-default-background";
   "colorInputDefaultText": "--color-input-default-text";
-  "colorInputDisabledBackground": "--color-input-disabled-background";
-  "colorInputDisabledText": "--color-input-disabled-text";
   "colorInputPlaceholder": "--color-input-placeholder";
+  "colorInputTextDisabled": "--color-input-text-disabled";
   "colorLabelDefaultColor": "--color-label-default-color";
   "colorLabelDisabledColor": "--color-label-disabled-color";
   "colorLabelErrorText": "--color-label-error-text";
@@ -1643,7 +1610,6 @@ export declare const cssVars: Readonly<{
   "colorPolarNight950": "--color-polar-night-950";
   "colorPopoverBackground": "--color-popover-background";
   "colorPopoverBorder": "--color-popover-border";
-  "colorPopoverBorderFocus": "--color-popover-border-focus";
   "colorPopoverText": "--color-popover-text";
   "colorProgressBackground": "--color-progress-background";
   "colorProgressDefaultFill": "--color-progress-default-fill";
@@ -1749,7 +1715,6 @@ export declare const cssVars: Readonly<{
   "colorTableCaption": "--color-table-caption";
   "colorTableFooterBackground": "--color-table-footer-background";
   "colorTableHeaderText": "--color-table-header-text";
-  "colorTableRowFocus": "--color-table-row-focus";
   "colorTableRowHover": "--color-table-row-hover";
   "colorTableRowSelected": "--color-table-row-selected";
   "colorTabsContentRingOffset": "--color-tabs-content-ring-offset";
@@ -1818,7 +1783,6 @@ export declare const cssVars: Readonly<{
   "duration500": "--duration-500";
   "duration700": "--duration-700";
   "duration75": "--duration-75";
-  "durationCollapsibleAnimationDuration": "--duration-collapsible-animation-duration";
   "durationFast": "--duration-fast";
   "durationInstant": "--duration-instant";
   "durationNormal": "--duration-normal";
@@ -1866,9 +1830,6 @@ export declare const cssVars: Readonly<{
   "fontSizeFeatureGridTitleFontSize": "--font-size-feature-grid-title-font-size";
   "fontSizeFormDescriptionFontSize": "--font-size-form-description-font-size";
   "fontSizeFormErrorFontSize": "--font-size-form-error-font-size";
-  "fontSizeFormFieldsetLegendFontSize": "--font-size-form-fieldset-legend-font-size";
-  "fontSizeFormHintFontSize": "--font-size-form-hint-font-size";
-  "fontSizeFormLabelFontSize": "--font-size-form-label-font-size";
   "fontSizeHeadingLg": "--font-size-heading-lg";
   "fontSizeHeadingMd": "--font-size-heading-md";
   "fontSizeHeadingSm": "--font-size-heading-sm";
@@ -1883,7 +1844,6 @@ export declare const cssVars: Readonly<{
   "fontSizeMenubarShortcutFontSize": "--font-size-menubar-shortcut-font-size";
   "fontSizeNavigationMenuTriggerFontSize": "--font-size-navigation-menu-trigger-font-size";
   "fontSizePaginationItemFontSize": "--font-size-pagination-item-font-size";
-  "fontSizeSelectItemFontSize": "--font-size-select-item-font-size";
   "fontSizeSelectTriggerFontSizeLg": "--font-size-select-trigger-font-size-lg";
   "fontSizeSelectTriggerFontSizeMd": "--font-size-select-trigger-font-size-md";
   "fontSizeSelectTriggerFontSizeSm": "--font-size-select-trigger-font-size-sm";
@@ -1926,7 +1886,6 @@ export declare const cssVars: Readonly<{
   "fontWeightExtrabold": "--font-weight-extrabold";
   "fontWeightExtralight": "--font-weight-extralight";
   "fontWeightFeatureGridTitleFontWeight": "--font-weight-feature-grid-title-font-weight";
-  "fontWeightFormFieldsetLegendFontWeight": "--font-weight-form-fieldset-legend-font-weight";
   "fontWeightFormLabelFontWeight": "--font-weight-form-label-font-weight";
   "fontWeightFormMessageFontWeight": "--font-weight-form-message-font-weight";
   "fontWeightLabelFontWeight": "--font-weight-label-font-weight";
@@ -2048,7 +2007,6 @@ export declare const cssVars: Readonly<{
   "spaceBadgePaddingYSm": "--space-badge-padding-y-sm";
   "spaceBadgeRadius": "--space-badge-radius";
   "spaceBreadcrumbEllipsisSize": "--space-breadcrumb-ellipsis-size";
-  "spaceBreadcrumbGap": "--space-breadcrumb-gap";
   "spaceBreadcrumbItemGap": "--space-breadcrumb-item-gap";
   "spaceBreadcrumbLinkRadius": "--space-breadcrumb-link-radius";
   "spaceBreadcrumbListGap": "--space-breadcrumb-list-gap";
@@ -2127,7 +2085,6 @@ export declare const cssVars: Readonly<{
   "spaceContextMenuSeparatorMarginY": "--space-context-menu-separator-margin-y";
   "spaceContextMenuShortcutLetterSpacing": "--space-context-menu-shortcut-letter-spacing";
   "spaceContextMenuSubContentMinWidth": "--space-context-menu-sub-content-min-width";
-  "spaceDialogCloseButtonIconSize": "--space-dialog-close-button-icon-size";
   "spaceDialogCloseButtonOffset": "--space-dialog-close-button-offset";
   "spaceDialogCloseButtonRadius": "--space-dialog-close-button-radius";
   "spaceDialogContentMaxWidth": "--space-dialog-content-max-width";
@@ -2165,8 +2122,6 @@ export declare const cssVars: Readonly<{
   "spaceFocusRingOffset": "--space-focus-ring-offset";
   "spaceFocusRingWidth": "--space-focus-ring-width";
   "spaceFormErrorMargin": "--space-form-error-margin";
-  "spaceFormFieldsetGap": "--space-form-fieldset-gap";
-  "spaceFormGap": "--space-form-gap";
   "spaceFormItemGap": "--space-form-item-gap";
   "spaceFormLabelGap": "--space-form-label-gap";
   "spaceHoverCardContentPadding": "--space-hover-card-content-padding";
@@ -2184,7 +2139,6 @@ export declare const cssVars: Readonly<{
   "spaceInputPaddingYMd": "--space-input-padding-y-md";
   "spaceInputPaddingYSm": "--space-input-padding-y-sm";
   "spaceInputRadius": "--space-input-radius";
-  "spaceLabelMarginBottom": "--space-label-margin-bottom";
   "spaceLabelRequiredMarginLeft": "--space-label-required-margin-left";
   "spaceMenubarCheckboxPadding": "--space-menubar-checkbox-padding";
   "spaceMenubarContentMinWidth": "--space-menubar-content-min-width";
@@ -2235,7 +2189,7 @@ export declare const cssVars: Readonly<{
   "spaceRadioBorderRadius": "--space-radio-border-radius";
   "spaceRadioFocusRingOffset": "--space-radio-focus-ring-offset";
   "spaceRadioFocusRingWidth": "--space-radio-focus-ring-width";
-  "spaceRadioGroupItemGap": "--space-radio-group-item-gap";
+  "spaceRadioGroupGap": "--space-radio-group-gap";
   "spaceRadioIndicatorSizeLg": "--space-radio-indicator-size-lg";
   "spaceRadioIndicatorSizeMd": "--space-radio-indicator-size-md";
   "spaceRadioIndicatorSizeSm": "--space-radio-indicator-size-sm";
@@ -2248,7 +2202,7 @@ export declare const cssVars: Readonly<{
   "spaceResizableHandleHeight": "--space-resizable-handle-height";
   "spaceResizableHandleRadius": "--space-resizable-handle-radius";
   "spaceResizableHandleWidth": "--space-resizable-handle-width";
-  "spaceScrollAreaScrollbarPadding": "--space-scroll-area-scrollbar-padding";
+  "spaceScrollbarPadding": "--space-scrollbar-padding";
   "spaceScrollbarRadius": "--space-scrollbar-radius";
   "spaceScrollbarThumbMinHeight": "--space-scrollbar-thumb-min-height";
   "spaceScrollbarThumbRadius": "--space-scrollbar-thumb-radius";
@@ -2357,7 +2311,6 @@ export declare const cssVars: Readonly<{
   "spaceTabsListPaddingLg": "--space-tabs-list-padding-lg";
   "spaceTabsListPaddingMd": "--space-tabs-list-padding-md";
   "spaceTabsListPaddingSm": "--space-tabs-list-padding-sm";
-  "spaceTabsTriggerBorderWidth": "--space-tabs-trigger-border-width";
   "spaceTabsTriggerIndicatorWidth": "--space-tabs-trigger-indicator-width";
   "spaceTabsTriggerPaddingXLg": "--space-tabs-trigger-padding-x-lg";
   "spaceTabsTriggerPaddingXMd": "--space-tabs-trigger-padding-x-md";
@@ -2373,12 +2326,9 @@ export declare const cssVars: Readonly<{
   "spaceToastActionHeight": "--space-toast-action-height";
   "spaceToastActionPaddingX": "--space-toast-action-padding-x";
   "spaceToastActionRadius": "--space-toast-action-radius";
-  "spaceToastBorderRadius": "--space-toast-border-radius";
   "spaceToastCloseButtonPadding": "--space-toast-close-button-padding";
   "spaceToastCloseButtonPosition": "--space-toast-close-button-position";
   "spaceToastCloseButtonRadius": "--space-toast-close-button-radius";
-  "spaceToastClosePadding": "--space-toast-close-padding";
-  "spaceToastCloseRadius": "--space-toast-close-radius";
   "spaceToastCloseSize": "--space-toast-close-size";
   "spaceToastContentGap": "--space-toast-content-gap";
   "spaceToastGap": "--space-toast-gap";

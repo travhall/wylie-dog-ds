@@ -13,7 +13,7 @@ const RadioGroup = React.forwardRef<
 >(({ className, orientation, ...props }, ref) => (
   <RadioGroupPrimitive.Root
     className={cn(
-      "gap-(--space-radio-group-item-gap)",
+      "gap-(--space-radio-group-gap)",
       orientation === "horizontal" ? "flex flex-wrap" : "grid",
       className
     )}

@@ -1,6 +1,6 @@
 # Component token grammar and the binding rule
 
-**Status:** Rule and exceptions decided with the owner on 2026-10-21 and 2026-10-23 (Plan 193). The binding check is enforced; the structure check for this layer is partly pending (see "Open renames").
+**Status:** Rule and exceptions decided with the owner on 2026-10-21 and 2026-10-23 (Plan 193). The binding check and the structure check are both enforced.
 
 ## The rule
 
@@ -55,9 +55,9 @@ A Radix state attribute can outrank the `disabled:` variant, so classes for a di
 
 A component token exists only if code or a Figma component binds to it, or it is listed as specification-only. Specification-only tokens describe a state or part that Figma shows and the code does not use yet; they are reviewed per component before anything is deleted.
 
-## Open renames
+## Structure check
 
-Tokens that still write a state as a path level (`input.disabled.background`, `input.disabled.text`, `checkbox.checked.background`, `checkbox.checked.text`, `checkbox.checked.border`) and the components that hold a single token in their group change the CSS variable name, so they wait for the owner's approval. Until they are renamed the structure check for this layer is not enforced.
+`scripts/check-token-structure.mjs` (run by `pnpm check:tokens`) also covers this collection: no state word as a path level, no group that holds a single variable, no variable that is also a group name. A component that would hold one token in its group joins another component's group by the grammar: the radio group gap is `radio.group-gap`, the scroll area padding is `scrollbar.padding`.
 
 ## Related
 

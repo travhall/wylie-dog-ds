@@ -85,7 +85,7 @@ const TableHead = React.forwardRef<
   <th
     ref={ref}
     className={cn(
-      "h-(--space-table-header-height) text-left align-middle font-(--font-weight-table-header-font-weight) [&:has([role=checkbox])]:pr-0",
+      "h-(--space-table-header-height) text-left align-middle font-(--font-weight-table-header-font-weight) [&:has([role=checkbox])]:pr-(--space-table-header-padding-right)",
       "px-(--space-table-cell-padding-x)",
       "text-(length:--font-size-table-header-font-size)",
       "text-(--color-table-header-text)",

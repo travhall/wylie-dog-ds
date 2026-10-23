@@ -4927,28 +4927,26 @@
         "variable": "var(--color-input-placeholder)",
         "description": ""
       },
-      "input-disabled-background": {
-        "name": "inputDisabledBackground",
+      "input-background-disabled": {
+        "name": "inputBackgroundDisabled",
         "path": [
           "input",
-          "disabled",
-          "background"
+          "background-disabled"
         ],
         "value": "oklch(0.87 0.003 264.48)",
         "type": "color",
-        "variable": "var(--color-input-disabled-background)",
+        "variable": "var(--color-input-background-disabled)",
         "description": ""
       },
-      "input-disabled-text": {
-        "name": "inputDisabledText",
+      "input-text-disabled": {
+        "name": "inputTextDisabled",
         "path": [
           "input",
-          "disabled",
-          "text"
+          "text-disabled"
         ],
         "value": "oklch(0.52 0.007 264.5)",
         "type": "color",
-        "variable": "var(--color-input-disabled-text)",
+        "variable": "var(--color-input-text-disabled)",
         "description": ""
       },
       "input-padding-x": {
@@ -6654,18 +6652,6 @@
         "variable": "var(--tabs-trigger-indicator-width)",
         "description": ""
       },
-      "tabs-trigger-border-width": {
-        "name": "tabsTriggerBorderWidth",
-        "path": [
-          "tabs",
-          "trigger",
-          "border-width"
-        ],
-        "value": "2px",
-        "type": "dimension",
-        "variable": "var(--tabs-trigger-border-width)",
-        "description": ""
-      },
       "tabs-content-padding": {
         "name": "tabsContentPadding",
         "path": [
@@ -6760,17 +6746,6 @@
         "value": "4px",
         "type": "dimension",
         "variable": "var(--collapsible-radius)",
-        "description": ""
-      },
-      "collapsible-animation-duration": {
-        "name": "collapsibleAnimationDuration",
-        "path": [
-          "collapsible",
-          "animation-duration"
-        ],
-        "value": "250ms",
-        "type": "duration",
-        "variable": "var(--collapsible-animation-duration)",
         "description": ""
       }
     },
@@ -6985,50 +6960,6 @@
         "value": 12,
         "type": "number",
         "variable": "var(--calendar-day-font-size)",
-        "description": ""
-      },
-      "calendar-day-focus": {
-        "name": "calendarDayFocus",
-        "path": [
-          "calendar",
-          "day-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-calendar-day-focus)",
-        "description": ""
-      },
-      "calendar-day-text-focus": {
-        "name": "calendarDayTextFocus",
-        "path": [
-          "calendar",
-          "day-text-focus"
-        ],
-        "value": "oklch(0.209 0.01 268.18)",
-        "type": "color",
-        "variable": "var(--color-calendar-day-text-focus)",
-        "description": ""
-      },
-      "calendar-nav-focus": {
-        "name": "calendarNavFocus",
-        "path": [
-          "calendar",
-          "nav-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-calendar-nav-focus)",
-        "description": ""
-      },
-      "calendar-nav-text-focus": {
-        "name": "calendarNavTextFocus",
-        "path": [
-          "calendar",
-          "nav-text-focus"
-        ],
-        "value": "oklch(0.209 0.01 268.18)",
-        "type": "color",
-        "variable": "var(--color-calendar-nav-text-focus)",
         "description": ""
       },
       "calendar-nav-button-opacity": {
@@ -7634,17 +7565,6 @@
         "variable": "var(--breadcrumb-item-gap)",
         "description": ""
       },
-      "breadcrumb-gap": {
-        "name": "breadcrumbGap",
-        "path": [
-          "breadcrumb",
-          "gap"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--breadcrumb-gap)",
-        "description": ""
-      },
       "breadcrumb-font-size": {
         "name": "breadcrumbFontSize",
         "path": [
@@ -7698,17 +7618,6 @@
         "value": 400,
         "type": "number",
         "variable": "var(--breadcrumb-page-font-weight)",
-        "description": ""
-      },
-      "breadcrumb-link-focus": {
-        "name": "breadcrumbLinkFocus",
-        "path": [
-          "breadcrumb",
-          "link-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-breadcrumb-link-focus)",
         "description": ""
       },
       "breadcrumb-link-disabled": {
@@ -8184,17 +8093,6 @@
         "variable": "var(--dialog-close-button-offset)",
         "description": ""
       },
-      "dialog-close-button-icon-size": {
-        "name": "dialogCloseButtonIconSize",
-        "path": [
-          "dialog",
-          "close-button-icon-size"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--dialog-close-button-icon-size)",
-        "description": ""
-      },
       "dialog-close-button-opacity": {
         "name": "dialogCloseButtonOpacity",
         "path": [
@@ -8320,28 +8218,6 @@
         "variable": "var(--form-description-font-size)",
         "description": ""
       },
-      "form-label-text": {
-        "name": "formLabelText",
-        "path": [
-          "form",
-          "label-text"
-        ],
-        "value": "oklch(0.209 0.01 268.18)",
-        "type": "color",
-        "variable": "var(--color-form-label-text)",
-        "description": ""
-      },
-      "form-label-font-size": {
-        "name": "formLabelFontSize",
-        "path": [
-          "form",
-          "label-font-size"
-        ],
-        "value": 14,
-        "type": "number",
-        "variable": "var(--form-label-font-size)",
-        "description": ""
-      },
       "form-label-font-weight": {
         "name": "formLabelFontWeight",
         "path": [
@@ -8364,41 +8240,6 @@
         "variable": "var(--form-message-font-weight)",
         "description": ""
       },
-      "form-hint-text": {
-        "name": "formHintText",
-        "path": [
-          "form",
-          "hint",
-          "text"
-        ],
-        "value": "oklch(0.423 0.007 264.49)",
-        "type": "color",
-        "variable": "var(--color-form-hint-text)",
-        "description": ""
-      },
-      "form-hint-font-size": {
-        "name": "formHintFontSize",
-        "path": [
-          "form",
-          "hint",
-          "font-size"
-        ],
-        "value": 12,
-        "type": "number",
-        "variable": "var(--form-hint-font-size)",
-        "description": ""
-      },
-      "form-error-text": {
-        "name": "formErrorText",
-        "path": [
-          "form",
-          "error-text"
-        ],
-        "value": "oklch(0.488 0.19 27.49)",
-        "type": "color",
-        "variable": "var(--color-form-error-text)",
-        "description": ""
-      },
       "form-error-font-size": {
         "name": "formErrorFontSize",
         "path": [
@@ -8419,54 +8260,6 @@
         "value": "oklch(0.488 0.19 27.49)",
         "type": "color",
         "variable": "var(--color-form-required-color)",
-        "description": ""
-      },
-      "form-gap": {
-        "name": "formGap",
-        "path": [
-          "form",
-          "gap"
-        ],
-        "value": "16px",
-        "type": "spacing",
-        "variable": "var(--form-gap)",
-        "description": ""
-      },
-      "form-fieldset-gap": {
-        "name": "formFieldsetGap",
-        "path": [
-          "form",
-          "fieldset-gap"
-        ],
-        "value": "24px",
-        "type": "spacing",
-        "variable": "var(--form-fieldset-gap)",
-        "description": ""
-      },
-      "form-fieldset-legend-font-size": {
-        "name": "formFieldsetLegendFontSize",
-        "path": [
-          "form",
-          "fieldset",
-          "legend",
-          "font-size"
-        ],
-        "value": 16,
-        "type": "number",
-        "variable": "var(--form-fieldset-legend-font-size)",
-        "description": ""
-      },
-      "form-fieldset-legend-font-weight": {
-        "name": "formFieldsetLegendFontWeight",
-        "path": [
-          "form",
-          "fieldset",
-          "legend",
-          "font-weight"
-        ],
-        "value": 600,
-        "type": "number",
-        "variable": "var(--form-fieldset-legend-font-weight)",
         "description": ""
       },
       "form-label-error-text": {
@@ -8877,17 +8670,6 @@
         "type": "dimension",
         "variable": "var(--popover-content-radius)",
         "description": ""
-      },
-      "popover-border-focus": {
-        "name": "popoverBorderFocus",
-        "path": [
-          "popover",
-          "border-focus"
-        ],
-        "value": "oklch(0.623 0.188 259.83)",
-        "type": "color",
-        "variable": "var(--color-popover-border-focus)",
-        "description": ""
       }
     },
     "progress": {
@@ -9118,6 +8900,17 @@
         "variable": "var(--radio-focus-ring-offset)",
         "description": ""
       },
+      "radio-group-gap": {
+        "name": "radioGroupGap",
+        "path": [
+          "radio",
+          "group-gap"
+        ],
+        "value": "8px",
+        "type": "spacing",
+        "variable": "var(--radio-group-gap)",
+        "description": ""
+      },
       "radio-background-disabled": {
         "name": "radioBackgroundDisabled",
         "path": [
@@ -9307,6 +9100,17 @@
         "value": "40px",
         "type": "spacing",
         "variable": "var(--scrollbar-thumb-min-height)",
+        "description": ""
+      },
+      "scrollbar-padding": {
+        "name": "scrollbarPadding",
+        "path": [
+          "scrollbar",
+          "padding"
+        ],
+        "value": "1px",
+        "type": "spacing",
+        "variable": "var(--scrollbar-padding)",
         "description": ""
       }
     },
@@ -9755,17 +9559,6 @@
         "type": "number",
         "variable": "var(--table-footer-font-weight)",
         "description": ""
-      },
-      "table-row-focus": {
-        "name": "tableRowFocus",
-        "path": [
-          "table",
-          "row-focus"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-table-row-focus)",
-        "description": ""
       }
     },
     "toast": {
@@ -9952,17 +9745,6 @@
         "variable": "var(--toast-close-size)",
         "description": ""
       },
-      "toast-close-radius": {
-        "name": "toastCloseRadius",
-        "path": [
-          "toast",
-          "close-radius"
-        ],
-        "value": "2px",
-        "type": "dimension",
-        "variable": "var(--toast-close-radius)",
-        "description": ""
-      },
       "toast-destructive-border": {
         "name": "toastDestructiveBorder",
         "path": [
@@ -10070,28 +9852,6 @@
         "type": "color",
         "variable": "var(--color-toast-warning-text)",
         "description": "Text color on warning toast (saturated orange background)"
-      },
-      "toast-border-radius": {
-        "name": "toastBorderRadius",
-        "path": [
-          "toast",
-          "border-radius"
-        ],
-        "value": "8px",
-        "type": "dimension",
-        "variable": "var(--toast-border-radius)",
-        "description": ""
-      },
-      "toast-close-padding": {
-        "name": "toastClosePadding",
-        "path": [
-          "toast",
-          "close-padding"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--toast-close-padding)",
-        "description": ""
       },
       "toast-close-button-padding": {
         "name": "toastCloseButtonPadding",
@@ -10784,18 +10544,6 @@
         "variable": "var(--select-item-radius)",
         "description": ""
       },
-      "select-item-font-size": {
-        "name": "selectItemFontSize",
-        "path": [
-          "select",
-          "item",
-          "font-size"
-        ],
-        "value": 14,
-        "type": "number",
-        "variable": "var(--select-item-font-size)",
-        "description": ""
-      },
       "select-separator-height": {
         "name": "selectSeparatorHeight",
         "path": [
@@ -11111,40 +10859,37 @@
         "variable": "var(--color-checkbox-border-color)",
         "description": ""
       },
-      "checkbox-checked-background": {
-        "name": "checkboxCheckedBackground",
+      "checkbox-background-checked": {
+        "name": "checkboxBackgroundChecked",
         "path": [
           "checkbox",
-          "checked",
-          "background"
+          "background-checked"
         ],
         "value": "oklch(0.546 0.215 262.9)",
         "type": "color",
-        "variable": "var(--color-checkbox-checked-background)",
+        "variable": "var(--color-checkbox-background-checked)",
         "description": ""
       },
-      "checkbox-checked-text": {
-        "name": "checkboxCheckedText",
+      "checkbox-text-checked": {
+        "name": "checkboxTextChecked",
         "path": [
           "checkbox",
-          "checked",
-          "text"
+          "text-checked"
         ],
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
-        "variable": "var(--color-checkbox-checked-text)",
+        "variable": "var(--color-checkbox-text-checked)",
         "description": ""
       },
-      "checkbox-checked-border": {
-        "name": "checkboxCheckedBorder",
+      "checkbox-border-checked": {
+        "name": "checkboxBorderChecked",
         "path": [
           "checkbox",
-          "checked",
-          "border"
+          "border-checked"
         ],
         "value": "oklch(0.546 0.215 262.9)",
         "type": "color",
-        "variable": "var(--color-checkbox-checked-border)",
+        "variable": "var(--color-checkbox-border-checked)",
         "description": ""
       },
       "checkbox-error-border": {
@@ -11597,17 +11342,6 @@
         "value": 18,
         "type": "number",
         "variable": "var(--label-font-size-lg)",
-        "description": ""
-      },
-      "label-margin-bottom": {
-        "name": "labelMarginBottom",
-        "path": [
-          "label",
-          "margin-bottom"
-        ],
-        "value": "4px",
-        "type": "spacing",
-        "variable": "var(--label-margin-bottom)",
         "description": ""
       },
       "label-disabled-color": {
@@ -12776,19 +12510,6 @@
         "description": ""
       }
     },
-    "radio-group": {
-      "radio-group-item-gap": {
-        "name": "radioGroupItemGap",
-        "path": [
-          "radio-group",
-          "item-gap"
-        ],
-        "value": "8px",
-        "type": "spacing",
-        "variable": "var(--radio-group-item-gap)",
-        "description": ""
-      }
-    },
     "navigation-menu": {
       "navigation-menu-list-gap": {
         "name": "navigationMenuListGap",
@@ -12969,19 +12690,6 @@
         "type": "spacing",
         "variable": "var(--toggle-group-item-height)",
         "description": "Height of toggle group items (40px, matches default toggle height)"
-      }
-    },
-    "scroll-area": {
-      "scroll-area-scrollbar-padding": {
-        "name": "scrollAreaScrollbarPadding",
-        "path": [
-          "scroll-area",
-          "scrollbar-padding"
-        ],
-        "value": "1px",
-        "type": "spacing",
-        "variable": "var(--scroll-area-scrollbar-padding)",
-        "description": ""
       }
     },
     "site-header": {

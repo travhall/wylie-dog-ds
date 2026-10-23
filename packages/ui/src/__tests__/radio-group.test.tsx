@@ -364,7 +364,7 @@ describe("RadioGroup", () => {
       render(<TestRadioGroup />);
 
       const group = screen.getByRole("radiogroup");
-      expect(group).toHaveClass("grid", "gap-(--space-radio-group-item-gap)");
+      expect(group).toHaveClass("grid", "gap-(--space-radio-group-gap)");
     });
 
     it("should apply custom className to radio group", () => {

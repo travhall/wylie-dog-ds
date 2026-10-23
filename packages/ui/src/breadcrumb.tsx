@@ -75,7 +75,7 @@ const BreadcrumbPage = React.forwardRef<HTMLSpanElement, BreadcrumbPageProps>(
       aria-disabled="true"
       aria-current="page"
       className={cn(
-        "font-(--font-weight-breadcrumb-page-font-weight) text-(--color-breadcrumb-current)",
+        "font-(--font-weight-breadcrumb-page-font-weight) text-(--color-breadcrumb-current) aria-disabled:text-(--color-breadcrumb-link-disabled)",
         className
       )}
       {...props}
