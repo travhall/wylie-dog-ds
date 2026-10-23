@@ -109,7 +109,7 @@
       "kind": "text"
     },
     {
-      "foreground": "button.link.text",
+      "foreground": "button.link-text",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
@@ -190,17 +190,17 @@
     },
     {
       "foreground": "toast.text",
-      "backgrounds": ["toast.default.background"],
+      "backgrounds": ["toast.default-background"],
       "kind": "text"
     },
     {
       "foreground": "toast.close",
-      "backgrounds": ["toast.default.background"],
+      "backgrounds": ["toast.default-background"],
       "kind": "text"
     },
     {
       "foreground": "toast.close-hover",
-      "backgrounds": ["toast.default.background"],
+      "backgrounds": ["toast.default-background"],
       "kind": "text"
     },
     {
@@ -499,17 +499,17 @@
       "kind": "text"
     },
     {
-      "foreground": "label.default.color",
+      "foreground": "label.default-color",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
-      "foreground": "label.error.text",
+      "foreground": "label.error-text",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
     {
-      "foreground": "label.required.text",
+      "foreground": "label.required-text",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
@@ -519,7 +519,7 @@
       "kind": "text"
     },
     {
-      "foreground": "feature-grid.description.text",
+      "foreground": "feature-grid.description-text",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
@@ -555,7 +555,7 @@
       "kind": "non-text"
     },
     {
-      "foreground": "tabs.trigger.indicator.color",
+      "foreground": "tabs.trigger.indicator-color",
       "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
@@ -576,7 +576,7 @@
       "kind": "non-text"
     },
     {
-      "foreground": "checkbox.error.border",
+      "foreground": "checkbox.error-border",
       "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
@@ -606,20 +606,20 @@
       "kind": "non-text"
     },
     {
-      "foreground": "switch.track.background.unchecked",
+      "foreground": "switch.track.background-unchecked",
       "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
-      "foreground": "switch.track.background.checked",
+      "foreground": "switch.track.background-checked",
       "backgrounds": ["color.background.default"],
       "kind": "non-text"
     },
     {
       "foreground": "switch.thumb.background",
       "backgrounds": [
-        "switch.track.background.unchecked",
-        "switch.track.background.checked"
+        "switch.track.background-unchecked",
+        "switch.track.background-checked"
       ],
       "kind": "non-text"
     },
@@ -752,7 +752,7 @@
       "kind": "text"
     },
     {
-      "foreground": "form.required.color",
+      "foreground": "form.required-color",
       "backgrounds": ["color.background.default"],
       "kind": "text"
     },
@@ -796,7 +796,7 @@
       "kind": "non-text"
     },
     {
-      "foreground": "form.label.text",
+      "foreground": "form.label-text",
       "backgrounds": ["color.background.default", "color.background.raised"],
       "kind": "text"
     },
@@ -806,12 +806,12 @@
       "kind": "text"
     },
     {
-      "foreground": "form.error.text",
+      "foreground": "form.error-text",
       "backgrounds": ["color.background.default", "color.background.raised"],
       "kind": "text"
     },
     {
-      "foreground": "form.label.error.text",
+      "foreground": "form.label-error-text",
       "backgrounds": ["color.background.default", "color.background.raised"],
       "kind": "text"
     }
@@ -837,7 +837,7 @@
       "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
     },
     {
-      "token": "label.disabled.color",
+      "token": "label.disabled-color",
       "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
     },
     {

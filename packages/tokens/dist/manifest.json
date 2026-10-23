@@ -4143,8 +4143,7 @@
         "name": "buttonIconSize",
         "path": [
           "button",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "40px",
         "type": "spacing",
@@ -4271,8 +4270,7 @@
         "name": "buttonLinkText",
         "path": [
           "button",
-          "link",
-          "text"
+          "link-text"
         ],
         "value": "oklch(0.488 0.217 264.4)",
         "type": "color",
@@ -4352,8 +4350,7 @@
         "name": "cardHeaderGap",
         "path": [
           "card",
-          "header",
-          "gap"
+          "header-gap"
         ],
         "value": "8px",
         "type": "spacing",
@@ -5290,8 +5287,7 @@
         "name": "menubarContentMinWidth",
         "path": [
           "menubar",
-          "content",
-          "min-width"
+          "content-min-width"
         ],
         "value": "256px",
         "type": "spacing",
@@ -5302,8 +5298,7 @@
         "name": "menubarSubContentMinWidth",
         "path": [
           "menubar",
-          "sub-content",
-          "min-width"
+          "sub-content-min-width"
         ],
         "value": "160px",
         "type": "spacing",
@@ -5362,8 +5357,7 @@
         "name": "menubarShortcutFontSize",
         "path": [
           "menubar",
-          "shortcut",
-          "font-size"
+          "shortcut-font-size"
         ],
         "value": 12,
         "type": "number",
@@ -5374,8 +5368,7 @@
         "name": "menubarSeparatorHeight",
         "path": [
           "menubar",
-          "separator",
-          "height"
+          "separator-height"
         ],
         "value": "1px",
         "type": "spacing",
@@ -5386,8 +5379,7 @@
         "name": "menubarSeparatorMarginY",
         "path": [
           "menubar",
-          "separator",
-          "margin-y"
+          "separator-margin-y"
         ],
         "value": "4px",
         "type": "spacing",
@@ -5398,8 +5390,7 @@
         "name": "menubarSeparatorMarginX",
         "path": [
           "menubar",
-          "separator",
-          "margin-x"
+          "separator-margin-x"
         ],
         "value": "4px",
         "type": "spacing",
@@ -5498,8 +5489,7 @@
         "name": "menubarRadioIndicatorSize",
         "path": [
           "menubar",
-          "radio",
-          "indicator-size"
+          "radio-indicator-size"
         ],
         "value": "8px",
         "type": "spacing",
@@ -5522,8 +5512,7 @@
         "name": "menubarLabelFontWeight",
         "path": [
           "menubar",
-          "label",
-          "font-weight"
+          "label-font-weight"
         ],
         "value": 600,
         "type": "number",
@@ -5548,8 +5537,7 @@
         "path": [
           "menubar",
           "item",
-          "indicator",
-          "left"
+          "indicator-left"
         ],
         "value": "8px",
         "type": "spacing",
@@ -5560,8 +5548,7 @@
         "name": "menubarShortcutLetterSpacing",
         "path": [
           "menubar",
-          "shortcut",
-          "letter-spacing"
+          "shortcut-letter-spacing"
         ],
         "value": "0.1em",
         "type": "dimension",
@@ -5844,8 +5831,7 @@
         "name": "commandListMaxHeight",
         "path": [
           "command",
-          "list",
-          "max-height"
+          "list-max-height"
         ],
         "value": "448px",
         "type": "spacing",
@@ -6029,8 +6015,7 @@
         "path": [
           "command",
           "group",
-          "heading",
-          "font-weight"
+          "heading-font-weight"
         ],
         "value": 500,
         "type": "number",
@@ -6041,8 +6026,7 @@
         "name": "commandShortcutLetterSpacing",
         "path": [
           "command",
-          "shortcut",
-          "letter-spacing"
+          "shortcut-letter-spacing"
         ],
         "value": "0.1em",
         "type": "dimension",
@@ -6141,8 +6125,7 @@
         "path": [
           "tabs",
           "trigger",
-          "indicator",
-          "color"
+          "indicator-color"
         ],
         "value": "oklch(0.546 0.215 262.9)",
         "type": "color",
@@ -6386,8 +6369,7 @@
         "path": [
           "tabs",
           "trigger",
-          "border",
-          "width"
+          "border-width"
         ],
         "value": "2px",
         "type": "dimension",
@@ -6596,8 +6578,7 @@
         "name": "calendarContainerPadding",
         "path": [
           "calendar",
-          "container",
-          "padding"
+          "container-padding"
         ],
         "value": "12px",
         "type": "spacing",
@@ -6609,8 +6590,7 @@
         "path": [
           "calendar",
           "nav",
-          "button",
-          "size"
+          "button-size"
         ],
         "value": "24px",
         "type": "spacing",
@@ -6622,8 +6602,7 @@
         "path": [
           "calendar",
           "nav",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -6634,8 +6613,7 @@
         "name": "calendarCellSize",
         "path": [
           "calendar",
-          "cell",
-          "size"
+          "cell-size"
         ],
         "value": "32px",
         "type": "spacing",
@@ -6792,8 +6770,7 @@
         "name": "calendarHeaderFontWeight",
         "path": [
           "calendar",
-          "header",
-          "font-weight"
+          "header-font-weight"
         ],
         "value": 500,
         "type": "number",
@@ -6816,8 +6793,7 @@
         "name": "calendarDayHeaderFontWeight",
         "path": [
           "calendar",
-          "day-header",
-          "font-weight"
+          "day-header-font-weight"
         ],
         "value": 400,
         "type": "number",
@@ -7021,9 +6997,7 @@
         "name": "accordionItemBorderWidth",
         "path": [
           "accordion",
-          "item",
-          "border",
-          "width"
+          "item-border-width"
         ],
         "value": "1px",
         "type": "dimension",
@@ -7059,8 +7033,7 @@
         "path": [
           "accordion",
           "trigger",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -7236,8 +7209,7 @@
         "name": "avatarFallbackFontWeight",
         "path": [
           "avatar",
-          "fallback",
-          "font-weight"
+          "fallback-font-weight"
         ],
         "value": 500,
         "type": "number",
@@ -7346,8 +7318,7 @@
         "name": "breadcrumbListGap",
         "path": [
           "breadcrumb",
-          "list",
-          "gap"
+          "list-gap"
         ],
         "value": "4px",
         "type": "spacing",
@@ -7358,8 +7329,7 @@
         "name": "breadcrumbItemGap",
         "path": [
           "breadcrumb",
-          "item",
-          "gap"
+          "item-gap"
         ],
         "value": "4px",
         "type": "spacing",
@@ -7392,8 +7362,7 @@
         "name": "breadcrumbSeparatorSize",
         "path": [
           "breadcrumb",
-          "separator",
-          "size"
+          "separator-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -7404,8 +7373,7 @@
         "name": "breadcrumbEllipsisSize",
         "path": [
           "breadcrumb",
-          "ellipsis",
-          "size"
+          "ellipsis-size"
         ],
         "value": "32px",
         "type": "spacing",
@@ -7427,8 +7395,7 @@
         "name": "breadcrumbPageFontWeight",
         "path": [
           "breadcrumb",
-          "page",
-          "font-weight"
+          "page-font-weight"
         ],
         "value": 400,
         "type": "number",
@@ -7520,8 +7487,7 @@
         "name": "carouselItemSpacing",
         "path": [
           "carousel",
-          "item",
-          "spacing"
+          "item-spacing"
         ],
         "value": "16px",
         "type": "spacing",
@@ -7825,8 +7791,7 @@
         "name": "dialogTitleFontSize",
         "path": [
           "dialog",
-          "title",
-          "font-size"
+          "title-font-size"
         ],
         "value": 20,
         "type": "number",
@@ -7837,8 +7802,7 @@
         "name": "dialogDescriptionFontSize",
         "path": [
           "dialog",
-          "description",
-          "font-size"
+          "description-font-size"
         ],
         "value": 14,
         "type": "number",
@@ -7930,8 +7894,7 @@
         "name": "dialogTitleFontWeight",
         "path": [
           "dialog",
-          "title",
-          "font-weight"
+          "title-font-weight"
         ],
         "value": 600,
         "type": "number",
@@ -7942,8 +7905,7 @@
         "name": "dialogTitleLetterSpacing",
         "path": [
           "dialog",
-          "title",
-          "letter-spacing"
+          "title-letter-spacing"
         ],
         "value": "-0.025em",
         "type": "dimension",
@@ -8033,8 +7995,7 @@
         "name": "formLabelText",
         "path": [
           "form",
-          "label",
-          "text"
+          "label-text"
         ],
         "value": "oklch(0.209 0.01 268.18)",
         "type": "color",
@@ -8045,8 +8006,7 @@
         "name": "formLabelFontSize",
         "path": [
           "form",
-          "label",
-          "font-size"
+          "label-font-size"
         ],
         "value": 14,
         "type": "number",
@@ -8057,8 +8017,7 @@
         "name": "formLabelFontWeight",
         "path": [
           "form",
-          "label",
-          "font-weight"
+          "label-font-weight"
         ],
         "value": 500,
         "type": "number",
@@ -8082,8 +8041,7 @@
         "name": "formMessageFontWeight",
         "path": [
           "form",
-          "message",
-          "font-weight"
+          "message-font-weight"
         ],
         "value": 500,
         "type": "number",
@@ -8118,8 +8076,7 @@
         "name": "formErrorText",
         "path": [
           "form",
-          "error",
-          "text"
+          "error-text"
         ],
         "value": "oklch(0.488 0.19 27.49)",
         "type": "color",
@@ -8130,8 +8087,7 @@
         "name": "formErrorFontSize",
         "path": [
           "form",
-          "error",
-          "font-size"
+          "error-font-size"
         ],
         "value": 12,
         "type": "number",
@@ -8142,8 +8098,7 @@
         "name": "formRequiredColor",
         "path": [
           "form",
-          "required",
-          "color"
+          "required-color"
         ],
         "value": "oklch(0.488 0.19 27.49)",
         "type": "color",
@@ -8165,8 +8120,7 @@
         "name": "formFieldsetGap",
         "path": [
           "form",
-          "fieldset",
-          "gap"
+          "fieldset-gap"
         ],
         "value": "24px",
         "type": "spacing",
@@ -8203,9 +8157,7 @@
         "name": "formLabelErrorText",
         "path": [
           "form",
-          "label",
-          "error",
-          "text"
+          "label-error-text"
         ],
         "value": "oklch(0.488 0.19 27.49)",
         "type": "color",
@@ -8290,8 +8242,7 @@
         "name": "hoverCardContentPadding",
         "path": [
           "hover-card",
-          "content",
-          "padding"
+          "content-padding"
         ],
         "value": "24px",
         "type": "spacing",
@@ -8419,8 +8370,7 @@
         "name": "paginationIconSize",
         "path": [
           "pagination",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -8574,8 +8524,7 @@
         "name": "popoverContentPadding",
         "path": [
           "popover",
-          "content",
-          "padding"
+          "content-padding"
         ],
         "value": "24px",
         "type": "spacing",
@@ -8769,8 +8718,7 @@
         "name": "radioBorderRadius",
         "path": [
           "radio",
-          "border",
-          "radius"
+          "border-radius"
         ],
         "value": "9999px",
         "type": "dimension",
@@ -8781,9 +8729,7 @@
         "name": "radioIndicatorSizeSm",
         "path": [
           "radio",
-          "indicator",
-          "size",
-          "sm"
+          "indicator-size-sm"
         ],
         "value": "8px",
         "type": "spacing",
@@ -8794,9 +8740,7 @@
         "name": "radioIndicatorSizeMd",
         "path": [
           "radio",
-          "indicator",
-          "size",
-          "md"
+          "indicator-size-md"
         ],
         "value": "12px",
         "type": "spacing",
@@ -8807,9 +8751,7 @@
         "name": "radioIndicatorSizeLg",
         "path": [
           "radio",
-          "indicator",
-          "size",
-          "lg"
+          "indicator-size-lg"
         ],
         "value": "16px",
         "type": "spacing",
@@ -8820,8 +8762,7 @@
         "name": "radioFocusRingWidth",
         "path": [
           "radio",
-          "focus",
-          "ring",
+          "focus-ring",
           "width"
         ],
         "value": "2px",
@@ -8833,8 +8774,7 @@
         "name": "radioFocusRingOffset",
         "path": [
           "radio",
-          "focus",
-          "ring",
+          "focus-ring",
           "offset"
         ],
         "value": "2px",
@@ -8892,8 +8832,7 @@
         "name": "resizableHandleHeight",
         "path": [
           "resizable",
-          "handle",
-          "height"
+          "handle-height"
         ],
         "value": "16px",
         "type": "spacing",
@@ -8904,8 +8843,7 @@
         "name": "resizableHandleWidth",
         "path": [
           "resizable",
-          "handle",
-          "width"
+          "handle-width"
         ],
         "value": "12px",
         "type": "spacing",
@@ -8927,8 +8865,7 @@
         "name": "resizableHandleFocusRingWidth",
         "path": [
           "resizable",
-          "handle",
-          "focus-ring-width"
+          "handle-focus-ring-width"
         ],
         "value": "2px",
         "type": "spacing",
@@ -8939,8 +8876,7 @@
         "name": "resizableHandleFocusRingOffset",
         "path": [
           "resizable",
-          "handle",
-          "focus-ring-offset"
+          "handle-focus-ring-offset"
         ],
         "value": "2px",
         "type": "spacing",
@@ -8986,8 +8922,7 @@
         "name": "scrollbarThumbRadius",
         "path": [
           "scrollbar",
-          "thumb",
-          "radius"
+          "thumb-radius"
         ],
         "value": "9999px",
         "type": "dimension",
@@ -8998,8 +8933,7 @@
         "name": "scrollbarThumbMinHeight",
         "path": [
           "scrollbar",
-          "thumb",
-          "min-height"
+          "thumb-min-height"
         ],
         "value": "40px",
         "type": "spacing",
@@ -9150,8 +9084,7 @@
         "name": "sliderTrackHeight",
         "path": [
           "slider",
-          "track",
-          "height"
+          "track-height"
         ],
         "value": "8px",
         "type": "spacing",
@@ -9162,8 +9095,7 @@
         "name": "sliderTrackRadius",
         "path": [
           "slider",
-          "track",
-          "radius"
+          "track-radius"
         ],
         "value": "9999px",
         "type": "dimension",
@@ -9174,8 +9106,7 @@
         "name": "sliderThumbSize",
         "path": [
           "slider",
-          "thumb",
-          "size"
+          "thumb-size"
         ],
         "value": "24px",
         "type": "spacing",
@@ -9186,9 +9117,7 @@
         "name": "sliderThumbBorderWidth",
         "path": [
           "slider",
-          "thumb",
-          "border",
-          "width"
+          "thumb-border-width"
         ],
         "value": "2px",
         "type": "dimension",
@@ -9199,8 +9128,7 @@
         "name": "sliderThumbRadius",
         "path": [
           "slider",
-          "thumb",
-          "radius"
+          "thumb-radius"
         ],
         "value": "9999px",
         "type": "dimension",
@@ -9211,8 +9139,7 @@
         "name": "sliderFocusRingWidth",
         "path": [
           "slider",
-          "focus",
-          "ring",
+          "focus-ring",
           "width"
         ],
         "value": "2px",
@@ -9224,8 +9151,7 @@
         "name": "sliderFocusRingOffset",
         "path": [
           "slider",
-          "focus",
-          "ring",
+          "focus-ring",
           "offset"
         ],
         "value": "2px",
@@ -9250,8 +9176,7 @@
         "name": "sliderThumbRingOffset",
         "path": [
           "slider",
-          "thumb",
-          "ring-offset"
+          "thumb-ring-offset"
         ],
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
@@ -9378,8 +9303,7 @@
         "name": "tableCaptionFontSize",
         "path": [
           "table",
-          "caption",
-          "font-size"
+          "caption-font-size"
         ],
         "value": 14,
         "type": "number",
@@ -9390,8 +9314,7 @@
         "name": "tableCaptionMarginTop",
         "path": [
           "table",
-          "caption",
-          "margin-top"
+          "caption-margin-top"
         ],
         "value": "16px",
         "type": "spacing",
@@ -9402,8 +9325,7 @@
         "name": "tableBorderWidth",
         "path": [
           "table",
-          "border",
-          "width"
+          "border-width"
         ],
         "value": "1px",
         "type": "dimension",
@@ -9449,8 +9371,7 @@
         "name": "tableFooterFontWeight",
         "path": [
           "table",
-          "footer",
-          "font-weight"
+          "footer-font-weight"
         ],
         "value": 500,
         "type": "number",
@@ -9646,8 +9567,7 @@
         "name": "toastCloseSize",
         "path": [
           "toast",
-          "close",
-          "size"
+          "close-size"
         ],
         "value": "24px",
         "type": "spacing",
@@ -9658,8 +9578,7 @@
         "name": "toastCloseRadius",
         "path": [
           "toast",
-          "close",
-          "radius"
+          "close-radius"
         ],
         "value": "2px",
         "type": "dimension",
@@ -9834,8 +9753,7 @@
         "name": "toastDefaultBackground",
         "path": [
           "toast",
-          "default",
-          "background"
+          "default-background"
         ],
         "value": "oklch(0.991 0.003 264.45)",
         "type": "color",
@@ -9870,8 +9788,7 @@
         "name": "toastContentGap",
         "path": [
           "toast",
-          "content",
-          "gap"
+          "content-gap"
         ],
         "value": "4px",
         "type": "spacing",
@@ -10571,8 +10488,7 @@
         "path": [
           "select",
           "trigger",
-          "icon",
-          "opacity"
+          "icon-opacity"
         ],
         "value": 0.5,
         "type": "number",
@@ -10733,8 +10649,7 @@
         "name": "checkboxFocusRingWidth",
         "path": [
           "checkbox",
-          "focus",
-          "ring",
+          "focus-ring",
           "width"
         ],
         "value": "2px",
@@ -10746,8 +10661,7 @@
         "name": "checkboxFocusRingOffset",
         "path": [
           "checkbox",
-          "focus",
-          "ring",
+          "focus-ring",
           "offset"
         ],
         "value": "2px",
@@ -10807,8 +10721,7 @@
         "name": "checkboxErrorBorder",
         "path": [
           "checkbox",
-          "error",
-          "border"
+          "error-border"
         ],
         "value": "oklch(0.546 0.215 27.31)",
         "type": "color",
@@ -10924,8 +10837,7 @@
         "path": [
           "switch",
           "track",
-          "border",
-          "width"
+          "border-width"
         ],
         "value": "2px",
         "type": "dimension",
@@ -11026,8 +10938,7 @@
         "name": "switchFocusRingWidth",
         "path": [
           "switch",
-          "focus",
-          "ring",
+          "focus-ring",
           "width"
         ],
         "value": "2px",
@@ -11039,8 +10950,7 @@
         "name": "switchFocusRingOffset",
         "path": [
           "switch",
-          "focus",
-          "ring",
+          "focus-ring",
           "offset"
         ],
         "value": "2px",
@@ -11053,8 +10963,7 @@
         "path": [
           "switch",
           "track",
-          "background",
-          "checked"
+          "background-checked"
         ],
         "value": "oklch(0.546 0.215 262.9)",
         "type": "color",
@@ -11066,8 +10975,7 @@
         "path": [
           "switch",
           "track",
-          "background",
-          "unchecked"
+          "background-unchecked"
         ],
         "value": "oklch(0.613 0.005 258.45)",
         "type": "color",
@@ -11245,8 +11153,7 @@
         "name": "labelDisabledColor",
         "path": [
           "label",
-          "disabled",
-          "color"
+          "disabled-color"
         ],
         "value": "oklch(0.52 0.007 264.5)",
         "type": "color",
@@ -11268,8 +11175,7 @@
         "name": "labelDefaultColor",
         "path": [
           "label",
-          "default",
-          "color"
+          "default-color"
         ],
         "value": "oklch(0.423 0.007 264.49)",
         "type": "color",
@@ -11291,8 +11197,7 @@
         "name": "labelErrorText",
         "path": [
           "label",
-          "error",
-          "text"
+          "error-text"
         ],
         "value": "oklch(0.488 0.19 27.49)",
         "type": "color",
@@ -11303,8 +11208,7 @@
         "name": "labelRequiredText",
         "path": [
           "label",
-          "required",
-          "text"
+          "required-text"
         ],
         "value": "oklch(0.488 0.19 27.49)",
         "type": "color",
@@ -11317,8 +11221,7 @@
         "name": "sheetOverlayBackground",
         "path": [
           "sheet",
-          "overlay",
-          "background"
+          "overlay-background"
         ],
         "value": "oklch(0.149 0.012 259.72)",
         "type": "color",
@@ -11561,8 +11464,7 @@
         "name": "separatorHeightHorizontal",
         "path": [
           "separator",
-          "height",
-          "horizontal"
+          "height-horizontal"
         ],
         "value": "1px",
         "type": "spacing",
@@ -11573,8 +11475,7 @@
         "name": "separatorWidthVertical",
         "path": [
           "separator",
-          "width",
-          "vertical"
+          "width-vertical"
         ],
         "value": "1px",
         "type": "spacing",
@@ -11696,8 +11597,7 @@
         "path": [
           "context-menu",
           "item",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -11798,8 +11698,7 @@
         "name": "contextMenuLabelFontWeight",
         "path": [
           "context-menu",
-          "label",
-          "font-weight"
+          "label-font-weight"
         ],
         "value": 600,
         "type": "number",
@@ -11810,8 +11709,7 @@
         "name": "contextMenuShortcutLetterSpacing",
         "path": [
           "context-menu",
-          "shortcut",
-          "letter-spacing"
+          "shortcut-letter-spacing"
         ],
         "value": "0.1em",
         "type": "dimension",
@@ -11835,8 +11733,7 @@
         "name": "contextMenuSubContentMinWidth",
         "path": [
           "context-menu",
-          "sub-content",
-          "min-width"
+          "sub-content-min-width"
         ],
         "value": "112px",
         "type": "spacing",
@@ -11910,8 +11807,7 @@
         "path": [
           "dropdown-menu",
           "item",
-          "icon",
-          "size"
+          "icon-size"
         ],
         "value": "16px",
         "type": "spacing",
@@ -12114,8 +12010,7 @@
         "name": "dropdownMenuLabelFontWeight",
         "path": [
           "dropdown-menu",
-          "label",
-          "font-weight"
+          "label-font-weight"
         ],
         "value": 600,
         "type": "number",
@@ -12152,8 +12047,7 @@
         "path": [
           "dropdown-menu",
           "item",
-          "radio-indicator",
-          "radius"
+          "radio-indicator-radius"
         ],
         "value": "9999px",
         "type": "dimension",
@@ -12313,8 +12207,7 @@
         "name": "featureGridDescriptionText",
         "path": [
           "feature-grid",
-          "description",
-          "text"
+          "description-text"
         ],
         "value": "oklch(0.423 0.007 264.49)",
         "type": "color",
@@ -12428,8 +12321,7 @@
         "name": "alertDialogTitleFontWeight",
         "path": [
           "alert-dialog",
-          "title",
-          "font-weight"
+          "title-font-weight"
         ],
         "value": 600,
         "type": "number",
@@ -12545,8 +12437,7 @@
         "name": "navigationMenuIndicatorHeight",
         "path": [
           "navigation-menu",
-          "indicator",
-          "height"
+          "indicator-height"
         ],
         "value": "0px",
         "type": "dimension",
@@ -12640,8 +12531,7 @@
         "name": "toggleGroupItemFontWeight",
         "path": [
           "toggle-group",
-          "item",
-          "font-weight"
+          "item-font-weight"
         ],
         "value": 500,
         "type": "number",
