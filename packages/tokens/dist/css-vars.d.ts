@@ -55,16 +55,32 @@ export type CssVarName =
   | "--color-avatar-border"
   | "--color-avatar-fallback-background"
   | "--color-avatar-fallback-text"
+  | "--color-background-danger"
+  | "--color-background-danger-emphasis"
+  | "--color-background-danger-muted"
   | "--color-background-default"
   | "--color-background-default-active"
   | "--color-background-default-disabled"
   | "--color-background-default-hover"
+  | "--color-background-emphasis"
+  | "--color-background-info-muted"
+  | "--color-background-inverse"
+  | "--color-background-muted"
   | "--color-background-overlay"
+  | "--color-background-primary"
+  | "--color-background-primary-emphasis"
+  | "--color-background-primary-muted"
   | "--color-background-raised"
   | "--color-background-strong"
   | "--color-background-subtle"
   | "--color-background-subtle-active"
   | "--color-background-subtle-hover"
+  | "--color-background-success"
+  | "--color-background-success-emphasis"
+  | "--color-background-success-muted"
+  | "--color-background-warning"
+  | "--color-background-warning-emphasis"
+  | "--color-background-warning-muted"
   | "--color-badge-default-background"
   | "--color-badge-default-background-disabled"
   | "--color-badge-default-background-focus"
@@ -123,9 +139,16 @@ export type CssVarName =
   | "--color-blue-800"
   | "--color-blue-900"
   | "--color-blue-950"
+  | "--color-border-danger"
   | "--color-border-default"
+  | "--color-border-emphasis"
+  | "--color-border-focus"
+  | "--color-border-muted"
+  | "--color-border-primary"
   | "--color-border-strong"
   | "--color-border-subtle"
+  | "--color-border-success"
+  | "--color-border-warning"
   | "--color-breadcrumb-current"
   | "--color-breadcrumb-link"
   | "--color-breadcrumb-link-disabled"
@@ -239,10 +262,20 @@ export type CssVarName =
   | "--color-fiery-coral-900"
   | "--color-fiery-coral-950"
   | "--color-focus-ring"
+  | "--color-foreground-danger"
+  | "--color-foreground-danger-muted"
   | "--color-foreground-default"
   | "--color-foreground-default-disabled"
   | "--color-foreground-faint"
+  | "--color-foreground-info-muted"
+  | "--color-foreground-inverse"
   | "--color-foreground-muted"
+  | "--color-foreground-primary"
+  | "--color-foreground-primary-muted"
+  | "--color-foreground-success"
+  | "--color-foreground-success-muted"
+  | "--color-foreground-warning"
+  | "--color-foreground-warning-muted"
   | "--color-form-description"
   | "--color-form-error"
   | "--color-form-error-text"
@@ -1219,16 +1252,32 @@ export declare const cssVars: Readonly<{
   "colorAvatarBorder": "--color-avatar-border";
   "colorAvatarFallbackBackground": "--color-avatar-fallback-background";
   "colorAvatarFallbackText": "--color-avatar-fallback-text";
+  "colorBackgroundDanger": "--color-background-danger";
+  "colorBackgroundDangerEmphasis": "--color-background-danger-emphasis";
+  "colorBackgroundDangerMuted": "--color-background-danger-muted";
   "colorBackgroundDefault": "--color-background-default";
   "colorBackgroundDefaultActive": "--color-background-default-active";
   "colorBackgroundDefaultDisabled": "--color-background-default-disabled";
   "colorBackgroundDefaultHover": "--color-background-default-hover";
+  "colorBackgroundEmphasis": "--color-background-emphasis";
+  "colorBackgroundInfoMuted": "--color-background-info-muted";
+  "colorBackgroundInverse": "--color-background-inverse";
+  "colorBackgroundMuted": "--color-background-muted";
   "colorBackgroundOverlay": "--color-background-overlay";
+  "colorBackgroundPrimary": "--color-background-primary";
+  "colorBackgroundPrimaryEmphasis": "--color-background-primary-emphasis";
+  "colorBackgroundPrimaryMuted": "--color-background-primary-muted";
   "colorBackgroundRaised": "--color-background-raised";
   "colorBackgroundStrong": "--color-background-strong";
   "colorBackgroundSubtle": "--color-background-subtle";
   "colorBackgroundSubtleActive": "--color-background-subtle-active";
   "colorBackgroundSubtleHover": "--color-background-subtle-hover";
+  "colorBackgroundSuccess": "--color-background-success";
+  "colorBackgroundSuccessEmphasis": "--color-background-success-emphasis";
+  "colorBackgroundSuccessMuted": "--color-background-success-muted";
+  "colorBackgroundWarning": "--color-background-warning";
+  "colorBackgroundWarningEmphasis": "--color-background-warning-emphasis";
+  "colorBackgroundWarningMuted": "--color-background-warning-muted";
   "colorBadgeDefaultBackground": "--color-badge-default-background";
   "colorBadgeDefaultBackgroundDisabled": "--color-badge-default-background-disabled";
   "colorBadgeDefaultBackgroundFocus": "--color-badge-default-background-focus";
@@ -1287,9 +1336,16 @@ export declare const cssVars: Readonly<{
   "colorBlue800": "--color-blue-800";
   "colorBlue900": "--color-blue-900";
   "colorBlue950": "--color-blue-950";
+  "colorBorderDanger": "--color-border-danger";
   "colorBorderDefault": "--color-border-default";
+  "colorBorderEmphasis": "--color-border-emphasis";
+  "colorBorderFocus": "--color-border-focus";
+  "colorBorderMuted": "--color-border-muted";
+  "colorBorderPrimary": "--color-border-primary";
   "colorBorderStrong": "--color-border-strong";
   "colorBorderSubtle": "--color-border-subtle";
+  "colorBorderSuccess": "--color-border-success";
+  "colorBorderWarning": "--color-border-warning";
   "colorBreadcrumbCurrent": "--color-breadcrumb-current";
   "colorBreadcrumbLink": "--color-breadcrumb-link";
   "colorBreadcrumbLinkDisabled": "--color-breadcrumb-link-disabled";
@@ -1403,10 +1459,20 @@ export declare const cssVars: Readonly<{
   "colorFieryCoral900": "--color-fiery-coral-900";
   "colorFieryCoral950": "--color-fiery-coral-950";
   "colorFocusRing": "--color-focus-ring";
+  "colorForegroundDanger": "--color-foreground-danger";
+  "colorForegroundDangerMuted": "--color-foreground-danger-muted";
   "colorForegroundDefault": "--color-foreground-default";
   "colorForegroundDefaultDisabled": "--color-foreground-default-disabled";
   "colorForegroundFaint": "--color-foreground-faint";
+  "colorForegroundInfoMuted": "--color-foreground-info-muted";
+  "colorForegroundInverse": "--color-foreground-inverse";
   "colorForegroundMuted": "--color-foreground-muted";
+  "colorForegroundPrimary": "--color-foreground-primary";
+  "colorForegroundPrimaryMuted": "--color-foreground-primary-muted";
+  "colorForegroundSuccess": "--color-foreground-success";
+  "colorForegroundSuccessMuted": "--color-foreground-success-muted";
+  "colorForegroundWarning": "--color-foreground-warning";
+  "colorForegroundWarningMuted": "--color-foreground-warning-muted";
   "colorFormDescription": "--color-form-description";
   "colorFormError": "--color-form-error";
   "colorFormErrorText": "--color-form-error-text";
