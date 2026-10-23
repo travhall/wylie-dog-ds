@@ -335,9 +335,6 @@ Always use semantic color tokens, never hardcoded colors:
 <div className="border-(--color-border-default)">Content</div>
 <span className="text-(--color-success-foreground-subtle)">Success</span>
 
-// ✅ Also acceptable - Tailwind semantic classes
-<p className="text-muted-foreground">Description</p>
-
 // ❌ Wrong - Hardcoded colors
 <p className="text-gray-600">Description</p>
 <div className="border-gray-300">Content</div>
@@ -345,18 +342,20 @@ Always use semantic color tokens, never hardcoded colors:
 
 ### Common Token Mappings
 
-| Purpose              | Token                                      | Tailwind Alternative    |
-| -------------------- | ------------------------------------------ | ----------------------- |
-| Primary text         | `text-(--color-foreground-default)`        | `text-foreground`       |
-| Secondary text       | `text-(--color-foreground-muted)`          | `text-muted-foreground` |
-| Tertiary text        | `text-(--color-foreground-faint)`          | -                       |
-| Primary border       | `border-(--color-border-default)`          | `border-border`         |
-| Secondary border     | `border-(--color-border-subtle)`           | -                       |
-| Primary background   | `bg-(--color-background-default)`          | `bg-background`         |
-| Secondary background | `bg-(--color-background-subtle)`           | `bg-muted`              |
-| Success              | `text-(--color-success-foreground-subtle)` | -                       |
-| Warning              | `text-(--color-warning-foreground-subtle)` | -                       |
-| Error/Danger         | `text-(--color-danger-foreground-subtle)`  | `text-destructive`      |
+| Purpose           | Token                                      |
+| ----------------- | ------------------------------------------ |
+| Default text      | `text-(--color-foreground-default)`        |
+| Muted text        | `text-(--color-foreground-muted)`          |
+| Faint text        | `text-(--color-foreground-faint)`          |
+| Default border    | `border-(--color-border-default)`          |
+| Subtle border     | `border-(--color-border-subtle)`           |
+| Page background   | `bg-(--color-background-default)`          |
+| Subtle background | `bg-(--color-background-subtle)`           |
+| Success text      | `text-(--color-success-foreground-subtle)` |
+| Warning text      | `text-(--color-warning-foreground-subtle)` |
+| Error text        | `text-(--color-danger-foreground-subtle)`  |
+
+There are no shadcn-style utility classes (`text-muted-foreground`, `bg-muted`, `text-destructive`) in this project; always use the `-(--token-name)` form.
 
 ---
 

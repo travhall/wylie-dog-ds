@@ -19,5 +19,42 @@
       "^--(duration-duration-200|color-border-strong|color-destructive|color-warning|shadow-xs|color-violet-500|color-button-primary-bg)$"
     ],
     "documentation/guides/component-workflow.md": ["^--color-my-component-"]
+  },
+  "vocabulary": {
+    "checkDescriptions": false,
+    "allow": [
+      "documentation/tokens/semantic-pairing-model.md",
+      "documentation/tokens/semantic-token-mapping.md",
+      "documentation/archive/",
+      "documentation/case-studies/",
+      "apps/figma-plugin/docs/ACCESSIBILITY_AUDIT.md",
+      "apps/figma-plugin/docs/ACCESSIBILITY.md"
+    ],
+    "phrases": [
+      {
+        "pattern": "\\btertiary (text|background|border|color)",
+        "reason": "old tone name; see naming-convention.md"
+      },
+      {
+        "pattern": "\\bsecondary (text|background|border) (color|token)",
+        "reason": "old tone name; see naming-convention.md"
+      },
+      {
+        "pattern": "\\bon-solid\\b",
+        "reason": "split into per-role foregrounds"
+      },
+      {
+        "pattern": "\\binteractive (token set|primary|color)\\b",
+        "reason": "the interactive namespace was retired"
+      },
+      {
+        "pattern": "\\bsurface (token|color)s?\\b",
+        "reason": "surface became background"
+      },
+      {
+        "pattern": "WCAG 2\\.1\\b",
+        "reason": "the project target is WCAG 2.2"
+      }
+    ]
   }
 }

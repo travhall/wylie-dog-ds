@@ -10,6 +10,10 @@
 // the run; a new failure does, and so does a listed failure that now passes
 // (remove it). This lets the check run in CI while real problems are fixed.
 //
+// Completeness: a component colour token whose name marks it as text or an
+// icon must be declared as a pair, or listed in "exempt" with a reason, so a new
+// component foreground cannot ship without a contrast declaration.
+//
 // Reads the tracked token sources, so no build is needed.
 // Usage: node scripts/check-contrast.mjs [--list]
 
@@ -111,6 +115,32 @@ if (
 // ---------- check ----------
 
 const problems = [];
+
+const componentTokens = collection("components");
+const looksLikeForeground = (name) =>
+  /(^|[.-])(text|color|foreground|icon|label|placeholder|link)([.-]|$)/.test(
+    name
+  ) &&
+  !/(background|border|ring|outline|shadow|track|fill|overlay|indicator)/.test(
+    name
+  );
+const declaredForegrounds = new Set(config.pairs.map((p) => p.foreground));
+const exemptTokens = new Map((config.exempt ?? []).map((e) => [e.token, e]));
+for (const [name, token] of Object.entries(componentTokens)) {
+  if (token.$type !== "color" || !looksLikeForeground(name)) continue;
+  if (!declaredForegrounds.has(name) && !exemptTokens.has(name)) {
+    problems.push(
+      `${name} looks like a foreground but is neither declared in "pairs" nor listed in "exempt"`
+    );
+  }
+}
+for (const name of exemptTokens.keys()) {
+  if (!componentTokens[name]) {
+    problems.push(`"exempt" lists ${name}, which does not exist`);
+  } else if (declaredForegrounds.has(name)) {
+    problems.push(`"exempt" lists ${name}, which is now declared; remove it`);
+  }
+}
 const results = [];
 for (const entry of config.pairs) {
   const minimum = config.thresholds[entry.kind];
