@@ -295,6 +295,7 @@ export type CssVarName =
   | "--color-input-border"
   | "--color-input-border-error"
   | "--color-input-border-focus"
+  | "--color-input-border-success"
   | "--color-input-default-background"
   | "--color-input-default-text"
   | "--color-input-disabled-background"
@@ -340,8 +341,12 @@ export type CssVarName =
   | "--color-orange-800"
   | "--color-orange-900"
   | "--color-orange-950"
+  | "--color-page-layout-sidebar-border"
+  | "--color-page-layout-skip-link-background"
+  | "--color-page-layout-skip-link-text"
   | "--color-pagination-active"
   | "--color-pagination-background-hover"
+  | "--color-pagination-ellipsis-text"
   | "--color-pagination-text"
   | "--color-pagination-text-active"
   | "--color-pagination-text-hover"
@@ -428,6 +433,17 @@ export type CssVarName =
   | "--color-sandcastle-900"
   | "--color-sandcastle-950"
   | "--color-scrollbar-thumb"
+  | "--color-section-features-background"
+  | "--color-section-features-background-muted"
+  | "--color-section-features-description-text"
+  | "--color-section-features-icon-background"
+  | "--color-section-features-icon-text"
+  | "--color-section-features-item-text"
+  | "--color-section-hero-background"
+  | "--color-section-hero-description-text"
+  | "--color-section-hero-gradient-from"
+  | "--color-section-hero-gradient-to"
+  | "--color-section-hero-gradient-via"
   | "--color-select-content-background"
   | "--color-select-content-text"
   | "--color-select-item-background-focus"
@@ -438,6 +454,19 @@ export type CssVarName =
   | "--color-sheet-description-text"
   | "--color-sheet-overlay-background"
   | "--color-sheet-title-text"
+  | "--color-site-footer-background"
+  | "--color-site-footer-background-muted"
+  | "--color-site-footer-border"
+  | "--color-site-footer-link-text"
+  | "--color-site-footer-link-text-hover"
+  | "--color-site-footer-text"
+  | "--color-site-header-background"
+  | "--color-site-header-border"
+  | "--color-site-header-nav-link-background"
+  | "--color-site-header-nav-link-background-focus"
+  | "--color-site-header-nav-link-background-hover"
+  | "--color-site-header-nav-link-text-focus"
+  | "--color-site-header-nav-link-text-hover"
   | "--color-skeleton-background"
   | "--color-slider-range"
   | "--color-slider-thumb"
@@ -1451,6 +1480,7 @@ export declare const cssVars: Readonly<{
   "colorInputBorder": "--color-input-border";
   "colorInputBorderError": "--color-input-border-error";
   "colorInputBorderFocus": "--color-input-border-focus";
+  "colorInputBorderSuccess": "--color-input-border-success";
   "colorInputDefaultBackground": "--color-input-default-background";
   "colorInputDefaultText": "--color-input-default-text";
   "colorInputDisabledBackground": "--color-input-disabled-background";
@@ -1496,8 +1526,12 @@ export declare const cssVars: Readonly<{
   "colorOrange800": "--color-orange-800";
   "colorOrange900": "--color-orange-900";
   "colorOrange950": "--color-orange-950";
+  "colorPageLayoutSidebarBorder": "--color-page-layout-sidebar-border";
+  "colorPageLayoutSkipLinkBackground": "--color-page-layout-skip-link-background";
+  "colorPageLayoutSkipLinkText": "--color-page-layout-skip-link-text";
   "colorPaginationActive": "--color-pagination-active";
   "colorPaginationBackgroundHover": "--color-pagination-background-hover";
+  "colorPaginationEllipsisText": "--color-pagination-ellipsis-text";
   "colorPaginationText": "--color-pagination-text";
   "colorPaginationTextActive": "--color-pagination-text-active";
   "colorPaginationTextHover": "--color-pagination-text-hover";
@@ -1584,6 +1618,17 @@ export declare const cssVars: Readonly<{
   "colorSandcastle900": "--color-sandcastle-900";
   "colorSandcastle950": "--color-sandcastle-950";
   "colorScrollbarThumb": "--color-scrollbar-thumb";
+  "colorSectionFeaturesBackground": "--color-section-features-background";
+  "colorSectionFeaturesBackgroundMuted": "--color-section-features-background-muted";
+  "colorSectionFeaturesDescriptionText": "--color-section-features-description-text";
+  "colorSectionFeaturesIconBackground": "--color-section-features-icon-background";
+  "colorSectionFeaturesIconText": "--color-section-features-icon-text";
+  "colorSectionFeaturesItemText": "--color-section-features-item-text";
+  "colorSectionHeroBackground": "--color-section-hero-background";
+  "colorSectionHeroDescriptionText": "--color-section-hero-description-text";
+  "colorSectionHeroGradientFrom": "--color-section-hero-gradient-from";
+  "colorSectionHeroGradientTo": "--color-section-hero-gradient-to";
+  "colorSectionHeroGradientVia": "--color-section-hero-gradient-via";
   "colorSelectContentBackground": "--color-select-content-background";
   "colorSelectContentText": "--color-select-content-text";
   "colorSelectItemBackgroundFocus": "--color-select-item-background-focus";
@@ -1594,6 +1639,19 @@ export declare const cssVars: Readonly<{
   "colorSheetDescriptionText": "--color-sheet-description-text";
   "colorSheetOverlayBackground": "--color-sheet-overlay-background";
   "colorSheetTitleText": "--color-sheet-title-text";
+  "colorSiteFooterBackground": "--color-site-footer-background";
+  "colorSiteFooterBackgroundMuted": "--color-site-footer-background-muted";
+  "colorSiteFooterBorder": "--color-site-footer-border";
+  "colorSiteFooterLinkText": "--color-site-footer-link-text";
+  "colorSiteFooterLinkTextHover": "--color-site-footer-link-text-hover";
+  "colorSiteFooterText": "--color-site-footer-text";
+  "colorSiteHeaderBackground": "--color-site-header-background";
+  "colorSiteHeaderBorder": "--color-site-header-border";
+  "colorSiteHeaderNavLinkBackground": "--color-site-header-nav-link-background";
+  "colorSiteHeaderNavLinkBackgroundFocus": "--color-site-header-nav-link-background-focus";
+  "colorSiteHeaderNavLinkBackgroundHover": "--color-site-header-nav-link-background-hover";
+  "colorSiteHeaderNavLinkTextFocus": "--color-site-header-nav-link-text-focus";
+  "colorSiteHeaderNavLinkTextHover": "--color-site-header-nav-link-text-hover";
   "colorSkeletonBackground": "--color-skeleton-background";
   "colorSliderRange": "--color-slider-range";
   "colorSliderThumb": "--color-slider-thumb";

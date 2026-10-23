@@ -112,7 +112,7 @@ const PaginationEllipsis = ({
   <span
     aria-hidden
     className={cn(
-      "flex h-(--space-pagination-item-size) w-(--space-pagination-item-size) items-center justify-center text-(--color-foreground-muted)",
+      "flex h-(--space-pagination-item-size) w-(--space-pagination-item-size) items-center justify-center text-(--color-pagination-ellipsis-text)",
       className
     )}
     {...props}

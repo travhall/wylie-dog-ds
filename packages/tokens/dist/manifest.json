@@ -4794,6 +4794,17 @@
         "type": "spacing",
         "variable": "var(--input-padding-y-lg)",
         "description": "Vertical padding for lg input — space.200 (16px) + font-size.lg (18px) = 50px total height"
+      },
+      "input-border-success": {
+        "name": "inputBorderSuccess",
+        "path": [
+          "input",
+          "border-success"
+        ],
+        "value": "oklch(0.543 0.152 149.29)",
+        "type": "color",
+        "variable": "var(--color-input-border-success)",
+        "description": ""
       }
     },
     "alert": {
@@ -8444,6 +8455,17 @@
         "value": 0.5,
         "type": "number",
         "variable": "var(--pagination-link-disabled-opacity)",
+        "description": ""
+      },
+      "pagination-ellipsis-text": {
+        "name": "paginationEllipsisText",
+        "path": [
+          "pagination",
+          "ellipsis-text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-pagination-ellipsis-text)",
         "description": ""
       }
     },
@@ -12573,6 +12595,323 @@
         "value": "1px",
         "type": "spacing",
         "variable": "var(--scroll-area-scrollbar-padding)",
+        "description": ""
+      }
+    },
+    "site-header": {
+      "site-header-background": {
+        "name": "siteHeaderBackground",
+        "path": [
+          "site-header",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-site-header-background)",
+        "description": ""
+      },
+      "site-header-border": {
+        "name": "siteHeaderBorder",
+        "path": [
+          "site-header",
+          "border"
+        ],
+        "value": "oklch(0.786 0.004 271.11)",
+        "type": "color",
+        "variable": "var(--color-site-header-border)",
+        "description": ""
+      },
+      "site-header-nav-link-background": {
+        "name": "siteHeaderNavLinkBackground",
+        "path": [
+          "site-header",
+          "nav-link",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-background)",
+        "description": ""
+      },
+      "site-header-nav-link-background-hover": {
+        "name": "siteHeaderNavLinkBackgroundHover",
+        "path": [
+          "site-header",
+          "nav-link",
+          "background-hover"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-background-hover)",
+        "description": ""
+      },
+      "site-header-nav-link-background-focus": {
+        "name": "siteHeaderNavLinkBackgroundFocus",
+        "path": [
+          "site-header",
+          "nav-link",
+          "background-focus"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-background-focus)",
+        "description": ""
+      },
+      "site-header-nav-link-text-hover": {
+        "name": "siteHeaderNavLinkTextHover",
+        "path": [
+          "site-header",
+          "nav-link",
+          "text-hover"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-text-hover)",
+        "description": ""
+      },
+      "site-header-nav-link-text-focus": {
+        "name": "siteHeaderNavLinkTextFocus",
+        "path": [
+          "site-header",
+          "nav-link",
+          "text-focus"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-site-header-nav-link-text-focus)",
+        "description": ""
+      }
+    },
+    "site-footer": {
+      "site-footer-background": {
+        "name": "siteFooterBackground",
+        "path": [
+          "site-footer",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-site-footer-background)",
+        "description": ""
+      },
+      "site-footer-background-muted": {
+        "name": "siteFooterBackgroundMuted",
+        "path": [
+          "site-footer",
+          "background-muted"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-site-footer-background-muted)",
+        "description": ""
+      },
+      "site-footer-border": {
+        "name": "siteFooterBorder",
+        "path": [
+          "site-footer",
+          "border"
+        ],
+        "value": "oklch(0.786 0.004 271.11)",
+        "type": "color",
+        "variable": "var(--color-site-footer-border)",
+        "description": ""
+      },
+      "site-footer-text": {
+        "name": "siteFooterText",
+        "path": [
+          "site-footer",
+          "text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-site-footer-text)",
+        "description": ""
+      },
+      "site-footer-link-text": {
+        "name": "siteFooterLinkText",
+        "path": [
+          "site-footer",
+          "link",
+          "text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-site-footer-link-text)",
+        "description": ""
+      },
+      "site-footer-link-text-hover": {
+        "name": "siteFooterLinkTextHover",
+        "path": [
+          "site-footer",
+          "link",
+          "text-hover"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-site-footer-link-text-hover)",
+        "description": ""
+      }
+    },
+    "section-hero": {
+      "section-hero-background": {
+        "name": "sectionHeroBackground",
+        "path": [
+          "section-hero",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-section-hero-background)",
+        "description": ""
+      },
+      "section-hero-gradient-from": {
+        "name": "sectionHeroGradientFrom",
+        "path": [
+          "section-hero",
+          "gradient",
+          "from"
+        ],
+        "value": "oklch(0.546 0.215 262.9)",
+        "type": "color",
+        "variable": "var(--color-section-hero-gradient-from)",
+        "description": ""
+      },
+      "section-hero-gradient-via": {
+        "name": "sectionHeroGradientVia",
+        "path": [
+          "section-hero",
+          "gradient",
+          "via"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-section-hero-gradient-via)",
+        "description": ""
+      },
+      "section-hero-gradient-to": {
+        "name": "sectionHeroGradientTo",
+        "path": [
+          "section-hero",
+          "gradient",
+          "to"
+        ],
+        "value": "oklch(0.97 0.014 254.77)",
+        "type": "color",
+        "variable": "var(--color-section-hero-gradient-to)",
+        "description": ""
+      },
+      "section-hero-description-text": {
+        "name": "sectionHeroDescriptionText",
+        "path": [
+          "section-hero",
+          "description-text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-section-hero-description-text)",
+        "description": ""
+      }
+    },
+    "section-features": {
+      "section-features-background": {
+        "name": "sectionFeaturesBackground",
+        "path": [
+          "section-features",
+          "background"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-section-features-background)",
+        "description": ""
+      },
+      "section-features-background-muted": {
+        "name": "sectionFeaturesBackgroundMuted",
+        "path": [
+          "section-features",
+          "background-muted"
+        ],
+        "value": "oklch(0.952 0.003 264.48)",
+        "type": "color",
+        "variable": "var(--color-section-features-background-muted)",
+        "description": ""
+      },
+      "section-features-description-text": {
+        "name": "sectionFeaturesDescriptionText",
+        "path": [
+          "section-features",
+          "description-text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-section-features-description-text)",
+        "description": ""
+      },
+      "section-features-item-text": {
+        "name": "sectionFeaturesItemText",
+        "path": [
+          "section-features",
+          "item-text"
+        ],
+        "value": "oklch(0.423 0.007 264.49)",
+        "type": "color",
+        "variable": "var(--color-section-features-item-text)",
+        "description": ""
+      },
+      "section-features-icon-background": {
+        "name": "sectionFeaturesIconBackground",
+        "path": [
+          "section-features",
+          "icon-background"
+        ],
+        "value": "oklch(0.546 0.215 262.9)",
+        "type": "color",
+        "variable": "var(--color-section-features-icon-background)",
+        "description": ""
+      },
+      "section-features-icon-text": {
+        "name": "sectionFeaturesIconText",
+        "path": [
+          "section-features",
+          "icon-text"
+        ],
+        "value": "oklch(0.488 0.217 264.4)",
+        "type": "color",
+        "variable": "var(--color-section-features-icon-text)",
+        "description": ""
+      }
+    },
+    "page-layout": {
+      "page-layout-skip-link-background": {
+        "name": "pageLayoutSkipLinkBackground",
+        "path": [
+          "page-layout",
+          "skip-link-background"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-page-layout-skip-link-background)",
+        "description": ""
+      },
+      "page-layout-skip-link-text": {
+        "name": "pageLayoutSkipLinkText",
+        "path": [
+          "page-layout",
+          "skip-link-text"
+        ],
+        "value": "oklch(0.209 0.01 268.18)",
+        "type": "color",
+        "variable": "var(--color-page-layout-skip-link-text)",
+        "description": ""
+      },
+      "page-layout-sidebar-border": {
+        "name": "pageLayoutSidebarBorder",
+        "path": [
+          "page-layout",
+          "sidebar-border"
+        ],
+        "value": "oklch(0.786 0.004 271.11)",
+        "type": "color",
+        "variable": "var(--color-page-layout-sidebar-border)",
         "description": ""
       }
     }

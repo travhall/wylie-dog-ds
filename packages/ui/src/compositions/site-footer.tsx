@@ -7,9 +7,9 @@ export const siteFooterVariants = cva("w-full mt-auto", {
   variants: {
     variant: {
       default:
-        "bg-(--color-background-muted) border-t border-(--color-border-default)",
+        "bg-(--color-site-footer-background-muted) border-t border-(--color-site-footer-border)",
       minimal:
-        "bg-(--color-background-default) border-t border-(--color-border-default)",
+        "bg-(--color-site-footer-background) border-t border-(--color-site-footer-border)",
     },
   },
   defaultVariants: {
@@ -95,13 +95,13 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                       <span className="text-(length:--font-size-lg) font-(--font-weight-bold)">
                         Logo
                       </span>
-                      <p className="text-(length:--font-size-sm) text-(--color-foreground-muted)">
+                      <p className="text-(length:--font-size-sm) text-(--color-site-footer-text)">
                         Building amazing experiences with modern design systems.
                       </p>
                     </div>
                   )}
                   {description && (
-                    <p className="text-(length:--font-size-sm) text-(--color-foreground-muted)">
+                    <p className="text-(length:--font-size-sm) text-(--color-site-footer-text)">
                       {description}
                     </p>
                   )}
@@ -121,7 +121,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                           ) : (
                             <a
                               href={link.href}
-                              className="text-sm text-(--color-foreground-muted) hover:text-(--color-foreground-default) transition-colors"
+                              className="text-sm text-(--color-site-footer-link-text) hover:text-(--color-site-footer-link-text-hover) transition-colors"
                             >
                               {link.label}
                             </a>
@@ -139,7 +139,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
 
           {/* Bottom Bar */}
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-(length:--font-size-sm) text-(--color-foreground-muted)">
+            <p className="text-(length:--font-size-sm) text-(--color-site-footer-text)">
               {copyrightText}
             </p>
 
@@ -151,7 +151,7 @@ export const SiteFooter = React.forwardRef<HTMLElement, SiteFooterProps>(
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="text-(--color-foreground-muted) hover:text-(--color-foreground-default) transition-colors"
+                    className="text-(--color-site-footer-link-text) hover:text-(--color-site-footer-link-text-hover) transition-colors"
                   >
                     {social.icon || social.label}
                   </a>

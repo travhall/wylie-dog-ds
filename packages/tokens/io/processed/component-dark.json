@@ -3188,5 +3188,121 @@
     "$type": "spacing",
     "$value": "{space.200}",
     "$description": "Vertical padding for lg input — space.200 (16px) + font-size.lg (18px) = 50px total height"
+  },
+  "site-header.background": {
+    "$type": "color",
+    "$value": "{color.background.default}"
+  },
+  "site-header.border": {
+    "$type": "color",
+    "$value": "{color.border.default}"
+  },
+  "site-header.nav-link.background": {
+    "$type": "color",
+    "$value": "{color.background.default}"
+  },
+  "site-header.nav-link.background-hover": {
+    "$type": "color",
+    "$value": "{color.background.muted}"
+  },
+  "site-header.nav-link.background-focus": {
+    "$type": "color",
+    "$value": "{color.background.muted}"
+  },
+  "site-header.nav-link.text-hover": {
+    "$type": "color",
+    "$value": "{color.foreground.default}"
+  },
+  "site-header.nav-link.text-focus": {
+    "$type": "color",
+    "$value": "{color.foreground.default}"
+  },
+  "site-footer.background": {
+    "$type": "color",
+    "$value": "{color.background.default}"
+  },
+  "site-footer.background-muted": {
+    "$type": "color",
+    "$value": "{color.background.muted}"
+  },
+  "site-footer.border": {
+    "$type": "color",
+    "$value": "{color.border.default}"
+  },
+  "site-footer.text": {
+    "$type": "color",
+    "$value": "{color.foreground.muted}"
+  },
+  "site-footer.link.text": {
+    "$type": "color",
+    "$value": "{color.foreground.muted}"
+  },
+  "site-footer.link.text-hover": {
+    "$type": "color",
+    "$value": "{color.foreground.default}"
+  },
+  "section-hero.background": {
+    "$type": "color",
+    "$value": "{color.background.default}"
+  },
+  "section-hero.gradient.from": {
+    "$type": "color",
+    "$value": "{color.background.primary}"
+  },
+  "section-hero.gradient.via": {
+    "$type": "color",
+    "$value": "{color.background.default}"
+  },
+  "section-hero.gradient.to": {
+    "$type": "color",
+    "$value": "{color.background.primary-muted}"
+  },
+  "section-hero.description-text": {
+    "$type": "color",
+    "$value": "{color.foreground.muted}"
+  },
+  "section-features.background": {
+    "$type": "color",
+    "$value": "{color.background.default}"
+  },
+  "section-features.background-muted": {
+    "$type": "color",
+    "$value": "{color.background.muted}"
+  },
+  "section-features.description-text": {
+    "$type": "color",
+    "$value": "{color.foreground.muted}"
+  },
+  "section-features.item-text": {
+    "$type": "color",
+    "$value": "{color.foreground.muted}"
+  },
+  "section-features.icon-background": {
+    "$type": "color",
+    "$value": "{color.background.primary}"
+  },
+  "section-features.icon-text": {
+    "$type": "color",
+    "$value": "{color.foreground.primary-muted}"
+  },
+  "page-layout.skip-link-background": {
+    "$type": "color",
+    "$value": "{color.background.default}"
+  },
+  "page-layout.skip-link-text": {
+    "$type": "color",
+    "$value": "{color.foreground.default}"
+  },
+  "page-layout.sidebar-border": {
+    "$type": "color",
+    "$value": "{color.border.default}"
+  },
+  "input.border-success": {
+    "$type": "color",
+    "$value": "{color.border.success}"
+  },
+  "pagination.ellipsis-text": {
+    "$type": "color",
+    "$value": "{color.foreground.muted}"
   }
 }

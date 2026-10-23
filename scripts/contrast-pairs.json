@@ -814,6 +814,65 @@
       "foreground": "form.label-error-text",
       "backgrounds": ["color.background.default", "color.background.raised"],
       "kind": "text"
+    },
+    {
+      "foreground": "site-header.nav-link.text-hover",
+      "backgrounds": ["site-header.nav-link.background-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "site-header.nav-link.text-focus",
+      "backgrounds": ["site-header.nav-link.background-focus"],
+      "kind": "text"
+    },
+    {
+      "foreground": "site-footer.text",
+      "backgrounds": ["site-footer.background", "site-footer.background-muted"],
+      "kind": "text"
+    },
+    {
+      "foreground": "site-footer.link.text",
+      "backgrounds": ["site-footer.background", "site-footer.background-muted"],
+      "kind": "text"
+    },
+    {
+      "foreground": "site-footer.link.text-hover",
+      "backgrounds": ["site-footer.background", "site-footer.background-muted"],
+      "kind": "text"
+    },
+    {
+      "foreground": "section-hero.description-text",
+      "backgrounds": ["section-hero.background", "section-hero.gradient.via"],
+      "kind": "text"
+    },
+    {
+      "foreground": "section-features.description-text",
+      "backgrounds": [
+        "section-features.background",
+        "section-features.background-muted"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "section-features.item-text",
+      "backgrounds": [
+        "section-features.background",
+        "section-features.background-muted"
+      ],
+      "kind": "text"
+    },
+    {
+      "foreground": "section-features.icon-text",
+      "backgrounds": [
+        "section-features.background",
+        "section-features.background-muted"
+      ],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "page-layout.skip-link-text",
+      "backgrounds": ["page-layout.skip-link-background"],
+      "kind": "text"
     }
   ],
   "knownFailures": [],
@@ -851,6 +910,10 @@
     {
       "token": "separator.color",
       "reason": "A decorative separator line, not text or a control boundary."
+    },
+    {
+      "token": "pagination.ellipsis-text",
+      "reason": "A decorative ellipsis (aria-hidden); the page links around it carry the meaning."
     }
   ]
 }

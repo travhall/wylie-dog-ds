@@ -1158,3 +1158,32 @@ export const featureGridItemBorderColorHover = "oklch(0.546 0.215 262.9)";
 export const inputPaddingYSm = "8px"; // Vertical padding for sm input — space.100 (8px) + font-size.sm (14px) = 30px total height
 export const inputPaddingYMd = "12px"; // Vertical padding for md input — space.150 (12px) + font-size.base (16px) = 40px total height
 export const inputPaddingYLg = "16px"; // Vertical padding for lg input — space.200 (16px) + font-size.lg (18px) = 50px total height
+export const siteHeaderBackground = "oklch(0.991 0.003 264.45)";
+export const siteHeaderBorder = "oklch(0.786 0.004 271.11)";
+export const siteHeaderNavLinkBackground = "oklch(0.991 0.003 264.45)";
+export const siteHeaderNavLinkBackgroundHover = "oklch(0.952 0.003 264.48)";
+export const siteHeaderNavLinkBackgroundFocus = "oklch(0.952 0.003 264.48)";
+export const siteHeaderNavLinkTextHover = "oklch(0.209 0.01 268.18)";
+export const siteHeaderNavLinkTextFocus = "oklch(0.209 0.01 268.18)";
+export const siteFooterBackground = "oklch(0.991 0.003 264.45)";
+export const siteFooterBackgroundMuted = "oklch(0.952 0.003 264.48)";
+export const siteFooterBorder = "oklch(0.786 0.004 271.11)";
+export const siteFooterText = "oklch(0.423 0.007 264.49)";
+export const siteFooterLinkText = "oklch(0.423 0.007 264.49)";
+export const siteFooterLinkTextHover = "oklch(0.209 0.01 268.18)";
+export const sectionHeroBackground = "oklch(0.991 0.003 264.45)";
+export const sectionHeroGradientFrom = "oklch(0.546 0.215 262.9)";
+export const sectionHeroGradientVia = "oklch(0.991 0.003 264.45)";
+export const sectionHeroGradientTo = "oklch(0.97 0.014 254.77)";
+export const sectionHeroDescriptionText = "oklch(0.423 0.007 264.49)";
+export const sectionFeaturesBackground = "oklch(0.991 0.003 264.45)";
+export const sectionFeaturesBackgroundMuted = "oklch(0.952 0.003 264.48)";
+export const sectionFeaturesDescriptionText = "oklch(0.423 0.007 264.49)";
+export const sectionFeaturesItemText = "oklch(0.423 0.007 264.49)";
+export const sectionFeaturesIconBackground = "oklch(0.546 0.215 262.9)";
+export const sectionFeaturesIconText = "oklch(0.488 0.217 264.4)";
+export const pageLayoutSkipLinkBackground = "oklch(0.991 0.003 264.45)";
+export const pageLayoutSkipLinkText = "oklch(0.209 0.01 268.18)";
+export const pageLayoutSidebarBorder = "oklch(0.786 0.004 271.11)";
+export const inputBorderSuccess = "oklch(0.543 0.152 149.29)";
+export const paginationEllipsisText = "oklch(0.423 0.007 264.49)";
