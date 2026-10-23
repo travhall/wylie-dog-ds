@@ -60,7 +60,7 @@ export default function PluginPage() {
       count: meta.tokens.semantic,
       modes: "Light, Dark",
       holds:
-        "Role-based aliases such as background, text, border, interactive and status.",
+        "Role-based aliases in three groups: background, foreground and border, with tones for primary, danger, success and warning.",
     },
     {
       name: "components",

@@ -10,7 +10,7 @@ Names and values below were read from the built CSS in `packages/tokens/dist/`. 
 | Semantic  | Meaning, with light and dark values    | `--color-foreground-default`        |
 | Component | Per-component values aliasing semantic | `--color-button-primary-background` |
 
-In components, use the `-(--token-name)` Tailwind syntax, for example `bg-(--color-background-default)`.
+In application code and stories, use the `-(--token-name)` Tailwind syntax with semantic tokens, for example `bg-(--color-background-default)`. Components in `packages/ui` bind to component tokens instead, for example `bg-(--color-button-primary-background)`.
 
 ## Color
 

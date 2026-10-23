@@ -7,6 +7,7 @@ Central documentation hub for the Wylie Dog Design System.
 - [Component Workflow Guide](guides/component-workflow.md) - Step-by-step guide for creating components
 - [Accessibility Guide](guides/accessibility-guide.md) - Accessibility standards and testing
 - [Performance Monitoring](guides/performance.md) - Performance budgets and CI/CD integration
+- [Visual Comparison](guides/visual-comparison.md) - Compare two Storybook builds story by story
 - [Testing Coverage Report](reference/testing-coverage.md) - Current test coverage status
 - [Token Cheatsheet](tokens/token-cheatsheet.md) - Real token names, values and dark mode
 - [Styling Architecture](STYLING_ARCHITECTURE.md) - How components are styled with tokens

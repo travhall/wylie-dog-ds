@@ -147,7 +147,7 @@ export default function TokensPage() {
                   count: meta.tokens.component,
                   desc: "Surfaces. The shape components consume.",
                   tokenName: "--color-button-primary-background",
-                  tokenVal: "→ interactive-primary",
+                  tokenVal: "→ background-primary",
                   swatch: "var(--color-background-primary)",
                 },
               ].map((tier, i) => (
@@ -449,7 +449,7 @@ export default function TokensPage() {
               </div>
             </div>
 
-            {/* Brand ramp + semantic states */}
+            {/* Brand ramp + status tones */}
             <div className="lg:col-span-4 space-y-3">
               <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5">
                 <div className="flex items-center justify-between">
@@ -523,7 +523,7 @@ export default function TokensPage() {
 
               <div className="rounded-xl border border-(--color-border-default) bg-(--color-background-default) p-5">
                 <p className="font-mono text-[11px] uppercase tracking-wider text-(--color-foreground-faint)">
-                  semantic states
+                  status tones
                 </p>
                 <div className="mt-3 space-y-1.5">
                   {[
