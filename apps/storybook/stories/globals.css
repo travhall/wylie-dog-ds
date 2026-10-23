@@ -7,7 +7,7 @@
  * - Component-specific utilities (bg-(--color-button-primary-background), etc.)
  *
  * Layer 2: Story-specific utilities (pre-compiled)
- * - Additional semantic utilities for stories (bg-muted, text-muted-foreground, etc.)
+ * - Utilities the stories use that no component needs (compiled from src/styles/index.css)
  * - Story layout utilities
  */
 

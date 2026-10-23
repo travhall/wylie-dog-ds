@@ -20,6 +20,11 @@
 //      and skipped test counts are not checked: coverage output has no test
 //      results.
 //
+//   F. Prose, stories and (optionally) token descriptions must not use phrases
+//      that belonged to a superseded naming or standard (config: vocabulary).
+//   G. "N scales" and "N palettes" in prose must match the palette count in
+//      the primitive tokens.
+//
 // Requires tokens to be built: pnpm --filter @wyliedog/tokens build
 // Usage: node scripts/check-docs.mjs
 
@@ -232,6 +237,85 @@ if (!fs.existsSync(summaryPath)) {
 if (coverageNote && requireCoverage) {
   fail("documentation/reference/testing-coverage.md", coverageNote);
   coverageNote = "";
+}
+
+// ---------- F. superseded vocabulary and standards ----------
+// Phrases that belonged to a superseded token naming or standard must not come
+// back in prose, stories or token descriptions. The decision records and dated
+// audits describe history on purpose and are allowlisted in the config.
+// Descriptions are checked when vocabulary.checkDescriptions is true.
+
+const vocabulary = config.vocabulary ?? {
+  phrases: [],
+  allow: [],
+  checkDescriptions: false,
+};
+const proseFiles = execSync(
+  'git ls-files "*.md" "*.mdx" "apps/storybook/stories/*.tsx"',
+  { encoding: "utf8" }
+)
+  .split("\n")
+  .filter((f) => f && !/CHANGELOG/.test(f) && fs.existsSync(f));
+const isAllowed = (file) =>
+  vocabulary.allow.some((a) => file === a || file.startsWith(a));
+const syncVariables = (name) =>
+  Object.assign(
+    {},
+    ...JSON.parse(read(`packages/tokens/io/sync/${name}.json`))
+  )[name].variables;
+for (const { pattern, reason } of vocabulary.phrases) {
+  const re = new RegExp(pattern, "i");
+  for (const file of proseFiles) {
+    if (isAllowed(file)) continue;
+    read(file)
+      .split("\n")
+      .forEach((line, i) => {
+        if (re.test(line)) {
+          fail(
+            `${file}:${i + 1}`,
+            `"${line.trim().slice(0, 70)}" uses a superseded phrase /${pattern}/ (${reason})`
+          );
+        }
+      });
+  }
+  if (vocabulary.checkDescriptions) {
+    for (const collection of ["semantic", "components"]) {
+      for (const [name, token] of Object.entries(syncVariables(collection))) {
+        if (token.$description && re.test(token.$description)) {
+          fail(
+            `io/sync/${collection}.json: ${name}`,
+            `description "${token.$description.slice(0, 70)}" uses a superseded phrase /${pattern}/ (${reason})`
+          );
+        }
+      }
+    }
+  }
+}
+
+// ---------- G. counts stated in prose ----------
+// "N scales" and "N palettes" must equal the number of colour palettes in the
+// primitive tokens (distinct names in color.<name>.<step>).
+
+const paletteCount = new Set(
+  Object.keys(syncVariables("primitive"))
+    .map((k) => /^color\.([a-z-]+)\.\d+$/.exec(k)?.[1])
+    .filter(Boolean)
+).size;
+const paletteClaim = /\b(\d+) (?:OKLCH )?(?:color )?(?:scales|palettes)\b/gi;
+for (const file of proseFiles) {
+  if (isAllowed(file)) continue;
+  read(file)
+    .split("\n")
+    .forEach((line, i) => {
+      for (const m of line.matchAll(paletteClaim)) {
+        if (Number(m[1]) !== paletteCount) {
+          fail(
+            `${file}:${i + 1}`,
+            `says "${m[0]}" but the primitive tokens have ${paletteCount} color palettes`
+          );
+        }
+      }
+    });
 }
 
 // ---------- report ----------

@@ -777,6 +777,46 @@
       "foreground": "color.primary.border.default",
       "backgrounds": ["color.background.default"],
       "kind": "non-text"
+    },
+    {
+      "foreground": "calendar.header-text",
+      "backgrounds": ["color.background.default", "color.background.raised"],
+      "kind": "text"
+    },
+    {
+      "foreground": "accordion.trigger-text-open",
+      "backgrounds": ["color.background.default", "accordion.trigger-hover"],
+      "kind": "text"
+    },
+    {
+      "foreground": "accordion.icon-hover",
+      "backgrounds": ["accordion.trigger-hover"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "accordion.icon-open",
+      "backgrounds": ["color.background.default"],
+      "kind": "non-text"
+    },
+    {
+      "foreground": "form.label.text",
+      "backgrounds": ["color.background.default", "color.background.raised"],
+      "kind": "text"
+    },
+    {
+      "foreground": "form.hint.text",
+      "backgrounds": ["color.background.default", "color.background.raised"],
+      "kind": "text"
+    },
+    {
+      "foreground": "form.error.text",
+      "backgrounds": ["color.background.default", "color.background.raised"],
+      "kind": "text"
+    },
+    {
+      "foreground": "form.label.error.text",
+      "backgrounds": ["color.background.default", "color.background.raised"],
+      "kind": "text"
     }
   ],
   "knownFailures": [],
@@ -785,5 +825,35 @@
     "palettes": ["green", "orange", "red", "purple", "pink", "yellow"],
     "tolerance": 0.005,
     "note": "Each palette keeps its hue and chroma but shares the reference palette lightness at every step (see semantic-pairing-model.md, ramp alignment)."
-  }
+  },
+  "exempt": [
+    {
+      "token": "input.disabled.text",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "accordion.trigger-text-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "accordion.icon-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "label.disabled.color",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "breadcrumb.link-disabled",
+      "reason": "Disabled state: WCAG 2.2 success criterion 1.4.3 exempts inactive components."
+    },
+    {
+      "token": "breadcrumb.link-focus",
+      "reason": "A focus fill (a background), not a foreground; the link text is breadcrumb.link."
+    },
+    {
+      "token": "separator.color",
+      "reason": "A decorative separator line, not text or a control boundary."
+    }
+  ]
 }

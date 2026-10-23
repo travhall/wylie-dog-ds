@@ -494,7 +494,10 @@ export const RegistrationForm: Story = {
                 </Label>
               </div>
               {errors.terms && (
-                <p id="terms-error" className="text-sm text-destructive">
+                <p
+                  id="terms-error"
+                  className="text-sm text-(--color-danger-foreground-subtle)"
+                >
                   {errors.terms}
                 </p>
               )}

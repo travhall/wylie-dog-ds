@@ -4,147 +4,94 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 # Design Token Workflow
 
-A comprehensive guide for updating and synchronizing design tokens between Figma and code.
+How to change design tokens and keep Figma and code in sync.
 
 ## Overview
 
-The Wylie Dog Design System uses a **token-based design approach** where visual properties (colors, spacing, typography, etc.) are defined in Figma and synchronized to code through the Token Bridge plugin. This ensures consistency and makes theme updates efficient.
+The Wylie Dog Design System is **token-based**: visual properties (colors, spacing, typography, and so on) are defined as Figma Variables and synchronized to code through the Token Bridge plugin. The full pipeline reference is `documentation/tokens/token-pipeline.md` in the repository; this page is the contributor's walkthrough.
 
 ### Token Flow
 
 ```
 Figma Variables
-      ↓
-Token Bridge Plugin (apps/figma-plugin)
-      ↓
+      ↓  Token Bridge plugin (push through GitHub: a commit or pull request)
 packages/tokens/io/sync/
   ├── primitive.json   — raw OKLCH color scales, spacing values, etc.
-  ├── semantic.json    — purpose-driven tokens referencing primitives
-  └── components.json  — component-specific tokens referencing semantics
-      ↓
-Style Dictionary (pnpm --filter @wyliedog/tokens build)
-      ↓
+  ├── semantic.json    — purpose-driven tokens referencing primitives (Light and Dark)
+  └── components.json  — component tokens referencing semantic tokens (Light and Dark)
+      ↓  pnpm --filter @wyliedog/tokens build   (process-io, then Style Dictionary)
+packages/tokens/io/processed/   — resolved JSON per mode
 packages/tokens/dist/
-  ├── tokens.css          — all variables in :root / .dark
-  ├── semantic-light.css  — light mode semantic overrides
-  ├── semantic-dark.css   — dark mode semantic overrides
-  └── index.js / index.d.ts — TypeScript types
+  ├── tokens.css          — all variables
+  ├── semantic-light.css  — semantic layer, light mode (:root)
+  ├── semantic-dark.css   — semantic layer, dark mode (.dark)
+  ├── manifest.json       — full token manifest
+  └── index.js / index.d.ts / css-vars.js — JS exports and types
       ↓
-React Components (via @wyliedog/ui/styles import)
+React components (via the @wyliedog/ui/styles import)
 ```
 
-> **Note:** The build pipeline uses [`@tokens-studio/sd-transforms`](https://github.com/Tokens-Studio/sd-transforms) as a Style Dictionary plugin to handle DTCG-format token files. This is a utility package, not the Tokens Studio Figma plugin — the Figma side is handled exclusively by the Token Bridge plugin.
+`io/sync/`, `io/processed/` and `dist/` are all committed. A token change appears in all three, and the `rebuild-tokens` workflow regenerates the last two when `io/sync/` changes on a pushed branch.
+
+> **Note:** The build uses [`@tokens-studio/sd-transforms`](https://github.com/Tokens-Studio/sd-transforms) as a Style Dictionary plugin to read DTCG-format token files. It is a utility package, not the Tokens Studio Figma plugin; the Figma side is handled exclusively by the Token Bridge plugin.
 
 ## Token Architecture
 
-### Token Hierarchy
+Tokens are organized in three tiers. Each file is an array with one object per collection, holding its `modes` and a flat `variables` map keyed by the dot-separated token name.
 
-Tokens are organized in three tiers:
-
-**1. Primitive Tokens** — Raw values, context-free  
-Location: `packages/tokens/io/sync/primitive.json`
+**1. Primitive tokens** — raw values, context-free (`primitive.json`, one `Value` mode)
 
 ```json
-{
-  "color": {
-    "blue": {
-      "600": {
-        "$type": "color",
-        "$value": "oklch(0.546 0.215 262.88)"
-      }
-    }
-  }
+"color.blue.600": {
+  "$type": "color",
+  "$value": "oklch(0.546 0.215 262.9)"
 }
 ```
 
-**2. Semantic Tokens** — Purpose-driven, reference primitives  
-Location: `packages/tokens/io/sync/semantic.json`
+**2. Semantic tokens** — what a color means, with a value per mode (`semantic.json`, modes `Light` and `Dark`)
 
 ```json
-{
-  "color": {
-    "interactive": {
-      "primary": {
-        "$type": "color",
-        "$value": "{color.blue.600}"
-      }
-    }
-  }
+"color.background.default": {
+  "$type": "color",
+  "$value": "{color.gray.50}",
+  "valuesByMode": { "Light": "{color.gray.50}", "Dark": "{color.gray.950}" },
+  "$description": "Main page background color"
 }
 ```
 
-**3. Component Tokens** — Component-specific, reference semantic tokens  
-Location: `packages/tokens/io/sync/components.json`
+**3. Component tokens** — one per element, part and state of a component, referencing semantic tokens (`components.json`, modes `Light` and `Dark`). Components consume these and nothing else for color.
 
-```json
-{
-  "color": {
-    "button": {
-      "default": {
-        "background": {
-          "$type": "color",
-          "$value": "{color.primary.background.default}"
-        }
-      }
-    }
-  }
-}
-```
+The names in code are the same names: `color.background.default` is the Figma variable `color/background/default` and the CSS variable `--color-background-default`.
 
 ### Token Categories
 
-The system includes tokens for:
-
-- **Colors** — Brand, semantic, state colors
-- **Typography** — Font families, sizes, weights, line heights
-- **Spacing** — Margins, padding, gaps (numeric scale)
-- **Border Radius** — Corner radius values
-- **Shadow** — Box shadows and elevation
-- **Motion** — Animation durations and easing curves
-- **Opacity** — Alpha values
-
-## Figma Setup
-
-### Install the Token Bridge Plugin
-
-1. Open Figma
-2. Go to Plugins → Browse plugins
-3. Search for **"Wylie Dog Token Bridge"**
-4. Install and run the plugin
-
-The Token Bridge plugin (`apps/figma-plugin`) is the only Figma integration for this design system. It reads Figma Variables and writes them to `packages/tokens/io/sync/*.json`, or the reverse — pushing JSON changes back to Figma Variables.
-
-### Connect to the Repository
-
-In the Token Bridge plugin settings, point the plugin at the repository's token files under `packages/tokens/io/sync/`. The plugin supports both pull (Figma → JSON) and push (JSON → Figma) sync directions.
+The system includes tokens for colors, typography (families, sizes, weights, line heights), spacing, borders, shadows, motion, opacity and z-index.
 
 ## Making Token Updates
 
-### Scenario 1: Update an Existing Token
+### Scenario 1: Change an Existing Token
 
-**Example: Change the primary brand color**
+**Example: change the primary color**
 
 1. **In Figma:**
-   - Open the Token Bridge plugin
-   - Navigate to the `color/interactive` Variable collection
-   - Find `interactive/primary`
-   - Update the value in OKLCH (e.g., `oklch(0.558 0.252 302.32)`)
-   - Save the Variable change in Figma
+   - Open the file that holds the variables and the Token Bridge plugin.
+   - In the `semantic` collection, find the primary color variables (the solid fill, its hover tone, the tint and the text that pairs with it).
+   - Point them at the new primitive (for example another palette's step 600) in both Light and Dark, or edit the primitive value itself in the `primitive` collection.
 
-2. **Export to Code:**
-   - In Token Bridge, click **Export to JSON**
-   - This writes the updated value to `packages/tokens/io/sync/semantic.json`
+2. **Push to code:**
+   - In Token Bridge, push the change. It opens a commit or pull request that touches `packages/tokens/io/sync/`.
+   - Pull the change into your working copy.
 
-3. **Build CSS:**
+3. **Build and check:**
 
    ```bash
    pnpm --filter @wyliedog/tokens build
+   pnpm check:tokens
+   pnpm check:docs
+   pnpm check:contrast
    ```
 
-   This runs Style Dictionary which:
-   - Reads `io/sync/*.json`
-   - Resolves all token references
-   - Generates CSS variables in `dist/`
+   `check:contrast` resolves every declared foreground and background pair in Light and Dark. It fails when a new color makes a declared pair unreadable, which is the most likely result of changing a brand color.
 
 4. **Verify in Storybook:**
 
@@ -152,177 +99,100 @@ In the Token Bridge plugin settings, point the plugin at the repository's token 
    pnpm dev:storybook
    ```
 
-   Check that components reflect the new color across light and dark modes.
+   Check that components reflect the new color in both modes. If a color does not update, restart the dev server.
 
-5. **Commit Changes:**
+5. **Commit the sync, processed and built files together:**
    ```bash
-   git add packages/tokens/io/sync/semantic.json
-   git add packages/tokens/dist/
-   git commit -m "feat(tokens): update interactive primary to purple"
+   git add packages/tokens/io packages/tokens/dist
+   git commit -m "feat(tokens): change the primary color to purple"
    ```
 
 ### Scenario 2: Add a New Token
 
-**Example: Add a new spacing value**
+**Example: add a spacing value**
 
-1. **In Figma:**
-   - Add a new Variable in the appropriate collection
-   - Name it following the hierarchy convention (e.g., `spacing/layout/xl`)
-   - Set the value
-
-2. **Export and Build:**
-
-   ```bash
-   # After exporting via Token Bridge
-   pnpm --filter @wyliedog/tokens build
-   ```
-
-3. **Use in Components:**
-
-   ```tsx
-   <div className="gap-(--space-400)">{/* Content */}</div>
-   ```
-
-4. **Update Documentation:**
-   - Add the token to the relevant Storybook tokens story
-   - Document the intended use case
+1. **In Figma:** add a Variable in the right collection and give it the name the code should have (`/` in Figma is `.` in the token name).
+2. **Push, pull and build** as in Scenario 1.
+3. **Use it.** A component uses a component token for its own spacing; add the component token to `components.json` (through Figma) and reference that.
+4. **Document it:** add the token to the relevant Storybook tokens story if it introduces a new step or purpose.
 
 ### Scenario 3: Dark Mode Tokens
 
-Dark mode is handled by overriding semantic tokens under the `.dark` class. Light and dark values are exported as separate CSS files.
+Dark mode is handled by overriding semantic and component tokens under the `.dark` class. Put the dark value in the token's `valuesByMode.Dark`; the build writes it into `semantic-dark.css`.
 
 The generated output looks like:
 
 ```css
 /* dist/semantic-light.css */
 :root {
-  --color-background-default: oklch(1 0 0);
-  --color-foreground-default: oklch(0.208 0.04 265.75);
+  --color-background-default: oklch(0.991 0.003 264.45);
+  --color-foreground-default: oklch(0.209 0.01 268.18);
 }
 
 /* dist/semantic-dark.css */
 .dark {
-  --color-background-default: oklch(0.208 0.04 265.75);
-  --color-foreground-default: oklch(0.984 0.003 247.86);
+  --color-background-default: oklch(0.149 0.012 259.72);
+  --color-foreground-default: oklch(0.952 0.003 264.48);
 }
 ```
 
-To add or update dark mode values, update the Variable mode in Figma, export via Token Bridge, then rebuild.
+To change dark values, update the Variable mode in Figma, push with Token Bridge, pull and rebuild.
 
 ## Token Naming Conventions
 
-### Follow the Pattern
+The naming rules, and the reasoning behind them, are kept in one place so they cannot drift from this page: `documentation/tokens/naming-convention.md` (how to name and use tokens) and `documentation/tokens/semantic-pairing-model.md` (the semantic color decisions). In short:
 
-```
-{category}.{property}.{variant}.{modifier}
-```
-
-### Examples
-
-**Colors:**
-
-```
-color.background.default
-color.background.primary.hover
-color.foreground.muted
-color.border.input.focus
-color.primary.background.default
-```
-
-**Typography:**
-
-```
-typography.heading.xl.fontFamily
-typography.heading.xl.fontSize
-typography.heading.xl.lineHeight
-typography.body.md.fontWeight
-```
-
-**Spacing:**
-
-```
-space.component.padding.sm
-space.component.gap.md
-space.layout.section.lg
-```
-
-### Naming Best Practices
-
-✅ **Do:**
-
-- Use semantic names: `color.background.default` (not `color.blue.500`)
-- Be specific: `space.button.padding.x` (not `spacing.4`)
-- Follow hierarchy: primitive → semantic → component
-- Match Figma Variable names exactly for consistent export/import
-
-❌ **Don't:**
-
-- Use implementation details: `shadow-drop-15px` (use `shadow.card.default`)
-- Skip semantic layer: component tokens must reference semantic, not primitive tokens
-- Use vague names: `spacing.big` (use `space.layout.section.lg`)
+- **Three tiers:** primitive, then semantic, then component. A component token references a semantic token; a semantic token references a primitive.
+- **Components bind only to component tokens.** A component's color, spacing and state styling come from its own component tokens.
+- **States belong to the component layer.** Hover, active, focus and disabled are expressed by a component token that references a semantic tone.
+- **Pairs are guaranteed.** A foreground and the background it sits on are declared in `scripts/contrast-pairs.json` and checked by `pnpm check:contrast`.
+- **Names match Figma exactly** so export and import stay consistent.
+- **Name by purpose, not by value:** `color.background.default`, not `color.gray.50`.
 
 ## Build Pipeline Details
 
 ### Configuration
 
-The Style Dictionary configuration lives at `packages/tokens/style-dictionary.config.js`. It uses the `@tokens-studio/sd-transforms` transform group to handle DTCG `$type`/`$value` format, then applies project-specific transforms on top.
+The Style Dictionary configuration lives at `packages/tokens/style-dictionary.config.js`. It uses the `@tokens-studio/sd-transforms` transform group to handle the DTCG `$type` and `$value` format, then applies project-specific transforms.
 
 ### Building Tokens
 
 ```bash
-# Build from repo root (recommended)
+# From the repo root (recommended)
 pnpm --filter @wyliedog/tokens build
-
-# Or from within the tokens package
-cd packages/tokens
-pnpm build
 ```
 
-The build script runs in sequence:
+The build runs in sequence:
 
-1. `process-io` — pre-processes the sync JSON files
-2. `style-dictionary` — generates CSS variables and manifest
+1. `process-io` — processes the sync JSON files
+2. `style-dictionary` — generates CSS variables and the manifest
 3. `generate-font-loaders` — creates `@font-face` loader files
 4. `generate-token-types` — creates TypeScript literal types
-
-### Output Files
-
-```
-packages/tokens/dist/
-├── tokens.css          # All variables (primitives + semantic light)
-├── semantic-light.css  # Semantic layer, light mode (:root)
-├── semantic-dark.css   # Semantic layer, dark mode (.dark)
-├── index.js            # JS/TS exports
-├── index.d.ts          # TypeScript types
-├── css-vars.js         # CSS variable name constants
-└── manifest.json       # Full token manifest
-```
 
 ## Validation and Testing
 
 ### Token Validation
 
-Before committing token changes, validate the token structure:
+Before committing token changes, run these from the repo root:
 
 ```bash
-# Validate token references and structure
-pnpm --filter @wyliedog/tokens test:tokens
-
-# Generate a full token audit report
-pnpm --filter @wyliedog/tokens audit
-
-# Verbose audit with details
-pnpm --filter @wyliedog/tokens audit:verbose
+pnpm --filter @wyliedog/tokens test:tokens   # structure, references, OKLCH ranges
+pnpm check:tokens                            # every CSS variable used in code is defined
+pnpm check:docs                              # docs and stories reference tokens that exist
+pnpm check:contrast                          # declared foreground and background pairs meet WCAG AA
+pnpm --filter @wyliedog/tokens run audit     # unused, missing and misnamed tokens
 ```
+
+Use `run audit`: plain `pnpm audit` is pnpm's own vulnerability audit. `test:tokens` prints many warnings; read the errors, not the warning count.
 
 ### Manual Testing Checklist
 
 - [ ] All components render correctly in light mode
 - [ ] All components render correctly in dark mode (`.dark` class on `<html>`)
-- [ ] No broken token references (check browser console for missing CSS variables)
+- [ ] No broken token references (check the browser console for missing CSS variables)
 - [ ] Typography scales render correctly
 - [ ] Spacing follows the defined scale
-- [ ] Colors meet contrast requirements
+- [ ] `pnpm check:contrast` passes
 - [ ] Animations use consistent timing
 
 ## Common Issues and Solutions
@@ -333,14 +203,14 @@ pnpm --filter @wyliedog/tokens audit:verbose
 
 **Solution:**
 
-1. Verify the change was exported from Token Bridge to `packages/tokens/io/sync/`
+1. Verify the change was pushed from Token Bridge and pulled into `packages/tokens/io/sync/`
 2. Run `pnpm --filter @wyliedog/tokens build` to regenerate CSS
-3. Hard refresh the browser (Cmd/Ctrl + Shift + R)
+3. Hard refresh the browser (Cmd/Ctrl + Shift + R); restart Storybook if it still shows the old value
 4. Confirm `@wyliedog/ui/styles` is imported in your app's root layout
 
 ### Issue: Broken Token Reference
 
-**Problem:** Token shows `undefined` in rendered output.
+**Problem:** A token shows `undefined` in rendered output.
 
 **Solution:**
 
@@ -348,25 +218,25 @@ pnpm --filter @wyliedog/tokens audit:verbose
 
    ```json
    // ❌ Typo in reference
-   "$value": "{color.interactve.primary}"
+   "$value": "{color.blue.60}"
 
    // ✅ Correct
-   "$value": "{color.primary.background.default}"
+   "$value": "{color.blue.600}"
    ```
 
-2. Ensure token hierarchy is correct (component → semantic → primitive)
+2. Ensure the tier order is correct (component, then semantic, then primitive)
 3. Re-run `pnpm --filter @wyliedog/tokens build`
-4. Run `pnpm --filter @wyliedog/tokens test:tokens` to surface reference errors
+4. Run `pnpm --filter @wyliedog/tokens test:tokens` and `pnpm check:tokens` to surface reference errors
 
 ### Issue: Dark Mode Not Working
 
-**Problem:** Dark mode tokens not applying.
+**Problem:** Dark mode tokens are not applying.
 
 **Solution:**
 
 1. Verify the `.dark` class is applied to `<html>`, not `<body>`
-2. Confirm `@wyliedog/ui/styles` is imported — it bundles both light and dark CSS
-3. Use browser DevTools to inspect computed values for `--color-background-default`
+2. Confirm `@wyliedog/ui/styles` is imported; it bundles both light and dark CSS
+3. Use browser DevTools to inspect the computed value of `--color-background-default`
 
 ### Issue: Build Fails After Token Changes
 
@@ -377,9 +247,9 @@ pnpm --filter @wyliedog/tokens audit:verbose
 1. Check the JSON syntax in the modified sync file
 2. Run the audit to find structural issues:
    ```bash
-   pnpm --filter @wyliedog/tokens audit:verbose
+   pnpm --filter @wyliedog/tokens run audit:verbose
    ```
-3. Ensure all `$value` references use the correct token path
+3. Ensure every `$value` reference uses an existing token name
 
 ## Best Practices
 
@@ -395,7 +265,7 @@ pnpm --filter @wyliedog/tokens audit:verbose
 
 ### 2. Respect the Hierarchy
 
-Components consume component tokens. Component tokens reference semantic tokens. Semantic tokens reference primitives. Never skip layers.
+Components consume component tokens. Component tokens reference semantic tokens. Semantic tokens reference primitives. Never skip tiers.
 
 ```tsx
 // ❌ Bad — Component using a primitive token directly
@@ -407,12 +277,11 @@ Components consume component tokens. Component tokens reference semantic tokens.
 
 ### 3. Document Token Decisions
 
-When adding or changing tokens, add a description in Figma (Variable description field) explaining why:
+Each token has a `$description`, shown as the Variable description in Figma. Say what the token is for and which foreground or background it pairs with, not which colour it holds:
 
 ```
-color/interactive/primary
-Description: "Primary interactive color. Changed from blue to purple
-per A/B test results (2024-01-15). References primitive color/purple/600."
+Description: "Main page background color. The default, muted and faint
+foreground tokens are readable on it."
 ```
 
 ### 4. Test Across Themes
