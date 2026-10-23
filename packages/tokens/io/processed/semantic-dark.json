@@ -14,11 +14,6 @@
     "$value": "{color.gray.800}",
     "$description": "Stronger surface for nested or emphasized areas, one step more contrast than muted. The default and muted foreground tokens are readable on it."
   },
-  "color.background.inverse": {
-    "$type": "color",
-    "$value": "{color.gray.50}",
-    "$description": "Surface that is dark in Light mode and light in Dark mode (tooltips, inverted blocks). Pairs with foreground.inverse."
-  },
   "color.background.raised": {
     "$type": "color",
     "$value": "{color.gray.900}",
@@ -29,20 +24,70 @@
     "$value": "{color.gray.950}",
     "$description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque."
   },
+  "color.background.inverse": {
+    "$type": "color",
+    "$value": "{color.gray.50}",
+    "$description": "Surface that is dark in Light mode and light in Dark mode (tooltips, inverted blocks). Pairs with foreground.inverse."
+  },
+  "color.background.primary": {
+    "$type": "color",
+    "$value": "{color.blue.600}",
+    "$description": "Solid fill for the main action colour. Pairs with foreground.primary."
+  },
+  "color.background.primary-muted": {
+    "$type": "color",
+    "$value": "{color.blue.950}",
+    "$description": "Quiet tint of the primary role for alerts, badges and highlights. Pairs with foreground.primary-muted."
+  },
+  "color.background.primary-emphasis": {
+    "$type": "color",
+    "$value": "{color.blue.700}",
+    "$description": "Stronger tone of the solid primary fill. Components use it for hover and pressed states; foreground.primary is readable on it."
+  },
+  "color.background.danger": {
+    "$type": "color",
+    "$value": "{color.red.600}",
+    "$description": "Solid fill for destructive actions and errors. Pairs with foreground.danger."
+  },
+  "color.background.danger-muted": {
+    "$type": "color",
+    "$value": "{color.red.950}",
+    "$description": "Quiet tint of the danger role for alerts, badges and highlights. Pairs with foreground.danger-muted."
+  },
+  "color.background.danger-emphasis": {
+    "$type": "color",
+    "$value": "{color.red.700}",
+    "$description": "Stronger tone of the solid danger fill. Components use it for hover and pressed states; foreground.danger is readable on it."
+  },
+  "color.background.success": {
+    "$type": "color",
+    "$value": "{color.green.600}",
+    "$description": "Solid fill for positive confirmation. Pairs with foreground.success."
+  },
   "color.background.success-muted": {
     "$type": "color",
     "$value": "{color.green.950}",
     "$description": "Quiet tint of the success role for alerts, badges and highlights. Pairs with foreground.success-muted."
+  },
+  "color.background.success-emphasis": {
+    "$type": "color",
+    "$value": "{color.green.700}",
+    "$description": "Stronger tone of the solid success fill. Components use it for hover and pressed states; foreground.success is readable on it."
+  },
+  "color.background.warning": {
+    "$type": "color",
+    "$value": "{color.yellow.300}",
+    "$description": "Solid fill for caution. Pairs with foreground.warning."
   },
   "color.background.warning-muted": {
     "$type": "color",
     "$value": "{color.yellow.950}",
     "$description": "Quiet tint of the warning role for alerts, badges and highlights. Pairs with foreground.warning-muted."
   },
-  "color.background.danger-muted": {
+  "color.background.warning-emphasis": {
     "$type": "color",
-    "$value": "{color.red.950}",
-    "$description": "Quiet tint of the danger role for alerts, badges and highlights. Pairs with foreground.danger-muted."
+    "$value": "{color.yellow.400}",
+    "$description": "Stronger tone of the solid warning fill. Components use it for hover and pressed states; foreground.warning is readable on it."
   },
   "color.background.info-muted": {
     "$type": "color",
@@ -74,45 +119,45 @@
     "$value": "{color.gray.50}",
     "$description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis."
   },
+  "color.foreground.primary-muted": {
+    "$type": "color",
+    "$value": "{color.blue.400}",
+    "$description": "Primary text on its tint (background.primary-muted) and on the page."
+  },
   "color.foreground.danger": {
     "$type": "color",
     "$value": "{color.gray.50}",
     "$description": "Text and icons on the solid danger fill. Pairs with background.danger and background.danger-emphasis."
-  },
-  "color.foreground.success": {
-    "$type": "color",
-    "$value": "{color.gray.50}",
-    "$description": "Text and icons on the solid success fill. Pairs with background.success and background.success-emphasis."
-  },
-  "color.foreground.warning": {
-    "$type": "color",
-    "$value": "{color.gray.950}",
-    "$description": "Dark text and icons on the solid warning fill (an amber fill cannot hold light text). Pairs with background.warning and background.warning-emphasis."
-  },
-  "color.foreground.success-muted": {
-    "$type": "color",
-    "$value": "{color.green.400}",
-    "$description": "Success text on its tint (background.success-muted) and on the page."
-  },
-  "color.foreground.warning-muted": {
-    "$type": "color",
-    "$value": "{color.yellow.400}",
-    "$description": "Warning text on its tint (background.warning-muted) and on the page."
   },
   "color.foreground.danger-muted": {
     "$type": "color",
     "$value": "{color.red.400}",
     "$description": "Danger text on its tint (background.danger-muted) and on the page."
   },
+  "color.foreground.success": {
+    "$type": "color",
+    "$value": "{color.gray.50}",
+    "$description": "Text and icons on the solid success fill. Pairs with background.success and background.success-emphasis."
+  },
+  "color.foreground.success-muted": {
+    "$type": "color",
+    "$value": "{color.green.400}",
+    "$description": "Success text on its tint (background.success-muted) and on the page."
+  },
+  "color.foreground.warning": {
+    "$type": "color",
+    "$value": "{color.gray.950}",
+    "$description": "Dark text and icons on the solid warning fill (an amber fill cannot hold light text). Pairs with background.warning and background.warning-emphasis."
+  },
+  "color.foreground.warning-muted": {
+    "$type": "color",
+    "$value": "{color.yellow.400}",
+    "$description": "Warning text on its tint (background.warning-muted) and on the page."
+  },
   "color.foreground.info-muted": {
     "$type": "color",
     "$value": "{color.blue.400}",
     "$description": "Informational text on its tint (background.info-muted) and on the page."
-  },
-  "color.foreground.primary-muted": {
-    "$type": "color",
-    "$value": "{color.blue.400}",
-    "$description": "Primary text on its tint (background.primary-muted) and on the page."
   },
   "color.border.default": {
     "$type": "color",
@@ -134,6 +179,16 @@
     "$value": "{color.blue.500}",
     "$description": "Keyboard focus ring colour. Centralized: every component's focus indicator uses it."
   },
+  "color.border.primary": {
+    "$type": "color",
+    "$value": "{color.blue.600}",
+    "$description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page."
+  },
+  "color.border.danger": {
+    "$type": "color",
+    "$value": "{color.red.600}",
+    "$description": "Border in the danger colour for alerts, toasts and highlights."
+  },
   "color.border.success": {
     "$type": "color",
     "$value": "{color.green.600}",
@@ -143,61 +198,6 @@
     "$type": "color",
     "$value": "{color.yellow.600}",
     "$description": "Border in the warning colour for alerts, toasts and highlights."
-  },
-  "color.border.danger": {
-    "$type": "color",
-    "$value": "{color.red.600}",
-    "$description": "Border in the danger colour for alerts, toasts and highlights."
-  },
-  "color.background.primary": {
-    "$type": "color",
-    "$value": "{color.blue.600}",
-    "$description": "Solid fill for the main action colour. Pairs with foreground.primary."
-  },
-  "color.background.primary-emphasis": {
-    "$type": "color",
-    "$value": "{color.blue.700}",
-    "$description": "Stronger tone of the solid primary fill. Components use it for hover and pressed states; foreground.primary is readable on it."
-  },
-  "color.background.success": {
-    "$type": "color",
-    "$value": "{color.green.600}",
-    "$description": "Solid fill for positive confirmation. Pairs with foreground.success."
-  },
-  "color.background.success-emphasis": {
-    "$type": "color",
-    "$value": "{color.green.700}",
-    "$description": "Stronger tone of the solid success fill. Components use it for hover and pressed states; foreground.success is readable on it."
-  },
-  "color.background.warning": {
-    "$type": "color",
-    "$value": "{color.yellow.300}",
-    "$description": "Solid fill for caution. Pairs with foreground.warning."
-  },
-  "color.background.warning-emphasis": {
-    "$type": "color",
-    "$value": "{color.yellow.400}",
-    "$description": "Stronger tone of the solid warning fill. Components use it for hover and pressed states; foreground.warning is readable on it."
-  },
-  "color.background.danger": {
-    "$type": "color",
-    "$value": "{color.red.600}",
-    "$description": "Solid fill for destructive actions and errors. Pairs with foreground.danger."
-  },
-  "color.background.danger-emphasis": {
-    "$type": "color",
-    "$value": "{color.red.700}",
-    "$description": "Stronger tone of the solid danger fill. Components use it for hover and pressed states; foreground.danger is readable on it."
-  },
-  "color.background.primary-muted": {
-    "$type": "color",
-    "$value": "{color.blue.950}",
-    "$description": "Quiet tint of the primary role for alerts, badges and highlights. Pairs with foreground.primary-muted."
-  },
-  "color.border.primary": {
-    "$type": "color",
-    "$value": "{color.blue.600}",
-    "$description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page."
   },
   "shadow.none": {
     "$type": "shadow",

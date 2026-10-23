@@ -2609,18 +2609,6 @@
         "variable": "var(--color-background-emphasis)",
         "description": "Stronger surface for nested or emphasized areas, one step more contrast than muted. The default and muted foreground tokens are readable on it."
       },
-      "color-background-inverse": {
-        "name": "colorBackgroundInverse",
-        "path": [
-          "color",
-          "background",
-          "inverse"
-        ],
-        "value": "oklch(0.149 0.012 259.72)",
-        "type": "color",
-        "variable": "var(--color-background-inverse)",
-        "description": "Surface that is dark in Light mode and light in Dark mode (tooltips, inverted blocks). Pairs with foreground.inverse."
-      },
       "color-background-raised": {
         "name": "colorBackgroundRaised",
         "path": [
@@ -2645,53 +2633,17 @@
         "variable": "var(--color-background-overlay)",
         "description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque."
       },
-      "color-background-success-muted": {
-        "name": "colorBackgroundSuccessMuted",
+      "color-background-inverse": {
+        "name": "colorBackgroundInverse",
         "path": [
           "color",
           "background",
-          "success-muted"
+          "inverse"
         ],
-        "value": "oklch(0.97 0.018 156.61)",
+        "value": "oklch(0.149 0.012 259.72)",
         "type": "color",
-        "variable": "var(--color-background-success-muted)",
-        "description": "Quiet tint of the success role for alerts, badges and highlights. Pairs with foreground.success-muted."
-      },
-      "color-background-warning-muted": {
-        "name": "colorBackgroundWarningMuted",
-        "path": [
-          "color",
-          "background",
-          "warning-muted"
-        ],
-        "value": "oklch(0.97 0.04 96)",
-        "type": "color",
-        "variable": "var(--color-background-warning-muted)",
-        "description": "Quiet tint of the warning role for alerts, badges and highlights. Pairs with foreground.warning-muted."
-      },
-      "color-background-danger-muted": {
-        "name": "colorBackgroundDangerMuted",
-        "path": [
-          "color",
-          "background",
-          "danger-muted"
-        ],
-        "value": "oklch(0.97 0.013 16.7)",
-        "type": "color",
-        "variable": "var(--color-background-danger-muted)",
-        "description": "Quiet tint of the danger role for alerts, badges and highlights. Pairs with foreground.danger-muted."
-      },
-      "color-background-info-muted": {
-        "name": "colorBackgroundInfoMuted",
-        "path": [
-          "color",
-          "background",
-          "info-muted"
-        ],
-        "value": "oklch(0.97 0.014 254.77)",
-        "type": "color",
-        "variable": "var(--color-background-info-muted)",
-        "description": "Quiet informational tint for alerts and highlights. Pairs with foreground.info-muted."
+        "variable": "var(--color-background-inverse)",
+        "description": "Surface that is dark in Light mode and light in Dark mode (tooltips, inverted blocks). Pairs with foreground.inverse."
       },
       "color-background-primary": {
         "name": "colorBackgroundPrimary",
@@ -2705,6 +2657,18 @@
         "variable": "var(--color-background-primary)",
         "description": "Solid fill for the main action colour. Pairs with foreground.primary."
       },
+      "color-background-primary-muted": {
+        "name": "colorBackgroundPrimaryMuted",
+        "path": [
+          "color",
+          "background",
+          "primary-muted"
+        ],
+        "value": "oklch(0.97 0.014 254.77)",
+        "type": "color",
+        "variable": "var(--color-background-primary-muted)",
+        "description": "Quiet tint of the primary role for alerts, badges and highlights. Pairs with foreground.primary-muted."
+      },
       "color-background-primary-emphasis": {
         "name": "colorBackgroundPrimaryEmphasis",
         "path": [
@@ -2717,6 +2681,42 @@
         "variable": "var(--color-background-primary-emphasis)",
         "description": "Stronger tone of the solid primary fill. Components use it for hover and pressed states; foreground.primary is readable on it."
       },
+      "color-background-danger": {
+        "name": "colorBackgroundDanger",
+        "path": [
+          "color",
+          "background",
+          "danger"
+        ],
+        "value": "oklch(0.546 0.215 27.31)",
+        "type": "color",
+        "variable": "var(--color-background-danger)",
+        "description": "Solid fill for destructive actions and errors. Pairs with foreground.danger."
+      },
+      "color-background-danger-muted": {
+        "name": "colorBackgroundDangerMuted",
+        "path": [
+          "color",
+          "background",
+          "danger-muted"
+        ],
+        "value": "oklch(0.97 0.013 16.7)",
+        "type": "color",
+        "variable": "var(--color-background-danger-muted)",
+        "description": "Quiet tint of the danger role for alerts, badges and highlights. Pairs with foreground.danger-muted."
+      },
+      "color-background-danger-emphasis": {
+        "name": "colorBackgroundDangerEmphasis",
+        "path": [
+          "color",
+          "background",
+          "danger-emphasis"
+        ],
+        "value": "oklch(0.488 0.19 27.49)",
+        "type": "color",
+        "variable": "var(--color-background-danger-emphasis)",
+        "description": "Stronger tone of the solid danger fill. Components use it for hover and pressed states; foreground.danger is readable on it."
+      },
       "color-background-success": {
         "name": "colorBackgroundSuccess",
         "path": [
@@ -2728,6 +2728,18 @@
         "type": "color",
         "variable": "var(--color-background-success)",
         "description": "Solid fill for positive confirmation. Pairs with foreground.success."
+      },
+      "color-background-success-muted": {
+        "name": "colorBackgroundSuccessMuted",
+        "path": [
+          "color",
+          "background",
+          "success-muted"
+        ],
+        "value": "oklch(0.97 0.018 156.61)",
+        "type": "color",
+        "variable": "var(--color-background-success-muted)",
+        "description": "Quiet tint of the success role for alerts, badges and highlights. Pairs with foreground.success-muted."
       },
       "color-background-success-emphasis": {
         "name": "colorBackgroundSuccessEmphasis",
@@ -2753,6 +2765,18 @@
         "variable": "var(--color-background-warning)",
         "description": "Solid fill for caution. Pairs with foreground.warning."
       },
+      "color-background-warning-muted": {
+        "name": "colorBackgroundWarningMuted",
+        "path": [
+          "color",
+          "background",
+          "warning-muted"
+        ],
+        "value": "oklch(0.97 0.04 96)",
+        "type": "color",
+        "variable": "var(--color-background-warning-muted)",
+        "description": "Quiet tint of the warning role for alerts, badges and highlights. Pairs with foreground.warning-muted."
+      },
       "color-background-warning-emphasis": {
         "name": "colorBackgroundWarningEmphasis",
         "path": [
@@ -2765,41 +2789,17 @@
         "variable": "var(--color-background-warning-emphasis)",
         "description": "Stronger tone of the solid warning fill. Components use it for hover and pressed states; foreground.warning is readable on it."
       },
-      "color-background-danger": {
-        "name": "colorBackgroundDanger",
+      "color-background-info-muted": {
+        "name": "colorBackgroundInfoMuted",
         "path": [
           "color",
           "background",
-          "danger"
-        ],
-        "value": "oklch(0.546 0.215 27.31)",
-        "type": "color",
-        "variable": "var(--color-background-danger)",
-        "description": "Solid fill for destructive actions and errors. Pairs with foreground.danger."
-      },
-      "color-background-danger-emphasis": {
-        "name": "colorBackgroundDangerEmphasis",
-        "path": [
-          "color",
-          "background",
-          "danger-emphasis"
-        ],
-        "value": "oklch(0.488 0.19 27.49)",
-        "type": "color",
-        "variable": "var(--color-background-danger-emphasis)",
-        "description": "Stronger tone of the solid danger fill. Components use it for hover and pressed states; foreground.danger is readable on it."
-      },
-      "color-background-primary-muted": {
-        "name": "colorBackgroundPrimaryMuted",
-        "path": [
-          "color",
-          "background",
-          "primary-muted"
+          "info-muted"
         ],
         "value": "oklch(0.97 0.014 254.77)",
         "type": "color",
-        "variable": "var(--color-background-primary-muted)",
-        "description": "Quiet tint of the primary role for alerts, badges and highlights. Pairs with foreground.primary-muted."
+        "variable": "var(--color-background-info-muted)",
+        "description": "Quiet informational tint for alerts and highlights. Pairs with foreground.info-muted."
       }
     },
     "foreground": {
@@ -2863,6 +2863,18 @@
         "variable": "var(--color-foreground-primary)",
         "description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis."
       },
+      "color-foreground-primary-muted": {
+        "name": "colorForegroundPrimaryMuted",
+        "path": [
+          "color",
+          "foreground",
+          "primary-muted"
+        ],
+        "value": "oklch(0.488 0.217 264.4)",
+        "type": "color",
+        "variable": "var(--color-foreground-primary-muted)",
+        "description": "Primary text on its tint (background.primary-muted) and on the page."
+      },
       "color-foreground-danger": {
         "name": "colorForegroundDanger",
         "path": [
@@ -2874,54 +2886,6 @@
         "type": "color",
         "variable": "var(--color-foreground-danger)",
         "description": "Text and icons on the solid danger fill. Pairs with background.danger and background.danger-emphasis."
-      },
-      "color-foreground-success": {
-        "name": "colorForegroundSuccess",
-        "path": [
-          "color",
-          "foreground",
-          "success"
-        ],
-        "value": "oklch(0.991 0.003 264.45)",
-        "type": "color",
-        "variable": "var(--color-foreground-success)",
-        "description": "Text and icons on the solid success fill. Pairs with background.success and background.success-emphasis."
-      },
-      "color-foreground-warning": {
-        "name": "colorForegroundWarning",
-        "path": [
-          "color",
-          "foreground",
-          "warning"
-        ],
-        "value": "oklch(0.149 0.012 259.72)",
-        "type": "color",
-        "variable": "var(--color-foreground-warning)",
-        "description": "Dark text and icons on the solid warning fill (an amber fill cannot hold light text). Pairs with background.warning and background.warning-emphasis."
-      },
-      "color-foreground-success-muted": {
-        "name": "colorForegroundSuccessMuted",
-        "path": [
-          "color",
-          "foreground",
-          "success-muted"
-        ],
-        "value": "oklch(0.488 0.134 150.11)",
-        "type": "color",
-        "variable": "var(--color-foreground-success-muted)",
-        "description": "Success text on its tint (background.success-muted) and on the page."
-      },
-      "color-foreground-warning-muted": {
-        "name": "colorForegroundWarningMuted",
-        "path": [
-          "color",
-          "foreground",
-          "warning-muted"
-        ],
-        "value": "oklch(0.488 0.1 74)",
-        "type": "color",
-        "variable": "var(--color-foreground-warning-muted)",
-        "description": "Warning text on its tint (background.warning-muted) and on the page."
       },
       "color-foreground-danger-muted": {
         "name": "colorForegroundDangerMuted",
@@ -2935,6 +2899,54 @@
         "variable": "var(--color-foreground-danger-muted)",
         "description": "Danger text on its tint (background.danger-muted) and on the page."
       },
+      "color-foreground-success": {
+        "name": "colorForegroundSuccess",
+        "path": [
+          "color",
+          "foreground",
+          "success"
+        ],
+        "value": "oklch(0.991 0.003 264.45)",
+        "type": "color",
+        "variable": "var(--color-foreground-success)",
+        "description": "Text and icons on the solid success fill. Pairs with background.success and background.success-emphasis."
+      },
+      "color-foreground-success-muted": {
+        "name": "colorForegroundSuccessMuted",
+        "path": [
+          "color",
+          "foreground",
+          "success-muted"
+        ],
+        "value": "oklch(0.488 0.134 150.11)",
+        "type": "color",
+        "variable": "var(--color-foreground-success-muted)",
+        "description": "Success text on its tint (background.success-muted) and on the page."
+      },
+      "color-foreground-warning": {
+        "name": "colorForegroundWarning",
+        "path": [
+          "color",
+          "foreground",
+          "warning"
+        ],
+        "value": "oklch(0.149 0.012 259.72)",
+        "type": "color",
+        "variable": "var(--color-foreground-warning)",
+        "description": "Dark text and icons on the solid warning fill (an amber fill cannot hold light text). Pairs with background.warning and background.warning-emphasis."
+      },
+      "color-foreground-warning-muted": {
+        "name": "colorForegroundWarningMuted",
+        "path": [
+          "color",
+          "foreground",
+          "warning-muted"
+        ],
+        "value": "oklch(0.488 0.1 74)",
+        "type": "color",
+        "variable": "var(--color-foreground-warning-muted)",
+        "description": "Warning text on its tint (background.warning-muted) and on the page."
+      },
       "color-foreground-info-muted": {
         "name": "colorForegroundInfoMuted",
         "path": [
@@ -2946,18 +2958,6 @@
         "type": "color",
         "variable": "var(--color-foreground-info-muted)",
         "description": "Informational text on its tint (background.info-muted) and on the page."
-      },
-      "color-foreground-primary-muted": {
-        "name": "colorForegroundPrimaryMuted",
-        "path": [
-          "color",
-          "foreground",
-          "primary-muted"
-        ],
-        "value": "oklch(0.488 0.217 264.4)",
-        "type": "color",
-        "variable": "var(--color-foreground-primary-muted)",
-        "description": "Primary text on its tint (background.primary-muted) and on the page."
       }
     },
     "border": {
@@ -3009,6 +3009,30 @@
         "variable": "var(--color-border-focus)",
         "description": "Keyboard focus ring colour. Centralized: every component's focus indicator uses it."
       },
+      "color-border-primary": {
+        "name": "colorBorderPrimary",
+        "path": [
+          "color",
+          "border",
+          "primary"
+        ],
+        "value": "oklch(0.546 0.215 262.9)",
+        "type": "color",
+        "variable": "var(--color-border-primary)",
+        "description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page."
+      },
+      "color-border-danger": {
+        "name": "colorBorderDanger",
+        "path": [
+          "color",
+          "border",
+          "danger"
+        ],
+        "value": "oklch(0.546 0.215 27.31)",
+        "type": "color",
+        "variable": "var(--color-border-danger)",
+        "description": "Border in the danger colour for alerts, toasts and highlights."
+      },
       "color-border-success": {
         "name": "colorBorderSuccess",
         "path": [
@@ -3032,30 +3056,6 @@
         "type": "color",
         "variable": "var(--color-border-warning)",
         "description": "Border in the warning colour for alerts, toasts and highlights."
-      },
-      "color-border-danger": {
-        "name": "colorBorderDanger",
-        "path": [
-          "color",
-          "border",
-          "danger"
-        ],
-        "value": "oklch(0.546 0.215 27.31)",
-        "type": "color",
-        "variable": "var(--color-border-danger)",
-        "description": "Border in the danger colour for alerts, toasts and highlights."
-      },
-      "color-border-primary": {
-        "name": "colorBorderPrimary",
-        "path": [
-          "color",
-          "border",
-          "primary"
-        ],
-        "value": "oklch(0.546 0.215 262.9)",
-        "type": "color",
-        "variable": "var(--color-border-primary)",
-        "description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page."
       }
     },
     "other": {},
