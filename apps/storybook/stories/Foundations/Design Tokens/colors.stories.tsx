@@ -461,39 +461,17 @@ export const SemanticTokens: Story = {
       background: {
         title: "Background",
         description:
-          "Page and container surfaces: default, subtle, strong, raised and overlay, with their states",
+          "Surfaces and fills: the page, muted and emphasis tones, raised and overlay surfaces, inverse, and each role (primary, danger, success, warning, info) as a solid fill, a muted tint and an emphasis tone",
       },
       foreground: {
         title: "Foreground",
-        description: "Text on the ground backgrounds: default, muted, faint",
+        description:
+          "Text and icons over those backgrounds: default, muted, faint and inverse, and each role over its fill and over its tint",
       },
       border: {
         title: "Border",
-        description: "Dividers and control boundaries",
-      },
-      focus: { title: "Focus", description: "The keyboard focus ring" },
-      primary: {
-        title: "Primary",
         description:
-          "The main action colour: fill, states, tint, text and border",
-      },
-      danger: {
-        title: "Danger",
-        description: "Errors and destructive actions",
-      },
-      success: {
-        title: "Success",
-        description: "Confirmation and positive status",
-      },
-      warning: {
-        title: "Warning",
-        description: "Caution (amber fill with dark text)",
-      },
-      info: { title: "Info", description: "Informational status" },
-      inverse: {
-        title: "Inverse",
-        description:
-          "A surface that is dark in Light mode and light in Dark mode",
+          "Dividers, control boundaries, the centralized focus ring, and a border for each role",
       },
     };
 

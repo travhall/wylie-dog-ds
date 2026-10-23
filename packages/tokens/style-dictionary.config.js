@@ -122,10 +122,10 @@ function generateCSSVariable(token, name) {
     token.$type === "number" && name.includes("font-weight")
       ? "fontWeight"
       : token.$type === "number" && name.includes("line-height")
-      ? "lineHeight"
-      : token.$type === "number" && name.includes("font-size")
-      ? "fontSize"
-      : token.$type;
+        ? "lineHeight"
+        : token.$type === "number" && name.includes("font-size")
+          ? "fontSize"
+          : token.$type;
 
   const config = TOKEN_TYPE_CONFIG[effectiveType];
 
@@ -140,13 +140,21 @@ function generateCSSVariable(token, name) {
 
   // number-typed line-height tokens store values as percentage integers
   // (e.g. 100 = 100%). Convert to unitless decimal for CSS (÷ 100).
-  if (effectiveType === "lineHeight" && token.$type === "number" && typeof value === "number") {
+  if (
+    effectiveType === "lineHeight" &&
+    token.$type === "number" &&
+    typeof value === "number"
+  ) {
     value = value / 100;
   }
 
   // number-typed font-size tokens store values as raw integers (e.g. 14 = 14px).
   // Re-add the px unit for CSS output.
-  if (effectiveType === "fontSize" && token.$type === "number" && typeof value === "number") {
+  if (
+    effectiveType === "fontSize" &&
+    token.$type === "number" &&
+    typeof value === "number"
+  ) {
     value = `${value}px`;
   }
 
@@ -457,17 +465,10 @@ StyleDictionary.registerFormat({
         duration: {},
       },
       semantics: {
-        // Colour groups: the ground parts, then one group per role.
+        // Colour groups are the three parts of a semantic colour name.
         background: {},
         foreground: {},
         border: {},
-        focus: {},
-        primary: {},
-        danger: {},
-        success: {},
-        warning: {},
-        info: {},
-        inverse: {},
         other: {},
         shadow: {},
         duration: {},

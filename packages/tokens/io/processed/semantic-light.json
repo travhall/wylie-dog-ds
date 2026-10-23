@@ -4,35 +4,15 @@
     "$value": "{color.gray.50}",
     "$description": "Page background. The default, muted and faint foreground tokens are readable on it."
   },
-  "color.background.subtle": {
-    "$type": "color",
-    "$value": "{color.gray.100}",
-    "$description": "Secondary background for sections and containers"
-  },
   "color.background.muted": {
     "$type": "color",
     "$value": "{color.gray.100}",
     "$description": "Quiet surface for sections, panels and containers. The default, muted and faint foreground tokens are readable on it."
   },
-  "color.background.subtle.hover": {
-    "$type": "color",
-    "$value": "{color.gray.200}",
-    "$description": "Hover fill for a subtle background (the secondary button, tab triggers); between subtle and subtle.active"
-  },
-  "color.background.strong": {
-    "$type": "color",
-    "$value": "{color.gray.200}",
-    "$description": "Tertiary background for nested elements"
-  },
   "color.background.emphasis": {
     "$type": "color",
     "$value": "{color.gray.200}",
     "$description": "Stronger surface for nested or emphasized areas, one step more contrast than muted. The default and muted foreground tokens are readable on it."
-  },
-  "color.inverse.background.default": {
-    "$type": "color",
-    "$value": "{color.gray.950}",
-    "$description": "Inverted background for high contrast areas"
   },
   "color.background.inverse": {
     "$type": "color",
@@ -49,45 +29,20 @@
     "$value": "{color.gray.950}",
     "$description": "Scrim colour behind a modal or sheet; applied at opacity.scrim, never opaque."
   },
-  "color.success.background.subtle": {
-    "$type": "color",
-    "$value": "{color.green.50}",
-    "$description": "Success state surface background"
-  },
   "color.background.success-muted": {
     "$type": "color",
     "$value": "{color.green.50}",
     "$description": "Quiet tint of the success role for alerts, badges and highlights. Pairs with foreground.success-muted."
-  },
-  "color.warning.background.subtle": {
-    "$type": "color",
-    "$value": "{color.yellow.50}",
-    "$description": "Warning state surface background"
   },
   "color.background.warning-muted": {
     "$type": "color",
     "$value": "{color.yellow.50}",
     "$description": "Quiet tint of the warning role for alerts, badges and highlights. Pairs with foreground.warning-muted."
   },
-  "color.danger.background.subtle": {
-    "$type": "color",
-    "$value": "{color.red.50}",
-    "$description": "Danger/error state surface background"
-  },
   "color.background.danger-muted": {
     "$type": "color",
     "$value": "{color.red.50}",
     "$description": "Quiet tint of the danger role for alerts, badges and highlights. Pairs with foreground.danger-muted."
-  },
-  "color.danger.background.subtle.hover": {
-    "$type": "color",
-    "$value": "{color.red.100}",
-    "$description": "Hover fill for the tinted danger background; color.danger.foreground.subtle stays readable on it"
-  },
-  "color.info.background.subtle": {
-    "$type": "color",
-    "$value": "{color.blue.50}",
-    "$description": "Informational state surface background"
   },
   "color.background.info-muted": {
     "$type": "color",
@@ -109,105 +64,50 @@
     "$value": "{color.gray.600}",
     "$description": "Faintest text for timestamps, metadata and hints. Readable on the page, muted and raised backgrounds."
   },
-  "color.foreground.default.disabled": {
-    "$type": "color",
-    "$value": "{color.gray.400}",
-    "$description": "Disabled text color"
-  },
-  "color.inverse.foreground.default": {
-    "$type": "color",
-    "$value": "{color.gray.50}",
-    "$description": "Inverted text for dark backgrounds"
-  },
   "color.foreground.inverse": {
     "$type": "color",
     "$value": "{color.gray.50}",
     "$description": "Text and icons on background.inverse."
-  },
-  "color.primary.foreground.default": {
-    "$type": "color",
-    "$value": "{color.gray.50}",
-    "$description": "Foreground on the solid primary fill; pairs with color.primary.background.default"
   },
   "color.foreground.primary": {
     "$type": "color",
     "$value": "{color.gray.50}",
     "$description": "Text and icons on the solid primary fill. Pairs with background.primary and background.primary-emphasis."
   },
-  "color.danger.foreground.default": {
-    "$type": "color",
-    "$value": "{color.gray.50}",
-    "$description": "Foreground on the solid danger fill; pairs with color.danger.background.default"
-  },
   "color.foreground.danger": {
     "$type": "color",
     "$value": "{color.gray.50}",
     "$description": "Text and icons on the solid danger fill. Pairs with background.danger and background.danger-emphasis."
-  },
-  "color.success.foreground.default": {
-    "$type": "color",
-    "$value": "{color.gray.50}",
-    "$description": "Foreground on the solid success fill; pairs with color.success.background.default"
   },
   "color.foreground.success": {
     "$type": "color",
     "$value": "{color.gray.50}",
     "$description": "Text and icons on the solid success fill. Pairs with background.success and background.success-emphasis."
   },
-  "color.warning.foreground.default": {
-    "$type": "color",
-    "$value": "{color.gray.950}",
-    "$description": "Foreground on the solid warning fill; pairs with color.warning.background.default. Dark text, because an amber fill cannot hold light text."
-  },
   "color.foreground.warning": {
     "$type": "color",
     "$value": "{color.gray.950}",
     "$description": "Dark text and icons on the solid warning fill (an amber fill cannot hold light text). Pairs with background.warning and background.warning-emphasis."
-  },
-  "color.success.foreground.subtle": {
-    "$type": "color",
-    "$value": "{color.green.700}",
-    "$description": "Success state text color"
   },
   "color.foreground.success-muted": {
     "$type": "color",
     "$value": "{color.green.700}",
     "$description": "Success text on its tint (background.success-muted) and on the page."
   },
-  "color.warning.foreground.subtle": {
-    "$type": "color",
-    "$value": "{color.yellow.700}",
-    "$description": "Warning state text color"
-  },
   "color.foreground.warning-muted": {
     "$type": "color",
     "$value": "{color.yellow.700}",
     "$description": "Warning text on its tint (background.warning-muted) and on the page."
-  },
-  "color.danger.foreground.subtle": {
-    "$type": "color",
-    "$value": "{color.red.700}",
-    "$description": "Danger/error state text color"
   },
   "color.foreground.danger-muted": {
     "$type": "color",
     "$value": "{color.red.700}",
     "$description": "Danger text on its tint (background.danger-muted) and on the page."
   },
-  "color.info.foreground.subtle": {
-    "$type": "color",
-    "$value": "{color.blue.700}",
-    "$description": "Informational text color"
-  },
   "color.foreground.info-muted": {
     "$type": "color",
     "$value": "{color.blue.700}",
     "$description": "Informational text on its tint (background.info-muted) and on the page."
-  },
-  "color.primary.foreground.subtle": {
-    "$type": "color",
-    "$value": "{color.blue.700}",
-    "$description": "Primary-coloured text on the subtle primary tint and on the page (links); pairs with color.primary.background.subtle"
   },
   "color.foreground.primary-muted": {
     "$type": "color",
@@ -219,190 +119,85 @@
     "$value": "{color.gray.300}",
     "$description": "Default border for cards, inputs and containers."
   },
-  "color.border.subtle": {
-    "$type": "color",
-    "$value": "{color.gray.200}",
-    "$description": "Secondary border for subtle dividers"
-  },
   "color.border.muted": {
     "$type": "color",
     "$value": "{color.gray.200}",
     "$description": "Quieter border for subtle dividers."
-  },
-  "color.border.strong": {
-    "$type": "color",
-    "$value": "{color.gray.500}",
-    "$description": "Stronger border for form controls and indicators that must reach 3:1 against the page"
   },
   "color.border.emphasis": {
     "$type": "color",
     "$value": "{color.gray.500}",
     "$description": "Stronger border for control boundaries that need 3:1 against the page (inputs, checkboxes, switches)."
   },
-  "color.focus.ring": {
-    "$type": "color",
-    "$value": "{color.blue.500}",
-    "$description": "Focus ring border color"
-  },
   "color.border.focus": {
     "$type": "color",
     "$value": "{color.blue.500}",
     "$description": "Keyboard focus ring colour. Centralized: every component's focus indicator uses it."
-  },
-  "color.success.border.default": {
-    "$type": "color",
-    "$value": "{color.green.600}",
-    "$description": "Success state border color"
   },
   "color.border.success": {
     "$type": "color",
     "$value": "{color.green.600}",
     "$description": "Border in the success colour for alerts, toasts and highlights."
   },
-  "color.warning.border.default": {
-    "$type": "color",
-    "$value": "{color.yellow.600}",
-    "$description": "Warning state border color"
-  },
   "color.border.warning": {
     "$type": "color",
     "$value": "{color.yellow.600}",
     "$description": "Border in the warning colour for alerts, toasts and highlights."
-  },
-  "color.danger.border.default": {
-    "$type": "color",
-    "$value": "{color.red.600}",
-    "$description": "Danger/error state border color"
   },
   "color.border.danger": {
     "$type": "color",
     "$value": "{color.red.600}",
     "$description": "Border in the danger colour for alerts, toasts and highlights."
   },
-  "color.primary.background.default": {
-    "$type": "color",
-    "$value": "{color.blue.600}",
-    "$description": "Primary interactive element background (buttons, links)"
-  },
   "color.background.primary": {
     "$type": "color",
     "$value": "{color.blue.600}",
     "$description": "Solid fill for the main action colour. Pairs with foreground.primary."
-  },
-  "color.primary.background.default.hover": {
-    "$type": "color",
-    "$value": "{color.blue.700}",
-    "$description": "Primary interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
   },
   "color.background.primary-emphasis": {
     "$type": "color",
     "$value": "{color.blue.700}",
     "$description": "Stronger tone of the solid primary fill. Components use it for hover and pressed states; foreground.primary is readable on it."
   },
-  "color.primary.background.default.active": {
-    "$type": "color",
-    "$value": "{color.blue.800}",
-    "$description": "Primary interactive pressed/active state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
-  },
-  "color.background.subtle.active": {
-    "$type": "color",
-    "$value": "{color.gray.300}",
-    "$description": "Secondary interactive pressed/active state"
-  },
-  "color.success.background.default": {
-    "$type": "color",
-    "$value": "{color.green.600}",
-    "$description": "Success interactive element background"
-  },
   "color.background.success": {
     "$type": "color",
     "$value": "{color.green.600}",
     "$description": "Solid fill for positive confirmation. Pairs with foreground.success."
-  },
-  "color.success.background.default.hover": {
-    "$type": "color",
-    "$value": "{color.green.700}",
-    "$description": "Success interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
   },
   "color.background.success-emphasis": {
     "$type": "color",
     "$value": "{color.green.700}",
     "$description": "Stronger tone of the solid success fill. Components use it for hover and pressed states; foreground.success is readable on it."
   },
-  "color.warning.background.default": {
-    "$type": "color",
-    "$value": "{color.yellow.300}",
-    "$description": "Warning interactive element background"
-  },
   "color.background.warning": {
     "$type": "color",
     "$value": "{color.yellow.300}",
     "$description": "Solid fill for caution. Pairs with foreground.warning."
-  },
-  "color.warning.background.default.hover": {
-    "$type": "color",
-    "$value": "{color.yellow.400}",
-    "$description": "Warning interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
   },
   "color.background.warning-emphasis": {
     "$type": "color",
     "$value": "{color.yellow.400}",
     "$description": "Stronger tone of the solid warning fill. Components use it for hover and pressed states; foreground.warning is readable on it."
   },
-  "color.danger.background.default": {
-    "$type": "color",
-    "$value": "{color.red.600}",
-    "$description": "Danger interactive element background"
-  },
   "color.background.danger": {
     "$type": "color",
     "$value": "{color.red.600}",
     "$description": "Solid fill for destructive actions and errors. Pairs with foreground.danger."
-  },
-  "color.danger.background.default.hover": {
-    "$type": "color",
-    "$value": "{color.red.700}",
-    "$description": "Danger interactive hover state, darker than the resting fill in both modes so the light text on it keeps 4.5:1"
   },
   "color.background.danger-emphasis": {
     "$type": "color",
     "$value": "{color.red.700}",
     "$description": "Stronger tone of the solid danger fill. Components use it for hover and pressed states; foreground.danger is readable on it."
   },
-  "color.background.default.hover": {
-    "$type": "color",
-    "$value": "{color.gray.100}",
-    "$description": "Generic hover background for interactive elements"
-  },
-  "color.background.default.active": {
-    "$type": "color",
-    "$value": "{color.gray.200}",
-    "$description": "Pressed/active state background"
-  },
-  "color.primary.background.subtle": {
-    "$type": "color",
-    "$value": "{color.blue.50}",
-    "$description": "Subtle primary tint (focus and selection fills); pairs with color.primary.foreground.subtle"
-  },
   "color.background.primary-muted": {
     "$type": "color",
     "$value": "{color.blue.50}",
     "$description": "Quiet tint of the primary role for alerts, badges and highlights. Pairs with foreground.primary-muted."
   },
-  "color.primary.border.default": {
-    "$type": "color",
-    "$value": "{color.blue.600}",
-    "$description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page"
-  },
   "color.border.primary": {
     "$type": "color",
     "$value": "{color.blue.600}",
     "$description": "Accent border in the primary colour (cards, highlights, rings); non-text, so it needs 3:1 on the page."
-  },
-  "color.background.default.disabled": {
-    "$type": "color",
-    "$value": "{color.gray.100}",
-    "$description": "Disabled state background"
   },
   "shadow.none": {
     "$type": "shadow",

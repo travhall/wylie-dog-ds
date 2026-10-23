@@ -59,9 +59,6 @@ export type CssVarName =
   | "--color-background-danger-emphasis"
   | "--color-background-danger-muted"
   | "--color-background-default"
-  | "--color-background-default-active"
-  | "--color-background-default-disabled"
-  | "--color-background-default-hover"
   | "--color-background-emphasis"
   | "--color-background-info-muted"
   | "--color-background-inverse"
@@ -71,10 +68,6 @@ export type CssVarName =
   | "--color-background-primary-emphasis"
   | "--color-background-primary-muted"
   | "--color-background-raised"
-  | "--color-background-strong"
-  | "--color-background-subtle"
-  | "--color-background-subtle-active"
-  | "--color-background-subtle-hover"
   | "--color-background-success"
   | "--color-background-success-emphasis"
   | "--color-background-success-muted"
@@ -145,8 +138,6 @@ export type CssVarName =
   | "--color-border-focus"
   | "--color-border-muted"
   | "--color-border-primary"
-  | "--color-border-strong"
-  | "--color-border-subtle"
   | "--color-border-success"
   | "--color-border-warning"
   | "--color-breadcrumb-current"
@@ -228,13 +219,6 @@ export type CssVarName =
   | "--color-contextmenu-separator"
   | "--color-contextmenu-shortcut"
   | "--color-contextmenu-text"
-  | "--color-danger-background-default"
-  | "--color-danger-background-default-hover"
-  | "--color-danger-background-subtle"
-  | "--color-danger-background-subtle-hover"
-  | "--color-danger-border-default"
-  | "--color-danger-foreground-default"
-  | "--color-danger-foreground-subtle"
   | "--color-dialog-background"
   | "--color-dialog-border"
   | "--color-dialog-description"
@@ -261,11 +245,9 @@ export type CssVarName =
   | "--color-fiery-coral-800"
   | "--color-fiery-coral-900"
   | "--color-fiery-coral-950"
-  | "--color-focus-ring"
   | "--color-foreground-danger"
   | "--color-foreground-danger-muted"
   | "--color-foreground-default"
-  | "--color-foreground-default-disabled"
   | "--color-foreground-faint"
   | "--color-foreground-info-muted"
   | "--color-foreground-inverse"
@@ -309,8 +291,6 @@ export type CssVarName =
   | "--color-hover-card-background"
   | "--color-hover-card-border"
   | "--color-hover-card-text"
-  | "--color-info-background-subtle"
-  | "--color-info-foreground-subtle"
   | "--color-input-background-hover"
   | "--color-input-border"
   | "--color-input-border-error"
@@ -320,8 +300,6 @@ export type CssVarName =
   | "--color-input-disabled-background"
   | "--color-input-disabled-text"
   | "--color-input-placeholder"
-  | "--color-inverse-background-default"
-  | "--color-inverse-foreground-default"
   | "--color-label-default-color"
   | "--color-label-disabled-color"
   | "--color-label-error-text"
@@ -404,13 +382,6 @@ export type CssVarName =
   | "--color-popover-border"
   | "--color-popover-border-focus"
   | "--color-popover-text"
-  | "--color-primary-background-default"
-  | "--color-primary-background-default-active"
-  | "--color-primary-background-default-hover"
-  | "--color-primary-background-subtle"
-  | "--color-primary-border-default"
-  | "--color-primary-foreground-default"
-  | "--color-primary-foreground-subtle"
   | "--color-progress-background"
   | "--color-progress-default-fill"
   | "--color-progress-destructive-fill"
@@ -473,12 +444,6 @@ export type CssVarName =
   | "--color-slider-thumb-border"
   | "--color-slider-thumb-ring-offset"
   | "--color-slider-track"
-  | "--color-success-background-default"
-  | "--color-success-background-default-hover"
-  | "--color-success-background-subtle"
-  | "--color-success-border-default"
-  | "--color-success-foreground-default"
-  | "--color-success-foreground-subtle"
   | "--color-switch-thumb-background"
   | "--color-switch-track-background-checked"
   | "--color-switch-track-background-unchecked"
@@ -523,12 +488,6 @@ export type CssVarName =
   | "--color-tooltip-background"
   | "--color-tooltip-border"
   | "--color-tooltip-text"
-  | "--color-warning-background-default"
-  | "--color-warning-background-default-hover"
-  | "--color-warning-background-subtle"
-  | "--color-warning-border-default"
-  | "--color-warning-foreground-default"
-  | "--color-warning-foreground-subtle"
   | "--color-yellow-100"
   | "--color-yellow-200"
   | "--color-yellow-300"
@@ -1256,9 +1215,6 @@ export declare const cssVars: Readonly<{
   "colorBackgroundDangerEmphasis": "--color-background-danger-emphasis";
   "colorBackgroundDangerMuted": "--color-background-danger-muted";
   "colorBackgroundDefault": "--color-background-default";
-  "colorBackgroundDefaultActive": "--color-background-default-active";
-  "colorBackgroundDefaultDisabled": "--color-background-default-disabled";
-  "colorBackgroundDefaultHover": "--color-background-default-hover";
   "colorBackgroundEmphasis": "--color-background-emphasis";
   "colorBackgroundInfoMuted": "--color-background-info-muted";
   "colorBackgroundInverse": "--color-background-inverse";
@@ -1268,10 +1224,6 @@ export declare const cssVars: Readonly<{
   "colorBackgroundPrimaryEmphasis": "--color-background-primary-emphasis";
   "colorBackgroundPrimaryMuted": "--color-background-primary-muted";
   "colorBackgroundRaised": "--color-background-raised";
-  "colorBackgroundStrong": "--color-background-strong";
-  "colorBackgroundSubtle": "--color-background-subtle";
-  "colorBackgroundSubtleActive": "--color-background-subtle-active";
-  "colorBackgroundSubtleHover": "--color-background-subtle-hover";
   "colorBackgroundSuccess": "--color-background-success";
   "colorBackgroundSuccessEmphasis": "--color-background-success-emphasis";
   "colorBackgroundSuccessMuted": "--color-background-success-muted";
@@ -1342,8 +1294,6 @@ export declare const cssVars: Readonly<{
   "colorBorderFocus": "--color-border-focus";
   "colorBorderMuted": "--color-border-muted";
   "colorBorderPrimary": "--color-border-primary";
-  "colorBorderStrong": "--color-border-strong";
-  "colorBorderSubtle": "--color-border-subtle";
   "colorBorderSuccess": "--color-border-success";
   "colorBorderWarning": "--color-border-warning";
   "colorBreadcrumbCurrent": "--color-breadcrumb-current";
@@ -1425,13 +1375,6 @@ export declare const cssVars: Readonly<{
   "colorContextmenuSeparator": "--color-contextmenu-separator";
   "colorContextmenuShortcut": "--color-contextmenu-shortcut";
   "colorContextmenuText": "--color-contextmenu-text";
-  "colorDangerBackgroundDefault": "--color-danger-background-default";
-  "colorDangerBackgroundDefaultHover": "--color-danger-background-default-hover";
-  "colorDangerBackgroundSubtle": "--color-danger-background-subtle";
-  "colorDangerBackgroundSubtleHover": "--color-danger-background-subtle-hover";
-  "colorDangerBorderDefault": "--color-danger-border-default";
-  "colorDangerForegroundDefault": "--color-danger-foreground-default";
-  "colorDangerForegroundSubtle": "--color-danger-foreground-subtle";
   "colorDialogBackground": "--color-dialog-background";
   "colorDialogBorder": "--color-dialog-border";
   "colorDialogDescription": "--color-dialog-description";
@@ -1458,11 +1401,9 @@ export declare const cssVars: Readonly<{
   "colorFieryCoral800": "--color-fiery-coral-800";
   "colorFieryCoral900": "--color-fiery-coral-900";
   "colorFieryCoral950": "--color-fiery-coral-950";
-  "colorFocusRing": "--color-focus-ring";
   "colorForegroundDanger": "--color-foreground-danger";
   "colorForegroundDangerMuted": "--color-foreground-danger-muted";
   "colorForegroundDefault": "--color-foreground-default";
-  "colorForegroundDefaultDisabled": "--color-foreground-default-disabled";
   "colorForegroundFaint": "--color-foreground-faint";
   "colorForegroundInfoMuted": "--color-foreground-info-muted";
   "colorForegroundInverse": "--color-foreground-inverse";
@@ -1506,8 +1447,6 @@ export declare const cssVars: Readonly<{
   "colorHoverCardBackground": "--color-hover-card-background";
   "colorHoverCardBorder": "--color-hover-card-border";
   "colorHoverCardText": "--color-hover-card-text";
-  "colorInfoBackgroundSubtle": "--color-info-background-subtle";
-  "colorInfoForegroundSubtle": "--color-info-foreground-subtle";
   "colorInputBackgroundHover": "--color-input-background-hover";
   "colorInputBorder": "--color-input-border";
   "colorInputBorderError": "--color-input-border-error";
@@ -1517,8 +1456,6 @@ export declare const cssVars: Readonly<{
   "colorInputDisabledBackground": "--color-input-disabled-background";
   "colorInputDisabledText": "--color-input-disabled-text";
   "colorInputPlaceholder": "--color-input-placeholder";
-  "colorInverseBackgroundDefault": "--color-inverse-background-default";
-  "colorInverseForegroundDefault": "--color-inverse-foreground-default";
   "colorLabelDefaultColor": "--color-label-default-color";
   "colorLabelDisabledColor": "--color-label-disabled-color";
   "colorLabelErrorText": "--color-label-error-text";
@@ -1601,13 +1538,6 @@ export declare const cssVars: Readonly<{
   "colorPopoverBorder": "--color-popover-border";
   "colorPopoverBorderFocus": "--color-popover-border-focus";
   "colorPopoverText": "--color-popover-text";
-  "colorPrimaryBackgroundDefault": "--color-primary-background-default";
-  "colorPrimaryBackgroundDefaultActive": "--color-primary-background-default-active";
-  "colorPrimaryBackgroundDefaultHover": "--color-primary-background-default-hover";
-  "colorPrimaryBackgroundSubtle": "--color-primary-background-subtle";
-  "colorPrimaryBorderDefault": "--color-primary-border-default";
-  "colorPrimaryForegroundDefault": "--color-primary-foreground-default";
-  "colorPrimaryForegroundSubtle": "--color-primary-foreground-subtle";
   "colorProgressBackground": "--color-progress-background";
   "colorProgressDefaultFill": "--color-progress-default-fill";
   "colorProgressDestructiveFill": "--color-progress-destructive-fill";
@@ -1670,12 +1600,6 @@ export declare const cssVars: Readonly<{
   "colorSliderThumbBorder": "--color-slider-thumb-border";
   "colorSliderThumbRingOffset": "--color-slider-thumb-ring-offset";
   "colorSliderTrack": "--color-slider-track";
-  "colorSuccessBackgroundDefault": "--color-success-background-default";
-  "colorSuccessBackgroundDefaultHover": "--color-success-background-default-hover";
-  "colorSuccessBackgroundSubtle": "--color-success-background-subtle";
-  "colorSuccessBorderDefault": "--color-success-border-default";
-  "colorSuccessForegroundDefault": "--color-success-foreground-default";
-  "colorSuccessForegroundSubtle": "--color-success-foreground-subtle";
   "colorSwitchThumbBackground": "--color-switch-thumb-background";
   "colorSwitchTrackBackgroundChecked": "--color-switch-track-background-checked";
   "colorSwitchTrackBackgroundUnchecked": "--color-switch-track-background-unchecked";
@@ -1720,12 +1644,6 @@ export declare const cssVars: Readonly<{
   "colorTooltipBackground": "--color-tooltip-background";
   "colorTooltipBorder": "--color-tooltip-border";
   "colorTooltipText": "--color-tooltip-text";
-  "colorWarningBackgroundDefault": "--color-warning-background-default";
-  "colorWarningBackgroundDefaultHover": "--color-warning-background-default-hover";
-  "colorWarningBackgroundSubtle": "--color-warning-background-subtle";
-  "colorWarningBorderDefault": "--color-warning-border-default";
-  "colorWarningForegroundDefault": "--color-warning-foreground-default";
-  "colorWarningForegroundSubtle": "--color-warning-foreground-subtle";
   "colorYellow100": "--color-yellow-100";
   "colorYellow200": "--color-yellow-200";
   "colorYellow300": "--color-yellow-300";
